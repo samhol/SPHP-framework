@@ -1,0 +1,732 @@
+<?php
+
+/**
+ * URL.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ */
+
+namespace Sphp\Net;
+
+use Sphp\Data\Arrayable as Arrayable;
+use Sphp\Util\Strings as Strings;
+use Sphp\Util\StringObject as StringObject;
+use Sphp\Util\Arrays as Arrays;
+
+/**
+ * Class implements an URL for manipulation and comparison
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-03-05
+ * @version 2.0.1
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
+ */
+class URL implements \Sphp\Objects\ScalarObjectInterface, Arrayable, \IteratorAggregate {
+
+  /**
+   * the current url object
+   *
+   * @var URL 
+   */
+  private static $currUrl;
+
+  /**
+   * an array containing all the URL parts
+   *
+   * @var string[]
+   */
+  private $components = [
+      "scheme" => "",
+      "host" => "",
+      "user" => "",
+      "pass" => "",
+      "path" => "",
+      "query" => [],
+      "fragment" => "",
+      "port" => ""
+  ];
+
+  /**
+   * Constructs a new instance of the {@link self} object
+   *
+   * @param string|null $url the URL string
+   */
+  public function __construct($url = null) {
+    $urlString = Strings::toString($url);
+    if (Strings::notEmpty($urlString)) {
+      //$url = html_entity_decode(urldecode($url));
+      //print_r($data);
+      //$parts = parse_url($urlString);
+      $arr = [
+          "scheme" => "",
+          "host" => "",
+          "user" => "",
+          "pass" => "",
+          "path" => "",
+          "query" => "",
+          "fragment" => "",
+          "port" => ""
+      ];
+      $urlString = html_entity_decode(urldecode($urlString));
+      $parts = array_merge($arr, parse_url($urlString));
+      $query = [];
+      parse_str($parts["query"], $query);
+      $this->components = $parts; //array_merge($this->components, parse_url($urlString));
+      $this->components["query"] = $query;
+      //print_r($this->components);
+      //parse_str($this->components["query"], $this->query);
+      //$this->setQuery($this->components["query"]);
+      $this->setPort($this->components["port"]);
+      //print_r($this->components);
+      //print_r($this->query);
+    }
+  }
+
+  /**
+   * Destroys the instance
+   * 
+   * The destructor method will be called as soon as there are no other references 
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->components);
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->components = Arrays::copy($this->components);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function __debugInfo() {
+    return $this->components;
+  }
+
+  /**
+   * Sets the scheme name (service name) of the URL
+   * 
+   * * **All schemes are transformed to lowercase.**
+   * * The scheme is ususally the name of a protocol, defines how the resource will be obtained.
+   * * Supported service names: `http`, `https`, `ftp`, `ssh`, `telnet`, `imap`, `smtp`, `nicname`, `gopher`, `finger`, `pop3` and `www`
+   *  
+   * 
+   * @param  string|null $scheme the scheme name of the URL
+   * @return self for PHP Method Chaining
+   */
+  public function setScheme($scheme) {
+    $this->components["scheme"] = $scheme;
+    return $this;
+  }
+
+  /**
+   * Returns the scheme name of the URL
+   * 
+   * The scheme is ususally the name of a protocol, defines how the resource 
+   * will be obtained. Examples include `http`, `https`, `ftp`, `file` and many 
+   * others. **All schemes are transformed to lowercase.**
+   * 
+   * @return string the scheme name of the URL
+   */
+  public function getScheme() {
+    return strval($this->components["scheme"]);
+  }
+
+  /**
+   * Checks whether the `scheme` part of the URL is set or not
+   * 
+   * @return boolean true if the scheme is set and false otherwise
+   */
+  public function hasScheme() {
+    return Strings::notEmpty($this->getScheme());
+  }
+
+  /**
+   * Sets the `host` part of the URL
+   * 
+   * @param  string $host the `host` part of the URL
+   * @return self for PHP Method Chaining
+   */
+  public function setHost($host) {
+    $this->components["host"] = $host;
+    return $this;
+  }
+
+  /**
+   * Returns the `host` part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the host `part` of the URL
+   */
+  public function getHost($encode = false) {
+    $val = new StringObject($this->components["host"]);
+    if ($encode && $val->notEmpty() && !$val->match('!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
+      $val->rawurlencode($val);
+    }
+    return "$val";
+  }
+
+  /**
+   * Checks whether the `host` part of the URL is set or not
+   * 
+   * @return boolean true if the host is set and false otherwise
+   */
+  public function hasHost() {
+    return Strings::notEmpty($this->getHost());
+  }
+
+  /**
+   * Sets the username part of the URL
+   * 
+   * @param  string|null $user
+   * @return self for PHP Method Chaining
+   */
+  public function setUser($user) {
+    $this->components["user"] = $user;
+    return $this;
+  }
+
+  /**
+   * Returns the user part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the user part of the URL
+   */
+  public function getUser($encode = false) {
+    $val = strval($this->components["user"]);
+    if ($encode && Strings::notEmpty($val)) {
+      $val = rawurlencode($val);
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `user` part of the URL is set or not
+   * 
+   * @return boolean true if the user is set and false otherwise
+   */
+  public function hasUser() {
+    return Strings::notEmpty($this->getUser());
+  }
+
+  /**
+   * Sets the password part of the URL
+   * 
+   * @param  string|null $pass
+   * @return self for PHP Method Chaining
+   */
+  public function setPassword($pass) {
+    $this->components["pass"] = $pass;
+    return $this;
+  }
+
+  /**
+   * Returns the password part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the password part of the URL
+   */
+  public function getPassword($encode = false) {
+    $val = strval($this->components["pass"]);
+    if ($encode && Strings::notEmpty($val)) {
+      $val = rawurlencode($val);
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `password` part of the URL is set or not
+   * 
+   * @return boolean true if the password is set and false otherwise
+   */
+  public function hasPassword() {
+    return Strings::notEmpty($this->getPassword());
+  }
+
+  /**
+   * Sets the path part of the URL
+   * 
+   * @param  string|null $path
+   * @return self for PHP Method Chaining
+   */
+  public function setPath($path) {
+    if (!Strings::startsWith($path, "/")) {
+      $path = "/$path";
+    }
+    $this->components["path"] = $path;
+    return $this;
+  }
+
+  /**
+   * Returns the path part of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the path part of the URL
+   */
+  public function getPath($encode = false) {
+    $val = strval($this->components["path"]);
+    if ($encode && Strings::notEmpty($val)) {
+      $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `path` part of the URL is set or not
+   * 
+   * @return boolean true if the path is set and false otherwise
+   */
+  public function hasPath() {
+    return Strings::notEmpty($this->getPath());
+  }
+
+  /**
+   * Sets the query part of the URL
+   * 
+   * @param  string $query the new query string
+   * @return self for PHP Method Chaining
+   */
+  public function setQuery($query) {
+    if (Strings::notEmpty($query)) {
+      parse_str($query, $this->components["query"]);
+      //$this->components["query"] = urldecode($query);
+    } else {
+      $this->components["query"] = [];
+    }
+    return $this;
+  }
+
+  /**
+   * Checks whether the `path` part of the URL is set or not
+   * 
+   * @return boolean true if the path is set and false otherwise
+   */
+  public function hasQuery() {
+    return count($this->components["query"]) > 0;
+  }
+
+  /**
+   * Returns the query string part of the URL
+   * 
+   * The query string contains data to be passed to software running on the 
+   * server. It may contain name/value pairs separated by ampersands.
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the query string of the URL
+   */
+  public function getQuery($encode = false) {
+    //$val = strval($this->components["query"]);
+    $val = "";
+    if ($this->hasQuery()) {
+      $val = Arrays::implodeWithKeys($this->components["query"], "=", "&");
+      if ($encode) {
+        $val = htmlspecialchars($val);
+      }
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether a param exists in the query
+   * 
+   * @param  string $name the name of the param
+   * @return boolean true if the param exists and false otherwise
+   */
+  public function paramExists($name) {
+    return array_key_exists($name, $this->components["query"]);
+  }
+
+  /**
+   * Return the query as an array of params
+   *
+   * @return string[] the param array
+   */
+  public function getParams() {
+    return $this->components["query"];
+  }
+
+  /**
+   * Return the value of the param
+   *
+   * @param  string $name the name of the param
+   * @return string|null the value of the param or null if the param does not exist
+   */
+  public function getParam($name) {
+    $val = null;
+    if ($this->paramExists($name)) {
+      $val = $this->components["query"][$name];
+    }
+    return $val;
+  }
+
+  /**
+   * Sets or replaces a param in the query
+   *
+   * @param  string $name the name of the param
+   * @param  string $value the value of the param
+   * @return self for PHP Method Chaining
+   */
+  public function setParam($name, $value) {
+    $this->components["query"][$name] = $value;
+    return $this;
+  }
+
+  /**
+   * Sets or replaces params in the query
+   *
+   * @param  string[] $params parameter name => value pairs or a query string
+   * @return self for PHP Method Chaining
+   */
+  public function setParams(array $params) {
+    if (!is_array($params)) {
+      $parArr = [];
+      parse_str($params, $parArr);
+    } else {
+      $parArr = $params;
+    }
+    $this->components["query"] = array_merge($this->components["query"], $parArr);
+    //$this->setQuery(urldecode(http_build_query($this->components["query"])));
+    return $this;
+  }
+
+  /**
+   * Removes a parameter from the query
+   *
+   * @param  string $name the name of the parameter to remove
+   * @return self for PHP Method Chaining
+   */
+  public function unsetParam($name) {
+    if (array_key_exists($name, $this->components["query"])) {
+      unset($this->components["query"][$name]);
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the fragment identifier of the URL
+   * 
+   * The fragment specifies a part or a position within the overall resource or document.
+   * 
+   * @param  string|null $fragment the fragment identifier of the URL
+   * @return self for PHP Method Chaining
+   */
+  public function setFragment($fragment) {
+    $this->components["fragment"] = $fragment;
+    return $this;
+  }
+
+  /**
+   * Returns the fragment identifier of the URL
+   * 
+   * @param  boolean $encode true if the value should be encoded
+   * @return string the fragment identifier of the URL
+   */
+  public function getFragment($encode = false) {
+    $val = strval($this->components["fragment"]);
+    if ($encode) {
+      $val = rawurlencode($val);
+    }
+    return $val;
+  }
+
+  /**
+   * Checks whether the `fragment` part of the URL is set or not
+   * 
+   * @return boolean true if the fragment part is set and false otherwise
+   */
+  public function hasFragment() {
+    return Strings::notEmpty($this->getFragment());
+  }
+
+  /**
+   * Sets the port number of the URL
+   * 
+   * The port number is optional; if omitted, the default port for the scheme is used
+   * 
+   * @param  null|int $port
+   * @return self for PHP Method Chaining
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+   */
+  public function setPort($port) {
+    //var_dump($port);
+    if (Strings::isEmpty($port)) {
+      $port = getservbyname($this->getScheme(), "tcp");
+      if ($port === false) {
+        $port = null;
+      }
+    } else if (!is_int($port)) {
+      $port = intval($port);
+    }
+    if ($port < 0) {
+      $port = null;
+    }
+    $this->components["port"] = $port;
+    return $this;
+  }
+
+  /**
+   * Returns the port number associated with this service and a given protocol
+   *
+   * @return int the port number (-1 if the port number can not be resolved)
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+   */
+  public function getPort() {
+    return $this->components["port"];
+  }
+
+  /**
+   * Returns the port number associated with this service and a given protocol
+   *
+   * @return boolean true if the port number is the default for the scheme
+   * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+   */
+  public function hasDefaultPort() {
+    return getservbyname($this->getScheme(), "tcp") === $this->getPort();
+  }
+
+  /**
+   * Create a new iterator to iterate through the URL components
+   *
+   * @return \ArrayIterator iterator
+   */
+  public function getIterator() {
+    return new \ArrayIterator($this->components);
+  }
+
+  /**
+   * Returns a copy of the URL components
+   * 
+   * @return mixwd[] the URL components
+   */
+  public function getArrayCopy() {
+    return Arrays::copy($this->components);
+  }
+
+  /**
+   * Determines whether the specified object is equal to the current object
+   *
+   * @param  string|URL $url the URL to compare with the current URL
+   * @return boolean true if the specified URL is equal to the current URL, otherwise false
+   */
+  public function equals($url) {
+    if (!($url instanceof URL)) {
+      $url = new URL($url);
+    }
+    return $this->components == $url->getIterator()->getArrayCopy();
+  }
+
+  /**
+   * Returns the object as a HTML5 encoded string
+   *
+   * **String format:** 
+   * [scheme]://[user]:[pass]@[host]:[port]/[path]?[query]#[fragment]
+   *
+   * @return string representation of the object
+   */
+  public function __toString() {
+    return $this->getHtml();
+  }
+
+  /**
+   * Returns the object as a HTML5 encoded string
+   *
+   * **String format:** 
+   * [scheme]://[user]:[pass]@[host]:[port]/[path]?[query]#[fragment]
+   *
+   * @return string representation of the object
+   */
+  public function getHtml() {
+    $url = '';
+    $encode = true;
+    if ($this->hasScheme()) {
+      $url .= $this->getScheme($encode) . ':';
+    }
+    if ($this->hasHost()) {
+      $url .= '//';
+      if ($this->hasUser()) {
+        $url .= $this->getUser($encode);
+        if ($this->hasPassword()) {
+          $url .= ':' . $this->getPassword($encode);
+        }
+        $url .= '@';
+      }
+      $host = $this->getHost($encode);
+      if (preg_match('!^[\da-f]*:[\da-f.:]+$!ui', $host)) {
+        $url .= '[' . $host . ']'; // IPv6
+      } else {
+        $url .= $host; // IPv4 or name
+      }
+      $port = $this->getPort();
+      if ($port >= 0 && !$this->hasDefaultPort()) {
+        $url .= ':' . $port;
+      }
+    }
+    if ($this->hasPath()) {
+      $url .= $this->getPath($encode);
+    }
+    if ($this->hasQuery()) {
+      //http_build_query($this->getParams());
+      $url .= '?' . http_build_query($this->getParams(), '', '&amp;', \PHP_QUERY_RFC3986);
+    }
+    if ($this->hasFragment()) {
+      $url .= '#' . $this->getFragment($encode);
+    }
+    return $url;
+  }
+
+  /**
+   * Returns the object as a raw unencoded string
+   *
+   * **String format:** 
+   * [scheme]://[user]:[pass]@[host]:[port]/[path]?[query]#[fragment]
+   *
+   * @return string representation of the object
+   */
+  public function getRaw() {
+    $url = '';
+    if ($this->hasScheme()) {
+      $url .= $this->getScheme() . ':';
+    }
+    if ($this->hasHost()) {
+      $url .= '//';
+      if ($this->hasUser()) {
+        $url .= $this->getUser();
+        if ($this->hasPassword()) {
+          $url .= ':' . $this->getPassword();
+        }
+        $url .= '@';
+      }
+      $host = $this->getHost();
+      if (preg_match('!^[\da-f]*:[\da-f.:]+$!ui', $host)) {
+        $url .= '[' . $host . ']'; // IPv6
+      } else {
+        $url .= $host; // IPv4 or name
+      }
+      $port = $this->getPort();
+      if ($port >= 0 && !$this->hasDefaultPort()) {
+        $url .= ':' . $port;
+      }
+    }
+    if ($this->hasPath()) {
+      $url .= $this->getPath();
+    }
+    if ($this->hasQuery()) {
+      $url .= '?' . http_build_query($this->getParams(), '', '&', \PHP_QUERY_RFC3986);
+    }
+    if ($this->hasFragment()) {
+      $url .= '#' . $this->getFragment();
+    }
+    return $url;
+  }
+
+  /**
+   * Returns the Mime type of the content
+   *
+   * @return string the Mime type of the content
+   */
+  public function getMimeType() {
+    $url = $this->__toString();
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_NOBODY, 1);
+    curl_exec($ch);
+    return curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+  }
+
+  /**
+   * Checks whether the URL exists or not
+   *
+   * @return boolean true if the url exists and false otherwise
+   */
+  public function exists() {
+    if (!$this->hasHost()) {
+      return false;
+    }
+    $errno = "";
+    $errstr = "";
+    $fp = fsockopen($this->getHost(), 80, $errno, $errstr, 30);
+    if ($fp === false) {
+      return false;
+    }
+    $path = "";
+    if ($this->hasPath()) {
+      $path .= $this->getPath();
+    }
+    if ($this->hasQuery()) {
+      $path .= '?' . http_build_query($this->getParams(), '', '&', \PHP_QUERY_RFC3986);
+    }
+    $out = "GET /$path HTTP/1.1\r\n";
+    $out .= "Host: {$this->getHost()}\r\n";
+    $out .= "Connection: Close\r\n\r\n";
+    fwrite($fp, $out);
+    $content = fgets($fp);
+    $code = trim(substr($content, 9, 4));
+    fclose($fp);
+    return ($code[0] == 2 || $code[0] == 3) ? true : false;
+  }
+
+  /**
+   * Checks whether the URL is current browser URL or not 
+   * 
+   * @return boolen true if the URL is current browser URL, false otherwise
+   */
+  public function isCurrent() {
+    return $this->equals(URL::getCurrent());
+  }
+
+  /**
+   * Returns the current URL as an object
+   *
+   * @return URL the current url
+   */
+  public static function getCurrent() {
+    if (self::$currUrl instanceof URL) {
+      $url = self::$currUrl;
+    } else {
+      $url = new URL();
+      if (!empty($_SERVER["HTTPS"])) {
+        $url->setScheme("https");
+      } else {
+        $url->setScheme("http");
+      }
+      $url->setHost(filter_input(INPUT_SERVER, "SERVER_NAME", FILTER_SANITIZE_STRING));
+      $url->setPort(filter_input(INPUT_SERVER, "SERVER_PORT", FILTER_SANITIZE_NUMBER_INT));
+      $php_self = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_URL);
+      $request_uri = filter_input(INPUT_SERVER, "REQUEST_URI", FILTER_SANITIZE_URL);
+      if (Strings::startsWith($request_uri, $php_self)) {
+        $url->setPath($php_self);
+        $url->setQuery(filter_input(INPUT_SERVER, "QUERY_STRING", FILTER_SANITIZE_URL));
+      } else {
+        $url->setPath(parse_url($request_uri, PHP_URL_PATH));
+        $url->setQuery(parse_url($request_uri, PHP_URL_QUERY));
+      }
+      self::$currUrl = $url;
+    }
+    return clone $url;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toArray() {
+    return $this->getIterator()->getArrayCopy();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function toScalar() {
+    return $this->getRaw();
+  }
+
+}

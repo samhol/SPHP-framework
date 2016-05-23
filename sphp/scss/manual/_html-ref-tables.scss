@@ -1,0 +1,77 @@
+/**
+ * _html-ref-tables (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+$th-font-size: rem-calc(16);
+$td-font-size: rem-calc(14);
+
+.html-ref-tables table {
+  $table-bg: #fff;
+  $table-even-row-bg: #cfcfcf;
+  $table-margin-bottom: rem-calc(1);
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
+  // border: solid 1px #666; 
+  //@include border-radius(2px);	
+  tbody {
+    tr:nth-child(even) {
+      background-color: #dfdfdf;
+    }
+    tr:nth-child(odd) {
+      background-color: #efefe;
+    }
+  }
+  th {
+    font-size: $th-font-size;
+  }
+  th, td {
+    border: solid 1px #666;	
+    border-bottom: solid 1px #666;	
+  }
+  td {
+    font-size: $td-font-size;
+    line-height: 1.3;
+    height: 100%;
+    //overflow:hidden;
+     //margin: -10px;
+    a.scale-to-fit {
+      font-size: $td-font-size;
+      border: none;
+      line-height: 1.3;
+      background-color: transparent;
+      color: #000;
+      //padding: rem-calc(3 5 3 5); /*top right bottom left */
+      margin: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      position: relative;
+     vertical-align: 50%;
+    }
+    a.scale-to-fit:hover {
+      border: none;
+      background-color: transparent;
+      color: #000;
+      text-decoration: underline;
+      
+      background: #ccc;
+    }
+  }
+  td:nth-child(2) {
+    padding: 0;
+    //width: 25%;
+    a {
+      //padding: rem-calc(3 5 3 5); /*top right bottom left */
+      margin: 0;
+    }
+  };
+  td:nth-child(3) {
+    padding: 0;
+  }
+  td:nth-child(4) {
+    //width: 60%;
+  }
+}

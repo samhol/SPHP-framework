@@ -1,0 +1,131 @@
+/**
+ * _split_button.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+//@import "../vendor/foundation/components/buttons";
+
+$icon-size: rem-calc(24) !default;
+$sphp-split-font-family: "foundation-icons" !default;
+$sphp-split-background-color: #fefefe !default;
+
+@mixin sphp-split-button ($content, $background-color:$sphp-split-background-color, $left: false) {  
+  margin: rem-calc(0);
+  height: rem-calc(26);
+  background: $background-color;
+  width: 100%;
+  padding: rem-calc(6 3 6 3); /*top right bottom left*/
+  span {
+    background: darken($background-color, 10%);
+    float: left;
+    &:after { 
+      border: none;
+      font-family: $sphp-split-font-family;
+      content: $content;
+      font-size: $icon-size;
+      line-height: rem-calc(26);
+      margin-left: -0.7rem;
+    }
+  }
+  @if $left {
+    text-align: right;
+    padding: rem-calc(3 5 3 0); /*top right bottom left*/
+    span {
+      left: 0;
+      margin-left: rem-calc(5);
+    }
+  }
+  @else { 
+    padding: rem-calc(3 0 3 5); /*top right bottom left*/
+    span {
+      margin-right: rem-calc(5);
+    }
+  }
+}
+
+.sphp-facebook-button { 
+  @include sphp-split-button ("\f1c4", #3b5998);
+}
+
+.sphp-twitter-button {
+  @include sphp-split-button ("\f1e4", #55acee);
+}
+
+.sphp-google-button {
+  @include sphp-split-button ("\f1ca", #d50f25);
+}
+$facebook-color: #3b5998;
+$twitter-color: #55acee;
+$google-color: #d50f25;
+$text-transform: uppercase;
+$icon-size: 2rem;
+
+
+.split.button {
+  width: 100%;
+        font-size: $icon-size;
+  
+  &.facebook {
+    background: $facebook-color;
+    text-transform: $text-transform;
+    
+    span {
+      background: darken( $facebook-color, 10% );
+      
+      &:after { 
+        border: none;
+        font-family: "foundation-icons";
+        content: "\f1c4";
+        font-size: $icon-size;
+        line-height: 0.25rem;
+        margin-left: -0.7rem;
+      }
+    }
+  }
+  
+  &.twitter {
+    background: $twitter-color;
+    text-transform: $text-transform;
+    
+    span {
+      background: darken( $twitter-color, 10% );
+      
+      &:after { 
+        border: none;
+        font-family: "foundation-icons";
+        content: "\f1e4";
+        font-size: $icon-size;
+        line-height: 0.25rem;
+        margin-left: -0.7rem;
+      }
+    }
+  }
+  
+  &.google {
+    background: $google-color;
+    text-transform: $text-transform;
+    
+    
+    span {
+      background: darken( $google-color, 10% );
+      
+      &:after { 
+        border: none;
+        font-family: "foundation-icons";
+        content: "\f1ca";
+        font-size: $icon-size;
+        line-height: 0.25rem;
+        margin-left: -0.7rem;
+      }
+    }
+  }
+  
+  &.left-icon {
+    text-align: right;
+    span {
+      left: 0;
+    }
+  }
+}

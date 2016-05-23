@@ -1,0 +1,31 @@
+{
+  "name": "sami_holck/sphp_framework",
+  "description": "Multipurpose PHP framework for web applications",
+  "require": {
+    "doctrine/orm": "*",
+    "myclabs/deep-copy": "~1.5.1",
+    "sepia/po-parser": "^4.2",
+    "imagine/imagine": "^0.6.3",
+    "erusev/parsedown-extra": "^0.7.0",
+    "easybook/geshi": "v1.0.8.15",
+    "jdorn/sql-formatter": "^1.2",
+    "gajus/dindent": "^2.0",
+    "twig/twig": "~1.0",
+    "zurb/foundation": "^6.2"
+  },
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Sami Holck",
+      "email": "sami.holck@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sphp\\": "sphp/php/Sphp"
+    },
+    "psr-0": {
+      "": "vendor/tovic/parsedown-extra-plugin"
+    }
+  }
+}

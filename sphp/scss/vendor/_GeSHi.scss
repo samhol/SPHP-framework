@@ -1,0 +1,95 @@
+/**
+ * _GeSHi.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+@import "compass/css3";
+
+.GeSHi {
+  font-size: .9rem;
+  background-color: #fbfaf9 !important;
+  overflow: auto !important;
+  padding: 0 !important;
+  span, a {
+    display: inline-block !important;
+    padding: rem-calc(0) !important;
+  }
+  a {
+    border: #eee !important;
+  }
+  a:hover {
+    background-color: #ffeeee !important;
+  }
+  .de1, .de2 {
+    font-weight: normal;
+    background: transparent;
+    color: #0044aa; 
+    padding-left: 5px;
+  }
+  .kw1 {color: #a1a100;}
+  .kw2 {color: #000; font-weight: bold;}
+  .kw3 {color: #0066CC;}
+  .kw4 {color: #f63333;}
+  .co1, .co2, .coMULTI {color: #FF8000;}
+  .es0 {color: #000033; font-weight: bold;}
+  .br0 {color: #66cc66;}
+  .st0 {color: #ff0000;}
+  .nu0 {color: #ff33ff;}
+  .me0 {color: #006600;}
+  .me1 {color: #006600;}
+  .co4 {color: #009900;}
+  ol {
+    padding: rem-calc(0 0 0 0) !important; /* top right bottom left */
+    margin: rem-calc(0 0 0 50) !important; /* top right bottom left */
+    list-style-position: outside !important;
+    font-size: .9em !important;
+  }
+  li {
+    border-left: 2px solid #cccccc;
+  }
+  li.li1 {
+    background-color: #ffffff !important;
+  }
+  li.li2 {
+    background-color: #f5f5f5 !important;
+  }
+  .html {
+    .de1, .de2 {/*font: normal normal 1em/1.2em monospace;*/ margin:0; padding-top:0; background:none; vertical-align:top; line-height: 150%;}
+
+    .imp {font-weight: bold; color: red;}
+    li,  .li1 {
+      font-weight: normal; vertical-align:top;
+    }
+    .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;border-right:2px solid #e0e8ef;font-weight: bold;color: #333;}
+    .li2 {background: #f2f2f2;}
+    .kw2 {color: #000000; font-weight: bold;}
+    .kw3 {color: #000066;}
+    .es0 {color: #000099; font-weight: bold;}
+    .br0 {color: #66cc66;}
+    .sy0 {color: #66cc66;}
+    .st0 {color: #ff0000;}
+    .nu0 {color: #cc66cc;}
+    .sc-1 {color: #808080; font-style: italic;}
+    .sc0 {color: #00bbdd;}
+    .sc1 {color: #ddbb00;}
+    .sc2 {color: #009900;}
+    .ln-xtra,  li.ln-xtra,  div.ln-xtra {background-color: #ffc;}
+    span.xtra { display:block; }
+  };
+}
+.GeSHi.inline {
+  border: none;
+  display: inline-block;
+  ol {
+    list-style-type: none !important;
+    display: inline-block;
+    overflow: visible !important;
+  }
+}
+
+span.GeSHi, span.GeSHi span {
+  white-space:nowrap !important;
+  display: inline !important;
+}

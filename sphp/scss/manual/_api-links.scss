@@ -1,0 +1,23 @@
+/**
+ * _api-links.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+@mixin api-links($color, $backgroud) {
+    color: $color;	
+    background-color: $backgroud;
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+    border: solid 1px #bbb;
+    @include border-radius(2px);
+    text-decoration: none;
+    &:hover {
+    background-color: smart-scale($backgroud, 15%);
+      color: smart-scale($color, 15%);
+    }
+  
+}

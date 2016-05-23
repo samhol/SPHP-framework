@@ -1,0 +1,16 @@
+/**
+ * _sphp-back-to-top-button.scss (UTF-8)
+ *
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+.sphp-back-to-top-button {
+  position: fixed;
+  bottom: rem-calc(50);
+  right: rem-calc(30);
+  text-decoration: none;
+  padding: 0;
+  display: none;
+}

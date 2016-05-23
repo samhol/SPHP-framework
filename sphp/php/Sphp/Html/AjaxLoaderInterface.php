@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * AjaxLoaderInterface.php (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+namespace Sphp\Html;
+
+use Sphp\Net\URL as URL;
+
+/**
+ * Interface specifies the functionality of an Ajax content loader component
+ * 
+ * Supported ways of remote content fetching 
+ * 
+ * 1. Loading entire content of the remote document
+ * 2. Loading Page Fragments: a portion of the remote document defined by an 
+ *    unique DOM ID. This element, along with its contents, is inserted into 
+ *    this component with an ID of result, and the rest of the retrieved 
+ *    document is discarded.
+ * 
+ * **Important:** 
+ * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2015-08-11
+ * @version 1.0.0
+ * @link    http://api.jquery.com/load/ jQuery load()
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
+ */
+interface AjaxLoaderInterface {
+
+	/**
+	 * Replaces the content of the component with the remote content using jQuery Ajax
+	 * 
+	 * **Important note:** 
+	 * This method overrides all previous calls of {@link self} methods.
+	 *
+	 * @param  string|URL $url the URL to which the request is sent
+	 * @return self for PHP Method Chaining
+	 */
+	public function ajaxReplace($url);
+
+	/**
+	 * Prepends the remote content into the component using jQuery Ajax
+	 * 
+	 * **Important note:** 
+	 * This method overrides all previous calls of {@link self} methods.
+	 *
+	 * @param  string|URL $url the URL to which the request is sent
+	 * @return self for PHP Method Chaining
+	 */
+	public function ajaxPrepend($url);
+
+	/**
+	 * Appends the remote content into the component using jQuery Ajax
+	 * 
+	 * **Important note:** 
+	 * This method overrides all previous calls of {@link self} methods.
+	 *
+	 * @param  string|URL $url the URL to which the request is sent
+	 * @return self for PHP Method Chaining
+	 */
+	public function ajaxAppend($url);
+}

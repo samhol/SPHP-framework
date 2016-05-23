@@ -1,0 +1,70 @@
+/**
+ * sphp-side-nav.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+@charset "UTF-8";
+
+@import "compass/css3";
+@import "compass/typography/links/link-colors";
+
+$side-nav-heading-color: #111;
+$side-nav-heading-font-size: rem-calc(16);
+$side-nav-link-color: #111;
+$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-link-bg-hover: hsla(0, 0, 0, 0.085);
+$side-nav-link-bg: hsla(0, 0, 0, 0.015);
+$side-nav-bg: #fefefe;
+
+.sphp-sidenav {
+  padding: rem-calc(0 0 20 0); /* top right bottom left */
+  border: solid 1px #333;
+  @include border-bottom-left-radius(10px);
+  overflow: hidden; 
+  @include background-clip(border-box);
+  background-color: #fefefe;	
+  // border: solid 1px #888; 
+  // @include border-radius(4px);
+  @include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  margin: rem-calc(5 0 20 0); /*top right bottom left*/
+  li {
+    &.menu-text {
+      &:first-of-type {
+        font-size: rem-calc(18);
+      }
+      @include background-image(linear-gradient(to right, #fff, #dfdfdf));
+      font: {
+        size: $side-nav-heading-font-size;
+        weight: bold;
+      }
+      border-top: solid 1px #999; 
+      border-bottom: solid 1px #999; 
+    }
+    &.is-accordion-submenu-parent {
+      margin: rem-calc(2 0 1 0); /* top right bottom left */ 
+      & > a {
+        border-top: solid 1px #999;
+        border-bottom: solid 1px #999;
+        //background-color: #eee;
+        font-weight: bold;
+        font-size: rem-calc(14);
+        @include background-image(linear-gradient(to right, #fff, #dfdfdf));
+        color: #333;
+        padding-left: rem-calc(6);
+      }
+    }
+    a:not(.button) {
+      background-color: #fff;
+      color: #555;
+      font-size: rem-calc(13);
+      @include transition-property(background-color, color);
+      @include transition-duration(0.2s);
+      @include transition-timing-function(ease-in-out);
+      &:hover, &.active {	
+        background-color: #ededed;
+        color: #111;
+      }
+    }
+  }
+}

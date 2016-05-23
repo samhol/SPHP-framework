@@ -1,0 +1,19 @@
+<?php
+
+namespace Sphp\Core\ErrorHandling;
+
+use Exception;
+use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
+
+ErrorExceptionThrower::Start();
+
+try {
+  include("missing/file.php");
+} catch (Exception $ex) {
+  (new ExceptionCallout($ex))
+          ->showPreviousException()
+          ->showTrace()
+          ->printHtml();
+}
+
+ErrorExceptionThrower::Stop();

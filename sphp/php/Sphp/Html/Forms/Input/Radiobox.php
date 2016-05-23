@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Radiobox.php (UTF-8)
+ * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
+ */
+
+namespace Sphp\Html\Forms\Input;
+
+/**
+ * Class models an HTML &lt;input type="radio"&gt; tag
+ *
+ *
+ * {@inheritdoc}
+ *
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2011-10-18
+ * @version 2.0.0
+ * @filesource
+ */
+class Radiobox extends Choicebox {
+
+  /**
+   * Constructs a new instance of the {@link Radiobox} component
+   *
+   *  **Postconditions:**  <var>attrLocked("type", "radio") === true</var>
+   *
+   * @param  string $name the value of the name attribute
+   * @param  string $value the value of the value attribute
+   * @param  boolean $checked is component checked
+   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_input_checkbox.asp checked attribute
+   */
+  public function __construct($name = "", $value = "", $checked = false) {
+    parent::__construct("radio", $name, $value, $checked);
+  }
+
+}

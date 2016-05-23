@@ -1,0 +1,4 @@
+<FilesMatch "^(appConfig|settings)\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

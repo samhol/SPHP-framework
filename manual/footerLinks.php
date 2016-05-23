@@ -1,0 +1,43 @@
+<?php
+
+namespace Sphp\Html\Foundation;
+
+use Sphp\Html\Foundation\F6\Navigation\Menu as Menu;
+use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
+use Sphp\Html\Doc as Doc;
+
+$links["js"] = (new Menu())->vertical()
+        ->appendText("JavaScript " . Doc::icon("fa fa-code"))
+        ->appendLink("https://jquery.com/", "jQuery", "_blank", "_blank")
+        ->appendLink("http://foundation.zurb.com/", "Foundation", "_blank")
+        ->appendLink("http://qtip2.com/", "qTip<sup>2</sup>", "_blank")
+        ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT", "_blank")
+        ->appendLink("http://zeroclipboard.org/", "ZeroClipboard", "_blank")
+        ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade;", "_blank");
+$links["php"] = (new Menu())->vertical()
+        ->appendText("PHP" . Doc::icon("fa fa-code"))
+        ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra", "_blank")
+        ->appendLink("http://qbnz.com/highlighter/", "GeSHi", "_blank")
+        ->appendLink("https://imagine.readthedocs.org", "Imagine", "_blank")
+        ->appendText("SQL" . Doc::icon("fa fa-database"))
+        ->appendLink("https://www.mysql.com/", "MySQL", "_blank")
+        ->appendLink("http://www.postgresql.org/", "Postgre SQL", "_blank");
+$links["sass"] = (new Menu())->vertical()
+        ->appendText("SASS")
+        ->appendLink("http://sass-lang.com/", "SASS language", "_blank")
+        ->appendLink("http://thesassway.com/", "The Sass Way", "_blank")
+        ->appendLink("http://compass-style.org/", "Compass framework", "_blank")
+        ->appendLink("http://foundation.zurb.com/sites/docs/sass.html", "Foundation SASS", "_blank");
+$links["tutorials"] = (new Menu())->vertical()
+        ->appendText("Misc. Tutorials" . Doc::icon("fa fa-book"))
+        ->appendLink("https://developer.mozilla.org/", "<b>MDN</b>", "_blank")
+        ->appendLink("http://stackoverflow.com/", "stack <b>Overflow</b>", "_blank")
+        ->appendText('w3cschools.com')
+        ->appendLink("http://www.w3schools.com/html/", 'HTML tutorial', "_blank")
+        ->appendLink("http://www.w3schools.com/CSS/", 'CSS tutorial', "_blank")
+        ->appendLink("http://www.w3schools.com/jquery/", "jQuery tutorial", "_blank")
+        ->appendLink("http://www.w3schools.com/sql/", "SQL tutorial", "_blank");
+;
+
+$grid = (new BlockGrid($links, 2, 2, 4))->addCssClass("collapse");
+$grid->printHtml();

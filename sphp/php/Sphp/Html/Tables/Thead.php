@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Thead.php (UTF-8)
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
+ */
+
+namespace Sphp\Html\Tables;
+
+/**
+ * Class models an HTML &lt;thead&gt; tag
+ *
+ *  The {@link self} component is used to group header content in a 
+ *  {@link Table} component.
+ *
+ *
+ * {@inheritdoc}
+ *
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2012-10-03
+ * @version 1.0.0
+ * @link    http://www.w3schools.com/tags/tag_thead.asp w3schools API link
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
+ */
+class Thead extends TableRowContainer {
+
+	/**
+	 * the tag name of the HTML component
+	 */
+	const TAG_NAME = "thead";
+
+	/**
+	 * Constructs a new instance
+	 * 
+	 * **Notes:**
+	 * 
+	 *  * A mixed `$row` can be of any type that converts to a PHP string
+	 *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+	 *
+	 * @param  null|mixed|mixed[] $row the row being appended
+	 */
+	public function __construct($row = null) {
+		parent::__construct(self::TAG_NAME, $row);
+		$this->setDefaultTableCellType(Th::TAG_NAME);
+	}
+
+}

@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * ObjectStorageInterface.php (UTF-8)
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ */
+
+namespace Sphp\Db\Objects;
+
+use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Exception;
+use IteratorAggregate;
+
+/**
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-05-20
+ * @version 1.0.0
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
+ */
+interface ObjectStorageInterface extends IteratorAggregate {
+
+  /**
+   * 
+   * @return EntityManagerInterface
+   */
+  public function getManager();
+
+  /**
+   * 
+   * @return string
+   */
+  public function getObjectType();
+
+  /**
+   * 
+   * @param string $dql DQL string
+   * @param array $params
+   */
+  public function query($dql, array $params = null, $useQueryCache = true);
+
+  /**
+   * 
+   * @param  string $prop the name of the object property
+   * @param  mixed $value the value of the object property
+   * @return DbObjectInterface[] an array of matching objects
+   * @throws Exception if anything fails
+   */
+  public function findByProperty($prop, $value);
+
+  /**
+   * 
+   * @param  array $props the name of the object property
+   * @return DbObjectInterface[] an array of matching objects
+   * @throws Exception if anything fails
+   */
+  public function findBy(array $props);
+  /**
+   * 
+   * @return ArrayIterator
+   */
+  public function getIterator();
+
+  /**
+   *
+   * @param  mixed $id
+   * @return DbObjectInterface|null
+   */
+  public function get($id);
+
+  /**
+   * 
+   * @param  mixed $id
+   * @return boolean
+   */
+  public function exists($id);
+
+  /**
+   * 
+   * @param DbObjectInterface $object
+   */
+  public function save(DbObjectInterface $object);
+
+  /**
+   * 
+   * @param  DbObjectInterface $object
+   * @return boolean
+   */
+  public function contains(DbObjectInterface $object);
+}

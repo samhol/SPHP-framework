@@ -1,0 +1,277 @@
+/**
+ * _manual (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+@import "api-links";
+@import "f6-manual-accordion";
+@import "footer";
+$default-left-margin: rem-calc(35);
+$default-margins: (
+  top: rem-calc(5),
+  right: rem-calc(25),
+  bottom: rem-calc(15),
+  left: rem-calc(35)
+);
+@mixin default-margin($margin: all) { 
+  @if $margin == all or map-has-key($default-margins, $margin) {
+    @if $margin == all {
+      margin: map-get($default-margins, top) 
+        map-get($default-margins, right) 
+        map-get($default-margins, bottom) 
+        map-get($default-margins, left);
+    } else {
+      margin-#{$margin}: map-get($default-margins, $margin);
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$margin}`. "
+    + "Please make sure it is defined in `$default-margins` map.";
+  }
+}
+.sphp-logo  {
+  background: rgba(255, 255, 255, 0.75);
+  img {
+    margin: rem-calc(5 0 5 30);
+  }
+}
+.manual .mainContent { 
+  border: solid 1px #888;
+  @include border-radius(4px);
+  //@include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  padding: rem-calc(0 0 20 0);// rem-calc(6 6 40 6); // top right bottom left
+  margin: rem-calc(5 0 20 0); // top right bottom left
+  background: #fafafa;
+  >.intro {
+    @include default-margin(left);
+    .callout{
+      @include box-shadow(#ddd 0px 2px 3px 2px);
+      border: solid 1px #ccc;
+      @include border-radius(4px);
+      h5, dt {
+        font-weight: bold;
+        border-bottom: dotted 1px #ccc;
+      }
+      p {
+        text-align: justify;
+      }
+    } 
+  }
+  @import "html-ref-tables";
+  .namespace.breadcrumbs {
+    @include default-margin();
+    margin: rem-calc(5 25 15 35);
+    &:before {
+      content: "NAMESPACE:";
+      float: left;
+      margin-right: rem-calc(15);
+      font-size: rem-calc(16);
+      font-weight: bold;
+    }
+    a {   
+      @include api-links(#444, #fafafa);
+    }
+    &:before, a {
+      line-height: 1.6;
+      font-size: rem-calc(16);
+      text-transform: none;
+    }
+    li:not(:last-child)::after {
+      margin-left: rem-calc(4);
+      margin-right: rem-calc(4);
+      line-height: 1.6;
+    }
+  }
+  > p, > ul, > ol > .callout, > .sphp-single-accordion {
+    margin-left: rem-calc(5);
+    margin-right: rem-calc(5);
+  }
+
+  > p:not([class]), > blockquote:not([class]) {
+    @include default-margin();
+    //margin: rem-calc(5 25 15 35); // top right bottom left
+    text-align: justify;
+    padding: 0;
+  }
+  > ul:not([class]), > ol:not([class]) { 
+    //margin: rem-calc(6 25 10 55);
+    @include default-margin();
+    list-style-position: inside;
+  }
+  > h1 {
+    //font-weight: 600;
+    border-bottom: solid 1px #aaa;
+    margin: rem-calc(0 0 15 0);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  > h2, > h3 {
+    padding: rem-calc(0 5 0 10); // top right bottom left
+    background: #eee;
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+  }
+  > h1, > h2, > h3 {
+    padding: rem-calc(0 5 0 10); // top right bottom left
+    background: #eee;
+    line-height: 1.6;
+    a {
+      border: solid 1px #ccc;
+      line-height: 1.6;
+      @include border-radius(2px);
+      // @include box-shadow(rgba(gray, 0.4) 0px 0px 3px 2px);
+      display: inline-block;
+      //height: 100%;
+      margin-top: rem-calc(1);
+      margin-bottom: rem-calc(1);
+      background: #f3f3f3;
+      font-family: "Source Code Pro", monospace !important;
+      padding-left: rem-calc(4);
+      padding-right: rem-calc(4);
+      &:hover {
+        background: #fdfdfd;
+        border-color: #bbb;
+      }
+    }
+  }
+  > h2, > h3, > h4, > h5, > h6 {
+    //font-weight: 600;
+    margin: rem-calc(0 5 15 5);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  p:not([class]), ol:not([class]), ul:not([class]), dl:not([class]) {
+    a:not([class]) {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  } 
+  p a.api, ul a.api, ol a.api {
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+
+    &:hover {
+      color: #8c1111;
+    }
+    &.box, &.apigen, &.bordered {
+      border: solid 1px #bbb;
+      @include border-radius(2px);
+      text-decoration: none;
+    }
+    &.apigen {
+      color: #002036;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none;
+    }
+    &.apigen:hover {
+      color: #8c1111;
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+    &.phpman {
+      color: #002036;
+      border-color: #bbb;
+    }
+    &.phpman:hover {
+      color: #8c1111;
+    }
+    &.box.phpman {
+      font-weight: normal;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none !important;
+    }
+    &.box.phpman:hover {
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+  }
+  .tech {
+    font-style: normal;
+    display: inline-block;
+    margin-right: rem-calc(2);
+    padding: rem-calc(2 5);
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border: solid 1px #aaa;
+    @include border-radius(3px);
+    &.js {
+      background-color: #fc1;
+      color: #333;
+      font-weight: bold;
+      &:after {
+        content: "JS";
+      }
+    }
+    &.html5 {
+      background-color: #ff5632;
+      color: #111;
+      &:after {
+        content: "HTML5";
+      }
+    }
+    &.css3 {
+      background-color: #0072b1;
+      &:after {
+        content: "CSS3";
+      }
+    } 
+    &.flash {
+      background-color: #f22;
+      color: #333;
+      font-weight: bold;
+      &:after {
+        content: "FLASH";
+      }
+    }
+    &.php {
+      background-color: #3333ff;
+      color: #eef;
+      font-weight: bold;
+      &:after {
+        content: "PHP";
+      }
+    }
+  }
+  .grid-example {
+    .accordion-content {
+      //padding: rem-calc(10); 
+      .column {
+        text-align: center;
+        border: solid 1px #aaa;
+        background: #eeeeee;
+        line-height: 2;
+      }
+    }
+  }
+
+  .plain.sphp-syntax-highlighter {
+    border: solid 1px #666;
+    @include border-radius(4px);
+    @include default-margin();
+    .syntax {
+      padding: rem-calc(10);  
+    }
+  }
+}
+
+body {
+  background: 
+    url('../../manual/pics/wood-texture-top.jpg'),
+    url('../../manual/pics/wood-texture-break.jpg'),
+    url('../../manual/pics/wood-textures.jpg');
+  background-repeat: 
+    repeat-x,
+    repeat-x,
+    repeat;
+  background-position: 
+    0px -320px,
+    0px 30px,
+    0 0;
+}

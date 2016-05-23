@@ -1,0 +1,263 @@
+/* 
+ *	SPHP6 framework
+ *  Created on : 2016
+ *  Author     : Sami Holck <sami.holck@gmail.com>
+ */
+@charset "UTF-8";
+
+@import "sphp-manual-foundation-settings";
+@import "../../vendor/zurb/foundation/scss/foundation";
+@import "compass/css3";
+@import "vendor/foundation-icons";
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);
+
+@include foundation-everything;
+
+$sphp6-topbar-bg: #121212;
+$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
+$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
+$sphp6-topbar-font-color: #e6e6e6;
+$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+$sphp6-topbar-title-font-color:  smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-root-border-color: #4e4e4e;
+
+@import "app/sphp-side-nav";
+
+.sphp-manual.top-bar {
+  .top-bar-title {
+    padding: .3rem;
+  }
+  border-bottom: solid 2px #FF8000;
+  color: $sphp6-topbar-link-font-color;
+  .top-bar-left>ul>li{
+    border-top: 1px solid $sphp6-root-border-color;
+    border-bottom: 1px solid $sphp6-root-border-color;
+    border-left: 1px solid $sphp6-root-border-color;
+    &:last-child {
+      border-right: 1px solid $sphp6-root-border-color;
+    }
+  }
+  .top-bar-right>ul>li {
+    border-left: 1px solid $sphp6-root-border-color;
+  }
+  .menu {
+    .is-down-arrow>a:after, {
+      border-color: #FAA523 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);;
+    }
+    background-color: smart-scale($topbar-background, 5%);
+    ul {
+      border-color:  #FF8000;
+
+    }
+    a {
+      font-size: $small-font-size;
+      color: smart-scale($sphp6-topbar-font-color, 5%);
+      &:hover {
+        color: smart-scale($sphp6-topbar-font-color, -15%);
+        background-color: smart-scale($sphp6-topbar-bg, 10%);
+      }
+    }
+    .menu-text {
+      background-color: smart-scale($sphp6-topbar-bg, 15%);
+      border-top:  solid 1px #444;
+      border-bottom:  solid 1px #444;
+      color: smart-scale($sphp6-topbar-font-color, 25%);
+    }
+  }
+}
+
+body {
+  background-image: url('../../manual/pics/parquet_white.jpg');
+  background-repeat: repeat;
+}
+div.mainContent { 
+  border: solid 1px #888;
+  @include border-radius(4px);
+  @include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  padding: rem-calc(6 6 40 6); /*top right bottom left*/
+  margin: rem-calc(20 0 20 0); /*top right bottom left*/
+  background: #fafafa;
+  > p, .tabs-panel p {
+    //font-size: rem-calc(12);
+    margin: 0; 
+    text-align: justify;
+    padding: rem-calc(6 25 10 35);
+  }
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    //font-weight: 600;
+    margin: rem-calc(3 0 5 0); /*top right bottom left*/
+    padding: rem-calc(3 5 3 10); /*top right bottom left */
+  }
+  > h1, > h2, > h3 {
+    background: #eeeeee;
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+  }
+  a.api {
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+
+    &:hover {
+      color: #8c1111;
+    }
+    &.box, &.apigen, &.bordered {
+      border: solid 1px #bbb;
+      @include border-radius(2px);
+      text-decoration: none;
+    }
+    &.apigen {
+      color: #002036;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none;
+    }
+    &.apigen:hover {
+      color: #8c1111;
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+    &.phpman {
+      color: #002036;
+      border-color: #bbb;
+    }
+    &.phpman:hover {
+      color: #8c1111;
+    }
+    &.box.phpman {
+      font-weight: normal;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none !important;
+    }
+    &.box.phpman:hover {
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+  }
+}
+.footer {
+  border-top: 2px solid #FAA523;
+  background-color: #111111;
+  background-image: url('../../manual/pics/parquet_black.jpg');
+  background-repeat: repeat;
+  @include box-shadow(#666 0px 6px 20px 10px);
+
+  text-align: center;
+  color: #e6e6e6;
+  button[data-toggle]:hover i, button.hover i {
+    $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+    text-shadow:
+      0px -1px 0px rgba(255, 153, 51, 1),
+      0px 1px 0px rgba(255, 153, 51,1);
+    @include opacity(1);
+  }
+  i {
+    &.devices {
+      @include opacity(0.7);
+      margin: rem-calc(10);
+      font-size: rem-calc(60);
+      text-shadow:
+        0px -1px 0px rgba(255, 153, 51, 1),
+        0px 1px 0px rgba(255, 153, 51,1);
+    }
+    margin: rem-calc(10);
+    font-size: 100px;
+
+  }
+  h4 {
+    color: #e6e6e6;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    margin-bottom: 10px;
+  }
+  p, a {
+    font-weight: 300; 
+    font-size: .8em;
+    color: #e6e6e6;
+  }
+  a:hover { 
+    color: #fff !important;
+    text-shadow:
+      0px -1px 0px rgba(190,190,190,0.2),
+      0px 1px 0px rgba(190,190,190,1);
+  }
+}
+
+@media only screen and (min-width: 40.063em) {
+  .footer {
+    .columns:nth-child(n+2) {
+      border-left: 1px solid scale-color(#e6e6e6, $lightness: -30%);
+      min-height: 280px;
+    }
+  }
+}
+
+.footer-links {
+  list-style-type: none;
+  li {
+    margin-top: .5em;
+  }
+}
+
+footer {
+  padding: rem-calc(10 20 5 20);
+  ul.sphp-linkList {
+    margin: rem-calc(20 0 20 0); /*top right bottom left*/
+    //.js {
+    //	background-image: url('../pics/js.png');
+    // }
+    ul, li {
+      list-style-type: none;
+      padding: 0; /*top right bottom left*/
+      margin: 0; /*top right bottom left*/
+    }
+    li.heading {
+      padding: rem-calc(3 0 3 0); /*top right bottom left*/
+      font-size: rem-calc(16);
+      font-weight: bold;
+      color: #777;
+    }
+    li:not(.heading) {
+      padding: rem-calc(0 0 0 10); /*top right bottom left*/
+    }
+    a {
+      font-size: rem-calc(12);
+      color: #ddd !important;
+      padding: 0; /*top right bottom left*/
+      margin: 0; /*top right bottom left*/
+      /*text-shadow:
+        0px -1px 0px rgba(190,190,190,0.2),
+        0px 1px 0px rgba(190,190,190,1);*/
+    }
+    a:hover { 
+      color: #fff !important;
+      text-shadow:
+        0px -1px 0px rgba(190,190,190,0.2),
+        0px 1px 0px rgba(190,190,190,1);
+    }
+  }
+  a.browser {
+    @include opacity(0.5);
+    &:hover {
+      @include opacity(0.8);
+    } 
+  }
+  .flap {
+    border: solid 1px rgba(70, 70, 70, 0.3); 
+    background: rgba(40, 40, 40, 0.2);
+  }
+  div.copyright {
+    font-size: rem-calc(12);
+    color: #fff;
+    //background-color: #000;
+    padding: rem-calc(5 0 5 0); /*top right bottom left*/
+    display:block;
+    border: solid 1px rgba(70, 70, 70, 0.5); 
+    background: rgba(40, 40, 40, 0.4);
+  }
+}

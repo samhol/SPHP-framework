@@ -1,0 +1,91 @@
+/**
+ * _apps.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+.sphp-exception-callout {
+  border: solid 2px rgba(70, 70, 70, 0.9); 
+  @include border-radius(4px);
+  background: url("../pics/diagonals.png") 50% 50% repeat;
+  margin: rem-calc(3);
+  padding: rem-calc(0);
+  color: #eee;
+  div.heading, div.previous {
+    color: #eee;
+    text-shadow:
+      1px -2px 0px rgba(190, 90, 90, 0.4),
+      0px 1px 0px rgba(190,190,190,1);
+    padding: rem-calc(4 10 4 10);
+    font-size: rem-calc(18);
+    border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+    .exception {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      font-size: rem-calc(30);
+      font-weight: bold;
+    }
+    .number {
+      font-size: rem-calc(22);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .file {
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+      font-size: rem-calc(18);
+    }
+    .message {
+      background-color: rgba(120, 70, 70, 0.4);
+      border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+      padding: rem-calc(10);
+      color: #eee;
+    }
+  }
+  div.heading {
+    background-color: rgba(120, 70, 70, 0.7);
+    padding: rem-calc(4 10 4 10);
+    font-size: rem-calc(18);
+    border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+    .exception {
+      font-size: rem-calc(30);
+    }
+    .number {
+      font-size: rem-calc(22);
+    }
+    .file {
+      font-size: rem-calc(18);
+    }
+    .message {
+      border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+      padding: rem-calc(10);
+    }
+  }
+  div.previous {
+    background-color: rgba(120, 70, 70, 0.4);
+    padding: rem-calc(4 10 4 10);
+    font-size: rem-calc(18);
+    border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+    .exception {
+      font-size: rem-calc(30);
+    }
+    .number {
+      font-size: rem-calc(22);
+    }
+    .file {
+      font-size: rem-calc(18);
+    }
+    .message {
+      border-bottom: dotted 2px rgba(70, 70, 70, 0.9); 
+      padding: rem-calc(10);
+    }
+  }
+  div.trace {
+    padding: rem-calc(10);
+    color: #eee;
+    .number {
+      font-size: rem-calc(18);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}

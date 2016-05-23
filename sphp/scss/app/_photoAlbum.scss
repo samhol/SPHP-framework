@@ -1,0 +1,229 @@
+@charset "UTF-8";
+$row-width: rem-calc(1400);
+@import 
+//"compass/css3",
+"compass/typography/lists/bullets";
+//"../vendors";
+//"../foundation/_settings",
+//"../foundation/components/reveal";
+@import "../vendor/foundation/components/grid";
+
+.sphp-photoalbum-row {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: initial;
+}
+.sphp-photoAlbum {  
+	@include reveal-modal-base(
+	// Provides reveal base styles, can be set to false to override.
+	$base-style:true,
+		// Sets reveal width Default: $reveal-default-width or 80%
+		$width: 100%
+		);
+	@include reveal-modal-style(
+    // Sets background color of reveal modal. Default: $reveal-modal-bg or #fff
+    $bg:$reveal-modal-bg,
+		// Set reveal border style. Default: $reveal-border-style or solid
+		$border:true,
+		// Width of border (i.e. 1px). Default: $reveal-border-width.
+		$border-style:$reveal-border-style,
+		// Color of border. Default: $reveal-border-color.
+		$border-width:$reveal-border-width,
+		// Color of border. Default: $reveal-border-color.
+		$border-color:$reveal-border-color,
+		// Choose whether or not to include the default box-shadow. Default: true, Options: false
+		$box-shadow:true,
+		// Default: $reveal-position-top or 50px
+		$top-offset:$reveal-position-top
+		);
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+	background-color: #fff;
+	border: solid 2px #777;
+	@include border-radius(8px);
+	overflow: hidden;
+	padding: rem-calc(0); /* top right bottom left */
+	.header, .footer {
+		background: #ccc;
+		display: block;
+		clear: both;
+		padding: rem-calc(2 5 2 5); /* top right bottom left */
+	}
+	.header {
+		border-bottom: solid 2px #777;
+		font-size: rem-calc(25);
+		margin: rem-calc(0 0 1 0); /* top right bottom left */
+	}
+	.footer {
+		border-top: solid 2px #777;
+		font-size: rem-calc(13);
+		text-align: center;
+		margin: rem-calc(1 0 0 0); /* top right bottom left */
+		bottom: 100%;
+	}
+	.folderView, .previewer {		
+		height: 600px;
+		margin: rem-calc(1); /* top right bottom left */
+		overflow: auto;
+		border: solid 1px #999;
+		@include border-radius(2px);
+	}
+	.folderView { 
+		height: 600px;
+		margin: rem-calc(1); /* top right bottom left */
+		overflow: auto;
+		border: solid 1px #999;
+		@include border-radius(2px);
+		ul {
+			li {
+				@include no-bullets();
+				font-size: rem-calc(13);
+				font-weight: normal;
+				white-space: nowrap;
+			}
+			.folder, .file {
+				color: #333;
+				cursor: pointer;
+				display: block;
+				margin: rem-calc(0);
+				padding: rem-calc(0 1 0 2); /*top right bottom left*/
+				vertical-align: top;
+				white-space:nowrap;
+			}
+			img {
+				vertical-align: text-bottom;
+				border: none;
+				margin: rem-calc(0 4 0 2); /*top right bottom left*/
+			}
+			.file:hover, .folder:hover, .file.active, .folder.active {
+				color: #000;
+				@include text-shadow(rgba(#700, 0.3) 2px 2px 0, rgba(#666, 0.2) 1px 1px 0, rgba(#999 , 0.2) 1px 1px 0);
+			}
+			.file:hover img {
+				text-decoration: none;
+			}
+		}
+	}
+	.previewer {
+		text-align: center;
+		padding: rem-calc(1);
+		.photo .thumbnail img {
+			border: solid 1px #999;
+			@include border-radius(2px);
+		}
+		.prevImg, .nextImg {
+			padding: rem-calc(0);
+			margin: rem-calc(-10 0 0 0); /*top right bottom left*/
+			display: block;
+			position: absolute;
+			top: 50%;
+			height: 19px;
+		}
+		.prevImg img, .nextImg img {
+			cursor: pointer;
+			@include opacity(1);
+		}
+		.prevImg img.disabled, .nextImg img.disabled {
+			cursor: default;
+			@include opacity(0.6);
+		}
+		.prevImg {
+			left: 5px;
+		}
+		.nextImg {
+			right: 5px;
+		}
+		.info {
+			border: solid 2px #666;
+			position: absolute;
+			left: 5px;
+			right: 5px;
+			bottom: 5px;
+			height:100px;
+			background-color: #ccc;
+			display: none;
+			margin: rem-calc(0);
+			padding: rem-calc(0);
+			@include opacity(0.8);
+			table {
+				border-collapse: collapse;
+				border: 1px solid #666;
+				margin: rem-calc(0);
+
+				td, th {
+					border: 1px solid #999;
+					padding: rem-calc(2 4 2 4);
+				}
+				td {
+					font-size: rem-calc(11);
+				}
+				th {
+					font-size: rem-calc(12);
+					font-weight: bold;
+					background-color: #D8D8D8;
+					text-align: left; 
+				}
+			}
+		}
+	}
+	/*.fileViewer {
+		border: dotted 1px #999;  --style compressed
+		border-right: none;
+		border-bottom: none;
+		border-top: none;
+		margin: 0;
+		padding: 0;
+		float: right;
+		height: 400px;
+	}*/
+	.previewer, .thumbnailBrowser {
+		margin: rem-calc(1);
+		border: solid 1px #999;
+		@include border-radius(2px);
+	}
+	.thumbnailBrowser {
+		padding-top: rem-calc(1);
+		padding-bottom: rem-calc(1);
+		height: 74px;
+		overflow: hidden;
+		text-align: center;
+		.thumbnail, .shiftLeft, .shiftRight {
+			padding: rem-calc(0);
+			height: 70px;
+			line-height: 68px;
+			font-size: 1px;
+			margin-left: rem-calc(1);
+			display: inline-block;
+			overflow: hidden;
+			vertical-align: middle;
+			img {
+				margin: rem-calc(0);
+				padding: rem-calc(0);
+				cursor: pointer;
+				@include opacity(1);
+			}
+			img.disabled {
+				cursor: default;
+				@include opacity(0.5);
+			}
+		}
+		.shiftRight {
+			margin-left: rem-calc(8);
+			width: 19px;
+		}
+		.shiftLeft {
+			margin-right: rem-calc(8);
+			width: 19px;
+		} 
+		.thumbnail { 
+			border: 1px dotted #999;
+			width: 93px;
+			@include opacity(0.6);
+		}
+		.thumbnail:hover, .thumbnail.selected {
+			border: 1px solid #f00;
+			background-color: #ddd;
+			@include opacity(1);
+		}
+	}
+}

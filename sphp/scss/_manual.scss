@@ -1,0 +1,366 @@
+/* 
+  SPHP framework
+    Created on : 2014
+    Author     : Sami Holck <sami.holck@gmail.com>
+*/
+
+@charset "UTF-8";
+@import "compass/css3";
+@import "vendor/foundation/components/global";
+@import "compass/typography/links/link-colors";
+
+div.top-bar-container.sphp-manual { 
+  border-bottom: solid 2px #FAA523;
+  @include box-shadow(#888 0px 4px 8px 4px);
+  .title-area .name a {
+    color: #eee;
+    font-size: 1.4rem;
+    text-shadow:
+      1px 1px 3px #FAA523,
+      -1px -1px 3px #FAA523;
+    &:hover {
+      color: #fff;
+      text-shadow:
+        -1px 1px 4px #FFD89C,
+        1px -1px 4px #FAA523;
+    }
+  }
+  .top-bar-section {
+    .has-dropdown > a:after {
+      border-color: #FAA523 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    }
+    .left .dropdown .has-dropdown>a:after {
+      @include css-triangle(5px,#FAA523, left);
+    }
+    .right .dropdown .has-dropdown>a:after {
+      @include css-triangle(5px,#FAA523, right);
+    }
+  }
+}
+
+div.logo img {
+  margin-top: 8px;
+  margin-left: 10px; 
+  display: inline-block;
+}
+.sphp-manual-side-nav {
+  margin: rem-calc(20 0 20 0); /*top right bottom left*/
+}
+body {
+  background-image: url('http://sphp.samiholck.com/sphpManual/pics/parquet_white.jpg') !important;
+  background-repeat: repeat !important;
+}
+
+footer {
+  border-top: 2px solid #FAA523;
+  background: #111111;
+  background-image: url('http://sphp.samiholck.com/sphpManual/pics/parquet_black.jpg');
+  background-repeat: repeat;
+  padding-top: 1.0rem;
+  @include box-shadow(#666 0px 6px 20px 10px);
+  ul.sphp-linkList {
+    margin: rem-calc(20 0 20 0); /*top right bottom left*/
+    //.js {
+    //	background-image: url('../pics/js.png');
+    // }
+    ul, li {
+      list-style-type: none;
+      padding: 0; /*top right bottom left*/
+      margin: 0; /*top right bottom left*/
+    }
+    li.heading {
+      padding: rem-calc(3 0 3 0); /*top right bottom left*/
+      font-size: rem-calc(16);
+      font-weight: bold;
+      color: #777;
+    }
+    li:not(.heading) {
+      padding: rem-calc(0 0 0 10); /*top right bottom left*/
+    }
+    a {
+      font-size: rem-calc(12);
+      color: #ddd !important;
+      padding: 0; /*top right bottom left*/
+      margin: 0; /*top right bottom left*/
+      /*text-shadow:
+        0px -1px 0px rgba(190,190,190,0.2),
+        0px 1px 0px rgba(190,190,190,1);*/
+    }
+    a:hover { 
+      color: #fff !important;
+      text-shadow:
+        0px -1px 0px rgba(190,190,190,0.2),
+        0px 1px 0px rgba(190,190,190,1);
+    }
+  }
+  a.browser {
+    @include opacity(0.5);
+    &:hover {
+      @include opacity(0.8);
+    } 
+  }
+  .flap {
+    border: solid 1px rgba(70, 70, 70, 0.3); 
+    background: rgba(40, 40, 40, 0.2);
+  }
+  div.copyright {
+    font-size: rem-calc(12);
+    color: #fff;
+    //background-color: #000;
+    padding: rem-calc(5 0 5 0); /*top right bottom left*/
+    display:block;
+    border: solid 1px rgba(70, 70, 70, 0.5); 
+    background: rgba(40, 40, 40, 0.4);
+  }
+}
+div.mainContent { 
+  border: solid 1px #888;
+  @include border-radius(4px);
+  @include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  padding: rem-calc(6 6 40 6); /*top right bottom left*/
+  margin: rem-calc(20 0 20 0); /*top right bottom left*/
+  background: #fafafa;
+}
+/*.sphp-side-nav {
+  border: solid 1px #888; 
+  @include border-radius(4px);
+  @include box-shadow(#888 3px 0px 8px 4px);
+  @include box-shadow(#888 0px 3px 8px 4px);
+  margin: rem-calc(5 0 20 0); 
+}*/
+
+$paragraph-font-size: rem-calc(14);
+
+.manpage {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  code {
+    font-family: "Source Code Pro", monospace !important;
+    color: #555;	
+    @include border-radius(2px);
+  }
+  > p {
+    > a:not([class]) {
+      color: #003f54;
+      text-decoration: underline;
+    }
+    > a:not([class]):hover {
+      color:#912323;
+      text-decoration: underline;
+    }
+  }
+  > ul li, > ol li {
+    > a:not([class]) {
+      color: #003f54;
+      text-decoration: underline;
+    }
+    > a:not([class]):hover {
+      color:#912323;
+      text-decoration: underline;
+    }
+  }
+  @import "compass/css3/opacity";
+  a.wiki {
+    text-decoration: underline;
+    background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22….851-1.851z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  a.wiki::after {
+    content: " \00BB";
+  }
+  a.wiki::before {
+    content: " \00AB";
+  }
+  a.w3schools-docs-link {
+    font-family: "Source Code Pro", monospace !important;
+    @include link-colors(#111, #464, #464, #111, #111);
+    //color: #111;
+    @include text-shadow(
+    rgba(213, 213, 213, 0.2) 0 -1px 0, 
+    rgba(213, 213, 213, 1) 0 1px 0); 
+    text-decoration: none;
+  }
+  a.w3schools-docs-link:hover {
+    //color: #141;
+    @include text-shadow(
+    rgba(230, 226, 220, 0.4) 1px 1px 0, 
+    rgba(204, 204, 204, 0.1) 0px -1px 0px, 
+    rgba(230, 247, 222, .5) 2px 2px 0);
+    text-decoration: underline;
+  }
+  td a.w3schools-docs-link {
+    display: inline-block;
+    height:100%;
+    width:100%;
+  }
+  a.external {
+    color: #039;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a.external:hover {
+    @include text-shadow(
+    rgba(190, 190, 190, 0.3) 1px 1px 0, 
+    rgba(190, 190, 190, 0.3) 0px -1px 0px, 
+    rgba(190, 190, 190, 0.3) 3px 3px 0);
+    text-decoration: underline;
+  }
+  a.api {
+    font-family: "Source Code Pro", monospace !important;
+    padding-left: rem-calc(4);
+    padding-right: rem-calc(4);
+
+    &:hover {
+      color: #8c1111;
+    }
+    &.box, &.apigen, &.bordered {
+      border: solid 1px #bbb;
+      @include border-radius(2px);
+      text-decoration: none;
+    }
+    &.apigen {
+      color: #002036;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none;
+    }
+    &.apigen:hover {
+      color: #8c1111;
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+    &.phpman {
+      color: #002036;
+      border-color: #bbb;
+    }
+    &.phpman:hover {
+      color: #8c1111;
+    }
+    &.box.phpman {
+      font-weight: normal;
+      border-color: #bbb;
+      background-color: #fafafa;
+      text-decoration: none !important;
+    }
+    &.box.phpman:hover {
+      border-color: #c66;
+      background-color: rgba(204, 224, 255, 0.3); 
+    }
+  }
+  > p , > ul, > ol {		
+    padding: rem-calc(6 25 10 35); /*top right bottom left */
+  }
+  > p {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    //font-size: rem-calc(12);
+    margin: 0; 
+    text-align: justify;
+  }
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    margin: rem-calc(3 0 5 0); /*top right bottom left*/
+    padding: rem-calc(3 5 3 10); /*top right bottom left */
+  }
+  > h1, > h2, > h3 {
+    background: #eeeeee;
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+  }
+  > h4, > h5, > h6 {
+  }
+  > h1 {
+    font-size: 1.6rem;
+    code {
+      font-size: 1.5rem;
+    }
+  }
+  > h2 {
+    font-size: 1.4rem;
+    code {
+      font-size: 1.3rem;
+    }
+  }
+  > h3 {
+    font-size: 1.3rem;
+    code {
+      font-size: 1.2rem;
+    }
+  }
+  > h4 {
+    font-size: 1.2rem;
+  }
+  > h5 {
+    font-size: 1.1rem;
+  }
+  > h6 {
+    font-size: 1.0rem;
+  }
+  $include-html-table-classes: $include-html-classes;
+  table.html-to-php {
+    $table-bg: #fff;
+    $table-even-row-bg: #cfcfcf;
+    $table-margin-bottom: rem-calc(1);
+    margin: 0;
+    border-collapse: collapse;
+    width: 100%;
+    border: solid 1px #666; 
+    @include border-radius(2px);	
+    tbody {
+      tr:nth-child(even) {
+        background-color: #dfdfdf;
+      }
+      tr:nth-child(odd) {
+        background-color: #efefe;
+      }
+    }
+    th, td {
+      border: solid 1px #666;	
+    }
+    td {
+      a.scale-to-fit {
+        border: none;
+        background-color: transparent;
+        color: #000;
+        padding: rem-calc(3 5 3 5); /*top right bottom left */
+        margin: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      a.scale-to-fit:hover {
+        border: none;
+        background-color: transparent;
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+    td:nth-child(2) {
+      padding: 0;
+      //width: 25%;
+      a {
+        padding: rem-calc(3 5 3 5); /*top right bottom left */
+        margin: 0;
+      }
+    };
+    td:nth-child(3) {
+      padding: 0;
+    }
+    td:nth-child(4) {
+      //width: 60%;
+    }
+  }
+  div.sphp-padding-1 {
+    border: none;
+    padding: 0;
+  }
+
+  .sphp-grid-example div.row div.column, div.row div.bordered.column {
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+    background: #eeeeee;
+    padding: rem-calc(3);
+  }
+
+}
+@import "app/sphp-side-nav";
+@import "app/sphp-split-button";

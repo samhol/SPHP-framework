@@ -1,0 +1,78 @@
+/**
+ * _sphp-choiceboxes.scss (UTF-8)
+ *
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+fieldset.sphp-choiceboxes {
+  padding: rem-calc(3);
+  margin:  rem-calc(0);
+  display: inline-block;
+  border: none 0;
+  label {
+    display:  inline-block;
+    cursor:   pointer;
+    position: relative;
+    padding-left: rem-calc(1);
+    margin-right: rem-calc(1);
+    span {
+      display:  inline-block;
+      position: relative;
+      padding-left: rem-calc(25);
+      margin-right: rem-calc(15);
+      font-size: 13px;
+    };
+    input[type=radio], input[type=checkbox] {
+      display: none;
+    };
+    span:before {
+      content: "";
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif !important;
+      width: 16px;
+      height: 16px;
+
+      margin-right: rem-calc(10);
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      background-color: #aaa;
+      box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    };
+    input[type=radio]:checked + span:before {
+      content: "\2022";
+      color: #f3f3f3;
+      font-size: 30px;
+      text-align: center;
+      line-height: 18px;
+    };
+    input[type=checkbox]:checked + span:before {
+      content: "\2713";
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+      font-size: 15px;
+      color: #f3f3f3;
+      text-align: center;
+      line-height: 15px;
+    };
+  };
+  &:disabled {
+    label {
+      cursor: default;
+    }
+    @include opacity(0.6);
+  }
+}
+fieldset.sphp-choiceboxes.radio {
+  @extend fieldset.sphp-choiceboxes;
+  span:before {	
+    @include border-radius(8px);
+  };
+};
+fieldset.sphp-choiceboxes.checkbox {
+  @extend fieldset.sphp-choiceboxes;
+  span:before {
+    @include border-radius(3px);
+  };
+};

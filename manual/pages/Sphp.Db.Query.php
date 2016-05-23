@@ -1,0 +1,29 @@
+<?php
+
+namespace Sphp\Db;
+
+$sqlException = $api->getClassLink(SQLException::class);
+$conditions = $api->getClassLink(Conditions::class);
+$query = $api->classLinker(Query::class);
+$pdo = $php->getClassLink(\PDO::class);
+
+echo $parsedown->text(<<<MD
+##$query object for SQL queries
+
+The $query object executes declarative SELECT queries in SQL databases. It 
+retrieves data from one or more SQL tables, or expressions and it
+has no persistent effects on the database.
+
+Some essential $query methods:
+        
+* {$query->method("get")} - sets the list of columns to include in the final result
+* {$query->method("from")} - indicates the table(s)
+* {$query->method("where")} - restricts the rows returned
+* {$query->method("groupBy")} - projects rows having common values into a smaller set of rows
+* {$query->method("having")} - filters rows resulting from the {$query->method("groupBy")} call
+* {$query->method("orderBy")} - sorts the resulting data
+
+MD
+);
+
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/query1.php", 1, "sql");

@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 9, 2016, 7:04:57 PM
+    Author     : samih_000
+*/
+
+@import "compass/css3";
+.sphp-tech-list {	
+  @include auto-width(5, "a");
+  margin: 0px;
+  padding: 0px;
+  a {	
+    @include opacity(0.7);
+    &:hover {	
+      @include opacity(1);
+    }
+  }
+} 

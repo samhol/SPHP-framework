@@ -1,0 +1,1126 @@
+exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(9): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(9): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(9): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(10): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(10): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(10): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Programming\Script.php:208
+Stack trace:
+#0 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 C:\xampp\htdocs\SPHP_framework\sphp\php\Sphp\Html\Head\Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 C:\xampp\htdocs\SPHP_framework\sphpManual\htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 C:\xampp\htdocs\SPHP_framework\index.php(10): include_once('C:\\xampp\\htdocs...')
+#6 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script file 'sph/js/vendor/modernizr.js' does not exist!' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Programming/Script.php:208
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Head/Head.php(261): Sphp\Html\Programming\Script->setSrc('sph/js/vendor/m...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Head/Head.php(126): Sphp\Html\Head\Head->addScriptSrc('sph/js/vendor/m...')
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Head/Head.php(156): Sphp\Html\Head\Head->useModernizr()
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Head/Head.php(234): Sphp\Html\Head\Head->useFoundation()
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(25): Sphp\Html\Head\Head->enableSPHP()
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#6 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class is Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:137
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class is Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:138
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class is Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:139
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'Sphp\Html\Attributes\InvalidAttributeException' with message 'class is Sphp\Html\Attributes\MultiValueAttribute' in /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php:139
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Attributes/AttributeManager.php(75): Sphp\Html\Attributes\AttributeManager->mapAttributeObject('class', 'Sphp\\Html\\Attri...')
+#1 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(116): Sphp\Html\Attributes\AttributeManager->__construct()
+#2 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(60): Sphp\Html\AbstractTag->setAttributeManager(NULL)
+#3 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/AbstractNonEmptyTag.php(47): Sphp\Html\AbstractTag->__construct('html', NULL)
+#4 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphp/php/Sphp/Html/Html.php(50): Sphp\Html\AbstractNonEmptyTag->__construct('html')
+#5 /var/www/vhosts/samiholck.com/sphp.samiholck.com/sphpManual/htmlHead.php(19): Sphp\Html\Html->__construct('SPHP framework:...')
+#6 /var/www/vhosts/samiholck.com/sphp.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#7 {main}exception 'InvalidArgumentException' with message '; HTML tagname contains only lowercase alphabets' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(59): Sphp\Html\AbstractTag->setTagName(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractComponent.php(49): Sphp\Html\AbstractTag->__construct(NULL, NULL)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/ContainerTag.php(53): Sphp\Html\AbstractComponent->__construct(NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Navigation/HyperlinkContainer.php(43): Sphp\Html\ContainerTag->__construct(NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Navigation/HyperlinkContainer.php(130): Sphp\Html\Navigation\HyperlinkContainer->__construct()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/AbstractMenu.php(34): Sphp\Html\Navigation\HyperlinkContainer::fromHyperlink(Object(Sphp\Html\Navigation\Hyperlink))
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/WrappingHtmlContainer.php(117): Sphp\Html\Foundation\F6\Navigation\AbstractMenu->Sphp\Html\Foundation\F6\Navigation\{closure}(Object(Sphp\Html\Navigation\Hyperlink))
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractContainerTag.php(155): Sphp\Html\WrappingHtmlContainer->offsetSet(NULL, Object(Sphp\Html\Navigation\Hyperlink))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/menu.php(29): Sphp\Html\AbstractContainerTag->offsetSet(NULL, Object(Sphp\Html\Navigation\Hyperlink))
+#9 {main}exception 'InvalidArgumentException' with message '; HTML tagname contains only lowercase alphabets' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(59): Sphp\Html\AbstractTag->setTagName(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractComponent.php(49): Sphp\Html\AbstractTag->__construct(NULL, NULL)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractContainerTag.php(58): Sphp\Html\AbstractComponent->__construct(NULL, NULL, Object(Sphp\Html\WrappingHtmlContainer))
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Lists/HtmlList.php(50): Sphp\Html\AbstractContainerTag->__construct(NULL, NULL, Object(Sphp\Html\WrappingHtmlContainer))
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/AbstractMenu.php(41): Sphp\Html\Lists\HtmlList->__construct(NULL)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/AbstractJavascriptMenu.php(31): Sphp\Html\Foundation\F6\Navigation\AbstractMenu->__construct(NULL, NULL)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/DropdownMenu.php(28): Sphp\Html\Foundation\F6\Navigation\AbstractJavascriptMenu->__construct(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/menu.php(37): Sphp\Html\Foundation\F6\Navigation\DropdownMenu->__construct()
+#8 {main}exception 'InvalidArgumentException' with message '; HTML tagname contains only lowercase alphabets' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(59): Sphp\Html\AbstractTag->setTagName(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractComponent.php(49): Sphp\Html\AbstractTag->__construct(NULL, NULL)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractContainerTag.php(58): Sphp\Html\AbstractComponent->__construct(NULL, NULL, Object(Sphp\Html\WrappingHtmlContainer))
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Lists/HtmlList.php(50): Sphp\Html\AbstractContainerTag->__construct(NULL, NULL, Object(Sphp\Html\WrappingHtmlContainer))
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/AbstractMenu.php(41): Sphp\Html\Lists\HtmlList->__construct(NULL)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/AbstractJavascriptMenu.php(31): Sphp\Html\Foundation\F6\Navigation\AbstractMenu->__construct(NULL, NULL)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Navigation/DropdownMenu.php(28): Sphp\Html\Foundation\F6\Navigation\AbstractJavascriptMenu->__construct(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/menu.php(37): Sphp\Html\Foundation\F6\Navigation\DropdownMenu->__construct()
+#8 {main}exception 'InvalidArgumentException' with message '; HTML tagname contains only lowercase alphabets' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(59): Sphp\Html\AbstractTag->setTagName(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractComponent.php(49): Sphp\Html\AbstractTag->__construct(NULL, NULL)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Containers/Dropdown.php(43): Sphp\Html\AbstractComponent->__construct(NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/footer.php(15): Sphp\Html\Foundation\F6\Containers\Dropdown->__construct('viewport data:')
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/menu.php(18): include_once('/var/www/vhosts...')
+#5 {main}exception 'InvalidArgumentException' with message '; HTML tagname contains only lowercase alphabets' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractTag.php(59): Sphp\Html\AbstractTag->setTagName(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/AbstractComponent.php(49): Sphp\Html\AbstractTag->__construct(NULL, NULL)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Foundation/F6/Containers/Dropdown.php(43): Sphp\Html\AbstractComponent->__construct(NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/footer.php(15): Sphp\Html\Foundation\F6\Containers\Dropdown->__construct('viewport data:')
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/menu.php(18): include_once('/var/www/vhosts...')
+#5 {main}exception 'UnexpectedValueException' with message 'Variable can not be found from the current environment' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Util/Config.php:144
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Util/Config.php(100): Sphp\Util\Config->offsetGet('HTTP_ROOT')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Util/Config.php(120): Sphp\Util\Config->__call('get', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/manual/links.php(5): Sphp\Util\Config::__callStatic('get', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/manual/links.php(5): Sphp\Util\Config::get('HTTP_ROOT')
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/index.php(9): include_once('/var/www/vhosts...')
+#5 {main}exception 'Sphp\Html\Programming\ScriptException' with message 'Script source 'sphp/js/vendor/jquery.js' already exists' in /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Programming/ScriptsContainer.php:60
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Programming/ScriptsContainer.php(78): Sphp\Html\Programming\ScriptsContainer->append(Object(Sphp\Html\Programming\ScriptSrc))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Programming/SphpScriptsLoader.php(45): Sphp\Html\Programming\ScriptsContainer->appendSrc('sphp/js/vendor/...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Programming/SphpScriptsLoader.php(103): Sphp\Html\Programming\SphpScriptsLoader->appendJQuery()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/sphp/php/Sphp/Html/Programming/SphpScriptsLoader.php(124): Sphp\Html\Programming\SphpScriptsLoader->appendLazyload()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/manual/htmlHead.php(41): Sphp\Html\Programming\SphpScriptsLoader->appendSPHP()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/index.php(12): include_once('/var/www/vhosts...')
+#6 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Connection refused' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=127....', 'root', '', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=mysq...', 'sphp_su', 'o5Qen58', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=mysq...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=mysq...', 'sphp_su', 'o5Qen58', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=mysq...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=mysq...', 'sphp_su', 'o5Qen58', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=mysq...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'sphp_su'@'192.168.10.206' (using password: YES)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=192....', 'sphp_su', 'o5Qen58', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=192....', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(57): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connectors/ConnectionFactory.php(46): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(176): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/DatabaseManager.php(64): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(107): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(73): Illuminate\Database\Capsule\Manager->getConnection(NULL)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): Illuminate\Database\Capsule\Manager::connection()
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#11 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:299
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(299): PDO->prepare('select * from u...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'select * from u...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#4 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#8 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' (SQL: select * from users where id = 1)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#2 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#6 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:299
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(299): PDO->prepare('select * from u...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'select * from u...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#4 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#8 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' (SQL: select * from users where id = 1)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#2 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#6 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:299
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(299): PDO->prepare('select * from u...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'select * from u...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#4 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#8 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' (SQL: select * from users where id = 1)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('select * from u...', Array, Object(Closure))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Connection.php(304): Illuminate\Database\Connection->run('select * from u...', Array, Object(Closure))
+#2 [internal function]: Illuminate\Database\Connection->select('select * from u...', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/database/vendor/illuminate/database/Illuminate/Database/Capsule/Manager.php(224): call_user_func_array(Array, Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::__callStatic('select', Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(28): Illuminate\Database\Capsule\Manager::select('select * from u...', Array)
+#6 {main}exception 'Doctrine\Common\Persistence\Mapping\MappingException' with message 'Class 'Sphp\Sphp\Db\User' does not exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php(41): Doctrine\Common\Persistence\Mapping\MappingException::nonExistingClass('Sphp\\Sphp\\Db\\Us...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(281): Doctrine\Common\Persistence\Mapping\RuntimeReflectionService->getParentClasses('Sphp\\Sphp\\Db\\Us...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(311): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getParentClasses('Sphp\\Sphp\\Db\\Us...')
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Sphp\\Db\\Us...')
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Sphp\\Db\\Us...')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Sphp\\Db\\Us...')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Sphp\\Db\\Us...', 1)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#8 {main}exception 'Doctrine\Common\Persistence\Mapping\MappingException' with message 'Class 'Sphp\Sphp\Db\User' does not exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/MappingException.php:96
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php(41): Doctrine\Common\Persistence\Mapping\MappingException::nonExistingClass('Sphp\\Sphp\\Db\\Us...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(281): Doctrine\Common\Persistence\Mapping\RuntimeReflectionService->getParentClasses('Sphp\\Sphp\\Db\\Us...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(311): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getParentClasses('Sphp\\Sphp\\Db\\Us...')
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Sphp\\Db\\Us...')
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Sphp\\Db\\Us...')
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Sphp\\Db\\Us...')
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Sphp\\Db\\Us...', 1)
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#8 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=my...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=ho...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:dbname=19...', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [2002] No such file or directory' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(27): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'sphp_framework'@'192.168.10.206' (using password: YES)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=192....', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=192....', 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'sphp_framework'@'192.168.10.206' (using password: YES)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:47
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection::__construct('mysql:host=192....', 'sphp_framework', 'Vxr79s', Array)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#14 {main}
+
+Next exception 'Doctrine\DBAL\Exception\ConnectionException' with message 'An exception occured in driver: SQLSTATE[HY000] [1045] Access denied for user 'sphp_framework'@'192.168.10.206' (using password: YES)' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:103
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(133): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(47): Doctrine\DBAL\DBALException::driverException(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException))
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'sphp_framework', 'Vxr79s', Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlatformVersion()
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(328): Doctrine\DBAL\Connection->detectDatabasePlatform()
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(763): Doctrine\DBAL\Connection->getDatabasePlatform()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(616): Doctrine\ORM\Mapping\ClassMetadataFactory->getTargetPlatform()
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(174): Doctrine\ORM\Mapping\ClassMetadataFactory->completeIdGeneratorMapping(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(332): Doctrine\ORM\Mapping\ClassMetadataFactory->doLoadMetadata(Object(Doctrine\ORM\Mapping\ClassMetadata), NULL, false, Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php(78): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php(216): Doctrine\ORM\Mapping\ClassMetadataFactory->loadMetadata('Sphp\\Db\\User')
+#12 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(379): Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor('Sphp\\Db\\User')
+#13 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#14 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#15 {main}exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\TableNotFoundException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:53
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\TableNotFoundException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:53
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\InvalidFieldNameException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.id' in 'field list'' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:71
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:91
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(91): PDOStatement->execute(NULL)
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}
+
+Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:93
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(828): Doctrine\DBAL\Driver\PDOStatement->execute()
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#6 {main}
+
+Next exception 'Doctrine\DBAL\Exception\TableNotFoundException' with message 'An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.fname AS fname_3, t0.lname AS lname_4, t0.address AS address_5 FROM User t0 WHERE t0.id = ?' with params [1]:
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sphp.User' doesn't exist' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:53
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php(116): Doctrine\DBAL\Driver\AbstractMySQLDriver->convertException('An exception oc...', Object(Doctrine\DBAL\Driver\PDOException))
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(836): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(Doctrine\DBAL\Driver\PDOMySql\Driver), Object(Doctrine\DBAL\Driver\PDOException), 'SELECT t0.id AS...', Array)
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(712): Doctrine\DBAL\Connection->executeQuery('SELECT t0.id AS...', Array, Array)
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(28): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#7 {main}exception 'Doctrine\Common\Proxy\Exception\UnexpectedValueException' with message 'Your proxy directory "/path/to/myproject/lib/MyProject/Proxies" must be writable' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/Exception/UnexpectedValueException.php:40
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(295): Doctrine\Common\Proxy\Exception\UnexpectedValueException::proxyDirectoryNotWritable('/path/to/myproj...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(220): Doctrine\Common\Proxy\ProxyGenerator->generateProxyClass(Object(Doctrine\ORM\Mapping\ClassMetadata), '/path/to/myproj...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(119): Doctrine\Common\Proxy\AbstractProxyFactory->getProxyDefinition('Sphp\\Db\\Address')
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php(2707): Doctrine\Common\Proxy\AbstractProxyFactory->getProxy('Sphp\\Db\\Address', Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(144): Doctrine\ORM\UnitOfWork->createEntity('Sphp\\Db\\User', Array, Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(69): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateRowData(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/AbstractHydrator.php(147): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateAllData()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(720): Doctrine\ORM\Internal\Hydration\AbstractHydrator->hydrateAll(Object(Doctrine\DBAL\Driver\PDOStatement), Object(Doctrine\ORM\Query\ResultSetMapping), Array)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(41): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#12 {main}exception 'Doctrine\Common\Proxy\Exception\UnexpectedValueException' with message 'Your proxy directory "/sphp/doctrine/Proxies" must be writable' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/Exception/UnexpectedValueException.php:40
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(295): Doctrine\Common\Proxy\Exception\UnexpectedValueException::proxyDirectoryNotWritable('/sphp/doctrine/...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(220): Doctrine\Common\Proxy\ProxyGenerator->generateProxyClass(Object(Doctrine\ORM\Mapping\ClassMetadata), '/sphp/doctrine/...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(119): Doctrine\Common\Proxy\AbstractProxyFactory->getProxyDefinition('Sphp\\Db\\Address')
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php(2707): Doctrine\Common\Proxy\AbstractProxyFactory->getProxy('Sphp\\Db\\Address', Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(144): Doctrine\ORM\UnitOfWork->createEntity('Sphp\\Db\\User', Array, Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(69): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateRowData(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/AbstractHydrator.php(147): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateAllData()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(720): Doctrine\ORM\Internal\Hydration\AbstractHydrator->hydrateAll(Object(Doctrine\DBAL\Driver\PDOStatement), Object(Doctrine\ORM\Query\ResultSetMapping), Array)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(42): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#12 {main}exception 'Doctrine\Common\Proxy\Exception\UnexpectedValueException' with message 'Your proxy directory "/sphp/doctrine/Proxies" must be writable' in /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/Exception/UnexpectedValueException.php:40
+Stack trace:
+#0 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(295): Doctrine\Common\Proxy\Exception\UnexpectedValueException::proxyDirectoryNotWritable('/sphp/doctrine/...')
+#1 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(220): Doctrine\Common\Proxy\ProxyGenerator->generateProxyClass(Object(Doctrine\ORM\Mapping\ClassMetadata), '/sphp/doctrine/...')
+#2 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php(119): Doctrine\Common\Proxy\AbstractProxyFactory->getProxyDefinition('Sphp\\Db\\Address')
+#3 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/UnitOfWork.php(2707): Doctrine\Common\Proxy\AbstractProxyFactory->getProxy('Sphp\\Db\\Address', Array)
+#4 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(144): Doctrine\ORM\UnitOfWork->createEntity('Sphp\\Db\\User', Array, Array)
+#5 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/SimpleObjectHydrator.php(69): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateRowData(Array, Array)
+#6 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Internal/Hydration/AbstractHydrator.php(147): Doctrine\ORM\Internal\Hydration\SimpleObjectHydrator->hydrateAllData()
+#7 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(720): Doctrine\ORM\Internal\Hydration\AbstractHydrator->hydrateAll(Object(Doctrine\DBAL\Driver\PDOStatement), Object(Doctrine\ORM\Query\ResultSetMapping), Array)
+#8 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/Persisters/Entity/BasicEntityPersister.php(730): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->load(Array, NULL)
+#9 /var/www/vhosts/samiholck.com/playground.samiholck.com/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php(462): Doctrine\ORM\Persisters\Entity\BasicEntityPersister->loadById(Array)
+#10 /var/www/vhosts/samiholck.com/playground.samiholck.com/bootstrap.php(42): Doctrine\ORM\EntityManager->find('Sphp\\Db\\User', 1)
+#11 /var/www/vhosts/samiholck.com/playground.samiholck.com/objects.php(13): require_once('/var/www/vhosts...')
+#12 {main}

@@ -1,0 +1,291 @@
+/* 
+  SPH framework
+    Created on : 2014
+    Author     : Sami Holck <sami.holck@gmail.com>
+*/
+@charset "UTF-8";
+
+@import
+"vendors",
+"compass/css3",
+"vendor/foundation/functions",
+"vendor/foundation/settings",
+"vendor/foundation";
+@import "vendor/foundation/components/grid";
+
+.sph-row {
+  $row-width: rem-calc(1400);
+  @include grid-row();
+  .sph-column {
+    @include grid-column(12);
+
+  }
+}
+@import "vendor/foundation/components/buttons";
+.sph-button {
+  $button-font-tny: rem-calc(10) !default;
+  @include button($button-med, #ccc, 2px);
+}
+.mini-button {
+  @include button(1, #bbbbbb, 2px); 
+  padding: rem-calc(1 3 1 3)/* top right bottom left */
+
+}
+/**
+Foundation Accordion With Arrows
+**/
+@import //"vendors", 
+"compass/css3",
+//"vendor/foundation/settings",
+"vendor/foundation/components/global",
+"compass/typography/links/link-colors";
+$include-html-accordion-classes: $include-html-classes;
+.accordion-navigation {
+  >a:after {
+    float: right;
+    @include css-triangle(5px, $accordion-navigation-font-color, top);
+
+  }
+  &.active a:after {
+    @include css-triangle(5px, $monsoon, bottom);
+  }
+}
+
+//@import "vendor/foundation/components/side-nav";
+
+div.back-to-top {
+  position: fixed;
+  bottom: rem-calc(40);
+  right: rem-calc(20);
+  text-decoration: none;
+  padding: 0px;
+  display: none;
+}
+.sphp-nfo-icon {
+  color: #999;
+  height: rem-calc(40);
+  padding: rem-calc(0 0 0 10); /* top right bottom left */
+  font-size: rem-calc(9); 
+  background-position: left center;
+  background-repeat: no-repeat;
+  .fi-icon {
+    @include opacity(0.6);
+    color: #000;
+    text-shadow:
+      0px 0px 5px #FAA523,
+      0px 0px 3px #fff;
+    &:hover {
+      @include opacity(0.8);
+    }
+  }
+  .coords {
+    margin: rem-calc(0 0 0 5); /* top right bottom left */
+    div {
+      width:  rem-calc(90);
+      height: rem-calc(20);
+      line-height: rem-calc(20);
+    }
+  }
+  div.coords {
+    display: inline-block;
+  }
+}
+@import "vendor/foundation/components/inline-lists";
+.tech-inline-list {	
+  @include inline-list;
+  margin: 0px;
+  padding: 0px;
+  li {
+    margin: 0px;
+    padding: 0px;
+    a {	
+      @include opacity(0.7);
+    }
+    a:hover {	
+      @include opacity(1);
+    }
+  };
+}
+
+fieldset.sphp-choiceboxes {
+  padding: rem-calc(3);
+  margin:  rem-calc(0);
+  display: inline-block;
+  border: none 0;
+  label {
+    display:  inline-block;
+    cursor:   pointer;
+    position: relative;
+    padding-left: rem-calc(1);
+    margin-right: rem-calc(1);
+    span {
+      display:  inline-block;
+      position: relative;
+      padding-left: rem-calc(25);
+      margin-right: rem-calc(15);
+      font-size: 13px;
+    };
+    input[type=radio], input[type=checkbox] {
+      display: none;
+    };
+    span:before {
+      content: "";
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif !important;
+      width: 16px;
+      height: 16px;
+
+      margin-right: rem-calc(10);
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      background-color: #aaa;
+      box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    };
+    input[type=radio]:checked + span:before {
+      content: "\2022";
+      color: #f3f3f3;
+      font-size: 30px;
+      text-align: center;
+      line-height: 18px;
+    };
+    input[type=checkbox]:checked + span:before {
+      content: "\2713";
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+      font-size: 15px;
+      color: #f3f3f3;
+      text-align: center;
+      line-height: 15px;
+    };
+  };
+  &:disabled {
+    label {
+      cursor: default;
+    }
+    @include opacity(0.6);
+  }
+}
+fieldset.sphp-choiceboxes.radio {
+  @extend fieldset.sphp-choiceboxes;
+  span:before {	
+    @include border-radius(8px);
+  };
+};
+fieldset.sphp-choiceboxes.checkbox {
+  @extend fieldset.sphp-choiceboxes;
+  span:before {
+    @include border-radius(3px);
+  };
+};
+@import "vendor/foundation/components/tables";
+table {
+  $include-html-table-classes: $include-html-classes !default;
+
+  // These control the background color for the table and even rows
+  $table-bg: none;
+  $table-even-row-bg: none;
+
+  // These control the table cell border style
+  $table-border-style: solid;
+  $table-border-size: 1px;
+  $table-border-color: #222;
+
+  // These control the table head styles
+  $table-head-bg: $white-smoke;
+  $table-head-font-size: rem-calc(14);
+  $table-head-font-color: $jet;
+  $table-head-font-weight: $font-weight-bold;
+  $table-head-padding: rem-calc(8 10 10);
+
+  // These control the table foot styles
+  $table-foot-bg: $table-head-bg;
+  $table-foot-font-size: $table-head-font-size;
+  $table-foot-font-color: $table-head-font-color;
+  $table-foot-font-weight: $table-head-font-weight;
+  $table-foot-padding: $table-head-padding;
+
+  // These control the caption
+  $table-caption-bg: transparent;
+  $table-caption-font-color: $table-head-font-color;
+  $table-caption-font-size: rem-calc(16);
+  $table-caption-font-weight: bold;
+
+  // These control the row padding and font styles
+  $table-row-padding: rem-calc(9 10);
+  $table-row-font-size: rem-calc(14);
+  $table-row-font-color: $jet;
+  $table-line-height: rem-calc(18);
+
+  // These are for controlling the display and margin of tables
+  $table-display: table-cell;
+  $table-margin-bottom: rem-calc(20);
+  @import "compass/utilities/tables/borders";
+  @include inner-table-borders(1px, #7a98c6);
+  @include outer-table-borders(2px);
+}
+
+@import "app/exceptionBox.scss";
+
+div.sphp-popper {
+  border: solid 2px #333;
+  @include border-radius(3px);
+  padding: rem-calc(5);
+  @include opacity(0.7);
+  background-color: #eaeaea;
+  width: rem-calc(300); 
+  max-width: 90%; 
+  position: absolute;
+  text-align: center;   
+}
+$sphp-invalid-bg: #F5CCCC; 
+$sphp-valid-bg: #D6F5D6;
+form[data-sphp-validate] {
+  input.sphp-invalid, select.sphp-invalid, textarea.sphp-invalid {
+    background-color: $sphp-invalid-bg;
+    @include box-shadow($sphp-invalid-bg 0px 2px 4px 2px);
+  }
+  input.sphp-valid, select.sphp-valid, textarea.sphp-valid {
+    background-color: $sphp-valid-bg;
+    @include box-shadow($sphp-valid-bg 0px 2px 4px 2px);
+  }
+  label.sphp-invalid {
+    color: #f55
+  }
+  .validator-qtip {
+    font-size: rem-calc(11);
+    div.errors {
+      margin: rem-calc(1);
+      list-style-type: none;
+      padding: rem-calc(1);
+      div.error {
+        margin: 0;
+        padding: rem-calc(1 4 1 4);
+        list-style-type: none;
+      }
+    }
+    .qtip-title {
+      font-size: rem-calc(15);
+      font-weight: bold;
+    }
+  }
+}
+select {
+  height: auto;
+}
+
+select[size], select[multiple] {
+  background-image: none;
+}
+@import "compass/css3/transition";
+/* Lazy Load XT 1.0.6 | MIT License */
+img.lazy-hidden {
+  background:url(../pics/spinner.gif) 50% 50% no-repeat #eee;
+  @include opacity(0);
+}
+img.lazy-loaded {
+  @include transition-property(opacity);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(ease-in);
+  @include opacity(1);
+}
+//@import "app/sphp-side-nav";

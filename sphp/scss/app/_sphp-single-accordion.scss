@@ -1,0 +1,59 @@
+/**
+ * _sphp-single-accordion.scss (UTF-8)
+ *
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+@import "compass/css3";
+
+.sphp-single-accordion {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  margin: rem-calc(5 0 5 0); /* top right bottom left */
+  .head {	
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: rem-calc(16);
+    line-height: 1.2;
+    font-weight: bold;
+    text-align: left;
+    padding: rem-calc(5 0 5 30); /* top right bottom left */
+    background-color: #f8f8f8;//#eaeaea;
+    background-repeat: no-repeat;
+    background-position:  5px center;
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+    cursor: pointer;
+    button {
+      font-size: rem-calc(12);
+      line-height: rem-calc(16);
+      margin: rem-calc(0 7 0 7); /* top right bottom left */
+      padding: rem-calc(1 1 1 1);
+      float: right;
+      height: rem-calc(20);
+      //width: rem-calc(20);
+      display: inline;
+      border: solid 1px #aaa;
+      background-color: #eee;
+      @include border-radius(2px);
+      background-repeat: no-repeat;
+      background-position: center center;
+      //background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA4UlEQVQ4T2NkwA3OAqUuo0lLAvnHgLgRJs6Ix4B5QLkkNPkKIJ8TiL8BcSdIDmRAARZD/gHFjgIxyBXIAGTABiB2BGI+kCEgAzYBcR2awkwgXwaII4H4E5IcyICLQHwfKvcPZMACIE5AM2ACkL8GiIuAOB6IP0PlLYC0A5JaR3wGdAAVCgBxC9SCL2iWgLgL8BkgCFTwHWoID5D2IcUAFqBiEIaBmVCvoJuB0wUYCrGEE14vDFMDSoH+kkbzWxOuaMQWBhOBgvboEqQYkIAlHYAz0x0gPoJNEklMF8g2xqYGAAmlNMt3+SJmAAAAAElFTkSuQmCC');
+    };
+    &.active {
+      background-image: url(../pics/right_16.png);
+    };
+    &.inactive {
+      background-image: url(../pics/down_16.png);
+    };
+  };
+  .body {	
+    margin: rem-calc(5 0 5 0); /* top right bottom left */
+    padding: rem-calc(10 10 10 10); /* top right bottom left */
+    border: solid 1px #aaa;
+    @include border-radius(2px);
+    &.example {	
+      border: dashed 1px #aaa;
+    };
+  };	
+}
