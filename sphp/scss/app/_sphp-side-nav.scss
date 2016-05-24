@@ -31,6 +31,9 @@ $side-nav-bg: #fefefe;
   a {
     color: #555;
   }
+  ul.menu.nested {
+    margin-left: 0;
+  }
   li {
     &.menu-text {
       &:first-of-type {
@@ -43,16 +46,6 @@ $side-nav-bg: #fefefe;
       }
       border-top: solid 1px #999; 
       border-bottom: solid 1px #999; 
-    }
-    &.active {
-      a {
-        color: #222;
-        @include background-image(linear-gradient(to right, #fff, #eee));
-        &:hover {
-          color: #111;
-          @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
-        }
-      }
     }
     &.is-accordion-submenu-parent {
       margin: rem-calc(0 0 2 0); /* top right bottom left */ 
@@ -67,17 +60,30 @@ $side-nav-bg: #fefefe;
         padding-left: rem-calc(6);
       }
     }
-    &:not(.is-accordion-submenu-parent) {
+    &:not(.is-accordion-submenu-parent) {   
       a {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
         background-color: #fff;
-        color: #555;
         font-size: rem-calc(13);
         @include transition-property(background-color, color);
         @include transition-duration(0.2s);
         @include transition-timing-function(ease-in-out);
-        &:hover, &.active {	
-          background-color: #ededed;
+        &:hover {	
           color: #111;
+        }
+        &:hover { 
+          @include background-image(linear-gradient(to right, #fff, #eee));
+        }
+      }
+      &.active {
+        a {
+          color: #222;
+          @include background-image(linear-gradient(to right, #fff, #eee));
+          &:hover {
+            color: #111;
+            @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
+          }
         }
       }
     }
