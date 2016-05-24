@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Core;
-$snippetsFolder = realpath(__DIR__ . "/snippets/");
+
 Configuration::useDomain("manual")
 		//->set("SPH_DIR", __DIR__)
 		//->set("PHP_PACKAGES", __DIR__ . "/packages")
@@ -11,7 +11,7 @@ Configuration::useDomain("manual")
 		//->set("SPH_JS_SPH_ALL_PATH", "sphp/js/sph.all.js")
 		->set("SNIPPETS_DIR", realpath(__DIR__ . "/snippets") . "/")
 		->set("HTTP_ROOT", "http://playground.samiholck.com/")
-		->set("jsdoc", "http://documentation.samiholck.com/js/")
+		->set("jsdoc", "http://documentation.samiholck.com/jsdoc/")
 		->set("apigen", "http://documentation.samiholck.com/apigen/");
 
 
