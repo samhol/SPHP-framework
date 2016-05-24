@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Db;
+
 use \Exception as Exception;
 
 /**
@@ -19,33 +20,33 @@ use \Exception as Exception;
  */
 class SQLException extends \Exception {
 
-	/**
-	 * the possible query executed when the exception occurs
-	 *
-	 * @var string
-	 */
-	private $query;
+  /**
+   * the possible query executed when the exception occurs
+   *
+   * @var string
+   */
+  private $query;
 
-	/**
-	 * Constructs a new instance of the {@link self} object
-	 *
-	 * @param string $message the exception message to throw
-	 * @param int $code the Exception code
-	 * @param string $query the possible query executed when the exception occurs
-	 * @param \Exception $previous the previous exception used for the exception chaining
-	 */
-	public function __construct($message = "", $code = 0, $query = "", Exception $previous = null) {
-		parent::__construct($message, (int)$code, $previous);
-		$this->query = $query;
-	}
+  /**
+   * Constructs a new instance of the {@link self} object
+   *
+   * @param string $message the exception message to throw
+   * @param int $code the Exception code
+   * @param string $query the possible query executed when the exception occurs
+   * @param \Exception $previous the previous exception used for the exception chaining
+   */
+  public function __construct($message = "", $code = 0, $query = "", Exception $previous = null) {
+    parent::__construct($message, (int) $code, $previous);
+    $this->query = $query;
+  }
 
-	/**
-	 * Returns the SQL query string
-	 *
-	 * @return string the SQL query string
-	 */
-	public function getSqlQuery() {
-		return $this->query;
-	}
+  /**
+   * Returns the SQL query string
+   *
+   * @return string the SQL query string
+   */
+  public function getSqlQuery() {
+    return $this->query;
+  }
 
 }

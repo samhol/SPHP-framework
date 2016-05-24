@@ -18,23 +18,23 @@ namespace Sphp\Db;
  */
 class PDORelatedException extends \PDOException {
 
-	/**
-	 * Constructs a new instance of the {@link self} class
-	 *
-	 * @param \PDOException $e the original exception thrown
-	 */
-	public function __construct(\PDOException $e) {
-		if (strstr($e->getMessage(), 'SQLSTATE[')) {
-			//$matches = [];
-			preg_match('/SQLSTATE\[(\w+)\](\:*) (.*)/', $e->getMessage(), $matches);
-			//print_r($matches);
-			//echo $e->getMessage();
-			$code = ($matches[1] == 'HT000' ? $matches[2] : $matches[1]);
-			$message = $matches[3];
-			parent::__construct($message, intval($code), $e);
-		} else {
-			parent::__construct($e->getMessage(), $e->getCode(), $e);
-		}
-	}
+  /**
+   * Constructs a new instance of the {@link self} class
+   *
+   * @param \PDOException $e the original exception thrown
+   */
+  public function __construct(\PDOException $e) {
+    if (strstr($e->getMessage(), 'SQLSTATE[')) {
+      //$matches = [];
+      preg_match('/SQLSTATE\[(\w+)\](\:*) (.*)/', $e->getMessage(), $matches);
+      //print_r($matches);
+      //echo $e->getMessage();
+      $code = ($matches[1] == 'HT000' ? $matches[2] : $matches[1]);
+      $message = $matches[3];
+      parent::__construct($message, intval($code), $e);
+    } else {
+      parent::__construct($e->getMessage(), $e->getCode(), $e);
+    }
+  }
 
 }

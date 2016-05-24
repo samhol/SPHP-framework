@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * DataManipulationStatement.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
@@ -19,12 +18,11 @@ namespace Sphp\Db;
  */
 interface DataManipulationStatement extends StatementInterface {
 
-	/**
-	 * Executes the data manipulation SQL statement, returning the number of affected rows
-	 *
-	 * @return int the number of affected rows
-	 * @throws \PDOException if there is no database connection or query execution fails
-	 */
-	public function affectRows();
-
+  /**
+   * Executes the data manipulation SQL statement, returning the number of affected rows
+   *
+   * @return int the number of affected rows
+   * @throws \PDOException if there is no database connection or query execution fails
+   */
+  public function affectRows();
 }

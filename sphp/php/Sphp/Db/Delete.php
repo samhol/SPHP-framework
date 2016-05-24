@@ -27,7 +27,6 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
    */
   private $tables = "";
 
-
   /**
    * Constructs a new instance
    *
@@ -44,6 +43,7 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
       $this->setConditions($values);
     }
   }
+
   /**
    * Sets the table(s) from where the data is to be deleted.
    *
@@ -88,9 +88,9 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
     return $this;
   }
 
-	/**
+  /**
    * {@inheritdoc}
-	 */
+   */
   public function statementToString() {
     $query = "DELETE FROM " . $this->tables;
     if ($this->where()->hasConditions()) {
@@ -99,9 +99,9 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
     return $query;
   }
 
-	/**
+  /**
    * {@inheritdoc}
-	 */
+   */
   public function affectRows() {
     return $this->execute()->rowCount();
   }

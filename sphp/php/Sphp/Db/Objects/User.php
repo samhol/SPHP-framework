@@ -38,6 +38,7 @@ class User extends AbstractDbObject {
   private $id;
 
   /**
+   * The username
    *
    * @var string 
    * @Column(type="string", length=30)
@@ -45,6 +46,7 @@ class User extends AbstractDbObject {
   private $username;
 
   /**
+   * The first name of the user
    *
    * @var string 
    * @Column(length=50)
@@ -52,6 +54,7 @@ class User extends AbstractDbObject {
   private $fname;
 
   /**
+   * The last name of the user
    * 
    * @var string 
    * @Column(length=50)
@@ -59,6 +62,8 @@ class User extends AbstractDbObject {
   private $lname;
 
   /**
+   * The geographical address of the user
+   * 
    * @var Address 
    * @ManyToOne(targetEntity="Address", cascade={"persist"})
    * @JoinColumn(name="address_id", referencedColumnName="id", nullable=false)
@@ -69,7 +74,7 @@ class User extends AbstractDbObject {
    * the email address of the user
    * 
    * @var string
-   * @Column(type="string")
+   * @Column(type="string", nullable=true)
    * @Assert\Email
    */
   private $email;
@@ -79,7 +84,7 @@ class User extends AbstractDbObject {
    * @var string[]
    * @Column(type="simple_array")
    */
-  private $phonenumbers;
+  private $phonenumbers = [];
 
   public function __construct($data = array()) {
     //$this->address = new Address();
@@ -178,13 +183,16 @@ class User extends AbstractDbObject {
   }
 
   /**
-   * Sets the email address
+   * Sets the phonenumbers
    *
-   * @param  null|string $emails the email address
+   * @param  string[] $phonenumbers the phonenumbers address
    * @return self for PHP Method Chaining
    */
-  public function setPhonenumbers(array $emails = null) {
-    $this->phonenumbers = $emails;
+  public function setPhonenumbers(array $phonenumbers = null) {
+    if ($phonenumbers === null) {
+      $phonenumbers = [];
+    }
+    $this->phonenumbers = $phonenumbers;
     return $this;
   }
 
@@ -321,7 +329,6 @@ class User extends AbstractDbObject {
       $query->setParameter("email", $this->email);
       $count = $query->getSingleScalarResult();
       $isManaged = $count == 1;
-      //var_dump($count);
     }
     return $isManaged;
   }

@@ -47,7 +47,7 @@ class Db implements DBConnectorInterface {
       $query->from($from);
     }
     if ($where !== null) {
-      if (is_string($where) ) {
+      if (is_string($where)) {
         $where = new Conditions($where);
       }
       $query->where($where);
@@ -87,7 +87,7 @@ class Db implements DBConnectorInterface {
       $update->table($table);
     }
     if ($where !== null) {
-      if (is_string($where) ) {
+      if (is_string($where)) {
         $where = new Conditions($where);
       }
       $update->where($where);
@@ -108,7 +108,7 @@ class Db implements DBConnectorInterface {
       $update->from($from);
     }
     if ($where !== null) {
-      if (is_string($where) ) {
+      if (is_string($where)) {
         $where = new Conditions($where);
       }
       $update->setConditions($where);

@@ -324,6 +324,10 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return (int) $count;
   }
 
+  /**
+   * 
+   * @return \ArrayIterator
+   */
   public function getIterator() {
     try {
       $data = $this->fetchArray();

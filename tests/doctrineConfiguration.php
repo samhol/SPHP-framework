@@ -3,7 +3,8 @@
 namespace Doctrine\ORM;
 
 //header("Content-type: text/html; charset=utf-8");
-require_once "settings.php";
+
+//require_once realpath(__DIR__ . '/../sphp/settings.php');
 
 //use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -15,9 +16,9 @@ $isDevMode = true;
 // the connection configuration
 $dbParams = array(
     'driver' => 'pdo_mysql',
-    'user' => 'sphp_framework',
-    'password' => 'Vxr79s?8',
-    'host' => '192.168.10.208;port=3306',
+    'user' => 'root',
+    'password' => '',
+    'host' => '127.0.0.1;port=3306',
     'charset' => 'utf8',
     'dbname' => 'sphp',
     'driverOptions' => array(1002 => 'SET NAMES utf8')
