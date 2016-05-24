@@ -300,6 +300,19 @@ class User extends AbstractDbObject {
   /**
    * {@inheritdoc}
    */
+  public function equals($object) { 
+    $class= self::class;
+    $result = false;
+    if  ($object instanceof $class) {
+      $result = $this->getUsername() == $object->getUsername() 
+              && $this->getEmail() == $object->getEmail();
+    }
+    return $result;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function existsIn(EntityManagerInterface $em) {
     $isManaged = $this->isManagedBy($em);
     if (!$isManaged) {

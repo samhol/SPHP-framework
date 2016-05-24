@@ -45,5 +45,5 @@ if ($users->contains($john)) {
 }*/
 //var_dump($userView->upload($john));
 //echo "user: " . $userView[205];
-echo $users->getByUsingUsername("johdoe");
+echo $users->findByUsername("johdoe");
 ?>

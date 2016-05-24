@@ -29,11 +29,12 @@ class Addresses extends AbstractObjectStorage {
   }
 
   /**
+   * Finds all managed {@link Address} objects that have the same country
    * 
-   * @param  string $country
-   * @return Address[]
+   * @param  string $country the name of the country
+   * @return Address[] all managed objects that have the same country
    */
-  public function getByCountry($country) {
+  public function findAllByCountry($country) {
     return $this->findByProperty("country", $country);
   }
 

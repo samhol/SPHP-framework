@@ -21,36 +21,22 @@ use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 class Users extends AbstractObjectStorage {
 
   /**
-   *
-   * @var type 
-   */
-  private $em;
-
-  /**
    * Constructor
    *
    * @param EntityManagerInterface $em
    */
   public function __construct(EntityManagerInterface $em = null) {
     parent::__construct(User::class, $em);
-    //$this->em = $em;
   }
 
   /**
-   * Returns a
+   * Re
    *
    * @param  string $username the username
    * @return User|null  the user or null if nothing was found
    */
-  public function getByUsingUsername($username) {
-    $query = $this->getManager()->createQuery('SELECT u FROM ' . User::class . ' u WHERE u.username = :uname');
-    $query->setParameter('uname', $username);
-    $users = $query->getResult();
-    $user = null;
-    if (count($users) > 0) {
-      $user = $users[0];
-    } 
-    return $user;
+  public function findByUsername($username) {
+    return $this->findByProperty('username', $username);
   }
 
   /**
@@ -85,7 +71,7 @@ class Users extends AbstractObjectStorage {
     $result = false;
     if ($needle instanceof User) {
       $result = $needle->usernameTaken($this->getManager());
-    } else {    
+    } else {
       $query = $this->getManager()
               ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.username = :username");
       $query->setParameter("username", $needle);
@@ -104,9 +90,9 @@ class Users extends AbstractObjectStorage {
     $result = false;
     if ($needle instanceof User) {
       $result = $needle->usernameTaken($this->getManager());
-    } else {    
+    } else {
       $query = $this->getManager()
-              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.email = :email");    
+              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.email = :email");
       $query->setParameter("email", $needle);
       $result = $query->getSingleScalarResult() == 0;
     }
@@ -134,12 +120,12 @@ class Users extends AbstractObjectStorage {
     //$fname = preg_replace("/[^a-zA-Z]/", "", $fname);
     //$lname = preg_replace("/[^a-zA-Z]/", "", $lname);
     $username = strtolower(substr($s1, 0, 3) . substr($s2, 0, 3));
-    $user = $this->getByUsingUsername($username);
+    $user = $this->findByUsername($username);
     $i = 1;
     $_username = empty($username) ? "user" : $username;
     while (isset($user) && $user->getPrimaryKey() != $dbID) {
       $_username = $username . $i++;
-      $user = $this->getByUsingUsername($_username);
+      $user = $this->findByUsername($_username);
     }
     $username = $_username;
     return $username;

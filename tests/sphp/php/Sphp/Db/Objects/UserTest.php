@@ -96,6 +96,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals($u->getLname(), $data["lname"]);
     $this->assertEquals($u->getAddress(), $a);
   }
+
   /**
    * 
    * @dataProvider userData
@@ -104,17 +105,19 @@ class UserTest extends \PHPUnit_Framework_TestCase {
     $u = new User($data);
   }
 
-  /**
-   *
-    public function testEquals() {
-    $this->assertTrue(!$this->u_1->equals($this->u_2));
-    $this->assertTrue($this->u_1 != $this->u_2);
-    $this->u_1->setStreet("Rakuunatie 59 A 3");
-    $this->assertTrue($this->u_1 == $this->u_2);
-    $this->assertTrue($this->u_1->equals($this->u_2));
-    }
+  public function testEquals() {
+    $sami1 = (new User())
+            ->setEmail("sami.holck@gmail.com");
+    $sami2 = (new User())
+            ->setEmail("sami.holck@gmail.com");
+    $juha = (new User())
+            ->setEmail("juha.makila@gmail.com");
+    $this->assertTrue($sami1->equals($sami1));
+    $this->assertTrue($sami1->equals($sami2));
+    $this->assertfalse($sami1->equals($juha));
+  }
 
-    /**
+  /**
    *
     public function testSetting() {
     $this->u_1->setStreet("Rakuunatie 59 A 3");

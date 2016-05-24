@@ -57,7 +57,7 @@ echo "<pre>";
 $userTable = new Db\Objects\Users($entityManager);
 $u3 = $userTable->get(1262);
 var_dump($u3->toArray());
-print_r($userTable->getByUsingUsername("samhol")->toArray());
+print_r($userTable->findByUsername("samhol")->toArray());
 //echo "Pekka Puupää";
 
 $pekka = new User([
