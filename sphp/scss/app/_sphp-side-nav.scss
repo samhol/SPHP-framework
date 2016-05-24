@@ -28,6 +28,9 @@ $side-nav-bg: #fefefe;
   @include box-shadow(#888 3px 0px 8px 4px);
   @include box-shadow(#888 0px 3px 8px 4px);
   margin: rem-calc(5 0 20 0); /*top right bottom left*/
+  a {
+    color: #555;
+  }
   li {
     &.menu-text {
       &:first-of-type {
@@ -41,8 +44,18 @@ $side-nav-bg: #fefefe;
       border-top: solid 1px #999; 
       border-bottom: solid 1px #999; 
     }
+    &.active {
+      a {
+        color: #222;
+        @include background-image(linear-gradient(to right, #fff, #eee));
+        &:hover {
+          color: #111;
+          @include background-image(linear-gradient(to right, #fdfdfd, #dcdcdc));
+        }
+      }
+    }
     &.is-accordion-submenu-parent {
-      margin: rem-calc(2 0 1 0); /* top right bottom left */ 
+      margin: rem-calc(0 0 2 0); /* top right bottom left */ 
       & > a {
         border-top: solid 1px #999;
         border-bottom: solid 1px #999;
@@ -54,16 +67,18 @@ $side-nav-bg: #fefefe;
         padding-left: rem-calc(6);
       }
     }
-    a:not(.button) {
-      background-color: #fff;
-      color: #555;
-      font-size: rem-calc(13);
-      @include transition-property(background-color, color);
-      @include transition-duration(0.2s);
-      @include transition-timing-function(ease-in-out);
-      &:hover, &.active {	
-        background-color: #ededed;
-        color: #111;
+    &:not(.is-accordion-submenu-parent) {
+      a {
+        background-color: #fff;
+        color: #555;
+        font-size: rem-calc(13);
+        @include transition-property(background-color, color);
+        @include transition-duration(0.2s);
+        @include transition-timing-function(ease-in-out);
+        &:hover, &.active {	
+          background-color: #ededed;
+          color: #111;
+        }
       }
     }
   }

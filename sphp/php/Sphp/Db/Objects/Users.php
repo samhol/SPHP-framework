@@ -20,6 +20,10 @@ use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
  */
 class Users extends AbstractObjectStorage {
 
+  /**
+   *
+   * @var type 
+   */
   private $em;
 
   /**
@@ -59,11 +63,6 @@ class Users extends AbstractObjectStorage {
     return $this->getManager()->contains($object);
   }
 
-  public function insert(User $user) {
-    $this->em->persist($user);
-    $this->em->flush();
-  }
-
   /**
    * Returns sessio-id:tä vastaavan käyttäjän.
    *
@@ -77,30 +76,41 @@ class Users extends AbstractObjectStorage {
   }
 
   /**
-   * Terkistaa, onko annetun käyttäjän käyttäjätunnus järjestelmässä uniikki.
+   * Confirms the uniqueness of the users's username in the repository
    *
-   * @param  User $user the user
-   * @return boolean true, if username is unique for the use, false otherwise.
+   * @param  User|string $needle the user instance or the username string
+   * @return boolean true, if username is unique, false otherwise.
    */
-  public function uniqueUserName(User $user) {
-    $db = $this->query();
-    $db->where()
-            ->equals([self::USERNAME => $user->getUsername()])
-            ->isNot(self::DBID, $user->getPrimaryKey());
-    return $db->count() == 0;
+  public function uniqueUserName($needle) {
+    $result = false;
+    if ($needle instanceof User) {
+      $result = $needle->usernameTaken($this->getManager());
+    } else {    
+      $query = $this->getManager()
+              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.username = :username");
+      $query->setParameter("username", $needle);
+      $result = $query->getSingleScalarResult() == 0;
+    }
+    return $result;
   }
 
   /**
-   * Confirms the uniqueness of the user's first and last name
+   * Confirms the uniqueness of the users's email in the repository
    *
-   * @param  User $user the user
-   * @return boolean true if user's first and last name are unique, otherwise false
+   * @param  User|string $needle the user instance or the email address of the user
+   * @return boolean true if user's email is unique, otherwise false
    */
-  public function uniquePersonName(User $user) {
-    $db = clone $this->db()->select();
-    return $db->where(Condition::equals(self::FNAME, $user->getFname()))
-                    ->where(Condition::equals(self::LNAME, $user->getLname()))
-                    ->where(Condition::isNot(self::DBID, $user->getPrimaryKey()))->count() == 0;
+  public function uniqueEmail($needle) {
+    $result = false;
+    if ($needle instanceof User) {
+      $result = $needle->usernameTaken($this->getManager());
+    } else {    
+      $query = $this->getManager()
+              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.email = :email");    
+      $query->setParameter("email", $needle);
+      $result = $query->getSingleScalarResult() == 0;
+    }
+    return $result;
   }
 
   /**

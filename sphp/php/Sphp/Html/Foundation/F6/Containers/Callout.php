@@ -11,14 +11,12 @@ use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
+use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
 
 /**
- * Class implements a Foundation panel component
+ * Class implements a Foundation 6 callout component
  *
- * A panel is a simple, helpful Foundation component that enables to outline
- * sections of a page easily. This allows you to view your page sections as you
- * add content to them, or add emphasis to a section. The width is controlled
- * by the grid columns you put them inside.
+ * Callouts combine panels and alerts from Foundation 5 into one generic container component.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02
@@ -30,7 +28,7 @@ use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
  */
 class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
 
-  use \Sphp\Html\Foundation\F6\Core\ColoringTrait;
+  use ColoringTrait;
 
   /**
    * The inner close button component
@@ -96,19 +94,29 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
     $this->content()->ajaxReplace($url);
     return $this;
   }
-
+  
   /**
+   * Sets/unsets the callout closable
    * 
+   * Values for `$closable` parameter
+   * 
+   * * `true`: the callout is closable and the default closing effect is used 
+   * * `'slide-out-right'`
+   * * ...any other Foundation Motion UI effect string
+   * * `false`: the callout is not closable
+   * 
+   * @param  string|boolean $closable true for closable and false otherwise
    * @return self for PHP Method Chaining
    */
-  public function setClosable($closeable = true) {
-    $this->attrs()->set("data-closable", $closeable);
+  public function setClosable($closable = true) {
+    $this->attrs()->set("data-closable", $closable);
     return $this;
   }
 
   /**
+   * Checks whether the callout is closable or not
    * 
-   * @return boolean
+   * @return boolean true if callout is closable and false if not
    */
   public function isClosable() {
     return $this->attrs()->exists("data-closable");

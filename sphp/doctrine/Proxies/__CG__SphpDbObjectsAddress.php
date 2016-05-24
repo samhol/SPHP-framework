@@ -276,17 +276,6 @@ class Address extends \Sphp\Db\Objects\Address implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function toArray()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', []);
-
-        return parent::toArray();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function __toString()
     {
 
@@ -348,6 +337,17 @@ class Address extends \Sphp\Db\Objects\Address implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'deleteFrom', [$em]);
 
         return parent::deleteFrom($em);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', []);
+
+        return parent::toArray();
     }
 
     /**

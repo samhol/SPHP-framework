@@ -66,8 +66,9 @@ class User extends AbstractDbObject {
   private $address;
 
   /**
+   * the email address of the user
    * 
-   * @var string[]
+   * @var string
    * @Column(type="string")
    * @Assert\Email
    */
@@ -295,11 +296,27 @@ class User extends AbstractDbObject {
     $this->id = $id;
     return $this;
   }
-  
+
+  /**
+   * {@inheritdoc}
+   */
+  public function existsIn(EntityManagerInterface $em) {
+    $isManaged = $this->isManagedBy($em);
+    if (!$isManaged) {
+      $query = $em->createQuery('SELECT COUNT(u.id) FROM ' . self::class . " u WHERE u.username = :username OR u.email != :email");
+      $query->setParameter("username", $this->username);
+      $query->setParameter("email", $this->email);
+      $count = $query->getSingleScalarResult();
+      $isManaged = $count == 1;
+      //var_dump($count);
+    }
+    return $isManaged;
+  }
+
   /**
    * 
-   * @param  EntityManagerInterface $em
-   * @return boolean 
+   * @param  EntityManagerInterface $em the entity manager
+   * @return boolean true if users username is already taken by another user entity
    */
   public function usernameTaken(EntityManagerInterface $em) {
     if ($this->isManagedBy($em)) {
@@ -310,10 +327,10 @@ class User extends AbstractDbObject {
       $query = $em->createQuery('SELECT COUNT(obj.username) FROM ' . self::class . " obj WHERE obj.username = :username");
       $query->setParameter("username", $this->username);
     }
-    $count = $query->execute();
+    $count = $query->getSingleScalarResult();
     return $count > 0;
   }
-  
+
   /**
    * 
    * @param  EntityManagerInterface $em
@@ -328,7 +345,7 @@ class User extends AbstractDbObject {
       $query = $em->createQuery('SELECT COUNT(obj.username) FROM ' . self::class . " obj WHERE obj.username = :username");
       $query->setParameter("email", $this->email);
     }
-    $count = $query->execute();
+    $count = $query->getSingleScalarResult();
     return $count > 0;
   }
 

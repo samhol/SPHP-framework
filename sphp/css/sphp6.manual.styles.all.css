@@ -3,7 +3,7 @@ Error: File to import not found or unreadable: vendor/foundation-icons.
        Load paths:
          C:/Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets
          Compass::SpriteImporter
-        on line 11 of D:\web_projects\playground.samiholck.com\sphp\scss\sphp6.manual.styles.all.scss
+        on line 11 of D:\web_projects\SPHP-framework\sphp\scss\sphp6.manual.styles.all.scss
 
 6: @charset "UTF-8";
 7: 
@@ -18,7 +18,7 @@ Error: File to import not found or unreadable: vendor/foundation-icons.
 16: 
 
 Backtrace:
-D:\web_projects\playground.samiholck.com\sphp\scss\sphp6.manual.styles.all.scss:11
+D:\web_projects\SPHP-framework\sphp\scss\sphp6.manual.styles.all.scss:11
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:67:in `rescue in import'
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:45:in `import'
 C:/Ruby21/lib/ruby/gems/2.1.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -56,4 +56,4 @@ C:/Ruby21/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: vendor/foundation-icons.\A        Load paths:\A          C:/Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets\A          Compass::SpriteImporter\A         on line 11 of D:\web_projects\playground.samiholck.com\sphp\scss\sphp6.manual.styles.all.scss\A \A 6: @charset \"UTF-8\";\A 7: \A 8: @import \"sphp-manual-foundation-settings\";\A 9: @import \"../../vendor/zurb/foundation/scss/foundation\";\A 10: @import \"compass/css3\";\A 11: @import \"vendor/foundation-icons\";\A 12: \A 13: @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);\A 14: \A 15: @include foundation-everything;\A 16: "; }
+  content: "Error: File to import not found or unreadable: vendor/foundation-icons.\A        Load paths:\A          C:/Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets\A          Compass::SpriteImporter\A         on line 11 of D:\web_projects\SPHP-framework\sphp\scss\sphp6.manual.styles.all.scss\A \A 6: @charset \"UTF-8\";\A 7: \A 8: @import \"sphp-manual-foundation-settings\";\A 9: @import \"../../vendor/zurb/foundation/scss/foundation\";\A 10: @import \"compass/css3\";\A 11: @import \"vendor/foundation-icons\";\A 12: \A 13: @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7cSource+Code+Pro:400,500,600,700%7cOpen+Sans:400italic,600italic,700italic,400,700,600);\A 14: \A 15: @include foundation-everything;\A 16: "; }

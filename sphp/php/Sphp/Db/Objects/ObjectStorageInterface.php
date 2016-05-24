@@ -35,13 +35,6 @@ interface ObjectStorageInterface extends IteratorAggregate {
 
   /**
    * 
-   * @param string $dql DQL string
-   * @param array $params
-   */
-  public function query($dql, array $params = null, $useQueryCache = true);
-
-  /**
-   * 
    * @param  string $prop the name of the object property
    * @param  mixed $value the value of the object property
    * @return DbObjectInterface[] an array of matching objects
@@ -56,6 +49,7 @@ interface ObjectStorageInterface extends IteratorAggregate {
    * @throws Exception if anything fails
    */
   public function findBy(array $props);
+
   /**
    * 
    * @return ArrayIterator
@@ -63,8 +57,9 @@ interface ObjectStorageInterface extends IteratorAggregate {
   public function getIterator();
 
   /**
+   * Finds an Entity of {@link self::getObjectType()}-type by its identifier
    *
-   * @param  mixed $id
+   * @param  mixed $id the 
    * @return DbObjectInterface|null
    */
   public function get($id);

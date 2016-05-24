@@ -76,23 +76,6 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   /**
    * {@inheritdoc}
    */
-  public function query($dql, array $params = null, $useQueryCache = true) {
-    try {
-      $query = $this->em->createQuery($dql);
-      $query->useQueryCache($useQueryCache);
-      if ($params !== null) {
-        $query->setParameters($params);
-      }
-      $objArr = $query->getResult();
-    } catch (Exception $ex) {
-      throw $ex;
-    }
-    return $objArr;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function findByProperty($prop, $value) {
     return $this->findBy([$prop => $value]);
   }

@@ -21,6 +21,14 @@ use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
  */
 abstract class AbstractDbObject extends AbstractArrayableObject implements DbObjectInterface {
 
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function existsIn(EntityManagerInterface $em) {
+    return $em->contains($this);
+  }
+  
   /**
    * {@inheritdoc}
    */
