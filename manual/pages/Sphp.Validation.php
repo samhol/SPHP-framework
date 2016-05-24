@@ -128,7 +128,7 @@ the data type of the validable data.The following chapter describes one way of
 creating these custon validators.###The $userValidator class		
   
 The $userValidator extends the $abstractObjectValidator and it can be used to validate 
-{$api->getClassLink(\Sphp\Db\User::class)} object data.
+{$api->getClassLink(\Sphp\Db\Objects\User::class)} object data.
 MD
 );
 $reflector = new \ReflectionClass(UserValidator::class);

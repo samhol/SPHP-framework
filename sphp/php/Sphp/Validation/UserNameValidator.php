@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Db\User as User;
+use Sphp\Db\Objects\User as User;
 use Sphp\Util\Strings as Strings;
 
 /**
