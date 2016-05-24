@@ -11,10 +11,10 @@
 @import "footer";
 $default-left-margin: rem-calc(35);
 $default-margins: (
-  top: rem-calc(5),
-  right: rem-calc(25),
-  bottom: rem-calc(15),
-  left: rem-calc(35)
+top: rem-calc(5),
+right: rem-calc(25),
+bottom: rem-calc(15),
+left: rem-calc(35)
 );
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {
@@ -38,6 +38,9 @@ $default-margins: (
   img {
     margin: rem-calc(5 0 5 30);
   }
+}
+.sphp-sidenav {
+  margin-top: rem-calc(20);
 }
 .manual .mainContent { 
   border: solid 1px #888;
@@ -89,7 +92,7 @@ $default-margins: (
   }
   > p, > ul, > ol > .callout, > .sphp-single-accordion {
     margin-left: rem-calc(5);
-    margin-right: rem-calc(5);
+    margin-right: rem-calc(5); 
   }
 
   > p:not([class]), > blockquote:not([class]) {
@@ -98,10 +101,24 @@ $default-margins: (
     text-align: justify;
     padding: 0;
   }
+  > ul:not([class]), > ul:not([class]) ul, > ol:not([class]) ul {
+    list-style-type: none;
+    li:before {
+      position: relative;
+      content: "\00BB \0020";
+      font-weight: bold;
+      margin-right: rem-calc(10); 
+      list-style-type: none;
+    }
+  }
   > ul:not([class]), > ol:not([class]) { 
     //margin: rem-calc(6 25 10 55);
     @include default-margin();
     list-style-position: inside;
+    ul, ol {
+      margin-left: rem-calc(15);
+      list-style-position: inside;
+    }
   }
   > h1 {
     //font-weight: 600;

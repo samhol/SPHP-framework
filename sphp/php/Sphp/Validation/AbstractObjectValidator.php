@@ -21,100 +21,100 @@ use Sphp\Data\SphpArrayObject as SphpArrayObject;
  */
 abstract class AbstractObjectValidator implements ValidatorInterface {
 
-	/**
-	 * inner {@link InputDataValidator} validators
-	 *
-	 * @var SphpArrayObject
-	 */
-	private $validators;
+  /**
+   * inner {@link InputDataValidator} validators
+   *
+   * @var SphpArrayObject
+   */
+  private $validators;
 
-	/**
-	 * error message container
-	 *
-	 * @var TopicList
-	 */
-	private $errors;
+  /**
+   * error message container
+   *
+   * @var TopicList
+   */
+  private $errors;
 
-	/**
-	 * Constructs a new {@link self} validator
-	 */
-	public function __construct() {
-		$this->errors = new TopicList();
-		$this->validators = new SphpArrayObject();
-	}
+  /**
+   * Constructs a new {@link self} validator
+   */
+  public function __construct() {
+    $this->errors = new TopicList();
+    $this->validators = new SphpArrayObject();
+  }
 
-	/**
-	 * Resets the validator to for revalidation
-	 * 
-	 * @return self for PHP Method Chaining
-	 */
-	protected function reset() {
-		$this->errors->clearContent();
-		return $this;
-	}
+  /**
+   * Resets the validator to for revalidation
+   * 
+   * @return self for PHP Method Chaining
+   */
+  protected function reset() {
+    $this->errors->clearContent();
+    return $this;
+  }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getErrors() {
-		return $this->errors;
-	}
+  /**
+   * {@inheritdoc}
+   */
+  public function getErrors() {
+    return $this->errors;
+  }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function isValid() {
-		return $this->errors->count() == 0;
-	}
+  /**
+   * {@inheritdoc}
+   */
+  public function isValid() {
+    return $this->errors->count() == 0;
+  }
 
-	/**
-	 * Validates the form data
-	 *
-	 * @param  mixed $data
-	 * @return self for PHP Method Chaining
-	 */
-	public function validate($data) {
-		$this->reset();
-		foreach ($this->validators as $inputName => $validator) {
-			$value = \Sphp\Util\Arrays::getValue($data, $inputName);
-			if (!$validator->validate($value)->isValid()) {
-				$this->errors->set($inputName, $validator->getErrors());
-			}
-		}
-		return $this;
-	}
+  /**
+   * Validates the form data
+   *
+   * @param  mixed $data
+   * @return self for PHP Method Chaining
+   */
+  public function validate($data) {
+    $this->reset();
+    foreach ($this->validators as $inputName => $validator) {
+      $value = \Sphp\Util\Arrays::getValue($data, $inputName);
+      if (!$validator->validate($value)->isValid()) {
+        $this->errors->set($inputName, $validator->getErrors());
+      }
+    }
+    return $this;
+  }
 
-	/**
-	 * Sets the validator object for the named object value (property)
-	 * 
-	 * @param  string $property the name of the object value (property)
-	 * @param  ValidatorInterface $validator validator object
-	 * @return self for PHP Method Chaining
-	 */
-	protected function set($property, ValidatorInterface $validator) {
-		$this->validators->offsetSet($property, $validator);
-		return $this;
-	}
+  /**
+   * Sets the validator object for the named object value (property)
+   * 
+   * @param  string $property the name of the object value (property)
+   * @param  ValidatorInterface $validator validator object
+   * @return self for PHP Method Chaining
+   */
+  protected function set($property, ValidatorInterface $validator) {
+    $this->validators->offsetSet($property, $validator);
+    return $this;
+  }
 
-	/**
-	 * Gets the validator object for the named object value (property)
-	 * 
-	 * @param  string $property the name of the object value (property)
-	 * @return ValidatorInterface|null the corresponding validator object
-	 */
-	protected function get($property) {
-		return $this->validators->offsetGet($property);
-	}
+  /**
+   * Gets the validator object for the named object value (property)
+   * 
+   * @param  string $property the name of the object value (property)
+   * @return ValidatorInterface|null the corresponding validator object
+   */
+  protected function get($property) {
+    return $this->validators->offsetGet($property);
+  }
 
-	/**
-	 * Removes the validator object from the named object value (property)
-	 *
-	 * @param string $property the name of the object value (property)
-	 * @return self for PHP Method Chaining
-	 */
-	protected function remove($property) {
-		$this->validators->offsetUnset($property);
-		return $this;
-	}
+  /**
+   * Removes the validator object from the named object value (property)
+   *
+   * @param string $property the name of the object value (property)
+   * @return self for PHP Method Chaining
+   */
+  protected function remove($property) {
+    $this->validators->offsetUnset($property);
+    return $this;
+  }
 
 }

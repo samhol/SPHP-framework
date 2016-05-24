@@ -19,7 +19,7 @@ namespace Sphp\Util;
 class Strings {
 
   const ALPHANUMERIC_PATTERN = "/^([0-9a-zA-ZäöåÄÖÅ])*$/";
-  const FI_NAME_PATTERN = "/^([a-zA-ZäöåÄÖÅ\ \-])*$/";
+ // const FI_NAME_PATTERN = "/^([a-zA-ZäöåÄÖÅ\ \-])*$/";
   const NUMBERS_ONLY_PATTERN = '/^[0-9]+$/';
 //const PHONENUMBER_PATTERN = "/^\+?(?[0-9]{3}?|[0-9]{3})[-\.\s]?[0-9]{3}[\ \-\.\s]?[0-9]{4}$/";
 //const PHONENUMBER_PATTERN = "/^((\+\d{4,6})|(\+\d{3}[\ ]?\d{1,3})){1}|(\d{2,4}){1}([\ ]?)(\d{3}[\ ]?\d{3,4})$/";

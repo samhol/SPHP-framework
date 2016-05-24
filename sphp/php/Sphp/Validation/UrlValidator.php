@@ -20,18 +20,18 @@ use Sphp\Net\URL as URL;
  */
 class UrlValidator extends AbstractOptionalValidator {
 
-	/**
-	 * Validates that the given url is working
-	 *
-	 * @param  string|URL $url the url to validate
-	 */
-	public function executeValidation($url) {
-		if (!($url instanceof URL)) {
-			$url = new URL($url);
-		}
-		if (!$url->exists()) {
-			$this->addErrorMessage("Please insert a valid working url");
-		}
-	}
+  /**
+   * Validates that the given url is working
+   *
+   * @param  string|URL $url the url to validate
+   */
+  public function executeValidation($url) {
+    if (!($url instanceof URL)) {
+      $url = new URL($url);
+    }
+    if (!$url->exists()) {
+      $this->addErrorMessage("Please insert a valid working url");
+    }
+  }
 
 }

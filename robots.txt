@@ -3,4 +3,4 @@ Allow: /index.php
 Disallow: /vendor/
 Disallow: /cgi-bin/
 Disallow: /tmp/
-Disallow: /PHPUnit/
+Disallow: /tests/

@@ -20,49 +20,50 @@ use \DateTime as DateTime;
  */
 class DatetimeValidator extends AbstractOptionalValidator {
 
-	/**
-	 * the required format of the validable value
-	 *
-	 * @var string
-	 */
-	private $format = "Y-m-d H:i:s";
+  /**
+   * the required format of the validable value
+   *
+   * @var string
+   */
+  private $format = "Y-m-d H:i:s";
 
-	/**
-	 * Constructs a new {@link DatetimeValidator} object
-	 *
-	 * @param string $format the required format of the validable value
-	 */
-	public function __construct($format = "Y-m-d H:i:s") {
-		parent::__construct();
-		if ($format !== null) {
-			$this->setDateTimeFormat($format);
-		}
-	}
+  /**
+   * Constructs a new {@link DatetimeValidator} object
+   *
+   * @param string $format the required format of the validable value
+   */
+  public function __construct($format = "Y-m-d H:i:s") {
+    parent::__construct();
+    if ($format !== null) {
+      $this->setDateTimeFormat($format);
+    }
+  }
 
-	/**
-	 * Sets the required format of the validable value
-	 *
-	 * @param string $format the required format of the validable value
-	 * @return self for PHP Method Chaining
-	 */
-	public function setDateTimeFormat($format) {
-		$this->format = $format;
-		return $this;
-	}
-	/**
-	 * Does the actual validation
-	 *
-	 *  Executed only if the <var>$value</var> is either non empty or empty
-	 *  values are set to be validated.
-	 *
-	 * @param  mixed $value the value to validate
-	 */
-	protected function executeValidation($value) {
-		$obj = DateTime::createFromFormat($this->format, $value);
-		//echo $obj->format('Y-m-d H:i:s');
-		if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {
-			$this->createErrorMessage("Please insert correct date and time");
-		}
-	}
+  /**
+   * Sets the required format of the validable value
+   *
+   * @param string $format the required format of the validable value
+   * @return self for PHP Method Chaining
+   */
+  public function setDateTimeFormat($format) {
+    $this->format = $format;
+    return $this;
+  }
+
+  /**
+   * Does the actual validation
+   *
+   *  Executed only if the <var>$value</var> is either non empty or empty
+   *  values are set to be validated.
+   *
+   * @param  mixed $value the value to validate
+   */
+  protected function executeValidation($value) {
+    $obj = DateTime::createFromFormat($this->format, $value);
+    //echo $obj->format('Y-m-d H:i:s');
+    if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {
+      $this->createErrorMessage("Please insert correct date and time");
+    }
+  }
 
 }

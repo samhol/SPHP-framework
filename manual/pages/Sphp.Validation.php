@@ -9,60 +9,54 @@ $patrnvLink = $api->getClassLink(PatternValidator::class);
 $strLenValLink = $api->getClassLink(StringLengthValidator::class);
 $abstractValidatorAggregate = $api->getClassLink(AbstractValidatorAggregate::class);
 $validatorAggregate = $api->getClassLink(ValidatorAggregate::class);
+$optionalValidatorInterface = $api->getClassLink(OptionalValidatorInterface::class);
+$AbstractOptionalValidator = $api->getClassLink(AbstractOptionalValidator::class);
+$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(
 <<<MD
-#User input Validation: $nsLink namespace	
-  
+#User input Validation
+ $ns 
 User input validation is a critical part of any responsive HTML application. 
 This Framework contains its own user input validation mechanism which includes 
 both server- and clientside components. 	This section is about the serverside 
 validation mechanism. The cornerstone of it is the $validatorInterface. This 
 interface defines the minimum properties required for any SPHP framework based 
-validator.##The $requiredValueValidator classThe $requiredValueValidator 
-validates only that the given input has a 'meaningfull' value. 	
-Values considered as invalid in $requiredValueValidator:		
+validator.
   
- 1. {$php->getHyperlink("language.variables.php", '$var;')} (a variable declared, 
-   but without a value)
+##The $requiredValueValidator and $optionalValidatorInterface validation
+  
+The $requiredValueValidator validates only that the given input has a non empty value. 	
+        
+**All of the following values are considered as empty:**
+        
+ 1. {$php->getHyperlink("language.variables.php", '$var;')} (a variable declared, but without a value)
  2. {$php->getTypeLink(NULL)} values
  3.  empty {$php->getTypeLink([], "arrays")}	
- 4. "" an empty {$php->getTypeLink("string")}5. {$php->getTypeLink("string", "strings")} containing only following characters: 
-   * " " (ASCII 32 (0x20)), an ordinary space 
-   * "\\t" (ASCII 9 (0x09)), a tab 
-   * "\\n" (ASCII 10 (0x0A)), a new line (line feed) 
-   * "\\r" (ASCII 13 (0x0D)), a carriage return 
-   * "\\0" (ASCII 0 (0x00)), the NUL-byte 
-   * "\\x0B" (ASCII 11 (0x0B)), a vertical tab
-MD
-);
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
-$optionalValidatorInterface = $api->getClassLink(OptionalValidatorInterface::class);
-$AbstractOptionalValidator = $api->getClassLink(AbstractOptionalValidator::class);
-echo $parsedown->text(
-<<<MD
-##$optionalValidatorInterface validation
-        
+ 4. `""` an empty {$php->getTypeLink("string")}
+ 5. {$php->getTypeLink("string", "strings")} containing only following characters
+      * " " (ASCII 32 (0x20)), an ordinary space 
+      * "\\t" (ASCII 9 (0x09)), a tab 
+      * "\\n" (ASCII 10 (0x0A)), a new line (line feed) 
+      * "\\r" (ASCII 13 (0x0D)), a carriage return 
+      * "\\0" (ASCII 0 (0x00)), the NUL-byte 
+      * "\\x0B" (ASCII 11 (0x0B)), a vertical tab		
+
 $optionalValidatorInterface makes it possible to choose whether the empty value 
 is valid or not when validating user inputs with this type of validators. This 
 property is usefull for example when the validated input is optional.	The abstract 
 class $AbstractOptionalValidator is th default implementation of the 
-$optionalValidatorInterface.		
+$optionalValidatorInterface and is is also the base class for many of the build-in 
+validators. 
+        
+MD
+);
+CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
+echo $parsedown->text(
+<<<MD
+##$optionalValidatorInterface validation
+        
+		
   
-Abstract class $AbstractOptionalValidator is the base class for many of the build-in 
-validation classes in $nsLink namespace. 		By default the following input values 
-are considered as empty in the $AbstractOptionalValidator:
-  
- 1. {$php->getHyperlink("language.variables.php", '$var;')} (a variable declared, but without a value)
- 2. {$php->getTypeLink(NULL)} values
- 3.  empty {$php->getTypeLink([], "arrays")}	
- 4. "" an empty {$php->getTypeLink("string")}
- 5. {$php->getTypeLink("string", "strings")} containing only following characters: 
-   * " " (ASCII 32 (0x20)), an ordinary space 
-   * "\\t" (ASCII 9 (0x09)), a tab 
-   * "\\n" (ASCII 10 (0x0A)), a new line (line feed) 
-   * "\\r" (ASCII 13 (0x0D)), a carriage return 
-   * "\\0" (ASCII 0 (0x00)), the NUL-byte 
-   * "\\x0B" (ASCII 11 (0x0B)), a vertical tab		
 
 ###The $patrnvLink class		
   
@@ -74,7 +68,8 @@ MD
 CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/PatternValidator.php", "php", false);
 echo $parsedown->text(
 <<<MD
-###The $strLenValLink class		
+###The $strLenValLink class	
+        
 The $strLenValLink simply validates the input length. This validator supports three 
 types of validation
         
@@ -110,7 +105,7 @@ PHP's native $array and just about any kind of $traversable data containing key 
 $formValidator supports two ways of manipulating validators for named input data values.		
   
  1. By using PHP's array notation provided by the $arrayaccess interface 
-   * **IMPORTANT!** the offset key points to the corresponding offset in the data that is to be validated
+    * **IMPORTANT!** the offset key points to the corresponding offset in the data that is to be validated
  2. By using chainable object oriented methods 
 MD
 );

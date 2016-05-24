@@ -21,29 +21,29 @@ use Sphp\Util\Strings as Strings;
  */
 class UserNameValidator extends AbstractOptionalValidator {
 
-	/**
-	 * Validates the username
-	 *
-	 * @param  string $value the value to validate
-	 * @return self for PHP Method Chaining
-	 */
-	protected function executeValidation($value) {
-		if (!($value instanceof User)) {
-			$user = (new User())->setUsername($value);
-			$username = $value;
-		} else {
-			$username = $value->getUsername();
-			$user = $value;
-		}
-		if (!Strings::lengthBetween($username, 6, 12)) {
-			$this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
-		}
-		if (!Strings::match("/^([a-zA-Z0-9]){1,}$/", $username)) {
-			$this->createErrorMessage("Please insert alphabets and numbers only");
-		}
-		/*if (!$user->isUnique()) {
-			$this->createErrorMessage("Username is already reserved");
-		}*/
-	}
+  /**
+   * Validates the username
+   *
+   * @param  string $value the value to validate
+   * @return self for PHP Method Chaining
+   */
+  protected function executeValidation($value) {
+    if (!($value instanceof User)) {
+      $user = (new User())->setUsername($value);
+      $username = $value;
+    } else {
+      $username = $value->getUsername();
+      $user = $value;
+    }
+    if (!Strings::lengthBetween($username, 6, 12)) {
+      $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
+    }
+    if (!Strings::match("/^([a-zA-Z0-9]){1,}$/", $username)) {
+      $this->createErrorMessage("Please insert alphabets and numbers only");
+    }
+    /* if (!$user->isUnique()) {
+      $this->createErrorMessage("Username is already reserved");
+      } */
+  }
 
 }

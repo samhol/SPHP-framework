@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FileObject.php (UTF-8)
+ * LocalFile.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 

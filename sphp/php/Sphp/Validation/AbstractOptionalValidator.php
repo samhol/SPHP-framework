@@ -18,6 +18,5 @@ namespace Sphp\Validation;
  */
 abstract class AbstractOptionalValidator extends AbstractValidator implements OptionalValidatorInterface {
 
-	use OptionalValidatorTrait;
-
+  use OptionalValidatorTrait;
 }

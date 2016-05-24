@@ -36,24 +36,24 @@ use Sphp\Util\Strings as Strings;
  */
 class RequiredValueValidator extends AbstractValidator {
 
-	/**
-	 * Validates that the field has a scalar non empty value
-	 *
-	 * @param  mixed $value the value to validate
-	 */
-	protected function executeValidation($value) {
-		$valid = true;
-		if ($value === null) {
-			$valid = false;
-		} else if (is_array($value) && count($value) === 0) {
-			$valid = false;
-		} else if (Strings::isEmpty($value)) {
-			$valid = false;
-		}
+  /**
+   * Validates that the field has a scalar non empty value
+   *
+   * @param  mixed $value the value to validate
+   */
+  protected function executeValidation($value) {
+    $valid = true;
+    if ($value === null) {
+      $valid = false;
+    } else if (is_array($value) && count($value) === 0) {
+      $valid = false;
+    } else if (Strings::isEmpty($value)) {
+      $valid = false;
+    }
 
-		if (!$valid) {
-			$this->createErrorMessage("Please insert a value");
-		}
-	}
+    if (!$valid) {
+      $this->createErrorMessage("Please insert a value");
+    }
+  }
 
 }

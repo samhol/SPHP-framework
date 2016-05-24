@@ -20,14 +20,14 @@ use Sphp\items\Address as Address;
  */
 class AddressValidator extends AbstractObjectValidator {
 
-	/**
-	 * Constructs a new {@link self} validator
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->set(Address::STREETADDRESS, new StringLengthValidator(2, 50))
-				->set(Address::ZIPCODE, new PatternValidator())
-				->set(Address::CITY, new RequiredValueValidator());
-	}
+  /**
+   * Constructs a new {@link self} validator
+   */
+  public function __construct() {
+    parent::__construct();
+    $this->set(Address::STREETADDRESS, new StringLengthValidator(2, 50))
+            ->set(Address::ZIPCODE, new PatternValidator())
+            ->set(Address::CITY, new RequiredValueValidator());
+  }
 
 }
