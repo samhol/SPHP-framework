@@ -328,7 +328,7 @@ class User extends AbstractDbObject {
       $query->setParameter("username", $this->username);
       $query->setParameter("email", $this->email);
       $count = $query->getSingleScalarResult();
-      $isManaged = $count == 1;
+      $isManaged = $count != 0;
     }
     return $isManaged;
   }

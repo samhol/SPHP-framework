@@ -25,6 +25,7 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
    * {@inheritdoc}
    */
   public function existsIn(EntityManagerInterface $em) {
+    echo "\n\nAbstractDbObject\n\n";
     return $em->contains($this);
   }
 

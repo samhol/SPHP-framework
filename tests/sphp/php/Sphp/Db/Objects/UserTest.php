@@ -27,7 +27,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return array
    */
-  public function userData() {
+  public function userArrs() {
     return [
         [
             [
@@ -46,12 +46,37 @@ class UserTest extends \PHPUnit_Framework_TestCase {
             ]
         ]
     ];
+  } /**
+   * 
+   * @return array
+   */
+  public function existingUsers() {
+    $u = (new User())
+            ->setUsername("samhol")
+            ->setEmail("sami.holck@gmail.com")
+            ->setFname("sami")
+            ->setLname("holck");
+    $u->getAddress()
+            ->setStreet("Rakuunatie 59 A 3")
+            ->setZipcode("20720")
+            ->setCity("Turku")
+            ->setCountry("Finland");
+    $u1 = (new User())
+            ->setUsername("samhol")
+            ->setEmail("sami.holck@gmail.com")
+            ->setFname("sami")
+            ->setLname("holck");
+    $u2 = (new User())
+            ->setUsername("samhol");
+    $u3 = (new User())
+            ->setEmail("sami.holck@gmail.com");
+    return [[$u, $u1, $u2, $u3]];
   }
 
   /**
    * 
    * @return Address
-   * @dataProvider userData
+   * @dataProvider userArrs
    */
   public function addressProvider(array $data) {
     return new Address($data);
@@ -67,7 +92,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider userData
+   * @dataProvider userArrs
    */
   public function testConstruct(array $data) {
     $u = new User($data);
@@ -80,7 +105,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * 
-   * @dataProvider userData
+   * @dataProvider userArrs
    */
   public function testInsert(array $data) {
     $u = new User($data);
@@ -98,17 +123,11 @@ class UserTest extends \PHPUnit_Framework_TestCase {
     $this->assertfalse($sami1->equals($juha));
   }
 
-  public function testUpdate() {
-    $u = (new User())
-            ->setUsername("samhol")
-            ->setEmail("sami.holck@gmail.com")
-            ->setFname("sami")
-            ->setLname("holck");
-    $u->getAddress()
-            ->setStreet("Rakuunatie 59 A 3")
-            ->setZipcode("20720")
-            ->setCity("Turku")
-            ->setCountry("Finland");
+  /**
+   * 
+   * @dataProvider existingUsers
+   */
+  public function testUpdateFails(User $u) {
     $this->assertfalse($u->insertInto($this->entityManager()));
   }
 
