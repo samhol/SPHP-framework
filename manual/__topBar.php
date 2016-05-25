@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
 
-use Sphp\Core\Configuration as Config;
+use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
 use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
 use Sphp\Html\Foundation\F6\Containers\Dropdown as Dropdown;
@@ -10,7 +10,7 @@ use Sphp\Html\Foundation\F6\Containers\Dropdown as Dropdown;
 include_once 'links.php';
 try {
   ob_start();
-  $appConf = Config::useDomain("manual");
+  $appConf = Configuration::useDomain("manual");
   $navi = (new TopBar())
           ->addCssClass("sphp-manual");
 
@@ -33,7 +33,7 @@ try {
     }
     $parent->append($menu);
   };
-  foreach (Config::current()->get("MANUAL_LINKS") as $item) {
+  foreach (Configuration::current()->get("MANUAL_LINKS") as $item) {
     if (array_key_exists("href", $item)) {
       $topbarMenuLinker($item, $manual);
     } else if (array_key_exists("separator", $item)) {

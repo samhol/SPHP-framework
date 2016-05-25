@@ -7,6 +7,8 @@
 
 namespace Sphp\Objects;
 
+use Sphp\Util\Arrays as Arrays;
+
 /**
  * Class implements some parts of Item interface.
  *
@@ -36,7 +38,7 @@ abstract class AbstractArrayableObject implements ArrayableObjectInterface {
     $output = static::class . ":\n";
     foreach ($this->toArray() as $prop => $val) {
       if (is_array($val)) {
-        $val = \Sphp\Util\Arrays::implodeWithKeys($val, "\n\t\t", ": ");
+        $val = Arrays::implodeWithKeys($val, "\n\t\t", ": ");
       }
       $output .= "\t$prop: $val\n";
     }

@@ -1,19 +1,52 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SphpScriptsLoader.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Programming;
 
+use Sphp\Core\PathFinder as PathFinder;
+
 /**
  * Description of SphpScriptsLoader
  *
- * @author samih_000
+ * 
+ * **IMPORTANT:** 
+ * 
+ * The {@link self} component points to an external script file through the src attribute.
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2011-10-17
+ * @version 2.0.0
+ * @link http://www.w3schools.com/tags/tag_script.asp w3schools API link
+ * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API link
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class SphpScriptsLoader extends ScriptsContainer {
+  
+  /**
+   *
+   * @var PathFinder 
+   */
+  private $pathFinder;
+  
+  /**
+   * Folderpaths to script resources
+   *
+   * @var string[]
+   */
+  private $paths;
+  
+  public function __construct($scripts = null) {
+    parent::__construct($scripts);
+    $this->pathFinder = new PathFinder();
+    $this->paths["vendor"] = $this->pathFinder->http("sphp/js/vendor/");
+    $this->paths["app"] = $this->pathFinder->http("sphp/js/app/");
+    $this->paths["js_root"] = $this->pathFinder->http("sphp/js/");
+  }
 
   /**
    * Appends Modernizr
@@ -22,7 +55,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://modernizr.com/ Modernizr
    */
   public function appendModernizr() {
-    return $this->appendSrc(\Sphp\js\VENDOR_PATH . "modernizr.js");
+    return $this->appendSrc($this->paths["vendor"] . "modernizr.js");
   }
 
   /**
@@ -32,7 +65,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   https://github.com/ftlabs/fastclick FastClick
    */
   public function appendFastclick() {
-    return $this->appendSrc(\Sphp\js\VENDOR_PATH . "fastclick.js");
+    return $this->appendSrc($this->paths["vendor"] . "fastclick.js");
   }
 
   /**
@@ -42,7 +75,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://jquery.com/ jQuery
    */
   public function appendJQuery() {
-    return $this->appendSrc(\Sphp\js\VENDOR_PATH . "jquery.js");
+    return $this->appendSrc($this->paths["vendor"] . "jquery.js");
   }
 
   /**
@@ -65,7 +98,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendAnyTime() {
     return $this
                     ->appendJQuery()
-                    ->appendSrc(\Sphp\js\VENDOR_PATH . "anytime.c.js");
+                    ->appendSrc($this->paths["vendor"] . "anytime.c.js");
   }
 
   /**
@@ -77,7 +110,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendVideojs() {
     return $this
                     ->appendJQuery()
-                    ->appendSrc(\Sphp\js\VENDOR_PATH . "anytime.c.js");
+                    ->appendSrc($this->paths["vendor"] . "anytime.c.js");
   }
 
   /**
@@ -89,7 +122,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendZeroClipboard() {
     return $this
                     ->appendJQuery()
-                    ->appendSrc(\Sphp\js\VENDOR_PATH . "ZeroClipboard.min.js");
+                    ->appendSrc($this->paths["vendor"] . "ZeroClipboard.min.js");
   }
 
   /**
@@ -101,7 +134,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendLazyload() {
     return $this
                     ->appendJQuery()
-                    ->appendSrc(\Sphp\js\VENDOR_PATH . "jquery.lazyloadxt.extra.min.js");
+                    ->appendSrc($this->paths["vendor"] . "jquery.lazyloadxt.extra.min.js");
   }
 
   /**
@@ -111,7 +144,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendPhotoAlbum() {
-    return $this->appendSrc(\Sphp\js\APP_PATH . "PhotoAlbum.js");
+    return $this->appendSrc($this->paths["app"] . "PhotoAlbum.js");
   }
 
   /**
@@ -122,8 +155,8 @@ class SphpScriptsLoader extends ScriptsContainer {
    */
   public function appendIonRangeSlider() {
     return $this->appendJQuery()
-            ->appendSrc(\Sphp\js\VENDOR_PATH . "ion.rangeSlider.min.js")
-            ->appendSrc(\Sphp\js\APP_PATH . "init.ion.rangeSliders.js");
+                    ->appendSrc($this->paths["vendor"] . "ion.rangeSlider.min.js")
+                    ->appendSrc($this->paths["app"] . "init.ion.rangeSliders.js");
   }
 
   /**
@@ -132,19 +165,20 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @return self for PHP Method Chaining
    */
   public function appendSPHP() {
+    
     $this->appendFoundation()
             ->appendLazyload()
             ->appendZeroClipboard()
             ->appendAnyTime()
-            ->appendPhotoAlbum()
+           // ->appendPhotoAlbum()
             ->appendIonRangeSlider()
-            ->appendSrc(\Sphp\js\VENDOR_PATH . "jquery.qtip.min.js")
-            ->appendSrc(\Sphp\js\APP_PATH . "commonJqueryPlugins.js")
-            ->appendSrc(\Sphp\js\APP_PATH . "sphp.form.validation.js")
-            ->appendSrc(\Sphp\js\APP_PATH . "sphp.SideNavs.js")
-            ->appendSrc(\Sphp\js\APP_PATH . "sphp.TechLinks.js")
-            ->appendSrc(\Sphp\js\SPH_ALL_PATH)
-            ->appendCode('sphp.initialize("' . \Sphp\HTTP_ROOT . '");');
+            ->appendSrc($this->paths["vendor"] . "jquery.qtip.min.js")
+            ->appendSrc($this->paths["app"] . "commonJqueryPlugins.js")
+            ->appendSrc($this->paths["app"] . "sphp.form.validation.js")
+            ->appendSrc($this->paths["app"] . "sphp.SideNavs.js")
+            ->appendSrc($this->paths["app"] . "sphp.TechLinks.js")
+            ->appendSrc($this->paths["js_root"] . "sphp.all.js")
+            ->appendCode('sphp.initialize("' . $this->pathFinder->http() . '");');
     return $this;
   }
 

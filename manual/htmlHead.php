@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Configuration as Config;
+use Sphp\Core\Configuration as Configuration;
 use Sphp\Net\URL as URL;
 
 include_once("links.php");
@@ -11,7 +11,7 @@ Doc::setHtmlVersion(Doc::HTML5);
 $currentUrl = URL::getCurrent();
 $title = "SPHP framework";
 //echo "<pre>";
-foreach (Config::useDomain("manual")->get("PAGE_TITLES") as $linkArr) {
+foreach (Configuration::useDomain("manual")->get("PAGE_TITLES") as $linkArr) {
   if ($currentUrl->equals($linkArr["href"])) {
     $title .= ": " . $linkArr["text"];
   }
@@ -28,7 +28,7 @@ $html->head()
         ->enableSPHP()
         ->useFontAwesome()
         ->useFoundationIcons()
-        ->setBaseAddr(\Sphp\HTTP_ROOT, "_self")
+        ->setBaseAddr(Configuration::httpHost(), "_self")
         //->addCssSrc("sphp/css/manual.css")
         ->addShortcutIcon("favicon.ico")
         ->metaTags()

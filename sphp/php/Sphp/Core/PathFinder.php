@@ -48,8 +48,8 @@ class PathFinder implements Arrayable {
    * * the `$localRoot` should be an Absolute path so that all the subfolders are reachable.
    * * If either `$localRoot` or `$httpRoot` is not given the instance uses `$_SERVER` values if present
    * 
-   * @param  string $localRoot
-   * @param  string $httpRoot the root path to the sphp directory
+   * @param  string $localRoot the local filesystem root path
+   * @param  string $httpRoot the root url of the application
    * @throws ConfigurationException if paths cannot be resolved
    */
   public function __construct($localRoot = null, $httpRoot = null) {
@@ -64,11 +64,9 @@ class PathFinder implements Arrayable {
    * @throws ConfigurationException if path cannot be resolved
    */
   private function initHttpRoot($httpRoot = null) {
-    if ($httpRoot === null) {
-      if (true) {
-        
-      }
-      $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+    if ($httpRoot === null) {  
+      $host = filter_input(INPUT_SERVER, "HTTP_HOST", FILTER_SANITIZE_SPECIAL_CHARS);
+      $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
     } else {
       $this->httpRoot = $httpRoot;
       return $this;
@@ -97,6 +95,12 @@ class PathFinder implements Arrayable {
     return $this;
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->localRoot, $this->httpRoot);
   }

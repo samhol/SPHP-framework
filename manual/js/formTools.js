@@ -17,18 +17,17 @@
       $submit = $form.find("button.submitter");
       $submit.attr("data-toggle", $id);
       $submit.attr("data-options", "align:bottom");
-      $dropdown = $('<div id="' + $id + '" class="dropdown-pane" data-dropdown></div>');
+      $dropdown = $('<div id="' + $id + '" class="dropdown-pane sphp-form-submit-viewer" data-dropdown></div>');
       console.log("dropdown id: " + $id);
       $form.after($dropdown);
-      var options = {};
+      var options = {closeOnClick: true};
       var elem = new Foundation.Dropdown($dropdown, options);
-      // $(document).foundation('dropdown', 'reflow');
       $submit.submit(function () {
         console.log("Handler for .submit() called.");
         return false;
       });
       $submit.click(function () {
-        console.log("POSTING TO:" + $form.attr("action"));
+        console.log("POSTING TO: " + "manual/snippets/formSubmit.php");
         var posting = $.post("manual/snippets/formSubmit.php", $form.serialize());
 
         // Put the results in a div

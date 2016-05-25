@@ -5,10 +5,10 @@ namespace Sphp\Db\Objects;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Objects\ObjectInterface as ObjectInterface;
 
-$objectInterface = $api->getClassLink(ObjectInterface::class);
-$dbObjectInterface = $api->getClassLink(DbObjectInterface::class);
-$address = $api->getClassLink(Address::class);
-$user = $api->getClassLink(User::class);
+$objectInterface = $api->classLinker(ObjectInterface::class);
+$dbObjectInterface = $api->classLinker(DbObjectInterface::class);
+$address = $api->classLinker(Address::class);
+$user = $api->classLinker(User::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
@@ -17,18 +17,23 @@ $ns
 This is an experimental [Doctrine](http://www.doctrine-project.org/) based object mapping database extension. 
 The Doctrine Project is the home to several PHP libraries primarily focused on database storage and object mapping.
 
-##The {$api->getClassLink(ObjectInterface::class)} and the {$api->getClassLink(DbObjectInterface::class)}
+##The $objectInterface and the $dbObjectInterface
 
-The {$api->getClassLink(ObjectInterface::class)} interface is the base for all implementing classes 
-in the {$api->getNamespaceLink(__NAMESPACE__)} namespace.
+The $objectInterface interface is the base for all database entity objects in the {$api->getNamespaceLink(__NAMESPACE__)} namespace.
 
-##The {$api->classLinker(Address::class)} class
-Classes $address and {$api->getClassLink(Location::class)}
+
+This interfaces are the base of all database objects
+The $dbObjectInterface is implemented by a couple of build-in instantiable classes.
+####$address class for geographical address entities
+
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Address.php", "php", false);
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Db/Objects/Address.php", "text", false))
+        ->setExampleHeading("Geographical address object example")
+        ->printHtml();
 echo $parsedown->text(<<<MD
-##The {$api->classLinker(User::class)} class
+        
+####$user for user data object entities
 MD
 );
 
@@ -41,7 +46,8 @@ $users = $api->classLinker(Users::class);
 echo $parsedown->text(<<<MD
 ##The $objectStorageInterface
 
-This interface provides an $iterable view to the managed $dbObjectInterface entities by extending the native $iterable.
+This interface provides an $iterable view to the managed $dbObjectInterface entities by 
+extending the native $iterable and providing some additional methods for entity manipulation.
 The $objectStorageInterface is implemented by a couple of build-in instantiable classes.
         
 1. $addresses for mapping the $address object entities

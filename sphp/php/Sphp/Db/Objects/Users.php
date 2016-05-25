@@ -36,7 +36,7 @@ class Users extends AbstractObjectStorage {
    * @return User|null  the user or null if nothing was found
    */
   public function findByUsername($username) {
-    return $this->findByProperty('username', $username);
+    return $this->getRepository()->findOneBy(['username' => $username]);
   }
 
   /**

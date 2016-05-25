@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 
 ob_start();
 
-use Sphp\Core\Configuration as Config;
+use Sphp\Core\Configuration as Configuration;
 include_once 'links.php';
 $nav = (new AccordionMenu())->addCssClass("sphp-sidenav")->appendText("Documentation");
 $nav[0]->addCssClass("heading");
@@ -26,7 +26,7 @@ $sidenavLinker = function (array $link) use($nav) {
     }
   }
 }*/
-foreach (Config::useDomain("manual")->get("SIDENAV_LINKS") as $item) {
+foreach (Configuration::useDomain("manual")->get("SIDENAV_LINKS") as $item) {
   if (array_key_exists("href", $item)) {
     $sidenavLinker($item);
   } else if (array_key_exists("group", $item) && array_key_exists("sub", $item)) {

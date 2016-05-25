@@ -320,6 +320,17 @@ class Address extends \Sphp\Db\Objects\Address implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
+    public function existsIn(\Doctrine\ORM\EntityManagerInterface $em)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'existsIn', [$em]);
+
+        return parent::existsIn($em);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function isManagedBy(\Doctrine\ORM\EntityManagerInterface $em)
     {
 
