@@ -1,15 +1,19 @@
 <?php
 
 namespace Sphp\Html\Head;
-
+use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
 $headNS = $api->getNamespaceLink(__NAMESPACE__);
 $metaIfLnk = $api->getClassLink(MetaDataInterface::class);
-$head = $api->getClassLink(Head::class);
+$head = $api->classLinker(Head::class);
+$title = $api->classLinker(Title::class);
+$meta = $api->classLinker(Meta::class);
+$base = $api->classLinker(Base::class);
+$link = $api->classLinker(Link::class);
+$scriptInterface = $api->classLinker(ScriptInterface::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#HTML HEAD ELEMENTS
-
-
+#HTML HEAD Manipulation
+        
 $ns
         
 This namespace contains an implementation of the HTML head. This element is a container for metadata (data about data)t.
@@ -17,13 +21,13 @@ The $head component implements the HTML head tag and acts as a
 container for all meta data components (data about data) $metaIfLnk.
 This meta data is data about the HTML document and it is not directly displayed in any browsers.
 		
-The following classes in the $headNS package describe meta data:
+The following PHP classes describe HTML meta data components:
 
-* {$api->getClassLink(Title::class)}
-* {$api->getClassLink(Base::class)}
-* {$api->getClassLink(Meta::class)}
-* {$api->getClassLink(Link::class)}
-* {$api->getClassLink(\Sphp\Html\Programming\ScriptInterface::class)}
+* $title - {$w3schools->getTagLink(Title::TAG_NAME)}
+* $base - {$w3schools->getTagLink(Base::TAG_NAME)}
+* $meta - {$w3schools->getTagLink(Meta::TAG_NAME)}
+* $link - {$w3schools->getTagLink(Link::TAG_NAME)}
+* $scriptInterface - {$w3schools->getTagLink(ScriptInterface::TAG_NAME)}
 
 MD
 );
@@ -35,7 +39,14 @@ MD
 */
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head1.php", "html5", false);
 echo $parsedown->text(<<<MD
-The $head component has build in methods for 
+###The $head component and client side scripts
+        
+The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 
+This guarantees that all of the DOM elements needed are already present on the page. 
+Loading scripts earlier could introduce timing issues and unnesessary usage of 
+`window.onload` or some other method to determine when the DOM is ready to be used. 
+By including scripts at the bottom of the page, it is assured that the DOM is ready 
+to be poked and it is not reguired to delay initialization any further.
 MD
 ); 
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head2.php", "html5", false);
@@ -43,4 +54,4 @@ $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head2.php", "html5", false);
 //var_dump(FileUtils::executePhpToString(EXAMPLE_DIR . "html/head/head.php"));
 //$s->setSource(FileUtils::executePhpToString(EXAMPLE_DIR . "html/head/head.php"), "html5")->printHtml();
 
-$load("Sphp.Html.Programming.php");
+//$load("Sphp.Html.Programming.php");

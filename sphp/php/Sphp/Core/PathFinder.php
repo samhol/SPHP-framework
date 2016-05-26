@@ -117,6 +117,7 @@ class PathFinder implements Arrayable {
   /**
    * Returns the http path from the root
    *
+   * @param  string $relativePath
    * @return string the http path from the root
    * @throws ConfigurationException if path cannot be resolved
    */
@@ -130,6 +131,7 @@ class PathFinder implements Arrayable {
   /**
    * Returns the local path from the root
    *
+   * @param  string $relativePath
    * @return string the local path from the root
    * @throws ConfigurationException if path cannot be resolved
    */
@@ -138,6 +140,22 @@ class PathFinder implements Arrayable {
       throw new ConfigurationException("Relative path '$relativePath' does not exist");
     }
     return $this->localRoot . $relativePath;
+  }
+
+  /**
+   * Loads a local file to the application
+   *
+   * @param  string $filePath
+   * @return self for PHP Method Chaining
+   * @throws ConfigurationException if path cannot be resolved
+   */
+  public function loadFile($filePath) {
+    $path = $this->local($filePath);
+    if (!is_file($path)) {
+      throw new ConfigurationException("Relative path '$filePath' contains no file");
+    }
+    require_once $path;
+    return $this;
   }
 
   /**

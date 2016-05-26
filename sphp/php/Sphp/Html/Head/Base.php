@@ -14,7 +14,7 @@ use Sphp\Html\EmptyTag as EmptyTag,
  * Class models an HTML &lt;base&gt; tag
  *
  *  The &lt;base&gt; tag specifies the base URL/target for all relative URLs in 
- *  a document.  There can be at maximum one &lt;base&gt; element in a document, 
+ *  a document. There can be at maximum one &lt;base&gt; element in a document, 
  *  and it must be inside the &lt;head&gt; element.
  *
  * {@inheritdoc}
@@ -28,6 +28,11 @@ use Sphp\Html\EmptyTag as EmptyTag,
 class Base extends EmptyTag implements MetaDataInterface {
 
   /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "base";
+
+  /**
    * Constructs a new instance
    *
    * @param  string $href an absolute URL that acts as the base URL
@@ -36,7 +41,7 @@ class Base extends EmptyTag implements MetaDataInterface {
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function __construct($href = "", $target = "") {
-    parent::__construct("base");
+    parent::__construct(self::TAG_NAME);
     if (Strings::notEmpty($href)) {
       $this->setHref($href);
     }

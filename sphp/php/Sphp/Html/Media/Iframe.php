@@ -49,7 +49,8 @@ class Iframe extends AbstractIframe {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function setName($name) {
-    return $this->setAttr("name", $name);
+    $this->attrs()->set("name", $name);
+    return $this;
   }
 
   /**
@@ -59,7 +60,7 @@ class Iframe extends AbstractIframe {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName() {
-    return $this->getAttr("name");
+    return $this->attrs()->get("name");
   }
 
   /**

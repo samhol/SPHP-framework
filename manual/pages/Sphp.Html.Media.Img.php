@@ -37,3 +37,5 @@ MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Figure.php", false, true);
+
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/ImageMap.php", false, true);

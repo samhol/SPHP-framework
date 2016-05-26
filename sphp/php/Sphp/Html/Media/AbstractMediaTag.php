@@ -53,7 +53,7 @@ abstract class AbstractMediaTag extends AbstractComponent {
   /**
    * Sets (replaces) one of the video sources
    *
-   * @param  MultimediaContentInterface $src the given part of a table
+   * @param  MultimediaContentInterface $src a video sources
    * @return self for PHP Method Chaining
    */
   public function append(MultimediaContentInterface $src) {

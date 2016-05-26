@@ -42,7 +42,7 @@ class EmptyTag extends AbstractTag {
       $attrs = " " . $attrs;
     }
     $output = "<" . $this->getTagName() . $attrs;
-    if (Doc::isXHTML()) {
+    if (Document::isXHTML()) {
       $output .= " />";
     } else {
       $output .= ">";

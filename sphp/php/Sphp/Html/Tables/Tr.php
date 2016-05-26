@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Doc as Doc;
+use Sphp\Html\Document as Document;
 
 /**
  * Class models an HTML &lt;tr&gt; tag
@@ -161,7 +161,7 @@ class Tr extends ContainerTag implements RowInterface {
 			if ($cell instanceof Cell) {
 				$arr[] = $cell;
 			} else {
-				$arr[] = Doc::get($cellType)->append($cell);
+				$arr[] = Document::get($cellType)->append($cell);
 			}
 		}
 		return $arr;
@@ -182,7 +182,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * @link  http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetGet
 	 */
 	public function offsetSet($offset, $value) {
-		$cell = ($value instanceof Cell) ? $value : Doc::get($this->getDefaultCellType())->append($value);
+		$cell = ($value instanceof Cell) ? $value : Document::get($this->getDefaultCellType())->append($value);
 		parent::offsetSet($offset, $cell);
 	}
 

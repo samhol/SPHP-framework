@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Doc as Doc;
+use Sphp\Html\Document as Document;
 
 foreach (VisibilityHandler::getScreenTypeMap() as $const => $name) {
-	(new VisibilityHandler(Doc::get("p", "show Only For $name")))
+	(new VisibilityHandler(Document::get("p", "show Only For $name")))
 		->showOnlyFor($const)
 		->printHtml();
 }

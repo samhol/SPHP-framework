@@ -78,6 +78,7 @@ class Track extends EmptyTag implements MultimediaContentInterface {
    *
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function setSrc($src) {
     return $this->setAttr("src", $src);
@@ -87,6 +88,7 @@ class Track extends EmptyTag implements MultimediaContentInterface {
    * Returns the URL of the track file
    * 
    * @return string the URL of the track file
+   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function getSrc() {
     return $this->getAttr("src");

@@ -8,7 +8,7 @@ namespace Sphp\Core;
 //mb_internal_encoding("UTF-8");
 
 require_once(__DIR__ . "/../sphp/settings.php");
-require_once 'doctrineConfiguration.php';
+//require_once 'doctrineConfiguration.php';
 
 Configuration::useDomain("manual")
         ->phpConfiguration()
@@ -19,6 +19,7 @@ Configuration::useDomain("manual")
 //PHPConfiguration();
 //ErrorExceptionThrower::start();
 
+Configuration::current()->paths()->loadFile('manual/doctrineConfiguration.php');
 /**
  * Initializes default exceptionhandling mechanism
  */

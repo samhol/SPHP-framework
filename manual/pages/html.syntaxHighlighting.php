@@ -74,6 +74,6 @@ container for other elements. It has a implementation {$api->getClassLink(Contai
 
 Furthermore all actual framework components implement {$api->getClassLink(ComponentInterface::class)}
 
-###The {$api->getClassLink(Doc::class)} class
+###The {$api->getClassLink(Document::class)} class
 MD
 );

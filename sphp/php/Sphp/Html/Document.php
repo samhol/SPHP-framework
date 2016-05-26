@@ -18,7 +18,7 @@ use Sphp\Util\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Doc {
+class Document {
 
   /**
    * XHTML 1.0 version
@@ -55,7 +55,6 @@ class Doc {
   private static $tags = array(
       "a" => Navigation\Hyperlink::class,
       "abbr" => ContainerTag::class,
-      "acronym" => ContainerTag::class,
       "address" => ContainerTag::class,
       "area" => EmptyTag::class,
       "article" => ContainerTag::class,

@@ -90,7 +90,7 @@ class Head extends AbstractComponent {
   /**
    * Sets the title of the html page
    *
-   * @param  string|Title $title
+   * @param  string|Title $title the title of the html page
    * @return self for PHP Method Chaining
    */
   public function setTitle($title) {

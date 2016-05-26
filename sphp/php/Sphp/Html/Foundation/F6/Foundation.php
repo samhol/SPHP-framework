@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6;
 
 use Sphp\Util\Strings as Strings;
-use Sphp\Html\Doc as Doc;
+use Sphp\Html\Document as Document;
 use UnexpectedValueException;
 
 /**
@@ -53,7 +53,7 @@ class Foundation {
     if (!Strings::startsWith($name, "fi-")) {
       $name = "fi-" . $name;
     } 
-    $obj = Doc::get($tagName);
+    $obj = Document::get($tagName);
     $obj->addCssClass($name);
     return $obj;
   }

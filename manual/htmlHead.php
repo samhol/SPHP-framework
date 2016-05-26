@@ -7,7 +7,7 @@ use Sphp\Net\URL as URL;
 
 include_once("links.php");
 
-Doc::setHtmlVersion(Doc::HTML5);
+Document::setHtmlVersion(Document::HTML5);
 $currentUrl = URL::getCurrent();
 $title = "SPHP framework";
 //echo "<pre>";

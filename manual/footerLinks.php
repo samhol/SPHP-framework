@@ -4,10 +4,10 @@ namespace Sphp\Html\Foundation;
 
 use Sphp\Html\Foundation\F6\Navigation\Menu as Menu;
 use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
-use Sphp\Html\Doc as Doc;
+use Sphp\Html\Document as Document;
 
 $links["js"] = (new Menu())->vertical()
-        ->appendText("JavaScript " . Doc::icon("fa fa-code"))
+        ->appendText("JavaScript " . Document::icon("fa fa-code"))
         ->appendLink("https://jquery.com/", "jQuery", "_blank", "_blank")
         ->appendLink("http://foundation.zurb.com/", "Foundation", "_blank")
         ->appendLink("http://qtip2.com/", "qTip<sup>2</sup>", "_blank")
@@ -15,11 +15,11 @@ $links["js"] = (new Menu())->vertical()
         ->appendLink("http://zeroclipboard.org/", "ZeroClipboard", "_blank")
         ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade;", "_blank");
 $links["php"] = (new Menu())->vertical()
-        ->appendText("PHP" . Doc::icon("fa fa-code"))
+        ->appendText("PHP" . Document::icon("fa fa-code"))
         ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra", "_blank")
         ->appendLink("http://qbnz.com/highlighter/", "GeSHi", "_blank")
         ->appendLink("https://imagine.readthedocs.org", "Imagine", "_blank")
-        ->appendText("SQL" . Doc::icon("fa fa-database"))
+        ->appendText("SQL" . Document::icon("fa fa-database"))
         ->appendLink("https://www.mysql.com/", "MySQL", "_blank")
         ->appendLink("http://www.postgresql.org/", "Postgre SQL", "_blank");
 $links["sass"] = (new Menu())->vertical()
@@ -29,7 +29,7 @@ $links["sass"] = (new Menu())->vertical()
         ->appendLink("http://compass-style.org/", "Compass framework", "_blank")
         ->appendLink("http://foundation.zurb.com/sites/docs/sass.html", "Foundation SASS", "_blank");
 $links["tutorials"] = (new Menu())->vertical()
-        ->appendText("Misc. Tutorials" . Doc::icon("fa fa-book"))
+        ->appendText("Misc. Tutorials" . Document::icon("fa fa-book"))
         ->appendLink("https://developer.mozilla.org/", "<b>MDN</b>", "_blank")
         ->appendLink("http://stackoverflow.com/", "stack <b>Overflow</b>", "_blank")
         ->appendText('w3cschools.com')

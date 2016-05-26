@@ -4,16 +4,17 @@ namespace Sphp\Html;
 
 $abstractTag = $api->classLinker(AbstractTag::class);
 $ns = $api->getNamespaceLink(__NAMESPACE__);
-$documentLink = $api->getClassLink(Doc::class);
+$documentLink = $api->getClassLink(Document::class);
 $contentInterface = $api->classLinker(ContentInterface::class);
 $exeption = $php->classLinker(\Exception::class);
 $componentInterface = $api->getClassLink(ComponentInterface::class);
 $emptyTag = $api->getClassLink(EmptyTag::class);
 $containerInterface = $api->getClassLink(ContainerInterface::class);
 $containerComponentInterface = $api->getClassLink(ContainerComponentInterface::class);
+$nsbc = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#BASICS OF HTML MANIPULATION: $ns namespace
-
+#Introduction to HTML components
+$nsbc
 HTML is the standard markup language used to create Web pages.
 
 >HTML is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
@@ -26,7 +27,7 @@ tag is the end tag (they are also called opening tags and closing tags).<cite>[[
 The content of the $ns namespace enables the creation of the HTML documents in object oriented PHP.
 
 This PHP framework started first as an implementation of the basic html structure in PHP language.
-Therefore the basic interfaces and their build in class implementations describe these HTML properties quite extensively.
+Therefore the basic interfaces and their build in implementations describe these HTML properties quite extensively.
 
 **Links to HTML-resources:**
 
@@ -86,7 +87,6 @@ Furthermore all actual framework components implement {$api->getClassLink(Compon
 
 MD
 );
-$load("Sphp.Html.Document.php");
 echo $parsedown->text(<<<MD
 ##The {$api->getClassLink(AbstractTag::class)} class
 
@@ -101,3 +101,4 @@ MD
 //PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php");
 $load("Sphp.Html.AjaxLoaderInterface.php");
+$load("Sphp.Html.Document.php");

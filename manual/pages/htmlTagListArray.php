@@ -178,7 +178,7 @@ $p[] = ["Programming",
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Doc as Doc;
+use Sphp\Html\Document as Document;
 use Sphp\Util\Strings as Strings;
 
 $generateTagTable = function(array $v) use ($api, $w3schools) {
@@ -192,7 +192,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $body[] = new Th($data, "colgroup", 4);
     } else {
       $c = array();
-      $tag = Doc::get($data[0]);
+      $tag = Document::get($data[0]);
       $ref = new \ReflectionClass($tag);
       //$linkText = htmlspecialchars("$tag");
       $linkText = "&lt;" . $tag->getTagName();

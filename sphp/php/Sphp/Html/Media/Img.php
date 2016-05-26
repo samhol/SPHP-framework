@@ -58,13 +58,23 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
    */
   public function __construct($src = "", $alt = "") {
-    /* if (!($src instanceof URL)) {
-      $src = new URL($src);
-      } */
     parent::__construct(self::TAG_NAME);
     $this->attrs()->demand("alt");
     $this->setSrc($src)
             ->setAlt($alt);
+  }
+
+  /**
+   * 
+   * @param  string $mapName
+   * @return self for PHP Method Chaining
+   */
+  public function useMap($mapName) {
+    if (!\Sphp\Util\Strings::startsWith($mapName, "#")) {
+      $mapName = "#$mapName";
+    }
+    $this->attrs()->set("usemap", $mapName);
+    return $this;
   }
 
   /**
