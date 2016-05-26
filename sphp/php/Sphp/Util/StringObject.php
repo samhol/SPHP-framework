@@ -90,8 +90,7 @@ class StringObject implements \IteratorAggregate, \Countable {
 
   /**
    * Checks whether the string is empty
-   * @assert ("abc") == false
-   * @assert ("") == true
+   * 
    * @return boolean true if the string is empty, false otherwise
    */
   public function isEmpty() {

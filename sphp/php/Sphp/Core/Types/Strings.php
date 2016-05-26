@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Util;
+namespace Sphp\Core\Types;
 
 /**
  * Utility class for PHP string operations
