@@ -8,7 +8,7 @@
 namespace Sphp\Core\Types;
 
 /**
- * Utility class for PHP string operations
+ * Utility class for multibyte string operations
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-22
@@ -19,47 +19,114 @@ namespace Sphp\Core\Types;
 class Strings {
 
   /**
-   * Perform a regular expression match.
+   * Performs a regular expression match
    *
+   * @param  string $string the input string
    * @param  string $pattern the pattern to search for, as a string
-   * @param  string $str the input string
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
    * @return boolean true if string matches to the regular expression, false otherwise
    */
-  public static function match($pattern, $str) {
-    return preg_match($pattern, $str) === 1;
+  public static function match($string, $pattern, $encoding = "UTF-8") {
+    $regexEncoding = mb_regex_encoding();
+    mb_regex_encoding($encoding);
+    $match = \mb_ereg_match($pattern, $string);
+    mb_regex_encoding($regexEncoding);
+    return $match;
   }
 
   /**
-   * Perform a regular expression match.
+   * Replaces a regular expression with multibyte support
    *
+   * @param  string $string the input string
    * @param  string $pattern the pattern to search for, as a string
-   * @param  string $str the input string
-   * @return boolean true if string matches to the regular expression, false otherwise
+   * @param  string $replacement the replacement text.
+   * @param  string $option
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
+   * @return string|boolean the resultant string on success, or false on error
+   * @link   http://php.net/manual/en/function.mb-ereg-replace.php
    */
-  public static function replace($pattern, $replacement, $subject, $limit = -1) {
-    return preg_replace($pattern, $replacement, $subject, $limit);
+  public static function eregReplace($string, $pattern, $replacement, $option = 'msr', $encoding = "UTF-8") {
+    $regexEncoding = mb_regex_encoding();
+    mb_regex_encoding($encoding);
+    $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
+    mb_regex_encoding($regexEncoding);
+    return $result;
+  }
+
+  /**
+   * Returns a string with whitespace removed from the start and end of the
+   * string. Supports the removal of unicode whitespace. Accepts an optional
+   * string of characters to strip instead of the defaults.
+   *
+   * @param  string  $chars Optional string of characters to strip
+   * @return StringObject Object with a trimmed $str
+   */
+  public static function trim($chars = null) {
+    $chars = ($chars) ? preg_quote($chars) : '[:space:]';
+    return $this->regexReplace("^[$chars]+|[$chars]+\$", '');
+  }
+
+  /**
+   * Returns a string with whitespace removed from the start of the string.
+   * Supports the removal of unicode whitespace. Accepts an optional
+   * string of characters to strip instead of the defaults.
+   *
+   * @param  string  $chars Optional string of characters to strip
+   * @return StringObject Object with a trimmed $str
+   */
+  public static function trimLeft($chars = null) {
+    $chars = ($chars) ? preg_quote($chars) : '[:space:]';
+    return $this->regexReplace("^[$chars]+", '');
+  }
+
+  /**
+   * Returns a string with whitespace removed from the end of the string.
+   * Supports the removal of unicode whitespace. Accepts an optional
+   * string of characters to strip instead of the defaults.
+   *
+   * @param  string  $chars Optional string of characters to strip
+   * @return StringObject Object with a trimmed $str
+   */
+  public static function trimRight($chars = null) {
+    $chars = ($chars) ? preg_quote($chars) : '[:space:]';
+    return $this->regexReplace("[$chars]+\$", '');
   }
 
   /**
    * Tests whether the string contains the substring or not
    *
-   * @param  string $needle the substring to search for
    * @param  string $haystack the string being checked
+   * @param  string $needle the substring to search for
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
    * @return boolean true if needle was found from the haystack string, false otherwise
    */
-  public static function contains($needle, $haystack) {
-    return mb_strpos($haystack, $needle) !== false;
+  public static function contains($haystack, $needle, $encoding = "UTF-8") {
+    return (mb_stripos($haystack, $needle, 0, $encoding) !== false);
+  }
+
+  /**
+   * Checks whether the haystack string contains all $needles
+   *
+   * @param  string $haystack the string being checked
+   * @param  string[] $needles Substrings to look for
+   * @return bool whether or not the haystack contains $needle
+   */
+  public static function containsAll($haystack, array $needles, $encoding = "UTF-8") {
+    if (empty($needles)) {
+      return false;
+    } else {
+      foreach ($needles as $needle) {
+        if (!self::contains($haystack, $needle, $encoding)) {
+          return false;
+        }
+      }
+      return true;
+    }
   }
 
   /**
    * Checks whether a $haystack string starts with any of the given needles
    *
-   * @assert ("abc", "a") == true
-   * @assert ("abc", "ab") == true
-   * @assert ("abc", ["ab", "a"]) == true
-   * @assert ("abc", "") == true
-   * @assert ("", "a") == false
-   * @assert ("", "0") == false
    * @param  string $haystack the string being checked
    * @param  string|string[] $choices the starts to compare with
    * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
@@ -101,67 +168,65 @@ class Strings {
   }
 
   /**
-   * Checks whether the given strings are not empty.
+   * Returns the character at $index, with indexes starting at 0
    *
-   * **Important:** The following strings are considered as empty.
-   * 
-   * 1. `null`
-   * 2. ""
-   * 3. strings containing only spaces, linebreaks, tabs
-   * 
-   * @param  string|string[] $str checked strings
-   * @return boolean true if the strings are not empty, false otherwise
+   * @param  int $index position of the character
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
+   * @return string|null the character at $index or null if the index does not exist
    */
-  public static function notEmpty($str) {
-    if (is_array($str)) {
-      foreach ($str as $s) {
-        if (!self::notEmpty($s)) {
-          return false;
-        }
-      }
+  public static function charAt($string, $index, $encoding = "UTF-8") {
+    $length = static::length($string);
+    $result = null;
+    if ($index >= 0 && $length > $index) {
+      $result = mb_substr($string, $index, 1, $encoding);
     }
-    return (isset($str) && self::length($str) > 0 && !self::match("/^[ \n\r\t]*$/", $str));
+    return $result;
   }
 
   /**
-   * Checks whether the given strings are empty
-
-   * **Important:** The following strings are considered as empty.
-   * 
-   * 1. `null`
-   * 2. ""
-   * 3. strings containing only spaces, linebreaks, tabs
-   * 
-   * @param  string|string[] $str checked strings
-   * @return boolean true if the strings are empty, false otherwise
+   * Checks whether the given string is not empty
+   *
+   * @param  string $string checked string
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
+   * @return boolean true if the string is not empty, false otherwise
    */
-  public static function isEmpty($str) {
-    return !self::notEmpty($str);
+  public static function notEmpty($string, $encoding = "UTF-8") {
+    return self::length($string, $encoding) > 0;
+  }
+
+  /**
+   * Checks whether the given string is empty
+   * 
+   * @param  string $string checked string
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
+   * @return boolean true if the string is empty, false otherwise
+   */
+  public static function isEmpty($string, $encoding = "UTF-8") {
+    return !self::notEmpty($string, $encoding);
   }
 
   /**
    * Returns the length of the given string
    * 
    * @param  string $str a string
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
    * @return int the length of the given string
    */
-  public static function length($str) {
-    return mb_strlen($str, "UTF-8");
+  public static function length($str, $encoding = "UTF-8") {
+    return mb_strlen($str, $encoding);
   }
 
   /**
    * Determines if the string length is on a given closed interval
    *
-   * @assert ("abc", 0, 1) == false
-   * @assert ("abc", 0, 3) == true
-   * @assert ("abc", 3, 3) == true
    * @param  string $str checked string
    * @param  int $lower lower limit
    * @param  int $upper upper limit
+   * @param  string $encoding the encoding parameter is the character encoding. Defaults to `UTF-8`
    * @return boolean true if the string length is on a given closed interval, false otherwise.
    */
-  public static function lengthBetween($str, $lower, $upper) {
-    $length = self::length($str);
+  public static function lengthBetween($str, $lower, $upper, $encoding = "UTF-8") {
+    $length = self::length($str, $encoding);
     return ($lower <= $length && $length <= $upper);
   }
 
