@@ -174,7 +174,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @param  mixed   $str      Value to modify, after being cast to string
    * @param  string  $encoding The character encoding
-   * @return StringObject A StringObject object
+   * @return self an instance
    * @throws \InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
@@ -226,37 +226,8 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
     //$result["args"] = $this->parseParams($stringsClass->getMethod($name), $args);
     if (!$stringsClass->hasMethod($name)) {
       throw new BadMethodCallException($name . ' is not a valid method');
-      //$result = $this->parseMethod($method,$args);
-      //  $method = $stringsClass->getMethod($name);
-      /* $data = [
-        //"method" => $stringsClass->getMethod($name),
-        "method_call" => $stringsClass->getName() . "::" . $name,
-        "num_params" => $method->getNumberOfParameters(),
-        "num_required" => $method->getNumberOfRequiredParameters(),
-        "num_optional" => $method->getNumberOfParameters() - $method->getNumberOfRequiredParameters(),
-        //"params" => $method->getParameters(),
-        ]; */
-      //$result = array_merge($data, ["args" => $this->parseParams($stringsClass->getMethod($name), $args)]);
-      // static::$methodArgs[$name] = $data;
-      //$result["args"] = $this->parseParams(static::$methodArgs[$name]["method"], $args);
     }
     $call = $stringsClass->getName() . "::" . $name;
-    /* \array_unshift($arguments, $this->str);
-      $numArgs = count($arguments);
-      if ($me["num_required"] > $numArgs) {
-      throw new BadMethodCallException($me["num_required"] . ' argyments required for method ' . $name);
-      }
-      $defaults = \array_replace($me["defaults"], $arguments);
-      for ($i = 0; $i < $me["num_params"]; $i++) {
-
-      }
-      //print_r(static::$methodArgs[$name]["num_params"]);
-      // $numArgs = count($arguments);
-      // var_dump($arguments);
-      print_r(static::$methodArgs[$name]);
-      // var_dump($args);
-     */
-    // var_dump($this->parseParams($name, $arguments));
     $result = \call_user_func_array($call, $this->parseParams($name, $arguments));
     if (is_string($result) && $name != "charAt") {
       return static::create($result, $this->getEncoding());
@@ -266,9 +237,9 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Returns the length of the string, implementing the countable interface.
+   * Returns the length of the string
    *
-   * @return int The number of characters in the string, given the encoding
+   * @return int the length of the string
    */
   public function count() {
     return $this->length();
