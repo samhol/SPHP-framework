@@ -8,22 +8,6 @@ namespace Sphp\Core\Types;
 class StringsTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    //$this->object = new String("string");
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    
-  }
-
-  /**
    * 
    * @return array
    */
@@ -32,7 +16,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Tools\String::isEmpty
+   * @covers Sphp\Core\Types\Strings::isEmpty
    * @dataProvider emptyStrings
    */
   public function testEmpty($empty) {
@@ -50,7 +34,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Tools\String::isEmpty
+   * @covers Sphp\Core\Types\Strings::isEmpty
    * @dataProvider nonEmptyStrings
    */
   public function testNonEmpty($nonEmpty) {
@@ -58,8 +42,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue(Strings::notEmpty($nonEmpty));
     $this->assertFalse(Strings::length($nonEmpty) == 0);
   }
-  
-  
+
   /**
    * 
    * @return array
@@ -82,11 +65,11 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
         ["åäö", "å"],
         ["åäö", "åä"],
         ["åäö", "åäö"]
-        ];
+    ];
   }
 
   /**
-   * @covers Sphp\Tools\String::startsWith
+   * @covers Sphp\Core\Types\Strings::startsWith
    * @dataProvider startsWith
    */
   public function testStartsWith($haystack, $needle) {
@@ -115,10 +98,11 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
         ["åäö", "ö"],
         ["åäö", "äö"],
         ["åäö", "åäö"]
-        ];
+    ];
   }
+
   /**
-   * @covers Sphp\Tools\String::startsWith
+   * @covers Sphp\Core\Types\Strings::startsWith
    * @dataProvider endsWith
    */
   public function testEndsWith($haystack, $needle) {
@@ -147,14 +131,126 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
         ["åäö", "ä"],
         ["åäö", "å"],
         ["åäö", "Ö"]
-        ];
+    ];
   }
+
   /**
-   * @covers Sphp\Tools\String::startsWith
+   * @covers Sphp\Core\Types\Strings::startsWith
    * @dataProvider endsNotWith
    */
   public function testNotEndsWith($haystack, $needle) {
     $this->assertFalse(Strings::endsWith($haystack, $needle));
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function ordinalizeData() {
+    $nums = range(4, 20);
+    foreach ($nums as $num) {
+      echo "$num\n";
+      $arr[] = [$num, $num . "th"];
+      $arr[] = ["$num", $num . "th"];
+    }
+    $arr[] = ["-2", "-2nd"];
+    $arr[] = [1, "1st"];
+    $arr[] = ["1", "1st"];
+    $arr[] = [2, "2nd"];
+    $arr[] = ["2", "2nd"];
+    $arr[] = ["3", "3rd"];
+    return $arr;
+  }
+
+  /**
+   * @covers Sphp\Core\Types\Strings::startsWith
+   * @dataProvider ordinalizeData
+   * @param string $string
+   * @param string $expected
+   */
+  public function testOrdinalize($string, $expected) {
+    $this->assertEquals(Strings::ordinalize($string), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function trimData() {
+    return [
+        ["", null, ""],
+        [" ", null, ""],
+        ["  ", " ", ""],
+        ["   ", null, ""],
+        [" a aa a ", null, "a aa a"],
+        [" a abba a ", " a", "bb"],
+        ["\n\tstring\t\n", "\n", "\tstring\t"],
+        [121, 1, 2],
+    ];
+  }
+
+  /**
+   * @covers Sphp\Core\Types\Strings::trim
+   * @dataProvider trimData
+   * @param string $string
+   * @param string $charsToTrim
+   */
+  public function testTrim($string, $charsToTrim, $expected) {
+    $this->assertEquals(Strings::trim($string, $charsToTrim), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function trimLeftData() {
+    return [
+        ["", null, ""],
+        [" ", null, ""],
+        ["  ", " ", ""],
+        ["   ", null, ""],
+        [" a aa a ", null, "a aa a "],
+        [" a abba a ", " a", "bba a "],
+        ["\n\tstring\t\n", "\n", "\tstring\t\n"],
+        [121, 1, 21],
+    ];
+  }
+
+  /**
+   * @covers Sphp\Core\Types\Strings::trimLeft
+   * @dataProvider trimLeftData
+   * @param string $string
+   * @param string $charsToTrim
+   */
+  public function testLeftTrim($string, $charsToTrim, $expected) {
+    $this->assertEquals(Strings::trimLeft($string, $charsToTrim), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function trimRightData() {
+    return [
+        ["", null, ""],
+        [" ", null, ""],
+        ["  ", " ", ""],
+        ["   ", null, ""],
+        [" a aa a ", null, " a aa a"],
+        [" a abba a ", "a ", " a abb"],
+        ["\n\tstring\t\n", "\n", "\n\tstring\t"],
+        [121, 1, 12],
+    ];
+  }
+
+  /**
+   * @covers Sphp\Core\Types\Strings::trimRight
+   * @dataProvider trimRightData
+   * @param string $string
+   * @param string $charsToTrim
+   */
+  public function testRightTrim($string, $charsToTrim, $expected) {
+    $this->assertEquals(Strings::trimRight($string, $charsToTrim), $expected);
   }
 
 }
