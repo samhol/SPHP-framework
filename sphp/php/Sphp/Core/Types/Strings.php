@@ -111,6 +111,24 @@ class Strings {
   }
 
   /**
+   * Trims the string and replaces consecutive whitespace characters with a
+   * single space
+   * 
+   * This includes tabs and newline characters, as well as multibyte whitespace 
+   * such as the thin space and ideographic space.
+   *
+   * @param  string $string the input string
+   * @param  string $encoding the encoding parameter is the character encoding.
+   *         Defaults to `mb_internal_encoding()`
+   * @return string the trimmed string
+   */
+  public static function collapseWhitespace($string, $encoding = null) {
+    $enc = self::getEncoding($encoding);
+    $collapsed = static::regexReplace($string, '[[:space:]]+', ' ', 'msr', $enc);
+    return static::trim($collapsed, null, $enc);
+  }
+
+  /**
    * Tests whether the string contains the substring or not
    *
    * @param  string $haystack the string being checked
@@ -231,6 +249,44 @@ class Strings {
       $chars[] = mb_substr($string, $i, 1, $enc);
     }
     return $chars;
+  }
+
+  /**
+   * Returns the index of the first occurrence of $needle in the string,
+   * and false if not found. Accepts an optional offset from which to begin
+   * the search.
+   *
+   * @param  string $needle Substring to look for
+   * @param  int $offset Offset from which to search
+   * @return int|bool The occurrence's index if found, otherwise false
+   */
+  public static function indexOf($string, $needle, $offset = 0, $encoding = null) {
+    $enc = self::getEncoding($encoding);
+    return \mb_strpos($string, (string) $needle, (int) $offset, $enc);
+  }
+
+  /**
+   * Returns the substring between $start and $end, if found, or an empty
+   * string. An optional offset may be supplied from which to begin the
+   * search for the start string.
+   *
+   * @param  string $start  Delimiter marking the start of the substring
+   * @param  string $end Delimiter marketing the end of the substring
+   * @param  int $offset Index from which to begin the search
+   * @return string Object whose $str has been converted to an URL slug
+   */
+  public static function between($string, $start, $end, $offset = 0, $encoding = null) {
+    $enc = self::getEncoding($encoding);
+    $startIndex = static::indexOf($string, $start, $offset, $encoding);
+    if ($startIndex === false) {
+      return $string;
+    }
+    $substrIndex = $startIndex + \mb_strlen($start, $enc);
+    $endIndex = static::indexOf($string, $end, $substrIndex, $encoding);
+    if ($endIndex === false) {
+      return "";
+    }
+    return static::substr($string, $substrIndex, $endIndex - $substrIndex, $enc);
   }
 
   /**

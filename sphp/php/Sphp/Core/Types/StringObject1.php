@@ -76,16 +76,6 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Returns a new string with $string appended.
-   *
-   * @param  string  $string The string to append
-   * @return StringObject Object with appended $string
-   */
-  public function append($string) {
-    return static::create($this->str . $string, $this->encoding);
-  }
-
-  /**
    * Returns the character at $index, with indexes starting at 0
    *
    * @param  int $index position of the character
