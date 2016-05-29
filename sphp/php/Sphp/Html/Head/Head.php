@@ -10,7 +10,7 @@ namespace Sphp\Html\Head;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Container as Container;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
 

@@ -7,7 +7,7 @@
 
 namespace Sphp\Util\Filters;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Filter converts a numeric input value to a corresponding roman numeral

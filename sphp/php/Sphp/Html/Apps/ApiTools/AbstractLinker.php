@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\ApiTools;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 
 /**

@@ -24,7 +24,7 @@ $value = filter_input(\INPUT_GET, "value");
 
 namespace Sphp\Validation;
 
-//use Sphp\Util\Strings as Strings;
+//use Sphp\Core\Types\Strings as Strings;
 $validator = new ValidatorAggregate();
 //var_dump(isset($data["pattern"]));
 /* if (is_string($data["pattern"])) {

@@ -11,7 +11,7 @@ use Countable;
 use ArrayAccess;
 use IteratorAggregate;
 use Sphp\Util\Arrays as Arrays;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag

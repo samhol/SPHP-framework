@@ -8,7 +8,7 @@
 namespace Sphp\Validation;
 
 use Sphp\Db\Objects\User as User;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class validates a username
@@ -38,7 +38,7 @@ class UserNameValidator extends AbstractOptionalValidator {
     if (!Strings::lengthBetween($username, 6, 12)) {
       $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
     }
-    if (!Strings::match("/^([a-zA-Z0-9]){1,}$/", $username)) {
+    if (!Strings::match($username, "/^([a-zA-Z0-9]){1,}$/")) {
       $this->createErrorMessage("Please insert alphabets and numbers only");
     }
     /* if (!$user->isUnique()) {

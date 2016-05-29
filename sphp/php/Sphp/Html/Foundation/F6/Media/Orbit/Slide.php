@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Lists\LiInterface as LiComponent;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class implements a slide for Foundation {@link Orbit} components

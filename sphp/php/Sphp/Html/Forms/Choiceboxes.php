@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Forms\Input\Input as InputTag;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * A component containing multiple radio or checkbox inputs

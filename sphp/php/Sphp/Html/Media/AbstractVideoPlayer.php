@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Net\URL as URL;
 
 /**

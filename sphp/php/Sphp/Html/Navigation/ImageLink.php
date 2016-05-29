@@ -12,7 +12,7 @@ use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 use Sphp\Html\Media\SizeableInterface as SizeableInterface;
 use Sphp\Html\Media\Img as Img;
 use Sphp\Html\Media\Size as Size;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Net\URL as URL;
 
 /**

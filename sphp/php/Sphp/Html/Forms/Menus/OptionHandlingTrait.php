@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Menus;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * A trait for handling the {@link Option} objects inside the {@link Optgroup} and {@link Select} containers

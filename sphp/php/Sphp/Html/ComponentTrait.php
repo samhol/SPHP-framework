@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;

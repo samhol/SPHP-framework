@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class models an HTML &lt;link&gt; tag
@@ -46,13 +46,13 @@ class Link extends EmptyTag implements MetaDataInterface {
   public function __construct($href = "", $rel = "stylesheet", $media = "screen") {
     parent::__construct(self::TAG_NAME);
     $this->setAttrRequired("rel");
-    if (Strings::notEmpty($href)) {
+    if ($href !== null) {
       $this->setHref($href);
     }
-    if (Strings::notEmpty($rel)) {
+    if ($rel !== null) {
       $this->setRel($rel);
     }
-    if (Strings::notEmpty($media)) {
+    if ($media !== null) {
       $this->setMedia($media);
     }
   }
@@ -73,7 +73,7 @@ class Link extends EmptyTag implements MetaDataInterface {
    */
   public function setHref($href, $encode = true) {
     if ($encode) {
-      $href = Strings::htmlentities($href);
+      $href = Strings::htmlEncode($href);
     }
     return $this->setAttr("href", $href);
   }

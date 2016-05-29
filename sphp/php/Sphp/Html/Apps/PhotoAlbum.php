@@ -9,7 +9,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Div as Div;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;

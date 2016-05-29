@@ -248,9 +248,57 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider trimRightData
    * @param string $string
    * @param string $charsToTrim
+   * @param string $expected
    */
   public function testRightTrim($string, $charsToTrim, $expected) {
     $this->assertEquals(Strings::trimRight($string, $charsToTrim), $expected);
   }
 
+  /**
+   * 
+   * @return array
+   */
+  public function isJsonData() {
+    return [
+        ['["a", "b"]', true],
+        ['["a", "b"3]', false],
+        ['{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}', true]
+    ];
+  }
+
+  /**
+   * @covers Sphp\Core\Types\Strings::trimRight
+   * @dataProvider isJsonData
+   * @param string $string
+   * @param string $expected
+   */
+  public function testIsJson($string, $expected) {
+    $this->assertEquals(Strings::isJson($string), $expected);
+  }
+  
+  public function testMatch() {
+    $this->assertTrue(Strings::match("aria-hidden", "/^[a-zA-Z][\w:.-]*$/"));
+    $this->assertTrue(Strings::match("aria", "/^[a-zA-Z][\w:.-]*$/"));
+  }
 }

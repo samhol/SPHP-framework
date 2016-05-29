@@ -29,10 +29,12 @@ class Strings {
    */
   public static function match($string, $pattern, $encoding = null) {
     $regexEncoding = mb_regex_encoding();
-    mb_regex_encoding(self::getEncoding($encoding));
-    $match = \mb_ereg_match($pattern, $string);
-    mb_regex_encoding($regexEncoding);
-    return $match;
+    \mb_regex_encoding(self::getEncoding($encoding));
+    //$match = \mb_ereg($pattern, $string);
+    
+    \mb_regex_encoding($regexEncoding);
+    return preg_match($pattern, $string) === 1;
+    return $match === 1;
   }
 
   /**
@@ -191,7 +193,7 @@ class Strings {
       return true;
     } else {
       $enc = self::getEncoding($encoding);
-      return mb_substr($haystack, -mb_strlen($needle, $enc), null, $enc) === $needle;
+      return \mb_substr($haystack, -\mb_strlen($needle, $enc), null, $enc) === $needle;
     }
   }
 
@@ -283,21 +285,104 @@ class Strings {
   }
 
   /**
+   * Checks whether or not the input string contains only alphabetic chars
+   * 
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only alphabetic chars, false otherwise.
+   */
+  public static function isAlpha($string, $encoding = null) {
+    return self::match($string, '^[[:alpha:]]*$', $encoding);
+  }
+
+  /**
+   * Checks whether or not the input string contains only alphanumeric chars
+   *
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only alphanumeric chars, false otherwise.
+   */
+  public static function isAlphanumeric($string, $encoding = null) {
+    return self::match($string, '^[[:alnum:]]*$', $encoding);
+  }
+
+  /**
+   * Checks whether or not the input string contains only whitespace chars
+   *
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only whitespace chars, false otherwise.
+   */
+  public static function isBlank($string, $encoding = null) {
+    return self::match($string, '^[[:space:]]*$', $encoding);
+  }
+
+  /**
+   * Checks whether or not the input string contains only hexadecimal chars
+   *
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
+   */
+  public static function isHexadecimal($string, $encoding = null) {
+    return self::match($string, '^[[:xdigit:]]*$', $encoding);
+  }
+
+  /**
    * Returns true if the string is JSON, false otherwise. Unlike json_decode
    * in PHP 5.x, this method is consistent with PHP 7 and other JSON parsers,
    * in that an empty string is not considered valid JSON.
    *
-   * @param  string $str checked string
+   * @param  string $string checked string
    * @param  string|null $encoding the encoding parameter is the character encoding. 
    *                Defaults to `mb_internal_encoding()`
    * @return bool Whether or not $str is JSON
    */
-  public function isJson($str, $encoding = null) {
-    if (!static::length($str, $encoding)) {
+  public static function isJson($string, $encoding = null) {
+    if (!static::length($string, $encoding)) {
       return false;
     }
-    json_decode($str);
+    json_decode($string);
     return (json_last_error() === JSON_ERROR_NONE);
+  }
+
+  /**
+   * Checks whether or not the input string contains only upper case characters
+   *
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only upper chars, false otherwise.
+   */
+  public static function isUpperCase($string, $encoding = null) {
+    return self::match($string, '^[[:upper:]]*$', $encoding);
+  }
+
+  /**
+   * Checks whether or not the input string contains only lower case characters
+   *
+   * @param  string $string checked string
+   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   *                Defaults to `mb_internal_encoding()`
+   * @return bool Returns true if the string contains only lower chars, false otherwise.
+   */
+  public static function isLowerCase($string, $encoding = null) {
+    return self::match($string, '^[[:lower:]]*$', $encoding);
+  }
+
+  /**
+   * Checks whether or not the input string is serialized
+   * Returns true if the string is serialized, false otherwise.
+   *
+   * @param  string $string checked string
+   * @return bool Returns true if the string is serialized, false otherwise.
+   */
+  public static function isSerialized($string) {
+    return $string === 'b:0;' || @unserialize($string) !== false;
   }
 
   /**

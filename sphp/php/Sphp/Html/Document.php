@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Document class contains basic Sphp HTML tag component creation and HTML version handing.

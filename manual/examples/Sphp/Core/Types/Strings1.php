@@ -13,8 +13,8 @@ var_dump(
 		Strings::notEmpty(TRUE));
 echo "matching:\n";
 var_dump(
-		Strings::match('/^[0-9]+$/', "0 1 2"),
-		Strings::match("/^([0-9a-zA-ZäöåÄÖÅ])*$/", "123abc"));
+		Strings::match("0 1 2", '/^[0-9]+$/'),
+		Strings::match("123abc", "/^([0-9a-zA-ZäöåÄÖÅ])*$/"));
 echo "start & end:\n";
 var_dump(
 		Strings::startsWith("0 1", "0 1 2"),

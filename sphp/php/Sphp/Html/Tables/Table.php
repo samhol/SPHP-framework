@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Container as Container;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 /**

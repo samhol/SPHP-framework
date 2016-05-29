@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager as HtmlAttributeManager;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers

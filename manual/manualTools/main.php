@@ -14,7 +14,7 @@ use Sphp\Html\Apps\ApiTools\FoundationDocsLinker as FoundationDocsLinker;
 use Sphp\Html\Apps\ApiTools\W3schoolsLinker as W3schoolsLinker;
 use Sphp\Html\Apps\ApiTools\PHPManualLinker as PHPManualLinker;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 class ExampleViewer extends CodeExampleAccordion {
 

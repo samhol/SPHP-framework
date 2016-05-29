@@ -8,7 +8,7 @@
 namespace Sphp\Html\Navigation;
 
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 use Sphp\Net\URL as URL;
 
 /**
@@ -54,7 +54,7 @@ trait HyperlinkTrait {
    */
   public function setHref($href, $encode = true) {
     if ($encode) {
-      $href = Strings::htmlentities($href);
+      $href = Strings::htmlEncode($href);
     }
     $this->attrs()->set("href", $href);
     return $this;

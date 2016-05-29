@@ -12,7 +12,7 @@ use ArrayAccess;
 use IteratorAggregate;
 use SplObjectStorage;
 use Sphp\Util\Arrays as Arrays;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag
@@ -203,7 +203,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->set($value);
     } else {
-      if (!Strings::match("/^[a-zA-Z][\w:.-]*$/", $name)) {
+      if (!Strings::match($name, "/^[a-zA-Z][\w:.-]*$/")) {
         throw new InvalidAttributeException("Malformed Attribute name '$name'");
       }
       if ($this->isLocked($name)) {

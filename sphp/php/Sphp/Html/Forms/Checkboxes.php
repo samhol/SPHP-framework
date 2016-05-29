@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * A component containing multiple {@link Checkbox} inputs

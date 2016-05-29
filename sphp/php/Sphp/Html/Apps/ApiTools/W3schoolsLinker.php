@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\ApiTools;
 
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-use Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Link generator for w3schools Docs related hyperlinks
@@ -39,7 +39,7 @@ class W3schoolsLinker extends AbstractLinker {
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function getTagLink($tagname, $linkText = null) {
-    if (Strings::match("/^([h][1-6])$/", $tagname)) {
+    if (Strings::match($tagname, "/^([h][1-6])$/")) {
       $link = "tags/tag_hn.asp";
     } else {
       $link = "tags/tag_$tagname.asp";
