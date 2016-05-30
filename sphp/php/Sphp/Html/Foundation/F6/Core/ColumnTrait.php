@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Util\BitMask as BitMask;
+use Sphp\Core\Types\BitMask as BitMask;
 
 /**
  * Trait implements functionality for {@link ColumnInterface} 

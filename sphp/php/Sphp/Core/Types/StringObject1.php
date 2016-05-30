@@ -10,7 +10,7 @@ use InvalidArgumentException;
 use IteratorAggregate;
 use OutOfBoundsException;
 
-class StringObject implements Countable, IteratorAggregate, ArrayAccess {
+class StringObject_del implements Countable, IteratorAggregate, ArrayAccess {
 
   /**
    * An instance's string.

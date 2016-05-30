@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\WrappingContainer as WrappingContainer;
-use Sphp\Util\BitMask as BitMask;
+use Sphp\Core\Types\BitMask as BitMask;
 
 /**
  * Class makes it possible to evenly split contents of a list within the grid.

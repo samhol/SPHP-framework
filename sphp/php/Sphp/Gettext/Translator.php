@@ -7,7 +7,7 @@
 
 namespace Sphp\Gettext;
 
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * A class for natural language translations

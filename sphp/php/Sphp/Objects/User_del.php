@@ -7,7 +7,7 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Util\Permissions as Permissions;
 use Sphp\Net\Password as Password;
 use Sphp\Net\HashedPassword as HashedPassword;

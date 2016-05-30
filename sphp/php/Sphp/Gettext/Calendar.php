@@ -7,6 +7,8 @@
 
 namespace Sphp\Gettext;
 
+use Sphp\Core\Types\Arrays as Arrays;
+
 /**
  * Class localizes weekday and month names
  *
@@ -186,7 +188,7 @@ class Calendar implements TranslatorChangerChainInterface {
 	 * @return string[] the names or the abbreviations of the weekday names
 	 */
 	public function getWeekdays($length = null, $firstDay = self::MON) {
-		$days = \Sphp\Util\Arrays::copy(self::$weekdays);
+		$days = Arrays::copy(self::$weekdays);
 		if ($firstDay !== self::MON) {
 			$first = array_slice(self::$weekdays, $firstDay - 1);
 			$last = array_slice(self::$weekdays, 0, (7 - count($first)));

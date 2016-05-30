@@ -9,6 +9,7 @@ namespace Sphp\Validation;
 
 use Sphp\Gettext\TopicList as TopicList;
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Class validates a given formdata.
@@ -76,7 +77,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
   public function validate($data) {
     $this->reset();
     foreach ($this->validators as $inputName => $validator) {
-      $value = \Sphp\Util\Arrays::getValue($data, $inputName);
+      $value = Arrays::getValue($data, $inputName);
       if (!$validator->validate($value)->isValid()) {
         $this->errors->set($inputName, $validator->getErrors());
       }

@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Span as Span;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * RangeSlider allows you to drag a handle to select a specific value from a range

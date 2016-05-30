@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\InputInterface as InputInterface,
-    Sphp\Html\ContainerTag as ContainerTag,
-    Sphp\Util\Strings as Strings;
+use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Util\Strings as Strings;
 
 /**
  * Class models an HTML &lt;label&gt; tag
@@ -75,7 +75,7 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function getFor() {
-    return parent::getAttrValue("for");
+    return $this->attrs()->get("for");
   }
 
   /**
@@ -83,18 +83,19 @@ class Label extends ContainerTag {
    *
    * **Notes:**
    *
-   * - Specifies a space-separated list of id's to one or more forms the &lt;label&gt; object belongs to.
-   * - parameter can be an array of id's to one or more forms the &lt;label&gt; object belongs to.
+   * - Specifies a space-separated list of id's to one or more forms the label object belongs to.
+   * - parameter can be an array of id's to one or more forms the object belongs to.
    *
-   * @param  string|string[] $form_ids the value of the form attribute
+   * @param  string|string[] $formIds the value of the form attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_label_form.asp form attribute
    */
-  public function setForms($form_ids) {
-    if (is_array($form_ids)) {
-      $form_ids = implode(" ", $form_ids);
+  public function setForms($formIds) {
+    if (is_array($formIds)) {
+      $formIds = implode(" ", $formIds);
     }
-    return parent::setAttr("form", $form_ids);
+     $this->attrs()->set("form", $formIds);
+    return $this;
   }
 
   /**
@@ -106,11 +107,11 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_form.asp form attribute
    */
   public function getForms() {
-    $arr = explode(" ", parent::getAttrValue("form"));
-    if (count($arr) > 0) {
-      return $arr;
+    $result = [];
+    if ($this->attrs()->exists("form")) {
+      $result = explode(" ", $this->attrs()->get("form"));
     }
-    return array(parent::getAttrValue("form"));
+    return $result;
   }
 
 }

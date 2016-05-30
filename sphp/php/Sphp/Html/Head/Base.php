@@ -7,8 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\EmptyTag as EmptyTag,
-    Sphp\Util\Strings as Strings;
+use Sphp\Html\EmptyTag as EmptyTag;
 
 /**
  * Class models an HTML &lt;base&gt; tag
@@ -40,12 +39,12 @@ class Base extends EmptyTag implements MetaDataInterface {
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
-  public function __construct($href = "", $target = "") {
+  public function __construct($href = null, $target = null) {
     parent::__construct(self::TAG_NAME);
-    if (Strings::notEmpty($href)) {
+    if ($href !== null) {
       $this->setHref($href);
     }
-    if (Strings::notEmpty($target)) {
+    if ($target !== null) {
       $this->setTarget($target);
     }
   }

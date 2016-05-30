@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Div as Div;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Foundation\F6\Navigation\MenuInterface as MenuInterface;
 use Sphp\Html\Foundation\F6\Navigation\DropdownMenu as DropdownMenu;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;

@@ -7,8 +7,9 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\validation\FormValidator as FormValidator,
-    Sphp\validation\RequiredValueValidator as RequiredValueValidator;
+use Sphp\validation\FormValidator as FormValidator;
+use Sphp\validation\RequiredValueValidator as RequiredValueValidator;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * A form validation wrapper
@@ -119,7 +120,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
         foreach ($topics->getTopic($topic) as $message) {
           $messages[] = "'$message'";
         }
-        $json = \Sphp\Util\Arrays::implode($messages);
+        $json = Arrays::implode($messages);
 
         //$this->script[] = "$('#$id').visualizeValidation(" . $topics->getTopic($topic)->toJson() . ");";
       }

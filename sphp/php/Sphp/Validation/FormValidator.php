@@ -9,7 +9,7 @@ namespace Sphp\Validation;
 
 use Sphp\Gettext\TopicList as TopicList;
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Class validates a given formdata

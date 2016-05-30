@@ -12,7 +12,7 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
 use GeSHi;
 use Sphp\Html\Forms\Buttons\Button as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Div as Div;
 
 /**

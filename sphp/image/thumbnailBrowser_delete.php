@@ -4,7 +4,7 @@ namespace Sphp\Html;
 include_once("../settings.php");
 
 
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\ImgTag as Img;
 
 $get = Arrays::map($_GET, array('xssClean'));

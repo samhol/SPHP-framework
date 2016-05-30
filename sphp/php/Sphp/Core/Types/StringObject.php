@@ -25,7 +25,6 @@ use OutOfBoundsException;
  * @method string charAt(int $index)
  * @method self between(string $start, string $end, int $offset = 0)
  * @method self camelize(string $str)
- * @method self chars(string $str)
  * @method self collapseWhitespace(string $str)
  * @method bool contains(string $needle, bool $caseSensitive = true)
  * @method bool containsAll(string $needle, bool $caseSensitive = true)
@@ -101,19 +100,10 @@ use OutOfBoundsException;
 class StringObject implements Countable, IteratorAggregate, ArrayAccess {
 
   /**
-   * A mapping of method names to the numbers of arguments it accepts. Each
-   * should be two more than the equivalent Stringy method. Necessary as
-   * static methods place the optional $encoding as the last parameter.
-   *
-   * @var string[]
-   */
-  protected static $methodArgs = null;
-
-  /**
    *
    * @var ReflectionClass 
    */
-  protected static $stringsReflector;
+  private static $stringsReflector;
 
   /**
    * An instance's string.
@@ -274,12 +264,12 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *                               not exist
    */
   public function offsetGet($offset) {
-    $offset = (int) $offset;
+    $index = (int) $offset;
     $length = $this->length();
-    if (($offset >= 0 && $length <= $offset) || $length < abs($offset)) {
-      throw new OutOfBoundsException('No character exists at the index');
+    if (($index >= 0 && $length <= $index) || $length < abs($index)) {
+      throw new OutOfBoundsException("No character exists at the index: ($index)");
     }
-    return \mb_substr($this->str, $offset, 1, $this->encoding);
+    return \mb_substr($this->str, $index, 1, $this->encoding);
   }
 
   /**
@@ -307,9 +297,25 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
     throw new Exception('StringObject object is immutable, cannot unset char');
   }
 
+
   /**
-   * Returns a new ArrayIterator, thus implementing the IteratorAggregate
-   * interface. The ArrayIterator's constructor is passed an array of chars
+   * Returns an array consisting of the characters in the string.
+   *
+   * @return self[] An array of string objects
+   */
+  public function chars() {
+    $chars = Strings::chars($this->str, $this->encoding);
+    $charObj = [];
+    foreach ($chars as $index => $char) {
+      $charObj[$index] = static::create($char, $this->encoding);
+    }
+    return $charObj;
+  }
+  
+  /**
+   * Returns a new ArrayIterator 
+   * 
+   * The ArrayIterator's constructor is passed an array of chars
    * in the multibyte string. This enables the use of foreach with instances
    * of StringObject\StringObject.
    *

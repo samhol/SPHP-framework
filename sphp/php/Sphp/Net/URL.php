@@ -10,7 +10,7 @@ namespace Sphp\Net;
 use Sphp\Data\Arrayable as Arrayable;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Util\StringObject as StringObject;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Class implements an URL for manipulation and comparison

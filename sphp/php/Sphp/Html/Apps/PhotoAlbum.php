@@ -10,6 +10,7 @@ namespace Sphp\Html\Apps;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Div as Div;
 use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
@@ -183,7 +184,7 @@ class PhotoAlbum extends AbstractComponent {
             ->append(new Img("sph/pics/photoAlbum/arrLGray.png", "&lt;&lt;"))
             ->addCssClass("shiftLeft");
     $thumbnailBrowser[] = $shiftLeft;
-    $files = \Sphp\Util\Arrays::flatten($this->albumPaths);
+    $files = Arrays::flatten($this->albumPaths);
     //echo "<pre>";
     //print_r($files);
     foreach ($files as $img_index => $file) {
@@ -212,7 +213,7 @@ class PhotoAlbum extends AbstractComponent {
    */
   private function getPreviewer() {
     //echo "getPreviewer";
-    $files = \Sphp\Util\Arrays::flatten($this->albumPaths);
+    $files = Arrays::flatten($this->albumPaths);
     $previewer = (new Div())->addCssClass("previewer");
     $photoArea = (new Div())->addCssClass("photo");
     $shiftLeft = (new Div())

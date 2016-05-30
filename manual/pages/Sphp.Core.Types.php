@@ -56,7 +56,7 @@ MD
 
 $load("Sphp.Core.Types.StringObject.php");
 $load("Sphp.Core.Types.Strings.php");
-$load("Sphp.Util.Arrays.php");
-$load("Sphp.Util.Filters.php");
-$load("Sphp.Util.Datetime.php");
-$load("Sphp.Util.BitMask.php");
+$load("Sphp.Core.Types.Arrays.php");
+$load("Sphp.Core.Types.Filters.php");
+$load("Sphp.Core.Types.Datetime.php");
+$load("Sphp.Core.Types.BitMask.php");

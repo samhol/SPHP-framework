@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Apps\ApiTools;
 
-use Sphp\Html\Hyperlink as Hyperlink,
-	Sphp\Util\Strings as Strings;
+use Sphp\Html\Hyperlink as Hyperlink;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Link generator pointing to an exising ApiGen documentation

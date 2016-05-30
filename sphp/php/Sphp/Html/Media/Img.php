@@ -10,6 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\EmptyTag as EmptyTag;
 use Sphp\Net\URL as URL;
 use Sphp\Images\ImageScaler as ImageScaler;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class Models an HTML &lt;img&gt; tag
@@ -70,7 +71,7 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @return self for PHP Method Chaining
    */
   public function useMap($mapName) {
-    if (!\Sphp\Util\Strings::startsWith($mapName, "#")) {
+    if (!Strings::startsWith($mapName, "#")) {
       $mapName = "#$mapName";
     }
     $this->attrs()->set("usemap", $mapName);

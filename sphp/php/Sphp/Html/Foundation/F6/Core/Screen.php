@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Util\BitMask as BitMask;
+use Sphp\Core\Types\BitMask as BitMask;
 
 /**
  * Class defines Foudation Screen Sizes and implements static screen size parsing functions

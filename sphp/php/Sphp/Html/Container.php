@@ -9,7 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
 use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Clacc implements a container for HTML components and other textual content

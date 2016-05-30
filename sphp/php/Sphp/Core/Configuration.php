@@ -7,7 +7,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Application Config class for storing common application data

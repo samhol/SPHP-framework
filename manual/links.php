@@ -9,7 +9,7 @@ $sidenavLinks["core"] = ["group" => "Core components", "sub" =>
     [
         ["href" => "$httpRoot?page=Sphp.Core", "text" => "Core components", "target" => "_self"],
         ["href" => "$httpRoot?page=Sphp.Core.Observers.and.Events", "text" => "Events and Observers"],
-        ["href" => "$httpRoot?page=Sphp.Core.Types", "text" => "Core objects and utlilities"],
+        ["href" => "$httpRoot?page=Sphp.Core.Types", "text" => "Core types and utlilities"],
         ["href" => "$httpRoot?page=Sphp.Gettext", "text" => "Human language translation"],
         ["href" => "$httpRoot?page=Sphp.Net", "text" => "Network applications"]
     ]
@@ -37,7 +37,7 @@ $sidenavLinks["foundation6"] = ["group" => "Foundation 6", "sub" =>
 $sidenavLinks["data_manipulation"] = ["group" => "Data manipulation", "sub" =>
     [
         ["href" => "$httpRoot?page=Sphp.Data", "text" => "Data Structures"],
-        ["href" => "$httpRoot?page=Sphp.Util.datamanipulation", "text" => "Data manipulation"],
+        //["href" => "$httpRoot?page=Sphp.Util.datamanipulation", "text" => "Data manipulation"],
         ["href" => "$httpRoot?page=Sphp.Db.Objects", "text" => "Database objects"],
         //["href" => "$httpRoot?page=Sphp.Db", "text" => "Database manipulation"],
         ["href" => "$httpRoot?page=Sphp.Validation", "text" => "Data validation"]

@@ -7,7 +7,7 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Class models a geographical address.

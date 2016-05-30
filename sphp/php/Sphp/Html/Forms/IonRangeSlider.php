@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\AbstractJavaScriptComponent as AbstractJavaScriptComponent;
 use Sphp\Html\Forms\Input\TextInput as TextInput;
 use Sphp\Html\Programming\ScriptCode as ScriptCode;
-use Sphp\Util\Arrays as Arrays;
+use Sphp\Core\Types\Arrays as Arrays;
 
 /**
  * Class implements jQuery range slider with skin support

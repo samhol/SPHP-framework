@@ -7,8 +7,8 @@
 
 namespace Sphp\Db;
 
-use Sphp\Util\Arrays as Arrays,
-    Sphp\Util\Strings as Strings;
+use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Util\Strings as Strings;
 
 /**
  * Class implements the content of the WHERE clause in SQL
