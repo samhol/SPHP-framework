@@ -9,7 +9,6 @@ namespace Sphp\Net;
 
 use Sphp\Data\Arrayable as Arrayable;
 use Sphp\Core\Types\Strings as Strings;
-use Sphp\Util\StringObject as StringObject;
 use Sphp\Core\Types\Arrays as Arrays;
 
 /**
@@ -167,9 +166,9 @@ class URL implements \Sphp\Objects\ScalarObjectInterface, Arrayable, \IteratorAg
    * @return string the host `part` of the URL
    */
   public function getHost($encode = false) {
-    $val = new StringObject($this->components["host"]);
-    if ($encode && $val->notEmpty() && !$val->match('!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
-      $val->rawurlencode($val);
+    $val = $this->components["host"];
+    if ($encode && Strings::notEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
+      Strings::htmlEncode($val);
     }
     return "$val";
   }

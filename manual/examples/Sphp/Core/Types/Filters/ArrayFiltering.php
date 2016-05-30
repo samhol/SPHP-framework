@@ -7,8 +7,8 @@ use Sphp\Core\Types\Arrays as Arrays;
 $stringFilters = include("StringFiltering.php");
 
 $arr = [
-    2015 => 2015,
-    "__name__"=> " saMi <strong> petteri__</strong> <b>HOLCK</b>",
+    "year" => 2015,
+    "name" => " saMi <strong> petteri__</strong> <b>HOLCK</b>",
     [
         "nested array",
         "__**__"]

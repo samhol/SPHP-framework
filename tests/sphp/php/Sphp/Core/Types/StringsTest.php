@@ -297,8 +297,36 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(Strings::isJson($string), $expected);
   }
   
-  public function testMatch() {
-    $this->assertTrue(Strings::match("aria-hidden", "/^[a-zA-Z][\w:.-]*$/"));
-    $this->assertTrue(Strings::match("aria", "/^[a-zA-Z][\w:.-]*$/"));
+
+  /**
+   * 
+   * @return array
+   */
+  public function matchData() {
+   // print_r(mb_);
+    
+    $attrName = "/^[a-zA-Z][\w:.-]*$/";
+    $tagName = "/^([a-z]+[1-6]{0,1})$/";
+    return [
+        ["aria-hidden", $attrName, true],
+        ["data-hidden", $attrName, true],
+        ["id", $attrName, true],
+        ["_2*", $attrName, false],
+        ["*", $attrName, false],
+        ["h1",$tagName, true],
+        ["h_1",$tagName, false],
+    ];
+  }
+  /**
+   * 
+   * @dataProvider matchData
+   * @param string $string
+   * @param string $pattern
+   * @param boolean $result
+   */
+  public function testMatch($string, $pattern, $result) {
+    \mb_internal_encoding("utf-8");
+    \mb_regex_encoding("utf-8");
+    $this->assertEquals(Strings::match($string, $pattern),$result);
   }
 }

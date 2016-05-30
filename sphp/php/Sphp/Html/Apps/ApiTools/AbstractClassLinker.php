@@ -8,6 +8,8 @@
 namespace Sphp\Html\Apps\ApiTools;
 
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Core\Types\Strings as Strings;
+use ReflectionClass;
 
 /**
  * Link generator pointing to an exising ApiGen documentation
@@ -23,7 +25,7 @@ abstract class AbstractClassLinker extends AbstractLinker {
 	/**
 	 * Class Reflector
 	 *
-	 * @var \ReflectionClass
+	 * @var ReflectionClass
 	 */
 	protected $ref;
 
@@ -37,7 +39,7 @@ abstract class AbstractClassLinker extends AbstractLinker {
 	 */
 	public function __construct($root, $class, $attrs = []) {
 		parent::__construct($root, $attrs);
-		$this->ref = new \ReflectionClass($class);
+		$this->ref = new ReflectionClass($class);
 	}
 
 	/**
@@ -52,7 +54,7 @@ abstract class AbstractClassLinker extends AbstractLinker {
 	 * {@inheritdoc}
 	 */
 	public function __clone() {
-		$this->ref = new \ReflectionClass($this->ref->getName());
+		$this->ref = new ReflectionClass($this->ref->getName());
 		parent::__clone();
 	}
 
@@ -77,7 +79,7 @@ abstract class AbstractClassLinker extends AbstractLinker {
 	 * @return self for PHP Method Chaining
 	 */
 	public function setClass($class) {
-		$this->ref = new \ReflectionClass($class);
+		$this->ref = new ReflectionClass($class);
 		return $this;
 	}
 
@@ -88,7 +90,7 @@ abstract class AbstractClassLinker extends AbstractLinker {
 	 * @return Hyperlink hyperlink object pointing to an API class page
 	 */
 	public function getLink($name = null) {
-		if (\Sphp\Util\Strings::isEmpty($name)) {
+		if (Strings::isEmpty($name)) {
 			$name = $this->ref->getShortName();
 		}
 		if ($this->ref->isInterface()) {

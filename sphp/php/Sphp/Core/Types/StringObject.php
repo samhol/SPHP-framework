@@ -78,7 +78,7 @@ use OutOfBoundsException;
  * @method self slice(string $str, int $start, int $end = null)
  * @method self split(string $str, string $pattern, int $limit = null)
  * @method self substr(string $str, int $start, int $length = null)
- * @method self surround(string $str, string $substring)
+ * @method self surround(string $str, string $pre, string $post)
  * @method self swapCase(string $str)
  * @method self tidy(string $str)
  * @method self titleize(string $str)

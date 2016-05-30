@@ -28,13 +28,15 @@ class Strings {
    * @return boolean true if string matches to the regular expression, false otherwise
    */
   public static function match($string, $pattern, $encoding = null) {
-    $regexEncoding = mb_regex_encoding();
-    \mb_regex_encoding(self::getEncoding($encoding));
-    //$match = \mb_ereg($pattern, $string);
+    //$regexEncoding = mb_regex_encoding();
+    //echo "regexEncoding:($regexEncoding)\n";
+    //\mb_regex_encoding(self::getEncoding($encoding));
+   // $match = \mb_ereg_match($pattern, $string);
+   // echo "regexEncodingNow:($regexEncoding)\n";
     
-    \mb_regex_encoding($regexEncoding);
+    //\mb_regex_encoding($regexEncoding);
     return preg_match($pattern, $string) === 1;
-    return $match === 1;
+   // return $match === 1;
   }
 
   /**
@@ -85,6 +87,39 @@ class Strings {
       $reversed .= \mb_substr($string, $i, 1, static::getEncoding($encoding));
     }
     return $reversed;
+  }
+
+  /**
+   * Splits the string with the provided regular expression, returning an
+   * array of StringObject objects. An optional integer $limit will truncate the
+   * results.
+   *
+   * @param  string    $pattern The regex with which to split the string
+   * @param  int       $limit   Optional maximum number of results to return
+   * @return StringObject[] An array of StringObject objects
+   */
+  public static function split($string, $pattern, $limit = -1, $encoding = null) {
+    if ($limit === 0) {
+      return array();
+    }
+    $regexEncoding = mb_regex_encoding();
+    mb_regex_encoding(self::getEncoding($encoding));
+    $array = \mb_split($pattern, $string, $limit);
+    mb_regex_encoding($regexEncoding);
+    return $array;
+  }
+
+  /**
+   * Splits the input in newlines and carriage returns to an array of strings
+   *
+   * @param  string $string the input string
+   * @param  string $encoding the encoding parameter is the character encoding.
+   *         Defaults to `mb_internal_encoding()`
+   * @return string[] lines from input string as an array of strings
+   */
+  public static function lines($string, $encoding = null) {
+    $array = static::split($string, '[\r\n]{1,2}', -1, $encoding);
+    return $array;
   }
 
   /**
@@ -542,19 +577,21 @@ class Strings {
   public static function getEncoding($encoding = null) {
     if ($encoding === null) {
       $encoding = \mb_internal_encoding();
+       
     }
+    //echo "current encoding:(".$encoding.")\n";
     return $encoding;
   }
 
   /**
    * Wraps the string by placing the given wrappers at the both ends of the string
    *
-   * @param  string $string wrapped string
+   * @param  string $string input string
    * @param  string $before string's start wrapper
    * @param  string $after string's end wrapper
    * @return string wrapped string
    */
-  public static function wrap($string, $before = "'", $after = null) {
+  public static function surround($string, $before = "'", $after = null) {
     if ($after === null) {
       $after = $before;
     }
