@@ -24,7 +24,7 @@ use Sphp\Util\StringObject as StringObject;
 abstract class AbstractStringFilter extends AbstractSelectiveFilter {
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    * 
    */
   public function __construct() {

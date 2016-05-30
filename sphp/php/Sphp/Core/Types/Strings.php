@@ -61,6 +61,33 @@ class Strings {
   }
 
   /**
+   * Replaces all occurrences of $search in $str by $replacement
+   *
+   * @param  string $search      The needle to search for
+   * @param  string $replacement The string to replace with
+   * @return string the resulting string after the replacements
+   */
+  public function replace($string, $search, $replacement) {
+    return static::regexReplace($string, preg_quote($search), $replacement);
+  }
+  /**
+   * Returns a reversed string
+   *
+   * @param  string $string the input string
+   * @param  string $encoding the encoding parameter is the character encoding.
+   *         Defaults to `mb_internal_encoding()`
+   * @return string string reversed string 
+   */
+  public static function reverse($string, $encoding = null) {
+    $strLength = static::length($string, $encoding);
+    $reversed = '';
+    for ($i = $strLength - 1; $i >= 0; $i--) {
+      $reversed .= \mb_substr($string, $i, 1, static::getEncoding($encoding));
+    }
+    return $reversed;
+  }
+
+  /**
    * Returns a string with whitespace removed from the start and end of the string 
    * Supports the removal of unicode whitespace. Accepts an optional
    * string of characters to strip instead of the defaults.
@@ -432,7 +459,6 @@ class Strings {
 
   /**
    * Checks whether or not the input string is serialized
-   * Returns true if the string is serialized, false otherwise.
    *
    * @param  string $string checked string
    * @return bool Returns true if the string is serialized, false otherwise.

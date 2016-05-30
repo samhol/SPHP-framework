@@ -29,7 +29,7 @@ abstract class AbstractSelectiveFilter extends AbstractFilter {
   private $checker;
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    * 
    * @param  \Closure|null $checker the type checker of the filtered value
    */

@@ -27,7 +27,7 @@ class StringObject implements \IteratorAggregate, \Countable {
   private $string;
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    * 
    * @param  mixed $string the wrapped value
    * @param  string $encoding the original encoding of the string

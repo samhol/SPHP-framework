@@ -36,7 +36,7 @@ class SubStringFilter extends AbstractStringFilter {
   private $length;
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    * 
    * @param  int $start position of first character to use
    * @param  int|null $length maximum number of characters to use. If omitted or 

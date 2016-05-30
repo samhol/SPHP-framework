@@ -26,7 +26,7 @@ class Timer {
   private $startTime;
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    */
   public function __construct() {
     $this->start();

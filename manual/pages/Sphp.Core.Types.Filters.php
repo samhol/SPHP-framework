@@ -7,13 +7,13 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeEx
 $strLink = $php->getTypeLink("string");
 $arrLink = $php->getTypeLink([]);
 $filterInterfaceLink = $api->getClassLink(FilterInterface::class);
+$nsbc = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 $nsLink = $api->getNamespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-##Customized Data Filtering with PHP and SPHP
-	
-PHP has a variety of functions and classes that handle data filering in various 
-problem domains. SPHP framework is not trying to replace these but simply to 
-offer an customizable object oriented extension to Data Filtering.
+##Customizable value filtering
+$nsbc
+PHP has a variety of functions and classes that can handle data filering. SPHP 
+framework offers an customizable object oriented extension to Data Filtering.
 
 All $filterInterfaceLink implementations should accept any type of input variable.
 		
@@ -24,15 +24,15 @@ Build-in filters focus on manipulatong scalar values like strings and numeric va
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Filters/StringFiltering.php", "php", false))
-		->setExampleHeading("String filtering example PHP code")
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Filters/StringFiltering.php", "php", false))
+		->setExampleHeading("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
 echo $parsedown->text(<<<MD
 $filterInterfaceLink can easily be used for filtering PHP $arrLink values.
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Filters/ArrayFiltering.php", "php", false))
-		->setExampleHeading("Array filtering example PHP code")
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Filters/ArrayFiltering.php", "php", false))
+		->setExampleHeading("Array filtering example")
 		->setOutputSyntaxPaneTitle("Array filtering results")
 		->printHtml();

@@ -70,7 +70,7 @@ class FilterAggregate extends AbstractFilter {
    * @return self for PHP Method Chaining
    * @throws \InvalidArgumentException if the `$filter` is not callable
    */
-  public function addFilter($filter) {
+  public function addFilter(callable $filter) {
     if (is_callable($filter)) {
       $this->filters[] = $filter;
     } else {

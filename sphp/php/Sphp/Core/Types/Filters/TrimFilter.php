@@ -27,7 +27,7 @@ class TrimFilter extends AbstractStringFilter {
   private $charmask;
 
   /**
-   * Constructs a new {@link self} object
+   * Constructs a new instance
    * 
    * Without the $charmask parameter these characters will be stripped:
    * 

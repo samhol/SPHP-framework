@@ -121,13 +121,17 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   private $encoding;
 
   /**
-   * Initializes a StringObject object and assigns both str and encoding properties
-   * the supplied values. $str is cast to a string prior to assignment, and if
+   * Constructs a new instance 
+   * 
+   * Initializes a object and assigns both str and encoding properties
+   * the supplied values. 
+   * 
+   * $str is cast to a string prior to assignment, and if
    * $encoding is not specified, it defaults to mb_internal_encoding(). Throws
    * an InvalidArgumentException if the first argument is an array or object
    * without a __toString method.
    *
-   * @param  mixed  $str      Value to modify, after being cast to string
+   * @param  mixed  $str Value to modify, after being cast to string
    * @param  string $encoding The character encoding
    * @throws \InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
@@ -143,7 +147,6 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
     if (static::$stringsReflector === null) {
       static::$stringsReflector = new ReflectionClass(Strings::class);
     }
-    //$this->loadMethods();
   }
 
   /**
