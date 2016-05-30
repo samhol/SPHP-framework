@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Types\Filters;
 
-use Sphp\Util\StringObject as StringObject;
+use Sphp\Core\Types\StringObject as StringObject;
 
 /**
  * An abstract implementation of a string value filter

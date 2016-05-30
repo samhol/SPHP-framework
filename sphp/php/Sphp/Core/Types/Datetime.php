@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Core\Types;
-
+use DateTimeZone;
 use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
 use Sphp\Core\Comparable as Comparable;
 use Sphp\Objects\EqualsTrait as EqualsTrait;
@@ -45,7 +45,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @link   http://www.php.net/manual/en/datetime.construct.php DateTime::__construct (PHP manual)
    * @link   http://www.php.net/manual/en/class.datetimezone.php The DateTimeZone class (PHP manual)
    */
-  function __construct($time = "now", \DateTimeZone $timezone = null) {
+  function __construct($time = "now", DateTimeZone $timezone = null) {
     if (is_numeric($time)) {
       $time = date("Y-m-d H:i:s", $time);
     }

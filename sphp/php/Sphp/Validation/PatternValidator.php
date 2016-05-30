@@ -9,7 +9,7 @@ namespace Sphp\Validation;
 
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Gettext\Message as Message;
-use Sphp\Util\StringObject as StringObject;
+use Sphp\Core\Types\StringObject as StringObject;
 
 /**
  * Class validates a a string against a regular expression pattern

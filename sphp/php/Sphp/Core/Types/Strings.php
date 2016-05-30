@@ -282,7 +282,7 @@ class Strings {
    *
    * @param  string $string the input string
    * @param  int $index position of the character
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return string|null the character at $index or null if the index does not exist
    */
@@ -299,7 +299,7 @@ class Strings {
    * Returns an array consisting of the characters in the string.
    *
    * @param  string $string the input string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return array an array of string chars
    */
@@ -355,7 +355,7 @@ class Strings {
    * Checks whether the given string is not empty
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return boolean true if the string is not empty, false otherwise
    */
@@ -367,7 +367,7 @@ class Strings {
    * Checks whether the given string is empty
    * 
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return boolean true if the string is empty, false otherwise
    */
@@ -379,7 +379,7 @@ class Strings {
    * Returns the length of the given string
    * 
    * @param  string $str a string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return int the length of the given string
    */
@@ -393,7 +393,7 @@ class Strings {
    * @param  string $str checked string
    * @param  int $lower lower limit
    * @param  int $upper upper limit
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return boolean true if the string length is on a given closed interval, false otherwise.
    */
@@ -406,7 +406,7 @@ class Strings {
    * Checks whether or not the input string contains only alphabetic chars
    * 
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only alphabetic chars, false otherwise.
    */
@@ -418,7 +418,7 @@ class Strings {
    * Checks whether or not the input string contains only alphanumeric chars
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only alphanumeric chars, false otherwise.
    */
@@ -430,7 +430,7 @@ class Strings {
    * Checks whether or not the input string contains only whitespace chars
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only whitespace chars, false otherwise.
    */
@@ -442,7 +442,7 @@ class Strings {
    * Checks whether or not the input string contains only hexadecimal chars
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
    */
@@ -456,7 +456,7 @@ class Strings {
    * in that an empty string is not considered valid JSON.
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Whether or not $str is JSON
    */
@@ -472,7 +472,7 @@ class Strings {
    * Checks whether or not the input string contains only upper case characters
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only upper chars, false otherwise.
    */
@@ -484,7 +484,7 @@ class Strings {
    * Checks whether or not the input string contains only lower case characters
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the encoding parameter is the character encoding. 
+   * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
    * @return bool Returns true if the string contains only lower chars, false otherwise.
    */
@@ -671,6 +671,30 @@ class Strings {
   public static function toTabs($string, $tabLength = 4) {
     $spaces = str_repeat(' ', $tabLength);
     return str_replace($spaces, "\t", $string);
+  }
+
+  /**
+   * Converts the first character of each word in the string to uppercase
+   *
+   * @param  string $string the input string
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
+   * @return string input string with all characters being title-cased
+   */
+  public static function toTitleCase($string, $encoding = null) {
+    return \mb_convert_case($string, \MB_CASE_TITLE, static::getEncoding($encoding));
+  }
+
+  /**
+   * Converts all characters in the string to uppercase
+   *
+   * @param  string $string the input string
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
+   * @return string input string with all characters being uppercase
+   */
+  public static function toUpperCase($string, $encoding = null) {
+    return \mb_strtoupper($string, static::getEncoding($encoding));
   }
 
   /**

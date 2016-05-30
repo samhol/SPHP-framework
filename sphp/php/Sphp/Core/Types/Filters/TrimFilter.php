@@ -8,6 +8,7 @@
 namespace Sphp\Core\Types\Filters;
 
 use Sphp\Core\Types\Strings as Strings;
+
 /**
  * Filter strips whitespace (or other characters) from the beginning and end of the string
  *
@@ -25,6 +26,7 @@ class TrimFilter extends AbstractStringFilter {
    * @var string 
    */
   private $charmask;
+  private $dir = "both";
 
   /**
    * Constructs a new instance
@@ -40,8 +42,9 @@ class TrimFilter extends AbstractStringFilter {
    * 
    * @param  null|string $charmask characters to be stripped
    */
-  public function __construct($charmask = null) {
+  public function __construct($charmask = null, $direction = "both") {
     $this->charmask = $charmask;
+    $this->dir = $direction;
     parent::__construct();
   }
 
@@ -52,12 +55,18 @@ class TrimFilter extends AbstractStringFilter {
    * @return mixed the filtered value
    */
   protected function runFilter($string) {
-    if ($this->charmask !== null) {
-      $result = Strings::trim($string, $this->charmask);
+    if ($this->dir == "left") {
+      $call = Strings::class . "::trimLeft";
+    } else if ($this->dir == "right") {
+      $call = Strings::class . "::trimRight";
     } else {
-      $result = Strings::trim($string);
+      $call = Strings::class . "::trim";
     }
-    return $result;
+    $param_arr = [$string];
+    if ($this->charmask !== null) {
+      $param_arr[] = $this->charmask;
+    }
+    return call_user_func_array($call, $param_arr);
   }
 
 }

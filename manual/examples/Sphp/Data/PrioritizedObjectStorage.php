@@ -2,7 +2,7 @@
 
 namespace Sphp\Data;
 
-use Sphp\Util\StringObject as StringObject;
+use Sphp\Core\Types\StringObject as StringObject;
 
 $storage = new PrioritizedObjectStorage();
 $storage

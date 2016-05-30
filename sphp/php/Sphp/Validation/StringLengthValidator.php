@@ -7,8 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Util\StringObject as StringObject;
+use Sphp\Core\Types\StringObject as StringObject;
 
 /**
  * Class validates string length.
