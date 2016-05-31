@@ -9,8 +9,6 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager as HtmlAttributeManager;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
-use Sphp\Html\Programming\ScriptCode as ScriptCode;
-use Sphp\Html\Programming\ScriptSrc as ScriptSrc;
 use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
 
 /**
@@ -23,7 +21,6 @@ use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-26
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

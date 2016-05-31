@@ -2,7 +2,7 @@
 
 /**
  * Table.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Tables;
@@ -19,7 +19,6 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
- * @version 1.1.0
  * @link    http://www.w3schools.com/tags/tag_table.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

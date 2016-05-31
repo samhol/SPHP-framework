@@ -22,7 +22,6 @@ namespace Sphp\Html\Tables;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-04
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API link
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API link
  * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API link

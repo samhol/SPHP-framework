@@ -22,7 +22,6 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  */
 trait AjaxLoaderTrait {
 
-
   /**
    * Returns the attribute manager attached to the component
    *

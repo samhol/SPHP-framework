@@ -16,7 +16,6 @@ use Sphp\Html\ContainerTag as ContainerTag;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-08-28
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

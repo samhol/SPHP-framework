@@ -20,7 +20,6 @@ namespace Sphp\Html\Navigation;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-24
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

@@ -7,14 +7,11 @@
 
 namespace Sphp\Html\Forms;
 
-//use Sphp\Html\ContentInterface as ContentInterface;
-
 /**
  * Interface defines required operations for all input components used in {@link FormInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-02-15
- * @version 2.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

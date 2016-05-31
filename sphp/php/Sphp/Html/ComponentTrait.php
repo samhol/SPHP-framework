@@ -17,7 +17,6 @@ use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06
- * @version 1.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -110,7 +109,7 @@ trait ComponentTrait {
    * 2. An array paramater can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to remove
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass($cssClasses) {
@@ -121,7 +120,7 @@ trait ComponentTrait {
   /**
    * Removes all non locked CSS class names
    *
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function clearCssClasses() {
@@ -152,7 +151,7 @@ trait ComponentTrait {
    *
    * @param  string $property CSS property
    * @param  string $value CSS value
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
    */
   public function setStyle($property, $value) {
@@ -169,7 +168,7 @@ trait ComponentTrait {
    * * Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.
    *
    * @param  string[] $styles CSS property and CSS value pairs
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
    */
   public function setStyles(array $styles) {
@@ -181,7 +180,7 @@ trait ComponentTrait {
    * Removes given inline style property
    *
    * @param  string $property CSS property name
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    */
   public function removeStyle($property) {
     $this->inlineStyles()->remove($property);
@@ -191,7 +190,7 @@ trait ComponentTrait {
   /**
    * Removes all inline style definitions
    *
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    */
   public function clearStyles() {
     $this->inlineStyles()->clear();
@@ -225,11 +224,10 @@ trait ComponentTrait {
    * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
    *
    * @param    mixed[] $attrs an array of attribute name value pairs
-   * @return   self for PHP Method Chaining
+   * @return   ComponentInterface for PHP Method Chaining
    * @throws   InvalidAttributeException if any of the attributes is invalid
    * @throws   UnmodifiableAttributeException if the value of the attribute is already locked
    * @triggers {@link AttributeChangeEvent} for each changed attribute
-   * @uses     self::setAttr()
    */
   public function setAttrs(array $attrs = []) {
     foreach ($attrs as $name => $value) {
@@ -256,7 +254,7 @@ trait ComponentTrait {
    *
    * @param    string $name the name of the attribute
    * @param    mixed $value the value of the attribute
-   * @return   self for PHP Method Chaining
+   * @return   ComponentInterface for PHP Method Chaining
    * @throws   InvalidAttributeException if the attribute name or value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
@@ -276,7 +274,7 @@ trait ComponentTrait {
    *
    * @param    string $name the name of the attribute
    * @param    boolean $required true if the attribute is required, otherwise false
-   * @return   self for PHP Method Chaining
+   * @return   ComponentInterface for PHP Method Chaining
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
    */
   public function setAttrRequired($name, $required = true) {
@@ -296,7 +294,7 @@ trait ComponentTrait {
    *
    * @param    string $name the name of the attribute
    * @param    mixed $value the new locked value of the attribute
-   * @return   self for PHP Method Chaining
+   * @return   ComponentInterface for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if the locking is not possible
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
    */
@@ -309,7 +307,7 @@ trait ComponentTrait {
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
    */
   public function removeAttr($name) {
@@ -321,13 +319,13 @@ trait ComponentTrait {
    * Removes all not required attributes
    *
    * @return self for PHP Method Chaining
-   
-  public function clearAttrs() {
+
+    public function clearAttrs() {
     $this->attrs()->clear();
     return $this;
-  }
+    }
 
-  /**
+    /**
    * Returns the value of a given attribute name
    *
    * **IMPORTANT:**
@@ -360,7 +358,7 @@ trait ComponentTrait {
    * HTML id attribute is unique to every HTML-element.
    *
    * @param  string|null $id the value of the id attribute
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function setId($id) {
@@ -376,7 +374,7 @@ trait ComponentTrait {
    * the id attribute value creation so that the id should be unique.
    *
    * @param  string $seed id attributes seed
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function identify($seed = "id_") {
@@ -387,7 +385,7 @@ trait ComponentTrait {
    * Returns the value of the id attribute
    *
    * @return string|null the value of the id attribute
-   * @link http://www.w3schools.com/tags/att_global_id.asp id attribute
+   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function getId() {
     return $this->getAttr("id");
@@ -407,7 +405,7 @@ trait ComponentTrait {
    * Sets the value of the title attribute
    *
    * @param  string|null $title the value of the title attribute
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle($title) {
@@ -432,7 +430,7 @@ trait ComponentTrait {
    * The element will not be displayed at all (has no effect on layout). Adds
    * an inline style property <var>display: hidden;</var> to the component.
    *
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    */
   public function hide() {
     $this->setStyle("display", "none");
@@ -447,10 +445,12 @@ trait ComponentTrait {
    *  Removes only inline style property <var>display: hidden;</var> . The component
    *  might still be defined as hidden in CSS style sheets or by a JavaScript command.
    *
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    */
   public function unhide() {
-    $this->removeStyle("display");
+    if ($this->inlineStyles()->getPropertyValue("display") == "none") {
+      $this->removeStyle("display");
+    }
     return $this;
   }
 

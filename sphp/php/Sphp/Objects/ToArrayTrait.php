@@ -1,8 +1,8 @@
 <?php
 
 /**
- * DefaultEqualsTrait.php (UTF-8)
- * Copyright (c) 2008 Sami Holck <sami.holck@gmail.com>
+ * ToArrayTrait.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Objects;
@@ -15,7 +15,6 @@ use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-19
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

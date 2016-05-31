@@ -22,7 +22,6 @@ namespace Sphp\Html;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-06-03
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -42,9 +41,9 @@ class Span extends ContainerTag {
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($content = null, $class = "") {
+  public function __construct($content = null, $class = null) {
     parent::__construct(self::TAG_NAME, $content);
-    if ($class != "") {
+    if ($class !== null) {
       $this->addCssClass($class);
     }
   }

@@ -24,43 +24,42 @@ use Sphp\Net\URL as URL;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-08-11
- * @version 1.0.0
  * @link    http://api.jquery.com/load/ jQuery load()
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 interface AjaxLoaderInterface {
 
-	/**
-	 * Replaces the content of the component with the remote content using jQuery Ajax
-	 * 
-	 * **Important note:** 
-	 * This method overrides all previous calls of {@link self} methods.
-	 *
-	 * @param  string|URL $url the URL to which the request is sent
-	 * @return self for PHP Method Chaining
-	 */
-	public function ajaxReplace($url);
+  /**
+   * Replaces the content of the component with the remote content using jQuery Ajax
+   * 
+   * **Important note:** 
+   * This method overrides all previous calls of {@link self} methods.
+   *
+   * @param  string|URL $url the URL to which the request is sent
+   * @return self for PHP Method Chaining
+   */
+  public function ajaxReplace($url);
 
-	/**
-	 * Prepends the remote content into the component using jQuery Ajax
-	 * 
-	 * **Important note:** 
-	 * This method overrides all previous calls of {@link self} methods.
-	 *
-	 * @param  string|URL $url the URL to which the request is sent
-	 * @return self for PHP Method Chaining
-	 */
-	public function ajaxPrepend($url);
+  /**
+   * Prepends the remote content into the component using jQuery Ajax
+   * 
+   * **Important note:** 
+   * This method overrides all previous calls of {@link self} methods.
+   *
+   * @param  string|URL $url the URL to which the request is sent
+   * @return self for PHP Method Chaining
+   */
+  public function ajaxPrepend($url);
 
-	/**
-	 * Appends the remote content into the component using jQuery Ajax
-	 * 
-	 * **Important note:** 
-	 * This method overrides all previous calls of {@link self} methods.
-	 *
-	 * @param  string|URL $url the URL to which the request is sent
-	 * @return self for PHP Method Chaining
-	 */
-	public function ajaxAppend($url);
+  /**
+   * Appends the remote content into the component using jQuery Ajax
+   * 
+   * **Important note:** 
+   * This method overrides all previous calls of {@link self} methods.
+   *
+   * @param  string|URL $url the URL to which the request is sent
+   * @return self for PHP Method Chaining
+   */
+  public function ajaxAppend($url);
 }

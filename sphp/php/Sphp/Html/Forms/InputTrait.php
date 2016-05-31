@@ -15,7 +15,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-05
- * @version 1.0.0
  * @filesource
  */
 trait InputTrait {
@@ -40,7 +39,7 @@ trait InputTrait {
    * Sets the value of the name attribute
    *
    * @param  string $name the value of the name attribute
-   * @return self for PHP Method Chaining
+   * @return InputInterface for PHP Method Chaining
    */
   public function setName($name) {
     $this->attrs()->set("name", $name);
@@ -66,7 +65,7 @@ trait InputTrait {
    * Disabled input components in a form will not be submitted.
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return self for PHP Method Chaining
+   * @return InputInterface for PHP Method Chaining
    */
   public function disable($disabled = true) {
     $this->attrs()->set("disabled", (bool) $disabled);

@@ -29,7 +29,6 @@ use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-05-03
- * @version 4.1.3
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -19,7 +19,6 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-26
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -42,6 +41,7 @@ trait FormTrait {
    * @precondition `$method == "get" | $method == "post"`
    *
    * @param  string $method the value of the method attribute
+   * @return FormInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function setMethod($method) {
@@ -73,6 +73,7 @@ trait FormTrait {
    * * A relative URL - points to a file within a web site 'example.htm'
    *
    * @param  string $url the value of the action attribute
+   * @return FormInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function setAction($url) {
@@ -101,6 +102,7 @@ trait FormTrait {
    * The enctype attribute specifies how the form-data should be encoded when submitting it to the server.
    *
    * @param  string $enctype the value of the enctype attribute
+   * @return FormInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function setEnctype($enctype) {
@@ -128,7 +130,7 @@ trait FormTrait {
    * after a form is submitted.
    *
    * @param  string $name the value of the name attribute
-   * @return self for PHP Method Chaining
+   * @return FormInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function setName($name) {
@@ -170,7 +172,7 @@ trait FormTrait {
    * * <var>framename</var>: The response is displayed in a named iframe
    * 
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   * @return FormInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function setTarget($target) {
