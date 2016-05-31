@@ -8,7 +8,7 @@
 namespace Sphp\Validation;
 
 use Sphp\Core\Types\Strings as Strings;
-use Sphp\Gettext\Message as Message;
+use Sphp\Core\Gettext\Message as Message;
 use Sphp\Core\Types\StringObject as StringObject;
 
 /**

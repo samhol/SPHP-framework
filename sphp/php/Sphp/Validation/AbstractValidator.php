@@ -7,8 +7,8 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Gettext\MessageList as MessageList;
-use Sphp\Gettext\Message as Message;
+use Sphp\Core\Gettext\MessageList as MessageList;
+use Sphp\Core\Gettext\Message as Message;
 
 /**
  * Abstract superclass for a single value validation

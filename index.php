@@ -2,8 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
+use Sphp\Core\PathFinder as PathFinder;
+
 error_reporting(E_ALL);
-ini_set("display_errors", 1);
+ini_set("display_errors", 1); 
 //require_once __DIR__ . '/vendor/autoload.php';
 include_once("manual/settings.php");
 include_once("manual/links.php");
@@ -13,7 +15,9 @@ include_once("manual/htmlHead.php");
 ?>
 <body class="manual" id="manual-body">
   <div class="sphp-logo">
-    <img src="manual/pics/sphp-code-logo.png" alt="SPHP framework">
+    <a href="<?php echo (new PathFinder)->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
+      <img src="manual/pics/sphp-code-logo.png" alt="SPHP framework">
+    </a>
   </div>
   <?php
   include_once("manual/__topBar.php");

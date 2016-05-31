@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 
 /**
  * Trait implements some of the methods defined in the {@link TranslatorChangerChainInterface}

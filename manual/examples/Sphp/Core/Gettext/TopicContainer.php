@@ -1,5 +1,5 @@
 <?php
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 
 $messageCont1 = (new MessageList())
 		->insert(new Message("%s message", ["First"]))

@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Gettext\Message as Message;
+use Sphp\Core\Gettext\Message as Message;
 
 /**
  * Class validates a password

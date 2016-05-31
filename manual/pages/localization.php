@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 

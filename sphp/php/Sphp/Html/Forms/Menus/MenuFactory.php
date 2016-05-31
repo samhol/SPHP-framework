@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Menus;
 
-use Sphp\Gettext\Calendar as Calendar;
+use Sphp\Core\Gettext\Calendar as Calendar;
 use Sphp\Core\Types\Arrays as Arrays;
 
 /**

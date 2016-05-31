@@ -2,9 +2,7 @@
  * @fileOverview jquery plugin pattern (featured)
  *               <p>License MIT</p>
  *               <br>Copyright 2014 Sami Holck
- * @version 1.0.0
  * @author   Sami Holck
- * @update   2012-10-01
  * @requires jQuery
  */
 
@@ -175,8 +173,6 @@ if (!window.console.log) {
     }
   };
 
-
-
   function handleFoundationSliders() {
     $('[data-slider]').on('change', function () {
       var slider = $(this),
@@ -214,11 +210,13 @@ if (!window.console.log) {
     //stickyFooter();
     //intBackToTop();
     $(document).ready(function () {
+      console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
       ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
       var $ajaxLoaders = $("[data-sphp-ajax-url]");
       console.log("loaded");
       //alert($(document) + "init Foundation");
       //sphp.initGlyphs();
+
       $(document).foundation();
 
       console.log("Foundation loaded...");
@@ -229,6 +227,8 @@ if (!window.console.log) {
         $(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
       });
       $(".sphp-viewport-size-viewer").viewportSizeViewer();
+      
+      $("[data-sphp-qtip]").qtips();
       //  if ($(document).foundation()) {
       // $(document).foundation();
       //handleFoundationSliders();

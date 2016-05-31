@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Gettext\TopicList as TopicList;
+use Sphp\Core\Gettext\TopicList as TopicList;
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
 use Sphp\Core\Types\Arrays as Arrays;
 

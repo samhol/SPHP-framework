@@ -2,7 +2,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Gettext\Locale as Locale;
+use Sphp\Core\Gettext\Locale as Locale;
 
 Locale::setMessageLocale("fi_FI.UTF-8");
 //Translator::useTextDomain("Sphp.Validation");

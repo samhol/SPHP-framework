@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 
 Locale::setMessageLocale("fi_FI");
 $messageCont1 = (new MessageList())

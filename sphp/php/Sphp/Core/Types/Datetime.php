@@ -10,8 +10,8 @@ use DateTimeZone;
 use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
 use Sphp\Core\Comparable as Comparable;
 use Sphp\Objects\EqualsTrait as EqualsTrait;
-use Sphp\Gettext\TranslatorChangerInterface as TranslatorChangerInterface;
-use Sphp\Gettext\TranslatorChangerTrait as TranslatorChangerTrait;
+use Sphp\Core\Gettext\TranslatorChangerInterface as TranslatorChangerInterface;
+use Sphp\Core\Gettext\TranslatorChangerTrait as TranslatorChangerTrait;
 
 /**
  * Representation of date and time

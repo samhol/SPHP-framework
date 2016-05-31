@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 
 use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
 

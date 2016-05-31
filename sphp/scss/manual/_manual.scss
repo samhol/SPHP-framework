@@ -35,8 +35,11 @@ left: rem-calc(35)
 }
 .sphp-logo  {
   background: rgba(255, 255, 255, 0.75);
-  img {
+  a {
     margin: rem-calc(5 0 5 30);
+    display: inline-block;
+    img {
+    }
   }
 }
 .sphp-sidenav {

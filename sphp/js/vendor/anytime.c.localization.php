@@ -12,7 +12,7 @@ include_once(__DIR__ . "/../../settings.php");
 Headers::setContentType("application/json");
 
 
-namespace Sphp\Gettext;
+namespace Sphp\Core\Gettext;
 use Sphp\Core\Types\Arrays as Arrays;
 var_dump(Locale::setMessageLocale("fi_FI"));
 $calendar = new Calendar();

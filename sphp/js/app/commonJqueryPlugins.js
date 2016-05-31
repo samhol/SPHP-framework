@@ -12,7 +12,7 @@
       OPENED: 'sphp-single-accordion-opened',
       CLOSED: 'sphp-single-accordion-closed'
     },
-    AJAX_LOADER: { 
+    AJAX_LOADER: {
       FINISHED: 'sphp-ajax-loader-finished'
     }
   };
@@ -693,6 +693,29 @@
   $.fn.iconAfter = function (classes) {
     return this.each(function () {
       $(this).append($("<i>").addClass(classes));
+    });
+  };
+
+  /**
+   * Shows the mouse coordinates when ever the mouse is onver the containing document
+   * 
+   * @memberOf jQuery.fn#
+   * @method   sphMouseCoordinatesViewer
+   * @returns  {jQuery.fn} object for method chaining
+   */
+  $.fn.qtips = function () {
+    return this.each(function () {
+      var $this = $(this);
+      $this.qtip({
+        style: {
+          classes: 'qtip-dark qtip-rounded'
+        },
+        position: {
+          my: 'center left', // Position my top left...
+          at: 'center right', // my target
+          target: $this
+        }
+      });
     });
   };
 }(jQuery));
