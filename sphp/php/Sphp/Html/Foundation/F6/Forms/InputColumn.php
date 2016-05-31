@@ -50,8 +50,8 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
 	 */
 	public function __construct(InputInterface $input, $small = 12, $medium = self::INHERITED, $large = self::INHERITED) {
 		parent::__construct("div");
-		$this->setWidth($small, Screen::SMALL)
-				->lockCssClass("column");
+		$this->setWidth($small, Screen::SMALL);
+		$this->cssClasses()->lock("column");
 		if ($medium !== self::INHERITED) {
 			$this->setWidth($medium, Screen::MEDIUM);
 		}

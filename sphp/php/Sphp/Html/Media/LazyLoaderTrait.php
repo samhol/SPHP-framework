@@ -41,7 +41,7 @@ trait LazyLoaderTrait {
    * `data-src` attribute instead of the `src` attribute
    * 
    * @param  boolean $lazy true if the loading is lazy, false otherwise
-   * @return self for PHP Method Chaining
+   * @return LazyLoaderInterface for PHP Method Chaining
    */
   public function setLazy($lazy = true) {
     $classes = "lazy-hidden lazy-loaded";
@@ -75,7 +75,7 @@ trait LazyLoaderTrait {
    * `data-src` attribute instead of the `src` attribute
    *
    * @param  string|URL $src the path to the image source (The URL of the image file)
-   * @return self for PHP Method Chaining
+   * @return LazyLoaderInterface for PHP Method Chaining
    */
   public function setSrc($src) {
     if ($src instanceof URL) {

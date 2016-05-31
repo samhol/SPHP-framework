@@ -48,7 +48,7 @@ trait HyperlinkTrait {
    * @param  string $href the URL of the link
    * @param  boolean $encode converts all applicable characters of the $url to
    *         HTML entities
-   * @return self for PHP Method Chaining
+   * @return HyperlinkInterface for PHP Method Chaining
    * @uses   Strings::htmlentities()
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
@@ -84,7 +84,7 @@ trait HyperlinkTrait {
    * * Only used if the href attribute is present.
    *
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   * @return HyperlinkInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget($target) {

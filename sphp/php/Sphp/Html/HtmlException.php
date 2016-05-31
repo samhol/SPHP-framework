@@ -17,5 +17,5 @@ namespace Sphp\Html;
  * @filesource
  */
 class HtmlException extends \Exception {
-
+  
 }

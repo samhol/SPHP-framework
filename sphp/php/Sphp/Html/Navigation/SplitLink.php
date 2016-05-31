@@ -47,7 +47,7 @@ class SplitLink extends Hyperlink {
    */
   public function __construct($href = null, $content = null, $target = null) {
     parent::__construct($href, $content, $target);
-    $this->lockCssClass("split");
+    $this->cssClasses()->lock("split");
     $this->split = new Span();
   }
 

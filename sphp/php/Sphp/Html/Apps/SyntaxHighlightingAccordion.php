@@ -48,8 +48,8 @@ class SyntaxHighlightingAccordion extends AbstractSingleAccordion implements Syn
     $this->hl->useDefaultContentCopyController(false);
     $this->geshiId = "geshi_" . Strings::generateRandomString();
     parent::__construct();
-    $this->lockCssClass("GeSHi")
-            ->build();
+    $this->cssClasses()->lock("GeSHi");
+    $this->build();
     $this->attrs()->set("data-sphp-single-accordion", "syntaxHighlighter");
     $this->cssClasses()->lock("sphp-single-accordion");
     $this

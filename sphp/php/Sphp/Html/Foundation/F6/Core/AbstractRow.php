@@ -58,7 +58,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     if ($columns !== null) {
       $this->setColumns($columns);
     }
-    $this->lockCssClass("row");
+    $this->cssClasses()->lock("row");
   }
 
   /**

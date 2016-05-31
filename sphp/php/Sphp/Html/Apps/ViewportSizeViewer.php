@@ -8,6 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractSimpleContainerTag as AbstractSimpleContainerTag;
+
 /**
  * Class ViewportSizeViewer
  *
@@ -19,11 +20,12 @@ use Sphp\Html\AbstractSimpleContainerTag as AbstractSimpleContainerTag;
  */
 class ViewportSizeViewer extends AbstractSimpleContainerTag {
 
-	/**
-	 * Constructs a new instance
-	 */
-	public function __construct() {
-		parent::__construct("span");
-		$this->lockCssClass("sphp-viewport-size-viewer");
-	}
+  /**
+   * Constructs a new instance
+   */
+  public function __construct() {
+    parent::__construct("span");
+    $this->cssClasses()->lock("sphp-viewport-size-viewer");
+  }
+
 }

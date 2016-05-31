@@ -11,7 +11,7 @@ $arr = [
     "name" => " saMi <strong> petteri__</strong> <b>HOLCK</b>",
     [
         "nested array",
-        "__**__"]
+        "__*foo*__"]
 ];
 $filters = new FilterAggregate();
 $filters->addFilter($stringFilters)

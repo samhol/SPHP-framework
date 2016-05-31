@@ -45,10 +45,11 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
    */
   public function __construct($togleButton, $content = null) {
     parent::__construct("div", $content);
-    $this->identify("Dropdown")
-            ->lockCssClass("dropdown-pane")
-            ->setAttrRequired("data-dropdown")
-            ->setTarget($togleButton);
+    $this->identify("Dropdown");
+
+    $this->cssClasses()->lock("dropdown-pane");
+    $this->attrs()->demand("data-dropdown");
+    $this->setTarget($togleButton);
   }
 
   /**

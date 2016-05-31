@@ -60,7 +60,7 @@ trait ComponentTrait {
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to set
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function setCssClass($cssClasses) {
@@ -78,7 +78,7 @@ trait ComponentTrait {
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to add
-   * @return self for PHP Method Chaining
+   * @return ComponentInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass($cssClasses) {
@@ -99,24 +99,6 @@ trait ComponentTrait {
    */
   public function cssClassLocked($cssClasses) {
     return $this->cssClasses()->isLocked($cssClasses);
-  }
-
-  /**
-   * Locks the specified CSS class names
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   *
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
-   * 3. Duplicate CSS class names are not stored
-   *
-   * @param  string|string[] $cssClasses CSS class names to lock
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
-   */
-  public function lockCssClass($cssClasses) {
-    $this->cssClasses()->lock($cssClasses);
-    return $this;
   }
 
   /**

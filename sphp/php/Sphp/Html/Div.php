@@ -25,7 +25,7 @@ namespace Sphp\Html;
  * @filesource
  */
 class Div extends ContainerTag implements AjaxLoaderInterface {
-  
+
   use AjaxLoaderTrait;
 
   /**

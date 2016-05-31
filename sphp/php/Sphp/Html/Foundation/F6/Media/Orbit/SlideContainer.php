@@ -45,9 +45,9 @@ class SlideContainer extends AbstractComponent {
     if ($slides !== null) {
       $this->append($slides);
     }
-    
+
     $this->content()->set("slides", new \Sphp\Html\Container());
-    $this->lockCssClass("orbit-container");
+    $this->cssClasses()->lock("orbit-container");
   }
 
   /**

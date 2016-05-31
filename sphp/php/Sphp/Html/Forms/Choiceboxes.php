@@ -74,8 +74,8 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     //$this->mainLabel = new Legend($mainLabel)
     $this->setName($name)
             ->setOptions($values)
-            ->setLabel($label)
-            ->lockCssClass("sphp-choiceboxes $this->type");
+            ->setLabel($label);
+    $this->cssClasses()->lock("sphp-choiceboxes $this->type");
     $this->content()
             ->append($this->boxCont);
   }

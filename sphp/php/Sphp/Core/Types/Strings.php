@@ -314,12 +314,16 @@ class Strings {
   }
 
   /**
-   * Returns the index of the first occurrence of $needle in the string,
-   * and false if not found. Accepts an optional offset from which to begin
-   * the search.
+   * Returns the index of the first occurrence of $needle in the string
+   * 
+   * Returns false if the needle was not found. Accepts an optional offset from 
+   * which to begin the search.
    *
+   * @param  string $string input string
    * @param  string $needle Substring to look for
    * @param  int $offset Offset from which to search
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
    * @return int|bool The occurrence's index if found, otherwise false
    */
   public static function indexOf($string, $needle, $offset = 0, $encoding = null) {
@@ -332,9 +336,12 @@ class Strings {
    * string. An optional offset may be supplied from which to begin the
    * search for the start string.
    *
+   * @param  string $string input string
    * @param  string $start  Delimiter marking the start of the substring
    * @param  string $end Delimiter marketing the end of the substring
    * @param  int $offset Index from which to begin the search
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
    * @return string Object whose $str has been converted to an URL slug
    */
   public static function between($string, $start, $end, $offset = 0, $encoding = null) {
@@ -451,14 +458,15 @@ class Strings {
   }
 
   /**
-   * Returns true if the string is JSON, false otherwise. Unlike json_decode
-   * in PHP 5.x, this method is consistent with PHP 7 and other JSON parsers,
-   * in that an empty string is not considered valid JSON.
+   * Checks if the string is JSON
+   * 
+   * Unlike json_decode in PHP 5.x, this method is consistent with PHP 7 and 
+   * other JSON parsers, in that an empty string is not considered valid JSON.
    *
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Whether or not $str is JSON
+   * @return bool true if the string is JSON, false otherwise
    */
   public static function isJson($string, $encoding = null) {
     if (!static::length($string, $encoding)) {

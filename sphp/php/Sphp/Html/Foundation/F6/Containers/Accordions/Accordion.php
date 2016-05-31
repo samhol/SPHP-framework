@@ -29,8 +29,8 @@ class Accordion extends AbstractComponent implements \IteratorAggregate {
    */
   public function __construct($content = null) {
     parent::__construct("ul");
-    $this->lockCssClass("accordion")
-            ->setAttrRequired("data-accordion");
+    $this->cssClasses()->lock("accordion");
+    $this->attrs()->demand("data-accordion");
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $c) {
         $this->append($c);

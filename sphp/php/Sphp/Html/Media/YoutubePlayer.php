@@ -29,8 +29,8 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   public function __construct($videoId = null) {
     parent::__construct("http://www.youtube.com/embed/", $videoId);
-    $this->lockCssClass("youtube-player")
-            ->lockAttr("type", "text/html");
+    $this->cssClasses()->lock("youtube-player");
+    $this->attrs()->lock("type", "text/html");
   }
 
   /**

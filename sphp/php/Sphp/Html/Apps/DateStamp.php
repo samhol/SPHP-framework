@@ -28,8 +28,8 @@ class DateStamp extends AbstractComponent {
 	 */
 	public function __construct(\DateTime $datetime) {
 		parent::__construct("div");
-		$this->lockCssClass("dateStamp")
-				->setDatetime($datetime);
+		$this->cssClasses()->lock("dateStamp");
+		$this->setDatetime($datetime);
 	}
 
 	/**

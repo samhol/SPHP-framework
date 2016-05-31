@@ -1,25 +1,23 @@
 <?php
 
 /**
- * StaticStringy.php (UTF-8)
+ * StringObject.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Core\Types;
 
-use BadMethodCallException;
 use ReflectionClass;
-use ReflectionMethod;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
-use Exception;
 use InvalidArgumentException;
 use IteratorAggregate;
 use OutOfBoundsException;
+use BadMethodCallException;
 
 /**
- * Class StaticStringy
+ * Class Models a chainable string class
  *
  * @method self append(string $str, string $stringAppend) Appends string to the end and returns a new instance
  * @method string charAt(int $index)
@@ -123,9 +121,6 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   /**
    * Constructs a new instance 
    * 
-   * Initializes a object and assigns both str and encoding properties
-   * the supplied values. 
-   * 
    * $str is cast to a string prior to assignment, and if
    * $encoding is not specified, it defaults to mb_internal_encoding(). Throws
    * an InvalidArgumentException if the first argument is an array or object
@@ -150,20 +145,19 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Returns the value in $str.
+   * Returns the string value of the object
    *
-   * @return string The current value of the $str property
+   * @return string the string value of the object
    */
   public function __toString() {
     return $this->str;
   }
 
   /**
-   * Creates a StringObject object and assigns both str and encoding properties
-   * the supplied values. $str is cast to a string prior to assignment, and if
-   * $encoding is not specified, it defaults to mb_internal_encoding(). It
-   * then returns the initialized object. Throws an InvalidArgumentException
-   * if the first argument is an array or object without a __toString method.
+   * Creates a {@link self} object from given str and encoding properties
+   * 
+   * If $encoding is not specified, it defaults to mb_internal_encoding(). It
+   * then returns the initialized object.
    *
    * @param  mixed   $str      Value to modify, after being cast to string
    * @param  string  $encoding The character encoding
@@ -201,14 +195,13 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Invokes the given method of {@link self} with the
-   * rest of the passed arguments. 
+   * Invokes the given method of {@link self} with the rest of the passed arguments.
    * 
    * The result is not cast, so the return value may be of type Stringy,
    * integer, boolean, etc.
    *
    * @param  string $name the name of the called method
-   * @param  mixed[] $arguments
+   * @param  mixed $arguments
    * @return mixed
    * @throws BadMethodCallException
    */
@@ -239,31 +232,30 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Returns whether or not a character exists at an index. Offsets may be
-   * negative to count from the last character in the string. Implements
-   * part of the ArrayAccess interface.
+   * Returns whether or not a character exists at an index. 
+   * 
+   * Offsets may be negative to count from the last character in the string
    *
    * @param  mixed   $offset The index to check
    * @return boolean Whether or not the index exists
    */
   public function offsetExists($offset) {
     $length = $this->length();
-    $offset = (int) $offset;
-    if ($offset >= 0) {
-      return ($length > $offset);
+    $index = (int) $offset;
+    if ($index >= 0) {
+      return ($length > $index);
     }
-    return ($length >= abs($offset));
+    return ($length >= abs($index));
   }
 
   /**
-   * Returns the character at the given index. Offsets may be negative to
-   * count from the last character in the string. Implements part of the
-   * ArrayAccess interface, and throws an OutOfBoundsException if the index
-   * does not exist.
+   * Returns the character at the given index
+   * 
+   * Offsets may be negative to count from the last character in the string.
    *
-   * @param  mixed $offset         The index from which to retrieve the char
-   * @return mixed                 The character at the specified index
-   * @throws \OutOfBoundsException If the positive or negative offset does
+   * @param  mixed $offset The index from which to retrieve the char
+   * @return mixed The character at the specified index
+   * @throws OutOfBoundsException If the positive or negative offset does
    *                               not exist
    */
   public function offsetGet($offset) {
@@ -276,28 +268,30 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Implements part of the ArrayAccess interface, but throws an exception
-   * when called. This maintains the immutability of StringObject objects.
+   * Implements part of the ArrayAccess interface
+
+   * **IMPORTANT:** throws an exception when called. This maintains the 
+   * immutability of the objects.
    *
-   * @param  mixed      $offset The index of the character
-   * @param  mixed      $value  Value to set
-   * @throws \Exception When called
+   * @param  mixed $offset The index of the character
+   * @param  mixed $value  Value to set
+   * @throws BadMethodCallException When called
    */
   public function offsetSet($offset, $value) {
-    // StringObject is immutable, cannot directly set char
-    throw new Exception('StringObject object is immutable, cannot modify char');
+    throw new BadMethodCallException('Object is immutable, cannot modify char');
   }
 
   /**
-   * Implements part of the ArrayAccess interface, but throws an exception
-   * when called. This maintains the immutability of StringObject objects.
+   * Implements part of the ArrayAccess interface
+   * 
+   * **IMPORTANT:** throws an exception when called. This maintains the 
+   * immutability of the objects.
    *
-   * @param  mixed      $offset The index of the character
-   * @throws \Exception When called
+   * @param  mixed $offset The index of the character
+   * @throws BadMethodCallException When called
    */
   public function offsetUnset($offset) {
-    // Don't allow directly modifying the string
-    throw new Exception('StringObject object is immutable, cannot unset char');
+    throw new BadMethodCallException('Object object is immutable, cannot unset char');
   }
 
 
@@ -329,9 +323,9 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
   }
 
   /**
-   * Returns the encoding used by the StringObject object.
+   * Returns the current encoding used
    *
-   * @return string The current value of the $encoding property
+   * @return string the current encoding used
    */
   public function getEncoding() {
     return $this->encoding;
