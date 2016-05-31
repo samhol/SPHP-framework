@@ -12,7 +12,6 @@ namespace Sphp\Html\Forms;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-10-18
- * @version 1.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -24,14 +24,11 @@ use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-10-29
- * @version 2.1.0
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class SphpMinifier extends Minifier {
-
-
 
   /**
    * Sets up the Modernizr related Javascript and CSS files
@@ -147,7 +144,6 @@ class SphpMinifier extends Minifier {
             //->addCssSrc(\Sphp\HTTP_ROOT . "sph/css/foundation.css")
             //->addCssSrc(\Sphp\HTTP_ROOT . "sph/css/ui-lightness/jquery-ui.css")
             ->useModernizr()
-            
             ->useFoundation()
             ->appendSrc(\Sphp\js\VENDOR_PATH . "ZeroClipboard.min.js")
             ->appendSrc(\Sphp\js\VENDOR_PATH . "ion.rangeSlider.min.js")

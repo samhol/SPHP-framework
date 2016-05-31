@@ -21,7 +21,6 @@ use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-08-17
- * @version 2.1.2
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

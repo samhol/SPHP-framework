@@ -14,7 +14,6 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11
- * @version 1.0.0
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @link    http://foundation.zurb.com/docs/components/sidenav.html Foundation Side Nav
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

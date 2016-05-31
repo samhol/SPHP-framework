@@ -15,8 +15,7 @@ use Sphp\Net\URL as URL;
  * Implements {@link HyperlinkInterface} properties in a menu item
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-04
- * @version 1.0.0
+ * @since   2014-12-04
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

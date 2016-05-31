@@ -11,8 +11,7 @@ namespace Sphp\Core\Types;
  * Class Models user's rights
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-15
- * @version 1.0.0
+ * @since   2014-09-15
  */
 class Permissions extends BitMask {
 

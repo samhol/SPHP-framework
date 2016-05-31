@@ -26,18 +26,18 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  */
 class Caption extends SimpleContainerTag implements TableContentInterface {
 
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "caption";
+  /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "caption";
 
-	/**
-	 * Constructs a new instance
-	 *
-	 * @param string $content caption content
-	 */
-	public function __construct($content = null) {
-		parent::__construct(self::TAG_NAME, $content);
-	}
+  /**
+   * Constructs a new instance
+   *
+   * @param string $content caption content
+   */
+  public function __construct($content = null) {
+    parent::__construct(self::TAG_NAME, $content);
+  }
 
 }

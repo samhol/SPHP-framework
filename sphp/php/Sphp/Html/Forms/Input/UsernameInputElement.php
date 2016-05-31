@@ -19,7 +19,6 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-09-12
- * @version 1.0.0
  * @filesource
  */
 class UsernameInputElement extends TextInput {

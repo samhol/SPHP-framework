@@ -16,8 +16,7 @@ namespace Sphp\Html\Forms;
  * **Important:** This trait requires {@link \Sphp\Html\ComponentInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-05
- * @version 1.0.0
+ * @since   2014-09-05
  * @filesource
  */
 trait LabelableTrait {

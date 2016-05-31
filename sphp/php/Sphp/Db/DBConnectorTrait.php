@@ -14,8 +14,7 @@ use Sphp\Db\DatabaseConnector as PDOConnector,
  * Trait implements {@link DBConnectorInterface} for {@link PDO} database connection management 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-02-02
- * @version 1.0.0
+ * @since   2015-02-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

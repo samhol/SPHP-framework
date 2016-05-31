@@ -20,7 +20,6 @@ use Sphp\Html\Foundation\F6\Core\AbstractFoundationComponent as AbstractFoundati
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21
- * @version 1.0.1
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

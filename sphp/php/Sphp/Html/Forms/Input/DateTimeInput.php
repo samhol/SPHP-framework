@@ -18,7 +18,6 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-11
- * @version 2.0.1
  * @link    http://www.ama3.com/anytime/ Any+Time Calendar Widget
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

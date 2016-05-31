@@ -11,8 +11,7 @@ namespace Sphp\Html\Forms;
  * A trait implementation of the {@link ValidableInputInterface} 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-26
- * @version 1.0.0
+ * @since   2014-09-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

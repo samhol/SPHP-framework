@@ -12,8 +12,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * Class models an HTML-list element &lt;li&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-04-03
- * @version 2.0.1
+ * @since   2012-04-03
  * @link    http://www.w3schools.com/tags/tag_li.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

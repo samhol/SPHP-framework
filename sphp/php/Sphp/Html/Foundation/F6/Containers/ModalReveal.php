@@ -18,7 +18,6 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25
- * @version 1.0.1
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/reveal.html Founfation Reveal
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

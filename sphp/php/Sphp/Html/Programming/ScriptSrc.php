@@ -19,7 +19,6 @@ use Sphp\Html\AbstractTag as AbstractTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17
- * @version 2.0.0
  * @link http://www.w3schools.com/tags/tag_script.asp w3schools API link
  * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

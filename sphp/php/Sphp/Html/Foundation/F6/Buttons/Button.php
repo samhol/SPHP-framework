@@ -16,15 +16,14 @@ use Sphp\Html\Forms\Buttons\Button as FormButton;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
- * @version 1.0.0
  * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class Button extends FormButton {
 
-	/**
-	 * Constructs a new instance
+  /**
+   * Constructs a new instance
    *
    * @param  string $type the value of type attribute
    * @param  mixed $content the content of the button tag
@@ -34,10 +33,10 @@ class Button extends FormButton {
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
-	 */
-	public function __construct($type = "button", $content = null, $name = null, $value = null) {
+   */
+  public function __construct($type = "button", $content = null, $name = null, $value = null) {
     parent::__construct($type, $content, $name, $value);
-		$this->cssClasses()->lock("button");
-	}
+    $this->cssClasses()->lock("button");
+  }
 
 }

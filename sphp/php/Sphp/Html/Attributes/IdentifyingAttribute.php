@@ -13,8 +13,7 @@ use Sphp\Core\Types\Strings as Strings;
  * An implementation of a HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-09-28
- * @version 1.0.0
+ * @since   2015-09-28
  * @link    http://www.w3schools.com/tags/att_global_id.asp id attribute
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

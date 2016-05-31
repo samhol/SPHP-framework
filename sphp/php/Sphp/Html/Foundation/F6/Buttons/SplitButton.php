@@ -16,7 +16,6 @@ use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/button-group.html#split-buttons Foundation 6 Split Button 
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

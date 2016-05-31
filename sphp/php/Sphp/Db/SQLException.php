@@ -13,8 +13,7 @@ use \Exception as Exception;
  * Exception class for SQL syntax execution failures
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @update  2011-03-08
- * @version 1.0.0
+ * @update  2011-03-08
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

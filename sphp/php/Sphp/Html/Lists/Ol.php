@@ -16,7 +16,6 @@ namespace Sphp\Html\Lists;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
- * @version 2.0.0
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-ol-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

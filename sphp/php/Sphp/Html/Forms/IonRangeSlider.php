@@ -16,8 +16,7 @@ use Sphp\Core\Types\Arrays as Arrays;
  * Class implements jQuery range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-10-11
- * @version 1.0.0
+ * @since   2014-10-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

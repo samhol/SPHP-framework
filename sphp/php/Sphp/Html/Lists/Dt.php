@@ -28,7 +28,6 @@ use Sphp\Html\ContainerTag as ContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23
- * @version 1.1.0
  * @link    http://www.w3schools.com/tags/tag_dt.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

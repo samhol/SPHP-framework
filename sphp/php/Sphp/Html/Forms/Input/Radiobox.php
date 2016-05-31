@@ -16,7 +16,6 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-18
- * @version 2.0.0
  * @filesource
  */
 class Radiobox extends Choicebox {

@@ -14,7 +14,6 @@ use Sphp\Gettext\Message as Message;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
- * @version 2.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

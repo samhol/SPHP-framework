@@ -22,7 +22,6 @@ use Sphp\Html\Attributes\AttributeChanger as AttributeChanger;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-13
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -12,8 +12,7 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  * The common Interface for both of the content tag types of an definition list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-05-23
- * @version 1.0.0
+ * @since   2013-05-23
  * @filesource
  */
 interface DlContentInterface extends ComponentInterface {

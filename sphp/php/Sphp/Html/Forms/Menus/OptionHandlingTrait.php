@@ -26,7 +26,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-06-10
- * @version 2.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -19,7 +19,6 @@ use Sphp\Html\Forms\Buttons\Button as Button;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-10
- * @version 1.0.3
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/dropdown.html Foundation Dropdown
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

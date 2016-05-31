@@ -16,8 +16,7 @@ use Sphp\Core\Types\Strings as Strings;
  * A component containing multiple radio or checkbox inputs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-10-18
- * @version 1.0.0
+ * @since   2011-10-18
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

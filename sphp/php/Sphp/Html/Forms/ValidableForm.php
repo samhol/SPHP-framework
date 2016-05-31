@@ -15,8 +15,7 @@ use Sphp\Core\Types\Arrays as Arrays;
  * A form validation wrapper
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-10-14
- * @version 1.0.0
+ * @since   2014-10-14
  * @filesource
  */
 class ValidableForm implements \Sphp\Html\ContentInterface {

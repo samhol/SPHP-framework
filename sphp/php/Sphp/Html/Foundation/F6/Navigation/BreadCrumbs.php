@@ -25,7 +25,6 @@ use Sphp\Html\TraversableTrait as TraversableTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation 6 Breadcrumbs
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

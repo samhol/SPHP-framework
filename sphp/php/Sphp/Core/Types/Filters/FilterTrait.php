@@ -11,8 +11,7 @@ namespace Sphp\Core\Types\Filters;
  * Trait implements the functionality of the {@link FilterInterface} interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
- * @version 1.0.0
+ * @since   2015-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -18,7 +18,6 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-09-28
- * @version 2.1.0
  * @link    http://www.w3schools.com/tags/tag_option.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

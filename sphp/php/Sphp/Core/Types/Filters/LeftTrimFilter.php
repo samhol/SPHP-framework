@@ -15,8 +15,7 @@ use Sphp\Core\Types\Strings as Strings;
  * **Note:** Filters only string typeand leaves non string values unchanged.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
- * @version 1.0.0
+ * @since   2015-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

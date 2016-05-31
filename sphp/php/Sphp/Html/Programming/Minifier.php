@@ -8,9 +8,6 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\Container as Container;
-use Sphp\Core\Types\BitMask as BitMask;
-use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
 
 /**
  * Class is a container for a {@link Meta} component group
@@ -24,7 +21,6 @@ use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-10-29
- * @version 2.1.0
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

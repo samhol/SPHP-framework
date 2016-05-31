@@ -19,27 +19,26 @@ use Sphp\Core\PathFinder as PathFinder;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17
- * @version 2.0.0
  * @link http://www.w3schools.com/tags/tag_script.asp w3schools API link
  * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class SphpScriptsLoader extends ScriptsContainer {
-  
+
   /**
    *
    * @var PathFinder 
    */
   private $pathFinder;
-  
+
   /**
    * Folderpaths to script resources
    *
    * @var string[]
    */
   private $paths;
-  
+
   public function __construct($scripts = null) {
     parent::__construct($scripts);
     $this->pathFinder = new PathFinder();
@@ -165,12 +164,12 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @return self for PHP Method Chaining
    */
   public function appendSPHP() {
-    
+
     $this->appendFoundation()
             ->appendLazyload()
             ->appendZeroClipboard()
             ->appendAnyTime()
-           // ->appendPhotoAlbum()
+            // ->appendPhotoAlbum()
             ->appendIonRangeSlider()
             ->appendSrc($this->paths["vendor"] . "jquery.qtip.min.js")
             ->appendSrc($this->paths["app"] . "commonJqueryPlugins.js")

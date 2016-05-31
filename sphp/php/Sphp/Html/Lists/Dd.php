@@ -18,8 +18,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * component you can put paragraphs, line breaks, images, links, lists, etc.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-05-23
- * @version 1.0.0
+ * @since   2013-05-23
  * @link    http://www.w3schools.com/tags/tag_dd.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

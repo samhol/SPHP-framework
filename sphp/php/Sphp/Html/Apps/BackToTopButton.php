@@ -15,7 +15,6 @@ use Sphp\Html\Media\Img as Img;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-30
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

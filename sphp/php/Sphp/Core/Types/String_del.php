@@ -12,7 +12,6 @@ namespace Sphp\Core\Types;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-27
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

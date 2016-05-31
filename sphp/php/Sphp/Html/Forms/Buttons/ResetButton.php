@@ -16,7 +16,6 @@ namespace Sphp\Html\Forms\Buttons;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since  2012-08-22
- * @version 1.1.0
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

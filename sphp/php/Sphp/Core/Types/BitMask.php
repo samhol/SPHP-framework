@@ -15,8 +15,7 @@ use Sphp\Data\Arrayable as Arrayable;
  * Class models a bitmask object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-15
- * @version 1.0.0
+ * @since   2014-09-15
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

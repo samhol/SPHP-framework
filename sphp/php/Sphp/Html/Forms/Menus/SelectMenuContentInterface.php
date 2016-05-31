@@ -14,7 +14,6 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-06-10
- * @version 1.0.0
  * @filesource
  */
 interface SelectMenuContentInterface extends ComponentInterface {

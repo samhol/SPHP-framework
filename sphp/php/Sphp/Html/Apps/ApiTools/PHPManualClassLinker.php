@@ -11,8 +11,7 @@ namespace Sphp\Html\Apps\ApiTools;
  * PHP class link generator pointing to an exising PHP Manual documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
- * @version 1.0.0
+ * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

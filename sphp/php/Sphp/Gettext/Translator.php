@@ -23,7 +23,6 @@ use Sphp\Core\Types\Arrays as Arrays;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
- * @version 1.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

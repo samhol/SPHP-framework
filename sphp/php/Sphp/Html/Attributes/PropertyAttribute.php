@@ -14,8 +14,7 @@ use Sphp\Core\Types\Strings as Strings;
  * Class implements an property attribute object for an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-12
- * @version 1.0.0
+ * @since   2014-09-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
