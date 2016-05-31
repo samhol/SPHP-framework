@@ -23,7 +23,6 @@ namespace Sphp\Html;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-03-06
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_nav.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

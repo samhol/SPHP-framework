@@ -20,7 +20,6 @@ namespace Sphp\Html;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10
- * @version 2.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

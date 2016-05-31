@@ -16,7 +16,6 @@ use Closure;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
- * @version 2.0.1
  * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

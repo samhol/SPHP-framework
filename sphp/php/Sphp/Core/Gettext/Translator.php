@@ -68,13 +68,6 @@ class Translator {
     }
     $this->directory = $directory;
     $this->charset = $charset;
-
-    /* $hashId = hash("md4", $directory . $charset . $domain);
-      if (!in_array($hashId, self::$dictionaries)) {
-      bindtextdomain($this->domain, $directory);
-      bind_textdomain_codeset($this->domain, $charset);
-      self::$dictionaries[] = $hashId;
-      } */
   }
 
   /**

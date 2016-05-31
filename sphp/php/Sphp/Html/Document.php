@@ -14,7 +14,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-07
- * @version 2.2.3
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
