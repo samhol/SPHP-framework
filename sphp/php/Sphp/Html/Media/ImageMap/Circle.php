@@ -9,7 +9,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\EmptyTag as EmptyTag;
 
 /**
- * Class Circle
+ * Class Models an HTML &lt;area shape="circle"&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-26
@@ -21,12 +21,33 @@ class Circle extends EmptyTag implements AreaInterface {
 
   use AreaTrait;
 
-  public function __construct($x, $y, $radius, $href = "#", $alt = "") {
+  /**
+   * Constructs a new instance
+   * 
+   * @param int $x the x-coodinate of the circle center
+   * @param int $y the y-coodinate of the circle center
+   * @param int $radius the radius of the circle
+   * @param string|null $href
+   * @param string|null $alt
+   */
+  public function __construct($x, $y, $radius, $href = null, $alt = null) {
     parent::__construct(self::TAG_NAME);
     $this->attrs()->lock("shape", "circle");
     $this->setCoordinates($x, $y, $radius);
+    if ($href !== null) {
+      $this->setHref($href);
+    }
+    if ($alt !== null) {
+      $this->setHref($href);
+    }
   }
 
+  /**
+   * Sets the radius of the circle region
+   * 
+   * @param  int $radius the radius of the circle
+   * @return self for PHP Method Chaining
+   */
   public function setRadius($radius) {
     $coords = split(",", $this->getCoordinates());
     $coords[2] = $radius;
@@ -35,6 +56,12 @@ class Circle extends EmptyTag implements AreaInterface {
     return $this;
   }
 
+  /**
+   * Sets the x-coodinate of the center of the circle region
+   * 
+   * @param  int $x the x-coodinate of the circle center
+   * @return self for PHP Method Chaining
+   */
   public function setX($x) {
     $coords = split(",", $this->getCoordinates());
     $coords[0] = $x;
@@ -43,14 +70,28 @@ class Circle extends EmptyTag implements AreaInterface {
     return $this;
   }
 
-  public function setY($x) {
+  /**
+   * Sets the y-coodinate of the center of the circle region
+   * 
+   * @param  int $y the y-coodinate of the circle center
+   * @return self for PHP Method Chaining
+   */
+  public function setY($y) {
     $coords = split(",", $this->getCoordinates());
-    $coords[1] = $x;
+    $coords[1] = $y;
     $coordsString = implode(",", $coords);
     $this->attrs()->set("coords", $coordsString);
     return $this;
   }
 
+  /**
+   * Sets the coodinates and the size of the circle region
+   * 
+   * @param  int $x the x-coodinate of the circle center
+   * @param  int $y the y-coodinate of the circle center
+   * @param  int $radius the radius of the circle
+   * @return self for PHP Method Chaining
+   */
   public function setCoordinates($x, $y, $radius) {
     $coords = [$x, $y, $radius];
     $coordsString = implode(",", $coords);

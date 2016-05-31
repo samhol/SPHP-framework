@@ -8,10 +8,9 @@
 namespace Sphp\Html\Media\ImageMap;
 
 use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Html\Navigation\HyperlinkTrait as HyperlinkTrait;
 
 /**
- * Class Area
+ * Class Models an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-26
@@ -40,11 +39,21 @@ class Area extends EmptyTag implements AreaInterface {
     parent::__construct(self::TAG_NAME);
   }
 
+  /**
+   * 
+   * @param type $shape
+   * @return self for PHP Method Chaining
+   */
   public function setShape($shape) {
     $this->attrs()->set("shape", $shape);
     return $this;
   }
 
+  /**
+   * 
+   * @param type $coords
+   * @return self for PHP Method Chaining
+   */
   public function setCoordinates($coords) {
     $this->attrs()->set("coords", $coords);
     return $this;

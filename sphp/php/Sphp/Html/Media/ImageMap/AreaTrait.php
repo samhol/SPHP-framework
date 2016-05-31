@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\Navigation\HyperlinkTrait as HyperlinkTrait;
 
 /**
- * Class Area
+ * Trait implements {@link AreaInterface} for an an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-26
@@ -23,21 +23,10 @@ trait AreaTrait {
   use HyperlinkTrait;
 
   /**
-   * Constructs a new instance
-   * 
-   * @param type $shape
-   * @param array $coords
-   * @param type $href
-   * @param type $alt
-   */
-  public function __construct($shape, array $coords = [], $href = "#", $alt = "") {
-    parent::__construct(self::TAG_NAME);
-  }
-
-  /**
    * Returns the shape of the area
    * 
    * @return string the shape of the area
+   * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
   public function getShape() {
     return $this->getAttr("shape");
@@ -47,11 +36,32 @@ trait AreaTrait {
    * Returns the shape of the area
    * 
    * @return string the shape of the area
+   * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
   public function getCoordinates() {
-    return $this->getAttr("shape");
+    return $this->getAttr("coords");
   }
 
+  /**
+   * Returns the shape of the area
+   * 
+   * @return int[] the shape of the area
+   * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
+   */
+  public function getCoordinatesArray() {
+    $toInt = function($coord) {
+      return (int) $coord;
+    };
+    return array_map($toInt, explode(",", $this->getCoordinates()));
+  }
+
+  /**
+   * Sets the relationship between the current document and the linked document
+   * 
+   * @param  string $rel the value of the rel attribute
+   * @return AreaInterface for PHP Method Chaining
+   * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
+   */
   public function setRelationship($rel) {
     $this->attrs()->set("rel", $rel);
     return $this;

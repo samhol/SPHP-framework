@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 
 /**
- * Class Area
+ * Interface defines the basic properties of an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-26
@@ -39,6 +39,11 @@ interface AreaInterface extends HyperlinkInterface {
    */
   public function getCoordinates();
 
+  /**
+   * 
+   * @param string $rel
+   * @return self for PHP Method Chaining
+   */
   public function setRelationship($rel);
 
   /**
