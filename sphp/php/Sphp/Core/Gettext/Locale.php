@@ -30,11 +30,11 @@ class Locale {
    * **`$category` constant values:**
    *
    * * {@link LC_ALL} for all of the below
-   * * {@link LC_COLLATE} for string comparison, see {@link strcoll()}
-   * * {@link LC_CTYPE} for character classification and conversion, for example {@link strtoupper()}
-   * * {@link LC_MONETARY} for localeconv()
-   * * {@link LC_NUMERIC} for decimal separator (See also {@link localeconv()})
-   * * {@link LC_TIME} for date and time formatting with {@link strftime()}
+   * * {@link LC_COLLATE} for string comparison, see {@link \strcoll()}
+   * * {@link LC_CTYPE} for character classification and conversion, for example {@link \strtoupper()}
+   * * {@link LC_MONETARY} for {@link \localeconv()}
+   * * {@link LC_NUMERIC} for decimal separator (See also {@link \localeconv()})
+   * * {@link LC_TIME} for date and time formatting with {@link \strftime()}
    * * {@link LC_MESSAGES} for system responses (available if PHP was compiled with libintl)
    *
    * @param  int $category a named constant specifying the category of the functions affected by the locale setting:
