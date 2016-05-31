@@ -50,5 +50,4 @@ $backToTopBtn = new BackToTopButton();
           ->setTitle("Back To Top")
           ->printHtml();
   $html->documentClose();
-  echo \Locale::getDefault();
   ?>
