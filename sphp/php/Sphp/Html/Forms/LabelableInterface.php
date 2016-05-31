@@ -11,7 +11,7 @@ namespace Sphp\Html\Forms;
  * Interface defines features for all labelable components
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-05
+ * @since   2014-09-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

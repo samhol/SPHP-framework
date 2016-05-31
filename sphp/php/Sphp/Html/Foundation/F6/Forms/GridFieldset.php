@@ -18,7 +18,6 @@ use Sphp\Html\Forms\Legend as Legend;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-16
- * @version 1.0.1
  * @link    http://foundation.zurb.com/docs/components/forms.html Foundation forms
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

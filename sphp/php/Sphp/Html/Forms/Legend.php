@@ -15,7 +15,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * contents of the legend element's parent fieldset element, if any.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-05-04
+ * @since   2014-05-04
  * @link    http://www.w3schools.com/tags/tag_legend.asp w3schools HTML API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-legend-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

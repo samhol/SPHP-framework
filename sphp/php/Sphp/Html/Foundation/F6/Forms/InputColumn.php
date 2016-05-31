@@ -22,7 +22,6 @@ use Sphp\Html\Forms\Label as Label;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
- * @version 2.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

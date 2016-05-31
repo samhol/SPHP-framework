@@ -21,8 +21,18 @@ use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
  */
 class ExceptionPrinter implements SplObserver {
 
+  /**
+   *
+   * @var boolean 
+   */
   private $showTrace = false;
+
+  /**
+   *
+   * @var boolean 
+   */
   private $showPreviousException = false;
+
   /**
    * Echoes the uncaught exception in an {@link ExceptionBox} html element
    *
@@ -39,7 +49,6 @@ class ExceptionPrinter implements SplObserver {
     }
   }
 
-  
   /**
    * Sets the trace visibility
    * 
@@ -50,6 +59,7 @@ class ExceptionPrinter implements SplObserver {
     $this->showTrace = $show;
     return $this;
   }
+
   /**
    * Sets the previous exception visibility
    * 

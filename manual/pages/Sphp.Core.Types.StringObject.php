@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Util;
+namespace Sphp\Core\Types;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 

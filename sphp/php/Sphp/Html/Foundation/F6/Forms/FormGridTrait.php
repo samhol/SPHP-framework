@@ -15,7 +15,6 @@ use Sphp\Html\Foundation\F6\Core\Row as Row;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-24
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

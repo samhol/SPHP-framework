@@ -17,7 +17,6 @@ use Sphp\Html\Container as Container;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation 6 grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

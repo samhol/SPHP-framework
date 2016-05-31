@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Util;
+namespace Sphp\Core\Types;
 
 var_dump(
         Strings::ordinalize(2), 

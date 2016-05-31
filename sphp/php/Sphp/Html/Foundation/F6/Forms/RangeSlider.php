@@ -24,7 +24,6 @@ use Sphp\Core\Types\Arrays as Arrays;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-17
- * @version 1.0.0
  * @filesource
  */
 class RangeSlider extends AbstractComponent implements InputInterface {

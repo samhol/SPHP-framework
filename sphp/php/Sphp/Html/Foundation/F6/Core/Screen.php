@@ -14,7 +14,6 @@ use Sphp\Core\Types\BitMask as BitMask;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation 6
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

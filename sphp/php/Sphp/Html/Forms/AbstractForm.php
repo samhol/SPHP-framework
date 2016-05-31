@@ -24,7 +24,6 @@ use Sphp\Html\Container as Container;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
- * @version 1.3.1
  * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
