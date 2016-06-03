@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\Media;
+namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
 $flexVideo = $api->getClassLink(FlexVideo::class);
 
@@ -17,4 +17,4 @@ scale the video on any device.
 MD
 );
 
-CodeExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Media/FlexVideo.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');

@@ -31,6 +31,7 @@ $sidenavLinks["foundation6"] = ["group" => "Foundation 6", "sub" =>
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Containers", "text" => "Containers"],
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Navigation", "text" => "Navigation components"],
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Buttons", "text" => "Buttons"],
+        ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Media", "text" => "Media components"],
     //["href" => "$httpRoot?page=Sphp.Html.Foundation", "text" => "Miscellaneous components"]
     ]
 ];

@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\Media;
+namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
 $media = $api->getNamespaceLink(__NAMESPACE__);
 
@@ -17,4 +17,4 @@ An $orbit containing $slide components can not handle variable-height content.
 Orbit has been deprecated from the Foundation framework, meaning that it is no longer supported.
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Media/OrbitSlide.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/OrbitSlide.php');

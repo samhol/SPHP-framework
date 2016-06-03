@@ -135,7 +135,8 @@ class Head extends AbstractComponent {
    * @link   http://zurb.com/playground/foundation-icon-fonts-3 Foundation icons
    */
   public function useFoundationIcons() {
-    return $this->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css");
+     $this->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css");
+    return $this;
   }
   
 
@@ -147,7 +148,8 @@ class Head extends AbstractComponent {
   public function enableSPHP() {
     $this->metaTags()->setViewport("width=device-width, initial-scale=1.0");
     $this->metaTags()->setCharset("UTF-8");
-    $this->addCssSrc(Configuration::httpHost() . "sphp/css/sphp6.styles.all.css");
+    $this->addCssSrc(Configuration::httpHost() . "sphp/css/sphp6.styles.all.css")
+             ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css");
     return $this;
   }
 

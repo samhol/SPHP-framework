@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\Media;
+namespace Sphp\Html\Foundation\F6\Media;
 
 use Sphp\Html\Media\Size as Size;
 
