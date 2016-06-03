@@ -15,7 +15,6 @@ namespace Sphp\Html\Media;
 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-15
- * @version 1.0.0
  * @link    https://github.com/ressio/lazy-load-xt Lazy Load XT jQuery plugin
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

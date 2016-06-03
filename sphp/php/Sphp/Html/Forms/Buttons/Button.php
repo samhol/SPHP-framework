@@ -48,7 +48,7 @@ class Button extends ContainerTag implements InputInterface {
    */
   public function __construct($type, $content = null, $name = null, $value = null) {
     parent::__construct(self::TAG_NAME, $content);
-    $this->lockAttr("type", $type);
+    $this->attrs()->lock("type", $type);
     if (isset($name)) {
       $this->setName($name);
     }

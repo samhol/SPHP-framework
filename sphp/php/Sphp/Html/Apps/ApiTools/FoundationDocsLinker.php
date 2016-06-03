@@ -7,14 +7,15 @@
 
 namespace Sphp\Html\Apps\ApiTools;
 
-use Sphp\Html\Hyperlink as Hyperlink,
-    Sphp\Util\Strings as Strings;
+use Sphp\Html\Hyperlink as Hyperlink;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Link generator for Foundation Docs related hyperlinks
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
+ * @since   2014-11-29
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

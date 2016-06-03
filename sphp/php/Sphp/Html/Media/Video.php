@@ -16,7 +16,6 @@ namespace Sphp\Html\Media;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_video.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

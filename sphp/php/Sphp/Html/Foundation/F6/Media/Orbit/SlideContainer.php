@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Orbit.php (UTF-8)
+ * SlideContainer.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -13,18 +13,12 @@ use Sphp\Html\Container as Container;
 /**
  * Class implements a Foundation Orbit containing {@link Slide} components
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-07
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/orbit.html Orbit slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
- * @deprecated since version 2.0.0
  */
 class SlideContainer extends AbstractComponent {
 
@@ -45,8 +39,6 @@ class SlideContainer extends AbstractComponent {
     if ($slides !== null) {
       $this->append($slides);
     }
-
-    $this->content()->set("slides", new \Sphp\Html\Container());
     $this->cssClasses()->lock("orbit-container");
   }
 
@@ -76,8 +68,8 @@ class SlideContainer extends AbstractComponent {
    * @param  Slide $slide the slide to append
    * @return self for PHP Method Chaining
    */
-  public function appendSlide(Slide $slide) {
-    $this->content()->get("slides")->append($slide);
+  public function appendSlide(SlideInterface $slide) {
+    $this->content()->append($slide);
     return $this;
   }
 
@@ -90,12 +82,12 @@ class SlideContainer extends AbstractComponent {
    * any type that converts to a string. So also an object of any class that
    * implements magic method `__toString()` is allowed.
    *
-   * @param  mixed|mixed[] $content the content of the slide
+   * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|mixed[] $caption the caption of the slide
    * @return self for PHP Method Chaining
    */
-  public function appendNewSlide($content, $caption = null) {
-    return $this->appendSlide(new Slide($content, $caption));
+  public function appendFigure($img, $caption = null) {
+    return $this->appendSlide(new FigureSlide($img, $caption));
   }
 
   /**
@@ -117,7 +109,7 @@ class SlideContainer extends AbstractComponent {
   }
 
   public function count() {
-    return $this->content()->get("slides")->count();
+    return $this->content()->count();
   }
 
 }

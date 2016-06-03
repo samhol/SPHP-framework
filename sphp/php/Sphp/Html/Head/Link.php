@@ -21,7 +21,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
- * @version 1.0.1
  * @link    http://www.w3schools.com/tags/tag_link.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -45,7 +44,7 @@ class Link extends EmptyTag implements MetaDataInterface {
    */
   public function __construct($href = "", $rel = "stylesheet", $media = "screen") {
     parent::__construct(self::TAG_NAME);
-    $this->setAttrRequired("rel");
+    $this->attrs()->demand("rel");
     if ($href !== null) {
       $this->setHref($href);
     }

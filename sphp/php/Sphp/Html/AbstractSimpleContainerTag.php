@@ -29,108 +29,108 @@ use Sphp\Core\Types\Strings as Strings;
  */
 abstract class AbstractSimpleContainerTag extends AbstractTag {
 
-	/**
-	 * the content of the component
-	 *
-	 * @var mixed
-	 */
-	private $content;
+  /**
+   * the content of the component
+   *
+   * @var mixed
+   */
+  private $content;
 
-	/**
-	 * Constructs a new instance
-	 * 
-	 * **Important!**
-	 *
-	 * 1. Parameter `mixed $content` can be of any type that converts to a string 
-	 *    or to an array of strigs. So also objects of any type that implement magic 
-	 *    method `__toString()` are allowed.
-	 *
-	 * @param  string $tagName the name of the tag
-	 * @param  mixed $content the content of the component
-	 * @param  AttributeManager|null $attrManager the attribute manager of the component
-	 * @param  ContainerInterface $contentContainer the inner content container of the component
-	 * @throws \InvalidArgumentException if the tagname is not valid
-	 * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
-	 */
-	public function __construct($tagName, $content = null, HtmlAttributeManager $attrManager = null) {
-		parent::__construct($tagName, $attrManager);	
-		if ($content !== null) {
-			$this->setContent($content);
-		}
-	}
-	
-	/**
-	 * Sets the content of the component
-	 * 
-	 * @param  mixed $content the inner content container of the component
-	 * @return self for PHP Method Chaining
-	 */
-	protected function setContent($content = null) {
-		$this->content = $content;
-		return $this;
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * **Important!**
+   *
+   * 1. Parameter `mixed $content` can be of any type that converts to a string 
+   *    or to an array of strigs. So also objects of any type that implement magic 
+   *    method `__toString()` are allowed.
+   *
+   * @param  string $tagName the name of the tag
+   * @param  mixed $content the content of the component
+   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  ContainerInterface $contentContainer the inner content container of the component
+   * @throws \InvalidArgumentException if the tagname is not valid
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   */
+  public function __construct($tagName, $content = null, HtmlAttributeManager $attrManager = null) {
+    parent::__construct($tagName, $attrManager);
+    if ($content !== null) {
+      $this->setContent($content);
+    }
+  }
 
-	/**
-	 * Returns the content of the component
-	 * 
-	 * @return mixed the content of the component
-	 */
-	protected function getContent() {
-		return $this->content;
-	}
+  /**
+   * Sets the content of the component
+   * 
+   * @param  mixed $content the inner content container of the component
+   * @return self for PHP Method Chaining
+   */
+  protected function setContent($content = null) {
+    $this->content = $content;
+    return $this;
+  }
 
-	/**
-	 * Returns opening tag with its attributes
-	 *
-	 * @return string opening tag with attributes
-	 */
-	protected function getOpeningTag() {
+  /**
+   * Returns the content of the component
+   * 
+   * @return mixed the content of the component
+   */
+  protected function getContent() {
+    return $this->content;
+  }
+
+  /**
+   * Returns opening tag with its attributes
+   *
+   * @return string opening tag with attributes
+   */
+  protected function getOpeningTag() {
     $attrs = "" . $this->attrs();
     if ($attrs != "") {
       $attrs = " " . $attrs;
     }
-		return "<" . $this->getTagName() . $attrs . ">";
-	}
+    return "<" . $this->getTagName() . $attrs . ">";
+  }
 
-	/**
-	 * Returns the content of the component as a string
-	 *
-	 * @return string content as a string
-	 * @throws \Exception if content parsing fails
-	 */
-	public function contentToString() {
-		return Strings::toString($this->content);
-	}
+  /**
+   * Returns the content of the component as a string
+   *
+   * @return string content as a string
+   * @throws \Exception if content parsing fails
+   */
+  public function contentToString() {
+    return Strings::toString($this->content);
+  }
 
-	/**
-	 * Returns closing tag
-	 *
-	 * @return string closing tag
-	 */
-	protected function getClosingTag() {
-		return "</" . $this->getTagName() . ">";
-	}
+  /**
+   * Returns closing tag
+   *
+   * @return string closing tag
+   */
+  protected function getClosingTag() {
+    return "</" . $this->getTagName() . ">";
+  }
 
-	/**
-	 * Returns the component as html-markup string
-	 *
-	 * @return string html-markup of the component
-	 * @throws \Exception if html parsing fails
-	 */
-	public function getHtml() {
-		return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
-	}
-	
-	/**
-	 * Clones the component
-	 *
-	 * **Note:** Method cannot be called directly!
-	 *
-	 * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-	 */
-	public function __clone() {
-		$this->content = clone $this->content;
-		parent::__clone();
-	}
+  /**
+   * Returns the component as html-markup string
+   *
+   * @return string html-markup of the component
+   * @throws \Exception if html parsing fails
+   */
+  public function getHtml() {
+    return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
+  }
+
+  /**
+   * Clones the component
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->content = clone $this->content;
+    parent::__clone();
+  }
 
 }

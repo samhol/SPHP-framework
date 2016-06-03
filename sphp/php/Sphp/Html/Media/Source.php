@@ -22,7 +22,6 @@ use Sphp\Util\FileUtils as FileUtils;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-14
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_source.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-source-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

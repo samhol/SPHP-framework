@@ -20,7 +20,6 @@ use Sphp\Html\EmptyTag as EmptyTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-15
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_embed.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

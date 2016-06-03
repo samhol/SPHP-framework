@@ -12,7 +12,6 @@ namespace Sphp\Util;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
- * @version 2.0.0
  * @filesource
  */
 class RandomStringGenerator {

@@ -1,25 +1,19 @@
 <?php
 
 /**
- * OrbitContainer.php (UTF-8)
+ * Orbit.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Container as Container;
 
 /**
- * Class implements a Foundation Orbit containing {@link Slide} components
- *
- *
- * {@inheritdoc}
- *
+ * Class implements a Foundation Orbit containing {@link SlideInterface} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-07
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/orbit.html Orbit slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -78,26 +72,13 @@ class Orbit extends AbstractComponent {
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    *
-   * @param  mixed|mixed[] $slides
+   * @param  mixed|SlideInterface $slides
    * @return self for PHP Method Chaining
    */
   public function append($slides) {
-    foreach (is_array($slides) ? $slides : [$slides] as $slide) {
-      if (!($slide instanceof Slide)) {
-        $slide = new Slide($slide);
-      }
-      $this->appendSlide($slide);
+    if (!($slides instanceof SlideInterface)) {
+      $slide = new Slide($slides);
     }
-    return $this;
-  }
-
-  /**
-   * Appends the given slide to the orbit component
-   *
-   * @param  Slide $slide the slide to append
-   * @return self for PHP Method Chaining
-   */
-  public function appendSlide(Slide $slide) {
     $this->slides()->append($slide);
     $n = $this->slides()->count();
     $this->bullets()->set($n - 1);
@@ -105,22 +86,21 @@ class Orbit extends AbstractComponent {
   }
 
   /**
-   * Appends a new slide component to the orbit component
+   * Appends a new slide component to this orbit
    *
-   * **Important!**
-   *
-   * Parameter <var>mixed $content</var> & <var>mixed $caption</var> can be of
-   * any type that converts to a string. So also an object of any class that
-   * implements magic method `__toString()` is allowed.
-   *
-   * @param  mixed|mixed[] $content the content of the slide
+   * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|mixed[] $caption the caption of the slide
    * @return self for PHP Method Chaining
    */
-  public function appendNewSlide($content, $caption = null) {
-    return $this->appendSlide(new Slide($content, $caption));
+  public function appendFigure($img, $caption = null) {
+    return $this->append(new FigureSlide($img, $caption));
   }
 
+  /**
+   * Returns the number of the slides in this orbit
+   * 
+   * @return int number of the slides in this orbit
+   */
   public function count() {
     return $this->slides()->count();
   }

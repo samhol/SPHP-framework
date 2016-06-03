@@ -18,7 +18,6 @@ use Sphp\Net\URL as URL;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-15
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API link
  * @link    https://github.com/ressio/lazy-load-xt Lazy Load XT jQuery plugin
@@ -53,7 +52,7 @@ trait LazyLoaderTrait {
     } else if ($this->isLazy()) {
       $this->attrs()->classes()->remove($classes);
       $this->setSrc($this->attrs()->get("data-src"));
-        $this->attrs()->remove("data-src");
+      $this->attrs()->remove("data-src");
     }
     return $this;
   }
@@ -64,7 +63,7 @@ trait LazyLoaderTrait {
    * @return boolean true if the loading is lazy, false otherwise
    */
   public function isLazy() {
-    return $this->attrs()->exists("data-src") && 
+    return $this->attrs()->exists("data-src") &&
             $this->attrs()->classes()->contains(["lazy-hidden", "lazy-loaded"]);
   }
 

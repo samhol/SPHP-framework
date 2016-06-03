@@ -70,8 +70,8 @@ class RangeSlider extends AbstractComponent implements InputInterface {
     $this->getSlider()["segment"] = (new Span())
             ->addCssClass("range-slider-active-segment");
     $this->getSlider()["input"] = new HiddenInput();
-    $this->setAttrRequired("data-sphp-slider")
-            ->setStepLength($step)
+    $this->attrs()->demand("data-sphp-slider");
+    $this->setStepLength($step)
             ->setValue($value)
             ->setRange($start, $end);
   }

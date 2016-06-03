@@ -279,6 +279,9 @@ left: rem-calc(35)
       padding: rem-calc(10);  
     }
   }
+  > div.wrapper {
+    @include default-margin();
+  }
 }
 
 body {

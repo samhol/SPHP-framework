@@ -20,7 +20,6 @@ use Sphp\Html\EmptyTag as EmptyTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
- * @version 1.0.0
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API link
  * @filesource
  */

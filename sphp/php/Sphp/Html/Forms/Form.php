@@ -7,10 +7,11 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ContainerTag as ContainerTag,
-    Sphp\Html\Forms\Input\HiddenInput as HiddenInput,
-    Sphp\Datastructures\ArrayWrapper as ArrayWrapper,
-    Sphp\Html\Container as Container;
+use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
+use Sphp\Datastructures\ArrayWrapper as ArrayWrapper;
+use Sphp\Html\Container as Container;
+use Sphp\Core\Types\Strings as Strings;
 
 /**
  * Class Models an HTML &lt;form&gt; tag
@@ -239,7 +240,7 @@ class Form extends ContainerTag implements FormInterface {
     //	echo "<pre>";
     //	print_r($this->actionParams);
     //	echo "</pre>";
-    return parent::setAttr("action", \Sphp\Util\Strings::htmlentities($url));
+    return parent::setAttr("action", Strings::htmlentities($url));
   }
 
   /**

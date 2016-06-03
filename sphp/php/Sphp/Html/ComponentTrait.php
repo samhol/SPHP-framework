@@ -276,13 +276,13 @@ trait ComponentTrait {
    * @param    boolean $required true if the attribute is required, otherwise false
    * @return   ComponentInterface for PHP Method Chaining
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
-   */
-  public function setAttrRequired($name, $required = true) {
+   *
+    public function setAttrRequired($name, $required = true) {
     $this->attrs()->demand($name, $required);
     return $this;
-  }
+    }
 
-  /**
+    /**
    * Locks a given value to an attribute
    *
    * **IMPORTANT!:**
@@ -297,13 +297,13 @@ trait ComponentTrait {
    * @return   ComponentInterface for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if the locking is not possible
    * @triggers {@link AttributeChangeEvent} if the attribute gets changed
-   */
-  public function lockAttr($name, $value) {
+
+    public function lockAttr($name, $value) {
     $this->attrs()->lock($name, $value);
     return $this;
-  }
+    }
 
-  /**
+    /**
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute

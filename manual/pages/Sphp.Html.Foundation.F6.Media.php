@@ -7,7 +7,7 @@ $flexVideo = $api->classLinker(FlexVideo::class);
 
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-##Foundation 6 MEDIA COMPONENTS
+#Foundation 6 MEDIA COMPONENTS
 
 $ns
         

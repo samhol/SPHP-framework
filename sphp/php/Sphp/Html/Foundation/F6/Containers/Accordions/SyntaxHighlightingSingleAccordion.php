@@ -30,7 +30,6 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  */
 class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implements SyntaxHighlighterInterface {
 
-
   /**
    * Constructs a new instance
    * 
@@ -72,7 +71,6 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     parent::__clone();
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -80,7 +78,6 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     $this->hl->attachContentCopyController($button);
     return $this;
   }
-
 
   /**
    * {@inheritdoc}
@@ -90,13 +87,23 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     return $this;
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function useDefaultContentCopyController($use = true) {
     $this->hl->useDefaultContentCopyController($use);
     return $this;
+  }
+
+  /**
+   * Prints the program code from the file
+   *
+   * @param  string $path the filepath of the program code
+   */
+  public static function visualize($path) {
+    $accordion = (new static());
+    $accordion->loadFromFile($path);
+    $accordion->printHtml();
   }
 
 }
