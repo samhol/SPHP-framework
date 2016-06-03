@@ -12,7 +12,6 @@ namespace Sphp\Net;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-17
- * @version 1.0.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -28,6 +27,7 @@ class Header {
    *
    * @param boolean $buffer Hold header output until called manually
    */
+
   public function __construct($buffer = true) {
     $this->buffer = $buffer;
     $this->header_strings = array();

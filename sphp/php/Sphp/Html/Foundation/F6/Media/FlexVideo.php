@@ -23,7 +23,6 @@ use Sphp\Html\Media\YoutubePlayer as YoutubePlayer;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/flex_video.html Flex Video
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

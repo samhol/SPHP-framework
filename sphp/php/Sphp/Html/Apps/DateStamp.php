@@ -15,7 +15,6 @@ use Sphp\Html\Span as Span;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17
- * @version 2.0.1
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

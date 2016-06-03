@@ -19,7 +19,6 @@ use UnexpectedValueException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-18
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/button_groups.html Foundation Button groups
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

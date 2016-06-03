@@ -16,7 +16,6 @@ use Sphp\Core\Types\Arrays as Arrays;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-05
- * @version 2.0.1
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

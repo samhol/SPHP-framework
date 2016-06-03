@@ -12,7 +12,6 @@ namespace Sphp\Core\Gettext;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2010-09-02
- * @version 2.2.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

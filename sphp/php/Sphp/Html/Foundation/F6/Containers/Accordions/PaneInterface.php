@@ -14,7 +14,6 @@ use Sphp\Html\Lists\LiInterface as LiInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-18
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

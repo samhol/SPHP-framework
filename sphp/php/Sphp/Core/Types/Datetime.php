@@ -18,7 +18,6 @@ use Sphp\Core\Gettext\TranslatorChangerTrait as TranslatorChangerTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2008-05-22
- * @version 3.0.1
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

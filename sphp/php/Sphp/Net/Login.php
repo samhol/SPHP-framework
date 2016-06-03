@@ -16,8 +16,8 @@ use Sphp\messageSys\ErrorMessage as ErrorMessage;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-28
- * @version 1.0
- *
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Login {
 

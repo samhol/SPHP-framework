@@ -16,31 +16,30 @@ namespace Sphp\Html\Tables;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
- * @version 1.1.0
  * @link    http://www.w3schools.com/tags/tag_tfoot.asp w3schools API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class Tfoot extends TableRowContainer {
 
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "tfoot";
+  /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "tfoot";
 
-	/**
-	 * Constructs a new instance
-	 * 
-	 * **Notes:**
-	 * 
-	 *  * A mixed `$row` can be of any type that converts to a PHP string
-	 *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-	 *
-	 * @param  null|mixed|mixed[] $row the row being appended
-	 */
-	public function __construct($row = null) {
-		parent::__construct(self::TAG_NAME, $row);
-		$this->setDefaultTableCellType(Th::TAG_NAME);
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * **Notes:**
+   * 
+   * * A mixed `$row` can be of any type that converts to a PHP string
+   * * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+   *
+   * @param  null|mixed|mixed[] $row the row being appended
+   */
+  public function __construct($row = null) {
+    parent::__construct(self::TAG_NAME, $row);
+    $this->setDefaultTableCellType(Th::TAG_NAME);
+  }
 
 }

@@ -22,7 +22,6 @@ use Sphp\Html\Foundation\F6\Buttons\IconButton as IconButton;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-24
- * @version 1.1.1
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

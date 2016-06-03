@@ -12,7 +12,6 @@ namespace Sphp\Util;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-08-20
- * @version 1.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
