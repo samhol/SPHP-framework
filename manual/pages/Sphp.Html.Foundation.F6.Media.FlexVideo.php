@@ -8,7 +8,7 @@ $flexVideo = $api->getClassLink(FlexVideo::class);
 
 echo $parsedown->text(<<<MD
 		
-###The $flexVideo component for embedded video
+##The $flexVideo component for embedded video
 		
 $flexVideo lets browsers automatically scale video objects in webpages. 
 If a video is embedded from YouTube or Vimeo. It

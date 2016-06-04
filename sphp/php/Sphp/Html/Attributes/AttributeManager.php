@@ -7,17 +7,11 @@
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
-use ArrayAccess;
-use IteratorAggregate;
-use Sphp\Core\Types\Arrays as Arrays;
-use Sphp\Core\Types\Strings as Strings;
-
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-12
+ * @since   2014-09-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

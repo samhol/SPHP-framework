@@ -14,17 +14,16 @@ $title = "SPHP framework";
 foreach (Configuration::useDomain("manual")->get("PAGE_TITLES") as $linkArr) {
   if ($currentUrl->equals($linkArr["href"])) {
     $title .= ": " . $linkArr["text"];
-  }
-  else {
+  } else {
     //$title = $linkArr["href"];
   }
 }
 $html = new Html($title);
 $html->head()
-        /*->addCssSrc("http://fonts.googleapis.com/css?family="
-                . "Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7c"
-                . "Source+Code+Pro:400,500,600,700%7c"
-                . "Open+Sans:400italic,600italic,700italic,400,700,600")*/
+        /* ->addCssSrc("http://fonts.googleapis.com/css?family="
+          . "Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7c"
+          . "Source+Code+Pro:400,500,600,700%7c"
+          . "Open+Sans:400italic,600italic,700italic,400,700,600") */
         ->enableSPHP()
         ->useFontAwesome()
         ->useFoundationIcons()
@@ -39,6 +38,6 @@ $html->head()
 echo $html->getOpeningTag() . $html->head();
 
 $sphpScripts = new Programming\SphpScriptsLoader();
-$sphpScripts->appendSPHP();
+$sphpScripts->appendSPHP()->appendSrc("http://playground.samiholck.com/sphp/js/app/sphp.ProgressBar.js");
 $html->scripts($sphpScripts);
 ?>

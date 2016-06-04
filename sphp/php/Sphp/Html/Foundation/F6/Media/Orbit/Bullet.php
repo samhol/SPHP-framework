@@ -40,8 +40,12 @@ class Bullet extends AbstractComponent {
    */
   private $currentDescriptor;
 
-  //<button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-
+  /**
+   * 
+   * @param int $slideNo
+   * @param string $slideText
+   * @param string $currentSlideText
+   */
   public function __construct($slideNo, $slideText = null, $currentSlideText = "Current Slide") {
     $this->number = $slideNo;
     parent::__construct("button");

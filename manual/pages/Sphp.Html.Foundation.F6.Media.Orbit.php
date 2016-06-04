@@ -11,7 +11,7 @@ $orbit = $api->classLinker(Orbit::class);
 $slide = $api->classLinker(Slide::class);
 
 echo $parsedown->text(<<<MD
-###The $orbit container and the $slide components
+##The $orbit container and the $slide components
 $ns
 $orbit is a responsive container for image on other content sliders that allows swiping on touch-enabled devices.
 An $orbit containing $slide components can not handle variable-height content.
