@@ -16,7 +16,7 @@ use Sphp\Html\Media\FigCaption as FigCaption;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-07
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/orbit.html Orbit slider
+ * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -37,9 +37,8 @@ class FigureSlide extends AbstractSlide {
       $caption = new FigCaption($caption);
     }
     $caption->cssClasses()->lock("orbit-caption");
-    $figure = new Figure($img, $caption);
     $this->content()->set("img", $img);
-    $this->content()->set("caption", $img);
+    $this->content()->set("caption", $caption);
   }
 
   /**

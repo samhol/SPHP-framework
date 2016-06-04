@@ -15,7 +15,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-07
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/orbit.html Orbit slider
+ * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -29,7 +29,6 @@ class Orbit extends AbstractComponent {
    * 1. `mixed $slides` can be of any type that converts to a PHP string
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
-   * <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
    * @param  mixed|mixed[] $slides slide(s)
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
@@ -72,12 +71,12 @@ class Orbit extends AbstractComponent {
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
    *
-   * @param  mixed|SlideInterface $slides
+   * @param  mixed|SlideInterface $slide
    * @return self for PHP Method Chaining
    */
-  public function append($slides) {
-    if (!($slides instanceof SlideInterface)) {
-      $slide = new Slide($slides);
+  public function append($slide) {
+    if (!($slide instanceof SlideInterface)) {
+      $slide = new Slide($slide);
     }
     $this->slides()->append($slide);
     $n = $this->slides()->count();

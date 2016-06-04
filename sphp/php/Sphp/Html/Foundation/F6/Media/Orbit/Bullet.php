@@ -11,9 +11,14 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Span as Span;
 
 /**
- * Description of OrbitButton
+ * Class models a bullet for Foundation 6 orbit
  *
- * @author samih_000
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-04-07
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Bullet extends AbstractComponent {
 

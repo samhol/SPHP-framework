@@ -14,7 +14,7 @@ use Sphp\Html\Media\VimeoPlayer as VimeoPlayer;
 use Sphp\Html\Media\YoutubePlayer as YoutubePlayer;
 
 /**
- * Class models a Foundation Flex Video component
+ * Class models a Foundation 6 Flex Video component
  *
  * Flex Video lets browsers automatically scale video objects in webpages. If a 
  * video is embedded from YouTube, Vimeo, or another site that uses iframe, 

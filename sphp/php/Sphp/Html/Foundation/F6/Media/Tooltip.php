@@ -12,10 +12,12 @@ use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 
 /**
- * Class Tooltip
+ * Class models a Foundation 6 Tooltip component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-30
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/docs/components/tooltip.html Tooltip
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
