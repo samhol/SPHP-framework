@@ -2,11 +2,12 @@
 
 /**
  * FigureSlide.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Media\Img as Img;
 use Sphp\Html\Media\FigCaption as FigCaption;
 
@@ -14,13 +15,13 @@ use Sphp\Html\Media\FigCaption as FigCaption;
  * Class implements a slide for Foundation {@link Orbit} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-07
+ * @since   2016-06-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FigureSlide extends AbstractSlide {
+class FigureSlide extends AbstractComponent implements SlideInterface {
 
   /**
    * Constructs a new instance
@@ -29,10 +30,12 @@ class FigureSlide extends AbstractSlide {
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img = null, $caption = null) {
-    parent::__construct();
+    parent::__construct(self::TAG_NAME);
+    $this->cssClasses()->lock("orbit-slide fig-wrapper");
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
+    $img->cssClasses()->lock("float-center");
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }

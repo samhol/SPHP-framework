@@ -30,7 +30,7 @@ use Sphp\Html\Apps\TechLinkList as TechLinkList;
                   ->addCssClass("sphp-f6-info large")
                   ->ajaxPrepend("manual/snippets/f6ScreenInfo.php");
 
-          $ul[] = $blee;
+          //$ul[] = $blee;
           $ul->appendLink("https://github.com/samhol/SPHP-framework", '<i class="fi-social-github"></i>', "_blank")
                   ->appendLink("https://www.facebook.com/Sami.Petteri.Holck.Programming/", '<i class="fi-social-facebook"></i>', "_blank")
                   ->appendLink("https://twitter.com/SPHPframework", '<i class="fi-social-twitter"></i>', "_blank")

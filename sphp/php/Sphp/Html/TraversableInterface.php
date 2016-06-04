@@ -24,10 +24,10 @@ interface TraversableInterface extends IteratorAggregate, Countable {
    * Returns a {@link ContainerInterface} containing sub components
    *  that match the search
    *
-   * @param  \Closure $rules a lambda function for testing the sub components
+   * @param  callable $rules a lambda function for testing the sub components
    * @return ContainerInterface containing matching sub components
    */
-  public function getComponentsBy(\Closure $rules);
+  public function getComponentsBy(callable $rules);
 
   /**
    * Returns a {@link ContainerInterface} containing sub components that

@@ -11,6 +11,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Datastructures\ArrayWrapper as ArrayWrapper;
 use Sphp\Html\Container as Container;
+use Sphp\Html\ContainerInterface as ContainerInterface;
 use Sphp\Core\Types\Strings as Strings;
 
 /**
@@ -153,12 +154,9 @@ class Form extends ContainerTag implements FormInterface {
   }
 
   /**
-   * Returns an array of sub components that match the search
-   *
-   * @param \Closure $rules a lambda function for testing the sub components
-   * @return mixed[] matching sub components
+   * {@inheritdoc}
    */
-  public function getComponentsBy(\Closure $rules) {
+  public function getComponentsBy(callable $rules) {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $components = (new Container())
@@ -168,9 +166,9 @@ class Form extends ContainerTag implements FormInterface {
   }
 
   /**
-   * Returns all named {@link InputInterface} components in the form
+   * Returns all named {@link InputInterface} components
    *
-   * @return InputInterface[] matching components
+   * @return ContainerInterface matching components
    */
   public function getNamedInputComponents() {
     $search = function($element) {
@@ -189,8 +187,8 @@ class Form extends ContainerTag implements FormInterface {
    * @return self for PHP Method Chaining
    */
   public function clear() {
-    parent::clearContent();
-    $this->hiddenInputs->clearContent();
+    parent::clear();
+    $this->hiddenInputs->clear();
     return $this;
   }
 

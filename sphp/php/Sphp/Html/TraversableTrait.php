@@ -1,14 +1,16 @@
 <?php
 
 /**
- * TraversableComponentTrait.php (UTF-8)
+ * TraversableTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html;
 
+use ArrayIterator;
+
 /**
- * Trait implements {@link TraversableComponentInterface} functionality
+ * Trait implements {@link TraversableInterface} functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-19
@@ -21,18 +23,18 @@ trait TraversableTrait {
   /**
    * Create a new iterator to iterate through inserted elements in the html component
    *
-   * @return \ArrayIterator iterator
+   * @return ArrayIterator iterator
    */
   abstract public function getIterator();
 
   /**
-   * Returns a {@link HtmlContainer} containing sub components that
+   * Returns a {@link ContainerInterface} containing sub components that
    *  match the search
    *
-   * @param \Closure $rules a lambda function for testing the sub components
-   * @return Container containing matching sub components
+   * @param  callable $rules a lambda function for testing the sub components
+   * @return ContainerInterface containing matching sub components
    */
-  public function getComponentsBy(\Closure $rules) {
+  public function getComponentsBy(callable $rules) {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $result = new Container();
@@ -55,11 +57,11 @@ trait TraversableTrait {
   }
 
   /**
-   * Returns a {@link HtmlContainer} containing sub components that
+   * Returns a {@link ContainerInterface} containing sub components that
    *  contain the searched attribute
    *
    * @param  string $attrName the name of the searched attribute
-   * @return Container containing matching sub components
+   * @return ContainerInterface containing matching sub components
    */
   public function getComponentsByAttrName($attrName) {
     $search = function($element) use ($attrName) {
@@ -75,11 +77,11 @@ trait TraversableTrait {
   }
 
   /**
-   * Returns a {@link Container} containing sub components
+   * Returns a {@link ContainerInterface} containing sub components
    *  that are of the given PHP type
    *
    * @param  string|\object $type the name of the searched PHP object type
-   * @return Container containing matching sub components
+   * @return ContainerInterface containing matching sub components
    */
   public function getComponentsByObjectType($type) {
     $search = function($element) use ($type) {

@@ -2,7 +2,7 @@
 
 /**
  * Orbit.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
@@ -13,7 +13,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
  * Class implements a Foundation Orbit containing {@link SlideInterface} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-07
+ * @since   2016-06-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -29,6 +29,7 @@ class Orbit extends AbstractComponent {
    * 1. `mixed $slides` can be of any type that converts to a PHP string
    * 2. Any `mixed $slides` not extending {@link Slide} is wrapped within {@link Slide} component
    * 3. All items of an array are treated according to note (2)
+   * 
    * @param  mixed|mixed[] $slides slide(s)
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
@@ -75,9 +76,6 @@ class Orbit extends AbstractComponent {
    * @return self for PHP Method Chaining
    */
   public function append($slide) {
-    if (!($slide instanceof SlideInterface)) {
-      $slide = new Slide($slide);
-    }
     $this->slides()->append($slide);
     $n = $this->slides()->count();
     $this->bullets()->set($n - 1);

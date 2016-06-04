@@ -2,19 +2,18 @@
 
 /**
  * SlideContainer.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Container as Container;
 
 /**
  * Class implements a Foundation Orbit containing {@link Slide} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-07
+ * @since   2016-06-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/orbit.html Orbit
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -42,7 +41,7 @@ class SlideContainer extends AbstractComponent {
    * @return self for PHP Method Chaining
    */
   public function append($slide) {
-    if (!($slide instanceof Slide)) {
+    if (!($slide instanceof SlideInterface)) {
       $slide = new Slide($slide);
     }
     $this->content()->append($slide);

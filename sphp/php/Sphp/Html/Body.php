@@ -54,6 +54,8 @@ class Body extends ContainerTag {
   }
   
   /**
+   * 
+   * @return string the script tags and the closing tag
    */
   public function close() {
     return $this->scripts . $this->getClosingTag();
