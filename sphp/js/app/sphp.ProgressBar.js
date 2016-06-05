@@ -1,59 +1,58 @@
 
 /**
- * Contains sphp.SideNavs functionality
+ * commonJqueryPlugins.js (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
  *
- * @author Sami Holck <sami.holck@gmail.com>
- * @name sphp
- * @namespace sphp
+ * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
+ * 
+ * @namespace $
  */
-(function (sphp, $, undefined) {
-  "use strict";
-  var $progressBars = [];
-
-sphp.progressBar = {change: "sphp.progressBar.change"};
-  sphp.initProgresBars = function () {
-    $("[data-sphp-progressbar]").progressBar();
+(function ($) {
+  'use strict';
+  /**
+   * 
+   * @param   {Number} $progress new progress level in percent (0-100)
+   * @param   {String} $text new progress level text
+   * @returns {sphp_ProgressBar_L74.$.fn@call;each}
+   */
+  $.fn.setProgress = function ($progress, $text) {
+    return this.each(function () {
+      var $this = $(this),
+              $meter = $this.children(".progress-meter");
+      $text = typeof $text !== 'undefined' ? $text : $progress + "%";
+      $this.attr("aria-valuenow", $progress);
+      $this.attr("aria-valuetext", $text);
+      $meter.css("width", $progress + "%");
+      $(this).trigger("sphp.progressBar.change", {progress: $progress});
+    });
   };
   /**
    * 
-   * @returns 
+   * @returns {number}
    */
-  sphp.addProgressBar = function ($barName) {
-    console.log("sphp.addProgressBar(" + $barName + ")");
-
+  $.fn.getProgress = function () {
+    return parseInt($(this).attr("aria-valuenow"));
   };
-}(window.sphp = window.sphp || {}, jQuery));
-
-(function ($) {
-  'use strict';
-  $.fn.progressBar = function ($progress) {
-    return this.each(function () {
-
-      var $this = $(this),
-              $meter = $this.children(".progress-meter");
-      console.log("$.fn.progressBar(" + $progress + ")");
-      $meter.css("width", $progress + "%");
-      $(this).trigger(sphp.progressBar.change, {progress : $progress});
-      this.a = function () {
-        return $meter.css("width");
-      };
-    });
-
-  };
-
 }(jQuery));
-var $a = 10;
-$("[data-sphp-progressbar]").on(sphp.progressBar.change, function( event, param) {
-  //$( this ).getProgress();
-  
-  console.log(event.namespace + ":" +  event.type);
+var foo = {
+  bar: $("[data-sphp-progressbar]"),
+  setBar: function ($bar, $progress) {
+    setTimeout(function () {
+      if ($progress <= 100) {
+        $bar.setProgress($progress);
+      } else {
+        $bar.setProgress(0);
+      }
+    }, 500);
+  }
+};
+
+foo.bar.on("sphp.progressBar.change", function (event, param) {
+  $theBar = $(event.delegateTarget);
+  $progress = $theBar.getProgress();
+  $add = Math.floor((Math.random() * 10) + 5);
+  setBar($theBar, $progress + $add);
 });
-function test() {
-  var $v = ($a += 10) % 100;
-  $("[data-sphp-progressbar]").progressBar($v);
-  //console.log("v:" + $("[data-sphp-progressbar]").progressBar());
-}
-var id = setInterval(test, 1000); //call test every 10 seconds.
-function stop() { // call this to stop your interval.
-  clearInterval(id);
-}
+
+
+foo.bar.setProgress(5);
