@@ -171,8 +171,12 @@ if (!window.console.log) {
     } else {
       window.console.log = function () {};
     }
-  };
 
+  };
+  sphp.Exception = function (message) {
+    this.message = message;
+    this.name = "UserException";
+  };
   function handleFoundationSliders() {
     $('[data-slider]').on('change', function () {
       var slider = $(this),
@@ -227,7 +231,7 @@ if (!window.console.log) {
         $(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
       });
       $(".sphp-viewport-size-viewer").viewportSizeViewer();
-      
+
       $("[data-sphp-qtip]").qtips();
       //  if ($(document).foundation()) {
       // $(document).foundation();

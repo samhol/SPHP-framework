@@ -17,8 +17,11 @@
    */
   $.fn.setProgress = function ($progress, $text) {
     return this.each(function () {
-      var $this = $(this),
-              $meter = $this.children(".progress-meter");
+      var $this = $(this), $meter;
+      $meter = $this.children(".progress-meter");
+      if (!$this.hasClass("progress") || !$meter) {
+        throw "Element is not a valid Foundation Progress bar";
+      }
       $text = typeof $text !== 'undefined' ? $text : $progress + "%";
       $this.attr("aria-valuenow", $progress);
       $this.attr("aria-valuetext", $text);
@@ -34,6 +37,7 @@
     return parseInt($(this).attr("aria-valuenow"));
   };
 }(jQuery));
+
 var foo = {
   bar: $("[data-sphp-progressbar]"),
   setBar: function ($bar, $progress) {
@@ -51,8 +55,7 @@ foo.bar.on("sphp.progressBar.change", function (event, param) {
   $theBar = $(event.delegateTarget);
   $progress = $theBar.getProgress();
   $add = Math.floor((Math.random() * 10) + 5);
-  setBar($theBar, $progress + $add);
+  foo.setBar($theBar, $progress + $add);
 });
-
 
 foo.bar.setProgress(5);
