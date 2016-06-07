@@ -163,7 +163,7 @@ if (!window.console.log) {
    * @static
    * @memberOf sphp
    * @param   {Boolean} enabled
-   * @returns {undefined}
+   * @returns {Boolean} whether the console is enabled or not
    */
   sphp.enableConsole = function (enabled) {
     if (enabled) {
@@ -171,12 +171,24 @@ if (!window.console.log) {
     } else {
       window.console.log = function () {};
     }
-
+    return enabled;
   };
   sphp.Exception = function (message) {
     this.message = message;
     this.name = "UserException";
   };
+  sphp.Foundation = {
+    getProgressBar: function ($name) {
+      $bar = $("[data-sphp-progressbar-name='" + $name + "']");
+      if (!$bar) {
+        throw new "progressbar fucked up";
+      }
+      return $bar;
+    }
+  };
+
+
+
   function handleFoundationSliders() {
     $('[data-slider]').on('change', function () {
       var slider = $(this),

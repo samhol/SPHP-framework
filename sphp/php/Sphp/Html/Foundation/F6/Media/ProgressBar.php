@@ -29,7 +29,12 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
 
   use ColoringTrait;
 
-  public function __construct($progress) {
+  /**
+   * 
+   * @param int $progress
+   * @param string|null $name
+   */
+  public function __construct($progress, $name = null) {
     parent::__construct("div");
     $progressMeter = new Div();
     $progressMeter->cssClasses()->lock("progress-meter");
@@ -42,9 +47,10 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
             ->lock("aria-valuemin", 0)
             ->lock("aria-valuemax", 100)
             ->demand("aria-valuenow")
-            ->demand("aria-valuetext");
+            ->demand("aria-valuenow")
+            ->demand("data-sphp-progressbar-name");
     $this->cssClasses()->lock("progress");
-    $this->setProgress($progress);
+    $this->setProgress($progress)->setBarName($name);
   }
 
   /**
@@ -54,6 +60,17 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    */
   private function getMeter() {
     return $this->content()->get("progress-meter");
+  }
+
+  /**
+   * returns the meter component
+   * 
+   * @param  string $name the optional bar name for build-in javascript library use
+   * @return self for PHP Method Chaining
+   */
+  public function setBarName($name) {
+    $this->attrs()->set("data-sphp-progressbar-name", $name);
+    return $this;
   }
 
   /**
