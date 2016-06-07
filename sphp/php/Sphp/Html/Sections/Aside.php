@@ -16,9 +16,6 @@ use Sphp\Html\Headings\HeadingInterface as HeadingInterface;
  *  This component defines sections in a document, such as chapters, headers, 
  *  footers, or any other sections of the document.
  * 
- * {@inheritdoc}
- *
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2015-02-25
  * @link    http://www.w3schools.com/tags/tag_aside.asp w3schools HTML API link

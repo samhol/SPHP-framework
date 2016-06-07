@@ -15,9 +15,6 @@ use Sphp\Html\Headings\HeadingInterface as HeadingInterface;
  *
  *  This component defines sections in a document, such as chapters, headers, 
  *  footers, or any other sections of the document.
- * 
- * {@inheritdoc}
- *
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2015-02-25
@@ -51,12 +48,12 @@ class Section extends ContainerTag {
   }
 
   /**
-   * Returns the heading components tag object
+   * Returns the paragraphs in this section
    *
-   * @return HeadingInterface the body tag object
+   * @return Paragraph the body tag object
    */
   public function paragraphs() {
-    return $this->getComponentsByObjectType(HeadingInterface::class);
+    return $this->getComponentsByObjectType(Paragraph::class);
   }
 
 }

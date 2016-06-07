@@ -98,10 +98,14 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * Prints the program code from the file
    *
    * @param  string $path the filepath of the program code
+   * @param  mixed|mixed[] $title the title of the accordion
    */
-  public static function visualize($path) {
+  public static function visualize($path, $title = null) {
     $accordion = (new static());
     $accordion->loadFromFile($path);
+    if ($title !== null) {
+      $accordion->setPaneTitle($title);
+    }
     $accordion->printHtml();
   }
 

@@ -74,6 +74,28 @@ class Html extends AbstractComponent implements TraversableInterface {
   }
 
   /**
+   * Sets the title of the html page
+   *
+   * @param  string|Title $title the title of the html page
+   * @return self for PHP Method Chaining
+   */
+  public function setTitle($title) {
+    $this->head()->setTitle($title);
+    return $this;
+  }
+  
+  /**
+   * Sets up the SPHP framework related Javascript and CSS files
+   *
+   * @return self for PHP Method Chaining
+   */
+  public function enableSPHP() {
+    $this->head()->enableSPHP();
+    $this->body()->enableSPHP();
+    return $this;
+  }
+
+  /**
    * Returns and optionally sets the inner script container
    * 
    * @param  ScriptsContainer|null $c optional new script container to set

@@ -25,6 +25,8 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
  */
 class Table extends AbstractComponent implements \Sphp\Html\TraversableInterface {
 
+  
+  use \Sphp\Html\TraversableTrait;
 	/**
 	 * Counts the {@link RowInterface} components in the table
 	 */
@@ -209,36 +211,14 @@ class Table extends AbstractComponent implements \Sphp\Html\TraversableInterface
 	}
 
 	/**
-	 * Returns a {@link HtmlContainer} containing sub components that 
-	 *  match the search
-	 *
-	 * @param \Closure $rules a lambda function for testing the sub components
-	 * @return Container containing matching sub components
-	 */
-	public function getComponentsBy(\Closure $rules) {
-		return $this->content()->getComponentsBy($rules);
-	}
-
-	/**
-	 * Returns a {@link HtmlContainer} containing sub components that 
+	 * Returns a {@link ContainerInterface} containing sub components that 
 	 *  contain the searched attribute
 	 *
 	 * @param  string $attrName the name of the searched attribute
-	 * @return Container containing matching sub components
+	 * @return ContainerInterface containing matching sub components
 	 */
 	public function getComponentsByAttrName($attrName) {
 		return $this->content()->getComponentsByAttrName($attrName);
-	}
-
-	/**
-	 * Returns a {@link HtmlContainer} containing sub components
-	 *  that are of the given PHP type
-	 *
-	 * @param  string|\object $typeName the name of the searched PHP object type
-	 * @return Container containing matching sub components
-	 */
-	public function getComponentsByObjectType($typeName) {
-		return $this->content()->getComponentsByObjectType($typeName);
 	}
 
 	/**

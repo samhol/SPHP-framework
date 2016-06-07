@@ -179,9 +179,9 @@ if (!window.console.log) {
   };
   sphp.Foundation = {
     getProgressBar: function ($name) {
-      $bar = $("[data-sphp-progressbar-name='" + $name + "']");
+      var $bar = $("[data-sphp-progressbar-name='" + $name + "']");
       if (!$bar) {
-        throw new "progressbar fucked up";
+        throw new "progressbar was fucked up";
       }
       return $bar;
     }

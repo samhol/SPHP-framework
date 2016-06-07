@@ -14,21 +14,14 @@ $title = "SPHP framework";
 foreach (Configuration::useDomain("manual")->get("PAGE_TITLES") as $linkArr) {
   if ($currentUrl->equals($linkArr["href"])) {
     $title .= ": " . $linkArr["text"];
-  } else {
-    //$title = $linkArr["href"];
   }
 }
-$html = new Html($title);
+$html = Document::html("manual")->setTitle($title);
+$html->enableSPHP();
 $html->head()
-        /* ->addCssSrc("http://fonts.googleapis.com/css?family="
-          . "Source+Sans+Pro:400,600,700,400italic,600italic,700italic%7c"
-          . "Source+Code+Pro:400,500,600,700%7c"
-          . "Open+Sans:400italic,600italic,700italic,400,700,600") */
-        ->enableSPHP()
         ->useFontAwesome()
         ->useFoundationIcons()
         ->setBaseAddr(Configuration::httpHost(), "_self")
-        //->addCssSrc("sphp/css/manual.css")
         ->addShortcutIcon("favicon.ico")
         ->metaTags()
         ->setApplicationName("SPHP")
@@ -37,7 +30,4 @@ $html->head()
         ->setDescription("SPHP framework for web developement");
 echo $html->getOpeningTag() . $html->head();
 
-$sphpScripts = new Programming\SphpScriptsLoader();
-$sphpScripts->appendSPHP()->appendSrc("http://playground.samiholck.com/sphp/js/app/sphp.ProgressBar.js");
-$html->scripts($sphpScripts);
 ?>

@@ -72,7 +72,7 @@ class Accordion extends AbstractComponent implements \IteratorAggregate {
   }
 
   /**
-   * Creates appends a new pane component into the accordion
+   * Creates and appends a new {@link Pane} component into the accordion
    * 
    * @param  mixed $title the content of the pane title
    * @param  mixed $content the content of the actual pane
@@ -84,7 +84,7 @@ class Accordion extends AbstractComponent implements \IteratorAggregate {
   }
 
   /**
-   * Create a new iterator to iterate through inserted {@link Accordion} components 
+   * Create a new iterator to iterate through inserted {@link PaneInterface} components 
    *
    * @return \ArrayIterator iterator
    */
@@ -95,7 +95,7 @@ class Accordion extends AbstractComponent implements \IteratorAggregate {
   /**
    * Sets the amount of time to animate the opening of an accordion pane
    * 
-   * @param  int $speed
+   * @param  int $speed the amount of time
    * @return self for PHP Method Chaining
    */
   public function setSliderSpeed($speed) {
@@ -104,25 +104,25 @@ class Accordion extends AbstractComponent implements \IteratorAggregate {
   }
 
   /**
-   * Sets the amount of time to animate the opening of an accordion pane
+   * Sets whether to allow the accordion to have multiple open panes
    * 
-   * @param  boolean $expand
+   * @param  boolean $allow true for allowing and false otherwise
    * @return self for PHP Method Chaining
    */
-  public function allowMultiExpand($expand = true) {
-    $value = $expand ? "true" : "false";
+  public function allowMultiExpand($allow = true) {
+    $value = $allow ? "true" : "false";
     $this->attrs()->set("data-multi-expand", $value);
     return $this;
   }
 
   /**
-   * Sets the amount of time to animate the opening of an accordion pane
+   * Sets whether to allow the accordion to close all panes
    * 
-   * @param  boolean $allClosed
+   * @param  boolean $allow true for allowing and false otherwise
    * @return self for PHP Method Chaining
    */
-  public function allowAllClosed($allClosed = true) {
-    $value = $allClosed ? "true" : "false";
+  public function allowAllClosed($allow = true) {
+    $value = $allow ? "true" : "false";
     $this->attrs()->set("data-allow-all-closed", $value);
     return $this;
   }

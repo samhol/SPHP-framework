@@ -41,11 +41,10 @@ class Head extends AbstractComponent {
    *
    * @param string $title the title of the HTML document
    * @param string $charset the character set of the HTML document
-   * @param string $baseAddr the base address of the HTML document
    */
-  public function __construct($title = "", $charset = "UTF-8", $baseAddr = "") {
+  public function __construct($title = "", $charset = "UTF-8") {
     parent::__construct(self::TAG_NAME);
-    $this->setup($title, $charset, $baseAddr);
+    $this->setup($title, $charset);
   }
 
   /**
@@ -53,12 +52,10 @@ class Head extends AbstractComponent {
    *
    * @param  string $title the title of the HTML document
    * @param  string $charset the character set of the HTML document
-   * @param  string $baseAddr the base address of the HTML document
    * @return self for PHP Method Chaining
    */
-  private function setup($title, $charset, $baseAddr) {
-    $this->setTitle($title)
-            ->setBaseAddr($baseAddr);
+  private function setup($title, $charset) {
+    $this->setTitle($title);
     //$this->metaTags = new MetaTagContainer();
     $this->content()["meta"] = new MetaContainer();
     $this->metaTags()->setCharset($charset);
@@ -140,7 +137,7 @@ class Head extends AbstractComponent {
   
 
   /**
-   * Sets up the Foundation framework related Javascript and CSS files
+   * Sets up the Foundation framework related CSS files and meta data
    *
    * @return self for PHP Method Chaining
    */

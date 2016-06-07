@@ -67,7 +67,7 @@ class Document {
       "blockquote" => ContainerTag::class,
       "body" => Body::class,
       "br" => EmptyTag::class,
-      //"button" => Forms\ButtonTag::class,
+      //"button:button" => Forms\Buttons\Button::class,
       "button:reset" => Forms\Buttons\ResetButton::class,
       "button:submit" => Forms\Buttons\SubmitButton::class,
       "col" => Tables\Col::class,
@@ -179,14 +179,11 @@ class Document {
    *
    * @param  string $tagname the tag name of the component
    * @param  string $content the content of the tag (for nonempty tags only)
-   * @return AbstractTag the corresponding tag object
+   * @return ComponentInterface the corresponding component
    * @throws \InvalidArgumentException if given tagname is invalid
    */
   public static function get($tagname, $content = null) {
     $tagName = strtolower($tagname);
-    //$classNamePrefix = ucfirst($tagName);
-    //$className = $classNamePrefix . "Tag";
-
     if (array_key_exists($tagName, self::$tags)) {
       $className = self::$tags[$tagName];
       if ($className == EmptyTag::class || $className == ContainerTag::class) {
@@ -197,7 +194,7 @@ class Document {
       if ($class instanceof ContainerInterface && $content !== null) {
         $class->append($content);
       }
-    } else if (Strings::startsWith($tagName, ["button:", "input:"])) {
+    } else if (Strings::startsWith($tagName, "button:") || Strings::startsWith("input:")) {
       $data = explode(":", $tagName);
       if ($data[0] == "input") {
         $className = Forms\Input\Input::class;
@@ -214,9 +211,9 @@ class Document {
 
   /**
    * 
-   * @param type $icon
-   * @param type $tagName
-   * @return type
+   * @param  string $icon
+   * @param  string $tagname the tag name of the component
+   * @throws \InvalidArgumentException if given tagname is invalid
    */
   public static function icon($icon, $tagName = "i") {
     return self::get($tagName)->addCssClass($icon);
@@ -250,15 +247,24 @@ class Document {
     return self::$htmlVersion == self::XHTML5 || self::$htmlVersion == self::XHTML_1_0 || self::$htmlVersion == self::XHTML_1_1;
   }
 
-  /**
-   * 
-   * @param  string $title
-   * @param  mixed $content
-   * @param  string $charset
-   * @return Html
+  /** 
+   * the html component
+   *
+   * @var Html[] 
    */
-  public static function create($title, $content = null, $charset = "UTF-8") {
-    return new Html($title, $charset, $content);
+  private static $html = [];
+
+  /**
+   * Returns the html component pointed by the given name
+   * 
+   * @param  string $docName the name of the managed document
+   * @return Html the html component pointed by the given name
+   */
+  public static function html($docName) {
+    if (!array_key_exists($docName, self::$html)) {
+      self::$html[$docName] = new Html();
+    }
+    return self::$html[$docName];
   }
 
 }

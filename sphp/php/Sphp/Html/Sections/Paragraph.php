@@ -15,8 +15,6 @@ use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
  *
  *  The {@link self} component represents a paragraph in an HTML document.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-06-03
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API link

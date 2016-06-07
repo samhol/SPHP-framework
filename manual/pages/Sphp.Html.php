@@ -101,4 +101,4 @@ MD
 //PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php");
 $load("Sphp.Html.AjaxLoaderInterface.php");
-$load("Sphp.Html.Document.php");
+//$load("Sphp.Html.Document.php");

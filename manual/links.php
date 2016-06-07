@@ -17,6 +17,7 @@ $sidenavLinks["core"] = ["group" => "Core components", "sub" =>
 $sidenavLinks["html_basics"] = ["group" => "HTML Basics", "sub" =>
     [
         ["href" => "$httpRoot?page=Sphp.Html", "text" => "Introduction"],
+        ["href" => "$httpRoot?page=Sphp.Html.Document", "text" => "Document factory"],
         ["href" => "$httpRoot?page=Sphp.Html.Attributes", "text" => "Attribute management"],
         ["href" => "$httpRoot?page=Sphp.Html.Head", "text" => "Meta data manipulation"],
         ["href" => "$httpRoot?page=Sphp.Html.Media", "text" => "Images, audio and video"],

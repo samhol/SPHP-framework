@@ -1,6 +1,6 @@
 
 /**
- * commonJqueryPlugins.js (UTF-8)
+ * Sphp.Foundation.ProgressBar.js (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
  *
  * Requires <a href="http://jquery.com/">jQuery (1.8.2)+</a>
@@ -37,25 +37,3 @@
     return parseInt($(this).attr("aria-valuenow"));
   };
 }(jQuery));
-
-var foo = {
-  bar: $("[data-sphp-progressbar]"),
-  setBar: function ($bar, $progress) {
-    setTimeout(function () {
-      if ($progress <= 100) {
-        $bar.setProgress($progress);
-      } else {
-        $bar.setProgress(0);
-      }
-    }, 500);
-  }
-};
-
-foo.bar.on("sphp.progressBar.change", function (event, param) {
-  $theBar = $(event.delegateTarget);
-  $progress = $theBar.getProgress();
-  $add = Math.floor((Math.random() * 10) + 5);
-  foo.setBar($theBar, $progress + $add);
-});
-
-foo.bar.setProgress(5);

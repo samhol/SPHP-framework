@@ -51,11 +51,11 @@ class AbstractSingleAccordion extends AbstractComponent {
   /**
    * Sets the heading of the accordion
    *
-   * @param  mixed|mixed[] $heading the heading of the accordion
+   * @param  mixed|mixed[] $title the title of the accordion
    * @return self for PHP Method Chaining
    */
-  public function setPaneTitle($heading) {
-    $this->getAccordion()->setPaneTitle($heading);
+  public function setPaneTitle($title) {
+    $this->getAccordion()->setPaneTitle($title);
     return $this;
   }
 

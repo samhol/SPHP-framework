@@ -177,7 +177,8 @@ class SphpScriptsLoader extends ScriptsContainer {
             ->appendSrc($this->paths["app"] . "sphp.SideNavs.js")
             ->appendSrc($this->paths["app"] . "sphp.TechLinks.js")
             ->appendSrc($this->paths["js_root"] . "sphp.all.js")
-            ->appendCode('sphp.initialize("' . $this->pathFinder->http() . '");');
+            ->appendCode('sphp.initialize("' . $this->pathFinder->http() . '");')
+            ->appendSrc($this->paths["app"] . "sphp.ProgressBar.js");
     return $this;
   }
 

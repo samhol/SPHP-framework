@@ -8,6 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
+use Sphp\Html\Programming\SphpScriptsLoader as SphpScriptsLoader;
 
 /**
  * Class models an HTML &lt;body&gt; tag
@@ -30,7 +31,7 @@ class Body extends ContainerTag {
    * the tag name of the HTML component
    */
   const TAG_NAME = "body";
-  
+
   /**
    *
    * @var ScriptsContainer 
@@ -52,7 +53,7 @@ class Body extends ContainerTag {
     parent::__construct(self::TAG_NAME, $content);
     $this->scripts = new ScriptsContainer();
   }
-  
+
   /**
    * 
    * @return string the script tags and the closing tag
@@ -60,7 +61,20 @@ class Body extends ContainerTag {
   public function close() {
     return $this->scripts . $this->getClosingTag();
   }
-  
+
+  /**
+   * Sets up the SPHP framework related Javascript files to the end of the body
+   *
+   * @return self for PHP Method Chaining
+   */
+  public function enableSPHP() {
+    $sphpScripts = new SphpScriptsLoader();
+    $sphpScripts->appendSPHP();
+    $sphpScripts->appendSPHP();
+    $this->scripts($sphpScripts);
+    return $this;
+  }
+
   /**
    * Returns and optionally sets the inner script container
    * 
