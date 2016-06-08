@@ -57,6 +57,7 @@ interface InputInterface {
 	 *
 	 * @param  string|string[] $value the value of the form input
 	 * @return self for PHP Method Chaining
+   * @throws \InvalidArgumentException if the value is not valid for the input type
 	 */
 	public function setValue($value);
 

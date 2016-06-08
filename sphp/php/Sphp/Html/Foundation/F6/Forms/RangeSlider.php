@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Slider.php (UTF-8)
+ * RangeSlider.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -23,7 +23,7 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Slider extends AbstractComponent implements InputInterface {
+class RangeSlider extends AbstractComponent implements InputInterface {
 
   /**
    * Constructs a new instance
@@ -43,13 +43,20 @@ class Slider extends AbstractComponent implements InputInterface {
             ->demand("data-initial-start")
             ->set("data-initial-start", $value)
             ->demand("data-slider");
-    $handle = new Span();
-    $handle->cssClasses()->lock("slider-handle");
-    $handle->attrs()
+    $handle1 = new Span();
+    $handle1->cssClasses()->lock("slider-handle");
+    $handle1->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->content()["slider"] = $handle;
+    $this->content()["slider1"] = $handle1;
+    $handle2 = new Span();
+    $handle2->cssClasses()->lock("slider-handle");
+    $handle2->attrs()
+            ->demand("data-slider-handle")
+            ->lock("role", "slider")
+            ->lock("tabindex", 1);
+    $this->content()["slider2"] = $handle2;
     $filler = new Span();
     $filler->cssClasses()
             ->lock("slider-fill");
