@@ -41,7 +41,7 @@ include_once("manual/htmlHead.php");
 
 
   <?php
-  include_once("footer.php");
+  include_once("manual/_footer_.php");
 
   use Sphp\Html\Apps\BackToTopButton as BackToTopButton;
 

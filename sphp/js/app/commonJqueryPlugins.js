@@ -214,7 +214,7 @@
       clip.on("aftercopy", function (e) {
         console.log($this.attr("data-clipboard-target"));
         $container.sphpPopper({content: "Code is copied to the clipboard"});
-        console.log("Copied text to clipboard: " + e.data["text/plain"]);
+        console.log("Text copied to clipboard");
       });
       clip.on("error", function (e) {
         $this.hide();
