@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Head\MetaDataInterface as MetaDataInterface;
+use Sphp\Html\Head\HeadComponentInterface as MetaDataInterface;
 
 /**
  * Class models an HTML &lt;noscript&gt; tag

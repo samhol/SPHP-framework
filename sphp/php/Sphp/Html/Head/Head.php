@@ -62,8 +62,8 @@ class Head extends AbstractComponent {
     //$this->linkTags = ;
     $this->content()["links"] = new Container();
     //$this->scriptFiles = new ScriptsContainer();
-    $this->scripts(new ScriptsContainer());
-    $this->content()["scripts"] = new ScriptsContainer();
+    //$this->scripts(new ScriptsContainer());
+    //$this->content()["scripts"] = new ScriptsContainer();
     //$this->content()["scriptFiles"] = $this->scriptFiles;
     //$this->scriptCode = new Script();
     //$this->content()["scriptCode"] = $this->scriptCode;
@@ -77,7 +77,7 @@ class Head extends AbstractComponent {
    * @return ScriptsContainer the script container
    */
   public function scripts(ScriptsContainer $c = null) {
-    if ($c !== null) {
+    if ($c !== null || !$this->content()->offsetExists("scripts")) {
       $this->content()["scripts"] = new ScriptsContainer();
     }
     return $this->content()["scripts"];
@@ -131,10 +131,9 @@ class Head extends AbstractComponent {
    * @link   http://zurb.com/playground/foundation-icon-fonts-3 Foundation icons
    */
   public function useFoundationIcons() {
-     $this->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css");
+    $this->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css");
     return $this;
   }
-  
 
   /**
    * Sets up the Foundation framework related CSS files and meta data
@@ -145,7 +144,7 @@ class Head extends AbstractComponent {
     $this->metaTags()->setViewport("width=device-width, initial-scale=1.0");
     $this->metaTags()->setCharset("UTF-8");
     $this->addCssSrc(Configuration::httpHost() . "sphp/css/sphp6.styles.all.css")
-             ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css");
+            ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css");
     return $this;
   }
 
@@ -199,22 +198,22 @@ class Head extends AbstractComponent {
   /**
    * Adds content component to the object
    *
-   * @param  MetaDataInterface $component content the component to add
+   * @param  HeadComponentInterface $component content the component to add
    * @return self for PHP Method Chaining
    */
-  public function addContent(MetaDataInterface $component) {
+  public function addContent(HeadComponentInterface $component) {
     if ($component instanceof Title) {
       $this->setTitle($component);
-    } else if ($component instanceof StyleTag) {
-      $this->style[] = $component;
-    } else if ($component instanceof BaseTag) {
+    } else if ($component instanceof Base) {
       $this->content()->set("baseAddr", $component);
     } else if ($component instanceof Link) {
       $this->content()["links"][] = $component;
     } else if ($component instanceof Meta) {
-      $this->metaTags()->addMetaTag($component);
+      $this->metaTags()->addMeta($component);
     } else if ($component instanceof ScriptInterface) {
       $this->scripts()->append($component);
+    } else {
+      $this->content()->append($component);
     }
     return $this;
   }

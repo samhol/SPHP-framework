@@ -15,6 +15,6 @@ namespace Sphp\Html\Head;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MetaDataOnlyInterface extends MetaDataInterface {
+interface MetaDataOnlyInterface extends HeadComponentInterface {
 
 }

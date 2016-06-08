@@ -31,6 +31,6 @@ $fieldset[] = [
 $fieldset[] = (new InputColumn((new Buttons\SubmitButton("Submit", "submit", "submitted"))
 			->addCssClass("button success radius"), 12))->addCssClass("text-center");
 $form = new Form($_SERVER["PHP_SELF"], "get");
-$form->setHiddenVariable("page", 1);
+$form->appendHiddenVariable("page", 1);
 $form->append($fieldset)->setData($_GET)->printHtml();
 

@@ -14,7 +14,8 @@ use Sphp\Core\Types\Strings as Strings;
  * Class implements an property attribute object for an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-12
+ * @since   2014-09-12
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -284,17 +285,17 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
   }
 
   /**
-   * Returns the value of the style attribute as a string
+   * Returns the value of the property attribute as a string
    *
    * **IMPORTANT:**
    *
    * * Returns always `null` if attribute is not set.
    * * **However** might also return `null` for empty attributes.
    *
-   * @return scalar the value of the style attribute
+   * @return scalar the value of the property attribute
    */
   public function getValue() {
-    if (!$this->isRequired() && $this->count() == 0) {
+    if (!$this->isDemanded() && $this->count() == 0) {
       $value = false;
     } else {
       $value = Arrays::implodeWithKeys($this->props, ";", ":") . ";";

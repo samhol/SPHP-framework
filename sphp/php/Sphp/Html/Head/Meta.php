@@ -16,21 +16,13 @@ use Sphp\Html\EmptyTag as EmptyTag;
  *  of the document, last modified, and other metadata. The metadata can be used by browsers (how to display
  *  content or reload page), search engines (keywords), or other web services.
  *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Meta extends EmptyTag implements MetaDataInterface {
-
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "meta";
+class Meta extends EmptyTag implements MetaInterface {
 
 	/**
 	 * Constructs a new instance
@@ -46,8 +38,8 @@ class Meta extends EmptyTag implements MetaDataInterface {
 	 *
 	 * **Common <var>$charset</var> values:**
 	 *  
-	 *    * UTF-8  - Character encoding for Unicode
-	 *    * ISO-8859-1 - Character encoding for the Latin alphabet
+	 * * UTF-8  - Character encoding for Unicode
+	 * * ISO-8859-1 - Character encoding for the Latin alphabet
 	 * 
 	 *
 	 * In theory, any character encoding can be used, but no browser understands 
@@ -67,11 +59,10 @@ class Meta extends EmptyTag implements MetaDataInterface {
 	 *
 	 * **Notes:**
 	 * 
-	 *   * The name attribute specifies the name for the metadata.
-	 *   * The name attribute specifies a name for the information/value of the content attribute.
-	 *   * **Note:** If the http-equiv attribute is set, the name attribute should not be set.
+	 * * The name attribute specifies the name for the metadata.
+	 * * The name attribute specifies a name for the information/value of the content attribute.
+	 * * **Note:** If the http-equiv attribute is set, the name attribute should not be set.
 	 * 
-	 *
 	 * @param  string $name specifies a name for the metadata
 	 * @param  string $content the value of the content attribute
 	 * @return self for PHP Method Chaining
@@ -100,7 +91,7 @@ class Meta extends EmptyTag implements MetaDataInterface {
 	 * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
 	 */
 	public function hasName($name) {
-		return $this->hasNamedContent() && $this->getName("name") == $name;
+		return $this->hasNamedContent() && $this->getName() == $name;
 	}
 
 	/**
@@ -119,9 +110,9 @@ class Meta extends EmptyTag implements MetaDataInterface {
 	 *
 	 * **Notes:**
 	 * 
-	 *   * The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
-	 *   * The http-equiv attribute can be used to simulate an HTTP response header
-	 *   * **Note:** If the name attribute is set, the http-equiv attribute should not be set.
+	 * * The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
+	 * * The http-equiv attribute can be used to simulate an HTTP response header
+	 * * **Note:** If the name attribute is set, the http-equiv attribute should not be set.
 	 * 
 	 *
 	 * @param  string $http_equiv provides an HTTP header for the information/value of the content attribute

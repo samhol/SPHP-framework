@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AttributeManager.php (UTF-8)
+ * AbstractAttributeManager.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -18,7 +18,8 @@ use Sphp\Core\Types\Strings as Strings;
  * Class contains and manages all the attribute value pairs for a markup language tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-12
+ * @since   2014-09-12
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -125,8 +126,8 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     }
     if ($this->exists($name)) {
       $attrObject->set($this->getValue($name));
-      if ($this->isRequired($name)) {
-        $attrObject->setRequired();
+      if ($this->isDemanded($name)) {
+        $attrObject->demand();
       }
       $attrObject->attachAttributeChangeObserver($this);
     }
@@ -231,7 +232,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    */
   public function demand($name) {
     if ($this->isAttributeObject($name)) {
-      $this->getAttributeObject($name)->setRequired();
+      $this->getAttributeObject($name)->demand();
     } else {
       if (!$this->exists($name)) {
         $this->set($name, true);
@@ -250,9 +251,9 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is required and false otherwise
    */
-  public function isRequired($name) {
+  public function isDemanded($name) {
     if ($this->isAttributeObject($name)) {
-      $required = $this->getAttributeObject($name)->isRequired($name);
+      $required = $this->getAttributeObject($name)->isDemanded();
     } else {
       $required = in_array($name, $this->required) || $this->isLocked($name);
     }
@@ -318,7 +319,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     } else {
       if ($this->isLocked($name)) {
         throw new UnmodifiableAttributeException("Locked attribute '$name' cannot be removed");
-      } else if ($this->isRequired($name)) {
+      } else if ($this->isDemanded($name)) {
         throw new UnmodifiableAttributeException("Required attribute '$name' cannot be removed");
       } else if ($this->exists($name)) {
         unset($this->attrs[$name]);
@@ -339,7 +340,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
       $attr->clear();
     }
     foreach (array_keys($this->attrs) as $attrName) {
-      if (!$this->isRequired($attrName)) {
+      if (!$this->isDemanded($attrName)) {
         $this->remove($attrName);
       }
     }

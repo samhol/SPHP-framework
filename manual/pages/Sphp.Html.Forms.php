@@ -5,11 +5,12 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\Forms\Input\TextualInput as TextualInput;
 use Sphp\Html\Forms\Input\Checkbox as Checkbox;
 use Sphp\Html\Forms\Input\Radiobox as Radiobox;
+use Sphp\Html\Document as Document;
 
 $formIfLink = $api->getClassLink(FormInterface::class);
 $inputInterface = $api->getClassLink(InputInterface::class);
 
-$sphpScripts->appendSrc("manual/js/formTools.js");
+Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 
 //(new \Sphp\Html\Programming\ScriptSrc("manual/js/formTools.js"))->printHtml();

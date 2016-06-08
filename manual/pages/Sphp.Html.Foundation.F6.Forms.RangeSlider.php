@@ -1,8 +1,13 @@
 <?php
-$rangeSlider = $api->getClassLink(RangeSlider::class);
+
+namespace Sphp\Html\Foundation\F6\Forms;
+
+$rangeSlider = $api->getClassLink(Slider::class);
+
 use Sphp\Html\Apps\SingleAccordion as SingleAccordion;
+
 echo $parsedown->text(<<<MD
-###The Foundation $rangeSlider component
+##The Foundation $rangeSlider component
 
 The $rangeSlider is directly ported from the Foundation front-end framework to the SPHP framework.
 
@@ -15,8 +20,8 @@ a dropdown is far off screen), and not when it is first made visible.
 The example code of the form showing the exaples of $rangeSlider object is represented below.
 MD
 );
-include_once (EXAMPLE_DIR . 'Sphp/Html/Forms/sliders.php');
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Forms/sliders.php', 0);
+include_once (EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
+$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php', false);
 echo $parsedown->text(<<<MD
 
 MD

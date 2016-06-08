@@ -25,7 +25,7 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Link extends EmptyTag implements MetaDataInterface {
+class Link extends EmptyTag implements HeadComponentInterface {
 
   /**
    * the tag name of the HTML component

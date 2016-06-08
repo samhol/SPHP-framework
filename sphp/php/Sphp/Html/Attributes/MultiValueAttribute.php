@@ -13,7 +13,8 @@ use Sphp\Core\Types\Arrays as Arrays;
  * An implementation of a multivalue HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-06-12
+ * @since   2015-06-12
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -226,7 +227,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * {@inheritdoc}
    */
   public function getValue() {
-    if (!$this->isRequired() && $this->count() == 0) {
+    if (!$this->isDemanded() && $this->count() == 0) {
       $value = false;
     } else {
       $value = implode(" ", $this->values);

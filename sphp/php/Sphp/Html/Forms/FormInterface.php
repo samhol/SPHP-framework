@@ -188,5 +188,5 @@ interface FormInterface extends ComponentInterface {
    * @return self for PHP Method Chaining
    * @see    HiddenInput
    */
-  public function setHiddenVariable($name, $value);
+  public function appendHiddenVariable($name, $value);
 }

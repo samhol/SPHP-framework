@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ComponentInterface as ComponentInterface;
-use Sphp\Html\Head\MetaDataInterface as MetaDataInterface;
+use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 
 /**
  * Interface ScriptInterface
@@ -18,7 +18,7 @@ use Sphp\Html\Head\MetaDataInterface as MetaDataInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ScriptInterface extends ComponentInterface, MetaDataInterface {
+interface ScriptInterface extends ComponentInterface, HeadComponentInterface {
 
   /**
    * the tag name of the HTML component

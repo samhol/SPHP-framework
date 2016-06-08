@@ -16,17 +16,13 @@ use Sphp\Html\Span as Span;
 use Sphp\Core\Types\Arrays as Arrays;
 
 /**
- * RangeSlider allows you to drag a handle to select a specific value from a range
- *
- *
- * {@inheritdoc}
- *
+ * Slider allows to drag a handle to select a specific value from a range
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-17
  * @filesource
  */
-class RangeSlider extends AbstractComponent implements InputInterface {
+class Slider extends AbstractComponent implements InputInterface {
 
   const START = "start";
   const END = "end";
@@ -46,6 +42,12 @@ class RangeSlider extends AbstractComponent implements InputInterface {
   /**
    * Constructs a new instance
    *
+   * <div class="slider" data-slider data-initial-start="50" data-end="200">
+    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+    <span class="slider-fill" data-slider-fill></span>
+    <input type="hidden">
+    </div>
+   * 
    * @param int $start the start value of the slider
    * @param int $end the end value of the slider
    * @param int $step the length of a single step
@@ -53,27 +55,26 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    */
   public function __construct($start = 0, $end = 100, $step = 1, $value = 0) {
     parent::__construct("div");
-    $label = (new Label())->identify();
-    $label["description"] = "";
-    $label["value"] = (new Span())
-            ->setCssClass("sphp-range-slider-value");
-    $label["unit"] = "";
-    $this->content()["label"] = $label;
-    $this->content()->offsetSet("slider", (new Div())
-                    ->addCssClass("range-slider")
-                    ->setAttr("data-slider"));
-    $this->getSlider()["handle"] = (new Span())
-            ->addCssClass("range-slider-handle")
-            ->setAttr("aria-labelledby", $label->getId())
-            ->setAttr("tabindex", 0)
-            ->setAttr("role", "slider");
-    $this->getSlider()["segment"] = (new Span())
-            ->addCssClass("range-slider-active-segment");
-    $this->getSlider()["input"] = new HiddenInput();
-    $this->attrs()->demand("data-sphp-slider");
-    $this->setStepLength($step)
-            ->setValue($value)
-            ->setRange($start, $end);
+    $this->cssClasses()->lock("slider");
+    $this->attrs()
+            ->set("data-start", $start)
+            ->set("data-initial-start", $value)
+            ->demand("data-slider");
+    $handle = new Span();
+    $handle->cssClasses()->lock("slider");
+    $handle->attrs()
+            ->demand("data-slider-handle")
+            ->lock("role", "slider")
+            ->lock("tabindex", "1");
+    $this->content()["slider"] = $handle;
+    $filler = new Span();
+    $filler->cssClasses()
+            ->lock("slider-fill");
+    $filler->attrs()
+            ->demand("data-slider-fill");
+    $this->content()["slider-fill"] = $filler;
+    $input = new HiddenInput();
+    $this->content()["input"] = $input;
   }
 
   /**
@@ -100,7 +101,7 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getInput() {
-    return $this->getSlider()["input"];
+    return $this->content("input");
   }
 
   /**
@@ -169,9 +170,12 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * 
    * @return self for PHP Method Chaining
    */
-  public function setVertical() {
-    $this->getSlider()->addCssClass("vertical-range");
-    $this->setOption("vertical", "true");
+  public function setVertical($vertical = true) {
+    if ($vertical) {
+      $this->cssClasses()->add("vertical");
+    } else {
+      $this->cssClasses()->remove("vertical");
+    }
     return $this;
   }
 
@@ -345,8 +349,7 @@ class RangeSlider extends AbstractComponent implements InputInterface {
       
     }
     //$this->viewer[0] = $this->getValue();
-    $this->getInnerLabel()["value"]->replaceContent($value);
-    $this->getSlider()->setAttr("data-slider", $this->getValue());
+    $this->getSlider()->attrs()->set("data-initial-start", $this->getValue());
     return $this;
   }
 

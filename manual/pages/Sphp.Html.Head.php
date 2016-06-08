@@ -3,7 +3,7 @@
 namespace Sphp\Html\Head;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
 $headNS = $api->getNamespaceLink(__NAMESPACE__);
-$metaIfLnk = $api->getClassLink(MetaDataInterface::class);
+$metaIfLnk = $api->getClassLink(HeadComponentInterface::class);
 $head = $api->classLinker(Head::class);
 $title = $api->classLinker(Title::class);
 $meta = $api->classLinker(Meta::class);

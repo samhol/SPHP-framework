@@ -17,7 +17,7 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API link
  * @filesource
  */
-class Title extends SimpleContainerTag implements MetaDataInterface {
+class Title extends SimpleContainerTag implements HeadComponentInterface {
 
   /**
    * the tag name of the HTML component

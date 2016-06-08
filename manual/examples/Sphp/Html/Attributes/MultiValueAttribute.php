@@ -12,7 +12,7 @@ $observer = function($classes, $name) {
 };
 $classes = (new MultiValueAttribute("class"))
         ->attachAttributeChangeObserver($observer);
-$classes->setRequired();
+$classes->demand();
 $classes->set("button tiny")
         ->add("radius")
         ->add(["alert"]);

@@ -56,7 +56,7 @@ class Html extends AbstractComponent implements TraversableInterface {
   }
 
   /**
-   * Returns the head tag object
+   * Returns the &lt;head&gt;  component 
    *
    * @return Head the head tag object
    */
@@ -65,9 +65,9 @@ class Html extends AbstractComponent implements TraversableInterface {
   }
 
   /**
-   * Returns the body tag object
+   * Returns the &lt;body&gt;  component 
    *
-   * @return Body the body tag object
+   * @return Body the body component
    */
   public function body() {
     return $this->content()->get("body");

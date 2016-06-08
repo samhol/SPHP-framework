@@ -131,7 +131,7 @@ class Form extends ContainerTag implements FormInterface {
    * @return self for PHP Method Chaining
    * @see    HiddenInput
    */
-  public function setHiddenVariable($name, $value) {
+  public function appendHiddenVariable($name, $value) {
     $this->hiddenInputs[] = new HiddenInput($name, $value);
     return $this;
   }
@@ -238,7 +238,7 @@ class Form extends ContainerTag implements FormInterface {
     //	echo "<pre>";
     //	print_r($this->actionParams);
     //	echo "</pre>";
-    return parent::setAttr("action", Strings::htmlentities($url));
+    return parent::setAttr("action", Strings::htmlEncode($url));
   }
 
   /**

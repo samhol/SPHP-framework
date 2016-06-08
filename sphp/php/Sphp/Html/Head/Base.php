@@ -23,7 +23,7 @@ use Sphp\Html\EmptyTag as EmptyTag;
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API link
  * @filesource
  */
-class Base extends EmptyTag implements MetaDataInterface {
+class Base extends EmptyTag implements HeadComponentInterface {
 
   /**
    * the tag name of the HTML component

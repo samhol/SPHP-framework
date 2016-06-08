@@ -46,36 +46,24 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Adds a new {@link Meta} component to the container
+   * Adds a new {@link MetaInterface} component to the container
    *
-   * @param  Meta $content meta information to add
+   * @param  MetaInterface $content meta information to add
    * @return self for PHP Method Chaining
    */
-  public function addMetaTag(Meta $content) {
-    $key = null;
+  public function addMeta(MetaInterface $content) {
+    $key = [];
     if ($content->attrExists("charset")) {
-      $key = "charset";
-    } else if ($content->hasNamedContent()) {
-      $key = "name." . $content->getName();
-    } else if ($content->hasHttpEquivContent()) {
-      $key = "http-equiv." . $content->getHttpEquiv();
-    } else if ($content->hasPropertyContent()) {
-      $key = "property." . $content->getProperty();
+      $key[] = "charset";
+    } if ($content->hasNamedContent()) {
+      $key[] = "name-" . $content->getName();
+    } if ($content->hasHttpEquivContent()) {
+      $key[] = "http-equiv-" . $content->getHttpEquiv();
+    } if ($content->hasPropertyContent()) {
+      $key[] = "property-" . $content->getProperty();
     }
-    $this->metaTags[$key] = $content;
-    return $this;
-  }
-
-  /**
-   * Appends {@link Meta} components to the container
-   *
-   * @param  Meta[] $metaTags meta information to add
-   * @return self for PHP Method Chaining
-   */
-  public function addMetaTags(array $metaTags) {
-    foreach ($metaTags as $metaTag) {
-      $this->addMetaTag($metaTag);
-    }
+    $k = implode("-", $key);
+    $this->metaTags[$k] = $content;
     return $this;
   }
 
@@ -103,7 +91,7 @@ class MetaContainer implements TraversableComponentInterface {
   public function setCharset($charset = "UTF-8") {
     $metaTag = new Meta();
     $metaTag->setAttr("charset", $charset);
-    $this->addMetaTag($metaTag);
+    $this->addMeta($metaTag);
     return $this;
   }
 
@@ -122,7 +110,7 @@ class MetaContainer implements TraversableComponentInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setNamedContent($name, $content) {
-    return $this->addMetaTag(
+    return $this->addMeta(
                     (new Meta())->setNamedContent($name, $content));
   }
 
@@ -141,7 +129,7 @@ class MetaContainer implements TraversableComponentInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setHttpEquivContent($http_equiv, $content) {
-    return $this->addMetaTag(
+    return $this->addMeta(
                     (new Meta())->setHttpEquivContent($http_equiv, $content));
   }
 
@@ -162,7 +150,7 @@ class MetaContainer implements TraversableComponentInterface {
    * @link   http://www.w3.org/MarkUp/2004/02/xhtml-rdf.html XHTML and RDF (W3C)
    */
   public function setPropertyContent($property, $content) {
-    return $this->addMetaTag(
+    return $this->addMeta(
                     (new Meta())->setPropertyContent($property, $content));
   }
 

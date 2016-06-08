@@ -21,7 +21,7 @@ use Sphp\Html\Forms\Foundation\GridForm as GridForm;
 
 $form = (new GridForm(\Sphp\HTTP_ROOT, "get"))->setId("ItemForm"); //->setFormValidator($validator);
 $formValidator = new ValidableForm($form);
-$form->setHiddenVariable("page", "html.forms");
+$form->appendHiddenVariable("page", "html.forms");
 
 namespace Sphp\Html\Forms\Input;
 

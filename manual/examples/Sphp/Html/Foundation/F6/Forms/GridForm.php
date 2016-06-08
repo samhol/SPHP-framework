@@ -1,17 +1,16 @@
 <?php
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\Foundation\GridForm as GridForm;
-use Sphp\Html\Forms\Foundation\FormRow as FormRow;
 use Sphp\Html\Forms\Menus\MenuFactory as MenuFactory;
 use Sphp\Html\Forms\Input\TextInput as TextInput;
-use Sphp\Html\Forms\Foundation\InputColumn as InputColumn;
-use Sphp\Html\Forms\Buttons\SubmitButton as SubmitButton;
+use Sphp\Html\Forms\Radioboxes as Radioboxes;
+use Sphp\Html\Forms\Checkboxes as Checkboxes;
+use Sphp\Html\Forms\Textarea as Textarea;
 
 $form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))
 		->setTarget("outputFrame")
-		->setHiddenVariable("page", "html.forms")
+		->appendHiddenVariable("page", "html.forms")
 		->append([
 	new InputColumn((new TextInput("username"))
 			->setPlaceholder("Username")
@@ -22,7 +21,7 @@ $form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))
 	new InputColumn((new TextInput("lname"))
 			->setPlaceholder("Family name")
 			->setLabel("Family name:"), 12, 4, 4)]);
-$address = new Foundation\GridFieldset("ADDRESS:");
+$address = new GridFieldset("ADDRESS:");
 $form["address"] = $address;
 //$form["address"][0] = new Foundation\GridFieldset("Address");
 $address[0] =
@@ -30,11 +29,11 @@ $address[0] =
 	new InputColumn((new TextInput("street"))
 		->setPlaceholder("street address")
 		->setLabel("Street address:"), 12, 6, 3),
-	new InputColumn((new input\TextInput("zipcode", "", 5))
+	new InputColumn((new TextInput("zipcode", "", 5))
 		->setPlaceholder("zip code")
 		->setLabel("Zip code:")
 		->setMaxlength(5), 12, 6, 3),
-	new InputColumn((new input\TextInput("city"))
+	new InputColumn((new TextInput("city"))
 		->setPlaceholder("city")
 		->setLabel("City:"), 12, 6, 3),
 	new InputColumn(MenuFactory::getContentAsValueMenu(["Denmark", "Finland", "Iceland", "Norway", "Sweden"], "country")
