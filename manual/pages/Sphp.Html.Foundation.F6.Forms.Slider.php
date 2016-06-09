@@ -20,7 +20,8 @@ a dropdown is far off screen), and not when it is first made visible.
 The example code of the form showing the exaples of $rangeSlider object is represented below.
 MD
 );
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/RangeSlider.php', false);
+include_once (EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
+$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php', false);
 echo $parsedown->text(<<<MD
 
 MD

@@ -12,7 +12,7 @@ use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
-
+ 
 /**
  * Slider allows to drag a handle to select a specific value from a range
  *
@@ -33,15 +33,17 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
+  public function __construct($name = null, $min = 0, $max = 100, $step = 1) {
     parent::__construct("div");
     $this->cssClasses()->lock("slider");
     $this->attrs()
-            ->lock("data-start", $start)
+            ->lock("data-start", $min)
             ->demand("data-step")
-            ->lock("data-end", $end)
+            ->lock("data-end", $max)
             ->demand("data-initial-start")
-            ->set("data-initial-start", $value)
+            ->demand("data-initial-end")
+            ->set("data-initial-start", $min)
+            ->set("data-initial-end", $max)
             ->demand("data-slider");
     $handle1 = new Span();
     $handle1->cssClasses()->lock("slider-handle");
@@ -53,7 +55,7 @@ class RangeSlider extends AbstractComponent implements InputInterface {
     $handle2 = new Span();
     $handle2->cssClasses()->lock("slider-handle");
     $handle2->attrs()
-            ->demand("data-slider-handle")
+            ->demand("data-slider-handle") 
             ->lock("role", "slider")
             ->lock("tabindex", 1);
     $this->content()["slider2"] = $handle2;
@@ -63,9 +65,13 @@ class RangeSlider extends AbstractComponent implements InputInterface {
     $filler->attrs()
             ->demand("data-slider-fill");
     $this->content()["slider-fill"] = $filler;
-    $input = new HiddenInput();
-    $this->content()["input"] = $input;
-    $this->setStepLength($step)->setValue($value);
+    $this->content()["start-input"] = new HiddenInput();
+    $this->content()["end-input"] = new HiddenInput();
+    $this->content()["input"] = new HiddenInput();
+    $this->setStepLength($step);//->setValue("$mix;$max");
+    if ($name !== null) {
+      $this->setName($name);
+    }
   }
 
   /**
@@ -92,7 +98,7 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getInput() {
-    return $this->content("input");
+    return $this->content()->get("input");
   }
 
   /**
