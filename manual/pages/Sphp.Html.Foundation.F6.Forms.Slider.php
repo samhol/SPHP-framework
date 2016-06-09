@@ -1,27 +1,30 @@
 <?php
 
 namespace Sphp\Html\Foundation\F6\Forms;
-
-$rangeSlider = $api->getClassLink(Slider::class);
-
+use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Apps\SingleAccordion as SingleAccordion;
 
-echo $parsedown->text(<<<MD
-##The Foundation $rangeSlider component
+$slider = $api->getClassLink(Slider::class);
+$rangeSlider = $api->getClassLink(RangeSlider::class);
+$sliderInterface= $api->getClassLink(SliderInterface::class);
 
-The $rangeSlider is directly ported from the Foundation front-end framework to the SPHP framework.
+
+echo $parsedown->text(<<<MD
+##$slider and $rangeSlider components
+
+These components implement $sliderInterface and Foundation frameworks Sliders on clientside
 
 ####IMPORTANT:
-When placing a $rangeSlider object in or below a dropdown component like a
-{$api->getClassLink(SingleAccordion::class)}, the slider will have correct initial positioning but
+When placing a $slider or a $rangeSlider object into a dropdown component, the slider will have correct initial positioning but
 will jump to one end on the first slide. The initial positioning is calculated when the slider is added to the DOM (which when inside
 a dropdown is far off screen), and not when it is first made visible.
 
-The example code of the form showing the exaples of $rangeSlider object is represented below.
+The example code of the form showing the exaples of $slider object is represented below.
 MD
 );
 include_once (EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php', false);
+SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
 echo $parsedown->text(<<<MD
 
 MD

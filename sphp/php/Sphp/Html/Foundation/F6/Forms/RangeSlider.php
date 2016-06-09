@@ -12,7 +12,7 @@ use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
- 
+
 /**
  * Slider allows to drag a handle to select a specific value from a range
  *
@@ -23,28 +23,22 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RangeSlider extends AbstractComponent implements InputInterface {
+class RangeSlider extends AbstractSlider {
+
+  private $name;
 
   /**
    * Constructs a new instance
    *
    * @param int $start the start value of the slider
    * @param int $end the end value of the slider
-   * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
   public function __construct($name = null, $min = 0, $max = 100, $step = 1) {
-    parent::__construct("div");
-    $this->cssClasses()->lock("slider");
-    $this->attrs()
-            ->lock("data-start", $min)
-            ->demand("data-step")
-            ->lock("data-end", $max)
-            ->demand("data-initial-start")
-            ->demand("data-initial-end")
-            ->set("data-initial-start", $min)
-            ->set("data-initial-end", $max)
-            ->demand("data-slider");
+    $this->name = $name;
+    parent::__construct($min, $max, $step);
+    $this->attrs()->demand("data-initial-end")
+            ->set("data-initial-end", $max);
     $handle1 = new Span();
     $handle1->cssClasses()->lock("slider-handle");
     $handle1->attrs()
@@ -52,23 +46,22 @@ class RangeSlider extends AbstractComponent implements InputInterface {
             ->lock("role", "slider")
             ->lock("tabindex", 1);
     $this->content()["slider1"] = $handle1;
-    $handle2 = new Span();
-    $handle2->cssClasses()->lock("slider-handle");
-    $handle2->attrs()
-            ->demand("data-slider-handle") 
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
-    $this->content()["slider2"] = $handle2;
     $filler = new Span();
     $filler->cssClasses()
             ->lock("slider-fill");
     $filler->attrs()
             ->demand("data-slider-fill");
     $this->content()["slider-fill"] = $filler;
-    $this->content()["start-input"] = new HiddenInput();
-    $this->content()["end-input"] = new HiddenInput();
-    $this->content()["input"] = new HiddenInput();
-    $this->setStepLength($step);//->setValue("$mix;$max");
+    $handle2 = new Span();
+    $handle2->cssClasses()->lock("slider-handle");
+    $handle2->attrs()
+            ->demand("data-slider-handle")
+            ->lock("role", "slider")
+            ->lock("tabindex", 1);
+    $this->content()["slider2"] = $handle2;
+    $this->content()["start-input"] = (new HiddenInput())->setValue($min);
+    $this->content()["end-input"] = (new HiddenInput())->setValue($max);
+    $this->content()["input"] = (new HiddenInput())->setValue("$min;$max");
     if ($name !== null) {
       $this->setName($name);
     }
@@ -97,39 +90,17 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * 
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
-  private function getInput() {
-    return $this->content()->get("input");
+  private function getStartInput() {
+    return $this->content()->get("start-input");
   }
 
   /**
-   * Sets the slider orientation to vertical
+   * Returns the actual (hidden) form element containg the value of the slider
    * 
-   * @return self for PHP Method Chaining
+   * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
-  public function setVertical($vertical = true) {
-    if ($vertical) {
-      $this->cssClasses()->add("vertical");
-      $this->attrs()->set("data-vertical", "true");
-    } else {
-      $this->cssClasses()->remove("vertical");
-      $this->attrs()->set("data-vertical", "false");
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the length of the slider step
-   *
-   * @param  int $step the length of the slider step
-   * @return self for PHP Method Chaining
-   */
-  public function setStepLength($step) {
-    if ($step > 0) {
-      $this->attrs()->set("data-step", $step);
-    } else {
-      throw new \InvalidArgumentException();
-    }
-    return $this;
+  private function getEndInput() {
+    return $this->content()->get("end-input");
   }
 
   /**
@@ -194,14 +165,16 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * {@inheritdoc}
    */
   public function getName() {
-    return $this->getInput()->getName();
+    return $this->name;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setName($name) {
-    $this->getInput()->setName($name);
+    $this->name = $name;
+    $this->getStartInput()->setName($name . "[start]");
+    $this->getEndInput()->setName($name . "[end]");
     return $this;
   }
 
@@ -210,6 +183,24 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    */
   public function isNamed() {
     return $this->getInput()->isNamed();
+  }
+
+  /**
+   * Returns the minimum value of the slider
+   *
+   * @return int the minimum value of the slider
+   */
+  public function getStartValue() {
+    return $this->getStartInput()->getValue();
+  }
+
+  /**
+   * Returns the maximum value of the slider
+   *
+   * @return int the maximum value of the slider
+   */
+  public function getStopValue() {
+    return $this->getEndInput()->getValue();
   }
 
   /**
@@ -234,18 +225,53 @@ class RangeSlider extends AbstractComponent implements InputInterface {
    * {@inheritdoc}
    */
   public function getValue() {
+    $result = [];
+    $result["start"] = $this->getStartValue();
     return $this->getInput()->getValue();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setValue($value) {
+  public function setStartValue($value) {
+    $value = (int) $value;
     if ($this->getMin() > $value || $this->getMax() < $value) {
-      throw new \InvalidArgumentException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+      throw new \InvalidArgumentException("Start value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
-    $this->getInput()->setValue($value);
+    $this->getStartInput()->setValue($value);
     $this->attrs()->set("data-initial-start", $value);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setStopValue($value) {
+    $value = (int) $value;
+    if ($this->getMin() > $value || $this->getMax() < $value) {
+      throw new \InvalidArgumentException("Stop value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
+    }
+    $this->getEndInput()->setValue($value);
+    $this->attrs()->set("data-initial-stop", $value);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setValue($value) {
+    $min = $this->getStartValue();
+    $max = $this->getStopValue();
+    if (is_array($value) && count($value) >= 2) {
+      $min = (int) array_shift($value);
+      $max = (int) array_shift($value);
+    } else if ($value < $max) {
+      $min = (int) $value;
+    } else {
+      $max = $value;
+    }
+    $this->setStartValue($min);
+    $this->setStopValue($max);
     return $this;
   }
 

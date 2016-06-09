@@ -16,7 +16,8 @@ use Sphp\Core\Types\Strings as Strings;
  * A component containing multiple radio or checkbox inputs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-10-18
+ * @since   2011-10-18
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -177,7 +178,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   /**
    * Sets the current submission set of the input component
    *
-   * @param string[] $value the current submission set of the input component
+   * @param  string|string[] $value the current submission set of the input component
    * @return self for PHP Method Chaining
    */
   public function setValue($value) {

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Slider.php (UTF-8)
+ * AbstractSwitch.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
@@ -23,34 +23,35 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Slider extends AbstractSlider {
+class AbstractSwitch extends AbstractComponent implements InputInterface {
 
   /**
    * Constructs a new instance
-   *
+   * <div class="switch">
+    <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+    <label class="switch-paddle" for="exampleSwitch">
+    <span class="show-for-sr">Download Kittens</span>
+    <span class="switch-active" aria-hidden="true">Yes</span>
+    <span class="switch-inactive" aria-hidden="true">No</span>
+    </label>
+    </div>
    * @param int $start the start value of the slider
    * @param int $end the end value of the slider
    * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
-    parent::__construct($start, $end, $step);
-    $handle = new Span();
-    $handle->cssClasses()->lock("slider-handle");
-    $handle->attrs()
-            ->demand("data-slider-handle")
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
-    $this->content()["slider"] = $handle;
-    $filler = new Span();
-    $filler->cssClasses()
-            ->lock("slider-fill");
-    $filler->attrs()
-            ->demand("data-slider-fill");
-    $this->content()["slider-fill"] = $filler;
-    $input = new HiddenInput();
-    $this->content()["input"] = $input;
-    $this->setStepLength($step)->setValue($value);
+  public function __construct(\Sphp\Html\Forms\Input\Choicebox $box, $srText = null) {
+    $box->cssClasses()->lock("switch-input");
+    parent::__construct("div");
+    $this->content()["input"] = $box;
+    $this->cssClasses()->lock("switch");
+    $box->identify();
+    $screenReaderInfo = new Span($srText);
+    $screenReaderInfo->cssClasses()
+            ->lock("show-for-sr");
+    $handle = new Label($screenReaderInfo, $box);
+    $handle->cssClasses()->lock("switch-paddle");
+    $this->content()["switch-paddle"] = $handle;
   }
 
   /**
@@ -59,16 +60,7 @@ class Slider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
-    return $this->content()["label"];
-  }
-
-  /**
-   * Returns the the actual slider
-   * 
-   * @return Spam the actual Foundation slider
-   */
-  private function getSlider() {
-    return $this->content("slider");
+    return $this->content()["switch-paddle"];
   }
 
   /**
@@ -78,37 +70,6 @@ class Slider extends AbstractSlider {
    */
   private function getInput() {
     return $this->content("input");
-  }
-
-  /**
-   * Sets the slider orientation to vertical
-   * 
-   * @return self for PHP Method Chaining
-   */
-  public function setVertical($vertical = true) {
-    if ($vertical) {
-      $this->cssClasses()->add("vertical");
-      $this->attrs()->set("data-vertical", "true");
-    } else {
-      $this->cssClasses()->remove("vertical");
-      $this->attrs()->set("data-vertical", "false");
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the length of the slider step
-   *
-   * @param  int $step the length of the slider step
-   * @return self for PHP Method Chaining
-   */
-  public function setStepLength($step) {
-    if ($step > 0) {
-      $this->attrs()->set("data-step", $step);
-    } else {
-      throw new \InvalidArgumentException();
-    }
-    return $this;
   }
 
   /**
@@ -124,28 +85,6 @@ class Slider extends AbstractSlider {
       $this->getInnerLabel()->hide();
     }
     //$this->valueVisible = $valueVisible;
-    return $this;
-  }
-
-  /**
-   * Sets the description text of the slider
-   * 
-   * @param  string $description the description text of the slider
-   * @return self for PHP Method Chaining
-   */
-  public function setDescription($description) {
-    $this->getInnerLabel()["description"] = "$description ";
-    return $this;
-  }
-
-  /**
-   * Sets the unit of the slider value
-   * 
-   * @param  string $unit the unit of the value
-   * @return self for PHP Method Chaining
-   */
-  public function setValueUnit($unit = "") {
-    $this->getInnerLabel()["unit"] = " $unit";
     return $this;
   }
 
@@ -189,24 +128,6 @@ class Slider extends AbstractSlider {
    */
   public function isNamed() {
     return $this->getInput()->isNamed();
-  }
-
-  /**
-   * Returns the minimum value of the slider
-   *
-   * @return int the minimum value of the slider
-   */
-  public function getMin() {
-    return $this->attrs()->get("data-start");
-  }
-
-  /**
-   * Returns the maximum value of the slider
-   *
-   * @return int the maximum value of the slider
-   */
-  public function getMax() {
-    return $this->attrs()->get("data-end");
   }
 
   /**

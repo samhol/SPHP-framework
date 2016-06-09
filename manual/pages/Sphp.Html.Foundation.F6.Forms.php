@@ -16,5 +16,6 @@ echo $parsedown->text(<<<MD
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/GridForm.php');
+$load("Sphp.Html.Foundation.F6.Forms.Switch.php");
 $load("Sphp.Html.Foundation.F6.Forms.Slider.php");
 $load("Sphp.Html.Foundation.F6.Forms.RangeSlider.php");
