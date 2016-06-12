@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 use Sphp\Html\Foundation\F6\Core\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Core\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\InputInterface as InputInterface;
-use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
+use Sphp\Html\Forms\LabelableInputInterface as LabelableInterface;
 use Sphp\Html\Forms\Label as Label;
 
 /**
@@ -70,7 +70,7 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
 	 */
 	private function setInput(InputInterface $input) {
 		$this->input = $input;
-		if ($input instanceof LabelableInterface) {
+		if ($input instanceof LabelableInputInterface) {
 			$label = $input->getLabel();
 		} else {
 			$label = new Label();

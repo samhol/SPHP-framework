@@ -198,10 +198,10 @@ interface ComponentInterface extends ContentInterface {
    * Removes all unlocked attributes
    *
    * @return self for PHP Method Chaining
-   
-  public function clearAttrs();
 
-  /**
+    public function clearAttrs();
+
+    /**
    * Returns the value of a given attribute name or an empty string if attribute is not set
    *
    * @param  string $attrName attribute's name

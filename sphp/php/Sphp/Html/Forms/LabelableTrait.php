@@ -7,8 +7,10 @@
 
 namespace Sphp\Html\Forms;
 
+use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+
 /**
- * A trait implementation of the {@link LabelableInterface}
+ * A trait implementation of the {@link LabelableInputInterface}
  *
  * A trait for creating  the {@link Label} component pointing to the html input
  * component that implements the {@link LabelableInterface}.
@@ -28,6 +30,14 @@ trait LabelableTrait {
    * @var Label
    */
   private $label;
+  
+
+  /**
+   * Returns the attribute manager attached to the component
+   *
+   * @return AttributeManager the attribute manager
+   */
+  abstract public function attrs();
 
   /**
    * Sets the content of the input label ({@link Label})
@@ -36,13 +46,13 @@ trait LabelableTrait {
    * @return self for PHP Method Chaining
    */
   public function setLabel($label) {
-    if (!$this->hasId()) {
-      $this->identify();
+    if (!$this->attrs()->exists("id")) {
+      $this->attrs()->setUnique("id");
     }
     if (!($label instanceof Label)) {
-      $this->label = new Label($label, $this->getId());
+      $this->label = new Label($label, $this);
     } else {
-      $this->label->setFor($this->getId());
+      $this->label->setFor($this);
     }
     return $this;
   }

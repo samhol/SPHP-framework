@@ -21,7 +21,7 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements InputInterface, LabelableInterface {
+abstract class Choiceboxes extends AbstractComponent implements InputInterface, LabelableInputInterface {
 
   /**
    * the type of the individual input component

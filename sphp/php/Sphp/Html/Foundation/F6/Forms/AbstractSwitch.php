@@ -73,18 +73,23 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
   }
 
   /**
-   * Sets the visibility of the current slider value
+   * Sets the active and inactive text inside of a switch
    * 
-   * @param  boolean $valueVisible true for visible and false for hidden
+   * @param  string $active
+   * @param  string $inactive
    * @return self for PHP Method Chaining
    */
-  public function showValue($valueVisible = true) {
-    if ($valueVisible) {
-      $this->getInnerLabel()->unhide();
-    } else {
-      $this->getInnerLabel()->hide();
-    }
-    //$this->valueVisible = $valueVisible;
+  public function setInnerLabels($active, $inactive) {
+    $activeLabel = new Span($active);
+    $activeLabel->attrs()
+            ->lock("aria-hidden", "true")
+            ->classes()->lock("switch-active");
+    $inactiveLabel = new Span($inactive);
+    $inactiveLabel->attrs()
+            ->lock("aria-hidden", "true")
+            ->classes()->lock("switch-inactive");
+    $this->getInnerLabel()->set("switch-active", $activeLabel);
+    $this->getInnerLabel()->set("switch-active", $inactiveLabel);
     return $this;
   }
 

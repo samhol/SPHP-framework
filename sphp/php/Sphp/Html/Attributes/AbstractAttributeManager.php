@@ -19,7 +19,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-12
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -193,11 +192,11 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    * 4. boolean `false`: attribute is removed
    * 5. otherwise the attribute value is the string conversion value
    *
-   * @param    string $name the name of the attribute
-   * @param    mixed $value the value of the attribute
-   * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute name or value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @param  string $name the name of the attribute
+   * @param  mixed $value the value of the attribute
+   * @return self for PHP Method Chaining
+   * @throws InvalidAttributeException if the attribute name or value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function set($name, $value = true) {
     if ($this->isAttributeObject($name)) {
@@ -220,6 +219,24 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
       }
     }
     return $this;
+  }
+  /**
+   * Creates an an unique id attribute
+   *
+   * **Notes:**
+   *
+   * HTML id attribute is unique to every HTML-element. This method randomizes
+   * the id attribute value creation so that the id should be unique.
+   *
+   * @param  string $seed id attributes seed
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
+   */
+  public function setUnique($name, $seed = "") {
+    if ($this->isAttributeObject($name)) {
+      throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
+    }
+    return $this->set($name, $seed . Strings::generateRandomString());
   }
 
   /**
@@ -312,6 +329,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    * @param    string $name the name of the attribute
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if the attribute is unremovable
+   * @triggers {@link AttributeChangeEvent} for each removed attribute
    */
   public function remove($name) {
     if ($this->isAttributeObject($name)) {
