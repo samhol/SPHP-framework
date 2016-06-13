@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ContentInterface as ContentInterface;
 
 /**
  * Interface defines required properties for an HTML &lt;form&gt; component
@@ -22,7 +22,7 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface FormInterface extends ComponentInterface {
+interface FormInterface extends ContentInterface {
 
   /**
    * Sets the value of the method attribute
@@ -188,5 +188,5 @@ interface FormInterface extends ComponentInterface {
    * @return self for PHP Method Chaining
    * @see    HiddenInput
    */
-  public function appendHiddenVariable($name, $value);
+  //public function appendHiddenVariable($name, $value);
 }

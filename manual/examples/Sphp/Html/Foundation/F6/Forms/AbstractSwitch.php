@@ -2,12 +2,16 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-$hours = (new SwitchBox("foobar", "yes"));
+$boxes[] = (new SwitchBox("box[]", "a"))->setInnerLabels("Yes", "No");
+$boxes[] = (new SwitchBox("box[]", "b"));
+$boxes[] = (new SwitchBox("box[]", "c"));
+$boxes[] = (new SwitchBox("box[]", "d"));
 
-$score1 = (new RadioSwitch("foo", "bar", true));
-$score2 = (new RadioSwitch("foo", "foo", false));
+$radios[] = (new RadioSwitch("foo", "bar", true))->setInnerLabels("Foo", "Bar");
+$radios[] = (new RadioSwitch("foo", "foo", false))->setInnerLabels("Foo", "Bar");
 
 $form = new GridForm();
-$form->append([$hours, $score1, $score2]);
+$form->append([$boxes]);
+$form->append([$radios]);
 echo $form;
 ?>

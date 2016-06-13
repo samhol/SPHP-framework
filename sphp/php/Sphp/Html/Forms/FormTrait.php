@@ -88,7 +88,6 @@ trait FormTrait {
   /**
    * Returns the value of the action attribute
    *
-   *
    * @return string the value of the action attribute
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */

@@ -75,25 +75,25 @@ echo $parsedown->text(<<<MD
 In order to work around browsers' different rounding behaviors, Foundation will float the last $col in a $row to the right so the edge aligns.
 If the $row doesn't have a count that adds up to 12 $cols, the last $col can be tagged with a class of end in order to override that behavior.
 		
-###The $gridIf interface and its implementations
+###The $gridIf and its implementations
 		
-The $gridIf extends $htmlCont and defines a container for a grid. Any
+The $gridIf is an implementation of Foundation 6 Grid. Any
 $gridIf implementation like the default $grid is a container for $rowIf type
 components. A $grid component itself without any $rowIf content does not output 
 any HTML into the document.
 		
 MD
 );
-$rowExample =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
+/*$rowExample =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
 $rowExample
         ->getOutputPane()
         ->addCssClass("grid-example");
-$rowExample->printHtml();
+$rowExample->printHtml();*/
 //PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/Grid1.php');
 //PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/GridInterface.php');
-
-$exampleViewer->fromFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/GridInterface.php');
-$exampleViewer
+$gridExample = new CodeExampleAccordion();
+$gridExample->fromFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/GridInterface.php');
+$gridExample
         ->getOutputPane()
         ->addCssClass("grid-example");
-$exampleViewer->printHtml();
+$gridExample->printHtml();

@@ -8,7 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Core;
 
 use Sphp\Html\ContainerInterface as ContainerInterface;
-use Sphp\Html\Container as Container;
+use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\TraversableInterface as TraversableInterface;
 
 /**
  * Interface defines a Foundation Grid
@@ -22,19 +23,7 @@ use Sphp\Html\Container as Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface GridInterface extends ContainerInterface {
-
-  /**
-   * Returns the input as an array of {@link RowInterface} components
-   *
-   * **Important:**
-   * 
-   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component.
-   *
-   * @param  mixed|RowInterface $row a row content or a row component
-   * @return Row wrapped row component
-   */
-  public function toRow($row);
+interface GridInterface extends ContentInterface, TraversableInterface {
 
   /**
    * Appends a new {@link RowInterface} to the grid
@@ -67,22 +56,9 @@ interface GridInterface extends ContainerInterface {
   public function prepend($row);
 
   /**
-   * Assigns a {@link RowInterface} to the specified offset
-   *
-   * **Important!**
-   *
-   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
-   *   using {@link self::toRow()} method.
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param  mixed|RowInterface $row the new row or the content of the new row
-   */
-  public function offsetSet($offset, $row);
-
-  /**
    * Returns all {@link ColumnInterface} components from the grid
    * 
-   * @return Container containing all the {@link ColumnInterface} components
+   * @return ContainerInterface containing all the {@link ColumnInterface} components
    */
   public function getColumns();
 }

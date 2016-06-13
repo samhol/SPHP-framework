@@ -22,24 +22,6 @@ use Sphp\Html\Container as Container;
 trait GridTrait {
 
   /**
-   * Returns the input as an array of {@link Row} components
-   *
-   * **Important:**
-   * 
-   * * `$row` not extending {@link Row} is wrapped inside a {@link Row} component.
-   *
-   * @param  mixed|Row $row a row content or a row component
-   * @return Row wrapped row component
-   */
-  public function toRow($row) {
-    if (!($row instanceof Row)) {
-      return new Row($row);
-    } else {
-      return $row;
-    }
-  }
-
-  /**
    * Appends a new {@link Row} to the grid
    *
    * **Important!**
@@ -52,7 +34,10 @@ trait GridTrait {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row) {
-    parent::append($this->toRow($row));
+    if (!($row instanceof Row)) {
+      $row = new Row($row);
+    } 
+    parent::append($row);
     return $this;
   }
 
@@ -71,7 +56,10 @@ trait GridTrait {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row) {
-    parent::prepend($this->toRow($row));
+    if (!($row instanceof Row)) {
+      $row = new Row($row);
+    }
+    parent::prepend($row);
     return $this;
   }
 
@@ -87,7 +75,10 @@ trait GridTrait {
    * @param  mixed|RowInterface $row the new row or the content of the new row
    */
   public function offsetSet($offset, $row) {
-    parent::offsetSet($offset, $this->toRow($row));
+    if (!($row instanceof Row)) {
+      $row = new Row($row);
+    }
+    parent::offsetSet($offset, $row);
   }
 
   /**

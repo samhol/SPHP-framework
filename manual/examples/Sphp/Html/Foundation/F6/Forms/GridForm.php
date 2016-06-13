@@ -22,7 +22,7 @@ $form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))
 			->setPlaceholder("Family name")
 			->setLabel("Family name:"), 12, 4, 4)]);
 $address = new GridFieldset("ADDRESS:");
-$form["address"] = $address;
+$form->append($address);
 //$form["address"][0] = new Foundation\GridFieldset("Address");
 $address[0] =
 [
@@ -40,13 +40,13 @@ $address[0] =
 		->setValue("Finland")
 		->setLabel("Country:"), 12, 6, 3)
 ];
-$form["boxes"] = new FormRow();
-$form["boxes"]->appendColumn(new Radioboxes("gender", ["male", "female"], "Gender"), 12, 6);
-$form["boxes"]->appendColumn(new Checkboxes("hobbies", ["basketball", "football", "cycling"], "Hobbies", true), 12, 6);
-$form[] = (new Textarea("notes", "", 4))
+$boxes = new FormRow();
+$boxes->appendColumn(new Radioboxes("gender", ["male", "female"], "Gender"), 12, 6);
+$boxes->appendColumn(new Checkboxes("hobbies", ["basketball", "football", "cycling"], "Hobbies", true), 12, 6);
+$form->append($boxes);
+$form->append((new Textarea("notes", "", 4))
 		->setPlaceholder("some notes about the person")
-		->setLabel("Notes:");
-//$form[] = (new InputColumn((new SubmitButton("Submit", "submit", "submitted"))))->addCssClass("panel");
+		->setLabel("Notes:"));
 
 $form->printHtml();
 ?>

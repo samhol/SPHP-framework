@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Forms\InputInterface as InputInterface;
-use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
+use Sphp\Html\Forms\LabelableInputInterface as LabelableInputInterface;
+use Sphp\Html\Forms\Input\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
 
@@ -23,7 +23,7 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements InputInterface {
+class AbstractSwitch extends AbstractComponent implements LabelableInputInterface {
 
   /**
    * Constructs a new instance
@@ -40,7 +40,7 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
    * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct(\Sphp\Html\Forms\Input\Choicebox $box, $srText = null) {
+  public function __construct(Choicebox $box, $srText = null) {
     $box->cssClasses()->lock("switch-input");
     parent::__construct("div");
     $this->content()["input"] = $box;
@@ -66,7 +66,7 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
   /**
    * Returns the actual (hidden) form element containg the value of the slider
    * 
-   * @return HiddenInput the actual (hidden) form element containg the value of the slider
+   * @return Choicebox the actual (hidden) form element containg the value of the slider
    */
   private function getInput() {
     return $this->content("input");
@@ -89,20 +89,15 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
             ->lock("aria-hidden", "true")
             ->classes()->lock("switch-inactive");
     $this->getInnerLabel()->set("switch-active", $activeLabel);
-    $this->getInnerLabel()->set("switch-active", $inactiveLabel);
+    $this->getInnerLabel()->set("switch-inactive", $inactiveLabel);
     return $this;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function disable($enabled = true) {
-    if ($enabled) {
-      $this->removeCssClass("disabled");
-    } else {
-      $this->addCssClass("disabled");
-    }
-    $this->getInput()->disable($enabled);
+  public function disable($disabled = true) {
+    $this->getInput()->disable($disabled);
     return $this;
   }
 
@@ -110,7 +105,7 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
    * {@inheritdoc}
    */
   public function isEnabled() {
-    return !$this->getInput()->attrExists("disabled");
+    return $this->getInput()->isEnabled();
   }
 
   /**
@@ -161,7 +156,8 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
    * @return self for PHP Method Chaining
    */
   public function setRequired($required = true) {
-    return $this->getInput()->setRequired($required);
+     $this->getInput()->setRequired($required);
+     return $this;
   }
 
   /**
@@ -173,20 +169,26 @@ class AbstractSwitch extends AbstractComponent implements InputInterface {
     return $this->getInput()->isRequired();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getLabel() {
-    
+    return $this->getInput()->getLabel();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function hasLabel() {
-    
+    return $this->getInput()->hasLabel();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setLabel($label) {
-    
-  }
-
-  public function setRange($start = 0, $end = 100) {
-    
+    $this->getInput()->setLabel($label);
+    return $this;
   }
 
 }

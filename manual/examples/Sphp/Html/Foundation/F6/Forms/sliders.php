@@ -15,17 +15,16 @@ $hours = (new Slider(0, 23, 1))
 $score = (new Slider(0, 100, 50, 2))
         ->setDescription("two point score:")
         ->setValue(12);
-        //->showValue();
+//->showValue();
 
 $distance = (new Slider(10, 1000, 10, 10))
         ->setDescription("Distance travelled:")
         ->setValue(100)
-        //->showValue()
         ->setValueUnit("km");
 
-$form = new GridForm("url", "post");
-$form[] = (new FormRow())
-        ->appendColumn($weight, 2)
-        ->appendColumn([$hours, $score, $distance], 10);
-echo $form;
+(new GridForm("url", "post"))
+        ->append((new FormRow())
+                ->appendColumn($weight, 2)
+                ->appendColumn([$hours, $score, $distance], 10))
+        ->printHtml();
 ?>
