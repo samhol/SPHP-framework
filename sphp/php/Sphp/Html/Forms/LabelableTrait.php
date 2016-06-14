@@ -30,14 +30,13 @@ trait LabelableTrait {
    * @var Label
    */
   private $label;
-  
 
   /**
    * Returns the attribute manager attached to the component
    *
    * @return AttributeManager the attribute manager
    */
-  abstract public function attrs();
+  //abstract public function attrs();
 
   /**
    * Sets the content of the input label ({@link Label})

@@ -17,9 +17,6 @@ namespace Sphp\Html\Forms;
  * @filesource
  */
 interface ValidableInputInterface  extends InputInterface {
-	
-	const REQUIRED = 0b1;
-	const PATTERN = 0b10;
 
 	/**
 	 * Sets whether the input must have a value or not before form submission

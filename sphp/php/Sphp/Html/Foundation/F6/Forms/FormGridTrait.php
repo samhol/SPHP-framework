@@ -25,24 +25,6 @@ trait FormGridTrait {
   use GridTrait;
 
   /**
-   * Returns the input as an array of {@link Row} components
-   *
-   * **Important:**
-   * 
-   * * `$row` not extending {@link Row} is wrapped inside a {@link Row} component.
-   *
-   * @param  mixed|Row $row a row content or a row component
-   * @return Row wrapped row component
-   */
-  public function toRow($row) {
-    if (!($row instanceof Row)) {
-      return new FormRow($row);
-    } else {
-      return $row;
-    }
-  }
-
-  /**
    * Returns all {@link InputColumn} components from the grid
    * 
    * @return Container containing all the {@link InputColumn} components

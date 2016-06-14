@@ -64,24 +64,6 @@ trait GridTrait {
   }
 
   /**
-   * Assigns a {@link Row} to the specified offset
-   *
-   * **Important!**
-   *
-   * * `$row` not extending {@link Row} is wrapped inside a {@link Row} component 
-   *   using {@link self::toRow()} method.
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param  mixed|RowInterface $row the new row or the content of the new row
-   */
-  public function offsetSet($offset, $row) {
-    if (!($row instanceof Row)) {
-      $row = new Row($row);
-    }
-    parent::offsetSet($offset, $row);
-  }
-
-  /**
    * Returns all {@link ColumnInterface} components from the grid
    * 
    * @return Container containing all the {@link ColumnInterface} components

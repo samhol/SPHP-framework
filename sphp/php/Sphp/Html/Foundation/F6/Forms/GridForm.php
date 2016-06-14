@@ -7,9 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\AbstractForm as AbstractForm;
+use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
-use Sphp\Html\Container as Container;
+use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
+use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 
 /**
@@ -26,17 +28,13 @@ use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GridForm extends \Sphp\Html\AbstractComponent implements GridInterface, \Sphp\Html\Forms\TraversableFormInterface {
+class GridForm extends AbstractComponent implements GridInterface, TraversableFormInterface {
 
-  use \Sphp\Html\ContentTrait,
+  use ContentTrait,
       FormGridTrait,
-      \Sphp\Html\Forms\TraversableFormTrait;
-
-  /**
-   *
-   * @var Container 
-   */
-  private $content;
+      TraversableFormTrait {
+    TraversableFormTrait::attrs insteadof ContentTrait;
+  }
 
   /**
    * Constructs a new instance of the {@link self} object
@@ -64,7 +62,6 @@ class GridForm extends \Sphp\Html\AbstractComponent implements GridInterface, \S
       $this->append($content);
     }
   }
-  
 
   /**
    * Appends a new {@link Row} to the grid
@@ -81,7 +78,7 @@ class GridForm extends \Sphp\Html\AbstractComponent implements GridInterface, \S
   public function append($row) {
     if (!($row instanceof Row)) {
       $row = new FormRow($row);
-    } 
+    }
     $this->content()->append($row);
     return $this;
   }
