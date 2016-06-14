@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 /**
- * Trait implements parts of the {@link TraverableFormInterface}
+ * Trait implements parts of the {@link TraversableFormInterface}
  *
  * The form element represents a collection of form-associated elements, some
  * of which can represent editable values that can be submitted to a server
