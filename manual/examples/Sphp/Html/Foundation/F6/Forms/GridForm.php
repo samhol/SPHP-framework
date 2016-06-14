@@ -8,7 +8,7 @@ use Sphp\Html\Forms\Radioboxes as Radioboxes;
 use Sphp\Html\Forms\Checkboxes as Checkboxes;
 use Sphp\Html\Forms\Textarea as Textarea;
 
-$form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))
+$form = (new GridForm())
 		->setTarget("outputFrame")
 		->appendHiddenVariable("page", "html.forms")
 		->append([

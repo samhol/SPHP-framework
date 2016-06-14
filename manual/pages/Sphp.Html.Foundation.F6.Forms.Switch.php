@@ -16,7 +16,10 @@ echo $parsedown->text(<<<MD
 These components extend $abstractSwitch and Foundation frameworks Switches on clientside
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/AbstractSwitch.php');
+
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/AbstractSwitch.php'))
+        ->addCssClass("form-example")
+        ->printHtml();
 echo $parsedown->text(<<<MD
 
 MD

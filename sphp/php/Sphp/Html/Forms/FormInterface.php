@@ -172,17 +172,4 @@ interface FormInterface extends ContentInterface {
    * @return ArrayWrapper the data object
    */
   public function getData();
-
-  /**
-   * Appends a hidden variable to the form
-   *
-   * Appended <var>$name => $value</var> pair is stored into a
-   *  {@link HiddenInput} but can not be reached by using .
-   *
-   * @param  string $name th name of the hidden variable
-   * @param  scalar $value the value of the hidden variable
-   * @return self for PHP Method Chaining
-   * @see    HiddenInput
-   */
-  //public function appendHiddenVariable($name, $value);
 }

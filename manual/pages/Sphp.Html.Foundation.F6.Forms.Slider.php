@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 use Sphp\Html\Forms\SliderInterface as SliderInterface;
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
-use Sphp\Html\Apps\SingleAccordion as SingleAccordion;
 
 $slider = $api->getClassLink(Slider::class);
 $rangeSlider = $api->getClassLink(RangeSlider::class);

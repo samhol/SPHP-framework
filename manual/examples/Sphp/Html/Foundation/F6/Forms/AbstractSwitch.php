@@ -7,7 +7,7 @@ $boxes[] = (new SwitchBox("box[]", "b"));
 $boxes[] = (new SwitchBox("box[]", "c"));
 $boxes[] = (new SwitchBox("box[]", "d"));
 
-$radios[] = (new RadioSwitch("foo", "bar", true))->setInnerLabels("Foo", "Bar");
+$radios[] = (new RadioSwitch("foo", "bar", true))->setInnerLabels("Bar", "Foo");
 $radios[] = (new RadioSwitch("foo", "foo", false))->setInnerLabels("Foo", "Bar");
 
 $form = new GridForm();

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Menus;
 
 use Sphp\Html\Forms\NonEmptyInputTag as NonEmptyInputTag;
-use Sphp\Html\Forms\LabelableInputInterface as LabelableInterface;
+use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
 
 /**

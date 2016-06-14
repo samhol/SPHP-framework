@@ -8,6 +8,7 @@ use Sphp\Html\Forms\Input\Radiobox as Radiobox;
 use Sphp\Html\Document as Document;
 
 $formIfLink = $api->getClassLink(FormInterface::class);
+$traversableFormInterface = $api->getClassLink(TraversableFormInterface::class);
 $inputInterface = $api->getClassLink(InputInterface::class);
 
 Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
@@ -17,31 +18,14 @@ $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML FORMS
 $ns
-HTML forms are implemented in the framework using Classes implementing 
-$formIfLink interface. They are used to pass user input data to a server just 
-like their counterparts in actual HTML forms.
-		
-$formIfLink is the container for all $inputInterface components like 
-({$api->getClassLink(TextualInput::class)}, {$api->getClassLink(Checkbox::class)}, {$api->getClassLink(Radiobox::class)}, submit buttons and more.
+HTML form objects implement atleast either $formIfLink or  $traversableFormInterface interface. 
+These Form objects are used to pass user input data to a server.
+
+        
+$formIfLink gives athe basic requirements for any form implementation. Whereas $traversableFormInterface 
+extending $formIfLink is a container for $inputInterface components like ({$api->getClassLink(TextualInput::class)},
+{$api->getClassLink(Checkbox::class)}, {$api->getClassLink(Radiobox::class)}, submit buttons and more.
 A form can also contain select lists, textarea, fieldset, legend, and label elements.
-		
-An HTML form is a section of a document containing normal content, markup, 
-special elements called controls (checkboxes, radio buttons, menus, etc.), and 
-labels on those controls. Users generally "complete" a form by modifying its 
-controls (entering text, selecting menu items, etc.), before submitting the form 
-to an agent for processing (e.g., to a Web server, to a mail server, etc.)
-
-Sphp Form components implement HTML forms components
-
-##Form components explained
-
-###The $inputInterface and its implementors
-
-These components can be used within a $formIfLink to declare input controls that allow 
-users to input data. An input component extending $formIfLink can vary in many ways. 
-		
-All of the following components implement atleast $inputInterface and are therefore 
-suitable to declare input controls in $formIfLink forms.
 
 MD
 );

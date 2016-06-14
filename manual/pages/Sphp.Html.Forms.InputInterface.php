@@ -3,37 +3,45 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Forms\Input\TextualInput as TextualInput;
 use Sphp\Html\Forms\Input\Checkbox as Checkbox;
 use Sphp\Html\Forms\Input\Radiobox as Radiobox;
 
 $formIfLink = $api->getClassLink(FormInterface::class);
 $inputInterface = $api->getClassLink(InputInterface::class);
-$dateInputLink = $api->getClassLink(Input\DateTimeInput::class);
+$dateInputLink = $api->getClassLink(Input\AnyTimeInput::class);
 echo $parsedown->text(<<<MD
-#HTML INPUT ELEMENTS: {$api->getNamespaceLink(__NAMESPACE__)} namespace
-
-$formIfLink is a container for all $inputInterface components like
-({$api->getClassLink(TextualInput::class)}, {$api->getClassLink(Checkbox::class)}, {$api->getClassLink(Radiobox::class)}, submit buttons and more.
-A form can also contain select lists, textarea, fieldset, legend, and label elements.
-
-All of the following components implement atleast $inputInterface and are therefore
-suitable to declare input controls in $formIfLink forms.
-
-##The {$api->getNamespaceLink(__NAMESPACE__ . "\\Input")} namespace
-
-These components are implementations of HTML {$w3schools->getTagLink("input")}) tag but they have many different uses.
-
-###Basic inputs
-
+##Some form components inheriting $inputInterface
+		
+All of the following components declare an input control in  a $formIfLink form.
 
 MD
 );
 
-$load("Sphp.Html.Forms.IonRangeSlider.php");
+$baseInput = $api->classLinker(Input\Input::class);
+$textualInput = $api->classLinker(Input\TextualInput::class);
+$textInput = $api->classLinker(Input\TextInput::class);
+$textarea = $api->classLinker(Textarea::class);
 
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/InputInterface1.php', false, true))
-        ->addCssClass("form-example");
+echo $parsedown->text(<<<MD
+###Basic input components
+        
+Framework has many build-in form components that implement basic HTML form elements like:
+ * $baseInput and extending classes for spesific input types like:
+        * $textualInput and subtypes like:
+              * $textInput
+ * $textarea
+MD
+);
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Input.php', false, true))
+        ->addCssClass("form-example")
+        ->printHtml();
+$load("Sphp.Html.Forms.AnyTimeInput.php");
+
+
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Choicebox.php', false, true))
+        ->addCssClass("form-example")
+        ->printHtml();
 
 $load("Sphp.Html.Forms.Menus.Select.php");
+$load("Sphp.Html.Forms.IonRangeSlider.php");
 

@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends NonEmptyInputTag implements LabelableInputInterface {
+class Textarea extends NonEmptyInputTag implements LabelableInterface {
 
   use LabelableTrait;
 

@@ -16,63 +16,63 @@ namespace Sphp\Html\Forms;
  * @filesource
  */
 trait ValidableInputTrait {
-	
-	use InputTrait;
 
-	/**
-	 * Sets whether the input must have a value or not before form submission
-	 * 
-	 * @param  boolean $required true if the input must have a value before form 
-	 *         submission, otherwise false
-	 * @return self for PHP Method Chaining
-	 */
-	public function setRequired($required = true) {
-		return $this->setAttr("data-sphp-required", $required);
-	}
+  use InputTrait;
 
-	/**
-	 * Checks whether the input must have a value before form submission
-	 *
-	 * @return boolean true if the input must have a value before form submission, 
-	 *         otherwise false
-	 */
-	public function isRequired() {
-		return $this->attrExists("data-sphp-required");
-	}
+  /**
+   * Sets whether the input must have a value or not before form submission
+   * 
+   * @param  boolean $required true if the input must have a value before form 
+   *         submission, otherwise false
+   * @return self for PHP Method Chaining
+   */
+  public function setRequired($required = true) {
+    return $this->setAttr("data-sphp-required", $required);
+  }
 
-	/**
-	 * Sets the autocomplete attribute's value on or off
-	 *
-	 * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
-	 * 
-	 * **Tip:** Use the global title attribute to describe the pattern to help the user.
-	 *
-	 * @param  string $pattern a regular expression pattern that the component's value is checked against
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-	 */
-	public function setPattern($pattern) {
-		return $this->setAttr("data-sphp-pattern", $pattern);
-	}
+  /**
+   * Checks whether the input must have a value before form submission
+   *
+   * @return boolean true if the input must have a value before form submission, 
+   *         otherwise false
+   */
+  public function isRequired() {
+    return $this->attrExists("data-sphp-required");
+  }
 
-	/**
-	 * Returns the validation pattern string
-	 *
-	 * @return string the regular expression pattern that the component's value is checked against
-	 * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-	 */
-	public function getPattern() {
-		return $this->getAttrValue("data-sphp-pattern");
-	}
+  /**
+   * Sets the autocomplete attribute's value on or off
+   *
+   * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
+   * 
+   * **Tip:** Use the global title attribute to describe the pattern to help the user.
+   *
+   * @param  string $pattern a regular expression pattern that the component's value is checked against
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
+   */
+  public function setPattern($pattern) {
+    return $this->setAttr("data-sphp-pattern", $pattern);
+  }
 
-	/**
-	 * Checks if a value validation pattern is set fot the component
-	 *
-	 * @return boolean true if a value validation pattern is set fot the component, othewise false
-	 * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-	 */
-	public function hasPattern() {
-		return $this->attrExists("data-sphp-pattern");
-	}
+  /**
+   * Returns the validation pattern string
+   *
+   * @return string the regular expression pattern that the component's value is checked against
+   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
+   */
+  public function getPattern() {
+    return $this->getAttrValue("data-sphp-pattern");
+  }
+
+  /**
+   * Checks if a value validation pattern is set fot the component
+   *
+   * @return boolean true if a value validation pattern is set fot the component, othewise false
+   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
+   */
+  public function hasPattern() {
+    return $this->attrExists("data-sphp-pattern");
+  }
 
 }

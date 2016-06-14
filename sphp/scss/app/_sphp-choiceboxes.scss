@@ -8,9 +8,16 @@
 
 fieldset.sphp-choiceboxes {
   padding: rem-calc(3);
-  margin:  rem-calc(0);
+  margin: 0;
   display: inline-block;
   border: none 0;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    li {
+      display: inline;
+    }
+  }
   label {
     display:  inline-block;
     cursor:   pointer;

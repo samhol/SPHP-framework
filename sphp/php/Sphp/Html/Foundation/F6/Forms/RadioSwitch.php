@@ -7,11 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Forms\InputInterface as InputInterface;
-use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
-use Sphp\Html\Forms\Label as Label;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Forms\Input\Radiobox as Radiobox;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -27,21 +23,16 @@ class RadioSwitch extends AbstractSwitch {
 
   /**
    * Constructs a new instance
-   * <div class="switch">
-    <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
-    <label class="switch-paddle" for="exampleSwitch">
-    <span class="show-for-sr">Download Kittens</span>
-    <span class="switch-active" aria-hidden="true">Yes</span>
-    <span class="switch-inactive" aria-hidden="true">No</span>
-    </label>
-    </div>
-   * @param int $start the start value of the slider
-   * @param int $end the end value of the slider
-   * @param int $value the current value of the slider
-   * @param int $step the length of a single step
+   * 
+   * @param  string $name the value of the name attribute
+   * @param  string $value the value of the value attribute
+   * @param  boolean $checked is component checked
+   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function __construct($name, $value, $checked = false) {
-    parent::__construct(new \Sphp\Html\Forms\Input\Radiobox($name, $value, $checked));
+    parent::__construct(new Radiobox($name, $value, $checked));
   }
 
 }

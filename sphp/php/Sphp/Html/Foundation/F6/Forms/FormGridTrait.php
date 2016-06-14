@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Foundation\F6\Core\GridTrait as GridTrait;
-use Sphp\Html\Foundation\F6\Core\Row as Row;
 
 /**
  * Trait implements {@link GridInterface} to be used with {@link FormInterface} etc.

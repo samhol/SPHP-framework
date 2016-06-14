@@ -1,11 +1,14 @@
 <?php
 
 /**
- * FormTrait.php (UTF-8)
+ * TraversableFormTrait.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Forms;
+
+use Sphp\Html\TraversableTrait as TraversableTrait;
+use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
  * Trait implements parts of the {@link TraversableFormInterface}
@@ -22,7 +25,8 @@ namespace Sphp\Html\Forms;
  */
 trait TraversableFormTrait {
 
-  use FormTrait, \Sphp\Html\TraversableTrait;
+  use FormTrait,
+      TraversableTrait;
 
   /**
    * Returns all named {@link InputInterface} components in the form

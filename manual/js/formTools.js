@@ -17,7 +17,7 @@
       $submit = $form.find("button.submitter");
       $submit.attr("data-toggle", $id);
       $submit.attr("data-options", "align:bottom");
-      $dropdown = $('<div id="' + $id + '" class="dropdown-pane sphp-form-submit-viewer" data-dropdown></div>');
+      $dropdown = $('<div id="' + $id + '" class="dropdown-pane form-submission-viewer" data-dropdown></div>');
       console.log("dropdown id: " + $id);
       $form.after($dropdown);
       var options = {closeOnClick: true};

@@ -11,7 +11,8 @@ namespace Sphp\Html\Forms\Input;
  * Class models &lt;input type="password"&gt; tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @since   2011-09-26
+ * @since   2011-09-26
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -32,7 +33,7 @@ class PasswordInput extends TextualInput {
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  function __construct($name = null, $value = null, $size = null, $maxlength = null) {
+  public function __construct($name = null, $value = null, $size = null, $maxlength = null) {
     parent::__construct("password", $name, $value, $maxlength, $size);
   }
 

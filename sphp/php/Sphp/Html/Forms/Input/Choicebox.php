@@ -10,10 +10,6 @@ namespace Sphp\Html\Forms\Input;
 /**
  * Class models an HTML &lt;input type="radio|checkbox"&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-10-18
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

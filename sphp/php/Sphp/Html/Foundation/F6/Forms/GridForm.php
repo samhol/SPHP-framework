@@ -20,8 +20,6 @@ use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
  * A {@link GridForm} is built with a combination of standard form
  * elements, as well as the Foundation Grid ({@link Row}(s) and {@link Column}(s)).
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-16
  * @link    http://foundation.zurb.com/docs/components/forms.html Foundation forms
@@ -32,9 +30,7 @@ class GridForm extends AbstractComponent implements GridInterface, TraversableFo
 
   use ContentTrait,
       FormGridTrait,
-      TraversableFormTrait {
-    TraversableFormTrait::attrs insteadof ContentTrait;
-  }
+      TraversableFormTrait;
 
   /**
    * Constructs a new instance of the {@link self} object

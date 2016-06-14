@@ -1,0 +1,38 @@
+/**
+ * _form-submission-viewer.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+.form-submitter {
+  background-color: #ededed;
+  .button {
+    margin: 0;
+  }
+  div {
+    display: inline-block;
+    margin-left: rem-calc(10);
+    font-size: rem-calc(12);
+    font-weight: bold;
+  }
+}
+
+.form-submission-viewer {
+  color: #111;
+  border: solid 1px #888;
+  @include border-radius(4px);
+  padding: rem-calc(3);
+  h6 {
+    margin: rem-calc(3 5 2 5);
+  }
+  pre {
+    border: solid 1px #888;
+    @include border-radius(2px);
+    margin: rem-calc(5 2 2 2);
+    padding: rem-calc(3);
+    font-size: rem-calc(10);
+    background-color: #ededed;
+  }
+}

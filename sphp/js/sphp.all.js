@@ -225,7 +225,7 @@ if (!window.console.log) {
     $.fn.sphpImageResizer.IMAGE_APP = http_root + "image.php";
     //stickyFooter();
     //intBackToTop();
-    $(document).ready(function () {
+    //$(document).ready(function () {
       console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
       ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
       var $ajaxLoaders = $("[data-sphp-ajax-url]");
@@ -268,8 +268,8 @@ if (!window.console.log) {
       $("[data-src]").lazyLoadXT();
       $("img[data-sphp-img-resize]").sphpImageResizer();
       sphp.enableConsole(true);
-      var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
-    });
+     // var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
+    //});
   };
   sphp.EVENTS = {
     SINGLE_ACCORDION: {

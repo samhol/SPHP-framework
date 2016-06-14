@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms\Input;
 
 use Sphp\Html\Forms\ValidableInputInterface as ValidableInputInterface;
 use Sphp\Html\Forms\ValidableInputTrait as ValidableInputTrait;
-use Sphp\Html\Forms\LabelableInputInterface as LabelableInterface;
+use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
 
 /**

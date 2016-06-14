@@ -15,12 +15,12 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LabelableInputInterface extends InputInterface {
+interface LabelableInterface {
 
   /**
-   * Attach a {@link Label} label to the  component
+   * Attach a {@link Label} to the  component
    *
-   * @param  mixed|label $label the input label ({@link Label}) or its content
+   * @param  mixed|Label $label the label object or its content
    * @return self for PHP Method Chaining
    */
   public function setLabel($label);
@@ -36,7 +36,7 @@ interface LabelableInputInterface extends InputInterface {
   /**
    * Returns the {@link Label} component attached to the component
    *
-   * @return Label|null created label component
+   * @return Label|null attached label component or null
    */
   public function getLabel();
 }
