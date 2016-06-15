@@ -48,3 +48,8 @@ Temporary Items
 
 /vendor/
 /nbproject/
+/.projectKnowledge/
+
+robots.txt
+composer.lock
+build.xml
