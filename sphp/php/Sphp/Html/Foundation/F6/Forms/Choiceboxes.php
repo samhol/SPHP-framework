@@ -5,8 +5,10 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Foundation\F6\Forms;
 
+use Sphp\Html\Forms\Fieldset as Fieldset;
+use Sphp\Html\Forms\Legend as Legend;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Forms\Input\Input as InputTag;
@@ -68,6 +70,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   public function __construct($type, $name = null, array $values = [], $label = null) {
     $this->type = $type;
     parent::__construct("fieldset");
+    $this->content()->set("legend", new Legend());
     $this->boxCont = new Ul();
     $this->boxCont->addCssClass("inline-list");
     //$this->mainLabel = new Legend($mainLabel)
@@ -77,6 +80,31 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     $this->cssClasses()->lock("sphp-choiceboxes $this->type");
     $this->content()
             ->append($this->boxCont);
+  }
+
+  /**
+   * Sets the {@link Legend} of the fieldset component
+   *
+   * @param  string|Legend $legend the legend of the fielset component
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
+   */
+  public function setLegend($legend) {
+    if (!($legend instanceof Legend)) {
+      $legend = new Legend($legend);
+    }
+    $this->content()->set("legend", $legend);
+    return $this;
+  }
+
+  /**
+   * Returns the {@link Legend} of the fieldset component
+   *
+   * @return Legend the legend of the fieldset component or null
+   * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
+   */
+  public function getLegend() {
+    return $this->content("legend");
   }
 
   /**

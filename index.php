@@ -32,9 +32,9 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
             ->ajaxPrepend("manual/snippets/f6ScreenInfo.php");
 
     //$ul[] = $blee;
-    $ul->appendLink("https://github.com/samhol/SPHP-framework", '<i class="fi-social-github"></i>', "_blank")
-            ->appendLink("https://www.facebook.com/Sami.Petteri.Holck.Programming/", '<i class="fi-social-facebook"></i>', "_blank")
-            ->appendLink("https://twitter.com/SPHPframework", '<i class="fi-social-twitter"></i>', "_blank")
+    $ul->appendLink("https://github.com/samhol/SPHP-framework", '<i class="fa fa-github"></i>', "_blank")
+            ->appendLink("https://www.facebook.com/Sami.Petteri.Holck.Programming/", '<i class="fa fa-facebook-square"></i>', "_blank")
+            ->appendLink("https://twitter.com/SPHPframework", '<i class="fa fa-twitter"></i>', "_blank")
             ->appendLink("https://plus.google.com/b/113942361282002156141/113942361282002156141", '<i class="fa fa-google-plus-square"></i>', "_blank")
             ->addCssClass("no-bullet")
             ->printHtml();

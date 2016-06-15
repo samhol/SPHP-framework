@@ -9,7 +9,6 @@ namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 
 /**
@@ -20,7 +19,7 @@ use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25
  * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/docs/components/reveal.html Founfation Reveal
+ * @link    http://foundation.zurb.com/sites/docs/reveal.html Founfation 6 Reveal
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -31,13 +30,13 @@ class ModalReveal extends ContainerTag {
   /**
    * the Modal reveal controller
    *
-   * @var HyperlinkInterface
+   * @var Controller
    */
   private $modalController;
 
   /**
    *
-   * @var Controller 
+   * @var CloseButton 
    */
   private $closeButton;
 
@@ -107,7 +106,7 @@ class ModalReveal extends ContainerTag {
    * 
    * @return CloseButton
    */
-  public function getCloseButton() {
+  public function closeButton() {
     return $this->closeButton;
   }
 
@@ -131,7 +130,7 @@ class ModalReveal extends ContainerTag {
    * @return Controller a controller component pointing to this Modal
    */
   public function createController($content) {
-    $controller = new Controller($content, $this);
+    $controller = new Controller($this, $content);
     return $controller;
   }
 
@@ -139,7 +138,7 @@ class ModalReveal extends ContainerTag {
    * {@inheritdoc}
    */
   public function contentToString() {
-    return parent::contentToString() . $this->getCloseButton();
+    return parent::contentToString() . $this->closeButton();
   }
 
 }

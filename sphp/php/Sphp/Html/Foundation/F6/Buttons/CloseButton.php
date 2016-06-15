@@ -14,7 +14,7 @@ use Sphp\Html\Forms\Buttons\Button as Button;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
- * @link    http://foundation.zurb.com/sites/docs/button-group.html#split-buttons Foundation 6 Buttons
+ * @link    http://foundation.zurb.com/sites/docs/ Foundation 6
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

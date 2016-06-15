@@ -8,6 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+
 /**
  * Class AbstractComponent provides a simple implementation of the {@link Tag}.
  *

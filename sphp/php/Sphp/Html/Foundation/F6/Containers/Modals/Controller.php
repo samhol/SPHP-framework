@@ -27,7 +27,7 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
   /**
    * the Modal reveal controller
    *
-   * @var HyperlinkInterface
+   * @var ModalReveal
    */
   private $modal;
 
@@ -43,17 +43,17 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
    * @param mixed $content the content of the component
    * @param ModalReveal $modal
    */
-  public function __construct($content = null, ModalReveal $modal) {
+  public function __construct(ModalReveal $modal, $content = null) {
     parent::__construct("a", $content);
     $this->attrs()->demand("data-open");
     $this->setTarget($modal);
   }
 
   private function setTarget(ModalReveal $modal) {
-    //$modal->
-    $this->modal = $modal;
     $this->attrs()->set("data-open", $modal->getId());
     $modal->attachAttributeChangeObserver($this);
+    $this->modal->detachAttributeChangeObserver($this);
+    $this->modal = $modal;
     return $this;
   }
 

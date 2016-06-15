@@ -7,9 +7,9 @@ $modal = $api->classLinker(ModalReveal::class);
 $controller = $api->classLinker(Controller::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-##Foundation Modals
+##The $modal component
 $ns
-Modal dialogs, or pop-up windows, are handy for prototyping and production. Fo
+Modal dialogs, or pop-up windows, are handy for prototyping and production.
 
 MD
 );
