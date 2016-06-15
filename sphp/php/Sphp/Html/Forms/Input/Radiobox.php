@@ -16,6 +16,7 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-18
+ * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -24,10 +25,10 @@ class Radiobox extends Choicebox {
   /**
    * Constructs a new instance
    *
-   *  **Postconditions:**  <var>attrLocked("type", "radio") === true</var>
-   *
-   * @param  string $name the value of the name attribute
-   * @param  string $value the value of the value attribute
+   * @Postconditions   <var>attrLocked("type", "radio") === true</var>
+   * 
+   * @param  string|null $name the value of the name attribute
+   * @param  string|null $value the value of the value attribute
    * @param  boolean $checked is component checked
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute

@@ -16,6 +16,7 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
+ * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -24,7 +25,7 @@ class TextualInput extends Input {
   /**
    * Constructs a new instance
    *
-   *  **Preconditions:**   <var>0 &lt; $size &lt;= $maxlength</var>
+   * @Preconditions  `0 &lt; $size &lt;= $maxlength`
    *
    * @param  string $type the value of the type attribute
    * @param  string $name the value of the  name attribute

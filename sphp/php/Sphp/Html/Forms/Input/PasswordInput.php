@@ -12,7 +12,7 @@ namespace Sphp\Html\Forms\Input;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
-
+ * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -21,8 +21,7 @@ class PasswordInput extends TextualInput {
   /**
    * Constructor
    *
-   *  * **Preconditions:**   <var>0 < $size <= $maxlength</var>
-   *  * **Postconditions:**  <var>true</var>
+   * @Preconditions  <var>0 < $size <= $maxlength</var>
    *
    * @param  string $name name attribute
    * @param  string $value value attribute

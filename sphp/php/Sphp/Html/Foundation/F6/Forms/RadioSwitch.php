@@ -24,8 +24,8 @@ class RadioSwitch extends AbstractSwitch {
   /**
    * Constructs a new instance
    * 
-   * @param  string $name the value of the name attribute
-   * @param  string $value the value of the value attribute
+   * @param  string|null $name the value of the name attribute
+   * @param  string|null $value the value of the value attribute
    * @param  boolean $checked is component checked
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute

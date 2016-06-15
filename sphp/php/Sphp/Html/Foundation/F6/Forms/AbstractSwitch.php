@@ -27,18 +27,9 @@ class AbstractSwitch extends AbstractComponent implements LabelableInputInterfac
 
   /**
    * Constructs a new instance
-   * <div class="switch">
-    <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
-    <label class="switch-paddle" for="exampleSwitch">
-    <span class="show-for-sr">Download Kittens</span>
-    <span class="switch-active" aria-hidden="true">Yes</span>
-    <span class="switch-inactive" aria-hidden="true">No</span>
-    </label>
-    </div>
-   * @param int $start the start value of the slider
-   * @param int $end the end value of the slider
-   * @param int $value the current value of the slider
-   * @param int $step the length of a single step
+   *
+   * @param Choicebox $box the inner form component
+   * @param string|null $srText text for screen readers
    */
   public function __construct(Choicebox $box, $srText = null) {
     $box->cssClasses()->lock("switch-input");
