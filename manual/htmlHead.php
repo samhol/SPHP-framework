@@ -9,9 +9,12 @@ include_once("links.php");
 
 Document::setHtmlVersion(Document::HTML5);
 $currentUrl = URL::getCurrent();
+$pathFinder = new \Sphp\Core\PathFinder();
 $title = "SPHP framework";
+$conf = Configuration::useDomain("manual");
+$conf->paths()->http("manual/pics/favicon.ico");
 
-foreach (Configuration::useDomain("manual")->get("PAGE_TITLES") as $linkArr) {
+foreach ($conf->get("PAGE_TITLES") as $linkArr) {
   if ($currentUrl->equals($linkArr["href"])) {
     $title .= ": " . $linkArr["text"];
   }
@@ -22,7 +25,7 @@ $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
         ->setBaseAddr(Configuration::httpHost(), "_self")
-        ->addShortcutIcon("favicon.ico")
+        ->addShortcutIcon($conf->paths()->http("manual/pics/favicon.ico"))
         ->metaTags()
         ->setApplicationName("SPHP")
         ->setAuthor("Sami Holck")
