@@ -52,7 +52,9 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
   private function setTarget(ModalReveal $modal) {
     $this->attrs()->set("data-open", $modal->getId());
     $modal->attachAttributeChangeObserver($this);
-    $this->modal->detachAttributeChangeObserver($this);
+    if ($this->modal !== null) {
+      $this->modal->detachAttributeChangeObserver($this);
+    }
     $this->modal = $modal;
     return $this;
   }
