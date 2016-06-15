@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 
 /**
  * Class Models an HTML &lt;iframe&gt; tag (an inline frame).

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 
 /**
  * Class Models a simple section separator line for Foundation menu structures

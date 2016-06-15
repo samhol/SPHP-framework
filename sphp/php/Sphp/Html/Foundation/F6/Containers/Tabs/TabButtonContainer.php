@@ -15,7 +15,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Tabs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButtonContainer extends \Sphp\Html\AbstractComponent {
+class TabButtonContainer extends \Sphp\Html\AbstractContainerComponent {
 
   /**
    * 

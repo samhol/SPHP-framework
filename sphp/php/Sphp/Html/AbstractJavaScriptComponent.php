@@ -24,7 +24,7 @@ use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractJavaScriptComponent extends AbstractComponent {
+abstract class AbstractJavaScriptComponent extends AbstractContainerComponent {
 
   /**
    * container for appended script components

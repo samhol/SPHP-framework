@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\WrappingContainer as WrappingContainer;

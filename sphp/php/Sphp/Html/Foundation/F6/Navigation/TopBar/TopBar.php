@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Div as Div;
 use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Foundation\F6\Navigation\MenuInterface as MenuInterface;

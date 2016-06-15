@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Fieldset as Fieldset;
 use Sphp\Html\Forms\Legend as Legend;
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Forms\Input\Input as InputTag;
 use Sphp\Core\Types\Strings as Strings;

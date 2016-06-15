@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractComponent extends AbstractTag {
+abstract class AbstractContainerComponent extends AbstractTag {
 
   /**
    * the content of the component

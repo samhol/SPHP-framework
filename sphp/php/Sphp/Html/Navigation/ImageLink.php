@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 use Sphp\Html\Media\SizeableInterface as SizeableInterface;
 use Sphp\Html\Media\Img as Img;

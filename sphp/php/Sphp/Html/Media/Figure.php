@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Net\URL as URL;
 
 /**

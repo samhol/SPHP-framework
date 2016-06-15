@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 use Sphp\Html\Foundation\F6\Core\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Core\ColumnTrait as ColumnTrait;

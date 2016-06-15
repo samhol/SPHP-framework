@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
 use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
 use Sphp\Html\Div as Div;

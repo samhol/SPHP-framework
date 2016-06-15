@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Span as Span;

@@ -15,7 +15,7 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
  *
  * @author Sami Holck
  */
-class TabButton extends \Sphp\Html\AbstractComponent implements \Sphp\Html\Lists\LiInterface, \Sphp\Html\Attributes\AttributeChangeObserver {
+class TabButton extends \Sphp\Html\AbstractContainerComponent implements \Sphp\Html\Lists\LiInterface, \Sphp\Html\Attributes\AttributeChangeObserver {
 
   /**
    *

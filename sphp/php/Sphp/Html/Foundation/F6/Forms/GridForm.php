@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
 use Sphp\Html\ContentTrait as ContentTrait;

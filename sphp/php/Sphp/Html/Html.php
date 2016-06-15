@@ -23,7 +23,7 @@ use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Html extends AbstractComponent implements TraversableInterface {
+class Html extends AbstractContainerComponent implements TraversableInterface {
 
   use TraversableTrait;
 

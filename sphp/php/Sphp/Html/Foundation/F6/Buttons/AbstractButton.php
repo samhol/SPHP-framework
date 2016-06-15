@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 
 /**
  * Class implements Foundation Button in PHP

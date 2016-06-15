@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use GeSHi;
 use Sphp\Html\Forms\Buttons\Button as Button;

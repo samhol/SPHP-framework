@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**

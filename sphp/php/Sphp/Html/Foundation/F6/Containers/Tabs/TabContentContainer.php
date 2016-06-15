@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Tabs;
  *
  * @author Sami Holck
  */
-class TabContentContainer extends \Sphp\Html\AbstractComponent {
+class TabContentContainer extends \Sphp\Html\AbstractContainerComponent {
 
   /**
    *

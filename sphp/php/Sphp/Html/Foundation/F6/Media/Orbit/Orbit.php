@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 
 /**
  * Class implements a Foundation Orbit containing {@link SlideInterface} components

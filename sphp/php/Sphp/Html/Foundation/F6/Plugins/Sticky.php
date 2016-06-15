@@ -13,6 +13,6 @@ namespace Sphp\Html\Foundation\F6\Plugins;
  *
  * @author samih_000
  */
-class Sticky extends \Sphp\Html\AbstractComponent {
+class Sticky extends \Sphp\Html\AbstractContainerComponent {
   //put your code here
 }

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Span as Span;
 
 /**

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
 use Sphp\Html\Forms\Input\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;

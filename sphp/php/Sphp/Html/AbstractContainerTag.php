@@ -32,7 +32,7 @@ use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractContainerTag extends AbstractComponent implements ContainerComponentInterface {
+class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface {
 
   use ArrayAccessExtensionTrait,
       TraversableTrait;

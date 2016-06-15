@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractComponent;
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Container as Container;
 use Sphp\Core\Types\Strings as Strings;
