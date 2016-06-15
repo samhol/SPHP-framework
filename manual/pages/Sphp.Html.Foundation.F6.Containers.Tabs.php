@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as ExampleAccordions;
 
-$ns = $api->getNamespaceLink(__NAMESPACE__);
 $tabs = $api->getClassLink(Tabs::class);
 
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);

@@ -51,70 +51,29 @@ try {
           ->appendLink($appConf->get("jsdoc"), "JsDoc API", "jsdoc");
   $navi->left()->append($apis);
 
- /* $packages = (new SubMenu("Requirements"))
+  $packages = (new SubMenu("Dependencies"))
           ->appendText("PHP resources:")
+          ->appendLink("http://php.net/", "PHP 5.5", "_blank")
           ->append((new SubMenu("External PHP Libraries"))
-          //->appendLabel("Symfony components:", false)
-          //->appendLink("http://symfony.com/doc/current/components/class_loader/", "Class Loader")
-          //->appendLink("http://symfony.com/doc/current/components/dependency_injection/", "Dependency Injection")
-          //->appendLabel("Other libraries:")
-          ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra")
-          ->appendLink("http://qbnz.com/highlighter/", "GeSHi")
-          ->appendLink("http://github.com/jdorn/sql-formatter", "SQL Formatter")
-          ->appendLink("https://github.com/raulferras/PHP-po-parser", "Po Parser")
-          ->appendLink("https://imagine.readthedocs.org", "Imagine"));
-
+          ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra", "_blank")
+          ->appendLink("http://qbnz.com/highlighter/", "GeSHi", "_blank")
+          ->appendLink("http://github.com/jdorn/sql-formatter", "SQL Formatter", "_blank")
+          ->appendLink("https://github.com/raulferras/PHP-po-parser", "Po Parser", "_blank")
+          ->appendLink("https://imagine.readthedocs.org", "Imagine", "_blank"));
 
   $packages
           ->appendText("JS resources:")
-          ->appendLink("http://modernizr.com/", "Modernizr")
-          ->appendLink("https://github.com/ftlabs/fastclick", "FastClick");
+          ->appendLink("http://jquery.com/", "jQuery 1.11", "_blank")
+          ->appendLink("http://foundation.zurb.com/", "Foundation", "_blank");
+  $clientSideMenu = new SubMenu("jQuery plugins:");
+  $clientSideMenu->appendLink("http://qtip2.com/", "qTip 2", "_blank")
+          ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT", "_blank")
+          ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade; DatePicker", "_blank");
+  $packages->append($clientSideMenu)
+          ->appendLink("http://zeroclipboard.org/", "ZeroClipboard", "_blank");
 
-  $clientSideMenu = new SubMenu("jQuery related:");
-  $clientSideMenu->appendLink("http://jquery.com/", "jQuery.com")
-          ->appendText("jQuery plugins:")
-          ->appendLink("http://foundation.zurb.com/", "Foundation")
-          ->appendLink("http://qtip2.com/", "qTip 2")
-          ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT")
-          ->appendLink("http://zeroclipboard.org/", "ZeroClipboard")
-          ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade; DatePicker");
-  $packages->append($clientSideMenu);*/
+  $navi->right()->append($packages);
 
-  //$navi->left()->append($packages);
-
-//  $github = (new SplitLink("https://github.com/samhol/SPH-framework", "GitHub", "_blank"))->addCssClass("sphp-github-button");
-  //$navi->right()->append($github);
-  $depContainer = new BlockGrid(null, 2);
-
-  $phpDepMenu = (new \Sphp\Html\Foundation\F6\Navigation\Menu())
-          ->vertical()
-          ->appendText("PHP")
-          ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra")
-          ->appendLink("http://qbnz.com/highlighter/", "GeSHi")
-          ->appendLink("http://github.com/jdorn/sql-formatter", "SQL Formatter")
-          ->appendLink("https://github.com/raulferras/PHP-po-parser", "Po Parser")
-          ->appendLink("https://imagine.readthedocs.org", "Imagine");
-  $depContainer->append($phpDepMenu);
- 
-  $jsDepMenu = (new \Sphp\Html\Foundation\F6\Navigation\Menu())
-          ->appendText("JavaScript")
-          ->vertical()
-          //->appendText("jQuery related", TRUE)
-          ->appendLink("http://jquery.com/", "jQuery.com", "_blank")
-          ->appendLink("http://foundation.zurb.com/", "Foundation")
-          ->appendLink("http://qtip2.com/", "qTip 2")
-          ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT")
-          ->appendLink("http://zeroclipboard.org/", "ZeroClipboard")
-          ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade; DatePicker");
-
-  $depContainer->append($jsDepMenu);
-  
-  $depDropdown = (new Dropdown("Dependencies", $depContainer))
-          ->closeOnBodyClick(true)
-          ->align("bottom")
-          ->float("right")
-          ->setSize("large");
-  $navi->right()->append($depDropdown);
   $navi->printHtml();
 
   unset($navi, $apis, $packages, $topbarsubmenu, $phpDepMenu, $jsDepMenu);

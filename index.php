@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 use Sphp\Core\PathFinder as PathFinder;
 
 error_reporting(E_ALL);
-ini_set("display_errors", 1); 
+ini_set("display_errors", 1);
 //require_once __DIR__ . '/vendor/autoload.php';
 include_once("manual/settings.php");
 include_once("manual/links.php");
@@ -18,6 +18,27 @@ include_once("manual/htmlHead.php");
     <a href="<?php echo (new PathFinder)->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
       <img src="manual/pics/sphp-code-logo.png" alt="SPHP framework">
     </a>
+    <?php
+
+    use Sphp\Html\Foundation\F6\Containers\Dropdown as Dropdown;
+    use Sphp\Html\Foundation\F6\Foundation as F;
+
+$ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
+
+    $blee = new Dropdown(F::icon("widget"));
+    $blee->closeOnBodyClick()
+            ->align("bottom left")
+            ->addCssClass("sphp-f6-info large")
+            ->ajaxPrepend("manual/snippets/f6ScreenInfo.php");
+
+    //$ul[] = $blee;
+    $ul->appendLink("https://github.com/samhol/SPHP-framework", '<i class="fi-social-github"></i>', "_blank")
+            ->appendLink("https://www.facebook.com/Sami.Petteri.Holck.Programming/", '<i class="fi-social-facebook"></i>', "_blank")
+            ->appendLink("https://twitter.com/SPHPframework", '<i class="fi-social-twitter"></i>', "_blank")
+            ->appendLink("https://plus.google.com/b/113942361282002156141/113942361282002156141", '<i class="fa fa-google-plus-square"></i>', "_blank")
+            ->addCssClass("no-bullet")
+            ->printHtml();
+    ?>
   </div>
   <?php
   include_once("manual/__topBar.php");

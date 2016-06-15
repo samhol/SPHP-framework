@@ -1,0 +1,16 @@
+<?php
+
+namespace Sphp\Html\Foundation\F6\Containers\Modals;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+
+$modal = $api->classLinker(ModalReveal::class);
+$controller = $api->classLinker(Controller::class);
+$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+echo $parsedown->text(<<<MD
+##Foundation Modals
+$ns
+Modal dialogs, or pop-up windows, are handy for prototyping and production. Fo
+
+MD
+);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/Modals/Modal.php', false, true);

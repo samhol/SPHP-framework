@@ -5,11 +5,12 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Containers;
+namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 
 /**
  * Class implements Foundation Reveal Modal 
@@ -18,12 +19,14 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25
- * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/docs/components/reveal.html Founfation Reveal
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class ModalReveal extends ContainerTag {
+
+  use \Sphp\Html\Foundation\F6\Core\SizingTrait;
 
   /**
    * the Modal reveal controller
@@ -33,6 +36,12 @@ class ModalReveal extends ContainerTag {
   private $modalController;
 
   /**
+   *
+   * @var Controller 
+   */
+  private $closeButton;
+
+  /**
    * Constructs a new instance
    *
    * **Important!**
@@ -40,15 +49,17 @@ class ModalReveal extends ContainerTag {
    * Parameter `$content` can be of any type that converts to a
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
-   *
+   * 
    * @param mixed $content the content of the component
    * @param mixed $controller
    */
-  public function __construct($content = null) {
+  public function __construct($content = null, $controller = null) {
     parent::__construct("div", $content);
     $this->identify();
-    $this->cssClasses()->lock("reveal-modal");
-    $this->attrs()->lock("data-reveal", "");
+    $this->cssClasses()->lock("reveal");
+    $this->attrs()->demand("data-reveal");
+    $this->closeButton = new CloseButton();
+    $this->modalController = $this->createController($controller);
   }
 
   /**
@@ -83,12 +94,21 @@ class ModalReveal extends ContainerTag {
   }
 
   /**
+   * Returns the default Modal reveal controller
+   * 
+   * @return Controller
+   */
+  public function getDefaultController() {
+    return $this->modalController;
+  }
+
+  /**
    * Returns the Modal reveal controller
    * 
-   * @return HyperlinkInterface
+   * @return CloseButton
    */
-  public function getController() {
-    return $this->modalController;
+  public function getCloseButton() {
+    return $this->closeButton;
   }
 
   /**
@@ -107,21 +127,19 @@ class ModalReveal extends ContainerTag {
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
    *
-   * @param  mixed|HyperlinkInterface $controller the controller component
-   * @return HyperlinkInterface a link component pointing to this Modal
+   * @param  mixed $content the controller component
+   * @return Controller a controller component pointing to this Modal
    */
-  public function createController($controller) {
-    if (!($controller instanceof HyperlinkInterface)) {
-      $controller = new Hyperlink("#", $controller);
-    }
-    $controller->setHref("#")
-            ->setAttr("data-reveal-id", $this->getId())
-            ->setAttr("data-reveal");
+  public function createController($content) {
+    $controller = new Controller($content, $this);
     return $controller;
   }
 
-  public function createCloseButton() {
-    return '<a class="close-reveal-modal" aria-label="Close">&#215;</a>';
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return parent::contentToString() . $this->getCloseButton();
   }
 
 }

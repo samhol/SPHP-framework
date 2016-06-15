@@ -45,7 +45,6 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
     parent::__construct("div", null, new Div($content));
     $this->cssClasses()->lock("callout");
     $this->closeButton = new CloseButton("close");
-    $this->closeButton->setSmall();
   }
 
   /**
@@ -93,7 +92,7 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
     $this->content()->ajaxReplace($url);
     return $this;
   }
-  
+
   /**
    * Sets/unsets the callout closable
    * 
