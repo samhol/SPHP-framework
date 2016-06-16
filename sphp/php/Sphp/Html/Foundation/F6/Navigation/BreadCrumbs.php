@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
@@ -30,7 +30,7 @@ use Sphp\Html\TraversableTrait as TraversableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BreadCrumbs extends AbstractComponent implements TraversableInterface {
+class BreadCrumbs extends AbstractContainerComponent implements TraversableInterface {
 
   use TraversableTrait;
 

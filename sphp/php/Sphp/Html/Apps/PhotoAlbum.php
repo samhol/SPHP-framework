@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Div as Div;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Core\Types\Arrays as Arrays;
@@ -31,7 +31,7 @@ use Sphp\Html\Media\Img as Img;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PhotoAlbum extends AbstractComponent {
+class PhotoAlbum extends AbstractContainerComponent {
 
   /**
    * the filelist

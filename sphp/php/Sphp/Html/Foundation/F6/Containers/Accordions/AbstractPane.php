@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\Div as Div;
 
@@ -21,7 +21,7 @@ use Sphp\Html\Div as Div;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractPane extends AbstractComponent implements PaneInterface {
+abstract class AbstractPane extends AbstractContainerComponent implements PaneInterface {
 
   /**
    * The bar component of the pane

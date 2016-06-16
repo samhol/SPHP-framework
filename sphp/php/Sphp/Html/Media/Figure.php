@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Net\URL as URL;
 
 /**
@@ -21,7 +21,7 @@ use Sphp\Net\URL as URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Figure extends AbstractComponent implements LazyLoaderInterface {
+class Figure extends AbstractContainerComponent implements LazyLoaderInterface {
 
   /**
    * the tag name of the HTML component

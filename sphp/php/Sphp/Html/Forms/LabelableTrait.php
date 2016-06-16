@@ -39,43 +39,22 @@ trait LabelableTrait {
   //abstract public function attrs();
 
   /**
-   * Sets the content of the input label ({@link Label})
-   *
-   * @param  mixed $label the content of the input label ({@link Label})
-   * @return self for PHP Method Chaining
-   */
-  public function setLabel($label) {
-    if (!$this->attrs()->exists("id")) {
-      $this->attrs()->setUnique("id");
-    }
-    if (!($label instanceof Label)) {
-      $this->label = new Label($label, $this);
-    } else {
-      $this->label->setFor($this);
-    }
-    return $this;
-  }
-
-  /**
-   * Checks whether the {@link Label} is defined for the input component or
-   *  not
-   *
-   * @return boolean true if the label is defined, otherwise false
-   * @link   Label
-   */
-  public function hasLabel() {
-    return $this->label instanceof Label;
-  }
-
-  /**
    * Creates a {@link Label} component for the input component
    *
    *  **Postcondition:** <var>self::attrExists("id") === true</var>
    *
    * @return Label|null created label component
    */
-  public function getLabel() {
-    return $this->label;
+  public function createLabel($label = null) {
+    if (!$this->attrs()->exists("id")) {
+      $this->attrs()->setUnique("id");
+    }
+    if (!($label instanceof Label)) {
+      $label = new Label($label, $this);
+    } else {
+      $label->setFor($this);
+    }
+    return $label;
   }
 
 }

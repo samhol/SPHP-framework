@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
@@ -23,7 +23,7 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractFoundationComponent extends AbstractComponent {
+abstract class AbstractFoundationComponent extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

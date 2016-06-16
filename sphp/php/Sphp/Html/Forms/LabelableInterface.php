@@ -18,25 +18,9 @@ namespace Sphp\Html\Forms;
 interface LabelableInterface {
 
   /**
-   * Attach a {@link Label} to the  component
-   *
-   * @param  mixed|Label $label the label object or its content
-   * @return self for PHP Method Chaining
-   */
-  public function setLabel($label);
-
-  /**
-   * Checks whether the {@link Label} is attached to the component or not
-   *
-   * @return boolean true if the label is defined, otherwise false
-   * @link   Label
-   */
-  public function hasLabel();
-
-  /**
    * Returns the {@link Label} component attached to the component
    *
    * @return Label|null attached label component or null
    */
-  public function getLabel();
+  public function createLabel();
 }

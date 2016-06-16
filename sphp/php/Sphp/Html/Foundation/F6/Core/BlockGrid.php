@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\WrappingContainer as WrappingContainer;
@@ -23,7 +23,7 @@ use Sphp\Core\Types\BitMask as BitMask;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGrid extends AbstractComponent implements TraversableInterface {
+class BlockGrid extends AbstractContainerComponent implements TraversableInterface {
 
   use TraversableTrait;
 

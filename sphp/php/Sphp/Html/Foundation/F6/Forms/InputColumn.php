@@ -7,17 +7,16 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 use Sphp\Html\Foundation\F6\Core\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Core\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Label as Label;
+use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts
- *
- * The sum of the column widths in a row should never exeed 12.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
@@ -29,6 +28,12 @@ use Sphp\Html\Forms\Label as Label;
 class InputColumn extends AbstractComponent implements ColumnInterface, InputInterface {
 
   use ColumnTrait;
+
+  /**
+   *
+   * @var Label
+   */
+  private $label;
 
   /**
    * The inner input component
@@ -56,28 +61,7 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
     if ($large !== self::INHERITED) {
       $this->setWidth($large, Screen::LARGE);
     }
-    if ($input !== null) {
-      $this->setInput($input);
-    }
-  }
-
-  /**
-   * Sets the actual input component to the wrapper
-   * 
-   * @param  InputInterface $input the actual input component
-   * @return self for PHP Method Chaining
-   */
-  private function setInput(InputInterface $input) {
     $this->input = $input;
-    if ($input instanceof LabelableInterface) {
-      $label = $input->getLabel();
-    } else {
-      $label = new Label();
-    }
-    $this->content()
-            ->set("label", $label)
-            ->set("input", $input);
-    return $this;
   }
 
   /**
@@ -86,18 +70,25 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
    * @return Label the label of the component
    */
   protected function getLabel() {
-    return $this->content()
-                    ->get("label");
+    return $this->label;
   }
 
   /**
    * Sets the visible contents of the input label
    * 
-   * @param  mixed $content the contents of the label 
+   * @param  mixed $label the contents of the label 
    * @return self for PHP Method Chaining
    */
-  public function setLabel($content) {
-    $this->getLabel()->replaceContent($content);
+  public function setLabel($label) {
+    if (!$this->attrs()->exists("id")) {
+      $this->attrs()->setUnique("id");
+    }
+    if (!($label instanceof Label)) {
+      $label = new Label($label);
+    } if ($this->input instanceof LabelableInterface) {
+      $label->setFor($this);
+    }
+    $this->label = $label;
     return $this;
   }
 
@@ -177,6 +168,13 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
   public function setValue($value) {
     $this->input->setValue($value);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->label . $this->input;
   }
 
 }

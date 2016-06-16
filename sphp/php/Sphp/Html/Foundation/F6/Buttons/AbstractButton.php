@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class implements Foundation Button in PHP
@@ -18,7 +18,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractButton extends AbstractComponent implements ButtonInterface {
+abstract class AbstractButton extends AbstractContainerComponent implements ButtonInterface {
 
 	use ButtonTrait;
 

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Media\Img as Img;
 
 /**
@@ -18,7 +18,7 @@ use Sphp\Html\Media\Img as Img;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BackToTopButton extends AbstractComponent {
+class BackToTopButton extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

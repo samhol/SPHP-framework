@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class implements a Foundation Orbit containing {@link Slide} components
@@ -19,7 +19,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SlideContainer extends AbstractComponent {
+class SlideContainer extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

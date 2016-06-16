@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 use Sphp\Html\Media\SizeableInterface as SizeableInterface;
 use Sphp\Html\Media\Img as Img;
@@ -25,7 +25,7 @@ use Sphp\Net\URL as URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ImageLink extends AbstractComponent implements HyperlinkInterface, LazyLoaderInterface, SizeableInterface {
+class ImageLink extends AbstractContainerComponent implements HyperlinkInterface, LazyLoaderInterface, SizeableInterface {
 
   use HyperlinkTrait;
 

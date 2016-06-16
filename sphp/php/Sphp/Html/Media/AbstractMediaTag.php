@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class models the HTML multimedia tags
@@ -17,7 +17,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractMediaTag extends AbstractComponent {
+abstract class AbstractMediaTag extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

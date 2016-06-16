@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Forms\Input\Checkbox as Checkbox;
 
 /**
  * A component containing multiple {@link Checkbox} inputs
@@ -27,7 +28,20 @@ class Checkboxes extends Choiceboxes {
    * @param mixed $mainLabel
    */
   public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct("checkbox", $name, $values, $mainLabel);
+    parent::__construct($name, $values, $mainLabel);
+  }
+
+  /**
+   * Sets new options to the form component
+   *
+   * @param  string[] $values
+   * @return self for PHP Method Chaining
+   */
+  public function setOption($value, $label) { 
+    $input = new InputTag($this->type, $this->name, $value);
+    $this->options[$value] = $input;
+    $this->boxCont[] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
+    return $this;
   }
 
   /**

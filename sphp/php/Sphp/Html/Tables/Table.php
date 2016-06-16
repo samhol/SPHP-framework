@@ -9,7 +9,7 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Container as Container;
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 /**
  * Class models an HTML &lt;table&gt; tag.
  *
@@ -23,7 +23,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Table extends AbstractComponent implements \Sphp\Html\TraversableInterface {
+class Table extends AbstractContainerComponent implements \Sphp\Html\TraversableInterface {
 
   
   use \Sphp\Html\TraversableTrait;

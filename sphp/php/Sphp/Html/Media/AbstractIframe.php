@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class Models an HTML &lt;iframe&gt; tag (an inline frame).
@@ -21,7 +21,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractIframe extends AbstractComponent implements IframeInterface {
+abstract class AbstractIframe extends AbstractContainerComponent implements IframeInterface {
 
   use SizeableTrait;
 

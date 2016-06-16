@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
 use Sphp\Html\Forms\Input\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;
@@ -23,7 +23,7 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements LabelableInputInterface {
+class AbstractSwitch extends AbstractContainerComponent implements LabelableInputInterface {
 
   /**
    * Constructs a new instance
@@ -159,22 +159,8 @@ class AbstractSwitch extends AbstractComponent implements LabelableInputInterfac
   /**
    * {@inheritdoc}
    */
-  public function getLabel() {
-    return $this->getInput()->getLabel();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasLabel() {
-    return $this->getInput()->hasLabel();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setLabel($label) {
-    $this->getInput()->setLabel($label);
+  public function createLabel($label = null) {
+    $this->getInput()->createLabel($label);
     return $this;
   }
 

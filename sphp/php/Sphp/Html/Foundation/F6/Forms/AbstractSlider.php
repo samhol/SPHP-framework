@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Forms\SliderInterface as SliderInterface;
 use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
@@ -23,7 +23,7 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSlider extends AbstractComponent implements SliderInterface {
+abstract class AbstractSlider extends AbstractContainerComponent implements SliderInterface {
 
   /**
    * Constructs a new instance

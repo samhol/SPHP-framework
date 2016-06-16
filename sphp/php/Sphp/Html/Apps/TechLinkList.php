@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Net\URL as URL;
 use Sphp\Html\Navigation\ImageLink as ImageLink;
@@ -20,7 +20,7 @@ use Sphp\Html\Navigation\ImageLink as ImageLink;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TechLinkList extends AbstractComponent {
+class TechLinkList extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

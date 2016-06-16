@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Media\Img as Img;
 use Sphp\Html\Media\FigCaption as FigCaption;
 
@@ -21,7 +21,7 @@ use Sphp\Html\Media\FigCaption as FigCaption;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FigureSlide extends AbstractComponent implements SlideInterface {
+class FigureSlide extends AbstractContainerComponent implements SlideInterface {
 
   /**
    * Constructs a new instance

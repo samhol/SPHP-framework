@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class implements an Foundation 6 Accordion
@@ -19,7 +19,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Accordion extends AbstractComponent implements \IteratorAggregate {
+class Accordion extends AbstractContainerComponent implements \IteratorAggregate {
 
   /**
    * Constructs a new instance

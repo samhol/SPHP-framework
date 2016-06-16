@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Li as Li;
 use Sphp\Core\Types\BitMask as BitMask;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\F6\Core\Screen as Screen;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ButtonGroup extends AbstractComponent implements \IteratorAggregate {
+class ButtonGroup extends AbstractContainerComponent implements \IteratorAggregate {
 
   use ButtonTrait;
 

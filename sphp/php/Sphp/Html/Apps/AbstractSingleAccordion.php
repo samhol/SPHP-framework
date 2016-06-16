@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Span as Span;
@@ -20,7 +20,7 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSingleAccordion extends AbstractComponent {
+class AbstractSingleAccordion extends AbstractContainerComponent {
 
   /**
    * Constructs a new instance

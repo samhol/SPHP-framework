@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class Models an HTML &lt;map&gt; tag
@@ -23,7 +23,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Map extends AbstractComponent {
+class Map extends AbstractContainerComponent {
 
   /**
    * the tag name of the HTML component

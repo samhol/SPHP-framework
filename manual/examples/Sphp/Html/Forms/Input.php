@@ -2,31 +2,25 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Input\Input as Input;
 use Sphp\Html\Forms\Input\TextInput as TextInput;
 use Sphp\Html\Forms\Input\PasswordInput as PasswordInput;
-use Sphp\Html\Forms\Input\EmailInput as EmailInput;
 use Sphp\Html\Forms\Textarea as Textarea;
 
 $form = (new Form());
+$textInput = (new TextInput("text[]"))
+        ->setPlaceholder("&lt;input:text&gt;");
+$form[] = $textInput->createLabel("&lt;label&gt; for &lt;input:text&gt;");
+$form[] = $textInput;
 
-$form[] = (new Input("text", "text[]"));
+$pwInput = (new PasswordInput("password"))
+        ->setPlaceholder("&lt;input:password&gt;");
+$form[] = $pwInput->createLabel("&lt;label&gt; for &lt;input:password&gt;");
+$form[] = $pwInput;
 
-$form[] = (new TextInput("text[]"))
-        ->setPlaceholder("&lt;input:text&gt;")
-        ->setLabel("&lt;input:text&gt;");
-
-$form[] = (new PasswordInput("password"))
-        ->setPlaceholder("&lt;input:password&gt;")
-        ->setLabel("&lt;input:password&gt;");
-
-$form[] = (new EmailInput("email"))
-        ->setPlaceholder("&lt;input:email&gt;")
-        ->setLabel("&lt;input:email&gt;");
-
-$form[] = (new Textarea("textarea", "", 4))
-        ->setPlaceholder("&lt;textarea&gt;")
-        ->setLabel("Notes:");
+$textarea = (new Textarea("textarea"))
+        ->setPlaceholder("&lt;textarea&gt;");
+$form[] = $textarea->createLabel("&lt;label&gt; for &lt;textarea&gt;");
+$form[] = $textarea;
 
 $form->printHtml();
 ?>

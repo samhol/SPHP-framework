@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use GeSHi;
 use Sphp\Html\Forms\Buttons\Button as Button;
@@ -25,7 +25,7 @@ use Sphp\Html\Div as Div;
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
  * @filesource
  */
-class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterInterface {
+class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHighlighterInterface {
 
   /**
    * the GeSHi component

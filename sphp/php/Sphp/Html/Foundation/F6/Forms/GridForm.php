@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
 use Sphp\Html\ContentTrait as ContentTrait;
@@ -26,7 +26,7 @@ use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GridForm extends AbstractComponent implements GridInterface, TraversableFormInterface {
+class GridForm extends AbstractContainerComponent implements GridInterface, TraversableFormInterface {
 
   use ContentTrait,
       FormGridTrait,

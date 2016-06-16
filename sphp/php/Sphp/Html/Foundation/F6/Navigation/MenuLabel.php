@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 
 /**
  * Class Models a simple section separator line for Foundation menu structures
@@ -19,7 +19,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MenuLabel extends AbstractComponent implements MenuItemInterface {
+class MenuLabel extends AbstractContainerComponent implements MenuItemInterface {
 
   /**
    * Constructs a new instance

@@ -7,10 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\Fieldset as Fieldset;
 use Sphp\Html\Forms\Legend as Legend;
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
-use Sphp\Html\Lists\Ul as Ul;
+use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\Container as Container;
 use Sphp\Html\Forms\Input\Input as InputTag;
 use Sphp\Core\Types\Strings as Strings;
 
@@ -22,14 +21,14 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements InputInterface, LabelableInterface {
+abstract class Choiceboxes extends AbstractComponent implements InputInterface, Sphp\Html\TraversableInterface {
 
   /**
    * the type of the individual input component
    *
    * @var string
    */
-  private $type;
+  private $legend;
 
   /**
    * the name of the component
@@ -37,13 +36,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @var string
    */
   private $name;
-
-  /**
-   * the main label component
-   *
-   * @var Label
-   */
-  private $label;
 
   /**
    * the options
@@ -55,9 +47,9 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   /**
    * the box container
    *
-   * @var Ul
+   * @var Container
    */
-  private $boxCont;
+  private $boxes;
 
   /**
    * Constructs a new instance
@@ -67,19 +59,15 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param scalar[] $values
    * @param mixed $label
    */
-  public function __construct($type, $name = null, array $values = [], $label = null) {
+  public function __construct($name = null, array $values = [], $label = null) {
     $this->type = $type;
     parent::__construct("fieldset");
-    $this->content()->set("legend", new Legend());
-    $this->boxCont = new Ul();
-    $this->boxCont->addCssClass("inline-list");
-    //$this->mainLabel = new Legend($mainLabel)
+    $this->legend = new Legend();
+    $this->boxes = new Container();
+
     $this->setName($name)
             ->setOptions($values)
-            ->setLabel($label);
-    $this->cssClasses()->lock("sphp-choiceboxes $this->type");
-    $this->content()
-            ->append($this->boxCont);
+            ->setLegend($label);
   }
 
   /**
@@ -93,7 +81,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     if (!($legend instanceof Legend)) {
       $legend = new Legend($legend);
     }
-    $this->content()->set("legend", $legend);
+    $this->legend = $legend;
     return $this;
   }
 
@@ -104,7 +92,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
    */
   public function getLegend() {
-    return $this->content("legend");
+    return $this->legend;
   }
 
   /**
@@ -114,10 +102,10 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  Choicebox $value the value of the new input option
    * @return self for PHP Method Chaining
    */
-  protected function addInput($label, $value) {
-    $input = new InputTag($this->type, $this->name, $value);
-    $this->options[] = $input;
-    $this->boxCont[] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
+  protected function setInput(\Sphp\Html\Forms\Input\Choicebox $input, $label) {
+    $index = $input->getValue();
+    $this->options[$index] = $input;
+    $this->boxCont[$index] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
     return $this;
   }
 
@@ -136,9 +124,22 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  string[] $values
    * @return self for PHP Method Chaining
    */
+  public function setOption($value, $label) { 
+    $input = new InputTag($this->type, $this->name, $value);
+    $this->options[$value] = $input;
+    $this->boxCont[] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
+    return $this;
+  }
+
+  /**
+   * Sets new options to the form component
+   *
+   * @param  string[] $values
+   * @return self for PHP Method Chaining
+   */
   public function setOptions(array $values) {
     foreach ($values as $value => $label) {
-      $this->addInput($label, $value);
+      $this->setOption($value, $label);
     }
     return $this;
   }
@@ -238,38 +239,45 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   }
 
   /**
-   * Sets the content of the input label ({@link Label})
-   *
-   * @param  mixed $label the content of the input label ({@link Label})
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
-  public function setLabel($label) {
-    if (!($label instanceof Label)) {
-      $this->label = new Label($label);
-    } else {
-      $this->label = $label;
-    }
-    return $this;
+  public function count() {
+    return $this->boxes->count();
   }
 
   /**
-   * Checks whether the {@link Label} is defined for the input component or 
-   *  not
-   *
-   * @return boolean true if the label is defined, otherwise false
-   * @link   Label
+   * {@inheritdoc}
    */
-  public function hasLabel() {
-    return $this->label instanceof Label;
+  public function getComponentsBy(callable $rules) {
+    return $this->boxes->getComponentsBy($rules);
   }
 
   /**
-   * Creates a {@link Label} component for the input component
-   *
-   * @return Label|null created label component
+   * {@inheritdoc}
    */
-  public function getLabel() {
-    return $this->label;
+  public function getComponentsByAttrName($attrName) {
+    return $this->boxes->getComponentsByAttrName($attrName);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getComponentsByObjectType($typeName) {
+    return $this->boxes->getComponentsByObjectType($typeName);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return $this->boxes->getIterator();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->legend . $this->boxes;
   }
 
 }

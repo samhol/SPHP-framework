@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractComponent.php (UTF-8)
+ * AbstractContainerComponent.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 
 /**
- * Class AbstractComponent provides a simple implementation of the {@link Tag}.
+ * Class provides a simple implementation of a container tag
  *
  * AbstractComponent makes it possible to create new HTML components by composition
  * of other existing HTML components.
@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractContainerComponent extends AbstractTag {
+abstract class AbstractContainerComponent extends AbstractComponent {
 
   /**
    * the content of the component
@@ -97,45 +97,10 @@ abstract class AbstractContainerComponent extends AbstractTag {
   }
 
   /**
-   * Returns opening tag with its attributes
-   *
-   * @return string opening tag with attributes
-   */
-  protected function getOpeningTag() {
-    $attrs = "" . $this->attrs();
-    if ($attrs != "") {
-      $attrs = " " . $attrs;
-    }
-    return "<" . $this->getTagName() . $attrs . ">";
-  }
-
-  /**
-   * Returns the content of the component as a string
-   *
-   * @return string content as a string
-   * @throws \Exception if content parsing fails
+   * {@inheritdoc}
    */
   public function contentToString() {
     return $this->content->getHtml();
-  }
-
-  /**
-   * Returns closing tag
-   *
-   * @return string closing tag
-   */
-  protected function getClosingTag() {
-    return "</" . $this->getTagName() . ">";
-  }
-
-  /**
-   * Returns the component as html-markup string
-   *
-   * @return string html-markup of the component
-   * @throws \Exception if html parsing fails
-   */
-  public function getHtml() {
-    return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
   }
 
 }

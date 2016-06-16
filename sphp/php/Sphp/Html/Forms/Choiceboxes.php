@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Forms\Input\Input as InputTag;
 use Sphp\Core\Types\Strings as Strings;
@@ -20,7 +20,7 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements InputInterface, LabelableInterface {
+abstract class Choiceboxes extends AbstractContainerComponent implements InputInterface, LabelableInterface {
 
   /**
    * the type of the individual input component
@@ -240,7 +240,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    *
    * @return Label|null created label component
    */
-  public function getLabel() {
+  public function createLabel() {
     return $this->label;
   }
 

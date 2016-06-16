@@ -34,7 +34,7 @@
         posting.done(function (data) {
           console.log("done");
           var content = data;
-          console.log(content);
+          //console.log(content);
           $dropdown.empty().append(content);
         });
         posting.fail(function () {
@@ -53,7 +53,7 @@
       $get.done(function (data) {
         console.log("done");
         var content = data;
-        console.log(content);
+        //console.log(content);
         $form.append(content);
         $form.submitViewer();
         /*$submit = $form.find("[type='submit']");

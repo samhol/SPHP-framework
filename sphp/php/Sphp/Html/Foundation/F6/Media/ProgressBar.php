@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\AbstractContainerComponent as AbstractComponent;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
 use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
 use Sphp\Html\Div as Div;
@@ -25,7 +25,7 @@ use Sphp\Html\Div as Div;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ProgressBar extends AbstractComponent implements ColourableInterface {
+class ProgressBar extends AbstractContainerComponent implements ColourableInterface {
 
   use ColoringTrait;
 
