@@ -72,5 +72,5 @@
 
 $(document).ready(function () {
   'use strict';
-  $(".manual.accordion.form-example form").insertSubmisionFunctionality();
+  $(".manual.accordion.form-example form, .manual .mainContent>form").insertSubmisionFunctionality();
 });

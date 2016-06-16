@@ -3,6 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 $weight = (new Slider())
+        ->setName("weight")
         ->setVertical()
         ->setDescription("Weight")
         // ->showValue()
@@ -22,7 +23,7 @@ $distance = (new Slider(10, 1000, 10, 10))
         ->setValue(100)
         ->setValueUnit("km");
 
-(new GridForm("url", "post"))
+(new GridForm())
         ->append((new FormRow())
                 ->appendColumn($weight, 2)
                 ->appendColumn([$hours, $score, $distance], 10))
