@@ -9,8 +9,13 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Legend as Legend;
 use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\Foundation\F6\Core\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\F6\Core\ColumnTrait as ColumnTrait;
 use Sphp\Html\Container as Container;
-use Sphp\Html\Forms\Input\Input as InputTag;
+use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
+use Sphp\Html\Forms\Label as Label;
 use Sphp\Core\Types\Strings as Strings;
 
 /**
@@ -18,10 +23,14 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-18
+ * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/sites/docs/forms.html#checkboxes-and-radio-buttons Foundation 6 Checkboxes and Radio Buttons
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractComponent implements InputInterface, Sphp\Html\TraversableInterface {
+abstract class Choiceboxes extends AbstractComponent implements InputInterface, ColumnInterface {
+
+  use ColumnTrait;
 
   /**
    * the type of the individual input component
@@ -54,20 +63,21 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   /**
    * Constructs a new instance
    *
-   * @param string $type the type of the individual input component
    * @param string $name the value of the name attribute
    * @param scalar[] $values
-   * @param mixed $label
+   * @param mixed $legend
    */
-  public function __construct($name = null, array $values = [], $label = null) {
-    $this->type = $type;
+  public function __construct($name = null, array $values = [], $legend = null) {
     parent::__construct("fieldset");
+    $this->setWidth(12, "small");
+    $this->cssClasses()->lock("columns");
     $this->legend = new Legend();
     $this->boxes = new Container();
-
     $this->setName($name)
-            ->setOptions($values)
-            ->setLegend($label);
+            ->setLegend($legend);
+    foreach ($values as $value => $label) {
+      $this->setOption($value, $label);
+    }
   }
 
   /**
@@ -97,15 +107,16 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
 
   /**
    * Adds a new input option to the component
-   *
-   * @param  Choicebox $label the label information of the new input option
-   * @param  Choicebox $value the value of the new input option
+   * 
+   * @param  Choicebox $input
+   * @param  mixed|Label $label
    * @return self for PHP Method Chaining
    */
-  protected function setInput(\Sphp\Html\Forms\Input\Choicebox $input, $label) {
+  protected function setInput(Choicebox $input, $label) {
     $index = $input->getValue();
     $this->options[$index] = $input;
-    $this->boxCont[$index] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
+    $this->boxes[$index] = $input;
+    $this->boxes[$index . "_label"] = $input->createLabel($label);
     return $this;
   }
 
@@ -124,25 +135,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  string[] $values
    * @return self for PHP Method Chaining
    */
-  public function setOption($value, $label) { 
-    $input = new InputTag($this->type, $this->name, $value);
-    $this->options[$value] = $input;
-    $this->boxCont[] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
-    return $this;
-  }
-
-  /**
-   * Sets new options to the form component
-   *
-   * @param  string[] $values
-   * @return self for PHP Method Chaining
-   */
-  public function setOptions(array $values) {
-    foreach ($values as $value => $label) {
-      $this->setOption($value, $label);
-    }
-    return $this;
-  }
+  abstract public function setOption($value, $label, $checked = false);
 
   /**
    * Returns the value of name attribute
@@ -243,34 +236,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    */
   public function count() {
     return $this->boxes->count();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getComponentsBy(callable $rules) {
-    return $this->boxes->getComponentsBy($rules);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getComponentsByAttrName($attrName) {
-    return $this->boxes->getComponentsByAttrName($attrName);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getComponentsByObjectType($typeName) {
-    return $this->boxes->getComponentsByObjectType($typeName);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getIterator() {
-    return $this->boxes->getIterator();
   }
 
   /**

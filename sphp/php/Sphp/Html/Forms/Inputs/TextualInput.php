@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Input;
+namespace Sphp\Html\Forms\Inputs;
 
 /**
  * Class models an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag

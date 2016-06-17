@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Input\TextualInput as TextualInput;
-use Sphp\Html\Forms\Input\Checkbox as Checkbox;
-use Sphp\Html\Forms\Input\Radiobox as Radiobox;
+use Sphp\Html\Forms\Inputs\TextualInput as TextualInput;
+use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
+use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
 use Sphp\Html\Document as Document;
 
 $formIfLink = $api->getClassLink(FormInterface::class);

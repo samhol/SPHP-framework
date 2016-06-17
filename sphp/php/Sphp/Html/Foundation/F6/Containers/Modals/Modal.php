@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 
 /**
@@ -23,7 +22,7 @@ use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ModalReveal extends ContainerTag {
+class Modal extends ContainerTag {
 
   use \Sphp\Html\Foundation\F6\Core\SizingTrait;
 

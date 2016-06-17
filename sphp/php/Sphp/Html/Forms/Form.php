@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
+use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
 
 /**
  * Class Models an HTML &lt;form&gt; tag

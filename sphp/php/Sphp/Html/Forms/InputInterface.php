@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Forms;
 
+use Sphp\Html\ContentInterface as ContentInterface;
+
 /**
  * Interface defines required operations for all input components used in {@link FormInterface}
  *
@@ -15,68 +17,67 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface InputInterface {
+interface InputInterface extends ContentInterface {
 
-	/**
-	 * Returns the name of the form input
-	 *
-	 * @return string|null the name of the form input
-	 */
-	public function getName();
+  /**
+   * Returns the name of the form input
+   *
+   * @return string|null the name of the form input
+   */
+  public function getName();
 
-	/**
-	 * Sets the name of the form input
-	 *
-	 * **Note:** Only form elements with a name attribute will have their values 
-	 * passed when submitting a form.
-	 *
-	 * @param  string $name the name of the form input
-	 * @return self for PHP Method Chaining
-	 */
-	public function setName($name);
+  /**
+   * Sets the name of the form input
+   *
+   * **Note:** Only form elements with a name attribute will have their values 
+   * passed when submitting a form.
+   *
+   * @param  string $name the name of the form input
+   * @return self for PHP Method Chaining
+   */
+  public function setName($name);
 
-	/**
-	 * Checks whether the form input has a name
-	 *
-	 * **Note:** Only form elements with a name attribute will have their values 
-	 * passed when submitting a form.
-	 *
-	 * @return boolean true if the input has a name , otherwise false
-	 */
-	public function isNamed();
+  /**
+   * Checks whether the form input has a name
+   *
+   * **Note:** Only form elements with a name attribute will have their values 
+   * passed when submitting a form.
+   *
+   * @return boolean true if the input has a name , otherwise false
+   */
+  public function isNamed();
 
-	/**
-	 * Returns the value of the form input
-	 *
-	 * @return  scalar|scalar[] the value
-	 */
-	public function getValue();
+  /**
+   * Returns the value of the form input
+   *
+   * @return  scalar|scalar[] the value
+   */
+  public function getValue();
 
-	/**
-	 * Sets  the value of the form input
-	 *
-	 * @param  string|string[] $value the value of the form input
-	 * @return self for PHP Method Chaining
+  /**
+   * Sets  the value of the form input
+   *
+   * @param  string|string[] $value the value of the form input
+   * @return self for PHP Method Chaining
    * @throws \InvalidArgumentException if the value is not valid for the input type
-	 */
-	public function setValue($value);
+   */
+  public function setValue($value);
 
-	/**
-	 * Disables the input component
-	 * 
-	 * A disabled input component is unusable and un-clickable. 
-	 * Disabled input components in a form will not be submitted.
-	 *
-	 * @param  boolean $disabled true if the component is disabled, otherwise false
-	 * @return self for PHP Method Chaining
-	 */
-	public function disable($disabled = true);
-	
-	/**
-	 * Checks whether the input component is enabled or not
-	 * 
-	 * @param  boolean true if the input component is enabled, otherwise false
-	 */
-	public function isEnabled();
+  /**
+   * Disables the input component
+   * 
+   * A disabled input component is unusable and un-clickable. 
+   * Disabled input components in a form will not be submitted.
+   *
+   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @return self for PHP Method Chaining
+   */
+  public function disable($disabled = true);
 
+  /**
+   * Checks whether the input component is enabled or not
+   * 
+   * @param  boolean true if the input component is enabled, otherwise false
+   */
+  public function isEnabled();
 }

@@ -29,14 +29,11 @@ class NonEmptyInputTag extends ContainerTag implements InputInterface {
    * Constructs a new instance
    *
    * @param  string $tagName the name of the tag component
-   * @param  scalar[] $attrs the attribute name and value pairs to set
    * @param  mixed $content the content of the component
    */
-  public function __construct($tagName, array $attrs = [], $content = null) {
+  public function __construct($tagName, $content = null) {
     parent::__construct($tagName, $content);
-    if (count($attrs) > 0) {
-      $this->setAttrs($attrs);
-    }
+
   }
 
   /**

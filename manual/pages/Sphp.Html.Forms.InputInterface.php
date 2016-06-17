@@ -3,12 +3,11 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Forms\Input\Checkbox as Checkbox;
-use Sphp\Html\Forms\Input\Radiobox as Radiobox;
+use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
+use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
 
 $formIfLink = $api->getClassLink(FormInterface::class);
 $inputInterface = $api->getClassLink(InputInterface::class);
-$dateInputLink = $api->getClassLink(Input\AnyTimeInput::class);
 echo $parsedown->text(<<<MD
 ##Some form components inheriting $inputInterface
 		
@@ -17,9 +16,9 @@ All of the following components declare an input control in  a $formIfLink form.
 MD
 );
 
-$baseInput = $api->classLinker(Input\Input::class);
-$textualInput = $api->classLinker(Input\TextualInput::class);
-$textInput = $api->classLinker(Input\TextInput::class);
+$baseInput = $api->classLinker(Inputs\Input::class);
+$textualInput = $api->classLinker(Inputs\TextualInput::class);
+$textInput = $api->classLinker(Inputs\TextInput::class);
 $textarea = $api->classLinker(Textarea::class);
 
 echo $parsedown->text(<<<MD

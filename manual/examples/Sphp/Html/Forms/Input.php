@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Input\TextInput as TextInput;
-use Sphp\Html\Forms\Input\PasswordInput as PasswordInput;
+use Sphp\Html\Forms\Inputs\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\PasswordInput as PasswordInput;
 use Sphp\Html\Forms\Textarea as Textarea;
 
 $form = (new Form());

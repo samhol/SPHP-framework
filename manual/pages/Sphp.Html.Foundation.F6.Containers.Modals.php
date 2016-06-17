@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$modal = $api->classLinker(ModalReveal::class);
+$modal = $api->classLinker(Modal::class);
 $controller = $api->classLinker(Controller::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD

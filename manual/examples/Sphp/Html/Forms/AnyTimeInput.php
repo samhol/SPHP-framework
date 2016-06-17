@@ -1,14 +1,11 @@
 <?php
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\Forms\Form as Form;
 
-//use Sphp\Html\Forms\Textarea as Textarea;
-
-$datetimeInput = (new Input\AnyTimeInput("datetime"))
+$datetimeInput = (new AnyTimeInput("datetime"))
         ->setPlaceholder("what ever time...");
-
-
 
 $form = (new Form());
 

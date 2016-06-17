@@ -5,7 +5,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\Forms\Radioboxes as Radioboxes;
 use Sphp\Html\Forms\Checkboxes as Checkboxes;
 use Sphp\Html\Forms\Textarea as Textarea;
-use Sphp\Html\Forms\Input\Radiobox as Radiobox;
+use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
 
 $radios[] = new Radiobox("radio[]", "a");
 $radios[] = new Radiobox("radio[]", "b");

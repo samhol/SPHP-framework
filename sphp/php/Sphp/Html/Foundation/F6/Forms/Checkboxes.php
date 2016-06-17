@@ -7,8 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\Forms\Input\Checkbox as Checkbox;
+use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
 
 /**
  * A component containing multiple {@link Checkbox} inputs
@@ -21,53 +20,12 @@ use Sphp\Html\Forms\Input\Checkbox as Checkbox;
 class Checkboxes extends Choiceboxes {
 
   /**
-   * Constructs a new instance
-   *
-   * @param string $name the value of the name attribute
-   * @param scalar[] $values
-   * @param mixed $mainLabel
+   * {@inheritdoc}
    */
-  public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct($name, $values, $mainLabel);
-  }
-
-  /**
-   * Sets new options to the form component
-   *
-   * @param  string[] $values
-   * @return self for PHP Method Chaining
-   */
-  public function setOption($value, $label) { 
-    $input = new InputTag($this->type, $this->name, $value);
-    $this->options[$value] = $input;
-    $this->boxCont[] = (new Label())->set("input", $input)->set("label", "<span>$label</span>");
+  public function setOption($value, $label, $checked = false) {
+    $input = new Checkbox($this->getName() . "[]", $value, $checked);
+    $this->setInput($input, $label);
     return $this;
-  }
-
-  /**
-   * Sets the value of name attribute
-   *
-   * @param  string $name the value of the name attribute
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   */
-  public function setName($name) {
-    if (!Strings::endsWith($name, "[]")) {
-      $name .= "[]";
-    }
-    parent::setName($name);
-    return $this;
-  }
-
-  /**
-   * Returns the value of name attribute
-   *
-   * @return string the value of the name attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   */
-  public function getName() {
-    $name = parent::getName();
-    return str_replace("[]", "", $name);
   }
 
   /**

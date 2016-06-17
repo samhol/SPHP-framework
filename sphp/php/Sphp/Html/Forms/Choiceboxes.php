@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Ul as Ul;
-use Sphp\Html\Forms\Input\Input as InputTag;
+use Sphp\Html\Forms\Inputs\Input as InputTag;
 use Sphp\Core\Types\Strings as Strings;
 
 /**

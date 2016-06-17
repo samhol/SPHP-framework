@@ -70,7 +70,7 @@ class Radioboxes extends Choiceboxes {
 	 */
 	public function setRequired($required = true) {
 		foreach ($this->getOptionFields() as $opt) {
-			$opt->demand($required);
+			$opt->setRequired($required);
 		}
 		return $this;
 	}
@@ -83,7 +83,7 @@ class Radioboxes extends Choiceboxes {
 	 */
 	public function isRequired() {
 		foreach ($this->getOptionFields() as $opt) {
-			if (!$opt->isDemanded()) {
+			if (!$opt->isRequired()) {
 				return false;
 			}
 		}

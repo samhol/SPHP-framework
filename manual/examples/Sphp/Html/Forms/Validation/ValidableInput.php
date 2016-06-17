@@ -23,7 +23,7 @@ $form = (new GridForm(\Sphp\HTTP_ROOT, "get"))->setId("ItemForm"); //->setFormVa
 $formValidator = new ValidableForm($form);
 $form->appendHiddenVariable("page", "html.forms");
 
-namespace Sphp\Html\Forms\Input;
+namespace Sphp\Html\Forms\Inputs;
 
 $form["namefields"] = [
 			(new TextInput("username", "", 50, 30))

@@ -61,7 +61,7 @@ class FormRow extends AbstractRow {
    * 
    * @param  mixed|mixed[] $columns content components
    * @return ColumnInterface[] wrapped content component(s) in an array
-   */
+   
   protected function parseContentToColumns($columns) {
     $wrapToCol = function($c) {
       if ($c instanceof ColumnInterface) {
@@ -83,5 +83,6 @@ class FormRow extends AbstractRow {
       return $res;
     }
   }
+   */
 
 }

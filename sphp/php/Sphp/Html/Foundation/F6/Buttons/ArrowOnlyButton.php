@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\Span as Span;
-use Sphp\Html\Foundation\F6\Foundation as Foundation;
 
 /**
  * Class implements Foundation 6 Close Button in PHP

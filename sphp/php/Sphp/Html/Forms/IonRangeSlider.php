@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\AbstractJavaScriptComponent as AbstractJavaScriptComponent;
-use Sphp\Html\Forms\Input\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 use Sphp\Html\Programming\ScriptCode as ScriptCode;
 use Sphp\Core\Types\Arrays as Arrays;
 

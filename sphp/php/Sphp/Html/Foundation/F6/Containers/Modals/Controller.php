@@ -27,7 +27,7 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
   /**
    * the Modal reveal controller
    *
-   * @var ModalReveal
+   * @var Modal
    */
   private $modal;
 
@@ -41,15 +41,15 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
    * that implements magic method `__toString()` is allowed.
    * 
    * @param mixed $content the content of the component
-   * @param ModalReveal $modal
+   * @param Modal $modal
    */
-  public function __construct(ModalReveal $modal, $content = null) {
+  public function __construct(Modal $modal, $content = null) {
     parent::__construct("a", $content);
     $this->attrs()->demand("data-open");
     $this->setTarget($modal);
   }
 
-  private function setTarget(ModalReveal $modal) {
+  private function setTarget(Modal $modal) {
     $this->attrs()->set("data-open", $modal->getId());
     $modal->attachAttributeChangeObserver($this);
     if ($this->modal !== null) {

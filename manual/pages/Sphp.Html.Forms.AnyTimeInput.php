@@ -1,10 +1,10 @@
 <?php
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$anyTimeInput = $api->getClassLink(Input\AnyTimeInput::class);
+$anyTimeInput = $api->getClassLink(AnyTimeInput::class);
 echo $parsedown->text(<<<MD
 ###The $anyTimeInput component
 	

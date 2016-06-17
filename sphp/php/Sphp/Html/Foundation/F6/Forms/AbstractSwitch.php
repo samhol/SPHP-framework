@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
-use Sphp\Html\Forms\Input\Choicebox as Choicebox;
+use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
 

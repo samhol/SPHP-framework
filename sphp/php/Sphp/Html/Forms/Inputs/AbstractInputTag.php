@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Input;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\EmptyTag as EmptyTag;
 use Sphp\Html\Forms\InputInterface as InputInterface;

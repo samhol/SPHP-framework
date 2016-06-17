@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Input;
+namespace Sphp\Html\Forms\Inputs;
 
 /**
  * Class models &lt;input type="password"&gt; tag

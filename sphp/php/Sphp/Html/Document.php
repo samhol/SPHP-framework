@@ -71,12 +71,12 @@ class Document {
       "button:reset" => Forms\Buttons\ResetButton::class,
       "button:submit" => Forms\Buttons\SubmitButton::class,
       "col" => Tables\Col::class,
-      "input" => Forms\Input\Input::class,
-      "input:hidden" => Forms\Input\HiddenInput::class,
-      "input:text" => Forms\Input\TextInput::class,
-      "input:password" => Forms\Input\PasswordInput::class,
-      "input:radio" => Forms\Input\Radiobox::class,
-      "input:checkbox" => Forms\Input\Checkbox::class,
+      "input" => Forms\Inputs\Input::class,
+      "input:hidden" => Forms\Inputs\HiddenInput::class,
+      "input:text" => Forms\Inputs\TextInput::class,
+      "input:password" => Forms\Inputs\PasswordInput::class,
+      "input:radio" => Forms\Inputs\Radiobox::class,
+      "input:checkbox" => Forms\Inputs\Checkbox::class,
       "canvas" => ContainerTag::class,
       "caption" => Tables\Caption::class,
       "cite" => ContainerTag::class,
@@ -247,7 +247,7 @@ class Document {
     return self::$htmlVersion == self::XHTML5 || self::$htmlVersion == self::XHTML_1_0 || self::$htmlVersion == self::XHTML_1_1;
   }
 
-  /** 
+  /**
    * the html component
    *
    * @var Html[] 

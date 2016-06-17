@@ -122,7 +122,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    * 
    * @param  mixed|mixed[] $columns content components
    * @return mixed[] wrapped content component(s) in an array
-   */
+   
   protected function parseContentToColumns($columns) {
     $wrapToCol = function($c) {
       if ($c instanceof ColumnInterface) {

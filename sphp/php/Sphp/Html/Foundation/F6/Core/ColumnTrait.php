@@ -262,9 +262,9 @@ trait ColumnTrait {
    * Returns the amount of the space the column uses from the grid row
    * 
    * @preconditions  parameter `$screen` is either one of the constants 
-   *                 {@link ColumnProps::SMALL_SCREENS}, 
-   *                 {@link ColumnProps::MEDIUM_SCREENS},
-   *                 {@link ColumnProps::LARGE_SCREENS} or one of the strings 
+   *                 {@link Screen::SMALL}, 
+   *                 {@link Screen::MEDIUM},
+   *                 {@link Screen::LARGE} or one of the strings 
    *                 `"small"`, `"medium"`, `"large"`
    * @param  int|string $screen
    * @return int

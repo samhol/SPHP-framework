@@ -4,7 +4,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Foundation\GridForm as GridForm;
 use Sphp\Html\Forms\Select\MenuFactory as MenuFactory;
-use Sphp\Html\Forms\Input\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 use Sphp\Html\Forms\Foundation\InputColumn as InputColumn;
 use Sphp\Html\Forms\Radioboxes as Radioboxes;
 use Sphp\Html\Forms\Checkboxes as Checkboxes;

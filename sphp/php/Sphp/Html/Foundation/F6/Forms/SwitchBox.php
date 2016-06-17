@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\Input\Checkbox as Checkbox;
+use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
 /**
  * Slider allows to drag a handle to select a specific value from a range
  *

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ContainerTag.php (UTF-8)
+ * AbstractContainerTag.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 

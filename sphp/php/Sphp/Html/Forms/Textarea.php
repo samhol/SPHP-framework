@@ -10,10 +10,6 @@ namespace Sphp\Html\Forms;
 /**
  * Class models an HTML &lt;textarea&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_textarea.asp w3schools HTML API link
@@ -43,7 +39,7 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
   public function __construct($name = "", $content = "", $rows = "", $cols = "") {
-    parent::__construct(self::TAG_NAME, [], $content);
+    parent::__construct(self::TAG_NAME, $content);
     $this->setName($name);
     if ($rows > 0) {
       $this->setRows($rows);
@@ -69,7 +65,8 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
    * @return self for PHP Method Chaining
    */
   public function setValue($value) {
-    return $this->replaceContent($value);
+    $this->replaceContent($value);
+    return $this;
   }
 
   /**
@@ -82,7 +79,8 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    */
   public function setRows($rows) {
-    return $this->setAttr("rows", $rows);
+    $this->attrs()->set("rows", $rows);
+    return $this;
   }
 
   /**
@@ -95,7 +93,8 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
   public function setCols($cols) {
-    return $this->setAttr("cols", $cols);
+    $this->attrs()->set("cols", $cols);
+    return $this;
   }
 
   /**
@@ -110,7 +109,8 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
    * @link   http://www.w3schools.com/tags/att_textarea_placeholder.asp placeholder attribute
    */
   public function setPlaceholder($placeholder) {
-    return $this->setAttr("placeholder", $placeholder);
+    $this->attrs()->set("placeholder", $placeholder);
+    return $this;
   }
 
 }

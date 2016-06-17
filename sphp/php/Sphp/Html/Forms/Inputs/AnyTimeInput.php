@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Input;
+namespace Sphp\Html\Forms\Inputs;
 
 /**
  * Class models a Any+Time datetime-input widget

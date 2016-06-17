@@ -10,6 +10,7 @@ namespace Sphp\Html\Forms\Menus;
 use Sphp\Html\Forms\NonEmptyInputTag as NonEmptyInputTag;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
+use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
  * Class Models an HTML &lt;select&gt; tag
@@ -82,7 +83,7 @@ class Select extends NonEmptyInputTag implements LabelableInterface {
   /**
    * Returns all {@link Option} components in the component
    * 
-   * @return Container containing {@link Option} components
+   * @return ContainerInterface containing {@link Option} components
    */
   public function getOptions() {
     $isOption = function($component) {
@@ -94,7 +95,7 @@ class Select extends NonEmptyInputTag implements LabelableInterface {
   /**
    * Returns all the selected {@link Option} components in the component
    * 
-   * @return Container containing selected {@link Option} components
+   * @return ContainerInterface containing selected {@link Option} components
    */
   public function getSelectedOptions() {
     $isSelected = function($component) {

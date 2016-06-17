@@ -7,15 +7,13 @@
 
 namespace Sphp\Html\Foundation\F6;
 
+use Sphp\Html\ContentInterface as ContentInterface;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Document as Document;
 use UnexpectedValueException;
 
 /**
  * Factory class for Foundation components
- *
- * {@link self} component provides navigation for entire site, or for sections 
- *  of an individual page.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-18

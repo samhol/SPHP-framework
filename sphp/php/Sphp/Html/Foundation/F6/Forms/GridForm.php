@@ -12,7 +12,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
 use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Html\Forms\Input\HiddenInput as HiddenInput;
+use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
 
 /**
  * Class implements a Foundation framework form

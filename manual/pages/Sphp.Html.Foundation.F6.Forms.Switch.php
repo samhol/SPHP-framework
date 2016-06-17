@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\SliderInterface as SliderInterface;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
 $abstractSwitch = $api->getClassLink(AbstractSwitch::class);

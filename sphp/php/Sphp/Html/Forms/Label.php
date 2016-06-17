@@ -36,11 +36,11 @@ class Label extends ContainerTag {
   /**
    * Constructs a new instance
    *
-   * @param  string $content the content of the component
-   * @param  string|null $for the id of the element the label is bound to
+   * @param mixed $content the content of the component
+   * @param string|null $for the id of the element the label is bound to
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
-  public function __construct($content = "", $for = null) {
+  public function __construct($content = null, $for = null) {
     parent::__construct(self::TAG_NAME, $content);
     if (Strings::notEmpty($for)) {
       $this->setFor($for);
@@ -54,7 +54,7 @@ class Label extends ContainerTag {
    *
    * - For attribute specifies which form element a label is bound to.
    *
-   * @param  string $for the value of the for attribute
+   * @param  string|InputInterface $for the value of the for attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
@@ -62,7 +62,8 @@ class Label extends ContainerTag {
     if ($for instanceof InputInterface) {
       $for = $for->getId();
     }
-    return parent::setAttr("for", $for);
+    $this->attrs()->set("for", $for);
+    return $this;
   }
 
   /**
@@ -93,7 +94,7 @@ class Label extends ContainerTag {
     if (is_array($formIds)) {
       $formIds = implode(" ", $formIds);
     }
-     $this->attrs()->set("form", $formIds);
+    $this->attrs()->set("form", $formIds);
     return $this;
   }
 

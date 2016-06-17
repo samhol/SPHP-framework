@@ -11,9 +11,9 @@ if (is_array($get) && count($get) > 0) {
   echo "<h6>Form submission <code>GET</code> data:</h6><pre>" . print_r($get, true) . "</pre>";
 }
 else if (is_array($post) && count($post) > 0) {
-  echo "<h6>Form submission <code>POST</code> data:</h6><pre>" . print_r($post, true) . "</pre>";
+  echo "<h6>Form submission data:</h6><pre>" . print_r($post, true) . "</pre>";
 } else {
-  echo "<h6>No submission data!</h6>";
+  echo "<h6>Form submission data:</h6><pre>No submission data found!</pre>";
 }
 /*echo "<pre>";
 print_r($_GET);

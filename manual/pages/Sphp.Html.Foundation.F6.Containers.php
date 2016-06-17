@@ -7,7 +7,7 @@ $accordion = $api->classLinker(Accordions\Pane::class);
 $accordions = $api->classLinker(Accordions\Accordion::class);
 $tabs = $api->classLinker(Tabs\Tabs::class);
 $dropdown = $api->classLinker(Dropdown::class);
-$modalReveal = $api->classLinker(Modals\ModalReveal::class);
+$modalReveal = $api->classLinker(Modals\Modal::class);
 $callout = $api->classLinker(Callout::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD

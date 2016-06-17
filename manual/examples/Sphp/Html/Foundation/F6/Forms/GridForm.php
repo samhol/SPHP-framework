@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Menus\MenuFactory as MenuFactory;
-use Sphp\Html\Forms\Input\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 use Sphp\Html\Forms\Radioboxes as Radioboxes;
 use Sphp\Html\Forms\Checkboxes as Checkboxes;
 use Sphp\Html\Forms\Textarea as Textarea;

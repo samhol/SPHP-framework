@@ -6,7 +6,7 @@ use Sphp\Util\LocalFile as Filebject;
 use Sphp\Util\Timer as Timer;
 
 $fileObj = new Filebject("license.md");
-$license = (new ModalReveal($fileObj->parseMarkdown(), "SPHP license"));
+$license = (new Modal($fileObj->parseMarkdown(), "SPHP license"));
 $license->addCssClass("license");
 ?>
 Copyright &copy; 2007-<?php echo date("Y"); ?> Sami Holck. All rights reserved.
