@@ -4,12 +4,13 @@ namespace Sphp\Html\Foundation\F6;
 
 use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
 
+$ns = $api->getNamespaceLink(__NAMESPACE__, false);
 $grid = $api->classLinker(Grids\Grid::class);
 $grids_ns = $grid->namespaceLink();
 $blockGrid = $api->classLinker(Grids\BlockGrid::class);
 $toolsLink = $api->getNamespaceLink(__NAMESPACE__, false);
-
-$btn_ns = $api->getNamespaceLink(__NAMESPACE__, false);
+$btn = $api->classLinker(Buttons\ButtonInterface::class);
+$btn_ns = $btn->namespaceLink(__NAMESPACE__, false);
 $navi_ns = $api->getNamespaceLink(__NAMESPACE__, false);
 $forms_ns = $api->getNamespaceLink(__NAMESPACE__, false);
 $orbitIntro = new Orbit();
@@ -21,13 +22,15 @@ Foundation $blockGrid to evenly split contents of a list within the grid...
 MD
 ));
 $orbitIntro->append($parsedown->text(<<<MD
-#####Grid components:
+<div class="callout success" markdown="1">
+##Grid components:
 The $grids_ns namespace includes for example Foundation based multi-device nestable 12-column $grid implementation and a
 Foundation $blockGrid to evenly split contents of a list within the grid...
+</div>
 MD
 ));
 $orbitIntro->append($parsedown->text(<<<MD
-#####Typography:
+##Typography:
 
 Framework's typography is based on a golden ratio modular scale that creates relationships between the elements.
 Typography is easily updated using Scss.
@@ -48,24 +51,16 @@ sidebars and many other menu structures.
 MD
 ));
 $orbitIntro->append($parsedown->text(<<<MD
-<div class="callout">
 
-#####Forms:
+
+##Forms:
 
 The $forms_ns namespace includes Foundation based forms layouts and client-side form components.
 Visual presentation of Foundation based Forms are built with the Grid. These forms 
 extend basic SPHP forms.
-</div>
+
 MD
 ));
-
-echo $parsedown->text(<<<MD
-#The $toolsLink namespace
-
-Foundation framework is included in SPHP and therefore also all of Foundation 
-clientside properties are available. Here is a small collection of features available.
-MD
-);
 
 $orbitIntro->printHtml();
 
