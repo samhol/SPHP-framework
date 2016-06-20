@@ -31,10 +31,7 @@ class AccordionMenu extends Menu {
   }
 
   /**
-   * Appends content to the component
-   *
-   * @param  SideNavItemInterface $content added content
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function append($content) {
     if ($content instanceof SubMenu) {
