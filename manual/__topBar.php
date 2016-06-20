@@ -4,8 +4,6 @@ namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
 
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
-use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
-use Sphp\Html\Foundation\F6\Containers\Dropdown as Dropdown;
 
 include_once 'links.php';
 try {

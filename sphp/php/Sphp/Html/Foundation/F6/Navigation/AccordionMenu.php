@@ -44,16 +44,4 @@ class AccordionMenu extends Menu {
     return $this;
   }
 
-  /**
-   * Appends a {@link Heading} row to the component
-   *
-   * @param  string $content the content of the heading row
-   * @return self for PHP Method Chaining
-   * @see    Heading
-   */
-  public function appendHeading($content) {
-    $this->content()->append(new Heading($content));
-    return $this;
-  }
-
 }

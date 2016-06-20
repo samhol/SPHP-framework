@@ -39,13 +39,13 @@ class BreadCrumb extends MenuLink {
    * @param  string $target the value of the target attribute
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   
-  public function __construct($href = null, $content = null, $target = null) {
+
+    public function __construct($href = null, $content = null, $target = null) {
     parent::__construct($href, $content, $target);
     //$this->lockAttr("role", "menuitem");
-  }
+    }
 
-  /**
+    /**
    * Sets or unsets the hyperlink component as active
    *
    * @param  boolean $active true foor activation and false for deactivation

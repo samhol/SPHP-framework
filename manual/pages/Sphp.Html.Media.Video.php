@@ -2,8 +2,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
-
 $audio = $api->getClassLink(Audio::class);
 $video = $api->getClassLink(Video::class);
 $source = $api->getClassLink(Source::class);

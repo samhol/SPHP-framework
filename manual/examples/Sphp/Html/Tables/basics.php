@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Tables;
-use Sphp\Html\Foundation\F6\Core\Row as Row;
+use Sphp\Html\Foundation\F6\Grids\Row as Row;
 
 $table = (new Table("Table 1:"));
 $body = $table->tbody();

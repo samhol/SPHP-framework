@@ -7,7 +7,7 @@ $abstractAttr = $api->classLinker(AbstractAttribute::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 $setMethod = $abstractAttr->method("set");
 $clearMethod = $abstractAttr->method("clear");
-$requireMethod = $abstractAttr->method("setRequired");
+$requireMethod = $abstractAttr->method("demand");
 $lockMethod = $abstractAttr->method("lock");
 
 echo $parsedown->text(<<<MD

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\F6\Core\Row as Row;
+use Sphp\Html\Foundation\F6\Grids\Row as Row;
 
 $a_i = range('a', 'i');
 $ul = new Ul($a_i);

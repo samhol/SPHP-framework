@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 
 $size = new Size(384, 216);
 

@@ -5,14 +5,15 @@ namespace Sphp\Html\Media;
 $sizeableInterface = $api->getClassLink(SizeableInterface::class);
 $sizeableTrait = $api->getClassLink(SizeableTrait::class);
 $size = $api->getClassLink(Size::class);
-$video = $api->getClassLink(Video::class);
-$iframe = $api->getClassLink(Iframe::class);
-$img = $api->getClassLink(Img::class);
-$embed = $api->getClassLink(Embed::class);
-$audio = $api->getClassLink(Figure::class);
-$abstractVideoPlayer = $api->getClassLink(AbstractVideoPlayer::class);
-$youtubePlayer = $api->getClassLink(YoutubePlayer::class);
-$vimeoPlayer = $api->getClassLink(VimeoPlayer::class);
+//$video = $api->getClassLink(Video::class);
+//$iframe = $api->getClassLink(Iframe::class);
+//$img = $api->getClassLink(Img::class);
+//$embed = $api->getClassLink(Embed::class);
+//$audio = $api->getClassLink(Figure::class);
+//$abstractVideoPlayer = $api->getClassLink(AbstractVideoPlayer::class);
+//$youtubePlayer = $api->getClassLink(YoutubePlayer::class);
+
+//$vimeoPlayer = $api->getClassLink(VimeoPlayer::class);
 $componentInterface = $api->getClassLink(\Sphp\Html\ComponentInterface::class);
 
 $lazyLoader = $api->getClassLink(LazyLoaderInterface::class);

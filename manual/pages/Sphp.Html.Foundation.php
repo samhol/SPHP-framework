@@ -2,10 +2,8 @@
 
 namespace Sphp\Html\Foundation;
 
-use Sphp\Html\Tools\PHPExampleViewer as CodeExampleViewer;
-
-$grid = $api->classLinker(F6\Core\Grid::class);
-$blockGrid = $api->classLinker(F6\Core\BlockGrid::class);
+$grid = $api->classLinker(F6\Grids\Grid::class);
+$blockGrid = $api->classLinker(F6\Grids\BlockGrid::class);
 $toolsLink = $api->getNamespaceLink(__NAMESPACE__, false);
 echo $parsedown->text(<<<MD
 #The $toolsLink namespace
@@ -20,7 +18,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Core;
+        namespace Sphp\Html\Foundation\F6\Grids;
 
         $core = $api->getNamespaceLink(__NAMESPACE__, false);
         echo $parsedown->text(<<<MD

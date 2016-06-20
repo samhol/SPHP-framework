@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
 $namespace = $api->getNamespaceLink(__NAMESPACE__);
 $topBar = $api->getClassLink(TopBar::class);
@@ -17,4 +18,4 @@ Below is an example of $topBar object similar to the one seen on top of each pag
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/TopBar.php', false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/TopBar.php');

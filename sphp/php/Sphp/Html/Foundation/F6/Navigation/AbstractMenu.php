@@ -64,6 +64,20 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
   }
 
   /**
+   * Appends a new submenu to the menu structure
+   *
+   * @param  SubMenu $subMenu
+   * @return SubMenu appended submenu
+   */
+  public function appendSubMenu(SubMenu $subMenu = null) {
+    if ($subMenu === null) {
+      $subMenu = new SubMenu();
+    }
+    $this->append($subMenu);
+    return $subMenu;
+  }
+
+  /**
    * Appends a {@link MenuLabel} text component to the menu
    *
    * @param  mixed|MenuLabel $text 
