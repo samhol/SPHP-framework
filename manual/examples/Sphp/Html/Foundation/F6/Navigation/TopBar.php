@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-$navi = (new tOPbAR\TopBar("TopBar"));
-$navi->left()->appendLink("http://www.ask.com/", "Google", "_blank");
+$navi = (new TopBar\TopBar("TopBar"));
+$navi->left()->appendLink("http://www.ask.com/", "ask.com", "_blank");
 
 $js = (new SubMenu("JavaScript"))
         ->appendText("jQuery related")
