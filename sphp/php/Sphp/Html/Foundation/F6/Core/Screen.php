@@ -94,6 +94,10 @@ class Screen {
    * All Screen types and sizes
    */
   const ALL_TYPES = 0b111111111;
+  
+  public static function getScreenSizeNames() {
+    return ["small", "medium", "large", "xlarge", "xxlarge"];
+  }
 
   /**
    * Returns the parsed screen types as screen type => screen name pairs

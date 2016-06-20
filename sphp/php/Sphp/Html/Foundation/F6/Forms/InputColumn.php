@@ -9,8 +9,8 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
-use Sphp\Html\Foundation\F6\Core\ColumnInterface as ColumnInterface;
-use Sphp\Html\Foundation\F6\Core\ColumnTrait as ColumnTrait;
+use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
@@ -51,16 +51,19 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
    * @param  int $large column width for large screens (0-12)
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct(InputInterface $input, $small = 12, $medium = self::INHERITED, $large = self::INHERITED) {
+  public function __construct(InputInterface $input, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
     parent::__construct("div");
-    $this->setWidth($small, Screen::SMALL);
     $this->cssClasses()->lock("column");
-    if ($medium !== self::INHERITED) {
-      $this->setWidth($medium, Screen::MEDIUM);
-    }
-    if ($large !== self::INHERITED) {
-      $this->setWidth($large, Screen::LARGE);
-    }
+     $widthSetter = function ($width, $sreenSize) {
+      if ($width > 0 && $width < 13) {
+        $this->cssClasses()->add("$sreenSize-$width");
+      }
+    };
+    $widthSetter($small, "small");
+    $widthSetter($medium, "medium");
+    $widthSetter($large, "large");
+    $widthSetter($xlarge, "xlarge");
+    $widthSetter($xxlarge, "xxlarge");
     $this->input = $input;
   }
 

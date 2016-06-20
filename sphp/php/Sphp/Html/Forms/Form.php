@@ -32,11 +32,6 @@ class Form extends ContainerTag implements TraversableFormInterface {
   use TraversableFormTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "form";
-
-  /**
    * Constructs a new instance
    *
    * **Important!**

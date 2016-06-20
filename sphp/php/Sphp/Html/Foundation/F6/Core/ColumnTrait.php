@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Core;
 
 use Sphp\Core\Types\BitMask as BitMask;
+use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 
 /**
  * Trait implements functionality for {@link ColumnInterface} 
@@ -24,7 +25,12 @@ use Sphp\Core\Types\BitMask as BitMask;
  * @filesource
  */
 trait ColumnTrait {
-  
+
+  /**
+   * Returns the class attribute object
+   * 
+   * @return MultiValueAttribute the class attribute object
+   */
   abstract public function cssClasses();
 
   /**
@@ -32,7 +38,7 @@ trait ColumnTrait {
    * 
    * @param  int $width the column width value for small screen sizes
    * @param  int $offset optional column offset (0-11)
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setSmall($width, $offset = 0) {
     return $this->setWidth($width, Screen::SMALL)
@@ -44,7 +50,7 @@ trait ColumnTrait {
    * 
    * @param  int $width the column width value for medium screen sizes
    * @param  int $offset optional column offset (0-11)
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setMedium($width, $offset = 0) {
     return $this->setWidth($width, Screen::MEDIUM)
@@ -56,7 +62,7 @@ trait ColumnTrait {
    * 
    * @param  int $width the column width value for large screen sizes (0-12)
    * @param  int $offset optional column offset (0-11)
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setLarge($width, $offset = 0) {
     return $this->setWidth($width, Screen::LARGE)
@@ -69,7 +75,7 @@ trait ColumnTrait {
    * @param  int $small column width for small screens (0-12)
    * @param  int $medium column width for medium screens (0-12)
    * @param  int $large column width for large screens (0-12)
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setWidths($small, $medium, $large) {
     $this->setWidth($small, Screen::SMALL)
@@ -94,7 +100,7 @@ trait ColumnTrait {
    *
    * @param  int $width the width of the column
    * @param  int|string|BitMask $targetScreen the target sreen typenames
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setWidth($width, $targetScreen = Screen::SMALL) {
     if ($width > ColumnInterface::FULL_WIDTH) {
@@ -106,7 +112,7 @@ trait ColumnTrait {
     $this->setWidthInherited($targetScreen);
     foreach (Screen::parseScreens($targetScreen) as $screenName) {
       if ($width != ColumnInterface::INHERITED) {
-        $this->addCssClass("$screenName-$width");
+        $this->cssClasses()->add("$screenName-$width");
       }
     }
     return $this;
@@ -151,7 +157,7 @@ trait ColumnTrait {
    * Sets the column width associated with the given screen size to be inherited from smaller screens
    *
    * @param  int|string|BitMask $targetScreens the targeted screensizes
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setWidthInherited($targetScreens) {
     $classes = [];
@@ -171,7 +177,7 @@ trait ColumnTrait {
    *
    * @param  int $offset the column offset (0-11)
    * @param  int $targetScreens the targeted screensizes as a bitmask
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setGridOffset($offset, $targetScreens = Screen::SMALL) {
     if ($offset > ColumnInterface::FULL_WIDTH - 1) {
@@ -186,7 +192,7 @@ trait ColumnTrait {
       foreach (Screen::parseScreens($targetScreens) as $screenName) {
         $classes[] = "$screenName-offset-$offset";
       }
-      $this->addCssClass($classes);
+      $this->cssClasses()->add($classes);
     }
     return $this;
   }
@@ -197,7 +203,7 @@ trait ColumnTrait {
    * @param  int $small column offset for small screens (0-11)
    * @param  int $medium column offset for medium screens (0-11)
    * @param  int $large column offset for large screens (0-11)
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function setGridOffsets($small, $medium, $large) {
     return $this->setGridOffset($small, Screen::SMALL)
@@ -245,7 +251,7 @@ trait ColumnTrait {
    * Unsets the grid offset of the column
    *
    * @param  int $targetScreens the targeted screensizes as a bitmask
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function inheritGridOffset($targetScreens = Screen::SMALL) {
     $classes = [];
@@ -277,7 +283,7 @@ trait ColumnTrait {
    * Centers the column to the {@link Row}
    *
    * @param  int $targetScreens the targeted screensizes as a bitmask
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function centerize($targetScreens = Screen::SMALL) {
     $del = [];
@@ -285,12 +291,12 @@ trait ColumnTrait {
     foreach ($screens as $screen) {
       $del[] = "$screen-uncentered";
     }
-    $this->removeCssClass($del);
+    $this->cssClasses()->remove($del);
     $add = [];
     foreach ($screens as $screen) {
       $add[] = "$screen-centered";
     }
-    $this->addCssClass($add);
+    $this->cssClasses()->add($add);
     return $this;
   }
 
@@ -298,7 +304,7 @@ trait ColumnTrait {
    * Resets the centering of the column
    *
    * @param  int $targetScreens the targeted screensizes as a bitmask
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function uncenterize($targetScreens = Screen::SMALL) {
     $del = [];
@@ -306,12 +312,12 @@ trait ColumnTrait {
     foreach ($screens as $screen) {
       $del[] = "$screen-centered";
     }
-    $this->removeCssClass($del);
+    $this->cssClasses()->remove($del);
     $add = [];
     foreach ($screens as $screen) {
       $add[] = "$screen-uncentered";
     }
-    $this->addCssClass($add);
+    $this->cssClasses()->add($add);
     return $this;
   }
 
@@ -319,7 +325,7 @@ trait ColumnTrait {
    * Removes the centering/uncentering settings
    *
    * @param  int|BitMask $screens the targeted screensizes as a bitmask
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function unsetCenterizing($screens) {
     $classes = [];
@@ -327,14 +333,14 @@ trait ColumnTrait {
       $classes[] = "$screen-uncentered";
       $classes[] = "$screen-centered";
     }
-    $this->removeCssClass($classes);
+    $this->cssClasses()->remove($classes);
     return $this;
   }
 
   /**
    * Resets (clears) all of the Grid column settings of the column
    *
-   * @return self for PHP Method Chaining
+   * @return ColumnInterface for PHP Method Chaining
    */
   public function resetGridSettings() {
     return $this->setWidthInherited(ColumnInterface::ALL_SCREENS)

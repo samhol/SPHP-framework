@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Core;
+namespace Sphp\Html\Foundation\F6\Grids;
 
 use Sphp\Html\Container as Container;
 

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Core\Grid as Grid;
+use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
 
 $google = new HyperlinkButton("http://www.google.com/", "google.com", "test");
 $bing = new HyperlinkButton("http://www.bing.com", "Bing", "test");

@@ -21,6 +21,11 @@ use Sphp\Html\ContentInterface as ContentInterface;
 interface FormInterface extends ContentInterface {
 
   /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "form";
+
+  /**
    * Sets the value of the method attribute
    *
    * The method attribute specifies how to send form-data (the form-data is

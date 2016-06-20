@@ -74,6 +74,12 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
     $this->cssClasses()->lock("row");
   }
 
+  /**
+   * Appends a new Column to the container
+   * 
+   * @param  mixed $column column or column content
+   * @return self for PHP Method Chaining
+   */
   public function append($column) {
     $this->content()->append($column);
     return $this;

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Foundation\F6\Core\Grid as Grid;
+use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
 use Sphp\Html\media\YoutubePlayer as YoutubePlayer;
 
 $flex[] = (new FlexVideo("CdMs7eqMvNg", FlexVideo::YOUTUBE))

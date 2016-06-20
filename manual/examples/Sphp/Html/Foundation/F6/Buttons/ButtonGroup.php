@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 
 $buttons[] = new HyperlinkButton("http://www.google.com/", "google", "engine");

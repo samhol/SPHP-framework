@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Containers;
 
 use Sphp\Html\Media\Img as Image;
-use Sphp\Html\Foundation\F6\Core\Grid as Grid;
+use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
 use Sphp\Html\Span as Span;
 use Sphp\Html\Forms\Buttons\Button as Button;
 

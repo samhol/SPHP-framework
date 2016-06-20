@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Core\Grid as Grid;
+use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
 
 $split1 = (new SplitButton("default action", "Secondary action"))
 		->setSize("small")

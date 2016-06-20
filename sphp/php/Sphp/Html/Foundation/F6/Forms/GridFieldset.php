@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Fieldset as Fieldset;
-use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
+use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 use Sphp\Html\Forms\Legend as Legend;
 
 /**

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Core\PathFinder as PathFinder;
-
+use Sphp\Html\Document as Document;
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 //require_once __DIR__ . '/vendor/autoload.php';
@@ -12,6 +12,8 @@ include_once("manual/links.php");
 include_once(\Sphp\PDO_SESSIONING);
 ob_implicit_flush(true);
 include_once("manual/htmlHead.php");
+
+Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
 ?>
 <body class="manual" id="manual-body">
   <div class="sphp-logo">

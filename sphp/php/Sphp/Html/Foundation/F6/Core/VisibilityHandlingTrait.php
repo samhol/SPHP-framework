@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-
 /**
  * Trait implements {@link Visibility} interface functionality
  * 

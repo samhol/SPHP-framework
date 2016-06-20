@@ -28,7 +28,7 @@ class NonEmptyInputTag extends ContainerTag implements InputInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string $tagName the name of the tag component
+   * @param  string $tagName the tag name of the component
    * @param  mixed $content the content of the component
    */
   public function __construct($tagName, $content = null) {

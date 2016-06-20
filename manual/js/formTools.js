@@ -68,9 +68,20 @@
       });
     });
   };
+  $.fn.insertClassToTitle = function () {
+    return this.each(function () {
+      console.log("insertClassToTitle:");
+      var $this = $(this),
+              $classes;
+     $classes = $this.attr("class");
+      $this.attr("title", $classes);
+    });
+  };
 }(jQuery));
 
 $(document).ready(function () {
   'use strict';
   $(".manual.accordion.form-example form, .manual .mainContent>form").insertSubmisionFunctionality();
+  $(" .grid-example .columns").insertClassToTitle();
+  
 });

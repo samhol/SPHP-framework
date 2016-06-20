@@ -336,6 +336,17 @@ left: rem-calc(35)
   > div.wrapper {
     @include default-margin();
   }
+  .foundation-intro {
+    margin: rem-calc(5);
+    .orbit-slide {
+      h2 {
+        margin: rem-calc(5);
+      }
+      p {
+        margin: rem-calc(5);
+      }
+    }
+  }
 }
 
 body {

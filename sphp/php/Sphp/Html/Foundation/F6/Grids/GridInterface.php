@@ -1,16 +1,20 @@
 <?php
 
 /**
- * GridTrait.php (UTF-8)
+ * GridInterface.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Core;
+namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Container as Container;
+use Sphp\Html\ContainerInterface as ContainerInterface;
+use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\TraversableInterface as TraversableInterface;
 
 /**
- * Trait implements {@link GridInterface}
+ * Interface defines a Foundation Grid
+ * 
+ * A Grid component is a container for {@link RowInterface} components.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24
@@ -19,34 +23,28 @@ use Sphp\Html\Container as Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait GridTrait {
+interface GridInterface extends ContentInterface, TraversableInterface {
 
   /**
-   * Appends a new {@link Row} to the grid
+   * Appends a new {@link RowInterface} to the grid
    *
    * **Important!**
    *
-   * * `$row` not extending {@link Row} is wrapped inside a {@link Row} component 
+   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
    *   using {@link self::toRow()} method.
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
    * @return self for PHP Method Chaining
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function append($row) {
-    if (!($row instanceof Row)) {
-      $row = new Row($row);
-    }
-    parent::append($row);
-    return $this;
-  }
+  public function append($row);
 
   /**
-   * Prepends a new {@link Row} to the grid
+   * Prepends a new {@link RowInterface} to the grid
    *
    * **Important!**
    *
-   * * `$row` not extending {@link Row} is wrapped inside a {@link Row} component 
+   * * `$row` not extending {@link RowInterface} is wrapped inside a {@link RowInterface} component 
    *   using {@link self::toRow()} method.
    * * The numeric keys of the content will be renumbered starting from zero 
    *    and the index of the prepended row is 'int(0)' 
@@ -55,21 +53,12 @@ trait GridTrait {
    * @return self for PHP Method Chaining
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function prepend($row) {
-    if (!($row instanceof Row)) {
-      $row = new Row($row);
-    }
-    parent::prepend($row);
-    return $this;
-  }
+  public function prepend($row);
 
   /**
    * Returns all {@link ColumnInterface} components from the grid
    * 
-   * @return Container containing all the {@link ColumnInterface} components
+   * @return ContainerInterface containing all the {@link ColumnInterface} components
    */
-  public function getColumns() {
-    return $this->getComponentsByObjectType(ColumnInterface::class);
-  }
-
+  public function getColumns();
 }

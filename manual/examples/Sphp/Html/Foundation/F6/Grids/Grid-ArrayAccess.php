@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Core;
+namespace Sphp\Html\Foundation\F6\Grids;
 
 $grid = new Grid();
 
@@ -10,7 +10,7 @@ $grid[] = $col;
 $grid[] = ["small-6", "small-6"];
 $grid[] = ["small-4", "small-4", "small-4"];
 $grid[] = ["small-5 medium-4 large-3", $col, "small-5 medium-4 large-3"];
-$grid[4] = range(1, 12);
+$grid[] = range(1, 12);
 
 $grid->printHtml();
 ?>

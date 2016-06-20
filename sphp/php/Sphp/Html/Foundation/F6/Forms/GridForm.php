@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Foundation\F6\Core\GridInterface as GridInterface;
+use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
 use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
@@ -47,7 +47,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = "", $method = "post", $content = null) {
-    parent::__construct("form");
+    parent::__construct(self::TAG_NAME);
     if ($action != "") {
       $this->setAction($action);
     }

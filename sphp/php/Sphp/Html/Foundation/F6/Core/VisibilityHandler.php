@@ -44,8 +44,9 @@ class VisibilityHandler implements \Sphp\Html\ContentInterface {
   }
 
   /**
+   * Returns the class attribute object
    * 
-   * @return MultiValueAttribute
+   * @return MultiValueAttribute the class attribute object
    */
   public function cssClasses() {
     return $this->htmlComponent->attrs()->classes();

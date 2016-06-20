@@ -7,7 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Foundation\F6\Core\GridTrait as GridTrait;
+use Sphp\Html\Foundation\F6\Grids\GridTrait as GridTrait;
+use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
  * Trait implements {@link GridInterface} to be used with {@link FormInterface} etc.
@@ -26,7 +27,7 @@ trait FormGridTrait {
   /**
    * Returns all {@link InputColumn} components from the grid
    * 
-   * @return Container containing all the {@link InputColumn} components
+   * @return ContainerInterface containing all the {@link InputColumn} components
    */
   public function getInputColumns() {
     return $this->getComponentsByObjectType(InputColumn::class);
