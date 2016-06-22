@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
+
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
 $namespace = $api->getNamespaceLink(__NAMESPACE__);

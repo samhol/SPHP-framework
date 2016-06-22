@@ -5,12 +5,14 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 
+$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = $api->getClassLink(HyperlinkInterface::class);
-$namespace = $api->getNamespaceLink(__NAMESPACE__);
+//$namespace = $api->getNamespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #FOUNDATION 6 NAVIGATION COMPONENTS
-
-$namespace namespace contains object oriented PHP implementations of Foundation navigation components.
+$ns
+        
+This namespace contains object oriented PHP implementations of Foundation navigation components.
 
 MD
 );
