@@ -2,14 +2,13 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Net\URL as URL;
 
-$currentUrl = Configuration::httpHost();
-$pages = [];
-for ($i = 1; $i <= 50; $i++) {
+$currentUrl = URL::getCurrent()->getHtml();
+$pages[1] = $currentUrl;
+for ($i = 2; $i <= 50; $i++) {
   $pages[] = "$currentUrl#num$i";
-}
-
+}$pages[8] = $currentUrl;
 $pagination = (new Pagination($pages));
 $pagination->printHtml();
 

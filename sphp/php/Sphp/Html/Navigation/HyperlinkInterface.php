@@ -88,4 +88,11 @@ interface HyperlinkInterface {
    * @return boolean true if the href arrtibute points to the current page
    */
   public function urlEquals($url);
+
+  /**
+   * Checks if the ÚRL in the href atrribute matches with the current page ÚRL
+   *
+   * @return boolean true if the href arrtibute points to the current page
+   */
+  public function isCurrentUrl();
 }

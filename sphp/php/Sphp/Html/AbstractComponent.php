@@ -8,12 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Class AbstractComponent provides a simple implementation of the {@link Tag}.
- *
- * AbstractComponent makes it possible to create new HTML components by composition
- * of other existing HTML components.
- *
- * {@inheritdoc}
+ * Abstract  Class provides a simple implementation of the component containing other components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-26

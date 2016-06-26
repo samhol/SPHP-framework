@@ -13,13 +13,13 @@ use Countable;
 use ArrayIterator;
 use Sphp\Net\URL as URL;
 use Sphp\Html\Container as Container;
+use Sphp\Html\Lists\Li as Li;
 
 /**
  * Class Models Foundation Pagination component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-20
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/pagination.html Foundation Pagination
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -27,7 +27,10 @@ use Sphp\Html\Container as Container;
  */
 class Pagination extends AbstractComponent implements IteratorAggregate, Countable {
 
-  //private $current = -1;
+  /**
+   *
+   * @var int 
+   */
   private $counter = 0;
 
   /**
@@ -35,8 +38,23 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @var Page[] 
    */
   private $pages = [];
+
+  /**
+   *
+   * @var int
+   */
   private $range = 20;
+
+  /**
+   *
+   * @var int 
+   */
   private $current = 1;
+
+  /**
+   *
+   * @var string 
+   */
   private $target = "_self";
 
   /**
@@ -62,8 +80,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   /**
    * 
-   * @param  string $target
+   * @param  string $target the value of the target attribute
    * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget($target) {
     $this->target = $target;
@@ -75,14 +94,14 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   /**
    * 
-   * @param  int $current
+   * @param  int $index
    * @return self for PHP Method Chaining
    */
-  public function setCurrent($current) {
-    if (array_key_exists($current, $this->pages)) {
-      $this->current = $current;
-      foreach ($this->pages as $index => $page) {
-        if ($index !== $current) {
+  public function setCurrent($index) {
+    if (array_key_exists($index, $this->pages)) {
+      $this->current = $index;
+      foreach ($this->pages as $id => $page) {
+        if ($id !== $index) {
           $page->setCurrent(false);
         } else {
           $page->setCurrent(true);
@@ -115,12 +134,11 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     } else {
       $this->counter += 1;
       $page = new Page($this->counter, $urls, $this->target);
-      if ($this->counter === $this->current) {
+      if ($page->isCurrentUrl()) {
         $page->setCurrent(true);
+        $this->current = $this->counter;
       }
       $this->pages[$this->counter] = $page;
-
-      //$this->urls[$this->counter] = $urls;
     }
     return $this;
   }
@@ -137,6 +155,17 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
               ->addCssClass("pagination-previous");
     }
     return $backButton;
+  }
+
+  /**
+   * 
+   * @return Li 
+   */
+  public function getEllipsis() {
+    $ellipsis = new Li();
+    $ellipsis->cssClasses()->lock("ellipsis");
+    $ellipsis->attrs()->lock("aria-hidden", "true");
+    return $ellipsis;
   }
 
   /**
@@ -181,28 +210,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @return Page|null
    */
-  public function prev() {
-    return $this->get($this->current - 1);
-  }
-
-  /**
-   * 
-   * @return Page|null
-   */
   public function current() {
     return $this->get($this->current);
-  }
-
-  /**
-   * 
-   * @return Page|null
-   */
-  public function next() {
-    return $this->get($this->current + 1);
-  }
-
-  public function getEllipsis() {
-    return '<li class="ellipsis" aria-hidden="true"></li>';
   }
 
   /**

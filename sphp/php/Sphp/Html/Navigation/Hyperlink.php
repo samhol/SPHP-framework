@@ -13,17 +13,13 @@ use Sphp\Core\Types\Strings as Strings;
 /**
  * Class models an HTML &lt;a&gt; tag
  *
- * If this component has an href attribute, then it represents a hyperlink
- * (a hypertext anchor). If the component has no href attribute, then the
+ * If this component has an `href` attribute, then it represents a hyperlink
+ * (a hypertext anchor). If the component has no `href` attribute, then the
  * component represents a placeholder for where a link might otherwise have
  * been placed, if it had been relevant.
  *
- * The target, rel, media, hreflang, and type attributes must be omitted if
- * the href attribute is not present.
- *
- *
- * {@inheritdoc}
- *
+ * The `target`, `rel`, `media`, `hreflang`, and `type` attributes must be omitted if
+ * the `href` attribute is not present.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-14
@@ -34,6 +30,11 @@ use Sphp\Core\Types\Strings as Strings;
 class Hyperlink extends ContainerTag implements HyperlinkInterface {
 
   use HyperlinkTrait;
+
+  /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "a";
 
   /**
    * Constructs a new instance
@@ -50,7 +51,7 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct("a", $content);
+    parent::__construct(self::TAG_NAME, $content);
     if (Strings::notEmpty($href)) {
       $this->setHref($href);
     }

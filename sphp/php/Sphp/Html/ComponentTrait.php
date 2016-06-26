@@ -265,45 +265,6 @@ trait ComponentTrait {
   }
 
   /**
-   * Sets or unsets the attribute as required
-   *
-   * **A required attribute cannot be removed:** setting a variable as not
-   *  required does not affect possible value locking. If attribute has also
-   *  locked value the locks must also be removed in order to make the variable
-   *  removable.
-   *
-   * @param    string $name the name of the attribute
-   * @param    boolean $required true if the attribute is required, otherwise false
-   * @return   ComponentInterface for PHP Method Chaining
-   * @triggers {@link AttributeChangeEvent} if the attribute gets changed
-   *
-    public function setAttrRequired($name, $required = true) {
-    $this->attrs()->demand($name, $required);
-    return $this;
-    }
-
-    /**
-   * Locks a given value to an attribute
-   *
-   * **IMPORTANT!:**
-   *
-   * 1. Locking is not possible for `style` attributes!
-   * 2. The `class` attribute can have multiple locked values (CSS classes).
-   * 3. Other attributes have the new value as locked value.
-   * 4. Attribute values follow the rules defined in {@link self::setAttr()}.
-   *
-   * @param    string $name the name of the attribute
-   * @param    mixed $value the new locked value of the attribute
-   * @return   ComponentInterface for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the locking is not possible
-   * @triggers {@link AttributeChangeEvent} if the attribute gets changed
-
-    public function lockAttr($name, $value) {
-    $this->attrs()->lock($name, $value);
-    return $this;
-    }
-
-    /**
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
@@ -316,16 +277,6 @@ trait ComponentTrait {
   }
 
   /**
-   * Removes all not required attributes
-   *
-   * @return self for PHP Method Chaining
-
-    public function clearAttrs() {
-    $this->attrs()->clear();
-    return $this;
-    }
-
-    /**
    * Returns the value of a given attribute name
    *
    * **IMPORTANT:**

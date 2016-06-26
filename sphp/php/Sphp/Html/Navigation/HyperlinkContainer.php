@@ -28,9 +28,8 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    *
    * **Notes:**
    * 
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
+   * * The `href` attribute specifies the URL of the page the link goes to.
+   * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
    * @param  string $tagName the tag name of the component
    * @param  string|URL $href the URL of the link
@@ -107,6 +106,13 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    */
   public function urlEquals($currentUrl = null) {
     return $this->getHyperlink()->urlEquals($currentUrl);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isCurrentUrl() {
+    return $this->getHyperlink()->isCurrentUrl();
   }
 
 }

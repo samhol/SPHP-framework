@@ -114,11 +114,20 @@ trait HyperlinkTrait {
    * Checks if the ÚRL in the href atrribute matches with the given ÚRL
    *
    * @param  URL|string $url the url to check against
-   * @return boolean true if the href arrtibute points to the current page
+   * @return boolean true if the href arrtibute points to the given page
    */
   public function urlEquals($url) {
     $test = ($url instanceof URL) ? $url : new URL($url);
     return $test->equals($this->getHref());
+  }
+
+  /**
+   * Checks if the ÚRL in the href atrribute matches with the current page ÚRL
+   *
+   * @return boolean true if the href arrtibute points to the current page
+   */
+  public function isCurrentUrl() {
+    return URL::getCurrent()->equals($this->getHref());
   }
 
 }

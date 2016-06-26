@@ -39,9 +39,8 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
    *
    * **Notes:**
    *
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
+   * * The `href` attribute specifies the URL of the page the link goes to.
+   * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
    *
    * @param  string|URL $href the URL of the hyperlink

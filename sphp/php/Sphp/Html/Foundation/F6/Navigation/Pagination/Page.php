@@ -11,12 +11,12 @@ use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
 use Sphp\Net\URL as URL;
 
 /**
- * Class Models a page button for Foundation Pagination component
+ * Class implements a page button for Foundation 6 Pagination component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/pagination.html Foundation Pagination
+ * @link    http://foundation.zurb.com/sites/docs/pagination.html Foundation Pagination
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -27,11 +27,10 @@ class Page extends HyperlinkListItem implements PageInterface {
    *
    * **Notes:**
    * 
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
+   * * The `href` attribute specifies the URL of the page the link goes to.
+   * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
-   * @param  int $index the index of the page
+   * @param  string|null $content the content of the page link
    * @param  string|URL $href the URL of the link
    * @param  string $target optional value of the target attribute
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
