@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Page.php (UTF-8)
+ * PageTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -20,32 +20,13 @@ use Sphp\Net\URL as URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Page extends HyperlinkListItem implements PageInterface {
-
-  /**
-   * Constructs a new instance
-   *
-   * **Notes:**
-   * 
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
-   *
-   * @param  int $index the index of the page
-   * @param  string|URL $href the URL of the link
-   * @param  string $target optional value of the target attribute
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-   */
-  public function __construct($content = null, $href = null, $target = "_self") {
-    parent::__construct($href, $content, $target);
-  }
+trait PageTrait {
 
   /**
    * Sets the hyperlink component as active if the URL matches with the 
    *  current URL of the page
    * 
-   * @return self for PHP Method Chaining
+   * @return PageInterface for PHP Method Chaining
    */
   public function activate() {
     if ($this->urlEquals(URL::getCurrent())) {
@@ -60,7 +41,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    * Sets or unsets the hyperlink component as active
    * 
    * @param  boolean $active true foor activation and false for deactivation
-   * @return self for PHP Method Chaining
+   * @return PageInterface for PHP Method Chaining
    */
   public function setCurrent($active = true) {
     if ($active) {
@@ -78,9 +59,14 @@ class Page extends HyperlinkListItem implements PageInterface {
   public function isCurrent() {
     return $this->hasCssClass("current");
   }
-
+  
   /**
-   * {@inheritdoc}
+   * Disables the pagination component
+   * 
+   * A disabled pagination component is unusable and un-clickable. 
+   *
+   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @return PageInterface for PHP Method Chaining
    */
   public function disable($disabled = true) {
     if ($disabled) {
@@ -92,7 +78,9 @@ class Page extends HyperlinkListItem implements PageInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * Checks whether the pagination component is enabled or not
+   * 
+   * @param  boolean true if the component is enabled, otherwise false
    */
   public function isEnabled() {
     return !$this->cssClasses()->contains("disabled");

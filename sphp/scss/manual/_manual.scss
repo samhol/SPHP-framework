@@ -371,7 +371,7 @@ body {
 $pagination-current-bg-color: #999;
 $pagination-hover-bg-color: #ddd;
 .pagination {
-  li {
+  li:not(.ellipsis) {
     overflow: hidden;
     padding: 0;
     @include border-radius(4px);

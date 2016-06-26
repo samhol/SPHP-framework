@@ -35,22 +35,23 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @var Page[] 
    */
   private $pages = [];
-  private $show = 20;
+  private $range = 20;
   private $current = 1;
   private $target = "_self";
 
   /**
    * Constructs a new instance
-   * <ul class="pagination" role="navigation" aria-label="Pagination">
+   * 
    * @param mixed|mixed[] $urls the value of the target attribute
    */
-  public function __construct(array $urls = null, $show = 20, $target = "_self") {
+  public function __construct(array $urls = null, $range = 20, $target = "_self") {
     parent::__construct("ul");
     $this->cssClasses()
             ->lock("pagination");
     $this->attrs()
             ->lock("role", "menubar")
             ->lock("aria-label", "Pagination");
+    $this->range = $range;
     $this->target = $target;
     if ($urls !== null) {
       foreach ($urls as $page) {
@@ -59,6 +60,11 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     }
   }
 
+  /**
+   * 
+   * @param  string $target
+   * @return self for PHP Method Chaining
+   */
   public function setTarget($target) {
     $this->target = $target;
     foreach ($this->pages as $page) {
@@ -67,6 +73,11 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $this;
   }
 
+  /**
+   * 
+   * @param  int $current
+   * @return self for PHP Method Chaining
+   */
   public function setCurrent($current) {
     if (array_key_exists($current, $this->pages)) {
       $this->current = $current;
@@ -81,11 +92,21 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $this;
   }
 
-  public function setRange($current) {
-    $this->show = $current;
+  /**
+   * 
+   * @param  int $range
+   * @return self for PHP Method Chaining
+   */
+  public function setRange($range) {
+    $this->range = $range;
     return $this;
   }
 
+  /**
+   * 
+   * @param  string|string[] $urls
+   * @return self for PHP Method Chaining
+   */
   public function addUrls($urls) {
     if (is_array($urls)) {
       foreach ($urls as $url) {
@@ -109,16 +130,13 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return Page|null next page or null if there is no next page
    */
   private function prevPage() {
-    $nextPage = null;
+    $backButton = null;
     if ($this->current > 1) {
-      $prev = $this->current - 1;
-      $nextPage = new Page("", $this->pages[$prev]->getHref(), $this->target);
+      $backButton = new Page(null, $this->pages[$this->current - 1]->getHref(), $this->target);
+      $backButton
+              ->addCssClass("pagination-previous");
     }
-    else {
-      $nextPage = (new Page("", $this->pages[$this->current]->getHref(), $this->target))->available(false);
-    }
-    $nextPage->addCssClass("pagination-previous");
-    return $nextPage;
+    return $backButton;
   }
 
   /**
@@ -129,8 +147,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     $count = $this->count();
     $nextPage = null;
     if ($this->current < $count) {
-      $next = $this->current + 1;
-      $nextPage = new Page("&raquo;", $this->pages[$next]->getHref(), $this->target);
+      $nextPage = new Page(null, $this->pages[$this->current + 1]->getHref(), $this->target);
+      $nextPage
+              ->addCssClass("pagination-next");
     }
     return $nextPage;
   }
@@ -182,6 +201,10 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $this->get($this->current + 1);
   }
 
+  public function getEllipsis() {
+    return '<li class="ellipsis" aria-hidden="true"></li>';
+  }
+
   /**
    * Returns a new iterator to iterate through inserted {@link Page} components 
    *
@@ -205,11 +228,14 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * {@inheritdoc}
    */
   public function contentToString() {
-    $first = $this->current - $this->show / 2;
+    $first = $this->current - $this->range / 2;
+    $last = $this->current + $this->range / 2 - 1;
     if ($first < 1) {
       $first = 1;
+    } if ($last > $this->count()) {
+      $first = $this->count() - $this->range + 1;
     }
-    return $this->prevPage() . $this->getRange($first, $this->show) . $this->nextPage();
+    return $this->prevPage() . $this->getEllipsis() . $this->getRange($first, $this->range) . $this->nextPage();
   }
 
 }
