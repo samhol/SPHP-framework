@@ -120,7 +120,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    */
   private function setAttributeObject(AttributeInterface $attrObject) {
     $name = $attrObject->getName();
-    if ($this->isAttributeObject($name) && $this->getAttributeObject($name)) {
+    if ($this->isAttributeObject($name) && $this->getAttributeObject($name)) { 
       throw new InvalidAttributeException();
     }
     if ($this->exists($name)) {
@@ -220,23 +220,39 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     }
     return $this;
   }
+
   /**
    * Creates an an unique id attribute
    *
-   * **Notes:**
-   *
-   * HTML id attribute is unique to every HTML-element. This method randomizes
-   * the id attribute value creation so that the id should be unique.
-   *
+   * @param  string $name the name of the attribute
    * @param  string $seed id attributes seed
+   * @param  int $length the length of the string
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function setUnique($name, $seed = "") {
+  public function setUnique($name, $seed = "", $length = 16) {
     if ($this->isAttributeObject($name)) {
       throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
     }
-    return $this->set($name, $seed . Strings::generateRandomString());
+    $this->set($name, $seed . Strings::generateRandomString($length));
+    return $this;
+  }
+  
+  /**
+   * Sets an Aria attribute
+   *
+   * **IMPORTANT!:** Does not alter locked attribute values
+   * 
+   * @param  string $name the name of the Aria attribute (without the `aria` prefix)
+   * @param  mixed $value the value of the attribute
+   * @return self for PHP Method Chaining
+   * @throws InvalidAttributeException if the attribute name or value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @link   https://www.w3.org/WAI/intro/aria.php
+   */
+  public function setAria($name, $value) {
+    $this->set("aria-$name", $value);
+    return $this;
   }
 
   /**
@@ -497,27 +513,47 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     return $this;
   }
 
-  public function offsetExists($offset) {
-    return $this->exists($offset);
+  /**
+   * Checks if an attribute exists in the manager
+   * 
+   * @param  string $attrName the name of the attribute
+   * @return boolean true if the atribute exists and false otherwise
+   */
+  public function offsetExists($attrName) {
+    return $this->exists($attrName);
   }
 
-  public function offsetGet($name) {
-    if ($this->isAttributeObject($name)) {
-      $value = $this->getAttributeObject($name);
-    } else if (!$this->exists($name)) {
+  /**
+   * 
+   * @param string $attrName the name of the attribute
+   * @return mixed
+   */
+  public function offsetGet($attrName) {
+    if ($this->isAttributeObject($attrName)) {
+      $value = $this->getAttributeObject($attrName);
+    } else if (!$this->exists($attrName)) {
       $value = false;
     } else {
-      $value = $this->attrs[$name];
+      $value = $this->attrs[$attrName];
     }
     return $value;
   }
 
-  public function offsetSet($offset, $value) {
-    $this->set($offset, $value);
+  /**
+   * 
+   * @param string $attrName the name of the attribute
+   * @param mixed $value
+   */
+  public function offsetSet($attrName, $value) {
+    $this->set($attrName, $value);
   }
 
-  public function offsetUnset($offset) {
-    $this->remove($offset);
+  /**
+   * 
+   * @param string $attrName the name of the attribute
+   */
+  public function offsetUnset($attrName) {
+    $this->remove($attrName);
   }
 
   /**

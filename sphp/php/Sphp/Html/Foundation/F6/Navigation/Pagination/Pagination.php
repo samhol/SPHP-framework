@@ -56,6 +56,12 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @var string 
    */
   private $target = "_self";
+  
+  /**
+   *
+   * @var string 
+   */
+  private $linkLabelPattern = "Page %d";
 
   /**
    * Constructs a new instance
@@ -68,7 +74,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
             ->lock("pagination");
     $this->attrs()
             ->lock("role", "menubar")
-            ->lock("aria-label", "Pagination");
+            ->setAria("label", "Pagination");
     $this->range = $range;
     $this->target = $target;
     if ($urls !== null) {
@@ -79,7 +85,32 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
-   * 
+   * Sets the default pattern for the Aria label of each pagination link
+   *
+   * @param  string $format the format string containing 
+   * @return self for PHP Method Chaining
+   */
+  public function setLinkAriaLabelPattern($format) {
+    $this->linkLabelPattern = $format;
+    foreach ($this->pages as $index => $page) {
+      $this->setAriaLabelForPage($page, $index);
+    }
+    return $this;
+  }
+
+  private function setAriaLabelForPage($page, $index) {
+    $page->setAriaLabel(sprintf($this->linkLabelPattern, $index));
+    return $this;
+  }
+
+  /**
+   * Sets the pattern for the default target of each pagination links
+   *
+   * **Notes:**
+   *
+   * * The `target` attribute specifies where to open the linked document.
+   * * Only used if the `href` attribute is present.
+   *
    * @param  string $target the value of the target attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
@@ -134,6 +165,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     } else {
       $this->counter += 1;
       $page = new Page($this->counter, $urls, $this->target);
+      $this->setAriaLabelForPage($page, $this->counter);
       if ($page->isCurrentUrl()) {
         $page->setCurrent(true);
         $this->current = $this->counter;

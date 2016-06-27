@@ -39,6 +39,11 @@ class Page extends HyperlinkListItem implements PageInterface {
   public function __construct($content = null, $href = null, $target = "_self") {
     parent::__construct($href, $content, $target);
   }
+  
+  public function setAriaLabel($label) {
+    $this->attrs()->setAria("label", $label);
+    return $this;;
+  }
 
   /**
    * Sets the hyperlink component as active if the URL matches with the 
@@ -79,7 +84,7 @@ class Page extends HyperlinkListItem implements PageInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritdoc} 
    */
   public function disable($disabled = true) {
     if ($disabled) {
