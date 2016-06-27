@@ -5,10 +5,12 @@ namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 use Sphp\Net\URL as URL;
 
 $currentUrl = URL::getCurrent()->getHtml();
-$pages[1] = $currentUrl;
+$pages = [];
+$pages[] = $currentUrl;
 for ($i = 2; $i <= 50; $i++) {
   $pages[] = "$currentUrl#num$i";
-}$pages[8] = $currentUrl;
+}
+$pages[8] = $currentUrl;
 $pagination = (new Pagination($pages));
 $pagination->printHtml();
 
