@@ -16,7 +16,7 @@ namespace Sphp\Html\Attributes;
  * @filesource
  */
 interface AttributeInterface {
-  
+
   /**
    * Returns the instance of the object as a string
    *
@@ -39,7 +39,7 @@ interface AttributeInterface {
    * @throws   InvalidAttributeException if the attribute value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-   public function set($value);
+  public function set($value);
 
   /**
    * Returns the value of the attribute
@@ -53,14 +53,14 @@ interface AttributeInterface {
    * @throws InvalidAttributeException if the attribute value is invalid
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-   public function getValue();
+  public function getValue();
 
   /**
    * Checks whether the attribute has a locked value or not
    * 
    * @return boolean true if the attribute has a locked value and false otherwise
    */
-   public function isLocked();
+  public function isLocked();
 
   /**
    * Locks the given value to the attribute
@@ -70,14 +70,14 @@ interface AttributeInterface {
    * @throws   InvalidAttributeException if the attribute value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-   public function lock($value);
+  public function lock($value);
 
   /**
    * Removes all non locked values from the attribute
    *
    * @return   self for PHP Method Chaining
    */
-   public function clear();
+  public function clear();
 
   /**
    * Determines whether the attribute contains the given value
@@ -85,7 +85,7 @@ interface AttributeInterface {
    * @param  mixed $value the value to search for
    * @return boolean true if the given value exists
    */
-   public function contains($value);
+  public function contains($value);
 
   /**
    * Sets the attribute as required
@@ -138,5 +138,4 @@ interface AttributeInterface {
    * @return self for PHP Method Chaining
    */
   public function notifyChange();
-
 }

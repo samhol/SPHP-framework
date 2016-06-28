@@ -21,3 +21,4 @@ $load("Sphp.Html.Foundation.F6.Containers.Tabs.php");
 $load("Sphp.Html.Foundation.F6.Containers.Dropdown.php");
 $load("Sphp.Html.Foundation.F6.Containers.Callout.php");
 $load("Sphp.Html.Foundation.F6.Containers.Modals.php");
+$load("Sphp.Html.Foundation.F6.Containers.OffCanvas.php");

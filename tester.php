@@ -56,7 +56,7 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
     <div class="mainContent small-12 large-9 xlarge-8 column"> 
       <?php
       include_once "manual/manualTools/main.php";
-      include_once(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/Pagination.php');
+      include_once(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/OffCanvas.php');
       ?>
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 

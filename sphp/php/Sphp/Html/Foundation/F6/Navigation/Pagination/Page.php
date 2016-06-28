@@ -40,16 +40,19 @@ class Page extends HyperlinkListItem implements PageInterface {
     parent::__construct($href, $content, $target);
   }
   
+  /**
+   * 
+   * @param  string $label
+   * @return self for PHP Method Chaining
+   * @link   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
+   */
   public function setAriaLabel($label) {
     $this->attrs()->setAria("label", $label);
     return $this;;
   }
 
   /**
-   * Sets the hyperlink component as active if the URL matches with the 
-   *  current URL of the page
-   * 
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function activate() {
     if ($this->urlEquals(URL::getCurrent())) {
@@ -61,10 +64,7 @@ class Page extends HyperlinkListItem implements PageInterface {
   }
 
   /**
-   * Sets or unsets the hyperlink component as active
-   * 
-   * @param  boolean $active true foor activation and false for deactivation
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setCurrent($active = true) {
     if ($active) {
@@ -75,9 +75,7 @@ class Page extends HyperlinkListItem implements PageInterface {
   }
 
   /**
-   * Checks whether the hyperlink component is set as active or not
-   * 
-   * @return boolean true if the hyperlink component is set as active, otherwise false
+   * {@inheritdoc}
    */
   public function isCurrent() {
     return $this->hasCssClass("current");
