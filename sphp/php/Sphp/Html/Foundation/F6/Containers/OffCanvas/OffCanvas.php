@@ -15,7 +15,6 @@ use Sphp\Html\Div as Div;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-09-15
- * @version 1.0.0
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/offcanvas.html Foundation Off-canvas
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -85,7 +85,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function appendFormButton($content = null, $type = null, $name = null, $value = null) {
-    $this->appendButton(new FormButton($content, $type, $name, $value));
+    $this->appendButton(new FormButton($type, $content, $name, $value));
     return $this;
   }
 

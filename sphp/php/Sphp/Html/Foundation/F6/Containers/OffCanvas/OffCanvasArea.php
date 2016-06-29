@@ -11,6 +11,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Navigation\VerticalMenu as VerticalMenu;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
+use Sphp\Html\Forms\Buttons\Button as Button;
 
 /**
  * An abstract implementation of Foundation Off-canvas menu
@@ -19,13 +20,12 @@ use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-09-15
- * @version 1.0.0
- * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/offcanvas.html Foundation Off-canvas
+ * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/sites/docs/off-canvas.html Foundation 6 Off-canvas
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class OffCanvasArea extends AbstractComponent {
+class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface {
 
   /**
    *
@@ -81,8 +81,16 @@ class OffCanvasArea extends AbstractComponent {
     return $this->closeButton . $this->menu;
   }
 
-  public function getMenuButton() {
-    $button = '<button class="menu-icon" type="button" data-open="'.$this->getId().'"></button>';
+  /**
+   * {@inheritdoc}
+   */
+  public function getMenuButton($button = null) {
+    if ($button === null) {
+      $button = new OffCanvasOpener($this);
+    }
+    if ($button instanceof OffCanvasOpener) {
+      $button->setCanvas($this);
+    }
     return $button;
   }
 
