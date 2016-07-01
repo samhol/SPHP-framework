@@ -2,18 +2,11 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
-use Sphp\Html\media\YoutubePlayer as YoutubePlayer;
+use Sphp\Html\Foundation\F6\Grids\Row as Row;
 
-$flex[] = (new FlexVideo("CdMs7eqMvNg", FlexVideo::YOUTUBE))
-		->setLazy();
-$flex[] = (new FlexVideo())
-		->setPlayer(new YoutubePlayer("WwrpLgWyAjU"))
-		->setLazy();
-$flex[] = (new FlexVideo())
-		->setSource("X8E1wkenjEk", FlexVideo::YOUTUBE)
-		->setLazy();
-
-$grid = (new Grid($flex))
-		->printHtml();
+(new Row())
+        ->appendColumn(new FlexVideo("CdMs7eqMvNg", FlexVideo::YOUTUBE), 12, 4)
+        ->appendColumn(new FlexVideo("WwrpLgWyAjU", FlexVideo::YOUTUBE), 12, 4)
+        ->appendColumn(new FlexVideo("X8E1wkenjEk", FlexVideo::YOUTUBE), 12, 4)
+        ->printHtml();
 ?>

@@ -314,14 +314,11 @@ left: rem-calc(35)
     }
   }
   .grid-example {
-    .accordion-content {
-      //padding: rem-calc(10); 
-      .column {
-        text-align: center;
-        border: solid 1px #aaa;
-        background: #eeeeee;
-        line-height: 2;
-      }
+    .column {
+      text-align: center;
+      border: solid 1px #aaa;
+      background: #eeeeee;
+      line-height: 2;
     }
   }
 
@@ -345,10 +342,21 @@ left: rem-calc(35)
       padding: rem-calc(15);
       h2 {
         margin: rem-calc(5);
+        border-bottom: solid 1px #666;
+      }
+      h3 {
+        margin: rem-calc(10 5 10 5);
+        padding: rem-calc(5);
       }
       p {
         margin: rem-calc(5 10 5 10);
         text-align: justify;
+      }
+      .breadcrumbs.namespace {
+        margin-top: rem-calc(10s);
+      }
+      .example-area {
+        margin: rem-calc(15);
       }
     }
   }

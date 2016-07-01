@@ -8,7 +8,8 @@ $toolsLink = $api->getNamespaceLink(__NAMESPACE__, false);
 echo $parsedown->text(<<<MD
 #The $toolsLink namespace
 
-Foundation framework is included in SPHP and therefore also all of Foundation clientside properties are available. Here is a small collection of features available.
+Foundation framework is included in SPHP and therefore also all of Foundation 
+clientside properties are available. Here is a small collection of features available.
 MD
 );
 ?>

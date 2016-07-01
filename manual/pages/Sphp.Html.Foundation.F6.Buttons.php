@@ -32,7 +32,7 @@ instance method with the CSS class name as a parameter value:
 MD
 );
 
-use Sphp\Html\Foundation\F6\Core\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 
 $blockGrid = (new BlockGrid())->setBlockGrids(1, 1, 2);
 $blockGrid->append($parsedown->text(<<<MD
