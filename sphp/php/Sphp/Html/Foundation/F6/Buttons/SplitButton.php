@@ -7,13 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 
 /**
  * Class implements a Foundation 6 Split Button 
  * 
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation
@@ -21,18 +19,26 @@ use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SplitButton extends AbstractContainerTag implements ButtonInterface {
-  
+class SplitButton extends AbstractComponent implements ButtonInterface {
+
   use ButtonTrait;
 
   /**
-   * Constructs a new instance
+   * the primary button
    *
-   * **Notes:**
-   * 
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
+   * @var ButtonInterface 
+   */
+  private $primary;
+
+  /**
+   * the secondaty button
+   *
+   * @var ButtonInterface 
+   */
+  private $secondary;
+
+  /**
+   * Constructs a new instance
    * 
    * @param null|mixed|ButtonInterface $primary
    * @param null|mixed|ButtonInterface $secondary
@@ -43,27 +49,44 @@ class SplitButton extends AbstractContainerTag implements ButtonInterface {
     if (!($primary instanceof ButtonInterface)) {
       $primary = new Button("button", $primary);
     }
-    $this->content()->set("primary", $primary);
+    $this->primary = $primary;
     if (!($secondary instanceof ButtonInterface)) {
       $secondary = new ArrowOnlyButton();
     }
-    $this->content()->set("secondary", $secondary);
+    $this->secondary = $secondary;
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    unset($this->primary, $this->secondary);
+    parent::__destruct();
+  }
+
+  /**
+   * Returns the primary button
    * 
-   * @return ButtonInterface
+   * @return ButtonInterface the primary button
    */
   public function primaryButton() {
-    return $this->content("primary");
+    return $this->primary;
   }
 
   /**
+   * Returns the secondaty button
    * 
-   * @return ButtonInterface
+   * @return ButtonInterface the secondaty button
    */
   public function secondaryButton() {
-    return $this->content("secondary");
+    return $this->secondary;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->primary . $this->secondary;
   }
 
 }

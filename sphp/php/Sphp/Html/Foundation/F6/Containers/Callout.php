@@ -11,7 +11,7 @@ use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
-use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
+use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
 
 /**
  * Class implements a Foundation 6 callout component
@@ -27,7 +27,7 @@ use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
  */
 class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
 
-  use ColoringTrait;
+  use ColourableTrait;
 
   /**
    * The inner close button component

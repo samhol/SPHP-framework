@@ -19,14 +19,8 @@ namespace Sphp\Html\Foundation\F6\Buttons;
  */
 trait ButtonTrait {
 
-	/**
-	 * CSS classes corresponding to the button style constants
-	 *
-	 * @var string[]
-	 */
-	private $styles = [
-		"alert", "success", "secondary", "info", "disabled"
-	];
+  use \Sphp\Html\Foundation\F6\Core\ColourableTrait;
+
 
 	/**
 	 * CSS classes corresponding to the size constants
@@ -36,73 +30,6 @@ trait ButtonTrait {
 	private $sizes = [
 		"tiny", "small", "large", "expand"
 	];
-
-	/**
-	 * Sets the color to default
-	 * 
-	 * @return self for PHP Method Chaining
-	 * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
-	 */
-	public function defaultColor() {
-		return $this->setColor(null);
-	}
-
-	/**
-	 * Sets the button color to `'alert'`
-	 * 
-	 * @return self for PHP Method Chaining
-	 * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
-	 */
-	public function alertColor() {
-		return $this->setColor("alert");
-	}
-
-	/**
-	 * Sets the button color to `'success'`
-	 * 
-	 * @return self for PHP Method Chaining
-	 * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
-	 */
-	public function successColor() {
-		return $this->setColor("success");
-	}
-
-	/**
-	 * Sets the button color to `'secondary'`
-	 * 
-	 * @return self for PHP Method Chaining
-	 * @link   http://foundation.zurb.com/docs/components/buttons.html#coloring Button Sizing
-	 */
-	public function secondaryColor() {
-		return $this->setColor("secondary");
-	}
-
-	/**
-	 * Sets the color (a CSS class)
-	 * 
-	 * Predefined values of <var>$style</var> parameter:
-	 * 
-	 * * `null` unsets all special button styles (default)
-	 * * `'alert'` for alert/error buttons
-	 * * `'success'` for ok/success buttons
-	 * * `'info'` for information buttons
-	 * * `'secondary'` for alternatively styled buttons
-	 * * `'disabled'` for disabled buttons
-	 * 
-	 * @param  string|null $style one of the CSS class names defining button styles
-	 * @return self for PHP Method Chaining
-	 * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
-	 */
-	public function setColor($style = null) {
-		$this->removeCssClass($this->styles);
-		if ($style !== null) {
-			$this->addCssClass($style);
-			if (!in_array($style, $this->styles)) {
-				$this->styles[] = $style;
-			}
-		}
-		return $this;
-	}
 
 	/**
 	 * Sets the size of the button 

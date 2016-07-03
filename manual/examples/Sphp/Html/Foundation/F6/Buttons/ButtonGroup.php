@@ -23,7 +23,7 @@ $grid->append($buttonGroup2);
 $buttonGroup3 = clone $buttonGroup2;
 $buttonGroup3
         ->setSize("large")
-        ->successColor();
+        ->setColor("success");
 $grid->append($buttonGroup3);
 $buttonGroup4 = clone $buttonGroup3;
 $buttonGroup4

@@ -7,67 +7,20 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
+use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
+
 /**
  * Interface specifies the basic functionality of a Foundation styled button
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/button.html# Foundation 6 Buttons
+ * @link    http://foundation.zurb.com/sites/docs/button.html Foundation Buttons
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ButtonInterface {
-
-  /**
-   * Sets the color style to default
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Colors
-   */
-  public function defaultColor();
-
-  /**
-   * Sets the color to `'alert'` style
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Colors
-   */
-  public function alertColor();
-
-  /**
-   * Sets the color to `'success'` style
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Colors
-   */
-  public function successColor();
-
-  /**
-   * Sets the color to `'secondary'` style
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Colors
-   */
-  public function secondaryColor();
-
-  /**
-   * Sets the color (a CSS class)
-   * 
-   * Predefined values of <var>$style</var> parameter:
-   * 
-   * * `null` unsets all special button styles (default)
-   * * `'alert'` for alert/error buttons
-   * * `'success'` for ok/success buttons
-   * * `'info'` for information buttons
-   * * `'secondary'` for alternatively styled buttons
-   * * `'disabled'` for disabled buttons
-   * 
-   * @param  string|null $style one of the CSS class names defining button styles
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Colors
-   */
-  public function setColor($style = null);
+interface ButtonInterface extends ContentInterface, ColourableInterface {
 
   /**
    * Sets the size of the button 

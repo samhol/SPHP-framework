@@ -17,8 +17,9 @@
    */
   $.fn.setProgress = function ($progress, $text) {
     return this.each(function () {
-      var $this = $(this), $meter;
+      var $this = $(this), $meter, $meterText;
       $meter = $this.children(".progress-meter");
+      $meterText = $meter.children(".progress-meter-text");
       if (!$this.hasClass("progress") || !$meter) {
         throw "Element is not a valid Foundation Progress bar";
       }
@@ -26,6 +27,11 @@
       $this.attr("aria-valuenow", $progress);
       $this.attr("aria-valuetext", $text);
       $meter.css("width", $progress + "%");
+      if ($progress > 0) {
+        $meterText.html($progress + "%");
+      } else {
+        $meterText.html("");
+      }
       $(this).trigger("sphp.progressBar.change", {progress: $progress});
     });
   };

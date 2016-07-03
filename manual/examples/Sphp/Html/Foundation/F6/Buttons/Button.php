@@ -9,14 +9,14 @@ $bing = new HyperlinkButton("http://www.bing.com", "Bing", "test");
 $ask = new HyperlinkButton("http://www.ask.com/", "ask.com", "test");
 $samiholck = (new HyperlinkButton("http://samiholck.com/", "samiholck.com", "test"))
         ->setLarge()
-        ->alertColor()
+        ->setColor("alert")
         ->setExpanded();
 $apigen = (new HyperlinkButton("http://apigen.samiholck.com/", "apigen", "test"))
         ->setSmall()
-        ->successColor();
+        ->setColor("success");
 $phpdoc = (new HyperlinkButton("http://phpdoc.samiholck.com/", "phpdoc", "test"))
         ->setSmall()
-        ->secondaryColor();
+        ->setColor("warning");
 $grid = new Grid();
 $grid[] = [
     $google->setSize("tiny"),

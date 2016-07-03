@@ -7,17 +7,15 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
-use Sphp\Html\Foundation\F6\Core\ColoringTrait as ColoringTrait;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
+use Sphp\Html\Span as Span;
+use Sphp\Html\Sections\Paragraph as Paragraph;
 
 /**
  * Class models a Foundation 6 Progress Bar
  *
- * <div class="secondary progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-  <div class="progress-meter" style="width: 25%"></div>
-  </div>
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01
  * @link    http://foundation.zurb.com/ Foundation
@@ -25,20 +23,27 @@ use Sphp\Html\Div as Div;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ProgressBar extends AbstractContainerComponent implements ColourableInterface {
+class ProgressBar extends AbstractComponent implements ColourableInterface {
 
-  use ColoringTrait;
+  use ColourableTrait;
+
+  /**
+   *
+   * @var Span
+   */
+  private $progressMeter;
 
   /**
    * 
    * @param int $progress
-   * @param string|null $name
+   * @param string|null $name the name of the bar
    */
   public function __construct($progress, $name = null) {
     parent::__construct("div");
-    $progressMeter = new Div();
-    $progressMeter->cssClasses()->lock("progress-meter");
-    $this->content()->set("progress-meter", $progressMeter);
+    $this->progressMeter = new Span();
+    $this->progressMeter->cssClasses()->lock("progress-meter");
+    $this->progressMeter["progress-meter-text"] = new Paragraph();
+    $this->progressMeter["progress-meter-text"]->cssClasses()->lock("progress-meter-text");
     $this->identify();
     $this->attrs()
             ->set("data-sphp-progressbar", "blaa")
@@ -54,16 +59,22 @@ class ProgressBar extends AbstractContainerComponent implements ColourableInterf
   }
 
   /**
-   * returns the meter component
+   * Sets the visibility of the progress bar text
    * 
-   * @return Div the meter component
+   * @param  boolean $show true for visible progress text and false otherwise
+   * @return self for PHP Method Chaining
    */
-  private function getMeter() {
-    return $this->content()->get("progress-meter");
+  public function showProgressText($show = true) {
+    if ($show) {
+      $this->progressMeter["progress-meter-text"]->setStyle("visibility", "visible");
+    } else {
+      $this->progressMeter["progress-meter-text"]->setStyle("visibility", "hidden");
+    }
+    return $this;
   }
 
   /**
-   * returns the meter component
+   * Sets the progress bar name
    * 
    * @param  string $name the optional bar name for build-in javascript library use
    * @return self for PHP Method Chaining
@@ -88,8 +99,16 @@ class ProgressBar extends AbstractContainerComponent implements ColourableInterf
             ->set("aria-valuenow", $progress)
             ->set("aria-valuetext", $progressText);
     $this->setTitle($progressText);
-    $this->getMeter()->inlineStyles()->setProperty("width", "$progress%");
+    $this->progressMeter->inlineStyles()->setProperty("width", "$progress%");
+    $this->progressMeter["progress-meter-text"]->replaceContent("$progress%");
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->progressMeter->getHtml();
   }
 
 }

@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Lists\Li as Li;
 use Sphp\Core\Types\BitMask as BitMask;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 
