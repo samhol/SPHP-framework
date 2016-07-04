@@ -17,7 +17,7 @@ use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
  * Any class extending {@link self} follows these rules:
  *
  * 1. Any extending class act as a container for other components like
- *    {@link HtmlContent}, other objects, text, ...etc.
+ *    {@link ContentInterface}, other objects, text, ...etc.
  * 2. The type of the content in such container depends solely on the container's
  *    purpose of use.
  * 3. Any extending class can be used in **PHP**'s `foreach` construct.

@@ -7,24 +7,26 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
+use Sphp\Html\Div as Div;
 
 /**
  * Class BlockGridColumn
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-26
+ * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/docs/components/block_grid.html Foundation Block Grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGridColumn extends AbstractContainerTag {
+class BlockGridColumn extends Div {
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($content = null) {
-    parent::__construct("div");
+    parent::__construct($content);
     $this->cssClasses()->lock("column");
-    if ($content !== null) {
-      $this->append($content);
-    }
   }
 
 }

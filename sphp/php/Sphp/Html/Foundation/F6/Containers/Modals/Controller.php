@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 
 /**
  * Class implements Foundation Reveal Modal 
@@ -40,8 +39,8 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
    * 
-   * @param mixed $content the content of the component
    * @param Modal $modal
+   * @param mixed $content the content of the component
    */
   public function __construct(Modal $modal, $content = null) {
     parent::__construct("a", $content);

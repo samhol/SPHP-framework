@@ -16,7 +16,6 @@ use Closure;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
- * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -25,7 +24,7 @@ class WrappingContainer extends Container {
   /**
    * the wrapper function
    *
-   * @var Closure
+   * @var callable
    */
   private $wrapper;
 
@@ -34,22 +33,16 @@ class WrappingContainer extends Container {
    *
    * **Notes:**
    *
-   *  1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *     within {@link Li} component
-   *  2. All items of an array are treated according to note (1)
+   * Method applies first the inner callback given to the `$content` 
+   * and then appends the result to the container
    * 
-   * @param  Closure $wrapper the wrapper function
+   * @param  callable $callback the wrapper function
    * @param  mixed|null $content optional content of the component
    */
-  public function __construct(Closure $wrapper = null, $content = null) {
+  public function __construct(callable $callback = null, $content = null) {
     parent::__construct();
-    if ($wrapper === null) {
-      $wrapper = function ($c) {
-        return $c;
-      };
-    }
-    $this->setWrapper($wrapper);
-    if (isset($content)) {
+    $this->setWrapper($callback);
+    if ($content !== null) {
       $this->append($content);
     }
   }
@@ -57,12 +50,33 @@ class WrappingContainer extends Container {
   /**
    * Sets the wrapper function
    * 
-   * @param  Closure $wrapper the wrapper function
-   * @return self for PHP Method Chaining
+   * @return callable the wrapper function
    */
-  public function setWrapper(\Closure $wrapper) {
+  private function setWrapper(callable $wrapper = null) {
     $this->wrapper = $wrapper;
     return $this;
+  }
+
+  /**
+   * Returns the wrapper function
+   * 
+   * @return callable|null the inner wrapper function or null if none set
+   */
+  public function getWrapper() {
+    return $this->wrapper;
+  }
+
+  /**
+   * Returns the wrapper function
+   * 
+   * @return  Closure the wrapper function
+   */
+  public function wrap($content) {
+    if (is_callable($this->wrapper)) {
+      $wrapper = $this->wrapper;
+      $content = $wrapper($content);
+    }
+    return $content;
   }
 
   /**
@@ -70,16 +84,15 @@ class WrappingContainer extends Container {
    *
    * **Notes:**
    *
-   * 1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
+   * Method applies first the inner callback given in constructor to the `$content` 
+   * and then appends the result to the container
    *
    * @param  mixed $content added content
    * @return self for PHP Method Chaining
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($content) {
-    $wrapper = $this->wrapper;
-    parent::append($wrapper($content));
+    parent::append($this->wrap($content));
     return $this;
   }
 
@@ -88,15 +101,14 @@ class WrappingContainer extends Container {
    *
    * **Notes:**
    *
-   * 1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
+   * Method applies first the inner callback given in constructor to the `$content` 
+   * and then prepends the result to the container
    *
    * @param  mixed $content added content
    * @return self for PHP Method Chaining
    */
   public function prepend($content) {
-    $wrapper = $this->wrapper;
-    parent::prepend($wrapper($content));
+    parent::prepend($this->wrap($content));
     return $this;
   }
 
@@ -105,15 +117,14 @@ class WrappingContainer extends Container {
    * 
    * **Notes:**
    *
-   * 1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
+   * Method applies first the inner callback given in constructor to the `$content` 
+   * and then sets the result to the container to the specified offset
    *
    * @param mixed $offset the offset to assign the value to
    * @param mixed $value the value to set
    */
   public function offsetSet($offset, $value) {
-    $wrapper = $this->wrapper;
-    parent::offsetSet($offset, $wrapper($value));
+    parent::offsetSet($offset, $this->wrap($value));
   }
 
 }

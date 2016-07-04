@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Span as Span;
 use Sphp\Html\Foundation\F6\Foundation as Foundation;
 
@@ -20,7 +21,21 @@ use Sphp\Html\Foundation\F6\Foundation as Foundation;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IconButton extends AbstractButton {
+class IconButton extends AbstractComponent implements ButtonInterface {
+
+  use ButtonTrait;
+
+  /**
+   *
+   * @var Span 
+   */
+  private $readerSpan;
+
+  /**
+   *
+   * @var Span 
+   */
+  private $icon;
 
   /**
    * Constructs a new instance
@@ -30,15 +45,17 @@ class IconButton extends AbstractButton {
    */
   public function __construct($icon, $screenReaderText = "") {
     parent::__construct("button");
-    $screenReaderBtn = new Span($screenReaderText);
-    $screenReaderBtn->cssClasses()->lock("show-for-sr");
-    $this->content()->set("show-for-sr", $screenReaderBtn);
-    $x = Foundation::icon($icon);
-    $xSpan = new Span($x);
-    $xSpan->attrs()->lock("aria-hidden", "true");
-    $this->content()->set("x-btn", $xSpan);
+    $this->cssClasses()->lock("button");
+    $this->attrs()->lock("type", "button");
+    $this->readerSpan = new Span($screenReaderText);
+    $this->readerSpan->cssClasses()->lock("show-for-sr");
+    //$this->content()->set("show-for-sr", $screenReaderBtn);
+    $this->icon = Foundation::icon($icon);
+    //$xSpan = new Span($x);
+    //$xSpan->attrs()->lock("aria-hidden", "true");
+    //$this->content()->set("x-btn", $xSpan);
   }
-  
+
   /**
    * Sets the screen reader-only text
    * 
@@ -46,8 +63,15 @@ class IconButton extends AbstractButton {
    * @return self for PHP Method Chaining
    */
   public function setScreenReaderText($screenReaderText) {
-    $this->content()->get("show-for-sr")->replaceContent($screenReaderText);
+    $this->readerSpan->replaceContent($screenReaderText);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->readerSpan . '<span aria-hidden="true">' . $this->icon . '</span>';
   }
 
 }

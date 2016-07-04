@@ -2,20 +2,20 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use \Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$buttonNamespace = $api->getNamespaceLink(__NAMESPACE__);
+//$buttonNamespace = $api->getNamespaceLink(__NAMESPACE__);
 $btn = $api->classLinker(ButtonInterface::class);
 $abstractButton = $api->getClassLink(AbstractButton::class);
 $formBtn = $api->classLinker(Button::class);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-##Foundation Buttons
+#Foundation Buttons
 $ns
-The $buttonNamespace namespace contains Foundation buttons, buttongroups and buttonbars.
+This namespace contains Foundation buttons and buttongroups.
 They are convenient tools when a centralized style for customized button links and form buttons etc. isneeded.
 
-##The $btn interface
+##The $btn models a Foundation button
 
 The $btn interface defines required minimun implementation for all Foundation styled Buttons.
 
@@ -46,7 +46,7 @@ Predefined color classes:
 * `'disabled'` for disabled buttons
 MD
 ));
-$blockGrid->append($parsedown->text(<<<MD
+$blockGrid->append($parsedown->text("
 Predefined size classes:
 
 * `'tiny'` for tiny buttons
@@ -54,7 +54,7 @@ Predefined size classes:
 * `NULL` for medium buttons (default)
 * `'large'` for large buttons
 * `'extend'` for extended buttons (takes the full width of the container)
-MD
+"
 ));
 $blockGrid->printHtml();
 echo $parsedown->text(<<<MD

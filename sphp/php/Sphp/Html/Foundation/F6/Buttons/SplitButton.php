@@ -51,7 +51,7 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
     }
     $this->primary = $primary;
     if (!($secondary instanceof ButtonInterface)) {
-      $secondary = new ArrowOnlyButton();
+      $secondary = new ArrowOnlyButton($secondary);
     }
     $this->secondary = $secondary;
   }

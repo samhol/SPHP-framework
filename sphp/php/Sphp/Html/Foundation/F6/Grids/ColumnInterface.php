@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Grids;
 
 /**
- * Interface defines Foundation framework based component to create  multi-device layouts
+ * Interface defines Foundation 6 based column component to create multi-device layouts
  *
  * The sum of the column widths and offsets in a row should never exeed 12.
  *

@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Container as Container;
+use Sphp\Html\WrappingContainer as WrappingContainer;
 
 /**
- * Class is a container for {@link Row} components and implements a Foundation grid
+ * Class is a container for {@link RowInterface} components and implements a Foundation grid
  *
  * {@inheritdoc}
  *
@@ -21,9 +21,7 @@ use Sphp\Html\Container as Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Grid extends Container implements GridInterface {
-
-  use GridTrait;
+class Grid extends WrappingContainer implements GridInterface {
 
   /**
    * Constructs a new instance
@@ -35,14 +33,26 @@ class Grid extends Container implements GridInterface {
    *    method `__toString()` are allowed.
    * 2. `mixed $content` is transformed to a @link Row} component.
    *
-   * @param  mixed|Row $row a row content or a row component
+   * @param  mixed|RowInterface $row a row content or a row component
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($row = null) {
-    parent::__construct();
-    if ($row !== null) {
-      $this->append($row);
-    }
+    $wrapper = function ($c) {
+      if (!($c instanceof RowInterface)) {
+        $c = new Row($c);
+      }
+      return $c;
+    };
+    parent::__construct($wrapper, $row);
+  }
+
+  /**
+   * Returns all {@link ColumnInterface} components from the grid
+   * 
+   * @return Container containing all the {@link ColumnInterface} components
+   */
+  public function getColumns() {
+    return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 
 }
