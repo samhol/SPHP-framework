@@ -11,7 +11,6 @@ use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
-use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
 
 /**
@@ -28,8 +27,7 @@ use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
  */
 class GridForm extends AbstractContainerComponent implements GridInterface, TraversableFormInterface {
 
-  use ContentTrait,
-      FormGridTrait,
+  use FormGridTrait,
       TraversableFormTrait;
 
   /**
@@ -101,10 +99,16 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function count() {
     return $this->content()->count();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getIterator() {
     return $this->content()->getIterator();
   }

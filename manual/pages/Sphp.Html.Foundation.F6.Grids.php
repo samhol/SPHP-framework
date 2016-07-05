@@ -2,13 +2,16 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
+use Sphp\Html\Apps\ApiTools\FoundationDocsLinker as FoundationDocsLinker;
+
 $grid = $api->classLinker(Grid::class);
 $row = $api->classLinker(Row::class);
 $col = $api->classLinker(Column::class);
 $cols = $api->getClassLink(Column::class, "Columns");
 //$ns = $api->getNamespaceLink(__NAMESPACE__);
 $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
-$f_GridLink = $foundation->getComponentLink(Grid::class, "Foundation Grid layout");
+$gridInterface = $api->classLinker(GridInterface::class);
+$f_GridLink = FoundationDocsLinker::get()->gridLink(null, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation 6 Grids and Block Grids    
 $ns	

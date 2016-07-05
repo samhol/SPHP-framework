@@ -9,13 +9,14 @@ namespace Sphp\Html\Apps\ApiTools;
 
 use Sphp\Html\Hyperlink as Hyperlink;
 use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Foundation\F6\Containers\OffCanvas\OffCanvas as OffCanvas;
+use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 
 /**
  * Link generator for Foundation Docs related hyperlinks
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -29,10 +30,12 @@ class FoundationDocsLinker extends AbstractLinker {
   private static $componentMap = [
       \Sphp\Html\Foundation\Navigation\SubNav\SubNav::class => ["subnav", "Sub Nav"],
       \Sphp\Html\Foundation\Navigation\TopBar\TopBar::class => ["topbar", "Top Bar"],
-      \Sphp\Html\Foundation\Structure\Grid::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\Structure\Column::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\Structure\Row::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\Structure\BlockGrid::class => ["block_grid", "Block Grid"],
+      GridInterface::class => ["grid", "Grid"],
+      \Sphp\Html\Foundation\F6\Grids\Grid::class => ["grid", "Grid"],
+      \Sphp\Html\Foundation\F6\Grids\Column::class => ["grid", "Grid"],
+      \Sphp\Html\Foundation\F6\Grids\Row::class => ["grid", "Grid"],
+      \Sphp\Html\Foundation\F6\Grids\BlockGrid::class => ["block_grid", "Block Grid"],
+      OffCanvas::class => ["off-canvas", "Off-canvas"],
   ];
 
   /**
@@ -42,7 +45,7 @@ class FoundationDocsLinker extends AbstractLinker {
    *        generated links
    */
   public function __construct($attrs = ["target" => "foundation.docs", "class" => "external foundation-docs-link api"]) {
-    parent::__construct("http://foundation.zurb.com/docs/", $attrs);
+    parent::__construct("http://foundation.zurb.com/sites/docs/", $attrs);
   }
 
   /**
@@ -62,10 +65,54 @@ class FoundationDocsLinker extends AbstractLinker {
       if (Strings::isEmpty($title)) {
         $title = "Foundation " . self::$componentMap[$className][1] . " component";
       }
+      return $this->getHyperlink("$page.html", $linkText, $title);
+    } else {
+      return $this->getHyperlink("", $linkText);
+    }
+  }
+
+  /**
+   * Returns a hyperlink object pointing to a Foundation docs component page
+   * 
+   * @param  string|\object $className PHP class name or PHP object
+   * @param  string|null $linkText optional text of the hyperlink
+   * @param  null|string $title optional title of the hyperlink
+   * @return Hyperlink hyperlink object pointing to a Foundation docs component page
+   */
+  public function docsLink($className, $linkText = null, $title = null) {
+    if (array_key_exists($className, self::$componentMap)) {
+      $page = self::$componentMap[$className][0];
+      if (Strings::isEmpty($linkText)) {
+        $linkText = self::$componentMap[$className][1];
+      }
+      if (Strings::isEmpty($title)) {
+        $title = "Foundation " . self::$componentMap[$className][1] . " component";
+      }
       return $this->getHyperlink("components/$page.html", $linkText, $title);
     } else {
       return $this->getHyperlink("components/$className.html", $linkText);
     }
+  }
+
+  /**
+   * Returns a hyperlink object pointing to a Foundation docs component page
+   * 
+   * @param  string|null $linkText optional text of the hyperlink
+   * @param  string|null $fragment PHP class name or PHP object
+   * @param  null|string $title optional title of the hyperlink
+   * @return Hyperlink hyperlink object pointing to a Foundation docs component page
+   */
+  public function gridLink($linkText = null, $fragment = null, $title = null) {
+    if ($fragment !== null) {
+      $fragment = "#$fragment";
+    }
+    if (Strings::isEmpty($linkText)) {
+      $linkText = "The Grid";
+    }
+    if (Strings::isEmpty($title)) {
+      $title = "Foundation docs: The Grid";
+    }
+    return $this->getHyperlink("grid.html$fragment", $linkText);
   }
 
 }
