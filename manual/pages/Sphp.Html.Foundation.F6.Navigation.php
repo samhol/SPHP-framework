@@ -17,8 +17,7 @@ This namespace contains object oriented PHP implementations of Foundation naviga
 MD
 );
 $load("Sphp.Html.Foundation.F6.Navigation.TopBar.php");
-
-$load("Sphp.Html.Foundation.F6.Navigation.OffCanvas.php");
+$load("Sphp.Html.Foundation.F6.Navigation.DrilldownMenu.php");
 
 $sideNavClass = $api->getClassLink(AccordionMenu::class);
 echo $parsedown->text(<<<MD

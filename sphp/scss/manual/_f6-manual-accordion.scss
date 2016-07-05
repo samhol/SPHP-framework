@@ -3,7 +3,8 @@
  *
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
-.manual.accordion {
+$unit: rem-calc(4);
+.mainContent > .accordion {
   .html-output .accordion-content {
     padding: rem-calc(10 10 10 10); /* top right bottom left */
     table {
@@ -13,10 +14,8 @@
       }
     }
   }
-}
-$unit: rem-calc(4);
 
-.manual.accordion {
+
   .syntax-pane .accordion-content {
     overflow: hidden;
     padding: 0;
