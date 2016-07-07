@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\ApiTools;
+namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
@@ -18,7 +18,7 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractLinker {
+abstract class AbstractLinker implements LinkerInterface {
 
   /**
    * the url pointing to the API documentation root
@@ -33,12 +33,6 @@ abstract class AbstractLinker {
    * @var scalar[]
    */
   private $defaultAttrs;
-
-  /**
-   *
-   * @var self[] 
-   */
-  private static $instances = [];
 
   /**
    * Constructs a new instance
@@ -75,18 +69,14 @@ abstract class AbstractLinker {
   }
 
   /**
-   * Returns the component as html-markup string
-   *
-   * @return string html-markup of the component
+   * {@inheritdoc}
    */
   public function __toString() {
     return "" . $this->getHyperlink();
   }
 
   /**
-   * Returns the url pointing to the API documentation
-   *
-   * @return string the url pointing to the API documentation
+   * {@inheritdoc}
    */
   public function getApiRoot() {
     return $this->apiRoot;
@@ -98,7 +88,7 @@ abstract class AbstractLinker {
    * @param  string $apiRoot the url pointing to the API documentation
    * @return self for PHP Method Chaining
    */
-  public function setApiRoot($apiRoot) {
+  private function setApiRoot($apiRoot) {
     $this->apiRoot = $apiRoot;
     return $this;
   }
@@ -124,34 +114,7 @@ abstract class AbstractLinker {
   }
 
   /**
-   * Returns a hyperlink object pointing to a sub page
-   *
-   * @param  string $relativeUrl optional path from the root to the resource
-   * @param  string $content optional content of the link
-   * @param  string $title optional title of the link
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   * @return Hyperlink hyperlink object pointing to an API page
-   * @deprecated
-   */
-  public function getHyperlink($relativeUrl = null, $content = null, $title = null) {
-    if (Strings::isEmpty($content)) {
-      $content = $relativeUrl;
-    }
-    $a = (new Hyperlink($this->getApiRoot() . $relativeUrl, $content))->setAttrs($this->getDefaultAttributes());
-    if (Strings::notEmpty($title)) {
-      $a->setTitle($title);
-    }
-    return $a;
-  }
-
-  /**
-   * Returns a hyperlink object pointing to a sub page
-   *
-   * @param  string $relativeUrl optional path from the root to the resource
-   * @param  string $content optional content of the link
-   * @param  string $title optional title of the link
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   * @return Hyperlink hyperlink object pointing to an API page
+   * {@inheritdoc}
    */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     if (Strings::isEmpty($content)) {
@@ -162,17 +125,6 @@ abstract class AbstractLinker {
       $a->setTitle($title);
     }
     return $a;
-  }
-
-  /**
-   * 
-   * @return self new instance of linker
-   */
-  public static function get() {
-    if (!array_key_exists(static::class, self::$instances)) {
-      self::$instances[static::class] = new static();
-    }
-    return self::$instances[static::class];
   }
 
 }

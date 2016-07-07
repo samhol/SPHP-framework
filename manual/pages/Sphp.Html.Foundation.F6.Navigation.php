@@ -43,9 +43,8 @@ programs or documents <span class="label">from Wikipedia</span>.
 The $breadcrumbs component is a container for individual $breadcrumb components whereas
 A $breadcrumb is basically just an implementation of $hyperlinkIfLink.
 
-A $breadcrumbs shows a horizontal navigation trail of individual $breadcrumb components
-for users clicking through a site or app. $breadcrumbs component will fill out `100%`
-of the width of its parent container.
+A $breadcrumbs instance shows a horizontal navigation trail of individual $breadcrumb components. 
+Thi component will fill out `100%` of the width of its parent container.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/BreadCrumbs.php');

@@ -54,10 +54,28 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
       ?>
     </div>
     <div class="mainContent small-12 large-9 xlarge-8 column"> 
-      <?php
-      include_once "manual/manualTools/main.php";
-      include_once(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/OffCanvas.php');
-      ?>
+      <pre>
+        <?php
+        include_once "manual/manualTools/main.php";
+
+        namespace Sphp\Html\Apps\Manual;
+
+ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
+$apigenClassLinker = ApiGen::get()->classLinker(\Sphp\Html\Navigation\Hyperlink::class);
+        echo $apigenClassLinker . "\n";
+        echo $apigenClassLinker->namespaceLink() . "\n";
+        echo $apigenClassLinker->method("get") . "\n";
+        echo $apigenClassLinker->method("__construct") . "\n";
+        echo $apigenClassLinker->classBreadGrumbs(). "\n";
+        echo ApiGen::get()->namespaceLink(__NAMESPACE__) . "\n";
+        
+        echo PHPManualLinker::get()->classLinker(\Countable::class) . "\n";
+        echo PHPManualLinker::get()->classLinker(\RegexIterator::class)->constant("MATCH") . "\n";
+        echo PHPManualLinker::get()->classLinker(\Countable::class)->method("count") . "\n";
+        
+        echo W3schools::get()->tag("a");
+        ?>
+      </pre>
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 
 
