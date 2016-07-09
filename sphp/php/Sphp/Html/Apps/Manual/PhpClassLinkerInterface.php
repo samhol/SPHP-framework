@@ -20,13 +20,6 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 interface PhpClassLinkerInterface extends LinkerInterface {
 
   /**
-   *
-   * @param  string|\object $class class name or object
-   * @return self for PHP Method Chaining
-   */
-  public function setClass($class);
-
-  /**
    * Returns a hyperlink object pointing to an API class page
    *
    * @param  null|string $name optional alternative class link content

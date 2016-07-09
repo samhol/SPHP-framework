@@ -73,20 +73,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   /**
-   *
-   * @param  string|\object $class class name or object
-   * @return self for PHP Method Chaining
-   */
-  public function setClass($class) {
-    $this->ref = new ReflectionClass($class);
-    return $this;
-  }
-
-  /**
-   * Returns a hyperlink object pointing to an API class page
-   *
-   * @param  null|string $name optional alternative class link content
-   * @return HyperlinkInterface hyperlink object pointing to an API class page
+   * {@inheritdoc}
    */
   public function getLink($name = null) {
     if (Strings::isEmpty($name)) {
@@ -105,11 +92,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   /**
-   * Returns a hyperlink object pointing to class method in the API documentation
-   *
-   * @param  string $method the method name
-   * @param  boolean $full true for `Class::method()` and false for `method()`
-   * @return HyperlinkInterface object pointing to class method in the API documentation
+   * {@inheritdoc}
    */
   public function method($method, $full = true) {
     $this->ref->getMethod($method);
@@ -134,10 +117,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   /**
-   * Returns a hyperlink object pointing to class constant in the API documentation
-   *
-   * @param  string $constName the constant name
-   * @return HyperlinkInterface object pointing to class constant in the API documentation
+   * {@inheritdoc}
    */
   public function constant($constName) {
     $name = $this->ref->getShortName() . "::$constName";
@@ -146,10 +126,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   /**
-   * Returns a hyperlink object pointing to the namespace of the class in the API documentation
-   *
-   * @param  string $constName the constant name
-   * @return HyperlinkInterface object pointing to class constant in the API documentation
+   * {@inheritdoc}
    */
   public function namespaceLink() {
     $name = $this->ref->getNamespaceName();
