@@ -20,8 +20,7 @@ use Sphp\Html\EmptyTag as EmptyTag;
 class Polygon extends EmptyTag implements AreaInterface {
 
   use AreaTrait;
-  
-    
+
   /**
    * 
    * @param int[] $coords
@@ -40,6 +39,7 @@ class Polygon extends EmptyTag implements AreaInterface {
       $this->setHref($href);
     }
   }
+
   /**
    * 
    * @param  int $x
@@ -54,4 +54,5 @@ class Polygon extends EmptyTag implements AreaInterface {
     $this->attrs()->set("coords", $coordsString);
     return $this;
   }
+
 }

@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Net\URL as URL;
 
@@ -18,7 +19,10 @@ use Sphp\Net\URL as URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractVideoPlayer extends AbstractIframe {
+abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayerInterface {
+
+  use SizeableTrait,
+      LazyLoaderTrait;
 
   /**
    * the url of the player
@@ -42,8 +46,8 @@ abstract class AbstractVideoPlayer extends AbstractIframe {
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function __construct($url, $videoId = null) {
-    parent::__construct();
-    $this->setPlayerUrl($url)->allowFullScreen(true);
+    parent::__construct("iframe");
+    $this->setUrl($url)->allowFullScreen(true);
     if (Strings::notEmpty($videoId)) {
       $this->setVideoId($videoId);
     }
@@ -67,12 +71,20 @@ abstract class AbstractVideoPlayer extends AbstractIframe {
   }
 
   /**
+   * 
+   * @return URL
+   */
+  protected function getUrl() {
+    return $this->url;
+  }
+
+  /**
    * Sets the URL of the video service/player
    * 
    * @param  string|URL $url the URL of the video service/player
    * @return self for PHP Method Chaining
    */
-  protected function setPlayerUrl($url) {
+  protected function setUrl($url) {
     $this->url = ($url instanceof URL) ? $url : new Url($url);
     $this->setAttr("src", $this->url);
     return $this;
@@ -92,53 +104,49 @@ abstract class AbstractVideoPlayer extends AbstractIframe {
   }
 
   /**
-   * Allows or disallows the fullscreen mode of the video 
-   * 
-   * @param  boolean $allow
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function allowFullScreen($allow = true) {
-    $this->setAttr("webkitallowfullscreen", $allow)
-            ->setAttr("mozallowfullscreen", $allow)
-            ->setAttr("allowfullscreen", $allow);
+    $this->attrs()
+            ->set("webkitallowfullscreen", $allow)
+            ->set("mozallowfullscreen", $allow)
+            ->set("allowfullscreen", $allow);
     return $this;
   }
 
   /**
-   * Set autoplaying on or off
-   * 
-   * @param  boolean $autoplay true for on and false for off
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function autoplay($autoplay = true) {
-    return $this->setParam("autoplay", (int) $autoplay);
+    $this->getUrl()->setParam("autoplay", (int) $autoplay);
+    return $this;
   }
 
   /**
-   * Setx the looping on or off
-   * 
-   * @param  boolean $loop true for on and false for off
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function loop($loop = true) {
     return $this->setParam("loop", (int) $loop);
   }
 
   /**
+   * Unsetz the given parameter
+   * 
+   * These parameters are passed to the player as `url` query parameters
+   * 
+   * @param  string $name the name of the parameter to unset
+   * @return self for PHP Method Chaining
+   */
+  public function unsetParam($name) {
+    $this->url->getPath();
+    $this->url->unsetParam($name);
+    return $this;
+  }
+
+  /**
    * Setz the parameter name value pair
    * 
-   * Parameters:
-   * 
-   * * **autoplay:**
-   *   * `0` (default): The video will not play automatically when the player loads.
-   *   * `1`: The video will play automatically when the player loads.
-   * * **controls:**
-   *   * `0`: Player controls does not display. The video loads immediately.
-   *   * `1` (default): Player controls display. The video loads immediately.
-   *   * `2`: Player controls display, but the video does not load before the user initiates playback. 
-   * * **loop:**
-   *   * `0` (default): The video will play only once.
-   *   * `1`: The video will loop (forever).
+   * These parameters are passed to the player as `url` query parameters
    * 
    * @param  string $name the name of the parameter
    * @param  scalar $value the value of the parameter
@@ -147,6 +155,13 @@ abstract class AbstractVideoPlayer extends AbstractIframe {
   public function setParam($name, $value) {
     $this->url->setParam($name, $value);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return "<p>Your browser does not support iframes.</p>";
   }
 
 }

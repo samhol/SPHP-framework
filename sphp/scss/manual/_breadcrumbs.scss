@@ -1,0 +1,38 @@
+/**
+ * _breadcrumbs.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+.apigen.breadcrumbs {
+  @include default-margin();
+  margin: rem-calc(5 25 15 35);
+  &:before {
+    float: left;
+    margin-right: rem-calc(15);
+    font-size: rem-calc(16);
+    font-weight: bold;
+  }
+  a {   
+    @include api-links(#444, #fafafa);
+  }
+  &:before, a {
+    line-height: 1.6;
+    font-size: rem-calc(16);
+    text-transform: none;
+  }
+  li:not(:last-child)::after {
+    margin-left: rem-calc(4);
+    margin-right: rem-calc(4);
+    line-height: 1.6;
+  }
+  &.class:before {
+    content: "CLASS:";
+  }
+  &.namespace:before {
+    content: "NAMESPACE:";
+  }
+  &.constant:before {
+    content: "CONSTANT:";
+  }
+}

@@ -29,7 +29,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
   }
 
   /**
-   * Returns a BreadCrumbs component showint the trail of nested namespaces and the class
+   * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
    * @param  string $namespace
    * @return BreadCrumbs
@@ -38,7 +38,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
     $namespace = $this->ref->getNamespaceName();
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("namespace");
+    $bcs = (new BreadCrumbs())->addCssClass("apigen class");
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";

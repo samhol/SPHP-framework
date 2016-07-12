@@ -16,7 +16,8 @@ use Sphp\Html\Foundation\F6\Navigation\BreadCrumbs as BreadCrumbs;
  * Link generator pointing to an exising ApiGen documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
+ * @since   2014-11-29
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -59,7 +60,7 @@ class ApiGenLinker extends ApiLinker {
   public function getNamespaceBreadGrumbs($namespace) {
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("namespace");
+    $bcs = (new BreadCrumbs())->addCssClass("apigen namespace");
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";

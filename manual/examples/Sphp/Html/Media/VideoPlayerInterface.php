@@ -17,6 +17,12 @@ $player[] = (new YoutubePlayer("wp6cnp1kZBY"))
 
 $player[] = (new YoutubePlayer("o268qbb_0BM"))
         ->loop()
+        ->setEndTime(5)
+        ->setLazy()
+        ->setSize($size);
+
+$player[] = (new YoutubePlayer("PLC77007E23FF423C6", true))
+        ->loop()
         ->setLazy()
         ->setSize($size);
 
@@ -25,5 +31,5 @@ $player[] = (new DailyMotionPlayer("x2p4pkp"))
         ->setLazy()
         ->setSize($size);
 
-$grid = (new BlockGrid($player, 2))->printHtml();
+$grid = (new BlockGrid($player, 1, 2, false, 3))->printHtml();
 ?>

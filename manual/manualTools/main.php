@@ -16,20 +16,6 @@ use Sphp\Html\Apps\ApiTools\PHPManualLinker as PHPManualLinker;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Core\Types\Strings as Strings;
 
-class ExampleViewer extends CodeExampleAccordion {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function fromFile($path, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    if (class_exists($path)) {
-      $path = Strings::replace("\\", "/", $path) . ".php";
-    }
-    parent::fromFile($path, $highlightOutput, $outputAsHtmlFlow);
-    return $this;
-  }
-
-}
 
 function addPHPSuffix($page) {
   if (!Strings::endsWith($page, ".php")) {

@@ -60,7 +60,7 @@ class ApiGen extends ApiLinker {
   public function namespaceBreadGrumbs($namespace) {
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("namespace");
+    $bcs = (new BreadCrumbs())->addCssClass("apigen namespace");
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";

@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-
 /**
  * Link generator pointing to an existing API documentation
  *

@@ -26,4 +26,24 @@ interface IframeInterface extends LazyLoaderInterface, SizeableInterface {
    */
   const TAG_NAME = "iframe";
 
+  /**
+   * Sets the path to the image source (The URL of the image file)
+   * 
+   * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
+   * `data-src` attribute instead of the `src` attribute
+   *
+   * @param  string|URL $src the path to the image source (The URL of the image file)
+   * @return LazyLoaderInterface for PHP Method Chaining
+   */
+  public function setSrc($src);
+
+  /**
+   * Returns the path to the image source (The URL of the image file)
+   *
+   * **Important:** if {@link LazyLoaderInterface::isLazy()} this method returns the value of the 
+   * `data-src` attribute instead of the `src` attribute
+   * 
+   * @return string the path to the image source (The URL of the image file)
+   */
+  public function getSrc();
 }

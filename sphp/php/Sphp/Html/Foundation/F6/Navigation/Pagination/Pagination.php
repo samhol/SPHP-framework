@@ -11,7 +11,6 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use IteratorAggregate;
 use Countable;
 use ArrayIterator;
-use Sphp\Net\URL as URL;
 use Sphp\Html\Container as Container;
 use Sphp\Html\Lists\Li as Li;
 
@@ -56,7 +55,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @var string 
    */
   private $target = "_self";
-  
+
   /**
    *
    * @var string 
@@ -276,7 +275,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     } if ($last > $this->count()) {
       $first = $this->count() - $this->range + 1;
     }
-    return $this->prevPage() . $this->getEllipsis() . $this->getRange($first, $this->range) . $this->nextPage();
+    return $this->prevPage() . $this->getRange($first, $this->range) . $this->nextPage();
   }
 
 }

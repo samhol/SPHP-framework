@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\ContentInterface as ContentInterface;
+
 /**
  * Interface models lazy loading of images, videos and other resources
  * 
@@ -19,24 +21,23 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LazyLoaderInterface {
+interface LazyLoaderInterface extends ContentInterface {
 
-	/**
-	 * Sets or unsets the media source loading as lazy
-	 * 
-	 * **Important:** if the `$lazy = true` the actual media source path is stored into the  
-	 * `data-src` attribute instead of the `src` attribute
-	 * 
-	 * @param  boolean $lazy true if the loading is lazy, false otherwise
-	 * @return self for PHP Method Chaining
-	 */
-	public function setLazy($lazy = true);
+  /**
+   * Sets or unsets the media source loading as lazy
+   * 
+   * **Important:** if the `$lazy = true` the actual media source path is stored into the  
+   * `data-src` attribute instead of the `src` attribute
+   * 
+   * @param  boolean $lazy true if the loading is lazy, false otherwise
+   * @return self for PHP Method Chaining
+   */
+  public function setLazy($lazy = true);
 
-	/**
-	 * Checks whether the media source loading is lazy
-	 * 
-	 * @return boolean true if the loading is lazy, false otherwisev
-	 */
-	public function isLazy();
-
+  /**
+   * Checks whether the media source loading is lazy
+   * 
+   * @return boolean true if the loading is lazy, false otherwisev
+   */
+  public function isLazy();
 }

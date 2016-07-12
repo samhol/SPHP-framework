@@ -23,8 +23,8 @@ class VimeoPlayer extends AbstractVideoPlayer {
    *
    * @param  string $videoId the id of the Vimeo video
    */
-  public function __construct($videoId = null) {
-    parent::__construct("//player.vimeo.com/video/", $videoId);
+  public function __construct($videoId) {
+    parent::__construct("https://player.vimeo.com/video/$videoId");
   }
 
   /**

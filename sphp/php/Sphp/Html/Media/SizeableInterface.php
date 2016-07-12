@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\ContentInterface as ContentInterface;
+
 /**
  * Interface models sizing of various HTML media components
 
@@ -15,7 +17,7 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SizeableInterface {
+interface SizeableInterface extends ContentInterface {
 
   /**
    * Sets the dimensions of the component (in pixels)

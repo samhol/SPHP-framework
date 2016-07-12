@@ -51,6 +51,17 @@ class ApiGen extends AbstractPhpApiLinker {
   public function classLinker($class) {
     return new ApiGenClassLinker($this->getApiRoot(), $class, $this->getDefaultAttributes());
   }
+  
+  /**
+   * Returns a hyperlink object pointing to an PHP function page
+   *
+   * @param  string $funName the name of the function
+   * @return Hyperlink hyperlink object pointing to an PHP function page
+   */
+  public function functionLink($funName) {
+    $path = "function-" . $path . ".html";
+    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass("function");
+  }
 
   /**
    * Returns a hyperlink object pointing to PHP's predefined constants page
@@ -92,7 +103,7 @@ class ApiGen extends AbstractPhpApiLinker {
   public function namespaceBreadGrumbs($namespace) {
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("namespace");
+    $bcs = (new BreadCrumbs())->addCssClass("apigen namespace");
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";

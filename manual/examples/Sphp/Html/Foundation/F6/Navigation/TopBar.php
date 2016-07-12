@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-$navi = (new TopBar\TopBar("TopBar"));
+$navi = (new TopBar("TopBar"));
 $navi->left()->appendLink("http://www.ask.com/", "ask.com", "_blank");
 
-$js = (new SubMenu("JavaScript")) 
+$js = (new SubMenu("JavaScript"))
         ->appendText("jQuery related")
         ->appendLink("http://jquery.com/", "jQuery.com", "_blank")
         ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT", "_blank")

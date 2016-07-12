@@ -69,9 +69,9 @@ $apigenClassLinker = ApiGen::get()->classLinker(\Sphp\Html\Navigation\Hyperlink:
         echo $apigenClassLinker->classBreadGrumbs(). "\n";
         echo ApiGen::get()->namespaceLink(__NAMESPACE__) . "\n";
         
-        echo PHPManualLinker::get()->classLinker(\Countable::class) . "\n";
-        echo PHPManualLinker::get()->classLinker(\RegexIterator::class)->constant("MATCH") . "\n";
-        echo PHPManualLinker::get()->classLinker(\Countable::class)->method("count") . "\n";
+        echo PHPManual::get()->classLinker(\Countable::class) . "\n";
+        echo PHPManual::get()->classLinker(\RegexIterator::class)->constant("MATCH") . "\n";
+        echo PHPManual::get()->classLinker(\Countable::class)->method("count") . "\n";
         
         echo W3schools::get()->tag("a");
         ?>

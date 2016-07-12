@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPManualLinker.php (UTF-8)
+ * PHPManual.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,14 +11,14 @@ use Sphp\Html\Hyperlink as Hyperlink;
 use Sphp\Core\Types\Strings as Strings;
 
 /**
- * Link generator pointing to an exising ApiGen documentation
+ * Link generator pointing to an exising PHP manual documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PHPManualLinker extends AbstractPhpApiLinker {
+class PHPManual extends AbstractPhpApiLinker {
 
   use PHPManualTrait;
 

@@ -22,7 +22,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
   /**
    * {@inheritdoc}
    */
-  public function __construct($root, $class, $attrs = ["target" => "apigen", "class" => "api phpman"]) {
+  public function __construct($root, $class, $attrs = ["target" => "phpmanual", "class" => "api phpman"]) {
     parent::__construct($root, $class, $attrs);
   }
 

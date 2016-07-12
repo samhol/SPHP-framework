@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation\TopBar;
+namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;

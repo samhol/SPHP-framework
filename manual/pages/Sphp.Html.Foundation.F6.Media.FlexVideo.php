@@ -17,4 +17,4 @@ scale the video on any device.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo-LazyLoad.php');
