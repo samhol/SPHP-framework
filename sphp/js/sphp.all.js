@@ -226,49 +226,53 @@ if (!window.console.log) {
     //stickyFooter();
     //intBackToTop();
     //$(document).ready(function () {
-      console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
-      ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
-      var $ajaxLoaders = $("[data-sphp-ajax-url]");
-      console.log("loaded");
-      //alert($(document) + "init Foundation");
-      //sphp.initGlyphs();
+    console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
+    ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
+    var $ajaxLoaders = $("[data-sphp-ajax-url]");
+    console.log("loaded");
+    //alert($(document) + "init Foundation");
+    //sphp.initGlyphs();
+    $('[data-sphp-qtip][title!=""]').qtip({// Grab all elements with a non-blank data-tooltip attr.
+      content: {
+        attr: 'title' // Tell qTip2 to look inside this attr for its content
+      }
+    });
+    $(document).foundation();
 
-      $(document).foundation();
+    console.log("Foundation loaded...");
+    $ajaxLoaders.sphpAjaxLoader();
+    $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
+      console.log("SPHP Ajax loader finished loaded...");
+      $(this).foundation();
+      $(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
+    });
+    $(".sphp-viewport-size-viewer").viewportSizeViewer();
 
-      console.log("Foundation loaded...");
-      $ajaxLoaders.sphpAjaxLoader();
-      $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
-        console.log("SPHP Ajax loader finished loaded...");
-        $(this).foundation();
-        $(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
-      });
-      $(".sphp-viewport-size-viewer").viewportSizeViewer();
-
-      $("[data-sphp-qtip]").qtips();
-      //  if ($(document).foundation()) {
-      // $(document).foundation();
-      //handleFoundationSliders();
-      //}
-      //$(".footer").stickToBottom();
-      $('.sphp-back-to-top-button').backToTopBtn();
-      $("input[data-anytime]").dateTimeInput();
-      //syntaxHighlighterAccordion();
-      //$("[data-sph-load]").sphLoadContent();
-      $("[data-ion-rangeslider]").initIonRangeSlider();
-      $("[data-sphp-single-accordion='syntaxHighlighter']").syntaxHighLighterAccordion();
-      $("[data-reveal]").sphpPopup();
-      /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {
-       $(this).lazyLoadXT();
-       });*/
-      $('[data-accordion]').on('down.zf.accordion', function () {
-        console.log('Foundation Accordion opened!');
-        $(this).lazyLoadXT();
-      });
-      $("[data-clipboard-target]").copyToClipboardButton();
-      $("[data-src]").lazyLoadXT();
-      $("img[data-sphp-img-resize]").sphpImageResizer();
-      sphp.enableConsole(true);
-     // var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
+    $("[data-sphp-qtip]").qtips();
+    //  if ($(document).foundation()) {
+    // $(document).foundation();
+    //handleFoundationSliders();
+    //}
+    //$(".footer").stickToBottom();
+    $('.sphp-back-to-top-button').backToTopBtn();
+    $("input[data-anytime]").dateTimeInput();
+    //syntaxHighlighterAccordion();
+    //$("[data-sph-load]").sphLoadContent();
+    $("[data-ion-rangeslider]").initIonRangeSlider();
+    $("[data-sphp-single-accordion='syntaxHighlighter']").syntaxHighLighterAccordion();
+    $("[data-reveal]").sphpPopup();
+    /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {
+     $(this).lazyLoadXT();
+     });*/
+    $('[data-accordion]').on('down.zf.accordion', function () {
+      console.log('Foundation Accordion opened!');
+      $(this).lazyLoadXT();
+    });
+    $("[data-clipboard-target]").copyToClipboardButton();
+    $("[data-src]").lazyLoadXT();
+    $("img[data-sphp-img-resize]").sphpImageResizer();
+    sphp.enableConsole(true);
+    // var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
     //});
   };
   sphp.EVENTS = {

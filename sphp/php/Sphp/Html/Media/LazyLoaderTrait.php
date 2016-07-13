@@ -80,7 +80,6 @@ trait LazyLoaderTrait {
     if ($src instanceof URL) {
       $src = $src->getHtml();
     }
-    //$this->originalSrc = $src;
     if ($this->isLazy()) {
       $this->attrs()->set("data-src", $src);
     } else {

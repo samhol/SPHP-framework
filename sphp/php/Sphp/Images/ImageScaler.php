@@ -130,7 +130,7 @@ class ImageScaler {
       if ($height === false || $height <= 0) {
         $height = $this->box->getHeight();
       }
-      if ($width !== false || $width <= 0) {
+      if ($width === false || $width <= 0) {
         $width = $this->box->getWidth();
       }
       $s = new Box($width, $height);

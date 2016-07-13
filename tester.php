@@ -58,21 +58,25 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
         <?php
         include_once "manual/manualTools/main.php";
 
+        use Sphp\Html\Media\ViewerJS as ViewerJS;
+
+$v = (new ViewerJS("manual/snippets/demodoc.pdf"))->setSize(new \Sphp\Html\Media\Size(300, 300))->printHtml();
+
         namespace Sphp\Html\Apps\Manual;
 
 ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
-$apigenClassLinker = ApiGen::get()->classLinker(\Sphp\Html\Navigation\Hyperlink::class);
+        $apigenClassLinker = ApiGen::get()->classLinker(\Sphp\Html\Navigation\Hyperlink::class);
         echo $apigenClassLinker . "\n";
         echo $apigenClassLinker->namespaceLink() . "\n";
         echo $apigenClassLinker->method("get") . "\n";
         echo $apigenClassLinker->method("__construct") . "\n";
-        echo $apigenClassLinker->classBreadGrumbs(). "\n";
+        echo $apigenClassLinker->classBreadGrumbs() . "\n";
         echo ApiGen::get()->namespaceLink(__NAMESPACE__) . "\n";
-        
+
         echo PHPManual::get()->classLinker(\Countable::class) . "\n";
         echo PHPManual::get()->classLinker(\RegexIterator::class)->constant("MATCH") . "\n";
         echo PHPManual::get()->classLinker(\Countable::class)->method("count") . "\n";
-        
+
         echo W3schools::get()->tag("a");
         ?>
       </pre>

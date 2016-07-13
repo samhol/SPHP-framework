@@ -8,7 +8,12 @@ $ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 
 $gettext = $php->getExtensionLink("gettext", "Gettext");
 echo $parsedown->text(<<<MD
-#Native Language Support by wrapping $gettext functions
+#Native Language Support
+        
+The $gettext functions implement an NLS (Native Language Support) API which can 
+be used to internationalize your PHP applications. Please see the gettext 
+documentation for your system for a thorough explanation of these functions or 
+view the docs at http://www.gnu.org/software/gettext/manual/gettext.html.
 $ns
 PHP has {$php->getExtensionLink('gettext')} to handle simple human language translation process.
 

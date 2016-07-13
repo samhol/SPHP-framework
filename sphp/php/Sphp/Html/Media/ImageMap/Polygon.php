@@ -22,6 +22,7 @@ class Polygon extends EmptyTag implements AreaInterface {
   use AreaTrait;
 
   /**
+   * Constructs a new instance
    * 
    * @param int[] $coords
    * @param int $radius

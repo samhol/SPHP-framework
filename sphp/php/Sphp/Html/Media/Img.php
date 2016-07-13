@@ -97,7 +97,8 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt($alt) {
-    return $this->setAttr("alt", $alt);
+    $this->attrs()->set("alt", $alt);
+    return $this;
   }
 
   /**
@@ -109,7 +110,7 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function getAlt() {
-    return $this->getAttr("alt");
+    return $this->attrs()->get("alt");
   }
 
   /**

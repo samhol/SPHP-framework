@@ -26,7 +26,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param int $x the x-coodinate of the circle center
    * @param int $y the y-coodinate of the circle center
    * @param int $radius the radius of the circle
-   * @param string|null $href
+   * @param string|null $href the URL of the link
    * @param string|null $alt
    */
   public function __construct($x, $y, $radius, $href = null, $alt = null) {

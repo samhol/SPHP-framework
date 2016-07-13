@@ -20,14 +20,15 @@ use Sphp\Html\EmptyTag as EmptyTag;
 class Rectangle extends EmptyTag implements AreaInterface {
 
   use AreaTrait;
-  
-  
+
   /**
+   * Constructs a new instance
    * 
-   * @param int $x
-   * @param int $y
-   * @param int $radius
-   * @param string $href
+   * @param  int $x1 the top left x-coordinate
+   * @param  int $y1 the top left y-coordinate
+   * @param  int $x2 the bottom right x-coordinate
+   * @param  int $y2 the bottom right y-coordinate
+   * @param string|null $href the URL of the link
    * @param string $alt
    */
   public function __construct($x1, $y1, $x2, $y2, $href = null, $alt = null) {
@@ -38,17 +39,15 @@ class Rectangle extends EmptyTag implements AreaInterface {
       $this->setHref($href);
     }
     if ($alt !== null) {
-      $this->setHref($href);
+      $this->setHref($alt);
     }
   }
-  
-  
 
   /**
    * Sets the top left coordinates of the rectangle
    * 
-   * @param  int $x
-   * @param  int $y
+   * @param  int $x the top left x-coordinate
+   * @param  int $y the top left y-coordinate
    * @return self for PHP Method Chaining
    */
   public function setTopLeft($x, $y) {
@@ -63,8 +62,8 @@ class Rectangle extends EmptyTag implements AreaInterface {
   /**
    * Sets the bottom right coordinates of the rectangle
    * 
-   * @param  int $x
-   * @param  int $y
+   * @param  int $x the bottom right x-coordinate
+   * @param  int $y the bottom right y-coordinate
    * @return self for PHP Method Chaining
    */
   public function setBottomRight($x, $y) {
@@ -78,11 +77,10 @@ class Rectangle extends EmptyTag implements AreaInterface {
 
   /**
    * 
-   * @param  int $x1
-   * @param  int $y1
-   * @param  int $x2
-   * @param  int $y3
-   * @param  int $radius
+   * @param  int $x1 the top left x-coordinate
+   * @param  int $y1 the top left y-coordinate
+   * @param  int $x2 the bottom right x-coordinate
+   * @param  int $y2 the bottom right y-coordinate
    * @return self for PHP Method Chaining
    */
   public function setCoordinates($x1, $y1, $x2, $y2) {
@@ -91,4 +89,5 @@ class Rectangle extends EmptyTag implements AreaInterface {
     $this->attrs()->set("coords", $coordsString);
     return $this;
   }
+
 }

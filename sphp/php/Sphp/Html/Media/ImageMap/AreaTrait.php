@@ -75,4 +75,46 @@ trait AreaTrait {
     return $this->getAttr("shape");
   }
 
+  /**
+   * Specifies the alternate text for the area, if the image cannot be displayed
+   *
+   * **Definition and Usage:**
+   *
+   *  The alt attribute specifies an alternate text for an area, if the image 
+   * cannot be displayed. The `alt` attribute provides alternative information for 
+   * an image if a user for some reason cannot view it (because of slow 
+   * connection, an error in the src attribute, or if the user uses a screen 
+   * reader). 
+   * 
+   * The `alt` attribute is required if the `href` attribute is present.
+   *
+   * @param  string $alt the alternate text for an image
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
+   */
+  public function setAlt($alt) {
+    $this->attrs()->set("alt", $alt);
+    return $this;
+  }
+
+  /**
+   * Returns the alternate text for the area, if the image cannot be displayed
+   * 
+   * **Definition and Usage:**
+   *
+   *  The alt attribute specifies an alternate text for an area, if the image 
+   * cannot be displayed. The `alt` attribute provides alternative information for 
+   * an image if a user for some reason cannot view it (because of slow 
+   * connection, an error in the src attribute, or if the user uses a screen 
+   * reader). 
+   * 
+   * The `alt` attribute is required if the `href` attribute is present.
+   *
+   * @return string the value of the alt attribute
+   * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
+   */
+  public function getAlt() {
+    return $this->attrs()->get("alt");
+  }
+
 }
