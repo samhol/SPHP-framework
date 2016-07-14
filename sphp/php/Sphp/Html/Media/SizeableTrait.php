@@ -18,13 +18,12 @@ use Sphp\Html\Attributes\AbstractAttributeManager as AbstractAttributeManager;
  * @filesource
  */
 trait SizeableTrait {
-
   /**
    * Returns the attribute manager attached to the component
    * 
    * @return AbstractAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  // abstract public function attrs();
 
   /**
    * Sets the dimensions of the component (in pixels)
@@ -75,7 +74,7 @@ trait SizeableTrait {
    * @return int|boolean height of the component or false if not set
    */
   public function getHeight() {
-    return $this->parseDimension($this->attrs()->set("height"));
+    return $this->parseDimension($this->attrs()->get("height"));
   }
 
   /**
