@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Media\Img as Img;
 use Sphp\Html\Media\FigCaption as FigCaption;
 
@@ -21,7 +21,21 @@ use Sphp\Html\Media\FigCaption as FigCaption;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FigureSlide extends AbstractContainerComponent implements SlideInterface {
+class FigureSlide extends AbstractComponent implements SlideInterface {
+
+  /**
+   * the image component
+   *
+   * @var Img 
+   */
+  private $img;
+
+  /**
+   * the caption component
+   *
+   * @var FigCaption
+   */
+  private $caption;
 
   /**
    * Constructs a new instance
@@ -35,13 +49,30 @@ class FigureSlide extends AbstractContainerComponent implements SlideInterface {
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
-    $img->cssClasses()->lock("float-center");
+    $this->img = $img;
+    $this->img->cssClasses()->lock("float-center");
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }
-    $caption->cssClasses()->lock("orbit-caption");
-    $this->content()->set("img", $img);
-    $this->content()->set("caption", $caption);
+    $this->caption = $caption;
+    $this->caption->cssClasses()->lock("orbit-caption");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    unset($this->img, $this->caption);
+    parent::__destruct();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __clone() {
+    $this->img = clone $this->img;
+    $this->caption = clone $this->caption;
+    parent::__clone();
   }
 
   /**
@@ -50,8 +81,7 @@ class FigureSlide extends AbstractContainerComponent implements SlideInterface {
    * @return Img the image component
    */
   public function getImg() {
-    $this->content()->get("img");
-    return $this;
+    return $this->img;
   }
 
   /**
@@ -60,8 +90,14 @@ class FigureSlide extends AbstractContainerComponent implements SlideInterface {
    * @return FigCaption the caption component
    */
   public function getCaption() {
-    $this->content()->get("caption");
-    return $this;
+    return $this->caption;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->img . $this->caption;
   }
 
 }

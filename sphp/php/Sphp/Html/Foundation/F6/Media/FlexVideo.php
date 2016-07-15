@@ -118,6 +118,21 @@ class FlexVideo extends AbstractComponent implements LazyLoaderInterface {
   /**
    * {@inheritdoc}
    */
+  public function autoplay($autoplay = true) {
+    $this->getPlayer()->autoplay($autoplay);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function loop($loop = true) {
+    return $this->getPlayer()->loopsetParam($loop);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     return $this->player->getHtml();
   }

@@ -94,6 +94,17 @@ class Orbit extends AbstractContainerComponent {
   }
 
   /**
+   * Appends a new slide component to this orbit
+   *
+   * @param  string|URL|Img $img the image path or the image component
+   * @param  mixed|mixed[] $caption the caption of the slide
+   * @return self for PHP Method Chaining
+   */
+  public function appendVideo($img, $caption = null) {
+    return $this->append(new FigureSlide($img, $caption));
+  }
+
+  /**
    * Returns the number of the slides in this orbit
    * 
    * @return int number of the slides in this orbit
