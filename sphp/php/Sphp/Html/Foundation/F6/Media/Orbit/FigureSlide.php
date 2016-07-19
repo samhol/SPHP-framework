@@ -23,6 +23,8 @@ use Sphp\Html\Media\FigCaption as FigCaption;
  */
 class FigureSlide extends AbstractComponent implements SlideInterface {
 
+  use ActivationTrait;
+
   /**
    * the image component
    *
@@ -45,17 +47,20 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
    */
   public function __construct($img = null, $caption = null) {
     parent::__construct(self::TAG_NAME);
-    $this->cssClasses()->lock("orbit-slide fig-wrapper");
+    $this->cssClasses()
+            ->lock("orbit-slide fig-wrapper");
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
     $this->img = $img;
-    $this->img->cssClasses()->lock("float-center");
+    $this->img->cssClasses()
+            ->lock("float-center");
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }
     $this->caption = $caption;
-    $this->caption->cssClasses()->lock("orbit-caption");
+    $this->caption->cssClasses()
+            ->lock("orbit-caption");
   }
 
   /**

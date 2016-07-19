@@ -22,22 +22,22 @@ of the chosen language (for example `en_US` or `fi_FI`). This `LC_CTYPE` is extr
 from the `locales.alias` file in the servers configuration dir (Should be `/etc/locales.alias`).
 By default, the encoding is frequently `iso-8859-1`.
 
-**So to make an `UTF-8` aware translation PHP way:**
+**So to make an `UTF-8` aware translation native PHP way:**
 
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/localeSetting.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/localeSetting.php", "text", false);
 echo $parsedown->text(<<<MD
 
-However the framework offers an object oriented straightforward way for human 
+However the framework offers an object oriented way for human 
 language translation related processes.
 		
 **... the SPHP way:**
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/sphpTranslation.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/sphpTranslation.php", "text", false);
 
 $locale = $api->getClassLink(Locale::class);
 $translator = $api->getClassLink(Translator::class);
@@ -52,13 +52,13 @@ gettext extension and the current locale information provided by the $locale cla
 The $translator class supports both basic...
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.singular.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.singular.php", "text", false);
 
 echo $parsedown->text(<<<MD
 ...and plural Gettext translation.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.plural.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.plural.php", "text", false);
 
 $vsprintfLink = $php->getFunctionLink("vsprintf");
 echo $parsedown->text(<<<MD
@@ -68,7 +68,7 @@ method for translating a multidimensional array of message strings (plural form
 is not supported).
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.php", "text", false);
 $message =  $api->getClassLink(Message::class);
 $messageContainer =  $api->getClassLink(MessageList::class);
 $echo = $php->getFunctionLink("echo");
@@ -85,7 +85,7 @@ object. If no $translator is given the default translator is used.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Message.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Message.php", "text", false);
 $translatorChangerObserverInterface =  $api->getClassLink(TranslatorChangerObserverInterface::class);
 $translatorChangerChainInterface =  $api->getClassLink(TranslatorChangerChainInterface::class);
 
@@ -108,7 +108,7 @@ its messages by notifying them via the $translatorChangerChainInterface.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/MessageContainer.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/MessageContainer.php", "text", false);
 $topicContainer =  $api->getClassLink(TopicList::class);
 $messageContainers =  $api->getClassLink(MessageList::class, "MessageLists");
 
@@ -127,7 +127,7 @@ $message object translation within a $topicContainer class works the same way as
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/TopicContainer.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/TopicContainer.php", "text", false);
 $calendar =  $api->getClassLink(Calendar::class);
 echo $parsedown->text(<<<MD
 ##Localized calendar related translations
@@ -136,5 +136,5 @@ The $calendar class.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Calendar.php", "Text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Calendar.php", "text", false);
 

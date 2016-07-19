@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Span as Span;
 
 /**
@@ -20,7 +20,9 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Bullet extends AbstractContainerComponent {
+class Bullet extends AbstractComponent {
+  
+  use ActivationTrait;
 
   /**
    *
@@ -41,6 +43,7 @@ class Bullet extends AbstractContainerComponent {
   private $currentDescriptor;
 
   /**
+   * Constructs a new instance
    * 
    * @param int $slideNo
    * @param string $slideText
@@ -50,22 +53,28 @@ class Bullet extends AbstractContainerComponent {
     $this->number = $slideNo;
     parent::__construct("button");
     //$this->content()->set("slide-text", "");
-    $this->content()->set("is_current", "");
+    //$this->content()->set("is_current", "");
     $this->attrs()->lock("data-slide", $slideNo);
     $this->createSpans($slideText, $currentSlideText);
     //$this->createScreenReaderComponents($slideNo);
   }
 
+  /**
+   * 
+   * @param string $slideText
+   * @param type $currentSlideText
+   * @return self for PHP Method Chaining
+   */
   private function createSpans($slideText, $currentSlideText) {
     if ($slideText === null) {
       $slideText = "Slide " . ($this->number + 1) . ". details";
     }
     $this->srDescriptor = new Span($slideText);
     $this->srDescriptor->cssClasses()->lock("show-for-sr");
-    $this->content()->set("slide-text", $this->srDescriptor);
+    //$this->content()->set("slide-text", $this->srDescriptor);
     $this->currentDescriptor = new Span($currentSlideText);
     $this->currentDescriptor->cssClasses()->lock("show-for-sr");
-    $this->content()->set("is_current", "");
+    //$this->content()->set("is_current", "");
     return $this;
   }
 
@@ -90,6 +99,7 @@ class Bullet extends AbstractContainerComponent {
   }
 
   /**
+   * Returns the slide index
    * 
    * @return int slide index
    */
@@ -98,17 +108,14 @@ class Bullet extends AbstractContainerComponent {
   }
 
   /**
-   * 
-   * @param  boolean $active
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
-  public function setActive($active = true) {
-    if ($active) {
-      $this->content()->set("is_current", $this->currentDescriptor);
-    } else {
-      $this->content()->remove("is_current");
+  public function contentToString() {
+    $content = $this->srDescriptor;
+    if ($this->isActive()) {
+      $content .= $this->currentDescriptor;
     }
-    return $this;
+    return $content;
   }
 
 }

@@ -21,16 +21,16 @@ $arraysClass methods for testing differert $arrLink properties.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays1.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays1.php", "text", false);
 echo $parsedown->text(<<<MD
 $arraysClass methods for manipulating array properties and creating new arrays.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays2.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays2.php", "text", false);
 echo $parsedown->text(<<<MD
 $arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$api->getClassMethodLink(Arrays::class, "copy")} 
 tries to make an independent copy out of each key => value pairs it the input 
 array and it uses PHP's object cloning construct for object type.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays3.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays3.php", "text", false);

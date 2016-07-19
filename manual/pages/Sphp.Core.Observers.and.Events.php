@@ -50,7 +50,7 @@ namespace Sphp\Core;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "text", false);
 
 $splObserver = $php->getClassLink(\SplObserver::class);
 $splSubject = $php->getClassLink(\SplSubject::class);
@@ -70,7 +70,7 @@ implementation of $splSubject interface.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/ObservableSubjectTrait.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/ObservableSubjectTrait.php", "text", false);
 
 echo $parsedown->text(<<<MD
 

@@ -36,7 +36,7 @@ class BulletContainer extends AbstractContainerComponent {
   }
 
   /**
-   * Sets a bulletpointing to a Orbit component
+   * Sets a bullet pointing to a Orbit component
    *
    * @param  int|Bullet $bullet
    * @return self for PHP Method Chaining

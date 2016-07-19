@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Grids;
 use Sphp\Html\Container as Container;
 
 /**
- * Trait implements {@link GridInterface}
+ * Trait implements {@link GridInterface} functinality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24

@@ -21,4 +21,18 @@ use Sphp\Html\Lists\LiInterface as LiComponent;
  */
 interface SlideInterface extends LiComponent {
 
+  /**
+   * Sets the slide as active or not
+   * 
+   * @param  boolean $active true for active and false for inactive
+   * @return self for PHP Method Chaining
+   */
+  public function setActive($active = true);
+
+  /**
+   * Checks whether the slide component is set as active or not
+   *
+   * @return boolean true if the slide component is set as active, otherwise false
+   */
+  public function isActive();
 }

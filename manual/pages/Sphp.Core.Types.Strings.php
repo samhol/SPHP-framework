@@ -13,7 +13,7 @@ $StringsLink class is a static utility class for multibyte PHP $strLink comparis
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings1.php", "php", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings1.php", "text", false))
 		->setExampleHeading("Multibyte String testing example")
 		->setOutputSyntaxPaneTitle("String testing results")
 		->printHtml();
@@ -21,7 +21,7 @@ echo $parsedown->text(<<<MD
 $StringsLink class has also a couple of handy PHP $strLink manipulation functions.
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings2.php", "php", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings2.php", "text", false))
 		->setExampleHeading("Multibyte String manipulation example")
 		->setOutputSyntaxPaneTitle("String manipulation results")
 		->printHtml();

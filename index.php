@@ -52,12 +52,12 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
       include_once("manual/sidenav.php");
       ?>
     </div>
-    <div class="mainContent small-12 large-9 xlarge-8 column"> 
+    <div class="mainContent small-12 large-9 xlarge-9 column"> 
       <?php
       include_once("manual/manualBuilder.php");
       ?>
     </div>
-    <div class="show-for-xlarge xlarge-2 column"> 
+    <div class="show-for-xlarge xlarge-1 column"> 
 
     </div>
   </div>

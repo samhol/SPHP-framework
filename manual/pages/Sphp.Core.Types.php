@@ -49,7 +49,7 @@ manipulation.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/multibyteStringProblems.php", "php", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/multibyteStringProblems.php", "text", false))
         ->setExampleHeading("Multibyte string example PHP code")
         ->setOutputSyntaxPaneTitle("Multibyte string example results")
         ->printHtml();

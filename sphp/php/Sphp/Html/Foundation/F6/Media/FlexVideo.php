@@ -94,7 +94,7 @@ class FlexVideo extends AbstractComponent implements LazyLoaderInterface {
   public function setWidescreen($widescreen = true) {
     if ($widescreen) {
       $this->addCssClass("widesreen");
-    } else if ($this->hasCssClass("widesreen")) {
+    } else {
       $this->removeCssClass("widesreen");
     }
     return $this;

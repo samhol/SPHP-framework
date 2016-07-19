@@ -7,7 +7,13 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableTrait as TraversableTrait;
+use Sphp\Html\Lists\Ul as Ul;
+use Sphp\Html\Navigation\Nav as Nav;
+use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
+use Sphp\Html\Foundation\F6\Media\FlexVideo as FlexVideo;
 
 /**
  * Class implements a Foundation Orbit containing {@link SlideInterface} components
@@ -19,7 +25,35 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Orbit extends AbstractContainerComponent {
+class Orbit extends AbstractComponent implements TraversableInterface {
+
+  use TraversableTrait;
+
+  /**
+   *
+   * @var Button 
+   */
+  private $prev;
+
+  /**
+   *
+   * @var Button 
+   */
+  private $next;
+
+  /**
+   * the slide container
+   *
+   * @var Ul
+   */
+  private $slides;
+
+  /**
+   * the bullet container
+   *
+   * @var Nav 
+   */
+  private $bullets;
 
   /**
    * Constructs a new instance
@@ -35,32 +69,142 @@ class Orbit extends AbstractContainerComponent {
    */
   public function __construct($slides = null, $ariaLabel = "") {
     parent::__construct("div");
-    $this->content()->set("orbit-previous", '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>');
-    $this->content()->set("orbit-next", '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>');
-    $this->content()->set("slide-container", new SlideContainer());
-    $this->content()->set("bullet-container", new BulletContainer());
+    $this->slides = new Ul();
+    $this->slides->cssClasses()
+            ->lock("orbit-container");
+    $this->bullets = new Nav();
+    $this->bullets->cssClasses()
+            ->lock("orbit-bullets");
+    $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
+    $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
             ->lock("orbit");
     $this->attrs()
             ->lock("role", "region")
-            ->set("aria-label", $ariaLabel)
+            ->setAria("label", $ariaLabel)
             ->demand("data-orbit");
+    if ($slides !== null) {
+      foreach (is_array($slides) ? $slides : [$slides] as $slide) {
+        $this->append($slide);
+      }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    unset($this->slides, $this->bullets, $this->prev, $this->next);
+    parent::__destruct();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __clone() {
+    $this->slides = clone $this->slides;
+    $this->bullets = clone $this->bullets;
+    $this->prev = clone $this->prev;
+    $this->next = clone $this->next;
+    parent::__clone();
   }
 
   /**
    * 
-   * @return SlideContainer 
+   * @return Ul 
    */
   private function slides() {
-    return $this->content()->get("slide-container");
+    return $this->slides;
   }
 
   /**
    * 
-   * @return BulletContainer 
+   * @return Nav 
    */
   private function bullets() {
-    return $this->content()->get("bullet-container");
+    return $this->bullets;
+  }
+
+  /**
+   * Sets the amount of time, in ms, between slide transitions
+   * 
+   * @precondition $value =&gt; 0
+   * @param  bolean $autoplay true for autoplay and falseotherwise
+   * @return self for PHP Method Chaining
+   */
+  public function autoplay($autoplay = true) {
+    $this->attrs()->set("data-auto-play", $autoplay ? "true" : "false");
+    return $this;
+  }
+
+  /**
+   * Sets the amount of time, in ms, between slide transitions
+   * 
+   * @precondition $value =&gt; 0
+   * @param  int $value amount of time, in ms, between slide transitions
+   * @return self for PHP Method Chaining
+   */
+  public function setTimerDelay($value = 5000) {
+    $this->attrs()->set("data-timer-delay", $value);
+    return $this;
+  }
+
+  /**
+   * Sets the looping on or off
+   * 
+   * @param  boolean $loop true for on and false for off
+   * @return self for PHP Method Chaining
+   */
+  public function loop($loop = true) {
+    $this->attrs()->set("data-infinite-wrap", $loop ? "true" : "false");
+    return $this;
+  }
+
+  /**
+   * Sets the Orbit to bind keyboard events to the slider, to animate frames with arrow keys
+   * 
+   * @param  boolean $accessible true for accessibility and false for not
+   * @return self for PHP Method Chaining
+   */
+  public function accessibility($accessible = true) {
+    $this->attrs()->set("data-accessible", $accessible ? "true" : "false");
+    return $this;
+  }
+
+  /**
+   * Sets the the timing function to pause animation on hover
+   * 
+   * @param  boolean $pause true for pausing and false for not pausing
+   * @return self for PHP Method Chaining
+   */
+  public function pauseOnHover($pause = true) {
+    $this->attrs()->set("data-pause-on-hover", $pause ? "true" : "false");
+    return $this;
+  }
+
+
+  /**
+   * Sets the slide of given index active
+   *
+   * @param  int $index
+   * @return self for PHP Method Chaining
+   */
+  public function setActive($index) {
+    foreach ($this->slides as $no => $slide) {
+      if ($no == $index) {
+        $slide->setActive(true);
+      } else {
+        $slide->setActive(false);
+      }
+    }
+    foreach ($this->bullets as $no => $bullet) {
+      if ($no == $index) {
+        $bullet->setActive(true);
+      } else {
+        $bullet->setActive(false);
+      }
+    }
+    return $this;
   }
 
   /**
@@ -76,9 +220,12 @@ class Orbit extends AbstractContainerComponent {
    * @return self for PHP Method Chaining
    */
   public function append($slide) {
+    if (!($slide instanceof SlideInterface)) {
+      $slide = new Slide($slide);
+    }
     $this->slides()->append($slide);
     $n = $this->slides()->count();
-    $this->bullets()->set($n - 1);
+    $this->bullets()->append(new Bullet($n - 1));
     return $this;
   }
 
@@ -96,12 +243,42 @@ class Orbit extends AbstractContainerComponent {
   /**
    * Appends a new slide component to this orbit
    *
-   * @param  string|URL|Img $img the image path or the image component
-   * @param  mixed|mixed[] $caption the caption of the slide
+   * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
    * @return self for PHP Method Chaining
    */
-  public function appendVideo($img, $caption = null) {
-    return $this->append(new FigureSlide($img, $caption));
+  public function appendVideo($player) {
+    return $this->append(new VideoPlayerSlide($player));
+  }
+
+  /**
+   * Appends a new slide component containing a {@link YoutubePlayer} instance
+   * 
+   * @param  string $videoId the id of the YouTube video or playlist
+   * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
+   * @return self for PHP Method Chaining
+   */
+  public function appendYoutubeVideo($videoId, $isPlaylist = false) {
+    return $this->appendVideo(FlexVideo::youtube($videoId, $isPlaylist));
+  }
+
+  /**
+   * Appends a new slide component containing a {@link VimeoPlayer} instance
+   * 
+   * @param  string $videoId the id of the Vimeo video
+   * @return self for PHP Method Chaining
+   */
+  public function appendVimeoVideo($videoId) {
+    return $this->appendVideo(FlexVideo::vimeo($videoId));
+  }
+
+  /**
+   * Appends a new slide component containing a {@link DailyMotionPlayer} instance
+   * 
+   * @param  string $videoId the id of the DailyMotion video
+   * @return self for PHP Method Chaining
+   */
+  public function appendDailymotionVideo($videoId) {
+    return $this->appendVideo(FlexVideo::dailymotion($videoId));
   }
 
   /**
@@ -111,6 +288,20 @@ class Orbit extends AbstractContainerComponent {
    */
   public function count() {
     return $this->slides()->count();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return $this->slides()->getIterator();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->prev . $this->next . $this->slides . $this->bullets;
   }
 
 }

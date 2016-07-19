@@ -23,7 +23,7 @@ environment by simply using multiple instances of $phpConfig.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/PHPConfigurator.php", "php", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/PHPConfigurator.php", "text", false))
         ->setExampleHeading("PHP environment manipulation example")
         ->printHtml();
 
@@ -40,5 +40,5 @@ Every $config instance includes also instances of $phpConfig and $pathFinder.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Configurator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Configurator.php", "text", false);
 

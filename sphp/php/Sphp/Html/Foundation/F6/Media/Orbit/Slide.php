@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
+use Sphp\Html\Lists\Li as Li;
+
 /**
  * Class implements a slide for Foundation {@link Orbit} components
  *
@@ -17,23 +19,25 @@ namespace Sphp\Html\Foundation\F6\Media\Orbit;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Slide extends AbstractSlide {
+class Slide extends Li implements SlideInterface {
+
+  use ActivationTrait;
 
   /**
-   * Set the content of the slide
+   * Constructs a new instance
    *
    * **Important!**
    *
-   * Parameter <var>mixed $content</var> can be of any type
-   * that converts to a string. So also an object of any class that implements
-   * magic method `__toString()` is allowed.
+   * Parameter <var>mixed $content</var> & <var>mixed $caption</var> can be of
+   * any type that converts to a string. So also an object of any class that
+   * implements magic method `__toString()` is allowed.
    *
-   * @param  mixed $content the content of the slide
-   * @return self for PHP Method Chaining
+   * @param  mixed|mixed[] $content the content of the slide
+   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function setContent($content) {
-    $this->content()->clear()->append($content);
-    return $this;
+  public function __construct($content = null) {
+    parent::__construct($content);
+    $this->cssClasses()->lock("orbit-slide");
   }
 
 }

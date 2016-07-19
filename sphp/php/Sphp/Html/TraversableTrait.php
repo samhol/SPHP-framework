@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use ArrayIterator;
 
 /**
- * Trait implements {@link TraversableInterface} functionality
+ * Trait implements some {@link TraversableInterface} functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-19

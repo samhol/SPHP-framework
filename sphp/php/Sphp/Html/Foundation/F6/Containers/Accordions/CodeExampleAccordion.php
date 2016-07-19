@@ -87,6 +87,11 @@ class CodeExampleAccordion extends Accordion {
     }
   }
 
+  /**
+   * 
+   * @param  mixed $output
+   * @return self a new instance presenting the example 
+   */
   private function insertOutput($output) {
     if ($this->outputExecutionPane == true) {
       $this->outputPane->replaceContent($output);
@@ -106,6 +111,9 @@ class CodeExampleAccordion extends Accordion {
               ->hide();
     } else {
       $this->outputSyntaxPane->setSource($output, $lang = $this->outputSyntaxHighlighing);
+    }
+    if ($this->outputSyntaxHighlighing == "text") {
+       $this->outputSyntaxPane->useDefaultContentCopyController(false);
     }
     return $this;
   }
@@ -184,7 +192,6 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function useDefaultTitles() {
-
     $this->setExampleHeading("PHP code")
             ->setOutputSyntaxPaneTitle("Execution result as highlighted code")
             ->setOutputPaneTitle("Execution result as HTML5");

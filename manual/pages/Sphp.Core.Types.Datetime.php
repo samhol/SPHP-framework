@@ -15,7 +15,7 @@ comparing different dates and times to one another.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Datetime.php", "php", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Datetime.php", "text", false))
 		->setExampleHeading("Comparisons example PHP code")
 		->setOutputPaneTitle("Comparison results")
 		->printHtml();

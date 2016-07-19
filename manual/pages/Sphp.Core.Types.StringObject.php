@@ -18,5 +18,5 @@ deal with the issues concerning multibyte encodings in PHP.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/StringObject.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/StringObject.php", "text", false);
 

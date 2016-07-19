@@ -70,7 +70,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row) {
-    if (!($row instanceof Row)) {
+    if (!($row instanceof \Sphp\Html\Foundation\F6\Grids\RowInterface)) {
       $row = new FormRow($row);
     }
     $this->content()->append($row);

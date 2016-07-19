@@ -8,8 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Media\Img as Img;
-use Sphp\Html\Media\FigCaption as FigCaption;
 use Sphp\Html\Foundation\F6\Media\FlexVideo as FlexVideo;
 use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
 
@@ -25,6 +23,8 @@ use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
  */
 class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
 
+  use ActivationTrait;
+
   /**
    *
    * @var FlexVideo
@@ -34,7 +34,7 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
   /**
    * Constructs a new instance
    *
-   * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
+   * @param  VideoPlayerInterface $player the image path or the image component
    */
   public function __construct($player = null) {
     parent::__construct(self::TAG_NAME);

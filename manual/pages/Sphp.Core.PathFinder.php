@@ -20,5 +20,5 @@ $pathFinder supports transformation of relative filesystem paths to absolute pat
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/PathFinder.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/PathFinder.php", "text", false);
 
