@@ -32,6 +32,7 @@ MD
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 $btn_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+
 $orbitIntro->append($parsedown->text(<<<MD
 ##Foundation 6 Buttons and Button containers
 $btn_ns
@@ -106,6 +107,3 @@ MD
 
 $orbitIntro->printHtml();
 ?>
-
-
-
