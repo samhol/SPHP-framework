@@ -25,9 +25,7 @@ $visibilityHandlingInterface properties can be used directly in any $ComponentIn
 by simply wrapping the object with a $visibilityHandler component.
 MD
 );
-$ex1 = (new CodeExampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/Structure/VisibilityHandler.php'));
-$ex1->getOutputViewer()->setCssClass("sphp-grid-example");
-$ex1->printHtml();
+CodeExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Structure/VisibilityHandler.php');
 echo $parsedown->text(<<<MD
 ####Visibility handling extending $visibilityHandlingInterface with the $visibilityHandlingTrait
 
@@ -39,7 +37,3 @@ MD
 );
 $ex1->fromFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/Structure/BlockGrid2.php')
 		->printHtml();;
-
-
-
-
