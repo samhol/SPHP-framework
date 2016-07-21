@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\InputInterface as InputInterface;
@@ -46,12 +45,13 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
    * Constructs a new instance
    *
    * @param  InputInterface $input the actual input component
-   * @param  int $small column width for small screens (0-12)
-   * @param  int $medium column width for medium screens (0-12)
-   * @param  int $large column width for large screens (0-12)
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @param  int $s column width for small screens (1-12)
+   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
+   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
+   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
+   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    */
-  public function __construct(InputInterface $input, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
+  public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     parent::__construct("div");
     $this->cssClasses()->lock("column");
      $widthSetter = function ($width, $sreenSize) {
@@ -59,11 +59,11 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
         $this->cssClasses()->add("$sreenSize-$width");
       }
     };
-    $widthSetter($small, "small");
-    $widthSetter($medium, "medium");
-    $widthSetter($large, "large");
-    $widthSetter($xlarge, "xlarge");
-    $widthSetter($xxlarge, "xxlarge");
+    $widthSetter($s, "small");
+    $widthSetter($m, "medium");
+    $widthSetter($l, "large");
+    $widthSetter($xl, "xlarge");
+    $widthSetter($xxl, "xxlarge");
     $this->input = $input;
   }
 

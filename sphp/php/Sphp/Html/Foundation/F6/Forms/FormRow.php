@@ -28,12 +28,11 @@ class FormRow extends AbstractRow {
    * {@inheritdoc}
    */
   public function appendColumn($content, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
-    //echo "<pre>";
-    //var_dump($content);
+    //echo "here " . $content;
     if ($content instanceof InputInterface) {
       $this->append(new InputColumn($content, $small, $medium, $large, $xlarge, $xxlarge));
     } else {
-      parent::appendColumn($content, $small, $medium, $large);
+      parent::appendColumn($content, $small, $medium, $large, $xlarge, $xxlarge);
     }
     return $this;
   }

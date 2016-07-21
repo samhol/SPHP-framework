@@ -62,19 +62,19 @@ trait ColumnTrait {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $small column width for small screens (0-12) or false for inheritance
-   * @param  int|boolean $medium column width for medium screens (0-12) or false for inheritance
-   * @param  int|boolean $large column width for large screens (0-12) or false for inheritance
-   * @param  int|boolean $xlarge column width for x-large screens (0-12) or false for inheritance
-   * @param  int|boolean $xxlarge column width for xx-large screen)s (0-12) or false for inheritance
+   * @param  int $s column width for small screens (1-12)
+   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
+   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
+   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
+   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function setWidths($small, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
-    $this->setWidth($small, "small")
-            ->setWidth($medium, "medium")
-            ->setWidth($large, "large")
-            ->setWidth($xlarge, "xlarge")
-            ->setWidth($xxlarge, "xxlarge");
+  public function setWidths($s, $m = false, $l = false, $xl = false, $xxl = false) {
+    $this->setWidth($s, "small")
+            ->setWidth($m, "medium")
+            ->setWidth($l, "large")
+            ->setWidth($xl, "xlarge")
+            ->setWidth($xxl, "xxlarge");
     return $this;
   }
 
@@ -87,7 +87,8 @@ trait ColumnTrait {
    * and larger devices will inherit those styles. Customize for
    * larger screens as necessary.
    *
-   * @precondition The value of the `$width` parameter is between 1-12 or false for inheritance
+   * @precondition The value of the `$width` parameter is between 1-12 or false 
+   *               for inheritance from smaller screen sizes
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  int|boolean $width the width of the column or false for inheritance
    * @param  string $screen the target screen size
@@ -98,7 +99,7 @@ trait ColumnTrait {
       $width = ColumnInterface::FULL_WIDTH;
     }
     $this->setWidthInherited($screen);
-    if ($width != false) {
+    if ($width !== false) {
       $this->cssClasses()->add("$screen-$width");
     }
     return $this;
@@ -109,11 +110,12 @@ trait ColumnTrait {
    * 
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return int the width of the column (0-12)
+   * @return int|boolean the width of the column (1-12) or false for inheritance 
+   *         from smaller screens
    */
-  public function getWidth($screenSize = "small") {
+  public function getWidth($screenSize) {
     $parseWidth = function($screenName) {
-      $result = 0;
+      $result = false;
       for ($i = 1; $i <= 12; $i++) {
         if ($this->cssClasses()->contains("$screenName-$i")) {
           $result = $i;
@@ -123,7 +125,7 @@ trait ColumnTrait {
       return $result;
     };
     $width = 0;
-    foreach (Screen::getScreenSizeNames() as $screenName) {
+    foreach (Screen::getScreenSize() as $screenName) {
       $width = $parseWidth($screenName);
       if ($screenName == $screenSize) {
         break;
@@ -176,29 +178,30 @@ trait ColumnTrait {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $small column offset for small screens (0-11) or false for inheritance
-   * @param  int|boolean $medium column offset for medium screens (0-11) or false for inheritance
-   * @param  int|boolean $large column offset for large screens (0-11) or false for inheritance
-   * @param  int|boolean $xlarge column offset for x-large screens (0-11) or false for inheritance
-   * @param  int|boolean $xxlarge column offset for xx-large screen)s (0-11) or false for inheritance
+   * @param  int|boolean $s column offset for small screens (0-11) or false for inheritance
+   * @param  int|boolean $m column offset for medium screens (0-11) or false for inheritance
+   * @param  int|boolean $l column offset for large screens (0-11) or false for inheritance
+   * @param  int|boolean $xl column offset for x-large screens (0-11) or false for inheritance
+   * @param  int|boolean $xxl column offset for xx-large screen)s (0-11) or false for inheritance
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function setGridOffsets($small, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
-    return $this->setGridOffset($small, "small")
-                    ->setGridOffset($medium, "medium")
-                    ->setGridOffset($large, "large")
-                    ->setGridOffset($xlarge, "xlarge")
-                    ->setGridOffset($xxlarge, "xxlarge");
+  public function setGridOffsets($s, $m = false, $l = false, $xl = false, $xxl = false) {
+    $this->setGridOffset($s, "small")
+            ->setGridOffset($m, "medium")
+            ->setGridOffset($l, "large")
+            ->setGridOffset($xl, "xlarge")
+            ->setGridOffset($xxl, "xxlarge");
+    return $this;
   }
 
   /**
-   * Returns the column width for the target screen
+   * Returns the column offset for the target screen
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the offset setting of the column (0-11)
+   * @param  string $screenSize the target screen type
+   * @return int the width of the column (0-11)
    */
-  public function getGridOffset($screenSize = "small") {
+  public function getGridOffset($screenSize) {
     $parseOffset = function($screen) {
       $result = 0;
       for ($i = 0; $i <= 11; $i++) {
@@ -209,7 +212,7 @@ trait ColumnTrait {
       return $result;
     };
     $offset = 0;
-    foreach (Screen::getScreenSizeNames() as $screenName) {
+    foreach (Screen::getScreenSize() as $screenName) {
       $offset = $parseOffset($screenName);
       if ($screenName == $screenSize) {
         break;
@@ -245,7 +248,7 @@ trait ColumnTrait {
   }
 
   /**
-   * Centers the column to the {@link Row}
+   * Centers the column to the {@link RowInterface}
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size

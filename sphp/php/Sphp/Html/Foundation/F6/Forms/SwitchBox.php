@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
 /**
- * Slider allows to drag a handle to select a specific value from a range
+ * Class implements a Foundation based checkbox switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-17

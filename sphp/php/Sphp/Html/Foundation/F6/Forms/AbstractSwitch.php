@@ -7,14 +7,14 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
 
 /**
- * Slider allows to drag a handle to select a specific value from a range
+ * Class implements an abstract foundation based switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-17
@@ -23,7 +23,25 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractContainerComponent implements LabelableInputInterface {
+abstract class AbstractSwitch extends AbstractComponent implements LabelableInputInterface {
+
+  /**
+   *
+   * @var Choicebox 
+   */
+  private $input;
+
+  /**
+   *
+   * @var Label 
+   */
+  private $paddle;
+
+  /**
+   *
+   * @var Span
+   */
+  private $screenReaderInfo;
 
   /**
    * Constructs a new instance
@@ -34,7 +52,7 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
   public function __construct(Choicebox $box, $srText = null) {
     $box->cssClasses()->lock("switch-input");
     parent::__construct("div");
-    $this->content()["input"] = $box;
+    $this->input = $box;
     $this->cssClasses()->lock("switch");
     $box->identify();
     $screenReaderInfo = new Span($srText);
@@ -42,25 +60,7 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
             ->lock("show-for-sr");
     $handle = new Label($screenReaderInfo, $box);
     $handle->cssClasses()->lock("switch-paddle");
-    $this->content()["switch-paddle"] = $handle;
-  }
-
-  /**
-   * Returns the label of the slider
-   * 
-   * @return Label the label describing the slider
-   */
-  private function getInnerLabel() {
-    return $this->content()["switch-paddle"];
-  }
-
-  /**
-   * Returns the actual (hidden) form element containg the value of the slider
-   * 
-   * @return Choicebox the actual (hidden) form element containg the value of the slider
-   */
-  private function getInput() {
-    return $this->content("input");
+    $this->paddle = $handle;
   }
 
   /**
@@ -79,8 +79,8 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
     $inactiveLabel->attrs()
             ->lock("aria-hidden", "true")
             ->classes()->lock("switch-inactive");
-    $this->getInnerLabel()->set("switch-active", $activeLabel);
-    $this->getInnerLabel()->set("switch-inactive", $inactiveLabel);
+    $this->paddle->set("switch-active", $activeLabel);
+    $this->paddle->set("switch-inactive", $inactiveLabel);
     return $this;
   }
 
@@ -88,7 +88,7 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
    * {@inheritdoc}
    */
   public function disable($disabled = true) {
-    $this->getInput()->disable($disabled);
+    $this->input->disable($disabled);
     return $this;
   }
 
@@ -96,21 +96,21 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
    * {@inheritdoc}
    */
   public function isEnabled() {
-    return $this->getInput()->isEnabled();
+    return $this->input->isEnabled();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getName() {
-    return $this->getInput()->getName();
+    return $this->input->getName();
   }
 
   /**
    * {@inheritdoc}
    */
   public function setName($name) {
-    $this->getInput()->setName($name);
+    $this->input->setName($name);
     return $this;
   }
 
@@ -118,21 +118,21 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
    * {@inheritdoc}
    */
   public function isNamed() {
-    return $this->getInput()->isNamed();
+    return $this->input->isNamed();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getValue() {
-    return $this->getInput()->getValue();
+    return $this->input->getValue();
   }
 
   /**
    * {@inheritdoc}
    */
   public function setValue($value) {
-    $this->getInput()->setValue($value);
+    $this->input->setValue($value);
     return $this;
   }
 
@@ -143,8 +143,8 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
    * @return self for PHP Method Chaining
    */
   public function setRequired($required = true) {
-     $this->getInput()->setRequired($required);
-     return $this;
+    $this->input->setRequired($required);
+    return $this;
   }
 
   /**
@@ -153,15 +153,22 @@ class AbstractSwitch extends AbstractContainerComponent implements LabelableInpu
    * @return boolean true if the input must have a value before form submission, false otherwise
    */
   public function isRequired() {
-    return $this->getInput()->isRequired();
+    return $this->input->isRequired();
   }
 
   /**
    * {@inheritdoc}
    */
   public function createLabel($label = null) {
-    $this->getInput()->createLabel($label);
+    $this->input->createLabel($label);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->input . $this->paddle;
   }
 
 }

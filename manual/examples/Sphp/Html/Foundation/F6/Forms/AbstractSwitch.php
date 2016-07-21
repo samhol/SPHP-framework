@@ -11,7 +11,7 @@ $radios[] = (new RadioSwitch("foo", "bar", true))->setInnerLabels("Bar", "Foo");
 $radios[] = (new RadioSwitch("foo", "foo", false))->setInnerLabels("Foo", "Bar");
 
 $form = new GridForm();
-$form->append([$boxes]);
-$form->append([$radios]);
+$form->append($boxes);
+$form->append($radios);
 echo $form;
 ?>

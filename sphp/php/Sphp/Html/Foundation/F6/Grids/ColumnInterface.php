@@ -40,12 +40,8 @@ interface ColumnInterface {
    * larger devices will inherit those styles. Customize for larger screens 
    * as necessary.
    *
-   * @precondition parameter `$width` has an integer value between 0-12
-   * @precondition parameter `$screen` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
+   * @precondition The value of the `$width` parameter is between 1-12 or false for inheritance
+   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  int $width the width of the column
    * @param  int|string|BitMask $screens the target screen size(s)
    * @return self for PHP Method Chaining
@@ -55,120 +51,89 @@ interface ColumnInterface {
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
    *
-   * @precondition parameter `$screens` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
-  public function setWidthInherited($screens);
+  public function setWidthInherited($screenSize);
 
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $small column width for small screens (0-12)
-   * @param  int|boolean $medium column width for medium screens (0-12)
-   * @param  int|boolean $large column width for large screens (0-12)
-   * @param  int|boolean $xlarge column width for x-large screens (0-12)
-   * @param  int|boolean $xxlarge column width for xx-large screen)s (0-12)
+   * @param  int $s column width for small screens (1-12)
+   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
+   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
+   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
+   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    * @return self for PHP Method Chaining
    */
-  public function setWidths($small, $medium = false, $large = false, $xlarge = false, $xxlarge = false);
+  public function setWidths($s, $m = false, $l = false, $xl = false, $xxl = false);
 
   /**
    * Returns the column width associated with the given screen size
    * 
-   * @preconditions parameter `$screen` is either one of the constants 
-   *         {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM},
-   *         {@link Screen::LARGE} or one of the 
-   *         strings `"small"`, `"medium"`, `"large"`
-   * @param  int|string $screen the target screen type
-   * @return int the width of the column (0-12)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return int|boolean the width of the column (1-12) or false for inheritance 
+   *         from smaller screens
    */
-  public function getWidth($screen = "small");
+  public function getWidth($screenSize);
 
   /**
-   * Offsets the column component to the right
+   * Offsets the column component to right on the associated screen sizes
    * 
    * Moves Column block up to 11 columns to the right.
    *
-   * @precondition parameter `$width` has an integer value between 0-11
-   * @precondition parameter `$screens` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
-   * @param  int $offset the number of the columns moved
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @precondition The value of the `$offset` parameter is between 0-11 or false for inheritance
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  int|boolean $offset the column offset (0-11) or false for inheritance
+   * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
-  public function setGridOffset($offset, $screens = "small");
+  public function setGridOffset($offset, $screenSize = "small");
 
   /**
-   * Returns the column width for the target screen
+   * Returns the column offset for the target screen
    *
-   * @preconditions parameter `$screen` is either one of the constants 
-   *         {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM},
-   *         {@link Screen::LARGE} or one of the 
-   *         strings `"small"`, `"medium"`, `"large"`
-   * @param  int $screen the target screen type
-   * @return int the width of the column (0-12)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen type
+   * @return int the width of the column (0-11)
    */
-  public function getGridOffset($screen);
+  public function getGridOffset($screenSize);
 
   /**
    * Unsets the grid offset of the column
    *
-   * @precondition parameter `$screens` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
-  public function inheritGridOffset($screens);
+  public function inheritGridOffset($screenSize);
 
   /**
    * Returns the amount of the space the column uses from the grid row
    * 
-   * @preconditions  parameter `$screen` is either one of the constants 
-   *                 {@link Screen::SMALL}, 
-   *                 {@link Screen::MEDIUM},
-   *                 {@link Screen::LARGE} or one of the strings 
-   *                 `"small"`, `"medium"`, `"large"`
-   * @param  int|string $screen
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
    * @return int
    */
-  public function countUsedSpace($screen);
+  public function countUsedSpace($screenSize);
 
   /**
-   * Centers the column to the {@link Row}
+   * Centers the column to the {@link RowInterface}
    *
-   * @precondition parameter `$screens` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
-  public function centerize($screens);
+  public function centerize($screenSize);
 
   /**
    * Resets the centering of the column
    *
-   * @precondition parameter `$screens` has a bitmask value combining named 
-   *         constants {@link Screen::SMALL}, 
-   *         {@link Screen::MEDIUM} and 
-   *         {@link Screen::LARGE} or aa combination of strings 
-   *         `"small"`, `"medium"`, `"large"`
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
-  public function uncenterize($screens);
+  public function uncenterize($screenSize);
 }

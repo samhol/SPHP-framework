@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-
 /**
  * Interface defines Foudation Screen Size Visibility Control settings
  * 
@@ -51,7 +50,7 @@ interface VisibilityHandlingInterface {
    * @throws \InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFrom($screenType);
+  public function hideOnlyFromSize($screenType);
 
   /**
    * Sets the component visible for the given screen sizes
@@ -98,21 +97,4 @@ interface VisibilityHandlingInterface {
    */
   public function hideForLandscape($hide = true);
 
-  /**
-   * Hide/shows the component for touch screen devices (as determined by 
-   * {@link http://modernizr.com/ modernizr})
-   * 
-   * @param  boolean $hide true if hidden, false otherwise
-   * @return self for PHP Method Chaining
-   */
-  public function hideForTouchScreenDevices($hide = true);
-
-  /**
-   * Hide/shows the component for non touch screen devices (as determined by 
-   * {@link http://modernizr.com/ modernizr})
-   * 
-   * @param  boolean $hide true if hidden, false otherwise
-   * @return self for PHP Method Chaining
-   */
-  public function hideForNonTouchScreenDevices($hide = true);
 }

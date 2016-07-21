@@ -11,7 +11,6 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\WrappingContainer as WrappingContainer;
-use Sphp\Core\Types\BitMask as BitMask;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
 
 /**
@@ -54,11 +53,13 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
    * configuration and layout separately for each breakpoint.
    *
    * @param  mixed $items list elements
-   * @param  int $small the number of items in a row for small screens
-   * @param  int $medium the number of items in a row for medium screens
-   * @param  int $large the number of items in a row for large screens
+   * @param  int $s column width for small screens (0-8)
+   * @param  int|boolean $m column width for medium screens (0-8) or false for inheritance
+   * @param  int|boolean $l column width for large screens (0-8) or false for inheritance
+   * @param  int|boolean $xl column width for x-large screens (0-8) or false for inheritance
+   * @param  int|boolean $xxl column width for xx-large screen)s (0-8) or false for inheritance
    */
-  public function __construct($items = null, $small = false, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
+  public function __construct($items = null, $s = 3, $m = false, $l = false, $xl = false, $xxl = false) {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumn)) {
         $c = new BlockGridColumn($c);
@@ -71,17 +72,29 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
         $this->cssClasses()->add("$sreenSize-up-$width");
       }
     };
-    $widthSetter($small, "small");
-    $widthSetter($medium, "medium");
-    $widthSetter($large, "large");
-    $widthSetter($xlarge, "xlarge");
-    $widthSetter($xxlarge, "xxlarge");
+    $widthSetter($s, "small");
+    $widthSetter($m, "medium");
+    $widthSetter($l, "large");
+    $widthSetter($xl, "xlarge");
+    $widthSetter($xxl, "xxlarge");
     if ($items !== null) {
       foreach (is_array($items) ? $items : [$items] as $item) {
         $this->append($item);
       }
     }
     $this->cssClasses()->lock("row");
+  }
+
+  /**
+   * 
+   * @param  string $screenSize
+   * @return string[]
+   */
+  private static function createClasses($screenSize) {
+    for ($i = 1; $i <= 8; $i++) {
+      $classes[] = "$screenSize-up-$i";
+    }
+    return $classes;
   }
 
   /**
@@ -98,19 +111,20 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $small number of columns in a row for small screens (0-8) or false for inheritance
-   * @param  int|boolean $medium number of columns in a row for medium screens (0-8) or false for inheritance
-   * @param  int|boolean $large number of columns in a row for large screens (0-8) or false for inheritance
-   * @param  int|boolean $xlarge number of columns in a row for x-large screens (0-8) or false for inheritance
-   * @param  int|boolean $xxlarge number of columns in a row for xx-large screen)s (0-8) or false for inheritance
+   * @param  int $s number of columns in a row on small screens (1-8)
+   * @param  int|boolean $m number of columns in a row on medium screens (1-8) or false for inheritance
+   * @param  int|boolean $l number of columns in a row on large screens (1-8) or false for inheritance
+   * @param  int|boolean $xl number of columns in a row on x-large screens (1-8) or false for inheritance
+   * @param  int|boolean $xxl number of columns in a row on xx-large screen)s (1-8) or false for inheritance
    * @return self for PHP Method Chaining
    */
-  public function setBlockGrids($small = false, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
-    return $this->setBlockGrid($small, "small")
-                    ->setBlockGrid($medium, "medium")
-                    ->setBlockGrid($large, "large")
-                    ->setBlockGrid($xlarge, "xlarge")
-                    ->setBlockGrid($xxlarge, "xxlarge");
+  public function setBlockGrids($s, $m = false, $l = false, $xl = false, $xxl = false) {
+    $this->setBlockGrid($s, "small")
+            ->setBlockGrid($m, "medium")
+            ->setBlockGrid($l, "large")
+            ->setBlockGrid($xl, "xlarge")
+            ->setBlockGrid($xxl, "xxlarge");
+    return $this;
   }
 
   /**
@@ -124,7 +138,7 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
    *
    * @precondition The value of the `$num` parameter is between (1-8) or false for inheritance
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|boolean $num number of columns in a row (0-12) or false for inheritance
+   * @param  int|boolean $num number of columns in a row (1-8) or false for inheritance
    * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
@@ -144,7 +158,7 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return int the block grid value of the target screen (1-12)
+   * @return int the block grid value of the target screen (1-8)
    */
   public function getBlockGridValue($screenSize) {
     $parseGrid = function($screenName) {
@@ -157,9 +171,9 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
       }
       return $result;
     };
-    $screenName = Screen::getScreenName($screenSize);
+    //$screenName = Screen::getScreenName($screenSize);
     $num = self::INHERITED;
-    foreach (Screen::getScreenSizeNames() as $screenName) {
+    foreach (Screen::getScreenSize() as $screenName) {
       $num = $parseGrid($screenName);
       if ($screenName == $screenSize) {
         break;
@@ -171,16 +185,12 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
   /**
    * Unsets the block grid setting for the given screen widths
    *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return self for PHP Method Chaining
    */
   protected function unsetBlockGrid($screenSize) {
-    $classes = [];
-    for ($i = 1; $i <= 8; $i++) {
-      $classes[] = "$screenSize-up-$i";
-    }
-    $this->cssClasses()->remove($classes);
+    $this->cssClasses()->remove(static::createClasses($screenSize));
     return $this;
   }
 

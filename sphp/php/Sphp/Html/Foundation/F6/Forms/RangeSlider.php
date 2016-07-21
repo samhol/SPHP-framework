@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;

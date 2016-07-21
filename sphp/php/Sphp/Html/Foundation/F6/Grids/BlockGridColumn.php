@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Grids;
 use Sphp\Html\Div as Div;
 
 /**
- * Class BlockGridColumn
+ * Class implements a Foundation Block Grid Column
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-26

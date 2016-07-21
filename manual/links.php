@@ -28,7 +28,8 @@ $sidenavLinks["html_basics"] = ["group" => "HTML Basics", "sub" =>
 ];
 $sidenavLinks["foundation6"] = ["group" => "Foundation 6", "sub" =>
     [
-        ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Core", "text" => "Introduction"],
+        ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6", "text" => "Introduction"],
+        ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Core", "text" => "Core"],
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Grids", "text" => "Grids"],
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Containers", "text" => "Containers"],
         ["href" => "$httpRoot?page=Sphp.Html.Foundation.F6.Navigation", "text" => "Navigation components"],

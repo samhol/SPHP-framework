@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
 
 /**
- * Slider allows to drag a handle to select a specific value from a range
+ * Class implements a Foundation based radio switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-17

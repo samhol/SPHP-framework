@@ -21,9 +21,9 @@ use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VisibilityHandler implements \Sphp\Html\ContentInterface {
+class VisibilityHandler implements \Sphp\Html\ContentInterface, VisibilityHandlingInterface {
 
-  use VisibilityHandlingTrait;
+  use VisibilityHandlingTrait, \Sphp\Html\ContentTrait;
 
   /**
    * 
@@ -36,14 +36,6 @@ class VisibilityHandler implements \Sphp\Html\ContentInterface {
   }
 
   /**
-   * 
-   * @return AttributeManager
-   */
-  public function attrs() {
-    return $this->htmlComponent->attrs();
-  }
-
-  /**
    * Returns the class attribute object
    * 
    * @return MultiValueAttribute the class attribute object
@@ -52,8 +44,12 @@ class VisibilityHandler implements \Sphp\Html\ContentInterface {
     return $this->htmlComponent->attrs()->classes();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getHtml() {
     return $this->htmlComponent->getHtml();
   }
+
 
 }

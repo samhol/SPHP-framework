@@ -85,31 +85,8 @@ External client side libraries:
 </div>
 EOD
 );
-$load("Sphp.Html.Foundation.php");
-echo $parsedown->text(<<<EOD
+$load("Sphp.Html.Foundation-orbit-intro.php");
 
-###Some clientside component examples
-		
-####A simple implementation of multiple Videolinks:
-EOD
-);
-$codeView = (new SyntaxHighlighter())
-        ->loadFromFile(EXAMPLE_DIR . "Sphp/Html/Foundation/F6/Media/FlexVideo.php")
-        ->setHeading("PHP code for FlexVideo videowall using Foundation Grid layout")
-        ->printHtml();
-include EXAMPLE_DIR . "Sphp/Html/Foundation/F6/Media/FlexVideo.php";
-
-
-//PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/Foundation/Navigation/TopBar.php");
-
-
-/* $photoAlbum = new PhotoAlbum(["photos"]);
-  echo $photoAlbum; 
-$unix= (new Apps\SyntaxHighlighter())->loadFromFile(\Sphp\Core\Configuration::useDomain("manual")->get("SNIPPETS_DIR")."unix-install-composer.txt")
-        ->useDefaultContentCopyController(false)
-        ->useFooter(false)
-        ->showLineNumbers(false)
-        ->addCssClass("plain");*/
 echo $parsedown->text(<<<MD
 ###SYSTEM REQUIREMENTS
 

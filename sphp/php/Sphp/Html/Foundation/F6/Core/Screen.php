@@ -81,11 +81,6 @@ class Screen {
   const PORTRAIT = 0b1000000;
 
   /**
-   * Touch enabled screentype
-   */
-  const TOUCH = 0b10000000;
-
-  /**
    * Screen Readers
    */
   const SCREENREADER = 0b100000000;
@@ -94,9 +89,83 @@ class Screen {
    * All Screen types and sizes
    */
   const ALL_TYPES = 0b111111111;
-  
-  public static function getScreenSizeNames() {
+
+  /**
+   * 
+   * @return string[]
+   */
+  public static function getScreenSize() {
     return ["small", "medium", "large", "xlarge", "xxlarge"];
+  }
+
+  /**
+   * Checks whether the given screen size exists
+   * 
+   * @param  string $size screen size name
+   * @return boolean true if the given size exists
+   */
+  public static function sizeExists($size) {
+    return in_array($size, static::getScreenSize());
+  }
+
+  
+  /**
+   * 
+   * @param  string $currentSize
+   * @return string|boolean
+   */
+  public static function getNextSize($currentSize) {
+    $next = false;
+    $sizes = static::getScreenSize();
+    $key = array_search($currentSize, $sizes);
+    if ($key !== false && $key < count($sizes)- 1) {
+      $next = $sizes[$key + 1];
+    } 
+    return $next;
+  }
+  
+  /**
+   * 
+   * @param  string $size
+   * @return string
+   * @throws \Exception
+   */
+  public static function getPrevious($size) {
+    $sizes = static::getScreenSize();
+    $key = array_search($size, $sizes);
+    if ($key === false || $key >= count($sizes)) {
+      throw new \Exception();
+    } else {
+      
+    }
+    return $sizes[$key + 1];
+  }
+  /**
+   * 
+   * @return string[]
+   */
+  public static function getScreenTypeNames() {
+    return [
+        static::PORTRAIT => "portrait",
+        static::LANDSCAPE => "landscape",
+        static::SCREENREADER => "sr"];
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public static function getAll() {
+    return [
+        static::SMALL => "small",
+        static::MEDIUM => "medium",
+        static::LARGE => "large",
+        static::X_LARGE => "xlarge",
+        static::XX_LARGE_UP => "xxlarge",
+        static::PORTRAIT => "portrait",
+        static::LANDSCAPE => "landscape",
+        static::SCREENREADER => "sr"
+    ];
   }
 
   /**
@@ -139,59 +208,10 @@ class Screen {
     if ($types->contains(Screen::LANDSCAPE)) {
       $screenNames[Screen::LANDSCAPE] = "landscape";
     }
-    if ($types->contains(Screen::TOUCH)) {
-      $screenNames[Screen::TOUCH] = "touch";
-    }
     if ($types->contains(Screen::SCREENREADER)) {
       $screenNames[Screen::SCREENREADER] = "sr";
     }
     return $screenNames;
-  }
-
-  /**
-   * Returns the name of the given screen type
-   * 
-   * @postconditions result is one of the values `null`, `"small"`, `"medium"` or `"large"`
-   * @param  int|string $screenType the screen type to solve
-   * @return string|null the name of the screen type or null if the type was 
-   *         not recognized
-   */
-  public static function getScreenName($screenType) {
-    $typename = null;
-    if ($screenType == Screen::SMALL) {
-      $typename = "small";
-    } else if ($screenType == Screen::MEDIUM) {
-      $typename = "medium";
-    } else if ($screenType == Screen::LARGE) {
-      $typename = "large";
-    } else if (Strings::match("/^(small|medium|large|x-large|xx-large|portrait|landscape|touch|sr)$/", $screenType)) {
-      $typename = $screenType;
-    }
-    return $typename;
-  }
-
-  /**
-   * Returns the screen type associated with the given screen name
-   * 
-   * @postconditions result === (0
-   *                 |{@link Screen::SMALL} 
-   *                 |{@link Screen::MEDIUM}
-   *                 |{@link Screen::LARGE})
-   * @param  string|int $screenName
-   * @return int the screen type associated with the given screen name
-   */
-  public static function getScreenType($screenName) {
-    $type = 0;
-    if (is_numeric($screenName) && in_array($screenName, ColumnInterface::$screens)) {
-      $type = (int) $screenName;
-    } else if ($screenName == "small") {
-      $type = Screen::SMALL;
-    } else if ($screenName == "medium") {
-      $type = Screen::MEDIUM;
-    } else if ($screenName == "large") {
-      $type = Screen::LARGE;
-    }
-    return $type;
   }
 
 }
