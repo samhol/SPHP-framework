@@ -7,7 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Span as Span;
+use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
 
 /**
  * Class implements Foundation 6 Close Button in PHP
@@ -19,20 +20,44 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ArrowOnlyButton extends AbstractButton {
+class ArrowOnlyButton extends AbstractComponent implements ButtonInterface {
+
+  use ButtonTrait;
+
+  /**
+   * the inner label for screen reader text
+   *
+   * @var ScreenReaderLabel
+   */
+  private $screeReaderLabel;
 
   /**
    * Constructs a new instance
    *
-   * @param string $icon Foundation Icon Font name
    * @param string $screenReaderText the screen reader-only text
    */
   public function __construct($screenReaderText = "") {
     parent::__construct("button");
-    $this->cssClasses()->lock("dropdown arrow-only");
-    $screenReaderBtn = new Span($screenReaderText);
-    $screenReaderBtn->cssClasses()->lock("show-for-sr");
-    $this->content()->set("show-for-sr", $screenReaderBtn);
+    $this->cssClasses()
+            ->lock("button dropdown arrow-only");
+    $this->screeReaderLabel = new ScreenReaderLabel($screenReaderText);
+  }
+  
+  /**
+   * Returns the inner label for screen reader text
+   * 
+   * @return ScreenReaderLabel the inner label for screen reader text
+   */
+  public function getScreeReaderLabel() {
+    return $this->screeReaderLabel;
+  }
+
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->screeReaderLabel->getHtml();
   }
 
 }

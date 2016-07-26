@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Core; 
+namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Document as Document; 
+use Sphp\Html\Document as Document;
 foreach (Screen::sizes() as $name) {
 	(new VisibilityHandler(Document::get("p", "Show for $name and up")))
 		->showFromUp($name)

@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Core;
 
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
+use InvalidArgumentException;
 
 /**
  * Trait implements {@link Visibility} interface functionality
@@ -29,20 +30,6 @@ trait VisibilityHandlingTrait {
    */
   abstract public function cssClasses();
 
-  private static $sreenMap = [
-      Screen::SMALL => "small-only",
-      Screen::MEDIUM => "medium-only",
-      Screen::MEDIUM_UP => "medium-up",
-      Screen::LARGE => "large-only",
-      Screen::LARGE_UP => "large-up",
-      Screen::X_LARGE => "xlarge-only",
-      Screen::X_LARGE_UP => "xlarge-up",
-      Screen::XX_LARGE_UP => "xxlarge-up",
-      Screen::PORTRAIT => "portrait",
-      Screen::LANDSCAPE => "landscape",
-      Screen::SCREENREADER => "sr"
-  ];
-
   /**
    * Clears all Foundation based visibility CSS classes
    * 
@@ -50,7 +37,7 @@ trait VisibilityHandlingTrait {
    */
   public function showForAllScreenSizes() {
     $cssClasses = [];
-    foreach (Screen::getScreenSize() as $screen) {
+    foreach (Screen::sizes() as $screen) {
       $cssClasses[] = "show-for-$screen-only";
       $cssClasses[] = "show-for-$screen";
       $cssClasses[] = "hide-for-$screen-only";
@@ -65,11 +52,11 @@ trait VisibilityHandlingTrait {
    * 
    * @param  string $screenType
    * @return VisibilityHandlingInterface for PHP Method Chaining
-   * @throws \InvalidArgumentException
+   * @throws InvalidArgumentException
    */
   public function showFromUp($screenType) {
-    if (!in_array($screenType, Screen::getScreenSize())) {
-      throw new \InvalidArgumentException("Screen type '$screenType' was not recognized");
+    if (!in_array($screenType, Screen::sizes())) {
+      throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
     $this->cssClasses()
             ->add("show-for-$screenType")
@@ -81,12 +68,12 @@ trait VisibilityHandlingTrait {
    * 
    * @param string $screenSize
    * @return VisibilityHandlingInterface for PHP Method Chaining
-   * @throws \InvalidArgumentException
+   * @throws InvalidArgumentException
    */
   public function hideDownTo($screenSize) {
     $this->showForAllScreenSizes();
     if (!Screen::sizeExists($screenSize)) {
-      throw new \InvalidArgumentException("Screen type '$screenSize' was not recognized");
+      throw new InvalidArgumentException("Screen type '$screenSize' was not recognized");
     }
     if ($screenSize == "small") {
       $this->cssClasses()
@@ -123,36 +110,27 @@ trait VisibilityHandlingTrait {
   /**
    * Hidden the component for the given screen sizes
    * 
-   * Valid flags for <var>$screenSizes</var> parameter (PHP constants):
+   * Valid flags for `$size` parameter:
    * 
-   * @precondition
+   * * `"small"`: screen widths 0px - 640px
+   * * `"medium"`: screen widths 641px - 1024px
+   * * `"large"`: screen widths 1025px - 1440px)
+   * * `"x-large"`: screen widths 1441px - 1920px
+   * * `"xx-large"`: all screen widths from 1921px...
    * 
-   * * {@link Screen::SMALL} or `"small-only"`: screen widths 0px - 640px
-   * * {@link Screen::MEDIUM} or `"medium-only"`: screen widths 641px - 1024px
-   * * {@link Screen::MEDIUM_UP} or `"medium-up"`: all screen widths from 641px...
-   * * {@link Screen::LARGE} or `"large-only"`: screen widths 1025px - 1440px)
-   * * {@link Screen::LARGE_UP} or `"large-up"`: all screen widths from 1025px...
-   * * {@link Screen::X_LARGE} or `"x-large-only"`: screen widths 1441px - 1920px
-   * * {@link Screen::X_LARGE_UP} or `"x-large-up"`: all screen widths from 1441px...
-   * * {@link Screen::PORTRAIT} or `"portrait"`: portrait oriented screens
-   * * {@link Screen::LANDSCAPE} or `"landscape"`: landscape oriented screens
-   * * {@link Screen::TOUCH} or `"touch"`: device supports touch (as determined by Modernizr).
-   * * {@link Screen::SCREENREADER} or `"sr"`:  Screen Readers
-   * 
-   * @param  string $screenType the targeted screensize flags as a bitmask
+   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $size the targeted screensize flags as a bitmask
    * @return VisibilityHandlingInterface for PHP Method Chaining
-   * @throws \InvalidArgumentException if the parameter is not recognized as a 
+   * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFromSize($screenType) {
+  public function hideOnlyFromSize($size) {
     $this->showForAllScreenSizes();
-    if ($screenType == "sr") {
-      $this->attrs()->set("aria-hidden", "true");
-    } else if (Screen::sizeExists($screenType)) {
+    if (Screen::sizeExists($size)) {
       $this->cssClasses()
-              ->add("hide-for-$screenType-only");
+              ->add("hide-for-$size-only");
     } else {
-      throw new \InvalidArgumentException("Screen type '$screenType' was not recognized");
+      throw new InvalidArgumentException("Screen size '$size' was not recognized");
     }
     return $this;
   }
@@ -160,30 +138,35 @@ trait VisibilityHandlingTrait {
   /**
    * Sets the component visible for the given screen sizes
    * 
-   * Valid flags for <var>$screenSizes</var> parameter (PHP constants):
+   * Valid flags for `$size` parameter:
    * 
-   * * {@link Screen::SMALL} for small screen (width: 0px - 640px)
-   * * {@link Screen::MEDIUM} for medium screen (width: 641px - 1024px)
-   * * {@link Screen::MEDIUM_UP} for all screens from medium up (width: 641px...)
-   * * {@link Screen::LARGE} for large screen (width: 1025px - 1440px)
-   * * {@link Screen::LARGE_UP} for all screens from large up (width: 1025px...)
-   * * {@link Screen::X_LARGE} for X-large screen (width: 1441px - 1920px)
-   * * {@link Screen::X_LARGE_UP} for all screens from x-large up (width: 1441px...)
-   * * {@link Screen::XX_LARGE} for XX-large screen (width: 1921px...)
-   * * {@link Screen::ALL_SIZES} for all screens
+   * * `"small"`: screen widths 0px - 640px
+   * * `"medium"`: screen widths 641px - 1024px
+   * * `"large"`: screen widths 1025px - 1440px)
+   * * `"x-large"`: screen widths 1441px - 1920px
+   * * `"xx-large"`: all screen widths from 1921px...
    * 
+   * @precondition `$size` == `small|medium|large|xlarge|xxlarge`
    * @param  int|string $screenType the targeted screen type
    * @return VisibilityHandlingInterface for PHP Method Chaining
-   * @throws \InvalidArgumentException if the parameter is not recognized as a 
+   * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
   public function showOnlyFor($screenType) {
-    if (!in_array($screenType, Screen::getAll())) {
-      throw new \InvalidArgumentException("Screen type '$screenType' was not recognized");
+    $onlyFor = function($size) {
+      if (!Screen::sizeExists($size)) {
+        throw new InvalidArgumentException("Screen type '$size' was not recognized");
+      }
+      $this->cssClasses()
+              ->add("show-for-$size-only");
+    };
+    if (func_num_args() === 1) {
+      $onlyFor($screenType);
+    } else {
+      foreach (func_get_args() as $screen) {
+        $onlyFor($screen);
+      }
     }
-    $this->showForAllScreenSizes();
-    $this->cssClasses()
-            ->add("show-for-$screenType-only");
     return $this;
   }
 
@@ -194,7 +177,7 @@ trait VisibilityHandlingTrait {
    */
   public function showForAllSizes() {
     $classes = [];
-    foreach (Screen::getScreenSize() as $sreenName) {
+    foreach (Screen::sizes() as $sreenName) {
       $classes[] = "hide-for-$sreenName";
       $classes[] = "hide-for-$sreenName-only";
       $classes[] = "show-for-$sreenName";

@@ -8,8 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Core\Types\BitMask as BitMask;
-use Sphp\Html\Foundation\F6\Core\Screen as Screen;
+use InvalidArgumentException;
 
 /**
  * Class implements a Foundation Button Group
@@ -20,13 +19,19 @@ use Sphp\Html\Foundation\F6\Core\Screen as Screen;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/button_groups.html Foundation Button Groups
+ * @link    http://foundation.zurb.com/sites/docs/button-group.html Foundation Button Groups
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class ButtonGroup extends AbstractContainerComponent implements \IteratorAggregate {
 
   use ButtonTrait;
+
+  /**
+   *
+   * @var string[]
+   */
+  private static $stackScreens = ["all", "small", "medium"];
 
   /**
    * Constructs a new instance
@@ -78,6 +83,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  string $type the value of type attribute
    * @param  string $name the value of name attribute
    * @param  string $value the value of value attribute
+   * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
    * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
@@ -124,23 +130,20 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   /**
    * Stacks the buttons in the given screen sizes
    * 
-   * @param  int $targetScreens the targeted screensizes as a bitmask
+   * @precondition `$screenSize` == `small|medium|all`
+   * @param  string $screenSize the targeted screensize
    * @return self for PHP Method Chaining
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function stack($targetScreens = Screen::ALL_SIZES) {
-    $flags = new BitMask($targetScreens);
-    if ($flags->contains(Screen::ALL_SIZES)) {
-      $this->addCssClass("stacked");
+  public function stackFor($screenSize = "all") {
+    if (in_array($screenSize, static::$stackScreens)) {
+      if ($screenSize == "all") {
+        $this->addCssClass("stacked");
+      } else {
+        $this->addCssClass("stacked-for-$screenSize");
+      }
     } else {
-      if ($flags->contains(Screen::SMALL)) {
-        $this->addCssClass("stacked-for-small");
-      }
-      if ($flags->contains(Screen::MEDIUM)) {
-        $this->addCssClass("stacked-for-medium");
-      }
-      if ($flags->contains(Screen::LARGE)) {
-        $this->addCssClass("stacked-for-large");
-      }
+      throw new \InvalidArgumentException("Screen size '$screenSize' was not recognized");
     }
     return $this;
   }
@@ -148,23 +151,22 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   /**
    * Unstacks the stacked buttons in the given screen sizes
    * 
-   * @param  int $targetScreens the targeted screensizes as a bitmask
+   * @precondition `$screenSize` == `small|medium|all`
+   * @param  string $screenSize the targeted screensize
    * @return self for PHP Method Chaining
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function unStack($targetScreens = Screen::ALL_SIZES) {
-    $flags = new BitMask($targetScreens);
-    if ($flags->contains(Screen::ALL_SIZES)) {
-      $this->removeCssClass("stacked");
+  public function unStackFor($screenSize = "all") {
+    if (in_array($screenSize, static::$stackScreens)) {
+      if ($screenSize == "all") {
+        $this->cssClasses()
+                ->remove(["stacked", "stacked-for-small", "stacked-for-medium"]);
+      } else {
+        $this->cssClasses()
+                ->remove("stacked-for-$screenSize");
+      }
     } else {
-      if ($flags->contains(Screen::SMALL)) {
-        $this->removeCssClass("stacked-for-small");
-      }
-      if ($flags->contains(Screen::MEDIUM)) {
-        $this->removeCssClass("stacked-for-medium");
-      }
-      if ($flags->contains(Screen::LARGE)) {
-        $this->removeCssClass("stacked-for-large");
-      }
+      throw new InvalidArgumentException("Screen size '$screenSize' was not recognized");
     }
     return $this;
   }

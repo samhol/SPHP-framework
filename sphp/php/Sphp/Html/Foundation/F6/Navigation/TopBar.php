@@ -7,13 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
+use InvalidArgumentException;
 use Sphp\Html\Div as Div;
-use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Foundation\F6\Navigation\MenuInterface as MenuInterface;
 use Sphp\Html\Foundation\F6\Navigation\DropdownMenu as DropdownMenu;
-use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
-use Sphp\Html\Foundation\F6\Core\AbstractFoundationComponent as AbstractFoundationComponent;
 
 /**
  * Class implements a Foundation Top Bar navigation menu
@@ -25,14 +23,26 @@ use Sphp\Html\Foundation\F6\Core\AbstractFoundationComponent as AbstractFoundati
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopBar extends AbstractFoundationComponent {
+class TopBar extends AbstractComponent {
 
   /**
    * The topbar Foundation options
    *
-   * @var mixed[]
+   * @var Div
    */
-  private $dataOptions = [];
+  private $titleArea;
+
+  /**
+   *
+   * @var Div 
+   */
+  private $leftArea;
+
+  /**
+   *
+   * @var Div 
+   */
+  private $rightArea;
 
   /**
    * Constructs a new instance
@@ -54,81 +64,53 @@ class TopBar extends AbstractFoundationComponent {
    * @return self for PHP Method Chaining
    */
   private function buildComponents($title, MenuInterface $leftContent = null, MenuInterface $rightContent = null) {
-    $titleArea = new Div($title);
-    $titleArea->attrs()->classes()->lock("top-bar-title");
-    $this->content()->set("title", $titleArea);
-    // $this->attrs()->mapAttributeObject("data-objects", new MultiValueAttribute("data-objects"));
+    $this->titleArea = new Div($title);
+    $this->titleArea->attrs()->classes()->lock("top-bar-title");
     if ($leftContent === null) {
       $leftContent = new DropdownMenu();
     }
     if ($rightContent === null) {
       $rightContent = new DropdownMenu();
     }
-    $leftArea = new Div();
-    $leftArea->cssClasses()->lock("top-bar-left");
-    $rightArea = new Div();
-    $rightArea->cssClasses()->lock("top-bar-right");
-    $this->content()->set("left", $leftArea);
-    $this->content()->set("right", $rightArea);
+    $this->leftArea = new Div();
+    $this->leftArea->cssClasses()->lock("top-bar-left");
+    $this->rightArea = new Div();
+    $this->rightArea->cssClasses()->lock("top-bar-right");
     $this->left($leftContent);
     $this->right($rightContent);
     return $this;
   }
 
   /**
-   * Builds the data options and sets them to the attribute
+   * Stacks the buttons in the given screen sizes
    * 
+   * @precondition `$screenSize` == `small|medium|large`
+   * @param  string $screenSize the targeted screensize
    * @return self for PHP Method Chaining
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  private function buildDataOptions() {
-    $dataOpts = Arrays::implodeWithKeys($this->dataOptions, ";", ": ");
-    return $this->getNav()->setAttr("data-options", $dataOpts);
-  }
-
-  /**
-   * Sets/Unsets the top bar to have a fixed position when scrolling
-   * 
-   * @param  boolean $fixed true if the top bar has a fixed position when scrolling, otherwise false
-   * @return self for PHP Method Chaining
-   */
-  public function setFixed($fixed = true) {
-    if ($fixed) {
-      $this->addCssClass("fixed");
+  public function stackFor($screenSize = "small") {
+    $this->setDefaultStacking();
+    if (in_array($screenSize, static::$stackScreens)) {
+      if ($screenSize !== "small") {
+        $this->addCssClass("stacked-for-$screenSize");
+      }
     } else {
-      $this->removeCssClass("fixed");
+      throw new InvalidArgumentException("Screen size '$screenSize' was not recognized");
     }
     return $this;
   }
 
   /**
-   * Sets/Unsets the top bar navigation on grid width
+   * Unstacks the stacked buttons in the given screen sizes
    * 
-   * @param  boolean $use true if the top bar navigation is on grid width, otherwise false
    * @return self for PHP Method Chaining
+   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function useGridWidth($use = true) {
-    if ($use) {
-      $this->addCssClass("contain-to-grid");
-    } else {
-      $this->removeCssClass("contain-to-grid");
-    }
+  public function setDefaultStacking() {
+    $this->cssClasses()
+            ->remove(["stacked-for-large", "stacked-for-medium"]);
     return $this;
-  }
-
-  /**
-   * Sets/Unsets the top bar clickable
-   * 
-   * @param  boolean $clickable true if the top bar is clickable, otherwise false
-   * @return self for PHP Method Chaining
-   */
-  public function setClickable($clickable = true) {
-    if ($clickable) {
-      $this->dataOptions["is_hover"] = "false";
-      $this->dataOptions["sticky_on"] = "large";
-    } else if (array_key_exists("is_hover", $this->dataOptions)) {
-      unset($this->dataOptions["is_hover"]);
-    }
-    return $this->buildDataOptions();
   }
 
   /**
@@ -139,9 +121,9 @@ class TopBar extends AbstractFoundationComponent {
    */
   public function barTitle($title = null) {
     if ($title !== null) {
-      $this->content()["title"]->replaceContent($title);
+      $this->titleArea->replaceContent($title);
     }
-    return $this->content()["title"];
+    return $this->titleArea;
   }
 
   /**
@@ -152,9 +134,9 @@ class TopBar extends AbstractFoundationComponent {
    */
   public function left(MenuInterface $menu = null) {
     if ($menu !== null) {
-      $this->content()["left"]["menu"] = $menu;
+      $this->leftArea["menu"] = $menu;
     }
-    return $this->content()["left"]["menu"];
+    return $this->leftArea["menu"];
   }
 
   /**
@@ -165,21 +147,26 @@ class TopBar extends AbstractFoundationComponent {
    */
   public function right(MenuInterface $menu = null) {
     if ($menu !== null) {
-      $this->content()["right"]["menu"] = $menu;
+      $this->rightArea["menu"] = $menu;
     }
-    return $this->content()["right"]["menu"];
+    return $this->rightArea["menu"];
   }
 
   /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   * {@inheritdoc}
    */
   public function __clone() {
-    $this->dataOptions = Arrays::copy($this->dataOptions);
+    $this->titleArea = clone $this->titleArea;
+    $this->leftArea = clone $this->leftArea;
+    $this->rightArea = clone $this->rightArea;
     parent::__clone();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->titleArea . $this->leftArea . $this->rightArea;
   }
 
 }

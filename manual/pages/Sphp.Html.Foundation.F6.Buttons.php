@@ -3,12 +3,14 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis as Apis;
 
-//$buttonNamespace = $api->getNamespaceLink(__NAMESPACE__);
-$btn = $api->classLinker(ButtonInterface::class);
-$abstractButton = $api->getClassLink(AbstractButton::class);
-$formBtn = $api->classLinker(Button::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$btn = Apis::apigen()->classLinker(ButtonInterface::class);
+$abstractButton = Apis::apigen()->classLinker(AbstractButton::class);
+$formBtn = Apis::apigen()->classLinker(Button::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+
+$btnGroup = Apis::apigen()->classLinker(ButtonGroup::class);
 echo $parsedown->text(<<<MD
 #Foundation Buttons
 $ns
@@ -20,8 +22,8 @@ They are convenient tools when a centralized style for customized button links a
 The $btn interface defines required minimun implementation for all Foundation styled Buttons.
 
 Abstract Class $abstractButton is a build in base class extending $btn.
-Developers can easily implement a variety of Foundation Buttons by simply extending $abstractButton.
-With $abstractButton it is possible in theory to implement any HTML tag as a Foundation Button.
+Developers can easily implement a variety of Foundation Buttons by simply extending $abstractButton and 
+it is possible in theory to implement any HTML tag as a Foundation Button.
 
 ###Styling the $btn buttons
 
@@ -74,7 +76,6 @@ MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/SplitButton.php');
-$btnGroup = $api->getClassLink(ButtonGroup::class);
 echo $parsedown->text(<<<MD
 ##The $btnGroup class
 
@@ -82,9 +83,17 @@ A $btnGroup component is a container for $btn components. A $btnGroup component
 is effective for displaying a group of actions in a bar. $btnGroup component works
 perfectly with the grid component.
 
-The orientation of a button group can be changed with the Foundation stack classes.
-
 MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/ButtonGroup.php');
+$stackFor = $btnGroup->method("stackFor", false);
+$unstackFor = $btnGroup->method("unstackFor", false);
+echo $parsedown->text(<<<MD
+
+The orientation of a button group can be changed with method $stackFor  that uses 
+Foundation stack classes for button groups. Stacking can be removed by using $unstackFor method.
+
+MD
+);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/ButtonGroup-stackFor.php');

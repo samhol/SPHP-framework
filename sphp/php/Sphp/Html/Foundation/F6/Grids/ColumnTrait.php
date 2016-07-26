@@ -125,7 +125,7 @@ trait ColumnTrait {
       return $result;
     };
     $width = 0;
-    foreach (Screen::getScreenSize() as $screenName) {
+    foreach (Screen::sizes() as $screenName) {
       $width = $parseWidth($screenName);
       if ($screenName == $screenSize) {
         break;
@@ -212,7 +212,7 @@ trait ColumnTrait {
       return $result;
     };
     $offset = 0;
-    foreach (Screen::getScreenSize() as $screenName) {
+    foreach (Screen::sizes() as $screenName) {
       $offset = $parseOffset($screenName);
       if ($screenName == $screenSize) {
         break;

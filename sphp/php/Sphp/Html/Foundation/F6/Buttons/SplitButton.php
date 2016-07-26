@@ -41,16 +41,16 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
    * Constructs a new instance
    * 
    * @param null|mixed|ButtonInterface $primary
-   * @param null|mixed|ButtonInterface $secondary
+   * @param ArrowOnlyButton $secondary
    */
-  public function __construct($primary = null, $secondary = null) {
+  public function __construct($primary = null, ArrowOnlyButton $secondary = null) {
     parent::__construct("div");
     $this->cssClasses()->lock("button-group");
     if (!($primary instanceof ButtonInterface)) {
       $primary = new Button("button", $primary);
     }
     $this->primary = $primary;
-    if (!($secondary instanceof ButtonInterface)) {
+    if ($secondary === null) {
       $secondary = new ArrowOnlyButton($secondary);
     }
     $this->secondary = $secondary;

@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\F6\Core;
 use Sphp\Html\Document as Document;
 
 $ul = Document::get("ul");
-foreach (Screen::getScreenSize() as $size) {
+foreach (Screen::sizes() as $size) {
   $li = "$size screen size: ";
   $li .= (new VisibilityHandler(Document::get("span", "yes")))
           ->showOnlyFor($size);

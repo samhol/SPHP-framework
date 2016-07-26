@@ -24,8 +24,6 @@ use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
  */
 class Modal extends ContainerTag {
 
-  use \Sphp\Html\Foundation\F6\Core\SizingTrait;
-
   /**
    * the Modal reveal controller
    *
@@ -38,6 +36,15 @@ class Modal extends ContainerTag {
    * @var CloseButton 
    */
   private $closeButton;
+
+  /**
+   * CSS classes corresponding to the size constants
+   *
+   * @var string[]
+   */
+  private static $sizes = [
+      "tiny", "small", "large", "full"
+  ];
 
   /**
    * Constructs a new instance
@@ -66,10 +73,8 @@ class Modal extends ContainerTag {
    * **Available size options:**
    * 
    * * `'tiny'`: set the width to 30%
-   * * `'small'`: set the width to 40%
-   * * `'medium'`: set the width to 60%
-   * * `'large'`: set the width to 70%
-   * * `'xlarge'`: set the width to 90%
+   * * `'small'`: set the width to 50%
+   * * `'large'`: set the width to 90%
    * * `'full'`: set the width and height to 100%
    * 
    * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
@@ -78,8 +83,9 @@ class Modal extends ContainerTag {
    * @return self for PHP Method Chaining
    */
   public function setSize($size) {
-    return $this->resetSize()
-                    ->addCssClass($size);
+    $this->resetSize();
+    $this->cssClasses()->add($size);
+    return $this;
   }
 
   /**
@@ -88,7 +94,9 @@ class Modal extends ContainerTag {
    * @return self for PHP Method Chaining
    */
   public function resetSize() {
-    return $this->removeCssClass(["tiny", "small", "medium", "large", "xlarge", "full"]);
+    $this->cssClasses()
+            ->remove(static::$sizes);
+    return $this;
   }
 
   /**

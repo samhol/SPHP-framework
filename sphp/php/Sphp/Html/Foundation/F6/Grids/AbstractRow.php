@@ -69,7 +69,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     if (!is_array($columns)) {
       $columns = [$columns];
     }
-    foreach (Screen::getScreenSize() as $sizeName) {
+    foreach (Screen::sizes() as $sizeName) {
       $freeCols[$sizeName] = 12;
     }
     $newCols = 0;

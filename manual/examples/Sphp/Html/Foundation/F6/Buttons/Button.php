@@ -2,29 +2,28 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
+use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 
-$google = new HyperlinkButton("http://www.google.com/", "google.com", "test");
-$bing = new HyperlinkButton("http://www.bing.com", "Bing", "test");
-$ask = new HyperlinkButton("http://www.ask.com/", "ask.com", "test");
-$samiholck = (new HyperlinkButton("http://samiholck.com/", "samiholck.com", "test"))
-        ->setLarge()
-        ->setColor("alert")
-        ->setExpanded();
-$apigen = (new HyperlinkButton("http://apigen.samiholck.com/", "apigen", "test"))
-        ->setSmall()
-        ->setColor("success");
-$phpdoc = (new HyperlinkButton("http://phpdoc.samiholck.com/", "phpdoc", "test"))
-        ->setSmall()
+$google = (new HyperlinkButton("http://www.google.com/", "Google", "engine"))
+        ->setSize("large")
+        ->setColor("alert");
+$bing = (new HyperlinkButton("http://www.bing.com", "Bing", "engine"))
+        ->setSize("large")
         ->setColor("warning");
-$grid = new Grid();
-$grid[] = [
-    $google->setSize("tiny"),
-    $bing->setSize("small"),
-    $ask->setSize("large")];
-$grid[] = $samiholck->setSize("expand");
-$grid[] = [$apigen, $phpdoc];
-foreach ($grid->getColumns() as $column) {
+$ask = (new HyperlinkButton("http://www.ask.com/", "ask.com", "engine"))
+        ->setSize("large")
+        ->setColor("success");
+$yahoo = (new HyperlinkButton("https://www.yahoo.com/", "Yahoo!", "engine"))
+        ->setSize("large")
+        ->setColor("disabled");
+
+$grid = new BlockGrid();
+$grid->setBlockGrids(2, 3, 4)->append($google)
+        ->append($bing)
+        ->append($ask)
+        ->append($yahoo);
+
+foreach ($grid as $column) {
   $column->addCssClass("text-center");
 }
 $grid->printHtml();

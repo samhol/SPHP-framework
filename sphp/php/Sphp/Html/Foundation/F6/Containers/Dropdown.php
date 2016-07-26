@@ -26,8 +26,11 @@ use Sphp\Html\Forms\Buttons\Button as Button;
  */
 class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
 
-  use \Sphp\Html\Foundation\F6\Core\SizingTrait,
-      \Sphp\Html\AjaxLoaderTrait;
+  use \Sphp\Html\AjaxLoaderTrait;
+
+  private static $sizes = [
+      "tiny", "small", "large", "xlarge", "xxlarge"
+  ];
 
   /**
    * the target component for the dropdown functionality
@@ -60,6 +63,38 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
     $this->identify("Dropdown");
     $this->target = clone $this->target;
     $this->setTarget($this->target);
+  }
+
+  /**
+   * Sets the size of the button 
+   * 
+   * Predefined values of <var>$size</var> parameter:
+   * 
+   * * `'tiny'` for tiny dropdown pane
+   * * `'small'` for small dropdown pane
+   * * `'large'` for large dropdown pane
+   * * `'xlarge'` for x-large dropdown pane
+   * * `'xxlarge'` for xx-large dropdown pane
+   * 
+   * @param  string|null $size optional CSS class name defining dropdown pane size
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
+   */
+  public function setSize($size) {
+    $this->resetSize();
+    $this->cssClasses()->add($size);
+    return $this;
+  }
+
+  /**
+   * Resets the size settings of the component
+   *
+   * @return self for PHP Method Chaining
+   */
+  public function resetSize() {
+    $this->cssClasses()
+            ->remove(static::$sizes);
+    return $this;
   }
 
   /**

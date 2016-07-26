@@ -46,12 +46,12 @@ trait ButtonTrait {
    * 
    * * `'tiny'` for tiny buttons
    * * `'small'` for small buttons
-   * * `null` for "medium" (default) buttons
+   * * `'medium'` for "medium" (default) buttons
    * * `'large'` for large buttons
    * * `'extend'` for extended buttons (takes the full width of the container)
    * 
-   * @param  string|null $size optional CSS class name defining button size. 
-   *         `null` value corresponds to no explicit size definition.
+   * @param  string $size optional CSS class name defining button size. 
+   *         `medium` value corresponds to no explicit size definition.
    * @return self for PHP Method Chaining
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */

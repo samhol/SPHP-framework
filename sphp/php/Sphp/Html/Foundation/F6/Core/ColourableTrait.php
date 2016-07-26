@@ -38,7 +38,20 @@ trait ColourableTrait {
   abstract public function cssClasses();
 
   /**
-   * {@inheritdoc}
+   * Sets the color (a CSS class)
+   * 
+   * Predefined values of <var>$style</var> parameter:
+   * 
+   * * `null` unsets all special button styles (default)
+   * * `'alert'` for alert/error buttons
+   * * `'success'` for ok/success buttons
+   * * `'info'` for information buttons
+   * * `'secondary'` for alternatively styled buttons
+   * * `'disabled'` for disabled buttons
+   * 
+   * @param  string|null $style one of the CSS class names defining button styles
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
   public function setColor($style = null) {
     $this->cssClasses()->remove($this->styles);

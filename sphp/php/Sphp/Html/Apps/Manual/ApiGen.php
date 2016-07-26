@@ -140,7 +140,7 @@ class ApiGen extends AbstractPhpApiLinker {
       $instance = new static($path);
       self::$instances[$path] = $instance;
     } else {
-      $instance = new static();
+      $instance = self::$instances[$path];
     }
     return $instance;
   }

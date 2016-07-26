@@ -83,6 +83,7 @@ MD
 namespace Sphp\Html\Foundation\F6\Forms;
 
 $forms_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+
 $orbitIntro->append($parsedown->text(<<<MD
 
 
@@ -91,7 +92,7 @@ $orbitIntro->append($parsedown->text(<<<MD
 $forms_ns
         
 This namespace includes Foundation front-end framework based forms layouts and form components implemented in PHP.
-Visual presentation of Foundation based Forms are built with the Grid. These forms 
+Visual presentation of Foundation Forms is built with the Grid. These forms 
 extend basic SPHP forms.
 
 MD

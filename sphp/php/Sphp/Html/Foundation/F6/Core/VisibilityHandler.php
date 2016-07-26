@@ -31,6 +31,10 @@ class VisibilityHandler implements \Sphp\Html\ContentInterface, VisibilityHandli
    */
   private $htmlComponent;
 
+  /**
+   * 
+   * @param ComponentInterface $htmlComponent
+   */
   public function __construct(ComponentInterface $htmlComponent) {
     $this->htmlComponent = $htmlComponent;
   }

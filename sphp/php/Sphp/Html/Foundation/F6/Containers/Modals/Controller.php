@@ -8,6 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\Attributes\AttributeChangeObserver as AttributeChangeObserver;
+use Sphp\Html\Attributes\AttributeChanger as AttributeChanger;
 
 /**
  * Class implements Foundation Reveal Modal 
@@ -21,7 +23,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Controller extends ContainerTag implements \Sphp\Html\Attributes\AttributeChangeObserver {
+class Controller extends ContainerTag implements AttributeChangeObserver {
 
   /**
    * the Modal reveal controller
@@ -58,7 +60,11 @@ class Controller extends ContainerTag implements \Sphp\Html\Attributes\Attribute
     return $this;
   }
 
-  public function attributeChanged(\Sphp\Html\Attributes\AttributeChanger $obj, $attrName) {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function attributeChanged(AttributeChanger $obj, $attrName) {
     if ($attrName == "id") {
       $this->attrs()->set("data-open", $this->modal->getId());
     }

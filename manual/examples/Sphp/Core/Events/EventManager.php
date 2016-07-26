@@ -4,16 +4,16 @@ namespace Sphp\Core\Events;
 
 class Listener implements EventListenerInterface {
 
-	public function on(EventInterface $event) {
-		echo "\n" . Listener::class . " got an event:\n";
-		var_dump($event->getData());
-	}
+  public function on(EventInterface $event) {
+    echo "\n" . Listener::class . " got an event:\n";
+    var_dump($event->getData());
+  }
 
 }
 
 $fun = function(EventInterface $event) {
-	echo "\nClosure fun got an event:\n";
-	var_dump($event->getData());
+  echo "\nClosure fun got an event:\n";
+  var_dump($event->getData());
 };
 
 $manager = new EventDispatcher();

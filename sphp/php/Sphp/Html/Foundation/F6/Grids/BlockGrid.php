@@ -173,7 +173,7 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
     };
     //$screenName = Screen::getScreenName($screenSize);
     $num = self::INHERITED;
-    foreach (Screen::getScreenSize() as $screenName) {
+    foreach (Screen::sizes() as $screenName) {
       $num = $parseGrid($screenName);
       if ($screenName == $screenSize) {
         break;
