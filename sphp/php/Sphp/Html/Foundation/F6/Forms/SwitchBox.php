@@ -8,6 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
+
 /**
  * Class implements a Foundation based checkbox switch
  *
@@ -26,12 +28,13 @@ class SwitchBox extends AbstractSwitch {
    * @param  string|null $name the value of the name attribute
    * @param  string|null $value the value of the value attribute
    * @param  boolean $checked is component checked
+   * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($name = null, $value = null, $checked = false) {
-    parent::__construct(new Checkbox($name, $value, $checked));
+  public function __construct($name = null, $value = null, $checked = false, $screenReaderLabel = "") {
+    parent::__construct(new Checkbox($name, $value, $checked), $screenReaderLabel);
   }
 
 }

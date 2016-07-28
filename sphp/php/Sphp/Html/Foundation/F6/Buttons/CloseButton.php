@@ -46,7 +46,7 @@ class CloseButton extends AbstractComponent {
    * @link   https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label
    */
   public function setAccessibilityTextText($text) {
-    $this->attrs()->set("aria-label", $text);
+    $this->attrs()->setAria("label", $text);
     return $this;
   }
 

@@ -1,13 +1,11 @@
 <?php
 
 /**
- * ScreenReaderLabel.php (UTF-8)
+ * ScreenReaderLabelable.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Core;
-
-use Sphp\Html\Span as Span;
 
 /**
  * Class implements Foundation 6 Screen reader label for Foundation
@@ -21,16 +19,20 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScreenReaderLabel extends Span {
+interface ScreenReaderLabelable {
 
   /**
-   * Constructs a new instance
-   *
-   * @param string $content the textual content of the screen reader label
+   * Sets the inner label for screen reader text
+   * 
+   * @param  ScreenReaderLabel|string $label the screen reader label or its textual content
+   * @return self for PHP Method Chaining
    */
-  public function __construct($content = "") {
-    parent::__construct($content);
-    $this->cssClasses()->lock("show-for-sr");
-  }
+  public function setScreenReaderLabel($label);
 
+  /**
+   * Returns the inner label for screen reader text
+   * 
+   * @return ScreenReaderLabel the inner label for screen reader text
+   */
+  public function getScreeReaderLabel();
 }

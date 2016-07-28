@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
 
 /**
@@ -20,7 +21,7 @@ use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ArrowOnlyButton extends AbstractComponent implements ButtonInterface {
+class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, ScreenReaderLabelable {
 
   use ButtonTrait;
 
@@ -29,35 +30,45 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface {
    *
    * @var ScreenReaderLabel
    */
-  private $screeReaderLabel;
+  private $screenReaderLabel;
 
   /**
    * Constructs a new instance
    *
-   * @param string $screenReaderText the screen reader-only text
+   * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
    */
-  public function __construct($screenReaderText = "") {
+  public function __construct($screenReaderLabel = "") {
     parent::__construct("button");
     $this->cssClasses()
             ->lock("button dropdown arrow-only");
-    $this->screeReaderLabel = new ScreenReaderLabel($screenReaderText);
-  }
-  
-  /**
-   * Returns the inner label for screen reader text
-   * 
-   * @return ScreenReaderLabel the inner label for screen reader text
-   */
-  public function getScreeReaderLabel() {
-    return $this->screeReaderLabel;
+    $this->screenReaderLabel = new ScreenReaderLabel();
+    $this->setScreenReaderLabel($screenReaderLabel);
   }
 
-  
+  /**
+   * {@inheritdoc}
+   */
+  public function setScreenReaderLabel($label) {
+    if ($label instanceof ScreenReaderLabel) {
+      $this->screenReaderLabel = $label;
+    } else {
+      $this->screenReaderLabel->replaceContent($label);
+    }
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getScreeReaderLabel() {
+    return $this->screenReaderLabel;
+  }
+
   /**
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->screeReaderLabel->getHtml();
+    return $this->screenReaderLabel->getHtml();
   }
 
 }

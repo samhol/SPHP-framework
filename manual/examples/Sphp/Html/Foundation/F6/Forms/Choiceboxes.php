@@ -3,15 +3,15 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 $fooData = [
-    "foo" => "Foo",
-    "bar" => "Bar",
-    "foobar" => "Bar of Foos"];
-$checkboxes = (new Checkboxes("checkboxes", $fooData, "Check boxes:"))
-        ->setOption("double foo", "Double Foo")
+    "a" => "Letter a",
+    "b" => "Letter b",
+    "c" => "Letter c"];
+$checkboxes = (new Checkboxes("multiple", $fooData, "Select letters:"))
+        ->setOption("d", "Letter d")
         ->setWidths(12, false, 6);
 
-$radios = (new Radioboxes("radios", $fooData, "Select a radio:"))
-        ->setOption("double foo", "Double Foo")
+$radios = (new Radioboxes("single", $fooData, "Select a letter:"))
+        ->setOption("d", "Letter d")
         ->setRequired()
         ->setWidths(12, false, 6);
 $form = new GridForm();

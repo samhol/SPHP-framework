@@ -86,7 +86,7 @@ trait TraversableFormTrait {
   /**
    * Returns the data presented in the input fields of the form
    * 
-   * @return mixed[] the data object
+   * @return mixed[] the data array
    */
   public function getData() {
     $data = [];

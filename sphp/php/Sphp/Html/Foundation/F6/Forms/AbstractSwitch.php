@@ -12,6 +12,8 @@ use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
 
 /**
  * Class implements an abstract foundation based switch
@@ -23,7 +25,16 @@ use Sphp\Html\Span as Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSwitch extends AbstractComponent implements LabelableInputInterface {
+class AbstractSwitch extends AbstractComponent implements LabelableInputInterface, ScreenReaderLabelable {
+
+  /**
+   * CSS classes corresponding to the size constants
+   *
+   * @var string[]
+   */
+  private static $sizes = [
+      "tiny", "small", "large"
+  ];
 
   /**
    *
@@ -39,9 +50,9 @@ abstract class AbstractSwitch extends AbstractComponent implements LabelableInpu
 
   /**
    *
-   * @var Span
+   * @var ScreenReaderLabel
    */
-  private $screenReaderInfo;
+  private $screenReaderLabel;
 
   /**
    * Constructs a new instance
@@ -49,25 +60,79 @@ abstract class AbstractSwitch extends AbstractComponent implements LabelableInpu
    * @param Choicebox $box the inner form component
    * @param string|null $srText text for screen readers
    */
-  public function __construct(Choicebox $box, $srText = null) {
+  public function __construct(Choicebox $box, $srText = "") {
     $box->cssClasses()->lock("switch-input");
     parent::__construct("div");
     $this->input = $box;
-    $this->cssClasses()->lock("switch");
+    $this->cssClasses()
+            ->lock("switch");
     $box->identify();
-    $screenReaderInfo = new Span($srText);
-    $screenReaderInfo->cssClasses()
-            ->lock("show-for-sr");
-    $handle = new Label($screenReaderInfo, $box);
-    $handle->cssClasses()->lock("switch-paddle");
-    $this->paddle = $handle;
+    $this->screenReaderLabel = new ScreenReaderLabel($srText);
+    $this->paddle = new Label(null, $this->input);
+    $this->paddle->set("screenReaderLabel", $this->screenReaderLabel);
+    $this->paddle->cssClasses()
+            ->lock("switch-paddle");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setScreenReaderLabel($label) {
+    if ($label instanceof ScreenReaderLabel) {
+      $this->screenReaderLabel = $label;
+    } else {
+      $this->getScreeReaderLabel()->replaceContent($label);
+    }
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getScreeReaderLabel() {
+    if (!($this->screenReaderLabel instanceof ScreenReaderLabel)) {
+      $this->screenReaderLabel = new ScreenReaderLabel();
+    }
+    return $this->screenReaderLabel;
+  }
+
+  /**
+   * Sets the size of the component
+   *
+   * **Available size options:**
+   * 
+   * * `'tiny'` for tiny switches
+   * * `'small'` for small switches
+   * * `'default'` for default sized switches
+   * * `'large'` for large switches
+   * 
+   * @param  string $size the size of the component
+   * @return self for PHP Method Chaining
+   */
+  public function setSize($size) {
+    $this->resetSize();
+    if (in_array($size, self::$sizes)) {
+      $this->cssClasses()->add($size);
+    }
+    return $this;
+  }
+
+  /**
+   * Resets the size settings of the component
+   *
+   * @return self for PHP Method Chaining
+   */
+  public function resetSize() {
+    $this->cssClasses()
+            ->remove(self::$sizes);
+    return $this;
   }
 
   /**
    * Sets the active and inactive text inside of a switch
-   * 
-   * @param  string $active
-   * @param  string $inactive
+   *
+   * @param  string $active the active text inside of a switch
+   * @param  string $inactive the inactive text inside of a switch
    * @return self for PHP Method Chaining
    */
   public function setInnerLabels($active, $inactive) {

@@ -9,6 +9,8 @@ namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Span as Span;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
 use Sphp\Html\Foundation\F6\Foundation as Foundation;
 
 /**
@@ -21,15 +23,16 @@ use Sphp\Html\Foundation\F6\Foundation as Foundation;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IconButton extends AbstractComponent implements ButtonInterface {
+class IconButton extends AbstractComponent implements ButtonInterface, ScreenReaderLabelable {
 
   use ButtonTrait;
 
   /**
+   * the inner label for screen reader text
    *
-   * @var Span 
+   * @var ScreenReaderLabel
    */
-  private $readerSpan;
+  private $screenReaderLabel;
 
   /**
    *
@@ -41,37 +44,44 @@ class IconButton extends AbstractComponent implements ButtonInterface {
    * Constructs a new instance
    *
    * @param string $icon Foundation Icon Font name
-   * @param string $screenReaderText the screen reader-only text
+   * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
    */
-  public function __construct($icon, $screenReaderText = "") {
+  public function __construct($icon, $screenReaderLabel = "") {
     parent::__construct("button");
     $this->cssClasses()->lock("button");
     $this->attrs()->lock("type", "button");
-    $this->readerSpan = new Span($screenReaderText);
-    $this->readerSpan->cssClasses()->lock("show-for-sr");
-    //$this->content()->set("show-for-sr", $screenReaderBtn);
+    $this->screenReaderLabel = new ScreenReaderLabel();
+    $this->setScreenReaderLabel($screenReaderLabel);
     $this->icon = Foundation::icon($icon);
-    //$xSpan = new Span($x);
-    //$xSpan->attrs()->lock("aria-hidden", "true");
-    //$this->content()->set("x-btn", $xSpan);
   }
 
   /**
-   * Sets the screen reader-only text
+   * Sets the screen reader-only label
    * 
-   * @param string $screenReaderText the screen reader-only text
+   * @param  ScreenReaderLabel|string $label the screen reader label or its textual content
    * @return self for PHP Method Chaining
    */
-  public function setScreenReaderText($screenReaderText) {
-    $this->readerSpan->replaceContent($screenReaderText);
+  public function setScreenReaderLabel($label) {
+    if ($label instanceof ScreenReaderLabel) {
+      $this->screenReaderLabel = $label;
+    } else {
+      $this->screenReaderLabel->replaceContent($label);
+    }
     return $this;
   }
 
   /**
    * {@inheritdoc}
    */
+  public function getScreeReaderLabel() {
+    return $this->screenReaderLabel;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
-    return $this->readerSpan . '<span aria-hidden="true">' . $this->icon . '</span>';
+    return $this->screenReaderLabel . '<span aria-hidden="true">' . $this->icon . '</span>';
   }
 
 }

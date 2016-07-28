@@ -48,7 +48,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    */
   public function setAriaLabel($label) {
     $this->attrs()->setAria("label", $label);
-    return $this;;
+    return $this;
   }
 
   /**
