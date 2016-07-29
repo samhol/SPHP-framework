@@ -1,21 +1,32 @@
 <?php
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Ion;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$ionRangeSlider = $api->getClassLink(IonRangeSlider::class);
+$slider = $api->getClassLink(IonSlider::class);
+$rangeSlider = $api->getClassLink(RangeSlider::class);
 echo $parsedown->text(<<<MD
-###The $ionRangeSlider component
+##The $slider and $rangeSlider component
 		
-The $ionRangeSlider component implements a Ion.RangeSlider. The original Ion.RangeSlider 
+These components implement [Ion.RangeSlider](http://ionden.com/a/plugins/ion.rangeSlider/en.html){target="_blank"} 
+client side slider element for object oriented PHP. The original Ion.RangeSlider 
 is a jQuery range slider with CSS3 skin support.
+        
+        
+ 
+###The $slider component for single sliders
 MD
 );
-//include EXAMPLE_DIR . 'Sphp/Html/Forms/IonRangeSlider.php';
-//$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Forms/IonRangeSlider.php', false, true);
 
-
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/IonRangeSlider.php', false, true))
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Ion/Slider.php', false, true))
+        ->addCssClass("form-example")
+        ->printHtml();
+echo $parsedown->text(<<<MD
+##The $rangeSlider component for double (range) sliders
+		
+MD
+);
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Ion/RangeSlider.php', false, true))
         ->addCssClass("form-example")
         ->printHtml();

@@ -259,6 +259,7 @@ if (!window.console.log) {
     //syntaxHighlighterAccordion();
     //$("[data-sph-load]").sphLoadContent();
     $("[data-ion-rangeslider]").initIonRangeSlider();
+    $("[data-sphp-ion-slider]").ionRangeSlider({});
     $("[data-sphp-single-accordion='syntaxHighlighter']").syntaxHighLighterAccordion();
     $("[data-reveal]").sphpPopup();
     /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {

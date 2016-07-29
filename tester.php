@@ -78,6 +78,10 @@ ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
         echo PHPManual::get()->classLinker(\Countable::class)->method("count") . "\n";
 
         echo W3schools::get()->tag("a");
+        
+        namespace Sphp\Html\Forms\Ion;
+        $ass = new IonSlider("shit");
+        $ass->setId("arse")->printHtml();
         ?>
       </pre>
     </div>

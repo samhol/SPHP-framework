@@ -19,7 +19,7 @@ use InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IonRangeSlider extends TextInput {
+class IonRangeSlider extends TextInput implements SliderInterface {
 
   /**
    * slider options
@@ -46,7 +46,7 @@ class IonRangeSlider extends TextInput {
   public function __construct($name, $start = 0, $end = 100, $step = 1) {
     parent::__construct($name);
     $this->script = [];
-    $this->identify();
+    //$this->identify();
     $this
             ->setRange($start, $end)
             ->setStepLength($step)
@@ -189,6 +189,17 @@ class IonRangeSlider extends TextInput {
   /**
    * Sets the unit of the slider value
    * 
+   * @param  boolean $grid the unit of the value
+   * @return self for PHP Method Chaining
+   */
+  public function useGrid($grid = true) {
+    $this->setOption("grid", $grid);
+    return $this;
+  }
+
+  /**
+   * Sets the unit of the slider value
+   * 
    * @param  string $unit the unit of the value
    * @return self for PHP Method Chaining
    */
@@ -235,6 +246,20 @@ class IonRangeSlider extends TextInput {
   public function getHtml() {
     $this->attrs()->set("data-ion-rangeslider", "{" . Arrays::implodeWithKeys($this->script, ",", ":") . "}");
     return parent::getHtml();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getMax() {
+    return $this->getOption("end");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getMin() {
+    return $this->getOption("start");
   }
 
 }

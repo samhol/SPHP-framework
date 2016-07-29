@@ -64,7 +64,7 @@ The `SPHP` abreviation is a combination of my name `S`ami `P`etteri `H`olck and 
 <div class="column small-12 medium-6">  
 <div class="callout" markdown="1" data-equalizer-watch>
 External server side libraries:
- :[Doctrine](http://www.doctrine-project.org/) — <i class="tech label php"></i>
+ :[Doctrine](http://www.doctrine-project.org/){target="_blank"} — <i class="tech label php"></i>
  :[GeSHi](http://qbnz.com/highlighter/){target="_blank"} — <i class="tech label php"></i>
  :[Imagine](https://imagine.readthedocs.org/){target="_blank"} — <i class="tech label php"></i>
  :[Parsedown Extra](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
