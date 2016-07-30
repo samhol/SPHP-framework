@@ -80,7 +80,7 @@ ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
         echo W3schools::get()->tag("a");
         
         namespace Sphp\Html\Forms\Ion;
-        $ass = new IonSlider("shit");
+        $ass = new Slider("shit");
         $ass->setId("arse")->printHtml();
         ?>
       </pre>

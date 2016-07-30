@@ -17,7 +17,7 @@ use InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RangeSlider extends AbstractIonSlider {
+class RangeSlider extends AbstractSlider {
 
   /**
    * Constructs a new instance of the {@link IonRangeSlider} component
@@ -59,8 +59,6 @@ class RangeSlider extends AbstractIonSlider {
   /**
    * Sets the value of the value attribute
    *
-   * 
-   * 
    * @param  int|int[]|string $value the value of the value attribute
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if parameter(s) are not suitable for range slider
@@ -72,6 +70,7 @@ class RangeSlider extends AbstractIonSlider {
       $value = explode($this->getInputValueSeparator(), $value, 2);
     }
     if (!is_array($value) || count($value) != 2) {
+      //var_dump($value);
       throw new InvalidArgumentException("value is not suitable for range slider component");
     }
     $from = reset($value);

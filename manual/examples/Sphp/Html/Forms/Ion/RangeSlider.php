@@ -19,5 +19,4 @@ $form[] = (new RangeSlider("tempRange", 0, 40, 1))
         ->setValue("20;35");
 
 $form->printHtml();
-echo $form[0]->getValue();
 ?>

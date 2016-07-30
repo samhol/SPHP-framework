@@ -19,25 +19,35 @@ use InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractIonSlider extends AbstractInputTag implements SliderInterface {
+abstract class AbstractSlider extends AbstractInputTag implements SliderInterface {
 
   use \Sphp\Html\Forms\InputTrait;
 
   /**
-   * Constructs a new instance of the {@link IonRangeSlider} component
+   * Constructs a new instance
    *
    * @param  int $start the start value of the slider
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct($name, $start = 0, $end = 100, $step = 1, $value = 0) {
-    parent::__construct("text", $name, $value);
+  public function __construct($name, $start = 0, $end = 100, $step = 1, $value = null) {
+    parent::__construct("text", $name);
+    if ($value === null) {
+      $value = $start;
+    }
     $this->attrs()->demand("data-sphp-ion-slider");
-    $this
-            ->setRange($start, $end)
+    $this->setRange($start, $end)
             ->setStepLength($step)
-            ->setValue($start);
+            ->setValue($value);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function disable($disabled = true) {
+    $this->attrs()->set("data-disable", (bool) $disabled);
+    return $this;
   }
 
   /**
@@ -65,9 +75,8 @@ abstract class AbstractIonSlider extends AbstractInputTag implements SliderInter
    * @param  int $min the start point
    * @param  int $max the end point
    * @return self for PHP Method Chaining
-   * @throws InvalidArgumentException if $start > $end
    */
-  public function setRange($min = 0, $max = 100) {
+  public function setRange($min, $max) {
     $this->setMin($min)->setMax($max);
     return $this;
   }
@@ -78,7 +87,6 @@ abstract class AbstractIonSlider extends AbstractInputTag implements SliderInter
    * @param  int $start the start point
    * @param  int $end the end point
    * @return self for PHP Method Chaining
-   * @throws InvalidArgumentException if $start > $end
    */
   public function setMin($start) {
     $this->attrs()->set("data-min", $start);
@@ -90,7 +98,6 @@ abstract class AbstractIonSlider extends AbstractInputTag implements SliderInter
    *
    * @param  int $end the end point
    * @return self for PHP Method Chaining
-   * @throws InvalidArgumentException if $start > $end
    */
   public function setMax($end) {
     $this->attrs()->set("data-max", $end);
@@ -109,13 +116,35 @@ abstract class AbstractIonSlider extends AbstractInputTag implements SliderInter
   }
 
   /**
-   * Sets the unit of the slider value
+   * Sets the number of grid units
    * 
-   * @param  string $unit the unit of the value
+   * @param  int $num the number of grid units
    * @return self for PHP Method Chaining
    */
-  public function setPostfix($unit = "") {
-    $this->attrs()->set("data-postfix", $unit);
+  public function setNumberOfGridUnits($num = 4) {
+    $this->attrs()->set("data-grid-num", $num);
+    return $this;
+  }
+
+  /**
+   * Sets the prefix for values
+   * 
+   * @param  string $prefix the prefix for values
+   * @return self for PHP Method Chaining
+   */
+  public function setPrefix($prefix) {
+    $this->attrs()->set("data-prefix", $prefix);
+    return $this;
+  }
+
+  /**
+   * Sets the postfix for values
+   * 
+   * @param  string $postfix the postfix for values
+   * @return self for PHP Method Chaining
+   */
+  public function setPostfix($postfix) {
+    $this->attrs()->set("data-postfix", $postfix);
     return $this;
   }
 

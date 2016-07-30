@@ -4,7 +4,7 @@ namespace Sphp\Html\Forms\Ion;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$slider = $api->getClassLink(IonSlider::class);
+$slider = $api->getClassLink(Slider::class);
 $rangeSlider = $api->getClassLink(RangeSlider::class);
 echo $parsedown->text(<<<MD
 ##The $slider and $rangeSlider component

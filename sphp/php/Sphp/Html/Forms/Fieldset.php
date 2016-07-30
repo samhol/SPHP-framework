@@ -54,7 +54,6 @@ class Fieldset extends ContainerTag {
    *
    * @param  string|Legend $legend the legend of the fielset component
    * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function setLegend($legend) {
     if (!($legend instanceof Legend)) {
@@ -84,10 +83,7 @@ class Fieldset extends ContainerTag {
   }
 
   /**
-   * Returns the content of the component as a string
-   *
-   * @return string content as a string
-   * @throws \Exception if content parsing fails
+   * {@inheritdoc}
    */
   public function contentToString() {
     return $this->getLegend() . parent::contentToString();
