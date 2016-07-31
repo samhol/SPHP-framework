@@ -86,10 +86,11 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
     if (!$this->attrs()->exists("id")) {
       $this->attrs()->setUnique("id");
     }
+    $this->input->identify();
     if (!($label instanceof Label)) {
       $label = new Label($label);
     } if ($this->input instanceof LabelableInterface) {
-      $label->setFor($this);
+      $label->setFor($this->input);
     }
     $this->label = $label;
     return $this;
