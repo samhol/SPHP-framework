@@ -5,14 +5,15 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\Label as Label;
-use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
+use Sphp\Html\Span as Span;
+use ReflectionClass;
+use BadMethodCallException;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts
@@ -24,7 +25,7 @@ use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputColumn extends AbstractComponent implements ColumnInterface, InputInterface {
+class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   use ColumnTrait;
 
@@ -42,6 +43,19 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
   private $input;
 
   /**
+   * The inner input component
+   *
+   * @var Span 
+   */
+  private $errorField;
+
+  /**
+   *
+   * @var ReflectionClass 
+   */
+  private $reflector;
+
+  /**
    * Constructs a new instance
    *
    * @param  InputInterface $input the actual input component
@@ -54,7 +68,7 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
   public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     parent::__construct("div");
     $this->cssClasses()->lock("column");
-     $widthSetter = function ($width, $sreenSize) {
+    $widthSetter = function ($width, $sreenSize) {
       if ($width > 0 && $width < 13) {
         $this->cssClasses()->add("$sreenSize-$width");
       }
@@ -64,16 +78,68 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
     $widthSetter($l, "large");
     $widthSetter($xl, "xlarge");
     $widthSetter($xxl, "xxlarge");
+    $this->label = new Label();
     $this->input = $input;
+    $this->errorField = new Span();
+    $this->errorField->cssClasses()->lock("form-error");
+    $this->reflector = new ReflectionClass($this->input);
+    $this->label->offsetSet("labelText", "");
+    $this->label->offsetSet("input", $this->input);
+    $this->label->offsetSet("error", $this->errorField);
+  }
+
+  /**
+   * 
+   * @return self for PHP Method Chaining
+   */
+  public function setErrorField($errorMessage) {
+    $this->errorField->replaceContent($errorMessage);
+    return $this;
+  }
+
+  public function getErrorField() {
+    return $this->errorField;
+  }
+
+  /**
+   * Invokes the given method of {@link self} with the rest of the passed arguments.
+   * 
+   * The result is not cast, so the return value may be of type Stringy,
+   * integer, boolean, etc.
+   *
+   * @param  string $name the name of the called method
+   * @param  mixed $arguments
+   * @return mixed
+   * @throws BadMethodCallException
+   */
+  public function __call($name, $arguments) {
+    if (!$this->reflector->hasMethod($name)) {
+      throw new BadMethodCallException($name . ' is not a valid method for this type of input');
+    }
+    $result = \call_user_func_array(array($this->input, $name), $arguments);
+    if ($result === $this->input) {
+      return $this;
+    } else {
+      return $result;
+    }
+  }
+
+  /**
+   * Returns the actual input component
+   * 
+   * @return InputInterface the actual input component
+   */
+  public function getInput() {
+    return $this->input;
   }
 
   /**
    * Returns the label of the component
    * 
-   * @return Label the label of the component
+   * @return mixed the label of the component
    */
-  protected function getLabel() {
-    return $this->label;
+  public function getLabel() {
+    return $this->label->offsetGet("labelText");
   }
 
   /**
@@ -83,27 +149,12 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
    * @return self for PHP Method Chaining
    */
   public function setLabel($label) {
-    if (!$this->attrs()->exists("id")) {
-      $this->attrs()->setUnique("id");
-    }
-    $this->input->identify();
-    if (!($label instanceof Label)) {
-      $label = new Label($label);
-    } if ($this->input instanceof LabelableInterface) {
-      $label->setFor($this->input);
-    }
-    $this->label = $label;
+    $this->label->offsetSet("labelText", $label);
     return $this;
   }
 
   /**
-   * Disables the input component
-   * 
-   * A disabled input component is unusable and un-clickable. 
-   * Disabled input components in a form will not be submitted.
-   *
-   * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function disable($disabled = true) {
     $this->input->disable($disabled);
@@ -111,31 +162,21 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
   }
 
   /**
-   * Checks whether the input component is enabled or not
-   * 
-   * @param  boolean true if the input component is enabled, otherwise false
+   * {@inheritdoc}
    */
   public function isEnabled() {
     return $this->input->isEnabled();
   }
 
   /**
-   * Returns the name of the form input
-   *
-   * @return string|null the name of the form input
+   * {@inheritdoc}
    */
   public function getName() {
     return $this->input->getName();
   }
 
   /**
-   * Sets the name of the form input
-   *
-   * **Note:** Only form elements with a name attribute will have their values 
-   * passed when submitting a form.
-   *
-   * @param  string $name the name of the form input
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setName($name) {
     $this->input->setName($name);
@@ -143,31 +184,21 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
   }
 
   /**
-   * Checks whether the form input has a name
-   *
-   * **Note:** Only form elements with a name attribute will have their values 
-   * passed when submitting a form.
-   *
-   * @return boolean true if the input has a name , otherwise false
+   * {@inheritdoc}
    */
   public function isNamed() {
     return $this->input->isNamed();
   }
 
   /**
-   * Returns the value of the form input
-   *
-   * @return  scalar|scalar[] the value
+   * {@inheritdoc}
    */
   public function getValue() {
     return $this->input->getValue();
   }
 
   /**
-   * Sets  the value of the form input
-   *
-   * @param  string|string[] $value the value of the form input
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setValue($value) {
     $this->input->setValue($value);
@@ -178,7 +209,7 @@ class InputColumn extends AbstractComponent implements ColumnInterface, InputInt
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->label . $this->input;
+    return $this->label->getHtml();
   }
 
 }

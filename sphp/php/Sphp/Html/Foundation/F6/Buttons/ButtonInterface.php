@@ -41,22 +41,6 @@ interface ButtonInterface extends ContentInterface, ColourableInterface {
   public function setSize($size);
 
   /**
-   * Sets the button size as ´'tiny'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
-   */
-  public function setTiny();
-
-  /**
-   * Sets the button size as ´'small'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
-   */
-  public function setSmall();
-
-  /**
    * Sets the button size to default
    * 
    *  Removes all specified size related CSS classes
@@ -65,20 +49,4 @@ interface ButtonInterface extends ContentInterface, ColourableInterface {
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
   public function setDefaultSize();
-
-  /**
-   * Sets the button size as ´'large'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
-   */
-  public function setLarge();
-
-  /**
-   * Sets the button size as ´'expand'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
-   */
-  public function setExpanded();
 }

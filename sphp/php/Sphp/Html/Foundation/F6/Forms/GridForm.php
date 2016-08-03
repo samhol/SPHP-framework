@@ -39,12 +39,14 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    *
    * @param  string $action where to send the form-data when the form is submitted
    * @param  string $method how to send form-data
-   * @param  mixed $content the content of the form
+   * @param  mixed|null $content the content of the form or null for no content
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = "", $method = "post", $content = null) {
     parent::__construct(self::TAG_NAME);
+    $this->attrs()->demand("data-abide");
+    $this->validation(false);
     if ($action != "") {
       $this->setAction($action);
     }

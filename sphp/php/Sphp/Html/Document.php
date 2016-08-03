@@ -199,7 +199,7 @@ class Document {
       if ($data[0] == "input") {
         $className = Forms\Input\Input::class;
       } else {
-        $className = Forms\Buttons\Button::class;
+        $className = Forms\Buttons\ButtonTag::class;
       }
       $type = $data[1];
       $class = new $className($type);

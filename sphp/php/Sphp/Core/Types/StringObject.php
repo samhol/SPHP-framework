@@ -278,7 +278,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @throws BadMethodCallException When called
    */
   public function offsetSet($offset, $value) {
-    throw new BadMethodCallException('Object is immutable, cannot modify char');
+    throw new BadMethodCallException("Object is immutable, cannot modify char at position $offset directly");
   }
 
   /**

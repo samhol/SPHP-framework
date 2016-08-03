@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis as Apis;
 
 $btn = Apis::apigen()->classLinker(ButtonInterface::class);
 $abstractButton = Apis::apigen()->classLinker(AbstractButton::class);
-$formBtn = Apis::apigen()->classLinker(Button::class);
+$formBtn = Apis::apigen()->classLinker(ButtonTag::class);
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = Apis::apigen()->classLinker(ButtonGroup::class);

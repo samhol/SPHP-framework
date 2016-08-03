@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Containers;
 
 use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\Forms\Buttons\Button as Button;
+use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 
 /**
  * Class implements Foundation Dropdown HTML component
@@ -35,7 +35,7 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
   /**
    * the target component for the dropdown functionality
    *
-   * @var Button
+   * @var ButtonTag
    */
   private $target;
 
@@ -146,7 +146,7 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
    * @return self for PHP Method Chaining
    */
   public function setTarget($togleButton) {
-    if (!($togleButton instanceof Button)) {
+    if (!($togleButton instanceof ButtonTag)) {
       $togleButton = new Button("button", $togleButton);
     }
     $this->target = $togleButton
@@ -157,7 +157,7 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
   /**
    * Returns the button component having this dropdown
    *
-   * @return Button the button component having this dropdown
+   * @return ButtonTag the button component having this dropdown
    */
   public function getTarget() {
     return $this->target;

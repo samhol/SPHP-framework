@@ -7,7 +7,9 @@
 
 namespace Sphp\Html\Forms\Menus;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableTrait as TraversableTrait;
 
 /**
  * Class Models an HTML &lt;optgroup&gt; tag
@@ -24,92 +26,102 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * Because of the above nesting of optgroup elements is supported but not
  * recomended.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-06-10
  * @link http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API link
  * @filesource
  */
-class Optgroup extends ContainerTag implements SelectMenuContentInterface {
-	
-	use OptionHandlingTrait;
-	
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "optgroup";
+class Optgroup extends AbstractContainerComponent implements SelectMenuContentInterface, TraversableInterface {
 
-	/**
-	 * Constructs a new instance of the {@link Optgroup} component
-	 *
-	 * **Recognized mixed $opt types:**
-	 * <ol>
-	 *   * a  {@link SelectMenuContentInterface} $opt is stored as such
-	 *   * a string $opt corresponds to a new {@link Option}($opt, $opt) 
-	 *   object
-	 *   * a string[] $opt with $key => $val pairs corresponds to an array of 
-	 *   new {@link Option}($key, $val) objects
-	 *   * all other types of $opt are converted to strings and and stored as 
-	 *   in section 2.
-	 * </ol>
-	 * 
-	 * @param string $label specifies a label for an option-group
-	 * @param mixed|mixed[] $opt the content
-	 */
-	public function __construct($label = "", $opt = null) {
-		parent::__construct(self::TAG_NAME);
-		$this->setLabel($label);
-		if ($opt !== null) {
-			$this->append($opt);
-		}
-	}
+  use OptionHandlingTrait,
+      TraversableTrait;
 
-	/**
-	 * Returns the value of thelabel attribute
-	 *
-	 * @return string the value of thelabel attribute
-	 * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
-	 */
-	public function getLabel() {
-		return $this->getAttr("label");
-	}
+  /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "optgroup";
 
-	/**
-	 * Sets the value of thelabel attribute
-	 *
-	 * @param  string $label the value of thelabel attribute
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
-	 */
-	public function setLabel($label) {
-		return $this->setAttr("label", $label);
-	}
+  /**
+   * Constructs a new instance of the {@link Optgroup} component
+   *
+   * **Recognized mixed $opt types:**
+   * 
+   * 1. a  {@link SelectMenuContentInterface} $opt is stored as such
+   * 2. a string $opt corresponds to a new {@link Option}($opt, $opt) object
+   * 3. a string[] $opt with $key => $val pairs corresponds to an array of 
+   *   new {@link Option}($key, $val) objects
+   * 4. all other types of $opt are converted to strings and and stored as 
+   *   in section 2.
+   * 
+   * @param string $label specifies a label for an option-group
+   * @param mixed|mixed[] $opt the content
+   */
+  public function __construct($label = "", $opt = null) {
+    parent::__construct(self::TAG_NAME);
+    $this->setLabel($label);
+    if ($opt !== null) {
+      $this->append($opt);
+    }
+  }
 
-	/**
-	 * Activates the &lt;optgro&gt; tag object
-	 *
-	 * Activation is fullfilled by removing component's disabled attribute.
-	 *
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
-	 */
-	public function enable() {
-		return $this->removeAttr("disabled");
-	}
+  /**
+   * Returns the value of thelabel attribute
+   *
+   * @return string the value of thelabel attribute
+   * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
+   */
+  public function getLabel() {
+    return $this->getAttr("label");
+  }
 
-	/**
-	 * Deactivates the &lt;optgroup&gt; tag object
-	 *
-	 * Deactivation is fullfilled by setting component's disabled attribute.
-	 *
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
-	 */
-	public function disable() {
-		return $this->setAttr("disabled", "disabled");
-	}
+  /**
+   * Sets the value of thelabel attribute
+   *
+   * @param  string $label the value of thelabel attribute
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
+   */
+  public function setLabel($label) {
+    return $this->setAttr("label", $label);
+  }
+
+  /**
+   * Disables the input component
+   * 
+   * A disabled input component is unusable and un-clickable. 
+   * Disabled input components in a form will not be submitted.
+   *
+   * @param  boolean $disabled true if the component is disabled, otherwise false
+   * @return InputInterface for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
+   */
+  public function disable($disabled = true) {
+    $this->attrs()->set("disabled", (bool) $disabled);
+    return $this;
+  }
+
+  /**
+   * Checks whether the option is enabled or not
+   * 
+   * @param  boolean true if the option is enabled, otherwise false
+   * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
+   */
+  public function isEnabled() {
+    return !$this->attrs()->exists("disabled");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function count() {
+    return $this->content()->count();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return $this->content()->getIterator();
+  }
 
 }

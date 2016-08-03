@@ -48,7 +48,9 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
       $hl = new SyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setDefaultContentCopyController((new IconButton("page-copy", "Copy"))->setTiny()->setTitle("Copy code to clipboard"));
+    $this->hl->setDefaultContentCopyController((new IconButton("page-copy", "Copy"))
+                    ->setSize("tiny")
+                    ->setTitle("Copy code to clipboard"));
     parent::__construct($title, $this->hl);
     $this->addCssClass("syntax-pane");
   }
@@ -86,7 +88,6 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
     return $this;
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -95,7 +96,6 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
     return $this;
   }
 
-
   /**
    * {@inheritdoc}
    */
@@ -103,7 +103,6 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
     $this->hl->setDefaultContentCopyController($content);
     return $this;
   }
-
 
   /**
    * {@inheritdoc}

@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Foundation\F6\Navigation\VerticalMenu as VerticalMenu;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
-use Sphp\Html\Forms\Buttons\Button as Button;
+use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 
 /**
  * An abstract implementation of Foundation Off-canvas menu

@@ -84,7 +84,7 @@ class SyntaxHighlightingAccordion extends AbstractSingleAccordion implements Syn
    */
   public function useCopyToClipboardButton($use = true) {
     if ($use) {
-      $button = new \Sphp\Html\Forms\Buttons\Button("button", "copy");
+      $button = new \Sphp\Html\Forms\Buttons\ButtonTag("button", "copy");
       $button->addCssClass("copy")
               ->setTitle("Copy to clipboard")
               ->setStyle("display", "none");

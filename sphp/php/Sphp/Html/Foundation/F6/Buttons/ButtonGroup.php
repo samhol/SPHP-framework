@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\Foundation\F6\Forms\Buttons\InputButton as InputButton;
 use InvalidArgumentException;
 
 /**
@@ -73,24 +74,16 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   /**
    * Creates and appends a new {@link FormButton} to the group
    * 
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type that converts to a
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
-   *
-   * @param  mixed $content the content of the button tag
    * @param  string $type the value of type attribute
    * @param  string $name the value of name attribute
    * @param  string $value the value of value attribute
    * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function appendFormButton($content = null, $type = null, $name = null, $value = null) {
-    $this->appendButton(new FormButton($type, $content, $name, $value));
+  public function appendInputButton($type = null, $name = null, $value = null) {
+    $this->appendButton(new InputButton($type, $name, $value));
     return $this;
   }
 

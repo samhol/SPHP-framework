@@ -2,19 +2,20 @@
 
 /**
  * SubmitButton.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Buttons;
+namespace Sphp\Html\Foundation\F6\Forms\Buttons;
 
 /**
- * Class models &lt;input type="submit"&gt; tag
- *
+ * Class models &lt;input type="submit"&gt; tag as a Foundation Button in PHP
+ * 
  * A submit button is used to send form data to a server.
  * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-09-26
+ * @since   2016-04-11
+ * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API link
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

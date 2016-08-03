@@ -7,9 +7,13 @@
 
 namespace Sphp\Html\Forms\Menus;
 
-use Sphp\Html\Forms\NonEmptyInputTag as NonEmptyInputTag;
+use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\Forms\RequirableInputInterface as RequirableInputInterface;
+use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
+use Sphp\Html\Forms\RequireableInputTrait as RequireableInputTrait;
 use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
@@ -30,20 +34,19 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
  * * The {@link Select} component is a form control and can be used in a 
  *   form to collect user input.
  * 
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10
  * @link    http://www.w3schools.com/tags/tag_select.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Select extends NonEmptyInputTag implements LabelableInterface {
+class Select extends AbstractContainerComponent implements LabelableInterface, RequirableInputInterface, TraversableInterface {
 
-  use OptionHandlingTrait,
-      LabelableTrait;
+  use \Sphp\Html\Forms\InputTrait,
+      OptionHandlingTrait,
+      LabelableTrait,
+      RequireableInputTrait,
+      TraversableTrait;
 
   /**
    * the tag name of the HTML component
@@ -182,6 +185,20 @@ class Select extends NonEmptyInputTag implements LabelableInterface {
    */
   public function setSize($size) {
     return $this->setAttr("size", $size);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function count() {
+    return $this->content()->count();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return $this->content()->getIterator();
   }
 
 }

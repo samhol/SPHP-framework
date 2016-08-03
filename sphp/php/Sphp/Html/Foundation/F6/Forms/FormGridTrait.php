@@ -11,6 +11,7 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
 use Sphp\Html\Foundation\F6\Grids\RowInterface as RowInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
+use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumnInterface as InputColumnInterface;
 
 /**
  * Trait implements {@link Sphp\Html\Foundation\F6\Grids\GridInterface} to be used with {@link FormInterface} etc.
@@ -119,12 +120,12 @@ trait FormGridTrait {
   }
 
   /**
-   * Returns all {@link InputColumn} components from the grid
+   * Returns all {@link InputColumnInterface} components from the grid
    * 
    * @return ContainerInterface containing all the {@link InputColumn} components
    */
   public function getInputColumns() {
-    return $this->getComponentsByObjectType(InputColumn::class);
+    return $this->getComponentsByObjectType(InputColumnInterface::class);
   }
 
 }

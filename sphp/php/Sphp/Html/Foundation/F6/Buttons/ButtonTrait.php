@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
+use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 
 /**
  * Trait implements {@link ButtonInterface} functionality
@@ -56,34 +57,14 @@ trait ButtonTrait {
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setSize($size = null) {
-    $this->removeCssClass($this->sizes);
+    $this->cssClasses()->remove($this->sizes);
     if ($size !== null) {
-      $this->addCssClass($size);
+      $this->cssClasses()->add($size);
       if (!in_array($size, $this->sizes)) {
         $this->sizes[] = $size;
       }
     }
     return $this;
-  }
-
-  /**
-   * Sets the button size as ´'tiny'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
-   */
-  public function setTiny() {
-    return $this->setSize("tiny");
-  }
-
-  /**
-   * Sets the button size as ´'small'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
-   */
-  public function setSmall() {
-    return $this->setSize("small");
   }
 
   /**
@@ -96,26 +77,6 @@ trait ButtonTrait {
    */
   public function setDefaultSize() {
     return $this->setSize("medium");
-  }
-
-  /**
-   * Sets the button size as ´'large'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
-   */
-  public function setLarge() {
-    return $this->setSize("large");
-  }
-
-  /**
-   * Sets the button size as ´'expand'´ 
-   * 
-   * @return self for PHP Method Chaining
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
-   */
-  public function setExpanded() {
-    return $this->setSize("expanded");
   }
 
 }

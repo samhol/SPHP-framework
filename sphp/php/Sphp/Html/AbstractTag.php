@@ -11,6 +11,7 @@ use Sphp\Html\Attributes\AttributeChanger as AttributeChanger;
 use Sphp\Html\Attributes\AttributeChangeObserver as AttributeChangeObserver;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;
+use InvalidArgumentException;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations
@@ -52,7 +53,7 @@ abstract class AbstractTag implements ComponentInterface, AttributeChanger {
    *
    * @param  string $tagName the tag name of the component
    * @param  AttributeManager|null $attrManager the attribute manager of the component
-   * @throws \InvalidArgumentException if the tagname of the component is not valid
+   * @throws InvalidArgumentException if the tagname of the component is not valid
    */
   public function __construct($tagName, AttributeManager $attrManager = null) {
     $this->setTagName($tagName)
@@ -85,11 +86,11 @@ abstract class AbstractTag implements ComponentInterface, AttributeChanger {
    *
    * @param  string $tagName the tag name of the component
    * @return self for PHP Method Chaining
-   * @throws \InvalidArgumentException if the `$tagName` is not valid
+   * @throws InvalidArgumentException if the `$tagName` is not valid
    */
   private function setTagName($tagName) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
-      //throw new \InvalidArgumentException("$tagName; HTML tagname contains only lowercase alphabets");
+      throw new InvalidArgumentException("$tagName; HTML tagname contains only lowercase alphabets");
     }
     $this->tagName = $tagName;
     return $this;

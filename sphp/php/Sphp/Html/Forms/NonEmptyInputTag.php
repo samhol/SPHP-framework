@@ -33,7 +33,6 @@ class NonEmptyInputTag extends ContainerTag implements InputInterface {
    */
   public function __construct($tagName, $content = null) {
     parent::__construct($tagName, $content);
-
   }
 
   /**
@@ -54,27 +53,6 @@ class NonEmptyInputTag extends ContainerTag implements InputInterface {
    */
   public function setValue($value) {
     return $this->setAttr("value", $value);
-  }
-
-  /**
-   * Sets whether the input must have a value or not before form submission
-   * 
-   * @param  boolean $required true if the input must have a value before form 
-   *         submission, otherwise false
-   * @return self for PHP Method Chaining
-   */
-  public function setRequired($required = true) {
-    return $this->setAttr("required", $required);
-  }
-
-  /**
-   * Checks whether the input must have a value before form submission
-   *
-   * @return boolean true if the input must have a value before form submission, 
-   *         otherwise false
-   */
-  public function isRequired() {
-    return $this->attrExists("required");
   }
 
 }

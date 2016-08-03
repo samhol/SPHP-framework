@@ -23,14 +23,6 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  * @filesource
  */
 trait LabelableTrait {
-
-  /**
-   * the {@link Label} pointing to this form input component
-   *
-   * @var Label
-   */
-  private $label;
-
   /**
    * Returns the attribute manager attached to the component
    *
@@ -43,12 +35,9 @@ trait LabelableTrait {
    *
    *  **Postcondition:** <var>self::attrExists("id") === true</var>
    *
-   * @return Label|null created label component
+   * @return Label created label component
    */
   public function createLabel($label = null) {
-    if (!$this->attrs()->exists("id")) {
-      $this->attrs()->setUnique("id");
-    }
     if (!($label instanceof Label)) {
       $label = new Label($label, $this);
     } else {

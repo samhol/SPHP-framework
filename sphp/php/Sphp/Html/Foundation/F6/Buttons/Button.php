@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Forms\Buttons\Button as FormButton;
+use Sphp\Html\Forms\Buttons\ButtonTag as FormButton;
 
 /**
  * Class implements an HTML &lt;button&gt; tag as a Foundation Button in PHP

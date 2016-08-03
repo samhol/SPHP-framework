@@ -116,7 +116,7 @@ $footer-border-color: #FAA523;
     color: #fff;
     @include opacity(0.7);
     @include border-radius(4px);
-  }
+  }; 
 
   footer {
     padding: rem-calc(5);
@@ -137,14 +137,14 @@ $footer-border-color: #FAA523;
       text-shadow:
         0px -1px 0px rgba(190,190,190,0.2),
         0px 1px 0px rgba(190,190,190,1);
-    }
+    }; 
     a:hover { 
       color: #fff !important;
       text-shadow:
         0px -1px 0px rgba(190,190,190,0.2),
         0px 1px 0px rgba(190,190,190,1);
-    }
-  }
+    }; 
+  }; 
   a.browser {
     @include opacity(0.5);
     &:hover {
@@ -152,4 +152,4 @@ $footer-border-color: #FAA523;
     };
   }; 
 
-}
+}; 

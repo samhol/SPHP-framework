@@ -1,38 +1,41 @@
 <?php
 
 /**
- * HyperlinkButton.php (UTF-8)
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * ButtonTag.php (UTF-8)
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Buttons;
+namespace Sphp\Html\Forms\Buttons;
 
+use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Html\Forms\InputInterface as InputInterface;
 use Sphp\Html\Forms\InputTrait as InputTrait;
 
 /**
- * Class implements an HTML &lt;button&gt; tag as a Foundation Button in PHP
- * 
+ * Class Models an HTML &lt;button&gt; tag
+ *
+ *
  * {@inheritdoc}
  *
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-04-11
- * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
+ * @since   2012-02-06
+ * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API link
+ * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-button-element W3C API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FormButton extends AbstractButton implements InputInterface {
+class ButtonTag extends ContainerTag implements ButtonInterface {
 
   use InputTrait;
 
   /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "button";
+
+  /**
    * Constructs a new instance
-   *
-   * **Important!**
-   *
-   * Parameter `mixed $content` can be of any type that converts to a
-   * string. So also an object of any class that implements magic method
-   * `__toString()` is allowed.
    *
    * @param  string $type the value of type attribute
    * @param  mixed $content the content of the button tag
@@ -43,9 +46,15 @@ class FormButton extends AbstractButton implements InputInterface {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($type = null, $content = null, $name = null, $value = null) {
-    parent::__construct("button", $content);
-    $this->setType($type)->setName($name)->setValue($value);
+  public function __construct($type, $content = null, $name = null, $value = null) {
+    parent::__construct(self::TAG_NAME, $content);
+    $this->attrs()->lock("type", $type);
+    if (isset($name)) {
+      $this->setName($name);
+    }
+    if (isset($value)) {
+      $this->setValue($value);
+    }
   }
 
   /**
@@ -67,7 +76,7 @@ class FormButton extends AbstractButton implements InputInterface {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
   public function setValue($value) {
-    return $this->setAttr("value", $value);
+    return parent::setAttr("value", $value);
   }
 
   /**
@@ -77,18 +86,7 @@ class FormButton extends AbstractButton implements InputInterface {
    * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
    */
   public function getType() {
-    return $this->getAttr("type");
-  }
-
-  /**
-   * Sets the value of the type attribute
-   *
-   * @param  string $type the value of the type attribute
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
-   */
-  public function setType($type) {
-    return $this->setAttr("type", $type);
+    return parent::getAttrValue("type");
   }
 
 }

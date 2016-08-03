@@ -16,6 +16,6 @@ $option components can be grouped using $optGroup components,
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/select.php'))
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Select.php'))
         ->addCssClass("form-example")
         ->printHtml();
