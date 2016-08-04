@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Forms;
 
+use Sphp\Html\ContainerTag as ContainerTag;
+
 /**
  * Class models an HTML &lt;textarea&gt; tag
  *
@@ -16,9 +18,10 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends NonEmptyInputTag implements LabelableInterface {
+class Textarea extends ContainerTag implements InputInterface, LabelableInterface {
 
-  use LabelableTrait;
+  use InputTrait,
+      LabelableTrait;
 
   /**
    * the tag name of the HTML component
@@ -72,8 +75,7 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
   /**
    * Sets the value of the rows attribute
    *
-   *  **Preconditions:** <var>$rows > 0</var>
-   *
+   * @precondition `$rows > 0`
    * @param  int $rows the value of the rows attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
@@ -86,8 +88,7 @@ class Textarea extends NonEmptyInputTag implements LabelableInterface {
   /**
    * Sets the value of the cols attribute
    *
-   *  **Preconditions:** <var>$cols > 0</var>
-   *
+   * @precondition `$cols > 0`
    * @param  int $cols the value of the cols attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute

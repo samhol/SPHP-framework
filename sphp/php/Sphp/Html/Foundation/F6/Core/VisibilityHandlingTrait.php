@@ -108,7 +108,7 @@ trait VisibilityHandlingTrait {
   }
 
   /**
-   * Hidden the component for the given screen sizes
+   * Hides the component for the given screen sizes only
    * 
    * Valid flags for `$size` parameter:
    * 
@@ -136,7 +136,7 @@ trait VisibilityHandlingTrait {
   }
 
   /**
-   * Sets the component visible for the given screen sizes
+   * Shows component visible for the given screen sizes only
    * 
    * Valid flags for `$size` parameter:
    * 
@@ -171,7 +171,7 @@ trait VisibilityHandlingTrait {
   }
 
   /**
-   * 
+   * Sets the componentvisible for all screen sizes
    * 
    * @return VisibilityHandlingInterface for PHP Method Chaining
    */

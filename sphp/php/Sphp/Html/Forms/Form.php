@@ -43,20 +43,19 @@ class Form extends ContainerTag implements TraversableFormInterface {
    *  **Note:** The method attribute specifies how to send form-data
    *  (the form-data is sent to the page specified in the action attribute)
    *
-   * @precondition `$method == "get" | $method == "post"`
-   *
-   * @param  string $action where to send the form-data when the form is submitted
+   * @precondition `$method == "get|post"`
+   * @param  string|null $action where to send the form-data when the form is submitted
    * @param  string $method how to send form-data
    * @param  mixed $content tag's content
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function __construct($action = "", $method = "get", $content = null) {
+  public function __construct($action = null, $method = "post", $content = null) {
     parent::__construct(self::TAG_NAME);
     if ($content !== null) {
       $this->append($content);
     }
-    if ($action != "") {
+    if ($action !== null) {
       $this->setAction($action);
     }
     if ($method != "") {

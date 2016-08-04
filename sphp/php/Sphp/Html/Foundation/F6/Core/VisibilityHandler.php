@@ -1,19 +1,21 @@
 <?php
 
 /**
- * VisibilityTrait.php (UTF-8)
+ * VisibilityHandler.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Foundation\F6\Core;
 
+use Sphp\Html\ContentInterface as ContentInterface;
 use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 
 /**
- * Class implements {@link Visibility} interface functionality
+ * Class implements {@link VisibilityInterface} interface functionality
  * 
- * {@link Visibility} defines Foudation styled CSS border radius settings
+ * {@link VisibilityInterface} defines Foudation styled CSS visibility settings
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29
@@ -21,9 +23,10 @@ use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VisibilityHandler implements \Sphp\Html\ContentInterface, VisibilityHandlingInterface {
+class VisibilityHandler implements ContentInterface, VisibilityHandlingInterface {
 
-  use VisibilityHandlingTrait, \Sphp\Html\ContentTrait;
+  use VisibilityHandlingTrait,
+      ContentTrait;
 
   /**
    * 
@@ -54,6 +57,5 @@ class VisibilityHandler implements \Sphp\Html\ContentInterface, VisibilityHandli
   public function getHtml() {
     return $this->htmlComponent->getHtml();
   }
-
 
 }

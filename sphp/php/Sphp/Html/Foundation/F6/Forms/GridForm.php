@@ -45,8 +45,6 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    */
   public function __construct($action = "", $method = "post", $content = null) {
     parent::__construct(self::TAG_NAME);
-    $this->attrs()->demand("data-abide");
-    $this->validation(false);
     if ($action != "") {
       $this->setAction($action);
     }
@@ -56,6 +54,14 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     if ($content !== null) {
       $this->append($content);
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validation($validate = true) {
+    $this->attrs()->set("novalidate", $validate)->set("data-abide", $validate);
+    return $this;
   }
 
 }

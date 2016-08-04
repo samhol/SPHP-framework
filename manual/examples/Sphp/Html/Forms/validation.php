@@ -36,7 +36,7 @@ $checkBoxes = (new Checkboxes("hobbies", [
 	"lifting" => "Weightlifting"
 		], "Hobbies", true));
 
-$form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))->validable(TRUE);
+$form = (new GridForm("sphpManual/pages/formSubmit.php", "post"))->validate(TRUE);
 
 $form[] = [
 	new InputColumn($usernameInput, 12, 4, 4),

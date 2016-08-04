@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Html\Forms;
+
 use Sphp\Html\ContainerTag as ContainerTag;
 
 /**
@@ -23,17 +24,18 @@ use Sphp\Html\ContainerTag as ContainerTag;
  */
 class Legend extends ContainerTag {
 
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "legend";
+  /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "legend";
 
-    /**
-	 * Constructs a new instance
-     *
-     * @param string $content legend content
-     */
-	public function __construct($content = null) {
-        parent::__construct(self::TAG_NAME, $content);
-	}
+  /**
+   * Constructs a new instance
+   *
+   * @param string $content legend content
+   */
+  public function __construct($content = null) {
+    parent::__construct(self::TAG_NAME, $content);
+  }
+
 }

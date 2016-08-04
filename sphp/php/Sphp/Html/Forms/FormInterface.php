@@ -122,6 +122,15 @@ interface FormInterface extends ContentInterface {
   public function getName();
 
   /**
+   * Sets the form as validable
+   * 
+   * @param  boolean $validable
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
+   */
+  public function validation($validable = true);
+
+  /**
    * Sets the value of the target attribute
    *
    * **Notes:**

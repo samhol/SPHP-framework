@@ -10,6 +10,7 @@ use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
 use Sphp\Html\Foundation\F6\Forms\Inputs\TextColumn as TextColumn;
 
 $form = (new GridForm())
+        ->validation(true)
         ->setTarget("outputFrame")
         ->appendHiddenVariable("hidden", "value")
         ->append([
