@@ -58,8 +58,9 @@ class Tooltip implements ContentInterface {
   }
 
   /**
+   * Returns the tipped component
    * 
-   * @return ComponentInterface
+   * @return ComponentInterface the tipped component
    */
   public function getComponent() {
     return $this->toolTipped;
@@ -67,7 +68,7 @@ class Tooltip implements ContentInterface {
 
   /**
    * 
-   * @param  string $tip
+   * @param  string $tip the tip content
    * @return self for PHP Method Chaining
    */
   public function setTip($tip) {

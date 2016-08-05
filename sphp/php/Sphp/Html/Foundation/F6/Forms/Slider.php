@@ -24,6 +24,16 @@ use Sphp\Html\Span as Span;
 class Slider extends AbstractSlider {
 
   /**
+   *
+   * @var Span
+   */
+  private $handle;
+  /**
+   *
+   * @var HiddenInput
+   */
+  private $input;
+  /**
    * Constructs a new instance
    *
    * @param int $start the start value of the slider
@@ -33,21 +43,21 @@ class Slider extends AbstractSlider {
    */
   public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
     parent::__construct($start, $end, $step);
-    $handle = new Span();
-    $handle->cssClasses()->lock("slider-handle");
-    $handle->attrs()
+    $this->handle = new Span();
+    $this->handle->cssClasses()->lock("slider-handle");
+    $this->handle->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->content()["slider"] = $handle;
-    $filler = new Span();
-    $filler->cssClasses()
-            ->lock("slider-fill");
-    $filler->attrs()
-            ->demand("data-slider-fill");
-    $this->content()["slider-fill"] = $filler;
-    $input = new HiddenInput();
-    $this->content()["input"] = $input;
+    //$this->content()["slider"] = $this->handle;
+   // $filler = new Span();
+    //$filler->cssClasses()
+      //      ->lock("slider-fill");
+    //$filler->attrs()
+      //      ->demand("data-slider-fill");
+   // $this->content()["slider-fill"] = $filler;
+    $this->input = new HiddenInput();
+    //$this->content()["input"] = $input;
     $this->setStepLength($step)->setValue($value);
   }
 
@@ -57,7 +67,7 @@ class Slider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
-    return $this->content()["label"];
+    //return $this->content()["label"];
   }
 
   /**
@@ -75,7 +85,7 @@ class Slider extends AbstractSlider {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getInput() {
-    return $this->content("input");
+    return $this->input;
   }
 
   /**
@@ -90,21 +100,6 @@ class Slider extends AbstractSlider {
     } else {
       $this->cssClasses()->remove("vertical");
       $this->attrs()->set("data-vertical", "false");
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the length of the slider step
-   *
-   * @param  int $step the length of the slider step
-   * @return self for PHP Method Chaining
-   */
-  public function setStepLength($step) {
-    if ($step > 0) {
-      $this->attrs()->set("data-step", $step);
-    } else {
-      throw new \InvalidArgumentException();
     }
     return $this;
   }
@@ -151,20 +146,9 @@ class Slider extends AbstractSlider {
    * {@inheritdoc}
    */
   public function disable($enabled = true) {
-    if ($enabled) {
-      $this->removeCssClass("disabled");
-    } else {
-      $this->addCssClass("disabled");
-    }
+    parent::disable($disabled);
     $this->getInput()->disable($enabled);
     return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isEnabled() {
-    return !$this->getInput()->attrExists("disabled");
   }
 
   /**
@@ -245,20 +229,8 @@ class Slider extends AbstractSlider {
     return $this->getInput()->isRequired();
   }
 
-  public function getLabel() {
-    
-  }
-
-  public function hasLabel() {
-    
-  }
-
-  public function setLabel($label) {
-    
-  }
-
-  public function setRange($start = 0, $end = 100) {
-    
+  public function contentToString() {
+    return $this->handle . '<span class="slider-fill" data-slider-fill></span>' . $this->input;
   }
 
 }

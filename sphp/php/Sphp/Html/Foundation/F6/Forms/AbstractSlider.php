@@ -7,8 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use InvalidArgumentException;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -20,7 +21,7 @@ use Sphp\Html\Forms\SliderInterface as SliderInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSlider extends AbstractContainerComponent implements SliderInterface {
+abstract class AbstractSlider extends AbstractComponent implements SliderInterface {
 
   /**
    * Constructs a new instance
@@ -50,11 +51,11 @@ abstract class AbstractSlider extends AbstractContainerComponent implements Slid
    */
   public function setStepLength($step) {
     if ($step <= 0) {
-      throw new \InvalidArgumentException("The step value is not positive");
+      throw new InvalidArgumentException("The step value is not positive");
     }
     $length = $this->getMax() - $this->getMin();
     if ($step > $length) {
-      throw new \InvalidArgumentException("The step value '$step' exceeds the maximun value '$length'");
+      throw new InvalidArgumentException("The step value '$step' exceeds the maximun value '$length'");
     }
     $this->attrs()->set("data-step", $step);
     return $this;
@@ -72,6 +73,25 @@ abstract class AbstractSlider extends AbstractContainerComponent implements Slid
    */
   public function getMax() {
     return $this->attrs()->get("data-end");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function disable($disabled = true) {
+    if ($disabled) {
+      $this->removeCssClass("disabled");
+    } else {
+      $this->addCssClass("disabled");
+    }
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isEnabled() {
+    return !$this->cssClasses()->contains("disabled");
   }
 
 }

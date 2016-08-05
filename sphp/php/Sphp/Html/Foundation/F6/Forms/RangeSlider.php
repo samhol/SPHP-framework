@@ -26,40 +26,55 @@ class RangeSlider extends AbstractSlider {
   private $name;
 
   /**
+   *
+   * @var Span
+   */
+  private $handle1;
+
+  /**
+   *
+   * @var Span
+   */
+  private $handle2;
+
+  /**
+   *
+   * @var HiddenInput
+   */
+  private $input1;
+
+  /**
+   *
+   * @var HiddenInput
+   */
+  private $input2;
+
+  /**
    * Constructs a new instance
    *
-   * @param int $start the start value of the slider
-   * @param int $end the end value of the slider
+   * @param  string $name the name of the form input
+   * @param int $min the minimum value of the slider
+   * @param int $max the maximum value of the slider
    * @param int $step the length of a single step
    */
   public function __construct($name = null, $min = 0, $max = 100, $step = 1) {
-    $this->name = $name;
     parent::__construct($min, $max, $step);
     $this->attrs()->demand("data-initial-end")
             ->set("data-initial-end", $max);
-    $handle1 = new Span();
-    $handle1->cssClasses()->lock("slider-handle");
-    $handle1->attrs()
+    $this->handle1 = new Span();
+    $this->handle1->cssClasses()->lock("slider-handle");
+    $this->handle1->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->content()["slider1"] = $handle1;
-    $filler = new Span();
-    $filler->cssClasses()
-            ->lock("slider-fill");
-    $filler->attrs()
-            ->demand("data-slider-fill");
-    $this->content()["slider-fill"] = $filler;
-    $handle2 = new Span();
-    $handle2->cssClasses()->lock("slider-handle");
-    $handle2->attrs()
+    $this->handle2 = new Span();
+    $this->handle2->cssClasses()->lock("slider-handle");
+    $this->handle2->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->content()["slider2"] = $handle2;
-    $this->content()["start-input"] = (new HiddenInput())->setValue($min);
-    $this->content()["end-input"] = (new HiddenInput())->setValue($max);
-    $this->content()["input"] = (new HiddenInput())->setValue("$min;$max");
+    $this->input1 = (new HiddenInput())->setValue($min);
+    $this->input2 = (new HiddenInput())->setValue($max);
     if ($name !== null) {
       $this->setName($name);
     }
@@ -71,16 +86,7 @@ class RangeSlider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
-    return $this->content()["label"];
-  }
-
-  /**
-   * Returns the the actual slider
-   * 
-   * @return Spam the actual Foundation slider
-   */
-  private function getSlider() {
-    return $this->content("slider");
+    //return $this->content()["label"];
   }
 
   /**
@@ -89,7 +95,7 @@ class RangeSlider extends AbstractSlider {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getStartInput() {
-    return $this->content()->get("start-input");
+    return $this->input1;
   }
 
   /**
@@ -98,7 +104,7 @@ class RangeSlider extends AbstractSlider {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getEndInput() {
-    return $this->content()->get("end-input");
+    return $this->input2;
   }
 
   /**
@@ -113,7 +119,6 @@ class RangeSlider extends AbstractSlider {
     } else {
       $this->getInnerLabel()->hide();
     }
-    //$this->valueVisible = $valueVisible;
     return $this;
   }
 
@@ -142,21 +147,11 @@ class RangeSlider extends AbstractSlider {
   /**
    * {@inheritdoc}
    */
-  public function disable($enabled = true) {
-    if ($enabled) {
-      $this->removeCssClass("disabled");
-    } else {
-      $this->addCssClass("disabled");
-    }
-    $this->getInput()->disable($enabled);
+  public function disable($disabled = true) {
+    parent::disable($disabled);
+    $this->getStartInput()->disable($disabled);
+    $this->getStopValue()->disable($disabled);
     return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isEnabled() {
-    return !$this->getInput()->attrExists("disabled");
   }
 
   /**
@@ -180,43 +175,25 @@ class RangeSlider extends AbstractSlider {
    * {@inheritdoc}
    */
   public function isNamed() {
-    return $this->getInput()->isNamed();
+    return $this->getStartInput()->isNamed() && $this->getEndInput()->isNamed();
   }
 
   /**
-   * Returns the minimum value of the slider
+   * Returns the start value of the slider
    *
-   * @return int the minimum value of the slider
+   * @return int the start value of the slider
    */
   public function getStartValue() {
     return $this->getStartInput()->getValue();
   }
 
   /**
-   * Returns the maximum value of the slider
+   * Returns the end value of the slider
    *
-   * @return int the maximum value of the slider
+   * @return int the end value of the slider
    */
   public function getStopValue() {
     return $this->getEndInput()->getValue();
-  }
-
-  /**
-   * Returns the minimum value of the slider
-   *
-   * @return int the minimum value of the slider
-   */
-  public function getMin() {
-    return $this->attrs()->get("data-start");
-  }
-
-  /**
-   * Returns the maximum value of the slider
-   *
-   * @return int the maximum value of the slider
-   */
-  public function getMax() {
-    return $this->attrs()->get("data-end");
   }
 
   /**
@@ -225,7 +202,8 @@ class RangeSlider extends AbstractSlider {
   public function getValue() {
     $result = [];
     $result["start"] = $this->getStartValue();
-    return $this->getInput()->getValue();
+    $result["end"] = $this->getStopValue();
+    return $result;
   }
 
   /**
@@ -274,34 +252,10 @@ class RangeSlider extends AbstractSlider {
   }
 
   /**
-   * Sets whether the input must have a value or not before form submission
-   * 
-   * @param  boolean $required true if the input must have a value before form submission, otherwise false
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
-  public function setRequired($required = true) {
-    return $this->getInput()->setRequired($required);
-  }
-
-  /**
-   * Checks whether the input must have a value before form submission
-   *
-   * @return boolean true if the input must have a value before form submission, false otherwise
-   */
-  public function isRequired() {
-    return $this->getInput()->isRequired();
-  }
-
-  public function getLabel() {
-    
-  }
-
-  public function hasLabel() {
-    
-  }
-
-  public function setLabel($label) {
-    
+  public function contentToString() {
+    return $this->handle1 . '<span class="slider-fill" data-slider-fill></span>' . $this->handle2 . $this->input1 . $this->input2;
   }
 
 }

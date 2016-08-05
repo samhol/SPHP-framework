@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 
 /**
- * A trait implementation of the {@link LabelableInputInterface}
+ * A trait implementation of the {@link LabelableInterface}
  *
  * A trait for creating  the {@link Label} component pointing to the html input
  * component that implements the {@link LabelableInterface}.
@@ -23,12 +23,6 @@ use Sphp\Html\Attributes\AttributeManager as AttributeManager;
  * @filesource
  */
 trait LabelableTrait {
-  /**
-   * Returns the attribute manager attached to the component
-   *
-   * @return AttributeManager the attribute manager
-   */
-  //abstract public function attrs();
 
   /**
    * Creates a {@link Label} component for the input component
