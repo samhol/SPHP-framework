@@ -8,8 +8,8 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Html\Forms\InputInterface as InputInterface;
-use Sphp\Html\Forms\InputTrait as InputTrait;
+use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 
 /**
  * Class is the abstract base class for all &lt;input&gt; tag implementations

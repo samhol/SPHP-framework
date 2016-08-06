@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Ion;
+namespace Sphp\Html\Forms\Inputs\Ion;
 
 use InvalidArgumentException;
 

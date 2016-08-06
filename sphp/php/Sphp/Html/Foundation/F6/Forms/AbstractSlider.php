@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
 use InvalidArgumentException;
 
 /**

@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Menus;
+namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Core\Gettext\Calendar as Calendar;
 use Sphp\Core\Types\Arrays as Arrays;

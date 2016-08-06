@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 /**
  * Interface defines required operations for all validable input components used in {@link FormInterface}
@@ -16,7 +16,7 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ValidableInputInterface  extends InputInterface {
+interface ValidableInputInterface extends InputInterface {
 
 	/**
 	 * Sets whether the input must have a value or not before form submission

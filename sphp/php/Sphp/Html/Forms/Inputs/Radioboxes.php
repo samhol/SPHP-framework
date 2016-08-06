@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 /**
  * A component containing multiple {@link Radiobox} inputs

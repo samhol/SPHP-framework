@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 
 /**

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\IdentifiableInterface as IdentifiableInterface;
 use Sphp\Html\ContainerTag as ContainerTag;
 use Sphp\Core\Types\Strings as Strings;

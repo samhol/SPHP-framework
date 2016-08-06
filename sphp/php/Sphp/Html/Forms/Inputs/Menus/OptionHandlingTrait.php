@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Menus;
+namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Core\Types\Strings as Strings;
 

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Foundation\F6\Grids\AbstractRow as AbstractRow;
-use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
 
 /**

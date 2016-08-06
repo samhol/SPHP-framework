@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\ContentInterface as ContentInterface;
 

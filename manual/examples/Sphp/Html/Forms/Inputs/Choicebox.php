@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Radioboxes as Radioboxes;
-use Sphp\Html\Forms\Checkboxes as Checkboxes;
+use Sphp\Html\Forms\Inputs\Radioboxes as Radioboxes;
+use Sphp\Html\Forms\Inputs\Checkboxes as Checkboxes;
 
 $radioBoxes = (new Radioboxes("gender", [
     "m" => "male",

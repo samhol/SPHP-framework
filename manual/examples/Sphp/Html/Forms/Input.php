@@ -4,7 +4,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 use Sphp\Html\Forms\Inputs\PasswordInput as PasswordInput;
-use Sphp\Html\Forms\Textarea as Textarea;
+use Sphp\Html\Forms\Inputs\Textarea as Textarea;
 
 $form = (new Form());
 $textInput = (new TextInput("text[]"))

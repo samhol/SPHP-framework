@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\F6\Forms;
-use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 
 $slider = $api->getClassLink(Slider::class);

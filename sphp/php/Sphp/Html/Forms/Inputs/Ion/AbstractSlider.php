@@ -5,10 +5,11 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Ion;
+namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Forms\Inputs\AbstractInputTag as AbstractInputTag;
-use Sphp\Html\Forms\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 use InvalidArgumentException;
 
 /**
@@ -21,7 +22,7 @@ use InvalidArgumentException;
  */
 abstract class AbstractSlider extends AbstractInputTag implements SliderInterface {
 
-  use \Sphp\Html\Forms\InputTrait;
+  use InputTrait;
 
   /**
    * Constructs a new instance

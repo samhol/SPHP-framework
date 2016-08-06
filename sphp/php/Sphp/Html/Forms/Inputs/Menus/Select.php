@@ -5,15 +5,16 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms\Menus;
+namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Forms\RequirableInputInterface as RequirableInputInterface;
+use Sphp\Html\Forms\Inputs\RequirableInputInterface as RequirableInputInterface;
+use Sphp\Html\Forms\Inputs\RequireableInputTrait as RequireableInputTrait;
+use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
-use Sphp\Html\Forms\RequireableInputTrait as RequireableInputTrait;
 use Sphp\Html\ContainerInterface as ContainerInterface;
 
 /**
@@ -42,7 +43,7 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
  */
 class Select extends AbstractContainerComponent implements LabelableInterface, RequirableInputInterface, TraversableInterface {
 
-  use \Sphp\Html\Forms\InputTrait,
+  use InputTrait,
       OptionHandlingTrait,
       LabelableTrait,
       RequireableInputTrait,
@@ -89,10 +90,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, R
    * @return ContainerInterface containing {@link Option} components
    */
   public function getOptions() {
-    $isOption = function($component) {
-      return $component instanceof Option;
-    };
-    return $this->getComponentsBy($isOption);
+    return $this->getComponentsByObjectType(Option::class);
   }
 
   /**
@@ -145,19 +143,18 @@ class Select extends AbstractContainerComponent implements LabelableInterface, R
   }
 
   /**
-   * Returns selected values of the component
-   *
-   * @return scalar[] selected values of menu
+   * {@inheritdoc}
    */
   public function getValue() {
-    return $this->getSelectedValues();
+    $selected = [];
+    foreach ($this->getSelectedOptions() as $option) {
+      $selected[] = $option->getValue();
+    }
+    return array_unique($selected);
   }
 
   /**
-   * Sets the selected {@link Option} values of the component
-   *
-   * @param  scalar|scalar[] $value new selected values of the menu
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setValue($value) {
     return $this->setSelectedValues($value);

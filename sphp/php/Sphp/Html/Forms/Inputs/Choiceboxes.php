@@ -5,12 +5,14 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Forms\Inputs\Input as InputTag;
 use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
+use Sphp\Html\Forms\Label as Label;
 
 /**
  * A component containing multiple radio or checkbox inputs

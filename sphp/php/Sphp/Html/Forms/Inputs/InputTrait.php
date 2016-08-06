@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;

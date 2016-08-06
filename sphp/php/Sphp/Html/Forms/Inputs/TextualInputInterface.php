@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 
 /**
  * Class models an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag

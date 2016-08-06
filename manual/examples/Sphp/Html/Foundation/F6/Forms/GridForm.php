@@ -3,9 +3,9 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\Inputs\TextInput as TextInput;
-use Sphp\Html\Forms\Radioboxes as Radioboxes;
+use Sphp\Html\Forms\Inputs\Radioboxes as Radioboxes;
 use Sphp\Html\Forms\Checkboxes as Checkboxes;
-use Sphp\Html\Forms\Textarea as Textarea;
+use Sphp\Html\Forms\Inputs\Textarea as Textarea;
 use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
 use Sphp\Html\Foundation\F6\Forms\Inputs\TextColumn as TextColumn;
 

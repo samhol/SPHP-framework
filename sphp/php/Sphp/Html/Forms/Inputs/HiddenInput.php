@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\InputTrait as InputTrait;
+use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 
 /**
  * Class models an HTML &lt;input type="hidden"&gt; tag

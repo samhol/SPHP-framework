@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Forms\Menus;
+namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;

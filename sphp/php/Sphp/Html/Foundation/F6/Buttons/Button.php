@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Forms\Buttons\ButtonTag as FormButton;
+use Sphp\Html\Forms\Buttons\ButtonTag as ButtonTag;
 
 /**
  * Class implements an HTML &lt;button&gt; tag as a Foundation Button in PHP
@@ -20,7 +20,7 @@ use Sphp\Html\Forms\Buttons\ButtonTag as FormButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Button extends FormButton {
+class Button extends ButtonTag {
 
   /**
    * Constructs a new instance

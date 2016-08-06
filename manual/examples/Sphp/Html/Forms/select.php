@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Forms\Menus;
+namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Foundation\F6\Forms\GridForm as Form;
 

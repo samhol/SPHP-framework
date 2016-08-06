@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Forms\Ion;
+namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Forms\Form as Form;
 

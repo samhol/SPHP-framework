@@ -5,9 +5,11 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
+use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
 
 /**
  * Class models an HTML &lt;textarea&gt; tag
