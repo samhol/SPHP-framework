@@ -11,6 +11,7 @@ use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
+use Sphp\Html\Foundation\F6\Containers\Callout as Callout;
 
 /**
  * Class implements a Foundation framework form
@@ -28,6 +29,13 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
 
   use FormGridTrait,
       TraversableFormTrait;
+
+  /**
+   *
+   * @var Callout
+   */
+     private $errorLabel;
+
 
   /**
    * Constructs a new instance
@@ -54,6 +62,13 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     if ($content !== null) {
       $this->append($content);
     }
+    $this->errorLabel = new Callout('<p><i class="fi-alert"></i> There are some errors in your form.</p>');
+    $this->errorLabel->hide()->cssClasses()->lock("alert");
+    $this->errorLabel->attrs()->demand("data-abide-error");
+  }
+  
+  public function setFormErrorMessage($message) {
+    $this->errorLabel->replaceContent($message);
   }
 
   /**
@@ -64,4 +79,10 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->errorLabel . parent::contentToString();
+  }
 }
