@@ -12,6 +12,7 @@ use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Forms\Label as Label;
 use Sphp\Html\Span as Span;
+use Sphp\Html\Sections\Paragraph as Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
 
@@ -48,6 +49,12 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @var Span 
    */
   private $errorField;
+
+  /**
+   *
+   * @var Paragraph
+   */
+  private $helper;
 
   /**
    *
@@ -153,6 +160,19 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
+
+  /**
+   * Sets the visible contents of the helpaer label
+   * 
+   * @param  mixed $text the contents of the helpaer 
+   * @return self for PHP Method Chaining
+   */
+  public function setHelperText($text) {
+    $this->helper = new Paragraph($text);
+    $this->helper->cssClasses()->lock("help-text");
+    return $this;
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -209,7 +229,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->label->getHtml();
+    return $this->label->getHtml() . $this->helper;
   }
 
 }

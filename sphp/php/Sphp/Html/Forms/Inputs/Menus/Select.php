@@ -130,19 +130,6 @@ class Select extends AbstractContainerComponent implements LabelableInterface, R
   }
 
   /**
-   * Returns the selected options of the menu object
-   *
-   * @return scalar[] selected options of the menu object
-   */
-  public function getSelectedValues() {
-    $selected = [];
-    foreach ($this->getSelectedOptions() as $option) {
-      $selected[] = $option->getValue();
-    }
-    return array_unique($selected);
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function getValue() {

@@ -21,7 +21,7 @@ $form = (new GridForm())
     (new InputColumn((new TextInput("lname"))->setPlaceholder("Family name"), 12, 4, 4))
                 ->setLabel("Family name:")]);
 $form->append([
-    (new TextColumn("textColumn1"))->setRequired()->setErrorField("Fill this up")->setPlaceholder("textColumn 1.")->setWidths(12, 6), 
+    (new TextColumn("textColumn1"))->setRequired()->setHelperText("insert any text *")->setErrorField("Fill this up")->setPlaceholder("textColumn 1.")->setWidths(12, 6), 
     (new TextColumn("textColumn2"))->setPlaceholder("textColumn 2.")->setWidths(12, 6)]);
 $form->append((new Textarea("notes", "", 4))
                 ->setPlaceholder("some notes about the person"));
