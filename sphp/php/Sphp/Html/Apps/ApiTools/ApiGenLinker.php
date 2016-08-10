@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\ApiTools;
 
 use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-use Sphp\Util\ReflectionClassExt as ReflectionClassExt;
+use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumb as BreadCrumb;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumbs as BreadCrumbs;
 

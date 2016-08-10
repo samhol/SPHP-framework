@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\LocalFile as LocalFile;
 use Sphp\Html\Sections\Paragraph as Paragraph;
 
 $fileLoader = new LocalFile("manual/snippets/loremipsum.html");

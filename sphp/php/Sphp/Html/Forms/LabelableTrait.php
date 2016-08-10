@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
-
 /**
  * A trait implementation of the {@link LabelableInterface}
  *

@@ -12,7 +12,7 @@ namespace Sphp\Util;
 
 //echo "aassa<pre>";
 //include_once 'sph/settings.php';
-$f = new FileObject(__DIR__ . "/../../sph/locale/fi_FI/LC_MESSAGES/" . \Sphp\DEFAULT_DOMAIN . ".po");
+$f = new LocalFile(__DIR__ . "/../../sph/locale/fi_FI/LC_MESSAGES/" . \Sphp\DEFAULT_DOMAIN . ".po");
 //print_r($f );
 $rows = array_slice($f->getTextFileRows(), 16);
 //print_r($rows);

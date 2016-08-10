@@ -8,7 +8,6 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 
 /**
  * Class models an HTML &lt;input type="hidden"&gt; tag
@@ -21,8 +20,6 @@ use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
  * @filesource
  */
 class HiddenInput extends AbstractInputTag implements NonVisualContentInterface {
-
-	use InputTrait;
 
 	/**
 	 * Constructs a new instance

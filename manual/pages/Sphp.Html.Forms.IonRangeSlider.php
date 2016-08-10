@@ -3,11 +3,13 @@
 namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-
+use Sphp\Html\Apps\Manual\Apis as Apis;
 $slider = $api->getClassLink(Slider::class);
 $rangeSlider = $api->getClassLink(RangeSlider::class);
+$nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__, false);
+$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-##The $slider and $rangeSlider component
+##The $nsLink namespace containing $slider and $rangeSlider component
 		
 These components implement [Ion.RangeSlider](http://ionden.com/a/plugins/ion.rangeSlider/en.html){target="_blank"} 
 client side slider element for object oriented PHP. The original Ion.RangeSlider 

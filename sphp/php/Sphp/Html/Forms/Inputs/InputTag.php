@@ -15,9 +15,7 @@ use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
 /**
  * Class Models an HTML &lt;input&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-08-17
@@ -25,7 +23,7 @@ use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Input extends AbstractInputTag implements ValidableInputInterface, LabelableInterface {
+class InputTag extends AbstractInputTag implements ValidableInputInterface, LabelableInterface {
 
   use LabelableTrait,
       ValidableInputTrait;

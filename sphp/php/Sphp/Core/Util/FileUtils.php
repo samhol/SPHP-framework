@@ -5,7 +5,9 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Util;
+namespace Sphp\Core\Util;
+
+use InvalidArgumentException;
 
 /**
  * Class contains tools to work with files and directories

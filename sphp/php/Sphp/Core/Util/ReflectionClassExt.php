@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Util;
+namespace Sphp\Core\Util;
 
 /**
  * Class extends PHP's native {@link \ReflectionClass}

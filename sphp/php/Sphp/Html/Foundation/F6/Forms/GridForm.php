@@ -34,8 +34,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    *
    * @var Callout
    */
-     private $errorLabel;
-
+  private $errorLabel;
 
   /**
    * Constructs a new instance
@@ -66,7 +65,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     $this->errorLabel->hide()->cssClasses()->lock("alert");
     $this->errorLabel->attrs()->demand("data-abide-error");
   }
-  
+
   public function setFormErrorMessage($message) {
     $this->errorLabel->replaceContent($message);
   }
@@ -85,4 +84,5 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
   public function contentToString() {
     return $this->errorLabel . parent::contentToString();
   }
+
 }

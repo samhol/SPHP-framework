@@ -13,8 +13,8 @@ $fileObject instance can handle file related (reading and writing) operations.
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . "Sphp/Util/FileObject1.php", 1, "text");
-$exampleViewer(EXAMPLE_DIR . "Sphp/Util/FileObject2.php", 1, "php");
+$exampleViewer(EXAMPLE_DIR . "Sphp/Util/FileObject1.php", "text");
+$exampleViewer(EXAMPLE_DIR . "Sphp/Util/FileObject2.php", "text");
 
 echo $parsedown->text(<<<MD
 $fileObject can also read <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>

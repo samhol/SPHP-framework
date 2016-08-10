@@ -6,7 +6,7 @@ namespace Sphp\Util;
 include_once '../settings.php';
 include_once '../htmlHead.php';
 echo '<body class="manual" id="manual-body">';
-$f = new FileObject(__DIR__ . "/../../sphp/locale/fi_FI/LC_MESSAGES/" . \Sphp\DEFAULT_DOMAIN . ".po");
+$f = new LocalFile(__DIR__ . "/../../sphp/locale/fi_FI/LC_MESSAGES/" . \Sphp\DEFAULT_DOMAIN . ".po");
 //print_r($f );
 $rows = array_slice($f->getTextFileRows(), 16);
 //print_r($rows);

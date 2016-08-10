@@ -12,6 +12,7 @@ use Sphp\Html\Attributes\AttributeChangeObserver as AttributeChangeObserver;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;
 use InvalidArgumentException;
+use SplObjectStorage;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations
@@ -44,7 +45,7 @@ abstract class AbstractTag implements ComponentInterface, AttributeChanger {
   /**
    * collection of individual id change observer objects
    *
-   * @var \SplObjectStorage
+   * @var SplObjectStorage
    */
   private $observers;
 
@@ -117,12 +118,6 @@ abstract class AbstractTag implements ComponentInterface, AttributeChanger {
     } else {
       $this->attrs = $attrManager;
     }
-    $observer = function (AttributeChanger $obj, $attrName) {
-      if ($obj === $this->attrs) {
-        $this->notifyAttributeChange($attrName);
-      }
-      $this->attrs->attachAttributeChangeObserver($observer);
-    };
     return $this;
   }
 

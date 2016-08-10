@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Util;
+namespace Sphp\Core\Util;
 
 /**
  * Class implements a simple interface to track the consumed time
@@ -37,7 +37,7 @@ class Timer {
    * @return self for PHP Method Chaining
    */
   public function startFromRequest() {
-    $this->startTime = intval($_SERVER["REQUEST_TIME_FLOAT"]);
+    $this->startTime = filter_input(\INPUT_SERVER, "REQUEST_TIME_FLOAT", \FILTER_SANITIZE_NUMBER_INT);
     return $this;
   }
 
@@ -69,7 +69,10 @@ class Timer {
    * @return float the requested time
    */
   public static function getEcecutionTime($precision = false) {
-    $time = microtime(true) - intval($_SERVER["REQUEST_TIME_FLOAT"]);
+    $time = 0;
+    if (array_key_exists("REQUEST_TIME_FLOAT", $_SERVER)) {
+      $time = microtime(true) - intval($_SERVER["REQUEST_TIME_FLOAT"]);
+    }
     if ($precision !== false) {
       $time = round($time, $precision);
     }

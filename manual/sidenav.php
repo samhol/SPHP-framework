@@ -16,16 +16,7 @@ $sidenavLinker = function (array $link) use($nav) {
     $nav->appendLink($link["href"], $text, $target);
   }
 };
-/*foreach (Config::get("SIDENAV_LINKS") as $item) {
-  if (array_key_exists("href", $item)) {
-    $sidenavLinker($item);
-  } else if (array_key_exists("group", $item) && array_key_exists("sub", $item)) {
-    $nav->appendHeading($item["group"]);
-    foreach ($item["sub"] as $value) {
-      $sidenavLinker($value);
-    }
-  }
-}*/
+
 foreach (Configuration::useDomain("manual")->get("SIDENAV_LINKS") as $item) {
   if (array_key_exists("href", $item)) {
     $sidenavLinker($item);
@@ -49,5 +40,4 @@ ob_end_clean();
 
 echo $content;
 unset($nav, $content);
-//$nav->appendLink("$httpRoot?i[]=2&a=v", "d");
 

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\LocalFile as LocalFile;
 
 $fileLoader = new LocalFile(\Sphp\Manual\LOREM_IPSUM_PATH);
 $container = new Container();

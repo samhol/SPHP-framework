@@ -8,8 +8,6 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 
 /**
  * Class is the abstract base class for all &lt;input&gt; tag implementations
@@ -27,7 +25,7 @@ use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
  */
 abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInterface {
 
-  use InputTrait;
+  use InputTagTrait;
 
   /**
    * Constructs a new instance
@@ -48,36 +46,6 @@ abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInt
     if (isset($value)) {
       $this->setValue($value);
     }
-  }
-
-  /**
-   * Returns the type attribute value
-   *
-   * @return string the type attribute value
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
-   */
-  public function getType() {
-    return $this->getAttr("type");
-  }
-
-  /**
-   * Returns the value of the value attribute.
-   *
-   * @return string the value of the value attribute
-   */
-  public function getValue() {
-    return $this->getAttr("value");
-  }
-
-  /**
-   * Sets the value of the value attribute.
-   *
-   * @param  string $value the value of the value attribute
-   * @param  int $filter The ID of the filter to apply. {@link http://php.net/manual/en/filter.filters.php list of the available filters}.
-   * @return self for PHP Method Chaining
-   */
-  public function setValue($value, $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS) {
-    return $this->setAttr("value", filter_var($value, $filter));
   }
 
 }

@@ -313,7 +313,8 @@ trait ComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function setId($id) {
-    return $this->attrs()->set("id", $id);
+    $this->attrs()->set("id", $id);
+    return $this;
   }
 
   /**

@@ -19,10 +19,9 @@ namespace Sphp\Html\Forms\Inputs;
 class PasswordInput extends TextualInput {
 
   /**
-   * Constructor
+   * Constructs a new instance
    *
-   * @Preconditions  <var>0 < $size <= $maxlength</var>
-   *
+   * @precondition  `0 < $size <= $maxlength`
    * @param  string $name name attribute
    * @param  string $value value attribute
    * @param  int $size size attribute

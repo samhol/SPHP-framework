@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Util\ReflectionClassExt as ReflectionClassExt;
+use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumbs as BreadCrumbs;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumb as BreadCrumb;
 

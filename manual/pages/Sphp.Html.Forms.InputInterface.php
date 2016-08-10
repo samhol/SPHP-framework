@@ -1,23 +1,25 @@
 <?php
 
-namespace Sphp\Html\Forms;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Forms\FormInterface as FormInterface;
 
 $formIfLink = $api->getClassLink(FormInterface::class);
-$inputInterface = $api->getClassLink(Inputs\InputInterface::class);
+$inputInterface = $api->getClassLink(InputInterface::class);
+$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Some form components inheriting $inputInterface
-		
-All of the following components declare an input control in  a $formIfLink form.
+$ns		
+All of the following components declare an $inputInterface input control for a $formIfLink form.
 
 MD
 );
 
-$baseInput = $api->classLinker(Inputs\Input::class);
-$textualInput = $api->classLinker(Inputs\TextualInput::class);
-$textInput = $api->classLinker(Inputs\TextInput::class);
-$textarea = $api->classLinker(Inputs\Textarea::class);
+$baseInput = $api->classLinker(InputTag::class);
+$textualInput = $api->classLinker(TextualInput::class);
+$textInput = $api->classLinker(TextInput::class);
+$textarea = $api->classLinker(Textarea::class);
 
 echo $parsedown->text(<<<MD
 ###Basic input components

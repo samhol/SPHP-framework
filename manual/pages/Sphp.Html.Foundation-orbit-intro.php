@@ -12,7 +12,7 @@ $orbitIntro->addCssClass("foundation-intro");
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-$gridExample = \Sphp\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php');
+$gridExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php');
 $grids_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 $grid = $api->classLinker(GridInterface::class);
 $row = $api->classLinker(Row::class);
@@ -62,7 +62,7 @@ namespace Sphp\Html\Foundation\F6\Media;
 $media_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
 $flexVideo = $api->getClassLink(FlexVideo::class);
 //$mediaExample = new FlexVideo("7aPvNA0tPWY", FlexVideo::YOUTUBE);
-$mediaExample = \Sphp\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');
+$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');
 $manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
 $orbitIntro->append($parsedown->text(<<<MD
 ##Foundation 6 Media components:

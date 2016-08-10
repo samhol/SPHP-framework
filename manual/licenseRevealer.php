@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
-use Sphp\Util\LocalFile as Filebject;
-use Sphp\Util\Timer as Timer;
+use Sphp\Core\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\Timer as Timer;
 
-$fileObj = new Filebject("license.md");
+$fileObj = new LocalFile("license.md");
 $license = (new Modal($fileObj->parseMarkdown(), "SPHP license"));
 $license->addCssClass("license");
 ?>

@@ -12,7 +12,7 @@ use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
 use Sphp\Html\Apps\SingleAccordion as SingleAccordion;
 use Sphp\Core\Types\BitMask as BitMask;
-use Sphp\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\LocalFile as LocalFile;
 use Gajus\Dindent\Indenter as Indenter;
 
 /**

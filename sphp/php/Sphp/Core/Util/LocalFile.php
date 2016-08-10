@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Util;
+namespace Sphp\Core\Util;
 
 /**
  * Class contains tools to work with the local files and directories

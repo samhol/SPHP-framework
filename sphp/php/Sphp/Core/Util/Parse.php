@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Util;
+namespace Sphp\Core\Util;
 
 /**
  * Parse from various formats to various formats.

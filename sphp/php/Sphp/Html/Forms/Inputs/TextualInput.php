@@ -20,13 +20,12 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TextualInput extends Input implements TextualInputInterface {
+class TextualInput extends InputTag implements TextualInputInterface {
 
   /**
    * Constructs a new instance
    *
-   * @Preconditions  `0 &lt; $size &lt;= $maxlength`
-   *
+   * @precondition  `0 < $size <= $maxlength`
    * @param  string $type the value of the type attribute
    * @param  string|null $name the value of the  name attribute
    * @param  string $value the value of the  value attribute

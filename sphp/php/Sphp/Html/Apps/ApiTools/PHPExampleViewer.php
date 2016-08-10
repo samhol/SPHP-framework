@@ -11,7 +11,7 @@ use Sphp\Html\ContentInterface as ContentInterface;
 use Sphp\Html\ContentTrait as ContentTrait;
 use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
 use Sphp\Html\Apps\SingleAccordion as SingleAccordion;
-use Sphp\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\LocalFile as LocalFile;
 use Gajus\Dindent\Indenter as Indenter;
 
 /**

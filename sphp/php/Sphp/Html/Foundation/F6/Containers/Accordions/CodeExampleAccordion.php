@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Util\LocalFile as LocalFile;
+use Sphp\Core\Util\LocalFile as LocalFile;
 use Gajus\Dindent\Indenter as Indenter;
 
 /**
