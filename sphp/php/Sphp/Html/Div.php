@@ -15,8 +15,6 @@ namespace Sphp\Html;
  * 
  * By default, browsers always place a line break before and after the &lt;div&gt; element.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-03-06
  * @link    http://www.w3schools.com/tags/tag_div.asp w3schools HTML API link

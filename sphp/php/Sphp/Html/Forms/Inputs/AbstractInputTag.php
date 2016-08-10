@@ -25,7 +25,7 @@ use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractInputTag extends EmptyTag implements InputInterface {
+abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInterface {
 
   use InputTrait;
 

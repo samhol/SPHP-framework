@@ -6,7 +6,9 @@
  */
 
 namespace Sphp\Html\Head;
+
 use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
 
 /**
  * Interface defines all {@link Head} component content
@@ -16,6 +18,6 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface HeadComponentInterface extends ComponentInterface {
-
+interface HeadComponentInterface extends ComponentInterface, NonVisualContentInterface {
+  
 }

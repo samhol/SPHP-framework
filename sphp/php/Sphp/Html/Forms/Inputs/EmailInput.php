@@ -40,5 +40,18 @@ class EmailInput extends TextualInput {
 	public function __construct($name = null, $value = null, $maxlength = null, $size = null) {
 		parent::__construct("email", $name, $value, $maxlength, $size);
 	}
+  
+
+  /**
+   * Sets whether to accept multiple email addresses or not
+   *
+   * @param  boolean $multiple whether to accept multiple email addresses or not
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
+   */
+  public function multiple($multiple = true) {
+    $this->attrs()->set("multiple", (bool)$multiple);
+    return $this;
+  }
 
 }
