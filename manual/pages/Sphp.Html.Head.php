@@ -21,7 +21,7 @@ The $head component implements the HTML head tag and acts as a
 container for all meta data components (data about data) $metaIfLnk.
 This meta data is data about the HTML document and it is not directly displayed in any browsers.
 		
-The following PHP classes describe HTML meta data components:
+The following PHP classes and interfaces describe HTML meta data components:
 
 * $title - {$w3schools->getTagLink(Title::TAG_NAME)}
 * $base - {$w3schools->getTagLink(Base::TAG_NAME)}

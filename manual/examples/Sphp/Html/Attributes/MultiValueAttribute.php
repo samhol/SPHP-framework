@@ -14,7 +14,6 @@ $classes = (new MultiValueAttribute("class"))
         ->attachAttributeChangeObserver($observer);
 $classes->demand();
 $classes->set("button tiny")
-        ->add("radius")
         ->add(["alert"]);
 $classes->lock("button")->remove("tiny");
 $classes->clear();

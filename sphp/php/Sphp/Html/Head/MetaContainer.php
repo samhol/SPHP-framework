@@ -68,11 +68,8 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Sets a {@link Meta} component for charset attribute (The character 
+   * Sets a {@link MetaInterface} component for charset attribute (The character 
    *  encoding for the HTML document).
-   *
-   * This method automatically creates proper meta tag object for the
-   * corresponding HTML version set in <var>Html::setHtmlVersion()<var>.
    *
    * **Common values:**
    *  
@@ -96,7 +93,7 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Sets (replaces) a {@link Meta} component including name attribute and 
+   * Sets (replaces) a {@link MetaInterface} component including name attribute and 
    *  the corresponding content attribute
    *
    * * The name attribute specifies the name for the metadata.
@@ -115,7 +112,7 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Sets (replaces) a {@link Meta} component including http-equiv 
+   * Sets (replaces) a {@link MetaInterface} component including http-equiv 
    *  attribute and the corresponding content attribute
    *
    * * The http-equiv attribute provides an HTTP header for the information/value of the content attribute.
@@ -134,7 +131,7 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Sets (replaces) a {@link Meta} component including a property 
+   * Sets (replaces) a {@link MetaInterface} component including a property 
    *  attribute the corresponding content attribute
    *
    * The Open Graph protocol enables any web page to become a rich object in 
@@ -155,7 +152,7 @@ class MetaContainer implements TraversableComponentInterface {
   }
 
   /**
-   * Sets a {@link Meta} component for a description of the web page
+   * Sets a {@link MetaInterface} component for a description of the web page
    *
    * @param  string $content the description of the web page
    * @return self for PHP Method Chaining

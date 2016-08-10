@@ -7,7 +7,8 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Container as Container;
 use Sphp\Core\Types\Strings as Strings;
@@ -19,22 +20,48 @@ use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
  *
  * The &lt;head&gt; tag is a container for all the head elements.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_head.asp w3schools HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Head extends AbstractContainerComponent {
+class Head extends AbstractComponent implements NonVisualContentInterface {
 
   /**
    * the tag name of the HTML component
    */
   const TAG_NAME = "head";
+
+  /**
+   *
+   * @var Title 
+   */
+  private $title;
+
+  /**
+   *
+   * @var Base|null 
+   */
+  private $base;
+
+  /**
+   *
+   * @var ScriptsContainer 
+   */
+  private $scripts;
+
+  /**
+   *
+   * @var Container 
+   */
+  private $links;
+
+  /**
+   *
+   * @var MetaContainer 
+   */
+  private $meta;
 
   /**
    * Constructs a new instance
@@ -56,17 +83,10 @@ class Head extends AbstractContainerComponent {
    */
   private function setup($title, $charset) {
     $this->setTitle($title);
-    //$this->metaTags = new MetaTagContainer();
-    $this->content()["meta"] = new MetaContainer();
+    $this->meta = new MetaContainer();
+    $this->scripts = new ScriptsContainer();
+    $this->links = new Container();
     $this->metaTags()->setCharset($charset);
-    //$this->linkTags = ;
-    $this->content()["links"] = new Container();
-    //$this->scriptFiles = new ScriptsContainer();
-    //$this->scripts(new ScriptsContainer());
-    //$this->content()["scripts"] = new ScriptsContainer();
-    //$this->content()["scriptFiles"] = $this->scriptFiles;
-    //$this->scriptCode = new Script();
-    //$this->content()["scriptCode"] = $this->scriptCode;
     return $this;
   }
 
@@ -77,10 +97,10 @@ class Head extends AbstractContainerComponent {
    * @return ScriptsContainer the script container
    */
   public function scripts(ScriptsContainer $c = null) {
-    if ($c !== null || !$this->content()->offsetExists("scripts")) {
-      $this->content()["scripts"] = new ScriptsContainer();
+    if ($c !== null) {
+      $this->scripts = new ScriptsContainer();
     }
-    return $this->content()["scripts"];
+    return $this->scripts;
   }
 
   /**
@@ -93,7 +113,7 @@ class Head extends AbstractContainerComponent {
     if (!($title instanceof Title)) {
       $title = new Title($title);
     }
-    $this->content()["title"] = $title;
+    $this->title = $title;
     return $this;
   }
 
@@ -107,10 +127,22 @@ class Head extends AbstractContainerComponent {
    */
   public function setBaseAddr($baseAddr, $target = "_self") {
     if (Strings::notEmpty($baseAddr) || Strings::notEmpty($target)) {
-      $this->content()["baseAddr"] = new Base($baseAddr, $target);
-    } else if (isset($this->content()["baseAddr"])) {
-      $this->content()->offsetUnset("baseAddr");
+      $this->base = new Base($baseAddr, $target);
+    } else {
+      $this->unsetBaseAddress();
     }
+    return $this;
+  }
+
+
+  /**
+   * unsets the default URL and a default target for all links on a page
+   *
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
+   */
+  public function unsetBaseAddress() {
+    $this->base = null;
     return $this;
   }
 
@@ -173,8 +205,7 @@ class Head extends AbstractContainerComponent {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function addCssSrc($href, $media = "screen") {
-    $this->content()["links"][] = (new Link($href, "stylesheet", $media))
-            ->setType("text/css");
+    $this->links->append((new Link($href, "stylesheet", $media))->setType("text/css"));
     return $this;
   }
 
@@ -205,9 +236,9 @@ class Head extends AbstractContainerComponent {
     if ($component instanceof Title) {
       $this->setTitle($component);
     } else if ($component instanceof Base) {
-      $this->content()->set("baseAddr", $component);
+      $this->base = $component;
     } else if ($component instanceof Link) {
-      $this->content()["links"][] = $component;
+      $this->links->append($component);
     } else if ($component instanceof Meta) {
       $this->metaTags()->addMeta($component);
     } else if ($component instanceof ScriptInterface) {
@@ -224,7 +255,14 @@ class Head extends AbstractContainerComponent {
    * @return MetaContainer containing all {@link Meta} components
    */
   public function metaTags() {
-    return $this->content()->get("meta");
+    return $this->meta;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->title . $this->base . $this->meta . $this->scripts . $this->links;
   }
 
 }

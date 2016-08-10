@@ -59,11 +59,9 @@ class Link extends EmptyTag implements HeadComponentInterface {
   /**
    * Sets the value of the href attribute
    *
-   * **Notes:**
-   * <ol>
-   * * The href attribute specifies the location (URL) of the external
+   * **Note:**
+   * The href attribute specifies the location (URL) of the external
    *      resource (most often a style sheet file).
-   * </ol>
    *
    * @param  string $href the location of the linked document
    * @param  boolean $encode converts all applicable characters of the $url to HTML entities

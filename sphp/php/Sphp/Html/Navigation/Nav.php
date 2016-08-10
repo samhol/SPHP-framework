@@ -20,9 +20,6 @@ use Sphp\Html\ContainerTag as ContainerTag;
  * Browsers, such as screen readers for disabled users, can use this element to
  * determine whether to omit the initial rendering of this content.
  *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-03-06
  * @link    http://www.w3schools.com/tags/tag_nav.asp w3schools HTML API link

@@ -3,16 +3,12 @@
 namespace Sphp\Html\Attributes;
 
 $styles = (new PropertyAttribute("style"))
-        ->set("color: #000; background: #fff;")
-        ->setProperty("font-size", ".6em")
+        ->set("color: #c00; padding: .5em;")
+        ->setProperty("font-size", "1.6em")
         ->setProperties([
-            "display" => "block;",
-            "border" => "solid 2px #ccc"
+            "font-weight" => "bold",
+            "border" => "dotted 2px #ccc"
         ]);
-$styles["flex"] = 1;
+$styles["text-align"] = "justify";
 echo "<p $styles>Styled paragraph</p>\n";
-
-$styles->lockProperty("visibility", "visible;")
-        ->clear();
-echo "<p $styles>Plain visible paragraph</p>";
 ?>
