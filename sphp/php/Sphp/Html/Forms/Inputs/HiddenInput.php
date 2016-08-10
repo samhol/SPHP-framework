@@ -21,16 +21,16 @@ use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
  */
 class HiddenInput extends AbstractInputTag implements NonVisualContentInterface {
 
-	/**
-	 * Constructs a new instance
-	 *
-	 * @param  string|null $name name attribute
-	 * @param  string|null $value value attribute
-	 * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-	 * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
-	 */
-	public function __construct($name = null, $value = null) {
-		parent::__construct("hidden", $name, $value);
-	}
+  /**
+   * Constructs a new instance
+   *
+   * @param  string|null $name name attribute
+   * @param  string|null $value value attribute
+   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   */
+  public function __construct($name = null, $value = null) {
+    parent::__construct("hidden", $name, $value);
+  }
 
 }
