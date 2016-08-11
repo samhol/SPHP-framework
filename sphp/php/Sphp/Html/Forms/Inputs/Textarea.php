@@ -20,9 +20,10 @@ use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends ContainerTag implements InputInterface, LabelableInterface {
+class Textarea extends ContainerTag implements RequirableInputInterface, LabelableInterface {
 
   use InputTrait,
+      RequireableInputTrait,
       LabelableTrait;
 
   /**
