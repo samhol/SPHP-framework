@@ -23,6 +23,12 @@ use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 class FoundationDocsLinker extends AbstractLinker {
 
   /**
+   *
+   * @var self
+   */
+  private static $instance;
+
+  /**
    * component map
    *
    * @var string[][] 
@@ -114,8 +120,6 @@ class FoundationDocsLinker extends AbstractLinker {
     }
     return $this->hyperlink("grid.html$fragment", $linkText);
   }
-  
-  private static $instance;
 
   /**
    * 
@@ -124,7 +128,7 @@ class FoundationDocsLinker extends AbstractLinker {
   public static function get() {
     if (self::$instance === null) {
       self::$instance = new static();
-    } 
+    }
     return self::$instance;
   }
 
