@@ -8,11 +8,10 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class implements jQuery range slider with skin support
+ * Interface defines a slider for forms
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-10-11
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

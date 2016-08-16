@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
+use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+
 /**
  * A trait implementation of the {@link ValidableInputInterface} 
  * 
@@ -17,7 +19,12 @@ namespace Sphp\Html\Forms\Inputs;
  */
 trait ValidableInputTrait {
 
-  use InputTrait;
+  /**
+   * Returns the attribute manager attached to the component
+   * 
+   * @return AttributeManager the attribute manager
+   */
+  abstract public function attrs();
 
   /**
    * Sets whether the input must have a value or not before form submission
@@ -38,41 +45,6 @@ trait ValidableInputTrait {
    */
   public function isRequired() {
     return $this->attrExists("required");
-  }
-
-  /**
-   * Sets the autocomplete attribute's value on or off
-   *
-   * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
-   * 
-   * **Tip:** Use the global title attribute to describe the pattern to help the user.
-   *
-   * @param  string $pattern a regular expression pattern that the component's value is checked against
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function setPattern($pattern) {
-    return $this->setAttr("data-sphp-pattern", $pattern);
-  }
-
-  /**
-   * Returns the validation pattern string
-   *
-   * @return string the regular expression pattern that the component's value is checked against
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function getPattern() {
-    return $this->getAttrValue("data-sphp-pattern");
-  }
-
-  /**
-   * Checks if a value validation pattern is set fot the component
-   *
-   * @return boolean true if a value validation pattern is set fot the component, othewise false
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function hasPattern() {
-    return $this->attrExists("data-sphp-pattern");
   }
 
 }

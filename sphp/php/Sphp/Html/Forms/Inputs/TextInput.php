@@ -10,9 +10,7 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Class models an HTML &lt;input type="text"&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26

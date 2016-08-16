@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Forms\Inputs\TextualInputInterface as TextualInputInterface;
 
 /**
@@ -25,12 +24,7 @@ class TextualColumn extends InputColumn implements TextualInputInterface {
   /**
    * Constructs a new instance
    *
-   * @param  InputInterface $input the actual input component
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param TextualInputInterface $input the actual input component
    */
   public function __construct(TextualInputInterface $input) {
     parent::__construct($input);
@@ -108,8 +102,37 @@ class TextualColumn extends InputColumn implements TextualInputInterface {
   /**
    * {@inheritdoc}
    */
-  public function setValidationPattern($pattern) {
-    $this->getInput()->setValidationPattern($pattern);
+  public function getPattern() {
+    return $this->getInput()->getPattern();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function hasPattern() {
+    return $this->getInput()->hasPattern();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isRequired() {
+    return $this->getInput()->isRequired();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setPattern($pattern) {
+    $this->getInput()->setPattern($pattern);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setRequired($required = true) {
+    $this->getInput()->setRequired($required);
     return $this;
   }
 

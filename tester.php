@@ -78,12 +78,26 @@ ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
         echo PHPManual::get()->classLinker(\Countable::class)->method("count") . "\n";
 
         echo W3schools::get()->tag("a");
-        
+
         namespace Sphp\Html\Forms\Inputs\Ion;
-        $ass = new Slider("shit");
+
+$ass = new Slider("shit");
         $ass->setId("arse")->printHtml();
         ?>
       </pre>
+      <div class="input-group">
+        <span class="input-group-label">cooler is cool</span>
+        <input class="input-group-field" type="number">
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-label">$</span>
+        <input class="input-group-field" type="number">
+        <div class="input-group-button">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 
 

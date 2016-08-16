@@ -8,10 +8,8 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Forms\Inputs\RequirableInputInterface as RequirableInputInterface;
-use Sphp\Html\Forms\Inputs\RequireableInputTrait as RequireableInputTrait;
+use Sphp\Html\Forms\Inputs\ValidableInputTrait as ValidableInputTrait;
 use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
-use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
@@ -41,18 +39,13 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Select extends AbstractContainerComponent implements LabelableInterface, RequirableInputInterface, TraversableInterface {
+class Select extends AbstractContainerComponent implements LabelableInterface, SelectMenuInterface {
 
   use InputTrait,
       OptionHandlingTrait,
       LabelableTrait,
-      RequireableInputTrait,
+      ValidableInputTrait,
       TraversableTrait;
-
-  /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "select";
 
   /**
    * Constructs a new instance of the {@link Select} component

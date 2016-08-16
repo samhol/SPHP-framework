@@ -20,6 +20,7 @@ MD
 (new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/GridForm.php'))
         ->addCssClass("form-example")
         ->printHtml();
+$load("Sphp.Html.Foundation.F6.Forms.Buttons.php");
 $load("Sphp.Html.Foundation.F6.Forms.Choiceboxes.php");
 $load("Sphp.Html.Foundation.F6.Forms.Switch.php");
 $load("Sphp.Html.Foundation.F6.Forms.Slider.php");

@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-
 /**
- * Class models an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
+ * Interface defines an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
  *
  * {@inheritdoc}
@@ -22,7 +20,7 @@ use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TextualInputInterface extends InputInterface {
+interface TextualInputInterface extends PatternValidableInputInterface {
 
   /**
    * Returns the value of the size attribute
@@ -94,36 +92,4 @@ interface TextualInputInterface extends InputInterface {
    * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
   public function autocomplete($allow = true);
-
-  /**
-   * Sets the autocomplete attribute's value on or off
-   *
-   * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
-   * 
-   * **Tip:** Use the global title attribute to describe the pattern to help the user.
-   *
-   * @param  string $pattern a regular expression pattern that the component's 
-   *         value is checked against
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function setValidationPattern($pattern);
-
-  /**
-   * Returns the validation pattern string
-   *
-   * @return  string the regular expression pattern that the component's 
-   *         value is checked against
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function getValidationPattern();
-
-  /**
-   * Checks if a value validation pattern is set fot the component
-   *
-   * @return boolean true if a value validation pattern is set fot the 
-   *         component, othewise false
-   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */
-  public function hasValidationPattern();
 }

@@ -22,6 +22,7 @@ namespace Sphp\Html\Forms\Inputs;
  */
 class TextualInput extends InputTag implements TextualInputInterface {
 
+  use PatternValidableTrait;
   /**
    * Constructs a new instance
    *
@@ -96,21 +97,22 @@ class TextualInput extends InputTag implements TextualInputInterface {
   /**
    * {@inheritdoc}
    */
-  public function setValidationPattern($pattern) {
+  public function setPattern($pattern) {
     $this->attrs()->set("pattern", $pattern);
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getValidationPattern() {
+  public function getPattern() {
     return $this->attrs()->get("pattern");
   }
 
   /**
    * {@inheritdoc}
    */
-  public function hasValidationPattern() {
+  public function hasPattern() {
     return $this->attrs()->exists("pattern");
   }
 

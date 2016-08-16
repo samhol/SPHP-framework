@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
-
 /**
  * Class models an HTML &lt;input type="file"&gt; tag
  *
@@ -19,10 +17,10 @@ use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileInput extends AbstractInputTag implements RequirableInputInterface {
+class FileInput extends AbstractInputTag implements ValidableInputInterface {
 
   use InputTrait,
-      RequireableInputTrait;
+      ValidableInputTrait;
 
   /**
    * Constructs a new instance
