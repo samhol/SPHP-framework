@@ -3,9 +3,7 @@
 namespace Sphp\Html\Attributes;
 
 $identifyingAttr = $api->classLinker(IdentifyingAttribute::class);
-$abstractAttr = $api->getClassLink(AbstractAttribute::class);
-$setMethodLink = $api->getClassMethodLink(AttributeManager::class, "set");
-$removeMethodLink = $api->getClassMethodLink(AttributeManager::class, "remove");
+$abstractAttr = $api->classLinker(AbstractAttribute::class);
 echo $parsedown->text(<<<MD
 ##The $identifyingAttr class
 		

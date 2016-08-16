@@ -56,7 +56,7 @@ class PHPManual extends AbstractPhpApiLinker {
     $path = "reserved.constants.php";
     if (defined($constant)) {
       $path = "reserved.constants.php#constant." . $this->phpPathFixer($constant);
-      return $this->getHyperlink($path, $constant, "$constant cnnstant")
+      return $this->hyperlink($path, $constant, "$constant cnnstant")
                       ->addCssClass("constant");
     } else {
       return $this->hyperlink($path, $constant, "$constant cnnstant")

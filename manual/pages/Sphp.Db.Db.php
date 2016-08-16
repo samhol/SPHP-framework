@@ -3,7 +3,7 @@
 namespace Sphp\Db;
 
 $db = $api->classLinker(Db::class);
-$pdo = $php->getClassLink(\PDO::class);
+$pdo = $php->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
 ##The $db class

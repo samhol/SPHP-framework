@@ -4,9 +4,9 @@ namespace Sphp\Core\Gettext;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
-$gettext = $php->getExtensionLink("gettext", "Gettext");
+$gettext = $php->extensionLink("gettext", "Gettext");
 echo $parsedown->text(<<<MD
 #Native Language Support
         
@@ -15,9 +15,9 @@ be used to internationalize your PHP applications. Please see the gettext
 documentation for your system for a thorough explanation of these functions or 
 view the docs at http://www.gnu.org/software/gettext/manual/gettext.html.
 $ns
-PHP has {$php->getExtensionLink('gettext')} to handle simple human language translation process.
+PHP has {$php->extensionLink('gettext')} to handle simple human language translation process.
 
-By default, the {$php->getFunctionLink('gettext')} function  will use the `LC_CTYPE` 
+By default, the {$php->functionLink('gettext')} function  will use the `LC_CTYPE` 
 of the chosen language (for example `en_US` or `fi_FI`). This `LC_CTYPE` is extracted 
 from the `locales.alias` file in the servers configuration dir (Should be `/etc/locales.alias`).
 By default, the encoding is frequently `iso-8859-1`.
@@ -39,8 +39,8 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/sphpTranslation.php", "text", false);
 
-$locale = $api->getClassLink(Locale::class);
-$translator = $api->getClassLink(Translator::class);
+$locale = $api->classLinker(Locale::class);
+$translator = $api->classLinker(Translator::class);
 
 echo $parsedown->text(<<<MD
 ##The $translator class
@@ -60,7 +60,7 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.plural.php", "text", false);
 
-$vsprintfLink = $php->getFunctionLink("vsprintf");
+$vsprintfLink = $php->functionLink("vsprintf");
 echo $parsedown->text(<<<MD
 The $translator class has also a method similar to PHP's native $vsprintfLink 
 function for both basic and plural translation. Additionally the class contain a 
@@ -69,11 +69,11 @@ is not supported).
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.php", "text", false);
-$message =  $api->getClassLink(Message::class);
-$messageContainer =  $api->getClassLink(MessageList::class);
-$echo = $php->getFunctionLink("echo");
-$print = $php->getFunctionLink("print");
-$string = $php->getTypeLink("string");
+$message =  $api->classLinker(Message::class);
+$messageContainer =  $api->classLinker(MessageList::class);
+$echo = $php->functionLink("echo");
+$print = $php->functionLink("print");
+$string = $php->typeLink("string");
 echo $parsedown->text(<<<MD
 ##Localized messages using $message class
 
@@ -86,8 +86,8 @@ MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Message.php", "text", false);
-$translatorChangerObserverInterface =  $api->getClassLink(TranslatorChangerObserverInterface::class);
-$translatorChangerChainInterface =  $api->getClassLink(TranslatorChangerChainInterface::class);
+$translatorChangerObserverInterface =  $api->classLinker(TranslatorChangerObserverInterface::class);
+$translatorChangerChainInterface =  $api->classLinker(TranslatorChangerChainInterface::class);
 
 echo $parsedown->text(<<<MD
 ##$message grouping and prioritizing with $messageContainer class
@@ -109,10 +109,10 @@ its messages by notifying them via the $translatorChangerChainInterface.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/MessageContainer.php", "text", false);
-$topicContainer =  $api->getClassLink(TopicList::class);
-$messageContainers =  $api->getClassLink(MessageList::class, "MessageLists");
+$topicContainer =  $api->classLinker(TopicList::class);
+$messageContainers =  $api->classLinker(MessageList::class, "MessageLists");
 
-$arrayaccess = $php->getClassLink(\ArrayAccess::class);
+$arrayaccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
 ##Grouping $messageContainers with a $topicContainer
 
@@ -128,7 +128,7 @@ $message object translation within a $topicContainer class works the same way as
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/TopicContainer.php", "text", false);
-$calendar =  $api->getClassLink(Calendar::class);
+$calendar =  $api->classLinker(Calendar::class);
 echo $parsedown->text(<<<MD
 ##Localized calendar related translations
 

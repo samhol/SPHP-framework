@@ -9,9 +9,9 @@ use Sphp\Html\Foundation\F6\Grids\Column as Column;
 $grid = $api->classLinker(Grid::class);
 $row = $api->classLinker(Row::class);
 $col = $api->classLinker(Column::class);
-$cols = $api->getClassLink(Column::class, "Columns");
-//$ns = $api->getNamespaceLink(__NAMESPACE__);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$cols = $api->classLinker(Column::class, "Columns");
+//$ns = $api->namespaceLink(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $f_GridLink = $foundation->getComponentLink(Grid::class, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation front-end framework

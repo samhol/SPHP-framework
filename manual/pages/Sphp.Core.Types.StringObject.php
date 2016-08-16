@@ -4,8 +4,8 @@ namespace Sphp\Core\Types;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$stringObjectClass = $api->getClassLink(StringObject::class);
-$strLink = $php->getTypeLink("string");
+$stringObjectClass = $api->classLinker(StringObject::class);
+$strLink = $php->typeLink("string");
 
 echo $parsedown->text(<<<MD
 ###The $stringObjectClass class

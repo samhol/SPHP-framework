@@ -88,14 +88,14 @@ $p[] = ["Forms",
 
 namespace Sphp\Html\Media;
 
-$av = $api->getClassLink(Audio::class) . " and " . $api->getClassLink(Video::class);
+$av = $api->classLinker(Audio::class) . " and " . $api->classLinker(Video::class);
 $p[] = ["Media", [
         ["img", "Defines an image"],
         ["area", "Defines an area inside an image map"],
         ["map", "Defines an image map"],
         ["canvas", "Defines graphics"],
         ["figure", "Defines a group of media content, and their caption"],
-        ["figcaption", "Defines a caption for a {$api->getClassLink(Figure::class)} component"],
+        ["figcaption", "Defines a caption for a {$api->classLinker(Figure::class)} component"],
         ["audio", "Defines sound content"],
         ["video", "Defines a video"],
         ["track", "Defines text tracks for $av components"],
@@ -114,12 +114,12 @@ $p[] = ["Links", [
 
 namespace Sphp\Html\Lists;
 
-$dl = "for " . $api->getClassLink(Dl::class) . " component";
+$dl = "for " . $api->classLinker(Dl::class) . " component";
 $p["Lists"] = ["Lists",
     [
         ["ul", "Defines an unordered list"],
         ["ol", "Defines an ordered list"],
-        ["li", "Defines a list item for " . $api->getClassLink(Ul::class) . " and " . $api->getClassLink(Ol::class) . " components"],
+        ["li", "Defines a list item for " . $api->classLinker(Ul::class) . " and " . $api->classLinker(Ol::class) . " components"],
         ["dl", "Defines a definition list"],
         ["dd", "Defines a definition description $dl"],
         ["dt", "Defines a definition term $dl"],
@@ -204,9 +204,9 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $param = new \Sphp\Html\Span("$data[0]");
       $tooptipText = "call Doc::get(\"$data[0]\")";
       $c[] = new \Sphp\Html\Foundation\F6\Media\Tooltip($param, $tooptipText);
-      $c[] = $w3schools->getTagLink($tag->getTagName(), $linkText)->addCssClass("scale-to-fit");
+      $c[] = $w3schools->tag($tag->getTagName(), $linkText)->addCssClass("scale-to-fit");
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
-      $c[] = $api->getClassLink($ref->getName(), $text)->addCssClass("scale-to-fit")->removeCssClass("bordered");
+      $c[] = $api->classLinker($ref->getName(), $text)->getLink()->addCssClass("scale-to-fit")->removeCssClass("bordered");
       $c[] = $data[1];
       $body[] = $c;
     }

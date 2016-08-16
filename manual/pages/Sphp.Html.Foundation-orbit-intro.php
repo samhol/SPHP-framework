@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\F6;
 
 use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
 
-$ns = $api->getNamespaceLink(__NAMESPACE__, false);
-$toolsLink = $api->getNamespaceLink(__NAMESPACE__, false);
+$ns = $api->namespaceLink(__NAMESPACE__, false);
+$toolsLink = $api->namespaceLink(__NAMESPACE__, false);
 $btn = $api->classLinker(Buttons\ButtonInterface::class);
 $orbitIntro = new Orbit();
 $orbitIntro->addCssClass("foundation-intro");
@@ -13,7 +13,7 @@ $orbitIntro->addCssClass("foundation-intro");
 namespace Sphp\Html\Foundation\F6\Grids;
 
 $gridExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php');
-$grids_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$grids_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $grid = $api->classLinker(GridInterface::class);
 $row = $api->classLinker(Row::class);
 $column = $api->classLinker(Column::class);
@@ -31,7 +31,7 @@ MD
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-$btn_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$btn_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 $orbitIntro->append($parsedown->text(<<<MD
 ##Foundation 6 Buttons and Button containers
@@ -44,7 +44,7 @@ MD
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-$navi_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$navi_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $orbitIntro->append($parsedown->text(<<<MD
 ##Foundation 6 Navigation components:
         
@@ -59,8 +59,8 @@ MD
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-$media_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
-$flexVideo = $api->getClassLink(FlexVideo::class);
+$media_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$flexVideo = $api->classLinker(FlexVideo::class);
 //$mediaExample = new FlexVideo("7aPvNA0tPWY", FlexVideo::YOUTUBE);
 $mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');
 $manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
@@ -82,7 +82,7 @@ MD
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-$forms_ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$forms_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 $orbitIntro->append($parsedown->text(<<<MD
 

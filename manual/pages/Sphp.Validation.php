@@ -2,16 +2,16 @@
 
 namespace Sphp\Validation;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleViewer;
-$nsLink = $api->getNamespaceLink(__NAMESPACE__);
-$validatorInterface = $api->getClassLink(ValidatorInterface::class);
-$requiredValueValidator = $api->getClassLink(RequiredValueValidator::class);
-$patrnvLink = $api->getClassLink(PatternValidator::class);
-$strLenValLink = $api->getClassLink(StringLengthValidator::class);
-$abstractValidatorAggregate = $api->getClassLink(AbstractValidatorAggregate::class);
-$validatorAggregate = $api->getClassLink(ValidatorAggregate::class);
-$optionalValidatorInterface = $api->getClassLink(OptionalValidatorInterface::class);
-$AbstractOptionalValidator = $api->getClassLink(AbstractOptionalValidator::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = $api->namespaceLink(__NAMESPACE__);
+$validatorInterface = $api->classLinker(ValidatorInterface::class);
+$requiredValueValidator = $api->classLinker(RequiredValueValidator::class);
+$patrnvLink = $api->classLinker(PatternValidator::class);
+$strLenValLink = $api->classLinker(StringLengthValidator::class);
+$abstractValidatorAggregate = $api->classLinker(AbstractValidatorAggregate::class);
+$validatorAggregate = $api->classLinker(ValidatorAggregate::class);
+$optionalValidatorInterface = $api->classLinker(OptionalValidatorInterface::class);
+$AbstractOptionalValidator = $api->classLinker(AbstractOptionalValidator::class);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(
 <<<MD
 #User input Validation
@@ -29,11 +29,11 @@ The $requiredValueValidator validates only that the given input has a non empty 
         
 **All of the following values are considered as empty:**
         
- 1. {$php->getHyperlink("language.variables.php", '$var;')} (a variable declared, but without a value)
- 2. {$php->getTypeLink(NULL)} values
- 3.  empty {$php->getTypeLink([], "arrays")}	
- 4. `""` an empty {$php->getTypeLink("string")}
- 5. {$php->getTypeLink("string", "strings")} containing only following characters
+ 1. {$php->hyperlink("language.variables.php", '$var;')} (a variable declared, but without a value)
+ 2. {$php->typeLink(NULL)} values
+ 3.  empty {$php->typeLink([], "arrays")}	
+ 4. `""` an empty {$php->typeLink("string")}
+ 5. {$php->typeLink("string", "strings")} containing only following characters
       * " " (ASCII 32 (0x20)), an ordinary space 
       * "\\t" (ASCII 9 (0x09)), a tab 
       * "\\n" (ASCII 10 (0x0A)), a new line (line feed) 
@@ -91,10 +91,11 @@ and the input is valid only if it passes all of them.
 MD
 );
 CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/ValueValidatorAggregate.php", "php", false);
-$formValidator = $api->getClassLink(FormValidator::class);
-$formInterface = $api->getClassLink(\Sphp\Html\Forms\FormInterface::class);
-$traversable = $php->getClassLink(\Traversable::class);
-$arrayaccess = $php->getClassLink(\ArrayAccess::class);$array = $php->getTypeLink("array", "arrays");
+$formValidator = $api->classLinker(FormValidator::class);
+$formInterface = $api->classLinker(\Sphp\Html\Forms\FormInterface::class);
+$traversable = $php->classLinker(\Traversable::class);
+$arrayaccess = $php->classLinker(\ArrayAccess::class);
+$array = $php->typeLink("array", "arrays");
 echo $parsedown->text(
 <<<MD
 ##The $formValidator validator		
@@ -110,8 +111,8 @@ $formValidator supports two ways of manipulating validators for named input data
 MD
 );
 CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/FormValidator.php", "php", false);
-$abstractObjectValidator = $api->getClassLink(AbstractObjectValidator::class);
-$userValidator = $api->getClassLink(UserValidator::class);
+$abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
+$userValidator = $api->classLinker(UserValidator::class);
 echo $parsedown->text(
 <<<MD
 ##Creating custom validators		
@@ -123,12 +124,12 @@ the data type of the validable data.The following chapter describes one way of
 creating these custon validators.###The $userValidator class		
   
 The $userValidator extends the $abstractObjectValidator and it can be used to validate 
-{$api->getClassLink(\Sphp\Db\Objects\User::class)} object data.
+{$api->classLinker(\Sphp\Db\Objects\User::class)} object data.
 MD
 );
 $reflector = new \ReflectionClass(UserValidator::class);
 use \Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
-echo $reflector->getFileName();
+//echo $reflector->getFileName();
 /*$code = (new SyntaxHighlightingSingleAccordion())		
         ->setTitle("UserValidator PHP code")		
        //->loadFromFile($reflector->getFileName())		

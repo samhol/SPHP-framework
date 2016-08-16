@@ -4,9 +4,9 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$selectLink = $api->getClassLink(Select::class);
-$option = $api->getClassLink(Option::class);
-$optGroup = $api->getClassLink(Optgroup::class);
+$selectLink = $api->classLinker(Select::class);
+$option = $api->classLinker(Option::class);
+$optGroup = $api->classLinker(Optgroup::class);
 echo $parsedown->text(<<<MD
 ###The $selectLink component
 	

@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Html\Foundation\F6\Forms;
 
-$gridForm = $api->getClassLink(GridForm::class);
+$gridForm = $api->classLinker(GridForm::class);
 
 echo $parsedown->text(<<<MD
 #Foundation based  form components

@@ -5,8 +5,8 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 
-$hyperlinkIfLink = $api->getClassLink(HyperlinkInterface::class);
-$drilldownMenu = $api->getClassLink(DrilldownMenu::class);
+$hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
+$drilldownMenu = $api->classLinker(DrilldownMenu::class);
 echo $parsedown->text(<<<MD
 ##The $drilldownMenu component
 

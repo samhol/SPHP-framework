@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps;
 
-$ns = $api->getNamespaceLink(__NAMESPACE__);
+$ns = $api->namespaceLink(__NAMESPACE__);
 $photoAlbum = $api->classLinker(PhotoAlbum::class);
 echo $parsedown->text(<<<MD
 ##The $photoAlbum component

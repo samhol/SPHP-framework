@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 #Core components
@@ -21,7 +21,7 @@ $load("Sphp.Core.PathFinder.php");
 $load("Sphp.Core.Configurator.php");
 
 namespace Sphp\Core\ErrorHandling;
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Affecting PHP's Error handling and logging behaviour
 $ns

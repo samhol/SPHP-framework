@@ -65,9 +65,9 @@ class FoundationDocsLinker extends AbstractLinker {
       if (Strings::isEmpty($title)) {
         $title = "Foundation " . self::$componentMap[$className][1] . " component";
       }
-      return $this->getHyperlink("$page.html", $linkText, $title);
+      return $this->hyperlink("$page.html", $linkText, $title);
     } else {
-      return $this->getHyperlink("", $linkText);
+      return $this->hyperlink("", $linkText);
     }
   }
 
@@ -113,6 +113,19 @@ class FoundationDocsLinker extends AbstractLinker {
       $title = "Foundation docs: The Grid";
     }
     return $this->hyperlink("grid.html$fragment", $linkText);
+  }
+  
+  private static $instance;
+
+  /**
+   * 
+   * @return self new instance of linker
+   */
+  public static function get() {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    } 
+    return self::$instance;
   }
 
 }

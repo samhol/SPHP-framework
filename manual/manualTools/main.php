@@ -10,6 +10,8 @@ include_once __DIR__ . "/_constants.php";
 use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
 use Sphp\Core\Configuration as Configuration;
 use Sphp\Html\Apps\ApiTools\ApiGenLinker as ApiGenLinker;
+use Sphp\Html\Apps\Manual\ApiGen as ApiGen;
+use Sphp\Html\Apps\Manual\Apis as Apis;
 use Sphp\Html\Apps\ApiTools\FoundationDocsLinker as FoundationDocsLinker;
 use Sphp\Html\Apps\ApiTools\W3schoolsLinker as W3schoolsLinker;
 use Sphp\Html\Apps\ApiTools\PHPManualLinker as PHPManualLinker;
@@ -25,16 +27,20 @@ function addPHPSuffix($page) {
 }
 
 if (!isset($api)) {
-  $api = new ApiGenLinker(Configuration::current()->get("apigen"));
+$api = Apis::apigen(); 
+// $api = new ApiGenLinker(Configuration::current()->get("apigen"));
 }
 if (!isset($php)) {
-  $php = new PHPManualLinker();
+  $php = Apis::phpManual();
+  //$php = new PHPManualLinker();
 }
 if (!isset($foundation)) {
-  $foundation = new FoundationDocsLinker();
+  $foundation = Apis::foundation();
+ // $foundation = new FoundationDocsLinker();
 }
 if (!isset($w3schools)) {
-  $w3schools = new W3schoolsLinker();
+  $w3schools = Apis::w3schools();
+ // $w3schools = new W3schoolsLinker();
 }
 if (!isset($parsedown)) {
   $parsedown = new \ParsedownExtraPlugin();

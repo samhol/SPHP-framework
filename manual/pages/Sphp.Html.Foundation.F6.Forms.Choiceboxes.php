@@ -4,9 +4,9 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$choiceboxes = $api->getClassLink(AbstractSwitch::class);
-$radios = $api->getClassLink(Radioboxes::class);
-$checkboxes = $api->getClassLink(Checkboxes::class);
+$choiceboxes = $api->classLinker(AbstractSwitch::class);
+$radios = $api->classLinker(Radioboxes::class);
+$checkboxes = $api->classLinker(Checkboxes::class);
 
 
 echo $parsedown->text(<<<MD

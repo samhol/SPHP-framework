@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingPane as Synt
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Core\PathFinder as PathFinder;
 
-$progressBar = $api->getClassLink(ProgressBar::class);
+$progressBar = $api->classLinker(ProgressBar::class);
 
 echo $parsedown->text(<<<MD
 		

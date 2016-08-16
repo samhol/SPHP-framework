@@ -2,10 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-$media = $api->getNamespaceLink(__NAMESPACE__);
+$media = $api->namespaceLink(__NAMESPACE__);
 $flexVideo = $api->classLinker(FlexVideo::class);
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Foundation 6 media components
 

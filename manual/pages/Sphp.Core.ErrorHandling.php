@@ -4,13 +4,13 @@ namespace Sphp\Core\ErrorHandling;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$nsLink = $api->getNamespaceLink(__NAMESPACE__);
-$errorExceptionThrower = $api->getClassLink(ErrorExceptionThrower::class);
-$try_catch = $php->getHyperLink("language.exceptions.php", "try/catch");
-$set_error_handler = $php->getFunctionLink("set_error_handler");
-$e_fatal = $php->getConstantLink("E_FATAL");
-$e_deprecated = $php->getConstantLink("E_DEPRECATED");
-$exception = $php->getClassLink(\Exception::class);
+$nsLink = $api->namespaceLink(__NAMESPACE__);
+$errorExceptionThrower = $api->classLinker(ErrorExceptionThrower::class);
+$try_catch = $php->hyperLink("language.exceptions.php", "try/catch");
+$set_error_handler = $php->functionLink("set_error_handler");
+$e_fatal = $php->constantLink("E_FATAL");
+$e_deprecated = $php->constantLink("E_DEPRECATED");
+$exception = $php->classLinker(\Exception::class);
 echo $parsedown->text(<<<MD
 ###PHP error handling
 

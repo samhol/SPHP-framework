@@ -8,8 +8,8 @@ use Sphp\Html\Apps\Manual\Apis as Apis;
 $topBar = Apis::apigen()->classLinker(TopBar::class);
 $left = $topBar->method("left");
 $right = $topBar->method("right");
-//$namespace = $api->getNamespaceLink(__NAMESPACE__);
-//$topBar = $api->getClassLink(TopBar::class);
+//$namespace = $api->namespaceLink(__NAMESPACE__);
+//$topBar = $api->classLinker(TopBar::class);
 echo $parsedown->text(<<<MD
 ##The $topBar component
 

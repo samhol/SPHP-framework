@@ -4,10 +4,10 @@ namespace Sphp\Core\Events;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$eventInterface = $api->getClassLink(EventInterface::class);
-$eventClass = $api->getClassLink(Event::class);
-$eventListenerInterface = $api->getClassLink(EventListenerInterface::class);
-$eventDispatcherInterface = $api->getClassLink(EventDispatcherInterface::class);
+$eventInterface = $api->classLinker(EventInterface::class);
+$eventClass = $api->classLinker(Event::class);
+$eventListenerInterface = $api->classLinker(EventListenerInterface::class);
+$eventDispatcherInterface = $api->classLinker(EventDispatcherInterface::class);
 echo $parsedown->text(<<<MD
 #EVENTS AND OBSERVERS
 		
@@ -15,7 +15,7 @@ Observer Design pattern and Event dispatching systems are mainly used to impleme
 distributed event handling systems they are also key parts in the model–view–controller 
 (MVC) architectural pattern.
 
-##The SPHP EventDispatcing system: {$api->getNamespaceLink(__NAMESPACE__)} namespace
+##The SPHP EventDispatcing system: {$api->namespaceLink(__NAMESPACE__)} namespace
 
 The SPHP EventDispatcing system consists of three different type of objects. 
 
@@ -52,9 +52,9 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeEx
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "text", false);
 
-$splObserver = $php->getClassLink(\SplObserver::class);
-$splSubject = $php->getClassLink(\SplSubject::class);
-$observableSubjectTrait = $api->getClassLink(ObservableSubjectTrait::class);
+$splObserver = $php->classLinker(\SplObserver::class);
+$splSubject = $php->classLinker(\SplSubject::class);
+$observableSubjectTrait = $api->classLinker(ObservableSubjectTrait::class);
 
 echo $parsedown->text(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
@@ -76,7 +76,7 @@ echo $parsedown->text(<<<MD
 
 
 Observer pattern is in use for example in the SPHP Error handling system introduced 
-in the {$api->getNamespaceLink("Sphp\\Util\\ErrorHandling")} namespace.
+in the {$api->namespaceLink("Sphp\\Util\\ErrorHandling")} namespace.
 
 MD
 );

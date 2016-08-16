@@ -6,7 +6,7 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccord
 
 echo $parsedown->text(
         <<<MD
-###Uncaught {$php->getClassLink(\Exception::class)} handling
+###Uncaught {$php->classLinker(\Exception::class)} handling
 
 Framework has a way to handle uncaught PHP exceptions using PHP’s native
 exception handling methods and Observer pattern.

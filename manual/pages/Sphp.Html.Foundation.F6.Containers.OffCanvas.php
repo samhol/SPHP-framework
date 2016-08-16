@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
-$offCanvas = $api->getClassLink(OffCanvas::class);
+$offCanvas = $api->classLinker(OffCanvas::class);
 echo $parsedown->text(<<<MD
 
 ##The $offCanvas component

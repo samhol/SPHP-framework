@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 
-$rangeSlider = $api->getClassLink(RangeSlider::class);
+$rangeSlider = $api->classLinker(RangeSlider::class);
 
 
 echo $parsedown->text(<<<MD

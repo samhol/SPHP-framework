@@ -2,8 +2,8 @@
 
 namespace Sphp\Net;
 
-$netNS = $api->getNamespaceLink(__NAMESPACE__);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$netNS = $api->namespaceLink(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #NETWORKING
 $ns

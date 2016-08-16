@@ -26,7 +26,7 @@ use Sphp\Html\TraversableInterface as TraversableInterface;
 interface GridInterface extends ContentInterface, TraversableInterface {
 
   /**
-   * Appends a new {@link RowInterface} to the grid
+   * Appends a new row to the grid
    *
    * **Important!**
    *
@@ -40,7 +40,7 @@ interface GridInterface extends ContentInterface, TraversableInterface {
   public function append($row);
 
   /**
-   * Prepends a new {@link RowInterface} to the grid
+   * Prepends a new row to the grid
    *
    * **Important!**
    *

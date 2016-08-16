@@ -11,16 +11,16 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeEx
   ->setHeading("Execution result"); */
 
 
-//$config = $api->getClassLink(Config::class);
-$namespace = $api->getNamespaceLink(__NAMESPACE__);
-$boolLink = $php->getTypeLink("boolean");
-$intLink = $php->getTypeLink("integer");
-$floatLink = $php->getTypeLink("float");
-$strLink = $php->getTypeLink("string");
-$arrLink = $php->getTypeLink("array");
-$stringsClass = $api->getClassLink(Strings::class);
-$stringObjectClass = $api->getClassLink(StringObject::class);
-$nsbc = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+//$config = $api->classLinker(Config::class);
+$namespace = $api->namespaceLink(__NAMESPACE__);
+$boolLink = $php->typeLink("boolean");
+$intLink = $php->typeLink("integer");
+$floatLink = $php->typeLink("float");
+$strLink = $php->typeLink("string");
+$arrLink = $php->typeLink("array");
+$stringsClass = $api->classLinker(Strings::class);
+$stringObjectClass = $api->classLinker(StringObject::class);
+$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Core objects and utlility classes
 $nsbc

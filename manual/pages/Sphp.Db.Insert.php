@@ -5,7 +5,7 @@ namespace Sphp\Db;
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 use Sphp\Html\Apps\ApiTools\ApiGenClassLinker as ApiGenClassLinker;
 
-$sqlException = $api->getClassLink(SQLException::class);
+$sqlException = $api->classLinker(SQLException::class);
 /**
  * @var ApiGenClassLinker
  */

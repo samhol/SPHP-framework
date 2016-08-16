@@ -5,12 +5,12 @@ namespace Sphp\Html;
 $api = $container->get("apiGen");
 $phpLinker = $container->get("phpLinker");
 $parser = $container->get("parseDown");
-$abstractTag = $api->getClassLink(AbstractTag::class);
+$abstractTag = $api->classLinker(AbstractTag::class);
 
 
 (new SyntaxHighlighter())->loadFromFile(EXAMPLE_DIR . "/html/ajax.php")->printHtml();
 echo $parser->text(<<<MD
-##Namespace {$api->getNamespaceLink(__NAMESPACE__)}
+##Namespace {$api->namespaceLink(__NAMESPACE__)}
 HTML or HyperText Markup Language is the standard markup language used to create Web pages.
 
 HTML is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;). 
@@ -20,7 +20,7 @@ tag is the end tag (they are also called opening tags and closing tags).[[Wikipe
 
 [Wikipedia]: http://en.wikipedia.org/wiki/HTML
 
-The content of the {$api->getNamespaceLink(__NAMESPACE__)} namespace
+The content of the {$api->namespaceLink(__NAMESPACE__)} namespace
 enables the creation of the HTML documents in object oriented PHP.
 	
 This PHP framework started first as an implementation of the basic html structure in PHP language. 
@@ -36,7 +36,7 @@ Therefore the basic interfaces and their build in class implementations describe
 
 ###The {$apigenClass(ContentInterface::class)} interface
 
-All {$api->getNamespaceLink(__NAMESPACE__)} components implement at least {$apigenClass(ContentInterface::class)}. This
+All {$api->namespaceLink(__NAMESPACE__)} components implement at least {$apigenClass(ContentInterface::class)}. This
 interface ensures that the component can be outputted to an HTML document via the following three methods.
 
 
@@ -50,30 +50,30 @@ two of these methods leaving the implementation of the {$api->getClassMethodLink
 to the inheritor. Using this trait ensures that {$api->getClassMethodLink(ContentInterface::class, "__toString")}
 will never throw any type of {$phpLinker->getClassLink(\Exception::class)} during execution.
 
-###The {$api->getClassLink(ComponentInterface::class)} interface and its $abstractTag implementation
+###The {$api->classLinker(ComponentInterface::class)} interface and its $abstractTag implementation
 
-The {$api->getClassLink(ComponentInterface::class)} interface declares a group of methods for HTML attribute handling.
+The {$api->classLinker(ComponentInterface::class)} interface declares a group of methods for HTML attribute handling.
 It is implemented in the {$apigenClass(AttributeTrait::class)} trait and also in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework. 
 It also defines the tagname property in {$api->getClassMethodLink(AbstractTag::class, "__construct")}. 
 
-###The {$api->getClassLink(EmptyTag::class)} class and empty `HTML` elements
+###The {$api->classLinker(EmptyTag::class)} class and empty `HTML` elements
 
-The {$api->getClassLink(EmptyTag::class)} class is used to generate empty HTML elements like &lt;img&gt;, &lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, ...
+The {$api->classLinker(EmptyTag::class)} class is used to generate empty HTML elements like &lt;img&gt;, &lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, ...
 
-###The {$api->getClassLink(ContainerComponentInterface::class)} and {$api->getClassLink(ContainerInterface::class)} interfaces
+###The {$api->classLinker(ContainerComponentInterface::class)} and {$api->classLinker(ContainerInterface::class)} interfaces
 
-The {$api->getClassLink(ContainerInterface::class)} declares the properties fot a HTML container. 
+The {$api->classLinker(ContainerInterface::class)} declares the properties fot a HTML container. 
 Such container can store anything that can be output as a PHP string. The simplest build in implementor for the
-{$api->getClassLink(ContainerInterface::class)} is {$api->getClassLink(Container::class)}. 
+{$api->classLinker(ContainerInterface::class)} is {$api->classLinker(Container::class)}. 
 An object of this class outputs only its content  to the HTML document. 
 
 
-The {$api->getClassLink(ContainerComponentInterface::class)} declares the properties fot a HTML wrapper element (a tag pair) acting as a 
-container for other elements. It has a implementation {$api->getClassLink(ContainerTag::class)} in the framework. 
+The {$api->classLinker(ContainerComponentInterface::class)} declares the properties fot a HTML wrapper element (a tag pair) acting as a 
+container for other elements. It has a implementation {$api->classLinker(ContainerTag::class)} in the framework. 
 
-Furthermore all actual framework components implement {$api->getClassLink(ComponentInterface::class)}
+Furthermore all actual framework components implement {$api->classLinker(ComponentInterface::class)}
 
-###The {$api->getClassLink(Document::class)} class
+###The {$api->classLinker(Document::class)} class
 MD
 );

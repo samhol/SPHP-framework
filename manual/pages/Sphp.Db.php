@@ -5,11 +5,11 @@ namespace Sphp\Db;
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
 
-$sqlException = $api->getClassLink(SQLException::class);
-$pdo = $php->getClassLink(\PDO::class);
+$sqlException = $api->classLinker(SQLException::class);
+$pdo = $php->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
-#DATABASE MANIPULATION: {$api->getNamespacelink(__NAMESPACE__)} namespace
+#DATABASE MANIPULATION: {$api->namespaceLink(__NAMESPACE__)} namespace
 
 The PHP Data Objects $pdo extension defines a lightweight, consistent interface
 for accessing databases in PHP. In SPHP framework the $pdo extension is wrapped

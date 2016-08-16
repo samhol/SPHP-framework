@@ -6,10 +6,10 @@ use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 
 echo $parsedown->text(<<<MD
 
-The geographical location: Classes {$api->getClassLink(Address::class)} and {$api->getClassLink(Location::class)}
+The geographical location: Classes {$api->classLinker(Address::class)} and {$api->classLinker(Location::class)}
 
 
-Classes {$api->getClassLink(Address::class)} and {$api->getClassLink(Location::class)} 
+Classes {$api->classLinker(Address::class)} and {$api->classLinker(Location::class)} 
 MD
 );
 CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");

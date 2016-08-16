@@ -4,27 +4,27 @@ namespace Sphp\Data;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$nsLink = $api->getNamespaceLink(__NAMESPACE__);
+$nsLink = $api->namespaceLink(__NAMESPACE__);
 $arrayIfLnk = $api->classLinker(CollectionInterface::class);
 $arr = $api->classLinker(SphpArrayObject::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATA STRUCTURES
 $ns
-The {$php->getExtensionLink("SPL", "Standard PHP Library (SPL)")} provides a set of standard data structures for PHP language. SPHP
+The {$php->extensionLink("SPL", "Standard PHP Library (SPL)")} provides a set of standard data structures for PHP language. SPHP
 framework contain a few extensions to these for additional properties.
 
 ##The $arrayIfLnk
 
-$arrayIfLnk extends PHP's native {$php->getClassLink("Countable")}, {$php->getClassLink("IteratorAggregate")}
-and {$php->getClassLink("ArrayAccess")} interfaces.
+$arrayIfLnk extends PHP's native {$php->classLinker("Countable")}, {$php->classLinker("IteratorAggregate")}
+and {$php->classLinker("ArrayAccess")} interfaces.
 
-$arrayIfLnk can be used with the {$php->getFunctionLink("count")} function and
-{$php->getControlStructLink("foreach")} construct. It allows an implementing object
+$arrayIfLnk can be used with the {$php->functionLink("count")} function and
+{$php->controlStructLink("foreach")} construct. It allows an implementing object
 to use PHP's array notation when setting, unsetting and retrieving data from it. This
 Interface does not make an object behave like an array in any other way. If an object
-that implements $arrayIfLnk is passed to any {$php->getHyperlink("ref.array", "Array Functions")}
-except {$php->getFunctionLink("count")} an error will result.
+that implements $arrayIfLnk is passed to any {$php->hyperlink("ref.array", "Array Functions")}
+except {$php->functionLink("count")} an error will result.
 
 $arrayIfLnk provides also methods for prepending and appending data and furthermore clearing all of the date it holds.
 

@@ -6,12 +6,12 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeEx
 
 $config = $api->classLinker(Configuration::class);
 $phpConfig = $api->classLinker(PHPConfiguration::class);
-$toolsLink = $api->getNamespaceLink(__NAMESPACE__);
-$boolLink = $php->getTypeLink("boolean");
-$intLink = $php->getTypeLink("integer");
-$floatLink = $php->getTypeLink("float");
-$strLink = $php->getTypeLink("string");
-$arrLink = $php->getTypeLink("array");
+$toolsLink = $api->namespaceLink(__NAMESPACE__);
+$boolLink = $php->typeLink("boolean");
+$intLink = $php->typeLink("integer");
+$floatLink = $php->typeLink("float");
+$strLink = $php->typeLink("string");
+$arrLink = $php->typeLink("array");
 $arrayAccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
 ##$phpConfig object as a runtime PHP configuration manager 

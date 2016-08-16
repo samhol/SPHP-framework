@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
-$pagination = $api->getClassLink(Pagination::class);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$pagination = $api->classLinker(Pagination::class);
 echo $parsedown->text(<<<MD
 
 ##The $pagination component

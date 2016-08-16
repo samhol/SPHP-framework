@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
-$hyperlinkIfLink = $api->getClassLink(HyperlinkInterface::class);
-//$namespace = $api->getNamespaceLink(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
+//$namespace = $api->namespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #FOUNDATION 6 NAVIGATION COMPONENTS
 $ns
@@ -19,7 +19,7 @@ MD
 $load("Sphp.Html.Foundation.F6.Navigation.TopBar.php");
 $load("Sphp.Html.Foundation.F6.Navigation.DrilldownMenu.php");
 
-$sideNavClass = $api->getClassLink(AccordionMenu::class);
+$sideNavClass = $api->classLinker(AccordionMenu::class);
 echo $parsedown->text(<<<MD
 ##The $sideNavClass component
 
@@ -31,8 +31,8 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php');
 
-$breadcrumbs = $api->getClassLink(BreadCrumbs::class);
-$breadcrumb = $api->getClassLink(BreadCrumb::class);
+$breadcrumbs = $api->classLinker(BreadCrumbs::class);
+$breadcrumb = $api->classLinker(BreadCrumb::class);
 echo $parsedown->text(<<<MD
 ##The $breadcrumbs container for $breadcrumb components
 

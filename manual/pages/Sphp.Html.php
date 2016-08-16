@@ -3,15 +3,15 @@
 namespace Sphp\Html;
 
 $abstractTag = $api->classLinker(AbstractTag::class);
-$ns = $api->getNamespaceLink(__NAMESPACE__);
-$documentLink = $api->getClassLink(Document::class);
+$ns = $api->namespaceLink(__NAMESPACE__);
+$documentLink = $api->classLinker(Document::class);
 $contentInterface = $api->classLinker(ContentInterface::class);
 $exeption = $php->classLinker(\Exception::class);
-$componentInterface = $api->getClassLink(ComponentInterface::class);
-$emptyTag = $api->getClassLink(EmptyTag::class);
-$containerInterface = $api->getClassLink(ContainerInterface::class);
-$containerComponentInterface = $api->getClassLink(ContainerComponentInterface::class);
-$nsbc = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$componentInterface = $api->classLinker(ComponentInterface::class);
+$emptyTag = $api->classLinker(EmptyTag::class);
+$containerInterface = $api->classLinker(ContainerInterface::class);
+$containerComponentInterface = $api->classLinker(ContainerComponentInterface::class);
+$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Introduction to HTML components
 $nsbc
@@ -46,7 +46,7 @@ interface ensures that the component can be outputted to an HTML document via th
 3. {$contentInterface->method("printHtml")} output the component as an HTML string or the exception description if the execution fails.
 
 
-Trait {$api->getClassLink(ContentTrait::class)} gives an implementation to the subsequent
+Trait {$api->classLinker(ContentTrait::class)} gives an implementation to the subsequent
 two of these methods leaving the implementation of the {$contentInterface->method("getHtml")}
 to the inheritor. Using this trait ensures that {$contentInterface->method("__toString")}
 will never throw any type of {$exeption} during execution.
@@ -54,25 +54,25 @@ will never throw any type of {$exeption} during execution.
 ##The $componentInterface interface and its $abstractTag implementation
 
 The $componentInterface interface declares a group of methods for HTML attribute handling.
-It is implemented in the {$api->getClassLink(ComponentTrait::class)} trait and also in the abstract class $abstractTag.
+It is implemented in the {$api->classLinker(ComponentTrait::class)} trait and also in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
 It also defines the tagname property in {$abstractTag->method("__construct")}.
 
 ##The $emptyTag class and empty `HTML` elements
 
 The $emptyTag class is usable when generating empty HTML elements like:
-{$w3schools->getTagLink("img")},
-{$w3schools->getTagLink("br")},
-{$w3schools->getTagLink("hr")},
-{$w3schools->getTagLink("input")},
-{$w3schools->getTagLink("wbr")}, ...
+{$w3schools->tag("img")},
+{$w3schools->tag("br")},
+{$w3schools->tag("hr")},
+{$w3schools->tag("input")},
+{$w3schools->tag("wbr")}, ...
 
 ##The $containerInterface and $containerComponentInterface interfaces
 
 The $containerInterface declares the properties
 for an HTML container. Such container can store anything that can be output as a
 PHP string. The simplest build in implementor for the $containerInterface is the
-{$api->getClassLink(Container::class)} class.
+{$api->classLinker(Container::class)} class.
 MD
 );
 
@@ -80,18 +80,18 @@ $exampleViewer(EXAMPLE_DIR . "Sphp/Html/HtmlContainer.php");
 
 echo $parsedown->text(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
-container for other elements. It has a implementation {$api->getClassLink(ContainerTag::class)} in the framework.
+container for other elements. It has a implementation {$api->classLinker(ContainerTag::class)} in the framework.
 
-Furthermore all actual framework components implement {$api->getClassLink(ComponentInterface::class)}
+Furthermore all actual framework components implement {$api->classLinker(ComponentInterface::class)}
 }}
 
 MD
 );
 echo $parsedown->text(<<<MD
-##The {$api->getClassLink(AbstractTag::class)} class
+##The {$api->classLinker(AbstractTag::class)} class
 
-Abstract {$api->getClassLink(AbstractTag::class)} class is the base implementation
-of the {$api->getClassLink(ComponentInterface::class)} for all predefined HTML tag components.
+Abstract {$api->classLinker(AbstractTag::class)} class is the base implementation
+of the {$api->classLinker(ComponentInterface::class)} for all predefined HTML tag components.
 At least it is extended in every existing HTML component in the current framework.
 
 **Note!** Use only HTML attributes that are specified for the underlying HTML tag name returned from the method getTagName().

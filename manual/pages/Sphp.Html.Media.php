@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Media;
 
-$imgTag = $api->getClassLink(Img::class);
-$iframe = $api->getClassLink(Iframe::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$imgTag = $api->classLinker(Img::class);
+$iframe = $api->classLinker(Iframe::class);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 #HTML MEDIA CONTAINERS (IMAGES, AUDIO, VIDEO...) 

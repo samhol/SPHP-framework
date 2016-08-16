@@ -5,9 +5,9 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Html\Forms\FormInterface as FormInterface;
 
-$formIfLink = $api->getClassLink(FormInterface::class);
-$inputInterface = $api->getClassLink(InputInterface::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$formIfLink = $api->classLinker(FormInterface::class);
+$inputInterface = $api->classLinker(InputInterface::class);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Some form components inheriting $inputInterface
 $ns		

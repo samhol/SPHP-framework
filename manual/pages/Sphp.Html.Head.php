@@ -2,15 +2,15 @@
 
 namespace Sphp\Html\Head;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
-$headNS = $api->getNamespaceLink(__NAMESPACE__);
-$metaIfLnk = $api->getClassLink(HeadComponentInterface::class);
+$headNS = $api->namespaceLink(__NAMESPACE__);
+$metaIfLnk = $api->classLinker(HeadComponentInterface::class);
 $head = $api->classLinker(Head::class);
 $title = $api->classLinker(Title::class);
 $meta = $api->classLinker(Meta::class);
 $base = $api->classLinker(Base::class);
 $link = $api->classLinker(Link::class);
 $scriptInterface = $api->classLinker(ScriptInterface::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML HEAD Manipulation
         
@@ -23,11 +23,11 @@ This meta data is data about the HTML document and it is not directly displayed 
 		
 The following PHP classes and interfaces describe HTML meta data components:
 
-* $title - {$w3schools->getTagLink(Title::TAG_NAME)}
-* $base - {$w3schools->getTagLink(Base::TAG_NAME)}
-* $meta - {$w3schools->getTagLink(Meta::TAG_NAME)}
-* $link - {$w3schools->getTagLink(Link::TAG_NAME)}
-* $scriptInterface - {$w3schools->getTagLink(ScriptInterface::TAG_NAME)}
+* $title - {$w3schools->tag(Title::TAG_NAME)}
+* $base - {$w3schools->tag(Base::TAG_NAME)}
+* $meta - {$w3schools->tag(Meta::TAG_NAME)}
+* $link - {$w3schools->tag(Link::TAG_NAME)}
+* $scriptInterface - {$w3schools->tag(ScriptInterface::TAG_NAME)}
 
 MD
 );

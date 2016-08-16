@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-$delete = $api->getClassLink(Delete::class);
+$delete = $api->classLinker(Delete::class);
 
 echo $parsedown->text(<<<MD
 

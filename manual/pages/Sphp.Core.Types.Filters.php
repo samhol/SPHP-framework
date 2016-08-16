@@ -4,11 +4,11 @@ namespace Sphp\Core\Types\Filters;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$strLink = $php->getTypeLink("string");
-$arrLink = $php->getTypeLink([]);
-$filterInterfaceLink = $api->getClassLink(FilterInterface::class);
-$nsbc = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
-$nsLink = $api->getNamespaceLink(__NAMESPACE__);
+$strLink = $php->typeLink("string");
+$arrLink = $php->typeLink([]);
+$filterInterfaceLink = $api->classLinker(FilterInterface::class);
+$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = $api->namespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Customizable value filtering
 $nsbc

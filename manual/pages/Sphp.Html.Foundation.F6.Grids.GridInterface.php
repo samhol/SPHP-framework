@@ -11,8 +11,8 @@ $row = $api->classLinker(Row::class);
 $rowIf = $api->classLinker(RowInterface::class);
 $colIf = $api->classLinker(ColumnInterface::class);
 $col = $api->classLinker(Column::class);
-$cols = $api->getClassLink(ColumnInterface::class, "Columns");
-$gridsLnk = $api->getNamespaceLink(__NAMESPACE__);
+$cols = $api->classLinker(ColumnInterface::class, "Columns");
+$gridsLnk = $api->namespaceLink(__NAMESPACE__);
 $f_GridLink = $foundation->getComponentLink(Grid::class, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 ##The $gridIf and its implementations

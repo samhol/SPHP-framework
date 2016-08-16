@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 use Sphp\Core\Types\Strings as Strings;
 use ReflectionClass;
 

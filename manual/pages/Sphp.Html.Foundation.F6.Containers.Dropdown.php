@@ -3,8 +3,8 @@
 namespace Sphp\Html\Foundation\F6\Containers;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$ns = $api->getNamespaceLink(__NAMESPACE__);
-$dropdown = $api->getClassLink(Dropdown::class);
+$ns = $api->namespaceLink(__NAMESPACE__);
+$dropdown = $api->classLinker(Dropdown::class);
 
 echo $parsedown->text(<<<MD
 ###The $dropdown component

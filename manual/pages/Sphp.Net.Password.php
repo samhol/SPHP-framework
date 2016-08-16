@@ -3,8 +3,8 @@ namespace Sphp\Net;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$pw = $api->getClassLink(Password::class);
-$hpw = $api->getClassLink(HashedPassword::class);
+$pw = $api->classLinker(Password::class);
+$hpw = $api->classLinker(HashedPassword::class);
 echo $parsedown->text(<<<MD
 ##$pw and $hpw classes
 

@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Media;
 
-$audio = $api->getClassLink(Audio::class);
-$video = $api->getClassLink(Video::class);
-$source = $api->getClassLink(Source::class);
+$audio = $api->classLinker(Audio::class);
+$video = $api->classLinker(Video::class);
+$source = $api->classLinker(Source::class);
 echo $parsedown->text(<<<MD
 ##The $audio and the $video components
 		
 The $audio and the $video components implement the corresponding HTML5
-{$w3schools->getTagLink("audio")} and {$w3schools->getTagLink("video")} tags. With 
+{$w3schools->tag("audio")} and {$w3schools->tag("video")} tags. With 
 them it is possible to view video and audio streams.
 
 The $source component specifies media resources for $audio and $video media components.

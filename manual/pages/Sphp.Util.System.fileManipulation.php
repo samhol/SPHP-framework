@@ -4,8 +4,8 @@ namespace Sphp\Util;
 
 use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
 
-$arrLink = $php->getTypeLink("array");
-$fileObject = $api->getClassLink(LocalFile::class);
+$arrLink = $php->typeLink("array");
+$fileObject = $api->classLinker(LocalFile::class);
 echo $parsedown->text(<<<MD
 ##The $fileObject class
 

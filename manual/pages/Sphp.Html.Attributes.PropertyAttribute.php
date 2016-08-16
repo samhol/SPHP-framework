@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
-$abstractAttr = $api->getClassLink(AbstractAttribute::class);
-$propertyAttr = $api->getClassLink(PropertyAttribute::class);
+$abstractAttr = $api->classLinker(AbstractAttribute::class);
+$propertyAttr = $api->classLinker(PropertyAttribute::class);
 echo $parsedown->text(<<<MD
 ##The $propertyAttr class
 		

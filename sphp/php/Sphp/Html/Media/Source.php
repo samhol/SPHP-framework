@@ -9,7 +9,7 @@ namespace Sphp\Html\Media;
 
 use Sphp\Html\EmptyTag as EmptyTag;
 use Sphp\Net\URL as URL;
-use Sphp\Util\FileUtils as FileUtils;
+use Sphp\Core\Util\FileUtils as FileUtils;
 
 /**
  * Class Models an HTML &lt;source&gt; tag

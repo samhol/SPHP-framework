@@ -2,10 +2,10 @@
 
 namespace Sphp\Db;
 
-$sqlException = $api->getClassLink(SQLException::class);
-$conditions = $api->getClassLink(Conditions::class);
+$sqlException = $api->classLinker(SQLException::class);
+$conditions = $api->classLinker(Conditions::class);
 $query = $api->classLinker(Query::class);
-$pdo = $php->getClassLink(\PDO::class);
+$pdo = $php->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
 ##$query object for SQL queries

@@ -4,8 +4,8 @@ namespace Sphp\Core\Types;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$parentDatetime = $php->getClassLink(\DateTime::class);
-$datetime = $api->getClassLink(Datetime::class);
+$parentDatetime = $php->classLinker(\DateTime::class);
+$datetime = $api->classLinker(Datetime::class);
 echo $parsedown->text(<<<MD
 ##The $datetime class extends the build-in $parentDatetime class
 

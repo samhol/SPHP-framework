@@ -5,7 +5,7 @@ use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeEx
 
 $modal = $api->classLinker(Modal::class);
 $controller = $api->classLinker(Controller::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##The $modal component
 $ns

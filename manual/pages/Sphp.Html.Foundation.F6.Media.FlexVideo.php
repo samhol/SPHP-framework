@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\F6\Media;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$flexVideo = $api->getClassLink(FlexVideo::class);
+$flexVideo = $api->classLinker(FlexVideo::class);
 
 echo $parsedown->text(<<<MD
 		

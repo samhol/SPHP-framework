@@ -3,18 +3,18 @@
 namespace Sphp\Html\Lists;
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 
-$htmlListLink = $api->getClassLink(HtmlList::class);
+$htmlListLink = $api->classLinker(HtmlList::class);
 $ol = $api->classLinker(Ol::class);
-$ulLink = $api->getClassLink(Ul::class);
-$liInterface = $api->getClassLink(LiInterface::class);
-$li = $api->getClassLink(Li::class);
+$ulLink = $api->classLinker(Ul::class);
+$liInterface = $api->classLinker(LiInterface::class);
+$li = $api->classLinker(Li::class);
 $dlLink = $api->classLinker(Dl::class);
 echo $parsedown->text(<<<MD
 #HTML LISTS AND HTML TABLES
 		
 This section introduces PHP implementations of HTML lists and tables in SPHP framework.
 	
-##HTML LISTS: {$api->getNamespaceLink(__NAMESPACE__)} namespace
+##HTML LISTS: {$api->namespaceLink(__NAMESPACE__)} namespace
 
 This namespace contains object oriented implementations for Unordered Lists $ulLink, 
 Ordered Lists $ol, and Description Lists $dlLink.
@@ -57,19 +57,19 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 
-$tableClass = $api->getClassLink(Table::class);
-$tr = $api->getClassLink(Tr::class);
-$td = $api->getClassLink(Td::class);
-$th = $api->getClassLink(Th::class);
+$tableClass = $api->classLinker(Table::class);
+$tr = $api->classLinker(Tr::class);
+$td = $api->classLinker(Td::class);
+$th = $api->classLinker(Th::class);
 echo $parsedown->text(<<<MD
-##HTML TABLES: {$api->getNamespaceLink(__NAMESPACE__)} namespace
+##HTML TABLES: {$api->namespaceLink(__NAMESPACE__)} namespace
 
 Namespace contains object oriented PHP implementation of the HTML table structure. 
 This namespace implements most of the features of the HTML tables.
 
 ###The $tableClass component 
 		
-The $tableClass class implements the HTML {$w3schools->getTagLink("table")}. In general $tableClass 
+The $tableClass class implements the HTML {$w3schools->tag("table")}. In general $tableClass 
 components (just like HTML tables) should not be used as layout aids.
 		
 A basic $tableClass is divided into rows with the $tr component (the tr stands for table row).

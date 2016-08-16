@@ -2,11 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
-$htmlAttrMngr = $api->getClassLink(AttributeManager::class);
-$abstractAttr = $api->getClassLink(AbstractAttribute::class);
-$multiValueAttr = $api->getClassLink(MultiValueAttribute::class);
-$setMethodLink = $api->getClassMethodLink(AttributeManager::class, "set");
-$removeMethodLink = $api->getClassMethodLink(AttributeManager::class, "remove");
+$abstractAttr = $api->classLinker(AbstractAttribute::class);
+$multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 echo $parsedown->text(<<<MD
 ##The $multiValueAttr class
 		

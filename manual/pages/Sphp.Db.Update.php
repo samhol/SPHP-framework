@@ -6,7 +6,7 @@ use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 
 $update = $api->classLinker(Update::class);
 $conditions = $api->classLinker(Conditions::class);
-$pdo = $php->getClassLink(\PDO::class);
+$pdo = $php->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
 

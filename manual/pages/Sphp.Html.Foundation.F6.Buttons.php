@@ -60,18 +60,18 @@ Predefined size classes:
 ));
 $blockGrid->printHtml();
 echo $parsedown->text(<<<MD
-##The {$api->getClassLink(HyperlinkButton::class)} and the $formBtn components
+##The {$api->classLinker(HyperlinkButton::class)} and the $formBtn components
 
-1. {$api->getClassLink(HyperlinkButton::class)} component implements basic
-hyperlink properties from {$api->getClassLink(\Sphp\Html\Navigation\HyperlinkInterface::class)}.
+1. {$api->classLinker(HyperlinkButton::class)} component implements basic
+hyperlink properties from {$api->classLinker(\Sphp\Html\Navigation\HyperlinkInterface::class)}.
 2. $formBtn component implements
-{$api->getClassLink(ButtonInterface::class)} and therefore can be used as a HTML button for any {$api->getClassLink(\Sphp\Html\Forms\FormInterface::class)}.
+{$api->classLinker(ButtonInterface::class)} and therefore can be used as a HTML button for any {$api->classLinker(\Sphp\Html\Forms\FormInterface::class)}.
 MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/Button.php');
 echo $parsedown->text(<<<MD
-##The {$api->getClassLink(SplitButton::class)} component
+##The {$api->classLinker(SplitButton::class)} component
 MD
 );
 

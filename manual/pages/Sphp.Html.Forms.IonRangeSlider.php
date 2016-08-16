@@ -4,10 +4,10 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis as Apis;
-$slider = $api->getClassLink(Slider::class);
-$rangeSlider = $api->getClassLink(RangeSlider::class);
+$slider = $api->classLinker(Slider::class);
+$rangeSlider = $api->classLinker(RangeSlider::class);
 $nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__, false);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##The $nsLink namespace containing $slider and $rangeSlider component
 		

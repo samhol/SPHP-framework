@@ -3,15 +3,15 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
-$htmlAttrMngr = $api->getClassLink(AttributeManager::class);
-$abstractAttr = $api->getClassLink(AbstractAttribute::class);
-$multiValueAttr = $api->getClassLink(MultiValueAttribute::class);
-$propertyAttr = $api->getClassLink(PropertyAttribute::class);
-$setMethodLink = $api->getClassMethodLink(AttributeManager::class, "set");
-$removeMethodLink = $api->getClassMethodLink(AttributeManager::class, "remove");
-$requireAttr = $api->getClassMethodLink(AttributeManager::class, "demand");
-$lockAttr = $api->getClassMethodLink(AttributeManager::class, "lock");
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$htmlAttrMngr = $api->classLinker(AttributeManager::class);
+$abstractAttr = $api->classLinker(AbstractAttribute::class);
+$multiValueAttr = $api->classLinker(MultiValueAttribute::class);
+$propertyAttr = $api->classLinker(PropertyAttribute::class);
+$setMethodLink = $htmlAttrMngr->method("set");
+$removeMethodLink = $htmlAttrMngr->method("remove");
+$requireAttr = $htmlAttrMngr->method("demand");
+$lockAttr = $htmlAttrMngr->method("lock");
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
 
@@ -57,7 +57,7 @@ an attribute name to exists in the string output of the $htmlAttrMngr. A previou
 attribute is stored to the manager as an empty attribute. A required attribute cannot be 
 removed, but its value is mutable.
 		
-{$api->getClassMethodLink(AttributeManager::class, "lock")} method locks an attribute 
+$lockAttr method locks an attribute 
 to the given value. A locked attribute cannot be removed and its value is immune to modification.
 
 **IMPORTANT NOTES ABOUT REQUIRING AND VALUE LOCKING!:** 

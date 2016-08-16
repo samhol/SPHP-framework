@@ -3,11 +3,11 @@
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 
-$ns = $api->getNamespaceLink(__NAMESPACE__);
-$paneInterface = $api->getClassLink(PaneInterface::class);
-$accordion = $api->getClassLink(Accordion::class);
+$ns = $api->namespaceLink(__NAMESPACE__);
+$paneInterface = $api->classLinker(PaneInterface::class);
+$accordion = $api->classLinker(Accordion::class);
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
         
 ##The $accordion container for $paneInterface components

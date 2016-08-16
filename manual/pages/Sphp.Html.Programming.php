@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Programming;
 
-$scriptInterface = $api->getClassLink(ScriptInterface::class);
-$scriptCode = $api->getClassLink(ScriptCode::class);
-$scriptFile = $api->getClassLink(ScriptSrc::class);
-$scriptsContainer = $api->getClassLink(ScriptsContainer::class);
-$noscript = $api->getClassLink(Noscript::class);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$scriptInterface = $api->classLinker(ScriptInterface::class);
+$scriptCode = $api->classLinker(ScriptCode::class);
+$scriptFile = $api->classLinker(ScriptSrc::class);
+$scriptsContainer = $api->classLinker(ScriptsContainer::class);
+$noscript = $api->classLinker(Noscript::class);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 ##HTML CLIENT SIDE SCRIPTING
@@ -37,7 +37,7 @@ Note: There are several ways an external script can be executed:
 ###Setting script statements with $scriptCode component
 $scriptCode component containing statements can be manipulated several ways. 
   
- 1. via {$php->getClassLink(\ArrayAccess::class)}
+ 1. via {$php->classLinker(\ArrayAccess::class)}
 
 MD
 );

@@ -4,7 +4,7 @@ namespace Sphp\Net;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$urlClass = $api->getClassLink(URL::class);
+$urlClass = $api->classLinker(URL::class);
 echo $parsedown->text(<<<MD
 ##URL string manipulation with the $urlClass class
 
@@ -15,8 +15,8 @@ Objects of this class allow users to encode, decode, manipulate and compare URLs
 
 ###Object properties
 		
-The {$api->getClassMethodLink(URL::class, "__construct")} parses the input URL string
-with {$php->getFunctionLink("parse_url")} function and the class $urlClass is therefore 
+The {$urlClass->method("__construct")} parses the input URL string
+with {$php->functionLink("parse_url")} function and the class $urlClass is therefore 
 intended specifically for the  URLs and not URIs.
 		
 The properties within the $urlClass object are:

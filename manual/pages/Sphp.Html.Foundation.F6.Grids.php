@@ -2,14 +2,14 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Apps\ApiTools\FoundationDocsLinker as FoundationDocsLinker;
+use Sphp\Html\Apps\Manual\FoundationDocsLinker as FoundationDocsLinker;
 
 $grid = $api->classLinker(Grid::class);
 $row = $api->classLinker(Row::class);
 $col = $api->classLinker(Column::class);
-$cols = $api->getClassLink(Column::class, "Columns");
-//$ns = $api->getNamespaceLink(__NAMESPACE__);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$cols = $api->classLinker(Column::class, "Columns");
+//$ns = $api->namespaceLink(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $gridInterface = $api->classLinker(GridInterface::class);
 $f_GridLink = FoundationDocsLinker::get()->gridLink(null, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
@@ -20,7 +20,7 @@ MD
 );
 $load("Sphp.Html.Foundation.F6.Grids.GridInterface.php");
 
-$blockGrid = $api->getClassLink(BlockGrid::class);
+$blockGrid = $api->classLinker(BlockGrid::class);
 echo $parsedown->text(<<<MD
 ##The $blockGrid component
 		

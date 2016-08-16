@@ -3,9 +3,9 @@
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as ExampleAccordions;
 
-$tabs = $api->getClassLink(Tabs::class);
+$tabs = $api->classLinker(Tabs::class);
 
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ###The $tabs component
 $ns

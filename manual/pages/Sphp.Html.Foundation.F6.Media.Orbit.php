@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 
-$media = $api->getNamespaceLink(__NAMESPACE__);
-$ns = $api->getNamespaceBreadGrumbs(__NAMESPACE__);
+$media = $api->namespaceLink(__NAMESPACE__);
+$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 $orbit = $api->classLinker(Orbit::class);
 $slide = $api->classLinker(Slide::class);

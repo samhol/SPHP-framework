@@ -5,8 +5,8 @@ namespace Sphp\Html;
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingPane as SyntaxHighlightingPane;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-$ajaxLoaderInterface = $api->getClassLink(AjaxLoaderInterface::class);
-$ajaxLoaderTrait = $api->getClassLink(AjaxLoaderTrait::class);
+$ajaxLoaderInterface = $api->classLinker(AjaxLoaderInterface::class);
+$ajaxLoaderTrait = $api->classLinker(AjaxLoaderTrait::class);
 
 echo $parsedown->text(<<<MD
 ###Ajax loading the content using the $ajaxLoaderInterface
