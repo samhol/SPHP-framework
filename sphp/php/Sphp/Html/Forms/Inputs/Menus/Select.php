@@ -48,6 +48,11 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
       TraversableTrait;
 
   /**
+   * the tag name of the HTML component
+   */
+  const TAG_NAME = "select";
+
+  /**
    * Constructs a new instance of the {@link Select} component
    *
    * <var>$opt</var> parameter:

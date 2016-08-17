@@ -38,11 +38,6 @@ use Sphp\Html\ContainerInterface as ContainerInterface;
 interface SelectMenuInterface extends ValidableInputInterface, TraversableInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "select";
-
-  /**
    * Returns all {@link Option} components in the component
    * 
    * @return ContainerInterface containing {@link Option} components
