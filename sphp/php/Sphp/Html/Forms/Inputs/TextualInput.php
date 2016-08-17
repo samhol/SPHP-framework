@@ -23,6 +23,7 @@ namespace Sphp\Html\Forms\Inputs;
 class TextualInput extends InputTag implements TextualInputInterface {
 
   use PatternValidableTrait;
+
   /**
    * Constructs a new instance
    *

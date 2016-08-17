@@ -12,7 +12,7 @@ use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Forms\Label as Label;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Interface defines a Foundation based input column for a Grid system
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

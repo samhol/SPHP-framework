@@ -53,7 +53,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
   const TAG_NAME = "select";
 
   /**
-   * Constructs a new instance of the {@link Select} component
+   * Constructs a new instance
    *
    * <var>$opt</var> parameter:
    * 
@@ -65,7 +65,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
    * 4. all other types are converted to strings and and stored as new 
    *    {@link Option}($opt, $opt) object
    *
-   * @param  string $name name attribute
+   * @param  string|null $name name attribute
    * @param  mixed|mixed[] $opt the content of the menu
    * @param  string|string[] $selectedValues the optionvalues selected
    */

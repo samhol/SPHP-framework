@@ -1,12 +1,13 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+
 use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 
 $slider = $api->classLinker(Slider::class);
 $rangeSlider = $api->classLinker(RangeSlider::class);
-$sliderInterface= $api->classLinker(SliderInterface::class);
+$sliderInterface = $api->classLinker(SliderInterface::class);
 
 
 echo $parsedown->text(<<<MD

@@ -11,7 +11,7 @@ use Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface as SelectMenuInterface;
 use Sphp\Html\Forms\Inputs\Menus\Select as Select;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Class implements Foundation framework based select menu input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
@@ -27,10 +27,22 @@ class SelectMenuColumn extends InputColumn implements SelectMenuInterface {
   /**
    * Constructs a new instance
    *
-   * @param  Select $input the actual input component
+   * <var>$opt</var> parameter:
+   * 
+   * 1. a {@link SelectContentInterface} is stored as such
+   * 2. a single dimensional array with $key => $val pairs corresponds to an 
+   *    array of new {@link Option}($key, $val) objects
+   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
+   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
+   * 4. all other types are converted to strings and and stored as new 
+   *    {@link Option}($opt, $opt) object
+   *
+   * @param  string|null $name name attribute
+   * @param  mixed|mixed[] $opt the content of the menu
+   * @param  string|string[] $selectedValues the optionvalues selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
-    parent::__construct(new \Sphp\Html\Forms\Inputs\Menus\Select($name, $opt, $selectedValues));
+    parent::__construct(new Select($name, $opt, $selectedValues));
   }
 
   /**

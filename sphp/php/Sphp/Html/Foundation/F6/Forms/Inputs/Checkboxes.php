@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
 

@@ -61,13 +61,19 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     if ($content !== null) {
       $this->append($content);
     }
-    $this->errorLabel = new Callout('<p><i class="fi-alert"></i> There are some errors in your form.</p>');
+    $this->errorLabel = new Callout('<i class="fi-alert"></i> There are some errors in your form.');
     $this->errorLabel->hide()->cssClasses()->lock("alert");
     $this->errorLabel->attrs()->demand("data-abide-error");
   }
 
+  /**
+   * 
+   * @param   $message
+   * @return self for PHP Method Chaining
+   */
   public function setFormErrorMessage($message) {
     $this->errorLabel->replaceContent($message);
+    return $this;
   }
 
   /**

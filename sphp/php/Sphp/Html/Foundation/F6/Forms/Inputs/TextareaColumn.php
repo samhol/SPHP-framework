@@ -8,9 +8,10 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\TextareaInterface as TextareaInterface;
+use Sphp\Html\Forms\Inputs\Textarea as Textarea;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Class implements Foundation framework based textarea input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
@@ -24,10 +25,17 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * Constructs a new instance
    *
-   * @param TextualInputInterface $input the actual input component
+   * @precondition  `$rows > 0 & $cols > 0<`
+   * @param  string $name name attribute value
+   * @param  string $content the content of the component
+   * @param  string $rows the value of the rows attribute (visible height of a text area)
+   * @param  string $cols the value of the cols attribute (visible width of a text area)
+   * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
+   * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function __construct(TextualInputInterface $input) {
-    parent::__construct($input);
+  public function __construct($name = "", $content = "", $rows = "", $cols = "") {
+    parent::__construct(new Textarea($name, $content, $rows, $cols));
   }
 
   /**
@@ -64,22 +72,8 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * {@inheritdoc}
    */
-  public function getValidationPattern() {
-    return $this->getInput()->getValidationPattern();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasValidationPattern() {
-    return $this->getInput()->hasValidationPattern();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setMaxlength($maxlength) {
-    $this->getInput()->setMaxlength($maxlength);
+  public function setRows($maxlength) {
+    $this->getInput()->setRows($maxlength);
     return $this;
   }
 
@@ -94,28 +88,6 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * {@inheritdoc}
    */
-  public function setSize($size) {
-    $this->getInput()->setSize($size);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getPattern() {
-    return $this->getInput()->getPattern();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasPattern() {
-    return $this->getInput()->hasPattern();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function isRequired() {
     return $this->getInput()->isRequired();
   }
@@ -123,16 +95,24 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * {@inheritdoc}
    */
-  public function setPattern($pattern) {
-    $this->getInput()->setPattern($pattern);
+  public function setRequired($required = true) {
+    $this->getInput()->setRequired($required);
     return $this;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setRequired($required = true) {
-    $this->getInput()->setRequired($required);
+  public function setCols($cols) {
+    $this->getInput()->setCols($cols);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function wrap($wrapType) {
+    $this->getInput()->wrap($wrapType);
     return $this;
   }
 

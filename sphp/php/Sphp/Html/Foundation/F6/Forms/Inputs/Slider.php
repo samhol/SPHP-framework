@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
 use Sphp\Html\Forms\Label as Label;

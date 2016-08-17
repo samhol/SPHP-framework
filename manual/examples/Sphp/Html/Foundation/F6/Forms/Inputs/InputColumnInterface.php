@@ -3,9 +3,6 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
-use Sphp\Html\Forms\Inputs\Textarea as Textarea;
-use Sphp\Html\Foundation\F6\Forms\Inputs\TextColumn as TextColumn;
-use Sphp\Html\Foundation\F6\Forms\Inputs\SelectMenuColumn as SelectMenuColumn;
 
 $cars = ["Sweden" => [
         "saab" => "Saab",
@@ -30,7 +27,7 @@ $form = (new GridForm())
         ->append([
     (new TextColumn("username"))
     ->setRequired()
-    ->setHelperText("Inser username *")
+    ->setHelperText("Insert username *")
     ->setErrorField("You need to insert a username")
     ->setPlaceholder("Username")
     ->setWidths(12, 4, 4)
@@ -51,10 +48,16 @@ $form->append([
             ->setRequired()
             ->setHelperText("Select atleast one car")
             ->setErrorField("Yuo need to select atleast one car")
+            ->setLabel("Select your favourite cars")
             ->setWidths(12, 6)]);
-$form->append((new Textarea("notes", "", 4))
-                ->setPlaceholder("some notes about the person"));
-$form->append(new Buttons\SubmitButton("Submit form", "submit"));
+$form->append((new TextareaColumn("description", null, 4))
+                ->setRequired()
+                ->setPlaceholder("Something about yourself")
+                ->setErrorField("Yuo need to write something about yourself"));
+
+namespace Sphp\Html\Foundation\F6\Forms\Buttons;
+
+$form->append(new SubmitButton("Submit form", "submit"));
 
 $form->printHtml();
 ?>

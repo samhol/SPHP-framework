@@ -5,12 +5,11 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Legend as Legend;
 use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Container as Container;

@@ -1,6 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms;
+
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+
+use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
 
 $fooData = [
     "a" => "Letter a",

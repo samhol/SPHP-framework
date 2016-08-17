@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Grids;
 use Sphp\Html\ContainerComponentInterface as ContainerComponentInterface;
 
 /**
- * Interface defines a Foundation row
+ * Interface defines a Foundation based Row for a Grid
  *
  * A Foundation Row is a horizontal block containing vertical {@link ColumnInterface} components.
  *

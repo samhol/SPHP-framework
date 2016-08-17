@@ -11,13 +11,16 @@ $gridForm = $api->classLinker(GridForm::class);
 
 Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
 echo $parsedown->text(<<<MD
-#Foundation based  form components
+#Foundation based form components
 
 ##The $gridForm component
 
 MD
 );
 (new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/GridForm.php'))
+        ->addCssClass("form-example")
+        ->printHtml();
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))
         ->addCssClass("form-example")
         ->printHtml();
 $load("Sphp.Html.Foundation.F6.Forms.Buttons.php");

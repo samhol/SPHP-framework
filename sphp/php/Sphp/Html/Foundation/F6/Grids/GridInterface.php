@@ -12,7 +12,7 @@ use Sphp\Html\ContentInterface as ContentInterface;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 
 /**
- * Interface defines a Foundation Grid
+ * Interface defines a Foundation based Grid
  * 
  * A Grid component is a container for {@link RowInterface} components.
  *

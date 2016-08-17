@@ -1,6 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+
+use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
+use Sphp\Html\Foundation\F6\Forms\FormRow as FormRow;
 
 $weight = (new Slider())
         ->setName("weight")
@@ -10,8 +13,8 @@ $weight = (new Slider())
         ->setValueUnit("kg");
 
 $hours = (new Slider(0, 23, 1));
-        //->showValue()
-        //->setDescription("hour of the day:");
+//->showValue()
+//->setDescription("hour of the day:");
 
 $score = (new Slider(0, 100, 50, 2))
         //->setDescription("two point score:")
@@ -21,7 +24,7 @@ $score = (new Slider(0, 100, 50, 2))
 $distance = (new Slider(10, 1000, 10, 10))
         //->setDescription("Distance travelled:")
         ->setValue(100);
-        //->setValueUnit("km");
+//->setValueUnit("km");
 
 (new GridForm())
         ->append((new FormRow())

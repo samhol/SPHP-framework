@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;

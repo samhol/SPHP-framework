@@ -10,6 +10,8 @@ namespace Sphp\Html\Foundation\F6\Forms;
 use Sphp\Html\Foundation\F6\Grids\AbstractRow as AbstractRow;
 use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
 use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
+use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
+use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 
 /**
  * Class extends a Foundation Row for form components
@@ -28,12 +30,35 @@ class FormRow extends AbstractRow {
   /**
    * {@inheritdoc}
    */
-  public function appendColumn($content, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
+  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {
-      $this->append(new InputColumn($content, $small, $medium, $large, $xlarge, $xxlarge));
+      $this->appendInput($content, $s, $m, $l, $xl, $xxl);
     } else {
-      parent::appendColumn($content, $small, $medium, $large, $xlarge, $xxlarge);
+      parent::appendColumn($content, $s, $m, $l, $xl, $xxl);
+    }
+    return $this;
+  }
+  
+  /**
+   * Appends a new form input component to the row
+   * 
+   * @param InputInterface $input the appended input
+   * @param  int $s column width for small screens (1-12)
+   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
+   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
+   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
+   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @return self for PHP Method Chaining
+   */
+  public function appendInput(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+    if ($input instanceof NonVisualContentInterface) {
+      $this->append($input);
+    } else if ($input instanceof ColumnInterface) {
+      $input->setWidths($s, $m, $l, $xl, $xxl);
+      $this->append($input);
+    } else {
+      $this->append(new InputColumn($input, $s, $m, $l, $xl, $xxl));
     }
     return $this;
   }

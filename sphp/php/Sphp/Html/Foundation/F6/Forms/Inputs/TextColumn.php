@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\TextInput as TextInput;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Class implements Foundation framework based text input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02
@@ -24,10 +24,16 @@ class TextColumn extends TextualColumn {
   /**
    * Constructs a new instance
    *
-   * @param string|null $name
-   * @param string|null $value
-   * @param string|null $maxlength
-   * @param string|null $size
+   * @precondition  `0 < $size <= $maxlength`
+   * @param  string|null $name the value of the  name attribute
+   * @param  string $value the value of the  value attribute
+   * @param  int $maxlength the value of the  maxlength attribute
+   * @param  int $size the value of the  size attribute
+   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
+   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
+   * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
   public function __construct($name = null, $value = null, $maxlength = null, $size = null) {
     $textInput = new TextInput($name, $value, $maxlength, $size);
