@@ -22,11 +22,6 @@ class Area extends EmptyTag implements AreaInterface {
   use AreaTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "area";
-
-  /**
    * Constructs a new instance
    * 
    * @param string $shape

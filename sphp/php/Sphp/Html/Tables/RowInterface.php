@@ -24,8 +24,7 @@ interface RowInterface extends TableContentInterface {
   /**
    * Sets the default type of the table cells
    * 
-   * @param  string $defaultCell the default type of the cell
-   *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+   * @param  string $defaultCell the default type of the cell `td|th`
    * @return self for PHP Method Chaining
    */
   public function setDefaultCellType($defaultCell);
@@ -33,8 +32,7 @@ interface RowInterface extends TableContentInterface {
   /**
    * Sets the default type of the table cells
    * 
-   * @return string the default type of the cell
-   *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+   * @return string the default type of the cell `td|th`
    */
   public function getDefaultCellType();
 }

@@ -29,12 +29,7 @@ use Sphp\Html\Document as Document;
 class Tr extends ContainerTag implements RowInterface {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "tr";
-
-	/**
-	 * the default type of the table cells ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * the default type of the table cells (`td`|`th`)
 	 *
 	 * @var string 
 	 */
@@ -55,7 +50,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 *
 	 * @param  null|mixed|mixed[] $cells cell(s) of the table row or null for no content
 	 * @param  string $cellType the default type of the cell 
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 *         (`td`|`th`)
 	 */
 	public function __construct($cells = null, $cellType = "td") {
 		parent::__construct("tr");
@@ -69,7 +64,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * Sets the default type of the table cells
 	 * 
 	 * @param  string $defaultCell the default type of the cell
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 *         (`td`|`th`)
 	 * @return self for PHP Method Chaining
 	 */
 	public function setDefaultCellType($defaultCell) {
@@ -80,8 +75,7 @@ class Tr extends ContainerTag implements RowInterface {
 	/**
 	 * Sets the default type of the table cells
 	 * 
-	 * @return string the default type of the cell
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * @return string the default type of the cell `td|th`
 	 */
 	public function getDefaultCellType() {
 		return $this->cellType;
@@ -102,8 +96,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * 
 	 *
 	 * @param  mixed|Cell|Cell[] $cells cells of the table row
-	 * @param  string $cellType the default type of the cell 
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * @param  string $cellType the default type of the cell `td|th`
 	 * @return self for PHP Method Chaining
 	 */
 	public function append($cells, $cellType = "td") {
@@ -129,8 +122,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * 
 	 *
 	 * @param  mixed|Cell|Cell[] $cells cells of the table row
-	 * @param  string $cellType the default type of the cell 
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * @param  string $cellType the default type of the cell `td|th`
 	 * @return self for PHP Method Chaining
 	 */
 	public function prepend($cells, $cellType = "td") {
@@ -151,8 +143,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * 
 	 *
 	 * @param  mixed|Cell|Cell[] $rawData cells of the table row
-	 * @param  string $cellType the default type of the cell 
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * @param  string $cellType the default type of the cell `td|th`
 	 * @return Cell[] table cells
 	 */
 	protected function parseNewCells($rawData, $cellType = "td") {

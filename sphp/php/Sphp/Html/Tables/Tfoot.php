@@ -23,11 +23,6 @@ namespace Sphp\Html\Tables;
 class Tfoot extends TableRowContainer {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "tfoot";
-
-  /**
    * Constructs a new instance
    * 
    * **Notes:**
@@ -38,7 +33,7 @@ class Tfoot extends TableRowContainer {
    * @param  null|mixed|mixed[] $row the row being appended
    */
   public function __construct($row = null) {
-    parent::__construct(self::TAG_NAME, $row);
+    parent::__construct("tfoot", $row);
     $this->setDefaultTableCellType("th");
   }
 

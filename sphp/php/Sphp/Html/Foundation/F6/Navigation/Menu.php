@@ -18,17 +18,12 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 class Menu extends AbstractMenu {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "ul";
-
-  /**
    * Constructs a new instance
    *
    * @param mixed $content
    */
   public function __construct($content = NULL) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("ul");
     if ($content !== NULL) {
       $this->append($content);
     }

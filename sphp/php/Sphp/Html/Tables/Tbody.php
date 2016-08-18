@@ -24,11 +24,6 @@ namespace Sphp\Html\Tables;
 class Tbody extends TableRowContainer {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "tbody";
-
-	/**
 	 * Constructs a new instance
 	 * 
 	 * **Notes:**
@@ -39,7 +34,7 @@ class Tbody extends TableRowContainer {
 	 * @param  null|mixed|mixed[] $row the row being appended
 	 */
 	public function __construct($row = null) {
-		parent::__construct(self::TAG_NAME, $row);
+		parent::__construct("tbody", $row);
 		$this->setDefaultTableCellType("td");
 	}
 

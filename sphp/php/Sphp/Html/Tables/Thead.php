@@ -26,11 +26,6 @@ namespace Sphp\Html\Tables;
 class Thead extends TableRowContainer {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "thead";
-
-	/**
 	 * Constructs a new instance
 	 * 
 	 * **Notes:**
@@ -41,7 +36,7 @@ class Thead extends TableRowContainer {
 	 * @param  null|mixed|mixed[] $row the row being appended
 	 */
 	public function __construct($row = null) {
-		parent::__construct(self::TAG_NAME, $row);
+		parent::__construct("thead", $row);
 		$this->setDefaultTableCellType("th");
 	}
 

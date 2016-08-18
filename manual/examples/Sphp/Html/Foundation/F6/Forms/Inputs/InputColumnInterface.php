@@ -3,6 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
+use Sphp\Html\Foundation\F6\Forms\FormRow as FormRow;
 
 $cars = ["Sweden" => [
         "saab" => "Saab",
@@ -23,26 +24,27 @@ $cars = ["Sweden" => [
 ];
 $form = (new GridForm())
         ->validation(true)
-        ->setTarget("outputFrame")
+        ->setTarget("outputFrame");
+$row1 = (new FormRow())
+        ->append((new TextColumn("username"))
+                ->setRequired()
+                ->setHelperText("Insert username *")
+                ->setErrorField("You need to insert a username")
+                ->setPlaceholder("Username")
+                ->setLabel("Username:")
+                ->setWidths(12, 4, 4))
+        ->append((new TextColumn("fname"))
+                ->setRequired()
+                ->setPlaceholder("First name")
+                ->setWidths(12, 4, 4)
+                ->setLabel("First name:"))
+        ->append((new TextColumn("lname"))
+                ->setRequired()
+                ->setPlaceholder("Family name")
+                ->setWidths(12, 4, 4)
+                ->setLabel("Family name:"));
+$form->append($row1)
         ->append([
-    (new TextColumn("username"))
-    ->setRequired()
-    ->setHelperText("Insert username *")
-    ->setErrorField("You need to insert a username")
-    ->setPlaceholder("Username")
-    ->setWidths(12, 4, 4)
-    ->setLabel("Username:"),
-    (new TextColumn("fname"))
-    ->setRequired()
-    ->setPlaceholder("First name")
-    ->setWidths(12, 4, 4)
-    ->setLabel("First name:"),
-    (new TextColumn("lname"))
-    ->setRequired()
-    ->setPlaceholder("Family name")
-    ->setWidths(12, 4, 4)
-    ->setLabel("Family name:")]);
-$form->append([
             (new SelectMenuColumn("select", $cars))
             ->selectMultiple()
             ->setRequired()

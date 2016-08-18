@@ -34,7 +34,7 @@ abstract class TableRowContainer extends ContainerTag implements TableContentInt
 	const COUNT_CELLS = 2;
 	
 	/**
-	 * the default type of the table cells ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 * the default type of the table cells (`td`|`th`)
 	 *
 	 * @var string 
 	 */
@@ -45,8 +45,8 @@ abstract class TableRowContainer extends ContainerTag implements TableContentInt
 	 * 
 	 * `$defaultCell` parameter defines the type of the wrapper for`$cells` not instanceof  {@link CellInterface}
 	 *  
-	 *  * {@link Td::TAG_NAME} => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
-	 *  * {@link Th::TAG_NAME} => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
+	 *  * `td` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
+	 *  * `th` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
 	 * 
 	 * @param  string $defaultCell
 	 * @return self for PHP Method Chaining
@@ -60,7 +60,7 @@ abstract class TableRowContainer extends ContainerTag implements TableContentInt
 	 * Sets the default type of the table cells
 	 * 
 	 * @return string the default type of the cell
-	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
+	 *         (`td`|`th`)
 	 */
 	public function getDefaultCellType() {
 		return $this->cellType;
