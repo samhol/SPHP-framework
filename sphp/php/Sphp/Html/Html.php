@@ -28,11 +28,6 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
   use TraversableTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "html";
-
-  /**
    * Constructs a new instance of the {@link self] component
    *
    * **Common <var>$charset</var> values:**
@@ -49,7 +44,7 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
    * @param mixed|mixed[] $content optional body content
    */
   public function __construct($title = null, $charset = "UTF-8", $content = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("html");
     $this->content()
             ->set("head", new Head($title, $charset))
             ->set("body", new Body($content));

@@ -21,11 +21,6 @@ use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 interface ScriptInterface extends ComponentInterface, HeadComponentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "script";
-
-  /**
    * Sets the value of the type attribute
    *
    * Specifies the MIME type of the script

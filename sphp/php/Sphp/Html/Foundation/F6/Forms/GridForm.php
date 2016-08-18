@@ -42,8 +42,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    *  **Note:** The method attribute specifies how to send form-data
    *  (the form-data is sent to the page specified in the action attribute)
    *
-   * @precondition `$method == "get" | $method == "post"`
-   *
+   * @precondition `$method == get|post`
    * @param  string $action where to send the form-data when the form is submitted
    * @param  string $method how to send form-data
    * @param  mixed|null $content the content of the form or null for no content
@@ -51,7 +50,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = "", $method = "post", $content = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("form");
     if ($action != "") {
       $this->setAction($action);
     }

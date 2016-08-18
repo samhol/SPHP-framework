@@ -28,11 +28,6 @@ use Sphp\Html\Programming\SphpScriptsLoader as SphpScriptsLoader;
 class Body extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "body";
-
-  /**
    *
    * @var ScriptsContainer 
    */
@@ -50,7 +45,7 @@ class Body extends ContainerTag {
    * @param  mixed $content the content of the component
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("body", $content);
     $this->scripts = new ScriptsContainer();
   }
 

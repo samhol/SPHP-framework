@@ -39,7 +39,7 @@ class Tfoot extends TableRowContainer {
    */
   public function __construct($row = null) {
     parent::__construct(self::TAG_NAME, $row);
-    $this->setDefaultTableCellType(Th::TAG_NAME);
+    $this->setDefaultTableCellType("th");
   }
 
 }

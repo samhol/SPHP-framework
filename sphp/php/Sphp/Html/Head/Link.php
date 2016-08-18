@@ -28,11 +28,6 @@ use Sphp\Core\Types\Strings as Strings;
 class Link extends EmptyTag implements HeadComponentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "link";
-
-  /**
    * Constructs a new instance
    *
    * @param  string $href the location of the linked document
@@ -43,7 +38,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function __construct($href = "", $rel = "stylesheet", $media = "screen") {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("link");
     $this->attrs()->demand("rel");
     if ($href !== null) {
       $this->setHref($href);

@@ -23,26 +23,17 @@ namespace Sphp\Html\Tables;
  * @filesource
  */
 class Td extends Cell {
-
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "td";
 	
 	/**
 	 * Constructs a new instance
 	 *
-	 * <p>**Important!**</p>
+	 * **Important!**
 	 *
-	 * <p>Parameter `$content` can be of any type that converts to a
+	 * Parameter `$content` can be of any type that converts to a
 	 * string or to an array of strings. So also an object of any class that
-	 * implements magic method `__toString()` is allowed.</p>
+	 * implements magic method `__toString()` is allowed.
 	 *
-	 *  <p>**Preconditions:**</p>
-	 *  <ol>
-	 *    * $colspan >= 1 & $rowspan >= 1
-	 *  </ol>
-	 *
+	 * @recondition `$colspan >= 1 & $rowspan >= 1`
 	 * @param mixed $content the content of the component
 	 * @param int $colspan the value of the colspan attribute
 	 * @param int $rowspan the value of the rowspan attribute
@@ -50,7 +41,7 @@ class Td extends Cell {
 	 * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
 	 */
 	public function __construct($content = null, $colspan = 1, $rowspan = 1) {
-		parent::__construct(self::TAG_NAME, $content);
+		parent::__construct("td", $content);
 		$this->setColspan($colspan);
 		$this->setRowspan($rowspan);
 	}

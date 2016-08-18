@@ -25,17 +25,12 @@ use Sphp\Html\Headings\HeadingInterface as HeadingInterface;
 class Section extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "section";
-
-  /**
    * Constructs a new instance
    * 
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("section", $content);
   }
 
   /**

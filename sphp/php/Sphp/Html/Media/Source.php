@@ -32,11 +32,6 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
 	use LazyLoaderTrait;
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "source";
-
-	/**
 	 * Constructs a new instance
 	 *
 	 * @param  string|URL $src the URL of the media file
@@ -46,7 +41,7 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
 	 * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
 	 */
 	public function __construct($src = false, $type = false, $lazy = false) {
-		parent::__construct(self::TAG_NAME);
+		parent::__construct("source");
 		$this
 				->setSrc($src)
 				->setType($type)

@@ -23,17 +23,12 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class FigCaption extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "figcaption";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed $caption the caption content
    */
   public function __construct($caption = null) {
-    parent::__construct(self::TAG_NAME, $caption);
+    parent::__construct("figcaption", $caption);
   }
 
 }

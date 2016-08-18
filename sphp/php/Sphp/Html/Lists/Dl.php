@@ -29,16 +29,11 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
 class Dl extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "dl";
-
-  /**
    * the default type of the content wrapper
    *
    * @var string 
    */
-  private $defaultWrapper = Dt::class;
+  private $defaultWrapper = "dt";
 
   /**
    * Constructs a new instance
@@ -52,8 +47,8 @@ class Dl extends ContainerTag {
    * @param  null|mixed $items list elements
    * @param  string $defaultWrapper the tag name of the inserted non {@link DlContentInterface} elements
    */
-  public function __construct($items = null, $defaultWrapper = Dt::class) {
-    parent::__construct(self::TAG_NAME);
+  public function __construct($items = null, $defaultWrapper = "dt") {
+    parent::__construct("dl");
     $this->setWrapperType($defaultWrapper);
     if ($items !== null) {
       $this->append($items);
@@ -69,9 +64,9 @@ class Dl extends ContainerTag {
   public function setWrapperType($defaultWrapper) {
     if (is_a($defaultWrapper, DlContentInterface::class, true)) {
       $this->defaultWrapper = $defaultWrapper;
-    } else if (strtolower($defaultWrapper) == Dt::TAG_NAME) {
+    } else if (strtolower($defaultWrapper) == "dt") {
       $this->defaultWrapper = Dt::class;
-    } else if (strtolower($defaultWrapper) == Dd::TAG_NAME) {
+    } else if (strtolower($defaultWrapper) == "dd") {
       $this->defaultWrapper = Dd::class;
     } else {
       throw new \InvalidArgumentException("");

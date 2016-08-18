@@ -24,7 +24,7 @@ class SingleAccordion extends AbstractSingleAccordion {
    * @param mixed $content optional content of the accordion
    */
   public function __construct($heading = null, $content = null) {
-    parent::__construct(\Sphp\Html\Div::TAG_NAME, $heading);
+    parent::__construct("div", $heading);
     $this->cssClasses()->lock("sphp-single-accordion");
     if ($content !== null) {
       $this->body()->append($content);

@@ -20,17 +20,12 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
 class Title extends SimpleContainerTag implements HeadComponentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "title";
-
-  /**
    * Constructs a new instance
    *
    * @param  string $content tag's content
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("title");
     $this->setContent($content);
   }
 

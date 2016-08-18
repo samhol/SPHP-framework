@@ -26,17 +26,12 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Dd extends ContainerTag implements DlContentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "dd";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed $content the description
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("dd", $content);
   }
 
 }

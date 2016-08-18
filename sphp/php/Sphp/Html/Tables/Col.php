@@ -30,22 +30,16 @@ use Sphp\Html\EmptyTag as EmptyTag;
 class Col extends EmptyTag implements TableContentInterface {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "col";
-
-	/**
 	 * Constructs a new instance
 	 *
-	 * **Precondition:** <var>$span > 0</var>
-	 *
+	 * @precondition `$span > 0`
 	 * @param int $span specifies the number of columns a col element should span
 	 * @param string|string[] $cssClasses CSS class names
 	 * @link  http://www.w3schools.com/tags/att_col_span.asp span attribute
 	 * @link  http://www.w3schools.com/tags/att_global_class.asp class attribute
 	 */
 	public function __construct($span = 1, $cssClasses = "") {
-		parent::__construct(self::TAG_NAME);
+		parent::__construct("col");
 		$this->setSpan($span);
 		$this->addCssClass($cssClasses);
 	}

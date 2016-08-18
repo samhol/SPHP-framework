@@ -35,7 +35,7 @@ class TabButton extends \Sphp\Html\AbstractContainerComponent implements \Sphp\H
    * @param mixed $title
    */
   public function __construct(Tab $tabPanel, $title = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("li");
     $this->cssClasses()->lock("tabs-title");
     $this->panel = $tabPanel;
     $this->panel->getId();

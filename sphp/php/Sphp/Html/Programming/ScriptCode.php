@@ -37,7 +37,7 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function __construct($code = null) {
-    parent::__construct(self::TAG_NAME, $code);
+    parent::__construct("script", $code);
   }
 
   /**

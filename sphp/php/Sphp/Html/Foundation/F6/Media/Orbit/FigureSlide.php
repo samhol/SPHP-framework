@@ -46,7 +46,7 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img = null, $caption = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("li");
     $this->cssClasses()
             ->lock("orbit-slide fig-wrapper");
     if (!($img instanceof Img)) {

@@ -26,18 +26,13 @@ class Div extends ContainerTag implements AjaxLoaderInterface {
   use AjaxLoaderTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "div";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed $content optional content of the component
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("div", $content);
   }
 
 }

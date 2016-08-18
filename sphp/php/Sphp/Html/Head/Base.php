@@ -26,11 +26,6 @@ use Sphp\Html\EmptyTag as EmptyTag;
 class Base extends EmptyTag implements HeadComponentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "base";
-
-  /**
    * Constructs a new instance
    *
    * @param  string $href an absolute URL that acts as the base URL
@@ -39,7 +34,7 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function __construct($href = null, $target = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("base");
     if ($href !== null) {
       $this->setHref($href);
     }

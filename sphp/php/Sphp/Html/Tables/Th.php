@@ -25,11 +25,6 @@ namespace Sphp\Html\Tables;
 class Th extends Cell {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "th";
-
-  /**
    * Constructs a new instance
    *
    * <p>**Important!**</p>
@@ -53,7 +48,7 @@ class Th extends Cell {
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    */
   public function __construct($content = null, $scope = null, $colspan = 1, $rowspan = 1) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("th", $content);
     if ($scope !== null) {
       $this->setScope($scope);
     }

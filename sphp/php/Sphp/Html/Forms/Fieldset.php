@@ -24,11 +24,6 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Fieldset extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "fieldset";
-
-  /**
    * the legend of the fieldset component
    *
    * @var Legend
@@ -42,7 +37,7 @@ class Fieldset extends ContainerTag {
    * @param  mixed $content the content of the component
    */
   public function __construct($legend = null, $content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("fieldset", $content);
     $this->legend = $legend;
     if ($legend !== null) {
       $this->setLegend($legend);

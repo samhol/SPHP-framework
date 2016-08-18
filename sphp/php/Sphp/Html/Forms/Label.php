@@ -30,11 +30,6 @@ use Sphp\Core\Types\Strings as Strings;
 class Label extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "label";
-
-  /**
    * Constructs a new instance
    *
    * @param mixed $content the content of the component
@@ -42,7 +37,7 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function __construct($content = null, $for = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("label", $content);
     if (Strings::notEmpty($for)) {
       $this->setFor($for);
     }

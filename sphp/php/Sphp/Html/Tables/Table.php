@@ -8,8 +8,8 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\Container as Container;
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\TraversableInterface as TraversableInterface;
 /**
  * Class models an HTML &lt;table&gt; tag.
  *
@@ -23,7 +23,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Table extends AbstractContainerComponent implements \Sphp\Html\TraversableInterface {
+class Table extends AbstractContainerComponent implements TraversableInterface {
 
   
   use \Sphp\Html\TraversableTrait;
@@ -38,17 +38,12 @@ class Table extends AbstractContainerComponent implements \Sphp\Html\Traversable
 	const COUNT_CELLS = 2;
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "table";
-
-	/**
 	 * Constructs a new instance
 	 *
 	 * @param  string $caption defines a table caption
 	 */
 	public function __construct($caption = "") {
-		parent::__construct(self::TAG_NAME);
+		parent::__construct("table");
 		$this->setup($caption);
 	}
 

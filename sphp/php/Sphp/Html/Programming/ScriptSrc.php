@@ -39,7 +39,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function __construct($src = "", $async = false) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("script");
     $this->setSrc($src)->setAsync($async);
   }
 

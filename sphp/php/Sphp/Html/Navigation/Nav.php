@@ -29,17 +29,12 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Nav extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "nav";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("nav", $content);
   }
 
   /**

@@ -38,7 +38,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 *
 	 * @var string 
 	 */
-	private $cellType = Td::TAG_NAME;
+	private $cellType = "td";
 
 	/**
 	 * Constructs a new instance
@@ -50,15 +50,15 @@ class Tr extends ContainerTag implements RowInterface {
 	 *
 	 * `$cellType` parameter defines the type of the wrapper for`$cells` not instanceof  {@link CellInterface}
 	 *  
-	 * * {@link Td::TAG_NAME} => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
-	 * * {@link Th::TAG_NAME} => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
+	 * * `td` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
+	 * * `th` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
 	 *
 	 * @param  null|mixed|mixed[] $cells cell(s) of the table row or null for no content
 	 * @param  string $cellType the default type of the cell 
 	 *         ({@link Td::TAG_NAME}|{@link Th::TAG_NAME})
 	 */
-	public function __construct($cells = null, $cellType = Td::TAG_NAME) {
-		parent::__construct(Tr::TAG_NAME);
+	public function __construct($cells = null, $cellType = "td") {
+		parent::__construct("tr");
 		$this->setDefaultCellType($cellType);
 		if (isset($cells)) {
 			$this->append($cells, $cellType);

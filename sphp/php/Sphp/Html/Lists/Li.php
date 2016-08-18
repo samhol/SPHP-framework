@@ -38,7 +38,7 @@ class Li extends ContainerTag implements LiInterface, AjaxLoaderInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("li", $content);
   }
 
 }

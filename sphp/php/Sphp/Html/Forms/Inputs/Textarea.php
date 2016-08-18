@@ -27,11 +27,6 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
       LabelableTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "textarea";
-
-  /**
    * Constructs a new instance
    *
    * @precondition  `$rows > 0 & $cols > 0<`
@@ -44,7 +39,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
   public function __construct($name = "", $content = "", $rows = "", $cols = "") {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("textarea", $content);
     $this->setName($name);
     if ($rows > 0) {
       $this->setRows($rows);

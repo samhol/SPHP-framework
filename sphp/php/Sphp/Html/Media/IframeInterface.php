@@ -22,11 +22,6 @@ namespace Sphp\Html\Media;
 interface IframeInterface extends LazyLoaderInterface, SizeableInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "iframe";
-
-  /**
    * Sets the path to the image source (The URL of the image file)
    * 
    * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 

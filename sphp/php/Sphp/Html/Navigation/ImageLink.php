@@ -30,11 +30,6 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
   use HyperlinkTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "a";
-
-  /**
    * Constructs a new instance
    *
    * **Notes:**
@@ -50,7 +45,7 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $target = null, $src = null, $alt = "") {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("a");
     if ($src instanceof Img) {
       $this->setImg($src);
     } else {

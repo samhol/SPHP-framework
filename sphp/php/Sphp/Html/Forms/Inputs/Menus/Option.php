@@ -23,11 +23,6 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  * @filesource
  */
 class Option extends SimpleContainerTag implements SelectMenuContentInterface {
-
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "option";
 	
 	/**
 	 * Constructs a new instance of the {@link Option} component.
@@ -39,7 +34,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link  http://www.w3schools.com/tags/att_option_selected.asp selected attribute
 	 */
 	public function __construct($value = null, $content = null, $selected = false) {
-		parent::__construct(self::TAG_NAME, $content);
+		parent::__construct("option", $content);
 		$this->setValue($value)
 				->setSelected($selected);
 	}

@@ -46,7 +46,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     $div = new Div($content);
     $div->attrs()->demand("data-tab-content");
     $div->cssClasses()->lock("accordion-content");
-    parent::__construct(self::TAG_NAME, null, $div);
+    parent::__construct("li", null, $div);
     $this->bar = (new ContainerTag("a", $barContent));
     $this->bar->cssClasses()->lock("accordion-title");
     $this->bar->attrs()->lock("href", "#");

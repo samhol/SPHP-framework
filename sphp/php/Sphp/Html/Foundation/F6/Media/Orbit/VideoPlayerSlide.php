@@ -37,7 +37,7 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * @param  VideoPlayerInterface $player the image path or the image component
    */
   public function __construct($player = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("li");
     $this->cssClasses()->lock("orbit-slide");
     if (!($player instanceof FlexVideo)) {
       $player = new FlexVideo($player);

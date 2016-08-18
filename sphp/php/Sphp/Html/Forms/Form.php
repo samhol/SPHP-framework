@@ -47,7 +47,7 @@ class Form extends ContainerTag implements TraversableFormInterface {
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = null, $method = "post", $content = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("form");
     if ($content !== null) {
       $this->append($content);
     }

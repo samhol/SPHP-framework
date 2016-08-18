@@ -25,17 +25,12 @@ class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInt
   use SizeableTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "video";
-
-  /**
    * Constructs a new instance
    *
    * @param  Source|Source[] $sources defines a table caption
    */
   public function __construct($sources = null) {
-    parent::__construct(self::TAG_NAME, $sources);
+    parent::__construct("video", $sources);
   }
 
   /**

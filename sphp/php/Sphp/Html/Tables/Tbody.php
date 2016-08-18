@@ -40,7 +40,7 @@ class Tbody extends TableRowContainer {
 	 */
 	public function __construct($row = null) {
 		parent::__construct(self::TAG_NAME, $row);
-		$this->setDefaultTableCellType(Td::TAG_NAME);
+		$this->setDefaultTableCellType("td");
 	}
 
 }

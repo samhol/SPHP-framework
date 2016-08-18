@@ -23,17 +23,12 @@ namespace Sphp\Html\Media;
 class Audio extends AbstractMediaTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "audio";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed|mixed[] $sources defines the audio sources
    */
   public function __construct($sources = null) {
-    parent::__construct(self::TAG_NAME, $sources);
+    parent::__construct("audio", $sources);
   }
 
   /**

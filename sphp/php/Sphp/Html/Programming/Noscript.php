@@ -24,11 +24,6 @@ use Sphp\Html\Head\HeadComponentInterface as MetaDataInterface;
 class Noscript extends ContainerTag implements MetaDataInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "noscript";
-
-  /**
    * Constructs a new instance
    *
    * **Important!**
@@ -40,7 +35,7 @@ class Noscript extends ContainerTag implements MetaDataInterface {
    * @param  null|mixed|mixed[] $content the content of the component
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("noscript", $content);
   }
 
 }

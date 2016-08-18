@@ -27,11 +27,6 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
   use \Sphp\Html\AjaxLoaderTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "p";
-
-  /**
    * Constructs a new instance
    *
    * @param  mixed $content optional content of the component
@@ -40,7 +35,7 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null, $class = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("p", $content);
     $this->addCssClass($class);
   }
 

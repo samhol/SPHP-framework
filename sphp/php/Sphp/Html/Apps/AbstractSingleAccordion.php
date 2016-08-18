@@ -28,7 +28,7 @@ class AbstractSingleAccordion extends AbstractContainerComponent {
    * @param mixed $heading optional heading of the accordion
    * @param ComponentInterface $contentContainer optional content container of the accordion
    */
-  public function __construct($wrapperTagname = Div::TAG_NAME, $heading = null, ComponentInterface $contentContainer = null) {
+  public function __construct($wrapperTagname = "div", $heading = null, ComponentInterface $contentContainer = null) {
     parent::__construct($wrapperTagname);
     $this->content()["head"] = new Div();
     $this->head()->cssClasses()->lock("head");

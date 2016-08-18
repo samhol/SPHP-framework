@@ -16,10 +16,6 @@ namespace Sphp\Html;
  * is hooked in a &lt;span&gt; element, you can style it with CSS, or
  * manipulate it with JavaScript.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-06-03
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API link
@@ -27,11 +23,6 @@ namespace Sphp\Html;
  * @filesource
  */
 class Span extends ContainerTag {
-
-  /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "span";
 
   /**
    * Constructs a new instance
@@ -42,7 +33,7 @@ class Span extends ContainerTag {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null, $class = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("span", $content);
     if ($class !== null) {
       $this->addCssClass($class);
     }

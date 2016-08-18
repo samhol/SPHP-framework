@@ -30,7 +30,7 @@ class Polygon extends EmptyTag implements AreaInterface {
    * @param string $alt
    */
   public function __construct($coords, $href = null, $alt = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("area");
     $this->attrs()->lock("shape", "poly");
     $this->setCoordinates($coords);
     if ($href !== null) {

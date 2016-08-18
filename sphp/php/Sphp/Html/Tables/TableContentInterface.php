@@ -18,5 +18,5 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  * @filesource
  */
 interface TableContentInterface extends ComponentInterface {
-	
+  
 }

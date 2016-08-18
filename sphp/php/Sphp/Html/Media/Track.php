@@ -27,11 +27,6 @@ use Sphp\Net\URL as URL;
 class Track extends EmptyTag implements MultimediaContentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "track";
-
-  /**
    * Constructs a new instance
    *
    * @param  string|URL $src the URL of the media file
@@ -40,7 +35,7 @@ class Track extends EmptyTag implements MultimediaContentInterface {
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    */
   public function __construct($src = false, $srclang = false) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("track");
     $this
             ->setSrc($src)
             ->setSrcLang($srclang);

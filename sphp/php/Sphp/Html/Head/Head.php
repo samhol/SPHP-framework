@@ -29,11 +29,6 @@ use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
 class Head extends AbstractComponent implements NonVisualContentInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "head";
-
-  /**
    *
    * @var Title 
    */
@@ -70,7 +65,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param string $charset the character set of the HTML document
    */
   public function __construct($title = "", $charset = "UTF-8") {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("head");
     $this->setup($title, $charset);
   }
 

@@ -35,7 +35,7 @@ class Area extends EmptyTag implements AreaInterface {
    * @param string $alt
    */
   public function __construct($shape, array $coords = [], $href = "#", $alt = "") {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("area");
   }
 
   /**

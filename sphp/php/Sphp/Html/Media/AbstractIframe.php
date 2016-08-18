@@ -29,7 +29,7 @@ abstract class AbstractIframe extends AbstractComponent implements IframeInterfa
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("iframe");
   }
 
   /**

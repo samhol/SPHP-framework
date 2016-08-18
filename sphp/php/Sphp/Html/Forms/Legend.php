@@ -25,17 +25,12 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Legend extends ContainerTag {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "legend";
-
-  /**
    * Constructs a new instance
    *
    * @param string $content legend content
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("legend", $content);
   }
 
 }

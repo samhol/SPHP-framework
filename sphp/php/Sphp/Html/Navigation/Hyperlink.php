@@ -32,11 +32,6 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
   use HyperlinkTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "a";
-
-  /**
    * Constructs a new instance
    *
    * **Notes:**
@@ -51,7 +46,7 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("a", $content);
     if (Strings::notEmpty($href)) {
       $this->setHref($href);
     }

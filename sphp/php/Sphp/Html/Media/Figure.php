@@ -24,18 +24,13 @@ use Sphp\Net\URL as URL;
 class Figure extends AbstractContainerComponent implements LazyLoaderInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "figure";
-
-  /**
    * Constructs a new instance
    *
    * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img = null, $caption = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("figure");
     $this->setImg($img)->setCaption($caption);
   }
 

@@ -29,11 +29,6 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
   use InputTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "button";
-
-  /**
    * Constructs a new instance
    *
    * @param  string $type the value of type attribute
@@ -46,7 +41,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($type, $content = null, $name = null, $value = null) {
-    parent::__construct(self::TAG_NAME, $content);
+    parent::__construct("button", $content);
     $this->attrs()->lock("type", $type);
     if (isset($name)) {
       $this->setName($name);

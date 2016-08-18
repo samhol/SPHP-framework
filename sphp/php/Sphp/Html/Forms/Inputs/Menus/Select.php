@@ -48,11 +48,6 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
       TraversableTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "select";
-
-  /**
    * Constructs a new instance
    *
    * <var>$opt</var> parameter:
@@ -70,7 +65,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
    * @param  string|string[] $selectedValues the optionvalues selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("select");
     if ($opt !== null) {
       $this->append($opt);
     }

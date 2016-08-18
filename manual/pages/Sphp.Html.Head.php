@@ -23,11 +23,11 @@ This meta data is data about the HTML document and it is not directly displayed 
 		
 The following PHP classes and interfaces describe HTML meta data components:
 
-* $title - {$w3schools->tag(Title::TAG_NAME)}
-* $base - {$w3schools->tag(Base::TAG_NAME)}
-* $meta - {$w3schools->tag(Meta::TAG_NAME)}
-* $link - {$w3schools->tag(Link::TAG_NAME)}
-* $scriptInterface - {$w3schools->tag(ScriptInterface::TAG_NAME)}
+* $title - {$w3schools->tag("title")}
+* $base - {$w3schools->tag("base")}
+* $meta - {$w3schools->tag("meta")}
+* $link - {$w3schools->tag("link")}
+* $scriptInterface - {$w3schools->tag("script")}
 
 MD
 );

@@ -26,11 +26,6 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 class Map extends AbstractContainerComponent {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "map";
-
-  /**
    * Constructs a new instance
    *
    * @param  string $name the value of the name attribute
@@ -38,7 +33,7 @@ class Map extends AbstractContainerComponent {
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
   public function __construct($name, $areas = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("map");
     $this->attrs()->demand("name");
     if ($name !== null) {
       $this->setName($name);

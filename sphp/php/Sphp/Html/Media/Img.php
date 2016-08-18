@@ -45,11 +45,6 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
       LazyLoaderTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "img";
-
-  /**
    * Constructs a new instance
    *
    * @param  string|URL $src src attribute
@@ -58,7 +53,7 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
    */
   public function __construct($src = "", $alt = "") {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("img");
     $this->attrs()->demand("alt");
     $this->setSrc($src)
             ->setAlt($alt);

@@ -37,11 +37,6 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
       TraversableTrait;
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "optgroup";
-
-  /**
    * Constructs a new instance of the {@link Optgroup} component
    *
    * **Recognized mixed $opt types:**
@@ -57,7 +52,7 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @param mixed|mixed[] $opt the content
    */
   public function __construct($label = "", $opt = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("optgroup");
     $this->setLabel($label);
     if ($opt !== null) {
       $this->append($opt);

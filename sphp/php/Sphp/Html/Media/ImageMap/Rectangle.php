@@ -24,15 +24,15 @@ class Rectangle extends EmptyTag implements AreaInterface {
   /**
    * Constructs a new instance
    * 
-   * @param  int $x1 the top left x-coordinate
-   * @param  int $y1 the top left y-coordinate
-   * @param  int $x2 the bottom right x-coordinate
-   * @param  int $y2 the bottom right y-coordinate
+   * @param int $x1 the top left x-coordinate
+   * @param int $y1 the top left y-coordinate
+   * @param int $x2 the bottom right x-coordinate
+   * @param int $y2 the bottom right y-coordinate
    * @param string|null $href the URL of the link
    * @param string $alt
    */
   public function __construct($x1, $y1, $x2, $y2, $href = null, $alt = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("area");
     $this->attrs()->lock("shape", "rect");
     $this->setCoordinates($x1, $y1, $x2, $y2);
     if ($href !== null) {

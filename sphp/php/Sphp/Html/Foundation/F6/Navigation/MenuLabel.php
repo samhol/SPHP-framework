@@ -33,7 +33,7 @@ class MenuLabel extends AbstractContainerComponent implements MenuItemInterface 
    * @param  mixed $content the content of the component
    */
   public function __construct($content = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("li");
     $this->cssClasses()->lock("menu-text");
     $this->setContent($content);
   }

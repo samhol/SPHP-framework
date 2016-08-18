@@ -35,11 +35,6 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Dt extends ContainerTag implements DlContentInterface {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "dt";
-
-	/**
 	 * Constructs a new instance
 	 * 
 	 * A {@link self} component can contain HTML with paragraphs, line breaks, 
@@ -49,7 +44,7 @@ class Dt extends ContainerTag implements DlContentInterface {
 	 * @param  null|mixed|mixed[] $items list elements
 	 */
 	public function __construct($items = null) {
-		parent::__construct(self::TAG_NAME, $items);
+		parent::__construct("dt", $items);
 	}
 
 }

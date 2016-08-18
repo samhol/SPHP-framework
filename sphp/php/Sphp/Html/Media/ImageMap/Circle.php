@@ -30,7 +30,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param string|null $alt
    */
   public function __construct($x, $y, $radius, $href = null, $alt = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("area");
     $this->attrs()->lock("shape", "circle");
     $this->setCoordinates($x, $y, $radius);
     if ($href !== null) {

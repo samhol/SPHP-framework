@@ -20,11 +20,6 @@ use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
 interface AreaInterface extends HyperlinkInterface {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "area";
-
-  /**
    * Returns the shape of the area
    * 
    * @return string the shape of the area

@@ -30,7 +30,7 @@ class Meta extends EmptyTag implements MetaInterface {
 	 * @param  string[] $attrs an array of attribute name value pairs
 	 */
 	public function __construct(array $attrs = []) {
-		parent::__construct(self::TAG_NAME, $attrs);
+		parent::__construct("meta", $attrs);
 	}
 
 	/**

@@ -39,7 +39,7 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
     if ($menu === null) {
       $menu = new Menu();
     }
-    parent::__construct(self::TAG_NAME, null, $menu);
+    parent::__construct("li", null, $menu);
     $this->setRoot($root);
     $this->cssClasses()->add("is-dropdown-submenu-parent");
   }

@@ -23,24 +23,19 @@ use Sphp\Html\ContainerTag as ContainerTag;
 class Colgroup extends ContainerTag implements TableContentInterface {
 
 	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "colgroup";
-
-	/**
 	 * Constructs a new instance
 	 *
 	 * @param  Col|Col[]|null $cols The ColTag(s) objects that specifies column properties
 	 */
 	public function __construct($cols = null) {
-		parent::__construct(self::TAG_NAME);
+		parent::__construct("colgroup");
 		if (isset($cols)) {
 			$this->append($cols);
 		}
 	}
 
 	/**
-	 * Appends a {@link ColTag} with a specific span and CSS class values to the colgroup
+	 * Appends a {@link Col} with a specific span and CSS class values to the colgroup
 	 *
 	 * @param  string $span specifies the number of columns a col element should span
 	 * @param  string|string[] $cssClasses CSS classes

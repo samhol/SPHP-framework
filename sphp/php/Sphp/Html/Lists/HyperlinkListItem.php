@@ -15,7 +15,8 @@ use Sphp\Net\URL as URL;
  * Implements {@link HyperlinkInterface} properties in a menu item
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-04
+ * @since   2014-12-04
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -37,7 +38,7 @@ class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct(self::TAG_NAME, $href, $content, $target);
+    parent::__construct("li", $href, $content, $target);
   }
   
   /**

@@ -22,11 +22,6 @@ namespace Sphp\Html\Head;
  * @filesource
  */
 interface MetaInterface extends HeadComponentInterface {
-
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "meta";
 	/**
 	 * Checks whether the name attribute exists or not
 	 *

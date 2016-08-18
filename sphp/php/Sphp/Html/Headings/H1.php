@@ -21,18 +21,13 @@ namespace Sphp\Html\Headings;
  */
 class H1 extends AbstractHeading {
 
-	/**
-	 * the tag name of the HTML component
-	 */
-	const TAG_NAME = "h1";
-
-	/**
-	 * Constructs a new instance
-	 * 
-	 * @param  mixed $content optional content of the component
-	 */
-	public function __construct($content = null) {
-		parent::__construct(self::TAG_NAME, $content);
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * @param  mixed $content optional content of the component
+   */
+  public function __construct($content = null) {
+    parent::__construct("h1", $content);
+  }
 
 }

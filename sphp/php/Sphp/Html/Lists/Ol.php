@@ -24,11 +24,6 @@ namespace Sphp\Html\Lists;
 class Ol extends HtmlList {
 
   /**
-   * the tag name of the HTML component
-   */
-  const TAG_NAME = "ol";
-
-  /**
    * Constructs a new instance
    *
    * **Notes:**
@@ -41,7 +36,7 @@ class Ol extends HtmlList {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($items = null) {
-    parent::__construct(self::TAG_NAME);
+    parent::__construct("ol");
     if ($items !== null) {
       foreach(is_array($items)? $items : [$items] as $item) {
        $this->append($item);
