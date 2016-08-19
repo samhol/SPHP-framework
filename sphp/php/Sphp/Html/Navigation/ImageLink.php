@@ -59,15 +59,15 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
     }
   }
 
-	/**
-	 * Sets the path to the image source (The URL of the image file)
-	 * 
-	 * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
-	 * `data-src` attribute instead of the `src` attribute
-	 *
-	 * @param  string|URL $src the path to the image source (The URL of the image file)
-	 * @return self for PHP Method Chaining
-	 */
+  /**
+   * Sets the path to the image source (The URL of the image file)
+   * 
+   * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
+   * `data-src` attribute instead of the `src` attribute
+   *
+   * @param  string|URL $src the path to the image source (The URL of the image file)
+   * @return self for PHP Method Chaining
+   */
   public function setSrc($src) {
     $this->img()->setSrc($src);
     return $this;
@@ -76,7 +76,7 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
   /**
    * 
    * @param type $src
-	 * @return self for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setAlt($src) {
     $this->img()->setAlt($src);
@@ -87,7 +87,7 @@ class ImageLink extends AbstractContainerComponent implements HyperlinkInterface
    * Sets link image component
    * 
    * @param Img $img new link image component
-	 * @return self for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setImg(Img $img) {
     $this->content()->replaceContent($img);

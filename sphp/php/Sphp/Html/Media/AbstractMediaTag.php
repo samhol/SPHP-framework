@@ -17,7 +17,7 @@ use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractMediaTag extends AbstractContainerComponent {
+abstract class AbstractMediaTag extends AbstractContainerComponent implements MediaTagInterface {
 
   /**
    * Constructs a new instance
@@ -50,10 +50,7 @@ abstract class AbstractMediaTag extends AbstractContainerComponent {
   }
 
   /**
-   * Sets (replaces) one of the video sources
-   *
-   * @param  MultimediaContentInterface $src a video sources
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function append(MultimediaContentInterface $src) {
     $this->content()->append($src);
@@ -61,91 +58,60 @@ abstract class AbstractMediaTag extends AbstractContainerComponent {
   }
 
   /**
-   * Sets (replaces) one of the video sources
-   *
-   * @param  string|URL $src the URL of the media file
-   * @param  string $type the media type of the media resource
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
+   * {@inheritdoc}
    */
   public function addSource($src, $type = null) {
     return $this->append(new Source($src, $type));
   }
 
   /**
-   * Returns all the source components associated with the component
-   * 
-   * @return Source all the source components
+   * {@inheritdoc}
    */
   public function getSources() {
     return $this->content()->getComponentsByObjectType(Source::class);
   }
 
   /**
-   * Sets (replaces) one of the video sources
-   *
-   * @param  string $src the URL of the media file
-   * @param  string $srclang the language of the track text data
-   * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
+   * {@inheritdoc}
    */
   public function addTrack($src, $srclang = null) {
     return $this->append(new Track($src, $srclang));
   }
 
   /**
-   * Returns all the track components associated with the component
-   * 
-   * @return Track all the track components
+   * {@inheritdoc}
    */
-  public function getTrack() {
+  public function getTracks() {
     return $this->content()->getComponentsByObjectType(Track::class);
   }
 
   /**
-   * Sets whether the video will automatically start playing as soon as it can 
-   *  do so without stopping
-   *
-   * @param  boolean $autoplay true if the video will automatically start playing, false otherwise
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_video_autoplay.asp autoplay attribute
+   * {@inheritdoc}
    */
   public function autoplay($autoplay = true) {
-    return $this->setAttr("autoplay", $autoplay);
+    return $this->setAttr("autoplay", (bool)$autoplay);
   }
 
   /**
-   * Sets whether the video will start over again, every time it is finished
-   *
-   * @param  boolean $loop true if the video loops, false otherwise
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_video_loop.asp loop attribute
+   * {@inheritdoc}
    */
   public function loop($loop = true) {
-    return $this->setAttr("loop", $loop);
+    return $this->setAttr("loop", (bool)$loop);
   }
 
   /**
-   * Sets whether the audio output of the video should be muted
-   *
-   * @param  boolean $muted true if the audio output should be muted, false otherwise
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_video_muted.asp muted attribute
+   * {@inheritdoc}
    */
   public function mute($muted = true) {
-    return $this->setAttr("muted", $muted);
+    $this->attrs()->set("muted", (bool)$muted);
+    return $this;
   }
 
   /**
-   * Sets whether the video controls should be displayed
-   *
-   * @param  boolean $show true if video controls should be displayed, false otherwise
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_video_controls.asp controls attribute
+   * {@inheritdoc}
    */
   public function showControls($show = true) {
-    return $this->setAttr("controls", $show);
+    return $this->setAttr("controls", (bool)$show);
   }
 
 }

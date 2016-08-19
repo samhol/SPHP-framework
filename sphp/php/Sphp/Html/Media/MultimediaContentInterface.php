@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 /**
- * Interface Models media resources for {@link AbstractMediaTag} components
+ * Interface models media resources for {@link AbstractMediaTag} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-14
@@ -17,19 +17,18 @@ namespace Sphp\Html\Media;
  */
 interface MultimediaContentInterface {
 
-	/**
-	 * Sets the path to the media source
-	 *
-	 * @param  string|URL $src the path to the media source
-	 * @return self for PHP Method Chaining
-	 */
-	public function setSrc($src);
+  /**
+   * Sets the path to the media source
+   *
+   * @param  string|URL $src the path to the media source
+   * @return self for PHP Method Chaining
+   */
+  public function setSrc($src);
 
-	/**
-	 * Returns the URL of the media file
-	 * 
-	 * @return string the URL of the media file
-	 */
-	public function getSrc();
-
+  /**
+   * Returns the URL of the media file
+   * 
+   * @return string the URL of the media file
+   */
+  public function getSrc();
 }

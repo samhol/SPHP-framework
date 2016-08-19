@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 /**
- * Class models a Foundation Flex Video component
+ * Interface defines properties for a videoplayer component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

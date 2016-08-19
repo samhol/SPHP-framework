@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractTag.php (UTF-8)
+ * AbstractVisualTag.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -24,7 +24,7 @@ use SplObjectStorage;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractTag implements TagInterface, AttributeChanger {
+abstract class AbstractVisualTag extends AbstractTag {
 
   use ComponentTrait;
 
