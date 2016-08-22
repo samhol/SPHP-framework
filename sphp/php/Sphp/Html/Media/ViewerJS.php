@@ -22,7 +22,8 @@ namespace Sphp\Html\Media;
 class ViewerJS extends AbstractIframe {
 
   use LazyLoaderTrait;
-  private $src;
+
+  //private $src;
 
   /**
    * Constructs a new instance
@@ -32,7 +33,7 @@ class ViewerJS extends AbstractIframe {
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
   public function __construct($src = null) {
-    $this->src = $src;
+    //$this->src = $src;
     parent::__construct();
     if ($src !== null) {
       $this->setSrc("sphp/viewerjs/#../../$src");
@@ -109,6 +110,7 @@ class ViewerJS extends AbstractIframe {
       return $this->attrs()->get("src");
     }
   }
+
   /**
    * Sets the value of the name attribute
    *
