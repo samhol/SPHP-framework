@@ -60,9 +60,8 @@ MD
 namespace Sphp\Html\Foundation\F6\Media;
 
 $media_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$flexVideo = $api->classLinker(FlexVideo::class);
-//$mediaExample = new FlexVideo("7aPvNA0tPWY", FlexVideo::YOUTUBE);
-$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/FlexVideo.php');
+$flexVideo = $api->classLinker(Flex::class);
+$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Flex.php');
 $manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
 $orbitIntro->append($parsedown->text(<<<MD
 ##Foundation 6 Media components:

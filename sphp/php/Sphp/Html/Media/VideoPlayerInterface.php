@@ -15,7 +15,7 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface VideoPlayerInterface extends SizeableInterface, LazyLoaderInterface {
+interface VideoPlayerInterface extends IframeInterface {
 
   /**
    * Allows or disallows the fullscreen mode of the video 

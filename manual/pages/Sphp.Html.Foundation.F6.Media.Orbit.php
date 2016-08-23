@@ -22,7 +22,7 @@ include EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/OrbitSlide.php';
 echo "</div>";
 SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/OrbitSlide.php');
 
-echo '<div class="wrapper">';
+echo '<div class="wrapper" style="width: ">';
 include EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Orbit-Video.php';
 echo "</div>";
 SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Orbit-Video.php');

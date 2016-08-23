@@ -13,7 +13,7 @@ use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Lists\Ul as Ul;
 use Sphp\Html\Navigation\Nav as Nav;
 use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
-use Sphp\Html\Foundation\F6\Media\FlexVideo as FlexVideo;
+use Sphp\Html\Foundation\F6\Media\Flex as Flex;
 
 /**
  * Class implements a Foundation Orbit containing {@link SlideInterface} components
@@ -246,8 +246,8 @@ class Orbit extends AbstractComponent implements TraversableInterface {
    * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
    * @return self for PHP Method Chaining
    */
-  public function appendVideo($player) {
-    return $this->append(new VideoPlayerSlide($player));
+  public function appendIframe($player) {
+    return $this->append(new FlexSlide($player));
   }
 
   /**
@@ -258,7 +258,7 @@ class Orbit extends AbstractComponent implements TraversableInterface {
    * @return self for PHP Method Chaining
    */
   public function appendYoutubeVideo($videoId, $isPlaylist = false) {
-    return $this->appendVideo(FlexVideo::youtube($videoId, $isPlaylist));
+    return $this->appendIframe(Flex::youtube($videoId, $isPlaylist));
   }
 
   /**
@@ -268,7 +268,7 @@ class Orbit extends AbstractComponent implements TraversableInterface {
    * @return self for PHP Method Chaining
    */
   public function appendVimeoVideo($videoId) {
-    return $this->appendVideo(FlexVideo::vimeo($videoId));
+    return $this->appendIframe(Flex::vimeo($videoId));
   }
 
   /**
@@ -278,7 +278,7 @@ class Orbit extends AbstractComponent implements TraversableInterface {
    * @return self for PHP Method Chaining
    */
   public function appendDailymotionVideo($videoId) {
-    return $this->appendVideo(FlexVideo::dailymotion($videoId));
+    return $this->appendIframe(Flex::dailymotion($videoId));
   }
 
   /**

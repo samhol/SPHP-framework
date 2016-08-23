@@ -111,9 +111,6 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   /**
    * Invokes the given method of {@link self} with the rest of the passed arguments.
    * 
-   * The result is not cast, so the return value may be of type Stringy,
-   * integer, boolean, etc.
-   *
    * @param  string $name the name of the called method
    * @param  mixed $arguments
    * @return mixed

@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Foundation\F6\Grids\Row as Row;
-(new Row())
-        ->appendColumn(FlexMedia::fromSrc("http://193.64.245.223/basket/widget/")->setLazy(), 12, 3)
-        ->appendColumn(FlexMedia::fromSrc("manual/snippets/demodoc.pdf")->setLazy(), 12, 3)
-        ->appendColumn(FlexVideo::youtube("WwrpLgWyAjU")->setLazy(), 12, 3)
-        ->appendColumn(FlexVideo::dailymotion("x2p4pkp")->setLazy(), 12, 3)
-        ->appendColumn(FlexVideo::vimeo("174190102")->setLazy(), 12, 3)
+use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+(new BlockGrid(null, 1, 2, 3, 4))
+        ->append(Flex::fromSrc("http://193.64.245.223/basket/widget/")->setLazy())
+        ->append(Flex::vieverJs("manual/snippets/demodoc.pdf")->setLazy())
+        ->append(Flex::youtube("WwrpLgWyAjU")->setLazy())
+        ->append(Flex::dailymotion("x2p4pkp")->setLazy())
+        ->append(Flex::vimeo("174190102")->setLazy())
         ->printHtml();
 ?>

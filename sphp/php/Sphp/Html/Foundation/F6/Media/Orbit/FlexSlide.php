@@ -8,7 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Foundation\F6\Media\FlexVideo as FlexVideo;
+use Sphp\Html\Foundation\F6\Media\FlexInterface as FlexInterface;
+use Sphp\Html\Foundation\F6\Media\Flex as Flex;
 use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
 
 /**
@@ -21,35 +22,36 @@ use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
+class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterface {
 
   use ActivationTrait;
 
   /**
+   * the flex component instance
    *
-   * @var FlexVideo
+   * @var Flex
    */
-  private $player;
+  private $flex;
 
   /**
    * Constructs a new instance
    *
-   * @param  VideoPlayerInterface $player the image path or the image component
+   * @param FlexInterface $flex the inner component
    */
-  public function __construct($player = null) {
+  public function __construct(FlexInterface $flex = null) {
     parent::__construct("li");
     $this->cssClasses()->lock("orbit-slide");
-    if (!($player instanceof FlexVideo)) {
-      $player = new FlexVideo($player);
+    if (!($flex instanceof Flex)) {
+      $flex = new Flex($flex);
     }
-    $this->player = $player;
+    $this->flex = $flex;
   }
 
   /**
    * {@inheritdoc}
    */
   public function __destruct() {
-    unset($this->player);
+    unset($this->flex);
     parent::__destruct();
   }
 
@@ -57,17 +59,17 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * {@inheritdoc}
    */
   public function __clone() {
-    $this->player = clone $this->player;
+    $this->flex = clone $this->flex;
     parent::__clone();
   }
 
   /**
-   * Returns the video player component
+   * Returns the flex component
    *
-   * @return FlexVideo the image component
+   * @return Flex the flex component
    */
-  public function getPlayer() {
-    return $this->player;
+  public function getFlex() {
+    return $this->flex;
   }
 
   /**
@@ -77,7 +79,7 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * @return self for PHP Method Chaining
    */
   public function setWidescreen($widescreen = true) {
-    $this->getPlayer()->setWidescreen($widescreen);
+    $this->getFlex()->setWidescreen($widescreen);
     return $this;
   }
 
@@ -85,30 +87,15 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * {@inheritdoc}
    */
   public function isLazy() {
-    return $this->getPlayer()->isLazy();
+    return $this->getFlex()->isLazy();
   }
 
   /**
    * {@inheritdoc}
    */
   public function setLazy($lazy = true) {
-    $this->getPlayer()->setLazy($lazy);
+    $this->getFlex()->setLazy($lazy);
     return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function autoplay($autoplay = true) {
-    $this->getPlayer()->autoplay($autoplay);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function loop($loop = true) {
-    return $this->getPlayer()->loopsetParam($loop);
   }
 
   /**
@@ -119,7 +106,7 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * @return self new instance containing a {@link YoutubePlayer} instance
    */
   public static function youtube($videoId, $isPlaylist = false) {
-    return new static(FlexVideo::youtube($videoId, $isPlaylist));
+    return new static(Flex::youtube($videoId, $isPlaylist));
   }
 
   /**
@@ -129,7 +116,7 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * @return self new instance containing a {@link VimeoPlayer} instance
    */
   public static function vimeo($videoId) {
-    return new static(FlexVideo::vimeo($videoId));
+    return new static(Flex::vimeo($videoId));
   }
 
   /**
@@ -139,14 +126,14 @@ class VideoPlayerSlide extends AbstractComponent implements SlideInterface {
    * @return self new instance containing a {@link DailyMotionPlayer} instance
    */
   public static function dailymotion($videoId) {
-    return new static(FlexVideo::dailymotion($videoId));
+    return new static(Flex::dailymotion($videoId));
   }
 
   /**
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->player->getHtml();
+    return $this->flex->getHtml();
   }
 
 }
