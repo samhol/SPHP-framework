@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Abstract Class is the base class for all HTML tag implementations
+ * Interface is the base for all HTML tag implementations
  *
  * {@inheritdoc}
  *

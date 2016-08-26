@@ -291,11 +291,18 @@ left: rem-calc(35)
     }
   }
   .grid-example {
+    .row {
+      border: solid 1px #aaa;
+      margin-bottom: 3px;
+    }
     .column {
       text-align: center;
-      border: solid 1px #aaa;
-      background: #eeeeee;
+      //border: solid 1px #aaa;
+      background: #eee;
       line-height: 2;
+    }
+    .column:nth-child(even) {
+      background-color: #ddd;
     }
   }
 

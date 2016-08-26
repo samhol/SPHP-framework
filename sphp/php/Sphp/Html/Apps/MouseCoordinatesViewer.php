@@ -24,14 +24,10 @@ class MouseCoordinatesViewer extends AbstractJavaScriptComponent {
    */
   public function __construct() {
     parent::__construct("div");
-    $this->cssClasses()->lock("sphp-nfo-icon sphp-MouseCoordinatesViewer");
-    $this->identify("sphp-MouseCoordinatesViewer");
-    $this->scriptsContainer()->appendCode('$("#' . $this->getId() . '").sphMouseCoordinatesViewer();');
+    $this->cssClasses()->lock("sphp-MouseCoordinatesViewer");
     $this->content()->append('<span class="fi-icon fi-paw font-size-36"></span>'
-            . '<div class="coords">'
-            . '<div><span>x:</span><span class="x">0</span><span>px</span></div>'
-            . '<div><span>y:</span><span class="y">0</span><span>px</span></div>'
-            . '</div>');
+            . '<div>x:<span class="x">0</span>px</div>'
+            . '<div>y:<span class="y">0</span>px</div>');
   }
 
 }

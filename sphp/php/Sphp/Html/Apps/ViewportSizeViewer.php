@@ -24,7 +24,8 @@ class ViewportSizeViewer extends AbstractSimpleContainerTag {
    */
   public function __construct() {
     parent::__construct("span");
-    $this->cssClasses()->lock("sphp-viewport-size-viewer");
+    $this->cssClasses()
+            ->lock("sphp-viewport-size-viewer");
   }
 
 }

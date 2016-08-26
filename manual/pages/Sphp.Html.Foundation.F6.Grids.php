@@ -23,10 +23,21 @@ $load("Sphp.Html.Foundation.F6.Grids.GridInterface.php");
 $blockGrid = $api->classLinker(BlockGrid::class);
 echo $parsedown->text(<<<MD
 ##The $blockGrid component
-		
-A $blockGrid component splits evenly its contents within the grid. This component 
-is mobile-first. Code for small screens first, and larger devices will inherit 
-those styles. Customize for larger screens as necessary.        
+	
+
+A $blockGrid component splits evenly its contents within the grid.
+
+**Important!**
+
+A $blockGrid component is `mobile-first`. Code for small screens first, and larger 
+devices will inherit those styles. Customize for larger screens as necessary.
+
+If you use the small block grid only, the grid will keep its spacing and 
+configuration no matter the screen size. If you use large block grid only, the 
+list items will stack on top of each other for small devices. If you use both of 
+those classes combined, you can control the configuration and layout separately 
+for each breakpoint.
+        
 MD
 );
 $exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/BlockGrid.php');

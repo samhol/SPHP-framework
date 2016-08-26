@@ -10,7 +10,7 @@ namespace Sphp\Validation;
 use Sphp\Core\Types\Strings as Strings;
 
 /**
- * A trait implementing the properties of the {@link OptionalValidatorInterface}
+ * Trait implements the properties of the {@link OptionalValidatorInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-08

@@ -9,6 +9,6 @@ $buttons[] = new HyperlinkButton("http://www.ask.com/", "ask.com", "engine");
 
 $buttonGroup = (new ButtonGroup($buttons))
         ->appendLink("https://www.yahoo.com/", "Yahoo!", "engine")
-        ->stackFor("all");
+        ->setColor("success");
 $buttonGroup->printHtml();
 ?>

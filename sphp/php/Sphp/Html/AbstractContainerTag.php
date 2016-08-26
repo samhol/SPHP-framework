@@ -32,9 +32,10 @@ use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface {
+class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface, ContentParserInterface {
 
   use ArrayAccessExtensionTrait,
+      ContentParsingTrait,
       TraversableTrait;
 
   /**
@@ -68,7 +69,6 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * **HOWEVER:** `$content` is bound by the
    * properties and purpose of the actual HTML structure the component
    * represents.
-   *
    *
    * @param  mixed|mixed[] $content added content
    * @return self for PHP Method Chaining

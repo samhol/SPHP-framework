@@ -12,6 +12,8 @@ use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\WrappingContainer as WrappingContainer;
 use Sphp\Html\Foundation\F6\Core\Screen as Screen;
+use Sphp\Html\ContentParserInterface as ContentParserInterface;
+use Sphp\Html\ContentParsingTrait as ContentParsingTrait;
 
 /**
  * Class makes it possible to evenly split contents of a list within the grid.
@@ -23,9 +25,10 @@ use Sphp\Html\Foundation\F6\Core\Screen as Screen;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGrid extends AbstractContainerComponent implements TraversableInterface {
+class BlockGrid extends AbstractContainerComponent implements ContentParserInterface, TraversableInterface {
 
-  use TraversableTrait;
+  use TraversableTrait,
+      ContentParsingTrait;
 
   /**
    * The maximum block grid value (int 12)
@@ -52,7 +55,7 @@ class BlockGrid extends AbstractContainerComponent implements TraversableInterfa
    * If you use both of those classes combined, you can control the
    * configuration and layout separately for each breakpoint.
    *
-   * @param  mixed $items list elements
+   * @param  mixed|mixed[] $items list elements
    * @param  int $s column width for small screens (0-8)
    * @param  int|boolean $m column width for medium screens (0-8) or false for inheritance
    * @param  int|boolean $l column width for large screens (0-8) or false for inheritance

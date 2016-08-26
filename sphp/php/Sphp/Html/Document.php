@@ -163,7 +163,7 @@ class Document {
       "tfoot" => Tables\Tfoot::class,
       "th" => Tables\Th::class,
       "thead" => Tables\Thead::class,
-      "time" => ContainerTag::class,
+      "time" => TimeTag::class,
       "title" => Head\Title::class,
       "tr" => Tables\Tr::class,
       "track" => Media\Track::class,

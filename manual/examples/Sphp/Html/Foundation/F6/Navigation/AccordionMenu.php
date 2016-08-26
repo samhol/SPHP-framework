@@ -2,15 +2,14 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-$accordionMenu = (new AccordionMenu("Navigator"))
-        ->appendLink("http://www.google.com/", "Google", "_blank")
-        ->appendLink("http://www.bing.com/", "Bing", "_blank");
+$accordionMenu = (new AccordionMenu("Navigator"));
 
 $accordionMenu->appendSubMenu()
-        ->setRoot("More Google")
-        ->appendLink("http://www.google.com/", "Google", "_blank")
-        ->appendLink("http://www.google.com/", "Google", "_blank")
-        ->appendLink("http://www.google.com/", "Google", "_blank")
-        ->appendLink("http://www.google.com/", "Google", "_blank");
-$accordionMenu->printHtml();
+        ->setRoot("Google services")
+        ->nested()
+        ->appendLink("https://www.google.com/", "Google search", "_blank")
+        ->appendLink("https://maps.google.com/", "Google maps", "_blank")
+        ->appendLink("https://mail.google.com/", "Google mail", "_blank");
+$accordionMenu
+        ->appendLink("http://www.bing.com/", "Bing", "_blank")->printHtml();
 

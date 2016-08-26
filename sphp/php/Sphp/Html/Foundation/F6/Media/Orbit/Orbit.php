@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\ContentParserInterface as ContentParserInterface;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Lists\Ul as Ul;
@@ -25,9 +26,9 @@ use Sphp\Html\Foundation\F6\Media\Flex as Flex;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Orbit extends AbstractComponent implements TraversableInterface {
+class Orbit extends AbstractComponent implements ContentParserInterface, TraversableInterface {
 
-  use TraversableTrait;
+  use TraversableTrait, \Sphp\Html\ContentParsingTrait;
 
   /**
    *

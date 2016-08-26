@@ -93,7 +93,7 @@ class LocalFile {
    * @return string the result of the script execution
    */
   public function parseMarkdown() {
-    return (new \ParsedownExtra())->text($this->executeToString());
+    return (new \ParsedownExtraPlugin())->text($this->executeToString());
   }
 
   /**

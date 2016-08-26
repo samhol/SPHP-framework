@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * A trait implementing functionality of the {@link VisualComponentInterface}
+ * Trait implements functionality of the {@link VisualComponentInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06

@@ -13,7 +13,7 @@ use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;
 
 /**
- * A trait implementing functionality of the {@link ComponentInterface}
+ * Trait implements functionality of the {@link ComponentInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06

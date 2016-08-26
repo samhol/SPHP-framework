@@ -30,13 +30,10 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
    * Constructs a new instance
    *
    * @param  mixed $content optional content of the component
-   * @param  string $class optional class name(s) associated with the component
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($content = null, $class = null) {
+  public function __construct($content = null) {
     parent::__construct("p", $content);
-    $this->addCssClass($class);
   }
 
 }

@@ -180,7 +180,6 @@ $p[] = ["Programming",
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\Document as Document;
-use Sphp\Core\Types\Strings as Strings;
 
 $generateTagTable = function(array $v) use ($api, $w3schools) {
   $table = (new Table())
@@ -197,7 +196,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $ref = new \ReflectionClass($tag);
       //$linkText = htmlspecialchars("$tag");
       $linkText = "&lt;" . $tag->getTagName();
-      if (Strings::contains("input:", $data[0]) || Strings::contains("button:", $data[0])) {
+      if ($tag->attrExists("type")) {
         $linkText .= ' type="' . $tag->getAttr("type") . '"';
       }
       $linkText .= "&gt;";

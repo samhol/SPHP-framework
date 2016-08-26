@@ -3,107 +3,25 @@
 namespace Sphp\Html\Foundation\F6;
 
 use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
+use Sphp\Html\Foundation\F6\Media\Orbit\Slide as Slide;
+use Sphp\Core\PathFinder as PathFinder;
 
-$ns = $api->namespaceLink(__NAMESPACE__, false);
-$toolsLink = $api->namespaceLink(__NAMESPACE__, false);
-$btn = $api->classLinker(Buttons\ButtonInterface::class);
+$pathFinder = new PathFinder();
 $orbitIntro = new Orbit();
 $orbitIntro->addCssClass("foundation-intro");
-
-namespace Sphp\Html\Foundation\F6\Grids;
-
-$gridExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php');
-$grids_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$grid = $api->classLinker(GridInterface::class);
-$row = $api->classLinker(Row::class);
-$column = $api->classLinker(Column::class);
-$blockGrid = $api->classLinker(BlockGrid::class);
-$orbitIntro->append($parsedown->text(<<<MD
-##Foundation 6 Grid components:
-$grids_ns
-This namespace includes for example Foundation based multi-device nestable 12-column $grid implementation in object oriented PHP and a
-Foundation $blockGrid to evenly split contents of a list within the grid...
-        
-###$grid example:
-MD
-)
- . '<div class="example-area grid-example">' . $gridExample . "</div>");
-
-namespace Sphp\Html\Foundation\F6\Navigation;
-
-$btn_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-
-$orbitIntro->append($parsedown->text(<<<MD
-##Foundation 6 Buttons and Button containers
-$btn_ns
-This namespace includes Foundation 6 styled buttons for many purposes. Because buttons 
-are a core interactive element, it's important to use the right one for each occasion.
-A basic Foundation styled button can be based on almost any HTML tag that has one CSS-class.
-MD
-));
-
-namespace Sphp\Html\Foundation\F6\Navigation;
-
-$navi_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$orbitIntro->append($parsedown->text(<<<MD
-##Foundation 6 Navigation components:
-        
-$navi_ns
-
-This namespace includes many Foundation 6 navigation patterns implemented in object oriented PHP.
-These navigation components can be combined to form more complex, robust responsive navigation 
-solutions. For example this namespace contains a complex top bar that supports dropdown navigation, 
-sidebars and many other menu structures.
-MD
-));
-
-namespace Sphp\Html\Foundation\F6\Media;
-
-$media_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$flexVideo = $api->classLinker(Flex::class);
-$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Flex.php');
-$manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
-$orbitIntro->append($parsedown->text(<<<MD
-##Foundation 6 Media components:
-
-$media_ns
-        
-$manLink
-        
-This namespace contains components for handling different media types
-using the tools provided by Foundation framework.
-
-###$flexVideo example:
-        
-$mediaExample
-MD
-));
-
-namespace Sphp\Html\Foundation\F6\Forms;
-
-$forms_ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-
-$orbitIntro->append($parsedown->text(<<<MD
-
-
-##Foundation 6 Form components:
-
-$forms_ns
-        
-This namespace includes Foundation front-end framework based forms layouts and form components implemented in PHP.
-Visual presentation of Foundation Forms is built with the Grid. These forms 
-extend basic SPHP forms.
-
-MD
-));
-
-$orbitIntro->append($parsedown->text(<<<MD
-##Foundation 6 Typography:
-
-Framework's typography is based on a golden ratio modular scale that creates relationships between the elements.
-Typography is easily updated using Scss.
-MD
-));
-
+$gridSlide = new Slide();
+$gridSlide->appendMdFile($pathFinder->local("manual/pages/Foundation-intro/Grids.php"));
+$orbitIntro->append($gridSlide);
+$navSlide = new Slide();
+$navSlide->appendMdFile($pathFinder->local("manual/pages/Foundation-intro/Navigation.php"));
+$orbitIntro->append($navSlide);
+$buttonSlide = new Slide();
+$buttonSlide->appendMdFile($pathFinder->local("manual/pages/Foundation-intro/Buttons.php"));
+$orbitIntro->append($buttonSlide);
+$mediaSlide = new Slide();
+$mediaSlide->appendMdFile($pathFinder->local("manual/pages/Foundation-intro/Media.php"));
+$orbitIntro->append($mediaSlide);
+$formsSlide = new Slide();
+$formsSlide->appendMdFile($pathFinder->local("manual/pages/Foundation-intro/Forms.php"));
+$orbitIntro->append($formsSlide);
 $orbitIntro->printHtml();
-?>

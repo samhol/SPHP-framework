@@ -10,6 +10,7 @@ namespace Sphp\Html;
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
 use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
 use Sphp\Core\Types\Arrays as Arrays;
+use ParsedownExtraPlugin;
 
 /**
  * Clacc implements a container for HTML components and other textual content
@@ -21,9 +22,10 @@ use Sphp\Core\Types\Arrays as Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Container implements ContainerInterface {
+class Container implements ContainerInterface, ContentParserInterface {
 
   use ContentTrait,
+      ContentParsingTrait,
       ArrayAccessExtensionTrait,
       TraversableTrait;
 
@@ -76,6 +78,29 @@ class Container implements ContainerInterface {
    */
   public function append($content) {
     $this->components->append($content);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $path
+   * @return self for PHP Method Chaining
+   */
+  public function appendPhpFile($path) {
+    $mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString($path);
+    $this->append($mediaExample);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $path
+   * @return self for PHP Method Chaining
+   */
+  public function appendMdFile($path) {
+    $mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString($path);
+    $p = new ParsedownExtraPlugin();
+    $this->append($p->text($mediaExample));
     return $this;
   }
 

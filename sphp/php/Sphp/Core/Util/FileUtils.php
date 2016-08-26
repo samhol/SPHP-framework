@@ -20,6 +20,20 @@ use InvalidArgumentException;
 class FileUtils {
 
   /**
+   * Rturns the entire file as a string
+   *
+   * @param  string $path the path to the file
+   * @return string the result of the script execution
+   * @throws InvalidArgumentException if the $path points to no actual file
+   */
+  public static function fileToString($path) {
+    if (!is_file($path)) {
+      throw new InvalidArgumentException("the path '$path' contains no file");
+    }
+    return file_get_contents($path, false);
+  }
+
+  /**
    * Executes a PHP script and returns the result as a string
    *
    * @param  string $page the path to the executable PHP script
@@ -29,7 +43,7 @@ class FileUtils {
     try {
       ob_start();
       if (!is_file($page)) {
-        throw new \InvalidArgumentException("the path given contains no executable PHP script");
+        throw new InvalidArgumentException("the path given contains no executable PHP script");
       }
       include($page);
       $content = ob_get_contents();
@@ -130,10 +144,6 @@ class FileUtils {
     curl_setopt($ch, CURLOPT_NOBODY, 1);
     curl_exec($ch);
     return curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-  }
-
-  public static function fileToString($url) {
-    return file_get_contents($url, false, $context);
   }
 
   /**
