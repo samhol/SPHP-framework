@@ -3,6 +3,7 @@
 @import "../vendor/GeSHi";
 .sphp-syntax-highlighter {
   position: relative;
+  border: solid 1px #aaa;
   .syntax {
     font-family: "Source Code Pro", monospace;
   }
@@ -14,47 +15,18 @@
     z-index: 100;
     button {
       margin: rem-calc(2);
+      font-size: rem-calc(13); 
+      @include border-radius(3px);
+      background-color: #aaa;
+      line-height: 1.3;
+      padding: rem-calc(5 10 5 10); /* top right bottom left */
     }
   }
-  //div.head {
-    //font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
-    //font-size: rem-calc(16);
-    //line-height: rem-calc(20);
-    //font-weight: bold;
-    //text-align: left;
-    //padding: rem-calc(5 0 5 30); /* top right bottom left */
-    //background-color: #eaeaea;
-    //border-bottom: solid 1px #ccc;
-   // button {
-      /*font-size: rem-calc(12);
-      line-height: rem-calc(16);
-      margin: rem-calc(0 7 0 7); 
-      padding: rem-calc(1 1 1 1);
-      float: right;
-      height: rem-calc(20);
-      width: rem-calc(20);
-      display: inline;
-      border: solid 1px #aaa;
-      background-color: #eee;
-      @include border-radius(2px);
-      background-repeat: no-repeat;
-      background-position: center center;*/
-  //    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA4UlEQVQ4T2NkwA3OAqUuo0lLAvnHgLgRJs6Ix4B5QLkkNPkKIJ8TiL8BcSdIDmRAARZD/gHFjgIxyBXIAGTABiB2BGI+kCEgAzYBcR2awkwgXwaII4H4E5IcyICLQHwfKvcPZMACIE5AM2ACkL8GiIuAOB6IP0PlLYC0A5JaR3wGdAAVCgBxC9SCL2iWgLgL8BkgCFTwHWoID5D2IcUAFqBiEIaBmVCvoJuB0wUYCrGEE14vDFMDSoH+kkbzWxOuaMQWBhOBgvboEqQYkIAlHYAz0x0gPoJNEklMF8g2xqYGAAmlNMt3+SJmAAAAAElFTkSuQmCC');
-  //  };
-  //};
-  .syntax {	
-    font-family: "Source Code Pro", monospace !important;
-    //margin: rem-calc(0); /* top right bottom left */
-    //padding: rem-calc(0); /* top right bottom left */
-    //border-top: solid 1px #bbb;
-    //@include border-radius(2px);
-  };
-  div.foot {
+  .foot {
     font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;	
     text-align: right;
     padding: rem-calc(5 10 5 10); /* top right bottom left */
     background: #eee;
     border-top: solid 1px #bbb;
-    //border-bottom: solid 1px #bbb;
   };
 }

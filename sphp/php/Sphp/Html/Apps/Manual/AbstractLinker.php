@@ -26,6 +26,13 @@ abstract class AbstractLinker implements LinkerInterface {
    * @var string
    */
   private $apiRoot;
+  
+  /**
+   * the default target of the hyperlinks generated
+   *
+   * @var string
+   */
+  private $defaultTarget;
 
   /**
    * the default attributes of the hyperlinks generated

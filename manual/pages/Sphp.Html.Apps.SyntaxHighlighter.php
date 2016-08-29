@@ -4,8 +4,7 @@ namespace Sphp\Html\Apps;
 
 $syntaxHighligher = $api->classLinker(SyntaxHighlighter::class);
 $syntax1 = (new SyntaxHighlighter())
-        ->loadFromFile("http://sphp.samiholck.com/HtmlWiki.html")
-        ->setCssClass("panel");
+        ->loadFromFile("manual/snippets/example1.js");
 echo $parsedown->text(<<<MD
 
 ##The $syntaxHighligher component
@@ -20,5 +19,3 @@ eahge eaer ea waer garar gewa g
 </div><div class="column small-12 medium-7">$syntax1</div></div>
 MD
 );
-
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Apps/SyntaxHighlighter.php", 2);

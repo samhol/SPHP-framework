@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Head\HeadComponentInterface as MetaDataInterface;
+use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 
 /**
  * Class models an HTML &lt;noscript&gt; tag
@@ -21,7 +21,7 @@ use Sphp\Html\Head\HeadComponentInterface as MetaDataInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Noscript extends ContainerTag implements MetaDataInterface {
+class Noscript extends ContainerTag implements HeadComponentInterface {
 
   /**
    * Constructs a new instance

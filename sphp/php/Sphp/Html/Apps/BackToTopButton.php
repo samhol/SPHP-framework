@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\Media\Img as Img;
 
 /**
@@ -18,7 +18,7 @@ use Sphp\Html\Media\Img as Img;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BackToTopButton extends AbstractContainerComponent {
+class BackToTopButton extends AbstractComponent {
 
   /**
    * Constructs a new instance
@@ -26,9 +26,14 @@ class BackToTopButton extends AbstractContainerComponent {
   public function __construct() {
     parent::__construct("div");
     $this->cssClasses()->lock("sphp-back-to-top-button");
-    $this->setTitle("Back to top")
-            ->content()
-            ->append(new Img("sphp/pics/back-to-top.png", "Back to top"));
+    $this->setTitle("Back to top");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return (new Img("sphp/pics/back-to-top.png", "Back to top"))->getHtml();
   }
 
 }

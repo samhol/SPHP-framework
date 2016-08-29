@@ -60,6 +60,21 @@ class W3schools extends AbstractLinker {
   }
 
   /**
+   * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * 
+   * @param  string $tagname the HTML5 tag name
+   * @param  string $linkText optional content of the link
+   * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   */
+  public function attr($attrName, $linkText = null) {
+    $link = "tags/att_$attrName.asp";
+    if (Strings::isEmpty($linkText)) {
+      $linkText = "$attrName Attribute";
+    }
+    return $this->hyperlink($link, $linkText, "Link to w3schools.com documentation");
+  }
+
+  /**
    * 
    * @return self new instance of linker
    */

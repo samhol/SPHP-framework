@@ -14,11 +14,12 @@ $unit: rem-calc(4);
       }
     }
   }
-
-
   .syntax-pane .accordion-content {
     overflow: hidden;
     padding: 0;
+    .sphp-syntax-highlighter {
+      border: none;
+    }
   }
   border: none;
   .is-active .accordion-title {
@@ -48,13 +49,6 @@ $unit: rem-calc(4);
       right: rem-calc(8);
       position: absolute;
     };
-    .button-area {
-      button {
-        font-size: rem-calc(13); 
-        @include border-radius(3px);
-        background-color: #aaa;
-      }
-    }
   }
   .accordion-item {
     &:not(:first-child) {
