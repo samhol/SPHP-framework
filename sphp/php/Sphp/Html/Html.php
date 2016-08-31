@@ -23,31 +23,45 @@ use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Html extends AbstractContainerComponent implements TraversableInterface {
+class Html extends AbstractComponent implements TraversableInterface, ContentParserInterface {
 
   use TraversableTrait;
 
   /**
-   * Constructs a new instance of the {@link self] component
    *
-   * **Common <var>$charset</var> values:**
+   * @var Head 
+   */
+  private $head;
+
+  /**
    *
-   * * UTF-8  - Character encoding for Unicode
-   * * ISO-8859-1 - Character encoding for the Latin alphabet
+   * @var Body 
+   */
+  private $body;
+
+  /**
+   * Constructs a new instance
+   *
+   * **Common `$charset` values:**
+   *
+   * * `UTF-8`  - Character encoding for Unicode
+   * * `ISO-8859-1` - Character encoding for the Latin alphabet
    *
    * In theory, any character encoding can be used, but no browser understands
    * all of them. The more widely a character encoding is used, the better the
    * chance that a browser will understand it.
    *
-   * @param string $title optional title of the document
-   * @param string $charset optional character encoding of the document (defaults to: "UTF-8")
-   * @param mixed|mixed[] $content optional body content
+   * @param string|null $title optional title of the document
+   * @param string|null $charset optional character encoding of the document (defaults to: "UTF-8")
+   * @param string|null $lang optional body content
    */
-  public function __construct($title = null, $charset = "UTF-8", $content = null) {
+  public function __construct($title = null, $charset = "UTF-8", $lang = null) {
     parent::__construct("html");
-    $this->content()
-            ->set("head", new Head($title, $charset))
-            ->set("body", new Body($content));
+    $this->head = new Head($title, $charset);
+    $this->body = new Body();
+    if ($lang !== null) {
+      $this->setLanguage($lang);
+    }
   }
 
   /**
@@ -56,7 +70,7 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
    * @return Head the head tag object
    */
   public function head() {
-    return $this->content()->get("head");
+    return $this->head;
   }
 
   /**
@@ -65,7 +79,22 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
    * @return Body the body component
    */
   public function body() {
-    return $this->content()->get("body");
+    return $this->body;
+  }
+
+  /**
+   * Sets the language of the document 
+   * 
+   * **NOTE:** Sets the value of the `lang` attribute
+   *
+   * Specifies the MIME type of the script
+   *
+   * @param  string $language the language of the document 
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
+   */
+  public function setLanguage($language) {
+    return $this->attrs()->set("lang", $language);
   }
 
   /**
@@ -74,19 +103,19 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
    * @param  string|Title $title the title of the html page
    * @return self for PHP Method Chaining
    */
-  public function setTitle($title) {
-    $this->head()->setTitle($title);
+  public function setDocumentTitle($title) {
+    $this->head->setDocumentTitle($title);
     return $this;
   }
-  
+
   /**
    * Sets up the SPHP framework related Javascript and CSS files
    *
    * @return self for PHP Method Chaining
    */
   public function enableSPHP() {
-    $this->head()->enableSPHP();
-    $this->body()->enableSPHP();
+    $this->head->enableSPHP();
+    $this->body->enableSPHP();
     return $this;
   }
 
@@ -97,7 +126,7 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
    * @return ScriptsContainer the script container
    */
   public function scripts(ScriptsContainer $c = null) {
-    return $this->body()->scripts($c);
+    return $this->body->scripts($c);
   }
 
   /**
@@ -124,22 +153,56 @@ class Html extends AbstractContainerComponent implements TraversableInterface {
   }
 
   /**
-   * Create a new iterator to iterate through inserted elements in the container
-   *
-   * @return \Iterator iterator
+   * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->body->getIterator();
   }
 
   /**
-   * Counts the number of elements in the container
-   *
-   * @return int the number of elements in the container
-   * @link   http://php.net/manual/en/class.countable.php Countable
+   * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->body->count();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->head . $this->body;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function appendMd($md) {
+    $this->body->appendMd($md);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function appendMdFile($path) {
+    $this->body->appendMdFile($path);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function appendPhpFile($path) {
+    $this->body->appendPhpFile($path);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function appendRawFile($path) {
+    $this->body->appendRawFile($path);
+    return $this;
   }
 
 }

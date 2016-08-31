@@ -19,7 +19,7 @@ foreach ($conf->get("PAGE_TITLES") as $linkArr) {
     $title .= ": " . $linkArr["text"];
   }
 }
-$html = Document::html("manual")->setTitle($title);
+$html = Document::html("manual")->setDocumentTitle($title);
 $html->enableSPHP();
 $html->head()
         ->useFontAwesome()

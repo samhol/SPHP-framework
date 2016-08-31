@@ -22,13 +22,6 @@ use Sphp\Html\Foundation\F6\Navigation\BreadCrumb as BreadCrumb;
 class ApiGenClassLinker extends AbstractClassLinker {
 
   /**
-   * {@inheritdoc}
-   */
-  public function __construct($root, $class, $attrs = ["target" => "apigen", "class" => "api apigen"]) {
-    parent::__construct($root, $class, $attrs);
-  }
-
-  /**
    * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
    * @param  string $namespace

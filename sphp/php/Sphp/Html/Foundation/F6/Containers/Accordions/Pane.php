@@ -107,12 +107,4 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
     return $this;
   }
 
-  /**
-   * @inheritdoc
-   */
-  public function ajaxReplace($url) {
-    $this->content()->ajaxReplace($url);
-    return $this;
-  }
-
 }

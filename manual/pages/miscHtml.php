@@ -17,7 +17,7 @@ $orbitSlider[] = new ImgTag("photos/2007/ETK-risteily/2007-05-26-103130_006.jpg"
 //echo $orbitSlider->setStyle("width", "800px");
 //echo new Div($orbitSlider->generateSlideLinks("Slide"));
 (new Img("sph/image/captha.php?length=5", "Captha image"))
-		->setTitle("Captha image")
+		->setDocumentTitle("Captha image")
 		->setStyle("border", "solid 1px #000")->setStyle("padding", "1px")
 		->printHtml();
 $photoAlbum = new PhotoAlbum(["photos"]);

@@ -9,6 +9,8 @@ namespace Sphp\Html\Foundation\F6\Containers;
 
 use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
+use Sphp\Html\ContentParserInterface as ContentParserInterface;
+
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
@@ -82,14 +84,6 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
    */
   public function ajaxPrepend($url) {
     $this->content()->ajaxPrepend($url);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function ajaxReplace($url) {
-    $this->content()->ajaxReplace($url);
     return $this;
   }
 

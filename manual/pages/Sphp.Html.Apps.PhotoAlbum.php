@@ -2,11 +2,13 @@
 
 namespace Sphp\Html\Apps;
 
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+
 $ns = $api->namespaceLink(__NAMESPACE__);
 $photoAlbum = $api->classLinker(PhotoAlbum::class);
 echo $parsedown->text(<<<MD
 ##The $photoAlbum component
 MD
 );
-$syntax = (new SyntaxHighlightingAccordion())->loadFromFile(EXAMPLE_DIR . "Sphp/Html/Apps/PhotoAlbum.php");
+$syntax = (new CodeExampleAccordion())->loadFromFile(EXAMPLE_DIR . "Sphp/Html/Apps/PhotoAlbum.php");
 include_once(EXAMPLE_DIR . "Sphp/Html/Apps/PhotoAlbum.php");

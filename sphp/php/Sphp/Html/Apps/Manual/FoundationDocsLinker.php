@@ -50,7 +50,7 @@ class FoundationDocsLinker extends AbstractLinker {
    * @param scalar[] $attrs the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct($attrs = ["target" => "foundation.docs", "class" => "external foundation-docs-link api"]) {
+  public function __construct($attrs = "_blank") {
     parent::__construct("http://foundation.zurb.com/sites/docs/", $attrs);
   }
 

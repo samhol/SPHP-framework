@@ -63,10 +63,10 @@ class ContentCopyController implements AttributeChangeObserver, ContentInterface
    */
   public function setCopyTarget($target) {
     if ($target !== $this->target) {
-      if ($this->target instanceof ComponentInterface) {     
+      if ($this->target instanceof ComponentInterface) {
         $this->target->detachAttributeChangeObserver($this);
       }
-      if ($target instanceof ComponentInterface) {     
+      if ($target instanceof ComponentInterface) {
         $target->identify();
         $id = $target->getId();
         $target->attachAttributeChangeObserver($this);

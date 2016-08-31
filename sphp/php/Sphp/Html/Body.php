@@ -25,7 +25,9 @@ use Sphp\Html\Programming\SphpScriptsLoader as SphpScriptsLoader;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Body extends ContainerTag {
+class Body extends ContainerTag implements ContentParserInterface {
+
+  use ContentParsingTrait;
 
   /**
    *
@@ -64,7 +66,6 @@ class Body extends ContainerTag {
    */
   public function enableSPHP() {
     $sphpScripts = new SphpScriptsLoader();
-    $sphpScripts->appendSPHP();
     $sphpScripts->appendSPHP();
     $this->scripts($sphpScripts);
     return $this;

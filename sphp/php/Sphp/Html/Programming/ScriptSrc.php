@@ -12,10 +12,9 @@ use Sphp\Html\AbstractTag as AbstractTag;
 /**
  * Class models an HTML &lt;script&gt; tag having script code as its content
  *
- * 
  * **IMPORTANT:** 
  * 
- * The {@link self} component points to an external script file through the src attribute.
+ * This component points to an external script file through the `src` attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17

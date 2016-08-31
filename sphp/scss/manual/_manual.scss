@@ -210,38 +210,31 @@ left: rem-calc(35)
     &:hover {
       color: #8c1111;
     }
-    &.box, &.apigen, &.bordered {
+    &.phpman, &.apigen {
       border: solid 1px #bbb;
       @include border-radius(2px);
       text-decoration: none;
+      font-weight: normal;
     }
     &.apigen {
-      color: #002036;
-      border-color: #bbb;
-      background-color: #fafafa;
-      text-decoration: none;
-    }
-    &.apigen:hover {
-      color: #8c1111;
-      border-color: #c66;
-      background-color: rgba(204, 224, 255, 0.3); 
+      color: #006aeb;
+      border-color: rgba(51, 153, 255, .3);
+      background-color: #rgba(210, 210, 210, .5); 
+      &:hover {
+        color: #8c1111;
+        border-color: rgba(51, 153, 255, .6);
+        background-color: #rgba(210, 210, 210, 1); 
+      }
     }
     &.phpman {
-      color: #002036;
+      color: #369;
       border-color: #bbb;
-    }
-    &.phpman:hover {
-      color: #8c1111;
-    }
-    &.box.phpman {
-      font-weight: normal;
-      border-color: #bbb;
-      background-color: #fafafa;
-      text-decoration: none !important;
-    }
-    &.box.phpman:hover {
-      border-color: #c66;
-      background-color: rgba(204, 224, 255, 0.3); 
+      background-color: #F2F2F2;
+      &:hover {
+        color: #8c1111;
+        border-color: #c66;
+        background-color: rgba(204, 224, 255, 0.3); 
+      }
     }
   }
   .tech {

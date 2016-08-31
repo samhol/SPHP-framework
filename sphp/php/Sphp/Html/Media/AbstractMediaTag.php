@@ -34,10 +34,12 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
         $this->addSource($source);
       }
     };
-    if (!is_array($sources)) {
-      $sources = [$sources];
+    if ($sources !== null) {
+      if (!is_array($sources)) {
+        $sources = [$sources];
+      }
+      array_map($adder, $sources);
     }
-    array_map($adder, $sources);
     $this->showControls(true);
   }
 
@@ -89,21 +91,21 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
    * {@inheritdoc}
    */
   public function autoplay($autoplay = true) {
-    return $this->setAttr("autoplay", (bool)$autoplay);
+    return $this->setAttr("autoplay", (bool) $autoplay);
   }
 
   /**
    * {@inheritdoc}
    */
   public function loop($loop = true) {
-    return $this->setAttr("loop", (bool)$loop);
+    return $this->setAttr("loop", (bool) $loop);
   }
 
   /**
    * {@inheritdoc}
    */
   public function mute($muted = true) {
-    $this->attrs()->set("muted", (bool)$muted);
+    $this->attrs()->set("muted", (bool) $muted);
     return $this;
   }
 
@@ -111,7 +113,7 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
    * {@inheritdoc}
    */
   public function showControls($show = true) {
-    return $this->setAttr("controls", (bool)$show);
+    return $this->setAttr("controls", (bool) $show);
   }
 
 }

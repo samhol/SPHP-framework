@@ -68,9 +68,9 @@ class Track extends EmptyTag implements MultimediaContentInterface {
   }
 
   /**
-   * Sets the path to the image source (The URL of the image file)
+   * Sets the path to the track source (The URL of the track file)
    *
-   * @param  string|URL $src the path to the image source (The URL of the image file)
+   * @param  string|URL $src the path to the track source (The URL of the track file)
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */

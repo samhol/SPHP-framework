@@ -107,9 +107,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendVideojs() {
-    return $this
-                    ->appendJQuery()
-                    ->appendSrc($this->paths["vendor"] . "anytime.c.js");
+    return $this->appendSrc("http://vjs.zencdn.net/5.11.6/video.js");
   }
 
   /**
@@ -164,11 +162,11 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @return self for PHP Method Chaining
    */
   public function appendSPHP() {
-
     $this->appendFoundation()
             ->appendLazyload()
             ->appendZeroClipboard()
             ->appendAnyTime()
+            ->appendVideojs()
             // ->appendPhotoAlbum()
             ->appendIonRangeSlider()
             ->appendSrc($this->paths["vendor"] . "jquery.qtip.min.js")

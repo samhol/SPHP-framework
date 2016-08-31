@@ -27,6 +27,7 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
       TraversableTrait;
 
   /**
+   * scripts container
    *
    * @var Container 
    */

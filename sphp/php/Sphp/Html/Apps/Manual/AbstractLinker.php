@@ -26,7 +26,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @var string
    */
   private $apiRoot;
-  
+
   /**
    * the default target of the hyperlinks generated
    *
@@ -35,22 +35,25 @@ abstract class AbstractLinker implements LinkerInterface {
   private $defaultTarget;
 
   /**
-   * the default attributes of the hyperlinks generated
+   * the default target of the hyperlinks generated
    *
-   * @var scalar[]
+   * @var string
    */
-  private $defaultAttrs;
+  private $defaultCssClasses;
 
   /**
    * Constructs a new instance
    *
    * @param string $apiRoot the url pointing to the API documentation
-   * @param string $attrs the default value of the target attribute
-   *        for the generated links
+   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
+   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = "", array $attrs = []) {
-    $this->setApiRoot($apiRoot)->setDefaultAttributes($attrs);
+  public function __construct($apiRoot = "", $defaultTarget = "_blank", $defaultCssClasses = null) {
+    $this->setApiRoot($apiRoot)
+            ->setDefaultTarget($defaultTarget)
+            ->setDefaultCssClasses($defaultCssClasses);
   }
 
   /**
@@ -60,7 +63,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->apiRoot, $this->defaultAttrs);
+    unset($this->apiRoot, $this->defaultTarget);
   }
 
   /**
@@ -72,7 +75,6 @@ abstract class AbstractLinker implements LinkerInterface {
    */
   public function __clone() {
     $this->apiRoot = clone $this->apiRoot;
-    $this->defaultAttrs = clone $this->defaultAttrs;
   }
 
   /**
@@ -90,7 +92,7 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   /**
-   * Sets  the url pointing to the API documentation
+   * Sets the url pointing to the API documentation
    *
    * @param  string $apiRoot the url pointing to the API documentation
    * @return self for PHP Method Chaining
@@ -101,22 +103,42 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   /**
-   * Returns the default attribute of the generated links
+   * Returns the default target of the generated links
    *
-   * @return string the default value attributes of the generated links
+   * @return string the default target of the generated links
    */
-  public function getDefaultAttributes() {
-    return $this->defaultAttrs;
+  public function getDefaultTarget() {
+    return $this->defaultTarget;
   }
 
   /**
-   * Sets the default attribute of the generated links
+   * Sets the default CSS classes used in the generated links
    *
-   * @param  string $attrs the default attribute of the generated links
+   * @param  string $defaultTarget the default target of the generated links
    * @return self for PHP Method Chaining
    */
-  public function setDefaultAttributes(array $attrs) {
-    $this->defaultAttrs = $attrs;
+  public function setDefaultTarget($defaultTarget) {
+    $this->defaultTarget = $defaultTarget;
+    return $this;
+  }
+
+  /**
+   * Returns the default CSS classes used in the generated links
+   *
+   * @return string the default CSS classes used in the generated links
+   */
+  public function getDefaultCssClasses() {
+    return $this->defaultCssClasses;
+  }
+
+  /**
+   * Sets the default CSS classes for the generated links
+   *
+   * @param  string|null $defaultTarget the default CSS classes for the generated links
+   * @return self for PHP Method Chaining
+   */
+  public function setDefaultCssClasses($defaultCssClasses = null) {
+    $this->defaultCssClasses = $defaultCssClasses;
     return $this;
   }
 
@@ -127,9 +149,13 @@ abstract class AbstractLinker implements LinkerInterface {
     if (Strings::isEmpty($content)) {
       $content = $relativeUrl;
     }
-    $a = (new Hyperlink($this->getApiRoot() . $relativeUrl, $content))->setAttrs($this->getDefaultAttributes());
+    $a = new Hyperlink($this->getApiRoot() . $relativeUrl, $content);
+    $a->setTarget($this->getDefaultTarget());
     if (Strings::notEmpty($title)) {
       $a->setTitle($title);
+    }
+    if ($this->defaultCssClasses !== null) {
+      $a->addCssClass($this->defaultCssClasses);
     }
     return $a;
   }

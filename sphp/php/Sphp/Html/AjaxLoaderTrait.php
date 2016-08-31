@@ -48,17 +48,6 @@ trait AjaxLoaderTrait {
 
   /**
    * Loads the data from the server using jQuery's Ajax capabilities and
-   * replaces the current content.
-   *
-   * @param  string|URL $url the URL to which the request is sent
-   * @return self for PHP Method Chaining
-   */
-  public function ajaxReplace($url) {
-    return $this->setAjaxAttrs("replace", $url);
-  }
-
-  /**
-   * Loads the data from the server using jQuery's Ajax capabilities and
    * prepends the returned HTML into the object.
    *
    * @param  string|URL $url the URL to which the request is sent

@@ -77,7 +77,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for PHP Method Chaining
    */
   private function setup($title, $charset) {
-    $this->setTitle($title);
+    $this->setDocumentTitle($title);
     $this->meta = new MetaContainer();
     $this->scripts = new ScriptsContainer();
     $this->links = new Container();
@@ -104,7 +104,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param  string|Title $title the title of the html page
    * @return self for PHP Method Chaining
    */
-  public function setTitle($title) {
+  public function setDocumentTitle($title) {
     if (!($title instanceof Title)) {
       $title = new Title($title);
     }
@@ -128,7 +128,6 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
     }
     return $this;
   }
-
 
   /**
    * unsets the default URL and a default target for all links on a page
@@ -171,7 +170,20 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
     $this->metaTags()->setViewport("width=device-width, initial-scale=1.0");
     $this->metaTags()->setCharset("UTF-8");
     $this->addCssSrc(Configuration::httpHost() . "sphp/css/sphp6.styles.all.css")
-            ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css");
+            ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css")
+            ->useVideoJS();
+    return $this;
+  }
+
+  /**
+   * Appends JavaScript files for Video.js
+   *
+   * @return self for PHP Method Chaining
+   * @link   http://www.videojs.com/ Video.js
+   */
+  public function useVideoJS() {
+    $this->addCssSrc("//vjs.zencdn.net/5.8/video-js.min.css")
+            ->appendScriptSrc("//vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js");
     return $this;
   }
 
@@ -229,7 +241,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    */
   public function addContent(HeadComponentInterface $component) {
     if ($component instanceof Title) {
-      $this->setTitle($component);
+      $this->setDocumentTitle($component);
     } else if ($component instanceof Base) {
       $this->base = $component;
     } else if ($component instanceof Link) {
@@ -257,7 +269,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->title . $this->base . $this->meta . $this->scripts . $this->links;
+    return $this->title . $this->base . $this->meta . $this->links . $this->scripts;
   }
 
 }

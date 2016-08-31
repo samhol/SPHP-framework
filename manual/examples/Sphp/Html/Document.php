@@ -5,7 +5,7 @@ namespace Sphp\Html;
 $fooDoc = Document::html("foo");
 
 
-Document::html("foo")->setTitle("Foo document");
+Document::html("foo")->setDocumentTitle("Foo document");
 Document::html("foo")->head()
         ->enableSPHP()
         ->useFontAwesome()

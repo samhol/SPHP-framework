@@ -12,7 +12,7 @@ use DateTime;
 /**
  * Interface defines an HTML &lt;time&gt; tag
  *
- * This component defines a human-readable date/time.
+ * * a human-readable date/time
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-03-06

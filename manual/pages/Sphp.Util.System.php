@@ -2,9 +2,6 @@
 
 namespace Sphp\Util;
 
-use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
-use Sphp\Html\Apps\ApiTools\ExampleViewer as ExampleViewer;
-
 //$config = $api->classLinker(\Sphp\Core\Config::class);
 $toolsLink = $api->namespaceLink(__NAMESPACE__);
 $boolLink = $php->typeLink("boolean");

@@ -23,8 +23,6 @@ class ViewerJS extends AbstractIframe {
 
   use LazyLoaderTrait;
 
-  //private $src;
-
   /**
    * Constructs a new instance
    *

@@ -26,7 +26,7 @@ use SplObjectStorage;
  */
 abstract class AbstractTag implements TagInterface, AttributeChanger {
 
-  use ComponentTrait;
+  use IdentifiableComponentTrait;
 
   /**
    * the tagname of the component

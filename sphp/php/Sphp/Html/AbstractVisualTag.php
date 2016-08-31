@@ -26,7 +26,7 @@ use SplObjectStorage;
  */
 abstract class AbstractVisualTag extends AbstractTag {
 
-  use ComponentTrait;
+  use IdentifiableComponentTrait;
 
   /**
    * the tagname of the component

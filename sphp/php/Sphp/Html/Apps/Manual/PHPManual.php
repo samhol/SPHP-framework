@@ -31,19 +31,20 @@ class PHPManual extends AbstractPhpApiLinker {
   /**
    * Constructs a new instance
    *
-   * @param string $attrs the default value of the target attribute
-   *        for the generated links
+   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
+   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($attrs = ["target" => "php.net", "class" => ["external", "phpman", "api"]]) {
-    parent::__construct("https://secure.php.net/manual/en/", $attrs);
+  public function __construct($defaultTarget = "_blank", $defaultCssClasses = "api phpman") {
+    parent::__construct("https://secure.php.net/manual/en/", $defaultTarget, $defaultCssClasses);
   }
 
   /**
    * {@inheritdoc}
    */
   public function classLinker($class) {
-    return new PHPManualClassLinker($this->getApiRoot(), $class, $this->getDefaultAttributes());
+    return new PHPManualClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   /**

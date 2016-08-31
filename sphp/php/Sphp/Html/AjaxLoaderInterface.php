@@ -31,17 +31,6 @@ use Sphp\Net\URL as URL;
 interface AjaxLoaderInterface {
 
   /**
-   * Replaces the content of the component with the remote content using jQuery Ajax
-   * 
-   * **Important note:** 
-   * This method overrides all previous calls of {@link self} methods.
-   *
-   * @param  string|URL $url the URL to which the request is sent
-   * @return self for PHP Method Chaining
-   */
-  public function ajaxReplace($url);
-
-  /**
    * Prepends the remote content into the component using jQuery Ajax
    * 
    * **Important note:** 

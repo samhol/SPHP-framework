@@ -2,9 +2,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
-use Sphp\Html\Foundation\F6\Navigation\TopBar\TopBar as TopBar;
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Foundation\F6\Containers\Tabs\Tabs as Tabs;
 

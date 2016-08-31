@@ -34,11 +34,11 @@ interface LinkerInterface {
   public function getApiRoot();
 
   /**
-   * Returns the default attribute of the generated links
+   * Returns the default target of the generated links
    *
-   * @return string the default value attributes of the generated links
+   * @return string the default target of the generated links
    */
-  public function getDefaultAttributes();
+  public function getDefaultTarget();
 
   /**
    * Returns a hyperlink object pointing to a sub page

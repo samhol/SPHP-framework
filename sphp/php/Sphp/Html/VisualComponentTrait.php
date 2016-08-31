@@ -17,7 +17,7 @@ namespace Sphp\Html;
  */
 trait VisualComponentTrait {
 
-  use ComponentTrait;
+  use IdentifiableComponentTrait;
 
   /**
    * Sets the value of the title attribute

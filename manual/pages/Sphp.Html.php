@@ -54,7 +54,7 @@ will never throw any type of {$exeption} during execution.
 ##The $componentInterface interface and its $abstractTag implementation
 
 The $componentInterface interface declares a group of methods for HTML attribute handling.
-It is implemented in the {$api->classLinker(ComponentTrait::class)} trait and also in the abstract class $abstractTag.
+It is implemented in the {$api->classLinker(IdentifiableComponentTrait::class)} trait and also in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
 It also defines the tagname property in {$abstractTag->method("__construct")}.
 

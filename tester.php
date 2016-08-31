@@ -57,34 +57,20 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
       <pre>
         <?php
         include_once "manual/manualTools/main.php";
-
-        use Sphp\Html\Media\ViewerJS as ViewerJS;
-
-$v = (new ViewerJS("manual/snippets/demodoc.pdf"))->setSize(new \Sphp\Html\Media\Size(300, 300))->printHtml();
-
-        namespace Sphp\Html\Apps\Manual;
-
-ApiGen::setDefaultPath("http://documentation.samiholck.com/apigen/");
-        $apigenClassLinker = ApiGen::get()->classLinker(\Sphp\Html\Navigation\Hyperlink::class);
-        echo $apigenClassLinker . "\n";
-        echo $apigenClassLinker->namespaceLink() . "\n";
-        echo $apigenClassLinker->method("get") . "\n";
-        echo $apigenClassLinker->method("__construct") . "\n";
-        echo $apigenClassLinker->classBreadGrumbs() . "\n";
-        echo ApiGen::get()->namespaceLink(__NAMESPACE__) . "\n";
-
-        echo PHPManual::get()->classLinker(\Countable::class) . "\n";
-        echo PHPManual::get()->classLinker(\RegexIterator::class)->constant("MATCH") . "\n";
-        echo PHPManual::get()->classLinker(\Countable::class)->method("count") . "\n";
-
-        echo W3schools::get()->tag("a");
-
-        namespace Sphp\Html\Forms\Inputs\Ion;
-
-$ass = new Slider("shit");
-        $ass->setId("arse")->printHtml();
         ?>
       </pre>
+        <?php
+        use Sphp\Html\Media\VideoJs as VideoJs;
+       $vjs = new VideoJs();
+       $vjs->loop()->addSource("http://www.painthewild.com/wp-content/uploads/2014/04/oceans-clip.mp4.mp4?_=2")->addSource("http://video-js.zencoder.com/oceans-clip.webm")->addSource("http://video-js.zencoder.com/oceans-clip.ogv")->printHtml();
+        ?>
+      <video id="example_video_1" class="video-js vjs-default-skin"
+             controls preload="auto" width="640" height="264"
+             poster="http://video-js.zencoder.com/oceans-clip.png"
+             data-setup='{"example_option":true}'>
+        <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/mp4" />
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+      </video>
       <div class="input-group">
         <span class="input-group-label">cooler is cool</span>
         <input class="input-group-field" type="number">
@@ -105,14 +91,14 @@ $ass = new Slider("shit");
   </div>
 
 
-  <?php
-  include_once("manual/_footer_.php");
+<?php
+include_once("manual/_footer_.php");
 
-  use Sphp\Html\Apps\BackToTopButton as BackToTopButton;
+use Sphp\Html\Apps\BackToTopButton as BackToTopButton;
 
 $backToTopBtn = new BackToTopButton();
-  $backToTopBtn
-          ->setTitle("Back To Top")
-          ->printHtml();
-  $html->documentClose();
-  ?>
+$backToTopBtn
+        ->setTitle("Back To Top")
+        ->printHtml();
+$html->documentClose();
+?>

@@ -2,7 +2,7 @@
 
 namespace Sphp\Util;
 
-use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as SyntaxHighlighter;
 
 $arrLink = $php->typeLink("array");
 $fileObject = $api->classLinker(LocalFile::class);

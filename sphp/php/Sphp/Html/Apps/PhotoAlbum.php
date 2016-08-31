@@ -195,7 +195,7 @@ class PhotoAlbum extends AbstractContainerComponent {
                 ->setAttr("data-file-path", $file)
                 ->setAttr("data-img_index", $img_index)
                 ->addCssClass("thumbnail")
-                ->setTitle("Preview picture");
+                ->setDocumentTitle("Preview picture");
         $thumbnailBrowser[] = $thumbnailDiv;
       }
     }

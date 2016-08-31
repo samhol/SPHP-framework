@@ -32,7 +32,7 @@ class W3schools extends AbstractLinker {
    * @param scalar[] $attrs the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct($attrs = ["target" => "w3schools", "class" => "w3schools"]) {
+  public function __construct($attrs = "_blank") {
     parent::__construct("http://www.w3schools.com/", $attrs);
   }
 

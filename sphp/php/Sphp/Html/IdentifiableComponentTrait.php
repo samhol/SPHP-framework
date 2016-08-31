@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ComponentTrait.php (UTF-8)
+ * IdentifiableComponentTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -13,14 +13,14 @@ use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;
 
 /**
- * Trait implements functionality of the {@link ComponentInterface}
+ * Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait ComponentTrait {
+trait IdentifiableComponentTrait {
 
   use ContentTrait;
 

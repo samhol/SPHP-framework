@@ -32,11 +32,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    *
    * @param string $root the base url pointing to the documentation
    * @param string|\object $class class name or object
-   * @param scalar[] $attrs the default value of the attributes used in the
-   *        generated links
+   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
+   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
+   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($root, $class, $attrs = []) {
-    parent::__construct($root, $attrs);
+  public function __construct($root, $class, $defaultTarget = "_blank", $defaultCssClasses = null) {
+    parent::__construct($root, $defaultTarget, $defaultCssClasses);
     $this->ref = new ReflectionClass($class);
   }
 

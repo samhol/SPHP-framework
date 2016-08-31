@@ -38,20 +38,22 @@ class ApiGen extends AbstractPhpApiLinker {
    * Constructs a new instance
    * 
    * @param string $apiRoot the url pointing to the ApiGen documentation
-   * @param scalar[] $attrs the default value of the attributes used in the 
-   *        generated links
+   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
+   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
+   * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = "", array $attrs = ["target" => "apigen", "class" => "api apigen"]) {
-    parent::__construct($apiRoot, $attrs);
+  public function __construct($apiRoot = "", $defaultTarget = "apigen", $defaultCssClasses = "api apigen") {
+    parent::__construct($apiRoot, $defaultTarget, $defaultCssClasses);
   }
 
   /**
    * {@inheritdoc}
    */
   public function classLinker($class) {
-    return new ApiGenClassLinker($this->getApiRoot(), $class, $this->getDefaultAttributes());
+    return new ApiGenClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
-  
+
   /**
    * Returns a hyperlink object pointing to an PHP function page
    *

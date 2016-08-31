@@ -14,7 +14,7 @@ use Sphp\Html\ContainerTag as ContainerTag;
  *
  * **IMPORTANT:** 
  * 
- * The {@link self} component contains scripting statements
+ * This component contains scripting statements
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17

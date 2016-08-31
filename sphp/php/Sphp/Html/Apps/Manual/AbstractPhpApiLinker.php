@@ -25,17 +25,6 @@ use Sphp\Core\Types\Strings as Strings;
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
   /**
-   * Constructs a new instance
-   *
-   * @param string $apiRoot the url pointing to the API documentation
-   * @param scalar[] $attrs the default value of the attributes used in the
-   *        generated links
-   */
-  public function __construct($apiRoot = "", array $attrs = ["target" => "api", "class" => "api"]) {
-    parent::__construct($apiRoot, $attrs);
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
