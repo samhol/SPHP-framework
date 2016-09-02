@@ -13,7 +13,7 @@ use Sphp\Html\Programming\SphpScriptsLoader as SphpScriptsLoader;
 /**
  * Class models an HTML &lt;body&gt; tag
  *
- * The {@link self] component represents the main content of the HTML document.
+ * This component represents the main content of the HTML document.
  *
  *
  * {@inheritdoc}
@@ -49,6 +49,22 @@ class Body extends ContainerTag implements ContentParserInterface {
   public function __construct($content = null) {
     parent::__construct("body", $content);
     $this->scripts = new ScriptsContainer();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    unset($this->scripts);
+    parent::__destruct();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __clone() {
+    parent::__clone();
+    $this->scripts = clone $this->scripts;
   }
 
   /**

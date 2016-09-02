@@ -32,7 +32,7 @@ class Map extends AbstractContainerComponent {
    * @param  null|AreaInterface|AreaInterface[] $areas the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct($name, $areas = null) {
+  public function __construct($name = null, $areas = null) {
     parent::__construct("map");
     $this->attrs()->demand("name");
     if ($name !== null) {

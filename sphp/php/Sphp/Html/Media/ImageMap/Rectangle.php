@@ -76,6 +76,7 @@ class Rectangle extends EmptyTag implements AreaInterface {
   }
 
   /**
+   * Sets the coordinates of the rectangle
    * 
    * @param  int $x1 the top left x-coordinate
    * @param  int $y1 the top left y-coordinate

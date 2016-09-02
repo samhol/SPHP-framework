@@ -7,12 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Containers;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
-use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
-use Sphp\Html\ContentParserInterface as ContentParserInterface;
-
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
+use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
 use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
 
 /**
@@ -27,7 +24,7 @@ use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
+class Callout extends Div implements ColourableInterface {
 
   use ColourableTrait;
 
@@ -44,7 +41,7 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
    * @param  mixed|null $content added content
    */
   public function __construct($content = null) {
-    parent::__construct("div", null, new Div($content));
+    parent::__construct($content);
     $this->cssClasses()->lock("callout");
     $this->closeButton = new CloseButton("close");
   }
@@ -55,7 +52,7 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
    * Predefined paddings:
    * 
    * * `'small'` for small padding
-   * * `null` or `'default'` for (default) padding
+   * * `'default'` for (default) padding
    * * `'large'` for large padding
    * 
    * @param  string|null $padding optional CSS class name defining the amount of the content padding
@@ -68,22 +65,6 @@ class Callout extends AbstractContainerTag implements AjaxLoaderInterface {
     if (in_array($padding, $paddings)) {
       $this->addCssClass($padding);
     }
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function ajaxAppend($url) {
-    $this->content()->ajaxAppend($url);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function ajaxPrepend($url) {
-    $this->content()->ajaxPrepend($url);
     return $this;
   }
 

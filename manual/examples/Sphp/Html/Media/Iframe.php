@@ -14,6 +14,7 @@ $iframe->setSrc("http://sphp.samiholck.com/HtmlWiki.html")
         ->setStyles($inlineStyles);
 $widget = (new Iframe("http://193.64.245.223/basket/widget/"))
         ->setStyles($inlineStyles)
+        ->setLazy()
         ->setStyle("border", "none");
 $grid = new Grid([$iframe, $widget]);
 $grid->printHtml();

@@ -14,7 +14,7 @@ use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Container as Container;
 
 /**
- * Class implements a {@link ScriptInterface} Container
+ * Class implements a JavaScript component container
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-27
@@ -48,7 +48,7 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
   }
 
   /**
-   * appends a 72link ScriptInterface} component to the container
+   * appends a {@link ScriptInterface} component to the container
    * 
    * @param  ScriptInterface $script
    * @return self for PHP Method Chaining
@@ -68,6 +68,8 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
+   * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function appendSrc($src, $async = false) {
     $this->append(new ScriptSrc($src, $async));
@@ -77,7 +79,7 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
   /**
    * Appends an {@link ScriptCode} containing script commands
    * 
-   * @param  string $code  script commands
+   * @param  string $code script commands
    * @return self for PHP Method Chaining
    */
   public function appendCode($code) {

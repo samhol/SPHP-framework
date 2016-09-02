@@ -2,19 +2,19 @@
 
 namespace Sphp\Html\Foundation\F6\Containers;
 
-$panel1 = (new Callout("First Callout"))
+$panel1 = (new Callout())
+        ->appendMd("####First Callout")
         ->ajaxAppend("manual/snippets/loremipsum.html #par_2")
         ->setColor("success")
-        ->setClosable()
-        ->printHtml();
-$panel2 = (new Callout("Second Callout"))
-        ->append($panel1->setColor("warning"))
+        ->setClosable();
+$panel2 = (new Callout())
+        ->appendMd("####Second Callout")
+        ->append($panel1)
         ->setColor("alert")
-        ->setClosable()
         ->printHtml();
-$panel3 = (new Callout("Second Callout"))
+$panel3 = (new Callout("<h4>Persistent callout</h4>"))
         ->ajaxAppend("manual/snippets/loremipsum.html #par_1")
         ->setColor("warning")
-        ->setClosable()
+        ->setClosable(false)
         ->printHtml();
 ?>

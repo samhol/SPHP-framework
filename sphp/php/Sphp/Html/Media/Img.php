@@ -11,6 +11,7 @@ use Sphp\Html\EmptyTag as EmptyTag;
 use Sphp\Net\URL as URL;
 use Sphp\Images\ImageScaler as ImageScaler;
 use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Media\ImageMap\Map as Map;
 
 /**
  * Class Models an HTML &lt;img&gt; tag
@@ -61,14 +62,17 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
 
   /**
    * 
-   * @param  string $mapName
+   * @param  string|Map $map the imagemap name or instance
    * @return self for PHP Method Chaining
    */
-  public function useMap($mapName) {
-    if (!Strings::startsWith($mapName, "#")) {
-      $mapName = "#$mapName";
+  public function useMap($map) {
+    if ($map instanceof ImageMap\Map) {
+      $map = $map->getName();
     }
-    $this->attrs()->set("usemap", $mapName);
+    if (!Strings::startsWith($map, "#")) {
+      $map = "#$map";
+    }
+    $this->attrs()->set("usemap", $map);
     return $this;
   }
 
@@ -124,7 +128,7 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
   }
 
   /**
-   * Returns a new instance of the {@link Img} component containing a scaled image
+   * Returns a new instance of the component containing a scaled image
    *
    * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
    * 
@@ -133,19 +137,15 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @return Img new instance of the component containing a resized image
    */
   public static function scaleToFit($src, Size $size) {
-    //echo "<pre>";
-    //echo "1.: ".number_format(memory_get_usage(true)/1048576, 2)." MB\n";
     $path = (new ImageScaler($src))
             ->scaleToFit($size)
             ->saveToCache()
             ->httpCachePath();
-    //echo "4.: ".number_format(memory_get_usage(true)/1048576, 2)." MB\n";
-    //echo "</pre>";
     return new Img($path);
   }
 
   /**
-   * Returns a new instance of the {@link Img} component containing a scaled image
+   * Returns a new instance of the component containing a scaled image
    * 
    * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
    *
@@ -154,12 +154,10 @@ class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @return Img new instance of the component containing a resized image
    */
   public static function scale($src, $ratio) {
-    //echo number_format(memory_get_usage(true)/1048576, 2)." MB\n";
     $path = (new ImageScaler($src))
             ->scale($ratio)
             ->saveToCache()
             ->httpCachePath();
-    //echo number_format(memory_get_usage(true)/1048576, 2)." MB\n";
     return new Img($path);
   }
 

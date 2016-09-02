@@ -2,13 +2,18 @@
 
 namespace Sphp\Html\Media;
 
-$img = (new Img("http://playground.samiholck.com/manual/pics/crossbones.png", "Skull"))
-        ->useMap("crossbones")
+$img = (new Img("http://playground.samiholck.com/manual/pics/shapes.png", "Basic shapes"))
+        ->useMap("shapes")
         ->setLazy(true)
         ->printHtml();
-$map = (new ImageMap\Map("crossbones"))
-        ->append((new ImageMap\Circle(165, 140, 26))
-                ->setHref("https://en.wikipedia.org/wiki/Skull_and_crossbones")
+$map = (new ImageMap\Map("shapes"))
+        ->append((new ImageMap\Circle(361,132,96))
+                ->setTitle("Circle in Wikipedia")
+                ->setHref("https://en.wikipedia.org/wiki/Circle")
+                ->setTarget("_blank"))
+        ->append((new ImageMap\Rectangle(19,28,222,228))
+                ->setTitle("Rectangle in Wikipedia")
+                ->setHref("https://en.wikipedia.org/wiki/Rectangle")
                 ->setTarget("_blank"))
         ->printHtml();
 ?> 

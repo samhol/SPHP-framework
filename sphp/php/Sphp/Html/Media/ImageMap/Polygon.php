@@ -24,10 +24,9 @@ class Polygon extends EmptyTag implements AreaInterface {
   /**
    * Constructs a new instance
    * 
-   * @param int[] $coords
-   * @param int $radius
-   * @param string $href
-   * @param string $alt
+   * @param int[] $coords coordinates as an array
+   * @param string|null $href
+   * @param string $alt|null
    */
   public function __construct($coords, $href = null, $alt = null) {
     parent::__construct("area");
@@ -43,8 +42,8 @@ class Polygon extends EmptyTag implements AreaInterface {
 
   /**
    * 
-   * @param  int $x
-   * @param  int $y
+   * @param  int $x the x-coordinate of the edge
+   * @param  int $y the y-coordinate of the edge
    * @return self for PHP Method Chaining
    */
   public function appendEdge($x, $y) {

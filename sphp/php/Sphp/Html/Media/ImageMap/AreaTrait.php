@@ -32,26 +32,21 @@ trait AreaTrait {
   }
 
   /**
-   * Returns the shape of the area
+   * Returnsthe coordinates of the area
    * 
-   * @return string the shape of the area
+   * @return int[] the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
   public function getCoordinates() {
-    return $this->getAttr("coords");
-  }
-
-  /**
-   * Returns the shape of the area
-   * 
-   * @return int[] the shape of the area
-   * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
-   */
-  public function getCoordinatesArray() {
-    $toInt = function($coord) {
-      return (int) $coord;
-    };
-    return array_map($toInt, explode(",", $this->getCoordinates()));
+    $coords = [];
+    if ($this->attrs()->exists("coords")) {
+      $rawCoords = $this->getAttr("coords");
+      $toInt = function($coord) {
+        return (int) $coord;
+      };
+      $coords = array_map($toInt, explode(",", $rawCoords));
+    }
+    return $coords;
   }
 
   /**

@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Attributes\AbstractAttributeManager as AbstractAttributeManager;
-
 /**
- * Trait implements parts of the {@link SizeableInterface} interface
+ * Trait implements the {@link SizeableInterface} interface for a {@link \Sphp\Html\ComponentInterface}
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-15
@@ -18,18 +16,12 @@ use Sphp\Html\Attributes\AbstractAttributeManager as AbstractAttributeManager;
  * @filesource
  */
 trait SizeableTrait {
-  /**
-   * Returns the attribute manager attached to the component
-   * 
-   * @return AbstractAttributeManager the attribute manager
-   */
-  // abstract public function attrs();
 
   /**
    * Sets the dimensions of the component (in pixels)
    * 
    * @param  Size $size object containing the dimension settings
-   * @return SizeableInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setSize(Size $size) {
     $this
@@ -50,7 +42,7 @@ trait SizeableTrait {
   /**
    * Returns the width of the video component (in pixels)
    * 
-   * @return int|boolean width of the component or false if not set
+   * @return int|boolean width of the component or `false` if not set
    */
   public function getWidth() {
     return $this->parseDimension($this->attrs()->get("width"));
@@ -61,7 +53,7 @@ trait SizeableTrait {
    * 
    * @param  int|boolean $width the width of the component (in pixels)), false 
    *         to unset
-   * @return SizeableInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setWidth($width) {
     $this->attrs()->set("width", $this->parseDimension($width));
@@ -71,7 +63,7 @@ trait SizeableTrait {
   /**
    * Returns the height of the video component (in pixels)
    * 
-   * @return int|boolean height of the component or false if not set
+   * @return int|boolean height of the component or `false` if not set
    */
   public function getHeight() {
     return $this->parseDimension($this->attrs()->get("height"));
@@ -80,9 +72,9 @@ trait SizeableTrait {
   /**
    * Sets the height of the component (in pixels)
    * 
-   * @param  int|boolean $height the height of the component (in pixels), false 
+   * @param  int|boolean $height the height of the component (in pixels), `false` 
    *         to unset
-   * @return SizeableInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setHeight($height) {
     $this->attrs()->set("height", $this->parseDimension($height));

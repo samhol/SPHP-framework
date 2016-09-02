@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Attributes\AbstractAttributeManager as AbstractAttributeManager;
 use Sphp\Net\URL as URL;
 
 /**
@@ -25,13 +24,6 @@ use Sphp\Net\URL as URL;
  * @filesource
  */
 trait LazyLoaderTrait {
-
-  /**
-   * Returns the attribute manager attached to the component
-   * 
-   * @return AbstractAttributeManager the attribute manager
-   */
-  abstract public function attrs();
 
   /**
    * Sets or unsets the media source loading as lazy
