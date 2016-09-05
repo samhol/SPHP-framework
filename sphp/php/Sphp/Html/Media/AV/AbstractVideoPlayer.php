@@ -5,9 +5,11 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\Media\SizeableTrait as SizeableTrait;
+use Sphp\Html\Media\LazyLoaderTrait as LazyLoaderTrait;
 use Sphp\Core\Types\Strings as Strings;
 use Sphp\Net\URL as URL;
 

@@ -32,7 +32,7 @@ trait LazyLoaderTrait {
    * `data-src` attribute instead of the `src` attribute
    * 
    * @param  boolean $lazy true if the loading is lazy, false otherwise
-   * @return LazyLoaderInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function setLazy($lazy = true) {
     $classes = "lazy-hidden lazy-loaded";

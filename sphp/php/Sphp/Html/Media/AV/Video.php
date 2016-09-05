@@ -5,7 +5,11 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
+
+use Sphp\Html\Media\SizeableInterface as SizeableInterface;
+use Sphp\Html\Media\SizeableTrait as SizeableTrait;
+use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 
 /**
  * Class models an HTML &lt;video&gt; tag

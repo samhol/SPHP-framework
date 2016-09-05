@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 /**
  * Class models an HTML &lt;audio&gt; tag

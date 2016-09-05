@@ -13,9 +13,9 @@ use Sphp\Html\Media\IframeInterface as IframeInterface;
 use Sphp\Net\URL as URL;
 use Sphp\Html\Media\Iframe as Iframe;
 use Sphp\Html\Media\ViewerJS as ViewerJS;
-use Sphp\Html\Media\DailyMotionPlayer as DailyMotionPlayer;
-use Sphp\Html\Media\VimeoPlayer as VimeoPlayer;
-use Sphp\Html\Media\YoutubePlayer as YoutubePlayer;
+use Sphp\Html\Media\AV\DailyMotionPlayer as DailyMotionPlayer;
+use Sphp\Html\Media\AV\VimeoPlayer as VimeoPlayer;
+use Sphp\Html\Media\AV\YoutubePlayer as YoutubePlayer;
 use ReflectionClass;
 use BadMethodCallException;
 
@@ -153,7 +153,7 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
   }
 
   /**
-   * Returns a new instance containing a {@link Iframe} instance
+   * Returns a new instance containing an {@link Iframe} instance
    * 
    * @param  URL|string $src the path to the presented file
    * @return self new instance containing a {@link Iframe} instance

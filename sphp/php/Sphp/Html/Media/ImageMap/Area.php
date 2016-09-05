@@ -26,15 +26,11 @@ class Area extends EmptyTag implements AreaInterface {
    * 
    * @precondition `$shape` == `default|circle|rect|poly`
    * @param string $shape the shape of the area
-   * @param array $coords the coordinates of the area
-   * @param type $href 
-   * @param string $alt
    * @link  http://www.w3schools.com/tags/att_area_shape.asp shape attribute
    */
-  public function __construct($shape, array $coords = [], $href = "#", $alt = "") {
+  public function __construct($shape) {
     parent::__construct("area");
     $this->attrs()->lock("shape", $shape);
-    $this->setShape($shape)->setCoordinates($coords)->setHref($alt);
   }
 
   /**
@@ -42,6 +38,7 @@ class Area extends EmptyTag implements AreaInterface {
    * 
    * @param  int[]|int... $coords the coordinates of the area
    * @return self for PHP Method Chaining
+   * @link  http://www.w3schools.com/tags/att_area_coords.asp coords attribute
    */
   public function setCoordinates($coords) {
     $this->attrs()->set("coords", implode(",", $coords));

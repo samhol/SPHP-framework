@@ -1,6 +1,8 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
+
+use Sphp\Html\Media\Size as Size;
 
 $srcs[] = "http://techslides.com/demos/sample-videos/small.webm";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.ogv";
@@ -10,6 +12,7 @@ $srcs[] = "http://techslides.com/demos/sample-videos/small.3gp";
 $size = new Size(384, 216);
 
 $video = (new Video($srcs))
+        ->setPoster("manual/pics/LEGO_logo.png")
         ->setSize($size)
         ->setLazy()
         ->printHtml();

@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\AbstractComponent as AbstractComponent;
+
 /**
  * Class Models an HTML &lt;iframe&gt; tag (an inline frame).
  *
@@ -19,9 +21,10 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Iframe extends AbstractIframe {
+class Iframe extends AbstractComponent implements IframeInterface {
 
-  use LazyLoaderTrait;
+  use LazyLoaderTrait,
+      SizeableTrait;
 
   /**
    * Constructs a new instance
@@ -31,7 +34,7 @@ class Iframe extends AbstractIframe {
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
   public function __construct($src = null, $name = null) {
-    parent::__construct();
+    parent::__construct("iframe");
     if ($src !== null) {
       $this->setSrc($src);
     }
@@ -129,6 +132,13 @@ class Iframe extends AbstractIframe {
    */
   public function getSandbox() {
     return $this->getAttr("sandbox");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return "<p>Your browser does not support iframes.</p>";
   }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
@@ -13,4 +13,4 @@ The $vjs class implements video.js for PHP.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/VideoJs.php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/AV/VideoJs.php");

@@ -40,7 +40,7 @@ use Sphp\Html\Media\ImageMap\Map as Map;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Img extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
+class Img extends EmptyTag implements ImgInterface {
 
   use SizeableTrait,
       LazyLoaderTrait;

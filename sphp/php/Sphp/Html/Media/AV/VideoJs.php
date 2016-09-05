@@ -5,7 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
+
+use Sphp\Html\Media\SizeableInterface as SizeableInterface;
+use Sphp\Html\Media\SizeableTrait as SizeableTrait;
 
 /**
  * Class models an HTML &lt;video&gt; tag
@@ -34,6 +37,22 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
     $this->cssClasses()->lock("video-js vjs-default-skin vjs-paused vjs-controls-enabled");
     $this->identify();
     $this->attrs()->demand("data-setup");
+  }
+
+  /**
+   * Sets the poster image for the video component
+   * 
+   * **Note:** The poster attribute specifies an image to be shown while 
+   * the video is downloading, or until the user hits the play button. If 
+   * this is not included, the first frame of the video will be used instead.
+   * 
+   * @param  string|URL $poster the poster image for the video component
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
+   */
+  public function setPoster($poster) {
+    $this->attrs()->set("poster", $poster);
+    return $this;
   }
   
   /**

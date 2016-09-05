@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\Apps\Manual\Apis as Apis;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
@@ -23,7 +23,7 @@ This class is axtended and used for following subscribers.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/VideoPlayerInterface.php"))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/VideoPlayerInterface.php"))
         ->setExampleHeading("Example code for Youtube, Vimeo and DailyMotion video")
         ->setOutputPaneTitle("Example results")
         ->printHtml();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 

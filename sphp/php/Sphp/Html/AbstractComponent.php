@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Abstract  Class provides a simple implementation of the component containing other components
+ * Abstract Class provides a simple implementation of the component containing other components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-26

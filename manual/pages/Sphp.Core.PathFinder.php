@@ -12,7 +12,7 @@ echo $parsedown->text(<<<MD
 
 $pathFinder supports transformation of relative filesystem paths to absolute paths for both http urls and local file system.
 
-**IMPORTANT:** 
+**IMPORTANT notes about the constructor:** 
 
 * The `\$localRoot` parameter should be an Absolute path so that all the subfolders are reachable.
 * If either `\$localRoot` or `\$httpRoot` is not given the instance uses global PHP `\$_SERVER` values if present

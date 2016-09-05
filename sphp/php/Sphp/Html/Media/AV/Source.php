@@ -5,9 +5,11 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
+use Sphp\Html\Media\LazyLoaderTrait as LazyLoaderTrait;
 use Sphp\Net\URL as URL;
 use Sphp\Core\Util\FileUtils as FileUtils;
 

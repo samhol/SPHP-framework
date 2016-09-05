@@ -110,6 +110,17 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
     $this->content()->append($column);
     return $this;
   }
+  
+
+  /**
+   * Appends a new Column to the container
+   * 
+   * @param  int $index column or column content
+   * @return BlockGridColumn|null
+   */
+  public function getColumn($index) {
+    return $this->content()->offsetGet($index);
+  }
 
   /**
    * Sets the column width values for all screen sizes

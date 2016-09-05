@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
 
 $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
@@ -27,7 +27,7 @@ MD
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Video.php", false, true))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/Video.php", false, true))
 		->setExampleHeading("HTML5 &lt;video&gt; example code")
 		->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
 		->printHtml();
@@ -41,7 +41,7 @@ echo $parsedown->text(<<<MD
 		
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Audio.php", false, true))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/Audio.php", false, true))
 		->setExampleHeading("HTML5 &lt;audio&gt; example code")
 		->setOutputPaneTitle("HTML5 &lt;audio&gt; example results")
 		->printHtml();

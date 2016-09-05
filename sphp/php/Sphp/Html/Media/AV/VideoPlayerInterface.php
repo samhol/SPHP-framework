@@ -5,7 +5,9 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\AV;
+
+use Sphp\Html\Media\IframeInterface as IframeInterface;
 
 /**
  * Interface defines properties for a videoplayer component
