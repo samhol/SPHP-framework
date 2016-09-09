@@ -10,10 +10,14 @@ namespace Sphp\Html\Apps;
 use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use GeSHi;
+use SqlFormatter;
+use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
 use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Div as Div;
+use InvalidArgumentException;
+use Sphp\Core\Util\FileUtils as FileUtils;
 
 /**
  * Class wraps the GeSHi (a Generic Syntax Highlighter)
@@ -60,7 +64,6 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function __construct() {
     parent::__construct("div");
-    //$this->geshi = new GeSHi();
     $this->cssClasses()->lock("GeSHi sphp-syntax-highlighter");
     $this->content()->set("buttons", "");
     $this->codeContainer = (new Div())->identify();
@@ -70,6 +73,14 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
             ->startLineNumbersAt(1)
             ->useFooter()
             ->setDefaultContentCopyController();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __destruct() {
+    unset($this->codeContainer, $this->codeContainer, $this->geshiProps, $this->geshi);
+    parent::__destruct();
   }
 
   /**
@@ -197,8 +208,6 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
     $copyBtn = (new CopyToClipboardButton($button, $this->codeContainer));
     return $copyBtn;
   }
-  
-  
 
   /**
    * Sets whether the copy button is in use or not
@@ -208,7 +217,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function useDefaultContentCopyController($use = true) {
     if ($use) {
-      $this->content()["button-area"]->show();
+      $this->content()["button-area"]->unhide();
     } else {
       $this->content()["button-area"]->hide();
     }
@@ -233,7 +242,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function setSource($source, $lang) {
     $this->setGeshiProperties("set_source", [$source]);
@@ -242,13 +251,34 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   public function loadFromFile($filename) {
     if (!file_exists($filename)) {
-      throw new \Exception("The file '$filename' does not exist!");
+      throw new InvalidArgumentException("The file '$filename' does not exist!");
     }
     $this->setGeshiProperties("load_from_file", [$filename]);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $path
+   * @param  string $lang
+   * @return self for PHP Method Chaining
+   * @throws InvalidArgumentException
+   */
+  public function executeFromFile($path, $lang = "text") {
+    if (!file_exists($path)) {
+      throw new InvalidArgumentException("The file in the '$path' does not exist!");
+    }
+    $source = FileUtils::executePhpToString($path);
+    if ($lang == "html5") {
+      $source = (new Indenter())->indent($source);
+    } else if ($lang == "sql") {
+      $source = SqlFormatter::format($source, false);
+    }
+    $this->setSource($source, $lang);
     return $this;
   }
 

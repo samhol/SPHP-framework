@@ -1,13 +1,11 @@
 <?php
 
 /**
- * BlockGridColumn.php (UTF-8)
+ * BlockGridColumnInterface.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Grids;
-
-use Sphp\Html\Div as Div;
 
 /**
  * Class implements a Foundation Block Grid Column
@@ -19,14 +17,6 @@ use Sphp\Html\Div as Div;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGridColumn extends Div implements BlockGridColumnInterface {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct($content = null) {
-    parent::__construct($content);
-    $this->cssClasses()->lock("column");
-  }
+interface BlockGridColumnInterface extends \Sphp\Html\TagInterface {
 
 }

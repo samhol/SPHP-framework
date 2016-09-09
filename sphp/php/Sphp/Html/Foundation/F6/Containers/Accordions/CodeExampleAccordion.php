@@ -8,8 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Core\Util\LocalFile as LocalFile;
-use Gajus\Dindent\Indenter as Indenter;
 
 /**
  * Class implements an accrodion for PHP Example presentation
@@ -24,6 +22,12 @@ use Gajus\Dindent\Indenter as Indenter;
 class CodeExampleAccordion extends Accordion {
 
   use ContentTrait;
+
+  /**
+   *
+   * @var string 
+   */
+  private $path;
 
   /**
    * the php code example presentation
@@ -47,18 +51,6 @@ class CodeExampleAccordion extends Accordion {
   private $outputSyntaxPane;
 
   /**
-   *
-   * @var string|boolean 
-   */
-  private $outputSyntaxHighlighing = false;
-
-  /**
-   * 
-   * @var boolean 
-   */
-  private $outputExecutionPane = true;
-
-  /**
    * Constructs a new instance
    *
    * @param string $path the filepath of the presented example PHP code
@@ -67,8 +59,6 @@ class CodeExampleAccordion extends Accordion {
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
    */
   public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    $this->outputSyntaxHighlighing = $highlightOutput;
-    $this->outputExecutionPane = $outputAsHtmlFlow;
     parent::__construct();
     $this->cssClasses()->lock("manual");
     $this->codePane = (new SyntaxHighlightingPane());
@@ -88,34 +78,11 @@ class CodeExampleAccordion extends Accordion {
   }
 
   /**
-   * 
-   * @param  mixed $output
-   * @return self a new instance presenting the example 
+   * {@inheritdoc}
    */
-  private function insertOutput($output) {
-    if ($this->outputExecutionPane == true) {
-      $this->outputPane->replaceContent($output);
-    } else {
-      $this->outputPane
-              ->replaceContent("<code>HTML</code> output is not available!")
-              ->hide();
-    }
-    if ($this->outputSyntaxHighlighing == "html5") {
-      $output = (new Indenter())->indent($output);
-    } else if ($this->outputSyntaxHighlighing == "sql") {
-      $output = \SqlFormatter::format($output, false);
-    }
-    if ($this->outputSyntaxHighlighing === false) {
-      $lang = "text";
-      $this->outputSyntaxPane->setSource("", "text")
-              ->hide();
-    } else {
-      $this->outputSyntaxPane->setSource($output, $lang = $this->outputSyntaxHighlighing);
-    }
-    if ($this->outputSyntaxHighlighing == "text") {
-       $this->outputSyntaxPane->useDefaultContentCopyController(false);
-    }
-    return $this;
+  public function __destruct() {
+    unset($this->codePane, $this->outputSyntaxPane, $this->outputPane);
+    parent::__destruct();
   }
 
   /**
@@ -133,24 +100,6 @@ class CodeExampleAccordion extends Accordion {
   }
 
   /**
-   * Loads the example PHP code from a PHP string
-   *
-   * @param  string $string the example PHP code string
-   * @param string|boolean $highlightOutput the language name of the output code 
-   *        or false if highlighted output code should not be visible
-   * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
-   * @return self for PHP Method Chaining
-   */
-  public function fromString($string, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    $this->outputSyntaxHighlighing = $highlightOutput;
-    $this->outputExecutionPane = $outputAsHtmlFlow;
-    $this->codePane->setSource($string, "php");
-    $this->insertOutput($string);
-    $this->showOutputSyntax($highlightOutput);
-    return $this;
-  }
-
-  /**
    * Loads the example PHP file content
    *
    * @param  string $path the filepath of the example PHP code
@@ -160,16 +109,57 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function fromFile($path, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    $this->outputSyntaxHighlighing = $highlightOutput;
-    $this->outputExecutionPane = $outputAsHtmlFlow;
+    $this->path = $path;
     $this->codePane->loadFromFile($path);
-    $output = (new LocalFile($path))->executeToString();
-    $this->insertOutput($output);
-    $this->showOutputSyntax($highlightOutput);
+    //$this->outputPane->appendPhpFile($path);
+    $this->showOutputAsHtmlFlow($outputAsHtmlFlow);
+    // $executedOutput = FileUtils::executePhpToString($path);
+    $this->showHighlightedOutput($highlightOutput);
+    // $this->showOutputSyntax($highlightOutput);
     return $this;
   }
 
   /**
+   * 
+   * @param  mixed $lang
+   * @return self for PHP Method Chaining
+   */
+  public function showHighlightedOutput($lang) {
+    if ($lang === false) {
+      $lang = "text";
+      $this->outputSyntaxPane->hide();
+    }
+    if ($lang == "text") {
+      $this->outputSyntaxPane->useDefaultContentCopyController(false);
+    } else {
+      $this->outputSyntaxPane->useDefaultContentCopyController(true);
+    }
+    $this->outputSyntaxPane->executeFromFile($this->path, $lang);
+    $this->outputSyntaxPane->unhide();
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  boolean $show true for executed HTML result or false for no execution
+   * @return self for PHP Method Chaining
+   */
+  public function showOutputAsHtmlFlow($show = true) {
+    if ($show === false) {
+      $this->outputPane->clear();
+      $this->outputPane->hide();
+    } else {
+      $this->outputPane->unhide();
+      if ($this->path === null) {
+        $this->outputPane->replaceContent("<code>HTML</code> output is not available!");
+      }
+      $this->outputPane->clear()->appendPhpFile($this->path);
+    }
+    return $this;
+  }
+
+  /**
+   * Returns the code panel
    *
    * @return SyntaxHighlightingPane
    */
@@ -178,6 +168,7 @@ class CodeExampleAccordion extends Accordion {
   }
 
   /**
+   * Returns the output execution panel
    *
    * @return Pane
    */
@@ -228,19 +219,6 @@ class CodeExampleAccordion extends Accordion {
    */
   public function setOutputPaneTitle($title) {
     $this->outputPane->setPaneTitle($title);
-    return $this;
-  }
-
-  /**
-   * Sets the the heading of the output component
-   *
-   * @param  string $heading the heading of the output component
-   * @return self for PHP Method Chaining
-   * @deprecated since 2.0.0
-   */
-  public function setOutputHeading($heading) {
-    $this->outputPane->setPaneTitle($heading);
-    $this->outputSyntaxPane->setPaneTitle($heading);
     return $this;
   }
 

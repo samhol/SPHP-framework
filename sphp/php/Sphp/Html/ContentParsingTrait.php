@@ -42,6 +42,17 @@ trait ContentParsingTrait {
   /**
    * Appends an executed PHP file to the container
    * 
+   * @param  string $phpCode
+   * @return self for PHP Method Chaining
+   */
+  public function appendPhp($phpCode) {
+    $this->append(FileUtils::executePhpToString($phpCode));
+    return $this;
+  }
+
+  /**
+   * Appends an executed PHP file to the container
+   * 
    * @param  string $path
    * @return self for PHP Method Chaining
    */

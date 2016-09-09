@@ -30,7 +30,6 @@ trait CloneNotSupportedTrait {
   /**
    * Throws a {@see CloneNotSupportedException}.
    *
-   * @return void
    * @throws CloneNotSupportedException Always.
    */
   final public function __clone() {

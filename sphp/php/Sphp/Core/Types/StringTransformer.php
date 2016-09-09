@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Strings.php (UTF-8)
+ * StringTransformer.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,51 +15,7 @@ namespace Sphp\Core\Types;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Strings {
-
-  /**
-   * Performs a regular expression match
-   *
-   * @param  string $string the input string
-   * @param  string $pattern the pattern to search for, as a string
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if string matches to the regular expression, false otherwise
-   */
-  public static function match($string, $pattern, $encoding = null) {
-    //$regexEncoding = mb_regex_encoding();
-    //echo "regexEncoding:($regexEncoding)\n";
-    //\mb_regex_encoding(self::getEncoding($encoding));
-   // $match = \mb_ereg_match($pattern, $string);
-   // echo "regexEncodingNow:($regexEncoding)\n";
-    
-    //\mb_regex_encoding($regexEncoding);
-    return preg_match($pattern, $string) === 1;
-   // return $match === 1;
-  }
-
-  /**
-   * Replaces a regular expression with multibyte support
-   *
-   * @param  string $string the input string
-   * @param  string $pattern the pattern to search for, as a string
-   * @param  string $replacement the replacement text.
-   * @param  string $option
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return string|boolean the resultant string on success, or false on error
-   * @link   http://php.net/manual/en/function.mb-ereg-replace.php
-   */
-  public static function regexReplace($string, $pattern, $replacement, $option = null, $encoding = null) {
-    $regexEncoding = mb_regex_encoding();
-    mb_regex_encoding(self::getEncoding($encoding));
-    if ($option === null) {
-      $option = 'msr';
-    }
-    $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
-    mb_regex_encoding($regexEncoding);
-    return $result;
-  }
+class StringTransformer {
 
   /**
    * Replaces all occurrences of $search in $str by $replacement
@@ -71,6 +27,7 @@ class Strings {
   public function replace($string, $search, $replacement) {
     return static::regexReplace($string, preg_quote($search), $replacement);
   }
+
   /**
    * Returns a reversed string
    *
@@ -190,129 +147,6 @@ class Strings {
   }
 
   /**
-   * Tests whether the string contains the substring or not
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the substring to search for
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if needle was found from the haystack string, false otherwise
-   */
-  public static function contains($haystack, $needle, $encoding = null) {
-    return (mb_stripos($haystack, $needle, 0, self::getEncoding($encoding)) !== false);
-  }
-
-  /**
-   * Checks whether the haystack string contains all $needles
-   *
-   * @param  string $haystack the string being checked
-   * @param  string[] $needles Substrings to look for
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return bool whether or not the haystack contains $needle
-   */
-  public static function containsAll($haystack, array $needles, $encoding = null) {
-    if (empty($needles)) {
-      return false;
-    } else {
-      foreach ($needles as $needle) {
-        if (!self::contains($haystack, $needle, $encoding)) {
-          return false;
-        }
-      }
-      return true;
-    }
-  }
-
-  /**
-   * Returns the number of occurrences of $substring in the given string.
-   * By default, the comparison is case-sensitive, but can be made insensitive
-   * by setting $caseSensitive to false.
-   *
-   * @param  string $string the string being checked
-   * @param  string $substring     The substring to search for
-   * @param  bool   $caseSensitive Whether or not to enforce case-sensitivity
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return int    The number of $substring occurrences
-   */
-  public static function countSubstr($string, $substring, $caseSensitive = true, $encoding = null) {
-    $enc = self::getEncoding($encoding);
-    if (!$caseSensitive) {
-      $string = \mb_strtoupper($string, $enc);
-      $substring = \mb_strtoupper($substring, $enc);
-    }
-    return \mb_substr_count($string, $substring, $enc);
-  }
-
-  /**
-   * Checks whether a $haystack string starts with any of the given needles
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the start to compare with
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if the haystack starts with any of the given needles
-   */
-  public static function startsWith($haystack, $needle, $encoding = null) {
-    return $needle === "" || mb_strrpos($haystack, $needle, 0, self::getEncoding($encoding)) === 0;
-  }
-
-  /**
-   * Checks whether a haystack string ends with any of the given needles
-   *
-   * @param  string $haystack the string being checked
-   * @param  string $needle the ending to compare with
-   * @param  string $encoding the encoding parameter is the character encoding.
-   *         Defaults to `mb_internal_encoding()`
-   * @return boolean true if the haystack ends with any of the given needles
-   */
-  public static function endsWith($haystack, $needle, $encoding = null) {
-    if ($needle === "") {
-      return true;
-    } else {
-      $enc = self::getEncoding($encoding);
-      return \mb_substr($haystack, -\mb_strlen($needle, $enc), null, $enc) === $needle;
-    }
-  }
-
-  /**
-   * Returns the character at $index, with indexes starting at 0
-   *
-   * @param  string $string the input string
-   * @param  int $index position of the character
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string|null the character at $index or null if the index does not exist
-   */
-  public static function charAt($string, $index, $encoding = null) {
-    $length = static::length($string, $encoding);
-    $result = null;
-    if ($index >= 0 && $length > $index) {
-      $result = mb_substr($string, $index, 1, self::getEncoding($encoding));
-    }
-    return $result;
-  }
-
-  /**
-   * Returns an array consisting of the characters in the string.
-   *
-   * @param  string $string the input string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return array an array of string chars
-   */
-  public static function chars($string, $encoding = null) {
-    $enc = self::getEncoding($encoding);
-    $length = static::length($string, $enc);
-    $chars = array();
-    for ($i = 0; $i < $length; $i++) {
-      $chars[] = mb_substr($string, $i, 1, $enc);
-    }
-    return $chars;
-  }
-
-  /**
    * Returns the index of the first occurrence of $needle in the string
    * 
    * Returns false if the needle was not found. Accepts an optional offset from 
@@ -355,158 +189,6 @@ class Strings {
       return "";
     }
     return static::substr($string, $substrIndex, $endIndex - $substrIndex, $enc);
-  }
-
-  /**
-   * Checks whether the given string is not empty
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return boolean true if the string is not empty, false otherwise
-   */
-  public static function notEmpty($string, $encoding = null) {
-    return self::length($string, self::getEncoding($encoding)) > 0;
-  }
-
-  /**
-   * Checks whether the given string is empty
-   * 
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return boolean true if the string is empty, false otherwise
-   */
-  public static function isEmpty($string, $encoding = null) {
-    return !self::notEmpty($string, self::getEncoding($encoding));
-  }
-
-  /**
-   * Returns the length of the given string
-   * 
-   * @param  string $str a string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return int the length of the given string
-   */
-  public static function length($str, $encoding = null) {
-    return mb_strlen($str, self::getEncoding($encoding));
-  }
-
-  /**
-   * Determines if the string length is on a given closed interval
-   *
-   * @param  string $str checked string
-   * @param  int $lower lower limit
-   * @param  int $upper upper limit
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return boolean true if the string length is on a given closed interval, false otherwise.
-   */
-  public static function lengthBetween($str, $lower, $upper, $encoding = null) {
-    $length = self::length($str, $encoding);
-    return ($lower <= $length && $length <= $upper);
-  }
-
-  /**
-   * Checks whether or not the input string contains only alphabetic chars
-   * 
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only alphabetic chars, false otherwise.
-   */
-  public static function isAlpha($string, $encoding = null) {
-    return self::match($string, '^[[:alpha:]]*$', $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string contains only alphanumeric chars
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only alphanumeric chars, false otherwise.
-   */
-  public static function isAlphanumeric($string, $encoding = null) {
-    return self::match($string, '^[[:alnum:]]*$', $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string contains only whitespace chars
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only whitespace chars, false otherwise.
-   */
-  public static function isBlank($string, $encoding = null) {
-    return self::match($string, '^[[:space:]]*$', $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string contains only hexadecimal chars
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
-   */
-  public static function isHexadecimal($string, $encoding = null) {
-    return self::match($string, '^[[:xdigit:]]*$', $encoding);
-  }
-
-  /**
-   * Checks if the string is JSON
-   * 
-   * Unlike json_decode in PHP 5.x, this method is consistent with PHP 7 and 
-   * other JSON parsers, in that an empty string is not considered valid JSON.
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool true if the string is JSON, false otherwise
-   */
-  public static function isJson($string, $encoding = null) {
-    if (!static::length($string, $encoding)) {
-      return false;
-    }
-    json_decode($string);
-    return (json_last_error() === JSON_ERROR_NONE);
-  }
-
-  /**
-   * Checks whether or not the input string contains only upper case characters
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only upper chars, false otherwise.
-   */
-  public static function isUpperCase($string, $encoding = null) {
-    return self::match($string, '^[[:upper:]]*$', $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string contains only lower case characters
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only lower chars, false otherwise.
-   */
-  public static function isLowerCase($string, $encoding = null) {
-    return self::match($string, '^[[:lower:]]*$', $encoding);
-  }
-
-  /**
-   * Checks whether or not the input string is serialized
-   *
-   * @param  string $string checked string
-   * @return bool Returns true if the string is serialized, false otherwise.
-   */
-  public static function isSerialized($string) {
-    return $string === 'b:0;' || @unserialize($string) !== false;
   }
 
   /**
@@ -570,7 +252,7 @@ class Strings {
    * Removes redundant zeroes fron the decimal number
    *
    * @param  string|float $decimal the decimal number
-   * @return string cleaned decimal number as a string
+   * @return string cleaned decimal number
    */
   public static function cleanDecimal($decimal) {
     return trim(trim($decimal, '0'), '.');
@@ -584,7 +266,6 @@ class Strings {
   public static function getEncoding($encoding = null) {
     if ($encoding === null) {
       $encoding = \mb_internal_encoding();
-       
     }
     //echo "current encoding:(".$encoding.")\n";
     return $encoding;

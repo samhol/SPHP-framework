@@ -118,5 +118,14 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     $this->append(new Column($content, $small, $medium, $large, $xlarge, $xxlarge));
     return $this;
   }
+  
+
+  /**
+   * {@inheritdoc}
+   */
+  public function collapseColumns() {
+    $this->addCssClass("collapse");
+    return $this;
+  }
 
 }

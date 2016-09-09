@@ -10,7 +10,7 @@
 $footer-top-padding: rem-calc(10);
 $footer-border-color: #FAA523;
 
-.footer {
+body > .footer {
   padding-top: 0;
   > div {
     padding-top: rem-calc(15);

@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Core\CloneNotSupportedTrait as CloneNotSupportedTrait;
 use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\Apps\SyntaxhighlighterContainerTrait as SyntaxhighlighterContainerTrait;
 use Sphp\Html\Apps\SyntaxHighlighter as SyntaxHighlighter;
 use Sphp\Html\Foundation\F6\Buttons\IconButton as IconButton;
 
@@ -30,7 +30,7 @@ use Sphp\Html\Foundation\F6\Buttons\IconButton as IconButton;
  */
 class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterInterface {
 
-  use CloneNotSupportedTrait;
+  use CloneNotSupportedTrait, SyntaxhighlighterContainerTrait;
 
   /**
    *
@@ -68,48 +68,8 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
    * 
    * @return SyntaxHighlighter the inner Syntax Highlighter component
    */
-  public function getHighlighter() {
+  public function getSyntaxHighlighter() {
     return $this->hl;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setSource($source, $lang) {
-    $this->hl->setSource($source, $lang);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function loadFromFile($filename) {
-    $this->hl->loadFromFile($filename);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function attachContentCopyController(ComponentInterface $button = null) {
-    $this->hl->attachContentCopyController($button);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setDefaultContentCopyController($content = "Copy") {
-    $this->hl->setDefaultContentCopyController($content);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function useDefaultContentCopyController($use = true) {
-    $this->hl->useDefaultContentCopyController($use);
-    return $this;
   }
 
 }

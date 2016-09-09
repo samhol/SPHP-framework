@@ -92,8 +92,7 @@ class ApiGen extends AbstractPhpApiLinker {
       $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
       $name = array_pop($nsArr);
     }
-    return $this->hyperlink("namespace-" . $path . ".html", $name, "The $ns namespace")
-                    ->addCssClass("bordered");
+    return $this->hyperlink("namespace-" . $path . ".html", $name, "The $ns namespace");
   }
 
   /**

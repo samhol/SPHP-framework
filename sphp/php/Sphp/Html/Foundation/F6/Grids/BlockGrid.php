@@ -64,7 +64,7 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
    */
   public function __construct($items = null, $s = 3, $m = false, $l = false, $xl = false, $xxl = false) {
     $wrapper = function($c) {
-      if (!($c instanceof BlockGridColumn)) {
+      if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);
       }
       return $c;

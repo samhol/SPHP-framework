@@ -59,18 +59,12 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
         include_once "manual/manualTools/main.php";
         ?>
       </pre>
-        <?php
-        use Sphp\Html\Media\VideoJs as VideoJs;
-       $vjs = new VideoJs();
-       $vjs->loop()->addSource("http://www.painthewild.com/wp-content/uploads/2014/04/oceans-clip.mp4.mp4?_=2")->addSource("http://video-js.zencoder.com/oceans-clip.webm")->addSource("http://video-js.zencoder.com/oceans-clip.ogv")->printHtml();
-        ?>
-      <video id="example_video_1" class="video-js vjs-default-skin"
-             controls preload="auto" width="640" height="264"
-             poster="http://video-js.zencoder.com/oceans-clip.png"
-             data-setup='{"example_option":true}'>
-        <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/mp4" />
-        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-      </video>
+      <?php
+      //echo \Sphp\Core\Util\FileUtils::executePhpToString("manual/sidenav.php");
+      $b = new \Sphp\Html\Foundation\F6\Grids\ExampleViewingGrid("<span>Foundation</span> Side Nav Example");
+      $b->loadFromFile("manual/sidenav.php")->printHtml();
+      ?>
+
       <div class="input-group">
         <span class="input-group-label">cooler is cool</span>
         <input class="input-group-field" type="number">
@@ -83,7 +77,6 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
           <input type="submit" class="button" value="Submit">
         </div>
       </div>
-
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 
 
@@ -91,14 +84,14 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
   </div>
 
 
-<?php
-include_once("manual/_footer_.php");
+  <?php
+  include_once("manual/_footer_.php");
 
-use Sphp\Html\Apps\BackToTopButton as BackToTopButton;
+  use Sphp\Html\Apps\BackToTopButton as BackToTopButton;
 
 $backToTopBtn = new BackToTopButton();
-$backToTopBtn
-        ->setTitle("Back To Top")
-        ->printHtml();
-$html->documentClose();
-?>
+  $backToTopBtn
+          ->setTitle("Back To Top")
+          ->printHtml();
+  $html->documentClose();
+  ?>

@@ -40,13 +40,14 @@ class FileUtils {
    * @return string the result of the script execution
    */
   public static function executePhpToString($page) {
+    $content = "";
     try {
       ob_start();
       if (!is_file($page)) {
         throw new InvalidArgumentException("the path given contains no executable PHP script");
       }
       include($page);
-      $content = ob_get_contents();
+      $content .= ob_get_contents();
     } catch (\Exception $e) {
       $content .= $e;
     }

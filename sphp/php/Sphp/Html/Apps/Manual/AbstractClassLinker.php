@@ -128,7 +128,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   /**
    * {@inheritdoc}
    */
-  public function namespaceLink() {
+  public function namespaceLink($full = true) {
     $name = $this->ref->getNamespaceName();
     $title = "$name namespace";
     return $this->hyperlink($this->getNamespacePath(), $name, $title);
