@@ -128,6 +128,8 @@ class CodeExampleAccordion extends Accordion {
     if ($lang === false) {
       $lang = "text";
       $this->outputSyntaxPane->hide();
+    } else {
+      $this->outputSyntaxPane->unhide();
     }
     if ($lang == "text") {
       $this->outputSyntaxPane->useDefaultContentCopyController(false);
@@ -135,7 +137,6 @@ class CodeExampleAccordion extends Accordion {
       $this->outputSyntaxPane->useDefaultContentCopyController(true);
     }
     $this->outputSyntaxPane->executeFromFile($this->path, $lang);
-    $this->outputSyntaxPane->unhide();
     return $this;
   }
 
