@@ -55,6 +55,14 @@ class ContentCopyController implements AttributeChangeObserver, ContentInterface
     $this->button = $button;
     $this->setCopyTarget($target);
   }
+  
+  /**
+   * 
+   * @return ComponentInterface
+   */
+  public function getController() {
+    return $this->button;
+  }
 
   /**
    * 

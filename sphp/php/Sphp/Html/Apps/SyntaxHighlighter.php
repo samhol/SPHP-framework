@@ -7,14 +7,13 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractComponent as AbstractComponent;
 use Sphp\Html\ComponentInterface as ComponentInterface;
 use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
-use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Html\Div as Div;
 use InvalidArgumentException;
 use Sphp\Core\Util\FileUtils as FileUtils;
@@ -29,7 +28,7 @@ use Sphp\Core\Util\FileUtils as FileUtils;
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
  * @filesource
  */
-class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHighlighterInterface {
+class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterInterface {
 
   /**
    * the GeSHi component
@@ -37,13 +36,6 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * @var GeSHi
    */
   private $geshi;
-
-  /**
-   * GeSHi settings
-   *
-   * @var array
-   */
-  private $geshiProps = [];
 
   /**
    * default copy button
@@ -60,15 +52,36 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
   private $codeContainer;
 
   /**
+   * button controllers containing component
+   *
+   * @var Div 
+   */
+  private $buttonArea;
+
+  /**
+   * footer component
+   *
+   * @var Div 
+   */
+  private $footer;
+
+  /**
+   *
+   * @var string 
+   */
+  private $geshiId;
+
+  /**
    * Constructs a new instance
    */
   public function __construct() {
     parent::__construct("div");
     $this->cssClasses()->lock("GeSHi sphp-syntax-highlighter");
-    $this->content()->set("buttons", "");
-    $this->codeContainer = (new Div())->identify();
-    $this->content()->set("code", $this->codeContainer);
-    $this->buildGeshi();
+    $this->initGeshi();
+    $this->setSyntaxBlockId();
+    $footerText = "Highlighted with <strong>GeSHi " . $this->geshi->get_version() . "</strong>";
+    $this->footer = (new Div($footerText))->addCssClass("foot");
+    $this->buttonArea = (new Div())->addCssClass("button-area");
     $this->showLineNumbers(TRUE)
             ->startLineNumbersAt(1)
             ->useFooter()
@@ -79,7 +92,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * {@inheritdoc}
    */
   public function __destruct() {
-    unset($this->codeContainer, $this->codeContainer, $this->geshiProps, $this->geshi);
+    unset($this->codeContainer, $this->codeContainer, $this->geshi, $this->footer, $this->buttonArea);
     parent::__destruct();
   }
 
@@ -88,38 +101,29 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function __clone() {
     throw new Exception();
-    parent::__clone();
-    $this->geshiProps = Arrays::copy($this->geshiProps);
-    $this->buildGeshi();
+  }
+
+  /**
+   * 
+   * @return self for PHP Method Chaining
+   */
+  private function initGeshi() {
+    $this->geshi = new GeSHi();
+    $this->geshi->enable_classes();
+    $this->geshi->set_overall_class("syntax");
+    $this->geshi->set_header_type(GESHI_HEADER_DIV);
+    $this->geshi->set_overall_id(\Sphp\Core\Types\Strings::generateRandomString());
+    return $this;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getHtml() {
-    if (array_key_exists("load_from_file", $this->geshiProps) || array_key_exists("set_source", $this->geshiProps)) {
-      $this->codeContainer->replaceContent($this->geshi->parse_code());
-    }
-    return parent::getHtml();
-  }
-
-  /**
-   * Builds the GeSHi - Generic Syntax Highlighter object
-   *
-   * @return GeSHi the GeSHi - Generic Syntax Highlighter object
-   */
-  private function buildGeshi() {
-    $this->geshi = new GeSHi();
-    $this->geshi->enable_classes();
-    $this->geshi->set_overall_class("syntax");
-    $this->geshi->set_header_type(GESHI_HEADER_DIV);
-    foreach ($this->geshiProps as $method_name => $params) {
-      if (!is_array($params)) {
-        $params = [$params];
-      }
-      call_user_func_array([$this->geshi, $method_name], $params);
-    }
-    return $this->geshi;
+  public function contentToString() {
+    $output = "";
+    $output .= $this->geshi->parse_code();
+    $output .= $this->buttonArea . $this->footer;
+    return $output;
   }
 
   /**
@@ -128,19 +132,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * @param  mixed $params
    * @return self for PHP Method Chaining
    */
-  protected function setGeshiProperties($fun, $params) {
-    if ($fun === "load_from_file") {
-      unset($this->geshiProps["set_source"], $this->geshiProps["set_language"]);
-      $this->buildGeshi();
-    }
-    if ($fun === "set_source") {
-      unset($this->geshiProps["load_from_file"]);
-      $this->buildGeshi();
-    }
-    $this->geshiProps[$fun] = $params;
-    if (!is_array($params)) {
-      $params = [$params];
-    }
+  private function setGeshiProperties($fun, $params) {
     call_user_func_array([$this->geshi, $fun], $params);
     return $this;
   }
@@ -150,7 +142,18 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * @return string
    */
   public function getSyntaxBlockId() {
-    return $this->codeContainer->getId();
+    return $this->geshiId;
+  }
+
+  /**
+   * 
+   * @param  string $seed
+   * @return self for PHP Method Chaining
+   */
+  public function setSyntaxBlockId($seed = "geshi_") {
+    $this->geshiId = $seed . \Sphp\Core\Types\Strings::generateRandomString();
+    $this->geshi->set_overall_id($this->geshiId);
+    return $this;
   }
 
   /**
@@ -160,7 +163,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * @return self for PHP Method Chaining
    */
   public function startLineNumbersAt($number) {
-    $this->setGeshiProperties("start_line_numbers_at", $number);
+    $this->geshi->start_line_numbers_at($number);
     return $this;
   }
 
@@ -171,9 +174,9 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function showLineNumbers($show = TRUE) {
     if ($show) {
-      $this->setGeshiProperties("enable_line_numbers", [GESHI_FANCY_LINE_NUMBERS, 2]);
+      $this->geshi->enable_line_numbers(\GESHI_FANCY_LINE_NUMBERS, 2);
     } else {
-      $this->setGeshiProperties("enable_line_numbers", [GESHI_NO_LINE_NUMBERS]);
+      $this->geshi->enable_line_numbers(\GESHI_NO_LINE_NUMBERS);
     }
     return $this;
   }
@@ -186,12 +189,10 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function useFooter($use = true) {
     if ($use) {
-      $footerText = "Highlighted with <strong>GeSHi " . $this->geshi->get_version() . "</strong>";
-      $footerText = (new Div($footerText))->addCssClass("foot");
+      $this->footer->unhide();
     } else {
-      $footerText = "";
+      $this->footer->hide();
     }
-    $this->content()->set("footer", $footerText);
     return $this;
   }
 
@@ -205,7 +206,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
     if ($button === null) {
       $button = new Button("button", $button);
     }
-    $copyBtn = (new CopyToClipboardButton($button, $this->codeContainer));
+    $copyBtn = (new CopyToClipboardButton($button, $this->geshiId));
     return $copyBtn;
   }
 
@@ -217,9 +218,9 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    */
   public function useDefaultContentCopyController($use = true) {
     if ($use) {
-      $this->content()["button-area"]->unhide();
+      $this->copyBtn->getController()->unhide();
     } else {
-      $this->content()["button-area"]->hide();
+      $this->copyBtn->getController()->hide();
     }
     return $this;
   }
@@ -235,9 +236,15 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
       $button = new Button("button", $button);
     }
     $this->copyBtn = $this->attachContentCopyController($button);
-    $buttonArea = new Div($this->copyBtn);
-    $buttonArea->cssClasses()->lock("button-area");
-    $this->content()["button-area"] = $buttonArea;
+    $this->buttonArea["copy"] = $this->copyBtn;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setLanguage($lang) {
+    $this->geshi->set_language($lang);
     return $this;
   }
 
@@ -245,8 +252,8 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
    * {@inheritdoc}
    */
   public function setSource($source, $lang) {
-    $this->setGeshiProperties("set_source", [$source]);
-    $this->setGeshiProperties("set_language", [$lang]);
+    $this->geshi->set_source($source);
+    $this->geshi->set_language($lang);
     return $this;
   }
 
@@ -257,7 +264,7 @@ class SyntaxHighlighter extends AbstractContainerComponent implements SyntaxHigh
     if (!file_exists($filename)) {
       throw new InvalidArgumentException("The file '$filename' does not exist!");
     }
-    $this->setGeshiProperties("load_from_file", [$filename]);
+    $this->geshi->load_from_file($filename);
     return $this;
   }
 
