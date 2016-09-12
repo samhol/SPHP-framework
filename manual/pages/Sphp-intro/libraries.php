@@ -1,9 +1,4 @@
 
-#Introduction
-
-SPHP framework supports many aspects of full stack Web 
-application developement. Framework has all the web programming goodies (`PHP`-, `SQL`-, `CSS`-, `SCSS`- and `JavaScript`) under its hood, 
-but generally deploying framework requires no usage of other programming languages than PHP.
 
 ##External libraries included
 <div class="row intro" data-equalizer data-equalize-on="medium">

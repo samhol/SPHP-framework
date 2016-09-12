@@ -9,8 +9,7 @@ use Sphp\Core\PathFinder as PathFinder;
 $pathFinder = new PathFinder();
 $orbitIntro = new Orbit();
 $orbitIntro->addCssClass("foundation-intro");
-$orbitIntro->appendMdFile($pathFinder->local("manual/pages/Core-intro/intro.php"));
-$gridSlide = new Slide();
-$gridSlide->appendMdFile($pathFinder->local("manual/pages/Core-intro/Media.php"));
-$orbitIntro->append($gridSlide);
+$orbitIntro->appendMdFile($pathFinder->local("manual/pages/Sphp-intro/introduction.php"));
+$orbitIntro->appendMdFile($pathFinder->local("manual/pages/Sphp-intro/libraries.php"));
+
 $orbitIntro->printHtml();
