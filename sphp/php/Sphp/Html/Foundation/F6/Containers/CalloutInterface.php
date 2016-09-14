@@ -26,7 +26,6 @@ use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
  */
 interface CalloutInterface extends ColourableInterface {
 
-
   /**
    * Sets/unsets the callout closable
    * 
@@ -40,19 +39,12 @@ interface CalloutInterface extends ColourableInterface {
    * @param  string|boolean $closable true for closable and false otherwise
    * @return self for PHP Method Chaining
    */
-  public function setClosable($closable = true) {
-    $this->attrs()->set("data-closable", $closable);
-    return $this;
-  }
+  public function setClosable($closable = true);
 
   /**
    * Checks whether the callout is closable or not
    * 
    * @return boolean true if callout is closable and false if not
    */
-  public function isClosable() {
-    return $this->attrs()->exists("data-closable");
-  }
-
-
+  public function isClosable();
 }
