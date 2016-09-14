@@ -28,12 +28,6 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
 
   /**
    *
-   * @var Div 
-   */
-  private $heading;
-
-  /**
-   *
    * @var Grid 
    */
   private $blockGrid;
@@ -54,17 +48,14 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
    * 
    * @param  mixed $heading column width for small screens (1-2)
    */
-  public function __construct($heading = "Example") {
+  public function __construct() {
     parent::__construct("div");
     $this->cssClasses()->lock("sphp-code-example-grid");
     $this->syntaxHighlighter = new SyntaxhighlightingColumn();
     $this->result = new Column();
     $this->result->cssClasses()->lock("result");
-    $this->heading = new Div();
-    $this->heading->cssClasses()->lock("heading");
     $this->blockGrid = new Row([$this->syntaxHighlighter, $this->result]);
     $this->blockGrid->addCssClass("collapse");
-    $this->setHeading($heading);
     $this->setRatio(12, "small");
     $this->setRatio(8, "xlarge");
   }
@@ -84,28 +75,6 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
     }
     $this->syntaxHighlighter->setWidth($syntaxSize, $screen);
     $this->result->setWidth($result, $screen);
-    return $this;
-  }
-
-  /**
-   * Sets the heading for the example 
-   * 
-   * @param  mixed $heading
-   * @return self for PHP Method Chaining
-   */
-  public function setHeading($heading) {
-    $this->heading->replaceContent($heading);
-    return $this;
-  }
-
-  /**
-   * Sets the heading for the example 
-   * 
-   * @param  mixed $footer
-   * @return self for PHP Method Chaining
-   */
-  public function setFooter($footer) {
-    $this->heading->replaceContent($footer);
     return $this;
   }
 
@@ -153,7 +122,7 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->heading . $this->blockGrid->getHtml() . "<div class='footer'>footer</div>";
+    return  $this->blockGrid->getHtml();
   }
 
 }

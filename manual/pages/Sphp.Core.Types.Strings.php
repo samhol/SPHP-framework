@@ -12,7 +12,6 @@ echo $parsedown->text(<<<MD
 $StringsLink class is a static utility class for multibyte PHP $strLink comparison and matching.
 MD
 );
-
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings1.php", "text", false))
 		->setExampleHeading("Multibyte String testing example")
 		->setOutputSyntaxPaneTitle("String testing results")

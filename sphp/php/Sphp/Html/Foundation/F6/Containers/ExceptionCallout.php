@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\F6\Containers;
 
 use Exception;
 use Sphp\Html\Div as Div;
+use Sphp\Html\Headings\H2 as H2;
 use Sphp\Html\Span as Span;
 use Sphp\Html\Lists\Ol as Ol;
 use Sphp\Html\Lists\Li as Li;
@@ -23,6 +24,18 @@ use Sphp\Html\Lists\Dl as Dl;
  * @filesource
  */
 class ExceptionCallout extends Callout {
+
+  /**
+   *
+   * @var boolean
+   */
+  private $showMessage = true;
+
+  /**
+   *
+   * @var boolean
+   */
+  private $showFile = false;
 
   /**
    *
@@ -44,6 +57,18 @@ class ExceptionCallout extends Callout {
   private $exception;
 
   /**
+   *
+   * @var H2 
+   */
+  private $exH2;
+
+  /**
+   *
+   * @var Div 
+   */
+  private $message;
+
+  /**
    * Constructs a new instance
    *
    * @param  Exception $e the viewed exception
@@ -54,9 +79,19 @@ class ExceptionCallout extends Callout {
     $this->exception = $e;
     parent::__construct();
     $this->cssClasses()->lock("sphp-exception-callout");
-    $this->buildHeading()
-            ->showTrace($showTrace)
+    $this->showTrace($showTrace)
             ->showPreviousException($showPreviousException);
+  }
+
+  /**
+   * Sets the visibility of the file
+   * 
+   * @param  boolean $show true for visible file
+   * @return self for PHP Method Chaining
+   */
+  public function showInitialFile($show = true) {
+    $this->showFile = $show;
+    return $this;
   }
 
   /**
@@ -84,20 +119,14 @@ class ExceptionCallout extends Callout {
   }
 
   /**
-   * Builds the heading part of the viewer
+   * Builds the file information of the exception
    *
-   * @return self for PHP Method Chaining
+   * @return string the file information of the exception
    */
-  private function buildHeading() {
-    $heading = (new Div())
-            ->addCssClass("heading")
-            ->append('<span class="exception">' . get_class($this->exception) . ":</span>");
-
-    $message = (new Span("<small>" . $this->exception->getMessage() . "</small>"))
-            ->addCssClass("message");
-    $heading->append($message);
-    $this->content()["heading"] = $heading;
-    return $this;
+  private function buildFile() {
+    $output = '<p class="message">on line <span class="number">#' . $this->exception->getLine() . '</span>';
+    $output .= ' of file <span class="file">' . $this->parsePath($this->exception->getFile()) . '</span></p>';
+    return $output;
   }
 
   /**
@@ -125,9 +154,10 @@ class ExceptionCallout extends Callout {
    *
    * @return self for PHP Method Chaining
    */
-  private function buildTrace() {
+  private function buildPrevious() {
     $traceArr = $this->exception->getTrace();
-    if ($this->showTrace && count($traceArr) > 0) {
+    $output = "";
+    if (count($traceArr) > 0) {
       $heading = (new Div())
               ->addCssClass("previous");
       $heading->append(' on line <span class="number">#' . $this->exception->getLine() . "</span>")
@@ -149,32 +179,36 @@ class ExceptionCallout extends Callout {
    * @return string parsed path
    */
   private function parsePath($path) {
-    return str_replace(['/', '.'], ['/<wbr>', '.<wbr>'], $path);
+    return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $path);
   }
 
   /**
    * Builds the trace information of the {@link \Exception}
    *
-   * @param  string[] $trace the trace of the viewed {@link \Exception}
-   * @return Li the trace information
+   * @return string|Li the trace information or an empty string
    */
-  private function parseTrace(array $trace) {
+  private function buildTrace() {
     $vbr = function($v) {
-      return str_replace('\\', '\\<wbr>', $v);
+      return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $v);
     };
-    $ul = new Ol();
-    $ul->addCssClass("trace");
-    //$li1 = new Lists\Li();
-    foreach ($trace as $traceRow) {
-      $err1 = new Li();
-      if (array_key_exists("line", $traceRow) && array_key_exists("file", $traceRow)) {
-        $err1->set("line", "on line <span class=\"number\">#{$vbr($traceRow["line"])}</span>")
-                ->set("file", " of file <wbr><span class=\"file\">{$this->parsePath($traceRow["file"])}</span>");
+    $trace = $this->exception->getTrace();
+    if (count($trace) > 0) {
+      $output = new Ol();
+      $output->addCssClass("trace");
+      //$li1 = new Lists\Li();
+      foreach ($trace as $traceRow) {
+        $err1 = new Li();
+        if (array_key_exists("line", $traceRow) && array_key_exists("file", $traceRow)) {
+          $err1->set("line", "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
+                  ->set("file", " of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
+        }
+        $err1->set("function", "" . $this->parseFunction($traceRow));
+        $output[] = $err1;
       }
-      $err1->set("function", $this->parseFunction($traceRow));
-      $ul[] = $err1;
+      return '<h3 class"trace">Trace information:</h3>' . $output;
+    } else {
+      return "";
     }
-    return $ul;
   }
 
   /**
@@ -184,7 +218,9 @@ class ExceptionCallout extends Callout {
    * @return Dl|null the information about the method described in a trace row or null
    */
   private function parseFunction(array $trRow) {
-    $methodStr = "";
+    //echo "<pre>";
+    //print_r($trRow);
+    $methodStr = "while executing ";
     if (array_key_exists("class", $trRow)) {
       $methodStr .= $this->parsePath($trRow["class"]);
     }
@@ -201,6 +237,20 @@ class ExceptionCallout extends Callout {
     } else {
       return null;
     }
+  }
+
+  public function contentToString() {
+    $output = "<h2>" . get_class($this->exception) . "</h2>";
+    if ($this->showMessage) {
+      $output .= '<p class="message">' . $this->exception->getMessage() . "</p>";
+    }
+    if ($this->showFile) {
+      $output .= $this->buildFile();
+    }
+    if ($this->showTrace) {
+      $output .= $this->buildTrace();
+    }
+    return $output;
   }
 
 }

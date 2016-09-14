@@ -278,8 +278,17 @@ left: rem-calc(35)
       background-color: #3333ff;
       color: #eef;
       font-weight: bold;
+      @include border-radius(5px);
       &:after {
         content: "PHP";
+      }
+    }
+    &.sql {
+      background-color: #004E66;
+      color: #eef;
+      font-weight: bold;
+      &:after {
+        content: "SQL";
       }
     }
   }
@@ -316,23 +325,28 @@ left: rem-calc(35)
     @include border-radius(4px);
     background-color: #fff;
     .orbit-slide {
-      h1 {
-        margin: rem-calc(2 2 5 2);
-      }
-      h1, h2 {
-        background: #eee;
+      > h1, > h2, > h3, > h4, > h5, > h6 { 
         line-height: 1.6;
-        padding: rem-calc(5 15 5 15);
-        border: solid 1px #666;
-        @include border-radius(4px);
-      }
-      h2, h3, h4, h5, h6 {
         margin: rem-calc(10 45 10 45);
         padding: rem-calc(5);
+        &:first-child  {
+          background: #eee;
+          margin: rem-calc(0 0 5 0);
+          padding: rem-calc(5 15 5 15);
+          border-bottom: solid 1px #666;
+          @include border-top-radius(4px);
+          text-transform: uppercase;
+          a, span {
+            text-transform: none;
+          }
+        }
       }
       p, ul, ol {
         margin: rem-calc(5 50);
         text-align: justify;
+      }
+      > ul, > ol {
+        list-style: inside;
       }
       .breadcrumbs.namespace {
         margin-top: rem-calc(10s);

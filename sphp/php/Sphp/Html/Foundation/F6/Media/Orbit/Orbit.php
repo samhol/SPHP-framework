@@ -173,13 +173,93 @@ class Orbit extends AbstractComponent implements ContentParserInterface, Travers
   }
 
   /**
-   * Sets the the timing function to pause animation on hover
+   * Sets the timing function to pause animation on hover
    * 
    * @param  boolean $pause true for pausing and false for not pausing
    * @return self for PHP Method Chaining
    */
   public function pauseOnHover($pause = true) {
     $this->attrs()->set("data-pause-on-hover", $pause ? "true" : "false");
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes in from the left
+   * 
+   * @param  string $effect the transition to play when a slide comes in from the left
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimInFromLeft($effect = "fade-in") {
+    $this->attrs()->set("data-anim-in-from-left", $effect);
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes in from the right
+   * 
+   * @param  string $effect the transition to play when a slide comes in from the right
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimInFromRight($effect = "fade-in") {
+    $this->attrs()->set("data-anim-in-from-right", $effect);
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes in
+   * 
+   * @param  string $effect the transition to play when a slide comes in
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimIn($effect = "fade-in") {
+    $this->setAnimInFromLeft($effect)
+            ->setAnimInFromRight($effect);
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes out from the left
+   * 
+   * @param  string $effect the transition to play when a slide comes out from the left
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimOutFromLeft($effect = "fade-out") {
+    $this->attrs()->set("data-anim-out-from-left", $effect);
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes out from the right
+   * 
+   * @param  string $effect the transition to play when a slide comes out from the right
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimOutFromRight($effect = "fade-out") {
+    $this->attrs()->set("data-anim-out-from-right", $effect);
+    return $this;
+  }
+
+  /**
+   * Sets the transition to play when a slide comes in
+   * 
+   * @param  string $effect the transition to play when a slide comes out
+   * @return self for PHP Method Chaining
+   * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
+   * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
+   */
+  public function setAnimOut($effect = "fade-out") {
+    $this->setAnimOutFromLeft($effect)
+            ->setAnimOutFromRight($effect);
     return $this;
   }
 

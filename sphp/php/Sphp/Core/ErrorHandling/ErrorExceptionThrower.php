@@ -7,6 +7,8 @@
 
 namespace Sphp\Core\ErrorHandling;
 
+use ErrorException;
+
 /**
  * Utility for catching PHP errors and converting them to an exception that can be caught at runtime
  * 
@@ -21,6 +23,7 @@ class ErrorExceptionThrower {
 
   /**
    * Starts redirecting PHP errors
+   * 
    * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
    */
   public static function start($level = \E_ALL) {
@@ -47,7 +50,7 @@ class ErrorExceptionThrower {
   /**
    * Shutdown handler for fatal errors
    * 
-   * @throws \ErrorException
+   * @throws ErrorException
    */
   public static function fatalErrorShutdownHandler() {
     $last_error = error_get_last();
@@ -64,19 +67,19 @@ class ErrorExceptionThrower {
    * If the PHP command is called with @ preceeding it, then it will be ignored 
    * here as well.
    *
-   * @param string $code 
-   * @param string $string The Exception message to throw.
-   * @param string $file
-   * @param string $line
-   * @return type
-   * @throws \ErrorException
+   * @param  string $code 
+   * @param  string $string The Exception message to throw.
+   * @param  string $file
+   * @param  string $line
+   * @return void
+   * @throws ErrorException
    */
   public static function handleError($code, $string = "", $file = "", $line = "") {
     // ignore supressed errors
     if (error_reporting() == 0) {
       return;
     }
-    throw new \ErrorException($string, $code, 0, $file, $line);
+    throw new ErrorException($string, $code, 0, $file, $line);
   }
 
 }
