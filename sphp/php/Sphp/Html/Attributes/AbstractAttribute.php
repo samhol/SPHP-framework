@@ -34,12 +34,6 @@ abstract class AbstractAttribute implements AttributeInterface {
    */
   private $required = false;
 
-  /**
-   * collection of individual id change observer objects
-   *
-   * @var \SplObjectStorage
-   */
-  protected $observers;
 
   /**
    * Constructs a new instance of the {@link self] object
@@ -154,7 +148,6 @@ abstract class AbstractAttribute implements AttributeInterface {
   public function demand() {
     if (!$this->required) {
       $this->required = true;
-      $this->notifyChange();
     }
     return $this;
   }
@@ -181,36 +174,6 @@ abstract class AbstractAttribute implements AttributeInterface {
    */
   public function isVisible() {
     return $this->isDemanded() || $this->getValue() !== false;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function attachAttributeChangeObserver($observer) {
-    $this->observers->attach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function detachAttributeChangeObserver($observer) {
-    $this->observers->detach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function notifyChange() {
-    foreach ($this->observers as $obs) {
-      if ($obs instanceof AttributeChangeObserver) {
-        $obs->attributeChanged($this, $this->getName());
-      } else {
-        $obs($this, $this->getName());
-      }
-    }
-    return $this;
   }
 
 }

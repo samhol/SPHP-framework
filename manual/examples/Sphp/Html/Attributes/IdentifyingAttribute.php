@@ -8,7 +8,7 @@ $observer = function($idAttr) {
   echo "<div $idAttr>ID: '" . $idAttr->getValue() . "'</div>\n";
 };
 $idAttr = (new IdentifyingAttribute("id"))
-        ->attachAttributeChangeObserver($observer);
+        ->attachIdentityObserver($observer);
 $idAttr->identify()->set(Strings::generateRandomString(16));
 $idAttr->lock("id_1")
         ->clear();

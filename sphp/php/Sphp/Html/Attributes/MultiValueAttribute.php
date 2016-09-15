@@ -118,7 +118,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
       $this->values = array_unique(array_merge($arr, $this->values));
       sort($this->values);
     }
-    $this->notifyChange();
     return $this;
   }
 
@@ -193,7 +192,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     if (count($arr) > 0) {
       $this->values = array_unique(array_merge($this->locked, array_diff($this->values, $arr)));
       sort($this->values);
-      $this->notifyChange();
     }
     return $this;
   }
@@ -203,7 +201,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function clear() {
     $this->values = Arrays::copy($this->locked);
-    $this->notifyChange();
     return $this;
   }
 

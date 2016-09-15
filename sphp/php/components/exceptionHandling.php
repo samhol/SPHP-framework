@@ -3,7 +3,7 @@
 namespace Sphp\Utils\ErrorHandling;
 
 $handler = new ExceptionHandler();
-$handler->attachAttributeChangeObserver(new ExceptionLogger());
-$handler->attachAttributeChangeObserver(new ExceptionPrinter());
+$handler->attachIdentityObserver(new ExceptionLogger());
+$handler->attachIdentityObserver(new ExceptionPrinter());
 set_exception_handler(array($handler, 'handle'));
 ?>

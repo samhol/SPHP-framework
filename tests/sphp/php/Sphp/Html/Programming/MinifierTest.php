@@ -23,7 +23,7 @@ class MinifierTest extends \PHPUnit_Framework_TestCase {
 		$this->listener = function($event, $attrName) {
 			echo "\n '$attrName' changed: $attrName\n";
 		};
-		$this->attrs->attachAttributeChangeObserver($this->listener);
+		$this->attrs->attachIdentityObserver($this->listener);
 	}
 
 	/**

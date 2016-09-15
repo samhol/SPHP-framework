@@ -88,7 +88,7 @@ $p[] = ["Forms",
 
 namespace Sphp\Html\Media;
 
-$av = $api->classLinker(Audio::class) . " and " . $api->classLinker(Video::class);
+$av = $api->classLinker(AV\Audio::class) . " and " . $api->classLinker(AV\Video::class);
 $p[] = ["Media", [
         ["img", "Defines an image"],
         ["area", "Defines an area inside an image map"],

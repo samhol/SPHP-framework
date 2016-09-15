@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
-$attrChanger = $api->classLinker(AttributeChanger::class);
-$attrChangeObserver = $api->classLinker(AttributeChangeObserver::class);
+$attrChanger = $api->classLinker(IdentityChanger::class);
+$attrChangeObserver = $api->classLinker(IdentityObserver::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 $setMethod = $abstractAttr->method("set");
 $clearMethod = $abstractAttr->method("clear");

@@ -116,26 +116,4 @@ interface AttributeInterface {
    */
   public function isVisible();
 
-  /**
-   * Attaches an observer so that it can be notified of attribute updates
-   * 
-   * @param  callable|AttributeChangeObserver $observer
-   * @return self for PHP Method Chaining
-   */
-  public function attachAttributeChangeObserver($observer);
-
-  /**
-   * Detaches an observer from the subject to no longer notify it of attribute updates
-   * 
-   * @param  callable|AttributeChangeObserver $observer
-   * @return self for PHP Method Chaining
-   */
-  public function detachAttributeChangeObserver($observer);
-
-  /**
-   * Notifies all attached attribute observers
-   * 
-   * @return self for PHP Method Chaining
-   */
-  public function notifyChange();
 }

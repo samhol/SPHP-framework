@@ -103,7 +103,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    * @throws   InvalidAttributeException if either the name or the value is empty
    */
   public function setProperty($property, $value) {
-    $this->storeProperty($property, $value)->notifyChange();
+    $this->storeProperty($property, $value);
     return $this;
   }
 
@@ -124,7 +124,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
     foreach ($props as $property => $value) {
       $this->storeProperty($property, $value);
     }
-    return $this->notifyChange();
+    return $this;
   }
 
   /**
@@ -150,7 +150,6 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
       throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $val;
-    $this->notifyChange();
     return $this;
   }
 

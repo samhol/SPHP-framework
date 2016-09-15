@@ -7,6 +7,8 @@
 
 namespace Sphp\Html;
 
+use Sphp\Html\Attributes\IdentityChanger as IdentityChanger;
+
 /**
  * Interface specifies the basic functionality of an identifiable HTML component
  *
@@ -16,7 +18,7 @@ namespace Sphp\Html;
  * @link    http://www.w3schools.com/tags/att_global_id.asp id attribute
  * @filesource
  */
-interface IdentifiableInterface {
+interface IdentifiableInterface extends IdentityChanger {
 
   /**
    * Sets the value of the id attribute

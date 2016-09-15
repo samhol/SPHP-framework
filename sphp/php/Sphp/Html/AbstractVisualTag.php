@@ -7,8 +7,8 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeChanger as AttributeChanger;
-use Sphp\Html\Attributes\AttributeChangeObserver as AttributeChangeObserver;
+use Sphp\Html\Attributes\IdentityChanger as AttributeChanger;
+use Sphp\Html\Attributes\IdentityObserver as AttributeChangeObserver;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;
 use InvalidArgumentException;
@@ -43,13 +43,6 @@ abstract class AbstractVisualTag extends AbstractTag {
   private $attrs;
 
   /**
-   * collection of individual id change observer objects
-   *
-   * @var SplObjectStorage
-   */
-  private $observers;
-
-  /**
    * Constructs a new instance
    *
    * @param  string $tagName the tag name of the component
@@ -68,7 +61,7 @@ abstract class AbstractVisualTag extends AbstractTag {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrs, $this->tagName, $this->observers);
+    unset($this->attrs, $this->tagName);
   }
 
   /**
@@ -124,41 +117,6 @@ abstract class AbstractVisualTag extends AbstractTag {
    */
   public function attrs() {
     return $this->attrs;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function attachAttributeChangeObserver($observer) {
-    if ($this->observers === null) {
-      $this->observers = new \SplObjectStorage();
-    }
-    $this->observers->attach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function detachAttributeChangeObserver($observer) {
-    $this->observers->detach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function notifyAttributeChange($attrName) {
-    if ($this->observers !== null) {
-      foreach ($this->observers as $obs) {
-        if ($obs instanceof AttributeChangeObserver) {
-          $obs->attributeChanged($this, $attrName);
-        } else {
-          $obs($this, $attrName);
-        }
-      }
-    }
-    return $this;
   }
 
 }

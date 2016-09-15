@@ -15,7 +15,7 @@ use Sphp\Html\Navigation\Hyperlink as Hyperlink;
  *
  * @author Sami Holck
  */
-class TabButton extends \Sphp\Html\AbstractContainerComponent implements \Sphp\Html\Lists\LiInterface, \Sphp\Html\Attributes\AttributeChangeObserver {
+class TabButton extends \Sphp\Html\AbstractContainerComponent implements \Sphp\Html\Lists\LiInterface, \Sphp\Html\Attributes\IdentityObserver {
 
   /**
    *
@@ -46,10 +46,10 @@ class TabButton extends \Sphp\Html\AbstractContainerComponent implements \Sphp\H
 
   /**
    * 
-   * @param \Sphp\Html\Attributes\AttributeChanger $obj
+   * @param \Sphp\Html\Attributes\IdentityChanger $obj
    * @param string $attrName
    */
-  public function attributeChanged(\Sphp\Html\Attributes\AttributeChanger $obj, $attrName) {
+  public function identityChanged(\Sphp\Html\Attributes\IdentityChanger $obj, $attrName) {
     if ($this->panel === $obj && $attrName = "id") {
       $this->panelLink->setHref("#" . $this->panel->getId());
     }

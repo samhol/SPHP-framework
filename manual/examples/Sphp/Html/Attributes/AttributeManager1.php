@@ -7,7 +7,8 @@ $observer = function($attrs) {
 };
 $attrs = (new AttributeManager())
         ->set("type", "button")
-        ->attachAttributeChangeObserver($observer);
+        ->attachIdentityObserver($observer)
+        ->identify();
 $attrs["value"] = "Sami";
 $attrs["disabled"] = true;
 $attrs->remove("not_found");

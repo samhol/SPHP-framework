@@ -8,7 +8,6 @@
 namespace Sphp\Html\Attributes;
 
 use Countable;
-use ArrayAccess;
 use IteratorAggregate;
 use SplObjectStorage;
 use Sphp\Core\Types\Arrays as Arrays;
@@ -22,7 +21,7 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractAttributeManager implements AttributeChanger, AttributeChangeObserver, Countable, ArrayAccess, IteratorAggregate {
+abstract class AbstractAttributeManager implements IdentityChanger, Countable, IteratorAggregate {
 
   /**
    * attributes as a (name -> value) map
@@ -53,11 +52,10 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
   private $attrObjects = [];
 
   /**
-   * collection of individual id change observer objects
    *
-   * @var SplObjectStorage
+   * @var string[] 
    */
-  private $observers;
+  private $identifiers = [];
 
   /**
    * Constructs a new instance
@@ -67,7 +65,6 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     foreach ($objectMap as $objType) {
       $this->setAttributeObject($objType);
     }
-    $this->observers = new SplObjectStorage();
   }
 
   /**
@@ -77,7 +74,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrObjects, $this->attrs, $this->locked, $this->required, $this->observers);
+    unset($this->attrObjects, $this->attrs, $this->locked, $this->required);
   }
 
   /**
@@ -92,7 +89,6 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     $this->attrs = Arrays::copy($this->attrs);
     $this->locked = Arrays::copy($this->locked);
     $this->required = Arrays::copy($this->required);
-    $this->observers = new SplObjectStorage();
   }
 
   /**
@@ -120,7 +116,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
    */
   private function setAttributeObject(AttributeInterface $attrObject) {
     $name = $attrObject->getName();
-    if ($this->isAttributeObject($name) && $this->getAttributeObject($name)) { 
+    if ($this->isAttributeObject($name)) {
       throw new InvalidAttributeException();
     }
     if ($this->exists($name)) {
@@ -128,7 +124,10 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
       if ($this->isDemanded($name)) {
         $attrObject->demand();
       }
-      $attrObject->attachAttributeChangeObserver($this);
+    }
+    if ($attrObject instanceof IdentifyingAttributeInterface) {
+      $this->identifiers[] = $attrObject->getName();
+      //$attrObject->attachIdentityObserver($this);
     }
     $this->attrObjects[$name] = $attrObject;
     return $this;
@@ -215,7 +214,6 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
-        $this->notifyAttributeChange($name);
       }
     }
     return $this;
@@ -237,7 +235,7 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
     $this->set($name, $seed . Strings::generateRandomString($length));
     return $this;
   }
-  
+
   /**
    * Sets an Aria attribute
    *
@@ -357,25 +355,6 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
         throw new UnmodifiableAttributeException("Required attribute '$name' cannot be removed");
       } else if ($this->exists($name)) {
         unset($this->attrs[$name]);
-        $this->notifyAttributeChange($name);
-      }
-    }
-    return $this;
-  }
-
-  /**
-   * Removes all not locked and not required attributes
-   *
-   * @return self for PHP Method Chaining
-   * @triggers {@link AttributeChangeEvent} for each removed attribute
-   */
-  public function clear() {
-    foreach ($this->attrObjects as $attr) {
-      $attr->clear();
-    }
-    foreach (array_keys($this->attrs) as $attrName) {
-      if (!$this->isDemanded($attrName)) {
-        $this->remove($attrName);
       }
     }
     return $this;
@@ -475,29 +454,9 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
   /**
    * {@inheritdoc}
    */
-  public function attachAttributeChangeObserver($observer) {
-    $this->observers->attach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function detachAttributeChangeObserver($observer) {
-    $this->observers->detach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function notifyAttributeChange($attrName) {
-    foreach ($this->observers as $obs) {
-      if ($obs instanceof AttributeChangeObserver) {
-        $obs->attributeChanged($this, $attrName);
-      } else {
-        $obs($this, $attrName);
-      }
+  public function attachIdentityObserver($observer, $identityName) {
+    if (array_key_exists($identityName, $this->identifiers)) {
+      $this->getAttributeObject($identityName)->attachIdentityObserver($observer);
     }
     return $this;
   }
@@ -505,55 +464,11 @@ abstract class AbstractAttributeManager implements AttributeChanger, AttributeCh
   /**
    * {@inheritdoc}
    */
-  public function attributeChanged(AttributeChanger $obj, $name) {
-    echo "$name";
-    if ($this[$name] == $obj) {
-      $this->notifyAttributeChange($this, $name);
+  public function detachIdentityObserver($observer, $identityName) {
+    if (array_key_exists($identityName, $this->identifiers)) {
+      $this->getAttributeObject($identityName)->detachIdentityObserver($observer);
     }
     return $this;
-  }
-
-  /**
-   * Checks if an attribute exists in the manager
-   * 
-   * @param  string $attrName the name of the attribute
-   * @return boolean true if the atribute exists and false otherwise
-   */
-  public function offsetExists($attrName) {
-    return $this->exists($attrName);
-  }
-
-  /**
-   * 
-   * @param string $attrName the name of the attribute
-   * @return mixed
-   */
-  public function offsetGet($attrName) {
-    if ($this->isAttributeObject($attrName)) {
-      $value = $this->getAttributeObject($attrName);
-    } else if (!$this->exists($attrName)) {
-      $value = false;
-    } else {
-      $value = $this->attrs[$attrName];
-    }
-    return $value;
-  }
-
-  /**
-   * 
-   * @param string $attrName the name of the attribute
-   * @param mixed $value
-   */
-  public function offsetSet($attrName, $value) {
-    $this->set($attrName, $value);
-  }
-
-  /**
-   * 
-   * @param string $attrName the name of the attribute
-   */
-  public function offsetUnset($attrName) {
-    $this->remove($attrName);
   }
 
   /**

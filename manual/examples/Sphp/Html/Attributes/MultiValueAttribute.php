@@ -10,8 +10,7 @@ $observer = function($classes, $name) {
   }
   echo "<div $classes>$content</div>\n";
 };
-$classes = (new MultiValueAttribute("class"))
-        ->attachAttributeChangeObserver($observer);
+$classes = (new MultiValueAttribute("class"));
 $classes->demand();
 $classes->set("button tiny")
         ->add(["alert"]);

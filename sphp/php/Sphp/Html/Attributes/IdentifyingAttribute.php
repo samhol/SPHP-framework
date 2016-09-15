@@ -19,8 +19,14 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IdentifyingAttribute extends AbstractAttribute {
+class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttributeInterface {
 
+  /**
+   * collection of individual id change observer objects
+   *
+   * @var \SplObjectStorage
+   */
+  protected $observers;
   /**
    * the value of the id attribute
    *
@@ -102,7 +108,37 @@ class IdentifyingAttribute extends AbstractAttribute {
   public function set($value) {
     if (!$this->isLocked() && $this->id != $value) {
       $this->id = $value;
-      $this->notifyChange();
+      $this->notifyIdentityChange();
+    }
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function attachIdentityObserver($observer) {
+    $this->observers->attach($observer);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function detachIdentityObserver($observer) {
+    $this->observers->detach($observer);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function notifyIdentityChange() {
+    foreach ($this->observers as $obs) {
+      if ($obs instanceof IdentityObserver) {
+        $obs->identityChanged($this, $this->getName());
+      } else {
+        $obs($this, $this->getName());
+      }
     }
     return $this;
   }

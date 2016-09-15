@@ -23,8 +23,9 @@ class AttributeManager extends AbstractAttributeManager {
    */
   public function __construct(array $objectMap = []) {
     $objects = [
-        new MultiValueAttribute("class"), 
-        new PropertyAttribute("style")
+        new MultiValueAttribute("class"),
+        new PropertyAttribute("style"),
+        new IdentifyingAttribute("id")
     ];
     $d = array_merge($objects, $objectMap);
     parent::__construct($d);
@@ -46,6 +47,15 @@ class AttributeManager extends AbstractAttributeManager {
    */
   public function inlineStyles() {
     return $this->getAttributeObject("style");
+  }
+
+  /**
+   * Returns the style attribute object
+   *
+   * @return PropertyAttribute the style attribute object
+   */
+  public function id() {
+    return $this->getAttributeObject("id");
   }
 
 }
