@@ -456,7 +456,7 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
    */
   public function attachIdentityObserver($observer, $identityName) {
     if (array_key_exists($identityName, $this->identifiers)) {
-      $this->getAttributeObject($identityName)->attachIdentityObserver($observer);
+      $this->getAttributeObject($identityName)->attachObserver($observer);
     }
     return $this;
   }
@@ -466,7 +466,7 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
    */
   public function detachIdentityObserver($observer, $identityName) {
     if (array_key_exists($identityName, $this->identifiers)) {
-      $this->getAttributeObject($identityName)->detachIdentityObserver($observer);
+      $this->getAttributeObject($identityName)->detachObserver($observer);
     }
     return $this;
   }

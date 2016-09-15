@@ -108,7 +108,7 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   public function set($value) {
     if (!$this->isLocked() && $this->id != $value) {
       $this->id = $value;
-      $this->notifyIdentityChange();
+      $this->notifyChange();
     }
     return $this;
   }
@@ -116,7 +116,7 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   /**
    * {@inheritdoc}
    */
-  public function attachIdentityObserver($observer) {
+  public function attachObserver($observer) {
     $this->observers->attach($observer);
     return $this;
   }
@@ -124,7 +124,7 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   /**
    * {@inheritdoc}
    */
-  public function detachIdentityObserver($observer) {
+  public function detachObserver($observer) {
     $this->observers->detach($observer);
     return $this;
   }
@@ -132,7 +132,7 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   /**
    * {@inheritdoc}
    */
-  public function notifyIdentityChange() {
+  public function notifyChange() {
     foreach ($this->observers as $obs) {
       if ($obs instanceof IdentityObserver) {
         $obs->identityChanged($this, $this->getName());

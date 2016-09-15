@@ -46,7 +46,7 @@ trait IdentifiableComponentTrait {
    * @return PropertyAttribute the attribute object containing inline styles
    */
   public function inlineStyles() {
-    return $this->attrs()->inlineStyles();
+    return $this->attrs()->styles();
   }
 
   /**

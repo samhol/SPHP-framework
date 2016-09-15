@@ -38,7 +38,7 @@ interface IdentifyingAttributeInterface extends AttributeInterface {
    * @param  callable|IdentityObserver $observer
    * @return self for PHP Method Chaining
    */
-  public function attachIdentityObserver($observer);
+  public function attachObserver($observer);
 
   /**
    * Detaches an observer from the subject to no longer notify it of identity changes
@@ -46,12 +46,12 @@ interface IdentifyingAttributeInterface extends AttributeInterface {
    * @param  callable|IdentityObserver $observer
    * @return self for PHP Method Chaining
    */
-  public function detachIdentityObserver($observer);
+  public function detachObserver($observer);
 
   /**
    * Notifies all attached identity observers
    *
    * @return self for PHP Method Chaining
    */
-  public function notifyIdentityChange();
+  public function notifyChange();
 }
