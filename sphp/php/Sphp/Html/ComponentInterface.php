@@ -8,13 +8,15 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
-use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
-use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;
+use Sphp\Html\Attributes\ClassAttribute as ClassAttribute;
+use Sphp\Html\Attributes\StyleAttribute as StyleAttribute;
+use Sphp\Html\Attributes\InvalidAttributeException as InvalidAttributeException;
+use Sphp\Html\Attributes\UnmodifiableAttributeException as UnmodifiableAttributeException;
 
 /**
  * Interface specifies the basic functionality of any HTML component
  *
- * {@link self} models an actual HTML component and supports HTML attribute manipulation.
+ * This models an actual HTML component and supports HTML attribute manipulation.
  *
  *
  * {@inheritdoc}
@@ -37,14 +39,14 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   /**
    * Returns the class attribute object
    * 
-   * @return MultiValueAttribute the class attribute object
+   * @return ClassAttribute the class attribute object
    */
   public function cssClasses();
 
   /**
    * Returns the attribute object containing inline styles
    * 
-   * @return PropertyAttribute the attribute object containing inline styles
+   * @return StyleAttribute the attribute object containing inline styles
    */
   public function inlineStyles();
 
@@ -166,25 +168,25 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * Sets an attribute name value pair
    *
    * **IMPORTANT!:** Does not alter locked attribute values:
-   * 
+   *
    * 1. For 'class' attribute: if a CSS class name is locked the method does nothing
-   * 2. For any other locked attribute the method throws a {@link LockingException}
-   *   
-   * **`$value` handling:**
-   * 
+   * 2. For any other locked attribute the method throws a {@link UnmodifiableAttributeException}
+   *
+   * `$value` parameter:
+   *
    * 1. the type of the value should always convert to string
    * 2. `null` or an empty `string`: an empty attribute is set
    * 3. boolean `true`: an empty attribute is set
-   * 4. boolean `false`: attribute is removed if present
-   * 5. otherwise the attribute value the string conversion value
-   * 
-   * @param  string $attrName the name of the attribute
+   * 4. boolean `false`: attribute is removed
+   * 5. otherwise the attribute value is the string conversion value
+   *
+   * @param  string $name the name of the attribute
    * @param  mixed $value the value of the attribute
    * @return self for PHP Method Chaining
-   * @throws \InvalidArgumentException if the attribute name is invalid
-   * @throws LockingException if the value of the attribute is already locked 
+   * @throws InvalidAttributeException if the attribute name or value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttr($attrName, $value = null);
+  public function setAttr($name, $value = null);
 
   /**
    * Removes given attribute if it is not locked

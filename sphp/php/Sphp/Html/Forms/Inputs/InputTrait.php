@@ -32,7 +32,7 @@ trait InputTrait {
    * @return string|null name attribute
    */
   public function getName() {
-    return $this->attrs()->getValue("name");
+    return $this->attrs()->get("name");
   }
 
   /**

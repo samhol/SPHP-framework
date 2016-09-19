@@ -83,7 +83,7 @@ class Ol extends HtmlList {
   public function getStart() {
     $start = 1;
     if ($this->attrs()->exists("start")) {
-      $start = $this->attrs()->getValue("start");
+      $start = $this->attrs()->get("start");
     }
     return (int) $start;
   }
@@ -109,7 +109,7 @@ class Ol extends HtmlList {
   public function getType() {
     $type = "1";
     if ($this->attrs()->exists("type")) {
-      $type = $this->attrs()->getValue("type");
+      $type = $this->attrs()->get("type");
     }
     return $type;
   }

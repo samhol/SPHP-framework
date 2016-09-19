@@ -15,7 +15,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-12
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -103,7 +102,17 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    * @throws   InvalidAttributeException if either the name or the value is empty
    */
   public function setProperty($property, $value) {
-    $this->storeProperty($property, $value);
+    if ($this->isLocked($property)) {
+      throw new UnmodifiableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+    }
+    $val = str_replace(";", "", $value);
+    if (Strings::isEmpty($property)) {
+      throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
+    }
+    if (Strings::isEmpty($value)) {
+      throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
+    }
+    $this->props[$property] = $val;
     return $this;
   }
 
@@ -122,34 +131,8 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    */
   public function setProperties(array $props) {
     foreach ($props as $property => $value) {
-      $this->storeProperty($property, $value);
+      $this->setProperty($property, $value);
     }
-    return $this;
-  }
-
-  /**
-   * Sets an property name value pair
-   *
-   * **Note:** Replaces old property value with the new one
-   *
-   * @param    string $property the name of the property
-   * @param    string $value the value of the property
-   * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the property is unmodifiable
-   * @throws   InvalidAttributeException if either the name or the value is empty
-   */
-  private function storeProperty($property, $value) {
-    if ($this->isLocked($property)) {
-      throw new UnmodifiableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
-    }
-    $val = str_replace(";", "", $value);
-    if (Strings::isEmpty($property)) {
-      throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
-    }
-    if (Strings::isEmpty($value)) {
-      throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
-    }
-    $this->props[$property] = $val;
     return $this;
   }
 

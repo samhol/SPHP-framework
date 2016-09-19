@@ -48,7 +48,6 @@ Any type of valid attribute support at least these four setter methods:
 MD
 );
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
 echo $parsedown->text(<<<MD
 ##Requiring attributes and locking attribute values
 

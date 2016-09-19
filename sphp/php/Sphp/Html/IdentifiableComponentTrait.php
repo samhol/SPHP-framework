@@ -285,7 +285,7 @@ trait IdentifiableComponentTrait {
    * @return mixed the value of the attribute
    */
   public function getAttr($name) {
-    return $this->attrs()->getValue($name);
+    return $this->attrs()->get($name);
   }
 
   /**
@@ -353,7 +353,7 @@ trait IdentifiableComponentTrait {
   /**
    * {@inheritdoc}
    */
-  public function attachIdentityObserver($observer, $identityName) {
+  public function attachIdentityObserver($observer, $identityName = "id") {
     $this->attrs()->attachIdentityObserver($observer, $identityName);
     return $this;
   }
@@ -361,7 +361,7 @@ trait IdentifiableComponentTrait {
   /**
    * {@inheritdoc}
    */
-  public function detachIdentityObserver($observer, $identityName) {
+  public function detachIdentityObserver($observer, $identityName = "id") {
     $this->attrs()->detachIdentityObserver($observer, $identityName);
     return $this;
   }

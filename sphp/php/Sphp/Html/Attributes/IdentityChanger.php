@@ -25,7 +25,7 @@ interface IdentityChanger {
    * @param  callable|IdentityObserver $observer
    * @return self for PHP Method Chaining
    */
-  public function attachIdentityObserver($observer, $identityName);
+  public function attachIdentityObserver($observer, $identityName = "id");
 
   /**
    * Detaches an observer from the subject to no longer notify it of identity changes
@@ -33,5 +33,7 @@ interface IdentityChanger {
    * @param  callable|IdentityObserver $observer
    * @return self for PHP Method Chaining
    */
-  public function detachIdentityObserver($observer, $identityName);
+  public function detachIdentityObserver($observer, $identityName = "id");
+  
+  
 }

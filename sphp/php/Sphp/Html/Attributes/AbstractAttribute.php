@@ -14,7 +14,6 @@ use Sphp\Core\Types\Strings as Strings;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -42,7 +41,6 @@ abstract class AbstractAttribute implements AttributeInterface {
    */
   public function __construct($name) {
     $this->name = $name;
-    $this->observers = new \SplObjectStorage();
   }
 
   /**

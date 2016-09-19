@@ -2,18 +2,22 @@
 
 namespace Sphp\Html\Attributes;
 
-$observer = function($attrs) {
+$attrs = new AttributeManager();
+$printInput = function() use ($attrs) {
   echo "<input $attrs>\n";
 };
-$attrs = (new AttributeManager())
-        ->set("type", "button")
+$observer = function($id) {
+  echo "<p>$id</p>\n";
+};
+$attrs->lock("type", "text")
         ->attachIdentityObserver($observer)
         ->identify();
-$attrs["value"] = "Sami";
-$attrs["disabled"] = true;
+$attrs->set("value", "Sami");
+$attrs->set("disabled", true);
+$printInput();
 $attrs->remove("not_found");
 $attrs->remove("disabled");
-$attrs["type"] = "text";
-$attrs["value"] = false;
-$attrs["placeholder"] = "First Name";
+$attrs->set("value", false);
+$attrs->set("placeholder", "First Name");
+$printInput($attrs);
 ?>

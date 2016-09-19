@@ -57,7 +57,7 @@ class MinifierTest extends \PHPUnit_Framework_TestCase {
 		$this->attrs->set("true", TRUE);
 		$this->assertEquals("$this->attrs", "true");
 		$this->assertTrue($this->attrs->exists("true"));
-		$this->assertTrue($this->attrs->getValue("true") === TRUE);
+		$this->assertTrue($this->attrs->get("true") === TRUE);
 
 		$this->attrs->set("false", FALSE);
 		$this->assertFalse($this->attrs->exists("false"));
@@ -78,9 +78,9 @@ class MinifierTest extends \PHPUnit_Framework_TestCase {
 				->set("one", 1);
 		echo "\nattrs:$this->attrs\n";
 		$this->assertEquals("$this->attrs", 'neg="-1" zero="0" one="1"');
-		$this->assertTrue($this->attrs->getValue("neg") === -1);
-		$this->assertTrue($this->attrs->getValue("zero") === 0);
-		$this->assertTrue($this->attrs->getValue("one") === 1);
+		$this->assertTrue($this->attrs->get("neg") === -1);
+		$this->assertTrue($this->attrs->get("zero") === 0);
+		$this->assertTrue($this->attrs->get("one") === 1);
 	}
 
 	/**

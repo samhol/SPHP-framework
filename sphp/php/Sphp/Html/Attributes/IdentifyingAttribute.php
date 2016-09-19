@@ -8,13 +8,13 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Core\Types\Strings as Strings;
+use SplObjectStorage;
 
 /**
  * An implementation of a HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-09-28
-
  * @link    http://www.w3schools.com/tags/att_global_id.asp id attribute
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -24,9 +24,10 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   /**
    * collection of individual id change observer objects
    *
-   * @var \SplObjectStorage
+   * @var SplObjectStorage
    */
-  protected $observers;
+  private $observers;
+
   /**
    * the value of the id attribute
    *
@@ -40,6 +41,15 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
    */
   private $isLocked;
 
+  /**
+   * Constructs a new instance of the {@link self] object
+   *
+   * @param string $name the name of the attribute
+   */
+  public function __construct($name) {
+    parent::__construct($name);
+    $this->observers = new SplObjectStorage();
+  }
   /**
    * Identifies HtmlElement with an unique id attribute.
    *
@@ -135,9 +145,9 @@ class IdentifyingAttribute extends AbstractAttribute implements IdentifyingAttri
   public function notifyChange() {
     foreach ($this->observers as $obs) {
       if ($obs instanceof IdentityObserver) {
-        $obs->identityChanged($this, $this->getName());
+        $obs->identityChanged($this);
       } else {
-        $obs($this, $this->getName());
+        $obs($this);
       }
     }
     return $this;
