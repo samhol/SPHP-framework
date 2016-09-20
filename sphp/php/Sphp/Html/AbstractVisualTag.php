@@ -7,12 +7,9 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\IdentityChanger as AttributeChanger;
-use Sphp\Html\Attributes\IdentityObserver as AttributeChangeObserver;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;
 use InvalidArgumentException;
-use SplObjectStorage;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations

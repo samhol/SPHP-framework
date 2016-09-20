@@ -7,8 +7,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\IdentityChanger as IdentityChanger;
-
 /**
  * Interface specifies the basic functionality of an identifiable HTML component
  *
@@ -18,7 +16,7 @@ use Sphp\Html\Attributes\IdentityChanger as IdentityChanger;
  * @link    http://www.w3schools.com/tags/att_global_id.asp id attribute
  * @filesource
  */
-interface IdentifiableInterface extends IdentityChanger {
+interface IdentifiableInterface {
 
   /**
    * Sets the value of the id attribute
@@ -31,7 +29,7 @@ interface IdentifiableInterface extends IdentityChanger {
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function setId($id);
+  public function setId($id, $value);
 
   /**
    * Identifies the element with an unique id attribute.
@@ -39,26 +37,20 @@ interface IdentifiableInterface extends IdentityChanger {
    * **Notes:**
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
-   *
-   * @param  string $seed id attributes seed
+   * @param  string $identityName the name of the identity attribute
+   * @param  string $seed optional prefix of the identity value
+   * @param  int $length the length of the identity value
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function identify($seed = "id");
+  public function identify($identityName = "id", $seed = "id");
 
   /**
-   * Returns the value of the id attribute
+   * Checks whether the identifying attribute is set or not
    *
-   * @return string the value of the id attribute
-   * @link http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function getId();
-
-  /**
-   * Checks whether the id attribute is set or not
-   *
-   * @return boolean true if the id attribute is set, otherwise false
+   * @param  string $identityName optional name of the identifying attribute
+   * @return boolean true if the identity is set, otherwise false
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function hasId();
+  public function hasId($identityName = "id");
 }

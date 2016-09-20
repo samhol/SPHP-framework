@@ -24,8 +24,7 @@ class AttributeManager extends AbstractAttributeManager {
   public function __construct(array $objectMap = []) {
     $objects = [
         new ClassAttribute(),
-        new StyleAttribute(),
-        new IdentifyingAttribute("id")
+        new StyleAttribute()
     ];
     $d = array_merge($objects, $objectMap);
     parent::__construct($d);
@@ -47,15 +46,6 @@ class AttributeManager extends AbstractAttributeManager {
    */
   public function styles() {
     return $this->getAttributeObject("style");
-  }
-
-  /**
-   * Returns the style attribute object
-   *
-   * @return IdentifyingAttribute the `id` attribute object
-   */
-  public function id() {
-    return $this->getAttributeObject("id");
   }
 
   /**

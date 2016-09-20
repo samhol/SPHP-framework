@@ -5,7 +5,7 @@ namespace Sphp\Net;
 use Sphp\Core\Types\Strings as Strings;
 
 for ($i = 1; $i <= 4; ++$i) {
-	$password[$i] = Strings::generateRandomString(6);
+	$password[$i] = Strings::random(6);
 	$hash[$i] = Passwords::hash($password[$i]);
 	echo "password: '$password[$i]' hash '$hash[$i]'\n";
 }

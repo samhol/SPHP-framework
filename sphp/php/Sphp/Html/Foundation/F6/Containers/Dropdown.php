@@ -150,7 +150,7 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
       $togleButton = new Button("button", $togleButton);
     }
     $this->target = $togleButton
-            ->setAttr("data-toggle", $this->getId());
+            ->setAttr("data-toggle", $this->identify());
     return $this;
   }
 

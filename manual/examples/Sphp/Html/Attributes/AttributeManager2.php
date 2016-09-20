@@ -6,8 +6,7 @@ $observer = function($attrs) {
   echo "<input $attrs>\n";
 };
 $attrs = new AttributeManager();
-$attrs->set("value", "SPHP button")
-        ->attachIdentityObserver($observer);
+$attrs->set("value", "SPHP button");
 $attrs->lock("type", "button");
 $attrs->styles()->setProperty("width", "50%");
 $attrs->classes()->add("button");

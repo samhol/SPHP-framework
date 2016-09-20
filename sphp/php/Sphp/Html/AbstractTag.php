@@ -7,9 +7,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\IdentityChanger as AttributeChanger;
-use Sphp\Html\Attributes\IdentityObserver as AttributeChangeObserver;
-use Sphp\Html\Attributes\IdentifyingAttributeInterface as IdentifyingAttributeInterface;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Core\Types\Strings as Strings;
 use InvalidArgumentException;
@@ -118,11 +115,6 @@ abstract class AbstractTag implements TagInterface {
     } else {
       $this->attrs = $attrManager;
     }
-    $delegator = function(IdentifyingAttributeInterface $idAttr) {
-      //var_dump($idAttr);
-      $this->notifyChange($idAttr->getName());
-    };
-   // $this->attrs->attachIdentityObserver($delegator);
     return $this;
   }
 
@@ -131,36 +123,6 @@ abstract class AbstractTag implements TagInterface {
    */
   public function attrs() {
     return $this->attrs;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function attachObserver($observer) {
-    $this->observers->attach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function detachObserver($observer) {
-    $this->observers->detach($observer);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function notifyChange($identityName) {
-    foreach ($this->observers as $obs) {
-      if ($obs instanceof IdentityObserver) {
-        $obs->identityChanged($this, $identityName);
-      } else {
-        $obs($this, $identityName);
-      }
-    }
-    return $this;
   }
 
 }

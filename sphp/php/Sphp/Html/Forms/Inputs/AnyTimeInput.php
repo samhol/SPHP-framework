@@ -55,8 +55,8 @@ class AnyTimeInput extends TextInput {
   public function __construct($name = "", $value = "", $locale = self::LANG_EN) {
     parent::__construct($name, $value, 17, 17);
     $this->attrs()->demand("data-anytime");
-    $this->identify()
-            ->setDateTimeFormat()
+    $this->identify();
+    $this->setDateTimeFormat()
             ->setLocale($locale);
   }
 

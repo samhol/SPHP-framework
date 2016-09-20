@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Utils\ErrorHandling;
+namespace Sphp\Core\ErrorHandling;
 
 $handler = new ExceptionHandler();
-$handler->attachIdentityObserver(new ExceptionLogger());
-$handler->attachIdentityObserver(new ExceptionPrinter());
+$handler->attach(new ExceptionLogger());
+$handler->attach(new ExceptionPrinter());
 set_exception_handler(array($handler, 'handle'));
 ?>

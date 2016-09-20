@@ -55,8 +55,8 @@ class Label extends ContainerTag {
    * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function setFor($for) {
-    if ($for instanceof InputInterface && $for instanceof IdentifiableInterface) {
-      $for = $for->identify()->getId();
+    if ($for instanceof IdentifiableInputInterface) {
+      $for = $for->identify();
     }
     $this->attrs()->set("for", $for);
     return $this;

@@ -133,15 +133,8 @@ class FileUploadButton implements ContentInterface, \Sphp\Html\Forms\Inputs\Iden
   /**
    * {@inheritdoc}
    */
-  public function getId() {
-    return $this->fileInput->getId();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function hasId() {
-    return $this->fileInput->getId();
+    return $this->fileInput->hasId();
   }
 
   /**

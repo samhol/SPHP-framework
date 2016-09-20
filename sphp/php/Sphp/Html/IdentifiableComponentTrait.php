@@ -299,71 +299,25 @@ trait IdentifiableComponentTrait {
   }
 
   /**
-   * Sets the value of the id attribute
-   *
-   * **IMPORTANT:**
-   *
-   * HTML id attribute is unique to every HTML-element.
-   *
-   * @param  string|null $id the value of the id attribute
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function setId($id) {
-    $this->attrs()->set("id", $id);
-    return $this;
-  }
-
-  /**
-   * Identifies the component with an unique id attribute.
-   *
-   * **Notes:**
-   *
-   * HTML id attribute is unique to every HTML-element. This method randomizes
-   * the id attribute value creation so that the id should be unique.
-   *
-   * @param  string $seed id attributes seed
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function identify($seed = "id_") {
-    return $this->setId($seed . Strings::generateRandomString());
-  }
-
-  /**
-   * Returns the value of the id attribute
-   *
-   * @return string|null the value of the id attribute
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function getId() {
-    return $this->getAttr("id");
-  }
-
-  /**
-   * Checks whether the id attribute is set or not
-   *
-   * @return boolean true if the id attribute is set, otherwise false
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function hasId() {
-    return $this->attrExists("id");
-  }
-
-  /**
    * {@inheritdoc}
    */
-  public function attachIdentityObserver($observer, $identityName = "id") {
-    $this->attrs()->attachIdentityObserver($observer, $identityName);
+  public function setId($id, $value) {
+    $this->attrs()->setId($id, $value);
     return $this;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function detachIdentityObserver($observer, $identityName = "id") {
-    $this->attrs()->detachIdentityObserver($observer, $identityName);
-    return $this;
+  public function identify($identityName = "id", $seed = "id_") {
+     return $this->attrs()->identify($identityName, $seed);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function hasId($identityName = "id") {
+    return $this->attrs()->hasId($identityName);
   }
 
   /**

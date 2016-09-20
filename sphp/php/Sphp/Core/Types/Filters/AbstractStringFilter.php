@@ -16,7 +16,7 @@ use Sphp\Core\Types\StringObject as StringObject;
  * remain unchanged.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
+ * @since   2015-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

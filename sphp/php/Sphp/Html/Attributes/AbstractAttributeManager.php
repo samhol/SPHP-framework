@@ -9,6 +9,7 @@ namespace Sphp\Html\Attributes;
 
 use Countable;
 use IteratorAggregate;
+use Sphp\Html\IdentifiableInterface as IdentifiableInterface;
 use Sphp\Core\Types\Arrays as Arrays;
 use Sphp\Core\Types\Strings as Strings;
 
@@ -20,7 +21,7 @@ use Sphp\Core\Types\Strings as Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractAttributeManager implements IdentityChanger, Countable, IteratorAggregate {
+class AbstractAttributeManager implements IdentifiableInterface, Countable, IteratorAggregate {
 
   /**
    * attributes as a (name -> value) map
@@ -124,9 +125,6 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
         $attrObject->demand();
       }
     }
-    if ($attrObject instanceof IdentifyingAttributeInterface) {
-      $this->identifiers[] = $name;
-    }
     $this->attrObjects[$name] = $attrObject;
     return $this;
   }
@@ -152,6 +150,16 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
   }
 
   /**
+   * Checks whether the instance of the inner attribute object if it is mapped
+   *
+   * @param  string $attrName the name of the attribute
+   * @return boolean true if the attribute is an instance of {@link AttributeInterface} false otherwise
+   */
+  public function isIdentified($attrName) {
+    return $this->isIdentifier($attrName) && $this->isLocked($attrName);
+  }
+
+  /**
    * Attaches whether the instance of the inner attribute object if it is mapped
    *
    * @param  string $name the name of the identifying attribute
@@ -159,23 +167,9 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
    */
   public function attachIdentifier($name) {
     if (!$this->isIdentifier($name)) {
-      $this->setAttributeObject(new IdentifyingAttribute($name));
+      $this->identifiers[] = $name;
     }
     return $this;
-  }
-
-  /**
-   * Checks whether the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $name the name of the identifying attribute
-   * @return IdentifyingAttribute|null the identifying attribute or `null` if none present
-   */
-  public function getIdentifier($name) {
-    $identifier = null;
-    if ($this->isIdentifier($name)) {
-      $identifier = $this->getAttributeObject($name);
-    }
-    return $identifier;
   }
 
   /**
@@ -224,10 +218,12 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
       if ($this->isLocked($name)) {
         throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
       }
+      /* if ($this->isIdentifier($name)) {
+        $this->setId($name, $value);
+        } */
       if ($value instanceof AttributeInterface) {
         $this->setAttributeObject($value);
-      }
-      if ($value === false) {
+      } else if ($value === false) {
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
@@ -237,26 +233,47 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
   }
 
   /**
-   * Creates an an unique id attribute
+   * {@inheritdoc}
+   */
+  public function hasId($identityName = "id") {
+    return $this->isIdentifier($identityName) && $this->exists($identityName);
+  }
+
+  /**
+   * Creates an an unique identifying attribute
    *
-   * @param  string $seed id attributes seed
-   * @param  string $name the name of the attribute
-   * @param  int $length the length of the string
+   * @param  string $identityName the name of the identity attribute
+   * @param  string $seed optional prefix of the identity value
+   * @param  int $length the length of the identity value
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function identify($seed = "", $name = "id", $length = 16) {
-    if ($this->isAttributeObject($name) && !$this->isIdentifier($name)) {
-      throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
+  public function identify($identityName = "id", $seed = "id_", $length = 16) {
+    if (!$this->isLocked($identityName)) {
+      $this->attachIdentifier($identityName);
+
+      $this->lock($identityName, $seed . Strings::random($length));
+      // var_dump($this->attrs[$identityName]);
     }
-    if ($this->isLocked($name)) {
-      throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
+    return $this->get($identityName);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setId($identityName, $value) {
+    if ($this->isLocked($identityName)) {
+      throw new UnmodifiableAttributeException;
     }
-    if (!$this->isIdentifier($name)) {
-      $this->attachIdentifier($name);
+    if (!HtmlIdStorage::get()->isValidValue($value)) {
+      throw new InvalidAttributeException;
     }
-    $this->set($name, $seed . Strings::generateRandomString($length));
-    return $this;
+    $result = HtmlIdStorage::get()->store($identityName, $value);
+    if ($result) {
+      $this->attachIdentifier($identityName);
+      $this->lock($identityName, $value);
+    }
+    return $result;
   }
 
   /**
@@ -389,29 +406,6 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
   }
 
   /**
-   * Returns the value of a given attribute name
-   *
-   * **IMPORTANT:**
-   *
-   * * Returns always `boolean false` if attribute is not present.
-   * * return `null` or an empty string for empty attributes.
-   *
-   * @param  string $name the name of the attribute
-   * @return mixed the value of the attribute or the attribute object
-
-    public function getValue($name) {
-    if ($this->isAttributeObject($name)) {
-    $value = $this->getAttributeObject($name)->getValue();
-    } else if (!$this->exists($name)) {
-    $value = false;
-    } else {
-    $value = $this->attrs[$name];
-    }
-    return $value;
-    }
-   */
-
-  /**
    * Checks if an attribute name exists in the manager
    *
    * @param  string $name the name of the attribute
@@ -456,26 +450,6 @@ abstract class AbstractAttributeManager implements IdentityChanger, Countable, I
       }
     }
     return $num;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function attachIdentityObserver($observer, $identityName = "id") {
-    if (!array_key_exists($identityName, $this->identifiers)) {
-      $this->getAttributeObject($identityName)->attachObserver($observer);
-    }
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function detachIdentityObserver($observer, $identityName = "id") {
-    if (array_key_exists($identityName, $this->identifiers)) {
-      $this->getAttributeObject($identityName)->detachObserver($observer);
-    }
-    return $this;
   }
 
   /**

@@ -8,8 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
 use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Attributes\IdentityObserver as IdentityObserver;
-use Sphp\Html\Attributes\IdentityChanger as IdentityChanger;
 
 /**
  * Class implements Foundation Reveal Modal 
@@ -23,7 +21,7 @@ use Sphp\Html\Attributes\IdentityChanger as IdentityChanger;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Controller extends ContainerTag implements IdentityChanger {
+class Controller extends ContainerTag {
 
   /**
    * the Modal reveal controller
@@ -52,27 +50,14 @@ class Controller extends ContainerTag implements IdentityChanger {
 
   /**
    * 
-   * @param \Sphp\Html\Foundation\F6\Containers\Modals\Modal $modal
-   * @return \Sphp\Html\Foundation\F6\Containers\Modals\Controller
+   * @param  Modal $modal
+   * @return self for PHP Method Chaining
    */
   private function setTarget(Modal $modal) {
-    $this->attrs()->set("data-open", $modal->getId());
-    $modal->attachIdentityObserver($this, "id");
-    if ($this->modal !== null) {
-      $this->modal->detachIdentityObserver($this, "id");
-    }
+    //var_dump($modal->identify("id", "modal_"));
+    $this->attrs()->set("data-open", $modal->identify("id", "modal_"));
     $this->modal = $modal;
     return $this;
-  }
-
-
-  /**
-   * {@inheritdoc}
-   */
-  public function identityChanged(AttributeChanger $obj, $attrName) {
-    if ($attrName == "id") {
-      $this->attrs()->set("data-open", $this->modal->getId());
-    }
   }
 
 }

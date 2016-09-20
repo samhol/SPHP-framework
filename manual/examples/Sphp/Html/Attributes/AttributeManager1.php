@@ -10,7 +10,6 @@ $observer = function($id) {
   echo "<p>$id</p>\n";
 };
 $attrs->lock("type", "text")
-        ->attachIdentityObserver($observer)
         ->identify();
 $attrs->set("value", "Sami");
 $attrs->set("disabled", true);

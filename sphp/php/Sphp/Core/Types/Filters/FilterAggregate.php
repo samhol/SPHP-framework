@@ -11,7 +11,8 @@ namespace Sphp\Core\Types\Filters;
  * An aggregate of {@link FilterInterface} objects
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
+ * @since   2015-05-12
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -67,14 +68,9 @@ class FilterAggregate extends AbstractFilter {
    * 
    * @param  callable $filter a filter to add
    * @return self for PHP Method Chaining
-   * @throws \InvalidArgumentException if the `$filter` is not callable
    */
   public function addFilter(callable $filter) {
-    if (is_callable($filter)) {
-      $this->filters[] = $filter;
-    } else {
-      throw new \InvalidArgumentException();
-    }
+    $this->filters[] = $filter;
     return $this;
   }
 

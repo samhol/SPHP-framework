@@ -112,7 +112,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     $this->geshi->enable_classes();
     $this->geshi->set_overall_class("syntax");
     $this->geshi->set_header_type(GESHI_HEADER_DIV);
-    $this->geshi->set_overall_id(\Sphp\Core\Types\Strings::generateRandomString());
+    $this->geshi->set_overall_id(\Sphp\Core\Types\Strings::random());
     return $this;
   }
 
@@ -151,7 +151,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for PHP Method Chaining
    */
   public function setSyntaxBlockId($seed = "geshi_") {
-    $this->geshiId = $seed . \Sphp\Core\Types\Strings::generateRandomString();
+    $this->geshiId = $seed . \Sphp\Core\Types\Strings::random();
     $this->geshi->set_overall_id($this->geshiId);
     return $this;
   }

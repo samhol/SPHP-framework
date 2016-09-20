@@ -27,7 +27,7 @@ class TabContentContainer extends \Sphp\Html\AbstractContainerComponent {
     }
     $this->tabs = $tabs;
     $this->cssClasses()->lock("tabs-content");
-    $this->attrs()->set("data-tabs-content", $this->tabs->getId());
+    $this->attrs()->set("data-tabs-content", $this->tabs->identify());
   }
 
   /**

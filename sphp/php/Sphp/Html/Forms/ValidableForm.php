@@ -115,7 +115,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
     foreach ($this->form->getNamedInputComponents() as $input) {
       $topic = $input->getName();
       if ($topics->hasTopic($topic)) {
-        $id = $input->identify()->getId();
+        $id = $input->identify();
         //$json = $topics->getTopic($topic)->toJson();
         foreach ($topics->getTopic($topic) as $message) {
           $messages[] = "'$message'";

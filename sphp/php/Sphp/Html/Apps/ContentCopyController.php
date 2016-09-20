@@ -8,9 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\Attributes\IdentityObserver as IdentityObserver;
 use Sphp\Html\ComponentInterface as ComponentInterface;
-use Sphp\Html\Attributes\IdentityChanger as AttributeChanger;
 
 /**
  * Class models an action controller that copies content from the target component to the user's clipboard
@@ -25,7 +23,7 @@ use Sphp\Html\Attributes\IdentityChanger as AttributeChanger;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ContentCopyController implements IdentityObserver, ContentInterface {
+class ContentCopyController implements ContentInterface {
 
   use \Sphp\Html\ContentTrait;
 
@@ -55,7 +53,7 @@ class ContentCopyController implements IdentityObserver, ContentInterface {
     $this->button = $button;
     $this->setCopyTarget($target);
   }
-  
+
   /**
    * 
    * @return ComponentInterface
@@ -71,29 +69,15 @@ class ContentCopyController implements IdentityObserver, ContentInterface {
    */
   public function setCopyTarget($target) {
     if ($target !== $this->target) {
-      if ($this->target instanceof ComponentInterface) {
-        $this->target->detachIdentityObserver($this);
-      }
       if ($target instanceof ComponentInterface) {
-        $target->identify();
-        $id = $target->getId();
-        $target->attachAttributeChangeObserver($this);
+        $id = $target->identify("id", "copy_target", 32);
       } else {
         $id = $target;
       }
       $this->target = $target;
+      $this->button->setAttr("data-clipboard-target", $id);
     }
-    $this->button->setAttr("data-clipboard-target", $id);
     return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function identityChanged(AttributeChanger $obj, $attrName) {
-    if ($attrName === "id" && $obj === $this->target) {
-      $this->button->setAttr("data-clipboard-target", $obj->getId());
-    }
   }
 
   /**

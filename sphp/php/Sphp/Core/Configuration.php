@@ -8,6 +8,7 @@
 namespace Sphp\Core;
 
 use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Data\Arrayable as Arrayable;
 
 /**
  * Application Config class for storing common application data
@@ -23,7 +24,7 @@ use Sphp\Core\Types\Arrays as Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Configuration implements \Sphp\Data\Arrayable {
+class Configuration implements Arrayable {
 
   /**
    * the singelton instances for defined domains
