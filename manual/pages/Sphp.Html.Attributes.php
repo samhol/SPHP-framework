@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
 $htmlAttrMngr = $api->classLinker(AttributeManager::class);
 $abstractAttr = $api->classLinker(AbstractAttribute::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);

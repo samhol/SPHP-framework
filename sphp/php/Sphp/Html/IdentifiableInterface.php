@@ -37,13 +37,14 @@ interface IdentifiableInterface {
    * **Notes:**
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
+   * 
    * @param  string $identityName the name of the identity attribute
-   * @param  string $seed optional prefix of the identity value
+   * @param  string $prefix optional prefix of the identity value
    * @param  int $length the length of the identity value
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function identify($identityName = "id", $seed = "id");
+  public function identify($identityName = "id", $prefix = "id", $length = 16);
 
   /**
    * Checks whether the identifying attribute is set or not

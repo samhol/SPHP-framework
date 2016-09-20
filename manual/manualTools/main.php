@@ -8,13 +8,7 @@ include_once __DIR__ . "/_constants.php";
 //include_once __DIR__ . '/../../sph/settings.php';
 
 use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
-use Sphp\Core\Configuration as Configuration;
-use Sphp\Html\Apps\ApiTools\ApiGenLinker as ApiGenLinker;
-use Sphp\Html\Apps\Manual\ApiGen as ApiGen;
 use Sphp\Html\Apps\Manual\Apis as Apis;
-use Sphp\Html\Apps\ApiTools\FoundationDocsLinker as FoundationDocsLinker;
-use Sphp\Html\Apps\ApiTools\W3schoolsLinker as W3schoolsLinker;
-use Sphp\Html\Apps\ApiTools\PHPManualLinker as PHPManualLinker;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 use Sphp\Core\Types\Strings as Strings;
 

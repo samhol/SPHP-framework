@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Core\Types\Strings as Strings;
+
 /**
  * Application Config class for storing common application data
  *
@@ -28,7 +30,7 @@ class HtmlIdStorage {
    * @var string[]
    */
   private $ids = [];
-  
+
   /**
    * the singelton instance
    *
@@ -56,7 +58,7 @@ class HtmlIdStorage {
     }
     return static::$instance;
   }
-  
+
   /**
    * Checks whether the identifier name value pair exists
    *
@@ -65,9 +67,16 @@ class HtmlIdStorage {
    * @return boolean true on success or false on failure
    */
   public function isValidValue($value) {
-   return is_string($value) && !\Sphp\Core\Types\Strings::isEmpty($value);
-  } 
+    return is_string($value) && !Strings::isEmpty($value);
+  }
 
+  /**
+   * 
+   * @param type $name
+   */
+  public function isValidIdentifyingName($name) {
+    return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
+  }
 
   /**
    * Checks whether the identifier name value pair exists
@@ -77,23 +86,22 @@ class HtmlIdStorage {
    * @return boolean true on success or false on failure
    */
   public function exists($name, $value) {
-   return array_key_exists($name, $this->ids) && in_array($value, $this->ids[$name]);
-  } 
-  
+    return array_key_exists($name, $this->ids) && in_array($value, $this->ids[$name]);
+  }
 
   /**
    * Tries to store a new identifier name value pair
    *
    * @param  string $name the name of the identifier
    * @param  string $value the value of the identifier
-   * @return boolean true 
+   * @return boolean `true` if stored and `false` otherwise
    */
   public function store($name, $value) {
     $inserted = false;
-    if (!array_key_exists($name, $this->ids)) {
-      $this->ids[$name] = [];
-    }
-    if (!in_array($value, $this->ids[$name]) && $this->isValidValue($value)) {
+    if (!$this->exists($name, $value) && $this->isValidIdentifyingName($name) && $this->isValidValue($value)) {
+      if (!array_key_exists($name, $this->ids)) {
+        $this->ids[$name] = [];
+      }
       $this->ids[$name][] = $value;
       $inserted = true;
     }

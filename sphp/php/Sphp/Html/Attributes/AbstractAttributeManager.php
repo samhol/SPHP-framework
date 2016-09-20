@@ -166,6 +166,9 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @return self for PHP Method Chaining
    */
   public function attachIdentifier($name) {
+    if ($this) {
+      
+    }
     if (!$this->isIdentifier($name)) {
       $this->identifiers[] = $name;
     }
@@ -186,6 +189,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return $obj;
   }
 
+  public function validateAttributeName($name) {
+    return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
+  }
+
   /**
    * Sets an attribute name value pair
    *
@@ -199,7 +206,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * 1. the type of the value should always convert to string
    * 2. `null` or an empty `string`: an empty attribute is set
    * 3. boolean `true`: an empty attribute is set
-   * 4. boolean `false`: attribute is removed
+   * 4. boolean `false`: attribute is removed or an attribute object is cleared
    * 5. otherwise the attribute value is the string conversion value
    *
    * @param  string $name the name of the attribute
@@ -218,9 +225,9 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       if ($this->isLocked($name)) {
         throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
       }
-      /* if ($this->isIdentifier($name)) {
+      if ($this->isIdentifier($name)) {
         $this->setId($name, $value);
-        } */
+      }
       if ($value instanceof AttributeInterface) {
         $this->setAttributeObject($value);
       } else if ($value === false) {
@@ -240,19 +247,16 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   }
 
   /**
-   * Creates an an unique identifying attribute
-   *
-   * @param  string $identityName the name of the identity attribute
-   * @param  string $seed optional prefix of the identity value
-   * @param  int $length the length of the identity value
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
+   * {@inheritdoc}
    */
-  public function identify($identityName = "id", $seed = "id_", $length = 16) {
+  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
     if (!$this->isLocked($identityName)) {
+      $value = $prefix . Strings::random($length);
+      while (!$row = HtmlIdStorage::get()->store($identityName, $value)) {
+        $value = $prefix . Strings::random($length);
+      }
+      $this->lock($identityName, $value);
       $this->attachIdentifier($identityName);
-
-      $this->lock($identityName, $seed . Strings::random($length));
       // var_dump($this->attrs[$identityName]);
     }
     return $this->get($identityName);
@@ -262,16 +266,24 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * {@inheritdoc}
    */
   public function setId($identityName, $value) {
+   // var_dump(HtmlIdStorage::get());
+    $result = false;
     if ($this->isLocked($identityName)) {
-      throw new UnmodifiableAttributeException;
+      throw new UnmodifiableAttributeException("The value of the '$identityName' attribute is unmodifiable");
     }
     if (!HtmlIdStorage::get()->isValidValue($value)) {
-      throw new InvalidAttributeException;
+      throw new InvalidAttributeException("Attribute value is illegal");
     }
+    //var_dump(HtmlIdStorage::get()->exists($identityName, $value));
     $result = HtmlIdStorage::get()->store($identityName, $value);
+    echo "id: $identityName \n";
+    var_dump($result);
+   // var_dump(HtmlIdStorage::get()->exists($identityName, $value));
+    //var_dump(HtmlIdStorage::get()->exists("foo", $value));
+    //var_dump(HtmlIdStorage::get()->exists("id", $value));
     if ($result) {
-      $this->attachIdentifier($identityName);
       $this->lock($identityName, $value);
+      $this->attachIdentifier($identityName);
     }
     return $result;
   }
@@ -361,12 +373,29 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   }
 
   /**
+   * 
+   * @param  string $name the name of the attribute
+   * @return boolean
+   */
+  public function isHidden($name) {
+    return $this->exists($name) && $this->get($name) === false;
+  }
+
+  /**
+   * 
+   * @param  string $name the name of the attribute
+   * @return boolean
+   */
+  public function isEmpty($name) {
+    return $this->exists($name) && $this->get($name) == "";
+  }
+
+  /**
    * Removes the given attribute if it is not required
    *
-   * @param    string $name the name of the attribute
-   * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the attribute is unremovable
-   * @triggers {@link AttributeChangeEvent} for each removed attribute
+   * @param  string $name the name of the attribute
+   * @return self for PHP Method Chaining
+   * @throws UnmodifiableAttributeException if the attribute is unremovable
    */
   public function remove($name) {
     if ($this->isAttributeObject($name)) {

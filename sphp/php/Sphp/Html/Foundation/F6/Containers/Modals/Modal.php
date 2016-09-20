@@ -60,7 +60,7 @@ class Modal extends ContainerTag {
    */
   public function __construct($content = null, $controller = null) {
     parent::__construct("div", $content);
-    $this->identify();
+    $this->identify("id", "modal_");
     $this->cssClasses()->lock("reveal");
     $this->attrs()->demand("data-reveal");
     $this->closeButton = new CloseButton();

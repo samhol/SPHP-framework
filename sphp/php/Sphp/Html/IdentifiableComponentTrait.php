@@ -7,7 +7,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Types\Strings as Strings;
 use Sphp\Html\Attributes\AttributeManager as AttributeManager;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute as PropertyAttribute;
@@ -309,8 +308,8 @@ trait IdentifiableComponentTrait {
   /**
    * {@inheritdoc}
    */
-  public function identify($identityName = "id", $seed = "id_") {
-     return $this->attrs()->identify($identityName, $seed);
+  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
+     return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
   /**
