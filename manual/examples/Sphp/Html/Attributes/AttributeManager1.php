@@ -3,27 +3,16 @@
 namespace Sphp\Html\Attributes;
 
 $attrs = new AttributeManager();
-$printInput = function($attrs) {
-  echo "<input $attrs>\n";
-};
-/*$attrs->lock("type", "text")
-        ->identify("id", "text_", 14);
-try {
-  $attrs->setId("id", "id");
-} catch (\Exception $ex) {
-  $attrs->set("value", get_class($ex));
-  $printInput();
-}*/
-echo "vittuuuuu:";
-    var_dump(HtmlIdStorage::get()->exists("a", "data-idsca"));
+echo "<input $attrs>\n";
 $attrs->set("value", "Sami")
         ->set("disabled", true);
-$printInput($attrs);
+echo "<input $attrs>\n";
+$attrs->identify("ab");
+echo "<input $attrs>\n";
 $attrs->remove("disabled");
-$printInput($attrs);
+echo "<input $attrs>\n";
 $attrs->set("value", false);
-$printInput($attrs);
+echo "<input $attrs>\n";
 $attrs->set("placeholder", "First Name");
-$printInput($attrs);
-$attrs->setId("a", "data-idsca");
+echo "<input $attrs>\n";
 ?>

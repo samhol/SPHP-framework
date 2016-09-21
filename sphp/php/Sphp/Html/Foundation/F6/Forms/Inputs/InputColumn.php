@@ -157,11 +157,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-
   /**
    * Sets the visible contents of the helpaer label
    * 
-   * @param  mixed $text the contents of the helpaer 
+   * @param  mixed $text the contents of the helpaer
    * @return self for PHP Method Chaining
    */
   public function setHelperText($text) {

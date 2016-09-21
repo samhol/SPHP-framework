@@ -300,14 +300,6 @@ trait IdentifiableComponentTrait {
   /**
    * {@inheritdoc}
    */
-  public function setId($id, $value) {
-    $this->attrs()->setId($id, $value);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function identify($identityName = "id", $prefix = "id_", $length = 16) {
      return $this->attrs()->identify($identityName, $prefix, $length);
   }

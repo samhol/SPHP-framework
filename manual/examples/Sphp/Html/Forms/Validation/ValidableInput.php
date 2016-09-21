@@ -19,7 +19,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Foundation\GridForm as GridForm;
 
-$form = (new GridForm(\Sphp\HTTP_ROOT, "get"))->setId("ItemForm"); //->setFormValidator($validator);
+$form = (new GridForm(\Sphp\HTTP_ROOT, "get"))->identify(); //->setFormValidator($validator);
 $formValidator = new ValidableForm($form);
 $form->appendHiddenVariable("page", "html.forms");
 

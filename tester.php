@@ -55,28 +55,71 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
     </div>
     <div class="mainContent small-12 large-9 xlarge-8 column"> 
       <pre>
+
         <?php
         include_once "manual/manualTools/main.php";
+
+        namespace Sphp\Html\Attributes;
+
+$printInput = function($attrs) {
+          echo "<input $attrs>\n";
+        };
+        var_dump(HtmlIdStorage::store("data-id", "data-id"));
+        var_dump(HtmlIdStorage::store("data-id", "data-id"));
+        print_r(HtmlIdStorage::toArray());
+
+        $attrs = new AttributeManager();
+
+        var_dump($attrs->identify("test-id"));
+        $printInput($attrs);
+        var_dump($attrs->identify("test-id"));
+        $printInput($attrs);
+        var_dump($attrs->identify());
+        $printInput($attrs);
+        print_r(HtmlIdStorage::toArray());
+        $printInput($attrs);
         ?>
       </pre>
       <?php
-      //echo \Sphp\Core\Util\FileUtils::executePhpToString("manual/sidenav.php");
-      $b = new \Sphp\Html\Foundation\F6\Grids\ExampleViewingGrid("<span>Foundation</span> Side Nav Example");
-      $b->loadFromFile("manual/sidenav.php")->printHtml();
-      ?>
 
+      namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+
+$i = new InputGroup(new \Sphp\Html\Forms\Inputs\EmailInput());
+      $i->printHtml();
+      $s = new TextualInputGroup("number", "balance");
+      $s->setPrefix("Amount of money:")->setSuffix("$")->printHtml();
+      ?>
       <div class="input-group">
         <span class="input-group-label">cooler is cool</span>
         <input class="input-group-field" type="number">
       </div>
 
-      <div class="input-group">
-        <span class="input-group-label">$</span>
-        <input class="input-group-field" type="number">
-        <div class="input-group-button">
-          <input type="submit" class="button" value="Submit">
+
+      <form novalidate data-abide>
+        <div class="row">
+          <div class="small-3 columns">
+
+            <div class="input-group">
+              <span class="input-group-label">cooler is cool</span>
+              <input class="input-group-field" type="number" required>
+              <span class="input-group-label">$</span>
+              <div class="input-group-button">
+                <input type="submit" class="button" value="Submit">
+              </div>
+            </div>
+          </div>
+          <div class="small-9 columns">
+
+            <div class="input-group">
+              <span class="input-group-label">$</span>
+              <input class="input-group-field" type="number" required>
+              <div class="input-group-button">
+                <input type="submit" class="button" value="Submit">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 
 

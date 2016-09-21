@@ -29,34 +29,15 @@ class HtmlIdStorage {
    *
    * @var string[]
    */
-  private $ids = [];
-
-  /**
-   * the singelton instance
-   *
-   * @var HtmlIdStorage
-   */
-  private static $instance;
+  private static $ids = [];
 
   /**
    * Singelton constructor for the {@link self} object
    * 
    * @param  string $domain the domain name of the instance
    */
-  protected function __construct() {
-    $this->ids = [];
-  }
-
-  /**
-   * Returns the configurator instance paired with the current domain
-   *
-   * @return self the configurator instance paired with the current domain
-   */
-  public static function get() {
-    if (static::$instance === null) {
-      static::$instance = new static();
-    }
-    return static::$instance;
+  private function __construct() {
+    
   }
 
   /**
@@ -66,7 +47,7 @@ class HtmlIdStorage {
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public function isValidValue($value) {
+  public static function isValidValue($value) {
     return is_string($value) && !Strings::isEmpty($value);
   }
 
@@ -74,7 +55,7 @@ class HtmlIdStorage {
    * 
    * @param type $name
    */
-  public function isValidIdentifyingName($name) {
+  public static function isValidIdentifyingName($name) {
     return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
   }
 
@@ -85,8 +66,8 @@ class HtmlIdStorage {
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public function exists($name, $value) {
-    return array_key_exists($name, $this->ids) && in_array($value, $this->ids[$name]);
+  public static function exists($name, $value) {
+    return array_key_exists($name, self::$ids) && in_array($value, self::$ids[$name]);
   }
 
   /**
@@ -96,16 +77,24 @@ class HtmlIdStorage {
    * @param  string $value the value of the identifier
    * @return boolean `true` if stored and `false` otherwise
    */
-  public function store($name, $value) {
+  public static function store($name, $value) {
     $inserted = false;
-    if (!$this->exists($name, $value) && $this->isValidIdentifyingName($name) && $this->isValidValue($value)) {
-      if (!array_key_exists($name, $this->ids)) {
-        $this->ids[$name] = [];
+    if (!static::exists($name, $value) && static::isValidIdentifyingName($name) && static::isValidValue($value)) {
+      if (!array_key_exists($name, self::$ids)) {
+        self::$ids[$name] = [];
       }
-      $this->ids[$name][] = $value;
+      self::$ids[$name][] = $value;
       $inserted = true;
     }
-    return $inserted;
+    return (bool)$inserted;
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public static function toArray() {
+    return self::$ids;
   }
 
 }

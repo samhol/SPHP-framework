@@ -19,19 +19,6 @@ namespace Sphp\Html;
 interface IdentifiableInterface {
 
   /**
-   * Sets the value of the id attribute
-   *
-   * **Notes:**
-   *
-   * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
-   *
-   * @param  string $id the value of the id attribute
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
-   */
-  public function setId($id, $value);
-
-  /**
    * Identifies the element with an unique id attribute.
    *
    * **Notes:**

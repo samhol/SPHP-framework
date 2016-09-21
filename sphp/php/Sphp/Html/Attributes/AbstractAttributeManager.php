@@ -225,9 +225,6 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       if ($this->isLocked($name)) {
         throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
       }
-      if ($this->isIdentifier($name)) {
-        $this->setId($name, $value);
-      }
       if ($value instanceof AttributeInterface) {
         $this->setAttributeObject($value);
       } else if ($value === false) {
@@ -252,7 +249,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   public function identify($identityName = "id", $prefix = "id_", $length = 16) {
     if (!$this->isLocked($identityName)) {
       $value = $prefix . Strings::random($length);
-      while (!$row = HtmlIdStorage::get()->store($identityName, $value)) {
+      while (!HtmlIdStorage::store($identityName, $value)) {
         $value = $prefix . Strings::random($length);
       }
       $this->lock($identityName, $value);
@@ -260,32 +257,6 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       // var_dump($this->attrs[$identityName]);
     }
     return $this->get($identityName);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setId($identityName, $value) {
-   // var_dump(HtmlIdStorage::get());
-    $result = false;
-    if ($this->isLocked($identityName)) {
-      throw new UnmodifiableAttributeException("The value of the '$identityName' attribute is unmodifiable");
-    }
-    if (!HtmlIdStorage::get()->isValidValue($value)) {
-      throw new InvalidAttributeException("Attribute value is illegal");
-    }
-    //var_dump(HtmlIdStorage::get()->exists($identityName, $value));
-    $result = HtmlIdStorage::get()->store($identityName, $value);
-    echo "id: $identityName \n";
-    var_dump($result);
-   // var_dump(HtmlIdStorage::get()->exists($identityName, $value));
-    //var_dump(HtmlIdStorage::get()->exists("foo", $value));
-    //var_dump(HtmlIdStorage::get()->exists("id", $value));
-    if ($result) {
-      $this->lock($identityName, $value);
-      $this->attachIdentifier($identityName);
-    }
-    return $result;
   }
 
   /**

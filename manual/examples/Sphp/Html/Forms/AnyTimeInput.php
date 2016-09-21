@@ -11,6 +11,5 @@ $form = (new Form());
 
 $form[] = $datetimeInput->createLabel("what ever time...");
 $form[] = $datetimeInput;
-$form[] = new SubmitButton("submit");
 $form->printHtml();
 ?>
