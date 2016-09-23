@@ -8,14 +8,14 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Legend as Legend;
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
 use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
-use Sphp\Html\Container as Container;
+use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
-use Sphp\Html\Forms\Label as Label;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Forms\Label;
+use Sphp\Core\Types\Strings;
 
 /**
  * A component containing multiple radio or checkbox inputs

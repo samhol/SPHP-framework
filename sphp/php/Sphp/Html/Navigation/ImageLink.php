@@ -7,12 +7,12 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Media\ImgInterface as ImgInterface;
-use Sphp\Html\Media\Img as Img;
-use Sphp\Html\Media\Size as Size;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Net\URL as URL;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Media\ImgInterface;
+use Sphp\Html\Media\Img;
+use Sphp\Html\Media\Size;
+use Sphp\Core\Types\Strings;
+use Sphp\Net\URL;
 
 /**
  * Class implements an image that acts as a hyperlink

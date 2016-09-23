@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
 
 /**

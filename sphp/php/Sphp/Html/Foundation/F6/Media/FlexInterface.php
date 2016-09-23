@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContentInterface;
 
 /**
  * Interface defines properties for a Foundation 6 Flex component

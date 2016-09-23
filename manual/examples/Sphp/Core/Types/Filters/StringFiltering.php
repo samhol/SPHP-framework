@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types\Filters;
 
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 $filters = new FilterAggregate();
 

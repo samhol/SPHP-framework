@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Util\FileUtils as FileUtils;
+use Sphp\Core\Util\FileUtils;
 use ParsedownExtraPlugin;
 
 /**

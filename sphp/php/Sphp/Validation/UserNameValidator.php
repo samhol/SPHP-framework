@@ -8,7 +8,7 @@
 namespace Sphp\Validation;
 
 use Sphp\Db\Objects\User as User;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class validates a username

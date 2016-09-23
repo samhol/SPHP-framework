@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Hyperlink as Hyperlink;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 use Sphp\Html\Foundation\F6\Containers\OffCanvas\OffCanvas as OffCanvas;
 use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
 

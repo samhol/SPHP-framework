@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Interface defines default properties for a syntax highlighter component

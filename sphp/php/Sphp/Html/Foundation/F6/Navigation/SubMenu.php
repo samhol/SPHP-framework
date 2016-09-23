@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Class implements a submenu for Foundation 6 menus

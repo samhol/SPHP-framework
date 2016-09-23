@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+use Sphp\Core\Types\Strings;
+use Sphp\Html\Attributes\AttributeManager;
 
 /**
  * Trait implements parts of the {@link FormInterface}

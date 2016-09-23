@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Core\Types\Strings;
 
 /**
  * Link generator for w3schools Docs related hyperlinks

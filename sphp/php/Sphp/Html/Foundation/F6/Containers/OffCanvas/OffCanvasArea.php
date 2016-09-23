@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\F6\Navigation\VerticalMenu as VerticalMenu;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;

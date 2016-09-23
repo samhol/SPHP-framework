@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Core\Types\Strings;
 
 /**
  * Trait implements parts of the {@link InputInterface}

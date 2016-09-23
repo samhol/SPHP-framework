@@ -9,7 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Data\SphpArrayObject as SphpArrayObject;
 use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 use ParsedownExtraPlugin;
 
 /**

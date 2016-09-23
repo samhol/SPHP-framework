@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Interface is the base for all {@link Table} content

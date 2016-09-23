@@ -7,13 +7,13 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Forms\Inputs\ValidableInputTrait as ValidableInputTrait;
 use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
 use Sphp\Html\TraversableTrait as TraversableTrait;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
-use Sphp\Html\ContainerInterface as ContainerInterface;
+use Sphp\Html\ContainerInterface;
 
 /**
  * Class Models an HTML &lt;select&gt; tag

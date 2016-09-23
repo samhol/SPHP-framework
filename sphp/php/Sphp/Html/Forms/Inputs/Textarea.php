@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
-use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
+use Sphp\Html\ContainerTag;
+use Sphp\Html\Forms\LabelableInterface;
+use Sphp\Html\Forms\LabelableTrait;
 
 /**
  * Class models an HTML &lt;textarea&gt; tag

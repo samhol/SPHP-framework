@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\Media\SizeableInterface as SizeableInterface;
-use Sphp\Html\Media\SizeableTrait as SizeableTrait;
+use Sphp\Html\Media\SizeableInterface;
+use Sphp\Html\Media\SizeableTrait;
 
 /**
  * Class models an HTML &lt;video&gt; tag

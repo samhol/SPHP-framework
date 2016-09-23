@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Core\Gettext\Calendar as Calendar;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 
 /**
  * Factory for generating {@link Select} components for specified tasks

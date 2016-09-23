@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\CollectionInterface as CollectionInterface;
+use Sphp\Data\CollectionInterface;
 
 /**
  * Interface defines the properties required from a traversable HTML component container with

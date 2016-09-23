@@ -8,10 +8,10 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
 use Sphp\Html\Foundation\Buttons\ButtonGroup as ButtonGroup;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 /**
  * Link generator pointing to an existing API documentation

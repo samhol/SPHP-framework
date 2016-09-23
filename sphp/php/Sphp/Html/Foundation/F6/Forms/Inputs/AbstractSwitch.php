@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
-use Sphp\Html\Forms\Label as Label;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Forms\Label;
+use Sphp\Html\Span;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
 

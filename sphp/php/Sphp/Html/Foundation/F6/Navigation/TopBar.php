@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use InvalidArgumentException;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Foundation\F6\Navigation\MenuInterface as MenuInterface;

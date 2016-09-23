@@ -7,11 +7,11 @@
 
 namespace Sphp\Core\Types;
 use DateTimeZone;
-use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
-use Sphp\Core\Comparable as Comparable;
-use Sphp\Objects\EqualsTrait as EqualsTrait;
-use Sphp\Core\Gettext\TranslatorChangerInterface as TranslatorChangerInterface;
-use Sphp\Core\Gettext\TranslatorChangerTrait as TranslatorChangerTrait;
+use Sphp\Objects\ScalarObjectInterface;
+use Sphp\Core\Comparable;
+use Sphp\Objects\EqualsTrait;
+use Sphp\Core\Gettext\TranslatorChangerInterface;
+use Sphp\Core\Gettext\TranslatorChangerTrait;
 
 /**
  * Representation of date and time

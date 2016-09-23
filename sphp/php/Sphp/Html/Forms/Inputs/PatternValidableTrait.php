@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+use Sphp\Html\Attributes\AttributeManager;
 
 /**
  * A trait implementation of the {@link PatternValidableInputInterface} 

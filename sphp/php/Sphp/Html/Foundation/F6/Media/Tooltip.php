@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ContentTrait;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Class models a Foundation 6 Tooltip component

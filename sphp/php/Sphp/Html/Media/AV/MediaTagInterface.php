@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\TagInterface as TagInterface;
+use Sphp\Html\TagInterface;
 
 /**
  * Interface defines properties HTML multimedia tags

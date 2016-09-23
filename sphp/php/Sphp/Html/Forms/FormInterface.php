@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContentInterface;
 
 /**
  * Interface defines required properties for an HTML &lt;form&gt; component

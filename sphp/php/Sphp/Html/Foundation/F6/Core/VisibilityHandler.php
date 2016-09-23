@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\ComponentInterface as ComponentInterface;
-use Sphp\Html\ContentTrait as ContentTrait;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ComponentInterface;
+use Sphp\Html\ContentTrait;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 
 /**

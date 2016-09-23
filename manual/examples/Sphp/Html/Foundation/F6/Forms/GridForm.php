@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\Inputs\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Inputs\Textarea as Textarea;
 use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
 use Sphp\Html\Foundation\F6\Forms\Inputs\TextColumn as TextColumn;

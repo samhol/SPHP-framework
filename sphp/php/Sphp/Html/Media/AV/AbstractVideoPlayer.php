@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait as SizeableTrait;
 use Sphp\Html\Media\LazyLoaderTrait as LazyLoaderTrait;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Net\URL as URL;
+use Sphp\Core\Types\Strings;
+use Sphp\Net\URL;
 
 /**
  * Class models a Foundation Flex Video component

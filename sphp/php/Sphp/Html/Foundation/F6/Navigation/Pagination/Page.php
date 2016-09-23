@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
 use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 
 /**
  * Class implements a page button for Foundation 6 Pagination component

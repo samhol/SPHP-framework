@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContentInterface;
 
 /**
  * Interface defines required operations for all input components used in {@link FormInterface}

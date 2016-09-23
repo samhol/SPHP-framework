@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\EmptyTag;
 
 /**
  * Class models an HTML &lt;base&gt; tag

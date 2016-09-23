@@ -7,7 +7,7 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 
 /**
  * Class implements some parts of Item interface.

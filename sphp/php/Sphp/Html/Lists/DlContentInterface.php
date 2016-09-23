@@ -6,7 +6,8 @@
  */
 
 namespace Sphp\Html\Lists;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+
+use Sphp\Html\ComponentInterface;
 
 /**
  * The common Interface for both of the content tag types of an definition list
@@ -17,6 +18,5 @@ use Sphp\Html\ComponentInterface as ComponentInterface;
  * @filesource
  */
 interface DlContentInterface extends ComponentInterface {
-
+  
 }
-

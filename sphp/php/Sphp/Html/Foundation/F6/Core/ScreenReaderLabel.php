@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Span as Span;
+use Sphp\Html\Span;
 
 /**
  * Class implements Foundation 6 Screen reader label for Foundation

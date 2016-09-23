@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
-use Sphp\Html\Span as Span;
+use Sphp\Html\Span;
 
 /**
  * Class MenuOpenerButton

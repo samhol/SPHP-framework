@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\EmptyTag;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class models an HTML &lt;link&gt; tag

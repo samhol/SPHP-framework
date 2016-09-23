@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Forms\Buttons;
 
 use Sphp\Html\Forms\Buttons\InputButton as InputButtonTag;
-use Sphp\Html\Foundation\F6\Buttons\ButtonInterface as ButtonInterface;
-use Sphp\Html\Foundation\F6\Buttons\ButtonTrait as ButtonTrait;
+use Sphp\Html\Foundation\F6\Buttons\ButtonInterface;
+use Sphp\Html\Foundation\F6\Buttons\ButtonTrait;
 
 /**
  * Class models &lt;input type="button|submit|reset"&gt; tag as a Foundation Button in PHP

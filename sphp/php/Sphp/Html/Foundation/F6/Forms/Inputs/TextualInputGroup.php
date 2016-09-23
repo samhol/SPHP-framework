@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\TextualInputInterface as TextualInputInterface;
-use Sphp\Html\Forms\Inputs\TextualInput as TextualInput;
+use Sphp\Html\Forms\Inputs\TextualInputInterface;
+use Sphp\Html\Forms\Inputs\TextualInput;
 
 /**
  * Class InputGroup

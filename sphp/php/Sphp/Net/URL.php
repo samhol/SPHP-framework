@@ -7,9 +7,9 @@
 
 namespace Sphp\Net;
 
-use Sphp\Data\Arrayable as Arrayable;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Data\Arrayable;
+use Sphp\Core\Types\Strings;
+use Sphp\Core\Types\Arrays;
 
 /**
  * Class implements an URL for manipulation and comparison

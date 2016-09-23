@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
 use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph as Paragraph;
 
 /**

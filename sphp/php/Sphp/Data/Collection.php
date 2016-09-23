@@ -7,7 +7,7 @@
 
 namespace Sphp\Data;
 
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 
 /**
  * An implementation of a general purpose collection data structure

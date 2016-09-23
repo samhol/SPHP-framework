@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractContainerComponent;
 
 /**
  * Class models the HTML multimedia tags

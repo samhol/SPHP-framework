@@ -9,7 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager as HtmlAttributeManager;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
-use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
+use Sphp\Html\Programming\ScriptsContainer;
 
 /**
  * Class AbstractComponent provides a simple implementation of the {@link Tag}.

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
 
 /**

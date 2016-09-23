@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Span as Span;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Span;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
 use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
 use Sphp\Html\Foundation\F6\Foundation as Foundation;

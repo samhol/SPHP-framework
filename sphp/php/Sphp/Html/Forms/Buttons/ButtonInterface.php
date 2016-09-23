@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface;
 
 /**
  * Interface defines buttons used in {@link FormInterface}

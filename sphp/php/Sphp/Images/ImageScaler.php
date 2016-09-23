@@ -7,10 +7,10 @@
 
 namespace Sphp\Images;
 
-use Sphp\Net\URL as URL;
-use Sphp\Html\Media\Size as Size;
-use Imagine\Gd\Imagine as Imagine;
-use Imagine\Image\Box as Box;
+use Sphp\Net\URL;
+use Sphp\Html\Media\Size;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
 
 /**
  * Class contains some image manipulation tools

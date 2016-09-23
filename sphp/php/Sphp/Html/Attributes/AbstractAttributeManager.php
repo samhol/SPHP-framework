@@ -9,9 +9,9 @@ namespace Sphp\Html\Attributes;
 
 use Countable;
 use IteratorAggregate;
-use Sphp\Html\IdentifiableInterface as IdentifiableInterface;
-use Sphp\Core\Types\Arrays as Arrays;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\IdentifiableInterface;
+use Sphp\Core\Types\Arrays;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag

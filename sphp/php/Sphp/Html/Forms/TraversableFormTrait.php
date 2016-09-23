@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Html\TraversableTrait as TraversableTrait;
-use Sphp\Html\ContainerInterface as ContainerInterface;
+use Sphp\Html\ContainerInterface;
 
 /**
  * Trait implements parts of the {@link TraversableFormInterface}

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\Document as Document;
 
 /**

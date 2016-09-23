@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use IteratorAggregate;
 use Countable;
 use ArrayIterator;
-use Sphp\Html\Container as Container;
+use Sphp\Html\Container;
 use Sphp\Html\Lists\Li as Li;
 
 /**

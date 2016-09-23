@@ -7,7 +7,7 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Data\Arrayable as Arrayable;
+use Sphp\Data\Arrayable;
 
 /**
  * Interface describes common features for all Objects.

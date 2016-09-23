@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\Div as Div;
 
 /**

@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Span as Span;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\Span;
 
 /**
  * Class models a bullet for Foundation 6 orbit

@@ -7,8 +7,8 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
-use Sphp\Html\Programming\SphpScriptsLoader as SphpScriptsLoader;
+use Sphp\Html\Programming\ScriptsContainer;
+use Sphp\Html\Programming\SphpScriptsLoader;
 
 /**
  * Class models an HTML &lt;body&gt; tag

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\AjaxLoaderTrait as AjaxLoaderTrait;
 

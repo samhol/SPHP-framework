@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
+use Sphp\Html\Forms\Inputs\Radiobox;
 
 /**
  * A component containing multiple {@link Radiobox} inputs

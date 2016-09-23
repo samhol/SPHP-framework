@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 use Sphp\Images\ImageScaler as ImageScaler;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 use Sphp\Html\Media\ImageMap\Map as Map;
 
 /**

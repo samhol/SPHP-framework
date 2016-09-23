@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\EmptyTag as EmptyTag;
-use Sphp\Net\URL as URL;
-use Sphp\Images\ImageScaler as ImageScaler;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\Media\ImageMap\Map as Map;
+use Sphp\Html\EmptyTag;
+use Sphp\Net\URL;
+use Sphp\Images\ImageScaler;
+use Sphp\Core\Types\Strings;
+use Sphp\Html\Media\ImageMap\Map;
 
 /**
  * Class Models an HTML &lt;img&gt; tag

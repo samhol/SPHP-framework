@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 use ReflectionClass;
 
 /**

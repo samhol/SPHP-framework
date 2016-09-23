@@ -7,7 +7,7 @@ include_once __DIR__ . "/_constants.php";
 use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
 use Sphp\Html\Apps\Manual\Apis as Apis;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 
 function addPHPSuffix($page) {

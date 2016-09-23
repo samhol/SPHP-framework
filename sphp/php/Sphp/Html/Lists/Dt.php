@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 
 /**
  * Class models an HTML &lt;dt&gt; tag

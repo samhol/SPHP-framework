@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Attributes\ClassAttribute as ClassAttribute;
 use Sphp\Html\Attributes\StyleAttribute as StyleAttribute;
 use Sphp\Html\Attributes\InvalidAttributeException as InvalidAttributeException;

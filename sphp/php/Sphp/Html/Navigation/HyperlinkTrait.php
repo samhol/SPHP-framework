@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Net\URL as URL;
+use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Core\Types\Strings;
+use Sphp\Net\URL;
 
 /**
  * Trait implements {@link HyperlinkInterface} for hyperlink functionality

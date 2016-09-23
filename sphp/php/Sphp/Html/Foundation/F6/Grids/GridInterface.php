@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\ContainerInterface as ContainerInterface;
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContainerInterface;
+use Sphp\Html\ContentInterface;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 
 /**

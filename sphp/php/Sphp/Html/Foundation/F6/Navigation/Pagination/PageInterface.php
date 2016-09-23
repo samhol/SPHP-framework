@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContentInterface;
 use Sphp\Html\Lists\LiInterface as LiInterface;
 
 /**

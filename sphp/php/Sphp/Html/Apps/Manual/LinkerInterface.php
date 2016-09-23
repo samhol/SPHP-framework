@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
  * Hyperlink generator pointing to an existing API documentation

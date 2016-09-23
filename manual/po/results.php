@@ -6,7 +6,7 @@ include_once '../settings.php';
 
 use Sepia\PoParser as PoParser;
 use Sepia\FileHandler as FileHandler;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 
 //echo "<pre>";
 //print_r($_GET);

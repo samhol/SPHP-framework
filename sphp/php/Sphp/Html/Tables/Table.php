@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Core\Types\Strings;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface as TraversableInterface;
 /**
  * Class models an HTML &lt;table&gt; tag.

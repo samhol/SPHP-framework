@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Data\SphpArrayObject as SphpArrayObject;
+use Sphp\Data\SphpArrayObject;
 
 /**
  * A validator container for validating a value against multiple validators

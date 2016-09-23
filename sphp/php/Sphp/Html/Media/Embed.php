@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\EmptyTag;
 
 /**
  * Class Models an HTML &lt;embed&gt; tag

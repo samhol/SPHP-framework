@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface as SelectMenuInterface;
-use Sphp\Html\Forms\Inputs\Menus\Select as Select;
+use Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface;
+use Sphp\Html\Forms\Inputs\Menus\Select;
 
 /**
  * Class implements Foundation framework based select menu input component

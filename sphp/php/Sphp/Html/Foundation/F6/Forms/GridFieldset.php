@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\Fieldset as Fieldset;
-use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
-use Sphp\Html\Forms\Legend as Legend;
+use Sphp\Html\Forms\Fieldset;
+use Sphp\Html\Foundation\F6\Grids\GridInterface;
+use Sphp\Html\Forms\Legend;
 
 /**
  * Class implements a Foundation framework Grid based Fieldset component for HTML forms

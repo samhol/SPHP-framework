@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Foundation\F6\Grids\AbstractRow as AbstractRow;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
-use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
-use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\F6\Grids\AbstractRow;
+use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn;
+use Sphp\Html\NonVisualContentInterface;
+use Sphp\Html\Foundation\F6\Grids\ColumnInterface;
 
 /**
  * Class extends a Foundation Row for form components

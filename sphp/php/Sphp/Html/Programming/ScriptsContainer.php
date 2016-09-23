@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Html\TraversableInterface as TraversableInterface;
-use Sphp\Html\TraversableTrait as TraversableTrait;
-use Sphp\Html\Container as Container;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ContentTrait;
+use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableTrait;
+use Sphp\Html\Container;
 
 /**
  * Class implements a JavaScript component container

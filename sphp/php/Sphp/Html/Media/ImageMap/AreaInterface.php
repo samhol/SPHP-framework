@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
  * Interface defines the basic properties of an HTML &lt;area&gt; tag

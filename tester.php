@@ -87,7 +87,7 @@ $printInput = function($attrs) {
 $i = new InputGroup(new \Sphp\Html\Forms\Inputs\EmailInput());
       $i->printHtml();
       $s = new TextualInputGroup("number", "balance");
-      $s->setPrefix("Amount of money:")->setSuffix("$")->printHtml();
+      $s->setPlaceholder("dollars")->setPrefix("Amount of money:")->setSuffix("$")->printHtml();
       ?>
       <div class="input-group">
         <span class="input-group-label">cooler is cool</span>

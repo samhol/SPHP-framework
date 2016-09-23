@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Head\Head as Head;
-use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
+use Sphp\Html\Programming\ScriptsContainer;
 
 /**
  * Class Models an HTML &lt;html&gt; tag

@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 /**
  * Validates that the field has a non empty value

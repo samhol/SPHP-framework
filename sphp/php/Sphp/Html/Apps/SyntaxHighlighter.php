@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\ComponentInterface;
 use GeSHi;
 use SqlFormatter;
 use Gajus\Dindent\Indenter;

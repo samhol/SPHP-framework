@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-use Sphp\Html\Forms\Label as Label;
+use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Label;
 
 /**
  * Interface defines a Foundation based input column for a Grid system

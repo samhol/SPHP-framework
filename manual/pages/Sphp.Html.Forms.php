@@ -4,8 +4,8 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\TextualInput as TextualInput;
 use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
-use Sphp\Html\Forms\Inputs\Radiobox as Radiobox;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\Radiobox;
+use Sphp\Html\Forms\Inputs\InputInterface;
 
 $formIfLink = $api->classLinker(FormInterface::class);
 $traversableFormInterface = $api->classLinker(TraversableFormInterface::class);

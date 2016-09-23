@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Types\Filters;
 
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 /**
  * Filter strips whitespace (or other characters) from the end of the string

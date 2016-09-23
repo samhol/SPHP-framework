@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Forms\Inputs\AbstractInputTag as AbstractInputTag;
-use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
+use Sphp\Html\Forms\Inputs\AbstractInputTag;
+use Sphp\Html\Forms\Inputs\SliderInterface;
+use Sphp\Html\Forms\Inputs\InputTrait;
 use InvalidArgumentException;
 
 /**

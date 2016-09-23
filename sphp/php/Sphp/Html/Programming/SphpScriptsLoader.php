@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Core\PathFinder as PathFinder;
+use Sphp\Core\PathFinder;
 
 /**
  * Description of SphpScriptsLoader

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Interface specifies the basic requirements of a Foundation 6 offcanvas area

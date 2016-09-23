@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Foundation\F6\Forms\Buttons\InputButton as InputButton;
 use InvalidArgumentException;
 

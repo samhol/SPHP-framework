@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\ContentTrait as ContentTrait;
+use Sphp\Html\ContentTrait;
 
 /**
  * Class implements an accrodion for PHP Example presentation

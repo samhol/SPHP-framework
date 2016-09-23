@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\HiddenInput as HiddenInput;
-use Sphp\Html\Forms\Label as Label;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Forms\Inputs\HiddenInput;
+use Sphp\Html\Forms\Label;
+use Sphp\Html\Span;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range

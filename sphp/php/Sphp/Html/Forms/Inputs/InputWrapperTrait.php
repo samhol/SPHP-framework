@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
+use Sphp\Html\Forms\Inputs\InputInterface;
 
 /**
  * Trait implements the {@link InputInterface} and acts as a wrapper for {@link InputInterface}

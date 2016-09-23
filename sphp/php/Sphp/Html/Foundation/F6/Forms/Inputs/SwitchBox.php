@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
-use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
+use Sphp\Html\Forms\Inputs\Checkbox;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel;
 
 /**
  * Class implements a Foundation based checkbox switch

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractContainerComponent;
 
 /**
  * Class Models an HTML &lt;map&gt; tag

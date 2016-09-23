@@ -8,7 +8,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Description of TabTitle

@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Core\Types\Arrays as Arrays;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Arrays;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class implements an property attribute object for an HTML element

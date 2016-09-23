@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Html\ContainerTag;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class models an HTML &lt;a&gt; tag

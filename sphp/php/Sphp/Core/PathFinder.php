@@ -7,7 +7,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Data\Arrayable as Arrayable;
+use Sphp\Data\Arrayable;
 
 /**
  * Class implements an absolute path finder 

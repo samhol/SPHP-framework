@@ -9,8 +9,8 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Html\Lists\HtmlList as HtmlList;
 use Sphp\Html\Lists\LiInterface as LiInterface;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
-use Sphp\Html\ContainerInterface as ContainerInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\ContainerInterface;
 use Sphp\Html\WrappingContainer as WrappingHtmlContainer;
 
 /**

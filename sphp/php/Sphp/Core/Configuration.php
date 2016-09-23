@@ -7,8 +7,8 @@
 
 namespace Sphp\Core;
 
-use Sphp\Core\Types\Arrays as Arrays;
-use Sphp\Data\Arrayable as Arrayable;
+use Sphp\Core\Types\Arrays;
+use Sphp\Data\Arrayable;
 
 /**
  * Application Config class for storing common application data

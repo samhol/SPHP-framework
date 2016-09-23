@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Div as Div;
 
 /**

@@ -7,8 +7,8 @@
 
 namespace Sphp\Html;
 
-use Sphp\Net\URL as URL;
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+use Sphp\Net\URL;
+use Sphp\Html\Attributes\AttributeManager;
 
 /**
  * Trait implements {@link AjaxLoaderInterface} functionality

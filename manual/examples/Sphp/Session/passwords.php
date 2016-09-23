@@ -2,7 +2,7 @@
 
 namespace Sphp\Net;
 
-use Sphp\Core\Types\Strings as Strings;
+use Sphp\Core\Types\Strings;
 
 for ($i = 1; $i <= 4; ++$i) {
 	$password[$i] = Strings::random(6);

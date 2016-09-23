@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Gettext;
 
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 
 /**
  * Class localizes weekday and month names

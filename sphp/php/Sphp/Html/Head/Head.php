@@ -8,11 +8,11 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Core\Configuration as Configuration;
-use Sphp\Html\Container as Container;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Html\Programming\ScriptsContainer as ScriptsContainer;
+use Sphp\Html\Container;
+use Sphp\Core\Types\Strings;
+use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
 
 /**

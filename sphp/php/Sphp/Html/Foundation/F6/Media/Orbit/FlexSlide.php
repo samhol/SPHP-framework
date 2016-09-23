@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\F6\Media\FlexInterface as FlexInterface;
 use Sphp\Html\Foundation\F6\Media\Flex as Flex;
 

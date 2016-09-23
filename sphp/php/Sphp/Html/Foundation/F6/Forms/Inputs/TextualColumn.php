@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\TextualInputInterface as TextualInputInterface;
+use Sphp\Html\Forms\Inputs\TextualInputInterface;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts

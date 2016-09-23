@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Interface defines &lt;select&gt; menu's content tags (&lt;option|optgroup&gt;).

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);

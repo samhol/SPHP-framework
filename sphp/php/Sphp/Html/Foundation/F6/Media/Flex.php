@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 use Sphp\Html\Media\IframeInterface as IframeInterface;
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 use Sphp\Html\Media\Iframe as Iframe;
 use Sphp\Html\Media\ViewerJS as ViewerJS;
 use Sphp\Html\Media\AV\DailyMotionPlayer as DailyMotionPlayer;

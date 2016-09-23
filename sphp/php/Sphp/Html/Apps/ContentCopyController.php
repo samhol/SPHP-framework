@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Class models an action controller that copies content from the target component to the user's clipboard

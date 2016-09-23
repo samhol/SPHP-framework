@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Buttons;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\ContentTrait as ContentTrait;
-use Sphp\Html\Forms\Label as Label;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ContentTrait;
+use Sphp\Html\Forms\Label;
 use Sphp\Html\Forms\Inputs\FileInput as FileInput;
 
 /**

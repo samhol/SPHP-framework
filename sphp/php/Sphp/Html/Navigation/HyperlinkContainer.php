@@ -8,10 +8,10 @@
 namespace Sphp\Html\Navigation;
 
 use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
-use Sphp\Html\Navigation\HyperlinkInterface as HyperlinkInterface;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Net\URL as URL;
+use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Core\Types\Strings;
+use Sphp\Net\URL;
 
 /**
  * Implements {@link HyperlinkInterface} properties in a menu item

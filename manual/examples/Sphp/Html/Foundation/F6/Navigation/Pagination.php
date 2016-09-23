@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 
 $currentUrl = URL::getCurrent()->getHtml();
 $pages = [];

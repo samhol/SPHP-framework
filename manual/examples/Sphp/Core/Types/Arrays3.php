@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 
 $arr = [["a", "b"], 'url' => new URL("http://sphp.samiholck.com/?page=tools")];
 $copy = Arrays::copy($arr);

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * The common Interface for the content of an {@link Ol} and an {@link Ul} list

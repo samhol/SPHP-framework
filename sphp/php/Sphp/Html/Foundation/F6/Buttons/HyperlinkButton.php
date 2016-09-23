@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Class implements an HTML &lt;a&gt; tag as a Foundation Button in PHP

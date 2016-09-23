@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\TextInput as TextInput;
+use Sphp\Html\Forms\Inputs\TextInput;
 
 /**
  * Class implements Foundation framework based text input component

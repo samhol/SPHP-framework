@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Headings;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 
 /**
  * Abstract implementation of HTML headings and subheadings

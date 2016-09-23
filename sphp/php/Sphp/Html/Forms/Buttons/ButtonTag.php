@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
-use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
+use Sphp\Html\ContainerTag;
+use Sphp\Html\Forms\Inputs\InputTrait;
 
 /**
  * Class Models an HTML &lt;button&gt; tag

@@ -7,7 +7,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Arrays;
 use Sphp\Net\Password as Password;
 use Sphp\Net\HashedPassword as HashedPassword;
 use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;

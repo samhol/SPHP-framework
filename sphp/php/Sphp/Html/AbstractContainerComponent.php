@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager as AttributeManager;
+use Sphp\Html\Attributes\AttributeManager;
 
 /**
  * Class provides a simple implementation of a container tag

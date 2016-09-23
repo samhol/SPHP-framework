@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
 use Sphp\Html\Apps\SyntaxHighlighter as SyntaxHighlighter;
 use Sphp\Html\Apps\SyntaxhighlighterContainerTrait as SyntaxhighlighterContainerTrait;

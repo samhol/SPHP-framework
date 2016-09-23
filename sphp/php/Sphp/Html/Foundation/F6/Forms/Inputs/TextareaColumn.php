@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\TextareaInterface as TextareaInterface;
-use Sphp\Html\Forms\Inputs\Textarea as Textarea;
+use Sphp\Html\Forms\Inputs\TextareaInterface;
+use Sphp\Html\Forms\Inputs\Textarea;
 
 /**
  * Class implements Foundation framework based textarea input component

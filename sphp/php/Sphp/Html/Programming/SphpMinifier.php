@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ContentInterface as ContentInterface;
-use Sphp\Html\Container as Container;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\Container;
 use Sphp\Core\Types\BitMask as BitMask;
 use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
 

@@ -9,7 +9,7 @@ namespace Sphp\Core\Types;
 
 use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
 use Sphp\Objects\EqualsTrait as EqualsTrait;
-use Sphp\Data\Arrayable as Arrayable;
+use Sphp\Data\Arrayable;
 
 /**
  * Class models a bitmask object

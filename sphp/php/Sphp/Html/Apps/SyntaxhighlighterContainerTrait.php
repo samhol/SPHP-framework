@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 
 /**
  * Interface specifies the functionality of an Ajax content loader component

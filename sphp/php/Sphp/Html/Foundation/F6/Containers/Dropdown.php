@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Containers;
 
-use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\ContentInterface as ContentInterface;
+use Sphp\Html\ContainerTag;
+use Sphp\Html\ContentInterface;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 
 /**

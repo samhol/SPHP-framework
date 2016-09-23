@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
 use Sphp\Html\Apps\SyntaxHighlighter as SyntaxHighlighter;
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Class implements an Foundation 6 Accordion containing a single syntax highlighting pane

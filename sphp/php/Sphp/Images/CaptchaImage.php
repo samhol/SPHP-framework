@@ -7,12 +7,12 @@
 
 namespace Sphp\Images;
 
-use Imagine\Gd\Imagine as Imagine,
-	Imagine\Image\Color as Color,
-	Imagine\Image\Palette\RGB as RGB,
-	Imagine\Image\Box as Box,
-	Imagine\Image\Point as Point,
-	Imagine\Gd\Font as Font;
+use Imagine\Gd\Imagine,
+	Imagine\Image\Color,
+	Imagine\Image\Palette\RGB,
+	Imagine\Image\Box,
+	Imagine\Image\Point,
+	Imagine\Gd\Font;
 
 /**
  * Class implements a captha image

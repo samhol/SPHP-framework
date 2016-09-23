@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Events;
 
-use Sphp\Data\PrioritizedObjectStorage as PrioritizedObjectStorage;
+use Sphp\Data\PrioritizedObjectStorage;
 
 /**
  * Implements an object for managing event listeners and dispatching events

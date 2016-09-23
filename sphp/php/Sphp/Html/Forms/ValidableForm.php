@@ -8,8 +8,8 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\validation\FormValidator as FormValidator;
-use Sphp\validation\RequiredValueValidator as RequiredValueValidator;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\validation\RequiredValueValidatorr;
+use Sphp\Core\Types\Arrays;
 
 /**
  * A form validation wrapper

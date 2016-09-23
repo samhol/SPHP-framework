@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 
 /**
  * Class models an HTML &lt;script&gt; tag having script code as its content

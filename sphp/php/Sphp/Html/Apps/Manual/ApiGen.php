@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumb as BreadCrumb;
 use Sphp\Html\Foundation\F6\Navigation\BreadCrumbs as BreadCrumbs;

@@ -7,8 +7,8 @@
 
 namespace Sphp\Core;
 
-use Sphp\Data\Arrayable as Arrayable;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Data\Arrayable;
+use Sphp\Core\Types\Arrays;
 
 /**
  * Implements class for managing PHP settings

@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\ContainerTag as ContainerTag;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\ContainerTag;
+use Sphp\Html\Navigation\Hyperlink;
 
 /**
  * Class Models an HTML &lt;dl&gt; tag

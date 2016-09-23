@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\Container as Container;
+use Sphp\Html\Container;
 use Sphp\Html\TraversableInterface as TraversableComponentInterface;
 
 /**

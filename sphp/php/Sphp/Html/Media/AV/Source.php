@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\EmptyTag;
 use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
 use Sphp\Html\Media\LazyLoaderTrait as LazyLoaderTrait;
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 use Sphp\Core\Util\FileUtils as FileUtils;
 
 /**

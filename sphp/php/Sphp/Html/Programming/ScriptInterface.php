@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ComponentInterface as ComponentInterface;
+use Sphp\Html\ComponentInterface;
 use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 
 /**

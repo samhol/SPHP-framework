@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\AbstractTag as AbstractTag;
+use Sphp\Html\AbstractTag;
 
 /**
  * Class models an HTML &lt;script&gt; tag having script code as its content

@@ -9,7 +9,7 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
 use Sphp\Html\WrappingContainer as WrappingHtmlContainer;
-use Sphp\Net\URL as URL;
+use Sphp\Net\URL;
 
 /**
  * Abstract class defines common features for both ordered and unordered HTML-list

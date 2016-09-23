@@ -7,12 +7,12 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Div as Div;
-use Sphp\Core\Types\Strings as Strings;
-use Sphp\Core\Types\Arrays as Arrays;
+use Sphp\Core\Types\Strings;
+use Sphp\Core\Types\Arrays;
 use Sphp\Images\Images as ImageUtils;
-use Sphp\Html\Navigation\Hyperlink as Hyperlink;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
 use Sphp\Html\Foundation\Structure\Row as Row;
 use Sphp\Html\Tables\Table as Table;

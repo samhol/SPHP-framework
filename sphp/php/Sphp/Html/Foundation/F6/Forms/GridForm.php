@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\TraversableFormInterface as TraversableFormInterface;
-use Sphp\Html\AbstractContainerComponent as AbstractContainerComponent;
-use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
-use Sphp\Html\Forms\TraversableFormTrait as TraversableFormTrait;
-use Sphp\Html\Foundation\F6\Containers\Callout as Callout;
+use Sphp\Html\Forms\TraversableFormInterface;
+use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\Foundation\F6\Grids\GridInterface;
+use Sphp\Html\Forms\TraversableFormTrait;
+use Sphp\Html\Foundation\F6\Containers\Callout;
 
 /**
  * Class implements a Foundation framework form

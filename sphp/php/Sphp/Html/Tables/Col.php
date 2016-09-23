@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\EmptyTag;
 
 /**
  * Class models an HTML &lt;col&gt; tag

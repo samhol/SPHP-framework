@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
-use Sphp\Html\Forms\Inputs\InputInterface as InputInterface;
-use Sphp\Html\Forms\Label as Label;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Forms\Label;
+use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph as Paragraph;
 use ReflectionClass;
 use BadMethodCallException;

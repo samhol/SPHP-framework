@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Html\Media\ImageMap;
-use Sphp\Html\EmptyTag as EmptyTag;
+use Sphp\Html\EmptyTag;
 
 /**
  * Class Models an HTML &lt;area shape="circle"&gt; tag

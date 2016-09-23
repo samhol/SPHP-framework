@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\ComponentInterface as ComponentInterface;
-use Sphp\Html\ContentTrait as ContentTrait;
+use Sphp\Html\AbstractComponent;
+use Sphp\Html\ComponentInterface;
+use Sphp\Html\ContentTrait;
 use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
 use Sphp\Html\Div as Div;
 

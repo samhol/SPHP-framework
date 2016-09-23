@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Html\ContainerTag as ContainerTag;
+use Sphp\Html\ContainerTag;
 use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 
 /**

@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Containers;
 use Exception;
 use Sphp\Html\Div as Div;
 use Sphp\Html\Headings\H2 as H2;
-use Sphp\Html\Span as Span;
+use Sphp\Html\Span;
 use Sphp\Html\Lists\Ol as Ol;
 use Sphp\Html\Lists\Li as Li;
 use Sphp\Html\Lists\Dl as Dl;
