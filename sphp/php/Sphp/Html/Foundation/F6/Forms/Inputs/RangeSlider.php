@@ -29,25 +29,25 @@ class RangeSlider extends AbstractSlider {
    *
    * @var Span
    */
-  private $handle1;
+  private $lowerHandle;
 
   /**
    *
    * @var Span
    */
-  private $handle2;
+  private $upperHandle;
 
   /**
    *
    * @var HiddenInput
    */
-  private $input1;
+  private $lowerInput;
 
   /**
    *
    * @var HiddenInput
    */
-  private $input2;
+  private $upperInput;
 
   /**
    * Constructs a new instance
@@ -61,20 +61,20 @@ class RangeSlider extends AbstractSlider {
     parent::__construct($min, $max, $step);
     $this->attrs()->demand("data-initial-end")
             ->set("data-initial-end", $max);
-    $this->handle1 = new Span();
-    $this->handle1->cssClasses()->lock("slider-handle");
-    $this->handle1->attrs()
+    $this->lowerHandle = new Span();
+    $this->lowerHandle->cssClasses()->lock("slider-handle");
+    $this->lowerHandle->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->handle2 = new Span();
-    $this->handle2->cssClasses()->lock("slider-handle");
-    $this->handle2->attrs()
+    $this->upperHandle = new Span();
+    $this->upperHandle->cssClasses()->lock("slider-handle");
+    $this->upperHandle->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
             ->lock("tabindex", 1);
-    $this->input1 = (new HiddenInput())->setValue($min);
-    $this->input2 = (new HiddenInput())->setValue($max);
+    $this->lowerInput = (new HiddenInput())->setValue($min);
+    $this->upperInput = (new HiddenInput())->setValue($max);
     if ($name !== null) {
       $this->setName($name);
     }
@@ -95,7 +95,7 @@ class RangeSlider extends AbstractSlider {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getStartInput() {
-    return $this->input1;
+    return $this->lowerInput;
   }
 
   /**
@@ -104,7 +104,7 @@ class RangeSlider extends AbstractSlider {
    * @return HiddenInput the actual (hidden) form element containg the value of the slider
    */
   private function getEndInput() {
-    return $this->input2;
+    return $this->upperInput;
   }
 
   /**
@@ -255,7 +255,7 @@ class RangeSlider extends AbstractSlider {
    * {@inheritdoc}
    */
   public function contentToString() {
-    return $this->handle1 . '<span class="slider-fill" data-slider-fill></span>' . $this->handle2 . $this->input1 . $this->input2;
+    return $this->lowerHandle . '<span class="slider-fill" data-slider-fill></span>' . $this->upperHandle . $this->lowerInput . $this->upperInput;
   }
 
 }

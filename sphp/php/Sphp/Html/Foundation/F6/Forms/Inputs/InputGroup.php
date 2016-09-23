@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent as AbstractComponent;
-use Sphp\Html\Span as Span;
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface as IdentifiableInputInterface;
 
 /**
@@ -21,6 +20,8 @@ use Sphp\Html\Forms\Inputs\IdentifiableInputInterface as IdentifiableInputInterf
  * @filesource
  */
 class InputGroup extends AbstractComponent implements IdentifiableInputInterface {
+
+  use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
 
   /**
    *
@@ -63,7 +64,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
   public function getInput() {
     return $this->input;
   }
-  
+
   /**
    * Sets the content of the prefix
    * 
@@ -76,7 +77,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
     $this->prefix = $prefix;
     return $this;
   }
-  
+
   /**
    * Sets the content of the suffix
    * 
@@ -102,58 +103,6 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
       }
     };
     return $a($this->prefix) . $this->input->getHtml() . $a($this->suffix);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function disable($disabled = true) {
-    $this->input->disable($disabled);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getName() {
-    return $this->input->getName();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getValue() {
-    return $this->input->getValue();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isEnabled() {
-    return $this->input->isNamed();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function isNamed() {
-    return $this->input->isNamed();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setName($name) {
-    $this->input->setName($name);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setValue($value) {
-    $this->input->setValue($value);
-    return $this;
   }
 
 }

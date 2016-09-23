@@ -4,9 +4,6 @@ namespace Sphp\Manual;
 
 include_once __DIR__ . "/_constants.php";
 
-//include_once __DIR__ . "/_common.php";
-//include_once __DIR__ . '/../../sph/settings.php';
-
 use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
 use Sphp\Html\Apps\Manual\Apis as Apis;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
@@ -22,19 +19,15 @@ function addPHPSuffix($page) {
 
 if (!isset($api)) {
 $api = Apis::apigen(); 
-// $api = new ApiGenLinker(Configuration::current()->get("apigen"));
 }
 if (!isset($php)) {
   $php = Apis::phpManual();
-  //$php = new PHPManualLinker();
 }
 if (!isset($foundation)) {
   $foundation = Apis::foundation();
- // $foundation = new FoundationDocsLinker();
 }
 if (!isset($w3schools)) {
   $w3schools = Apis::w3schools();
- // $w3schools = new W3schoolsLinker();
 }
 if (!isset($parsedown)) {
   $parsedown = new \ParsedownExtraPlugin();

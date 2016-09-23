@@ -28,15 +28,10 @@ class Span extends ContainerTag {
    * Constructs a new instance
    *
    * @param  null|mixed $content optional content of the component
-   * @param  string $class the class attribute
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($content = null, $class = null) {
+  public function __construct($content = null) {
     parent::__construct("span", $content);
-    if ($class !== null) {
-      $this->addCssClass($class);
-    }
   }
 
 }
