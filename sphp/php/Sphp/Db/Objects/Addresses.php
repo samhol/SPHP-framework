@@ -7,7 +7,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  *

@@ -306,12 +306,11 @@ class User extends AbstractDbObject {
   /**
    * {@inheritdoc}
    */
-  public function equals($object) { 
-    $class= self::class;
+  public function equals($object) {
+    $class = self::class;
     $result = false;
-    if  ($object instanceof $class) {
-      $result = $this->getUsername() == $object->getUsername() 
-              && $this->getEmail() == $object->getEmail();
+    if ($object instanceof $class) {
+      $result = $this->getUsername() == $object->getUsername() && $this->getEmail() == $object->getEmail();
     }
     return $result;
   }

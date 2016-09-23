@@ -8,7 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use Sphp\Core\Types\Arrays;
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class models a geographical address.

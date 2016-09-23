@@ -8,7 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use DateTime;
-use Sphp\Util\Permissions as Permissions;
+use Sphp\Util\Permissions;
 
 /**
  * Description of SessionData

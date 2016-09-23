@@ -7,8 +7,8 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Objects\AbstractArrayableObject as AbstractArrayableObject;
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Sphp\Objects\AbstractArrayableObject;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class implements some common parts of AbstractItem interface.

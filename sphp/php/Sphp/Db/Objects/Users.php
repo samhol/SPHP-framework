@@ -7,8 +7,8 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Db\Objects\User as User;
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Sphp\Db\Objects\User;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  *

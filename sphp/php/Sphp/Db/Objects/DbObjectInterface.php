@@ -7,8 +7,8 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Objects\ArrayableObjectInterface as ArrayableObjectInterface;
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
+use Sphp\Objects\ArrayableObjectInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Interface describes common features for all database objects.
