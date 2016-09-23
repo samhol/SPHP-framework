@@ -31,22 +31,25 @@ class NumberInput extends InputTag implements NumberInputInterface {
    * @precondition  `0 < $size <= $maxlength`
    * @param  string|null $name the value of the  name attribute
    * @param  string $value the value of the  value attribute
-   * @param  int $maxlength the value of the  maxlength attribute
-   * @param  int $size the value of the  size attribute
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
-   * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
-   * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  function __construct($name = null, $value = null, $maxlength = null, $size = null) {
+  function __construct($name = null, $value = null) {
+    if ($value != null) {
+      
+    }
     parent::__construct("number", $name, $value);
-    if ($maxlength > 0) {
-      $this->setMaxlength($maxlength);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setValue($value) {
+    if ($value !== false) {
+      $value = (int) $value;
     }
-    if ($size > 0) {
-      $this->setSize($size);
-    }
+    parent::setValue($value);
+    return $this;
   }
 
   /**
@@ -60,7 +63,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
    * {@inheritdoc}
    */
   public function setMinimum($min) {
-    $this->attrs()->set("min", $min);
+    $this->attrs()->set("min", (int) $min);
     return $this;
   }
 
@@ -75,11 +78,9 @@ class NumberInput extends InputTag implements NumberInputInterface {
    * {@inheritdoc}
    */
   public function setMaximum($max) {
-    $this->attrs()->set("max", $max);
+    $this->attrs()->set("max", (int) $max);
     return $this;
   }
-  
-  
 
   /**
    * {@inheritdoc}
@@ -91,8 +92,8 @@ class NumberInput extends InputTag implements NumberInputInterface {
   /**
    * {@inheritdoc}
    */
-  public function setStep($max) {
-    $this->attrs()->set("step", $max);
+  public function setStep($step) {
+    $this->attrs()->set("step", (int) $step);
     return $this;
   }
 

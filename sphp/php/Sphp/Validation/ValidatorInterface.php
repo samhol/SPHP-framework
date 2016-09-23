@@ -7,7 +7,7 @@
 
 namespace Sphp\Validation;
 
-use Sphp\Localization\MessageContainer;
+use Sphp\Core\Gettext\MessageList;
 
 /**
  * The base interface for all validatorrs
@@ -37,7 +37,7 @@ interface ValidatorInterface {
   /**
    * Returns error messages as a {@link MessageList} object
    *
-   * @return MessageContainer error messages
+   * @return MessageList error messages
    */
   public function getErrors();
 }

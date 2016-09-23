@@ -31,6 +31,10 @@ Framework has many build-in form components that implement basic HTML form eleme
  * $textarea
 MD
 );
+
+(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Inputs/InputFields.php', false, true))
+        ->addCssClass("form-example")
+        ->printHtml();
 (new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Input.php', false, true))
         ->addCssClass("form-example")
         ->printHtml();

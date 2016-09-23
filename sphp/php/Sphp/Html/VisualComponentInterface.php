@@ -10,7 +10,7 @@ namespace Sphp\Html;
 /**
  * Interface specifies the basic functionality of any HTML component
  *
- * {@link self} models an actual HTML component and supports HTML attribute manipulation.
+ * An instance models an actual HTML component and supports HTML attribute manipulation.
  *
  *
  * {@inheritdoc}
