@@ -8,7 +8,7 @@
 namespace Sphp\Html\Sections;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Headings\HeadingInterface as HeadingInterface;
+use Sphp\Html\Headings\HeadingInterface;
 
 /**
  * Class Models an HTML &lt;section&gt; tag

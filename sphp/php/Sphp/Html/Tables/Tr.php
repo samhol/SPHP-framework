@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 
 /**
  * Class models an HTML &lt;tr&gt; tag

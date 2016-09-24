@@ -7,15 +7,16 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
-use Sphp\Objects\EqualsTrait as EqualsTrait;
+use Sphp\Objects\ScalarObjectInterface;
+use Sphp\Objects\EqualsTrait;
 use Sphp\Data\Arrayable;
 
 /**
  * Class models a bitmask object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-15
+ * @since   2014-09-15
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

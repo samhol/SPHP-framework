@@ -9,7 +9,7 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Core\Types\Strings;
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableInterface;
 /**
  * Class models an HTML &lt;table&gt; tag.
  *

@@ -95,26 +95,4 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setPattern($pattern) {
-    $this->attrs()->set("pattern", $pattern);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getPattern() {
-    return $this->attrs()->get("pattern");
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasPattern() {
-    return $this->attrs()->exists("pattern");
-  }
-
 }

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\Container;
-use Sphp\Html\TraversableInterface as TraversableComponentInterface;
+use Sphp\Html\TraversableInterface;
 
 /**
  * Class is a container for a {@link Meta} component group
@@ -26,7 +26,7 @@ use Sphp\Html\TraversableInterface as TraversableComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MetaContainer implements TraversableComponentInterface {
+class MetaContainer implements TraversableInterface {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;

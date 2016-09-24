@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
+use Sphp\Html\NonVisualContentInterface;
 
 /**
  * Interface defines all {@link Head} component content

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
+use Sphp\Data\ArrayAccessExtensionTrait;
 
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers

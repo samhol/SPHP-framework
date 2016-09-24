@@ -7,7 +7,7 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Core\CloneableInterface as CloneableInterface;
+use Sphp\Core\CloneableInterface;
 
 /**
  * Interface describes common features for all Objects.

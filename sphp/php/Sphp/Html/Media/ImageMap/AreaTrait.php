@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Navigation\HyperlinkTrait as HyperlinkTrait;
+use Sphp\Html\Navigation\HyperlinkTrait;
 
 /**
  * Trait implements {@link AreaInterface} for an an HTML &lt;area&gt; tag

@@ -7,7 +7,7 @@
 
 namespace Sphp\Net;
 
-use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
+use Sphp\Objects\ScalarObjectInterface;
 
 /**
  * Class implements an uncrypted plain password

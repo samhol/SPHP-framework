@@ -8,7 +8,7 @@
 namespace Sphp\Html\Sections;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
+use Sphp\Html\AjaxLoaderInterface;
 
 /**
  * Class models an HTML &lt;p&gt; tag

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
+use Sphp\Html\SimpleContainerTag;
 
 /**
  * Class models an HTML &lt;title&gt; tag

@@ -7,8 +7,8 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Objects\ArrayableObjectInterface as ArrayableObjectInterface;
-use Sphp\Objects\ScalarObjectInterface as ScalarObjectInterface;
+use Sphp\Objects\ArrayableObjectInterface;
+use Sphp\Objects\ScalarObjectInterface;
 
 /**
  * DefaultEqualsTrait implements the default equals method
