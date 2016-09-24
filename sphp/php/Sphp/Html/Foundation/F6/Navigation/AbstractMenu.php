@@ -8,10 +8,10 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Html\Lists\HtmlList as HtmlList;
-use Sphp\Html\Lists\LiInterface as LiInterface;
+use Sphp\Html\Lists\LiInterface;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\ContainerInterface;
-use Sphp\Html\WrappingContainer as WrappingHtmlContainer;
+use Sphp\Html\WrappingContainer;
 
 /**
  * Class implements a Foundation 6 menu
@@ -43,7 +43,7 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
         }
         return $c;
       };
-      $contentContainer = new WrappingHtmlContainer($wrapper);
+      $contentContainer = new WrappingContainer($wrapper);
     }
     parent::__construct($tagName, $attrManager, $contentContainer);
     $this->cssClasses()->lock("menu");

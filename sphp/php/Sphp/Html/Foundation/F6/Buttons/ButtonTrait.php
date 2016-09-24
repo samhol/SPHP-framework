@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
+use Sphp\Html\Foundation\F6\Core\ColourableTrait;
 use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
 
 /**

@@ -7,10 +7,12 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Buttons;
 
+use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
+use Sphp\Html\Foundation\F6\Buttons\ButtonInterface;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\ContentTrait;
 use Sphp\Html\Forms\Label;
-use Sphp\Html\Forms\Inputs\FileInput as FileInput;
+use Sphp\Html\Forms\Inputs\FileInput;
 
 /**
  * Class models &lt;input type="submit"&gt; tag as a Foundation Button in PHP
@@ -26,7 +28,7 @@ use Sphp\Html\Forms\Inputs\FileInput as FileInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileUploadButton implements ContentInterface, \Sphp\Html\Forms\Inputs\IdentifiableInputInterface, \Sphp\Html\Foundation\F6\Buttons\ButtonInterface {
+class FileUploadButton implements ContentInterface, IdentifiableInputInterface, ButtonInterface {
 
   use ContentTrait,
       \Sphp\Html\Foundation\F6\Buttons\ButtonTrait;

@@ -7,13 +7,13 @@
 
 namespace Sphp\Html\Head;
 
-use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
+use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 use Sphp\Html\Container;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
-use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
+use Sphp\Html\Programming\ScriptInterface;
 
 /**
  * Class models an HTML &lt;head&gt; tag

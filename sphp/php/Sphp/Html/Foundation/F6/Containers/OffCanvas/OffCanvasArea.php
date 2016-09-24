@@ -8,10 +8,9 @@
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\F6\Navigation\VerticalMenu as VerticalMenu;
-use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
-use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
-use Sphp\Html\Forms\Buttons\ButtonTag as Button;
+use Sphp\Html\Foundation\F6\Navigation\VerticalMenu;
+use Sphp\Html\Foundation\F6\Buttons\CloseButton;
+use Sphp\Html\Foundation\F6\Navigation\SubMenu;
 
 /**
  * An abstract implementation of Foundation Off-canvas menu

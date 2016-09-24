@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Core\Types\Strings;
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 use UnexpectedValueException;
 
 /**

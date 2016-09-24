@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 
 ob_start();
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 include_once 'links.php';
 $nav = (new AccordionMenu())->addCssClass("sphp-sidenav")->appendText("Documentation");
 $nav[0]->addCssClass("heading");

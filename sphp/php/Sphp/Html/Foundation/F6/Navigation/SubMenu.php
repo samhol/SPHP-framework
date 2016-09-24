@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
+use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**

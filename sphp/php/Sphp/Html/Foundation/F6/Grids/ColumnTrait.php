@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
-use Sphp\Html\Foundation\F6\Core\Screen as Screen;
+use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\Foundation\F6\Core\Screen;
 
 /**
  * Trait implements functionality for {@link ColumnInterface} 
@@ -30,7 +30,7 @@ trait ColumnTrait {
   /**
    * Returns the class attribute object
    * 
-   * @return MultiValueAttribute the class attribute object
+   * @return ClassAttribute the class attribute object
    */
   abstract public function cssClasses();
 

@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\F6\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
-use Sphp\Html\Sections\Paragraph as Paragraph;
+use Sphp\Html\Sections\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
 

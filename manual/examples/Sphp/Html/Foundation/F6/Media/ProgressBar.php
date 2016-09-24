@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Media;
 
 use Sphp\Html\Container;
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 
 $progressBars = new Container();
 $progressBars[] = (new ProgressBar(50))->setColor("alert")->setBarName("foobar1");

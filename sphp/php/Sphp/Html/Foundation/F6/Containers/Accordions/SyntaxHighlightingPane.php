@@ -7,11 +7,11 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Core\CloneNotSupportedTrait as CloneNotSupportedTrait;
-use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
-use Sphp\Html\Apps\SyntaxhighlighterContainerTrait as SyntaxhighlighterContainerTrait;
-use Sphp\Html\Apps\SyntaxHighlighter as SyntaxHighlighter;
-use Sphp\Html\Foundation\F6\Buttons\IconButton as IconButton;
+use Sphp\Core\CloneNotSupportedTrait;
+use Sphp\Html\Apps\SyntaxHighlighterInterface;
+use Sphp\Html\Apps\SyntaxhighlighterContainerTrait;
+use Sphp\Html\Apps\SyntaxHighlighter;
+use Sphp\Html\Foundation\F6\Buttons\IconButton;
 
 /**
  * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}

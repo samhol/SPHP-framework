@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
-use Sphp\Html\Div as Div;
-use Sphp\Html\Sections\Paragraph as Paragraph;
+use Sphp\Html\Div;
+use Sphp\Html\Sections\Paragraph;
 
 (new Tabs())->addTab("1st. tab", (new Div())
                 ->ajaxAppend("manual/snippets/loremipsum.html"))

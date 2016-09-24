@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\ContainerInterface;
-use Sphp\Html\Foundation\F6\Grids\RowInterface as RowInterface;
-use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\F6\Grids\RowInterface;
+use Sphp\Html\Foundation\F6\Grids\ColumnInterface;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumnInterface;
 

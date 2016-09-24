@@ -8,9 +8,9 @@
 namespace Sphp\Html\Foundation\F6\Grids;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
-use Sphp\Html\Apps\SyntaxHighlighter as SyntaxHighlighter;
-use Sphp\Html\Apps\SyntaxhighlighterContainerTrait as SyntaxhighlighterContainerTrait;
+use Sphp\Html\Apps\SyntaxHighlighterInterface;
+use Sphp\Html\Apps\SyntaxHighlighter;
+use Sphp\Html\Apps\SyntaxhighlighterContainerTrait;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts

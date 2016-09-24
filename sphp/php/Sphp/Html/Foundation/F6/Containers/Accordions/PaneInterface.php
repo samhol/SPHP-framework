@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\Lists\LiInterface as LiInterface;
+use Sphp\Html\Lists\LiInterface;
 
 /**
  * Interface defines a Pane for Foundation 6 Accordion

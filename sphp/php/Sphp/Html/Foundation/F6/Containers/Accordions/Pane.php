@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
+use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 
 /**
  * Class implements a Pane for a Foundation 6 Accordion

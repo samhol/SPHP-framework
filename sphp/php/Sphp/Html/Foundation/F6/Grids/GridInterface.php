@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Grids;
 
 use Sphp\Html\ContainerInterface;
 use Sphp\Html\ContentInterface;
-use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableInterface;
 
 /**
  * Interface defines a Foundation based Grid

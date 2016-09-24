@@ -8,11 +8,11 @@
 namespace Sphp\Html\Foundation\F6\Grids;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface as TraversableInterface;
-use Sphp\Html\TraversableTrait as TraversableTrait;
-use Sphp\Html\WrappingContainer as WrappingContainer;
-use Sphp\Html\Foundation\F6\Core\Screen as Screen;
-use Sphp\Html\ContentParserInterface as ContentParserInterface;
+use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableTrait;
+use Sphp\Html\WrappingContainer;
+use Sphp\Html\Foundation\F6\Core\Screen;
+use Sphp\Html\ContentParserInterface;
 use Sphp\Html\ContentParsingTrait as ContentParsingTrait;
 
 /**

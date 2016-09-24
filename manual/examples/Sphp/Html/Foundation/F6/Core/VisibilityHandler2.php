@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 
 $ul = Document::get("ul");
 foreach (Screen::sizes() as $size) {

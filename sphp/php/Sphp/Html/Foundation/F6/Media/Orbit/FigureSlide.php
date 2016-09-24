@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\Img as Img;
-use Sphp\Html\Media\FigCaption as FigCaption;
+use Sphp\Html\Media\Img;
+use Sphp\Html\Media\FigCaption;
 
 /**
  * Class implements a slide for Foundation {@link Orbit} components

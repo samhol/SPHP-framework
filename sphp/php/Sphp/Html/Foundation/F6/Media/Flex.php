@@ -8,14 +8,14 @@
 namespace Sphp\Html\Foundation\F6\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
-use Sphp\Html\Media\IframeInterface as IframeInterface;
+use Sphp\Html\Media\LazyLoaderInterface;
+use Sphp\Html\Media\IframeInterface;
 use Sphp\Net\URL;
-use Sphp\Html\Media\Iframe as Iframe;
-use Sphp\Html\Media\ViewerJS as ViewerJS;
-use Sphp\Html\Media\AV\DailyMotionPlayer as DailyMotionPlayer;
-use Sphp\Html\Media\AV\VimeoPlayer as VimeoPlayer;
-use Sphp\Html\Media\AV\YoutubePlayer as YoutubePlayer;
+use Sphp\Html\Media\Iframe;
+use Sphp\Html\Media\ViewerJS;
+use Sphp\Html\Media\AV\DailyMotionPlayer;
+use Sphp\Html\Media\AV\VimeoPlayer;
+use Sphp\Html\Media\AV\YoutubePlayer;
 use ReflectionClass;
 use BadMethodCallException;
 

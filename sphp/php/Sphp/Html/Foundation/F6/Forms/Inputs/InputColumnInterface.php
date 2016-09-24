@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Grids\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\F6\Grids\ColumnInterface;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 

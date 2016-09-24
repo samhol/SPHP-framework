@@ -29,7 +29,7 @@ interface IdentifiableInterface {
    * @param  string $prefix optional prefix of the identity value
    * @param  int $length the length of the identity value
    * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify($identityName = "id", $prefix = "id", $length = 16);
 
@@ -38,7 +38,7 @@ interface IdentifiableInterface {
    *
    * @param  string $identityName optional name of the identifying attribute
    * @return boolean true if the identity is set, otherwise false
-   * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function hasId($identityName = "id");
 }

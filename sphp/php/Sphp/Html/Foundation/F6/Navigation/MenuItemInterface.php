@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\Lists\LiInterface as LiInterface;
+use Sphp\Html\Lists\LiInterface;
 
 /**
  * Interface specifies the basic functionality of a Foundation Top Bar item

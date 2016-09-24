@@ -7,8 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\InputInterface;
-use Sphp\Html\IdentifiableInterface as IdentifiableInterface;
+use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\ContainerTag;
 use Sphp\Core\Types\Strings;
 
@@ -50,7 +49,7 @@ class Label extends ContainerTag {
    *
    * - For attribute specifies which form element a label is bound to.
    *
-   * @param  string|InputInterface $for the value of the for attribute
+   * @param  string|IdentifiableInputInterface $for the value of the for attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 
 /**
  * Class implements Foundation framework based component to create  multi-device layouts

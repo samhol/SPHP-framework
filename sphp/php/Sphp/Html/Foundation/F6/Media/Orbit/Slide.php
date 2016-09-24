@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\Lists\Li as Li;
+use Sphp\Html\Lists\Li;
 
 /**
  * Class implements a slide for Foundation {@link Orbit} components

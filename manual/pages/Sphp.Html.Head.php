@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Head;
-use Sphp\Html\Programming\ScriptInterface as ScriptInterface;
+use Sphp\Html\Programming\ScriptInterface;
 $headNS = $api->namespaceLink(__NAMESPACE__);
 $metaIfLnk = $api->classLinker(HeadComponentInterface::class);
 $head = $api->classLinker(Head::class);

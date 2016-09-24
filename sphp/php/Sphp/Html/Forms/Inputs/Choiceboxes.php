@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Lists\Ul as Ul;
+use Sphp\Html\Lists\Ul;
 use Sphp\Html\Forms\Inputs\InputTag as InputTag;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;

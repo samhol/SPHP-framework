@@ -8,9 +8,6 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Net\URL;
-use Sphp\Images\ImageScaler as ImageScaler;
-use Sphp\Core\Types\Strings;
-use Sphp\Html\Media\ImageMap\Map as Map;
 
 /**
  * Class Models an HTML &lt;img&gt; tag

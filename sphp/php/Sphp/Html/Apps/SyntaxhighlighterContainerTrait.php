@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Apps\SyntaxHighlighterInterface as SyntaxHighlighterInterface;
+use Sphp\Html\Apps\SyntaxHighlighterInterface;
 use Sphp\Html\ComponentInterface;
 
 /**

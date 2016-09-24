@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\Radiobox;
-use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel;
 
 /**
  * Class implements a Foundation based radio switch

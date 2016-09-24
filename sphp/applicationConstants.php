@@ -2,7 +2,7 @@
 
 namespace Sphp;
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 /**
  * SPHP frameworks folder's root
  */

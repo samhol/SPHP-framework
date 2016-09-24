@@ -7,15 +7,17 @@
 
 namespace Sphp\Net;
 
+use SessionHandlerInterface;
+
 /**
- * Class handles a session
+ * Class handles a PHP session
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractSessionHandler implements \SessionHandlerInterface {
+abstract class AbstractSessionHandler implements SessionHandlerInterface {
 
 	/**
 	 * the number of seconds after which session data will be seen as garbage

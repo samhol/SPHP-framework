@@ -7,12 +7,14 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
+use Sphp\Html\AbstractContainerComponent;
+
 /**
  * Description of TabContentContainer
  *
  * @author Sami Holck
  */
-class TabContentContainer extends \Sphp\Html\AbstractContainerComponent {
+class TabContentContainer extends AbstractContainerComponent {
 
   /**
    *
@@ -20,6 +22,10 @@ class TabContentContainer extends \Sphp\Html\AbstractContainerComponent {
    */
   private $tabs;
 
+  /**
+   * 
+   * @param TabButtonContainer $tabs
+   */
   public function __construct(TabButtonContainer $tabs = null) {
     parent::__construct("div");
     if ($tabs === null) {

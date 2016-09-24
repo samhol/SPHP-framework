@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Buttons;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
+use Sphp\Html\Foundation\F6\Core\ColourableInterface;
 
 /**
  * Interface specifies the basic functionality of a Foundation styled button

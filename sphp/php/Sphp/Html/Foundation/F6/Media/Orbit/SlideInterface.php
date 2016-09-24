@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\Lists\LiInterface as LiComponent;
+use Sphp\Html\Lists\LiInterface;
 
 /**
  * Class implements a slide for Foundation {@link Orbit} components
@@ -19,7 +19,7 @@ use Sphp\Html\Lists\LiInterface as LiComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SlideInterface extends LiComponent {
+interface SlideInterface extends LiInterface {
 
   /**
    * Sets the slide as active or not

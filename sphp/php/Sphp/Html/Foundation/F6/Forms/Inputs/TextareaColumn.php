@@ -25,7 +25,7 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * Constructs a new instance
    *
-   * @precondition  `$rows > 0 & $cols > 0<`
+   * @precondition  `$rows > 0 & $cols > 0`
    * @param  string $name name attribute value
    * @param  string $content the content of the component
    * @param  string $rows the value of the rows attribute (visible height of a text area)
@@ -41,7 +41,7 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
   /**
    * Returns the actual input component
    * 
-   * @return TextareaInterface the actual input component
+   * @return Textarea the actual input component
    */
   public function getInput() {
     return parent::getInput();

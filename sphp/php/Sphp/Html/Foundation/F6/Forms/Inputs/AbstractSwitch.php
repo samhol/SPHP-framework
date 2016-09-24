@@ -8,12 +8,12 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\LabelableInterface as LabelableInputInterface;
-use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
+use Sphp\Html\Forms\LabelableInterface;
+use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
-use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel as ScreenReaderLabel;
-use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabel;
+use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable;
 
 /**
  * Class implements an abstract foundation based switch
@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\F6\Core\ScreenReaderLabelable as ScreenReaderLabelable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements LabelableInputInterface, ScreenReaderLabelable {
+class AbstractSwitch extends AbstractComponent implements LabelableInterface, ScreenReaderLabelable {
 
   /**
    * CSS classes corresponding to the size constants

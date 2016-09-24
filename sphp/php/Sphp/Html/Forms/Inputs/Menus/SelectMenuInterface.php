@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Forms\Inputs\ValidableInputInterface as ValidableInputInterface;
-use Sphp\Html\TraversableInterface as TraversableInterface;
+use Sphp\Html\TraversableInterface;
 use Sphp\Html\ContainerInterface;
 
 /**

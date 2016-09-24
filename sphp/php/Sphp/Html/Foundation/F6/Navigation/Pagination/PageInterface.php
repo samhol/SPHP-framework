@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Html\Lists\LiInterface as LiInterface;
+use Sphp\Html\Lists\LiInterface;
 
 /**
  * Class Models a page button for Foundation Pagination component

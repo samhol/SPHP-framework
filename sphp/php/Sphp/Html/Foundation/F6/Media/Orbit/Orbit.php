@@ -8,13 +8,13 @@
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\ContentParserInterface as ContentParserInterface;
-use Sphp\Html\TraversableInterface as TraversableInterface;
-use Sphp\Html\TraversableTrait as TraversableTrait;
-use Sphp\Html\Lists\Ul as Ul;
-use Sphp\Html\Navigation\Nav as Nav;
-use Sphp\Html\Media\VideoPlayerInterface as VideoPlayerInterface;
-use Sphp\Html\Foundation\F6\Media\Flex as Flex;
+use Sphp\Html\ContentParserInterface;
+use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableTrait;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Navigation\Nav;
+use Sphp\Html\Media\VideoPlayerInterface;
+use Sphp\Html\Foundation\F6\Media\Flex;
 
 /**
  * Class implements a Foundation Orbit containing {@link SlideInterface} components

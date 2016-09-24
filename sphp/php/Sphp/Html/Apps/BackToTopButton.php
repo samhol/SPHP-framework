@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\Img as Img;
+use Sphp\Html\Media\Img;
 
 /**
  * Class implements a back to top button for the web page

@@ -3,7 +3,7 @@
 namespace Sphp\Db\Objects;
 
 use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 use Exception;
 use Sphp\Net\Password as Password;
 

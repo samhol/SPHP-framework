@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Manual\Apis as Apis;
 $apigen = Apis::apigen();
 $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 $rootNs = $apigen->classLinker(Configuration::class)->namespaceLink();
 use Sphp\Core\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();

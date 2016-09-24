@@ -14,7 +14,7 @@ use SqlFormatter;
 use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 use InvalidArgumentException;
 use Sphp\Core\Util\FileUtils as FileUtils;
 

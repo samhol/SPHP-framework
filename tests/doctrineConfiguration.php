@@ -42,7 +42,7 @@ $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
 Conf::useDomain("manual")->set(Configuration::class, $config);
 $entityManager = EntityManager::create($dbParams, $config);
-//use Sphp\Core\Configuration as Configuration;
+//use Sphp\Core\Configuration;
 //use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
 Conf::useDomain("manual")->set(EntityManagerInterface::class, $entityManager);

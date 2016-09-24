@@ -12,7 +12,7 @@ use Sphp\Html\ComponentInterface;
 /**
  * Interface specifies the basic requirements of a Foundation 6 offcanvas area
  * 
- * {@link self} is the panel that slides in and out of the {@link OffCanvas} when activated. 
+ * Implementation is a panel that slides in and out of the {@link OffCanvas} when activated. 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-09-15

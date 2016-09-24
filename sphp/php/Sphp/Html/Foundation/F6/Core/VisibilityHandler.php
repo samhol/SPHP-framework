@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Core;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\ContentTrait;
-use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Class implements {@link VisibilityInterface} interface functionality
@@ -45,7 +45,7 @@ class VisibilityHandler implements ContentInterface, VisibilityHandlingInterface
   /**
    * Returns the class attribute object
    * 
-   * @return MultiValueAttribute the class attribute object
+   * @return ClassAttribute the class attribute object
    */
   public function cssClasses() {
     return $this->htmlComponent->attrs()->classes();

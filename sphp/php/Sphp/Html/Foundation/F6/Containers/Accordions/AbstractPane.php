@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 
 /**
  * Class AbstractPane

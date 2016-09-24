@@ -8,9 +8,9 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Lists\Ul as Ul;
-use Sphp\Html\TraversableInterface as TraversableInterface;
-use Sphp\Html\TraversableTrait as TraversableTrait;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\TraversableInterface;
+use Sphp\Html\TraversableTrait;
 
 /**
  * Class implements Foundation Breadcrumbs in PHP

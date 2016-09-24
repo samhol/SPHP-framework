@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\IdentifiableInputInterface as IdentifiableInputInterface;
+use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 
 /**
  * Class InputGroup

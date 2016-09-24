@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 
 Configuration::current()->phpConfiguration()->setEncoding("UTF-8");
 

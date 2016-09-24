@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 
 /**
  * Class implemnets Foundation Off-canvas navigation component

@@ -1,28 +1,36 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Tab.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
+use Sphp\Html\AbstractContainerTag;
+
 /**
  * Description of TabPanel
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-01-01
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/docs/components/tabs.html Foundation Tabs
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class Tab extends \Sphp\Html\AbstractContainerTag {
-  
+class Tab extends AbstractContainerTag {
+
   /**
    *
    * @var TabButton 
    */
   private $tabButton;
+
   /**
    * 
-   * @param mixed $content
+   * @param type $tab
+   * @param type $content
    */
   public function __construct($tab = null, $content = null) {
     parent::__construct("div");
@@ -33,14 +41,13 @@ class Tab extends \Sphp\Html\AbstractContainerTag {
     }
     $this->tabButton = new TabButton($this, $tab);
   }
-  
+
   /**
    * 
-   * @param  mixed $title
    * @return TabButton
    */
   public function getTabButton() {
     return $this->tabButton;
-    
   }
+
 }

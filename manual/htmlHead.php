@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 use Sphp\Net\URL;
 
 include_once("links.php");

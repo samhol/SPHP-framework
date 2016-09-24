@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
-use Sphp\Html\Foundation\F6\Core\Screen as Screen;
-use Sphp\Html\WrappingContainer as WrappingContainer;
-use Sphp\Html\NonVisualContentInterface as NonVisualContentInterface;
+use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\Foundation\F6\Core\Screen;
+use Sphp\Html\WrappingContainer;
+use Sphp\Html\NonVisualContentInterface;
 
 /**
  * Class implements a Foundation row

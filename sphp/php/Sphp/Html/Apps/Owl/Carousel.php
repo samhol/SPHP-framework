@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Containers;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
+use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
-use Sphp\Html\Div as Div;
+use Sphp\Html\Div;
 
 /**
  * Class implements a Foundation 6 callout component

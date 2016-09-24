@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Core\PathFinder as PathFinder;
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);

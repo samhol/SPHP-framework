@@ -28,9 +28,9 @@ class Ol extends HtmlList {
    *
    * **Notes:**
    *
-	 * 1. Any `mixed $items` not implementing {@link LiInterface} is wrapped 
-	 *    within {@link Li} component
-	 * 2. All items of an array are treated according to note (1)
+   * 1. Any `mixed $items` not implementing {@link LiInterface} is wrapped 
+   *    within {@link Li} component
+   * 2. All items of an array are treated according to note (1)
    *
    * @param  mixedmixed[]|null $items optional content of the component
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
@@ -38,8 +38,8 @@ class Ol extends HtmlList {
   public function __construct($items = null) {
     parent::__construct("ol");
     if ($items !== null) {
-      foreach(is_array($items)? $items : [$items] as $item) {
-       $this->append($item);
+      foreach (is_array($items) ? $items : [$items] as $item) {
+        $this->append($item);
       }
     }
   }

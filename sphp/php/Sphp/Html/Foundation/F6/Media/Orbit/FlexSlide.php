@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Foundation\F6\Media\FlexInterface as FlexInterface;
-use Sphp\Html\Foundation\F6\Media\Flex as Flex;
+use Sphp\Html\Foundation\F6\Media\Flex;
 
 /**
  * Class implements a slide for Foundation {@link Orbit} components

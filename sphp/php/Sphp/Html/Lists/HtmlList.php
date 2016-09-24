@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\AbstractContainerTag as AbstractContainerTag;
-use Sphp\Html\WrappingContainer as WrappingHtmlContainer;
+use Sphp\Html\AbstractContainerTag;
+use Sphp\Html\WrappingContainer;
 use Sphp\Net\URL;
 
 /**
@@ -35,7 +35,7 @@ abstract class HtmlList extends AbstractContainerTag {
    * @param  string $tagname the tagname of the component ('ul'|'ol')
    * @param  mixed|null $content optional content of the component
    */
-  public function __construct($tagName, AttributeManager $attrManager = null, WrappingHtmlContainer $contentContainer = null) {
+  public function __construct($tagName, AttributeManager $attrManager = null, WrappingContainer $contentContainer = null) {
     if ($contentContainer === null) {
       $wrapper = function ($li) {
         if (!($li instanceof LiInterface)) {
@@ -44,7 +44,7 @@ abstract class HtmlList extends AbstractContainerTag {
           return $li;
         }
       };
-      $contentContainer = new WrappingHtmlContainer($wrapper);
+      $contentContainer = new WrappingContainer($wrapper);
     }
     parent::__construct($tagName, $attrManager, $contentContainer);
   }
@@ -61,21 +61,6 @@ abstract class HtmlList extends AbstractContainerTag {
    */
   public function appendLink($href, $content = "", $target = "_self") {
     return $this->append(new HyperlinkListItem($href, $content, $target));
-  }
-
-  /**
-   * Appends a {@link Li} object to the list component
-   *
-   * @param  mixed|mixed[] $content the content of the {@link Li} component
-   * @param  string $styleName the value of the target attribute
-   * @return self for PHP Method Chaining
-   */
-  public function appendLi($content, $styleName = "") {
-    $li = new Li($content);
-    if ($styleName != "") {
-      $li->addCssClass($styleName);
-    }
-    return $this->append($li);
   }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Core\Configuration as Configuration;
+use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
 
 include_once 'links.php';

@@ -179,7 +179,7 @@ $p[] = ["Programming",
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Document as Document;
+use Sphp\Html\Document;
 
 $generateTagTable = function(array $v) use ($api, $w3schools) {
   $table = (new Table())

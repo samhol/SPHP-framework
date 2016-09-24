@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\F6\Containers;
 
-use Sphp\Html\Div as Div;
-use Sphp\Html\Foundation\F6\Buttons\CloseButton as CloseButton;
-use Sphp\Html\Foundation\F6\Core\ColourableInterface as ColourableInterface;
-use Sphp\Html\Foundation\F6\Core\ColourableTrait as ColourableTrait;
+use Sphp\Html\Div;
+use Sphp\Html\Foundation\F6\Buttons\CloseButton;
+use Sphp\Html\Foundation\F6\Core\ColourableInterface;
+use Sphp\Html\Foundation\F6\Core\ColourableTrait;
 
 /**
  * Class implements a Foundation 6 callout component
