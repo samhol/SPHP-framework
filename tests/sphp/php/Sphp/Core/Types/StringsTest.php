@@ -296,15 +296,14 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   public function testIsJson($string, $expected) {
     $this->assertEquals(Strings::isJson($string), $expected);
   }
-  
 
   /**
    * 
    * @return array
    */
   public function matchData() {
-   // print_r(mb_);
-    
+    // print_r(mb_);
+
     $attrName = "/^[a-zA-Z][\w:.-]*$/";
     $tagName = "/^([a-z]+[1-6]{0,1})$/";
     return [
@@ -313,10 +312,11 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
         ["id", $attrName, true],
         ["_2*", $attrName, false],
         ["*", $attrName, false],
-        ["h1",$tagName, true],
-        ["h_1",$tagName, false],
+        ["h1", $tagName, true],
+        ["h_1", $tagName, false],
     ];
   }
+
   /**
    * 
    * @dataProvider matchData
@@ -327,6 +327,71 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   public function testMatch($string, $pattern, $result) {
     \mb_internal_encoding("utf-8");
     \mb_regex_encoding("utf-8");
-    $this->assertEquals(Strings::match($string, $pattern),$result);
+    $this->assertEquals(Strings::match($string, $pattern), $result);
   }
+  
+  /**
+   * 
+   * @return array
+   */
+  public function uppecaseTestData() {
+    return [
+        ["\n", "utf-8", true],
+        ["\t", "utf-8", true],
+        ["\n\t", "utf-8", true],
+        ["", "utf-8", true],
+        [" ", "utf-8", true],
+        ["0", "utf-8", true],
+        ["-", "utf-8", true],
+        ["Ä", "utf-8", true],
+        ["Ö", "utf-8", true],
+        ["Å", "utf-8", true],
+        ["Ä R E", "utf-8", true],
+        ["A", "utf-8", true],
+        ["Ę", "utf-8", true],
+        ["Ą", "utf-8", true],
+        ["Ś", "utf-8", true],
+        ["Ć", "utf-8", true],
+        ["a", "utf-8", false],
+        ["ö", "utf-8", false],
+        ["å", "utf-8", false],
+        ["ä", "utf-8", false],
+    ];
+  }
+
+  /**
+   * 
+   * @dataProvider uppecaseTestData
+   * @param string $string
+   * @param string $enc
+   * @param boolean $result
+   */
+  public function testUppercase ($string, $enc, $result) {
+    $this->assertEquals(Strings::isUpperCase($string, $enc), $result);
+  }
+  
+  /**
+   * 
+   * @return array
+   */
+  public function lowercaseTestData() {
+    return [
+        ["0", "utf-8", false],
+        ["-", "utf-8", false],
+        ["A", "utf-8", false],
+        ["a", "utf-8", true],
+    ];
+  }
+
+  /**
+   * 
+   * @dataProvider lowercaseTestData
+   * @param string $string
+   * @param string $enc
+   * @param boolean $result
+   */
+  public function testLowercase ($string, $enc, $result) {
+    $this->assertEquals(Strings::isLowerCase($string, $enc), $result);
+  }
+
 }

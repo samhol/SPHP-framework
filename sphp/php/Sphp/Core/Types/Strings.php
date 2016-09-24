@@ -231,7 +231,7 @@ class Strings {
    *
    * @param  string $string the string being checked
    * @param  string $substring     The substring to search for
-   * @param  bool   $caseSensitive Whether or not to enforce case-sensitivity
+   * @param  boolean $caseSensitive Whether or not to enforce case-sensitivity
    * @param  string $encoding the encoding parameter is the character encoding.
    *         Defaults to `mb_internal_encoding()`
    * @return int    The number of $substring occurrences
@@ -484,7 +484,19 @@ class Strings {
    * @return bool Returns true if the string contains only upper chars, false otherwise.
    */
   public static function isUpperCase($string, $encoding = null) {
-    return self::match($string, '^[[:upper:]]*$', $encoding);
+    return static::toUpperCase($string, $encoding) == $string;
+  }
+
+  /**
+   * Converts all characters in the string to uppercase
+   *
+   * @param  string $string the input string
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
+   * @return string input string with all characters being uppercase
+   */
+  public static function toUpperCase($string, $encoding = null) {
+    return \mb_strtoupper($string, static::getEncoding($encoding));
   }
 
   /**
@@ -496,7 +508,19 @@ class Strings {
    * @return bool Returns true if the string contains only lower chars, false otherwise.
    */
   public static function isLowerCase($string, $encoding = null) {
-    return self::match($string, '^[[:lower:]]*$', $encoding);
+    return static::toLowerCase($string, $encoding) == $string;
+  }
+
+  /**
+   * Converts all characters in the string to uppercase
+   *
+   * @param  string $string the input string
+   * @param  string|null $encoding the character encoding parameter;
+   *                Defaults to `mb_internal_encoding()`
+   * @return string input string with all characters being uppercase
+   */
+  public static function toLowerCase($string, $encoding = null) {
+    return \mb_strtolower($string, static::getEncoding($encoding));
   }
 
   /**
@@ -567,16 +591,6 @@ class Strings {
   }
 
   /**
-   * Removes redundant zeroes fron the decimal number
-   *
-   * @param  string|float $decimal the decimal number
-   * @return string cleaned decimal number as a string
-   */
-  public static function cleanDecimal($decimal) {
-    return trim(trim($decimal, '0'), '.');
-  }
-
-  /**
    * 
    * @param  string|null $encoding
    * @return string
@@ -643,16 +657,6 @@ class Strings {
   }
 
   /**
-   * Executes a PHP script and returns the result as a parsed Markdown string
-   *
-   * @param  string $markdown the markdown string
-   * @return string the result of the script execution
-   */
-  public static function parseMarkdown($markdown) {
-    return (new \ParsedownExtra())->text(static::toString($markdown));
-  }
-
-  /**
    * Converts each tab in the string to given number of spaces
    * 
    * By default, each tab is converted to `4` consecutive spaces.
@@ -690,18 +694,6 @@ class Strings {
    */
   public static function toTitleCase($string, $encoding = null) {
     return \mb_convert_case($string, \MB_CASE_TITLE, static::getEncoding($encoding));
-  }
-
-  /**
-   * Converts all characters in the string to uppercase
-   *
-   * @param  string $string the input string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string input string with all characters being uppercase
-   */
-  public static function toUpperCase($string, $encoding = null) {
-    return \mb_strtoupper($string, static::getEncoding($encoding));
   }
 
   /**

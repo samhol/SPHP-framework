@@ -12,19 +12,12 @@ use Sphp\Html\ContainerTag;
 /**
  * Class models an HTML &lt;dt&gt; tag
  *
- * The {@link self} component defines an term in a definition list.
+ * This component defines an term in a definition list.
  *
- * The {@link self} component is used in conjunction with {@link Descriptor} 
+ * This component is used in conjunction with {@link Dd} 
  * (defines the definition list) and &lt;dd&gt; (describes the item in the list)
  * 
- * 
- * A {@link self} component can contain HTML with paragraphs, line breaks, 
- * images, links, lists, etc and/or components implementing these HTML 
- * elements.
- *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23

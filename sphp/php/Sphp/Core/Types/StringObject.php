@@ -294,7 +294,6 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
     throw new BadMethodCallException('Object object is immutable, cannot unset char');
   }
 
-
   /**
    * Returns an array consisting of the characters in the string.
    *
@@ -308,7 +307,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
     }
     return $charObj;
   }
-  
+
   /**
    * Returns a new ArrayIterator 
    * 
@@ -316,7 +315,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * in the multibyte string. This enables the use of foreach with instances
    * of StringObject\StringObject.
    *
-   * @return \ArrayIterator An iterator for the characters in the string
+   * @return ArrayIterator An iterator for the characters in the string
    */
   public function getIterator() {
     return new ArrayIterator($this->chars());
