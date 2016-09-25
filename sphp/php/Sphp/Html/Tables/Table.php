@@ -70,7 +70,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return self for PHP Method Chaining
 	 */
 	public function setCaption($caption) {
-		if (Strings::notEmpty($caption)) {
+		if (!Strings::isEmpty($caption)) {
 			$this->content()["caption"] = new Caption($caption);
 		} else if (isset($this->content()["caption"])) {
 			$this->content()["caption"] = "";

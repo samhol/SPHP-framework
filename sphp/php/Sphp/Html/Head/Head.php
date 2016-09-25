@@ -121,7 +121,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
   public function setBaseAddr($baseAddr, $target = "_self") {
-    if (Strings::notEmpty($baseAddr) || Strings::notEmpty($target)) {
+    if (!Strings::isEmpty($baseAddr) || !Strings::isEmpty($target)) {
       $this->base = new Base($baseAddr, $target);
     } else {
       $this->unsetBaseAddress();

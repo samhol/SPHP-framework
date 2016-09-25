@@ -118,7 +118,7 @@ class Conditions {
    * @return self for PHP Method Chaining
    */
   public function logical($operator) {
-    if (Strings::notEmpty($this->statement) && !Strings::endsWith($this->statement, [" OR ", " AND ", " XOR "])) {
+    if (!Strings::isEmpty($this->statement) && !Strings::endsWith($this->statement, [" OR ", " AND ", " XOR "])) {
       $op = strtoupper(trim($operator));
       $this->statement .= " $op ";
     }
@@ -153,7 +153,7 @@ class Conditions {
    * @return boolean conditions are set
    */
   public function hasConditions() {
-    return Strings::notEmpty($this->statement);
+    return !Strings::isEmpty($this->statement);
   }
 
   /**

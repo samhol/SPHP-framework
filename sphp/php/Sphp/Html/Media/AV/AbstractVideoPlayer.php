@@ -10,7 +10,6 @@ namespace Sphp\Html\Media\AV;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
 use Sphp\Html\Media\LazyLoaderTrait;
-use Sphp\Core\Types\Strings;
 use Sphp\Net\URL;
 
 /**
@@ -50,7 +49,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   public function __construct($url, $videoId = null) {
     parent::__construct("iframe");
     $this->setUrl($url)->allowFullScreen(true);
-    if (Strings::notEmpty($videoId)) {
+    if ($videoId !== null) {
       $this->setVideoId($videoId);
     }
   }

@@ -37,7 +37,7 @@ class Label extends ContainerTag {
    */
   public function __construct($content = null, $for = null) {
     parent::__construct("label", $content);
-    if (Strings::notEmpty($for)) {
+    if (!Strings::isEmpty($for)) {
       $this->setFor($for);
     }
   }

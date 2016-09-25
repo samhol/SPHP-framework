@@ -8,7 +8,6 @@
 namespace Sphp\Html\Navigation;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Core\Types\Strings;
 
 /**
  * Class models an HTML &lt;a&gt; tag
@@ -47,10 +46,10 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
    */
   public function __construct($href = null, $content = null, $target = null) {
     parent::__construct("a", $content);
-    if (Strings::notEmpty($href)) {
+    if ($href !== null) {
       $this->setHref($href);
     }
-    if (Strings::notEmpty($target)) {
+    if ($target !== null) {
       $this->setTarget($target);
     }
   }

@@ -151,7 +151,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return boolean true if the input has a name , otherwise false
    */
   public function isNamed() {
-    return Strings::notEmpty($this->name);
+    return !Strings::isEmpty($this->name);
   }
 
   /**

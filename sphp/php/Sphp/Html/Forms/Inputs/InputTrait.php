@@ -55,7 +55,7 @@ trait InputTrait {
    * @return boolean true if the input has a name, otherwise false
    */
   public function isNamed() {
-    return $this->attrs()->exists("name") && Strings::notEmpty($this->getName());
+    return $this->attrs()->exists("name") && !Strings::isEmpty($this->getName());
   }
 
   /**

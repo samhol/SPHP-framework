@@ -53,7 +53,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function __construct($url = null) {
     $urlString = Strings::toString($url);
-    if (Strings::notEmpty($urlString)) {
+    if (!Strings::isEmpty($urlString)) {
       //$url = html_entity_decode(urldecode($url));
       //print_r($data);
       //$parts = parse_url($urlString);
@@ -146,7 +146,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the scheme is set and false otherwise
    */
   public function hasScheme() {
-    return Strings::notEmpty($this->getScheme());
+    return !Strings::isEmpty($this->getScheme());
   }
 
   /**
@@ -168,7 +168,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function getHost($encode = false) {
     $val = $this->components["host"];
-    if ($encode && Strings::notEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
+    if ($encode && !Strings::isEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
       Strings::htmlEncode($val);
     }
     return "$val";
@@ -180,7 +180,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the host is set and false otherwise
    */
   public function hasHost() {
-    return Strings::notEmpty($this->getHost());
+    return !Strings::isEmpty($this->getHost());
   }
 
   /**
@@ -202,7 +202,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function getUser($encode = false) {
     $val = strval($this->components["user"]);
-    if ($encode && Strings::notEmpty($val)) {
+    if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
     }
     return $val;
@@ -214,7 +214,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the user is set and false otherwise
    */
   public function hasUser() {
-    return Strings::notEmpty($this->getUser());
+    return !Strings::isEmpty($this->getUser());
   }
 
   /**
@@ -236,7 +236,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function getPassword($encode = false) {
     $val = strval($this->components["pass"]);
-    if ($encode && Strings::notEmpty($val)) {
+    if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
     }
     return $val;
@@ -248,7 +248,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the password is set and false otherwise
    */
   public function hasPassword() {
-    return Strings::notEmpty($this->getPassword());
+    return !Strings::isEmpty($this->getPassword());
   }
 
   /**
@@ -273,7 +273,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function getPath($encode = false) {
     $val = strval($this->components["path"]);
-    if ($encode && Strings::notEmpty($val)) {
+    if ($encode && !Strings::isEmpty($val)) {
       $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
     }
     return $val;
@@ -285,7 +285,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the path is set and false otherwise
    */
   public function hasPath() {
-    return Strings::notEmpty($this->getPath());
+    return !Strings::isEmpty($this->getPath());
   }
 
   /**
@@ -295,7 +295,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setQuery($query) {
-    if (Strings::notEmpty($query)) {
+    if (!Strings::isEmpty($query)) {
       parse_str($query, $this->components["query"]);
       //$this->components["query"] = urldecode($query);
     } else {
@@ -443,7 +443,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the fragment part is set and false otherwise
    */
   public function hasFragment() {
-    return Strings::notEmpty($this->getFragment());
+    return !Strings::isEmpty($this->getFragment());
   }
 
   /**

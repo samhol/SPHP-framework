@@ -87,7 +87,7 @@ trait HyperlinkTrait {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget($target) {
-    if (Strings::notEmpty($target)) {
+    if (!Strings::isEmpty($target)) {
       $this->attrs()->set("target", $target);
     } else {
       $this->attrs()->remove("target");

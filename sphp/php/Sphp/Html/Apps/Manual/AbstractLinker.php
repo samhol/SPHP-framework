@@ -151,7 +151,7 @@ abstract class AbstractLinker implements LinkerInterface {
     }
     $a = new Hyperlink($this->getApiRoot() . $relativeUrl, $content);
     $a->setTarget($this->getDefaultTarget());
-    if (Strings::notEmpty($title)) {
+    if (!Strings::isEmpty($title)) {
       $a->setTitle($title);
     }
     if ($this->defaultCssClasses !== null) {

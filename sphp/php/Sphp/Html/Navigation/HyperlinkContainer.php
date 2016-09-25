@@ -40,10 +40,10 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    */
   public function __construct($tagName, $href = null, $content = null, $target = null) {
     parent::__construct($tagName, null, new Hyperlink());
-    if (Strings::notEmpty($href)) {
+    if (!Strings::isEmpty($href)) {
       $this->setHref($href);
     }
-    if (Strings::notEmpty($target)) {
+    if (!Strings::isEmpty($target)) {
       $this->setTarget($target);
     }if ($content !== null) {
       $this->append($content);

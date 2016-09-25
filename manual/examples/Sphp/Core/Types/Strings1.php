@@ -7,10 +7,6 @@ var_dump(
 		Strings::isEmpty(NULL),
 		Strings::isEmpty(""),
 		Strings::isEmpty(FALSE));
-echo "not empty:\n";
-var_dump(
-		Strings::notEmpty(0), 
-		Strings::notEmpty(TRUE));
 echo "matching:\n";
 var_dump(
 		Strings::match("0 1 2", '/^[0-9]+$/'),

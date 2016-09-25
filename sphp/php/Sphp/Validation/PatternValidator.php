@@ -73,7 +73,7 @@ class PatternValidator extends AbstractOptionalValidator {
   public function setPattern($pattern, $errorMessage = null) {
     $this->pattern = $pattern;
     if (!($errorMessage instanceof Message)) {
-      if (Strings::notEmpty($errorMessage)) {
+      if (!Strings::isEmpty($errorMessage)) {
         $errorMessage = new Message($errorMessage);
       } else {
         $errorMessage = new Message("Please insert a correct value");

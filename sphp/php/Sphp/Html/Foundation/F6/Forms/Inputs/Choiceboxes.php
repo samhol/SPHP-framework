@@ -162,7 +162,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   }
 
   /**
-   * Checks whether the fslider has a name
+   * Checks whether the slider has a name
    *
    * **Note:** Only form elements with a name attribute will have their values 
    *  passed when submitting a form.
@@ -170,7 +170,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @return boolean true if the input has a name , otherwise false
    */
   public function isNamed() {
-    return Strings::notEmpty($this->name);
+    return !Strings::isEmpty($this->name);
   }
 
   /**

@@ -358,18 +358,6 @@ class Strings {
   }
 
   /**
-   * Checks whether the given string is not empty
-   *
-   * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return boolean true if the string is not empty, false otherwise
-   */
-  public static function notEmpty($string, $encoding = null) {
-    return self::length($string, self::getEncoding($encoding)) > 0;
-  }
-
-  /**
    * Checks whether the given string is empty
    * 
    * @param  string $string checked string
@@ -378,7 +366,7 @@ class Strings {
    * @return boolean true if the string is empty, false otherwise
    */
   public static function isEmpty($string, $encoding = null) {
-    return !self::notEmpty($string, self::getEncoding($encoding));
+    return static::length($string, static::getEncoding($encoding)) <= 0;
   }
 
   /**

@@ -55,10 +55,10 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     } else {
       $this->setImg(new Img($src, $alt));
     }
-    if (Strings::notEmpty($href)) {
+    if (!Strings::isEmpty($href)) {
       $this->setHref($href);
     }
-    if (Strings::notEmpty($target)) {
+    if (!Strings::isEmpty($target)) {
       $this->setTarget($target);
     }
   }

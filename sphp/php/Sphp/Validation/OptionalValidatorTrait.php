@@ -54,7 +54,7 @@ trait OptionalValidatorTrait {
    */
   public function validate($value) {
     $this->reset();
-    if (Strings::notEmpty($value) || !$this->emptyValuesAllowed()) {
+    if (!Strings::isEmpty($value) || !$this->emptyValuesAllowed()) {
       $this->executeValidation($value);
     }
     return $this;

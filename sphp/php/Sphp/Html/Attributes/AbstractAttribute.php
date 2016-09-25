@@ -63,7 +63,7 @@ abstract class AbstractAttribute implements AttributeInterface {
     $value = $this->getValue();
     if ($value !== false) {
       $output .= $this->getName();
-      if ($value !== true && Strings::notEmpty($value)) {
+      if ($value !== true && !Strings::isEmpty($value)) {
         $strVal = Strings::toString($value);
         $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, "utf-8", false) . '"';
       }

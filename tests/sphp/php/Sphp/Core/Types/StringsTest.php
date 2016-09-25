@@ -21,7 +21,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testEmpty($empty) {
     $this->assertTrue(Strings::isEmpty($empty));
-    $this->assertFalse(Strings::notEmpty($empty));
+    $this->assertFalse(!Strings::isEmpty($empty));
     $this->assertEquals(Strings::length($empty), 0);
   }
 
@@ -39,7 +39,6 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testNonEmpty($nonEmpty) {
     $this->assertFalse(Strings::isEmpty($nonEmpty));
-    $this->assertTrue(Strings::notEmpty($nonEmpty));
     $this->assertFalse(Strings::length($nonEmpty) == 0);
   }
 
