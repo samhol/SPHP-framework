@@ -30,12 +30,11 @@ class Strings {
     //$regexEncoding = mb_regex_encoding();
     //echo "regexEncoding:($regexEncoding)\n";
     //\mb_regex_encoding(self::getEncoding($encoding));
-   // $match = \mb_ereg_match($pattern, $string);
-   // echo "regexEncodingNow:($regexEncoding)\n";
-    
+    // $match = \mb_ereg_match($pattern, $string);
+    // echo "regexEncodingNow:($regexEncoding)\n";
     //\mb_regex_encoding($regexEncoding);
     return preg_match($pattern, $string) === 1;
-   // return $match === 1;
+    // return $match === 1;
   }
 
   /**
@@ -71,6 +70,7 @@ class Strings {
   public function replace($string, $search, $replacement) {
     return static::regexReplace($string, preg_quote($search), $replacement);
   }
+
   /**
    * Returns a reversed string
    *
@@ -405,7 +405,7 @@ class Strings {
    * @return bool Returns true if the string contains only alphabetic chars, false otherwise.
    */
   public static function isAlpha($string, $encoding = null) {
-    return self::match($string, '^[[:alpha:]]*$', $encoding);
+    return self::match($string, '/^[[:alpha:]]*$/', $encoding);
   }
 
   /**
@@ -417,7 +417,7 @@ class Strings {
    * @return bool Returns true if the string contains only alphanumeric chars, false otherwise.
    */
   public static function isAlphanumeric($string, $encoding = null) {
-    return self::match($string, '^[[:alnum:]]*$', $encoding);
+    return self::match($string, '/^[[:alnum:]]*$/', $encoding);
   }
 
   /**
@@ -441,7 +441,7 @@ class Strings {
    * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
    */
   public static function isHexadecimal($string, $encoding = null) {
-    return self::match($string, '^[[:xdigit:]]*$', $encoding);
+    return self::match($string, '/^[[:xdigit:]]*$/', $encoding);
   }
 
   /**
@@ -522,53 +522,6 @@ class Strings {
   }
 
   /**
-   * Ordinalize an integer (in english)
-   *
-   * @param  scalar $num an integer to ordinalize
-   * @return string ordinalize integer (in english)
-   */
-  public static function ordinalize($num) {
-    $suff = 'th';
-    $prefix = "";
-    if ((int) $num < 0) {
-      $prefix = "-";
-    }
-    $int = abs((int) $num);
-    if (!in_array(($int % 100), [11, 12, 13])) {
-      switch ($int % 10) {
-        case 1: $suff = 'st';
-          break;
-        case 2: $suff = 'nd';
-          break;
-        case 3: $suff = 'rd';
-          break;
-      }
-    }
-    return "{$prefix}{$int}{$suff}";
-  }
-
-  /**
-   * Converts the filesize (in bits) to bytes
-   *
-   * @param  int|string $filesize file size in bits
-   * @return string filesize in bytes
-   */
-  public static function generateFilesizeString($filesize) {
-    if (is_numeric($filesize)) {
-      $decr = 1024;
-      $step = 0;
-      $prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-      while (($filesize / $decr) > 0.9) {
-        $filesize = $filesize / $decr;
-        $step++;
-      }
-      return round($filesize, 2) . ' ' . $prefix[$step];
-    } else {
-      return 'NaN';
-    }
-  }
-
-  /**
    * Returns a random string for non cryptographic purposes
    *
    * @param  int $length the length of the string
@@ -586,7 +539,6 @@ class Strings {
   public static function getEncoding($encoding = null) {
     if ($encoding === null) {
       $encoding = \mb_internal_encoding();
-       
     }
     //echo "current encoding:(".$encoding.")\n";
     return $encoding;

@@ -11,7 +11,9 @@ namespace Sphp\Core\Types;
  * Class Models user's rights
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-15
+ * @since   2014-09-15
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Permissions extends BitMask {
 

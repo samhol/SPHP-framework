@@ -26,7 +26,7 @@ class Numbers {
    * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
    */
   public static function isHexadecimal($string, $encoding = null) {
-    return self::match($string, '^[[:xdigit:]]*$', $encoding);
+    return Strings::match($string, '^[[:xdigit:]]*$', $encoding);
   }
 
   /**

@@ -3,7 +3,6 @@
 namespace Sphp\Core\Types;
 
 var_dump(
-        Strings::ordinalize(2), 
         Strings::toString(NULL), 
         Strings::toString(pow(2, 50)), 
         Strings::toString(TRUE), 
