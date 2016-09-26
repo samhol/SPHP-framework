@@ -7,8 +7,11 @@
 
 namespace Sphp\Core\Types\Filters;
 
+use IteratorAggregate;
+use ArrayIterator;
+
 /**
- * An aggregate of {@link FilterInterface} objects
+ * An aggregate of filters
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
@@ -16,7 +19,7 @@ namespace Sphp\Core\Types\Filters;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FilterAggregate extends AbstractFilter {
+class FilterAggregate extends AbstractFilter implements IteratorAggregate {
 
   /**
    * the filter container
@@ -26,7 +29,7 @@ class FilterAggregate extends AbstractFilter {
   private $filters = [];
 
   /**
-   * Constructs a new instance of the {@link self} object
+   * Constructs a new instance
    * 
    * @param callable|callable[] $filters optional filters to add
    */
@@ -57,8 +60,6 @@ class FilterAggregate extends AbstractFilter {
   public function filter($value) {
     foreach ($this->filters as $filter) {
       $value = $filter($value);
-      //var_dump($filter);
-      //var_dump($value); 
     }
     return $value;
   }
@@ -72,6 +73,15 @@ class FilterAggregate extends AbstractFilter {
   public function addFilter(callable $filter) {
     $this->filters[] = $filter;
     return $this;
+  }
+
+  /**
+   * Returns the iterator
+   * 
+   * @return ArrayIterator iterator over filters
+   */
+  public function getIterator() {
+    return new ArrayIterator($this->filters);
   }
 
 }

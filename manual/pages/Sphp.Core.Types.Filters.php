@@ -24,6 +24,10 @@ Build-in filters focus on manipulatong scalar values like strings and numeric va
 MD
 );
 
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Filters/FilterAggregate.php", "text", false))
+		->setExampleHeading("Array filtering example")
+		->setOutputSyntaxPaneTitle("Array filtering results")
+		->printHtml();
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Filters/StringFiltering.php", "text", false))
 		->setExampleHeading("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")

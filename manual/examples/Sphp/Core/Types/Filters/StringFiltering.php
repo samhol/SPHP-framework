@@ -6,7 +6,7 @@ use Sphp\Core\Types\Strings;
 
 $filters = new FilterAggregate();
 
-$filters->addFilter(new TagStripperFilter())
+$filters->addFilter(new TagStripper())
         ->addFilter(new TrimFilter("_", "left"))
         ->addFilter(new TrimFilter("!_", "right"))
         ->addFilter(new TrimFilter("*", "both"))

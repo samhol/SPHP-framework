@@ -8,6 +8,7 @@ use Sphp\Html\Forms\Inputs\Checkboxes as Checkboxes;
 $radioBoxes = (new Radioboxes("gender", [
     "m" => "male",
     "f" => "female",
+    "x" => "X",
     "?" => "unknown"], "Gender"));
 $checkBoxes = (new Checkboxes("hobbies", [
     "bball" => "Basketball",

@@ -28,16 +28,16 @@ interface FilterInterface {
   /**
    * Executes the filter for the given data
    * 
-   * @param  mixed $data the data to filter
+   * @param  mixed $variable the data to filter
    * @return mixed the filtered value
    */
-  public function filter($data);
+  public function filter($variable);
 
   /**
    * Executes the filter when the filter object is called as a function
    * 
-   * @param  mixed $data the data to filter
+   * @param  mixed $variable the data to filter
    * @return mixed the filtered value
    */
-  public function __invoke($data);
+  public function __invoke($variable);
 }
