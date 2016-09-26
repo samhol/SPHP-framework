@@ -16,7 +16,6 @@ use Sphp\Data\Arrayable;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-15
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
