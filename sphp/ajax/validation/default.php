@@ -22,7 +22,7 @@ $value = filter_input(\INPUT_GET, "value");
 //$errors = "[]";
 //$hasErrors = "false";
 
-namespace Sphp\Validation;
+namespace Sphp\Core\Validators;
 
 //use Sphp\Core\Types\Strings;
 $validator = new ValidatorAggregate();

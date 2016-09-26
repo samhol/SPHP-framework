@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types\Filters;
+namespace Sphp\Core\Filters;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
 

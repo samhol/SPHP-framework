@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Validation;
+namespace Sphp\Core\Validators;
 
 $validator = (new FormValidator())
 	->set("numbers", new PatternValidator("/^\d+$/", "Please insert numbers only"))

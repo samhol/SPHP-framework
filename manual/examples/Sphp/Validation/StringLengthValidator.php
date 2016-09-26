@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Validation;
+namespace Sphp\Core\Validators;
 
 use Sphp\Core\Gettext\Locale as Locale;
 

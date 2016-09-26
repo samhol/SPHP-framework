@@ -59,25 +59,32 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
         <?php
         include_once "manual/manualTools/main.php";
 
-        namespace Sphp\Html\Attributes;
+        class TrimIterator extends \IteratorIterator {
 
-$printInput = function($attrs) {
-          echo "<input $attrs>\n";
-        };
-        var_dump(HtmlIdStorage::store("data-id", "data-id"));
-        var_dump(HtmlIdStorage::store("data-id", "data-id"));
-        print_r(HtmlIdStorage::toArray());
+          public function current() {
+            return 2 * (parent::current());
+          }
 
-        $attrs = new AttributeManager();
+        }
 
-        var_dump($attrs->identify("test-id"));
-        $printInput($attrs);
-        var_dump($attrs->identify("test-id"));
-        $printInput($attrs);
-        var_dump($attrs->identify());
-        $printInput($attrs);
-        print_r(HtmlIdStorage::toArray());
-        $printInput($attrs);
+        $innerIterator = new \ArrayIterator(array(2, 3));
+
+        $trim = new TrimIterator($innerIterator);
+        foreach ($trim as $key => $value) {
+          echo "Key:";
+          var_dump($key);
+          echo "Value:";
+          var_dump($value);
+          echo "---next---";
+        }
+         echo "AGAIN:\n";
+        foreach ($trim as $key => $value) {
+          echo "Key:";
+          var_dump($key);
+          echo "Value:";
+          var_dump($value);
+          echo "---next---";
+        }
         ?>
       </pre>
       <?php

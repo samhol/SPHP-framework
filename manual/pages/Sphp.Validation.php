@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Validation;
+namespace Sphp\Core\Validators;
 use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleViewer;
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $validatorInterface = $api->classLinker(ValidatorInterface::class);

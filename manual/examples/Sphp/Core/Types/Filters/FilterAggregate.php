@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types\Filters;
+namespace Sphp\Core\Filters;
 
 $arr = ["a", -2, 4, 2.34, 1002];
 

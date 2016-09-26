@@ -9,6 +9,9 @@ ErrorExceptionThrower::Start();
 try {
   include("missing/file.php");
 } catch (Exception $ex) {
-  (new ExceptionCallout($ex))->showInitialFile()->showTrace()->printHtml();
+  (new ExceptionCallout($ex))
+          ->showInitialFile(false)
+          ->showTrace(false)
+          ->printHtml();
 }
 ErrorExceptionThrower::Stop();
