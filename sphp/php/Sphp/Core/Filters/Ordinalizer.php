@@ -8,7 +8,7 @@
 namespace Sphp\Core\Filters;
 
 /**
- * Filter converts a numeric input value to a corresponding roman numeral
+ * Filter converts a numeric input value Ordinalized value (in english)
  * 
  * * All non negative integer values remain unchanged. 
  * * value is consideserd as an integer if it contains only numbers
@@ -21,16 +21,7 @@ namespace Sphp\Core\Filters;
 class Ordinalizer extends AbstractFilter {
 
   /**
-   * Executes the filter for the given value
-   * 
-   * @param  mixed $value the value to filter
-   * @return mixed the filtered value
-   */
-  /**
-   * Ordinalize an integer (in english)
-   *
-   * @param  scalar $num an integer to ordinalize
-   * @return string ordinalize integer (in english)
+   * {@inheritdoc}
    */
   public function filter($num) {
     $suff = 'th';

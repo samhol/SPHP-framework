@@ -23,7 +23,7 @@ class CallbackFilter extends VariableFilter {
    * @param int $callback
    */
   public function __construct($callback) {
-    parent::__construct(FILTER_CALLBACK, ["options" => $callback]);
+    parent::__construct(\FILTER_CALLBACK, ["options" => $callback]);
   }
 
 }
