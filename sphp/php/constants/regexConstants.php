@@ -37,7 +37,7 @@ namespace Sphp\Regex\EN;
 /**
  * Regular Expression for valid English alphabets
  */
-const LETTERS_ONLY = "/^[a-zA-Z]+$/";
+const ALPHABETS_ONLY = "/^[a-zA-Z]+$/";
 
 /**
  * Regular Expression for valid English alphanumerics
