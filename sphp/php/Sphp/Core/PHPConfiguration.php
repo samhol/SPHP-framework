@@ -163,12 +163,12 @@ class PHPConfiguration implements Arrayable {
   /**
    * Set the internal character encoding
    *
-   * @param  mixed $encoding character encoding
+   * @param  mixed $encoding character encoding: default is `utf-8`
    * @return self for PHP Method Chaining
    */
   public function setEncoding($encoding = "UTF-8") {
     $this->setFunc("mb_internal_encoding", [$encoding]);
-    mb_internal_encoding("UTF-8");
+    mb_internal_encoding($encoding);
     return $this;
   }
 

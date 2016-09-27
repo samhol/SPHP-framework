@@ -56,7 +56,7 @@ class Translator {
    * The name of the `.mo` file must match the `$domain`. e.g the file path
    * (Finnish translations) should match `$directory/fi_FI/LC_MESSAGES/$domain.mo`
    *
-   * @param string $domain the filename of the dictionary
+   * @param string|null $domain the filename of the dictionary
    * @param string $directory the locale path of the dictionary
    * @param string $charset the character set of the dictionary
    */
@@ -153,20 +153,14 @@ class Translator {
    * Returns the the given message data as formatted localized string
    *
    * @param  string $message the message text
-   * @param  scalar[] $args the arguments
+   * @param  null|mixed|mixed[] $args the arguments
    * @return string the message text translated and parsed
    */
-  public function vsprintf($message, array $args = []) {
-    $parser = function($arg) {
-      if (is_string($arg)) {
-        return $this->get($arg);
-      }
-      return $arg;
-    };
+  public function vsprintf($message, $args = null) {
     $m = $this->get($message);
-    if (count($args) > 0) {
-      $args = array_map($parser, $args);
-      $m = vsprintf($m, $args);
+    if ($args !== null) {
+      $args = $this->get($args);
+      $m = vsprintf($m, is_array($args) ? $args : [$args]);
     }
     return $m;
   }
@@ -177,20 +171,14 @@ class Translator {
    * @param  string $msgid1 the singular message being translated
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
-   * @param  scalar[] $args the arguments
+   * @param  null|mixed|mixed[] $args the arguments
    * @return string the message text translated and parsed
    */
-  public function vsprintfPlural($msgid1, $msgid2, $n, array $args = []) {
-    $parser = function($arg) {
-      if (is_string($arg)) {
-        return $this->get($arg);
-      }
-      return $arg;
-    };
+  public function vsprintfPlural($msgid1, $msgid2, $n, $args = null) {
     $m = $this->getPlural($msgid1, $msgid2, $n);
-    if (count($args) > 0) {
-      $args = array_map($parser, $args);
-      $m = vsprintf($m, $args);
+    if ($args !== null) {
+      $args = $this->get($args);
+      $m = vsprintf($m, is_array($args) ? $args : [$args]);
     }
     return $m;
   }
@@ -198,10 +186,10 @@ class Translator {
   /**
    * Returns the the given array of message strings as an array of translated message strings
    *
-   * @param  string[] $messages the messages
-   * @return string[] translated messages
+   * @param  mixed[] $messages the messages
+   * @return mixed[] translated messages
    */
-  public function getArray(array $messages = []) {
+  public function getArray(array $messages) {
     $parser = function($arg) {
       if (is_string($arg)) {
         return $this->get($arg);
