@@ -58,18 +58,17 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
 
         <?php
         include_once "manual/manualTools/main.php";
+namespace Sphp\Core\Filters;
 
-        class TrimIterator extends \IteratorIterator {
+$double = function ($value) {
+  return $value * 2;
+};
 
-          public function current() {
-            return 2 * (parent::current());
-          }
 
-        }
 
         $innerIterator = new \ArrayIterator(array(2, 3));
 
-        $trim = new TrimIterator($innerIterator);
+        $trim = new FilterIterator($innerIterator, $double);
         foreach ($trim as $key => $value) {
           echo "Key:";
           var_dump($key);
