@@ -7,9 +7,8 @@
 
 namespace Sphp\Core\Validators;
 
+use Sphp\Core\Gettext\Message;
 use Sphp\Core\Types\Strings;
-use Sphp\Core\Gettext\Message as Message;
-use Sphp\Core\Types\StringObject as StringObject;
 
 /**
  * Class validates a a string against a regular expression pattern
@@ -23,11 +22,6 @@ use Sphp\Core\Types\StringObject as StringObject;
  * @filesource
  */
 class PatternValidator extends AbstractOptionalValidator {
-  /* const NUMBERS_ONLY = "/^\d+$/";
-    const FI_ZIPCODE = "/^\d{5}$/";
-    const TIME = "/^(([0-9])|([0-1][0-9])|([2][0-3]))[:](([0-9])|([0-5][0-9]))$/";
-    const YEAR = "/^(19|20)([0-9]{1,2})$/";
-    const FI_DATE = "/^([0-9]{1,2})[\.]([0-9]{1,2})[\.](19|20)([0-9]{1,2})$/"; */
 
   /**
    * regular expression pattern to validate against
@@ -39,7 +33,7 @@ class PatternValidator extends AbstractOptionalValidator {
   /**
    * error message corresponding to the pattern
    *
-   *  var Message
+   * var Message
    */
   private $errorMessage;
 
@@ -70,14 +64,10 @@ class PatternValidator extends AbstractOptionalValidator {
    * @param string|Message $errorMessage error message corresponding to the pattern
    * @return self for PHP Method Chaining
    */
-  public function setPattern($pattern, $errorMessage = null) {
+  public function setPattern($pattern, $errorMessage = "Please insert a correct value") {
     $this->pattern = $pattern;
     if (!($errorMessage instanceof Message)) {
-      if (!Strings::isEmpty($errorMessage)) {
-        $errorMessage = new Message($errorMessage);
-      } else {
-        $errorMessage = new Message("Please insert a correct value");
-      }
+      $errorMessage = new Message($errorMessage);
     }
     $this->errorMessage = $errorMessage;
     return $this;
@@ -92,8 +82,8 @@ class PatternValidator extends AbstractOptionalValidator {
    * @param  scalar $value the data to validate
    */
   protected function executeValidation($value) {
-    $string = new StringObject($value);
-    if (!$string->match($this->pattern)) {
+    $string = Strings::toString($value);
+    if (!Strings::match($string, $this->pattern)) {
       $this->addErrorMessage($this->errorMessage);
     }
   }

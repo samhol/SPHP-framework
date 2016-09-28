@@ -23,10 +23,10 @@ class AnythingToInteger extends VariableFilter {
   /**
    * Constructs a new instance
    * 
-   * @param int $default
+   * @param int $default the value for noninteger values
    */
   public function __construct($default = 0) {
-    parent::__construct(FILTER_VALIDATE_INT, ["options" => ["default" => (int)$default]]);
+    parent::__construct(\FILTER_VALIDATE_INT, ["options" => ["default" => (int)$default]]);
   }
 
 }
