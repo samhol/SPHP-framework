@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 use Sphp\Html\Apps\ApiTools\ApiGenClassLinker as ApiGenClassLinker;
 
 $sqlException = $api->classLinker(SQLException::class);
@@ -25,5 +25,5 @@ if any constraints are violated, the new row is not added to the table and a
 $sqlException returned instead.
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Db/insert1.php", true, "sql");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/insert1.php", true, "sql");
 ?>

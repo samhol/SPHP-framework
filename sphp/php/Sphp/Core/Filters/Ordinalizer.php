@@ -8,10 +8,10 @@
 namespace Sphp\Core\Filters;
 
 /**
- * Filter converts a numeric input value Ordinalized value (in english)
+ * Filter converts a numeric input value to corresponding ordinal (in english)
  * 
  * * All non negative integer values remain unchanged. 
- * * value is consideserd as an integer if it contains only numbers
+ * * value is consideserd as an integer if it contains only numbers 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
@@ -23,24 +23,27 @@ class Ordinalizer extends AbstractFilter {
   /**
    * {@inheritdoc}
    */
-  public function filter($num) {
-    $suff = 'th';
-    $prefix = "";
-    if ((int) $num < 0) {
-      $prefix = "-";
-    }
-    $int = abs((int) $num);
-    if (!in_array(($int % 100), [11, 12, 13])) {
-      switch ($int % 10) {
-        case 1: $suff = 'st';
-          break;
-        case 2: $suff = 'nd';
-          break;
-        case 3: $suff = 'rd';
-          break;
+  public function filter($variable) {
+    if (is_numeric($variable)) {
+      $suff = 'th';
+      $prefix = "";
+      if ((int) $variable < 0) {
+        $prefix = "-";
       }
+      $int = abs((int) $variable);
+      if (!in_array(($int % 100), [11, 12, 13])) {
+        switch ($int % 10) {
+          case 1: $suff = 'st';
+            break;
+          case 2: $suff = 'nd';
+            break;
+          case 3: $suff = 'rd';
+            break;
+        }
+      }
+      return "{$prefix}{$int}{$suff}";
     }
-    return "{$prefix}{$int}{$suff}";
+    return $variable;
   }
 
 }

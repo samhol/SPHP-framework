@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);

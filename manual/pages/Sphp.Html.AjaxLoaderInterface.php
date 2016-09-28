@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingPane as SyntaxHighlightingPane;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $ajaxLoaderInterface = $api->classLinker(AjaxLoaderInterface::class);
 $ajaxLoaderTrait = $api->classLinker(AjaxLoaderTrait::class);

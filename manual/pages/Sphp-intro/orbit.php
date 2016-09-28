@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
+use Sphp\Html\Foundation\F6\Media\Orbit\Orbit;
 use Sphp\Core\PathFinder as PathFinder;
 
 $pathFinder = new PathFinder();

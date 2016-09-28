@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\TextualInput as TextualInput;
-use Sphp\Html\Forms\Inputs\Checkbox as Checkbox;
+use Sphp\Html\Forms\Inputs\TextualInput;
+use Sphp\Html\Forms\Inputs\Checkbox;
 use Sphp\Html\Forms\Inputs\Radiobox;
 use Sphp\Html\Forms\Inputs\InputInterface;
 

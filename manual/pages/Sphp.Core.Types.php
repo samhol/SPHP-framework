@@ -4,7 +4,7 @@ namespace Sphp\Core\Types;
 
 
 //use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 //$code = new SyntaxHighlighter();
 /* $result = (new SyntaxHighlighter())
@@ -57,6 +57,6 @@ MD
 $load("Sphp.Core.Types.StringObject.php");
 $load("Sphp.Core.Types.Strings.php");
 $load("Sphp.Core.Types.Arrays.php");
-$load("Sphp.Core.Types.Filters.php");
+//$load("Sphp.Core.Types.Filters.php");
 $load("Sphp.Core.Types.Datetime.php");
 $load("Sphp.Core.Types.BitMask.php");

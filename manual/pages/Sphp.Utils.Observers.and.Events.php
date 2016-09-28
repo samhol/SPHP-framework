@@ -2,7 +2,7 @@
 
 namespace Sphp\Util\Events;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 $eventInterface = $api->classLinker(EventInterface::class);
 $eventClass = $api->classLinker(Event::class);
@@ -44,11 +44,11 @@ Here are some examples of good event names:
 
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Util/EventManager.php", true, "php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Util/EventManager.php", true, "php");
 
 namespace Sphp\Util;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 $splObserver = $php->classLinker(\SplObserver::class);
 $splSubject = $php->classLinker(\SplSubject::class);
@@ -68,7 +68,7 @@ implementation of $splSubject interface.
 MD
 );
 
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Util/ObserverPattern.php", true, "php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Util/ObserverPattern.php", true, "php");
 
 echo $parsedown->text(<<<MD
 

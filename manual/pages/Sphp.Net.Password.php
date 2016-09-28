@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Net;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $pw = $api->classLinker(Password::class);
 $hpw = $api->classLinker(HashedPassword::class);

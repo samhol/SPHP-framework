@@ -3,7 +3,7 @@
 namespace Sphp\Core\ErrorHandling;
 
 use Exception;
-use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
+use Sphp\Html\Foundation\F6\Containers\ExceptionCallout;
 
 ErrorExceptionThrower::Start();
 try {

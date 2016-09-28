@@ -2,8 +2,8 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
 $apigen = Apis::apigen();
 $phpManual = Apis::phpManual();

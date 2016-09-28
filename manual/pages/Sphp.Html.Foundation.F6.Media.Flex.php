@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $flexInterface = $api->classLinker(FlexInterface::class);
 $flex = $api->classLinker(Flex::class);

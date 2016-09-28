@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Media;
 
 use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingPane as SyntaxHighlightingPane;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Core\PathFinder as PathFinder;
 
 $progressBar = $api->classLinker(ProgressBar::class);

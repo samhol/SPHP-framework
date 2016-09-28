@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 $map  = Apis::apigen()->classLinker(Map::class);
 $areaInterface  = Apis::apigen()->classLinker(AreaInterface::class);
 $rectangle = Apis::apigen()->classLinker(Rectangle::class);

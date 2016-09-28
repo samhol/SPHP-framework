@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
 $topBar = Apis::apigen()->classLinker(TopBar::class);
 $left = $topBar->method("left");

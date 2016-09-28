@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Events;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $eventInterface = $api->classLinker(EventInterface::class);
 $eventClass = $api->classLinker(Event::class);
@@ -48,7 +48,7 @@ MD
 
 namespace Sphp\Core;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "text", false);
 

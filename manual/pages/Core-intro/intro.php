@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 $apigen = Apis::apigen();
 $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 

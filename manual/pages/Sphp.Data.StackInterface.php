@@ -2,7 +2,7 @@
 
 namespace Sphp\Data;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $stackInterface = $api->classLinker(StackInterface::class);
 $stack = $api->classLinker(Stack::class);

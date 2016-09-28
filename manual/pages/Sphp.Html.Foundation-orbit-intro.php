@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6;
 
-use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
-use Sphp\Html\Foundation\F6\Media\Orbit\Slide as Slide;
+use Sphp\Html\Foundation\F6\Media\Orbit\Orbit;
+use Sphp\Html\Foundation\F6\Media\Orbit\Slide;
 use Sphp\Core\PathFinder as PathFinder;
 
 $pathFinder = new PathFinder();

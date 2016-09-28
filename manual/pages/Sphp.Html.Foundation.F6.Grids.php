@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-use Sphp\Html\Apps\Manual\FoundationDocsLinker as FoundationDocsLinker;
+use Sphp\Html\Apps\Manual\FoundationDocsLinker;
 
 $grid = $api->classLinker(Grid::class);
 $row = $api->classLinker(Row::class);

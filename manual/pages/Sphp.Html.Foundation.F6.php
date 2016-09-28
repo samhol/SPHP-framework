@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation;
 
-use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
-use Sphp\Html\Foundation\F6\Grids\Row as Row;
-use Sphp\Html\Foundation\F6\Grids\Column as Column;
+use Sphp\Html\Foundation\F6\Grids\Grid;
+use Sphp\Html\Foundation\F6\Grids\Row;
+use Sphp\Html\Foundation\F6\Grids\Column;
 
 $grid = $api->classLinker(Grid::class);
 $row = $api->classLinker(Row::class);

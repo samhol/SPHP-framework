@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 $visibilityHandlingInterface = $api->classLinker(VisibilityHandlingInterface::class);
 $visibilityHandlingTrait = $api->classLinker(VisibilityHandlingTrait::class);
@@ -25,7 +25,7 @@ $visibilityHandlingInterface properties can be used directly in any $ComponentIn
 by simply wrapping the object with a $visibilityHandler component.
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Structure/VisibilityHandler.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Structure/VisibilityHandler.php');
 echo $parsedown->text(<<<MD
 ####Visibility handling extending $visibilityHandlingInterface with the $visibilityHandlingTrait
 

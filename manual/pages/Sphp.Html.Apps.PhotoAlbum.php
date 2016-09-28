@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $ns = $api->namespaceLink(__NAMESPACE__);
 $photoAlbum = $api->classLinker(PhotoAlbum::class);

@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$flexVideo = Apis::apigen()->classLinker(GridForm::class);
-$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Flex.php');
-$manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
+//$flexVideo = Apis::apigen()->classLinker(GridForm::class);
+//$mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Flex.php');
+//$manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
 
 
 echo <<<MD

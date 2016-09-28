@@ -8,6 +8,8 @@
 namespace Sphp\Core\Filters;
 
 use IteratorIterator;
+use Traversable;
+use ArrayIterator;
 
 /**
  * Class FilterIterator
@@ -26,7 +28,15 @@ class FilterIterator extends IteratorIterator {
    */
   private $filter;
 
-  public function __construct(\Traversable $iterator, callable $filter = null) {
+  /**
+   * 
+   * @param array|Traversable $iterator
+   * @param callable $filter
+   */
+  public function __construct($iterator, callable $filter = null) {
+    if (is_array($iterator)) {
+      $iterator = new ArrayIterator($iterator);
+    }
     parent::__construct($iterator);
     $this->setFilter($filter);
   }

@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms\Inputs\Ion;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 $slider = $api->classLinker(Slider::class);
 $rangeSlider = $api->classLinker(RangeSlider::class);
 $nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__, false);

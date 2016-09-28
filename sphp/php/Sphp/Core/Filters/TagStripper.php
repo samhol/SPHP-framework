@@ -12,10 +12,11 @@ namespace Sphp\Core\Filters;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
+ * @link    http://php.net/manual/en/function.strip-tags.php
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TagStripper extends AbstractStringFilter {
+class TagStripper extends AbstractFilter {
 
   /**
    * specifies tags which should not be stripped
@@ -31,23 +32,20 @@ class TagStripper extends AbstractStringFilter {
    */
   public function __construct($allowableTags = null) {
     $this->allowableTags = $allowableTags;
-    parent::__construct();
   }
 
   /**
-   * Strips HTML and PHP tags from the string
-   * 
-   * @param  string|String $value optional parameter to specify tags which should not be stripped
-   * @return self for PHP Method Chaining
-   * @see    http://php.net/manual/en/function.strip-tags.php
+   * {@inheritdoc}
    */
-  protected function runFilter($value) {
-    if ($this->allowableTags !== null) {
-      $value = strip_tags($value, $this->allowableTags);
-    } else {
-      $value = strip_tags($value);
+  public function filter($variable) {
+    if (is_string($variable)) {
+      if ($this->allowableTags !== null) {
+        $variable = strip_tags($variable, $this->allowableTags);
+      } else {
+        $variable = strip_tags($variable);
+      }
     }
-    return $value;
+    return $variable;
   }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Gettext;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 

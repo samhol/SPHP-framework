@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 $media = $api->namespaceLink(__NAMESPACE__);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);

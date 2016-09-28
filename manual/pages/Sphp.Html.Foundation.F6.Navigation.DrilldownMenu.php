@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);

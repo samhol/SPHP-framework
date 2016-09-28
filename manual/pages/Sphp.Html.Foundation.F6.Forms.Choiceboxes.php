@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $choiceboxes = $api->classLinker(AbstractSwitch::class);
 $radios = $api->classLinker(Radioboxes::class);

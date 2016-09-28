@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Buttons;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
 $btn = Apis::apigen()->classLinker(ButtonInterface::class);
 $abstractButton = Apis::apigen()->classLinker(AbstractButton::class);

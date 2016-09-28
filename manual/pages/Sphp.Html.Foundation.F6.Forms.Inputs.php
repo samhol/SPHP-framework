@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Forms;
 
 use Sphp\Html\Forms\FormInterface as FormInterface;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 $formInterface = $api->classLinker(FormInterface::class);
 $gridForm = $api->classLinker(GridForm::class);
 

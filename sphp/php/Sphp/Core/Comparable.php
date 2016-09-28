@@ -11,7 +11,7 @@ namespace Sphp\Core;
  * Classes that implements this interface can be compared to other similar objects.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2008-03-10
+ * @since   2008-03-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

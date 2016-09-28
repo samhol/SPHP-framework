@@ -2,7 +2,7 @@
 
 namespace Sphp\Net;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $urlClass = $api->classLinker(URL::class);
 echo $parsedown->text(<<<MD

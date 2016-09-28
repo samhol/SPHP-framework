@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 
-$ns = $api->namespaceLink(__NAMESPACE__);
+//$ns = $api->namespaceLink(__NAMESPACE__);
 $paneInterface = $api->classLinker(PaneInterface::class);
 $accordion = $api->classLinker(Accordion::class);
 

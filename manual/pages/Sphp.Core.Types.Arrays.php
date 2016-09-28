@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $arraysClass = $api->classLinker(Arrays::class);
 $arrLink = $php->typeLink("array");

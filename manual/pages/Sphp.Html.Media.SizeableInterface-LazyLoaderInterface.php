@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 
 $sizeableInterface = Apis::apigen()->classLinker(SizeableInterface::class);
 $sizeableTrait = Apis::apigen()->classLinker(SizeableTrait::class);

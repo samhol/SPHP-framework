@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\F6\Navigation;
 
 use Sphp\Core\PathFinder as PathFinder;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 
 $toolsLink = Apis::apigen()->namespaceLink(__NAMESPACE__, false);
 

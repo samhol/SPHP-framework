@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\F6\Containers;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as ExampleAccordions;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 
 $callout = $api->classLinker(Callout::class);
 echo $parsedown->text(<<<MD
@@ -14,4 +14,4 @@ container.
 MD
 );
 
-ExampleAccordions::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/Callout.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/Callout.php');

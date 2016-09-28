@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Modals;
 
-use Sphp\Core\Util\LocalFile as LocalFile;
-use Sphp\Core\Util\Timer as Timer;
+use Sphp\Core\Util\LocalFile;
+use Sphp\Core\Util\Timer;
 
 $fileObj = new LocalFile("license.md");
 $license = (new Modal($fileObj->parseMarkdown(), "SPHP license"));

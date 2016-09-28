@@ -17,7 +17,7 @@ use Sphp\Core\Types\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TrimFilter extends AbstractStringFilter {
+class TrimFilter extends AbstractFilter {
 
   /**
    * the string in UTF-8 format
@@ -25,7 +25,18 @@ class TrimFilter extends AbstractStringFilter {
    * @var string 
    */
   private $charmask;
-  private $dir = "both";
+
+  /**
+   *
+   * @var boolean 
+   */
+  private $left = true;
+
+  /**
+   *
+   * @var boolean 
+   */
+  private $right = true;
 
   /**
    * Constructs a new instance
@@ -41,10 +52,10 @@ class TrimFilter extends AbstractStringFilter {
    * 
    * @param  null|string $charmask characters to be stripped
    */
-  public function __construct($charmask = null, $direction = "both") {
+  public function __construct($charmask = null, $left = true, $right = true) {
     $this->charmask = $charmask;
-    $this->dir = $direction;
-    parent::__construct();
+    $this->left = $left;
+    $this->right = $right;
   }
 
   /**
@@ -53,19 +64,18 @@ class TrimFilter extends AbstractStringFilter {
    * @param  mixed $string the value to filter
    * @return mixed the filtered value
    */
-  protected function runFilter($string) {
-    if ($this->dir == "left") {
-      $call = Strings::class . "::trimLeft";
-    } else if ($this->dir == "right") {
-      $call = Strings::class . "::trimRight";
-    } else {
-      $call = Strings::class . "::trim";
+  public function filter($string) {
+    if (!is_string($string) || (!$this->left && !$this->right)) {
+      return $string;
     }
-    $param_arr = [$string];
-    if ($this->charmask !== null) {
-      $param_arr[] = $this->charmask;
+    if ($this->left && $this->right) {
+      $string = Strings::trim($string, $this->charmask);
+    } else if ($this->left) {
+      $string = Strings::trimLeft($string, $this->charmask);
+    } else if ($this->right) {
+      $string = Strings::trimRight($string, $this->charmask);
     }
-    return call_user_func_array($call, $param_arr);
+    return $string;
   }
 
 }

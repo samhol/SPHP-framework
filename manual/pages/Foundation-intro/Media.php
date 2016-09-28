@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media;
 
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Core\Util\FileUtils as FileUtils;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);

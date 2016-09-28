@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6;
 
-use Sphp\Html\Foundation\F6\Media\Orbit\Orbit as Orbit;
-use Sphp\Core\PathFinder as PathFinder;
+use Sphp\Html\Foundation\F6\Media\Orbit\Orbit;
+use Sphp\Core\PathFinder;
 
 $pathFinder = new PathFinder();
 $orbitIntro = new Orbit();

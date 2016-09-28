@@ -2,7 +2,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Objects\ObjectInterface as ObjectInterface;
 
 $objectInterface = $api->classLinker(ObjectInterface::class);

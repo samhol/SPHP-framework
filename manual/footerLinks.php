@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation;
 
-use Sphp\Html\Foundation\F6\Navigation\Menu as Menu;
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\F6\Navigation\Menu;
+use Sphp\Html\Foundation\F6\Grids\BlockGrid;
 use Sphp\Html\Document;
 
 $links["js"] = (new Menu())->vertical()

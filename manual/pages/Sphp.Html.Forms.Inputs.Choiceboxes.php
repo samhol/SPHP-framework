@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Forms\Inputs\Choiceboxes as Choiceboxes;
 
 $anyTimeInput = Apis::apigen()->classLinker(Choiceboxes::class);

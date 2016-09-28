@@ -55,6 +55,7 @@ class Strings {
     if ($option === null) {
       $option = 'msr';
     }
+    echo "pattern:$pattern\n";
     $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
     mb_regex_encoding($regexEncoding);
     return $result;

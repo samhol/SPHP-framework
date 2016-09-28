@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 $documentClass = $api->classLinker(Document::class);
 $htmlClass = $api->classLinker(Html::class);
 echo $parsedown->text(<<<MD

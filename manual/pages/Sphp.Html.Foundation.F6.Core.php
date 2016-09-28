@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Foundation\F6\Core; 
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
-use Sphp\Html\Apps\Manual\Apis as Apis;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
 $visibilityHandlingInterface = $api->classLinker(VisibilityHandlingInterface::class);
 $visibilityHandlingTrait = $api->classLinker(VisibilityHandlingTrait::class);

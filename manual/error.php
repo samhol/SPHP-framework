@@ -2,7 +2,6 @@
 
 namespace Sphp\Html\Media;
 
-//$browser = new Browser();
 $root = \Sphp\HTTP_ROOT;
 echo (new \ParsedownExtra())->text(<<<TEXT
 

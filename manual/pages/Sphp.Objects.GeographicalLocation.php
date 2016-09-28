@@ -2,7 +2,7 @@
 
 namespace Sphp\Util;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 echo $parsedown->text(<<<MD
 
@@ -12,4 +12,4 @@ The geographical location: Classes {$api->classLinker(Address::class)} and {$api
 Classes {$api->classLinker(Address::class)} and {$api->classLinker(Location::class)} 
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");

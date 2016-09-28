@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Lists;
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 $htmlListLink = $api->classLinker(HtmlList::class);
 $ol = $api->classLinker(Ol::class);
@@ -55,7 +55,7 @@ $exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Dl.php', false, true);
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleViewer;
+use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 
 $tableClass = $api->classLinker(Table::class);
 $tr = $api->classLinker(Tr::class);

@@ -1,7 +1,9 @@
 <?php
 
 namespace Sphp\Html\Head;
+
 use Sphp\Html\Programming\ScriptInterface;
+
 $headNS = $api->namespaceLink(__NAMESPACE__);
 $metaIfLnk = $api->classLinker(HeadComponentInterface::class);
 $head = $api->classLinker(Head::class);
@@ -33,10 +35,10 @@ MD
 );
 //$in = new \Gajus\Dindent\Indenter();
 //$html = $in->indent(FileUtils::executePhpToString(EXAMPLE_DIR . "html/head/head.php"));
-/*$example1 = (new PHPExampleViewer())
-		->fromFile(EXAMPLE_DIR . "html/head/head.php", true, "html5")
-		->printHtml();
-*/
+/* $example1 = (new PHPExampleViewer())
+  ->fromFile(EXAMPLE_DIR . "html/head/head.php", true, "html5")
+  ->printHtml();
+ */
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head1.php", "html5", false);
 echo $parsedown->text(<<<MD
 ###The $head component and client side scripts
@@ -48,7 +50,7 @@ Loading scripts earlier could introduce timing issues and unnesessary usage of
 By including scripts at the bottom of the page, it is assured that the DOM is ready 
 to be poked and it is not reguired to delay initialization any further.
 MD
-); 
+);
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head2.php", "html5", false);
 //$s = new \Sphp\Html\Apps\SyntaxHighlighter();
 //var_dump(FileUtils::executePhpToString(EXAMPLE_DIR . "html/head/head.php"));

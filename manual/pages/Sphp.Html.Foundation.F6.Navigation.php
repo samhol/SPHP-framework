@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleAccordion;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);

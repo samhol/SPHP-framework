@@ -2,8 +2,8 @@
 
 namespace Sphp\Manual;
 
-use Sphp\Html\Foundation\F6\Containers\ExceptionCallout as ExceptionCallout;
-use Sphp\Core\Util\FileUtils as FileUtils;
+use Sphp\Html\Foundation\F6\Containers\ExceptionCallout;
+use Sphp\Core\Util\FileUtils;
 
 include_once 'settings.php';
 include_once __DIR__ . "/manualTools/main.php";

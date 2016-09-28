@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Forms;
 
-use Sphp\Html\Forms\FormInterface as FormInterface;
+use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Document;
 
 $formIfLink = $api->classLinker(FormInterface::class);

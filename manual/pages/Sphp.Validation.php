@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Core\Validators;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as CodeExampleViewer;
+use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $validatorInterface = $api->classLinker(ValidatorInterface::class);
 $requiredValueValidator = $api->classLinker(RequiredValueValidator::class);
@@ -50,7 +50,7 @@ validators.
         
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
 echo $parsedown->text(
 <<<MD
 ##$optionalValidatorInterface validation
@@ -65,7 +65,7 @@ is valid if it matches the pattern.
 MD
 );
   
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/PatternValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/PatternValidator.php", "php", false);
 echo $parsedown->text(
 <<<MD
 ###The $strLenValLink class	
@@ -78,7 +78,7 @@ types of validation
  3. Range validation: the length of the input must be between the lower and upper limits. 
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/StringLengthValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/StringLengthValidator.php", "php", false);
 echo $parsedown->text(
 <<<MD
 ##The $abstractValidatorAggregate implementations		
@@ -90,7 +90,7 @@ validates the given input against all of its inner $validatorInterface validator
 and the input is valid only if it passes all of them.
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/ValueValidatorAggregate.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/ValueValidatorAggregate.php", "php", false);
 $formValidator = $api->classLinker(FormValidator::class);
 $formInterface = $api->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = $php->classLinker(\Traversable::class);
@@ -110,7 +110,7 @@ $formValidator supports two ways of manipulating validators for named input data
  2. By using chainable object oriented methods 
 MD
 );
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/FormValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/FormValidator.php", "php", false);
 $abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
 $userValidator = $api->classLinker(UserValidator::class);
 echo $parsedown->text(
@@ -135,4 +135,4 @@ use \Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccor
        //->loadFromFile($reflector->getFileName())		
         ->printHtml();*/
 
-CodeExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Validation/UserValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/UserValidator.php", "php", false);
