@@ -7,8 +7,8 @@
 
 namespace Sphp\Db\Objects;
 
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
-use Doctrine\Common\Persistence\ObjectManager as ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use ArrayIterator;
 
 /**

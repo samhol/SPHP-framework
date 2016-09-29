@@ -95,9 +95,9 @@ class Strings {
    * Returns an array of strings. An optional integer $limit will truncate the
    * results.
    *
-   * @param  string    $pattern the regex with which to split the string
-   * @param  int       $limit   optional maximum number of results to return
-   * @return string[]  an array of strings
+   * @param  string $pattern the regex with which to split the string
+   * @param  int $limit optional maximum number of results to return
+   * @return string[] an array of strings
    */
   public static function split($string, $pattern, $limit = -1, $encoding = null) {
     if ($limit === 0) {

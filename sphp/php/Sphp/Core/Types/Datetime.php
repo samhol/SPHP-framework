@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Core\Types;
+
 use DateTimeZone;
 use Sphp\Objects\ScalarObjectInterface;
 use Sphp\Core\Comparable;
@@ -19,6 +20,7 @@ use Sphp\Core\Gettext\TranslatorChangerTrait;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2008-05-22
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @link    http://www.php.net/manual/en/class.datetime.php The DateTime class (PHP manual)
  * @filesource
  */
 class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, TranslatorChangerInterface {
