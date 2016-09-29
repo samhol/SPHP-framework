@@ -90,13 +90,14 @@ class Strings {
   }
 
   /**
-   * Splits the string with the provided regular expression, returning an
-   * array of StringObject objects. An optional integer $limit will truncate the
+   * Splits the string with the provided regular expression
+   * 
+   * Returns an array of strings. An optional integer $limit will truncate the
    * results.
    *
-   * @param  string    $pattern The regex with which to split the string
-   * @param  int       $limit   Optional maximum number of results to return
-   * @return StringObject[] An array of StringObject objects
+   * @param  string    $pattern the regex with which to split the string
+   * @param  int       $limit   optional maximum number of results to return
+   * @return string[]  an array of strings
    */
   public static function split($string, $pattern, $limit = -1, $encoding = null) {
     if ($limit === 0) {
