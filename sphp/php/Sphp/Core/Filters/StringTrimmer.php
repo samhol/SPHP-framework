@@ -17,7 +17,7 @@ use Sphp\Core\Types\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TrimFilter extends AbstractFilter {
+class StringTrimmer extends AbstractFilter {
 
   /**
    * the string in UTF-8 format
@@ -27,12 +27,14 @@ class TrimFilter extends AbstractFilter {
   private $charmask;
 
   /**
+   * usage of left trimming
    *
    * @var boolean 
    */
   private $left = true;
 
   /**
+   * usage of right trimming
    *
    * @var boolean 
    */
@@ -76,6 +78,24 @@ class TrimFilter extends AbstractFilter {
       $string = Strings::trimRight($string, $this->charmask);
     }
     return $string;
+  }
+
+  /**
+   * 
+   * @param  string $charmask
+   * @return self
+   */
+  public static function leftTrimmer($charmask) {
+    return new static($charmask, true, false);
+  }
+
+  /**
+   * 
+   * @param  string $charmask
+   * @return self
+   */
+  public static function rightTrimmer($charmask) {
+    return new static($charmask, false, true);
   }
 
 }

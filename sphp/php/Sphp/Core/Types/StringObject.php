@@ -128,7 +128,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @param  mixed  $str Value to modify, after being cast to string
    * @param  string $encoding The character encoding
-   * @throws \InvalidArgumentException if an array or object without a
+   * @throws InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
   public function __construct($str = '', $encoding = null) {
@@ -162,7 +162,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @param  mixed   $str      Value to modify, after being cast to string
    * @param  string  $encoding The character encoding
    * @return self an instance
-   * @throws \InvalidArgumentException if an array or object without a
+   * @throws InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
   public static function create($str = '', $encoding = null) {
@@ -237,7 +237,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * Offsets may be negative to count from the last character in the string
    *
    * @param  mixed   $offset The index to check
-   * @return boolean Whether or not the index exists
+   * @return boolean whether or not the index exists
    */
   public function offsetExists($offset) {
     $length = $this->length();
@@ -254,8 +254,8 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * Offsets may be negative to count from the last character in the string.
    *
    * @param  mixed $offset The index from which to retrieve the char
-   * @return mixed The character at the specified index
-   * @throws OutOfBoundsException If the positive or negative offset does
+   * @return mixed the character at the specified index
+   * @throws OutOfBoundsException if the positive or negative offset does
    *                               not exist
    */
   public function offsetGet($offset) {
@@ -273,9 +273,9 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * **IMPORTANT:** throws an exception when called. This maintains the 
    * immutability of the objects.
    *
-   * @param  mixed $offset The index of the character
-   * @param  mixed $value  Value to set
-   * @throws BadMethodCallException When called
+   * @param  mixed $offset the index of the character
+   * @param  mixed $value  value to set
+   * @throws BadMethodCallException when called
    */
   public function offsetSet($offset, $value) {
     throw new BadMethodCallException("Object is immutable, cannot modify char at position $offset directly");

@@ -55,7 +55,7 @@ class Strings {
     if ($option === null) {
       $option = 'msr';
     }
-    echo "pattern:$pattern\n";
+   // echo "pattern:$pattern\n";
     $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
     mb_regex_encoding($regexEncoding);
     return $result;
@@ -68,7 +68,7 @@ class Strings {
    * @param  string $replacement The string to replace with
    * @return string the resulting string after the replacements
    */
-  public function replace($string, $search, $replacement) {
+  public static function replace($string, $search, $replacement) {
     return static::regexReplace($string, preg_quote($search), $replacement);
   }
 
@@ -135,7 +135,7 @@ class Strings {
    */
   public static function trim($string, $charMask = null, $encoding = null) {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "^[$chars]+|[$chars]+\$", '', 'msr', self::getEncoding($encoding));
+    return static::regexReplace($string, "^[$chars]+|[$chars]+$", '', 'msr', static::getEncoding($encoding));
   }
 
   /**
@@ -152,7 +152,7 @@ class Strings {
    */
   public static function trimLeft($string, $charMask = null, $encoding = null) {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "^[$chars]+", '', 'msr', self::getEncoding($encoding));
+    return static::regexReplace($string, "^[$chars]+", '', 'msr', static::getEncoding($encoding));
   }
 
   /**
@@ -169,7 +169,7 @@ class Strings {
    */
   public static function trimRight($string, $charMask = null, $encoding = null) {
     $chars = ($charMask) ? preg_quote($charMask) : '[:space:]';
-    return static::regexReplace($string, "[$chars]+\$", '', 'msr', self::getEncoding($encoding));
+    return static::regexReplace($string, "[$chars]+$", '', 'msr', static::getEncoding($encoding));
   }
 
   /**
