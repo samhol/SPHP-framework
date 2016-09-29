@@ -7,7 +7,7 @@
 
 namespace Sphp\Core;
 
-use \Exception;
+use Exception;
 
 /**
  * Class implements 

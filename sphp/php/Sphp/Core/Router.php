@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PathFinder.php (UTF-8)
+ * Router.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,14 +10,16 @@ namespace Sphp\Core;
 use Sphp\Data\Arrayable;
 
 /**
- * Class implements an absolute path finder 
+ * Class implements a file system router
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PathFinder implements Arrayable {
+class Router implements Arrayable {
+
+  use CloneNotSupportedTrait;
 
   const ROOT = "";
   const SPHP = "sphp/";
@@ -40,6 +42,12 @@ class PathFinder implements Arrayable {
   private $httpRoot;
 
   /**
+   *
+   * @var self
+   */
+  private static $instance;
+
+  /**
    * Constructs a new instance
    * 
    * **IMPORTANT:** 
@@ -47,51 +55,19 @@ class PathFinder implements Arrayable {
    * * the `$localRoot` should be an Absolute path so that all the subfolders are reachable.
    * * If either `$localRoot` or `$httpRoot` is not given the instance uses `$_SERVER` values if present
    * 
-   * @param  string $localRoot the local filesystem root path
-   * @param  string $httpRoot the root url of the application
-   * @throws ConfigurationException if paths cannot be resolved
+   * @throws ConfigurationException if either local or http path cannot be resolved
    */
-  public function __construct($localRoot = null, $httpRoot = null) {
-    $this->initHttpRoot($httpRoot);
-    $this->initLocalRoot($localRoot);
-  }
-
-  /**
-   * 
-   * @param  string|null $httpRoot
-   * @return self for PHP Method Chaining
-   * @throws ConfigurationException if path cannot be resolved
-   */
-  private function initHttpRoot($httpRoot = null) {
-    if ($httpRoot === null) {
-      $host = filter_input(INPUT_SERVER, "HTTP_HOST", FILTER_SANITIZE_SPECIAL_CHARS);
-      $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
-    } else {
-      $this->httpRoot = $httpRoot;
-      return $this;
+  protected function __construct() {
+    $host = filter_input(INPUT_SERVER, "HTTP_HOST", FILTER_SANITIZE_SPECIAL_CHARS);
+    if (!is_string($host)) {
+      throw new ConfigurationException("HTTP hostcannot be resolved");
     }
-  }
-
-  /**
-   * 
-   * **IMPORTANT:** the `$root` path should be an Absolute path so that all the subfolders are reachable.
-   * 
-   * @param  string|null $root
-   * @return self for PHP Method Chaining
-   * @throws ConfigurationException if path cannot be resolved
-   */
-  private function initLocalRoot($root = null) {
-    if ($root === null) {
-      $root = filter_input(INPUT_SERVER, "DOCUMENT_ROOT", FILTER_SANITIZE_SPECIAL_CHARS);
-      if ($root === false || $root === null) {
-        throw new ConfigurationException("document root not specified");
-      }
-    }
-    if (!is_dir($root)) {
-      throw new ConfigurationException("path '$root' does not exist");
+    $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
+    $root = filter_input(INPUT_SERVER, "DOCUMENT_ROOT", FILTER_SANITIZE_SPECIAL_CHARS);
+    if (!is_string($root)) {
+      throw new ConfigurationException("document root not specified");
     }
     $this->localRoot = $root . "/";
-    return $this;
   }
 
   /**
@@ -118,7 +94,7 @@ class PathFinder implements Arrayable {
    *
    * @param  string $relativePath
    * @return string the http path from the root
-   * @throws ConfigurationException if path cannot be resolved
+   * @throws ConfigurationException if the  path cannot be resolved
    */
   public function http($relativePath = self::ROOT) {
     if (!$this->isPathFromRoot($relativePath)) {
@@ -132,7 +108,7 @@ class PathFinder implements Arrayable {
    *
    * @param  string $relativePath
    * @return string the local path from the root
-   * @throws ConfigurationException if path cannot be resolved
+   * @throws ConfigurationException if the path cannot be resolved
    */
   public function local($relativePath = self::ROOT) {
     if (!$this->isPathFromRoot($relativePath)) {
@@ -174,6 +150,19 @@ class PathFinder implements Arrayable {
         "http" => $this->http(),
         "file" => $this->local()
     ];
+  }
+
+  /**
+   * Returns the singleton instance of the file system router
+   * 
+   * @return self singleton instance of the file system router
+   * @throws ConfigurationException if either local or http path cannot be resolved
+   */
+  public static function get() {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
   }
 
 }

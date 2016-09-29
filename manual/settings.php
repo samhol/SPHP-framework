@@ -19,7 +19,7 @@ Configuration::useDomain("manual")
 //PHPConfiguration();
 //ErrorExceptionThrower::start();
 
-Configuration::current()->paths()->loadFile('manual/doctrineConfiguration.php');
+Configuration::current()->paths()->requireOnce('manual/doctrineConfiguration.php');
 /**
  * Initializes default exceptionhandling mechanism
  */

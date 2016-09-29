@@ -12,7 +12,7 @@ MD
 );
 
 $load("Core-intro/Orbit-intro.php");
-$load("Sphp.Core.PathFinder.php");
+$load("Sphp.Core.Router.php");
 $load("Sphp.Core.Configurator.php");
 
 namespace Sphp\Core\ErrorHandling;

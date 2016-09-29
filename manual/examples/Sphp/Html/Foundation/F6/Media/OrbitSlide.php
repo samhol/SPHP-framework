@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Core\PathFinder as PathFinder;
+use Sphp\Core\PathFinder;
 
 $pathFinder = new PathFinder();
 $folder = $pathFinder->http("manual/photos/");

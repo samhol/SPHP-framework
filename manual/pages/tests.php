@@ -7,13 +7,13 @@ echo"<pre>";
 
 //print_r(Configuration::useDomain("manual")->localPaths()->toArray());
 //print_r(Configuration::useDomain("manual")->httpPaths()->toArray());
-$paths = Configuration::current()->paths();
+$router = Configuration::current()->paths();
 var_dump(
-        $paths->http(), 
-        $paths->http(PathFinder::SPHP), 
-        $paths->http("manual/"),
-        $paths->http(PathFinder::SPHP_CSS), 
-        $paths->http("sphp/locale/fi_FI/"), 
-        $paths->local(), 
-        $paths->local(PathFinder::SPHP));
+        $router->http(), 
+        $router->http(PathFinder::SPHP), 
+        $router->http("manual/"),
+        $router->http(PathFinder::SPHP_CSS), 
+        $router->http("sphp/locale/fi_FI/"), 
+        $router->local(), 
+        $router->local(PathFinder::SPHP));
 echo"</pre>";
