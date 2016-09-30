@@ -48,7 +48,7 @@ trait HyperlinkTrait {
    * @param  boolean $encode converts all applicable characters of the $url to
    *         HTML entities
    * @return HyperlinkInterface for PHP Method Chaining
-   * @uses   Strings::htmlentities()
+   * @uses   Strings::htmlEncode()
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function setHref($href, $encode = true) {

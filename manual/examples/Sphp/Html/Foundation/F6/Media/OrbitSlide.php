@@ -2,11 +2,10 @@
 
 namespace Sphp\Html\Foundation\F6\Media\Orbit;
 
-use Sphp\Core\PathFinder;
+use Sphp\Core\Router;
 
-$pathFinder = new PathFinder();
-$folder = $pathFinder->http("manual/photos/");
-$folder = "manual/photos/";
+$folder = Router::get()->http("manual/photos/");
+
 $orbit = new Orbit();
 
 $orbit->appendFigure($folder . "andromeda.jpg", "The andromeda galaxy")

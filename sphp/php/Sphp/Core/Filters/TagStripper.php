@@ -36,6 +36,7 @@ class TagStripper extends AbstractFilter {
 
   /**
    * {@inheritdoc}
+   * @uses    http://php.net/manual/en/function.strip-tags.php
    */
   public function filter($variable) {
     if (is_string($variable)) {

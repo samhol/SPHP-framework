@@ -27,7 +27,7 @@ MD
         ->setExampleHeading("PHP environment manipulation example")
         ->printHtml();
 
-$pathFinder = $api->classLinker(PathFinder::class);
+$path = $api->classLinker(Router::class);
 echo $parsedown->text(<<<MD
 
 ##$config object as a genereal configuration manager
@@ -35,7 +35,7 @@ echo $parsedown->text(<<<MD
 A $config object can be used to store any type of data. $config class contains all user defined configuration domains.
 A domain is actually a singelton $config instance and all domain instances can have own specific configuration settings.
   
-Every $config instance includes also instances of $phpConfig and $pathFinder.
+Every $config instance includes also instances of $phpConfig and $path.
 
 MD
 );

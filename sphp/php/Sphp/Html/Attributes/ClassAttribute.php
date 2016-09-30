@@ -19,7 +19,7 @@ namespace Sphp\Html\Attributes;
 class ClassAttribute extends MultiValueAttribute {
   
   /**
-   * 
+   * Constructs a new instance
    */
   public function __construct() {
     parent::__construct("class");

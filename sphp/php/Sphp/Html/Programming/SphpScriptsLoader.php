@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Core\PathFinder;
+use Sphp\Core\Router;
 
 /**
  * Description of SphpScriptsLoader
@@ -27,12 +27,6 @@ use Sphp\Core\PathFinder;
 class SphpScriptsLoader extends ScriptsContainer {
 
   /**
-   *
-   * @var PathFinder 
-   */
-  private $pathFinder;
-
-  /**
    * Folderpaths to script resources
    *
    * @var string[]
@@ -41,10 +35,10 @@ class SphpScriptsLoader extends ScriptsContainer {
 
   public function __construct($scripts = null) {
     parent::__construct($scripts);
-    $this->pathFinder = new PathFinder();
-    $this->paths["vendor"] = $this->pathFinder->http("sphp/js/vendor/");
-    $this->paths["app"] = $this->pathFinder->http("sphp/js/app/");
-    $this->paths["js_root"] = $this->pathFinder->http("sphp/js/");
+    $router = Router::get();
+    $this->paths["vendor"] = $router->http("sphp/js/vendor/");
+    $this->paths["app"] = $router->http("sphp/js/app/");
+    $this->paths["js_root"] = $router->http("sphp/js/");
   }
 
   /**
@@ -175,7 +169,7 @@ class SphpScriptsLoader extends ScriptsContainer {
             ->appendSrc($this->paths["app"] . "sphp.SideNavs.js")
             ->appendSrc($this->paths["app"] . "sphp.TechLinks.js")
             ->appendSrc($this->paths["js_root"] . "sphp.all.js")
-            ->appendCode('sphp.initialize("' . $this->pathFinder->http() . '");')
+            ->appendCode('sphp.initialize("' . Router::get()->http() . '");')
             ->appendSrc($this->paths["app"] . "sphp.ProgressBar.js");
     return $this;
   }

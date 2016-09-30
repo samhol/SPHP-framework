@@ -8,6 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Core\Types\Arrays;
+use ArrayIterator;
 
 /**
  * An implementation of a multivalue HTML attribute
@@ -63,7 +64,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
    * 1. A string paramater can contain multiple comma separated unique values
-   * 2. An array paramater can contain only one  unique atomic value per value
+   * 2. An array paramater can contain only one unique atomic value per value
    * 3. Duplicate values are ignored
    *
    * @param  string|string[] $values the value(s) to parse
@@ -122,15 +123,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
   }
 
   /**
-   * Retrieves an external iterator to iterate through the atomic values on the attribute
-   *
-   * @return \ArrayIterator to iterate through the atomic values on the attribute
-   */
-  public function getIterator() {
-    return new \ArrayIterator($this->values);
-  }
-
-  /**
    * Checks whether the given atomic values are locked
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
@@ -142,7 +134,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @return boolean true if the given values are locked and false otherwise
    */
   public function isLocked($values = null) {
-    if (empty($values)) {
+    if ($values === null) {
       $locked = !empty($this->locked);
     } else {
       $locked = !array_diff(self::parse($values), $this->locked);
@@ -186,7 +178,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
-      throw new UnmodifiableAttributeException($this->getName() . " values given are unremovable");
+      throw new UnmodifiableAttributeException($this->getName() . " attribute values given are unremovable");
     }
     $arr = self::parse($values);
     if (count($arr) > 0) {
@@ -239,6 +231,15 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function count() {
     return count($this->values);
+  }
+
+  /**
+   * Retrieves an external iterator to iterate through the atomic values on the attribute
+   *
+   * @return ArrayIterator to iterate through the atomic values on the attribute
+   */
+  public function getIterator() {
+    return new ArrayIterator($this->values);
   }
 
 }

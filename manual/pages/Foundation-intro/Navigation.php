@@ -2,13 +2,9 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Core\PathFinder as PathFinder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $toolsLink = Apis::apigen()->namespaceLink(__NAMESPACE__, false);
-
-$pathFinder = new PathFinder();
-
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 

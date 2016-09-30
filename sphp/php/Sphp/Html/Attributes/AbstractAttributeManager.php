@@ -12,6 +12,7 @@ use IteratorAggregate;
 use Sphp\Html\IdentifiableInterface;
 use Sphp\Core\Types\Arrays;
 use Sphp\Core\Types\Strings;
+use ArrayIterator;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag
@@ -166,9 +167,6 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @return self for PHP Method Chaining
    */
   public function attachIdentifier($name) {
-    if ($this) {
-      
-    }
     if (!$this->isIdentifier($name)) {
       $this->identifiers[] = $name;
     }
@@ -189,24 +187,19 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return $obj;
   }
 
-  public function validateAttributeName($name) {
-    return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
-  }
-
   /**
    * Sets an attribute name value pair
    *
    * **IMPORTANT!:** Does not alter locked attribute values:
    *
-   * 1. For 'class' attribute: if a CSS class name is locked the method does nothing
-   * 2. For any other locked attribute the method throws a {@link UnmodifiableAttributeException}
+   *  If the attribute value is locked the method throws a {@link UnmodifiableAttributeException}
    *
    * `$value` parameter:
    *
    * 1. the type of the value should always convert to string
-   * 2. `null` or an empty `string`: an empty attribute is set
+   * 2. empty `string`: an empty attribute is set
    * 3. boolean `true`: an empty attribute is set
-   * 4. boolean `false`: attribute is removed or an attribute object is cleared
+   * 4. boolean `false` or `null`: attribute is removed or an attribute object is cleared
    * 5. otherwise the attribute value is the string conversion value
    *
    * @param  string $name the name of the attribute
@@ -227,36 +220,13 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       }
       if ($value instanceof AttributeInterface) {
         $this->setAttributeObject($value);
-      } else if ($value === false) {
+      } else if ($value === false || $value === null) {
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
       }
     }
     return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function hasId($identityName = "id") {
-    return $this->isIdentifier($identityName) && $this->exists($identityName);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
-    if (!$this->isLocked($identityName)) {
-      $value = $prefix . Strings::random($length);
-      while (!HtmlIdStorage::store($identityName, $value)) {
-        $value = $prefix . Strings::random($length);
-      }
-      $this->lock($identityName, $value);
-      $this->attachIdentifier($identityName);
-      // var_dump($this->attrs[$identityName]);
-    }
-    return $this->get($identityName);
   }
 
   /**
@@ -353,12 +323,13 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   }
 
   /**
+   * Checks whether the attribute represents an empty attribute
    * 
    * @param  string $name the name of the attribute
-   * @return boolean
+   * @return boolean true if the attribute is empty and false otherwise
    */
   public function isEmpty($name) {
-    return $this->exists($name) && $this->get($name) == "";
+    return $this->exists($name) && ($this->get($name) === true || $this->get($name) === "");
   }
 
   /**
@@ -454,12 +425,35 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
 
   /**
    *
-   * @return \ArrayIterator
+   * @return ArrayIterator
    */
   public function getIterator() {
     $arr = array_merge($this->attrObjects, $this->attrs);
-    $it = new \ArrayIterator($arr);
+    $it = new ArrayIterator($arr);
     return $it;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function hasId($identityName = "id") {
+    return $this->isIdentifier($identityName) && $this->exists($identityName);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
+    if (!$this->isLocked($identityName)) {
+      $value = $prefix . Strings::random($length);
+      while (!HtmlIdStorage::store($identityName, $value)) {
+        $value = $prefix . Strings::random($length);
+      }
+      $this->lock($identityName, $value);
+      $this->attachIdentifier($identityName);
+      // var_dump($this->attrs[$identityName]);
+    }
+    return $this->get($identityName);
   }
 
 }

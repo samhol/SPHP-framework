@@ -112,23 +112,12 @@ class Configuration implements Arrayable {
   }
 
   /**
-   * Returns the HTTP host of the script
-   *
-   * @return string the HTTP host of the script
-   */
-  public static function httpHost() {
-    $root = filter_input(INPUT_SERVER, "DOCUMENT_ROOT", FILTER_SANITIZE_SPECIAL_CHARS);
-    $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-    return $root;
-  }
-
-  /**
    * Returns the path finder object
    * 
-   * @return PathFinder the path finder object
+   * @return Router the path finder object
    */
   public function paths() {
-    return new PathFinder();
+    return Router::get();
   }
 
   /**

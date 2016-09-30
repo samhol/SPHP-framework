@@ -9,7 +9,6 @@ include_once("links.php");
 
 Document::setHtmlVersion(Document::HTML5);
 $currentUrl = URL::getCurrent();
-$pathFinder = new \Sphp\Core\PathFinder();
 $title = "SPHP framework";
 $conf = Configuration::useDomain("manual");
 $conf->paths()->http("manual/pics/favicon.ico");
@@ -24,7 +23,7 @@ $html->enableSPHP();
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
-        ->setBaseAddr(Configuration::httpHost(), "_self")
+        ->setBaseAddr($conf->paths()->http(), "_self")
         ->addShortcutIcon($conf->paths()->http("manual/pics/favicon.ico"))
         ->metaTags()
         ->setApplicationName("SPHP")

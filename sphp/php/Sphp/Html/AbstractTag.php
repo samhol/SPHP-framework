@@ -41,13 +41,6 @@ abstract class AbstractTag implements TagInterface {
   private $attrs;
 
   /**
-   * collection of individual id change observer objects
-   *
-   * @var SplObjectStorage
-   */
-  protected $observers;
-
-  /**
    * Constructs a new instance
    *
    * @param  string $tagName the tag name of the component
@@ -57,7 +50,6 @@ abstract class AbstractTag implements TagInterface {
   public function __construct($tagName, AttributeManager $attrManager = null) {
     $this->setTagName($tagName)
             ->setAttributeManager($attrManager);
-    $this->observers = new SplObjectStorage();
   }
 
   /**

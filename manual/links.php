@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-$httpRoot = Configuration::httpHost();
+$httpRoot = Router::get()->http();
 //$f5Root = $httpRoot . "/F5/";
 $sidenavLinks["root"] = ["href" => $httpRoot, "text" => "Getting Started", "target" => "_self"];
 $sidenavLinks["core"] = ["group" => "Core components", "sub" =>

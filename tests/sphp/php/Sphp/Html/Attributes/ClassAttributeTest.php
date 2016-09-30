@@ -2,29 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-class ClassAttributeTest extends \PHPUnit_Framework_TestCase {
-
-	/**
-	 * @var ClassAttribute
-	 */
-	protected $css;
-
-	/**
-	 * @var \Closure
-	 */
-	protected $listener;
-
-	/**
-	 * Sets up the fixture, for example, opens a network connection.
-	 * This method is called before a test is executed.
-	 */
-	public function __construct() {
-		$this->css = new MultiValueAttribute("class");
-		$this->listener = function($event) {
-			echo "\nAn event occured: $event\n";
-		};
-		$this->css->addListener($this->listener);
-	}
+class MultiValueAttributeTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Tears down the fixture, for example, closes a network connection.
@@ -32,16 +10,32 @@ class ClassAttributeTest extends \PHPUnit_Framework_TestCase {
 	 */
 	protected function tearDown() {
 		echo "\ntearDown:\n";
-		$this->css = NULL;
+		
 	}
+ /**
+   * 
+   * @return string[]
+   */
+  public function lockingData() {
+    return [
+        ["string", ""],
+        ["true", true],
+        ["true", false],
+        ["zero", 0]
+    ];
+  }
 
-	/**
-	 * 
-	 * @covers Sphp\Html\Attributes\CssClassAttribute::add()
-	 */
+  /**
+   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * 
+   * @param string $name
+   * @param string $value numeric value
+   * @dataProvider lockingData
+   */
 	public function testAdding() {
-		$this->css->add("c1");
-		echo $this->css;
+    $attr = new MultiValueAttribute("class");
+		$attr->add("c1");
+		echo $attr;
 		$this->assertTrue($this->css->contains("c1"));
 		$this->assertEquals($this->css->__toString(), 'class="c1"');
 		$this->assertFalse($this->css->contains("c1 c2"));

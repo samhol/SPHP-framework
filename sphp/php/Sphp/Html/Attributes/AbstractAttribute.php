@@ -35,7 +35,7 @@ abstract class AbstractAttribute implements AttributeInterface {
 
 
   /**
-   * Constructs a new instance of the {@link self] object
+   * Constructs a new instance
    *
    * @param string $name the name of the attribute
    */

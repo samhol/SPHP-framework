@@ -7,8 +7,6 @@
 
 namespace Sphp\Objects;
 
-use Sphp\Core\CloneableInterface;
-
 /**
  * Interface describes common features for all Objects.
  *
@@ -17,7 +15,7 @@ use Sphp\Core\CloneableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ObjectInterface extends CloneableInterface {
+interface ObjectInterface {
 
   /**
    * Returns the string representation of the object

@@ -39,16 +39,6 @@ class PHPConfiguration implements Arrayable {
   }
 
   /**
-   * Returns the HTTP host of the script
-   *
-   * @return string the HTTP host of the script
-   */
-  public static function httpHost() {
-    $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-    return $root;
-  }
-
-  /**
    * 
    * @param  string $fun
    * @param  mixed[] $params

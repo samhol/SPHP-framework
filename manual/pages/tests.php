@@ -10,10 +10,10 @@ echo"<pre>";
 $router = Configuration::current()->paths();
 var_dump(
         $router->http(), 
-        $router->http(PathFinder::SPHP), 
+        $router->http(Router::SPHP), 
         $router->http("manual/"),
-        $router->http(PathFinder::SPHP_CSS), 
+        $router->http(Router::SPHP_CSS), 
         $router->http("sphp/locale/fi_FI/"), 
         $router->local(), 
-        $router->local(PathFinder::SPHP));
+        $router->local(Router::SPHP));
 echo"</pre>";

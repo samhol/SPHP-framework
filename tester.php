@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Navigation;
 
-use Sphp\Core\PathFinder as PathFinder;
+use Sphp\Core\Router;
 use Sphp\Html\Document;
 
 error_reporting(E_ALL);
@@ -18,7 +18,7 @@ Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
 ?>
 <body class="manual" id="manual-body">
   <div class="sphp-logo">
-    <a href="<?php echo (new PathFinder)->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
+    <a href="<?php echo Router::get()->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
       <img src="manual/pics/sphp-code-logo.png" alt="SPHP framework">
     </a>
     <?php
