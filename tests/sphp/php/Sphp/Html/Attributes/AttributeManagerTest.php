@@ -18,7 +18,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    */
   protected function tearDown() {
     echo "\ntearDown:\n";
-    $this->attrs = NULL;
   }
 
   /**
@@ -48,7 +47,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
-    $this->assertTrue(!$attrs->isHidden($name));
     unset($attrs);
   }
 
@@ -81,7 +79,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
-    $this->assertTrue(!$attrs->isHidden($name));
   }
 
   /**
@@ -113,11 +110,9 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     if ($value === false) {
       $this->assertTrue(!$attrs->exists($name));
       $this->assertTrue(!$attrs->isEmpty($name));
-      $this->assertTrue(!$attrs->isHidden($name));
     } else {
       $this->assertTrue($attrs->exists($name));
       $this->assertTrue($attrs->isEmpty($name));
-      $this->assertTrue(!$attrs->isHidden($name));
     }
   }
 
@@ -145,7 +140,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue($attrs->get($name) === false);
     $this->assertTrue(!$attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
-    $this->assertTrue(!$attrs->isHidden($name));
   }
 
   /**
@@ -172,7 +166,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue($attrs->isEmpty($name));
-    $this->assertTrue(!$attrs->isHidden($name));
   }
 
   /**
@@ -182,8 +175,8 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   public function lockingData() {
     return [
         ["string", ""],
-        ["true", true],
-        ["true", false],
+        ["boolean", true],
+        ["float", 0.1],
         ["zero", 0]
     ];
   }
@@ -197,7 +190,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    */
   public function testLocking($name, $value) {
     $attrs = new AttributeManager();
-    $attrs->set($name, "shit");
+    $attrs->set($name, $value);
     $this->assertTrue(!$attrs->isLocked($name));
     $attrs->lock($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
@@ -206,57 +199,44 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   *
-   * @covers Sphp\Html\Attributes\AttributeManagerTest::set()
-
-    public function testSettingBool() {
-    $this->attrs->set("true", TRUE);
-    $this->assertEquals("$this->attrs", "true");
-    $this->assertTrue($this->attrs->exists("true"));
-    $this->assertTrue($this->attrs->get("true") === TRUE);
-
-    $this->attrs->set("false", FALSE);
-    $this->assertFalse($this->attrs->exists("false"));
-    $this->assertEquals("$this->attrs", "true");
-
-    $this->attrs->set("true", FALSE);
-    $this->assertFalse($this->attrs->exists("true"));
-    } */
-  /**
-   *
-   * @covers Sphp\Html\Attributes\SimpleAttributeManager::set()
-
-    public function testSettingValues() {
-    $this->attrs
-    ->set("neg", -1)
-    ->set("zero", 0)
-    ->set("one", 1);
-    echo "\nattrs:$this->attrs\n";
-    $this->assertEquals("$this->attrs", 'neg="-1" zero="0" one="1"');
-    $this->assertTrue($this->attrs->get("neg") === -1);
-    $this->assertTrue($this->attrs->get("zero") === 0);
-    $this->assertTrue($this->attrs->get("one") === 1);
-    } */
-  /**
-   *
-   * @covers Sphp\Html\Attributes\SimpleAttributeManager::set()
-
-    public function testRequiringValues() {
-    $this->attrs
-    ->demand("r1")
-    ->set("r2", "value")
-    ->demand("r2");
-    echo "\nattrs:$this->attrs\n";
-    $this->assertEquals("$this->attrs", 'r1 r2="value"');
-    }
+   * 
+   * @return string[]
    */
+  public function lockDemandData() {
+    return [
+        ["string1", ""],
+        ["string2", "string"],
+        ["bool", true],
+        ["int", 0],
+        ["float", 0.1]
+    ];
+  }
   /**
-   *
-   * @covers Sphp\Html\Attributes\SimpleAttributeManager::set()
-
-    public function testStyle() {
-    $this->attrs["style"]["border"] = "solid 2px black";
-    $this->assertEquals($this->attrs["style"]["border"], "solid 2px black");
-    }
+   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * 
+   * @param string $name
+   * @param string $value numeric value
+   * @dataProvider lockDemandData
    */
+  public function lockDemandTest($name, $value) {
+    $attrs = new AttributeManager();
+    $attrs->lock($name, $value);
+    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertTrue(!$attrs->isLocked($name));
+    $attrs->demand($name);
+    $this->assertTrue($attrs->isDemanded($name));
+  }
+  
+  
+  /**
+   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * 
+   */
+  public function notExistsTest() {
+    $attrs = new AttributeManager();
+    $this->assertTrue($attrs->get("foo") === false);
+    $this->assertTrue(!$attrs->isLocked("foo") === false);
+    $this->assertTrue(!$attrs->isDemanded("foo") === false);
+    $this->assertTrue(!$attrs->exists("foo") === false);
+  }
 }

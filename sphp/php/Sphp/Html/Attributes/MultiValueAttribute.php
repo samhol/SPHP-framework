@@ -8,6 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Core\Types\Arrays;
+use Sphp\Core\Types\Strings;
 use ArrayIterator;
 
 /**
@@ -75,10 +76,11 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
       $parsed = array_unique($values);
     } else {
       $values = preg_replace("(\ {2,})", " ", trim($values));
-      if (strlen($values) === 0 || $values === " ") {
-        $parsed = [];
+      //var_dump($values);
+      $parsed = [];
+      if (!Strings::isEmpty($values)) {
+        $parsed = array_unique(explode(" ", $values));
       }
-      $parsed = array_unique(explode(" ", $values));
     }
     return $parsed;
   }
@@ -96,8 +98,13 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @return self for PHP Method Chaining
    */
   public function set($values) {
-    $this->values = Arrays::copy($this->locked);
-    return $this->add($values);
+    if ($values === false || $values === null) {
+      $this->clear();
+    } else {
+      $this->values = Arrays::copy($this->locked);
+      $this->add($values);
+    }
+    return $this;
   }
 
   /**
@@ -159,7 +166,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     if (count($arr) > 0) {
       $this->locked = array_unique(array_merge($this->locked, $arr));
       sort($this->locked);
-      $this->add($values);
+      $this->add($arr);
     }
     return $this;
   }

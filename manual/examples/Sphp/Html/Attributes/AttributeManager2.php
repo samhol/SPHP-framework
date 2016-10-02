@@ -2,14 +2,12 @@
 
 namespace Sphp\Html\Attributes;
 
-$observer = function($attrs) {
-  echo "<input $attrs>\n";
-};
 $attrs = new AttributeManager();
-$attrs->set("value", "SPHP button");
-$attrs->lock("type", "button");
+$attrs->lock("type", "text");
+$attrs->set("value", "Hello");
+echo "<input $attrs>\n";
 $attrs->styles()->setProperty("width", "50%");
-$attrs->classes()->add("button");
-$attrs->styles()->set("width", FALSE);
+echo "<input $attrs>\n";
+$attrs->styles()->set("width", false);
 echo "<input $attrs>\n";
 ?>

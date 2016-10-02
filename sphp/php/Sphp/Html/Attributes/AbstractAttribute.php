@@ -144,9 +144,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    * @return self for PHP Method Chaining
    */
   public function demand() {
-    if (!$this->required) {
-      $this->required = true;
-    }
+    $this->required = true;
     return $this;
   }
 

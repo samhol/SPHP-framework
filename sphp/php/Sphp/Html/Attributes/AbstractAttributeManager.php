@@ -13,6 +13,7 @@ use Sphp\Html\IdentifiableInterface;
 use Sphp\Core\Types\Arrays;
 use Sphp\Core\Types\Strings;
 use ArrayIterator;
+use InvalidArgumentException;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag
@@ -292,12 +293,12 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * 1. The `class` and the `style` attributes can have multiple locked values.
    * 2. Other attributes have the new value as locked value.
-   * 3. Attribute values follow the rules defined in {@link self::setAttr()}.
+   * 3. Attribute values follow the rules defined in {@link self::set()}.
    *
    * @param  string $name the name of the attribute
-   * @param  mixed $value the new locked value of the attribute
+   * @param  scalar $value the new locked value of the attribute
    * @return self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute name or value is invalid
+   * @throws   InvalidAttributeException if either name or value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function lock($name, $value) {
@@ -305,21 +306,15 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       $this->getAttributeObject($name)->lock($value);
     } else {
       if ($this->isLocked($name)) {
-        throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
+        throw new InvalidArgumentException("The value of the '$name' attribute is unmodifiable");
+      }
+      if ($value === false || $value === null) {
+        throw new InvalidArgumentException("NULL and boolean FALSE values cannot be locked");
       }
       $this->set($name, $value);
       $this->locked[$name] = $value;
     }
     return $this;
-  }
-
-  /**
-   * 
-   * @param  string $name the name of the attribute
-   * @return boolean
-   */
-  public function isHidden($name) {
-    return $this->exists($name) && $this->get($name) === false;
   }
 
   /**
