@@ -86,6 +86,9 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function set($value) {
+    if ($value === false || $value === null) {
+      $this->clear();
+    }
     $this->clear()->setProperties(self::parse($value));
     return $this;
   }

@@ -354,11 +354,11 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * **IMPORTANT:**
    *
-   * * Returns always `boolean false` if attribute is not present.
-   * * return `null` or an empty string for empty attributes.
+   * * Returns `boolean false` if attribute is not present.
+   * * returns `true` or an empty string for empty attributes.
    *
    * @param  string $name the name of the attribute
-   * @return mixed the value of the attribute or the attribute object
+   * @return scalar the value of the attribute
    */
   public function get($name) {
     if ($this->isAttributeObject($name)) {
