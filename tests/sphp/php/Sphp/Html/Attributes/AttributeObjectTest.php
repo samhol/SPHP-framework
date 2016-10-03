@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Attributes;
-include_once 'AttributeObjectTest.php';
-class MultiValueAttributeTest extends \AttributeObjectTest {
+use Sphp\Html\Attributes\AttributeInterface;
+
+abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tears down the fixture, for example, closes a network connection.
@@ -11,63 +11,40 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
   protected function tearDown() {
     echo "\ntearDown:\n";
   }
-  
-  public function createAttr($name = "class") {
-    return new MultiValueAttribute($name);
-  }
+
+  /**
+   * @return AttributeInterface
+   */
+  abstract public function createAttr($name = "data-attr");
 
   /**
    * 
    * @return string[]
    */
-  public function parsingData() {
+  public function scalarData() {
     return [
-        ["", []],
-        [" ", []],
-        [" c1 ", ["c1"]],
-        ["  c1  ", ["c1"]],
-        ["c1", ["c1"]],
-        ["c1 c2", ["c1", "c2"]],
-        [["c1", "c2", "c3"], ["c1", "c2", "c3"]]
-    ];
-  }
-
-  /**
-   * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::parse()
-   * @dataProvider parsingData
-   */
-  public function testParsing($value, $expected) {
-    $this->assertEquals(MultiValueAttribute::parse($value), $expected);
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function settingData() {
-    return [
-        [null, false],
+        ["", true],
+        [" ", true],
+        [true, true],
         [false, false],
-        ["c1", "c1"],
-        ["c1 c2", "c1 c2"],
-        [["c1", "c2", "c3"], "c1 c2 c3"]
+        [0, true]
     ];
   }
 
   /**
    * 
-   * @covers MultiValueAttribute::set()
-   * @dataProvider settingData
+   * @covers AttributeInterface::set()
+   * @dataProvider scalarData
    */
-  public function testSetting($value, $expected) {
-    $attr = new MultiValueAttribute("class");
+  public function testScalarSetting($value, $expected) {
+    $attr = $this->createAttr();
     $attr->set($value);
     var_dump($attr->isDemanded() || boolval($value));
-    
+
     $this->assertFalse($attr->isLocked());
     $this->assertFalse($attr->isLocked($value));
     $this->assertFalse($attr->isDemanded());
+    $this->assertTrue($attr->isVisible());
     $this->assertEquals($attr->getValue(), $expected);
   }
 
@@ -88,7 +65,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
    */
   public function testDemanding() {
-    $attr = new MultiValueAttribute("class");
+    $attr = $this->createAttr();
     $attr->set(false);
     $attr->demand();
     $this->assertTrue($attr->isDemanded());
@@ -112,40 +89,12 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
    * @dataProvider lockingData
    */
-  public function testLocking($value) {
-    $attr = new MultiValueAttribute("class");
+  public function testScalarLocking($value) {
+    $attr = $this->createAttr();
     $attr->lock($value);
     $this->assertTrue($attr->isLocked($value));
     $this->assertTrue($attr->isLocked());
     $this->assertTrue($attr->contains($value));
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function addingData() {
-    return [
-        ["c1", 1],
-        ["c1 c2 c2", 2],
-        [["c1", "c2", "c3", "c3"], 3]
-    ];
-  }
-
-  /**
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
-   * 
-   * @param string $value numeric value
-   * @param int $num
-   * @dataProvider addingData
-   */
-  public function testAdding($value, $num) {
-    $attr = new MultiValueAttribute("class");
-    $attr->add($value);
-    $this->assertTrue($attr->contains($value));
-    $this->assertTrue($attr->count() === $num);
-    $attr->clear();
-    $this->assertTrue($attr->count() === 0);
   }
 
   /**
@@ -171,7 +120,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @param int $count
    */
   public function testClearing($add, $lock, $count) {
-    $attr = new MultiValueAttribute("class");
+    $attr = $this->createAttr();
     $attr->add($add);
     $this->assertTrue($attr->isLocked() === false);
     $attr->lock($lock);
@@ -203,7 +152,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @param int $count
    */
   public function testRemoving() {
-    $attr = new MultiValueAttribute("class");
+    $attr = $this->createAttr();
     $attr->add("a b c d");
     $attr->remove("a c");
     $this->assertTrue($attr->contains("b d"));
@@ -221,7 +170,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @covers Sphp\Html\Attributes\CssClassAttribute::add()
    */
   public function testPrinting() {
-    $attr = new MultiValueAttribute("class");
+    $attr = $this->createAttr();
     $attr->add("a b");
     $this->assertEquals("$attr", 'class="a b"');
     $attr->lock("c d");

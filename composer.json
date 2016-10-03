@@ -23,7 +23,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Sphp\\": "sphp/php/Sphp"
+      "Sphp\\": "sphp/php/Sphp",
+      "Sphp\\Tests\\": "tests/sphp/php/Sphp"
     },
     "psr-0": {
       "": "vendor/tovic/parsedown-extra-plugin"

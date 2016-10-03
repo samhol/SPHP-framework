@@ -16,7 +16,6 @@ use ArrayIterator;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -25,9 +24,9 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
   /**
    * stored individual values
    *
-   * @var string[]
+   * @var boolean|string[]
    */
-  private $values = [];
+  private $values = false;
 
   /**
    * locked individual values
@@ -76,7 +75,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
       $parsed = array_unique($values);
     } else {
       $values = preg_replace("(\ {2,})", " ", trim($values));
-      //var_dump($values);
       $parsed = [];
       if (!Strings::isEmpty($values)) {
         $parsed = array_unique(explode(" ", $values));
@@ -90,19 +88,20 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
+   * 1. A `string` paramater can contain multiple comma separated atomic values
+   * 2. An `array` paramater can contain only one atomic value per array value
+   * 3. Any numeric value is treated as a string value
+   * 4. Stores only a single instance of every value (no duplicates)
    *
-   * @param  string|string[] $values the values to set
+   * @param  scalar|string[] $values the values to set
    * @return self for PHP Method Chaining
    */
   public function set($values) {
-    if ($values === false || $values === null) {
-      $this->clear();
-    } else {
-      $this->values = Arrays::copy($this->locked);
+    $this->clear();
+    if (is_array($values) || is_string($values) || is_numeric($values)) {
       $this->add($values);
+    } else if (!$this->isLocked()) {
+      $this->values = $this->isDemanded() || boolval($values);
     }
     return $this;
   }
@@ -123,6 +122,9 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     $arr = self::parse($values);
     $numNew = count($arr);
     if ($numNew > 0) {
+      if (!is_array($this->values)) {
+        $this->values = [];
+      }
       $this->values = array_unique(array_merge($arr, $this->values));
       sort($this->values);
     }
@@ -137,14 +139,14 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * 1. A string paramater can contain multiple comma separated atomic values
    * 2. An array paramater can contain only one atomic value per array value
    *
-   * @param  null|string|string[] $values optional the atomic values to check
+   * @param  null|string|string[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
   public function isLocked($values = null) {
-    if ($values === null) {
-      $locked = !empty($this->locked);
-    } else {
+    if (is_array($values) || is_string($values) || is_numeric($values)) {
       $locked = !array_diff(self::parse($values), $this->locked);
+    } else {
+      $locked = count($this->locked) > 0;
     }
     return $locked;
   }
@@ -179,18 +181,19 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * 1. A string paramater can contain multiple comma separated atomic values
    * 2. An array paramater can contain only one atomic value per array value
    * 
-   * @param    string|string[] $values the atomic values to remove
+   * @param    scalar|string[] $values the atomic values to remove
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if any of the given values is unmodifiable
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
       throw new UnmodifiableAttributeException($this->getName() . " attribute values given are unremovable");
-    }
-    $arr = self::parse($values);
-    if (count($arr) > 0) {
-      $this->values = array_unique(array_merge($this->locked, array_diff($this->values, $arr)));
-      sort($this->values);
+    } else if (is_array($this->values)) {
+      $arr = self::parse($values);
+      if (count($arr) > 0) {
+        $this->values = array_unique(array_merge($this->locked, array_diff($this->values, $arr)));
+        sort($this->values);
+      }
     }
     return $this;
   }
@@ -199,7 +202,11 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * {@inheritdoc}
    */
   public function clear() {
-    $this->values = Arrays::copy($this->locked);
+    if ($this->isLocked()) {
+      $this->values = Arrays::copy($this->locked);
+    } else {
+      $this->values = $this->isDemanded();
+    }
     return $this;
   }
 
@@ -215,18 +222,22 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @return boolean true if the given atomic values exists
    */
   public function contains($values) {
-    $needle = self::parse($values);
-    return !array_diff($needle, $this->values);
+    if (is_array($this->values)) {
+      $needle = self::parse($values);
+      return !array_diff($needle, $this->values);
+    } else {
+      return false;
+    }
   }
 
   /**
    * {@inheritdoc}
    */
   public function getValue() {
-    if (!$this->isDemanded() && $this->count() == 0) {
-      $value = false;
-    } else {
+    if (is_array($this->values)) {
       $value = implode(" ", $this->values);
+    } else {
+      $value = $this->isDemanded() || boolval($this->values);
     }
     return $value;
   }
@@ -237,7 +248,11 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @return int the number of the atomic values stored in the attribute
    */
   public function count() {
-    return count($this->values);
+    $num = 0;
+    if (is_array($this->values)) {
+      $num = count($this->values);
+    }
+    return $num;
   }
 
   /**
@@ -246,7 +261,12 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @return ArrayIterator to iterate through the atomic values on the attribute
    */
   public function getIterator() {
-    return new ArrayIterator($this->values);
+    if (is_array($this->values)) {
+      $it = new ArrayIterator($this->values);
+    } else {
+      $it = new ArrayIterator();
+    }
+    return $it;
   }
 
 }

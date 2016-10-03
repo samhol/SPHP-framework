@@ -34,7 +34,7 @@ interface AttributeInterface {
   /**
    * Sets the value of the attribute
    *
-   * @param    mixed $value value to set
+   * @param    scalar $value value to set
    * @return   self for PHP Method Chaining
    * @throws   InvalidAttributeException if the attribute value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
@@ -49,7 +49,7 @@ interface AttributeInterface {
    * * Returns always `boolean false` if attribute is not present.
    * * return `null` or an empty string for empty attributes.
    * 
-   * @return mixed the value of the attribute
+   * @return scalar the value of the attribute
    * @throws InvalidAttributeException if the attribute value is invalid
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
@@ -115,5 +115,4 @@ interface AttributeInterface {
    * @return boolean true if the attribute is visible and false otherwise
    */
   public function isVisible();
-
 }

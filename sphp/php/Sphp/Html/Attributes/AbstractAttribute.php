@@ -81,62 +81,6 @@ abstract class AbstractAttribute implements AttributeInterface {
   }
 
   /**
-   * Sets the value of the attribute
-   *
-   * @param    mixed $value value to set
-   * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
-   */
-  abstract public function set($value);
-
-  /**
-   * Returns the value of the attribute
-   * 
-   * **IMPORTANT:**
-   * 
-   * * Returns always `boolean false` if attribute is not present.
-   * * return `null` or an empty string for empty attributes.
-   * 
-   * @return mixed the value of the attribute
-   * @throws InvalidAttributeException if the attribute value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
-   */
-  abstract public function getValue();
-
-  /**
-   * Checks whether the attribute has a locked value or not
-   * 
-   * @return boolean true if the attribute has a locked value and false otherwise
-   */
-  abstract public function isLocked();
-
-  /**
-   * Locks the given value to the attribute
-   *
-   * @param  string $value the value to lock to the attribute
-   * @return self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
-   */
-  abstract public function lock($value);
-
-  /**
-   * Removes all non locked values from the attribute
-   *
-   * @return self for PHP Method Chaining
-   */
-  abstract public function clear();
-
-  /**
-   * Determines whether the attribute contains the given value
-   *
-   * @param  mixed $value the value to search for
-   * @return boolean true if the given value exists
-   */
-  abstract public function contains($value);
-
-  /**
    * Sets the attribute as required
    *  
    * **A required attribute cannot be removed** but its value is still mutable.

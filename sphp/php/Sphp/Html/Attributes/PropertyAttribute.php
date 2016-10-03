@@ -18,7 +18,7 @@ use Sphp\Core\Types\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
+class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Countable, \IteratorAggregate {
 
   /**
    * properties as a (name -> value) map
@@ -60,6 +60,9 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    * @return string[] parsed property array containing name value pairs
    */
   private static function parse($properties) {
+    if ($properties) {
+      
+    }
     $styleArr = [];
     $rows = explode(";", $properties);
     if (empty($rows)) {
@@ -80,16 +83,14 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    *
    * **IMPORTANT!:** Does not alter locked properties
    *
-   * @param    string $value the value of the attribute
+   * @param    scalar $value the value of the attribute
    * @return   self for PHP Method Chaining
    * @throws   InvalidAttributeException if the value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function set($value) {
-    if ($value === false || $value === null) {
-      $this->clear();
-    }
-    $this->clear()->setProperties(self::parse($value));
+    $this->clear();
+    $this->setProperties(self::parse($value));
     return $this;
   }
 
@@ -309,7 +310,11 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
    * @return int the number of the style properties stored
    */
   public function count() {
-    return count($this->props);
+    $num = 0;
+    if (is_array($this->props)) {
+      $num = count($this->props);
+    }
+    return $num;
   }
 
   public function offsetExists($offset) {
@@ -326,6 +331,20 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess {
 
   public function offsetUnset($offset) {
     $this->remove($offset);
+  }
+
+  /**
+   * Retrieves an external iterator to iterate through the atomic values on the attribute
+   *
+   * @return ArrayIterator to iterate through the atomic values on the attribute
+   */
+  public function getIterator() {
+    if ($this->count() > 0) {
+      $it = new ArrayIterator($this->props);
+    } else {
+      $it = new ArrayIterator();
+    }
+    return $it;
   }
 
 }
