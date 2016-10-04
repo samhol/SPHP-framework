@@ -84,6 +84,7 @@ $double = function ($value) {
           var_dump($value);
           echo "---next---";
         }
+        var_dump(is_numeric("2 3"));
         ?>
       </pre>
       <?php

@@ -63,7 +63,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
   public function testSetting($value, $expected) {
     $attr = new MultiValueAttribute("class");
     $attr->set($value);
-    var_dump($attr->isDemanded() || boolval($value));
+    //var_dump($attr->isDemanded() || boolval($value));
     
     $this->assertFalse($attr->isLocked());
     $this->assertFalse($attr->isLocked($value));

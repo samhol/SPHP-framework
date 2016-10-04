@@ -271,7 +271,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   /**
    * Checks whether given attribute has a locked value on it
    *
-   * **Note!: ** some attributes can have multiple locked values (CSS classes,
+   * **Note!:** some attributes can have multiple locked values (CSS classes,
    * inline styles etc.).
    *
    * @param  string $name the name of the attribute

@@ -73,12 +73,16 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
   public static function parse($values) {
     if (is_array($values)) {
       $parsed = array_unique($values);
-    } else {
+    } else if (is_string($values)) {
       $values = preg_replace("(\ {2,})", " ", trim($values));
       $parsed = [];
       if (!Strings::isEmpty($values)) {
         $parsed = array_unique(explode(" ", $values));
       }
+    } else if (is_numeric($values)) {
+      $parsed = [$values];
+    } else {
+      $parsed = [];
     }
     return $parsed;
   }
@@ -144,7 +148,8 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function isLocked($values = null) {
     if (is_array($values) || is_string($values) || is_numeric($values)) {
-      $locked = !array_diff(self::parse($values), $this->locked);
+      $parsed = self::parse($values);
+      $locked = !empty($parsed) && !array_diff(self::parse($values), $this->locked);
     } else {
       $locked = count($this->locked) > 0;
     }
@@ -165,6 +170,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function lock($values) {
     $arr = self::parse($values);
+    //print_r($arr);
     if (count($arr) > 0) {
       $this->locked = array_unique(array_merge($this->locked, $arr));
       sort($this->locked);

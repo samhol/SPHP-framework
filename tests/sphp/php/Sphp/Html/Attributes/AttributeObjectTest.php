@@ -4,12 +4,22 @@ use Sphp\Html\Attributes\AttributeInterface;
 
 abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
 
+
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    echo "\nsetUp:\n";
+    $this->attrs = $this->createAttr();
+  }
   /**
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
   protected function tearDown() {
     echo "\ntearDown:\n";
+    $this->attrs = null;
   }
 
   /**
@@ -39,7 +49,7 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
   public function testScalarSetting($value, $expected) {
     $attr = $this->createAttr();
     $attr->set($value);
-    var_dump($attr->isDemanded() || boolval($value));
+    //var_dump($attr->isDemanded() || boolval($value));
 
     $this->assertFalse($attr->isLocked());
     $this->assertFalse($attr->isLocked($value));
