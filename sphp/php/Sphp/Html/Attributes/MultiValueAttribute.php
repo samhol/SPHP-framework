@@ -61,28 +61,28 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
   /**
    * Returns an array of unique values parsed from the input
    *
-   * **Important:** Parameter <var>$values</var> restrictions and rules
+   * **Important:** Parameter <var>$raw</var> restrictions and rules
    * 
    * 1. A string paramater can contain multiple comma separated unique values
    * 2. An array paramater can contain only one unique atomic value per value
    * 3. Duplicate values are ignored
    *
-   * @param  string|string[] $values the value(s) to parse
-   * @return string[] separated atomic values in an array
+   * @param  scalar|scalar[] $raw the value(s) to parse
+   * @return boolean|scalar[] separated atomic values in an array
    */
-  public static function parse($values) {
-    if (is_array($values)) {
-      $parsed = array_unique($values);
-    } else if (is_string($values)) {
-      $values = preg_replace("(\ {2,})", " ", trim($values));
+  public static function parse($raw) {
+    if (is_array($raw)) {
+      $parsed = array_unique($raw);
+    } else if (is_string($raw)) {
+      $raw = preg_replace("(\ {2,})", " ", trim($raw));
       $parsed = [];
-      if (!Strings::isEmpty($values)) {
-        $parsed = array_unique(explode(" ", $values));
+      if (!Strings::isEmpty($raw)) {
+        $parsed = array_unique(explode(" ", $raw));
       }
-    } else if (is_numeric($values)) {
-      $parsed = [$values];
-    } else {
-      $parsed = [];
+    } else if (is_numeric($raw)) {
+      $parsed = [$raw];
+    }  else {
+      $parsed = boolval($raw);
     }
     return $parsed;
   }
@@ -102,10 +102,13 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function set($values) {
     $this->clear();
-    if (is_array($values) || is_string($values) || is_numeric($values)) {
-      $this->add($values);
-    } else if (!$this->isLocked()) {
-      $this->values = $this->isDemanded() || boolval($values);
+    $parsed = self::parse($values);
+    if (is_array($parsed)) {
+      $this->add($parsed);
+    } else if ($this->isDemanded() && $parsed === false) {
+      throw new UnmodifiableAttributeException;
+    }else if (!$this->isLocked()) {
+      $this->values = $this->isDemanded() || $parsed;
     }
     return $this;
   }
@@ -127,10 +130,11 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     $numNew = count($arr);
     if ($numNew > 0) {
       if (!is_array($this->values)) {
-        $this->values = [];
+        $this->values = $arr;
+      } else {
+        $this->values = array_unique(array_merge($arr, $this->values));
       }
-      $this->values = array_unique(array_merge($arr, $this->values));
-      sort($this->values);
+      //sort($this->values);
     }
     return $this;
   }

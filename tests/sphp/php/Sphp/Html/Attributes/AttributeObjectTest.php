@@ -4,7 +4,11 @@ use Sphp\Html\Attributes\AttributeInterface;
 
 abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
 
-
+  /**
+   *
+   * @var AttributeInterface 
+   */
+  protected $attrs;
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
@@ -33,11 +37,16 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    */
   public function scalarData() {
     return [
-        ["", true],
-        [" ", true],
-        [true, true],
-        [false, false],
-        [0, true]
+        ["", false, false],
+        [" ", false, false],
+        [true, true, true],
+        [false, false, false],
+        ["value1", "value1", true],
+        [" value2 ", "value2", true],
+        [0, 0, true],
+        [-1, -1, true],
+        [1, 1, true],
+        [0b100, 0b100, true]
     ];
   }
 
@@ -45,29 +54,17 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    * 
    * @covers AttributeInterface::set()
    * @dataProvider scalarData
+   * @param scalar $value
+   * @param scalar $expected
+   * @param boolean $visibility
    */
-  public function testScalarSetting($value, $expected) {
-    $attr = $this->createAttr();
-    $attr->set($value);
-    //var_dump($attr->isDemanded() || boolval($value));
-
-    $this->assertFalse($attr->isLocked());
-    $this->assertFalse($attr->isLocked($value));
-    $this->assertFalse($attr->isDemanded());
-    $this->assertTrue($attr->isVisible());
-    $this->assertEquals($attr->getValue(), $expected);
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function demandData() {
-    return [
-        ["c1"],
-        [["c1 c2"]],
-        [["c1", "c2", "c3"]]
-    ];
+  public function testScalarSetting($value, $expected, $visibility) {
+    $this->attrs->set($value);
+    $this->assertFalse($this->attrs->isLocked());
+    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->isDemanded());
+    $this->assertEquals($this->attrs->isVisible(), $visibility);
+    $this->assertEquals($this->attrs->getValue(), $expected);
   }
 
   /**
@@ -75,11 +72,11 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
    */
   public function testDemanding() {
-    $attr = $this->createAttr();
-    $attr->set(false);
-    $attr->demand();
-    $this->assertTrue($attr->isDemanded());
-    $this->assertEquals("$attr", $attr->getName() . "");
+    $this->attrs->demand();
+    $this->assertTrue($this->attrs->isDemanded());
+    $this->attrs->set(false);
+    $this->assertTrue($this->attrs->isDemanded());
+    $this->assertEquals("$this->attrs", $this->attrs->getName() . "");
   }
 
   /**
