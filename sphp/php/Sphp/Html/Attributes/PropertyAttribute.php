@@ -34,6 +34,10 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    */
   private $lockedProps = [];
 
+  public function __construct($name, $parser = null, $form = null) {
+    parent::__construct($name);
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -59,9 +63,9 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @param  string $properties properties to parse
    * @return string[] parsed property array containing name value pairs
    */
-  private static function parse($properties) {
-    if ($properties) {
-      
+  public static function parse($properties) {
+    if (is_array($properties)) {
+      return $properties;
     }
     $styleArr = [];
     $rows = explode(";", $properties);
@@ -109,14 +113,14 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
     if ($this->isLocked($property)) {
       throw new UnmodifiableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
-    $val = str_replace(";", "", $value);
+    //$val = str_replace(";", "", $value);
     if (Strings::isEmpty($property)) {
       throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
     if (Strings::isEmpty($value)) {
       throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
-    $this->props[$property] = $val;
+    $this->props[$property] = $value;
     return $this;
   }
 
@@ -206,12 +210,14 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @return boolean true if locked and false otherwise
    */
   public function isLocked($property = null) {
-    if (empty($property)) {
+    if ($property === null) {
       $locked = !empty($this->lockedProps);
+    } else if (is_string($property) || is_integer($property)) {
+      $locked = array_key_exists($property, $this->lockedProps);
     } else if (is_array($property)) {
       $locked = !array_diff($property, $this->lockedProps);
     } else {
-      $locked = array_key_exists($property, $this->lockedProps);
+      $locked = false;
     }
     return $locked;
   }
@@ -281,10 +287,12 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    if (!$this->isDemanded() && $this->count() == 0) {
-      $value = false;
-    } else {
+    if ($this->count() > 0) {
       $value = Arrays::implodeWithKeys($this->props, ";", ":") . ";";
+    } else if ($this->isDemanded()) {
+      $value = true;
+    } else {
+      $value = false;
     }
     return $value;
   }
@@ -345,6 +353,14 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
       $it = new ArrayIterator();
     }
     return $it;
+  }
+
+  /**
+   * 
+   * @return scalar[]
+   */
+  public function toArray() {
+    return $this->props;
   }
 
 }

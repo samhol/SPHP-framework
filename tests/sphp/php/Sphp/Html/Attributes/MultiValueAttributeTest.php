@@ -1,21 +1,33 @@
 <?php
 
 namespace Sphp\Html\Attributes;
+
 include_once 'AttributeObjectTest.php';
+
 class MultiValueAttributeTest extends \AttributeObjectTest {
 
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    echo "\ntearDown:\n";
-  }
-  
   public function createAttr($name = "class") {
     return new MultiValueAttribute($name);
   }
 
+  /**
+   * 
+   * @return string[]
+   */
+  public function scalarData() {
+    return [
+        ["", false, false],
+        [" ", false, false],
+        [true, true, true],
+        [false, false, false],
+        ["value1", "value1", true],
+        [" value2 ", "value2", true],
+        [0, 0, true],
+        [-1, -1, true],
+        [1, 1, true],
+        [0b100, 0b100, true]
+    ];
+  }
   /**
    * 
    * @return string[]
@@ -64,7 +76,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     $attr = new MultiValueAttribute("class");
     $attr->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
-    
+
     $this->assertFalse($attr->isLocked());
     $this->assertFalse($attr->isLocked($value));
     $this->assertFalse($attr->isDemanded());
