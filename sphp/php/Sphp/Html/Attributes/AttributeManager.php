@@ -20,14 +20,18 @@ class AttributeManager extends AbstractAttributeManager {
   /**
    * Constructs a new instance
    *
+   * @param AttributeInterface[] $objectMap
    */
   public function __construct(array $objectMap = []) {
     $objects = [
         new ClassAttribute(),
         new StyleAttribute()
     ];
-    $d = array_merge($objects, $objectMap);
-    parent::__construct($d);
+    parent::__construct($objects);
+    $this->attachIdentifier("id");
+    foreach ($objectMap as $obj) {
+      $this->setAttributeObject($obj);
+    }
   }
 
   /**

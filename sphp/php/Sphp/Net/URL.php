@@ -319,17 +319,15 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * The query string contains data to be passed to software running on the 
    * server. It may contain name/value pairs separated by ampersands.
    * 
-   * @param  boolean $encode true if the value should be encoded
+   * @param  string $separator
+   * @param  int $encode
    * @return string the query string of the URL
    */
-  public function getQuery($encode = false) {
+  public function getQuery($separator = "&", $encode = \PHP_QUERY_RFC1738) {
     //$val = strval($this->components["query"]);
     $val = "";
     if ($this->hasQuery()) {
-      $val = Arrays::implodeWithKeys($this->components["query"], "=", "&");
-      if ($encode) {
-        $val = htmlspecialchars($val);
-      }
+      $val = http_build_query($this->components["query"], "", $separator, $encode);
     }
     return $val;
   }
@@ -386,13 +384,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setParams(array $params) {
-    if (!is_array($params)) {
-      $parArr = [];
-      parse_str($params, $parArr);
-    } else {
-      $parArr = $params;
-    }
-    $this->components["query"] = array_merge($this->components["query"], $parArr);
+    $this->components["query"] = array_merge($this->components["query"], $params);
     //$this->setQuery(urldecode(http_build_query($this->components["query"])));
     return $this;
   }

@@ -35,20 +35,7 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return string[]
    */
-  public function scalarData() {
-    return [
-        ["", false, false],
-        [" ", false, false],
-        [true, true, true],
-        [false, false, false],
-        ["value1", "value1", true],
-        [" value2 ", "value2", true],
-        [0, 0, true],
-        [-1, -1, true],
-        [1, 1, true],
-        [0b100, 0b100, true]
-    ];
-  }
+  abstract public function scalarData();
 
   /**
    * 
@@ -99,7 +86,6 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
   public function testScalarLocking($value) {
     $attr = $this->createAttr();
     $attr->lock($value);
-    $this->assertTrue($attr->isLocked($value));
     $this->assertTrue($attr->isLocked());
     $this->assertTrue($attr->contains($value));
   }

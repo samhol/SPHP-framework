@@ -84,7 +84,15 @@ $double = function ($value) {
           var_dump($value);
           echo "---next---";
         }
-        var_dump(is_numeric("2 3"));
+        $data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');
+
+echo http_build_query($data) . "\n";
+echo http_build_query($data, 'myvar_', ":") . "\n";
+$output = "";
+foreach ($data as $k => $v) {
+  $output .= sprintf("%s:%s;", $k, $v);
+}
+echo $output . "\n";
         ?>
       </pre>
       <?php

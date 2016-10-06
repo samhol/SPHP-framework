@@ -24,16 +24,17 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     return [
         ["", false, false],
         [" ", false, false],
-        [true, true, true],
+        [true, false, false],
         [false, false, false],
-        ["value1", "value1", true],
-        [" value2 ", "value2", true],
-        [0, 0, true],
-        [-1, -1, true],
-        [1, 1, true],
-        [0b100, 0b100, true]
+        ["p1:v1; p2:v2;", "p1:v1;p2:v2;", true],
+        [" value2 ", false, false],
+        [0, false, false],
+        [-1, false, false],
+        [1, false, false],
+        [0b100, false, false]
     ];
   }
+
   /**
    * 
    * @return string[]
@@ -55,7 +56,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   public function testParsing($value, $expected) {
     $this->assertEquals(PropertyAttribute::parse($value), $expected);
   }
-
+ 
   /**
    * 
    * @return string[]
@@ -124,9 +125,10 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function testLocking($value) {
     $this->attrs->lock($value);
-    $this->assertTrue($this->attrs->isLocked($value));
+    $parsed = PropertyAttribute::parse($value);
+    $this->assertTrue($this->attrs->isLocked(key($parsed)));
     $this->assertTrue($this->attrs->isLocked());
-    $this->assertTrue($this->attrs->contains($value));
+    $this->assertTrue($this->attrs->contains(key($parsed)));
   }
 
   /**
@@ -166,9 +168,8 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function clearingData() {
     return [
-        ["c1", "l1", 1],
-        ["c1 c2 c2", "li l2", 2],
-        [["c1", "c2", "c3", "c3"], ["l1", "l2", "l3", "l3"], 3]
+        ["c1: v1;", "l1: v1;", 1],
+        ["c1: v1; c2: v2; c3: v3;", "li: v1; l2:v2;", 2]
     ];
   }
 
@@ -177,16 +178,19 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
    * @dataProvider clearingData
    *
-   * @param string $add
-   * @param string $lock
+   * @param scalar|scalar[] $add
+   * @param scalar|scalar[] $lock
    * @param int $count
    */
   public function testClearing($add, $lock, $count) {
+    $addedProps = array_keys(PropertyAttribute::parse($add));
+    $lockedProps = array_keys(PropertyAttribute::parse($lock));
     $this->attrs->set($add);
     $this->assertTrue($this->attrs->isLocked() === false);
     $this->attrs->lock($lock);
-    $this->assertTrue(!$this->attrs->isLocked($add));
-    $this->assertTrue($this->attrs->isLocked($lock));
+    $this->assertTrue($this->attrs->isLocked());
+    $this->assertTrue(!$this->attrs->isLocked($addedProps));
+    $this->assertTrue($this->attrs->isLocked($lockedProps));
     $this->attrs->clear();
     $this->assertTrue($this->attrs->count() === $count);
   }

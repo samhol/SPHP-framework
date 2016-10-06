@@ -115,11 +115,18 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  AttributeInterface $attrObject
    * @return self for PHP Method Chaining
    * @throws InvalidAttributeException
+   * @throws UnmodifiableAttributeException
    */
   public function setAttributeObject(AttributeInterface $attrObject) {
     $name = $attrObject->getName();
     if ($this->isAttributeObject($name)) {
-      throw new InvalidAttributeException();
+      throw new InvalidAttributeException("Attribute '$name' object allready set");
+    }
+    if ($this->isIdentifier($name)) {
+      throw new InvalidAttributeException("Identifier '$name' cannot be an object");
+    }
+    if ($this->isLocked($name)) {
+      throw new UnmodifiableAttributeException("Locked attribute '$name'");
     }
     if ($this->exists($name)) {
       $attrObject->set($this->get($name));
@@ -139,39 +146,6 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    */
   public function isAttributeObject($name) {
     return array_key_exists($name, $this->attrObjects);
-  }
-
-  /**
-   * Checks whether the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $attrName the name of the attribute
-   * @return boolean true if the attribute is an instance of {@link AttributeInterface} false otherwise
-   */
-  public function isIdentifier($attrName) {
-    return in_array($attrName, $this->identifiers);
-  }
-
-  /**
-   * Checks whether the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $attrName the name of the attribute
-   * @return boolean true if the attribute is an instance of {@link AttributeInterface} false otherwise
-   */
-  public function isIdentified($attrName) {
-    return $this->isIdentifier($attrName) && $this->isLocked($attrName);
-  }
-
-  /**
-   * Attaches whether the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $name the name of the identifying attribute
-   * @return self for PHP Method Chaining
-   */
-  public function attachIdentifier($name) {
-    if (!$this->isIdentifier($name)) {
-      $this->identifiers[] = $name;
-    }
-    return $this;
   }
 
   /**
@@ -204,7 +178,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * 5. otherwise the attribute value is the string conversion value
    *
    * @param  string $name the name of the attribute
-   * @param  mixed $value the value of the attribute
+   * @param  scalar $value the value of the attribute
    * @return self for PHP Method Chaining
    * @throws InvalidAttributeException if the attribute name or value is invalid
    * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
@@ -298,8 +272,8 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return self for PHP Method Chaining
-   * @throws   InvalidAttributeException if either name or value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidAttributeException if either the name or the value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function lock($name, $value) {
     if ($this->isAttributeObject($name)) {
@@ -378,7 +352,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @return boolean true if the atribute exists and false otherwise
    */
   public function exists($name) {
-    return array_key_exists($name, $this->attrs) || array_key_exists($name, $this->attrObjects);
+    return array_key_exists($name, $this->attrs) || ($this->isAttributeObject($name) && $this->getAttributeObject($name)->isVisible());
   }
 
   /**
@@ -426,6 +400,34 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     $arr = array_merge($this->attrObjects, $this->attrs);
     $it = new ArrayIterator($arr);
     return $it;
+  }
+
+  /**
+   * Attaches an identifying attribute name
+   * 
+   * 
+   *
+   * @param  string $name the name of the identifying attribute
+   * @return self for PHP Method Chaining
+   */
+  public function attachIdentifier($name) {
+    if ($this->isAttributeObject($name)) {
+      throw new AttributeException;
+    }
+    if (!$this->isIdentifier($name)) {
+      $this->identifiers[] = $name;
+    }
+    return $this;
+  }
+
+  /**
+   * Checks whether the instance of the inner attribute object if it is mapped
+   *
+   * @param  string $attrName the name of the attribute
+   * @return boolean true if the attribute is an instance of {@link AttributeInterface} false otherwise
+   */
+  public function isIdentifier($attrName) {
+    return in_array($attrName, $this->identifiers);
   }
 
   /**

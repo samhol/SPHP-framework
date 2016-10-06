@@ -33,9 +33,22 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @var string[]
    */
   private $lockedProps = [];
+  
+  /**
+   *
+   * @var string
+   */
+  private $form;
 
-  public function __construct($name, $parser = null, $form = null) {
+  /**
+   * 
+   * @param string $name
+   * @param string $parser
+   * @param string $form
+   */
+  public function __construct($name, $parser = null, $form = "%s:%s;") {
     parent::__construct($name);
+    $this->form = $form;
   }
 
   /**
@@ -212,8 +225,8 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   public function isLocked($property = null) {
     if ($property === null) {
       $locked = !empty($this->lockedProps);
-    } else if (is_string($property) || is_integer($property)) {
-      $locked = array_key_exists($property, $this->lockedProps);
+    } else if (is_string($property) && in_array($property, $this->lockedProps)) {
+      $locked = true;
     } else if (is_array($property)) {
       $locked = !array_diff($property, $this->lockedProps);
     } else {
@@ -272,6 +285,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    */
   public function lock($props = null) {
     $styles = self::parse($props);
+    var_dump($styles);
     $this->lockProperties($styles);
     return $this;
   }
@@ -288,13 +302,16 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    */
   public function getValue() {
     if ($this->count() > 0) {
-      $value = Arrays::implodeWithKeys($this->props, ";", ":") . ";";
+      $output = "";
+      foreach ($this->props as $k => $v) {
+        $output .= sprintf($this->form, $k, $v);
+      }
     } else if ($this->isDemanded()) {
-      $value = true;
+      $output = true;
     } else {
-      $value = false;
+      $output = false;
     }
-    return $value;
+    return $output;
   }
 
   /**
