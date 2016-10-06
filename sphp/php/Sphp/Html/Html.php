@@ -55,8 +55,8 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
    * @param string|null $charset optional character encoding of the document (defaults to: "UTF-8")
    * @param string|null $lang optional body content
    */
-  public function __construct($title = null, $charset = "UTF-8", $lang = null) {
-    parent::__construct("html");
+  public function __construct($title = null, $charset = 'UTF-8', $lang = null) {
+    parent::__construct('html');
     $this->head = new Head($title, $charset);
     $this->body = new Body();
     if ($lang !== null) {
@@ -94,7 +94,7 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage($language) {
-    return $this->attrs()->set("lang", $language);
+    return $this->attrs()->set('lang', $language);
   }
 
   /**

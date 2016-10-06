@@ -48,7 +48,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    * @return User|null the current logged in user
    */
   public function getCurrentUser() {
-    if (isset($_SESSION["sid"])) {
+    if (isset($_SESSION['sid'])) {
       return null; //$this->userTable->getByUsingSessionId($_SESSION["sid"]);
     } else {
       return null;
@@ -76,14 +76,14 @@ class PdoSessionHandler extends AbstractSessionHandler {
    * @return string current session data
    */
   public function read($id) {
-    $select = "SELECT * FROM sessions WHERE id = :id LIMIT 1;";
+    $select = 'SELECT * FROM sessions WHERE id = :id LIMIT 1;';
     $selectStmt = $this->pdo->prepare($select);
     $selectStmt->bindParam(':id', $id, PDO::PARAM_STR);
     if ($selectStmt->execute()) {
       $result = $selectStmt->fetch(PDO::FETCH_ASSOC);
-      return $result["value"];
+      return $result['value'];
     }
-    return "";
+    return '';
   }
 
   /**

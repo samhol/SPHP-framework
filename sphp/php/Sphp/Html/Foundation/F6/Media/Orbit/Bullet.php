@@ -49,12 +49,12 @@ class Bullet extends AbstractComponent {
    * @param string $slideText
    * @param string $currentSlideText
    */
-  public function __construct($slideNo, $slideText = null, $currentSlideText = "Current Slide") {
+  public function __construct($slideNo, $slideText = null, $currentSlideText = 'Current Slide') {
     $this->number = $slideNo;
-    parent::__construct("button");
+    parent::__construct('button');
     //$this->content()->set("slide-text", "");
     //$this->content()->set("is_current", "");
-    $this->attrs()->lock("data-slide", $slideNo);
+    $this->attrs()->lock('data-slide', $slideNo);
     $this->createSpans($slideText, $currentSlideText);
     //$this->createScreenReaderComponents($slideNo);
   }
@@ -70,10 +70,10 @@ class Bullet extends AbstractComponent {
       $slideText = "Slide " . ($this->number + 1) . ". details";
     }
     $this->srDescriptor = new Span($slideText);
-    $this->srDescriptor->cssClasses()->lock("show-for-sr");
+    $this->srDescriptor->cssClasses()->lock('show-for-sr');
     //$this->content()->set("slide-text", $this->srDescriptor);
     $this->currentDescriptor = new Span($currentSlideText);
-    $this->currentDescriptor->cssClasses()->lock("show-for-sr");
+    $this->currentDescriptor->cssClasses()->lock('show-for-sr');
     //$this->content()->set("is_current", "");
     return $this;
   }

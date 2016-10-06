@@ -36,8 +36,8 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($defaultTarget = "_blank", $defaultCssClasses = "api phpman") {
-    parent::__construct("https://secure.php.net/manual/en/", $defaultTarget, $defaultCssClasses);
+  public function __construct($defaultTarget = '_blank', $defaultCssClasses = 'api phpman') {
+    parent::__construct('https://secure.php.net/manual/en/', $defaultTarget, $defaultCssClasses);
   }
 
   /**
@@ -54,14 +54,14 @@ class PHPManual extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to PHP's predefined constants page
    */
   public function constantLink($constant) {
-    $path = "reserved.constants.php";
+    $path = 'reserved.constants.php';
     if (defined($constant)) {
-      $path = "reserved.constants.php#constant." . $this->phpPathFixer($constant);
+      $path = 'reserved.constants.php#constant.' . $this->phpPathFixer($constant);
       return $this->hyperlink($path, $constant, "$constant cnnstant")
-                      ->addCssClass("constant");
+                      ->addCssClass('constant');
     } else {
       return $this->hyperlink($path, $constant, "$constant cnnstant")
-                      ->addCssClass("constant");
+                      ->addCssClass('constant');
     }
   }
 
@@ -73,7 +73,7 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function functionLink($funName) {
     $path = "function." . $this->phpPathFixer($funName);
-    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass("function");
+    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
   /**
@@ -84,7 +84,7 @@ class PHPManual extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to the PHP extension in the PHP
    *         documentation
    */
-  public function extensionLink($extName, $linkText = "") {
+  public function extensionLink($extName, $linkText = '') {
     $path = strtolower($extName);
     if (Strings::isEmpty($linkText)) {
       $linkText = $extName;
@@ -101,25 +101,25 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function typeLink($type, $linkText = "") {
     $typename = strtolower(gettype($type));
-    if ($typename === "string") {
+    if ($typename === 'string') {
       $typename = strtolower($type);
     }
-    if ($typename === "double") {
-      $typename = "float";
+    if ($typename === 'double') {
+      $typename = 'float';
     }
     if (Strings::isEmpty($linkText)) {
       $linkText = $typename;
-      if ($linkText === "null") {
-        $linkText = "null";
+      if ($linkText === 'null') {
+        $linkText = 'null';
       }
     }
-    if ($typename === "null") {
-      $title = "null type";
+    if ($typename === 'null') {
+      $title = 'null type';
     } else {
       $title = "$typename type";
     }
     return $this->hyperlink("language.types.$typename", $linkText, $title)
-                    ->removeCssClass("api phpman");
+                    ->removeCssClass('api phpman');
   }
 
   /**

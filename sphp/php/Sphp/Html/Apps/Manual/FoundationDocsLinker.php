@@ -34,14 +34,14 @@ class FoundationDocsLinker extends AbstractLinker {
    * @var string[][] 
    */
   private static $componentMap = [
-      \Sphp\Html\Foundation\Navigation\SubNav\SubNav::class => ["subnav", "Sub Nav"],
-      \Sphp\Html\Foundation\Navigation\TopBar\TopBar::class => ["topbar", "Top Bar"],
+      \Sphp\Html\Foundation\Navigation\SubNav\SubNav::class => ['subnav', 'Sub Nav'],
+      \Sphp\Html\Foundation\Navigation\TopBar\TopBar::class => ['topbar', 'Top Bar'],
       GridInterface::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\F6\Grids\Grid::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\F6\Grids\Column::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\F6\Grids\Row::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\F6\Grids\BlockGrid::class => ["block_grid", "Block Grid"],
-      OffCanvas::class => ["off-canvas", "Off-canvas"],
+      \Sphp\Html\Foundation\F6\Grids\Grid::class => ['grid', 'Grid'],
+      \Sphp\Html\Foundation\F6\Grids\Column::class => ['grid', 'Column'],
+      \Sphp\Html\Foundation\F6\Grids\Row::class => ["grid", 'Row'],
+      \Sphp\Html\Foundation\F6\Grids\BlockGrid::class => ['block_grid', 'Block Grid'],
+      OffCanvas::class => ['off-canvas', 'Off-canvas'],
   ];
 
   /**
@@ -50,8 +50,8 @@ class FoundationDocsLinker extends AbstractLinker {
    * @param scalar[] $attrs the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct($attrs = "_blank") {
-    parent::__construct("http://foundation.zurb.com/sites/docs/", $attrs);
+  public function __construct($attrs = '_blank') {
+    parent::__construct('http://foundation.zurb.com/sites/docs/', $attrs);
   }
 
   /**
@@ -69,7 +69,7 @@ class FoundationDocsLinker extends AbstractLinker {
         $linkText = self::$componentMap[$className][1];
       }
       if (Strings::isEmpty($title)) {
-        $title = "Foundation " . self::$componentMap[$className][1] . " component";
+        $title = "Foundation " . self::$componentMap[$className][1] . ' component';
       }
       return $this->hyperlink("$page.html", $linkText, $title);
     } else {
@@ -92,7 +92,7 @@ class FoundationDocsLinker extends AbstractLinker {
         $linkText = self::$componentMap[$className][1];
       }
       if (Strings::isEmpty($title)) {
-        $title = "Foundation " . self::$componentMap[$className][1] . " component";
+        $title = 'Foundation ' . self::$componentMap[$className][1] . ' component';
       }
       return $this->hyperlink("components/$page.html", $linkText, $title);
     } else {
@@ -113,10 +113,10 @@ class FoundationDocsLinker extends AbstractLinker {
       $fragment = "#$fragment";
     }
     if (Strings::isEmpty($linkText)) {
-      $linkText = "The Grid";
+      $linkText = 'The Grid';
     }
     if (Strings::isEmpty($title)) {
-      $title = "Foundation docs: The Grid";
+      $title = 'Foundation docs: The Grid';
     }
     return $this->hyperlink("grid.html$fragment", $linkText);
   }

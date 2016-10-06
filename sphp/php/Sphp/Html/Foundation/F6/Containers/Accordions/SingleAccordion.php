@@ -29,9 +29,9 @@ class SingleAccordion extends AbstractContainerTag {
    */
   public function __construct($paneTitle = null, $paneContent = null) {
     $pane = new Pane($paneTitle, $paneContent);
-    parent::__construct("ul", null, $pane);
-    $this->cssClasses()->lock("accordion");
-    $this->attrs()->demand("data-accordion");
+    parent::__construct('ul', null, $pane);
+    $this->cssClasses()->lock('accordion');
+    $this->attrs()->demand('data-accordion');
   }
 
   /**

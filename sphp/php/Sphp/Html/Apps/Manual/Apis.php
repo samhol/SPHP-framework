@@ -24,7 +24,7 @@ class Apis {
    */
   public static function apigen($path = null) {
     if ($path === null) {
-      $path = "http://documentation.samiholck.com/apigen/";
+      $path = 'http://documentation.samiholck.com/apigen/';
     }
     return ApiGen::get($path);
   }

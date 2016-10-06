@@ -43,8 +43,8 @@ class Controller extends ContainerTag {
    * @param mixed $content the content of the component
    */
   public function __construct(Modal $modal, $content = null) {
-    parent::__construct("a", $content);
-    $this->attrs()->demand("data-open");
+    parent::__construct('a', $content);
+    $this->attrs()->demand('data-open');
     $this->setTarget($modal);
   }
 
@@ -55,7 +55,7 @@ class Controller extends ContainerTag {
    */
   private function setTarget(Modal $modal) {
     //var_dump($modal->identify("id", "modal_"));
-    $this->attrs()->set("data-open", $modal->identify("id", "modal_"));
+    $this->attrs()->set('data-open', $modal->identify('id', 'modal_'));
     $this->modal = $modal;
     return $this;
   }

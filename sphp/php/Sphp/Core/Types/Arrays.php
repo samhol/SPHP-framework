@@ -87,7 +87,7 @@ class Arrays {
    * @param  string $glue the glue between key and value
    * @return string the imploded array
    */
-  public static function implodeWithKeys(array $array, $separator = ", ", $glue = " => ") {
+  public static function implodeWithKeys(array $array, $separator = ', ', $glue = ' => ') {
     $string = [];
     foreach ($array as $key => $val) {
       $string[] = "{$key}{$glue}{$val}";

@@ -41,8 +41,8 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($type, $content = null, $name = null, $value = null) {
-    parent::__construct("button", $content);
-    $this->attrs()->lock("type", $type);
+    parent::__construct('button', $content);
+    $this->attrs()->lock('type', $type);
     if (isset($name)) {
       $this->setName($name);
     }
@@ -59,7 +59,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
   public function getValue() {
-    return $this->getAttr("value");
+    return $this->getAttr('value');
   }
 
   /**
@@ -70,7 +70,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
   public function setValue($value) {
-    return parent::setAttr("value", $value);
+    return parent::setAttr('value', $value);
   }
 
   /**
@@ -80,7 +80,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
    */
   public function getType() {
-    return parent::getAttrValue("type");
+    return parent::getAttrValue('type');
   }
 
 }

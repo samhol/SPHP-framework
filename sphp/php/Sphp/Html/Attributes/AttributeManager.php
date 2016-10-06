@@ -28,7 +28,7 @@ class AttributeManager extends AbstractAttributeManager {
         new StyleAttribute()
     ];
     parent::__construct($objects);
-    $this->attachIdentifier("id");
+    $this->attachIdentifier('id');
     foreach ($objectMap as $obj) {
       $this->setAttributeObject($obj);
     }
@@ -40,7 +40,7 @@ class AttributeManager extends AbstractAttributeManager {
    * @return ClassAttribute the `class` attribute object
    */
   public function classes() {
-    return $this->getAttributeObject("class");
+    return $this->getAttributeObject('class');
   }
 
   /**
@@ -49,7 +49,7 @@ class AttributeManager extends AbstractAttributeManager {
    * @return StyleAttribute the `style` attribute object
    */
   public function styles() {
-    return $this->getAttributeObject("style");
+    return $this->getAttributeObject('style');
   }
 
   /**

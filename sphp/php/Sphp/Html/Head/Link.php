@@ -37,9 +37,9 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function __construct($href = "", $rel = "stylesheet", $media = "screen") {
-    parent::__construct("link");
-    $this->attrs()->demand("rel");
+  public function __construct($href = '', $rel = 'stylesheet', $media = 'screen') {
+    parent::__construct('link');
+    $this->attrs()->demand('rel');
     if ($href !== null) {
       $this->setHref($href);
     }
@@ -67,7 +67,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
-    return $this->setAttr("href", $href);
+    return $this->setAttr('href', $href);
   }
 
   /**
@@ -83,7 +83,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function getHref() {
-    return $this->getAttr("href");
+    return $this->getAttr('href');
   }
 
   /**
@@ -117,7 +117,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function setRel($rel) {
-    return $this->setAttr("rel", $rel);
+    return $this->setAttr('rel', $rel);
   }
 
   /**
@@ -150,7 +150,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function getRel() {
-    return $this->getAttr("rel");
+    return $this->getAttr('rel');
   }
 
   /**
@@ -165,7 +165,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function setType($type) {
-    return $this->setAttr("type", $type);
+    return $this->setAttr('type', $type);
   }
 
   /**
@@ -179,7 +179,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function getType() {
-    return $this->getAttr("type");
+    return $this->getAttr('type');
   }
 
   /**
@@ -198,7 +198,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function setMedia($media) {
-    return $this->setAttr("media", $media);
+    return $this->setAttr('media', $media);
   }
 
   /**
@@ -217,7 +217,7 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia() {
-    return $this->getAttr("media");
+    return $this->getAttr('media');
   }
 
 }

@@ -52,8 +52,8 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
 	}
 
 	private function setLocales() {
-		if (isset($_SESSION["locales"]) && is_array($_SESSION["locales"])) {
-			foreach ($_SESSION["locales"] as $category => $locale) {
+		if (isset($_SESSION['locales']) && is_array($_SESSION['locales'])) {
+			foreach ($_SESSION['locales'] as $category => $locale) {
 				setlocale($category, $locale);
 			}
 		}
@@ -104,7 +104,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
 	 */
 	public function setLocale($category, $locale) {
 		setlocale($category, $locale);
-		$_SESSION["locales"][$category] = $locale;
+		$_SESSION['locales'][$category] = $locale;
 		return $this;
 	}
 

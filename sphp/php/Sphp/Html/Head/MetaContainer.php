@@ -53,8 +53,8 @@ class MetaContainer implements TraversableInterface {
    */
   public function addMeta(MetaInterface $content) {
     $key = [];
-    if ($content->attrExists("charset")) {
-      $key[] = "charset";
+    if ($content->attrExists('charset')) {
+      $key[] = 'charset';
     } if ($content->hasNamedContent()) {
       $key[] = "name-" . $content->getName();
     } if ($content->hasHttpEquivContent()) {
@@ -85,9 +85,9 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_charset.asp charset attribute for HTML5
    * @link   http://www.iana.org/assignments/character-sets/character-sets.xml  IANA character sets
    */
-  public function setCharset($charset = "UTF-8") {
+  public function setCharset($charset = 'UTF-8') {
     $metaTag = new Meta();
-    $metaTag->setAttr("charset", $charset);
+    $metaTag->setAttr('charset', $charset);
     $this->addMeta($metaTag);
     return $this;
   }
@@ -160,7 +160,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setDescription($content) {
-    return $this->setNamedContent("description", $content);
+    return $this->setNamedContent('description', $content);
   }
 
   /**
@@ -172,7 +172,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setKeywords($content) {
-    return $this->setNamedContent("keywords", $content);
+    return $this->setNamedContent('keywords', $content);
   }
 
   /**
@@ -184,7 +184,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setAuthor($content) {
-    return $this->setNamedContent("author", $content);
+    return $this->setNamedContent('author', $content);
   }
 
   /**
@@ -197,7 +197,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setApplicationName($name) {
-    return $this->setNamedContent("application-name", $name);
+    return $this->setNamedContent('application-name', $name);
   }
 
   /**
@@ -209,7 +209,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setDefaultStyle($id) {
-    return $this->setHttpEquivContent("default-style", $id);
+    return $this->setHttpEquivContent('default-style', $id);
   }
 
   /**
@@ -225,7 +225,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setDocumentRefresh($interval) {
-    return $this->setHttpEquivContent("refresh", $interval);
+    return $this->setHttpEquivContent('refresh', $interval);
   }
 
   /**
@@ -241,7 +241,7 @@ class MetaContainer implements TraversableInterface {
    * @link   http://dev.w3.org/csswg/css-device-adapt/ W3C CSS Device Adaptation
    */
   public function setViewport($viewport) {
-    return $this->setNamedContent("viewport", $viewport);
+    return $this->setNamedContent('viewport', $viewport);
   }
 
   /**

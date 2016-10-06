@@ -74,10 +74,10 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     if (is_array($raw)) {
       $parsed = array_unique($raw);
     } else if (is_string($raw)) {
-      $raw = preg_replace("(\ {2,})", " ", trim($raw));
+      $raw = preg_replace('(\ {2,})', ' ', trim($raw));
       $parsed = [];
       if (!Strings::isEmpty($raw)) {
-        $parsed = array_unique(explode(" ", $raw));
+        $parsed = array_unique(explode(' ', $raw));
       }
     } else if (is_numeric($raw)) {
       $parsed = [$raw];
@@ -197,7 +197,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
-      throw new UnmodifiableAttributeException($this->getName() . " attribute values given are unremovable");
+      throw new UnmodifiableAttributeException($this->getName() . ' attribute values given are unremovable');
     } else if (is_array($this->values)) {
       $arr = self::parse($values);
       if (count($arr) > 0) {

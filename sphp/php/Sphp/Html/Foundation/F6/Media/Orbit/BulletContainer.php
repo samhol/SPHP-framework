@@ -28,11 +28,11 @@ class BulletContainer extends AbstractContainerComponent {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($count = 0) {
-    parent::__construct("nav");
+    parent::__construct('nav');
     for ($i = 0; $i < $count; $i++) {
       $this->set($i);
     }
-    $this->cssClasses()->lock("orbit-bullets");
+    $this->cssClasses()->lock('orbit-bullets');
   }
 
   /**

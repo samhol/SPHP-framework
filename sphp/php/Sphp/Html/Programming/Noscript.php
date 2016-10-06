@@ -8,7 +8,7 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
+use Sphp\Html\Head\HeadComponentInterface;
 
 /**
  * Class models an HTML &lt;noscript&gt; tag
@@ -35,7 +35,7 @@ class Noscript extends ContainerTag implements HeadComponentInterface {
    * @param  null|mixed|mixed[] $content the content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("noscript", $content);
+    parent::__construct('noscript', $content);
   }
 
 }

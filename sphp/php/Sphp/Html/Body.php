@@ -47,7 +47,7 @@ class Body extends ContainerTag implements ContentParserInterface {
    * @param  mixed $content the content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("body", $content);
+    parent::__construct('body', $content);
     $this->scripts = new ScriptsContainer();
   }
 

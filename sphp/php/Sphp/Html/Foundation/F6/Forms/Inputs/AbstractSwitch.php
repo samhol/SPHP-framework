@@ -62,7 +62,7 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
    */
   public function __construct(Choicebox $box, $srText = "") {
     $box->cssClasses()->lock("switch-input");
-    parent::__construct("div");
+    parent::__construct('div');
     $this->input = $box;
     $this->cssClasses()
             ->lock("switch");

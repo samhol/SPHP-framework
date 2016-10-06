@@ -43,7 +43,7 @@ class Modal extends ContainerTag {
    * @var string[]
    */
   private static $sizes = [
-      "tiny", "small", "large", "full"
+      'tiny', 'small', 'large', 'full'
   ];
 
   /**
@@ -59,10 +59,10 @@ class Modal extends ContainerTag {
    * @param mixed $controller
    */
   public function __construct($content = null, $controller = null) {
-    parent::__construct("div", $content);
-    $this->identify("id", "modal_");
-    $this->cssClasses()->lock("reveal");
-    $this->attrs()->demand("data-reveal");
+    parent::__construct('div', $content);
+    $this->identify('id', 'modal_');
+    $this->cssClasses()->lock('reveal');
+    $this->attrs()->demand('data-reveal');
     $this->closeButton = new CloseButton();
     $this->modalController = $this->createController($controller);
   }

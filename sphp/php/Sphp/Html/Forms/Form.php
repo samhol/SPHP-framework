@@ -47,7 +47,7 @@ class Form extends ContainerTag implements TraversableFormInterface {
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = null, $method = "post", $content = null) {
-    parent::__construct("form");
+    parent::__construct('form');
     if ($content !== null) {
       $this->append($content);
     }
@@ -89,16 +89,6 @@ class Form extends ContainerTag implements TraversableFormInterface {
       $this->appendHiddenVariable($name, $value);
     }
     return $this;
-  }
-
-  /**
-   * Sets the form as validable
-   * 
-   * @param  boolean $validable
-   * @return self for PHP Method Chaining
-   */
-  public function validable($validable = true) {
-    return $this->setAttr("data-sphp-validate", $validable);
   }
 
 }

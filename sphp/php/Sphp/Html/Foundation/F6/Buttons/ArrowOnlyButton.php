@@ -37,10 +37,10 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
    *
    * @param  ScreenReaderLabel|string $screenReaderLabel the screen reader label or its textual content
    */
-  public function __construct($screenReaderLabel = "") {
-    parent::__construct("button");
+  public function __construct($screenReaderLabel = '') {
+    parent::__construct('button');
     $this->cssClasses()
-            ->lock("button dropdown arrow-only");
+            ->lock('button dropdown arrow-only');
     $this->screenReaderLabel = new ScreenReaderLabel();
     $this->setScreenReaderLabel($screenReaderLabel);
   }

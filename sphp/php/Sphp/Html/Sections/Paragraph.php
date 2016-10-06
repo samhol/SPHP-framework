@@ -33,7 +33,7 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
-    parent::__construct("p", $content);
+    parent::__construct('p', $content);
   }
 
 }

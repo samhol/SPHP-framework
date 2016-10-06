@@ -30,7 +30,7 @@ abstract class AbstractButton extends AbstractContainerComponent implements Butt
 	 */
 	public function __construct($tagName, $content = null) {
 		parent::__construct($tagName);
-		$this->cssClasses()->lock("button");
+		$this->cssClasses()->lock('button');
         if ($content !== null) {
           $this->content()->append($content);
         }

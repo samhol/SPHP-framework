@@ -609,7 +609,7 @@ class Strings {
    */
   public static function toSpaces($string, $tabLength = 4) {
     $spaces = str_repeat(' ', $tabLength);
-    return str_replace("\t", $spaces, $string);
+    return str_replace('\t', $spaces, $string);
   }
 
   /**
@@ -648,7 +648,7 @@ class Strings {
     if (is_array($var)) {
       return print_r($var, true);
     } else if (is_object($var)) {
-      if (method_exists($var, "__toString")) {
+      if (method_exists($var, '__toString')) {
         return $var->__toString();
       } else {
         return get_class($var);

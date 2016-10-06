@@ -60,10 +60,10 @@ class CodeExampleAccordion extends Accordion {
    */
   public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
     parent::__construct();
-    $this->cssClasses()->lock("manual");
+    $this->cssClasses()->lock('manual');
     $this->codePane = (new SyntaxHighlightingPane());
     $this->outputSyntaxPane = new SyntaxHighlightingPane();
-    $this->outputPane = (new Pane())->addCssClass("html-output");
+    $this->outputPane = (new Pane())->addCssClass('html-output');
     $this->useDefaultTitles()
             ->append($this->codePane)
             ->append($this->outputSyntaxPane)
@@ -152,7 +152,7 @@ class CodeExampleAccordion extends Accordion {
     } else {
       $this->outputPane->unhide();
       if ($this->path === null) {
-        $this->outputPane->replaceContent("<code>HTML</code> output is not available!");
+        $this->outputPane->replaceContent('<code>HTML</code> output is not available!');
       }
       $this->outputPane->clear()->appendPhpFile($this->path);
     }
@@ -184,9 +184,9 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function useDefaultTitles() {
-    $this->setExampleHeading("PHP code")
-            ->setOutputSyntaxPaneTitle("Execution result as highlighted code")
-            ->setOutputPaneTitle("Execution result as HTML5");
+    $this->setExampleHeading('PHP code')
+            ->setOutputSyntaxPaneTitle('Execution result as highlighted code')
+            ->setOutputPaneTitle('Execution result as HTML5');
     return $this;
   }
 
@@ -248,7 +248,7 @@ class CodeExampleAccordion extends Accordion {
    *         presentation, false for html presentation
    * @param string $outputLang the language name of the highlighted output code
    */
-  public static function visualize($path, $highlightOutput = false, $outputLang = "html5") {
+  public static function visualize($path, $highlightOutput = false, $outputLang = 'html5') {
     (new static($path, $highlightOutput, $outputLang))->printHtml();
   }
 

@@ -29,12 +29,12 @@ class CloseButton extends AbstractComponent {
    * 
    * @param string $text the screen reader-only text
    */
-  public function __construct($text = "close") {
-    parent::__construct("button");
+  public function __construct($text = 'close') {
+    parent::__construct('button');
     $this->attrs()
-            ->lock("type", "button")
-            ->demand("data-close");
-    $this->cssClasses()->lock("close-button");
+            ->lock('type', 'button')
+            ->demand('data-close');
+    $this->cssClasses()->lock('close-button');
     $this->setAccessibilityTextText($text);
   }
 
@@ -46,7 +46,7 @@ class CloseButton extends AbstractComponent {
    * @link   https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label
    */
   public function setAccessibilityTextText($text) {
-    $this->attrs()->setAria("label", $text);
+    $this->attrs()->setAria('label', $text);
     return $this;
   }
 

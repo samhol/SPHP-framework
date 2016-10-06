@@ -43,17 +43,17 @@ class Column extends Div implements ColumnInterface {
    */
   public function __construct($content = null, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     parent::__construct($content);
-    $this->cssClasses()->lock("columns");
+    $this->cssClasses()->lock('columns');
     $widthSetter = function ($width, $sreenSize) {
       if ($width > 0 && $width < 13) {
         $this->cssClasses()->add("$sreenSize-$width");
       }
     };
-    $widthSetter($s, "small");
-    $widthSetter($m, "medium");
-    $widthSetter($l, "large");
-    $widthSetter($xl, "xlarge");
-    $widthSetter($xxl, "xxlarge");
+    $widthSetter($s, 'small');
+    $widthSetter($m, 'medium');
+    $widthSetter($l, 'large');
+    $widthSetter($xl, 'xlarge');
+    $widthSetter($xxl, 'xxlarge');
   }
 
 }

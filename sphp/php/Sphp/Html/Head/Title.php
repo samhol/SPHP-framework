@@ -25,7 +25,7 @@ class Title extends SimpleContainerTag implements HeadComponentInterface {
    * @param string $content tag's content
    */
   public function __construct($content = null) {
-    parent::__construct("title");
+    parent::__construct('title');
     $this->setContent($content);
   }
 

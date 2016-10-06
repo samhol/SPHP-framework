@@ -31,7 +31,7 @@ class Carousel extends AbstractContainerTag implements AjaxLoaderInterface {
    * @param  mixed|null $content added content
    */
   public function __construct($content = null) {
-    parent::__construct("div", null, new Div($content));
+    parent::__construct('div', null, new Div($content));
     $this->cssClasses()->lock("owl-carousel");
   }
 

@@ -37,7 +37,7 @@ class Fieldset extends ContainerTag {
    * @param  mixed $content the content of the component
    */
   public function __construct($legend = null, $content = null) {
-    parent::__construct("fieldset", $content);
+    parent::__construct('fieldset', $content);
     $this->legend = $legend;
     if ($legend !== null) {
       $this->setLegend($legend);

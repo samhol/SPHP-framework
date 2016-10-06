@@ -54,7 +54,7 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
    * @param  IframeInterface $media the iframe component
    */
   public function __construct(IframeInterface $media) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("flex-video");
     $this->iframe = $media;
   }

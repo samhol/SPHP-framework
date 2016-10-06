@@ -56,7 +56,7 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     $this->fileInput = new FileInput($name);
     $this->fileInput->cssClasses()->lock("show-for-sr");
     $this->label = new Label($buttonText, $this->fileInput);
-    $this->label->cssClasses()->lock("button");
+    $this->label->cssClasses()->lock('button');
   }
 
   /**

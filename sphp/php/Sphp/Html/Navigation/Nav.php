@@ -34,7 +34,7 @@ class Nav extends ContainerTag {
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("nav", $content);
+    parent::__construct('nav', $content);
   }
 
   /**

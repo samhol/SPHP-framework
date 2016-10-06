@@ -27,7 +27,7 @@ trait VisualComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle($title) {
-    $this->attrs()->set("title", $title);
+    $this->attrs()->set('title', $title);
     return $this;
   }
 
@@ -38,7 +38,7 @@ trait VisualComponentTrait {
    * @link http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function getTitle() {
-    return $this->attrs()->get("title");
+    return $this->attrs()->get('title');
   }
 
   /**
@@ -52,7 +52,7 @@ trait VisualComponentTrait {
    * @return self for PHP Method Chaining
    */
   public function hide() {
-    $this->setStyle("display", "none");
+    $this->setStyle('display', 'none');
     return $this;
   }
 
@@ -67,7 +67,7 @@ trait VisualComponentTrait {
    * @return self for PHP Method Chaining
    */
   public function unhide() {
-    $this->removeStyle("display");
+    $this->removeStyle('display');
     return $this;
   }
 

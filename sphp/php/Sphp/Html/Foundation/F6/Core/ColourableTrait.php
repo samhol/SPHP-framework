@@ -27,7 +27,7 @@ trait ColourableTrait {
    * @var string[]
    */
   private $styles = [
-      "alert", "success", "secondary", "info", "disabled"
+      'alert', 'success', 'secondary', 'info', 'disabled'
   ];
 
   /**

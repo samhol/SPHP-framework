@@ -50,7 +50,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = "", $defaultTarget = "_blank", $defaultCssClasses = null) {
+  public function __construct($apiRoot = '', $defaultTarget = '_blank', $defaultCssClasses = null) {
     $this->setApiRoot($apiRoot)
             ->setDefaultTarget($defaultTarget)
             ->setDefaultCssClasses($defaultCssClasses);

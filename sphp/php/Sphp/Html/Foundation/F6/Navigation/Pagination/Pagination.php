@@ -68,7 +68,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param mixed|mixed[] $urls the value of the target attribute
    */
   public function __construct(array $urls = null, $range = 20, $target = "_self") {
-    parent::__construct("ul");
+    parent::__construct('ul');
     $this->cssClasses()
             ->lock("pagination");
     $this->attrs()

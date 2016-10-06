@@ -22,6 +22,6 @@ class StyleAttribute extends PropertyAttribute {
    * 
    */
   public function __construct() {
-    parent::__construct("style");
+    parent::__construct('style');
   }
 }

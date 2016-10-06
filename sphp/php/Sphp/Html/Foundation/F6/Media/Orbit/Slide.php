@@ -37,7 +37,7 @@ class Slide extends Li implements SlideInterface {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock("orbit-slide");
+    $this->cssClasses()->lock('orbit-slide');
   }
 
 }

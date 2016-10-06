@@ -31,7 +31,7 @@ class Div extends ContainerTag implements AjaxLoaderInterface {
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("div", $content);
+    parent::__construct('div', $content);
   }
 
 }

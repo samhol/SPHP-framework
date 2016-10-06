@@ -30,7 +30,7 @@ class Legend extends ContainerTag {
    * @param string $content legend content
    */
   public function __construct($content = null) {
-    parent::__construct("legend", $content);
+    parent::__construct('legend', $content);
   }
 
 }

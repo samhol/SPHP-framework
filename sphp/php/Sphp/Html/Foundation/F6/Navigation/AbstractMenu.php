@@ -46,7 +46,7 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
       $contentContainer = new WrappingContainer($wrapper);
     }
     parent::__construct($tagName, $attrManager, $contentContainer);
-    $this->cssClasses()->lock("menu");
+    $this->cssClasses()->lock('menu');
   }
 
   /**
@@ -59,7 +59,7 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = "", $target = "_self") {
+  public function appendLink($href, $content = '', $target = '_self') {
     return $this->append(new MenuLink($href, $content, $target));
   }
 
@@ -96,9 +96,9 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
    */
   public function nested($nested = true) {
     if ($nested) {
-      $this->cssClasses()->add("nested");
+      $this->cssClasses()->add('nested');
     } else {
-      $this->cssClasses()->remove("nested");
+      $this->cssClasses()->remove('nested');
     }
     return $this;
   }
@@ -108,9 +108,9 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
    */
   public function vertical($vertical = true) {
     if ($vertical) {
-      $this->cssClasses()->add("vertical");
+      $this->cssClasses()->add('vertical');
     } else {
-      $this->cssClasses()->remove("vertical");
+      $this->cssClasses()->remove('vertical');
     }
     return $this;
   }
@@ -123,9 +123,9 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
    */
   public function setActive($active = true) {
     if ($active) {
-      $this->addCssClass("is-active");
+      $this->addCssClass('is-active');
     } else {
-      $this->removeCssClass("is-active");
+      $this->removeCssClass('is-active');
     }
     return $this;
   }
@@ -136,7 +136,7 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
   public function isActive() {
-    return $this->hasCssClass("is-active");
+    return $this->hasCssClass('is-active');
   }
 
 }

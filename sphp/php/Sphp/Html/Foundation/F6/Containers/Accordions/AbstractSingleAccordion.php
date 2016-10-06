@@ -31,7 +31,7 @@ class AbstractSingleAccordion extends AbstractContainerComponent {
     if ($innerAccordion === null) {
       $innerAccordion = new Pane();
     }
-    parent::__construct("ul");
+    parent::__construct('ul');
     $this->cssClasses()->lock("accordion");
     $this->attrs()
             ->lock("data-allow-all-closed", "true")

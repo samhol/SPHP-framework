@@ -36,7 +36,7 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function __construct($content = null, $for = null) {
-    parent::__construct("label", $content);
+    parent::__construct('label', $content);
     if (!Strings::isEmpty($for)) {
       $this->setFor($for);
     }
@@ -57,7 +57,7 @@ class Label extends ContainerTag {
     if ($for instanceof IdentifiableInputInterface) {
       $for = $for->identify();
     }
-    $this->attrs()->set("for", $for);
+    $this->attrs()->set('for', $for);
     return $this;
   }
 
@@ -70,7 +70,7 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function getFor() {
-    return $this->attrs()->get("for");
+    return $this->attrs()->get('for');
   }
 
   /**
@@ -87,9 +87,9 @@ class Label extends ContainerTag {
    */
   public function setForms($formIds) {
     if (is_array($formIds)) {
-      $formIds = implode(" ", $formIds);
+      $formIds = implode(' ', $formIds);
     }
-    $this->attrs()->set("form", $formIds);
+    $this->attrs()->set('form', $formIds);
     return $this;
   }
 
@@ -103,8 +103,8 @@ class Label extends ContainerTag {
    */
   public function getForms() {
     $result = [];
-    if ($this->attrs()->exists("form")) {
-      $result = explode(" ", $this->attrs()->get("form"));
+    if ($this->attrs()->exists('form')) {
+      $result = explode(' ', $this->attrs()->get('form'));
     }
     return $result;
   }

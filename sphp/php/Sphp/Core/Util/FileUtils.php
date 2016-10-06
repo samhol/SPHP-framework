@@ -28,7 +28,7 @@ class FileUtils {
    */
   public static function fileToString($path) {
     if (!is_file($path)) {
-      throw new InvalidArgumentException("the path '$path' contains no file");
+      throw new InvalidArgumentException("The path '$path' contains no file");
     }
     return file_get_contents($path, false);
   }
@@ -44,7 +44,7 @@ class FileUtils {
     try {
       ob_start();
       if (!is_file($page)) {
-        throw new InvalidArgumentException("the path given contains no executable PHP script");
+        throw new InvalidArgumentException('the path given contains no executable PHP script');
       }
       include($page);
       $content .= ob_get_contents();
@@ -65,7 +65,7 @@ class FileUtils {
   public static function getTextFileRows($filename) {
     $result = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
-      throw new \InvalidArgumentException("the path given contains no file");
+      throw new \InvalidArgumentException('the path given contains no file');
     }
     return $result;
   }
@@ -105,8 +105,8 @@ class FileUtils {
     if (!$url_data || !isset($url_data['host'])) {
       return false;
     }
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $fp = fsockopen($url_data['host'], 80, $errno, $errstr, 30);
     if ($fp === false) {
       return false;

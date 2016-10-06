@@ -31,13 +31,13 @@ class ApiGenClassLinker extends AbstractClassLinker {
     $namespace = $this->ref->getNamespaceName();
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("apigen class");
+    $bcs = (new BreadCrumbs())->addCssClass('apigen class');
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";
       $cuur[] = $name;
-      $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getApiRoot() . "namespace-" . $path . ".html", $name, "apigen");
+      $path = implode('.', $cuur);
+      $bc = new BreadCrumb($this->getApiRoot() . "namespace-$path.html", $name, 'apigen');
       $bcs->append($bc);
     }
     $bc = new BreadCrumb($this->getApiRoot() . $this->getClassPath(), $this->ref->getShortName(), "apigen");
@@ -50,21 +50,21 @@ class ApiGenClassLinker extends AbstractClassLinker {
    */
   protected function getClassPath() {
     $path = str_replace('\\', '.', $this->ref->getName());
-    return "class-" . $path . ".html";
+    return "class-$path.html";
   }
 
   /**
    * {@inheritdoc}
    */
   protected function getMethodPath($method) {
-    return $this->getClassPath() . "#_" . $method;
+    return $this->getClassPath() . '#_' . $method;
   }
 
   /**
    * {@inheritdoc}
    */
   protected function getConstantPath($constant) {
-    return $this->getClassPath() . "#_" . $constant;
+    return $this->getClassPath() . '#_' . $constant;
   }
 
   /**
@@ -73,7 +73,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
   protected function getNamespacePath() {
     $ns = $this->ref->getNamespaceName();
     $path = str_replace('\\', '.', $ns);
-    return "namespace-" . $path . ".html";
+    return "namespace-$path.html";
   }
 
 }

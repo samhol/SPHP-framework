@@ -99,12 +99,12 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @return string all attributes as formatted text
    */
   public function __toString() {
-    $output = "";
+    $output = '';
     foreach (array_keys($this->attrs) as $name) {
-      $output .= " " . $this->attrToString($name);
+      $output .= ' ' . $this->attrToString($name);
     }
     foreach ($this->attrObjects as $attr) {
-      $output .= " " . $attr;
+      $output .= ' ' . $attr;
     }
     return trim($output);
   }
@@ -136,6 +136,11 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     }
     $this->attrObjects[$name] = $attrObject;
     return $this;
+  }
+
+  public function isValidObjectType($type) {
+    $curr = $this->getAttributeObject($name);
+    return is_a($object, $curr, true);
   }
 
   /**
@@ -187,7 +192,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->set($value);
     } else {
-      if (!Strings::match($name, "/^[a-zA-Z][\w:.-]*$/")) {
+      if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
         throw new InvalidAttributeException("Malformed Attribute name '$name'");
       }
       if ($this->isLocked($name)) {
@@ -283,7 +288,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
         throw new InvalidArgumentException("The value of the '$name' attribute is unmodifiable");
       }
       if ($value === false || $value === null) {
-        throw new InvalidArgumentException("NULL and boolean FALSE values cannot be locked");
+        throw new InvalidArgumentException('NULL and boolean FALSE values cannot be locked');
       }
       $this->set($name, $value);
       $this->locked[$name] = $value;
@@ -372,7 +377,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
         $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, "utf-8", false) . '"';
       }
     } else {
-      $output = "";
+      $output = '';
     }
     return $output;
   }
@@ -433,14 +438,14 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   /**
    * {@inheritdoc}
    */
-  public function hasId($identityName = "id") {
+  public function hasId($identityName = 'id') {
     return $this->isIdentifier($identityName) && $this->exists($identityName);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
+  public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
     if (!$this->isLocked($identityName)) {
       $value = $prefix . Strings::random($length);
       while (!HtmlIdStorage::store($identityName, $value)) {

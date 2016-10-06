@@ -81,7 +81,7 @@ trait FormTrait {
     //	echo "<pre>";
     //	print_r($this->actionParams);
     //	echo "</pre>";
-    $this->attrs()->set("action", Strings::htmlEncode($url));
+    $this->attrs()->set('action', Strings::htmlEncode($url));
     return $this;
   }
 
@@ -92,7 +92,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function getAction() {
-    return $this->attrs()->get("action");
+    return $this->attrs()->get('action');
   }
 
   /**
@@ -105,7 +105,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function setEnctype($enctype) {
-    $this->attrs()->set("enctype", $enctype);
+    $this->attrs()->set('enctype', $enctype);
     return $this;
   }
 
@@ -118,7 +118,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function getEnctype() {
-    return $this->attrs()->get("enctype");
+    return $this->attrs()->get('enctype');
   }
 
   /**
@@ -133,7 +133,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function setName($name) {
-    $this->attrs()->set("name", $name);
+    $this->attrs()->set('name', $name);
     return $this;
   }
 
@@ -148,7 +148,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function getName() {
-    return $this->attrs()->get("name");
+    return $this->attrs()->get('name');
   }
 
   /**
@@ -162,7 +162,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function validation($validate = true) {
-    return $this->attrs()->set("novalidate", !$validate);
+    return $this->attrs()->set('novalidate', !$validate);
   }
 
   /**

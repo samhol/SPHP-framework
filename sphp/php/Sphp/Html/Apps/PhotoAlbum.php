@@ -54,7 +54,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @param string $albumName the title of the albumo
    */
   public function __construct($albumPaths = ALBUM_PATH, $albumName = "Photo album") {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->setAlbumPaths($albumPaths)
             ->build()
             ->setHeading($albumName)

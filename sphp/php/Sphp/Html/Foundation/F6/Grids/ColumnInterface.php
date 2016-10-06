@@ -46,7 +46,7 @@ interface ColumnInterface {
    * @param  int|string|BitMask $screens the target screen size(s)
    * @return self for PHP Method Chaining
    */
-  public function setWidth($width, $screens = "small");
+  public function setWidth($width, $screens = 'small');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens

@@ -30,7 +30,7 @@ class Aside extends ContainerTag {
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("aside", $content);
+    parent::__construct('aside', $content);
   }
 
   /**

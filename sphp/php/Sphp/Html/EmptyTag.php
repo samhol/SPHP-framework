@@ -36,15 +36,15 @@ class EmptyTag extends AbstractTag {
    * {@inheritdoc}
    */
   public function getHtml() {
-    $attrs = "" . $this->attrs();
-    if ($attrs != "") {
-      $attrs = " " . $attrs;
+    $attrs = '' . $this->attrs();
+    if ($attrs != '') {
+      $attrs = ' ' . $attrs;
     }
-    $output = "<" . $this->getTagName() . $attrs;
+    $output = '<' . $this->getTagName() . $attrs;
     if (Document::isXHTML()) {
-      $output .= " />";
+      $output .= ' />';
     } else {
-      $output .= ">";
+      $output .= '>';
     }
     return $output;
   }

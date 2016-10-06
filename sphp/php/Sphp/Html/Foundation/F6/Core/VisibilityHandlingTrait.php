@@ -75,9 +75,9 @@ trait VisibilityHandlingTrait {
     if (!Screen::sizeExists($screenSize)) {
       throw new InvalidArgumentException("Screen type '$screenSize' was not recognized");
     }
-    if ($screenSize == "small") {
+    if ($screenSize == 'small') {
       $this->cssClasses()
-              ->add("hide");
+              ->add('hide');
     }
     $this->cssClasses()
             ->add("hide-for-$screenSize");
@@ -212,13 +212,13 @@ trait VisibilityHandlingTrait {
    */
   public function hideForPortrait($hide = true) {
     $this->cssClasses()
-            ->remove("show-for-portrait");
+            ->remove('show-for-portrait');
     if ($hide) {
       $this->cssClasses()
-              ->add("show-for-landscape");
+              ->add('show-for-landscape');
     } else {
       $this->cssClasses()
-              ->remove("show-for-landscape");
+              ->remove('show-for-landscape');
     }
     return $this;
   }
@@ -231,13 +231,13 @@ trait VisibilityHandlingTrait {
    */
   public function hideForLandscape($hide = true) {
     $this->cssClasses()
-            ->remove("show-for-landscape");
+            ->remove('show-for-landscape');
     if ($hide) {
       $this->cssClasses()
-              ->add("show-for-portrait");
+              ->add('show-for-portrait');
     } else {
       $this->cssClasses()
-              ->remove("show-for-portrait");
+              ->remove('show-for-portrait');
     }
     return $this;
   }

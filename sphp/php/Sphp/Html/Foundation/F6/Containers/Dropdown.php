@@ -46,7 +46,7 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
    * @param  mixed $content the content of the dropdown
    */
   public function __construct($togleButton, $content = null) {
-    parent::__construct("div", $content);
+    parent::__construct('div', $content);
     $this->identify("id", "dd_");
 
     $this->cssClasses()->lock("dropdown-pane");

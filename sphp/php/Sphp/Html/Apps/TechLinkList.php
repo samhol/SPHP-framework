@@ -25,7 +25,7 @@ class TechLinkList extends AbstractContainerComponent {
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("sphp-tech-list");
     $this->createContent();
   }

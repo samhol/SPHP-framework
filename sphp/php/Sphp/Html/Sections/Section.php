@@ -30,7 +30,7 @@ class Section extends ContainerTag {
    * @param  mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("section", $content);
+    parent::__construct('section', $content);
   }
 
   /**

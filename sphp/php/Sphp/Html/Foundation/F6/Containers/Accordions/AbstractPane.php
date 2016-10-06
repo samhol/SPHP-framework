@@ -44,14 +44,14 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
    */
   public function __construct($barContent = null, $content = null) {
     $div = new Div($content);
-    $div->attrs()->demand("data-tab-content");
-    $div->cssClasses()->lock("accordion-content");
-    parent::__construct("li", null, $div);
-    $this->bar = (new ContainerTag("a", $barContent));
+    $div->attrs()->demand('data-tab-content');
+    $div->cssClasses()->lock('accordion-content');
+    parent::__construct('li', null, $div);
+    $this->bar = (new ContainerTag('a', $barContent));
     $this->bar->cssClasses()->lock("accordion-title");
-    $this->bar->attrs()->lock("href", "#");
-    $this->cssClasses()->lock("accordion-item");
-    $this->attrs()->demand("data-accordion-item");
+    $this->bar->attrs()->lock('href', '#');
+    $this->cssClasses()->lock('accordion-item');
+    $this->attrs()->demand('data-accordion-item');
   }
 
   /**
@@ -76,9 +76,9 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
    */
   public function contentVisible($visibility = true) {
     if ($visibility) {
-      $this->addCssClass("is-active");
+      $this->addCssClass('is-active');
     } else {
-      $this->removeCssClass("is-active");
+      $this->removeCssClass('is-active');
     }
     return $this;
   }

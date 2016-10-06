@@ -29,7 +29,7 @@ class HyperlinkButton extends Hyperlink implements ButtonInterface {
    */
   public function __construct($href = null, $content = null, $target = null) {
     parent::__construct($href, $content, $target);
-    $this->cssClasses()->lock("button");
+    $this->cssClasses()->lock('button');
   }
 
 }

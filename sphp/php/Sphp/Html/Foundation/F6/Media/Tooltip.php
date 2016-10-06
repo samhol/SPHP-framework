@@ -38,10 +38,10 @@ class Tooltip implements ContentInterface {
   public function __construct(ComponentInterface $toolTipped, $tip = null) {
     $this->toolTipped = $toolTipped;
     $this->toolTipped->attrs()
-            ->demand("data-tooltip")
-            ->lock("aria-haspopup", "true")
-            ->set("data-disable-hover", "false");
-    $this->toolTipped->cssClasses()->lock("has-tip");
+            ->demand('data-tooltip')
+            ->lock('aria-haspopup', 'true')
+            ->set('data-disable-hover', 'false');
+    $this->toolTipped->cssClasses()->lock('has-tip');
     if ($tip !== null) {
       $this->setTip($tip);
     }
@@ -72,7 +72,7 @@ class Tooltip implements ContentInterface {
    * @return self for PHP Method Chaining
    */
   public function setTip($tip) {
-    $this->toolTipped->attrs()->set("title", $tip);
+    $this->toolTipped->attrs()->set('title', $tip);
     return $this;
   }
 

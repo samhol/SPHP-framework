@@ -30,15 +30,15 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * 
    * **IMPORTANT:** 
    * 
-   * The {@link self} component points to an external script file through the src attribute.
+   * This component points to an external script file through the src attribute.
    * 
    * @param  string|Url $src the purpose of the script component
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function __construct($src = "", $async = false) {
-    parent::__construct("script");
+  public function __construct($src = '', $async = false) {
+    parent::__construct('script');
     $this->setSrc($src)->setAsync($async);
   }
 
@@ -52,7 +52,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType($type) {
-    return $this->setAttr("type", $type);
+    return $this->setAttr('type', $type);
   }
 
   /**
@@ -66,7 +66,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function setAsync($async = true) {
-    return $this->setAttr("async", $async);
+    return $this->setAttr('async', $async);
   }
 
   /**
@@ -77,7 +77,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function setSrc($src) {
-    $this->attrs()->set("src", $src);
+    $this->attrs()->set('src', $src);
     return $this;
   }
 
@@ -88,19 +88,19 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function getSrc() {
-    return $this->attrs()->get("src");
+    return $this->attrs()->get('src');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getHtml() {
-    $attrs = "" . $this->attrs();
-    if ($attrs != "") {
-      $attrs = " " . $attrs;
+    $attrs = '' . $this->attrs();
+    if ($attrs != '') {
+      $attrs = ' ' . $attrs;
     }
-    $output = "<" . $this->getTagName() . $attrs . ">";
-    $output .= "</" . $this->getTagName() . ">";
+    $output = '<' . $this->getTagName() . $attrs . '>';
+    $output .= '</' . $this->getTagName() . '>';
     return $output;
   }
 

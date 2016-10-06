@@ -14,6 +14,6 @@ $classes = (new MultiValueAttribute("class"));
 $classes->demand();
 $classes->set("button tiny")
         ->add(["alert"]);
-$classes->lock("button")->remove("tiny");
+$classes->lock('button')->remove("tiny");
 $classes->clear();
 ?>

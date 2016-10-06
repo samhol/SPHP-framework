@@ -31,7 +31,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
    * @param int $step the length of a single step
    */
   public function __construct($start = 0, $end = 100, $step = 1) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("slider");
     $this->attrs()
             ->demand("data-start")

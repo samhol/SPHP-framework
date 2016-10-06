@@ -7,10 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
-use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
-use Sphp\Html\Foundation\Buttons\ButtonGroup as ButtonGroup;
 use Sphp\Core\Types\Strings;
 
 /**
@@ -31,7 +27,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
     if (Strings::isEmpty($content)) {
       $content = $relativeUrl;
     }
-    return parent::hyperlink($relativeUrl, str_replace("\\", "\\<wbr>", $content), $title);
+    return parent::hyperlink($relativeUrl, str_replace('\\', '\\<wbr>', $content), $title);
   }
 
   /**

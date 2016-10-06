@@ -40,7 +40,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = "", $content = null, $target = "_self") {
+  public function __construct($href = '', $content = null, $target = '_self') {
     parent::__construct($href, $content, $target);
   }
 
@@ -83,9 +83,9 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    */
   public function setActive($active = true) {
     if ($active) {
-      $this->addCssClass("active");
+      $this->addCssClass('active');
     } else {
-      $this->removeCssClass("active");
+      $this->removeCssClass('active');
     }
     return $this;
   }

@@ -26,8 +26,8 @@ class AccordionMenu extends Menu {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock("vertical");
-    $this->attrs()->demand("data-accordion-menu");
+    $this->cssClasses()->lock('vertical');
+    $this->attrs()->demand('data-accordion-menu');
   }
 
   /**

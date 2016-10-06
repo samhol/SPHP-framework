@@ -33,7 +33,7 @@ class Tab extends AbstractContainerTag {
    * @param type $content
    */
   public function __construct($tab = null, $content = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->identify();
     $this->cssClasses()->lock("tabs-panel");
     if ($content !== null) {

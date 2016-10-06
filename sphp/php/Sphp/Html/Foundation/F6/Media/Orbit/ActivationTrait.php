@@ -36,9 +36,9 @@ trait ActivationTrait {
    */
   public function setActive($active = true) {
     if ($active) {
-      $this->cssClasses()->set("is-active");
+      $this->cssClasses()->set('is-active');
     } else {
-      $this->cssClasses()->remove("is-active");
+      $this->cssClasses()->remove('is-active');
     }
     return $this;
   }
@@ -49,7 +49,7 @@ trait ActivationTrait {
    * @return boolean true if the slide component is set as active, otherwise false
    */
   public function isActive() {
-    return $this->cssClasses()->contains("is-active");
+    return $this->cssClasses()->contains('is-active');
   }
 
 }

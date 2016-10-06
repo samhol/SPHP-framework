@@ -73,7 +73,7 @@ trait SyntaxhighlighterContainerTrait {
   /**
    * {@inheritdoc}
    */
-  public function executeFromFile($path, $lang = "text") {
+  public function executeFromFile($path, $lang = 'text') {
     $this->getSyntaxHighlighter()->executeFromFile($path, $lang);
     return $this;
   }

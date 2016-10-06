@@ -25,27 +25,6 @@ namespace Sphp\Html\Foundation\F6\Navigation;
 class BreadCrumb extends MenuLink {
 
   /**
-   * Constructs a new instance of the {@link self] component
-   *
-   * **Notes:**
-   *
-   * * The href attribute specifies the URL of the page the link goes to.
-   * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
-   * * If the $content is empty, the $href is also the content of the object.
-   *
-   *
-   * @param  string $href the URL of the link
-   * @param  string $content link tag's content
-   * @param  string $target the value of the target attribute
-   * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
-   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
-
-    public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct($href, $content, $target);
-    //$this->lockAttr("role", "menuitem");
-    }
-
-    /**
    * Sets or unsets the hyperlink component as active
    *
    * @param  boolean $active true foor activation and false for deactivation
@@ -53,9 +32,9 @@ class BreadCrumb extends MenuLink {
    */
   public function setDisabled($active = true) {
     if ($active) {
-      $this->addCssClass("disabled");
+      $this->addCssClass('disabled');
     } else {
-      $this->removeCssClass("disabled");
+      $this->removeCssClass('disabled');
     }
     return $this;
   }
@@ -67,7 +46,7 @@ class BreadCrumb extends MenuLink {
    *         otherwise false
    */
   public function isDisabled() {
-    return $this->hasCssClass("disabled");
+    return $this->hasCssClass('disabled');
   }
 
 }

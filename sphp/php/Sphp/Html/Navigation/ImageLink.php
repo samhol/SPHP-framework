@@ -49,7 +49,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $target = null, $src = null, $alt = "") {
-    parent::__construct("a");
+    parent::__construct('a');
     if ($src instanceof Img) {
       $this->setImg($src);
     } else {

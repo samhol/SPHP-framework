@@ -37,7 +37,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($root, $class, $defaultTarget = "_blank", $defaultCssClasses = null) {
+  public function __construct($root, $class, $defaultTarget = '_blank', $defaultCssClasses = null) {
     parent::__construct($root, $defaultTarget, $defaultCssClasses);
     $this->ref = new ReflectionClass($class);
   }
@@ -80,13 +80,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
       $name = $this->ref->getShortName();
     }
     if ($this->ref->isInterface()) {
-      $title = $this->ref->getName() . " interface";
+      $title = $this->ref->getName() . ' interface';
     } else if ($this->ref->isTrait()) {
-      $title = $this->ref->getName() . " trait";
+      $title = $this->ref->getName() . ' trait';
     } else if ($this->ref->isAbstract()) {
-      $title = "abstract " . $this->ref->getName() . " class";
+      $title = 'abstract ' . $this->ref->getName() . ' class';
     } else {
-      $title = $this->ref->getName() . " class";
+      $title = $this->ref->getName() . ' class';
     }
     return $this->hyperlink($this->getClassPath(), $name, $title);
   }

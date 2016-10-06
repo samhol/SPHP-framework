@@ -21,11 +21,11 @@ class Router implements Arrayable {
 
   use CloneNotSupportedTrait;
 
-  const ROOT = "";
-  const SPHP = "sphp/";
-  const SPHP_CSS = "sphp/css/";
-  const SPHP_JS = "sphp/js";
-  const SPHP_IMG_CACHE = "sphp/image/cache/";
+  const ROOT = '';
+  const SPHP = 'sphp/';
+  const SPHP_CSS = 'sphp/css/';
+  const SPHP_JS = 'sphp/js';
+  const SPHP_IMG_CACHE = 'sphp/image/cache/';
 
   /**
    * The local path to the document  root
@@ -58,16 +58,16 @@ class Router implements Arrayable {
    * @throws ConfigurationException if either local or http path cannot be resolved
    */
   protected function __construct() {
-    $host = filter_input(INPUT_SERVER, "HTTP_HOST", FILTER_SANITIZE_SPECIAL_CHARS);
+    $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
     if (!is_string($host)) {
-      throw new ConfigurationException("HTTP hostcannot be resolved");
+      throw new ConfigurationException('HTTP host cannot be resolved');
     }
     $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
-    $root = filter_input(INPUT_SERVER, "DOCUMENT_ROOT", FILTER_SANITIZE_SPECIAL_CHARS);
+    $root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_SPECIAL_CHARS);
     if (!is_string($root)) {
-      throw new ConfigurationException("document root not specified");
+      throw new ConfigurationException('Document root not specified');
     }
-    $this->localRoot = $root . "/";
+    $this->localRoot = $root . '/';
   }
 
   /**

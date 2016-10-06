@@ -48,7 +48,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
    * @param string|null $suffix the content of the suffix
    */
   public function __construct(IdentifiableInputInterface $input, $prefix = null, $suffix = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("input-group");
     $this->prefix = $prefix;
     $this->input = $input;

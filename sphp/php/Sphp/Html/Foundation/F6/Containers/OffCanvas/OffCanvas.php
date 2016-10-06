@@ -64,7 +64,7 @@ class OffCanvas extends AbstractComponent {
    * @param  string $title the main title of the component
    */
   public function __construct($title = "") {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("off-canvas-wrapper");
     $this->innerWrapper = new Div();
     $this->innerWrapper->cssClasses()->lock("off-canvas-wrapper-inner");

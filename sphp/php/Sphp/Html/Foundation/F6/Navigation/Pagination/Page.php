@@ -36,7 +36,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($content = null, $href = null, $target = "_self") {
+  public function __construct($content = null, $href = null, $target = '_self') {
     parent::__construct($href, $content, $target);
   }
   
@@ -47,7 +47,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    * @link   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
    */
   public function setAriaLabel($label) {
-    $this->attrs()->setAria("label", $label);
+    $this->attrs()->setAria('label', $label);
     return $this;
   }
 
@@ -68,9 +68,9 @@ class Page extends HyperlinkListItem implements PageInterface {
    */
   public function setCurrent($active = true) {
     if ($active) {
-      return $this->addCssClass("current");
+      return $this->addCssClass('current');
     } else {
-      return $this->removeCssClass("current");
+      return $this->removeCssClass('current');
     }
   }
 
@@ -78,7 +78,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    * {@inheritdoc}
    */
   public function isCurrent() {
-    return $this->hasCssClass("current");
+    return $this->hasCssClass('current');
   }
 
   /**
@@ -86,9 +86,9 @@ class Page extends HyperlinkListItem implements PageInterface {
    */
   public function disable($disabled = true) {
     if ($disabled) {
-      $this->cssClasses()->set("disabled");
+      $this->cssClasses()->set('disabled');
     } else {
-      $this->cssClasses()->remove("disabled");
+      $this->cssClasses()->remove('disabled');
     }
     return $this;
   }
@@ -97,7 +97,7 @@ class Page extends HyperlinkListItem implements PageInterface {
    * {@inheritdoc}
    */
   public function isEnabled() {
-    return !$this->cssClasses()->contains("disabled");
+    return !$this->cssClasses()->contains('disabled');
   }
 
 }

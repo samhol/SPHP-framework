@@ -45,7 +45,7 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct("a", $content);
+    parent::__construct('a', $content);
     if ($href !== null) {
       $this->setHref($href);
     }

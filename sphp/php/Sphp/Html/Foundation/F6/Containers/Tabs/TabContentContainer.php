@@ -27,7 +27,7 @@ class TabContentContainer extends AbstractContainerComponent {
    * @param TabButtonContainer $tabs
    */
   public function __construct(TabButtonContainer $tabs = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     if ($tabs === null) {
       $tabs = new TabButtonContainer();
     }

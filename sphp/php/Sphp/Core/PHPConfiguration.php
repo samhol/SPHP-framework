@@ -104,7 +104,7 @@ class PHPConfiguration implements Arrayable {
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setLocale($category, $locale) {
-    $this->setFunc("setLocale", [$locale], $category);
+    $this->setFunc('setLocale', [$locale], $category);
     setLocale($category, $locale) !== false;
     return $this;
   }
@@ -138,7 +138,7 @@ class PHPConfiguration implements Arrayable {
    * @return string the name (filename) of the text domain
    */
   public function getLocale($category) {
-    return setLocale($category, "0");
+    return setLocale($category, '0');
   }
 
   /**
@@ -156,8 +156,8 @@ class PHPConfiguration implements Arrayable {
    * @param  mixed $encoding character encoding: default is `utf-8`
    * @return self for PHP Method Chaining
    */
-  public function setEncoding($encoding = "UTF-8") {
-    $this->setFunc("mb_internal_encoding", [$encoding]);
+  public function setEncoding($encoding = 'UTF-8') {
+    $this->setFunc('mb_internal_encoding', [$encoding]);
     mb_internal_encoding($encoding);
     return $this;
   }
@@ -169,7 +169,7 @@ class PHPConfiguration implements Arrayable {
    * @return self for PHP Method Chaining
    */
   public function setDefaultTimezone($timezone) {
-    $this->setFunc("date_default_timezone_set", [$timezone]);
+    $this->setFunc('date_default_timezone_set', [$timezone]);
     date_default_timezone_set($timezone);
     return $this;
   }
@@ -190,7 +190,7 @@ class PHPConfiguration implements Arrayable {
    * @return self for PHP Method Chaining
    */
   public function setErrorReporting($level) {
-    $this->setFunc("error_reporting", [$level]);
+    $this->setFunc('error_reporting', [$level]);
     error_reporting($level);
     //ini_set("display_errors", "1");
     return $this;
@@ -238,8 +238,8 @@ class PHPConfiguration implements Arrayable {
    */
   public function toArray() {
     $arr = [];
-    $arr["ini"] = Arrays::copy($this->ini);
-    $arr["php"] = Arrays::copy($this->setters);
+    $arr['ini'] = Arrays::copy($this->ini);
+    $arr['php'] = Arrays::copy($this->setters);
     return $arr;
   }
 

@@ -23,7 +23,7 @@ class Menu extends AbstractMenu {
    * @param mixed $content
    */
   public function __construct($content = NULL) {
-    parent::__construct("ul");
+    parent::__construct('ul');
     if ($content !== NULL) {
       $this->append($content);
     }

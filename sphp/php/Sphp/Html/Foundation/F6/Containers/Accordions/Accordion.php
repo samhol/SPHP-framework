@@ -27,9 +27,9 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @param null|Pane|Pane[] $content the value of the target attribute
    */
   public function __construct($content = null) {
-    parent::__construct("ul");
-    $this->cssClasses()->lock("accordion");
-    $this->attrs()->demand("data-accordion");
+    parent::__construct('ul');
+    $this->cssClasses()->lock('accordion');
+    $this->attrs()->demand('data-accordion');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $c) {
         $this->append($c);
@@ -99,7 +99,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function setSliderSpeed($speed) {
-    $this->attrs()->set("data-slide-speed", $speed);
+    $this->attrs()->set('data-slide-speed', $speed);
     return $this;
   }
 
@@ -110,8 +110,8 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function allowMultiExpand($allow = true) {
-    $value = $allow ? "true" : "false";
-    $this->attrs()->set("data-multi-expand", $value);
+    $value = $allow ? 'true' : 'false';
+    $this->attrs()->set('data-multi-expand', $value);
     return $this;
   }
 
@@ -122,8 +122,8 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function allowAllClosed($allow = true) {
-    $value = $allow ? "true" : "false";
-    $this->attrs()->set("data-allow-all-closed", $value);
+    $value = $allow ? 'true' : 'false';
+    $this->attrs()->set('data-allow-all-closed', $value);
     return $this;
   }
 

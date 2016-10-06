@@ -42,8 +42,8 @@ class Callout extends Div implements ColourableInterface {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock("callout");
-    $this->closeButton = new CloseButton("close");
+    $this->cssClasses()->lock('callout');
+    $this->closeButton = new CloseButton('close');
   }
 
   /**
@@ -59,8 +59,8 @@ class Callout extends Div implements ColourableInterface {
    * @return self for PHP Method Chaining
    * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
    */
-  public function setPadding($padding = "default") {
-    $paddings = ["small", "large"];
+  public function setPadding($padding = 'default') {
+    $paddings = ['small', 'large'];
     $this->removeCssClass($paddings);
     if (in_array($padding, $paddings)) {
       $this->addCssClass($padding);
@@ -82,7 +82,7 @@ class Callout extends Div implements ColourableInterface {
    * @return self for PHP Method Chaining
    */
   public function setClosable($closable = true) {
-    $this->attrs()->set("data-closable", $closable);
+    $this->attrs()->set('data-closable', $closable);
     return $this;
   }
 
@@ -92,7 +92,7 @@ class Callout extends Div implements ColourableInterface {
    * @return boolean true if callout is closable and false if not
    */
   public function isClosable() {
-    return $this->attrs()->exists("data-closable");
+    return $this->attrs()->exists('data-closable');
   }
 
   /**

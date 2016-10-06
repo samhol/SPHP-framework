@@ -36,14 +36,14 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @var string[]
    */
   private $components = [
-      "scheme" => "",
-      "host" => "",
-      "user" => "",
-      "pass" => "",
-      "path" => "",
-      "query" => [],
-      "fragment" => "",
-      "port" => ""
+      'scheme' => '',
+      'host' => '',
+      'user' => '',
+      'pass' => '',
+      'path' => '',
+      'query' => [],
+      'fragment' => '',
+      'port' => ''
   ];
 
   /**
@@ -58,25 +58,25 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
       //print_r($data);
       //$parts = parse_url($urlString);
       $arr = [
-          "scheme" => "",
-          "host" => "",
-          "user" => "",
-          "pass" => "",
-          "path" => "",
-          "query" => "",
-          "fragment" => "",
-          "port" => ""
+          'scheme' => '',
+          'host' => '',
+          'user' => '',
+          'pass' => '',
+          'path' => '',
+          'query' => '',
+          'fragment' => '',
+          'port' => ''
       ];
       $urlString = html_entity_decode(urldecode($urlString));
       $parts = array_merge($arr, parse_url($urlString));
       $query = [];
-      parse_str($parts["query"], $query);
+      parse_str($parts['query'], $query);
       $this->components = $parts; //array_merge($this->components, parse_url($urlString));
-      $this->components["query"] = $query;
+      $this->components['query'] = $query;
       //print_r($this->components);
       //parse_str($this->components["query"], $this->query);
       //$this->setQuery($this->components["query"]);
-      $this->setPort($this->components["port"]);
+      $this->setPort($this->components['port']);
       //print_r($this->components);
       //print_r($this->query);
     }
@@ -123,7 +123,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setScheme($scheme) {
-    $this->components["scheme"] = $scheme;
+    $this->components['scheme'] = $scheme;
     return $this;
   }
 
@@ -137,7 +137,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the scheme name of the URL
    */
   public function getScheme() {
-    return strval($this->components["scheme"]);
+    return strval($this->components['scheme']);
   }
 
   /**
@@ -156,7 +156,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setHost($host) {
-    $this->components["host"] = $host;
+    $this->components['host'] = $host;
     return $this;
   }
 
@@ -167,7 +167,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the host `part` of the URL
    */
   public function getHost($encode = false) {
-    $val = $this->components["host"];
+    $val = $this->components['host'];
     if ($encode && !Strings::isEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
       Strings::htmlEncode($val);
     }
@@ -190,7 +190,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setUser($user) {
-    $this->components["user"] = $user;
+    $this->components['user'] = $user;
     return $this;
   }
 
@@ -201,7 +201,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the user part of the URL
    */
   public function getUser($encode = false) {
-    $val = strval($this->components["user"]);
+    $val = strval($this->components['user']);
     if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
     }
@@ -224,7 +224,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setPassword($pass) {
-    $this->components["pass"] = $pass;
+    $this->components['pass'] = $pass;
     return $this;
   }
 
@@ -235,7 +235,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the password part of the URL
    */
   public function getPassword($encode = false) {
-    $val = strval($this->components["pass"]);
+    $val = strval($this->components['pass']);
     if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
     }
@@ -258,10 +258,10 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setPath($path) {
-    if (!Strings::startsWith($path, "/")) {
+    if (!Strings::startsWith($path, '/')) {
       $path = "/$path";
     }
-    $this->components["path"] = $path;
+    $this->components['path'] = $path;
     return $this;
   }
 
@@ -272,7 +272,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the path part of the URL
    */
   public function getPath($encode = false) {
-    $val = strval($this->components["path"]);
+    $val = strval($this->components['path']);
     if ($encode && !Strings::isEmpty($val)) {
       $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
     }
@@ -296,10 +296,10 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    */
   public function setQuery($query) {
     if (!Strings::isEmpty($query)) {
-      parse_str($query, $this->components["query"]);
+      parse_str($query, $this->components['query']);
       //$this->components["query"] = urldecode($query);
     } else {
-      $this->components["query"] = [];
+      $this->components['query'] = [];
     }
     return $this;
   }
@@ -310,7 +310,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the path is set and false otherwise
    */
   public function hasQuery() {
-    return count($this->components["query"]) > 0;
+    return count($this->components['query']) > 0;
   }
 
   /**
@@ -323,11 +323,11 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @param  int $encode
    * @return string the query string of the URL
    */
-  public function getQuery($separator = "&", $encode = \PHP_QUERY_RFC1738) {
+  public function getQuery($separator = '&', $encode = \PHP_QUERY_RFC1738) {
     //$val = strval($this->components["query"]);
-    $val = "";
+    $val = '';
     if ($this->hasQuery()) {
-      $val = http_build_query($this->components["query"], "", $separator, $encode);
+      $val = http_build_query($this->components['query'], '', $separator, $encode);
     }
     return $val;
   }
@@ -339,7 +339,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return boolean true if the param exists and false otherwise
    */
   public function paramExists($name) {
-    return array_key_exists($name, $this->components["query"]);
+    return array_key_exists($name, $this->components['query']);
   }
 
   /**
@@ -348,7 +348,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string[] the param array
    */
   public function getParams() {
-    return $this->components["query"];
+    return $this->components['query'];
   }
 
   /**
@@ -360,7 +360,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
   public function getParam($name) {
     $val = null;
     if ($this->paramExists($name)) {
-      $val = $this->components["query"][$name];
+      $val = $this->components['query'][$name];
     }
     return $val;
   }
@@ -373,7 +373,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setParam($name, $value) {
-    $this->components["query"][$name] = $value;
+    $this->components['query'][$name] = $value;
     return $this;
   }
 
@@ -384,7 +384,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setParams(array $params) {
-    $this->components["query"] = array_merge($this->components["query"], $params);
+    $this->components['query'] = array_merge($this->components['query'], $params);
     //$this->setQuery(urldecode(http_build_query($this->components["query"])));
     return $this;
   }
@@ -396,8 +396,8 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function unsetParam($name) {
-    if (array_key_exists($name, $this->components["query"])) {
-      unset($this->components["query"][$name]);
+    if (array_key_exists($name, $this->components['query'])) {
+      unset($this->components['query'][$name]);
     }
     return $this;
   }
@@ -411,7 +411,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setFragment($fragment) {
-    $this->components["fragment"] = $fragment;
+    $this->components['fragment'] = $fragment;
     return $this;
   }
 
@@ -422,7 +422,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @return string the fragment identifier of the URL
    */
   public function getFragment($encode = false) {
-    $val = strval($this->components["fragment"]);
+    $val = strval($this->components['fragment']);
     if ($encode) {
       $val = rawurlencode($val);
     }
@@ -450,7 +450,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
   public function setPort($port) {
     //var_dump($port);
     if (Strings::isEmpty($port)) {
-      $port = getservbyname($this->getScheme(), "tcp");
+      $port = getservbyname($this->getScheme(), 'tcp');
       if ($port === false) {
         $port = null;
       }
@@ -460,7 +460,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
     if ($port < 0) {
       $port = null;
     }
-    $this->components["port"] = $port;
+    $this->components['port'] = $port;
     return $this;
   }
 
@@ -471,7 +471,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function getPort() {
-    return $this->components["port"];
+    return $this->components['port'];
   }
 
   /**
@@ -481,7 +481,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function hasDefaultPort() {
-    return getservbyname($this->getScheme(), "tcp") === $this->getPort();
+    return getservbyname($this->getScheme(), 'tcp') === $this->getPort();
   }
 
   /**
@@ -644,8 +644,8 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
     if (!$this->hasHost()) {
       return false;
     }
-    $errno = "";
-    $errstr = "";
+    $errno = '';
+    $errstr = '';
     $fp = fsockopen($this->getHost(), 80, $errno, $errstr, 30);
     if ($fp === false) {
       return false;

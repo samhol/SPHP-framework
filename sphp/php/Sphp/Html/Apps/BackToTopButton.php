@@ -24,16 +24,16 @@ class BackToTopButton extends AbstractComponent {
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct("div");
-    $this->cssClasses()->lock("sphp-back-to-top-button");
-    $this->setTitle("Back to top");
+    parent::__construct('div');
+    $this->cssClasses()->lock('sphp-back-to-top-button');
+    $this->setTitle('Back to top');
   }
 
   /**
    * {@inheritdoc}
    */
   public function contentToString() {
-    return (new Img("sphp/pics/back-to-top.png", "Back to top"))->getHtml();
+    return (new Img('sphp/pics/back-to-top.png', 'Back to top'))->getHtml();
   }
 
 }

@@ -81,12 +81,12 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
       return $properties;
     }
     $styleArr = [];
-    $rows = explode(";", $properties);
+    $rows = explode(';', $properties);
     if (empty($rows)) {
       $rows = [$properties];
     }
     foreach ($rows as $row) {
-      $data = explode(":", $row);
+      $data = explode(':', $row);
       if (count($data) === 2) {
         $styleArr[trim($data[0])] = trim($data[1]);
       }

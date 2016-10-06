@@ -39,7 +39,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    * @param string|null $name the name of the bar
    */
   public function __construct($progress, $name = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->progressMeter = new Span();
     $this->progressMeter->cssClasses()->lock("progress-meter");
     $this->progressMeter["progress-meter-text"] = new Paragraph();

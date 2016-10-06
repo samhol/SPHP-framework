@@ -64,8 +64,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param string $title the title of the HTML document
    * @param string $charset the character set of the HTML document
    */
-  public function __construct($title = "", $charset = "UTF-8") {
-    parent::__construct("head");
+  public function __construct($title = '', $charset = 'UTF-8') {
+    parent::__construct('head');
     $this->setup($title, $charset);
   }
 
@@ -120,7 +120,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
-  public function setBaseAddr($baseAddr, $target = "_self") {
+  public function setBaseAddr($baseAddr, $target = '_self') {
     if (!Strings::isEmpty($baseAddr) || !Strings::isEmpty($target)) {
       $this->base = new Base($baseAddr, $target);
     } else {
@@ -147,7 +147,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome() {
-    return $this->addCssSrc("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+    return $this->addCssSrc('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
   }
 
   /**
@@ -157,7 +157,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://zurb.com/playground/foundation-icon-fonts-3 Foundation icons
    */
   public function useFoundationIcons() {
-    $this->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css");
+    $this->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css');
     return $this;
   }
 
@@ -167,10 +167,10 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for PHP Method Chaining
    */
   public function enableSPHP() {
-    $this->metaTags()->setViewport("width=device-width, initial-scale=1.0");
-    $this->metaTags()->setCharset("UTF-8");
-    $this->addCssSrc(Router::get()->http() . "sphp/css/sphp6.styles.all.css")
-            ->addCssSrc("https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css")
+    $this->metaTags()->setViewport('width=device-width, initial-scale=1.0');
+    $this->metaTags()->setCharset('UTF-8');
+    $this->addCssSrc(Router::get()->http() . 'sphp/css/sphp6.styles.all.css')
+            ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
             ->useVideoJS();
     return $this;
   }
@@ -182,8 +182,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->addCssSrc("//vjs.zencdn.net/5.8/video-js.min.css")
-            ->appendScriptSrc("//vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js");
+    $this->addCssSrc('//vjs.zencdn.net/5.8/video-js.min.css')
+            ->appendScriptSrc('//vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js');
     return $this;
   }
 
@@ -211,8 +211,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function addCssSrc($href, $media = "screen") {
-    $this->links->append((new Link($href, "stylesheet", $media))->setType("text/css"));
+  public function addCssSrc($href, $media = 'screen') {
+    $this->links->append((new Link($href, 'stylesheet', $media))->setType('text/css'));
     return $this;
   }
 
@@ -226,8 +226,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public function addShortcutIcon($href, $type = "image/ico") {
-    $link = new Link($href, "shortcut icon");
+  public function addShortcutIcon($href, $type = 'image/ico') {
+    $link = new Link($href, 'shortcut icon');
     $link->setType($type);
     $this->addContent($link);
     return $this;

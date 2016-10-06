@@ -59,7 +59,7 @@ abstract class HtmlList extends AbstractContainerTag {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = "", $target = "_self") {
+  public function appendLink($href, $content = '', $target = '_self') {
     return $this->append(new HyperlinkListItem($href, $content, $target));
   }
 

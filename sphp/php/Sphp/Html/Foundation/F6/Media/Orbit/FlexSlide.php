@@ -38,8 +38,8 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
    * @param FlexInterface $flex the inner component
    */
   public function __construct(FlexInterface $flex = null) {
-    parent::__construct("li");
-    $this->cssClasses()->lock("orbit-slide");
+    parent::__construct('li');
+    $this->cssClasses()->lock('orbit-slide');
     if (!($flex instanceof Flex)) {
       $flex = new Flex($flex);
     }

@@ -44,7 +44,7 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
    * @param string $tagname
    */
   public function __construct() {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->attrs()->demand("data-off-canvas");
     $this->identify();
     $this->menu = new VerticalMenu();

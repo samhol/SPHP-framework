@@ -69,7 +69,7 @@ class Orbit extends AbstractComponent implements ContentParserInterface, Travers
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($slides = null, $ariaLabel = "") {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->slides = new Ul();
     $this->slides->cssClasses()
             ->lock("orbit-container");

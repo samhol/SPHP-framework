@@ -69,7 +69,7 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
       }
       return $c;
     };
-    parent::__construct("div", null, new WrappingContainer($wrapper));
+    parent::__construct('div', null, new WrappingContainer($wrapper));
     $widthSetter = function ($width, $sreenSize) {
       if ($width > 0 && $width < 9) {
         $this->cssClasses()->add("$sreenSize-up-$width");

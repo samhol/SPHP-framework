@@ -28,9 +28,9 @@ class ScreenReaderLabel extends Span {
    *
    * @param string $content the textual content of the screen reader label
    */
-  public function __construct($content = "") {
+  public function __construct($content = '') {
     parent::__construct($content);
-    $this->cssClasses()->lock("show-for-sr");
+    $this->cssClasses()->lock('show-for-sr');
   }
 
 }

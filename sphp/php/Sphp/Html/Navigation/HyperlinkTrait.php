@@ -55,7 +55,7 @@ trait HyperlinkTrait {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
-    $this->attrs()->set("href", $href);
+    $this->attrs()->set('href', $href);
     return $this;
   }
 
@@ -71,7 +71,7 @@ trait HyperlinkTrait {
    * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function getHref() {
-    return $this->attrs()->get("href");
+    return $this->attrs()->get('href');
   }
 
   /**
@@ -88,9 +88,9 @@ trait HyperlinkTrait {
    */
   public function setTarget($target) {
     if (!Strings::isEmpty($target)) {
-      $this->attrs()->set("target", $target);
+      $this->attrs()->set('target', $target);
     } else {
-      $this->attrs()->remove("target");
+      $this->attrs()->remove('target');
     }
     return $this;
   }
@@ -107,7 +107,7 @@ trait HyperlinkTrait {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getTarget() {
-    return $this->attrs()->get("target");
+    return $this->attrs()->get('target');
   }
 
   /**

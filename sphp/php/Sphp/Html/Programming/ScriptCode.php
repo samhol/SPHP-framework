@@ -30,14 +30,14 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * 
    * **IMPORTANT:** 
    * 
-   * The {@link self} component contains scripting statements
+   * This component contains scripting statements
    *
    * @param  int $purpose the purpose of the script component
    * @param  string $type script's mime-type (type attribute)
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function __construct($code = null) {
-    parent::__construct("script", $code);
+    parent::__construct('script', $code);
   }
 
   /**
@@ -50,7 +50,7 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType($type) {
-    return $this->setAttr("type", $type);
+    return $this->setAttr('type', $type);
   }
 
 }

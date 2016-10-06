@@ -31,7 +31,7 @@ class Span extends ContainerTag {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
-    parent::__construct("span", $content);
+    parent::__construct('span', $content);
   }
 
 }

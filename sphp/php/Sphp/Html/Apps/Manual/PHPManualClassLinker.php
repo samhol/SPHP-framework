@@ -22,7 +22,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
   /**
    * {@inheritdoc}
    */
-  public function __construct($root, $class, $target = "_blank") {
+  public function __construct($root, $class, $target = '_blank') {
     parent::__construct($root, $class, $target);
   }
 
@@ -30,7 +30,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
    * {@inheritdoc}
    */
   protected function getClassPath() {
-    return "class." . $this->phpPathFixer($this->ref->getName()) . ".php";
+    return "class." . $this->phpPathFixer($this->ref->getName()) . '.php';
   }
 
   /**
@@ -55,7 +55,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
   protected function getNamespacePath() {
     $ns = $this->ref->getNamespaceName();
     $path = str_replace('\\', '.', $ns);
-    return "namespace-" . $path . ".html";
+    return "namespace-$path.html";
   }
 
 }

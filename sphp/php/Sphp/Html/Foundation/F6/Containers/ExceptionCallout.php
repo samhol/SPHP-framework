@@ -10,7 +10,6 @@ namespace Sphp\Html\Foundation\F6\Containers;
 use Exception;
 use Sphp\Html\Div;
 use Sphp\Html\Headings\H2 as H2;
-use Sphp\Html\Span;
 use Sphp\Html\Lists\Ol as Ol;
 use Sphp\Html\Lists\Li as Li;
 use Sphp\Html\Lists\Dl as Dl;
@@ -78,7 +77,7 @@ class ExceptionCallout extends Callout {
   public function __construct(Exception $e, $showTrace = false, $showPreviousException = false) {
     $this->exception = $e;
     parent::__construct();
-    $this->cssClasses()->lock("sphp-exception-callout");
+    $this->cssClasses()->lock('sphp-exception-callout');
     $this->showTrace($showTrace)
             ->showPreviousException($showPreviousException);
   }
@@ -138,37 +137,14 @@ class ExceptionCallout extends Callout {
     $prev = $this->exception->getPrevious();
     if ($this->showPreviousException && $prev instanceof \Exception) {
       $heading = (new Div())
-              ->addCssClass("previous")
-              ->append("Previous exception: <span class=\"exception\">" . get_class($prev) . "</span>")
+              ->addCssClass('previous')
+              ->append('Previous exception: <span class="exception">' . get_class($prev) . '</span>')
               ->append(" on line <span class=\"number\">#{$prev->getLine()}</span>")
               ->append(" of file <div class=\"file\">'{$this->parsePath($prev->getFile())}'</div>");
-      $this->content()["previous"] = $heading;
+      $this->content()['previous'] = $heading;
     } else {
-      $this->content()["previous"] = null;
+      $this->content()['previous'] = null;
     }
-    return $this;
-  }
-
-  /**
-   * Builds the {@link \Exception} trace view
-   *
-   * @return self for PHP Method Chaining
-   */
-  private function buildPrevious() {
-    $traceArr = $this->exception->getTrace();
-    $output = "";
-    if (count($traceArr) > 0) {
-      $heading = (new Div())
-              ->addCssClass("previous");
-      $heading->append(' on line <span class="number">#' . $this->exception->getLine() . "</span>")
-              ->append(' of file <div class="file">' . $this->parsePath($this->exception->getFile()) . "</div>");
-      $this->content()["file+row"] = $heading;
-      $this->content()["trace"] = (new Div($this->parseTrace($traceArr)))->addCssClass("trace");
-    } else {
-      $this->content()["file+row"] = null;
-      $this->content()["trace"] = null;
-    }
-    //$this->getInnerContent()[] = "<pre>" . print_r($e->getTrace(), true) . "</pre>";
     return $this;
   }
 

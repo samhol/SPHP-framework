@@ -49,7 +49,7 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
    * @param  mixed $heading column width for small screens (1-2)
    */
   public function __construct() {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("sphp-code-example-grid");
     $this->syntaxHighlighter = new SyntaxhighlightingColumn();
     $this->result = new Column();

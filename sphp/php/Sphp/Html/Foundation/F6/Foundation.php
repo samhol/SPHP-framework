@@ -46,9 +46,9 @@ class Foundation {
    * @return ContentInterface
    * @throws UnexpectedValueException
    */
-  public static function icon($name, $tagName = "i") {
-    if (!Strings::startsWith($name, "fi-")) {
-      $name = "fi-" . $name;
+  public static function icon($name, $tagName = 'i') {
+    if (!Strings::startsWith($name, 'fi-')) {
+      $name = 'fi-' . $name;
     } 
     $obj = Document::get($tagName);
     $obj->addCssClass($name);

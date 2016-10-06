@@ -32,8 +32,8 @@ class W3schools extends AbstractLinker {
    * @param scalar[] $attrs the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct($attrs = "_blank") {
-    parent::__construct("http://www.w3schools.com/", $attrs);
+  public function __construct($attrs = '_blank') {
+    parent::__construct('http://www.w3schools.com/', $attrs);
   }
 
   /**
@@ -44,19 +44,19 @@ class W3schools extends AbstractLinker {
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
   public function tag($tagname, $linkText = null) {
-    if (Strings::match($tagname, "/^([h][1-6])$/")) {
-      $link = "tags/tag_hn.asp";
+    if (Strings::match($tagname, '/^([h][1-6])$/')) {
+      $link = 'tags/tag_hn.asp';
     } else {
       $link = "tags/tag_$tagname.asp";
     }
     if (Strings::isEmpty($linkText)) {
-      if ($tagname === "hn") {
-        $linkText = "&lt;h1|h2|...|h6&gt;";
+      if ($tagname === 'hn') {
+        $linkText = '&lt;h1|h2|...|h6&gt;';
       } else {
         $linkText = "&lt;$tagname&gt;";
       }
     }
-    return $this->hyperlink($link, $linkText, "Link to w3schools.com documentation");
+    return $this->hyperlink($link, $linkText, 'Link to w3schools.com documentation');
   }
 
   /**
@@ -71,7 +71,7 @@ class W3schools extends AbstractLinker {
     if (Strings::isEmpty($linkText)) {
       $linkText = "$attrName Attribute";
     }
-    return $this->hyperlink($link, $linkText, "Link to w3schools.com documentation");
+    return $this->hyperlink($link, $linkText, 'Link to w3schools.com documentation');
   }
 
   /**

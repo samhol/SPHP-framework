@@ -30,7 +30,7 @@ trait ButtonTrait {
    * @var string[]
    */
   private $sizes = [
-      "tiny", "small", "large", "expand"
+      'tiny', 'small', 'large', 'expand'
   ];
 
   /**
@@ -76,7 +76,7 @@ trait ButtonTrait {
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setDefaultSize() {
-    return $this->setSize("medium");
+    return $this->setSize('medium');
   }
 
 }

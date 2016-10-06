@@ -59,13 +59,13 @@ abstract class AbstractAttribute implements AttributeInterface {
    * @return string the object as a string
    */
   public function __toString() {
-    $output = "";
+    $output = '';
     $value = $this->getValue();
     if ($value !== false) {
       $output .= $this->getName();
       if ($value !== true && !Strings::isEmpty($value)) {
         $strVal = Strings::toString($value);
-        $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, "utf-8", false) . '"';
+        $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
       }
     }
     return $output;

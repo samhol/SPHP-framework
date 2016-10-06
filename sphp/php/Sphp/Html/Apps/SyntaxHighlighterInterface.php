@@ -41,7 +41,7 @@ interface SyntaxHighlighterInterface extends \Sphp\Html\ContentInterface {
    * @param  mixed $content the actual controller or the content of the controller
    * @return self for PHP Method Chaining
    */
-  public function setDefaultContentCopyController($content = "Copy");
+  public function setDefaultContentCopyController($content = 'Copy');
 
   /**
    * Loads the source code from the string

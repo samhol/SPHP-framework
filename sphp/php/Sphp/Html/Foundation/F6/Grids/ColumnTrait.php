@@ -53,7 +53,7 @@ trait ColumnTrait {
    * @param  string $screen the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function setLayout($width, $offset = false, $screen = "small") {
+  public function setLayout($width, $offset = false, $screen = 'small') {
     $this->setWidth($width, $screen);
     $this->setGridOffset($offset, $screen);
     return $this;
@@ -70,11 +70,11 @@ trait ColumnTrait {
    * @return ColumnInterface for PHP Method Chaining
    */
   public function setWidths($s, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->setWidth($s, "small")
-            ->setWidth($m, "medium")
-            ->setWidth($l, "large")
-            ->setWidth($xl, "xlarge")
-            ->setWidth($xxl, "xxlarge");
+    $this->setWidth($s, 'small')
+            ->setWidth($m, 'medium')
+            ->setWidth($l, 'large')
+            ->setWidth($xl, 'xlarge')
+            ->setWidth($xxl, 'xxlarge');
     return $this;
   }
 
@@ -161,7 +161,7 @@ trait ColumnTrait {
    * @param  string $screenSize the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function setGridOffset($offset, $screenSize = "small") {
+  public function setGridOffset($offset, $screenSize = 'small') {
     if ($offset > ColumnInterface::FULL_WIDTH - 1) {
       $offset = ColumnInterface::FULL_WIDTH - 1;
     }
@@ -186,11 +186,11 @@ trait ColumnTrait {
    * @return ColumnInterface for PHP Method Chaining
    */
   public function setGridOffsets($s, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->setGridOffset($s, "small")
-            ->setGridOffset($m, "medium")
-            ->setGridOffset($l, "large")
-            ->setGridOffset($xl, "xlarge")
-            ->setGridOffset($xxl, "xxlarge");
+    $this->setGridOffset($s, 'small')
+            ->setGridOffset($m, 'medium')
+            ->setGridOffset($l, 'large')
+            ->setGridOffset($xl, 'xlarge')
+            ->setGridOffset($xxl, 'xxlarge');
     return $this;
   }
 

@@ -43,16 +43,16 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */
-  public function __construct($title = "Highlighted code", SyntaxHighlighterInterface $hl = null) {
+  public function __construct($title = 'Highlighted code', SyntaxHighlighterInterface $hl = null) {
     if ($hl === null) {
       $hl = new SyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setDefaultContentCopyController((new IconButton("page-copy", "Copy"))
-                    ->setSize("tiny")
-                    ->setTitle("Copy code to clipboard"));
+    $this->hl->setDefaultContentCopyController((new IconButton('page-copy', 'Copy'))
+                    ->setSize('tiny')
+                    ->setTitle('Copy code to clipboard'));
     parent::__construct($title, $this->hl);
-    $this->addCssClass("syntax-pane");
+    $this->addCssClass('syntax-pane');
   }
 
   /**

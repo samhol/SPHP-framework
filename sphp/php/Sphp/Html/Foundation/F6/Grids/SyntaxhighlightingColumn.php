@@ -38,7 +38,7 @@ class SyntaxhighlightingColumn extends AbstractComponent implements ColumnInterf
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("columns");
     $this->syntaxHighlighter = new SyntaxHighlighter();
   }

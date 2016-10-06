@@ -32,7 +32,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    *
    * @var string[]
    */
-  private static $stackScreens = ["all", "small", "medium"];
+  private static $stackScreens = ['all', 'small', 'medium'];
 
   /**
    * Constructs a new instance
@@ -40,8 +40,8 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  null|ButtonInterface|ButtonInterface[] $buttons the appended buttons
    */
   public function __construct($buttons = null) {
-    parent::__construct("div");
-    $this->cssClasses()->lock("button-group");
+    parent::__construct('div');
+    $this->cssClasses()->lock('button-group');
     if (is_array($buttons)) {
       $this->appendButtons($buttons);
     }
@@ -66,7 +66,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content, $target = "_self") {
+  public function appendLink($href, $content, $target = '_self') {
     $this->appendButton(new HyperlinkButton($href, $content, $target));
     return $this;
   }
@@ -128,10 +128,10 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function stackFor($screenSize = "all") {
+  public function stackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {
-      if ($screenSize == "all") {
-        $this->addCssClass("stacked");
+      if ($screenSize == 'all') {
+        $this->addCssClass('stacked');
       } else {
         $this->addCssClass("stacked-for-$screenSize");
       }
@@ -149,11 +149,11 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function unStackFor($screenSize = "all") {
+  public function unStackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {
-      if ($screenSize == "all") {
+      if ($screenSize == 'all') {
         $this->cssClasses()
-                ->remove(["stacked", "stacked-for-small", "stacked-for-medium"]);
+                ->remove(['stacked', 'stacked-for-small', 'stacked-for-medium']);
       } else {
         $this->cssClasses()
                 ->remove("stacked-for-$screenSize");

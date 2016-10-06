@@ -31,9 +31,9 @@ trait PHPManualTrait {
    */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     if (Strings::isEmpty($title)) {
-      $title = "PHP manual";
+      $title = 'PHP manual';
     } else {
-      $title = "PHP manual: " . $title;
+      $title = 'PHP manual: ' . $title;
     }
     return parent::hyperlink($relativeUrl, $content, $title);
   }

@@ -34,9 +34,9 @@ class Button extends ButtonTag {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($type = "button", $content = null, $name = null, $value = null) {
+  public function __construct($type = 'button', $content = null, $name = null, $value = null) {
     parent::__construct($type, $content, $name, $value);
-    $this->cssClasses()->lock("button");
+    $this->cssClasses()->lock('button');
   }
 
 }

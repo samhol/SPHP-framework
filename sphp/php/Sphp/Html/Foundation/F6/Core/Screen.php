@@ -23,14 +23,14 @@ class Screen {
    *
    * @var string[]
    */
-  private static $sizes = ["small", "medium", "large", "xlarge", "xxlarge"];
+  private static $sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
 
   /**
    * Foundation screen type names
    *
    * @var string[]
    */
-  private static $otherTypes = ["portrait", "landscape", "sr"];
+  private static $otherTypes = ['portrait', 'landscape', 'sr'];
 
   /**
    * 
@@ -106,7 +106,7 @@ class Screen {
    * @return string[]
    */
   public static function orientation() {
-    return ["portrait", "landscape"];
+    return ['portrait', 'landscape'];
   }
 
 }

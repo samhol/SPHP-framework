@@ -34,7 +34,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * 
    * @param null|SyntaxHighlighterInterface $hl the inner syntax highlighting component
    */
-  public function __construct($paneTitle = "Highlighted code", SyntaxHighlighterInterface $hl = null) {
+  public function __construct($paneTitle = 'Highlighted code', SyntaxHighlighterInterface $hl = null) {
     parent::__construct(new SyntaxHighlightingPane($paneTitle, $hl));
   }
 
@@ -81,7 +81,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
   /**
    * {@inheritdoc}
    */
-  public function setDefaultContentCopyController($content = "Copy") {
+  public function setDefaultContentCopyController($content = 'Copy') {
     $this->hl->setDefaultContentCopyController($content);
     return $this;
   }

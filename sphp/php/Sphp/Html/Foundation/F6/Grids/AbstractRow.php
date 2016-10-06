@@ -56,11 +56,11 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
         return new Column($c);
       }
     };
-    parent::__construct("div", null, new WrappingContainer($wrapToCol));
+    parent::__construct('div', null, new WrappingContainer($wrapToCol));
     if ($columns !== null) {
       $this->setColumns($columns);
     }
-    $this->cssClasses()->lock("row");
+    $this->cssClasses()->lock('row');
   }
 
   /**
@@ -84,7 +84,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
       }
     }
     if ($newCols > 0) {
-      $prev = $freeCols["small"];
+      $prev = $freeCols['small'];
       foreach ($freeCols as $sreenType => $colCount) {
         //var_dump($colCount);
         $sType[$sreenType] = floor($colCount / $newCols);
@@ -93,7 +93,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
         }
       }
       foreach ($freeCols as $sizeName => $freeSpace) {
-        if ($sizeName != "small" && $freeSpace == $prev) {
+        if ($sizeName != 'small' && $freeSpace == $prev) {
           $sType[$sizeName] = false;
         }
       }
@@ -105,7 +105,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
       if ($column instanceof ColumnInterface) {
         $this->append($column);
       } else {
-        $this->appendColumn($column, $sType["small"], $sType["medium"], $sType["large"], $sType["xlarge"], $sType["xxlarge"]);
+        $this->appendColumn($column, $sType['small'], $sType['medium'], $sType['large'], $sType['xlarge'], $sType['xxlarge']);
       }
     }
     return $this;
@@ -124,7 +124,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    * {@inheritdoc}
    */
   public function collapseColumns() {
-    $this->addCssClass("collapse");
+    $this->addCssClass('collapse');
     return $this;
   }
 

@@ -37,7 +37,7 @@ class InputButton extends InputButtonTag implements ButtonInterface {
    */
   public function __construct($type = null, $name = null, $value = null) {
     parent::__construct($type, $name, $value);
-    $this->cssClasses()->lock("button");
+    $this->cssClasses()->lock('button');
   }
 
 }

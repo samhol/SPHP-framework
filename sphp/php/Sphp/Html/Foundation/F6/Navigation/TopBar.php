@@ -50,9 +50,9 @@ class TopBar extends AbstractComponent {
    * @param mixed $title the title of the Top Bar component
    */
   public function __construct($title = null, MenuInterface $left = null, MenuInterface $right = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->buildComponents($title, $left, $right);
-    $this->cssClasses()->lock("top-bar");
+    $this->cssClasses()->lock('top-bar');
   }
 
   /**
@@ -65,7 +65,7 @@ class TopBar extends AbstractComponent {
    */
   private function buildComponents($title, MenuInterface $leftContent = null, MenuInterface $rightContent = null) {
     $this->titleArea = new Div($title);
-    $this->titleArea->attrs()->classes()->lock("top-bar-title");
+    $this->titleArea->attrs()->classes()->lock('top-bar-title');
     if ($leftContent === null) {
       $leftContent = new DropdownMenu();
     }
@@ -73,9 +73,9 @@ class TopBar extends AbstractComponent {
       $rightContent = new DropdownMenu();
     }
     $this->leftArea = new Div();
-    $this->leftArea->cssClasses()->lock("top-bar-left");
+    $this->leftArea->cssClasses()->lock('top-bar-left');
     $this->rightArea = new Div();
-    $this->rightArea->cssClasses()->lock("top-bar-right");
+    $this->rightArea->cssClasses()->lock('top-bar-right');
     $this->left($leftContent);
     $this->right($rightContent);
     return $this;
@@ -89,10 +89,10 @@ class TopBar extends AbstractComponent {
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
-  public function stackFor($screenSize = "small") {
+  public function stackFor($screenSize = 'small') {
     $this->setDefaultStacking();
     if (in_array($screenSize, static::$stackScreens)) {
-      if ($screenSize !== "small") {
+      if ($screenSize !== 'small') {
         $this->addCssClass("stacked-for-$screenSize");
       }
     } else {
@@ -109,7 +109,7 @@ class TopBar extends AbstractComponent {
    */
   public function setDefaultStacking() {
     $this->cssClasses()
-            ->remove(["stacked-for-large", "stacked-for-medium"]);
+            ->remove(['stacked-for-large', 'stacked-for-medium']);
     return $this;
   }
 
@@ -134,9 +134,9 @@ class TopBar extends AbstractComponent {
    */
   public function left(MenuInterface $menu = null) {
     if ($menu !== null) {
-      $this->leftArea["menu"] = $menu;
+      $this->leftArea['menu'] = $menu;
     }
-    return $this->leftArea["menu"];
+    return $this->leftArea['menu'];
   }
 
   /**
@@ -147,9 +147,9 @@ class TopBar extends AbstractComponent {
    */
   public function right(MenuInterface $menu = null) {
     if ($menu !== null) {
-      $this->rightArea["menu"] = $menu;
+      $this->rightArea['menu'] = $menu;
     }
-    return $this->rightArea["menu"];
+    return $this->rightArea['menu'];
   }
 
   /**

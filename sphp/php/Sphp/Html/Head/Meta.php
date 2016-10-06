@@ -31,7 +31,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @param  string[] $attrs an array of attribute name value pairs
    */
   public function __construct(array $attrs = []) {
-    parent::__construct("meta", $attrs);
+    parent::__construct('meta', $attrs);
   }
 
   /**
@@ -52,7 +52,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_charset.asp charset attribute
    */
   public function setCharset($charset) {
-    return $this->setAttr("charset", $charset);
+    return $this->setAttr('charset', $charset);
   }
 
   /**
@@ -71,7 +71,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setNamedContent($name, $content) {
-    return $this->setAttr("name", $name)->setAttr("content", $content);
+    return $this->setAttr('name', $name)->setAttr('content', $content);
   }
 
   /**
@@ -81,7 +81,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
   public function hasNamedContent() {
-    return $this->attrExists("name");
+    return $this->attrExists('name');
   }
 
   /**
@@ -103,7 +103,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
   public function getName() {
-    return $this->getAttr("name");
+    return $this->getAttr('name');
   }
 
   /**
@@ -123,7 +123,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
   public function setHttpEquivContent($http_equiv, $content) {
-    return $this->setAttr("http-equiv", $http_equiv)->setAttr("content", $content);
+    return $this->setAttr('http-equiv', $http_equiv)->setAttr('content', $content);
   }
 
   /**
@@ -133,7 +133,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    */
   public function hasHttpEquivContent() {
-    return $this->attrExists("http-equiv");
+    return $this->attrExists('http-equiv');
   }
 
   /**
@@ -144,7 +144,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
    */
   public function hasHttpEquiv($http_equiv) {
-    return $this->hasHttpEquivContent() && $this->get("http_equiv") == $http_equiv;
+    return $this->hasHttpEquivContent() && $this->get('http_equiv') == $http_equiv;
   }
 
   /**
@@ -155,7 +155,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
    */
   public function getHttpEquiv() {
-    return $this->getAttr("http_equiv");
+    return $this->getAttr('http_equiv');
   }
 
   /**
@@ -173,7 +173,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function setPropertyContent($property, $content) {
-    return $this->setAttr("property", $property)->setAttr("content", $content);
+    return $this->setAttr('property', $property)->setAttr('content', $content);
   }
 
   /**
@@ -185,7 +185,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function hasPropertyContent() {
-    return $this->attrExists("property");
+    return $this->attrExists('property');
   }
 
   /**
@@ -198,7 +198,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function hasProperty($property) {
-    return $this->hasPropertyContent() && $this->get("property") == $property;
+    return $this->hasPropertyContent() && $this->get('property') == $property;
   }
 
   /**
@@ -211,7 +211,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
   public function getProperty() {
-    return $this->getAttr("property");
+    return $this->getAttr('property');
   }
 
 }

@@ -41,11 +41,11 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    */
   public function __construct($content = null) {
     $ul = new Ul();
-    $ul->cssClasses()->lock("breadcrumbs");
-    parent::__construct("nav", null, $ul);
-    $this->cssClasses()->lock("breadcrumbs");
-    $this->attrs()->lock("role", "navigation")
-            ->set("aria-label", "breadcrumbs");
+    $ul->cssClasses()->lock('breadcrumbs');
+    parent::__construct('nav', null, $ul);
+    $this->cssClasses()->lock('breadcrumbs');
+    $this->attrs()->lock('role', 'navigation')
+            ->set('aria-label', 'breadcrumbs');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $breadcrumb) {
         $this->append($breadcrumb);
@@ -69,7 +69,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function prependNew($href = "", $content = null, $target = "_self") {
+  public function prependNew($href = '', $content = null, $target = '_self') {
     $this->prepend(new BreadCrumb($href, $content, $target));
     return $this;
   }
@@ -90,7 +90,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendNew($href = "", $content = null, $target = "") {
+  public function appendNew($href = '', $content = null, $target = '') {
     $this->append(new BreadCrumb($href, $content, $target));
     return $this;
   }

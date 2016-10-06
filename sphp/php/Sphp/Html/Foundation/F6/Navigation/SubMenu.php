@@ -39,9 +39,9 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
     if ($menu === null) {
       $menu = new Menu();
     }
-    parent::__construct("li", null, $menu);
+    parent::__construct('li', null, $menu);
     $this->setRoot($root);
-    $this->cssClasses()->add("is-dropdown-submenu-parent");
+    $this->cssClasses()->add('is-dropdown-submenu-parent');
   }
 
   /**
@@ -87,7 +87,7 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = "", $target = "_self") {
+  public function appendLink($href, $content = '', $target = '_self') {
     $menuLink = new MenuLink($href, $content, $target);
     if ($menuLink->isActive()) {
       $this->setActive(true);

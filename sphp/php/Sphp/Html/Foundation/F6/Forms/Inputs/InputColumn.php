@@ -73,7 +73,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    */
   public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("column");
     $widthSetter = function ($width, $sreenSize) {
       if ($width > 0 && $width < 13) {

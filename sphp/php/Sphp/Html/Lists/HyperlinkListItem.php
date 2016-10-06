@@ -38,7 +38,7 @@ class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct("li", $href, $content, $target);
+    parent::__construct('li', $href, $content, $target);
   }
   
   /**

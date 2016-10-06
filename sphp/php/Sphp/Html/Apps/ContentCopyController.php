@@ -49,7 +49,7 @@ class ContentCopyController implements ContentInterface {
    *         attribute of the target container
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function __construct(ComponentInterface $button, $target = "") {
+  public function __construct(ComponentInterface $button, $target = '') {
     $this->button = $button;
     $this->setCopyTarget($target);
   }
@@ -70,12 +70,12 @@ class ContentCopyController implements ContentInterface {
   public function setCopyTarget($target) {
     if ($target !== $this->target) {
       if ($target instanceof ComponentInterface) {
-        $id = $target->identify("id", "copy_target", 32);
+        $id = $target->identify('id', 'copy_target', 32);
       } else {
         $id = $target;
       }
       $this->target = $target;
-      $this->button->setAttr("data-clipboard-target", $id);
+      $this->button->setAttr('data-clipboard-target', $id);
     }
     return $this;
   }

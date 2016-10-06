@@ -43,7 +43,7 @@ class ApiGen extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = "", $defaultTarget = "apigen", $defaultCssClasses = "api apigen") {
+  public function __construct($apiRoot = '', $defaultTarget = 'apigen', $defaultCssClasses = 'api apigen') {
     parent::__construct($apiRoot, $defaultTarget, $defaultCssClasses);
   }
 
@@ -61,8 +61,8 @@ class ApiGen extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to an PHP function page
    */
   public function functionLink($funName) {
-    $path = "function-" . $path . ".html";
-    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass("function");
+    $path = "function-$path.html";
+    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
   /**
@@ -73,7 +73,7 @@ class ApiGen extends AbstractPhpApiLinker {
    */
   public function constantLink($constantName) {
     $path = str_replace('\\', '.', $constantName);
-    return $this->hyperlink("constant-$path.html", $constantName, "$constantName constant")->addCssClass("constant");
+    return $this->hyperlink("constant-$path.html", $constantName, "$constantName constant")->addCssClass('constant');
   }
 
   /**
@@ -104,13 +104,13 @@ class ApiGen extends AbstractPhpApiLinker {
   public function namespaceBreadGrumbs($namespace) {
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
     //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass("apigen namespace");
+    $bcs = (new BreadCrumbs())->addCssClass('apigen namespace');
     $cuur = [];
     foreach ($nsArr as $name) {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getApiRoot() . "namespace-" . $path . ".html", $name, "apigen");
+      $bc = new BreadCrumb($this->getApiRoot() . "namespace-$path.html", $name, "apigen");
       $bcs->append($bc);
     }
     return $bcs;

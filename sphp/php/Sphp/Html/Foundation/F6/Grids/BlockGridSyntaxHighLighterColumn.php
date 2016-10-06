@@ -33,7 +33,7 @@ class BlockGridSyntaxHighLighterColumn extends AbstractComponent implements Bloc
    * {@inheritdoc}
    */
   public function __construct($content = null) {
-    parent::__construct("div");
+    parent::__construct('div');
     $this->cssClasses()->lock("column");
     $this->syntaxHighlighter = new SyntaxHighlighter();
   }
