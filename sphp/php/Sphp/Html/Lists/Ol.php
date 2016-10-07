@@ -10,10 +10,8 @@ namespace Sphp\Html\Lists;
 /**
  * Class models an ordered HTML-list &lt;ol&gt; tag
  *
- * 
  * {@inheritdoc}
  * 
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API link
@@ -36,7 +34,7 @@ class Ol extends HtmlList {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($items = null) {
-    parent::__construct("ol");
+    parent::__construct('ol');
     if ($items !== null) {
       foreach (is_array($items) ? $items : [$items] as $item) {
         $this->append($item);
@@ -52,7 +50,7 @@ class Ol extends HtmlList {
    * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
   public function setReversed($reversed = true) {
-    $this->attrs()->set("reversed", $reversed);
+    $this->attrs()->set('reversed', (bool) $reversed);
     return $this;
   }
 

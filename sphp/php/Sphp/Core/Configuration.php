@@ -85,10 +85,10 @@ class Configuration implements Arrayable {
    * @param  string $domain the name of the used domain
    * @return self the singelton instanse of the config object
    */
-  public static function useDomain($domain = "default") {
+  public static function useDomain($domain = 'default') {
     if ($domain === null) {
       if (static::$current === null) {
-        $instance = static::useDomain("default");
+        $instance = static::useDomain('default');
       } else {
         $instance = static::$current;
       }
@@ -147,7 +147,7 @@ class Configuration implements Arrayable {
    */
   public function get($varName) {
     if (!$this->exists($varName)) {
-      throw new ConfigurationException("Configuration variable can not be found from the current environment");
+      throw new ConfigurationException('Configuration variable can not be found from the current environment');
     }
     return $this->data[$varName];
   }
@@ -204,8 +204,8 @@ class Configuration implements Arrayable {
    */
   public function toArray() {
     $arr = [];
-    $arr[$this->domain]["vars"] = Arrays::copy($this->data);
-    $arr[$this->domain]["phpConfiguration"] = $this->phpConf->toArray();
+    $arr[$this->domain]['vars'] = Arrays::copy($this->data);
+    $arr[$this->domain]['phpConfiguration'] = $this->phpConf->toArray();
     return $arr;
   }
 

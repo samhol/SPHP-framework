@@ -12,7 +12,7 @@ use Sphp\Net\URL;
 /**
  * Class Models an HTML &lt;img&gt; tag
  *
- * An {@link self} component represents an image. The image given by the src attribute is
+ * This component represents an image. The image given by the src attribute is
  * the embedded content, and the value of the alt attribute is the img
  * element's fallback content.
  *

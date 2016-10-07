@@ -31,12 +31,12 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
   /**
    * describes the format of the Finnish date
    */
-  const FI_DATE = "d.m.Y";
+  const FI_DATE = 'd.m.Y';
 
   /**
    * describes the format of the SQL-formatted datetime
    */
-  const SQL_DATETIME = "Y-m-j H:i:s";
+  const SQL_DATETIME = 'Y-m-j H:i:s';
 
   /**
    * Constructs a new instance of the {@link self} object
@@ -46,9 +46,9 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @link   http://www.php.net/manual/en/datetime.construct.php DateTime::__construct (PHP manual)
    * @link   http://www.php.net/manual/en/class.datetimezone.php The DateTimeZone class (PHP manual)
    */
-  function __construct($time = "now", DateTimeZone $timezone = null) {
+  function __construct($time = 'now', DateTimeZone $timezone = null) {
     if (is_numeric($time)) {
-      $time = date("Y-m-d H:i:s", $time);
+      $time = date('Y-m-d H:i:s', $time);
     }
     parent::__construct($time, $timezone);
   }
@@ -75,7 +75,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @return string the month name
    */
   public function getMonthName() {
-    return $this->format("F");
+    return $this->format('F');
   }
 
   /**
@@ -84,7 +84,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @return string the weekday name
    */
   public function getWeekdayName() {
-    return $this->format("l");
+    return $this->format('l');
   }
 
   /**
@@ -100,7 +100,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    */
   public function compareTo($other) {
     if (!($other instanceof Datetime)) {
-      throw new \InvalidArgumentException("Compared instance mustbe of type " . Datetime::class);
+      throw new \InvalidArgumentException('Compared instance mustbe of type ' . Datetime::class);
     }
     if ($this->equals($other)) {
       return 0;
@@ -148,7 +148,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @return string object as a datetime string
    */
   public function __toString() {
-    return $this->format("Y-m-d H:i:s T");
+    return $this->format('Y-m-d H:i:s T');
   }
 
   /**
@@ -159,7 +159,7 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
    * @return string as a datetime string
    */
   public function toScalar() {
-    return $this->format("Y-m-d H:i:s T");
+    return $this->format('Y-m-d H:i:s T');
   }
 
 }

@@ -28,7 +28,7 @@ class ErrorExceptionThrower {
    */
   public static function start($level = \E_ALL) {
     if ($level == null) {
-      if (defined("E_DEPRECATED")) {
+      if (defined('E_DEPRECATED')) {
         $level = E_ALL & ~E_DEPRECATED;
       } else {
         // php 5.2 and earlier don't support E_DEPRECATED
@@ -36,8 +36,8 @@ class ErrorExceptionThrower {
         self::$ignoreDeprecated = true;
       }
     }
-    set_error_handler(array(self::class, "handleError"), $level);
-    register_shutdown_function(array(self::class, "fatalErrorShutdownHandler"));
+    set_error_handler(array(self::class, 'handleError'), $level);
+    register_shutdown_function(array(self::class, 'fatalErrorShutdownHandler'));
   }
 
   /**
@@ -74,7 +74,7 @@ class ErrorExceptionThrower {
    * @return void
    * @throws ErrorException
    */
-  public static function handleError($code, $string = "", $file = "", $line = "") {
+  public static function handleError($code, $string = '', $file = '', $line = '') {
     // ignore supressed errors
     if (error_reporting() == 0) {
       return;

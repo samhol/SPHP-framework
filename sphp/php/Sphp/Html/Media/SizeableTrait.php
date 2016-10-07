@@ -45,7 +45,7 @@ trait SizeableTrait {
    * @return int|boolean width of the component or `false` if not set
    */
   public function getWidth() {
-    return $this->parseDimension($this->attrs()->get("width"));
+    return $this->parseDimension($this->attrs()->get('width'));
   }
 
   /**
@@ -56,7 +56,7 @@ trait SizeableTrait {
    * @return self for PHP Method Chaining
    */
   public function setWidth($width) {
-    $this->attrs()->set("width", $this->parseDimension($width));
+    $this->attrs()->set('width', $this->parseDimension($width));
     return $this;
   }
 
@@ -66,7 +66,7 @@ trait SizeableTrait {
    * @return int|boolean height of the component or `false` if not set
    */
   public function getHeight() {
-    return $this->parseDimension($this->attrs()->get("height"));
+    return $this->parseDimension($this->attrs()->get('height'));
   }
 
   /**
@@ -77,7 +77,7 @@ trait SizeableTrait {
    * @return self for PHP Method Chaining
    */
   public function setHeight($height) {
-    $this->attrs()->set("height", $this->parseDimension($height));
+    $this->attrs()->set('height', $this->parseDimension($height));
     return $this;
   }
 
