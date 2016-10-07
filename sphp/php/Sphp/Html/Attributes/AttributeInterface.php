@@ -36,7 +36,7 @@ interface AttributeInterface {
    *
    * @param    scalar $value value to set
    * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute value is invalid
+   * @throws   InvalidAttributeException if the attribute value is invalid for the type of the attribute
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function set($value);
@@ -50,8 +50,6 @@ interface AttributeInterface {
    * * return `null` or an empty string for empty attributes.
    * 
    * @return scalar the value of the attribute
-   * @throws InvalidAttributeException if the attribute value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function getValue();
 
@@ -65,10 +63,10 @@ interface AttributeInterface {
   /**
    * Locks the given value to the attribute
    *
-   * @param  string $value the value to lock to the attribute
+   * @param  scalar $value the value to lock to the attribute
    * @return self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidAttributeException if the attribute value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function lock($value);
 
