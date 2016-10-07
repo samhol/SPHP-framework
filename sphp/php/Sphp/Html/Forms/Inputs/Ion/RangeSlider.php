@@ -29,7 +29,7 @@ class RangeSlider extends AbstractSlider {
    */
   public function __construct($name = null, $start = 0, $end = 100, $step = 1) {
     parent::__construct($name, $start, $end, $step, [$start, $end]);
-    $this->attrs()->lock("data-type", "double");
+    $this->attrs()->lock('data-type', 'double');
   }
 
   /**
@@ -38,9 +38,9 @@ class RangeSlider extends AbstractSlider {
    * @return string separator for double values in input value property
    */
   public function getInputValueSeparator() {
-    $separator = ";";
-    if ($this->attrs()->exists("data-input-values-separator")) {
-      $separator = $this->attrs()->get("data-input-values-separator");
+    $separator = ';';
+    if ($this->attrs()->exists('data-input-values-separator')) {
+      $separator = $this->attrs()->get('data-input-values-separator');
     }
     return $separator;
   }
@@ -52,7 +52,7 @@ class RangeSlider extends AbstractSlider {
    * @return self for PHP Method Chaining
    */
   public function setInputValueSeparator($separator) {
-    $this->attrs()->set("data-input-values-separator", $separator);
+    $this->attrs()->set('data-input-values-separator', $separator);
     return $this;
   }
 
@@ -71,12 +71,12 @@ class RangeSlider extends AbstractSlider {
     }
     if (!is_array($value) || count($value) != 2) {
       //var_dump($value);
-      throw new InvalidArgumentException("value is not suitable for range slider component");
+      throw new InvalidArgumentException('value is not suitable for range slider component');
     }
     $from = reset($value);
     $to = end($value);
-    $this->attrs()->set("data-from", $from);
-    $this->attrs()->set("data-to", $to);
+    $this->attrs()->set('data-from', $from);
+    $this->attrs()->set('data-to', $to);
 
     parent::setValue($from . $this->getInputValueSeparator() . $to);
     return $this;

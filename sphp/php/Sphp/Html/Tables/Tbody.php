@@ -34,8 +34,8 @@ class Tbody extends TableRowContainer {
 	 * @param  null|mixed|mixed[] $row the row being appended
 	 */
 	public function __construct($row = null) {
-		parent::__construct("tbody", $row);
-		$this->setDefaultTableCellType("td");
+		parent::__construct('tbody', $row);
+		$this->setDefaultTableCellType('td');
 	}
 
 }

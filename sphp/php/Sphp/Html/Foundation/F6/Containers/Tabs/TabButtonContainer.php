@@ -27,8 +27,8 @@ class TabButtonContainer extends AbstractContainerComponent {
   public function __construct() {
     parent::__construct('ul');
     $this->identify();
-    $this->cssClasses()->lock("tabs");
-    $this->attrs()->demand("data-tabs");
+    $this->cssClasses()->lock('tabs');
+    $this->attrs()->demand('data-tabs');
   }
 
   /**

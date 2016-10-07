@@ -36,7 +36,7 @@ class ArrayFilter extends AbstractFilter {
   /**
    * Constructs a new instance
    * 
-   * @param mixed[] $definition an array defining the arguments {@see http://php.net/manual/en/function.filter-var-array.php}
+   * @param mixed[] $definition an array defining the arguments
    * @param boolean $add_empty
    * @link  http://php.net/manual/en/function.filter-var-array.php filter_var_array
    * @link  http://php.net/manual/en/filter.filters.php Types of filters

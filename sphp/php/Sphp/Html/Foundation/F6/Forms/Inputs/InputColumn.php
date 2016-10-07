@@ -74,25 +74,25 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    */
   public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     parent::__construct('div');
-    $this->cssClasses()->lock("column");
+    $this->cssClasses()->lock('column');
     $widthSetter = function ($width, $sreenSize) {
       if ($width > 0 && $width < 13) {
         $this->cssClasses()->add("$sreenSize-$width");
       }
     };
-    $widthSetter($s, "small");
-    $widthSetter($m, "medium");
-    $widthSetter($l, "large");
-    $widthSetter($xl, "xlarge");
-    $widthSetter($xxl, "xxlarge");
+    $widthSetter($s, 'small');
+    $widthSetter($m, 'medium');
+    $widthSetter($l, 'large');
+    $widthSetter($xl, 'xlarge');
+    $widthSetter($xxl, 'xxlarge');
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
-    $this->errorField->cssClasses()->lock("form-error");
+    $this->errorField->cssClasses()->lock('form-error');
     $this->reflector = new ReflectionClass($this->input);
-    $this->label->offsetSet("labelText", "");
-    $this->label->offsetSet("input", $this->input);
-    $this->label->offsetSet("error", $this->errorField);
+    $this->label->offsetSet('labelText', '');
+    $this->label->offsetSet('input', $this->input);
+    $this->label->offsetSet('error', $this->errorField);
   }
 
   /**
@@ -143,7 +143,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @return mixed the label of the component
    */
   public function getLabel() {
-    return $this->label->offsetGet("labelText");
+    return $this->label->offsetGet('labelText');
   }
 
   /**
@@ -153,7 +153,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @return self for PHP Method Chaining
    */
   public function setLabel($label) {
-    $this->label->offsetSet("labelText", $label);
+    $this->label->offsetSet('labelText', $label);
     return $this;
   }
 
@@ -165,7 +165,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    */
   public function setHelperText($text) {
     $this->helper = new Paragraph($text);
-    $this->helper->cssClasses()->lock("help-text");
+    $this->helper->cssClasses()->lock('help-text');
     return $this;
   }
 

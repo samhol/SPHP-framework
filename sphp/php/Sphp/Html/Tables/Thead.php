@@ -36,8 +36,8 @@ class Thead extends TableRowContainer {
 	 * @param  null|mixed|mixed[] $row the row being appended
 	 */
 	public function __construct($row = null) {
-		parent::__construct("thead", $row);
-		$this->setDefaultTableCellType("th");
+		parent::__construct('thead', $row);
+		$this->setDefaultTableCellType('th');
 	}
 
 }

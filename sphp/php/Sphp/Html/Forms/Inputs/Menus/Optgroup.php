@@ -51,8 +51,8 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @param string $label specifies a label for an option-group
    * @param mixed|mixed[] $opt the content
    */
-  public function __construct($label = "", $opt = null) {
-    parent::__construct("optgroup");
+  public function __construct($label = '', $opt = null) {
+    parent::__construct('optgroup');
     $this->setLabel($label);
     if ($opt !== null) {
       $this->append($opt);
@@ -66,7 +66,7 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function getLabel() {
-    return $this->getAttr("label");
+    return $this->getAttr('label');
   }
 
   /**
@@ -77,7 +77,7 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function setLabel($label) {
-    return $this->setAttr("label", $label);
+    return $this->setAttr('label', $label);
   }
 
   /**
@@ -91,7 +91,7 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
    */
   public function disable($disabled = true) {
-    $this->attrs()->set("disabled", (bool) $disabled);
+    $this->attrs()->set('disabled', (bool) $disabled);
     return $this;
   }
 
@@ -102,7 +102,7 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
    */
   public function isEnabled() {
-    return !$this->attrs()->exists("disabled");
+    return !$this->attrs()->exists('disabled');
   }
 
   /**

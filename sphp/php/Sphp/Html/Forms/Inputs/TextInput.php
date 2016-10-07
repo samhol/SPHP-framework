@@ -36,7 +36,7 @@ class TextInput extends TextualInput {
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
   public function __construct($name = null, $value = null, $maxlength = null, $size = null) {
-    parent::__construct("text", $name, $value, $maxlength, $size);
+    parent::__construct('text', $name, $value, $maxlength, $size);
   }
 
 }

@@ -45,7 +45,7 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
    */
   public function __construct() {
     parent::__construct('div');
-    $this->attrs()->demand("data-off-canvas");
+    $this->attrs()->demand('data-off-canvas');
     $this->identify();
     $this->menu = new VerticalMenu();
     $this->closeButton = new CloseButton();
@@ -53,7 +53,7 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
 
   /**
    * 
-   * @param type $text
+   * @param  string $text
    * @return self for PHP Method Chaining
    */
   public function appendLabel($text) {
@@ -62,6 +62,12 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
   }
 
   /**
+   */
+  /**
+   * 
+   * @param  string $href
+   * @param  string $content
+   * @param  string|null $target
    * @return self for PHP Method Chaining
    */
   public function appendLink($href, $content, $target = null) {
@@ -76,6 +82,9 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
     return $this->menu->appendSubMenu($link);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     return $this->closeButton . $this->menu;
   }

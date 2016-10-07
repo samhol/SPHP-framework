@@ -27,7 +27,7 @@ class Checkboxes extends Choiceboxes {
    * @param mixed $mainLabel
    */
   public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct("checkbox", $name, $values, $mainLabel);
+    parent::__construct('checkbox', $name, $values, $mainLabel);
   }
 
   /**
@@ -53,7 +53,7 @@ class Checkboxes extends Choiceboxes {
    */
   public function getName() {
     $name = parent::getName();
-    return str_replace("[]", "", $name);
+    return str_replace("[]", '', $name);
   }
 
   /**
@@ -65,7 +65,7 @@ class Checkboxes extends Choiceboxes {
    * @return self for PHP Method Chaining
    */
   public function setRequired($required = true) {
-    return $this->setAttr("data-required", $required);
+    return $this->setAttr('data-required', $required);
   }
 
   /**
@@ -76,7 +76,7 @@ class Checkboxes extends Choiceboxes {
    *         before form submission, otherwise false
    */
   public function isRequired() {
-    return $this->attrExists("data-required");
+    return $this->attrExists('data-required');
   }
 
 }

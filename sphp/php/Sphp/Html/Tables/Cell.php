@@ -26,9 +26,9 @@ abstract class Cell extends ContainerTag implements CellInterface {
    */
   public function setColspan($value) {
     if ($value == 1) {
-      return $this->removeAttr("colspan");
+      return $this->removeAttr('colspan');
     } else {
-      return $this->setAttr("colspan", $value);
+      return $this->setAttr('colspan', $value);
     }
   }
 
@@ -36,7 +36,7 @@ abstract class Cell extends ContainerTag implements CellInterface {
    * {@inheritdoc}
    */
   public function getColspan() {
-    return intval($this->getAttr("colspan"));
+    return intval($this->getAttr('colspan'));
   }
 
   /**
@@ -44,9 +44,9 @@ abstract class Cell extends ContainerTag implements CellInterface {
    */
   public function setRowspan($value) {
     if ($value == 1) {
-      return $this->removeAttr("rowspan");
+      return $this->removeAttr('rowspan');
     } else {
-      return $this->setAttr("rowspan", $value);
+      return $this->setAttr('rowspan', $value);
     }
   }
 

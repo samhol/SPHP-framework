@@ -28,7 +28,7 @@ class FigCaption extends ContainerTag {
    * @param  mixed $caption the caption content
    */
   public function __construct($caption = null) {
-    parent::__construct("figcaption", $caption);
+    parent::__construct('figcaption', $caption);
   }
 
 }

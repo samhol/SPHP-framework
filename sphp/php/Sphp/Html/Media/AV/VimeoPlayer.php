@@ -36,7 +36,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @return self for PHP Method Chaining
    */
   public function setControlsColor($color) {
-    $this->setParam("color", trim($color, "#"));
+    $this->setParam('color', trim($color, '#'));
   }
 
   /**
@@ -48,7 +48,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @return self for PHP Method Chaining
    */
   public function showVideoTitle($show) {
-    $this->setParam("title", int($show));
+    $this->setParam('title', int($show));
   }
 
 }

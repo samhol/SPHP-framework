@@ -28,7 +28,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 * @param  Col|Col[]|null $cols The ColTag(s) objects that specifies column properties
 	 */
 	public function __construct($cols = null) {
-		parent::__construct("colgroup");
+		parent::__construct('colgroup');
 		if (isset($cols)) {
 			$this->append($cols);
 		}
@@ -41,7 +41,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 * @param  string|string[] $cssClasses CSS classes
 	 * @return self for PHP Method Chaining
 	 */
-	public function appendCol($span = 1, $cssClasses = "") {
+	public function appendCol($span = 1, $cssClasses = '') {
 		$this->append(new Col($span, $cssClasses));
 		return $this;
 	}
@@ -80,7 +80,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 */
 	public function offsetSet($offset, $colTag) {
 		if (!($colTag instanceof Col)) {
-			throw new \InvalidArgumentException("The type of the colTag attribute must be " . get_class(new Col));
+			throw new \InvalidArgumentException('The type of the colTag attribute must be ' . get_class(new Col));
 		}
 		parent::offsetSet($offset, $colTag);
 	}

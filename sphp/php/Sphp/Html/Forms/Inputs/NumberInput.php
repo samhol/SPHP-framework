@@ -38,7 +38,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
     if ($value != null) {
       
     }
-    parent::__construct("number", $name, $value);
+    parent::__construct('number', $name, $value);
   }
 
   /**

@@ -91,7 +91,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendAnyTime() {
     return $this
                     ->appendJQuery()
-                    ->appendSrc($this->paths['vendor'] . "anytime.c.js");
+                    ->appendSrc($this->paths['vendor'] . 'anytime.c.js');
   }
 
   /**

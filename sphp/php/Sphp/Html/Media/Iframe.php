@@ -34,7 +34,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
   public function __construct($src = null, $name = null) {
-    parent::__construct("iframe");
+    parent::__construct('iframe');
     if ($src !== null) {
       $this->setSrc($src);
     }
@@ -51,7 +51,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function setName($name) {
-    $this->attrs()->set("name", $name);
+    $this->attrs()->set('name', $name);
     return $this;
   }
 
@@ -62,7 +62,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName() {
-    return $this->attrs()->get("name");
+    return $this->attrs()->get('name');
   }
 
   /**
@@ -76,7 +76,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setSeamless($seamless = true) {
-    return $this->setAttr("seamless", $seamless);
+    return $this->setAttr('seamless', $seamless);
   }
 
   /**
@@ -104,7 +104,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function setSandbox($sandbox) {
-    return $this->setAttr("sandbox", $sandbox);
+    return $this->setAttr('sandbox', $sandbox);
   }
 
   /**
@@ -131,14 +131,14 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function getSandbox() {
-    return $this->getAttr("sandbox");
+    return $this->getAttr('sandbox');
   }
 
   /**
    * {@inheritdoc}
    */
   public function contentToString() {
-    return "<p>Your browser does not support iframes.</p>";
+    return '<p>Your browser does not support iframes.</p>';
   }
 
 }

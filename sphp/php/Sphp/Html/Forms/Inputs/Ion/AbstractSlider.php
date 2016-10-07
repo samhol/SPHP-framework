@@ -33,11 +33,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @throws InvalidArgumentException if the $value is not between the range
    */
   public function __construct($name, $start = 0, $end = 100, $step = 1, $value = null) {
-    parent::__construct("text", $name);
+    parent::__construct('text', $name);
     if ($value === null) {
       $value = $start;
     }
-    $this->attrs()->demand("data-sphp-ion-slider");
+    $this->attrs()->demand('data-sphp-ion-slider');
     $this->setRange($start, $end)
             ->setStepLength($step)
             ->setValue($value);
@@ -47,7 +47,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * {@inheritdoc}
    */
   public function disable($disabled = true) {
-    $this->attrs()->set("data-disable", (bool) $disabled);
+    $this->attrs()->set('data-disable', (bool) $disabled);
     return $this;
   }
 
@@ -66,7 +66,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
     if ($step > $range) {
       throw new InvalidArgumentException("Step value ($step) is bigger than range ($range)");
     }
-    $this->attrs()->set("data-step", $step);
+    $this->attrs()->set('data-step', $step);
     return $this;
   }
 
@@ -90,7 +90,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function setMin($start) {
-    $this->attrs()->set("data-min", $start);
+    $this->attrs()->set('data-min', $start);
     return $this;
   }
 
@@ -101,7 +101,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function setMax($end) {
-    $this->attrs()->set("data-max", $end);
+    $this->attrs()->set('data-max', $end);
     return $this;
   }
 
@@ -112,7 +112,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function useGrid($grid = true) {
-    $this->attrs()->set("data-grid", $grid ? "true" : "false");
+    $this->attrs()->set('data-grid', $grid ? 'true' : 'false');
     return $this;
   }
 
@@ -123,7 +123,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function setNumberOfGridUnits($num = 4) {
-    $this->attrs()->set("data-grid-num", $num);
+    $this->attrs()->set('data-grid-num', $num);
     return $this;
   }
 
@@ -134,7 +134,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function setPrefix($prefix) {
-    $this->attrs()->set("data-prefix", $prefix);
+    $this->attrs()->set('data-prefix', $prefix);
     return $this;
   }
 
@@ -145,7 +145,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for PHP Method Chaining
    */
   public function setPostfix($postfix) {
-    $this->attrs()->set("data-postfix", $postfix);
+    $this->attrs()->set('data-postfix', $postfix);
     return $this;
   }
 
@@ -153,14 +153,14 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * {@inheritdoc}
    */
   public function getMax() {
-    return $this->attrs()->get("data-max");
+    return $this->attrs()->get('data-max');
   }
 
   /**
    * {@inheritdoc}
    */
   public function getMin() {
-    return $this->attrs()->get("data-min");
+    return $this->attrs()->get('data-min');
   }
 
 }

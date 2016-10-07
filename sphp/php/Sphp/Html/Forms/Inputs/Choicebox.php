@@ -42,7 +42,7 @@ class Choicebox extends InputTag {
 	 * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
      */
     public function setChecked($checked = true) {
-        return $this->setAttr("checked", $checked);
+        return $this->setAttr('checked', $checked);
     }
 
 }

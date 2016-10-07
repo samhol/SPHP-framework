@@ -42,8 +42,8 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 *
 	 * @param  string $caption defines a table caption
 	 */
-	public function __construct($caption = "") {
-		parent::__construct("table");
+	public function __construct($caption = '') {
+		parent::__construct('table');
 		$this->setup($caption);
 	}
 
@@ -54,11 +54,11 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return self for PHP Method Chaining
 	 */
 	private function setup($caption) {
-		$this->content()["caption"] = "";
-		$this->content()["colgroup"] = "";
-		$this->content()["thead"] = new Thead();
-		$this->content()["tfoot"] = new Tfoot();
-		$this->content()["tbody"] = new Tbody();
+		$this->content()['caption'] = '';
+		$this->content()['colgroup'] = "";
+		$this->content()['thead'] = new Thead();
+		$this->content()['tfoot'] = new Tfoot();
+		$this->content()['tbody'] = new Tbody();
 		$this->setCaption($caption);
 		return $this;
 	}

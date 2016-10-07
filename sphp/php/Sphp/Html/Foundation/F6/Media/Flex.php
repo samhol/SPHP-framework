@@ -55,7 +55,7 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
    */
   public function __construct(IframeInterface $media) {
     parent::__construct('div');
-    $this->cssClasses()->lock("flex-video");
+    $this->cssClasses()->lock('flex-video');
     $this->iframe = $media;
   }
 
@@ -123,9 +123,9 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
    */
   public function setWidescreen($widescreen = true) {
     if ($widescreen) {
-      $this->cssClasses()->add("widescreen");
+      $this->cssClasses()->add('widescreen');
     } else {
-      $this->cssClasses()->remove("widescreen");
+      $this->cssClasses()->remove('widescreen');
     }
     return $this;
   }
@@ -191,7 +191,7 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
    */
   public static function vimeo($videoId) {
     $player = new static(new VimeoPlayer($videoId));
-    $player->cssClasses()->lock("vimeo");
+    $player->cssClasses()->lock('vimeo');
     return $player;
   }
 

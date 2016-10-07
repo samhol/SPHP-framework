@@ -59,10 +59,10 @@ class RangeSlider extends AbstractSlider {
    */
   public function __construct($name = null, $min = 0, $max = 100, $step = 1) {
     parent::__construct($min, $max, $step);
-    $this->attrs()->demand("data-initial-end")
-            ->set("data-initial-end", $max);
+    $this->attrs()->demand('data-initial-end')
+            ->set('data-initial-end', $max);
     $this->lowerHandle = new Span();
-    $this->lowerHandle->cssClasses()->lock("slider-handle");
+    $this->lowerHandle->cssClasses()->lock('slider-handle');
     $this->lowerHandle->attrs()
             ->demand("data-slider-handle")
             ->lock("role", "slider")
@@ -70,9 +70,9 @@ class RangeSlider extends AbstractSlider {
     $this->upperHandle = new Span();
     $this->upperHandle->cssClasses()->lock("slider-handle");
     $this->upperHandle->attrs()
-            ->demand("data-slider-handle")
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
+            ->demand('data-slider-handle')
+            ->lock('role', 'slider')
+            ->lock('tabindex', 1);
     $this->lowerInput = (new HiddenInput())->setValue($min);
     $this->upperInput = (new HiddenInput())->setValue($max);
     if ($name !== null) {

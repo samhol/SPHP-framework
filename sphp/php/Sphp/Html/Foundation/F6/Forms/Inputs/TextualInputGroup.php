@@ -29,7 +29,7 @@ class TextualInputGroup extends InputGroup implements TextualInputInterface {
    * @param string|null $prefix the content of the prefix
    * @param string|null $suffix the content of the suffix
    */
-  public function __construct($type = "text", $prefix = null, $suffix = null) {
+  public function __construct($type = 'text', $prefix = null, $suffix = null) {
     parent::__construct(new TextualInput($type), $prefix, $suffix);
   }
 

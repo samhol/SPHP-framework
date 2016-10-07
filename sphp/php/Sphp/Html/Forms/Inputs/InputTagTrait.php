@@ -25,7 +25,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    */
   public function getType() {
-    return $this->attrs()->get("type");
+    return $this->attrs()->get('type');
   }
 
   /**
@@ -35,7 +35,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function getValue() {
-    return $this->attrs()->get("value");
+    return $this->attrs()->get('value');
   }
 
   /**
@@ -47,7 +47,7 @@ trait InputTagTrait {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function setValue($value, $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS) {
-    $this->attrs()->set("value", filter_var($value, $filter));
+    $this->attrs()->set('value', filter_var($value, $filter));
     return $this;
   }
 

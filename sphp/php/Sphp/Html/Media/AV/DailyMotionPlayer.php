@@ -24,7 +24,7 @@ class DailyMotionPlayer extends AbstractVideoPlayer {
    * @param  string $videoId the id of the Vimeo video
    */
   public function __construct($videoId = null) {
-    parent::__construct("//www.dailymotion.com/embed/video/", $videoId);
+    parent::__construct('//www.dailymotion.com/embed/video/', $videoId);
   }
 
 }

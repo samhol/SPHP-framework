@@ -42,10 +42,9 @@ class TabButton extends AbstractContainerComponent implements LiInterface {
    */
   public function __construct(Tab $tabPanel, $title = null) {
     parent::__construct('li');
-    $this->cssClasses()->lock("tabs-title");
+    $this->cssClasses()->lock('tabs-title');
     $this->panel = $tabPanel;
-    $this->panel->getId();
-    $this->panelLink = new Hyperlink("#" . $this->panel->getId(), $title);
+    $this->panelLink = new Hyperlink("#" . $this->panel->identify(), $title);
     $this->setContentContainer($this->panelLink);
   }
 

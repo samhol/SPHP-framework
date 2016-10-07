@@ -27,7 +27,7 @@ class H3 extends AbstractHeading {
 	 * @param  mixed $content optional content of the component
 	 */
 	public function __construct($content = null) {
-		parent::__construct("h3", $content);
+		parent::__construct('h3', $content);
 	}
 
 }

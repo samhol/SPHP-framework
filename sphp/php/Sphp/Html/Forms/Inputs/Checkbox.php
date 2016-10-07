@@ -30,8 +30,8 @@ class Checkbox extends Choicebox {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($name = "", $value = "", $checked = false) {
-    parent::__construct("checkbox", $name, $value, $checked);
+  public function __construct($name = '', $value = '', $checked = false) {
+    parent::__construct('checkbox', $name, $value, $checked);
   }
 
 }

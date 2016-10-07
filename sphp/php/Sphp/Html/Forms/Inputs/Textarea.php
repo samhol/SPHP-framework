@@ -29,7 +29,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
   /**
    * Constructs a new instance
    *
-   * @precondition  `$rows > 0 & $cols > 0<`
+   * @precondition  `$rows > 0 & $cols > 0`
    * @param  string $name name attribute value
    * @param  string $content the content of the component
    * @param  string $rows the value of the rows attribute (visible height of a text area)
@@ -38,9 +38,11 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function __construct($name = "", $content = "", $rows = "", $cols = "") {
-    parent::__construct("textarea", $content);
-    $this->setName($name);
+  public function __construct($name = null, $content = null, $rows = "", $cols = "") {
+    parent::__construct('textarea', $content);
+    if ($name !== null) {
+      $this->setName($name);
+    }
     if ($rows > 0) {
       $this->setRows($rows);
     }
@@ -68,7 +70,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * {@inheritdoc}
    */
   public function wrap($wrapType) {
-    $this->attrs()->set("wrap", $wrapType);
+    $this->attrs()->set('wrap', $wrapType);
     return $this;
   }
 
@@ -76,7 +78,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * {@inheritdoc}
    */
   public function setRows($rows) {
-    $this->attrs()->set("rows", $rows);
+    $this->attrs()->set('rows', $rows);
     return $this;
   }
 
@@ -84,7 +86,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * {@inheritdoc}
    */
   public function setCols($cols) {
-    $this->attrs()->set("cols", $cols);
+    $this->attrs()->set('cols', $cols);
     return $this;
   }
 
@@ -92,7 +94,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
    * {@inheritdoc}
    */
   public function setPlaceholder($placeholder) {
-    $this->attrs()->set("placeholder", $placeholder);
+    $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 

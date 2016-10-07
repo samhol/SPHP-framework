@@ -52,8 +52,8 @@ class Tr extends ContainerTag implements RowInterface {
 	 * @param  string $cellType the default type of the cell 
 	 *         (`td`|`th`)
 	 */
-	public function __construct($cells = null, $cellType = "td") {
-		parent::__construct("tr");
+	public function __construct($cells = null, $cellType = 'td') {
+		parent::__construct('tr');
 		$this->setDefaultCellType($cellType);
 		if (isset($cells)) {
 			$this->append($cells, $cellType);
@@ -99,7 +99,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * @param  string $cellType the default type of the cell `td|th`
 	 * @return self for PHP Method Chaining
 	 */
-	public function append($cells, $cellType = "td") {
+	public function append($cells, $cellType = 'td') {
 		parent::append($this->parseNewCells($cells, $cellType));
 		return $this;
 	}
@@ -125,7 +125,7 @@ class Tr extends ContainerTag implements RowInterface {
 	 * @param  string $cellType the default type of the cell `td|th`
 	 * @return self for PHP Method Chaining
 	 */
-	public function prepend($cells, $cellType = "td") {
+	public function prepend($cells, $cellType = 'td') {
 		parent::prepend($this->parseNewCells($cells, $cellType));
 		return $this;
 	}

@@ -38,7 +38,7 @@ abstract class TableRowContainer extends ContainerTag implements TableContentInt
 	 *
 	 * @var string 
 	 */
-	private $cellType = "td";
+	private $cellType = 'td';
 	
 	/**
 	 * Sets the default type of the table cells

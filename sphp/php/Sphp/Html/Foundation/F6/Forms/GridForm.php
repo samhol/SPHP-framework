@@ -50,19 +50,19 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function __construct($action = "", $method = "post", $content = null) {
-    parent::__construct("form");
-    if ($action != "") {
+    parent::__construct('form');
+    if ($action !== '') {
       $this->setAction($action);
     }
-    if ($method != "") {
+    if ($method !== '') {
       $this->setMethod($method);
     }
     if ($content !== null) {
       $this->append($content);
     }
     $this->errorLabel = new Callout('<i class="fi-alert"></i> There are some errors in your form.');
-    $this->errorLabel->hide()->cssClasses()->lock("alert");
-    $this->errorLabel->attrs()->demand("data-abide-error");
+    $this->errorLabel->hide()->cssClasses()->lock('alert');
+    $this->errorLabel->attrs()->demand('data-abide-error');
   }
 
   /**
@@ -79,7 +79,7 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
    * {@inheritdoc}
    */
   public function validation($validate = true) {
-    $this->attrs()->set("novalidate", $validate)->set("data-abide", $validate);
+    $this->attrs()->set('novalidate', $validate)->set('data-abide', $validate);
     return $this;
   }
 

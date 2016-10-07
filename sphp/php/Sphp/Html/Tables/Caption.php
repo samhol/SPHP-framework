@@ -32,7 +32,7 @@ class Caption extends SimpleContainerTag implements TableContentInterface {
    * @param string $content caption content
    */
   public function __construct($content = null) {
-    parent::__construct("caption", $content);
+    parent::__construct('caption', $content);
   }
 
 }

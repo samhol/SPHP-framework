@@ -5,11 +5,11 @@ namespace Sphp\Html\Foundation\F6\Containers\Modals;
 use Sphp\Core\Util\LocalFile;
 use Sphp\Core\Util\Timer;
 
-$fileObj = new LocalFile("license.md");
-$license = (new Modal($fileObj->parseMarkdown(), "SPHP license"));
+$fileObj = new LocalFile('LICENSE.md');
+$license = (new Modal($fileObj->parseMarkdown(), 'SPHP license'));
 $license->addCssClass("license");
 ?>
-Copyright &copy; 2007-<?php echo date("Y"); ?> Sami Holck. All rights reserved.
+Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
 <?php $license->printHtml(); ?> ||
 <b>Script executed in:</b>
 <i><?php echo Timer::getEcecutionTime(3) ?> seconds</i>

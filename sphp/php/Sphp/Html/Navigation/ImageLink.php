@@ -48,7 +48,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = null, $target = null, $src = null, $alt = "") {
+  public function __construct($href = null, $target = null, $src = null, $alt = '') {
     parent::__construct('a');
     if ($src instanceof Img) {
       $this->setImg($src);
@@ -94,19 +94,23 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   }
 
   /**
-   * 
-   * @param type $src
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setAlt($src) {
     $this->img()->setAlt($src);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getAlt() {
     return $this->img()->getAlt();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getSrc() {
     return $this->img()->getSrc();
   }

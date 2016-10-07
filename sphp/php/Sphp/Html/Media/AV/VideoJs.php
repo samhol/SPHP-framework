@@ -33,10 +33,10 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
    * @param  Source|Source[] $sources defines a table caption
    */
   public function __construct($sources = null) {
-    parent::__construct("video", $sources);
-    $this->cssClasses()->lock("video-js vjs-default-skin vjs-paused vjs-controls-enabled");
+    parent::__construct('video', $sources);
+    $this->cssClasses()->lock('video-js vjs-default-skin vjs-paused vjs-controls-enabled');
     $this->identify();
-    $this->attrs()->demand("data-setup");
+    $this->attrs()->demand('data-setup');
   }
 
   /**
@@ -51,7 +51,7 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster($poster) {
-    $this->attrs()->set("poster", $poster);
+    $this->attrs()->set('poster', $poster);
     return $this;
   }
   
@@ -63,8 +63,8 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
    * @return self for PHP Method Chaining
    */
   public function setRatio($ratio) {
-    $this->cssClasses()->remove(["vjs-16-9", "vjs-4-3"]);
-    if ($ratio === "16-9" || $ratio === "4-3") {
+    $this->cssClasses()->remove(['vjs-16-9', 'vjs-4-3']);
+    if ($ratio === '16-9' || $ratio === '4-3') {
       $this->cssClasses()->add("vjs-$ratio");
     }
     return $this;
@@ -76,7 +76,7 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
    * @return self for PHP Method Chaining
    */
   public function setWideScreen() {
-    $this->setRatio("16-9");
+    $this->setRatio('16-9');
     return $this;
   }
   
@@ -86,7 +86,7 @@ class VideoJs extends AbstractMediaTag implements SizeableInterface {
    * @return self for PHP Method Chaining
    */
   public function setTraditionalScreen() {
-    $this->setRatio("4-3");
+    $this->setRatio('4-3');
     return $this;
   }
 

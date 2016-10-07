@@ -65,7 +65,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
    * @param  string|string[] $selectedValues the optionvalues selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
-    parent::__construct("select");
+    parent::__construct('select');
     if ($opt !== null) {
       $this->append($opt);
     }
@@ -148,7 +148,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
    * @return self for PHP Method Chaining
    */
   public function selectMultiple($multiple = true) {
-    return $this->setAttr("multiple", $multiple);
+    return $this->setAttr('multiple', $multiple);
   }
 
   /**
@@ -161,7 +161,7 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
    * @return self for PHP Method Chaining
    */
   public function setSize($size) {
-    return $this->setAttr("size", $size);
+    return $this->setAttr('size', $size);
   }
 
   /**

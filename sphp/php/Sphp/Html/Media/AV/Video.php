@@ -34,7 +34,7 @@ class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInt
    * @param  Source|Source[] $sources defines a table caption
    */
   public function __construct($sources = null) {
-    parent::__construct("video", $sources);
+    parent::__construct('video', $sources);
   }
 
   /**
@@ -68,7 +68,7 @@ class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInt
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster($poster) {
-    $this->attrs()->set("poster", $poster);
+    $this->attrs()->set('poster', $poster);
     return $this;
   }
 

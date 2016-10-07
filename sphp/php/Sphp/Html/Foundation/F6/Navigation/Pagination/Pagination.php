@@ -54,26 +54,26 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    *
    * @var string 
    */
-  private $target = "_self";
+  private $target = '_self';
 
   /**
    *
    * @var string 
    */
-  private $linkLabelPattern = "Page %d";
+  private $linkLabelPattern = 'Page %d';
 
   /**
    * Constructs a new instance
    * 
    * @param mixed|mixed[] $urls the value of the target attribute
    */
-  public function __construct(array $urls = null, $range = 20, $target = "_self") {
+  public function __construct(array $urls = null, $range = 20, $target = '_self') {
     parent::__construct('ul');
     $this->cssClasses()
-            ->lock("pagination");
+            ->lock('pagination');
     $this->attrs()
-            ->lock("role", "menubar")
-            ->setAria("label", "Pagination");
+            ->lock('role', 'menubar')
+            ->setAria('label', 'Pagination');
     $this->range = $range;
     $this->target = $target;
     if ($urls !== null) {
@@ -183,7 +183,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     if ($this->current > 1) {
       $backButton = new Page(null, $this->pages[$this->current - 1]->getHref(), $this->target);
       $backButton
-              ->addCssClass("pagination-previous");
+              ->addCssClass('pagination-previous');
     }
     return $backButton;
   }
@@ -194,8 +194,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    */
   public function getEllipsis() {
     $ellipsis = new Li();
-    $ellipsis->cssClasses()->lock("ellipsis");
-    $ellipsis->attrs()->lock("aria-hidden", "true");
+    $ellipsis->cssClasses()->lock('ellipsis');
+    $ellipsis->attrs()->lock('aria-hidden', 'true');
     return $ellipsis;
   }
 
@@ -209,7 +209,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     if ($this->current < $count) {
       $nextPage = new Page(null, $this->pages[$this->current + 1]->getHref(), $this->target);
       $nextPage
-              ->addCssClass("pagination-next");
+              ->addCssClass('pagination-next');
     }
     return $nextPage;
   }

@@ -74,7 +74,7 @@ class Locale {
    * @return string the name (filename) of the text domain
    */
   public static function getLocale($category) {
-    return setLocale($category, "0");
+    return setLocale($category, '0');
   }
 
   /**

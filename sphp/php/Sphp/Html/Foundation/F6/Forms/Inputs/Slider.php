@@ -44,11 +44,11 @@ class Slider extends AbstractSlider {
   public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
     parent::__construct($start, $end, $step);
     $this->handle = new Span();
-    $this->handle->cssClasses()->lock("slider-handle");
+    $this->handle->cssClasses()->lock('slider-handle');
     $this->handle->attrs()
-            ->demand("data-slider-handle")
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
+            ->demand('data-slider-handle')
+            ->lock('role', 'slider')
+            ->lock('tabindex', 1);
     //$this->content()["slider"] = $this->handle;
    // $filler = new Span();
     //$filler->cssClasses()
@@ -68,15 +68,6 @@ class Slider extends AbstractSlider {
    */
   private function getInnerLabel() {
     //return $this->content()["label"];
-  }
-
-  /**
-   * Returns the the actual slider
-   * 
-   * @return Spam the actual Foundation slider
-   */
-  private function getSlider() {
-    return $this->content("slider");
   }
 
   /**
@@ -206,7 +197,7 @@ class Slider extends AbstractSlider {
       throw new \InvalidArgumentException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");
     }
     $this->getInput()->setValue($value);
-    $this->attrs()->set("data-initial-start", $value);
+    $this->attrs()->set('data-initial-start', $value);
     return $this;
   }
 

@@ -30,12 +30,12 @@ class OffCanvasOpener extends \Sphp\Html\AbstractComponent {
    * @param string|OffCanvasAreaInterface $offCanvas the off-canvas component or its id
    * @param string $screenReaderText
    */
-  public function __construct($offCanvas, $screenReaderText = "Open menu") {
-    parent::__construct("button");
-    $this->cssClasses()->lock("menu-icon");
-    $this->attrs()->lock("type", "button")->demand("data-open");
+  public function __construct($offCanvas, $screenReaderText = 'Open menu') {
+    parent::__construct('button');
+    $this->cssClasses()->lock('menu-icon');
+    $this->attrs()->lock('type', 'button')->demand('data-open');
     $this->span = new Span($screenReaderText);
-    $this->span->cssClasses()->lock("show-for-sr");
+    $this->span->cssClasses()->lock('show-for-sr');
     $this->setCanvas($offCanvas);
   }
 
@@ -46,9 +46,9 @@ class OffCanvasOpener extends \Sphp\Html\AbstractComponent {
    */
   public function setCanvas($offCanvas) {
     if ($offCanvas instanceof OffCanvasAreaInterface) {
-      $offCanvas = $offCanvas->getId();
+      $offCanvas = $offCanvas->identify();
     }
-    $this->attrs()->set("data-open", $offCanvas);
+    $this->attrs()->set('data-open', $offCanvas);
     return $this;
   }
 

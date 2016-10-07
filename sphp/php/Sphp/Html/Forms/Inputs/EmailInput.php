@@ -38,7 +38,7 @@ class EmailInput extends TextualInput {
 	 * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
 	 */
 	public function __construct($name = null, $value = null, $maxlength = null, $size = null) {
-		parent::__construct("email", $name, $value, $maxlength, $size);
+		parent::__construct('email', $name, $value, $maxlength, $size);
 	}
   
 
@@ -50,7 +50,7 @@ class EmailInput extends TextualInput {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multiple($multiple = true) {
-    $this->attrs()->set("multiple", (bool)$multiple);
+    $this->attrs()->set('multiple', (bool)$multiple);
     return $this;
   }
 

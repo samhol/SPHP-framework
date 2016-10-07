@@ -54,7 +54,9 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->values = Arrays::copy($this->values);
+    if (is_array($this->values)) {
+      $this->values = Arrays::copy($this->values);
+    }
     $this->locked = Arrays::copy($this->locked);
   }
 

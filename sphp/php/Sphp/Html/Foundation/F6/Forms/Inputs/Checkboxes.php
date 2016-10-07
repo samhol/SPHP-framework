@@ -23,7 +23,7 @@ class Checkboxes extends Choiceboxes {
    * {@inheritdoc}
    */
   public function setOption($value, $label, $checked = false) {
-    $input = new Checkbox($this->getName() . "[]", $value, $checked);
+    $input = new Checkbox($this->getName() . '[]', $value, $checked);
     $this->setInput($input, $label);
     return $this;
   }
@@ -37,7 +37,7 @@ class Checkboxes extends Choiceboxes {
    * @return self for PHP Method Chaining
    */
   public function setRequired($required = true) {
-    return $this->setAttr("data-required", $required);
+    return $this->setAttr('data-required', $required);
   }
 
   /**
@@ -48,7 +48,7 @@ class Checkboxes extends Choiceboxes {
    *         before form submission, otherwise false
    */
   public function isRequired() {
-    return $this->attrExists("data-required");
+    return $this->attrExists('data-required');
   }
 
 }

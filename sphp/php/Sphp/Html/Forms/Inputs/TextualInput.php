@@ -39,7 +39,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
-  function __construct($type = "text", $name = null, $value = null, $maxlength = null, $size = null) {
+  function __construct($type = 'text', $name = null, $value = null, $maxlength = null, $size = null) {
     parent::__construct($type, $name, $value);
     if ($maxlength > 0) {
       $this->setMaxlength($maxlength);
@@ -53,14 +53,14 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * {@inheritdoc}
    */
   public function getSize() {
-    return $this->attrs()->get("size");
+    return $this->attrs()->get('size');
   }
 
   /**
    * {@inheritdoc}
    */
   public function setSize($size) {
-    $this->attrs()->set("size", $size);
+    $this->attrs()->set('size', $size);
     return $this;
   }
 
@@ -68,14 +68,14 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * {@inheritdoc}
    */
   public function getMaxlength() {
-    return $this->attrs()->get("maxlength");
+    return $this->attrs()->get('maxlength');
   }
 
   /**
    * {@inheritdoc}
    */
   public function setMaxlength($maxlength) {
-    $this->attrs()->set("maxlength", $maxlength);
+    $this->attrs()->set('maxlength', $maxlength);
     return $this;
   }
 
@@ -83,7 +83,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * {@inheritdoc}
    */
   public function setPlaceholder($placeholder) {
-    $this->attrs()->set("placeholder", $placeholder);
+    $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 
@@ -91,7 +91,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
    * {@inheritdoc}
    */
   public function autocomplete($allow = true) {
-    $this->attrs()->set("autocomplete", $allow ? "on" : "off");
+    $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 

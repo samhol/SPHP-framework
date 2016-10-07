@@ -28,7 +28,7 @@ class Audio extends AbstractMediaTag {
    * @param  mixed|mixed[] $sources defines the audio sources
    */
   public function __construct($sources = null) {
-    parent::__construct("audio", $sources);
+    parent::__construct('audio', $sources);
   }
 
   /**
@@ -47,7 +47,7 @@ class Audio extends AbstractMediaTag {
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function setPreload($preload) {
-    return $this->setAttr("preload", $preload);
+    return $this->setAttr('preload', $preload);
   }
 
   /**
@@ -65,7 +65,7 @@ class Audio extends AbstractMediaTag {
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function getPreloadOption() {
-    return $this->getAttr("preload");
+    return $this->getAttr('preload');
   }
 
 }

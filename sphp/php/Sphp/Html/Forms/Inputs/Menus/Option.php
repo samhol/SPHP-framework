@@ -34,7 +34,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link  http://www.w3schools.com/tags/att_option_selected.asp selected attribute
 	 */
 	public function __construct($value = null, $content = null, $selected = false) {
-		parent::__construct("option", $content);
+		parent::__construct('option', $content);
 		$this->setValue($value)
 				->setSelected($selected);
 	}
@@ -46,7 +46,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link    http://www.w3schools.com/tags/att_option_value.asp value attribute
 	 */
 	public function getValue() {
-		return $this->getAttr("value");
+		return $this->getAttr('value');
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
 	 */
 	public function setValue($value) {
-		return $this->setAttr("value", $value);
+		return $this->setAttr('value', $value);
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
 	 */
 	public function setSelected($selected = true) {
-		return $this->setAttr("selected", $selected);
+		return $this->setAttr('selected', $selected);
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
 	 */
 	public function isSelected() {
-		return $this->attrExists("selected") && $this->isEnabled();
+		return $this->attrExists('selected') && $this->isEnabled();
 	}
 
 	/**
@@ -89,7 +89,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @link   http://www.w3schools.com/tags/att_option_disabled.asp disabled attribute
 	 */
 	public function setEnabled($enabled = true) {
-		return $this->setAttr("disabled", !$enabled);
+		return $this->setAttr('disabled', !$enabled);
 	}
 	
 	/**
@@ -98,7 +98,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
 	 * @param  boolean true if the option is enabled, otherwise false
 	 */
 	public function isEnabled() {
-		return !$this->attrExists("disabled");
+		return !$this->attrExists('disabled');
 	}
 
 }

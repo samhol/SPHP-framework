@@ -33,8 +33,8 @@ class Tfoot extends TableRowContainer {
    * @param  null|mixed|mixed[] $row the row being appended
    */
   public function __construct($row = null) {
-    parent::__construct("tfoot", $row);
-    $this->setDefaultTableCellType("th");
+    parent::__construct('tfoot', $row);
+    $this->setDefaultTableCellType('th');
   }
 
 }

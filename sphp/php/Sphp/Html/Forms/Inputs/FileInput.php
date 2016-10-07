@@ -31,7 +31,7 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
   public function __construct($name = null, $accept = null) {
-    parent::__construct("file", $name);
+    parent::__construct('file', $name);
     if ($accept !== null) {
       $this->setFileTypes($accept);
     }
@@ -45,7 +45,7 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
   public function setFileTypes($accept) {
-    $this->attrs()->set("accept", $accept);
+    $this->attrs()->set('accept', $accept);
     return $this;
   }
 
@@ -57,7 +57,7 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multipleFiles($multiple = true) {
-    $this->attrs()->set("multiple", (bool) $multiple);
+    $this->attrs()->set('multiple', (bool) $multiple);
     return $this;
   }
 

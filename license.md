@@ -1,6 +1,6 @@
 ##COPYRIGHT AND LICENSE
 
-Original `SPHP` Code Copyright &copy; 2007-<?php echo date("Y"); ?> Sami Holck <sami.holck@gmail.com>.
+Original `SPHP` Code Copyright &copy; Sami Holck <sami.holck@gmail.com>.
 
 `SPHP` framework is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

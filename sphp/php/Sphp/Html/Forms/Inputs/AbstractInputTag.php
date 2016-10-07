@@ -12,8 +12,8 @@ use Sphp\Html\EmptyTag;
 /**
  * Class is the abstract base class for all &lt;input&gt; tag implementations
  *
- * Definition and Usage The {@link self} component specifies an HTML input field 
- * where the user can enter data. {@link self} elements are used within a 
+ * This component specifies an HTML input field 
+ * where the user can enter data. These components are used within a 
  * {@link \Sphp\Html\Forms\FormInterface} component to declare input controls 
  * that allow users to input data. 
  *
@@ -38,12 +38,12 @@ abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInt
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function __construct($type, $name = null, $value = null) {
-    parent::__construct("input");
-    $this->attrs()->lock("type", $type);
-    if (isset($name)) {
+    parent::__construct('input');
+    $this->attrs()->lock('type', $type);
+    if ($name !== null) {
       $this->setName($name);
     }
-    if (isset($value)) {
+    if ($value !== null) {
       $this->setValue($value);
     }
   }

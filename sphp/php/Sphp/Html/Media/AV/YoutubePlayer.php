@@ -28,14 +28,14 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param boolean $isPlaylist whether the videoid is a playlist or a single video
    */
   public function __construct($videoId = null, $isPlaylist = false) {
-    parent::__construct("https://www.youtube.com/embed/", $videoId);
+    parent::__construct('https://www.youtube.com/embed/', $videoId);
     if ($isPlaylist) {
       $this->loadPlaylist($videoId);
     } else {
       
     }
-    $this->cssClasses()->lock("youtube-player");
-    $this->attrs()->lock("type", "text/html");
+    $this->cssClasses()->lock('youtube-player');
+    $this->attrs()->lock('type', 'text/html');
   }
 
   /**
@@ -45,9 +45,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   protected function loadPlaylist($playlistId) {
     $this->getUrl()
-            ->setPath("embed")
-            ->setParam("listType", "playlist")
-            ->setParam("list", $playlistId);
+            ->setPath('embed')
+            ->setParam('listType', 'playlist')
+            ->setParam('list', $playlistId);
     return $this;
   }
 
@@ -62,7 +62,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @return self for PHP Method Chaining
    */
   public function autohide($autohide = 2) {
-    return $this->setParam("autohide", (int) $autohide);
+    return $this->setParam('autohide', (int) $autohide);
   }
 
   /**
@@ -81,9 +81,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   public function setStartTime($start = false) {
     if ($start === false) {
-      $this->getUrl()->unsetParam("start");
+      $this->getUrl()->unsetParam('start');
     } else {
-      $this->getUrl()->setParam("start", (int) $start);
+      $this->getUrl()->setParam('start', (int) $start);
     }
     return $this;
   }
@@ -107,9 +107,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   public function setEndTime($end = false) {
     if ($end === false) {
-      $this->getUrl()->unsetParam("end");
+      $this->getUrl()->unsetParam('end');
     } else {
-      $this->getUrl()->setParam("end", (int) $end);
+      $this->getUrl()->setParam('end', (int) $end);
     }
     return $this;
   }

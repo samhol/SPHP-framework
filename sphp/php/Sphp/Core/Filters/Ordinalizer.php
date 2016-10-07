@@ -26,7 +26,7 @@ class Ordinalizer extends AbstractFilter {
   public function filter($variable) {
     if (is_numeric($variable)) {
       $suff = 'th';
-      $prefix = "";
+      $prefix = '';
       if ((int) $variable < 0) {
         $prefix = "-";
       }

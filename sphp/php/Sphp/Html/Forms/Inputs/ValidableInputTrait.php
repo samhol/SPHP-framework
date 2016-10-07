@@ -34,7 +34,7 @@ trait ValidableInputTrait {
    * @return self for PHP Method Chaining
    */
   public function setRequired($required = true) {
-    return $this->setAttr("required", $required);
+    return $this->setAttr('required', $required);
   }
 
   /**
@@ -44,7 +44,7 @@ trait ValidableInputTrait {
    *         otherwise false
    */
   public function isRequired() {
-    return $this->attrExists("required");
+    return $this->attrExists('required');
   }
 
 }

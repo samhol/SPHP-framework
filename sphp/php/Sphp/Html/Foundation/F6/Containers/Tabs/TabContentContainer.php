@@ -32,8 +32,8 @@ class TabContentContainer extends AbstractContainerComponent {
       $tabs = new TabButtonContainer();
     }
     $this->tabs = $tabs;
-    $this->cssClasses()->lock("tabs-content");
-    $this->attrs()->set("data-tabs-content", $this->tabs->identify());
+    $this->cssClasses()->lock('tabs-content');
+    $this->attrs()->set('data-tabs-content', $this->tabs->identify());
   }
 
   /**
@@ -60,8 +60,8 @@ class TabContentContainer extends AbstractContainerComponent {
    * @return \Sphp\Html\Foundation\F6\Containers\Tabs\TabContentContainer
    */
   public function matchHeight($match = true) {
-    $value = $match ? "true" : "false";
-    $this->attrs()->set("data-match-height", $value);
+    $value = $match ? 'true' : 'false';
+    $this->attrs()->set('data-match-height', $value);
     return $this;
   }
 

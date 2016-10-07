@@ -38,8 +38,8 @@ class Col extends EmptyTag implements TableContentInterface {
 	 * @link  http://www.w3schools.com/tags/att_col_span.asp span attribute
 	 * @link  http://www.w3schools.com/tags/att_global_class.asp class attribute
 	 */
-	public function __construct($span = 1, $cssClasses = "") {
-		parent::__construct("col");
+	public function __construct($span = 1, $cssClasses = '') {
+		parent::__construct('col');
 		$this->setSpan($span);
 		$this->addCssClass($cssClasses);
 	}
@@ -58,9 +58,9 @@ class Col extends EmptyTag implements TableContentInterface {
 	 */
 	public function setSpan($value) {
 		if ($value >= 2) {
-			return $this->setAttr("span", $value);
+			return $this->setAttr('span', $value);
 		} else {
-			return $this->removeAttr("span");
+			return $this->removeAttr('span');
 		}
 	}
 
@@ -74,7 +74,7 @@ class Col extends EmptyTag implements TableContentInterface {
 	 * @link   http://www.w3schools.com/tags/att_col_span.asp href attribute
 	 */
 	public function getSpan() {
-		$span = (int) $this->getAttr("span");
+		$span = (int) $this->getAttr('span');
 		return $span > 1 ? $span : 1;
 	}
 
