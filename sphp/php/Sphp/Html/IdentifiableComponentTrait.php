@@ -214,7 +214,7 @@ trait IdentifiableComponentTrait {
    * @return string|null the value of the style attribute or null
    */
   public function getStyleValue($property) {
-    return $this->inlineStyles()->getPropertyValue($property);
+    return $this->inlineStyles()->getProperty($property);
   }
 
   /**
@@ -358,7 +358,7 @@ trait IdentifiableComponentTrait {
    * @return self for PHP Method Chaining
    */
   public function unhide() {
-    if ($this->inlineStyles()->getPropertyValue("display") == "none") {
+    if ($this->inlineStyles()->getProperty("display") == "none") {
       $this->removeStyle("display");
     }
     return $this;

@@ -12,6 +12,15 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   protected $attrs;
 
+  /**
+   * Sets up the fixture, for example, opens a network connection.
+   * This method is called before a test is executed.
+   */
+  protected function setUp() {
+    echo "\nsetUp:\n";
+    $this->attrs = new PropertyAttribute("style");
+  }
+
   public function createAttr($name = "style") {
     return new PropertyAttribute($name);
   }
@@ -56,7 +65,55 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   public function testParsing($value, $expected) {
     $this->assertEquals(PropertyAttribute::parse($value), $expected);
   }
- 
+
+  /**
+   * 
+   */
+  public function testCloning() {
+    echo "\ntestCloning()\n";
+
+    $this->attrs->setProperty("p", "v");
+    $this->propEqualsTest($this->attrs, "p", "v");
+    //$this->assertTrue($this->attrs->hasProperty("p"));
+    //$this->assertEquals($this->attrs->getProperty("p"), "v");
+    $cloned = clone $this->attrs;
+    //$this->assertTrue($cloned->hasProperty("p"));
+    //$this->assertEquals($cloned->getProperty("p"), "v");
+    $this->propEqualsTest($cloned, "p", "v");
+    $cloned->setProperty("p", "v1");
+    $this->propEqualsTest($this->attrs, "p", "v");
+    // $containsProp($this->attrs, "p", "p");
+    // $containsProp($cloned, "p", "v1");
+    $this->attrs->remove("p");
+    $this->notHavingPropTest($this->attrs, "p");
+    $this->propEqualsTest($cloned, "p", "v1");
+    //$this->assertTrue($cloned->hasProperty("p"));
+    //$this->assertEquals($cloned->getProperty("p"), "v1");
+  }
+
+  /**
+   * 
+   * @param PropertyAttribute $attr
+   * @param type $prop
+   * @param type $val
+   */
+  public function propEqualsTest(PropertyAttribute $attr, $prop, $val) {
+    echo "\npropEqualsTest\n";
+    $this->assertTrue($attr->hasProperty($prop));
+    $this->assertEquals($attr->getProperty($prop), $val);
+  }
+
+  /**
+   * 
+   * @param PropertyAttribute $attr
+   * @param type $prop
+   */
+  public function notHavingPropTest(PropertyAttribute $attr, $prop) {
+    echo "\nnotHavingPropTest\n";
+    $this->assertFalse($attr->hasProperty($prop));
+    $this->assertEquals($attr->getProperty($prop), null);
+  }
+
   /**
    * 
    * @return string[]
@@ -76,6 +133,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * @dataProvider settingData
    */
   public function testSetting($value, $expected) {
+    echo "testSetting\n\n";
     $this->attrs->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
@@ -158,8 +216,8 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     $this->attrs->setProperty($propName, $propValue);
     $this->assertTrue($this->attrs->contains($propName));
     $this->assertTrue($this->attrs->count() === 1);
-    var_dump($this->attrs->count());
-    var_dump($this->attrs->toArray());
+    //var_dump($this->attrs->count());
+    //var_dump($this->attrs->toArray());
   }
 
   /**

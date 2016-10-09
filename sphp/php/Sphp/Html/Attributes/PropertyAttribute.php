@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Core\Types\Arrays;
 use Sphp\Core\Types\Strings;
+use InvalidArgumentException;
 
 /**
  * Class implements an property attribute object for an HTML element
@@ -33,7 +33,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @var string[]
    */
   private $lockedProps = [];
-  
+
   /**
    *
    * @var string
@@ -57,14 +57,6 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   public function __destruct() {
     unset($this->props, $this->lockedProps);
     parent::__destruct();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function __clone() {
-    $this->props = Arrays::copy($this->props);
-    $this->lockedProps = Arrays::copy($this->lockedProps);
   }
 
   /**
@@ -120,7 +112,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @param    string $value the value of the property
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if the property is unmodifiable
-   * @throws   InvalidAttributeException if either the name or the value is empty
+   * @throws   InvalidArgumentException if either the property name or the value is invalid
    */
   public function setProperty($property, $value) {
     if ($this->isLocked($property)) {
@@ -128,10 +120,10 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
     }
     //$val = str_replace(";", "", $value);
     if (Strings::isEmpty($property)) {
-      throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
     if (Strings::isEmpty($value)) {
-      throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
+      throw new InvalidArgumentException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
     return $this;
@@ -148,7 +140,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @param    string[] $props new property name value pairs
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if any of the properties is already locked
-   * @throws   InvalidAttributeException if if any of the properties has empty name or value
+   * @throws   InvalidArgumentException if any of the property names or values is invalid
    */
   public function setProperties(array $props) {
     foreach ($props as $property => $value) {
@@ -200,13 +192,12 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   }
 
   /**
-   * Returns the value of the property name or null if the property does
-   *  not exist
+   * Returns the value of the property name or null if the property does not exist
    *
-   * @param  string $property the name of the property
-   * @return string|null the value of the property or null
+   * @param  string|int $property the name of the property
+   * @return scalar|null the value of the property or null if the property does not exists
    */
-  public function getPropertyValue($property) {
+  public function getProperty($property) {
     if ($this->hasProperty($property)) {
       $value = $this->props[$property];
     } else {
@@ -240,11 +231,11 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    *
    * **Note:** Replaces old not locked property values with the new ones
    *
-   * @param    string $property the name of the property
-   * @param    string $value the value of the property
-   * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the property is already locked
-   * @throws   InvalidAttributeException if either the name or the value is empty
+   * @param  string|int $property the name of the property
+   * @param  string $value the value of the property
+   * @return self for PHP Method Chaining
+   * @throws UnmodifiableAttributeException if the property is already locked
+   * @throws InvalidArgumentException if either the property name or the value is invalid
    */
   public function lockProperty($property, $value) {
     if ($this->isLocked($property)) {
@@ -266,7 +257,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @param    string[] $props propertie as `name => value` pairs
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if any of the properties is already locked
-   * @throws   InvalidAttributeException if any of the properties has empty name or value
+   * @throws   InvalidArgumentException if any of the property names or values is invalid
    */
   public function lockProperties(array $props) {
     foreach ($props as $property => $value) {
@@ -281,7 +272,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @param    null|string|string[] $props optional property/properties to unlock
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if any of the properties is already locked
-   * @throws   InvalidAttributeException if if any of the properties has empty name or value
+   * @throws   InvalidArgumentException if if any of the properties has empty name or value
    */
   public function lock($props = null) {
     $styles = self::parse($props);
@@ -302,7 +293,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    */
   public function getValue() {
     if ($this->count() > 0) {
-      $output = "";
+      $output = '';
       foreach ($this->props as $k => $v) {
         $output .= sprintf($this->form, $k, $v);
       }
@@ -317,7 +308,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   /**
    * Checks if the given style properties exist
    *
-   * @param  string $properties the property names to check
+   * @param  scalar|scalar[] $properties the property names to check (integers or strings)
    * @return boolean true if the atribute exists and false otherwise
    */
   public function contains($properties) {
@@ -342,20 +333,40 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
     return $num;
   }
 
-  public function offsetExists($offset) {
-    return $this->contains($offset);
+  /**
+   * 
+   * @param  string|int $property the name of the property
+   * @return boolean
+   */
+  public function offsetExists($property) {
+    return $this->contains($property);
   }
 
-  public function offsetGet($offset) {
-    return $this->getPropertyValue($offset);
+  /**
+   * 
+   * @param  string|int $property the name of the property
+   * @return scalar
+   */
+  public function offsetGet($property) {
+    return $this->getProperty($property);
   }
 
-  public function offsetSet($offset, $value) {
-    $this->setProperty($offset, $value);
+  /**
+   * 
+   * @param  string|int $property the name of the property
+   * @param  string|int $value
+   * @throws InvalidArgumentException if either the property name or the value is invalid
+   */
+  public function offsetSet($property, $value) {
+    $this->setProperty($property, $value);
   }
 
-  public function offsetUnset($offset) {
-    $this->remove($offset);
+  /**
+   * 
+   * @param string|int $property the name of the property
+   */
+  public function offsetUnset($property) {
+    $this->remove($property);
   }
 
   /**
