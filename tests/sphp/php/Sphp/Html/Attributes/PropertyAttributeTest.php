@@ -29,6 +29,16 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
+  public function lockMethodData() {
+    return [
+        ["p:v;"],
+        ["p1:v1;p2:v2;"]
+    ];
+  }
+  /**
+   * 
+   * @return string[]
+   */
   public function scalarData() {
     return [
         ["", false, false],
@@ -71,24 +81,18 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function testCloning() {
     echo "\ntestCloning()\n";
-
     $this->attrs->setProperty("p", "v");
     $this->propEqualsTest($this->attrs, "p", "v");
-    //$this->assertTrue($this->attrs->hasProperty("p"));
-    //$this->assertEquals($this->attrs->getProperty("p"), "v");
     $cloned = clone $this->attrs;
-    //$this->assertTrue($cloned->hasProperty("p"));
-    //$this->assertEquals($cloned->getProperty("p"), "v");
     $this->propEqualsTest($cloned, "p", "v");
     $cloned->setProperty("p", "v1");
+    $cloned->setProperty("p1", "v2");
+    $this->propEqualsTest($cloned, "p1", "v2");
     $this->propEqualsTest($this->attrs, "p", "v");
-    // $containsProp($this->attrs, "p", "p");
-    // $containsProp($cloned, "p", "v1");
+    $this->notHavingPropTest($this->attrs, "p1");
     $this->attrs->remove("p");
     $this->notHavingPropTest($this->attrs, "p");
     $this->propEqualsTest($cloned, "p", "v1");
-    //$this->assertTrue($cloned->hasProperty("p"));
-    //$this->assertEquals($cloned->getProperty("p"), "v1");
   }
 
   /**
@@ -118,21 +122,22 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function settingData() {
+  public function settMethodData() {
     return [
         ["", false],
         [false, false],
-        ["prop", false],
-        ["prop: val;", "prop:val;"]
+        ["p", false],
+        ["p:  v;", "p:v;"],
+        ["p: v;p1: v1;  ", "p:v;p1:v1;"]
     ];
   }
 
   /**
    * 
    * @covers MultiValueAttribute::set()
-   * @dataProvider settingData
+   * @dataProvider settMethodData
    */
-  public function testSetting($value, $expected) {
+  public function testSetMethod($value, $expected) {
     echo "testSetting\n\n";
     $this->attrs->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
@@ -186,7 +191,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     $parsed = PropertyAttribute::parse($value);
     $this->assertTrue($this->attrs->isLocked(key($parsed)));
     $this->assertTrue($this->attrs->isLocked());
-    $this->assertTrue($this->attrs->contains(key($parsed)));
+    $this->assertTrue($this->attrs->hasProperty(key($parsed)));
   }
 
   /**
@@ -214,7 +219,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function testSetProperty($propName, $propValue) {
     $this->attrs->setProperty($propName, $propValue);
-    $this->assertTrue($this->attrs->contains($propName));
+    $this->assertTrue($this->attrs->hasProperty($propName));
     $this->assertTrue($this->attrs->count() === 1);
     //var_dump($this->attrs->count());
     //var_dump($this->attrs->toArray());
@@ -257,12 +262,10 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @return scalar[]
    */
-  public function removingData() {
+  public function removeMethodData() {
     return [
-        ["c1", "", 0],
-        ["c1", "l1", 1],
-        ["c1 c2 c2", "li l2", 2],
-        [["c1", "c2", "c3", "c3"], ["l1", "l2", "l3", "l3"], 3]
+        [["p" => "v"], []],
+        [array_combine(range("a", "e"), range("a", "e")), array_combine(range("b", "d"), range("b", "d"))]
     ];
   }
 
@@ -270,21 +273,28 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
    *
+   * @dataProvider removeMethodData
    * @param string $add
    * @param string $lock
    * @param int $count
    */
-  public function testRemoving() {
-    $attr = new MultiValueAttribute("class");
-    $attr->add("a b c d");
-    $attr->remove("a c");
-    $this->assertTrue($attr->contains("b d"));
-    $attr->lock("a c");
-    try {
-      $attr->remove("a c");
-    } catch (\Exception $ex) {
-      $this->assertTrue($ex instanceof UnmodifiableAttributeException);
-      $this->assertTrue($attr->contains("a b c d"));
+  public function testRemoveMethod(array $props, array $locked) {
+    $this->attrs->setProperties($props);
+    var_dump($props);
+    $this->assertEquals($this->attrs->count(), count($props));
+    foreach ($props as $p => $v) {
+      $this->propEqualsTest($this->attrs, $p, $v);
+      $this->attrs->remove($p);
+      $this->notHavingPropTest($this->attrs, $p);
+    }
+    $this->attrs->setProperties($props);
+    $this->attrs->lockProperties($locked);
+    foreach ($props as $p => $v) {
+      try {
+        $this->attrs->remove($p);
+      } catch (\Exception $ex) {
+        $this->assertTrue($ex instanceof UnmodifiableAttributeException);
+      }
     }
   }
 

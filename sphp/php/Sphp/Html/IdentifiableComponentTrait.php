@@ -203,7 +203,7 @@ trait IdentifiableComponentTrait {
    * @return boolean true if the style attribute exists and false otherwise
    */
   public function hasStyle($property) {
-    return $this->inlineStyles()->contains($property);
+    return $this->inlineStyles()->hasProperty($property);
   }
 
   /**

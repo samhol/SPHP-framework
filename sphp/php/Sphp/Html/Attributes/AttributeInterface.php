@@ -78,14 +78,6 @@ interface AttributeInterface {
   public function clear();
 
   /**
-   * Determines whether the attribute contains the given value
-   *
-   * @param  mixed $value the value to search for
-   * @return boolean true if the given value exists
-   */
-  public function contains($value);
-
-  /**
    * Sets the attribute as required
    *  
    * **A required attribute cannot be removed** but its value is still mutable.

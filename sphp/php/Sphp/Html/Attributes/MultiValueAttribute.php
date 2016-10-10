@@ -47,20 +47,6 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
   }
 
   /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    if (is_array($this->values)) {
-      $this->values = Arrays::copy($this->values);
-    }
-    $this->locked = Arrays::copy($this->locked);
-  }
-
-  /**
    * Returns an array of unique values parsed from the input
    *
    * **Important:** Parameter <var>$raw</var> restrictions and rules
@@ -83,7 +69,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
       }
     } else if (is_numeric($raw)) {
       $parsed = [$raw];
-    }  else {
+    } else {
       $parsed = boolval($raw);
     }
     return $parsed;
@@ -109,7 +95,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
       $this->add($parsed);
     } else if ($this->isDemanded() && $parsed === false) {
       throw new UnmodifiableAttributeException;
-    }else if (!$this->isLocked()) {
+    } else if (!$this->isLocked()) {
       $this->values = $this->isDemanded() || $parsed;
     }
     return $this;

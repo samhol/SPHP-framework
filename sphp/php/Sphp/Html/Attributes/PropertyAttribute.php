@@ -269,7 +269,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   /**
    * Locks either all or the given properties
    *
-   * @param    null|string|string[] $props optional property/properties to unlock
+   * @param    null|string|string[] $props optional property/properties to lock
    * @return   self for PHP Method Chaining
    * @throws   UnmodifiableAttributeException if any of the properties is already locked
    * @throws   InvalidArgumentException if if any of the properties has empty name or value
@@ -306,21 +306,6 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
   }
 
   /**
-   * Checks if the given style properties exist
-   *
-   * @param  scalar|scalar[] $properties the property names to check (integers or strings)
-   * @return boolean true if the atribute exists and false otherwise
-   */
-  public function contains($properties) {
-    if (is_array($properties)) {
-      $contains = !array_diff($properties, array_keys($this->props));
-    } else {
-      $contains = array_key_exists($properties, $this->props);
-    }
-    return $contains;
-  }
-
-  /**
    * Counts the number of the style properties stored
    *
    * @return int the number of the style properties stored
@@ -339,7 +324,7 @@ class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Coun
    * @return boolean
    */
   public function offsetExists($property) {
-    return $this->contains($property);
+    return $this->hasProperty($property);
   }
 
   /**

@@ -70,7 +70,7 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return string[]
    */
-  public function lockingData() {
+  public function lockMethodData() {
     return [
         ["c1"],
         [["c1 c2"]],
@@ -81,13 +81,13 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
   /**
    * 
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
-   * @dataProvider lockingData
+   * @dataProvider lockMethodData
    */
-  public function testScalarLocking($value) {
+  public function testLockMethod($value) {
     $attr = $this->createAttr();
     $attr->lock($value);
     $this->assertTrue($attr->isLocked());
-    $this->assertTrue($attr->contains($value));
+    $this->assertEquals($attr->getValue(), $value);
   }
 
 }
