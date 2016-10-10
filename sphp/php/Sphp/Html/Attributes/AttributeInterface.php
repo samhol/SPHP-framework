@@ -34,10 +34,10 @@ interface AttributeInterface {
   /**
    * Sets the value of the attribute
    *
-   * @param    scalar $value value to set
-   * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute value is invalid for the type of the attribute
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @param  scalar $value value to set
+   * @return self for PHP Method Chaining
+   * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function set($value);
 

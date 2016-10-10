@@ -12,15 +12,6 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   protected $attrs;
 
-  /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    echo "\nsetUp:\n";
-    $this->attrs = new PropertyAttribute("style");
-  }
-
   public function createAttr($name = "style") {
     return new PropertyAttribute($name);
   }
@@ -35,6 +26,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
         ["p1:v1;p2:v2;"]
     ];
   }
+
   /**
    * 
    * @return string[]
@@ -175,23 +167,28 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function lockingData() {
+  public function lockPropertiesMethodData() {
     return [
-        ["prop: val;"]
+        ["p" => "v"],
+        [array_combine(range("a", "e"), range("a", "e")), array_combine(range("b", "d"), range("b", "d"))]
     ];
   }
 
   /**
    * 
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
-   * @dataProvider lockingData
+   * @dataProvider lockPropertiesMethodData
+   * 
+   * @param scalar $props
    */
-  public function testLocking($value) {
-    $this->attrs->lock($value);
-    $parsed = PropertyAttribute::parse($value);
-    $this->assertTrue($this->attrs->isLocked(key($parsed)));
+  public function testLockPropertiesMethod($props) {
+    $this->attrs->lockProperties($props);
     $this->assertTrue($this->attrs->isLocked());
-    $this->assertTrue($this->attrs->hasProperty(key($parsed)));
+    $this->attrs->clear();
+    foreach ($props as $p => $v) {
+      $this->assertTrue($this->attrs->isLocked($p));
+      $this->propEqualsTest($this->attrs, $p, $v);
+    }
   }
 
   /**

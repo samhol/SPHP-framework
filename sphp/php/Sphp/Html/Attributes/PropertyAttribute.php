@@ -7,6 +7,9 @@
 
 namespace Sphp\Html\Attributes;
 
+use ArrayAccess;
+use Countable;
+use IteratorAggregate;
 use Sphp\Core\Types\Strings;
 use InvalidArgumentException;
 
@@ -18,7 +21,7 @@ use InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements \ArrayAccess, \Countable, \IteratorAggregate {
+class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Countable, IteratorAggregate {
 
   /**
    * properties as a (name -> value) map
