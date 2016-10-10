@@ -97,8 +97,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    scalar $value the value of the attribute
    * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws   AttributeException if the property is unmodifiable
+   * @throws   InvalidArgumentException if the value is invalid
    */
   public function set($value) {
     $this->clear();
@@ -114,14 +114,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param    string $property the name of the property
    * @param    string $value the value of the property
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the property is unmodifiable
+   * @throws   AttributeException if the property is unmodifiable
    * @throws   InvalidArgumentException if either the property name or the value is invalid
    */
   public function setProperty($property, $value) {
     if ($this->isLocked($property)) {
-      throw new UnmodifiableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+      throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
-    //$val = str_replace(";", "", $value);
     if (Strings::isEmpty($property)) {
       throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
@@ -142,7 +141,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    string[] $props new property name value pairs
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if any of the properties is already locked
+   * @throws   AttributeException if any of the properties is already locked
    * @throws   InvalidArgumentException if any of the property names or values is invalid
    */
   public function setProperties(array $props) {
@@ -157,7 +156,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    string|string[] $properties the names of the properties to remove
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if the property is unmodifiable
+   * @throws   AttributeException if the property is unmodifiable
    */
   public function remove($properties) {
     if (is_array($properties)) {
@@ -165,7 +164,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
         $this->remove($prop);
       }
     } else if ($this->isLocked($properties)) {
-      throw new UnmodifiableAttributeException("'" . $this->getName() . "' property '$properties' is unremovable");
+      throw new AttributeException("'" . $this->getName() . "' property '$properties' is unremovable");
     } else {
       unset($this->props[$properties]);
     }
@@ -237,12 +236,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string|int $property the name of the property
    * @param  string $value the value of the property
    * @return self for PHP Method Chaining
-   * @throws UnmodifiableAttributeException if the property is already locked
+   * @throws AttributeException if the property is already locked
    * @throws InvalidArgumentException if either the property name or the value is invalid
    */
   public function lockProperty($property, $value) {
     if ($this->isLocked($property)) {
-      throw new UnmodifiableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+      throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     $this->setProperty($property, $value);
     $this->lockedProps[$property] = $property;
@@ -259,7 +258,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    string[] $props propertie as `name => value` pairs
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if any of the properties is already locked
+   * @throws   AttributeException if any of the properties is already locked
    * @throws   InvalidArgumentException if any of the property names or values is invalid
    */
   public function lockProperties(array $props) {
@@ -274,12 +273,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param    null|string|string[] $props optional property/properties to lock
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if any of the properties is already locked
+   * @throws   AttributeException if any of the properties is already locked
    * @throws   InvalidArgumentException if if any of the properties has empty name or value
    */
   public function lock($props = null) {
     $styles = self::parse($props);
-    var_dump($styles);
+    //var_dump($styles);
     $this->lockProperties($styles);
     return $this;
   }
@@ -343,7 +342,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * 
    * @param  string|int $property the name of the property
    * @param  string|int $value
-   * @throws InvalidArgumentException if either the property name or the value is invalid
+   * @throws AttributeException if any of the properties is already locked
+   * @throws InvalidArgumentException if if any of the properties has empty name or value
    */
   public function offsetSet($property, $value) {
     $this->setProperty($property, $value);

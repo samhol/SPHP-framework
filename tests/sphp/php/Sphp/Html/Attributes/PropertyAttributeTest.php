@@ -156,7 +156,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
    */
-  public function testDemanding() {
+  public function testDemandMethod() {
     $this->attrs->set(false);
     $this->attrs->demand();
     $this->assertTrue($this->attrs->isDemanded());
@@ -169,7 +169,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function lockPropertiesMethodData() {
     return [
-        ["p" => "v"],
+        [["p" => "v"]],
         [array_combine(range("a", "e"), range("a", "e")), array_combine(range("b", "d"), range("b", "d"))]
     ];
   }
@@ -182,6 +182,8 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * @param scalar $props
    */
   public function testLockPropertiesMethod($props) {
+    echo "testLockPropertiesMethod\n";
+    var_dump($props);
     $this->attrs->lockProperties($props);
     $this->assertTrue($this->attrs->isLocked());
     $this->attrs->clear();
@@ -290,7 +292,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
       try {
         $this->attrs->remove($p);
       } catch (\Exception $ex) {
-        $this->assertTrue($ex instanceof UnmodifiableAttributeException);
+        $this->assertTrue($ex instanceof AttributeException);
       }
     }
   }

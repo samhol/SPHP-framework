@@ -28,7 +28,7 @@ class IdentifierStorageTest extends \PHPUnit_Framework_TestCase {
    * @param bool $expected
    */
   public function testStoring($name, $value, $expected) {
-    $this->assertTrue(HtmlIdStorage::get()->store($name, $value) === $expected);
+    $this->assertTrue(HtmlIdStorage::store($name, $value) === $expected);
   }
   
   
@@ -53,7 +53,7 @@ class IdentifierStorageTest extends \PHPUnit_Framework_TestCase {
    * @param bool $expected
    */
   public function testExistence($name, $value, $expected) {
-    $this->assertTrue(HtmlIdStorage::get()->exists($name, $value) === $expected);
+    $this->assertTrue(HtmlIdStorage::exists($name, $value) === $expected);
   }
 
 }

@@ -62,6 +62,7 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
     $this->attrs->demand();
     $this->assertTrue($this->attrs->isDemanded());
     $this->attrs->set(false);
+    $this->attrs->clear();
     $this->assertTrue($this->attrs->isDemanded());
     $this->assertEquals("$this->attrs", $this->attrs->getName() . "");
   }
@@ -70,18 +71,12 @@ abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return string[]
    */
-  public function lockMethodData() {
-    return [
-        ["c1"],
-        [["c1 c2"]],
-        [["c1", "c2", "c3"]]
-    ];
-  }
+  abstract public function lockMethodData();
 
   /**
-   * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers Sphp\Html\Attributes\AbstractAttribute::lock()
    * @dataProvider lockMethodData
+   * @param  scalar $value
    */
   public function testLockMethod($value) {
     $attr = $this->createAttr();

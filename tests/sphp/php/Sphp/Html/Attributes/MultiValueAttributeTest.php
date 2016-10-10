@@ -18,7 +18,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     return [
         ["", false, false],
         [" ", false, false],
-        [true, true, true],
+        [true, false, false],
         [false, false, false],
         ["value1", "value1", true],
         [" value2 ", "value2", true],
@@ -81,30 +81,6 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     $this->assertFalse($attr->isLocked($value));
     $this->assertFalse($attr->isDemanded());
     $this->assertEquals($attr->getValue(), $expected);
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function demandData() {
-    return [
-        ["c1"],
-        [["c1 c2"]],
-        [["c1", "c2", "c3"]]
-    ];
-  }
-
-  /**
-   * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
-   */
-  public function testDemanding() {
-    $attr = new MultiValueAttribute("class");
-    $attr->set(false);
-    $attr->demand();
-    $this->assertTrue($attr->isDemanded());
-    $this->assertEquals("$attr", $attr->getName() . "");
   }
 
   /**
@@ -222,7 +198,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     try {
       $attr->remove("a c");
     } catch (\Exception $ex) {
-      $this->assertTrue($ex instanceof UnmodifiableAttributeException);
+      $this->assertTrue($ex instanceof AttributeException);
       $this->assertTrue($attr->contains("a b c d"));
     }
   }
@@ -238,6 +214,14 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     $attr->lock("c d");
     echo "$attr\n";
     //$this->assertEquals("$attr", 'class="a b c d"');
+  }
+
+  public function lockMethodData() {
+      return [
+        [1],
+        ["a"],
+        ["a b c"]
+    ];
   }
 
 }

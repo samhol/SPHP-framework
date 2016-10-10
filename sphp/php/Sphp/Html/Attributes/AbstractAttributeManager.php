@@ -114,19 +114,19 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * 
    * @param  AttributeInterface $attrObject
    * @return self for PHP Method Chaining
-   * @throws InvalidAttributeException
-   * @throws UnmodifiableAttributeException
+   * @throws InvalidArgumentException
+   * @throws AttributeException
    */
   public function setAttributeObject(AttributeInterface $attrObject) {
     $name = $attrObject->getName();
     if ($this->isAttributeObject($name)) {
-      throw new InvalidAttributeException("Attribute '$name' object allready set");
+      throw new InvalidArgumentException("Attribute '$name' object allready set");
     }
     if ($this->isIdentifier($name)) {
-      throw new InvalidAttributeException("Identifier '$name' cannot be an object");
+      throw new InvalidArgumentException("Identifier '$name' cannot be an object");
     }
     if ($this->isLocked($name)) {
-      throw new UnmodifiableAttributeException("Locked attribute '$name'");
+      throw new AttributeException("Locked attribute '$name'");
     }
     if ($this->exists($name)) {
       $attrObject->set($this->get($name));
@@ -185,22 +185,20 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidAttributeException if the attribute name or value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidArgumentException if the attribute name or value is invalid
+   * @throws AttributeException if the attribute value is unmodifiable
    */
   public function set($name, $value = true) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->set($value);
-    } else {
-      if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
-        throw new InvalidAttributeException("Malformed Attribute name '$name'");
+    } else if (is_scalar($value)) {
+      if (!preg_match('/^[a-zA-Z][\w:.-]*$/', $name)) {
+        throw new InvalidArgumentException("Malformed Attribute name '$name'");
       }
       if ($this->isLocked($name)) {
-        throw new UnmodifiableAttributeException("The value of the '$name' attribute is unmodifiable");
-      }
-      if ($value instanceof AttributeInterface) {
-        $this->setAttributeObject($value);
-      } else if ($value === false || $value === null) {
+        throw new AttributeException("The value of the '$name' attribute is unmodifiable");
+      } 
+      if ($value === false || $value === null) {
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
@@ -277,8 +275,8 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidAttributeException if either the name or the value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidArgumentException if either the name or the value is invalid
+   * @throws AttributeException if the attribute value is unmodifiable
    */
   public function lock($name, $value) {
     if ($this->isAttributeObject($name)) {
@@ -311,16 +309,16 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @param  string $name the name of the attribute
    * @return self for PHP Method Chaining
-   * @throws UnmodifiableAttributeException if the attribute is unremovable
+   * @throws AttributeException if the attribute is unremovable
    */
   public function remove($name) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->clear();
     } else {
       if ($this->isLocked($name)) {
-        throw new UnmodifiableAttributeException("Locked attribute '$name' cannot be removed");
+        throw new AttributeException("Locked attribute '$name' cannot be removed");
       } else if ($this->isDemanded($name)) {
-        throw new UnmodifiableAttributeException("Required attribute '$name' cannot be removed");
+        throw new AttributeException("Required attribute '$name' cannot be removed");
       } else if ($this->exists($name)) {
         unset($this->attrs[$name]);
       }

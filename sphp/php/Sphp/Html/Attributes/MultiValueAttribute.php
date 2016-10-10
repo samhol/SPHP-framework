@@ -28,7 +28,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    */
   private $values = false;
 
-  /**
+  /*
    * locked individual values
    *
    * @var string[]
@@ -56,7 +56,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * 3. Duplicate values are ignored
    *
    * @param  scalar|scalar[] $raw the value(s) to parse
-   * @return boolean|scalar[] separated atomic values in an array
+   * @return scalar[] separated atomic values in an array
    */
   public static function parse($raw) {
     if (is_array($raw)) {
@@ -70,7 +70,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     } else if (is_numeric($raw)) {
       $parsed = [$raw];
     } else {
-      $parsed = boolval($raw);
+      $parsed = [];
     }
     return $parsed;
   }
@@ -94,7 +94,7 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
     if (is_array($parsed)) {
       $this->add($parsed);
     } else if ($this->isDemanded() && $parsed === false) {
-      throw new UnmodifiableAttributeException;
+      throw new AttributeException();
     } else if (!$this->isLocked()) {
       $this->values = $this->isDemanded() || $parsed;
     }
@@ -181,11 +181,11 @@ class MultiValueAttribute extends AbstractAttribute implements \Countable, \Iter
    * 
    * @param    scalar|string[] $values the atomic values to remove
    * @return   self for PHP Method Chaining
-   * @throws   UnmodifiableAttributeException if any of the given values is unmodifiable
+   * @throws   AttributeException if any of the given values is unmodifiable
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
-      throw new UnmodifiableAttributeException($this->getName() . ' attribute values given are unremovable');
+      throw new AttributeException($this->getName() . ' attribute values given are unremovable');
     } else if (is_array($this->values)) {
       $arr = self::parse($values);
       if (count($arr) > 0) {

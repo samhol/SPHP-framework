@@ -10,7 +10,6 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Core\Types\Strings;
 use InvalidArgumentException;
-use SplObjectStorage;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations
@@ -82,7 +81,7 @@ abstract class AbstractTag implements TagInterface {
    */
   private function setTagName($tagName) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
-      throw new InvalidArgumentException("$tagName; HTML tagname contains only lowercase alphabets");
+      throw new InvalidArgumentException("'$tagName' is malformed");
     }
     $this->tagName = $tagName;
     return $this;
@@ -102,7 +101,7 @@ abstract class AbstractTag implements TagInterface {
    * @return self for PHP Method Chaining
    */
   private function setAttributeManager(AttributeManager $attrManager = null) {
-    if (!($attrManager instanceof AttributeManager)) {
+    if ($attrManager === null) {
       $this->attrs = new AttributeManager();
     } else {
       $this->attrs = $attrManager;

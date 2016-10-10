@@ -10,8 +10,7 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Attributes\ClassAttribute as ClassAttribute;
 use Sphp\Html\Attributes\StyleAttribute as StyleAttribute;
-use Sphp\Html\Attributes\InvalidAttributeException as InvalidAttributeException;
-use Sphp\Html\Attributes\UnmodifiableAttributeException as UnmodifiableAttributeException;
+use Sphp\Html\Attributes\AttributeException as AttributeException;
 
 /**
  * Interface specifies the basic functionality of any HTML component
@@ -109,8 +108,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $property CSS property
    * @param  string $value CSS value
    * @return self for PHP Method Chaining
-   * @throws UnmodifiableAttributeException if the property value is already locked
-   * @throws InvalidAttributeException if either the name or the value of the property is empty
+   * @throws AttributeException if the property value is already locked
+   * @throws InvalidArgumentException if either the name or the value of the property is empty
    * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
    */
   public function setStyle($property, $value);
@@ -125,8 +124,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * 
    * @param  string[] $styles CSS property and CSS value pairs
    * @return self for PHP Method Chaining
-   * @throws UnmodifiableAttributeException if any of the properties is already locked
-   * @throws InvalidAttributeException if if any of the properties has empty name or value
+   * @throws AttributeException if any of the properties is already locked
+   * @throws InvalidArgumentException if if any of the properties has empty name or value
    * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
    */
   public function setStyles(array $styles);
@@ -136,7 +135,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * @param  string $property CSS property
    * @return self for PHP Method Chaining
-   * @throws UnmodifiableAttributeException if the property is unmodifiable
+   * @throws AttributeException if the property is unmodifiable
    */
   public function removeStyle($property);
 
@@ -183,8 +182,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $name the name of the attribute
    * @param  mixed $value the value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidAttributeException if the attribute name or value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidArgumentException if the attribute name or value is invalid
+   * @throws AttributeException if the attribute value is unmodifiable
    */
   public function setAttr($name, $value = null);
 

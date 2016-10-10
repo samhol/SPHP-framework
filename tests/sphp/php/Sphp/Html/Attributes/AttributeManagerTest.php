@@ -9,7 +9,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    * @var AttributeManager 
    */
   protected $attrs;
-  
+
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
@@ -26,6 +26,32 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   protected function tearDown() {
     echo "\ntearDown:\n";
     $this->attrs = null;
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public function identifyingData() {
+    return [
+        ["id", "test"],
+        ["id", null],
+        ["data-id", "a b c d"],
+        ["data-id", null]
+    ];
+  }
+
+  /**
+   *
+   * @param string $name
+   * @param string $value
+   * @dataProvider identifyingData
+   */
+  public function testIdentifying($name, $value) {
+    $this->attrs->identify($name, $value);
+    $this->assertTrue($this->attrs->get($name) === $value);
+    $this->assertTrue($this->attrs->exists($name));
+    $this->assertTrue(!$this->attrs->isEmpty($name));
   }
 
   /**
@@ -221,6 +247,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
         ["float", 0.1]
     ];
   }
+
   /**
    * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
    * 
@@ -236,8 +263,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $attrs->demand($name);
     $this->assertTrue($attrs->isDemanded($name));
   }
-  
-  
+
   /**
    * 
    * @return scalar[]
@@ -251,7 +277,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
         [1]
     ];
   }
-  
+
   /**
    * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
    * 
@@ -264,4 +290,5 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue(!$attrs->isDemanded($attrName) === false);
     $this->assertTrue(!$attrs->exists($attrName) === false);
   }
+
 }

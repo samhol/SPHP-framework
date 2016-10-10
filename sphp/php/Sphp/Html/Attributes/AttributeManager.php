@@ -60,8 +60,8 @@ class AttributeManager extends AbstractAttributeManager {
    * @param  string $name the name of the Aria attribute (without the `aria` prefix)
    * @param  mixed $value the value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidAttributeException if the attribute name or value is invalid
-   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @throws InvalidArgumentException if the attribute name or value is invalid
+   * @throws AttributeException if the attribute value is unmodifiable
    * @link   https://www.w3.org/WAI/intro/aria.php
    */
   public function setAria($name, $value) {
