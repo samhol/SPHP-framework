@@ -49,7 +49,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    */
   public function testIdentifying($name, $value) {
     $this->attrs->identify($name, $value);
-    $this->assertTrue($this->attrs->get($name) === $value);
+    $this->assertTrue(is_string($this->attrs->get($name)));
     $this->assertTrue($this->attrs->exists($name));
     $this->assertTrue(!$this->attrs->isEmpty($name));
   }

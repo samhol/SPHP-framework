@@ -48,7 +48,7 @@ class HtmlIdStorage {
    * @return boolean true on success or false on failure
    */
   public static function isValidValue($value) {
-    return is_string($value) && !Strings::isEmpty($value);
+    return is_string($value) && !preg_match('/[\r\n\r\n|\r\r|\n\n]/',$value);
   }
 
   /**
