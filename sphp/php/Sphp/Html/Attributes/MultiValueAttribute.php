@@ -61,15 +61,17 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return scalar[] separated atomic values in an array
    */
   public static function parse($raw) {
-    if (is_array($raw)) {
-      $p = array_filter( $raw, function ($item) {
-        return preg_match('/\s+/S', $item) === 0 && strlen($item) > 0;
-      });
+    if (is_array($raw)) {    
+      $f = function ($var) {
+        return !empty($var) || $var === "0" || $var === 0 || (bool)$var === $var;
+      }; 
+      $arr = array_map("trim", $raw);
+      $p = array_filter($arr, $f);
       $parsed = array_unique($p);
     } else if (is_string($raw)) {
       $raw = preg_replace('/\s+/S', ' ', trim($raw));
       $parsed = [];
-      if (!Strings::isEmpty($raw)) {
+      if (strlen($raw) > 0) {
         $parsed = array_unique(explode(' ', $raw));
       }
     } else if (is_numeric($raw)) {
@@ -96,7 +98,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public function set($values) {
     $this->clear();
     $parsed = self::parse($values);
-    if (is_array($parsed)) {
+    if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
     }
     return $this;
@@ -115,15 +117,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return self for PHP Method Chaining
    */
   public function add($values) {
-    $arr = self::parse($values);
-    $numNew = count($arr);
-    if ($numNew > 0) {
-      if (!is_array($this->values)) {
-        $this->values = $arr;
-      } else {
-        $this->values = array_unique(array_merge($arr, $this->values));
-      }
-      //sort($this->values);
+    $parsed = self::parse($values);
+    if (!empty($parsed)) {
+      $this->values = array_unique(array_merge($parsed, $this->values));
     }
     return $this;
   }
@@ -247,7 +243,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function count() {
     $num = 0;
-    if (is_array($this->values)) {
+    if (!empty($this->values)) {
       $num = count($this->values);
     }
     return $num;

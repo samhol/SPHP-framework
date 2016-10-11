@@ -159,7 +159,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return AttributeInterface|null the mapped attribute object or null
    */
-  protected function getAttributeObject($name) {
+  public function getAttributeObject($name) {
     $obj = null;
     if (array_key_exists($name, $this->attrObjects)) {
       $obj = $this->attrObjects[$name];
@@ -175,12 +175,16 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *  If the attribute value is locked the method throws a {@link UnmodifiableAttributeException}
    *
    * `$value` parameter:
-   *
-   * 1. the type of the value should always convert to string
-   * 2. empty `string`: an empty attribute is set
-   * 3. boolean `true`: an empty attribute is set
-   * 4. boolean `false` or `null`: attribute is removed or an attribute object is cleared
-   * 5. otherwise the attribute value is the string conversion value
+   * 
+   * Accepted attribute values are a subset of all PHP scalar types and different 
+   * attributes are able to handle different values
+   * 
+   * 
+   * Basic rules for values:
+   * 
+   * * empty `string` or boolean `true`: an empty attribute is set
+   * * boolean `false` or `null`: attribute is removed or an attribute object it has no mutable value(s)
+   * * otherwise the attribute value is a string conversion of the parameter value
    *
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
@@ -275,8 +279,8 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidArgumentException if either the name or the value is invalid
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws InvalidArgumentException if either the name or the value is invalid for the type of the attribute
+   * @throws AttributeException if the attribute is unmodifiable
    */
   public function lock($name, $value) {
     if ($this->isAttributeObject($name)) {

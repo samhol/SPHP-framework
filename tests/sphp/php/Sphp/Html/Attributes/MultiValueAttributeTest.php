@@ -11,7 +11,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @var MultiValueAttribute 
    */
   protected $attrs;
-  
+
   public function createAttr($name = "class") {
     return new MultiValueAttribute($name);
   }
@@ -50,8 +50,6 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     $this->assertEquals($this->attrs->getValue(), false);
     $this->assertEquals($this->attrs->count(), 0);
   }
-  
-  
 
   /**
    * 
@@ -71,6 +69,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
         [0b100, 0b100, true]
     ];
   }
+
   /**
    * 
    * @return string[]
@@ -79,11 +78,22 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     return [
         ["", []],
         [" ", []],
-        [" c1 ", ["c1"]],
-        ["  c1  ", ["c1"]],
-        ["c1", ["c1"]],
+        [" a ", ["a"]],
+        ["  a  ", ["a"]],
+        ["a", ["a"]],
         ["c1 c2", ["c1", "c2"]],
-        [["c1", "c2", "c3"], ["c1", "c2", "c3"]]
+        [" c1 c2 ", ["c1", "c2"]],
+        [range(-1, 1), range(-1, 1)],
+        [range("a", "z"), range("a", "z")],
+        [
+            [],
+            []
+        ],
+        [
+            ["", " ", "  ", "\n\t\r"],
+            []
+        ],
+        [[""], []],
     ];
   }
 
@@ -173,7 +183,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     $this->assertTrue($this->attrs->contains($value));
     $this->assertTrue($this->attrs->count() === $num);
     $this->attrs->clear();
-    $this->assertTrue($this->attrs->count() === 0);
+    $this->assertCount(0, $this->attrs);
   }
 
   /**
@@ -255,7 +265,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
   }
 
   public function lockMethodData() {
-      return [
+    return [
         [1],
         ["a"],
         ["a b c"]

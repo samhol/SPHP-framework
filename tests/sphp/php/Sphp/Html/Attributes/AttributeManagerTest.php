@@ -52,6 +52,11 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue(is_string($this->attrs->get($name)));
     $this->assertTrue($this->attrs->exists($name));
     $this->assertTrue(!$this->attrs->isEmpty($name));
+    try {
+      $this->attrs->set($name, "foo");
+    } catch (\Exception $ex) {
+
+    }
   }
 
   /**
@@ -208,6 +213,37 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return string[]
    */
+  public function objectData() {
+    return [
+        [new MultiValueAttribute("data-foo")],
+        [new PropertyAttribute("data-bar")]
+    ];
+  }
+
+  /**
+   * @covers Sphp\Html\Attributes\AttributeManager::setAttributeObject()
+   * 
+   * @param AttributeInterface $obj
+   * @dataProvider objectData
+   */
+  public function testObjectSetting(AttributeInterface $obj) {
+    $name = $obj->getName();
+    $this->attrs->set($name, "foo bar");
+    $this->attrs->demand($name);
+    $this->attrs->setAttributeObject($obj);
+    //$this->assertTrue($attrs->exists($name));
+    $this->assertTrue($this->attrs->isAttributeObject($name));
+    $this->assertTrue($this->attrs->isDemanded($name));
+    $this->assertTrue(is_a($obj, get_class($this->attrs->getAttributeObject($name))));
+    
+    echo $this->attrs->__toString();
+    $this->assertTrue($this->attrs->getIterator() instanceof \Traversable);
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
   public function lockingData() {
     return [
         ["string", ""],
@@ -227,7 +263,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   public function testLocking($name, $value) {
     $attrs = new AttributeManager();
     $attrs->set($name, $value);
-    $this->assertTrue(!$attrs->isLocked($name));
+    $this->assertFalse($attrs->isLocked($name));
     $attrs->lock($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     //$this->assertTrue($attrs->exists($name));
