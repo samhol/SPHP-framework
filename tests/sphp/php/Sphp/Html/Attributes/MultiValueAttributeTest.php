@@ -6,9 +6,52 @@ include_once 'AttributeObjectTest.php';
 
 class MultiValueAttributeTest extends \AttributeObjectTest {
 
+  /**
+   *
+   * @var MultiValueAttribute 
+   */
+  protected $attrs;
+  
   public function createAttr($name = "class") {
     return new MultiValueAttribute($name);
   }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public function emptyData() {
+    return [
+        [""],
+        [" "],
+        ["  "],
+        ["\n"],
+        ["\n\t\r"],
+        ["\t"],
+        [" \r \n \t "],
+        [true],
+        [false],
+        [[]],
+        [[""]],
+    ];
+  }
+
+  /**
+   * 
+   * @covers MultiValueAttribute::set()
+   * @dataProvider emptyData
+   */
+  public function testEmptySetting($value) {
+    $this->attrs->set($value);
+    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->contains($value));
+    $this->assertFalse($this->attrs->isLocked());
+    $this->assertFalse($this->attrs->isDemanded());
+    $this->assertEquals($this->attrs->getValue(), false);
+    $this->assertEquals($this->attrs->count(), 0);
+  }
+  
+  
 
   /**
    * 
@@ -73,14 +116,13 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @dataProvider settingData
    */
   public function testSetting($value, $expected) {
-    $attr = new MultiValueAttribute("class");
-    $attr->set($value);
+    $this->attrs->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
-    $this->assertFalse($attr->isLocked());
-    $this->assertFalse($attr->isLocked($value));
-    $this->assertFalse($attr->isDemanded());
-    $this->assertEquals($attr->getValue(), $expected);
+    $this->assertFalse($this->attrs->isLocked());
+    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->isDemanded());
+    $this->assertEquals($this->attrs->getValue(), $expected);
   }
 
   /**
@@ -90,7 +132,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
   public function lockingData() {
     return [
         ["c1"],
-        [["c1 c2"]],
+        [["c1", "c2"]],
         [["c1", "c2", "c3"]]
     ];
   }
@@ -101,11 +143,10 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @dataProvider lockingData
    */
   public function testLocking($value) {
-    $attr = new MultiValueAttribute("class");
-    $attr->lock($value);
-    $this->assertTrue($attr->isLocked($value));
-    $this->assertTrue($attr->isLocked());
-    $this->assertTrue($attr->contains($value));
+    $this->attrs->lock($value);
+    $this->assertTrue($this->attrs->isLocked($value));
+    $this->assertTrue($this->attrs->isLocked());
+    $this->assertTrue($this->attrs->contains($value));
   }
 
   /**
@@ -128,12 +169,11 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @dataProvider addingData
    */
   public function testAdding($value, $num) {
-    $attr = new MultiValueAttribute("class");
-    $attr->add($value);
-    $this->assertTrue($attr->contains($value));
-    $this->assertTrue($attr->count() === $num);
-    $attr->clear();
-    $this->assertTrue($attr->count() === 0);
+    $this->attrs->add($value);
+    $this->assertTrue($this->attrs->contains($value));
+    $this->assertTrue($this->attrs->count() === $num);
+    $this->attrs->clear();
+    $this->assertTrue($this->attrs->count() === 0);
   }
 
   /**
@@ -158,14 +198,13 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @param int $count
    */
   public function testClearing($add, $lock, $count) {
-    $attr = new MultiValueAttribute("class");
-    $attr->add($add);
-    $this->assertTrue($attr->isLocked() === false);
-    $attr->lock($lock);
-    $this->assertTrue(!$attr->isLocked($add));
-    $this->assertTrue($attr->isLocked($lock));
-    $attr->clear();
-    $this->assertTrue($attr->count() === $count);
+    $this->attrs->add($add);
+    $this->assertTrue($this->attrs->isLocked() === false);
+    $this->attrs->lock($lock);
+    $this->assertTrue(!$this->attrs->isLocked($add));
+    $this->assertTrue($this->attrs->isLocked($lock));
+    $this->attrs->clear();
+    $this->assertTrue($this->attrs->count() === $count);
   }
 
   /**
@@ -190,16 +229,15 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @param int $count
    */
   public function testRemoving() {
-    $attr = new MultiValueAttribute("class");
-    $attr->add("a b c d");
-    $attr->remove("a c");
-    $this->assertTrue($attr->contains("b d"));
-    $attr->lock("a c");
+    $this->attrs->add("a b c d");
+    $this->attrs->remove("a c");
+    $this->assertTrue($this->attrs->contains("b d"));
+    $this->attrs->lock("a c");
     try {
-      $attr->remove("a c");
+      $this->attrs->remove("a c");
     } catch (\Exception $ex) {
       $this->assertTrue($ex instanceof AttributeException);
-      $this->assertTrue($attr->contains("a b c d"));
+      $this->assertTrue($this->attrs->contains("a b c d"));
     }
   }
 
