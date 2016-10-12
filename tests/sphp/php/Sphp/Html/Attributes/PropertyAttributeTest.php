@@ -12,6 +12,11 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   protected $attrs;
 
+  /**
+   * 
+   * @param  string $name
+   * @return PropertyAttribute
+   */
   public function createAttr($name = "style") {
     return new PropertyAttribute($name);
   }
@@ -54,8 +59,19 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     return [
         ["", []],
         [" ", []],
-        [" c1 ", []],
-        ["prop: val;", ["prop" => "val"]]
+        [":;", []],
+        [" p ", []],
+        ["p: v;", ["p" => "v"]],
+        [
+            "p: v;p1:v1;p2:v2;p:value;err:e:r:r:;;",
+            [
+                "p" => "value",
+                "p1" => "v1",
+                "p2" => "v2",
+                "p2" => "v2",
+                "err" => "e:r:r:"
+            ]
+        ]
     ];
   }
 
@@ -72,7 +88,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * 
    */
   public function testCloning() {
-    echo "\ntestCloning()\n";
+    //echo "\ntestCloning()\n";
     $this->attrs->setProperty("p", "v");
     $this->propEqualsTest($this->attrs, "p", "v");
     $cloned = clone $this->attrs;
@@ -82,7 +98,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     $this->propEqualsTest($cloned, "p1", "v2");
     $this->propEqualsTest($this->attrs, "p", "v");
     $this->notHavingPropTest($this->attrs, "p1");
-    $this->attrs->remove("p");
+    $this->attrs->unsetProperty("p");
     $this->notHavingPropTest($this->attrs, "p");
     $this->propEqualsTest($cloned, "p", "v1");
   }
@@ -90,11 +106,11 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   /**
    * 
    * @param PropertyAttribute $attr
-   * @param type $prop
-   * @param type $val
+   * @param string $prop
+   * @param scalar $val
    */
   public function propEqualsTest(PropertyAttribute $attr, $prop, $val) {
-    echo "\npropEqualsTest\n";
+    //echo "\npropEqualsTest\n";
     $this->assertTrue($attr->hasProperty($prop));
     $this->assertEquals($attr->getProperty($prop), $val);
   }
@@ -102,10 +118,10 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   /**
    * 
    * @param PropertyAttribute $attr
-   * @param type $prop
+   * @param string $prop
    */
   public function notHavingPropTest(PropertyAttribute $attr, $prop) {
-    echo "\nnotHavingPropTest\n";
+    //echo "\nnotHavingPropTest\n";
     $this->assertFalse($attr->hasProperty($prop));
     $this->assertEquals($attr->getProperty($prop), null);
   }
@@ -230,31 +246,33 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    */
   public function clearingData() {
     return [
-        ["c1: v1;", "l1: v1;", 1],
-        ["c1: v1; c2: v2; c3: v3;", "li: v1; l2:v2;", 2]
+        ["c1: v1;", "l1: v1;"],
+        ["c1: v1;", "l1: v1;"],
+        ["c1: v1; c2: v2; c3: v3;", "li: v1; l2:v2;"]
     ];
   }
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers Sphp\Html\Attributes\PropertyAttribute::add()
    * @dataProvider clearingData
    *
-   * @param scalar|scalar[] $add
+   * @param scalar|scalar[] $setProps
    * @param scalar|scalar[] $lock
    * @param int $count
    */
-  public function testClearing($add, $lock, $count) {
-    $addedProps = array_keys(PropertyAttribute::parse($add));
+  public function testClearing($setProps, $lock) {
+    $addedProps = array_keys(PropertyAttribute::parse($setProps));
     $lockedProps = array_keys(PropertyAttribute::parse($lock));
-    $this->attrs->set($add);
+    $this->attrs->set($setProps);
     $this->assertTrue($this->attrs->isLocked() === false);
+    $this->assertEquals($this->attrs->count(), count($addedProps));
     $this->attrs->lock($lock);
     $this->assertTrue($this->attrs->isLocked());
-    $this->assertTrue(!$this->attrs->isLocked($addedProps));
+    $this->assertFalse($this->attrs->isLocked($addedProps));
     $this->assertTrue($this->attrs->isLocked($lockedProps));
     $this->attrs->clear();
-    $this->assertTrue($this->attrs->count() === $count);
+    $this->assertTrue($this->attrs->count() === count($lockedProps));
   }
 
   /**
@@ -270,7 +288,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @covers Sphp\Html\Attributes\PropertyAttribute::add()
    *
    * @dataProvider removeMethodData
    * @param string $add
@@ -283,14 +301,14 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     $this->assertEquals($this->attrs->count(), count($props));
     foreach ($props as $p => $v) {
       $this->propEqualsTest($this->attrs, $p, $v);
-      $this->attrs->remove($p);
+      $this->attrs->unsetProperty($p);
       $this->notHavingPropTest($this->attrs, $p);
     }
     $this->attrs->setProperties($props);
     $this->attrs->lockProperties($locked);
     foreach ($props as $p => $v) {
       try {
-        $this->attrs->remove($p);
+        $this->attrs->unsetProperty($p);
       } catch (\Exception $ex) {
         $this->assertTrue($ex instanceof AttributeException);
       }

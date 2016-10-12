@@ -176,13 +176,13 @@ trait IdentifiableComponentTrait {
   }
 
   /**
-   * Removes given inline style property
+   * Removes the given inline style property
    *
    * @param  string $property CSS property name
    * @return self for PHP Method Chaining
    */
   public function removeStyle($property) {
-    $this->inlineStyles()->remove($property);
+    $this->inlineStyles()->unsetProperty($property);
     return $this;
   }
 

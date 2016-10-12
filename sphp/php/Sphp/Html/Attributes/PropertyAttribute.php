@@ -74,20 +74,26 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   public static function parse($properties) {
     if (is_array($properties)) {
       return $properties;
-    }
-    $styleArr = [];
-    $rows = explode(';', $properties);
-    if (empty($rows)) {
-      $rows = [$properties];
-    }
-    foreach ($rows as $row) {
-      $data = explode(':', $row);
-      if (count($data) === 2) {
-        $styleArr[trim($data[0])] = trim($data[1]);
+    } else if (is_string($properties)) {
+      $styleArr = [];
+      $rows = explode(';', $properties);
+      if (empty($rows)) {
+        $rows = [$properties];
       }
+      foreach ($rows as $row) {
+        $data = explode(':', $row, 2);
+        if (count($data) === 2) {
+          $styleArr[trim($data[0])] = trim($data[1]);
+        }
+      }
+      $f = function ($var) {
+        return !empty($var) || $var === "0" || $var === 0 || (bool) $var === $var;
+      };
+      //echo "parse:".print_r($styleArr);
+      return array_filter($styleArr, $f, \ARRAY_FILTER_USE_BOTH);
+    } else {
+      return [];
     }
-    //echo "parse:".print_r($styleArr);
-    return $styleArr;
   }
 
   /**
@@ -95,10 +101,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * **IMPORTANT!:** Does not alter locked properties
    *
-   * @param    scalar $value the value of the attribute
-   * @return   self for PHP Method Chaining
-   * @throws   AttributeException if the property is unmodifiable
-   * @throws   InvalidArgumentException if the value is invalid
+   * @param  scalar $value the value of the attribute
+   * @return self for PHP Method Chaining
+   * @throws AttributeException if the property is unmodifiable
+   * @throws InvalidArgumentException if the value is invalid
    */
   public function set($value) {
     $this->clear();
@@ -111,11 +117,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * **Note:** Replaces old property value with the new one
    *
-   * @param    string $property the name of the property
-   * @param    string $value the value of the property
-   * @return   self for PHP Method Chaining
-   * @throws   AttributeException if the property is unmodifiable
-   * @throws   InvalidArgumentException if either the property name or the value is invalid
+   * @param  string $property the name of the property
+   * @param  string $value the value of the property
+   * @return self for PHP Method Chaining
+   * @throws AttributeException if the property is unmodifiable
+   * @throws InvalidArgumentException if either the property name or the value is invalid
    */
   public function setProperty($property, $value) {
     if ($this->isLocked($property)) {
@@ -152,21 +158,31 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   }
 
   /**
+   * Removes given property
+   *
+   * @param  string $name the names of the properties to remove
+   * @return self for PHP Method Chaining
+   * @throws AttributeException if the property is unmodifiable
+   */
+  public function unsetProperty($name) {
+    if ($this->isLocked($name)) {
+      throw new AttributeException("'" . $this->getName() . "' property '$name' is unremovable");
+    } else {
+      unset($this->props[$name]);
+    }
+    return $this;
+  }
+
+  /**
    * Removes given properties
    *
-   * @param    string|string[] $properties the names of the properties to remove
-   * @return   self for PHP Method Chaining
-   * @throws   AttributeException if the property is unmodifiable
+   * @param  string[] $names the names of the properties to remove
+   * @return self for PHP Method Chaining
+   * @throws AttributeException if any of the properties is unmodifiable
    */
-  public function remove($properties) {
-    if (is_array($properties)) {
-      foreach ($properties as $prop) {
-        $this->remove($prop);
-      }
-    } else if ($this->isLocked($properties)) {
-      throw new AttributeException("'" . $this->getName() . "' property '$properties' is unremovable");
-    } else {
-      unset($this->props[$properties]);
+  public function unsetProperties(array $names) {
+    foreach ($names as $name) {
+      $this->remove($name);
     }
     return $this;
   }
@@ -176,10 +192,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function clear() {
     $locked = array_flip($this->lockedProps);
-    $props = array_intersect_key($this->props, $locked);
-    if ($this->props != $props) {
-      $this->props = $props;
-    }
+    $this->props = array_intersect_key($this->props, $locked);
     return $this;
   }
 
@@ -216,15 +229,14 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return boolean true if locked and false otherwise
    */
   public function isLocked($property = null) {
+    $locked = false;
     if ($property === null) {
       $locked = !empty($this->lockedProps);
-    } else if (is_string($property) && in_array($property, $this->lockedProps)) {
-      $locked = true;
+    } else if (is_string($property)) {
+      $locked = in_array($property, $this->lockedProps);
     } else if (is_array($property)) {
       $locked = !array_diff($property, $this->lockedProps);
-    } else {
-      $locked = false;
-    }
+    } 
     return $locked;
   }
 
@@ -244,7 +256,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
       throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     $this->setProperty($property, $value);
-    $this->lockedProps[$property] = $property;
+    $this->lockedProps[] = $property;
     return $this;
   }
 
@@ -277,9 +289,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @throws   InvalidArgumentException if if any of the properties has empty name or value
    */
   public function lock($props = null) {
-    $styles = self::parse($props);
-    //var_dump($styles);
-    $this->lockProperties($styles);
+    if ($props === null) {
+      $this->lockedProps = array_keys($this->props);
+    } else {
+      $this->lockProperties(self::parse($props));
+    }
     return $this;
   }
 
