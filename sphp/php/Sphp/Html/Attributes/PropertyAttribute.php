@@ -31,7 +31,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   private $props = [];
 
   /**
-   * locked properties
+   * names of all locked properties
    *
    * @var string[]
    */
@@ -45,7 +45,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
 
   /**
    * 
-   * @param string $name
+   * @param string $name the name of the attribute
    * @param string $parser
    * @param string $form
    */
@@ -72,10 +72,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return string[] parsed property array containing name value pairs
    */
   public static function parse($properties) {
+    $parsed = [];
     if (is_array($properties)) {
-      return $properties;
+      $parsed = $properties;
     } else if (is_string($properties)) {
-      $styleArr = [];
       $rows = explode(';', $properties);
       if (empty($rows)) {
         $rows = [$properties];
@@ -83,17 +83,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
       foreach ($rows as $row) {
         $data = explode(':', $row, 2);
         if (count($data) === 2) {
-          $styleArr[trim($data[0])] = trim($data[1]);
+          $parsed[trim($data[0])] = trim($data[1]);
         }
       }
-      $f = function ($var) {
-        return !empty($var) || $var === "0" || $var === 0 || (bool) $var === $var;
-      };
-      //echo "parse:".print_r($styleArr);
-      return array_filter($styleArr, $f, \ARRAY_FILTER_USE_BOTH);
-    } else {
-      return [];
-    }
+    } 
+    return array_filter($parsed, function ($var) {
+      return !empty($var) || $var === "0";
+    }, \ARRAY_FILTER_USE_BOTH);
   }
 
   /**
@@ -236,7 +232,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
       $locked = in_array($property, $this->lockedProps);
     } else if (is_array($property)) {
       $locked = !array_diff($property, $this->lockedProps);
-    } 
+    }
     return $locked;
   }
 
@@ -308,15 +304,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return scalar the value of the property attribute
    */
   public function getValue() {
-    if ($this->count() > 0) {
+    if (!empty($this->props)) {
       $output = '';
       foreach ($this->props as $k => $v) {
         $output .= sprintf($this->form, $k, $v);
       }
-    } else if ($this->isDemanded()) {
-      $output = true;
     } else {
-      $output = false;
+      $output = $this->isDemanded();
     }
     return $output;
   }
@@ -328,7 +322,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function count() {
     $num = 0;
-    if (is_array($this->props)) {
+    if (!empty($this->props)) {
       $num = count($this->props);
     }
     return $num;

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Core;
 
-use Sphp\Html\Attributes\ClassAttribute;
+use Sphp\Html\Attributes\MultiValueAttribute;
 
 /**
  * Trait implements {@link ColourableInterface} functionality
@@ -33,7 +33,7 @@ trait ColourableTrait {
   /**
    * Returns the class attribute object
    * 
-   * @return ClassAttribute the class attribute object
+   * @return MultiValueAttribute the class attribute object
    */
   abstract public function cssClasses();
 

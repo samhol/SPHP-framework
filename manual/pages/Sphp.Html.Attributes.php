@@ -2,14 +2,16 @@
 
 namespace Sphp\Html\Attributes;
 
+$abstractAttrMngr = $api->classLinker(AbstractAttributeManager::class);
 $htmlAttrMngr = $api->classLinker(AttributeManager::class);
-$abstractAttr = $api->classLinker(AbstractAttribute::class);
+$attributeInterface = $api->classLinker(AttributeInterface::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 $propertyAttr = $api->classLinker(PropertyAttribute::class);
-$setMethodLink = $htmlAttrMngr->method("set");
-$removeMethodLink = $htmlAttrMngr->method("remove");
-$requireAttr = $htmlAttrMngr->method("demand");
-$lockAttr = $htmlAttrMngr->method("lock");
+$setMethodLink = $abstractAttrMngr->method("set", false);
+$removeMethodLink = $abstractAttrMngr->method("remove", false);
+$requireAttr = $abstractAttrMngr->method("demand", false);
+$lockAttr = $abstractAttrMngr->method("lock", false);
+$setAttributeObjectLink = $abstractAttrMngr->method("setAttributeObject", false);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
@@ -36,27 +38,13 @@ types and it is used in all of the HTML components as the attribute handler.
 
 Any type of valid attribute support at least these four setter methods:
 
-1. **Setting a name value pair**:
-  * $setMethodLink
-2. **removing**:
-  * $removeMethodLink
-3. **Requiring** (attribute is always existent in the manager and cannnot directly be removed):
-  * $requireAttr
-4. **Value locking** (attribute is always existent and has a certain value and cannnot directly be removed):
-  * $lockAttr
-MD
-);
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
-echo $parsedown->text(<<<MD
-##Requiring attributes and locking attribute values
-
-$requireAttr method forces or unforces
-an attribute name to exists in the string output of the $htmlAttrMngr. A previously nonexistent required 
+1. $setMethodLink: sets an attribute name value pair
+2. $removeMethodLink: removes an attribute if possible
+3. $requireAttr: This method sets an attribute as always visible (atleast attribute name). A previously nonexistent required 
 attribute is stored to the manager as an empty attribute. A required attribute cannot be 
-removed, but its value is mutable.
-		
-$lockAttr method locks an attribute 
-to the given value. A locked attribute cannot be removed and its value is immune to modification.
+removed, but its value is still mutable.
+4. $lockAttr: This method locks an attribute 
+to the given value. Locked attribute attribute is always visible. Such attribute cannot be removed and locked value is immune to modification.
 
 **IMPORTANT NOTES ABOUT REQUIRING AND VALUE LOCKING!:** 
 
@@ -64,6 +52,22 @@ to the given value. A locked attribute cannot be removed and its value is immune
    the same time and only the locked .
 2. other attributes can have only one value as locked at the same time.
 3. Attribute can be required and have a locked value at the same time. 
+
+MD
+);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
+echo $parsedown->text(<<<MD
+       
+###Inserting new $attributeInterface objects to the manager
+        
+New $attributeInterface objects can be inserted into the manager by using the $setAttributeObjectLink method.
+        
+**Important:**
+        
+  1. If an attribute has allready a value, such attribute cannot be replaced 
+     by an attribute object
+  2. If attribute in the manager is allready an $attributeInterface instance the 
+     new $attributeInterface instance must be of the same type
 
 MD
 );

@@ -18,6 +18,7 @@ class PropertyAttributeTest extends \AttributeObjectTest {
    * @return PropertyAttribute
    */
   public function createAttr($name = "style") {
+    echo phpversion();
     return new PropertyAttribute($name);
   }
 

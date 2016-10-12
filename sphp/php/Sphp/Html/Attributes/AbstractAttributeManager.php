@@ -110,7 +110,14 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   }
 
   /**
-   * Attaches an {@kink AttributeInterface} object to the manager
+   * Attaches an attribute object to the manager
+   * 
+   * **IMPORTANT:** 
+   * 
+   * 1. If manager has a set attribute allready, such attribute cannot be replaced 
+   *    by a new attribute object
+   * 2. If attribute in the manager has allready an attribute object instance the 
+   *    new object must be of the same type
    * 
    * @param  AttributeInterface $attrObject
    * @return self for PHP Method Chaining
@@ -119,8 +126,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    */
   public function setAttributeObject(AttributeInterface $attrObject) {
     $name = $attrObject->getName();
-    if ($this->isAttributeObject($name)) {
-      throw new InvalidArgumentException("Attribute '$name' object allready set");
+    if (!$this->isValidObjectType($attrObject)) {
+      $curr = $this->getAttributeObject($name);
+      $type = get_class($curr);
+      throw new InvalidArgumentException("Attribute '$name' must be of $type type");
     }
     if ($this->isIdentifier($name)) {
       throw new InvalidArgumentException("Identifier '$name' cannot be an object");
@@ -138,9 +147,17 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return $this;
   }
 
-  public function isValidObjectType($type) {
-    $curr = $this->getAttributeObject($name);
-    return is_a($object, $curr, true);
+  public function isValidObjectType(AttributeInterface $new) {
+    $name = $new->getName();
+    
+    if ($this->isAttributeObject($name)) {
+      $curr = $this->getAttributeObject($name);
+      $type = get_class($curr);
+      var_dump($type);
+      return is_a($new, $type, true);
+    } else {
+      return true;
+    }
   }
 
   /**
@@ -201,7 +218,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       }
       if ($this->isLocked($name)) {
         throw new AttributeException("The value of the '$name' attribute is unmodifiable");
-      } 
+      }
       if ($value === false || $value === null) {
         $this->remove($name);
       } else {

@@ -8,9 +8,9 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager;
-use Sphp\Html\Attributes\ClassAttribute as ClassAttribute;
-use Sphp\Html\Attributes\StyleAttribute as StyleAttribute;
-use Sphp\Html\Attributes\AttributeException as AttributeException;
+use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\AttributeException;
 
 /**
  * Interface specifies the basic functionality of any HTML component
@@ -38,14 +38,14 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   /**
    * Returns the class attribute object
    * 
-   * @return ClassAttribute the class attribute object
+   * @return MultiValueAttribute the class attribute object
    */
   public function cssClasses();
 
   /**
    * Returns the attribute object containing inline styles
    * 
-   * @return StyleAttribute the attribute object containing inline styles
+   * @return PropertyAttribute the attribute object containing inline styles
    */
   public function inlineStyles();
 

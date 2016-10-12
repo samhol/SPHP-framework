@@ -24,8 +24,8 @@ class AttributeManager extends AbstractAttributeManager {
    */
   public function __construct(array $objectMap = []) {
     $objects = [
-        new ClassAttribute(),
-        new StyleAttribute()
+        new MultiValueAttribute("class"),
+        new PropertyAttribute("style")
     ];
     parent::__construct($objects);
     $this->attachIdentifier('id');
@@ -37,7 +37,7 @@ class AttributeManager extends AbstractAttributeManager {
   /**
    * Returns the class attribute object
    *
-   * @return ClassAttribute the `class` attribute object
+   * @return MultiValueAttribute the `class` attribute object
    */
   public function classes() {
     return $this->getAttributeObject('class');
@@ -46,7 +46,7 @@ class AttributeManager extends AbstractAttributeManager {
   /**
    * Returns the style attribute object
    *
-   * @return StyleAttribute the `style` attribute object
+   * @return PropertyAttribute the `style` attribute object
    */
   public function styles() {
     return $this->getAttributeObject('style');

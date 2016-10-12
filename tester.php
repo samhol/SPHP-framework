@@ -59,7 +59,8 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
         <?php
         include_once "manual/manualTools/main.php";
 namespace Sphp\Core\Filters;
-
+var_dump(is_a(\Sphp\Html\Attributes\MultiValueAttribute::class, \Sphp\Html\Attributes\AttributeInterface::class, true));
+echo "---is_a end:---";
 $double = function ($value) {
   return $value * 2;
 };

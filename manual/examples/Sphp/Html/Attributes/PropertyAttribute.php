@@ -9,6 +9,7 @@ $styles = (new PropertyAttribute("style"))
             "font-weight" => "bold",
             "border" => "dotted 2px #ccc"
         ]);
-$styles["text-align"] = "justify";
+echo "<p $styles>Styled paragraph</p>\n";
+$styles["text-align"] = "right";
 echo "<p $styles>Styled paragraph</p>\n";
 ?>

@@ -216,7 +216,9 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   public function objectData() {
     return [
         [new MultiValueAttribute("data-foo")],
-        [new PropertyAttribute("data-bar")]
+        [new PropertyAttribute("data-bar")],
+        [new PropertyAttribute("style")],
+        [(new MultiValueAttribute("class"))->add("a b c")],
     ];
   }
 
@@ -228,7 +230,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    */
   public function testObjectSetting(AttributeInterface $obj) {
     $name = $obj->getName();
-    $this->attrs->set($name, "foo bar");
+    $this->attrs->set($name, "foo bar");//isValidObjectType
     $this->attrs->demand($name);
     $this->attrs->setAttributeObject($obj);
     //$this->assertTrue($attrs->exists($name));
@@ -326,5 +328,6 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     $this->assertTrue(!$attrs->isDemanded($attrName) === false);
     $this->assertTrue(!$attrs->exists($attrName) === false);
   }
+
 
 }

@@ -170,7 +170,14 @@ left: rem-calc(35)
     padding: rem-calc(0 5 0 10); // top right bottom left
     background: #eee;
     line-height: 1.6;
-    a {
+  }
+  > h2, > h3, > h4, > h5, > h6 {
+    //font-weight: 600;
+    margin: rem-calc(0 5 15 5);  // top right bottom left
+    padding: rem-calc(3 5 3 10); // top right bottom left
+  }
+  > h1,> h2, > h3, > h4, > h5, > h6 {
+  a {
       border: solid 1px #ccc;
       line-height: 1.6;
       @include border-radius(2px);
@@ -188,11 +195,6 @@ left: rem-calc(35)
         border-color: #bbb;
       }
     }
-  }
-  > h2, > h3, > h4, > h5, > h6 {
-    //font-weight: 600;
-    margin: rem-calc(0 5 15 5);  // top right bottom left
-    padding: rem-calc(3 5 3 10); // top right bottom left
   }
   p:not([class]), ol:not([class]), ul:not([class]), dl:not([class]) {
     a:not([class]) {

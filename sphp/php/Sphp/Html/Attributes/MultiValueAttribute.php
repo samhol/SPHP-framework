@@ -63,7 +63,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public static function parse($raw) {
     if (is_array($raw)) {    
       $f = function ($var) {
-        return !empty($var) || $var === "0" || $var === 0 || (bool)$var === $var;
+        return !empty($var) || $var === "0" || $var === 0;
       }; 
       $arr = array_map("trim", $raw);
       $p = array_filter($arr, $f);
@@ -228,7 +228,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * {@inheritdoc}
    */
   public function getValue() {
-    if ($this->count() > 0) {
+    if (!empty($this->values)) {
       $value = implode(" ", $this->values);
     } else {
       $value = $this->isDemanded();
