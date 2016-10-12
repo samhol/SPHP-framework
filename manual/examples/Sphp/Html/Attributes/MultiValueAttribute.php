@@ -9,6 +9,7 @@ echo "<button $classes>Classy button</button>\n";
 
 $classes->remove("tiny");
 echo "<button $classes>Classy button</button>\n";
+
 $classes->lock('button')->clear();
 echo "<button $classes>Classy button</button>\n";
 ?>
