@@ -126,7 +126,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     if (Strings::isEmpty($property)) {
       throw new InvalidArgumentException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
-    if (Strings::isEmpty($value)) {
+    if (empty($value) && $value !== "0" && $value !== 0) {
       throw new InvalidArgumentException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;

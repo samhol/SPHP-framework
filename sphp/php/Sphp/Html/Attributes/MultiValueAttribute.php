@@ -9,8 +9,6 @@ namespace Sphp\Html\Attributes;
 
 use Countable;
 use IteratorAggregate;
-use Sphp\Core\Types\Arrays;
-use Sphp\Core\Types\Strings;
 use ArrayIterator;
 
 /**

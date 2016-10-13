@@ -363,12 +363,10 @@ class Strings {
    * Checks whether the given string is empty
    * 
    * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
    * @return boolean true if the string is empty, false otherwise
    */
-  public static function isEmpty($string, $encoding = null) {
-    return static::length($string, static::getEncoding($encoding)) <= 0;
+  public static function isEmpty($string) {
+    return empty($string) && $string !== "0" && $string !== 0 && $string !== 0.0;
   }
 
   /**

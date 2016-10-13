@@ -12,7 +12,11 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    * @return array
    */
   public function emptyStrings() {
-    return [["", null, false]];
+    return [
+        [""], 
+        [null], 
+        [false]
+        ];
   }
 
   /**
@@ -21,7 +25,6 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testEmpty($empty) {
     $this->assertTrue(Strings::isEmpty($empty));
-    $this->assertFalse(!Strings::isEmpty($empty));
     $this->assertEquals(Strings::length($empty), 0);
   }
 
@@ -30,7 +33,14 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    * @return array
    */
   public function nonEmptyStrings() {
-    return [[" ", "\t", true, "\n", "0", 0]];
+    return [
+        [" "], 
+        ["\t"], 
+        [true], 
+        ["\n"], 
+        ["0"], 
+        [0], 
+        [0.0]];
   }
 
   /**
@@ -39,7 +49,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testNonEmpty($nonEmpty) {
     $this->assertFalse(Strings::isEmpty($nonEmpty));
-    $this->assertFalse(Strings::length($nonEmpty) == 0);
+    $this->assertEquals(Strings::length($nonEmpty), 1);
   }
 
   /**

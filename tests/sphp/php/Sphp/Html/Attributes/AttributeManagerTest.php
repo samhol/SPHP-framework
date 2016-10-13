@@ -55,7 +55,7 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
     try {
       $this->attrs->set($name, "foo");
     } catch (\Exception $ex) {
-
+      
     }
   }
 
@@ -230,60 +230,16 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    */
   public function testObjectSetting(AttributeInterface $obj) {
     $name = $obj->getName();
-    $this->attrs->set($name, "foo bar");//isValidObjectType
+    $this->attrs->set($name, "foo bar"); //isValidObjectType
     $this->attrs->demand($name);
     $this->attrs->setAttributeObject($obj);
     //$this->assertTrue($attrs->exists($name));
     $this->assertTrue($this->attrs->isAttributeObject($name));
     $this->assertTrue($this->attrs->isDemanded($name));
     $this->assertTrue(is_a($obj, get_class($this->attrs->getAttributeObject($name))));
-    
+
     echo $this->attrs->__toString();
     $this->assertTrue($this->attrs->getIterator() instanceof \Traversable);
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function lockingData() {
-    return [
-        ["string", ""],
-        ["boolean", true],
-        ["float", 0.1],
-        ["zero", 0]
-    ];
-  }
-
-  /**
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
-   * 
-   * @param string $name
-   * @param string $value numeric value
-   * @dataProvider lockingData
-   */
-  public function testLocking($name, $value) {
-    $attrs = new AttributeManager();
-    $attrs->set($name, $value);
-    $this->assertFalse($attrs->isLocked($name));
-    $attrs->lock($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
-    //$this->assertTrue($attrs->exists($name));
-    $this->assertTrue($attrs->isLocked($name));
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function lockDemandData() {
-    return [
-        ["string1", ""],
-        ["string2", "string"],
-        ["bool", true],
-        ["int", 0],
-        ["float", 0.1]
-    ];
   }
 
   /**
@@ -293,13 +249,47 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
    * @param string $value numeric value
    * @dataProvider lockDemandData
    */
-  public function lockDemandTest($name, $value) {
-    $attrs = new AttributeManager();
-    $attrs->lock($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
-    $this->assertTrue(!$attrs->isLocked($name));
-    $attrs->demand($name);
-    $this->assertTrue($attrs->isDemanded($name));
+  public function testLocking($name, $value) {
+    $this->attrs->set($name, $value);
+    $this->assertFalse($this->attrs->isLocked($name));
+    $this->attrs->lock($name, $value);
+    $this->assertTrue($this->attrs->get($name) === $value);
+    //$this->assertTrue($attrs->exists($name));
+    $this->assertTrue($this->attrs->isLocked($name));
+  }
+
+  /**
+   * 
+   * @return scalar[]
+   */
+  public function lockDemandData() {
+    return [
+        ["string1", ""],
+        ["string2", "string"],
+        ["bool", true],
+        ["int", 0],
+        ["float", 0.1],
+        ["class", "a b"],
+        ["style", "a:b;"]
+    ];
+  }
+
+  /**
+   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * 
+   * @param string $name
+   * @param scalar $value numeric value
+   * @dataProvider lockDemandData
+   */
+  public function testLockDemand($name, $value) {
+    $this->attrs->demand($name);
+    $this->assertTrue($this->attrs->isDemanded($name));
+    $this->attrs->set($name, $value);
+    $this->assertEquals($this->attrs->get($name), $value);
+    $this->assertFalse($this->attrs->isLocked($name));
+    $this->attrs->lock($name, $value);
+    $this->assertEquals($this->attrs->get($name), $value);
+    $this->assertTrue($this->attrs->isLocked($name));
   }
 
   /**
@@ -319,15 +309,14 @@ class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
   /**
    * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
    * 
-   * @dataProvider lockDemandData
+   * @dataProvider notExistsData
    */
-  public function notExistsTest($attrName) {
-    $attrs = new AttributeManager();
-    $this->assertTrue($attrs->get($attrName) === false);
-    $this->assertTrue(!$attrs->isLocked($attrName) === false);
-    $this->assertTrue(!$attrs->isDemanded($attrName) === false);
-    $this->assertTrue(!$attrs->exists($attrName) === false);
+  public function testNnotExists($attrName) {
+    $this->assertTrue($this->attrs->get($attrName) === false);
+    $this->assertTrue($this->attrs->isLocked($attrName) === false);
+    $this->assertTrue($this->attrs->isDemanded($attrName) === false);
+    $this->assertTrue($this->attrs->exists($attrName) === false);
+    $this->assertEquals($this->attrs->count(), 0);
   }
-
 
 }
