@@ -58,84 +58,96 @@ $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
 
         <?php
         include_once "manual/manualTools/main.php";
-namespace Sphp\Core\Filters;
-var_dump(is_a(\Sphp\Html\Attributes\MultiValueAttribute::class, \Sphp\Html\Attributes\AttributeInterface::class, true));
-echo "---is_a end:---";
-$double = function ($value) {
-  return $value * 2;
-};
 
+        /*
+          [NOTE BY danbrown AT php DOT net: The array_diff_assoc_recursive function is a
+          combination of efforts from previous notes deleted.
+          Contributors included (Michael Johnson), (jochem AT iamjochem DAWT com),
+          (sc1n AT yahoo DOT com), and (anders DOT carlsson AT mds DOT mdh DOT se).]
+         */
 
+        function arrayRecursiveDiff($aArray1, $aArray2) {
+          $aReturn = array();
 
-        $innerIterator = new \ArrayIterator(array(2, 3));
+          foreach ($aArray1 as $mKey => $mValue) {
+            if (array_key_exists($mKey, $aArray2)) {
+              if (is_array($mValue)) {
+                $aRecursiveDiff = arrayRecursiveDiff($mValue, $aArray2[$mKey]);
+                if (count($aRecursiveDiff)) {
+                  $aReturn[$mKey] = $aRecursiveDiff;
+                }
+              } else {
+                if ($mValue !== $aArray2[$mKey]) {
+                  $aReturn[$mKey] = $mValue;
+                }
+              }
+            } else {
+              $aReturn[$mKey] = $mValue;
+            }
+          }
 
-        $trim = new FilterIterator($innerIterator, $double);
-        foreach ($trim as $key => $value) {
-          echo "Key:";
-          var_dump($key);
-          echo "Value:";
-          var_dump($value);
-          echo "---next---";
+          return $aReturn;
         }
-         echo "AGAIN:\n";
-        foreach ($trim as $key => $value) {
-          echo "Key:";
-          var_dump($key);
-          echo "Value:";
-          var_dump($value);
-          echo "---next---";
-        }
-        $data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');
 
-echo http_build_query($data) . "\n";
-echo http_build_query($data, 'myvar_', ":") . "\n";
-$output = "";
-foreach ($data as $k => $v) {
-  $output .= sprintf("%s:%s;", $k, $v);
-}
-echo $output . "\n";
+        $a1 = Array
+            (
+            "0" => Array
+                (
+                "file" => "newhotfolder.gif",
+                "path" => "images/newhotfolder.gif",
+                "type" => "gif",
+                "size" => "1074",
+                "md5" => "123812asdkbqw98eqw80hasdas234234"
+            ),
+            "1" => Array
+                (
+                "file" => "image.gif",
+                "path" => "images/attachtypes/image.gif",
+                "type" => "gif",
+                "size" => "625",
+                "[md5]" => "7bbb66e191688a86b6f42a03bd412a6b"
+            ),
+            "2" => Array
+                (
+                "file" => "header.gif",
+                "path" => "images/attachtypes/header.gif",
+                "type" => "gif",
+                "size" => "625",
+                "md5" => "71291239asskf9320234kasjd8239393"
+            )
+        );
+        $a2 = Array
+            (
+            "0" => Array
+                (
+                "file" => "newhotfolder.gif",
+                "path" => "images/newhotfolder.gif",
+                "type" => "gif",
+                "size" => "1074",
+                "md5" => "8375h5910423aadbef67189c6b687ff51c"
+            ),
+            "1" => Array
+                (
+                "file" => "image.gif",
+                "path" => "images/attachtypes/image.gif",
+                "type" => "gif",
+                "size" => "625",
+                "[md5]" => "7bbb66e191688a86b6f42a03bd412a6b"
+            ),
+            "2" => Array
+                (
+                "file" => "header.gif",
+                "path" => "images/attachtypes/footer.gif",
+                "type" => "gif",
+                "size" => "625",
+                "md5" => "1223819asndnasdn2213123nasd921"
+            )
+        );
+
+        var_dump(arrayRecursiveDiff($a1, $a2));
+        print_r(arrayRecursiveDiff(
+                        [1, [[1, new \stdClass], 3, 2], 7], [1, [[1, new \stdClass, new \stdClass], 2, 3]]));
         ?>
-      </pre>
-      <?php
-
-      namespace Sphp\Html\Foundation\F6\Forms\Inputs;
-
-$i = new InputGroup(new \Sphp\Html\Forms\Inputs\EmailInput());
-      $i->printHtml();
-      $s = new TextualInputGroup("number", "balance");
-      $s->setPlaceholder("dollars")->setPrefix("Amount of money:")->setSuffix("$")->printHtml();
-      ?>
-      <div class="input-group">
-        <span class="input-group-label">cooler is cool</span>
-        <input class="input-group-field" type="number">
-      </div>
-
-
-      <form novalidate data-abide>
-        <div class="row">
-          <div class="small-3 columns">
-
-            <div class="input-group">
-              <span class="input-group-label">cooler is cool</span>
-              <input class="input-group-field" type="number" required>
-              <span class="input-group-label">$</span>
-              <div class="input-group-button">
-                <input type="submit" class="button" value="Submit">
-              </div>
-            </div>
-          </div>
-          <div class="small-9 columns">
-
-            <div class="input-group">
-              <span class="input-group-label">$</span>
-              <input class="input-group-field" type="number" required>
-              <div class="input-group-button">
-                <input type="submit" class="button" value="Submit">
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
     </div>
     <div class="show-for-xlarge xlarge-2 column"> 
 

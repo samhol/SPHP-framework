@@ -28,37 +28,26 @@ class Arrays {
    * @return array the full difference between the input arrays
    */
   public static function diff($array1, $array2) {
-    $result1 = [];
+    $aReturn = array();
+
     foreach ($array1 as $mKey => $mValue) {
       if (array_key_exists($mKey, $array2)) {
         if (is_array($mValue)) {
-          $aRecursiveDiff = self::diff($mValue, $array2[$mKey]);
+          $aRecursiveDiff = static::diff($mValue, $array2[$mKey]);
           if (count($aRecursiveDiff)) {
-            $result1[$mKey] = $aRecursiveDiff;
+            $aReturn[$mKey] = $aRecursiveDiff;
           }
-        } else if ($mValue != $array2[$mKey]) {
-          $result1[$mKey] = $mValue;
+        } else {
+          if ($mValue !== $array2[$mKey]) {
+            $aReturn[$mKey] = $mValue;
+          }
         }
       } else {
-        $result1[$mKey] = $mValue;
+        $aReturn[$mKey] = $mValue;
       }
     }
-    $result2 = [];
-    foreach ($array2 as $mKey => $mValue) {
-      if (array_key_exists($mKey, $array1)) {
-        if (is_array($mValue)) {
-          $aRecursiveDiff = self::diff($mValue, $array1[$mKey]);
-          if (count($aRecursiveDiff)) {
-            $result2[$mKey] = $aRecursiveDiff;
-          }
-        } else if ($mValue != $array1[$mKey]) {
-          $result2[$mKey] = $mValue;
-        }
-      } else {
-        $result2[$mKey] = $mValue;
-      }
-    }
-    return [$result1, $result2];
+
+    return $aReturn;
   }
 
   /**

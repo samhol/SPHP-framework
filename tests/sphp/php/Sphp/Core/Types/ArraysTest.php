@@ -7,17 +7,47 @@ namespace Sphp\Core\Types;
  */
 class ArraysTest extends \PHPUnit_Framework_TestCase {
 
-	/**
-	 * Generated from @assert ("abc", "a") == true.
-	 *
-	 * @covers Sphp\Tools\String::startsWith
-	 */
-	public function testDiff() {
-		$arr1 = ["a" => "a", [1, 3 => 2], 4 => "f"];
-		$arr2 = ["a" => "a", [1, 2], 4 => "f"];
-		$this->assertEquals(Arrays::diff([], []), []);
-		$this->assertEquals(Arrays::diff([1, 2], [2, 1]), []);
-		$this->assertEquals(Arrays::diff($arr1, $arr2), [[1, 3 => 2],[1, 2]]);
-	}
+  public function diffData() {
+    return [
+        [
+            ["a" => "a", [1, 3 => 2], 4 => "f"],
+            ["a" => "a", [1, 3 => 2], 4 => "f"],
+            []
+        ],
+        [
+            ["a" => new \stdClass],
+            ["b" => new \stdClass],
+            ["a" => new \stdClass]
+        ],
+        [
+            [],
+            [],
+            []
+        ],
+        [
+            [null],
+            [],
+            [null]
+        ],
+        [
+            [1],
+            [1 => 1],
+            [0 => 1, 1 => 1]
+        ],
+    ];
+  }
+
+  /**
+   *
+   * @covers Sphp\Tools\Arrays::diff
+   * @dataProvider diffData
+   * @param array $arr1
+   * @param array $arr2
+   * @param array $diff
+   */
+  public function testDiff(array $arr1, array $arr2, array $diff) {
+    print_r(Arrays::diff($arr1,$arr2));
+    $this->assertEquals(Arrays::diff($arr1,$arr2), $diff);
+  }
 
 }
