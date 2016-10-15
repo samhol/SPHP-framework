@@ -7,10 +7,10 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\SphpArrayObject as SphpArrayObject;
 use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
 use Sphp\Core\Types\Arrays;
 use ParsedownExtraPlugin;
+use ArrayIterator;
 
 /**
  * Clacc implements a container for HTML components and other textual content
@@ -32,7 +32,7 @@ class Container implements ContainerInterface, ContentParserInterface {
   /**
    * container's content
    *
-   * @var SphpArrayObject
+   * @var mixed[]
    */
   private $components;
 
@@ -43,7 +43,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {
-    $this->components = new SphpArrayObject();
+    $this->components = [];
     if ($content !== null) {
       $this->append($content);
     }
@@ -67,7 +67,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->components = clone $this->components;
+    $this->components = Arrays::copy($this->components);
   }
 
   /**
@@ -77,7 +77,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function append($content) {
-    $this->components->append($content);
+    $this->components[] = $content;
     return $this;
   }
 
@@ -113,7 +113,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function prepend($content) {
-    $this->components->prepend($content);
+    array_unshift($this->components, $content);
     return $this;
   }
 
@@ -124,16 +124,16 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count() {
-    return $this->components->count();
+    return count($this->components);
   }
 
   /**
    * Create a new iterator to iterate through inserted elements in the html component
    *
-   * @return \ArrayIterator iterator
+   * @return ArrayIterator iterator
    */
   public function getIterator() {
-    return $this->components->getIterator();
+    return new ArrayIterator($this->components);
   }
 
   /**
@@ -143,7 +143,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return boolean true on success or false on failure
    */
   public function offsetExists($offset) {
-    return $this->components->offsetExists($offset);
+    return array_key_exists($offset, $this->components);
   }
 
   /**
@@ -153,7 +153,11 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return mixed content element or null
    */
   public function offsetGet($offset) {
-    return $this->components->offsetGet($offset);
+    $result = null;
+    if ($this->offsetExists($offset)) {
+      $result = $this->components[$offset];
+    }
+    return $result;
   }
 
   /**
@@ -164,7 +168,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function offsetSet($offset, $value) {
-    $this->components->offsetSet($offset, $value);
+    $this->components[$offset] = $value;
     return $this;
   }
 
@@ -175,7 +179,9 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function offsetUnset($offset) {
-    $this->components->offsetUnset($offset);
+    if ($this->offsetExists($offset)) {
+      unset($this->components[$offset]);
+    }
     return $this;
   }
 
@@ -183,7 +189,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * {@inheritdoc}
    */
   public function toArray() {
-    return $this->components->toArray();
+    return $this->components;
   }
 
   /**
@@ -202,7 +208,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function clear() {
-    $this->components->clear();
+    $this->components = [];
     return $this;
   }
 
@@ -213,7 +219,7 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @throws \Exception if the html parsing fails
    */
   public function getHtml() {
-    return Arrays::implode($this->components->getArrayCopy());
+    return Arrays::implode($this->components);
   }
 
 }
