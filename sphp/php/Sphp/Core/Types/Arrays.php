@@ -135,6 +135,24 @@ class Arrays {
     return true;
   }
 
+  public static function getkeypath($arr, $lookup) {
+    if (array_key_exists($lookup, $arr)) {
+      return array($lookup);
+    } else {
+      foreach ($arr as $key => $subarr) {
+        if (is_array($subarr)) {
+          $ret = getkeypath($subarr, $lookup);
+          if ($ret) {
+            $ret[] = $key;
+            return $ret;
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
   /**
    * Returns the value from an array using the key chain given as the second parameter
    * 
@@ -222,26 +240,6 @@ class Arrays {
       $result = array_combine($sequence, $arr);
     }
     return $result;
-  }
-
-  /**
-   * Strip whitespace (or other characters) from the beginning and end of all
-   * string values in the input array
-   *
-   * @param  string[] $arr an array to clean
-   * @return string[] the cleaned array
-   */
-  public static function cleanValues(array $arr) {
-    foreach ($arr as $key => $value) {
-      if (is_array($value)) {
-        $arr[$key] = self::cleanValues($value);
-      } else if (is_string($value)) {
-        $arr[$key] = Strings::clean($value);
-      } else {
-        $arr[$key] = $value;
-      }
-    }
-    return $arr;
   }
 
   /**

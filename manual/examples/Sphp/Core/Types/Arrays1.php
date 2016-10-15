@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types;
 
-$arr1 = ["a", "a"];
+$arr1 = range(1, 10);
 $arr2 = [1 => "a", 0 => "b"];
 $arr3 = ["a", "b" => "a"];
 

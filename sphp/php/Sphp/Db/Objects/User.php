@@ -276,15 +276,16 @@ class User extends AbstractDbObject {
    * {@inheritdoc}
    */
   public function fromArray(array $data = []) {
-    $this->setPrimaryKey(Arrays::getValue($data, "id"))
-            ->setUsername(Arrays::getValue($data, "username"))
-            ->setFname(Arrays::getValue($data, "fname"))
-            ->setLname(Arrays::getValue($data, "lname"))
-            ->setEmail(Arrays::getValue($data, "email"))
-            ->setPhonenumbers(Arrays::getValue($data, "phonenumbers"))
+    $myinputs = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS, true);
+    $this->setPrimaryKey($myinputs["id"])
+            ->setUsername($myinputs["username"])
+            ->setFname($myinputs["fname"])
+            ->setLname($myinputs["lname"])
+            ->setEmail($myinputs["email"])
+            ->setPhonenumbers($myinputs["phonenumbers"])
             ->setAddress(new Address($data))
-            ->setPermissions(Arrays::getValue($data, "permissions"))
-            ->setPassword(Arrays::getValue($data, "passworn"));
+            ->setPermissions($myinputs["permissions"])
+            ->setPassword($myinputs["passworn"]);
     return $this;
   }
 

@@ -143,25 +143,26 @@ class Address extends AbstractDbObject {
    * {@inheritdoc}
    */
   public function fromArray(array $data = []) {
-    return $this->setStreet(Arrays::getValue($data, "street"))
-                    ->setZipcode(Arrays::getValue($data, "zipcode"))
-                    ->setCity(Arrays::getValue($data, "city"))
-                    ->setCountry(Arrays::getValue($data, "country"));
+    $myinputs = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS, true);
+    return $this->setStreet($myinputs["street"])
+                    ->setZipcode($myinputs["zipcode"])
+                    ->setCity($myinputs["city"])
+                    ->setCountry($myinputs["country"]);
   }
 
   /**
    * {@inheritdoc}
    *
-  public function toArray() {
+    public function toArray() {
     return [
-        "street" => $this->getStreet(),
-        "zipcode" => $this->getZipcode(),
-        "city" => $this->getCity(),
-        "country" => $this->getCountry(),
+    "street" => $this->getStreet(),
+    "zipcode" => $this->getZipcode(),
+    "city" => $this->getCity(),
+    "country" => $this->getCountry(),
     ];
-  }
+    }
 
-  /**
+    /**
    * Returns the string representation of the object
    *
    * @return string the string representation of the object
@@ -188,7 +189,7 @@ class Address extends AbstractDbObject {
     $this->id = $id;
     return $this;
   }
-  
+
   /**
    * {@inheritdoc}
    */
