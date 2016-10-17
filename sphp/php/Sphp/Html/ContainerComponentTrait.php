@@ -1,8 +1,8 @@
 <?php
 
 /**
- * AbstractContainerTag.php (UTF-8)
- * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
+ * ContainerComponentTrait.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html;
@@ -26,34 +26,18 @@ namespace Sphp\Html;
  * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-05-03
+ * @since   2016-10-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface, ContentParserInterface {
-
-  use ContentParsingTrait,
-      TraversableTrait;
+trait ContainerComponentTrait {
 
   /**
-   * Constructs a new instance
+   * Returns the content container or an element pointed by an optional index
    *
-   * **Important!**
-   *
-   * 1. Parameter `mixed $content` can be of any type that converts to a string
-   *    or to an array of strigs. So also objects of any type that implement magic
-   *    method `__toString()` are allowed.
-   *
-   * @param  string $tagName the name of the tag
-   * @param  mixed $content the content of the component
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
-   * @param  ContainerInterface|null $contentContainer the inner content container of the component
-   * @throws \InvalidArgumentException if the tagname is not valid
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @return ContainerInterface the inner content container
    */
-  public function __construct($tagName, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
-    parent::__construct($tagName, $attrManager, $contentContainer);
-  }
+  abstract protected function getInnerContainer();
 
   /**
    * Appends content to the component
@@ -72,7 +56,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($content) {
-    $this->content()->append($content);
+    $this->getInnerContainer()->append($content);
     return $this;
   }
 
@@ -95,7 +79,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @return self for PHP Method Chaining
    */
   public function prepend($content) {
-    $this->content()->prepend($content);
+    $this->getInnerContainer()->prepend($content);
     return $this;
   }
 
@@ -106,7 +90,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
   /**
@@ -115,14 +99,14 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @return \ArrayIterator iterator
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
   /**
    * {@inheritdoc}
    */
   public function offsetExists($offset) {
-    return $this->content()->offsetExists($offset);
+    return $this->getInnerContainer()->offsetExists($offset);
   }
 
   /**
@@ -132,7 +116,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @return mixed content element or null
    */
   public function offsetGet($offset) {
-    return $this->content()->offsetGet($offset);
+    return $this->getInnerContainer()->offsetGet($offset);
   }
 
   /**
@@ -148,7 +132,8 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @param mixed $value the value to set
    */
   public function offsetSet($offset, $value) {
-    $this->content()->offsetSet($offset, $value);
+    $this->getInnerContainer()->offsetSet($offset, $value);
+    return $this;
   }
 
   /**
@@ -157,7 +142,8 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @param mixed $offset offset to unset
    */
   public function offsetUnset($offset) {
-    $this->content()->offsetUnset($offset);
+    $this->getInnerContainer()->offsetUnset($offset);
+    return $this;
   }
 
   /**
@@ -173,7 +159,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function replaceContent($content) {
-    $this->content()->replaceContent($content);
+    $this->getInnerContainer()->replaceContent($content);
     return $this;
   }
 
@@ -181,14 +167,14 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * {@inheritdoc}
    */
   public function toArray() {
-    return $this->content()->toArray();
+    return $this->getInnerContainer()->toArray();
   }
 
   /**
    * {@inheritdoc}
    */
   public function clear() {
-    $this->content()->clear();
+    $this->getInnerContainer()->clear();
     return $this;
   }
 
@@ -196,7 +182,7 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
    * {@inheritdoc}
    */
   public function exists($value) {
-    $this->content()->exists($value);
+    $this->getInnerContainer()->exists($value);
   }
 
 }
