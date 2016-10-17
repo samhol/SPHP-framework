@@ -91,7 +91,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   protected function content($offset = null) {
     $content = $this->content;
     if ($offset !== null) {
-      $content = $this->content->get($offset);
+      $content = $this->content->offsetGet($offset);
     }
     return $content;
   }

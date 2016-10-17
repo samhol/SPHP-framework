@@ -7,7 +7,8 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\CollectionInterface;
+use Sphp\Data\Arrayable;
+use ArrayAccess;
 
 /**
  * Interface defines the properties required from a traversable HTML component container with
@@ -28,6 +29,42 @@ use Sphp\Data\CollectionInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ContainerInterface extends TraversableInterface, CollectionInterface {
+interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAccess {
 
+  /**
+   * Appends a new value as the last element
+   *
+   * @param  mixed $value element
+   * @return self for PHP Method Chaining
+   */
+  public function append($value);
+
+  /**
+   * Prepends a new value as the first element
+   *
+   * * The numeric keys of the content will be renumbered starting from zero
+   *   and the index of the prepended value is 'int(0)'
+   *
+   * @param  mixed $value the value being prepended
+   * @return self for PHP Method Chaining
+   */
+  public function prepend($value);
+
+  /**
+   * Clears the contents
+   *
+   * @return self for PHP Method Chaining
+   */
+  public function clear();
+
+  /**
+   * Checks whether a content exists or not in the container
+   *
+   * Shorthand method for {@link \ArrayAccess::offsetExists()} implementation
+   *
+   * @param  mixed $offset an offset to check for
+   * @return boolean `true` on success or `false` on failure
+   * @uses   self::offsetExists()
+   */
+  public function exists($offset);
 }

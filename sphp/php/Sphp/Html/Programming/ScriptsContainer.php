@@ -55,7 +55,7 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
    */
   public function append(ScriptInterface $script) {
     if ($script instanceof ScriptSrc) {
-      $this->container->set($script->getSrc(), $script);
+      $this->container->offsetSet($script->getSrc(), $script);
     } else {
       $this->container->append($script);
     }

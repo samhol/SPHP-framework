@@ -7,9 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\ArrayAccessExtensionTrait as ArrayAccessExtensionTrait;
 use Sphp\Core\Types\Arrays;
-use ParsedownExtraPlugin;
 use ArrayIterator;
 
 /**
@@ -26,7 +24,7 @@ class Container implements ContainerInterface, ContentParserInterface {
 
   use ContentTrait,
       ContentParsingTrait,
-      ArrayAccessExtensionTrait,
+  // ArrayAccessExtensionTrait,
       TraversableTrait;
 
   /**
@@ -78,29 +76,6 @@ class Container implements ContainerInterface, ContentParserInterface {
    */
   public function append($content) {
     $this->components[] = $content;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $path
-   * @return self for PHP Method Chaining
-   */
-  public function appendPhpFile($path) {
-    $mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString($path);
-    $this->append($mediaExample);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $path
-   * @return self for PHP Method Chaining
-   */
-  public function appendMdFile($path) {
-    $mediaExample = \Sphp\Core\Util\FileUtils::executePhpToString($path);
-    $p = new ParsedownExtraPlugin();
-    $this->append($p->text($mediaExample));
     return $this;
   }
 
@@ -168,7 +143,11 @@ class Container implements ContainerInterface, ContentParserInterface {
    * @return self for PHP Method Chaining
    */
   public function offsetSet($offset, $value) {
-    $this->components[$offset] = $value;
+    if (is_null($offset)) {
+      $this->components[] = $value;
+    } else {
+      $this->components[$offset] = $value;
+    }
     return $this;
   }
 
@@ -220,6 +199,10 @@ class Container implements ContainerInterface, ContentParserInterface {
    */
   public function getHtml() {
     return Arrays::implode($this->components);
+  }
+
+  public function exists($offset) {
+    
   }
 
 }

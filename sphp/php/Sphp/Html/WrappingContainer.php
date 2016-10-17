@@ -67,9 +67,10 @@ class WrappingContainer extends Container {
   }
 
   /**
-   * Returns the wrapper function
+   * Returns the input as a wrapped output
    * 
-   * @return  Closure the wrapper function
+   * @param  mixed $content content to wrap
+   * @return mixed wrapped input
    */
   public function wrap($content) {
     if (is_callable($this->wrapper)) {

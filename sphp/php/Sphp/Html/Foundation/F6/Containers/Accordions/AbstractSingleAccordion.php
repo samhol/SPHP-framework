@@ -36,7 +36,7 @@ class AbstractSingleAccordion extends AbstractContainerComponent {
     $this->attrs()
             ->lock("data-allow-all-closed", "true")
             ->demand("data-accordion");
-    $this->content()->set("innerAccordion", $innerAccordion);
+    $this->content()->offsetSet("innerAccordion", $innerAccordion);
   }
 
   /**
