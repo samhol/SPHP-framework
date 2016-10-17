@@ -7,8 +7,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Types\Strings;
-
 /**
  * Document class contains basic Sphp HTML tag component creation and HTML version handing.
  *
@@ -195,7 +193,7 @@ class Document {
       if ($class instanceof ContainerInterface && $content !== null) {
         $class->append($content);
       }
-    } else if (Strings::startsWith($tagName, 'button:') || Strings::startsWith('input:')) {
+    } else if (mb_substr($tagName, 0, 7) === 'button:' || mb_substr($tagName, 0, 6) === 'input:') {
       $data = explode(':', $tagName);
       if ($data[0] == 'input') {
         $className = Forms\Input\Input::class;

@@ -58,13 +58,10 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
   public function clear();
 
   /**
-   * Checks whether a content exists or not in the container
+   * Checks if a value exists in an container
    *
-   * Shorthand method for {@link \ArrayAccess::offsetExists()} implementation
-   *
-   * @param  mixed $offset an offset to check for
+   * @param  mixed $value mixed content to check for
    * @return boolean `true` on success or `false` on failure
-   * @uses   self::offsetExists()
    */
-  public function exists($offset);
+  public function exists($value);
 }

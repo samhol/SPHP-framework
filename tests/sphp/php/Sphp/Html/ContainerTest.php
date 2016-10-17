@@ -83,10 +83,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
     $this->container[] = $val;
     $this->container["a"] = $val;
     $this->assertTrue($this->container->offsetExists(0));
-    $this->assertTrue($this->container->offsetExists(""));
+    $this->assertTrue($this->container->offsetExists(1));
     $this->assertTrue($this->container->offsetExists("a"));
     $this->assertEquals($this->container->count(), 3);
-    $this->assertEquals($this->container[""], $val);
+    $this->assertEquals($this->container[1], $val);
     $this->assertEquals($this->container["a"], $val);
   }
 
@@ -129,6 +129,22 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
     foreach ($it as $key => $val) {
       $this->assertEquals($this->container[$key], $val);
     }
+  }
+  
+
+  /**
+   * 
+   * @dataProvider appendData
+   * @param mixed $val
+   */
+  public function testExists($val) {
+    $this->container->append($val);
+    $this->assertTrue($this->container->exists($val));
+    $this->assertFalse($this->container->exists("foo"));
+    $this->container->clear()->append((new Container())->append($val));
+    $this->assertTrue($this->container->exists($val));
+    $this->assertFalse($this->container->exists("foo"));
+   
   }
 
   /**

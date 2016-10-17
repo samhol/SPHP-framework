@@ -14,6 +14,7 @@ use Sphp\Html\Container;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface;
+use Sphp\Net\URL;
 
 /**
  * Class models an HTML &lt;head&gt; tag
@@ -115,13 +116,13 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Sets a default URL and a default target for all links on a page
    *
-   * @param  string|Url $baseAddr the base URL for all relative URLs in the page
+   * @param  string|URL $baseAddr the base URL for all relative URLs in the page
    * @param  string $target the default target for all hyperlinks and forms in the page
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
   public function setBaseAddr($baseAddr, $target = '_self') {
-    if (!Strings::isEmpty($baseAddr) || !Strings::isEmpty($target)) {
+    if (!Strings::isEmpty($baseAddr) && !Strings::isEmpty($target)) {
       $this->base = new Base($baseAddr, $target);
     } else {
       $this->unsetBaseAddress();

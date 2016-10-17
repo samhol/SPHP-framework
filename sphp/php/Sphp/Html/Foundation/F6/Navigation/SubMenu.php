@@ -61,16 +61,6 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
 
   /**
    * 
-   * @param  Menu $menu
-   * @return self for PHP Method Chaining
-   */
-  public function setMenu(Menu $menu) {
-    $this->setContentContainer($menu);
-    return $this;
-  }
-
-  /**
-   * 
    * @return Menu
    */
   public function getMenu() {

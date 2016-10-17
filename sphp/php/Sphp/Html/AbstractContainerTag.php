@@ -34,8 +34,7 @@ use Sphp\Data\ArrayAccessExtensionTrait;
  */
 class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface, ContentParserInterface {
 
-  use ArrayAccessExtensionTrait,
-      ContentParsingTrait,
+  use ContentParsingTrait,
       TraversableTrait;
 
   /**
@@ -193,6 +192,13 @@ class AbstractContainerTag extends AbstractContainerComponent implements Contain
   public function clear() {
     $this->content()->clear();
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function exists($value) {
+    $this->content()->exists($value);
   }
 
 }

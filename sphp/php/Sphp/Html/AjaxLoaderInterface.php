@@ -34,7 +34,7 @@ interface AjaxLoaderInterface {
    * Prepends the remote content into the component using jQuery Ajax
    * 
    * **Important note:** 
-   * This method overrides all previous calls of {@link self} methods.
+   * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
    * @param  string|URL $url the URL to which the request is sent
    * @return self for PHP Method Chaining
@@ -45,7 +45,7 @@ interface AjaxLoaderInterface {
    * Appends the remote content into the component using jQuery Ajax
    * 
    * **Important note:** 
-   * This method overrides all previous calls of {@link self} methods.
+   * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
    * @param  string|URL $url the URL to which the request is sent
    * @return self for PHP Method Chaining

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Head\Head as Head;
+use Sphp\Html\Head\Head;
 use Sphp\Html\Programming\ScriptsContainer;
 
 /**
@@ -146,10 +146,12 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
 
   /**
    * 
-   * @return string
+   * 
+   * @return self for PHP Method Chaining
    */
   public function documentClose() {
     echo $this->getDocumentClose();
+    return $this;
   }
 
   /**

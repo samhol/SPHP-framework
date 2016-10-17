@@ -58,10 +58,10 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * Sets the target attribute.
    *
    * **Notes:**
-   * <ol>
-   *   * The target attribute specifies the default target for all hyperlinks and forms in the page.
-   *   * This attribute can be overridden by using the target attribute for each hyperlink/form.
-   * </ol>
+   *  
+   * 1. The target attribute specifies the default target for all hyperlinks and forms in the page.
+   * 2. This attribute can be overridden by using the target attribute for each hyperlink/form.
+   *
    *
    * @param  string $target target attribute's value
    * @return self for PHP Method Chaining

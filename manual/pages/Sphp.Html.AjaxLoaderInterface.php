@@ -17,7 +17,7 @@ MD
 
 $pane = (new SyntaxHighlightingPane())
         ->loadFromFile("manual/snippets/loremipsum.html")
-		->setPaneTitle("Original HTML source file used in Ajax loading");
+        ->setPaneTitle("Original HTML source file used in Ajax loading");
 
-$ex = new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php", "html5ssss");
+$ex = new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php", "html5");
 $ex->prepend($pane)->printHtml();

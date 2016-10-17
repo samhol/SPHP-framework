@@ -69,10 +69,7 @@ class Container implements ContainerInterface, ContentParserInterface {
   }
 
   /**
-   * Appends content to the container
-   *
-   * @param  mixed $content added content
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function append($content) {
     $this->components[] = $content;
@@ -80,12 +77,7 @@ class Container implements ContainerInterface, ContentParserInterface {
   }
 
   /**
-   * Prepends elements to the container
-   *
-   * **Note:** the numeric keys of the content will be renumbered starting from zero
-   *
-   * @param  mixed $content added content
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function prepend($content) {
     array_unshift($this->components, $content);
@@ -182,9 +174,7 @@ class Container implements ContainerInterface, ContentParserInterface {
   }
 
   /**
-   * Clears the content of the component
-   *
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function clear() {
     $this->components = [];
@@ -192,17 +182,24 @@ class Container implements ContainerInterface, ContentParserInterface {
   }
 
   /**
-   * Returns the component as HTML markup string
-   *
-   * @return string HTML markup of the component
-   * @throws \Exception if the html parsing fails
+   * {@inheritdoc}
    */
   public function getHtml() {
     return Arrays::implode($this->components);
   }
 
-  public function exists($offset) {
-    
+  /**
+   * {@inheritdoc}
+   */
+  public function exists($value) {
+    $result = false;
+    foreach ($this->components as $component) {
+      if ($component === $value || (($component instanceof ContainerInterface)) && $component->exists($value)) {
+        $result = true;
+        break;
+      }
+    }
+    return $result;
   }
 
 }
