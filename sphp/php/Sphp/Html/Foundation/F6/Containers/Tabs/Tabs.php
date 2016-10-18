@@ -8,6 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
 use Sphp\Html\ContentInterface;
+use Sphp\Html\TraversableInterface;
+use OutOfBoundsException;
 
 /**
  * Class implements Foundation Tabs
@@ -19,9 +21,10 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tabs implements ContentInterface {
+class Tabs implements ContentInterface, TraversableInterface {
 
-  use \Sphp\Html\ContentTrait;
+  use \Sphp\Html\ContentTrait,
+      \Sphp\Html\TraversableTrait;
 
   /**
    *
@@ -47,10 +50,11 @@ class Tabs implements ContentInterface {
   public function appendTab($title, $content = null) {
     return $this->tabsContent->appendTab($title, $content);
   }
+
   /**
-   * Checks if a tab exsts in the given index
+   * Checks if a tab exists in the given index
    * 
-   * @param  int $index the index to check
+   * @param  int $index the index to check for
    * @return boolean true if a tab exits at the given index
    */
   public function hasTab($index) {
@@ -58,10 +62,11 @@ class Tabs implements ContentInterface {
   }
 
   /**
+   * Returns the tab at specified index
    * 
-   * @param  int $index
-   * @return Tab
-   * @throws OutOfBoundsException
+   * @param  int $index the index to retrieve
+   * @return Tab the tab at the given index
+   * @throws OutOfBoundsException if the index is not set
    */
   public function getTab($index) {
     return $this->tabsContent->getTab($index);
@@ -90,9 +95,23 @@ class Tabs implements ContentInterface {
    * @param  int $index
    * @return self for PHP Method Chaining
    */
-  public function activate($index) {
+  public function setActive($index) {
     $this->tabsContent->setActive($index);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function count() {
+    return $this->tabsContent->count();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return $this->tabsContent->getIterator();
   }
 
 }

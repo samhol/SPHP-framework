@@ -11,7 +11,7 @@ use ArrayIterator;
 
 /**
  * Trait implements some {@link TraversableInterface} functionality
- *
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-19
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -25,7 +25,7 @@ trait TraversableTrait {
    *
    * @return ArrayIterator iterator
    */
-  abstract public function getIterator();
+  //abstract public function getIterator();
 
   /**
    * Returns a {@link ContainerInterface} containing sub components that
@@ -38,7 +38,7 @@ trait TraversableTrait {
     //echo \Sphp\Tools\ClassUtils::getRealClass($this) . " el:";
     //echo $this->count();
     $result = new Container();
-    foreach ($this->getIterator() as $value) {
+    foreach ($this as $value) {
       //echo \Sphp\Tools\ClassUtils::getRealClass($value);
       if ($rules($value)) {
         //echo " ok ";

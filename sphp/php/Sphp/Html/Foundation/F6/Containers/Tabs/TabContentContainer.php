@@ -67,9 +67,9 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
   }
 
   /**
-   * Checks if a tab exsts in the given index
+   * Checks if a tab exists in the given index
    * 
-   * @param  int $index the index to check
+   * @param  int $index the index to check for
    * @return boolean true if a tab exits at the given index
    */
   public function hasTab($index) {
@@ -77,10 +77,11 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
   }
 
   /**
+   * Returns the tab at specified index
    * 
-   * @param  int $index
-   * @return Tab
-   * @throws OutOfBoundsException
+   * @param  int $index the index to retrieve
+   * @return Tab the tab at the given index
+   * @throws OutOfBoundsException if the index is not set
    */
   public function getTab($index) {
     if (!$this->hasTab($index)) {
@@ -109,13 +110,15 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }
 
   /**
-   * 
-   * @return int
+   * {@inheritdoc}
    */
   public function count() {
     return $this->getInnerContainer()->count();

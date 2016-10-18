@@ -11,7 +11,7 @@ $tabs->appendTab("2nd. Tab", "The content of the second tab");
 $tabs->appendTab("3rd. Tab");
 $tabs->appendTab("4th. Tab", "The content of the fourth tab");
 
-$tabs->activate(1)
+$tabs->setActive(1)
         ->getTab(2)
         ->appendRawFile(Router::get()->local("manual/snippets/loremipsum.html"));
 $tabs->printHtml();

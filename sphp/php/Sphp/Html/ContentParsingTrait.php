@@ -1,7 +1,7 @@
 <?php
 
 /**
- * VisualComponentTrait.php (UTF-8)
+ * ContentParsingTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,7 +11,7 @@ use Sphp\Core\Util\FileUtils;
 use ParsedownExtraPlugin;
 
 /**
- * Trait implements functionality of the {@link VisualComponentInterface}
+ * Trait implements functionality of the {@link ContentParserInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06
@@ -19,14 +19,6 @@ use ParsedownExtraPlugin;
  * @filesource
  */
 trait ContentParsingTrait {
-
-  /**
-   * Appends content to the container
-   *
-   * @param  mixed $content added content
-   * @return self for PHP Method Chaining
-   */
-  abstract public function append($content);
 
   /**
    * Appends a raw file to the container

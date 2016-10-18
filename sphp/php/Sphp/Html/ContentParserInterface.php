@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ContentAppenderInterface.php (UTF-8)
+ * ContentParserInterface.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -16,6 +16,14 @@ namespace Sphp\Html;
  * @filesource
  */
 interface ContentParserInterface extends ContentInterface {
+
+  /**
+   * Appends content to the container
+   *
+   * @param  mixed $content appended content
+   * @return self for PHP Method Chaining
+   */
+  public function append($content);
 
   /**
    * Appends a raw file to the container

@@ -207,4 +207,13 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
     return $this;
   }
 
+
+  /**
+   * {@inheritdoc}
+   */
+  public function append($content) {
+    $this->body->append($content);
+    return $this;
+  }
+
 }

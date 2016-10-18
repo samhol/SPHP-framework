@@ -8,6 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
 use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\TraversableInterface;
+use OutOfBoundsException;
 
 /**
  * Class TabTitleContainer
@@ -19,7 +21,9 @@ use Sphp\Html\AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButtonContainer extends AbstractContainerComponent {
+class TabButtonContainer extends AbstractContainerComponent implements TraversableInterface {
+
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * Constructs a new instance
@@ -39,6 +43,7 @@ class TabButtonContainer extends AbstractContainerComponent {
     $this->getInnerContainer()->append($button);
     return $this;
   }
+
   /**
    * 
    * @param  int $index
@@ -56,23 +61,24 @@ class TabButtonContainer extends AbstractContainerComponent {
    */
   public function getButton($index) {
     if (!$this->hasButton($index)) {
-      throw  new OutOfBoundsException("Tab at $index does not exist");
+      throw new OutOfBoundsException("Tab at $index does not exist");
     }
     return $this->getInnerContainer()->offsetGet($index);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }
 
   /**
-   * 
-   * @return int
+   * {@inheritdoc}
    */
   public function count() {
     return $this->getInnerContainer()->count();
   }
-
 
   /**
    * Sets/unsets the heights of the tab content panes to match
@@ -85,6 +91,7 @@ class TabButtonContainer extends AbstractContainerComponent {
     $this->attrs()->set('data-match-height', $value);
     return $this;
   }
+
   /**
    * 
    * @param  int $index
@@ -93,7 +100,7 @@ class TabButtonContainer extends AbstractContainerComponent {
    */
   public function setActive($index) {
     if (!$this->hasButton($index)) {
-      throw  new OutOfBoundsException("Tab at $index does not exist");
+      throw new OutOfBoundsException("Tab at $index does not exist");
     }
     foreach ($this as $i => $tab) {
       if ($i === $index) {
@@ -103,4 +110,5 @@ class TabButtonContainer extends AbstractContainerComponent {
       }
     }
   }
+
 }

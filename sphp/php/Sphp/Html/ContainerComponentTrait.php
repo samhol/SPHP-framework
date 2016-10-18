@@ -7,6 +7,8 @@
 
 namespace Sphp\Html;
 
+use ArrayIterator;
+
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers
  *
@@ -96,7 +98,7 @@ trait ContainerComponentTrait {
   /**
    * Create a new iterator to iterate through inserted elements in the container
    *
-   * @return \ArrayIterator iterator
+   * @return ArrayIterator iterator
    */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
