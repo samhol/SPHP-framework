@@ -44,7 +44,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * @return SyntaxHighlighter the inner Syntax Highlighter component
    */
   public function getHighlighter() {
-    return $this->getAccordion()->getSyntaxHighlighter();
+    return $this->getPane()->getSyntaxHighlighter();
   }
 
   /**

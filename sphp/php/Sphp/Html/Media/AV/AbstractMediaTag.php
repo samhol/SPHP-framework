@@ -55,7 +55,7 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
    * {@inheritdoc}
    */
   public function append(MultimediaContentInterface $src) {
-    $this->content()->append($src);
+    $this->getInnerContainer()->append($src);
     return $this;
   }
 
@@ -70,7 +70,7 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
    * {@inheritdoc}
    */
   public function getSources() {
-    return $this->content()->getComponentsByObjectType(Source::class);
+    return $this->getInnerContainer()->getComponentsByObjectType(Source::class);
   }
 
   /**
@@ -84,7 +84,7 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
    * {@inheritdoc}
    */
   public function getTracks() {
-    return $this->content()->getComponentsByObjectType(Track::class);
+    return $this->getInnerContainer()->getComponentsByObjectType(Track::class);
   }
 
   /**

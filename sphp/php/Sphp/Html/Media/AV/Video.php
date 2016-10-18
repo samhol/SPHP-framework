@@ -41,7 +41,7 @@ class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInt
    * {@inheritdoc}
    */
   public function isLazy() {
-    foreach ($this->content()->getComponentsByObjectType(Source::class) as $source) {
+    foreach ($this->getInnerContainer()->getComponentsByObjectType(Source::class) as $source) {
       $source->setLazy();
     }
   }
@@ -50,7 +50,7 @@ class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInt
    * {@inheritdoc}
    */
   public function setLazy($lazy = true) {
-    foreach ($this->content()->getComponentsByObjectType(Source::class) as $source) {
+    foreach ($this->getInnerContainer()->getComponentsByObjectType(Source::class) as $source) {
       $source->setLazy($lazy);
     }
     return$this;

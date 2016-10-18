@@ -33,8 +33,7 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * This component contains scripting statements
    *
    * @param  int $purpose the purpose of the script component
-   * @param  string $type script's mime-type (type attribute)
-   * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
+   * @param  string $code the script code inside the script component or `null` for empty
    */
   public function __construct($code = null) {
     parent::__construct('script', $code);

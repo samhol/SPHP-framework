@@ -50,7 +50,7 @@ class TechLinkList extends AbstractContainerComponent {
     $links[] = (new ImageLink("http://jquery.com/", "_blank", "sphp/pics/tech-icons/jquery.png", "jQuery"))
             ->setTitle("jQuery")
             ->addCssClass("jQuery");
-    $this->content()->append($links);
+    $this->getInnerContainer()->append($links);
     return $this;
   }
 

@@ -88,14 +88,14 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
    * @inheritdoc
    */
   public function contentToString() {
-    return $this->bar->getHtml() . $this->content()->getHtml();
+    return $this->bar->getHtml() . parent::contentToString();
   }
 
   /**
    * @inheritdoc
    */
   public function ajaxAppend($url) {
-    $this->content()->ajaxAppend($url);
+    $this->getInnerContainer()->ajaxAppend($url);
     return $this;
   }
 
@@ -103,7 +103,7 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
    * @inheritdoc
    */
   public function ajaxPrepend($url) {
-    $this->content()->ajaxPrepend($url);
+    $this->getInnerContainer()->ajaxPrepend($url);
     return $this;
   }
 

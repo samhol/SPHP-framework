@@ -24,27 +24,47 @@ use Sphp\Html\Navigation\Hyperlink;
 class TabButton extends AbstractContainerComponent implements LiInterface {
 
   /**
-   *
-   * @var Tab 
-   */
-  private $panel;
-
-  /**
    * 
    * @var Hyperlink
    */
   private $panelLink;
 
   /**
+   * Constructs a new instance
    * 
    * @param Tab $tabPanel
    * @param mixed $title
    */
   public function __construct(Tab $tabPanel, $title = null) {
-    $this->panel = $tabPanel;
-    $this->panelLink = new Hyperlink("#" . $this->panel->identify(), $title);
+    //$this->panel = $tabPanel;
+    $this->panelLink = new Hyperlink("#" . $tabPanel->identify(), $title);
     parent::__construct('li', null, $this->panelLink);
     $this->cssClasses()->lock('tabs-title');
   }
+  
+  /**
+   * 
+   * @param type $tabPanel
+   * @param type $title
+   */
+  protected function createPanelLink($tabPanel, $title) {
+    $a = new \Sphp\Html\ContainerTag('a', $title);
+    $a->attrs()->lock('href', '#' . $tabPanel->identify());
+  }
+  /**
+   * 
+   * @param type $active
+   * @return \Sphp\Html\Foundation\F6\Containers\Tabs\TabButton
+   */
+  public function setActive($active = true) {
+    if ($active) {
+      $this->addCssClass('is-active');
+    } else {
+      $this->removeCssClass('is-active');
+    }
+    return $this;
+  }
+  
+  
 
 }

@@ -94,7 +94,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return self for PHP Method Chaining
    */
   public function appendButton(ButtonInterface $button) {
-    $this->content()->append($button);
+    $this->getInnerContainer()->append($button);
     return $this;
   }
 
@@ -117,7 +117,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @return \ArrayIterator iterator to iterate through inserted {@link ButtonInterface} components
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
   /**

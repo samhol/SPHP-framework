@@ -40,7 +40,7 @@ class SingleAccordion extends AbstractContainerTag {
    * @return Pane the inner accoordion component
    */
   protected function getPane() {
-    return $this->content();
+    return $this->getInnerContainer();
   }
 
   /**

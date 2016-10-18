@@ -48,7 +48,7 @@ class BulletContainer extends AbstractContainerComponent {
     } else {
       $slideNo = $bullet->getSlideNo(); 
     }
-    $this->content()->set($slideNo, $bullet);
+    $this->getInnerContainer()->set($slideNo, $bullet);
     return $this;
   }
 
@@ -59,7 +59,7 @@ class BulletContainer extends AbstractContainerComponent {
    * @return Bullet
    */
   public function get($slideNo) {
-    $this->content()->get($slideNo);
+    $this->getInnerContainer()->get($slideNo);
     return $this;
   }
 
@@ -70,7 +70,7 @@ class BulletContainer extends AbstractContainerComponent {
    * @return self for PHP Method Chaining
    */
   public function setActive($bulletNo) {
-    foreach ($this->content() as $no => $bullet) {
+    foreach ($this->getInnerContainer() as $no => $bullet) {
       if ($no == $bulletNo) {
         $bullet->setActive(true);
       } else {

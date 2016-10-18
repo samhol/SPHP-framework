@@ -2,16 +2,17 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
-use Sphp\Html\Div;
-use Sphp\Html\Sections\Paragraph;
+use Sphp\Core\Router;
 
-(new Tabs())->addTab("1st. tab", (new Div())
-                ->ajaxAppend("manual/snippets/loremipsum.html"))
-        ->addTab("2nd. Tab", (new Paragraph())
-                ->ajaxAppend("manual/snippets/loremipsum.html #par_1"))
-        ->addTab("3rd. Tab", (new Paragraph())
-                ->ajaxAppend("manual/snippets/loremipsum.html #par_2"))
-        ->addTab("4th. Tab", (new Paragraph())
-                ->ajaxAppend("manual/snippets/loremipsum.html #par_3"))
-        ->printHtml();
+$tabs = (new Tabs())->matchHeight(true);
+$tabs->appendTab("1st. tab")->appendMdFile(Router::get()
+        ->local("manual/snippets/loremipsum.md"));
+$tabs->appendTab("2nd. Tab", "The content of the second tab");
+$tabs->appendTab("3rd. Tab");
+$tabs->appendTab("4th. Tab", "The content of the fourth tab");
+
+$tabs->activate(1)
+        ->getTab(2)
+        ->appendRawFile(Router::get()->local("manual/snippets/loremipsum.html"));
+$tabs->printHtml();
 ?>

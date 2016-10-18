@@ -49,7 +49,7 @@ abstract class AbstractJavaScriptComponent extends AbstractContainerComponent {
   public function __construct($tagName, $content = null, AttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
-      $this->content()->append($content);
+      $this->getInnerContainer()->append($content);
     }
     $this->scripts = new ScriptsContainer();
   }

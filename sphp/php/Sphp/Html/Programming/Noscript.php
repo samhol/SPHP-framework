@@ -32,7 +32,7 @@ class Noscript extends ContainerTag implements HeadComponentInterface {
    * string. So also an object of any class that implements magic method
    * `__toString()` is allowed.
    *
-   * @param  null|mixed|mixed[] $content the content of the component
+   * @param  null|mixed $content the content of the component
    */
   public function __construct($content = null) {
     parent::__construct('noscript', $content);

@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 use Sphp\Html\AbstractContainerTag;
 
 /**
- * Description of TabPanel
+ * Class implements a Foundation 6 Tab for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01
@@ -28,9 +28,10 @@ class Tab extends AbstractContainerTag {
   private $tabButton;
 
   /**
+   * Constructs a new instance
    * 
-   * @param type $tab
-   * @param type $content
+   * @param mixed $tab the tab button content
+   * @param type $content the tab button content
    */
   public function __construct($tab = null, $content = null) {
     parent::__construct('div');
@@ -48,6 +49,19 @@ class Tab extends AbstractContainerTag {
    */
   public function getTabButton() {
     return $this->tabButton;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setActive($visibility = true) {
+    if ($visibility) {
+      $this->addCssClass('is-active');
+    } else {
+      $this->removeCssClass('is-active');
+    }
+    $this->tabButton->setActive($visibility);
+    return $this;
   }
 
 }

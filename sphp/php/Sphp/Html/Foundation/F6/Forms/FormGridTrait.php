@@ -40,7 +40,7 @@ trait FormGridTrait {
     if (!($row instanceof RowInterface)) {
       $row = new FormRow($row);
     }
-    $this->content()->append($row);
+    $this->getInnerContainer()->append($row);
     return $this;
   }
 
@@ -59,7 +59,7 @@ trait FormGridTrait {
     if (!($row instanceof RowInterface)) {
       $row = new FormRow($row);
     }
-    $this->content()->prepend($row);
+    $this->getInnerContainer()->prepend($row);
     return $this;
   }
 
@@ -67,14 +67,14 @@ trait FormGridTrait {
    * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
   /**
@@ -89,7 +89,7 @@ trait FormGridTrait {
    * @see    HiddenInput
    */
   public function appendHiddenVariable($name, $value) {
-    $this->content()->append(new HiddenInput($name, $value));
+    $this->getInnerContainer()->append(new HiddenInput($name, $value));
     return $this;
   }
 
@@ -113,7 +113,7 @@ trait FormGridTrait {
   /**
    * Returns all {@link ColumnInterface} components from the grid
    * 
-   * @return Container containing all the {@link ColumnInterface} components
+   * @return ContainerInterface containing all the {@link ColumnInterface} components
    */
   public function getColumns() {
     return $this->getComponentsByObjectType(ColumnInterface::class);

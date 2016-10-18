@@ -76,7 +76,7 @@ class Map extends AbstractContainerComponent {
    * @return self for PHP Method Chaining
    */
   public function append(AreaInterface $area) {
-    $this->content()->append($area);
+    $this->getInnerContainer()->append($area);
     return $this;
   }
 

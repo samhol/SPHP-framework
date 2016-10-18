@@ -69,7 +69,7 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     $box->identify();
     $this->screenReaderLabel = new ScreenReaderLabel($srText);
     $this->paddle = new Label(null, $this->input);
-    $this->paddle->set("screenReaderLabel", $this->screenReaderLabel);
+    $this->paddle->offsetSet("screenReaderLabel", $this->screenReaderLabel);
     $this->paddle->cssClasses()
             ->lock("switch-paddle");
   }
@@ -144,8 +144,8 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     $inactiveLabel->attrs()
             ->lock("aria-hidden", "true")
             ->classes()->lock("switch-inactive");
-    $this->paddle->set("switch-active", $activeLabel);
-    $this->paddle->set("switch-inactive", $inactiveLabel);
+    $this->paddle->offsetSet("switch-active", $activeLabel);
+    $this->paddle->offsetSet("switch-inactive", $inactiveLabel);
     return $this;
   }
 

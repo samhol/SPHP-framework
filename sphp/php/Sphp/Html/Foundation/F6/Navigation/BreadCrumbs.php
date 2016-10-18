@@ -102,7 +102,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * @return self for PHP Method Chaining
    */
   public function prepend(BreadCrumb $breadcrumb) {
-    $this->content()->prepend($breadcrumb);
+    $this->getInnerContainer()->prepend($breadcrumb);
     return $this;
   }
 
@@ -113,7 +113,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * @return self for PHP Method Chaining
    */
   public function append(BreadCrumb $breadcrumb) {
-    $this->content()->append($breadcrumb);
+    $this->getInnerContainer()->append($breadcrumb);
     return $this;
   }
 
@@ -121,7 +121,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()
+    return $this->getInnerContainer()
                     ->getComponentsByObjectType(BreadCrumb::class)
                     ->getIterator();
   }
@@ -130,7 +130,7 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
    * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
 }

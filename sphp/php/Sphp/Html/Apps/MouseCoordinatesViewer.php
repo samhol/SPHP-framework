@@ -25,7 +25,7 @@ class MouseCoordinatesViewer extends AbstractJavaScriptComponent {
   public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->lock("sphp-MouseCoordinatesViewer");
-    $this->content()->append('<span class="fi-icon fi-paw font-size-36"></span>'
+    $this->getInnerContainer()->append('<span class="fi-icon fi-paw font-size-36"></span>'
             . '<div>x:<span class="x">0</span>px</div>'
             . '<div>y:<span class="y">0</span>px</div>');
   }

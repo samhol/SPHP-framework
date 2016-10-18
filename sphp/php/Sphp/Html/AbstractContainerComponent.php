@@ -25,7 +25,7 @@ use Sphp\Html\Attributes\AttributeManager;
 abstract class AbstractContainerComponent extends AbstractComponent {
 
   /**
-   * the content of the component
+   * the inner content container
    *
    * @var ContainerInterface
    */
@@ -48,7 +48,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    */
   public function __construct($tagName, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct($tagName, $attrManager);
-    $this->setContentContainer($contentContainer);
+    $this->setInnerContainer($contentContainer);
   }
 
   /**
@@ -73,7 +73,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    * @param  ContainerInterface $contentContainer the inner content container of the component
    * @return self for PHP Method Chaining
    */
-  protected function setContentContainer(ContainerInterface $contentContainer = null) {
+  protected function setInnerContainer(ContainerInterface $contentContainer = null) {
     if (!($contentContainer instanceof ContainerInterface)) {
       $this->content = new Container();
     } else {
@@ -88,12 +88,8 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    * @param  mixed $offset optional index with the content element
    * @return ContainerInterface|mixed the content container
    */
-  protected function content($offset = null) {
-    $content = $this->content;
-    if ($offset !== null) {
-      $content = $this->content->offsetGet($offset);
-    }
-    return $content;
+  protected function getInnerContainer() {
+    return $this->content;
   }
 
   /**

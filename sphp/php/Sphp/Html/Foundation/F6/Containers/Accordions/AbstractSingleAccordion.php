@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 
 /**
  * Class implements a single accordion component
@@ -19,55 +19,67 @@ use Sphp\Html\AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSingleAccordion extends AbstractContainerComponent {
+class AbstractSingleAccordion extends AbstractComponent {
 
+  /**
+   *
+   * @var PaneInterface
+   */
+  private $pane;
+  
   /**
    * Constructs a new instance
    *
-   * @param null|mixed $title the content of the accordion bar
-   * @param null|mixed $content the content of the accordion container
+   * @param PaneInterface|null $pane the inner pane component or null for {@link Pane} instance
    */
-  public function __construct(PaneInterface $innerAccordion = null) {
-    if ($innerAccordion === null) {
-      $innerAccordion = new Pane();
+  public function __construct(PaneInterface $pane = null) {
+    if ($pane === null) {
+      $pane = new Pane();
     }
     parent::__construct('ul');
     $this->cssClasses()->lock("accordion");
     $this->attrs()
             ->lock("data-allow-all-closed", "true")
             ->demand("data-accordion");
-    $this->content()->offsetSet("innerAccordion", $innerAccordion);
+    $this->pane = $pane;
   }
 
   /**
-   * Returns the inner accoordion component
+   * Returns the inner pane component
    *
-   * @return Pane the inner accoordion component
+   * @return PaneInterface the inner pane component
    */
-  protected function getAccordion() {
-    return $this->content("innerAccordion");
+  protected function getPane() {
+    return $this->pane;
   }
 
   /**
-   * Sets the heading of the accordion
+   * Sets the title of the pane
    *
-   * @param  mixed|mixed[] $title the title of the accordion
+   * @param  mixed|mixed[] $title the title of the pane
    * @return self for PHP Method Chaining
    */
   public function setPaneTitle($title) {
-    $this->getAccordion()->setPaneTitle($title);
+    $this->getPane()->setPaneTitle($title);
     return $this;
   }
 
   /**
-   * Sets the visibility of the content after initialization
+   * Sets the visibility of the pane after initialization
    *
-   * @param  boolean $visibility true if the content is visible, false otherwise
+   * @param  boolean $visibility true if the pane is visible, false otherwise
    * @return self for PHP Method Chaining
    */
   public function contentVisible($visibility = true) {
-    $this->getAccordion()->contentVisible($visibility);
+    $this->getPane()->contentVisible($visibility);
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function contentToString() {
+    return $this->pane->getHtml();
   }
 
 }

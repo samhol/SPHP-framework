@@ -107,7 +107,7 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
    * @return self for PHP Method Chaining
    */
   public function append($column) {
-    $this->content()->append($column);
+    $this->getInnerContainer()->append($column);
     return $this;
   }
   
@@ -119,7 +119,7 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
    * @return BlockGridColumn|null
    */
   public function getColumn($index) {
-    return $this->content()->offsetGet($index);
+    return $this->getInnerContainer()->offsetGet($index);
   }
 
   /**
@@ -212,14 +212,14 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
    * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
   /**
    * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
 }

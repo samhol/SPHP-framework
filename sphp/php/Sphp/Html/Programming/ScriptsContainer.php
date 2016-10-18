@@ -36,7 +36,7 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
   /**
    * Constructs a new instance
    * 
-   * @param ScriptInterface|ScriptInterface[] $scripts
+   * @param ScriptInterface|ScriptInterface[] $scripts script components
    */
   public function __construct($scripts = null) {
     $this->container = new Container();

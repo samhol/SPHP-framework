@@ -54,11 +54,11 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return self for PHP Method Chaining
 	 */
 	private function setup($caption) {
-		$this->content()['caption'] = '';
-		$this->content()['colgroup'] = "";
-		$this->content()['thead'] = new Thead();
-		$this->content()['tfoot'] = new Tfoot();
-		$this->content()['tbody'] = new Tbody();
+		$this->getInnerContainer()['caption'] = '';
+		$this->getInnerContainer()['colgroup'] = "";
+		$this->getInnerContainer()['thead'] = new Thead();
+		$this->getInnerContainer()['tfoot'] = new Tfoot();
+		$this->getInnerContainer()['tbody'] = new Tbody();
 		$this->setCaption($caption);
 		return $this;
 	}
@@ -71,9 +71,9 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 */
 	public function setCaption($caption) {
 		if (!Strings::isEmpty($caption)) {
-			$this->content()["caption"] = new Caption($caption);
-		} else if (isset($this->content()["caption"])) {
-			$this->content()["caption"] = "";
+			$this->getInnerContainer()["caption"] = new Caption($caption);
+		} else if (isset($this->getInnerContainer()["caption"])) {
+			$this->getInnerContainer()["caption"] = "";
 		}
 		return $this;
 	}
@@ -86,7 +86,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	public function clearContent() {
 		foreach ($this as $id => $component) {
 			if ($id == "colgroup") {
-				$this->content()["colgroup"] = "";
+				$this->getInnerContainer()["colgroup"] = "";
 			} else {
 				$component->clear();
 			}
@@ -104,15 +104,15 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 		if ($content instanceof Colgroup || $content instanceof Col) {
 			$this->setCols($content);
 		}  else if ($content instanceof Caption) {
-			$this->content()["caption"] = $content;
+			$this->getInnerContainer()["caption"] = $content;
 		} else if ($content instanceof Thead) {
-			$this->content()["thead"] = $content;
+			$this->getInnerContainer()["thead"] = $content;
 		} else if ($content instanceof Tbody) {
-			$this->content()["tbody"] = $content;
+			$this->getInnerContainer()["tbody"] = $content;
 		} else if ($content instanceof Tfoot) {
-			$this->content()["tfoot"] = $content;
+			$this->getInnerContainer()["tfoot"] = $content;
 		} else if ($content instanceof Tr || $content instanceof Cell) {
-			$this->content()["tbody"]->append($content);
+			$this->getInnerContainer()["tbody"]->append($content);
 		}
 		return $this;
 	}
@@ -128,14 +128,14 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 */
 	public function setCols($cols = null) {
 		if ($cols === null) {
-			$this->content()->set("colgroup", "");
+			$this->getInnerContainer()->set("colgroup", "");
 		}
 		else if ($cols instanceof Colgroup) {
-			$this->content()->set("colgroup", $cols);
+			$this->getInnerContainer()->set("colgroup", $cols);
 		} else {
-			$this->content()->set("colgroup", new Colgroup($cols));
+			$this->getInnerContainer()->set("colgroup", new Colgroup($cols));
 		}
-		$this->content()["colgroup"];
+		$this->getInnerContainer()["colgroup"];
 		
 		return $this;
 	}
@@ -149,8 +149,8 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return null|Colgroup table header content
 	 */
 	public function colgroup() {
-		if ($this->content()["colgroup"] instanceof Colgroup) {
-			return $this->content()["colgroup"];
+		if ($this->getInnerContainer()["colgroup"] instanceof Colgroup) {
+			return $this->getInnerContainer()["colgroup"];
 		} else {
 			return null;
 		}
@@ -162,7 +162,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return Thead table header component
 	 */
 	public function thead() {
-		return $this->content()["thead"];
+		return $this->getInnerContainer()["thead"];
 	}
 
 	/**
@@ -171,7 +171,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return Tbody table body component
 	 */
 	public function tbody() {
-		return $this->content()["tbody"];
+		return $this->getInnerContainer()["tbody"];
 	}
 
 	/**
@@ -180,7 +180,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return Tfoot table footer component
 	 */
 	public function tfoot() {
-		return $this->content()["tfoot"];
+		return $this->getInnerContainer()["tfoot"];
 	}
 
 	/**
@@ -201,7 +201,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 		} else if ($mode == self::COUNT_ROWS) {
 			return $this->getComponentsByObjectType(RowInterface::class)->count();
 		} else {
-			return $this->content()->count();
+			return $this->getInnerContainer()->count();
 		}
 	}
 
@@ -213,7 +213,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return ContainerInterface containing matching sub components
 	 */
 	public function getComponentsByAttrName($attrName) {
-		return $this->content()->getComponentsByAttrName($attrName);
+		return $this->getInnerContainer()->getComponentsByAttrName($attrName);
 	}
 
 	/**
@@ -222,7 +222,7 @@ class Table extends AbstractContainerComponent implements TraversableInterface {
 	 * @return \ArrayIterator iterator
 	 */
 	public function getIterator() {
-		return $this->content()->getIterator();
+		return $this->getInnerContainer()->getIterator();
 	}
 
 }

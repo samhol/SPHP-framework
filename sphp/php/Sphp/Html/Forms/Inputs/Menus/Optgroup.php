@@ -109,14 +109,14 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
    * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
 }

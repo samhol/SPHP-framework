@@ -58,7 +58,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * @return self for PHP Method Chaining
    */
   public function setHyperlink(Hyperlink $hyperlink) {
-    $this->setContentContainer($hyperlink);
+    $this->setInnerContainer($hyperlink);
     return $this;
   }
 
@@ -68,7 +68,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * @return Hyperlink the actual hyperlink component in the menu item component
    */
   public function getHyperlink() {
-    return $this->content();
+    return $this->getInnerContainer();
   }
 
   /**

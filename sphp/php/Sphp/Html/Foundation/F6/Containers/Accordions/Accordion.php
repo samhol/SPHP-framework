@@ -44,7 +44,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function prepend(PaneInterface $pane) {
-    $this->content()->prepend($pane);
+    $this->getInnerContainer()->prepend($pane);
     return $this;
   }
 
@@ -56,7 +56,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function prependPane($title, $content) {
-    $this->content()->prepend(new Pane($title, $content));
+    $this->getInnerContainer()->prepend(new Pane($title, $content));
     return $this;
   }
 
@@ -67,7 +67,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function append(PaneInterface $pane) {
-    $this->content()->append($pane);
+    $this->getInnerContainer()->append($pane);
     return $this;
   }
 
@@ -79,7 +79,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return self for PHP Method Chaining
    */
   public function appendPane($title, $content) {
-    $this->content()->append(new Pane($title, $content));
+    $this->getInnerContainer()->append(new Pane($title, $content));
     return $this;
   }
 
@@ -89,7 +89,7 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
    * @return \ArrayIterator iterator
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
   /**

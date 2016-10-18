@@ -76,7 +76,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return self for PHP Method Chaining
    */
   private function build() {
-    $this->content()
+    $this->getInnerContainer()
             ->set("heading", (new Div())->addCssClass("header"))
             ->set("body", (new Row())->addCssClass("content sphp-photoalbum-row collapse"))
             ->set("footer", (new Div('<strong>&laquo; A:L:B:U:M:Z:T:&Euml;:R &raquo;</strong> COPYRIGHT &copy; Sami Holck 2007-' . date("Y")))->addCssClass("footer"));
@@ -95,7 +95,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Div the head section of the album
    */
   private function getHead() {
-    return $this->content()->get("heading");
+    return $this->getInnerContainer()->get("heading");
   }
 
   /**
@@ -104,7 +104,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Row the body section of the album
    */
   private function getBody() {
-    return $this->content()->get("body");
+    return $this->getInnerContainer()->get("body");
   }
 
   /**
@@ -113,7 +113,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * @return Div the footer section of the album
    */
   private function getFoot() {
-    return $this->content()->get("footer");
+    return $this->getInnerContainer()->get("footer");
   }
 
   /**

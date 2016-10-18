@@ -51,7 +51,7 @@ class MenuLabel extends AbstractContainerComponent implements MenuItemInterface 
    * @return self for PHP Method Chaining
    */
   public function setContent($content) {
-    $this->content()->replaceContent($content);
+    $this->getInnerContainer()->replaceContent($content);
     return $this;
   }
 

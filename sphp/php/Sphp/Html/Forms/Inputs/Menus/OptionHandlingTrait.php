@@ -135,7 +135,7 @@ trait OptionHandlingTrait {
    * @return self for PHP Method Chaining
    */
   public function append($opt) {
-    $this->content()->append($this->toMenuContent($opt));
+    $this->getInnerContainer()->append($this->toMenuContent($opt));
     return $this;
   }
 
@@ -163,7 +163,7 @@ trait OptionHandlingTrait {
    */
   public function prepend($opt) {
 
-    $this->content()->prepend($this->toMenuContent($opt));
+    $this->getInnerContainer()->prepend($this->toMenuContent($opt));
     return $this;
   }
 
@@ -171,14 +171,14 @@ trait OptionHandlingTrait {
    * {@inheritdoc}
    */
   public function count() {
-    return $this->content()->count();
+    return $this->getInnerContainer()->count();
   }
 
   /**
    * {@inheritdoc}
    */
   public function getIterator() {
-    return $this->content()->getIterator();
+    return $this->getInnerContainer()->getIterator();
   }
 
 }

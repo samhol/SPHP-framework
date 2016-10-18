@@ -141,9 +141,9 @@ class ExceptionCallout extends Callout {
               ->append('Previous exception: <span class="exception">' . get_class($prev) . '</span>')
               ->append(" on line <span class=\"number\">#{$prev->getLine()}</span>")
               ->append(" of file <div class=\"file\">'{$this->parsePath($prev->getFile())}'</div>");
-      $this->content()['previous'] = $heading;
+      $this->getInnerContainer()['previous'] = $heading;
     } else {
-      $this->content()['previous'] = null;
+      $this->getInnerContainer()['previous'] = null;
     }
     return $this;
   }
@@ -175,10 +175,10 @@ class ExceptionCallout extends Callout {
       foreach ($trace as $traceRow) {
         $err1 = new Li();
         if (array_key_exists("line", $traceRow) && array_key_exists("file", $traceRow)) {
-          $err1->set("line", "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
-                  ->set("file", " of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
+          $err1->offsetSet("line", "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
+                  ->offsetSet("file", " of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
         }
-        $err1->set("function", "" . $this->parseFunction($traceRow));
+        $err1->offsetSet("function", "" . $this->parseFunction($traceRow));
         $output[] = $err1;
       }
       return '<h3 class"trace">Trace information:</h3>' . $output;

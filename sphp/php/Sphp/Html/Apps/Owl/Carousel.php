@@ -61,7 +61,7 @@ class Carousel extends AbstractContainerTag implements AjaxLoaderInterface {
    * {@inheritdoc}
    */
   public function ajaxAppend($url) {
-    $this->content()->ajaxAppend($url);
+    $this->getInnerContainer()->ajaxAppend($url);
     return $this;
   }
 
@@ -69,7 +69,7 @@ class Carousel extends AbstractContainerTag implements AjaxLoaderInterface {
    * {@inheritdoc}
    */
   public function ajaxPrepend($url) {
-    $this->content()->ajaxPrepend($url);
+    $this->getInnerContainer()->ajaxPrepend($url);
     return $this;
   }
 
