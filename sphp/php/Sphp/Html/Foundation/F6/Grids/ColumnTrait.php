@@ -124,14 +124,13 @@ trait ColumnTrait {
       }
       return $result;
     };
-    $width = 0;
-    foreach (Screen::sizes() as $screenName) {
-      $w = $parseWidth($screenName);
+    $width = $parseWidth($screenSize);
+    $prev = Screen::getPreviousSize($screenSize);
+    while ($width === false && $prev !== false) {
+      $w = $parseWidth($prev);
+      $prev = Screen::getPreviousSize($prev);
       if ($w !== false) {
         $width = $w;
-      }
-      if ($screenName === $screenSize) {
-        break;
       }
     }
     return $width;
@@ -140,7 +139,7 @@ trait ColumnTrait {
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
    *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */

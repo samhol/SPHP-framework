@@ -121,13 +121,6 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
     return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
   }
 
-  /**
-   * Clones the component
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
   public function __clone() {
     $this->content = clone $this->content;
     parent::__clone();
