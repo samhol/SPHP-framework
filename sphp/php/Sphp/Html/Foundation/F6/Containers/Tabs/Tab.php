@@ -23,7 +23,7 @@ class Tab extends AbstractContainerTag implements TabInterface {
 
   /**
    *
-   * @var TabButton 
+   * @var TabController 
    */
   private $tabButton;
 
@@ -40,12 +40,12 @@ class Tab extends AbstractContainerTag implements TabInterface {
     if ($content !== null) {
       $this->append($content);
     }
-    $this->tabButton = new TabButton($this, $tab);
+    $this->tabButton = new TabController($this, $tab);
   }
 
   /**
    * 
-   * @return TabButton
+   * @return TabController
    */
   public function getTabButton() {
     return $this->tabButton;

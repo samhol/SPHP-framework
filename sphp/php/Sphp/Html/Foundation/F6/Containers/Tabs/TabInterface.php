@@ -23,7 +23,7 @@ interface TabInterface extends ContentInterface {
 
   /**
    * 
-   * @return TabButton
+   * @return TabController
    */
   public function getTabButton();
 

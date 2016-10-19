@@ -27,19 +27,19 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
 
   /**
    *
-   * @var TabButtonContainer
+   * @var TabControllerContainer
    */
   private $tabs;
 
   /**
    * Constructs a new instance
    * 
-   * @param TabButtonContainer $tabs
+   * @param TabControllerContainer $tabs
    */
-  public function __construct(TabButtonContainer $tabs = null) {
+  public function __construct(TabControllerContainer $tabs = null) {
     parent::__construct('div');
     if ($tabs === null) {
-      $tabs = new TabButtonContainer();
+      $tabs = new TabControllerContainer();
     }
     $this->tabs = $tabs;
     $this->cssClasses()->lock('tabs-content');
@@ -47,12 +47,12 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
   }
 
   /**
-   * Appends the given Tab instancce to the container
+   * Appends the given tab instance to the container
    * 
-   * @param  Tab $tab
+   * @param  TabInterface $tab the tab instance
    * @return self for PHP Method Chaining
    */
-  public function append(Tab $tab) {
+  public function append(TabInterface $tab) {
     $this->getInnerContainer()->append($tab);
     $this->tabs->append($tab->getTabButton());
     return $this;
@@ -85,7 +85,7 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
    * Returns the tab at specified index
    * 
    * @param  int $index the index to retrieve
-   * @return Tab the tab at the given index
+   * @return TabInterface the tab at the given index
    * @throws OutOfBoundsException if the index is not set
    */
   public function getTab($index) {
@@ -97,7 +97,7 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
 
   /**
    * 
-   * @return TabButtonContainer
+   * @return TabControllerContainer
    */
   public function getTabButtons() {
     return $this->tabs;

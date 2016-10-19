@@ -21,7 +21,7 @@ use OutOfBoundsException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButtonContainer extends AbstractContainerComponent implements TraversableInterface {
+class TabControllerContainer extends AbstractContainerComponent implements TraversableInterface {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -35,32 +35,38 @@ class TabButtonContainer extends AbstractContainerComponent implements Traversab
     $this->attrs()->demand('data-tabs');
   }
 
+
   /**
-   * 
-   * @param TabButton $button
+   * Appends the given tab controller instance to the container
+   *
+   * @param TabControllerInterface $controller the tab controller instance
+   * @return TabControllerInterface
    */
-  public function append(TabButton $button) {
-    $this->getInnerContainer()->append($button);
-    return $this;
+  public function append(TabControllerInterface $controller) {
+    $this->getInnerContainer()->append($controller);
+    return $controller;
   }
 
   /**
+   * Checks if a tab controller exists in the given index
    * 
-   * @param  int $index
-   * @return boolean
+   * @param  int $index the index to check for
+   * @return boolean true if a tab controller exits at the given index
    */
-  public function hasButton($index) {
+  public function hasController($index) {
     return $this->getInnerContainer()->offsetExists($index);
   }
 
+
   /**
+   * Returns the tab controller at specified index
    * 
-   * @param  int $index
-   * @return Tab
-   * @throws OutOfBoundsException
+   * @param  int $index the index to retrieve
+   * @return TabControllerInterface the tab controller at the given index
+   * @throws OutOfBoundsException if the index is not set
    */
-  public function getButton($index) {
-    if (!$this->hasButton($index)) {
+  public function getController($index) {
+    if (!$this->hasController($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }
     return $this->getInnerContainer()->offsetGet($index);
@@ -98,13 +104,14 @@ class TabButtonContainer extends AbstractContainerComponent implements Traversab
   }
 
   /**
+   * Sets/unsets active the tab controller at a given index
    * 
-   * @param  int $index
-   * @throws OutOfBoundsException
+   * @param  int $index the index to to set
    * @return self for PHP Method Chaining
+   * @throws OutOfBoundsException if the index is not set
    */
   public function setActive($index) {
-    if (!$this->hasButton($index)) {
+    if (!$this->hasController($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }
     foreach ($this as $i => $tab) {

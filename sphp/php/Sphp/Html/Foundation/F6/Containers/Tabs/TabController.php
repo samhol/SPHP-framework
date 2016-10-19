@@ -8,11 +8,10 @@
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\Lists\LiInterface;
 use Sphp\Html\ContainerTag;
 
 /**
- * Description of TabTitle
+ * Class implements a Foundation Tab controller for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01
@@ -21,7 +20,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButton extends AbstractContainerTag implements TabControllerInterface {
+class TabController extends AbstractContainerTag implements TabControllerInterface {
 
   /**
    * Constructs a new instance

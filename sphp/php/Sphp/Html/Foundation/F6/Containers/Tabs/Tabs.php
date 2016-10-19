@@ -64,7 +64,7 @@ class Tabs implements ContentInterface, TraversableInterface {
    * Returns the tab at specified index
    * 
    * @param  int $index the index to retrieve
-   * @return Tab the tab at the given index
+   * @return TabInterface the tab at the given index
    * @throws OutOfBoundsException if the index is not set
    */
   public function getTab($index) {
