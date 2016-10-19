@@ -126,8 +126,11 @@ trait ColumnTrait {
     };
     $width = 0;
     foreach (Screen::sizes() as $screenName) {
-      $width = $parseWidth($screenName);
-      if ($screenName == $screenSize) {
+      $w = $parseWidth($screenName);
+      if ($w !== false) {
+        $width = $w;
+      }
+      if ($screenName === $screenSize) {
         break;
       }
     }
