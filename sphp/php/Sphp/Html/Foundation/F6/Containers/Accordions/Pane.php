@@ -13,12 +13,12 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Div;
 
 /**
- * Class implements a Pane for a Foundation 6 Accordion
+ * Class implements a Pane for a Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-13
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

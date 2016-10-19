@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 use Sphp\Html\AbstractContainerTag;
 
 /**
- * Class implements a Foundation 6 Tab for Tabs
+ * Class implements a Foundation Tab for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01
@@ -19,7 +19,7 @@ use Sphp\Html\AbstractContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tab extends AbstractContainerTag {
+class Tab extends AbstractContainerTag implements TabInterface {
 
   /**
    *

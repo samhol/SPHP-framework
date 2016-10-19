@@ -21,7 +21,7 @@ use Sphp\Html\ContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButton extends AbstractContainerTag implements LiInterface {
+class TabButton extends AbstractContainerTag implements TabControllerInterface {
 
   /**
    * Constructs a new instance
@@ -37,9 +37,7 @@ class TabButton extends AbstractContainerTag implements LiInterface {
   }
 
   /**
-   * 
-   * @param  boolean $active
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    */
   public function setActive($active = true) {
     if ($active) {

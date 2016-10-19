@@ -10,12 +10,12 @@ namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Interface defines a Pane for Foundation 6 Accordion
+ * Interface defines a Pane for Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-18
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
