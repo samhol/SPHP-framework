@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 /**
  * Class models an HTML &lt;table&gt; tag's header cell (&lt;th&gt; tag)
  * 
- * The {@link self} defines a header cell in a {@link Table} component
+ * This component defines a header cell in a {@link Table} component
  *
  *
  * {@inheritdoc}

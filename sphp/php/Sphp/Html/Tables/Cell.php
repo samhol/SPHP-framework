@@ -21,9 +21,6 @@ use Sphp\Html\ContainerTag;
  */
 abstract class Cell extends ContainerTag implements CellInterface {
 
-  /**
-   * {@inheritdoc}
-   */
   public function setColspan($value) {
     if ($value == 1) {
       return $this->removeAttr('colspan');
@@ -32,16 +29,10 @@ abstract class Cell extends ContainerTag implements CellInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getColspan() {
     return intval($this->getAttr('colspan'));
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRowspan($value) {
     if ($value == 1) {
       return $this->removeAttr('rowspan');
@@ -50,9 +41,6 @@ abstract class Cell extends ContainerTag implements CellInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getRowspan() {
     return intval($this->getAttr("rowspan"));
   }

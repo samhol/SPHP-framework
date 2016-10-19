@@ -86,24 +86,15 @@ class ScriptsContainer implements ContentInterface, TraversableInterface {
     $this->append(new ScriptCode($code));
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function getHtml() {
     return $this->container->getHtml();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->container->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     $this->container->count();
   }
