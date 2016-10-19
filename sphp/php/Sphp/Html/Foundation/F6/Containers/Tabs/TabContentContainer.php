@@ -12,9 +12,14 @@ use Sphp\Html\TraversableInterface;
 use OutOfBoundsException;
 
 /**
- * Description of TabContentContainer
+ * Class implements a container for Foundation Tabs 
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-01-01
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/docs/components/tabs.html Foundation Tabs
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class TabContentContainer extends AbstractContainerComponent implements TraversableInterface {
 
@@ -111,14 +116,19 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
   }
 
   /**
-   * {@inheritdoc}
+   * Returns a new iterator to iterate through inserted components 
+   *
+   * @return ArrayIterator iterator
    */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }
 
   /**
-   * {@inheritdoc}
+   * Count the number of inserted components in the container
+   *
+   * @return int number of components in the html component
+   * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count() {
     return $this->getInnerContainer()->count();
@@ -126,8 +136,8 @@ class TabContentContainer extends AbstractContainerComponent implements Traversa
 
   /**
    * 
-   * @param  int $index
-   * @throws OutOfBoundsException
+   * @param  int $index the index of the tab
+   * @throws OutOfBoundsException if the index is not set
    * @return self for PHP Method Chaining
    */
   public function setActive($index) {

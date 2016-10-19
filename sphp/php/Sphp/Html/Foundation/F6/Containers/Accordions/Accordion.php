@@ -8,6 +8,8 @@
 namespace Sphp\Html\Foundation\F6\Containers\Accordions;
 
 use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\TraversableInterface;
+use ArrayIterator;
 
 /**
  * Class implements an Foundation 6 Accordion
@@ -15,11 +17,13 @@ use Sphp\Html\AbstractContainerComponent;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-12-01
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
+ * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Accordion extends AbstractContainerComponent implements \IteratorAggregate {
+class Accordion extends AbstractContainerComponent implements TraversableInterface {
+
+  use \Sphp\Html\TraversableTrait;
 
   /**
    * Constructs a new instance
@@ -84,12 +88,22 @@ class Accordion extends AbstractContainerComponent implements \IteratorAggregate
   }
 
   /**
-   * Create a new iterator to iterate through inserted {@link PaneInterface} components 
+   * Returns a new iterator to iterate through inserted components 
    *
-   * @return \ArrayIterator iterator
+   * @return ArrayIterator iterator
    */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
+  }
+
+  /**
+   * Count the number of inserted components in the container
+   *
+   * @return int number of components in the html component
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
+  public function count() {
+    return $this->getInnerContainer()->count();
   }
 
   /**

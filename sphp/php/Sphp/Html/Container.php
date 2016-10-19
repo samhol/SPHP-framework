@@ -24,7 +24,6 @@ class Container implements ContainerInterface, ContentParserInterface {
 
   use ContentTrait,
       ContentParsingTrait,
-  // ArrayAccessExtensionTrait,
       TraversableTrait;
 
   /**

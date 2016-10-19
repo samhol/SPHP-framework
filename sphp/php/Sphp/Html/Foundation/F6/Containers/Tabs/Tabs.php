@@ -37,7 +37,6 @@ class Tabs implements ContentInterface, TraversableInterface {
    */
   public function __construct() {
     $this->tabsContent = new TabContentContainer();
-    //$this->tabs = $this->tabsContent->getTabButtons();
   }
 
   /**
@@ -76,7 +75,7 @@ class Tabs implements ContentInterface, TraversableInterface {
    * {@inheritdoc}
    */
   public function getHtml() {
-    return $this->tabsContent->getTabButtons() . $this->tabsContent;
+    return $this->tabsContent->getTabButtons()->getHtml() . $this->tabsContent->getHtml();
   }
 
   /**
@@ -92,7 +91,7 @@ class Tabs implements ContentInterface, TraversableInterface {
 
   /**
    * 
-   * @param  int $index
+   * @param  int $index of the Tab
    * @return self for PHP Method Chaining
    */
   public function setActive($index) {
@@ -101,14 +100,19 @@ class Tabs implements ContentInterface, TraversableInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * Count the number of inserted components in the container
+   *
+   * @return int number of components in the html component
+   * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count() {
     return $this->tabsContent->count();
   }
 
   /**
-   * {@inheritdoc}
+   * Returns a new iterator to iterate through inserted components 
+   *
+   * @return ArrayIterator iterator
    */
   public function getIterator() {
     return $this->tabsContent->getIterator();

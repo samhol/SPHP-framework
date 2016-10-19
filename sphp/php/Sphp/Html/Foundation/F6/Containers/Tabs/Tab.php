@@ -31,7 +31,7 @@ class Tab extends AbstractContainerTag {
    * Constructs a new instance
    * 
    * @param mixed $tab the tab button content
-   * @param type $content the tab button content
+   * @param type $content the tab content
    */
   public function __construct($tab = null, $content = null) {
     parent::__construct('div');

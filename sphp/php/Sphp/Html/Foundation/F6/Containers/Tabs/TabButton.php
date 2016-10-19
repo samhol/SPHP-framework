@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\F6\Containers\Tabs;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\Lists\LiInterface;
-use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\ContainerTag;
 
 /**
  * Description of TabTitle
@@ -21,13 +21,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TabButton extends AbstractContainerComponent implements LiInterface {
-
-  /**
-   * 
-   * @var Hyperlink
-   */
-  private $panelLink;
+class TabButton extends AbstractContainerTag implements LiInterface {
 
   /**
    * Constructs a new instance
@@ -36,25 +30,16 @@ class TabButton extends AbstractContainerComponent implements LiInterface {
    * @param mixed $title
    */
   public function __construct(Tab $tabPanel, $title = null) {
-    //$this->panel = $tabPanel;
-    $this->panelLink = new Hyperlink("#" . $tabPanel->identify(), $title);
-    parent::__construct('li', null, $this->panelLink);
+    $innerContainer = new ContainerTag('a', $title);
+    $innerContainer->attrs()->lock('href', '#' . $tabPanel->identify());
+    parent::__construct('li', null, $innerContainer);
     $this->cssClasses()->lock('tabs-title');
   }
-  
+
   /**
    * 
-   * @param type $tabPanel
-   * @param type $title
-   */
-  protected function createPanelLink($tabPanel, $title) {
-    $a = new \Sphp\Html\ContainerTag('a', $title);
-    $a->attrs()->lock('href', '#' . $tabPanel->identify());
-  }
-  /**
-   * 
-   * @param type $active
-   * @return \Sphp\Html\Foundation\F6\Containers\Tabs\TabButton
+   * @param  boolean $active
+   * @return self for PHP Method Chaining
    */
   public function setActive($active = true) {
     if ($active) {
@@ -64,7 +49,5 @@ class TabButton extends AbstractContainerComponent implements LiInterface {
     }
     return $this;
   }
-  
-  
 
 }
