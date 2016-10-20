@@ -43,7 +43,7 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
    * @param string $value
    * @dataProvider constructorData
    */
-  public function testColumnCostructor($content, $s, $m, $l, $xl, $xxl) {
+  public function testConstructor($content, $s, $m, $l, $xl, $xxl) {
     $col = new Column($content, $s, $m, $l, $xl, $xxl);
     $this->assertSame($col->getWidth("small"), $s);
     if ($m !== false) {
