@@ -111,4 +111,11 @@ interface RowInterface extends ContainerComponentInterface {
    * @param mixed $value the value to set
    */
   public function offsetSet($offset, $value);
+
+  /**
+   * 
+   * @param  boolean $collapse
+   * @return self for PHP Method Chaining
+   */
+  public function collapseColumns($collapse = true);
 }

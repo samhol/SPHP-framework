@@ -10,11 +10,12 @@ namespace Sphp\Html\Foundation\F6\Containers;
 use Sphp\Html\ContainerTag;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
+use Sphp\Html\AjaxLoaderInterface;
 
 /**
  * Class implements Foundation Dropdown HTML component
  *
- * {@link self} component can be used to attach dropdowns or popovers to
+ * This component can be used to attach dropdowns or popovers to
  * whatever Component needed.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -24,7 +25,7 @@ use Sphp\Html\Forms\Buttons\ButtonTag as Button;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
+class Dropdown extends ContainerTag implements AjaxLoaderInterface {
 
   use \Sphp\Html\AjaxLoaderTrait;
 

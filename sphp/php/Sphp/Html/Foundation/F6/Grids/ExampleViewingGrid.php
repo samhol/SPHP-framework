@@ -11,7 +11,6 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\ContentTrait;
 use Sphp\Html\Apps\SyntaxHighlighterInterface;
-use Sphp\Html\Div;
 
 /**
  * Class ExampleViewingBlockGrid

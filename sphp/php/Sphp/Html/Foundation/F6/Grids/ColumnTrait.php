@@ -95,9 +95,6 @@ trait ColumnTrait {
    * @return ColumnInterface for PHP Method Chaining
    */
   public function setWidth($width, $screen = "small") {
-    if ($width > ColumnInterface::FULL_WIDTH) {
-      $width = ColumnInterface::FULL_WIDTH;
-    }
     $this->setWidthInherited($screen);
     if ($width !== false) {
       $this->cssClasses()->add("$screen-$width");
@@ -164,14 +161,8 @@ trait ColumnTrait {
    * @return ColumnInterface for PHP Method Chaining
    */
   public function setGridOffset($offset, $screenSize = 'small') {
-    if ($offset > ColumnInterface::FULL_WIDTH - 1) {
-      $offset = ColumnInterface::FULL_WIDTH - 1;
-    }
-    if ($offset < 0) {
-      $offset = ColumnInterface::INHERITED;
-    }
     $this->inheritGridOffset($screenSize);
-    if ($offset !== false) {
+    if ($offset !== false && $offset !== 0) {
       $this->cssClasses()->add("$screenSize-offset-$offset");
     }
     return $this;
@@ -180,7 +171,7 @@ trait ColumnTrait {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $s column offset for small screens (0-11) or false for inheritance
+   * @param  int|boolean $s column offset for small screens (0-11) or false for none
    * @param  int|boolean $m column offset for medium screens (0-11) or false for inheritance
    * @param  int|boolean $l column offset for large screens (0-11) or false for inheritance
    * @param  int|boolean $xl column offset for x-large screens (0-11) or false for inheritance
@@ -250,7 +241,7 @@ trait ColumnTrait {
   }
 
   /**
-   * Centers the column to the {@link RowInterface}
+   * Centers the column to the Foundation row
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size

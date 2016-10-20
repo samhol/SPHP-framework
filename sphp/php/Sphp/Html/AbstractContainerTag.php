@@ -12,11 +12,11 @@ namespace Sphp\Html;
  *
  * **Notes:**
  *
- * Any class extending {@link self} follows these rules:
+ * All containers follow these rules:
  *
  * 1. Any extending class act as a container for other components like
  *    {@link ContentInterface}, other objects, text, ...etc.
- * 2. The type of the content in such container depends solely on the container's
+ * 2. The type of the content in a container depends solely on the container's
  *    purpose of use.
  * 3. Any extending class can be used in **PHP**'s `foreach` construct.
  * 4. Any extending class can be used with the **PHP**'s `count()` function.

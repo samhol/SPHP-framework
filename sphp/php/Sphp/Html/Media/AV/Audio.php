@@ -10,9 +10,7 @@ namespace Sphp\Html\Media\AV;
 /**
  * Class models an HTML &lt;audio&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-07-20

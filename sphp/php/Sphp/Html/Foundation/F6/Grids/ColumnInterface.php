@@ -22,16 +22,6 @@ namespace Sphp\Html\Foundation\F6\Grids;
 interface ColumnInterface {
 
   /**
-   * The maximum width of the column (int 12)
-   */
-  const FULL_WIDTH = 12;
-
-  /**
-   * The width is inherited from the smaller screen settings (int 0)
-   */
-  const INHERITED = 0;
-
-  /**
    * Sets the column width associated with the given screen size(s)
    *
    * **Important!**
@@ -43,10 +33,10 @@ interface ColumnInterface {
    * @precondition The value of the `$width` parameter is between 1-12 or false for inheritance
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  int $width the width of the column
-   * @param  int|string|BitMask $screens the target screen size(s)
+   * @param  string $screen the target screen size
    * @return self for PHP Method Chaining
    */
-  public function setWidth($width, $screens = 'small');
+  public function setWidth($width, $screen = 'small');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
@@ -120,7 +110,7 @@ interface ColumnInterface {
   public function countUsedSpace($screenSize);
 
   /**
-   * Centers the column to the {@link RowInterface}
+   * Centers the column to the Foundation row
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size

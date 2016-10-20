@@ -7,12 +7,7 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
   /**
    * @var Column
    */
-  protected $c1;
-
-  /**
-   * @var Column
-   */
-  protected $c2;
+  protected $row;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
@@ -20,7 +15,6 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
    */
   protected function setUp() {
     $this->c1 = new Column();
-    $this->c2 = new Column();
   }
 
   /**
@@ -28,7 +22,7 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    unset($this->c1, $this->c2);
+    unset($this->c1);
   }
 
   /**
@@ -91,8 +85,74 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
     $this->assertSame($this->c1->getWidth($type), $size);
     if ($type !== "small") {
       $this->c1->setWidthInherited($type);
-    }   
+    }
     $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public function offsetSettingData() {
+    return [
+        ["small", 2, 8],
+        ["medium", 2, 8],
+        ["large", 2, 8],
+        ["xlarge", 2, 8],
+        ["xxlarge", 2, 8],
+    ];
+  }
+
+  /**
+   *
+   * @param string $type
+   * @param int|boolean $size
+   * @param int|boolean $offset
+   * @dataProvider offsetSettingData
+   */
+  public function testsetGridOffset($type, $size, $offset) {
+    $this->c1->setGridOffset($offset, $type);
+    $this->assertSame($this->c1->getGridOffset($type), $offset);
+    $this->c1->setWidth($size, $type);
+    $this->assertSame($this->c1->getWidth($type), $size);
+    $this->assertSame($this->c1->countUsedSpace($type), $size + $offset);
+    if ($type !== "small") {
+      $this->c1->setWidthInherited($type);
+    }
+    $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
+    $this->assertSame($this->c1->countUsedSpace($type), $this->c1->getWidth("small") + $offset);
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public function sizeNames() {
+    return [
+        ["small"],
+        ["medium"],
+        ["large"],
+        ["xlarge"],
+        ["xxlarge"],
+    ];
+  }
+  /**
+   *
+   * @param string $type
+   * @param int|boolean $size
+   * @param int|boolean $offset
+   * @dataProvider sizeNames
+   */
+  public function testsetCentering($type) {
+    $this->c1->centerize($type);
+    $this->assertTrue($this->c1->hasCssClass("$type-centered"));
+    $this->assertFalse($this->c1->hasCssClass("$type-uncentered"));
+    $this->c1->uncenterize($type);
+    $this->assertTrue($this->c1->hasCssClass("$type-uncentered"));
+    $this->assertFalse($this->c1->hasCssClass("$type-centered"));
+    $this->c1->unsetCenterizing($type);
+    $this->assertFalse($this->c1->hasCssClass("$type-uncentered"));
+    $this->assertFalse($this->c1->hasCssClass("$type-centered"));
   }
 
 }

@@ -56,18 +56,6 @@ class ExceptionCallout extends Callout {
   private $exception;
 
   /**
-   *
-   * @var H2 
-   */
-  private $exH2;
-
-  /**
-   *
-   * @var Div 
-   */
-  private $message;
-
-  /**
    * Constructs a new instance
    *
    * @param  Exception $e the viewed exception

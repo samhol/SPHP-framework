@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ModalReveal.php (UTF-8)
+ * Controller.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\F6\Containers\Modals;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class implements Foundation Reveal Modal 
+ * Class implements Foundation Reveal Modal controller
  * 
  * Modal dialogs, or pop-up windows, are handy for prototyping and production.
  *

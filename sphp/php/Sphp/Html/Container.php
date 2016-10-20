@@ -9,6 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Core\Types\Arrays;
 use ArrayIterator;
+use Traversable;
 
 /**
  * Clacc implements a container for HTML components and other textual content
@@ -90,7 +91,7 @@ class Container implements ContainerInterface, ContentParserInterface {
   /**
    * Create a new iterator to iterate through inserted elements in the html component
    *
-   * @return ArrayIterator iterator
+   * @return Traversable iterator
    */
   public function getIterator() {
     return new ArrayIterator($this->components);

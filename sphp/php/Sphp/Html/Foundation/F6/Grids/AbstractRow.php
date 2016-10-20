@@ -108,14 +108,31 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     return $this;
   }
 
-  public function appendColumn($content, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
-    $this->append(new Column($content, $small, $medium, $large, $xlarge, $xxlarge));
+  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+    $this->append(new Column($content, $s, $m, $l, $xl, $xxl));
     return $this;
   }
-  
 
-  public function collapseColumns() {
-    $this->addCssClass('collapse');
+  public function collapseColumns($collapse = true) {
+    if ($collapse) {
+      $this->cssClasses()->add('collapse');
+    } else {
+      $this->cssClasses()
+              ->remove('collapse');
+    }
+    return $this;
+  }
+
+  public function collapseColumnsFor($screenSize = 'small', $collapse = true) {
+    if ($collapse) {
+      $this->cssClasses()
+              ->remove("$screenSize-uncollapse")
+              ->add("$screenSize-collapse");
+    } else {
+      $this->cssClasses()
+              ->add("$screenSize-uncollapse")
+              ->remove("$screenSize-collapse");
+    }
     return $this;
   }
 
