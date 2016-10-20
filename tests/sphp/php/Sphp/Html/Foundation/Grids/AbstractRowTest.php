@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\F6\Grids;
 
-class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
+class AbstractRowTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @var Column
@@ -45,7 +45,7 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
    * @param mixed $data
    * @dataProvider arrayData
    */
-  public function testColumnCostructor(array $data) {
+  public function testConstructor(array $data) {
     $numCols = count($data);
     $row = new Row($data);
     $this->assertCount($numCols, $row);
