@@ -70,16 +70,10 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getScreeReaderLabel() {
     return $this->screenReaderLabel;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->screenReaderLabel . '<span aria-hidden="true">' . $this->icon . '</span>';
   }

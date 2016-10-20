@@ -55,9 +55,6 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
     $this->setTarget($togleButton);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     parent::__clone();
     $this->identify("Dropdown");
@@ -163,9 +160,6 @@ class Dropdown extends ContainerTag implements \Sphp\Html\AjaxLoaderInterface {
     return $this->target;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->target . parent::getHtml();
   }

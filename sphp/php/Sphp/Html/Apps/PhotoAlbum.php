@@ -355,9 +355,6 @@ class PhotoAlbum extends AbstractContainerComponent {
     return $atag;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->getOpeningButton($this->buttonContent) . parent::getHtml();
   }

@@ -13,9 +13,7 @@ use Sphp\Html\Media\SizeableTrait;
 /**
  * Class models an HTML &lt;video&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20

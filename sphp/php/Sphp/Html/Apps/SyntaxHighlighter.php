@@ -88,17 +88,11 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
             ->setDefaultContentCopyController();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->codeContainer, $this->codeContainer, $this->geshi, $this->footer, $this->buttonArea);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     throw new Exception();
   }
@@ -116,25 +110,11 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $output = "";
     $output .= $this->geshi->parse_code();
     $output .= $this->buttonArea . $this->footer;
     return $output;
-  }
-
-  /**
-   * 
-   * @param  string $fun
-   * @param  mixed $params
-   * @return self for PHP Method Chaining
-   */
-  private function setGeshiProperties($fun, $params) {
-    call_user_func_array([$this->geshi, $fun], $params);
-    return $this;
   }
 
   /**
@@ -240,26 +220,17 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setLanguage($lang) {
     $this->geshi->set_language($lang);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSource($source, $lang) {
     $this->geshi->set_source($source);
     $this->geshi->set_language($lang);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function loadFromFile($filename) {
     if (!file_exists($filename)) {
       throw new InvalidArgumentException("The file '$filename' does not exist!");

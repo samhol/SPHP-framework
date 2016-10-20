@@ -141,10 +141,7 @@ class Router implements Arrayable {
   public function __toString() {
     return var_export($this->toArray(), true);
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function toArray() {
     return [
         "http" => $this->http(),

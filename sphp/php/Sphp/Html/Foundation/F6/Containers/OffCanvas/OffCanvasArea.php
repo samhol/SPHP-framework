@@ -62,8 +62,6 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
   }
 
   /**
-   */
-  /**
    * 
    * @param  string $href
    * @param  string $content
@@ -75,23 +73,14 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendSubMenu(SubMenu $link = null) {
     return $this->menu->appendSubMenu($link);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->closeButton . $this->menu;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMenuButton($button = null) {
     if ($button === null) {
       $button = new OffCanvasOpener($this);

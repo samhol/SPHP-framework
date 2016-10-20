@@ -43,75 +43,45 @@ abstract class AbstractMediaTag extends AbstractContainerComponent implements Me
     $this->showControls(true);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return parent::contentToString() . "<p>Your browser does not support the &lt;" .
             $this->getTagName() . "&gt; tag!</p>";
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function append(MultimediaContentInterface $src) {
     $this->getInnerContainer()->append($src);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function addSource($src, $type = null) {
     return $this->append(new Source($src, $type));
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSources() {
     return $this->getInnerContainer()->getComponentsByObjectType(Source::class);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function addTrack($src, $srclang = null) {
     return $this->append(new Track($src, $srclang));
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getTracks() {
     return $this->getInnerContainer()->getComponentsByObjectType(Track::class);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function autoplay($autoplay = true) {
     return $this->setAttr("autoplay", (bool) $autoplay);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function loop($loop = true) {
     return $this->setAttr("loop", (bool) $loop);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function mute($muted = true) {
     $this->attrs()->set("muted", (bool) $muted);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function showControls($show = true) {
     return $this->setAttr("controls", (bool) $show);
   }

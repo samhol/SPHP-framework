@@ -10,9 +10,7 @@ namespace Sphp\Html\Forms;
 /**
  * Interface defines required properties for a traversable HTML &lt;form&gt; component
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
@@ -20,8 +18,7 @@ namespace Sphp\Html\Forms;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TraversableFormInterface  extends FormInterface, \Sphp\Html\TraversableInterface {
-
+interface TraversableFormInterface extends FormInterface, \Sphp\Html\TraversableInterface {
 
   /**
    * Sets the values to the input fields

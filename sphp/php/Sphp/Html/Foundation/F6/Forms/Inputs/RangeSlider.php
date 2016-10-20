@@ -144,9 +144,6 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     parent::disable($disabled);
     $this->getStartInput()->disable($disabled);
@@ -154,16 +151,10 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->name;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->name = $name;
     $this->getStartInput()->setName($name . "[start]");
@@ -171,9 +162,6 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->getStartInput()->isNamed() && $this->getEndInput()->isNamed();
   }
@@ -196,9 +184,6 @@ class RangeSlider extends AbstractSlider {
     return $this->getEndInput()->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     $result = [];
     $result["start"] = $this->getStartValue();
@@ -206,9 +191,6 @@ class RangeSlider extends AbstractSlider {
     return $result;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setStartValue($value) {
     $value = (int) $value;
     if ($this->getMin() > $value || $this->getMax() < $value) {
@@ -219,9 +201,6 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setStopValue($value) {
     $value = (int) $value;
     if ($this->getMin() > $value || $this->getMax() < $value) {
@@ -232,9 +211,6 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $min = $this->getStartValue();
     $max = $this->getStopValue();
@@ -251,9 +227,6 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->lowerHandle . '<span class="slider-fill" data-slider-fill></span>' . $this->upperHandle . $this->lowerInput . $this->upperInput;
   }

@@ -54,16 +54,10 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getDateTime() {
     return $this->dateTime;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $output = "<em>" . $this->dateTime->format("l") . "</em>";
     $output .= "<strong>" . $this->dateTime->format("F") . "</strong>";

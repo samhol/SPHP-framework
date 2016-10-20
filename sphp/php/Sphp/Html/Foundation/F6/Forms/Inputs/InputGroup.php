@@ -91,9 +91,6 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $a = function ($v) {
       if (!\Sphp\Core\Types\Strings::isEmpty($v)) {

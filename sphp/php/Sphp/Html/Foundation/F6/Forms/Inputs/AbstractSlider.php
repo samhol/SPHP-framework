@@ -46,9 +46,6 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     $this->setStepLength($step);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setStepLength($step) {
     if ($step <= 0) {
       throw new InvalidArgumentException("The step value is not positive");
@@ -61,23 +58,14 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMin() {
     return $this->attrs()->get("data-start");
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMax() {
     return $this->attrs()->get("data-end");
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     if ($disabled) {
       $this->removeCssClass("disabled");
@@ -87,9 +75,6 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return !$this->cssClasses()->contains("disabled");
   }

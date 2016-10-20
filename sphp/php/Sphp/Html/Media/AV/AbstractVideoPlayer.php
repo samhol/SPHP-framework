@@ -54,17 +54,11 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     parent::__destruct();
     unset($this->url, $this->videoId);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     parent::__clone();
     $this->url = clone $this->url;
@@ -104,9 +98,6 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function allowFullScreen($allow = true) {
     $this->attrs()
             ->set("webkitallowfullscreen", $allow)
@@ -115,17 +106,11 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function autoplay($autoplay = true) {
     $this->getUrl()->setParam("autoplay", (int) $autoplay);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function loop($loop = true) {
     return $this->setParam("loop", (int) $loop);
   }
@@ -158,9 +143,6 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return "<p>Your browser does not support iframes.</p>";
   }

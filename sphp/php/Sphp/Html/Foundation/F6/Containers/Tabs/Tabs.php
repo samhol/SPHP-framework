@@ -71,9 +71,6 @@ class Tabs implements ContentInterface, TraversableInterface {
     return $this->tabsContent->getTab($index);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->tabsContent->getTabButtons()->getHtml() . $this->tabsContent->getHtml();
   }

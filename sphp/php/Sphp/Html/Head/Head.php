@@ -266,9 +266,6 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
     return $this->meta;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->title . $this->base . $this->meta . $this->links . $this->scripts;
   }

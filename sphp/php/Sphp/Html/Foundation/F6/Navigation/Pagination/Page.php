@@ -39,7 +39,7 @@ class Page extends HyperlinkListItem implements PageInterface {
   public function __construct($content = null, $href = null, $target = '_self') {
     parent::__construct($href, $content, $target);
   }
-  
+
   /**
    * 
    * @param  string $label
@@ -51,9 +51,6 @@ class Page extends HyperlinkListItem implements PageInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function activate() {
     if ($this->urlEquals(URL::getCurrent())) {
       $this->setCurrent(true);
@@ -63,9 +60,6 @@ class Page extends HyperlinkListItem implements PageInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setCurrent($active = true) {
     if ($active) {
       return $this->addCssClass('current');
@@ -74,16 +68,10 @@ class Page extends HyperlinkListItem implements PageInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isCurrent() {
     return $this->hasCssClass('current');
   }
 
-  /**
-   * {@inheritdoc} 
-   */
   public function disable($disabled = true) {
     if ($disabled) {
       $this->cssClasses()->set('disabled');
@@ -93,9 +81,6 @@ class Page extends HyperlinkListItem implements PageInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return !$this->cssClasses()->contains('disabled');
   }

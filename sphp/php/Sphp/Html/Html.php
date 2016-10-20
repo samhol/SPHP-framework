@@ -129,9 +129,6 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
     return $this->body->scripts($c);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getOpeningTag() {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
   }
@@ -154,65 +151,40 @@ class Html extends AbstractComponent implements TraversableInterface, ContentPar
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->body->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->body->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->head . $this->body;
   }
 
-  /**
-   * {@inheritdoc}
-   */
+  public function append($content) {
+    $this->body->append($content);
+    return $this;
+  }
+
   public function appendMd($md) {
     $this->body->appendMd($md);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendMdFile($path) {
     $this->body->appendMdFile($path);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendPhpFile($path) {
     $this->body->appendPhpFile($path);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendRawFile($path) {
     $this->body->appendRawFile($path);
-    return $this;
-  }
-
-
-  /**
-   * {@inheritdoc}
-   */
-  public function append($content) {
-    $this->body->append($content);
     return $this;
   }
 

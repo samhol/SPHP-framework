@@ -80,9 +80,6 @@ class ContentCopyController implements ContentInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->button->getHtml();
   }

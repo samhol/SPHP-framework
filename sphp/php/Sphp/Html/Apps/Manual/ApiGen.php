@@ -47,9 +47,6 @@ class ApiGen extends AbstractPhpApiLinker {
     parent::__construct($apiRoot, $defaultTarget, $defaultCssClasses);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function classLinker($class) {
     return new ApiGenClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }

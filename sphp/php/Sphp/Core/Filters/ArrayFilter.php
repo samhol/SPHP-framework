@@ -46,9 +46,6 @@ class ArrayFilter extends AbstractFilter {
     $this->add_empty = $add_empty;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function filter($variable) {
     if (!is_array($variable)) {
       $variable = [];

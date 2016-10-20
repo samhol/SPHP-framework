@@ -59,10 +59,10 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return scalar[] separated atomic values in an array
    */
   public static function parse($raw) {
-    if (is_array($raw)) {    
+    if (is_array($raw)) {
       $f = function ($var) {
         return !empty($var) || $var === "0" || $var === 0;
-      }; 
+      };
       $arr = array_map("trim", $raw);
       $p = array_filter($arr, $f);
       $parsed = array_unique($p);
@@ -191,9 +191,6 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     if ($this->isLocked()) {
       $this->values = $this->locked;
@@ -222,9 +219,6 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     return false;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     if (!empty($this->values)) {
       $value = implode(" ", $this->values);

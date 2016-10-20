@@ -99,40 +99,25 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->rootlink . parent::contentToString();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function nested($nested = true) {
     $this->getMenu()->nested($nested);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function vertical($vertical = true) {
     $this->getMenu()->vertical($vertical);
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function setActive($active = true) {
     $this->getMenu()->setActive($active);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isActive() {
     return $this->getMenu()->isActive();
   }

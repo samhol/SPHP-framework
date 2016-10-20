@@ -122,9 +122,6 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     $selected = [];
     foreach ($this->getSelectedOptions() as $option) {
@@ -133,9 +130,6 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
     return array_unique($selected);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     return $this->setSelectedValues($value);
   }
@@ -164,16 +158,10 @@ class Select extends AbstractContainerComponent implements LabelableInterface, S
     return $this->setAttr('size', $size);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInnerContainer()->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }

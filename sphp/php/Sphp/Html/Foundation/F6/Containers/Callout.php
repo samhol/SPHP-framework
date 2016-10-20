@@ -95,9 +95,6 @@ class Callout extends Div implements ColourableInterface {
     return $this->attrs()->exists('data-closable');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $output = parent::contentToString();
     if ($this->isClosable()) {

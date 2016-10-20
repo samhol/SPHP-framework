@@ -63,9 +63,6 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     $this->cssClasses()->lock('row');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setColumns($columns) {
     if (!is_array($columns)) {
       $columns = [$columns];
@@ -111,18 +108,12 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendColumn($content, $small = 12, $medium = false, $large = false, $xlarge = false, $xxlarge = false) {
     $this->append(new Column($content, $small, $medium, $large, $xlarge, $xxlarge));
     return $this;
   }
   
 
-  /**
-   * {@inheritdoc}
-   */
   public function collapseColumns() {
     $this->addCssClass('collapse');
     return $this;

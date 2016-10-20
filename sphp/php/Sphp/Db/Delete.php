@@ -13,7 +13,8 @@ use Sphp\Core\Types\Arrays;
  * An implementation of a SQL DELETE statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-04-02
+ * @since   2013-04-02
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -87,9 +88,6 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function statementToString() {
     $query = "DELETE FROM " . $this->tables;
     if ($this->where()->hasConditions()) {
@@ -98,9 +96,6 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
     return $query;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function affectRows() {
     return $this->execute()->rowCount();
   }

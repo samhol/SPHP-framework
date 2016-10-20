@@ -17,16 +17,10 @@ namespace Sphp\Data;
  */
 class Queue extends \SplQueue implements QueueInterface {
 
-  /**
-   * {@inheritdoc}
-   */
   public function peek() {
     return $this->bottom();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function enqueue($value) {
     parent::enqueue($value);
     return $this;

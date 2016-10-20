@@ -29,7 +29,7 @@ class Users extends AbstractObjectStorage {
   }
 
   /**
-   * Re
+   * 
    *
    * @param  string $username the username
    * @return User|null  the user or null if nothing was found
@@ -38,9 +38,6 @@ class Users extends AbstractObjectStorage {
     return $this->getRepository()->findOneBy(['username' => $username]);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contains(DbObjectInterface $object) {
     if (!$this->getManager()->contains($object) && $object instanceof User) {
       $this->getManager()->getRepository($this->getObjectType())->findAll();

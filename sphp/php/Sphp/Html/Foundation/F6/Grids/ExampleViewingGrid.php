@@ -78,49 +78,31 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function attachContentCopyController(ComponentInterface $button = null) {
     return $this->syntaxHighlighter->attachContentCopyController($button);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function loadFromFile($path) {
     $this->syntaxHighlighter->loadFromFile($path);  
     $this->result->clear()->appendPhpFile($path);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setDefaultContentCopyController($content = "Copy") {
     return $this->syntaxHighlighter->setDefaultContentCopyController($content);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSource($source, $lang) {
     $this->syntaxHighlighter->setSource($source, $lang);
     $this->result->clear()->append($source);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function useDefaultContentCopyController($use = true) {
     $this->syntaxHighlighter->useDefaultContentCopyController($use);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return  $this->blockGrid->getHtml();
   }

@@ -42,39 +42,24 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     $this->ref = new ReflectionClass($class);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->ref);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->ref = new ReflectionClass($this->ref->getName());
     parent::__clone();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __toString() {
     return "" . $this->getLink();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     return parent::hyperlink($relativeUrl, str_replace("\\", "\\<wbr>", $content), $title);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getLink($name = null) {
     if (Strings::isEmpty($name)) {
       $name = $this->ref->getShortName();
@@ -91,9 +76,6 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     return $this->hyperlink($this->getClassPath(), $name, $title);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function method($method, $full = true) {
     $this->ref->getMethod($method);
     $reflectedMethod = $this->ref->getMethod($method);
@@ -116,18 +98,12 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     return $this->hyperlink($this->getMethodPath($method), $text, $title);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function constant($constName) {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
     return $this->hyperlink($this->getConstantPath($constName), $name, $title);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function namespaceLink($full = true) {
     $name = $this->ref->getNamespaceName();
     $title = "$name namespace";

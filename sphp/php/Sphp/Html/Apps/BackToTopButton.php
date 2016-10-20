@@ -29,9 +29,6 @@ class BackToTopButton extends AbstractComponent {
     $this->setTitle('Back to top');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return (new Img('sphp/pics/back-to-top.png', 'Back to top'))->getHtml();
   }

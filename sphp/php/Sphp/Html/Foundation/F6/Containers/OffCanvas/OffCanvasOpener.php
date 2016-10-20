@@ -52,9 +52,6 @@ class OffCanvasOpener extends \Sphp\Html\AbstractComponent {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->span;
   }

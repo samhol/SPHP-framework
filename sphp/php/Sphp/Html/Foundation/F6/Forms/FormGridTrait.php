@@ -63,16 +63,10 @@ trait FormGridTrait {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInnerContainer()->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }

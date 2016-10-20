@@ -10,7 +10,6 @@ namespace Sphp\Html\Lists;
 /**
  * Class models an unordered HTML-list &lt;ul&gt; tag
  *
- *
  * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>

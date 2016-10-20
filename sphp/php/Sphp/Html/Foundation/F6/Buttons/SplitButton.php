@@ -56,9 +56,6 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
     $this->secondary = $secondary;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->primary, $this->secondary);
     parent::__destruct();
@@ -82,9 +79,6 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
     return $this->secondary;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->primary . $this->secondary;
   }

@@ -19,39 +19,24 @@ class PHPManualClassLinker extends AbstractClassLinker {
 
   use PHPManualTrait;
 
-  /**
-   * {@inheritdoc}
-   */
   public function __construct($root, $class, $target = '_blank') {
     parent::__construct($root, $class, $target);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getClassPath() {
     return "class." . $this->phpPathFixer($this->ref->getName()) . '.php';
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getMethodPath($method) {
     return $this->phpPathFixer($this->ref->getName()) . ".$method.php";
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getConstantPath($constant) {
     $className = $this->ref->getName();
     $constantName = $this->phpPathFixer($constant);
     return $this->getClassPath() . "#$className.constants.$constantName";
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getNamespacePath() {
     $ns = $this->ref->getNamespaceName();
     $path = str_replace('\\', '.', $ns);

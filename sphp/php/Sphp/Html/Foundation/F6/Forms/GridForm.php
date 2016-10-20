@@ -75,17 +75,11 @@ class GridForm extends AbstractContainerComponent implements GridInterface, Trav
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function validation($validate = true) {
     $this->attrs()->set('novalidate', $validate)->set('data-abide', $validate);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->errorLabel . parent::contentToString();
   }

@@ -104,9 +104,6 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->progressMeter->getHtml();
   }

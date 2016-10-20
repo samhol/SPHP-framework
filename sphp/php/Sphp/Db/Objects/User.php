@@ -272,9 +272,6 @@ class User extends AbstractDbObject {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function fromArray(array $data = []) {
     $myinputs = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS, true);
     $this->setPrimaryKey($myinputs["id"])
@@ -289,24 +286,15 @@ class User extends AbstractDbObject {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getPrimaryKey() {
     return $this->id;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPrimaryKey($id) {
     $this->id = $id;
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function equals($object) {
     $class = self::class;
     $result = false;
@@ -316,9 +304,6 @@ class User extends AbstractDbObject {
     return $result;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function existsIn(EntityManagerInterface $em) {
     $isManaged = $this->isManagedBy($em);
     if (!$isManaged) {

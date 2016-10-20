@@ -26,76 +26,46 @@ trait TextualInputWrapperTrait {
    */
   abstract public function getInput();
 
-  /**
-   * {@inheritdoc}
-   */
   public function autocomplete($allow = true) {
     $this->getInput()->autoComplete($allow);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMaxlength() {
     return $this->getInput()->getMaxlength();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSize() {
     return $this->getInput()->getSize();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValidationPattern() {
     return $this->getInput()->getValidationPattern();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hasValidationPattern() {
     return $this->getInput()->hasValidationPattern();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setMaxlength($maxlength) {
     $this->getInput()->setMaxlength($maxlength);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPlaceholder($placeholder) {
     $this->getInput()->setPlaceholder($placeholder);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSize($size) {
     $this->getInput()->setSize($size);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getPattern() {
     return $this->getInput()->getPattern();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hasPattern() {
     return $this->getInput()->hasPattern();
   }
@@ -108,17 +78,11 @@ trait TextualInputWrapperTrait {
     return $this->getInput()->isRequired();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPattern($pattern) {
     $this->getInput()->setPattern($pattern);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRequired($required = true) {
     $this->getInput()->setRequired($required);
     return $this;

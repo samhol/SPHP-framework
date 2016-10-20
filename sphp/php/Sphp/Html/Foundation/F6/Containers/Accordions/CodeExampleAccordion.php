@@ -77,9 +77,6 @@ class CodeExampleAccordion extends Accordion {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->codePane, $this->outputSyntaxPane, $this->outputPane);
     parent::__destruct();

@@ -27,8 +27,5 @@ interface TabInterface extends ContentInterface {
    */
   public function getTabButton();
 
-  /**
-   * {@inheritdoc}
-   */
   public function setActive($visibility = true);
 }

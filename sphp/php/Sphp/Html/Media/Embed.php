@@ -17,7 +17,6 @@ use Sphp\Html\EmptyTag;
  *
  * {@inheritdoc}
  *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-15
  * @link    http://www.w3schools.com/tags/tag_embed.asp w3schools API link

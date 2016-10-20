@@ -77,16 +77,10 @@ abstract class AbstractLinker implements LinkerInterface {
     $this->apiRoot = clone $this->apiRoot;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __toString() {
     return "" . $this->getHyperlink();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getApiRoot() {
     return $this->apiRoot;
   }
@@ -142,9 +136,6 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     if (Strings::isEmpty($content)) {
       $content = $relativeUrl;

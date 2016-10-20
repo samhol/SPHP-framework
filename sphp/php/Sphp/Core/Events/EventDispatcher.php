@@ -84,10 +84,7 @@ class EventDispatcher implements EventDispatcherInterface {
       return $event;
     }
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function addListener($event, $listener, $priority = 0, $passParams = false) {
     if (is_array($event)) {
       foreach ($event as $event) {
@@ -108,9 +105,6 @@ class EventDispatcher implements EventDispatcherInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function remove($listener, $events = null) {
     if ($events === null) {
       foreach ($this->listeners as $event => $l) {
@@ -131,10 +125,7 @@ class EventDispatcher implements EventDispatcherInterface {
     }
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function trigger(EventInterface $event) {
     $key = $event->getName();
     if (array_key_exists($key, $this->listeners)) {
@@ -148,18 +139,12 @@ class EventDispatcher implements EventDispatcherInterface {
     }
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function hasListeners($e) {
     $key = $this->getEventName($e);
     return array_key_exists($key, $this->listeners);
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function getListeners($event) {
     $key = $this->getEventName($event);
     if (array_key_exists($key, $this->listeners)) {

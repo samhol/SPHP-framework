@@ -91,17 +91,11 @@ class Orbit extends AbstractComponent implements ContentParserInterface, Travers
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->slides, $this->bullets, $this->prev, $this->next);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->slides = clone $this->slides;
     $this->bullets = clone $this->bullets;
@@ -371,16 +365,10 @@ class Orbit extends AbstractComponent implements ContentParserInterface, Travers
     return $this->slides()->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->slides()->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->prev . $this->next . $this->slides . $this->bullets;
   }

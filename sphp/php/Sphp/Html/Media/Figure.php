@@ -53,17 +53,11 @@ class Figure extends AbstractComponent implements ImgInterface {
     $this->caption = $caption;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     parent::__destruct();
     unset($this->img, $this->caption);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->img = clone $this->img;
     $this->caption = clone $this->caption;
@@ -109,107 +103,65 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->caption;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getAlt() {
     return $this->img->getAlt();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHeight() {
     return $this->img->getHeight();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSize() {
     return $this->img->getSize();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSrc() {
     return $this->img->getSrc();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getWidth() {
     return $this->img->getWidth();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setAlt($alt) {
     $this->img->setAlt($alt);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setHeight($height) {
     $this->img->setHeight($height);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSize(Size $size) {
     $this->img->setSize($size);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSrc($src) {
     $this->img->setSrc($src);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setWidth($width) {
     $this->img->setWidth($width);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function useMap($map) {
     $this->img->useMap($map);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setLazy($lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isLazy() {
     return $this->img->isLazy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->img . $this->caption;
   }

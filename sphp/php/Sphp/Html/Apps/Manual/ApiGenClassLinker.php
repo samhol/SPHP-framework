@@ -45,31 +45,19 @@ class ApiGenClassLinker extends AbstractClassLinker {
     return $bcs;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getClassPath() {
     $path = str_replace('\\', '.', $this->ref->getName());
     return "class-$path.html";
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getMethodPath($method) {
     return $this->getClassPath() . '#_' . $method;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getConstantPath($constant) {
     return $this->getClassPath() . '#_' . $constant;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function getNamespacePath() {
     $ns = $this->ref->getNamespaceName();
     $path = str_replace('\\', '.', $ns);

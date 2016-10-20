@@ -10,9 +10,7 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Class models an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
@@ -49,47 +47,29 @@ class TextualInput extends InputTag implements TextualInputInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSize() {
     return $this->attrs()->get('size');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSize($size) {
     $this->attrs()->set('size', $size);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMaxlength() {
     return $this->attrs()->get('maxlength');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setMaxlength($maxlength) {
     $this->attrs()->set('maxlength', $maxlength);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPlaceholder($placeholder) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function autocomplete($allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;

@@ -17,9 +17,7 @@ use Sphp\Html\Attributes\AttributeException;
  *
  * This models an actual HTML component and supports HTML attribute manipulation.
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-12

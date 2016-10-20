@@ -57,17 +57,11 @@ class Carousel extends AbstractContainerTag implements AjaxLoaderInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function ajaxAppend($url) {
     $this->getInnerContainer()->ajaxAppend($url);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function ajaxPrepend($url) {
     $this->getInnerContainer()->ajaxPrepend($url);
     return $this;
@@ -100,9 +94,6 @@ class Carousel extends AbstractContainerTag implements AjaxLoaderInterface {
     return $this->attrs()->exists("data-closable");
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $output = parent::contentToString();
     if ($this->isClosable()) {

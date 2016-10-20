@@ -51,48 +51,30 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->contentToString();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $this->replaceContent($value);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function wrap($wrapType) {
     $this->attrs()->set('wrap', $wrapType);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRows($rows) {
     $this->attrs()->set('rows', $rows);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setCols($cols) {
     $this->attrs()->set('cols', $cols);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPlaceholder($placeholder) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;

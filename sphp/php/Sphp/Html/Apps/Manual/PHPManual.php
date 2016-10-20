@@ -40,9 +40,6 @@ class PHPManual extends AbstractPhpApiLinker {
     parent::__construct('https://secure.php.net/manual/en/', $defaultTarget, $defaultCssClasses);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function classLinker($class) {
     return new PHPManualClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }

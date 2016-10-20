@@ -117,18 +117,12 @@ class BreadCrumbs extends AbstractContainerComponent implements TraversableInter
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInnerContainer()
                     ->getComponentsByObjectType(BreadCrumb::class)
                     ->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInnerContainer()->count();
   }

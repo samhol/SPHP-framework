@@ -454,16 +454,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return in_array($attrName, $this->identifiers);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hasId($identityName = 'id') {
     return $this->isIdentifier($identityName) && $this->exists($identityName);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
     if (!$this->isLocked($identityName)) {
       $value = $prefix . Strings::random($length);

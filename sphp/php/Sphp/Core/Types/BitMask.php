@@ -181,16 +181,10 @@ class BitMask implements ScalarObjectInterface, Arrayable {
     return decbin($this->value);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toArray() {
     return static::toBitArray($this->value);
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function toScalar() {
     return $this->value;
   }

@@ -198,10 +198,7 @@ class Configuration implements Arrayable {
   public function phpConfiguration() {
     return $this->phpConf;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function toArray() {
     $arr = [];
     $arr[$this->domain]['vars'] = Arrays::copy($this->data);

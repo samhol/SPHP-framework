@@ -20,9 +20,6 @@ namespace Sphp\Core\Filters;
  */
 class Ordinalizer extends AbstractFilter {
 
-  /**
-   * {@inheritdoc}
-   */
   public function filter($variable) {
     if (is_numeric($variable)) {
       $suff = 'th';

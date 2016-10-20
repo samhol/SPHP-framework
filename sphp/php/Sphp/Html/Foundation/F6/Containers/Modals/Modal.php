@@ -117,9 +117,6 @@ class Modal extends ContainerTag {
     return $this->closeButton;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->modalController . parent::getHtml();
   }
@@ -141,9 +138,6 @@ class Modal extends ContainerTag {
     return $controller;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return parent::contentToString() . $this->closeButton();
   }

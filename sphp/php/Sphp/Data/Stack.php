@@ -19,9 +19,6 @@ use SplStack;
  */
 class Stack extends SplStack implements StackInterface {
 
-  /**
-   * {@inheritdoc}
-   */
   public function peek() {
     return $this->top();
   }

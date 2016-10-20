@@ -16,9 +16,7 @@ use Sphp\Html\ComponentInterface;
  * 
  * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}
  *
- *
  * {@inheritdoc}
- *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-24
@@ -47,48 +45,26 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     return $this->getPane()->getSyntaxHighlighter();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSource($source, $lang) {
     $this->getHighlighter()->setSource($source, $lang);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function loadFromFile($filename) {
     $this->getHighlighter()->loadFromFile($filename);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function __clone() {
-    parent::__clone();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function attachContentCopyController(ComponentInterface $button = null) {
     $this->hl->attachContentCopyController($button);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setDefaultContentCopyController($content = 'Copy') {
     $this->hl->setDefaultContentCopyController($content);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function useDefaultContentCopyController($use = true) {
     $this->hl->useDefaultContentCopyController($use);
     return $this;

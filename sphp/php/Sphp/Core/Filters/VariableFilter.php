@@ -45,10 +45,7 @@ class VariableFilter extends AbstractFilter {
     $this->filter = $filter;
     $this->options = $options;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function filter($variable) {
     return filter_var($variable, $this->filter, $this->options);
   }

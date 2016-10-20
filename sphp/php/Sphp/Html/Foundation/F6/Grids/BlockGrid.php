@@ -208,16 +208,10 @@ class BlockGrid extends AbstractContainerComponent implements ContentParserInter
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInnerContainer()->count();
   }

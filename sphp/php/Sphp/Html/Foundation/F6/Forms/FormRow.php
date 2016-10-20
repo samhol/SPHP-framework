@@ -27,9 +27,6 @@ use Sphp\Html\Foundation\F6\Grids\ColumnInterface;
  */
 class FormRow extends AbstractRow {
 
-  /**
-   * {@inheritdoc}
-   */
   public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {

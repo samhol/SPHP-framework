@@ -51,17 +51,11 @@ abstract class AbstractContainerComponent extends AbstractComponent {
     $this->setInnerContainer($contentContainer);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->content);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->content = clone $this->content;
     parent::__clone();
@@ -92,9 +86,6 @@ abstract class AbstractContainerComponent extends AbstractComponent {
     return $this->content;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->content->getHtml();
   }

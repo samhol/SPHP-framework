@@ -20,9 +20,6 @@ use Sphp\Core\Types\Strings;
  */
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
-  /**
-   * {@inheritdoc}
-   */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     if (Strings::isEmpty($content)) {
       $content = $relativeUrl;

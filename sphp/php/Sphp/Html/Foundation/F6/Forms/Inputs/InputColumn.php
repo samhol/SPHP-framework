@@ -169,61 +169,37 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return $this->input->isEnabled();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->input->getName();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->input->setName($name);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->input->isNamed();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->input->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $this->input->setValue($value);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->label->getHtml() . $this->helper;
   }

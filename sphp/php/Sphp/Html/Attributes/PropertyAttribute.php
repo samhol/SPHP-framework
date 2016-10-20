@@ -54,9 +54,6 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     $this->form = $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->props, $this->lockedProps);
     parent::__destruct();
@@ -183,9 +180,6 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     $locked = array_flip($this->lockedProps);
     $this->props = array_intersect_key($this->props, $locked);

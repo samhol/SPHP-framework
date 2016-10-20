@@ -13,7 +13,8 @@ use Sphp\Objects\DbObjectInterface as DbObjectInterface;
  * An implementation of an SQL UPDATE statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-04-02
+ * @since   2013-04-02
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -85,9 +86,6 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function statementToString() {
     $k = array_keys($this->newData);
     $a = implode(" = ?, ", $k);
@@ -102,16 +100,10 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
     return $query;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getParams() {
     return array_merge(array_values($this->newData), parent::getParams());
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function affectRows() {
     return $this->execute()->rowCount();
   }

@@ -40,17 +40,11 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function append($value) {
     parent::append($value);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function prepend($value) {
     $array = (array) $this;
     array_unshift($array, $value);
@@ -58,9 +52,6 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     $this->exchangeArray(array());
     return $this;
@@ -120,9 +111,6 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toArray() {
     return (array) $this;
   }

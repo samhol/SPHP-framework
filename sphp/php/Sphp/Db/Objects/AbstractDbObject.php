@@ -20,24 +20,15 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 abstract class AbstractDbObject extends AbstractArrayableObject implements DbObjectInterface {
 
-  /**
-   * {@inheritdoc}
-   */
   public function existsIn(EntityManagerInterface $em) {
     echo "\n\nAbstractDbObject\n\n";
     return $em->contains($this);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isManagedBy(EntityManagerInterface $em) {
     return $em->contains($this);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function replaceIn(EntityManagerInterface $em) {
     if (!$this->existsIn($em)) {
       $em->persist($this);
@@ -46,9 +37,6 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
     return $this->isManagedBy($em);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function insertInto(EntityManagerInterface $em) {
     if (!$this->existsIn($em)) {
       $em->persist($this);
@@ -57,9 +45,6 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
     return $this->isManagedBy($em);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function deleteFrom(EntityManagerInterface $em) {
     if ($em->contains($this)) {
       $em->detach($this);

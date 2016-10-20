@@ -707,16 +707,10 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
     return clone $url;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toArray() {
     return $this->getIterator()->getArrayCopy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toScalar() {
     return $this->getRaw();
   }

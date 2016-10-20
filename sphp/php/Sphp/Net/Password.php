@@ -54,16 +54,10 @@ class Password implements ScalarObjectInterface {
     return Passwords::checkPassword($cryptedPassword, $this->password);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __toString() {
     return $this->password;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function equals($object) {
     if ($object instanceof HashedPassword) {
       return $this->validateHash($object);
@@ -72,9 +66,6 @@ class Password implements ScalarObjectInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toScalar() {
     return $this->__toString();
   }

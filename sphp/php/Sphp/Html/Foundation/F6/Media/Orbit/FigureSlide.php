@@ -63,17 +63,11 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
             ->lock('orbit-caption');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->img, $this->caption);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->img = clone $this->img;
     $this->caption = clone $this->caption;
@@ -98,9 +92,6 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
     return $this->caption;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->img . $this->caption;
   }

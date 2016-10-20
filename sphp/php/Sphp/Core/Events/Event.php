@@ -90,39 +90,24 @@ class Event implements EventInterface {
 		$this->name = $name;
 		return $this;
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+  
 	public function getName() {
 		return $this->name;
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+  
 	public function setSubject($subject) {
 		$this->subject = $subject;
 		return $this;
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+  
 	public function getSubject() {
 		return $this->subject;
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+  
 	public function stopPropagation() {
 		$this->stopped = true;
 	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+  
 	public function isStopped() {
 		return $this->stopped;
 	}

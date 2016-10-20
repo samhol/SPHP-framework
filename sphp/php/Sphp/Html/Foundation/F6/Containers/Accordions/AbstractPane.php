@@ -63,17 +63,11 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     return $this->bar;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPaneTitle($title) {
     $this->bar->replaceContent($title);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentVisible($visibility = true) {
     if ($visibility) {
       $this->addCssClass('is-active');
@@ -83,9 +77,6 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     return $this;
   }
   
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->bar->getHtml() . $this->getInnerContainer()->getHtml();
   }

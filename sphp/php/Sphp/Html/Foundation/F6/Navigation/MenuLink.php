@@ -44,9 +44,6 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
     parent::__construct($href, $content, $target);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setHref($href, $encode = true) {
    // echo "$href";
     $url = new URL($href);

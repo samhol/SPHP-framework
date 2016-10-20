@@ -92,9 +92,6 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
     return $this->attrs()->get('src');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     $attrs = '' . $this->attrs();
     if ($attrs != '') {

@@ -54,68 +54,41 @@ class SelectMenuColumn extends InputColumn implements SelectMenuInterface {
     return parent::getInput();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSize($size) {
     $this->getInput()->setSize($size);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isRequired() {
     return $this->getInput()->isRequired();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRequired($required = true) {
     $this->getInput()->setRequired($required);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInput()->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInput()->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getOptions() {
     return $this->getInput()->getOptions();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSelectedOptions() {
     return $this->getInput()->getSelectedOptions();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function selectMultiple($multiple = true) {
     $this->getInput()->selectMultiple($multiple);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setSelectedValues($selectedValues) {
     $this->getInput()->setSelectedValues($selectedValues);
     return $this;

@@ -244,23 +244,14 @@ class MetaContainer implements TraversableInterface {
     return $this->setNamedContent('viewport', $viewport);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->metaTags->getHtml();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->metaTags->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     $this->metaTags->count();
   }

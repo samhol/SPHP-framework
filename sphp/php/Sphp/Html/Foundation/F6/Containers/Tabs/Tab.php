@@ -51,9 +51,6 @@ class Tab extends AbstractContainerTag implements TabInterface {
     return $this->tabButton;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setActive($visibility = true) {
     if ($visibility) {
       $this->addCssClass('is-active');

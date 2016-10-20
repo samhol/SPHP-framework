@@ -105,16 +105,10 @@ class Optgroup extends AbstractContainerComponent implements SelectMenuContentIn
     return !$this->attrs()->exists('disabled');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function count() {
     return $this->getInnerContainer()->count();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }

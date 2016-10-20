@@ -268,9 +268,6 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function statementToString() {
     $query = "SELECT " . $this->columns . " FROM " . $this->from;
     if ($this->where()->hasConditions()) {
@@ -291,9 +288,6 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return $query;
   }
 
-	/**
-   * {@inheritdoc}
-	 */
   public function getParams() {
     return $this->where()->getParams();
   }

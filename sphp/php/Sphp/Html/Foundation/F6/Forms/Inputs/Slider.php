@@ -28,11 +28,13 @@ class Slider extends AbstractSlider {
    * @var Span
    */
   private $handle;
+
   /**
    *
    * @var HiddenInput
    */
   private $input;
+
   /**
    * Constructs a new instance
    *
@@ -50,12 +52,12 @@ class Slider extends AbstractSlider {
             ->lock('role', 'slider')
             ->lock('tabindex', 1);
     //$this->content()["slider"] = $this->handle;
-   // $filler = new Span();
+    // $filler = new Span();
     //$filler->cssClasses()
-      //      ->lock("slider-fill");
+    //      ->lock("slider-fill");
     //$filler->attrs()
-      //      ->demand("data-slider-fill");
-   // $this->content()["slider-fill"] = $filler;
+    //      ->demand("data-slider-fill");
+    // $this->content()["slider-fill"] = $filler;
     $this->input = new HiddenInput();
     //$this->content()["input"] = $input;
     $this->setStepLength($step)->setValue($value);
@@ -133,33 +135,21 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($enabled = true) {
     parent::disable($disabled);
     $this->getInput()->disable($enabled);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->getInput()->getName();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->getInput()->setName($name);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->getInput()->isNamed();
   }
@@ -182,16 +172,10 @@ class Slider extends AbstractSlider {
     return $this->attrs()->get("data-end");
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->getInput()->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     if ($this->getMin() > $value || $this->getMax() < $value) {
       throw new \InvalidArgumentException("value: '$value' is not in valid range ({$this->getMin()}-{$this->getMax()})");

@@ -43,9 +43,6 @@ class SyntaxhighlightingColumn extends AbstractComponent implements ColumnInterf
     $this->syntaxHighlighter = new SyntaxHighlighter();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->syntaxHighlighter);
     parent::__destruct();
@@ -59,9 +56,6 @@ class SyntaxhighlightingColumn extends AbstractComponent implements ColumnInterf
     return $this->syntaxHighlighter;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->syntaxHighlighter->getHtml();
   }

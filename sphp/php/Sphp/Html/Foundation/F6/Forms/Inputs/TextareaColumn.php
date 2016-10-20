@@ -47,70 +47,43 @@ class TextareaColumn extends InputColumn implements TextareaInterface {
     return parent::getInput();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function autocomplete($allow = true) {
     $this->getInput()->autoComplete($allow);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMaxlength() {
     return $this->getInput()->getMaxlength();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSize() {
     return $this->getInput()->getSize();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRows($maxlength) {
     $this->getInput()->setRows($maxlength);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPlaceholder($placeholder) {
     $this->getInput()->setPlaceholder($placeholder);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isRequired() {
     return $this->getInput()->isRequired();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setRequired($required = true) {
     $this->getInput()->setRequired($required);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setCols($cols) {
     $this->getInput()->setCols($cols);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function wrap($wrapType) {
     $this->getInput()->wrap($wrapType);
     return $this;

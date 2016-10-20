@@ -174,10 +174,7 @@ class OffCanvas extends AbstractComponent {
   public function mainContent() {
     return $this->offCanvasContent;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function contentToString() {
     return $this->innerWrapper->getHtml();
   }

@@ -87,9 +87,6 @@ abstract class AbstractTag implements TagInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getTagName() {
     return $this->tagName;
   }
@@ -109,9 +106,6 @@ abstract class AbstractTag implements TagInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function attrs() {
     return $this->attrs;
   }

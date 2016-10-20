@@ -10,9 +10,7 @@ namespace Sphp\Html\Forms\Buttons;
 /**
  * Class Models an HTML &lt;input type="reset"&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since  2012-08-22

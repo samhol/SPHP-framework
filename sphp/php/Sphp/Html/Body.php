@@ -51,17 +51,11 @@ class Body extends ContainerTag implements ContentParserInterface {
     $this->scripts = new ScriptsContainer();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->scripts);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     parent::__clone();
     $this->scripts = clone $this->scripts;

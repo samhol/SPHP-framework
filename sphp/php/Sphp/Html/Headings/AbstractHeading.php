@@ -25,9 +25,6 @@ use Sphp\Html\ContainerTag;
  */
 abstract class AbstractHeading extends ContainerTag implements HeadingInterface {
 
-	/**
-	 * {@inheritdoc}
-	 */
 	public function getLevel() {
 		return substr($this->getTagName(), 1);
 	}

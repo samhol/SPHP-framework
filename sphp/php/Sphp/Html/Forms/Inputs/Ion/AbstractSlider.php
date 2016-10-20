@@ -43,9 +43,6 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
             ->setValue($value);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     $this->attrs()->set('data-disable', (bool) $disabled);
     return $this;
@@ -149,16 +146,10 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMax() {
     return $this->attrs()->get('data-max');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getMin() {
     return $this->attrs()->get('data-min');
   }

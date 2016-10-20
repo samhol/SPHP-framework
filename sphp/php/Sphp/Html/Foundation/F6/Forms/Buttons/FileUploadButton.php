@@ -59,89 +59,53 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     $this->label->cssClasses()->lock('button');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->label . $this->fileInput;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function attrs() {
     return $this->label->attrs();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->fileInput->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $this->fileInput->setValue($value);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function cssClasses() {
     return $this->label->cssClasses();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     $this->fileInput->disable($disabled);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->fileInput->getName();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return $this->fileInput->isEnabled();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->fileInput->isNamed();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->fileInput->setName($name);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hasId($identityName = "id") {
     return $this->fileInput->hasId($identityName);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function identify($identityName = "id", $prefix = "id", $length = 16) {
     $this->fileInput->identify($identityName, $prefix, $length );
     return $this;

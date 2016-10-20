@@ -53,16 +53,10 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getErrors() {
     return $this->errors;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isValid() {
     return $this->errors->count() == 0;
   }

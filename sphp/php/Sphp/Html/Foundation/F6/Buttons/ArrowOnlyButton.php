@@ -45,9 +45,6 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
     $this->setScreenReaderLabel($screenReaderLabel);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setScreenReaderLabel($label) {
     if ($label instanceof ScreenReaderLabel) {
       $this->screenReaderLabel = $label;
@@ -57,16 +54,10 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getScreeReaderLabel() {
     return $this->screenReaderLabel;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->screenReaderLabel->getHtml();
   }

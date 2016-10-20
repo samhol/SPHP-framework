@@ -297,16 +297,10 @@ trait IdentifiableComponentTrait {
     return $this->attrs()->exists($name);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function identify($identityName = "id", $prefix = "id_", $length = 16) {
      return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function hasId($identityName = "id") {
     return $this->attrs()->hasId($identityName);
   }

@@ -139,9 +139,6 @@ class Address extends AbstractDbObject {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function fromArray(array $data = []) {
     $myinputs = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS, true);
     return $this->setStreet($myinputs["street"])
@@ -151,18 +148,6 @@ class Address extends AbstractDbObject {
   }
 
   /**
-   * {@inheritdoc}
-   *
-    public function toArray() {
-    return [
-    "street" => $this->getStreet(),
-    "zipcode" => $this->getZipcode(),
-    "city" => $this->getCity(),
-    "country" => $this->getCountry(),
-    ];
-    }
-
-    /**
    * Returns the string representation of the object
    *
    * @return string the string representation of the object
@@ -175,24 +160,15 @@ class Address extends AbstractDbObject {
     return $address;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getPrimaryKey() {
     return $this->id;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPrimaryKey($id) {
     $this->id = $id;
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function insertInto(EntityManagerInterface $em) {
     $em->persist($this);
     $em->flush();

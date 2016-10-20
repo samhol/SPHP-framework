@@ -59,17 +59,11 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
     $this->iframe = $media;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->iframe);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->iframe = clone $this->iframe;
     parent::__clone();
@@ -118,9 +112,6 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
     return $this->iframe;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setWidescreen($widescreen = true) {
     if ($widescreen) {
       $this->cssClasses()->add('widescreen');
@@ -130,24 +121,15 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isLazy() {
     return $this->getIframe()->isLazy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setLazy($lazy = true) {
     $this->getIframe()->setLazy($lazy);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->iframe->getHtml();
   }

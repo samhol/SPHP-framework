@@ -21,9 +21,6 @@ use Sphp\Html\Div;
  */
 class BlockGridColumn extends Div implements BlockGridColumnInterface {
 
-  /**
-   * {@inheritdoc}
-   */
   public function __construct($content = null) {
     parent::__construct($content);
     $this->cssClasses()->lock('column');

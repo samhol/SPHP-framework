@@ -28,53 +28,32 @@ trait InputWrapperTrait {
    */
   abstract public function getInput();
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     $this->getInput()->disable($disabled);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return $this->getInput()->isEnabled();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->getInput()->getName();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->getInput()->setName($name);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->getInput()->isNamed();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->getInput()->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $this->getInput()->setValue($value);
     return $this;

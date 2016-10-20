@@ -55,9 +55,6 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
     $this->addCssClass('syntax-pane');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->hl);
     parent::__destruct();

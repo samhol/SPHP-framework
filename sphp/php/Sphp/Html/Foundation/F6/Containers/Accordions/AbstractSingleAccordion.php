@@ -75,9 +75,6 @@ class AbstractSingleAccordion extends AbstractComponent {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->pane->getHtml();
   }

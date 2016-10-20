@@ -35,9 +35,6 @@ class TabController extends AbstractContainerTag implements TabControllerInterfa
     $this->cssClasses()->lock('tabs-title');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setActive($active = true) {
     if ($active) {
       $this->addCssClass('is-active');

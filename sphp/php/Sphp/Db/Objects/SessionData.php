@@ -51,16 +51,10 @@ class SessionData extends AbstractDbObject {
    */
   private $permissions;
 
-  /**
-   * {@inheritdoc}
-   */
   public function getPrimaryKey() {
     return $this->id;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setPrimaryKey($id) {
     $this->id = $id;
     return $this;

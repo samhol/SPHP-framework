@@ -19,9 +19,6 @@ use Sphp\Html\Forms\Inputs\Checkbox;
  */
 class Checkboxes extends Choiceboxes {
 
-  /**
-   * {@inheritdoc}
-   */
   public function setOption($value, $label, $checked = false) {
     $input = new Checkbox($this->getName() . '[]', $value, $checked);
     $this->setInput($input, $label);

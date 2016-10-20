@@ -19,9 +19,6 @@ use Sphp\Html\Forms\Inputs\Radiobox;
  */
 class Radioboxes extends Choiceboxes {
 
-  /**
-   * {@inheritdoc}
-   */
   public function setOption($value, $label, $checked = false) {
     $input = new Radiobox($this->getName(), $value, $checked);
     $this->setInput($input, $label);

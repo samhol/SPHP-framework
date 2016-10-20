@@ -67,17 +67,11 @@ class Container implements ContainerInterface, ContentParserInterface {
     $this->components = Arrays::copy($this->components);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function append($content) {
     $this->components[] = $content;
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function prepend($content) {
     array_unshift($this->components, $content);
     return $this;
@@ -155,9 +149,6 @@ class Container implements ContainerInterface, ContentParserInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toArray() {
     return $this->components;
   }
@@ -172,24 +163,15 @@ class Container implements ContainerInterface, ContentParserInterface {
     return $this->clear()->append($content);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     $this->components = [];
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return Arrays::implode($this->components);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function exists($value) {
     $result = false;
     foreach ($this->components as $component) {

@@ -32,9 +32,6 @@ class EmptyTag extends AbstractTag {
     $this->setAttrs($attrs);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     $attrs = '' . $this->attrs();
     if ($attrs !== '') {

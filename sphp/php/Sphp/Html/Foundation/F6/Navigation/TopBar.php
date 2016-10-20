@@ -152,9 +152,6 @@ class TopBar extends AbstractComponent {
     return $this->rightArea['menu'];
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->titleArea = clone $this->titleArea;
     $this->leftArea = clone $this->leftArea;
@@ -162,9 +159,6 @@ class TopBar extends AbstractComponent {
     parent::__clone();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->titleArea . $this->leftArea . $this->rightArea;
   }

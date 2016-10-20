@@ -104,9 +104,6 @@ trait ContainerComponentTrait {
     return $this->getInnerContainer()->getIterator();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function offsetExists($offset) {
     return $this->getInnerContainer()->offsetExists($offset);
   }
@@ -165,24 +162,15 @@ trait ContainerComponentTrait {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function toArray() {
     return $this->getInnerContainer()->toArray();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     $this->getInnerContainer()->clear();
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function exists($value) {
     $this->getInnerContainer()->exists($value);
   }

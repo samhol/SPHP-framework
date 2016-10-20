@@ -46,17 +46,11 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
     $this->flex = $flex;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->flex);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->flex = clone $this->flex;
     parent::__clone();
@@ -82,16 +76,10 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isLazy() {
     return $this->getFlex()->isLazy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setLazy($lazy = true) {
     $this->getFlex()->setLazy($lazy);
     return $this;
@@ -128,9 +116,6 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
     return new static(Flex::dailymotion($videoId));
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->flex->getHtml();
   }

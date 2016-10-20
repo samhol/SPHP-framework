@@ -74,9 +74,6 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
             ->lock("switch-paddle");
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setScreenReaderLabel($label) {
     if ($label instanceof ScreenReaderLabel) {
       $this->screenReaderLabel = $label;
@@ -86,9 +83,6 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getScreeReaderLabel() {
     if (!($this->screenReaderLabel instanceof ScreenReaderLabel)) {
       $this->screenReaderLabel = new ScreenReaderLabel();
@@ -149,53 +143,32 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function disable($disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isEnabled() {
     return $this->input->isEnabled();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getName() {
     return $this->input->getName();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setName($name) {
     $this->input->setName($name);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isNamed() {
     return $this->input->isNamed();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getValue() {
     return $this->input->getValue();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setValue($value) {
     $this->input->setValue($value);
     return $this;
@@ -221,17 +194,11 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this->input->isRequired();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function createLabel($label = null) {
     $this->input->createLabel($label);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     return $this->input . $this->paddle;
   }

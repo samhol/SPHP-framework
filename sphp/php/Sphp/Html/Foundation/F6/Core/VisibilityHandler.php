@@ -51,9 +51,6 @@ class VisibilityHandler implements ContentInterface, VisibilityHandlingInterface
     return $this->htmlComponent->attrs()->classes();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return $this->htmlComponent->getHtml();
   }

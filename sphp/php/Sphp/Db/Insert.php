@@ -14,7 +14,8 @@ use Sphp\Objects\DbObjectInterface as DbObjectInterface;
  * An implementation of an SQL INSERT statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-04-02
+ * @since   2013-04-02
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -135,9 +136,6 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function statementToString() {
     $query = "INSERT INTO " . $this->table;
     if (count($this->columns) > 0) {
@@ -148,16 +146,10 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     return $query;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getParams() {
     return array_values($this->values);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function affectRows() {
     try {
       return $this->execute()->rowCount();

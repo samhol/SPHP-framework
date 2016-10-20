@@ -65,17 +65,11 @@ class SingleAccordion extends AbstractContainerTag {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function ajaxAppend($url) {
     $this->getPane()->ajaxAppend($url);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function ajaxPrepend($url) {
     $this->getPane()->ajaxPrepend($url);
     return $this;

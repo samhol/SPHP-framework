@@ -107,9 +107,6 @@ class Bullet extends AbstractComponent {
     return $this->number;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString() {
     $content = $this->srDescriptor;
     if ($this->isActive()) {
