@@ -2,7 +2,7 @@
 
 namespace Sphp\Data;
 
-class CollectionTest extends \PHPUnit_Framework_TestCase {
+class StackTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * 

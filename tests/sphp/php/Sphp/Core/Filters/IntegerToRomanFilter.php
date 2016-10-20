@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Util\Filters;
+namespace Sphp\Core\Filters;
 
 class IntegerToRomanFilterTest extends \PHPUnit_Framework_TestCase {
 
