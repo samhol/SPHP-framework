@@ -343,7 +343,7 @@ left: rem-calc(35)
           }
         }
       }
-      p, ul, ol {
+      > p, > ul, > ol {
         margin: rem-calc(5 50);
         text-align: justify;
       }
@@ -354,7 +354,7 @@ left: rem-calc(35)
         margin-top: rem-calc(10s);
       }
       .example-area {
-        margin: rem-calc(15);
+        margin: rem-calc(5 45);
       }
     }
   }
