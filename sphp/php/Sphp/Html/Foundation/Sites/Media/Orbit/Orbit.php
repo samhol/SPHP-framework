@@ -28,7 +28,8 @@ use Sphp\Html\Foundation\Sites\Media\Flex;
  */
 class Orbit extends AbstractComponent implements ContentParserInterface, TraversableInterface {
 
-  use TraversableTrait, \Sphp\Html\ContentParsingTrait;
+  use TraversableTrait,
+      \Sphp\Html\ContentParsingTrait;
 
   /**
    *
@@ -256,7 +257,6 @@ class Orbit extends AbstractComponent implements ContentParserInterface, Travers
             ->setAnimOutFromRight($effect);
     return $this;
   }
-
 
   /**
    * Sets the slide of given index active

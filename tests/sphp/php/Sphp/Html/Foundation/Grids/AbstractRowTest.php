@@ -53,6 +53,7 @@ class AbstractRowTest extends \PHPUnit_Framework_TestCase {
       $this->assertTrue($col instanceof ColumnInterface);
       $this->assertEquals($col->getWidth("small"), 12 / $numCols);
     }
+    $this->checkTypes($row);
   }
 
   /**
@@ -74,73 +75,32 @@ class AbstractRowTest extends \PHPUnit_Framework_TestCase {
       echo $col->cssClasses();
       $this->assertEquals($col->getWidth("small"), 12);
     }
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function aoffsetSettingData() {
-    return [
-        ["small", 2, 8],
-        ["medium", 2, 8],
-        ["large", 2, 8],
-        ["xlarge", 2, 8],
-        ["xxlarge", 2, 8],
-    ];
+    $this->checkTypes($this->row);
   }
 
   /**
    *
-   * @param string $type
-   * @param int|boolean $size
-   * @param int|boolean $offset
-   * @dataProvider offsetSettingData
+   * @param mixed[] $data
+   * @dataProvider arrayData
    */
-  public function atestsetGridOffset($type, $size, $offset) {
-    $this->row->setGridOffset($offset, $type);
-    $this->assertSame($this->row->getGridOffset($type), $offset);
-    $this->row->setWidth($size, $type);
-    $this->assertSame($this->row->getWidth($type), $size);
-    $this->assertSame($this->row->countUsedSpace($type), $size + $offset);
-    if ($type !== "small") {
-      $this->row->setWidthInherited($type);
+  public function testPrepend($data) {
+    $numCols = count($data);
+    foreach ($data as $v) {
+      $this->row->prepend($v);
+      $this->assertSame($this->row[0][0], $v);
     }
-    $this->assertSame($this->row->getWidth($type), $this->row->getWidth("small"));
-    $this->assertSame($this->row->countUsedSpace($type), $this->row->getWidth("small") + $offset);
+    $this->assertCount($numCols, $this->row);
+    $this->checkTypes($this->row);
   }
 
   /**
    * 
-   * @return string[]
+   * @param RowInterface $row
    */
-  public function sizeNames() {
-    return [
-        ["small"],
-        ["medium"],
-        ["large"],
-        ["xlarge"],
-        ["xxlarge"],
-    ];
-  }
-
-  /**
-   *
-   * @param string $type
-   * @param int|boolean $size
-   * @param int|boolean $offset
-   * @dataProvider sizeNames
-   */
-  public function atestsetCentering($type) {
-    $this->row->centerize($type);
-    $this->assertTrue($this->row->hasCssClass("$type-centered"));
-    $this->assertFalse($this->row->hasCssClass("$type-uncentered"));
-    $this->row->uncenterize($type);
-    $this->assertTrue($this->row->hasCssClass("$type-uncentered"));
-    $this->assertFalse($this->row->hasCssClass("$type-centered"));
-    $this->row->unsetCenterizing($type);
-    $this->assertFalse($this->row->hasCssClass("$type-uncentered"));
-    $this->assertFalse($this->row->hasCssClass("$type-centered"));
+  protected function checkTypes(RowInterface $row) {
+    foreach ($row as $col) {
+      $this->assertTrue($col instanceof ColumnInterface);
+    }
   }
 
 }
