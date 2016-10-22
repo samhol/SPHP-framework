@@ -2,7 +2,6 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 $apigen = Apis::apigen();
@@ -23,6 +22,6 @@ errors or warnings to $exception objects and then re-set the PHP error handler a
 MD
 ;
 
-$example = new \Sphp\Html\Foundation\F6\Grids\ExampleViewingGrid("ErrorExceptionThrower example");
+$example = new \Sphp\Html\Foundation\Sites\Grids\ExampleViewingGrid("ErrorExceptionThrower example");
 $example->loadFromFile(EXAMPLE_DIR . "Sphp/Core/ErrorHandling/ErrorExceptionThrower.php");
 $example->printHtml();

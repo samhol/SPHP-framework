@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Core; 
+namespace Sphp\Html\Foundation\Sites\Core; 
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 $visibilityHandlingInterface = $api->classLinker(VisibilityHandlingInterface::class);
@@ -10,7 +10,7 @@ $visibilityHandlingTrait = $api->classLinker(VisibilityHandlingTrait::class);
 $visibilityHandler = $api->classLinker(VisibilityHandler::class);
 $ComponentInterface = $api->classLinker(\Sphp\Html\ComponentInterface::class);
 $htmlComponent = $api->classLinker(\Sphp\Html\ComponentInterface::class);
-$callout = Apis::apigen()->classLinker(\Sphp\Html\Foundation\F6\Containers\Callout::class);
+$callout = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Containers\Callout::class);
 
 echo $parsedown->text(<<<MD
 #Components Visibility handling using Foundation Visibility CSS Classes 

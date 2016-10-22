@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
 $panel1 = (new Callout())
         ->appendMd("####First Callout")

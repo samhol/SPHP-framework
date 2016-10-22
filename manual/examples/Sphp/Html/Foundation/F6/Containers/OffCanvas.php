@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
+namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
-use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
+use Sphp\Html\Foundation\Sites\Navigation\SubMenu as SubMenu;
 
 $offCanvas = (new OffCanvas("Off-canvas"));
 $offCanvas->leftMenu()

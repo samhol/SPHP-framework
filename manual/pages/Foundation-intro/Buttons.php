@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Buttons;
+namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -18,7 +18,7 @@ A basic Foundation styled button can be based on almost any HTML tag that has on
 MD
 ;
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $blockGrid = new BlockGrid();
 

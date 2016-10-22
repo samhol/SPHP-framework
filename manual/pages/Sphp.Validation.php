@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Core\Validators;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $validatorInterface = $api->classLinker(ValidatorInterface::class);
 $requiredValueValidator = $api->classLinker(RequiredValueValidator::class);
@@ -128,7 +128,7 @@ The $userValidator extends the $abstractObjectValidator and it can be used to va
 MD
 );
 $reflector = new \ReflectionClass(UserValidator::class);
-use \Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
+use \Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 //echo $reflector->getFileName();
 /*$code = (new SyntaxHighlightingSingleAccordion())		
         ->setTitle("UserValidator PHP code")		

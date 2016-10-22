@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Accordions;
+namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 $pane = new Pane("First Accordion");
 $pane->ajaxAppend("manual/snippets/loremipsum.html #par_3");

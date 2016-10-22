@@ -19,7 +19,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Grids;
+        namespace Sphp\Html\Foundation\Sites\Grids;
 
         $core = $api->getNamespaceLink(__NAMESPACE__, false);
         echo $parsedown->text(<<<MD
@@ -48,7 +48,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Buttons;
+        namespace Sphp\Html\Foundation\Sites\Buttons;
 
         $btn_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         echo $parsedown->text(<<<MD
@@ -65,7 +65,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Navigation;
+        namespace Sphp\Html\Foundation\Sites\Navigation;
 
         $navi_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         
@@ -82,7 +82,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Forms;
+        namespace Sphp\Html\Foundation\Sites\Forms;
 
         $forms_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         
@@ -101,7 +101,7 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\F6\Containers;
+        namespace Sphp\Html\Foundation\Sites\Containers;
 
         $cont_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         

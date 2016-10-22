@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media;
+namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingPane;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Core\Router;
 
 $progressBar = $api->classLinker(ProgressBar::class);

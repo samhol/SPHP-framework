@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $stringObjectClass = $api->classLinker(StringObject::class);
 $strLink = $php->typeLink("string");

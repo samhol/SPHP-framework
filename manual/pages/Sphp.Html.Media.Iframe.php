@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $iframe = $api->classLinker(Iframe::class);
 echo $parsedown->text(<<<MD

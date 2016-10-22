@@ -1,7 +1,7 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Tabs;
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 $tabs = $api->classLinker(Tabs::class);
 

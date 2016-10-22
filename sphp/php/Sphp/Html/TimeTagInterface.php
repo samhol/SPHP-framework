@@ -34,7 +34,7 @@ interface TimeTagInterface extends TagInterface {
   public function setDateTime(DateTime $dateTime);
 
   /**
-   * Returns the datetime
+   * Returns the datetime object stored to the component
    *
    * @return DateTime the datetime object
    */

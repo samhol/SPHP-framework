@@ -3,7 +3,7 @@
 namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 $videoJs = Apis::apigen()->classLinker(VideoJs::class);

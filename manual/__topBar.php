@@ -1,24 +1,24 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Core\Configuration;
-use Sphp\Html\Foundation\F6\Navigation\SubMenu as SubMenu;
+use Sphp\Html\Foundation\Sites\Navigation\SubMenu as SubMenu;
 
 include_once 'links.php';
 try {
   ob_start();
-  $appConf = Configuration::useDomain("manual");
+  $appConf = Configuration::useDomain('manual');
   $navi = (new TopBar())
-          ->addCssClass("sphp-manual");
+          ->addCssClass('sphp-manual');
 
-  $manual = (new SubMenu("Documentation"));
+  $manual = (new SubMenu('Documentation'));
 
   $topbarMenuLinker = function (array $link, $menu) {
-    if (array_key_exists("href", $link)) {
-      $text = array_key_exists("text", $link) ? $link["text"] : $link["href"];
-      $target = array_key_exists("target", $link) ? $link["target"] : "_self";
-      $menu->appendLink($link["href"], $text, $target);
+    if (array_key_exists('href', $link)) {
+      $text = array_key_exists('text', $link) ? $link['text'] : $link['href'];
+      $target = array_key_exists('target', $link) ? $link['target'] : '_self';
+      $menu->appendLink($link['href'], $text, $target);
     }
   };
   $separatorCreator = function ($separator, SubMenu $menu) {
@@ -31,44 +31,44 @@ try {
     }
     $parent->append($menu);
   };
-  foreach (Configuration::current()->get("MANUAL_LINKS") as $item) {
-    if (array_key_exists("href", $item)) {
+  foreach (Configuration::current()->get('MANUAL_LINKS') as $item) {
+    if (array_key_exists('href', $item)) {
       $topbarMenuLinker($item, $manual);
-    } else if (array_key_exists("separator", $item)) {
+    } else if (array_key_exists('separator', $item)) {
       $separatorCreator($item, $manual);
-    } else if (array_key_exists("group", $item) && array_key_exists("sub", $item)) {
+    } else if (array_key_exists('group', $item) && array_key_exists('sub', $item)) {
       $topbarsubmenu($item, $manual);
     }
   }
 
   $navi->left()->append($manual);
-  $apis = (new SubMenu("API Docs"))
-          ->appendText("PHP:")
-          ->appendLink($appConf->get("apigen"), "ApiGen API", "apigen")
-          ->appendText("Javascript:")
-          ->appendLink($appConf->get("jsdoc"), "JsDoc API", "jsdoc");
+  $apis = (new SubMenu('API Docs'))
+          ->appendText('PHP:')
+          ->appendLink($appConf->get('apigen'), 'ApiGen API', 'apigen')
+          ->appendText('Javascript:')
+          ->appendLink($appConf->get('jsdoc'), 'JsDoc API', 'jsdoc');
   $navi->left()->append($apis);
 
-  $packages = (new SubMenu("Dependencies"))
-          ->appendText("PHP resources:")
-          ->appendLink("http://php.net/", "PHP 5.5", "_blank")
+  $packages = (new SubMenu('Dependencies'))
+          ->appendText('PHP resources:')
+          ->appendLink('http://php.net/', 'PHP 5.6', '_blank')
           ->append((new SubMenu("External PHP Libraries"))
-          ->appendLink("https://github.com/erusev/parsedown-extra", "Parsedown Extra", "_blank")
-          ->appendLink("http://qbnz.com/highlighter/", "GeSHi", "_blank")
-          ->appendLink("http://github.com/jdorn/sql-formatter", "SQL Formatter", "_blank")
-          ->appendLink("https://github.com/raulferras/PHP-po-parser", "Po Parser", "_blank")
-          ->appendLink("https://imagine.readthedocs.org", "Imagine", "_blank"));
+          ->appendLink('https://github.com/erusev/parsedown-extra', 'Parsedown Extra', '_blank')
+          ->appendLink('http://qbnz.com/highlighter/', 'GeSHi', '_blank')
+          ->appendLink('http://github.com/jdorn/sql-formatter', 'SQL Formatter', '_blank')
+          ->appendLink('https://github.com/raulferras/PHP-po-parser', "Po Parser", '_blank')
+          ->appendLink('https://imagine.readthedocs.org', "Imagine", '_blank'));
 
   $packages
-          ->appendText("JS resources:")
-          ->appendLink("http://jquery.com/", "jQuery 1.11", "_blank")
-          ->appendLink("http://foundation.zurb.com/", "Foundation", "_blank");
-  $clientSideMenu = new SubMenu("jQuery plugins:");
-  $clientSideMenu->appendLink("http://qtip2.com/", "qTip 2", "_blank")
-          ->appendLink("http://ressio.github.io/lazy-load-xt/", "Lazy Load XT", "_blank")
-          ->appendLink("http://www.ama3.com/anytime/", "Any+Time&trade; DatePicker", "_blank");
+          ->appendText('JS resources:')
+          ->appendLink('http://jquery.com/', "jQuery 1.11", '_blank')
+          ->appendLink('http://foundation.zurb.com/', 'Foundation', '_blank');
+  $clientSideMenu = new SubMenu('jQuery plugins:');
+  $clientSideMenu->appendLink('http://qtip2.com/', 'qTip 2', '_blank')
+          ->appendLink('http://ressio.github.io/lazy-load-xt/', 'Lazy Load XT', '_blank')
+          ->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade; DatePicker', '_blank');
   $packages->append($clientSideMenu)
-          ->appendLink("http://zeroclipboard.org/", "ZeroClipboard", "_blank");
+          ->appendLink('http://zeroclipboard.org/', 'ZeroClipboard', '_blank');
 
   $navi->right()->append($packages);
 

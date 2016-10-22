@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);

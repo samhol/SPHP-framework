@@ -4,7 +4,7 @@ namespace Sphp\Core\Types;
 
 
 //use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 //$code = new SyntaxHighlighter();
 /* $result = (new SyntaxHighlighter())

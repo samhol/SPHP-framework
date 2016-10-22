@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Tabs;
+namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
 use Sphp\Core\Router;
 

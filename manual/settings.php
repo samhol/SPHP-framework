@@ -13,7 +13,7 @@ require_once(__DIR__ . "/../sphp/settings.php");
 Configuration::useDomain("manual")
         ->phpConfiguration()
         ->setErrorReporting(E_ALL)
-        ->iniSet("display_errors", "1")
+        ->iniSet("display_errors", 1)
         ->setDefaultTimezone("Europe/Helsinki")
         ->setEncoding("UTF-8");
 //PHPConfiguration();

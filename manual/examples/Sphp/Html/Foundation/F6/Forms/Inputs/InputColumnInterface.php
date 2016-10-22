@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
-use Sphp\Html\Foundation\F6\Forms\FormRow as FormRow;
+use Sphp\Html\Foundation\Sites\Forms\GridForm as GridForm;
+use Sphp\Html\Foundation\Sites\Forms\FormRow as FormRow;
 
 $cars = ["Sweden" => [
         "saab" => "Saab",
@@ -52,12 +52,15 @@ $form->append($row1)
             ->setErrorField("Yuo need to select atleast one car")
             ->setLabel("Select your favourite cars")
             ->setWidths(12, 6)]);
+$form->append((new \Sphp\Html\Forms\Inputs\Ion\RangeSlider("range", -10, 20, 1))
+        ->setValue([-50, 50])
+        ->setPostfix("&deg;C"));
 $form->append((new TextareaColumn("description", null, 4))
                 ->setRequired()
                 ->setPlaceholder("Something about yourself")
                 ->setErrorField("Yuo need to write something about yourself"));
 
-namespace Sphp\Html\Foundation\F6\Forms\Buttons;
+namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
 
 $form->append(new SubmitButton("Submit form", "submit"));
 

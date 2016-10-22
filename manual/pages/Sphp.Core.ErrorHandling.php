@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $errorExceptionThrower = $api->classLinker(ErrorExceptionThrower::class);

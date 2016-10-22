@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6;
+namespace Sphp\Html\Foundation\Sites;
 
-use Sphp\Html\Foundation\F6\Media\Orbit\Orbit;
-use Sphp\Html\Foundation\F6\Media\Orbit\Slide;
+use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
+use Sphp\Html\Foundation\Sites\Media\Orbit\Slide;
 use Sphp\Core\Router;
 
 $path = Router::get();
@@ -18,10 +18,8 @@ $orbitIntro->append($navSlide);
 $buttonSlide = new Slide();
 $buttonSlide->appendMdFile($path->local("manual/pages/Foundation-intro/Buttons.php"));
 $orbitIntro->append($buttonSlide);
-$mediaSlide = new Slide();
-$mediaSlide->appendMdFile($path->local("manual/pages/Foundation-intro/Media.php"));
-$orbitIntro->append($mediaSlide);
-$formsSlide = new Slide();
-$formsSlide->appendMdFile($path->local("manual/pages/Foundation-intro/Forms.php"));
-$orbitIntro->append($formsSlide);
+$orbitIntro->append((new \Sphp\Html\Apps\SyntaxHighlighter())->loadFromFile(Router::get()->local('manual/examples/Sphp/Html/Foundation/F6/Media/Flex-LazyLoad.php')));
+$orbitIntro->appendMdFile($path->local("manual/pages/Foundation-intro/Media.php"));
+$orbitIntro->appendMdFile($path->local("manual/pages/Foundation-intro/Forms.php"));
+
 $orbitIntro->printHtml();

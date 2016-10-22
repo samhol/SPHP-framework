@@ -1,26 +1,24 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media;
+namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Core\Util\FileUtils as FileUtils;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$flexVideo = Apis::apigen()->classLinker(Flex::class);
-$mediaExample = FileUtils::executePhpToString(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Media/Flex.php');
-$manLink = new \Sphp\Html\Foundation\F6\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
+
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+
+$flexes = (new BlockGrid(null, 1, 1, 2))
+        ->append(Flex::youtube("c3jmiwdGqnI")->setWidescreen())
+        ->append(Flex::dailymotion("x2p4pkp")->setWidescreen());
+$manLink = new \Sphp\Html\Foundation\Sites\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
 echo <<<MD
-##Foundation 6 Media components:
+##Foundation 6 Media components:$manLink
 
 $ns
-        
-$manLink
-        
-This namespace contains components for handling different media types
-using the tools provided by Foundation framework.
-
-###$flexVideo example:
-        
-$mediaExample
+ 
+<div class="example-area">
+$flexes
+</div>
 MD
 ;

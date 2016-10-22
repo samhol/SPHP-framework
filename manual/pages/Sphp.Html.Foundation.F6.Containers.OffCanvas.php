@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\OffCanvas;
+namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
 $offCanvas = $api->classLinker(OffCanvas::class);
 echo $parsedown->text(<<<MD

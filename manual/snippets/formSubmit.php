@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Core;
+namespace Sphp\Html\Foundation\Sites\Core;
 
 include_once "../settings.php";
 

@@ -80,8 +80,8 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @return self for PHP Method Chaining
    */
   protected function setUrl($url) {
-    $this->url = ($url instanceof URL) ? $url : new Url($url);
-    $this->setAttr("src", $this->url);
+    $this->url = ($url instanceof URL) ? $url : new URL($url);
+    $this->setAttr("src", $this->url->getHtml());
     return $this;
   }
 
@@ -94,7 +94,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   public function setVideoId($videoId) {
     $this->videoId = $videoId;
     $this->url->setPath($this->url->getPath() . $videoId);
-    $this->setAttr("src", $this->url);
+    $this->setAttr("src", $this->url->getHtml());
     return $this;
   }
 

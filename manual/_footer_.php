@@ -1,6 +1,6 @@
 <?php
 
-use Sphp\Html\Apps\TechLinkList as TechLinkList;
+use Sphp\Html\Apps\TechLinkList;
 ?>
 <div class="footer">
   <div class="row">

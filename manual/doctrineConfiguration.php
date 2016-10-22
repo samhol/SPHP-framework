@@ -3,7 +3,7 @@
 namespace Doctrine\ORM;
 
 //header("Content-type: text/html; charset=utf-8");
-require_once "settings.php";
+require_once 'settings.php';
 
 //use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -22,9 +22,9 @@ $dbParams = array(
     'dbname' => 'sphp',
     'driverOptions' => array(1002 => 'SET NAMES utf8')
 );
-Conf::useDomain("manual")->set("dbParams", $dbParams);
-$applicationMode = "development";
-if ($applicationMode == "development") {
+Conf::useDomain('manual')->set('dbParams', $dbParams);
+$applicationMode = 'development';
+if ($applicationMode == 'development') {
   $cache = new \Doctrine\Common\Cache\ArrayCache;
 } else {
   $cache = new \Doctrine\Common\Cache\ApcCache;
@@ -39,9 +39,9 @@ $config->setQueryCacheImpl($cache);
 $config->setProxyDir('sphp/doctrine/Proxies');
 $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
-Conf::useDomain("manual")->set(Configuration::class, $config);
+Conf::useDomain('manual')->set(Configuration::class, $config);
 $entityManager = EntityManager::create($dbParams, $config);
 //use Sphp\Core\Configuration;
 //use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
-Conf::useDomain("manual")->set(EntityManagerInterface::class, $entityManager);
+Conf::useDomain('manual')->set(EntityManagerInterface::class, $entityManager);

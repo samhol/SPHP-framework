@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\F6\Grids\Row as Row;
+use Sphp\Html\Foundation\Sites\Grids\Row as Row;
 
 $ol1 = (new Ol())
 		->append("Second")

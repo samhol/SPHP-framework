@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
+use Sphp\Html\Foundation\Sites\Grids\Grid as Grid;
 
 $inlineStyles = [
     "overflow" => "auto",

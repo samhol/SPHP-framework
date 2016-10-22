@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Core;
+namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
 

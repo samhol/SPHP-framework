@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
 $root = "http://playground.samiholck.com";
 $bc = (new BreadCrumbs())

@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 echo $parsedown->text(
         <<<MD

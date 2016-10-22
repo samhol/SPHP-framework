@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media\Orbit;
+namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 $media = $api->namespaceLink(__NAMESPACE__);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);

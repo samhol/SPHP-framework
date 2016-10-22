@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 class AbstractRowTest extends \PHPUnit_Framework_TestCase {
 

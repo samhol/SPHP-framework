@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Buttons;
+namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $google = (new HyperlinkButton("http://www.google.com/", "Google", "engine"))
         ->setSize("large")

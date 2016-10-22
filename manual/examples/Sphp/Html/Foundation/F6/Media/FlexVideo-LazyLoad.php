@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media;
+namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Foundation\F6\Grids\Row as Row;
+use Sphp\Html\Foundation\Sites\Grids\Row as Row;
 
 (new Row())
         ->appendColumn(Flex::fromSrc("http://193.64.245.223/basket/widget/")->setLazy(), 12, 3)

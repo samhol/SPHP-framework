@@ -2,7 +2,7 @@
 
 namespace Sphp\Manual;
 
-use Sphp\Html\Foundation\F6\Containers\ExceptionCallout;
+use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Core\Util\FileUtils;
 
 include_once 'settings.php';

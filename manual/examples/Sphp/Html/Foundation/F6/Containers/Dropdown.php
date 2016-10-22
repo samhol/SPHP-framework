@@ -1,9 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Media\Img as Image;
-use Sphp\Html\Foundation\F6\Grids\Grid as Grid;
+use Sphp\Html\Foundation\Sites\Grids\Grid as Grid;
 use Sphp\Html\Span;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 

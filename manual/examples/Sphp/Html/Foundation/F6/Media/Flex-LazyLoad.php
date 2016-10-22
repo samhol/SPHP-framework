@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media;
+namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 (new BlockGrid(null, 1, 2, 3, 4))
         ->append(Flex::fromSrc("http://193.64.245.223/basket/widget/")->setLazy())
         ->append(Flex::vieverJs("manual/snippets/demodoc.pdf")->setLazy())

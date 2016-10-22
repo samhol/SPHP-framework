@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 $map  = Apis::apigen()->classLinker(Map::class);
 $areaInterface  = Apis::apigen()->classLinker(AreaInterface::class);

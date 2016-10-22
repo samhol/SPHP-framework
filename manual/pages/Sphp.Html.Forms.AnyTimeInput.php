@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $anyTimeInput = $api->classLinker(AnyTimeInput::class);
 echo $parsedown->text(<<<MD

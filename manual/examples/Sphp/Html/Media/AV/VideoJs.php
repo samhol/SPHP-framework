@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\AV;
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $srcs[] = "http://techslides.com/demos/sample-videos/small.mp4";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.3gp";

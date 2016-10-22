@@ -1,13 +1,13 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Modals;
+namespace Sphp\Html\Foundation\Sites\Containers\Modals;
 
 use Sphp\Core\Util\LocalFile;
 use Sphp\Core\Util\Timer;
 
 $fileObj = new LocalFile('LICENSE.md');
 $license = (new Modal($fileObj->parseMarkdown(), 'SPHP license'));
-$license->addCssClass("license");
+$license->addCssClass('license');
 ?>
 Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
 <?php $license->printHtml(); ?> ||

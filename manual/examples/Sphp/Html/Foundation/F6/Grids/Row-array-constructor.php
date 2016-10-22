@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $rows[] = new Row(["small-12"]);
 $rows[] = new Row(array_fill(0, 2, "small-6"));

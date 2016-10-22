@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $grid = new Grid();
 

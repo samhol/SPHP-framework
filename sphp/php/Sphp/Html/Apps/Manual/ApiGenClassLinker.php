@@ -8,8 +8,8 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
-use Sphp\Html\Foundation\F6\Navigation\BreadCrumbs as BreadCrumbs;
-use Sphp\Html\Foundation\F6\Navigation\BreadCrumb as BreadCrumb;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs as BreadCrumbs;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb as BreadCrumb;
 
 /**
  * PHP class link generator pointing to an exising ApiGen documentation

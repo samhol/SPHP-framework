@@ -1,12 +1,10 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\Sites\Forms;
 
 use Sphp\Html\Forms\Inputs\TextInput;
-use Sphp\Html\Forms\Inputs\Textarea as Textarea;
-use Sphp\Html\Foundation\F6\Forms\Inputs\InputColumn as InputColumn;
-use Sphp\Html\Foundation\F6\Forms\Inputs\TextColumn as TextColumn;
-use Sphp\Html\Foundation\F6\Forms\Inputs\SelectMenuColumn as SelectMenuColumn;
+use Sphp\Html\Forms\Inputs\Textarea;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 
 $cars = ["Sweden" => [
         "saab" => "Saab",

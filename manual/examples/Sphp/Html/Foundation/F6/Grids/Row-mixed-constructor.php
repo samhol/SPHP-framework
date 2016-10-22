@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
 $col_1 = new Column("col-1", 2, 4, 6, 8, 10);
 $col_2 = new Column("col-2", 10, 8, 6, 4, 2);

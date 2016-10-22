@@ -9,8 +9,8 @@ namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Hyperlink as Hyperlink;
 use Sphp\Core\Types\Strings;
-use Sphp\Html\Foundation\F6\Containers\OffCanvas\OffCanvas as OffCanvas;
-use Sphp\Html\Foundation\F6\Grids\GridInterface as GridInterface;
+use Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvas as OffCanvas;
+use Sphp\Html\Foundation\Sites\Grids\GridInterface as GridInterface;
 
 /**
  * Link generator for Foundation Docs related hyperlinks
@@ -37,10 +37,10 @@ class FoundationDocsLinker extends AbstractLinker {
       \Sphp\Html\Foundation\Navigation\SubNav\SubNav::class => ['subnav', 'Sub Nav'],
       \Sphp\Html\Foundation\Navigation\TopBar\TopBar::class => ['topbar', 'Top Bar'],
       GridInterface::class => ["grid", "Grid"],
-      \Sphp\Html\Foundation\F6\Grids\Grid::class => ['grid', 'Grid'],
-      \Sphp\Html\Foundation\F6\Grids\Column::class => ['grid', 'Column'],
-      \Sphp\Html\Foundation\F6\Grids\Row::class => ["grid", 'Row'],
-      \Sphp\Html\Foundation\F6\Grids\BlockGrid::class => ['block_grid', 'Block Grid'],
+      \Sphp\Html\Foundation\Sites\Grids\Grid::class => ['grid', 'Grid'],
+      \Sphp\Html\Foundation\Sites\Grids\Column::class => ['grid', 'Column'],
+      \Sphp\Html\Foundation\Sites\Grids\Row::class => ["grid", 'Row'],
+      \Sphp\Html\Foundation\Sites\Grids\BlockGrid::class => ['block_grid', 'Block Grid'],
       OffCanvas::class => ['off-canvas', 'Off-canvas'],
   ];
 

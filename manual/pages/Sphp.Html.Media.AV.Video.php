@@ -25,7 +25,7 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/Video.php", false, true))
 		->setExampleHeading("HTML5 &lt;video&gt; example code")

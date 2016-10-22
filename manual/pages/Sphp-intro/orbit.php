@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Foundation\F6\Media\Orbit\Orbit;
+use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 use Sphp\Core\Router;
 
 $path = Router::get();

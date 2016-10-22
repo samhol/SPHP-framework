@@ -1,7 +1,7 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+namespace Sphp\Html\Foundation\Sites\Containers;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $callout = $api->classLinker(Callout::class);
 echo $parsedown->text(<<<MD

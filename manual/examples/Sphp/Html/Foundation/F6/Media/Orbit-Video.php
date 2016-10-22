@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Media\Orbit;
+namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 $orbit = new Orbit();
 

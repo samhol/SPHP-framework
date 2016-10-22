@@ -1,7 +1,7 @@
 <?php
 
 /**
- * HtmlTag.php (UTF-8)
+ * Html.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -13,9 +13,7 @@ use Sphp\Html\Programming\ScriptsContainer;
 /**
  * Class Models an HTML &lt;html&gt; tag
  *
- *
  * {@inheritdoc}
- *
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-25

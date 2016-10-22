@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Buttons;
+namespace Sphp\Html\Foundation\Sites\Buttons;
 
 
 $buttons[] = new HyperlinkButton("http://www.google.com/", "Google", "engine");

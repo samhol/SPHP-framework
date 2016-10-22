@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
 $navi = (new TopBar("TopBar"));
 $navi->left()->appendLink("http://www.ask.com/", "ask.com", "_blank");

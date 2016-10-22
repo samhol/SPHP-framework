@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Accordions;
+namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 
 //$ns = $api->namespaceLink(__NAMESPACE__);

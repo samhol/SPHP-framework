@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\Foundation\F6\Forms\GridForm as Form;
+use Sphp\Html\Foundation\Sites\Forms\GridForm as Form;
 
 $cars = ["Sweden" => [
         "saab" => "Saab",

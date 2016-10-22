@@ -1,7 +1,7 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers\Modals;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+namespace Sphp\Html\Foundation\Sites\Containers\Modals;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $modal = $api->classLinker(Modal::class);
 $controller = $api->classLinker(Controller::class);

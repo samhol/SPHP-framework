@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $gridIf = $api->classLinker(GridInterface::class);
 $htmlCont = $api->classLinker(\Sphp\Html\Container::class);

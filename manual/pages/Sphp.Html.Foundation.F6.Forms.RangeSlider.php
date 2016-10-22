@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 $rangeSlider = $api->classLinker(RangeSlider::class);
 

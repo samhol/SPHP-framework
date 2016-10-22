@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms\Inputs;
+namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Foundation\F6\Forms\GridForm as GridForm;
+use Sphp\Html\Foundation\Sites\Forms\GridForm as GridForm;
 
 $boxes[] = (new SwitchBox("box[]", "a", true, "select alphabet a"))
         ->setInnerLabels("a", "")

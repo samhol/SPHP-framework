@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion as SyntaxHighlighter;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion as SyntaxHighlighter;
 
 $sqlException = $api->classLinker(SQLException::class);
 $pdo = $php->classLinker(\PDO::class);

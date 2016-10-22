@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Forms;
+namespace Sphp\Html\Foundation\Sites\Forms;
 
 $form = (new GridForm())
         ->validation(true)

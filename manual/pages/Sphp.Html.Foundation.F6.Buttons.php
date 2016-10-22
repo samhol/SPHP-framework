@@ -1,13 +1,13 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Buttons;
+namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 $btn = Apis::apigen()->classLinker(ButtonInterface::class);
 $abstractButton = Apis::apigen()->classLinker(AbstractButton::class);
-$formBtn = Apis::apigen()->classLinker(\Sphp\Html\Foundation\F6\Forms\Buttons\InputButton::class);
+$formBtn = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton::class);
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = Apis::apigen()->classLinker(ButtonGroup::class);
@@ -34,7 +34,7 @@ instance method with the CSS class name as a parameter value:
 MD
 );
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $blockGrid = (new BlockGrid())->setBlockGrids(1, 1, 2);
 $blockGrid->append($parsedown->text(<<<MD

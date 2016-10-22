@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Net;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlighter;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlighter;
 $sessionHandlerInterface = $api->classLinker(\SessionHandlerInterface::class);
 $abstractSessionHandler = $api->classLinker(AbstractSessionHandler::class);
 $hpw = $api->classLinker(HashedPassword::class);

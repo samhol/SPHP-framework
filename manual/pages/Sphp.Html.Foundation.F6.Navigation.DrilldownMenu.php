@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
@@ -21,7 +21,7 @@ The $drilldownMenu component is one of Foundation's three menu patterns, which c
 MD
 );
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $navExamples = (new BlockGrid())
         ->setBlockGrids(1, 2, 3)

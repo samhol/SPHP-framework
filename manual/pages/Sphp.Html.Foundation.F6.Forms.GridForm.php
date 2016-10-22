@@ -1,6 +1,6 @@
 <?php
-namespace Sphp\Html\Foundation\F6\Forms;
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+namespace Sphp\Html\Foundation\Sites\Forms;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 $gridForm = $api->classLinker(GridForm::class);
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);

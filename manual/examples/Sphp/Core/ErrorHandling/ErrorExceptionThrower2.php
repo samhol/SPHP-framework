@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use Sphp\Html\Foundation\F6\Containers\ExceptionCallout;
+use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 
 ErrorExceptionThrower::Start(E_DEPRECATED);
 try {

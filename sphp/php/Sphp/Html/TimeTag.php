@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Time.php (UTF-8)
+ * TimeTag.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -44,13 +44,13 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
     }
     $this->setDateTime($dateTime);
   }
-  
+
   public function setDateTime(DateTime $dateTime) {
     $this->attrs()->set('datetime', $dateTime->format('Y-m-d H:i:s'));
     $this->dateTime = $dateTime;
     return $this;
   }
-
+  
   public function getDateTime() {
     return $this->dateTime;
   }

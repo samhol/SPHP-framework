@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Foundation\F6\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $syntax1 = (new SyntaxHighlighter())->loadFromFile(__FILE__);
 

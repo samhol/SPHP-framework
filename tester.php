@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Core\Router;
 use Sphp\Html\Document;
@@ -23,8 +23,8 @@ Document::html("manual")->scripts()->appendSrc("manual/js/formTools.js");
     </a>
     <?php
 
-    use Sphp\Html\Foundation\F6\Containers\Dropdown as Dropdown;
-    use Sphp\Html\Foundation\F6\Foundation as F;
+    use Sphp\Html\Foundation\Sites\Containers\Dropdown as Dropdown;
+    use Sphp\Html\Foundation\Sites\Foundation as F;
 
 $ul = (new \Sphp\Html\Lists\Ul())->addCssClass("social-icons");
 

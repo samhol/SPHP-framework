@@ -152,17 +152,13 @@ trait FormTrait {
   }
 
   /**
-   * Returns the value of the name attribute
-   *
-   * The name attribute specifies the name of the form. The name attribute is
-   * used to reference elements in a JavaScript, or to reference form data
-   * after a form is submitted.
-   *
-   * @return string the value of the name attribute
-   * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
+   * 
+   * @param  boolean $validate
+   * @return self for PHP Method Chaining
    */
   public function validation($validate = true) {
-    return $this->attrs()->set('novalidate', !$validate);
+    $this->attrs()->set('novalidate', !$validate);
+    return $this;
   }
 
   /**

@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Foundation\F6\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $config = $api->classLinker(Configuration::class);
 $phpConfig = $api->classLinker(PHPConfiguration::class);

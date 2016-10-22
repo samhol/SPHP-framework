@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Navigation\Pagination;
+namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
 use Sphp\Net\URL;
 

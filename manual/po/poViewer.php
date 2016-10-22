@@ -39,7 +39,7 @@ function cleanString(String $string) {
 //print_r($arr);
 
 namespace Sphp\Html\Tables;
-use Sphp\Html\Foundation\F6\Containers\Accordions\Accordion as Accordion;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion as Accordion;
 $accordion = new Accordion();
 foreach ($arr as $group => $data) {
 	if (count($data) > 0) {

@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\F6\Containers;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;

@@ -23,7 +23,6 @@ use Sphp\Html\ComponentInterface;
 trait SyntaxhighlighterContainerTrait {
 
   /**
-   * 
    * Returns the syntaxhighlighter object
    * 
    * @return SyntaxHighlighterInterface the syntaxhighlighter object

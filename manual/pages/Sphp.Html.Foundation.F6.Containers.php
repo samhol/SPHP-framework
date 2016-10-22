@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Foundation\F6\Containers;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
 $content_ns = $api->namespaceLink(__NAMESPACE__);
 $accordion = $api->classLinker(Accordions\Pane::class);
