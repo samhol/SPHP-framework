@@ -29,14 +29,14 @@ $sidenavLinks['html_basics'] = ["group" => "HTML Basics", 'sub' =>
 ];
 $sidenavLinks['foundation6'] = ['group' => 'Foundation 6', 'sub' =>
     [
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6", 'text' => 'Introduction'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Core", 'text' => 'Core'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Grids", 'text' => 'Grids'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Containers", 'text' => 'Containers'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Navigation", 'text' => 'Navigation components'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Buttons", 'text' => 'Buttons'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Media", 'text' => 'Media components'],
-        ['href' => "$httpRoot?page=Sphp.Html.Foundation.F6.Forms", 'text' => 'Form components'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites", 'text' => 'Introduction'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Core", 'text' => 'Core'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Grids", 'text' => 'Grids'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Containers", 'text' => 'Containers'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Navigation", 'text' => 'Navigation components'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Buttons", 'text' => 'Buttons'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Media", 'text' => 'Media components'],
+        ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Forms", 'text' => 'Form components'],
     //['href' => "$httpRoot?page=Sphp.Html.Foundation", 'text' => "Miscellaneous components"]
     ]
 ];

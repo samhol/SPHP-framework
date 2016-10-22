@@ -15,8 +15,8 @@ Foundation based input components extend interfaces defined in $formsNS namespac
 MD
 );
 
-$load("Sphp.Html.Foundation.F6.Forms.Buttons.php");
-$load("Sphp.Html.Foundation.F6.Forms.Choiceboxes.php");
-$load("Sphp.Html.Foundation.F6.Forms.Switch.php");
-$load("Sphp.Html.Foundation.F6.Forms.Slider.php");
-$load("Sphp.Html.Foundation.F6.Forms.RangeSlider.php");
+$load("Sphp.Html.Foundation.Sites.Forms.Buttons.php");
+$load("Sphp.Html.Foundation.Sites.Forms.Choiceboxes.php");
+$load("Sphp.Html.Foundation.Sites.Forms.Switch.php");
+$load("Sphp.Html.Foundation.Sites.Forms.Slider.php");
+$load("Sphp.Html.Foundation.Sites.Forms.RangeSlider.php");

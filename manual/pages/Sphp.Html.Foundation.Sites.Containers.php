@@ -16,9 +16,9 @@ $ns
 This namespace contains Foundation framework based components like $accordions, $tabs, $callout, $modalReveal and $dropdown.
 MD
 );
-$load("Sphp.Html.Foundation.F6.Containers.Accordions.php");
-$load("Sphp.Html.Foundation.F6.Containers.Tabs.php");
-$load("Sphp.Html.Foundation.F6.Containers.Dropdown.php");
-$load("Sphp.Html.Foundation.F6.Containers.Callout.php");
-$load("Sphp.Html.Foundation.F6.Containers.Modals.php");
-$load("Sphp.Html.Foundation.F6.Containers.OffCanvas.php");
+$load("Sphp.Html.Foundation.Sites.Containers.Accordions.php");
+$load("Sphp.Html.Foundation.Sites.Containers.Tabs.php");
+$load("Sphp.Html.Foundation.Sites.Containers.Dropdown.php");
+$load("Sphp.Html.Foundation.Sites.Containers.Callout.php");
+$load("Sphp.Html.Foundation.Sites.Containers.Modals.php");
+$load("Sphp.Html.Foundation.Sites.Containers.OffCanvas.php");

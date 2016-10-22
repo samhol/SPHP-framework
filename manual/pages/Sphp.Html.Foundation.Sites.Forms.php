@@ -14,5 +14,5 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-$load("Sphp.Html.Foundation.F6.Forms.GridForm.php");
-$load("Sphp.Html.Foundation.F6.Forms.Inputs.php");
+$load("Sphp.Html.Foundation.Sites.Forms.GridForm.php");
+$load("Sphp.Html.Foundation.Sites.Forms.Inputs.php");

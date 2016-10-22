@@ -11,7 +11,7 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 $flexes = (new BlockGrid(null, 1, 1, 2))
         ->append(Flex::youtube("c3jmiwdGqnI")->setWidescreen())
         ->append(Flex::dailymotion("x2p4pkp")->setWidescreen());
-$manLink = new \Sphp\Html\Foundation\Sites\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.F6.Media", "Manual page", "_self");
+$manLink = new \Sphp\Html\Foundation\Sites\Buttons\HyperlinkButton("?page=Sphp.Html.Foundation.Sites.Media", "Manual page", "_self");
 echo <<<MD
 ##Foundation 6 Media components:$manLink
 

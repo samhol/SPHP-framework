@@ -18,7 +18,7 @@ $ns
 This namespace contains $f_GridLink related interfaces and implementations.
 MD
 );
-$load("Sphp.Html.Foundation.F6.Grids.GridInterface.php");
+$load("Sphp.Html.Foundation.Sites.Grids.GridInterface.php");
 
 $blockGrid = $api->classLinker(BlockGrid::class);
 echo $parsedown->text(<<<MD
