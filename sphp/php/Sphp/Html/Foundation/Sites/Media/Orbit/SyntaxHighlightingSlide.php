@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\Apps\SyntaxHighlighterInterface;
 use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\AbstractComponent;
+use Sphp\Html\Headings\H2;
 
 /**
  * Class implements an Foundation 6 Accordion containing a single syntax highlighting pane
@@ -30,6 +31,11 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
   use \Sphp\Html\Apps\SyntaxhighlighterContainerTrait,
       ActivationTrait;
 
+  /**
+   *
+   * @var H2
+   */
+  private $title;
   private $hl;
 
   /**
@@ -39,7 +45,15 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
    */
   public function __construct(SyntaxHighlighterInterface $hl = null) {
     parent::__construct("li");
+    $this->cssClasses()->lock('orbit-slide');
+    if ($hl === null) {
+      $hl = new SyntaxHighlighter();
+    }
     $this->hl = $hl;
+  }
+  
+  public function setTitle() {
+    $this->title->
   }
 
   /**
