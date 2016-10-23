@@ -54,7 +54,7 @@ class Locale {
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public static function setMessageLocale($locale) {
-    return self::setLocale(\LC_MESSAGES, $locale);
+    return self::setLocale(LC_MESSAGES, $locale);
   }
 
   /**

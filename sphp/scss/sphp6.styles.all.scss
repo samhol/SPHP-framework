@@ -13,14 +13,13 @@
 @import "vendor/vendors";
 
 @include foundation-everything;
-//@include motion-ui-transitions;
 
 $sphp6-topbar-bg: #121212; 
 $sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
 $sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
 $sphp6-topbar-font-color: #efefef;
 $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-$sphp6-topbar-title-font-color:  smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
 $sphp6-root-border-color: #4e4e4e;
 
 

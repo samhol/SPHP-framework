@@ -35,8 +35,9 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 */
 	public function testSingular() {
+    var_dump($this->translator->get("year"));
 		$this->assertEquals($this->translator->get("year"), "vuosi");
-		$this->assertEquals($this->translator->get("month", "en_US"), "motnh");
+		$this->assertEquals($this->translator->get("month", "en_US"), "month");
 	}
 
 }

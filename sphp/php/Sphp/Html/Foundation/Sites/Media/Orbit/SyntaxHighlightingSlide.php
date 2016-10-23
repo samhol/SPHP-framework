@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SyntaxHighlightingSingleAccordion.php (UTF-8)
+ * SyntaxHighlightingSlide.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -36,6 +36,10 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
    * @var H2
    */
   private $title;
+  /**
+   *
+   * @var SyntaxHighlighterInterface 
+   */
   private $hl;
 
   /**
@@ -50,10 +54,17 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
       $hl = new SyntaxHighlighter();
     }
     $this->hl = $hl;
+    $this->title = new H2();
+    $this->setHeading("code");
   }
-  
-  public function setTitle() {
-    $this->title->
+  /**
+   * 
+   * @param type $content
+   * @return \Sphp\Html\Foundation\Sites\Media\Orbit\SyntaxHighlightingSlide
+   */
+  public function setHeading($content) {
+    $this->title->replaceContent($content);
+    return $this;
   }
 
   /**
@@ -66,7 +77,7 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
   }
 
   public function contentToString() {
-    return $this->hl->getHtml();
+    return $this->title->getHtml() . $this->hl->getHtml();
   }
 
 }
