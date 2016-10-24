@@ -49,7 +49,7 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
    */
   public function __construct(SyntaxHighlighterInterface $hl = null) {
     parent::__construct("li");
-    $this->cssClasses()->lock('orbit-slide');
+    $this->cssClasses()->lock(['orbit-slide', 'sphp-shl']);
     if ($hl === null) {
       $hl = new SyntaxHighlighter();
     }

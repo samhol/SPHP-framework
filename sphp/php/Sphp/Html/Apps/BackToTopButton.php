@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Media\Img;
+use Sphp\Html\Document;
 
 /**
  * Class implements a back to top button for the web page
@@ -19,18 +19,26 @@ use Sphp\Html\Media\Img;
  * @filesource
  */
 class BackToTopButton extends AbstractComponent {
-
+  /**
+   *
+   * @var string 
+   */
+private $iconClasses;
   /**
    * Constructs a new instance
+   *
+   * @param string $title the title text of the button
+   * @param string $iconClass css class names of the icon font style
    */
-  public function __construct() {
+  public function __construct($title = 'Back to top', $iconClass = 'fa fa-chevron-circle-up') {
     parent::__construct('div');
     $this->cssClasses()->lock('sphp-back-to-top-button');
-    $this->setTitle('Back to top');
+    $this->setTitle($title);
+    $this->iconClasses = $iconClass;
   }
 
   public function contentToString() {
-    return (new Img('sphp/pics/back-to-top.png', 'Back to top'))->getHtml();
+    return Document::icon($this->iconClasses)->getHtml();
   }
 
 }

@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 24, 2016, 6:01:20 PM
+    Author     : Sami Holck
+*/
+
+
+.tech {
+  font-style: normal;
+  display: inline-block;
+  margin-right: rem-calc(2);
+  padding: rem-calc(2 5);
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  border: solid 1px #aaa;
+  @include border-radius(3px);
+  &.js {
+    background-color: #fc1;
+    color: #333;
+    font-weight: bold;
+    &:after {
+      content: "JS";
+    }
+  }
+  &.html5 {
+    background-color: #ff5632;
+    color: #111;
+    &:after {
+      content: "HTML5";
+    }
+  }
+  &.css3 {
+    background-color: #0072b1;
+    &:after {
+      content: "CSS3";
+    }
+  } 
+  &.flash {
+    background-color: #f22;
+    color: #333;
+    font-weight: bold;
+    &:after {
+      content: "FLASH";
+    }
+  }
+  &.php {
+    background-color: #3333ff;
+    color: #eef;
+    font-weight: bold;
+    @include border-radius(5px);
+    &:after {
+      content: "PHP";
+    }
+  }
+  &.sql {
+    background-color: #004E66;
+    color: #eef;
+    font-weight: bold;
+    &:after {
+      content: "SQL";
+    }
+  }
+}
