@@ -9,7 +9,6 @@ $rows[] = new Row(range(1, 12));
 $rows[] = new Row([$col_1, "small-10..."]);
 $rows[] = new Row([$col_1, $col_2]);
 $rows[] = new Row([$col_2, "small-2"]);
-
 foreach($rows as $row) {
   $row->printHtml();
 }

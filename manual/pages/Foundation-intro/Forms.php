@@ -10,7 +10,7 @@ $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 $exampleDiv = (new Div())->addCssClass("example-area")
         ->appendPhpFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/GridForm.php');
 echo <<<MD
-##Foundation 6 Form components:
+##Foundation Form components:
 
 $ns
 
