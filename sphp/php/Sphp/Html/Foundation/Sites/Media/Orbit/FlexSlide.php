@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Media\FlexInterface as FlexInterface;
 use Sphp\Html\Foundation\Sites\Media\Flex;
 
 /**
- * Class implements a slide for Foundation {@link Orbit} components
+ * Class implements a media Flex slide for Foundation Orbit components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

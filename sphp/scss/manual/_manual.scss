@@ -11,12 +11,7 @@
 @import "form-submission-viewer";
 @import "footer";
 $default-left-margin: rem-calc(35);
-$default-margins: (
-top: rem-calc(5),
-right: rem-calc(25),
-bottom: rem-calc(15),
-left: rem-calc(35)
-);
+$default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {
     @if $margin == all {
@@ -34,67 +29,7 @@ left: rem-calc(35)
     + "Please make sure it is defined in `$default-margins` map.";
   }
 }
-.sphp-logo  {
-  background: rgba(255, 255, 255, 0.75);
-  > a {
-    margin: rem-calc(5 0 5 30);
-    display: inline-block;
-    img {
-    }
-  }
-
-  .social-icons {
-    padding: 0;
-    margin: 0;
-    @include breakpoint(small) {
-      display: block;
-      text-align: center;
-    }
-    @include breakpoint(large) {
-      display: block;
-      float: right;
-    }
-    li {
-      line-height: 1.1;
-      margin-top: rem-calc(5);
-      margin-right: rem-calc(25);
-      display: inline-block;
-      a {
-        //font-weight: 300; 
-        //font-size: rem-calc(13);
-        color: #111;
-        &:hover { 
-          color: #444;
-          text-shadow:
-            0px -1px 0px rgba(90,90,90,0.2),
-            0px 1px 0px rgba(90,90,90,1);
-        }
-        i {
-          font-size: rem-calc(40);
-          @include opacity(0.9);
-          margin: rem-calc(1);
-          text-shadow:
-            0px -1px 0px rgba(255, 153, 51, 1),
-            0px 1px 0px rgba(255, 153, 51,1);
-        }
-        &:hover i {
-          $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-          text-shadow:
-            0px -1px 0px rgba(255, 153, 51, 1),
-            0px 1px 0px rgba(255, 153, 51,1);
-          @include opacity(1);
-        }
-      }
-    }
-    /*a:hover i {
-      $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-      text-shadow:
-        0px -1px 0px rgba(255, 153, 51, 1),
-        0px 1px 0px rgba(255, 153, 51,1);
-      @include opacity(1);
-    }*/
-  } 
-}
+@import "logo-area"; 
 
 .sphp-sidenav {
   margin-top: rem-calc(20);
@@ -104,7 +39,7 @@ left: rem-calc(35)
   @include border-radius(4px);
   //@include box-shadow(#888 3px 0px 8px 4px);
   @include box-shadow(#888 0px 3px 8px 4px);
-  padding: rem-calc(0 0 20 0);// rem-calc(6 6 40 6); // top right bottom left
+  padding: rem-calc(0 0 20 0);// top right bottom left
   margin: rem-calc(5 0 20 0); // top right bottom left
   background: #fafafa;
   >.intro {
@@ -226,87 +161,11 @@ left: rem-calc(35)
   > div.wrapper {
     @include default-margin();
   }
-  .foundation-intro, .orbit.intro {
-    margin: rem-calc(5);
-    border: solid 1px #666;
-    @include border-radius(4px);
-    background-color: #fff;
-    .orbit-slide {
-      > h1, > h2, > h3, > h4, > h5, > h6 { 
-        line-height: 1.6;
-        margin: rem-calc(10 45 10 45);
-        padding: rem-calc(5);
-      }
-      > p, > ul, > ol {
-        margin: rem-calc(5 50);
-        text-align: justify;
-      }
-      > ul, > ol {
-        list-style: inside;
-      }
-      .breadcrumbs.namespace {
-        margin-top: rem-calc(10s);
-      }
-      .example-area {
-        margin: rem-calc(5 45);
-      }
-    }
-  }
+  @import "orbit-intro";
 }
 
-body {
-  background: 
-    url('../../manual/pics/wood-texture-top.jpg'),
-    url('../../manual/pics/wood-texture-break.jpg'),
-    url('../../manual/pics/wood-textures.jpg');
-  background-repeat: 
-    repeat-x,
-    repeat-x,
-    repeat;
-  background-position: 
-    0px -320px,
-    0px 30px,
-    0 0;
-}
-$pagination-current-bg-color: #999;
-$pagination-hover-bg-color: #ddd;
-.pagination {
-  li:not(.ellipsis) {
-    overflow: hidden;
-    padding: 0;
-    @include border-radius(4px);
-    border: 1px solid transparent;
-    &.current , &:hover {
-      padding: 0;
-      border: 1px solid #cacaca;
-      a {
-        color: #fff;
-      }
-    }
-    &.current {
-      color: #fff;
-      background-color: $pagination-current-bg-color;
-      border: 1px solid #cacaca;
-      a {
-        color: #fff;
-        &:hover {
-          background-color: $pagination-current-bg-color;
-        }
-
-      }
-    }
-    &:hover {
-      background-color: $pagination-hover-bg-color;
-      border: 1px solid #ccc;
-      a {
-        color: #111;
-        &:hover {
-          background-color: $pagination-hover-bg-color;
-        }
-      }
-    }
-  }
-}
+@import "body";
+@import "pagination";
 .is-drilldown {
   background-color: #fafafa;
   ul, li {

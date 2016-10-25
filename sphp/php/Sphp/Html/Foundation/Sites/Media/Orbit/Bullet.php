@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Span;
 
 /**
- * Class models a bullet for Foundation 6 orbit
+ * Class models a bullet for Foundation orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

@@ -1,0 +1,28 @@
+
+  .foundation-intro, .orbit.intro {
+    margin: rem-calc(5);
+    border: solid 1px #666;
+    @include border-radius(4px);
+    background-color: #fff;
+    .orbit-slide {
+      @import "headings"; 
+      > h1, > h2, > h3, > h4, > h5, > h6 { 
+        line-height: 1.6;
+        margin: rem-calc(10 45 10 45);
+        padding: rem-calc(5);
+      }
+      > p, > ul, > ol {
+        margin: rem-calc(5 50);
+        text-align: justify;
+      }
+      > ul, > ol {
+        list-style: inside;
+      }
+      .breadcrumbs.namespace {
+        margin-top: rem-calc(10s);
+      }
+      .example-area {
+        margin: rem-calc(5 45);
+      }
+    }
+  }

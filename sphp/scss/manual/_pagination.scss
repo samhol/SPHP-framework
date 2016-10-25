@@ -1,0 +1,44 @@
+/**
+ * _pagination.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+$pagination-current-bg-color: #999;
+$pagination-hover-bg-color: #ddd;
+.pagination {
+  li:not(.ellipsis) {
+    overflow: hidden;
+    padding: 0;
+    @include border-radius(4px);
+    border: 1px solid transparent;
+    &.current , &:hover {
+      padding: 0;
+      border: 1px solid #cacaca;
+      a {
+        color: #fff;
+      }
+    }
+    &.current {
+      color: #fff;
+      background-color: $pagination-current-bg-color;
+      border: 1px solid #cacaca;
+      a {
+        color: #fff;
+        &:hover {
+          background-color: $pagination-current-bg-color;
+        }
+
+      }
+    }
+    &:hover {
+      background-color: $pagination-hover-bg-color;
+      border: 1px solid #ccc;
+      a {
+        color: #111;
+        &:hover {
+          background-color: $pagination-hover-bg-color;
+        }
+      }
+    }
+  }
+}

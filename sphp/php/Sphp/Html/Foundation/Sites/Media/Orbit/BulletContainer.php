@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Class implements a part of Foundation 6 Orbit containing {@link Bullet} components
+ * Class implements a bullet container for Foundation Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

@@ -1,0 +1,20 @@
+/**
+ * _body.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+body {
+  background: 
+    url('../../manual/pics/wood-texture-top.jpg'),
+    url('../../manual/pics/wood-texture-break.jpg'),
+    url('../../manual/pics/wood-textures.jpg');
+  background-repeat: 
+    repeat-x,
+    repeat-x,
+    repeat;
+  background-position: 
+    0px -320px,
+    0px 30px,
+    0 0;
+}

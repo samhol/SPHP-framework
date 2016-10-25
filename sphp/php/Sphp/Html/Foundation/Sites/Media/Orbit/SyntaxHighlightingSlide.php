@@ -13,14 +13,10 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Headings\H2;
 
 /**
- * Class implements an Foundation 6 Accordion containing a single syntax highlighting pane
- * 
- * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}
- *
- * {@inheritdoc}
+ * Class implements a syntax highlighting slide for Foundation Orbit components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-24
+ * @since   2016-06-01
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
