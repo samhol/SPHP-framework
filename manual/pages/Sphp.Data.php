@@ -39,7 +39,7 @@ CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/SphpArrayObject.php", "
 $load("Sphp.Data.StablePriorityQueue.php");
 $load("Sphp.Data.StackInterface.php");
 $load("Sphp.Data.Collection.php");
-//$load("Sphp.Data.PrioritizedObjectStorage.php");
+$load("Sphp.Data.UniquePriorityQueue.php");
 //$load("Sphp.Data.UniqueDataContainer.php");
 //$load("Sphp.Data.PropertyStorage.php");
 

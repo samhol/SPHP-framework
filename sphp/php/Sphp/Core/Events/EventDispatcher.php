@@ -7,7 +7,8 @@
 
 namespace Sphp\Core\Events;
 
-use Sphp\Data\PrioritizedObjectStorage;
+use Sphp\Data\UniquePriorityQueue;
+use InvalidArgumentException;
 
 /**
  * Implements an object for managing event listeners and dispatching events
@@ -29,7 +30,7 @@ class EventDispatcher implements EventDispatcherInterface {
   /**
    * The event listeners as eventname => PrioritizedObjectStorage pairs
    *
-   * @var PrioritizedObjectStorage[]
+   * @var UniquePriorityQueue[]
    */
   private $listeners = [];
 
@@ -84,23 +85,23 @@ class EventDispatcher implements EventDispatcherInterface {
       return $event;
     }
   }
-  
-  public function addListener($event, $listener, $priority = 0, $passParams = false) {
+
+  public function addListener($event, $listener, $priority = 0) {
     if (is_array($event)) {
       foreach ($event as $event) {
-        $this->addListener($event, $listener, $priority, $passParams);
+        $this->addListener($event, $listener, $priority);
       }
     } else {
       //
       if (!($listener instanceof EventListenerInterface) && !is_callable($listener)) {
         //var_dump($listener);
-        throw new \InvalidArgumentException("Listener type is not recognize as legal.");
+        throw new InvalidArgumentException("Listener type is not recognize as legal");
       }
       $key = $this->getEventName($event);
       if (!array_key_exists($key, $this->listeners)) {
-        $this->listeners[$key] = new PrioritizedObjectStorage();
+        $this->listeners[$key] = new UniquePriorityQueue();
       }
-      $this->listeners[$key]->insert($listener, $priority, $passParams);
+      $this->listeners[$key]->enqueue($listener, $priority);
     }
     return $this;
   }
@@ -125,7 +126,20 @@ class EventDispatcher implements EventDispatcherInterface {
     }
     return $this;
   }
-  
+
+  /**
+   * 
+   * @param  string $name the name of the event
+   * @param  mixed $subject subject the subject which dispached this event
+   * @param  mixed $data the data dispatched with this event
+   * @return self for PHP Method Chaining
+   */
+  public function triggerEvent($name, $subject = null, $data = null) {
+    $event = new Event($name, $subject, $data);
+    $this->trigger($event);
+    return $this;
+  }
+
   public function trigger(EventInterface $event) {
     $key = $event->getName();
     if (array_key_exists($key, $this->listeners)) {
@@ -139,16 +153,16 @@ class EventDispatcher implements EventDispatcherInterface {
     }
     return $this;
   }
-  
+
   public function hasListeners($e) {
     $key = $this->getEventName($e);
     return array_key_exists($key, $this->listeners);
   }
-  
+
   public function getListeners($event) {
     $key = $this->getEventName($event);
     if (array_key_exists($key, $this->listeners)) {
-      return iterator_to_array($this->listeners[$key]);
+      return $this->listeners[$key]->toArray();
     } else {
       return [];
     }

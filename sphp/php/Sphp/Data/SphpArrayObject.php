@@ -22,7 +22,7 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
   use ArrayAccessExtensionTrait;
 
   /**
-   * Constructs a new instance of {@link self} object
+   * Constructs a new instance
    *
    * **Note:** $value can be of any type
    *
@@ -40,6 +40,21 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
     }
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    foreach ($this as $key => $content) {
+      if (is_object($content)) {
+        $this[$key] = clone $content;
+      }
+    }
+  }
+
   public function append($value) {
     parent::append($value);
     return $this;
@@ -53,7 +68,7 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
   }
 
   public function clear() {
-    $this->exchangeArray(array());
+    $this->exchangeArray([]);
     return $this;
   }
 
@@ -94,21 +109,6 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
       $result = parent::offsetGet($offset);
     }
     return $result;
-  }
-
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    foreach ($this as $key => $content) {
-      if (is_object($content)) {
-        $this[$key] = clone $content;
-      }
-    }
   }
 
   public function toArray() {

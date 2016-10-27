@@ -27,15 +27,11 @@ interface EventDispatcherInterface {
    * @param mixed $priority optional priority of the listener: priorities are 
    *        handled like queues, and multiple attachments added to the same 
    *        priority queue will be treated in the order of insertion.
-   * @param boolean $passParams optional flag indicating that the event data 
-   *        property will be converted to function arguments when the listener 
-   *        is called. If $called is an instance of {@link EventListenerInterface}, 
-   *        this parameter will be ignored.
    * @return self for PHP Method Chaining
    * @throws \InvalidArgumentException if the `$listener` type is illegal
    * @return self for PHP Method Chaining
    */
-  public function addListener($event, $listener, $priority = 0, $passParams = false);
+  public function addListener($event, $listener, $priority = 0);
 
   /**
    * Removes an listener from the registry

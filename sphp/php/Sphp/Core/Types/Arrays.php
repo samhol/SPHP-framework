@@ -21,6 +21,62 @@ namespace Sphp\Core\Types;
 class Arrays {
 
   /**
+   * 
+   * @param  mixed $needle
+   * @param  array $haystack
+   * @return boolean
+   */
+  public static function inArray($needle, $haystack) {
+    $found = false;
+    foreach ($haystack as $item) {
+      if ($item === $needle) {
+        $found = true;
+        break;
+      } elseif (is_array($item)) {
+        $found = static::inArray($needle, $item);
+        if ($found) {
+          break;
+        }
+      }
+    }
+    return $found;
+  }/**
+ * @param mixed $input
+ * @param null|callable $callback
+ * @return array
+ */
+public static function filterRecursive($input, $callback = null) {
+    if (!is_array($input)) {
+        return $input;
+    }
+    if (null === $callback) {
+        $callback = function ($v) { return !empty($v);};
+    }
+    $input = array_map(function($v) use ($callback) { return static::filterRecursive($v, $callback); }, $input);
+    return array_filter($input, $callback);
+}
+
+  /**
+   * 
+   * @param array $array
+   * @param callable $callback
+   * @param type $userdata
+   * @return array
+   */
+  public static function recursiveDelete(array &$array, callable $callback, $userdata = null) {
+    foreach ($array as $key => &$value) {
+      if (is_array($value)) {
+        $value = static::recursiveDelete($value, $callback, $userdata);
+      }
+      if ($callback($value, $key, $userdata)) {
+        unset($array[$key]);
+      }
+    }
+
+    return $array;
+  }
+
+  /**
    * Computes the full difference of arrays
    *
    * @param  array $array1 the first array to compare

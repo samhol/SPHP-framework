@@ -17,10 +17,10 @@ namespace Sphp\Core\Events;
  */
 interface EventListenerInterface {
 
-	/**
-	 * The method called when a listened event occurs
-	 *
-	 * @param EventInterface $event
-	 */
-	public function on(EventInterface $event);
+  /**
+   * The method called when a listened event occurs
+   *
+   * @param EventInterface $event
+   */
+  public function on(EventInterface $event);
 }

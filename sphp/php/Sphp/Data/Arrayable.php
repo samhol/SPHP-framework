@@ -20,7 +20,7 @@ interface Arrayable {
   /**
    * Serializes to an array
    *
-   * @return array  the instance as an array
+   * @return array the instance as an array
    */
   public function toArray();
 }

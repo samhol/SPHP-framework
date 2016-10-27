@@ -45,9 +45,77 @@ class ArraysTest extends \PHPUnit_Framework_TestCase {
    * @param array $arr2
    * @param array $diff
    */
-  public function testDiff(array $arr1, array $arr2, array $diff) {
-    print_r(Arrays::diff($arr1,$arr2));
-    $this->assertEquals(Arrays::diff($arr1,$arr2), $diff);
+  public function atestDiff(array $arr1, array $arr2, array $diff) {
+    print_r(Arrays::diff($arr1, $arr2));
+    $this->assertEquals(Arrays::diff($arr1, $arr2), $diff);
+  }
+
+  public function testArrayFilterRecursive() {
+    $array = [
+        'a' => 'a',
+        'b' => null,
+        'c' => [
+            'a' => null,
+            'b' => 'b',
+        ],
+        'd' => [
+            'a' => null
+        ]
+    ];
+    $result = Arrays::filterRecursive($array);
+    $expected = [
+        'a' => 'a',
+        'c' => [
+            'b' => 'b',
+        ],
+    ];
+    $this->assertSame($expected, $result);
+  }
+
+  public function callBackFilteringData() {
+    $input1 = [
+        'a' => false,
+        'b' => null,
+        'c' => [
+            'a' => null,
+            'b' => 0,
+        ],
+        'd' => [
+            'a' => null
+        ]
+    ];
+    $callable = function ($value) {
+      if (is_array($value)) {
+        return !empty($value);
+      }
+      return ($value !== null);
+    };
+    $exp1 = [
+        'a' => false,
+        'c' => [
+            'b' => 0,
+        ],
+    ];
+    $obj = new \stdClass;
+    return [
+        [$input1, $callable, $exp1], 
+        [[], $callable, []], 
+        [[0], $callable, [0]], 
+        [[false], $callable, [false]], 
+        [[$obj], $callable, [$obj]]
+        ];
+  }
+
+  /**
+   * 
+   * @dataProvider callBackFilteringData
+   * @param array $input
+   * @param callable $callBack
+   * @param array $expected
+   */
+  public function testArrayFilterWithCustomCallback(array $input, callable $callBack, array $expected) {
+    $result = Arrays::filterRecursive($input, $callBack);
+    $this->assertSame($expected, $result);
   }
 
 }

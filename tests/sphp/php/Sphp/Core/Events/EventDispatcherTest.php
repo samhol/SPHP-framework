@@ -43,7 +43,16 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase implements EventLi
 		
 	}
 
-	/**
+  public function testA () {
+    $this->events->addListener("evt", function($evt) {
+      echo "$evt\n";
+    });
+		$this->assertTrue($this->events->hasListeners("evt"));
+		$this->assertTrue($this->events->hasListeners("evt"));
+  }
+
+
+  /**
 	 */
 	public function test1() {
 		$this->assertFalse($this->events->hasListeners("e1"));

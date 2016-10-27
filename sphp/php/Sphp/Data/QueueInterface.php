@@ -7,6 +7,8 @@
 
 namespace Sphp\Data;
 
+use Exception;
+
 /**
  * Interface defines properties of a First-In-First-Out (FIFO) queue
  *
@@ -26,9 +28,10 @@ interface QueueInterface {
   public function enqueue($value);
 
   /**
-   * Removes and returns the first item of the queue
+   * Dequeues a node from the queue
    *
    * @return mixed the item at the beginning of the queue or null If the queue is empty
+   * @throws Exception if the queue is empty
    */
   public function dequeue();
 

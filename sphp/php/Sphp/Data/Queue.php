@@ -7,6 +7,8 @@
 
 namespace Sphp\Data;
 
+use SplQueue;
+
 /**
  * An implementation of a first-in-first-out (FIFO) queue
  *
@@ -15,7 +17,7 @@ namespace Sphp\Data;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Queue extends \SplQueue implements QueueInterface {
+class Queue extends SplQueue implements QueueInterface {
 
   public function peek() {
     return $this->bottom();

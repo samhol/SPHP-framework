@@ -23,11 +23,6 @@ class Stack extends SplStack implements StackInterface {
     return $this->top();
   }
 
-  /**
-   * {@inheritdoc}
-   * 
-   * @return self for PHP Method Chaining
-   */
   public function push($value) {
     parent::push($value);
     return $this;

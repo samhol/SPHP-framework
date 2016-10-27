@@ -9,5 +9,6 @@ $q->insert("priority 3", 3);
 $q->insert("2nd priority 2", 2);
 $q->insert("priority 4", 4);
 foreach ($q as $key => $value) {
-	echo "$value\n";
+  echo "$value\n";
 }
+?>
