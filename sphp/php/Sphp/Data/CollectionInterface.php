@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SphpArrayObjectInterface.php (UTF-8)
+ * CollectionInterface.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -12,11 +12,11 @@ use Countable;
 use IteratorAggregate;
 
 /**
- * Interface extends some native PHP datastructure interfaces
+ * Interface implements a collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-24
- * @link    http://www.php.net/manual/en/arrayobject.append.php The ArrayObject class
+ * @link    http://www.php.net/manual/en/arrayobject.php The ArrayObject class
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -7,7 +7,7 @@
 
 namespace Sphp\Data;
 
-use \ArrayObject as ArrayObject;
+use ArrayObject;
 
 /**
  * Provides accessing objects as arrays
@@ -18,8 +18,6 @@ use \ArrayObject as ArrayObject;
  * @filesource
  */
 class SphpArrayObject extends ArrayObject implements CollectionInterface {
-
-  use ArrayAccessExtensionTrait;
 
   /**
    * Constructs a new instance
@@ -67,9 +65,27 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
     return $this;
   }
 
+  public function remove($offset) {
+    foreach ($this as $key => $val) {
+      if ($val === $offset) {
+        $this->offsetUnset($key);
+      }
+    }
+    return $this;
+  }
+
   public function clear() {
     $this->exchangeArray([]);
     return $this;
+  }
+
+  /**
+   * Determine if the collection is empty or not
+   *
+   * @return boolean true if the collection is empty, false otherwise
+   */
+  public function isEmpty() {
+    return $this->count() > 0;
   }
 
   /**
@@ -113,6 +129,17 @@ class SphpArrayObject extends ArrayObject implements CollectionInterface {
 
   public function toArray() {
     return (array) $this;
+  }
+
+  public function exists($value) {
+    $exists = false;
+    foreach ($this as $val) {
+      if ($val === $value) {
+        $exists = true;
+        break;
+      }
+    }
+    return $exists;
   }
 
 }

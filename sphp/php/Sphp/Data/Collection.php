@@ -20,8 +20,6 @@ use UnderflowException;
  */
 class Collection implements CollectionInterface {
 
-  use ArrayAccessExtensionTrait;
-
   /**
    * stored values
    *
@@ -124,6 +122,11 @@ class Collection implements CollectionInterface {
 
   public function exists($value) {
     return in_array($value, $this->items);
+  }
+
+  public function append($value) {
+    $this->items[] = $value;
+    return $this;
   }
 
   /**
