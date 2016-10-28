@@ -8,6 +8,7 @@
 namespace Sphp\Data;
 
 use Sphp\Core\Types\Arrays;
+use UnderflowException;
 
 /**
  * An implementation of a general purpose collection data structure
@@ -85,10 +86,9 @@ class Collection implements CollectionInterface {
    * @return mixed the value of the property or null
    */
   public function offsetGet($offset) {
+    $value = null;
     if ($this->offsetExists($offset)) {
       $value = $this->items[$offset];
-    } else {
-      $value = null;
     }
     return $value;
   }
@@ -122,11 +122,12 @@ class Collection implements CollectionInterface {
     return $this;
   }
 
+  public function exists($value) {
+    return in_array($value, $this->items);
+  }
+
   /**
-   * Push an item onto the beginning of the collection
-   *
-   * @param  mixed $value the value to prepend
-   * @return self for PHP Method Chaining
+   * {@inheritdoc}
    * @complexity O(n)
    */
   public function prepend($value) {
@@ -153,16 +154,6 @@ class Collection implements CollectionInterface {
   public function merge($items) {
     $this->items = array_merge($this->items, $this->getArrayableItems($items));
     return $this;
-  }
-
-  /**
-   * Removes the item at the top of the collection and returns that item as the value
-   *
-   * @return mixed the top-most element or null If the collection is empty
-   * @complexity O(1)
-   */
-  public function pop() {
-    return array_pop($this->items);
   }
 
   /**
@@ -250,13 +241,21 @@ class Collection implements CollectionInterface {
     return in_array($value, $this->items);
   }
 
+  public function remove($offset) {
+    $f = function($var) use ($offset) {
+      return $var !== $offset;
+    };
+    $this->items = array_filter($this->items, $f);
+    return $this;
+  }
+
   /**
    * Determine if the collection is empty or not
    *
    * @return boolean true if the collection is empty, false otherwise
    */
   public function isEmpty() {
-    return count($this->items) === 0;
+    return empty($this->items);
   }
 
   /**
@@ -319,6 +318,33 @@ class Collection implements CollectionInterface {
       $stack->push($item);
     }
     return $stack;
+  }
+
+  /**
+   * {@inheritdoc}
+   * @complexity O(1)
+   */
+  public function pop() {
+    if ($this->isEmpty()) {
+      throw new UnderflowException();
+    }
+    return array_pop($this->items);
+  }
+
+  public function enqueue($value) {
+    $this->items[] = $value;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   * @complexity O(n)
+   */
+  public function dequeue() {
+    if ($this->isEmpty()) {
+      throw new UnderflowException();
+    }
+    return array_shift($this->items);
   }
 
 }

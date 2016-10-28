@@ -83,65 +83,14 @@ trait ArrayAccessExtensionTrait {
   }
 
   /**
-   * Assigns a value to the specified offset
-   *
-   * Chainable shorthand method for {@link \ArrayAccess::offsetSet()} implementation
-   *
-   * @param  mixed $offset the offset to assign the value to
-   * @param  mixed $value the value to set
-   * @return self for PHP Method Chaining
-   * @uses   \ArrayAccess::offsetSet()
-   */
-  public function set($offset, $value) {
-    $this->offsetSet($offset, $value);
-    return $this;
-  }
-
-  /**
-   * Unsets the value at the specified offset
-   *
-   * Chainable shorthand method for {@link \ArrayAccess::offsetUnset()} implementation
-   *
-   * @param  mixed $offset offset to unset
-   * @return self for PHP Method Chaining
-   * @uses   \ArrayAccess::offsetUnset()
-   */
-  public function remove($offset) {
-    $this->offsetUnset($offset);
-    return $this;
-  }
-
-  /**
    * Appends a new value as the last element
    *
    * @param  mixed $value $value the value being pushed (appended)
    * @return self for PHP Method Chaining
    */
   public function append($value) {
-    return $this->offsetSet(null, $value);
-  }
-
-  /**
-   * Push an item onto the end of the collection.
-   *
-   * @param  mixed $value the value being pushed (appended)
-   * @return self for PHP Method Chaining
-   */
-  public function push($value) {
     $this->offsetSet(null, $value);
     return $this;
-  }
-
-  /**
-   * Removes and returns an item from the collection by its offset
-   * 
-   * @param  mixed $offset the offset to pull
-   * @return mixed pulled value
-   */
-  public function pull($offset) {
-    $value = $this->get($offset);
-    $this->offsetUnset($offset);
-    return $value;
   }
 
 }

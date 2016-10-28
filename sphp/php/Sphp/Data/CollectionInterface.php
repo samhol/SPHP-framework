@@ -40,6 +40,13 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Iterato
    * @return self for PHP Method Chaining
    */
   public function prepend($value);
+  
+  /**
+   * Determine if the collection is empty or not
+   *
+   * @return boolean true if the collection is empty, false otherwise
+   */
+  public function isEmpty();
 
   /**
    * Clears the contents
@@ -49,47 +56,18 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Iterato
   public function clear();
 
   /**
-   * Checks whether an offset exists
+   * Checks whether a value exists
    *
-   * Shorthand method for {@link \ArrayAccess::offsetExists()} implementation
-   *
-   * @param  mixed $offset an offset to check for
+   * @param  mixed $value the value to search for
    * @return boolean `true` on success or `false` on failure
-   * @uses   self::offsetExists()
    */
-  public function exists($offset);
+  public function exists($value);
 
   /**
-   * Returns the value at specified offset
+   * Removes all instances of the given value
    *
-   * Shorthand method for {@link \ArrayAccess::offsetGet()} implementation
-   *
-   * @param  mixed $offset the index with the content element
-   * @return mixed content or `null`
-   * @uses   self::offsetGet()
-   */
-  public function get($offset);
-
-  /**
-   * Assigns a value to the specified offset
-   *
-   * Chainable shorthand method for {@link \ArrayAccess::offsetSet()} implementation
-   *
-   * @param  mixed $offset the offset to assign the value to
-   * @param  mixed $value the value to set
+   * @param  mixed $value the value to remove
    * @return self for PHP Method Chaining
-   * @uses   self::offsetSet()
    */
-  public function set($offset, $value);
-
-  /**
-   * Unsets an offset
-   *
-   * Chainable shorthand method for {@link \ArrayAccess::offsetUnset()} implementation
-   *
-   * @param  mixed $offset offset to unset
-   * @return self for PHP Method Chaining
-   * @uses   self::offsetUnset()
-   */
-  public function remove($offset);
+  public function remove($value);
 }

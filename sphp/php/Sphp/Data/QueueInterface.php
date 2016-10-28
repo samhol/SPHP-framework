@@ -30,7 +30,7 @@ interface QueueInterface {
   /**
    * Dequeues a node from the queue
    *
-   * @return mixed the item at the beginning of the queue or null If the queue is empty
+   * @return mixed the item at the beginning of the queue
    * @throws Exception if the queue is empty
    */
   public function dequeue();
@@ -38,7 +38,8 @@ interface QueueInterface {
   /**
    * Observes the first item of the queue without removing it
    *
-   * @return mixed the item at the beginning of the queue or null If the queue is empty
+   * @return mixed the item at the beginning of the queue
+   * @throws Exception if the queue is empty
    */
   public function peek();
 

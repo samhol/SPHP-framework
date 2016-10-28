@@ -25,14 +25,14 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
     unset($this->q);
   }
 
-  public function queueData() {
+  public function priorityQueueData() {
     return [
         [["a", 6 => "b", "b", 2 => "b"]]
     ];
   }
 
   /**
-   * @dataProvider queueData
+   * @dataProvider priorityQueueData
    *
    * @param array $values
    */
@@ -55,7 +55,7 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
     $this->assertCount(0, $this->q);
   }
 
-  public function uniqueQeueData() {
+  public function uniquePriorityQueueData() {
     return [
         [[]],
         [range('a', 'o')],
@@ -66,7 +66,7 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider uniqueQeueData
+   * @dataProvider uniquePriorityQueueData
    *
    * @param array $values
    */
@@ -81,7 +81,7 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider uniqueQeueData
+   * @dataProvider uniquePriorityQueueData
    *
    * @param array $values
    */
@@ -96,7 +96,7 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider uniqueQeueData
+   * @dataProvider uniquePriorityQueueData
    *
    * @param array $values
    */
@@ -118,7 +118,7 @@ class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider uniqueQeueData
+   * @dataProvider uniquePriorityQueueData
    *
    * @param array $values
    */

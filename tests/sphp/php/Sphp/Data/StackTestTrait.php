@@ -2,34 +2,9 @@
 
 namespace Sphp\Data;
 
-require_once 'StackTestTrait.php';
-
 use Exception;
 
-class StackTest extends \PHPUnit_Framework_TestCase {
-
-  use StackTestTrait;
-
-  /**
-   * @var StackInterface
-   */
-  protected $datastructure;
-
-  /**
-   * 
-   * @return Stack
-   */
-  public function createStack() {
-    return new Stack();
-  }
-
-  protected function setUp() {
-    $this->datastructure = $this->createStack();
-  }
-
-  protected function tearDown() {
-    unset($this->datastructure);
-  }
+trait StackTestTrait {
 
   /**
    * 
@@ -46,7 +21,21 @@ class StackTest extends \PHPUnit_Framework_TestCase {
    * @expectedException Exception
    * @expectedExceptionCode 0
    */
+  public function testEmpty1() {
+    echo "---trait---";
+    $this->datastructure->push("value");
+    $this->assertFalse($this->datastructure->isEmpty());
+    $this->datastructure->pop();
+    $this->assertTrue($this->datastructure->isEmpty());
+    $this->datastructure->pop();
+  }
+
+  /**
+   * @expectedException Exception
+   * @expectedExceptionCode 0
+   */
   public function testEmpty() {
+    echo "---trait---";
     $this->datastructure->push("value");
     $this->assertFalse($this->datastructure->isEmpty());
     $this->datastructure->pop();
