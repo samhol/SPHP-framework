@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Data;
 
-$arr = new SphpArrayObject(["a", "b", "c" => "c"]);
+$arr = new Collection(["a", "b", "c" => "c"]);
 //append data
 $arr->append(["a", "b", "c"]);
 //use array notations

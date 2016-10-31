@@ -8,7 +8,7 @@
 namespace Sphp\Core\Validators;
 
 use Sphp\Core\Gettext\TopicList;
-use Sphp\Data\SphpArrayObject;
+use Sphp\Data\Collection;
 use Sphp\Core\Types\Arrays;
 
 /**
@@ -24,7 +24,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
   /**
    * inner {@link InputDataValidator} validators
    *
-   * @var SphpArrayObject
+   * @var Collection
    */
   private $validators;
 
@@ -40,7 +40,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
    */
   public function __construct() {
     $this->errors = new TopicList();
-    $this->validators = new SphpArrayObject();
+    $this->validators = new Collection();
   }
 
   /**

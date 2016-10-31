@@ -26,6 +26,12 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    * @var ReflectionClass
    */
   protected $ref;
+  
+  /**
+   *
+   * @var ClassLinkPathGenerator 
+   */
+  private $classLinkParser;
 
   /**
    * Constructs a new instance
@@ -33,13 +39,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    * @param string $root the base url pointing to the documentation
    * @param string|\object $class class name or object
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
-   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($root, $class, $defaultTarget = '_blank', $defaultCssClasses = null) {
-    parent::__construct($root, $defaultTarget, $defaultCssClasses);
+  public function __construct($root, $class, ClassLinkPathGenerator $pathParser, $defaultTarget = '_blank') {
+    parent::__construct($root, $defaultTarget);
     $this->ref = new ReflectionClass($class);
+    $this->classLinkParser = $pathParser;
   }
 
   public function __destruct() {
@@ -73,7 +79,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     } else {
       $title = $this->ref->getName() . ' class';
     }
-    return $this->hyperlink($this->getClassPath(), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getClassPath(), $name, $title);
   }
 
   public function method($method, $full = true) {
@@ -95,48 +101,19 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
       //$name = $this->ref->getShortName() . "::$reflectedMethod->name()";
       $title = "Instance method: $fullClassName::$reflectedMethod->name()";
     }
-    return $this->hyperlink($this->getMethodPath($method), $text, $title);
+    return $this->hyperlink($this->classLinkParser->getMethodPath($method), $text, $title);
   }
 
   public function constant($constName) {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
-    return $this->hyperlink($this->getConstantPath($constName), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getConstantPath($constName), $name, $title);
   }
 
   public function namespaceLink($full = true) {
     $name = $this->ref->getNamespaceName();
     $title = "$name namespace";
-    return $this->hyperlink($this->getNamespacePath(), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getNamespacePath(), $name, $title);
   }
-
-  /**
-   * Returns the relative API page path of the given class
-   *
-   * @return string the relative API page path of the given class
-   */
-  abstract protected function getClassPath();
-
-  /**
-   * Returns the relative API page path of the given class method
-   *
-   * @param  string $method the method name
-   * @return string the relative API page path string pointing to the given class method
-   */
-  abstract protected function getMethodPath($method);
-
-  /**
-   * Returns the relative API page path of the given class constant
-   *
-   * @param  string $constant the name of the constant
-   * @return string the relative API page path of the given class constant
-   */
-  abstract protected function getConstantPath($constant);
-
-  /**
-   * Returns the relative API page path of the given namespace
-   *
-   * @return string the relative API page path of the given namespace
-   */
-  abstract protected function getNamespacePath();
+  
 }

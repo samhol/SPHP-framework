@@ -7,6 +7,8 @@
 
 namespace Sphp\Html;
 
+use IteratorAggregate;
+
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers
  *
@@ -30,7 +32,7 @@ namespace Sphp\Html;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractContainerTag extends AbstractContainerComponent implements ContainerComponentInterface, ContentParserInterface {
+class AbstractContainerTag extends AbstractContainerComponent implements IteratorAggregate, ContainerComponentInterface, ContentParserInterface {
 
   use ContainerComponentTrait,
       ContentParsingTrait,

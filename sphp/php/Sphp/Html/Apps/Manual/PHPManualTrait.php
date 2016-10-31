@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Hyperlink as Hyperlink;
+use Sphp\Html\Hyperlink;
 use Sphp\Core\Types\Strings;
 
 /**

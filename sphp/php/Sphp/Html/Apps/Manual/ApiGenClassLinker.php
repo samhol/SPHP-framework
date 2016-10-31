@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs as BreadCrumbs;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb as BreadCrumb;
+use Sphp\Core\Util\ReflectionClassExt;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
 /**
  * PHP class link generator pointing to an exising ApiGen documentation
@@ -43,25 +43,6 @@ class ApiGenClassLinker extends AbstractClassLinker {
     $bc = new BreadCrumb($this->getApiRoot() . $this->getClassPath(), $this->ref->getShortName(), "apigen");
     $bcs->append($bc);
     return $bcs;
-  }
-
-  protected function getClassPath() {
-    $path = str_replace('\\', '.', $this->ref->getName());
-    return "class-$path.html";
-  }
-
-  protected function getMethodPath($method) {
-    return $this->getClassPath() . '#_' . $method;
-  }
-
-  protected function getConstantPath($constant) {
-    return $this->getClassPath() . '#_' . $constant;
-  }
-
-  protected function getNamespacePath() {
-    $ns = $this->ref->getNamespaceName();
-    $path = str_replace('\\', '.', $ns);
-    return "namespace-$path.html";
   }
 
 }

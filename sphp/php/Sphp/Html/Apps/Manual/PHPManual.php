@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Hyperlink as Hyperlink;
+use Sphp\Html\Hyperlink;
 use Sphp\Core\Types\Strings;
 
 /**
@@ -37,11 +37,12 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function __construct($defaultTarget = '_blank', $defaultCssClasses = 'api phpman') {
-    parent::__construct('https://secure.php.net/manual/en/', $defaultTarget, $defaultCssClasses);
+    parent::__construct('https://secure.php.net/manual/en/', $defaultTarget);
+    $this->setDefaultCssClasses($defaultCssClasses);
   }
 
   public function classLinker($class) {
-    return new PHPManualClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new PHPManualClassLinker($this->getApiRoot(), $class, new PHPManualClassPathParser($class), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   /**

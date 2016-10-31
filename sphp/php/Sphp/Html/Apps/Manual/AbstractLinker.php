@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Types\Strings;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
@@ -128,7 +127,7 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Sets the default CSS classes for the generated links
    *
-   * @param  string|null $defaultTarget the default CSS classes for the generated links
+   * @param  string|null $defaultCssClasses the default CSS classes for the generated links
    * @return self for PHP Method Chaining
    */
   public function setDefaultCssClasses($defaultCssClasses = null) {
@@ -137,12 +136,12 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
-    if (Strings::isEmpty($content)) {
+    if ($content === null) {
       $content = $relativeUrl;
     }
     $a = new Hyperlink($this->getApiRoot() . $relativeUrl, $content);
     $a->setTarget($this->getDefaultTarget());
-    if (!Strings::isEmpty($title)) {
+    if ($title !== null) {
       $a->setTitle($title);
     }
     if ($this->defaultCssClasses !== null) {

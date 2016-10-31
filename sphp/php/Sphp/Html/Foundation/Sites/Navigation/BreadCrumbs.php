@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
+use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\TraversableInterface;
@@ -30,7 +31,7 @@ use Sphp\Html\TraversableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BreadCrumbs extends AbstractContainerComponent implements TraversableInterface {
+class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface {
 
   use TraversableTrait;
 

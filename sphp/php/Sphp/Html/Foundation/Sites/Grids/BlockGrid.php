@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
 use Sphp\Html\TraversableTrait;
@@ -25,7 +26,7 @@ use Sphp\Html\ContentParsingTrait as ContentParsingTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BlockGrid extends AbstractContainerComponent implements ContentParserInterface, TraversableInterface {
+class BlockGrid extends AbstractContainerComponent implements IteratorAggregate, ContentParserInterface, TraversableInterface {
 
   use TraversableTrait,
       ContentParsingTrait;

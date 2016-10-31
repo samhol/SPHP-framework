@@ -9,7 +9,7 @@ namespace Sphp\Data;
 
 use ArrayAccess;
 use Countable;
-use IteratorAggregate;
+use Traversable;
 
 /**
  * Interface implements a collection
@@ -20,7 +20,7 @@ use IteratorAggregate;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface CollectionInterface extends Arrayable, ArrayAccess, Countable, IteratorAggregate {
+interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Traversable {
 
   /**
    * Appends a new value as the last element
@@ -40,7 +40,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Iterato
    * @return self for PHP Method Chaining
    */
   public function prepend($value);
-  
+
   /**
    * Determine if the collection is empty or not
    *
@@ -51,17 +51,18 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Iterato
   /**
    * Clears the contents
    *
+   * @postcondition isEmpty() === true
    * @return self for PHP Method Chaining
    */
   public function clear();
 
   /**
-   * Checks whether a value exists
+   * Checks whether a value exists in the collection
    *
    * @param  mixed $value the value to search for
    * @return boolean `true` on success or `false` on failure
    */
-  public function exists($value);
+  public function contains($value);
 
   /**
    * Removes all instances of the given value

@@ -1,16 +1,16 @@
 <?php
 
 /**
- * ApiGenLinker.php (UTF-8)
+ * ApiGen.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Core\Util\ReflectionClassExt as ReflectionClassExt;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb as BreadCrumb;
-use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs as BreadCrumbs;
+use Sphp\Core\Util\ReflectionClassExt;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
+use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
 /**
  * Hyperlink generator pointing to an exising ApiGen documentation
@@ -48,7 +48,7 @@ class ApiGen extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    return new ApiGenClassLinker($this->getApiRoot(), $class, $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new ApiGenClassLinker($this->getApiRoot(), $class, new ApiGenClassPathParser($class), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   /**

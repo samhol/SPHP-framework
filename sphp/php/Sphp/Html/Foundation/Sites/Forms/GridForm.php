@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Forms;
-
+use IteratorAggregate;
 use Sphp\Html\Forms\TraversableFormInterface;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
@@ -25,7 +25,7 @@ use Sphp\Html\Foundation\Sites\Containers\Callout;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GridForm extends AbstractContainerComponent implements GridInterface, TraversableFormInterface {
+class GridForm extends AbstractContainerComponent implements IteratorAggregate, GridInterface, TraversableFormInterface {
 
   use FormGridTrait,
       TraversableFormTrait;

@@ -7,7 +7,9 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Data\SphpArrayObject;
+use Countable;
+use IteratorAggregate;
+use Sphp\Data\Collection;
 
 /**
  * A validator container for validating a value against multiple validators
@@ -17,12 +19,12 @@ use Sphp\Data\SphpArrayObject;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractValidatorAggregate extends AbstractOptionalValidator implements \Countable, \IteratorAggregate {
+abstract class AbstractValidatorAggregate extends AbstractOptionalValidator implements Countable, IteratorAggregate {
 
   /**
    * used validators
    *
-   * @var SphpArrayObject
+   * @var Collection
    */
   protected $validators;
 
@@ -33,7 +35,7 @@ abstract class AbstractValidatorAggregate extends AbstractOptionalValidator impl
    */
   public function __construct($validators = null) {
     parent::__construct();
-    $this->validators = new SphpArrayObject();
+    $this->validators = new Collection();
     if (is_array($validators)) {
       foreach ($validators as $validator) {
         $this->appendValidator($validator);
@@ -107,10 +109,10 @@ abstract class AbstractValidatorAggregate extends AbstractOptionalValidator impl
    * Create a new iterator to iterate through the {@link ValidatorInterface}
    * objects in the aggregate
    *
-   * @return \ArrayIterator iterator
+   * @return Collection iterator
    */
   public function getIterator() {
-    return new \ArrayIterator($this->validators);
+    return $this->validators;
   }
 
 }

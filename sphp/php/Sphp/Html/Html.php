@@ -7,6 +7,7 @@
 
 namespace Sphp\Html;
 
+use IteratorAggregate;
 use Sphp\Html\Head\Head;
 use Sphp\Html\Programming\ScriptsContainer;
 
@@ -21,7 +22,7 @@ use Sphp\Html\Programming\ScriptsContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Html extends AbstractComponent implements TraversableInterface, ContentParserInterface {
+class Html extends AbstractComponent implements IteratorAggregate, TraversableInterface, ContentParserInterface {
 
   use TraversableTrait;
 

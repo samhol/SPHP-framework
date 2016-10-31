@@ -7,8 +7,6 @@
 
 namespace Sphp\Html;
 
-use Closure;
-
 /**
  * Class defines common features for wrapping HTML container like aa list or a table etc...
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Core\Gettext;
 
 use Sphp\Core\Types\Arrays;
-use Sphp\Data\SphpArrayObject as SphpArrayObject;
+use Sphp\Data\Collection;
 
 /**
  * Class models a container for {@link MessageList} objects sorted by associated topics
@@ -35,7 +35,7 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess {
   /**
    * container for the {@link MessageList} objects
    *
-   * @var SphpArrayObject
+   * @var Collection
    */
   private $topics;
 
@@ -45,7 +45,7 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess {
    * @param  Translator|null $translator the translator component
    */
   public function __construct(Translator $translator = null) {
-    $this->topics = new SphpArrayObject();
+    $this->topics = new Collection();
     if ($translator !== null) {
       $this->setTranslator($translator);
     } else {

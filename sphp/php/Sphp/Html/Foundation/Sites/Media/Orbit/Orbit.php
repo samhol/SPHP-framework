@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
+use IteratorAggregate;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\ContentParserInterface;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\TraversableTrait;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Navigation\Nav;
 use Sphp\Html\Media\VideoPlayerInterface;
@@ -26,9 +26,9 @@ use Sphp\Html\Foundation\Sites\Media\Flex;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Orbit extends AbstractComponent implements ContentParserInterface, TraversableInterface {
+class Orbit extends AbstractComponent implements IteratorAggregate, ContentParserInterface, TraversableInterface {
 
-  use TraversableTrait,
+  use \Sphp\Html\TraversableTrait,
       \Sphp\Html\ContentParsingTrait;
 
   /**

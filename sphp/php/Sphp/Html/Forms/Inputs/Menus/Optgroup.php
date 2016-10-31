@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\TraversableTrait;
 
 /**
  * Class Models an HTML &lt;optgroup&gt; tag
@@ -31,10 +31,10 @@ use Sphp\Html\TraversableTrait;
  * @link http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API link
  * @filesource
  */
-class Optgroup extends AbstractContainerComponent implements SelectMenuContentInterface, TraversableInterface {
+class Optgroup extends AbstractContainerComponent implements IteratorAggregate, SelectMenuContentInterface, TraversableInterface {
 
   use OptionHandlingTrait,
-      TraversableTrait;
+      \Sphp\Html\TraversableTrait;
 
   /**
    * Constructs a new instance of the {@link Optgroup} component

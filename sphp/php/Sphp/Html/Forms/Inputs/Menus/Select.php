@@ -7,12 +7,9 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Forms\Inputs\ValidableInputTrait as ValidableInputTrait;
-use Sphp\Html\Forms\Inputs\InputTrait as InputTrait;
-use Sphp\Html\TraversableTrait;
 use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
-use Sphp\Html\Forms\LabelableTrait as LabelableTrait;
 use Sphp\Html\ContainerInterface;
 
 /**
@@ -39,13 +36,13 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Select extends AbstractContainerComponent implements LabelableInterface, SelectMenuInterface {
+class Select extends AbstractContainerComponent implements IteratorAggregate, LabelableInterface, SelectMenuInterface {
 
-  use InputTrait,
+  use \Sphp\Html\Forms\Inputs\InputTrait,
       OptionHandlingTrait,
-      LabelableTrait,
-      ValidableInputTrait,
-      TraversableTrait;
+      \Sphp\Html\Forms\LabelableTrait,
+      \Sphp\Html\Forms\Inputs\ValidableInputTrait,
+      \Sphp\Html\TraversableTrait;
 
   /**
    * Constructs a new instance

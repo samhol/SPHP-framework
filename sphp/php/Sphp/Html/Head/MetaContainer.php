@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Head;
 
+use IteratorAggregate;
 use Sphp\Html\Container;
 use Sphp\Html\TraversableInterface;
 
@@ -26,7 +27,7 @@ use Sphp\Html\TraversableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MetaContainer implements TraversableInterface {
+class MetaContainer implements IteratorAggregate, TraversableInterface {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;

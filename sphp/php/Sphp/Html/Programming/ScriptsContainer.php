@@ -7,10 +7,9 @@
 
 namespace Sphp\Html\Programming;
 
+use IteratorAggregate;
 use Sphp\Html\ContentInterface;
-use Sphp\Html\ContentTrait;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\TraversableTrait;
 use Sphp\Html\Container;
 
 /**
@@ -21,10 +20,10 @@ use Sphp\Html\Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ScriptsContainer implements ContentInterface, TraversableInterface {
+class ScriptsContainer implements IteratorAggregate, ContentInterface, TraversableInterface {
 
-  use ContentTrait,
-      TraversableTrait;
+  use \Sphp\Html\ContentTrait,
+      \Sphp\Html\TraversableTrait;
 
   /**
    * scripts container

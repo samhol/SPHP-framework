@@ -8,7 +8,7 @@
 namespace Sphp\Core\Validators;
 
 use Sphp\Core\Gettext\TopicList as TopicList;
-use Sphp\Data\SphpArrayObject as SphpArrayObject;
+use Sphp\Data\Collection;
 use Sphp\Core\Types\Arrays;
 
 /**
@@ -24,7 +24,7 @@ class FormValidator implements ValidatorInterface, \Countable, \IteratorAggregat
   /**
    * inner {@link InputDataValidator} validators
    *
-   * @var SphpArrayObject
+   * @var Collection
    */
   private $validators;
 
@@ -40,12 +40,13 @@ class FormValidator implements ValidatorInterface, \Countable, \IteratorAggregat
    */
   public function __construct() {
     $this->errors = new TopicList();
-    $this->validators = new SphpArrayObject();
+    $this->validators = new Collection();
   }
 
   /**
    * Resets the validator to for revalidation
-   * D
+   * 
+   * @return self for PHP Method Chaining
    */
   public function reset() {
     foreach ($this as $validator) {

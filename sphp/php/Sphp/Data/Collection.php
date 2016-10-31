@@ -7,6 +7,7 @@
 
 namespace Sphp\Data;
 
+use Iterator;
 use Sphp\Core\Types\Arrays;
 use UnderflowException;
 
@@ -18,7 +19,7 @@ use UnderflowException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Collection implements CollectionInterface {
+class Collection implements Iterator, CollectionInterface {
 
   /**
    * stored values
@@ -120,10 +121,6 @@ class Collection implements CollectionInterface {
     return $this;
   }
 
-  public function exists($value) {
-    return in_array($value, $this->items);
-  }
-
   public function append($value) {
     $this->items[] = $value;
     return $this;
@@ -160,20 +157,6 @@ class Collection implements CollectionInterface {
   }
 
   /**
-   * Shift an item off the beginning of the collection
-   *
-   * Shifts the first item off and returns it, shortening the collection by one
-   * and moving everything down. All numerical keys will be modified to start
-   * counting from zero while literal keys won't be touched.
-   *
-   * @return mixed the first item of the collection or null If the collection is empty
-   * @complexity O(n)
-   */
-  public function shift() {
-    return array_shift($this->items);
-  }
-
-  /**
    * Set the internal pointer of the collection to its last item, and returns its value
    *
    * @return mixed the value of the last item or null for empty collection
@@ -184,16 +167,6 @@ class Collection implements CollectionInterface {
       $value = null;
     }
     return $value;
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   *
-   * @return mixed|false the value in the next place that's pointed to by the
-   *         internal pointer, or false if there are no more elements.
-   */
-  public function next() {
-    return next($this->items);
   }
 
   /**
@@ -222,6 +195,19 @@ class Collection implements CollectionInterface {
   }
 
   /**
+   * Filters elements of a collection using a callback function
+   *
+   * @precondition $flag === {@link ARRAY_FILTER_USE_KEY} || $flag === {@link ARRAY_FILTER_USE_BOTH}
+   * @param  callable $callback the callback function to use; If no callback is 
+   *         supplied, all entries of array equal to `false` will be removed.
+   * @param  int $flag flag determining what arguments are sent to callback
+   * @return self new filtered collection
+   */
+  public function filter(callable $callback = null, $flag = 0) {
+    return new static(array_filter($this->items, $callback, $flag));
+  }
+
+  /**
    * Execute a callback over each item
    *
    * @param  callable $callback
@@ -234,19 +220,13 @@ class Collection implements CollectionInterface {
     return new static(array_combine($keys, $items));
   }
 
-  /**
-   * Determines whether the given value is stored
-   *
-   * @param  mixed $value the value to search for
-   * @return boolean true if the given value is stored, false otherwise
-   */
   public function contains($value) {
-    return in_array($value, $this->items);
+    return in_array($value, $this->items, true);
   }
 
-  public function remove($offset) {
-    $f = function($var) use ($offset) {
-      return $var !== $offset;
+  public function remove($value) {
+    $f = function($var) use ($value) {
+      return $var !== $value;
     };
     $this->items = array_filter($this->items, $f);
     return $this;
@@ -280,23 +260,12 @@ class Collection implements CollectionInterface {
   }
 
   /**
-   * Retrieves an external iterator to iterate through the collection items
-   *
-   * @return \ArrayIterator to iterate through the collection items
-   */
-  public function getIterator() {
-    return new \ArrayIterator($this->items);
-  }
-
-  /**
    * Returns the collection as a plain PHP array
    *
    * @return array the collection as a plain PHP array
    */
   public function toArray() {
-    return array_map(function ($value) {
-      return $value instanceof Arrayable ? $value->toArray() : $value;
-    }, $this->items);
+    return $this->items;
   }
 
   /**
@@ -334,20 +303,62 @@ class Collection implements CollectionInterface {
     return array_pop($this->items);
   }
 
-  public function enqueue($value) {
-    $this->items[] = $value;
-    return $this;
-  }
-
   /**
-   * {@inheritdoc}
+   * Shift an item off the beginning of the collection
+   * 
+   * Shifts the first item off and returns it, shortening the collection by one
+   * and moving everything down. All numerical keys will be modified to start
+   * counting from zero while literal keys won't be touched.
+   *
+   * @return mixed the first item of the collection or null If the collection is empty
    * @complexity O(n)
    */
-  public function dequeue() {
+  public function shift() {
     if ($this->isEmpty()) {
       throw new UnderflowException();
     }
     return array_shift($this->items);
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->items);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->items);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->items);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->items);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return false !== current($this->items);
   }
 
 }

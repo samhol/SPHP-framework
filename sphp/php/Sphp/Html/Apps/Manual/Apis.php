@@ -19,7 +19,7 @@ class Apis {
 
   /**
    * 
-   * @param type $path
+   * @param  string $path
    * @return ApiGen
    */
   public static function apigen($path = null) {

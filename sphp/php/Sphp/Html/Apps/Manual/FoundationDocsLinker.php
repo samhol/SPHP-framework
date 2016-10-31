@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Html\Hyperlink as Hyperlink;
+use Sphp\Html\Hyperlink;
 use Sphp\Core\Types\Strings;
-use Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvas as OffCanvas;
-use Sphp\Html\Foundation\Sites\Grids\GridInterface as GridInterface;
+use Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvas;
+use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 
 /**
  * Link generator for Foundation Docs related hyperlinks

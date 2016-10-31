@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use IteratorAggregate;
+use Traversable;
 use Countable;
 
 /**
@@ -18,7 +18,7 @@ use Countable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TraversableInterface extends IteratorAggregate, Countable {
+interface TraversableInterface extends Traversable, Countable {
 
   /**
    * Returns a {@link ContainerInterface} containing sub components

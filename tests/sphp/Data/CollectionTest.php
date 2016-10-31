@@ -96,16 +96,84 @@ class CollectionTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider collectionData
    * @param array $values
    */
-  public function test(array $values) {
-    $count = count($values);
-    $counter = 0;
+  public function testRemove(array $values) {
+    $this->datastructure->merge($values);
+    $counter = count($values);
     foreach ($values as $value) {
-      $this->datastructure->prepend($value);
-      $this->assertTrue($this->datastructure->contains($value));
-      $this->assertSame($this->datastructure->offsetGet(0), $value);
-      $this->assertCount(++$counter, $this->datastructure);
+      $this->datastructure->remove($value);
+      $this->assertFalse($this->datastructure->contains($value));
+      $this->assertCount(--$counter, $this->datastructure);
     }
-    $this->assertCount($count, $this->datastructure);
+    $this->assertCount(0, $this->datastructure);
+  }
+
+  /**
+   * @dataProvider collectionData
+   * @param array $values
+   */
+  public function testIterator(array $values) {
+    $this->datastructure->merge($values);
+    foreach ($this->datastructure as $key => $value) {
+      $this->assertSame($value, $values[$key]);
+    }
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function filterData() {
+    return [
+        [
+            [
+                'stdClass' => new \stdClass(),
+                'null' => null,
+                'false' => false,
+                'true' => true,
+                1 => 1,
+                0 => 0,
+                'string' => 'string',
+                'empty string' => '',
+                'zero string' => '0',
+                "float" => 3.14]
+        ]
+    ];
+  }
+
+  /**
+   * @dataProvider filterData
+   * @param array $values
+   */
+  public function testMerge(array $values) {
+    $this->datastructure = new Collection();
+    $this->datastructure->merge($values);
+    foreach ($this->datastructure as $key => $value) {
+      $this->assertSame($value, $values[$key]);
+    }
+    return $this->datastructure;
+  }
+
+  /**
+   * @depends clone testMerge
+   * @param Collection $collection
+   */
+  public function testFilter(Collection $collection) {
+    //$this->datastructure->merge($values);
+    $this->assertTrue($collection->contains(null));
+    $removeNulls = function ($v) {
+      return $v !== null;
+    };
+    $collection->filter($removeNulls);
+    $this->assertFalse($collection->contains(null));
+    $this->assertTrue($collection->contains('string'));
+    $removeStrings = function ($v) {
+      return !is_scalar($v);
+    };
+    $collection->filter($removeStrings);
+    foreach($collection as $val){
+      $this->assertFalse(is_scalar($val));
+    }
+    $this->assertFalse($collection->contains(null));
   }
 
 }
