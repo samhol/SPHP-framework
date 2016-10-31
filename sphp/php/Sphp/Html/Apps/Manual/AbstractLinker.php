@@ -22,9 +22,9 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * the url pointing to the API documentation root
    *
-   * @var string
+   * @var ApiLinkPathGeneratorInterface
    */
-  private $apiRoot;
+  private $linkGenerator;
 
   /**
    * the default target of the hyperlinks generated
@@ -43,15 +43,13 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Constructs a new instance
    *
-   * @param string $apiRoot the url pointing to the API documentation
-   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
-   * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
+   * @param ApiLinkPathGeneratorInterface $apiRoot the url pointing to the API documentation
+   * @param string|string[]|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = '', $defaultTarget = '_blank', $defaultCssClasses = null) {
-    $this->setApiRoot($apiRoot)
-            ->setDefaultTarget($defaultTarget)
+  public function __construct(ApiLinkPathGeneratorInterface $apiRoot, $defaultCssClasses = null) {
+    $this->setLinkGenerator($apiRoot)
             ->setDefaultCssClasses($defaultCssClasses);
   }
 
@@ -62,7 +60,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->apiRoot, $this->defaultTarget);
+    unset($this->linkGenerator);
   }
 
   /**
@@ -73,45 +71,25 @@ abstract class AbstractLinker implements LinkerInterface {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->apiRoot = clone $this->apiRoot;
+    $this->linkGenerator = clone $this->linkGenerator;
   }
 
   public function __toString() {
-    return "" . $this->getHyperlink();
+    return $this->hyperlink()->getHtml();
   }
 
-  public function getApiRoot() {
-    return $this->apiRoot;
+  public function getLinkGenerator() {
+    return $this->linkGenerator;
   }
 
   /**
    * Sets the url pointing to the API documentation
    *
-   * @param  string $apiRoot the url pointing to the API documentation
+   * @param  ApiLinkPathGeneratorInterface $linkGenerator the url pointing to the API documentation
    * @return self for PHP Method Chaining
    */
-  private function setApiRoot($apiRoot) {
-    $this->apiRoot = $apiRoot;
-    return $this;
-  }
-
-  /**
-   * Returns the default target of the generated links
-   *
-   * @return string the default target of the generated links
-   */
-  public function getDefaultTarget() {
-    return $this->defaultTarget;
-  }
-
-  /**
-   * Sets the default CSS classes used in the generated links
-   *
-   * @param  string $defaultTarget the default target of the generated links
-   * @return self for PHP Method Chaining
-   */
-  public function setDefaultTarget($defaultTarget) {
-    $this->defaultTarget = $defaultTarget;
+  private function setLinkGenerator(ApiLinkPathGeneratorInterface $linkGenerator) {
+    $this->linkGenerator = $linkGenerator;
     return $this;
   }
 
@@ -136,11 +114,14 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
+    if ($relativeUrl === null) {
+      $relativeUrl = $this->getLinkGenerator()->getApiRoot();
+    }
     if ($content === null) {
       $content = $relativeUrl;
     }
-    $a = new Hyperlink($this->getApiRoot() . $relativeUrl, $content);
-    $a->setTarget($this->getDefaultTarget());
+    $a = new Hyperlink($relativeUrl, $content);
+    $a->setTarget($this->getLinkGenerator()->getTarget());
     if ($title !== null) {
       $a->setTitle($title);
     }

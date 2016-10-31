@@ -37,18 +37,22 @@ class ApiGen extends AbstractPhpApiLinker {
   /**
    * Constructs a new instance
    * 
-   * @param string $apiRoot the url pointing to the ApiGen documentation
+   * @param ApiGenClassPathParser $linkGenerator the url pointing to the ApiGen documentation
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($apiRoot = '', $defaultTarget = 'apigen', $defaultCssClasses = 'api apigen') {
-    parent::__construct($apiRoot, $defaultTarget, $defaultCssClasses);
+  public function __construct(ApiLinkPathGenerator $linkGenerator = null, $defaultCssClasses = 'api apigen') {
+    if ($linkGenerator === null) {
+      $linkGenerator = new ApiLinkPathGenerator();
+    }
+    parent::__construct($linkGenerator, $defaultCssClasses);
   }
 
   public function classLinker($class) {
-    return new ApiGenClassLinker($this->getApiRoot(), $class, new ApiGenClassPathParser($class), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    $gen = new ApiGenClassPathParser($class, $this->getLinkGenerator()->getApiRoot(), $this->getLinkGenerator()->getTarget());
+    return new ApiGenClassLinker( $class, $gen, $this->getDefaultCssClasses());
   }
 
   /**
@@ -107,7 +111,7 @@ class ApiGen extends AbstractPhpApiLinker {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getApiRoot() . "namespace-$path.html", $name, "apigen");
+      $bc = new BreadCrumb($this->getLinkGenerator()->getApiRoot() . "namespace-$path.html", $name, "apigen");
       $bcs->append($bc);
     }
     return $bcs;
@@ -120,7 +124,7 @@ class ApiGen extends AbstractPhpApiLinker {
    */
   public static function setDefaultPath($path) {
     if (!array_key_exists($path, self::$instances)) {
-      self::$instances[$path] = new static($path);
+      self::$instances[$path] = new static(new ApiLinkPathGenerator($path));
     }
     self::$default = self::$instances[$path];
     return self::$default;
@@ -135,7 +139,7 @@ class ApiGen extends AbstractPhpApiLinker {
     if ($path === null) {
       $instance = self::$default;
     } else if (!array_key_exists($path, self::$instances)) {
-      $instance = new static($path);
+      $instance = new static(new ApiLinkPathGenerator($path));
       self::$instances[$path] = $instance;
     } else {
       $instance = self::$instances[$path];

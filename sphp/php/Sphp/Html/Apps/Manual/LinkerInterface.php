@@ -29,16 +29,9 @@ interface LinkerInterface {
   /**
    * Returns the url pointing to the API documentation
    *
-   * @return string the url pointing to the API documentation
+   * @return ApiLinkPathGeneratorInterface the url pointing to the API documentation
    */
-  public function getApiRoot();
-
-  /**
-   * Returns the default target of the generated links
-   *
-   * @return string the default target of the generated links
-   */
-  public function getDefaultTarget();
+  public function getLinkGenerator();
 
   /**
    * Returns a hyperlink object pointing to a sub page

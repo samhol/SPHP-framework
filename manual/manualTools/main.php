@@ -9,7 +9,6 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Core\Types\Strings;
 
-
 function addPHPSuffix($page) {
   if (!Strings::endsWith($page, ".php")) {
     $page .= ".php";
@@ -18,7 +17,7 @@ function addPHPSuffix($page) {
 }
 
 if (!isset($api)) {
-$api = Apis::apigen(); 
+  $api = Apis::apigen();
 }
 if (!isset($php)) {
   $php = Apis::phpManual();

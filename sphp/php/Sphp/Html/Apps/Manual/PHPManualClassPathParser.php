@@ -15,12 +15,12 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PHPManualClassPathParser extends AbstractClassPathParser {
+class PHPManualClassPathParser extends AbstractClassLinklPathGenerator {
 
   use PHPManualTrait;
 
   public function getClassPath() {
-    return "class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
+    return $this->getApiRoot()."class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
   }
 
   public function getMethodPath($method) {

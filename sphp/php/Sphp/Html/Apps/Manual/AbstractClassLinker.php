@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Types\Strings;
 use ReflectionClass;
 
 /**
@@ -36,14 +35,14 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   /**
    * Constructs a new instance
    *
-   * @param string $root the base url pointing to the documentation
    * @param string|\object $class class name or object
+   * @param string $root the base url pointing to the documentation
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($root, $class, ClassLinkPathGenerator $pathParser, $defaultTarget = '_blank') {
-    parent::__construct($root, $defaultTarget);
+  public function __construct($class,  ClassLinkPathGenerator $pathParser) {
+    parent::__construct($pathParser);
     $this->ref = new ReflectionClass($class);
     $this->classLinkParser = $pathParser;
   }
@@ -67,7 +66,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   public function getLink($name = null) {
-    if (Strings::isEmpty($name)) {
+    if ($name === null) {
       $name = $this->ref->getShortName();
     }
     if ($this->ref->isInterface()) {

@@ -15,11 +15,11 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ApiGenClassPathParser extends AbstractClassPathParser {
+class ApiGenClassPathParser extends AbstractClassLinklPathGenerator {
 
   public function getClassPath() {
     $path = str_replace('\\', '.', $this->reflector()->getName());
-    return "class-$path.html";
+    return "{$this->getApiRoot()}class-$path.html";
   }
 
   public function getMethodPath($method) {
@@ -33,7 +33,7 @@ class ApiGenClassPathParser extends AbstractClassPathParser {
   public function getNamespacePath() {
     $ns = $this->reflector()->getNamespaceName();
     $path = str_replace('\\', '.', $ns);
-    return "namespace-$path.html";
+    return "{$this->getApiRoot()}namespace-$path.html";
   }
 
 }
