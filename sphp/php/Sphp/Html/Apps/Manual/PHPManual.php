@@ -107,9 +107,6 @@ class PHPManual extends AbstractPhpApiLinker {
     }
     if ($linkText === null) {
       $linkText = $typename;
-      if ($linkText === 'null') {
-        $linkText = 'null';
-      }
     }
     if ($typename === 'null') {
       $title = 'null type';
