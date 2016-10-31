@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ApiLinkPathGenerator.php (UTF-8)
+ * LinkPathGeneratorInterface.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ApiLinkPathGeneratorInterface {
+interface LinkPathGeneratorInterface {
 
   /**
    * Returns the default target of the generated links
@@ -33,17 +33,26 @@ interface ApiLinkPathGeneratorInterface {
   public function setTarget($target);
 
   /**
-   * Returns the url pointing to the API documentation
+   * Returns the url pointing to the root of the page
    *
    * @return string the url pointing to the API documentation
    */
-  public function getApiRoot();
+  public function getRoot();
 
   /**
-   * Sets the url pointing to the API documentation
+   * Sets the url pointing to the root of the site
    *
-   * @param  string $apiRoot the url pointing to the API documentation
+   * @param  string $root the url pointing to the API documentation
    * @return self for PHP Method Chaining
    */
-  public function setApiRoot($apiRoot);
+  public function setRoot($root);
+  
+  
+  /**
+   * Sets the url pointing to the root of the site
+   *
+   * @param  string $relative the relative url pointing to the aclual page
+   * @return self for PHP Method Chaining
+   */
+  public function create($relative);
 }

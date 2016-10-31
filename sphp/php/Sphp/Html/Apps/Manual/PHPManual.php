@@ -41,7 +41,7 @@ class PHPManual extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    $gen = new PHPManualClassPathParser($class, $this->getLinkGenerator()->getApiRoot(), $this->getLinkGenerator()->getTarget());
+    $gen = new PHPManualClassPathParser($class, $this->getLinkGenerator()->getRoot(), $this->getLinkGenerator()->getTarget());
     return new PHPManualClassLinker($class,$gen);
   }
 
@@ -70,7 +70,7 @@ class PHPManual extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to an PHP function page
    */
   public function functionLink($funName) {
-    $path = $this->getLinkGenerator()->getApiRoot()."function." . $this->phpPathFixer($funName);
+    $path = $this->getLinkGenerator()->getRoot()."function." . $this->phpPathFixer($funName);
     return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
@@ -87,7 +87,7 @@ class PHPManual extends AbstractPhpApiLinker {
     if ($linkText === null) {
       $linkText = $extName;
     }
-    return $this->hyperlink($this->getLinkGenerator()->getApiRoot()."book." . $path, $linkText, $extName);
+    return $this->hyperlink($this->getLinkGenerator()->getRoot()."book." . $path, $linkText, $extName);
   }
 
   /**
@@ -113,7 +113,7 @@ class PHPManual extends AbstractPhpApiLinker {
     } else {
       $title = "$typename type";
     }
-    return $this->hyperlink($this->getLinkGenerator()->getApiRoot()."language.types.$typename", $linkText, $title)
+    return $this->hyperlink($this->getLinkGenerator()->getRoot()."language.types.$typename", $linkText, $title)
                     ->addCssClass('type');
   }
 
@@ -127,7 +127,7 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function controlStructLink($controlName) {
     $path = strtolower($controlName);
-    return $this->hyperlink($this->getLinkGenerator()->getApiRoot()."control-structures." . $path, $controlName, $controlName);
+    return $this->hyperlink($this->getLinkGenerator()->getRoot()."control-structures." . $path, $controlName, $controlName);
   }
 
   /**

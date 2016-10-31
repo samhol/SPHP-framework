@@ -3,7 +3,8 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Lists\Ul;
-use Doctrine\ORM\Decorator\EntityManagerDecorator as EntityManagerDecorator;
+use Doctrine\ORM\Decorator\EntityManagerDecorator;
+
 $doctrine2 = Apis::apigen("http://apigen.juzna.cz/doc/doctrine/doctrine2.git/");
 $entityManagerDecorator = $doctrine2->classLinker(EntityManagerDecorator::class);
 $links = new Ul();

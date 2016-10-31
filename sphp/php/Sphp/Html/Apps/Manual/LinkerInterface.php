@@ -29,7 +29,7 @@ interface LinkerInterface {
   /**
    * Returns the url pointing to the API documentation
    *
-   * @return ApiLinkPathGeneratorInterface the url pointing to the API documentation
+   * @return LinkPathGeneratorInterface the url pointing to the API documentation
    */
   public function getLinkGenerator();
 

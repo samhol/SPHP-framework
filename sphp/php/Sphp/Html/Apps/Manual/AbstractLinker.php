@@ -22,7 +22,7 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * the url pointing to the API documentation root
    *
-   * @var ApiLinkPathGeneratorInterface
+   * @var LinkPathGeneratorInterface
    */
   private $linkGenerator;
 
@@ -43,12 +43,12 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Constructs a new instance
    *
-   * @param ApiLinkPathGeneratorInterface $apiRoot the url pointing to the API documentation
+   * @param LinkPathGeneratorInterface $apiRoot the url pointing to the API documentation
    * @param string|string[]|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(ApiLinkPathGeneratorInterface $apiRoot, $defaultCssClasses = null) {
+  public function __construct(LinkPathGeneratorInterface $apiRoot, $defaultCssClasses = null) {
     $this->setLinkGenerator($apiRoot)
             ->setDefaultCssClasses($defaultCssClasses);
   }
@@ -85,10 +85,10 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Sets the url pointing to the API documentation
    *
-   * @param  ApiLinkPathGeneratorInterface $linkGenerator the url pointing to the API documentation
+   * @param  LinkPathGeneratorInterface $linkGenerator the url pointing to the API documentation
    * @return self for PHP Method Chaining
    */
-  private function setLinkGenerator(ApiLinkPathGeneratorInterface $linkGenerator) {
+  private function setLinkGenerator(LinkPathGeneratorInterface $linkGenerator) {
     $this->linkGenerator = $linkGenerator;
     return $this;
   }
@@ -115,7 +115,7 @@ abstract class AbstractLinker implements LinkerInterface {
 
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
     if ($relativeUrl === null) {
-      $relativeUrl = $this->getLinkGenerator()->getApiRoot();
+      $relativeUrl = $this->getLinkGenerator()->getRoot();
     }
     if ($content === null) {
       $content = $relativeUrl;

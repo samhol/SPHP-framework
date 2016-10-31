@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ApiLinkPathGenerator implements ApiLinkPathGeneratorInterface {
+class ApiLinkPathGenerator implements LinkPathGeneratorInterface {
 
   /**
    * the url pointing to the API documentation root
@@ -38,7 +38,7 @@ class ApiLinkPathGenerator implements ApiLinkPathGeneratorInterface {
    * @param string $target the default target of the generated links
    */
   public function __construct($apiRoot = '', $target = '_blank') {
-    $this->setApiRoot($apiRoot)
+    $this->setRoot($apiRoot)
             ->setTarget($target);
   }
 
@@ -52,8 +52,12 @@ class ApiLinkPathGenerator implements ApiLinkPathGeneratorInterface {
     unset($this->apiRoot);
   }
 
-  public function getApiRoot() {
+  public function getRoot() {
     return $this->apiRoot;
+  }
+
+  public function create($relative = '') {
+    return $this->apiRoot . $relative;
   }
 
   /**
@@ -62,7 +66,7 @@ class ApiLinkPathGenerator implements ApiLinkPathGeneratorInterface {
    * @param  string $apiRoot the url pointing to the API documentation
    * @return self for PHP Method Chaining
    */
-  public function setApiRoot($apiRoot) {
+  public function setRoot($apiRoot) {
     $this->apiRoot = $apiRoot;
     return $this;
   }

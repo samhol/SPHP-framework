@@ -19,7 +19,7 @@ class ApiGenClassPathParser extends AbstractClassLinklPathGenerator {
 
   public function getClassPath() {
     $path = str_replace('\\', '.', $this->reflector()->getName());
-    return "{$this->getApiRoot()}class-$path.html";
+    return "{$this->getRoot()}class-$path.html";
   }
 
   public function getMethodPath($method) {
@@ -33,7 +33,7 @@ class ApiGenClassPathParser extends AbstractClassLinklPathGenerator {
   public function getNamespacePath() {
     $ns = $this->reflector()->getNamespaceName();
     $path = str_replace('\\', '.', $ns);
-    return "{$this->getApiRoot()}namespace-$path.html";
+    return "{$this->getRoot()}namespace-$path.html";
   }
 
 }

@@ -54,7 +54,7 @@ class SubMenu extends AbstractContainerTag implements MenuItemInterface, MenuInt
     if ($root instanceof Hyperlink) {
       $this->rootlink = $root;
     } else {
-      $this->rootlink = new Hyperlink("", $root);
+      $this->rootlink = new Hyperlink('#', $root);
     }
     return $this;
   }

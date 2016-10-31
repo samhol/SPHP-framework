@@ -43,7 +43,7 @@ class ApiGen extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(ApiLinkPathGenerator $linkGenerator = null, $defaultCssClasses = 'api apigen') {
+  public function __construct(ApiLinkPathGenerator $linkGenerator = null, $defaultCssClasses = ['api', 'apigen']) {
     if ($linkGenerator === null) {
       $linkGenerator = new ApiLinkPathGenerator();
     }
@@ -51,7 +51,7 @@ class ApiGen extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    $gen = new ApiGenClassPathParser($class, $this->getLinkGenerator()->getApiRoot(), $this->getLinkGenerator()->getTarget());
+    $gen = new ApiGenClassPathParser($class, $this->getLinkGenerator()->getRoot(), $this->getLinkGenerator()->getTarget());
     return new ApiGenClassLinker( $class, $gen, $this->getDefaultCssClasses());
   }
 
@@ -111,7 +111,7 @@ class ApiGen extends AbstractPhpApiLinker {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getLinkGenerator()->getApiRoot() . "namespace-$path.html", $name, "apigen");
+      $bc = new BreadCrumb($this->getLinkGenerator()->getRoot() . "namespace-$path.html", $name, "apigen");
       $bcs->append($bc);
     }
     return $bcs;

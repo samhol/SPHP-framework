@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ClassLinkPathGenerator extends ApiLinkPathGeneratorInterface {
+interface ClassLinkPathGenerator extends LinkPathGeneratorInterface {
 
   /**
    * Returns the relative API page path of the given class

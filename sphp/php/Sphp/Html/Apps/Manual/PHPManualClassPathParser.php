@@ -20,7 +20,7 @@ class PHPManualClassPathParser extends AbstractClassLinklPathGenerator {
   use PHPManualTrait;
 
   public function getClassPath() {
-    return $this->getApiRoot()."class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
+    return $this->getRoot()."class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
   }
 
   public function getMethodPath($method) {

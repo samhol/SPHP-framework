@@ -28,7 +28,7 @@ use ReflectionClass;
   /**
    * 
    * @param string|object $class
-   * @param ApiLinkPathGeneratorInterface $gen
+   * @param LinkPathGeneratorInterface $gen
    */
   public function __construct($class, $root = '', $target = 'blank') {
     parent::__construct($root, $target);
