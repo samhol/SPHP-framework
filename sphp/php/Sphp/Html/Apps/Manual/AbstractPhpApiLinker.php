@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ApiLinker.php (UTF-8)
+ * AbstractPhpApiLinker.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -12,7 +12,6 @@ namespace Sphp\Html\Apps\Manual;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -29,7 +28,23 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * Return the class property linker
    *
    * @param  string|\object $class class name or object
-   * @return AbstractClassLinker the class property linker
+   * @return PhpClassLinkerInterface the class property linker
    */
   abstract public function classLinker($class);
+
+  /**
+   * Returns a hyperlink object pointing to an PHP function page
+   *
+   * @param  string $funName the name of the function
+   * @return string hyperlink object pointing to an PHP function page
+   */
+  abstract public function functionLink($funName);
+
+  /**
+   * Returns a hyperlink object pointing to PHP's predefined constants page
+   * 
+   * @param  string $constantName the name of the constant
+   * @return string hyperlink object pointing to PHP's predefined constants page
+   */
+  abstract public function constantLink($constantName);
 }

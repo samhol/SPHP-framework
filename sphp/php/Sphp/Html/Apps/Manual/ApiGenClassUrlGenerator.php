@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ApiGenClassPathParser extends AbstractClassLinklPathGenerator {
+class ApiGenClassUrlGenerator extends AbstractClassUrlGenerator {
 
   public function getClassPath() {
     $path = str_replace('\\', '.', $this->reflector()->getName());

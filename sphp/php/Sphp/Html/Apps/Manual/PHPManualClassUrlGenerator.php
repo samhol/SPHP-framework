@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PHPManualClassPathParser extends AbstractClassLinklPathGenerator {
+class PHPManualClassUrlGenerator extends AbstractClassUrlGenerator {
 
   use PHPManualTrait;
 

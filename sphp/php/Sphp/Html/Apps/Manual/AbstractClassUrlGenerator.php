@@ -17,7 +17,7 @@ use ReflectionClass;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractClassLinklPathGenerator extends UrlGenerator implements ClassLinkPathGenerator {
+abstract class AbstractClassUrlGenerator extends UrlGenerator implements ClassUrlGeneratorInterface {
 
   /**
    *

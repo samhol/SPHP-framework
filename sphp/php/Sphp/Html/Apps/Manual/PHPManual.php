@@ -35,7 +35,7 @@ class PHPManual extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    $gen = new PHPManualClassPathParser($class, $this->getUrlGenerator()->getRoot(), $this->getDefaultTarget());
+    $gen = new PHPManualClassUrlGenerator($class, $this->getUrlGenerator()->getRoot(), $this->getDefaultTarget());
     return new PHPManualClassLinker($class,$gen);
   }
 

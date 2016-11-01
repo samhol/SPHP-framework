@@ -83,6 +83,10 @@ abstract class AbstractLinker implements LinkerInterface {
   public function getUrlGenerator() {
     return $this->urlGenerator;
   }
+  
+  public function createUrl($relative) {
+    return $this->urlGenerator->create($relative);
+  }
 
   /**
    * Sets the url pointing to the API documentation

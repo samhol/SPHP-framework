@@ -37,7 +37,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode('.', $cuur);
-      $bc = new BreadCrumb($this->getApiRoot() . "namespace-$path.html", $name, $this->getDefaultTarget());
+      $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $this->getDefaultTarget());
       $bcs->append($bc);
     }
     $bc = new BreadCrumb($this->getApiRoot() . $this->getClassPath(), $this->ref->getShortName(), $this->getDefaultTarget());

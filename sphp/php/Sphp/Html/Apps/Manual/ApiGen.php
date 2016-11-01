@@ -38,7 +38,7 @@ class ApiGen extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    $gen = new ApiGenClassPathParser($class, $this->getUrlGenerator()->getRoot());
+    $gen = new ApiGenClassUrlGenerator($class, $this->getUrlGenerator()->getRoot());
     return new ApiGenClassLinker($class, $gen, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
@@ -49,8 +49,8 @@ class ApiGen extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to an PHP function page
    */
   public function functionLink($funName) {
-    $path = $this->getUrlGenerator()->create("function-$path.html");
-    return $this->hyperlink($this->getUrlGenerator()->create($path), $funName, "$funName() method")->addCssClass('function');
+    $path = $this->createUrl("function-$path.html");
+    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
   /**
@@ -61,7 +61,7 @@ class ApiGen extends AbstractPhpApiLinker {
    */
   public function constantLink($constantName) {
     $path = str_replace('\\', '.', $constantName);
-    return $this->hyperlink($this->getUrlGenerator()->create("constant-$path.html"), $constantName, "$constantName constant")->addCssClass('constant');
+    return $this->hyperlink($this->createUrl("constant-$path.html"), $constantName, "$constantName constant")->addCssClass('constant');
   }
 
   /**
@@ -80,7 +80,8 @@ class ApiGen extends AbstractPhpApiLinker {
       $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
       $name = array_pop($nsArr);
     }
-    return $this->hyperlink("namespace-" . $path . ".html", $name, "The $ns namespace");
+    $url = $this->createUrl("namespace-" . $path . ".html");
+    return $this->hyperlink($url, $name, "The $ns namespace");
   }
 
   /**
@@ -98,7 +99,7 @@ class ApiGen extends AbstractPhpApiLinker {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getUrlGenerator()->getRoot() . "namespace-$path.html", $name, "apigen");
+      $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, "apigen");
       $bcs->append($bc);
     }
     return $bcs;
