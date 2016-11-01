@@ -12,12 +12,12 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 
 /**
- * Class implements a Foundation 6 callout component
+ * Class implements a Foundation callout component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/callout.html Foundation 6 Callout
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/callout.html Foundation Callout
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -124,8 +124,9 @@ echo $parsedown->text(
 Thera are obviously many vays to create own custom validators. However an easy 
 way of doing so isto extend one of the $abstractValidatorAggregate, $validatorAggregate 
 or $abstractObjectValidator classes. The choise between these three is dependent on 
-the data type of the validable data.The following chapter describes one way of 
-creating these custon validators.###The $userValidator class		
+the data type of the validable data.
+  
+###The $userValidator class		
   
 The $userValidator extends the $abstractObjectValidator and it can be used to validate 
 {$api->classLinker(\Sphp\Db\Objects\User::class)} object data.

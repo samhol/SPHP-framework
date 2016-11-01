@@ -30,11 +30,9 @@ class ApiGenClassLinker extends AbstractClassLinker {
   public function classBreadGrumbs() {
     $namespace = $this->ref->getNamespaceName();
     $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
-    //$root = "";
     $bcs = (new BreadCrumbs())->addCssClass('apigen class');
     $cuur = [];
     foreach ($nsArr as $name) {
-      //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode('.', $cuur);
       $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $this->getDefaultTarget());
