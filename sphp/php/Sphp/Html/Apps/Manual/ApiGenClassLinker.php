@@ -22,6 +22,17 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 class ApiGenClassLinker extends AbstractClassLinker {
 
   /**
+   * 
+   * @param string $class
+   * @param ApiGenClassUrlGenerator $pathParser
+   * @param string|null $defaultTarget
+   * @param string|string[]|null $defaultCssClasses
+   */
+  public function __construct($class, ApiGenClassUrlGenerator $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
+    parent::__construct($class, $pathParser, $defaultTarget, $defaultCssClasses);
+  }
+
+  /**
    * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
    * @param  string $namespace

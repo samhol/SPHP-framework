@@ -42,7 +42,7 @@ abstract class AbstractClassUrlGenerator extends UrlGenerator implements ClassUr
 
   /**
    * 
-   * @return ReflectionClass
+   * @return ReflectionClass reflector to the linked class
    */
   protected function reflector() {
     return $this->ref;

@@ -140,4 +140,4 @@ use \Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAc
        //->loadFromFile($reflector->getFileName())		
         ->printHtml();*/
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/UserValidator.php", "php", false);
+//CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/UserValidator.php", "text", false);

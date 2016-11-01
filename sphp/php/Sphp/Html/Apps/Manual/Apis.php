@@ -31,9 +31,9 @@ class Apis {
 
   /**
    *
-   * @var PHPManual[] 
+   * @var PHPManual
    */
-  private static $phpManuals = [];
+  private static $phpManual;
 
   /**
    *
@@ -44,6 +44,7 @@ class Apis {
   /**
    * 
    * @param  string $path
+   * @param  string|null $target
    * @return ApiGen
    */
   public static function apigen($path = DEFAULT_APIGEN, $target = "apigen") {
@@ -55,6 +56,7 @@ class Apis {
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];
+      $instance->setDefaultTarget($target);
     }
     return $instance;
   }
@@ -64,11 +66,13 @@ class Apis {
    * @return PHPManual
    */
   public static function phpManual($target = 'phpman') {
-    if (self::$phpManuals === null) {
-      self::$phpManuals = (new PHPManual($target));
+    if (self::$phpManual === null) {
+      self::$phpManual = (new PHPManual($target));
+    } else {
+      self::$phpManual->setDefaultTarget($target);
     }
 
-    return new PHPManual($target);
+    return self::$phpManual;
   }
 
   /**
@@ -86,6 +90,8 @@ class Apis {
   public static function w3schools($target = 'w3schools') {
     if (self::$w3schools === null) {
       self::$w3schools = new W3schools($target);
+    }else {
+      self::$w3schools->setDefaultTarget($target);
     }
     return self::$w3schools;
   }

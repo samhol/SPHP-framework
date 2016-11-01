@@ -69,14 +69,15 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     if ($name === null) {
       $name = $this->ref->getShortName();
     }
+    $longName = $this->ref->getName();
     if ($this->ref->isInterface()) {
-      $title = $this->ref->getName() . ' interface';
+      $title = "Interface $longName";
     } else if ($this->ref->isTrait()) {
-      $title = $this->ref->getName() . ' trait';
+      $title = "Trait $longName";
     } else if ($this->ref->isAbstract()) {
-      $title = 'abstract ' . $this->ref->getName() . ' class';
+      $title = "Abstract class $longName";
     } else {
-      $title = $this->ref->getName() . ' class';
+      $title = "Class $longName";
     }
     return $this->hyperlink($this->classLinkParser->getClassPath(), $name, $title);
   }

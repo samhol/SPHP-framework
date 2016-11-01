@@ -19,7 +19,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
 
   use PHPManualTrait;
 
-  public function __construct($class, ClassUrlGeneratorInterface $p = null) {
+  public function __construct($class, PHPManualClassUrlGenerator $p = null) {
     if ($p === null) {
       $p = new PHPManualClassUrlGenerator($class);
     }

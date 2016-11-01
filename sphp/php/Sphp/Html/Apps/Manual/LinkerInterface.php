@@ -10,7 +10,7 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
- * Hyperlink generator pointing to an existing API documentation
+ * Hyperlink object generator pointing to an existing API documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
