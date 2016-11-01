@@ -51,7 +51,7 @@ class FoundationDocsLinker extends AbstractLinker {
    *        generated links
    */
   public function __construct($target = '_blank') {
-    parent::__construct(new ApiLinkPathGenerator('http://foundation.zurb.com/sites/docs/', $target));
+    parent::__construct(new UrlGenerator('http://foundation.zurb.com/sites/docs/', $target));
   }
 
   /**

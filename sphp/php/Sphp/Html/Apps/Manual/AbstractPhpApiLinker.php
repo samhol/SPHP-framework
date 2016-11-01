@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Types\Strings;
-
 /**
  * Link generator pointing to an existing API documentation
  *
@@ -21,7 +19,7 @@ use Sphp\Core\Types\Strings;
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
-    if (Strings::isEmpty($content)) {
+    if ($content === null) {
       $content = $relativeUrl;
     }
     return parent::hyperlink($relativeUrl, str_replace('\\', '\\<wbr>', $content), $title);

@@ -33,7 +33,7 @@ class W3schools extends AbstractLinker {
    *        generated links
    */
   public function __construct($target = '_blank') {
-    parent::__construct(new ApiLinkPathGenerator('http://www.w3schools.com/', $target));
+    parent::__construct(new UrlGenerator('http://www.w3schools.com/', $target));
   }
 
   /**

@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LinkPathGeneratorInterface {
+interface UrlGeneratorInterface {
 
   /**
    * Returns the default target of the generated links

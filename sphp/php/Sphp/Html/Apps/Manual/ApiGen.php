@@ -23,36 +23,23 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 class ApiGen extends AbstractPhpApiLinker {
 
   /**
-   *
-   * @var self[] 
-   */
-  private static $instances = [];
-
-  /**
-   *
-   * @var self 
-   */
-  private static $default;
-
-  /**
    * Constructs a new instance
    * 
-   * @param ApiGenClassPathParser $linkGenerator the url pointing to the ApiGen documentation
-   * @param string|null $defaultTarget the default target used in the generated links or `null` for none
+   * @param UrlGenerator $urlGenerator the url pointing to the ApiGen documentation
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(ApiLinkPathGenerator $linkGenerator = null, $defaultCssClasses = ['api', 'apigen']) {
-    if ($linkGenerator === null) {
-      $linkGenerator = new ApiLinkPathGenerator();
+  public function __construct(UrlGenerator $urlGenerator = null, $defaultCssClasses = ['api', 'apigen']) {
+    if ($urlGenerator === null) {
+      $urlGenerator = new UrlGenerator();
     }
-    parent::__construct($linkGenerator, $defaultCssClasses);
+    parent::__construct($urlGenerator, $defaultCssClasses);
   }
 
   public function classLinker($class) {
-    $gen = new ApiGenClassPathParser($class, $this->getLinkGenerator()->getRoot(), $this->getLinkGenerator()->getTarget());
-    return new ApiGenClassLinker( $class, $gen, $this->getDefaultCssClasses());
+    $gen = new ApiGenClassPathParser($class, $this->getUrlGenerator()->getRoot(), $this->getUrlGenerator()->getTarget());
+    return new ApiGenClassLinker($class, $gen, $this->getDefaultCssClasses());
   }
 
   /**
@@ -62,8 +49,8 @@ class ApiGen extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to an PHP function page
    */
   public function functionLink($funName) {
-    $path = "function-$path.html";
-    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
+    $path = $this->getUrlGenerator()->create("function-$path.html");
+    return $this->hyperlink($this->getUrlGenerator()->create($path), $funName, "$funName() method")->addCssClass('function');
   }
 
   /**
@@ -111,40 +98,10 @@ class ApiGen extends AbstractPhpApiLinker {
       //$root .= "\\$name";
       $cuur[] = $name;
       $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->getLinkGenerator()->getRoot() . "namespace-$path.html", $name, "apigen");
+      $bc = new BreadCrumb($this->getUrlGenerator()->getRoot() . "namespace-$path.html", $name, "apigen");
       $bcs->append($bc);
     }
     return $bcs;
-  }
-
-  /**
-   * 
-   * @param  string $path
-   * @return self an instance of linker pointing to the given api documentation
-   */
-  public static function setDefaultPath($path) {
-    if (!array_key_exists($path, self::$instances)) {
-      self::$instances[$path] = new static(new ApiLinkPathGenerator($path));
-    }
-    self::$default = self::$instances[$path];
-    return self::$default;
-  }
-
-  /**
-   * 
-   * @param  string|null $path
-   * @return self new instance of linker
-   */
-  public static function get($path = null) {
-    if ($path === null) {
-      $instance = self::$default;
-    } else if (!array_key_exists($path, self::$instances)) {
-      $instance = new static(new ApiLinkPathGenerator($path));
-      self::$instances[$path] = $instance;
-    } else {
-      $instance = self::$instances[$path];
-    }
-    return $instance;
   }
 
 }

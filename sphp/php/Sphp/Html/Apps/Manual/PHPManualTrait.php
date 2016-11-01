@@ -8,7 +8,6 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Hyperlink;
-use Sphp\Core\Types\Strings;
 
 /**
  * Link generator pointing to an exising ApiGen documentation
@@ -30,7 +29,7 @@ trait PHPManualTrait {
    * @return Hyperlink hyperlink object pointing to an PHP page
    */
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
-    if (Strings::isEmpty($title)) {
+    if ($title === null) {
       $title = 'PHP manual';
     } else {
       $title = 'PHP manual: ' . $title;

@@ -7,6 +7,12 @@
 
 namespace Sphp\Html\Apps\Manual;
 
+if (!defined("Sphp\Html\Apps\Manual\DEFAULT_APIGEN")) {
+  define('Sphp\Html\Apps\Manual\DEFAULT_APIGEN', 'http://documentation.samiholck.com/apigen/');
+}
+
+use Sphp\Html\Apps\Manual\DEFAULT_APIGEN;
+
 /**
  * A factory class for api linkers
  *
@@ -18,23 +24,56 @@ namespace Sphp\Html\Apps\Manual;
 class Apis {
 
   /**
+   *
+   * @var ApiGen[] 
+   */
+  private static $apigens = [];
+  /**
+   *
+   * @var ApiGen[] 
+   */
+  private static $phpManuals = [];
+
+  /**
    * 
    * @param  string $path
    * @return ApiGen
    */
-  public static function apigen($path = null) {
+  public static function apigen($path = DEFAULT_APIGEN, $target = "apigen") {
     if ($path === null) {
-      $path = 'http://documentation.samiholck.com/apigen/';
+      $path = DEFAULT_APIGEN;
     }
-    return ApiGen::get($path);
+    if (!array_key_exists($path, self::$apigens)) {
+      $instance = new ApiGen(new UrlGenerator($path, $target));
+      self::$apigens[$path] = $instance;
+    } else {
+      $instance = self::$apigens[$path];
+    }
+    return $instance;
   }
 
   /**
    * 
+   * @param  string|null $path
+   * @return self default instance of linker
+   */
+  public static function get() {
+    if (self::$instance === null) {
+      self::$instance = (new static());
+    }
+
+    return self::$instance;
+  }
+  /**
+   * 
    * @return PHPManual
    */
-  public static function phpManual() {
-    return PHPManual::get();
+  public static function phpManual($target = 'phpman') {
+    if (self::$phpManuals === null) {
+      self::$phpManuals = (new PHPManual($target));
+    }
+
+    return new PHPManual($target);
   }
 
   /**

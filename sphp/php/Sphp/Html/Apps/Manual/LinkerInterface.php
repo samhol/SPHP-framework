@@ -29,9 +29,9 @@ interface LinkerInterface {
   /**
    * Returns the url pointing to the API documentation
    *
-   * @return LinkPathGeneratorInterface the url pointing to the API documentation
+   * @return UrlGeneratorInterface the url pointing to the API documentation
    */
-  public function getLinkGenerator();
+  public function getUrlGenerator();
 
   /**
    * Returns a hyperlink object pointing to a sub page

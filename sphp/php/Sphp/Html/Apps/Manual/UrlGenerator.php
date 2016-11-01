@@ -15,14 +15,14 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ApiLinkPathGenerator implements LinkPathGeneratorInterface {
+class UrlGenerator implements UrlGeneratorInterface {
 
   /**
    * the url pointing to the API documentation root
    *
    * @var string
    */
-  private $apiRoot;
+  private $root;
 
   /**
    * the url pointing to the API documentation root
@@ -34,12 +34,12 @@ class ApiLinkPathGenerator implements LinkPathGeneratorInterface {
   /**
    * Constructs a new instance
    *
-   * @param string $apiRoot the url pointing to the API documentation
+   * @param string $root the url pointing to the API documentation
    * @param string $target the default target of the generated links
    */
-  public function __construct($apiRoot = '', $target = '_blank') {
-    $this->setRoot($apiRoot)
-            ->setTarget($target);
+  public function __construct($root = '', $target = '_blank') {
+    $this->root = $root;
+    $this->setTarget($target);
   }
 
   /**
@@ -49,25 +49,25 @@ class ApiLinkPathGenerator implements LinkPathGeneratorInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->apiRoot);
+    unset($this->root, $this->target);
   }
 
   public function getRoot() {
-    return $this->apiRoot;
+    return $this->root;
   }
 
   public function create($relative = '') {
-    return $this->apiRoot . $relative;
+    return $this->root . $relative;
   }
 
   /**
    * Sets the url pointing to the API documentation
    *
-   * @param  string $apiRoot the url pointing to the API documentation
+   * @param  string $root the site root
    * @return self for PHP Method Chaining
    */
-  public function setRoot($apiRoot) {
-    $this->apiRoot = $apiRoot;
+  public function setRoot($root) {
+    $this->root = $root;
     return $this;
   }
 
