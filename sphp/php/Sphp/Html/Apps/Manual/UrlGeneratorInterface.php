@@ -1,14 +1,14 @@
 <?php
 
 /**
- * LinkPathGeneratorInterface.php (UTF-8)
+ * UrlGeneratorInterface.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * Hyperlink generator pointing to an existing API documentation
+ * URL string generator pointing to an existing API documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -16,7 +16,6 @@ namespace Sphp\Html\Apps\Manual;
  * @filesource
  */
 interface UrlGeneratorInterface {
-
 
   /**
    * Returns the url pointing to the root of the page
@@ -32,13 +31,12 @@ interface UrlGeneratorInterface {
    * @return self for PHP Method Chaining
    */
   public function setRoot($root);
-  
-  
+
   /**
-   * Sets the url pointing to the root of the site
+   * Creates an URL string pointing to the resource
    *
-   * @param  string $relative the relative url pointing to the aclual page
-   * @return self for PHP Method Chaining
+   * @param  string $relative path from the root to the resource
+   * @return string an URL string pointing to the resource
    */
   public function create($relative);
 }

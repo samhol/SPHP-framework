@@ -29,22 +29,16 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($defaultTarget = null, $defaultCssClasses = 'api phpman') {
+  public function __construct($defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
     parent::__construct(new UrlGenerator('https://secure.php.net/manual/en/'), $defaultTarget);
     $this->setDefaultCssClasses($defaultCssClasses);
   }
 
   public function classLinker($class) {
     $gen = new PHPManualClassUrlGenerator($class, $this->getUrlGenerator()->getRoot(), $this->getDefaultTarget());
-    return new PHPManualClassLinker($class,$gen);
+    return new PHPManualClassLinker($class, $gen);
   }
 
-  /**
-   * Returns a hyperlink object pointing to PHP's predefined constants page
-   *
-   * @param  string $constant the name of the constant
-   * @return Hyperlink hyperlink object pointing to PHP's predefined constants page
-   */
   public function constantLink($constant) {
     $path = 'reserved.constants.php';
     if (defined($constant)) {
@@ -57,14 +51,8 @@ class PHPManual extends AbstractPhpApiLinker {
     }
   }
 
-  /**
-   * Returns a hyperlink object pointing to an PHP function page
-   *
-   * @param  string $funName the name of the function
-   * @return Hyperlink hyperlink object pointing to an PHP function page
-   */
   public function functionLink($funName) {
-    $path = $this->getUrlGenerator()->getRoot()."function." . $this->phpPathFixer($funName);
+    $path = $this->getUrlGenerator()->getRoot() . "function." . $this->phpPathFixer($funName);
     return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
@@ -81,7 +69,7 @@ class PHPManual extends AbstractPhpApiLinker {
     if ($linkText === null) {
       $linkText = $extName;
     }
-    return $this->hyperlink($this->getUrlGenerator()->getRoot()."book." . $path, $linkText, $extName);
+    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "book." . $path, $linkText, $extName);
   }
 
   /**
@@ -107,7 +95,7 @@ class PHPManual extends AbstractPhpApiLinker {
     } else {
       $title = "$typename type";
     }
-    return $this->hyperlink($this->getUrlGenerator()->getRoot()."language.types.$typename", $linkText, $title)
+    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "language.types.$typename", $linkText, $title)
                     ->addCssClass('type');
   }
 
@@ -121,7 +109,7 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function controlStructLink($controlName) {
     $path = strtolower($controlName);
-    return $this->hyperlink($this->getUrlGenerator()->getRoot()."control-structures." . $path, $controlName, $controlName);
+    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "control-structures." . $path, $controlName, $controlName);
   }
 
 }

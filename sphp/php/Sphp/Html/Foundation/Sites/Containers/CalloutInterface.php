@@ -12,8 +12,6 @@ use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
 /**
  * Class implements a Foundation 6 callout component
  *
- * Callouts combine panels and alerts from Foundation 5 into one generic container component.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02
  * @link    http://foundation.zurb.com/ Foundation 6
