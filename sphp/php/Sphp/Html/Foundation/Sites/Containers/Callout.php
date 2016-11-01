@@ -9,7 +9,6 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Div;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
-use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 
 /**
@@ -22,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Callout extends Div implements ColourableInterface {
+class Callout extends Div implements CalloutInterface {
 
   use ColourableTrait;
 
