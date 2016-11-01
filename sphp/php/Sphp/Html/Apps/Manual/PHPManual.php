@@ -22,12 +22,6 @@ class PHPManual extends AbstractPhpApiLinker {
   use PHPManualTrait;
 
   /**
-   *
-   * @var self
-   */
-  private static $instance;
-
-  /**
    * Constructs a new instance
    *
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
@@ -35,13 +29,13 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($defaultTarget = '_blank', $defaultCssClasses = 'api phpman') {
-    parent::__construct(new UrlGenerator('https://secure.php.net/manual/en/', $defaultTarget));
+  public function __construct($defaultTarget = null, $defaultCssClasses = 'api phpman') {
+    parent::__construct(new UrlGenerator('https://secure.php.net/manual/en/'), $defaultTarget);
     $this->setDefaultCssClasses($defaultCssClasses);
   }
 
   public function classLinker($class) {
-    $gen = new PHPManualClassPathParser($class, $this->getUrlGenerator()->getRoot(), $this->getUrlGenerator()->getTarget());
+    $gen = new PHPManualClassPathParser($class, $this->getUrlGenerator()->getRoot(), $this->getDefaultTarget());
     return new PHPManualClassLinker($class,$gen);
   }
 
@@ -128,19 +122,6 @@ class PHPManual extends AbstractPhpApiLinker {
   public function controlStructLink($controlName) {
     $path = strtolower($controlName);
     return $this->hyperlink($this->getUrlGenerator()->getRoot()."control-structures." . $path, $controlName, $controlName);
-  }
-
-  /**
-   * 
-   * @param  string|null $path
-   * @return self default instance of linker
-   */
-  public static function get() {
-    if (self::$instance === null) {
-      self::$instance = (new static());
-    }
-
-    return self::$instance;
   }
 
 }

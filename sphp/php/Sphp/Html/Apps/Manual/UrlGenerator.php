@@ -25,21 +25,12 @@ class UrlGenerator implements UrlGeneratorInterface {
   private $root;
 
   /**
-   * the url pointing to the API documentation root
-   *
-   * @var string
-   */
-  private $target;
-
-  /**
    * Constructs a new instance
    *
    * @param string $root the url pointing to the API documentation
-   * @param string $target the default target of the generated links
    */
-  public function __construct($root = '', $target = '_blank') {
+  public function __construct($root = '') {
     $this->root = $root;
-    $this->setTarget($target);
   }
 
   /**
@@ -68,15 +59,6 @@ class UrlGenerator implements UrlGeneratorInterface {
    */
   public function setRoot($root) {
     $this->root = $root;
-    return $this;
-  }
-
-  public function getTarget() {
-    return $this->target;
-  }
-
-  public function setTarget($target) {
-    $this->target = $target;
     return $this;
   }
 

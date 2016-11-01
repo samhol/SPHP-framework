@@ -27,6 +27,13 @@ abstract class AbstractLinker implements LinkerInterface {
   private $urlGenerator;
 
   /**
+   * the url pointing to the API documentation root
+   *
+   * @var string
+   */
+  private $target;
+
+  /**
    * the default target of the hyperlinks generated
    *
    * @var string
@@ -36,14 +43,16 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Constructs a new instance
    *
-   * @param UrlGeneratorInterface $apiRoot the url pointing to the API documentation
+   * @param UrlGeneratorInterface $urlGen the url pointing to the API documentation
+   * @param string $defaultTarget the default target of the generated links
    * @param string|string[]|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(UrlGeneratorInterface $apiRoot, $defaultCssClasses = null) {
-    $this->setUrlGenerator($apiRoot)
+  public function __construct(UrlGeneratorInterface $urlGen, $defaultTarget = null, $defaultCssClasses = null) {
+    $this->setUrlGenerator($urlGen)
             ->setDefaultCssClasses($defaultCssClasses);
+    $this->setDefaultTarget($defaultTarget);
   }
 
   /**
@@ -87,6 +96,24 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   /**
+   * 
+   * @return string|null
+   */
+  public function getDefaultTarget() {
+    return $this->target;
+  }
+
+  /**
+   * 
+   * @param  string|null $target
+   * @return self for PHP Method Chaining
+   */
+  public function setDefaultTarget($target) {
+    $this->target = $target;
+    return $this;
+  }
+
+  /**
    * Returns the default CSS classes used in the generated links
    *
    * @return string the default CSS classes used in the generated links
@@ -114,7 +141,9 @@ abstract class AbstractLinker implements LinkerInterface {
       $content = $relativeUrl;
     }
     $a = new Hyperlink($relativeUrl, $content);
-    $a->setTarget($this->getUrlGenerator()->getTarget());
+    if ($this->getDefaultTarget() !== null) {
+      $a->setTarget($this->getDefaultTarget());
+    }
     if ($title !== null) {
       $a->setTitle($title);
     }

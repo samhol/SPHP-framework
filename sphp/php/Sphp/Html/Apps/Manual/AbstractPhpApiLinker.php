@@ -32,5 +32,4 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @return AbstractClassLinker the class property linker
    */
   abstract public function classLinker($class);
-
 }

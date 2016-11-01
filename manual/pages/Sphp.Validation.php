@@ -1,7 +1,9 @@
 <?php
 
 namespace Sphp\Core\Validators;
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+$apigen = Apis::apigen();
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $validatorInterface = $api->classLinker(ValidatorInterface::class);
 $requiredValueValidator = $api->classLinker(RequiredValueValidator::class);
@@ -11,6 +13,7 @@ $abstractValidatorAggregate = $api->classLinker(AbstractValidatorAggregate::clas
 $validatorAggregate = $api->classLinker(ValidatorAggregate::class);
 $optionalValidatorInterface = $api->classLinker(OptionalValidatorInterface::class);
 $AbstractOptionalValidator = $api->classLinker(AbstractOptionalValidator::class);
+$alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(
 <<<MD
@@ -51,6 +54,7 @@ validators.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
+
 echo $parsedown->text(
 <<<MD
 ##$optionalValidatorInterface validation
@@ -61,7 +65,7 @@ echo $parsedown->text(
 ###The $patrnvLink class		
   
 The $patrnvLink validates the input against the given regular expression. The input
-is valid if it matches the pattern.
+is valid if it matches the given pattern. Build in patterns can be found from $alphabetsOnly
 MD
 );
   

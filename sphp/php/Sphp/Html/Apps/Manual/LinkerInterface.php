@@ -34,6 +34,13 @@ interface LinkerInterface {
   public function getUrlGenerator();
 
   /**
+   * Returns the default target of the generated links
+   *
+   * @return string|null the default target of the generated links
+   */
+  public function getDefaultTarget();
+
+  /**
    * Returns a hyperlink object pointing to a sub page
    *
    * @param  string $relativeUrl optional path from the root to the resource

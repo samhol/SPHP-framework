@@ -25,7 +25,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    * @var ReflectionClass
    */
   protected $ref;
-  
+
   /**
    *
    * @var ClassLinkPathGenerator 
@@ -41,8 +41,8 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($class,  ClassLinkPathGenerator $pathParser) {
-    parent::__construct($pathParser);
+  public function __construct($class, ClassLinkPathGenerator $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
+    parent::__construct($pathParser, $defaultTarget, $defaultCssClasses);
     $this->ref = new ReflectionClass($class);
     $this->classLinkParser = $pathParser;
   }
@@ -58,7 +58,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
   }
 
   public function __toString() {
-    return "" . $this->getLink();
+    return $this->getLink()->getHtml();
   }
 
   public function hyperlink($relativeUrl = null, $content = null, $title = null) {
@@ -114,5 +114,5 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     $title = "$name namespace";
     return $this->hyperlink($this->classLinkParser->getNamespacePath(), $name, $title);
   }
-  
+
 }

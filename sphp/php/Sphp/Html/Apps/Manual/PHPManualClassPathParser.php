@@ -20,7 +20,7 @@ class PHPManualClassPathParser extends AbstractClassLinklPathGenerator {
   use PHPManualTrait;
 
   public function getClassPath() {
-    return $this->getRoot()."class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
+    return $this->getRoot() . "class." . $this->phpPathFixer($this->reflector()->getName()) . '.php';
   }
 
   public function getMethodPath($method) {
@@ -37,6 +37,18 @@ class PHPManualClassPathParser extends AbstractClassLinklPathGenerator {
     $ns = $this->reflector()->getNamespaceName();
     $path = str_replace('\\', '.', $ns);
     return "namespace-$path.html";
+  }
+
+  /**
+   * Sets the language of the PHP documentation
+   * 
+   * @param  string $lang two letter language code 
+   * @return self for PHP Method Chaining
+   */
+  public function setLanguage($lang) {
+    $url = preg_replace('~[a-z]{2}\/$~', "$lang/", $this->getRoot());
+    $this->setRoot($url);
+    return $this;
   }
 
 }

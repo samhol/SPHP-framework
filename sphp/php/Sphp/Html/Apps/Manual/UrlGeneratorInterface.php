@@ -17,20 +17,6 @@ namespace Sphp\Html\Apps\Manual;
  */
 interface UrlGeneratorInterface {
 
-  /**
-   * Returns the default target of the generated links
-   *
-   * @return string the default target of the generated links
-   */
-  public function getTarget();
-
-  /**
-   * Sets the default target frame name of the generated links
-   *
-   * @param  string $target the default target of the generated links
-   * @return self for PHP Method Chaining
-   */
-  public function setTarget($target);
 
   /**
    * Returns the url pointing to the root of the page

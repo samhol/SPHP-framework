@@ -28,11 +28,18 @@ class Apis {
    * @var ApiGen[] 
    */
   private static $apigens = [];
+
   /**
    *
-   * @var ApiGen[] 
+   * @var PHPManual[] 
    */
   private static $phpManuals = [];
+
+  /**
+   *
+   * @var W3schools[] 
+   */
+  private static $w3schools;
 
   /**
    * 
@@ -44,7 +51,7 @@ class Apis {
       $path = DEFAULT_APIGEN;
     }
     if (!array_key_exists($path, self::$apigens)) {
-      $instance = new ApiGen(new UrlGenerator($path, $target));
+      $instance = new ApiGen(new UrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];
@@ -52,18 +59,6 @@ class Apis {
     return $instance;
   }
 
-  /**
-   * 
-   * @param  string|null $path
-   * @return self default instance of linker
-   */
-  public static function get() {
-    if (self::$instance === null) {
-      self::$instance = (new static());
-    }
-
-    return self::$instance;
-  }
   /**
    * 
    * @return PHPManual
@@ -88,8 +83,11 @@ class Apis {
    * 
    * @return W3schools
    */
-  public static function w3schools() {
-    return W3schools::get();
+  public static function w3schools($target = 'w3schools') {
+    if (self::$w3schools === null) {
+      self::$w3schools = new W3schools($target);
+    }
+    return self::$w3schools;
   }
 
 }

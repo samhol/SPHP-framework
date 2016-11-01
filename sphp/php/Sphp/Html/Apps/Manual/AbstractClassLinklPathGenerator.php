@@ -17,7 +17,7 @@ use ReflectionClass;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
- abstract class AbstractClassLinklPathGenerator extends UrlGenerator implements ClassLinkPathGenerator {
+abstract class AbstractClassLinklPathGenerator extends UrlGenerator implements ClassLinkPathGenerator {
 
   /**
    *
@@ -28,10 +28,10 @@ use ReflectionClass;
   /**
    * 
    * @param string|object $class
-   * @param UrlGeneratorInterface $gen
+   * @param string $root
    */
-  public function __construct($class, $root = '', $target = 'blank') {
-    parent::__construct($root, $target);
+  public function __construct($class, $root = '') {
+    parent::__construct($root);
     $this->ref = new ReflectionClass($class);
   }
 

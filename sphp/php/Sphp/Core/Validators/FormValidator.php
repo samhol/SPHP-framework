@@ -115,10 +115,10 @@ class FormValidator implements ValidatorInterface, \Countable, \IteratorAggregat
    * Create a new iterator to iterate through the {@link ValidatorInterface}
    * objects in aggregate
    *
-   * @return \ArrayIterator iterator
+   * @return Collection iterator
    */
   public function getIterator() {
-    return $this->validators->getIterator();
+    return $this->validators;
   }
 
   /**

@@ -30,16 +30,16 @@ class ApiGen extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(UrlGenerator $urlGenerator = null, $defaultCssClasses = ['api', 'apigen']) {
+  public function __construct(UrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'apigen']) {
     if ($urlGenerator === null) {
       $urlGenerator = new UrlGenerator();
     }
-    parent::__construct($urlGenerator, $defaultCssClasses);
+    parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
   }
 
   public function classLinker($class) {
-    $gen = new ApiGenClassPathParser($class, $this->getUrlGenerator()->getRoot(), $this->getUrlGenerator()->getTarget());
-    return new ApiGenClassLinker($class, $gen, $this->getDefaultCssClasses());
+    $gen = new ApiGenClassPathParser($class, $this->getUrlGenerator()->getRoot());
+    return new ApiGenClassLinker($class, $gen, $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   /**
@@ -61,7 +61,7 @@ class ApiGen extends AbstractPhpApiLinker {
    */
   public function constantLink($constantName) {
     $path = str_replace('\\', '.', $constantName);
-    return $this->hyperlink("constant-$path.html", $constantName, "$constantName constant")->addCssClass('constant');
+    return $this->hyperlink($this->getUrlGenerator()->create("constant-$path.html"), $constantName, "$constantName constant")->addCssClass('constant');
   }
 
   /**
