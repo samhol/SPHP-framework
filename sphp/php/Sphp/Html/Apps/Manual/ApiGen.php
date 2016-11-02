@@ -31,16 +31,15 @@ class ApiGen extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(UrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'apigen']) {
+  public function __construct(ApiGenClassUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'apigen']) {
     if ($urlGenerator === null) {
-      $urlGenerator = new UrlGenerator();
+      $urlGenerator = new ApiGenClassUrlGenerator();
     }
     parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
   }
 
   public function classLinker($class) {
-    $gen = new ApiGenClassUrlGenerator($class, $this->getUrlGenerator()->getRoot());
-    return new ApiGenClassLinker($class, $gen, $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new ApiGenClassLinker($class, $this->getUrlGenerator(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   public function functionLink($funName) {

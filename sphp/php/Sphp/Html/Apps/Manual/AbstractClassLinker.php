@@ -79,7 +79,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
     } else {
       $title = "Class $longName";
     }
-    return $this->hyperlink($this->classLinkParser->getClassPath(), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getClassPath($longName), $name, $title);
   }
 
   public function method($method, $full = true) {
@@ -101,19 +101,19 @@ abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLin
       //$name = $this->ref->getShortName() . "::$reflectedMethod->name()";
       $title = "Instance method: $fullClassName::$reflectedMethod->name()";
     }
-    return $this->hyperlink($this->classLinkParser->getMethodPath($method), $text, $title);
+    return $this->hyperlink($this->classLinkParser->getMethodPath($fullClassName, $method), $text, $title);
   }
 
   public function constant($constName) {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
-    return $this->hyperlink($this->classLinkParser->getConstantPath($constName), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getConstantPath($this->ref->getName(), $constName), $name, $title);
   }
 
   public function namespaceLink($full = true) {
     $name = $this->ref->getNamespaceName();
     $title = "$name namespace";
-    return $this->hyperlink($this->classLinkParser->getNamespacePath(), $name, $title);
+    return $this->hyperlink($this->classLinkParser->getNamespacePath($name), $name, $title);
   }
 
 }

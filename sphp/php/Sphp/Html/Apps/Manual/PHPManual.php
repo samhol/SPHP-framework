@@ -30,13 +30,12 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function __construct($defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
-    parent::__construct(new UrlGenerator('https://secure.php.net/manual/en/'), $defaultTarget);
+    parent::__construct(new PHPManualClassUrlGenerator(), $defaultTarget);
     $this->setDefaultCssClasses($defaultCssClasses);
   }
 
   public function classLinker($class) {
-    $gen = new PHPManualClassUrlGenerator($class, $this->getUrlGenerator()->getRoot(), $this->getDefaultTarget());
-    return new PHPManualClassLinker($class, $gen);
+    return new PHPManualClassLinker($class, $this->getUrlGenerator(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   public function constantLink($constant) {

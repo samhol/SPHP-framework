@@ -52,7 +52,7 @@ class Apis {
       $path = DEFAULT_APIGEN;
     }
     if (!array_key_exists($path, self::$apigens)) {
-      $instance = new ApiGen(new UrlGenerator($path), $target);
+      $instance = new ApiGen(new ApiGenClassUrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];

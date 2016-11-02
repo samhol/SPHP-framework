@@ -19,12 +19,11 @@ class PHPManualClassLinker extends AbstractClassLinker {
 
   use PHPManualTrait;
 
-  public function __construct($class, PHPManualClassUrlGenerator $p = null) {
+  public function __construct($class, PHPManualClassUrlGenerator $p = null, $defaultTarget = null, $defaultCssClasses = null) {
     if ($p === null) {
       $p = new PHPManualClassUrlGenerator($class);
     }
-    parent::__construct($class, $p);
-    $this->setDefaultCssClasses("api phpman");
+    parent::__construct($class, $p, $defaultTarget, $defaultCssClasses);
   }
 
 }

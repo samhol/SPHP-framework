@@ -22,7 +22,7 @@ interface ClassUrlGeneratorInterface extends UrlGeneratorInterface {
    *
    * @return string the relative API page path of the given class
    */
-  public function getClassPath();
+  public function getClassPath($className);
 
   /**
    * Returns the relative API page path of the given class method
@@ -30,7 +30,7 @@ interface ClassUrlGeneratorInterface extends UrlGeneratorInterface {
    * @param  string $method the method name
    * @return string the relative API page path string pointing to the given class method
    */
-  public function getMethodPath($method);
+  public function getMethodPath($className, $method);
 
   /**
    * Returns the relative API page path of the given class constant
@@ -38,12 +38,12 @@ interface ClassUrlGeneratorInterface extends UrlGeneratorInterface {
    * @param  string $constant the name of the constant
    * @return string the relative API page path of the given class constant
    */
-  public function getConstantPath($constant);
+  public function getConstantPath($className, $constant);
 
   /**
    * Returns the relative API page path of the given namespace
    *
    * @return string the relative API page path of the given namespace
    */
-  public function getNamespacePath();
+  public function getNamespacePath($namespaceName);
 }
