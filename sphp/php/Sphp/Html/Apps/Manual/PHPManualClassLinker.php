@@ -17,13 +17,28 @@ namespace Sphp\Html\Apps\Manual;
  */
 class PHPManualClassLinker extends AbstractClassLinker {
 
-  use PHPManualTrait;
-
-  public function __construct($class, PHPManualClassUrlGenerator $p = null, $defaultTarget = null, $defaultCssClasses = null) {
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $class
+   * @param PHPManualUrlGenerator|null $p
+   * @param string|null $defaultTarget
+   * @param string|string[]|null $defaultCssClasses
+   */
+  public function __construct($class, PHPManualUrlGenerator $p = null, $defaultTarget = null, $defaultCssClasses = null) {
     if ($p === null) {
-      $p = new PHPManualClassUrlGenerator($class);
+      $p = new PHPManualUrlGenerator();
     }
     parent::__construct($class, $p, $defaultTarget, $defaultCssClasses);
+  }
+
+  public function hyperlink($url = null, $content = null, $title = null) {
+    if ($title === null) {
+      $title = 'PHP manual';
+    } else {
+      $title = 'PHP manual: ' . $title;
+    }
+    return parent::hyperlink($url, $content, $title);
   }
 
 }

@@ -19,8 +19,6 @@ use Sphp\Html\Hyperlink;
  */
 class PHPManual extends AbstractPhpApiLinker {
 
-  use PHPManualTrait;
-
   /**
    * Constructs a new instance
    *
@@ -30,8 +28,17 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function __construct($defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
-    parent::__construct(new PHPManualClassUrlGenerator(), $defaultTarget);
+    parent::__construct(new PHPManualUrlGenerator(), $defaultTarget);
     $this->setDefaultCssClasses($defaultCssClasses);
+  }
+
+  public function hyperlink($url = null, $content = null, $title = null) {
+    if ($title === null) {
+      $title = 'PHP manual';
+    } else {
+      $title = 'PHP manual: ' . $title;
+    }
+    return parent::hyperlink($url, $content, $title);
   }
 
   public function classLinker($class) {
@@ -39,20 +46,14 @@ class PHPManual extends AbstractPhpApiLinker {
   }
 
   public function constantLink($constant) {
-    $path = 'reserved.constants.php';
-    if (defined($constant)) {
-      $path = 'reserved.constants.php#constant.' . $this->phpPathFixer($constant);
-      return $this->hyperlink($path, $constant, "$constant cnnstant")
-                      ->addCssClass('constant');
-    } else {
-      return $this->hyperlink($path, $constant, "$constant cnnstant")
-                      ->addCssClass('constant');
-    }
+    $path = $this->getUrlGenerator()->getConstantUrl($constant);
+    return $this->hyperlink($path, $constant, "$constant cnnstant")
+                    ->addCssClass('constant');
   }
 
   public function functionLink($funName) {
-    $path = $this->getUrlGenerator()->getRoot() . "function." . $this->phpPathFixer($funName);
-    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
+    $path = $this->getUrlGenerator()->getFunctionUrl($funName);
+    return $this->hyperlink($path, $funName, "$funName() function")->addCssClass('function');
   }
 
   /**

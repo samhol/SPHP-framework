@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\TimeTagInterface as TimeTagInterface;
+use Sphp\Html\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
 use DateTime;
 

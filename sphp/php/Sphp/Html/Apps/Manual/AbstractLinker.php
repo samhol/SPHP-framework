@@ -29,7 +29,7 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * the url pointing to the API documentation root
    *
-   * @var string
+   * @var string|null
    */
   private $target;
 
@@ -62,7 +62,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->urlGenerator);
+    unset($this->urlGenerator, $this->defaultCssClasses, $this->target);
   }
 
   /**
@@ -83,7 +83,7 @@ abstract class AbstractLinker implements LinkerInterface {
   public function getUrlGenerator() {
     return $this->urlGenerator;
   }
-  
+
   public function createUrl($relative) {
     return $this->urlGenerator->create($relative);
   }
@@ -99,10 +99,6 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this;
   }
 
-  /**
-   * 
-   * @return string|null
-   */
   public function getDefaultTarget() {
     return $this->target;
   }
@@ -111,6 +107,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * 
    * @param  string|null $target
    * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setDefaultTarget($target) {
     $this->target = $target;
@@ -121,6 +118,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * Returns the default CSS classes used in the generated links
    *
    * @return string the default CSS classes used in the generated links
+   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function getDefaultCssClasses() {
     return $this->defaultCssClasses;
@@ -131,20 +129,21 @@ abstract class AbstractLinker implements LinkerInterface {
    *
    * @param  string|null $defaultCssClasses the default CSS classes for the generated links
    * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function setDefaultCssClasses($defaultCssClasses = null) {
     $this->defaultCssClasses = $defaultCssClasses;
     return $this;
   }
 
-  public function hyperlink($relativeUrl = null, $content = null, $title = null) {
-    if ($relativeUrl === null) {
-      $relativeUrl = $this->getLinkGenerator()->getRoot();
+  public function hyperlink($url = null, $content = null, $title = null) {
+    if ($url === null) {
+      $url = $this->getLinkGenerator()->getRoot();
     }
     if ($content === null) {
-      $content = $relativeUrl;
+      $content = $url;
     }
-    $a = new Hyperlink($relativeUrl, $content);
+    $a = new Hyperlink($url, $content);
     if ($this->getDefaultTarget() !== null) {
       $a->setTarget($this->getDefaultTarget());
     }

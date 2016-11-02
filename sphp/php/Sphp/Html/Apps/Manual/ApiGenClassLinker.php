@@ -24,11 +24,11 @@ class ApiGenClassLinker extends AbstractClassLinker {
   /**
    * 
    * @param string $class
-   * @param ApiGenClassUrlGenerator $pathParser
+   * @param ApiGenUrlGenerator $pathParser
    * @param string|null $defaultTarget
    * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct($class, ApiGenClassUrlGenerator $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct($class, ApiGenUrlGenerator $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
     parent::__construct($class, $pathParser, $defaultTarget, $defaultCssClasses);
   }
 

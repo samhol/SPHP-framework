@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\AbstractJavaScriptComponent as AbstractJavaScriptComponent;
+use Sphp\Html\AbstractJavaScriptComponent;
 
 /**
  * Class MouseCoordinateViewer

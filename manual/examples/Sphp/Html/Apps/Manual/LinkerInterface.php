@@ -29,16 +29,15 @@ $links->appendMd("###W3schools:");
 $links[] = $w3schoolsApi->tag("html");
 $links[] = $w3schoolsApi->attr("id");
 $links[] = $w3schoolsApi->attr('style', 'Global style attribute');
-$links->printHtml();
 
 $phpApi = Apis::phpManual();
 
-$dateTime1 = $sphpApi->classLinker(\Datetime::class);
+$dateTime1 = $phpApi->classLinker(\Datetime::class);
 
 $links->appendMd('###PHP manual:');
 $links[] = $phpApi->extensionLink("gettext");
 $links[] = $phpApi->functionLink('date');
-$links[] = $phpApi->constantLink('DATE_ATOM');
+$links[] = $phpApi->constantLink('E_WARNING');
 $links[] = $dateTime1;
 $links[] = $dateTime1->method('format');
 $links[] = $dateTime1->constant('ATOM');

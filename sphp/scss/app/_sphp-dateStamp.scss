@@ -20,7 +20,7 @@ time.date-icon {
   -webkit-transform: rotate(0deg) skewY(0deg);
   -webkit-transform-origin: 50% 10%;
   transform-origin: 50% 10%;
-  & * {
+   * {
     display: block;
     width: 100%;
     font-size: 1em;
@@ -28,7 +28,7 @@ time.date-icon {
     font-style: normal;
     text-align: center;
   }
-  & strong {
+   strong {
     position: absolute;
     top: 0;
     padding: 0.4em 0;
@@ -37,12 +37,12 @@ time.date-icon {
     border-bottom: 1px dashed #f37302;
     box-shadow: 0 2px 0 #fd9f1b;
   }
-  & em {
+   em {
     position: absolute;
     bottom: 0.3em;
     color: #fd9f1b;
   }
-  & span {
+   span {
     width: 100%;
     font-size: 2.8em;
     letter-spacing: -0.05em;

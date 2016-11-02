@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractLinker.php (UTF-8)
+ * Apis.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -14,7 +14,7 @@ if (!defined("Sphp\Html\Apps\Manual\DEFAULT_APIGEN")) {
 use Sphp\Html\Apps\Manual\DEFAULT_APIGEN;
 
 /**
- * A factory class for api linkers
+ * A factory for API manual linkers
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -52,7 +52,7 @@ class Apis {
       $path = DEFAULT_APIGEN;
     }
     if (!array_key_exists($path, self::$apigens)) {
-      $instance = new ApiGen(new ApiGenClassUrlGenerator($path), $target);
+      $instance = new ApiGen(new ApiGenUrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
     } else {
       $instance = self::$apigens[$path];

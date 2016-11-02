@@ -13,12 +13,12 @@ use Sphp\Core\Types\Strings;
 use Sphp\Core\Types\Arrays;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Foundation\Buttons\HyperlinkButton as HyperlinkButton;
-use Sphp\Html\Foundation\Structure\Row as Row;
-use Sphp\Html\Tables\Table as Table;
-use Sphp\Html\Tables\Th as Th;
+use Sphp\Html\Foundation\Buttons\HyperlinkButton;
+use Sphp\Html\Foundation\Structure\Row;
+use Sphp\Html\Tables\Table;
+use Sphp\Html\Tables\Th;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\Lists\Li as Li;
+use Sphp\Html\Lists\Li;
 use Sphp\Html\Media\Img;
 
 /**

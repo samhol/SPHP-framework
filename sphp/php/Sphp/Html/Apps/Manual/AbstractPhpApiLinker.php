@@ -17,11 +17,11 @@ namespace Sphp\Html\Apps\Manual;
  */
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
-  public function hyperlink($relativeUrl = null, $content = null, $title = null) {
+  public function hyperlink($url = null, $content = null, $title = null) {
     if ($content === null) {
-      $content = $relativeUrl;
+      $content = $url;
     }
-    return parent::hyperlink($relativeUrl, str_replace('\\', '\\<wbr>', $content), $title);
+    return parent::hyperlink($url, str_replace('\\', '\\<wbr>', $content), $title);
   }
 
   /**
@@ -33,7 +33,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   abstract public function classLinker($class);
 
   /**
-   * Returns a hyperlink object pointing to an PHP function page
+   * Returns a hyperlink object pointing to an API page describing PHP function 
    *
    * @param  string $funName the name of the function
    * @return string hyperlink object pointing to an PHP function page

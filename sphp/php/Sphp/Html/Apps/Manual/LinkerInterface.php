@@ -34,20 +34,21 @@ interface LinkerInterface {
   public function getUrlGenerator();
 
   /**
-   * Returns the default target of the generated links
+   * Returns the default target of the created hyperlink objects
    *
-   * @return string|null the default target of the generated links
+   * @return string|null the target attribute value of the created hyperlink objects
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getDefaultTarget();
 
   /**
-   * Returns a hyperlink object pointing to a sub page
+   * Returns a hyperlink object pointing to a linked page
    *
-   * @param  string $relativeUrl optional path from the root to the resource
+   * @param  string $url optional path from the root to the resource
    * @param  string $content optional content of the link
    * @param  string $title optional title of the link
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    * @return HyperlinkInterface hyperlink object pointing to an API page
    */
-  public function hyperlink($relativeUrl = null, $content = null, $title = null);
+  public function hyperlink($url = null, $content = null, $title = null);
 }
