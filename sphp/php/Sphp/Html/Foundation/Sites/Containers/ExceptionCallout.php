@@ -9,10 +9,9 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Exception;
 use Sphp\Html\Div;
-use Sphp\Html\Headings\H2 as H2;
-use Sphp\Html\Lists\Ol as Ol;
-use Sphp\Html\Lists\Li as Li;
-use Sphp\Html\Lists\Dl as Dl;
+use Sphp\Html\Lists\Ol;
+use Sphp\Html\Lists\Li;
+use Sphp\Html\Lists\Dl;
 
 /**
  * Class implements a simple HTML structure for {@link \Exception} presentation
