@@ -47,9 +47,12 @@ class ApiGen extends AbstractPhpApiLinker {
     return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
-  public function constantLink($constantName) {
+  public function constantLink($constantName, $linkText = null) {
+    if ($linkText === null){
+      $linkText = $constantName;
+    }
     $path = str_replace('\\', '.', $constantName);
-    return $this->hyperlink($this->createUrl("constant-$path.html"), $constantName, "$constantName constant")->addCssClass('constant');
+    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constantName")->addCssClass('constant');
   }
 
   /**
@@ -68,12 +71,12 @@ class ApiGen extends AbstractPhpApiLinker {
       $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
       $name = array_pop($nsArr);
     }
-    $url = $this->createUrl("namespace-" . $path . ".html");
+    $url = $this->getUrlGenerator()->getNamespaceUrl($namespace);
     return $this->hyperlink($url, $name, "The $ns namespace");
   }
 
   /**
-   * Returns a BreadCrumbs component showint the trail of nested namespaces
+   * Returns a BreadCrumbs component showing the trail of nested namespaces
    * 
    * @param  string $namespace
    * @return BreadCrumbs

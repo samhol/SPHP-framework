@@ -21,7 +21,9 @@ $links->appendMd('###SPHP framework:');
 $links[] = $dateTime;
 $links[] = $dateTime->method('format');
 $links[] = $dateTime->constant('ATOM');
-$links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE');
+$links[] = $dateTime->classBreadGrumbs();
+$links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\DATE');
+$links[] = $sphpApi->namespaceBreadGrumbs(__NAMESPACE__);
 
 $w3schoolsApi = Apis::w3schools();
 
