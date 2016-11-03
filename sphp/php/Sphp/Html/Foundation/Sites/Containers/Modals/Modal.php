@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ModalReveal.php (UTF-8)
+ * Modal.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -17,8 +17,8 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/reveal.html Founfation 6 Reveal
+ * @link    http://foundation.zurb.com/ Foundation 
+ * @link    http://foundation.zurb.com/sites/docs/reveal.html Founfation Reveal
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -7,12 +7,11 @@
 
 namespace Sphp\Html\Apps\Manual;
 
-use Sphp\Core\Util\ReflectionClassExt;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
 /**
- * PHP class link generator pointing to an exising ApiGen documentation
+ * Hyperlink object generator pointing to an exising ApiGen documentation about a class
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -22,36 +21,41 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 class ApiGenClassLinker extends AbstractClassLinker {
 
   /**
+   * Constructs a new instance
    * 
-   * @param string $class
-   * @param ApiGenUrlGenerator $pathParser
+   * @param string $class the name of the class
+   * @param ApiGenUrlGenerator|null $urlGenerator
    * @param string|null $defaultTarget
    * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct($class, ApiGenUrlGenerator $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
-    parent::__construct($class, $pathParser, $defaultTarget, $defaultCssClasses);
+  public function __construct($class, ApiGenUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = null) {
+     if ($urlGenerator === null) {
+      $urlGenerator = new ApiGenUrlGenerator();
+    }
+    parent::__construct($class, $urlGenerator, $defaultTarget, $defaultCssClasses);
   }
 
   /**
    * Returns a BreadCrumbs component showing the class and the trail of nested namespaces leading to it
    * 
-   * @param  string $namespace
    * @return BreadCrumbs
    */
   public function classBreadGrumbs() {
+    $target = $this->getDefaultTarget();
     $namespace = $this->ref->getNamespaceName();
-    $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
-    $bcs = (new BreadCrumbs())->addCssClass('apigen class');
-    $cuur = [];
-    foreach ($nsArr as $name) {
-      $cuur[] = $name;
-      $path = implode('.', $cuur);
-      $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $this->getDefaultTarget());
-      $bcs->append($bc);
+    $namespaceArray = explode('\\', $namespace);
+    $breadCrumbs = new BreadCrumbs();
+    $breadCrumbs->addCssClass('apigen class');
+    $currentNamespace = [];
+    foreach ($namespaceArray as $name) {
+      $currentNamespace[] = $name;
+      $path = implode(".", $currentNamespace);
+      $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $target);
+      $bc->setTitle("Namespace $name");
+      $breadCrumbs->append($bc);
     }
-    $bclass = new BreadCrumb($this->getLink(), $this->ref->getShortName(), $this->getDefaultTarget());
-    $bcs->append($bclass);
-    return $bcs;
+    $breadCrumbs->appendNew($this->urls()->getClassUrl($this->ref->getName()), $this->ref->getShortName(), $target);
+    return $breadCrumbs;
   }
 
 }

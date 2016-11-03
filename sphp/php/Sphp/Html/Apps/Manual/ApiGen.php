@@ -8,7 +8,6 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Core\Util\ReflectionClassExt;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 
@@ -17,6 +16,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
+ * @link    http://www.apigen.org/ ApiGen
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @see Hyperlink
@@ -39,16 +39,19 @@ class ApiGen extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    return new ApiGenClassLinker($class, $this->getUrlGenerator(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new ApiGenClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function functionLink($funName) {
-    $path = $this->getUrlGenerator()->getFunctionUrl("function-$path.html");
+  public function functionLink($funName, $linkText = null) {
+    if ($linkText === null) {
+      $linkText = $funName;
+    }
+    $path = $this->urls()->getFunctionUrl("function-$path.html");
     return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
   }
 
   public function constantLink($constantName, $linkText = null) {
-    if ($linkText === null){
+    if ($linkText === null) {
       $linkText = $constantName;
     }
     $path = str_replace('\\', '.', $constantName);
@@ -59,41 +62,40 @@ class ApiGen extends AbstractPhpApiLinker {
    * Returns a hyperlink object pointing to an API namespace page
    *
    * @param  string $namespace namespace name
+   * @param  string $linkText optional link text
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
    * @return Hyperlink hyperlink object pointing to an API namespace page1
    */
   public function namespaceLink($namespace, $fullName = true) {
-    $ns = ReflectionClassExt::parseNamespace($namespace);
-    $path = str_replace('\\', '.', $ns);
     if ($fullName) {
-      $name = $ns;
+      $name = $namespace;
     } else {
-      $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
+      $nsArr = explode('\\', $namespace);
       $name = array_pop($nsArr);
     }
-    $url = $this->getUrlGenerator()->getNamespaceUrl($namespace);
-    return $this->hyperlink($url, $name, "The $ns namespace");
+    $url = $this->urls()->getNamespaceUrl($namespace);
+    return $this->hyperlink($url, $name, "The $namespace namespace");
   }
 
   /**
    * Returns a BreadCrumbs component showing the trail of nested namespaces
    * 
-   * @param  string $namespace
-   * @return BreadCrumbs
+   * @param  string $namespace namespace name
+   * @return BreadCrumbs breadcrumb showing the trail of nested namespaces
    */
   public function namespaceBreadGrumbs($namespace) {
-    $nsArr = ReflectionClassExt::parseNamespaceToArray($namespace);
-    //$root = "";
-    $bcs = (new BreadCrumbs())->addCssClass('apigen namespace');
-    $cuur = [];
-    foreach ($nsArr as $name) {
-      //$root .= "\\$name";
-      $cuur[] = $name;
-      $path = implode(".", $cuur);
-      $bc = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, "apigen");
-      $bcs->append($bc);
+    $namespaceArray = explode('\\', $namespace);
+    $breadGrumbs = (new BreadCrumbs())->addCssClass(['apigen', 'namespace']);
+    $currentNamespaceArray = [];
+    foreach ($namespaceArray as $name) {
+      $currentNamespaceArray[] = $name;
+      $path = implode(".", $currentNamespaceArray);
+      $root = implode("\\", $currentNamespaceArray);
+      $breadCrumb = new BreadCrumb($this->createUrl("namespace-$path.html"), $name, $this->getDefaultTarget());
+      $breadCrumb->setTitle("NameSpace $root");
+      $breadGrumbs->append($breadCrumb);
     }
-    return $bcs;
+    return $breadGrumbs;
   }
 
 }

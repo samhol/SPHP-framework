@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * Link generator pointing to an exising API documentation
+ * Defines a URL string generator pointing to an online PHP API
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

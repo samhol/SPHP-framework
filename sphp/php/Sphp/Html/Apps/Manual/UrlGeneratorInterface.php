@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * URL string generator pointing to an existing API documentation
+ * Defines a URL string generator pointing to an online site
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -23,14 +23,6 @@ interface UrlGeneratorInterface {
    * @return string the url pointing to the API documentation
    */
   public function getRoot();
-
-  /**
-   * Sets the url pointing to the root of the site
-   *
-   * @param  string $root the url pointing to the API documentation
-   * @return self for PHP Method Chaining
-   */
-  public function setRoot($root);
 
   /**
    * Creates an URL string pointing to the resource

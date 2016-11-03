@@ -28,7 +28,7 @@ interface ContentParserInterface extends ContentInterface {
   /**
    * Appends a raw file to the container
    * 
-   * @param  string $path
+   * @param  string $path path to the file
    * @return self for PHP Method Chaining
    */
   public function appendRawFile($path);
@@ -44,7 +44,7 @@ interface ContentParserInterface extends ContentInterface {
   /**
    * Appends a parsed Mark Down string to the container
    * 
-   * @param  string $md
+   * @param  string $md path to the file
    * @return self for PHP Method Chaining
    */
   public function appendMd($md);
@@ -52,7 +52,7 @@ interface ContentParserInterface extends ContentInterface {
   /**
    * Appends a parsed Mark Down file to the container
    * 
-   * @param  string $path
+   * @param  string $path path to the file
    * @return self for PHP Method Chaining
    */
   public function appendMdFile($path);

@@ -10,7 +10,7 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Link generator for w3schools Docs related hyperlinks
+ * Hyperlink generator pointing to online w3schools documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -49,7 +49,7 @@ class W3schools extends AbstractLinker {
         $linkText = "&lt;$tagname&gt;";
       }
     }
-    return $this->hyperlink($this->getUrlGenerator()->create($link), $linkText, 'Link to w3schools.com documentation');
+    return $this->hyperlink($this->urls()->create($link), $linkText, 'Link to w3schools.com documentation');
   }
 
   /**
@@ -64,7 +64,7 @@ class W3schools extends AbstractLinker {
     if ($linkText === null) {
       $linkText = "$attrName Attribute";
     }
-    return $this->hyperlink($this->getUrlGenerator()->create($link), $linkText, 'Link to w3schools.com documentation');
+    return $this->hyperlink($this->urls()->create($link), $linkText, 'Link to w3schools.com documentation');
   }
 
 }

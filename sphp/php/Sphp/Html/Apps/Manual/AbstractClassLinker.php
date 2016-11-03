@@ -10,14 +10,15 @@ namespace Sphp\Html\Apps\Manual;
 use ReflectionClass;
 
 /**
- * Link generator pointing to an exising ApiGen documentation
+ * Hyperlink object generator pointing to an exising API documentation about a class
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
+ * @link    http://www.apigen.org/ ApiGen
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractClassLinker extends AbstractLinker implements PhpClassLinkerInterface {
+abstract class AbstractClassLinker extends AbstractLinker implements ClassLinkerInterface {
 
   /**
    * Class Reflector

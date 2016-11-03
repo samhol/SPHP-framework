@@ -13,7 +13,7 @@ use Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvas;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 
 /**
- * Link generator for Foundation Docs related hyperlinks
+ * Hyperlink generator pointing to online Foundation Docs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * HtmlContainer.php (UTF-8)
+ * Container.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -13,7 +13,7 @@ use ArrayIterator;
 use Traversable;
 
 /**
- * Clacc implements a container for HTML components and other textual content
+ * Class implements a container for HTML components and other textual content
  *
  * {@inheritdoc}
  *

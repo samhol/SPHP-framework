@@ -1,17 +1,18 @@
 <?php
 
 /**
- * ApiGenClassPathParser.php (UTF-8)
+ * ApiGenUrlGenerator.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * PHP class link generator pointing to an exising ApiGen documentation
+ * ApiGen URL string generator pointing to an exising ApiGen documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
+ * @link    http://www.apigen.org/ ApiGen
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

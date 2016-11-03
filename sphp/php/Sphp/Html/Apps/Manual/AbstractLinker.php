@@ -8,6 +8,8 @@
 namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Hyperlink generator pointing to an existing API documentation
@@ -43,15 +45,15 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Constructs a new instance
    *
-   * @param UrlGeneratorInterface $urlGen the url pointing to the API documentation
+   * @param UrlGeneratorInterface $urlGenerator the url pointing to the API documentation
    * @param string $defaultTarget the default target of the generated links
    * @param string|string[]|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(UrlGeneratorInterface $urlGen, $defaultTarget = null, $defaultCssClasses = null) {
-    $this->setUrlGenerator($urlGen)
-            ->setDefaultCssClasses($defaultCssClasses);
+  public function __construct(UrlGeneratorInterface $urlGenerator, $defaultTarget = null, $defaultCssClasses = null) {
+    $this->urlGenerator = $urlGenerator;
+    $this->setDefaultCssClasses($defaultCssClasses);
     $this->setDefaultTarget($defaultTarget);
   }
 
@@ -80,23 +82,12 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this->hyperlink()->getHtml();
   }
 
-  public function getUrlGenerator() {
+  public function urls() {
     return $this->urlGenerator;
   }
 
   public function createUrl($relative) {
     return $this->urlGenerator->create($relative);
-  }
-
-  /**
-   * Sets the url pointing to the API documentation
-   *
-   * @param  UrlGeneratorInterface $linkGenerator the url pointing to the API documentation
-   * @return self for PHP Method Chaining
-   */
-  private function setUrlGenerator(UrlGeneratorInterface $linkGenerator) {
-    $this->urlGenerator = $linkGenerator;
-    return $this;
   }
 
   public function getDefaultTarget() {
@@ -136,23 +127,36 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this;
   }
 
+  /**
+   * Sets the default target and CSS classes to the hyperlink component
+   * 
+   * @param  HyperlinkInterface $a the hyperlink component to modify
+   * @return HyperlinkInterface returns the modified component
+   * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
+   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
+   */
+  public function insertDefaults(HyperlinkInterface $a) {
+    if ($this->target !== null) {
+      $a->setTarget($this->target);
+    }
+    if ($this->defaultCssClasses !== null && $a instanceof ComponentInterface) {
+      $a->addCssClass($this->defaultCssClasses);
+    }
+    return $a;
+  }
+
   public function hyperlink($url = null, $content = null, $title = null) {
     if ($url === null) {
-      $url = $this->getLinkGenerator()->getRoot();
+      $url = $this->urls()->getRoot();
     }
     if ($content === null) {
       $content = $url;
     }
     $a = new Hyperlink($url, $content);
-    if ($this->getDefaultTarget() !== null) {
-      $a->setTarget($this->getDefaultTarget());
-    }
     if ($title !== null) {
       $a->setTitle($title);
     }
-    if ($this->defaultCssClasses !== null) {
-      $a->addCssClass($this->defaultCssClasses);
-    }
+    $this->insertDefaults($a);
     return $a;
   }
 

@@ -10,10 +10,11 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Hyperlink;
 
 /**
- * Link generator pointing to an exising PHP manual documentation
+ * Hyperlink object generator pointing to PHP manual
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
+ * @link    http://php.net/manual/ PHP manual
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -42,25 +43,31 @@ class PHPManual extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    return new PHPManualClassLinker($class, $this->getUrlGenerator(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new PHPManualClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function constantLink($constant) {
-    $path = $this->getUrlGenerator()->getConstantUrl($constant);
-    return $this->hyperlink($path, $constant, "$constant cnnstant")
+  public function constantLink($constant, $linkText = null) {
+    if ($linkText === null) {
+      $linkText = $constant;
+    }
+    $path = $this->urls()->getConstantUrl($constant);
+    return $this->hyperlink($path, $linkText, "$constant cnnstant")
                     ->addCssClass('constant');
   }
 
-  public function functionLink($funName) {
-    $path = $this->getUrlGenerator()->getFunctionUrl($funName);
-    return $this->hyperlink($path, $funName, "$funName() function")->addCssClass('function');
+  public function functionLink($funName, $linkText = null) {
+    if ($linkText === null) {
+      $linkText = $funName;
+    }
+    $path = $this->urls()->getFunctionUrl($funName);
+    return $this->hyperlink($path, $linkText, "$funName() function")->addCssClass('function');
   }
 
   /**
    * Returns a hyperlink object pointing to the PHP extension in the PHP documentation
    *
    * @param  string $extName the name of the PHP extension (case insensitive)
-   * @param  string $linkText optional text of the hyperlink
+   * @param  string $linkText optional link text
    * @return Hyperlink hyperlink object pointing to the PHP extension in the PHP
    *         documentation
    */
@@ -69,14 +76,14 @@ class PHPManual extends AbstractPhpApiLinker {
     if ($linkText === null) {
       $linkText = $extName;
     }
-    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "book." . $path, $linkText, $extName);
+    return $this->hyperlink($this->urls()->getRoot() . "book." . $path, $linkText, $extName);
   }
 
   /**
    * Returns a hyperlink object pointing to the PHP type documentation
    *
    * @param  mixed|string $type the PHP työe or the name of the PHP type
-   * @param  string $linkText optional text of the hyperlink
+   * @param  string $linkText optional link text
    * @return Hyperlink hyperlink object pointing to the PHP type documentation page
    */
   public function typeLink($type, $linkText = null) {
@@ -95,7 +102,7 @@ class PHPManual extends AbstractPhpApiLinker {
     } else {
       $title = "$typename type";
     }
-    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "language.types.$typename", $linkText, $title)
+    return $this->hyperlink($this->urls()->getRoot() . "language.types.$typename", $linkText, $title)
                     ->addCssClass('type');
   }
 
@@ -109,7 +116,7 @@ class PHPManual extends AbstractPhpApiLinker {
    */
   public function controlStructLink($controlName) {
     $path = strtolower($controlName);
-    return $this->hyperlink($this->getUrlGenerator()->getRoot() . "control-structures." . $path, $controlName, $controlName);
+    return $this->hyperlink($this->urls()->getRoot() . "control-structures." . $path, $controlName, $controlName);
   }
 
 }

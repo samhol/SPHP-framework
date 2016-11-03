@@ -15,14 +15,17 @@ $links[] = $entityManagerDecorator->method('getCache', false);
 
 $sphpApi = Apis::apigen('http://documentation.samiholck.com/apigen/');
 
-$dateTime = $sphpApi->classLinker(\Datetime::class);
+use Sphp\Html\Document;
+
+$document = $sphpApi->classLinker(Document::class);
 
 $links->appendMd('###SPHP framework:');
-$links[] = $dateTime;
-$links[] = $dateTime->method('format');
-$links[] = $dateTime->constant('ATOM');
-$links[] = $dateTime->classBreadGrumbs();
+$links[] = $document;
+$links[] = $document->method('get');
+$links[] = $document->constant('HTML5');
+$links[] = $document->classBreadGrumbs();
 $links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\DATE');
+$links[] = $sphpApi->namespaceLink(__NAMESPACE__, true);
 $links[] = $sphpApi->namespaceBreadGrumbs(__NAMESPACE__);
 
 $w3schoolsApi = Apis::w3schools();

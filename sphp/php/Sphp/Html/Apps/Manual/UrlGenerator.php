@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * Hyperlink generator pointing to an existing API documentation
+ * URL string generator pointing to an online site
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -47,19 +47,19 @@ class UrlGenerator implements UrlGeneratorInterface {
     return $this->root;
   }
 
-  public function create($relative = '') {
-    return $this->root . $relative;
-  }
-
   /**
    * Sets the url pointing to the API documentation
    *
    * @param  string $root the site root
    * @return self for PHP Method Chaining
    */
-  public function setRoot($root) {
+  protected function setRoot($root) {
     $this->root = $root;
     return $this;
+  }
+
+  public function create($relative = '') {
+    return $this->root . $relative;
   }
 
 }

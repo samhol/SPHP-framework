@@ -10,7 +10,7 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
- * Hyperlink object generator pointing to an existing API documentation
+ * Defines a Hyperlink object generator pointing to an existing site 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
@@ -27,11 +27,11 @@ interface LinkerInterface {
   public function __toString();
 
   /**
-   * Returns the url pointing to the API documentation
+   * Returns the url generator pointing to the API documentation
    *
-   * @return UrlGeneratorInterface the url pointing to the API documentation
+   * @return UrlGeneratorInterface the url generator pointing to the API documentation
    */
-  public function getUrlGenerator();
+  public function urls();
 
   /**
    * Returns the default target of the created hyperlink objects
