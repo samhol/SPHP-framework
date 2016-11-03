@@ -29,7 +29,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
    * @param string|string[]|null $defaultCssClasses
    */
   public function __construct($class, ApiGenUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = null) {
-     if ($urlGenerator === null) {
+    if ($urlGenerator === null) {
       $urlGenerator = new ApiGenUrlGenerator();
     }
     parent::__construct($class, $urlGenerator, $defaultTarget, $defaultCssClasses);
@@ -45,7 +45,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
     $namespace = $this->ref->getNamespaceName();
     $namespaceArray = explode('\\', $namespace);
     $breadCrumbs = new BreadCrumbs();
-    $breadCrumbs->addCssClass('apigen class');
+    $breadCrumbs->addCssClass(['apigen', 'class']);
     $currentNamespace = [];
     foreach ($namespaceArray as $name) {
       $currentNamespace[] = $name;
