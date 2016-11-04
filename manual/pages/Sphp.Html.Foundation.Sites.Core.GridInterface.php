@@ -40,7 +40,7 @@ settings from smaller ones.
 ####Creating a $row component containing $cols with equal widths
 		
 A simple way to create a $row containing $cols with equal widths is to either construct 
-a $row with column contents as a parameter or set the columns similarly by calling {$rowIf->method("setColumns")} method.
+a $row with column contents as a parameter or set the columns similarly by calling {$rowIf->methodLink("setColumns")} method.
 The calculates the widths of the individual $cols by dividing the maximum $row width with the number of the given $cols.
 1. The number of the $cols in a $row can be any number between 1-12.
 2. A simple way to create a $row containing $cols with equal widths is to simply construct a $row with column contents as a parameter.

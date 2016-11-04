@@ -5,13 +5,20 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Lists\Ul;
 use Doctrine\ORM\Decorator\EntityManagerDecorator;
 
+$links = new Ul();
+
+$wordPress = Apis::apigen('http://apigen.juzna.cz/doc/WordPress/WordPress/');
+
+$links[] = $wordPress->functionLink('__return_empty_array');
+$links[] = $wordPress->functionLink('_wp_footer_scripts');
+
 $doctrine2 = Apis::apigen('http://www.doctrine-project.org/api/orm/2.4/');
 $entityManagerDecorator = $doctrine2->classLinker(EntityManagerDecorator::class);
-$links = new Ul();
+
 $links->appendMd('###Doctrine 2:');
 $links[] = $entityManagerDecorator;
-$links[] = $entityManagerDecorator->method('getCache', true);
-$links[] = $entityManagerDecorator->method('getCache', false);
+$links[] = $entityManagerDecorator->methodLink('getCache', true);
+$links[] = $entityManagerDecorator->methodLink('getCache', false);
 
 $sphpApi = Apis::apigen('http://documentation.samiholck.com/apigen/');
 
@@ -21,8 +28,8 @@ $document = $sphpApi->classLinker(Document::class);
 
 $links->appendMd('###SPHP framework:');
 $links[] = $document;
-$links[] = $document->method('get');
-$links[] = $document->constant('HTML5');
+$links[] = $document->methodLink('get');
+$links[] = $document->constantLink('HTML5');
 $links[] = $document->classBreadGrumbs();
 $links[] = $sphpApi->constantLink('Sphp\Regex\FI\DATE', 'constant Sphp\Regex\FI\DATE');
 $links[] = $sphpApi->namespaceLink(__NAMESPACE__, true);
@@ -44,7 +51,7 @@ $links[] = $phpApi->extensionLink("gettext");
 $links[] = $phpApi->functionLink('date');
 $links[] = $phpApi->constantLink('E_WARNING');
 $links[] = $dateTime1;
-$links[] = $dateTime1->method('format');
-$links[] = $dateTime1->constant('ATOM');
+$links[] = $dateTime1->methodLink('format');
+$links[] = $dateTime1->constantLink('ATOM');
 $links->printHtml();
 ?>

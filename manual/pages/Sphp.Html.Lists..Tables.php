@@ -27,13 +27,13 @@ $liInterface into a $li object.
 Furthermore the $ol component (an ordered list) introduces some additional functionality for list item 
 indexing in the generated HTML output. This indexing can be numerical or alphabetical.
 
-* {$ol->method("setType", FALSE)}: sets the kind of marker used in the list
+* {$ol->methodLink("setType", FALSE)}: sets the kind of marker used in the list
   * `'1'`: Decimal numbers (1, 2, 3, 4) **Default**
   * `'a'`: Alphabetically ordered list, lowercase (a, b, c, d)
   * `'A'`: Alphabetically ordered list, uppercase (A, B, C, D)
   * `'i'`: Roman numbers, lowercase (i, ii, iii, iv)
   * `'I'`: Roman numbers, uppercase (I, II, III, IV)
-* {$ol->method("setStart", FALSE)}: sets the start value of the list ordering index
+* {$ol->methodLink("setStart", FALSE)}: sets the start value of the list ordering index
 		
 MD
 );

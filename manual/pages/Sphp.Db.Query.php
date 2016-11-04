@@ -16,12 +16,12 @@ has no persistent effects on the database.
 
 Some essential $query methods:
         
-* {$query->method("get")} - sets the list of columns to include in the final result
-* {$query->method("from")} - indicates the table(s)
-* {$query->method("where")} - restricts the rows returned
-* {$query->method("groupBy")} - projects rows having common values into a smaller set of rows
-* {$query->method("having")} - filters rows resulting from the {$query->method("groupBy")} call
-* {$query->method("orderBy")} - sorts the resulting data
+* {$query->methodLink("get")} - sets the list of columns to include in the final result
+* {$query->methodLink("from")} - indicates the table(s)
+* {$query->methodLink("where")} - restricts the rows returned
+* {$query->methodLink("groupBy")} - projects rows having common values into a smaller set of rows
+* {$query->methodLink("having")} - filters rows resulting from the {$query->methodLink("groupBy")} call
+* {$query->methodLink("orderBy")} - sorts the resulting data
 
 MD
 );

@@ -35,7 +35,7 @@ for rows and columns namely $row and $col.
 
 
 * A simple way to create a $row containing $cols with equal widths is to either construct 
-a $row with column contents as a parameter or set the columns similarly by calling {$rowIf->method("setColumns")} method.
+a $row with column contents as a parameter or set the columns similarly by calling {$rowIf->methodLink("setColumns")} method.
 	* The number of the inserted columns can be `1,2,3,4,6` or `12` for equal width columns that expand the entire $row.
 	* if the space used by the inserted columns is smaller than 12, the last $col will be floated to the right of the $row.
 		

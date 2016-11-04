@@ -6,8 +6,8 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 $topBar = Apis::apigen()->classLinker(TopBar::class);
-$left = $topBar->method("left");
-$right = $topBar->method("right");
+$left = $topBar->methodLink("left");
+$right = $topBar->methodLink("right");
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 //$topBar = $api->classLinker(TopBar::class);
 echo $parsedown->text(<<<MD

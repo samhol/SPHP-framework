@@ -34,7 +34,7 @@ interface ClassLinkerInterface extends LinkerInterface {
    * @param  boolean $full true for `Class::method()` and false for `method()`
    * @return Hyperlink object pointing to class method in the API documentation
    */
-  public function method($method, $full = false);
+  public function methodLink($method, $full = false);
 
   /**
    * Returns a hyperlink object pointing to class constant in the API documentation
@@ -42,7 +42,7 @@ interface ClassLinkerInterface extends LinkerInterface {
    * @param  string $constName the constant name
    * @return Hyperlink object pointing to class constant in the API documentation
    */
-  public function constant($constName);
+  public function constantLink($constName);
 
   /**
    * Returns a hyperlink object pointing to the namespace of the class in the API documentation

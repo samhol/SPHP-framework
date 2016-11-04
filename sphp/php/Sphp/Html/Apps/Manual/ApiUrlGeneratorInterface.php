@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPApiUrlGeneratorInterface.php (UTF-8)
+ * ApiUrlGeneratorInterface.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PHPApiUrlGeneratorInterface extends UrlGeneratorInterface {
+interface ApiUrlGeneratorInterface extends UrlGeneratorInterface {
 
   /**
    * Returns the URL pointing to the API page of the given class
@@ -50,7 +50,7 @@ interface PHPApiUrlGeneratorInterface extends UrlGeneratorInterface {
    * @return string the URL pointing to the API page of the given namespace
    */
   public function getNamespaceUrl($namespace);
-  
+
   /**
    * Returns the URL pointing to the API page of the given function
    * 
@@ -58,7 +58,7 @@ interface PHPApiUrlGeneratorInterface extends UrlGeneratorInterface {
    * @return string the URL pointing to the API page of the given function
    */
   public function getFunctionUrl($function);
-  
+
   /**
    * Returns the URL pointing to the API page of the given constant
    * 

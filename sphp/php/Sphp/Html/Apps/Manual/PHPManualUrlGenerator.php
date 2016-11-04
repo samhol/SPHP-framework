@@ -15,7 +15,7 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PHPManualUrlGenerator extends UrlGenerator implements PHPApiUrlGeneratorInterface {
+class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
 
   /**
    * Constructs a new instance

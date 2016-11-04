@@ -15,7 +15,7 @@ Objects of this class allow users to encode, decode, manipulate and compare URLs
 
 ###Object properties
 		
-The {$urlClass->method("__construct")} parses the input URL string
+The {$urlClass->methodLink("__construct")} parses the input URL string
 with {$php->functionLink("parse_url")} function and the class $urlClass is therefore 
 intended specifically for the  URLs and not URIs.
 		

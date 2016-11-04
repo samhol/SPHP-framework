@@ -28,7 +28,7 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays2.php", "text", false);
 echo $parsedown->text(<<<MD
-$arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$api->classLinker(Arrays::class)->method("copy")} 
+$arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$api->classLinker(Arrays::class)->methodLink("copy")} 
 tries to make an independent copy out of each key => value pairs it the input 
 array and it uses PHP's object cloning construct for object type.
 MD

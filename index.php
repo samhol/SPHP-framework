@@ -13,20 +13,20 @@ include_once('manual/htmlHead.php');
 Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
 ?>
 <body class="manual">
-  <?php 
+  <?php
   include("manual/templates/logo-area.php");
-  include_once('manual/__topBar.php');
+  include('manual/__topBar.php');
   ?>
   <div class="row expanded small-collapse medium-uncollapse">
     <div class="column medium-3 large-3 xlarge-2 show-for-large">
 
       <?php
-      include_once('manual/sidenav.php');
+      include('manual/sidenav.php');
       ?>
     </div>
     <div class="mainContent small-12 large-9 xlarge-9 column"> 
       <?php
-      include_once('manual/manualBuilder.php');
+      include('manual/manualBuilder.php');
       ?>
     </div>
     <div class="show-for-xlarge xlarge-1 column"> 
@@ -34,7 +34,7 @@ Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
   </div>
 
   <?php
-  include_once('manual/_footer_.php');
+  include('manual/_footer_.php');
 
   use Sphp\Html\Apps\BackToTopButton;
 

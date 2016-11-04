@@ -16,7 +16,7 @@ The $update object executes declarative **UPDATE** statement in SQL databases.
 
 An $update object changes the data of one or more records in a table. Either all 
 the rows can be updated, or a subset may be chosen using $conditions member 
-object from {$update->method("where")}.
+object from {$update->methodLink("where")}.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/update1.php", true, "sql");

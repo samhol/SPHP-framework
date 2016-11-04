@@ -42,20 +42,20 @@ class ApiGen extends AbstractPhpApiLinker {
     return new ApiGenClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function functionLink($funName, $linkText = null) {
+  public function functionLink($function, $linkText = null) {
     if ($linkText === null) {
-      $linkText = $funName;
+      $linkText = $function;
     }
-    $path = $this->urls()->getFunctionUrl("function-$path.html");
-    return $this->hyperlink($path, $funName, "$funName() method")->addCssClass('function');
+    $path = $this->urls()->getFunctionUrl($function);
+    return $this->hyperlink($path, $function, "function $function()")->addCssClass('function');
   }
 
-  public function constantLink($constantName, $linkText = null) {
+  public function constantLink($constant, $linkText = null) {
     if ($linkText === null) {
-      $linkText = $constantName;
+      $linkText = $constant;
     }
-    $path = str_replace('\\', '.', $constantName);
-    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constantName")->addCssClass('constant');
+    $path = str_replace('\\', '.', $constant);
+    return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constant")->addCssClass('constant');
   }
 
   /**

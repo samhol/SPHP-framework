@@ -7,11 +7,11 @@ $htmlAttrMngr = $api->classLinker(AttributeManager::class);
 $attributeInterface = $api->classLinker(AttributeInterface::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 $propertyAttr = $api->classLinker(PropertyAttribute::class);
-$setMethodLink = $abstractAttrMngr->method("set", false);
-$removeMethodLink = $abstractAttrMngr->method("remove", false);
-$requireAttr = $abstractAttrMngr->method("demand", false);
-$lockAttr = $abstractAttrMngr->method("lock", false);
-$setAttributeObjectLink = $abstractAttrMngr->method("setAttributeObject", false);
+$setMethodLink = $abstractAttrMngr->methodLink("set", false);
+$removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
+$requireAttr = $abstractAttrMngr->methodLink("demand", false);
+$lockAttr = $abstractAttrMngr->methodLink("lock", false);
+$setAttributeObjectLink = $abstractAttrMngr->methodLink("setAttributeObject", false);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML ATTRIBUTE MANAGEMENT

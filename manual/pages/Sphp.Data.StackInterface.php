@@ -23,10 +23,10 @@ structure, whereas a stack represents a last in, first out (LIFO) data structure
 The $stack implements the $stackInterface by extending the native $splStack.
 an instance of $stack can therefore be used as a last-in-first-out (LIFO) stack of items.
 
-* {$stackInterface->method("push")}: Pushes an item onto the top of the stack
-* {$stackInterface->method("pop")}: Removes the item at the top of the stack and returns that item as the value
-* {$stackInterface->method("peek")}: Observes the top-most element without removing it from the stack
-* {$stackInterface->method("isEmpty")}: Determine if the stack is empty or not
+* {$stackInterface->methodLink("push")}: Pushes an item onto the top of the stack
+* {$stackInterface->methodLink("pop")}: Removes the item at the top of the stack and returns that item as the value
+* {$stackInterface->methodLink("peek")}: Observes the top-most element without removing it from the stack
+* {$stackInterface->methodLink("isEmpty")}: Determine if the stack is empty or not
 
 MD
 );
@@ -39,10 +39,10 @@ an instance of $queue can therefore be used as a last-in-first-out (LIFO) stack 
 
 ****
 
-* {$queueInterface->method("enqueue")}: Adds a new item to the end of the queue
-* {$queueInterface->method("dequeue")}: Removes and returns the first item of the queue
-* {$queueInterface->method("peek")}: Observes the first item of the queue without removing it
-* {$queueInterface->method("isEmpty")}: Determine if the queue is empty or not
+* {$queueInterface->methodLink("enqueue")}: Adds a new item to the end of the queue
+* {$queueInterface->methodLink("dequeue")}: Removes and returns the first item of the queue
+* {$queueInterface->methodLink("peek")}: Observes the first item of the queue without removing it
+* {$queueInterface->methodLink("isEmpty")}: Determine if the queue is empty or not
 
 MD
 );

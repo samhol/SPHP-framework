@@ -3,10 +3,10 @@
 namespace Sphp\Html\Attributes;
 
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
-$setMethod = $abstractAttr->method("set");
-$clearMethod = $abstractAttr->method("clear");
-$requireMethod = $abstractAttr->method("setRequired");
-$lockMethod = $abstractAttr->method("lock");
+$setMethod = $abstractAttr->methodLink("set");
+$clearMethod = $abstractAttr->methodLink("clear");
+$requireMethod = $abstractAttr->methodLink("setRequired");
+$lockMethod = $abstractAttr->methodLink("lock");
 
 echo $parsedown->text(<<<MD
 ##Complex HTML attributes

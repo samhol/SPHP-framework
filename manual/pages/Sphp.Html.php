@@ -41,14 +41,14 @@ All HTML components in $ns implement at least $contentInterface. This
 interface ensures that the component can be outputted to an HTML document via the following three methods.
 
 
-1. {$contentInterface->method("getHtml")} returns the component as an HTML string. This method might throw an $exeption) if the execution fails.
-2. {$contentInterface->method("__toString")} returns the component as an HTML string (PHP magic method)
-3. {$contentInterface->method("printHtml")} output the component as an HTML string or the exception description if the execution fails.
+1. {$contentInterface->methodLink("getHtml")} returns the component as an HTML string. This method might throw an $exeption) if the execution fails.
+2. {$contentInterface->methodLink("__toString")} returns the component as an HTML string (PHP magic method)
+3. {$contentInterface->methodLink("printHtml")} output the component as an HTML string or the exception description if the execution fails.
 
 
 Trait {$api->classLinker(ContentTrait::class)} gives an implementation to the subsequent
-two of these methods leaving the implementation of the {$contentInterface->method("getHtml")}
-to the inheritor. Using this trait ensures that {$contentInterface->method("__toString")}
+two of these methods leaving the implementation of the {$contentInterface->methodLink("getHtml")}
+to the inheritor. Using this trait ensures that {$contentInterface->methodLink("__toString")}
 will never throw any type of {$exeption} during execution.
 
 ##The $componentInterface interface and its $abstractTag implementation
@@ -56,7 +56,7 @@ will never throw any type of {$exeption} during execution.
 The $componentInterface interface declares a group of methods for HTML attribute handling.
 It is implemented in the {$api->classLinker(IdentifiableComponentTrait::class)} trait and also in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
-It also defines the tagname property in {$abstractTag->method("__construct")}.
+It also defines the tagname property in {$abstractTag->methodLink("__construct")}.
 
 ##The $emptyTag class and empty `HTML` elements
 

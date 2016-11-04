@@ -16,28 +16,28 @@ namespace Sphp\Html\Apps\Manual;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ApiGenUrlGenerator extends UrlGenerator implements PHPApiUrlGeneratorInterface {
+class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
 
-  public function getClassUrl($className) {
-    $path = str_replace('\\', '.', $className);
+  public function getClassUrl($class) {
+    $path = str_replace('\\', '.', $class);
     return $this->create("class-$path.html");
   }
 
-  public function getClassMethodUrl($className, $method) {
-    return $this->getClassUrl($className) . '#_' . $method;
+  public function getClassMethodUrl($class, $method) {
+    return $this->getClassUrl($class) . '#_' . $method;
   }
 
-  public function getClassConstantUrl($className, $constant) {
-    return $this->getClassUrl($className) . '#_' . $constant;
+  public function getClassConstantUrl($class, $constant) {
+    return $this->getClassUrl($class) . '#_' . $constant;
   }
 
-  public function getNamespaceUrl($namespaceName) {
-    $path = str_replace('\\', '.', $namespaceName);
+  public function getNamespaceUrl($namespace) {
+    $path = str_replace('\\', '.', $namespace);
     return $this->create("namespace-$path.html");
   }
 
-  public function getFunctionUrl($funName) {
-    return $this->create("function-$funName.html");
+  public function getFunctionUrl($function) {
+    return $this->create("function-$function.html");
   }
   
   public function getConstantUrl($constant) {

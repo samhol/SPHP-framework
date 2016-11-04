@@ -28,8 +28,8 @@ it is possible in theory to implement any HTML tag as a Foundation Button.
 ###Styling the $btn buttons
 
 Buttons support predefined Foundation color and size classes and can
-also use custom made classes. Colors can be set by calling {$btn->method("setColor", FALSE)}
-instance method whereas size can be set by calling {$btn->method("setSize", FALSE)}
+also use custom made classes. Colors can be set by calling {$btn->methodLink("setColor", FALSE)}
+instance method whereas size can be set by calling {$btn->methodLink("setSize", FALSE)}
 instance method with the CSS class name as a parameter value:
 MD
 );
@@ -87,8 +87,8 @@ MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/ButtonGroup.php');
-$stackFor = $btnGroup->method("stackFor", false);
-$unstackFor = $btnGroup->method("unstackFor", false);
+$stackFor = $btnGroup->methodLink("stackFor", false);
+$unstackFor = $btnGroup->methodLink("unstackFor", false);
 echo $parsedown->text(<<<MD
 
 The orientation of a button group can be changed with method $stackFor  that uses 
