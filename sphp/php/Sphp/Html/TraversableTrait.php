@@ -7,8 +7,6 @@
 
 namespace Sphp\Html;
 
-use ArrayIterator;
-
 /**
  * Trait implements some {@link TraversableInterface} functionality
  * 
@@ -18,14 +16,6 @@ use ArrayIterator;
  * @filesource
  */
 trait TraversableTrait {
-
-
-  /**
-   * Create a new iterator to iterate through inserted elements in the html component
-   *
-   * @return ArrayIterator iterator
-   */
-  //abstract public function getIterator();
 
   /**
    * Returns a {@link ContainerInterface} containing sub components that
@@ -44,7 +34,7 @@ trait TraversableTrait {
         //echo " ok ";
         $result[] = $value;
       }
-      if ($value instanceof ContainerInterface) {
+      if ($value instanceof TraversableInterface) {
         foreach ($value->getComponentsBy($rules) as $v) {
           $result[] = $v;
         }
@@ -93,5 +83,5 @@ trait TraversableTrait {
     };
     return $this->getComponentsBy($search);
   }
-  
+
 }

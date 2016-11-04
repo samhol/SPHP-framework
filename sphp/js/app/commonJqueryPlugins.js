@@ -705,18 +705,38 @@
    */
   $.fn.qtips = function () {
     return this.each(function () {
-      var $this = $(this);
+      var $this = $(this), $classes;
+      $classes = $this.attr('data-sphp-qtip-classes');
+      function parsePosition() {
+        var position = {};
+        if ($this.attr('data-sphp-qtip-my')) {
+          position.my = $this.attr('data-sphp-qtip-my');
+        } else {
+          position.my = 'center left';
+        }
+        if ($this.attr('data-sphp-qtip-at')) {
+          position.at = $this.attr('data-sphp-qtip-at');
+        } else {
+          position.at = 'center right';
+        }
+        position.target = $this;
+        //console.log(position);
+        return position;
+      }
+      console.log({
+        style: {
+          classes: 'qtip-dark qtip-rounded'
+        },
+        position: parsePosition()
+      });
       $this.qtip({
         style: {
           classes: 'qtip-dark qtip-rounded'
         },
-        position: {
-          my: 'center left', // Position my top left...
-          at: 'center right', // my target
-          target: $this
-        }
+        position: parsePosition()
       });
     });
+
   };
 }(jQuery));
 

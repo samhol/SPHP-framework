@@ -298,7 +298,7 @@ trait IdentifiableComponentTrait {
   }
 
   public function identify($identityName = "id", $prefix = "id_", $length = 16) {
-     return $this->attrs()->identify($identityName, $prefix, $length);
+    return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
   public function hasId($identityName = "id") {
@@ -314,16 +314,6 @@ trait IdentifiableComponentTrait {
    */
   public function setTitle($title) {
     return $this->setAttr("title", $title);
-  }
-
-  /**
-   * Returns the value of the title attribute
-   *
-   * @return string|null the value of the title attribute
-   * @link http://www.w3schools.com/tags/att_global_title.asp title attribute
-   */
-  public function getTitle() {
-    return $this->getAttr("title");
   }
 
   /**

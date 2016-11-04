@@ -25,7 +25,8 @@ use Sphp\Html\Foundation\Sites\Foundation;
  */
 class IconButton extends AbstractComponent implements ButtonInterface, ScreenReaderLabelable {
 
-  use ButtonTrait;
+  use ButtonTrait,
+      \Sphp\Html\Qtip\QtipTrait;
 
   /**
    * the inner label for screen reader text

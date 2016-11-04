@@ -154,7 +154,7 @@ abstract class AbstractLinker implements LinkerInterface {
     }
     $a = new Hyperlink($url, $content);
     if ($title !== null) {
-      $a->setTitle($title);
+      (new \Sphp\Html\Qtip\Qtippable($a))->setQtip($title);
     }
     $this->insertDefaults($a);
     return $a;
