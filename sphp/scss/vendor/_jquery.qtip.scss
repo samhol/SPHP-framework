@@ -12,15 +12,15 @@
  */
 .qtip{
   position: absolute;
-  left: -28000px;
-  top: -28000px;
+  //left: -28000px;
+  //top: -28000px;
   display: none;
 
-  max-width: 400px;
+  max-width: 600px;
   min-width: 50px;
 
   font-size: rem-calc(14);
-  line-height: 1.2;
+  line-height: 1.3;
 
   direction: ltr;
 
