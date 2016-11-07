@@ -7,7 +7,6 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Core\Types\Arrays;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -140,11 +139,19 @@ class Address extends AbstractDbObject {
   }
 
   public function fromArray(array $data = []) {
-    $myinputs = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS, true);
-    return $this->setStreet($myinputs["street"])
-                    ->setZipcode($myinputs["zipcode"])
-                    ->setCity($myinputs["city"])
-                    ->setCountry($myinputs["country"]);
+    $args = [
+        'id' => \FILTER_VALIDATE_INT,
+        'street' => \FILTER_SANITIZE_STRING,
+        'zipcode' => \FILTER_SANITIZE_STRING,
+        'city' => \FILTER_SANITIZE_STRING,
+        'country' => \FILTER_SANITIZE_STRING
+    ];
+    $myinputs = filter_var_array($data, $args, true);
+    $this->setPrimaryKey($myinputs['id']);
+    return $this->setStreet($myinputs['street'])
+                    ->setZipcode($myinputs['zipcode'])
+                    ->setCity($myinputs['city'])
+                    ->setCountry($myinputs['country']);
   }
 
   /**

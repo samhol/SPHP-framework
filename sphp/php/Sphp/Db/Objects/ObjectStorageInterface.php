@@ -10,6 +10,7 @@ namespace Sphp\Db\Objects;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use IteratorAggregate;
+use Countable;
 
 /**
  *
@@ -18,7 +19,7 @@ use IteratorAggregate;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ObjectStorageInterface extends IteratorAggregate {
+interface ObjectStorageInterface extends IteratorAggregate, Countable {
 
   /**
    * 

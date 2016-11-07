@@ -3,7 +3,7 @@
 namespace Sphp\Db\Objects;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-use Sphp\Objects\ObjectInterface as ObjectInterface;
+use Sphp\Objects\ObjectInterface;
 
 $objectInterface = $api->classLinker(ObjectInterface::class);
 $dbObjectInterface = $api->classLinker(DbObjectInterface::class);

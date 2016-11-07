@@ -1,7 +1,7 @@
 <?php
 
 /**
- * User.php (UTF-8)
+ * LoginUser.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="users",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
-class User extends AbstractDbObject {
+class LoginUser extends AbstractDbObject {
 
   use \Sphp\Objects\ToArrayTrait;
 
@@ -43,31 +43,6 @@ class User extends AbstractDbObject {
   private $username;
 
   /**
-   * The first name of the user
-   *
-   * @var string 
-   * @Column(length=50)
-   */
-  private $fname;
-
-  /**
-   * The last name of the user
-   * 
-   * @var string 
-   * @Column(length=50)
-   */
-  private $lname;
-
-  /**
-   * The geographical address of the user
-   * 
-   * @var Address 
-   * @ManyToOne(targetEntity="Address", cascade={"persist"})
-   * @JoinColumn(name="address_id", referencedColumnName="id", nullable=true)
-   */
-  private $address;
-
-  /**
    * the email address of the user
    * 
    * @var string
@@ -77,11 +52,12 @@ class User extends AbstractDbObject {
   private $email;
 
   /**
-   * 
-   * @var string[]
-   * @Column(type="simple_array")
+   * the password
+   *
+   * @var string 
+   * @Column(type="string", length=64)
    */
-  private $phonenumbers = [];
+  private $password;
 
   public function __construct($data = []) {
     //$this->address = new Address();
@@ -111,46 +87,6 @@ class User extends AbstractDbObject {
   }
 
   /**
-   * Returns the first name
-   *
-   * @return string the first name
-   */
-  public function getFname() {
-    return $this->fname;
-  }
-
-  /**
-   * Sets the first name
-   *
-   * @param  string $fname the first name
-   * @return self for PHP Method Chaining
-   */
-  public function setFname($fname) {
-    $this->fname = $fname;
-    return $this;
-  }
-
-  /**
-   * Returns the last (family) name
-   *
-   * @return string the last (family) name
-   */
-  public function getLname() {
-    return $this->lname;
-  }
-
-  /**
-   * Sets the last (family) name
-   *
-   * @param  string $lname the last (family) name
-   * @return self for PHP Method Chaining
-   */
-  public function setLname($lname) {
-    $this->lname = $lname;
-    return $this;
-  }
-
-  /**
    * Returns the email address
    *
    * @return string the email address
@@ -167,64 +103,6 @@ class User extends AbstractDbObject {
    */
   public function setEmail($email) {
     $this->email = $email;
-    return $this;
-  }
-
-  /**
-   * Returns the email address
-   *
-   * @return string the email address
-   */
-  public function getPhonenumbers() {
-    return $this->phonenumbers;
-  }
-
-  /**
-   * Sets the phonenumbers
-   *
-   * @param  string[] $phonenumbers the phonenumbers address
-   * @return self for PHP Method Chaining
-   */
-  public function setPhonenumbers(array $phonenumbers = null) {
-    if ($phonenumbers === null) {
-      $phonenumbers = [];
-    }
-    $this->phonenumbers = $phonenumbers;
-    return $this;
-  }
-
-  /**
-   * Sets the email address
-   *
-   * @param  null|string $email the email address
-   * @return self for PHP Method Chaining
-   */
-  public function addPhonenumber($phonenumber, $type = null) {
-    if ($type !== null) {
-      $this->phonenumbers[$type] = $phonenumber;
-    } else {
-      $this->phonenumbers[] = $phonenumber;
-    }
-    return $this;
-  }
-
-  /**
-   * Returns the geographical address
-   * 
-   * @return Address the geographical address
-   */
-  public function getAddress() {
-    return $this->address;
-  }
-
-  /**
-   * Sets geographical address
-   * 
-   * @param  Address $address the geographical address
-   * @return self for PHP Method Chaining
-   */
-  public function setAddress(Address $address = null) {
-    $this->address = $address;
     return $this;
   }
 
@@ -272,24 +150,16 @@ class User extends AbstractDbObject {
     $args = [
         'id' => \FILTER_VALIDATE_INT,
         'username' => \FILTER_SANITIZE_STRING,
-        'fname' => \FILTER_SANITIZE_STRING,
-        'lname' => \FILTER_SANITIZE_STRING,
-        'email' => \FILTER_SANITIZE_STRING,
-        'phonenumbers' => \FILTER_REQUIRE_ARRAY,
         'email' => \FILTER_SANITIZE_STRING,
         'permissions' => \FILTER_SANITIZE_STRING,
-        'passworn' => \FILTER_SANITIZE_STRING
+        'password' => \FILTER_SANITIZE_STRING
     ];
     $myinputs = filter_var_array($data, $args, true);
     $this->setPrimaryKey($myinputs['id'])
             ->setUsername($myinputs['username'])
-            ->setFname($myinputs['fname'])
-            ->setLname($myinputs['lname'])
             ->setEmail($myinputs['email'])
-            ->setPhonenumbers($myinputs['phonenumbers'])
-            ->setAddress(new Address($data))
             ->setPermissions($myinputs['permissions'])
-            ->setPassword($myinputs['passworn']);
+            ->setPassword($myinputs['password']);
     return $this;
   }
 

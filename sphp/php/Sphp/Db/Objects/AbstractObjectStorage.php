@@ -31,7 +31,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @var EntityManagerInterface 
    */
   private $em;
-  
+
   /**
    *
    * @var ObjectManager
@@ -84,6 +84,12 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
 
   public function exists($id) {
     
+  }
+
+  public function count() {
+    $query = $this->em->createQuery("SELECT COUNT(t.id) FROM $this->type t");
+    $count = $query->getSingleScalarResult();
+    return (int) $count;
   }
 
   public function save(DbObjectInterface $object) {
