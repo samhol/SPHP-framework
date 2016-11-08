@@ -7,7 +7,6 @@
 
 namespace Sphp\Net;
 
-use Sphp\Objects\ScalarObjectInterface;
 use Sphp\Data\Arrayable;
 use IteratorAggregate;
 use Sphp\Core\Types\Strings;
@@ -21,7 +20,7 @@ use Sphp\Core\Types\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
+class URL implements Arrayable, IteratorAggregate {
 
   /**
    * the current url object
@@ -47,7 +46,7 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
   ];
 
   /**
-   * Constructs a new instance of the {@link self} object
+   * Constructs a new instance
    *
    * @param string|null $url the URL string
    */
@@ -709,10 +708,6 @@ class URL implements ScalarObjectInterface, Arrayable, IteratorAggregate {
 
   public function toArray() {
     return $this->getIterator()->getArrayCopy();
-  }
-
-  public function toScalar() {
-    return $this->getRaw();
   }
 
 }
