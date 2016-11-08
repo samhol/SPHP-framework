@@ -2,22 +2,20 @@
 
 /**
  * HashedPassword.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Net;
 
-use Sphp\Objects\ScalarObjectInterface;
-
 /**
- * Class implements a crypted password
+ * Implements a verifiable crypted password
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-23
+ * @since   2016-10-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HashedPassword implements ScalarObjectInterface {
+class HashedPassword extends AbstractPassword {
 
   /**
    * the crypted password string
@@ -31,45 +29,26 @@ class HashedPassword implements ScalarObjectInterface {
    * 
    * **Important:** <var>$hash</var> type conversions
    * 
-   * 1. {@link Password} is hashed using {@link Password::getHashedPassword()}
+   * 1. {@link Password} is hashed using {@link Password::getHash()}
    * 2. All other types are converted to string values using {@link \strval()}
    * 
-   * @param mixed $hash the crypted password string
+   * @param string|PasswordInterface $hash the crypted password string
    */
   public function __construct($hash) {
-    if ($hash instanceof Password) {
-      //echo "gaggrew";
-      $hash = $hash->getHashedPassword();
-      $this->hashed = strval($hash);
+    if ($hash instanceof PasswordInterface) {
+      $this->hashed = $hash->getHash();
     } else {
       $this->hashed = strval($hash);
     }
   }
 
-  /**
-   * Compares the crypted password against an uncrypted one
-   * 
-   * @param  string $password the password to check
-   * @return boolean true if the password hash pair matches and false otherwise
-   */
-  public function validatePassword($password) {
-    return Passwords::checkPassword($this->hashed, $password);
-  }
 
   public function __toString() {
     return $this->hashed;
   }
 
-  public function equals($object) {
-    if ($object instanceof HashedPassword) {
-      return $this->validateHash($object);
-    } else {
-      return parent::equals($object);
-    }
-  }
-
-  public function toScalar() {
-    return $this->__toString();
+  public function getHash() {
+    return $this->hashed;
   }
 
 }

@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="users",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
-class LoginUser extends AbstractDbObject {
+class LoginUser extends AbstractDbObject implements UserInterface {
 
   use \Sphp\Objects\ToArrayTrait;
 
@@ -66,81 +66,37 @@ class LoginUser extends AbstractDbObject {
     parent::__construct($data);
   }
 
-  /**
-   * Returns the username
-   *
-   * @return string the username
-   */
   public function getUsername() {
     return $this->username;
   }
 
-  /**
-   * Sets the username
-   *
-   * @param  string $username the username
-   * @return self for PHP Method Chaining
-   */
   public function setUsername($username) {
     $this->username = $username;
     return $this;
   }
 
-  /**
-   * Returns the email address
-   *
-   * @return string the email address
-   */
   public function getEmail() {
     return $this->email;
   }
 
-  /**
-   * Sets the email address
-   *
-   * @param  string $email the email address
-   * @return self for PHP Method Chaining
-   */
   public function setEmail($email) {
     $this->email = $email;
     return $this;
   }
 
-  /**
-   * Returns the permissions of the user
-   *
-   * @return BitMask the permissions of the user
-   */
   public function getPermissions() {
     return $this->permissions;
   }
 
-  /**
-   * Sets the permissions of the user
-   *
-   * @param  null|scalar|BitMask $permissions the permissions of the user
-   * @return self for PHP Method Chaining
-   */
   public function setPermissions($permissions = 0) {
     $this->permissions = $permissions;
     return $this;
   }
 
-  /**
-   * Returns the hashed password of the user
-   *
-   * @return HashedPassword the hashed password of the user
-   */
   public function getPassword() {
     return $this->password;
   }
 
-  /**
-   * Sets the hashed password of the user
-   *
-   * @param  null|string|Password|HashedPassword $password the password of the user
-   * @return self for PHP Method Chaining
-   */
   public function setPassword($password = "") {
     $this->password = new HashedPassword($password);
     return $this;
