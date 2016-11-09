@@ -25,7 +25,7 @@ class URL implements Arrayable, IteratorAggregate {
   /**
    * the current url object
    *
-   * @var URL 
+   * @var string 
    */
   private static $currUrl;
 
@@ -51,11 +51,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param string|null $url the URL string
    */
   public function __construct($url = null) {
-    $urlString = Strings::toString($url);
-    if (!Strings::isEmpty($urlString)) {
-      //$url = html_entity_decode(urldecode($url));
-      //print_r($data);
-      //$parts = parse_url($urlString);
+    if ($url !== null) {
       $arr = [
           'scheme' => '',
           'host' => '',
@@ -66,19 +62,32 @@ class URL implements Arrayable, IteratorAggregate {
           'fragment' => '',
           'port' => ''
       ];
-      $urlString = html_entity_decode(urldecode($urlString));
+      $urlString = html_entity_decode(urldecode($url));
       $parts = array_merge($arr, parse_url($urlString));
       $query = [];
       parse_str($parts['query'], $query);
       $this->components = $parts; //array_merge($this->components, parse_url($urlString));
       $this->components['query'] = $query;
-      //print_r($this->components);
-      //parse_str($this->components["query"], $this->query);
-      //$this->setQuery($this->components["query"]);
-      $this->setPort($this->components['port']);
-      //print_r($this->components);
-      //print_r($this->query);
+      $this->parsePort($this->components['port']);
     }
+  }
+
+  /**
+   * 
+   * @param scalar $candidate
+   */
+  private function parsePort($candidate) {
+    if (!is_int($candidate)) {
+      $candidate = (int) $candidate;
+    }
+    if ($candidate <= 0) {
+      $candidate = getservbyname($this->getScheme(), 'tcp');
+      if ($candidate === false) {
+        $candidate = -1;
+      }
+    }
+    $this->setPort($candidate);
+    return $this;
   }
 
   /**
@@ -121,8 +130,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string|null $scheme the scheme name of the URL
    * @return self for PHP Method Chaining
    */
-  public function setScheme($scheme) {
-    $this->components['scheme'] = $scheme;
+  public function setScheme($scheme = null) {
+    $this->components['scheme'] = (string) $scheme;
     return $this;
   }
 
@@ -136,7 +145,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return string the scheme name of the URL
    */
   public function getScheme() {
-    return strval($this->components['scheme']);
+    return $this->components['scheme'];
   }
 
   /**
@@ -145,7 +154,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the scheme is set and false otherwise
    */
   public function hasScheme() {
-    return !Strings::isEmpty($this->getScheme());
+    return $this->components['scheme'] !== '';
   }
 
   /**
@@ -154,8 +163,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $host the `host` part of the URL
    * @return self for PHP Method Chaining
    */
-  public function setHost($host) {
-    $this->components['host'] = $host;
+  public function setHost($host = null) {
+    $this->components['host'] = (string) $host;
     return $this;
   }
 
@@ -170,7 +179,7 @@ class URL implements Arrayable, IteratorAggregate {
     if ($encode && !Strings::isEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
       Strings::htmlEncode($val);
     }
-    return "$val";
+    return $val;
   }
 
   /**
@@ -179,7 +188,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the host is set and false otherwise
    */
   public function hasHost() {
-    return !Strings::isEmpty($this->getHost());
+    return $this->components['host'] !== '';
   }
 
   /**
@@ -188,8 +197,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string|null $user
    * @return self for PHP Method Chaining
    */
-  public function setUser($user) {
-    $this->components['user'] = $user;
+  public function setUser($user = null) {
+    $this->components['user'] = (string) $user;
     return $this;
   }
 
@@ -213,7 +222,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the user is set and false otherwise
    */
   public function hasUser() {
-    return !Strings::isEmpty($this->getUser());
+    return $this->components['user'] !== '';
   }
 
   /**
@@ -222,8 +231,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string|null $pass
    * @return self for PHP Method Chaining
    */
-  public function setPassword($pass) {
-    $this->components['pass'] = $pass;
+  public function setPassword($pass = null) {
+    $this->components['pass'] = (string) $pass;
     return $this;
   }
 
@@ -234,8 +243,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @return string the password part of the URL
    */
   public function getPassword($encode = false) {
-    $val = strval($this->components['pass']);
-    if ($encode && !Strings::isEmpty($val)) {
+    $val = $this->components['pass'];
+    if ($encode && $val !== '') {
       $val = rawurlencode($val);
     }
     return $val;
@@ -247,19 +256,22 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the password is set and false otherwise
    */
   public function hasPassword() {
-    return !Strings::isEmpty($this->getPassword());
+    return $this->components['pass'] !== '';
   }
 
   /**
    * Sets the path part of the URL
    * 
-   * @param  string|null $path
+   * @param  string|null $path the path part of the URL or null for none
    * @return self for PHP Method Chaining
    */
-  public function setPath($path) {
-    if (!Strings::startsWith($path, '/')) {
-      $path = "/$path";
+  public function setPath($path = null) {
+    if ($path === null || $path === '') {
+      $path = '';
     }
+    else if (!Strings::startsWith($path, '/')) {
+      $path = "/$path";
+    } 
     $this->components['path'] = $path;
     return $this;
   }
@@ -271,7 +283,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return string the path part of the URL
    */
   public function getPath($encode = false) {
-    $val = strval($this->components['path']);
+    $val = $this->components['path'];
     if ($encode && !Strings::isEmpty($val)) {
       $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
     }
@@ -284,7 +296,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the path is set and false otherwise
    */
   public function hasPath() {
-    return !Strings::isEmpty($this->getPath());
+    return $this->components['path'] !== '';
   }
 
   /**
@@ -294,9 +306,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @return self for PHP Method Chaining
    */
   public function setQuery($query) {
-    if (!Strings::isEmpty($query)) {
+    if ($query !== '') {
       parse_str($query, $this->components['query']);
-      //$this->components["query"] = urldecode($query);
     } else {
       $this->components['query'] = [];
     }
@@ -309,7 +320,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the path is set and false otherwise
    */
   public function hasQuery() {
-    return count($this->components['query']) > 0;
+    return !empty($this->components['query']);
   }
 
   /**
@@ -323,7 +334,6 @@ class URL implements Arrayable, IteratorAggregate {
    * @return string the query string of the URL
    */
   public function getQuery($separator = '&', $encode = \PHP_QUERY_RFC1738) {
-    //$val = strval($this->components["query"]);
     $val = '';
     if ($this->hasQuery()) {
       $val = http_build_query($this->components['query'], '', $separator, $encode);
@@ -434,39 +444,26 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the fragment part is set and false otherwise
    */
   public function hasFragment() {
-    return !Strings::isEmpty($this->getFragment());
+    return $this->components['fragment'] !== '';
   }
 
   /**
    * Sets the port number of the URL
    * 
-   * The port number is optional; if omitted, the default port for the scheme is used
-   * 
-   * @param  null|int $port
+   * @precondition $port >= 0
+   * @param  int $port
    * @return self for PHP Method Chaining
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function setPort($port) {
-    //var_dump($port);
-    if (Strings::isEmpty($port)) {
-      $port = getservbyname($this->getScheme(), 'tcp');
-      if ($port === false) {
-        $port = null;
-      }
-    } else if (!is_int($port)) {
-      $port = intval($port);
-    }
-    if ($port < 0) {
-      $port = null;
-    }
-    $this->components['port'] = $port;
+    $this->components['port'] = (int) $port;
     return $this;
   }
 
   /**
    * Returns the port number associated with this service and a given protocol
    *
-   * @return int the port number (-1 if the port number can not be resolved)
+   * @return int the port number; (`-1` if the port number can not be resolved)
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function getPort() {
@@ -493,15 +490,6 @@ class URL implements Arrayable, IteratorAggregate {
   }
 
   /**
-   * Returns a copy of the URL components
-   * 
-   * @return mixwd[] the URL components
-   */
-  public function getArrayCopy() {
-    return Arrays::copy($this->components);
-  }
-
-  /**
    * Determines whether the specified object is equal to the current object
    *
    * @param  string|URL $url the URL to compare with the current URL
@@ -511,7 +499,7 @@ class URL implements Arrayable, IteratorAggregate {
     if (!($url instanceof URL)) {
       $url = new URL($url);
     }
-    return $this->components == $url->getIterator()->getArrayCopy();
+    return $this == $url;
   }
 
   /**
@@ -564,8 +552,7 @@ class URL implements Arrayable, IteratorAggregate {
       $url .= $this->getPath($encode);
     }
     if ($this->hasQuery()) {
-      //http_build_query($this->getParams());
-      $url .= '?' . http_build_query($this->getParams(), '', '&amp;', \PHP_QUERY_RFC3986);
+      $url .= '?' . $this->getQuery('&amp;', \PHP_QUERY_RFC3986);
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment($encode);
@@ -610,7 +597,8 @@ class URL implements Arrayable, IteratorAggregate {
       $url .= $this->getPath();
     }
     if ($this->hasQuery()) {
-      $url .= '?' . http_build_query($this->getParams(), '', '&', \PHP_QUERY_RFC3986);
+      $url .= '?' . $this->getQuery('&', \PHP_QUERY_RFC3986);
+      $url = trim($url, '=');
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment();
@@ -621,7 +609,8 @@ class URL implements Arrayable, IteratorAggregate {
   /**
    * Returns the Mime type of the content
    *
-   * @return string the Mime type of the content
+   * @return string|boolean the Mime type of the content or false if the Mime 
+   *         type cannot be resolved
    */
   public function getMimeType() {
     $url = $this->__toString();
@@ -649,12 +638,12 @@ class URL implements Arrayable, IteratorAggregate {
     if ($fp === false) {
       return false;
     }
-    $path = "";
+    $path = '';
     if ($this->hasPath()) {
       $path .= $this->getPath();
     }
     if ($this->hasQuery()) {
-      $path .= '?' . http_build_query($this->getParams(), '', '&', \PHP_QUERY_RFC3986);
+      $path .= '?' . $this->getQuery('&', \PHP_QUERY_RFC3986);
     }
     $out = "GET /$path HTTP/1.1\r\n";
     $out .= "Host: {$this->getHost()}\r\n";
@@ -681,9 +670,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return URL the current url
    */
   public static function getCurrent() {
-    if (self::$currUrl instanceof URL) {
-      $url = self::$currUrl;
-    } else {
+    if (self::$currUrl === null) {
       $url = new URL();
       if (!empty($_SERVER["HTTPS"])) {
         $url->setScheme("https");
@@ -703,7 +690,7 @@ class URL implements Arrayable, IteratorAggregate {
       }
       self::$currUrl = $url;
     }
-    return clone $url;
+    return clone self::$currUrl;
   }
 
   public function toArray() {

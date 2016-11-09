@@ -31,18 +31,109 @@ class URLTest extends \PHPUnit_Framework_TestCase {
     
   }
 
+  public function urlStrings() {
+    $url[] = ['irc://irc.example.com/channel'];
+    $url[] = ['http://example.com'];
+    $url[] = ['http://www.example.com'];
+    $url[] = ['https://www.example.com'];
+    $url[] = ['ftp://www.example.com'];
+    $url[] = ['ftp://ftp.example.com'];
+    $url[] = ['http://www.example.com/'];
+    $url[] = ['http://www.example.com/path'];
+    $url[] = ['www.example.com/foo'];
+    $url[] = ['http://www.example.com/path/'];
+    $url[] = ['www.example.com/foo/'];
+    $url[] = ['http://www.example.com/path?section=17'];
+    $url[] = ['www.example.com/foo?page=42'];
+    $url[] = ['http://webreference.com:344/html/tutorial2/2.html?query'];
+    return $url;
+  }
+
+  public function urlStringsWithSchemes() {
+    $url[] = ['irc://irc.example.com/channel'];
+    $url[] = ['http://example.com'];
+    $url[] = ['http://www.example.com'];
+    $url[] = ['https://www.example.com'];
+    $url[] = ['ftp://www.example.com'];
+    $url[] = ['ftp://ftp.example.com'];
+    $url[] = ['http://www.example.com/'];
+    $url[] = ['http://www.example.com/path'];
+    $url[] = ['http://www.example.com/path/'];
+    $url[] = ['http://www.example.com/path?section=17'];
+    $url[] = ['http://webreference.com:344/html/tutorial2/2.html?query'];
+    $url[] = ['https://webreference.com:344/html/tutorial2/2.html?query'];
+    return $url;
+  }
+
+  /**
+   *
+   * @covers Sphp\Net\URL::__construct
+   * @dataProvider urlStrings
+   */
+  public function testConstructWithParam($urlString) {
+    $url = new URL($urlString);
+    $this->assertSame($url->getRaw(), $urlString);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function mimesStrings() {
+    $url[] = ['irc://irc.example.com/channel', false];
+    $url[] = ['http://www.example.com', 'text/html'];
+    $url[] = ['http://playground.samiholck.com/manual/pics/sphp-code-logo.png', 'image/png'];
+    return $url;
+  }
+
+  /**
+   *
+   * @covers Sphp\Net\URL::getMimeType
+   * @dataProvider mimesStrings
+   *
+   * @param string $urlString
+   * @param scalar $expected
+   */
+  public function testGetMimeType($urlString, $expected) {
+    $url = new URL($urlString);
+    $this->assertSame($url->getMimeType(), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function urlStringsWithCorrectPorts() {
+    $url[] = ['irc://irc.example.com/channel', 194];
+    $url[] = ['http://example.com', 80];
+    $url[] = ['http://www.example.com:344', 344];
+    $url[] = ['https://www.example.com', 443];
+    $url[] = ['ftp://www.example.com:344', 344];
+    $url[] = ['ftp://ftp.example.com', 21];
+    $url[] = ['ftps://ftp.example.com', 990];
+    $url[] = ['ftps://ftp.example.com:21', 21];
+    $url[] = ['http://www.example.com/', 80];
+    $url[] = ['http://www.example.com/path?section=17', 80];
+    $url[] = ['http://webreference.com:344/html/tutorial2/2.html?query', 344];
+    $url[] = ['https://webreference.com:344/html/tutorial2/2.html?query', 344];
+    $url[] = ['webreference.com:344/html/tutorial2/2.html?query', 344];
+    $url[] = ['webreference.com/html/tutorial2/2.html?query', -1];
+    return $url;
+  }
+
   /**
    *
    * @covers Sphp\Net\URL::getPort
+   * @dataProvider urlStringsWithCorrectPorts
+   * 
+   * @param string $urlString
+   * @param int $expectedPort
    */
-  public function testGetPort() {
-    $url1 = new URL("http://www.example.com:80/bar.html");
-    $url2 = new URL("http://www.example.com/bar.html");
-    $url3 = new URL("https://www.example.com/bar.html");
-    $url4 = new URL("https://www.example.com/bar.html");
-    $this->assertTrue($this->http->getPort() === $url1->getPort());
-    $this->assertFalse($url1->getPort() === $url3->getPort());
-    $this->assertTrue(443 === $this->https->getPort());
+  public function testGetSetPort($urlString, $expectedPort) {
+    $url = new URL($urlString);
+    $this->assertSame($url->getPort(), $expectedPort);
+    $url->setPort(10);
+    $this->assertSame($url->getPort(), 10);
   }
 
   /**
@@ -96,7 +187,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
         'user' => 'johndoe',
         'pass' => 'password',
         'path' => 'path/to/file.type',
-        'query' => 'q1=p1&q2=p2',
+        'query' => 'q1 = p1&q2 = p2',
         'fragment' => 'daa',
         'port' => 21
             ]],
@@ -106,7 +197,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
         'user' => '',
         'pass' => 'password',
         'path' => 'path/to/file.type',
-        'query' => 'q1=p1&q2=p2',
+        'query' => 'q1 = p1&q2 = p2',
         'fragment' => 'daa',
         'port' => 21
             ]],
@@ -125,30 +216,92 @@ class URLTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * 
-   * @dataProvider arrayData
-   * @param mixed[] $data
+   * @dataProvider urlStrings
+   * @param string $data
    */
   public function testScheme($data) {
-    $url = new URL;
-    $this->assertFalse($url->hasScheme());
-    $this->assertSame($url->getScheme(), '');
-    $url->setScheme($data['scheme']);
+    $url = new URL($data);
+    $scheme = $url->getScheme();
+    if (!$url->hasScheme()) {
+      $this->assertSame($scheme, '');
+    } else {
+      $this->assertTrue(strlen($scheme) > 0);
+    }
+    $url->setScheme('http');
     $this->assertTrue($url->hasScheme());
-    $this->assertSame($url->getScheme(), $data['scheme']);
-
-    return $url;
+    $this->assertSame($url->getScheme(), 'http');
   }
 
   /**
-   * @depends testScheme
-   * @param mixed[] $url
+   * @dataProvider urlStrings
+   * @param string $urlString
    */
-  public function testSetHost(URL $url) {
-    $url->setHost('path/to/file.type');
+  public function testSetPath($urlString) {
+    $url = new URL($urlString);
+    $url->setPath();
+    $this->assertSame($url->getPath(), '');
+    $this->assertFalse($url->hasPath());
+    $url->setPath('path/to/file.type');
     $this->assertTrue($url->hasPath());
-    $this->assertSame($url->getPath(), 'path/to/file.type');
+    $this->assertSame($url->getPath(), '/path/to/file.type');
+  }
 
-    return $url;
+  /**
+   * 
+   * @return mixed[]
+   */
+  public function params() {
+    return [
+        [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
+        [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
+        [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
+    ];
+  }
+
+  /**
+   * @dataProvider params
+   * @param string $urlString
+   */
+  public function testSetParams(array $urlString) {
+    $url = new URL('http://www.example.com/bar.html');
+    $this->assertFalse($url->hasQuery());
+    $url->setParams($urlString);
+    $this->assertSame($url->getParams(), $urlString);
+    foreach ($urlString as $key => $value) {
+      $this->assertTrue($url->hasQuery());
+      $this->assertTrue($url->paramExists($key));
+      $this->assertSame($url->getParam($key), $value);
+    }
+  }
+
+  /**
+   * @depends testEquals
+   * @covers Sphp\Net\URL::__clone
+   * @dataProvider urlStrings
+   * @param string $urlString
+   */
+  public function testClone($urlString) {
+    $url = new URL($urlString);
+    $clone = clone $url;
+    $this->assertTrue($url->equals($clone));
+    $this->assertTrue($url == $clone);
+    $clone->setFragment('frag');
+    $this->assertFalse($url->equals($clone));
+    $this->assertFalse($url == $clone);
+  }
+
+  /**
+   * @covers Sphp\Net\URL::getCurrent
+   */
+  public function testGetCurrent() {
+    $current = URL::getCurrent();
+    $another = URL::getCurrent();
+    var_dump("$another");
+    $this->assertTrue($current->equals($another));
+    $this->assertTrue($current == $another);
+    $another->setFragment('frag');
+    $this->assertFalse($current->equals($another));
+    $this->assertFalse($current == $another);
   }
 
 }
