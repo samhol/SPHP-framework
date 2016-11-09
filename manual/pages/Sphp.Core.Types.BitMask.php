@@ -5,9 +5,9 @@ namespace Sphp\Core\Types;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $bitMaskLink = $api->classLinker(BitMask::class);
-$and = $bitMaskLink->method("and_");
-$or = $bitMaskLink->method("or_");
-$xor = $bitMaskLink->method("xor_");
+$and = $bitMaskLink->methodLink("and_");
+$or = $bitMaskLink->methodLink("or_");
+$xor = $bitMaskLink->methodLink("xor_");
 echo $parsedown->text(<<<MD
 ##Class $bitMaskLink
 

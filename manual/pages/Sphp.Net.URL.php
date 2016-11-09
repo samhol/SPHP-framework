@@ -6,12 +6,12 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $urlClass = $api->classLinker(URL::class);
 echo $parsedown->text(<<<MD
-##URL string manipulation with the $urlClass class
+##URL manipulation with a $urlClass objects
 
 The syntax for an URL string is: `scheme://[user:pass@]domain:port/path?query#fragment`
 		
-The $urlClass class implements Uniform resource locators (URL) in object oriented PHP. 
-Objects of this class allow users to encode, decode, manipulate and compare URLs.
+The $urlClass class implements Uniform resource locator (URL) object. 
+These Objects allow users to encode, decode, manipulate and compare URLs.
 
 ###Object properties
 		
@@ -19,7 +19,7 @@ The {$urlClass->methodLink("__construct")} parses the input URL string
 with {$php->functionLink("parse_url")} function and the class $urlClass is therefore 
 intended specifically for the  URLs and not URIs.
 		
-The properties within the $urlClass object are:
+URL string is splitted into following custozable parts in an $urlClass object:
 
 * `scheme` e.g. file, http, https,... &laquo;<a href="http://en.wikipedia.org/wiki/URI_scheme" target="_blank">Wikipedia</a>&raquo;
 * `user` The username field
@@ -35,7 +35,6 @@ The properties within the $urlClass object are:
 	* **IMPORTANT:** the browser won't send a request with a `fragment` part. 
 	  The `fragment` part of the URL is resolved right there in the browser.
 		
-All these properties can be manipulated using their dedicated getter and setter methods.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Net/URL.php", "text", false);

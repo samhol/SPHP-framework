@@ -7,14 +7,15 @@
 
 namespace Sphp\Db;
 
-use Sphp\Db\DatabaseConnector as PDOConnector,
+use Sphp\Db\DatabaseConnector as DatabaseConnector,
     \PDO as PDO;
 
 /**
  * Trait implements {@link DBConnectorInterface} for {@link PDO} database connection management 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-02-02
+ * @since   2015-02-02
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -40,7 +41,7 @@ trait DBConnectorTrait {
    * @link   http://www.php.net/manual/en/pdo.construct.php \PDO::__construct
    */
   public function createConnection($dsn, $username, $password) {
-    $this->setConnection(PDOConnector::obtain($dsn, $username, $password));
+    $this->setConnection(DatabaseConnector::obtain($dsn, $username, $password));
     return $this;
   }
 
@@ -52,7 +53,7 @@ trait DBConnectorTrait {
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects 
    */
   public function obtainDefaultConnection() {
-    $this->setConnection(PDOConnector::obtain());
+    $this->setConnection(DatabaseConnector::obtain());
     return $this;
   }
 

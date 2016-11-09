@@ -159,20 +159,29 @@ class URLTest extends \PHPUnit_Framework_TestCase {
     
   }
 
+  public function equalUrlPairs() {
+    $url[] = ['irc://irc.example.com/channel', 'irc://irc.example.com/channel'];
+    $url[] = ['irc://irc.example.com/channel', 'irc://irc.example.com/channel?'];
+    $url[] = ['http://example.com', 'http://example.com'];
+    $url[] = ['http://example.com', 'http://example.com:80'];
+    $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&amp;p1=v1'];
+    return $url;
+  }
+
   /**
    * 
    * @covers Sphp\Net\URL::equals
+   * @dataProvider equalUrlPairs
    */
-  public function testEquals() {
-    $u1 = new URL("http://www.example.com/bar.html?a=b&b=c");
-    $u2 = new URL("http://www.example.com/bar.html?b=c&a=b");
-    $u3 = new URL("http://www.example.com/bar.html?b=c&amp;a=b");
+  public function testEquals($urlString1, $urlString2) {
+    $u1 = new URL($urlString1);
+    $u2 = new URL($urlString2);
+    $this->assertTrue($u1->equals($urlString1));
+    $this->assertTrue($u2->equals($urlString2));
+    $this->assertTrue($u1->equals($urlString2));
+    $this->assertTrue($u2->equals($urlString1));
     $this->assertTrue($u1->equals($u2));
     $this->assertTrue($u2->equals($u1));
-    $this->assertTrue($u1->equals($u3));
-    $this->assertTrue($u2->equals($u3));
-    $this->assertFalse($this->http->equals($this->https));
-    $this->assertFalse($this->http->equals($this->https));
   }
 
   /**
@@ -181,7 +190,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
    */
   public function arrayData() {
     return [
-        [[
+            [[
         'scheme' => 'http',
         'host' => 'www.whatever.com',
         'user' => 'johndoe',
@@ -191,7 +200,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
         'fragment' => 'daa',
         'port' => 21
             ]],
-        [[
+            [[
         'scheme' => 'https',
         'host' => 'www.whatever.com',
         'user' => '',
@@ -210,7 +219,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
    */
   public function schemes() {
     return [
-        ['http', 'https'],
+            ['http', 'https'],
     ];
   }
 
@@ -252,9 +261,9 @@ class URLTest extends \PHPUnit_Framework_TestCase {
    */
   public function params() {
     return [
-        [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
-        [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
-        [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
+            [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
+            [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
+            [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
     ];
   }
 

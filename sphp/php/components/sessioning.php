@@ -11,8 +11,8 @@
 
 namespace Sphp\Net;
 
-use Sphp\Objects\User as User;
-use Sphp\Core\Types\Permissions as Permissions;
+use Sphp\Objects\User;
+use Sphp\Core\Types\Permissions;
 
 try {
   $sessionHandler = new PdoSessionHandler();

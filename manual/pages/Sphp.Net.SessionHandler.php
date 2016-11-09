@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Net;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlighter;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 $sessionHandlerInterface = $api->classLinker(\SessionHandlerInterface::class);
 $abstractSessionHandler = $api->classLinker(AbstractSessionHandler::class);
 $hpw = $api->classLinker(HashedPassword::class);
@@ -13,6 +13,6 @@ $abstractSessionHandler
 MD
 );
 
-(new SyntaxHighlighter())
-		->loadFromFile(\Sphp\PDO_SESSIONING, "Session example <code>PHP</code> code")
+(new SyntaxHighlightingSingleAccordion())
+		->loadFromFile(\Sphp\PDO_SESSIONING)
 		->printHtml();

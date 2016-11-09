@@ -7,8 +7,8 @@
 
 namespace Sphp\Net;
 
-use \PDO as PDO;
-use Sphp\Db\DatabaseConnector as PDOConnector;
+use PDO;
+use Sphp\Db\DatabaseConnector;
 
 /**
  * Class handles a session that stored ist data to a database
@@ -35,7 +35,7 @@ class PdoSessionHandler extends AbstractSessionHandler {
    */
   public function __construct(PDO $pdo = null) {
     if ($pdo === null) {
-      $this->pdo = PDOConnector::obtain();
+      $this->pdo = DatabaseConnector::obtain();
     } else {
       $this->pdo = $pdo;
     }
