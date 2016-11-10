@@ -14,6 +14,7 @@ namespace Sphp\Net;
  * @since   2016-10-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
+ * @Embeddable
  */
 class HashedPassword extends AbstractPassword {
 
@@ -21,8 +22,9 @@ class HashedPassword extends AbstractPassword {
    * the crypted password string
    *
    * @var string  
+   * @Column(type = "string")
    */
-  private $hashed;
+  private $hash;
 
   /**
    * Constructs a new instance
@@ -36,19 +38,19 @@ class HashedPassword extends AbstractPassword {
    */
   public function __construct($hash) {
     if ($hash instanceof PasswordInterface) {
-      $this->hashed = $hash->getHash();
+      $this->hash = $hash->getHash();
     } else {
-      $this->hashed = strval($hash);
+      $this->hash = strval($hash);
     }
   }
 
 
   public function __toString() {
-    return $this->hashed;
+    return $this->hash;
   }
 
   public function getHash() {
-    return $this->hashed;
+    return $this->hash;
   }
 
 }

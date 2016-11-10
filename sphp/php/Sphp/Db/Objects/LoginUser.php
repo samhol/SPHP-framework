@@ -34,29 +34,37 @@ class LoginUser extends AbstractDbObject implements UserInterface {
   private $id;
 
   /**
-   * The username
+   * username
    *
    * @var string 
-   * @Column(type="string", length=30)
+   * @Column(type="string", length=255)
    */
   private $username;
 
   /**
-   * the email address of the user
+   * email address
    * 
    * @var string
-   * @Column(type="string", nullable=true)
+   * @Column(type="string", nullable=false)
    * @Assert\Email
    */
   private $email;
 
   /**
-   * the password
+   * password
    *
-   * @var string 
-   * @Column(type="string", length=260)
+   * @var HashedPassword 
+   * @Embedded(class = "Sphp\Net\HashedPassword")
    */
   private $password;
+
+  /**
+   * permissions
+   *
+   * @var int 
+   * @Column(type="integer", length=6, nullable=false)
+   */
+  private $permissions = 0;
 
   public function __construct($data = []) {
     parent::__construct($data);
@@ -85,7 +93,7 @@ class LoginUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPermissions($permissions = 0) {
-    $this->permissions = $permissions;
+    $this->permissions = (int) $permissions;
     return $this;
   }
 
@@ -99,7 +107,7 @@ class LoginUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPassword($password = null) {
-    $this->password = new HashedPassword($password);
+    $this->password = new HashedPassword(new Password($password));
     return $this;
   }
 
@@ -108,7 +116,7 @@ class LoginUser extends AbstractDbObject implements UserInterface {
         'id' => \FILTER_VALIDATE_INT,
         'username' => \FILTER_SANITIZE_STRING,
         'email' => \FILTER_SANITIZE_STRING,
-        'permissions' => \FILTER_SANITIZE_STRING,
+        'permissions' => \FILTER_SANITIZE_NUMBER_INT,
         'password' => \FILTER_SANITIZE_STRING
     ];
     $myinputs = filter_var_array($data, $args, true);
