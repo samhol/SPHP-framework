@@ -60,3 +60,4 @@ $load("Sphp.Core.Types.Arrays.php");
 //$load("Sphp.Core.Types.Filters.php");
 $load("Sphp.Core.Types.Datetime.php");
 $load("Sphp.Core.Types.BitMask.php");
+$load("Sphp.Core.Types.URL.php");

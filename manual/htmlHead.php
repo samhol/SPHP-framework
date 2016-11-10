@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Core\Configuration;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 include_once('links.php');
 

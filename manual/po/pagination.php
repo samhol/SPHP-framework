@@ -1,6 +1,6 @@
 <?php
 namespace Sphp\Html\Foundation\Navigation;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 //$poparser = new PoParser();
 

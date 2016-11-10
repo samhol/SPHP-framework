@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class Models an HTML &lt;figure&gt; tag

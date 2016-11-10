@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 use Sphp\Html\Attributes\AttributeManager;
 
 /**

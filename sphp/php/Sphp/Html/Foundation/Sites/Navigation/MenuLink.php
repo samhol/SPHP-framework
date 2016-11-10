@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class Models a hyperlink component for the Dropown menu component

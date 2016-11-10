@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\AV;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
 use Sphp\Html\Media\LazyLoaderTrait;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class models a Foundation Flex Video component

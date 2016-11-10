@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class Models an HTML &lt;img&gt; tag

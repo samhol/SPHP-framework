@@ -14,7 +14,7 @@ use Sphp\Html\Container;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class models an HTML &lt;head&gt; tag

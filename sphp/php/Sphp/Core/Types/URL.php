@@ -5,12 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Net;
+namespace Sphp\Core\Types;
 
 use Sphp\Data\Arrayable;
 use IteratorAggregate;
-use Sphp\Core\Types\Strings;
-use Sphp\Core\Types\Arrays;
 
 /**
  * Class implements an URL for manipulation and comparison

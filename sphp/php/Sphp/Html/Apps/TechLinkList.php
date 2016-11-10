@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 use Sphp\Html\Navigation\ImageLink as ImageLink;
 
 /**

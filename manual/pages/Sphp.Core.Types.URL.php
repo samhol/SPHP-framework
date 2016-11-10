@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Net;
+namespace Sphp\Core\Types;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
@@ -37,4 +37,4 @@ URL string is splitted into following custozable parts in an $urlClass object:
 		
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Net/URL.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/URL.php", "text", false);

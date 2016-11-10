@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 
 /**
  * Class Models an HTML &lt;track&gt; tag

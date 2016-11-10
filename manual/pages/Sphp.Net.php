@@ -12,6 +12,5 @@ This namespace provides classes for implementing networking.
 MD
 );
 $load("Sphp.Net.SessionHandler.php");
-$load("Sphp.Net.URL.php");
 $load("Sphp.Net.Password.php");
 ?>

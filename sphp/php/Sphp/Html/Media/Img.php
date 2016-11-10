@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Net\URL;
+use Sphp\Core\Types\URL;
 use Sphp\Images\ImageScaler;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Media\ImageMap\Map;

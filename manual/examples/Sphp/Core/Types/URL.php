@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Net;
+namespace Sphp\Core\Types;
 
 $current = Url::getCurrent();
 $clone = clone $current;
