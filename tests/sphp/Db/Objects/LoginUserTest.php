@@ -14,7 +14,6 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    */
   protected $em;
 
-
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
@@ -31,7 +30,6 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   protected function tearDown() {
     
   }
-  
 
   /**
    * 
@@ -63,19 +61,17 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @return array
    */
   public function users() {
-    $u[] = (new LoginUser())
+    $u[] = [(new LoginUser())
             ->setUsername("samhol")
-            ->setEmail("sami.holck@gmail.com");
-    
-    $u[] = (new LoginUser())
+            ->setEmail("sami.holck@gmail.com")];
+    $u[] = [(new LoginUser())
             ->setUsername("johndoe")
-            ->setEmail("john.doe@gmail.com");
-    $u[] = (new LoginUser())
+            ->setEmail("john.doe@gmail.com")];
+    $u[] = [(new LoginUser())
             ->setUsername("ab")
-            ->setEmail("a.b@c.com");
-    return [$u];
+            ->setEmail("a.b@c.com")];
+    return $u;
   }
-
 
   /**
    * @dataProvider users
@@ -83,15 +79,35 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   public function testPasswordSettersAndGetters(UserInterface $u) {
     $pw = new Password("password");
     $u->setPassword($pw);
-    $this->assertTrue($u->getPassword()->equals(new Password("password")));
+    $this->assertTrue($u->getPassword()->verify(new Password("password")));
   }
 
   /**
-   * 
-   * @dataProvider userArrs
+   * @dataProvider users
    */
-  public function testInsert(array $data) {
-    $u = new User($data);
+  public function testIsManagedBy(LoginUser $u) {
+    $this->assertTrue(!$u->isManagedBy($this->em));
+    $this->assertTrue($u->setEmail('')->existsIn($this->em));
+  }
+
+  /**
+   * @depends testIsManagedBy
+   * @dataProvider users
+   */
+  public function testInsert(LoginUser $u) {
+    if (!$u->existsIn($this->em)) {
+      $this->assertTrue($u->insertInto($this->em));
+    }
+  }
+
+  /**
+   * @depends testInsert
+   * @dataProvider users
+   */
+  public function testDelete(UserInterface $u) {
+
+      $this->assertTrue($u->deleteFrom($this->em));
+
   }
 
   public function testEquals() {

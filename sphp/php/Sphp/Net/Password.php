@@ -23,7 +23,6 @@ class Password extends AbstractPassword {
    * @var string  
    */
   private $password;
-  private $hash;
 
   /**
    * Constructs a new instance

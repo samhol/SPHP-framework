@@ -8,6 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use Sphp\Net\Password;
+use Sphp\Net\PasswordInterface;
 use Sphp\Net\HashedPassword;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -19,11 +20,9 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity
- * @Table(name="users",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
+ * @Table(name="users")
  */
 class LoginUser extends AbstractDbObject implements UserInterface {
-
-  use \Sphp\Objects\ToArrayTrait;
 
   /**
    * primary database key
@@ -55,14 +54,11 @@ class LoginUser extends AbstractDbObject implements UserInterface {
    * the password
    *
    * @var string 
-   * @Column(type="string", length=64)
+   * @Column(type="string", length=260)
    */
   private $password;
 
   public function __construct($data = []) {
-    //$this->address = new Address();
-    //$this->phonenumbers = new \Doctrine\Common\Collections\ArrayCollection();
-    //$this->emails = new \Doctrine\Common\Collections\ArrayCollection();
     parent::__construct($data);
   }
 
@@ -97,7 +93,12 @@ class LoginUser extends AbstractDbObject implements UserInterface {
     return $this->password;
   }
 
-  public function setPassword($password = "") {
+  public function setPlainPassword($password) {
+    $this->password = new HashedPassword($password);
+    return $this;
+  }
+
+  public function setPassword($password = null) {
     $this->password = new HashedPassword($password);
     return $this;
   }
@@ -183,6 +184,16 @@ class LoginUser extends AbstractDbObject implements UserInterface {
     }
     $count = $query->getSingleScalarResult();
     return $count > 0;
+  }
+
+  public function toArray() {
+    return [
+        'id' => $this->getPrimaryKey(),
+        'username' => $this->getUsername(),
+        'username' => $this->getEmail(),
+        'passwordHash' => $this->getPassword()->getHash(),
+        'username' => $this->getPermissions()
+    ];
   }
 
 }

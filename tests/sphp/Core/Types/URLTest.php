@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Net;
+namespace Sphp\Core\Types;
 
 class URLTest extends \PHPUnit_Framework_TestCase {
 

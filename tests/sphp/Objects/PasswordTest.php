@@ -5,35 +5,19 @@ namespace Sphp\Net;
 class PasswordTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
-   */
-  protected function setUp() {
-    
-  }
-
-  /**
-   * Tears down the fixture, for example, closes a network connection.
-   * This method is called after a test is executed.
-   */
-  protected function tearDown() {
-    
-  }
-
-  /**
    * 
    * @return array
    */
-  public function passwords() {
+  public function plainPasswords() {
     $u[] = ["password"];
     $u[] = ["a"];
-    $u[] = [""];
+    $u[] = ["0"];
     $u[] = ["$56722_@12"];
     return $u;
   }
 
   /**
-   * @dataProvider passwords
+   * @dataProvider plainPasswords
    * @param string $pw
    */
   public function testVerification($pw) {
