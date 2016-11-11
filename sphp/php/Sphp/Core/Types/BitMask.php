@@ -18,6 +18,7 @@ use Sphp\Data\Arrayable;
  * @since   2014-09-15
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
+ * @Embeddable
  */
 class BitMask implements ScalarObjectInterface, Arrayable {
 
@@ -27,6 +28,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * the binary value
    *
    * @var int
+   * @Column(type = "integer")
    */
   private $value = 0;
 

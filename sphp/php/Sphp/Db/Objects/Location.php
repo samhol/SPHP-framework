@@ -16,13 +16,32 @@ use Sphp\Util\FileUtils as FileUtils;
  * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
+ * @Entity
+ * @Table(name="addresses")
  */
 class Location extends Address implements DbObjectInterface {
 
+  /**
+   * primary database key
+   *
+   * @var int 
+   * @Id @Column(type="integer")
+   * @GeneratedValue
+   */
+  private $id;
 
-  const NAME = "name";
-  const MAPLINK = "maplink";
+  /**
+   *
+   * @var string|null
+   * @Column(length=100)
+   */
+  private $name;
 
+  /**
+   * @var Address
+   * @Embedded(class = "Address", columnPrefix = false) 
+   */
+  private $address;
 
   /**
    * Returns the name of the location
@@ -30,7 +49,7 @@ class Location extends Address implements DbObjectInterface {
    * @return the name of the location
    */
   public function getName() {
-    return $this->get(self::NAME);
+    return $this->name;
   }
 
   /**
@@ -40,7 +59,7 @@ class Location extends Address implements DbObjectInterface {
    * @return self for PHP Method Chaining
    */
   public function setName($name) {
-    return $this->set(self::NAME, $name);
+    return $this->name = $name;
   }
 
   /**
@@ -49,7 +68,7 @@ class Location extends Address implements DbObjectInterface {
    * @return string the maplink pointing to the location
    */
   public function getMaplink() {
-    return $this->get(self::MAPLINK);
+    return $this->address->getMaplink();
   }
 
   /**
@@ -59,7 +78,7 @@ class Location extends Address implements DbObjectInterface {
    * @return self for PHP Method Chaining
    */
   public function setMaplink($maplink) {
-    return $this->set(self::MAPLINK, $maplink);
+    return $this->address->setMaplink($maplink);
   }
 
   /**
@@ -68,11 +87,7 @@ class Location extends Address implements DbObjectInterface {
    * @return Address the full address as an object
    */
   public function getAddress() {
-    return (new Address())
-                    ->setStreetaddress($this->getStreetaddress())
-                    ->setZipcode($this->getZipcode())
-                    ->setCity($this->getCity())
-                    ->setCountry($this->getCountry());
+    return $this->address;
   }
 
   /**
@@ -82,10 +97,7 @@ class Location extends Address implements DbObjectInterface {
    * @return self for PHP Method Chaining
    */
   public function setAddress(Address $addr) {
-    $this->setStreetaddress($addr->getStreetaddress())
-            ->setZipcode($addr->getZipcode())
-            ->setCity($addr->getCity())
-            ->setCountry($addr->getCountry());
+    $this->address = $addr;
     return $this;
   }
 

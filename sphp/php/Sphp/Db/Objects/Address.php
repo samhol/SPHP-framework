@@ -19,7 +19,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Entity
  * @Table(name="addresses")
  */
-class Address extends AbstractDbObject {
+class Address extends AbstractDbObject implements GeographicalAddressInterface {
 
   use \Sphp\Objects\ToArrayTrait;
 
@@ -58,81 +58,37 @@ class Address extends AbstractDbObject {
    */
   private $country;
 
-  /**
-   * Returns the streetaddress
-   *
-   * @return string the streetaddress
-   */
   public function getStreet() {
     return $this->street;
   }
 
-  /**
-   * Sets the streetaddress
-   *
-   * @param  string $streetaddress the streetaddress
-   * @return self for PHP Method Chaining
-   */
   public function setStreet($streetaddress) {
     $this->street = $streetaddress;
     return $this;
   }
 
-  /**
-   * Returns the zipcode
-   *
-   * @return string|null the zipcode
-   */
   public function getZipcode() {
     return $this->zipcode;
   }
 
-  /**
-   * Sets the zipcode
-   *
-   * @param  string|null $zipcode the zipcode
-   * @return self for PHP Method Chaining
-   */
   public function setZipcode($zipcode) {
     $this->zipcode = $zipcode;
     return $this;
   }
 
-  /**
-   * Returns the city or the district name
-   *
-   * @return string|null the city or the district name
-   */
   public function getCity() {
     return $this->city;
   }
 
-  /**
-   * Sets the city or the district name
-   *
-   * @param  string|null $city the city or the district name
-   * @return self for PHP Method Chaining
-   */
   public function setCity($city) {
     $this->city = $city;
     return $this;
   }
 
-  /**
-   * Returns the country name
-   *
-   * @return string the country name
-   */
   public function getCountry() {
     return $this->country;
   }
 
-  /**
-   * Sets the the country name
-   *
-   * @param  string $country the country name
-   * @return self for PHP Method Chaining
-   */
   public function setCountry($country) {
     $this->country = $country;
     return $this;
@@ -179,6 +135,25 @@ class Address extends AbstractDbObject {
   public function insertInto(EntityManagerInterface $em) {
     $em->persist($this);
     $em->flush();
+  }
+
+  /**
+   * Returns the maplink pointing to the location
+   *
+   * @return string the maplink pointing to the location
+   */
+  public function getMaplink() {
+    return $this->get(self::MAPLINK);
+  }
+
+  /**
+   * Sets the maplink to the location
+   *
+   * @param  string $maplink the maplink to the location
+   * @return self for PHP Method Chaining
+   */
+  public function setMaplink($maplink) {
+    return $this->set(self::MAPLINK, $maplink);
   }
 
 }
