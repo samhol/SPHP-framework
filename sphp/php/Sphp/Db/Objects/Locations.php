@@ -16,9 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Locations {
-
-  private $em;
+class Locations extends AbstractObjectStorage {
 
   /**
    * Constructor
@@ -61,7 +59,7 @@ class Locations {
       $result = $needle->usernameTaken($this->getManager());
     } else {
       $query = $this->getManager()
-              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.username = :username");
+              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
       $query->setParameter('name', $needle);
       $result = $query->getSingleScalarResult() == 0;
     }

@@ -190,6 +190,8 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
     if (!$this->isManagedBy($em) && $this->hasUniqueNameIn($em)) {
       $em->persist($this);
       $em->flush();
+    } else {
+      throw new \RuntimeException('Location cannot be inserted into the manager as a new instance');
     }
   }
 

@@ -34,6 +34,11 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
    * @var EntityManagerInterface
    */
   protected $em;
+  /**
+   *
+   * @var Locations 
+   */
+  protected $locations;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
@@ -42,6 +47,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
   protected function setUp() {
     $this->em = Configuration::useDomain("manual")
             ->get(EntityManagerInterface::class);
+    $this->locations = new Locations($this->em);
   }
 
   /**
@@ -62,9 +68,9 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider userArrs
+   * 
    */
-  public function testConstruct(array $data) {
+  public function atestConstruct(array $data) {
     $u = new User($data);
     $a = $this->addressProvider($data);
     $this->assertEquals($u->getUsername(), $data["username"]);
@@ -72,25 +78,44 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals($u->getLname(), $data["lname"]);
     $this->assertEquals($u->getAddress(), $a);
   }
-
   /**
    * 
+   */
+  public function testDelete() {
+    $l = $this->locations->findByName("home");
+    //var_dump($l);
+    echo "ID:";
+    var_dump($l->getPrimaryKey());
+   $this->assertTrue($l instanceof Location);
+   $this->assertTrue($this->locations->delete($l));
+   $this->locations->uniqueName("home");
+   // $this->assertfalse($u->insertAsNewInto($this->em)); 
+  }
+
+
+  /**
+   * @depends testDelete
    */
   public function testInsert() {
     $obj = new Location(['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
     $obj->insertAsNewInto($this->em);
   }
-
   /**
-   * 
-   * @dataProvider existingUsers
+   * @depends testInsert
    */
-  public function testUpdateFails(User $u) {
-    $this->assertfalse($u->insertAsNewInto($this->em));
+  public function testUpdate() {
+    $l = $this->locations->findByName("home");
+    $l->setCity("Åbo");
+    //var_dump($l);
+    echo "ID:";
+    var_dump($l->getPrimaryKey());
+    $this->locations->getManager()->flush();
+   $this->assertTrue($this->locations->exists($l->getPrimaryKey()));
+   // $this->assertfalse($u->insertAsNewInto($this->em)); 
   }
 
   /**
-   */
+   */ 
   public function testEquals() {
     $home = new Location(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
     $this->assertTrue($home->equals($home));

@@ -47,7 +47,8 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
 
   public function deleteFrom(EntityManagerInterface $em) {
     if ($em->contains($this)) {
-      $em->detach($this);
+      $em->remove($this);
+      $em->flush();
     }
     return !$this->isManagedBy($em);
   }

@@ -37,7 +37,7 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/User.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/User.php", "text", false);
 
 $objectStorageInterface = $api->classLinker(ObjectStorageInterface::class);
 $iterable = $php->classLinker(\IteratorAggregate::class);
@@ -55,8 +55,8 @@ The $objectStorageInterface is implemented by a couple of build-in instantiable 
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Addresses.php", "php", false);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Users.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Addresses.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Users.php", "text", false);
 //$load("Sphp.Net.Password.php");
 
 //CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");

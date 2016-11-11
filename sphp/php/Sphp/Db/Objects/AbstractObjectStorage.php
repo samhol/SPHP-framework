@@ -39,17 +39,22 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   private $repository;
 
   /**
-   * Constructor
+   * Constructs a new instance
    *
    * @param string $objectType
    * @param EntityManagerInterface $em
    */
-  public function __construct($objectType, EntityManagerInterface $em = null) {
+  public function __construct($objectType, EntityManagerInterface $em) {
     $this->type = $objectType;
     $this->em = $em;
     $this->repository = $this->getManager()->getRepository($this->type);
   }
 
+  /**
+   * Returns the entity Nameger 
+   * 
+   * @return EntityManagerInterface
+   */
   public function getManager() {
     return $this->em;
   }
@@ -83,7 +88,10 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   public function exists($id) {
-    
+    $query = $this->getManager()
+            ->createQuery('SELECT COUNT(obj.id) FROM ' . $this->getObjectType() . " obj WHERE obj.id = :id");
+    $query->setParameter('id', $id);
+    return $query->getSingleScalarResult() == 1;
   }
 
   public function count() {
