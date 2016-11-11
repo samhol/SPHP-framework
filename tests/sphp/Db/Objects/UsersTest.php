@@ -156,7 +156,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    */
   public function atestInsert(array $data) {
     $u = new User($data);
-    $this->assertTrue($u->insertInto($this->em));
+    $this->assertTrue($u->insertAsNewInto($this->em));
   }
 
   public function testEquals() {

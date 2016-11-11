@@ -7,56 +7,55 @@
 
 namespace Sphp\Db\Objects;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Sphp\Objects\AbstractArrayableObject;
 
 /**
- * Class models a geographical address.
+ * Implements a geographical address
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-08
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
- * @Entity
- * @Table(name="addresses")
+ * @Embeddable
  */
-class Address extends AbstractDbObject implements GeographicalAddressInterface {
+class Address extends AbstractArrayableObject implements GeographicalAddressInterface {
 
-  use \Sphp\Objects\ToArrayTrait;
-
-  /**
-   *
-   * @Id @Column(type="integer")
-   * @GeneratedValue
-   */
-  private $id;
+  use \Sphp\Objects\EqualsTrait;
 
   /**
    *
    * @var string|null
-   * @Column(length=100)
+   * @Column(type = "string") 
    */
   private $street;
 
   /**
    *
    * @var string|null
-   * @Column(length=30)
+   * @Column(type = "string") 
    */
   private $zipcode;
 
   /**
    *
    * @var string|null
-   * @Column(length=50)
+   * @Column(type = "string") 
    */
   private $city;
 
   /**
    *
    * @var string|null
-   * @Column(length=50)
+   * @Column(type = "string") 
    */
   private $country;
+
+  /**
+   *
+   * @var string|null
+   * @Column(type = "string") 
+   */
+  private $maplink;
 
   public function getStreet() {
     return $this->street;
@@ -94,20 +93,41 @@ class Address extends AbstractDbObject implements GeographicalAddressInterface {
     return $this;
   }
 
+  public function getMaplink() {
+    return $this->maplink;
+  }
+
+  public function setMaplink($maplink) {
+    $this->maplink = $maplink;
+    return $this;
+  }
+
   public function fromArray(array $data = []) {
     $args = [
         'id' => \FILTER_VALIDATE_INT,
         'street' => \FILTER_SANITIZE_STRING,
         'zipcode' => \FILTER_SANITIZE_STRING,
         'city' => \FILTER_SANITIZE_STRING,
-        'country' => \FILTER_SANITIZE_STRING
+        'country' => \FILTER_SANITIZE_STRING,
+        'maplink' => \FILTER_SANITIZE_STRING
     ];
     $myinputs = filter_var_array($data, $args, true);
-    $this->setPrimaryKey($myinputs['id']);
-    return $this->setStreet($myinputs['street'])
-                    ->setZipcode($myinputs['zipcode'])
-                    ->setCity($myinputs['city'])
-                    ->setCountry($myinputs['country']);
+    $this->setStreet($myinputs['street'])
+            ->setZipcode($myinputs['zipcode'])
+            ->setCity($myinputs['city'])
+            ->setCountry($myinputs['country'])
+            ->setMaplink($myinputs['maplink']);
+    return $this;
+  }
+
+  public function toArray() {
+    return [
+        'street' => $this->getStreet(),
+        'city' => $this->getCity(),
+        'zipcode' => $this->getZipcode(),
+        'country' => $this->getCountry(),
+        'maplink' => $this->getMaplink()
+    ];
   }
 
   /**
@@ -121,39 +141,6 @@ class Address extends AbstractDbObject implements GeographicalAddressInterface {
     $address .= " " . $this->getCity();
     $address .= " " . $this->getCountry();
     return $address;
-  }
-
-  public function getPrimaryKey() {
-    return $this->id;
-  }
-
-  public function setPrimaryKey($id) {
-    $this->id = $id;
-    return $this;
-  }
-
-  public function insertInto(EntityManagerInterface $em) {
-    $em->persist($this);
-    $em->flush();
-  }
-
-  /**
-   * Returns the maplink pointing to the location
-   *
-   * @return string the maplink pointing to the location
-   */
-  public function getMaplink() {
-    return $this->get(self::MAPLINK);
-  }
-
-  /**
-   * Sets the maplink to the location
-   *
-   * @param  string $maplink the maplink to the location
-   * @return self for PHP Method Chaining
-   */
-  public function setMaplink($maplink) {
-    return $this->set(self::MAPLINK, $maplink);
   }
 
 }

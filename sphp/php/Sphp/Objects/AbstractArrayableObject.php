@@ -19,12 +19,10 @@ use Sphp\Core\Types\Arrays;
  */
 abstract class AbstractArrayableObject implements ArrayableObjectInterface {
 
-  use EqualsTrait;
-
   /**
    * Constructs a new instance
    *
-   * @param  null|mixed[] $data the initial raw data from which to parse the object
+   * @param array $data the initial raw data from which to parse the object
    */
   public function __construct(array $data = []) {
     $this->fromArray($data);

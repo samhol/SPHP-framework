@@ -139,7 +139,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider existingUsers
    */
   public function testUpdateFails(User $u) {
-    $this->assertfalse($u->insertInto($this->em));
+    $this->assertfalse($u->insertAsNewInto($this->em));
   }
 
 }

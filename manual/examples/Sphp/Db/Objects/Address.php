@@ -5,27 +5,28 @@ namespace Sphp\Db\Objects;
 $em = include 'entityManager.php';
 
 $addr1Data = [
-    "street" => "12 Unknown st.",
-    "zipcode" => "20720",
-    "city" => "Canberra",
-    "country" => "Wonderland",
+    'street' => "12 Unknown st.",
+    'zipcode' => "20720",
+    'city' => 'Canberra',
+    'country' => 'Wonderland',
 ];
 $addr3Data = [
-    "street" => "PL 347",
-    "zipcode" => "33101",
-    "city" => "Tampere",
-    "country" => "Finland",
+    'name' => 'Pikkukakkosen posti',
+    'street' => "PL 347",
+    'zipcode' => "33101",
+    'city' => 'Tampere',
+    'country' => 'Finland',
 ];
 
-$addrs[] = new Address($addr1Data);
+$addrs[] = new Location($addr1Data);
 
-$addrs[] = (new Address())
+$addrs[] = (new Location())
         ->setStreet("Mariankatu 2")
         ->setZipcode("00170")
         ->setCity("Helsinki")
         ->setCountry("Finland");
 
-$addrs[] = (new Address())
+$addrs[] = (new Location())
         ->fromArray($addr3Data);
 
 foreach ($addrs as $addr) {

@@ -38,7 +38,7 @@ interface DbObjectInterface extends ArrayableObjectInterface {
   /**
    * Inserts the user as a new instance to the database
    *
-   * @param  EntityManagerInterface $em
+   * @param  EntityManagerInterface $em the entity manager
    * @return boolean true if the operation was succesfull, false otherwise
    */
   public function isManagedBy(EntityManagerInterface $em);
@@ -46,15 +46,15 @@ interface DbObjectInterface extends ArrayableObjectInterface {
   /**
    * Inserts the user as a new instance to the database
    *
-   * @param  EntityManagerInterface $em
+   * @param  EntityManagerInterface $em the entity manager
    * @return boolean true if the operation was succesfull, false otherwise
    */
-  public function insertInto(EntityManagerInterface $em);
+  public function insertAsNewInto(EntityManagerInterface $em);
 
   /**
    * Inserts the user as a new instance to the database
    *
-   * @param  EntityManagerInterface $em
+   * @param  EntityManagerInterface $em the entity manager
    * @return boolean true if the operation was succesfull, false otherwise
    */
   public function deleteFrom(EntityManagerInterface $em);

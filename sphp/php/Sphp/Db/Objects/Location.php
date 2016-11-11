@@ -2,24 +2,24 @@
 
 /**
  * Location.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Util\FileUtils as FileUtils;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class models a geographical location stored into a database
+ * Implements a geographical location stored into a database
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity
- * @Table(name="addresses")
+ * @Table(name="locations")
  */
-class Location extends Address implements DbObjectInterface {
+class Location extends AbstractDbObject implements GeographicalAddressInterface {
 
   /**
    * primary database key
@@ -43,10 +43,19 @@ class Location extends Address implements DbObjectInterface {
    */
   private $address;
 
+  public function getPrimaryKey() {
+    return $this->id;
+  }
+
+  public function setPrimaryKey($id) {
+    $this->id = $id;
+    return $this;
+  }
+
   /**
    * Returns the name of the location
    *
-   * @return the name of the location
+   * @return string the name of the location
    */
   public function getName() {
     return $this->name;
@@ -59,26 +68,8 @@ class Location extends Address implements DbObjectInterface {
    * @return self for PHP Method Chaining
    */
   public function setName($name) {
-    return $this->name = $name;
-  }
-
-  /**
-   * Returns the maplink pointing to the location
-   *
-   * @return string the maplink pointing to the location
-   */
-  public function getMaplink() {
-    return $this->address->getMaplink();
-  }
-
-  /**
-   * Sets the maplink to the location
-   *
-   * @param  string $maplink the maplink to the location
-   * @return self for PHP Method Chaining
-   */
-  public function setMaplink($maplink) {
-    return $this->address->setMaplink($maplink);
+    $this->name = $name;
+    return $this;
   }
 
   /**
@@ -91,36 +82,115 @@ class Location extends Address implements DbObjectInterface {
   }
 
   /**
-   * Sets the address fields from the {@link Address} object
+   * Sets the address of the location
    *
-   * @param  Address $addr the inserted address data
+   * @param  Address $address the address of the location
    * @return self for PHP Method Chaining
    */
-  public function setAddress(Address $addr) {
-    $this->address = $addr;
+  public function setAddress(Address $address) {
+    $this->address = $address;
     return $this;
   }
 
-  /**
-   * Checks if the location has a working maplink or not
-   *
-   * @return boolean true if the location has a working maplink, false otherwise
-   */
-  public function hasMapLink() {
-    return FileUtils::remoteFileExists($this->get(self::MAPLINK));
+  public function getStreet() {
+    return $this->address->getStreet();
+  }
+
+  public function getCity() {
+    return $this->address->getCity();
+  }
+
+  public function getZipcode() {
+    return $this->address->getZipcode();
+  }
+
+  public function getCountry() {
+    return $this->address->getCountry();
+  }
+
+  public function getMaplink() {
+    return $this->address->getMaplink();
+  }
+
+  public function setStreet($streetaddress) {
+    $this->address->setStreet($streetaddress);
+    return $this;
+  }
+
+  public function setCity($city) {
+    $this->address->setCity($city);
+    return $this;
+  }
+
+  public function setZipcode($zipcode) {
+    $this->address->setZipcode($zipcode);
+    return $this;
+  }
+
+  public function setCountry($country) {
+    $this->address->setCountry($country);
+    return $this;
+  }
+
+  public function setMaplink($maplink) {
+    $this->address->setMaplink($maplink);
+    return $this;
+  }
+
+  public function fromArray(array $data = []) {
+    $args = [
+        'id' => \FILTER_VALIDATE_INT,
+        'name' => \FILTER_SANITIZE_STRING
+    ];
+    $myinputs = filter_var_array($data, $args, true);
+    $this->setPrimaryKey($myinputs['id'])
+            ->setName($myinputs['name'])
+            ->setAddress(new Address($data));
+    return $this;
+  }
+
+  public function toArray() {
+    $data = [
+        'id' => $this->getPrimaryKey(),
+        'name' => $this->getName()
+    ];
+    $addr = $this->address->toArray();
+    return array_merge($data, $addr);
+  }
+
+  public function equals($object) {
+    $class = static::class;
+    $result = false;
+    if ($object instanceof $class) {
+      $result = $this->getName() == $object->getName() && $this->getAddress()->equals($object->getAddress());
+    }
+    return $result;
   }
 
   /**
-   * Resets the data of the object
+   * Confirms the uniqueness of the location name in the repository
    *
-   * @param  mixed[] $data raw source data
-   * @return self for PHP Method Chaining
+   * @param  EntityManagerInterface $em the entity manager
+   * @return boolean true, if location name is unique, false otherwise.
    */
-  public function fromArray(array $data = []) {
-    parent::fromArray($data);
-    return $this->setPrimaryKey($data[self::DBID])
-                    ->setName($data[Location::NAME])
-                    ->setMaplink($data[Location::MAPLINK]);
+  public function hasUniqueNameIn(EntityManagerInterface $em) {
+    if ($this->isManagedBy($em)) {
+      $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name AND obj.id != :id');
+      $query->setParameter("name", $this->getName());
+      $query->setParameter("id", $this->getPrimaryKey());
+    } else {
+      $query = $em->createQuery('SELECT COUNT(obj.name) FROM ' . self::class . ' obj WHERE obj.name = :name');
+      $query->setParameter("name", $this->getName());
+    }
+    $count = $query->getSingleScalarResult();
+    return $count == 0;
+  }
+
+  public function insertAsNewInto(EntityManagerInterface $em) {
+    if (!$this->isManagedBy($em) && $this->hasUniqueNameIn($em)) {
+      $em->persist($this);
+      $em->flush();
+    }
   }
 
 }

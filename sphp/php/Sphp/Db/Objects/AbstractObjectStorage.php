@@ -93,7 +93,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   public function save(DbObjectInterface $object) {
-    return $object->insertInto($this->em);
+    return $object->insertAsNewInto($this->em);
   }
 
   public function delete(DbObjectInterface $object) {

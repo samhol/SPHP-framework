@@ -141,4 +141,8 @@ class SessionData extends AbstractDbObject {
     return $this;
   }
 
+  public function equals($object) {
+    
+  }
+
 }

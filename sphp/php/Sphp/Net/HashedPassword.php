@@ -44,7 +44,6 @@ class HashedPassword extends AbstractPassword {
     }
   }
 
-
   public function __toString() {
     return $this->hash;
   }
