@@ -21,8 +21,8 @@ Example database applicatíon:
 MD
 );
 $usersTableSql = (new SyntaxHighlighter())
-		->loadFromFile(EXAMPLE_DIR . "Sphp/Db/create_users.sql")
-		->setHeading("SQL code of the 'users' table")
+		->fromFile(EXAMPLE_DIR . "Sphp/Db/create_session_user.sql")
+		->setExampleHeading("SQL code of the 'users' table")
 		->printHtml();
 $exampleViewer(EXAMPLE_DIR . "Sphp/Db/dbObjectsView.php", 1, "text");
 $exampleViewer(EXAMPLE_DIR . "Sphp/Db/usersAsHtmlTable.php", 2);

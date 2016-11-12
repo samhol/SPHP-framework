@@ -7,7 +7,8 @@ use Sphp\Objects\ObjectInterface;
 
 $objectInterface = $api->classLinker(ObjectInterface::class);
 $dbObjectInterface = $api->classLinker(DbObjectInterface::class);
-$address = $api->classLinker(Address::class);
+$geographicalAddress = $api->classLinker(GeographicalAddressInterface::class);
+$location = $api->classLinker(Location::class);
 $user = $api->classLinker(User::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
@@ -24,24 +25,19 @@ The $objectInterface interface is the base for all database entity objects in th
 
 This interfaces are the base of all database objects
 The $dbObjectInterface is implemented by a couple of build-in instantiable classes.
-####$address class for geographical address entities
+####$location implementing $geographicalAddress for geographical address entities
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Db/Objects/Address.php", "text", false))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Db/Objects/Location.php", "text", false))
         ->setExampleHeading("Geographical address object example")
         ->printHtml();
-echo $parsedown->text(<<<MD
-        
-####$user for user data object entities
-MD
-);
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/User.php", "text", false);
+
 
 $objectStorageInterface = $api->classLinker(ObjectStorageInterface::class);
 $iterable = $php->classLinker(\IteratorAggregate::class);
-$addresses = $api->classLinker(Addresses::class);
+$addresses = $api->classLinker(Locations::class);
 $users = $api->classLinker(Users::class);
 echo $parsedown->text(<<<MD
 ##The $objectStorageInterface
@@ -50,13 +46,15 @@ This interface provides an $iterable view to the managed $dbObjectInterface enti
 extending the native $iterable and providing some additional methods for entity manipulation.
 The $objectStorageInterface is implemented by a couple of build-in instantiable classes.
         
-1. $addresses for mapping the $address object entities
+1. $addresses for mapping the $location object entities
 2. $users for mapping the $user object entities
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Addresses.php", "text", false);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Users.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Locations.php", "text", false);
+
+
+$load("Sphp.Db.Objects.Session.php");
 //$load("Sphp.Net.Password.php");
 
 //CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");

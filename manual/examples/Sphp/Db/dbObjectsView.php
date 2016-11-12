@@ -6,7 +6,7 @@ use Sphp\Db\Objects\User as User;
 use Sphp\Db\Objects\Address as Address;
 use Sphp\Net\Password as Password;
 
-require_once 'User.php';
+//require_once 'User.php';
 
 $userView = new Users();
 try {
@@ -16,7 +16,7 @@ try {
 }
 if ($userView->contains($john)) {
 	echo "\njohndoe exists";
-	$john = $userView->find([User::USERNAME => "johndoe"])[0];
+	$john = $userView->find(['username' => 'johndoe'])[0];
 	echo "\nDelete johndoe: ";
 	var_dump($john->remove());
 	//var_dump($userView->delete($user));

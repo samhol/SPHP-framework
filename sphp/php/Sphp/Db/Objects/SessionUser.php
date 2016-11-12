@@ -20,9 +20,9 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity
- * @Table(name="users")
+ * @Table(name="session_users")
  */
-class LoginUser extends AbstractDbObject implements UserInterface {
+class SessionUser extends AbstractDbObject implements UserInterface {
 
   /**
    * primary database key

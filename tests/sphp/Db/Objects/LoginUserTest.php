@@ -36,15 +36,15 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @return array
    */
   public function users() {
-    $u[] = [(new LoginUser())
+    $u[] = [(new SessionUser())
                 ->setUsername("samhol")
                 ->setEmail("sami.holck@gmail.com")
                 ->setPassword("pw1")];
-    $u[] = [(new LoginUser())
+    $u[] = [(new SessionUser())
                 ->setUsername("johndoe")
                 ->setEmail("john.doe@gmail.com")
                 ->setPassword("pw1")];
-    $u[] = [(new LoginUser())
+    $u[] = [(new SessionUser())
                 ->setUsername("ab")
                 ->setEmail("a.b@c.com")
                 ->setPassword("pw2")];
@@ -63,7 +63,7 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider users
    */
-  public function testIsManagedBy(LoginUser $u) {
+  public function testIsManagedBy(SessionUser $u) {
     $this->assertTrue(!$u->isManagedBy($this->em));
     //$this->assertTrue(!$u->setEmail('')->existsIn($this->em));
   }
@@ -71,7 +71,7 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider users
    */
-  public function testInsert(LoginUser $u) {
+  public function testInsert(SessionUser $u) {
     //$u->insertInto($this->em);
     if (!$this->em->contains($u)) {
       $this->em->persist($u);
@@ -85,8 +85,8 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @depends testInsert
    * @dataProvider users
    */
-  public function atestDelete(LoginUser $user) {
-    $managedUser = $this->em->getRepository(LoginUser::class)->findOneBy(array('email' => $user->getEmail()));
+  public function atestDelete(SessionUser $user) {
+    $managedUser = $this->em->getRepository(SessionUser::class)->findOneBy(array('email' => $user->getEmail()));
     $this->em->remove($managedUser);
     $this->em->flush();
     //$this->assertTrue($u->deleteFrom($this->em));
