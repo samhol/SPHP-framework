@@ -5,6 +5,7 @@ namespace Sphp\Db\Objects;
 use Sphp\Core\Configuration;
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Net\Password;
+use Exception;
 
 class LoginUserTest extends \PHPUnit_Framework_TestCase {
 
@@ -13,6 +14,11 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @var EntityManagerInterface
    */
   protected $em;
+  /**
+   *
+   * @var SessionUsers 
+   */
+  protected $storage;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
@@ -21,6 +27,7 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   protected function setUp() {
     $this->em = Configuration::useDomain("manual")
             ->get(EntityManagerInterface::class);
+    $this->storage = new SessionUsers($this->em);//$this->once();
   }
 
   /**
@@ -72,11 +79,20 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider users
    */
   public function testInsert(SessionUser $u) {
-    //$u->insertInto($this->em);
-    if (!$this->em->contains($u)) {
+    if ($u->existsIn($this->em)) {
+      $u->deleteFrom($this->em);
+    }
+      
+    try {
+      $u->insertInto($this->em);
+    } catch (Exception $ex) {
+      $stored = $this->storage->findByUsername($u->getUsername());
+      $this->assertTrue($stored->equals($u));
+    }
+    /*if (!$this->em->contains($u)) {
       $this->em->persist($u);
       $this->em->flush();
-    }
+    }*/
     $this->assertTrue($this->em->contains($u));
     // $this->assertTrue($u->insertInto($this->em));
   }

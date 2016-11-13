@@ -25,7 +25,7 @@ class SessionUsers extends AbstractObjectStorage {
    * @param EntityManagerInterface $em
    */
   public function __construct(EntityManagerInterface $em = null) {
-    parent::__construct(SessionUsers::class, $em);
+    parent::__construct(SessionUser::class, $em);
   }
 
   /**
@@ -106,38 +106,6 @@ class SessionUsers extends AbstractObjectStorage {
   }
 
   /**
-   * Returns unique username from given first- and lastname.
-   *
-   * **Notes:**
-   *
-   * - tries to take first 3 letters from first- and lastname to the returned username
-   * - adds an ordinal to the end of username to ensure uniqueness in current database.
-   *
-   * @param  string $fname user's firstname
-   * @param  string $lname user's lastname
-   * @param  int $dbID user's database id
-   * @return string unique username
-   */
-  public function generateValidUsername($fname, $lname, $dbID = -1) {
-    $patterns = ["/(å|ä)/i", "/ö/i", "/é/i", "/(û|ü)/i", "/[^a-zA-Z]/"];
-    $replacements = ['a', 'o', 'e', 'u', ""];
-    $s1 = preg_replace($patterns, $replacements, $fname);
-    $s2 = preg_replace($patterns, $replacements, $lname);
-    //$fname = preg_replace("/[^a-zA-Z]/", "", $fname);
-    //$lname = preg_replace("/[^a-zA-Z]/", "", $lname);
-    $username = strtolower(substr($s1, 0, 3) . substr($s2, 0, 3));
-    $user = $this->findByUsername($username);
-    $i = 1;
-    $_username = empty($username) ? "user" : $username;
-    while (isset($user) && $user->getPrimaryKey() != $dbID) {
-      $_username = $username . $i++;
-      $user = $this->findByUsername($_username);
-    }
-    $username = $_username;
-    return $username;
-  }
-
-  /**
    * Confirms the username password combination.
    *
    * @param  string $user the user's username
@@ -148,25 +116,6 @@ class SessionUsers extends AbstractObjectStorage {
     $pwHash = $this->db()->select()->columns(User::PASSWORD)
             ->where(Condition::equals(User::USERNAME, $user));
     return Password::checkPassword($pwHash, $password);
-  }
-
-  /**
-   * Changes users password.
-   *
-   * @param  User $user the user
-   * @param  Password $password new password
-   * @return boolean true if the user's password is changed, false otherwise
-   */
-  public function changePassword(User $user, Password $password) {
-    /* SQL: käyttäjän päivitys */
-    $query = sprintf("UPDATE UserTable SET password = %s WHERE dbID = %s", MySQLgen::filterData($password), MySQLgen::filterData($user->getPrimaryKey()));
-    /* Kannan päivitys onnistui */
-    if ($this->executeQuery("START TRANSACTION") && $this->executeQuery($query) && $this->executeQuery("COMMIT")) {
-      return true;
-    } else {/* Kannan päivitys peruuntui */
-      $this->executeQuery("ROLLBACK");
-      return false;
-    }
   }
 
 }

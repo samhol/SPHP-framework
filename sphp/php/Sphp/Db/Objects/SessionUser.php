@@ -13,7 +13,7 @@ use Sphp\Net\HashedPassword;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class Models a system user
+ * Implements a system user
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2007-04-10
@@ -148,7 +148,10 @@ class SessionUser extends AbstractDbObject implements UserInterface {
 
   public function existsIn(EntityManagerInterface $em) {
     $isManaged = $this->isManagedBy($em);
-    if (!$isManaged) {
+    if (!$isManaged) { 
+      //$repo = $em->getRepository(self::class);
+      //$repo->findOneBy($this->toArray());
+      
       $query = $em->createQuery('SELECT COUNT(u.id) FROM ' . self::class . " u WHERE u.username = :username OR u.email != :email");
       $query->setParameter("username", $this->username);
       $query->setParameter("email", $this->email);
