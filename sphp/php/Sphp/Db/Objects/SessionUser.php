@@ -10,6 +10,7 @@ namespace Sphp\Db\Objects;
 use Sphp\Net\Password;
 use Sphp\Net\PasswordInterface;
 use Sphp\Net\HashedPassword;
+use Sphp\Core\Types\BitMask;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -54,17 +55,15 @@ class SessionUser extends AbstractDbObject implements UserInterface {
    * password
    *
    * @var HashedPassword 
-   * @Embedded(class = "Sphp\Net\HashedPassword")
+   * @Embedded(class = "Sphp\Net\HashedPassword", columnPrefix = "password_")
    */
   private $password;
 
   /**
-   * permissions
-   *
-   * @var int 
-   * @Column(type="integer", length=6, nullable=false)
+   * @var Bitmask
+   * @Embedded(class = "Sphp\Core\Types\Bitmask", columnPrefix = "permission_") 
    */
-  private $permissions = 0;
+  private $permissions;
 
   public function __construct($data = []) {
     parent::__construct($data);
@@ -93,7 +92,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPermissions($permissions = 0) {
-    $this->permissions = (int) $permissions;
+    $this->permissions = new BitMask($permissions);
     return $this;
   }
 
@@ -116,14 +115,14 @@ class SessionUser extends AbstractDbObject implements UserInterface {
         'id' => \FILTER_VALIDATE_INT,
         'username' => \FILTER_SANITIZE_STRING,
         'email' => \FILTER_SANITIZE_STRING,
-        'permissions' => \FILTER_SANITIZE_NUMBER_INT,
+        'permissions_mask' => \FILTER_SANITIZE_NUMBER_INT,
         'password' => \FILTER_SANITIZE_STRING
     ];
     $myinputs = filter_var_array($data, $args, true);
     $this->setPrimaryKey($myinputs['id'])
             ->setUsername($myinputs['username'])
             ->setEmail($myinputs['email'])
-            ->setPermissions($myinputs['permissions'])
+            ->setPermissions($myinputs['permissions_mask'])
             ->setPassword($myinputs['password']);
     return $this;
   }
@@ -147,17 +146,20 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   }
 
   public function existsIn(EntityManagerInterface $em) {
+
     $isManaged = $this->isManagedBy($em);
-    if (!$isManaged) { 
+    if (!$isManaged) {
       //$repo = $em->getRepository(self::class);
       //$repo->findOneBy($this->toArray());
-      
-      $query = $em->createQuery('SELECT COUNT(u.id) FROM ' . self::class . " u WHERE u.username = :username OR u.email != :email");
+
+      $query = $em->createQuery('SELECT COUNT(u.id) FROM ' . self::class . " u WHERE u.username = :username AND u.email = :email");
       $query->setParameter("username", $this->username);
       $query->setParameter("email", $this->email);
       $count = $query->getSingleScalarResult();
       $isManaged = $count != 0;
     }
+    echo "existsIn:\n";
+    var_dump($isManaged);
     return $isManaged;
   }
 
@@ -201,9 +203,9 @@ class SessionUser extends AbstractDbObject implements UserInterface {
     return [
         'id' => $this->getPrimaryKey(),
         'username' => $this->getUsername(),
-        'username' => $this->getEmail(),
-        'passwordHash' => $this->getPassword()->getHash(),
-        'username' => $this->getPermissions()
+        'email' => $this->getEmail(),
+        'password_hash' => $this->getPassword()->getHash(),
+        'permissions_mask' => $this->getPermissions()
     ];
   }
 

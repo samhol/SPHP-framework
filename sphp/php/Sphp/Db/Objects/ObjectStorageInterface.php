@@ -69,7 +69,7 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * @param  mixed $id
    * @return boolean
    */
-  public function exists($id);
+  public function exists(DbObjectInterface $id);
 
   /**
    * 

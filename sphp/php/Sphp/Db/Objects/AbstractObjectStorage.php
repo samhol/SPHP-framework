@@ -47,7 +47,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   public function __construct($objectType, EntityManagerInterface $em) {
     $this->type = $objectType;
     $this->em = $em;
-    $this->repository = $this->getManager()->getRepository($this->type);
+    $this->repository = $this->em->getRepository($this->type);
   }
 
   /**
@@ -64,7 +64,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @return ObjectManager
    */
   public function getRepository() {
-    return $this->repository;
+    return $this->em->getRepository($this->type);;
   }
 
   public function getObjectType() {
@@ -87,13 +87,6 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return $this->getRepository()->find($id);
   }
 
-  public function exists($id) {
-    $query = $this->getManager()
-            ->createQuery('SELECT COUNT(obj.id) FROM ' . $this->getObjectType() . " obj WHERE obj.id = :id");
-    $query->setParameter('id', $id);
-    return $query->getSingleScalarResult() == 1;
-  }
-
   public function count() {
     $query = $this->em->createQuery("SELECT COUNT(t.id) FROM $this->type t");
     $count = $query->getSingleScalarResult();
@@ -106,6 +99,14 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
 
   public function delete(DbObjectInterface $object) {
     return $object->deleteFrom($this->em);
+  }
+
+  public function clear() {
+    foreach($this->getRepository()->findAll() as $obj) {
+      $this->em->remove($obj);
+    }
+    $this->em->flush();
+    return $this;
   }
 
   public function contains(DbObjectInterface $object) {

@@ -1,20 +1,23 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * UserInterface.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Db\Objects;
 
 use Sphp\Net\Password;
 use Sphp\Net\HashedPassword;
+use Sphp\Core\Types\BitMask;
 
 /**
- * Description of UserInterface
+ * Defines properties for a user
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-04-10
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 interface UserInterface extends DbObjectInterface {
 
@@ -61,7 +64,7 @@ interface UserInterface extends DbObjectInterface {
    * @param  null|scalar|BitMask $permissions the permissions of the user
    * @return self for PHP Method Chaining
    */
-  public function setPermissions($permissions = 0);
+  public function setPermissions($permissions);
 
   /**
    * Returns the hashed password of the user

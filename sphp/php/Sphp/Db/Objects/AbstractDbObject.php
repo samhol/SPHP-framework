@@ -39,8 +39,13 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
 
   public function insertAsNewInto(EntityManagerInterface $em) {
     if (!$this->existsIn($em)) {
+      
+    }
+    try {
       $em->persist($this);
       $em->flush();
+    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+      // ....
     }
     return $this->isManagedBy($em);
   }

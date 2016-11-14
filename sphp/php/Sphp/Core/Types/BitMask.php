@@ -30,7 +30,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @var int
    * @Column(type = "integer")
    */
-  private $value = 0;
+  private $mask = 0;
 
   /**
    * Constructs a new instance of the {@link self} object
@@ -40,7 +40,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @param int|string|BitMask $bits the flags
    */
   public function __construct($bits = 0) {
-    $this->value = self::parseFlagsToInt($bits);
+    $this->mask = self::parseFlagsToInt($bits);
   }
 
   /**
@@ -52,7 +52,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return self for PHP Method Chaining
    */
   public function and_($bitmask) {
-    $this->value = $this->value & self::parseFlagsToInt($bitmask);
+    $this->mask = $this->mask & self::parseFlagsToInt($bitmask);
     return $this;
   }
 
@@ -65,7 +65,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return self for PHP Method Chaining
    */
   public function or_($bitmask) {
-    $this->value = $this->value | self::parseFlagsToInt($bitmask);
+    $this->mask = $this->mask | self::parseFlagsToInt($bitmask);
     return $this;
   }
 
@@ -78,7 +78,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return self for PHP Method Chaining
    */
   public function xor_($bitmask) {
-    $this->value = $this->value ^ self::parseFlagsToInt($bitmask);
+    $this->mask = $this->mask ^ self::parseFlagsToInt($bitmask);
     return $this;
   }
 
@@ -92,9 +92,9 @@ class BitMask implements ScalarObjectInterface, Arrayable {
   public function set($index, $bit = true) {
     $value = intval(boolval($bit));
     if ($value === 0) {
-      $this->value &= ~(1 << $index);
+      $this->mask &= ~(1 << $index);
     } else {
-      $this->value |= (1 << $index);
+      $this->mask |= (1 << $index);
     }
     return $this;
   }
@@ -106,7 +106,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return int $bit the bit value to set
    */
   public function get($index) {
-    return $this->value & (1 << $index);
+    return $this->mask & (1 << $index);
   }
 
   /**
@@ -118,7 +118,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return self for PHP Method Chaining
    */
   public function clear($bits) {
-    $this->value &= ~self::parseFlagsToInt($bits);
+    $this->mask &= ~self::parseFlagsToInt($bits);
     return $this;
   }
 
@@ -128,7 +128,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return self for PHP Method Chaining
    */
   public function invert() {
-    $this->value = ~$this->value;
+    $this->mask = ~$this->mask;
     return $this;
   }
 
@@ -144,7 +144,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
     $parsedFlags = self::parseFlagsToInt($bitmask);
     //echo "\np=".$p."=".base_convert($p, 10, 2);
     //echo "\nthis->permissions=".$this->permissions."=".base_convert($this->permissions, 10, 2)."\n";
-    return ($this->value & $parsedFlags) == $parsedFlags;
+    return ($this->mask & $parsedFlags) == $parsedFlags;
   }
 
   /**
@@ -153,7 +153,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return int the current bitmask value as an integer
    */
   public function toInt() {
-    return $this->value;
+    return $this->mask;
   }
 
   /**
@@ -162,7 +162,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return string the hexadecimal representation of the
    */
   public function toOct() {
-    return decoct($this->value);
+    return decoct($this->mask);
   }
 
   /**
@@ -171,7 +171,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return string the hexadecimal representation of the
    */
   public function toHex() {
-    return dechex($this->value);
+    return dechex($this->mask);
   }
 
   /**
@@ -180,15 +180,15 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @return string the object as a string
    */
   public function __toString() {
-    return decbin($this->value);
+    return decbin($this->mask);
   }
 
   public function toArray() {
-    return static::toBitArray($this->value);
+    return static::toBitArray($this->mask);
   }
   
   public function toScalar() {
-    return $this->value;
+    return $this->mask;
   }
 
   /**

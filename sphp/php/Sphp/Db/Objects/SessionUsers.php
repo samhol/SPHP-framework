@@ -28,6 +28,16 @@ class SessionUsers extends AbstractObjectStorage {
     parent::__construct(SessionUser::class, $em);
   }
 
+  public function exists(DbObjectInterface $id) {
+    if ($id instanceof SessionUser) {
+      $username = $id->getUsername();
+    }
+    $query = $this->getManager()
+            ->createQuery('SELECT COUNT(obj.id) FROM ' . $this->getObjectType() . " obj WHERE obj.username = :username");
+    $query->setParameter('username', $username);
+    return $query->getSingleScalarResult() == 1;
+  }
+
   /**
    * 
    *
@@ -35,6 +45,9 @@ class SessionUsers extends AbstractObjectStorage {
    * @return User|null  the user or null if nothing was found
    */
   public function findByUsername($username) {
+    if ($username instanceof UserInterface) {
+      $username = $username->getUsername();
+    }
     return $this->getRepository()->findOneBy(['username' => $username]);
   }
 
@@ -45,14 +58,14 @@ class SessionUsers extends AbstractObjectStorage {
    * @return User|null  the user or null if nothing was found
    */
   public function findByEmail($email) {
+    if ($email instanceof UserInterface) {
+      $email = $email->getEmail();
+    }
     return $this->getRepository()->findOneBy(['email' => $email]);
   }
 
   public function contains(DbObjectInterface $object) {
-    if (!$this->getManager()->contains($object) && $object instanceof User) {
-      $this->getManager()->getRepository($this->getObjectType())->findAll();
-    }
-    return $this->getManager()->contains($object);
+    return $object->existsIn($this->getManager());
   }
 
   /**

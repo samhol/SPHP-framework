@@ -31,7 +31,7 @@ class Person extends AbstractDbObject {
    * @GeneratedValue
    */
   private $id;
-  
+
   /**
    *
    * @var SessionUser 
@@ -70,7 +70,6 @@ class Person extends AbstractDbObject {
   public function __construct($data = []) {
     parent::__construct($data);
   }
-
 
   /**
    * Returns the first name
@@ -189,7 +188,6 @@ class Person extends AbstractDbObject {
     $this->address = $address;
     return $this;
   }
-
 
   public function fromArray(array $data = []) {
     $args = [
