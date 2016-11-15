@@ -9,7 +9,10 @@ foreach ($locations as $address) {
   echo "\tlocation: {$address->getName()}\n";
 }
 echo "All stored locations in Finland:\n";
-/**foreach ($locations->findAllByCountry("Finland") as $address) {
-  echo "\taddress: $address\n";
-}*/
+foreach ($locations->findByProperty('address.city', 'Turku') as $finnishLocation) {
+  echo "\taddress: $finnishLocation\n";
+}
+foreach ($locations->findAllByCountry('Finland') as $finnishLocation) {
+  echo "\taddress: $finnishLocation\n";
+}
 ?>

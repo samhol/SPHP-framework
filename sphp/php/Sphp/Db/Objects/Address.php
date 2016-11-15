@@ -17,7 +17,7 @@ use Sphp\Objects\AbstractArrayableObject;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Embeddable
- */
+ */ 
 class Address extends AbstractArrayableObject implements GeographicalAddressInterface {
 
   use \Sphp\Objects\EqualsTrait;

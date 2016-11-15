@@ -41,13 +41,28 @@ class Locations extends AbstractObjectStorage {
   }
 
   /**
+   * Tries to get a location by its unique name
+   *
+   * @param  string $name the name of the searched location
+   * @return Location|null  the location or null if nothing was found
+   */
+  public function removeByName($name) {
+    $obj = $this->findByName($name);
+    if ($obj !== null) {
+      $this->getManager()->remove($obj);
+      $this->getManager()->flush();
+    }
+    return $this;
+  }
+
+  /**
    * Finds all managed location objects that have the same country name
    * 
    * @param  string $country the name of the country
    * @return Location[] all managed objects that have the same country name
    */
   public function findAllByCountry($country) {
-    return $this->findByProperty("country", $country);
+    return $this->findByProperty('address.country', $country);
   }
 
   /**
@@ -56,16 +71,15 @@ class Locations extends AbstractObjectStorage {
    * @param  Location|string $needle the location instance or the location name string
    * @return boolean true, if location name is unique, false otherwise.
    */
-  public function uniqueName($needle) {
-    $result = false;
+  public function nameNotUsed($needle) {
     if ($needle instanceof Location) {
-      $result = $needle->usernameTaken($this->getManager());
-    } else {
-      $query = $this->getManager()
-              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
-      $query->setParameter('name', $needle);
-      $result = $query->getSingleScalarResult() == 0;
+      $result = $needle->getName();
     }
+    $query = $this->getManager()
+            ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
+    $query->setParameter('name', $needle);
+    $result = $query->getSingleScalarResult() == 0;
+
     return $result;
   }
 
@@ -86,6 +100,16 @@ class Locations extends AbstractObjectStorage {
       $result = $query->getSingleScalarResult() == 0;
     }
     return $result;
+  }
+
+  public function exists(DbObjectInterface $id) {
+    if ($id instanceof Location) {
+      $username = $id->getName();
+    }
+    $query = $this->getManager()
+            ->createQuery('SELECT COUNT(obj.id) FROM ' . $this->getObjectType() . " obj WHERE obj.name = :name");
+    $query->setParameter('name', $username);
+    return $query->getSingleScalarResult() == 1;
   }
 
 }

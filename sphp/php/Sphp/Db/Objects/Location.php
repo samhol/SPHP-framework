@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity
- * @Table(name="locations")
+ * @Table(name="locations",uniqueConstraints={@UniqueConstraint(name="unique_name", columns={"name"})})
  */
 class Location extends AbstractDbObject implements GeographicalAddressInterface {
 

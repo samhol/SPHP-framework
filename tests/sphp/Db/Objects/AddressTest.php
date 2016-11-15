@@ -28,10 +28,25 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
   /**
    */
   public function testEquals() {
-    $home = new Address(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
-    $this->assertTrue($home->equals($home));
+    $data = ['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
+    $home = new Address($data);
+    $this->assertTrue($home->equals((new Address())->fromArray($data)));
     $this->assertFalse($home->equals(new Address()));
     $this->assertFalse($home->equals(null));
+  }
+
+  /**
+   */
+  public function testSettingAndGetting() {
+    $home = new Address();
+    $home->setStreet('Rakuunatie 59 A 3');
+    $this->assertSame($home->getStreet(), 'Rakuunatie 59 A 3');
+    $home->setCity('Turku');
+    $this->assertSame($home->getCity(), 'Turku');
+    $home->setZipcode('20720');
+    $this->assertSame($home->getZipcode(), '20720');
+    $home->setCountry('Finland');
+    $this->assertSame($home->getCountry(), 'Finland');
   }
 
 }

@@ -64,7 +64,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @return ObjectManager
    */
   public function getRepository() {
-    return $this->em->getRepository($this->type);;
+    return $this->em->getRepository($this->type);
   }
 
   public function getObjectType() {

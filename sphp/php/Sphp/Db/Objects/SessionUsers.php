@@ -69,18 +69,6 @@ class SessionUsers extends AbstractObjectStorage {
   }
 
   /**
-   * Returns sessio-id:tä vastaavan käyttäjän.
-   *
-   * @param  string $sid session id
-   * @return User|null the user or null if nothing was found
-   */
-  public function getByUsingSessionID($sid) {
-    $sessionsTable = new Select($this->getPDO());
-    $sessionsTable->columns("userID")->from("Sessions")->where(Condition::equals("sid", $sid));
-    return $this->getFirst(Condition::isIn(self::DBID, $sessionsTable));
-  }
-
-  /**
    * Confirms the uniqueness of the users's username in the repository
    *
    * @param  User|string $needle the user instance or the username string

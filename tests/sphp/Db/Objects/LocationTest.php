@@ -34,6 +34,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
    * @var EntityManagerInterface
    */
   protected $em;
+
   /**
    *
    * @var Locations 
@@ -59,6 +60,21 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
+   */
+  public function testSettingAndGetting() {
+    $home = new Location();
+    $home->setName('Home');
+    $this->assertSame($home->getName(), 'Home');
+    $home->setStreet('Rakuunatie 59 A 3');
+    $this->assertSame($home->getStreet(), 'Rakuunatie 59 A 3');
+    $home->setCity('Turku');
+    $this->assertSame($home->getCity(), 'Turku');
+    $home->setZipcode('20720');
+    $this->assertSame($home->getZipcode(), '20720');
+    $home->setCountry('Finland');
+    $this->assertSame($home->getCountry(), 'Finland');
+  }
+  /**
    * 
    * @return Address
    * @dataProvider userArrs
@@ -78,6 +94,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals($u->getLname(), $data["lname"]);
     $this->assertEquals($u->getAddress(), $a);
   }
+
   /**
    * 
    */
@@ -86,12 +103,19 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     //var_dump($l);
     echo "ID:";
     var_dump($l->getPrimaryKey());
-   $this->assertTrue($l instanceof Location);
-   $this->assertTrue($this->locations->delete($l));
-   $this->locations->uniqueName("home");
-   // $this->assertfalse($u->insertAsNewInto($this->em)); 
+    $this->assertTrue($l instanceof Location);
+    $this->assertTrue($this->locations->delete($l));
+    $this->locations->nameNotUsed("home");
+    // $this->assertfalse($u->insertAsNewInto($this->em)); 
   }
 
+  /**
+   * @depends testDelete
+   */
+  public function testFind() {
+    $finnishLocations = $this->locations->findAllByCountry('Finland');
+    print_r($finnishLocations);
+  }
 
   /**
    * @depends testDelete
@@ -100,6 +124,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     $obj = new Location(['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
     $obj->insertAsNewInto($this->em);
   }
+
   /**
    * @depends testInsert
    */
@@ -110,18 +135,41 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     echo "ID:";
     var_dump($l->getPrimaryKey());
     $this->locations->getManager()->flush();
-   $this->assertTrue($this->locations->exists($l->getPrimaryKey()));
-   // $this->assertfalse($u->insertAsNewInto($this->em)); 
+    $this->assertTrue($this->locations->exists($l));
+    // $this->assertfalse($u->insertAsNewInto($this->em)); 
   }
 
   /**
-   */ 
+   */
   public function testEquals() {
     $home = new Location(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
     $this->assertTrue($home->equals($home));
     $this->assertFalse($home->equals(new Location()));
     $this->assertFalse($home->equals(new Address(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'])));
     $this->assertFalse($home->equals(null));
+  }
+
+  /**
+   */
+  public function testInsertDuplicate() {
+    $foo = new Location(['name' => 'foo', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
+    $this->locations->removeByName($foo);
+    $this->em->persist($foo);
+    $this->em->flush();
+    $this->assertTrue($this->em->contains($foo));
+    $foo1 = new Location(['name' => 'foo', 'street' => 'foo1', 'city' => 'foo1', 'zipcode' => 'foo1', 'country' => 'foo1']);
+    try {
+      $this->em->persist($foo1);
+      $this->assertTrue($this->em->contains($foo));
+      $this->em->flush();
+    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $ex) {
+      $this->assertFalse($this->locations->contains($foo1));
+      // $this->assertTrue($this->locations->contains($foo));
+      var_dump($ex->getMessage());
+      var_dump($foo->getPrimaryKey());
+      $this->assertTrue($foo->getPrimaryKey() > 0);
+      $this->assertTrue($this->em->contains($foo));
+    }
   }
 
 }

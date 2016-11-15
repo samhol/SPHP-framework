@@ -159,4 +159,8 @@ class Users extends AbstractObjectStorage {
     }
   }
 
+  public function exists(DbObjectInterface $id) {
+    
+  }
+
 }
