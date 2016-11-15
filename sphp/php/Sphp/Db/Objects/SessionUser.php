@@ -1,7 +1,7 @@
 <?php
 
 /**
- * LoginUser.php (UTF-8)
+ * SessionUser.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
