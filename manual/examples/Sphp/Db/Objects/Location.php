@@ -22,7 +22,7 @@ $locationData[] = [
 ];
 
 
-$locations = new Locations($em);
+$locations = new LocationStorage($em);
 try {
   $hydepark->insertAsNewInto($em);
 } catch (\Exception $ex) {

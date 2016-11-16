@@ -37,7 +37,7 @@ MD
 
 $objectStorageInterface = $api->classLinker(ObjectStorageInterface::class);
 $iterable = $php->classLinker(\IteratorAggregate::class);
-$addresses = $api->classLinker(Locations::class);
+$addresses = $api->classLinker(LocationStorage::class);
 $users = $api->classLinker(Users::class);
 echo $parsedown->text(<<<MD
 ##The $objectStorageInterface

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * UserTable.php (UTF-8)
+ * LocationStorage.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Locations extends AbstractObjectStorage {
+class LocationStorage extends AbstractObjectStorage {
 
   /**
    * Constructor
@@ -80,25 +80,6 @@ class Locations extends AbstractObjectStorage {
     $query->setParameter('name', $needle);
     $result = $query->getSingleScalarResult() == 0;
 
-    return $result;
-  }
-
-  /**
-   * Confirms the uniqueness of the location name in the repository
-   *
-   * @param  Location|string $needle the location instance or the location name string
-   * @return boolean true, if location name is unique, false otherwise.
-   */
-  public function findLocation($needle) {
-    $result = false;
-    if ($needle instanceof Location) {
-      $result = $needle->usernameTaken($this->getManager());
-    } else {
-      $query = $this->getManager()
-              ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
-      $query->setParameter('name', $needle);
-      $result = $query->getSingleScalarResult() == 0;
-    }
     return $result;
   }
 

@@ -82,6 +82,9 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   public function findBy(array $props) {
     return $this->getRepository()->findBy($props);
   }
+  public function findAll() {
+    return $this->getRepository()->findAll();
+  }
 
   public function getIterator() {
     return new ArrayIterator($this->getRepository()->findAll());
@@ -98,7 +101,15 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   public function save(DbObjectInterface $object) {
-    return $object->insertAsNewInto($this->em);
+    if (!$this->contains($object)) {
+      $this->em->persist($object);
+    }
+    $this->em->flush();
+    return true;
+  }
+
+  public function merge(DbObjectInterface $object) {
+    return $this->em->merge($object);
   }
 
   public function delete(DbObjectInterface $object) {

@@ -78,6 +78,14 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
   public function save(DbObjectInterface $object);
 
   /**
+   * Merges an entity to the repository
+   * 
+   * @param  DbObjectInterface $object
+   * @return DbObjectInterface the merged object
+   */
+  public function merge(DbObjectInterface $object);
+
+  /**
    * 
    * @param  DbObjectInterface $object
    * @return boolean

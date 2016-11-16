@@ -3,7 +3,7 @@
 namespace Sphp\Db\Objects;
 
 $em = include 'entityManager.php';
-$locations = new Locations($em);
+$locations = new LocationStorage($em);
 echo "All locations:\n";
 foreach ($locations as $address) {
   echo "\tlocation: {$address->getName()}\n";

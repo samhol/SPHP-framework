@@ -10,17 +10,11 @@ namespace Sphp\Db;
 use InvalidArgumentException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Common\EventManager;
-use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\Configuration;
-use Doctrine\ORM\Query\ResultSetMapping;
-use Doctrine\ORM\Proxy\ProxyFactory;
-use Doctrine\ORM\Query\FilterCollection;
-use Doctrine\Common\Util\ClassUtils;
 use Doctrine\ORM\EntityManager;
 
 /**
- * Obtains a singelton {@link Database} instance for the given database connection
+ * A factory for creating {@link EntityManager} instances
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @update 2011-03-08
@@ -29,6 +23,10 @@ use Doctrine\ORM\EntityManager;
  */
 class EntityManagerFactory {
 
+  /**
+   *
+   * @var mixed[] 
+   */
   private static $params = [];
 
   /**
@@ -45,7 +43,7 @@ class EntityManagerFactory {
   }
 
   /**
-   * Factory method to create EntityManager instances.
+   * Parameter setter for named {@link EntityManager} instances
    *
    * @param  string $name the name of the parameter set provided for the entity managers
    * @param  mixed $conn An array with the connection parameters or an existing Connection instance.

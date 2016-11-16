@@ -6,24 +6,21 @@ use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
 require_once 'AddressChainedSettingAndGettingTestTrait.php';
 
-class LocationTest extends \PHPUnit_Framework_TestCase {
-
-  use AddressChainedSettingAndGettingTestTrait;
+class LocationStorageTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @return array
    */
-  public function addrs() {
-    $data[] = [];
-    $data[] = ['name' => 'home'];
-    $data[] = ['name' => 'home', 'street' => 'Rakuunatie 59 A 3'];
-    $data[] = ['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku'];
-    $data[] = ['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720'];
+  public function locations() {
+    $data[] = ['name' => 'a', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
+    $data[] = ['name' => 'b', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
+    $data[] = ['name' => 'c', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
+    $data[] = ['name' => 'foo', 'street' => 'foo 3', 'city' => 'foo', 'zipcode' => '000', 'country' => 'fooland'];
     $data[] = ['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
     $addresses = [];
     foreach ($data as $addrData) {
       $obj = new Location($addrData);
-      $addresses[] = [$obj];
+      $addresses[] = $obj;
     }
     return $addresses;
   }
@@ -58,62 +55,43 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
+   * @depends testDelete
    */
-  public function testSettingAndGetting() {
-    $home = new Location();
-    $home->setName('Home');
-    $this->assertSame($home->getName(), 'Home');
-    $home->setStreet('Rakuunatie 59 A 3');
-    $this->assertSame($home->getStreet(), 'Rakuunatie 59 A 3');
-    $home->setCity('Turku');
-    $this->assertSame($home->getCity(), 'Turku');
-    $home->setZipcode('20720');
-    $this->assertSame($home->getZipcode(), '20720');
-    $home->setCountry('Finland');
-    $this->assertSame($home->getCountry(), 'Finland');
-  }
-
-  /**
-   * 
-   * @return Address
-   * @dataProvider userArrs
-   */
-  public function addressProvider(array $data) {
-    return new Address($data);
-  }
-
-  /**
-   * 
-   */
-  public function testMerge() {  
-    $foo = new Location(['name' => 'foo', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
-   var_dump( $this->locations->nameNotUsed('foo'));
-    $this->assertFalse($this->locations->nameNotUsed('foo'));
-    $this->assertTrue($this->locations->nameNotUsed('foobar'));
-    $mergedFoo = $this->em->merge($foo);
-    $this->assertTrue($mergedFoo->equals($foo));
+  public function insertLocations() {
+    foreach ($this->locations() as $location) {
+      try {
+        $this->em->persist($location);
+        $this->em->flush();
+      } catch (\Exception $ex) {
+        echo $location->getName() . " allready exists\n";
+      }
+    }
+    $this->em->clear();
   }
 
   /**
    * 
    */
   public function testDelete() {
-    $l = $this->locations->findByName("home");
-    //var_dump($l);
-    echo "ID:";
-    var_dump($l->getPrimaryKey());
-    $this->assertTrue($l instanceof Location);
-    $this->assertTrue($this->locations->delete($l));
-    $this->locations->nameNotUsed("home");
-    // $this->assertfalse($u->insertAsNewInto($this->em)); 
+    $this->insertLocations();
+    $locations = $this->locations->findAll();
+    foreach ($locations as $location) {
+      $this->assertTrue($location instanceof Location);
+      $this->locations->delete($location);
+    }
   }
 
   /**
    * @depends testDelete
    */
   public function testFind() {
-    $finnishLocations = $this->locations->findAllByCountry('Finland');
-    print_r($finnishLocations);
+    $this->insertLocations();
+    foreach($this->locations() as $location) {
+      echo $this->locations->findByName($location->getName());
+      
+    }
+    //$finnishLocations = $this->locations->findAllByCountry('Finland');
+    //print_r($finnishLocations);
   }
 
   /**
@@ -140,20 +118,10 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
 
   /**
    */
-  public function testEquals() {
-    $home = new Location(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
-    $this->assertTrue($home->equals($home));
-    $this->assertFalse($home->equals(new Location()));
-    $this->assertFalse($home->equals(new Address(['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'])));
-    $this->assertFalse($home->equals(null));
-  }
-
-  /**
-   */
   public function testInsertDuplicate() {
     $foo = new Location(['name' => 'foo', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
     $this->locations->removeByName($foo);
-    
+
     $this->em->persist($foo);
     $this->em->flush();
     $this->assertTrue($this->em->contains($foo));
