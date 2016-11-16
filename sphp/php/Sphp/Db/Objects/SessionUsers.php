@@ -109,14 +109,15 @@ class SessionUsers extends AbstractObjectStorage {
   /**
    * Confirms the username password combination.
    *
-   * @param  string $user the user's username
+   * @param  string $username the user's username
    * @param  string $password the user's password
-   * @return boolean true if confirmed, false otherwise
+   * @return SessionUser|null the matching user ot null if none found
    */
-  public function confirmUserPass($user, $password) {
-    $pwHash = $this->db()->select()->columns(User::PASSWORD)
-            ->where(Condition::equals(User::USERNAME, $user));
-    return Password::checkPassword($pwHash, $password);
+  public function findByUserPass($username, $password) {
+    if ($password instanceof \Sphp\Net\PasswordInterface) {
+      $password = $password->getHash();
+    }
+    return $this->getRepository()->findOneBy(['username' => $username, 'password' => $password]);
   }
 
 }
