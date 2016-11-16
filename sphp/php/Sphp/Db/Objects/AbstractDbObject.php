@@ -37,17 +37,15 @@ abstract class AbstractDbObject extends AbstractArrayableObject implements DbObj
     return $this->isManagedBy($em);
   }
 
+  /**
+   * 
+   * @param EntityManagerInterface $em
+   * @return $this;
+   */
   public function insertAsNewInto(EntityManagerInterface $em) {
-    if (!$this->existsIn($em)) {
-      
-    }
-    try {
-      $em->persist($this);
-      $em->flush();
-    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
-      // ....
-    }
-    return $this->isManagedBy($em);
+    $em->persist($this);
+    $em->flush();
+    return $this;
   }
 
   public function deleteFrom(EntityManagerInterface $em) {

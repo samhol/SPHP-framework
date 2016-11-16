@@ -2,10 +2,11 @@
 
 namespace Doctrine\ORM;
 
-
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Configuration;
 use Sphp\Core\Configuration as Conf;
+use Sphp\Db\EntityManagerFactory;
+
 $isDevMode = true;
 
 // the connection configuration
@@ -18,6 +19,7 @@ $dbParams = array(
     'dbname' => 'sphp',
     'driverOptions' => [1002 => 'SET NAMES utf8']
 );
+
 Conf::useDomain('manual')->set('dbParams', $dbParams);
 $applicationMode = 'development';
 if ($applicationMode == 'development') {
@@ -35,9 +37,14 @@ $config->setQueryCacheImpl($cache);
 $config->setProxyDir('sphp/doctrine/Proxies');
 $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
-Conf::useDomain('manual')->set(Configuration::class, $config);
-$entityManager = EntityManager::create($dbParams, $config);
+EntityManagerFactory::setDefaults($dbParams, $config);
+//Conf::useDomain('manual')->set(Configuration::class, $config);
+/*$createEnt = function () use ($dbParams, $config) {
+  return EntityManager::create($dbParams, $config);
+};*/
+//Conf::useDomain('test')->set(EntityManagerInterface::class, $createEnt);
+//$entityManager = EntityManager::create($dbParams, $config);
 //use Sphp\Core\Configuration;
 //use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
-Conf::useDomain('manual')->set(EntityManagerInterface::class, $entityManager);
+//Conf::useDomain('manual')->set(EntityManagerInterface::class, $entityManager);

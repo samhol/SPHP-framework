@@ -10,6 +10,7 @@ namespace Sphp\Db\Objects;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ArrayIterator;
+use Sphp\Db\EntityManagerFactory;
 
 /**
  *
@@ -44,8 +45,11 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @param string $objectType
    * @param EntityManagerInterface $em
    */
-  public function __construct($objectType, EntityManagerInterface $em) {
+  public function __construct($objectType, EntityManagerInterface $em = null) {
     $this->type = $objectType;
+    if ($em === null) {
+      $em = EntityManagerFactory::get();
+    }
     $this->em = $em;
     $this->repository = $this->em->getRepository($this->type);
   }

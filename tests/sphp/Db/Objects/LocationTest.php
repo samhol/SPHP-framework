@@ -46,9 +46,8 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->em = Configuration::useDomain("manual")
-            ->get(EntityManagerInterface::class);
-    $this->locations = new Locations($this->em);
+    $this->em = \Sphp\Db\EntityManagerFactory::get();
+    $this->locations = new Locations();
   }
 
   /**
