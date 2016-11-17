@@ -70,19 +70,19 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
    * @return ObjectManager
    */
   public function getRepository() {
-    return $this->em->getRepository($this->type);
+    return $this->repository;
   }
 
   public function getObjectType() {
     return $this->type;
   }
 
-  public function findByProperty($prop, $value) {
-    return $this->findBy([$prop => $value]);
+  public function findByProperty($prop, $value, array $orderBy = null, $limit = null, $offset = null) {
+    return $this->findBy([$prop => $value], $orderBy, $limit, $offset);
   }
 
-  public function findBy(array $props) {
-    return $this->getRepository()->findBy($props);
+  public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null) {
+    return $this->getRepository()->findBy($criteria, $orderBy, $limit, $offset);
   }
 
   public function findAll() {
@@ -93,7 +93,10 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return new ArrayIterator($this->getRepository()->findAll());
   }
 
-  public function get($id) {
+  public function getById($id) {
+    if ($id instanceof DbObjectInterface) {
+      $id = $id->getPrimaryKey();
+    }
     return $this->getRepository()->find($id);
   }
 
@@ -103,7 +106,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     return (int) $count;
   }
 
-  public function save(DbObjectInterface $object) {
+  public function insertAsNew(DbObjectInterface $object) {
     if (!$this->contains($object)) {
       $this->em->persist($object);
     }
@@ -112,7 +115,8 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   public function merge(DbObjectInterface $object) {
-    return $this->em->merge($object);
+    $obj = $this->em->merge($object);
+    return $obj;
   }
 
   public function delete(DbObjectInterface $object) {

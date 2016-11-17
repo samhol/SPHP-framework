@@ -71,7 +71,7 @@ class SessionUserTest extends \PHPUnit_Framework_TestCase {
   public function testClear(UserInterface $u) {
     $this->storage->clear();
     if (!$this->storage->contains($u)) {
-      $this->storage->save($u);
+      $this->storage->insertAsNew($u);
     }
     $this->assertTrue($this->storage->contains($u));
     var_dump($this->storage->count());

@@ -8,6 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Sphp\Data\Collection;
 
 /**
  * Implements a {@link Location} storage
@@ -62,8 +63,12 @@ class LocationStorage extends AbstractObjectStorage {
    * @param  string $country the name of the country
    * @return Location[] all managed objects that have the same country name
    */
-  public function findAllByCountry($country) {
-    return $this->findByProperty('address.country', $country);
+  public function findByCountry($country, array $orderBy = null, $limit = null, $offset = null) {
+    return $this->findBy(['address.country' => $country], $orderBy, $limit, $offset);
+  }
+
+  public function getIterator() {
+    return new Collection($this->getRepository()->findBy([], ['name' => 'ASC']));
   }
 
   /**

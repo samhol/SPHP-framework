@@ -29,24 +29,36 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
    */
   public function testEquals() {
     $data = ['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland'];
-    $home = new Address($data);
-    $this->assertTrue($home->equals((new Address())->fromArray($data)));
-    $this->assertFalse($home->equals(new Address()));
-    $this->assertFalse($home->equals(null));
+    $home1 = new Address($data);
+    $home2 = new Address($data);
+    $this->assertTrue($home1->equals((new Address())->fromArray($data)));
+    $this->assertTrue($home1->equals($home2));
+    $this->assertFalse($home1->equals(new Address()));
+    $this->assertFalse($home1->equals(null));
   }
 
   /**
+   * @return array
    */
-  public function testSettingAndGetting() {
-    $home = new Address();
-    $home->setStreet('Rakuunatie 59 A 3');
-    $this->assertSame($home->getStreet(), 'Rakuunatie 59 A 3');
-    $home->setCity('Turku');
-    $this->assertSame($home->getCity(), 'Turku');
-    $home->setZipcode('20720');
-    $this->assertSame($home->getZipcode(), '20720');
-    $home->setCountry('Finland');
-    $this->assertSame($home->getCountry(), 'Finland');
+  public function arrayData() {
+    $data[] = [[]];
+    $data[] = [['street' => 'Rakuunatie 59 A 3']];
+    $data[] = [['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku']];
+    $data[] = [['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720']];
+    $data[] = [['street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']];
+    return $data;
+  }
+
+  /**
+   * @dataProvider arrayData
+   * @param array $data
+   */
+  public function testToArray(array $data) {
+    $addr = new Address($data);
+    $toArray = $addr->toArray();
+    foreach ($data as $k => $v) {
+      $this->assertSame($toArray[$k], $v);
+    }
   }
 
 }

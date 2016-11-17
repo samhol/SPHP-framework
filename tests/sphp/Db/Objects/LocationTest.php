@@ -112,7 +112,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
    * @depends testDelete
    */
   public function testFind() {
-    $finnishLocations = $this->locations->findAllByCountry('Finland');
+    $finnishLocations = $this->locations->findByCountry('Finland');
     print_r($finnishLocations);
   }
 

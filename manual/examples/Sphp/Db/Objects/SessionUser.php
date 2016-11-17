@@ -18,7 +18,7 @@ if ($users->contains($john)) {
   $john->setPermissions(0b100111)
           ->setPassword(Password::fromPassword("password"));
   echo "\nInsert John Doe: ";
-  var_dump($users->save($john));
+  var_dump($users->insertAsNew($john));
   echo "\n$john";
 }
 return $john;

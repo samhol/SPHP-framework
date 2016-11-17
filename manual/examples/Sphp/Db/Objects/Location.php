@@ -22,12 +22,12 @@ $locationData[] = [
 ];
 
 
-$locations = new LocationStorage();
+$locationStorage = new LocationStorage();
 try {
   $hydepark->insertAsNewInto($em);
 } catch (\Exception $ex) {
   echo "Hydepark is already stored into the database\n";
-  $hydepark = $locations->findByName($hydepark);
+  $hydepark = $locationStorage->findByName($hydepark);
 }
 $addrs[] = $hydepark;
 //$locations->save($hydepark);

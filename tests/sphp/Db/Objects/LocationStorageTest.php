@@ -99,7 +99,8 @@ class LocationStorageTest extends \PHPUnit_Framework_TestCase {
    */
   public function testInsert() {
     $obj = new Location(['name' => 'home', 'street' => 'Rakuunatie 59 A 3', 'city' => 'Turku', 'zipcode' => '20720', 'country' => 'Finland']);
-    $obj->insertAsNewInto($this->em);
+    $this->locations->merge($obj);
+    $this->locations->contains($obj);
   }
 
   /**

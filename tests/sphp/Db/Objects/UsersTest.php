@@ -92,7 +92,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    */
   public function testInsert(User $expected = null) {
     $this->testCount(0);
-    $this->assertTrue($this->users->save((new User())
+    $this->assertTrue($this->users->insertAsNew((new User())
             ->setUsername("samhol")
             ->setEmail("sami.holck@gmail.com")
             ->setFname("sami")

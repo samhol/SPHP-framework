@@ -83,7 +83,7 @@ class SessionUserStorageTest extends \PHPUnit_Framework_TestCase {
    * @depends testClear
    */
   public function testInsert(UserInterface $u) {
-    $this->assertTrue($this->storage->save($u));
+    $this->assertTrue($this->storage->insertAsNew($u));
     $this->assertTrue($this->storage->contains($this->em));
   }
 

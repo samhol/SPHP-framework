@@ -28,25 +28,32 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
   public function getObjectType();
 
   /**
+   * Finds entities by a single criteria
    * 
-   * @param  string $prop the name of the object property
-   * @param  mixed $value the value of the object property
+   * @param string $prop property name
+   * @param mixed $value property value
+   * @param array|null $orderBy
+   * @param int|null $limit
+   * @param int|null $offset
    * @return DbObjectInterface[] an array of matching objects
    * @throws Exception if anything fails
    */
   public function findByProperty($prop, $value);
 
   /**
+   * Finds entities by a set of criteria
    * 
-   * @param  array $props the name of the object property
-   * @return DbObjectInterface[] an array of matching objects
+   * @param array $criteria a set of criteria
+   * @param array|null $orderBy
+   * @param int|null $limit
+   * @param int|null $offset
    * @throws Exception if anything fails
    */
-  public function findBy(array $props);
+  public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
 
   /**
    * 
-   * @return ArrayIterator
+   * @return Traversable
    */
   public function getIterator();
 
@@ -56,7 +63,7 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * @param  mixed $id the 
    * @return DbObjectInterface|null
    */
-  public function get($id);
+  public function getById($id);
 
   /**
    * 
@@ -69,7 +76,7 @@ interface ObjectStorageInterface extends IteratorAggregate, Countable {
    * 
    * @param DbObjectInterface $object
    */
-  public function save(DbObjectInterface $object);
+  public function insertAsNew(DbObjectInterface $object);
 
   /**
    * Merges an entity to the repository

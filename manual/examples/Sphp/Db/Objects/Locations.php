@@ -2,17 +2,17 @@
 
 namespace Sphp\Db\Objects;
 
-$em = include 'entityManager.php';
-$locations = new LocationStorage($em);
-echo "All locations:\n";
-foreach ($locations as $address) {
-  echo "\tlocation: {$address->getName()}\n";
+$locationStorage = new LocationStorage();
+echo "All locations ordered by Country:\n";
+foreach ($locationStorage as $location) {
+  echo "\tlocation: {$location->getName()} in {$location->getCountry()}\n";
 }
-echo "All stored locations in Finland:\n";
-foreach ($locations->findByProperty('address.city', 'Turku') as $finnishLocation) {
-  echo "\taddress: $finnishLocation\n";
+echo "All stored locations in Finland and in UK:\n";
+foreach ($locationStorage->findByCountry(['Finland', 'UK']) as $location) {
+  echo "\tlocation: {$location->getName()} in {$location->getCity()}\n";
 }
-foreach ($locations->findAllByCountry('Finland') as $finnishLocation) {
-  echo "\taddress: $finnishLocation\n";
+echo "All stored locations in Turku:\n";
+foreach ($locationStorage->findByProperty('address.city', 'Turku') as $location) {
+  echo "\tlocation: {$location->getName()} in {$location->getStreet()}\n";
 }
 ?>
