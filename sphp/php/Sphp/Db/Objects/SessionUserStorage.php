@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SessionUsers.php (UTF-8)
+ * SessionUserStorage.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,13 +11,14 @@ use Sphp\Db\Objects\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
+ * Implements a {@link SessionUser} storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SessionUsers extends AbstractObjectStorage {
+class SessionUserStorage extends AbstractObjectStorage {
 
   /**
    * Constructs a new instance
@@ -117,7 +118,7 @@ class SessionUsers extends AbstractObjectStorage {
     if ($password instanceof \Sphp\Net\PasswordInterface) {
       $password = $password->getHash();
     }
-    return $this->getRepository()->findOneBy(['username' => $username, 'password' => $password]);
+    return $this->getRepository()->findOneBy(['username' => $username, 'password.hash' => $password]);
   }
 
 }

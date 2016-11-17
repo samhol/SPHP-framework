@@ -7,9 +7,8 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Net\Password;
-use Sphp\Net\PasswordInterface;
-use Sphp\Net\HashedPassword;
+use Sphp\Core\Security\Password;
+use Sphp\Core\Security\PasswordInterface;
 use Sphp\Core\Types\BitMask;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -54,8 +53,8 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   /**
    * password
    *
-   * @var HashedPassword 
-   * @Embedded(class = "Sphp\Net\HashedPassword", columnPrefix = "password_")
+   * @var Password 
+   * @Embedded(class = "Sphp\Core\Security\Password", columnPrefix = "password_")
    */
   private $password;
 
@@ -92,7 +91,10 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPermissions($permissions = 0) {
-    $this->permissions = new BitMask($permissions);
+    if (!$permissions instanceof BitMask) {
+      $permissions = new \Sphp\Core\Types\Permissions($permissions);
+    }
+    $this->permissions = $permissions;
     return $this;
   }
 
@@ -101,12 +103,12 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPlainPassword($password) {
-    $this->password = new HashedPassword($password);
+    $this->password = Password::fromPassword($password);
     return $this;
   }
 
-  public function setPassword($password = null) {
-    $this->password = new HashedPassword(new Password($password));
+  public function setPassword(PasswordInterface $password) {
+    $this->password = Password::fromHash($password);
     return $this;
   }
 
@@ -123,7 +125,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
             ->setUsername($myinputs['username'])
             ->setEmail($myinputs['email'])
             ->setPermissions($myinputs['permissions_mask'])
-            ->setPassword($myinputs['password']);
+            ->setPassword(Password::fromPassword($myinputs['password']));
     return $this;
   }
 

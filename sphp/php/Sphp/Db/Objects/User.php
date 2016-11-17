@@ -126,7 +126,7 @@ class User extends AbstractDbObject {
    * @return self for PHP Method Chaining
    */
   public function setFname($fname) {
-    $this->fname = $fname;
+    $this->fname = $fname; 
     return $this;
   }
 

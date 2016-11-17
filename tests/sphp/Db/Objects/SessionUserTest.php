@@ -2,12 +2,13 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Core\Configuration;
+use Sphp\Db\EntityManagerFactory;
 use Doctrine\ORM\EntityManagerInterface;
-use Sphp\Net\Password;
+use Sphp\Core\Security\Password;
+use Sphp\Core\Types\Permissions;
 use Exception;
 
-class UsersTest extends \PHPUnit_Framework_TestCase {
+class SessionUserTest extends \PHPUnit_Framework_TestCase {
 
   /**
    *
@@ -17,7 +18,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
 
   /**
    *
-   * @var SessionUsers 
+   * @var SessionUserStorage 
    */
   protected $storage;
 
@@ -26,9 +27,8 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->em = Configuration::useDomain("manual")
-            ->get(EntityManagerInterface::class);
-    $this->storage = new SessionUsers($this->em); //$this->once();
+    $this->em = EntityManagerFactory::get();
+    $this->storage = new SessionUserStorage();
   }
 
   /**
@@ -47,19 +47,19 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
     $u[] = [(new SessionUser())
                 ->setUsername('a')
                 ->setEmail('a@gmail.com')
-                ->setPassword('pw1')];
+                ->setPlainPassword('pw1')];
     $u[] = [(new SessionUser())
                 ->setUsername("johndoe")
                 ->setEmail('john.doe@gmail.com')
-                ->setPassword('pw1')];
+                ->setPlainPassword('pw1')];
     $u[] = [(new SessionUser())
                 ->setUsername("johndoe1")
                 ->setEmail('johndoe1@gmail.com')
-                ->setPassword('pw1')];
+                ->setPlainPassword('pw1')];
     $u[] = [(new SessionUser())
                 ->setUsername("ab")
                 ->setEmail('a.b@c.com')
-                ->setPassword('pw2')];
+                ->setPlainPassword('pw2')];
     return $u;
   }
 
@@ -69,13 +69,16 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    * @param UserInterface $u
    */
   public function testClear(UserInterface $u) {
-    $this->em->persist($u);
-    $this->em->flush();
-    $this->assertTrue($this->em->contains($u));
+    $this->storage->clear();
+    if (!$this->storage->contains($u)) {
+      $this->storage->save($u);
+    }
+    $this->assertTrue($this->storage->contains($u));
     var_dump($this->storage->count());
     $this->storage->clear();
     var_dump($this->storage->count());
     $this->assertFalse($this->em->contains($u));
+    var_dump($length = ceil(log10(PHP_INT_MAX)));
   }
 
   /**
@@ -83,8 +86,8 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    * @depends testClear
    */
   public function testInsert(UserInterface $u) {
-    $this->assertTrue($this->storage->save($u));
-    $this->assertTrue($this->storage->contains($this->em));
+    $u->insertAsNewInto($this->em);
+    $this->assertTrue($u->isManagedBy($this->em));
   }
 
   /**
@@ -97,7 +100,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
     $username = $u->getUsername();
     $managed = $this->storage->findByUsername($username);
     $this->assertTrue($managed instanceof UserInterface);
-    $this->assertTrue($managed->isManagedBy($this->em));
+    // $this->assertTrue($managed->isManagedBy($this->em));
   }
 
   /**
@@ -135,10 +138,9 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    *
    * @param UserInterface $u
    */
-  public function testPasswordSettersAndGetters(UserInterface $u) {
-    $pw = new Password("password");
-    $u->setPassword($pw);
-    $this->assertTrue($u->getPassword()->verify(new Password("password")));
+  public function testIsManagedBy(SessionUser $u) {
+    $this->assertTrue(!$u->isManagedBy($this->em));
+    //$this->assertTrue(!$u->setEmail('')->existsIn($this->em));
   }
 
   /**
@@ -146,9 +148,17 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
    *
    * @param UserInterface $u
    */
-  public function testIsManagedBy(SessionUser $u) {
-    $this->assertTrue(!$u->isManagedBy($this->em));
-    //$this->assertTrue(!$u->setEmail('')->existsIn($this->em));
+  public function testSettingAndGetting(UserInterface $u) {
+    $u->setUsername('foo');
+    $this->assertSame($u->getUsername(), 'foo');
+    $u->setEmail('foo@foo.bar');
+    $this->assertSame($u->getEmail(), 'foo@foo.bar');
+    $permissions = new Permissions(0b0011101);
+    $u->setPermissions($permissions);
+    $this->assertTrue($u->getPermissions()->contains(0b0011101));
+    $password = Password::fromPassword('password');
+    $u->setPassword($password);
+    $this->assertTrue($u->getPassword()->verify('password'));
   }
 
   /**
@@ -161,4 +171,5 @@ class UsersTest extends \PHPUnit_Framework_TestCase {
                     ->setEmail('foo@foo.bar')
                     ->setPassword('foo');
   }
+
 }

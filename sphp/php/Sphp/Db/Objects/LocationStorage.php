@@ -10,6 +10,7 @@ namespace Sphp\Db\Objects;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
+ * Implements a {@link Location} storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20

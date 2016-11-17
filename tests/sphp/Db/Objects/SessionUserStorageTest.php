@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Net\Password;
 use Exception;
 
-class LoginUserTest extends \PHPUnit_Framework_TestCase {
+class SessionUserStorageTest extends \PHPUnit_Framework_TestCase {
 
   /**
    *
@@ -17,7 +17,7 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
 
   /**
    *
-   * @var SessionUsers 
+   * @var SessionUserStorage 
    */
   protected $storage;
 
@@ -28,7 +28,7 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
   protected function setUp() {
     $this->em = Configuration::useDomain("manual")
             ->get(EntityManagerInterface::class);
-    $this->storage = new SessionUsers($this->em); //$this->once();
+    $this->storage = new SessionUserStorage($this->em); //$this->once();
   }
 
   /**
@@ -69,11 +69,8 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @param UserInterface $u
    */
   public function testClear(UserInterface $u) {
-    $this->storage->clear();
-    if (!$this->em->contains($u)) {
-      $this->em->persist($u);
-      $this->em->flush();
-    }
+    $this->em->persist($u);
+    $this->em->flush();
     $this->assertTrue($this->em->contains($u));
     var_dump($this->storage->count());
     $this->storage->clear();
@@ -86,8 +83,8 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
    * @depends testClear
    */
   public function testInsert(UserInterface $u) {
-    $this->assertTrue($u->insertAsNewInto($this->em));
-    $this->assertTrue($u->isManagedBy($this->em));
+    $this->assertTrue($this->storage->save($u));
+    $this->assertTrue($this->storage->contains($this->em));
   }
 
   /**
@@ -164,5 +161,4 @@ class LoginUserTest extends \PHPUnit_Framework_TestCase {
                     ->setEmail('foo@foo.bar')
                     ->setPassword('foo');
   }
-
 }

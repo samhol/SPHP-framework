@@ -4,7 +4,6 @@ namespace Sphp\Net;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 $sessionHandlerInterface = $api->classLinker(\SessionHandlerInterface::class);
 $abstractSessionHandler = $api->classLinker(AbstractSessionHandler::class);
-$hpw = $api->classLinker(HashedPassword::class);
 echo $parsedown->text(<<<MD
 ##$sessionHandlerInterface implementations
 

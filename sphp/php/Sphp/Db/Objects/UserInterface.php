@@ -7,8 +7,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Net\Password;
-use Sphp\Net\HashedPassword;
+use Sphp\Core\Security\PasswordInterface;
 use Sphp\Core\Types\BitMask;
 
 /**
@@ -69,15 +68,15 @@ interface UserInterface extends DbObjectInterface {
   /**
    * Returns the hashed password of the user
    *
-   * @return HashedPassword the hashed password of the user
+   * @return PasswordInterface the hashed password of the user
    */
   public function getPassword();
 
   /**
    * Sets the hashed password of the user
    *
-   * @param  null|string|Password|HashedPassword $password the password of the user
+   * @param  PasswordInterface $password the password of the user
    * @return self for PHP Method Chaining
    */
-  public function setPassword($password = "");
+  public function setPassword(PasswordInterface $password);
 }

@@ -2,7 +2,7 @@
 
 /**
  * EntityManagerFactory.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Db;
@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManager;
  * A factory for creating {@link EntityManager} instances
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @update 2011-03-08
+ * @update  2016-03-08
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -30,13 +30,11 @@ class EntityManagerFactory {
   private static $params = [];
 
   /**
-   * Factory method to create EntityManager instances.
+   * Parameter setter for default {@link EntityManager} instances
    *
    * @param  mixed $conn An array with the connection parameters or an existing Connection instance.
    * @param  Configuration $config The Configuration instance to use.
-   * @param  EventManager  $eventManager The EventManager instance to use.
-   * @throws InvalidArgumentException
-   * @throws ORMException
+   * @param  EventManager $eventManager The EventManager instance to use
    */
   public static function setDefaults($conn, Configuration $config, EventManager $eventManager = null) {
     self::setParameters(0, $conn, $config, $eventManager);
@@ -46,11 +44,9 @@ class EntityManagerFactory {
    * Parameter setter for named {@link EntityManager} instances
    *
    * @param  string $name the name of the parameter set provided for the entity managers
-   * @param  mixed $conn An array with the connection parameters or an existing Connection instance.
-   * @param  Configuration $config The Configuration instance to use.
-   * @param  EventManager  $eventManager The EventManager instance to use.
-   * @throws InvalidArgumentException
-   * @throws ORMException
+   * @param  mixed $conn An array with the connection parameters or an existing Connection instance
+   * @param  Configuration $config The Configuration instance to use
+   * @param  EventManager $eventManager The EventManager instance to use
    */
   public static function setParameters($name, $conn, Configuration $config, EventManager $eventManager = null) {
     self::$params[$name]['conn'] = $conn;

@@ -13,6 +13,7 @@ use ArrayIterator;
 use Sphp\Db\EntityManagerFactory;
 
 /**
+ * Abstract Implementation of a{@link DbObjectInterface} storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20
@@ -22,6 +23,7 @@ use Sphp\Db\EntityManagerFactory;
 abstract class AbstractObjectStorage implements ObjectStorageInterface {
 
   /**
+   * the typename of the stored objects
    *
    * @var string
    */
@@ -82,6 +84,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   public function findBy(array $props) {
     return $this->getRepository()->findBy($props);
   }
+
   public function findAll() {
     return $this->getRepository()->findAll();
   }
@@ -117,7 +120,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   }
 
   public function clear() {
-    foreach($this->getRepository()->findAll() as $obj) {
+    foreach ($this->getRepository()->findAll() as $obj) {
       $this->em->remove($obj);
     }
     $this->em->flush();

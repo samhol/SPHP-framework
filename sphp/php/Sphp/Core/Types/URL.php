@@ -266,10 +266,9 @@ class URL implements Arrayable, IteratorAggregate {
   public function setPath($path = null) {
     if ($path === null || $path === '') {
       $path = '';
-    }
-    else if (!Strings::startsWith($path, '/')) {
+    } else if (!Strings::startsWith($path, '/')) {
       $path = "/$path";
-    } 
+    }
     $this->components['path'] = $path;
     return $this;
   }

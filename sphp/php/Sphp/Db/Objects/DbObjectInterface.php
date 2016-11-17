@@ -11,7 +11,7 @@ use Sphp\Objects\ArrayableObjectInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Interface describes common features for all database objects.
+ * Defines common features for all database objects.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-11

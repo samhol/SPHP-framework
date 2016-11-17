@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Net;
+namespace Sphp\Core\Security;
 
 /**
  * Defines a verifiable password

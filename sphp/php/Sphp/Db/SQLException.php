@@ -7,17 +7,18 @@
 
 namespace Sphp\Db;
 
-use \Exception as Exception;
+use Exception;
 
 /**
  * Exception class for SQL syntax execution failures
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @update  2011-03-08
+ * @update  2011-03-08
+
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SQLException extends \Exception {
+class SQLException extends Exception {
 
   /**
    * the possible query executed when the exception occurs

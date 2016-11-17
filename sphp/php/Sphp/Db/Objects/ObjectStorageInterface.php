@@ -7,25 +7,19 @@
 
 namespace Sphp\Db\Objects;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use IteratorAggregate;
 use Countable;
 
 /**
- *
+ * Defines required properties for a {@link DbObjectInterface} storage
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 interface ObjectStorageInterface extends IteratorAggregate, Countable {
-
-  /**
-   * 
-   * @return EntityManagerInterface
-   */
-  public function getManager();
 
   /**
    * 

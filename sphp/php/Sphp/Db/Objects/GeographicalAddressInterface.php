@@ -9,7 +9,7 @@
 namespace Sphp\Db\Objects;
 
 /**
- * Defines properties for a seographical address
+ * Defines properties for a geographical address
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-20

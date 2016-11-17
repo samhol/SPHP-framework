@@ -1,8 +1,6 @@
 <?php
-namespace Sphp\Core;
-use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
-$em = Configuration::useDomain("manual")
-        ->get(EntityManagerInterface::class);
+namespace Sphp\Db;
 
-return $em;
+return EntityManagerFactory::get();
+?>
