@@ -20,7 +20,7 @@ use Sphp\Data\Arrayable;
  * @filesource
  * @Embeddable
  */
-class BitMask implements ScalarObjectInterface, Arrayable {
+class BitMask implements ScalarObjectInterface, Arrayable,  \Sphp\Db\Objects\Embeddable {
 
   use EqualsTrait;
 
@@ -30,7 +30,7 @@ class BitMask implements ScalarObjectInterface, Arrayable {
    * @var int
    * @Column(type = "integer")
    */
-  private $mask = 0;
+  protected $mask = 0;
 
   /**
    * Constructs a new instance of the {@link self} object

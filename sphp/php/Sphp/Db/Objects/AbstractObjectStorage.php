@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ArrayIterator;
 use Sphp\Db\EntityManagerFactory;
+use Sphp\Data\Collection;
 
 /**
  * Abstract Implementation of a{@link DbObjectInterface} storage
@@ -99,7 +100,9 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
     }
     return $this->getRepository()->find($id);
   }
-
+  public function get($limit = null, $offset = null, array $orderBy = null) {
+    return new Collection($this->getRepository()->findBy([], $orderBy, $limit, $offset));
+  }
   public function count() {
     $query = $this->em->createQuery("SELECT COUNT(t.id) FROM $this->type t");
     $count = $query->getSingleScalarResult();
@@ -133,6 +136,10 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
 
   public function contains(DbObjectInterface $object) {
     return $this->em->contains($object);
+  }
+
+  public function flush() {
+    return $this->em->flush();
   }
 
 }

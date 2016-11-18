@@ -7,6 +7,8 @@
 
 namespace Sphp\Core\Security;
 
+use Sphp\Db\Objects\Embeddable;
+
 /**
  * Implements a verifiable password
  *
@@ -16,7 +18,7 @@ namespace Sphp\Core\Security;
  * @filesource
  * @Embeddable
  */
-class Password implements PasswordInterface {
+class Password implements PasswordInterface, Embeddable {
 
   /**
    * the crypted password string

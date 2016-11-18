@@ -18,7 +18,7 @@ use Sphp\Objects\AbstractArrayableObject;
  * @filesource
  * @Embeddable
  */
-class Address extends AbstractArrayableObject implements GeographicalAddressInterface {
+class Address extends AbstractArrayableObject implements GeographicalAddressInterface, Embeddable {
 
   use \Sphp\Objects\EqualsTrait;
 

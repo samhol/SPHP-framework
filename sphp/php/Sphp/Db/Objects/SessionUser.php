@@ -9,7 +9,7 @@ namespace Sphp\Db\Objects;
 
 use Sphp\Core\Security\Password;
 use Sphp\Core\Security\PasswordInterface;
-use Sphp\Core\Types\BitMask;
+use Sphp\Core\Security\Permissions;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -31,7 +31,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
    * @Id @Column(type="integer")
    * @GeneratedValue
    */
-  private $id;
+  protected $id;
 
   /**
    * username
@@ -39,7 +39,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
    * @var string 
    * @Column(type="string", length=255)
    */
-  private $username;
+  protected $username;
 
   /**
    * email address
@@ -48,7 +48,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
    * @Column(type="string", nullable=false)
    * @Assert\Email
    */
-  private $email;
+  protected $email;
 
   /**
    * password
@@ -56,13 +56,13 @@ class SessionUser extends AbstractDbObject implements UserInterface {
    * @var Password 
    * @Embedded(class = "Sphp\Core\Security\Password", columnPrefix = "password_")
    */
-  private $password;
+  protected $password;
 
   /**
-   * @var Bitmask
-   * @Embedded(class = "Sphp\Core\Types\Bitmask", columnPrefix = "permission_") 
+   * @var Permissions
+   * @Embedded(class = "Sphp\Core\Security\Permissions", columnPrefix = "permission_") 
    */
-  private $permissions;
+  protected $permissions;
 
   public function __construct($data = []) {
     parent::__construct($data);
@@ -91,8 +91,8 @@ class SessionUser extends AbstractDbObject implements UserInterface {
   }
 
   public function setPermissions($permissions = 0) {
-    if (!$permissions instanceof BitMask) {
-      $permissions = new \Sphp\Core\Types\Permissions($permissions);
+    if (!$permissions instanceof Permissions) {
+      $permissions = new Permissions($permissions);
     }
     $this->permissions = $permissions;
     return $this;
@@ -207,7 +207,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
         'username' => $this->getUsername(),
         'email' => $this->getEmail(),
         'password_hash' => $this->getPassword()->getHash(),
-        'permissions_mask' => $this->getPermissions()
+        'permissions_mask' => $this->getPermissions()->toInt()
     ];
   }
 

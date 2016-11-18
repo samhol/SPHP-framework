@@ -2,9 +2,11 @@
 
 namespace Sphp\Db\Objects;
 
-$em = include 'entityManager.php';
-
+use Sphp\Db\EntityManagerFactory;
 use Sphp\Core\Security\Password;
+
+$em = EntityManagerFactory::get();
+
 
 $users = new SessionUserStorage();
 $john = (new SessionUser())

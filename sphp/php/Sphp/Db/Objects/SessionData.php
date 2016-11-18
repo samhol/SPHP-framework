@@ -17,6 +17,8 @@ use Sphp\Util\Permissions;
  * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
+ * @Entity
+ * @Table(name="sessions",uniqueConstraints={@UniqueConstraint(name="uniquePersonName", columns={"fname", "lname"})})
  */
 class SessionData extends AbstractDbObject {
 
@@ -33,7 +35,7 @@ class SessionData extends AbstractDbObject {
 
   /**
    * @var User 
-   * @ManyToOne(targetEntity="User", cascade={"persist"})
+   * @ManyToOne(targetEntity="SessionUser", cascade={"persist"})
    * @JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
    */
   private $user;
@@ -47,7 +49,8 @@ class SessionData extends AbstractDbObject {
 
   /**
    *
-   * @var Permissions 
+   * @var Permissions
+   * @Embedded(class = "Sphp\Core\Security\Permissions", columnPrefix = "permission_") 
    */
   private $permissions;
 
