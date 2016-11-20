@@ -29,7 +29,7 @@ abstract class AbstractValidatorAggregate extends AbstractOptionalValidator impl
   protected $validators;
 
   /**
-   * Constructs a new {@link self} validator
+   * Constructs a new validator
    *
    * @param ValidatorInterface|ValidatorInterface[] $validators used
    */

@@ -9,7 +9,7 @@
  * - $currentPermissions variable for current permissions
  */
 
-namespace Sphp\Net;
+namespace Sphp\Core\Security;
 
 use Sphp\Objects\User;
 use Sphp\Core\Security\Permissions;

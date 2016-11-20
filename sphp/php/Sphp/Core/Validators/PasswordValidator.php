@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Gettext\Message;
+use Sphp\Core\Types\Strings;
 
 /**
  * Class validates a password
@@ -17,17 +17,19 @@ use Sphp\Core\Gettext\Message;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PasswordValidator extends AbstractValidatorAggregate {
+class PasswordValidator extends AbstractOptionalValidator {
 
-  /**
-   * Constructs a new {@link self} validator
-   */
-  public function __construct() {
-    parent::__construct();
-    $this->set("length", new StringLengthValidator(6, 20))
-            ->set("numbers", new PatternValidator("/[0-9]{2,}/", new Message("Please insert atleast %s numbers", ["two"])))
-            ->set("alphabets", new PatternValidator("/[a-zA-ZäöåÄÖÅ]{2,}/", new Message("Please insert atleast %s alphabets", ["two"])))
-            ->set("characters", new PatternValidator("/[-_@*#]{1,}/", new Message("Please insert atleast %s of the following characters (%s)", ["one", "-_@*#"])));
+  protected function executeValidation($value) {
+    $username = (string) $value;
+    /* if (!Strings::lengthBetween($username, 6, 12)) {
+      $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
+      } */
+    if (!Strings::match($username, "/^([a-zA-Z0-9]){6,255}$/")) {
+      $this->createErrorMessage("Please insert 6-255 alphabets and numbers only");
+    }
+    /* if (!$user->isUnique()) {
+      $this->createErrorMessage("Username is already reserved");
+      } */
   }
 
 }

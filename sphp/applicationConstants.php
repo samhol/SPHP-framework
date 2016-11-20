@@ -61,9 +61,17 @@ namespace Sphp\Db;
 const PDO_DNS = "mysql:host=192.168.10.208;port=3306;dbname=sphp;charset=utf8";
 const PDO_SU_USERNAME = "sphp_su";
 const PDO_SU_PASSWORD = "o5Qen58&";
-const PDO_USERNAME = "sphp_su";
-const PDO_PASSWORD = "o5Qen58&";
-
+const PDO_USERNAME = "sphp_framework";
+const PDO_PASSWORD = "Vxr79s?8";
+$dbParams = array(
+    'driver' => 'pdo_mysql',
+    'user' => 'sphp_framework',
+    'password' => 'Vxr79s?8',
+    'host' => '192.168.10.208;port=3306',
+    'charset' => 'utf8',
+    'dbname' => 'sphp',
+    'driverOptions' => [1002 => 'SET NAMES utf8']
+);
 namespace Sphp\Images;
 
 define('Sphp\Images\CACHE', \Sphp\SPH_DIR . "/image/cache");

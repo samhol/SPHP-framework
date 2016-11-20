@@ -5,11 +5,10 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Net;
+namespace Sphp\Core\Security;
 
-use Sphp\messageSys\MessageList as MessageList;
-use Sphp\messageSys\Message as Message;
-use Sphp\messageSys\ErrorMessage as ErrorMessage;
+use Sphp\Core\Gettext\TopicList;
+use Sphp\Core\Gettext\Message;
 
 /**
  * Login class handles the user login/logout/session
@@ -24,14 +23,14 @@ class Login {
   /**
    * the session handler class
    *
-   * @var Session
+   * @var PdoSessionHandler
    */
   private $session = null;
 
   /**
    * collection of error / success / neutral messages
    *
-   * @var MessageList
+   * @var TopicList
    */
   private $messages;
 
@@ -45,10 +44,10 @@ class Login {
    *     logged-in-status is written into his session data on the server. this is the typical behaviour of common login scripts.
    */
   public function __construct() {
-    $this->messages = new MessageList();
+    $this->messages = new TopicList();
     try {
-      $this->session = new Session();
-      $this->session->start();
+      $this->session = new PdoSessionHandler();
+      $this->session->startSession();
       if (isset($_REQUEST['sessionEvent'])) {
         if ($_REQUEST['sessionEvent'] == "logout") {
           $this->logout();
@@ -58,7 +57,7 @@ class Login {
       }
     } catch (Exception $e) {
       $this->session = null;
-      $this->messages->setLine(new ErrorMessage("Tieotokantayhteyden muodostaminen epäonnistui", "DB"));
+      $this->messages->offsetSet("DB", new Message("Tieotokantayhteyden muodostaminen epäonnistui"));
     }
     if (count($this->messages) > 0) {
       $_SESSION["messages"] = serialize($this->messages);
@@ -80,16 +79,16 @@ class Login {
   public function login() {
     if (isset($_REQUEST['username'], $_REQUEST['password'])) {
       if (!$this->session->login($_REQUEST['username'], $_REQUEST['password'])) {
-        $this->messages->setLine(new ErrorMessage("Käyttäjätunnus tai salasana on virheellinen", "LoginForm"));
+        $this->messages->offsetSet("LoginForm", new Message("Käyttäjätunnus tai salasana on virheellinen"));
       } else {
-        $this->messages->setLine(new Message("Kirjautuminen onnistui", "LoginForm"));
+        $this->messages->offsetSet("LoginForm", new Message("Kirjautuminen onnistui"));
       }
     } else {
       if (empty($_REQUEST["username"])) {
-        $this->messages->setLine(new ErrorMessage("Käyttäjätunnus puuttuu", "username"));
+        $this->messages->offsetSet("username", new Message("Käyttäjätunnus puuttuu"));
       }
       if (empty($_REQUEST["password"])) {
-        $this->messages->setLine(new ErrorMessage("Salasana puuttuu", "password"));
+        $this->messages->offsetSet("password", new Message("Salasana puuttuu"));
       }
     }
   }
@@ -99,7 +98,15 @@ class Login {
    */
   public function logout() {
     $this->session->logout();
-    $this->messages->setLine(new Message("Uloskirjautuminen onnistui", "LoginForm"));
+    $this->messages->insert(new Message("Uloskirjautuminen onnistui", "LoginForm"));
+  }
+
+  /**
+   * 
+   * @return TopicList
+   */
+  public function getMessages() {
+    return $this->messages;
   }
 
   /**

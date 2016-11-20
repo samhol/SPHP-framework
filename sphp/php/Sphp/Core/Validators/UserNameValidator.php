@@ -27,18 +27,12 @@ class UserNameValidator extends AbstractOptionalValidator {
    * @return self for PHP Method Chaining
    */
   protected function executeValidation($value) {
-    if (!($value instanceof User)) {
-      $user = (new User())->setUsername($value);
-      $username = $value;
-    } else {
-      $username = $value->getUsername();
-      $user = $value;
-    }
-    if (!Strings::lengthBetween($username, 6, 12)) {
+    $username = (string) $value;
+    /*if (!Strings::lengthBetween($username, 6, 12)) {
       $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
-    }
-    if (!Strings::match($username, "/^([a-zA-Z0-9]){1,}$/")) {
-      $this->createErrorMessage("Please insert alphabets and numbers only");
+    }*/
+    if (!Strings::match($username, "/^([a-zA-Z0-9]){6,255}$/")) {
+      $this->createErrorMessage("Please insert 6-255 alphabets and numbers only");
     }
     /* if (!$user->isUnique()) {
       $this->createErrorMessage("Username is already reserved");

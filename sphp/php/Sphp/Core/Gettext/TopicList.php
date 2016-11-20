@@ -18,7 +18,7 @@ use Sphp\Data\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements TranslatorChangerChainInterface, \ArrayAccess {
+class TopicList implements TranslatorChangerChainInterface, \ArrayAccess, \IteratorAggregate {
 
   use TranslatorChangerChainTrait;
 
@@ -73,10 +73,10 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess {
   /**
    * Create a new iterator to iterate through the {@link MessageList} objects
    *
-   * @return \ArrayIterator iterator
+   * @return Collection iterator
    */
   public function getIterator() {
-    return $this->topics->getIterator();
+    return $this->topics;
   }
 
   /**
@@ -153,7 +153,7 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess {
   /**
    * Removes elements from MessageList.
    *
-   *  The optional <var>$elementName</var> attribute narrows down the clearing to the messages of given target element.
+   *  The optional `$topic` attribute narrows down the clearing to the messages of given target element.
    *
    * @param string $topic optional topic name
    * @return self for PHP Method Chaining
