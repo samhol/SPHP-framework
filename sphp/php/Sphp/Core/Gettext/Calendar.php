@@ -162,6 +162,11 @@ class Calendar implements TranslatorChangerChainInterface {
 		}
 	}
 
+  public function setLang($lang) {
+    $this->getTranslator()->setLang($lang);
+    return $this;
+  }
+
 	/**
 	 * Returns the name or the abbreviation of the given weekday number
 	 *
@@ -201,7 +206,7 @@ class Calendar implements TranslatorChangerChainInterface {
 			//print_r($d);
 			$days = $d;
 		}
-		$translations = $this->getTranslator()->getArray($days);
+		$translations = $this->getTranslator()->get($days);
 		if ($length > 0) {
 			foreach ($translations as $number => $day) {
 				$translations[$number] = substr($day, 0, $length);
@@ -234,7 +239,7 @@ class Calendar implements TranslatorChangerChainInterface {
 	 * @return string[] the names or the abbreviations of the month names
 	 */
 	public function getMonths($length = null) {
-		$months = $this->getTranslator()->getArray(self::$months);
+		$months = $this->getTranslator()->get(self::$months);
 		if ($length > 0) {
 			foreach ($months as $number => $month) {
 				$months[$number] = substr($month, 0, $length);

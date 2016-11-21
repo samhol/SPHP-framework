@@ -32,7 +32,7 @@ $messages = [
 ];
 //print_r(array_intersect($calendar->getWeekdays(NULL, Calendar::WED), $calendar->getWeekdays(NULL, Calendar::SUN)));
 $translator = new Translator();
-$translation = $translator->getArray($messages);
+$translation = $translator->get($messages);
 //print_R($messages);
 echo json_encode($translation, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT|JSON_NUMERIC_CHECK);
 /*var datetime_fi_locale = {

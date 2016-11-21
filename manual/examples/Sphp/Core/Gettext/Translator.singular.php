@@ -2,9 +2,9 @@
 
 namespace Sphp\Core\Gettext;
 
-Locale::setMessageLocale("fi_FI");
+//Locale::setMessageLocale("fi_FI");
 
-$translator = new Translator();
+$translator = new Translator('fi_FI');
 $month = date("F");
 echo "$month: " . $translator->get($month) . "\n";
 Locale::setMessageLocale("en_US");

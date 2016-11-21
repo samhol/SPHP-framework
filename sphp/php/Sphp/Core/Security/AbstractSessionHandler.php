@@ -27,7 +27,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
   private $maxlifetime = 1800;
 
   /**
-   * Constructs a new instance of the {@self} component
+   * Constructs a new session object
    * 
    * Sets the user-level session storage functions which are used
    * for storing and retrieving data associated with a session.
@@ -45,7 +45,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
   public function startSession() {
     if (session_status() !== PHP_SESSION_ACTIVE && !headers_sent()) {
       session_start();
-      $this->setLocales();
+      //$this->setLocales();
       return true;
     }
     return false;

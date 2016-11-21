@@ -2,9 +2,9 @@
 
 namespace Sphp\Core\Gettext;
 
-Locale::setMessageLocale("fi_FI");
+//Locale::setMessageLocale("fi_FI");
 
-$translator = new Translator();
+$translator = new Translator('fi_FI');
 var_dump(
 	$translator->getPlural("%d directory", "%d directories", 0), 
 	$translator->getPlural("%d directory", "%d directories", 1), 

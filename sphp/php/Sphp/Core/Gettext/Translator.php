@@ -7,6 +7,10 @@
 
 namespace Sphp\Core\Gettext;
 
+if (!defined('LC_MESSAGES')) {
+  define('LC_MESSAGES', 6);
+}
+
 use Sphp\Core\Types\Arrays;
 
 /**
@@ -50,6 +54,13 @@ class Translator {
   private $charset;
 
   /**
+   * the charset of the translation file
+   *
+   * @var string
+   */
+  private $lang;
+
+  /**
    * Constructs a new instance
    *
    * **IMPORTANT:**
@@ -60,14 +71,29 @@ class Translator {
    * @param string $directory the locale path of the dictionary
    * @param string $charset the character set of the dictionary
    */
-  public function __construct($domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = "UTF-8") {
+  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = 'UTF-8') {
     if ($domain === null) {
-      $this->domain = Locale::getCurrentTextDomain();
+      throw new Exception('no domain');
     } else {
       $this->domain = $domain;
     }
     $this->directory = $directory;
     $this->charset = $charset;
+    $this->lang = $lang;
+  }
+
+  public function getLang() {
+    return $this->lang;
+  }
+
+  /**
+   * 
+   * @param string $lang
+   * @return self for PHP Method Chaining
+   */
+  public function setLang($lang) {
+    $this->lang = $lang;
+    return $this;
   }
 
   /**
@@ -99,53 +125,46 @@ class Translator {
 
   /**
    * Returns the input message(s) as translated message(s)
+   * 
+   * the the given array of message strings as an array of translated message strings
    *
-   * **IMPORTANT:** If the optional `$lang` is not set the translation is done
-   *  using the current system locale
-   *
-   * @param  string|string[] $text the message text
-   * @param  string|null $lang optional translation language
+   * @param  string|string[] $text the message text or an array of the message text
    * @return string|string[] the message text(s) translated
    * @uses   \dgettext() gettext function
    */
-  public function get($text, $lang = null) {
-    if ($lang !== null) {
-      $defaultLocale = Locale::getMessageLocale();
-      Locale::setMessageLocale($lang);
-    }
+  public function get($text) {
+    $parser = function($arg) {
+      if (is_string($arg)) {
+        return dgettext($this->getDomain(), $arg);
+      }
+      return $arg;
+    };
+    $tempLc = setLocale(\LC_MESSAGES, '0');
+    putenv("LC_ALL=$this->lang");
+    setLocale(\LC_MESSAGES, $this->lang);
     if (is_array($text)) {
-      $translation = $this->getArray($text);
+      $translation = Arrays::multiMap($parser, $text);
     } else {
       $translation = dgettext($this->getDomain(), $text);
     }
-    if ($lang !== null) {
-      Locale::setMessageLocale($defaultLocale);
-    }
+    setLocale(\LC_MESSAGES, $tempLc);
     return $translation;
   }
 
   /**
    * Returns the message as translated string
    *
-   * **IMPORTANT:** If the optional `$lang` is not set the translation is done
-   *  using the current system locale
-   *
    * @param  string $msgid1 the singular message being translated
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
-   * @param  string|null $lang optional the locale information (translation language).
    * @return string the message text translated and parsed
    * @uses   \dngettext() dngettext function
    */
-  public function getPlural($msgid1, $msgid2, $n, $lang = null) {
-    if ($lang !== null) {
-      $defaultLocale = Locale::getMessageLocale();
-      Locale::setMessageLocale($lang);
-    }
+  public function getPlural($msgid1, $msgid2, $n) {
+    $tempLc = setLocale(LC_MESSAGES, '0');
+    setLocale(LC_MESSAGES, $this->lang);
     $translation = dngettext($this->getDomain(), $msgid1, $msgid2, $n);
-    if ($lang !== null) {
-      Locale::setMessageLocale($defaultLocale);
-    }
+    setLocale(LC_MESSAGES, $tempLc);
     return $translation;
   }
 
@@ -184,26 +203,6 @@ class Translator {
   }
 
   /**
-   * Returns the the given array of message strings as an array of translated message strings
-   *
-   * @param  mixed[] $messages the messages
-   * @return mixed[] translated messages
-   */
-  public function getArray(array $messages) {
-    $parser = function($arg) {
-      if (is_string($arg)) {
-        return $this->get($arg);
-      }
-      return $arg;
-    };
-    $result = [];
-    if (count($messages) > 0) {
-      $result = Arrays::multiMap($parser, $messages);
-    }
-    return $result;
-  }
-
-  /**
    * Executes the dictionary for the given value
    *
    * @param  mixed $text the value to filter
@@ -231,10 +230,10 @@ class Translator {
   /**
    * Returns the default translator of the system
    *
-   * @return Translator the default translator of the system
+   * @return self the default translator of the system
    */
   public static function defaultTranslator() {
-    return new Translator(null);
+    return new static(null);
   }
 
 }

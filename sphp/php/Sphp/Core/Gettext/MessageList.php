@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Gettext;
 
-use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
+use Sphp\Data\StablePriorityQueue;
 
 /**
  * Class models a list that holds {@link Message} objects in a priority list
@@ -17,9 +17,9 @@ use Sphp\Data\StablePriorityQueue as StablePriorityQueue;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate {
+class MessageList implements LanguageChangerChainInterface, \IteratorAggregate {
 
-  use TranslatorChangerChainTrait;
+  use LanguageChangerChainTrait;
 
   /**
    * Array that holds the messages
@@ -29,18 +29,27 @@ class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate
   private $messages;
 
   /**
+   * The translator object translating the messages
+   *
+   * @var Translator
+   */
+  private $translator;
+
+  /**
    * Constructs a new instance
    *
    * @param  Translator|null $translator the translator component
    */
   public function __construct(Translator $translator = null) {
     $this->messages = new StablePriorityQueue();
-
-    if ($translator !== null) {
-      $this->setTranslator($translator);
-    } else {
-      $this->setTranslator(new Translator());
+    if ($translator === null) {
+      $translator = new Translator();
     }
+    $this->translator = $translator;
+  }
+  
+  public function getTranslator() {
+    return $this->translator;
   }
 
   /**
@@ -51,6 +60,35 @@ class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate
    */
   public function __destruct() {
     unset($this->messages);
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->messages = clone $this->messages;
+  }
+
+  /**
+   * Returns the object as a string.
+   *
+   * @return string the object as a string
+   */
+  public function __toString() {
+    $output = "";
+    if ($this->count() > 0) {
+      $output = self::class . ":\n";
+      foreach (clone $this->messages as $message) {
+        $output .= "\t" . $message . "\n";
+      }
+    } else {
+      $output .= "Empty " . self::class;
+    }
+    return $output;
   }
 
   /**
@@ -82,9 +120,9 @@ class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate
    */
   public function insert(Message $messages, $priority = 0) {
     if (!$this->exists($messages)) {
-      $messages->setTranslator($this->getTranslator());
+      $messages->setLang($this->getTranslator()->getLang());
       $this->messages->insert($messages, $priority);
-      $this->registerTranslatorChangerObserver($messages);
+      $this->registerLanguageChangerObserver($messages);
     }
     return $this;
   }
@@ -140,25 +178,7 @@ class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate
    * @return int the number of {@link Message} objects in the list
    */
   public function count() {
-    return $this->getIterator()->count();
-  }
-
-  /**
-   * Returns the object as a string.
-   *
-   * @return string the object as a string
-   */
-  public function __toString() {
-    $output = "";
-    if ($this->count() > 0) {
-      $output = self::class . ":\n";
-      foreach (clone $this->messages as $message) {
-        $output .= "\t" . $message . "\n";
-      }
-    } else {
-      $output .= "Empty " . self::class;
-    }
-    return $output;
+    return $this->messages->count();
   }
 
   /**
@@ -182,17 +202,6 @@ class MessageList implements TranslatorChangerChainInterface, \IteratorAggregate
   public function clearContent() {
     $this->messages = new StablePriorityQueue();
     return $this;
-  }
-
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    $this->messages = clone $this->messages;
   }
 
 }

@@ -28,6 +28,8 @@ class PdoSessionHandler extends AbstractSessionHandler {
   private $pdo = null;
 
   /**
+   * Constructs a new session object
+   * 
    * Sets the user-level session storage functions which are used
    * for storing and retrieving data associated with a session.
    *
@@ -40,6 +42,31 @@ class PdoSessionHandler extends AbstractSessionHandler {
       $this->pdo = $pdo;
     }
     parent::__construct();
+  }
+
+  public function login($username, $password) {
+    $users = new \Sphp\Db\Objects\SessionUserStorage();
+    $user = $users->findByUserPass($username, $password);
+    if ($user !== null) {
+      //echo "handler->write($id, $sess_data)\n";
+      
+      $update = "UPDATE sessions SET user_id = :uid
+            WHERE id = :id;";
+      $updateStmt = $this->pdo->prepare($update);
+      $uid = $user->getPrimaryKey();
+      $updateStmt->bindParam(':uid', $uid, PDO::PARAM_STR);
+      $sid = $this->getSessionId();
+      $updateStmt->bindParam(':id', $sid, PDO::PARAM_INT);
+      if ($updateStmt->execute()) {
+        if ($updateStmt->rowCount() <= 0) {
+          //echo "updated\n";
+          //throw new \Exception('no rows');
+        } else {
+          //throw new \Exception();
+        }
+      }
+    }
+    return $user !== null;
   }
 
   /**
@@ -66,7 +93,12 @@ class PdoSessionHandler extends AbstractSessionHandler {
    * @return boolean true on success, false on failure
    */
   public function open($save_path, $session_name) {
-    return true;
+    if ($this->pdo !== null) {
+      // Return True
+      return true;
+    }
+    // Return False
+    return false;
   }
 
   /**

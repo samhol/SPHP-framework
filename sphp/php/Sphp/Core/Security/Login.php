@@ -35,7 +35,7 @@ class Login {
   private $messages;
 
   /**
-   * Constructor
+   * Constructs a new instance
    *
    * The possible login actions:
    *
@@ -43,10 +43,12 @@ class Login {
    *  2. login via $_REQUEST data, which means simply logging in via the login form. after the user has submit his username/password successfully, his
    *     logged-in-status is written into his session data on the server. this is the typical behaviour of common login scripts.
    */
-  public function __construct() {
+  public function __construct(\SessionHandlerInterface $sessionHandler = null) {
     $this->messages = new TopicList();
     try {
-      $this->session = new PdoSessionHandler();
+      if ($sessionHandler === null) {
+        $this->session = new PdoSessionHandler();
+      }
       $this->session->startSession();
       if (isset($_REQUEST['sessionEvent'])) {
         if ($_REQUEST['sessionEvent'] == "logout") {
@@ -55,12 +57,12 @@ class Login {
           $this->login();
         }
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->session = null;
       $this->messages->offsetSet("DB", new Message("Tieotokantayhteyden muodostaminen epäonnistui"));
     }
     if (count($this->messages) > 0) {
-      $_SESSION["messages"] = serialize($this->messages);
+      $_SESSION["messages"] = $this->messages;
     }
   }
 
@@ -76,19 +78,12 @@ class Login {
   /**
    * Does the login process when a login form is submitted
    */
-  public function login() {
-    if (isset($_REQUEST['username'], $_REQUEST['password'])) {
-      if (!$this->session->login($_REQUEST['username'], $_REQUEST['password'])) {
+  public function login($username = null, $password = null) {
+    if (isset($username, $password)) {
+      if (!$this->session->login($username, $password)) {
         $this->messages->offsetSet("LoginForm", new Message("Käyttäjätunnus tai salasana on virheellinen"));
       } else {
         $this->messages->offsetSet("LoginForm", new Message("Kirjautuminen onnistui"));
-      }
-    } else {
-      if (empty($_REQUEST["username"])) {
-        $this->messages->offsetSet("username", new Message("Käyttäjätunnus puuttuu"));
-      }
-      if (empty($_REQUEST["password"])) {
-        $this->messages->offsetSet("password", new Message("Salasana puuttuu"));
       }
     }
   }

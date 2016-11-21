@@ -20,15 +20,15 @@ namespace Sphp\Core\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class LoginValidator extends FormValidator {
+class LoginFormValidator extends FormValidator {
 
   /**
    * Constructs a new validator
    */
   public function __construct() {
     parent::__construct();
-    $this->set('username', (new UserNameValidator())->allowEmptyValues(false))
-            ->set('password', new PasswordValidator());
+    $this->set('username', new RequiredValueValidator())
+            ->set('password', new RequiredValueValidator());
   }
 
 }

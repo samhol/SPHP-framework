@@ -2,15 +2,14 @@
 
 namespace Sphp\Core\Gettext;
 
-Locale::setMessageLocale("fi_FI");
-$calendar = new Calendar();
+$calendar = (new Calendar())->setLang('fi_FI');
 echo "Tänään: " . $calendar->getWeekdayName(date("N"));
 echo " " . $calendar->getMonthName(date("n"));
-Locale::setMessageLocale("en_US");
+$calendar->setLang('en_US');
 echo "\nToday: " . $calendar->getWeekdayName(date("N"));
 echo " " . $calendar->getMonthName(date("n"));
 
-Locale::setMessageLocale("fi_FI");
+$calendar->setLang('fi_FI');
 echo "\nWeekdays: ";
 foreach ($calendar->getWeekdays() as $dn => $wd) {
 	echo " $wd";

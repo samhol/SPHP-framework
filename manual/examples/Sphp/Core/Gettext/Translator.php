@@ -2,9 +2,9 @@
 
 namespace Sphp\Core\Gettext;
 
-Locale::setMessageLocale("fi_FI");
+//Locale::setMessageLocale("fi_FI");
 
-$translator = new Translator();
+$translator = new Translator('fi_FI');
 var_dump(
 	$translator->vsprintf("Please insert atleast %s of the following characters (%s)", [2, "a, b, c"]), 
 	$translator->vsprintf("Please insert atleast %s of the following characters (%s)", [2, "a, b, c"]),

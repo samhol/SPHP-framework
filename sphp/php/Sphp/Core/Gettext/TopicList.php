@@ -18,9 +18,9 @@ use Sphp\Data\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements TranslatorChangerChainInterface, \ArrayAccess, \IteratorAggregate {
+class TopicList implements LanguageChangerChainInterface, \ArrayAccess, \IteratorAggregate {
 
-  use TranslatorChangerChainTrait;
+  use LanguageChangerChainTrait;
 
   /**
    * Count mode (topics only)
@@ -40,17 +40,27 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess, \Itera
   private $topics;
 
   /**
+   * The translator object translating the messages
+   *
+   * @var Translator
+   */
+  private $translator;
+
+  /**
    * Constructs a new instance
    *
    * @param  Translator|null $translator the translator component
    */
   public function __construct(Translator $translator = null) {
     $this->topics = new Collection();
-    if ($translator !== null) {
-      $this->setTranslator($translator);
-    } else {
-      $this->setTranslator(new Translator());
+    if ($translator === null) {
+      $translator = new Translator();
     }
+    $this->translator = $translator;
+  }
+
+  public function getTranslator() {
+    return $this->translator;
   }
 
   /**
@@ -235,13 +245,13 @@ class TopicList implements TranslatorChangerChainInterface, \ArrayAccess, \Itera
    */
   public function offsetSet($topic, $m) {
     if ($m instanceof Message) {
-      $m = (new MessageList())->insert($m);
+      $m = (new MessageList($this->getTranslator()))->insert($m);
     }
     if (!($m instanceof MessageList)) {
       throw new \InvalidArgumentException();
     }
-    $m->setTranslator($this->getTranslator());
-    $this->registerTranslatorChangerObserver($m);
+    $m->setLang($this->getTranslator()->getLang());
+    $this->registerLanguageChangerObserver($m);
     $this->topics->offsetSet($topic, $m);
   }
 

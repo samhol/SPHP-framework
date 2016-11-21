@@ -2,13 +2,12 @@
 
 namespace Sphp\Core\Gettext;
 
-Locale::setMessageLocale("fi_FI");
-$messageCont1 = (new MessageList())
+$messageCont1 = (new MessageList())->setLang('fi_FI')
 		->insertMessage("Message priority value %s", ["three"], 3)
 		->insert(new Message("Message priority value %s", ["seven"]), 7)
 		->insert(new Message("Message priority value %s", ["one"]), 1);
 echo $messageCont1;
-$messageCont1->setTranslator(new Translator("foo"));
+$messageCont1->setLang('en_US');
 echo $messageCont1;
 
 $messageCont2 = (new MessageList())

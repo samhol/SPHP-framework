@@ -15,9 +15,9 @@ namespace Sphp\Core\Gettext;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Message implements TranslatorChangerChainInterface {
+class Message implements LanguageChangerChainInterface {
 
-  use TranslatorChangerChainTrait;
+  use LanguageChangerChainTrait;
 
   /**
    * original raw message
@@ -34,6 +34,13 @@ class Message implements TranslatorChangerChainInterface {
   private $args;
 
   /**
+   * The translator object translating the messages
+   *
+   * @var Translator
+   */
+  private $translator;
+
+  /**
    * Constructs a new instance
    *
    * @param  string $message message text
@@ -42,11 +49,24 @@ class Message implements TranslatorChangerChainInterface {
    */
   public function __construct($message, array $args = [], Translator $translator = null) {
     $this->setMessage($message, $args);
-    if ($translator !== null) {
-      $this->setTranslator($translator);
-    } else {
-      $this->setTranslator(new Translator());
+    if ($translator === null) {
+      $translator = new Translator();
     }
+    $this->translator = $translator;
+  }
+  
+  public function getTranslator() {
+    return $this->translator;
+  }
+
+  /**
+   * 
+   * @param string $lang
+   * @return self for PHP Method Chaining
+   */
+  public function setLang($lang) {
+    $this->translator->setLang($lang);
+    return $this;
   }
 
   /**
@@ -68,7 +88,7 @@ class Message implements TranslatorChangerChainInterface {
    * @return string the message as formatted and translated string
    */
   public function parseMessage() {
-    return $this->getTranslator()->vsprintf($this->message, $this->args);
+    return $this->translator->vsprintf($this->message, $this->args);
   }
 
   /**
