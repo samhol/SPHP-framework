@@ -2,6 +2,7 @@
   "name": "sami_holck/sphp_framework",
   "description": "Multipurpose PHP framework for web applications",
   "require": {
+    "php" : "^5.5 || ^7.0",
     "doctrine/orm": "*",
     "myclabs/deep-copy": "~1.5.1",
     "sepia/po-parser": "^4.2",
@@ -10,8 +11,10 @@
     "easybook/geshi": "v1.0.8.15",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
+    "zendframework/zend-i18n": "*",
+    "zendframework/zend-servicemanager": "*",
     "twig/twig": "~1.0",
-    "zurb/foundation": "^6.2",
+    "zurb/foundation": ">=6.2",
     "symfony/yaml": "^3.0"
   },
   "license": "GNU",
