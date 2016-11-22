@@ -83,7 +83,7 @@ private $zendTranslator;
     $this->lang = $lang;
     $this->zendTranslator = new ZendTranslator();
     $this->zendTranslator->addTranslationFilePattern(new \Zend\I18n\Translator\Loader\Gettext(), \Sphp\LOCALE_PATH, '/var/messages/%s/messages.mo', \Sphp\DEFAULT_DOMAIN);
-            
+    
   }
 
   public function getLang() {

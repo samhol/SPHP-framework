@@ -47,7 +47,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
    */
   public function testSingular() {
     $zendTranslator = new ZendTranslator();
-    $zendTranslator->addTranslationFilePattern('gettext', 'D:\web_projects\SPHP-framework\sphp\locale', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults');
+    $zendTranslator->addTranslationFilePattern('gettext', '..\sphp\locale', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults');
    var_dump($zendTranslator->translate("year", \Sphp\DEFAULT_DOMAIN, 'fi_FI'));
     var_dump($this->translator->get("year"));
     var_dump(\Sphp\LOCALE_PATH.'\%s\LC_MESSAGES\Sphp.Defaults.mo');
