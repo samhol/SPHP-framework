@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 use Sphp\Core\Types\Arrays;
 use Sphp\Data\Collection;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 //Locale::setMessageLocale("fi_FI");
 

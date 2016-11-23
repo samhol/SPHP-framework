@@ -5,13 +5,10 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Gettext;
-
-if (!defined('LC_MESSAGES')) {
-  define('LC_MESSAGES', 6);
-}
+namespace Sphp\Core\I18n;
 
 use Sphp\Core\Types\Arrays;
+use Zend\I18n\Translator\Translator;
 
 /**
  * A class for natural language translations
@@ -30,7 +27,7 @@ use Sphp\Core\Types\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Translator {
+class ZendTranslator extends Translator {
 
   /**
    * the name (filename) of the used text domain
@@ -61,6 +58,12 @@ class Translator {
   private $lang;
 
   /**
+   *
+   * @var ZendTranslator 
+   */
+  private $zendTranslator;
+
+  /**
    * Constructs a new instance
    *
    * **IMPORTANT:**
@@ -72,6 +75,7 @@ class Translator {
    * @param string $charset the character set of the dictionary
    */
   public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = 'UTF-8') {
+    parent::__construct();
     if ($domain === null) {
       throw new Exception('no domain');
     } else {
@@ -80,6 +84,8 @@ class Translator {
     $this->directory = $directory;
     $this->charset = $charset;
     $this->lang = $lang;
+    $this->zendTranslator = new ZendTranslator();
+    $this->zendTranslator->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, '/var/messages/%s/messages.mo', \Sphp\DEFAULT_DOMAIN);
   }
 
   public function getLang() {

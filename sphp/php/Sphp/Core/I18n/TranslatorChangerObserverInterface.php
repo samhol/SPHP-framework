@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 /**
  * Interface models an observer for {@link TranslatorChangerInterface} objects

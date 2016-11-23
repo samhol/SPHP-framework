@@ -1,10 +1,10 @@
 <?php
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 //Locale::setMessageLocale("fi_FI");
 
-$translator = new Translator('fi_FI');
+$translator = new Translator('fi_FI.utf8');
 var_dump(
 	$translator->vsprintf("Please insert atleast %s of the following characters (%s)", [2, "a, b, c"]), 
 	$translator->vsprintf("Please insert atleast %s of the following characters (%s)", [2, "a, b, c"]),

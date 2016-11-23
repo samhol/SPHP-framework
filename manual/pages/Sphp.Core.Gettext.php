@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
@@ -13,7 +13,7 @@ echo $parsedown->text(<<<MD
 The $gettext functions implement an NLS (Native Language Support) API which can 
 be used to internationalize your PHP applications. Please see the gettext 
 documentation for your system for a thorough explanation of these functions or 
-view the docs at http://www.gnu.org/software/gettext/manual/gettext.html.
+view the docs at http://www.gnu.org/software/gettext/manual/gettext.html. 
 $ns
 PHP has {$php->extensionLink('gettext')} to handle simple human language translation process.
 
@@ -27,7 +27,7 @@ By default, the encoding is frequently `iso-8859-1`.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/localeSetting.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/localeSetting.php", "text", false);
 echo $parsedown->text(<<<MD
 
 However the framework offers an object oriented way for human 
@@ -37,7 +37,7 @@ language translation related processes.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/sphpTranslation.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/sphpTranslation.php", "text", false);
 
 $locale = $api->classLinker(Locale::class);
 $translator = $api->classLinker(Translator::class);
@@ -52,13 +52,13 @@ gettext extension and the current locale information provided by the $locale cla
 The $translator class supports both basic...
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.singular.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Translator.singular.php", "text", false);
 
 echo $parsedown->text(<<<MD
 ...and plural Gettext translation.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.plural.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Translator.plural.php", "text", false);
 
 $vsprintfLink = $php->functionLink("vsprintf");
 echo $parsedown->text(<<<MD
@@ -68,7 +68,7 @@ method for translating a multidimensional array of message strings (plural form
 is not supported).
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Translator.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Translator.php", "text", false);
 $message =  $api->classLinker(Message::class);
 $messageContainer =  $api->classLinker(MessageList::class);
 $echo = $php->functionLink("echo");
@@ -85,7 +85,7 @@ object. If no $translator is given the default translator is used.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Message.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Message.php", "text", false);
 $translatorChangerObserverInterface =  $api->classLinker(TranslatorChangerObserverInterface::class);
 $translatorChangerChainInterface =  $api->classLinker(TranslatorChangerChainInterface::class);
 
@@ -108,7 +108,7 @@ its messages by notifying them via the $translatorChangerChainInterface.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/MessageContainer.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/MessageContainer.php", "text", false);
 $topicContainer =  $api->classLinker(TopicList::class);
 $messageContainers =  $api->classLinker(MessageList::class, "MessageLists");
 
@@ -127,7 +127,7 @@ $message object translation within a $topicContainer class works the same way as
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/TopicContainer.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/TopicContainer.php", "text", false);
 $calendar =  $api->classLinker(Calendar::class);
 echo $parsedown->text(<<<MD
 ##Localized calendar related translations
@@ -136,5 +136,5 @@ The $calendar class.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Gettext/Calendar.php", "text", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Calendar.php", "text", false);
 

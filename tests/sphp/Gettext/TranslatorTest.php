@@ -3,6 +3,7 @@
 namespace Sphp\Core\Gettext;
 
 use Zend\I18n\Translator\Translator as ZendTranslator;
+
 /**
  */
 class TranslatorTest extends \PHPUnit_Framework_TestCase {
@@ -48,9 +49,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
   public function testSingular() {
     $zendTranslator = new ZendTranslator();
     $zendTranslator->addTranslationFilePattern('gettext', '..\sphp\locale', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults');
-   var_dump($zendTranslator->translate("year", \Sphp\DEFAULT_DOMAIN, 'fi_FI'));
+    echo "\n" . __DIR__ . "\n";
+    var_dump($zendTranslator->translate("year", \Sphp\DEFAULT_DOMAIN, 'fi_FI'));
     var_dump($this->translator->get("year"));
-    var_dump(\Sphp\LOCALE_PATH.'\%s\LC_MESSAGES\Sphp.Defaults.mo');
+    var_dump(\Sphp\LOCALE_PATH . '\%s\LC_MESSAGES\Sphp.Defaults.mo');
     //$this->assertEquals($this->translator->get("year"), "vuosi");
     //$this->assertEquals($this->translator->get("month", "en_US"), "month");
   }

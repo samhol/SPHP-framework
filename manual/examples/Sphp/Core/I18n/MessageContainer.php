@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 $messageCont1 = (new MessageList())->setLang('fi_FI')
 		->insertMessage("Message priority value %s", ["three"], 3)

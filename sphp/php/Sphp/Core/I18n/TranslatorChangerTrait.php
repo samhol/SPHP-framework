@@ -1,21 +1,21 @@
 <?php
 
 /**
- * LanguageChangerTrait.php (UTF-8)
+ * TranslatorChangerTrait.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Core\Gettext;
+namespace Sphp\Core\I18n;
 
 /**
- * Trait implements some of the methods defined in the {@link LanguageChangerInterface}
+ * Trait implements some of the methods defined in the {@link TranslatorChangerInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-18
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait LanguageChangerTrait {
+trait TranslatorChangerTrait {
 
   /**
    * contains all {@link TranslatorChangeObserverInterface} observers
@@ -25,12 +25,19 @@ trait LanguageChangerTrait {
   private $observers;
 
   /**
+   * The translator object translating the messages
+   *
+   * @var Translator
+   */
+  private $translator;
+
+  /**
    * Registers a {@link Translator} change observer
    *
-   * @param  LanguageChangerObserverInterface $o observer
+   * @param  TranslatorChangerObserverInterface $o observer
    * @return self for PHP Method Chaining
    */
-  public function registerLanguageChangerObserver(LanguageChangerObserverInterface $o) {
+  public function registerTranslatorChangerObserver(TranslatorChangerObserverInterface $o) {
     if ($this->observers === null) {
       $this->observers = new \SplObjectStorage();
     }
@@ -41,10 +48,10 @@ trait LanguageChangerTrait {
   /**
    * Unregisters a {@link Translator} change observer
    *
-   * @param  LanguageChangerObserverInterface $o observer
+   * @param  TranslatorChangerObserverInterface $o observer
    * @return self for PHP Method Chaining
    */
-  public function unregisterLanguageChangerObserver(LanguageChangerObserverInterface $o) {
+  public function unregisterTranslatorChangerObserver(TranslatorChangerObserverInterface $o) {
     if ($this->observers !== null) {
       $this->observers->detach($o);
     }
@@ -52,15 +59,15 @@ trait LanguageChangerTrait {
   }
 
   /**
-   * Notifies all of the {@link LanguageChangerObserverInterface} observers
+   * Notifies all of the {@link TranslatorChangerObserverInterface} observers
    *
-   * @param  string $lang the translator component to pass on to the observers
+   * @param  Translator the translator component to pass on to the observers
    * @return self for PHP Method Chaining
    */
-  public function notifyLanguageChangeObservers($lang) {
+  public function notifyTranslatorChangeObservers(Translator $translator) {
     if ($this->observers !== null) {
       foreach ($this->observers as $observer) {
-        $observer->notifyLanguageChange($lang);
+        $observer->notifyTranslatorChange($translator);
       }
     }
     return $this;
@@ -69,12 +76,13 @@ trait LanguageChangerTrait {
   /**
    * Sets the translator component for message translation
    *
-   * @param  string $lang the translator component
+   * @param  Translator $translator the translator component
    * @return self for PHP Method Chaining
    * @uses   self::notifyTranslatorChangeObservers()
    */
-  public function setLang($lang) {
-    $this->getTranslator()->setLang($lang);
+  public function setTranslator(Translator $translator) {
+    $this->translator = $translator;
+    $this->notifyTranslatorChangeObservers($translator);
     return $this;
   }
 
@@ -83,5 +91,11 @@ trait LanguageChangerTrait {
    *
    * @return Translator the translator component
    */
-  abstract public function getTranslator();
+  public function getTranslator() {
+    if ($this->translator === null) {
+      $this->setTranslator(new Translator());
+    }
+    return $this->translator;
+  }
+
 }

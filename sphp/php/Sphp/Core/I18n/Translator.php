@@ -7,8 +7,11 @@
 
 namespace Sphp\Core\I18n;
 
+if (!defined('LC_MESSAGES')) {
+  define('LC_MESSAGES', 6);
+}
+
 use Sphp\Core\Types\Arrays;
-use Zend\I18n\Translator\Translator as ZendTranslator;
 
 /**
  * A class for natural language translations
@@ -56,11 +59,7 @@ class Translator {
    * @var string
    */
   private $lang;
-  /**
-   *
-   * @var ZendTranslator 
-   */
-private $zendTranslator;
+
   /**
    * Constructs a new instance
    *
@@ -72,7 +71,7 @@ private $zendTranslator;
    * @param string $directory the locale path of the dictionary
    * @param string $charset the character set of the dictionary
    */
-  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = 'UTF-8') {
+  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = 'utf8') {
     if ($domain === null) {
       throw new Exception('no domain');
     } else {
@@ -81,9 +80,6 @@ private $zendTranslator;
     $this->directory = $directory;
     $this->charset = $charset;
     $this->lang = $lang;
-    $this->zendTranslator = new ZendTranslator();
-    $this->zendTranslator->addTranslationFilePattern(new \Zend\I18n\Translator\Loader\Gettext(), \Sphp\LOCALE_PATH, '/var/messages/%s/messages.mo', \Sphp\DEFAULT_DOMAIN);
-    
   }
 
   public function getLang() {
@@ -144,8 +140,8 @@ private $zendTranslator;
       return $arg;
     };
     $tempLc = setLocale(\LC_MESSAGES, '0');
-    putenv("LC_ALL=$this->lang");
-    setLocale(\LC_MESSAGES, $this->lang);
+    //putenv("LC_ALL=$this->lang");
+    setLocale(\LC_MESSAGES, "$this->lang");
     if (is_array($text)) {
       $translation = Arrays::multiMap($parser, $text);
     } else {
