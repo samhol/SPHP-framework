@@ -8,6 +8,8 @@
 namespace Sphp\Core\I18n;
 
 use Sphp\Data\StablePriorityQueue;
+use Sphp\Core\I18n\TranslatorInterface;
+use Sphp\Core\I18n\Gettext\Translator;
 
 /**
  * Class models a list that holds {@link Message} objects in a priority list
@@ -17,9 +19,9 @@ use Sphp\Data\StablePriorityQueue;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements LanguageChangerChainInterface, \IteratorAggregate {
+class MessageList implements \IteratorAggregate, TranslatorAwareInterface {
 
-  use LanguageChangerChainTrait;
+  use TranslatorAwareTrait;
 
   /**
    * Array that holds the messages
@@ -29,27 +31,16 @@ class MessageList implements LanguageChangerChainInterface, \IteratorAggregate {
   private $messages;
 
   /**
-   * The translator object translating the messages
-   *
-   * @var Translator
-   */
-  private $translator;
-
-  /**
    * Constructs a new instance
    *
-   * @param  Translator|null $translator the translator component
+   * @param  TranslatorInterface|null $translator the translator component
    */
-  public function __construct(Translator $translator = null) {
+  public function __construct(TranslatorInterface $translator = null) {
     $this->messages = new StablePriorityQueue();
     if ($translator === null) {
       $translator = new Translator();
     }
-    $this->translator = $translator;
-  }
-  
-  public function getTranslator() {
-    return $this->translator;
+    $this->setTranslator($translator);
   }
 
   /**
@@ -122,7 +113,6 @@ class MessageList implements LanguageChangerChainInterface, \IteratorAggregate {
     if (!$this->exists($messages)) {
       $messages->setLang($this->getTranslator()->getLang());
       $this->messages->insert($messages, $priority);
-      $this->registerLanguageChangerObserver($messages);
     }
     return $this;
   }

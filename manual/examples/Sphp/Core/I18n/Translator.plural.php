@@ -1,8 +1,6 @@
 <?php
 
-namespace Sphp\Core\I18n;
-
-//Locale::setMessageLocale("fi_FI");
+namespace Sphp\Core\I18n\Gettext;
 
 $translator = new Translator('fi_FI');
 var_dump(

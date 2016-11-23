@@ -40,12 +40,12 @@ MD
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/sphpTranslation.php", "text", false);
 
 $locale = $api->classLinker(Locale::class);
-$translator = $api->classLinker(Translator::class);
+$translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
-##The $translator class
+##The $translator
 
-The $translator class is the base class for all human language translation related 
+The $translator is the base interface for all human language translation related 
 operations in this framework. It translates given input by using PHP's build in 
 gettext extension and the current locale information provided by the $locale class.
 		
@@ -69,8 +69,8 @@ is not supported).
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Translator.php", "text", false);
-$message =  $api->classLinker(Message::class);
-$messageContainer =  $api->classLinker(MessageList::class);
+$message = $api->classLinker(Message::class);
+$messageContainer = $api->classLinker(MessageList::class);
 $echo = $php->functionLink("echo");
 $print = $php->functionLink("print");
 $string = $php->typeLink("string");
@@ -86,8 +86,8 @@ MD
 );
 
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Message.php", "text", false);
-$translatorChangerObserverInterface =  $api->classLinker(TranslatorChangerObserverInterface::class);
-$translatorChangerChainInterface =  $api->classLinker(TranslatorChangerChainInterface::class);
+$translatorChangerObserverInterface = $api->classLinker(TranslatorAwareInterface::class);
+$translatorChangerChainInterface = $api->classLinker(TranslatorAwareTrait::class);
 
 echo $parsedown->text(<<<MD
 ##$message grouping and prioritizing with $messageContainer class
@@ -109,8 +109,8 @@ its messages by notifying them via the $translatorChangerChainInterface.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/MessageContainer.php", "text", false);
-$topicContainer =  $api->classLinker(TopicList::class);
-$messageContainers =  $api->classLinker(MessageList::class, "MessageLists");
+$topicContainer = $api->classLinker(TopicList::class);
+$messageContainers = $api->classLinker(MessageList::class, "MessageLists");
 
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
@@ -128,7 +128,7 @@ $message object translation within a $topicContainer class works the same way as
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/TopicContainer.php", "text", false);
-$calendar =  $api->classLinker(Calendar::class);
+$calendar = $api->classLinker(Calendar::class);
 echo $parsedown->text(<<<MD
 ##Localized calendar related translations
 

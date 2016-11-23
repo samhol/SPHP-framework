@@ -7,6 +7,9 @@
 
 namespace Sphp\Core\I18n;
 
+use Sphp\Core\I18n\TranslatorInterface;
+use Sphp\Core\I18n\Gettext\Translator;
+
 /**
  * Class defines an message object for a HTML-form element
  *
@@ -15,9 +18,9 @@ namespace Sphp\Core\I18n;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Message implements LanguageChangerChainInterface {
+class Message implements TranslatorAwareInterface {
 
-  use LanguageChangerChainTrait;
+  use TranslatorAwareTrait;
 
   /**
    * original raw message
@@ -34,39 +37,18 @@ class Message implements LanguageChangerChainInterface {
   private $args;
 
   /**
-   * The translator object translating the messages
-   *
-   * @var Translator
-   */
-  private $translator;
-
-  /**
    * Constructs a new instance
    *
    * @param  string $message message text
    * @param  scalar[] $args arguments
-   * @param  Translator|null $translator the translator component
+   * @param  TranslatorInterface|null $translator the translator component
    */
-  public function __construct($message, array $args = [], Translator $translator = null) {
+  public function __construct($message, array $args = [], TranslatorInterface $translator = null) {
     $this->setMessage($message, $args);
     if ($translator === null) {
       $translator = new Translator();
     }
-    $this->translator = $translator;
-  }
-  
-  public function getTranslator() {
-    return $this->translator;
-  }
-
-  /**
-   * 
-   * @param string $lang
-   * @return self for PHP Method Chaining
-   */
-  public function setLang($lang) {
-    $this->translator->setLang($lang);
-    return $this;
+    $this->setTranslator($translator);
   }
 
   /**

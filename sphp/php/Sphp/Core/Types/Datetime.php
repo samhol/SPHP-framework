@@ -23,10 +23,10 @@ use Sphp\Core\Gettext\TranslatorChangerTrait;
  * @link    http://www.php.net/manual/en/class.datetime.php The DateTime class (PHP manual)
  * @filesource
  */
-class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, TranslatorChangerInterface {
+class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, TranslationChangerInterface {
 
   use EqualsTrait,
-      TranslatorChangerTrait;
+      TranslationChangerTrait;
 
   /**
    * describes the format of the Finnish date

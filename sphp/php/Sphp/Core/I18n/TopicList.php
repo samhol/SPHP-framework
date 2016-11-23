@@ -7,6 +7,8 @@
 
 namespace Sphp\Core\I18n;
 
+use Sphp\Core\I18n\TranslatorInterface;
+use Sphp\Core\I18n\Gettext\Translator;
 use Sphp\Core\Types\Arrays;
 use Sphp\Data\Collection;
 
@@ -18,9 +20,9 @@ use Sphp\Data\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements LanguageChangerChainInterface, \ArrayAccess, \IteratorAggregate {
+class TopicList implements \ArrayAccess, \IteratorAggregate, TranslatorAwareInterface {
 
-  use LanguageChangerChainTrait;
+  use TranslatorAwareTrait;
 
   /**
    * Count mode (topics only)
@@ -40,27 +42,16 @@ class TopicList implements LanguageChangerChainInterface, \ArrayAccess, \Iterato
   private $topics;
 
   /**
-   * The translator object translating the messages
-   *
-   * @var Translator
-   */
-  private $translator;
-
-  /**
    * Constructs a new instance
    *
    * @param  Translator|null $translator the translator component
    */
-  public function __construct(Translator $translator = null) {
+  public function __construct(TranslatorInterface $translator = null) {
     $this->topics = new Collection();
     if ($translator === null) {
       $translator = new Translator();
     }
-    $this->translator = $translator;
-  }
-
-  public function getTranslator() {
-    return $this->translator;
+    $this->setTranslator($translator);
   }
 
   /**
@@ -251,7 +242,6 @@ class TopicList implements LanguageChangerChainInterface, \ArrayAccess, \Iterato
       throw new \InvalidArgumentException();
     }
     $m->setLang($this->getTranslator()->getLang());
-    $this->registerLanguageChangerObserver($m);
     $this->topics->offsetSet($topic, $m);
   }
 
