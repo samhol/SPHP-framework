@@ -18,7 +18,7 @@ use Sphp\Core\I18n\Gettext\Translator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Message implements MessageInterface, TranslatorAwareInterface {
+class Message implements MessageInterface {
 
   use TranslatorAwareTrait;
 
@@ -35,7 +35,6 @@ class Message implements MessageInterface, TranslatorAwareInterface {
    * @var scalar[]
    */
   private $args;
-  
   private $translateArgs = false;
 
   /**
@@ -72,12 +71,12 @@ class Message implements MessageInterface, TranslatorAwareInterface {
    * @param type $translateArgs
    * @return $this
    */
-  public function setArguments( $args, $translateArgs = false) {
+  public function setArguments($args, $translateArgs = false) {
     $this->args = $args;
     $this->args = $translateArgs;
     return $this;
   }
-  
+
   public function translateArguments($translateArgs = false) {
     $this->translateArgs = $translateArgs;
     return $this;
