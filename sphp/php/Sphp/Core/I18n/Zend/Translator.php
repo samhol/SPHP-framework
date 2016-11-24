@@ -10,11 +10,16 @@ namespace Sphp\Core\I18n\Zend;
 use Sphp\Core\I18n\AbstractTranslator;
 use Sphp\Core\Types\Arrays;
 use Zend\I18n\Translator\Translator as ZendTranslator;
+use ReflectionClass;
+use Exception;
 
 /**
  * Implementation of natural language translator
  *
  * The underlying technology used in translation is Zend's translator class
+ *
+ * @method self addTranslationFilePattern(string $type, string $baseDir,string $pattern, string $textDomain = 'default')
+ * @method self toAscii(string $str, bool $removeUnsupported = true)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
@@ -59,6 +64,12 @@ class Translator extends AbstractTranslator {
   private $translator;
 
   /**
+   *
+   * @var ReflectionClass 
+   */
+  private $reflector;
+
+  /**
    * Constructs a new instance
    *
    * **IMPORTANT:**
@@ -74,19 +85,37 @@ class Translator extends AbstractTranslator {
       $t = new ZendTranslator();
     }
     $this->translator = $t;
-    if ($domain === null) {
-      throw new Exception('no domain');
-    } else {
-      $this->domain = $domain;
-    }
-    $this->directory = $directory;
-    $this->charset = $charset;
     $this->lang = $lang;
-    $this->translator->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, '/var/messages/%s/messages.mo', \Sphp\DEFAULT_DOMAIN);
+    $this->reflector = new ReflectionClass($this->translator);
+  }
+
+  /**
+   * 
+   * @param string $name
+   * @param mixed[] $arguments
+   * @return \Sphp\Core\I18n\Zend\Translator
+   * @throws BadMethodCallException
+   */
+  public function __call($name, array $arguments = []) {
+    try {
+      $result = $this->reflector->getMethod($name)->invokeArgs($this->translator, $arguments);
+    } catch (Exception $ex) {
+      throw new BadMethodCallException($name . ' is not a valid method', 0, $ex);
+    }
+    if ($result !== null && $result !== $this->translator) {
+      return $result;
+    } else {
+      return $this;
+    }
+  }
+
+  public function addTranslationFilePattern($type, $baseDir, $pattern, $textDomain) {
+    $this->translator->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
+    return $this;
   }
 
   public function getLang() {
-    return $this->lang;
+    return $this->translator->getLocale();
   }
 
   /**
@@ -95,7 +124,17 @@ class Translator extends AbstractTranslator {
    * @return self for PHP Method Chaining
    */
   public function setLang($lang) {
-    $this->lang = $lang;
+    $this->translator->setLocale($lang);
+    return $this;
+  }
+
+  /**
+   * Returns the name of the text domain
+   *
+   * @return string the name (filename) of the text domain
+   */
+  public function setUsedDomain($domain) {
+    $this->domain = $domain;
     return $this;
   }
 
@@ -114,7 +153,7 @@ class Translator extends AbstractTranslator {
    * @return string the directory containing the dictionaries
    */
   public function getDirectory() {
-    return $this->directory;
+    return $this->translator-- > directory;
   }
 
   /**

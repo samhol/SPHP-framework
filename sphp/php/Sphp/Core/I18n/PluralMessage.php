@@ -18,16 +18,28 @@ use Sphp\Core\I18n\Gettext\Translator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PluralMessage implements MessageInterface, TranslatorAwareInterface {
-
-  use TranslatorAwareTrait;
+class PluralMessage extends AbstractMessage {
 
   /**
-   * original raw message
+   * original raw singular message
    *
    * @var string
    */
-  private $message;
+  private $msgid1;
+
+  /**
+   * original raw plural message
+   *
+   * @var string
+   */
+  private $msgid2;
+  /**
+   * the number (e.g. item count) to determine the translation for the respective grammatical number.
+   *
+   * @var int
+   */
+  private $n;
+
 
   /**
    * original raw message arguments
@@ -35,53 +47,35 @@ class PluralMessage implements MessageInterface, TranslatorAwareInterface {
    * @var scalar[]
    */
   private $args;
-  
   private $translateArgs = false;
 
   /**
    * Constructs a new instance
    *
-   * @param  string $message message text
+   * @param  string $msgid1 the singular message text
+   * @param  string $msgid2 the plural message text
    * @param  null|mixed|mixed[] $args the arguments or null for no arguments
    * @param  TranslatorInterface|null $translator the translator component
    */
-  public function __construct($message, $args = null, TranslatorInterface $translator = null) {
-    $this->setMessage($message, $args);
-    if ($translator === null) {
-      $translator = new Translator();
-    }
-    $this->setTranslator($translator);
+  public function __construct($msgid1, $msgid2, $n, $args = null, $translateArgs = false, TranslatorInterface $translator = null) {
+    parent::__construct($args, $translateArgs, $translator);
+    $this->setMessage($msgid1, $msgid2);
   }
 
   /**
    * Sets the message text
    *
-   * @param  string $message the message text
+   * @param  string $msgid1 the singular message text
+   * @param  string $msgid2 the plural message text
    * @param  scalar[] $args arguments
    * @return self for PHP Method Chaining
    */
-  private function setMessage($message, array $args = []) {
-    $this->message = $message;
-    $this->translateArgs = $args;
+  private function setMessage($msgid1, $msgid2) {
+    $this->msgid1 = $msgid1;
+    $this->msgid2 = $msgid2;
     return $this;
   }
 
-  /**
-   * 
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
-   * @param type $translateArgs
-   * @return $this
-   */
-  public function setArguments( $args, $translateArgs = false) {
-    $this->args = $args;
-    $this->args = $translateArgs;
-    return $this;
-  }
-  
-  public function translateArguments($translateArgs = false) {
-    $this->translateArgs = $translateArgs;
-    return $this;
-  }
 
   /**
    * Returns the message as formatted and translated string

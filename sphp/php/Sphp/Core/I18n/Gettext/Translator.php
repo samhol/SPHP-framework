@@ -128,14 +128,15 @@ class Translator extends AbstractTranslator {
     //putenv("LC_ALL=$this->lang");  
     putenv("LC_ALL=$this->lang");
     //var_dump(getenv('LC_ALL'));
-    setLocale(\LC_ALL, "$this->lang");
+    setLocale(\LC_MESSAGES, $this->lang);
+    //var_dump(setLocale(\LC_MESSAGES, '0'));
     //var_dump(setLocale(\LC_ALL, "0"));
     if (is_array($text)) {
       $translation = Arrays::multiMap($parser, $text);
     } else {
       $translation = dgettext($this->domain, $text);
     }
-    setLocale(\LC_ALL, $tempLc);
+    setLocale(\LC_MESSAGES, $tempLc);
     return $translation;
   }
 

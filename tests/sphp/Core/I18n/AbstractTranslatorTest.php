@@ -11,10 +11,7 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
    */
   protected $translator;
 
-  /**
-   * @return TranslatorInterface
-   */
-  abstract function getTranslator();
+  
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
@@ -34,15 +31,7 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
   /**
    */
   public function testSingular() {
-    /*$zendTranslator = new ZendTranslator();
-    $zendTranslator->addTranslationFilePattern('gettext', '..\sphp\locale', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults');
-    echo "\n" . __DIR__ . "\n";
-    var_dump($zendTranslator->translate("year", \Sphp\DEFAULT_DOMAIN, 'fi_FI'));
-    var_dump($this->translator->get("year"));
-    var_dump(\Sphp\LOCALE_PATH . '\%s\LC_MESSAGES\Sphp.Defaults.mo');*/
-    //$this->translator->setLang('en_UK');
     $this->assertEquals($this->translator->get('year'), 'vuosi');
-    //$this->assertEquals($this->translator->get('year'), 'year');
   }
 
   /**
