@@ -8,7 +8,9 @@ $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 $gettext = $php->extensionLink("gettext", "Gettext");
 echo $parsedown->text(<<<MD
-#Native Language Support
+#Internationalization and localization (I18n)        
+Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. Localization (l10n), is the process of adapting applications and text to enable their usability in a particular cultural or linguistic market.
+##Native Language Support
         
 The $gettext functions implement an NLS (Native Language Support) API which can 
 be used to internationalize your PHP applications. Please see the gettext 

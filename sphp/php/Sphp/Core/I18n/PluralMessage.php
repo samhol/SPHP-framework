@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Message.php (UTF-8)
+ * PluralMessage.php (UTF-8)
  * Copyright (c) 2010 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -18,7 +18,7 @@ use Sphp\Core\I18n\Gettext\Translator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Message implements MessageInterface, TranslatorAwareInterface {
+class PluralMessage implements MessageInterface, TranslatorAwareInterface {
 
   use TranslatorAwareTrait;
 

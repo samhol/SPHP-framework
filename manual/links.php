@@ -11,7 +11,7 @@ $sidenavLinks['core'] = ['group' => 'Core components', 'sub' =>
         ['href' => "$httpRoot?page=Sphp.Core.Observers.and.Events", 'text' => 'Events and Observers'],
         ['href' => "$httpRoot?page=Sphp.Core.Types", 'text' => 'Core types and utlilities'],
         ['href' => "$httpRoot?page=Sphp.Core.Filters", 'text' => 'Data filtering'],
-        ['href' => "$httpRoot?page=Sphp.Core.Gettext", 'text' => 'Native Language Support'],
+        ['href' => "$httpRoot?page=Sphp.Core.I18n", 'text' => 'Native Language Support'],
         ['href' => "$httpRoot?page=Sphp.Net", 'text' => 'Network applications']
     ]
 ];
