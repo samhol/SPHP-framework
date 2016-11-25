@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * TranslatorAwareInterface.php (UTF-8)
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Core\I18n;
@@ -11,7 +10,10 @@ namespace Sphp\Core\I18n;
 /**
  * Description of TranslatorAwareInterface
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2012-05-05
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 interface TranslatorAwareInterface {
 
@@ -20,7 +22,6 @@ interface TranslatorAwareInterface {
    *
    * @param  TranslatorInterface $translator the translator component
    * @return self for PHP Method Chaining
-   * @uses   self::notifyTranslatorChangeObservers()
    */
   public function setTranslator(TranslatorInterface $translator);
 
@@ -38,6 +39,7 @@ interface TranslatorAwareInterface {
    * @return self for PHP Method Chaining
    */
   public function setLang($lang);
+
   /**
    * Sets the translator component for message translation
    *

@@ -2,7 +2,7 @@
 
 /**
  * PluralMessage.php (UTF-8)
- * Copyright (c) 2010 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Core\I18n;
@@ -13,7 +13,7 @@ use Sphp\Core\I18n\TranslatorInterface;
  * Implemants a translatable message object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2010-09-02
+ * @since   2016-09-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -55,6 +55,24 @@ class PluralMessage extends AbstractMessage {
   }
 
   /**
+   * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
+   * @return self for PHP Method Chaining
+   */
+  public function isPlural($plural = true) {
+    $this->n = $plural ? 2 : 1;
+    return $this;
+  }
+
+  /**
+   * @param  int $n the number (e.g. item count) to determine the translation for the respective grammatical number
+   * @return self for PHP Method Chaining
+   */
+  public function setItemCount($n) {
+    $this->n = $n;
+    return $this;
+  }
+
+  /**
    * Sets the message text
    *
    * @param  string $msgid1 the singular message text
@@ -72,7 +90,7 @@ class PluralMessage extends AbstractMessage {
    *
    * @return string the message as formatted and translated string
    */
-  public function parseMessage() {
+  public function translate() {
     return $this->getTranslator()->vsprintfPlural($this->msgid1, $this->msgid2, $this->n, $this->getArguments(), false);
   }
 

@@ -2,7 +2,7 @@
 
 /**
  * MessageList.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Core\I18n;
@@ -22,14 +22,19 @@ use IteratorAggregate;
  */
 class MessageList implements IteratorAggregate, MessageCollectionInterface {
 
-  use TranslatorAwareTrait;
-
   /**
    * Array that holds the messages
    *
-   * @var  StablePriorityQueue
+   * @var StablePriorityQueue
    */
   private $messages;
+
+  /**
+   * the inner translator 
+   *
+   * @var TranslatorInterface
+   */
+  private $translator;
 
   /**
    * Constructs a new instance
@@ -51,7 +56,7 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->messages);
+    unset($this->messages, $this->translator);
   }
 
   /**
@@ -83,8 +88,32 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
     return $output;
   }
 
+  public function getLang() {
+    return $this->getTranslator()->getLang();
+  }
+
+  public function getTranslator() {
+    return $this->translator;
+  }
+
+  public function setLang($lang) {
+    $this->getTranslator()->setLang($lang);
+    foreach ($this as $message) {
+      $message->setLang($lang);
+    }
+    return $this;
+  }
+
+  public function setTranslator(TranslatorInterface $translator) {
+    $this->translator = $translator;
+    foreach ($this as $message) {
+      $message->setTranslator($translator);
+    }
+    return $this;
+  }
+
   /**
-   * Inserts new messages to the container
+   * Inserts new messages object to the container
    *
    * **Important:** The message inserted becomes also a
    * {@link TranslatorChangerObserver} observers for the container
@@ -94,7 +123,7 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
    * @param  int $priority the priority of the message
    * @return self for PHP Method Chaining
    */
-  public function insertMessage($messageText, array $args = [], $priority = 0) {
+  public function insertMessage($messageText, $args = null, $priority = 0) {
     $m = (new Message($messageText, $args));
     $this->insert($m, $priority);
     return $this;
@@ -103,16 +132,13 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
   /**
    * Inserts new messages to the container
    *
-   * **Important:** The message inserted becomes also a
-   * {@link TranslatorChangerObserver} observers for the container
-   *
-   * @param  Message $messages the message text
+   * @param  MessageInterface $messages the message text
    * @param  int $priority the priority of the message
    * @return self for PHP Method Chaining
    */
-  public function insert(Message $messages, $priority = 0) {
+  public function insert(MessageInterface $messages, $priority = 0) {
     if (!$this->exists($messages)) {
-      $messages->setLang($this->getTranslator()->getLang());
+      $messages->setLang($this->getLang());
       $this->messages->insert($messages, $priority);
     }
     return $this;
@@ -120,9 +146,6 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
 
   /**
    * Merges given {@link MessageList} to this container
-   *
-   * **Important:** The messages inserted become also a
-   * {@link TranslatorChangerObserver} observers for the container
    *
    * @param  MessageList $m
    * @return self for PHP Method Chaining
@@ -147,13 +170,7 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
     return $arr;
   }
 
-  /**
-   * Checks whether the given {@link Message} exists in the list
-   *
-   * @param  Message $message the message to search for
-   * @return boolean true, if the {@link Message} exists, false otherwise
-   */
-  public function exists(Message $message) {
+  public function exists(MessageInterface $message) {
     $result = false;
     foreach (clone $this->messages as $m) {
       if ($message == $m) {
@@ -164,9 +181,9 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
   }
 
   /**
-   * Counts the number of stored {@link Message} objects
+   * Counts the number of stored message objects
    *
-   * @return int the number of {@link Message} objects in the list
+   * @return int the number of {@link MessageInterface} objects in the list
    */
   public function count() {
     return $this->messages->count();

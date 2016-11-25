@@ -48,7 +48,7 @@ class Message extends AbstractMessage {
    *
    * @return string the message as formatted and translated string
    */
-  public function parseMessage() {
+  public function translate() {
     //var_dump($this->getTranslator()->getLang());
     //var_dump(ini_get("LC_ALL"));
     //var_dump(setLocale(\LC_MESSAGES, '0'));

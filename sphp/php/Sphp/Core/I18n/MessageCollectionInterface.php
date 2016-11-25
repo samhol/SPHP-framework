@@ -12,7 +12,7 @@ use Countable;
 use Sphp\Data\Arrayable;
 
 /**
- * Class models a list that holds {@link Message} objects in a priority list
+ * Defines propertiws for a collection that holds {@link MessageInterface} objects
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
@@ -21,7 +21,6 @@ use Sphp\Data\Arrayable;
  */
 interface MessageCollectionInterface extends Traversable, TranslatorAwareInterface, Arrayable, Countable {
 
-
   /**
    * Returns the object as a string.
    *
@@ -29,13 +28,11 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
    */
   public function __toString();
 
-
   /**
-   * Checks whether the given {@link Message} exists in the list
+   * Checks whether the given message exists in the list
    *
-   * @param  Message $message the message to search for
-   * @return boolean true, if the {@link Message} exists, false otherwise
+   * @param  MessageInterface $message the message to search for
+   * @return boolean true, if the message exists, false otherwise
    */
-  public function exists(Message $message);
-
+  public function exists(MessageInterface $message);
 }

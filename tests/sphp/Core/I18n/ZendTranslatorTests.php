@@ -17,14 +17,10 @@ class ZendTranslatorTests extends AbstractTranslatorTest {
                     ->setUsedDomain('Sphp.Defaults');
   }
 
-  /**
-   */
   public function testSingular() {
     $this->assertEquals($this->translator->get('year'), 'vuosi');
   }
 
-  /**
-   */
   public function testPlural() {
     parent::testPlural();
     $this->translator->setLang('en_US');

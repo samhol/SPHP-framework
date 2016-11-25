@@ -4,7 +4,7 @@ namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\Gettext\PoParser;
 
-class MessageTest extends \PHPUnit_Framework_TestCase {
+class MessageListTests extends \PHPUnit_Framework_TestCase {
 
   /**
    *
@@ -17,9 +17,12 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
+    //$fileHandler = new FileHandler(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+    //if ($this->entries === null) {
     $this->entries = new PoParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
     print_r($this->entries->getSingularIds());
     print_r($this->entries->getPlurals());
+    //}
   }
 
   /**
@@ -28,6 +31,10 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    */
   protected function tearDown() {
     
+  }
+
+  public function singulars() {
+    return $this->entries->getSingulars();
   }
 
   /**
@@ -60,7 +67,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
   public function plurals() {
     $parser = new PoParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
     $args = [];
-    foreach ($parser->getPlurals() as $data) {
+    foreach($parser->getPlurals() as $data) {
       $args[] = [$data];
     }
     return $args;

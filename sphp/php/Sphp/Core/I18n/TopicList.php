@@ -24,8 +24,6 @@ use ArrayAccess;
  */
 class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInterface {
 
-  use TranslatorAwareTrait;
-
   /**
    * Count mode (topics only)
    */
@@ -42,6 +40,13 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * @var Collection
    */
   private $topics;
+
+  /**
+   * the inner translator 
+   *
+   * @var TranslatorInterface
+   */
+  private $translator;
 
   /**
    * Constructs a new instance
@@ -91,17 +96,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
     return array_keys($this->topics);
   }
 
-  /**
-   * Checks whether the given {@link Message} exists in the list
-   *
-   * **NOTE:** optionally a search can be restricted by giving a message topic
-   *  as a second parameter
-   *
-   * @param  Message $message the message to search for
-   * @param  scalar|null $topic the topic of the message
-   * @return boolean true, if the topic exists, false otherwise
-   */
-  public function messageExists(Message $message, $topic = null) {
+  public function messageExists(MessageInterface $message, $topic = null) {
     if ($message === null) {
       foreach ($this as $topic) {
         if ($topic->exists($message)) {
@@ -199,7 +194,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * @param  Message $message the message to search for
    * @return boolean true, if the {@link Message} exists, false otherwise
    */
-  public function exists(Message $message) {
+  public function exists(MessageInterface $message) {
     $result = false;
     foreach (clone $this->messages as $m) {
       if ($message == $m) {
@@ -240,8 +235,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * @uses   self::offsetGet()
    */
   public function get($topic) {
-    return clone $this->offsetGet($topic);
-    ;
+    return $this->offsetGet($topic);
   }
 
   /**
@@ -251,11 +245,12 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  Message|MessageList $m message or message list
+   * @param  MessageInterface|MessageList $m message or message list
+   * @return self for PHP Method Chaining
    * @throws \InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
-    if ($m instanceof Message) {
+    if ($m instanceof MessageInterface) {
       $m = (new MessageList($this->getTranslator()))->insert($m);
     }
     if (!($m instanceof MessageList)) {
@@ -263,6 +258,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
     }
     $m->setLang($this->getTranslator()->getLang());
     $this->topics->offsetSet($topic, $m);
+    return $this;
   }
 
   /**
@@ -286,12 +282,38 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * Removes a message topic from the container
    *
    * @param  string $topic the message topic to be removed
+   * @return self for PHP Method Chaining
    */
   public function offsetUnset($topic) {
     if ($this->offsetExists($topic)) {
       $this->unregisterTranslatorChangerObserver($this->offsetGet($topic));
     }
     $this->topics->offsetUnset($topic);
+    return $this;
+  }
+
+  public function getLang() {
+    return $this->getTranslator()->getLang();
+  }
+
+  public function getTranslator() {
+    return $this->translator;
+  }
+
+  public function setLang($lang) {
+    $this->getTranslator()->setLang($lang);
+    foreach ($this as $mlist) {
+      $mlist->setLang($lang);
+    }
+    return $this;
+  }
+
+  public function setTranslator(TranslatorInterface $translator) {
+    $this->translator = $translator;
+    foreach ($this as $mlist) {
+      $mlist->setTranslator($translator);
+    }
+    return $this;
   }
 
 }

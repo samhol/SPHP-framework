@@ -22,7 +22,7 @@ interface MessageInterface extends TranslatorAwareInterface {
    *
    * @return string the message as formatted and translated string
    */
-  public function parseMessage();
+  public function translate();
 
   /**
    * Returns the object as a string
