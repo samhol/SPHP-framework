@@ -33,21 +33,13 @@ class PluralMessage extends AbstractMessage {
    * @var string
    */
   private $msgid2;
+
   /**
    * the number (e.g. item count) to determine the translation for the respective grammatical number.
    *
    * @var int
    */
   private $n;
-
-
-  /**
-   * original raw message arguments
-   *
-   * @var scalar[]
-   */
-  private $args;
-  private $translateArgs = false;
 
   /**
    * Constructs a new instance
@@ -60,6 +52,7 @@ class PluralMessage extends AbstractMessage {
   public function __construct($msgid1, $msgid2, $n, $args = null, $translateArgs = false, TranslatorInterface $translator = null) {
     parent::__construct($args, $translateArgs, $translator);
     $this->setMessage($msgid1, $msgid2);
+    $this->n = $n;
   }
 
   /**
@@ -67,7 +60,6 @@ class PluralMessage extends AbstractMessage {
    *
    * @param  string $msgid1 the singular message text
    * @param  string $msgid2 the plural message text
-   * @param  scalar[] $args arguments
    * @return self for PHP Method Chaining
    */
   private function setMessage($msgid1, $msgid2) {
@@ -76,32 +68,13 @@ class PluralMessage extends AbstractMessage {
     return $this;
   }
 
-
   /**
    * Returns the message as formatted and translated string
    *
    * @return string the message as formatted and translated string
    */
   public function parseMessage() {
-    return $this->translator->vsprintf($this->message, $this->args, $this->translateArgs);
-  }
-
-  /**
-   * Returns the object as a string
-   *
-   * @return string the object as a string
-   */
-  public function __toString() {
-    return $this->parseMessage();
-  }
-
-  /**
-   * Returns the message as a formatted and localized json string
-   *
-   * @return string the object as a formatted and localized json string
-   */
-  public function toJson() {
-    return '"' . $this . '"';
+    return $this->getTranslator()->vsprintfPlural($this->msgid1, $this->msgid2, $this->n, $this->getArguments(), false);
   }
 
 }

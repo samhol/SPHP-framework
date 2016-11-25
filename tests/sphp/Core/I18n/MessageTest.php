@@ -46,5 +46,13 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
     $message = new Message($messageId, $args);
             $this->assertEquals($message->parseMessage(), $expected);
   }
+  /**
+   */
+  public function testPlural() {
+    $m = new PluralMessage('%d directory', '%d directories', 0, 0);
+    $this->assertEquals($m->parseMessage(), '0 hakemistoa');
+    //$this->translator->setLang('en_US');
+    //$this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
+  }
 
 }
