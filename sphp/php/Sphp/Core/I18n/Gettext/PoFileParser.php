@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PoParser.php (UTF-8)
+ * PoFileParser.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -15,7 +15,7 @@ use Sepia\PoParser as SepiaPoParser;
  *
  * @author Sami Holck
  */
-class PoParser {
+class PoFileParser {
 
   const SINGULAR_ID = 'msgid';
   const PLURAL_ID = 'msgid_plural';
