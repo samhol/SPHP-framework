@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MessageList.php (UTF-8)
+ * PrioritizedMessageList.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -13,14 +13,14 @@ use Sphp\Core\I18n\Gettext\Translator;
 use IteratorAggregate;
 
 /**
- * Class models a list that holds {@link Message} objects in a priority list
+ * Class models a list that holds {@link MessageInterface} objects in a priority list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements IteratorAggregate, MessageCollectionInterface {
+class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInterface {
 
   /**
    * Array that holds the messages
@@ -124,7 +124,7 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
    * @return self for PHP Method Chaining
    */
   public function insertMessage($messageText, $args = null, $priority = 0) {
-    $m = (new Message($messageText, $args));
+    $m = (new Message($messageText, $args, false, $this->getTranslator()));
     $this->insert($m, $priority);
     return $this;
   }
@@ -137,20 +137,18 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
    * @return self for PHP Method Chaining
    */
   public function insert(MessageInterface $messages, $priority = 0) {
-    if (!$this->exists($messages)) {
-      $messages->setLang($this->getLang());
-      $this->messages->insert($messages, $priority);
-    }
+    $messages->setLang($this->getLang());
+    $this->messages->insert($messages, $priority);
     return $this;
   }
 
   /**
    * Merges given {@link MessageList} to this container
    *
-   * @param  MessageList $m
+   * @param  PrioritizedMessageList $m
    * @return self for PHP Method Chaining
    */
-  public function merge(MessageList $m) {
+  public function merge(PrioritizedMessageList $m) {
     foreach ($m as $message) {
       $this->insert($message);
     }
@@ -170,11 +168,12 @@ class MessageList implements IteratorAggregate, MessageCollectionInterface {
     return $arr;
   }
 
-  public function exists(MessageInterface $message) {
+  public function contains(MessageInterface $message) {
     $result = false;
-    foreach (clone $this->messages as $m) {
+    foreach ($this as $m) {
       if ($message == $m) {
         $result = true;
+        break;
       }
     }
     return $result;

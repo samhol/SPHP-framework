@@ -9,7 +9,6 @@ namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
-use Sphp\Core\Types\Arrays;
 use Sphp\Data\Collection;
 use IteratorAggregate;
 use ArrayAccess;
@@ -173,7 +172,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->topics = Arrays::copy($this->topics);
+    $this->topics = clone $this->topics;
     parent::__clone();
   }
 
@@ -188,17 +187,12 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
     return $this->topics->offsetExists($topic);
   }
 
-  /**
-   * Checks whether the given {@link Message} exists in the list
-   *
-   * @param  Message $message the message to search for
-   * @return boolean true, if the {@link Message} exists, false otherwise
-   */
-  public function exists(MessageInterface $message) {
+  public function contains(MessageInterface $message) {
     $result = false;
-    foreach (clone $this->messages as $m) {
-      if ($message == $m) {
+    foreach ($this as $mList) {
+      if ($mList->exists($message)) {
         $result = true;
+        break;
       }
     }
     return $result;
@@ -221,7 +215,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * Returns the {@link MessageList} of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return MessageList|null the topic or null if no topic was found
+   * @return PrioritizedMessageList|null the topic or null if no topic was found
    */
   public function offsetGet($topic) {
     return $this->topics->offsetGet($topic);
@@ -231,7 +225,7 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    * Returns the {@link MessageList} object of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return MessageList|null the topic or null if no topic was found
+   * @return PrioritizedMessageList|null the topic or null if no topic was found
    * @uses   self::offsetGet()
    */
   public function get($topic) {
@@ -245,15 +239,15 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  MessageInterface|MessageList $m message or message list
+   * @param  MessageInterface|PrioritizedMessageList $m message or message list
    * @return self for PHP Method Chaining
    * @throws \InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
     if ($m instanceof MessageInterface) {
-      $m = (new MessageList($this->getTranslator()))->insert($m);
+      $m = (new PrioritizedMessageList($this->getTranslator()))->insert($m);
     }
-    if (!($m instanceof MessageList)) {
+    if (!($m instanceof PrioritizedMessageList)) {
       throw new \InvalidArgumentException();
     }
     $m->setLang($this->getTranslator()->getLang());
@@ -268,12 +262,12 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  Message|MessageList $m message or message list
+   * @param  Message|PrioritizedMessageList $m message or message list
    * @return self for PHP Method Chaining
    * @uses   self::offsetSet()
    * @throws \InvalidArgumentException if the type of the inserted data is illegal
    */
-  public function set($topic, MessageList $m) {
+  public function set($topic, PrioritizedMessageList $m) {
     $this->offsetSet($topic, $m);
     return $this;
   }

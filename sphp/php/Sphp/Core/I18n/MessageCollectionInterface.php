@@ -34,5 +34,5 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
    * @param  MessageInterface $message the message to search for
    * @return boolean true, if the message exists, false otherwise
    */
-  public function exists(MessageInterface $message);
+  public function contains(MessageInterface $message);
 }

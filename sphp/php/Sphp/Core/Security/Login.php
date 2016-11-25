@@ -112,7 +112,7 @@ class Login {
   public static function getLastMessages() {
     if (!empty($_SESSION["messages"])) {
       $m = unserialize($_SESSION["messages"]);
-      return ($m instanceof MessageList) ? $m : null;
+      return ($m instanceof PrioritizedMessageList) ? $m : null;
     }
     return null;
   }

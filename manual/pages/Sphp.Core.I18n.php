@@ -72,7 +72,7 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/Translator.php", "text", false);
 $message = $api->classLinker(Message::class);
-$messageContainer = $api->classLinker(MessageList::class);
+$messageContainer = $api->classLinker(PrioritizedMessageList::class);
 $echo = $php->functionLink("echo");
 $print = $php->functionLink("print");
 $string = $php->typeLink("string");
@@ -112,7 +112,7 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/MessageContainer.php", "text", false);
 $topicContainer = $api->classLinker(TopicList::class);
-$messageContainers = $api->classLinker(MessageList::class, "MessageLists");
+$messageContainers = $api->classLinker(PrioritizedMessageList::class, "MessageLists");
 
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
