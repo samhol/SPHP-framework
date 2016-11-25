@@ -45,4 +45,18 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
     //$this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
   }
 
+  public function arrayData() {
+    
+  }
+  /**
+   */
+  public function testArrayTranslation() {
+    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 0), '%d hakemistoa');
+    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 1), '%d hakemisto');
+    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 2), '%d hakemistoa');
+    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d hakemistoa');
+    //$this->translator->setLang('en_US');
+    //$this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
+  }
+
 }

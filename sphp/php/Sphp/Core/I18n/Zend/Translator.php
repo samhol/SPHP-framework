@@ -18,7 +18,6 @@ use Exception;
  *
  * The underlying technology used in translation is Zend's translator class
  *
- * @method self addTranslationFilePattern(string $type, string $baseDir,string $pattern, string $textDomain = 'default')
  * @method self toAscii(string $str, bool $removeUnsupported = true)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
