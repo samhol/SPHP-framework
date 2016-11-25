@@ -2,8 +2,6 @@
 
 namespace Sphp\Core\I18n\Gettext;
 
-//Locale::setMessageLocale("fi_FI");
-
 $translator = new Translator('fi_FI');
 var_dump(
 	$translator->vsprintf("Please insert atleast %s of the following characters (%s)", [3, "a, b, c, d, e"]), 

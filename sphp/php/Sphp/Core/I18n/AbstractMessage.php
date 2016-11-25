@@ -58,8 +58,7 @@ abstract class AbstractMessage implements MessageInterface {
 
   /**
    * 
-   * @param type $translateArgs
-   * @return $this
+   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
    */
   public function getArguments() {
     if ($this->args !== null && $this->translateArgs) {
@@ -76,27 +75,12 @@ abstract class AbstractMessage implements MessageInterface {
 
   /**
    * 
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
-   * @param type $translateArgs
-   * @return $this
-   */
-  public function d() {
-    return $this->translateArgs;
-  }
-
-  /**
-   * 
    * @return TranslatorInterface
    */
   public function getTranslator() {
     return $this->translator;
   }
 
-  /**
-   * Returns the object as a string
-   *
-   * @return string the object as a string
-   */
   public function __toString() {
     return $this->parseMessage();
   }

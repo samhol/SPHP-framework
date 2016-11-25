@@ -8,7 +8,7 @@ use Sphp\Core\I18n\AbstractTranslatorTest;
 
 /**
  */
-class ZendTranslatorTest extends AbstractTranslatorTest {
+class ZendTranslatorTests extends AbstractTranslatorTest {
 
   public function getTranslator() {
     var_dump(\Sphp\LOCALE_PATH . '\%s\LC_MESSAGES\Sphp.Defaults.mo');
@@ -26,12 +26,18 @@ class ZendTranslatorTest extends AbstractTranslatorTest {
   /**
    */
   public function testPlural() {
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 0), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 1), '%d hakemisto');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 2), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d hakemistoa');
+    parent::testPlural();
     $this->translator->setLang('en_US');
     $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
+  }
+
+  /**
+   * @dataProvider arrayData
+   */
+  public function testArrayTranslation(array $raw, array $expected) {
+    parent::testArrayTranslation($raw, $expected);
+    $this->translator->setLang('en_US');
+    $this->assertEquals($this->translator->get($raw), $raw);
   }
 
 }

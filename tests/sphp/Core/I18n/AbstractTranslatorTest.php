@@ -11,7 +11,6 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
    */
   protected $translator;
 
-  
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
@@ -25,7 +24,7 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    
+    unset($this->translator);
   }
 
   /**
@@ -46,17 +45,21 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function arrayData() {
-    
+    $d = [];
+    $d[] = [[], []];
+    $d[] = [['one' => 'one'], ['one' => 'yksi']];
+    $d[] = [
+        ["open", ["save", "delete", ["update"]], "close"], 
+        ["avaa", ["tallenna", "poista", ["päivitä"]], "sulje"]
+    ];
+    return $d;
   }
+
   /**
+   * @dataProvider arrayData
    */
-  public function testArrayTranslation() {
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 0), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 1), '%d hakemisto');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 2), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d hakemistoa');
-    //$this->translator->setLang('en_US');
-    //$this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
+  public function testArrayTranslation(array $raw, array $expected) {
+    $this->assertEquals($this->translator->get($raw), $expected);
   }
 
 }

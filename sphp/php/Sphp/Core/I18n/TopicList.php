@@ -11,6 +11,8 @@ use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
 use Sphp\Core\Types\Arrays;
 use Sphp\Data\Collection;
+use IteratorAggregate;
+use ArrayAccess;
 
 /**
  * Class models a container for {@link MessageList} objects sorted by associated topics
@@ -20,7 +22,7 @@ use Sphp\Data\Collection;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements \ArrayAccess, \IteratorAggregate, TranslatorAwareInterface {
+class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInterface {
 
   use TranslatorAwareTrait;
 
@@ -192,14 +194,32 @@ class TopicList implements \ArrayAccess, \IteratorAggregate, TranslatorAwareInte
   }
 
   /**
-   * Checks whether an topic exists
+   * Checks whether the given {@link Message} exists in the list
    *
-   * @param  string $topic the message topic
-   * @return boolean true, if the topic exists, false otherwise
-   * @uses   self::offsetExists()
+   * @param  Message $message the message to search for
+   * @return boolean true, if the {@link Message} exists, false otherwise
    */
-  public function exists($topic) {
-    return $this->offsetExists($topic);
+  public function exists(Message $message) {
+    $result = false;
+    foreach (clone $this->messages as $m) {
+      if ($message == $m) {
+        $result = true;
+      }
+    }
+    return $result;
+  }
+
+  /**
+   * Returns the content as an array of formatted and localized message strings
+   *
+   * @return string[] the content as an array of formatted and localized message strings
+   */
+  public function toArray() {
+    $output = [];
+    foreach ($this as $message) {
+      $output[] = $message->__toString();
+    }
+    return $output;
   }
 
   /**

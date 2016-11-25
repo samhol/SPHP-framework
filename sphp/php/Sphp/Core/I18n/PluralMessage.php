@@ -8,7 +8,6 @@
 namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\TranslatorInterface;
-use Sphp\Core\I18n\Gettext\Translator;
 
 /**
  * Implemants a translatable message object

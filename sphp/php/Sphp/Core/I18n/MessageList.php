@@ -10,6 +10,7 @@ namespace Sphp\Core\I18n;
 use Sphp\Data\StablePriorityQueue;
 use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
+use IteratorAggregate;
 
 /**
  * Class models a list that holds {@link Message} objects in a priority list
@@ -19,7 +20,7 @@ use Sphp\Core\I18n\Gettext\Translator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements \IteratorAggregate, TranslatorAwareInterface {
+class MessageList implements IteratorAggregate, MessageCollectionInterface {
 
   use TranslatorAwareTrait;
 
