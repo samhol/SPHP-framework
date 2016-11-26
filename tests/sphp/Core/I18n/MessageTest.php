@@ -10,16 +10,25 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    *
    * @var PoFileParser 
    */
-  private $entries;
+  private static $parser;
+
+  /**
+   * 
+   * @return PoFileParser
+   */
+  public static function getPoFileParser() {
+    if (self::$parser === null) {
+      self::$parser = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+    }
+    return self::$parser;
+  }
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->entries = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
-    print_r($this->entries->getSingularIds());
-    print_r($this->entries->getPlurals());
+    
   }
 
   /**
@@ -46,6 +55,24 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
     return $arr;
   }
 
+  public function allMessageStrings() {
+    $parser = self::getPoFileParser();
+    $args = [];
+    foreach ($parser->getAll() as $data) {
+      $args[] = [$data];
+    }
+    return $args;
+  }
+
+  /**
+   * @dataProvider allMessageStrings
+   * @param array $data
+   */
+  public function testSingular(array $data) {
+    $m = new Message($data[PoFileParser::SINGULAR_ID]);
+    $this->assertEquals($m->translate(), $data[PoFileParser::SINGULAR_MESSAGE]);
+  }
+
   /**
    * @dataProvider singularMessagesAndArguments
    * @covers Sphp\Core\Filters\Ordinalizer::filter
@@ -58,7 +85,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function plurals() {
-    $parser = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+    $parser = self::getPoFileParser();
     $args = [];
     foreach ($parser->getPlurals() as $data) {
       $args[] = [$data];

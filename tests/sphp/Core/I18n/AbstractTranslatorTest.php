@@ -2,9 +2,15 @@
 
 namespace Sphp\Core\I18n;
 
+require_once 'GettextDataTrait.php';
+
+use Sphp\Core\I18n\Gettext\PoFileParser;
+
 /**
  */
 abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
+
+  use GettextDataTrait;
 
   /**
    * @var TranslatorInterface
@@ -28,20 +34,21 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
+   * @dataProvider allMessageStrings
    */
-  public function testSingular() {
-    $this->assertEquals($this->translator->get('year'), 'vuosi');
+  public function testSingularGet(array $data) {
+    $this->assertEquals($this->translator->get($data[PoFileParser::SINGULAR_ID]), $data[PoFileParser::SINGULAR_MESSAGE]);
   }
 
   /**
+   * @dataProvider plurals
+   * @param array $data
    */
-  public function testPlural() {
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 0), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 1), '%d hakemisto');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', 2), '%d hakemistoa');
-    $this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d hakemistoa');
-    //$this->translator->setLang('en_US');
-    //$this->assertEquals($this->translator->getPlural('%d directory', '%d directories', -3), '%d directories');
+  public function testPlural(array $data) {
+    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 0), $data[PoFileParser::PLURAL_MESSAGE]);
+    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 1), $data[PoFileParser::SINGULAR_MESSAGE]);
+    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 2), $data[PoFileParser::PLURAL_MESSAGE]);
+    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], -3), $data[PoFileParser::PLURAL_MESSAGE]);
   }
 
   public function arrayData() {
@@ -49,7 +56,7 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
     $d[] = [[], []];
     $d[] = [['one' => 'one'], ['one' => 'yksi']];
     $d[] = [
-        ["open", ["save", "delete", ["update"]], "close"], 
+        ["open", ["save", "delete", ["update"]], "close"],
         ["avaa", ["tallenna", "poista", ["päivitä"]], "sulje"]
     ];
     return $d;

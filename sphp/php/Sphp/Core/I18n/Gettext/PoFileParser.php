@@ -17,6 +17,7 @@ use Sepia\PoParser as SepiaPoParser;
  */
 class PoFileParser {
 
+  const MESSAGE_ID = 'msgid';
   const SINGULAR_ID = 'msgid';
   const PLURAL_ID = 'msgid_plural';
   const SINGULAR_MESSAGE = 'msgstr_singular';
@@ -35,8 +36,16 @@ class PoFileParser {
   public function __construct($poFilePath) {
     $fileHandler = new FileHandler($poFilePath);
     $poParser = new SepiaPoParser($fileHandler);
-    $this->entries = $poParser->parse();
+    $this->parseAll($poParser->parse());
     //print_r($this->entries);
+  }
+
+  protected function parseAll(array $rawData) {
+    $this->entries = [];
+    foreach ($rawData as $key => $data) {
+      $this->entries[$key] = self::parseTranslationData($data);
+    }
+    return $this;
   }
 
   /**
@@ -51,11 +60,19 @@ class PoFileParser {
    * 
    * @return array
    */
+  public function getAll() {
+    return $this->entries;
+  }
+
+  /**
+   * 
+   * @return array
+   */
   public function getSingulars() {
     $result = [];
-    foreach ($this->entries as $data) {
+    foreach ($this->entries as $key => $data) {
       if (!array_key_exists('msgid_plural', $data)) {
-        $result[] = self::parseTranslationData($data);
+        $result[$key] = $data;
       }
     }
     return $result;
@@ -67,9 +84,9 @@ class PoFileParser {
    */
   public function getPlurals() {
     $result = [];
-    foreach ($this->entries as $data) {
+    foreach ($this->entries as $key => $data) {
       if (array_key_exists('msgid_plural', $data)) {
-        $result[] = self::parseTranslationData($data);
+        $result[$key] = $data;
       }
     }
     return $result;
@@ -80,10 +97,13 @@ class PoFileParser {
       $instance['flags'] = $data['flags'][0];
     }
     if (array_key_exists('msgid', $data)) {
-      $instance['msgid'] = $data['msgid'][0];
+      $instance[self::MESSAGE_ID] = $data['msgid'][0];
     }
     if (array_key_exists('msgid_plural', $data)) {
       $instance[self::PLURAL_ID] = $data['msgid_plural'][0];
+    }
+    if (array_key_exists('msgstr', $data)) {
+      $instance[self::SINGULAR_MESSAGE] = $data['msgstr'][0];
     }
     if (array_key_exists('msgstr[0]', $data)) {
       $instance[self::SINGULAR_MESSAGE] = $data['msgstr[0]'][0];
