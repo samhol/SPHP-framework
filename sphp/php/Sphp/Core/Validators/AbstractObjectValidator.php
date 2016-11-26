@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Gettext\TopicList;
+use Sphp\Core\I18n\TopicList;
 use Sphp\Data\Collection;
 use Sphp\Core\Types\Arrays;
 

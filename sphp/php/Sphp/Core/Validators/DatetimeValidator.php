@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use \DateTime as DateTime;
+use DateTime;
 
 /**
  * Class validates a datetime string

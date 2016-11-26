@@ -7,8 +7,8 @@
 
 namespace Sphp\Core\Security;
 
-use Sphp\Core\Gettext\TopicList;
-use Sphp\Core\Gettext\Message;
+use Sphp\Core\I18n\TopicList;
+use Sphp\Core\I18n\Message;
 
 /**
  * Login class handles the user login/logout/session

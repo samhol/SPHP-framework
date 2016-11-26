@@ -6,8 +6,6 @@ require_once 'GettextDataTrait.php';
 
 use Sphp\Core\I18n\Gettext\PoFileParser;
 
-/**
- */
 abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
 
   use GettextDataTrait;

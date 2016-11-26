@@ -2,27 +2,20 @@
 
 namespace Sphp\Core\I18n;
 
+require_once 'GettextDataTrait.php';
+
 use Sphp\Core\I18n\Gettext\PoFileParser;
 
 class MessageListTests extends \PHPUnit_Framework_TestCase {
 
-  /**
-   *
-   * @var PoFileParser 
-   */
-  private $entries;
+  use GettextDataTrait;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    //$fileHandler = new FileHandler(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
-    //if ($this->entries === null) {
-    $this->entries = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
-    print_r($this->entries->getSingularIds());
-    print_r($this->entries->getPlurals());
-    //}
+    
   }
 
   /**
@@ -33,44 +26,27 @@ class MessageListTests extends \PHPUnit_Framework_TestCase {
     
   }
 
-  public function singulars() {
-    return $this->entries->getSingulars();
-  }
-
   /**
    * 
    * @return array
    */
-  public function singularMessagesAndArguments() {
-    $arr[] = [
-        'Could not write to log file: %s',
-        'file.txt',
-        'Ei voitu kirjoittaa lokitiedostoon: file.txt'];
-    $arr[] = [
-        'Please insert %s-%s characters',
-        [3, 10],
-        'Syötä 3-10 merkkiä'];
+  public function messages() {
+    foreach ($this->plurals() as $data) {
+      $arr[] = new PluralMessage($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 2);
+    }
+    $arr[] = new Message('Could not write to log file: %s', 'file.txt');
+    $arr[] = new Message('Please insert %s-%s characters', [3, 10]);
     return $arr;
   }
 
   /**
-   * @dataProvider singularMessagesAndArguments
-   * @covers Sphp\Core\Filters\Ordinalizer::filter
-   * @param string $messageId
-   * @param scalar[] $args
    */
-  public function testFinnish($messageId, $args, $expected) {
-    $message = new Message($messageId, $args);
-    $this->assertEquals($message->translate(), $expected);
-  }
-
-  public function plurals() {
-    $parser = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
-    $args = [];
-    foreach($parser->getPlurals() as $data) {
-      $args[] = [$data];
+  public function testInsert() {
+    $pml = new PrioritizedMessageList();
+    foreach ($this->messages() as $message) {
+      $pml->insert($message);
+      $this->assertTrue($pml->contains($message));
     }
-    return $args;
   }
 
   /**
