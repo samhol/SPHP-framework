@@ -9,13 +9,14 @@ namespace Sphp\Core\I18n\Gettext;
 
 use Sepia\FileHandler;
 use Sepia\PoParser as SepiaPoParser;
+use SeekableIterator;
 
 /**
  * Description of PoParser
  *
  * @author Sami Holck
  */
-class PoFileParser {
+class PoFileParser implements SeekableIterator {
 
   const MESSAGE_ID = 'msgid';
   const SINGULAR_ID = 'msgid';
@@ -28,6 +29,12 @@ class PoFileParser {
    * @var array 
    */
   private $entries = [];
+
+  /**
+   *
+   * @var GettextData[]
+   */
+  private $objects = [];
 
   /**
    * 
@@ -44,6 +51,7 @@ class PoFileParser {
     $this->entries = [];
     foreach ($rawData as $key => $data) {
       $this->entries[$key] = self::parseTranslationData($data);
+      $this->objects[] = self::parseObject($data);
     }
     return $this;
   }
@@ -112,6 +120,83 @@ class PoFileParser {
       $instance[self::PLURAL_MESSAGE] = $data['msgstr[1]'][0];
     }
     return $instance;
+  }
+
+  private static function parseObject(array $data) {
+    $flags = null;
+    if (array_key_exists('flags', $data)) {
+      $flags = $data['flags'][0];
+    }
+    $msgid = null;
+    if (array_key_exists('msgid', $data)) {
+      $msgid = $data['msgid'][0];
+    }
+    $msgstr = null;
+    if (array_key_exists('msgstr', $data)) {
+      $msgstr = $data['msgstr'][0];
+    }
+    if (array_key_exists('msgstr[0]', $data)) {
+      $msgstr = $data['msgstr[0]'][0];
+    }
+    if (array_key_exists('msgid_plural', $data) && array_key_exists('msgstr[1]', $data)) {
+      $pluralId = $data['msgid_plural'][0];
+      $pluralMessageString = $data['msgstr[1]'][0];
+      $object = new PluralGettextData($msgid, $msgstr, $pluralId, $pluralMessageString, $flags);
+    } else {
+      $object = new GettextData($msgid, $msgstr, $flags);
+    }
+    return $object;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return $this->objects[$this->position];
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    ++$this->position;
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return $this->position;
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    $this->position = 0;
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return isset($this->objects[$this->position]);
+  }
+
+  private $position;
+
+  public function seek($position) {
+    if (!isset($this->objects[$position])) {
+      throw new OutOfBoundsException("invalid seek position ($position)");
+    }
+
+    $this->position = $position;
   }
 
 }
