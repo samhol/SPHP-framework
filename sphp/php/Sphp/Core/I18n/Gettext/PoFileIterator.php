@@ -16,7 +16,7 @@ use SeekableIterator;
  *
  * @author Sami Holck
  */
-class PoFileParser implements SeekableIterator {
+class PoFileIterator extends \FilterIterator implements SeekableIterator {
 
   const MESSAGE_ID = 'msgid';
   const SINGULAR_ID = 'msgid';
@@ -35,6 +35,8 @@ class PoFileParser implements SeekableIterator {
    * @var GettextData[]
    */
   private $objects = [];
+  
+  private $filter;
 
   /**
    * 
@@ -44,16 +46,38 @@ class PoFileParser implements SeekableIterator {
     $fileHandler = new FileHandler($poFilePath);
     $poParser = new SepiaPoParser($fileHandler);
     $this->parseAll($poParser->parse());
+    parent::__construct($this->objects);
     //print_r($this->entries);
   }
 
   protected function parseAll(array $rawData) {
     $this->entries = [];
+    $arr = [];
     foreach ($rawData as $key => $data) {
       $this->entries[$key] = self::parseTranslationData($data);
-      $this->objects[] = self::parseObject($data);
+      $arr[] = self::parseObject($data);
     }
+    $this->objects = new \ArrayIterator($arr);
     return $this;
+  }
+
+  public function accept() {
+    $f = $this->filter;
+    if ($f === null) {
+      return true;
+    }
+    else {
+      return $f($this->getInnerIterator()->current());
+    }
+  }
+  /**
+   * 
+   * @param \Sphp\Core\I18n\Gettext\callable $filter
+   * @return \Sphp\Core\I18n\Gettext\PoFileIterator
+   */
+  public function setFilter(callable $filter) {
+    $this->filter = $filter;
+    return $this;;
   }
 
   /**

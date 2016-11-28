@@ -40,14 +40,14 @@ class Th extends Cell {
    *  </ol>
    *
    * @param mixed $content the content of the tag
-   * @param string $scope the value of the scope attribute
    * @param int $colspan solun colspan attribute value
    * @param int $rowspan solun rowspan attribute value
+   * @param string|null $scope the value of the scope attribute or null for none
    * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    */
-  public function __construct($content = null, $scope = null, $colspan = 1, $rowspan = 1) {
+  public function __construct($content = null, $colspan = 1, $rowspan = 1, $scope = null) {
     parent::__construct('th', $content);
     if ($scope !== null) {
       $this->setScope($scope);

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Core\I18n\Gettext\PoFileParser;
+use Sphp\Core\I18n\Gettext\PoFileIterator;
 use Sphp\Core\I18n\Gettext\GettextData;
 use Sphp\Core\I18n\Gettext\PluralGettextData;
 
@@ -18,9 +18,9 @@ class GettextTable implements ContentInterface {
   private $table;
   private $i = 1;
 
-  public function __construct(PoFileParser $gettextData) {
+  public function __construct(PoFileIterator $gettextData) {
     $this->table = new Table();
-    $this->table->thead()->append(['Row:', 'Original:', 'ranslation:']);
+    $this->table->addCssClass('po-table')->thead()->append(['Row:', 'Original:', 'ranslation:']);
     //$body = $this->table->tbody();
     $this->i = 1;
     foreach ($gettextData as $obj) {
@@ -44,7 +44,7 @@ class GettextTable implements ContentInterface {
 
   private function pluralRow(PluralGettextData $obj) {
     $tr = new Tr();
-    $tr->append(new Th($this->i, 'rowgroup', 1, 2));
+    $tr->append(new Th($this->i, 1, 2, 'rowgroup'));
     $tr->append($obj->getMessageId());
     $tr->append($obj->getTranslation());
     $this->table->tbody()->append($tr);

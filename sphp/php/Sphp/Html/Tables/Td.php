@@ -23,27 +23,27 @@ namespace Sphp\Html\Tables;
  * @filesource
  */
 class Td extends Cell {
-	
-	/**
-	 * Constructs a new instance
-	 *
-	 * **Important!**
-	 *
-	 * Parameter `$content` can be of any type that converts to a
-	 * string or to an array of strings. So also an object of any class that
-	 * implements magic method `__toString()` is allowed.
-	 *
-	 * @recondition `$colspan >= 1 & $rowspan >= 1`
-	 * @param mixed $content the content of the component
-	 * @param int $colspan the value of the colspan attribute
-	 * @param int $rowspan the value of the rowspan attribute
-	 * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
-	 * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
-	 */
-	public function __construct($content = null, $colspan = 1, $rowspan = 1) {
-		parent::__construct('td', $content);
-		$this->setColspan($colspan);
-		$this->setRowspan($rowspan);
-	}
+
+  /**
+   * Constructs a new instance
+   *
+   * **Important!**
+   *
+   * Parameter `$content` can be of any type that converts to a
+   * string or to an array of strings. So also an object of any class that
+   * implements magic method `__toString()` is allowed.
+   *
+   * @recondition `$colspan >= 1 & $rowspan >= 1`
+   * @param mixed $content the content of the component
+   * @param int $colspan the value of the colspan attribute
+   * @param int $rowspan the value of the rowspan attribute
+   * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
+   * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
+   */
+  public function __construct($content = null, $colspan = 1, $rowspan = 1) {
+    parent::__construct('td', $content);
+    $this->setColspan($colspan);
+    $this->setRowspan($rowspan);
+  }
 
 }

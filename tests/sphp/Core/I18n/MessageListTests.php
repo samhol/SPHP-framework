@@ -4,7 +4,9 @@ namespace Sphp\Core\I18n;
 
 require_once 'GettextDataTrait.php';
 
-use Sphp\Core\I18n\Gettext\PoFileParser;
+use Sphp\Core\I18n\Gettext\PoFileIterator;
+use Sphp\Core\I18n\Gettext\GettextData;
+use Sphp\Core\I18n\Gettext\PluralGettextData;
 
 class MessageListTests extends \PHPUnit_Framework_TestCase {
 
