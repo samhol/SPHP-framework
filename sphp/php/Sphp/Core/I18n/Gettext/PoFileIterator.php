@@ -9,14 +9,14 @@ namespace Sphp\Core\I18n\Gettext;
 
 use Sepia\FileHandler;
 use Sepia\PoParser as SepiaPoParser;
-use SeekableIterator;
+use Sphp\Data\Collection;
 
 /**
  * Description of PoParser
  *
  * @author Sami Holck
  */
-class PoFileIterator extends \FilterIterator implements SeekableIterator {
+class PoFileIterator implements \Iterator {
 
   const MESSAGE_ID = 'msgid';
   const SINGULAR_ID = 'msgid';
@@ -32,53 +32,43 @@ class PoFileIterator extends \FilterIterator implements SeekableIterator {
 
   /**
    *
-   * @var GettextData[]
+   * @var Collection 
    */
-  private $objects = [];
-  
-  private $filter;
+  private $objects;
 
   /**
    * 
    * @param string $poFilePath
    */
   public function __construct($poFilePath) {
-    $fileHandler = new FileHandler($poFilePath);
-    $poParser = new SepiaPoParser($fileHandler);
-    $this->parseAll($poParser->parse());
-    parent::__construct($this->objects);
+    //$this->poFilePath = $poFilePath;
+    $this->objects = $this->parseFromFile($poFilePath);
     //print_r($this->entries);
   }
 
-  protected function parseAll(array $rawData) {
-    $this->entries = [];
+  protected function parseFromFile($poFilePath) {
+    $fileHandler = new FileHandler($poFilePath);
+    $poParser = new SepiaPoParser($fileHandler);
+    $rawData = $poParser->parse();
+    //$this->entries = [];
     $arr = [];
-    foreach ($rawData as $key => $data) {
-      $this->entries[$key] = self::parseTranslationData($data);
+    foreach ($rawData as $data) {
+      //$this->entries[$key] = self::parseTranslationData($data);
       $arr[] = self::parseObject($data);
     }
-    $this->objects = new \ArrayIterator($arr);
-    return $this;
+    //$this->objects = new \Sphp\Data\Collection($arr);
+    return new Collection($arr);
   }
 
-  public function accept() {
-    $f = $this->filter;
-    if ($f === null) {
-      return true;
-    }
-    else {
-      return $f($this->getInnerIterator()->current());
-    }
-  }
   /**
    * 
-   * @param \Sphp\Core\I18n\Gettext\callable $filter
-   * @return \Sphp\Core\I18n\Gettext\PoFileIterator
+   * @param  callable $callback
+   * @return Collection
    */
-  public function setFilter(callable $filter) {
-    $this->filter = $filter;
-    return $this;;
+  public function filter(callable $callback) {
+    return $this->objects->filter($callback, 0);
   }
+
 
   /**
    * 
@@ -93,35 +83,29 @@ class PoFileIterator extends \FilterIterator implements SeekableIterator {
    * @return array
    */
   public function getAll() {
-    return $this->entries;
+    return $this->objects;
   }
 
   /**
    * 
-   * @return array
+   * @return Collection
    */
   public function getSingulars() {
-    $result = [];
-    foreach ($this->entries as $key => $data) {
-      if (!array_key_exists('msgid_plural', $data)) {
-        $result[$key] = $data;
-      }
-    }
-    return $result;
+    $singularFilter = function(GettextData $entry) {
+      return !$entry instanceof PluralGettextData;
+    };
+    return $this->filter($singularFilter);
   }
 
   /**
    * 
-   * @return array
+   * @return Collection
    */
   public function getPlurals() {
-    $result = [];
-    foreach ($this->entries as $key => $data) {
-      if (array_key_exists('msgid_plural', $data)) {
-        $result[$key] = $data;
-      }
-    }
-    return $result;
+    $pluralFilter = function(GettextData $entry) {
+      return $entry instanceof PluralGettextData;
+    };
+    return $this->filter($pluralFilter);
   }
 
   private static function parseTranslationData(array $data) {
@@ -172,55 +156,28 @@ class PoFileIterator extends \FilterIterator implements SeekableIterator {
     return $object;
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
   public function current() {
-    return $this->objects[$this->position];
+    return $this->objects->current();
   }
 
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    ++$this->position;
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
   public function key() {
-    return $this->position;
+    return $this->objects->key();
   }
 
-  /**
-   * Rewinds the Iterator to the first element
-   */
+  public function next() {
+    $this->objects->next();
+  }
+
   public function rewind() {
-    $this->position = 0;
+    $this->objects->rewind();
   }
 
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
   public function valid() {
-    return isset($this->objects[$this->position]);
+    return $this->objects->valid();
   }
 
-  private $position;
-
-  public function seek($position) {
-    if (!isset($this->objects[$position])) {
-      throw new OutOfBoundsException("invalid seek position ($position)");
-    }
-
-    $this->position = $position;
+  public function count() {
+    return $this->objects->count();
   }
 
 }
