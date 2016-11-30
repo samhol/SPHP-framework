@@ -6,10 +6,17 @@ use Sphp\Html\ContentInterface;
 use Sphp\Core\I18n\Gettext\PoFileIterator;
 use Sphp\Core\I18n\Gettext\GettextData;
 use Sphp\Core\I18n\Gettext\PluralGettextData;
+use Sphp\Html\Foundation\Sites\Forms\GridForm;
 
 class GettextTable implements ContentInterface {
 
   use \Sphp\Html\ContentTrait;
+
+  /**
+   *
+   * @var GridForm 
+   */
+  private $form;
 
   /**
    *
@@ -18,7 +25,13 @@ class GettextTable implements ContentInterface {
   private $table;
   private $i = 1;
 
-  public function __construct(PoFileIterator $gettextData) {
+  public function __construct($gettextData) {
+    $row = new \Sphp\Html\Foundation\Sites\Forms\FormRow();
+    $row->appendColumn(new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['singular', 'plural']), 12, false, 4, 3);
+    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Inputs\TextColumn('search'), 12, false, 7, 8);
+    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton('submit'), 12,false, 1);
+    $this->form = new GridForm('manual/gettext/?action=search', 'get');
+    $this->form->append($row);
     $this->table = new Table();
     $this->table->addCssClass('po-table')->thead()->append(['Row:', 'Original:', 'ranslation:']);
     //$body = $this->table->tbody();
@@ -55,7 +68,7 @@ class GettextTable implements ContentInterface {
   }
 
   public function getHtml() {
-    return $this->table->getHtml();
+    return $this->form->getHtml() . $this->table->getHtml();
   }
 
 }
