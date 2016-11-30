@@ -27,7 +27,7 @@ class Checkboxes extends Choiceboxes {
    * @param mixed $mainLabel
    */
   public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct('checkbox', $name, $values, $mainLabel);
+    parent::__construct('input:checkbox', $name, $values, $mainLabel);
   }
 
   /**

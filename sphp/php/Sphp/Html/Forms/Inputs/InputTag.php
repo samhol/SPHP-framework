@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Input.php (UTF-8)
+ * InputTag.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Forms\LabelableInterface;
-use Sphp\Html\Forms\LabelableTrait;
 
 /**
  * Class Models an HTML &lt;input&gt; tag
@@ -23,6 +22,6 @@ use Sphp\Html\Forms\LabelableTrait;
  */
 class InputTag extends AbstractInputTag implements ValidableInputInterface, LabelableInterface {
 
-  use LabelableTrait,
+  use \Sphp\Html\Forms\LabelableTrait,
       ValidableInputTrait;
 }

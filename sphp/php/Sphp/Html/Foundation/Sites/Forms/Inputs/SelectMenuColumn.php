@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface;
 use Sphp\Html\Forms\Inputs\Menus\Select;
+use IteratorAggregate;
 
 /**
  * Class implements Foundation framework based select menu input component
@@ -20,7 +21,7 @@ use Sphp\Html\Forms\Inputs\Menus\Select;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SelectMenuColumn extends InputColumn implements SelectMenuInterface {
+class SelectMenuColumn extends InputColumn implements IteratorAggregate, SelectMenuInterface {
 
   use \Sphp\Html\TraversableTrait;
 

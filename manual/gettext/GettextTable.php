@@ -1,12 +1,15 @@
 <?php
 
-namespace Sphp\Html\Tables;
+namespace Sphp;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Core\I18n\Gettext\PoFileIterator;
 use Sphp\Core\I18n\Gettext\GettextData;
 use Sphp\Core\I18n\Gettext\PluralGettextData;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
+use Sphp\Html\Tables\Table;
+use Sphp\Html\Tables\Tr;
+use Sphp\Html\Tables\Th;
 
 class GettextTable implements ContentInterface {
 
@@ -27,9 +30,11 @@ class GettextTable implements ContentInterface {
 
   public function __construct($gettextData) {
     $row = new \Sphp\Html\Foundation\Sites\Forms\FormRow();
-    $row->appendColumn(new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['singular', 'plural']), 12, false, 4, 3);
+    $typeSelector = new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']);
+    $typeSelector->setValue(['type' => 0]);
+    $row->appendColumn(new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']), 12, false, 4, 3);
     $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Inputs\TextColumn('search'), 12, false, 7, 8);
-    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton('submit'), 12,false, 1);
+    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton('submit'), 12, false, 1);
     $this->form = new GridForm('manual/gettext/?action=search', 'get');
     $this->form->append($row);
     $this->table = new Table();

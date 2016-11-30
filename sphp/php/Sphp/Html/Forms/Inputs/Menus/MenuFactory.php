@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Core\Gettext\Calendar as Calendar;
+use Sphp\Core\I18n\Calendar;
 use Sphp\Core\Types\Arrays;
 
 /**
@@ -38,8 +38,11 @@ class MenuFactory {
 	 * @param  string $name the value of the name attribute
 	 * @return Select component containing months
 	 */
-	public static function monthMenu($name = "month") {
-		return new Select($name, (new Calendar())->getMonths());
+	public static function monthMenu($name = "month", Calendar $c = null) {
+    if ($c === null) {
+      $c = new Calendar();
+    }
+		return new Select($name, $c->getMonths());
 	}
 
 	/**
@@ -49,8 +52,11 @@ class MenuFactory {
 	 * @param  string $name the value of the name attribute
 	 * @return Select component containing weekdays
 	 */
-	public static function getWeekdayMenu($lang = "en", $name = "weekday") {
-		return new Select($name, (new Calendar())->getWeekdays($lang));
+	public static function getWeekdayMenu($name = "weekday", Calendar $c = null) {
+    if ($c === null) {
+      $c = new Calendar();
+    }
+		return new Select($name, $c->getWeekdays($lang));
 	}
 
 	/**

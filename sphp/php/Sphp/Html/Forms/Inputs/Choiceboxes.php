@@ -89,7 +89,10 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return self for PHP Method Chaining
    */
   protected function addInput($label, $value) {
-    $input = new InputTag($this->type, $this->name, $value);
+    $input = \Sphp\Html\Document::get($this->type);
+    $input->setName($this->name);
+    $input->setValue($value);
+    //$input = new InputTag($this->type, $this->name, $value);
     $this->options[] = $input;
     $this->boxCont[] = (new Label())
             ->offsetSet("input", $input)

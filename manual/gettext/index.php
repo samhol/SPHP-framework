@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html;
+namespace Sphp;
 
 require_once('../settings.php');
 require_once('../htmlHead.php');
@@ -13,7 +13,6 @@ require_once('GettextTable.php');
         <?php
 
         use Sphp\Core\I18n\Gettext\PoFileIterator;
-        use Sphp\Html\Tables\GettextTable;
 
         $p = new PoFileIterator(\Sphp\LOCALE_PATH . '/fi_FI/LC_MESSAGES/Sphp.Defaults.po');
         $k = $p->filter(function(\Sphp\Core\I18n\Gettext\GettextData $d) {
@@ -21,11 +20,6 @@ require_once('GettextTable.php');
         });
         $gettextTable = new GettextTable($k);
         $gettextTable->printHtml();
-
-        $p->seek(420);
-        //foreach ($p as $m) {
-        //var_dump($m->getMessageId());
-        //}
 
         include('../_footer_.php');
 
