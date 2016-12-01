@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 
 use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
+use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\ContainerInterface;
 
 /**

@@ -17,5 +17,5 @@ use Sphp\Html\ComponentInterface;
  * @filesource
  */
 interface SelectMenuContentInterface extends ComponentInterface {
-	
+  
 }

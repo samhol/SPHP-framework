@@ -56,7 +56,7 @@ class MenuFactory {
     if ($c === null) {
       $c = new Calendar();
     }
-		return new Select($name, $c->getWeekdays($lang));
+		return new Select($name, $c->getWeekdays());
 	}
 
 	/**

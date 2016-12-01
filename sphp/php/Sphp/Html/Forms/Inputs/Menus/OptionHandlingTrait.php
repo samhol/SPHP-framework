@@ -138,6 +138,8 @@ trait OptionHandlingTrait {
     $this->getInnerContainer()->append($this->toMenuContent($opt));
     return $this;
   }
+  
+
 
   /**
    * Prepends {@link SelectContentInterface} objects to the component
@@ -162,7 +164,6 @@ trait OptionHandlingTrait {
    * @return self for PHP Method Chaining
    */
   public function prepend($opt) {
-
     $this->getInnerContainer()->prepend($this->toMenuContent($opt));
     return $this;
   }
