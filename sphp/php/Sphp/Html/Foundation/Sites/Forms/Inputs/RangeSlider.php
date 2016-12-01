@@ -172,7 +172,7 @@ class RangeSlider extends AbstractSlider {
    * @return int the start value of the slider
    */
   public function getStartValue() {
-    return $this->getStartInput()->getValue();
+    return $this->getStartInput()->getSubmitValue();
   }
 
   /**
@@ -181,10 +181,10 @@ class RangeSlider extends AbstractSlider {
    * @return int the end value of the slider
    */
   public function getStopValue() {
-    return $this->getEndInput()->getValue();
+    return $this->getEndInput()->getSubmitValue();
   }
 
-  public function getValue() {
+  public function getSubmitValue() {
     $result = [];
     $result["start"] = $this->getStartValue();
     $result["end"] = $this->getStopValue();

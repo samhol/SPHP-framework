@@ -57,13 +57,15 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
    * 4. all other types are converted to strings and and stored as new 
    *    {@link Option}($opt, $opt) object
    *
-   * @param  string|null $name name attribute
-   * @param  mixed|mixed[] $opt the content of the menu
-   * @param  string|string[] $selectedValues the optionvalues selected
+   * @param string|null $name name attribute
+   * @param SelectMenuContentInterface|mixed[] $opt the content of the menu
+   * @param string|string[] $selectedValues the optionvalues selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
     parent::__construct('select');
-    if ($opt !== null) {
+    if (is_array($opt)) {
+      $this->appendArray($opt);
+    } else if ($opt instanceof SelectMenuContentInterface) {
       $this->append($opt);
     }
     if (isset($name)) {
@@ -119,7 +121,7 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
     return $this;
   }
 
-  public function getValue() {
+  public function getSubmitValue() {
     $selected = [];
     foreach ($this->getSelectedOptions() as $option) {
       $selected[] = $option->getValue();

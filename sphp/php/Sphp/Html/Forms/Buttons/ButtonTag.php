@@ -58,7 +58,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
-  public function getValue() {
+  public function getSubmitValue() {
     return $this->getAttr('value');
   }
 

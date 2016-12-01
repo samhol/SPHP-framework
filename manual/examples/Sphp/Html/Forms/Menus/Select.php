@@ -10,8 +10,8 @@ $cars = ['Sweden' => [
     ],
     'Germany' => [
         'audi' => 'Audi',
-        "bmw" => 'BMW',
-        "mb" => 'Mercedes-Benz',
+        'bmw' => 'BMW',
+        'mb' => 'Mercedes-Benz',
         'opel' => 'Opel',
         'porsche' => 'Porsche',
         'vw' => 'Volkswagen'
@@ -24,7 +24,7 @@ $cars = ['Sweden' => [
 
 $carMenu = (new Select("cars[]"))
         ->setRequired(true)
-        ->append($cars)
+        ->appendArray($cars)
         ->setSize(5)
         ->selectMultiple()
         ->setSelectedValues(['audi', 'porsche', 'volvo']);

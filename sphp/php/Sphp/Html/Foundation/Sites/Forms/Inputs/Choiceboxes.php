@@ -112,7 +112,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @return self for PHP Method Chaining
    */
   protected function setInput(Choicebox $input, $label) {
-    $index = $input->getValue();
+    $index = $input->getSubmitValue();
     $this->options[$index] = $input;
     $this->boxes[$index] = $input;
     $this->boxes[$index . "_label"] = $input->createLabel($label);
@@ -220,7 +220,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    *
    * @return string[] the current submission set of the input component
    */
-  public function getValue() {
+  public function getSubmitValue() {
     $submission = [];
     foreach ($this->getOptionFields() as $box) {
       if ($box->attrExists("checked")) {

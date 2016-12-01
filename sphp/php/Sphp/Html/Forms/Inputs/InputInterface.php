@@ -52,7 +52,7 @@ interface InputInterface extends ContentInterface {
    *
    * @return  scalar|scalar[] the value
    */
-  public function getValue();
+  public function getSubmitValue();
 
   /**
    * Sets  the value of the form input

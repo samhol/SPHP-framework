@@ -51,7 +51,7 @@ trait InputWrapperTrait {
   }
 
   public function getValue() {
-    return $this->getInput()->getValue();
+    return $this->getInput()->getSubmitValue();
   }
 
   public function setValue($value) {

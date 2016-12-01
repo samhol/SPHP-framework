@@ -49,12 +49,14 @@ class Optgroup extends AbstractContainerComponent implements IteratorAggregate, 
    *   in section 2.
    * 
    * @param string $label specifies a label for an option-group
-   * @param mixed|mixed[] $opt the content
+   * @param SelectMenuContentInterface|mixed[] $opt the content
    */
   public function __construct($label = '', $opt = null) {
     parent::__construct('optgroup');
     $this->setLabel($label);
-    if ($opt !== null) {
+    if (is_array($opt)){
+      $this->appendArray($opt);
+    } else if ($opt instanceof SelectMenuContentInterface) {
       $this->append($opt);
     }
   }

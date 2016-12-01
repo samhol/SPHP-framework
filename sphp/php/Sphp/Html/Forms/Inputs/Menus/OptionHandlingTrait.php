@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Core\Types\Strings;
-
 /**
  * A trait for handling the {@link Option} objects inside the {@link Optgroup} and {@link Select} containers
 
@@ -32,6 +30,29 @@ use Sphp\Core\Types\Strings;
 trait OptionHandlingTrait {
 
   /**
+   * 1. a  {@link SelectContentInterface} $options is stored as such
+   * 2. a `scalar[]` $options with $key => $val pairs corresponds to an array of new 
+   *    {@link Option}($key, $val) objects
+   * 3. nested arrays are converted to {@link Optgroup} objects having the root 
+   *    key of the nested array as a label of the group
+   * 
+   * @param array $options
+   * @return self for PHP Method Chaining
+   */
+  public function appendArray(array $options) {
+    foreach ($options as $index => $option) {
+      if ($option instanceof SelectMenuContentInterface) {
+        $this->append($option);
+      } else if (is_array($option)) {
+        $this->appendOptgroup($index, $option);
+      } else {
+        $this->append(new Option($index, $option));
+      }
+    }
+    return $this;
+  }
+
+  /**
    * Appends a new {@link Option} object to the component
    * 
    * @param  string $value the value attribute of the option
@@ -52,15 +73,15 @@ trait OptionHandlingTrait {
    * **Recognized mixed $opt types:**
    * 
    * 1. a  {@link SelectContentInterface} $opt is stored as such
-   * 2. a string $opt corresponds to a new {@link Option}($opt, $opt) object
-   * 3. a string[] $opt with $key => $val pairs corresponds to an array of new 
+   * 2. a `scalar[]` $opt with $key => $val pairs corresponds to an array of new 
    *    {@link Option}($key, $val) objects
-   * 4. all other types of $opt are converted to strings and and stored as in 
-   *    section 2.
+   * 3. nested arrays are converted to {@link Optgroup} objects having the root 
+   *    key of the nested array as a label of the group
    * 
    * @param string $label specifies a label for an option-group
-   * @param mixed|mixed[] $opt the content 
+   * @param SelectMenuContentInterface|mixed[] $opt the content 
    * @param boolean $disabled whether the Optgroup is enabled or not
+   * @return self for PHP Method Chaining
    */
   public function appendOptgroup($label, $opt = null, $disabled = false) {
     $this->append(new Optgroup($label, $opt, $disabled));
@@ -68,103 +89,13 @@ trait OptionHandlingTrait {
   }
 
   /**
-   * Returns the input as an array of {@link SelectMenuContentInterface} components
+   * Appends content to the menu
    *
-   * <var>$opt</var> parameter:
-   * 
-   * 1. a {@link SelectMenuContentInterface} is stored as such
-   * 2. a single dimensional array with $key => $val pairs corresponds to an 
-   *    array of new {@link Option}($key, $val) objects
-   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
-   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
-   * 4. all other types are converted to strings and and stored as new 
-   *    {@link Option}($opt, $opt) object
-   *
-   * @param  mixed $opt the content
-   * @return SelectMenuContentInterface[] menu components
-   */
-  protected function toMenuContent($opt) {
-    $newOpts = [];
-    if (is_scalar($opt)) {
-      $newOpts[] = new Option($opt, $opt);
-    } else if ($opt instanceof SelectMenuContentInterface) {
-      $newOpts[] = $opt;
-    } else if (is_array($opt)) {
-      foreach ($opt as $index => $option) {
-        if ($option instanceof SelectMenuContentInterface) {
-          $newOpts[] = $option;
-        } else if (is_array($option)) {
-          $newOpts[] = new Optgroup($index, $option);
-        } else {
-          $newOpts[] = new Option($index, $option);
-        }
-      }
-    }
-    //echo "<pre style='font-size:8px;'>";
-    //print_r($newOpts);
-    return $newOpts;
-  }
-
-  protected function toOption($opt) {
-    if (is_scalar($opt)) {
-      return new Option($opt, $opt);
-    } else if ($opt instanceof SelectMenuContentInterface) {
-      return $opt;
-    } else if (is_array($opt)) {
-      return new Option(key($opt), current($opt));
-    } else {
-      $val = Strings::toString($opt);
-      return new Option($val, $val);
-    }
-  }
-
-  /**
-   * Appends {@link SelectContentInterface} objects to the component
-   * 
-   * <var>$opt</var> parameter:
-   * 
-   * 1. a {@link SelectMenuContentInterface} is stored as such
-   * 2. a single dimensional array with $key => $val pairs corresponds to an 
-   *    array of new {@link Option}($key, $val) objects
-   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
-   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
-   * 4. all other types are converted to strings and and stored as new 
-   *    {@link Option}($opt, $opt) object
-   *
-   * @param  mixed|mixed[] $opt the content
+   * @param  SelectMenuContentInterface $opt the content
    * @return self for PHP Method Chaining
    */
-  public function append($opt) {
-    $this->getInnerContainer()->append($this->toMenuContent($opt));
-    return $this;
-  }
-  
-
-
-  /**
-   * Prepends {@link SelectContentInterface} objects to the component
-   *
-   * **Notes:**
-   *
-   *  **All numerical keys pointing to content will be modified to start 
-   * counting from zero while literal keys won't be touched.**
-   *
-   * 
-   * <var>$opt</var> parameter:
-   * 
-   * 1. a {@link SelectMenuContentInterface} is stored as such
-   * 2. a single dimensional array with $key => $val pairs corresponds to an 
-   *    array of new {@link Option}($key, $val) objects
-   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
-   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
-   * 4. all other types are converted to strings and and stored as new 
-   *    {@link Option}($opt, $opt) object
-   *
-   * @param  mixed|mixed[] $opt the content
-   * @return self for PHP Method Chaining
-   */
-  public function prepend($opt) {
-    $this->getInnerContainer()->prepend($this->toMenuContent($opt));
+  public function append(SelectMenuContentInterface $opt) {
+    $this->getInnerContainer()->append($opt);
     return $this;
   }
 

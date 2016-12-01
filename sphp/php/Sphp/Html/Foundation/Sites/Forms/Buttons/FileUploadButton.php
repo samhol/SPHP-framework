@@ -67,8 +67,8 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this->label->attrs();
   }
 
-  public function getValue() {
-    return $this->fileInput->getValue();
+  public function getSubmitValue() {
+    return $this->fileInput->getSubmitValue();
   }
 
   public function setValue($value) {

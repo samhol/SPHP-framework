@@ -206,11 +206,11 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    *
    * @return string[] the current submission set of the input component
    */
-  public function getValue() {
+  public function getSubmitValue() {
     $submission = [];
     foreach ($this->getOptionFields() as $box) {
       if ($box->attrExists("checked")) {
-        $submission[] = $box->getValue();
+        $submission[] = $box->getSubmitValue();
       }
     }
     return $submission;

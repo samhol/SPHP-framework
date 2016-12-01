@@ -172,8 +172,8 @@ class Slider extends AbstractSlider {
     return $this->attrs()->get("data-end");
   }
 
-  public function getValue() {
-    return $this->getInput()->getValue();
+  public function getSubmitValue() {
+    return $this->getInput()->getSubmitValue();
   }
 
   public function setValue($value) {

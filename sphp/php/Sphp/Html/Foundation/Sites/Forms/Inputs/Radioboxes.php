@@ -50,7 +50,7 @@ class Radioboxes extends Choiceboxes {
    *
    * @return string|null the current submission set of the input component
    */
-  public function getValue() {
+  public function getSubmitValue() {
     $value = parent::getValue();
     if (count($value) > 0) {
       return array_pop($value);

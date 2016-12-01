@@ -51,7 +51,7 @@ class Textarea extends ContainerTag implements TextareaInterface, LabelableInter
     }
   }
 
-  public function getValue() {
+  public function getSubmitValue() {
     return $this->contentToString();
   }
 

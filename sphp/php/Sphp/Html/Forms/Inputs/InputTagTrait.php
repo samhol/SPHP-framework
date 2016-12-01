@@ -34,7 +34,7 @@ trait InputTagTrait {
    * @return string the value of the value attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function getValue() {
+  public function getSubmitValue() {
     return $this->attrs()->get('value');
   }
 
