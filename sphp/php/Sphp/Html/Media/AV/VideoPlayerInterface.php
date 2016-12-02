@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\AV;
 use Sphp\Html\Media\IframeInterface;
 
 /**
- * Interface defines properties for a videoplayer component
+ * Defines properties for a videoplayer component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

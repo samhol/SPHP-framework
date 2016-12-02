@@ -11,7 +11,7 @@ use Traversable;
 use Countable;
 
 /**
- * Interface defines the properties required from a traversable HTML component container
+ * Defines the properties required from a traversable HTML component container
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-19

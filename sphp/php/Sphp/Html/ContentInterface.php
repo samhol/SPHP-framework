@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines basic features for all HTML structures
+ * Defines basic features for all HTML structures
  *
  * **Links to HTML-resources:**
  * 

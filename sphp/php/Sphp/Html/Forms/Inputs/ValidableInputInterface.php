@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Interface defines required operations for all validable input components
+ * Defines required operations for all validable input components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-02-15

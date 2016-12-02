@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines non visual HTML structures
+ * Defines non visual HTML structures
  * 
  * Such elements are all HTML head elements, hidden inputs etc...
  * 

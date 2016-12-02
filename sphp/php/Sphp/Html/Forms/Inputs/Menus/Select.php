@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\ContainerInterface;
 
@@ -36,36 +34,29 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Select extends AbstractContainerComponent implements IteratorAggregate, LabelableInterface, SelectMenuInterface {
+class Select extends AbstractOptionsContainer implements LabelableInterface, SelectMenuInterface {
 
   use \Sphp\Html\Forms\Inputs\InputTrait,
-      OptionHandlingTrait,
       \Sphp\Html\Forms\LabelableTrait,
-      \Sphp\Html\Forms\Inputs\ValidableInputTrait,
-      \Sphp\Html\TraversableTrait;
+      \Sphp\Html\Forms\Inputs\ValidableInputTrait;
 
   /**
    * Constructs a new instance
    *
-   * <var>$opt</var> parameter:
+   * **`$opt` types:**
    * 
    * 1. a {@link SelectContentInterface} is stored as such
    * 2. a single dimensional array with $key => $val pairs corresponds to an 
    *    array of new {@link Option}($key, $val) objects
    * 3. a multidimensional array corresponds to a multidimensional menu structure with 
    *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
-   *
+   * 
    * @param string|null $name name attribute
    * @param SelectMenuContentInterface|mixed[] $opt the content of the menu
    * @param string|string[] $selectedValues the optionvalues selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
-    parent::__construct('select');
-    if (is_array($opt)) {
-      $this->appendArray($opt);
-    } else if ($opt instanceof SelectMenuContentInterface) {
-      $this->append($opt);
-    }
+    parent::__construct('select', $opt);
     if (isset($name)) {
       $this->setName($name);
     }
@@ -155,14 +146,6 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
   public function setSize($size) {
     $this->attrs()->set('size', $size);
     return $this;
-  }
-
-  public function count() {
-    return $this->getInnerContainer()->count();
-  }
-
-  public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
   }
 
 }

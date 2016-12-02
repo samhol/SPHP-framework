@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 /**
- * Interface defines an HTML &lt;iframe&gt; tag (an inline frame).
+ * Defines an HTML &lt;iframe&gt; tag (an inline frame).
  *
  * The {@link self} component represents a nested browsing context.
  *

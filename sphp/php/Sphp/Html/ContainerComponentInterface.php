@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines the properties required from a HTML component acting as a traversable component container
+ * Defines the properties required from a HTML component acting as a traversable component container
  *
  * **Notes:**
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 /**
- * Interface defines features for all labelable components
+ * Defines features for all labelable components
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-05

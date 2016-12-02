@@ -7,8 +7,10 @@
 
 namespace Sphp\Data;
 
+use RuntimeException;
+
 /**
- * Interface defines properties of a last-in-first-out (LIFO) stack
+ * Defines properties of a last-in-first-out (LIFO) stack
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
@@ -28,14 +30,16 @@ interface StackInterface {
   /**
    * Removes the item at the top of the stack and returns that item as the value
    *
-   * @return mixed the top-most element or null If the stack is empty
+   * @return mixed the top-most element
+   * @throws RuntimeException when the data-structure is empty
    */
   public function pop();
 
   /**
    * Observes the top-most element without removing it from the stack
    *
-   * @return mixed the top-most element or null If the stack is empty
+   * @return mixed the top-most element
+   * @throws RuntimeException when the data-structure is empty
    */
   public function peek();
 

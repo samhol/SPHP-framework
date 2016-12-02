@@ -8,7 +8,7 @@
 namespace Sphp\Core\Validators;
 
 /**
- * Interface defines the properties of an optional validator
+ * Defines the properties of an optional validator
  * 
  * An optional validator makes it possible to choose if the empty values are 
  * validated by the validation algorithm or not.

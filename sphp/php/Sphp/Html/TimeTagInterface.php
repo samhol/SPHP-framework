@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use DateTime;
 
 /**
- * Interface defines an HTML &lt;time&gt; tag
+ * Defines an HTML &lt;time&gt; tag
  *
  * * a human-readable date/time
  * 

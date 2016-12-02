@@ -11,7 +11,7 @@ use Sphp\Html\ComponentInterface;
 use Sphp\Html\NonVisualContentInterface;
 
 /**
- * Interface defines all {@link Head} component content
+ * Defines all {@link Head} component content
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03

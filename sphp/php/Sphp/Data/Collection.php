@@ -293,8 +293,10 @@ class Collection implements Iterator, CollectionInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * Removes the item at the top of the stack and returns that item as the value
+   *
    * @complexity O(1)
+   * @return mixed the top-most element or null If the stack is empty
    */
   public function pop() {
     if ($this->isEmpty()) {

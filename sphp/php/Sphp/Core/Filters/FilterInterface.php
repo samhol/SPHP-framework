@@ -8,7 +8,7 @@
 namespace Sphp\Core\Filters;
 
 /**
- * Interface defines a data filter
+ * Defines a data filter
  * 
  * **Important:** 
  * 

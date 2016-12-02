@@ -8,7 +8,7 @@
 namespace Sphp\Data;
 
 /**
- * Interface defines properties of aa arrayable data structure
+ * Defines properties of aa arrayable data structure
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12

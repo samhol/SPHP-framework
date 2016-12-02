@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines a (visual) content that has a tooltip
+ * Defines a (visual) content that has a tooltip
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-19

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Interface defines an HTML &lt;textarea&gt; tag
+ * Defines an HTML &lt;textarea&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26

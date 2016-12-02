@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines the properties required from a traversable HTML component container with
+ * Defines the properties required from a traversable HTML component container with
  *
  * An object of {@link self} type supports forexample these properties:
  *

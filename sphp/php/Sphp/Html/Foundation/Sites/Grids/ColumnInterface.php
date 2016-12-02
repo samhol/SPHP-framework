@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Interface defines a Foundation based Column for a Row in a Grid system
+ * Defines a Foundation based Column for a Row in a Grid system
  *
  * The sum of the column widths and offsets in a row should never exeed 12.
  *

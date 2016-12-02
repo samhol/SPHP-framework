@@ -11,7 +11,7 @@ use Sphp\Html\ComponentInterface;
 use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
 
 /**
- * Interface defines script tags
+ * Defines script tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-27

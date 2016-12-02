@@ -12,7 +12,7 @@ use Countable;
 use Traversable;
 
 /**
- * Interface implements a collection
+ * Defines a general purpose collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-24

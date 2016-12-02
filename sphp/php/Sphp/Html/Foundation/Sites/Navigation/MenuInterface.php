@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use Sphp\Html\ContentInterface;
 
 /**
- * Interface defines a basic Foundation 6 menu interface
+ * Defines a basic Foundation 6 menu interface
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

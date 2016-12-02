@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Interface defines a Pane for Foundation Accordion
+ * Defines a Pane for Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-18

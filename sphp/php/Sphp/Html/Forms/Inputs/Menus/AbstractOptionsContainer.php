@@ -1,18 +1,23 @@
 <?php
 
 /**
- * OptionHandlingTrait.php (UTF-8)
+ * AbstractOptionContainer.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
+use IteratorAggregate;
+use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\TraversableInterface;
+use Traversable;
+
 /**
- * A trait for handling the {@link Option} objects inside the {@link Optgroup} and {@link Select} containers
+ * Abstract implementation of a select menu contetn container
 
  * **Notes:**
  *
- * **Nesting {@link Optgroup} in a {@link Select} menu:** The HTML spec
+ * **Nesting {@link Optgroup} in menus:** The HTML spec
  * here is broken. It should allow nested optgroups and recommend user agents 
  * render them as nested menus. Instead, only one optgroup level is allowed. 
  * However Implementors are advised that future versions of HTML may extend the 
@@ -27,9 +32,36 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait OptionHandlingTrait {
+abstract class AbstractOptionsContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface {
+
+  use \Sphp\Html\TraversableTrait;
 
   /**
+   * Constructs a new instance
+   *
+   * **`$opt` types:**
+   * 
+   * 1. a {@link SelectContentInterface} is stored as such
+   * 2. a single dimensional array with $key => $val pairs corresponds to an 
+   *    array of new {@link Option}($key, $val) objects
+   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
+   *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
+   * 
+   * @param  string $tagname the name of the tag
+   * @param SelectMenuContentInterface|mixed[] $opt the content
+   */
+  public function __construct($tagname, $opt = null) {
+    parent::__construct($tagname);
+    if (is_array($opt)) {
+      $this->appendArray($opt);
+    } else if ($opt instanceof SelectMenuContentInterface) {
+      $this->append($opt);
+    }
+  }
+
+  /**
+   * Appends an array of content to the component
+   * 
    * 1. a  {@link SelectContentInterface} $options is stored as such
    * 2. a `scalar[]` $options with $key => $val pairs corresponds to an array of new 
    *    {@link Option}($key, $val) objects
@@ -89,7 +121,7 @@ trait OptionHandlingTrait {
   }
 
   /**
-   * Appends content to the menu
+   * Appends content to the component
    *
    * @param  SelectMenuContentInterface $opt the content
    * @return self for PHP Method Chaining
@@ -99,10 +131,20 @@ trait OptionHandlingTrait {
     return $this;
   }
 
+  /**
+   * Counts the number of {@link SelectMenuContentInterface} 
+   * 
+   * @return int the number of {@link SelectMenuContentInterface} 
+   */
   public function count() {
     return $this->getInnerContainer()->count();
   }
 
+  /**
+   * Retrieves an external iterator
+   * 
+   * @return Traversable external iterator
+   */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();
   }

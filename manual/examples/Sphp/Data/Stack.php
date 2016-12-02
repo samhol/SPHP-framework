@@ -7,9 +7,8 @@ $stack = (new Stack())
         ->push("B")
         ->push("C");
 
-echo "peeked: " . $stack->peek() . "\n";
-
 while (!$stack->isEmpty()) {
+  echo "peeked: " . $stack->peek() . "\n";
   echo "popped: " . $stack->pop() . "\n";
 }
 ?>

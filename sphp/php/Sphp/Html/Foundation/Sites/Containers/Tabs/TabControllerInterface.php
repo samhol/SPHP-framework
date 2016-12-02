@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Interface defines a Foundation Tab controller for Tabs
+ * Defines a Foundation Tab controller for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01

@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface defines a resource container 
+ * Defines a resource container 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-06

@@ -7,10 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use IteratorAggregate;
-use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\TraversableInterface;
-
 /**
  * Class Models an HTML &lt;optgroup&gt; tag
 
@@ -31,34 +27,25 @@ use Sphp\Html\TraversableInterface;
  * @link http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
-class Optgroup extends AbstractContainerComponent implements IteratorAggregate, SelectMenuContentInterface, TraversableInterface {
-
-  use OptionHandlingTrait,
-      \Sphp\Html\TraversableTrait;
+class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInterface {
 
   /**
-   * Constructs a new instance of the {@link Optgroup} component
+   * Constructs a new instance
    *
-   * **Recognized mixed $opt types:**
+   * **`$opt` types:**
    * 
-   * 1. a  {@link SelectMenuContentInterface} $opt is stored as such
-   * 2. a string $opt corresponds to a new {@link Option}($opt, $opt) object
-   * 3. a string[] $opt with $key => $val pairs corresponds to an array of 
-   *   new {@link Option}($key, $val) objects
-   * 4. all other types of $opt are converted to strings and and stored as 
-   *   in section 2.
+   * 1. a {@link SelectMenuContentInterface} is stored as such
+   * 2. a single dimensional array with $key => $val pairs corresponds to an 
+   *    array of new {@link Option}($key, $val) objects
+   * 3. a multidimensional array corresponds to a multidimensional menu structure with 
+   *    {@link Optgroup} components containing new {@link Option Option($key, $val)} objects
    * 
    * @param string $label specifies a label for an option-group
    * @param SelectMenuContentInterface|mixed[] $opt the content
    */
   public function __construct($label = '', $opt = null) {
-    parent::__construct('optgroup');
+    parent::__construct('optgroup', $opt);
     $this->setLabel($label);
-    if (is_array($opt)){
-      $this->appendArray($opt);
-    } else if ($opt instanceof SelectMenuContentInterface) {
-      $this->append($opt);
-    }
   }
 
   /**
@@ -68,7 +55,7 @@ class Optgroup extends AbstractContainerComponent implements IteratorAggregate, 
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function getLabel() {
-    return $this->getAttr('label');
+    return $this->attrs()->get('label');
   }
 
   /**
@@ -79,7 +66,8 @@ class Optgroup extends AbstractContainerComponent implements IteratorAggregate, 
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function setLabel($label) {
-    return $this->setAttr('label', $label);
+    $this->attrs()->set('label', $label);
+    return $this;
   }
 
   /**
@@ -105,14 +93,6 @@ class Optgroup extends AbstractContainerComponent implements IteratorAggregate, 
    */
   public function isEnabled() {
     return !$this->attrs()->exists('disabled');
-  }
-
-  public function count() {
-    return $this->getInnerContainer()->count();
-  }
-
-  public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
   }
 
 }

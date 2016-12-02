@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\AV;
 use Sphp\Html\TagInterface;
 
 /**
- * Interface defines properties HTML multimedia tags
+ * Defines properties HTML multimedia tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20

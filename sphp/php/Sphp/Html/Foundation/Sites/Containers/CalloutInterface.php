@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
 
 /**
- * Interface defines a Foundation callout component
+ * Defines a Foundation callout component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02

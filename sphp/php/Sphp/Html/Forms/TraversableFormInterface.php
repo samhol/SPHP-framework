@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 /**
- * Interface defines required properties for a traversable HTML &lt;form&gt; component
+ * Defines required properties for a traversable HTML &lt;form&gt; component
  *
  * {@inheritdoc}
  *

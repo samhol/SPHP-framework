@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Interface defines an HTML &lt;input type="number"&gt; tag
+ * Defines an HTML &lt;input type="number"&gt; tag
  *
  *
  * {@inheritdoc}

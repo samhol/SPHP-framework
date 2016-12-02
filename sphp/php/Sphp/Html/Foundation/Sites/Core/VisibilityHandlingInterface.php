@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 /**
- * Interface defines Foudation Screen Size Visibility Control settings
+ * Defines Foudation Screen Size Visibility Control settings
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>

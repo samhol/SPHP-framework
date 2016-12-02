@@ -27,9 +27,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   /**
    * Constructs a new instance
    *
+   * @param  string|null $name name attribute
    * @param  int $start the start value of the slider
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step
+   * @param  mixed $value the initial submit value 
    * @throws InvalidArgumentException if the $value is not between the range
    */
   public function __construct($name, $start = 0, $end = 100, $step = 1, $value = null) {

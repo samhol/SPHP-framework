@@ -2,14 +2,13 @@
 
 namespace Sphp\Data;
 
-$stack = (new Queue())
+$queue = (new Queue())
         ->enqueue("A")
         ->enqueue("B")
         ->enqueue("C");
 
-echo "peeked: " . $stack->peek() . "\n";
-
-while (!$stack->isEmpty()) {
-  echo "popped: " . $stack->dequeue() . "\n";
+while (!$queue->isEmpty()) {
+  echo "peeked: " . $queue->peek() . "\n";
+  echo "dequeued: " . $queue->dequeue() . "\n";
 }
 ?>

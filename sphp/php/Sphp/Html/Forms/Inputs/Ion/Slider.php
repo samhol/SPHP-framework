@@ -22,6 +22,7 @@ class Slider extends AbstractSlider {
   /**
    * Constructs a new instance
    *
+   * @param  string|null $name name attribute
    * @param  int $start the start value of the slider
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step

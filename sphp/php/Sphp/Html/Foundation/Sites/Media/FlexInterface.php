@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\ContentInterface;
 
 /**
- * Interface defines properties for a Foundation 6 Flex component
+ * Defines properties for a Foundation 6 Flex component
  *
  * Flex Video lets browsers automatically scale video objects in webpages. If a 
  * video is embedded from YouTube, Vimeo, or another site that uses iframe, 

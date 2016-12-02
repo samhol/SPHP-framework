@@ -10,7 +10,7 @@ namespace Sphp\Data;
 use Exception;
 
 /**
- * Interface defines properties of a First-In-First-Out (FIFO) queue
+ * Defines properties of a First-In-First-Out (FIFO) queue
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
@@ -32,6 +32,7 @@ interface QueueInterface {
    *
    * @return mixed the item at the beginning of the queue
    * @throws Exception if the queue is empty
+   * @throws RuntimeException when the data-structure is empty
    */
   public function dequeue();
 
@@ -40,6 +41,7 @@ interface QueueInterface {
    *
    * @return mixed the item at the beginning of the queue
    * @throws Exception if the queue is empty
+   * @throws RuntimeException when the data-structure is empty
    */
   public function peek();
 

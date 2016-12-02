@@ -12,7 +12,7 @@ use Sphp\Html\TraversableInterface;
 use Sphp\Html\ContainerInterface;
 
 /**
- * Class Models an HTML &lt;select&gt; tag
+ * Defines properties for a select menu in HTML forms
  *
  * The &lt;select&gt; element is used to create a drop-down list. The
  * &lt;option&gt; tags inside the &lt;select&gt; element define the available
