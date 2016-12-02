@@ -32,10 +32,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  function __construct($name = null, $value = null) {
-    if ($value != null) {
-      
-    }
+  public function __construct($name = null, $value = null) {
     parent::__construct('number', $name, $value);
   }
 
@@ -48,39 +45,39 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
   public function getMinimum() {
-    return $this->attrs()->get("min");
+    return $this->attrs()->get('min');
   }
 
   public function setMinimum($min) {
-    $this->attrs()->set("min", (int) $min);
+    $this->attrs()->set('min', (int) $min);
     return $this;
   }
 
   public function getMaximum() {
-    return $this->attrs()->get("max");
+    return $this->attrs()->get('max');
   }
 
   public function setMaximum($max) {
-    $this->attrs()->set("max", (int) $max);
+    $this->attrs()->set('max', (int) $max);
     return $this;
   }
 
   public function getStep() {
-    return $this->attrs()->get("step");
+    return $this->attrs()->get('step');
   }
 
   public function setStep($step) {
-    $this->attrs()->set("step", (int) $step);
+    $this->attrs()->set('step', (int) $step);
     return $this;
   }
 
   public function setPlaceholder($placeholder) {
-    $this->attrs()->set("placeholder", $placeholder);
+    $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 
   public function autocomplete($allow = true) {
-    $this->attrs()->set("autocomplete", $allow ? "on" : "off");
+    $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }
 

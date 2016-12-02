@@ -14,7 +14,7 @@ use Sphp\Html\SimpleContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
- * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API link
+ * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API
  * @filesource
  */
 class Title extends SimpleContainerTag implements HeadComponentInterface {

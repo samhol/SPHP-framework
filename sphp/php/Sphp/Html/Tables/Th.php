@@ -18,7 +18,7 @@ namespace Sphp\Html\Tables;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-08-28
- * @link http://www.w3schools.com/tags/tag_th.asp w3schools HTML API link
+ * @link http://www.w3schools.com/tags/tag_th.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

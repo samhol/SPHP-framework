@@ -28,7 +28,7 @@ use Sphp\Html\TraversableInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-06-10
- * @link http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API link
+ * @link http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
  * @filesource
  */
 class Optgroup extends AbstractContainerComponent implements IteratorAggregate, SelectMenuContentInterface, TraversableInterface {

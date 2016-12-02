@@ -18,7 +18,7 @@ use Sphp\Html\Programming\ScriptsContainer;
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-25
- * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API link
+ * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

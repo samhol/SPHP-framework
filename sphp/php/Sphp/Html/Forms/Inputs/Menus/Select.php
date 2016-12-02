@@ -32,7 +32,7 @@ use Sphp\Html\ContainerInterface;
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10
- * @link    http://www.w3schools.com/tags/tag_select.asp w3schools HTML API link
+ * @link    http://www.w3schools.com/tags/tag_select.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -54,8 +54,6 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
    *    array of new {@link Option}($key, $val) objects
    * 3. a multidimensional array corresponds to a multidimensional menu structure with 
    *    {@link Optgroup} components containing new {@link Option}($key, $val) objects
-   * 4. all other types are converted to strings and and stored as new 
-   *    {@link Option}($opt, $opt) object
    *
    * @param string|null $name name attribute
    * @param SelectMenuContentInterface|mixed[] $opt the content of the menu
@@ -141,7 +139,8 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
    * @return self for PHP Method Chaining
    */
   public function selectMultiple($multiple = true) {
-    return $this->setAttr('multiple', $multiple);
+    $this->attrs()->set('multiple', $multiple);
+    return $this;
   }
 
   /**
@@ -154,7 +153,8 @@ class Select extends AbstractContainerComponent implements IteratorAggregate, La
    * @return self for PHP Method Chaining
    */
   public function setSize($size) {
-    return $this->setAttr('size', $size);
+    $this->attrs()->set('size', $size);
+    return $this;
   }
 
   public function count() {

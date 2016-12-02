@@ -20,7 +20,7 @@ use Sphp\Html\EmptyTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
- * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API link
+ * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */
 class Base extends EmptyTag implements HeadComponentInterface {

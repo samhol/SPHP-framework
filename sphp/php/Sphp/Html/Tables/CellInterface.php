@@ -22,10 +22,10 @@ namespace Sphp\Html\Tables;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-04
- * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API link
- * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API link
- * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API link
- * @link    http://dev.w3.org/html5/spec/Overview.html#the-th-element W3C API link
+ * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
+ * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API
+ * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API
+ * @link    http://dev.w3.org/html5/spec/Overview.html#the-th-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

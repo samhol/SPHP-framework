@@ -18,7 +18,7 @@ use Sphp\Html\ContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23
- * @link    http://www.w3schools.com/tags/tag_dd.asp w3schools HTML API link
+ * @link    http://www.w3schools.com/tags/tag_dd.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

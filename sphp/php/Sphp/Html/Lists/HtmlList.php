@@ -18,7 +18,7 @@ use Sphp\Core\Types\URL;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
- * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API link
+ * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

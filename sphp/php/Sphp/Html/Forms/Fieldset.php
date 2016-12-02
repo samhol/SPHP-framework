@@ -16,8 +16,8 @@ use Sphp\Html\ContainerTag;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-11
- * @link    http://www.w3schools.com/tags/tag_fieldset.asp w3schools HTML API link
- * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-fieldset-element W3C API link
+ * @link    http://www.w3schools.com/tags/tag_fieldset.asp w3schools HTML API
+ * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-fieldset-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

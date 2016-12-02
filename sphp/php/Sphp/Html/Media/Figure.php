@@ -17,7 +17,7 @@ use Sphp\Core\Types\URL;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-02-15
- * @link    http://www.w3schools.com/tags/tag_figure.asp w3schools API link
+ * @link    http://www.w3schools.com/tags/tag_figure.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
