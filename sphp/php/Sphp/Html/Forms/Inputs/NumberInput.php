@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class models an HTML &lt;input type="text|password|email|tel| ...))"&gt; tag
+ * Class models an HTML &lt;input type="number"&gt; tag
  *
  * {@inheritdoc}
  *

@@ -174,15 +174,15 @@ class Document {
   );
 
   /**
-   * Returns a corresponding tag object
+   * Returns a corresponding HTML object
    *
-   * @param  string $tagname the tag name of the component
+   * @param  string $name the name of the component
    * @param  string $content the content of the tag (for nonempty tags only)
    * @return ComponentInterface the corresponding component
    * @throws \InvalidArgumentException if given tagname is invalid
    */
-  public static function get($tagname, $content = null) {
-    $tagName = strtolower($tagname);
+  public static function get($name, $content = null) {
+    $tagName = strtolower($name);
     if (array_key_exists($tagName, self::$tags)) {
       $className = self::$tags[$tagName];
       if ($className == EmptyTag::class || $className == ContainerTag::class) {
@@ -203,7 +203,7 @@ class Document {
       $type = $data[1];
       $class = new $className($type);
     } else {
-      throw new \InvalidArgumentException("Proper class for object '$tagname' can not be found");
+      throw new \InvalidArgumentException("Proper class for object '$name' can not be found");
     }
     return $class;
   }

@@ -23,7 +23,7 @@ class TextInput extends TextualInput {
   /**
    * Constructs a new instance
    *
-   * @Preconditions   <var>0 < $size <= $maxlength</var>
+   * @Preconditions   `0 < $size <= $maxlength`
    * @Postconditions  <var>attrLocked("type", "text")</var>
    *
    * @param  string $name the value of the  name attribute

@@ -21,7 +21,7 @@ class PasswordInput extends TextualInput {
   /**
    * Constructs a new instance
    *
-   * @precondition  `0 < $size <= $maxlength`
+   * @precondition `0 < $size <= $maxlength`
    * @param  string $name name attribute
    * @param  string $value value attribute
    * @param  int $size size attribute

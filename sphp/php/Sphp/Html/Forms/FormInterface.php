@@ -115,6 +115,20 @@ interface FormInterface extends ContentInterface {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function getName();
+  
+  /**
+   * Sets the autocomplete on or off
+   *
+   * When autocomplete is on, the browser automatically complete values based on values that the user has entered before.
+   *
+   * Autocomplete allows the browser to predict the value. When a user starts to type in a field,
+   * the browser should display options to fill in the field, based on earlier typed values.
+   *
+   * @param  boolean $allow (allow the browser to predict the value)
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
+   */
+  public function autocomplete($allow = true);
 
   /**
    * Sets the form as validable
