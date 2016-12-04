@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\I18n;
 
-use Sphp\Core\I18n\Gettext\PoFileParser;
+use Sphp\Core\I18n\Gettext\PoFileIterator;
 
 trait GettextDataTrait  {
 
@@ -18,7 +18,7 @@ trait GettextDataTrait  {
    */
   public static function getPoFileParser() {
     if (self::$parser === null) {
-      self::$parser = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+      self::$parser = new PoFileIterator(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
     }
     return self::$parser;
   }

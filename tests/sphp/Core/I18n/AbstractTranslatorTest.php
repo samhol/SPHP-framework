@@ -4,7 +4,7 @@ namespace Sphp\Core\I18n;
 
 require_once 'GettextDataTrait.php';
 
-use Sphp\Core\I18n\Gettext\PoFileParser;
+use Sphp\Core\I18n\Gettext\PoFileIterator;
 
 abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
 
