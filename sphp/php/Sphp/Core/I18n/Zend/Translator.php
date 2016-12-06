@@ -79,7 +79,7 @@ class Translator extends AbstractTranslator {
    * @param string $directory the locale path of the dictionary
    * @param string $charset the character set of the dictionary
    */
-  public function __construct($lang = 'fi_FI', ZendTranslator $t = null) {
+  public function __construct($lang = null, ZendTranslator $t = null) {
     if ($t === null) {
       $t = new ZendTranslator();
     }
@@ -152,7 +152,7 @@ class Translator extends AbstractTranslator {
    * @return string the directory containing the dictionaries
    */
   public function getDirectory() {
-    return $this->translator-- > directory;
+    return $this->directory;
   }
 
   /**

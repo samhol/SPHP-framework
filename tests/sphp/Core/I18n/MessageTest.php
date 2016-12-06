@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\I18n;
 
-use Sphp\Core\I18n\Gettext\PoFileParser;
+use Sphp\Core\I18n\Gettext\PoFileIterator;
 
 class MessageTest extends \PHPUnit_Framework_TestCase {
 
@@ -18,7 +18,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    */
   public static function getPoFileParser() {
     if (self::$parser === null) {
-      self::$parser = new PoFileParser(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+      self::$parser = new PoFileIterator(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
     }
     return self::$parser;
   }
@@ -68,9 +68,9 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider allMessageStrings
    * @param array $data
    */
-  public function testSingular(array $data) {
-    $m = new Message($data[PoFileParser::SINGULAR_ID]);
-    $this->assertEquals($m->translate(), $data[PoFileParser::SINGULAR_MESSAGE]);
+  public function testSingular(Gettext\GettextData $data) {
+    $m = new Message($data->getMessageId());
+    $this->assertEquals($m->translate(), $data->getTranslation());
   }
 
   /**
@@ -97,13 +97,13 @@ class MessageTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider plurals
    * @param array $data
    */
-  public function testPlural(array $data) {
-    $m = new PluralMessage($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 0);
-    $this->assertEquals($m->setItemCount(0)->translate(), $data[PoFileParser::PLURAL_MESSAGE]);
-    $this->assertEquals($m->setItemCount(1)->translate(), $data[PoFileParser::SINGULAR_MESSAGE]);
-    $this->assertEquals($m->setItemCount(2)->translate(), $data[PoFileParser::PLURAL_MESSAGE]);
-    $this->assertEquals($m->isPlural(false)->translate(), $data[PoFileParser::SINGULAR_MESSAGE]);
-    $this->assertEquals($m->isPlural()->translate(), $data[PoFileParser::PLURAL_MESSAGE]);
+  public function testPlural(Gettext\PluralGettextData $data) {
+    $m = new PluralMessage($data->getMessageId(), $data->getPluralId(), 0);
+    $this->assertEquals($m->setItemCount(0)->translate(), $data->getPluralTranslation());
+    $this->assertEquals($m->setItemCount(1)->translate(), $data->getTranslation());
+    $this->assertEquals($m->setItemCount(2)->translate(), $data->getPluralTranslation());
+    $this->assertEquals($m->isPlural(false)->translate(), $data->getTranslation());
+    $this->assertEquals($m->isPlural()->translate(), $data->getPluralTranslation());
   }
 
 }

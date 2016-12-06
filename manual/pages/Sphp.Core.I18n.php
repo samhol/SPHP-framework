@@ -46,6 +46,8 @@ $translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
 ##The $translator
+        
+The translator itself is initialized without any parameters, as any configuration to it is optional. A translator without any translations will do nothing but return all messages verbatim.
 
 The $translator is the base interface for all human language translation related 
 operations in this framework. It translates given input by using PHP's build in 

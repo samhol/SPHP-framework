@@ -32,21 +32,26 @@ abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider allMessageStrings
+   * @dataProvider singulars
    */
-  public function testSingularGet(array $data) {
-    $this->assertEquals($this->translator->get($data[PoFileParser::SINGULAR_ID]), $data[PoFileParser::SINGULAR_MESSAGE]);
+  public function testSingularMessages(Gettext\GettextData $data) {
+   /* echo "\narray?::\n";
+    print_r($this->translator->get($data->getMessageId()));
+    echo "\n";
+    print_r($data->getMessageId());
+    echo "\n";*/
+    $this->assertEquals($this->translator->get($data->getMessageId()), $data->getTranslation());
   }
 
   /**
    * @dataProvider plurals
    * @param array $data
    */
-  public function testPlural(array $data) {
-    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 0), $data[PoFileParser::PLURAL_MESSAGE]);
-    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 1), $data[PoFileParser::SINGULAR_MESSAGE]);
-    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], 2), $data[PoFileParser::PLURAL_MESSAGE]);
-    $this->assertEquals($this->translator->getPlural($data[PoFileParser::SINGULAR_ID], $data[PoFileParser::PLURAL_ID], -3), $data[PoFileParser::PLURAL_MESSAGE]);
+  public function testPlural(Gettext\PluralGettextData $data) {
+    $this->assertEquals($this->translator->getPlural($data->getMessageId(), $data->getPluralId(), 0), $data->getPluralTranslation());
+    $this->assertEquals($this->translator->getPlural($data->getMessageId(), $data->getPluralId(), 1), $data->getTranslation());
+    $this->assertEquals($this->translator->getPlural($data->getMessageId(), $data->getPluralId(), 2), $data->getPluralTranslation());
+    $this->assertEquals($this->translator->getPlural($data->getMessageId(), $data->getPluralId(), -3), $data->getPluralTranslation());
   }
 
   public function arrayData() {

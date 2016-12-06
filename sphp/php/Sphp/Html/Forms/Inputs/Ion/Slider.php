@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IonRangeSlider.php (UTF-8)
+ * Slider.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,10 +10,11 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 use InvalidArgumentException;
 
 /**
- * Class implements jQuery range slider with skin support
+ * Implements a jQuery based range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-10-11
+ * @link    http://ionden.com/a/plugins/ion.rangeSlider/en.html ion slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

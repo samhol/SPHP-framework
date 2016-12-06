@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IonRangeSlider.php (UTF-8)
+ * RangeSlider.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -14,6 +14,7 @@ use InvalidArgumentException;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-10-11
+ * @link    http://ionden.com/a/plugins/ion.rangeSlider/en.html ion range slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
