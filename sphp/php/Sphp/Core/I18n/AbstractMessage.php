@@ -11,7 +11,7 @@ use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
 
 /**
- * Implemants a translatable message object
+ * Implements a translatable message object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2010-09-02

@@ -14,7 +14,7 @@ use IteratorAggregate;
 use ArrayAccess;
 
 /**
- * Class models a container for {@link MessageList} objects sorted by associated topics
+ * Implements a container for {@link MessageList} objects sorted by associated topics
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-08-21

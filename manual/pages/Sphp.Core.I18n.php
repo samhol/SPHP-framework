@@ -41,7 +41,6 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/I18n/sphpTranslation.php", "text", false);
 
-$locale = $api->classLinker(Locale::class);
 $translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
@@ -51,7 +50,7 @@ The translator itself is initialized without any parameters, as any configuratio
 
 The $translator is the base interface for all human language translation related 
 operations in this framework. It translates given input by using PHP's build in 
-gettext extension and the current locale information provided by the $locale class.
+gettext extension and the current locale information provided by the locale.
 		
 The $translator class supports both basic...
 MD

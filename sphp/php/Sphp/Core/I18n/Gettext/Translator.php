@@ -15,7 +15,7 @@ use Sphp\Core\Types\Arrays;
 use Sphp\Core\I18n\AbstractTranslator;
 
 /**
- * A class for natural language translations
+ * Implements a natural language translator
  *
  * The underlying technology used in translation is PHP's gettext extension.
  *

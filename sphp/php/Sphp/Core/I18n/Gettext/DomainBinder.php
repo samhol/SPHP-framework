@@ -1,17 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * DomainBinder.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Core\I18n\Gettext;
 
 /**
- * Description of DomainBinder
+ * Static gettext domain binder
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class DomainBinder {
 

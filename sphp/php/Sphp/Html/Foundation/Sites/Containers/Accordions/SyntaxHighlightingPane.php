@@ -30,7 +30,7 @@ use Sphp\Html\Foundation\Sites\Buttons\IconButton;
  */
 class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterInterface {
 
-  use CloneNotSupportedTrait, SyntaxhighlighterContainerTrait;
+  use SyntaxhighlighterContainerTrait;
 
   /**
    *

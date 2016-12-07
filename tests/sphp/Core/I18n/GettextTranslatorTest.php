@@ -16,8 +16,8 @@ class GettextTranslatorTests extends AbstractTranslatorTest {
   protected $translator;
 
   /**
-   * Sets up the fixture, for example, opens a network connection.
-   * This method is called before a test is executed.
+   * 
+   * @return Translator
    */
   public function getTranslator() {
     return new Translator('fi_FI');

@@ -19,8 +19,6 @@ use Sphp\Data\Arrayable;
  */
 class Router implements Arrayable {
 
-  use CloneNotSupportedTrait;
-
   const ROOT = '';
   const SPHP = 'sphp/';
   const SPHP_CSS = 'sphp/css/';

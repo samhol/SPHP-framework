@@ -14,7 +14,7 @@ use ReflectionClass;
 use Exception;
 
 /**
- * Implementation of natural language translator
+ * Implements a natural language translator
  *
  * The underlying technology used in translation is Zend's translator class
  *

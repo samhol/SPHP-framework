@@ -4,7 +4,7 @@ namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\Gettext\PoFileIterator;
 
-trait GettextDataTrait  {
+trait GettextDataTrait {
 
   /**
    *
@@ -22,17 +22,19 @@ trait GettextDataTrait  {
     }
     return self::$parser;
   }
+
   /**
    * @return array
    */
   public function allMessageStrings() {
     $parser = self::gettextIterator();
     $args = [];
-    foreach ($parser->getAll() as $data) {
+    foreach ($parser as $data) {
       $args[] = [$data];
     }
     return $args;
   }
+
   /**
    * @return array
    */
@@ -43,7 +45,7 @@ trait GettextDataTrait  {
     }
     return $args;
   }
-  
+
   public function plurals() {
     $parser = self::gettextIterator();
     $args = [];

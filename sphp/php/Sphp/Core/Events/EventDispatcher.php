@@ -11,7 +11,7 @@ use Sphp\Data\UniquePriorityQueue;
 use InvalidArgumentException;
 
 /**
- * Implements an object for managing event listeners and dispatching events
+ * Implements an event dispatcher
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12

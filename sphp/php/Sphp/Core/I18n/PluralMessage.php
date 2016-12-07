@@ -10,7 +10,7 @@ namespace Sphp\Core\I18n;
 use Sphp\Core\I18n\TranslatorInterface;
 
 /**
- * Implemants a translatable message object
+ * Implements a translatable message object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-09-02

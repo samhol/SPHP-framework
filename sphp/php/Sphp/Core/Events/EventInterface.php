@@ -8,7 +8,7 @@
 namespace Sphp\Core\Events;
 
 /**
- * Event Interface defines the minimum event functionality needed
+ * Defines an event
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-12

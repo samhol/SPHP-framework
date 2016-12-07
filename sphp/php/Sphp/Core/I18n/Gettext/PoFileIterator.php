@@ -1,8 +1,8 @@
 <?php
 
 /**
- * PoFileParser.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
+ * PoFileIterator.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Core\I18n\Gettext;
@@ -12,23 +12,17 @@ use Sepia\PoParser as SepiaPoParser;
 use Sphp\Data\Collection;
 
 /**
- * Description of PoParser
+ * Iterator for po files
+ * 
+ * Iterator parses a Gettext Portable file and acts as an iterator for all gettext instances in the file
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-02-25
+ * @uses    https://github.com/raulferras/PHP-po-parser Po Parser
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class PoFileIterator implements \Iterator {
-
-  const MESSAGE_ID = 'msgid';
-  const SINGULAR_ID = 'msgid';
-  const PLURAL_ID = 'msgid_plural';
-  const SINGULAR_MESSAGE = 'msgstr_singular';
-  const PLURAL_MESSAGE = 'msgstr_plural';
-
-  /**
-   *
-   * @var array 
-   */
-  private $entries = [];
 
   /**
    *
@@ -41,9 +35,7 @@ class PoFileIterator implements \Iterator {
    * @param string $poFilePath
    */
   public function __construct($poFilePath) {
-    //$this->poFilePath = $poFilePath;
     $this->objects = $this->parseFromFile($poFilePath);
-    //print_r($this->entries);
   }
 
   protected function parseFromFile($poFilePath) {
@@ -53,10 +45,8 @@ class PoFileIterator implements \Iterator {
     //$this->entries = [];
     $arr = [];
     foreach ($rawData as $data) {
-      //$this->entries[$key] = self::parseTranslationData($data);
       $arr[] = self::parseObject($data);
     }
-    //$this->objects = new \Sphp\Data\Collection($arr);
     return new Collection($arr);
   }
 
@@ -67,23 +57,6 @@ class PoFileIterator implements \Iterator {
    */
   public function filter(callable $callback) {
     return $this->objects->filter($callback, 0);
-  }
-
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function getSingularIds() {
-    return array_keys($this->entries);
-  }
-
-  /**
-   * 
-   * @return array
-   */
-  public function getAll() {
-    return $this->objects;
   }
 
   /**
@@ -108,28 +81,11 @@ class PoFileIterator implements \Iterator {
     return $this->filter($pluralFilter);
   }
 
-  private static function parseTranslationData(array $data) {
-    if (array_key_exists('flags', $data)) {
-      $instance['flags'] = $data['flags'][0];
-    }
-    if (array_key_exists('msgid', $data)) {
-      $instance[self::MESSAGE_ID] = $data['msgid'][0];
-    }
-    if (array_key_exists('msgid_plural', $data)) {
-      $instance[self::PLURAL_ID] = $data['msgid_plural'][0];
-    }
-    if (array_key_exists('msgstr', $data)) {
-      $instance[self::SINGULAR_MESSAGE] = $data['msgstr'][0];
-    }
-    if (array_key_exists('msgstr[0]', $data)) {
-      $instance[self::SINGULAR_MESSAGE] = $data['msgstr[0]'][0];
-    }
-    if (array_key_exists('msgstr[1]', $data)) {
-      $instance[self::PLURAL_MESSAGE] = $data['msgstr[1]'][0];
-    }
-    return $instance;
-  }
-
+  /**
+   * 
+   * @param array $data
+   * @return self for PHP Method Chaining
+   */
   private static function parseObject(array $data) {
     $flags = null;
     if (array_key_exists('flags', $data)) {

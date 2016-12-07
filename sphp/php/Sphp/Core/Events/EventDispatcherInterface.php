@@ -8,7 +8,7 @@
 namespace Sphp\Core\Events;
 
 /**
- * Iterface defines minimum requirements of an Event Dispatcher
+ * Defines minimum requirements of an Event Dispatcher
  * 
  * Event Dispatcher manages event listeners and dispatching events
  *

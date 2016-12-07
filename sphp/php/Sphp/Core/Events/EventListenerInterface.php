@@ -8,7 +8,7 @@
 namespace Sphp\Core\Events;
 
 /**
- * Class EventListenerInterface
+ * Defines an event listener
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-10
