@@ -21,21 +21,6 @@ use Doctrine\ORM\EntityManagerInterface;
 interface DbObjectInterface extends ArrayableObjectInterface {
 
   /**
-   * Returns the unique id (database table's primary key)
-   *
-   * @return mixed the unique id (database table's primary key)
-   */
-  public function getPrimaryKey();
-
-  /**
-   * Sets the unique id (database table's primary key)
-   *
-   * @param  mixed $key the unique id (database table's primary key)
-   * @return self for PHP Method Chaining
-   */
-  public function setPrimaryKey($key);
-
-  /**
    * Inserts the user as a new instance to the database
    *
    * @param  EntityManagerInterface $em the entity manager

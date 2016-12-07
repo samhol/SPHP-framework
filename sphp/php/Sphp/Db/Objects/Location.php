@@ -20,20 +20,10 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Table(name="locations",uniqueConstraints={@UniqueConstraint(name="unique_name", columns={"name"})})
  */
 class Location extends AbstractDbObject implements GeographicalAddressInterface {
-
-  /**
-   * primary database key
-   *
-   * @var int 
-   * @Id @Column(type="integer")
-   * @GeneratedValue
-   */
-  private $id;
-
   /**
    *
    * @var string|null
-   * @Column(length=100)
+   * @Id @Column(type="string")
    */
   private $name;
 
@@ -42,15 +32,6 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
    * @Embedded(class = "Address", columnPrefix = false) 
    */
   private $address;
-
-  public function getPrimaryKey() {
-    return $this->id;
-  }
-
-  public function setPrimaryKey($id) {
-    $this->id = $id;
-    return $this;
-  }
 
   /**
    * Returns the name of the location
@@ -139,19 +120,16 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
 
   public function fromArray(array $data = []) {
     $args = [
-        'id' => \FILTER_VALIDATE_INT,
         'name' => \FILTER_SANITIZE_STRING
     ];
     $myinputs = filter_var_array($data, $args, true);
-    $this->setPrimaryKey($myinputs['id'])
-            ->setName($myinputs['name'])
+    $this->setName($myinputs['name'])
             ->setAddress(new Address($data));
     return $this;
   }
 
   public function toArray() {
     $data = [
-        'id' => $this->getPrimaryKey(),
         'name' => $this->getName()
     ];
     $addr = $this->address->toArray();

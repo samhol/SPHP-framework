@@ -82,7 +82,7 @@ class LocationStorage extends AbstractObjectStorage {
       $result = $needle->getName();
     }
     $query = $this->getManager()
-            ->createQuery('SELECT COUNT(u.id) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
+            ->createQuery('SELECT COUNT(u.name) FROM ' . $this->getObjectType() . " u WHERE u.name = :name");
     $query->setParameter('name', $needle);
     $result = $query->getSingleScalarResult() == 0;
 

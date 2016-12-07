@@ -100,8 +100,8 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
   public function testDelete() {
     $l = $this->locations->findByName("home");
     //var_dump($l);
-    echo "ID:";
-    var_dump($l->getPrimaryKey());
+   // echo "ID:";
+   // var_dump($l->getPrimaryKey());
     $this->assertTrue($l instanceof Location);
     $this->assertTrue($this->locations->delete($l));
     $this->locations->nameNotUsed("home");
@@ -132,7 +132,7 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
     $l->setCity("Åbo");
     //var_dump($l);
     echo "ID:";
-    var_dump($l->getPrimaryKey());
+   // var_dump($l->getPrimaryKey());
     $this->locations->getManager()->flush();
     $this->assertTrue($this->locations->exists($l));
     // $this->assertfalse($u->insertAsNewInto($this->em)); 
@@ -166,8 +166,8 @@ class LocationTest extends \PHPUnit_Framework_TestCase {
       $this->assertFalse($this->locations->contains($foo1));
       // $this->assertTrue($this->locations->contains($foo));
       var_dump($ex->getMessage());
-      var_dump($foo->getPrimaryKey());
-      $this->assertTrue($foo->getPrimaryKey() > 0);
+      //var_dump($foo->getPrimaryKey());
+     // $this->assertTrue($foo->getPrimaryKey() > 0);
       $this->assertTrue($this->em->contains($foo));
     }
   }
