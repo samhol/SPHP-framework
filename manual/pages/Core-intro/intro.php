@@ -10,7 +10,7 @@ use Sphp\Core\Configuration;
 $rootNs = $apigen->classLinker(Configuration::class)->namespaceLink();
 use Sphp\Core\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
-use Sphp\Core\Gettext\Translator as Translator;
+use Sphp\Core\I18n\Gettext\Translator;
 $gettextNs = $apigen->classLinker(Translator::class)->namespaceLink();
 use Sphp\Core\Types\Strings  as Strings;
 $typesNs = $apigen->classLinker(Strings::class)->namespaceLink();

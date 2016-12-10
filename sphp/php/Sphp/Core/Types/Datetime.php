@@ -11,8 +11,6 @@ use DateTimeZone;
 use Sphp\Objects\ScalarObjectInterface;
 use Sphp\Core\Comparable;
 use Sphp\Objects\EqualsTrait;
-use Sphp\Core\Gettext\TranslatorChangerInterface;
-use Sphp\Core\Gettext\TranslatorChangerTrait;
 
 /**
  * Representation of date and time
@@ -23,10 +21,9 @@ use Sphp\Core\Gettext\TranslatorChangerTrait;
  * @link    http://www.php.net/manual/en/class.datetime.php The DateTime class (PHP manual)
  * @filesource
  */
-class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, TranslationChangerInterface {
+class Datetime extends \DateTime implements ScalarObjectInterface, Comparable {
 
-  use EqualsTrait,
-      TranslationChangerTrait;
+  use EqualsTrait;
 
   /**
    * describes the format of the Finnish date
@@ -51,22 +48,6 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable, T
       $time = date('Y-m-d H:i:s', $time);
     }
     parent::__construct($time, $timezone);
-  }
-
-  /**
-   * Returns a datetime string formatted according to the given format string
-   *
-   * **Notes:**
-   * 
-   * * Uses PHP's date function's formatting options
-   * * See more from PHP online manual (XXII-Date and Time Functions - date)
-   * 
-   * @param  string $format describes the format of the outputted date string
-   * @return string  datetime string formatted according to the given format string
-   * @link   http://php.net/manual/en/function.date.php PHP:s date function
-   */
-  public function format($format) {
-    return $this->getTranslator()->get(parent::format($format));
   }
 
   /**
