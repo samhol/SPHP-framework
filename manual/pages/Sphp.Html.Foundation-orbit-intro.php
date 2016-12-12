@@ -4,9 +4,9 @@ namespace Sphp\Html\Foundation\Sites;
 
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 use Sphp\Html\Foundation\Sites\Media\Orbit\Slide;
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 
-$path = Router::get();
+$path = Path::get();
 $orbitIntro = new Orbit();
 $orbitIntro->addCssClass("foundation-intro");
 $gridSlide = new Slide();
@@ -18,7 +18,7 @@ $orbitIntro->append($navSlide);
 $buttonSlide = new Slide();
 $buttonSlide->appendMdFile($path->local("manual/pages/Foundation-intro/Buttons.php"));
 $orbitIntro->append($buttonSlide);
-$hlSlide = (new Media\Orbit\SyntaxHighlightingSlide())->loadFromFile(Router::get()->local('manual/examples/Sphp/Html/Foundation/F6/Media/Flex-LazyLoad.php'));
+$hlSlide = (new Media\Orbit\SyntaxHighlightingSlide())->loadFromFile(Path::get()->local('manual/examples/Sphp/Html/Foundation/F6/Media/Flex-LazyLoad.php'));
 $orbitIntro->append($hlSlide);
 $orbitIntro->appendMdFile($path->local("manual/pages/Foundation-intro/Media.php"));
 $orbitIntro->appendMdFile($path->local("manual/pages/Foundation-intro/Forms.php"));

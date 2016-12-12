@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 use Sphp\Html\Document;
 
 include_once('manual/settings.php');

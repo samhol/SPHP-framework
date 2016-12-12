@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Router.php (UTF-8)
+ * Path.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -17,13 +17,7 @@ use Sphp\Data\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Router implements Arrayable {
-
-  const ROOT = '';
-  const SPHP = 'sphp/';
-  const SPHP_CSS = 'sphp/css/';
-  const SPHP_JS = 'sphp/js';
-  const SPHP_IMG_CACHE = 'sphp/image/cache/';
+class Path implements Arrayable {
 
   /**
    * The local path to the document  root
@@ -94,7 +88,7 @@ class Router implements Arrayable {
    * @return string the http path from the root
    * @throws ConfigurationException if the  path cannot be resolved
    */
-  public function http($relativePath = self::ROOT) {
+  public function http($relativePath = '') {
     if (!$this->isPathFromRoot($relativePath)) {
       throw new ConfigurationException("Relative path '$relativePath' does not exist");
     }
@@ -108,7 +102,7 @@ class Router implements Arrayable {
    * @return string the local path from the root
    * @throws ConfigurationException if the path cannot be resolved
    */
-  public function local($relativePath = self::ROOT) {
+  public function local($relativePath = '') {
     if (!$this->isPathFromRoot($relativePath)) {
       throw new ConfigurationException("Relative path '$relativePath' does not exist");
     }

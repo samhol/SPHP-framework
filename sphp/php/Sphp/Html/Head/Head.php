@@ -9,7 +9,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 use Sphp\Html\Container;
 use Sphp\Core\Types\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
@@ -170,7 +170,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   public function enableSPHP() {
     $this->metaTags()->setViewport('width=device-width, initial-scale=1.0');
     $this->metaTags()->setCharset('UTF-8');
-    $this->addCssSrc(Router::get()->http() . 'sphp/css/sphp6.styles.all.css')
+    $this->addCssSrc(Path::get()->http() . 'sphp/css/sphp6.styles.all.css')
             ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
             ->useVideoJS();
     return $this;

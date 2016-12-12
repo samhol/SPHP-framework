@@ -3,9 +3,9 @@
 namespace Sphp\Core;
 
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 
-$path = Router::get();
+$path = Path::get();
 $orbitIntro = new Orbit();
 $orbitIntro->setAnimIn("fade-in")->setAnimOut("fade-out")->pauseOnHover();
 $orbitIntro->addCssClass("intro");

@@ -232,7 +232,7 @@ class PHPConfiguration implements Arrayable {
   public function __toString() {
     return var_export($this->toArray(), true);
   }
-  
+
   public function toArray() {
     $arr = [];
     $arr['ini'] = Arrays::copy($this->ini);

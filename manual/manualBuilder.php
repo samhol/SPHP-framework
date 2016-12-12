@@ -14,7 +14,7 @@ try {
     $filename = "$pageName.php";
     $path = __DIR__ . '/pages/';
     if (!in_array($filename, FileUtils::dirToArray($path))) {
-      include __DIR__ . '/error.php';
+      include __DIR__ . '/error_docs/error.php';
     } else {
       include_once $path . $filename;
     }

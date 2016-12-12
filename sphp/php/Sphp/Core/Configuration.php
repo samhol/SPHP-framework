@@ -114,10 +114,10 @@ class Configuration implements Arrayable {
   /**
    * Returns the path finder object
    * 
-   * @return Router the path finder object
+   * @return Path the path finder object
    */
   public function paths() {
-    return Router::get();
+    return Path::get();
   }
 
   /**

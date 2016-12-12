@@ -3,9 +3,9 @@
 namespace Sphp\Util;
 
 use Sphp\Html\Tables\Table;
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 
-$data = (new LocalFile(Router::get()->local("manual/snippets/example.csv")))->csvToArray();
+$data = (new LocalFile(Path::get()->local("manual/snippets/example.csv")))->csvToArray();
 $table = new Table("Cars to buy:");
 $table->thead()->append(array_shift($data));
 foreach ($data as $row) {

@@ -2,12 +2,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 ?>
 <div class="row expanded sphp-logo-area">
   <div class="column small-12 large-6">
     <ul class="logo menu"><li>
-      <a href="<?php echo Router::get()->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
+      <a href="<?php echo Path::get()->http() ?>" target="_self" title="Navigate back to frontpage" data-sphp-qtip>
         <img src="manual/pics/sphp-code-logo.png" alt="SPHP framework">
       </a></li>
     </ul>

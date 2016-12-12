@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-$httpRoot = Router::get()->http();
+$httpRoot = Path::get()->http();
 
 $sidenavLinks['root'] = ['href' => $httpRoot, 'text' => 'Getting Started', 'target' => '_self'];
 $sidenavLinks['core'] = ['group' => 'Core components', 'sub' =>
@@ -27,7 +27,7 @@ $sidenavLinks['html_basics'] = ["group" => "HTML Basics", 'sub' =>
         ['href' => "$httpRoot?page=Sphp.Html.Forms", 'text' => 'Forms']
     ]
 ];
-$sidenavLinks['foundation6'] = ['group' => 'Foundation 6', 'sub' =>
+$sidenavLinks['foundation6'] = ['group' => 'Foundation Sites', 'sub' =>
     [
         ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites", 'text' => 'Introduction'],
         ['href' => "$httpRoot?page=Sphp.Html.Foundation.Sites.Core", 'text' => 'Core'],

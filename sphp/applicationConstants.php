@@ -3,6 +3,7 @@
 namespace Sphp;
 
 use Sphp\Core\Configuration;
+
 /**
  * SPHP frameworks folder's root
  */
@@ -63,6 +64,7 @@ const PDO_SU_USERNAME = "sphp_su";
 const PDO_SU_PASSWORD = "o5Qen58&";
 const PDO_USERNAME = "sphp_framework";
 const PDO_PASSWORD = "Vxr79s?8";
+
 $dbParams = array(
     'driver' => 'pdo_mysql',
     'user' => 'sphp_framework',
@@ -72,6 +74,7 @@ $dbParams = array(
     'dbname' => 'sphp',
     'driverOptions' => [1002 => 'SET NAMES utf8']
 );
+
 namespace Sphp\Images;
 
 define('Sphp\Images\CACHE', \Sphp\SPH_DIR . "/image/cache");

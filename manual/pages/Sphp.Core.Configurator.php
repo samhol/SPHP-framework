@@ -27,7 +27,7 @@ MD
         ->setExampleHeading("PHP environment manipulation example")
         ->printHtml();
 
-$path = $api->classLinker(Router::class);
+$path = $api->classLinker(Path::class);
 echo $parsedown->text(<<<MD
 
 ##$config object as a genereal configuration manager

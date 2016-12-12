@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Core\Router;
+use Sphp\Core\Path;
 
-$folder = Router::get()->http("manual/photos/");
+$folder = Path::get()->http("manual/photos/");
 
 $orbit = new Orbit();
 
