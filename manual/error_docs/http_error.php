@@ -1,5 +1,8 @@
 <?php
-$http_status_codes = array(
+
+namespace Sphp\Html;
+
+$http_status_codes = [
     400 => 'Client Error: Bad Request',
     401 => 'Client Error: Unauthorized',
     402 => 'Client Error: Payment Required',
@@ -52,13 +55,33 @@ $http_status_codes = array(
     511 => 'Server Error: Network Authentication Required',
     598 => 'Server Error: Network read timeout error',
     599 => 'Server Error: Network connect timeout error',
-);
+];
+
+require_once '../settings.php';
+
+//require_once('../htmlHead.php');
+$doc = Document::html('manual');
+//echo $doc->body()->getOpeningTag();
 $code = filter_input(INPUT_GET, 'error', FILTER_SANITIZE_NUMBER_INT);
-header("HTTP/1.0 404 Not Found");
-var_dump(http_response_code(406));
-echo "#$code";
+header("HTTP/1.0 420 Not Found");
+//var_dump(http_response_code(406));
+//echo "#$code";
+$doc->enableSPHP();
+$doc->body()->addCssClass('error-doc');
+
+use Sphp\Html\Foundation\Sites\Grids\Grid;
+
+$grid = new Grid();
+$row = new Foundation\Sites\Grids\Row();
+        $row->appendColumn(null, 10, 8, 6, 4);
+$col->appendMd(<<<TEXT
+#$code
+TEXT
+);
+$doc->append($grid->append($col));
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
   $refuri = parse_url($_SERVER['HTTP_REFERER']); // use the parse_url() function to create an array containing information about the domain
+  $doc->append($_SERVER['HTTP_REFERER']);
   if ($refuri['host'] == "cutlery-in-the-toaster.com") {
     echo "You should email fork@cutlery-in-the-toaster.com and tell me I have a dead link on this site.";
   } else {
@@ -68,8 +91,10 @@ if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
   echo "If you got here from Angola, you took a wrong turn at Catumbela. And if you got here by typing randomly in the address bar, stop doing that. You're filling my error logs with unnecessary junk.";
 }
 if (array_key_exists($code, $http_status_codes)) {
-  echo $http_status_codes[$code];
+  //echo $http_status_codes[$code];
+  $doc->setDocumentTitle($code . ": " . $http_status_codes[$code]);
 }
+echo $doc;
 ?>
 
 

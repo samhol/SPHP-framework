@@ -40,21 +40,27 @@ class Arrays {
       }
     }
     return $found;
-  }/**
- * @param mixed $input
- * @param null|callable $callback
- * @return array
- */
-public static function filterRecursive($input, $callback = null) {
+  }
+
+  /**
+   * @param mixed $input
+   * @param null|callable $callback
+   * @return array
+   */
+  public static function filterRecursive($input, $callback = null) {
     if (!is_array($input)) {
-        return $input;
+      return $input;
     }
     if (null === $callback) {
-        $callback = function ($v) { return !empty($v);};
+      $callback = function ($v) {
+        return !empty($v);
+      };
     }
-    $input = array_map(function($v) use ($callback) { return static::filterRecursive($v, $callback); }, $input);
+    $input = array_map(function($v) use ($callback) {
+      return static::filterRecursive($v, $callback);
+    }, $input);
     return array_filter($input, $callback);
-}
+  }
 
   /**
    * 
