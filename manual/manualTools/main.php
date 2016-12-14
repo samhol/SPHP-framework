@@ -29,7 +29,7 @@ if (!isset($w3schools)) {
   $w3schools = Apis::w3schools();
 }
 if (!isset($parsedown)) {
-  $parsedown = new \ParsedownExtraPlugin();
+  $parsedown = \ParsedownExtraPlugin::instance();
 }
 if (!isset($exampleViewer)) {
   $exampleViewer = new CodeExampleAccordion();

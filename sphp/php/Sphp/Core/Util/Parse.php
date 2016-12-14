@@ -8,6 +8,16 @@ namespace Sphp\Core\Util;
 class Parse {
 
   /**
+   * Executes a PHP script and returns the result as a parsed Markdown string
+   *
+   * @param  string $md the path to the executable PHP script
+   * @return string the result of the script execution
+   */
+  public function markdownToString($md) {
+    return \ParsedownExtraPlugin::instance()->text($md);
+  }
+
+  /**
    * Converts data from JSON.
    *
    * @param string $data The data to parse

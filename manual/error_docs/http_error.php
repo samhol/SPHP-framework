@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 $http_status_codes = [
-    400 => 'Client Error: Bad Request',
+    400 => ['Client Error: Bad Request'],
     401 => 'Client Error: Unauthorized',
     402 => 'Client Error: Payment Required',
     403 => 'Client Error: Forbidden',
@@ -72,12 +72,18 @@ $doc->body()->addCssClass('error-doc');
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 
 $grid = new Grid();
-$row = new Foundation\Sites\Grids\Row();
-        $row->appendColumn(null, 10, 8, 6, 4);
-$col->appendMd(<<<TEXT
-#$code
+$callout = new Foundation\Sites\Containers\Callout();
+$callout->setColor('alert');
+$callout->appendMd(<<<TEXT
+#$code{.alert}
+        
+
 TEXT
 );
+$col = new Foundation\Sites\Grids\Column($callout, 10, 8, 6, 4);
+
+$col->centerize('small');
+
 $doc->append($grid->append($col));
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
   $refuri = parse_url($_SERVER['HTTP_REFERER']); // use the parse_url() function to create an array containing information about the domain

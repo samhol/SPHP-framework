@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-$router = Router::get();
+$router = Path::get();
 
 var_dump(
         $router->http(),
