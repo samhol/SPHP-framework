@@ -13,12 +13,31 @@ $title = 'SPHP framework';
 $conf = Configuration::useDomain('manual');
 $conf->paths()->http('manual/pics/favicon.ico');
 
-foreach ($conf->get('PAGE_TITLES') as $linkArr) {
-  if ($currentUrl->equals($linkArr['href'])) {
-    $title .= ': ' . $linkArr['text'];
+$errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
+
+//use Sphp\Core\Util\FileUtils;
+use Sphp\Core\Http\HttpErrorParser;
+
+$html = Document::html();
+if ($errorCode !== null) {
+  $p = new HttpErrorParser();
+  //echo '<pre>';
+  //echo "\n" . $errorCode . "\n";
+  //$err = FileUtils::parseYaml(__DIR__ . '/error_docs/http_errors.yaml');
+  //print_r($err = FileUtils::parseYaml(__DIR__ . '/error_docs/http_errors.yaml'));
+  if ($p->exists($errorCode)) {
+    $title = $errorCode . ': ' . $p->getMessage($errorCode);
   }
+  Document::html()->setDocumentTitle($title);
+  //echo '</pre>';
+} else {
+  foreach ($conf->get('PAGE_TITLES') as $linkArr) {
+    if ($currentUrl->equals($linkArr['href'])) {
+      $title .= ': ' . $linkArr['text'];
+    }
+  }
+  Document::html()->setDocumentTitle($title);
 }
-$html = Document::html("manual")->setDocumentTitle($title);
 $html->enableSPHP();
 $html->head()
         ->useFontAwesome()
@@ -30,4 +49,5 @@ $html->head()
         ->setAuthor('Sami Holck')
         ->setKeywords('php, scss, css, html, html5, javascript, framework, foundation, jquery')
         ->setDescription('SPHP framework for web developement');
+
 echo $html->getOpeningTag() . $html->head();

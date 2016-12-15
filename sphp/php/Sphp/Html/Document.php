@@ -259,7 +259,7 @@ class Document {
    * @param  string $docName the name of the managed document
    * @return Html the html component pointed by the given name
    */
-  public static function html($docName) {
+  public static function html($docName = 0) {
     if (!array_key_exists($docName, self::$html)) {
       self::$html[$docName] = new Html();
     }

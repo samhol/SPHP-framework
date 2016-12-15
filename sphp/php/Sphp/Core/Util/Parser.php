@@ -5,7 +5,7 @@ namespace Sphp\Core\Util;
 /**
  * Parse from various formats to various formats.
  */
-class Parse {
+class Parser {
 
   /**
    * Executes a PHP script and returns the result as a parsed Markdown string
@@ -13,8 +13,17 @@ class Parse {
    * @param  string $md the path to the executable PHP script
    * @return string the result of the script execution
    */
-  public function markdownToString($md) {
+  public static function markdownToString($md) {
     return \ParsedownExtraPlugin::instance()->text($md);
+  }
+  /**
+   * Executes a PHP script and returns the result as a parsed Markdown string
+   *
+   * @param  string $md the path to the executable PHP script
+   * @return string the result of the script execution
+   */
+  public static function parseYamlString($md) {
+    return \Symfony\Component\Yaml\Yaml::parse($md);
   }
 
   /**
@@ -68,7 +77,7 @@ class Parse {
     // Explodes rows
     $data = static::explodeWith($data, [PHP_EOL, "\r", "\n"]);
     $data = array_map(function ($row) {
-      return Parse::explodeWith($row, [';', "\t", ',']);
+      return Parser::explodeWith($row, [';', "\t", ',']);
     }, $data);
 
     // Get headers

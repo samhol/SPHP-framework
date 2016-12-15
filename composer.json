@@ -12,6 +12,7 @@
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
     "zendframework/zend-i18n": "*",
+    "zendframework/zend-http": "*",
     "zendframework/zend-servicemanager": "*",
     "twig/twig": "~1.0",
     "zurb/foundation": ">=6.2",

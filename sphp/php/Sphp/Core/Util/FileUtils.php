@@ -92,6 +92,15 @@ class FileUtils {
   }
 
   /**
+   * Executes a PHP script and returns the result as a parsed Markdown string
+   *
+   * @param  string $md the path to the executable PHP script
+   * @return string the result of the script execution
+   */
+  public static function parseYaml($path) {
+    return Parser::parseYamlString(static::fileToString($path));
+  }
+  /**
    * Checks whether the remote file exists or not
    *
    * @param  string $url the path to the remote file
