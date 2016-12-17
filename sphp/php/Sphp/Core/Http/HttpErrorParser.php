@@ -31,11 +31,31 @@ class HttpErrorParser {
     if (!is_array(self::$errors)) {
       self::$errors = FileUtils::parseYaml(Path::get()->local('/sphp/yaml/http_errors.yaml'));
     }
+    foreach(self::$errors as $code => $v) {
+      $this->codes[$code] = new HttpCode($code, $v['message'], $v['description']);
+    }
   }
 
   public function currentCode() {
     $errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
     return $errorCode;
+  }
+
+  /**
+   * Returns
+   *
+   * @param  int $code HTTP message code
+   * @return string
+   * @throws InvalidArgumentException
+   */
+  public function getHttpCode($code = null) {
+    if ($code === null) {
+      $code = $this->currentCode();
+    }
+    if (!array_key_exists($code, self::$errors)) {
+      throw new InvalidArgumentException("HTTP code '$code' has no message stored");
+    }
+    return $this->codes[$code];
   }
 
   /**

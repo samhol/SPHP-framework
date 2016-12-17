@@ -1,9 +1,9 @@
-ErrorDocument 400 /index.php?error
-ErrorDocument 401 /index.php?error
-ErrorDocument 402 /index.php?error
-ErrorDocument 403 /index.php?error
-ErrorDocument 404 /index.php?error
-ErrorDocument 405 /index.php?error
+ErrorDocument 400 /index.php?error=400
+ErrorDocument 401 /index.php?error=400
+ErrorDocument 402 /index.php?error=400
+ErrorDocument 403 /index.php?error=400
+ErrorDocument 404 /index.php?error=404
+ErrorDocument 405 /index.php?error=400
 ErrorDocument 406 /index.php?error
 ErrorDocument 407 /index.php?error
 ErrorDocument 408 /index.php?error

@@ -17,27 +17,18 @@ class Viewer implements \Sphp\Html\ContentInterface {
 
   use Sphp\Html\ContentTrait;
 
-  private $converter;
   private $code;
 
-  public function __construct(\Sphp\Core\Http\HttpErrorParser $converter, $code) {
-
-    $this->converter = $converter;
-
+  public function __construct(\Sphp\Core\Http\HttpCode $code) {
     $this->code = $code;
   }
 
   public function getHtml() {
-    $title = $this->code . ': ' . $this->converter->getMessage($this->code);
-    $callout = new Callout();
-    $callout->setColor('alert');
-    $callout->appendMd(<<<TEXT
-#$title{.error}
-        
-
-TEXT
-    );
-    return $callout->getHtml();
+    $cont = new Sphp\Html\Container();
+    $cont->appendMd('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
+    $cont->appendMd($this->code->getDescription());
+    $cont->appendMdFile(__DIR__ . '/general.md');
+    return $cont->getHtml();
   }
 
 }
