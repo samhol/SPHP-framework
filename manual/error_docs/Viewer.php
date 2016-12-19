@@ -6,8 +6,6 @@
  * and open the template in the editor.
  */
 
-use Sphp\Html\Foundation\Sites\Containers\Callout;
-
 /**
  * Description of Viewer
  *
@@ -27,7 +25,12 @@ class Viewer implements \Sphp\Html\ContentInterface {
     $cont = new Sphp\Html\Container();
     $cont->appendMd('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
     $cont->appendMd($this->code->getDescription());
-    $cont->appendMdFile(__DIR__ . '/general.md');
+    try {
+      $cont->appendMdFile(__DIR__ . "/{$this->code->getCode()}.md");
+    } catch (Exception $ex) {
+      $cont->appendMdFile(__DIR__ . '/general.md');
+    }
+    $cont->append('<div class="http-code">' . $this->code->getCode() . '</div>');
     return $cont->getHtml();
   }
 
