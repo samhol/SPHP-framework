@@ -22,8 +22,6 @@ use Sphp\Util\Permissions;
  */
 class SessionData extends AbstractDbObject {
 
-  use \Sphp\Objects\ToArrayTrait;
-
   /**
    * primary database key
    *
@@ -145,7 +143,23 @@ class SessionData extends AbstractDbObject {
   }
 
   public function equals($object) {
-    
+    return $this == $object;
+  }
+
+  public function toArray() {
+    $raw = get_object_vars($this);
+    $result = [];
+    foreach ($raw as $prop => $val) {
+      if ($val instanceof DbObjectInterface) {
+        $result[$prop] = $val->toArray();
+      }
+      if ($val instanceof ArrayableObjectInterface) {
+        $result = array_merge($result, $val->toArray());
+      } else {
+        $result[$prop] = $val;
+      }
+    }
+    return $result;
   }
 
 }

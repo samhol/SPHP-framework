@@ -8,9 +8,7 @@
 namespace Sphp\Core\Types;
 
 use DateTimeZone;
-use Sphp\Objects\ScalarObjectInterface;
 use Sphp\Core\Comparable;
-use Sphp\Objects\EqualsTrait;
 
 /**
  * Representation of date and time
@@ -21,9 +19,7 @@ use Sphp\Objects\EqualsTrait;
  * @link    http://www.php.net/manual/en/class.datetime.php The DateTime class (PHP manual)
  * @filesource
  */
-class Datetime extends \DateTime implements ScalarObjectInterface, Comparable {
-
-  use EqualsTrait;
+class Datetime extends \DateTime implements Comparable {
 
   /**
    * describes the format of the Finnish date
@@ -141,6 +137,10 @@ class Datetime extends \DateTime implements ScalarObjectInterface, Comparable {
    */
   public function toScalar() {
     return $this->format('Y-m-d H:i:s T');
+  }
+
+  public function equals($object) {
+    return $object == $this;
   }
 
 }

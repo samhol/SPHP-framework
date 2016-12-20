@@ -21,8 +21,6 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class Person extends AbstractDbObject {
 
-  use \Sphp\Objects\ToArrayTrait;
-
   /**
    * primary database key
    *
@@ -236,6 +234,22 @@ class Person extends AbstractDbObject {
       $isManaged = $count != 0;
     }
     return $isManaged;
+  }
+
+  public function toArray() {
+    $raw = get_object_vars($this);
+    $result = [];
+    foreach ($raw as $prop => $val) {
+      if ($val instanceof DbObjectInterface) {
+        $result[$prop] = $val->toArray();
+      }
+      if ($val instanceof ArrayableObjectInterface) {
+        $result = array_merge($result, $val->toArray());
+      } else {
+        $result[$prop] = $val;
+      }
+    }
+    return $result;
   }
 
 }

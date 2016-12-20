@@ -23,8 +23,6 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class User extends AbstractDbObject {
 
-  use \Sphp\Objects\ToArrayTrait;
-
   /**
    * primary database key
    *
@@ -126,7 +124,7 @@ class User extends AbstractDbObject {
    * @return self for PHP Method Chaining
    */
   public function setFname($fname) {
-    $this->fname = $fname; 
+    $this->fname = $fname;
     return $this;
   }
 
@@ -357,6 +355,22 @@ class User extends AbstractDbObject {
     }
     $count = $query->getSingleScalarResult();
     return $count > 0;
+  }
+
+  public function toArray() {
+    $raw = get_object_vars($this);
+    $result = [];
+    foreach ($raw as $prop => $val) {
+      if ($val instanceof DbObjectInterface) {
+        $result[$prop] = $val->toArray();
+      }
+      if ($val instanceof ArrayableObjectInterface) {
+        $result = array_merge($result, $val->toArray());
+      }  else {
+        $result[$prop] = $val;
+      }
+    }
+    return $result;
   }
 
 }

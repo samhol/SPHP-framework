@@ -15,7 +15,7 @@ use Imagine\Gd\Imagine,
 	Imagine\Gd\Font;
 
 /**
- * Class implements a captha image
+ * Implements a captha image
  *
  * @author  Sami Holck <sami.holck@gmail.com>, Simon Jarvis
  * @since   2014-09-26

@@ -20,8 +20,6 @@ use Sphp\Objects\AbstractArrayableObject;
  */
 class Address extends AbstractArrayableObject implements GeographicalAddressInterface, Embeddable {
 
-  use \Sphp\Objects\EqualsTrait;
-
   /**
    *
    * @var string|null
@@ -141,6 +139,10 @@ class Address extends AbstractArrayableObject implements GeographicalAddressInte
     $address .= " " . $this->getCity();
     $address .= " " . $this->getCountry();
     return $address;
+  }
+
+  public function equals($object) {
+    return $object == $this;
   }
 
 }

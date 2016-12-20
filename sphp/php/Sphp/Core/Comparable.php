@@ -17,13 +17,13 @@ namespace Sphp\Core;
  */
 interface Comparable {
 
-    /**
-     * Compares this object with the specified object for order
-     *
-     * @param  mixed $other the object to be compared
-     * @return int a negative integer, zero, or a positive integer as this object is less than, equal to,
-	 *             or greater than the specified object
-	 * @throws \InvalidArgumentException if the type of the <var>$other</var> prevents it from being compared to this object.
-     */
-    public function compareTo($other);
+  /**
+   * Compares this object with the specified object for order
+   *
+   * @param  mixed $other the object to be compared
+   * @return int a negative integer, zero, or a positive integer as this object is less than, equal to,
+   *             or greater than the specified object
+   * @throws \InvalidArgumentException if the type of the <var>$other</var> prevents it from being compared to this object.
+   */
+  public function compareTo($other);
 }

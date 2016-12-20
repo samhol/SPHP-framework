@@ -7,8 +7,6 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Objects\ScalarObjectInterface;
-use Sphp\Objects\EqualsTrait;
 use Sphp\Data\Arrayable;
 
 /**
@@ -20,9 +18,7 @@ use Sphp\Data\Arrayable;
  * @filesource
  * @Embeddable
  */
-class BitMask implements ScalarObjectInterface, Arrayable,  \Sphp\Db\Objects\Embeddable {
-
-  use EqualsTrait;
+class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
 
   /**
    * the binary value
@@ -186,7 +182,7 @@ class BitMask implements ScalarObjectInterface, Arrayable,  \Sphp\Db\Objects\Emb
   public function toArray() {
     return static::toBitArray($this->mask);
   }
-  
+
   public function toScalar() {
     return $this->mask;
   }
@@ -218,6 +214,10 @@ class BitMask implements ScalarObjectInterface, Arrayable,  \Sphp\Db\Objects\Emb
    */
   public static function toBitArray($flags) {
     return str_split(decbin(self::parseFlagsToInt($flags)));
+  }
+
+  public function equals($object) {
+    return $object == $this;
   }
 
 }
