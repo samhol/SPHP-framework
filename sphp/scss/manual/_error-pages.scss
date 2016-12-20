@@ -1,0 +1,13 @@
+/**
+ * _error-pages.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+.error-page div.http-code {
+  background-color: $error-bg;
+  height: rem-calc(250);
+  margin: rem-calc(5);  // top right bottom left
+  font-size: rem-calc(160);  
+  border: solid 1px #f55;
+  @include border-radius(2px);
+}

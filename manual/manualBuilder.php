@@ -9,12 +9,10 @@ include_once 'settings.php';
 include_once __DIR__ . '/manualTools/main.php';
 try {
   ob_start();
-  $error = filter_input(\INPUT_GET, 'error');
   $pageName = filter_input(\INPUT_GET, 'page');
-  if ($error !== NULL) {
+  if ($errorCode !== NULL) {
     include(__DIR__ . '/error_docs/http_error.php');
-  } 
-  if ($pageName !== NULL) {
+  } else if ($pageName !== NULL) {
     $filename = "$pageName.php";
     $path = __DIR__ . '/pages/';
     if (!in_array($filename, FileUtils::dirToArray($path))) {

@@ -3,22 +3,23 @@
  *
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
-
+//$error-bg: rgba(238, 205, 205, 0.75);
 > h1 {
-  //font-weight: 600;
   border-bottom: solid 1px #aaa;
   margin: rem-calc(0 0 15 0);  // top right bottom left
   padding: rem-calc(3 5 3 10); // top right bottom left
 }
 > h2, > h3 {
   padding: rem-calc(0 5 0 10); // top right bottom left
-  background: #eee;
   border: solid 1px #aaa;
   @include border-radius(2px);
 }
 > h1, > h2, > h3 {
+  background-color: #eee;
+  &.error {
+    background-color: $error-bg;
+  }
   padding: rem-calc(0 5 0 10); // top right bottom left
-  background: #eee;
   line-height: 1.6;
 }
 > h2, > h3, > h4, > h5, > h6 {
@@ -27,8 +28,11 @@
   padding: rem-calc(3 5 3 10); // top right bottom left
 }
 > h1,> h2, > h3, > h4, > h5, > h6 {
-  &:first-child  {
-    background: #eee;
+  &:first-child {
+    background-color: #eee;
+    &.error {
+      background-color: $error-bg;
+    }
     margin: rem-calc(0 0 5 0);
     padding: rem-calc(5 15 5 15);
     border-bottom: solid 1px #666;
@@ -47,12 +51,12 @@
     //height: 100%;
     margin-top: rem-calc(1);
     margin-bottom: rem-calc(1);
-    background: #f3f3f3;
+    background-color: #f3f3f3;
     font-family: "Source Code Pro", monospace !important;
     padding-left: rem-calc(4);
     padding-right: rem-calc(4);
     &:hover {
-      background: #fdfdfd;
+      background-color: #fdfdfd;
       border-color: #bbb;
     }
   }

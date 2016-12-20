@@ -6,12 +6,14 @@
 
 @charset "UTF-8";
 
+$default-left-margin: rem-calc(35);
+$default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
+$error-bg: rgba(238, 205, 205, 0.55);
 @import "api-links";
 @import "f6-manual-accordion";
 @import "form-submission-viewer";
 @import "footer";
-$default-left-margin: rem-calc(35);
-$default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
+@import "error-pages";
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {
     @if $margin == all {
@@ -115,11 +117,11 @@ $default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15),
     &.apigen {
       color: #006aeb;
       border-color: rgba(51, 153, 255, .3);
-      background-color: #rgba(210, 210, 210, .5); 
+      background-color: rgba(210, 210, 210, .5); 
       &:hover {
         color: #8c1111;
         border-color: rgba(51, 153, 255, .6);
-        background-color: #rgba(210, 210, 210, 1); 
+        background-color: rgba(210, 210, 210, 1); 
       }
     }
     &.phpman {
