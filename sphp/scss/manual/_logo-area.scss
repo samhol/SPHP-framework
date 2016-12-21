@@ -4,7 +4,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 .error-page .sphp-logo-area {
-  background: rgba(238, 205, 205, 0.75);
+  background: $error-bg;
 }
 .sphp-logo-area {
   margin-bottom: 0;
