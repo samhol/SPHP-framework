@@ -28,6 +28,7 @@
   "autoload": {
     "psr-4": {
       "Sphp\\": "sphp/php/Sphp",
+      "Sphp\\Manual\\": "manual/classes",
       "Sphp\\Tests\\": "tests/sphp/php/Sphp"
     },
     "psr-0": {

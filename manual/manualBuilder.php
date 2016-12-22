@@ -11,12 +11,12 @@ try {
   ob_start();
   $pageName = filter_input(\INPUT_GET, 'page');
   if ($errorCode !== NULL) {
-    include(__DIR__ . '/error_docs/http_error.php');
+    include(__DIR__ . '/templates/http_error.php');
   } else if ($pageName !== NULL) {
     $filename = "$pageName.php";
     $path = __DIR__ . '/pages/';
     if (!in_array($filename, FileUtils::dirToArray($path))) {
-      include __DIR__ . '/error_docs/error.php';
+      include __DIR__ . '/templates/error.php';
     } else {
       include_once $path . $filename;
     }

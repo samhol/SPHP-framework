@@ -4,6 +4,9 @@
  * Viewer.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
+
+namespace Sphp\Manual\MVC\Errors;
+
 use Sphp\Html\ContentInterface;
 use Sphp\Core\Path;
 use Sphp\Html\Media\Size;
@@ -18,9 +21,9 @@ use Sphp\Core\Http\HttpCode;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Viewer implements ContentInterface {
+class ErrorViewer implements ContentInterface {
 
-  use Sphp\Html\ContentTrait;
+  use \Sphp\Html\ContentTrait;
 
   /**
    *

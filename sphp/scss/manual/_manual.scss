@@ -8,7 +8,7 @@
 
 $default-left-margin: rem-calc(35);
 $default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
-$error-bg: rgba(255,127,80, 0.55);
+$error-bg: rgba(255,127,80, 0.40);
 @import "api-links";
 @import "f6-manual-accordion";
 @import "form-submission-viewer";
