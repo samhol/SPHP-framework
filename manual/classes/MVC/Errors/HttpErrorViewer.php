@@ -34,20 +34,25 @@ class HttpErrorViewer implements ContentInterface {
   public function __construct(HttpCode $code) {
     $this->code = $code;
   }
+  
+  protected function d($param) {
+    
+  }
 
   public function getHtml() {
-    $cont = new \Sphp\Html\Container();
-    $cont->appendMd('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
-    $cont->appendMd($this->code->getDescription());
+    $cont = new \Sphp\Html\MdContainer();
+    $cont->append('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
+    $cont->append($this->code->getDescription());
     try {
-      $cont->appendMdFile(Path::get()->local("manual/templates/{$this->code->getCode()}.md"));
+      $cont->appendFile(Path::get()->local("manual/templates/{$this->code->getCode()}.md"));
     } catch (Exception $ex) {
-      $cont->appendMdFile(Path::get()->local('manual/templates/general.md'));
+      $cont->appendFile(Path::get()->local('manual/templates/general.md'));
     }
-    $cont->appendMd('* [SPHP framework](http://playground.samiholck.com/){.error}');
-    $cont->appendMd('* [SPHP framework API](http://documentation.samiholck.com/apigen/){.error}');
-    $cont->appendMd('* Technical Contact: <a href="mailto:sami.holck@samiholck.com">sami.holck@samiholck.com</a>');
-    $cont->append('<div class="row columns"><div class="http-code float-right">' . $this->code->getCode() . '</div></div>');
+    $manual = Path::get()->http();
+    $cont->append("* [SPHP framework]($manual){.error}");
+    $cont->append('* [SPHP framework API](http://documentation.samiholck.com/apigen/){.error}');
+    $cont->append('* Technical Contact: <a href="mailto:sami.holck@samiholck.com">sami.holck@samiholck.com</a>');
+    $cont->append("\n".'<div class="row columns"><div class="http-code float-right">' . $this->code->getCode() . '</div></div>');
     $path = Path::get()->http('manual/pics/error.png');
     $s25 = new Size(25, 25);
     $s50 = new Size(50, 50);

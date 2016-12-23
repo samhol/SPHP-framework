@@ -12,7 +12,7 @@ use Sphp\Html\Apps\TechLinkList;
       ?>
     </div>
 
-    <div class="small-12 large-8 xlarge-9 columns">
+    <div class="small-12 large-8 xlarge-8 columns end">
       <div class="row">
         <div class="columns small-12">
           <?php include_once 'manual/footerLinks.php' ?>
