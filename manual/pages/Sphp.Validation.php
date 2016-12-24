@@ -1,8 +1,10 @@
 <?php
 
 namespace Sphp\Core\Validators;
+
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
 $apigen = Apis::apigen();
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $validatorInterface = $api->classLinker(ValidatorInterface::class);
@@ -15,8 +17,7 @@ $optionalValidatorInterface = $api->classLinker(OptionalValidatorInterface::clas
 $AbstractOptionalValidator = $api->classLinker(AbstractOptionalValidator::class);
 $alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(
-<<<MD
+echo $parsedown->text(<<<MD
 #User input Validation
  $ns 
 User input validation is a critical part of any responsive HTML application. 
@@ -56,7 +57,7 @@ MD
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
 
 echo $parsedown->text(
-<<<MD
+        <<<MD
 ##$optionalValidatorInterface validation
         
 		
@@ -68,10 +69,10 @@ The $patrnvLink validates the input against the given regular expression. The in
 is valid if it matches the given pattern. Build in patterns can be found from $alphabetsOnly
 MD
 );
-  
+
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/PatternValidator.php", "php", false);
 echo $parsedown->text(
-<<<MD
+        <<<MD
 ###The $strLenValLink class	
         
 The $strLenValLink simply validates the input length. This validator supports three 
@@ -84,7 +85,7 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/StringLengthValidator.php", "php", false);
 echo $parsedown->text(
-<<<MD
+        <<<MD
 ##The $abstractValidatorAggregate implementations		
         
 ###The $validatorAggregate class		
@@ -101,7 +102,7 @@ $traversable = $php->classLinker(\Traversable::class);
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
 $array = $php->typeLink("array", "arrays");
 echo $parsedown->text(
-<<<MD
+        <<<MD
 ##The $formValidator validator		
 A $formValidator is an aggregate of validators validating user inputs data provided 
 by HTML forms like the ones implementing $formInterface. A $formValidator can validate 
@@ -118,7 +119,7 @@ CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/FormValidator.php
 $abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
 $userValidator = $api->classLinker(UserValidator::class);
 echo $parsedown->text(
-<<<MD
+        <<<MD
 ##Creating custom validators		
 
 Thera are obviously many vays to create own custom validators. However an easy 
@@ -133,7 +134,9 @@ The $userValidator extends the $abstractObjectValidator and it can be used to va
 MD
 );
 $reflector = new \ReflectionClass(UserValidator::class);
+
 use \Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
+
 //echo $reflector->getFileName();
 /*$code = (new SyntaxHighlightingSingleAccordion())		
         ->setTitle("UserValidator PHP code")		

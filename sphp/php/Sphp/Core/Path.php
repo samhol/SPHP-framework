@@ -10,14 +10,14 @@ namespace Sphp\Core;
 use Sphp\Data\Arrayable;
 
 /**
- * Class implements a file system router
+ * Implements a file system router
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Path implements Arrayable {
+class Path {
 
   /**
    * The local path to the document  root
@@ -116,7 +116,7 @@ class Path implements Arrayable {
    * @return self for PHP Method Chaining
    * @throws ConfigurationException if path cannot be resolved
    */
-  public function requireOnce($filePath) {
+  public function loadOnce($filePath) {
     $path = $this->local($filePath);
     if (!is_file($path)) {
       throw new ConfigurationException("Relative path '$filePath' contains no file");
@@ -126,19 +126,19 @@ class Path implements Arrayable {
   }
 
   /**
-   * Returns the string representation of the configuration data
+   * Loads a local file to the application
    *
-   * @return string the string representation of the configuration data
+   * @param  string $filePath
+   * @return self for PHP Method Chaining
+   * @throws ConfigurationException if path cannot be resolved
    */
-  public function __toString() {
-    return var_export($this->toArray(), true);
-  }
-
-  public function toArray() {
-    return [
-        "http" => $this->http(),
-        "file" => $this->local()
-    ];
+  public function load($filePath) {
+    $path = $this->local($filePath);
+    if (!is_file($path)) {
+      throw new ConfigurationException("Relative path '$filePath' contains no file");
+    }
+    require $path;
+    return $this;
   }
 
   /**
