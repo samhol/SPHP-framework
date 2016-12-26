@@ -47,11 +47,14 @@ Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
         <div class="title-bar-right">
           <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
         </div>
-      </div>
+      </div><pre>
       <?php
-      include_once('manual/manualBuilder.php');
+           $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
+           print_r($res);
+           use Sphp\Manual\MVC\SideNavViewer;
+           (new SideNavViewer($res))->printHtml();
       ?>
-    </div>
+    </pre></div>
     <div class="show-for-xlarge xlarge-1 column"> 
     </div>
   </div>

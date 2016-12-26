@@ -48,7 +48,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    *
    * @var boolean
    */
-  private $modifiable = false;
+  private $readonly = false;
 
   /**
    * Constructs a new instance
@@ -60,7 +60,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     foreach ($config as $k => $v) {
       $this->__set($k, $v);
     }
-    $this->modifiable = (bool) $locked;
+    $this->readonly = (bool) $locked;
   }
 
   public function __destruct() {
@@ -86,7 +86,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @return boolean
    */
   public function isReadOnly() {
-    return $this->modifiable;
+    return $this->readonly;
   }
 
   /**
@@ -95,7 +95,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @return self for PHP Method Chaining
    */
   public function setReadOnly() {
-    $this->modifiable = false;
+    $this->readonly = true;
     /** @var Config $value */
     foreach ($this->data as $value) {
       if ($value instanceof self) {
@@ -146,7 +146,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   public function set($varName, $value) {
     if (!$this->isReadOnly()) {
       if (is_array($value)) {
-        $this->data[$varName] = new static($value, $this->modifiable);
+        $this->data[$varName] = new static($value, $this->readonly);
       } else {
         $this->data[$varName] = $value;
       }

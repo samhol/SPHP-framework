@@ -1,0 +1,58 @@
+---
+root:
+  - link: Getting Started
+  - 
+    sub: Core components
+    links:
+      - link: Introduction
+        page: Sphp.Core
+      - link: Data Structures
+        page: Sphp.Data
+      - link: Events and Observers
+        page: Sphp.Core.Observers.and.Events
+      - link: Types and Utlilities
+        page: Sphp.Core.Types
+      - link: Data filtering
+        page: Sphp.Core.Filters
+      - link: Data validation
+        page: Sphp.Validation
+      - link: I18n
+        page: Sphp.Core.I18n
+  - 
+    sub: HTML
+    links:
+      - link: Introduction
+        page: Sphp.Html
+      - link: Document factory
+        page: Sphp.Html.Document
+      - link: Attribute management
+        page: Sphp.Html.Attributes
+      - link: Meta data manipulation
+        page: Sphp.Html.Head
+      - link: Multimedia
+        page: Sphp.Html.Media
+      - link: JavaScript 
+        page: Sphp.Html.Programming
+      - link: Lists and Tables
+        page: Sphp.Html.Lists..Tables
+      - link: Forms
+        page: Sphp.Html.Forms
+  - 
+    sub: Foundation Sites
+    links:
+      - link: Introduction
+        page: Sphp.Html.Foundation.Sites
+      - link: Core
+        page: Sphp.Html.Foundation.Sites.Core
+      - link: Grids
+        page: Sphp.Html.Foundation.Sites.Grids
+      - link: Containers
+        page: Sphp.Html.Foundation.Sites.Containers
+      - link: Navigation
+        page: Sphp.Html.Foundation.Sites.Navigation
+      - link: Buttons 
+        page: Sphp.Html.Foundation.Sites.Buttons
+      - link: Media 
+        page: Sphp.Html.Foundation.Sites.Media
+      - link: Forms
+        page: Sphp.Html.Foundation.Sites.Forms
