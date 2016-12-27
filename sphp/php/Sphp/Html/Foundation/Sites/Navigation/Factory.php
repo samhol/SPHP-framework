@@ -1,16 +1,10 @@
 <?php
 
-namespace Sphp\Manual\MVC;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\ContentInterface;
-use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
 use Sphp\Core\Path;
-use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
-use Sphp\Html\Foundation\Sites\Navigation\MenuLink;
 
-class SideNavViewer implements ContentInterface {
-
-  use \Sphp\Html\ContentTrait;
+class Factory {
 
   /**
    *
@@ -37,7 +31,7 @@ class SideNavViewer implements ContentInterface {
     return $this->nav;
   }
 
-  protected function parseHref(array $link) {
+  protected static function parseHref(array $link) {
     if (array_key_exists('url', $link)) {
       $href = $link['url'];
     } else {
@@ -49,7 +43,7 @@ class SideNavViewer implements ContentInterface {
     return $href;
   }
 
-  protected function parseTarget(array $link) {
+  protected static function parseTarget(array $link) {
     return array_key_exists('target', $link) ? $link['target'] : '_self';
   }
 
@@ -58,7 +52,7 @@ class SideNavViewer implements ContentInterface {
    * @param  array $link
    * @return MenuLink
    */
-  protected function createLink(array $link) {
+  public static function createLink(array $link) {
     $href = $this->parseHref($link);
     $target = $this->parseTarget($link);
     return new MenuLink($href, $link['link'], $target);
@@ -70,7 +64,7 @@ class SideNavViewer implements ContentInterface {
    * @param array $sub
    * @return SubMenu
    */
-  protected function buildSub($root, array $sub) {
+  public static function buildSub($root, array $sub) {
     $accordion = new SubMenu($root);
     foreach ($sub as $link) {
       if (array_key_exists('link', $link)) {
@@ -80,7 +74,7 @@ class SideNavViewer implements ContentInterface {
     return $accordion;
   }
 
-  protected function buildMenu() {
+  public static function buildMenu(array $data, MenuInterface $instance) {
     $this->nav = new AccordionMenu();
     $this->nav->addCssClass('')->appendText('Documentation');
     foreach ($this->data['root'] as $item) {

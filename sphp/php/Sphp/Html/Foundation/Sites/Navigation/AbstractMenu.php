@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Lists\HtmlList as HtmlList;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Lists\LiInterface;
 use Sphp\Html\Navigation\HyperlinkInterface;
@@ -30,23 +29,8 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * @param string $tagname
    * @param mixed $content
    */
-  public function __construct($tagName, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
-    if ($contentContainer === null) {
-      $wrapper = function($c) {
-        if (!($c instanceof LiInterface)) {
-          if (($c instanceof HyperlinkInterface)) {
-            $c = MenuLink::fromHyperlink($c);
-          } else if ($c instanceof \Sphp\Html\ComponentInterface) {
-            $c = new \Sphp\Html\Lists\Li($c);
-          } else {
-            $c = new MenuLabel($c);
-          }
-        }
-        return $c;
-      };
-      $contentContainer = new WrappingContainer($wrapper);
-    }
-    parent::__construct($tagName, $attrManager, $contentContainer);
+  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+    parent::__construct($tagname, $attrManager, $contentContainer);
     $this->cssClasses()->lock('menu');
   }
 

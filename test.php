@@ -41,7 +41,7 @@ include_once('manual/htmlHead.php');
         
         phpinfo();
         $cache  = new \Zend\Cache\Storage\Adapter\Filesystem();
-        $cache->setOptions(['cache_dir' => 'cache', 'dir_level' => 3, 'ttl' => 3600]);
+        $cache->setOptions([ 'ttl' => 3600,'cache_dir' => 'cache', 'dir_level' => 1]);
 
 
         use Zend\Cache\PatternFactory;

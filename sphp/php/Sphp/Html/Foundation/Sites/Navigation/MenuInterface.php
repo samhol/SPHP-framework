@@ -20,6 +20,14 @@ use Sphp\Html\ContentInterface;
 interface MenuInterface extends ContentInterface {
 
   /**
+   * Appends a menu item object to the menu
+   *
+   * @param  MenuItemInterface $item
+   * @return self for PHP Method Chaining
+   */
+  public function append(MenuItemInterface $item);
+
+  /**
    * Appends a {@link MenuLabel} text component to the menu
    *
    * @param  mixed|MenuLabel $text
