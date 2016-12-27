@@ -30,7 +30,7 @@ namespace Sphp\Core\ErrorHandling;
 $handler = new ExceptionHandler();
 // Attach an Exception Logger
 $handler->attach(new ExceptionLogger(__DIR__ . "/logs/exception_log.log"));
-$handler->attach(new ExceptionPrinter());
+$handler->attach((new ExceptionPrinter())->showTrace());
 // Set ExceptionHandler::handle() as the default Exception handler
 set_exception_handler(array($handler, 'handle'));
 

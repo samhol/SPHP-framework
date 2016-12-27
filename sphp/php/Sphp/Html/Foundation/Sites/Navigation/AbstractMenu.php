@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Lists\HtmlList as HtmlList;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Lists\LiInterface;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\ContainerInterface;
@@ -21,7 +22,7 @@ use Sphp\Html\WrappingContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemInterface {
+abstract class AbstractMenu extends AbstractContainerComponent implements MenuInterface, MenuItemInterface {
 
   /**
    * Constructs a new instance
@@ -47,6 +48,17 @@ abstract class AbstractMenu extends HtmlList implements MenuInterface, MenuItemI
     }
     parent::__construct($tagName, $attrManager, $contentContainer);
     $this->cssClasses()->lock('menu');
+  }
+
+  /**
+   * Appends a menu item object to the menu
+   *
+   * @param  MenuItemInterface $item
+   * @return self for PHP Method Chaining
+   */
+  public function append(MenuItemInterface $item) {
+    $this->getInnerContainer()->append($item);
+    return $this;
   }
 
   /**

@@ -7,7 +7,7 @@ ob_start();
 use Sphp\Core\Configuration;
 include_once 'links.php';
 $nav = (new AccordionMenu())->addCssClass('sphp-sidenav')->appendText('Documentation');
-$nav[0]->addCssClass('heading');
+//$nav[0]->addCssClass('heading');
 //$nav->append($downloadBtn);
 $sidenavLinker = function (array $link) use($nav) {
   if (array_key_exists('href', $link)) {

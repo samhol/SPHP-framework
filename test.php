@@ -6,26 +6,15 @@ use Sphp\Core\Path;
 use Sphp\Html\Document;
 
 include_once('manual/settings.php');
-include_once('manual/links.php');
-include_once(\Sphp\PDO_SESSIONING);
-ob_implicit_flush(true);
 include_once('manual/htmlHead.php');
 
-Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
 ?>
 <body class="manual">
   <?php
-  include("manual/templates/logo-area.php");
-  include_once('manual/__topBar.php');
   ?>
   <div class="row expanded small-collapse medium-uncollapse">
-    <div class="column medium-3 large-3 xlarge-2 show-for-large">
 
-      <?php
-      include_once('manual/sidenav.php');
-      ?>
-    </div>
-    <div class="mainContent small-12 large-9 xlarge-9 column"> 
+    <div class="mainContent small-12"> 
       <div class="title-bar">
         <div class="title-bar-left">
           <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
@@ -48,19 +37,40 @@ Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
           <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
         </div>
       </div><pre>
-      <?php
-           $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
-           print_r($res);
-           use Sphp\Manual\MVC\SideNavViewer;
-           (new SideNavViewer($res))->printHtml();
-      ?>
-    </pre></div>
+        <?php
+        
+        phpinfo();
+        $cache  = new \Zend\Cache\Storage\Adapter\Filesystem();
+        $cache->setOptions(['cache_dir' => 'cache', 'dir_level' => 3, 'ttl' => 3600]);
+
+
+        use Zend\Cache\PatternFactory;
+
+
+
+
+        //$outputCache->start('a');
+
+        $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
+        print_r($res);
+
+        use Sphp\Manual\MVC\SideNavViewer;
+
+(new SideNavViewer($res))->printHtml();
+        // $outputCache->end();
+        ?>
+      </pre></div>
     <div class="show-for-xlarge xlarge-1 column"> 
     </div>
   </div>
 
   <?php
-  include_once('manual/_footer_.php');
+  $outputCache = PatternFactory::factory('output', [
+                    'storage' => $cache
+        ]);
+  $outputCache->start('footer');
+  include('manual/_footer_.php');
+ // $outputCache->end();
 
   use Sphp\Html\Apps\BackToTopButton;
 
@@ -69,5 +79,6 @@ Document::html('manual')->scripts()->appendSrc('manual/js/formTools.js');
           ->printHtml();
   $html->documentClose();
 
+$outputCache->end();
 
   

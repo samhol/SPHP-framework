@@ -30,7 +30,7 @@ class AccordionMenu extends Menu {
     $this->attrs()->demand('data-accordion-menu');
   }
 
-  public function append($content) {
+  public function append(MenuItemInterface $content) {
     if ($content instanceof SubMenu) {
       $content->nested(true)->vertical(true);
     }

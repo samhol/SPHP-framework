@@ -11,10 +11,7 @@
     "easybook/geshi": "v1.0.8.15",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
-    "zendframework/zend-i18n": "*",
-    "zendframework/zend-http": "*",
-    "zendframework/zend-servicemanager": "*",
-    "twig/twig": "~1.0",
+    "zendframework/zendframework": "*",
     "zurb/foundation": ">=6.2",
     "symfony/yaml": "^3.0"
   },
