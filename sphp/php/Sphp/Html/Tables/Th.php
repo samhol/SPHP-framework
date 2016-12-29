@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Class models an HTML &lt;table&gt; tag's header cell (&lt;th&gt; tag)
+ * Implements an HTML &lt;table&gt; tag's header cell (&lt;th&gt; tag)
  * 
  * This component defines a header cell in a {@link Table} component
  *

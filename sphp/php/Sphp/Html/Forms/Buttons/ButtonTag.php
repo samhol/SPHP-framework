@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Forms\Inputs\InputTrait;
 
 /**
- * Class Models an HTML &lt;button&gt; tag
+ * Implements an HTML &lt;button&gt; tag
  *
  *
  * {@inheritdoc}

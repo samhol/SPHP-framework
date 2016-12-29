@@ -10,7 +10,7 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models an HTML &lt;dt&gt; tag
+ * Implements an HTML &lt;dt&gt; tag
  *
  * This component defines an term in a definition list.
  *

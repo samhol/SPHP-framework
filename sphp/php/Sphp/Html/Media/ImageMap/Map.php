@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Class Models an HTML &lt;map&gt; tag
+ * Implements an HTML &lt;map&gt; tag
  * 
  * The &lt;map&gt; tag is used to define a client-side image-map. 
  * An image-map is an image with clickable areas.

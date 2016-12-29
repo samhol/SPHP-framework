@@ -10,7 +10,7 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models an HTML &lt;a&gt; tag
+ * Implements an HTML &lt;a&gt; tag
  *
  * If this component has an `href` attribute, then it represents a hyperlink
  * (a hypertext anchor). If the component has no `href` attribute, then the

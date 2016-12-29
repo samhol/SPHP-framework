@@ -12,7 +12,7 @@ use Sphp\Html\Head\Head;
 use Sphp\Html\Programming\ScriptsContainer;
 
 /**
- * Class Models an HTML &lt;html&gt; tag
+ * Implements an HTML &lt;html&gt; tag
  *
  * {@inheritdoc}
  *

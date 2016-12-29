@@ -13,7 +13,7 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
 
 /**
- * Class models an HTML &lt;table&gt; tag.
+ * Implements an HTML &lt;table&gt; tag.
  *
  *
  * {@inheritdoc}

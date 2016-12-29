@@ -11,7 +11,7 @@ use Sphp\Html\EmptyTag;
 use Sphp\Core\Types\URL;
 
 /**
- * Class Models an HTML &lt;track&gt; tag
+ * Implements an HTML &lt;track&gt; tag
  *
  *  This component specifies text tracks for {@link AbstractMediaTag} media 
  *  components. It is used to specify subtitles, caption files or other files 

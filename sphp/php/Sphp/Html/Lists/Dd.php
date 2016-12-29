@@ -10,7 +10,7 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class Models an HTML &lt;dd&gt; tag
+ * Implements an HTML &lt;dd&gt; tag
  *
  * This component is used to describe a term/name in a description list. It is 
  * used in conjunction with {@link Dl} (definition list) and {@link Dt} (the 

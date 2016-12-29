@@ -10,7 +10,7 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models an HTML &lt;nav&gt; tag
+ * Implements an HTML &lt;nav&gt; tag
  *
  * The {@link self} object defines a set of navigation links ({@link HyperlinkInterface}).
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\AV;
 
 /**
- * Class models an HTML &lt;audio&gt; tag
+ * Implements an HTML &lt;audio&gt; tag
  *
  * {@inheritdoc}
  *

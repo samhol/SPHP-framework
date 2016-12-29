@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Core\Types\URL;
 
 /**
- * Class Models an HTML &lt;figure&gt; tag
+ * Implements an HTML &lt;figure&gt; tag
  *
  * {@inheritdoc}
  *

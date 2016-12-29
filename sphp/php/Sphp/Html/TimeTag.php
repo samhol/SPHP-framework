@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use DateTime;
 
 /**
- * Class models an HTML &lt;time&gt; tag
+ * Implements an HTML &lt;time&gt; tag
  *
  * {@inheritdoc}
  * 

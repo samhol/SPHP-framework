@@ -11,7 +11,7 @@ use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\SphpScriptsLoader;
 
 /**
- * Class models an HTML &lt;body&gt; tag
+ * Implements an HTML &lt;body&gt; tag
  *
  * This component represents the main content of the HTML document.
  *

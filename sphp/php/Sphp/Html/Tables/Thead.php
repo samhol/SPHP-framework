@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Class models an HTML &lt;thead&gt; tag
+ * Implements an HTML &lt;thead&gt; tag
  *
  *  This component is used to group header content in a 
  *  {@link Table} component.

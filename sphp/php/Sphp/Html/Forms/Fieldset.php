@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models an HTML &lt;fieldset&gt; tag
+ * Implements an HTML &lt;fieldset&gt; tag
  *
  * The fieldset element is expected to establish a new block formatting context
  *

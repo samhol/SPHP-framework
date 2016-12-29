@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 /**
- * Class Models an HTML &lt;iframe&gt; tag (an inline frame)
+ * Implements an HTML &lt;iframe&gt; tag (an inline frame)
  *
  * The {@link self} component represents a nested browsing context.
  *

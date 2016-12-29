@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Buttons;
 
 /**
- * Class Models an HTML &lt;input type="reset"&gt; tag
+ * Implements an HTML &lt;input type="reset"&gt; tag
  *
  * {@inheritdoc}
  *

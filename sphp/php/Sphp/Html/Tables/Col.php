@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\EmptyTag;
 
 /**
- * Class models an HTML &lt;col&gt; tag
+ * Implements an HTML &lt;col&gt; tag
  *
  * The &lt;col&gt; tag specifies column properties for each column within a
  * &lt;colgroup&gt; element. The &lt;col&gt; tag is useful for applying styles

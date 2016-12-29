@@ -11,7 +11,7 @@ use Sphp\Html\EmptyTag;
 use Sphp\Core\Types\Strings;
 
 /**
- * Class models an HTML &lt;link&gt; tag
+ * Implements an HTML &lt;link&gt; tag
  *
  *  The &lt;link&gt; tag defines the relationship between a document and an
  *  external resource. The &lt;link&gt; tag is most used to link to style

@@ -11,7 +11,7 @@ use Sphp\Html\Media\SizeableInterface;
 use Sphp\Html\Media\SizeableTrait;
 
 /**
- * Class models an HTML &lt;video&gt; tag
+ * Implements an HTML &lt;video&gt; tag
  *
  * {@inheritdoc}
  *

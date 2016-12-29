@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\AjaxLoaderInterface;
 
 /**
- * Class models an HTML &lt;p&gt; tag
+ * Implements an HTML &lt;p&gt; tag
  *
  *  The {@link self} component represents a paragraph in an HTML document.
  *

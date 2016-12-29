@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Head\HeadComponentInterface;
 
 /**
- * Class models an HTML &lt;noscript&gt; tag
+ * Implements an HTML &lt;noscript&gt; tag
  * 
  * {@inheritdoc}
  *

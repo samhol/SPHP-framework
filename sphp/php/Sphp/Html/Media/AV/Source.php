@@ -8,13 +8,12 @@
 namespace Sphp\Html\Media\AV;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyLoaderInterface as LazyLoaderInterface;
-use Sphp\Html\Media\LazyLoaderTrait as LazyLoaderTrait;
+use Sphp\Html\Media\LazyLoaderInterface;
+use Sphp\Html\Media\LazyLoaderTrait;
 use Sphp\Core\Types\URL;
-use Sphp\Core\Util\FileUtils as FileUtils;
 
 /**
- * Class Models an HTML &lt;source&gt; tag
+ * Implements an HTML &lt;source&gt; tag
  *
  *  This component specifies media resources for {@link AbstractMediaTag} components.
  *
@@ -48,9 +47,9 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
             ->setSrc($src)
             ->setType($type)
             ->setLazy($lazy);
-    if ($src && !$type) {
-      $this->setType(FileUtils::getMimeType($src));
-    }
+   /* if ($src && !$type) {
+      $this->setType(mime_content_type($src));
+    }*/
   }
 
   /**
@@ -61,7 +60,8 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function setType($type) {
-    return $this->setAttr('type', $type);
+    $this->attrs()->set('type', $type);
+    return $this;
   }
 
   /**
@@ -71,7 +71,7 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function getType() {
-    return $this->getAttr('type');
+    return $this->attrs()->get('type');
   }
 
 }

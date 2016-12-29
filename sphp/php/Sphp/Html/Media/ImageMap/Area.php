@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\ImageMap;
 use Sphp\Html\EmptyTag;
 
 /**
- * Class Models an HTML &lt;area&gt; tag
+ * Implements an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-26

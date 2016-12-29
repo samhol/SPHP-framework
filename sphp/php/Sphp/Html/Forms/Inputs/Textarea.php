@@ -12,7 +12,7 @@ use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\Forms\LabelableTrait;
 
 /**
- * Class models an HTML &lt;textarea&gt; tag
+ * Implements an HTML &lt;textarea&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26

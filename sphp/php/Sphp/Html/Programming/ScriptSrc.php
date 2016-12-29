@@ -11,7 +11,7 @@ use Sphp\Html\AbstractTag;
 use Sphp\Core\Types\URL;
 
 /**
- * Class models an HTML &lt;script&gt; tag having script code as its content
+ * Implements an HTML &lt;script&gt; tag having script code as its content
  *
  * **IMPORTANT:** 
  * 

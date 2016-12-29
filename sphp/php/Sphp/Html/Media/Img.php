@@ -14,7 +14,7 @@ use Sphp\Core\Types\Strings;
 use Sphp\Html\Media\ImageMap\Map;
 
 /**
- * Class Models an HTML &lt;img&gt; tag
+ * Implements an HTML &lt;img&gt; tag
  *
  * An {@link self} component represents an image. The image given by the src attribute is
  * the embedded content, and the value of the alt attribute is the img

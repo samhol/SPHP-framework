@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class Models an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
+ * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
  *
  * {@inheritdoc}
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class models an HTML &lt;input type="email"&gt; tag
+ * Implements an HTML &lt;input type="email"&gt; tag
  *
  *
  * {@inheritdoc}

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
+use Sphp\Html\Lists\HyperlinkListItem;
 use Sphp\Core\Types\URL;
 
 /**
@@ -45,9 +45,9 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
   }
 
   public function setHref($href, $encode = true) {
-   // echo "$href";
+    // echo "$href";
     $url = new URL($href);
-   // echo "$url";
+    // echo "$url";
     if ($url->isCurrent()) {
       $this->setActive(true);
     } else {

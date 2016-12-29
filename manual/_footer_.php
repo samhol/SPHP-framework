@@ -15,7 +15,12 @@ use Sphp\Html\Apps\TechLinkList;
     <div class="small-12 large-8 xlarge-8 columns end">
       <div class="row">
         <div class="columns small-12">
-          <?php include_once 'manual/footerLinks.php' ?>
+          <?php
+          if ($outputCache->start('footer_links') === false) {
+            include 'manual/footerLinks.php';
+            $outputCache->end();
+          }
+          ?>
         </div>
       </div>
     </div>

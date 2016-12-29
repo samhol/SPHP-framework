@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Headings\HeadingInterface;
 
 /**
- * Class Models an HTML &lt;section&gt; tag
+ * Implements an HTML &lt;section&gt; tag
  *
  *  This component defines sections in a document, such as chapters, headers, 
  *  footers, or any other sections of the document.

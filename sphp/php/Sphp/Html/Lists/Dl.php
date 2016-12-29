@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Class Models an HTML &lt;dl&gt; tag
+ * Implements an HTML &lt;dl&gt; tag
  *
  * The {@link self} component is used in conjunction with &lt;dt&gt; (defines the item in the list)
  * and &lt;dd&gt; (describes the item in the list).

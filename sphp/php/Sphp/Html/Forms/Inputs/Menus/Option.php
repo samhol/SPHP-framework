@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
 
 /**
- * Class models an HTML &lt;option&gt; tag
+ * Implements an HTML &lt;option&gt; tag
  *
  *
  * {@inheritdoc}

@@ -10,7 +10,7 @@ namespace Sphp\Html\Head;
 use Sphp\Html\EmptyTag;
 
 /**
- * Class models an HTML &lt;base&gt; tag
+ * Implements an HTML &lt;base&gt; tag
  *
  *  The &lt;base&gt; tag specifies the base URL/target for all relative URLs in 
  *  a document. There can be at maximum one &lt;base&gt; element in a document, 

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class models an HTML &lt;input type="radio|checkbox"&gt; tag
+ * Implements an HTML &lt;input type="radio|checkbox"&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-10-18

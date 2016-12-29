@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 /**
- * Class Models an HTML &lt;optgroup&gt; tag
+ * Implements an HTML &lt;optgroup&gt; tag
 
  * **Notes:**
  *

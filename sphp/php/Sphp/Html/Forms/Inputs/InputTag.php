@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\Forms\LabelableInterface;
 
 /**
- * Class Models an HTML &lt;input&gt; tag
+ * Implements an HTML &lt;input&gt; tag
  *
  * {@inheritdoc}
  *

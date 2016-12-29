@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Class models an HTML &lt;span&gt; tag
+ * Implements an HTML &lt;span&gt; tag
  *
  * The &lt;span&gt; tag is used to group inline-elements in a document. It
  * provides no visual change by itself. The &lt;span&gt; tag provides a

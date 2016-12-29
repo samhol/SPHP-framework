@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Core\Types\URL;
 
 /**
- * Class Models an HTML &lt;img&gt; tag
+ * Implements an HTML &lt;img&gt; tag
  *
  * This component represents an image. The image given by the src attribute is
  * the embedded content, and the value of the alt attribute is the img

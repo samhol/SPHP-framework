@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Class Models an HTML &lt;tfoot&gt; tag.
+ * Implements an HTML &lt;tfoot&gt; tag.
  *
  *  The {@link self} component is used to group footer content in a {@link Table}.
  *

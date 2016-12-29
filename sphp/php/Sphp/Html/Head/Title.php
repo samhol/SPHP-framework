@@ -10,7 +10,7 @@ namespace Sphp\Html\Head;
 use Sphp\Html\SimpleContainerTag;
 
 /**
- * Class models an HTML &lt;title&gt; tag
+ * Implements an HTML &lt;title&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03

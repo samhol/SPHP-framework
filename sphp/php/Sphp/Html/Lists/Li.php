@@ -12,7 +12,7 @@ use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\AjaxLoaderTrait as AjaxLoaderTrait;
 
 /**
- * Class models an HTML-list element &lt;li&gt; tag
+ * Implements an HTML-list element &lt;li&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03

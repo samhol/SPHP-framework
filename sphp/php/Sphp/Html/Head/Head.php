@@ -17,7 +17,7 @@ use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Core\Types\URL;
 
 /**
- * Class models an HTML &lt;head&gt; tag
+ * Implements an HTML &lt;head&gt; tag
  *
  * The &lt;head&gt; tag is a container for all the head elements.
  *

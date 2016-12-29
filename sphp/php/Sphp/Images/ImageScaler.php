@@ -65,13 +65,10 @@ class ImageScaler {
    */
   public function __construct($src) {
     try {
-      if (!($src instanceof URL)) {
-        $src = new URL($src);
-      }
-      $this->src = $src;
-      $this->cacheFolderName = md5_file("$this->src") . "/";
+      $this->src = "$src";
+      $this->cacheFolderName = md5("$this->src") . "/";
       $imagine = new Imagine();
-      $this->image = $imagine->open($src->getRaw());
+      $this->image = $imagine->open($src);
       $this->originalBox = $this->image->getSize();
       $this->box = $this->image->getSize();
     } catch (\Exception $ex) {

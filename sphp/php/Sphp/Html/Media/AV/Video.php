@@ -12,7 +12,7 @@ use Sphp\Html\Media\SizeableTrait;
 use Sphp\Html\Media\LazyLoaderInterface;
 
 /**
- * Class models an HTML &lt;video&gt; tag
+ * Implements an HTML &lt;video&gt; tag
  *
  *
  * {@inheritdoc}

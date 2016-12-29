@@ -13,10 +13,10 @@ $ns
 MD
 );
 $load("Sphp.Html.Media.SizeableInterface-LazyLoaderInterface.php");
-//$load("Sphp.Html.Media.Img.php");
-//$load("Sphp.Html.Media.ImgMap.php");
-//$load("Sphp.Html.Media.Iframe.php");
-//$load("Sphp.Html.Media.AV.VideoPlayerInterface.php");
-//$load("Sphp.Html.Media.AV.VideoJs.php");
-//$load("Sphp.Html.Media.AV.Video.php");
-//$load("Sphp.Html.Media.Embed.php");
+$load("Sphp.Html.Media.Img.php");
+$load("Sphp.Html.Media.ImgMap.php");
+$load("Sphp.Html.Media.Iframe.php");
+$load("Sphp.Html.Media.AV.VideoPlayerInterface.php");
+$load("Sphp.Html.Media.AV.VideoJs.php");
+$load("Sphp.Html.Media.AV.Video.php");
+$load("Sphp.Html.Media.Embed.php");

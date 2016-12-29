@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class Models an HTML &lt;figcaption&gt; tag
+ * Implements an HTML &lt;figcaption&gt; tag
  *
  * {@inheritdoc}
  *

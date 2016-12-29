@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 
 /**
- * Class Models an HTML &lt;form&gt; tag
+ * Implements an HTML &lt;form&gt; tag
  *
  * The form element represents a collection of form-associated elements, some
  * of which can represent editable values that can be submitted to a server

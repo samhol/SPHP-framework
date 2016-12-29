@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models an HTML &lt;legend&gt; tag
+ * Implements an HTML &lt;legend&gt; tag
  *
  * **Note:** The legend element represents a caption for the rest of the
  * contents of the legend element's parent fieldset element, if any.

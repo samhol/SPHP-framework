@@ -10,7 +10,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\NonVisualContentInterface;
 
 /**
- * Class models an HTML &lt;input type="hidden"&gt; tag
+ * Implements an HTML &lt;input type="hidden"&gt; tag
  *
  * {@inheritdoc}
  *

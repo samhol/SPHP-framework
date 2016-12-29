@@ -12,7 +12,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Core\Types\Strings;
 
 /**
- * Class models an HTML &lt;label&gt; tag
+ * Implements an HTML &lt;label&gt; tag
  *
  * The label represents a caption in a user interface. The caption can be
  * associated with a specific form control, known as the label element's

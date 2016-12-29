@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
 
 /**
- * Class models an HTML &lt;caption&gt; tag
+ * Implements an HTML &lt;caption&gt; tag
  *
  * **Note:** You can specify only one caption per table.
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Tables;
 
 /**
- * Class models an HTML &lt;table&gt; tag's cell (&lt;td&gt; tag)
+ * Implements an HTML &lt;table&gt; tag's cell (&lt;td&gt; tag)
  * 
  * The {@link self} defines a standard cell in a {@link Table} component
  *

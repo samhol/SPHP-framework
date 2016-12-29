@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Document;
 
 /**
- * Class models an HTML &lt;tr&gt; tag
+ * Implements an HTML &lt;tr&gt; tag
  *
  *  The {@link self} component represents a row of {@link CellInterface}
  *  components in a {@link Table}.
