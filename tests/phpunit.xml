@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+  <php>
+    <includePath>.</includePath>
+    <ini name="foo" value="bar"/>
+    <const name="foo" value="bar"/>
+    <var name="foo" value="bar"/>
+    <env name="foo" value="bar"/>
+    <post name="foo" value="bar"/>
+    <get name="foo" value="bar"/>
+    <cookie name="foo" value="bar"/>
+    <server name="HTTP_HOST" value="localhost"/>
+    <server name="DOCUMENT_ROOT" value="localhost"/>
+    <files name="foo" value="bar"/>
+    <request name="foo" value="bar"/>
+  </php>
+</phpunit>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Net;
+namespace Sphp\Core\Security;
 
 class PasswordTest extends \PHPUnit_Framework_TestCase {
 
@@ -22,11 +22,10 @@ class PasswordTest extends \PHPUnit_Framework_TestCase {
    */
   public function testVerification($pw) {
     $fault = "fault";
-    $password = new Password($pw);
+    $password = Password::fromPassword($pw);
+    $hash = Password::fromHash($password->getHash());
     $this->assertTrue($password->verify($pw));
-    $hash = new HashedPassword(password_hash($pw, PASSWORD_DEFAULT));
     $this->assertTrue($hash->verify($pw));
-    $this->assertTrue($hash->verify($password));
     $this->assertFalse($password->verify($fault));
     $this->assertFalse($hash->verify($fault));
   }

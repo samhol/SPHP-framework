@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Document;
 
-include_once('manual/settings.php');
+require_once('manual/settings.php');
 include_once('manual/links.php');
 include_once(\Sphp\PDO_SESSIONING);
 ob_implicit_flush(true);
@@ -35,9 +35,7 @@ use Sphp\Manual\MVC\SideNavViewer;
 use Sphp\Core\Path;
 
 $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
-?>
 
-<?php
 if ($outputCache->start('topbar1212') === false) {
   include("manual/templates/logo-area.php");
   include('manual/__topBar.php');
@@ -48,6 +46,7 @@ if ($outputCache->start('topbar1212') === false) {
   <div class="column medium-3 large-3 xlarge-2 show-for-large">
     <?php
     if ($outputCache->start('sidenav') === false) {
+      $sidenawViewer = new SideNavViewer($res[0]);
       $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
       $sidenawViewer->printHtml();
       $outputCache->end();
@@ -62,9 +61,8 @@ if ($outputCache->start('topbar1212') === false) {
       $man_cache = str_replace('.', '-', $p);
     }
     if ($outputCache->start($man_cache) === false) {
-      var_dump($outputCache->start($man_cache));
       include('manual/manualBuilder.php');
-      var_dump($outputCache->end());
+      $outputCache->end();
     }
     ?>
   </div>

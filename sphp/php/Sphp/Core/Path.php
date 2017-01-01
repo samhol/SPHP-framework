@@ -49,17 +49,22 @@ class Path {
    * 
    * @throws ConfigurationException if either local or http path cannot be resolved
    */
-  protected function __construct() {
-    $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (!is_string($host)) {
-      throw new ConfigurationException('HTTP host cannot be resolved');
+  protected function __construct($host = '', $doc_root = '') {
+    if (empty($host)) {
+      $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
+      $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
     }
-    $this->httpRoot = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';
-    $root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (!is_string($root)) {
-      throw new ConfigurationException('Document root not specified');
+    if (empty($root)) {
+      $root = '';
     }
-    $this->localRoot = $root . '/';
+    $this->httpRoot = $root;
+    if (empty($doc_root)) {
+      $doc_root = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    if (empty($doc_root)) {
+      $doc_root = '';
+    }
+    $this->localRoot = $doc_root . '/';
   }
 
   /**

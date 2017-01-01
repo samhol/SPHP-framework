@@ -38,26 +38,10 @@ include_once('manual/htmlHead.php');
         </div>
       </div><pre>
         <?php
-        
-        phpinfo();
-        $cache  = new \Zend\Cache\Storage\Adapter\Filesystem();
-        $cache->setOptions([ 'ttl' => 3600,'cache_dir' => 'cache', 'dir_level' => 1]);
-
-
-        use Zend\Cache\PatternFactory;
-
-
-
-
-        //$outputCache->start('a');
-
-        $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
-        print_r($res);
-
-        use Sphp\Manual\MVC\SideNavViewer;
-
-(new SideNavViewer($res))->printHtml();
+        $pd = new \Sphp\Manual\MVC\pageData();
+        echo $pd->currentPage();
         // $outputCache->end();
+        
         ?>
       </pre></div>
     <div class="show-for-xlarge xlarge-1 column"> 
@@ -65,12 +49,7 @@ include_once('manual/htmlHead.php');
   </div>
 
   <?php
-  $outputCache = PatternFactory::factory('output', [
-                    'storage' => $cache
-        ]);
-  $outputCache->start('footer');
-  include('manual/_footer_.php');
- // $outputCache->end();
+  
 
   use Sphp\Html\Apps\BackToTopButton;
 
@@ -79,6 +58,6 @@ include_once('manual/htmlHead.php');
           ->printHtml();
   $html->documentClose();
 
-$outputCache->end();
+
 
   
