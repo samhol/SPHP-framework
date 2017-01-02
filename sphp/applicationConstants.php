@@ -7,11 +7,16 @@ use Sphp\Core\Configuration;
 /**
  * SPHP frameworks folder's root
  */
-const SPH_DIR = __DIR__;
+const SPHP_DIR = __DIR__;
 
 Configuration::useDomain("manual")->set("SPHP_DIR", __DIR__);
-//Configuration::setSphpRoot(__DIR__, Configuration::httpHost());
 
+$sphp = [
+    'SPH_DIR' => __DIR__
+];
+//Configuration::setSphpRoot(__DIR__, Configuration::httpHost());
+$sphpConf = Core\Config\Config::instance('sphp');
+$sphpConf->sphp = $sphp;
 define('Sphp\PDO_SESSIONING', __DIR__ . "/php/components/sessioning.php");
 
 //define('Sphp\PHP_PACKAGES', SPH_DIR . "/php/packages");
@@ -29,10 +34,10 @@ namespace Sphp\js;
 
 const FOUNDATION_FOLDER = "sphp/js/vendor/foundation/";
 
-define('Sphp\js\ROOT_PATH', "sphp/js/");
+/*define('Sphp\js\ROOT_PATH', "sphp/js/");
 define('Sphp\js\VENDOR_PATH', "sphp/js/vendor/");
 define('Sphp\js\SPH_ALL_PATH', "sphp/js/sph.all.js");
-define('Sphp\js\APP_PATH', "sphp/js/app/");
+define('Sphp\js\APP_PATH', "sphp/js/app/");*/
 /**
  * path to the sph functions
  */
@@ -40,7 +45,7 @@ define('Sphp\js\APP_PATH', "sphp/js/app/");
 /**
  * path to the error log file
  */
-define('Sphp\ERROR_LOG_PATH', \Sphp\SPH_DIR . "/errors.log");
+define('Sphp\ERROR_LOG_PATH', \Sphp\SPHP_DIR . "/errors.log");
 
 
 define('Sphp\Images\SCALER', \Sphp\HTTP_ROOT . "sphp/image/thumb.php");
@@ -65,7 +70,7 @@ const PDO_SU_PASSWORD = "o5Qen58&";
 const PDO_USERNAME = "sphp_framework";
 const PDO_PASSWORD = "Vxr79s?8";
 
-$dbParams = array(
+/*$dbParams = array(
     'driver' => 'pdo_mysql',
     'user' => 'sphp_framework',
     'password' => 'Vxr79s?8',
@@ -73,13 +78,13 @@ $dbParams = array(
     'charset' => 'utf8',
     'dbname' => 'sphp',
     'driverOptions' => [1002 => 'SET NAMES utf8']
-);
+);*/
 
 namespace Sphp\Images;
 
-define('Sphp\Images\CACHE', \Sphp\SPH_DIR . "/image/cache");
+define('Sphp\Images\CACHE', \Sphp\SPHP_DIR . "/image/cache");
 define('Sphp\Images\CACHE_HTTP', \Sphp\HTTP_ROOT . "sphp/image/cache");
-define('Sphp\Images\IMAGE_APP', \Sphp\HTTP_ROOT . "sphp/image/image.php");
+//define('Sphp\Images\IMAGE_APP', \Sphp\HTTP_ROOT . "sphp/image/image.php");
 //const RESIZE = 0b1;			//1
 //const SCALE = 0b10;			//2
 //const SCALE_TO_FIT = 0b100;	//4

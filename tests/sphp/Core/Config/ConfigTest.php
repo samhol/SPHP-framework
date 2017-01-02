@@ -4,9 +4,9 @@ namespace Sphp\Core\Config;
 
 class ConfigTest extends \PHPUnit_Framework_TestCase {
 
-  public function configDomain1Data() {
+  public function configData1() {
     return [
-        [["domain1" => ["string" => "string"]], false],
+        [["domain1" => ["string" => "string"]], true],
         [["domain1" => ["int" => 1]], true],
         [["domain1" => ["bool" => false]], true],
         [["domain1" => ["array" => ["first" => 1, 2, 3]]], true],
@@ -15,22 +15,23 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @dataProvider configDomain1Data
+   * @dataProvider configData1
    *
-   * @param string $config
-   * @param string $name
-   * @param mixed $value
+   * @param array $config
+   * @param string $locked
    */
   public function testVariableSetting(array $config, $locked) {
     $conf = new Config($config, $locked);
     if (!$locked) {
       $conf->foo = ['bar' => 'foobar'];
       $this->assertEquals($conf->foo->bar, 'foobar');
+      $this->assertFalse($conf->isReadOnly(), 'foobar');
       $conf->foo->a = 'bar';
       $this->assertEquals($conf->foo->a, 'bar');
+    } else {
+      $this->assertTrue($conf->isReadOnly());
     }
-    print_r($conf);
-    //$this->assertSame($domain, $conf);
+    $this->assertSame($config, $conf->toArray());
   }
 
 }

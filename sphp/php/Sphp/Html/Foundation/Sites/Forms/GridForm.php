@@ -15,7 +15,7 @@ use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 
 /**
- * Class implements a Foundation framework form
+ * Implements a Foundation framework form
  *
  * A {@link GridForm} is built with a combination of standard form
  * elements, as well as the Foundation Grid ({@link Row}(s) and {@link Column}(s)).

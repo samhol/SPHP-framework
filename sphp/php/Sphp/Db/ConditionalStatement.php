@@ -8,7 +8,7 @@
 namespace Sphp\Db;
 
 /**
- * Class implements the conditions for statements in SQL
+ * Implements the conditions for statements in SQL
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-04-02

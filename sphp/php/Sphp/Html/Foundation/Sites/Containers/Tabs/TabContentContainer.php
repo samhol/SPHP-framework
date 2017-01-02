@@ -13,7 +13,7 @@ use Sphp\Html\TraversableInterface;
 use OutOfBoundsException;
 
 /**
- * Class implements a container for Foundation Tabs 
+ * Implements a container for Foundation Tabs 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01

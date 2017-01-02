@@ -11,7 +11,7 @@ use Sphp\Data\Arrayable;
 use IteratorAggregate;
 
 /**
- * Class implements an URL for manipulation and comparison
+ * Implements an URL for manipulation and comparison
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-05

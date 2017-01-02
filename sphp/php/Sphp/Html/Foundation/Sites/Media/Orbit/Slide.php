@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\Lists\Li;
 
 /**
- * Class implements a slide for Foundation Orbit components
+ * Implements a slide for Foundation Orbit components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01
@@ -26,13 +26,7 @@ class Slide extends Li implements SlideInterface {
   /**
    * Constructs a new instance
    *
-   * **Important!**
-   *
-   * Parameter <var>mixed $content</var> & <var>mixed $caption</var> can be of
-   * any type that converts to a string. So also an object of any class that
-   * implements magic method `__toString()` is allowed.
-   *
-   * @param  mixed|mixed[] $content the content of the slide
+   * @param  mixed $content the content of the slide
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct($content = null) {

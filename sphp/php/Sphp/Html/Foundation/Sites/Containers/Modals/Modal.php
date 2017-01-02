@@ -11,7 +11,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
- * Class implements Foundation Reveal Modal 
+ * Implements Foundation Reveal Modal 
  * 
  * Modal dialogs, or pop-up windows, are handy for prototyping and production.
  *

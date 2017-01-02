@@ -1,9 +1,0 @@
-## YAML Template.
----
-
-
-cache_db: 
-  server: 192.168.10.208:3306
-  db: sphp_manual_cache
-  username: cache%
-  password: Kew62l4%

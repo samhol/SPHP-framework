@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\AjaxLoaderInterface;
 
 /**
- * Class implements Foundation Dropdown HTML component
+ * Implements Foundation Dropdown HTML component
  *
  * This component can be used to attach dropdowns or popovers to
  * whatever Component needed.

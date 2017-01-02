@@ -12,7 +12,7 @@ use Sphp\Html\Apps\SyntaxHighlighterInterface;
 use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\ComponentInterface;
 /**
- * Class implements a Foundation Block Grid Column
+ * Implements a Foundation Block Grid Column
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-26

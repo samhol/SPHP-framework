@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 use Sphp\Html\AbstractComponent;
 
 /**
- * Class implements a single accordion component
+ * Implements a single accordion component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

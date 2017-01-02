@@ -14,7 +14,7 @@ use Sphp\Html\TraversableInterface;
 use Sphp\Html\TraversableTrait;
 
 /**
- * Class implements Foundation Breadcrumbs in PHP
+ * Implements Foundation Breadcrumbs in PHP
  *
  * The graphical control element {@link self} is a navigation aid used in user 
  * interfaces. It allows users to keep track of their locations 

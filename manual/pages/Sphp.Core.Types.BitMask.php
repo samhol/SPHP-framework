@@ -11,7 +11,7 @@ $xor = $bitMaskLink->methodLink("xor_");
 echo $parsedown->text(<<<MD
 ##Class $bitMaskLink
 
-This class implements an collection of bits that grows as needed. Each component 
+This Implements an collection of bits that grows as needed. Each component 
 of the bit set has a boolean value. The bits of a $bitMaskLink are indexed by nonnegative 
 integers. Individual indexed bits can be examined, set, or cleared. 
 One $bitMaskLink may be used to modify the contents of another $bitMaskLink through the 

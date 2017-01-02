@@ -15,7 +15,7 @@ use Sphp\Core\Types\Strings;
 use Sphp\Core\Types\URL;
 
 /**
- * Class implements an image that acts as a hyperlink
+ * Implements an image that acts as a hyperlink
  *
  * {@inheritdoc}
  *

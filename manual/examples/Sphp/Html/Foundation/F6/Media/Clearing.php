@@ -2,18 +2,18 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-use Sphp\Html\Media\Size as Size;
+use Sphp\Html\Media\Size;
+use Sphp\Core\Path;
 
-$root = \Sphp\HTTP_ROOT;
+$path = Path::get();
 $lb = (new Clearing(new Size(FALSE, 50)))
-		->appendImage($root . "sphpManual/photos/andromeda.jpg", "The andromeda galaxy")
-		->appendImage($root . "sphpManual/photos/comet.jpg", "A comet")
-		->appendImage($root . "sphpManual/photos/earth.jpg", "Earth from the space")
-		->appendImage($root . "sphpManual/photos/launch.jpg", "A spaceshuttle launch")
-		->appendImage($root . "sphpManual/photos/moon.jpg", "A man on the moon")
-		->appendImage($root . "sphpManual/photos/satelite.jpg", "A satelite orbiting the earth")
-		->appendImage($root . "sphpManual/photos/space.jpg", "ISS (International Space Station)")
-		->appendImage($root . "sphpManual/photos/space.jpg", "ISS (International Space Station)", new Size(100,100))
-		->appendImage($root . "sphpManual/photos/spacewalk.jpg", "A spacewalking astronault");
+        ->appendImage($path->http('sphpManual/photos/andromeda.jpg'), 'The Andromeda galaxy')
+        ->appendImage($path->http('sphpManual/photos/comet.jpg'), 'A comet')
+        ->appendImage($path->http('sphpManual/photos/earth.jpg'), 'Earth from the space')
+        ->appendImage($path->http('sphpManual/photos/launch.jpg'), 'A spaceshuttle launch')
+        ->appendImage($path->http('sphpManual/photos/moon.jpg'), 'A man on the moon')
+        ->appendImage($path->http('sphpManual/photos/satelite.jpg'), 'A satelite orbiting the earth')
+        ->appendImage($path->http('sphpManual/photos/space.jpg'), 'ISS (International Space Station)')
+        ->appendImage($path->http('sphpManual/photos/spacewalk.jpg'), 'A spacewalking astronault');
 $lb->printHtml();
 ?>

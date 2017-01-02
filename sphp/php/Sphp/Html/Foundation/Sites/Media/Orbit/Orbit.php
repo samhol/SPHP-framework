@@ -17,7 +17,7 @@ use Sphp\Html\Media\VideoPlayerInterface;
 use Sphp\Html\Foundation\Sites\Media\Flex;
 
 /**
- * Class implements a Foundation Orbit
+ * Implements a Foundation Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

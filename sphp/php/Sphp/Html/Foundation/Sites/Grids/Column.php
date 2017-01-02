@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Div;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Implements Foundation framework based component to create  multi-device layouts
  *
  * The sum of the column widths in a row should never exeed 12.
  *

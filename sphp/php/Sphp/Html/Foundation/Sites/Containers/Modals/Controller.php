@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Modals;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class implements Foundation Reveal Modal controller
+ * Implements Foundation Reveal Modal controller
  * 
  * Modal dialogs, or pop-up windows, are handy for prototyping and production.
  *

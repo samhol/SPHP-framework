@@ -69,7 +69,7 @@ This namespace implements most of the features of the HTML tables.
 
 ###The $tableClass component 
 		
-The $tableClass class implements the HTML {$w3schools->tag("table")}. In general $tableClass 
+The $tableClass Implements the HTML {$w3schools->tag("table")}. In general $tableClass 
 components (just like HTML tables) should not be used as layout aids.
 		
 A basic $tableClass is divided into rows with the $tr component (the tr stands for table row).

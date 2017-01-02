@@ -8,7 +8,7 @@
 namespace Sphp\Core\Util;
 
 /**
- * Class implements a simple interface to track the consumed time
+ * Implements a simple interface to track the consumed time
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-11

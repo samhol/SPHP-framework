@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Document;
 
 /**
- * Class implements a back to top button for the web page
+ * Implements a back to top button for the web page
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-05-30

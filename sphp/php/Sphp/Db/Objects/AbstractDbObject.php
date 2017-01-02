@@ -11,7 +11,7 @@ use Sphp\Objects\AbstractArrayableObject;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class implements some common parts of AbstractItem interface.
+ * Implements some common parts of AbstractItem interface.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-11

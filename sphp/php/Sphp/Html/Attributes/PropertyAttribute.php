@@ -14,7 +14,7 @@ use Sphp\Core\Types\Strings;
 use InvalidArgumentException;
 
 /**
- * Class implements an property attribute object for an HTML element
+ * Implements an property attribute object for an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-12

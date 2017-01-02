@@ -10,7 +10,7 @@ echo $parsedown->text(<<<MD
 ##The $datetime class extends the build-in $parentDatetime class
 
 $datetime class introduces some improvements to the PHP's $parentDatetime class. 
-The datetime class implements for example several comparison methods for 
+The datetime Implements for example several comparison methods for 
 comparing different dates and times to one another.
 MD
 );

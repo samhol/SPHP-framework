@@ -12,7 +12,7 @@ use Sphp\Html\Media\Img;
 use Sphp\Html\Media\FigCaption;
 
 /**
- * Class implements a figure slide for Foundation Orbit components
+ * Implements a figure slide for Foundation Orbit components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

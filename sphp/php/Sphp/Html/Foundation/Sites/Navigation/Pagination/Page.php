@@ -11,7 +11,7 @@ use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
 use Sphp\Core\Types\URL;
 
 /**
- * Class implements a page button for Foundation 6 Pagination component
+ * Implements a page button for Foundation 6 Pagination component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

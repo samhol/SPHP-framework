@@ -10,8 +10,7 @@ namespace Sphp\Core;
 require_once(__DIR__ . "/../sphp/settings.php");
 //require_once 'doctrineConfiguration.php';
 
-Configuration::useDomain("manual")
-        ->phpConfiguration()
+(new Config\PHPConfig())
         ->setErrorReporting(E_ALL)
         ->iniSet("display_errors", 1)
         ->setDefaultTimezone("Europe/Helsinki")
@@ -19,7 +18,7 @@ Configuration::useDomain("manual")
 //PHPConfiguration();
 //ErrorExceptionThrower::start();
 
-Configuration::current()->paths()->loadOnce('manual/doctrineConfiguration.php');
+Path::get()->loadOnce('manual/doctrineConfiguration.php');
 /**
  * Initializes default exceptionhandling mechanism
  */

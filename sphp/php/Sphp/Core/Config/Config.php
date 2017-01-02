@@ -34,7 +34,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    *
    * @var Configuration[]
    */
-  private static $instances = [];
+  private static $instances;
 
   /**
    * the config variable name value pairs container
@@ -54,13 +54,13 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Constructs a new instance
    * 
    * @param array[] $config the domain name of the instance
-   * @param boolean $locked
+   * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public function __construct(array $config = [], $locked = true) {
+  public function __construct(array $config = [], $readOnly = true) {
     foreach ($config as $k => $v) {
       $this->__set($k, $v);
     }
-    $this->readonly = (bool) $locked;
+    $this->readonly = (bool) $readOnly;
   }
 
   public function __destruct() {
@@ -70,14 +70,19 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Returns the singelton instanse of the {@link self} object
    *
-   * @param  string $domain the name of the used domain
-   * @return self the singelton instanse of the config object
+   * @param array[] $config the domain name of the instance
+   * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public static function domain($domain = 0) {
-    if (!array_key_exists($domain, static::$instances)) {
-      self::$instances[$domain] = new static();
+  public static function instance($name = 0) {
+    if (isset(self::$instances[$name])) {
+      return self::$instances[$name];
     }
-    return static::$instances[$domain];
+
+    $instance = new static([], false);
+
+    self::$instances[$name] = $instance;
+
+    return $instance;
   }
 
   /**
@@ -96,7 +101,6 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    */
   public function setReadOnly() {
     $this->readonly = true;
-    /** @var Config $value */
     foreach ($this->data as $value) {
       if ($value instanceof self) {
         $value->setReadOnly();
@@ -199,6 +203,42 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
+   * Merge another Config with this one.
+   *
+   * For duplicate keys, the following will be performed:
+   * - Nested Configs will be recursively merged.
+   * - Items in $merge with INTEGER keys will be appended.
+   * - Items in $merge with STRING keys will overwrite current values.
+   *
+   * @param  Config $merge
+   * @return Config
+   */
+  public function merge(Config $merge) {
+    foreach ($merge as $key => $value) {
+      if (array_key_exists($key, $this->data)) {
+        if (is_int($key)) {
+          $this->data[] = $value;
+        } elseif ($value instanceof self && $this->data[$key] instanceof self) {
+          $this->data[$key]->merge($value);
+        } else {
+          if ($value instanceof self) {
+            $this->data[$key] = new static($value->toArray(), $this->allowModifications);
+          } else {
+            $this->data[$key] = $value;
+          }
+        }
+      } else {
+        if ($value instanceof self) {
+          $this->data[$key] = new static($value->toArray(), $this->allowModifications);
+        } else {
+          $this->data[$key] = $value;
+        }
+      }
+    }
+    return $this;
+  }
+
+  /**
    * Returns the number of the configuraion parameters
    *
    * @return int the number of the configuraion parameters
@@ -235,27 +275,53 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     next($this->data);
   }
 
+  /**
+   * 
+   */
   public function rewind() {
     $this->skipNextIteration = false;
     reset($this->data);
   }
 
+  /**
+   * 
+   * @return boolean
+   */
   public function valid() {
     return $this->key() !== null;
   }
 
+  /**
+   * 
+   * @param type $offset
+   * @return type
+   */
   public function offsetExists($offset) {
     return array_key_exists($offset, $this->data);
   }
 
+  /**
+   * 
+   * @param type $offset
+   * @return type
+   */
   public function offsetGet($offset) {
     return $this->get($offset);
   }
 
+  /**
+   * 
+   * @param type $offset
+   * @param type $value
+   */
   public function offsetSet($offset, $value) {
     $this->__set($offset, $value);
   }
 
+  /**
+   * 
+   * @param type $offset
+   */
   public function offsetUnset($offset) {
     $this->__unset($offset);
   }

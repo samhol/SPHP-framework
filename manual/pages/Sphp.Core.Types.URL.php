@@ -10,7 +10,7 @@ echo $parsedown->text(<<<MD
 
 The syntax for an URL string is: `scheme://[user:pass@]domain:port/path?query#fragment`
 		
-The $urlClass class implements Uniform resource locator (URL) object. 
+The $urlClass Implements Uniform resource locator (URL) object. 
 These Objects allow users to encode, decode, manipulate and compare URLs.
 
 ###Object properties

@@ -12,7 +12,7 @@ use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Class implements an Foundation 6 Accordion containing a single syntax highlighting pane
+ * Implements an Foundation 6 Accordion containing a single syntax highlighting pane
  * 
  * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}
  *

@@ -11,7 +11,7 @@ use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class implements a Foundation Tab controller for Tabs
+ * Implements a Foundation Tab controller for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01

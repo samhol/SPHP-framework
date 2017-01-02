@@ -4,18 +4,17 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Core\Path;
 
-$folder = Path::get()->http("manual/photos/");
+$path = Path::get();
 
 $orbit = new Orbit();
 
-$orbit->appendFigure($folder . "andromeda.jpg", "The andromeda galaxy")
-        ->appendFigure($folder . "comet.jpg", "A comet")
-        ->appendFigure($folder . "earth.jpg", "Earth from the space")
-        ->appendFigure($folder . "launch.jpg", "A spaceshuttle launch")
-        ->appendFigure($folder . "moon.jpg", "A man on the moon")
-        ->appendFigure($folder . "satelite.jpg", "A satelite orbiting the earth")
-        ->appendFigure($folder . "space.jpg", "ISS (International Space Station)")
-        ->appendFigure($folder . "spacewalk.jpg", "A spacewalking astronault")
-       // ->setActive(2)
+$orbit->appendFigure($path->http('manual/photos/andromeda.jpg'), 'The Andromeda galaxy')
+        ->appendFigure($path->http('manual/photos/comet.jpg'), 'A comet')
+        ->appendFigure($path->http('manual/photos/earth.jpg'), 'Earth from the space')
+        ->appendFigure($path->http('manual/photos/launch.jpg'), 'A spaceshuttle launch')
+        ->appendFigure($path->http('manual/photos/moon.jpg'), 'A man on the moon')
+        ->appendFigure($path->http('manual/photos/satelite.jpg'), 'A satelite orbiting the earth')
+        ->appendFigure($path->http('manual/photos/space.jpg'), 'ISS (International Space Station)')
+        ->appendFigure($path->http('manual/photos/spacewalk.jpg'), 'A spacewalking astronault')
         ->printHtml();
 ?>

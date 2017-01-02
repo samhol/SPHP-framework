@@ -12,7 +12,7 @@ use Sphp\Html\AjaxLoaderInterface as AjaxLoaderInterface;
 use Sphp\Html\Div;
 
 /**
- * Class implements an Owl carousel
+ * Implements an Owl carousel
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02

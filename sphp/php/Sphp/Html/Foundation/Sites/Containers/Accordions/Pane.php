@@ -13,7 +13,7 @@ use Sphp\Html\ContainerTag;
 use Sphp\Html\Div;
 
 /**
- * Class implements a Pane for a Foundation Accordion
+ * Implements a Pane for a Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-13

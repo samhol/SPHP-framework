@@ -13,7 +13,7 @@ use Sphp\Html\ContentTrait;
 use Sphp\Html\Attributes\MultiValueAttribute;
 
 /**
- * Class implements {@link VisibilityInterface} interface functionality
+ * Implements {@link VisibilityInterface} interface functionality
  * 
  * {@link VisibilityInterface} defines Foudation styled CSS visibility settings
  *

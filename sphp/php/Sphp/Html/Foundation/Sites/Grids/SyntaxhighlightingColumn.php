@@ -13,7 +13,7 @@ use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\Apps\SyntaxhighlighterContainerTrait;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Implements Foundation framework based component to create  multi-device layouts
  *
  * The sum of the column widths in a row should never exeed 12.
  *

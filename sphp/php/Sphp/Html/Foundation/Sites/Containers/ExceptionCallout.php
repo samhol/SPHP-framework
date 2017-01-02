@@ -14,7 +14,7 @@ use Sphp\Html\Lists\Li;
 use Sphp\Html\Lists\Dl;
 
 /**
- * Class implements a simple HTML structure for {@link \Exception} presentation
+ * Implements a simple HTML structure for {@link \Exception} presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25

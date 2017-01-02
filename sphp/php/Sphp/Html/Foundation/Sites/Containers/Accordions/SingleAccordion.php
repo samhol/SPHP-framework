@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 use Sphp\Html\AbstractContainerTag;
 
 /**
- * Class implements an Foundation 6 Accordion containing a single pane
+ * Implements an Foundation 6 Accordion containing a single pane
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

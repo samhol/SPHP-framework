@@ -13,7 +13,7 @@ use Sphp\Html\TraversableInterface;
 use Sphp\Html\Container;
 
 /**
- * Class implements a JavaScript component container
+ * Implements a JavaScript component container
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-27

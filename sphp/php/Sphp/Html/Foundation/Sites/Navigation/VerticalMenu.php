@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Class implements a Dropown menu for Foundation Top Bar navigation menu
+ * Implements a Dropown menu for Foundation Top Bar navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

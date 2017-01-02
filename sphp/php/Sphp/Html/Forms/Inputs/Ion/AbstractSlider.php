@@ -13,7 +13,7 @@ use Sphp\Html\Forms\Inputs\InputTrait;
 use InvalidArgumentException;
 
 /**
- * Class implements jQuery range slider with skin support
+ * Implements jQuery range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-10-11

@@ -4,7 +4,6 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
-$media = $api->namespaceLink(__NAMESPACE__);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 
 $orbit = $api->classLinker(Orbit::class);

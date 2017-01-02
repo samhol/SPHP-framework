@@ -13,7 +13,7 @@ use ArrayIterator;
 use Traversable;
 
 /**
- * Class implements a container for HTML components and other textual content
+ * Implements a container for HTML components and other textual content
  *
  * {@inheritdoc}
  *

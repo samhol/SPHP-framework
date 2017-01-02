@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Class implements Foundation 6 Accordion Menu in PHP
+ * Implements Foundation 6 Accordion Menu in PHP
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25

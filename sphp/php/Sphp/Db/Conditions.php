@@ -11,7 +11,7 @@ use Sphp\Core\Types\Arrays;
 use Sphp\Core\Types\Strings;
 
 /**
- * Class implements the content of the WHERE clause in SQL
+ * Implements the content of the WHERE clause in SQL
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-04-02

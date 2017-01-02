@@ -15,7 +15,7 @@ use ArrayIterator;
 use UnderflowException;
 
 /**
- * Class implements an unique priority queue
+ * Implements an unique priority queue
  * 
  * Unique priority queue is a priority queue containing distinct values
  * 

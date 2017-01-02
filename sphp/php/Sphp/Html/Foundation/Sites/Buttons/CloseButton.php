@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\AbstractComponent;
 
 /**
- * Class implements Foundation 6 Close Button in PHP
+ * Implements Foundation 6 Close Button in PHP
  * 
  * The close button on its own doesn't close elements, but it can be use with 
  * Toggler, Reveal, Off-canvas, and other plugins that have open and close behaviors.

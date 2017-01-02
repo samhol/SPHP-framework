@@ -13,7 +13,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Headings\H2;
 
 /**
- * Class implements a syntax highlighting slide for Foundation Orbit components
+ * Implements a syntax highlighting slide for Foundation Orbit components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

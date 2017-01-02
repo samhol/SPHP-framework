@@ -17,7 +17,7 @@ use ReflectionClass;
 use BadMethodCallException;
 
 /**
- * Class implements Foundation framework based component to create  multi-device layouts
+ * Implements Foundation framework based component to create  multi-device layouts
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

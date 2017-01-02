@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 /**
- * Class implements a Foundation row
+ * Implements a Foundation row
  *
  * {@inheritdoc}
  *

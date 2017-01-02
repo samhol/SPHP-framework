@@ -14,7 +14,7 @@ use Sphp\Html\ContainerInterface;
 use Sphp\Html\WrappingContainer;
 
 /**
- * Class implements a Foundation 6 menu
+ * Implements a Foundation 6 menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

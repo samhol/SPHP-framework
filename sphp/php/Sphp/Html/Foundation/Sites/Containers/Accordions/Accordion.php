@@ -13,7 +13,7 @@ use Sphp\Html\TraversableInterface;
 use ArrayIterator;
 
 /**
- * Class implements an Foundation 6 Accordion
+ * Implements an Foundation 6 Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-12-01

@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton;
 use InvalidArgumentException;
 
 /**
- * Class implements a Foundation Button Group
+ * Implements a Foundation Button Group
  *
  *  Button groups are containers for related action items. They're great for 
  *  displaying a group of actions in a bar.

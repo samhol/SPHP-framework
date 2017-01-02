@@ -11,7 +11,7 @@ use ParsedownExtraPlugin;
 use Sphp\Core\Util\FileUtils;
 
 /**
- * Class implements a Markdown container
+ * Implements a Markdown container
  *
  * {@inheritdoc}
  *

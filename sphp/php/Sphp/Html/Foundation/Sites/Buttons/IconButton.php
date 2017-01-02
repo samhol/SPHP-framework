@@ -14,7 +14,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 use Sphp\Html\Foundation\Sites\Foundation;
 
 /**
- * Class implements Foundation 6 Close Button in PHP
+ * Implements Foundation 6 Close Button in PHP
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

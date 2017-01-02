@@ -8,7 +8,7 @@ $uniquePriorityQueue = $api->classLinker(UniquePriorityQueue::class);
 echo $parsedown->text(<<<MD
 ###The $uniquePriorityQueue data structure
 
-This class implements a set of prioritized objects mapped with corresponding data of any type.
+This Implements a set of prioritized objects mapped with corresponding data of any type.
 
 MD
 );

@@ -16,7 +16,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
 
 /**
- * Class implements an abstract foundation based switch
+ * Implements an abstract foundation based switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-17

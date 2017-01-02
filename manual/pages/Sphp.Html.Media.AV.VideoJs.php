@@ -9,7 +9,7 @@ echo $parsedown->text(<<<MD
 ##The $vjs component
 
 Video.js is an open source library for working with video on the web, also known as an HTML video player.
-The $vjs class implements video.js for PHP. 
+The $vjs Implements video.js for PHP. 
 MD
 );
 
