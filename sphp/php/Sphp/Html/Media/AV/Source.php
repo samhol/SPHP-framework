@@ -35,21 +35,21 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
   /**
    * Constructs a new instance
    *
-   * @param  string|URL $src the URL of the media file
-   * @param  string $type the media type of the media resource
-   * @param  boolean $lazy true for lazy loading and false otherwise (default is true)
+   * @param  string|URL|null $src the URL of the media file or null for none
+   * @param  string|null $type the media type of the media resource or null for none
+   * @param  boolean $lazy true for lazy loading and false otherwise
    * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function __construct($src = false, $type = false, $lazy = false) {
+  public function __construct($src = null, $type = null, $lazy = false) {
     parent::__construct('source');
-    $this
-            ->setSrc($src)
-            ->setType($type)
-            ->setLazy($lazy);
-   /* if ($src && !$type) {
-      $this->setType(mime_content_type($src));
-    }*/
+    if ($src !== null) {
+      $this->setSrc($src);
+    }
+    if ($type !== null) {
+      $this->setType($type);
+    }
+    $this->setLazy($lazy);
   }
 
   /**
