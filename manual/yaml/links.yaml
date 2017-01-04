@@ -1,12 +1,13 @@
 ---
--
- manual:
+manual:
   - link: Getting Started
   - 
     sub: Core components
     links:
       - link: Introduction
         page: Sphp.Core
+      - link: Configuration systems
+        page: Sphp.Core.Config
       - link: Data Structures
         page: Sphp.Data
       - link: Events and Observers
@@ -19,7 +20,8 @@
         page: Sphp.Validation
       - link: I18n
         page: Sphp.Core.I18n
-  - 
+  - separator: HTML manipulation
+  -
     sub: HTML
     links:
       - link: Introduction
@@ -59,3 +61,5 @@
         page: Sphp.Html.Foundation.Sites.Forms
   - link: Database objects 
     page: Sphp.Db.Objects
+apis:
+  - sub: Foundation Sites

@@ -1,11 +1,11 @@
 <?php
 
-namespace Sphp\Core;
+namespace Sphp\Core\Config;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$config = $api->classLinker(Configuration::class);
-$phpConfig = $api->classLinker(PHPConfiguration::class);
+$config = $api->classLinker(Config::class);
+$phpConfig = $api->classLinker(PHPConfig::class);
 $toolsLink = $api->namespaceLink(__NAMESPACE__);
 $boolLink = $php->typeLink("boolean");
 $intLink = $php->typeLink("integer");

@@ -13,7 +13,7 @@ include_once('manual/htmlHead.php');
 $cache = new \Zend\Cache\Storage\Adapter\Filesystem();
 
 $cache->setOptions([
-    'ttl' => 4000,
+    'ttl' => 1,
     'cache_dir' => 'cache',
     'dir_permission' => 0755,
     'file_permission' => 0666]);
@@ -46,7 +46,7 @@ if ($outputCache->start('topbar1212') === false) {
   <div class="column medium-3 large-3 xlarge-2 show-for-large">
     <?php
     if ($outputCache->start('sidenav') === false) {
-      $sidenawViewer = new SideNavViewer($res[0]);
+      $sidenawViewer = new SideNavViewer($res['manual']);
       $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
       $sidenawViewer->printHtml();
       $outputCache->end();

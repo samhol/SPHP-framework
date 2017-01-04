@@ -2,9 +2,9 @@
 
 namespace Sphp\Core\Types;
 
-use Sphp\Core\Configuration;
+use Sphp\Core\Config\PHPConfig;
 
-Configuration::current()->phpConfiguration()->setEncoding("UTF-8");
+(new PHPConfig())->setEncoding("UTF-8");
 
 $string = 'лдэфвәәуүйәуйүәу034928348539857әшаыдларорашһһрлоавы';
 echo 'strlen: ' . strlen($string);

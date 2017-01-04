@@ -11,11 +11,11 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Implements a submenu for Foundation 6 menus
+ * Implements a submenu for Foundation for Sites menus
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11
- * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/sites/docs/ Foundation for Sites
  * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation 6 menus
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -81,6 +81,9 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    */
   public function append(MenuItemInterface $item) {
     $this->menu->append($item);
+    if ($item instanceof MenuLink && $item->isActive()) {
+      $this->setActive(true);
+    }
     return $this;
   }
 
@@ -96,9 +99,6 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    */
   public function appendLink($href, $content = '', $target = '_self') {
     $menuLink = new MenuLink($href, $content, $target);
-    if ($menuLink->isActive()) {
-      $this->setActive(true);
-    }
     return $this->append($menuLink);
   }
 

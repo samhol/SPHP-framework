@@ -6,31 +6,6 @@ use Sphp\Core\Path;
 
 class Factory {
 
-  /**
-   *
-   * @var array 
-   */
-  private $data;
-
-  /**
-   *
-   * @var AccordionMenu 
-   */
-  private $nav;
-
-  public function __construct($data) {
-    $this->data = $data;
-    $this->buildMenu();
-  }
-
-  /**
-   * 
-   * @return AccordionMenu
-   */
-  public function getMenu() {
-    return $this->nav;
-  }
-
   protected static function parseHref(array $link) {
     if (array_key_exists('url', $link)) {
       $href = $link['url'];
@@ -53,8 +28,8 @@ class Factory {
    * @return MenuLink
    */
   public static function createLink(array $link) {
-    $href = $this->parseHref($link);
-    $target = $this->parseTarget($link);
+    $href = static::parseHref($link);
+    $target = static::parseTarget($link);
     return new MenuLink($href, $link['link'], $target);
   }
 
@@ -64,30 +39,35 @@ class Factory {
    * @param array $sub
    * @return SubMenu
    */
-  public static function buildSub($root, array $sub) {
-    $accordion = new SubMenu($root);
+  public static function buildSub($root, array $sub, SubMenu $instance = null) {
+    if ($instance == null) {
+      $instance = new SubMenu($root);
+    } else {
+      $instance->setRoot($root);
+    }
     foreach ($sub as $link) {
       if (array_key_exists('link', $link)) {
-        $accordion->append($this->createLink($link));
+        $instance->append(static::createLink($link));
       }
     }
-    return $accordion;
+    return $instance;
   }
 
-  public static function buildMenu(array $data, MenuInterface $instance) {
-    $this->nav = new AccordionMenu();
-    $this->nav->addCssClass('')->appendText('Documentation');
-    foreach ($this->data['root'] as $item) {
+  public static function buildMenu(array $data, MenuInterface $instance = null) {
+    if ($instance == null) {
+      $instance = new Menu();
+    }
+    foreach ($data as $item) {
       if (array_key_exists('link', $item)) {
-        $this->nav->append($this->createLink($item));
-      } else if (array_key_exists('sub', $item) && array_key_exists("links", $item)) {
-        $this->nav->append($this->buildSub($item['sub'], $item['links']));
+        $instance->append(static::createLink($item));
+      } else if (array_key_exists('sub', $item) && array_key_exists('links', $item)) {
+        $subMenu = new SubMenu($item['sub']);
+        $instance->append(static::buildMenu($item['links'], $subMenu));
+      }else if (array_key_exists('separator', $item)) {
+        $instance->appendText($item['separator']);
       }
     }
-  }
-
-  public function getHtml() {
-    return $this->nav->getHtml();
+    return $instance;
   }
 
 }

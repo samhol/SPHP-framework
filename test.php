@@ -38,18 +38,9 @@ include_once('manual/htmlHead.php');
         </div>
       </div><pre>
         <?php
-        $pd = new \Sphp\Manual\MVC\pageData();
-        
-        echo $pd->currentPage();
-        
-        $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/config.yaml'));
-        // $outputCache->end();
-        print_r($res);
-        $a = new \Sphp\Core\Config\Config($res, false);
-        $b =  \Sphp\Core\Config\Config::instance();
-        $b->merge($a);
-        print_r($a->sphp_db);
-        print_r($b->sphp_db);
+$data = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
+print_r($data['manual']);
+echo Factory::buildMenu($data['manual'], new AccordionMenu);
         ?>
       </pre></div>
     <div class="show-for-xlarge xlarge-1 column"> 
