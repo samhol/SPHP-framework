@@ -17,6 +17,8 @@ class SideNavViewer implements ContentInterface {
    * @var array 
    */
   private $data;
+  
+  private $currentPage;
 
   /**
    *
@@ -24,8 +26,9 @@ class SideNavViewer implements ContentInterface {
    */
   private $nav;
 
-  public function __construct($data) {
+  public function __construct($data, $currentPage = '') {
     $this->data = $data;
+    $this->currentPage = $currentPage;
     $this->buildMenu();
   }
 
@@ -83,7 +86,7 @@ class SideNavViewer implements ContentInterface {
   protected function buildMenu() {
     $this->nav = new AccordionMenu();
     $this->nav->addCssClass('')->appendText('Documentation');
-    foreach ($this->data['root'] as $item) {
+    foreach ($this->data['manual'] as $item) {
       if (array_key_exists('link', $item)) {
         $this->nav->append($this->createLink($item));
       } else if (array_key_exists('sub', $item) && array_key_exists("links", $item)) {

@@ -1,6 +1,6 @@
 ---
 -
- root:
+ manual:
   - link: Getting Started
   - 
     sub: Core components
@@ -43,17 +43,19 @@
     links:
       - link: Introduction
         page: Sphp.Html.Foundation.Sites
-      - link: Core
+      - link: Core components
         page: Sphp.Html.Foundation.Sites.Core
-      - link: Grids
+      - link: Grid systems
         page: Sphp.Html.Foundation.Sites.Grids
-      - link: Containers
+      - link: General Containers
         page: Sphp.Html.Foundation.Sites.Containers
-      - link: Navigation
+      - link: Navigation menus
         page: Sphp.Html.Foundation.Sites.Navigation
       - link: Buttons 
         page: Sphp.Html.Foundation.Sites.Buttons
-      - link: Media 
+      - link: Media components
         page: Sphp.Html.Foundation.Sites.Media
-      - link: Forms
+      - link: Form components
         page: Sphp.Html.Foundation.Sites.Forms
+  - link: Database objects 
+    page: Sphp.Db.Objects
