@@ -46,6 +46,7 @@ $html->enableSPHP();
 $html->head()
         ->useFontAwesome()
         ->useFoundationIcons()
+        ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->setBaseAddr($conf->paths()->http(), '_self')
         ->addShortcutIcon($conf->paths()->http('manual/pics/favicon.ico'))
         ->metaTags()
@@ -53,4 +54,5 @@ $html->head()
         ->setAuthor('Sami Holck')
         ->setKeywords('php, scss, css, html, html5, javascript, framework, foundation, jquery')
         ->setDescription('SPHP framework for web developement');
+
 echo $html->getOpeningTag() . $html->head();
