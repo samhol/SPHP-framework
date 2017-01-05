@@ -35,38 +35,43 @@ class Factory {
 
   /**
    * 
-   * @param string $root
-   * @param array $sub
-   * @return SubMenu
+   * @param  array $data
+   * @param  MenuInterface $instance
+   * @return Navigation\Menu
    */
-  public static function buildSub($root, array $sub, SubMenu $instance = null) {
-    if ($instance == null) {
-      $instance = new SubMenu($root);
-    } else {
-      $instance->setRoot($root);
-    }
-    foreach ($sub as $link) {
-      if (array_key_exists('link', $link)) {
-        $instance->append(static::createLink($link));
-      }
-    }
-    return $instance;
-  }
-
-  public static function buildMenu(array $data, MenuInterface $instance = null) {
-    if ($instance == null) {
+  private static function insertIntoMenu(array $data, MenuInterface $instance = null) {
+    if ($instance === null) {
       $instance = new Menu();
     }
     foreach ($data as $item) {
       if (array_key_exists('link', $item)) {
         $instance->append(static::createLink($item));
-      } else if (array_key_exists('sub', $item) && array_key_exists('links', $item)) {
-        $subMenu = new SubMenu($item['sub']);
-        $instance->append(static::buildMenu($item['links'], $subMenu));
-      }else if (array_key_exists('separator', $item)) {
+      } else if (array_key_exists('menu', $item) && array_key_exists('items', $item)) {
+        $instance->append(static::buildSub($item));
+      } else if (array_key_exists('separator', $item)) {
         $instance->appendText($item['separator']);
       }
     }
+    return $instance;
+  }
+
+  /**
+   * 
+   * @param string $root
+   * @param array $sub
+   * @return SubMenu
+   */
+  public static function buildSub(array $sub) {
+    $instance = new SubMenu($sub['menu']);
+    static::insertIntoMenu($sub['items'], $instance);
+    return $instance;
+  }
+
+  public static function buildMenu(array $data, MenuInterface $instance = null) {
+    if ($instance === null) {
+      $instance = new Menu();
+    }
+    static::insertIntoMenu($data['items'], $instance);
     return $instance;
   }
 

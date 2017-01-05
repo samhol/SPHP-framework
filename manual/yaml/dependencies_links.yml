@@ -1,37 +1,28 @@
-## YAML Template.
+## YAML Menu Template.
 ---
+        
 
-  $packages
-          ->appendText('JS resources:')
-          ->appendLink('http://jquery.com/', "jQuery 1.11", '_blank')
-          ->appendLink('http://foundation.zurb.com/', 'Foundation', '_blank');
-  $clientSideMenu = new SubMenu('jQuery plugins:');
-  $clientSideMenu->appendLink('http://qtip2.com/', 'qTip 2', '_blank')
-          ->appendLink('http://ressio.github.io/lazy-load-xt/', 'Lazy Load XT', '_blank')
-          ->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade; DatePicker', '_blank');
-  $packages->append($clientSideMenu)
-          ->appendLink('http://zeroclipboard.org/', 'ZeroClipboard', '_blank');
-          
-dependencies:
-    sub: Dependencies
-    links:
-      - separator: PHP related:
-      - link: PHP 5.6 or newer
-        href: http://php.net/
-      - sub: PHP Libraries
-          links:
-            - link: Parsedown Extra
-              href: https://github.com/erusev/parsedown-extra
-            - link: GeSHi syntax highlighter
-              href: http://qbnz.com/highlighter/
-            - link: Po Parser
-              href: https://github.com/raulferras/PHP-po-parser
-            - link: SQL Formatter
-              href: https://github.com/jdorn/sql-formatter
-            - link: Imagine
-              href: https://imagine.readthedocs.org
-      - separator: Clientside:
-      - link: jQuery 1.11 or newer
-        href: http://jquery.com/
-      - link: Foundation for sites
-        href: http://foundation.zurb.com/
+menu: Dependencies
+items:
+    - separator: PHP related
+    - link: PHP 5.6 or newer
+      href: http://php.net/
+    - menu: PHP Libraries
+      items:
+          - link: Zend Framework
+            href: https://framework.zend.com/
+          - link: Parsedown Extra
+            href: https://github.com/erusev/parsedown-extra
+          - link: GeSHi syntax highlighter
+            href: http://qbnz.com/highlighter/
+          - link: Po Parser
+            href: https://github.com/raulferras/PHP-po-parser
+          - link: SQL Formatter
+            href: https://github.com/jdorn/sql-formatter
+          - link: Imagine
+            href: https://imagine.readthedocs.org          
+    - separator: Clientside
+    - link: jQuery 1.11 or newer
+      href: http://jquery.com/
+    - link: Foundation for sites
+      href: http://foundation.zurb.com/

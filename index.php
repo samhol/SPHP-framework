@@ -46,7 +46,7 @@ if ($outputCache->start('topbar1212') === false) {
   <div class="column medium-3 large-3 xlarge-2 show-for-large">
     <?php
     if ($outputCache->start('sidenav') === false) {
-      $sidenawViewer = new SideNavViewer($res['manual']);
+      $sidenawViewer = new SideNavViewer($res['doc']);
       $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
       $sidenawViewer->printHtml();
       $outputCache->end();

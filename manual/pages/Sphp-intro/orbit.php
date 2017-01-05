@@ -7,7 +7,7 @@ use Sphp\Core\Path;
 
 $path = Path::get();
 $orbitIntro = new Orbit();
-$orbitIntro->setAnimIn("fade-in")->setAnimOut("fade-out")->pauseOnHover();
+$orbitIntro->setAnimIn("fade-in")->setAnimOut("fade-out")->pauseOnHover(true);
 $orbitIntro->addCssClass("intro");
 $orbitIntro->appendMdFile($path->local("manual/pages/Sphp-intro/introduction.php"));
 $orbitIntro->appendMdFile($path->local("manual/pages/Sphp-intro/libraries.php"));
