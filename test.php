@@ -45,6 +45,12 @@ $v = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/depend
 $dep = new AccordionMenu();
 $dep->appendText('dependencies');
 echo Factory::buildMenu($v, $dep);
+$apis = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/apidocs_menu.yml'));
+$topbar = new TopBar();
+$topbar->left()->append(Factory::buildSub($data));
+$topbar->left()->append(Factory::buildSub($v));
+$topbar->left()->append(Factory::buildSub($apis));
+$topbar->printHtml();
         ?>
       </pre></div>
     <div class="show-for-xlarge xlarge-1 column"> 

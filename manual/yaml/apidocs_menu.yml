@@ -1,0 +1,21 @@
+## YAML Template.
+---
+menu: API docs
+items:
+  - separator: PHP related
+  - link: PHP documentation
+    href: http://php.net/en/documentation
+  - menu: PHP Libraries
+    items:
+    - link: Zend Framework
+      href: https://framework.zend.com/
+    - link: Doctrine ORM
+      href: http://www.doctrine-project.org/api/orm/2.5/
+    - link: Imagine
+      href: https://imagine.readthedocs.org          
+  - separator: JavaScript
+  - link: jQuery 
+    href: http://jquery.com/
+  - link: Foundation for sites
+    href: https://foundation.zurb.com/sites/docs/
+

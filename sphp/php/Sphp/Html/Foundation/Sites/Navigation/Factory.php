@@ -57,7 +57,6 @@ class Factory {
 
   /**
    * 
-   * @param string $root
    * @param array $sub
    * @return SubMenu
    */

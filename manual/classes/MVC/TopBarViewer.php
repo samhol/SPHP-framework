@@ -9,7 +9,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Navigation\Factory;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 
-class SideNavViewer implements ContentInterface {
+class TopBarViewer implements ContentInterface {
 
   use \Sphp\Html\ContentTrait;
 
