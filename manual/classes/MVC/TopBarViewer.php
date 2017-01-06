@@ -6,11 +6,8 @@ use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu as SubMenu;
 use Sphp\Html\Foundation\Sites\Navigation\TopBar;
 use Sphp\Html\ContentInterface;
-use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
 use Sphp\Html\Foundation\Sites\Navigation\Factory;
-use Sphp\Core\Path;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
-use Sphp\Html\Foundation\Sites\Navigation\MenuLink;
 
 class SideNavViewer implements ContentInterface {
 

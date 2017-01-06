@@ -1,0 +1,62 @@
+---
+menu: Documentation
+items:
+    - link: Getting Started
+      __INDEX__:
+    - menu: Core components
+      items:
+      - link: Introduction
+        page: Sphp.Core
+      - link: Configuration systems
+        page: Sphp.Core.Config
+      - link: Data Structures
+        page: Sphp.Data
+      - link: Events and Observers
+        page: Sphp.Core.Observers.and.Events
+      - link: Types and Utlilities
+        page: Sphp.Core.Types
+      - link: Data filtering
+        page: Sphp.Core.Filters
+      - link: Data validation
+        page: Sphp.Validation
+      - link: I18n
+        page: Sphp.Core.I18n
+    - separator: HTML manipulation
+    - menu: HTML core
+      items:
+      - link: Introduction
+        page: Sphp.Html
+      - link: Document factory
+        page: Sphp.Html.Document
+      - link: Attribute management
+        page: Sphp.Html.Attributes
+      - link: Meta data manipulation
+        page: Sphp.Html.Head
+      - link: Multimedia
+        page: Sphp.Html.Media
+      - link: JavaScript 
+        page: Sphp.Html.Programming
+      - link: Lists and Tables
+        page: Sphp.Html.Lists..Tables
+      - link: Forms
+        page: Sphp.Html.Forms
+    - menu: Foundation Sites
+      items:
+      - link: Introduction
+        page: Sphp.Html.Foundation.Sites
+      - link: Core components
+        page: Sphp.Html.Foundation.Sites.Core
+      - link: Grid systems
+        page: Sphp.Html.Foundation.Sites.Grids
+      - link: General Containers
+        page: Sphp.Html.Foundation.Sites.Containers
+      - link: Navigation menus
+        page: Sphp.Html.Foundation.Sites.Navigation
+      - link: Buttons 
+        page: Sphp.Html.Foundation.Sites.Buttons
+      - link: Media components
+        page: Sphp.Html.Foundation.Sites.Media
+      - link: Form components
+        page: Sphp.Html.Foundation.Sites.Forms
+    - link: Database objects 
+      page: Sphp.Db.Objects

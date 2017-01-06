@@ -38,9 +38,9 @@ include_once('manual/htmlHead.php');
         </div>
       </div><pre>
         <?php
-$data = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
+$data = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
 print_r($data);
-echo Factory::buildMenu($data['doc'], new AccordionMenu);
+echo Factory::buildMenu($data, new AccordionMenu);
 $v = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/dependencies_links.yml'));
 $dep = new AccordionMenu();
 $dep->appendText('dependencies');

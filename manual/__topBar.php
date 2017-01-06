@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Core\Configuration;
-use Sphp\Html\Foundation\Sites\Navigation\SubMenu as SubMenu;
+use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 
 include_once 'links.php';
 try {

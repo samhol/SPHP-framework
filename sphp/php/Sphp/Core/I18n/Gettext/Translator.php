@@ -72,7 +72,7 @@ class Translator extends AbstractTranslator {
    * @param string $directory the locale path of the dictionary
    * @param string $charset the character set of the dictionary
    */
-  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = \Sphp\LOCALE_PATH, $charset = 'utf8') {
+  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = 'sphp/locale', $charset = 'utf8') {
     if ($domain === null) {
       throw new Exception('no domain');
     } else {

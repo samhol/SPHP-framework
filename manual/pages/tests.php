@@ -7,7 +7,7 @@ echo"<pre>";
 
 //print_r(Configuration::useDomain("manual")->localPaths()->toArray());
 //print_r(Configuration::useDomain("manual")->httpPaths()->toArray());
-$router = Configuration::current()->paths();
+$router = Path::get();
 var_dump(
         $router->http(), 
         $router->http("manual/"),

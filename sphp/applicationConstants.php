@@ -17,11 +17,10 @@ $sphp = [
 //Configuration::setSphpRoot(__DIR__, Configuration::httpHost());
 $sphpConf = Core\Config\Config::instance('sphp');
 $sphpConf->sphp = $sphp;
-define('Sphp\PDO_SESSIONING', __DIR__ . "/php/components/sessioning.php");
 
 //define('Sphp\PHP_PACKAGES', SPH_DIR . "/php/packages");
 //define('Sphp\SPH_PACKAGE', PHP_PACKAGES . "/php/sph");
-define('Sphp\LOCALE_PATH', __DIR__ . "/locale");
+//define('Sphp\LOCALE_PATH', __DIR__ . "/locale");
 
 const DEFAULT_DOMAIN = "Sphp.Defaults";
 

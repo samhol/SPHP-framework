@@ -6,7 +6,7 @@ use Sphp\Html\Document;
 
 require_once('manual/settings.php');
 include_once('manual/links.php');
-include_once(\Sphp\PDO_SESSIONING);
+include_once('sphp/php/components/sessioning.php');
 ob_implicit_flush(true);
 include_once('manual/htmlHead.php');
 
@@ -34,10 +34,10 @@ echo Document::html()->body()->addCssClass('manual')->getOpeningTag();
 use Sphp\Manual\MVC\SideNavViewer;
 use Sphp\Core\Path;
 
-$res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/links.yaml'));
+$res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
 
 if ($outputCache->start('topbar1212') === false) {
-  include("manual/templates/logo-area.php");
+  include('manual/templates/logo-area.php');
   include('manual/__topBar.php');
   $outputCache->end();
 }
@@ -46,7 +46,7 @@ if ($outputCache->start('topbar1212') === false) {
   <div class="column medium-3 large-3 xlarge-2 show-for-large">
     <?php
     if ($outputCache->start('sidenav') === false) {
-      $sidenawViewer = new SideNavViewer($res['doc']);
+      $sidenawViewer = new SideNavViewer($res);
       $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
       $sidenawViewer->printHtml();
       $outputCache->end();
