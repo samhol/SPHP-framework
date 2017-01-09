@@ -12,12 +12,12 @@ namespace Sphp\Stdlib\Reader;
 
 use Exception;
 use RuntimeException;
-use Symfony\Component\Yaml\Yaml;
+use ParsedownExtraPlugin;
 
 /**
- * YAML config reader.
+ * MarkDown reader
  */
-class Yaml implements ReaderInterface {
+class MarkDown implements ReaderInterface {
 
   /**
    * fromFile(): defined by Reader interface.
@@ -41,13 +41,12 @@ class Yaml implements ReaderInterface {
    * @return array|bool
    * @throws RuntimeException
    */
-  public function fromString($string) { 
+  public function fromString($string) {
     try {
-      $data = Yaml::parse($string);
+      $data = ParsedownExtraPlugin::instance()->text($string);
     } catch (Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
-
     return $data;
   }
 

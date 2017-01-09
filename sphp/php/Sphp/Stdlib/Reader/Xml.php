@@ -8,10 +8,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\Config\Reader;
+namespace Sphp\Stdlib\Reader;
 
 use XMLReader;
-use Zend\Config\Exception;
+use RuntimeException;
 
 /**
  * XML config reader.
@@ -50,11 +50,11 @@ class Xml implements ReaderInterface {
    * @see    ReaderInterface::fromFile()
    * @param  string $filename
    * @return array
-   * @throws Exception\RuntimeException
+   * @throws RuntimeException
    */
   public function fromFile($filename) {
     if (!is_file($filename) || !is_readable($filename)) {
-      throw new Exception\RuntimeException(sprintf(
+      throw new RuntimeException(sprintf(
               "File '%s' doesn't exist or not readable", $filename
       ));
     }
@@ -65,7 +65,7 @@ class Xml implements ReaderInterface {
 
     set_error_handler(
             function ($error, $message = '') use ($filename) {
-      throw new Exception\RuntimeException(
+      throw new RuntimeException(
       sprintf('Error reading XML file "%s": %s', $filename, $message), $error
       );
     }, E_WARNING
@@ -83,21 +83,18 @@ class Xml implements ReaderInterface {
    * @see    ReaderInterface::fromString()
    * @param  string $string
    * @return array|bool
-   * @throws Exception\RuntimeException
+   * @throws RuntimeException
    */
   public function fromString($string) {
     if (empty($string)) {
       return [];
     }
     $this->reader = new XMLReader();
-
     $this->reader->xml($string, null, LIBXML_XINCLUDE);
-
     $this->directory = null;
-
     set_error_handler(
             function ($error, $message = '') {
-      throw new Exception\RuntimeException(
+      throw new RuntimeException(
       sprintf('Error reading XML string: %s', $message), $error
       );
     }, E_WARNING
@@ -105,7 +102,6 @@ class Xml implements ReaderInterface {
     $return = $this->process();
     restore_error_handler();
     $this->reader->close();
-
     return $return;
   }
 
@@ -126,39 +122,31 @@ class Xml implements ReaderInterface {
   protected function processNextElement() {
     $children = [];
     $text = '';
-
     while ($this->reader->read()) {
       if ($this->reader->nodeType === XMLReader::ELEMENT) {
         if ($this->reader->depth === 0) {
           return $this->processNextElement();
         }
-
         $attributes = $this->getAttributes();
         $name = $this->reader->name;
-
         if ($this->reader->isEmptyElement) {
           $child = [];
         } else {
           $child = $this->processNextElement();
         }
-
         if ($attributes) {
           if (is_string($child)) {
             $child = ['_' => $child];
           }
-
           if (!is_array($child)) {
             $child = [];
           }
-
           $child = array_merge($child, $attributes);
         }
-
         if (isset($children[$name])) {
           if (!is_array($children[$name]) || !array_key_exists(0, $children[$name])) {
             $children[$name] = [$children[$name]];
           }
-
           $children[$name][] = $child;
         } else {
           $children[$name] = $child;
@@ -180,15 +168,12 @@ class Xml implements ReaderInterface {
    */
   protected function getAttributes() {
     $attributes = [];
-
     if ($this->reader->hasAttributes) {
       while ($this->reader->moveToNextAttribute()) {
         $attributes[$this->reader->localName] = $this->reader->value;
       }
-
       $this->reader->moveToElement();
     }
-
     return $attributes;
   }
 

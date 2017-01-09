@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -7,23 +8,23 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\Config\Reader;
+namespace Sphp\Stdlib\Reader;
 
-interface ReaderInterface
-{
-    /**
-     * Read from a file and create an array
-     *
-     * @param  string $filename
-     * @return array
-     */
-    public function fromFile($filename);
+interface ReaderInterface {
 
-    /**
-     * Read from a string and create an array
-     *
-     * @param  string $string
-     * @return array|bool
-     */
-    public function fromString($string);
+  /**
+   * Read from a file and create an array
+   *
+   * @param  string $filename
+   * @return mixed
+   */
+  public function fromFile($filename);
+
+  /**
+   * Read from a string and create an array
+   *
+   * @param  string $string
+   * @return mixed
+   */
+  public function fromString($string);
 }

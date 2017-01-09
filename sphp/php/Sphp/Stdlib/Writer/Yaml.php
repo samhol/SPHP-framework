@@ -8,9 +8,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\Config\Writer;
+namespace Sphp\Stdlib\Writer;
 
-use Zend\Config\Exception;
+use InvalidArgumentException;
+use RuntimeException;
 
 class Yaml extends AbstractWriter {
 
@@ -50,11 +51,11 @@ class Yaml extends AbstractWriter {
    *
    * @param  callable $yamlEncoder the decoder to set
    * @return Yaml
-   * @throws Exception\InvalidArgumentException
+   * @throws InvalidArgumentException
    */
   public function setYamlEncoder($yamlEncoder) {
     if (!is_callable($yamlEncoder)) {
-      throw new Exception\InvalidArgumentException('Invalid parameter to setYamlEncoder() - must be callable');
+      throw new InvalidArgumentException('Invalid parameter to setYamlEncoder() - must be callable');
     }
     $this->yamlEncoder = $yamlEncoder;
     return $this;
@@ -65,16 +66,16 @@ class Yaml extends AbstractWriter {
    *
    * @param  array $config
    * @return string
-   * @throws Exception\RuntimeException
+   * @throws RuntimeException
    */
   public function processConfig(array $config) {
     if (null === $this->getYamlEncoder()) {
-      throw new Exception\RuntimeException("You didn't specify a Yaml callback encoder");
+      throw new RuntimeException("You didn't specify a Yaml callback encoder");
     }
 
     $config = call_user_func($this->getYamlEncoder(), $config);
     if (null === $config) {
-      throw new Exception\RuntimeException("Error generating YAML data");
+      throw new RuntimeException("Error generating YAML data");
     }
 
     return $config;

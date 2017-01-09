@@ -8,7 +8,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\Config\Writer;
+namespace Sphp\Stdlib\Writer;
 
 use Zend\Json\Json as JsonFormat;
 

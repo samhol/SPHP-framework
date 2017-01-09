@@ -11,6 +11,7 @@
 namespace Sphp\Stdlib\Writer;
 
 use XMLWriter;
+use RuntimeException;
 use Zend\Config\Exception;
 
 class Xml extends AbstractWriter {
@@ -51,7 +52,7 @@ class Xml extends AbstractWriter {
    * @param  array     $config
    * @param  XMLWriter $writer
    * @return void
-   * @throws Exception\RuntimeException
+   * @throws RuntimeException
    */
   protected function addBranch($branchName, array $config, XMLWriter $writer) {
     $branchType = null;
@@ -65,7 +66,7 @@ class Xml extends AbstractWriter {
           $branchType = 'string';
         }
       } elseif ($branchType !== (is_numeric($key) ? 'numeric' : 'string')) {
-        throw new Exception\RuntimeException('Mixing of string and numeric keys is not allowed');
+        throw new RuntimeException('Mixing of string and numeric keys is not allowed');
       }
 
       if ($branchType === 'numeric') {

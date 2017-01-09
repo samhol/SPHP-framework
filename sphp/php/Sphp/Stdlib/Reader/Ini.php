@@ -8,7 +8,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Zend\Config\Reader;
+namespace Sphp\Stdlib\Reader;
 
 use Zend\Config\Exception;
 
