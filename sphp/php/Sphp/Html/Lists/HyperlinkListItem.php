@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Navigation\HyperlinkContainer as HyperlinkContainer;
-use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\HyperlinkContainer;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Core\Types\URL;
 
 /**
@@ -16,7 +16,6 @@ use Sphp\Core\Types\URL;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-04
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -38,17 +37,7 @@ class HyperlinkListItem extends HyperlinkContainer implements LiInterface {
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function __construct($href = null, $content = null, $target = null) {
-    parent::__construct('li', $href, $content, $target);
-  }
-  
-  /**
-   * 
-   * @param HyperlinkInterface $hyperlink
-   * @return type
-   */
-  public static function fromHyperlink(HyperlinkInterface $hyperlink) {
-    $obj = (new static())->setHyperlink($hyperlink);
-    return $obj;
+    parent::__construct('li', new Hyperlink($href, $content, $target));
   }
 
 }

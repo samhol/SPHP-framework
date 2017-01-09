@@ -38,9 +38,9 @@ class Hyperlink extends ContainerTag implements HyperlinkInterface {
    * * The href attribute specifies the URL of the page the link goes to.
    * * If the href attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
-   * @param  string $href optional URL of the link
-   * @param  string $content optional the content of the component
-   * @param  string $target optional value of the target attribute
+   * @param  string|null $href optional URL of the link
+   * @param  string|null $content optional the content of the component
+   * @param  string|null $target optional value of the target attribute
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */

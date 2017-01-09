@@ -23,6 +23,8 @@ use Sphp\Html\WrappingContainer;
  */
 abstract class AbstractMenu extends AbstractContainerComponent implements MenuInterface, MenuItemInterface {
 
+  private $defaultTarget = '_self';
+
   /**
    * Constructs a new instance
    * 
@@ -32,6 +34,20 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
   public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct($tagname, $attrManager, $contentContainer);
     $this->cssClasses()->lock('menu');
+  }
+
+  /**
+   * 
+   * @param  string $target
+   * @return self for PHP Method Chaining
+   */
+  public function setDefaultTarget($target) {
+    $this->defaultTarget = $target;
+    return $this;
+  }
+  
+  public function getDefaultTarget() {
+    return $this->defaultTarget;
   }
 
   /**
@@ -56,6 +72,9 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function appendLink($href, $content = '', $target = '_self') {
+    if ($target === null) {
+      $target = $this->getDefaultTarget();
+    }
     return $this->append(new MenuLink($href, $content, $target));
   }
 

@@ -10,7 +10,7 @@
 @import "sphp-manual-foundation-settings";
 @import "compass/css3"; 
 
-@import "vendor/vendors";
+@import "vendor/vendors"; 
 
 @include foundation-everything;
 
@@ -27,7 +27,7 @@ $sphp6-root-border-color: #4e4e4e;
 @import "manual/manual";
 
 .sphp-manual.top-bar {
-  //z-index: 100;
+  z-index: 100; 
   border-top: solid 1px #FF8000;
   border-bottom: solid 2px #FF8000;
   color: $sphp6-topbar-link-font-color;
@@ -36,7 +36,10 @@ $sphp6-root-border-color: #4e4e4e;
   }
   .top-bar-left, .top-bar-right {
     > ul > li {
-      //z-index: 100;
+      z-index: 101;
+      ul, li {
+        z-index: 102;
+      }
       border-top: 1px solid $sphp6-root-border-color;
       border-bottom: 1px solid $sphp6-root-border-color;
       border-left: 1px solid $sphp6-root-border-color;

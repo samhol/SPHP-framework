@@ -4,7 +4,8 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
-
+use Sphp\Core\Path;
+use Sphp\Core\Util\FileUtils;
 include_once 'links.php';
 try {
   ob_start();
@@ -14,40 +15,13 @@ try {
 
   $manual = (new SubMenu('Documentation'));
 
-  $topbarMenuLinker = function (array $link, $menu) {
-    if (array_key_exists('href', $link)) {
-      $text = array_key_exists('text', $link) ? $link['text'] : $link['href'];
-      $target = array_key_exists('target', $link) ? $link['target'] : '_self';
-      $menu->appendLink($link['href'], $text, $target);
-    }
-  };
-  $separatorCreator = function ($separator, SubMenu $menu) {
-    $menu->appendText($separator, true);
-  };
-  $topbarsubmenu = function (array $data, SubMenu $parent) use ($topbarMenuLinker) {
-    $menu = new SubMenu($data["group"]);
-    foreach ($data["sub"] as $link) {
-      $topbarMenuLinker($link, $menu);
-    }
-    $parent->append($menu);
-  };
-  foreach (Configuration::current()->get('MANUAL_LINKS') as $item) {
-    if (array_key_exists('href', $item)) {
-      $topbarMenuLinker($item, $manual);
-    } else if (array_key_exists('separator', $item)) {
-      $separatorCreator($item, $manual);
-    } else if (array_key_exists('group', $item) && array_key_exists('sub', $item)) {
-      $topbarsubmenu($item, $manual);
-    }
-  }
 
-  $navi->left()->append($manual);
-  $apis = (new SubMenu('API Docs'))
-          ->appendText('PHP:')
-          ->appendLink($appConf->get('apigen'), 'ApiGen API', 'apigen')
-          ->appendText('Javascript:')
-          ->appendLink($appConf->get('jsdoc'), 'JsDoc API', 'jsdoc');
-  $navi->left()->append($apis);
+  $data = FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
+  $v = FileUtils::parseYaml(Path::get()->local('manual/yaml/dependencies_links.yml'));
+  $apis = FileUtils::parseYaml(Path::get()->local('manual/yaml/apidocs_menu.yml'));
+  $navi->left()->append(Factory::buildSub($data));
+  $navi->left()->append(Factory::buildSub($v));
+  $navi->left()->append(Factory::buildSub($apis));
 
   $packages = (new SubMenu('Dependencies'))
           ->appendText('PHP resources:')

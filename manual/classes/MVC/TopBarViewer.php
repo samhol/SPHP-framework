@@ -25,7 +25,7 @@ class TopBarViewer implements ContentInterface {
    */
   private $topBar;
 
-  public function __construct($data, $currentPage = '') {
+  public function __construct() {
     $this->topBar = new TopBar;
     $this->data = $data;
     $this->currentPage = $currentPage;

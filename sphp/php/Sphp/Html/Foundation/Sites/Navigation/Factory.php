@@ -3,12 +3,18 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Core\Path;
-
+/**
+ * 
+ */
 class Factory {
+  
+  public function __construct() {
+    ;
+  }
 
   protected static function parseHref(array $link) {
-    if (array_key_exists('url', $link)) {
-      $href = $link['url'];
+    if (array_key_exists('href', $link)) {
+      $href = $link['href'];
     } else {
       $href = Path::get()->http();
       if (array_key_exists('page', $link)) {
@@ -18,8 +24,8 @@ class Factory {
     return $href;
   }
 
-  protected static function parseTarget(array $link) {
-    return array_key_exists('target', $link) ? $link['target'] : '_self';
+  protected static function parseTarget(array $link, $defaultTarget= null) {
+    return array_key_exists('target', $link) ? $link['target'] : null;
   }
 
   /**
@@ -57,18 +63,27 @@ class Factory {
 
   /**
    * 
-   * @param array $sub
+   * @param  array $sub
    * @return SubMenu
    */
   public static function buildSub(array $sub) {
     $instance = new SubMenu($sub['menu']);
-    static::insertIntoMenu($sub['items'], $instance);
+    static::buildMenu($sub, $instance);
     return $instance;
   }
 
+  /**
+   * 
+   * @param  array $data
+   * @param  MenuInterface|null $instance
+   * @return Menu
+   */
   public static function buildMenu(array $data, MenuInterface $instance = null) {
     if ($instance === null) {
       $instance = new Menu();
+    }
+    if (array_key_exists('defaultTarget', $data)){
+      $instance->setDefaultTarget($data['defaultTarget']);
     }
     static::insertIntoMenu($data['items'], $instance);
     return $instance;

@@ -1,21 +1,26 @@
 ## YAML Template.
 ---
 menu: API docs
+defautTarget: _blank
 items:
-  - separator: PHP related
-  - link: PHP documentation
+  - link: SPHP PHP API
+    href: http://documentation.samiholck.com/apigen/
+  - link: SPHP JavaScript API
+    href: http://documentation.samiholck.com/jsdoc/
+  - separator: '<i class="devicons devicons-php"></i> PHP:'
+  - link: PHP manual
     href: http://php.net/en/documentation
   - menu: PHP Libraries
+    defautTarget: _blank
     items:
     - link: Zend Framework
       href: https://framework.zend.com/
     - link: Doctrine ORM
       href: http://www.doctrine-project.org/api/orm/2.5/
     - link: Imagine
-      href: https://imagine.readthedocs.org          
-  - separator: JavaScript
-  - link: jQuery 
+      href: https://imagine.readthedocs.io/en/latest/
+  - separator: '<i class="devicons devicons-javascript_badge fa-fw"></i> <span>JavaScript:</span>'
+  - link: <i class="devicon-jquery-plain fa-fw"></i> <span>jQuery</span>
     href: http://jquery.com/
-  - link: Foundation for sites
+  - link: <i class="devicon-foundation-plain"></i> Foundation for sites
     href: https://foundation.zurb.com/sites/docs/
-
