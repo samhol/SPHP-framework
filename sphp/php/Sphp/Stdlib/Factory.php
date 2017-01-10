@@ -19,21 +19,21 @@ class Factory {
 
   protected static $readers = array(
       'php' => 'php',
-      'ini' => 'ini',
-      'json' => 'json',
+      'ini' => Reader\Ini::class,
+      'json' => Reader\Json::class,
       'yaml' => Reader\Yaml::class,
       'yml' => Reader\Yaml::class,
       'yml' => Reader\Yaml::class,
-      'markdown' => Reader\MarkDown::class,
-      'mdown' => Reader\MarkDown::class,
-      'mkdn' => Reader\MarkDown::class,
-      'md' => Reader\MarkDown::class,
-      'mkd' => Reader\MarkDown::class,
-      'mdwn' => Reader\MarkDown::class,
-      'mdtxt' => Reader\MarkDown::class,
-      'mdtext' => Reader\MarkDown::class,
-      'text' => Reader\MarkDown::class,
-      'Rmd' => Reader\MarkDown::class,
+      'markdown' => Reader\Markdown::class,
+      'mdown' => Reader\Markdown::class,
+      'mkdn' => Reader\Markdown::class,
+      'md' => Reader\Markdown::class,
+      'mkd' => Reader\Markdown::class,
+      'mdwn' => Reader\Markdown::class,
+      'mdtxt' => Reader\Markdown::class,
+      'mdtext' => Reader\Markdown::class,
+      'text' => Reader\Markdown::class,
+      'Rmd' => Reader\Markdown::class,
   );
   private static $instances = [];
 
@@ -45,7 +45,7 @@ class Factory {
     if (!static::readerExists($type)) {
       throw new RuntimeException("Unsupported data type: '$type'");
     }
-    $readerType = new static::$readers[$extension];
+    $readerType = static::$readers[$type];
     if (!array_key_exists($readerType, static::$instances)) {
       static::$instances[$readerType] = new $readerType;
     }
@@ -64,29 +64,22 @@ class Factory {
               'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
       ));
     }
-
     $extension = strtolower($pathinfo['extension']);
-
     if ($extension === 'php') {
       if (!is_file($filepath) || !is_readable($filepath)) {
         throw new RuntimeException(sprintf(
                 "File '%s' doesn't exist or not readable", $filepath
         ));
       }
-
       $config = include $filepath;
     } else if (array_key_exists($extension, static::$readers)) {
-      $reader = new static::$readers[$extension];
-      $reader = new static::$readers[$extension];
-
-      /* @var Reader\ReaderInterface $reader */
+      $reader = static::getReader($extension);
       $config = $reader->fromFile($filepath);
     } else {
       throw new RuntimeException(sprintf(
               'Unsupported config file extension: .%s', $pathinfo['extension']
       ));
     }
-
     return $config;
   }
 

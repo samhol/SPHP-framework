@@ -1,11 +1,8 @@
 <?php
 
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * JavaProperties.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Stdlib\Reader;
@@ -13,7 +10,12 @@ namespace Sphp\Stdlib\Reader;
 use Zend\Config\Exception;
 
 /**
- * Java-style properties config reader.
+ * Java-style properties reader
+ * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class JavaProperties implements ReaderInterface {
 

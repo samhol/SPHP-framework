@@ -25,7 +25,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
         ['mdtxt', true],
         ['mdtext', true],
         ['text', true],
-        ['Rmd', true]
+        ['Rmd', true],
+        [null, false],
+        [1, false],
+        ['foo', false]
     ];
     return $map;
   }
@@ -37,6 +40,30 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
    */
   public function testReaderExists($type, $expected) {
     $this->assertSame(Factory::readerExists($type), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function filepathMap() {
+    $dir = __DIR__ . '\files\\';
+    $map = [
+        [$dir . 'test.md', '<h1 foo="bar">test</h1>'],
+        [$dir . 'test.yaml', ['foo' => 'bar']],
+        [$dir . 'test.json', ['foo' => 'bar']],
+        [$dir . 'test.ini', ['foo' => 'bar']],
+    ];
+    return $map;
+  }
+
+  /**
+   * @dataProvider filepathMap
+   * @param string $file
+   * @param boolean $expected
+   */
+  public function testFromFile($file, $expected) {
+    $this->assertSame(Factory::fromFile($file), $expected);
   }
 
 }

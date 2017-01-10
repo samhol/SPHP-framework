@@ -1,11 +1,8 @@
 <?php
 
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * Markdown.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Stdlib\Reader;
@@ -15,24 +12,14 @@ use RuntimeException;
 use ParsedownExtraPlugin;
 
 /**
- * MarkDown reader
+ * Markdown reader
+ * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class MarkDown implements ReaderInterface {
-
-  /**
-   * fromFile(): defined by Reader interface.
-   *
-   * @see    ReaderInterface::fromFile()
-   * @param  string $filename
-   * @return array
-   * @throws RuntimeException
-   */
-  public function fromFile($filename) {
-    if (!is_file($filename) || !is_readable($filename)) {
-      throw new RuntimeException(sprintf("File '%s' doesn't exist or not readable", $filename));
-    }
-    return $this->fromString(file_get_contents($filename));
-  }
+class Markdown extends AbstractReader {
 
   /**
    * fromString(): defined by Reader interface.

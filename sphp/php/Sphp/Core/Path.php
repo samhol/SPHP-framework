@@ -7,8 +7,6 @@
 
 namespace Sphp\Core;
 
-use Sphp\Data\Arrayable;
-
 /**
  * Implements a file system router
  *
