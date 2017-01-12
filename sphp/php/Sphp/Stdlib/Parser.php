@@ -16,7 +16,7 @@ use Sphp\Stdlib\Reader\ReaderInterface;
  *
  * @author Sami Holck
  */
-class Factory {
+class Parser {
 
   /**
    *

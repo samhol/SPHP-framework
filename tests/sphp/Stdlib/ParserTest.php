@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-class FactoryTest extends \PHPUnit_Framework_TestCase {
+class ParserTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * 
@@ -39,7 +39,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
    * @param boolean $expected
    */
   public function testReaderExists($type, $expected) {
-    $this->assertSame(Factory::readerExists($type), $expected);
+    $this->assertSame(Parser::readerExists($type), $expected);
   }
 
   /**
@@ -63,7 +63,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
    * @param boolean $expected
    */
   public function testFromFile($file, $expected) {
-    $this->assertSame(Factory::fromFile($file), $expected);
+    $this->assertSame(Parser::fromFile($file), $expected);
   }
 
 }
