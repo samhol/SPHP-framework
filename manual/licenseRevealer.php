@@ -2,11 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Modals;
 
-use Sphp\Core\Util\LocalFile;
 use Sphp\Core\Util\Timer;
 
-$fileObj = new LocalFile('LICENSE.md');
-$license = (new Modal($fileObj->parseMarkdown(), 'SPHP license'));
+$license = (new Modal(null, 'SPHP license'))->appendMdFile('LICENSE.md');
 $license->addCssClass('license');
 ?>
 Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.

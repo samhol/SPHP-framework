@@ -40,7 +40,7 @@ class Parser {
       'text' => Reader\Markdown::class,
       'Rmd' => Reader\Markdown::class,
   );
-  
+
   /**
    *
    * @var ReaderInterface[]
@@ -68,35 +68,51 @@ class Parser {
     return static::$instances[$readerType];
   }
 
-  public static function fromFile($filepath) {
+  /**
+   * 
+   * @param  string $filepath
+   * @return mixed
+   * @throws RuntimeException
+   */
+  public static function fromFile($filepath, $extension = null) {
     if (!file_exists($filepath)) {
       throw new RuntimeException(sprintf(
               'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }
-    $pathinfo = pathinfo($filepath);
-    if (!isset($pathinfo['extension'])) {
-      throw new RuntimeException(sprintf(
-              'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
-      ));
-    }
-    $extension = strtolower($pathinfo['extension']);
-    if ($extension === 'php') {
-      if (!is_file($filepath) || !is_readable($filepath)) {
+    if ($extension === null) {
+      $pathinfo = pathinfo($filepath);
+      if (!isset($pathinfo['extension'])) {
         throw new RuntimeException(sprintf(
-                "File '%s' doesn't exist or not readable", $filepath
+                'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
         ));
       }
-      $config = include $filepath;
-    } else if (array_key_exists($extension, static::$readers)) {
-      $reader = static::getReader($extension);
-      $config = $reader->fromFile($filepath);
-    } else {
-      throw new RuntimeException(sprintf(
-              'Unsupported config file extension: .%s', $pathinfo['extension']
-      ));
+      $extension = strtolower($pathinfo['extension']);
+      if ($extension === 'php') {
+        if (!is_file($filepath) || !is_readable($filepath)) {
+          throw new RuntimeException(sprintf(
+                  "File '%s' doesn't exist or not readable", $filepath
+          ));
+        }
+        $config = include $filepath;
+      } else if (array_key_exists($extension, static::$readers)) {
+        $reader = static::getReader($extension);
+        $config = $reader->fromFile($filepath);
+      } else {
+        throw new RuntimeException(sprintf(
+                'Unsupported config file extension: .%s', $pathinfo['extension']
+        ));
+      }
     }
     return $config;
+  }
+
+  public static function fromMdFile($filepath) {
+    
+  }
+
+  public static function fromYamlFile($filepath) {
+    
   }
 
 }

@@ -20,7 +20,7 @@ use InvalidArgumentException;
 class FileUtils {
 
   /**
-   * Rturns the entire file as a string
+   * Returns the entire file as a string
    *
    * @param  string $path the path to the file
    * @return string the result of the script execution
