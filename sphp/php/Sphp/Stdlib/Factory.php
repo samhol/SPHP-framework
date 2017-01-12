@@ -9,6 +9,7 @@
 namespace Sphp\Stdlib;
 
 use RuntimeException;
+use Sphp\Stdlib\Reader\ReaderInterface;
 
 /**
  * Description of Factory
@@ -17,6 +18,10 @@ use RuntimeException;
  */
 class Factory {
 
+  /**
+   *
+   * @var string[]
+   */
   protected static $readers = array(
       'php' => 'php',
       'ini' => Reader\Ini::class,
@@ -35,12 +40,23 @@ class Factory {
       'text' => Reader\Markdown::class,
       'Rmd' => Reader\Markdown::class,
   );
+  
+  /**
+   *
+   * @var ReaderInterface[]
+   */
   private static $instances = [];
 
   public static function readerExists($type) {
     return array_key_exists($type, static::$readers);
   }
 
+  /**
+   * 
+   * @param  string $type
+   * @return ReaderInterface
+   * @throws RuntimeException
+   */
   public static function getReader($type) {
     if (!static::readerExists($type)) {
       throw new RuntimeException("Unsupported data type: '$type'");
