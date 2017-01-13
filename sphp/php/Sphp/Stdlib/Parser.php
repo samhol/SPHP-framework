@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Parser.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Stdlib;
@@ -14,7 +13,10 @@ use Sphp\Stdlib\Reader\ReaderInterface;
 /**
  * Description of Factory
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Parser {
 
@@ -22,7 +24,7 @@ class Parser {
    *
    * @var string[]
    */
-  protected static $readers = array(
+  private static $readers = array(
       'php' => 'php',
       'ini' => Reader\Ini::class,
       'json' => Reader\Json::class,
@@ -71,6 +73,7 @@ class Parser {
   /**
    * 
    * @param  string $filepath
+   * @param  string $extension
    * @return mixed
    * @throws RuntimeException
    */
@@ -88,22 +91,24 @@ class Parser {
         ));
       }
       $extension = strtolower($pathinfo['extension']);
-      if ($extension === 'php') {
-        if (!is_file($filepath) || !is_readable($filepath)) {
-          throw new RuntimeException(sprintf(
-                  "File '%s' doesn't exist or not readable", $filepath
-          ));
-        }
-        $config = include $filepath;
-      } else if (array_key_exists($extension, static::$readers)) {
-        $reader = static::getReader($extension);
-        $config = $reader->fromFile($filepath);
-      } else {
+    }
+
+    if ($extension === 'php') {
+      if (!is_file($filepath) || !is_readable($filepath)) {
         throw new RuntimeException(sprintf(
-                'Unsupported config file extension: .%s', $pathinfo['extension']
+                "File '%s' doesn't exist or not readable", $filepath
         ));
       }
+      $config = include $filepath;
+    } else if (array_key_exists($extension, static::$readers)) {
+      $reader = static::getReader($extension);
+      $config = $reader->fromFile($filepath);
+    } else {
+      throw new RuntimeException(sprintf(
+              'Unsupported config file extension: .%s', $pathinfo['extension']
+      ));
     }
+
     return $config;
   }
 
