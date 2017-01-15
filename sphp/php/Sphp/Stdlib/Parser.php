@@ -92,28 +92,36 @@ class Parser {
       }
       $extension = strtolower($pathinfo['extension']);
     }
-
     if ($extension === 'php') {
       if (!is_file($filepath) || !is_readable($filepath)) {
-        throw new RuntimeException(sprintf(
-                "File '%s' doesn't exist or not readable", $filepath
-        ));
+        throw new RuntimeException("File '$filepath' doesn't exist or not readable");
       }
       $config = include $filepath;
     } else if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReader($extension);
       $config = $reader->fromFile($filepath);
     } else {
-      throw new RuntimeException(sprintf(
-              'Unsupported config file extension: .%s', $pathinfo['extension']
-      ));
+      throw new RuntimeException("Unsupported file type: .$extension");
     }
-
     return $config;
   }
 
-  public static function fromMdFile($filepath) {
-    
+  /**
+   * 
+   * @param  string $string
+   * @param  string $extension
+   * @return mixed
+   * @throws RuntimeException
+   */
+  public static function fromString($string, $extension) {
+    if (array_key_exists($extension, static::$readers)) {
+      $reader = static::getReader($extension);
+      $parsed = $reader->fromString($string);
+    } else {
+      throw new RuntimeException("Unsupported data type: .$extension");
+    }
+
+    return $parsed;
   }
 
   public static function fromYamlFile($filepath) {

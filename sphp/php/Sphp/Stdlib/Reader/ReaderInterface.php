@@ -7,22 +7,6 @@
 
 namespace Sphp\Stdlib\Reader;
 
-interface ReaderInterface {
-
-  /**
-   * Read from a file and create an array
-   *
-   * @param  string $filename
-   * @return mixed
-   * @throws RuntimeException if the file doesn't exist or is not readable
-   */
-  public function fromFile($filename);
-
-  /**
-   * Read from a string and create an array
-   *
-   * @param  string $string
-   * @return mixed
-   */
-  public function fromString($string);
+interface ReaderInterface extends StringReaderInterface, FileReaderInterface {
+  
 }

@@ -2,6 +2,9 @@
 
 namespace Sphp\Stdlib;
 
+use Exception;
+use RuntimeException;
+
 class ParserTest extends \PHPUnit_Framework_TestCase {
 
   /**
@@ -64,6 +67,36 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
    */
   public function testFromFile($file, $expected) {
     $this->assertSame(Parser::fromFile($file), $expected);
+  }
+
+  /**
+   * @dataProvider filepathMap
+   * @param string $file
+   * @param boolean $expected
+   */
+  public function testFromString($file, $expected) {
+    $raw = file_get_contents($file);
+    $type = pathinfo($file, PATHINFO_EXTENSION);
+    $this->assertSame(Parser::fromString($raw, $type), $expected);
+  }
+
+  /**
+   * @dataProvider filepathMap
+   * @param string $file
+   * @param boolean $expected
+   */
+  public function testExceptions($file, $expected) {
+    try {
+      Parser::fromFile('foo.md');
+    } catch (Exception $ex) {
+      $this->assertTrue($ex instanceof RuntimeException);
+    }
+
+    try {
+      Parser::fromFile('foo.php');
+    } catch (Exception $ex) {
+      $this->assertTrue($ex instanceof RuntimeException);
+    }
   }
 
 }
