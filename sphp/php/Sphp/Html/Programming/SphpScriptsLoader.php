@@ -79,7 +79,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    */
   public function appendFoundation() {
     return $this->appendJQuery()
-                    ->appendSrc('vendor/zurb/foundation/dist/foundation.min.js');
+                    ->appendSrc('vendor/zurb/foundation/dist/js/foundation.min.js');
   }
 
   /**

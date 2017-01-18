@@ -7,16 +7,18 @@
  */
 
 namespace Sphp\Stdlib;
-
+use Sphp\Data\Arrayable;
+use SplFileObject;
 /**
  * Description of CsvFile
  *
  * @author Sami
  */
-class CsvFile {
+class CsvFile implements Arrayable {
 
   public function __construct($filename) {
-    $this->file = new \SplFileObject($filename, 'a');
+    $this->file = new SplFileObject($filename);
+    $this->file->setCsvControl(';');
   }
 
   /**
@@ -30,6 +32,15 @@ class CsvFile {
     }
     $this->file->fputcsv($data);
     return $this;
+  }
+
+  public function toArray() {
+    $arr = [];
+    $this->file->setFlags(SplFileObject::DROP_NEW_LINE);
+    while (!$this->file->eof()) {
+      $arr[] = $this->file->fgetcsv();
+    }
+    return $arr;
   }
 
 }
