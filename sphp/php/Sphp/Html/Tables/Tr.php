@@ -105,6 +105,29 @@ class Tr extends ContainerTag implements RowInterface {
   }
 
   /**
+   * Appends {@link CellInterface} components to the table row component
+   *
+   * **Notes:**
+   *
+   *  mixed <var>$cells</var> can be of any type that converts to a string or
+   *  to a string[].
+   *
+   * <var>$cellType</var> attribute can have two case insensitive values:
+   * 
+   * * 'td' => all mixed <var>$cells</var> are wrapped with {@link Td}
+   * * 'th' => all mixed <var>$cells</var> are wrapped with {@link Th}
+   * 
+   *
+   * @param  mixed|Cell|Cell[] $cells cells of the table row
+   * @param  string $cellType the default type of the cell `td|th`
+   * @return self for PHP Method Chaining
+   */
+  public function appendTds($cells) {
+    parent::append($this->parseNewCells($cells, 'td'));
+    return $this;
+  }
+
+  /**
    * Prepends {@link Cell} components to the table row component
    *
    * **Notes:**
