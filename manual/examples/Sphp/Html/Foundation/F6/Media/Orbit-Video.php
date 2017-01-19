@@ -8,7 +8,7 @@ $orbit->appendYoutubeVideo("CdMs7eqMvNg")
         ->appendDailymotionVideo("x2p4pkp")
         ->appendVimeoVideo("174190102");
 foreach ($orbit as $slide) {
-  $slide->setWidescreen(true);
+  $slide->setAspectRatio('panorama');
 }
 $orbit->printHtml();
 ?>

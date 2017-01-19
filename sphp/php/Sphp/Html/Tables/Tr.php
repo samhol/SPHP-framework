@@ -13,7 +13,7 @@ use Sphp\Html\Document;
 /**
  * Implements an HTML &lt;tr&gt; tag
  *
- *  The {@link self} component represents a row of {@link CellInterface}
+ *  This component represents a row of {@link CellInterface}
  *  components in a {@link Table}.
  *
  * {@inheritdoc}
@@ -33,7 +33,7 @@ class Tr extends ContainerTag implements RowInterface {
    *
    * @var string 
    */
-  private $cellType = "td";
+  private $cellType = 'td';
 
   /**
    * Constructs a new instance

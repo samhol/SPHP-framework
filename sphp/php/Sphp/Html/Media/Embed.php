@@ -12,7 +12,7 @@ use Sphp\Html\EmptyTag;
 /**
  * Implements an HTML &lt;embed&gt; tag
  *
- * The {@link self} component defines a container for an external application or
+ * This component defines a container for an external application or
  * interactive content (a plug-in).
  *
  * {@inheritdoc}

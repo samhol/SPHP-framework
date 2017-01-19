@@ -31,49 +31,51 @@ namespace Sphp\Html\Tables;
  */
 interface CellInterface extends TableContentInterface {
 
-	/**
-	 * Sets the value of the colspan attribute
-	 *
-	 * **Note:** Only Firefox and Opera support colspan="0", which tells the 
-	 *  browser to span the cell to the last column of the column group 
-	 * (colgroup).
-	 *
-	 * @param  int $value the value of the colspan attribute
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
-	 * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
-	 */
-	public function setColspan($value);
+  /**
+   * Sets the value of the colspan attribute
+   *
+   * **Note:** Only Firefox and Opera support colspan="0", which tells the 
+   *  browser to span the cell to the last column of the column group 
+   * (colgroup).
+   *
+   * @precondition  $value >= 1
+   * @param  int $value the value of the colspan attribute
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   */
+  public function setColspan($value);
 
-	/**
-	 * Returns the value of the colspan attribute
-	 *
-	 * @return int the value of the colspan attribute
-	 * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
-	 * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
-	 */
-	public function getColspan();
+  /**
+   * Returns the value of the colspan attribute
+   *
+   * @return int the value of the colspan attribute
+   * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
+   */
+  public function getColspan();
 
-	/**
-	 * Sets the value of the rowspan attribute
-	 *
-	 * **Note:** Only Firefox and Opera support rowspan="0", which tells the 
-	 *  browser to span the cell to the last row of the table section 
-	 *  (thead, tbody, or tfoot).
-	 *
-	 * @param  int $value the value of the rowspan attribute
-	 * @return self for PHP Method Chaining
-	 * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
-	 * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
-	 */
-	public function setRowspan($value);
+  /**
+   * Sets the value of the rowspan attribute
+   *
+   * **Note:** Only Firefox and Opera support rowspan="0", which tells the 
+   *  browser to span the cell to the last row of the table section 
+   *  (thead, tbody, or tfoot).
+   *
+   * @precondition  $value >= 1
+   * @param  int $value the value of the rowspan attribute
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   */
+  public function setRowspan($value);
 
-	/**
-	 * Returns the value of the rowspan attribute
-	 *
-	 * @return int the value of the rowspan attribute
-	 * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
-	 * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
-	 */
-	public function getRowspan();
+  /**
+   * Returns the value of the rowspan attribute
+   *
+   * @return int the value of the rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
+   * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
+   */
+  public function getRowspan();
 }

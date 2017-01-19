@@ -30,16 +30,16 @@ $srcs[] = "http://techslides.com/demos/sample-videos/small.ogv";
 
 $vjs[] = (new VideoJs($srcs))
         ->setPoster("manual/pics/LEGO_logo.png")
-        ->setWideScreen();
+        ->setAspectRatio();
 
 $vjs[] = (new VideoJs("http://www.w3schools.com/html/mov_bbb.mp4"))
         ->addSource("http://www.w3schools.com/html/mov_bbb.ogg")
-        ->setWideScreen();
+        ->setAspectRatio();
 $vjs[] = (new VideoJs())
         ->addSource("http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")
         ->addSource("http://video-js.zencoder.com/oceans-clip.webm")
         ->addSource("http://video-js.zencoder.com/oceans-clip.ogv")
-        ->setWideScreen();
+        ->setAspectRatio();
        
 $blockGrid = new BlockGrid($vjs, 1, 2, 3);
 $blockGrid->getColumn(2)->setCssClass("show-for-large");

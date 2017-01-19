@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FlexMedia.php (UTF-8)
+ * ResponsiveEmbed.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -34,7 +34,7 @@ use BadMethodCallException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterface {
+class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterface, LazyLoaderInterface {
 
   /**
    *
@@ -55,7 +55,7 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
    */
   public function __construct(IframeInterface $media) {
     parent::__construct('div');
-    $this->cssClasses()->lock('flex-video');
+    $this->cssClasses()->lock('responsive-embed');
     $this->iframe = $media;
   }
 
@@ -112,12 +112,12 @@ class Flex extends AbstractComponent implements FlexInterface, LazyLoaderInterfa
     return $this->iframe;
   }
 
-  public function setWidescreen($widescreen = true) {
-    if ($widescreen) {
-      $this->cssClasses()->add('widescreen');
-    } else {
-      $this->cssClasses()->remove('widescreen');
-    }
+  public function setAspectRatio($ratio) {
+    $ratios = ['default', 'vertical', 'widescreen', 'square'];
+    if ($ratio) {
+      $this->cssClasses()->remove($ratios);
+      $this->cssClasses()->add($ratio);
+    } 
     return $this;
   }
 

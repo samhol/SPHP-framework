@@ -14,7 +14,7 @@ use Sphp\Html\TraversableInterface;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Navigation\Nav;
 use Sphp\Html\Media\VideoPlayerInterface;
-use Sphp\Html\Foundation\Sites\Media\Flex;
+use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
 /**
  * Implements a Foundation Orbit
@@ -322,7 +322,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for PHP Method Chaining
    */
   public function appendIframe($player) {
-    return $this->append(new FlexSlide($player));
+    return $this->append(new ResponsiveEmbedSlide($player));
   }
 
   /**
@@ -333,7 +333,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for PHP Method Chaining
    */
   public function appendYoutubeVideo($videoId, $isPlaylist = false) {
-    return $this->appendIframe(Flex::youtube($videoId, $isPlaylist));
+    return $this->appendIframe(ResponsiveEmbed::youtube($videoId, $isPlaylist));
   }
 
   /**
@@ -343,7 +343,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for PHP Method Chaining
    */
   public function appendVimeoVideo($videoId) {
-    return $this->appendIframe(Flex::vimeo($videoId));
+    return $this->appendIframe(ResponsiveEmbed::vimeo($videoId));
   }
 
   /**
@@ -353,7 +353,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * @return self for PHP Method Chaining
    */
   public function appendDailymotionVideo($videoId) {
-    return $this->appendIframe(Flex::dailymotion($videoId));
+    return $this->appendIframe(ResponsiveEmbed::dailymotion($videoId));
   }
 
   /**

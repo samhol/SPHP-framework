@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$flexInterface = $api->classLinker(FlexInterface::class);
-$flex = $api->classLinker(Flex::class);
+$flexInterface = $api->classLinker(ResponsiveEmbedInterface::class);
+$flex = $api->classLinker(ResponsiveEmbed::class);
 
 echo $parsedown->text(<<<MD
 		

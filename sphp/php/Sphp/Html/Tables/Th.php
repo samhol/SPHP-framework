@@ -27,18 +27,15 @@ class Th extends Cell {
   /**
    * Constructs a new instance
    *
-   * <p>**Important!**</p>
+   * **Important!**
    *
-   * <p>Parameter `$content` can be of any type that converts to a
+   * Parameter `$content` can be of any type that converts to a
    * string or to an array of strings. So also an object of any class that
-   * implements magic method `__toString()` is allowed.</p>
+   * implements magic method `__toString()` is allowed.
    *
-   *  <p>**Preconditions:**</p>
-   *  <ol>
-   *    * $scope =="row" | $scope =="col" | $scope =="rowgroup" | $scope =="colgroup"
-   *    * $colspan &gt;= 1 & $rowspan >= 1
-   *  </ol>
-   *
+   * @precondition  $scope == row|col|rowgroup|colgroup
+   * @precondition  $colspan >= 1
+   * @precondition  $rowspan >= 1
    * @param mixed $content the content of the tag
    * @param int $colspan solun colspan attribute value
    * @param int $rowspan solun rowspan attribute value
@@ -59,11 +56,7 @@ class Th extends Cell {
   /**
    * Sets the value of the scope attribute
    *
-   *  <p>**Preconditions:**</p>
-   *  <ol>
-   *    * $scope =="row" | $scope =="col" | $scope =="rowgroup" | $scope =="colgroup"
-   *  </ol>
-   *
+   * @precondition  $scope == row|col|rowgroup|colgroup
    * @param  string $scope the value of the scope attribute
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute

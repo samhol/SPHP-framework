@@ -46,7 +46,7 @@ class BulletContainer extends AbstractContainerComponent {
       $slideNo = $bullet;
       $bullet = new Bullet($slideNo);
     } else {
-      $slideNo = $bullet->getSlideNo(); 
+      $slideNo = $bullet->getSlideNo();
     }
     $this->getInnerContainer()->set($slideNo, $bullet);
     return $this;

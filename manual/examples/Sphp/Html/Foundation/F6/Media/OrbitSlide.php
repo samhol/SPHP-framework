@@ -7,7 +7,6 @@ use Sphp\Core\Path;
 $path = Path::get();
 
 $orbit = new Orbit();
-
 $orbit->appendFigure($path->http('manual/photos/andromeda.jpg'), 'The Andromeda galaxy')
         ->appendFigure($path->http('manual/photos/comet.jpg'), 'A comet')
         ->appendFigure($path->http('manual/photos/earth.jpg'), 'Earth from the space')

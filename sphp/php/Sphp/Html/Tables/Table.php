@@ -220,7 +220,7 @@ class Table extends AbstractContainerComponent implements IteratorAggregate, Tra
   /**
    * Create a new iterator to iterate through inserted elements in the table
    *
-   * @return \ArrayIterator iterator
+   * @return \Traversable iterator
    */
   public function getIterator() {
     return $this->getInnerContainer()->getIterator();

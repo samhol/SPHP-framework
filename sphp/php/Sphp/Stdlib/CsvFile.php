@@ -7,8 +7,10 @@
  */
 
 namespace Sphp\Stdlib;
+
 use Sphp\Data\Arrayable;
 use SplFileObject;
+
 /**
  * Description of CsvFile
  *
@@ -23,10 +25,10 @@ class CsvFile implements Arrayable {
 
   /**
    * 
-   * @param type $data
+   * @param  array $data
    * @return $this
    */
-  public function appendRow($data) {
+  public function appendRow(array $data) {
     if ($data instanceof \Traversable) {
       $data = iterator_to_array($data);
     }

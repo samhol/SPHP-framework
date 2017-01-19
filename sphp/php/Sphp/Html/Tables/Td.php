@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 /**
  * Implements an HTML &lt;table&gt; tag's cell (&lt;td&gt; tag)
  * 
- * The {@link self} defines a standard cell in a {@link Table} component
+ * This defines a standard cell in a {@link Table} component
  *
  *
  * {@inheritdoc}
@@ -33,7 +33,8 @@ class Td extends Cell {
    * string or to an array of strings. So also an object of any class that
    * implements magic method `__toString()` is allowed.
    *
-   * @recondition `$colspan >= 1 & $rowspan >= 1`
+   * @precondition  $colspan >= 1
+   * @precondition  $rowspan >= 1
    * @param mixed $content the content of the component
    * @param int $colspan the value of the colspan attribute
    * @param int $rowspan the value of the rowspan attribute

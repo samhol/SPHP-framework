@@ -24,13 +24,20 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface FlexInterface extends ContentInterface {
+interface ResponsiveEmbedInterface extends ContentInterface {
 
   /**
    * Sets/unsets the widescreen property
    * 
-   * @param  boolean $widescreen true for widescreen
+   * Predefined aspect ratios:
+   * 
+   * * `default`: 4 by 3
+   * * `widescreen`: 16 by 9
+   * * `panorama`: 256 by 81
+   * * `square`: 1 by 1
+   * 
+   * @param  string $ratio true for widescreen
    * @return self for PHP Method Chaining
    */
-  public function setWidescreen($widescreen = true);
+  public function setAspectRatio($ratio);
 }

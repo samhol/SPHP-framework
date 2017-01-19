@@ -8,8 +8,8 @@
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Media\FlexInterface as FlexInterface;
-use Sphp\Html\Foundation\Sites\Media\Flex;
+use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbedInterface;
+use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
 /**
  * Implements a media Flex slide for Foundation Orbit components
@@ -21,29 +21,29 @@ use Sphp\Html\Foundation\Sites\Media\Flex;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterface {
+class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, ResponsiveEmbedInterface {
 
   use ActivationTrait;
 
   /**
    * the flex component instance
    *
-   * @var Flex
+   * @var ResponsiveEmbed
    */
   private $flex;
 
   /**
    * Constructs a new instance
    *
-   * @param FlexInterface $flex the inner component
+   * @param ResponsiveEmbedInterface $embed the inner component
    */
-  public function __construct(FlexInterface $flex = null) {
+  public function __construct(ResponsiveEmbedInterface $embed = null) {
     parent::__construct('li');
     $this->cssClasses()->lock('orbit-slide');
-    if (!($flex instanceof Flex)) {
-      $flex = new Flex($flex);
+    if (!($embed instanceof ResponsiveEmbed)) {
+      $embed = new ResponsiveEmbed($embed);
     }
-    $this->flex = $flex;
+    $this->flex = $embed;
   }
 
   public function __destruct() {
@@ -59,20 +59,14 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
   /**
    * Returns the flex component
    *
-   * @return Flex the flex component
+   * @return ResponsiveEmbed the flex component
    */
   public function getFlex() {
     return $this->flex;
   }
 
-  /**
-   * Sets/unsets the widescreen property
-   * 
-   * @param  boolean $widescreen true for widescreen
-   * @return self for PHP Method Chaining
-   */
-  public function setWidescreen($widescreen = true) {
-    $this->getFlex()->setWidescreen($widescreen);
+  public function setAspectRatio($ratio) {
+    $this->getFlex()->setAspectRatio($ratio);
     return $this;
   }
 
@@ -93,7 +87,7 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
    * @return self new instance containing a {@link YoutubePlayer} instance
    */
   public static function youtube($videoId, $isPlaylist = false) {
-    return new static(Flex::youtube($videoId, $isPlaylist));
+    return new static(ResponsiveEmbed::youtube($videoId, $isPlaylist));
   }
 
   /**
@@ -103,7 +97,7 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
    * @return self new instance containing a {@link VimeoPlayer} instance
    */
   public static function vimeo($videoId) {
-    return new static(Flex::vimeo($videoId));
+    return new static(ResponsiveEmbed::vimeo($videoId));
   }
 
   /**
@@ -113,7 +107,7 @@ class FlexSlide extends AbstractComponent implements SlideInterface, FlexInterfa
    * @return self new instance containing a {@link DailyMotionPlayer} instance
    */
   public static function dailymotion($videoId) {
-    return new static(Flex::dailymotion($videoId));
+    return new static(ResponsiveEmbed::dailymotion($videoId));
   }
 
   public function contentToString() {
