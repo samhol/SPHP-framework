@@ -17,6 +17,6 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TableContentInterface extends ComponentInterface {
+interface TableContentInterface {
   
 }

@@ -25,19 +25,27 @@ namespace Sphp\Html\Tables;
  */
 class Thead extends TableRowContainer {
 
-	/**
-	 * Constructs a new instance
-	 * 
-	 * **Notes:**
-	 * 
-	 *  * A mixed `$row` can be of any type that converts to a PHP string
-	 *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-	 *
-	 * @param  null|mixed|mixed[] $row the row being appended
-	 */
-	public function __construct($row = null) {
-		parent::__construct('thead', $row);
-		$this->setDefaultTableCellType('th');
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * **Notes:**
+   * 
+   *  * A mixed `$row` can be of any type that converts to a PHP string
+   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
+   *
+   * @param  null|mixed|mixed[] $rows the row being appended
+   */
+  public function __construct($rows = null) {
+    parent::__construct('thead', $rows);
+  }
+
+  public function fromArray(array $arr) {
+    foreach ($arr as $tr) {
+      if (!($tr instanceof RowInterface)) {
+        $this->appendHeaderRow($tr);
+      }
+    }
+    return $this;
+  }
 
 }

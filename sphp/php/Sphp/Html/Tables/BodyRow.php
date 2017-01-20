@@ -1,14 +1,11 @@
 <?php
 
 /**
- * Tr.php (UTF-8)
+ * BodyRow.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Tables;
-
-use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Document;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -26,14 +23,7 @@ use Sphp\Html\Document;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tr extends AbstractRow {
-
-  /**
-   * the default type of the table cells (`td`|`th`)
-   *
-   * @var string 
-   */
-  private $cellType = 'td';
+class BodyRow extends AbstractRow {
 
   /**
    * Constructs a new instance
@@ -53,46 +43,10 @@ class Tr extends AbstractRow {
    *         (`td`|`th`)
    */
   public function __construct($cells = null) {
-    parent::__construct('tr');
+    parent::__construct();
     if (isset($cells)) {
       $this->appendTds($cells);
     }
-  }
-
-  /**
-   * Assigns a single {@link TableCell} component to the specified offset
-   *
-   * **Notes:**
-   *
-   *  mixed <var>$value</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   *  a non {@link Cell} <var>$value</var> is wrapped to a {@link Td} object
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed|Cell $value the value to set
-   * @link  http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetGet
-   */
-  public function offsetSet($offset, $value) {
-    $cell = ($value instanceof Cell) ? $value : Document::get($this->getDefaultCellType())->append($value);
-    parent::offsetSet($offset, $cell);
-  }
-  /**
-   * 
-   * @param  mixed $tds
-   * @return self
-   */
-  public static function fromTds($tds) {
-    return (new static())->appendTds($tds);
-  }
-  
-  /**
-   * 
-   * @param  mixed $tds
-   * @return self
-   */
-  public static function fromThs($ths) {
-    return (new static())->appendThs($ths);
   }
 
 }

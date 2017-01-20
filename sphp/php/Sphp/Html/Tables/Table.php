@@ -162,7 +162,10 @@ class Table extends AbstractContainerComponent implements IteratorAggregate, Tra
    *
    * @return Thead table header component
    */
-  public function thead() {
+  public function thead(Thead $head = null) {
+    if ($head === null) {
+      $this->getInnerContainer()["thead"] = new Thead();
+    }
     return $this->getInnerContainer()["thead"];
   }
 

@@ -33,8 +33,21 @@ class Tfoot extends TableRowContainer {
    * @param  null|mixed|mixed[] $row the row being appended
    */
   public function __construct($row = null) {
-    parent::__construct('tfoot', $row);
-    $this->setDefaultTableCellType('th');
+    parent::__construct('tfoot');
+    foreach (is_array($row)? $row : [$row]  as $tr) {
+      if (!($tr instanceof RowInterface)) {
+        $this->append(new Tr ($tr));
+      }
+    }
+  }
+
+  public function fromArray(array $arr) {
+    foreach ($arr as $tr) {
+      if (!($tr instanceof RowInterface)) {
+        $this->appendTr($tr);
+      }
+    }
+    return $this;
   }
 
 }

@@ -183,7 +183,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
   $table = (new Table())
           ->addCssClass('html-to-php');
   $table->thead()
-          ->append(['Parameter', 'HTML Tag', 'PHP Object type', 'Description']);
+          ->appendHeaderRow(['Parameter', 'HTML Tag', 'PHP Object type', 'Description']);
   $body = $table->tbody();
   foreach ($v as $data) {
     if (is_string($data)) {
@@ -205,7 +205,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
       $c[] = $api->classLinker($ref->getName(), $text)->getLink()->addCssClass("scale-to-fit")->removeCssClass("bordered");
       $c[] = $data[1];
-      $body[] = $c;
+      $body->appendBodyRow($c);
     }
   }
   return "$table";

@@ -35,7 +35,15 @@ class Tbody extends TableRowContainer {
 	 */
 	public function __construct($row = null) {
 		parent::__construct('tbody', $row);
-		$this->setDefaultTableCellType('td');
 	}
 
+
+  public function fromArray(array $arr) {
+    foreach ($arr as $tr) {
+      if (!($tr instanceof RowInterface)) {
+        $this->appendBodyRow($tr);
+      }
+    }
+    return $this;
+  }
 }

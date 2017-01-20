@@ -21,18 +21,4 @@ namespace Sphp\Html\Tables;
  */
 interface RowInterface extends TableContentInterface {
 
-  /**
-   * Sets the default type of the table cells
-   * 
-   * @param  string $defaultCell the default type of the cell `td|th`
-   * @return self for PHP Method Chaining
-   */
-  public function setDefaultCellType($defaultCell);
-
-  /**
-   * Sets the default type of the table cells
-   * 
-   * @return string the default type of the cell `td|th`
-   */
-  public function getDefaultCellType();
 }
