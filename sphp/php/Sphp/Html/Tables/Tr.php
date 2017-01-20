@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Document;
 
 /**
@@ -26,7 +26,7 @@ use Sphp\Html\Document;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Tr extends ContainerTag implements RowInterface {
+class Tr extends AbstractContainerComponent implements \IteratorAggregate, \Sphp\Html\TraversableInterface, RowInterface {
 
   /**
    * the default type of the table cells (`td`|`th`)
@@ -82,48 +82,35 @@ class Tr extends ContainerTag implements RowInterface {
   }
 
   /**
-   * Appends {@link CellInterface} components to the table row component
+   * Appends cell components to the table row
    *
-   * **Notes:**
-   *
-   *  mixed <var>$cells</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   * <var>$cellType</var> attribute can have two case insensitive values:
-   * 
-   * * 'td' => all mixed <var>$cells</var> are wrapped with {@link Td}
-   * * 'th' => all mixed <var>$cells</var> are wrapped with {@link Th}
-   * 
-   *
-   * @param  mixed|Cell|Cell[] $cells cells of the table row
-   * @param  string $cellType the default type of the cell `td|th`
+   * @param  CellInterface $cell new cell object
    * @return self for PHP Method Chaining
    */
-  public function append($cells, $cellType = 'td') {
-    parent::append($this->parseNewCells($cells, $cellType));
+  public function append(CellInterface $cell) {
+    parent::append($this->parseNewCells($cell));
     return $this;
   }
 
   /**
-   * Appends {@link CellInterface} components to the table row component
+   * Creates and appends {@link CellInterface} components to the table row component
    *
-   * **Notes:**
+   * @param  mixed|mixed[] $cells cells of the table row
+   * @return self for PHP Method Chaining
+   */
+  public function appendThs($cells) {
+    $this->append($this->parseNewCells($cells, 'th'));
+    return $this;
+  }
+
+  /**
+   * Creates and appends {@link CellInterface} components to the table row component
    *
-   *  mixed <var>$cells</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   * <var>$cellType</var> attribute can have two case insensitive values:
-   * 
-   * * 'td' => all mixed <var>$cells</var> are wrapped with {@link Td}
-   * * 'th' => all mixed <var>$cells</var> are wrapped with {@link Th}
-   * 
-   *
-   * @param  mixed|Cell|Cell[] $cells cells of the table row
-   * @param  string $cellType the default type of the cell `td|th`
+   * @param  mixed|mixed[] $cells cells of the table row
    * @return self for PHP Method Chaining
    */
   public function appendTds($cells) {
-    parent::append($this->parseNewCells($cells, 'td'));
+    $this->append($this->parseNewCells($cells, 'td'));
     return $this;
   }
 
@@ -196,6 +183,26 @@ class Tr extends ContainerTag implements RowInterface {
   public function offsetSet($offset, $value) {
     $cell = ($value instanceof Cell) ? $value : Document::get($this->getDefaultCellType())->append($value);
     parent::offsetSet($offset, $cell);
+  }
+
+  public function count() {
+    
+  }
+
+  public function getComponentsBy(callable $rules) {
+    
+  }
+
+  public function getComponentsByAttrName($attrName) {
+    
+  }
+
+  public function getComponentsByObjectType($typeName) {
+    
+  }
+
+  public function getIterator() {
+    
   }
 
 }
