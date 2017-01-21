@@ -68,7 +68,7 @@ class Tr extends AbstractRow {
       }
       return $count;
     } else {
-      return parent::count();
+      return $this->getInnerContainer()->count();
     }
   }
 

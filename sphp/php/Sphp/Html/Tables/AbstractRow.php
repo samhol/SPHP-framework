@@ -30,6 +30,7 @@ use Sphp\Html\TraversableInterface;
 abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableInterface, RowInterface {
 
   use \Sphp\Html\TraversableTrait;
+
   /**
    * Constructs a new instance
    *
@@ -47,10 +48,9 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @param  string $cellType the default type of the cell 
    *         (`td`|`th`)
    */
-  public function __construct() {
-    parent::__construct('tr');
+  public function __construct(\Sphp\Html\Attributes\AttributeManager $attrManager = null, \Sphp\Html\ContainerInterface $contentContainer = null) {
+    parent::__construct('tr', $attrManager, $contentContainer);
   }
-
 
   /**
    * Appends cell components to the table row
@@ -70,7 +70,9 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return self for PHP Method Chaining
    */
   public function appendThs($cells) {
-    $this->getInnerContainer()->append($this->parseNewCells($cells, 'th'));
+    foreach ($this->parseNewCells($cells, 'th') as $th) {
+      $this->append($th);
+    }
     return $this;
   }
 
@@ -81,7 +83,9 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return self for PHP Method Chaining
    */
   public function appendTds($cells) {
-    $this->getInnerContainer()->append($this->parseNewCells($cells, 'td'));
+    foreach ($this->parseNewCells($cells, 'td') as $td) {
+      $this->append($td);
+    }
     return $this;
   }
 
@@ -138,7 +142,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   }
 
   public function getIterator() {
-    
+    return $this->getInnerContainer();
   }
 
 }

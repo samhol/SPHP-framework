@@ -9,6 +9,7 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
 use IteratorAggregate;
+use ArrayAccess;
 use Sphp\Html\TraversableInterface;
 
 /**
@@ -21,7 +22,7 @@ use Sphp\Html\TraversableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface, TableContentInterface {
+abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, ArrayAccess, TraversableInterface, TableContentInterface {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -168,6 +169,22 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
 
   public function getIterator() {
     return $this->getInnerContainer();
+  }
+
+  public function offsetExists($offset) {
+    return $this->getInnerContainer()->offsetExists($offset);
+  }
+
+  public function offsetGet($offset) {
+    return $this->getInnerContainer()->offsetGet($offset);
+  }
+
+  public function offsetSet($offset, $value) {
+    return $this->getInnerContainer()->offsetSet($offset, $value);
+  }
+
+  public function offsetUnset($offset) {
+    
   }
 
 }

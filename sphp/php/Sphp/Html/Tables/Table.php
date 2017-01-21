@@ -8,10 +8,9 @@
 namespace Sphp\Html\Tables;
 
 use IteratorAggregate;
-use Sphp\Core\Types\Strings;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableInterface;
-use Sphp\Data\Collection;
+use Sphp\Html\Container;
 
 /**
  * Implements an HTML &lt;table&gt; tag.
@@ -257,7 +256,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    */
   public function count($mode = self::COUNT_CELLS) {
     if ($mode == self::COUNT_CELLS) {
-      return $this->getComponentsByObjectType(Cell::class)->count();
+      return $this->getComponentsByObjectType(CellInterface::class)->count();
     } else if ($mode == self::COUNT_ROWS) {
       return $this->getComponentsByObjectType(RowInterface::class)->count();
     } else {
@@ -268,10 +267,10 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   /**
    * Create a new iterator to iterate through inserted elements in the table
    *
-   * @return Collection iterator
+   * @return Container iterator
    */
   public function getIterator() {
-    $it = new Collection();
+    $it = new Container();
     if ($this->caption !== null) {
       $it['caption'] = $this->caption;
     }

@@ -34,7 +34,7 @@ trait TraversableTrait {
         //echo " ok ";
         $result[] = $value;
       }
-      if ($value instanceof TraversableInterface) {
+      if ($value instanceof \Traversable) {
         foreach ($value->getComponentsBy($rules) as $v) {
           $result[] = $v;
         }

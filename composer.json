@@ -1,6 +1,15 @@
 {
   "name": "sami_holck/sphp_framework",
+	"homepage": "http://www.playground.samiholck.com/",
   "description": "Multipurpose PHP framework for web applications",
+	"keywords": ["HTML5","WEB 2.0","UI"],	
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Sami Holck",
+      "email": "sami.holck@gmail.com"
+    }
+  ],
   "require": {
     "php" : "^5.5 || ^7.0",
     "doctrine/orm": "*",
@@ -17,13 +26,6 @@
     "zurb/foundation": ">=6.3",
     "symfony/yaml": "^3.0"
   },
-  "license": "GNU",
-  "authors": [
-    {
-      "name": "Sami Holck",
-      "email": "sami.holck@gmail.com"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "Sphp\\": "sphp/php/Sphp",
