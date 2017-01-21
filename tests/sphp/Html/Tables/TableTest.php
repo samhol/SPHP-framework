@@ -48,16 +48,18 @@ class TableTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * 
-   * @dataProvider appendData
+   * @dataProvider bodytData
    * @param mixed $val
    */
   public function testInsertBody($val) {
-    $this->table->tbody();
-    $this->container->append($val);
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertTrue($this->container->offsetExists(1));
-    $this->assertEquals($this->container->count(), 2);
-    $this->assertEquals($this->container[1], $val);
+    $this->table->tbody()->fromArray($val);
+    //$this->assertTrue($this->table->tbody()->offsetExists(0));
+    //$this->assertTrue($this->table->offsetExists(1));
+    $this->assertEquals($this->table->count(Table::COUNT_ROWS), 3);
+    $this->assertEquals($this->table->count(Table::COUNT_CELLS), 9);
+    $this->table->thead()->fromArray($val);
+   // $this->assertEquals($this->table->count(Table::COUNT_ROWS), 6);
+   // $this->assertEquals($this->table->count(Table::COUNT_CELLS), 18);
   }
 
   /**
@@ -65,7 +67,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider appendData
    * @param mixed $val
    */
-  public function testPrepend($val) {
+  public function tesstPrepend($val) {
     $this->container->append("foo");
     $this->container->prepend($val);
     $this->assertTrue($this->container->offsetExists(0));
@@ -79,7 +81,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider appendData
    * @param mixed $val
    */
-  public function testOffsetSet($val) {
+  public function tesstOffsetSet($val) {
     $this->container->append("foo");
     $this->container[] = $val;
     $this->container["a"] = $val;
@@ -108,7 +110,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider arrayData
    * @param mixed[] $data
    */
-  public function testClear(array $data) {
+  public function tesstClear(array $data) {
     foreach ($data as $val) {
       $this->container->append($val);
     }
@@ -122,7 +124,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider arrayData
    * @param mixed[] $data
    */
-  public function testIterator(array $data) {
+  public function tesstIterator(array $data) {
     foreach ($data as $val) {
       $this->container->append($val);
     }
@@ -137,7 +139,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider appendData
    * @param mixed $val
    */
-  public function testExists($val) {
+  public function tesstExists($val) {
     $this->container->append($val);
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
@@ -149,7 +151,7 @@ class TableTest extends \PHPUnit_Framework_TestCase {
   /**
    * 
    */
-  public function testClone() {
+  public function tesstClone() {
     $this->container->append(new Container("a"));
     $clone = clone $this->container;
     $this->container[0][0] = "b";
