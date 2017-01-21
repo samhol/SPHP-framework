@@ -8,6 +8,8 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
+use IteratorAggregate;
+use Sphp\Html\TraversableInterface;
 
 /**
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
@@ -19,9 +21,10 @@ use Sphp\Html\AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class TableRowContainer extends AbstractContainerComponent implements \IteratorAggregate, \Sphp\Html\TraversableInterface, TableContentInterface {
+abstract class TableRowContainer extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface, TableContentInterface {
 
   use \Sphp\Html\TraversableTrait;
+
   /**
    * Counts the {@link RowInterface} components in the table
    */
@@ -32,26 +35,30 @@ abstract class TableRowContainer extends AbstractContainerComponent implements \
    */
   const COUNT_CELLS = 2;
 
-  abstract public function fromArray(array $arr);
-
   /**
-   * Wraps any non {@link RowInterface} input within a {@link Tr} object
-   *
+   * Constructs a new instance
+   * 
    * **Notes:**
    * 
    *  * A mixed `$row` can be of any type that converts to a PHP string
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
-   * @param  mixed|mixed[] $row the row being appended
-   * @return RowInterface wrapped input
+   * @param string $tagname
+   * @param AttributeManager $m
+   * @param null|mixed|mixed[] $rows the row being appended
    */
-  private function trWrapper($row) {
-    if (!($row instanceof RowInterface)) {
-      return new Tr($row, $this->getDefaultCellType());
-    } else {
-      return $row;
+  public function __construct($tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
+    parent::__construct($tagname, $m);
+    if ($rows !== null) {
+      $this->fromArray($rows);
     }
   }
+  /**
+   * 
+   * @param  array $arr the row being appended
+   * @return self for PHP Method Chaining
+   */
+  abstract public function fromArray(array $arr);
 
   /**
    * Appends a {@link RowInterface} object to the container object
@@ -81,7 +88,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements \
    * @return self for PHP Method Chaining
    */
   public function appendHeaderRow($cells) {
-    $this->append(new HeaderRow($cells));
+    $this->append(Tr::fromThs($cells));
     return $this;
   }
 
@@ -97,7 +104,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements \
    * @return self for PHP Method Chaining
    */
   public function appendBodyRow($cells) {
-    $this->append(new BodyRow($cells));
+    $this->append(Tr::fromTds($cells));
     return $this;
   }
 
@@ -136,22 +143,6 @@ abstract class TableRowContainer extends AbstractContainerComponent implements \
   }
 
   /**
-   * Assigns a table row {@link RowInterface} to the specified offset
-   *
-   * **Notes:**
-   *
-   *  * A mixed `$row` can be of any type that converts to a PHP string
-   *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed|mixed[]|RowInterface $row the value to set
-   * @link  http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetGet
-   */
-  public function offsetSet($offset, $row) {
-    parent::offsetSet($offset, $this->trWrapper($row));
-  }
-
-  /**
    * Count the number of inserted components in the table
    *
    * **`$mode` parameter values:**
@@ -176,7 +167,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements \
   }
 
   public function getIterator() {
-    
+    return $this->getInnerContainer();
   }
 
 }

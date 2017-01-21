@@ -7,9 +7,6 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Document;
-
 /**
  * Implements an HTML &lt;tr&gt; tag
  *
@@ -29,13 +26,6 @@ use Sphp\Html\Document;
 class Tr extends AbstractRow {
 
   /**
-   * the default type of the table cells (`td`|`th`)
-   *
-   * @var string 
-   */
-  private $cellType = 'td';
-
-  /**
    * Constructs a new instance
    *
    * **Notes:**
@@ -53,30 +43,35 @@ class Tr extends AbstractRow {
    *         (`td`|`th`)
    */
   public function __construct($cells = null) {
-    parent::__construct('tr');
+    parent::__construct();
     if (isset($cells)) {
       $this->appendTds($cells);
     }
   }
-
   /**
-   * Assigns a single {@link TableCell} component to the specified offset
+   * Count the number of inserted components in the table
    *
-   * **Notes:**
+   * **`$mode` parameter values:**
+   * 
+   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
+   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
    *
-   *  mixed <var>$value</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   *  a non {@link Cell} <var>$value</var> is wrapped to a {@link Td} object
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed|Cell $value the value to set
-   * @link  http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetGet
+   * @param  int $mode defines the type of the objects to count
+   * @return int number of the components in the html table
+   * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function offsetSet($offset, $value) {
-    $cell = ($value instanceof Cell) ? $value : Document::get($this->getDefaultCellType())->append($value);
-    parent::offsetSet($offset, $cell);
+  public function count($mode = self::COUNT_NORMAL) {
+    if ($mode == self::COUNT_CELLS) {
+      $count = 0;
+      foreach ($this as $row) {
+        $count += $row->count();
+      }
+      return $count;
+    } else {
+      return parent::count();
+    }
   }
+
   /**
    * 
    * @param  mixed $tds
@@ -85,10 +80,10 @@ class Tr extends AbstractRow {
   public static function fromTds($tds) {
     return (new static())->appendTds($tds);
   }
-  
+
   /**
    * 
-   * @param  mixed $tds
+   * @param  mixed $ths
    * @return self
    */
   public static function fromThs($ths) {

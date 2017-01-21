@@ -9,6 +9,7 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Document;
+use Sphp\Html\TraversableInterface;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -26,8 +27,9 @@ use Sphp\Html\Document;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, \Sphp\Html\TraversableInterface, RowInterface {
+abstract class AbstractRow extends AbstractContainerComponent implements \IteratorAggregate, TraversableInterface, RowInterface {
 
+  use \Sphp\Html\TraversableTrait;
   /**
    * Constructs a new instance
    *
@@ -133,41 +135,6 @@ class AbstractRow extends AbstractContainerComponent implements \IteratorAggrega
       }
     }
     return $arr;
-  }
-
-  /**
-   * Assigns a single {@link TableCell} component to the specified offset
-   *
-   * **Notes:**
-   *
-   *  mixed <var>$value</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   *  a non {@link Cell} <var>$value</var> is wrapped to a {@link Td} object
-   *
-   * @param mixed $offset the offset to assign the value to
-   * @param mixed|Cell $value the value to set
-   * @link  http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetGet
-   */
-  public function offsetSet($offset, $value) {
-    $cell = ($value instanceof Cell) ? $value : Document::get($this->getDefaultCellType())->append($value);
-    parent::offsetSet($offset, $cell);
-  }
-
-  public function count() {
-    
-  }
-
-  public function getComponentsBy(callable $rules) {
-    
-  }
-
-  public function getComponentsByAttrName($attrName) {
-    
-  }
-
-  public function getComponentsByObjectType($typeName) {
-    
   }
 
   public function getIterator() {

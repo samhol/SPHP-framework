@@ -9,8 +9,9 @@ namespace Sphp\Html\Tables;
 
 use IteratorAggregate;
 use Sphp\Core\Types\Strings;
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\TraversableInterface;
+use Sphp\Data\Collection;
 
 /**
  * Implements an HTML &lt;table&gt; tag.
@@ -25,7 +26,7 @@ use Sphp\Html\TraversableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Table extends AbstractContainerComponent implements IteratorAggregate, TraversableInterface {
+class Table extends AbstractComponent implements IteratorAggregate, TraversableInterface {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -40,59 +41,86 @@ class Table extends AbstractContainerComponent implements IteratorAggregate, Tra
   const COUNT_CELLS = 2;
 
   /**
-   * Constructs a new instance
    *
-   * @param  string $caption defines a table caption
+   * @var Caption 
    */
-  public function __construct($caption = '') {
-    parent::__construct('table');
-    $this->setup($caption);
-  }
+  private $caption;
 
   /**
-   * Sets up the table
-   * 
-   * @param  string $caption defines a table caption
-   * @return self for PHP Method Chaining
+   *
+   * @var Colgroup 
    */
-  private function setup($caption) {
-    $this->getInnerContainer()['caption'] = '';
-    $this->getInnerContainer()['colgroup'] = "";
-    $this->getInnerContainer()['thead'] = new Thead();
-    $this->getInnerContainer()['tfoot'] = new Tfoot();
-    $this->getInnerContainer()['tbody'] = new Tbody();
-    $this->setCaption($caption);
-    return $this;
+  private $colgroup;
+
+  /**
+   *
+   * @var Thead 
+   */
+  private $thead;
+
+  /**
+   *
+   * @var Tbody 
+   */
+  private $tbody;
+
+  /**
+   *
+   * @var Tfoot 
+   */
+  private $tfoot;
+
+  /**
+   * Constructs a new instance
+   *
+   * @param  string|null $caption defines a table caption
+   */
+  public function __construct($caption = null) {
+    parent::__construct('table');
+    if ($caption !== null) {
+      $this->setCaption($caption);
+    }
+  }
+
+  public function __destruct() {
+    unset($this->caption, $this->colgroup, $this->thead, $this->tbody, $this->tfoot);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->caption = clone $this->caption;
+    $this->colgroup = clone $this->caption;
+    $this->thead = clone $this->thead;
+    $this->tbody = clone $this->tbody;
+    $this->tfoot = clone $this->tfoot;
+    parent::__destruct();
+  }
+
+  public function contentToString() {
+    return $this->caption . $this->colgroup . $this->thead . $this->tfoot . $this->tbody;
   }
 
   /**
    * Sets the caption text of the table
    * 
-   * @param  string $caption the caption text of the table
+   * @param  string|null $caption the caption text of the table
    * @return self for PHP Method Chaining
    */
   public function setCaption($caption) {
-    if (!Strings::isEmpty($caption)) {
-      $this->getInnerContainer()["caption"] = new Caption($caption);
-    } else if (isset($this->getInnerContainer()["caption"])) {
-      $this->getInnerContainer()["caption"] = "";
+    if (!($caption instanceof Caption)) {
+      $caption = new Caption($caption);
     }
+    $this->caption = $caption;
     return $this;
   }
 
   /**
-   * Clears the content of the table
-   *
+   * Destroys the optional caption component
+   * 
    * @return self for PHP Method Chaining
    */
-  public function clearContent() {
-    foreach ($this as $id => $component) {
-      if ($id == "colgroup") {
-        $this->getInnerContainer()["colgroup"] = "";
-      } else {
-        $component->clear();
-      }
-    }
+  public function removeCaption() {
+    $this->caption = null;
     return $this;
   }
 
@@ -106,85 +134,113 @@ class Table extends AbstractContainerComponent implements IteratorAggregate, Tra
     if ($content instanceof Colgroup || $content instanceof Col) {
       $this->setCols($content);
     } else if ($content instanceof Caption) {
-      $this->getInnerContainer()["caption"] = $content;
+      $this->getInnerContainer()['caption'] = $content;
     } else if ($content instanceof Thead) {
-      $this->getInnerContainer()["thead"] = $content;
+      $this->thead = $content;
     } else if ($content instanceof Tbody) {
-      $this->getInnerContainer()["tbody"] = $content;
+      $this->tbody = $content;
     } else if ($content instanceof Tfoot) {
-      $this->getInnerContainer()["tfoot"] = $content;
+      $this->tfoot = $content;
     } else if ($content instanceof Tr || $content instanceof Cell) {
-      $this->getInnerContainer()["tbody"]->append($content);
+      $this->tbody->append($content);
     }
-    return $this;
-  }
-
-  /**
-   * Sets the colgroup component
-   *
-   * the {@link Colgroup} component specifies a group of one or more columns 
-   *  in a {@link Table} for formatting
-   *
-   * @param  null|Col|Col[]|Colgroup column or column group
-   * @return self for PHP Method Chaining
-   */
-  public function setCols($cols = null) {
-    if ($cols === null) {
-      $this->getInnerContainer()->set("colgroup", "");
-    } else if ($cols instanceof Colgroup) {
-      $this->getInnerContainer()->set("colgroup", $cols);
-    } else {
-      $this->getInnerContainer()->set("colgroup", new Colgroup($cols));
-    }
-    $this->getInnerContainer()["colgroup"];
-
     return $this;
   }
 
   /**
    * Returns the colgroup component or null
    *
-   * the {@link Colgroup} component specifies a group of one or more columns 
-   *  in a {@link Table} for formatting
-   *
-   * @return null|Colgroup table header content
+   * @param  Colgroup $colgroup
+   * @return Colgroup colgroup component
    */
-  public function colgroup() {
-    if ($this->getInnerContainer()["colgroup"] instanceof Colgroup) {
-      return $this->getInnerContainer()["colgroup"];
-    } else {
-      return null;
+  public function colgroup(Colgroup $colgroup = null) {
+    if ($colgroup === null) {
+      $colgroup = new Colgroup();
     }
+    $this->colgroup = $colgroup;
+    return $this->colgroup;
+  }
+
+  /**
+   * Destroys the optional colgroup component
+   * 
+   * @return self for PHP Method Chaining
+   */
+  public function removeColgroup() {
+    $this->colgroup = null;
+    return $this;
   }
 
   /**
    * Returns the table header component
    *
+   * @param  Thead $head
    * @return Thead table header component
    */
   public function thead(Thead $head = null) {
     if ($head === null) {
-      $this->getInnerContainer()["thead"] = new Thead();
+      $head = new Thead();
     }
-    return $this->getInnerContainer()["thead"];
+    $this->thead = $head;
+    return $this->thead;
+  }
+
+  /**
+   * Destroys the optional thead component
+   * 
+   * @return self for PHP Method Chaining
+   */
+  public function removeThead() {
+    $this->thead = null;
+    return $this;
   }
 
   /**
    * Returns the table body component
    *
+   * @param  Tbody $tbody
    * @return Tbody table body component
    */
-  public function tbody() {
-    return $this->getInnerContainer()["tbody"];
+  public function tbody(Tbody $tbody = null) {
+    if ($tbody === null) {
+      $tbody = new Tbody();
+    }
+    $this->tbody = $tbody;
+    return $this->tbody;
   }
 
   /**
-   * Returns the table component
-   *
+   * Destroys the optional tbody component
+   * 
+   * @return self for PHP Method Chaining
+   */
+  public function removeTbody() {
+    $this->tbody = null;
+    return $this;
+  }
+
+  /**
+   * Returns footer component
+   * 
+   * @param  Tfoot $tfoot
    * @return Tfoot table footer component
    */
-  public function tfoot() {
-    return $this->getInnerContainer()["tfoot"];
+  public function tfoot(Tfoot $tfoot = null) {
+    if ($tfoot === null) {
+      $tfoot = new Tfoot();
+    }
+    $this->tfoot = $tfoot;
+    return $this->tfoot;
+  }
+
+  /**
+   * Destroys the optional tfoot component
+   * 
+   * @return self for PHP Method Chaining
+   */
+  public function removeTfoot() {
+    $this->tfoot = null;
+    return $this;
   }
 
   /**
@@ -210,23 +266,28 @@ class Table extends AbstractContainerComponent implements IteratorAggregate, Tra
   }
 
   /**
-   * Returns a {@link ContainerInterface} containing sub components that 
-   *  contain the searched attribute
-   *
-   * @param  string $attrName the name of the searched attribute
-   * @return ContainerInterface containing matching sub components
-   */
-  public function getComponentsByAttrName($attrName) {
-    return $this->getInnerContainer()->getComponentsByAttrName($attrName);
-  }
-
-  /**
    * Create a new iterator to iterate through inserted elements in the table
    *
-   * @return \Traversable iterator
+   * @return Collection iterator
    */
   public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
+    $it = new Collection();
+    if ($this->caption !== null) {
+      $it['caption'] = $this->caption;
+    }
+    if ($this->colgroup !== null) {
+      $it['colgroup'] = $this->colgroup;
+    }
+    if ($this->thead !== null) {
+      $it['thead'] = $this->thead;
+    }
+    if ($this->tfoot !== null) {
+      $it['tfoot'] = $this->tfoot;
+    }
+    if ($this->tbody !== null) {
+      $it['tbody'] = $this->tbody;
+    }
+    return $it;
   }
 
 }

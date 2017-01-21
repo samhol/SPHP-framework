@@ -11,8 +11,10 @@
     "easybook/geshi": "v1.0.8.15",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
-    "zendframework/zendframework": "*",
-    "zurb/foundation": ">=6.2",
+    "zendframework/zend-cache": "*",
+    "zendframework/zend-config": "*",
+    "zendframework/zend-i18n": "*",
+    "zurb/foundation": ">=6.3",
     "symfony/yaml": "^3.0"
   },
   "license": "GNU",

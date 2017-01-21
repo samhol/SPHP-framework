@@ -2,15 +2,17 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Foundation\Sites\Grids\Row as Row;
+$carStocks = [
+    ['Name', 'Stock', 'Sold'],
+    ['Volvo', 22, 18],
+    ['BMW', 15, 13],
+    ['Saab', 5, 2],
+    ['Land Rover', 17, 15],
+];
 
-$a = array(array("rose", 1.25, 15),
-    array("daisy", 0.75, 25),
-    array("orchid", 1.15, 7)
-);
-
-$table = (new Table('Table 1:'));
-$body = $table->tbody()->fromArray($a);
+$table = (new Table('Cars:'));
+$table->thead()->appendHeaderRow(array_shift($carStocks));
+$table->tbody()->fromArray($carStocks);
 
 $table->printHtml();
 ?>

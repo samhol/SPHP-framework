@@ -2,18 +2,18 @@
 
 namespace Sphp\Html\Tables;
 
-class ContainerTest extends \PHPUnit_Framework_TestCase {
+class TableTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var ContainerInterface
+   * @var Table
    */
-  protected $container;
+  protected $table;
 
   /**
    * @return Container
    */
   public function createContainer() {
-    return new Container();
+    return new Table();
   }
 
   /**
@@ -21,7 +21,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->container = $this->createContainer();
+    $this->table = new Table();
   }
 
   /**
@@ -29,19 +29,20 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    unset($this->container);
+    unset($this->table);
   }
 
   /**
    * 
-   * @return type
+   * @return array
    */
-  public function appendData() {
+  public function bodytData() {
     return [
-        [null],
-        ["a"],
-        [new Container()],
-        [0]
+        [
+            ["rose", 1.25, 15],
+            ["daisy", 0.75, 25],
+            ["orchid", 1.15, 7]
+        ]
     ];
   }
 
@@ -50,8 +51,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider appendData
    * @param mixed $val
    */
-  public function testAppend($val) {
-    $this->container->append("foo");
+  public function testInsertBody($val) {
+    $this->table->tbody();
     $this->container->append($val);
     $this->assertTrue($this->container->offsetExists(0));
     $this->assertTrue($this->container->offsetExists(1));
@@ -130,7 +131,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
       $this->assertEquals($this->container[$key], $val);
     }
   }
-  
 
   /**
    * 
@@ -144,7 +144,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
     $this->container->clear()->append((new Container())->append($val));
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
-   
   }
 
   /**
@@ -157,7 +156,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase {
     //$this->container->clear();
     $this->assertEquals($clone->count(), 1);
     $this->assertEquals($clone[0][0], "a");
-    
+
     $this->assertEquals($this->container[0][0], "b");
   }
 

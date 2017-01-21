@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager as HtmlAttributeManager;
+use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Core\Types\Strings;
 
 /**
@@ -52,7 +52,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
    * @throws \InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($tagName, $content = null, HtmlAttributeManager $attrManager = null) {
+  public function __construct($tagName, $content = null, AttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->setContent($content);

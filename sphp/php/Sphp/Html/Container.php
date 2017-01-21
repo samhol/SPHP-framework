@@ -7,10 +7,8 @@
 
 namespace Sphp\Html;
 
-use IteratorAggregate;
+use Iterator;
 use Sphp\Core\Types\Arrays;
-use ArrayIterator;
-use Traversable;
 
 /**
  * Implements a container for HTML components and other textual content
@@ -22,7 +20,7 @@ use Traversable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Container implements IteratorAggregate, ContainerInterface, ContentParserInterface {
+class Container implements Iterator, ContainerInterface, ContentParserInterface {
 
   use ContentTrait,
       ContentParsingTrait,
@@ -87,15 +85,6 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
    */
   public function count() {
     return count($this->components);
-  }
-
-  /**
-   * Create a new iterator to iterate through inserted elements in the html component
-   *
-   * @return Traversable iterator
-   */
-  public function getIterator() {
-    return new ArrayIterator($this->components);
   }
 
   /**
@@ -183,6 +172,47 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
       }
     }
     return $result;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->components);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->components);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->components);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->components);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return false !== current($this->components);
   }
 
 }
