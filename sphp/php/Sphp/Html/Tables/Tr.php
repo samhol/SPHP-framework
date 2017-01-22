@@ -48,29 +48,6 @@ class Tr extends AbstractRow {
       $this->appendTds($cells);
     }
   }
-  /**
-   * Count the number of inserted components in the table
-   *
-   * **`$mode` parameter values:**
-   * 
-   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
-   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
-   *
-   * @param  int $mode defines the type of the objects to count
-   * @return int number of the components in the html table
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-  public function count($mode = self::COUNT_NORMAL) {
-    if ($mode == self::COUNT_CELLS) {
-      $count = 0;
-      foreach ($this as $row) {
-        $count += $row->count();
-      }
-      return $count;
-    } else {
-      return $this->getInnerContainer()->count();
-    }
-  }
 
   /**
    * 

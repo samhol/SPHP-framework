@@ -251,17 +251,21 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
    *
    * @param  int $mode defines the type of the objects to count
-   * @return int number of elements in the html table
+   * @return string number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = self::COUNT_CELLS) {
-    if ($mode == self::COUNT_CELLS) {
-      return $this->getComponentsByObjectType(CellInterface::class)->count();
-    } else if ($mode == self::COUNT_ROWS) {
-      return $this->getComponentsByObjectType(RowInterface::class)->count();
-    } else {
-      return $this->getInnerContainer()->count();
+  public function count($mode = 'tr') {
+    $num = 0;
+    if ($this->thead !== null) {
+      $num += $this->thead->count($mode);
     }
+    if ($this->tfoot !== null) {
+      $num += $this->tfoot->count($mode);
+    }
+    if ($this->tbody !== null) {
+      $num += $this->tbody->count($mode);
+    }
+    return $num;
   }
 
   /**

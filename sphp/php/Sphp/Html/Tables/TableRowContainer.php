@@ -54,6 +54,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
       $this->fromArray($rows);
     }
   }
+
   /**
    * 
    * @param  array $arr the row being appended
@@ -155,16 +156,29 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @return int number of the components in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = self::COUNT_NORMAL) {
-    if ($mode == self::COUNT_CELLS) {
-      $count = 0;
+
+  /**
+   * Count the number of inserted elements in the table
+   *
+   * **`$mode` parameter values:**
+   * 
+   * * {@link self::COUNT_ROWS} counts the {@link RowInterface} components in the table
+   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
+   *
+   * @param  int $mode defines the type of the objects to count
+   * @return string number of elements in the html table
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
+  public function count($mode = 'tr') {
+    $num = 0;
+    if ($mode === 'tr') {
+      $num += $this->getInnerContainer()->count();
+    } else if ($mode === 'td') {
       foreach ($this as $row) {
-        $count += $row->count();
+        $num += $row->count();
       }
-      return $count;
-    } else {
-      return parent::count();
     }
+    return $num;
   }
 
   public function getIterator() {

@@ -39,9 +39,11 @@ class TableTest extends \PHPUnit_Framework_TestCase {
   public function bodytData() {
     return [
         [
-            ["rose", 1.25, 15],
-            ["daisy", 0.75, 25],
-            ["orchid", 1.15, 7]
+            [
+                ["rose", 1.25, 15],
+                ["daisy", 0.75, 25],
+                ["orchid", 1.15, 7]
+            ]
         ]
     ];
   }
@@ -55,11 +57,11 @@ class TableTest extends \PHPUnit_Framework_TestCase {
     $this->table->tbody()->fromArray($val);
     //$this->assertTrue($this->table->tbody()->offsetExists(0));
     //$this->assertTrue($this->table->offsetExists(1));
-    $this->assertEquals($this->table->count(Table::COUNT_ROWS), 3);
-    $this->assertEquals($this->table->count(Table::COUNT_CELLS), 9);
+    $this->assertEquals($this->table->count('tr'), 3);
+    $this->assertEquals($this->table->count('td'), 9);
     $this->table->thead()->fromArray($val);
-   // $this->assertEquals($this->table->count(Table::COUNT_ROWS), 6);
-   // $this->assertEquals($this->table->count(Table::COUNT_CELLS), 18);
+    // $this->assertEquals($this->table->count(Table::COUNT_ROWS), 6);
+    // $this->assertEquals($this->table->count(Table::COUNT_CELLS), 18);
   }
 
   /**

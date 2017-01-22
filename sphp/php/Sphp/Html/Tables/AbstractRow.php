@@ -145,4 +145,20 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
     return $this->getInnerContainer();
   }
 
+  /**
+   * Count the number of inserted components in the table
+   *
+   * **`$mode` parameter values:**
+   * 
+   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
+   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
+   *
+   * @param  int $mode defines the type of the objects to count
+   * @return int number of the components in the html table
+   * @link   http://php.net/manual/en/class.countable.php Countable
+   */
+  public function count() {
+    return $this->getInnerContainer()->count();
+  }
+
 }
