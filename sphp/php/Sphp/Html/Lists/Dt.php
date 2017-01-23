@@ -12,13 +12,13 @@ use Sphp\Html\ContainerTag;
 /**
  * Implements an HTML &lt;dt&gt; tag
  *
- * This component defines an term in a definition list.
- *
- * This component is used in conjunction with {@link Dd} 
- * (defines the definition list) and &lt;dd&gt; (describes the item in the list)
+ * This component defines an term in an HTML definition list. It is used in 
+ * conjunction with its definitions {@link Dd}
  * 
- * {@inheritdoc}
- *
+ * This component can contain HTML with paragraphs, line breaks, 
+ * images, links, lists, etc and/or components implementing these HTML 
+ * elements.
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23
  * @link    http://www.w3schools.com/tags/tag_dt.asp w3schools HTML API
@@ -27,17 +27,13 @@ use Sphp\Html\ContainerTag;
  */
 class Dt extends ContainerTag implements DlContentInterface {
 
-	/**
-	 * Constructs a new instance
-	 * 
-	 * A {@link self} component can contain HTML with paragraphs, line breaks, 
-	 * images, links, lists, etc and/or components implementing these HTML 
-	 * elements.
-	 *
-	 * @param  null|mixed|mixed[] $items list elements
-	 */
-	public function __construct($items = null) {
-		parent::__construct("dt", $items);
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * @param  null|mixed $content optional content of the component
+   */
+  public function __construct($content = null) {
+    parent::__construct("dt", $content);
+  }
 
 }

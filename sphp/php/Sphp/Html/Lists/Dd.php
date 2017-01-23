@@ -12,9 +12,7 @@ use Sphp\Html\ContainerTag;
 /**
  * Implements an HTML &lt;dd&gt; tag
  *
- * This component is used to describe a term/name in a description list. It is 
- * used in conjunction with {@link Dl} (definition list) and {@link Dt} (the 
- * item in the list).
+ * This component is used to describe a term/name ({@link Dt} object) in a description list.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23
@@ -27,7 +25,7 @@ class Dd extends ContainerTag implements DlContentInterface {
   /**
    * Constructs a new instance
    *
-   * @param  mixed $content the content or `null` for no content
+   * @param  null|mixed $content optional content of the component
    */
   public function __construct($content = null) {
     parent::__construct("dd", $content);

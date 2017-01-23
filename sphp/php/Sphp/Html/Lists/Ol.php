@@ -8,7 +8,7 @@
 namespace Sphp\Html\Lists;
 
 /**
- * Class models an ordered HTML-list &lt;ol&gt; tag
+ * Implements an ordered HTML-list
  *
  * {@inheritdoc}
  * 
@@ -65,7 +65,7 @@ class Ol extends HtmlList {
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function setStart($start) {
-    $this->attrs()->set("start", $start);
+    $this->attrs()->set('start', $start);
     return $this;
   }
 
@@ -80,8 +80,8 @@ class Ol extends HtmlList {
    */
   public function getStart() {
     $start = 1;
-    if ($this->attrs()->exists("start")) {
-      $start = $this->attrs()->get("start");
+    if ($this->attrs()->exists('start')) {
+      $start = $this->attrs()->get('start');
     }
     return (int) $start;
   }
@@ -93,8 +93,8 @@ class Ol extends HtmlList {
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function setType($type = "1") {
-    $this->attrs()->set("type", $type);
+  public function setType($type = '1') {
+    $this->attrs()->set('type', $type);
     return $this;
   }
 
@@ -105,9 +105,9 @@ class Ol extends HtmlList {
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
   public function getType() {
-    $type = "1";
-    if ($this->attrs()->exists("type")) {
-      $type = $this->attrs()->get("type");
+    $type = '1';
+    if ($this->attrs()->exists('type')) {
+      $type = $this->attrs()->get('type');
     }
     return $type;
   }

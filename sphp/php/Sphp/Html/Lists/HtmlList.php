@@ -8,7 +8,6 @@
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\WrappingContainer;
 use Sphp\Core\Types\URL;
 
 /**
@@ -25,31 +24,6 @@ use Sphp\Core\Types\URL;
 abstract class HtmlList extends AbstractContainerTag {
 
   /**
-   * Constructs a new instance
-   *
-   * **Notes:**
-   *
-   * 1. Any `mixed $content` not implementing {@link LiInterface} is wrapped 
-   *    within {@link Li} component
-   * 
-   * @param  string $tagname the tagname of the component ('ul'|'ol')
-   * @param  mixed|null $content optional content of the component
-   */
-  public function __construct($tagName, AttributeManager $attrManager = null, WrappingContainer $contentContainer = null) {
-    if ($contentContainer === null) {
-      $wrapper = function ($li) {
-        if (!($li instanceof LiInterface)) {
-          return new Li($li);
-        } else {
-          return $li;
-        }
-      };
-      $contentContainer = new WrappingContainer($wrapper);
-    }
-    parent::__construct($tagName, $attrManager, $contentContainer);
-  }
-
-  /**
    * Appends {@link HyperlinkListItem} link object to the list
    *
    * @param  string|URL $href the URL of the link
@@ -59,8 +33,23 @@ abstract class HtmlList extends AbstractContainerTag {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = '', $target = '_self') {
+  public function appendLink($href, $content = '', $target = null) {
     return $this->append(new HyperlinkListItem($href, $content, $target));
+  }
+
+  public function contentToString() {
+    $output = '';
+    foreach ($this as $li) {
+      $liString = "$li";
+      if (substr($liString, 0, 3) !== '<li') {
+        $liString = '<li>' . $liString;
+      }
+      if (substr($liString, 0, -4) !== '</li>') {
+        $liString = $liString . '</li>';
+      }
+      $output .= $liString;
+    }
+    return $output;
   }
 
 }

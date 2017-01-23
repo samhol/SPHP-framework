@@ -10,7 +10,7 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\ComponentInterface;
 
 /**
- * The common Interface for the content of an {@link Ol} and an {@link Ul} list
+ * Describes the content of ordered and unordered lists
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23

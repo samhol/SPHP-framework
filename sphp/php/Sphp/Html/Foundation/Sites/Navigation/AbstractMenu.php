@@ -8,10 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Lists\LiInterface;
-use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\ContainerInterface;
-use Sphp\Html\WrappingContainer;
 
 /**
  * Implements a Foundation 6 menu

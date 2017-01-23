@@ -86,7 +86,7 @@ trait ContainerComponentTrait {
    * @return Traversable iterator
    */
   public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
+    return $this->getInnerContainer();
   }
 
   public function offsetExists($offset) {

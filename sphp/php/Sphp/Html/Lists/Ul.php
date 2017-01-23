@@ -8,7 +8,7 @@
 namespace Sphp\Html\Lists;
 
 /**
- * Class models an unordered HTML-list &lt;ul&gt; tag
+ * Implements an unordered HTML-list &lt;ul&gt; tag
  *
  * {@inheritdoc}
  *

@@ -12,7 +12,7 @@ use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Core\Types\URL;
 
 /**
- * Implements {@link HyperlinkInterface} properties in a menu item
+ * Implements a hyperlink type menu item
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-04
