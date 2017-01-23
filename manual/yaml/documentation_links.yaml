@@ -36,8 +36,10 @@ items:
         page: Sphp.Html.Media
       - link: JavaScript 
         page: Sphp.Html.Programming
-      - link: Lists and Tables
-        page: Sphp.Html.Lists..Tables
+      - link: Lists
+        page: Sphp.Html.Lists
+      - link: Tables
+        page: Sphp.Html.Tables
       - link: Forms
         page: Sphp.Html.Forms
     - menu: Foundation Sites

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Inputs\SliderInterface as SliderInterface;
+use Sphp\Html\Forms\Inputs\SliderInterface;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
 $slider = $api->classLinker(Slider::class);

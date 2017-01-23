@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\IdentifiableInterface as IdentifiableInterface;
+use Sphp\Html\IdentifiableInterface;
 
 /**
  * Defines required operations for all identifiable input components used in {@link FormInterface}

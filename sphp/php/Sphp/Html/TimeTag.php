@@ -45,6 +45,16 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
     $this->setDateTime($dateTime);
   }
 
+  public function __destruct() {
+    unset($this->dateTime);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->dateTime = clone $this->dateTime;
+    parent::__clone();
+  }
+
   public function setDateTime(DateTime $dateTime) {
     $this->attrs()->set('datetime', $dateTime->format('Y-m-d H:i:s'));
     $this->dateTime = $dateTime;

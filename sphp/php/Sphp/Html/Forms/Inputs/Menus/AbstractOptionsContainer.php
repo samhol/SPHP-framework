@@ -146,7 +146,7 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * @return Traversable external iterator
    */
   public function getIterator() {
-    return $this->getInnerContainer()->getIterator();
+    return $this->getInnerContainer();
   }
 
 }

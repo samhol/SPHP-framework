@@ -6,7 +6,7 @@ use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 use Sphp\Core\Path;
 use Sphp\Core\Util\FileUtils;
-include_once 'links.php';
+//include_once 'links.php';
 try {
   ob_start();
   $appConf = Configuration::useDomain('manual');
@@ -23,7 +23,7 @@ try {
   $navi->left()->append(Factory::buildSub($v));
   $navi->left()->append(Factory::buildSub($apis));
 
-  $packages = (new SubMenu('Dependencies'))
+  /*$packages = (new SubMenu('Dependencies'))
           ->appendText('PHP resources:')
           ->appendLink('http://php.net/', 'PHP 5.6', '_blank')
           ->append((new SubMenu("External PHP Libraries"))
@@ -44,7 +44,7 @@ try {
   $packages->append($clientSideMenu)
           ->appendLink('http://zeroclipboard.org/', 'ZeroClipboard', '_blank');
 
-  $navi->right()->append($packages);
+  $navi->right()->append($packages);*/
 
   $navi->printHtml();
 
@@ -56,4 +56,3 @@ try {
 ob_end_clean();
 echo $content;
 unset($content);
-?>

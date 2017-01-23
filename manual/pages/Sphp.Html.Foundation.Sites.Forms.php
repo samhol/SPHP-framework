@@ -10,7 +10,7 @@ $gridForm = $api->classLinker(GridForm::class);
 
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 echo $parsedown->text(<<<MD
-#Foundation based forms and form components
+#Foundation for sites: <small>Forms and input components</small>
 MD
 );
 

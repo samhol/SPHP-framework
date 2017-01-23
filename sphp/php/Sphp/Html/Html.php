@@ -63,6 +63,17 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     }
   }
 
+  public function __destruct() {
+    unset($this->head, $this->body);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    $this->head = clone $this->head;
+    $this->body = clone $this->body;
+    parent::__clone();
+  }
+
   /**
    * Returns the &lt;head&gt;  component 
    *
@@ -134,7 +145,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
 
   /**
    * 
-   * @return string
+   * @return string 
    */
   public function getDocumentClose() {
     return $this->body()->close() . $this->getClosingTag();
