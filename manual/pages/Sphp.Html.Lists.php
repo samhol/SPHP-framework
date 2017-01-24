@@ -10,18 +10,26 @@ $li = $api->classLinker(Li::class);
 $dlLink = $api->classLinker(Dl::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#HTML LISTS
+#HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
 This namespace contains object oriented implementations for Unordered , 
 Ordered, and Description lists.
 		
-###$htmlListLink extensions ($ulLink and $ol components)
+##$htmlListLink extensions ($ulLink and $ol components)
 		
 Instances of $htmlListLink, $ulLink and $ol classes wrap all inserted content not implementing
 $liInterface into a $li object. 
+		
+MD
+);
 
-Furthermore the $ol component (an ordered list) introduces some additional functionality for list item 
-indexing in the generated HTML output. This indexing can be numerical or alphabetical.
+$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
+
+echo $parsedown->text(<<<MD
+##Ordered lists: <small>The $ol component</small>
+        
+The $ol component (an ordered list) supports indexing in the generated HTML output. 
+This indexing can be numerical or alphabetical.
 
 * {$ol->methodLink("setType", FALSE)}: sets the kind of marker used in the list
   * `'1'`: Decimal numbers (1, 2, 3, 4) **Default**
@@ -33,12 +41,13 @@ indexing in the generated HTML output. This indexing can be numerical or alphabe
 		
 MD
 );
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
+
+$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ol.php', false, true);
 
 $dtLink = $api->classLinker(Dt::class);
 $ddLink = $api->classLinker(Dd::class);
 echo $parsedown->text(<<<MD
-####The $dlLink component implements an HTML Definition list
+##Definition lists: <small>The $dlLink component</small>
 	
 The $dlLink component is a list of $dtLink terms and $ddLink descriptions for thee terms.
 $dtLink - $ddLink groups may be terms and definitions, metadata topics and values, questions 

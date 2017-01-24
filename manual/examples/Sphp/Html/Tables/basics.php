@@ -13,6 +13,5 @@ $carStocks = [
 $table = (new Table('Cars:'));
 $table->thead()->appendHeaderRow(array_shift($carStocks));
 $table->tbody()->fromArray($carStocks);
-
 $table->printHtml();
 ?>

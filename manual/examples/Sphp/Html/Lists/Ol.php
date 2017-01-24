@@ -2,20 +2,16 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\Sites\Grids\Row as Row;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 
-$ol1 = (new Ol())
-		->append("Second")
-		->prepend("First")
-		->appendLink("http://www.w3schools.com/html/html_lists.asp", "w3schools Lists", "w3schools");
-$dl1[] = new Li("Fourth");
+$colors = ['red', 'green', 'blue', 'white'];
+$ol = (new Ol($colors))
+        ->appendLink('http://www.w3schools.com/colors/color_tryit.asp?color=Black', 'black', '_blank')
+        ->append("magenta")
+        ->prepend("purple");
 
-$ol2 = (new Ol(["Second", "Third"]))
-		->append("Fourth")
-		->prepend("First")
-		->appendLink("http://www.w3schools.com/html/html_lists.asp", "w3schools Lists", "w3schools");
-$ol2[] = "Sixth";
+$olCopy = clone $ol;
+$olCopy->setType('I');
 
-
-(new Row([$ol1, $ol2]))->printHtml();
+(new Row([$ol, $olCopy]))->printHtml();
 ?>
