@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\SimpleContainerTag;
+use Sphp\Html\ContainerTag;
 
 /**
  * Class models HTML table tag's cells
@@ -19,7 +19,7 @@ use Sphp\Html\SimpleContainerTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Cell extends SimpleContainerTag implements CellInterface {
+abstract class Cell extends ContainerTag implements CellInterface {
 
   public function setColspan($value) {
     if ($value == 1) {

@@ -8,7 +8,6 @@
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Document;
 use Sphp\Html\TraversableInterface;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\ContainerInterface;
@@ -86,7 +85,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return self for PHP Method Chaining
    */
   public function appendThs($cells) {
-    foreach ($this->parseNewCells($cells, 'th') as $th) {
+    foreach ($this->parseNewCells($cells, Th::class) as $th) {
       $this->append($th);
     }
     return $this;
@@ -116,7 +115,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return self for PHP Method Chaining
    */
   public function appendTds($cells) {
-    foreach ($this->parseNewCells($cells, 'td') as $td) {
+    foreach ($this->parseNewCells($cells, Td::class) as $td) {
       $this->append($td);
     }
     return $this;
@@ -144,16 +143,16 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * * 'td' => all mixed <var>$rawData</var> are of type {@link Td}
    * * 'th' => all mixed <var>$rawData</var> are of type {@link Th}
    * 
-   * @param  mixed|Cell|Cell[] $rawData cells of the table row
+   * @param  mixed|mixed[] $rawData cells of the table row
    * @param  string $cellType the default type of the cell `td|th`
    * @return CellInterface[] table cells
    */
-  protected function parseNewCells($rawData, $cellType = 'td') {
+  protected function parseNewCells($rawData, $cellType = Td::class) {
     foreach (is_array($rawData) ? $rawData : [$rawData] as $cell) {
       if ($cell instanceof CellInterface) {
         $arr[] = $cell;
       } else {
-        $arr[] = Document::get($cellType)->setContent($cell);
+        $arr[] = new $cellType($cell);
       }
     }
     return $arr;
