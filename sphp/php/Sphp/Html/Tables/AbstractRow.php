@@ -10,6 +10,8 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Document;
 use Sphp\Html\TraversableInterface;
+use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\ContainerInterface;
 
 /**
  * Implements an HTML &lt;tr&gt; tag
@@ -39,21 +41,15 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    *  mixed `$cells` can be of any type that converts to a PHP string or to a 
    *  PHP string[].
    *
-   * `$cellType` parameter defines the type of the wrapper for`$cells` not instanceof  {@link CellInterface}
-   *  
-   * * `td` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Td} component
-   * * `th` => all `$cells` not extending {@link CellInterface} are wrapped within a {@link Th} component
-   *
-   * @param  null|mixed|mixed[] $cells cell(s) of the table row or null for no content
-   * @param  string $cellType the default type of the cell 
-   *         (`td`|`th`)
+   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  ContainerInterface|null $contentContainer the inner content container of the component
    */
-  public function __construct(\Sphp\Html\Attributes\AttributeManager $attrManager = null, \Sphp\Html\ContainerInterface $contentContainer = null) {
+  public function __construct(AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct('tr', $attrManager, $contentContainer);
   }
 
   /**
-   * Appends cell components to the table row
+   * Appends a cell component to the row
    *
    * @param  CellInterface $cell new cell object
    * @return self for PHP Method Chaining
@@ -64,7 +60,27 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   }
 
   /**
-   * Creates and appends {@link CellInterface} components to the table row component
+   * Creates and appends a new {@link Th} cell to the row
+   *
+   * @precondition  $colspan >= 1
+   * @precondition  $rowspan >= 1
+   * @precondition  $scope == row|col|rowgroup|colgroup
+   * @param mixed $content the content of the tag
+   * @param int $colspan solun colspan attribute value
+   * @param int $rowspan solun rowspan attribute value
+   * @param string|null $scope the value of the scope attribute or null for none
+   * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
+   * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
+   * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
+   * @return self for PHP Method Chaining
+   */
+  public function appendTh($content, $colspan = 1, $rowspan = 1, $scope = null) {
+    $this->append(new Th($content, $colspan, $rowspan, $scope));
+    return $this;
+  }
+
+  /**
+   * Creates and appends {@link CellInterface} components to the row
    *
    * @param  mixed|mixed[] $cells cells of the table row
    * @return self for PHP Method Chaining
@@ -77,7 +93,24 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   }
 
   /**
-   * Creates and appends {@link CellInterface} components to the table row component
+   * Creates and appends a new {@link Td} cell to the row
+   *
+   * @precondition  $colspan >= 1
+   * @precondition  $rowspan >= 1
+   * @param mixed $content the content of the component
+   * @param int $colspan the value of the colspan attribute
+   * @param int $rowspan the value of the rowspan attribute
+   * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
+   * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
+   * @return self for PHP Method Chaining
+   */
+  public function appendTd($content, $colspan = 1, $rowspan = 1) {
+    $this->append(new Td($content, $colspan, $rowspan));
+    return $this;
+  }
+
+  /**
+   * Creates and appends {@link CellInterface} components to the row
    *
    * @param  mixed|mixed[] $cells cells of the table row
    * @return self for PHP Method Chaining
@@ -90,28 +123,13 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   }
 
   /**
-   * Prepends {@link Cell} components to the table row component
+   * Prepends a cell component to the row
    *
-   * **Notes:**
-   *
-   *  **Important!** The keys of the object will be renumbered starting from
-   *  zero.
-   *
-   *  mixed <var>$cells</var> can be of any type that converts to a string or
-   *  to a string[].
-   *
-   * <var>$cellType</var> attribute can have two case insensitive values:
-   * 
-   * * 'td' => all mixed <var>$cells</var> are of type {@link Td}
-   * * 'th' => all mixed <var>$cells</var> are of type {@link Th}
-   * 
-   *
-   * @param  mixed|Cell|Cell[] $cells cells of the table row
-   * @param  string $cellType the default type of the cell `td|th`
+   * @param  CellInterface $cell new cell object
    * @return self for PHP Method Chaining
    */
-  public function prepend($cells, $cellType = 'td') {
-    $this->getInnerContainer()->prepend($this->parseNewCells($cells, $cellType));
+  public function prepend(CellInterface $cell) {
+    $this->getInnerContainer()->prepend($cell);
     return $this;
   }
 
@@ -128,11 +146,11 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * 
    * @param  mixed|Cell|Cell[] $rawData cells of the table row
    * @param  string $cellType the default type of the cell `td|th`
-   * @return Cell[] table cells
+   * @return CellInterface[] table cells
    */
   protected function parseNewCells($rawData, $cellType = 'td') {
     foreach (is_array($rawData) ? $rawData : [$rawData] as $cell) {
-      if ($cell instanceof Cell) {
+      if ($cell instanceof CellInterface) {
         $arr[] = $cell;
       } else {
         $arr[] = Document::get($cellType)->setContent($cell);
@@ -146,15 +164,9 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   }
 
   /**
-   * Count the number of inserted components in the table
+   * Counts of the cells in the row
    *
-   * **`$mode` parameter values:**
-   * 
-   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
-   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
-   *
-   * @param  int $mode defines the type of the objects to count
-   * @return int number of the components in the html table
+   * @return int number of the cells in the row
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
   public function count() {

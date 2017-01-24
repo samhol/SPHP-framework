@@ -33,9 +33,9 @@ class Th extends Cell {
    * string or to an array of strings. So also an object of any class that
    * implements magic method `__toString()` is allowed.
    *
-   * @precondition  $scope == row|col|rowgroup|colgroup
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
+   * @precondition  $scope == row|col|rowgroup|colgroup
    * @param mixed $content the content of the tag
    * @param int $colspan solun colspan attribute value
    * @param int $rowspan solun rowspan attribute value
