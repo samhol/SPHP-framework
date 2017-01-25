@@ -19,7 +19,7 @@ namespace Sphp\Html\Lists;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Ol extends HtmlList {
+class Ol extends AbstractList {
 
   /**
    * Constructs a new instance

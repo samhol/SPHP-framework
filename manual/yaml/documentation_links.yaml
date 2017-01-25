@@ -42,6 +42,18 @@ items:
         page: Sphp.Html.Tables
       - link: Forms
         page: Sphp.Html.Forms
+    - menu: HTML media
+      items:
+      - link: Introduction
+        page: Sphp.Html.Media
+      - link: Audio and Video 
+        page: Sphp.Html.Media.AV
+      - link: Lists
+        page: Sphp.Html.Lists
+      - link: Tables
+        page: Sphp.Html.Tables
+      - link: Forms
+        page: Sphp.Html.Forms
     - menu: Foundation Sites
       items:
       - link: Introduction

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Iterator;
+use IteratorAggregate;
 use Sphp\Core\Types\Arrays;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Core\Types\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Container implements Iterator, ContainerInterface, ContentParserInterface {
+class Container implements IteratorAggregate, ContainerInterface, ContentParserInterface {
 
   use ContentTrait,
       ContentParsingTrait,
@@ -173,46 +173,9 @@ class Container implements Iterator, ContainerInterface, ContentParserInterface 
     }
     return $result;
   }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->components);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->components);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->components);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->components);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid() {
-    return false !== current($this->components);
+  
+  public function getIterator() {
+    return new Iterator($this->components);
   }
 
 }

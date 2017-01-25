@@ -20,12 +20,12 @@ use Sphp\Html\TagInterface;
 interface MediaTagInterface extends TagInterface {
 
   /**
-   * Sets (replaces) one of the video sources
+   * Adds multimedia source or track
    *
    * @param  MultimediaContentInterface $src a video sources
    * @return self for PHP Method Chaining
    */
-  public function append(MultimediaContentInterface $src);
+  public function addMediaSrc(MultimediaContentInterface $src);
 
   /**
    * Sets (replaces) one of the video sources

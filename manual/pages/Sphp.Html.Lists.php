@@ -2,9 +2,9 @@
 
 namespace Sphp\Html\Lists;
 
-$htmlListLink = $api->classLinker(HtmlList::class);
+$htmlList = $api->classLinker(AbstractList::class);
 $ol = $api->classLinker(Ol::class);
-$ulLink = $api->classLinker(Ul::class);
+$ul = $api->classLinker(Ul::class);
 $liInterface = $api->classLinker(LiInterface::class);
 $li = $api->classLinker(Li::class);
 $dlLink = $api->classLinker(Dl::class);
@@ -12,12 +12,14 @@ $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
-This namespace contains object oriented implementations for Unordered , 
-Ordered, and Description lists.
-		
-##$htmlListLink extensions ($ulLink and $ol components)
-		
-Instances of $htmlListLink, $ulLink and $ol classes wrap all inserted content not implementing
+This namespace contains object oriented implementations of HTML lists.
+
+##Unrdered lists: <small>The $ul component</small>{#ul}
+
+The $ul class implements an unordered (bulleted) list (The {$w3schools->tag('ul')}).
+
+Use the &lt;ul&gt; tag together with the &lt;li&gt; tag to create unordered lists.
+Instances of $htmlList, $ul and $ol classes wrap all inserted content not implementing
 $liInterface into a $li object. 
 		
 MD
@@ -26,9 +28,9 @@ MD
 $exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
 
 echo $parsedown->text(<<<MD
-##Ordered lists: <small>The $ol component</small>
+##Ordered lists: <small>The $ol component</small>{#ol}
         
-The $ol component (an ordered list) supports indexing in the generated HTML output. 
+The $ol component (an ordered list) extends $htmlList. It supports indexing in the generated HTML output. 
 This indexing can be numerical or alphabetical.
 
 * {$ol->methodLink("setType", FALSE)}: sets the kind of marker used in the list
@@ -47,7 +49,7 @@ $exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ol.php', false, true);
 $dtLink = $api->classLinker(Dt::class);
 $ddLink = $api->classLinker(Dd::class);
 echo $parsedown->text(<<<MD
-##Definition lists: <small>The $dlLink component</small>
+##Definition lists: <small>The $dlLink component</small>{#dl}
 	
 The $dlLink component is a list of $dtLink terms and $ddLink descriptions for thee terms.
 $dtLink - $ddLink groups may be terms and definitions, metadata topics and values, questions 
@@ -57,3 +59,14 @@ MD
 );
 
 $exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Dl.php', false, true);
+echo $parsedown->text(<<<MD
+###References:{#refs}
+        
+* [<b>w3schools.com</b>: HTML Lists](http://www.w3schools.com/html/html_lists.asp){target=_blank}
+* http://www.w3schools.com/tags/tag_ul.asp
+* http://www.w3schools.com/tags/tag_ol.asp
+* http://www.w3schools.com/tags/tag_li.asp
+        
+        
+MD
+);

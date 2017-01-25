@@ -21,7 +21,7 @@ use Sphp\Html\Media\SizeableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VideoJs extends AbstractMediaTag implements SizeableInterface {
+class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
 
   use SizeableTrait;
 

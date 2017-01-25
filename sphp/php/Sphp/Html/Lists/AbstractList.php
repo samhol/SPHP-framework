@@ -1,7 +1,7 @@
 <?php
 
 /**
- * HtmlList.php (UTF-8)
+ * AbstractList.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -11,7 +11,7 @@ use Sphp\Html\AbstractContainerTag;
 use Sphp\Core\Types\URL;
 
 /**
- * Abstract class defines common features for both ordered and unordered HTML-list
+ * Abstract implementation of both ordered and unordered HTML-list
  *
  * {@inheritdoc}
  *
@@ -21,7 +21,7 @@ use Sphp\Core\Types\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class HtmlList extends AbstractContainerTag {
+abstract class AbstractList extends AbstractContainerTag {
 
   /**
    * Appends {@link HyperlinkListItem} link object to the list

@@ -34,13 +34,13 @@ abstract class AbstractContainerComponent extends AbstractComponent {
   /**
    * Constructs a new instance
    *
-   * @param  string $tagName the name of the tag
+   * @param  string $tagname the name of the tag
    * @param  AttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component
    * @throws \InvalidArgumentException if the tagname is not valid
    */
-  public function __construct($tagName, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
-    parent::__construct($tagName, $attrManager);
+  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+    parent::__construct($tagname, $attrManager);
     $this->setInnerContainer($contentContainer);
   }
 

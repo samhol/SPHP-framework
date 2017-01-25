@@ -24,30 +24,33 @@ use Sphp\Html\Media\LazyLoaderInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Video extends AbstractMediaTag implements SizeableInterface, LazyLoaderInterface {
+class Video extends AbstractMultimediaTag implements SizeableInterface, LazyLoaderInterface {
 
   use SizeableTrait;
 
   /**
    * Constructs a new instance
    *
-   * @param  Source|Source[] $sources defines a table caption
+   * @param  Source|Source[]|null $sources optional sources
    */
   public function __construct($sources = null) {
-    parent::__construct('video', $sources);
+    parent::__construct('video', null, $sources);
+    $this->showControls(true);
   }
 
   public function isLazy() {
-    foreach ($this->getInnerContainer()->getComponentsByObjectType(Source::class) as $source) {
-      $source->setLazy();
+    $lazy = false;
+    foreach ($this->getSources() as $source) {
+      $lazy &= $source->setLazy();
     }
+    return $lazy;
   }
 
   public function setLazy($lazy = true) {
-    foreach ($this->getInnerContainer()->getComponentsByObjectType(Source::class) as $source) {
+    foreach ($this->getSources() as $source) {
       $source->setLazy($lazy);
     }
-    return$this;
+    return $this;
   }
 
   /**

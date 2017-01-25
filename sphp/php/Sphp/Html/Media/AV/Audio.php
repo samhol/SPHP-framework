@@ -18,7 +18,7 @@ namespace Sphp\Html\Media\AV;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Audio extends AbstractMediaTag {
+class Audio extends AbstractMultimediaTag {
 
   /**
    * Constructs a new instance
@@ -26,7 +26,8 @@ class Audio extends AbstractMediaTag {
    * @param  mixed|mixed[] $sources defines the audio sources
    */
   public function __construct($sources = null) {
-    parent::__construct('audio', $sources);
+    parent::__construct('audio', null, $sources);
+    $this->showControls(true);
   }
 
   /**
