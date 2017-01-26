@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 /**
  * Interface models media resources for {@link AbstractMediaTag} components

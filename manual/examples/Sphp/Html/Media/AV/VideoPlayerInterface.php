@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Media\Size as Size;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;

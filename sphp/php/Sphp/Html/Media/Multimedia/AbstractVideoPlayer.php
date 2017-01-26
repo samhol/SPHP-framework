@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
@@ -13,7 +13,7 @@ use Sphp\Html\Media\LazyLoaderTrait;
 use Sphp\Core\Types\URL;
 
 /**
- * Class models a Foundation Flex Video component
+ * Implements an iframe based Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
@@ -47,7 +47,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
   public function __construct($url, $videoId = null) {
-    parent::__construct("iframe");
+    parent::__construct('iframe');
     $this->setUrl($url)->allowFullScreen(true);
     if ($videoId !== null) {
       $this->setVideoId($videoId);
@@ -81,7 +81,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    */
   protected function setUrl($url) {
     $this->url = ($url instanceof URL) ? $url : new URL($url);
-    $this->setAttr("src", $this->url->getHtml());
+    $this->setAttr('src', $this->url->getHtml());
     return $this;
   }
 
@@ -94,25 +94,25 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   public function setVideoId($videoId) {
     $this->videoId = $videoId;
     $this->url->setPath($this->url->getPath() . $videoId);
-    $this->setAttr("src", $this->url->getHtml());
+    $this->setAttr('src', $this->url->getHtml());
     return $this;
   }
 
   public function allowFullScreen($allow = true) {
     $this->attrs()
-            ->set("webkitallowfullscreen", $allow)
-            ->set("mozallowfullscreen", $allow)
-            ->set("allowfullscreen", $allow);
+            ->set('webkitallowfullscreen', $allow)
+            ->set('mozallowfullscreen', $allow)
+            ->set('allowfullscreen', $allow);
     return $this;
   }
 
   public function autoplay($autoplay = true) {
-    $this->getUrl()->setParam("autoplay", (int) $autoplay);
+    $this->getUrl()->setParam('autoplay', (int) $autoplay);
     return $this;
   }
 
   public function loop($loop = true) {
-    return $this->setParam("loop", (int) $loop);
+    return $this->setParam('loop', (int) $loop);
   }
 
   /**
@@ -144,7 +144,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   }
 
   public function contentToString() {
-    return "<p>Your browser does not support iframes.</p>";
+    return '<p>Your browser does not support iframes.</p>';
   }
 
 }

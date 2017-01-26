@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;

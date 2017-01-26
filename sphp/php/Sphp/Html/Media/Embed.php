@@ -32,10 +32,10 @@ class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string $src specifies the address of the external file to embed
-   * @param  string $type specifies the MIME type of the embedded content
-   * @link   http://www.w3schools.com/tags/att_embed_src.asp src attribute
-   * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
+   * @param string $src specifies the address of the external file to embed
+   * @param string $type specifies the MIME type of the embedded content
+   * @link  http://www.w3schools.com/tags/att_embed_src.asp src attribute
+   * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
   function __construct($src = null, $type = null) {
     parent::__construct('embed');

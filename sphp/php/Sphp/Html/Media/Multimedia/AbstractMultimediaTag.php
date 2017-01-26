@@ -5,14 +5,14 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Container;
 
 /**
- * Class models the HTML multimedia tags
+ * Abstractimplementation of HTML multimedia tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20
@@ -39,16 +39,19 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * Constructs a new instance
    *
    * @param  string $tagname the name of the tag
-   * @param  AttributeManager|null $attrManager optional attributemanager to use in the component
+   * @param  AttributeManager|null $attrManager optional attribute manager to use in the component
+   * @param mixed $sources optional sources
    */
   public function __construct($tagname, AttributeManager $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
     $this->sources = new Container();
     $this->tracks = new Container();
-    if ($sources === null) {
+    if ($sources !== null) {
       foreach (is_array($sources) ? $sources : [$sources] as $src) {
         if ($src instanceof Source) {
           $this->addMediaSrc($src);
+        } else if (is_string($src)) {
+          $this->addSource($src);
         }
       }
     }

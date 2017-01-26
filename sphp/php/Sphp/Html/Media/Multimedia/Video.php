@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Media\SizeableInterface;
 use Sphp\Html\Media\SizeableTrait;
@@ -31,7 +31,7 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyLoad
   /**
    * Constructs a new instance
    *
-   * @param  Source|Source[]|null $sources optional sources
+   * @param mixed $sources optional sources
    */
   public function __construct($sources = null) {
     parent::__construct('video', null, $sources);

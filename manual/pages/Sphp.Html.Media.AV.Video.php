@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);

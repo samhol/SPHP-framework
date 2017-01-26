@@ -13,9 +13,9 @@ use Sphp\Html\Media\IframeInterface;
 use Sphp\Core\Types\URL;
 use Sphp\Html\Media\Iframe;
 use Sphp\Html\Media\ViewerJS;
-use Sphp\Html\Media\AV\DailyMotionPlayer;
-use Sphp\Html\Media\AV\VimeoPlayer;
-use Sphp\Html\Media\AV\YoutubePlayer;
+use Sphp\Html\Media\Multimedia\DailyMotionPlayer;
+use Sphp\Html\Media\Multimedia\VimeoPlayer;
+use Sphp\Html\Media\Multimedia\YoutubePlayer;
 use ReflectionClass;
 use BadMethodCallException;
 
@@ -117,7 +117,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
     if ($ratio) {
       $this->cssClasses()->remove($ratios);
       $this->cssClasses()->add($ratio);
-    } 
+    }
     return $this;
   }
 

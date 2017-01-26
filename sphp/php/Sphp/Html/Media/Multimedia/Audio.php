@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 /**
  * Implements an HTML &lt;audio&gt; tag
@@ -23,7 +23,7 @@ class Audio extends AbstractMultimediaTag {
   /**
    * Constructs a new instance
    *
-   * @param  mixed|mixed[] $sources defines the audio sources
+   * @param  mixed $sources optional sources
    */
   public function __construct($sources = null) {
     parent::__construct('audio', null, $sources);

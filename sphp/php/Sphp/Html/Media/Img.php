@@ -16,16 +16,16 @@ use Sphp\Html\Media\ImageMap\Map;
 /**
  * Implements an HTML &lt;img&gt; tag
  *
- * An {@link self} component represents an image. The image given by the src attribute is
+ * This component represents an image. The image given by the src attribute is
  * the embedded content, and the value of the alt attribute is the img
  * element's fallback content.
  *
  * **Notes:**
  *
- * 1. The {@link self} component tag defines an image in an HTML page.
- * 2. The {@link self} component tag has two required attributes: src and alt.
+ * 1. This component tag defines an image in an HTML page.
+ * 2. This component tag has two required attributes: src and alt.
  * 3. Images are not technically inserted into an HTML page, images are linked to HTML pages.
- * 4. The {@link self} component tag creates a holding space for the referenced image.
+ * 4. This component tag creates a holding space for the referenced image.
  *
  * **Definition and Usage**
  *
@@ -141,7 +141,7 @@ class Img extends EmptyTag implements ImgInterface {
             ->scaleToFit($size)
             ->saveToCache()
             ->httpCachePath();
-    return new Img($path);
+    return new static($path);
   }
 
   /**
@@ -158,7 +158,7 @@ class Img extends EmptyTag implements ImgInterface {
             ->scale($ratio)
             ->saveToCache()
             ->httpCachePath();
-    return new Img($path);
+    return new static($path);
   }
 
   /**
@@ -176,7 +176,7 @@ class Img extends EmptyTag implements ImgInterface {
             ->resize($size)
             ->saveToCache()
             ->httpCachePath();
-    return new Img($path);
+    return new static($path);
   }
 
   /**
@@ -197,7 +197,7 @@ class Img extends EmptyTag implements ImgInterface {
             ->widen($width)
             ->saveToCache()
             ->httpCachePath();
-    return new Img($path);
+    return new static($path);
   }
 
   /**
@@ -217,7 +217,7 @@ class Img extends EmptyTag implements ImgInterface {
             ->heighten($height)
             ->saveToCache()
             ->httpCachePath();
-    return new Img($path);
+    return new static($path);
   }
 
 }

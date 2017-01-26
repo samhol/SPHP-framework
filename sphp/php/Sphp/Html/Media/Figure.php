@@ -42,7 +42,7 @@ class Figure extends AbstractComponent implements ImgInterface {
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
   public function __construct($img = null, $caption = null) {
-    parent::__construct('figure'); 
+    parent::__construct('figure');
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }

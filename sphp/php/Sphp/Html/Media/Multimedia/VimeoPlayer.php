@@ -5,10 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Class models an embeddable Vimeo&trade; Video component
+ * Class models an embeddable Vimeo Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

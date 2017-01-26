@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media\AV;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
 use Sphp\Core\Types\URL;
@@ -36,9 +36,12 @@ class Track extends EmptyTag implements MultimediaContentInterface {
    */
   public function __construct($src = false, $srclang = false) {
     parent::__construct('track');
-    $this
-            ->setSrc($src)
-            ->setSrcLang($srclang);
+    if ($src !== null) {
+      $this->setSrc($src);
+    }
+    if ($srclang !== null) {
+      $this->setSrcLang($srclang);
+    }
   }
 
   /**
