@@ -28,7 +28,7 @@ trait AreaTrait {
    * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
   public function getShape() {
-    return $this->getAttr("shape");
+    return $this->getAttr('shape');
   }
 
   /**
@@ -39,12 +39,12 @@ trait AreaTrait {
    */
   public function getCoordinates() {
     $coords = [];
-    if ($this->attrs()->exists("coords")) {
-      $rawCoords = $this->getAttr("coords");
+    if ($this->attrs()->exists('coords')) {
+      $rawCoords = $this->getAttr('coords');
       $toInt = function($coord) {
         return (int) $coord;
       };
-      $coords = array_map($toInt, explode(",", $rawCoords));
+      $coords = array_map($toInt, explode(',', $rawCoords));
     }
     return $coords;
   }
@@ -57,7 +57,7 @@ trait AreaTrait {
    * @link   http://www.w3schools.com/TAGS/att_area_rel.asp rel attribute
    */
   public function setRelationship($rel) {
-    $this->attrs()->set("rel", $rel);
+    $this->attrs()->set('rel', $rel);
     return $this;
   }
 
@@ -67,7 +67,7 @@ trait AreaTrait {
    * @return string the shape of the area
    */
   public function getRelationship() {
-    return $this->getAttr("shape");
+    return $this->getAttr('shape');
   }
 
   /**
@@ -88,7 +88,7 @@ trait AreaTrait {
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {
-    $this->attrs()->set("alt", $alt);
+    $this->attrs()->set('alt', $alt);
     return $this;
   }
 
@@ -109,7 +109,7 @@ trait AreaTrait {
    * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function getAlt() {
-    return $this->attrs()->get("alt");
+    return $this->attrs()->get('alt');
   }
 
 }

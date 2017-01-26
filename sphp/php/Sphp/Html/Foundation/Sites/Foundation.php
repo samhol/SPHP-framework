@@ -49,7 +49,7 @@ class Foundation {
   public static function icon($name, $tagName = 'i') {
     if (!Strings::startsWith($name, 'fi-')) {
       $name = 'fi-' . $name;
-    } 
+    }
     $obj = Document::get($tagName);
     $obj->addCssClass($name);
     return $obj;

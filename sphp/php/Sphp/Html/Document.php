@@ -20,22 +20,22 @@ class Document {
   /**
    * XHTML 1.0 version
    */
-  const XHTML_1_0 = "XHTML 1.0";
+  const XHTML_1_0 = 'XHTML 1.0';
 
   /**
    * XHTML 1.1 version
    */
-  const XHTML_1_1 = "XHTML 1.1";
+  const XHTML_1_1 = 'XHTML 1.1';
 
   /**
    * HTML5 version
    */
-  const HTML5 = "HTML5";
+  const HTML5 = 'HTML5';
 
   /**
    * XHTML5 version
    */
-  const XHTML5 = "XHTML5";
+  const XHTML5 = 'XHTML5';
 
   /**
    * current HTML version used
@@ -56,7 +56,7 @@ class Document {
       'area' => EmptyTag::class,
       'article' => ContainerTag::class,
       'aside' => Sections\Aside::class,
-      'audio' => Media\AV\Audio::class,
+      'audio' => Media\Multimedia\Audio::class,
       'b' => ContainerTag::class,
       'base' => Head\Base::class,
       'bdi' => ContainerTag::class,
@@ -147,7 +147,7 @@ class Document {
       'section' => Sections\Section::class,
       'select' => Forms\Inputs\Menus\Select::class,
       'small' => ContainerTag::class,
-      'source' => Media\AV\Source::class,
+      'source' => Media\Multimedia\Source::class,
       'span' => Span::class,
       'strong' => ContainerTag::class,
       'style' => ContainerTag::class,
@@ -164,11 +164,11 @@ class Document {
       'time' => TimeTag::class,
       'title' => Head\Title::class,
       'tr' => Tables\Tr::class,
-      'track' => Media\AV\Track::class,
+      'track' => Media\Multimedia\Track::class,
       'u' => ContainerTag::class,
       'ul' => Lists\Ul::class,
       'var' => ContainerTag::class,
-      'video' => Media\AV\Video::class,
+      'video' => Media\Multimedia\Video::class,
       'wbr' => EmptyTag::class,
       'xmp' => ContainerTag::class
   );

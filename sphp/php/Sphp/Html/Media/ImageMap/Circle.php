@@ -30,8 +30,8 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param string|null $alt
    */
   public function __construct($x, $y, $radius, $href = null, $alt = null) {
-    parent::__construct("area");
-    $this->attrs()->lock("shape", "circle");
+    parent::__construct('area');
+    $this->attrs()->lock('shape', 'circle');
     $this->setCoordinates($x, $y, $radius);
     if ($href !== null) {
       $this->setHref($href);
@@ -48,10 +48,10 @@ class Circle extends EmptyTag implements AreaInterface {
    * @return self for PHP Method Chaining
    */
   public function setRadius($radius) {
-    $coords = split(",", $this->getCoordinates());
+    $coords = split(',', $this->getCoordinates());
     $coords[2] = $radius;
-    $coordsString = implode(",", $coords);
-    $this->attrs()->set("coords", $coordsString);
+    $coordsString = implode(',', $coords);
+    $this->attrs()->set('coords', $coordsString);
     return $this;
   }
 
@@ -62,10 +62,10 @@ class Circle extends EmptyTag implements AreaInterface {
    * @return self for PHP Method Chaining
    */
   public function setX($x) {
-    $coords = split(",", $this->getCoordinates());
+    $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
-    $coordsString = implode(",", $coords);
-    $this->attrs()->set("coords", $coordsString);
+    $coordsString = implode(',', $coords);
+    $this->attrs()->set('coords', $coordsString);
     return $this;
   }
 
@@ -76,10 +76,10 @@ class Circle extends EmptyTag implements AreaInterface {
    * @return self for PHP Method Chaining
    */
   public function setY($y) {
-    $coords = split(",", $this->getCoordinates());
+    $coords = split(',', $this->getCoordinates());
     $coords[1] = $y;
-    $coordsString = implode(",", $coords);
-    $this->attrs()->set("coords", $coordsString);
+    $coordsString = implode(',', $coords);
+    $this->attrs()->set('coords', $coordsString);
     return $this;
   }
 
@@ -93,8 +93,8 @@ class Circle extends EmptyTag implements AreaInterface {
    */
   public function setCoordinates($x, $y, $radius) {
     $coords = [$x, $y, $radius];
-    $coordsString = implode(",", $coords);
-    $this->attrs()->set("coords", $coordsString);
+    $coordsString = implode(',', $coords);
+    $this->attrs()->set('coords', $coordsString);
     return $this;
   }
 

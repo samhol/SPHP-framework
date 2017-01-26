@@ -28,18 +28,9 @@ namespace Sphp\Html;
  */
 interface SimpleContainerInterface extends TraversableInterface {
 
-  /**
-   * @inheritdoc
-   */
   public function setContent($content = null);
   
-  /**
-   * @inheritdoc
-   */
   public function clear();
 
-  /**
-   * @inheritdoc
-   */
   public function getContent();
 }

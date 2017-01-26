@@ -26,11 +26,11 @@ class Polygon extends EmptyTag implements AreaInterface {
    * 
    * @param int[] $coords coordinates as an array
    * @param string|null $href
-   * @param string $alt|null
+   * @param string|null $alt
    */
   public function __construct($coords, $href = null, $alt = null) {
-    parent::__construct("area");
-    $this->attrs()->lock("shape", "poly");
+    parent::__construct('area');
+    $this->attrs()->lock('shape', 'poly');
     $this->setCoordinates($coords);
     if ($href !== null) {
       $this->setHref($href);
@@ -47,11 +47,11 @@ class Polygon extends EmptyTag implements AreaInterface {
    * @return self for PHP Method Chaining
    */
   public function appendEdge($x, $y) {
-    $coords = split(",", $this->getCoordinates());
+    $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coords[1] = $y;
-    $coordsString = implode(",", $coords);
-    $this->attrs()->set("coords", $coordsString);
+    $coordsString = implode(',', $coords);
+    $this->attrs()->set('coords', $coordsString);
     return $this;
   }
 

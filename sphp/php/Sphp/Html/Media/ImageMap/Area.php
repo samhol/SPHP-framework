@@ -29,8 +29,8 @@ class Area extends EmptyTag implements AreaInterface {
    * @link  http://www.w3schools.com/tags/att_area_shape.asp shape attribute
    */
   public function __construct($shape) {
-    parent::__construct("area");
-    $this->attrs()->lock("shape", $shape);
+    parent::__construct('area');
+    $this->attrs()->lock('shape', $shape);
   }
 
   /**
@@ -41,7 +41,7 @@ class Area extends EmptyTag implements AreaInterface {
    * @link  http://www.w3schools.com/tags/att_area_coords.asp coords attribute
    */
   public function setCoordinates($coords) {
-    $this->attrs()->set("coords", implode(",", $coords));
+    $this->attrs()->set('coords', implode(',', $coords));
     return $this;
   }
 
