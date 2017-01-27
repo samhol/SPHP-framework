@@ -102,10 +102,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
     $this->append($text);
     return $this;
   }
-
-  /**
-   * @inheritdoc
-   */
+  
   public function nested($nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
@@ -115,9 +112,6 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
     return $this;
   }
 
-  /**
-   * @inheritdoc
-   */
   public function vertical($vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
