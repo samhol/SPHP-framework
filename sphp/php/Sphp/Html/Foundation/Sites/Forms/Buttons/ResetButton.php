@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
 
 /**
+ * Implements &lt;input type="reset"&gt; tag as a Foundation Button
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
