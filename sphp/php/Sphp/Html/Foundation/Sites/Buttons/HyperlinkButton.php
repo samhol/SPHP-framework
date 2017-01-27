@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Implements an HTML &lt;a&gt; tag as a Foundation Button in PHP
+ * Implements an HTML &lt;a&gt; tag as a Foundation Button
  * 
  * {@inheritdoc}
  *

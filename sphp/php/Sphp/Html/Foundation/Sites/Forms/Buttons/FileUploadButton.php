@@ -15,7 +15,7 @@ use Sphp\Html\Forms\Label;
 use Sphp\Html\Forms\Inputs\FileInput;
 
 /**
- * Class models &lt;input type="submit"&gt; tag as a Foundation Button in PHP
+ * Implements &lt;input type="submit"&gt; tag as a Foundation Button
  * 
  * A submit button is used to send form data to a server.
  * The data is sent to the page specified in the form's action attribute.

@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 
 /**
- * Implements a Foundation callout component
+ * Implements a callout component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02

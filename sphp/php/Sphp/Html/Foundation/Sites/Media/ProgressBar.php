@@ -14,7 +14,7 @@ use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph;
 
 /**
- * Class models a Foundation 6 Progress Bar
+ * Implements a Progress Bar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

@@ -40,7 +40,7 @@ $vjs[] = (new VideoJs())
         ->setWideScreen();
        
 $blockGrid = new BlockGrid($vjs, 1, 2, 3);
-$blockGrid->getColumn(2)->setCssClass("show-for-large");
+$blockGrid->getColumn(2)->addCssClass("show-for-large");
 $blockGrid->printHtml();
 echo "</div>";
 

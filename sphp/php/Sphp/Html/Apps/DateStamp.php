@@ -12,7 +12,7 @@ use Sphp\Html\AbstractComponent;
 use DateTime;
 
 /**
- * Class models a HTML based stamp-element that describes a {@link DateTime} object
+ * Implements a HTML based stamp-element that describes a {@link DateTime} object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17

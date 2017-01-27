@@ -8,9 +8,8 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 /**
- * Defines Foudation Screen Size Visibility Control settings
+ * Defines Screen Size Visibility Control settings
  * 
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29
  * @link    http://foundation.zurb.com/ Foundation 6

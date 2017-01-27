@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Class models an embeddable Vimeo Video component
+ * Implements an embeddable Vimeo Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\WrappingContainer;
 
 /**
- * Class is a container for row components and implements a Foundation grid
+ * Implements a grid 
  *
  * {@inheritdoc}
  *

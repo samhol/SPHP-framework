@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Class Models a simple section separator line for Foundation menu structures
+ * Implements a simple section separator line for Foundation menu structures
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

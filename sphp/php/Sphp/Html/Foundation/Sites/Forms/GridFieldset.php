@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 use Sphp\Html\Forms\Legend;
 
 /**
- * Implements a Foundation framework Grid based Fieldset component for HTML forms
+ * Implements a framework Grid based Fieldset component for HTML forms
  *
  * {@inheritdoc}
  *

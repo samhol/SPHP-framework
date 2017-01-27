@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Interface specifies the basic functionality of a Foundation Top Bar item
+ * Defines a menu item for navigation menus
  *
  * {@inheritdoc}
  *

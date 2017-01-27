@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Implements Foundation Button in PHP
+ * Implements Button
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

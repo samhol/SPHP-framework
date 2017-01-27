@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\AbstractComponent;
 
 /**
- * Implements a Foundation 6 Split Button 
+ * Implements a Split Button 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Forms\Buttons\ButtonTag as ButtonTag;
 
 /**
- * Implements an HTML &lt;button&gt; tag as a Foundation Button in PHP
+ * Implements an HTML &lt;button&gt; tag as a Foundation Button
  * 
  * {@inheritdoc}
  *

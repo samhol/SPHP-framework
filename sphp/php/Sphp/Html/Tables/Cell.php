@@ -10,7 +10,7 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\ContainerTag;
 
 /**
- * Class models HTML table tag's cells
+ * Implements HTML table tag's cells
  *
  * {@inheritdoc}
  *

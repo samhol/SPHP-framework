@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class models a Any+Time datetime-input widget
+ * Implements a Any+Time datetime-input widget
  *
  * **Note!** This element uses Any+Time DatePicker/TimePicker AJAX Calendar Widget for its functionality.
  *

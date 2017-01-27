@@ -23,7 +23,7 @@ This class is axtended and used for following subscribers.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/VideoPlayerInterface.php"))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/VideoPlayerInterface.php"))
         ->setExampleHeading("Example code for Youtube, Vimeo and DailyMotion video")
         ->setOutputPaneTitle("Example results")
         ->printHtml();

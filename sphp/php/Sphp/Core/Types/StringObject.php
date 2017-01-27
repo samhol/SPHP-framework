@@ -17,7 +17,7 @@ use OutOfBoundsException;
 use BadMethodCallException;
 
 /**
- * Class Models a chainable string class
+ * Implements a chainable string class
  *
  * @method self append(string $str, string $stringAppend) Appends string to the end and returns a new instance
  * @method string charAt(int $index)

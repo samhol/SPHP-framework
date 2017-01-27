@@ -10,8 +10,8 @@ namespace Sphp\Html\Media;
 use Sphp\Html\ContentInterface;
 
 /**
- * Interface models sizing of various HTML media components
-
+ * Defines sizing of various HTML media components
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-15
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

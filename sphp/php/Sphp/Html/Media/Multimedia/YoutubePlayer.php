@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Class models an embeddable Youtube Video palyer component
+ * Implements an embeddable Youtube Video palyer component
  * 
  * **Requirements:**
  * The user's browser must support the HTML5 `postMessage` feature. Most modern 

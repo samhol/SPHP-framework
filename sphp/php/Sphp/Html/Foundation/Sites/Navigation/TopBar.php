@@ -12,7 +12,7 @@ use InvalidArgumentException;
 use Sphp\Html\Div;
 
 /**
- * Implements a Foundation Top Bar navigation menu
+ * Implements a Top Bar navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21

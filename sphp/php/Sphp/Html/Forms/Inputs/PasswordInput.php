@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Class models &lt;input type="password"&gt; tag
+ * Implements &lt;input type="password"&gt; tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26

@@ -13,7 +13,7 @@ use Sphp\Html\Attributes\PropertyAttribute;
 use Sphp\Html\Attributes\AttributeException;
 
 /**
- * Interface specifies the basic functionality of any HTML component
+ * Defines the basic functionality of any HTML component
  *
  * This models an actual HTML component and supports HTML attribute manipulation.
  *
@@ -75,14 +75,6 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass($cssClasses);
-
-  /**
-   * Removes all non locked CSS style names from the component.
-   *
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
-   */
-  public function clearCssClasses();
 
   /**
    * Determines whether the given CSS class names are stored into the manager
@@ -202,7 +194,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   public function getAttr($attrName);
 
   /**
-   * Checks if an attribute exists.
+   * Checks if an attribute exists
    *
    * @param  string $attrName attribute's name
    * @return boolean (atribute exists)

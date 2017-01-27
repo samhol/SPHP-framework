@@ -8,7 +8,7 @@
 namespace Sphp\Html\Headings;
 
 /**
- * Class represents a HTML heading of level 6
+ * Implements a HTML heading of level 6
  *
  * {@inheritdoc}
  *

@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Class Models an empty tag
+ * Implements an empty tag
  *
  * Empty tag has only attributes and no content
  *

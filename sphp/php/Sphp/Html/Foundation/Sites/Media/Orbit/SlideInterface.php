@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Defines a slide for Foundation Orbit components
+ * Defines a slide for Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

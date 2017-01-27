@@ -10,7 +10,7 @@ namespace Sphp\Db\Objects;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class Models a system user
+ * Implements a system user
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2007-04-10

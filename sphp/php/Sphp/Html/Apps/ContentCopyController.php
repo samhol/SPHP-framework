@@ -11,7 +11,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Class models an action controller that copies content from the target component to the user's clipboard
+ * Implements an action controller that copies content from the target component to the user's clipboard
  *
  * Component uses The ZeroClipboard library as its backbone.
  *

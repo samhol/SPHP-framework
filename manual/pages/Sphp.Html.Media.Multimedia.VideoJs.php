@@ -13,4 +13,4 @@ The $vjs Implements video.js for PHP.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/AV/VideoJs.php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/VideoJs.php");

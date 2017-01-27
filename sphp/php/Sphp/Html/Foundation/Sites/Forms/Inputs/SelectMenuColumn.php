@@ -12,7 +12,7 @@ use Sphp\Html\Forms\Inputs\Menus\Select;
 use IteratorAggregate;
 
 /**
- * Implements Foundation framework based select menu input component
+ * Implements framework based select menu input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

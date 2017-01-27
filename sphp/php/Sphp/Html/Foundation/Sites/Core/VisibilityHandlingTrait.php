@@ -13,7 +13,7 @@ use InvalidArgumentException;
 /**
  * Trait implements {@link Visibility} interface functionality
  * 
- * {@link Visibility} defines Foudation styled CSS border radius settings
+ * {@link Visibility} Defines styled CSS border radius settings
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29

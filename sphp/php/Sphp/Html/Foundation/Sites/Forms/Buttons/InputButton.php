@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonTrait;
 
 /**
- * Class models &lt;input type="button|submit|reset"&gt; tag as a Foundation Button in PHP
+ * Implements &lt;input type="button|submit|reset"&gt; tag as a Foundation Button
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

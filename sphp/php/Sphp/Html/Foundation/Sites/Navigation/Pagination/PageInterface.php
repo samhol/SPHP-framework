@@ -11,7 +11,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Html\Lists\LiInterface;
 
 /**
- * Class Models a page button for Foundation Pagination component
+ * Defines a page button for a Pagination component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

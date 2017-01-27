@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 /**
- * Interface specifies the basic functionality of an identifiable HTML component
+ * Defines the basic functionality of an identifiable HTML component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-09-12

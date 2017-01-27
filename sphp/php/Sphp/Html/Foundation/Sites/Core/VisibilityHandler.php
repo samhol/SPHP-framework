@@ -15,7 +15,7 @@ use Sphp\Html\Attributes\MultiValueAttribute;
 /**
  * Implements {@link VisibilityInterface} interface functionality
  * 
- * {@link VisibilityInterface} defines Foudation styled CSS visibility settings
+ * {@link VisibilityInterface} Defines styled CSS visibility settings
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29

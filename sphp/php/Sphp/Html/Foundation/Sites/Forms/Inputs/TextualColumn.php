@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\TextualInputInterface;
 
 /**
- * Implements Foundation framework based component to create  multi-device layouts
+ * Implements framework based component to create  multi-device layouts
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

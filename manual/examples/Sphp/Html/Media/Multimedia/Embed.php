@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\Multimedia;
 
 (new Embed())
         ->setSrc("http://www.w3schools.com/tags/helloworld.swf")

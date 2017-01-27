@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Implements a Foundation 6 Drilldown menu 
+ * Implements a Drilldown menu 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

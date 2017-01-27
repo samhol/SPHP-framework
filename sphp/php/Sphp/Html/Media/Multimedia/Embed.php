@@ -5,9 +5,11 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
+use Sphp\Html\Media\LazyLoaderInterface;
+use Sphp\Html\Media\SizeableInterface;
 
 /**
  * Implements an HTML &lt;embed&gt; tag
@@ -26,8 +28,8 @@ use Sphp\Html\EmptyTag;
  */
 class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
 
-  use SizeableTrait,
-      LazyLoaderTrait;
+  use \Sphp\Html\Media\SizeableTrait,
+      \Sphp\Html\Media\LazyLoaderTrait;
 
   /**
    * Constructs a new instance
@@ -37,7 +39,7 @@ class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
    * @link  http://www.w3schools.com/tags/att_embed_src.asp src attribute
    * @link  http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
-  function __construct($src = null, $type = null) {
+  public function __construct($src = null, $type = null) {
     parent::__construct('embed');
     if ($src !== null) {
       $this->setSrc($src);

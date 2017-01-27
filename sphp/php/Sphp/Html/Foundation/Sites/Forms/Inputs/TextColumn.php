@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\TextInput;
 
 /**
- * Implements Foundation framework based text input component
+ * Implements framework based text input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

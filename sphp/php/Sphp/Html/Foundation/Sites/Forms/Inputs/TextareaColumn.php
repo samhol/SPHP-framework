@@ -11,7 +11,7 @@ use Sphp\Html\Forms\Inputs\TextareaInterface;
 use Sphp\Html\Forms\Inputs\Textarea;
 
 /**
- * Implements Foundation framework based textarea input component
+ * Implements framework based textarea input component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-02

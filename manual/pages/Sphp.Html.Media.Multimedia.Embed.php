@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
@@ -13,7 +13,7 @@ used for setting external external applications or interactive contents (plug-in
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Embed.php", false, true))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/Embed.php", false, true))
         ->setExampleHeading("HTML &lt;embed&gt; example code")
         ->setOutputPaneTitle("HTML &lt;embed&gt; example results")
         ->printHtml();

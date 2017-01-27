@@ -11,7 +11,7 @@ use Sphp\Html\Forms\Inputs\Radiobox;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 
 /**
- * Implements a Foundation based radio switch
+ * Implements a based radio switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-17

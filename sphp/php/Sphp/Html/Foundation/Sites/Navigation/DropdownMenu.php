@@ -1,14 +1,14 @@
 <?php
 
 /**
- * DropDownMenu.php (UTF-8)
+ * DropdownMenu.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Implements a Dropown menu for Foundation Top Bar navigation menu
+ * Implements a Dropown menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

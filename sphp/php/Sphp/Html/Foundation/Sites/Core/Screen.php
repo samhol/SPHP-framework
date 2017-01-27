@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 /**
- * Class defines Foudation Screen Sizes and types and implements static screen size parsing functions
+ * Defines Screen Sizes and types and implements static screen size parsing functions
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29

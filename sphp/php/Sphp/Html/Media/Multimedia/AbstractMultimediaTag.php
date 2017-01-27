@@ -12,7 +12,7 @@ use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Container;
 
 /**
- * Abstractimplementation of HTML multimedia tags
+ * Implements an abstract HTML multimedia tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20

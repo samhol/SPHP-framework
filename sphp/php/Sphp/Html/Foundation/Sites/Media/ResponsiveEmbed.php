@@ -20,9 +20,9 @@ use ReflectionClass;
 use BadMethodCallException;
 
 /**
- * Class models a Foundation 6 Flex component
+ * Implements a Responsive embed component
  *
- * Flex lets browsers automatically scale iframe objects in webpages. If a 
+ * This component lets browsers automatically scale iframe objects in webpages. If a 
  * video is embedded from YouTube, Vimeo, or another site that uses iframe, 
  * embed or object elements, video can be wrap into {@link self} to create 
  * an intrinsic ratio that will properly scale the iframe based media on any device.
@@ -30,7 +30,7 @@ use BadMethodCallException;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/flex_video.html Flex Video
+ * @link    http://foundation.zurb.com/sites/docs/responsive-embed.html Responsive Embed
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

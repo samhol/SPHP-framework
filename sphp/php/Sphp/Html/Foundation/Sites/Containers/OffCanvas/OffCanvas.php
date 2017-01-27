@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Div;
 
 /**
- * Class implemnets Foundation Off-canvas navigation component
+ * Implements Off-canvas navigation component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-09-15

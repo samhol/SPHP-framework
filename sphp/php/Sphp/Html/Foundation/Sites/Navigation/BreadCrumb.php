@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Class Models an accessible menu item for Foundation 6 Breadcrumb component
+ * Implements an accessible menu item for a Breadcrumb component
  *
  *
  * {@inheritdoc}

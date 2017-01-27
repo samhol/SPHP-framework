@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 use Sphp\Html\AbstractContainerTag;
 
 /**
- * Implements a Foundation Tab for Tabs
+ * Implements a Tab for Tabs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-01

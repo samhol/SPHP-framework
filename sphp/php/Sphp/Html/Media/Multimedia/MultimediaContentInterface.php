@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Interface models media resources for {@link AbstractMediaTag} components
+ * Defines media resources for {@link MediaTagInterface} components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-14

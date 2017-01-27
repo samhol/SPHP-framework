@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 /**
- * Class models a size object for defining the dimensions of the {@link SizeableInterface}
+ * Implements a size object for defining the dimensions of the {@link SizeableInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-02-15

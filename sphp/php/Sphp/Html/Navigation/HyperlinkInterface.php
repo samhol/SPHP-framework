@@ -8,7 +8,7 @@
 namespace Sphp\Html\Navigation;
 
 /**
- * Interface specifies the basic functionality of any HTML hyperlink
+ * Defines the basic functionality of any HTML hyperlink
  *
  * If a {@link HyperlinkInterface} component has an href attribute, then it
  * represents a hyperlink (a hypertext anchor). If the component has no href

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * SideNav.php (UTF-8)
+ * AccordionMenu.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Implements Foundation 6 Accordion Menu in PHP
+ * Implements an Accordion menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-25

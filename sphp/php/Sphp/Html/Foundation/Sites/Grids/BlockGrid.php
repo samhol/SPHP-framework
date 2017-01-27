@@ -17,7 +17,7 @@ use Sphp\Html\ContentParserInterface;
 use Sphp\Html\ContentParsingTrait as ContentParsingTrait;
 
 /**
- * Class makes it possible to evenly split contents of a list within the grid.
+ * Implements a Block Grid component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-02-13

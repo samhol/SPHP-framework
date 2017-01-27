@@ -1,7 +1,7 @@
 <?php
 
 /**
- * VideoPlayerSlide.php (UTF-8)
+ * ResponsiveEmbedSlide.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbedInterface;
 use Sphp\Html\Foundation\Sites\Media\ResponsiveEmbed;
 
 /**
- * Implements a media Flex slide for Foundation Orbit components
+ * Implements a Responsive Embed slide for a Orbit component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-06-01

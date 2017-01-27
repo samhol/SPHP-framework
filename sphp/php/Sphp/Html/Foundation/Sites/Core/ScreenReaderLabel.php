@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Html\Span;
 
 /**
- * Implements Foundation 6 Screen reader label for Foundation
+ * Implements Screen reader label for Foundation
  * 
  * As default all of the content of this component is only visible for screen readers
  *

@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Interface specifies the basic requirements of a Foundation 6 offcanvas area
+ * Defines the basic requirements of a Foundation 6 offcanvas area
  * 
  * Implementation is a panel that slides in and out of the {@link OffCanvas} when activated. 
  * 

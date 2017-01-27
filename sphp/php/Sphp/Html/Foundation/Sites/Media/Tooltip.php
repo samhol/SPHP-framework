@@ -12,7 +12,7 @@ use Sphp\Html\ContentTrait;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Class models a Foundation 6 Tooltip component
+ * Implements a Tooltip component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-30

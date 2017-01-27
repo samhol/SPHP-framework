@@ -13,7 +13,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 
 /**
- * An abstract implementation of Foundation Off-canvas menu
+ * An abstract implementation of on Off-canvas area
  * 
  * {@link self} is the panel that slides in and out of the {@link OffCanvas} when activated. 
  * 

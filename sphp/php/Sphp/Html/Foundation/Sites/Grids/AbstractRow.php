@@ -13,7 +13,7 @@ use Sphp\Html\WrappingContainer;
 use Sphp\Html\NonVisualContentInterface;
 
 /**
- * Implements a Foundation row
+ * Implements a row
  *
  * {@inheritdoc}
  *

@@ -11,7 +11,7 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\ContainerInterface;
 
 /**
- * Implements a Foundation 6 menu
+ * Implements an abstract menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

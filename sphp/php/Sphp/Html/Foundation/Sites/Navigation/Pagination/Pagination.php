@@ -15,7 +15,7 @@ use Sphp\Html\Container;
 use Sphp\Html\Lists\Li as Li;
 
 /**
- * Class Models Foundation Pagination component
+ * Implements a Pagination component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-20

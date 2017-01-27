@@ -12,7 +12,7 @@ use InvalidArgumentException;
 use Sphp\Core\Types\Strings;
 
 /**
- * Class models &lt;input type="button|submit|reset"&gt; button tag
+ * Implements &lt;input type="button|submit|reset"&gt; button tag
  *
  * A submit button is used to send form data to a server.
  * The data is sent to the page specified in the form's action attribute.

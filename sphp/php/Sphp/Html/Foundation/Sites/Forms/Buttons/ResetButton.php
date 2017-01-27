@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
 
 /**
- * Class models &lt;input type="reset"&gt; tag as a Foundation Button in PHP
  * 
  *
  * @author  Sami Holck <sami.holck@gmail.com>

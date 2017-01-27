@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
- * Implements a submenu for Foundation for Sites menus
+ * Implements a navigation submenu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11

@@ -49,24 +49,6 @@ trait IdentifiableComponentTrait {
   }
 
   /**
-   * Sets the specified CSS class names removing old non locked ones
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   *
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
-   * 3. Duplicate CSS class names are not stored
-   *
-   * @param  string|string[] $cssClasses CSS class names to set
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
-   */
-  public function setCssClass($cssClasses) {
-    $this->cssClasses()->set($cssClasses);
-    return $this;
-  }
-
-  /**
    * Adds the specified CSS class names
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
@@ -113,17 +95,6 @@ trait IdentifiableComponentTrait {
    */
   public function removeCssClass($cssClasses) {
     $this->cssClasses()->remove($cssClasses);
-    return $this;
-  }
-
-  /**
-   * Removes all non locked CSS class names
-   *
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
-   */
-  public function clearCssClasses() {
-    $this->cssClasses()->clear();
     return $this;
   }
 

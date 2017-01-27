@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\ContentInterface;
 
 /**
- * Interface models lazy loading of images, videos and other resources
+ * Defines lazy loading of images, videos and other resources
  * 
  * SPHP framework uses Lazy Load XT jQuery plugin. It is Mobile-oriented, fast 
  * and extensible jQuery plugin with build-in support of jQueryMobile framework.

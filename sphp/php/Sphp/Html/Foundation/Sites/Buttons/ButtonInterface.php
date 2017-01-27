@@ -11,7 +11,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Core\ColourableInterface;
 
 /**
- * Interface specifies the basic functionality of a Foundation styled button
+ * Defines the basic functionality of a Foundation styled button
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

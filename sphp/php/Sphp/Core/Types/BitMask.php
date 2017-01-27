@@ -10,7 +10,7 @@ namespace Sphp\Core\Types;
 use Sphp\Data\Arrayable;
 
 /**
- * Class models a bitmask object
+ * Implements a bitmask object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-15

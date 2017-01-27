@@ -17,4 +17,3 @@ $load("Sphp.Html.Media.Iframe.php");
 //$load("Sphp.Html.Media.AV.VideoPlayerInterface.php");
 //$load("Sphp.Html.Media.AV.VideoJs.php");
 //$load("Sphp.Html.Media.AV.Video.php");
-$load("Sphp.Html.Media.Embed.php");

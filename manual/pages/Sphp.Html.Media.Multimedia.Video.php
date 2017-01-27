@@ -2,11 +2,17 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
+use Sphp\Html\Apps\Manual\Apis;
+
 $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
 $source = $api->classLinker(Source::class);
+$vjs = $api->classLinker(VideoJs::class);
+$dailyMotionPlayer = Apis::apigen()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = Apis::apigen()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = Apis::apigen()->classLinker(VimeoPlayer::class);
 echo $parsedown->text(<<<MD
-##The $audio and the $video components
+##Video: <small>HTML5 video, Dailymotion, Youtube, Vimeo and other embeds</small>
 		
 The $audio and the $video components implement the corresponding HTML5
 {$w3schools->tag("audio")} and {$w3schools->tag("video")} tags. With 
@@ -27,21 +33,10 @@ MD
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/Video.php", false, true))
-		->setExampleHeading("HTML5 &lt;video&gt; example code")
-		->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
-		->printHtml();
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/Video.php", false, true))
+        ->setExampleHeading("HTML5 &lt;video&gt; example code")
+        ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
+        ->printHtml();
 
-echo $parsedown->text(<<<MD
-**Currently, there are 3 supported audio formats for the $audio component:**
-		
-* MP3 audio/mpeg
-* Ogg audio/ogg
-* Wav audio/wav
-		
-MD
-);
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/AV/Audio.php", false, true))
-		->setExampleHeading("HTML5 &lt;audio&gt; example code")
-		->setOutputPaneTitle("HTML5 &lt;audio&gt; example results")
-		->printHtml();
+
+$load("Sphp.Html.Media.Multimedia.VideoJs.php");

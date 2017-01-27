@@ -11,7 +11,7 @@ use Sphp\Html\Lists\HyperlinkListItem;
 use Sphp\Core\Types\URL;
 
 /**
- * Class Models a hyperlink component for the Dropown menu component
+ * Implements a hyperlink component for the Dropown menu component
  *
  *
  * {@inheritdoc}

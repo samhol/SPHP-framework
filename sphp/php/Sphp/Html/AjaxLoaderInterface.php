@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use Sphp\Core\Types\URL;
 
 /**
- * Interface specifies the functionality of an Ajax content loader component
+ * Defines the functionality of an Ajax content loader component
  * 
  * Supported ways of remote content fetching 
  * 

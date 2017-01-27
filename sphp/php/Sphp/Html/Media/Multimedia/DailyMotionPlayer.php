@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 /**
- * Class models an embeddable Dailymotion Video component
+ * Implements an embeddable Dailymotion Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

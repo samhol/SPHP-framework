@@ -13,7 +13,7 @@ use Sphp\Html\Media\LazyLoaderTrait;
 use Sphp\Core\Types\URL;
 
 /**
- * Implements an iframe based Video component
+ * Implements an abstract iframe based Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01

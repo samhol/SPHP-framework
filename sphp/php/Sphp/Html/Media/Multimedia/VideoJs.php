@@ -11,13 +11,11 @@ use Sphp\Html\Media\SizeableInterface;
 use Sphp\Html\Media\SizeableTrait;
 
 /**
- * Implements an HTML &lt;video&gt; tag
- *
- * {@inheritdoc}
+ * Implements an VideoJs component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-20
- * @link    http://www.w3schools.com/tags/tag_video.asp w3schools HTML API
+ * @link    http://videojs.com/ VIDEOJS
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -31,8 +29,8 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
    * @param  Source|Source[] $sources defines a table caption
    */
   public function __construct($sources = null) {
-    parent::__construct('video', $sources);
-    $this->cssClasses()->lock('video-js vjs-default-skin vjs-paused vjs-controls-enabled');
+    parent::__construct('video', null, $sources);
+    $this->cssClasses()->lock(['video-js', 'vjs-default-skin', 'vjs-paused', 'vjs-controls-enabled']);
     $this->identify();
     $this->attrs()->demand('data-setup');
   }
@@ -52,7 +50,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
     $this->attrs()->set('poster', $poster);
     return $this;
   }
-  
+
   /**
    * Sets the ratio of the video component
    * 
@@ -67,7 +65,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
     }
     return $this;
   }
-  
+
   /**
    * Sets the ratio of the video component to `16:9` widescreen
    * 
@@ -77,7 +75,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
     $this->setRatio('16-9');
     return $this;
   }
-  
+
   /**
    * Sets the ratio of the video component to `4:3`
    * 
