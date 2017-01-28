@@ -14,7 +14,7 @@ $link = $api->classLinker(Link::class);
 $scriptInterface = $api->classLinker(ScriptInterface::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#HTML HEAD Manipulation
+#HTML HEAD: <small>metadata manipulation</small>
         
 $ns
         

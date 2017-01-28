@@ -32,9 +32,7 @@ items:
         page: Sphp.Html.Attributes
       - link: Meta data manipulation
         page: Sphp.Html.Head
-      - link: Multimedia
-        page: Sphp.Html.Media
-      - link: JavaScript 
+      - link: Client side scripting 
         page: Sphp.Html.Programming
       - link: Lists
         page: Sphp.Html.Lists

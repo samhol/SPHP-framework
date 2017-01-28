@@ -3,6 +3,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
@@ -31,7 +32,6 @@ which the browser may choose from, based on its media type or codec support.
 MD
 );
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/Video.php", false, true))
         ->setExampleHeading("HTML5 &lt;video&gt; example code")
@@ -40,3 +40,4 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 
 $load("Sphp.Html.Media.Multimedia.VideoJs.php");
+$load("Sphp.Html.Media.Multimedia.VideoPlayerInterface.php");
