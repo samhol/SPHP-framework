@@ -17,8 +17,11 @@ include_once('manual/htmlHead.php');
     <div class="mainContent small-12"> 
       <div class="title-bar">
         <div class="title-bar-left">
-          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+          <button class="menu-icon" type="button" data-open="offCanvasLeftSPlit1"></button>
+          <button class="menu-icon" type="button" data-open="offCanvasLeftSPlit1"></button>
           <span class="title-bar-title">Foundation</span>
+          <button class="menu-icon" type="button" data-open="offCanvasLeftSPlit1"></button>
+          <button class="fi fi-arrow-up" type="button" data-open="offCanvasLeftSPlit1" style="color:#fff"></button>
           <ul class="dropdown menu" data-dropdown-menu>
 
             <li>
@@ -34,6 +37,8 @@ include_once('manual/htmlHead.php');
           </ul>
         </div>
         <div class="title-bar-right">
+          <span class="title-bar-title">Foundation 0</span>
+          <span class="title-bar-title">Foundation 1</span>
           <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
         </div>
       </div><pre>

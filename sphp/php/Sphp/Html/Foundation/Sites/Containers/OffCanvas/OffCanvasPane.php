@@ -8,9 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\Foundation\Sites\Navigation\VerticalMenu;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
-use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 
 /**
  * An abstract implementation of on Off-canvas area
@@ -24,7 +22,7 @@ use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class OffCanvasArea extends AbstractContainerTag implements OffCanvasAreaInterface {
+class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterface {
 
   /**
    *
@@ -37,13 +35,13 @@ class OffCanvasArea extends AbstractContainerTag implements OffCanvasAreaInterfa
    *
    * @param string $tagname
    */
-  public function __construct($position, $content = null) {
+  public function __construct($side, $position = 'fixed') {
     parent::__construct('div');
     $this->attrs()->demand('data-off-canvas');
-    $this->cssClasses()->lock('off-canvas');
-    $this->identify();
+    $this->identify("$side-off-canvas");
     $this->closeButton = new CloseButton();
-    $this->setPosition($position) ;
+    $this->setSide($side)
+            ->setPosition($position) ;
   }
 
   /**
@@ -51,8 +49,23 @@ class OffCanvasArea extends AbstractContainerTag implements OffCanvasAreaInterfa
    * @param  string $position
    * @return self for PHP Method Chaining
    */
-  public function setPosition($position) {
+  protected function setSide($position) {
     $this->cssClasses()->lock("position-$position");
+    return $this;
+  }
+
+
+  /**
+   * 
+   * @param  string $position
+   * @return self for PHP Method Chaining
+   */
+  protected function setPosition($position = 'fixed') {
+    if ($position !== 'fixed') {
+      $this->cssClasses()->set("off-canvas-$position");
+    } else {
+      $this->cssClasses()->set("off-canvas");
+    }
     return $this;
   }
 

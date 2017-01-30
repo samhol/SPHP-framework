@@ -22,45 +22,44 @@ use Sphp\Html\Div;
  */
 class OffCanvas extends AbstractComponent {
 
-
-
   /**
    *
-   * @var Div 
+   * @var OffCanvasPane 
    */
   private $left;
 
   /**
    *
-   * @var Div 
+   * @var OffCanvasPane 
    */
   private $right;
 
   /**
    *
-   * @var Div 
+   * @var OffCanvasPane 
    */
   private $top;
 
   /**
    *
-   * @var Div 
+   * @var OffCanvasPane 
    */
   private $bottom;
 
   /**
    *
-   * @var Div 
+   * @var Div
    */
   private $offCanvasContent;
 
   /**
    * Constructs a new instance
    *
-   * @param  string $title the main title of the component
+   * @param  string $position the main title of the component
    */
   public function __construct($position = 'fixed') {
     parent::__construct('div');
+    $this->position = $position;
     $this->cssClasses()->lock('off-canvas-wrapper');
     $this->offCanvasContent = new Div();
     $this->offCanvasContent->cssClasses()->lock("off-canvas-content");
@@ -69,11 +68,11 @@ class OffCanvas extends AbstractComponent {
 
   /**
    * 
-   * @return OffCanvasArea
+   * @return OffCanvasPane
    */
   public function leftMenu() {
     if ($this->left === null) {
-      $this->left = new OffCanvasArea('left');
+      $this->left = new OffCanvasPane('left', $this->position);
     }
     return $this->left;
   }
@@ -81,11 +80,11 @@ class OffCanvas extends AbstractComponent {
   /**
    * Returns the left Off-canvas menu
    * 
-   * @return OffCanvasArea
+   * @return OffCanvasPane
    */
   public function rightMenu() {
     if ($this->right === null) {
-      $this->right = new OffCanvasArea('right');
+      $this->right = new OffCanvasPane('right', $this->position);
     }
     return $this->right;
   }
@@ -163,6 +162,9 @@ class OffCanvas extends AbstractComponent {
     $output = '';
     if ($this->left !== null) {
       $output .= $this->left;
+    }
+    if ($this->right !== null) {
+      $output .= $this->right;
     }
     $output .= $this->offCanvasContent;
     return $output;
