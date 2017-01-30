@@ -14,7 +14,7 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  * @author Sami Holck
  */
 class TitleBarFactory {
-  public static function create($leftIcon, $leftTitle, $rightIcon, $ri) {
+  public static function create(array $data) {
     
   }
 }
