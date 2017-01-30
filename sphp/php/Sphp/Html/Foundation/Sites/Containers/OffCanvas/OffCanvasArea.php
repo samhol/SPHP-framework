@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\Foundation\Sites\Navigation\VerticalMenu;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
@@ -24,13 +24,7 @@ use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface {
-
-  /**
-   *
-   * @var VerticalMenu
-   */
-  private $menu;
+class OffCanvasArea extends AbstractContainerTag implements OffCanvasAreaInterface {
 
   /**
    *
@@ -43,42 +37,27 @@ class OffCanvasArea extends AbstractComponent implements OffCanvasAreaInterface 
    *
    * @param string $tagname
    */
-  public function __construct() {
+  public function __construct($position, $content = null) {
     parent::__construct('div');
     $this->attrs()->demand('data-off-canvas');
+    $this->cssClasses()->lock('off-canvas');
     $this->identify();
-    $this->menu = new VerticalMenu();
     $this->closeButton = new CloseButton();
+    $this->setPosition($position) ;
   }
 
   /**
    * 
-   * @param  string $text
+   * @param  string $position
    * @return self for PHP Method Chaining
    */
-  public function appendLabel($text) {
-    $this->menu->appendText($text);
+  public function setPosition($position) {
+    $this->cssClasses()->lock("position-$position");
     return $this;
-  }
-
-  /**
-   * 
-   * @param  string $href
-   * @param  string $content
-   * @param  string|null $target
-   * @return self for PHP Method Chaining
-   */
-  public function appendLink($href, $content, $target = null) {
-    $this->menu->appendLink($href, $content, $target);
-    return $this;
-  }
-
-  public function appendSubMenu(SubMenu $link = null) {
-    return $this->menu->appendSubMenu($link);
   }
 
   public function contentToString() {
-    return $this->closeButton . $this->menu;
+    return $this->closeButton->getHtml() . parent::contentToString();
   }
 
   public function getMenuButton($button = null) {

@@ -29,5 +29,5 @@ interface OffCanvasAreaInterface extends ComponentInterface {
    * @param mixed $button the button content
    * @return OffCanvasOpener for the off canvas component
    */
-  public function getMenuButton($button = null);
+  //public function getMenuButton($button = null);
 }

@@ -22,10 +22,24 @@ class Menu extends AbstractMenu {
    *
    * @param mixed $content
    */
-  public function __construct($content = NULL) {
+  public function __construct($content = null) {
     parent::__construct('ul');
-    if ($content !== NULL) {
-      $this->append($content);
+    if ($content !== null) {
+      $this->appendContent($content);
+    }
+  }
+
+  /**
+   * 
+   * @param mixed $content
+   */
+  protected function appendContent($content) {
+    foreach (is_array($content) ? $content : [$content] as $item) {
+      if ($item instanceof MenuItemInterface) {
+        $this->append($item);
+      } else {
+        $this->appendText($item);
+      }
     }
   }
 

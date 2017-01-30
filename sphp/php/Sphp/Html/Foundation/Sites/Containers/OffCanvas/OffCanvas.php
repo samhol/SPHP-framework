@@ -22,35 +22,31 @@ use Sphp\Html\Div;
  */
 class OffCanvas extends AbstractComponent {
 
-  /**
-   *
-   * @var boolean
-   */
-  private $useLeftMenu = false;
 
-  /**
-   *
-   * @var boolean
-   */
-  private $useRightMenu = false;
 
   /**
    *
    * @var Div 
    */
-  private $innerWrapper;
+  private $left;
 
   /**
    *
    * @var Div 
    */
-  private $leftOffCanvas;
+  private $right;
 
   /**
    *
    * @var Div 
    */
-  private $rightOffCanvas;
+  private $top;
+
+  /**
+   *
+   * @var Div 
+   */
+  private $bottom;
 
   /**
    *
@@ -63,30 +59,12 @@ class OffCanvas extends AbstractComponent {
    *
    * @param  string $title the main title of the component
    */
-  public function __construct($title = "") {
+  public function __construct($position = 'fixed') {
     parent::__construct('div');
     $this->cssClasses()->lock('off-canvas-wrapper');
-    $this->innerWrapper = new Div();
-    $this->innerWrapper->cssClasses()->lock('off-canvas-wrapper-inner');
-    $this->innerWrapper->attrs()->demand('data-off-canvas-wrapper');
-    $this->leftOffCanvas = new OffCanvasArea();
-    $this->leftOffCanvas->cssClasses()->lock('off-canvas position-left');
-    $this->rightOffCanvas = new OffCanvasArea();
-    $this->rightOffCanvas->cssClasses()->lock('off-canvas position-right');
-    $this->innerWrapper['left'] = $this->leftOffCanvas;
-    $this->innerWrapper['right'] = $this->rightOffCanvas;
     $this->offCanvasContent = new Div();
     $this->offCanvasContent->cssClasses()->lock("off-canvas-content");
     $this->offCanvasContent->attrs()->demand('data-off-canvas-content');
-    $this->innerWrapper['content'] = $this->offCanvasContent;
-  }
-
-  /**
-   * 
-   * @return Div
-   */
-  protected function getInnerWrap() {
-    return $this->innerWrapper;
   }
 
   /**
@@ -94,7 +72,10 @@ class OffCanvas extends AbstractComponent {
    * @return OffCanvasArea
    */
   public function leftMenu() {
-    return $this->getInnerWrap()['left'];
+    if ($this->left === null) {
+      $this->left = new OffCanvasArea('left');
+    }
+    return $this->left;
   }
 
   /**
@@ -103,7 +84,10 @@ class OffCanvas extends AbstractComponent {
    * @return OffCanvasArea
    */
   public function rightMenu() {
-    return $this->getInnerWrap()['right'];
+    if ($this->right === null) {
+      $this->right = new OffCanvasArea('right');
+    }
+    return $this->right;
   }
 
   /**
@@ -174,9 +158,14 @@ class OffCanvas extends AbstractComponent {
   public function mainContent() {
     return $this->offCanvasContent;
   }
-  
+
   public function contentToString() {
-    return $this->innerWrapper->getHtml();
+    $output = '';
+    if ($this->left !== null) {
+      $output .= $this->left;
+    }
+    $output .= $this->offCanvasContent;
+    return $output;
   }
 
 }
