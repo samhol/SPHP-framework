@@ -14,7 +14,27 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  * @author Sami Holck
  */
 class TitleBarFactory {
+
   public static function create(array $data) {
-    
+    $titleBar = new TitleBar();
+    if (array_key_exists('l', $data)) {
+      $titleBar->left(static::insert($data['l']));
+    }
+    if (array_key_exists('r', $data)) {
+      $titleBar->left(static::insert($data['r']));
+    }
   }
+
+  public static function insert(array $data, $side) {
+    $cont = new BarContentArea($side);
+    foreach ($data as $k => $v) {
+      if ($k === 'title') {
+        $cont->appendTitle($v);
+      } else {
+        $cont->append($v);
+      }
+    }
+    return $cont;
+  }
+
 }
