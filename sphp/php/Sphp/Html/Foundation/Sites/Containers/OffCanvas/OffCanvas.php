@@ -126,7 +126,7 @@ class OffCanvas extends AbstractComponent {
   public function useLeftMenu($use = true) {
     $this->useLeftMenu = $use;
     if ($this->useLeftMenu) {
-      $this->getTabBar()['left'] = $this->leftMenu()->getMenuButton();
+      $this->getTabBar()['left'] = $this->leftMenu()->getOpener();
     } else {
       $this->getTabBar()['left'] = '';
     }
@@ -142,7 +142,7 @@ class OffCanvas extends AbstractComponent {
   public function useRightMenu($use = true) {
     $this->useRightMenu = $use;
     if ($this->useRightMenu) {
-      $this->getTabBar()["right"] = $this->rightMenu()->getMenuButton();
+      $this->getTabBar()["right"] = $this->rightMenu()->getOpener();
     } else {
       $this->getTabBar()["right"] = "";
     }

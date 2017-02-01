@@ -73,8 +73,8 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
     return $this->closeButton->getHtml() . parent::contentToString();
   }
 
-  public function getMenuButton($button = null) {
-    if ($button === null) {
+  public function getOpener($content = null) {
+    if ($content === null) {
       $button = new OffCanvasOpener($this);
     }
     if ($button instanceof OffCanvasOpener) {

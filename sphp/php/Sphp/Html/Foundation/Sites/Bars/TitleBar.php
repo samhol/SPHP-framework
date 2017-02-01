@@ -20,6 +20,8 @@ use Sphp\Html\AbstractComponent;
  * @filesource
  */
 class TitleBar extends AbstractComponent {
+  
+  private $leftOffCavasOpener;
 
   /**
    *
@@ -111,6 +113,7 @@ class TitleBar extends AbstractComponent {
   }
 
   public function __clone() {
+    
     $this->leftArea = clone $this->leftArea;
     $this->rightArea = clone $this->rightArea;
     parent::__clone();
