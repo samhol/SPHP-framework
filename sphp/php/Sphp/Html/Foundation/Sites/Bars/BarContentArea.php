@@ -20,6 +20,7 @@ use Sphp\Html\AbstractContainerComponent;
  * @filesource
  */
 class BarContentArea extends AbstractContainerComponent {
+  private $menuButton;
 
   /**
    * Constructs a new instance
@@ -73,6 +74,10 @@ class BarContentArea extends AbstractContainerComponent {
       $title = new TitleBarTitle($title);
     }
     $this->append($title);
+  }
+  
+  public function contentToString() {
+    parent::contentToString() . $this->menuButton->getHtml();
   }
 
 }
