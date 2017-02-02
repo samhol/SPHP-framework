@@ -35,23 +35,22 @@ use Sphp\Manual\MVC\SideNavViewer;
 use Sphp\Core\Path;
 
 $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
-
 ?>
 <div class="off-canvas-wrapper">
   <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
     <!-- Your menu or Off-canvas content goes here -->
   </div>
-   <div class="off-canvas-absolute position-right" id="rightBodyOffCanvas" data-off-canvas>
+  <div class="off-canvas-absolute position-right" id="rightBodyOffCanvas" data-off-canvas>
     <!-- Your menu or Off-canvas content goes here -->
   </div>
   <div class="off-canvas-content" data-off-canvas-content>
-<?php
-if ($outputCache->start('topbar1212') === false) {
-  include('manual/templates/logo-area.php');
-  include('manual/__topBar.php');
-  $outputCache->end();
-}
-?>
+    <?php
+    if ($outputCache->start('topbar1212') === false) {
+      include('manual/templates/logo-area.php');
+      include('manual/__topBar.php');
+      $outputCache->end();
+    }
+    ?>
 
     <div class="row expanded small-collapse medium-uncollapse">
       <div class="column medium-3 large-3 xlarge-2 show-for-large">
