@@ -36,40 +36,52 @@ use Sphp\Core\Path;
 
 $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
 
+?>
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
+    <!-- Your menu or Off-canvas content goes here -->
+  </div>
+   <div class="off-canvas-absolute position-right" id="rightBodyOffCanvas" data-off-canvas>
+    <!-- Your menu or Off-canvas content goes here -->
+  </div>
+  <div class="off-canvas-content" data-off-canvas-content>
+<?php
 if ($outputCache->start('topbar1212') === false) {
   include('manual/templates/logo-area.php');
   include('manual/__topBar.php');
   $outputCache->end();
 }
 ?>
-<div class="row expanded small-collapse medium-uncollapse">
-  <div class="column medium-3 large-3 xlarge-2 show-for-large">
-    <?php
-    if ($outputCache->start('sidenav') === false) {
-      $sidenawViewer = new SideNavViewer($res);
-      $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
-      $sidenawViewer->printHtml();
-      $outputCache->end();
-    }
-    ?>
-  </div>
-  <div class="mainContent small-12 large-9 xlarge-9 column"> 
-    <?php
-    $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-    $man_cache = 'index';
-    if ($p !== null) {
-      $man_cache = str_replace('.', '-', $p);
-    }
-    if ($outputCache->start($man_cache) === false) {
-      include('manual/manualBuilder.php');
-      $outputCache->end();
-    }
-    ?>
-  </div>
-  <div class="show-for-xlarge xlarge-1 column"> 
+
+    <div class="row expanded small-collapse medium-uncollapse">
+      <div class="column medium-3 large-3 xlarge-2 show-for-large">
+        <?php
+        if ($outputCache->start('sidenav') === false) {
+          $sidenawViewer = new SideNavViewer($res);
+          $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
+          $sidenawViewer->printHtml();
+          $outputCache->end();
+        }
+        ?>
+      </div>
+      <div class="mainContent small-12 large-9 xlarge-9 column"> 
+        <?php
+        $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+        $man_cache = 'index';
+        if ($p !== null) {
+          $man_cache = str_replace('.', '-', $p);
+        }
+        if ($outputCache->start($man_cache) === false) {
+          include('manual/manualBuilder.php');
+          $outputCache->end();
+        }
+        ?>
+      </div>
+      <div class="show-for-xlarge xlarge-1 column"> 
+      </div>
+    </div>
   </div>
 </div>
-
 <?php
 include('manual/_footer_.php');
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TitleBar.php (UTF-8)
+ * BarContentArea.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Bars;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Implements a Top Bar navigation menu
+ * Implements a Title Bar contetn area
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21
@@ -19,7 +19,8 @@ use Sphp\Html\AbstractContainerComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BarContentArea extends AbstractContainerComponent {
+abstract class BarContentArea extends AbstractContainerComponent {
+
   private $menuButton;
 
   /**
@@ -27,19 +28,8 @@ class BarContentArea extends AbstractContainerComponent {
    *
    * @param mixed $side the title of the Top Bar component
    */
-  public function __construct($side) {
+  public function __construct() {
     parent::__construct('div');
-    $this->setup($side);
-  }
-
-  /**
-   * 
-   * @param type $side
-   * @return self for PHP Method Chaining
-   */
-  protected function setup($side) {
-    $this->cssClasses()->lock("title-bar-$side");
-    return $this;
   }
 
   /**
@@ -56,11 +46,21 @@ class BarContentArea extends AbstractContainerComponent {
   /**
    * Sets and Returns the title area component
    *
-   * @param  mixed $title the title of the Navigator component
+   * @param  MenuButton $btn the menu controller button
    * @return self for PHP Method Chaining
    */
-  public function appendOffCanvasOpener(\Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvasOpener $title) {
-    $this->append($title);
+  public function setMenuButton(MenuButton $btn) {
+    $this->menuButton = $btn;
+    return $this;
+  }
+
+  /**
+   * Sets and Returns the title area component
+   *
+   * @return MenuButton|null the menu controller button or null if not set
+   */
+  public function getMenuButton() {
+    return $this->menuButton;
   }
 
   /**
@@ -74,10 +74,6 @@ class BarContentArea extends AbstractContainerComponent {
       $title = new TitleBarTitle($title);
     }
     $this->append($title);
-  }
-  
-  public function contentToString() {
-    parent::contentToString() . $this->menuButton->getHtml();
   }
 
 }

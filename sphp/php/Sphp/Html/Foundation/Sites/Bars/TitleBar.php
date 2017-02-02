@@ -20,8 +20,6 @@ use Sphp\Html\AbstractComponent;
  * @filesource
  */
 class TitleBar extends AbstractComponent {
-  
-  private $leftOffCavasOpener;
 
   /**
    *
@@ -43,10 +41,10 @@ class TitleBar extends AbstractComponent {
   public function __construct() {
     parent::__construct('div');
     $this->cssClasses()->lock('title-bar');
-    $this->leftArea = new BarContentArea('left');
-    $this->rightArea = new BarContentArea('right');
+    $this->leftArea = new LeftBarContentArea();
+    $this->rightArea = new RightBarContentArea();
   }
-  
+
   /**
    * 
    * @param type $value
@@ -61,8 +59,6 @@ class TitleBar extends AbstractComponent {
     }
     return $this;
   }
-  
-
 
   /**
    * Sets and Returns the title area component
@@ -72,9 +68,9 @@ class TitleBar extends AbstractComponent {
    */
   public function appendOffCanvasOpener(\Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvasOpener $btn, $side = 'l') {
     if ($side === 'l') {
-      $this->left()->appendOffCanvasOpener($btn);
+      $this->left()->setMenuButton($btn);
     } else {
-      $this->right()->appendOffCanvasOpener($btn);
+      $this->right()->setMenuButton($btn);
     }
     return $this;
   }
@@ -86,14 +82,14 @@ class TitleBar extends AbstractComponent {
    * @return self for PHP Method Chaining
    */
   public function appendTitle($title, $side = 'l') {
-     if ($side === 'l') {
+    if ($side === 'l') {
       $this->left()->appendTitle($title);
     } else {
       $this->right()->appendTitle($title);
     }
     return $this;
   }
-  
+
   /**
    * Sets and Returns the left side menu area component
    *
@@ -113,7 +109,7 @@ class TitleBar extends AbstractComponent {
   }
 
   public function __clone() {
-    
+
     $this->leftArea = clone $this->leftArea;
     $this->rightArea = clone $this->rightArea;
     parent::__clone();
