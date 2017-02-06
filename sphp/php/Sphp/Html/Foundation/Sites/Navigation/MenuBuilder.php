@@ -9,11 +9,14 @@ use Sphp\Core\Path;
  */
 class MenuBuilder {
 
-  private $defaultTarget = '_self';
   private $menuType = Menu::class;
+  private $linkBuilder;
 
-  public function __construct() {
-    ;
+  public function __construct(MenuLinkBuilder $linkBuilder = null) {
+    if ($linkBuilder === null) {
+      $linkBuilder = new MenuLinkBuilder();
+    }
+   $this->linkBuilder =  $linkBuilder;
   }
 
   /**
@@ -26,46 +29,17 @@ class MenuBuilder {
     return $this;
   }
 
+
   /**
    * 
    * @param  string $target
    * @return self for PHP Method Chaining
    */
   public function setDefaultTarget($target) {
-    $this->defaultTarget = $target;
+    $this->linkBuilder->setDefaultTarget($target);
     return $this;
   }
 
-  public function getDefaultTarget() {
-    return $this->defaultTarget;
-  }
-
-  protected function parseHref(array $link) {
-    if (array_key_exists('href', $link)) {
-      $href = $link['href'];
-    } else {
-      $href = Path::get()->http();
-      if (array_key_exists('page', $link)) {
-        $href .= '?page=' . $link['page'];
-      }
-    }
-    return $href;
-  }
-
-  protected function parseTarget(array $link) {
-    return array_key_exists('target', $link) ? $link['target'] : $this->getDefaultTarget();
-  }
-
-  /**
-   * 
-   * @param  array $link
-   * @return MenuLink
-   */
-  public function createLink(array $link) {
-    $href = static::parseHref($link);
-    $target = static::parseTarget($link);
-    return new MenuLink($href, $link['link'], $target);
-  }
 
   /**
    * 
@@ -79,9 +53,9 @@ class MenuBuilder {
     }
     foreach ($data as $item) {
       if (array_key_exists('link', $item)) {
-        $instance->append(static::createLink($item));
+        $instance->append($this->linkBuilder->parseLink($item));
       } else if (array_key_exists('menu', $item) && array_key_exists('items', $item)) {
-        $instance->append(static::buildSub($item));
+        $instance->append($this->buildSub($item));
       } else if (array_key_exists('separator', $item)) {
         $instance->appendText($item['separator']);
       }
@@ -96,7 +70,7 @@ class MenuBuilder {
    */
   public function buildSub(array $sub) {
     $instance = new SubMenu($sub['menu']);
-    static::buildMenu($sub, $instance);
+    $this->buildMenu($sub, $instance);
     return $instance;
   }
 
