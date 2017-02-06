@@ -13,7 +13,7 @@ use Sphp\Html\TraversableInterface;
 use Traversable;
 
 /**
- * Abstract implementation of a select menu contetn container
+ * Abstract implementation of a select menu content container
 
  * **Notes:**
  *

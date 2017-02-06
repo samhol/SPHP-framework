@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Bars;
 
-use Sphp\Html\Foundation\Sites\Buttons\MenuButton;
-
 /**
- * Implements a Title Bar contetn area
+ * Implements a Title Bar content area
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21
@@ -19,7 +17,7 @@ use Sphp\Html\Foundation\Sites\Buttons\MenuButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RightBarContentArea extends BarContentArea {
+class RightBarContentArea extends TitleBarContentArea {
 
   /**
    * Constructs a new instance
@@ -27,7 +25,7 @@ class RightBarContentArea extends BarContentArea {
    * @param mixed $side the title of the Top Bar component
    */
   public function __construct() {
-    parent::__construct();
+    parent::__construct('div');
     $this->cssClasses()->lock('title-bar-right');
   }
 
