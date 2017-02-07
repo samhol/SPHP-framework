@@ -11,7 +11,7 @@ use InvalidArgumentException;
 use Sphp\Html\Div;
 
 /**
- * Implements a Foundation Top Bar
+ * Implements a Top Bar
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21
@@ -47,6 +47,11 @@ class TopBar extends AbstractBar {
     $this->titleArea = new Div($title);
     $this->titleArea->attrs()->classes()->lock('top-bar-title');
     $this->cssClasses()->lock('top-bar');
+  }
+
+  public function __destruct() {
+    unset($this->titleArea);
+    parent::__destruct();
   }
 
   public function __clone() {

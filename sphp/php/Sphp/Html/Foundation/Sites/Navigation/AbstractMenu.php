@@ -15,6 +15,8 @@ use Sphp\Html\ContainerInterface;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -26,7 +28,8 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * Constructs a new instance
    * 
    * @param string $tagname
-   * @param mixed $content
+   * @param AttributeManager $attrManager
+   * @param ContainerInterface $contentContainer
    */
   public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct($tagname, $attrManager, $contentContainer);

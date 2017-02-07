@@ -5,6 +5,7 @@ namespace Sphp\Manual\MVC;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
 use Sphp\Html\Foundation\Sites\Navigation\Factory;
+use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 class SideNavViewer implements ContentInterface {
 
@@ -40,7 +41,8 @@ class SideNavViewer implements ContentInterface {
   protected function buildMenu() {
     $this->nav = new AccordionMenu();
     $this->nav->addCssClass('')->appendText('Documentation');
-    Factory::buildMenu($this->data, $this->nav);
+    $builder = new MenuBuilder();
+    $builder->buildMenu($this->data, $this->nav);
   }
 
   public function getHtml() {

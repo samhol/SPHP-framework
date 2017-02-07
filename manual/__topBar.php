@@ -7,6 +7,7 @@ use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 use Sphp\Core\Path;
 use Sphp\Core\Util\FileUtils;
+use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 try {
   ob_start();
@@ -21,11 +22,11 @@ try {
   $v = FileUtils::parseYaml(Path::get()->local('manual/yaml/dependencies_links.yml'));
   $apis = FileUtils::parseYaml(Path::get()->local('manual/yaml/apidocs_menu.yml'));
   $leftDrop = new DropdownMenu();
-
-  $leftDrop->appendSubMenu(Factory::buildSub($data));
-  $leftDrop->appendSubMenu(Factory::buildSub($v));
-  $leftDrop->appendSubMenu(Factory::buildSub($apis));
-  $navi->left()->appendMenu($leftDrop);
+  $builder = new MenuBuilder();
+  $leftDrop->appendSubMenu($builder->buildSub($data));
+  $leftDrop->appendSubMenu($builder->buildSub($v));
+  $leftDrop->appendSubMenu($builder->buildSub($apis));
+  $navi->left()->setContent($leftDrop);
   /* $packages = (new SubMenu('Dependencies'))
     ->appendText('PHP resources:')
     ->appendLink('http://php.net/', 'PHP 5.6', '_blank')

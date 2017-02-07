@@ -19,7 +19,6 @@ use Sphp\Html\AbstractComponent;
  */
 class MenuButton extends AbstractComponent {
 
-
   /**
    * 
    * @param OffCanvasAreaInterface $offCanvas the off-canvas component or its id

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Bars;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\SimpleContainerTag;
 use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
 
 /**
@@ -20,7 +20,7 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
- class BarContentArea extends AbstractContainerComponent implements BarContentAreaInterface {
+ class BarContentArea extends SimpleContainerTag implements BarContentAreaInterface {
 
   /**
    * Constructs a new instance
@@ -31,24 +31,4 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
     parent::__construct($tagname);
   }
 
-  /**
-   * Builds the navigation components
-   *
-   * @param  mixed $value
-   * @return self for PHP Method Chaining
-   */
-  public function append($value) {
-    $this->getInnerContainer()->append($value);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  MenuInterface $menu
-   * @return MenuInterface
-   */
-  public function appendMenu(MenuInterface $menu) {
-    $this->append($menu);
-    return $menu;
-  }
 }

@@ -1,26 +1,26 @@
 <?php
 
 namespace Sphp\Html\Media;
-
+use Sphp\Core\Path;
 (new Img("http://playground.samiholck.com/manual/pics/crossbones.png", "Original Skull"))
         ->setLazy(true)
         ->printHtml();
-Img::scale("http://playground.samiholck.com/manual/pics/crossbones.png", 1.2)
+$p = Path::get()->local("manual/pics/crossbones.png");
+Img::scale($p, 1.2)
         ->setAlt("1.5 x Skull")
-        ->setAttr("data-sphp-qtip", true)
         ->setAttr("title", "1.5 x original Skull")
         ->setLazy(true)
         ->printHtml();
-Img::scale("http://playground.samiholck.com/manual/pics/crossbones.png", 0.5)
+Img::scale($p, 0.5)
         ->setAlt("0.5 x Skull")
         ->setLazy(true)
         ->printHtml();
 $size = new Size(100, 50);
-Img::resize("http://playground.samiholck.com/manual/pics/crossbones.png", $size)
+Img::resize($p, $size)
         ->setAlt("50 x 25 Skull")
         ->setLazy(true)
         ->printHtml();
-Img::scaleToFit("http://playground.samiholck.com/manual/pics/crossbones.png", $size)
+Img::scaleToFit($p, $size)
         ->setLazy(true)
         ->printHtml();
 ?> 

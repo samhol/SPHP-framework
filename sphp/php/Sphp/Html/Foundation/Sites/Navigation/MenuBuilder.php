@@ -1,34 +1,47 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Navigation;
+/**
+ * MenuBuilder.php (UTF-8)
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
 
-use Sphp\Core\Path;
+namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
  * 
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-11-21
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/menu.html Foundation Menu
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class MenuBuilder {
 
   private $menuType = Menu::class;
+
+  /**
+   *
+   * @var MenuLinkBuilder 
+   */
   private $linkBuilder;
 
   public function __construct(MenuLinkBuilder $linkBuilder = null) {
     if ($linkBuilder === null) {
       $linkBuilder = new MenuLinkBuilder();
     }
-   $this->linkBuilder =  $linkBuilder;
+    $this->linkBuilder = $linkBuilder;
   }
 
   /**
    * 
-   * @param  string $target
+   * @param  string $menuType
    * @return self for PHP Method Chaining
    */
-  public function setMenuType($target) {
-    $this->menuType = $target;
+  public function setMenuType($menuType) {
+    $this->menuType = $menuType;
     return $this;
   }
-
 
   /**
    * 
@@ -40,12 +53,11 @@ class MenuBuilder {
     return $this;
   }
 
-
   /**
    * 
    * @param  array $data
    * @param  MenuInterface $instance
-   * @return Navigation\Menu
+   * @return MenuInterface
    */
   private function insertIntoMenu(array $data, MenuInterface $instance = null) {
     if ($instance === null) {
@@ -78,7 +90,7 @@ class MenuBuilder {
    * 
    * @param  array $data
    * @param  MenuInterface|null $instance
-   * @return Menu
+   * @return MenuInterface
    */
   public function buildMenu(array $data, MenuInterface $instance = null) {
     if ($instance === null) {
@@ -89,6 +101,23 @@ class MenuBuilder {
     }
     static::insertIntoMenu($data['items'], $instance);
     return $instance;
+  }
+
+  /**
+   * 
+   * @param  array $data
+   * @return DropdownMenu new menu instance
+   */
+  public function buildDropdownMenu(array $data) {
+    return $this->buildMenu($data, new DropdownMenu());
+  }
+  /**
+   * 
+   * @param  array $data
+   * @return DropdownMenu new menu instance
+   */
+  public function buildAccordionMenu(array $data) {
+    return $this->buildMenu($data, new AccordionMenu());
   }
 
 }

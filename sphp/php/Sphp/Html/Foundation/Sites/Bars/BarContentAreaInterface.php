@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Bars;
 
 /**
- * Implements an abstract Bar content area
+ * Describes a Bar content area
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-21

@@ -20,6 +20,8 @@ namespace Sphp\Html\Foundation\Sites\Bars;
 abstract class TitleBarContentArea extends BarContentArea {
 
   private $menuButton;
+  
+  private $title;
 
   /**
    * Constructs a new instance
@@ -28,6 +30,18 @@ abstract class TitleBarContentArea extends BarContentArea {
    */
   public function __construct() {
     parent::__construct('div');
+  }
+
+  public function __destruct() {
+    unset($this->menuButton);
+    parent::__destruct();
+  }
+
+  public function __clone() {
+    if ($this->menuButton !== null) {
+      $this->menuButton = clone $this->menuButton;
+    }
+    parent::__clone();
   }
 
   /**
@@ -58,9 +72,13 @@ abstract class TitleBarContentArea extends BarContentArea {
    */
   public function appendTitle($title) {
     if (!$title instanceof TitleBarTitle) {
-      $title = new TitleBarTitle($title);
+      $this->title = new TitleBarTitle($title);
     }
-    $this->append($title);
+    //$this->append($title);
+  }
+
+  public function contentToString() {
+    return $this->title . parent::contentToString();
   }
 
 }

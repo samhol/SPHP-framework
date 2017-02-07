@@ -32,7 +32,7 @@ class AccordionMenu extends Menu {
 
   public function append(MenuItemInterface $content) {
     if ($content instanceof SubMenu) {
-      $content->nested(true)->vertical(true);
+      $content->vertical(true);
     }
     parent::append($content);
     return $this;

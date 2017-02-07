@@ -21,13 +21,6 @@ use ParsedownExtraPlugin;
  */
 class Markdown extends AbstractReader {
 
-  /**
-   * fromString(): defined by Reader interface.
-   *
-   * @param  string $string
-   * @return array|bool
-   * @throws RuntimeException
-   */
   public function fromString($string) {
     try {
       $data = ParsedownExtraPlugin::instance()->text($string);

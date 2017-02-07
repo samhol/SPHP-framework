@@ -66,7 +66,7 @@ class ImageScaler {
   public function __construct($src) {
     try {
       $this->src = "$src";
-      $this->cacheFolderName = md5("$this->src") . "/";
+      $this->cacheFolderName = md5($this->src) . "/";
       $imagine = new Imagine();
       $this->image = $imagine->open($src);
       $this->originalBox = $this->image->getSize();

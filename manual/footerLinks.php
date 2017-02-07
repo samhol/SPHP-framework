@@ -1,10 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation;
+namespace Sphp\Html;
 
 use Sphp\Html\Foundation\Sites\Navigation\Menu;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
-use Sphp\Html\Document;
 
 $links['js'] = (new Menu())->vertical()
         ->appendText('JavaScript ' . Document::icon('fa fa-code'))

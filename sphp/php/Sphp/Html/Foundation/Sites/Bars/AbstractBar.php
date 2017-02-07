@@ -37,8 +37,8 @@ class AbstractBar extends AbstractComponent {
    * Constructs a new instance
    *
    * @param string $tagname
-   * @param type $left
-   * @param type $right
+   * @param BarContentAreaInterface $left
+   * @param BarContentAreaInterface $right
    */
   public function __construct($tagname, BarContentAreaInterface $left, BarContentAreaInterface $right) {
     parent::__construct($tagname);
@@ -46,10 +46,21 @@ class AbstractBar extends AbstractComponent {
     $this->rightArea = $right;
   }
 
+  public function __destruct() {
+    unset($this->leftArea, $this->rightArea);
+    parent::__clone();
+  }
+
+  public function __clone() {
+    $this->leftArea = clone $this->leftArea;
+    $this->rightArea = clone $this->rightArea;
+    parent::__clone();
+  }
+
   /**
    * Sets and Returns the left side menu area component
    *
-   * @return BarContentArea the left side menu area component
+   * @return BarContentAreaInterface the left side menu area component
    */
   public function left() {
     return $this->leftArea;
@@ -58,16 +69,10 @@ class AbstractBar extends AbstractComponent {
   /**
    * Sets and Returns the right side menu area component
    *
-   * @return MenuInterface the right side menu area component
+   * @return BarContentAreaInterface the right side menu area component
    */
   public function right() {
     return $this->rightArea;
-  }
-
-  public function __clone() {
-    $this->leftArea = clone $this->leftArea;
-    $this->rightArea = clone $this->rightArea;
-    parent::__clone();
   }
 
   public function contentToString() {
