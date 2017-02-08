@@ -12,7 +12,7 @@ $menuInterface = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigat
 $dropdownMenu = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigation\DropdownMenu::class);
 $navigationNs = $menuInterface->namespaceLink(false);
 echo $parsedown->text(<<<MD
-#Foundation bars: <small>wrappers for navigation components</small>
+#Foundation bars: <small>wrappers around flexible navigation components</small>
 $ns
 This namespace contains classes and interfaces for Foundation navigation bars.
 These navigation bars can be used with menus implemented in $navigationNs namespace; especially $dropdownMenu components. 
@@ -26,6 +26,8 @@ MD
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/TitleBar.php');
 echo $parsedown->text(<<<MD
 ##Foundation Top Bar: <small>The $topBar component</small>
+        
+Top Bar component is a simple wrapper around menu components.
 MD
 );
 
