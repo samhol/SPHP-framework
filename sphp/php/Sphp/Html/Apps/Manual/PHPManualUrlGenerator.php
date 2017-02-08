@@ -61,7 +61,7 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
   public function getFunctionUrl($function) {
     return $this->create("function." . $this->phpPathFixer($function));
   }
-  
+
   public function getConstantUrl($constant) {
     return $this->create('reserved.constants.php#constant.' . $this->phpPathFixer($constant));
   }

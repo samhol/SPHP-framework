@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Bars;
 
 use Sphp\Html\SimpleContainerTag;
-use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
 
 /**
  * Implements an abstract Bar content area

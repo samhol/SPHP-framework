@@ -8,12 +8,14 @@ use Sphp\Html\Apps\Manual\Apis;
 $titleBar = Apis::apigen()->classLinker(TitleBar::class);
 $topBar = Apis::apigen()->classLinker(TopBar::class);
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-
+$menuInterface = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigation\MenuInterface::class);
+$dropdownMenu = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigation\DropdownMenu::class);
+$navigationNs = $menuInterface->namespaceLink(false);
 echo $parsedown->text(<<<MD
 #Foundation bars: <small>wrappers for navigation components</small>
 $ns
-This namespace contains Foundation buttons and buttongroups.
-They are convenient tools when a centralized style for customized button links and form buttons etc. isneeded.
+This namespace contains classes and interfaces for Foundation navigation bars.
+These navigation bars can be used with menus implemented in $navigationNs namespace; especially $dropdownMenu components. 
 
 ##Foundation Title Bar: <small>The $titleBar component</small>
 

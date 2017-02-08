@@ -47,8 +47,7 @@ interface ClassLinkerInterface extends LinkerInterface {
   /**
    * Returns a hyperlink object pointing to the namespace of the class in the API documentation
    *
-   * @param  string $constName the constant name
-   * @return Hyperlink object pointing to class constant in the API documentation
+   * @return Hyperlink object pointing to the namespace of the class in the API documentation
    */
   public function namespaceLink();
 }

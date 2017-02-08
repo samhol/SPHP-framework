@@ -1,11 +1,13 @@
 <?php
 
 /**
- * BarContentArea.php (UTF-8)
+ * TitleBarContentArea.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Bars;
+
+use Sphp\Html\Span;
 
 /**
  * Implements a Title Bar content area
@@ -17,29 +19,40 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class TitleBarContentArea extends BarContentArea {
+class TitleBarContentArea extends BarContentArea {
 
+  private $side;
+
+  /**
+   *
+   * @var MenuButton|null 
+   */
   private $menuButton;
-  
   private $title;
 
   /**
    * Constructs a new instance
    *
-   * @param mixed $side the title of the Top Bar component
+   * @precondition $side == 'left' | 'right'
+   * @param string $side the side of the container
    */
-  public function __construct() {
+  public function __construct($side) {
     parent::__construct('div');
+    $this->side = $side;
+    $this->cssClasses()->lock("title-bar-$side");
   }
 
   public function __destruct() {
-    unset($this->menuButton);
+    unset($this->menuButton, $this->title);
     parent::__destruct();
   }
 
   public function __clone() {
     if ($this->menuButton !== null) {
       $this->menuButton = clone $this->menuButton;
+    }
+    if ($this->title !== null) {
+      $this->title = clone $this->title;
     }
     parent::__clone();
   }
@@ -56,29 +69,23 @@ abstract class TitleBarContentArea extends BarContentArea {
   }
 
   /**
-   * Sets and Returns the title area component
+   * Sets the title of the Title Bar area component
    *
-   * @return MenuButton|null the menu controller button or null if not set
-   */
-  public function getMenuButton() {
-    return $this->menuButton;
-  }
-
-  /**
-   * Sets and Returns the title area component
-   *
-   * @param  mixed $title the title of the Navigator component
+   * @param  mixed $title the title of the Title Bar area component
    * @return self for PHP Method Chaining
    */
-  public function appendTitle($title) {
-    if (!$title instanceof TitleBarTitle) {
-      $this->title = new TitleBarTitle($title);
-    }
-    //$this->append($title);
+  public function setTitle($title) {
+    $this->title = new Span($title);
+    $this->title->cssClasses()->lock('title-bar-title');
+    return $this;
   }
 
   public function contentToString() {
-    return $this->title . parent::contentToString();
+    if ($this->side === 'left') {
+      return $this->menuButton . $this->title . parent::contentToString();
+    } else {
+      return parent::contentToString() . $this->title . $this->menuButton;
+    }
   }
 
 }

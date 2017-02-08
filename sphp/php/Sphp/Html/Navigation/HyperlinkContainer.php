@@ -75,4 +75,16 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getHyperlink()->isCurrentUrl();
   }
 
+  /**
+   * Sets the value of the title attribute
+   *
+   * @param  string|null $title the value of the title attribute
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
+   */
+  public function setTitle($title) {
+    $this->getHyperlink()->setAttr("title", $title);
+    return $this;
+  }
+
 }

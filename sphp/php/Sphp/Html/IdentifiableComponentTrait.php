@@ -268,23 +268,12 @@ trait IdentifiableComponentTrait {
     return $this->attrs()->exists($name);
   }
 
-  public function identify($identityName = "id", $prefix = "id_", $length = 16) {
+  public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
     return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
-  public function hasId($identityName = "id") {
+  public function hasId($identityName = 'id') {
     return $this->attrs()->hasId($identityName);
-  }
-
-  /**
-   * Sets the value of the title attribute
-   *
-   * @param  string|null $title the value of the title attribute
-   * @return self for PHP Method Chaining
-   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   */
-  public function setTitle($title) {
-    return $this->setAttr("title", $title);
   }
 
   /**
@@ -298,7 +287,7 @@ trait IdentifiableComponentTrait {
    * @return self for PHP Method Chaining
    */
   public function hide() {
-    $this->setStyle("display", "none");
+    $this->setStyle('display', 'none');
     return $this;
   }
 
@@ -313,8 +302,8 @@ trait IdentifiableComponentTrait {
    * @return self for PHP Method Chaining
    */
   public function unhide() {
-    if ($this->inlineStyles()->getProperty("display") == "none") {
-      $this->removeStyle("display");
+    if ($this->inlineStyles()->getProperty('display') === 'none') {
+      $this->inlineStyles()->unsetProperty('display');
     }
     return $this;
   }

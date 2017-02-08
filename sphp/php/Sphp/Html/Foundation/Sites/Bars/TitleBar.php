@@ -23,53 +23,8 @@ class TitleBar extends AbstractBar {
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct('div', new LeftBarContentArea(), new RightBarContentArea());
+    parent::__construct('div', new TitleBarContentArea('left'), new TitleBarContentArea('right'));
     $this->cssClasses()->lock('title-bar');
-  }
-
-  /**
-   * 
-   * @param type $value
-   * @param  string $side
-   * @return self for PHP Method Chaining
-   */
-  public function append($value, $side = 'l') {
-    if ($side === 'l') {
-      $this->left()->append($value);
-    } else {
-      $this->right()->append($value);
-    }
-    return $this;
-  }
-
-  /**
-   * Sets and Returns the title area component
-   *
-   * @param  mixed $btn the title of the Navigator component
-   * @return self for PHP Method Chaining
-   */
-  public function appendOffCanvasOpener(\Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvasOpener $btn, $side = 'l') {
-    if ($side === 'l') {
-      $this->left()->setMenuButton($btn);
-    } else {
-      $this->right()->setMenuButton($btn);
-    }
-    return $this;
-  }
-
-  /**
-   * Sets and Returns the title area component
-   *
-   * @param  mixed $title the title of the Navigator component
-   * @return self for PHP Method Chaining
-   */
-  public function appendTitle($title, $side = 'l') {
-    if ($side === 'l') {
-      $this->left()->appendTitle($title);
-    } else {
-      $this->right()->appendTitle($title);
-    }
-    return $this;
   }
 
 }

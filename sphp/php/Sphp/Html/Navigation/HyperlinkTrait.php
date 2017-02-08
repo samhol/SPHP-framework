@@ -130,4 +130,15 @@ trait HyperlinkTrait {
     return URL::getCurrent()->equals($this->getHref());
   }
 
+  /**
+   * Sets the value of the title attribute
+   *
+   * @param  string|null $title the value of the title attribute
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
+   */
+  public function setTitle($title) {
+    return $this->setAttr("title", $title);
+  }
+
 }

@@ -105,9 +105,15 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   }
 
   public function namespaceLink($full = true) {
-    $name = $this->ref->getNamespaceName();
-    $title = "$name namespace";
-    return $this->hyperlink($this->urls()->getNamespaceUrl($name), $name, $title);
+    $fullName = $this->ref->getNamespaceName();
+    if (!$full) {
+      $namespaceArray = explode('\\', $fullName);
+      $name = array_pop($namespaceArray);
+    } else {
+      $name = $fullName;
+    }
+    $title = "$fullName namespace";
+    return $this->hyperlink($this->urls()->getNamespaceUrl($fullName), $name, $title);
   }
 
 }
