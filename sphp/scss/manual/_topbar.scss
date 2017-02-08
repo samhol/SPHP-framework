@@ -1,0 +1,81 @@
+/**
+ * _topbar.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+.sphp-manual.top-bar {
+  //z-index: 100; 
+  border-top: solid 1px #FF8000;
+  border-bottom: solid 2px #FF8000;
+  color: $sphp6-topbar-link-font-color;
+  > ul {
+    margin: 0;
+  }
+  .top-bar-left, .top-bar-right {
+    > ul > li {
+      //z-index: 101;
+      ul, li {
+        //  z-index: 102;
+      }
+      border-top: 1px solid $sphp6-root-border-color;
+      border-bottom: 1px solid $sphp6-root-border-color;
+      border-left: 1px solid $sphp6-root-border-color;
+      &:last-child {
+        border-right: 1px solid $sphp6-root-border-color;
+      }
+    }
+  }
+  .top-bar-left {
+    //margin-left: rem-calc(10);
+  }
+  .top-bar-right {
+    //margin-left: rem-calc(10);
+    //margin-right: rem-calc(10);
+  }
+  li {   
+    font-size: rem-calc(12);
+    .menu-text {
+      font-size: rem-calc(13); 
+      @include background-image(linear-gradient(to right, #444, #1b1b1b));
+      background-color: smart-scale($sphp6-topbar-bg, 15%);
+      border-top: solid 1px #444;
+      border-bottom:  solid 1px #444;
+      padding-top: rem-calc(10);
+      padding-bottom: rem-calc(10);
+      color: smart-scale($sphp6-topbar-font-color, 25%);
+    }
+  }
+  a {
+    color: smart-scale($sphp6-topbar-font-color, 5%);   
+    @include background-image(linear-gradient(to right, #333, #111));
+    &:hover {
+      color: smart-scale($sphp6-topbar-font-color, -15%);
+      background-color: smart-scale($sphp6-topbar-bg, 10%);
+      @include background-image(linear-gradient(to right, #444, #222));
+    }
+  }
+  li.active a {  
+    background-color: #666;
+    @include background-image(linear-gradient(to right, #9e4700, #333));
+    //
+    &:hover {
+      background-color: #888;
+      @include background-image(linear-gradient(to right, #a35611, #444));
+    }
+  }
+  .menu {
+    li button {
+      display: block;
+      padding: 0.7rem 1rem;
+      line-height: 1;
+    }
+    background-color: smart-scale($topbar-background, 5%);
+    ul {
+      border-color:  #FF8000;
+
+    }
+  }
+}

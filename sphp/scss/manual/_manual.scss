@@ -6,14 +6,26 @@
 
 @charset "UTF-8";
 
+$sphp6-topbar-bg: #121212; 
+$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
+$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
+$sphp6-topbar-font-color: #efefef;
+$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-root-border-color: #4e4e4e;
+
 $default-left-margin: rem-calc(35);
 $default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
 $error-bg: rgba(255,127,80, 0.40);
+
+
 @import "api-links";
 @import "f6-manual-accordion";
 @import "form-submission-viewer";
 @import "footer";
 @import "error-pages";
+@import 'topbar';
+
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {
     @if $margin == all {
