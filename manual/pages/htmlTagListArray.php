@@ -4,108 +4,108 @@ namespace Sphp\Html\Tables;
 
 $p[] = ['Basic',
     [
-        ['html', 'Defines an html document'],
-        ['body', 'Defines the body element'],
-        ['p', 'Defines a paragraph'],
-        ['hr', 'Defines a horizontal rule'],
+        ['html', 'An html document'],
+        ['body', 'The body element'],
+        ['p', 'A paragraph'],
+        ['hr', 'A horizontal rule'],
         ['br', ' Inserts a single line break']
     ]
 ];
 $p[] = ['Headings',
     [
-        ['h1', 'Defines header 1'],
-        ['h2', 'Defines header 2'],
-        ['h3', 'Defines header 3'],
-        ['h4', 'Defines header 4'],
-        ['h5', 'Defines header 5'],
-        ['h6', 'Defines header 6']
+        ['h1', '1st. level header'],
+        ['h2', '2nd. level header'],
+        ['h3', '3rd. level header'],
+        ['h4', '4th. level header'],
+        ['h5', '5th. level header'],
+        ['h6', '6th. level header']
     ]
 ];
 
 $p[] = ['Formatting',
     [
-        ['abbr', 'Defines an abbreviation'],
-        ['address', 'Defines an address element'],
-        ['b', 'Defines bold text'],
+        ['abbr', 'An abbreviation'],
+        ['address', 'An address element'],
+        ['b', 'Bold text'],
         ['bdi', 'Isolates a part of text that might be formatted in a different direction from other text outside it'],
-        ['bdo', 'Defines the direction of text display'],
-        ['blockquote', 'Defines a section that is quoted from another source'],
-        ['cite', 'Defines a citation'],
-        ['code', 'Defines computer code text'],
-        ['del', 'Defines deleted text'],
-        ['dfn', 'Defines a definition term'],
+        ['bdo', 'The direction of text display'],
+        ['blockquote', 'A section that is quoted from another source'],
+        ['cite', 'A citation'],
+        ['code', 'Computer code text'],
+        ['del', 'Deleted text'],
+        ['dfn', 'A definition term'],
         ['em', 'Defines emphasized text'],
-        ['i', '  Defines italic text'],
-        ['ins', 'Defines inserted text'],
+        ['i', 'Italic text'],
+        ['ins', 'Inserted text'],
         ['kbd', 'Defines keyboard text'],
         ['mark', 'Defines marked text'],
         ['meter', 'Defines measurement within a predefined range'],
         ['pre', 'Defines preformatted text'],
         ['progress', 'Defines progress of a task of any kind'],
-        ['q', 'Defines a short quotation'],
+        ['q', 'A short quotation'],
         ['rp', 'Used in ruby annotations to define what to show browsers that to not support the ruby element.'],
         ['rt', 'Defines explanation to ruby annotations.'],
         ['ruby', 'Defines ruby annotations.'],
-        ['s', 'Defines text that is no longer correct'],
+        ['s', 'Text that is no longer correct'],
         ['samp', 'Defines sample computer code'],
         ['small', 'Defines small text'],
         ['strong', 'Defines strong text'],
         ['sub', 'Defines subscripted text'],
         ['sup', 'Defines superscripted text'],
-        ['time', 'Defines a date/time'],
-        ['u', 'Defines text that should be stylistically different from normal text'],
-        ['var', 'Defines a variable'],
-        ['wbr', 'Defines a possible line-break']
+        ['time', 'A date/time'],
+        ['u', 'Text that should be stylistically different from normal text'],
+        ['var', 'A variable'],
+        ['wbr', 'A possible line-break']
     ]
 ];
 
 $p[] = ['Forms',
     [
-        ['form', 'Defines a form'],
-        ['input:hidden', 'Defines a hidden input field'],
-        ['input:text', 'Defines a text input field'],
-        ['input:email', 'Defines an email input field'],
-        ['input:password', 'Defines a password input field'],
-        ['input:radio', 'Defines a radio input'],
-        ['input:checkbox', 'Defines a checkbox input'],
-        ['textarea', 'Defines a text area'],
-        ['button:button', 'Defines a push button'],
-        ['button:reset', 'Defines a push button for form resetting'],
-        ['button:submit', 'Defines a push button for form submitting'],
-        ['keygen', 'Defines a generated key in a form'],
+        ['form', 'A form'],
+        ['input:hidden', 'A hidden input field'],
+        ['input:text', 'A text input field'],
+        ['input:email', 'An email input field'],
+        ['input:password', 'A password input field'],
+        ['input:radio', 'A radio input'],
+        ['input:checkbox', 'A checkbox input'],
+        ['textarea', 'A text area'],
+        ['button:button', 'A push button'],
+        ['button:reset', 'A reset button for forms'],
+        ['button:submit', 'A sybmit button for forms'],
+        ['keygen', 'A generated key in a form'],
         ['output', 'Defines some types of output'],
-        ['label', 'Defines a label for a form control'],
-        ['fieldset', 'Defines a fieldset'],
-        ['legend', 'Defines a title in a fieldset'],
-        ['datalist', 'Defines a dropdown list'],
-        ['select', 'Defines a selectable list'],
-        ['optgroup', 'Defines an option group'],
-        ['option', 'Defines an option in a drop-down list']
+        ['label', 'A label for a form control'],
+        ['fieldset', 'A fieldset'],
+        ['legend', 'A title in a fieldset'],
+        ['datalist', 'A dropdown list'],
+        ['select', 'A selectable list'],
+        ['optgroup', 'An option group'],
+        ['option', 'An option in a drop-down list']
     ]
 ];
 
 namespace Sphp\Html\Media;
 
-$av = $api->classLinker(AV\Audio::class) . ' and ' . $api->classLinker(AV\Video::class);
+$av = $api->classLinker(Multimedia\Audio::class) . ' and ' . $api->classLinker(Multimedia\Video::class);
 $p[] = ['Media', [
-        ['img', 'Defines an image'],
-        ['area', 'Defines an area inside an image map'],
-        ['map', 'Defines an image map'],
-        ['canvas', 'Defines graphics'],
-        ['figure', 'Defines a group of media content, and their caption'],
-        ['figcaption', "Defines a caption for a {$api->classLinker(Figure::class)} component"],
-        ['audio', 'Defines sound content'],
-        ['video', 'Defines a video'],
-        ['track', 'Defines text tracks for $av components'],
-        ['source', 'Defines multiple media resources for $av components'],
-        ['embed', 'Defines external interactive content or plugin'],
-        ['iframe', 'Defines an inline sub window (frame)']
+        ['img', 'An image'],
+        ['area', 'An area inside an image map'],
+        ['map', 'An image map'],
+        ['canvas', 'Graphics canvas'],
+        ['figure', 'A group of media content, and their caption'],
+        ['figcaption', "A caption for a {$api->classLinker(Figure::class)} component"],
+        ['audio', 'Sound content'],
+        ['video', 'Video content'],
+        ['track', "Text tracks for $av components"],
+        ['source', "Multiple media resources for $av components"],
+        ['embed', 'External interactive content or plugin'],
+        ['iframe', 'An inline sub window (frame)']
     ]
 ];
 
 
 $p[] = ['Links', [
-        ['a', 'Defines a hyperlink'],
+        ['a', 'A hyperlink'],
         ['nav', 'Defines navigation links']
     ]
 ];
@@ -115,53 +115,53 @@ namespace Sphp\Html\Lists;
 $dl = 'for ' . $api->classLinker(Dl::class) . ' component';
 $p['Lists'] = ['Lists',
     [
-        ['ul', 'Defines an unordered list'],
-        ['ol', 'Defines an ordered list'],
-        ['li', "Defines a list item for " . $api->classLinker(Ul::class) . " and " . $api->classLinker(Ol::class) . " components"],
-        ['dl', 'Defines a definition list'],
-        ['dd', "Defines a definition description $dl"],
-        ['dt', "Defines a definition term $dl"],
-        ['menu', 'Defines a menu list']
+        ['ul', 'An unordered list'],
+        ['ol', 'An ordered list'],
+        ['li', "A list item for " . $api->classLinker(Ul::class) . " and " . $api->classLinker(Ol::class) . " components"],
+        ['dl', 'A definition list'],
+        ['dd', "A definition description $dl"],
+        ['dt', "A definition term $dl"],
+        ['menu', 'A menu list']
     ]
 ];
 
 $p[] = ['Tables',
     [
-        ['table', 'Defines a table'],
-        ['caption', 'Defines a table caption'],
-        ['th', 'Defines a table header'],
-        ['td', 'Defines a table cell'],
-        ['tr', 'Defines a table row'],
-        ['thead', 'Defines a table header'],
-        ['tbody', 'Defines a table body'],
-        ['tfoot', 'Defines a table footer'],
-        ['col', 'Defines attributes for table columns'],
-        ['colgroup', 'Defines groups of table columns']
+        ['table', 'A table'],
+        ['caption', 'A table caption'],
+        ['th', 'A table header'],
+        ['td', 'A table cell'],
+        ['tr', 'A table row'],
+        ['thead', 'A table header'],
+        ['tbody', 'A table body'],
+        ['tfoot', 'A table footer'],
+        ['col', 'Attributes for table columns'],
+        ['colgroup', 'Groups of table columns']
     ]
 ];
 
 $p[] = ['Style/Sections',
     [
-        ['style', 'Defines a style definition'],
-        ['div', 'Defines a section in a document'],
-        ['span', 'Defines a section in a document'],
-        ['header', 'Defines a header for a section or page'],
-        ['footer', 'Defines a footer for a section or page'],
-        ['article', 'Defines an article'],
-        ['aside', 'Defines content aside from the page content'],
-        ['details', 'Defines details of an element'],
-        ['dialog', 'Defines a dialog (conversation)'],
-        ['section', 'Defines a section']
+        ['style', 'A style definition'],
+        ['div', 'A section in a document'],
+        ['span', 'A section in a document'],
+        ['header', 'A header for a section or page'],
+        ['footer', 'A footer for a section or page'],
+        ['article', 'An article'],
+        ['aside', 'Content aside from the page content'],
+        ['details', 'Details of an element'],
+        ['dialog', 'A dialog (conversation)'],
+        ['section', 'A section']
     ]
 ];
 
 $p[] = ['Head',
     [
-        ['head', 'Defines information about the document'],
-        ['title', 'Defines the document title'],
-        ['link', 'Defines a resource reference'],
-        ['meta', 'Defines meta information'],
-        ['base', 'Defines a base URL for all the links in a page']
+        ['head', 'Information about the document'],
+        ['title', 'Document title'],
+        ['link', 'A resource reference'],
+        ['meta', 'Meta information'],
+        ['base', 'A base URL for all the links in a page']
     ]
 ];
 
@@ -169,9 +169,9 @@ $p[] = ["Programming",
     [
         ['script:code', 'Contains scripting statements'],
         ['script:src', 'Points to an external script file'],
-        ['noscript', 'Defines a noscript section'],
-        ['object', 'Defines an embedded object'],
-        ['param', 'Defines a parameter for an object']
+        ['noscript', 'A noscript section'],
+        ['object', 'An embedded object'],
+        ['param', 'A parameter for an object']
     ]
 ];
 
@@ -183,7 +183,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
   $table = (new Table())
           ->addCssClass('html-to-php');
   $table->thead()
-          ->appendHeaderRow(['Parameter', 'HTML Tag', 'PHP Object type', 'Description']);
+          ->appendHeaderRow(['Parameter', 'HTML Tag', 'PHP type', 'Description']);
   $body = $table->tbody();
   foreach ($v as $data) {
     if (is_string($data)) {
@@ -199,11 +199,11 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       }
       $linkText .= "&gt;";
       $param = new \Sphp\Html\Span("$data[0]");
-      $tooptipText = "call Doc::get(\"$data[0]\")";
+      $tooptipText = "Document::get(\"$data[0]\")";
       $c[] = new \Sphp\Html\Foundation\Sites\Media\Tooltip($param, $tooptipText);
-      $c[] = $w3schools->tag($tag->getTagName(), $linkText)->addCssClass("scale-to-fit");
+      $c[] = $w3schools->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
-      $c[] = $api->classLinker($ref->getName(), $text)->getLink()->addCssClass("scale-to-fit")->removeCssClass("bordered");
+      $c[] = $api->classLinker($ref->getName(), $text)->getLink()->removeCssClass("bordered");
       $c[] = $data[1];
       $body->appendBodyRow($c);
     }
