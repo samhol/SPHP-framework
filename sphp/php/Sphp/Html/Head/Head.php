@@ -82,7 +82,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
     $this->meta = new MetaContainer();
     $this->scripts = new ScriptsContainer();
     $this->links = new Container();
-    $this->metaTags()->setCharset($charset);
+    $this->addMeta(Meta::charset($charset));
     return $this;
   }
 
@@ -168,8 +168,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for PHP Method Chaining
    */
   public function enableSPHP() {
-    $this->metaTags()->setViewport('width=device-width, initial-scale=1.0');
-    $this->metaTags()->setCharset('UTF-8');
+    $this->addMeta(Meta::viewport('width=device-width, initial-scale=1.0'))
+            ->addMeta(Meta::charset('UTF-8'));
     $this->addCssSrc(Path::get()->http() . 'sphp/css/sphp.all.css')
             ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
             ->useVideoJS();
@@ -248,7 +248,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
     } else if ($component instanceof Link) {
       $this->links->append($component);
     } else if ($component instanceof Meta) {
-      $this->metaTags()->addMeta($component);
+      $this->addMeta($component);
     } else if ($component instanceof ScriptInterface) {
       $this->scripts()->append($component);
     } else {
@@ -264,6 +264,17 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    */
   public function metaTags() {
     return $this->meta;
+  }
+
+  /**
+   * Adds meta data object
+   *
+   * @param  MetaInterface $meta
+   * @return self for PHP Method Chaining
+   */
+  public function addMeta(MetaInterface $meta) {
+    $this->meta->addMeta($meta);
+    return $this;
   }
 
   public function contentToString() {

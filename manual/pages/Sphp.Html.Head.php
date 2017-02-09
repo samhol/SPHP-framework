@@ -3,18 +3,21 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\Programming\ScriptInterface;
+use Sphp\Html\Apps\Manual\Apis;
 
-$headNS = $api->namespaceLink(__NAMESPACE__);
-$metaIfLnk = $api->classLinker(HeadComponentInterface::class);
-$head = $api->classLinker(Head::class);
-$title = $api->classLinker(Title::class);
-$meta = $api->classLinker(Meta::class);
-$base = $api->classLinker(Base::class);
-$link = $api->classLinker(Link::class);
-$scriptInterface = $api->classLinker(ScriptInterface::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$headNS = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$metaIfLnk = Apis::apigen()->classLinker(HeadComponentInterface::class);
+$head = Apis::apigen()->classLinker(Head::class);
+$title = Apis::apigen()->classLinker(Title::class);
+$metaInterface = Apis::apigen()->classLinker(MetaInterface::class);
+$metaContainer = Apis::apigen()->classLinker(MetaContainer::class);
+$meta = Apis::apigen()->classLinker(Meta::class);
+$base = Apis::apigen()->classLinker(Base::class);
+$link = Apis::apigen()->classLinker(Link::class);
+$scriptInterface = Apis::apigen()->classLinker(ScriptInterface::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#HTML HEAD: <small>metadata manipulation</small>
+#HTML HEAD: <small>meta data manipulation</small>
         
 $ns
         
@@ -33,9 +36,18 @@ The following PHP classes and interfaces describe HTML meta data components:
 
 MD
 );
+
 $exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head1.php", "html5", false);
 echo $parsedown->text(<<<MD
-###The $head component and client side scripts
+##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>{#MetaInterface}
+
+$meta class works also as a object factory for $metaInterface objects implementing different meta data properties.
+All $metaInterface types can be stored into a $metaContainer container.
+MD
+);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/MetaInterface.php", "html5", false);
+echo $parsedown->text(<<<MD
+##The $head component and client side scripts
         
 The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 
 This guarantees that all of the DOM elements needed are already present on the page. 

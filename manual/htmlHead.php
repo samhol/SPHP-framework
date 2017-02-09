@@ -42,6 +42,7 @@ if ($errorCode !== null) {
   }
   Document::html()->setDocumentTitle($title);
 }
+use Sphp\Html\Head\Meta;
 $html->enableSPHP();
 $html->head()
         ->useFontAwesome()
@@ -50,10 +51,9 @@ $html->head()
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr($conf->paths()->http(), '_self')
         ->addShortcutIcon($conf->paths()->http('manual/pics/favicon.ico'))
-        ->metaTags()
-        ->setApplicationName('SPHP')
-        ->setAuthor('Sami Holck')
-        ->setKeywords('php, scss, css, html, html5, javascript, framework, foundation, jquery')
-        ->setDescription('SPHP framework for web developement');
+        ->addMeta(Meta::author('Sami Holck'))
+        ->addMeta(Meta::applicationName('SPHP framework'))
+        ->addMeta(Meta::keywords('php, scss, css, html, html5, framework, foundation, CSS, JavaScript, DOM, Web development, tutorials, programming, references, examples, source code, demos, tips'))
+        ->addMeta(Meta::description('SPHP framework for web developement'));
 
 echo $html->getOpeningTag() . $html->head();

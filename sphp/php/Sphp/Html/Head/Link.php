@@ -67,7 +67,8 @@ class Link extends EmptyTag implements HeadComponentInterface {
     if ($encode) {
       $href = Strings::htmlEncode($href);
     }
-    return $this->setAttr('href', $href);
+    $this->attrs()->set('href', $href);
+    return $this;
   }
 
   /**
@@ -78,12 +79,11 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * 1. The href attribute specifies the location (URL) of the external resource 
    *    (most often a style sheet file).
    * 
-   *
    * @return string the location of the linked document
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function getHref() {
-    return $this->getAttr('href');
+    return $this->attrs()->get('href');
   }
 
   /**
@@ -94,30 +94,27 @@ class Link extends EmptyTag implements HeadComponentInterface {
    *
    * **Values:**
    *
-   * * <var>alternate</var> Links to an alternate version of the document
+   * * `alternate` Links to an alternate version of the document
    *   (i.e. print page, translated or mirror)
-   * * <var>author</var> Links to the author of the document
-   * * <var>help</var> Links to a help document
-   * * <var>icon</var> Imports an icon to represent the document
-   * * <var>license</var> Links to copyright information for the
-   *   document
-   * * <var>next</var> Indicates that the document is a part of a series,
+   * * `author` Links to the author of the document
+   * * `help` Links to a help document
+   * * `icon` Imports an icon to represent the document
+   * * `license` Links to copyright information for the document
+   * * `next` Indicates that the document is a part of a series,
    *   and that the next document in the series is the referenced document
-   * * <var>prefetch</var> Specifies that the target resource should be
-   *   cached
-   * * <var>prev</var> Indicates that the document is a part of a series,
-   *   and that the previous document in the series is the referenced
-   *   document
-   * * <var>search</var> Links to a search tool for the document
-   * * <var>stylesheet</var> URL to a style sheet to import
-   *
+   * * `prefetch` Specifies that the target resource should be cached
+   * * `prev` Indicates that the document is a part of a series,
+   *   and that the previous document in the series is the referenced document
+   * * `search` Links to a search tool for the document
+   * * `stylesheet` URL to a style sheet to import
    *
    * @param  string $rel the relationship between the current document and the linked one
    * @return self for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function setRel($rel) {
-    return $this->setAttr('rel', $rel);
+    $this->attrs()->set('rel', $rel);
+    return $this;
   }
 
   /**
@@ -128,29 +125,25 @@ class Link extends EmptyTag implements HeadComponentInterface {
    *
    * **Values:**
    *
-   * * <var>alternate</var> Links to an alternate version of the document
+   * * `alternate` Links to an alternate version of the document
    *   (i.e. print page, translated or mirror)
-   * * <var>author</var> Links to the author of the document
-   * * <var>help</var> Links to a help document
-   * * <var>icon</var> Imports an icon to represent the document
-   * * <var>license</var> Links to copyright information for the
-   *   document
-   * * <var>next</var> Indicates that the document is a part of a series,
+   * * `author` Links to the author of the document
+   * * `help` Links to a help document
+   * * `icon` Imports an icon to represent the document
+   * * `license` Links to copyright information for the document
+   * * `next` Indicates that the document is a part of a series,
    *   and that the next document in the series is the referenced document
-   * * <var>prefetch</var> Specifies that the target resource should be
-   *   cached
-   * * <var>prev</var> Indicates that the document is a part of a series,
-   *   and that the previous document in the series is the referenced
-   *   document
-   * * <var>search</var> Links to a search tool for the document
-   * * <var>stylesheet</var> URL to a style sheet to import
-   *
+   * * `prefetch` Specifies that the target resource should be cached
+   * * `prev` Indicates that the document is a part of a series,
+   *   and that the previous document in the series is the referenced document
+   * * `search` Links to a search tool for the document
+   * * `stylesheet` URL to a style sheet to import
    *
    * @return string the relationship between the current document and the linked one
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function getRel() {
-    return $this->getAttr('rel');
+    return $this->attrs()->get('rel');
   }
 
   /**
@@ -165,7 +158,8 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function setType($type) {
-    return $this->setAttr('type', $type);
+    $this->attrs()->set('type', $type);
+    return $this;
   }
 
   /**
@@ -174,12 +168,12 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * **Note:** The type attribute specifies the MIME type of the linked
    *  document.
    *
-   * @return string|null  the MIME type of the linked document
+   * @return string|null the MIME type of the linked document
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function getType() {
-    return $this->getAttr('type');
+    return $this->attrs()->get('type');
   }
 
   /**
@@ -198,7 +192,8 @@ class Link extends EmptyTag implements HeadComponentInterface {
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function setMedia($media) {
-    return $this->setAttr('media', $media);
+    $this->attrs()->set('media', $media);
+    return $this;
   }
 
   /**
@@ -212,12 +207,11 @@ class Link extends EmptyTag implements HeadComponentInterface {
    *   different styles for different media types.
    * * The media attribute can accept several values.
    *
-   *
-   * @return string|null  what media/device the target resource is optimized for
+   * @return string|null what media/device the target resource is optimized for
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia() {
-    return $this->getAttr('media');
+    return $this->attrs()->get('media');
   }
-
+  
 }

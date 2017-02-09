@@ -229,6 +229,23 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
   }
 
   /**
+   * Sets multiple attribute name value pairs
+   *
+   * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
+   *
+   * @param  mixed[] $attrs an array of attribute name value pairs
+   * @return self for PHP Method Chaining
+   * @throws InvalidAttributeException if any of the attributes is invalid
+   * @throws UnmodifiableAttributeException if the value of the attribute is already locked
+   */
+  public function merge(array $attrs = []) {
+    foreach ($attrs as $name => $value) {
+      $this->set($name, $value);
+    }
+    return $this;
+  }
+
+  /**
    * Sets the given attribute name as required
    *
    * **IMPORTANT:** A required attribute cannot be removed but its value is still mutable

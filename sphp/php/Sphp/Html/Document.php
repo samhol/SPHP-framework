@@ -93,7 +93,7 @@ class Document {
       'dl' => Lists\Dl::class,
       'dt' => Lists\Dt::class,
       'em' => ContainerTag::class,
-      'embed' => Media\Embed::class,
+      'embed' => Media\Multimedia\Embed::class,
       'fieldset' => Forms\Fieldset::class,
       'figcaption' => Media\FigCaption::class,
       'figure' => Media\Figure::class,

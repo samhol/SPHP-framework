@@ -22,7 +22,6 @@ use Sphp\Core\Util\FileUtils;
  */
 class MdContainer extends AbstractContainer {
 
-
   /**
    * Appends a Mark Down file to the container
    * 
@@ -33,7 +32,7 @@ class MdContainer extends AbstractContainer {
     $this->append(FileUtils::executePhpToString($path));
     return $this;
   }
-  
+
   public function getHtml() {
     $text = implode("\n", $this->toArray());
     return ParsedownExtraPlugin::instance()->text($text);

@@ -193,10 +193,10 @@ trait IdentifiableComponentTrait {
    *
    * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
    *
-   * @param    mixed[] $attrs an array of attribute name value pairs
+   * @param  mixed[] $attrs an array of attribute name value pairs
    * @return self for PHP Method Chaining
-   * @throws   InvalidAttributeException if any of the attributes is invalid
-   * @throws   UnmodifiableAttributeException if the value of the attribute is already locked
+   * @throws InvalidAttributeException if any of the attributes is invalid
+   * @throws UnmodifiableAttributeException if the value of the attribute is already locked
    */
   public function setAttrs(array $attrs = []) {
     foreach ($attrs as $name => $value) {
