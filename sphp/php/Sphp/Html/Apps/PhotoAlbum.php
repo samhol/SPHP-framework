@@ -226,8 +226,8 @@ class PhotoAlbum extends AbstractContainerComponent {
         $thumbnailDiv = (new Div(array($img)))
                 ->setAttr("data-file-path", $file)
                 ->setAttr("data-img_index", $img_index)
-                ->addCssClass("thumbnail")
-                ->hide();
+                ->addCssClass("thumbnail");
+        $thumbnailDiv->inlineStyles()->setProperty('display', 'none');
         $photoArea[] = $thumbnailDiv;
       }
     }

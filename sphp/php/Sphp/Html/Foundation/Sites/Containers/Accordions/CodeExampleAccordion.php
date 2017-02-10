@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
 use Sphp\Html\ContentTrait;
+use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Implements an accrodion for PHP Example presentation
@@ -122,11 +123,12 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function showHighlightedOutput($lang) {
+    $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);
     if ($lang === false) {
       $lang = "text";
-      $this->outputSyntaxPane->hide();
+      $outputVisibility->hide();
     } else {
-      $this->outputSyntaxPane->unhide();
+      $outputVisibility->unhide();
     }
     if ($lang == "text") {
       $this->outputSyntaxPane->useDefaultContentCopyController(false);
@@ -143,11 +145,12 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function showOutputAsHtmlFlow($show = true) {
+    $outputPaneVisibility = new VisibilityAdapter($this->outputPane);
     if ($show === false) {
       $this->outputPane->clear();
-      $this->outputPane->hide();
+      $outputPaneVisibility->hide();
     } else {
-      $this->outputPane->unhide();
+      $outputPaneVisibility->unhide();
       if ($this->path === null) {
         $this->outputPane->replaceContent('<code>HTML</code> output is not available!');
       }
@@ -229,11 +232,8 @@ class CodeExampleAccordion extends Accordion {
    * @return self for PHP Method Chaining
    */
   public function showOutputSyntax($show = true) {
-    if ($show === false) {
-      $this->outputSyntaxPane->hide();
-    } else {
-      $this->outputSyntaxPane->unhide();
-    }
+    $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);
+    $outputVisibility->setHidden(!$show);
     return $this;
   }
 

@@ -276,36 +276,4 @@ trait IdentifiableComponentTrait {
     return $this->attrs()->hasId($identityName);
   }
 
-  /**
-   * Hides the component from the document
-   *
-   * **Note:**
-   *
-   * The element will not be displayed at all (has no effect on layout). Adds
-   * an inline style property <var>display: hidden;</var> to the component.
-   *
-   * @return self for PHP Method Chaining
-   */
-  public function hide() {
-    $this->setStyle('display', 'none');
-    return $this;
-  }
-
-  /**
-   * Unhides the component (Removes the inline hiding property)
-   *
-   * **Notes:**
-   *
-   *  Removes only inline style property <var>display: hidden;</var> . The component
-   *  might still be defined as hidden in CSS style sheets or by a JavaScript command.
-   *
-   * @return self for PHP Method Chaining
-   */
-  public function unhide() {
-    if ($this->inlineStyles()->getProperty('display') === 'none') {
-      $this->inlineStyles()->unsetProperty('display');
-    }
-    return $this;
-  }
-
 }

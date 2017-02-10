@@ -213,5 +213,36 @@ class Link extends EmptyTag implements HeadComponentInterface {
   public function getMedia() {
     return $this->attrs()->get('media');
   }
+
+
+  /**
+   * Adds an link tag which points to a CSS stylesheet file to the object
+   *
+   * @param  string $href an absolute URL that acts as the base URL
+   * @param  string $media the relationship between the current document and the linked one
+   * @param  string $media what media/device the target resource is optimized for
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
+   */
+  public static function cssSrc($href, $media = 'screen') {
+    return (new Link($href, 'stylesheet', $media))->setType('text/css');
+  }
+
+  /**
+   * Adds a shortcut icon to the object
+   *
+   * @param  string $href an absolute URL that acts as the base URL
+   * @param  string $type the MIME type of the linked document
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
+   * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
+   * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
+   */
+  public static function shortcutIcon($href, $type = 'image/x-icon') {
+    $link = new static($href, 'icon');
+    $link->setType($type);
+    return $link;
+  }
   
 }

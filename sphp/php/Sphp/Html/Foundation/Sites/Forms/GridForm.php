@@ -13,6 +13,7 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
+use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Implements a framework form
@@ -62,7 +63,8 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
       $this->append($content);
     }
     $this->errorLabel = new Callout('<i class="fi-alert"></i> There are some errors in your form.');
-    $this->errorLabel->hide()->cssClasses()->lock('alert');
+    $this->errorLabel->cssClasses()->lock('alert');
+    $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attrs()->demand('data-abide-error');
   }
 

@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\HiddenInput;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
+use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Slider allows to drag a handle to select a specific value from a range
@@ -114,11 +115,8 @@ class RangeSlider extends AbstractSlider {
    * @return self for PHP Method Chaining
    */
   public function showValue($valueVisible = true) {
-    if ($valueVisible) {
-      $this->getInnerLabel()->unhide();
-    } else {
-      $this->getInnerLabel()->hide();
-    }
+    $vis = new VisibilityAdapter($this->getInnerLabel());
+    $vis->setHidden(!$valueVisible);
     return $this;
   }
 

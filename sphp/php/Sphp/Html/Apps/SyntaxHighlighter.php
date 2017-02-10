@@ -17,6 +17,7 @@ use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
 use Sphp\Html\Div;
 use InvalidArgumentException;
 use Sphp\Core\Util\FileUtils;
+use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Class wraps the GeSHi (a Generic Syntax Highlighter)
@@ -168,11 +169,8 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for PHP Method Chaining
    */
   public function useFooter($use = true) {
-    if ($use) {
-      $this->footer->unhide();
-    } else {
-      $this->footer->hide();
-    }
+    $vis = new VisibilityAdapter($this->footer);
+    $vis->setHidden(!$use);
     return $this;
   }
 
@@ -197,11 +195,8 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for PHP Method Chaining
    */
   public function useDefaultContentCopyController($use = true) {
-    if ($use) {
-      $this->copyBtn->getController()->unhide();
-    } else {
-      $this->copyBtn->getController()->hide();
-    }
+    $vis = new VisibilityAdapter($this->copyBtn->getController());
+    $vis->setHidden(!$use);
     return $this;
   }
 
