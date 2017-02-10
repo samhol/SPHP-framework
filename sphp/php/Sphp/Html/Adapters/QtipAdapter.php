@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Qtip;
+namespace Sphp\Html\Adapters;
 
 use Sphp\Html\ComponentInterface;
 
@@ -18,7 +18,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Qtippable implements ComponentInterface {
+class QtipAdapter implements Adapter {
 
   use \Sphp\Html\IdentifiableComponentTrait;
 

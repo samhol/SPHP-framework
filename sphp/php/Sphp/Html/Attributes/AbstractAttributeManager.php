@@ -483,7 +483,6 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
       }
       $this->lock($identityName, $value);
       $this->attachIdentifier($identityName);
-      // var_dump($this->attrs[$identityName]);
     }
     return $this->get($identityName);
   }

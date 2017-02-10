@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * VisibilityAdapter.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
@@ -16,9 +15,8 @@ use Sphp\Html\ComponentInterface;
  *
  * @author Sami Holck
  */
-class VisibilityAdapter implements ContentInterface {
+class VisibilityAdapter implements Adapter {
 
-  //put your code here
   use \Sphp\Html\ContentTrait;
 
   private $component;
@@ -26,6 +24,17 @@ class VisibilityAdapter implements ContentInterface {
   public function __construct(ComponentInterface $component) {
     $this->component = $component;
   }
+
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->component);
+  }
+
 
   /**
    * Sets whether the component is in use or not

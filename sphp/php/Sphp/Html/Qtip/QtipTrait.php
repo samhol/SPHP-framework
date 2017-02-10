@@ -1,17 +1,20 @@
 <?php
 
-namespace Sphp\Html\Qtip;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * QtipTrait.php (UTF-8)
+ * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
+
+namespace Sphp\Html\Qtip;
 
 /**
  * Description of QtipTrait
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2013-02-03
+ * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 trait QtipTrait {
 
@@ -23,8 +26,8 @@ trait QtipTrait {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip($qtip) {
-     $this->setAttr("title", $qtip);
-     
+    $this->setAttr("title", $qtip);
+
     return $this;
   }
 

@@ -268,10 +268,31 @@ trait IdentifiableComponentTrait {
     return $this->attrs()->exists($name);
   }
 
+  /**
+   * Identifies the element with an unique id attribute.
+   *
+   * **Notes:**
+   *
+   * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
+   * 
+   * @param  string $identityName the name of the identity attribute
+   * @param  string $prefix optional prefix of the identity value
+   * @param  int $length the length of the identity value
+   * @return self for PHP Method Chaining
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   */
   public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
-    return $this->attrs()->identify($identityName, $prefix, $length);
+    $this->attrs()->identify($identityName, $prefix, $length);
+    return $this;
   }
 
+  /**
+   * Checks whether the identifying attribute is set or not
+   *
+   * @param  string $identityName optional name of the identifying attribute
+   * @return boolean true if the identity is set, otherwise false
+   * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
+   */
   public function hasId($identityName = 'id') {
     return $this->attrs()->hasId($identityName);
   }
