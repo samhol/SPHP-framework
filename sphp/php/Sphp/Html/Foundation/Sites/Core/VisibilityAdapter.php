@@ -2,7 +2,7 @@
 
 /**
  * VisibilityHandler.php (UTF-8)
- * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Foundation\Sites\Core;
@@ -16,7 +16,7 @@ use Sphp\Html\ComponentInterface;
  * {@link VisibilityInterface} Defines styled CSS visibility settings
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-01-29
+ * @since   2017-01-29
  * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -35,7 +35,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
   /**
    * Clears all Foundation based visibility CSS classes
    * 
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function showForAllScreenSizes() {
     $cssClasses = [];
@@ -53,7 +53,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
   /**
    * 
    * @param  string $screenType
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    * @throws InvalidArgumentException
    */
   public function showFromUp($screenType) {
@@ -69,7 +69,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
   /**
    * 
    * @param string $screenSize
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    * @throws InvalidArgumentException
    */
   public function hideDownTo($screenSize) {
@@ -93,7 +93,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
    * 
    * @param  string $smaller
    * @param  string $larger
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function showBetweenSizes($smaller, $larger) {
     $this->showForAllScreenSizes();
@@ -122,7 +122,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  string $size the targeted screensize flags as a bitmask
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -150,7 +150,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
    * 
    * @precondition `$size` == `small|medium|large|xlarge|xxlarge`
    * @param  int|string $screenType the targeted screen type
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -175,7 +175,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
   /**
    * Sets the componentvisible for all screen sizes
    * 
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function showForAllSizes() {
     $classes = [];
@@ -210,7 +210,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
    * Sets/unsets the component visible only for landscape orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function hideForPortrait($hide = true) {
     $this->getComponent()->cssClasses()
@@ -229,7 +229,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHa
    * Sets/resets the component visible only for portrait orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return VisibilityHandlingInterface for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function hideForLandscape($hide = true) {
     $this->getComponent()->cssClasses()

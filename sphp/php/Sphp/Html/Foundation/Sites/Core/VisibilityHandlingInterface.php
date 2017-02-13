@@ -8,11 +8,11 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 /**
- * Defines Screen Size Visibility Control settings
+ * Defines Visibility Controls for HTML content
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29
- * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/ Foundation 
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -37,7 +37,7 @@ interface VisibilityHandlingInterface {
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $size the targeted screensize flags as a bitmask
+   * @param  string $screenType the targeted screensize flags as a bitmask
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
@@ -56,7 +56,7 @@ interface VisibilityHandlingInterface {
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $size the targeted screensize flags as a bitmask
+   * @param  string $screenType the targeted screensize flags as a bitmask
    * @return self for PHP Method Chaining
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
