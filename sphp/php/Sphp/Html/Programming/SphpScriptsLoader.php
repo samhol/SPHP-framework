@@ -166,7 +166,7 @@ class SphpScriptsLoader extends ScriptsContainer {
             ->appendSrc($this->paths['vendor'] . 'jquery.qtip.min.js')
             ->appendSrc($this->paths['app'] . 'commonJqueryPlugins.js')
             ->appendSrc($this->paths['app'] . 'sphp.form.validation.js')
-            ->appendSrc($this->paths['app'] . 'sphp.SideNavs.js')
+            ->appendSrc($this->paths['app'] . 'QtipAdapter.js')
             ->appendSrc($this->paths['app'] . 'sphp.TechLinks.js')
             ->appendSrc($this->paths['js_root'] . "sphp.all.js")
             ->appendCode('sphp.initialize("' . Path::get()->http() . '");')

@@ -703,7 +703,7 @@
    * @method   sphMouseCoordinatesViewer
    * @returns  {jQuery.fn} object for method chaining
    */
-  $.fn.qtips = function () {
+  $.fn.qtips1 = function () {
     return this.each(function () {
       var $this = $(this), $classes;
       $classes = $this.attr('data-sphp-qtip-classes');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Qtippable.php (UTF-8)
+ * QtipAdapter.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -10,7 +10,7 @@ namespace Sphp\Html\Adapters;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Description of QtipTrait
+ * Inserts a Qtip style tooltip to the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
@@ -20,7 +20,7 @@ use Sphp\Html\ComponentInterface;
  */
 class QtipAdapter implements Adapter {
 
-  use \Sphp\Html\IdentifiableComponentTrait;
+  use \Sphp\Html\ContentTrait;
 
   /**
    *
@@ -61,7 +61,7 @@ class QtipAdapter implements Adapter {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip($qtip) {
-    $this->attrs()
+    $this->component->attrs()
             ->set("title", $qtip)
             ->set("data-sphp-qtip", true);
     return $this;
@@ -75,7 +75,7 @@ class QtipAdapter implements Adapter {
    * @return self for PHP Method Chaining
    */
   public function setQtipPosition($my, $at) {
-    $this->attrs()
+    $this->component->attrs()
             ->set("data-sphp-qtip", true)
             ->set("data-sphp-qtip-at", $at)
             ->set("data-sphp-qtip-my", $my);
