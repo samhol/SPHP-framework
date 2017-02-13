@@ -20,8 +20,6 @@ use Sphp\Core\Types\URL;
  *    this component with an ID of result, and the rest of the retrieved 
  *    document is discarded.
  * 
- * **Important:** 
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-08-11
  * @link    http://api.jquery.com/load/ jQuery load()

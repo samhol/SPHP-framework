@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Adapters;
 
-use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
 
 /**
@@ -15,26 +14,17 @@ use Sphp\Html\ComponentInterface;
  *
  * @author Sami Holck
  */
-class VisibilityAdapter implements Adapter {
-
-  use \Sphp\Html\ContentTrait;
-
-  private $component;
-
-  public function __construct(ComponentInterface $component) {
-    $this->component = $component;
-  }
+class VisibilityAdapter extends AbstractComponentAdapter {
 
   /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
+   * Constructs a new instance
+   * 
+   * @param ComponentInterface $component
    */
-  public function __destruct() {
-    unset($this->component);
+  public function __construct(ComponentInterface $component) {
+    parent::__construct($component);
+    $this->component = $component;
   }
-
 
   /**
    * Sets whether the component is in use or not
@@ -77,14 +67,10 @@ class VisibilityAdapter implements Adapter {
    * @return self for PHP Method Chaining
    */
   public function unhide() {
-    if ($this->component->inlineStyles()->getProperty('display') === 'none') {
-      $this->component->inlineStyles()->unsetProperty('display');
+    if ($this->getComponent()->inlineStyles()->getProperty('display') === 'none') {
+      $this->getComponent()->inlineStyles()->unsetProperty('display');
     }
     return $this;
-  }
-
-  public function getHtml() {
-    return $this->component->getHtml();
   }
 
 }

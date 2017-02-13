@@ -1,34 +1,36 @@
 <?php
 
 /**
- * VisibilityHandlingTrait.php (UTF-8)
+ * VisibilityHandler.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
-use InvalidArgumentException;
+use Sphp\Html\Adapters\AbstractComponentAdapter;
+use Sphp\Html\ComponentInterface;
 
 /**
- * Trait implements {@link Visibility} interface functionality
+ * Implements {@link VisibilityInterface} interface functionality
  * 
- * {@link Visibility} Defines styled CSS border radius settings
+ * {@link VisibilityInterface} Defines styled CSS visibility settings
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-29
- * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait VisibilityHandlingTrait {
+class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityHandlingInterface {
 
   /**
-   * Returns the class attribute object
+   * Constructs a new instance
    * 
-   * @return MultiValueAttribute the class attribute object
+   * @param ComponentInterface $component
    */
-  abstract public function cssClasses();
+  public function __construct(ComponentInterface $component) {
+    parent::__construct($component);
+  }
 
   /**
    * Clears all Foundation based visibility CSS classes
@@ -43,7 +45,7 @@ trait VisibilityHandlingTrait {
       $cssClasses[] = "hide-for-$screen-only";
       $cssClasses[] = "hide-for-$screen";
     }
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->remove($cssClasses);
     return $this;
   }
@@ -58,7 +60,7 @@ trait VisibilityHandlingTrait {
     if (!in_array($screenType, Screen::sizes())) {
       throw new InvalidArgumentException("Screen type '$screenType' was not recognized");
     }
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->add("show-for-$screenType")
             ->remove("hide-for-$screenType");
     return $this;
@@ -76,10 +78,10 @@ trait VisibilityHandlingTrait {
       throw new InvalidArgumentException("Screen type '$screenSize' was not recognized");
     }
     if ($screenSize == 'small') {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add('hide');
     }
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->add("hide-for-$screenSize");
     return $this;
   }
@@ -97,11 +99,11 @@ trait VisibilityHandlingTrait {
     $this->showForAllScreenSizes();
     $upper = Screen::getNextSize($larger);
     if ($upper !== false) {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add(["hide-for-$upper"]);
     }
     if ($smaller != "small") {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add(["show-for-$smaller", "hide-for-$upper"]);
     }
     return $this;
@@ -127,7 +129,7 @@ trait VisibilityHandlingTrait {
   public function hideOnlyFromSize($size) {
     $this->showForAllScreenSizes();
     if (Screen::sizeExists($size)) {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add("hide-for-$size-only");
     } else {
       throw new InvalidArgumentException("Screen size '$size' was not recognized");
@@ -157,7 +159,7 @@ trait VisibilityHandlingTrait {
       if (!Screen::sizeExists($size)) {
         throw new InvalidArgumentException("Screen type '$size' was not recognized");
       }
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add("show-for-$size-only");
     };
     if (func_num_args() === 1) {
@@ -183,7 +185,7 @@ trait VisibilityHandlingTrait {
       $classes[] = "show-for-$sreenName";
       $classes[] = "show-for-$sreenName-only";
     }
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->remove($classes);
     return $this;
   }
@@ -199,7 +201,7 @@ trait VisibilityHandlingTrait {
       $classes[] = "hidden-for-$sreenName";
       $classes[] = "show-for-$sreenName";
     }
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->remove($classes);
     return $this;
   }
@@ -211,13 +213,13 @@ trait VisibilityHandlingTrait {
    * @return VisibilityHandlingInterface for PHP Method Chaining
    */
   public function hideForPortrait($hide = true) {
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->remove('show-for-portrait');
     if ($hide) {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add('show-for-landscape');
     } else {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->remove('show-for-landscape');
     }
     return $this;
@@ -230,13 +232,13 @@ trait VisibilityHandlingTrait {
    * @return VisibilityHandlingInterface for PHP Method Chaining
    */
   public function hideForLandscape($hide = true) {
-    $this->cssClasses()
+    $this->getComponent()->cssClasses()
             ->remove('show-for-landscape');
     if ($hide) {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->add('show-for-portrait');
     } else {
-      $this->cssClasses()
+      $this->getComponent()->cssClasses()
               ->remove('show-for-portrait');
     }
     return $this;

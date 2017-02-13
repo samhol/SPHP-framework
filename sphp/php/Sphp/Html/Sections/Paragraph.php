@@ -13,7 +13,7 @@ use Sphp\Html\AjaxLoaderInterface;
 /**
  * Implements an HTML &lt;p&gt; tag
  *
- *  The {@link self} component represents a paragraph in an HTML document.
+ *  This component represents a paragraph in an HTML document.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-06-03
@@ -34,6 +34,11 @@ class Paragraph extends ContainerTag implements AjaxLoaderInterface {
    */
   public function __construct($content = null) {
     parent::__construct('p', $content);
+  }
+
+  public function __invoke($content = null) {
+    $this->replaceContent($content);
+    return $this;
   }
 
 }

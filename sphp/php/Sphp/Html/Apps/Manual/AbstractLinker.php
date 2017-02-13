@@ -10,6 +10,7 @@ namespace Sphp\Html\Apps\Manual;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\ComponentInterface;
+use Sphp\Html\Adapters\QtipAdapter;
 
 /**
  * Hyperlink generator pointing to an existing API documentation
@@ -154,7 +155,7 @@ abstract class AbstractLinker implements LinkerInterface {
     }
     $a = new Hyperlink($url, $content);
     if ($title !== null) {
-      (new \Sphp\Html\Qtip\Qtippable($a))->setQtip($title)->setQtipPosition("bottom center", "top center");
+      (new QtipAdapter($a))->setQtip($title)->setQtipPosition("bottom center", "top center");
     }
     $this->insertDefaults($a);
     return $a;

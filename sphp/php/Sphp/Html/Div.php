@@ -34,4 +34,9 @@ class Div extends ContainerTag implements AjaxLoaderInterface {
     parent::__construct('div', $content);
   }
 
+  public function __invoke($content = null) {
+    $this->replaceContent($content);
+    return $this;
+  }
+
 }

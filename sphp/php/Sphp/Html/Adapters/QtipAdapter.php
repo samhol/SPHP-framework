@@ -18,39 +18,18 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class QtipAdapter implements Adapter {
-
-  use \Sphp\Html\ContentTrait;
+class QtipAdapter extends AbstractComponentAdapter {
 
   /**
-   *
-   * @var ComponentInterface
+   * Constructs a new instance
+   * 
+   * @param ComponentInterface $component
    */
-  private $component;
-
   public function __construct(ComponentInterface $component, $qtip = null) {
-    $this->component = $component;
+    parent::__construct($component);
     if ($qtip !== null) {
       $this->setQtip($qtip);
     }
-  }
-
-  /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
-   */
-  public function __destruct() {
-    unset($this->component);
-  }
-
-  /**
-   * 
-   * @return ComponentInterface
-   */
-  public function getComponent() {
-    return $this->component;
   }
 
   /**
@@ -61,7 +40,7 @@ class QtipAdapter implements Adapter {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip($qtip) {
-    $this->component->attrs()
+    $this->getComponent()->attrs()
             ->set("title", $qtip)
             ->set("data-sphp-qtip", true);
     return $this;
@@ -75,19 +54,11 @@ class QtipAdapter implements Adapter {
    * @return self for PHP Method Chaining
    */
   public function setQtipPosition($my, $at) {
-    $this->component->attrs()
+    $this->getComponent()->attrs()
             ->set("data-sphp-qtip", true)
             ->set("data-sphp-qtip-at", $at)
             ->set("data-sphp-qtip-my", $my);
     return $this;
-  }
-
-  public function getHtml() {
-    return $this->component->getHtml();
-  }
-
-  public function attrs() {
-    return $this->component->attrs();
   }
 
 }
