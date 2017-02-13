@@ -33,17 +33,18 @@ class Screen {
   private static $otherTypes = ['portrait', 'landscape', 'sr'];
 
   /**
+   * Returns all supported screen type names
    * 
-   * @return string[]
+   * @return string[] all supported screen type names
    */
   public static function allTypes() {
     return array_merge(static::$sizes, static::$otherTypes);
   }
 
   /**
-   * Checks whether the given screen size exists
+   * Checks whether the given screen type exists
    * 
-   * @param  string $size screen size name
+   * @param  string $size screen type name
    * @return boolean true if the given size exists
    */
   public static function typeExists($size) {
