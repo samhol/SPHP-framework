@@ -5,6 +5,7 @@ namespace Sphp\Html;
 use Sphp\Core\Configuration;
 use Sphp\Core\Types\URL;
 
+Configuration::useDomain('manual');
 include_once('links.php');
 
 Document::setHtmlVersion(Document::HTML5);
@@ -42,7 +43,9 @@ if ($errorCode !== null) {
   }
   Document::html()->setDocumentTitle($title);
 }
+
 use Sphp\Html\Head\Meta;
+
 $html->enableSPHP();
 $html->head()
         ->useFontAwesome()

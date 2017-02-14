@@ -27,7 +27,19 @@ Every $config instance includes also instances of $phpConfig and $path.
 MD
 );
 
+$ini = $api->classLinker(Ini::class);
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Config/Config.php", 'text', false);
+echo $parsedown->text(<<<MD
+##$ini object: <small>a runtime PHP configuration manager</small>{#Config_Ini}
+
+$ini Sets the value of the given configuration option. The configuration option will keep this new value during the script's execution, and will be restored at the script's ending..
+        
+MD
+);
+
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Config/Ini.php", 'text', false))
+        ->setExampleHeading("PHP environment manipulation example")
+        ->printHtml();
 echo $parsedown->text(<<<MD
 ##$phpConfig object as a runtime PHP configuration manager 
 

@@ -27,15 +27,9 @@ class PHPConfig implements Arrayable {
    */
   private $setters;
 
-  /**
-   * the ini 
-   *
-   * @var string[]
-   */
-  private $ini;
 
   public function __destruct() {
-    unset($this->setters, $this->ini);
+    unset($this->setters);
   }
 
   /**
@@ -54,36 +48,6 @@ class PHPConfig implements Arrayable {
     return $this;
   }
 
-  /**
-   * Sets the value of a configuration option
-   * 
-   * The configuration option will keep this new value during the script's 
-   * execution, and will be restored at the script's ending.
-   * 
-   * **Not all the available options can be changed**
-   * 
-   * @param  string $name the name of the option
-   * @param  string $value the new value for the option
-   * @return self for PHP Method Chaining
-   * @link   http://php.net/manual/en/function.ini-set.php ini_set
-   * @link   http://php.net/manual/en/ini.list.php list of all available options
-   */
-  public function iniSet($name, $value) {
-    $this->ini[$name] = $value;
-    ini_set($name, $value);
-    return $this;
-  }
-
-  /**
-   * Returns the current value of a configuration option
-   * 
-   * @param  string $varname the name of the option
-   * @return string  the value of the option
-   * @link   http://php.net/manual/en/function.ini-get.php ini_get
-   */
-  public function iniGet($varname) {
-    return ini_get($varname);
-  }
 
   /**
    * Sets the locale information
@@ -224,18 +188,9 @@ class PHPConfig implements Arrayable {
     return $this;
   }
 
-  /**
-   * Returns the string representation of the configuration data
-   *
-   * @return string the string representation of the configuration data
-   */
-  public function __toString() {
-    return var_export($this->toArray(), true);
-  }
 
   public function toArray() {
     $arr = [];
-    $arr['ini'] = Arrays::copy($this->ini);
     $arr['php'] = Arrays::copy($this->setters);
     return $arr;
   }
