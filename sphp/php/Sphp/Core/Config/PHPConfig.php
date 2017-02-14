@@ -27,7 +27,6 @@ class PHPConfig implements Arrayable {
    */
   private $setters;
 
-
   public function __destruct() {
     unset($this->setters);
   }
@@ -47,7 +46,6 @@ class PHPConfig implements Arrayable {
     $this->setters[$fun][$callId] = $params;
     return $this;
   }
-
 
   /**
    * Sets the locale information
@@ -187,7 +185,6 @@ class PHPConfig implements Arrayable {
     }
     return $this;
   }
-
 
   public function toArray() {
     $arr = [];
