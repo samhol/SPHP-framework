@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
-use Sphp\Core\Configuration;
 use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 use Sphp\Core\Path;
 use Sphp\Core\Util\FileUtils;
@@ -11,7 +10,6 @@ use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 try {
   ob_start();
-  $appConf = Configuration::useDomain('manual');
   $navi = new TopBar();
   $navi->addCssClass('sphp-manual');
 

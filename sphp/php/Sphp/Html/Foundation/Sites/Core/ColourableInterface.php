@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\ContentInterface;
-
 /**
  * Trait implements {@link ButtonStylingInterface} functionality
  *
@@ -19,7 +17,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ColourableInterface extends ContentInterface {
+interface ColourableInterface {
 
   /**
    * Sets the color (a CSS class)

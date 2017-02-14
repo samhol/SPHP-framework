@@ -5,10 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
-$visibilityHandlingInterface = $api->classLinker(VisibilityHandlingInterface::class);
-$visibilityHandler = $api->classLinker(VisibilityAdapter::class);
-$ComponentInterface = $api->classLinker(\Sphp\Html\ComponentInterface::class);
-$htmlComponent = $api->classLinker(\Sphp\Html\ComponentInterface::class);
+$visibilityHandlingInterface = Apis::apigen()->classLinker(VisibilityChanger::class);
+$visibilityHandler = Apis::apigen()->classLinker(VisibilityAdapter::class);
+$ComponentInterface = Apis::apigen()->classLinker(\Sphp\Html\ComponentInterface::class);
 
 echo $parsedown->text(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
@@ -31,7 +30,6 @@ $visibilityHandler provides a straightforward adapter for any $ComponentInterfac
 to be used as a $visibilityHandlingInterface component.
 MD
 );
-//CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/VisibilityHandler.php');
 echo $parsedown->text(<<<MD
 ##Visibility handling extending $visibilityHandlingInterface 
 MD
@@ -44,3 +42,6 @@ Hiding by Screen Size
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/VisibilityAdapter-hideOnlyFor.php');
+
+
+$load('Sphp.Html.Foundation.Sites.Core.ColourableInterface.php');

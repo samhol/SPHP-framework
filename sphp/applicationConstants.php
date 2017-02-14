@@ -9,7 +9,7 @@ use Sphp\Core\Configuration;
  */
 const SPHP_DIR = __DIR__;
 
-Configuration::useDomain("manual")->set("SPHP_DIR", __DIR__);
+//Configuration::useDomain("manual")->set("SPHP_DIR", __DIR__);
 
 $sphp = [
     'SPH_DIR' => __DIR__
@@ -27,11 +27,11 @@ const DEFAULT_DOMAIN = "Sphp.Defaults";
 /**
  * Http root folder path
  */
-const HTTP_ROOT = "http://playground.samiholck.com/";
+const HTTP_ROOT = 'http://playground.samiholck.com/';
 
 namespace Sphp\js;
 
-const FOUNDATION_FOLDER = "sphp/js/vendor/foundation/";
+const FOUNDATION_FOLDER = 'sphp/js/vendor/foundation/';
 
 /*define('Sphp\js\ROOT_PATH', "sphp/js/");
 define('Sphp\js\VENDOR_PATH', "sphp/js/vendor/");
@@ -63,11 +63,11 @@ define('Sphp\Images\SCALER', \Sphp\HTTP_ROOT . "sphp/image/thumb.php");
 
 namespace Sphp\Db;
 
-const PDO_DNS = "mysql:host=192.168.10.208;port=3306;dbname=sphp;charset=utf8";
-const PDO_SU_USERNAME = "sphp_su";
-const PDO_SU_PASSWORD = "o5Qen58&";
-const PDO_USERNAME = "sphp_framework";
-const PDO_PASSWORD = "Vxr79s?8";
+const PDO_DNS = 'mysql:host=192.168.10.208;port=3306;dbname=sphp;charset=utf8';
+const PDO_SU_USERNAME = 'sphp_su';
+const PDO_SU_PASSWORD = 'o5Qen58&';
+const PDO_USERNAME = 'sphp_framework';
+const PDO_PASSWORD = 'Vxr79s?8';
 
 /*$dbParams = array(
     'driver' => 'pdo_mysql',

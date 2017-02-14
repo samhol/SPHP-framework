@@ -126,7 +126,7 @@ class PHPConfig implements Arrayable {
    *
    * **`$category` constant values:**
    *
-   * * {@link LC_ALL} for all of the below
+   * * {@link \LC_ALL} for all of the below
    * * {@link LC_COLLATE} for string comparison, see {@link strcoll()}
    * * {@link LC_CTYPE} for character classification and conversion, for example {@link strtoupper()}
    * * {@link LC_MONETARY} for localeconv()

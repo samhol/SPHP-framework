@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
-use Sphp\Html\Attributes\MultiValueAttribute as MultiValueAttribute;
+use Sphp\Html\Attributes\MultiValueAttribute;
 
 /**
  * Trait implements {@link ButtonInterface} functionality

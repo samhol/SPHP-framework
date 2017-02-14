@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-echo "Current Configurator domain is: '" . Configuration::current()->getDomainName() . "'\n";
+echo "Current Configurator domain is: '" . Configuration::instance()->getDomainName() . "'\n";
 Configuration::useDomain("foo")
         ->set("text", "foo")
         ->phpConfiguration()
