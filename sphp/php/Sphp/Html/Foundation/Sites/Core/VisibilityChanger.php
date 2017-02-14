@@ -1,7 +1,7 @@
 <?php
 
 /**
- * VisibilityHandlingInterface.php (UTF-8)
+ * VisibilityChanger.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
