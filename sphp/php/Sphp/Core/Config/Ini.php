@@ -26,14 +26,14 @@ class Ini implements Arrayable {
    *
    * @var string[]
    */
-  private $pre;
+  private $pre = [];
 
   /**
    * the ini 
    *
    * @var string[]
    */
-  private $ini;
+  private $ini = [];
 
   public function __destruct() {
     unset($this->ini, $this->pre);
@@ -110,10 +110,7 @@ class Ini implements Arrayable {
   }
 
   public function toArray() {
-    $arr = [];
-    $arr['ini'] = Arrays::copy($this->ini);
-    $arr['php'] = Arrays::copy($this->setters);
-    return $arr;
+    return Arrays::copy($this->ini);
   }
 
 }
