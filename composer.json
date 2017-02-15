@@ -1,8 +1,8 @@
 {
   "name": "sami_holck/sphp_framework",
-	"homepage": "http://www.playground.samiholck.com/",
+  "homepage": "http://www.playground.samiholck.com/",
   "description": "Multipurpose PHP framework for web applications",
-	"keywords": ["HTML5","WEB 2.0","UI"],	
+  "keywords": ["HTML5", "WEB 2.0", "UI"],
   "license": "GNU",
   "authors": [
     {
@@ -11,7 +11,7 @@
     }
   ],
   "require": {
-    "php" : "^5.5 || ^7.0",
+    "php": "^5.6 || ^7.0",
     "doctrine/orm": "*",
     "tecnickcom/tcpdf": "^6.2",
     "sepia/po-parser": "^4.2",
