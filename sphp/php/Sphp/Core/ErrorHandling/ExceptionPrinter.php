@@ -7,12 +7,12 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use \SplObserver as SplObserver;
-use \SplSubject as SplSubject;
-use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout as ExceptionCallout;
+use SplObserver;
+use SplSubject;
+use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 
 /**
- * The Logger class is responsible for printing the uncaught exceptions as an HTML element
+ * Prints an exception as an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-05

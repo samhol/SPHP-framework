@@ -47,7 +47,7 @@ class Path {
    * 
    * @throws ConfigurationException if either local or http path cannot be resolved
    */
-  protected function __construct($host = '', $doc_root = '') {
+  public function __construct($host = '', $doc_root = '') {
     if (empty($host)) {
       $host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_SPECIAL_CHARS);
       $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $host . '/';

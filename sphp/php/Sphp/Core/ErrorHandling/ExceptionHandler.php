@@ -7,9 +7,9 @@
 
 namespace Sphp\Core\ErrorHandling;
 
-use \SplSubject as SplSubject;
-use \Exception as Exception;
-use Sphp\Core\ObservableSubjectTrait as ObservableSubjectTrait;
+use SplSubject;
+use Exception;
+use Sphp\Core\ObservableSubjectTrait;
 
 /**
  * Class sends uncaught exception messages to the proper handlers
@@ -33,6 +33,17 @@ class ExceptionHandler implements SplSubject {
    */
   private $exception;
 
+  
+  /**
+   * Exception handling method
+   *
+   * @param Exception $e handled exception
+   * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
+   */
+  public function __invoke($e) {
+    $this->exception = $e;
+    $this->notify();
+  }
   /**
    * Exception handling method
    *

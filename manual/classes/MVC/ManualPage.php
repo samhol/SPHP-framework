@@ -15,10 +15,10 @@ class ManualPage {
   private $path;
 
   public function __construct($path) {
-    
+
     $this->path = Path::get()->local("manual/pages/$path.php");
   }
-  
+
   public function __invoke($page) {
     ;
   }

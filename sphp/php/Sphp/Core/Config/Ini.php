@@ -96,15 +96,14 @@ class Ini implements Arrayable {
   /**
    * Executes a function using a custom PHP configuration.
    * 
-   * @param array $settings A map<ini setting name, ini setting value>.
-   * @param callable $callable The code to execute using the given settings.
-   * @return mixed Returns the value returned by the given callable.
+   * @param  callable $callable the code to execute using the given settings
+   * @return mixed the value returned by the given callable
    */
   public function execute(callable $callable) {
     $this->init();
-    $returnValue = $callable();
+    $result = $callable();
     $this->reset();
-    return $returnValue;
+    return $result;
   }
 
   /**

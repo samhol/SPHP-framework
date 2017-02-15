@@ -5,7 +5,6 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use Sphp\Html\Document;
 
 require_once('manual/settings.php');
-include_once('manual/links.php');
 include_once('sphp/php/components/sessioning.php');
 ob_implicit_flush(true);
 include_once('manual/htmlHead.php');

@@ -2,7 +2,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Core\Configuration;
+use Sphp\Core\Config\Config;
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Net\Password;
 use Exception;
@@ -26,7 +26,7 @@ class SessionUserStorageTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->em = Configuration::useDomain("manual")
+    $this->em = Config::instance("manual")
             ->get(EntityManagerInterface::class);
     $this->storage = new SessionUserStorage($this->em); //$this->once();
   }

@@ -2,13 +2,19 @@
 
 namespace Sphp\Core\Config;
 
-echo 'date.timezone = ' . ini_get('date.timezone') . "\n";
+$f = function () {
+  echo 'date.timezone = ' . ini_get('date.timezone') . "\n";
+};
 
+$f();
 $ini = (new Ini())
         ->set('date.timezone', 'Europe/Rome')
         ->init();
-echo 'date.timezone = ' . ini_get('date.timezone') . "\n";
-
+$f();
 $ini->reset();
-echo 'date.timezone = ' . ini_get('date.timezone') . "\n";
+$f();
+$ini->execute($f);
+$ini->reset();
+$f();
+
 ?>

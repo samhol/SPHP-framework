@@ -4,8 +4,6 @@ namespace Sphp\Core;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$config = $api->classLinker(Configuration::class);
-$phpConfig = $api->classLinker(PHPConfiguration::class);
 $router = $api->classLinker(Path::class);
 echo $parsedown->text(<<<MD
 ##Managing absolute paths with a $router singelton object

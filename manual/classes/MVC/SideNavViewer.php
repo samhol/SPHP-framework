@@ -4,7 +4,6 @@ namespace Sphp\Manual\MVC;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Navigation\AccordionMenu;
-use Sphp\Html\Foundation\Sites\Navigation\Factory;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 class SideNavViewer implements ContentInterface {

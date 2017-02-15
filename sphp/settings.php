@@ -5,4 +5,4 @@
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once("applicationConstants.php");
+require_once('applicationConstants.php');

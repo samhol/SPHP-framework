@@ -7,20 +7,20 @@ namespace Sphp\Core\Config;
 //date_default_timezone_set("Europe/Helsinki");
 //mb_internal_encoding("UTF-8");
 
-require_once(__DIR__ . "/../sphp/settings.php");
+require_once(__DIR__ . '/../sphp/settings.php');
 //require_once 'doctrineConfiguration.php';
 
 (new PHPConfig())
         ->setErrorReporting(E_ALL)
        // ->iniSet("display_errors", 1)
-        ->setDefaultTimezone("Europe/Helsinki")
-        ->setEncoding("UTF-8");
+        ->setDefaultTimezone('Europe/Helsinki')
+        ->setEncoding('UTF-8');
 (new Ini())
-        ->set("display_errors", 1)->init();
+        ->set('display_errors', 1)->init();
 //PHPConfiguration();
 //ErrorExceptionThrower::start();
-use Sphp\Core\Path;
-Path::get()->loadOnce('manual/doctrineConfiguration.php');
+
+require_once('doctrineConfiguration.php');
 /**
  * Initializes default exceptionhandling mechanism
  */
@@ -30,9 +30,9 @@ namespace Sphp\Core\ErrorHandling;
 
 $handler = new ExceptionHandler();
 // Attach an Exception Logger
-$handler->attach(new ExceptionLogger(__DIR__ . "/logs/exception_log.log"));
+$handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
 $handler->attach((new ExceptionPrinter())->showTrace());
 // Set ExceptionHandler::handle() as the default Exception handler
-set_exception_handler(array($handler, 'handle'));
+set_exception_handler($handler);
 
-include_once("appConfig.php");
+require_once('appConfig.php');

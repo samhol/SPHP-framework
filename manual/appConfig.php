@@ -2,6 +2,6 @@
 
 namespace Sphp\Core;
 
-Configuration::useDomain('manual');
+//Configuration::useDomain('manual');
 
 Config\Config::instance();

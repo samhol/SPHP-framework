@@ -25,10 +25,17 @@ class PHPConfig implements Arrayable {
    *
    * @var mixed[]
    */
-  private $setters;
+  private $setters = [];
 
+  public function __construct(Ini $ini = null) {
+    $this->setters = [];
+    if ($ini === null) {
+      $ini = new Ini();
+    }
+    $this->ini = $ini;
+  }
   public function __destruct() {
-    unset($this->setters);
+    unset($this->setters, $this->ini);
   }
 
   /**
@@ -84,35 +91,6 @@ class PHPConfig implements Arrayable {
   }
 
   /**
-   * Returns the locale information
-   *
-   * **`$category` constant values:**
-   *
-   * * {@link \LC_ALL} for all of the below
-   * * {@link LC_COLLATE} for string comparison, see {@link strcoll()}
-   * * {@link LC_CTYPE} for character classification and conversion, for example {@link strtoupper()}
-   * * {@link LC_MONETARY} for localeconv()
-   * * {@link LC_NUMERIC} for decimal separator (See also {@link localeconv()})
-   * * {@link LC_TIME} for date and time formatting with {@link strftime()}
-   * * {@link LC_MESSAGES} for system responses (available if PHP was compiled with libintl)
-   *
-   * @param int $category a named constant specifying the category of the functions affected by the locale setting:
-   * @return string the name (filename) of the text domain
-   */
-  public function getLocale($category) {
-    return setLocale($category, '0');
-  }
-
-  /**
-   * Returns the current locale setting for system responses
-   *
-   * @return string the current locale setting for system responses
-   */
-  public function getMessageLocale() {
-    return self::getLocale(LC_MESSAGES);
-  }
-
-  /**
    * Set the internal character encoding
    *
    * @param  mixed $encoding character encoding: default is `utf-8`
@@ -136,14 +114,6 @@ class PHPConfig implements Arrayable {
     return $this;
   }
 
-  /**
-   * Returns the current default timezone used by all date/time functions in a script
-   *
-   * @return string the default timezone used by all date/time functions in a script
-   */
-  public function getDefaultTimezone() {
-    return date_default_timezone_get();
-  }
 
   /**
    * Sets which PHP errors are reported
@@ -157,14 +127,15 @@ class PHPConfig implements Arrayable {
     //ini_set("display_errors", "1");
     return $this;
   }
-
+  
   /**
-   * Returns the current PHP error reporting level
-   *
-   * @return int the current PHP error reporting level
+   * 
+   * @param  callable $handler
+   * @return self for PHP Method Chaining
    */
-  public function getErrorReporting() {
-    return error_reporting();
+  public function setExceptionHandler(callable $handler) {
+    $this->setFunc('set_exception_handler', [$handler]);
+    return $this;
   }
 
   /**
@@ -175,9 +146,6 @@ class PHPConfig implements Arrayable {
    * @return self for PHP Method Chaining
    */
   public function init() {
-    foreach ($this->ini as $name => $value) {
-      ini_set($name, $value);
-    }
     foreach ($this->setters as $func => $call) {
       foreach ($call as $params) {
         call_user_func_array($func, $params);

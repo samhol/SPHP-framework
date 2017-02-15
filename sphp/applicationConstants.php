@@ -2,7 +2,6 @@
 
 namespace Sphp;
 
-use Sphp\Core\Configuration;
 
 /**
  * SPHP frameworks folder's root
@@ -31,16 +30,6 @@ const HTTP_ROOT = 'http://playground.samiholck.com/';
 
 namespace Sphp\js;
 
-const FOUNDATION_FOLDER = 'sphp/js/vendor/foundation/';
-
-/*define('Sphp\js\ROOT_PATH', "sphp/js/");
-define('Sphp\js\VENDOR_PATH', "sphp/js/vendor/");
-define('Sphp\js\SPH_ALL_PATH', "sphp/js/sph.all.js");
-define('Sphp\js\APP_PATH', "sphp/js/app/");*/
-/**
- * path to the sph functions
- */
-//define('Sphp\SPH_FUNCTIONS_PATH', \Sphp\SPH_DIR . "/php/functions/");
 /**
  * path to the error log file
  */
@@ -49,11 +38,6 @@ define('Sphp\ERROR_LOG_PATH', \Sphp\SPHP_DIR . "/errors.log");
 
 define('Sphp\Images\SCALER', \Sphp\HTTP_ROOT . "sphp/image/thumb.php");
 
-/**
- * applicationConstants.php
- *
- * (c) Sami Holck, 2007, 2008, 2009, 2010, 2011, 2012
- */
 ######################################################################
 # NOTE! Do not modify these unless you truly know what you are doing #
 ######################################################################
