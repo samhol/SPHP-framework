@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core;
+namespace Sphp\Core\Config;
 
 //error_reporting(E_ALL);
 //ini_set("display_errors", "1");
@@ -10,14 +10,16 @@ namespace Sphp\Core;
 require_once(__DIR__ . "/../sphp/settings.php");
 //require_once 'doctrineConfiguration.php';
 
-(new Config\PHPConfig())
+(new PHPConfig())
         ->setErrorReporting(E_ALL)
-        ->iniSet("display_errors", 1)
+       // ->iniSet("display_errors", 1)
         ->setDefaultTimezone("Europe/Helsinki")
         ->setEncoding("UTF-8");
+(new Ini())
+        ->set("display_errors", 1)->init();
 //PHPConfiguration();
 //ErrorExceptionThrower::start();
-
+use Sphp\Core\Path;
 Path::get()->loadOnce('manual/doctrineConfiguration.php');
 /**
  * Initializes default exceptionhandling mechanism

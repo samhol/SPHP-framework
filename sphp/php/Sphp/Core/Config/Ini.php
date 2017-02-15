@@ -20,7 +20,6 @@ use Sphp\Core\Types\Arrays;
  */
 class Ini implements Arrayable {
 
-
   /**
    * the ini 
    *
@@ -92,6 +91,20 @@ class Ini implements Arrayable {
       $this->pre[$name] = ini_set($name, $value);
     }
     return $this;
+  }
+
+  /**
+   * Executes a function using a custom PHP configuration.
+   * 
+   * @param array $settings A map<ini setting name, ini setting value>.
+   * @param callable $callable The code to execute using the given settings.
+   * @return mixed Returns the value returned by the given callable.
+   */
+  public function execute(callable $callable) {
+    $this->init();
+    $returnValue = $callable();
+    $this->reset();
+    return $returnValue;
   }
 
   /**

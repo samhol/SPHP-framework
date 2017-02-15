@@ -40,6 +40,9 @@ MD
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Config/Ini.php", 'text', false))
         ->setExampleHeading("PHP environment manipulation example")
         ->printHtml();
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Config/Ini-execute.php", 'text', false))
+        ->setExampleHeading("PHP environment manipulation example")
+        ->printHtml();
 echo $parsedown->text(<<<MD
 ##$phpConfig object as a runtime PHP configuration manager 
 
