@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 /**
  * Class is responsible for logging uncaught exceptions to a file for debugging

@@ -11,9 +11,9 @@ $ns
 MD
 );
 
-$load("Core-intro/Orbit-intro.php");
-$load("Sphp.Core.Router.php");
-$load("Sphp.Core.Configurator.php");
+$load("Core-intro/Orbit-intro");
+$load("Sphp.Core.Router");
+$load("Sphp.Core.Configurator");
 
 namespace Sphp\Core\ErrorHandling;
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
@@ -23,5 +23,5 @@ $ns
 
 MD
 );
-$load("Sphp.Core.ExceptionHandler.php");
-$load("Sphp.Core.ErrorHandling.php");
+$load("Sphp.Core.Config.ErrorHandling.ExceptionHandler");
+$load("Sphp.Core.Config.ErrorHandling.ErrorHandling");

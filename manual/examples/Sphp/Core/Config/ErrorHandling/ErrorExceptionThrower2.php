@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 
@@ -11,3 +11,4 @@ try {
   (new ExceptionCallout($ex))->printHtml();
 }
 ErrorExceptionThrower::Stop();
+?>

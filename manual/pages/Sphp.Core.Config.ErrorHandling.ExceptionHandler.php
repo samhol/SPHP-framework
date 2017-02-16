@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 
@@ -18,5 +18,5 @@ MD
 );
 
 (new SyntaxHighlightingSingleAccordion("Uncaught PHP exceptions handling example"))
-        ->loadFromFile(EXAMPLE_DIR . 'Sphp/Core/ErrorHandling/ExceptionHandler.php')
+        ->loadFromFile(EXAMPLE_DIR . 'Sphp/Core/Config/ErrorHandling/ExceptionHandler.php')
         ->printHtml();

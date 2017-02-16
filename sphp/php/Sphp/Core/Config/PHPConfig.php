@@ -7,9 +7,6 @@
 
 namespace Sphp\Core\Config;
 
-use Sphp\Data\Arrayable;
-use Sphp\Core\Types\Arrays;
-
 /**
  * Implements class for managing PHP settings
  *
@@ -18,7 +15,7 @@ use Sphp\Core\Types\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PHPConfig implements Arrayable {
+class PHPConfig {
 
   /**
    * the config variable name value pairs container
@@ -27,6 +24,16 @@ class PHPConfig implements Arrayable {
    */
   private $setters = [];
 
+  /**
+   *
+   * @var Ini
+   */
+  private $ini;
+
+  /**
+   * 
+   * @param Ini $ini
+   */
   public function __construct(Ini $ini = null) {
     $this->setters = [];
     if ($ini === null) {
@@ -34,23 +41,27 @@ class PHPConfig implements Arrayable {
     }
     $this->ini = $ini;
   }
+
   public function __destruct() {
     unset($this->setters, $this->ini);
   }
 
   /**
    * 
+   * @return Ini
+   */
+  public function ini() {
+    return $this->ini;
+  }
+
+  /**
+   * 
    * @param  string $fun
    * @param  mixed[] $params
-   * @param  mixed $callId
    * @return self for PHP Method Chaining
    */
-  private function setFunc($fun, array $params = [], $callId = null) {
-    if ($callId === null) {
-      unset($this->setters[$fun]);
-      $callId = 0;
-    }
-    $this->setters[$fun][$callId] = $params;
+  private function setFunc($fun, array $params = []) {
+    $this->setters[] = [$fun, [$params]];
     return $this;
   }
 
@@ -73,8 +84,7 @@ class PHPConfig implements Arrayable {
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setLocale($category, $locale) {
-    $this->setFunc('setLocale', [$locale], $category);
-    setLocale($category, $locale) !== false;
+    $this->setFunc('setLocale', [$category, $locale]);
     return $this;
   }
 
@@ -98,7 +108,7 @@ class PHPConfig implements Arrayable {
    */
   public function setEncoding($encoding = 'UTF-8') {
     $this->setFunc('mb_internal_encoding', [$encoding]);
-    mb_internal_encoding($encoding);
+    //mb_internal_encoding($encoding);
     return $this;
   }
 
@@ -110,28 +120,30 @@ class PHPConfig implements Arrayable {
    */
   public function setDefaultTimezone($timezone) {
     $this->setFunc('date_default_timezone_set', [$timezone]);
-    date_default_timezone_set($timezone);
+    //date_default_timezone_set($timezone);
     return $this;
   }
-
 
   /**
    * Sets which PHP errors are reported
    *
    * @param  int $level the new error reporting level
    * @return self for PHP Method Chaining
+   * @link   http://php.net/manual/en/function.error-reporting.php PHP error reporting
    */
-  public function setErrorReporting($level) {
+  public function setErrorReporting($level = 0) {
     $this->setFunc('error_reporting', [$level]);
-    error_reporting($level);
-    //ini_set("display_errors", "1");
+    $display = ($level > 0) ? 1 : 0;
+    $this->ini->set('display_errors', $display);
     return $this;
   }
-  
+
   /**
+   * Sets a user-defined exception handler function
    * 
    * @param  callable $handler
    * @return self for PHP Method Chaining
+   * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
    */
   public function setExceptionHandler(callable $handler) {
     $this->setFunc('set_exception_handler', [$handler]);
@@ -146,18 +158,11 @@ class PHPConfig implements Arrayable {
    * @return self for PHP Method Chaining
    */
   public function init() {
-    foreach ($this->setters as $func => $call) {
-      foreach ($call as $params) {
-        call_user_func_array($func, $params);
-      }
+    foreach ($this->setters as $call) {
+      call_user_func_array($call[0], $call[1]);
     }
+    $this->ini->init();
     return $this;
-  }
-
-  public function toArray() {
-    $arr = [];
-    $arr['php'] = Arrays::copy($this->setters);
-    return $arr;
   }
 
 }

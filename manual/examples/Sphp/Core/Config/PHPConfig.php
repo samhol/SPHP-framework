@@ -19,3 +19,5 @@ var_dump(
         error_reporting()
 );
 
+$efw;
+

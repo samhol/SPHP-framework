@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 use SplSubject;
 use Exception;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 $handler = new ExceptionHandler();
 $handler->attach(new ExceptionLogger());

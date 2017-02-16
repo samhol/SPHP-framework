@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -23,5 +23,5 @@ MD
 ;
 
 $example = new \Sphp\Html\Foundation\Sites\Grids\ExampleViewingGrid("ErrorExceptionThrower example");
-$example->loadFromFile(EXAMPLE_DIR . "Sphp/Core/ErrorHandling/ErrorExceptionThrower.php");
+$example->loadFromFile(EXAMPLE_DIR . "Sphp/Core/Config/ErrorHandling/ErrorExceptionThrower.php");
 $example->printHtml();

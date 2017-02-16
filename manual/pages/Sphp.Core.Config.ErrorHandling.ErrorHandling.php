@@ -1,15 +1,15 @@
 <?php
 
-namespace Sphp\Core\ErrorHandling;
+namespace Sphp\Core\Config\ErrorHandling;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $errorExceptionThrower = $api->classLinker(ErrorExceptionThrower::class);
-$try_catch = $php->hyperLink("language.exceptions.php", "try/catch");
-$set_error_handler = $php->functionLink("set_error_handler");
-$e_fatal = $php->constantLink("E_FATAL");
-$e_deprecated = $php->constantLink("E_DEPRECATED");
+$try_catch = $php->hyperLink('language.exceptions.php', 'try/catch');
+$set_error_handler = $php->functionLink('set_error_handler');
+$e_fatal = $php->constantLink('E_FATAL');
+$e_deprecated = $php->constantLink('E_DEPRECATED');
 $exception = $php->classLinker(\Exception::class);
 echo $parsedown->text(<<<MD
 ###PHP error handling
@@ -25,7 +25,7 @@ errors or warnings to $exception objects and then re-set the PHP error handler a
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/ErrorHandling/ErrorExceptionThrower.php"))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Config/ErrorHandling/ErrorExceptionThrower.php"))
         ->printHtml();
 echo $parsedown->text(<<<MD
         
@@ -34,6 +34,6 @@ This feature can be turned off for even stricter error handling.
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/ErrorHandling/ErrorExceptionThrower2.php"))
+(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Config/ErrorHandling/ErrorExceptionThrower2.php"))
         ->printHtml();
 

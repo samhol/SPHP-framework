@@ -113,38 +113,6 @@ class Path {
   }
 
   /**
-   * Loads a local file once to the application
-   *
-   * @param  string $filePath
-   * @return self for PHP Method Chaining
-   * @throws ConfigurationException if path cannot be resolved
-   */
-  public function loadOnce($filePath) {
-    $path = $this->local($filePath);
-    if (!is_file($path)) {
-      throw new ConfigurationException("Relative path '$filePath' contains no file");
-    }
-    require_once $path;
-    return $this;
-  }
-
-  /**
-   * Loads a local file to the application
-   *
-   * @param  string $filePath
-   * @return self for PHP Method Chaining
-   * @throws ConfigurationException if path cannot be resolved
-   */
-  public function load($filePath) {
-    $path = $this->local($filePath);
-    if (!is_file($path)) {
-      throw new ConfigurationException("Relative path '$filePath' contains no file");
-    }
-    require $path;
-    return $this;
-  }
-
-  /**
    * Returns the singleton instance of the file system router
    * 
    * @return self singleton instance of the file system router
