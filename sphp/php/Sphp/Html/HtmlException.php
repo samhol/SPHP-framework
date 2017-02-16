@@ -7,7 +7,8 @@
 
 namespace Sphp\Html;
 
-use Exception;
+use Sphp\Exceptions\Exception;
+use Exception as SplException;
 
 /**
  * The base Exception in the {@link \Sphp\Html} namespace
@@ -17,6 +18,6 @@ use Exception;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HtmlException extends Exception {
+class HtmlException extends SplException implements Exception {
   
 }

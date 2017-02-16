@@ -32,3 +32,4 @@ CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Config/Config.php", 'te
 
 $load('Sphp.Core.Config.Ini');
 $load('Sphp.Core.Config.PHPConfig');
+$load('Sphp.Core.Config.ErrorHandling');

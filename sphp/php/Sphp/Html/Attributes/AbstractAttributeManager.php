@@ -129,10 +129,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     if (!$this->isValidObjectType($attrObject)) {
       $curr = $this->getAttributeObject($name);
       $type = get_class($curr);
-      throw new InvalidArgumentException("Attribute '$name' must be of $type type");
+      throw new AttributeException("Attribute '$name' must be of $type type");
     }
     if ($this->isIdentifier($name)) {
-      throw new InvalidArgumentException("Identifier '$name' cannot be an object");
+      throw new AttributeException("Identifier '$name' cannot be an object");
     }
     if ($this->isLocked($name)) {
       throw new AttributeException("Locked attribute '$name'");
@@ -206,7 +206,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return self for PHP Method Chaining
-   * @throws InvalidArgumentException if the attribute name or value is invalid
+   * @throws AttributeException if the attribute name or value is invalid
    * @throws AttributeException if the attribute value is unmodifiable
    */
   public function set($name, $value = true) {
