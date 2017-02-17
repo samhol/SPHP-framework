@@ -1,0 +1,20 @@
+<?php
+
+namespace Sphp\Filesystem;
+
+use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
+$csvFile = Apis::apigen()->classLinker(CsvFile::class);
+$arrLink = $php->typeLink("array");
+echo $parsedown->text(<<<MD
+$csvFile can read and modify <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>
+to a multidimensional PHP $arrLink where each 'row' represents a data row in the
+original CSV-file.
+MD
+);
+(new CodeExampleAccordion())
+        ->fromFile(EXAMPLE_DIR . "../snippets/example.csv")
+        ->setExampleHeading("CSV-file example")
+        ->printHtml();
+$exampleViewer(EXAMPLE_DIR . "Sphp/Filesystem/FileObject3.php", false, true);

@@ -4,7 +4,7 @@ namespace Sphp\Html\Media;
 
 use Sphp\Core\Path;
 
-$path = Path::get()->http('manual/pics/error.png');
+$path = Path::get()->local('manual/pics/error.png');
 echo (new \ParsedownExtra())->text(<<<TEXT
 
 <h1 class="error">Manual page not found!</h1>

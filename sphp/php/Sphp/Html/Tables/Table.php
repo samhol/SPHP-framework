@@ -201,10 +201,11 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    * @return Tbody table body component
    */
   public function tbody(Tbody $tbody = null) {
-    if ($tbody === null) {
-      $tbody = new Tbody();
+    if ($tbody !== null) {
+      $this->tbody = $tbody;
+    } else if($this->tbody === null) {
+      $this->tbody = new Tbody();
     }
-    $this->tbody = $tbody;
     return $this->tbody;
   }
 

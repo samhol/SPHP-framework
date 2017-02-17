@@ -9,6 +9,8 @@ items:
         page: Sphp.Core
       - link: Configuration systems
         page: Sphp.Core.Config
+      - link: Filesystem manipulation
+        page: Sphp.FileSystem
       - link: Data Structures
         page: Sphp.Data
       - link: Events and Observers
@@ -21,6 +23,8 @@ items:
         page: Sphp.Validation
       - link: I18n
         page: Sphp.Core.I18n
+      - link: Database objects 
+        page: Sphp.Db.Objects
     - separator: HTML manipulation
     - menu: HTML core
       items:
@@ -46,12 +50,6 @@ items:
         page: Sphp.Html.Media
       - link: Audio and Video 
         page: Sphp.Html.Media.Multimedia
-      - link: Lists
-        page: Sphp.Html.Lists
-      - link: Tables
-        page: Sphp.Html.Tables
-      - link: Forms
-        page: Sphp.Html.Forms
     - menu: Foundation Sites
       items:
       - link: Introduction
@@ -70,5 +68,3 @@ items:
         page: Sphp.Html.Foundation.Sites.Media
       - link: Form components
         page: Sphp.Html.Foundation.Sites.Forms
-    - link: Database objects 
-      page: Sphp.Db.Objects

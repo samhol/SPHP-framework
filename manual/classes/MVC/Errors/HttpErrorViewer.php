@@ -53,7 +53,7 @@ class HttpErrorViewer implements ContentInterface {
     $cont->append('* [SPHP framework API](http://documentation.samiholck.com/apigen/){.error}');
     $cont->append('* Technical Contact: <a href="mailto:sami.holck@samiholck.com">sami.holck@samiholck.com</a>');
     $cont->append("\n".'<div class="row columns"><div class="http-code float-right">' . $this->code->getCode() . '</div></div>');
-    $path = Path::get()->http('manual/pics/error.png');
+    $path = Path::get()->local('manual/pics/error.png');
     $s25 = new Size(25, 25);
     $s50 = new Size(50, 50);
     $s100 = new Size(100, 100);

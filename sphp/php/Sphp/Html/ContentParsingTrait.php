@@ -27,7 +27,7 @@ trait ContentParsingTrait {
    * @return self for PHP Method Chaining
    */
   public function appendRawFile($path) {
-    $this->append(FileSystem::fileToString($path));
+    $this->append(FileSystem::toString($path));
     return $this;
   }
 
