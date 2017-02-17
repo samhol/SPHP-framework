@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\FileSystem\Reader;
+namespace Sphp\Filesystem\Reader;
 
 use Exception;
 use Zend\Config\Reader\Json as JsonFormat;

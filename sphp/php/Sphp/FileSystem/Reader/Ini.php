@@ -8,7 +8,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Sphp\FileSystem\Reader;
+namespace Sphp\Filesystem\Reader;
 
 use Zend\Config\Reader\Ini as ZendIni;
 use Exception;

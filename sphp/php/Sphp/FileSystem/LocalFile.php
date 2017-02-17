@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\FileSystem;
+namespace Sphp\Filesystem;
 
 /**
  * Class contains tools to work with the local files and directories

@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\FileSystem\Writer;
+namespace Sphp\Filesystem\Writer;
 
 use Traversable;
 use Exception;

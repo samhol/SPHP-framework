@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\FileSystem;
+namespace Sphp\Filesystem;
 
 use Sphp\Data\Arrayable;
 use SplFileObject;
@@ -18,8 +18,8 @@ use SplFileObject;
 class CsvFile implements Arrayable {
 
   public function __construct($filename) {
-    $this->file = new SplFileObject($filename);
-    $this->file->setCsvControl(';');
+    $this->file = new SplFileObject($filename,'r');
+    $this->file->setCsvControl(',');
   }
 
   /**
@@ -38,8 +38,8 @@ class CsvFile implements Arrayable {
   public function toArray() {
     $arr = [];
     $this->file->setFlags(SplFileObject::DROP_NEW_LINE);
-    while (!$this->file->eof()) {
-      $arr[] = $this->file->fgetcsv();
+    while (!$this->file->eof() && ($row = $this->file->fgetcsv()) && $row[0] !== null) {
+      $arr[] = $row;
     }
     return $arr;
   }

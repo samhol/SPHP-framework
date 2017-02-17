@@ -1,11 +1,11 @@
 <?php
 
 /**
- * FileSystem.php (UTF-8)
+ * Filesystem.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\FileSystem;
+namespace Sphp\Filesystem;
 
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -17,7 +17,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileSystem {
+class Filesystem {
 
   /**
    * Returns the entire file as a string
@@ -26,7 +26,7 @@ class FileSystem {
    * @return string the result of the script execution
    * @throws InvalidArgumentException if the $path points to no actual file
    */
-  public static function fileToString($path) {
+  public static function toString($path) {
     if (!is_file($path)) {
       throw new InvalidArgumentException("The path '$path' contains no file");
     }
@@ -61,7 +61,7 @@ class FileSystem {
    *
    * @param  string $path the path to the ascii file
    * @return string[] rows of the ascii file in an array
-   * @throws InvalidArgumentException if the $filename points to no actual file
+   * @throws InvalidArgumentException if the $path points to no actual file
    */
   public static function getTextFileRows($path) {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -72,7 +72,7 @@ class FileSystem {
   }
 
   /**
-   * Returns the names of the content files of a directory
+   * Returns the file/directory structure under the given path
    *
    * @param  string $dir
    * @return string[] the file names of the content files and directories
@@ -90,16 +90,6 @@ class FileSystem {
       }
     }
     return $contents;
-  }
-
-  /**
-   * Executes a PHP script and returns the result as a parsed Markdown string
-   *
-   * @param  string $path the path to the executable PHP script
-   * @return string the result of the script execution
-   */
-  public static function parseYaml($path) {
-    return Parser::parseYamlString(static::fileToString($path));
   }
 
   /**
