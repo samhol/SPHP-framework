@@ -17,4 +17,4 @@ MD
         ->fromFile(EXAMPLE_DIR . "../snippets/example.csv")
         ->setExampleHeading("CSV-file example")
         ->printHtml();
-$exampleViewer(EXAMPLE_DIR . "Sphp/Filesystem/FileObject3.php", false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Filesystem/CsvFile.php", false, true);
