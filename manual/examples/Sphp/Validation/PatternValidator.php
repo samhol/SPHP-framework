@@ -4,7 +4,7 @@ namespace Sphp\Core\Validators;
 
 use Sphp\Core\Gettext\Locale as Locale;
 
-Locale::setMessageLocale("fi_FI.UTF-8");
+//Locale::setMessageLocale("fi_FI.UTF-8");
 //Translator::useTextDomain("Sphp.Validation");
 
 $validator = (new PatternValidator())

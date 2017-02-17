@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Gettext\Message;
+use Sphp\Core\I18n\Message;
 use Sphp\Core\Types\Strings;
 
 /**

@@ -18,7 +18,7 @@ trait GettextDataTrait {
    */
   public static function gettextIterator() {
     if (self::$parser === null) {
-      self::$parser = new PoFileIterator(\Sphp\LOCALE_PATH . '\fi_FI\LC_MESSAGES\Sphp.Defaults.po');
+      self::$parser = new PoFileIterator(__DIR__ . '/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po');
     }
     return self::$parser;
   }

@@ -8,8 +8,8 @@
 namespace Sphp\Core\Http;
 
 use Sphp\Core\Path;
-use Sphp\Core\Util\FileUtils;
-use InvalidArgumentException;
+use Sphp\FileSystem\Parser;
+use Sphp\Exceptions\InvalidArgumentException;
 use Iterator;
 
 /**
@@ -30,7 +30,7 @@ class HttpCodeCollection implements Iterator {
 
   public function __construct() {
     if (!is_array(self::$errors)) {
-      self::$errors = FileUtils::parseYaml(Path::get()->local('/sphp/yaml/http_errors.yaml'));
+      self::$errors = Parser::fromFile(Path::get()->local('/sphp/yaml/http_errors.yaml'));
     }
     foreach(self::$errors as $code => $v) {
       $this->codes[$code] = new HttpCode($code, $v['message'], $v['description']);

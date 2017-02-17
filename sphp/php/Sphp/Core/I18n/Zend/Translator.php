@@ -164,10 +164,13 @@ class Translator extends AbstractTranslator {
     return $this->charset;
   }
 
-  public function get($text) {
-    $parser = function($arg) {
+  public function get($text, $lang = null) {
+    if ($lang === null) {
+      $lang = $this->getLang();
+    }
+    $parser = function($arg) use ($lang) {
       if (is_string($arg)) {
-        return $this->translator->translate($arg, $this->getDomain(), $this->getLang());
+        return $this->translator->translate($arg, $this->getDomain(), $lang);
       }
       return $arg;
     };
@@ -183,7 +186,7 @@ class Translator extends AbstractTranslator {
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 
-  public static function FromTranslationFilePattern($lang, $directory, $domain) {
+  public static function fromTranslationFilePattern($lang, $directory, $domain) {
     $t = new ZendTranslator();
     $t->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, $directory, $domain);
     return new static($lang, $t);

@@ -2,15 +2,14 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Util\LocalFile;
+use Sphp\Core\Path;
 use Sphp\Html\Sections\Paragraph;
 
-$fileLoader = new LocalFile("manual/snippets/loremipsum.html");
+$file = Path::get()->local("manual/snippets/loremipsum.html");
 $container = new Container();
 $container["heading"] = (new Headings\H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
-$container["heading"]->setTitle("Lorem ipsum!");
 $container["paragraph"] = (new Paragraph())
-		->append($fileLoader->getTextFileRows())
+		->appendRawFile($file)
 		->setStyle("text-align", "justify");
 $container->append(new \stdClass());
 

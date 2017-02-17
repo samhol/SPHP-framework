@@ -2,13 +2,12 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Configuration;
 use Sphp\Core\Gettext\Locale;
-use Sphp\Core\Gettext\Translator;
-Configuration::useDomain("manual")->phpConfiguration()->setMessageLocale("fi_FI.UTF-8");
-var_dump(Configuration::useDomain("manual")->phpConfiguration()->getMessageLocale());
+use Sphp\Core\Config\PHPConfig;
+$finnish = new PHPConfig();
+$finnish->setMessageLocale('fi_FI.UTF-8');
 //var_dump(Translator::useTextDomain("default"));
-var_dump(Locale::getMessageLocale());
+
 //var_dump(Translator::getCurrentTextDomain());
 
 $validator = new RequiredValueValidator();

@@ -4,4 +4,5 @@ namespace Sphp\Core;
 
 //Configuration::useDomain('manual');
 
-Config\Config::instance();
+//Config\Config::instance();
+require_once('menuArrays.php');

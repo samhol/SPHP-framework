@@ -1,0 +1,1345 @@
+# Sami Holck, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: SPHP framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-13 16:00+0200\n"
+"PO-Revision-Date: 2016-11-25 14:42+0200\n"
+"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Language-Team: Sami Holck <sami.holck@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi_FI\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+
+# General translations
+msgid "%H:%M:%S elapsed"
+msgstr "%H:%M:%S kulunut"
+
+msgid "%H:%M:%S left"
+msgstr "%H:%M:%S jäljellä"
+
+#, c-format
+msgid "%d directory"
+msgid_plural "%d directories"
+msgstr[0] "%d hakemisto"
+msgstr[1] "%d hakemistoa"
+
+#, c-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] "%d tiedosto"
+msgstr[1] "%d tiedostoa"
+
+#, c-format
+msgid "%d file. Total size: %s"
+msgid_plural "%d files. Total size: %s"
+msgstr[0] "%d tiedosto. Koko yhteensä: %s"
+msgstr[1] "%d tiedostoa. Koko yhteensä: %s"
+
+#, c-format
+msgid "%d file. Total size: At least %s"
+msgid_plural "%d files. Total size: At least %s"
+msgstr[0] "%d tiedosto. Koko yhteensä: vähintään %s"
+msgstr[1] "%d tiedostoa. Koko yhteensä: vähintään %s"
+
+#, c-format
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d sekunti"
+msgstr[1] "%d sekuntia"
+
+msgid "%h - Host"
+msgstr "%h - Isäntä"
+
+#, no-c-format
+msgid "%p - Password"
+msgstr "%p - Salasana"
+
+#, c-format
+msgid "%s - Not yet valid!"
+msgstr "%s - Ei vielä kelvollinen!"
+
+#, c-format
+msgid "%s and %s. Total size: %s"
+msgstr "%s ja %s. Koko yhteensä: %s"
+
+#, c-format
+msgid "%s and %s. Total size: At least %s"
+msgstr "%s ja %s. Koko yhteensä: vähintään %s"
+
+#, c-format
+msgid "%s byte"
+msgid_plural "%s bytes"
+msgstr[0] "%s tavu"
+msgstr[1] "%s tavua"
+
+#, c-format
+msgid "%s with %d bits"
+msgstr "%s, jossa %d bittiä"
+
+#, no-c-format
+msgid "%u - Username"
+msgstr "%u - Käyttäjänimi"
+
+msgid "About..."
+msgstr "Tietoja..."
+
+msgid "Account:"
+msgstr "Tili:"
+
+msgid "active"
+msgstr "aktiivinen"
+
+msgid "close"
+msgstr "sulje"
+
+msgid "configure"
+msgstr "määritä"
+
+msgid "connect"
+msgstr "yhdistä"
+
+msgid "Copy to clipboard"
+msgstr "Kopioi leikepöydälle"
+
+msgid "crash"
+msgstr "kaatuminen"
+
+msgid "debug"
+msgstr "debuggaus"
+
+msgid "Disconnect"
+msgstr "Katkaise yhteys"
+
+msgid "Don't show this dialog again."
+msgstr "Älä näytä tätä sanomaa jatkossa"
+
+msgid "Download"
+msgstr "Lataa"
+
+msgid "edit"
+msgstr "muokkaa"
+
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+msgid "Encoding:"
+msgstr "Koodaus:"
+
+msgid "File:"
+msgstr "Tiedosto:"
+
+msgid "help"
+msgstr "ohje"
+
+msgid "host"
+msgstr "isäntä"
+
+msgid "Log to file"
+msgstr "Kirjoita loki tiedostoon"
+
+msgid "Logon Type:"
+msgstr "Kirjautumistyyppi:"
+
+msgid "low"
+msgstr "pieni"
+
+msgid "message log"
+msgstr "sanomaloki"
+
+msgid "name"
+msgstr "nimi"
+
+msgid "new"
+msgstr "uusi"
+
+msgid "Numeric value:"
+msgstr "Numeerinen arvo:"
+
+msgid "open"
+msgstr "avaa"
+
+msgid "overwrite"
+msgstr "korvaa"
+
+msgid "passive"
+msgstr "passiivinen"
+
+msgid "password"
+msgstr "salasana"
+
+msgid "play sound"
+msgstr "soita ääni"
+
+msgid "Queue"
+msgstr "Jono"
+
+msgid "&Remember passwords"
+msgstr "&Muista salasanat"
+
+msgid "&Remote directory:"
+msgstr "P&alvelimen hakemisto:"
+
+msgid "&Remote path:"
+msgstr "&Palvelimen polku:"
+
+msgid "remove"
+msgstr "poista"
+
+msgid "remove selected"
+msgstr "poista valitut"
+
+msgid "Replace invalid characters with:"
+msgstr "Korvaa epäkelvot merkit seuraavilla:"
+
+msgid "Report a bug..."
+msgstr "Ilmoita virheestä..."
+
+msgid "resume"
+msgstr "jatka"
+
+msgid "save"
+msgstr "tallenna"
+
+msgid "Save as..."
+msgstr "Tallenna nimellä..."
+
+msgid "Search"
+msgstr "Etsi"
+
+msgid "Select language:"
+msgstr "Valitse kieli:"
+
+msgid "Server"
+msgstr "Palvelin"
+
+msgid "&Show message"
+msgstr "&Näytä sanoma"
+
+msgid "&Show timestamps in message log"
+msgstr "&Näytä aikaleimat sanomalokissa"
+
+msgid "Skip"
+msgstr "Ohita"
+
+msgid "Test"
+msgstr "Testaa"
+
+msgid "theme"
+msgstr "teema"
+
+msgid "Username"
+msgstr "Käyttäjänimi"
+
+#, c-format
+msgid "'%s' does not exist or cannot be accessed."
+msgstr "'%s' ei löydy tai siihen ei saada yhteyttä."
+
+#, c-format
+msgid "'%s' is not a directory."
+msgstr "'%s' ei ole hakemisto."
+
+msgid "example: %s"
+msgstr "esimerkki: %s"
+
+msgid "add"
+msgstr "lisää"
+
+msgid "Account"
+msgstr "Tili"
+
+msgid "Advanced"
+msgstr "Edistyneet"
+
+msgid "Always perform this action"
+msgstr "Suorita aina tämä toiminto"
+
+msgid "All files have been successfully transferred"
+msgstr "Kaikki tiedostot siirretty onnistuneesti"
+
+msgid "Clear all"
+msgstr "Tyhjennä kaikki"
+
+msgid "Custom"
+msgstr "Muokattu"
+
+msgid "Can't read from file"
+msgstr "Tiedostosta ei voi lukea"
+
+msgid "Can't write data to file"
+msgstr "Dataa ei voi kirjoittaa tiedostoon"
+
+msgid "Cancel current operation"
+msgstr "Peruuta toiminto"
+
+msgid "Cannot edit file"
+msgstr "Tiedostoa ei voi muokata"
+
+msgid "Cannot rename entry"
+msgstr "Kohdetta ei voitu nimetä uudelleen."
+
+msgid "Cannot rename file"
+msgstr "Tiedostoa ei voitu nimetä uudelleen"
+
+msgid "Charset"
+msgstr "Merkistö"
+
+msgid "connection"
+msgstr "yhteys"
+
+msgid "Connection closed"
+msgstr "Yhteys suljettu"
+
+msgid "Connection closed by server"
+msgstr "Palvelin sulki yhteyden"
+
+msgid "Connection lost"
+msgstr "Yhteys menetetty"
+
+msgid "Connection timed out."
+msgstr "Yhteys aikakatkaistu."
+
+msgid "Connection to server lost."
+msgstr "Yhteys palvelimelle katkesi."
+
+msgid "Could not complete operation"
+msgstr "Toiminnon suorittaminen epäonnistui"
+
+msgid "Could not connect to server"
+msgstr "Yhteys palvelimeen epäonnistui"
+
+msgid "Could not open clipboard"
+msgstr "Leikepöydän avaaminen epäonnistui"
+
+#, c-format
+msgid "Could not open log file: %s"
+msgstr "Ei voitu avata lokitiedostoa: %s"
+
+#, c-format
+msgid "Could not write to log file: %s"
+msgstr "Ei voitu kirjoittaa lokitiedostoon: %s"
+
+msgid "Country:"
+msgstr "Maa:"
+
+msgid "Create new file"
+msgstr "Luo uusi tiedosto"
+
+msgid "Create directory"
+msgstr "Luo hakemisto"
+
+msgid "Data type"
+msgstr "Datatyyppi"
+
+msgid "default"
+msgstr "oletus"
+
+msgid "Disable all"
+msgstr "Poista kaikki käytöstä"
+
+msgid "update"
+msgstr "päivitä"
+
+msgid "duplicate"
+msgstr "monista"
+
+msgid "Data"
+msgstr "Tiedot"
+
+msgid "Date"
+msgstr "Päivämäärä"
+
+msgid "Default system language"
+msgstr "Järjestelmän oletuskieli"
+
+msgid "Delete selected directory"
+msgstr "Poista valittu hakemisto"
+
+msgid "Delete selected files and directories"
+msgstr "Poista valitut tiedostot ja hakemistot"
+
+msgid "Details"
+msgstr "Yksityiskohdat"
+
+msgid "Directories"
+msgstr "Hakemistot"
+
+msgid "Directory"
+msgstr "Hakemisto"
+
+msgid "Directory comparison"
+msgstr "Hakemistojen vertailu"
+
+msgid "Directory comparison failed"
+msgstr "Hakemistojen vertailu epäonnistui"
+
+msgid "Do &nothing"
+msgstr "Älä tee mitään"
+
+msgid "Documentation"
+msgstr "Dokumentaatio"
+
+msgid "Double-click action"
+msgstr "Kaksoisklikkauksen toiminta"
+
+msgid "Downloading"
+msgstr "Ladataan"
+
+msgid "Enable all"
+msgstr "Ota kaikki käyttöön"
+
+msgid "E&nter directory"
+msgstr "&Anna hakemisto"
+
+msgid "exit"
+msgstr "lopeta"
+
+msgid "E-Mail"
+msgstr "sähköposti"
+
+msgid "Editing failed"
+msgstr "Muokkaus epäonnistui"
+
+msgid "Empty directory listing"
+msgstr "Tyhjä hakemistolistaus"
+
+msgid "Empty directory."
+msgstr "Tyhjä hakemisto."
+
+msgid "Encrypted"
+msgstr "Salattu"
+
+msgid "Encryption"
+msgstr "Salaus"
+
+msgid "Enter directory"
+msgstr "Anna hakemisto"
+
+msgid "Enter password"
+msgstr "Anna salasana"
+
+msgid "Enter username and password"
+msgstr "Anna käyttäjänimi ja salasana"
+
+msgid "Error importing"
+msgstr "Tuonti epäonnistui"
+
+msgid "Error loading xml file"
+msgstr "XML-tiedoston lataus epäonnistui"
+
+msgid "Error writing xml file"
+msgstr "XML-tiedoston kirjoitus epäonnistui"
+
+msgid "error"
+msgstr "virhe"
+
+msgid "examples"
+msgstr "esimerkit"
+
+msgid "execute"
+msgstr "suorita"
+
+msgid "Failed to change directory"
+msgstr "Hakemiston vaihtaminen ei onnistunut"
+
+msgid "Failed to change language"
+msgstr "Kielen vaihtaminen ei onnistunut"
+
+msgid "Failed to create backup copy of xml file"
+msgstr "XML-tiedoston varmuuskopion luonti epäonnistui"
+
+#, c-format
+msgid "Failed to open \"%s\" for reading"
+msgstr "Ei voitu avata kohdetta \"%s\" lukemista varten"
+
+#, c-format
+msgid "Failed to open \"%s\" for writing"
+msgstr "Ei voitu avata kohdetta \"%s\" kirjoittamista varten"
+
+msgid "Failed to receive data"
+msgstr "Datan vastaanotto epäonnistui"
+
+msgid "Failed to retrieve directory listing"
+msgstr "Hakemistolistauksen haku epäonnistui"
+
+#, c-format
+msgid "Failed to write to file %s"
+msgstr "Tiedostoon %s kirjoittaminen epäonnistui"
+
+msgid "Failed to write xml file"
+msgstr "XML-tiedoston kirjoitus epäonnistui"
+
+msgid "File"
+msgstr "Tiedosto"
+
+msgid "File Types"
+msgstr "Tiedostotyypit"
+
+msgid "File editing"
+msgstr "Tiedoston muokkaus"
+
+msgid "File exists"
+msgstr "Tiedosto on jo olemassa"
+
+msgid "File lists"
+msgstr "Tiedostolistaukset"
+
+msgid "File not found"
+msgstr "Tiedostoa ei löydy"
+
+msgid "File search"
+msgstr "Tiedoston haku"
+
+msgid "File transfer failed"
+msgstr "Tiedostonsiirto epäonnistui"
+
+msgid "File transfer successful"
+msgstr "Tiedostonsiirto onnistui"
+
+msgid "Filename"
+msgstr "Nimi"
+
+msgid "Filename invalid"
+msgstr "Epäkelpo tiedostonimi"
+
+msgid "Filename may not contain any of the following characters: / \\ : * ? \" < > |"
+msgstr "Tiedostonimissä ei saa esiintyä mitään seuraavista merkeistä: / \\ : * ?\" < > |"
+
+msgid "Filename:"
+msgstr "Nimi:"
+
+msgid "Filenames may not contain any of the following characters: / * ? < > |"
+msgstr "Tiedostonimissä ei saa esiintyä mitään seuraavista merkeistä: / * ? < > |"
+
+msgid "Filenames may not contain any of the following characters: / \\ : * ? \" < > |"
+msgstr "Tiedostonimissä ei saa esiintyä mitään seuraavista merkeistä: / \\ : * ? < > |"
+
+msgid "Filesize"
+msgstr "Koko"
+
+msgid "Filesize format"
+msgstr "Tiedostokoon muoto"
+
+msgid "Filetype"
+msgstr "Tyyppi"
+
+msgid "Force showing hidden files"
+msgstr "Pakota piilotettujen tiedostojen näyttäminen"
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Getting help"
+msgstr "Ohjeet"
+
+msgid "Hidden"
+msgstr "Piilotettu"
+
+msgid "High"
+msgstr "Suuri"
+
+msgid "Highest"
+msgstr "Suurin"
+
+msgid "Host unreachable"
+msgstr "Isäntään ei saatu yhteyttä"
+
+msgid "Host:"
+msgstr "Isäntä:"
+
+msgid "Import successful"
+msgstr "Tuonti onnistui"
+
+msgid "Incorrect password"
+msgstr "Salasana ei kelpaa"
+
+msgid "Interactive"
+msgstr "Interaktiivinen"
+
+msgid "Interface"
+msgstr "Käyttöliittymä"
+
+msgid "Interrupted by user"
+msgstr "Käyttäjän keskeytys"
+
+msgid "Invalid argument passed"
+msgstr "Annettiin virheellinen argumentti"
+
+msgid "Invalid data received"
+msgstr "Vastaanotettu data ei kelpaa"
+
+msgid "Invalid date"
+msgstr "Päivämäärä ei kelpaa"
+
+msgid "Invalid filename"
+msgstr "Epäkelpo tiedostonimi"
+
+msgid "Invalid input"
+msgstr "Virheellinen syöte"
+
+msgid "Invalid regular expression in search conditions."
+msgstr "Epäkelpo säännöllinen lauseke hakuehdoissa."
+
+msgid "Invalid response code"
+msgstr "Vastauskoodi ei kelpaa"
+
+#, c-format
+msgid "Invalid search conditions: %s"
+msgstr "Epäkelvot hakuehdot: %s"
+
+msgid "Invalid site path"
+msgstr "Sivuston polku ei kelpaa"
+
+msgid "Invalid size in condition"
+msgstr "Ehdon koko ei kelpaa"
+
+msgid "Invalid username given."
+msgstr "Käyttäjänimi ei kelpaa."
+
+msgid "Invalid value for hints"
+msgstr "Virheellinen arvo vihjeille"
+
+msgid "Language"
+msgstr "Kieli"
+
+msgid "Language changed"
+msgstr "Kieli vaihdettu"
+
+msgid "Last modified"
+msgstr "Muokattu"
+
+msgid "Layout"
+msgstr "Ulkoasu"
+
+msgid "Limit size of logfile"
+msgstr "Rajaa lokitiedoston koko"
+
+msgid "Limit:"
+msgstr "Raja:"
+
+msgid "Listing:"
+msgstr "Listaus:"
+
+msgid "Locality:"
+msgstr "Sijainti:"
+
+msgid "Log file"
+msgstr "Lokitiedosto"
+
+msgid "Logging"
+msgstr "Kirjautuminen"
+
+msgid "Low"
+msgstr "Pieni"
+
+msgid "Lowest"
+msgstr "Pienin"
+
+#, c-format
+msgid "Malformed header: %s"
+msgstr "Virheellisesti muotoiltu tunniste: %s"
+
+msgid "Message log"
+msgstr "Sanomaloki"
+
+msgid "Message log position"
+msgstr "Sanomalokin sijainti"
+
+msgid "Message too large"
+msgstr "Sanoma liian suuri"
+
+msgid "Minutes"
+msgstr "minuuttia"
+
+msgid "Move down"
+msgstr "Siirrä alaspäin"
+
+msgid "Move up"
+msgstr "Siirrä ylöspäin"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Name already exists"
+msgstr "Nimi on jo olemassa."
+
+msgid "Natural sort"
+msgstr "Luonnollinen lajittelu"
+
+msgid "Need to enter valid remote path"
+msgstr "Kelvollinen polku tarvitaan"
+
+msgid "Need to specify a character encoding"
+msgstr "Merkistökoodaus tarvitaan"
+
+msgid "Opening failed"
+msgstr "Avaus epäonnistui"
+
+msgid "Operation in progress"
+msgstr "Toiminto käynnissä"
+
+msgid "Other:"
+msgstr "Muu:"
+
+msgid "Owner permissions"
+msgstr "Omistajan oikeudet"
+
+msgid "Owner/Group"
+msgstr "Omistaja/Ryhmä"
+
+msgid "Pass&word:"
+msgstr "S&alasana:"
+
+msgid "Password required"
+msgstr "Tarvitaan salasana"
+
+msgid "Path not found:"
+msgstr "Polkua ei löydy:"
+
+msgid "Permission"
+msgstr "Lupa"
+
+msgid "Permission denied"
+msgstr "Lupa evätty"
+
+msgid "Permissions"
+msgstr "Oikeudet"
+
+msgid "Please enter a date of the form YYYY-MM-DD such as for example 2010-07-18."
+msgstr "Anna lomakkeen päivämäärä muodossa VVVV-KK-PP, esimerkiksi 2010-07-18."
+
+msgid "Please enter username and password"
+msgstr "Anna käyttäjänimi ja salasana"
+
+msgid "Position of the message log:"
+msgstr "Sanomalokin sijainti:"
+
+msgid "Postal code:"
+msgstr "Postinumero:"
+
+msgid "Preview:"
+msgstr "Esikatselu:"
+
+msgid "Priority"
+msgstr "Prioriteetti"
+
+msgid "rename"
+msgstr "nimeä uudelleen"
+
+msgid "Read-only"
+msgstr "Vain luku"
+
+msgid "Really cancel current operation?"
+msgstr "Perutetaanko toiminto?"
+
+msgid "reason"
+msgstr "syy"
+
+msgid "Remove all"
+msgstr "Poista kaikki"
+
+msgid "Remove selected"
+msgstr "Poista valittu"
+
+msgid "Rename file"
+msgstr "Nimeä tiedosto uudelleen"
+
+msgid "Rename selected directory"
+msgstr "Nimeä valittu hakemisto uudelleen"
+
+#, c-format
+msgid "Renaming '%s' to '%s'"
+msgstr "Nimetään uudelleen '%s' '%s':ksi"
+
+msgid "Resource temporarily unavailable"
+msgstr "Resurssi ei ole tällä hetkellä saatavilla"
+
+msgid "Response:"
+msgstr "Vastaus:"
+
+msgid "Results"
+msgstr "Tulokset"
+
+msgid "Stop"
+msgstr "Pysäytä"
+
+msgid "Save settings?"
+msgstr "Tallennetaanko asetukset?"
+
+msgid "Search conditions:"
+msgstr "Hakuehdot:"
+
+msgid "Search server for files"
+msgstr "Etsi tiedostoja palvelimelta"
+
+msgid "Security information"
+msgstr "Turvallisuustiedot"
+
+msgid "Select Theme"
+msgstr "Valitse teema"
+
+msgid "Select target filename"
+msgstr "Valitse kohteen tiedostonimi"
+
+msgid "Selected file is already loaded"
+msgstr "Valittu tiedosto on jo avattu"
+
+msgid "Selected file is still being edited"
+msgstr "Valittu tiedosto on vielä muokattavana"
+
+msgid "Server sent unexpected reply."
+msgstr "Palvelin lähetti odottamattoman vastauksen."
+
+msgid "Session details"
+msgstr "Yhteyskerran tiedot"
+
+msgid "Set Priority"
+msgstr "Aseta prioriteetti"
+
+msgid "settings"
+msgstr "asetukset"
+
+msgid "Show welcome dialog..."
+msgstr "Näytä tervetuloikkuna..."
+
+msgid "Show details"
+msgstr "Näytä yksityiskohdat"
+
+msgid "size"
+msgstr "koko"
+
+msgid "Size unknown"
+msgstr "Koko tuntematon"
+
+msgid "Skip file"
+msgstr "Hylkää tiedosto"
+
+#, c-format
+msgid "Skipping download of %s"
+msgstr "Ohitetaan %s:n lataus palvelimelta"
+
+msgid "Sorting"
+msgstr "Lajittelu"
+
+msgid "Sorting mode:"
+msgstr "Lajitteluperuste:"
+
+msgid "Source and path of the drop operation are identical"
+msgstr "Pudotus-toiminnon lähde ja polku ovat samanlaiset"
+
+msgid "Source file"
+msgstr "Lähdetiedosto"
+
+msgid "State or province:"
+msgstr "Maa tai lääni:"
+
+msgid "status"
+msgstr "tila"
+
+msgid "street"
+msgstr "katu"
+
+msgid "Syntax error"
+msgstr "Syntaksivirhe"
+
+msgid "system"
+msgstr "järjestelmä"
+
+msgid "toolbar"
+msgstr "työkalurivi"
+
+msgid "Target file already exists"
+msgstr "Kohdetiedosto on jo olemassa"
+
+msgid "Target file:"
+msgstr "Kohdetiedosto:"
+
+msgid "Target filename already exists!"
+msgstr "Kohdetiedosto on jo olemassa!"
+
+msgid "Test results"
+msgstr "Testitulokset"
+
+#, c-format
+msgid "The XML document is not well-formed: %s"
+msgstr "XML-asiakirja on väärin muodostettu: %s"
+
+msgid "The entered filter name already exists, please choose a different name."
+msgstr "Annettu suodatinnimi on jo olemassa, valitse toinen nimi."
+
+#, c-format
+msgid "The file '%s' could not be loaded."
+msgstr "Tiedostoa '%s' ei voitu ladata."
+
+msgid "Themes"
+msgstr "Teemat"
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "Time&out in seconds:"
+msgstr "&Aikakatkaisu sekunneissa:"
+
+msgid "Timeout"
+msgstr "Aikakatkaisu"
+
+msgid "Title"
+msgstr "Otsikko"
+
+msgid "Trace:"
+msgstr "Jäljitä:"
+
+msgid "Transfer"
+msgstr "Siirto"
+
+msgid "Transferring"
+msgstr "Siirretään"
+
+msgid "Transfers finished"
+msgstr "Siirto valmis"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "Upload"
+msgstr "Lataa palvelimelle"
+
+msgid "Unit:"
+msgstr "Yksikkö:"
+
+msgid "unknown"
+msgstr "tuntematon"
+
+msgid "Upload failed"
+msgstr "Lataus palvelimelle epäonnistui"
+
+msgid "Uploading"
+msgstr "Ladataan palvelimelle"
+
+msgid "user"
+msgstr "käyttäjä"
+
+msgid "version"
+msgstr "versio"
+
+msgid "Very high"
+msgstr "Erittäin suuri"
+
+msgid "View/Edit"
+msgstr "Näytä/Muokkaa"
+
+msgid "write"
+msgstr "kirjoita"
+
+msgid "after"
+msgstr "jälkeen"
+
+msgid "before"
+msgstr "ennen"
+
+msgid "begins with"
+msgstr "alkaa"
+
+msgid "bytes"
+msgstr "tavua"
+
+msgid "contains"
+msgstr "sisältää"
+
+msgid "custom"
+msgstr "muokattu"
+
+msgid "does not contain"
+msgstr "ei sisällä"
+
+msgid "does not equal"
+msgstr "ei ole yhtä kuin"
+
+msgid "ends with"
+msgstr "loppuu"
+
+msgid "file"
+msgstr "tiedosto"
+
+msgid "equals"
+msgstr "yhtäsuuri kuin"
+
+msgid "greater than"
+msgstr "suurempi kuin"
+
+msgid "is equal to"
+msgstr "yhtäsuuri kuin"
+
+msgid "is set"
+msgstr "on asetettu"
+
+msgid "is unset"
+msgstr "asetus poistettu"
+
+msgid "less than"
+msgstr "pienempi kuin"
+
+msgid "owner executable"
+msgstr "omistajan käynnistettävä"
+
+msgid "owner readable"
+msgstr "omistajan luettava"
+
+msgid "owner writeable"
+msgstr "omistajan kirjoittava"
+
+# Validation messages
+msgid "Please insert a value"
+msgstr "Syötä jokin arvo"
+
+msgid "Please insert a correct email address"
+msgstr "Syötä toimiva sähköpostiosoite"
+
+msgid "Please insert atleast %s of the following characters (%s)"
+msgstr "Syötä vähintään %s seuraavista vaihtoehdoista (%s)"
+
+msgid "Please insert %d-%d characters"
+msgstr "Syötä %d-%d merkkiä"
+
+msgid "Please insert %s-%s characters"
+msgstr "Syötä %s-%s merkkiä"
+
+msgid "Please insert at most %d characters"
+msgstr "Syötä korkeintaan %d merkkiä"
+
+msgid "Please insert at most %s characters"
+msgstr "Syötä korkeintaan %s merkkiä"
+
+msgid "Please insert atleast %d characters"
+msgstr "Syötä vähintään %d merkkiä"
+
+msgid "Please insert atleast %s characters"
+msgstr "Syötä vähintään %s merkkiä"
+
+msgid "Please insert atleast %d numbers"
+msgstr "Syötä vähintään %d numeroa"
+
+msgid "Please insert atleast %s numbers"
+msgstr "Syötä vähintään %s numeroa"
+
+msgid "Please insert atleast %d alphabets"
+msgstr "Syötä vähintään %d kirjainta"
+
+msgid "Please insert atleast %s alphabets"
+msgstr "Syötä vähintään %s kirjainta"
+
+msgid "Please insert exactly %d characters"
+msgstr "Syötä tarkalleen %d merkkiä"
+
+msgid "Please insert exactly %s characters"
+msgstr "Syötä tarkalleen %s merkkiä"
+
+msgid "Please insert exactly %d numbers"
+msgstr "Syötä tarkalleen %d numetoa"
+
+msgid "Please insert exactly %s numbers"
+msgstr "Syötä tarkalleen %s numetoa"
+
+msgid "Please insert exactly %d alphabets"
+msgstr "Syötä tarkalleen %d kirjainta"
+
+msgid "Please insert exactly %s alphabets"
+msgstr "Syötä tarkalleen %s kirjainta"
+
+msgid "Please insert %s only"
+msgstr "Syötä ainoastaan %s"
+
+msgid "Please insert numbers only"
+msgstr "Syötä ainoastaan numeroita"
+
+msgid "Please insert alphabets only"
+msgstr "Syötä ainoastaan kirjaimia"
+
+msgid "Please insert alphabets and numbers only"
+msgstr "Syötä ainoastaan kirjaimia ja numeroita"
+
+msgid "Please insert correct date and time"
+msgstr "Syötä oikea päivämäärä ja kellonaika"
+
+msgid "Please insert correct date"
+msgstr "Syötä oikea päivämäärä"
+
+msgid "Please insert correct time"
+msgstr "Syötä oikea kellonaika"
+
+msgid "Username is already reserved"
+msgstr "Käyttäjätunnus on jo varattu"
+
+msgid "Please enter a valid IP address"
+msgstr "Anna kelvollinen IP-osoite"
+
+msgid "Please enter a writable directory."
+msgstr "Anna hakemisto, johon voi kirjoittaa."
+
+msgid "Please specify a user name"
+msgstr "Anna käyttäjänimi."
+
+msgid "Please enter a name for the log file."
+msgstr "Anna nimi lokitiedostolle."
+
+# Calendar translations
+msgid "year"
+msgstr "vuosi"
+
+msgid "month"
+msgstr "kuukausi"
+
+msgid "week"
+msgstr "viikko"
+
+# week day names
+msgid "Monday"
+msgstr "maanantai"
+
+msgid "Tuesday"
+msgstr "tiistai"
+
+msgid "Wednesday"
+msgstr "keskiviikko"
+
+msgid "Thursday"
+msgstr "torstai"
+
+msgid "Friday"
+msgstr "perjantai"
+
+msgid "Saturday"
+msgstr "lauantai"
+
+msgid "Sunday"
+msgstr "sunnuntai"
+
+# Month names
+msgid "January"
+msgstr "tammikuu"
+
+#, c-format
+msgid "%s of January"
+msgstr "%s tammikuuta"
+
+msgid "February"
+msgstr "helmikuu"
+
+msgid "March"
+msgstr "maaliskuu"
+
+msgid "April"
+msgstr "huhtikuu"
+
+msgid "May"
+msgstr "toukokuu"
+
+msgid "June"
+msgstr "kesäkuu"
+
+msgid "July"
+msgstr "heinäkuu"
+
+msgid "August"
+msgstr "elokuu"
+
+msgid "September"
+msgstr "syyskuu"
+
+msgid "October"
+msgstr "lokakuu"
+
+msgid "November"
+msgstr "marraskuu"
+
+msgid "December"
+msgstr "joulukuu"
+
+# Number translations
+msgid "%dst"
+msgstr "%d."
+
+msgid "%dnd"
+msgstr "%d."
+
+msgid "%drd"
+msgstr "%d."
+
+msgid "%dth"
+msgstr "%d."
+
+msgid "one"
+msgstr "yksi"
+
+msgid "first"
+msgstr "ensimmäinen"
+
+msgid "1st"
+msgstr "1."
+
+msgid "two"
+msgstr "kaksi"
+
+msgid "second"
+msgstr "toinen"
+
+msgid "2nd"
+msgstr "2."
+
+msgid "three"
+msgstr "kolme"
+
+msgid "third"
+msgstr "kolmas"
+
+msgid "3rd"
+msgstr "3."
+
+msgid "four"
+msgstr "neljä"
+
+msgid "fourth"
+msgstr "neljäs"
+
+msgid "five"
+msgstr "viisi"
+
+msgid "six"
+msgstr "kuusi"
+
+msgid "seven"
+msgstr "seitsemän"
+
+msgid "eight"
+msgstr "kahdeksan"
+
+msgid "nine"
+msgstr "yhdeksän"
+
+msgid "ninth"
+msgstr "yhdeksäs"
+
+# Misc short translations (for Buttons, popups, etc...)
+msgid "delete"
+msgstr "poista"
+
+msgid "Try again"
+msgstr "Yritä uudestaan"
+
+msgid "Waiting"
+msgstr "Odotetaan"
+
+msgid "read"
+msgstr "lue"
+
+msgid "Reconnect"
+msgstr "Yhdistä uudestaan"
+
+msgid "refresh"
+msgstr "päivitä"
+
+msgid "path"
+msgstr "polku"
+
+msgid "paths"
+msgstr "polut"
+
+msgid "Binary"
+msgstr "Binääri"
+
+msgid "Browse..."
+msgstr "Selaa..."
+
+msgid "cancel"
+msgstr "peruuta"
+
+msgid "Anonymous"
+msgstr "Anonyymi"
+
+msgid "apply"
+msgstr "käytä"
+
+msgid "archive"
+msgstr "arkisto"
+
+msgid "attribute"
+msgstr "määrite"
+
+msgid "New Folder"
+msgstr "Uusi kansio"
+
+msgid "New bookmark"
+msgstr "Uusi kirjanmerkki"
+
+msgid "New directory"
+msgstr "Uusi hakemisto"
+
+msgid "yes"
+msgstr "kyllä"
+
+msgid "no"
+msgstr "ei"
+
+msgid "none"
+msgstr "ei mitään"
+
+msgid "never"
+msgstr "ei koskaan"
+
+msgid "Normal"
+msgstr "Normaali"
+
+msgid "command"
+msgstr "komento"
+
+msgid "comment"
+msgstr "kommentti"
+
+msgid "compressed"
+msgstr "pakattu"
+
+msgid "Confirm deletion"
+msgstr "Vahvista poisto"
+
+msgid "Confirmation needed"
+msgstr "Tarvitaan vahvistus"
+
+msgid "connecting"
+msgstr "yhdistetään"
+
+msgid "Already connected"
+msgstr "Jo yhdistetty"
+
+msgid "Authentication failed."
+msgstr "Todennus epäonnistui."
+
+msgid "Author"
+msgstr "Tekijä"
+
+msgid "view"
+msgstr "näytä"
+
+msgid "New folder"
+msgstr "Uusi kansio"
+
+msgid "No search results"
+msgstr "Ei hakutuloksia"
+
+msgid "No username given."
+msgstr "Käyttäjänimeä ei annettu."
+
+msgid "Not connected"
+msgstr "Ei yhdistetty"
+
+msgid "Open file"
+msgstr "Avaa tiedosto"
+
+msgid "once"
+msgstr "kerran"
+
+msgid "day"
+msgstr "päivä"

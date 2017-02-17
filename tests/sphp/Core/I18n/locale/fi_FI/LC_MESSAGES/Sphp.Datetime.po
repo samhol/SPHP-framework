@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi_FI\n"
+"X-Generator: Poedit 1.7.6\n"
+
+msgid "year"
+msgstr "vuosi"
+
+msgid "month"
+msgstr "kuukausi"
+
+msgid "week"
+msgstr "viikko"
+
+# Number translations
+msgid "one"
+msgstr "yksi"
+
+msgid "first"
+msgstr "ensimmäinen"
+
+msgid "1st"
+msgstr "1."
+
+msgid "two"
+msgstr "kaksi"
+
+msgid "second"
+msgstr "toinen"
+
+msgid "2nd"
+msgstr "2."
+
+msgid "three"
+msgstr "kolme"
+
+msgid "third"
+msgstr "kolmas"
+
+msgid "3rd"
+msgstr "3."
+
+msgid "four"
+msgstr "neljä"
+
+msgid "fourth"
+msgstr "neljäs"
+
+msgid "4th"
+msgstr "4."
+
+msgid "five"
+msgstr "viisi"
+
+msgid "six"
+msgstr "kuusi"
+
+msgid "seven"
+msgstr "seitsemän"
+
+msgid "eight"
+msgstr "kahdeksan"
+
+msgid "nine"
+msgstr "yhdeksän"
+
+msgid "ninth"
+msgstr "yhdeksäs"
+
+# week day names
+msgid "Monday"
+msgstr "maanantai"
+
+msgid "Tuesday"
+msgstr "tiistai"
+
+msgid "Wednesday"
+msgstr "keskiviikko"
+
+msgid "Thursday"
+msgstr "torstai"
+
+msgid "Friday"
+msgstr "perjantai"
+
+msgid "Saturday"
+msgstr "lauantai"
+
+msgid "Sunday"
+msgstr "sunnuntai"
+
+# month names
+msgid "January"
+msgstr "tammikuu"
+
+msgid "February"
+msgstr "helmikuu"
+
+msgid "March"
+msgstr "maaliskuu"
+
+msgid "April"
+msgstr "huhtikuu"
+
+msgid "May"
+msgstr "toukokuu"
+
+msgid "June"
+msgstr "kesäkuu"
+
+msgid "July"
+msgstr "heinäkuu"
+
+msgid "August"
+msgstr "elokuu"
+
+msgid "September"
+msgstr "syyskuu"
+
+msgid "October"
+msgstr "lokakuu"
+
+msgid "November"
+msgstr "marraskuu"
+
+msgid "December"
+msgstr "joulukuu"

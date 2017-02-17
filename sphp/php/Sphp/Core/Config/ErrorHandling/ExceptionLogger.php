@@ -7,15 +7,18 @@
 
 namespace Sphp\Core\Config\ErrorHandling;
 
+use Sphp\Core\Observers\Observer;
+use Sphp\Core\Observers\Subject;
+
 /**
- * Class is responsible for logging uncaught exceptions to a file for debugging
+ * Logs uncaught exceptions to a file for debugging
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ExceptionLogger implements \SplObserver {
+class ExceptionLogger implements Observer {
 
   /**
    *
@@ -37,24 +40,21 @@ class ExceptionLogger implements \SplObserver {
 
   /**
    * 
-   * @param type $destination
-   * @return \Sphp\Core\ErrorHandling\ExceptionLogger
+   * @param  string $destination
+   * @return self for PHP Method Chaining
    */
   public function setDestination($destination) {
     $this->destination = $destination;
-    if (!is_file($destination)) {
-      $myfile = fopen($destination, "w");
-    }
     return $this;
   }
 
   /**
    * Update the error_log with information about the uncaught Exception and echoes the exception in an ExceptionBox element
    *
-   * @param  \SplSubject $subject the ExceptionHandler
+   * @param  Subject $subject the ExceptionHandler
    * @see    ExceptionHandler
    */
-  public function update(\SplSubject $subject) {
+  public function update(Subject $subject) {
     if ($subject instanceof ExceptionHandler) {
       error_log($subject->getException(), 3, $this->getDestination());
     }

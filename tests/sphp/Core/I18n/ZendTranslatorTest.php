@@ -10,7 +10,7 @@ class ZendTranslatorTests extends AbstractTranslatorTest {
 
   public function getTranslator() {
     return (new Translator('fi_FI'))
-                    ->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults')
+                    ->addTranslationFilePattern('gettext', __DIR__ . '/locale/', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults')
                     ->setUsedDomain('Sphp.Defaults');
   }
 

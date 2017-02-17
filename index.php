@@ -7,7 +7,7 @@ use Sphp\Html\Document;
 require_once('manual/settings.php');
 include_once('sphp/php/components/sessioning.php');
 ob_implicit_flush(true);
-include_once('manual/htmlHead.php');
+require_once('manual/htmlHead.php');
 
 $cache = new \Zend\Cache\Storage\Adapter\Filesystem();
 
@@ -29,11 +29,6 @@ $outputCache = PatternFactory::factory('output', [
 
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 echo Document::html()->body()->addCssClass('manual')->getOpeningTag();
-
-use Sphp\Manual\MVC\SideNavViewer;
-use Sphp\Core\Path;
-
-$res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/documentation_links.yaml'));
 ?>
 <div class="off-canvas-wrapper">
   <div class="off-canvas-absolute position-left" id="bodyOffCanvas" data-off-canvas>
@@ -46,7 +41,7 @@ $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/docu
     <?php
     if ($outputCache->start('topbar1212') === false) {
       include('manual/templates/logo-area.php');
-      include('manual/__topBar.php');
+      include('manual/templates/menus/topBar.php');
       $outputCache->end();
     }
     ?>
@@ -55,9 +50,7 @@ $res = \Sphp\Core\Util\FileUtils::parseYaml(Path::get()->local('manual/yaml/docu
       <div class="column medium-3 large-3 xlarge-2 show-for-large">
         <?php
         if ($outputCache->start('sidenav') === false) {
-          $sidenawViewer = new SideNavViewer($res);
-          $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
-          $sidenawViewer->printHtml();
+          include('manual/templates/menus/sidenav.php');
           $outputCache->end();
         }
         ?>

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Util\FileUtils;
+use Sphp\FileSystem\FileSystem;
 use ParsedownExtraPlugin;
 
 /**
@@ -27,7 +27,7 @@ trait ContentParsingTrait {
    * @return self for PHP Method Chaining
    */
   public function appendRawFile($path) {
-    $this->append(FileUtils::fileToString($path));
+    $this->append(FileSystem::fileToString($path));
     return $this;
   }
 
@@ -38,7 +38,7 @@ trait ContentParsingTrait {
    * @return self for PHP Method Chaining
    */
   public function appendPhpFile($path) {
-    $this->append(FileUtils::executePhpToString($path));
+    $this->append(FileSystem::executePhpToString($path));
     return $this;
   }
 
@@ -61,7 +61,7 @@ trait ContentParsingTrait {
    * @return self for PHP Method Chaining
    */
   public function appendMdFile($path) {
-    $this->appendMd(FileUtils::executePhpToString($path));
+    $this->appendMd(FileSystem::executePhpToString($path));
     return $this;
   }
 

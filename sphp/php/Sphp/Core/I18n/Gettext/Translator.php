@@ -11,6 +11,7 @@ if (!defined('LC_MESSAGES')) {
   define('LC_MESSAGES', 6);
 }
 
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Core\Types\Arrays;
 use Sphp\Core\I18n\AbstractTranslator;
 
@@ -74,7 +75,7 @@ class Translator extends AbstractTranslator {
    */
   public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = 'sphp/locale', $charset = 'utf8') {
     if ($domain === null) {
-      throw new Exception('no domain');
+      throw new InvalidArgumentException('no domain');
     } else {
       DomainBinder::bindtextdomain($domain, $directory, $charset);
     }
@@ -115,9 +116,12 @@ class Translator extends AbstractTranslator {
 
   /**
    * {@inheritdoc}
-   * @uses \dgettext() gettext function
+   * {@uses \dgettext()} gettext function
    */
-  public function get($text) {
+  public function get($text, $lang = null) {
+    if ($lang === null) {
+      $lang = $this->lang;
+    }
     $parser = function($arg) {
       if (is_string($arg)) {
         return dgettext($this->getDomain(), $arg);
@@ -125,10 +129,11 @@ class Translator extends AbstractTranslator {
       return $arg;
     };
     $tempLc = setLocale(\LC_MESSAGES, '0');
+    
     //putenv("LC_ALL=$this->lang");  
-    putenv("LC_ALL=$this->lang");
+    //putenv("LC_ALL=$this->lang");
     //var_dump(getenv('LC_ALL'));
-    setLocale(\LC_MESSAGES, $this->lang);
+    setLocale(\LC_MESSAGES, $lang);
     //var_dump(setLocale(\LC_MESSAGES, '0'));
     //var_dump(setLocale(\LC_ALL, "0"));
     if (is_array($text)) {

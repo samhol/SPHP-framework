@@ -10,6 +10,8 @@ namespace Sphp\Core\Config\ErrorHandling;
 use SplObserver;
 use SplSubject;
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+use Sphp\Core\Observers\Observer;
+use Sphp\Core\Observers\Subject;
 
 /**
  * Prints an exception as an HTML element
@@ -19,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ExceptionPrinter implements SplObserver {
+class ExceptionPrinter implements Observer {
 
   /**
    *
@@ -40,7 +42,7 @@ class ExceptionPrinter implements SplObserver {
    * @uses   ExceptionHandler
    * @uses   ExceptionBox
    */
-  public function update(SplSubject $subject) {
+  public function update(Subject $subject) {
     if ($subject instanceof ExceptionHandler) {
       (new ExceptionCallout($subject->getException()))
               ->showPreviousException($this->showPreviousException)

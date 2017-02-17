@@ -61,7 +61,7 @@ class PHPConfig {
    * @return self for PHP Method Chaining
    */
   private function setFunc($fun, array $params = []) {
-    $this->setters[] = [$fun, [$params]];
+    $this->setters[] = [$fun, $params];
     return $this;
   }
 

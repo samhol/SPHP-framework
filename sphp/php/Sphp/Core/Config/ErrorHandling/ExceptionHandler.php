@@ -7,9 +7,8 @@
 
 namespace Sphp\Core\Config\ErrorHandling;
 
-use SplSubject;
 use Exception;
-use Sphp\Core\ObservableSubjectTrait;
+use Sphp\Core\Observers\Subject;
 
 /**
  * Class sends uncaught exception messages to the proper handlers
@@ -22,9 +21,9 @@ use Sphp\Core\ObservableSubjectTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ExceptionHandler implements SplSubject {
+class ExceptionHandler implements Subject {
 
-  use ObservableSubjectTrait;
+  use \Sphp\Core\Observers\ObservableSubjectTrait;
 
   /**
    * The uncaught Exception that needs to be handled
@@ -33,7 +32,6 @@ class ExceptionHandler implements SplSubject {
    */
   private $exception;
 
-  
   /**
    * Exception handling method
    *
@@ -44,6 +42,7 @@ class ExceptionHandler implements SplSubject {
     $this->exception = $e;
     $this->notify();
   }
+
   /**
    * Exception handling method
    *

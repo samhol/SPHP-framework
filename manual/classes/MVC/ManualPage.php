@@ -3,7 +3,7 @@
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
-use Sphp\Core\Util\FileUtils;
+use Sphp\FileSystem\FileSystem;
 
 /**
  * Description of ManualPage
@@ -32,7 +32,7 @@ class ManualPage {
       } else if ($pageName !== NULL) {
         $filename = "$pageName.php";
         $path = __DIR__ . '/pages/';
-        if (!in_array($filename, FileUtils::dirToArray($path))) {
+        if (!in_array($filename, FileSystem::dirToArray($path))) {
           include __DIR__ . '/templates/error.php';
         } else {
           include_once $path . $filename;

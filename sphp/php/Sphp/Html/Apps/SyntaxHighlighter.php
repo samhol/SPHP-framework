@@ -15,8 +15,8 @@ use Gajus\Dindent\Indenter;
 use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
 use Sphp\Html\Div;
-use InvalidArgumentException;
-use Sphp\Core\Util\FileUtils;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\FileSystem\FileSystem;
 use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
@@ -245,7 +245,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     if (!file_exists($path)) {
       throw new InvalidArgumentException("The file in the '$path' does not exist!");
     }
-    $source = FileUtils::executePhpToString($path);
+    $source = FileSystem::executePhpToString($path);
     if ($lang == "html5") {
       $source = (new Indenter())->indent($source);
     } else if ($lang == "sql") {
