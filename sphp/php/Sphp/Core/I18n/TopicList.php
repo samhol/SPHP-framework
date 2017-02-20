@@ -9,7 +9,7 @@ namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
-use Sphp\Data\Collection;
+use Sphp\Stdlib\Datastructures\Collection;
 use IteratorAggregate;
 use ArrayAccess;
 

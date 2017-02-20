@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\I18n;
 
-use Sphp\Data\StablePriorityQueue;
+use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
 use IteratorAggregate;

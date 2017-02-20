@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Core;
+namespace Sphp\Stdlib\Observers;
 
-class Subject implements \SplSubject {
+class Subject1 implements Subject {
 
 	use ObservableSubjectTrait;
 
@@ -15,23 +15,23 @@ class Subject implements \SplSubject {
 
 }
 
-class Observer1 implements \SplObserver {
+class Observer1 implements Observer {
 
-	public function update(\SplSubject $subject) {
+	public function update(Subject $subject) {
 		echo "Observer1: $subject->message\n";
 	}
 
 }
 
-class Observer2 implements \SplObserver {
+class Observer2 implements Observer {
 
-	public function update(\SplSubject $subject) {
+	public function update(Subject $subject) {
 		echo "Observer2: $subject->message\n";
 	}
 
 }
 
-$subject = new Subject();
+$subject = new Subject1();
 $subject->attach(new Observer1);
 $subject->attach(new Observer2);
 $subject->say("hello");

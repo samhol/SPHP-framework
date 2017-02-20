@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use ParsedownExtraPlugin;
-use Sphp\FileSystem\FileSystem;
+use Sphp\Stdlib\FileSystem;
 
 /**
  * Implements a Markdown container

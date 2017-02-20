@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Filesystem;
+namespace Sphp\Stdlib;
 
 echo Filesystem::toString(__FILE__);
 print_r(Filesystem::getTextFileRows(__FILE__));

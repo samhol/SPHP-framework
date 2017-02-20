@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Filesystem;
+namespace Sphp\Stdlib;
 
 use Exception;
 use RuntimeException;

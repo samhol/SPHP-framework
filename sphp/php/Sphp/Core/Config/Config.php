@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Config;
 
-use Sphp\Data\Arrayable;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use Iterator;
 use Countable;

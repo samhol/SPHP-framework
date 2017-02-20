@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 $q = new StablePriorityQueue();
 $q->insert("priority 1", 1);

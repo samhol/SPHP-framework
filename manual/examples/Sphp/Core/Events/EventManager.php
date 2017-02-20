@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Events;
+namespace Sphp\Stdlib\Events;
 
 class Listener implements EventListenerInterface {
 

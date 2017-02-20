@@ -9,7 +9,7 @@ namespace Sphp\Core\I18n\Gettext;
 
 use Sepia\FileHandler;
 use Sepia\PoParser as SepiaPoParser;
-use Sphp\Data\Collection;
+use Sphp\Stdlib\Datastructures\Collection;
 
 /**
  * Iterator for po files

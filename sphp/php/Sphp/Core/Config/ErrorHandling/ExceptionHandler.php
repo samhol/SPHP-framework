@@ -8,7 +8,7 @@
 namespace Sphp\Core\Config\ErrorHandling;
 
 use Exception;
-use Sphp\Core\Observers\Subject;
+use Sphp\Stdlib\Observers\Subject;
 
 /**
  * Class sends uncaught exception messages to the proper handlers
@@ -23,7 +23,7 @@ use Sphp\Core\Observers\Subject;
  */
 class ExceptionHandler implements Subject {
 
-  use \Sphp\Core\Observers\ObservableSubjectTrait;
+  use \Sphp\Stdlib\Observers\ObservableSubjectTrait;
 
   /**
    * The uncaught Exception that needs to be handled

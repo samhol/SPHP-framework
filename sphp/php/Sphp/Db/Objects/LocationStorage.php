@@ -8,7 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Sphp\Data\Collection;
+use Sphp\Stdlib\Datastructures\Collection;
 
 /**
  * Implements a {@link Location} storage

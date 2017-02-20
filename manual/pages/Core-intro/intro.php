@@ -10,7 +10,7 @@ $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 use Sphp\Core\Config\Config;
 $rootNs = $apigen->classLinker(Comparable::class)->namespaceLink();
 $configNs = $apigen->classLinker(Config::class)->namespaceLink();
-use Sphp\Core\Events\EventInterface as EventInterface;
+use Sphp\Stdlib\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
 use Sphp\Core\I18n\Gettext\Translator;
 $gettextNs = $apigen->classLinker(Translator::class)->namespaceLink();

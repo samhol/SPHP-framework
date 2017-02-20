@@ -16,7 +16,7 @@ use Sphp\Html\Forms\Buttons\ButtonTag as Button;
 use Sphp\Html\Apps\ContentCopyController as CopyToClipboardButton;
 use Sphp\Html\Div;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\FileSystem\FileSystem;
+use Sphp\Stdlib\FileSystem;
 use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**

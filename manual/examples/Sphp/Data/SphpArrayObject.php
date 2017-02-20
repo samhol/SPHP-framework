@@ -1,5 +1,5 @@
 <?php
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 $arr = new Collection(['a', 'b', 'c' => 'c']);
 //append data

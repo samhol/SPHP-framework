@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 $queue = (new Queue())
         ->enqueue("A")

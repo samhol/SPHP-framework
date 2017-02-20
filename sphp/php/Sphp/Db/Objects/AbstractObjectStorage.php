@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ArrayIterator;
 use Sphp\Db\EntityManagerFactory;
-use Sphp\Data\Collection;
+use Sphp\Stdlib\Datastructures\Collection;
 
 /**
  * Abstract Implementation of a{@link DbObjectInterface} storage

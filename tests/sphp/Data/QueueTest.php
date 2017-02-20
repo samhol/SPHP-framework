@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 require_once 'QueueInterfaceTest.php';
 

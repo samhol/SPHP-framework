@@ -7,8 +7,8 @@
 
 namespace Sphp\Core\Config\ErrorHandling;
 
-use Sphp\Core\Observers\Observer;
-use Sphp\Core\Observers\Subject;
+use Sphp\Stdlib\Observers\Observer;
+use Sphp\Stdlib\Observers\Subject;
 
 /**
  * Logs uncaught exceptions to a file for debugging

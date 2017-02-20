@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 $collection = (new Collection(range("b", "d")));
 echo "[$collection]\n";

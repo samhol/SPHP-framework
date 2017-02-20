@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Config;
 
-use Sphp\Data\Arrayable;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Core\Types\Arrays;
 
 /**

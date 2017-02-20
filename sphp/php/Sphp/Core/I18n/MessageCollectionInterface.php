@@ -9,7 +9,7 @@ namespace Sphp\Core\I18n;
 
 use Traversable;
 use Countable;
-use Sphp\Data\Arrayable;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Defines propertiws for a collection that holds {@link MessageInterface} objects

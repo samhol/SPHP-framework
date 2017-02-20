@@ -9,7 +9,7 @@ namespace Sphp\Core\Validators;
 
 use Countable;
 use IteratorAggregate;
-use Sphp\Data\Collection;
+use Sphp\Stdlib\Datastructures\Collection;
 
 /**
  * A validator container for validating a value against multiple validators

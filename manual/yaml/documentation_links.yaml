@@ -3,18 +3,18 @@ menu: Documentation
 items:
     - link: Getting Started
       __INDEX__:
-    - menu: Core components
+    - menu: Standard library
       items:
       - link: Introduction
         page: Sphp.Core
       - link: Configuration systems
         page: Sphp.Core.Config
       - link: Filesystem manipulation
-        page: Sphp.FileSystem
+        page: Sphp.Filesystem
       - link: Data Structures
         page: Sphp.Data
       - link: Events and Observers
-        page: Sphp.Core.Observers.and.Events
+        page: Sphp.Stdlib.Observers.and.Events
       - link: Types and Utlilities
         page: Sphp.Core.Types
       - link: Data filtering

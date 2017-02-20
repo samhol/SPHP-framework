@@ -1,5 +1,5 @@
 <?php
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 $storage = $api->classLinker(StablePriorityQueue::class);

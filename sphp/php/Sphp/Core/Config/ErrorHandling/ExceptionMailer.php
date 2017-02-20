@@ -8,8 +8,8 @@
 namespace Sphp\Core\Config\ErrorHandling;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
-use Sphp\Core\Observers\Observer;
-use Sphp\Core\Observers\Subject;
+use Sphp\Stdlib\Observers\Observer;
+use Sphp\Stdlib\Observers\Subject;
 
 /**
  * Prints an exception as an HTML element

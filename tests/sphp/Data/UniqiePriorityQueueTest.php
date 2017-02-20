@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Data;
+namespace Sphp\Stdlib\Datastructures;
 
 class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
 

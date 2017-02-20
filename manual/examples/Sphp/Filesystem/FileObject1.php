@@ -1,5 +1,5 @@
 <?php
 
-namespace Sphp\Filesystem;
+namespace Sphp\Stdlib;
 
 ?>

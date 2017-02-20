@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Data\Arrayable;
+use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 
 /**

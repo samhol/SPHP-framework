@@ -3,7 +3,7 @@
 namespace Sphp\Manual;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
-use Sphp\Filesystem\Filesystem;
+use Sphp\Stdlib\Filesystem;
 
 include_once 'settings.php';
 include_once __DIR__ . '/manualTools/main.php';

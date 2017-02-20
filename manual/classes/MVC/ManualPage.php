@@ -3,7 +3,7 @@
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
-use Sphp\FileSystem\FileSystem;
+use Sphp\Stdlib\FileSystem;
 
 /**
  * Description of ManualPage
