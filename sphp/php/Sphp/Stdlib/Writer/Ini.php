@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractWriter.php (UTF-8)
+ * Ini.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 

@@ -2,20 +2,20 @@
 
 /**
  * Markdown.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Stdlib\Reader;
 
 use Exception;
-use RuntimeException;
+use Sphp\Exceptions\RuntimeException;
 use ParsedownExtraPlugin;
 
 /**
- * Markdown reader
+ * Implements a Markdown reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-11
+ * @since   2016-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
