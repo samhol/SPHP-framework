@@ -7,8 +7,8 @@
 
 namespace Sphp\Db;
 
-use Sphp\Core\Types\Arrays;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements the content of the WHERE clause in SQL

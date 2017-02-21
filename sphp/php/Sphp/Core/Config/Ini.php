@@ -8,7 +8,7 @@
 namespace Sphp\Core\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements class for managing PHP settings

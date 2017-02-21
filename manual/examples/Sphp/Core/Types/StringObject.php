@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 $str1 = new StringObject("abcdefghijklmnopqrstyvwxyzåäö");
 $s = function (StringObject $str) {

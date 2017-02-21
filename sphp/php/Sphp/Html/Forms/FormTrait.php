@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\AttributeManager;
 
 /**

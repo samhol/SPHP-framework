@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms\Buttons;
 
 use Sphp\Html\Forms\Inputs\AbstractInputTag as AbstractInputTag;
 use InvalidArgumentException;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements &lt;input type="button|submit|reset"&gt; button tag

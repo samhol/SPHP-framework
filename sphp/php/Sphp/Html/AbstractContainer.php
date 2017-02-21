@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use IteratorAggregate;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 use ArrayIterator;
 use Traversable;
 

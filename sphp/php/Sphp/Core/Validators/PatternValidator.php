@@ -8,7 +8,7 @@
 namespace Sphp\Core\Validators;
 
 use Sphp\Core\I18n\Message;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Class validates a a string against a regular expression pattern

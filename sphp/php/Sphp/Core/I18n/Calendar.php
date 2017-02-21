@@ -8,7 +8,7 @@
 namespace Sphp\Core\I18n;
 
 use Sphp\Core\I18n\Gettext\Translator;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Class localizes weekday and month names

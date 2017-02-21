@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use Sphp\Html\Document;
 use UnexpectedValueException;
 

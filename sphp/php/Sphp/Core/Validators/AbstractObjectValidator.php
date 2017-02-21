@@ -9,7 +9,7 @@ namespace Sphp\Core\Validators;
 
 use Sphp\Core\I18n\TopicList;
 use Sphp\Stdlib\Datastructures\Collection;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Class validates a given formdata.

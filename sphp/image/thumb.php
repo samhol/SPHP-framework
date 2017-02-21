@@ -6,7 +6,7 @@ namespace Imagine;
 include_once '../settings.php';
 $imagine = new Gd\Imagine();
 
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 use Sphp\Util\FileUtils as FileUtils;
 use Sphp\Images\Images as ImageUtils;
 

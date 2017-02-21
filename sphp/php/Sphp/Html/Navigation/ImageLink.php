@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
 use Sphp\Html\Media\Size;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use Sphp\Core\Types\URL;
 
 /**

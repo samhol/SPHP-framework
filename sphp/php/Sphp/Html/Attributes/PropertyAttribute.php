@@ -10,7 +10,7 @@ namespace Sphp\Html\Attributes;
 use ArrayAccess;
 use Countable;
 use IteratorAggregate;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use InvalidArgumentException;
 
 /**

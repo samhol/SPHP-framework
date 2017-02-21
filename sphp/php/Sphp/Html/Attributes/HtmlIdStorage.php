@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Application Config class for storing common application data

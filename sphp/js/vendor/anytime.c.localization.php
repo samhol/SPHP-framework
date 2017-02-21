@@ -13,7 +13,7 @@ Headers::setContentType("application/json");
 
 
 namespace Sphp\Core\Gettext;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 var_dump(Locale::setMessageLocale("fi_FI"));
 $calendar = new Calendar();
 $messages = [

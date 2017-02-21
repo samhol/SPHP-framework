@@ -5,7 +5,7 @@
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 /**
  * Utility class for PHP array operations

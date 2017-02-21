@@ -7,8 +7,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Exception;
-
+use Sphp\Exceptions\RuntimeException;
 /**
  * Defines properties of a First-In-First-Out (FIFO) queue
  *

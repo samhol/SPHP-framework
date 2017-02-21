@@ -7,6 +7,8 @@
 
 namespace Sphp\Core\Types;
 
+use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use IteratorAggregate;
 

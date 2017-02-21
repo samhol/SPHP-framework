@@ -10,8 +10,8 @@ namespace Sphp\Html\Attributes;
 use Countable;
 use IteratorAggregate;
 use Sphp\Html\IdentifiableInterface;
-use Sphp\Core\Types\Arrays;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Arrays;
+use Sphp\Stdlib\Strings;
 use ArrayIterator;
 use InvalidArgumentException;
 

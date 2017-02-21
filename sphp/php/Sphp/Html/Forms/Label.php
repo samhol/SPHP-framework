@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\ContainerTag;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements an HTML &lt;label&gt; tag

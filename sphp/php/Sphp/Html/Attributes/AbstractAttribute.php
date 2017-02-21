@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * An abstract implementation of an HTML attribute object

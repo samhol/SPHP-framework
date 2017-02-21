@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Class validates a password

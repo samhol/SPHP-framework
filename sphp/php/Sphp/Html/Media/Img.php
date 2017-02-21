@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\EmptyTag;
 use Sphp\Core\Types\URL;
 use Sphp\Images\ImageScaler;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use Sphp\Html\Media\ImageMap\Map;
 
 /**

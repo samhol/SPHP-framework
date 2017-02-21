@@ -59,7 +59,7 @@ class ViewerJS extends Iframe {
    */
   public function getSrc() {
     $src = parent::getSrc();
-    $src = \Sphp\Core\Types\Strings::trimLeft($src, 'sphp/viewerjs/#../../');
+    $src = \Sphp\Stdlib\Strings::trimLeft($src, 'sphp/viewerjs/#../../');
     return $src;
   }
 

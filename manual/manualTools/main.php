@@ -7,7 +7,7 @@ include_once __DIR__ . "/_constants.php";
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 function addPHPSuffix($page) {
   if (!Strings::endsWith($page, ".php")) {

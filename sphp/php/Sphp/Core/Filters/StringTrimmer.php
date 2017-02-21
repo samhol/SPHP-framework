@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Filters;
 
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Filter strips whitespace (or other characters) from the beginning and end of the string

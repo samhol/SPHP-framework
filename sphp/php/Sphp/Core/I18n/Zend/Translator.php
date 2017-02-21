@@ -8,7 +8,7 @@
 namespace Sphp\Core\I18n\Zend;
 
 use Sphp\Core\I18n\AbstractTranslator;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 use Zend\I18n\Translator\Translator as ZendTranslator;
 use ReflectionClass;
 use Exception;

@@ -9,7 +9,7 @@ namespace Sphp\Html\Forms;
 
 use Sphp\validation\FormValidator as FormValidator;
 use Sphp\validation\RequiredValueValidatorr;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * A form validation wrapper

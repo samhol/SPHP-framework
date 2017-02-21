@@ -15,7 +15,7 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * A component containing multiple radio or checkbox inputs

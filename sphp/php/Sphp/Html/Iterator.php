@@ -9,7 +9,7 @@ namespace Sphp\Html;
 
 use Iterator as NativeIterator;
 use Traversable;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a basic iterator for HTML content

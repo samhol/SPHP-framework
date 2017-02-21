@@ -12,7 +12,7 @@ if (!defined('LC_MESSAGES')) {
 }
 
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 use Sphp\Core\I18n\AbstractTranslator;
 
 /**

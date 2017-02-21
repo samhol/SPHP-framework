@@ -8,7 +8,7 @@
 namespace Sphp\Html\Head;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements an HTML &lt;link&gt; tag

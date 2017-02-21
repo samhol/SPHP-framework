@@ -14,7 +14,7 @@ use Sphp\Stdlib\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
 use Sphp\Core\I18n\Gettext\Translator;
 $gettextNs = $apigen->classLinker(Translator::class)->namespaceLink();
-use Sphp\Core\Types\Strings  as Strings;
+use Sphp\Stdlib\Strings;
 $typesNs = $apigen->classLinker(Strings::class)->namespaceLink();
 echo <<<MD
 ##Introduction:

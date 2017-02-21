@@ -18,6 +18,7 @@ use Sphp\Html\Div;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\FileSystem;
 use Sphp\Html\Adapters\VisibilityAdapter;
+use Sphp\Stdlib\Strings;
 
 /**
  * Class wraps the GeSHi (a Generic Syntax Highlighter)
@@ -132,7 +133,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for PHP Method Chaining
    */
   public function setSyntaxBlockId($seed = "geshi_") {
-    $this->geshiId = $seed . \Sphp\Core\Types\Strings::random();
+    $this->geshiId = $seed . Strings::random();
     $this->geshi->set_overall_id($this->geshiId);
     return $this;
   }

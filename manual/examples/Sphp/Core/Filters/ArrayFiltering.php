@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Filters;
 
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 $stringFilters = include("StringFiltering.php");
 

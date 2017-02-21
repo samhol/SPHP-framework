@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 $arr1 = range(1, 10);
 $arr2 = [1 => "a", 0 => "b"];

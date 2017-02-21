@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 echo "empty:\n";
 var_dump(

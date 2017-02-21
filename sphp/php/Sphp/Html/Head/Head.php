@@ -11,7 +11,7 @@ use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\AbstractComponent;
 use Sphp\Core\Path;
 use Sphp\Html\Container;
-use Sphp\Core\Types\Strings;
+use Sphp\Stdlib\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Core\Types\URL;

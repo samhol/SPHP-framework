@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
+use Sphp\Stdlib\Strings;
 
 /**
  * Class InputGroup
@@ -93,7 +94,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
 
   public function contentToString() {
     $a = function ($v) {
-      if (!\Sphp\Core\Types\Strings::isEmpty($v)) {
+      if (!Strings::isEmpty($v)) {
         return '<span class="input-group-label">' . $v . '</span>';
       } else {
         return "";

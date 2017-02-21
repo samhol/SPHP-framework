@@ -8,7 +8,7 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use Iterator;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 use UnderflowException;
 
 /**

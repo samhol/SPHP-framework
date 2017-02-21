@@ -9,7 +9,7 @@ namespace Sphp\Stdlib\Datastructures;
 
 use SplPriorityQueue;
 use Serializable;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * An implementation of a stable priority queue

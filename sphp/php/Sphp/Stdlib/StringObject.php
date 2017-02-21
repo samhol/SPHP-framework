@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 use ReflectionClass;
 use ArrayAccess;

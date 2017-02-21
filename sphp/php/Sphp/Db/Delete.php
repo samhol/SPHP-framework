@@ -7,7 +7,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Arrays;
 
 /**
  * An implementation of a SQL DELETE statement

@@ -12,7 +12,7 @@ use Exception;
 use Sphp\Exceptions\RuntimeException;
 
 /**
- * CSV data reader
+ * Implements a CSV data reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-01-12
@@ -33,7 +33,7 @@ class Csv extends AbstractReader {
 
   public function fromString($string) {
     try {
-      return $this->parser->fromString($string);
+      return str_getcsv($string, $delimiter = ",", $enclosure = '"', $escape = "\\");
     } catch (Exception $ex) {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }

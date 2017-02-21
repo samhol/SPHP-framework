@@ -7,7 +7,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use RuntimeException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Defines properties of a last-in-first-out (LIFO) stack

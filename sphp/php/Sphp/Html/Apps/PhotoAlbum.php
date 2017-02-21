@@ -9,8 +9,8 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Div;
-use Sphp\Core\Types\Strings;
-use Sphp\Core\Types\Arrays;
+use Sphp\Stdlib\Strings;
+use Sphp\Stdlib\Arrays;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Buttons\HyperlinkButton;
