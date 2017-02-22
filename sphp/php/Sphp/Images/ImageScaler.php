@@ -7,7 +7,7 @@
 
 namespace Sphp\Images;
 
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 use Sphp\Html\Media\Size;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;

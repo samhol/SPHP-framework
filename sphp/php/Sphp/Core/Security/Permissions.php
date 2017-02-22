@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Security;
 
-use Sphp\Core\Types\BitMask;
+use Sphp\Stdlib\BitMask;
 
 /**
  * Implements user's rights

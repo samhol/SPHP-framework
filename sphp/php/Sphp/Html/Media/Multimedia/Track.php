@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;track&gt; tag

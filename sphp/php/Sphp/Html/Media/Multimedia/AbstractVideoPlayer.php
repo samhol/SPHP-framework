@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
 use Sphp\Html\Media\LazyLoaderTrait;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an abstract iframe based Video component

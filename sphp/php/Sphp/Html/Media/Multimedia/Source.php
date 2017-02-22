@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\EmptyTag;
 use Sphp\Html\Media\LazyLoaderInterface;
 use Sphp\Html\Media\LazyLoaderTrait;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;source&gt; tag

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Modals;
 
-use Sphp\Core\Util\Timer;
+use Sphp\Stdlib\Timer;
 
 $license = (new Modal(null, 'SPHP license'))->appendMdFile('LICENSE.md');
 $license->addCssClass('license');

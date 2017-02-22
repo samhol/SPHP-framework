@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;figure&gt; tag

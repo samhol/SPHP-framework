@@ -7,7 +7,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Core\Types\BitMask as BitMask;
+use Sphp\Stdlib\BitMask as BitMask;
 
 /**
  * An implementation of a SQL SELECT statement

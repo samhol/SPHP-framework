@@ -14,7 +14,7 @@ use Sphp\Html\Container;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;head&gt; tag

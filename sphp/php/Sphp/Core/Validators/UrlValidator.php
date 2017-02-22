@@ -7,7 +7,7 @@
 
 namespace Sphp\Core\Validators;
 
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Class validates an url string or an instance of {@link Url} class.

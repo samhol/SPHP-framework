@@ -8,7 +8,7 @@
 namespace Sphp\Db\Objects;
 
 use Sphp\Core\Security\PasswordInterface;
-use Sphp\Core\Types\BitMask;
+use Sphp\Stdlib\BitMask;
 
 /**
  * Defines properties for a user

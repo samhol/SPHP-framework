@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Util;
+namespace Sphp\Stdlib;
 
 /**
  * Implements a simple interface to track the consumed time

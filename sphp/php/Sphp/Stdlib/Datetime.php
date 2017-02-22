@@ -5,7 +5,7 @@
  * Copyright (c) 2008 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 use DateTimeZone;
 use Sphp\Core\Comparable;

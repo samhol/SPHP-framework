@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Trait implements the {@link LazyLoaderInterface} interface

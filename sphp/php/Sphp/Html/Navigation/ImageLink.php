@@ -12,7 +12,7 @@ use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
 use Sphp\Html\Media\Size;
 use Sphp\Stdlib\Strings;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements an image that acts as a hyperlink

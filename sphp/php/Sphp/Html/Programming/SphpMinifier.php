@@ -9,7 +9,7 @@ namespace Sphp\Html\Programming;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Container;
-use Sphp\Core\Types\BitMask as BitMask;
+use Sphp\Stdlib\BitMask as BitMask;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue as StablePriorityQueue;
 
 /**

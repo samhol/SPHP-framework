@@ -10,7 +10,7 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\AbstractContainerTag;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Navigation\HyperlinkInterface;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements a hyperlink container

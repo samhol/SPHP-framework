@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 $now = new Datetime();
 $millenium = new Datetime("2000-01-01 00:00:00 EET");

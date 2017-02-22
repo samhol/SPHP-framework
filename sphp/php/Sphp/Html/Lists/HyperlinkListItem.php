@@ -9,7 +9,7 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Html\Navigation\HyperlinkContainer;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Core\Types\URL;
+use Sphp\Stdlib\URL;
 
 /**
  * Implements a hyperlink type menu item

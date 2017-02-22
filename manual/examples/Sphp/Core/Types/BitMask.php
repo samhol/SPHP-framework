@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Types;
+namespace Sphp\Stdlib;
 
 $mask1 = new BitMask(0b100001);
 echo "mask1: $mask1\n";
