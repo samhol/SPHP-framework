@@ -13,7 +13,7 @@ $eventDispatcherInterface = Apis::apigen()->classLinker(EventDispatcherInterface
 echo $parsedown->text(<<<MD
 #EVENTS AND OBSERVERS
 		
-Observer Design pattern and Event dispatching systems are mainly used to implement 
+Event dispatching systems and Observer Design pattern are often used to implement 
 distributed event handling systems they are also key parts in the model–view–controller 
 (MVC) architectural pattern.
 
@@ -27,7 +27,7 @@ The SPHP EventDispatcing system consists of three different type of objects.
 
 ####The $eventInterface in details
 
-SPHP framework has $eventClass class as its build-in implementation of the $eventInterface. 
+$eventClass class is a build-in instantiable implementation of the $eventInterface. 
 An $eventClass is identified by a inmutable unique name, 
 which any number of $eventListenerInterface might be listening to. An $eventInterface instance 
 is  passed to all of the listeners. The Event object itself often contains data about the event being dispatched.
@@ -48,45 +48,6 @@ Here are some examples of good event names:
 MD
 );
 
-namespace Sphp\Core;
-
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "text", false);
 
-namespace Sphp\Stdlib\Observers;
-
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-
-Use Sphp\Stdlib\Observers\Observer;
-use Sphp\Stdlib\Observers\Subject;
-
-$splObserver = $php->classLinker(Observer::class);
-$splSubject = $php->classLinker(Subject::class);
-$observableSubjectTrait = $api->classLinker(ObservableSubjectTrait::class);
-
-echo $parsedown->text(<<<MD
-##Observer Design Pattern and The $observableSubjectTrait
-
-Observer pattern is used when there is one-to-many relationship between objects 
-such as if one object is modified, its depenedent objects are to be notified 
-automatically. Observer pattern is a behavioral pattern.
- 
-The Standard PHP Library (SPL) contains interfaces $splObserver and $splSubject 
-to implement the Observer Design Pattern. The $observableSubjectTrait is a trait 
-implementation of $splSubject interface.
-
-MD
-);
-
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/ObservableSubjectTrait.php", "text", false);
-
-echo $parsedown->text(<<<MD
-
-
-Observer pattern is in use for example in the SPHP Error handling system introduced 
-in the {$api->namespaceLink(\Sphp\Core\Config\ErrorHandling\ErrorExceptionThrower::class)} namespace.
-
-MD
-);
+$load('Sphp.Stdlib.Observers');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 Config::instance("foo")
         ->set("foo", "bar");

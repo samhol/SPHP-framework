@@ -2,7 +2,7 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Core\Config\Config;
+use Sphp\Config\Config;
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Net\Password;
 use Exception;

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * MenuLinkBuilder.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ */
 namespace Sphp\Manual\MVC;
 
 use Sphp\Html\ContentInterface;
@@ -40,7 +44,7 @@ class SideNavViewer implements ContentInterface {
   protected function buildMenu() {
     $this->nav = new AccordionMenu();
     $this->nav->addCssClass('')->appendText('Documentation');
-    $builder = new MenuBuilder();
+    $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));
     $builder->buildMenu($this->data, $this->nav);
   }
 

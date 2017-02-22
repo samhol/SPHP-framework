@@ -7,10 +7,8 @@ items:
       items:
       - link: Introduction
         page: Sphp.Core
-      - link: Configuration systems
-        page: Sphp.Core.Config
       - link: Filesystem manipulation
-        page: Sphp.Filesystem
+        page: Sphp.Stdlib.filemanipulation
       - link: Data Structures
         page: Sphp.Data
       - link: Events and Observers
@@ -68,3 +66,7 @@ items:
         page: Sphp.Html.Foundation.Sites.Media
       - link: Form components
         page: Sphp.Html.Foundation.Sites.Forms
+    - menu: Miscellaneous
+      items:
+      - link: Application configuration
+        page: Sphp.Core.Config

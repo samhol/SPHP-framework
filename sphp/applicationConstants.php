@@ -2,6 +2,8 @@
 
 namespace Sphp;
 
+use Sphp\Config\Config;
+
 
 /**
  * SPHP frameworks folder's root
@@ -14,7 +16,7 @@ $sphp = [
     'SPH_DIR' => __DIR__
 ];
 //Configuration::setSphpRoot(__DIR__, Configuration::httpHost());
-$sphpConf = Core\Config\Config::instance('sphp');
+$sphpConf = Config::instance('sphp');
 $sphpConf->sphp = $sphp;
 
 //define('Sphp\PHP_PACKAGES', SPH_DIR . "/php/packages");

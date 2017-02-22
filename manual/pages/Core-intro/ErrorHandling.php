@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config\ErrorHandling;
+namespace Sphp\Config\ErrorHandling;
 
 use Sphp\Html\Apps\Manual\Apis;
 

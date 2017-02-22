@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Config\ErrorHandling;
+namespace Sphp\Config\ErrorHandling;
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Stdlib\Observers\Observer;

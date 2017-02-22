@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Events;
 
-class Listener implements EventListenerInterface {
+class OwnListener implements EventListenerInterface {
 
   public function on(EventInterface $event) {
     echo "\n" . Listener::class . " got an event:\n";
@@ -17,7 +17,7 @@ $fun = function(EventInterface $event) {
 };
 
 $manager = new EventDispatcher();
-$manager->addListener("e1", $l = new Listener);
+$manager->addListener("e1", $l = new OwnListener);
 $manager->addListener("e1", $fun);
 $manager->addListener("e2", $fun);
 $manager->trigger(new Event("e1", $manager, "Hello e1 listeners"));

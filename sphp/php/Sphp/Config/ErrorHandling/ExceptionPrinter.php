@@ -5,10 +5,8 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Config\ErrorHandling;
+namespace Sphp\Config\ErrorHandling;
 
-use SplObserver;
-use SplSubject;
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
@@ -38,7 +36,7 @@ class ExceptionPrinter implements Observer {
   /**
    * Echoes the uncaught exception in an {@link ExceptionBox} html element
    *
-   * @param  SplSubject $subject the ExceptionHandler
+   * @param  Subject $subject the ExceptionHandler
    * @uses   ExceptionHandler
    * @uses   ExceptionBox
    */

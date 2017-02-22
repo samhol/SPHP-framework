@@ -10,7 +10,7 @@ include_once('manual/htmlHead.php');
     <pre>
       <?php
 
-      namespace Sphp\Core\Config\ErrorHandling;
+      namespace Sphp\Config\ErrorHandling;
 
 $handler = new ExceptionHandler();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config\ErrorHandling;
+namespace Sphp\Config\ErrorHandling;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD

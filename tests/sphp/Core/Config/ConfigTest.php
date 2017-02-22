@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 class ConfigTest extends \PHPUnit_Framework_TestCase {
 

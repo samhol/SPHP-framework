@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 $honolulu = (new PHPConfig())
         ->setDefaultTimezone('Pacific/Honolulu')

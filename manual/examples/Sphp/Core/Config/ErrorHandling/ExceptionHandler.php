@@ -1,8 +1,8 @@
 <?php
 
-namespace Sphp\Core\Config\ErrorHandling;
+namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Core\Config\PHPConfig;
+use Sphp\Config\PHPConfig;
 
 $handler = new ExceptionHandler();
 $handler->attach(new ExceptionLogger());

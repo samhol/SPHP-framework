@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;

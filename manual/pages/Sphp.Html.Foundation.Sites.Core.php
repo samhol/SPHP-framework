@@ -44,4 +44,4 @@ MD
 CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/VisibilityAdapter-hideOnlyFor.php');
 
 
-$load('Sphp.Html.Foundation.Sites.Core.ColourableInterface.php');
+$load('Sphp.Html.Foundation.Sites.Core.ColourableInterface');

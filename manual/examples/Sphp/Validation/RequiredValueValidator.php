@@ -3,7 +3,7 @@
 namespace Sphp\Core\Validators;
 
 use Sphp\Core\Gettext\Locale;
-use Sphp\Core\Config\PHPConfig;
+use Sphp\Config\PHPConfig;
 $finnish = new PHPConfig();
 $finnish->setMessageLocale('fi_FI.UTF-8');
 //var_dump(Translator::useTextDomain("default"));

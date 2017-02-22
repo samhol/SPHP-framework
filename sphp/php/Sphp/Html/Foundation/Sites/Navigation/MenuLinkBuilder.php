@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * URL.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
@@ -83,6 +82,7 @@ class MenuLinkBuilder {
   protected function parseTarget(array $link) {
     return array_key_exists('target', $link) ? $link['target'] : $this->getDefaultTarget();
   }
+  
 
   /**
    * 

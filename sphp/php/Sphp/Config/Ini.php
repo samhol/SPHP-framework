@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Arrays;

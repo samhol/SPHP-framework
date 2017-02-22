@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 $f = function () {
   echo 'date.timezone = ' . ini_get('date.timezone') . "\n";

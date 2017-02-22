@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Core\Config\PHPConfig;
+use Sphp\Config\PHPConfig;
 
 (new PHPConfig())->setEncoding("UTF-8");
 

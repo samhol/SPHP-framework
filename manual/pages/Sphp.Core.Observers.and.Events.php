@@ -86,7 +86,7 @@ echo $parsedown->text(<<<MD
 
 
 Observer pattern is in use for example in the SPHP Error handling system introduced 
-in the {$api->namespaceLink(\Sphp\Core\Config\ErrorHandling\ErrorExceptionThrower::class)} namespace.
+in the {$api->namespaceLink(\Sphp\Config\ErrorHandling\ErrorExceptionThrower::class)} namespace.
 
 MD
 );

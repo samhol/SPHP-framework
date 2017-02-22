@@ -1,14 +1,14 @@
 <?php
 
-namespace Sphp\Core\Config;
+namespace Sphp\Config;
 
 require_once(__DIR__ . '/../sphp/settings.php');
 
 //require_once 'doctrineConfiguration.php';
 
-use Sphp\Core\Config\ErrorHandling\ExceptionHandler;
-use Sphp\Core\Config\ErrorHandling\ExceptionLogger;
-use Sphp\Core\Config\ErrorHandling\ExceptionPrinter;
+use Sphp\Config\ErrorHandling\ExceptionHandler;
+use Sphp\Config\ErrorHandling\ExceptionLogger;
+use Sphp\Config\ErrorHandling\ExceptionPrinter;
 
 $handler = new ExceptionHandler();
 // Attach an Exception Logger
