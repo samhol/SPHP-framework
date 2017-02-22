@@ -20,7 +20,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::isEmpty
+   * @covers Sphp\Stdlib\Strings::isEmpty
    * @dataProvider emptyStrings
    */
   public function testEmpty($empty) {
@@ -44,7 +44,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::isEmpty
+   * @covers Sphp\Stdlib\Strings::isEmpty
    * @dataProvider nonEmptyStrings
    */
   public function testNonEmpty($nonEmpty) {
@@ -78,7 +78,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::startsWith
+   * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider startsWith
    */
   public function testStartsWith($haystack, $needle) {
@@ -111,7 +111,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::startsWith
+   * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider endsWith
    */
   public function testEndsWith($haystack, $needle) {
@@ -144,7 +144,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::startsWith
+   * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider endsNotWith
    */
   public function testNotEndsWith($haystack, $needle) {
@@ -172,7 +172,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::startsWith
+   * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider ordinalizeData
    * @param string $string
    * @param string $expected
@@ -199,7 +199,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::trim
+   * @covers Sphp\Stdlib\Strings::trim
    * @dataProvider trimData
    * @param string $string
    * @param string $charsToTrim
@@ -226,7 +226,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::trimLeft
+   * @covers Sphp\Stdlib\Strings::trimLeft
    * @dataProvider trimLeftData
    * @param string $string
    * @param string $charsToTrim
@@ -253,7 +253,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::trimRight
+   * @covers Sphp\Stdlib\Strings::trimRight
    * @dataProvider trimRightData
    * @param string $string
    * @param string $charsToTrim
@@ -297,7 +297,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::trimRight
+   * @covers Sphp\Stdlib\Strings::trimRight
    * @dataProvider isJsonData
    * @param string $string
    * @param string $expected
@@ -420,7 +420,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::reverse
+   * @covers Sphp\Stdlib\Strings::reverse
    * @dataProvider testReverseData
    * @param string $string
    * @param string $charsToTrim
@@ -443,7 +443,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @covers Sphp\Core\Types\Strings::isHexadecimal
+   * @covers Sphp\Stdlib\Strings::isHexadecimal
    * @dataProvider testHexadecimalData
    * @param string $string
    * @param string $charsToTrim

@@ -5,7 +5,7 @@ namespace Sphp\Db\Objects;
 use Sphp\Db\EntityManagerFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Core\Security\Password;
-use Sphp\Core\Types\Permissions;
+use Sphp\Stdlib\Permissions;
 use Exception;
 
 class SessionUserTest extends \PHPUnit_Framework_TestCase {
