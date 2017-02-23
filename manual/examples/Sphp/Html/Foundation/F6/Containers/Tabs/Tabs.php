@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $tabs = (new Tabs())->matchHeight(true);
 $tabs->appendTab("1st. tab")->appendMdFile(Path::get()

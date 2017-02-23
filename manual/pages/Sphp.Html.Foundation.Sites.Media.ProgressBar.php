@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $progressBar = $api->classLinker(ProgressBar::class);
 

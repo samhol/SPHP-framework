@@ -8,7 +8,6 @@
 namespace Sphp\Stdlib;
 
 use DateTimeZone;
-use Sphp\Core\Comparable;
 
 /**
  * Representation of date and time

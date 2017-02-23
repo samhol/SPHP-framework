@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 /**
  * Description of SphpScriptsLoader

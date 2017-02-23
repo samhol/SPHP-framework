@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $path = Path::get()->local('manual/pics/error.png');
 echo (new \ParsedownExtra())->text(<<<TEXT

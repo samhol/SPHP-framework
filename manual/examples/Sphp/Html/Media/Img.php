@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Media;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 (new Img("http://playground.samiholck.com/manual/pics/crossbones.png", "Original Skull"))
         ->setLazy(true)
         ->printHtml();

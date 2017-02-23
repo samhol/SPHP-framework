@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Core\Http\HttpCodeCollection;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 Document::setHtmlVersion(Document::HTML5);
 

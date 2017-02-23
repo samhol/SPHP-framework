@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 /**
  * Description of MenuLinkBuilder

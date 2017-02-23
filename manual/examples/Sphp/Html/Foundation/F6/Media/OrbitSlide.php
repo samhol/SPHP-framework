@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $path = Path::get();
 

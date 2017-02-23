@@ -70,3 +70,7 @@ items:
       items:
       - link: Application configuration
         page: Sphp.Core.Config
+      - menu: Miscellaneous
+        items:
+        - link: Application configuration
+          page: Sphp.Core.Config

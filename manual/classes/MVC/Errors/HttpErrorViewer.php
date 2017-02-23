@@ -8,7 +8,7 @@
 namespace Sphp\Manual\MVC\Errors;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 use Sphp\Html\Media\Size;
 use Sphp\Html\Media\Img;
 use Sphp\Core\Http\HttpCode;

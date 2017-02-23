@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $manualLinks = Parser::fromFile(Path::get()->local('manual/yaml/documentation_links.yaml'));
 $dependenciesLinks = Parser::fromFile(Path::get()->local('manual/yaml/dependencies_links.yml'));

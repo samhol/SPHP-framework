@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 ?>
 <div class="row expanded sphp-logo-area">
   <div class="column small-12 large-6">

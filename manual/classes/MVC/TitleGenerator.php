@@ -1,23 +1,24 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * TitleGenerator.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Manual\MVC;
 
 /**
- * Description of TitleGenerator
+ * Generates a page title for the given page
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2014-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class TitleGenerator {
 
-  public function __construct(array $data, $currentPage = '') {
+  public function __construct(array $data) {
     $this->data = $data;
-    $this->currentPage = $currentPage;
     $this->titleData = $this->parseTitles();
     $this->parseTitles();
   }
@@ -36,7 +37,7 @@ class TitleGenerator {
       }
     }
 
-   // print_r($outputArray);
+    // print_r($outputArray);
     return $outputArray;
   }
 

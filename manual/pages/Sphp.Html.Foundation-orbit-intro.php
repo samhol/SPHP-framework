@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites;
 
 use Sphp\Html\Foundation\Sites\Media\Orbit\Orbit;
 use Sphp\Html\Foundation\Sites\Media\Orbit\Slide;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $path = Path::get();
 $orbitIntro = new Orbit();

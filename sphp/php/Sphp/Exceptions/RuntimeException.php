@@ -7,11 +7,14 @@
 
 namespace Sphp\Exceptions;
 
+use RuntimeException as SplRuntimeException;
+
+
 /**
  * Description of RuntimeException
  *
  * @author Sami Holck
  */
-class RuntimeException {
+class RuntimeException extends SplRuntimeException implements Exception {
 
 }

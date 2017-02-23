@@ -9,7 +9,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 use Sphp\Html\Container;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Programming\ScriptsContainer;

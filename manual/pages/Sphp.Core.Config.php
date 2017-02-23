@@ -14,7 +14,7 @@ $floatLink = $php->typeLink('float');
 $strLink = $php->typeLink('string');
 $arrLink = $php->typeLink('array');
 $arrayAccess = $php->classLinker(\ArrayAccess::class);
-$path = $api->classLinker(\Sphp\Core\Path::class);
+$path = $api->classLinker(\Sphp\Stdlib\Path::class);
 echo $parsedown->text(<<<MD
 #APPLICATION CONFIGURATION DATA{#Config}
 $ns

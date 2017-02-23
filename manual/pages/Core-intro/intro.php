@@ -8,7 +8,7 @@ $apigen = Apis::apigen();
 $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 
 use Sphp\Config\Config;
-$rootNs = $apigen->classLinker(Comparable::class)->namespaceLink();
+$rootNs = $apigen->namespaceLink(__NAMESPACE__);
 $configNs = $apigen->classLinker(Config::class)->namespaceLink();
 use Sphp\Stdlib\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();

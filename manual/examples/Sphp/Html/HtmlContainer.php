@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 use Sphp\Html\Sections\Paragraph;
 
 $file = Path::get()->local("manual/snippets/loremipsum.html");

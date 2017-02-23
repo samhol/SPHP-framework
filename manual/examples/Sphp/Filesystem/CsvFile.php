@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Tables\Table;
-use Sphp\Core\Path;
+use Sphp\Stdlib\Path;
 
 $data = (new CsvFile(Path::get()->local("manual/snippets/example.csv")))->toArray();
 $table = new Table("Cars to buy:");
