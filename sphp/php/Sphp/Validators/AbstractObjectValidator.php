@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Core\I18n\TopicList;
 use Sphp\Stdlib\Datastructures\Collection;

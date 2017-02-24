@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Core\I18n\PrioritizedMessageList;
 use Sphp\Core\I18n\Message;
@@ -26,6 +26,8 @@ abstract class AbstractValidator implements ValidatorInterface {
    * var PrioritizedMessageList
    */
   private $errors;
+  
+  private $value;
 
   /**
    * Constructs a new validator
@@ -41,6 +43,16 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
+   * Invoke validator as command
+   *
+   * @param  mixed $value
+   * @return bool
+   */
+  public function __invoke($value) {
+    return $this->isValid($value);
+  }
+
+  /**
    * Adds an error message to the validator
    *
    * @param  string $msg the error message text
@@ -50,7 +62,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   protected function createErrorMessage($msg, array $args = [], $priority = 0) {
     //echo "createErrorMessage:$msg";
-    $this->addErrorMessage(new Message($msg, $args), $priority);
+    $this->errors->insert(new Message($msg, $args), $priority);
     return $this;
   }
 
@@ -77,23 +89,12 @@ abstract class AbstractValidator implements ValidatorInterface {
     return $this;
   }
 
-  public function isValid() {
-    return $this->errors->count() == 0;
-  }
-
   public function getErrors() {
     return $this->errors;
   }
 
-  /**
-   * Does the validation
-   *
-   * @param  scalar $value the value to validate
-   * @return self for PHP Method Chaining
-   */
-  public function validate($value) {
-    $this->reset()->executeValidation($value);
-    return $this;
+  public function isValid($value) {
+    return $this->reset()->executeValidation($value);
   }
 
   /**

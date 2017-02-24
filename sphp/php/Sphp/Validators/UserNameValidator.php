@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Db\Objects\User as User;
 use Sphp\Stdlib\Strings;

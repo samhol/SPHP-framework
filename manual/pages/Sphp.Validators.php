@@ -54,7 +54,7 @@ validators.
         
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/RequiredValueValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/RequiredValueValidator.php", "php", false);
 
 echo $parsedown->text(
         <<<MD
@@ -70,7 +70,7 @@ is valid if it matches the given pattern. Build in patterns can be found from $a
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/PatternValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/PatternValidator.php", "php", false);
 echo $parsedown->text(
         <<<MD
 ###The $strLenValLink class	
@@ -95,7 +95,7 @@ validates the given input against all of its inner $validatorInterface validator
 and the input is valid only if it passes all of them.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/ValueValidatorAggregate.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/ValidatorAggregate.php", "php", false);
 $formValidator = $api->classLinker(FormValidator::class);
 $formInterface = $api->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = $php->classLinker(\Traversable::class);

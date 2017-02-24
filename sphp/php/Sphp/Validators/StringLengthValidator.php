@@ -5,21 +5,21 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Stdlib\StringObject;
 
 /**
- * Validates string length.
+ * Validates string length
  *
- *  Checks that given string is of given length.
+ *  Validates the length of the given string
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class StringLengthValidator extends AbstractOptionalValidator {
+class StringLengthValidator extends AbstractValidator {
 
   /**
    * minimum length of the valid string
@@ -125,15 +125,20 @@ class StringLengthValidator extends AbstractOptionalValidator {
    * @param  mixed $value the string to validate
    */
   protected function executeValidation($value) {
+    $valid = true;
     $string = new StringObject($value);
     $length = $string->trim()->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
+      $valid = false;
       $this->createErrorMessage("Please insert %d-%d characters", [$this->min, $this->max]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
+      $valid = false;
       $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
+      $valid = false;
       $this->createErrorMessage("Please insert at most %d characters", [$this->max]);
     }
+    return $valid;
   }
 
 }

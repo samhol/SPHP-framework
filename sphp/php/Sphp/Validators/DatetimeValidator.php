@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use DateTime;
 

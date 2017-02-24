@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Core\I18n\Message;
 use Sphp\Stdlib\Strings;
@@ -21,7 +21,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PatternValidator extends AbstractOptionalValidator {
+class PatternValidator extends AbstractValidator {
 
   /**
    * regular expression pattern to validate against
@@ -51,6 +51,9 @@ class PatternValidator extends AbstractOptionalValidator {
     if ($pattern !== null) {
       $this->setPattern($pattern, $errorMessage);
     }
+    if ($errorMessage !== null) {  
+      $this->setErrorMessage($errorMessage);
+    }
   }
 
   /**
@@ -64,8 +67,7 @@ class PatternValidator extends AbstractOptionalValidator {
    * @param string|Message $errorMessage error message corresponding to the pattern
    * @return self for PHP Method Chaining
    */
-  public function setPattern($pattern, $errorMessage = "Please insert a correct value") {
-    $this->pattern = $pattern;
+  public function setErrorMessage($errorMessage) {
     if (!($errorMessage instanceof Message)) {
       $errorMessage = new Message($errorMessage);
     }
@@ -74,18 +76,32 @@ class PatternValidator extends AbstractOptionalValidator {
   }
 
   /**
-   * Validates the value against given regular expression patterns.
+   * Sets a regular expression patterns to test.
+   * **Notes:** If all of the patterns is a matches => the cheked string is valid
    *
    *  **Note:** If the validable value matches the pattern => the validated
    *  data is valid.
    *
-   * @param  scalar $value the data to validate
+   * @param string $pattern regular expression pattern to validate against
+   * @return self for PHP Method Chaining
    */
-  protected function executeValidation($value) {
-    $string = Strings::toString($value);
-    if (!Strings::match($string, $this->pattern)) {
-      $this->addErrorMessage($this->errorMessage);
+  public function setPattern($pattern) {
+    $this->pattern = $pattern;
+    return $this;
+  }
+
+  public function executeValidation($value) {
+    if (!is_string($value) && !is_int($value) && !is_float($value)) {
+      echo 'Invalid type given. String, integer or float expected';
+      $this->createErrorMessage('Invalid type given. String, integer or float expected');
+      return false;
     }
+    if (!Strings::match($value, $this->pattern)) {
+      echo $value . $this->pattern;
+      $this->addErrorMessage($this->errorMessage);
+      return false;
+    }
+    return true;
   }
 
 }

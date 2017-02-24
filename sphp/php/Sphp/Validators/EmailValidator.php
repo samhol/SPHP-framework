@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 /**
  * Validates a value as an email address
