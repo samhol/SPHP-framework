@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Validators;
+namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
@@ -11,14 +11,13 @@ $validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
 $requiredValueValidator = Apis::apigen()->classLinker(RequiredValueValidator::class);
 $patrnvLink = $api->classLinker(PatternValidator::class);
 $strLenValLink = $api->classLinker(StringLengthValidator::class);
-$abstractValidatorAggregate = $api->classLinker(AbstractValidatorAggregate::class);
 $validatorAggregate = $api->classLinker(ValidatorAggregate::class);
 $optionalValidatorInterface = $api->classLinker(OptionalValidatorInterface::class);
 $AbstractOptionalValidator = $api->classLinker(AbstractOptionalValidator::class);
 $alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#User input Validation
+#DATA VALIDATION: <small>Introduction</small>
  $ns 
 User input validation is a critical part of any responsive HTML application. 
 This Framework contains its own user input validation mechanism which includes 
@@ -56,46 +55,9 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/RequiredValueValidator.php", "php", false);
 
-echo $parsedown->text(
-        <<<MD
-##$optionalValidatorInterface validation
-        
-		
-  
-
-###The $patrnvLink class		
-  
-The $patrnvLink validates the input against the given regular expression. The input
-is valid if it matches the given pattern. Build in patterns can be found from $alphabetsOnly
-MD
-);
-
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/PatternValidator.php", "php", false);
-echo $parsedown->text(
-        <<<MD
-###The $strLenValLink class	
-        
-The $strLenValLink simply validates the input length. This validator supports three 
-types of validation
-        
- 1. Lower bound validation: the length of the input must be above a given limit. 
- 2. Upper bound validation: the length of the input must be below a given limit.
- 3. Range validation: the length of the input must be between the lower and upper limits. 
-MD
-);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/StringLengthValidator.php", "php", false);
-echo $parsedown->text(
-        <<<MD
-##The $abstractValidatorAggregate implementations		
-        
-###The $validatorAggregate class		
-        
-The $validatorAggregate is an aggregation of $validatorInterface objects. It 
-validates the given input against all of its inner $validatorInterface validators 
-and the input is valid only if it passes all of them.
-MD
-);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/ValidatorAggregate.php", "php", false);
+$load('Sphp.Validators.PatternValidator');
+$load('Sphp.Validators.StringLengthValidator');
+$load('Sphp.Validators.ValidatorChain');
 $formValidator = $api->classLinker(FormValidator::class);
 $formInterface = $api->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = $php->classLinker(\Traversable::class);
@@ -115,7 +77,7 @@ $formValidator supports two ways of manipulating validators for named input data
  2. By using chainable object oriented methods 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/FormValidator.php", "php", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/FormValidator.php", "php", false);
 $abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
 $userValidator = $api->classLinker(UserValidator::class);
 echo $parsedown->text(
@@ -135,7 +97,6 @@ MD
 );
 $reflector = new \ReflectionClass(UserValidator::class);
 
-use \Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion as SyntaxHighlightingSingleAccordion;
 
 //echo $reflector->getFileName();
 /*$code = (new SyntaxHighlightingSingleAccordion())		

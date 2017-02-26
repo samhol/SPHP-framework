@@ -57,17 +57,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
     return $this->errors;
   }
 
-  public function isValid() {
-    return $this->errors->count() == 0;
-  }
-
-  /**
-   * Validates the form data
-   *
-   * @param  mixed $data
-   * @return self for PHP Method Chaining
-   */
-  public function validate($data) {
+  public function isValid($data) {
     $this->reset();
     foreach ($this->validators as $inputName => $validator) {
       $value = Arrays::getValue($data, $inputName);

@@ -76,20 +76,11 @@ class FormValidator implements ValidatorInterface, \Countable, \IteratorAggregat
    *
    * @return boolean true if the data is valid, false if not
    */
-  public function isValid() {
-    return $this->getErrors()->count(TopicList::COUNT_MESSAGES) == 0;
-  }
-
-  /**
-   * Validates the form data
-   *
-   * @param  scalar[] $data
-   * @return self for PHP Method Chaining
-   */
-  public function validate($data) {
+  public function isValid($data) {
     $this->reset();
+    $valid = true;
     foreach ($this->validators as $inputName => $validator) {
-      $validator->validate(Arrays::getValue($data, $inputName));
+      $valid = $validator->isValid(Arrays::getValue($data, $inputName));
       //var_dump($validator->validate($data)->isValid());
       //filter_var($validator, $filter, $data)
       //var_dump($inputName, get_class($validator));
@@ -99,8 +90,9 @@ class FormValidator implements ValidatorInterface, \Countable, \IteratorAggregat
       //		$this->errors->set($inputName, $validator->getErrors());
       //	}
     }
-    return $this;
+    return $valid;
   }
+
 
   /**
    * Returns the number of the validable input names
