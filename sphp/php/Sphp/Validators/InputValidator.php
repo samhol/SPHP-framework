@@ -1,23 +1,21 @@
 <?php
 
 /**
- * OptionalValidatorTrait.php (UTF-8)
+ * AbstractOptionalValidator.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\Strings;
-
 /**
- * Trait implements the properties of the {@link OptionalValidatorInterface}
+ * Abstract superclass for an optional validator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-08
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait OptionalValidatorTrait {
+class InputValidator extends AbstractValidator {
 
   /**
    * whether empty values are allowed or not
@@ -25,6 +23,26 @@ trait OptionalValidatorTrait {
    * var boolean
    */
   private $allowEmptyValues = true;
+  private $inputName;
+
+  public function __construct($inputName, $allowEmptyValues = true) {
+    parent::__construct();
+    $this->setInputName($inputName)->allowEmptyValues($allowEmptyValues);
+  }
+
+  public function getInputName() {
+    return $this->inputName;
+  }
+
+  /**
+   * 
+   * @param string $inputName
+   * @return self for PHP Method Chaining
+   */
+  public function setInputName($inputName) {
+    $this->inputName = $inputName;
+    return $this;
+  }
 
   /**
    * Sets/unsets validation for empty values
@@ -46,14 +64,8 @@ trait OptionalValidatorTrait {
     return $this->allowEmptyValues;
   }
 
-  /**
-   * Does the validation
-   *
-   * @param  mixed $value the value to validate
-   * @return self for PHP Method Chaining
-   */
-  public function validate($value) {
-    $this->reset();
+  public function isValid($value) {
+    $this->setValue($value);
     if (!Strings::isEmpty($value) || !$this->emptyValuesAllowed()) {
       $this->executeValidation($value);
     }

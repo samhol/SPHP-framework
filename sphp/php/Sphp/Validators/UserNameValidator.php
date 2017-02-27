@@ -18,15 +18,9 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UserNameValidator extends AbstractOptionalValidator {
+class UserNameValidator extends AbstractValidator {
 
-  /**
-   * Validates the username
-   *
-   * @param  string $value the value to validate
-   * @return self for PHP Method Chaining
-   */
-  protected function executeValidation($value) {
+  public function isValid($value) {
     $username = (string) $value;
     /*if (!Strings::lengthBetween($username, 6, 12)) {
       $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);

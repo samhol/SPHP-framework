@@ -35,12 +35,8 @@ use Sphp\Stdlib\Strings;
  */
 class RequiredValueValidator extends AbstractValidator {
 
-  /**
-   * Validates that the field has a scalar non empty value
-   *
-   * @param  mixed $value the value to validate
-   */
-  protected function executeValidation($value) {
+  public function isValid($value) {
+    $this->setValue($value);
     $valid = true;
     if ($value === null) {
       $valid = false;

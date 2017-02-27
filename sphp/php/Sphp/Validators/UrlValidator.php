@@ -17,14 +17,14 @@ use Sphp\Stdlib\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UrlValidator extends AbstractOptionalValidator {
+class UrlValidator extends AbstractValidator {
 
   /**
    * Validates that the given url is working
    *
    * @param  string|URL $url the url to validate
    */
-  public function executeValidation($url) {
+  public function isValid($url) {
     if (!($url instanceof URL)) {
       $url = new URL($url);
     }

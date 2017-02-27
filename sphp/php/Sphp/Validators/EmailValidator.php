@@ -15,7 +15,7 @@ namespace Sphp\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class EmailValidator extends AbstractOptionalValidator {
+class EmailValidator extends AbstractValidator {
 
   /**
    * Validates the value as an email address
@@ -23,7 +23,7 @@ class EmailValidator extends AbstractOptionalValidator {
    * @param  string $value the value to validate
    * @return self for PHP Method Chaining
    */
-  protected function executeValidation($value) {
+  public function isValid($value) {
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
       $this->createErrorMessage("Please insert a correct email address");
     }

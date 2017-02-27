@@ -18,7 +18,7 @@ items:
       - link: Data filtering
         page: Sphp.Core.Filters
       - link: Data validation
-        page: Sphp.Validation
+        page: Sphp.Validators
       - link: I18n
         page: Sphp.Core.I18n
       - link: Database objects 

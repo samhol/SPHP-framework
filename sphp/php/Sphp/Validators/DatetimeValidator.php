@@ -17,7 +17,7 @@ use DateTime;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class DatetimeValidator extends AbstractOptionalValidator {
+class DatetimeValidator extends AbstractValidator {
 
   /**
    * the required format of the validable value
@@ -57,7 +57,7 @@ class DatetimeValidator extends AbstractOptionalValidator {
    *
    * @param  mixed $value the value to validate
    */
-  protected function executeValidation($value) {
+  public function isValid($value) {
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');
     if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {

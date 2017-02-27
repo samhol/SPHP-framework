@@ -117,14 +117,8 @@ class StringLengthValidator extends AbstractValidator {
     return $this->min < 0 && $this->max > 0;
   }
 
-  /**
-   * Validates the length of the given string
-   *
-   *  Checks that given string is of given length if it has any content.
-   *
-   * @param  mixed $value the string to validate
-   */
-  protected function executeValidation($value) {
+  public function isValid($value) {
+    $this->setValue($value);
     $valid = true;
     $string = new StringObject($value);
     $length = $string->trim()->length();

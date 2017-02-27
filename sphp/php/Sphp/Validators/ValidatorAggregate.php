@@ -34,8 +34,9 @@ class ValidatorAggregate extends AbstractValidator implements Countable {
     $this->validators = [];
   }
 
-  protected function executeValidation($value) {
+  public function isValid($value) {
     //echo "t4g4ge $value";
+    $this->setValue($value);
     $valid = true;
     foreach ($this->validators as $validator) {
       $v = $validator['validator'];

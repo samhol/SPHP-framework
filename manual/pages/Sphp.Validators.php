@@ -12,8 +12,7 @@ $requiredValueValidator = Apis::apigen()->classLinker(RequiredValueValidator::cl
 $patrnvLink = $api->classLinker(PatternValidator::class);
 $strLenValLink = $api->classLinker(StringLengthValidator::class);
 $validatorAggregate = $api->classLinker(ValidatorAggregate::class);
-$optionalValidatorInterface = $api->classLinker(OptionalValidatorInterface::class);
-$AbstractOptionalValidator = $api->classLinker(AbstractOptionalValidator::class);
+$inputValidator = $api->classLinker(InputValidator::class);
 $alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
@@ -26,7 +25,7 @@ validation mechanism. The cornerstone of it is the $validatorInterface. This
 interface defines the minimum properties required for any SPHP framework based 
 validator.
   
-##The $requiredValueValidator and $optionalValidatorInterface validation
+##The $requiredValueValidator validation
   
 The $requiredValueValidator validates only that the given input has a non empty value. 	
         
@@ -44,11 +43,11 @@ The $requiredValueValidator validates only that the given input has a non empty 
       * "\\0" (ASCII 0 (0x00)), the NUL-byte 
       * "\\x0B" (ASCII 11 (0x0B)), a vertical tab		
 
-$optionalValidatorInterface makes it possible to choose whether the empty value 
+$inputValidator makes it possible to choose whether the empty value 
 is valid or not when validating user inputs with this type of validators. This 
 property is usefull for example when the validated input is optional.	The abstract 
-class $AbstractOptionalValidator is th default implementation of the 
-$optionalValidatorInterface and is is also the base class for many of the build-in 
+class $inputValidator is th default implementation of the 
+$inputValidator and is is also the base class for many of the build-in 
 validators. 
         
 MD
