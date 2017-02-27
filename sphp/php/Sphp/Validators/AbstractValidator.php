@@ -26,6 +26,11 @@ abstract class AbstractValidator implements ValidatorInterface {
    * var PrioritizedMessageList
    */
   private $errors;
+
+  /**
+   *
+   * @var mixed 
+   */
   private $value;
 
   /**
@@ -39,6 +44,24 @@ abstract class AbstractValidator implements ValidatorInterface {
     } else {
       $this->errors = $m;
     }
+  }
+
+  public function __destruct() {
+    unset($this->errors, $this->value);
+  }
+
+  public function __clone() {
+    unset($this->errors, $this->value);
+  }
+
+  /**
+   * Invoke validator as command
+   *
+   * @param  mixed $value
+   * @return bool
+   */
+  public function __invoke($value) {
+    return $this->isValid($value);
   }
 
   /**
@@ -58,16 +81,6 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->reset();
     $this->value = $value;
     return $this;
-  }
-
-  /**
-   * Invoke validator as command
-   *
-   * @param  mixed $value
-   * @return bool
-   */
-  public function __invoke($value) {
-    return $this->isValid($value);
   }
 
   /**

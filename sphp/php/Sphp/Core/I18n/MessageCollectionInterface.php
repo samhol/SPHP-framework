@@ -40,6 +40,15 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
   /**
    * Merges given collection to this container
    *
+   * @param  MessageInterface $m
+   * @return self for PHP Method Chaining
+   */
+  public function insert(MessageInterface $m);
+  
+  
+  /**
+   * Merges given collection to this container
+   *
    * @param  MessageCollectionInterface $m
    * @return self for PHP Method Chaining
    */

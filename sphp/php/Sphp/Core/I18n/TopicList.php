@@ -12,6 +12,9 @@ use Sphp\Core\I18n\Gettext\Translator;
 use Sphp\Stdlib\Datastructures\Collection;
 use IteratorAggregate;
 use ArrayAccess;
+use Countable;
+use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a container for {@link MessageList} objects sorted by associated topics
@@ -21,7 +24,7 @@ use ArrayAccess;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInterface {
+class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayable, Countable, ArrayAccess {
 
   /**
    * Count mode (topics only)
@@ -239,16 +242,16 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  MessageInterface|PrioritizedMessageList $m message or message list
+   * @param  string|MessageInterface|MessageCollectionInterface $m message or message list
    * @return self for PHP Method Chaining
-   * @throws \InvalidArgumentException if the type of the inserted data is illegal
+   * @throws InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
     if ($m instanceof MessageInterface) {
       $m = (new PrioritizedMessageList($this->getTranslator()))->insert($m);
     }
     if (!($m instanceof PrioritizedMessageList)) {
-      throw new \InvalidArgumentException();
+      throw new InvalidArgumentException();
     }
     $m->setLang($this->getTranslator()->getLang());
     $this->topics->offsetSet($topic, $m);
@@ -262,12 +265,12 @@ class TopicList implements IteratorAggregate, ArrayAccess, MessageCollectionInte
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  Message|PrioritizedMessageList $m message or message list
+   * @param  MessageCollectionInterface $m message or message list
    * @return self for PHP Method Chaining
    * @uses   self::offsetSet()
-   * @throws \InvalidArgumentException if the type of the inserted data is illegal
+   * @throws InvalidArgumentException if the type of the inserted data is illegal
    */
-  public function set($topic, PrioritizedMessageList $m) {
+  public function set($topic, MessageCollectionInterface $m) {
     $this->offsetSet($topic, $m);
     return $this;
   }

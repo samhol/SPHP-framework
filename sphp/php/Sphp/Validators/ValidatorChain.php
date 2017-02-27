@@ -34,6 +34,13 @@ class ValidatorChain extends AbstractValidator implements Countable {
     $this->validators = [];
   }
 
+  public function __destruct() {
+    unset($this->validators);
+    parent::__destruct();
+  }
+  
+  
+
   public function isValid($value) {
     //echo "t4g4ge $value";
     $this->setValue($value);

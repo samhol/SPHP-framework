@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PluralMessage.php (UTF-8)
+ * AbstractMessage.php (UTF-8)
  * Copyright (c) 2010 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -83,15 +83,6 @@ abstract class AbstractMessage implements MessageInterface {
 
   public function __toString() {
     return $this->translate();
-  }
-
-  /**
-   * Returns the message as a formatted and localized json string
-   *
-   * @return string the object as a formatted and localized json string
-   */
-  public function toJson() {
-    return '"' . $this . '"';
   }
 
 }
