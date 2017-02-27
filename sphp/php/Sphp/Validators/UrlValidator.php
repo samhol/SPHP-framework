@@ -10,7 +10,7 @@ namespace Sphp\Validators;
 use Sphp\Stdlib\URL;
 
 /**
- * Validates an url string or an instance of {@link Url} class.
+ * Validates an url string or an instance of {@link URL} class.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
@@ -19,11 +19,6 @@ use Sphp\Stdlib\URL;
  */
 class UrlValidator extends AbstractValidator {
 
-  /**
-   * Validates that the given url is working
-   *
-   * @param  string|URL $url the url to validate
-   */
   public function isValid($url) {
     if (!($url instanceof URL)) {
       $url = new URL($url);

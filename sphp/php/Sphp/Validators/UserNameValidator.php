@@ -7,7 +7,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Db\Objects\User as User;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -22,9 +21,9 @@ class UserNameValidator extends AbstractValidator {
 
   public function isValid($value) {
     $username = (string) $value;
-    /*if (!Strings::lengthBetween($username, 6, 12)) {
+    /* if (!Strings::lengthBetween($username, 6, 12)) {
       $this->createErrorMessage("Please insert %d-%d characters", [6, 12]);
-    }*/
+      } */
     if (!Strings::match($username, "/^([a-zA-Z0-9]){6,255}$/")) {
       $this->createErrorMessage("Please insert 6-255 alphabets and numbers only");
     }

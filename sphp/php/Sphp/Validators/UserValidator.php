@@ -26,14 +26,14 @@ use Sphp\Db\User;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UserValidator extends AbstractObjectValidator {
+class UserValidator extends AbstractValidator {
 
   /**
-   * Constructs a new {@link self} validator
+   * Constructs a new validator
    */
   public function __construct() {
     parent::__construct();
-    $this->set("username", (new UserNameValidator())->allowEmptyValues(false))
+    $this->set("username", (new RequiredValueValidator())->allowEmptyValues(false))
             ->set("fname", new RequiredValueValidator())->set("lname", new RequiredValueValidator())
             ->set("phone", new PatternValidator("/^\+?[0-9]\ {*}$/", "Phonenumber contains only an optional + sign, numbers and spaces"))
             ->set("email", new EmailValidator())
@@ -41,7 +41,7 @@ class UserValidator extends AbstractObjectValidator {
             ->set("street", (new StringLengthValidator(2, 50))->allowEmptyValues(true));
   }
 
-  public function validate($data) {
+  public function isValid($data) {
     if ($data instanceof User) {
       $data = $data->toArray();
     }

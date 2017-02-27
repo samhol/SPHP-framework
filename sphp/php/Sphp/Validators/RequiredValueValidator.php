@@ -45,7 +45,6 @@ class RequiredValueValidator extends AbstractValidator {
     } else if (Strings::isEmpty($value)) {
       $valid = false;
     }
-
     if (!$valid) {
       $this->createErrorMessage('Please insert a value');
     }

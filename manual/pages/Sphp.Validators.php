@@ -11,8 +11,7 @@ $validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
 $requiredValueValidator = Apis::apigen()->classLinker(RequiredValueValidator::class);
 $patrnvLink = $api->classLinker(PatternValidator::class);
 $strLenValLink = $api->classLinker(StringLengthValidator::class);
-$validatorAggregate = $api->classLinker(ValidatorAggregate::class);
-$inputValidator = $api->classLinker(InputValidator::class);
+$inputValidator = $api->classLinker(OptionalValidator::class);
 $alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
@@ -57,28 +56,10 @@ CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/RequiredValueVali
 $load('Sphp.Validators.PatternValidator');
 $load('Sphp.Validators.StringLengthValidator');
 $load('Sphp.Validators.ValidatorChain');
-$formValidator = $api->classLinker(FormValidator::class);
-$formInterface = $api->classLinker(\Sphp\Html\Forms\FormInterface::class);
-$traversable = $php->classLinker(\Traversable::class);
-$arrayaccess = $php->classLinker(\ArrayAccess::class);
-$array = $php->typeLink("array", "arrays");
-echo $parsedown->text(
-        <<<MD
-##The $formValidator validator		
-A $formValidator is an aggregate of validators validating user inputs data provided 
-by HTML forms like the ones implementing $formInterface. A $formValidator can validate 
-PHP's native $array and just about any kind of $traversable data containing key value pairs.	
-        
-$formValidator supports two ways of manipulating validators for named input data values.		
-  
- 1. By using PHP's array notation provided by the $arrayaccess interface 
-    * **IMPORTANT!** the offset key points to the corresponding offset in the data that is to be validated
- 2. By using chainable object oriented methods 
-MD
-);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/FormValidator.php", "php", false);
+$load('Sphp.Validators.FormValidator');
+
 $abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
-$userValidator = $api->classLinker(UserValidator::class);
+
 echo $parsedown->text(
         <<<MD
 ##Creating custom validators		

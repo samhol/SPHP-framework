@@ -93,7 +93,7 @@ class PatternValidator extends AbstractValidator {
   public function isValid($value) {
     $this->setValue($value);
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
-      echo 'Invalid type given. String, integer or float expected';
+      //echo 'Invalid type given. String, integer or float expected';
       $this->createErrorMessage('Invalid type given. String, integer or float expected');
       return false;
     }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ValidatorAggregate.php (UTF-8)
+ * ValidatorChain.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -17,7 +17,7 @@ use Countable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ValidatorAggregate extends AbstractValidator implements Countable {
+class ValidatorChain extends AbstractValidator implements Countable {
 
   /**
    * used validators
@@ -65,6 +65,7 @@ class ValidatorAggregate extends AbstractValidator implements Countable {
    * @param ValidatorInterface $v new validator object
    * @return self for PHP Method Chaining
    */
+
   /**
    * Appends a new validator to the chain
    * 

@@ -5,7 +5,7 @@ namespace Sphp\Validators;
 //Locale::setMessageLocale("fi_FI.UTF-8");
 //Translator::useTextDomain("Sphp.Validation");
 
-$validator = new ValidatorAggregate();
+$validator = new ValidatorChain();
 $validator->appendValidator(new StringLengthValidator(2, 6), true);
 $validator->appendValidator(new PatternValidator("/^[a-zA-Z]+$/", "Please insert alphabets only"));
 

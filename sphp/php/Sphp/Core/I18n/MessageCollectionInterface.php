@@ -35,4 +35,15 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
    * @return boolean true, if the message exists, false otherwise
    */
   public function contains(MessageInterface $message);
+  
+
+  /**
+   * Merges given collection to this container
+   *
+   * @param  MessageCollectionInterface $m
+   * @return self for PHP Method Chaining
+   */
+  public function merge(MessageCollectionInterface $m);
+  
+  
 }

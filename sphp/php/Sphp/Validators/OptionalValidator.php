@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractOptionalValidator.php (UTF-8)
+ * OptionalValidator.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputValidator extends AbstractValidator {
+class OptionalValidator extends ValidatorChain {
 
   /**
    * whether empty values are allowed or not
@@ -23,25 +23,14 @@ class InputValidator extends AbstractValidator {
    * var boolean
    */
   private $allowEmptyValues = true;
-  private $inputName;
-
-  public function __construct($inputName, $allowEmptyValues = true) {
-    parent::__construct();
-    $this->setInputName($inputName)->allowEmptyValues($allowEmptyValues);
-  }
-
-  public function getInputName() {
-    return $this->inputName;
-  }
 
   /**
    * 
-   * @param string $inputName
-   * @return self for PHP Method Chaining
+   * @param boolean $allowEmptyValues
    */
-  public function setInputName($inputName) {
-    $this->inputName = $inputName;
-    return $this;
+  public function __construct($allowEmptyValues = true) {
+    parent::__construct();
+    $this->allowEmptyValues($allowEmptyValues);
   }
 
   /**
@@ -62,14 +51,6 @@ class InputValidator extends AbstractValidator {
    */
   public function emptyValuesAllowed() {
     return $this->allowEmptyValues;
-  }
-
-  public function isValid($value) {
-    $this->setValue($value);
-    if (!Strings::isEmpty($value) || !$this->emptyValuesAllowed()) {
-      $this->executeValidation($value);
-    }
-    return $this;
   }
 
 }

@@ -2,7 +2,7 @@
 
 /**
  * StringLengthValidator.php (UTF-8)
- * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Validators;

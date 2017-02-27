@@ -20,7 +20,7 @@ use Sphp\items\Address as Address;
 class AddressValidator extends AbstractObjectValidator {
 
   /**
-   * Constructs a new {@link self} validator
+   * Constructs a new validator
    */
   public function __construct() {
     parent::__construct();

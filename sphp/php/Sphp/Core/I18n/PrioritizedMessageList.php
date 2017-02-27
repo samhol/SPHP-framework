@@ -141,14 +141,14 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
     $this->messages->insert($messages, $priority);
     return $this;
   }
-
+  
   /**
-   * Merges given {@link MessageList} to this container
+   * Merges given collection to this container
    *
-   * @param  PrioritizedMessageList $m
+   * @param  MessageCollectionInterface $m
    * @return self for PHP Method Chaining
    */
-  public function merge(PrioritizedMessageList $m) {
+  public function merge(MessageCollectionInterface $m) {
     foreach ($m as $message) {
       $this->insert($message);
     }
