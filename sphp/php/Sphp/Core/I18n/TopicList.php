@@ -112,7 +112,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
   }
 
   /**
-   * Counts the number of stored {@link Message} objects.
+   * Counts the number of stored collections or messages
    *
    * @param  int $mode the count mode
    * @return int the number of {@link MessageTopic} or {@link Message} objects stored

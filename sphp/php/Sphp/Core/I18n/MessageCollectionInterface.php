@@ -22,37 +22,26 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 interface MessageCollectionInterface extends Traversable, TranslatorAwareInterface, Arrayable, Countable {
 
   /**
-   * Returns the object as a string.
-   *
-   * @return string the object as a string
-   */
-  public function __toString();
-
-  /**
-   * Checks whether the given message exists in the list
+   * Checks whether the given message exists in the collection
    *
    * @param  MessageInterface $message the message to search for
    * @return boolean true, if the message exists, false otherwise
    */
   public function contains(MessageInterface $message);
-  
 
   /**
-   * Merges given collection to this container
+   * Inserts a new message to the collection
    *
    * @param  MessageInterface $m
    * @return self for PHP Method Chaining
    */
   public function insert(MessageInterface $m);
-  
-  
+
   /**
-   * Merges given collection to this container
+   * Merges given collection to this collection
    *
    * @param  MessageCollectionInterface $m
    * @return self for PHP Method Chaining
    */
   public function merge(MessageCollectionInterface $m);
-  
-  
 }
