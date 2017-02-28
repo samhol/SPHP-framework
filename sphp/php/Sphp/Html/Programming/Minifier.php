@@ -40,7 +40,7 @@ class Minifier implements ContentInterface {
    * Adds an empty script tag with src - and type attribute to the object
    *
    * @param  string $src script's file path (src attribute)
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function appendSrc($src) {

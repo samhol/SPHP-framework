@@ -26,7 +26,7 @@ class MdContainer extends AbstractContainer {
    * Appends a Mark Down file to the container
    * 
    * @param  string $path the path to the file
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendFile($path) {
     $this->append(Filesystem::executePhpToString($path));

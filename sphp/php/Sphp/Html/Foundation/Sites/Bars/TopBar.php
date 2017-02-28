@@ -64,7 +64,7 @@ class TopBar extends AbstractBar {
    * 
    * @precondition `$screenSize` == `small|medium|large`
    * @param  string $screenSize the targeted screensize
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function stackFor($screenSize = 'small') {
@@ -82,7 +82,7 @@ class TopBar extends AbstractBar {
   /**
    * Unstacks the stacked buttons in the given screen sizes
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function setDefaultStacking() {

@@ -67,7 +67,7 @@ class Figure extends AbstractComponent implements ImgInterface {
    * Sets the image component
    *
    * @param  Img $img the image path or the image component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setImg(Img $img) {
     $this->img = $img;
@@ -87,7 +87,7 @@ class Figure extends AbstractComponent implements ImgInterface {
    * Sets the caption component
    *
    * @param  FigCaption $caption the caption content or the caption component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setCaption(FigCaption $caption) {
     $this->caption = $caption;

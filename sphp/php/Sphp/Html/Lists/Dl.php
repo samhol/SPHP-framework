@@ -47,7 +47,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * Appends elements to the object
    *
    * @param  DlContentInterface $it list elements
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function append(DlContentInterface $it) {
     $this->getInnerContainer()->append($it);
@@ -58,7 +58,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * Appends {@link Dt} term component to the list
    *
    * @param  mixed $terms the term component or its content
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendTerms($terms) {
     foreach ((is_array($terms)) ? $terms : [$terms] as $term) {
@@ -74,7 +74,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * Appends {@link Dd} description component to the list
    *
    * @param  mixed $descriptions the description components or their content
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendDescriptions($descriptions) {
     foreach ((is_array($descriptions)) ? $descriptions : [$descriptions] as $description) {
@@ -90,7 +90,7 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
    * Prepends an item to the object
    * 
    * @param  DlContentInterface $it list element
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function prepend(DlContentInterface $it) {
     $this->getInnerContainer()->prepend($it);

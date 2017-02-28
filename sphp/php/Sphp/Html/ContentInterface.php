@@ -44,7 +44,7 @@ interface ContentInterface {
 	/**
 	 * Prints the component as HTML markup string
 	 *
-	 * @return self for PHP Method Chaining
+	 *  @return self for a fluent interface
 	 */
 	public function printHtml();
 }

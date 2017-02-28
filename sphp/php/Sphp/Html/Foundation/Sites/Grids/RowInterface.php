@@ -52,7 +52,7 @@ interface RowInterface extends ContainerComponentInterface {
    * * The sum of the {@link ColumnInterface} widths in a {@link self} should not exeed 12.
    * 
    * @param  mixed|mixed[] $columns 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setColumns($columns);
 
@@ -69,7 +69,7 @@ interface RowInterface extends ContainerComponentInterface {
    * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
    * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false);
 
@@ -82,7 +82,7 @@ interface RowInterface extends ContainerComponentInterface {
    * * a values of `$column` not extending {@link ColumnInterface} is wrapped with {@link Column} object
    *
    * @param  mixed|mixed[] $columns components
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function prepend($columns);
 
@@ -95,7 +95,7 @@ interface RowInterface extends ContainerComponentInterface {
    * * a values of `$column` not extending {@link ColumnInterface} is wrapped with {@link Column} object
    *
    * @param  mixed|ColumnInterface $column content component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function append($column);
 
@@ -115,7 +115,7 @@ interface RowInterface extends ContainerComponentInterface {
   /**
    * 
    * @param  boolean $collapse
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function collapseColumns($collapse = true);
 }

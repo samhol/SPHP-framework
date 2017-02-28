@@ -53,7 +53,7 @@ class ExceptionMailer implements Observer {
    * Sets the trace visibility
    * 
    * @param  boolean $show true for showing trace  
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showTrace($show = true) {
     $this->showTrace = $show;
@@ -64,7 +64,7 @@ class ExceptionMailer implements Observer {
    * Sets the previous exception visibility
    * 
    * @param  boolean $show true for showing
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showPreviousException($show = true) {
     $this->showPreviousException = $show;

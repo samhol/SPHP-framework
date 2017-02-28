@@ -34,7 +34,7 @@ interface ColumnInterface {
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  int $width the width of the column
    * @param  string $screen the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setWidth($width, $screen = 'small');
 
@@ -43,7 +43,7 @@ interface ColumnInterface {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setWidthInherited($screenSize);
 
@@ -55,7 +55,7 @@ interface ColumnInterface {
    * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
    * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setWidths($s, $m = false, $l = false, $xl = false, $xxl = false);
 
@@ -78,7 +78,7 @@ interface ColumnInterface {
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  int|boolean $offset the column offset (0-11) or false for inheritance
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setGridOffset($offset, $screenSize = "small");
 
@@ -96,7 +96,7 @@ interface ColumnInterface {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function inheritGridOffset($screenSize);
 
@@ -114,7 +114,7 @@ interface ColumnInterface {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function centerize($screenSize);
 
@@ -123,7 +123,7 @@ interface ColumnInterface {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function uncenterize($screenSize);
 }

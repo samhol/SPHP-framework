@@ -84,7 +84,7 @@ class PoFileIterator implements \Iterator {
   /**
    * 
    * @param array $data
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private static function parseObject(array $data) {
     $flags = null;

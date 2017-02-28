@@ -56,7 +56,7 @@ class PluralMessage extends AbstractMessage {
 
   /**
    * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function isPlural($plural = true) {
     $this->n = $plural ? 2 : 1;
@@ -65,7 +65,7 @@ class PluralMessage extends AbstractMessage {
 
   /**
    * @param  int $n the number (e.g. item count) to determine the translation for the respective grammatical number
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setItemCount($n) {
     $this->n = $n;
@@ -77,7 +77,7 @@ class PluralMessage extends AbstractMessage {
    *
    * @param  string $msgid1 the singular message text
    * @param  string $msgid2 the plural message text
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function setMessage($msgid1, $msgid2) {
     $this->msgid1 = $msgid1;

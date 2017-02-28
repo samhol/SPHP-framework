@@ -46,7 +46,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * Prepends a pane component into the accordion
    * 
    * @param  PaneInterface $pane added component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function prepend(PaneInterface $pane) {
     $this->getInnerContainer()->prepend($pane);
@@ -58,7 +58,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * 
    * @param  mixed $title the content of the pane title
    * @param  mixed $content the content of the actual pane
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function prependPane($title, $content) {
     $this->getInnerContainer()->prepend(new Pane($title, $content));
@@ -69,7 +69,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * Appends a pane component into the accordion
    * 
    * @param  PaneInterface $pane added pane component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function append(PaneInterface $pane) {
     $this->getInnerContainer()->append($pane);
@@ -81,7 +81,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * 
    * @param  mixed $title the content of the pane title
    * @param  mixed $content the content of the actual pane
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendPane($title, $content) {
     $this->getInnerContainer()->append(new Pane($title, $content));
@@ -111,7 +111,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * Sets the amount of time to animate the opening of an accordion pane
    * 
    * @param  int $speed the amount of time
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSliderSpeed($speed) {
     $this->attrs()->set('data-slide-speed', $speed);
@@ -122,7 +122,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * Sets whether to allow the accordion to have multiple open panes
    * 
    * @param  boolean $allow true for allowing and false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function allowMultiExpand($allow = true) {
     $value = $allow ? 'true' : 'false';
@@ -134,7 +134,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * Sets whether to allow the accordion to close all panes
    * 
    * @param  boolean $allow true for allowing and false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function allowAllClosed($allow = true) {
     $value = $allow ? 'true' : 'false';

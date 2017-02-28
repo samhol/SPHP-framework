@@ -54,7 +54,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * Sets the root component of the menu
    *
    * @param string|Hyperlink $root root content
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setRoot($root) {
     if ($root instanceof Hyperlink) {
@@ -77,7 +77,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * Appends a menu item object to the menu
    *
    * @param  MenuItemInterface $item
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function append(MenuItemInterface $item) {
     $this->menu->append($item);
@@ -93,7 +93,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * @param  string|URL $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -106,7 +106,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * Appends a {@link MenuLabel} text component to the menu
    *
    * @param  mixed|MenuLabel $text
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendText($text) {
     if (!($text instanceof MenuLabel)) {

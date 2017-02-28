@@ -34,7 +34,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    * Sets the minimum value of the input
    *
    * @param  int|boolean the minimum value of the input or `false` if minimum is not set
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_min.asp min attribute
    */
   public function setMinimum($min);
@@ -53,7 +53,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    *  **Preconditions:** <var>$maxlength > 0</var>
    *
    * @param  int $maxlength the value of the maxlength attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_max.asp max attribute
    */
   public function setMaximum($maxlength);
@@ -69,7 +69,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    *  <var>text, search, url, tel, email, and password</var>.
    *
    * @param  string $placeholder the value of the placeholder attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
    */
   public function setPlaceholder($placeholder);
@@ -86,7 +86,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    *   <var>text, search, url, tel, email, password, datepickers, range, and color</var>.
    *
    * @param  boolean $allow (allow the browser to predict the value)
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
   public function autocomplete($allow = true);

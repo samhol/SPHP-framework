@@ -21,7 +21,7 @@ trait SizeableTrait {
    * Sets the dimensions of the component (in pixels)
    * 
    * @param  Size $size object containing the dimension settings
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSize(Size $size) {
     $this
@@ -53,7 +53,7 @@ trait SizeableTrait {
    * 
    * @param  int|boolean $width the width of the component (in pixels)), false 
    *         to unset
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setWidth($width) {
     $this->attrs()->set('width', $this->parseDimension($width));
@@ -74,7 +74,7 @@ trait SizeableTrait {
    * 
    * @param  int|boolean $height the height of the component (in pixels), `false` 
    *         to unset
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setHeight($height) {
     $this->attrs()->set('height', $this->parseDimension($height));

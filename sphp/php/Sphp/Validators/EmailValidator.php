@@ -21,7 +21,7 @@ class EmailValidator extends AbstractValidator {
    * Validates the value as an email address
    *
    * @param  string $value the value to validate
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function isValid($value) {
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {

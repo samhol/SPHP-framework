@@ -8,6 +8,7 @@
 namespace Sphp\Validators;
 
 use Countable;
+use Sphp\Core\I18n\MessageList;
 
 /**
  * A validator container for validating a value against multiple validators
@@ -17,47 +18,60 @@ use Countable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ValidatorChain extends AbstractValidator implements Countable {
+class ValidatorChain implements ValidatorInterface, Countable {
 
   /**
    * used validators
    *
    * @var mixed[]
    */
-  protected $validators;
+  private $validators;
+
+  /**
+   *
+   * @var MessageList
+   */
+  private $errors;
 
   /**
    * Constructs a new validator
    */
   public function __construct() {
-    parent::__construct();
     $this->validators = [];
+    $this->errors = new MessageList();
   }
 
   public function __destruct() {
-    unset($this->validators);
-    parent::__destruct();
+    unset($this->validators, $this->errors);
   }
-  
-  
+
+  public function __clone() {
+    $this->errors = clone $this->errors;
+  }
+
+  /**
+   * Invoke validator as command
+   *
+   * @param  mixed $value
+   * @return bool
+   */
+  public function __invoke($value) {
+    return $this->isValid($value);
+  }
+
+  public function getErrors() {
+    return $this->errors;
+  }
 
   public function isValid($value) {
-    //echo "t4g4ge $value";
-    $this->setValue($value);
+    $this->errors->clearContent();
     $valid = true;
     foreach ($this->validators as $validator) {
       $v = $validator['validator'];
       $break = $validator['break'];
-      //var_dump($value);
       if (!$v->isValid($value)) {
         $valid = false;
-        //echo get_class($v) . "($value)\n";
-        //echo $v->getErrors();
-        //echo $this->getErrors();
         $this->getErrors()->merge($v->getErrors());
-        //echo "a:::".$a;
-        //echo "this:::".$this->getErrors();
-
         if ($break) {
           break;
         }
@@ -68,17 +82,10 @@ class ValidatorChain extends AbstractValidator implements Countable {
 
   /**
    * Appends a new validator to the chain
-   *
-   * @param ValidatorInterface $v new validator object
-   * @return self for PHP Method Chaining
-   */
-
-  /**
-   * Appends a new validator to the chain
    * 
    * @param  ValidatorInterface $v new validator object
    * @param  boolean $break
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendValidator(ValidatorInterface $v, $break = false) {
     $data = [

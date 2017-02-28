@@ -33,7 +33,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Modernizr related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://modernizr.com/ Modernizr
    */
   public function useModernizr() {
@@ -43,7 +43,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Any+Time AJAX Calendar Widget related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function useFastclick() {
@@ -53,7 +53,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Any+Time AJAX Calendar Widget related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function useJQuery() {
@@ -63,7 +63,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Foundation related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://foundation.zurb.com/ Foundation
    */
   public function useFoundation() {
@@ -93,7 +93,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Any+Time AJAX Calendar Widget related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function useAnyTime() {
@@ -103,7 +103,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Video.js related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideojs() {
@@ -113,7 +113,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Video.js related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function useLazyload() {
@@ -123,7 +123,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Video.js related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function usePhotoAlbum() {
@@ -133,7 +133,7 @@ class SphpMinifier extends Minifier {
   /**
    * Sets up the Foundation framework related Javascript and CSS files
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function enableSPHP() {
     $this

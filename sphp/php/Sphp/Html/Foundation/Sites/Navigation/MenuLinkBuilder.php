@@ -28,7 +28,7 @@ class MenuLinkBuilder {
   /**
    * 
    * @param  string $target
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setMenuType($target) {
     $this->menuType = $target;
@@ -47,7 +47,7 @@ class MenuLinkBuilder {
   /**
    * 
    * @param  string $target
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setDefaultTarget($target) {
     $this->defaultTarget = $target;

@@ -42,7 +42,7 @@ class DatetimeValidator extends AbstractValidator {
    * Sets the required format of the validable value
    *
    * @param string $format the required format of the validable value
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setDateTimeFormat($format) {
     $this->format = $format;

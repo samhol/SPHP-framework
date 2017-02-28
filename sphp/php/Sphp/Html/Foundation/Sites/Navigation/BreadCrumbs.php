@@ -66,7 +66,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * @param  string $href the URL of the link
    * @param  string $content link text
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -87,7 +87,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * @param  string $href the URL of the link
    * @param  string $content link text
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -100,7 +100,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * Prepends a {@link BreadCrumb} component to the container
    *
    * @param  BreadCrumb $breadcrumb component to append
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function prepend(BreadCrumb $breadcrumb) {
     $this->getInnerContainer()->prepend($breadcrumb);
@@ -111,7 +111,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    * Appends a {@link BreadCrumb} component to the container
    *
    * @param  BreadCrumb $breadcrumb component to append
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function append(BreadCrumb $breadcrumb) {
     $this->getInnerContainer()->append($breadcrumb);

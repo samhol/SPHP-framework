@@ -29,7 +29,7 @@ abstract class AbstractList extends AbstractContainerTag {
    * @param  string|URL $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */

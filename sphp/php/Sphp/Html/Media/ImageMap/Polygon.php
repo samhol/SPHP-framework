@@ -44,7 +44,7 @@ class Polygon extends EmptyTag implements AreaInterface {
    * 
    * @param  int $x the x-coordinate of the edge
    * @param  int $y the y-coordinate of the edge
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendEdge($x, $y) {
     $coords = split(',', $this->getCoordinates());

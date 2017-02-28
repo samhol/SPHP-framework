@@ -51,7 +51,7 @@ class Controller extends ContainerTag {
   /**
    * 
    * @param  Modal $modal
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function setTarget(Modal $modal) {
     //var_dump($modal->identify("id", "modal_"));

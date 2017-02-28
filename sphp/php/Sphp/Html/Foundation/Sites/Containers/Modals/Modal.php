@@ -80,7 +80,7 @@ class Modal extends ContainerTag {
    * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
    * 
    * @param  string $size the size of the component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSize($size) {
     $this->resetSize();
@@ -91,7 +91,7 @@ class Modal extends ContainerTag {
   /**
    * Resets the size settings of the component
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function resetSize() {
     $this->cssClasses()

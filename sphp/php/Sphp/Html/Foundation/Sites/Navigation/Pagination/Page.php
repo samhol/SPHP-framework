@@ -43,7 +43,7 @@ class Page extends HyperlinkListItem implements PageInterface {
   /**
    * 
    * @param  string $label
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
    */
   public function setAriaLabel($label) {

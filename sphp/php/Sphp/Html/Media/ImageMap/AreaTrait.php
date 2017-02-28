@@ -84,7 +84,7 @@ trait AreaTrait {
    * The `alt` attribute is required if the `href` attribute is present.
    *
    * @param  string $alt the alternate text for an image
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {

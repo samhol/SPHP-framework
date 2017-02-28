@@ -68,7 +68,7 @@ class FilterAggregate extends AbstractFilter implements IteratorAggregate {
    * Adds a filter to the aggregate
    * 
    * @param  callable $filter a filter to add
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function addFilter(callable $filter) {
     $this->filters[] = $filter;

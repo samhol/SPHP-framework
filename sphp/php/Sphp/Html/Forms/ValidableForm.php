@@ -60,7 +60,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
    * Sets the validator used to validate the form
    * 
    * @param FormValidator $v
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setFormValidator(FormValidator $v) {
     $this->formValidator = $v;
@@ -80,7 +80,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
   /**
    * Builds a default validator from the form inputs
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function buildDefaultValidator() {
     $inputs = $this->form->getNamedInputComponents();
@@ -97,7 +97,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
   /**
    * Validates the form data
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function validate() {
     $this->formValidator->validate($this->form->getData());
@@ -107,7 +107,7 @@ class ValidableForm implements \Sphp\Html\ContentInterface {
   /**
    * Visualizes the current form validation state
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function visualizeValidation() {
     $topics = $this->formValidator->getErrors();

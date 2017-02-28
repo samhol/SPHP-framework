@@ -48,7 +48,7 @@ class MenuLabel extends AbstractContainerComponent implements MenuItemInterface 
    * that implements magic method `__toString()` is allowed.
    *
    * @param  mixed $content the content of the component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setContent($content) {
     $this->getInnerContainer()->replaceContent($content);

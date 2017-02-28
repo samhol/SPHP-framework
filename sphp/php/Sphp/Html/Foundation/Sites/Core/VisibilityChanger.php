@@ -21,7 +21,7 @@ interface VisibilityChanger {
   /**
    * Sets the componentvisible for all screen sizes
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showForAllScreenSizes();
 
@@ -38,7 +38,7 @@ interface VisibilityChanger {
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenType the targeted screensize flags as a bitmask
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -57,7 +57,7 @@ interface VisibilityChanger {
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenType the targeted screensize flags as a bitmask
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -66,7 +66,7 @@ interface VisibilityChanger {
   /**
    * 
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function clearVisibilitySettings();
 
@@ -74,7 +74,7 @@ interface VisibilityChanger {
    * Sets/unsets the component visible only for landscape orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function hideForPortrait($hide = true);
 
@@ -82,7 +82,7 @@ interface VisibilityChanger {
    * Sets/resets the component visible only for portrait orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function hideForLandscape($hide = true);
 

@@ -62,7 +62,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    * Sets the visibility of the progress bar text
    * 
    * @param  boolean $show true for visible progress text and false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showProgressText($show = true) {
     if ($show) {
@@ -77,7 +77,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    * Sets the progress bar name
    * 
    * @param  string $name the optional bar name for build-in javascript library use
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setBarName($name) {
     $this->attrs()->set('data-sphp-progressbar-name', $name);
@@ -89,7 +89,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    * 
    * @param  int $progress (0-100) the current progress
    * @param  string $progressText the optional screenreader text describing the current progress
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setProgress($progress, $progressText = null) {
     if ($progressText === null) {

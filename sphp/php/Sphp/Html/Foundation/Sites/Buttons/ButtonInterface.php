@@ -35,7 +35,7 @@ interface ButtonInterface extends ContentInterface, ColourableInterface {
    * 
    * @param  string|null $size CSS class name defining button size. 
    *         `null` value corresponds to no explicit size definition.
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
   public function setSize($size);
@@ -45,7 +45,7 @@ interface ButtonInterface extends ContentInterface, ColourableInterface {
    * 
    *  Removes all specified size related CSS classes
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
   public function setDefaultSize();

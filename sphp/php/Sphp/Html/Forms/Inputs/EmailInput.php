@@ -39,7 +39,7 @@ class EmailInput extends TextualInput {
    * Sets whether to accept multiple email addresses or not
    *
    * @param  boolean $multiple whether to accept multiple email addresses or not
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multiple($multiple = true) {

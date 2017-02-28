@@ -32,7 +32,7 @@ trait ActivationTrait {
    * Sets or unsets the slide component as active
    *
    * @param  boolean $active true for activation and false for deactivation
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setActive($active = true) {
     if ($active) {

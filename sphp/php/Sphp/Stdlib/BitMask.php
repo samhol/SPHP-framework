@@ -45,7 +45,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function and_($bitmask) {
     $this->mask = $this->mask & self::parseFlagsToInt($bitmask);
@@ -58,7 +58,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the other bitmask
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function or_($bitmask) {
     $this->mask = $this->mask | self::parseFlagsToInt($bitmask);
@@ -71,7 +71,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function xor_($bitmask) {
     $this->mask = $this->mask ^ self::parseFlagsToInt($bitmask);
@@ -83,7 +83,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
    *
    * @param  int $index the specified index
    * @param  boolean $bit the bit value to set
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function set($index, $bit = true) {
     $value = intval(boolval($bit));
@@ -111,7 +111,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
    * **Notes:** a string <var>$bits</var> is always trated as binary number
    *
    * @param int|string|BitMask $bits the flags unset
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function clear($bits) {
     $this->mask &= ~self::parseFlagsToInt($bits);
@@ -121,7 +121,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
   /**
    * Inverts the bits from 1 to 0 and vice versa
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function invert() {
     $this->mask = ~$this->mask;

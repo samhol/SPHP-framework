@@ -55,7 +55,7 @@ interface SelectMenuInterface extends ValidableInputInterface, TraversableInterf
    * Sets the selected options of the menu object
    *
    * @param  scalar|scalar[] $selectedValues selected options of the menu object
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSelectedValues($selectedValues);
 
@@ -64,7 +64,7 @@ interface SelectMenuInterface extends ValidableInputInterface, TraversableInterf
    * 
    * @param  boolean $multiple true if multiple selections are allowed, 
    *         otherwise false
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function selectMultiple($multiple = true);
 
@@ -75,7 +75,7 @@ interface SelectMenuInterface extends ValidableInputInterface, TraversableInterf
    *  expected for size="2" and size="3".
    * 
    * @param  int $size the number of the visible {@link Option} components
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSize($size);
 }

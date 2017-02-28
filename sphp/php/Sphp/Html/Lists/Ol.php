@@ -46,7 +46,7 @@ class Ol extends AbstractList {
    * Sets or unsets the list ordering reversed
    * 
    * @param  boolean $reversed true if the list ordering is reversed, false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
   public function setReversed($reversed = true) {
@@ -61,7 +61,7 @@ class Ol extends AbstractList {
    * the {LiInterface} components in the container
    * 
    * @param  int $start the start value of the list ordering index
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
   public function setStart($start) {
@@ -90,7 +90,7 @@ class Ol extends AbstractList {
    * Sets the kind of marker used in the list
    * 
    * @param  string $type the kind of marker used in the list
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
   public function setType($type = '1') {

@@ -34,7 +34,7 @@ trait AjaxLoaderTrait {
    * @param  string $op the type of the operation
    * @param  string|URL $url the URL to which the request is sent
    * @param  string|null $container an optional DOM ID of the used portion
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function setAjaxAttrs($op, $url) {
     if ($url instanceof URL) {
@@ -51,7 +51,7 @@ trait AjaxLoaderTrait {
    * prepends the returned HTML into the object.
    *
    * @param  string|URL $url the URL to which the request is sent
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function ajaxPrepend($url) {
     return $this->setAjaxAttrs("prepend", $url);
@@ -62,7 +62,7 @@ trait AjaxLoaderTrait {
    * appends the returned HTML into the object.
    *
    * @param  string|URL $url the URL to which the request is sent
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function ajaxAppend($url) {
     return $this->setAjaxAttrs("append", $url);

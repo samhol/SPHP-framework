@@ -63,7 +63,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * Sets the database table where to insert the data
    *
    * @param  string $table an existing database table
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function table($table) {
     $this->table = $table;
@@ -74,7 +74,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * Sets the values that are to be inserted to the table
    *
    * @param  array|DbObjectInterface|\Traversable $values
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function values($values) {
     if ($values instanceof DbObjectInterface) {
@@ -97,7 +97,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * Sets the order and the names of the columns in the INSERT data
    *
    * @param  string[] $columnNames
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function columnNames($columnNames) {
     $this->columns = $columnNames;
@@ -114,7 +114,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * * 'VALUES'  : removes the new data values from the query
    *
    * @param  string $part the specified part
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function reset($part = "") {
     switch ($part) {

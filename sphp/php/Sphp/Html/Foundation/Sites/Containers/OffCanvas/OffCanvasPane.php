@@ -47,7 +47,7 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
   /**
    * 
    * @param  string $position
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function setSide($position) {
     $this->cssClasses()->lock("position-$position");
@@ -58,7 +58,7 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
   /**
    * 
    * @param  string $position
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function setPosition($position = 'fixed') {
     if ($position !== 'fixed') {

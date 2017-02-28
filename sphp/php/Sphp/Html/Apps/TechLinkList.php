@@ -33,7 +33,7 @@ class TechLinkList extends AbstractContainerComponent {
   /**
    * Creates the content of the component
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function createContent() {
     $currentUrl = URL::getCurrent()->getHtml();

@@ -120,7 +120,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *    new object must be of the same type
    * 
    * @param  AttributeInterface $attrObject
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException
    * @throws AttributeException
    */
@@ -205,7 +205,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws AttributeException if the attribute name or value is invalid
    * @throws AttributeException if the attribute value is unmodifiable
    */
@@ -234,7 +234,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
    *
    * @param  mixed[] $attrs an array of attribute name value pairs
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidAttributeException if any of the attributes is invalid
    * @throws UnmodifiableAttributeException if the value of the attribute is already locked
    */
@@ -251,7 +251,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * **IMPORTANT:** A required attribute cannot be removed but its value is still mutable
    *
    * @param  string $name the name of the required attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function demand($name) {
     if ($this->isAttributeObject($name)) {
@@ -312,7 +312,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if either the name or the value is invalid for the type of the attribute
    * @throws AttributeException if the attribute is unmodifiable
    */
@@ -346,7 +346,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws AttributeException if the attribute is unremovable
    */
   public function remove($name) {
@@ -449,7 +449,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * 
    *
    * @param  string $name the name of the identifying attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function attachIdentifier($name) {
     if ($this->isAttributeObject($name)) {

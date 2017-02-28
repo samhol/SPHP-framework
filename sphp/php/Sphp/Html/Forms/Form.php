@@ -66,7 +66,7 @@ class Form extends ContainerTag implements TraversableFormInterface {
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @see    HiddenInput
    */
   public function appendHiddenVariable($name, $value) {
@@ -81,7 +81,7 @@ class Form extends ContainerTag implements TraversableFormInterface {
    *  {@link HiddenInput} components.
    *
    * @param  string[] $vars name => value pairs
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @see    HiddenInput
    */
   public function appendHiddenVariables(array $vars) {

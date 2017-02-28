@@ -101,7 +101,7 @@ class User extends AbstractDbObject {
    * Sets the username
    *
    * @param  string $username the username
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setUsername($username) {
     $this->username = $username;
@@ -121,7 +121,7 @@ class User extends AbstractDbObject {
    * Sets the first name
    *
    * @param  string $fname the first name
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setFname($fname) {
     $this->fname = $fname;
@@ -141,7 +141,7 @@ class User extends AbstractDbObject {
    * Sets the last (family) name
    *
    * @param  string $lname the last (family) name
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setLname($lname) {
     $this->lname = $lname;
@@ -161,7 +161,7 @@ class User extends AbstractDbObject {
    * Sets the email address
    *
    * @param  string $email the email address
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setEmail($email) {
     $this->email = $email;
@@ -181,7 +181,7 @@ class User extends AbstractDbObject {
    * Sets the phonenumbers
    *
    * @param  string[] $phonenumbers the phonenumbers address
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setPhonenumbers(array $phonenumbers = null) {
     if ($phonenumbers === null) {
@@ -195,7 +195,7 @@ class User extends AbstractDbObject {
    * Sets the email address
    *
    * @param  null|string $email the email address
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function addPhonenumber($phonenumber, $type = null) {
     if ($type !== null) {
@@ -219,7 +219,7 @@ class User extends AbstractDbObject {
    * Sets geographical address
    * 
    * @param  Address $address the geographical address
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setAddress(Address $address = null) {
     $this->address = $address;
@@ -239,7 +239,7 @@ class User extends AbstractDbObject {
    * Sets the permissions of the user
    *
    * @param  null|scalar|BitMask $permissions the permissions of the user
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setPermissions($permissions = 0) {
     $this->permissions = $permissions;
@@ -259,7 +259,7 @@ class User extends AbstractDbObject {
    * Sets the hashed password of the user
    *
    * @param  null|string|Password|HashedPassword $password the password of the user
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setPassword($password = "") {
     $this->password = new HashedPassword($password);

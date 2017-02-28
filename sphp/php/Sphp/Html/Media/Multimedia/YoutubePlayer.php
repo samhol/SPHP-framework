@@ -41,7 +41,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
   /**
    * 
    * @param  string $playlistId
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function loadPlaylist($playlistId) {
     $this->getUrl()
@@ -59,7 +59,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * * `2` (default): If the player has 16:9 or 4:3 ratio, same as `1`, otherwise same as `0`.
    * 
    * @param  int $autohide the value of the autohide parameter
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function autohide($autohide = 2) {
     return $this->setParam('autohide', (int) $autohide);
@@ -77,7 +77,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * 
    * @param  int|boolean $start the start time measured from the beginning of the  
    *                     video or `false` for playing the full video
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setStartTime($start = false) {
     if ($start === false) {
@@ -103,7 +103,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * 
    * @param  int|boolean $end the end time measured from the beginning of the  
    *                     video or `false` for playing the full video
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setEndTime($end = false) {
     if ($end === false) {

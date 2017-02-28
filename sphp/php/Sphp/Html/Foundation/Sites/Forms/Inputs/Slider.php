@@ -85,7 +85,7 @@ class Slider extends AbstractSlider {
   /**
    * Sets the slider orientation to vertical
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setVertical($vertical = true) {
     if ($vertical) {
@@ -102,7 +102,7 @@ class Slider extends AbstractSlider {
    * Sets the visibility of the current slider value
    * 
    * @param  boolean $valueVisible true for visible and false for hidden
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showValue($valueVisible = true) {
     $vis = new VisibilityAdapter($this->getInnerLabel());
@@ -114,7 +114,7 @@ class Slider extends AbstractSlider {
    * Sets the description text of the slider
    * 
    * @param  string $description the description text of the slider
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setDescription($description) {
     $this->getInnerLabel()["description"] = "$description ";
@@ -125,7 +125,7 @@ class Slider extends AbstractSlider {
    * Sets the unit of the slider value
    * 
    * @param  string $unit the unit of the value
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setValueUnit($unit = "") {
     $this->getInnerLabel()["unit"] = " $unit";
@@ -186,7 +186,7 @@ class Slider extends AbstractSlider {
    * Sets whether the input must have a value or not before form submission
    * 
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setRequired($required = true) {
     return $this->getInput()->setRequired($required);

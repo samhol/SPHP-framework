@@ -76,7 +76,7 @@ abstract class AbstractTag implements TagInterface {
    * Sets the tag name of the component
    *
    * @param  string $tagName the tag name of the component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the `$tagName` is not valid
    */
   private function setTagName($tagName) {
@@ -95,7 +95,7 @@ abstract class AbstractTag implements TagInterface {
    * Sets the attribute manager attached to the component
    *
    * @param  AttributeManager $attrManager the attribute manager to set
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function setAttributeManager(AttributeManager $attrManager = null) {
     if ($attrManager === null) {

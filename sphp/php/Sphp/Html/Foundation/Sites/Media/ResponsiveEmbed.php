@@ -96,7 +96,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * Sets the actual iframe component
    * 
    * @param  IframeInterface $media iframe component
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function setIframe(IframeInterface $media) {
     $this->iframe = $media;

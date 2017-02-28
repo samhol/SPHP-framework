@@ -44,7 +44,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends Modernizr
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://modernizr.com/ Modernizr
    */
   public function appendModernizr() {
@@ -54,7 +54,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends FastClick
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   https://github.com/ftlabs/fastclick FastClick
    */
   public function appendFastclick() {
@@ -64,7 +64,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends the jQuery JavaScript file
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://jquery.com/ jQuery
    */
   public function appendJQuery() {
@@ -74,7 +74,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for Foundation 6
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://foundation.zurb.com/ Foundation
    */
   public function appendFoundation() {
@@ -85,7 +85,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for Any+Time AJAX Calendar Widget
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function appendAnyTime() {
@@ -97,7 +97,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for Video.js
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendVideojs() {
@@ -107,7 +107,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for ZeroClipboard
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://zeroclipboard.org/ ZeroClipboard
    */
   public function appendZeroClipboard() {
@@ -119,7 +119,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for Lazy Load XT
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendLazyload() {
@@ -131,7 +131,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for build-in Photoalbum
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendPhotoAlbum() {
@@ -141,7 +141,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for build-in Photoalbum
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendIonRangeSlider() {
@@ -153,7 +153,7 @@ class SphpScriptsLoader extends ScriptsContainer {
   /**
    * Appends JavaScript files for the entire SPHP framework
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendSPHP() {
     $this->appendFoundation()

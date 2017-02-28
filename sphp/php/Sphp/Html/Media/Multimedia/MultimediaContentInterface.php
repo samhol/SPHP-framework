@@ -21,7 +21,7 @@ interface MultimediaContentInterface {
    * Sets the path to the media source
    *
    * @param  string|URL $src the path to the media source
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setSrc($src);
 

@@ -38,7 +38,7 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * Sets the table(s) which are updated
    *
    * @param  string $table the table to update
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function table($table) {
     $this->table = $table;
@@ -49,7 +49,7 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * Sets the updating data
    *
    * @param  mixed[]|DbObjectInterface $data new data
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function set($data) {
     if ($data instanceof DbObjectInterface) {
@@ -70,7 +70,7 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * * 'FROM'
    *
    * @param  string $part the specified part
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function reset($part = self::ALL) {
     $types = new BitMask($part);

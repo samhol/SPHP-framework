@@ -69,7 +69,7 @@ class Tooltip implements ContentInterface {
   /**
    * 
    * @param  string $tip the tip content
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setTip($tip) {
     $this->toolTipped->attrs()->set('title', $tip);

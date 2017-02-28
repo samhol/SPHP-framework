@@ -74,7 +74,7 @@ class ExceptionCallout extends Callout {
    * Sets the visibility of the file
    * 
    * @param  boolean $show true for visible file
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showInitialFile($show = true) {
     $this->showFile = $show;
@@ -85,7 +85,7 @@ class ExceptionCallout extends Callout {
    * Sets the trace visibility
    * 
    * @param  boolean $show true for visible trace  
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showTrace($show = true) {
     $this->showTrace = $show;
@@ -97,7 +97,7 @@ class ExceptionCallout extends Callout {
    * Sets the previous exception visibility
    * 
    * @param  boolean $show true for visible previous exception
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function showPreviousException($show = true) {
     $this->showPreviousException = $show;
@@ -119,7 +119,7 @@ class ExceptionCallout extends Callout {
   /**
    * Builds the previous {@link \Exception} view
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   private function buildPreviousException() {
     $prev = $this->exception->getPrevious();

@@ -33,7 +33,7 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
    * Inserts a new message to the collection
    *
    * @param  MessageInterface $m
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function insert(MessageInterface $m);
 
@@ -41,7 +41,7 @@ interface MessageCollectionInterface extends Traversable, TranslatorAwareInterfa
    * Merges given collection to this collection
    *
    * @param  MessageCollectionInterface $m
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function merge(MessageCollectionInterface $m);
 }

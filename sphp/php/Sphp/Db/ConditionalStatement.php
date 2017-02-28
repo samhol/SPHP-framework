@@ -49,7 +49,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * The WHERE clause is used to filter records
    *
    * @param  Conditions $c
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setConditions(Conditions $c) {
     $this->where = $c;
@@ -86,7 +86,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Resets the specific part of the query or the entire query if no parameter is given
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function reset() {
     $this->where()->reset();

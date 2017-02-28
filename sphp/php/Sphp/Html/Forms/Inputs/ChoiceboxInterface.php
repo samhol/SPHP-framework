@@ -21,7 +21,7 @@ interface ChoiceboxInterface extends InputInterface {
    * Checks/unchecks the choise
    *
    * @param  boolean $checked true if chosen, false otherwise
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked($checked = true);

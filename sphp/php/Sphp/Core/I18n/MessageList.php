@@ -80,7 +80,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
     $output = "";
     if ($this->count() > 0) {
       $output = self::class . ":\n";
-      foreach (clone $this->messages as $message) {
+      foreach ($this->messages as $message) {
         $output .= "\t" . $message . "\n";
       }
     } else {
@@ -118,7 +118,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    *
    * @param  string $messageText the message text
    * @param  scalar[] $args arguments
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendMessage($messageText, $args = null) {
     $m = (new Message($messageText, $args, false, $this->getTranslator()));
@@ -129,26 +129,25 @@ class MessageList implements Iterator, MessageCollectionInterface {
   /**
    * Inserts a messages to the container
    *
-   * @param  MessageInterface $messages the message text
-   * @param  int $priority the priority of the message
-   * @return self for PHP Method Chaining
+   * @param  MessageInterface $message the message text
+   *  @return self for a fluent interface
    */
-  public function insert(MessageInterface $messages) {
-    $messages->setLang($this->getLang());
-    $this->messages->insert($messages);
+  public function insert(MessageInterface $message) {
+    $message->setLang($this->getLang());
+    $this->append($message);
     return $this;
   }
 
   /**
    * Appends new messages to the container
    *
-   * @param  MessageInterface $messages the message text
+   * @param  MessageInterface $message the message text
    * @param  int $priority the priority of the message
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
-  public function append(MessageInterface $messages) {
-    $messages->setLang($this->getLang());
-    $this->messages->insert($messages);
+  public function append(MessageInterface $message) {
+    $message->setLang($this->getLang());
+    $this->messages[] = $message;
     return $this;
   }
   
@@ -156,7 +155,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * Merges given collection to this container
    *
    * @param  MessageCollectionInterface $m
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function merge(MessageCollectionInterface $m) {
     foreach ($m as $message) {
@@ -201,7 +200,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
   /**
    * Removes elements from the container
    *
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function clearContent() {
     $this->messages = [];
@@ -225,7 +224,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
   }
 
   /**
-   * Return the key of the current element
+   * Return the key of the current message
    * 
    * @return mixed the key of the current element
    */
@@ -234,7 +233,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
   }
 
   /**
-   * Rewinds the Iterator to the first element
+   * Rewinds the Iterator to the first message
    */
   public function rewind() {
     reset($this->messages);

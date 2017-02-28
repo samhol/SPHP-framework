@@ -67,7 +67,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * Merges given {@link TopicList} to this container
    *
    * @param  TopicList $tc the container to merge
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function merge(TopicList $tc) {
     foreach ($tc->getTopics() as $topic => $cont) {
@@ -156,7 +156,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    *  The optional `$topic` attribute narrows down the clearing to the messages of given target element.
    *
    * @param string $topic optional topic name
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function clearContent($topic = null) {
     if ($topic === null) {
@@ -243,7 +243,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    *
    * @param  string $topic the message topic
    * @param  string|MessageInterface|MessageCollectionInterface $m message or message list
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
@@ -266,7 +266,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    *
    * @param  string $topic the message topic
    * @param  MessageCollectionInterface $m message or message list
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @uses   self::offsetSet()
    * @throws InvalidArgumentException if the type of the inserted data is illegal
    */
@@ -279,7 +279,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * Removes a message topic from the container
    *
    * @param  string $topic the message topic to be removed
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function offsetUnset($topic) {
     if ($this->offsetExists($topic)) {

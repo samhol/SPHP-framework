@@ -97,7 +97,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   /**
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setErrorField($errorMessage) {
     $this->errorField->replaceContent($errorMessage);
@@ -150,7 +150,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * Sets the visible contents of the input label
    * 
    * @param  mixed $label the contents of the label 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setLabel($label) {
     $this->label->offsetSet('labelText', $label);
@@ -161,7 +161,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * Sets the visible contents of the helpaer label
    * 
    * @param  mixed $text the contents of the helpaer
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function setHelperText($text) {
     $this->helper = new Paragraph($text);

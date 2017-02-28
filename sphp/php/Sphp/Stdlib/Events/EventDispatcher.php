@@ -132,7 +132,7 @@ class EventDispatcher implements EventDispatcherInterface {
    * @param  string $name the name of the event
    * @param  mixed $subject subject the subject which dispached this event
    * @param  mixed $data the data dispatched with this event
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function triggerEvent($name, $subject = null, $data = null) {
     $event = new Event($name, $subject, $data);

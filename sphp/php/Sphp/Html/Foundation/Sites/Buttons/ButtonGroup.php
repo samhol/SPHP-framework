@@ -62,7 +62,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  string $href the URL of the link
    * @param  string $content the content of the button
    * @param  string $target the value of the target attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -77,7 +77,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @param  string $type the value of type attribute
    * @param  string $name the value of name attribute
    * @param  string $value the value of value attribute
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
@@ -91,7 +91,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Appends a button to the group
    *
    * @param  ButtonInterface $button the appended button
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendButton(ButtonInterface $button) {
     $this->getInnerContainer()->append($button);
@@ -102,7 +102,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Appends aa array of buttons to the group
    *
    * @param  ButtonInterface[] $buttons the appended buttons
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   public function appendButtons(array $buttons) {
     foreach ($buttons as $button) {
@@ -125,7 +125,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * 
    * @precondition `$screenSize` == `small|medium|all`
    * @param  string $screenSize the targeted screensize
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function stackFor($screenSize = 'all') {
@@ -146,7 +146,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * 
    * @precondition `$screenSize` == `small|medium|all`
    * @param  string $screenSize the targeted screensize
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function unStackFor($screenSize = 'all') {

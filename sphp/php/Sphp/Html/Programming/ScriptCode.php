@@ -45,7 +45,7 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * Specifies the MIME type of the script
    *
    * @param  string $type the value of the type attribute (mime-type)
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType($type) {

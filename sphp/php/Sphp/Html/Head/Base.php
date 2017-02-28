@@ -47,7 +47,7 @@ class Base extends EmptyTag implements HeadComponentInterface {
    * Sets the href attribute (The URL of the link).
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
   public function setHref($href) {
@@ -64,7 +64,7 @@ class Base extends EmptyTag implements HeadComponentInterface {
    *
    *
    * @param  string $target target attribute's value
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function setTarget($target) {

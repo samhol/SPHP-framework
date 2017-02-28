@@ -46,7 +46,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
   /**
    * Resets the validator to for revalidation
    * 
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function reset() {
     $this->errors->clearContent();
@@ -73,7 +73,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
    * 
    * @param  string $property the name of the object value (property)
    * @param  ValidatorInterface $validator validator object
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function set($property, ValidatorInterface $validator) {
     $this->validators->offsetSet($property, $validator);
@@ -94,7 +94,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
    * Removes the validator object from the named object value (property)
    *
    * @param string $property the name of the object value (property)
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    */
   protected function remove($property) {
     $this->validators->offsetUnset($property);

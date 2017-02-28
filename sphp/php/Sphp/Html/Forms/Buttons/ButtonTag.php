@@ -55,7 +55,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * Returns the value of the value attribute
    *
    * @return string napin arvo
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
   public function getSubmitValue() {
@@ -66,7 +66,7 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * Sets the value of the value attribute
    *
    * @param  string $value napin arvo
-   * @return self for PHP Method Chaining
+   *  @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    */
   public function setValue($value) {
