@@ -23,7 +23,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * Allows or disallows the fullscreen mode of the video 
    * 
    * @param  boolean $allow
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function allowFullScreen($allow = true);
 
@@ -31,7 +31,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * Set autoplaying on or off
    * 
    * @param  boolean $autoplay true for on and false for off
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function autoplay($autoplay = true);
 
@@ -39,7 +39,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * Setx the looping on or off
    * 
    * @param  boolean $loop true for on and false for off
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function loop($loop = true);
 
@@ -61,7 +61,7 @@ interface VideoPlayerInterface extends IframeInterface {
    * 
    * @param  string $name the name of the parameter
    * @param  scalar $value the value of the parameter
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setParam($name, $value);
 }

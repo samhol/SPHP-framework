@@ -87,7 +87,7 @@ class WrappingContainer extends Container {
    * and then appends the result to the container
    *
    * @param  mixed $content added content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($content) {
@@ -104,7 +104,7 @@ class WrappingContainer extends Container {
    * and then prepends the result to the container
    *
    * @param  mixed $content added content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function prepend($content) {
     parent::prepend($this->wrap($content));

@@ -35,7 +35,7 @@ interface AjaxLoaderInterface {
    * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
    * @param  string|URL $url the URL to which the request is sent
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function ajaxPrepend($url);
 
@@ -46,7 +46,7 @@ interface AjaxLoaderInterface {
    * This method overrides all previous calls of {@link AjaxLoaderInterface} methods.
    *
    * @param  string|URL $url the URL to which the request is sent
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function ajaxAppend($url);
 }

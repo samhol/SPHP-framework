@@ -83,7 +83,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Sets the {@link Legend} of the fieldset component
    *
    * @param  string|Legend $legend the legend of the fielset component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
    */
   public function setLegend($legend) {
@@ -109,7 +109,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * 
    * @param  Choicebox $input
    * @param  mixed|Label $label
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function setInput(Choicebox $input, $label) {
     $index = $input->getSubmitValue();
@@ -132,7 +132,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Sets new options to the form component
    *
    * @param  string[] $values
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   abstract public function setOption($value, $label, $checked = false);
 
@@ -150,7 +150,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Sets the value of name attribute
    *
    * @param  string $name the value of the name attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function setName($name) {
@@ -180,7 +180,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Disabled input components in a form will not be submitted.
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function disable($disabled = true) {
     return $this->setAttr("disabled", $disabled);
@@ -199,7 +199,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Sets the current submission set of the input component
    *
    * @param  string|string[] $value the current submission set of the input component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setValue($value) {
     if (!is_array($value)) {

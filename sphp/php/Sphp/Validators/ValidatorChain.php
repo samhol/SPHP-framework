@@ -85,7 +85,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * 
    * @param  ValidatorInterface $v new validator object
    * @param  boolean $break
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function appendValidator(ValidatorInterface $v, $break = false) {
     $data = [

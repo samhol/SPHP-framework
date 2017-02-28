@@ -100,7 +100,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * Specifies the MIME type of the script
    *
    * @param  string $language the language of the document 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage($language) {
@@ -111,7 +111,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * Sets the title of the html page
    *
    * @param  string|Title $title the title of the html page
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setDocumentTitle($title) {
     $this->head->setDocumentTitle($title);
@@ -121,7 +121,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   /**
    * Sets up the SPHP framework related Javascript and CSS files
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function enableSPHP() {
     $this->head->enableSPHP();
@@ -154,7 +154,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   /**
    * 
    * 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function documentClose() {
     echo $this->getDocumentClose();

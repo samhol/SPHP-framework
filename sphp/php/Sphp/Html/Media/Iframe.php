@@ -47,7 +47,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * Sets the value of the name attribute
    *
    * @param  string $name the value of the name attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function setName($name) {
@@ -72,7 +72,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * **Note:** Limited browser support.
    *
    * @param  string $seamless the value of the seamless attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setSeamless($seamless = true) {
@@ -100,7 +100,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
    * * The sandbox attribute is new in HTML5.
    *
    * @param  string $sandbox the value of the sandbox attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/TAGS/att_iframe_sandbox.asp sandbox attribute
    */
   public function setSandbox($sandbox) {

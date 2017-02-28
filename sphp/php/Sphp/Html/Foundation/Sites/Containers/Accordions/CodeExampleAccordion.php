@@ -104,7 +104,7 @@ class CodeExampleAccordion extends Accordion {
    * @param string|boolean $highlightOutput the language name of the output code 
    *        or false if highlighted output code should not be visible
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function fromFile($path, $highlightOutput = false, $outputAsHtmlFlow = true) {
     $this->path = $path;
@@ -120,7 +120,7 @@ class CodeExampleAccordion extends Accordion {
   /**
    * 
    * @param  mixed $lang
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function showHighlightedOutput($lang) {
     $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);
@@ -142,7 +142,7 @@ class CodeExampleAccordion extends Accordion {
   /**
    * 
    * @param  boolean $show true for executed HTML result or false for no execution
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function showOutputAsHtmlFlow($show = true) {
     $outputPaneVisibility = new VisibilityAdapter($this->outputPane);
@@ -181,7 +181,7 @@ class CodeExampleAccordion extends Accordion {
    * Sets the heading of the example PHP code component
    *
    * @param  string $heading the heading of the example PHP code
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function useDefaultTitles() {
     $this->setExampleHeading('PHP code')
@@ -194,7 +194,7 @@ class CodeExampleAccordion extends Accordion {
    * Sets the heading of the example PHP code component
    *
    * @param  string $heading the heading of the example PHP code
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setExampleHeading($heading) {
     $this->codePane->setPaneTitle($heading);
@@ -205,7 +205,7 @@ class CodeExampleAccordion extends Accordion {
    * Sets the the heading of the output component
    *
    * @param  string $title the heading of the output component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setOutputSyntaxPaneTitle($title) {
     $this->outputSyntaxPane->setPaneTitle($title);
@@ -216,7 +216,7 @@ class CodeExampleAccordion extends Accordion {
    * Sets the the heading of the output component
    *
    * @param  string $title the heading of the output component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setOutputPaneTitle($title) {
     $this->outputPane->setPaneTitle($title);
@@ -229,7 +229,7 @@ class CodeExampleAccordion extends Accordion {
    *
    * @param  boolean $show true for highlighted program code
    *         presentation, false for html presentation
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function showOutputSyntax($show = true) {
     $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);

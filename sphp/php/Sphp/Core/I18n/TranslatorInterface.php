@@ -23,7 +23,7 @@ interface TranslatorInterface {
   /**
    * 
    * @param string $lang
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setLang($lang);
 

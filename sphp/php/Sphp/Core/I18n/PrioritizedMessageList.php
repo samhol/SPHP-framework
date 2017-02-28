@@ -121,7 +121,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @param  string $messageText the message text
    * @param  scalar[] $args arguments
    * @param  int $priority the priority of the message
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function insertMessage($messageText, $args = null, $priority = 0) {
     $m = (new Message($messageText, $args, false, $this->getTranslator()));
@@ -134,7 +134,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    *
    * @param  MessageInterface $messages the message text
    * @param  int $priority the priority of the message
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function insert(MessageInterface $messages, $priority = 0) {
     $messages->setLang($this->getLang());
@@ -146,7 +146,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * Merges given collection to this container
    *
    * @param  MessageCollectionInterface $m
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function merge(MessageCollectionInterface $m) {
     foreach ($m as $message) {
@@ -204,7 +204,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
   /**
    * Removes elements from the container
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function clearContent() {
     $this->messages = new StablePriorityQueue();

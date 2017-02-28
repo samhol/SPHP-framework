@@ -65,7 +65,7 @@ class PatternValidator extends AbstractValidator {
    *
    * @param string $pattern regular expression pattern to validate against
    * @param string|Message $errorMessage error message corresponding to the pattern
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setErrorMessage($errorMessage) {
     if (!($errorMessage instanceof Message)) {
@@ -83,7 +83,7 @@ class PatternValidator extends AbstractValidator {
    *  data is valid.
    *
    * @param string $pattern regular expression pattern to validate against
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setPattern($pattern) {
     $this->pattern = $pattern;

@@ -20,7 +20,7 @@ interface DBConnectorInterface {
   /**
    * Obtains the {@link \PDO} object for default database connection
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws \PDOException if no database connection was established
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
@@ -32,7 +32,7 @@ interface DBConnectorInterface {
    * @param  string $dsn the Data Source Name
    * @param  string $username the user name for the DSN string
    * @param  string $password the password for the DSN string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws \PDOException if there is no database connection or query execution fails
    * @uses   PDOConnector
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
@@ -44,7 +44,7 @@ interface DBConnectorInterface {
    * Sets the {@link \PDO} object for database connection
    *
    * @param  \PDO $pdo the database connection
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws \PDOException if no database connection was established
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */

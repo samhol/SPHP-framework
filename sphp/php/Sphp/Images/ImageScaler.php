@@ -90,7 +90,7 @@ class ImageScaler {
    * Scales the image to fit the given box (width, height), constraining proportions
    * 
    * @param  Size|Box $size the size to fit
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws \InvalidArgumentException
    */
   public function scaleToFit($size) {
@@ -152,7 +152,7 @@ class ImageScaler {
    * 
    * @precondition $height >= 0
    * @param  int $height the new height
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function heighten($height) {
     $this->box = $this->box->heighten($height);
@@ -164,7 +164,7 @@ class ImageScaler {
    * 
    * @precondition $width >= 0
    * @param  int $width the new height
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function widen($width) {
     $this->box = $this->box->widen($width);
@@ -175,7 +175,7 @@ class ImageScaler {
    * Resizes the image to the given dimensions (width, height)
    * 
    * @param  Size|Box $size the size to fit
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function resize($size) {
     $this->box = $this->sizeToBox($size);
@@ -186,7 +186,7 @@ class ImageScaler {
    * Scales the image by multiplying each side by the given ratio
    * 
    * @param  float $ratio the multiplying ratio
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function scale($ratio) {
     if ($ratio != 1 && $ratio > 0 && $ratio <= 2) {
@@ -232,7 +232,7 @@ class ImageScaler {
    *
    * @param  string $path the file path
    * @param  array  $options the options used on save
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function save($path, array $options = []) {
     $this->createImage()->save($path, $options);
@@ -245,7 +245,7 @@ class ImageScaler {
    * * The target file extension is used to determine file format
    * * jpg, jpeg, gif, png, wbmp and xbm are supported
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function saveToCache() {
     $dir = $this->getCacheDir();

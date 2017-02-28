@@ -22,7 +22,7 @@ interface QueueInterface {
    * Adds a new item to the end of the queue
    *
    * @param  mixed $value the new item to add
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function enqueue($value);
 

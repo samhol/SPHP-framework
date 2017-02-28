@@ -61,7 +61,7 @@ class TitleBarContentArea extends BarContentArea {
    * Sets and Returns the title area component
    *
    * @param  MenuButton $btn the menu controller button
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setMenuButton(MenuButton $btn) {
     $this->menuButton = $btn;
@@ -72,7 +72,7 @@ class TitleBarContentArea extends BarContentArea {
    * Sets the title of the Title Bar area component
    *
    * @param  mixed $title the title of the Title Bar area component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setTitle($title) {
     $this->title = new Span($title);

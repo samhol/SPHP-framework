@@ -41,7 +41,7 @@ class ExceptionLogger implements Observer {
   /**
    * 
    * @param  string $destination
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setDestination($destination) {
     $this->destination = $destination;

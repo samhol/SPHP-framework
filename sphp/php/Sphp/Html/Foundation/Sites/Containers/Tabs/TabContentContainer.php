@@ -51,7 +51,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * Appends the given tab instance to the container
    * 
    * @param  TabInterface $tab the tab instance
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append(TabInterface $tab) {
     $this->getInnerContainer()->append($tab);
@@ -107,7 +107,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
   /**
    * 
    * @param  boolean $match
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function matchHeight($match = true) {
     $value = $match ? 'true' : 'false';
@@ -139,7 +139,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * 
    * @param  int $index the index of the tab
    * @throws OutOfBoundsException if the index is not set
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setActive($index) {
     if (!$this->hasTab($index)) {

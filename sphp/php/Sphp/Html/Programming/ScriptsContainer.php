@@ -50,7 +50,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
    * appends a {@link ScriptInterface} component to the container
    * 
    * @param  ScriptInterface $script
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append(ScriptInterface $script) {
     if ($script instanceof ScriptSrc) {
@@ -66,7 +66,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
    * 
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
@@ -79,7 +79,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
    * Appends an {@link ScriptCode} containing script commands
    * 
    * @param  string $code script commands
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function appendCode($code) {
     $this->append(new ScriptCode($code));

@@ -75,7 +75,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  mixed $value
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setValue($value) {
     $this->reset();
@@ -89,7 +89,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  string $msg the error message text
    * @param  scalar[] $args arguments
    * @param  int $priority the priority of the message
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function createErrorMessage($msg, array $args = [], $priority = 0) {
     //echo "createErrorMessage:$msg";
@@ -102,7 +102,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param  Message $msg the error message text
    * @param  int $priority the priority of the message
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function addErrorMessage(Message $msg, $priority = 0) {
     //echo "addErrorMessage:$msg";
@@ -113,7 +113,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * Resets the validator to for revalidation
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function reset() {
     $this->errors->clearContent();

@@ -46,7 +46,7 @@ class FormRow extends AbstractRow {
    * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
    * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function appendInput(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
     if ($input instanceof NonVisualContentInterface) {

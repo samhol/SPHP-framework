@@ -51,7 +51,7 @@ class Map extends AbstractContainerComponent {
    * The required name attribute specifies the name of an image-map.
    *  
    * @param  string $name the value of the name attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_map_name.asp name attribute
    */
   public function setName($name) {
@@ -73,7 +73,7 @@ class Map extends AbstractContainerComponent {
    * Sets (replaces) one of the video sources
    *
    * @param  AreaInterface $area the given part of a table
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append(AreaInterface $area) {
     $this->getInnerContainer()->append($area);

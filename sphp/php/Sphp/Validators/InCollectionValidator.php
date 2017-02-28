@@ -61,7 +61,7 @@ class InCollectionValidator extends AbstractValidator {
    * Sets the range of the valid string length
    *
    * @param mixed[] $haystack the haystack
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setHaystack(array $haystack) {
     $this->haystack = $haystack;
@@ -75,7 +75,7 @@ class InCollectionValidator extends AbstractValidator {
   /**
    * 
    * @param \Sphp\Validators\type $mode
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setMode(type $mode) {
     $this->mode = $mode;

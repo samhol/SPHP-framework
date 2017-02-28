@@ -56,7 +56,7 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
    * Sets the media type of the media resource
    *
    * @param  string $type the media type of the media resource
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function setType($type) {

@@ -52,7 +52,7 @@ class StringLengthValidator extends AbstractValidator {
    *
    * @param int $min minimum length of the valid string
    * @param int $max maximum length of the valid string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRangeValidation($min, $max) {
     $this->min = intval($min);
@@ -76,7 +76,7 @@ class StringLengthValidator extends AbstractValidator {
    * as a lower bound validator
    * 
    * @param  int $min minimum length of the valid string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setLowerBoundValidation($min) {
     $this->min = intval($min);
@@ -100,7 +100,7 @@ class StringLengthValidator extends AbstractValidator {
    * as a upper bound validator
    * 
    * @param int $max maximum length of the valid string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setUpperBoundValidation($max) {
     $this->min = -1;

@@ -105,7 +105,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * Appends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append($column) {
     $this->getInnerContainer()->append($column);
@@ -131,7 +131,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @param  int|boolean $l number of columns in a row on large screens (1-8) or false for inheritance
    * @param  int|boolean $xl number of columns in a row on x-large screens (1-8) or false for inheritance
    * @param  int|boolean $xxl number of columns in a row on xx-large screen)s (1-8) or false for inheritance
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setBlockGrids($s, $m = false, $l = false, $xl = false, $xxl = false) {
     $this->setBlockGrid($s, "small")
@@ -155,7 +155,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  int|boolean $num number of columns in a row (1-8) or false for inheritance
    * @param  string $screenSize the target screen size
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setBlockGrid($num, $screenSize) {
     if ($num > self::MAX_GRID) {
@@ -202,7 +202,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    *
    * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function unsetBlockGrid($screenSize) {
     $this->cssClasses()->remove(static::createClasses($screenSize));

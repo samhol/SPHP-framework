@@ -39,7 +39,7 @@ trait ContainerComponentTrait {
    * represents.
    *
    * @param  mixed|mixed[] $content added content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($content) {
@@ -63,7 +63,7 @@ trait ContainerComponentTrait {
    * **Note:** the numeric keys of the content will be renumbered starting from zero
    *
    * @param  mixed|mixed[] $content added content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function prepend($content) {
     $this->getInnerContainer()->prepend($content);
@@ -139,7 +139,7 @@ trait ContainerComponentTrait {
    * So also an object of any class that implements magic method `__toString()` is allowed.
    *
    * @param  mixed $content new content
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function replaceContent($content) {

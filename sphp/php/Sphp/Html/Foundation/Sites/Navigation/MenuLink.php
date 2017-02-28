@@ -61,7 +61,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    * Sets the hyperlink component as active if the URL matches with the
    *  current URL of the page
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function activate() {
     if ($this->urlEquals(URL::getCurrent())) {
@@ -76,7 +76,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    * Sets or unsets the hyperlink component as active
    *
    * @param  boolean $active true for activation and false for deactivation
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setActive($active = true) {
     if ($active) {

@@ -34,7 +34,7 @@ class Checkboxes extends Choiceboxes {
    * Sets the value of name attribute
    *
    * @param  string $name the value of the name attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function setName($name) {
@@ -62,7 +62,7 @@ class Checkboxes extends Choiceboxes {
    * 
    * @param  boolean $required true if an {@link Checkbox} component must
    *         be checked before form submission, otherwise false
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRequired($required = true) {
     return $this->setAttr('data-required', $required);

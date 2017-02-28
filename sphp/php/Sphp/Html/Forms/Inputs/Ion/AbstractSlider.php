@@ -54,7 +54,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the length of the slider step
    *
    * @param  int $step the length of the slider step
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws InvalidArgumentException if the step value is below zero
    */
   public function setStepLength($step = 1) {
@@ -74,7 +74,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    *
    * @param  int $min the start point
    * @param  int $max the end point
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRange($min, $max) {
     $this->setMin($min)->setMax($max);
@@ -86,7 +86,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    *
    * @param  int $start the start point
    * @param  int $end the end point
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setMin($start) {
     $this->attrs()->set('data-min', $start);
@@ -97,7 +97,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the range of the values on the slider
    *
    * @param  int $end the end point
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setMax($end) {
     $this->attrs()->set('data-max', $end);
@@ -108,7 +108,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the unit of the slider value
    * 
    * @param  boolean $grid the unit of the value
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function useGrid($grid = true) {
     $this->attrs()->set('data-grid', $grid ? 'true' : 'false');
@@ -119,7 +119,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the number of grid units
    * 
    * @param  int $num the number of grid units
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setNumberOfGridUnits($num = 4) {
     $this->attrs()->set('data-grid-num', $num);
@@ -130,7 +130,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the prefix for values
    * 
    * @param  string $prefix the prefix for values
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setPrefix($prefix) {
     $this->attrs()->set('data-prefix', $prefix);
@@ -141,7 +141,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * Sets the postfix for values
    * 
    * @param  string $postfix the postfix for values
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setPostfix($postfix) {
     $this->attrs()->set('data-postfix', $postfix);

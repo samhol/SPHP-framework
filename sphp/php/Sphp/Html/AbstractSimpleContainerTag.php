@@ -63,7 +63,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
    * Sets the content of the component
    * 
    * @param  mixed $content the inner content container of the component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function setContent($content = null) {
     $this->content = $content;

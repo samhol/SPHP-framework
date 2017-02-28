@@ -97,7 +97,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @param  mixed $offset the offset key
    * @param  mixed $value the value to set
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function offsetSet($offset, $value) {
     if (is_null($offset)) {
@@ -112,7 +112,7 @@ class Collection implements Iterator, CollectionInterface {
    * Unset the item at a given offset
    *
    * @param  mixed $offset the offset key
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function offsetUnset($offset) {
     if ($this->offsetExists($offset)) {
@@ -149,7 +149,7 @@ class Collection implements Iterator, CollectionInterface {
    * Merge the collection with the given items
    *
    * @param  mixed $items
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function merge($items) {
     $this->items = array_merge($this->items, $this->getArrayableItems($items));
@@ -187,7 +187,7 @@ class Collection implements Iterator, CollectionInterface {
   /**
    * Clears all stored properties
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function clear() {
     $this->items = [];

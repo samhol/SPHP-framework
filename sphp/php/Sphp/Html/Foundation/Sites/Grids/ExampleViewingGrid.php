@@ -63,7 +63,7 @@ class ExampleViewingGrid extends AbstractComponent implements SyntaxHighlighterI
    * 
    * @param  int $syntaxSize
    * @param  string $screen
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRatio($syntaxSize, $screen) {
     if ($syntaxSize < 12) {

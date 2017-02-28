@@ -87,7 +87,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Sets the default pattern for the Aria label of each pagination link
    *
    * @param  string $format the format string containing 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setLinkAriaLabelPattern($format) {
     $this->linkLabelPattern = $format;
@@ -111,7 +111,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * * Only used if the `href` attribute is present.
    *
    * @param  string $target the value of the target attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget($target) {
@@ -125,7 +125,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * 
    * @param  int $index
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCurrent($index) {
     if (array_key_exists($index, $this->pages)) {
@@ -144,7 +144,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * 
    * @param  int $range
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRange($range) {
     $this->range = $range;
@@ -154,7 +154,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * 
    * @param  string|string[] $urls
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function addUrls($urls) {
     if (is_array($urls)) {

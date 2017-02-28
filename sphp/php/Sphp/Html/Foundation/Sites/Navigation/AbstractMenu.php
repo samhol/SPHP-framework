@@ -39,7 +39,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
   /**
    * 
    * @param  string $target
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setDefaultTarget($target) {
     $this->defaultTarget = $target;
@@ -54,7 +54,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * Appends a menu item object to the menu
    *
    * @param  MenuItemInterface $item
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append(MenuItemInterface $item) {
     $this->getInnerContainer()->append($item);
@@ -67,7 +67,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * @param  string|URL $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -96,7 +96,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * Appends a {@link MenuLabel} text component to the menu
    *
    * @param  mixed|MenuLabel $text 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function appendText($text) {
     if (!($text instanceof MenuLabel)) {
@@ -128,7 +128,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * Sets or unsets the menu as active
    *
    * @param  boolean $active true for activation and false for deactivation
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setActive($active = true) {
     if ($active) {

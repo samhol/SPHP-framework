@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib;
 
 use DateTimeZone;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Representation of date and time
@@ -66,17 +67,17 @@ class Datetime extends \DateTime implements Comparable {
   /**
    * Compares this datetime object to another one
    *
-   * 1. RESULT == 1: $other->getTimestamp() &lt; $this->getTimestamp()
-   * 2. RESULT == -1: $other->getTimestamp() &gt; $this->getTimestamp()
-   * 3. RESULT == 0: $other->equals($this)
+   * @postcondition RESULT == 1: $other->getTimestamp() &lt; $this->getTimestamp()
+   * @postcondition RESULT == -1: $other->getTimestamp() &gt; $this->getTimestamp()
+   * @postcondition RESULT == 0: $other->equals($this)
    * 
    * @param  mixed $other compared object
    * @return int result of the comparison
-   * @throws \InvalidArgumentException if the <var>$other</var> is not instance of {@link \DateTime}
+   * @throws InvalidArgumentException if the <var>$other</var> is not instance of {@link \DateTime}
    */
   public function compareTo($other) {
     if (!($other instanceof Datetime)) {
-      throw new \InvalidArgumentException('Compared instance mustbe of type ' . Datetime::class);
+      throw new InvalidArgumentException('Compared instance mustbe of type ' . Datetime::class);
     }
     if ($this->equals($other)) {
       return 0;

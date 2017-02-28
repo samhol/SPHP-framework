@@ -26,7 +26,7 @@ interface ScriptInterface extends ComponentInterface, HeadComponentInterface {
    * Specifies the MIME type of the script
    *
    * @param  string $type the value of the type attribute (mime-type)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType($type);

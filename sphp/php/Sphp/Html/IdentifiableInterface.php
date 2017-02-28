@@ -28,7 +28,7 @@ interface IdentifiableInterface {
    * @param  string $identityName the name of the identity attribute
    * @param  string $prefix optional prefix of the identity value
    * @param  int $length the length of the identity value
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify($identityName = 'id', $prefix = 'id', $length = 16);

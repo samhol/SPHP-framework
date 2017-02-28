@@ -34,7 +34,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    *  **Preconditions:** <var>$size > 0</var>
    *
    * @param  int $size the value of the size attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    */
   public function setSize($size);
@@ -53,7 +53,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    *  **Preconditions:** <var>$maxlength > 0</var>
    *
    * @param  int $maxlength the value of the maxlength attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
   public function setMaxlength($maxlength);
@@ -69,7 +69,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    *  <var>text, search, url, tel, email, and password</var>.
    *
    * @param  string $placeholder the value of the placeholder attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
    */
   public function setPlaceholder($placeholder);
@@ -86,7 +86,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    *   <var>text, search, url, tel, email, password, datepickers, range, and color</var>.
    *
    * @param  boolean $allow (allow the browser to predict the value)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
   public function autocomplete($allow = true);

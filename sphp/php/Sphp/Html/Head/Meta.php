@@ -207,7 +207,7 @@ class Meta extends EmptyTag implements MetaInterface {
    *
    * @param  string $http_equiv provides an HTTP header for the information/value of the content attribute
    * @param  string $content the value of the content attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */

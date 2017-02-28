@@ -41,7 +41,7 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * Sets the accepted mimetypes for the file
    *
    * @param  string $accept the accepted mimetypes for the file
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
   public function setFileTypes($accept) {
@@ -53,7 +53,7 @@ class FileInput extends AbstractInputTag implements ValidableInputInterface {
    * Sets whether to accept multiple files or not
    *
    * @param  boolean $multiple whether to accept multiple files or not
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multipleFiles($multiple = true) {

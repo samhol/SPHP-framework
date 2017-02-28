@@ -23,7 +23,7 @@ interface ValidableInputInterface extends InputInterface {
 	 * 
 	 * @param  boolean $required true if the input must have a value before form 
 	 *         submission, otherwise false
-	 *  @return self for a fluent interface
+	 * @return self for a fluent interface
 	 */
 	public function setRequired($required = true);
 

@@ -29,7 +29,7 @@ interface GeographicalAddressInterface {
    * Sets the streetaddress
    *
    * @param  string $streetaddress the streetaddress
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setStreet($streetaddress);
 
@@ -44,7 +44,7 @@ interface GeographicalAddressInterface {
    * Sets the zipcode
    *
    * @param  string|null $zipcode the zipcode
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setZipcode($zipcode);
 
@@ -59,7 +59,7 @@ interface GeographicalAddressInterface {
    * Sets the city or the district name
    *
    * @param  string|null $city the city or the district name
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCity($city);
 
@@ -74,7 +74,7 @@ interface GeographicalAddressInterface {
    * Sets the the country name
    *
    * @param  string $country the country name
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCountry($country);
 
@@ -89,7 +89,7 @@ interface GeographicalAddressInterface {
    * Sets the maplink to the location
    *
    * @param  string $maplink the maplink to the location
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setMaplink($maplink);
 }

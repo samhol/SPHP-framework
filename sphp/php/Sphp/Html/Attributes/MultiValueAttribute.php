@@ -91,7 +91,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 4. Stores only a single instance of every value (no duplicates)
    *
    * @param  scalar|scalar[] $values the values to set
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function set($values) {
     $this->clear();
@@ -112,7 +112,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 3. Stores only a single instance of every value (no duplicates)
    *
    * @param  string|scalar[] $values the values to add
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function add($values) {
     $parsed = self::parse($values);
@@ -153,7 +153,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 3. Stores only a single instance of every value (no duplicates)
    *
    * @param  scalar|scalar[] $values the atomic values to lock
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function lock($values) {
     $arr = self::parse($values);
@@ -175,7 +175,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 2. An array paramater can contain only one atomic value per array value
    * 
    * @param  scalar|scalar[] $values the atomic values to remove
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws AttributeException if any of the given values is unmodifiable
    */
   public function remove($values) {

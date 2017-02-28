@@ -79,7 +79,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *
    * @param  string|string[] $columns the column(s) to show (can have multiple
    *         string parameters)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function get($columns = "*") {
     if (func_num_args() > 1) {
@@ -102,7 +102,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *
    * @param  string|string[] $tables the table(s) to show (can have multiple
    *         string parameters)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function from($tables) {
     if (func_num_args() > 0) {
@@ -126,7 +126,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *  rows from a result set.
    *
    * @param  string|string[] $columns the columns
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function groupBy($columns) {
     if (func_num_args() > 0) {
@@ -153,7 +153,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * * **If you are using multiple arguments; None of the arguments should be an array**
    *
    * @param  string|string[] $cond condition(s) (accepts multiple arguments)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function having($cond) {
     if (func_num_args() > 0) {
@@ -187,7 +187,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * - 'DESC' indicates descending order
    *
    * @param  string|string[] $columns the column(s) (accepts multiple arguments)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy($columns) {
@@ -219,7 +219,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *
    * @param int $rowCount the maximum number of rows to return
    * @param mixed $offset the offset of the initial row
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function limit($rowCount, $offset = 0) {
     $this->limit = "LIMIT " . $rowCount . " OFFSET " . $offset;
@@ -240,7 +240,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *  - 'LIMIT'
    *
    * @param  int|BitSet $parts the specified parts as a bitmask
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function reset($parts = self::RESET_ALL) {
     $types = new BitMask($parts);

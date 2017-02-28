@@ -32,7 +32,7 @@ interface CalloutInterface extends ColourableInterface {
    * * `false`: the callout is not closable
    * 
    * @param  string|boolean $closable true for closable and false otherwise
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setClosable($closable = true);
 

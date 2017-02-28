@@ -115,7 +115,7 @@ class Conditions {
    * Appends a conjunctive operator to the clause
    *
    * @param  string $operator (`AND`, `OR`, `XOR`)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function logical($operator) {
     if (!Strings::isEmpty($this->statement) && !Strings::endsWith($this->statement, [" OR ", " AND ", " XOR "])) {
@@ -130,7 +130,7 @@ class Conditions {
    *
    * @param string|Conditions $statement SQL condition(s)
    * @param mixed|mixed[] $params values that are vulnerable to an SQL injection
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function andWhere($statement, array $params = null) {
     return $this->append($statement, $params, "AND");
@@ -141,7 +141,7 @@ class Conditions {
    *
    * @param string|Conditions $statement SQL condition(s)
    * @param mixed|mixed[] $params values that are vulnerable to an SQL injection
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function orWhere($statement, array $params = null) {
     return $this->append($statement, $params, "OR");
@@ -159,7 +159,7 @@ class Conditions {
   /**
    * Resets the specific part of the query or the entire query if no parameter is given
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function reset() {
     $this->statement = [];
@@ -186,7 +186,7 @@ class Conditions {
    * @param  string|int|bool $value the value to bitwise compare to
    * @param  string $op logical operation
    * @param  string|int|bool $result the result value of the bitwise operation
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function binaryOperationCompare($column, $binOp, $value, $op, $result) {
     return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
@@ -197,7 +197,7 @@ class Conditions {
    *
    * @param  array $rules rules as field name => value pairs
    * @param  string $separator the logical operator between the comparisons
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function equals(array $rules, $separator = "AND") {
     $cond = new Conditions();
@@ -215,7 +215,7 @@ class Conditions {
    *
    * @param  mixed $column the column
    * @param  mixed $value the value of the expression
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isNot($column, $value) {
     return $this->compare($column, "<>", $value);
@@ -232,7 +232,7 @@ class Conditions {
    *
    * @param  string $column the column
    * @param  string $pattern pattern string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isLike($column, $pattern) {
     return $this->compare($column, "LIKE", $pattern);
@@ -249,7 +249,7 @@ class Conditions {
    *
    * @param  string $column the column
    * @param  string $pattern pattern string
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isNotLike($column, $pattern) {
     return $this->compare($column, "NOT LIKE", $pattern);
@@ -262,7 +262,7 @@ class Conditions {
    * **ALWAYS SANITIZE ALL USER INPUTS!**
    *
    * @param  string $column the column
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isNull($column) {
     return $this->append("$column IS null", null);
@@ -272,7 +272,7 @@ class Conditions {
    * Adds a condition to search for a given expression that holds a null value
    *
    * @param  string $column the column
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isNotNull($column) {
     return $this->append("$column IS NOT null", null);
@@ -285,7 +285,7 @@ class Conditions {
    *
    * @param  string $column the column
    * @param  mixed[]|Query|Traversable $group value(s) of the group
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isIn($column, $group) {
     return $this->compare($column, "IN", $group);
@@ -298,7 +298,7 @@ class Conditions {
    *
    * @param  string $column the column
    * @param  mixed[]|Query|Traversable $group value(s) of the group
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function isNotIn($column, $group) {
     return $this->compare($column, "NOT IN", $group);
@@ -329,7 +329,7 @@ class Conditions {
    * @param  string $column the column
    * @param  string $operator used comparison operator
    * @param  mixed $expr the value
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @throws SQLException
    */
   public function compare($column, $operator, $expr = null) {

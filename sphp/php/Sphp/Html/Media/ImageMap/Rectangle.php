@@ -48,7 +48,7 @@ class Rectangle extends EmptyTag implements AreaInterface {
    * 
    * @param  int $x the top left x-coordinate
    * @param  int $y the top left y-coordinate
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setTopLeft($x, $y) {
     $coords = split(',', $this->getCoordinates());
@@ -64,7 +64,7 @@ class Rectangle extends EmptyTag implements AreaInterface {
    * 
    * @param  int $x the bottom right x-coordinate
    * @param  int $y the bottom right y-coordinate
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setBottomRight($x, $y) {
     $coords = split(',', $this->getCoordinates());
@@ -82,7 +82,7 @@ class Rectangle extends EmptyTag implements AreaInterface {
    * @param  int $y1 the top left y-coordinate
    * @param  int $x2 the bottom right x-coordinate
    * @param  int $y2 the bottom right y-coordinate
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCoordinates($x1, $y1, $x2, $y2) {
     $coords = [$x1, $y1, $x2, $y2];

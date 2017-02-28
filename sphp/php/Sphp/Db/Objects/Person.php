@@ -82,7 +82,7 @@ class Person extends AbstractDbObject {
    * Sets the first name
    *
    * @param  string $fname the first name
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setFname($fname) {
     $this->fname = $fname;
@@ -102,7 +102,7 @@ class Person extends AbstractDbObject {
    * Sets the last (family) name
    *
    * @param  string $lname the last (family) name
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setLname($lname) {
     $this->lname = $lname;
@@ -122,7 +122,7 @@ class Person extends AbstractDbObject {
    * Sets the email address
    *
    * @param  string $email the email address
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setEmail($email) {
     $this->email = $email;
@@ -142,7 +142,7 @@ class Person extends AbstractDbObject {
    * Sets the phonenumbers
    *
    * @param  string[] $phonenumbers the phonenumbers address
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setPhonenumbers(array $phonenumbers = null) {
     if ($phonenumbers === null) {
@@ -156,7 +156,7 @@ class Person extends AbstractDbObject {
    * Sets the email address
    *
    * @param  null|string $email the email address
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function addPhonenumber($phonenumber, $type = null) {
     if ($type !== null) {
@@ -180,7 +180,7 @@ class Person extends AbstractDbObject {
    * Sets geographical address
    * 
    * @param  Address $address the geographical address
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setAddress(Address $address = null) {
     $this->address = $address;

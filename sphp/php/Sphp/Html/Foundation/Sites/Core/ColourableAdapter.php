@@ -53,7 +53,7 @@ class ColourableAdapter extends AbstractComponentAdapter implements ColourableIn
    * * `'disabled'` for disabled buttons
    * 
    * @param  string|null $style one of the CSS class names defining button styles
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
   public function setColor($style = null) {

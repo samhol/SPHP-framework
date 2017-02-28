@@ -29,7 +29,7 @@ class Radioboxes extends Choiceboxes {
    * Sets the current submission set of the input component
    *
    * @param string|string[] $value the current submission set of the input component
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setValue($value) {
     if (!is_array($value)) {
@@ -63,7 +63,7 @@ class Radioboxes extends Choiceboxes {
    * 
    * @param  boolean $required true if one of the {@link Radiobox} components 
    *         must be checked before form submission, otherwise false
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRequired($required = true) {
     foreach ($this->getOptionFields() as $opt) {

@@ -84,7 +84,7 @@ class Event implements EventInterface {
    * Sets the name of the event
    * 
    * @param  string $name the name of the event
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   protected function setName($name) {
     $this->name = $name;
@@ -116,7 +116,7 @@ class Event implements EventInterface {
    * Sets the data attached to the event
    * 
    * @param  mixed $data the data attached to the event
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setData($data) {
     $this->data = $data;

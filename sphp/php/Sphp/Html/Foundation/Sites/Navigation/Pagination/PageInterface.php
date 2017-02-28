@@ -26,7 +26,7 @@ interface PageInterface extends ContentInterface, LiInterface {
    * Sets the hyperlink component as active if the URL matches with the 
    *  current URL of the page
    * 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function activate();
 
@@ -34,7 +34,7 @@ interface PageInterface extends ContentInterface, LiInterface {
    * Sets or unsets the hyperlink component as active
    * 
    * @param  boolean $active true foor activation and false for deactivation
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCurrent($active = true);
 
@@ -51,7 +51,7 @@ interface PageInterface extends ContentInterface, LiInterface {
    * A disabled pagination component is unusable and un-clickable. 
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function disable($disabled = true);
 

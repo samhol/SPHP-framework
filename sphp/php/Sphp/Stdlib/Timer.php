@@ -34,7 +34,7 @@ class Timer {
   /**
    * Starts the clock from the page request
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function startFromRequest() {
     $this->startTime = filter_input(\INPUT_SERVER, "REQUEST_TIME_FLOAT", \FILTER_SANITIZE_NUMBER_INT);
@@ -44,7 +44,7 @@ class Timer {
   /**
    * Starts the timer from the call of this method
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function start() {
     $this->startTime = microtime(true);

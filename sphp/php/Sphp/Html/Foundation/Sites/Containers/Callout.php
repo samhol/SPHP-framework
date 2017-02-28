@@ -53,7 +53,7 @@ class Callout extends Div implements CalloutInterface {
    * * `'large'` for large padding
    * 
    * @param  string|null $padding optional CSS class name defining the amount of the content padding
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
    */
   public function setPadding($padding = 'default') {

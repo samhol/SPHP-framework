@@ -44,7 +44,7 @@ class FilterIterator extends IteratorIterator {
   /**
    * 
    * @param  callable $filter
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setFilter(callable $filter) {
     $this->filter = $filter;

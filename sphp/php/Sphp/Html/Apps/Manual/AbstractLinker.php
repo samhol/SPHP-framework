@@ -98,7 +98,7 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * 
    * @param  string|null $target
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setDefaultTarget($target) {
@@ -120,7 +120,7 @@ abstract class AbstractLinker implements LinkerInterface {
    * Sets the default CSS classes for the generated links
    *
    * @param  string|null $defaultCssClasses the default CSS classes for the generated links
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function setDefaultCssClasses($defaultCssClasses = null) {

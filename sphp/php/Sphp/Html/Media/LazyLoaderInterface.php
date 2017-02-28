@@ -30,7 +30,7 @@ interface LazyLoaderInterface extends ContentInterface {
    * `data-src` attribute instead of the `src` attribute
    * 
    * @param  boolean $lazy true if the loading is lazy, false otherwise
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setLazy($lazy = true);
 

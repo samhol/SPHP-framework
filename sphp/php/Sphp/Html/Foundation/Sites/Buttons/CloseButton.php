@@ -42,7 +42,7 @@ class CloseButton extends AbstractComponent {
    * Sets the screen reader-only text
    * 
    * @param  string $text the screen reader-only text
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html aria-label
    */
   public function setAccessibilityTextText($text) {

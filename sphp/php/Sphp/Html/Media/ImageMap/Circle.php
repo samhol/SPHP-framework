@@ -45,7 +45,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * Sets the radius of the circle region
    * 
    * @param  int $radius the radius of the circle
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setRadius($radius) {
     $coords = split(',', $this->getCoordinates());
@@ -59,7 +59,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * Sets the x-coodinate of the center of the circle region
    * 
    * @param  int $x the x-coodinate of the circle center
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setX($x) {
     $coords = split(',', $this->getCoordinates());
@@ -73,7 +73,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * Sets the y-coodinate of the center of the circle region
    * 
    * @param  int $y the y-coodinate of the circle center
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setY($y) {
     $coords = split(',', $this->getCoordinates());
@@ -89,7 +89,7 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param  int $x the x-coodinate of the circle center
    * @param  int $y the y-coodinate of the circle center
    * @param  int $radius the radius of the circle
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setCoordinates($x, $y, $radius) {
     $coords = [$x, $y, $radius];

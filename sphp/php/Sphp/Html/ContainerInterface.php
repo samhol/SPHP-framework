@@ -35,7 +35,7 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    * Appends a new value as the last element
    *
    * @param  mixed $value element
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function append($value);
 
@@ -46,14 +46,14 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    *   and the index of the prepended value is 'int(0)'
    *
    * @param  mixed $value the value being prepended
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function prepend($value);
 
   /**
    * Clears the contents
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function clear();
 

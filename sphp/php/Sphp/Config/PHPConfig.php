@@ -58,7 +58,7 @@ class PHPConfig {
    * 
    * @param  string $fun
    * @param  mixed[] $params
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   private function setFunc($fun, array $params = []) {
     $this->setters[] = [$fun, $params];
@@ -104,7 +104,7 @@ class PHPConfig {
    * Set the internal character encoding
    *
    * @param  mixed $encoding character encoding: default is `utf-8`
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setEncoding($encoding = 'UTF-8') {
     $this->setFunc('mb_internal_encoding', [$encoding]);
@@ -116,7 +116,7 @@ class PHPConfig {
    * Sets the default timezone used by all date/time functions in a script
    *
    * @param  string $timezone the timezone identifier
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setDefaultTimezone($timezone) {
     $this->setFunc('date_default_timezone_set', [$timezone]);
@@ -128,7 +128,7 @@ class PHPConfig {
    * Sets which PHP errors are reported
    *
    * @param  int $level the new error reporting level
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://php.net/manual/en/function.error-reporting.php PHP error reporting
    */
   public function setErrorReporting($level = 0) {
@@ -142,7 +142,7 @@ class PHPConfig {
    * Sets a user-defined exception handler function
    * 
    * @param  callable $handler
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
    */
   public function setExceptionHandler(callable $handler) {
@@ -155,7 +155,7 @@ class PHPConfig {
    * 
    * Previous settings are replaced
    * 
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function init() {
     foreach ($this->setters as $call) {

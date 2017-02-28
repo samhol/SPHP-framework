@@ -36,7 +36,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * Sets the value of the title attribute
    *
    * @param  string|null $qtip the value of the title attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setQtip($qtip) {
@@ -51,7 +51,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    *
    * @param  string $my
    * @param  string $at
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setQtipPosition($my, $at) {
     $this->getComponent()->attrs()

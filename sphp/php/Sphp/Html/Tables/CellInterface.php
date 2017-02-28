@@ -40,7 +40,7 @@ interface CellInterface extends TableContentInterface {
    *
    * @precondition  $value >= 1
    * @param  int $value the value of the colspan attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
    * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
    */
@@ -64,7 +64,7 @@ interface CellInterface extends TableContentInterface {
    *
    * @precondition  $value >= 1
    * @param  int $value the value of the rowspan attribute
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
    * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
    */

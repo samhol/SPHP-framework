@@ -42,7 +42,7 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    * Sets the path to the track source (The URL of the track file)
    *
    * @param  string|URL $src the path to the track source (The URL of the track file)
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
    */
   public function setSrc($src);
@@ -71,7 +71,7 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    *    (in this case you don't need to define "alt attribute at all")
    *
    * @param  string $alt the alternate text for an image
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt($alt);

@@ -33,7 +33,7 @@ trait FormGridTrait {
    * * `$row` not extending {@link RowInterface} is wrapped inside a {@link FormRow} component.
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row) {
@@ -52,7 +52,7 @@ trait FormGridTrait {
    * * `$row` not extending {@link RowInterface} is wrapped inside a {@link FormRow} component.
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row) {
@@ -79,7 +79,7 @@ trait FormGridTrait {
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @see    HiddenInput
    */
   public function appendHiddenVariable($name, $value) {
@@ -94,7 +94,7 @@ trait FormGridTrait {
    *  {@link HiddenInput} components.
    *
    * @param  string[] $vars name => value pairs
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @see    HiddenInput
    */
   public function appendHiddenVariables(array $vars) {

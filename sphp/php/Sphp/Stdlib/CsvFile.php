@@ -28,7 +28,7 @@ class CsvFile implements Arrayable {
   /**
    * 
    * @param  array $data
-   * @return $this
+   * @return self for a fluent interface
    */
   public function appendRow(array $data) {
     if ($data instanceof \Traversable) {

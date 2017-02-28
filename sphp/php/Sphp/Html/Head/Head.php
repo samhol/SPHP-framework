@@ -75,7 +75,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @param  string $title the title of the HTML document
    * @param  string $charset the character set of the HTML document
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   private function setup($title, $charset) {
     $this->setDocumentTitle($title);
@@ -103,7 +103,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * Sets the title of the html page
    *
    * @param  string|Title $title the title of the html page
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function setDocumentTitle($title) {
     if (!($title instanceof Title)) {
@@ -118,7 +118,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @param  string|URL $baseAddr the base URL for all relative URLs in the page
    * @param  string $target the default target for all hyperlinks and forms in the page
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
   public function setBaseAddr($baseAddr, $target = '_self') {
@@ -133,7 +133,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * unsets the default URL and a default target for all links on a page
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
   public function unsetBaseAddress() {
@@ -144,7 +144,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Sets up the Font Awesome icons
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://fontawesome.io/icons/?utm_source=www.qipaotu.com Font Awesome icons
    */
   public function useFontAwesome() {
@@ -154,7 +154,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Sets up the Foundation icons
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://zurb.com/playground/foundation-icon-fonts-3 Foundation icons
    */
   public function useFoundationIcons() {
@@ -165,7 +165,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Sets up the Foundation framework related CSS files and meta data
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function enableSPHP() {
     $this->addMeta(Meta::viewport('width=device-width, initial-scale=1.0'))
@@ -179,7 +179,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Appends JavaScript files for Video.js
    *
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
@@ -193,7 +193,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @param  string $src the file path of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
@@ -208,7 +208,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media the relationship between the current document and the linked one
    * @param  string $media what media/device the target resource is optimized for
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
@@ -222,7 +222,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $type the MIME type of the linked document
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
@@ -236,7 +236,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * Adds content component to the object
    *
    * @param  HeadComponentInterface $component content the component to add
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function addContent(HeadComponentInterface $component) {
     if ($component instanceof Title) {
@@ -268,7 +268,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * Adds meta data object
    *
    * @param  MetaInterface $meta
-   *  @return self for a fluent interface
+   * @return self for a fluent interface
    */
   public function addMeta(MetaInterface $meta) {
     $this->meta->addMeta($meta);
