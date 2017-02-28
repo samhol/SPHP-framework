@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use SplStack;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * An implementation of a last-in-first-out (LIFO) stack
@@ -26,6 +27,14 @@ class Stack extends SplStack implements StackInterface {
   public function push($value) {
     parent::push($value);
     return $this;
+  }
+
+  public function pop() {
+    try {
+      return parent::pop();
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
 }

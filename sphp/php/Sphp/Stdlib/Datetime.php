@@ -67,10 +67,9 @@ class Datetime extends \DateTime implements Comparable {
   /**
    * Compares this datetime object to another one
    *
-   * @postcondition RESULT == 1: $other->getTimestamp() &lt; $this->getTimestamp()
-   * @postcondition RESULT == -1: $other->getTimestamp() &gt; $this->getTimestamp()
-   * @postcondition RESULT == 0: $other->equals($this)
-   * 
+   * @postcondition RESULT === 1: $other->getTimestamp() < $this->getTimestamp()
+   * @postcondition RESULT === -1: $other->getTimestamp() > $this->getTimestamp()
+   * @postcondition RESULT === 0: $other->equals($this)
    * @param  mixed $other compared object
    * @return int result of the comparison
    * @throws InvalidArgumentException if the <var>$other</var> is not instance of {@link \DateTime}

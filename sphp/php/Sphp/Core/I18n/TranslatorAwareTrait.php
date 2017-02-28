@@ -52,7 +52,6 @@ trait TranslatorAwareTrait {
    *
    * @param  string $lang the translator component
    * @return self for a fluent interface
-   * @uses   self::notifyTranslatorChangeObservers()
    */
   public function setLang($lang) {
     $this->getTranslator()->setLang($lang);

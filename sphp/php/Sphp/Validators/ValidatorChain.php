@@ -41,10 +41,23 @@ class ValidatorChain implements ValidatorInterface, Countable {
     $this->errors = new MessageList();
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->validators, $this->errors);
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
   public function __clone() {
     $this->errors = clone $this->errors;
   }

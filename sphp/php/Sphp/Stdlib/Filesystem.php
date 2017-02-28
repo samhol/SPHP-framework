@@ -24,7 +24,7 @@ class Filesystem {
    *
    * @param  string $path the path to the file
    * @return string the result of the script execution
-   * @throws InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
    */
   public static function toString($path) {
     if (!is_file($path)) {
@@ -38,7 +38,7 @@ class Filesystem {
    *
    * @param  string $path the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
    */
   public static function executePhpToString($path) {
     if (!is_file($path)) {
@@ -61,7 +61,7 @@ class Filesystem {
    *
    * @param  string $path the path to the ascii file
    * @return string[] rows of the ascii file in an array
-   * @throws InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
    */
   public static function getTextFileRows($path) {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

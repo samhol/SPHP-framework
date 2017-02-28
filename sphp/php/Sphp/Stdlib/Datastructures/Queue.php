@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use SplQueue;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * An implementation of a first-in-first-out (FIFO) queue
@@ -26,6 +27,14 @@ class Queue extends SplQueue implements QueueInterface {
   public function enqueue($value) {
     parent::enqueue($value);
     return $this;
+  }
+
+  public function dequeue() {
+    try {
+      return parent::dequeue();
+    } catch (\Exception $ex) {
+      throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
+    }
   }
 
 }

@@ -47,7 +47,7 @@ class Path {
    * * the `$localRoot` should be an Absolute path so that all the subfolders are reachable.
    * * If either `$localRoot` or `$httpRoot` is not given the instance uses `$_SERVER` values if present
    * 
-   * @throws InvalidArgumentException if either local or http path cannot be resolved
+   * @throws \Sphp\Exceptions\InvalidArgumentException if either local or http path cannot be resolved
    */
   public function __construct($host = '', $doc_root = '') {
     if (empty($host)) {
@@ -91,7 +91,7 @@ class Path {
    *
    * @param  string $relativePath
    * @return string the http path from the root
-   * @throws InvalidArgumentException if the  path cannot be resolved
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the  path cannot be resolved
    */
   public function http($relativePath = '') {
     if (!$this->isPathFromRoot($relativePath)) {
@@ -105,7 +105,7 @@ class Path {
    *
    * @param  string $relativePath
    * @return string the local path from the root
-   * @throws InvalidArgumentException if the path cannot be resolved
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the path cannot be resolved
    */
   public function local($relativePath = '') {
     if (!$this->isPathFromRoot($relativePath)) {
@@ -118,7 +118,7 @@ class Path {
    * Returns the singleton instance of the file system router
    * 
    * @return self singleton instance of the file system router
-   * @throws InvalidArgumentException if either local or http path cannot be resolved
+   * @throws \Sphp\Exceptions\InvalidArgumentException if either local or http path cannot be resolved
    */
   public static function get() {
     if (self::$instance === null) {

@@ -9,7 +9,7 @@ namespace Sphp\Html;
 
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Stdlib\Strings;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Abstract Class is the base class for all HTML tag implementations

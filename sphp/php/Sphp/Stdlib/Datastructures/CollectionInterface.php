@@ -25,6 +25,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
   /**
    * Appends a new value as the last element
    *
+   * @postcondition contains($value) === true
    * @param  mixed $value element
    * @return self for a fluent interface
    */
@@ -36,6 +37,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * * The numeric keys of the content will be renumbered starting from zero
    *   and the index of the prepended value is 'int(0)'
    *
+   * @postcondition contains($value) === true
    * @param  mixed $value the value being prepended
    * @return self for a fluent interface
    */
@@ -67,6 +69,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
   /**
    * Removes all instances of the given value
    *
+   * @postcondition contains($value) === false
    * @param  mixed $value the value to remove
    * @return self for a fluent interface
    */

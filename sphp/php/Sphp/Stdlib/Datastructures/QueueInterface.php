@@ -7,7 +7,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Exceptions\RuntimeException;
+
 /**
  * Defines properties of a First-In-First-Out (FIFO) queue
  *
@@ -30,8 +30,7 @@ interface QueueInterface {
    * Dequeues a node from the queue
    *
    * @return mixed the item at the beginning of the queue
-   * @throws Exception if the queue is empty
-   * @throws RuntimeException when the data-structure is empty
+   * @throws \Sphp\Exceptions\RuntimeException when the data-structure is empty
    */
   public function dequeue();
 
@@ -39,8 +38,7 @@ interface QueueInterface {
    * Observes the first item of the queue without removing it
    *
    * @return mixed the item at the beginning of the queue
-   * @throws Exception if the queue is empty
-   * @throws RuntimeException when the data-structure is empty
+   * @throws \Sphp\Exceptions\RuntimeException when the data-structure is empty
    */
   public function peek();
 
