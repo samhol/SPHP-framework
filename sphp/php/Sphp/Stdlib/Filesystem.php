@@ -130,6 +130,26 @@ class Filesystem {
   }
 
   /**
+   * Attempts to create the file specified by pathname
+   *
+   * * For more information on modes, read the details on the {@link \chmod()} page.
+   *
+   * @param  string $path the file path
+   * @param  int $mode the mode is `0777` by default, which means the widest possible access
+   * @return boolean true on success or false on failure
+   */
+  public static function mkFile($path, $mode = 0777) {
+    if (is_file($path)) {
+      return false;
+    }
+    $dirname = dirname($path);
+    if ($dirname !== '.' && !is_dir($dirname)) {
+      static::mkdir($dirname, $mode);
+    }
+    return fopen($path, 'w') !== false;
+  }
+
+  /**
    * Converts the filesize (in bits) to bytes
    *
    * @param  int|string $filesize file size in bits

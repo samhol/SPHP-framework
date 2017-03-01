@@ -14,7 +14,7 @@ use Sphp\Stdlib\Observers\Subject;
  * Class sends uncaught exception messages to the proper handlers
  *
  * The ExceptionHandler class sends uncaught exception messages to the proper handlers.  This is done
- *  using the Observer pattern, and SplObserver/SplSubject.
+ *  using the Observer pattern.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-05
@@ -35,7 +35,7 @@ class ExceptionHandler implements Subject {
   /**
    * Exception handling method
    *
-   * @param Exception $e handled exception
+   * @param \Throwable|Exception $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
   public function __invoke($e) {
@@ -46,10 +46,10 @@ class ExceptionHandler implements Subject {
   /**
    * Exception handling method
    *
-   * @param Exception $e handled exception
+   * @param \Throwable|Exception $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
-  public function handle(Exception $e) {
+  public function handle($e) {
     $this->exception = $e;
     $this->notify();
   }
@@ -57,7 +57,7 @@ class ExceptionHandler implements Subject {
   /**
    * Rerurns the uncaught Exception that needs to be handled
    *
-   * @return Exception the uncaught Exception
+   * @return \Throwable|Exception the uncaught Exception
    */
   public function getException() {
     return $this->exception;

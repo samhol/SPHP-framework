@@ -62,7 +62,7 @@ class ExceptionCallout extends Callout {
    * @param  boolean $showTrace true for visible trace  
    * @param  boolean $showPreviousException true for visible previous exception
    */
-  public function __construct(Exception $e, $showTrace = false, $showPreviousException = false) {
+  public function __construct($e, $showTrace = false, $showPreviousException = false) {
     $this->exception = $e;
     parent::__construct();
     $this->cssClasses()->lock('sphp-exception-callout');

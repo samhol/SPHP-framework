@@ -44,6 +44,9 @@ class ExceptionLogger implements Observer {
    * @return self for a fluent interface
    */
   public function setDestination($destination) {
+    if (!is_writable($destination)) {
+      \Sphp\Stdlib\Filesystem::mkFile($destination);
+    }
     $this->destination = $destination;
     return $this;
   }
