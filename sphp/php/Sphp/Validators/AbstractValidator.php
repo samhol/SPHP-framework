@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Core\I18n\PrioritizedMessageList;
+use Sphp\Core\I18n\MessageList;
 use Sphp\Core\I18n\Message;
 
 /**
@@ -23,7 +23,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * stores error messages if not valid
    *
-   * var PrioritizedMessageList
+   * var MessageList
    */
   private $errors;
 
@@ -40,7 +40,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function __construct(MessageList $m = null) {
     if ($m === null) {
-      $this->errors = new PrioritizedMessageList();
+      $this->errors = new MessageList();
     } else {
       $this->errors = $m;
     }

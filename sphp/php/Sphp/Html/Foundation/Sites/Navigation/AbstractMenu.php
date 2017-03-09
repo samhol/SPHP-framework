@@ -124,6 +124,10 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
     return $this;
   }
 
+  public function isVertical() {
+    return $this->cssClasses()->contains('vertical');
+  }
+
   /**
    * Sets or unsets the menu as active
    *

@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Lists\LiInterface;
+use Sphp\Html\IdentifiableInterface;
 
 /**
  * Defines a menu item for navigation menus
@@ -21,6 +21,6 @@ use Sphp\Html\Lists\LiInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MenuItemInterface extends LiInterface {
-
+interface MenuItemInterface extends IdentifiableInterface {
+  
 }

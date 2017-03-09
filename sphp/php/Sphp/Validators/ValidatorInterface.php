@@ -7,10 +7,10 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Core\I18n\PrioritizedMessageList;
+use Sphp\Core\I18n\MessageList;
 
 /**
- * The base interface for all validatorrs
+ * The base interface for all validators
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-16
@@ -23,14 +23,14 @@ interface ValidatorInterface {
    * Validates given value
    *
    * @param  mixed $value the value to validate
-   * @return boolean true if validation was succesfull, false if not
+   * @return boolean true if validation was successful, false if not
    */
   public function isValid($value);
 
   /**
    * Returns error messages
    *
-   * @return PrioritizedMessageList error messages
+   * @return MessageList error messages
    */
   public function getErrors();
 }

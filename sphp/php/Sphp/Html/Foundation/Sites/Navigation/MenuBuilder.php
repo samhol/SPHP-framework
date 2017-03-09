@@ -99,7 +99,7 @@ class MenuBuilder {
     if (array_key_exists('defaultTarget', $data)) {
       $instance->setDefaultTarget($data['defaultTarget']);
     }
-    static::insertIntoMenu($data['items'], $instance);
+    $this->insertIntoMenu($data['items'], $instance);
     return $instance;
   }
 

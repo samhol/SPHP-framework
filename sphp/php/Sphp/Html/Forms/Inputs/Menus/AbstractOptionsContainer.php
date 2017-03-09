@@ -58,6 +58,16 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
       $this->append($opt);
     }
   }
+  /**
+   * Prepends content to the component
+   *
+   * @param  SelectMenuContentInterface $opt the content
+   * @return self for a fluent interface
+   */
+  public function prepend(SelectMenuContentInterface $opt) {
+    $this->getInnerContainer()->prepend($opt);
+    return $this;
+  }
 
   /**
    * Appends an array of content to the component

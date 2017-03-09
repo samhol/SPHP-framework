@@ -80,6 +80,9 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
    * @return self for a fluent interface
    */
   public function append(MenuItemInterface $item) {
+    if ($item instanceof SubMenu) {
+      $item->vertical($this->isVertical());
+    }
     $this->menu->append($item);
     if ($item instanceof MenuLink && $item->isActive()) {
       $this->setActive(true);
@@ -127,6 +130,11 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
 
   public function vertical($vertical = true) {
     $this->getMenu()->vertical($vertical);
+    return $this;
+  }
+
+  public function isVertical() {
+    $this->getMenu()->isVertical();
     return $this;
   }
 

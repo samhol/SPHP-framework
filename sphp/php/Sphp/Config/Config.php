@@ -73,12 +73,12 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @param array[] $config the domain name of the instance
    * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public static function instance($name = 0) {
+  public static function instance($name = 0, array $data = [], $readOnly = true) {
     if (isset(self::$instances[$name])) {
       return self::$instances[$name];
     }
 
-    $instance = new static([], false);
+    $instance = new static($data, false);
 
     self::$instances[$name] = $instance;
 
