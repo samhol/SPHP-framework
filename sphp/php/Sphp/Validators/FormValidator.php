@@ -12,7 +12,7 @@ use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Stdlib\Arrays;
 
 /**
- * Validates a given formdata
+ * Validates given form data
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-10-14

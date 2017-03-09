@@ -21,6 +21,19 @@ use Sphp\Stdlib\StringObject;
  */
 class StringLengthValidator extends AbstractValidator {
 
+  const INVALID = 'stringLengthInvalid';
+  const TOO_SHORT = 'stringLengthTooShort';
+  const TOO_LONG = 'stringLengthTooLong';
+
+  /**
+   * @var array
+   */
+  protected $messageTemplates = array(
+      self::INVALID => "Invalid type given. String expected",
+      self::TOO_SHORT => "The input is less than %min% characters long",
+      self::TOO_LONG => "The input is more than %max% characters long",
+  );
+
   /**
    * minimum length of the valid string
    *
@@ -36,7 +49,7 @@ class StringLengthValidator extends AbstractValidator {
   private $max;
 
   /**
-   * Constructs a new {@link self} validator
+   * Constructs a new validator
    *
    * @param int $min minimum length of the valid string
    * @param int $max maximum length of the valid string
@@ -121,7 +134,7 @@ class StringLengthValidator extends AbstractValidator {
     $this->setValue($value);
     $valid = true;
     $string = new StringObject($value);
-    $length = $string->trim()->length();
+    $length = $string->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
       $valid = false;
       $this->createErrorMessage("Please insert %d-%d characters", [$this->min, $this->max]);
