@@ -21,18 +21,9 @@ use Sphp\Stdlib\StringObject;
  */
 class StringLengthValidator extends AbstractValidator {
 
-  const INVALID = 'stringLengthInvalid';
-  const TOO_SHORT = 'stringLengthTooShort';
-  const TOO_LONG = 'stringLengthTooLong';
+  const TOO_SHORT = '_short_';
+  const TOO_LONG = '_long_';
 
-  /**
-   * @var array
-   */
-  protected $messageTemplates = array(
-      self::INVALID => "Invalid type given. String expected",
-      self::TOO_SHORT => "The input is less than %min% characters long",
-      self::TOO_LONG => "The input is more than %max% characters long",
-  );
 
   /**
    * minimum length of the valid string
@@ -58,6 +49,12 @@ class StringLengthValidator extends AbstractValidator {
     parent::__construct();
     $this->min = intval($min);
     $this->max = intval($max);
+    $messageTemplates = array(
+      self::INVALID => "Invalid type given. String expected",
+      self::TOO_SHORT => "The input is less than %d characters long",
+      self::TOO_LONG => "The input is more than %d characters long",
+  );
+    $this->setMessageTemplates($messageTemplates);
   }
 
   /**
@@ -137,7 +134,7 @@ class StringLengthValidator extends AbstractValidator {
     $length = $string->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
       $valid = false;
-      $this->createErrorMessage("Please insert %d-%d characters", [$this->min, $this->max]);
+      $this->addErrorMessage($this->getMessageTemplate(self::TOO_SHORT)->setArguments([$this->min, $this->max]));
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
       $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);
