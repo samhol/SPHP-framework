@@ -29,13 +29,6 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   private $validators;
 
   /**
-   * error message container
-   *
-   * @var TopicList
-   */
-  private $errors;
-
-  /**
    * Constructs a new validator
    */
   public function __construct() {
@@ -62,12 +55,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     foreach ($this->validators as $inputName => $validator) {
       if (!$validator->isValid(Arrays::getValue($value, $inputName))) {
         $valid = false;
-//echo get_class($v) . "($value)\n";
-//echo $v->getErrors();
-//echo $this->getErrors();
         $this->getErrors()->merge($validator->getErrors());
-//echo "a:::".$a;
-//echo "this:::".$this->getErrors();
       }
     }
     return $valid;
@@ -124,19 +112,6 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    */
   public function set($inputName, ValidatorInterface $validator) {
     $this->validators[$inputName] = $validator;
-    return $this;
-  }
-
-  /**
-   * Removes the validator object of the named input
-   *
-   * @param  string $inputName the name of the validable input
-   * @return self for a fluent interface
-   */
-  public function remove($inputName) {
-    if ($this->exists($inputName)) {
-      unset($this->validators[$inputName]);
-    }
     return $this;
   }
 

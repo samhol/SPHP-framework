@@ -27,7 +27,7 @@ class DatetimeValidator extends AbstractValidator {
   private $format = 'Y-m-d H:i:s';
 
   /**
-   * Constructs a new {@link DatetimeValidator} object
+   * Constructs a new validator
    *
    * @param string $format the required format of the validable value
    */

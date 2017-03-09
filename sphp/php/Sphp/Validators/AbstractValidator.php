@@ -23,9 +23,10 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * stores error messages if not valid
    *
-   * var MessageList
+   * @var MessageList
    */
   private $errors;
+  private $messageTemplates = [];
 
   /**
    *
@@ -38,20 +39,19 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $m container for the error messages
    */
-  public function __construct(MessageList $m = null) {
-    if ($m === null) {
-      $this->errors = new MessageList();
-    } else {
-      $this->errors = $m;
-    }
+  public function __construct(array $messageTemplates = []) {
+    $this->messageTemplates = $messageTemplates;
+    $this->errors = new MessageList();
   }
 
   public function __destruct() {
-    unset($this->errors, $this->value);
+    unset($this->messageTemplates, $this->errors, $this->value);
   }
 
   public function __clone() {
-    unset($this->errors, $this->value);
+    $this->errors = clone $this->errors;
+    $this->messageTemplates = clone $this->messageTemplates;
+    
   }
 
   /**
@@ -92,7 +92,6 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   protected function createErrorMessage($msg, array $args = [], $priority = 0) {
-    //echo "createErrorMessage:$msg";
     $this->errors->insert(new Message($msg, $args), $priority);
     return $this;
   }
@@ -105,7 +104,6 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return self for a fluent interface
    */
   protected function addErrorMessage(Message $msg, $priority = 0) {
-    //echo "addErrorMessage:$msg";
     $this->errors->insert($msg, $priority);
     return $this;
   }

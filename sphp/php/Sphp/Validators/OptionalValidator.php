@@ -20,7 +20,7 @@ class OptionalValidator extends ValidatorChain {
   /**
    * whether empty values are allowed or not
    *
-   * var boolean
+   * @var boolean
    */
   private $allowEmptyValues = true;
 

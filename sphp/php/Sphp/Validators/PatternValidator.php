@@ -23,17 +23,19 @@ use Sphp\Stdlib\Strings;
  */
 class PatternValidator extends AbstractValidator {
 
+  const NOT_MATCH = 'regexNotMatch';
+
   /**
    * regular expression pattern to validate against
    *
-   * var string[]
+   * @var string[]
    */
   private $pattern = "//";
 
   /**
    * error message corresponding to the pattern
    *
-   * var Message
+   * @var Message
    */
   private $errorMessage;
 
@@ -51,7 +53,7 @@ class PatternValidator extends AbstractValidator {
     if ($pattern !== null) {
       $this->setPattern($pattern, $errorMessage);
     }
-    if ($errorMessage !== null) {  
+    if ($errorMessage !== null) {
       $this->setErrorMessage($errorMessage);
     }
   }

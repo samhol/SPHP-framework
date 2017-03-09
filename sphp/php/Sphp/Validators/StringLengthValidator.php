@@ -24,14 +24,14 @@ class StringLengthValidator extends AbstractValidator {
   /**
    * minimum length of the valid string
    *
-   * var int
+   * @var int
    */
   private $min;
 
   /**
    * maximum length of the valid string
    *
-   * var int
+   * @var int
    */
   private $max;
 

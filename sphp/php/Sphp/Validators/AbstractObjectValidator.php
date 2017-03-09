@@ -12,7 +12,7 @@ use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Stdlib\Arrays;
 
 /**
- * Validates a given formdata.
+ * Validates a given form data
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
@@ -36,7 +36,7 @@ abstract class AbstractObjectValidator implements ValidatorInterface {
   private $errors;
 
   /**
-   * Constructs a new {@link self} validator
+   * Constructs a new validator
    */
   public function __construct() {
     $this->errors = new TopicList();

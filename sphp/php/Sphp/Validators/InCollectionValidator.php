@@ -25,7 +25,7 @@ class InCollectionValidator extends AbstractValidator {
   /**
    * maximum length of the valid string
    *
-   * var mixed[]
+   * @var mixed[]
    */
   private $haystack;
 
