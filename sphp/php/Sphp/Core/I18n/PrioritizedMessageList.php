@@ -13,7 +13,7 @@ use Sphp\Core\I18n\Gettext\Translator;
 use IteratorAggregate;
 
 /**
- * Inmplements a list that holds {@link MessageInterface} objects in a priority list
+ * Implements a list that holds {@link MessageInterface} objects in a priority list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
