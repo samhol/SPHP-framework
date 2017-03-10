@@ -8,7 +8,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 $apigen = Apis::apigen();
 $nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__);
 $validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
-$requiredValueValidator = Apis::apigen()->classLinker(RequiredValueValidator::class);
+$requiredValueValidator = Apis::apigen()->classLinker(NotEmptyValidator::class);
 $patrnvLink = $api->classLinker(PatternValidator::class);
 $strLenValLink = $api->classLinker(StringLengthValidator::class);
 $inputValidator = $api->classLinker(OptionalValidator::class);

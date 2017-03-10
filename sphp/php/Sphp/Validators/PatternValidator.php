@@ -23,7 +23,7 @@ use Sphp\Stdlib\Strings;
  */
 class PatternValidator extends AbstractValidator {
 
-  const NOT_MATCH = 'regexNotMatch';
+  const NOT_MATCH = '_regex_';
 
   /**
    * regular expression pattern to validate against

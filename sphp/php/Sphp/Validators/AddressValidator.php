@@ -26,7 +26,7 @@ class AddressValidator extends AbstractObjectValidator {
     parent::__construct();
     $this->set(Address::STREETADDRESS, new StringLengthValidator(2, 50))
             ->set(Address::ZIPCODE, new PatternValidator())
-            ->set(Address::CITY, new RequiredValueValidator());
+            ->set(Address::CITY, new NotEmptyValidator());
   }
 
 }

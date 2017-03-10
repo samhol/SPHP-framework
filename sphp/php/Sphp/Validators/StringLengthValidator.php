@@ -24,7 +24,6 @@ class StringLengthValidator extends AbstractValidator {
   const TOO_SHORT = '_short_';
   const TOO_LONG = '_long_';
 
-
   /**
    * minimum length of the valid string
    *
@@ -50,10 +49,10 @@ class StringLengthValidator extends AbstractValidator {
     $this->min = intval($min);
     $this->max = intval($max);
     $messageTemplates = array(
-      self::INVALID => "Invalid type given. String expected",
-      self::TOO_SHORT => "The input is less than %d characters long",
-      self::TOO_LONG => "The input is more than %d characters long",
-  );
+        self::INVALID => "Invalid type given. String expected",
+        self::TOO_SHORT => "The input is less than %d characters long",
+        self::TOO_LONG => "The input is more than %d characters long",
+    );
     $this->setMessageTemplates($messageTemplates);
   }
 

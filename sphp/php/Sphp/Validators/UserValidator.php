@@ -33,11 +33,11 @@ class UserValidator extends AbstractValidator {
    */
   public function __construct() {
     parent::__construct();
-    $this->set("username", (new RequiredValueValidator())->allowEmptyValues(false))
-            ->set("fname", new RequiredValueValidator())->set("lname", new RequiredValueValidator())
+    $this->set("username", (new NotEmptyValidator())->allowEmptyValues(false))
+            ->set("fname", new NotEmptyValidator())->set("lname", new NotEmptyValidator())
             ->set("phone", new PatternValidator("/^\+?[0-9]\ {*}$/", "Phonenumber contains only an optional + sign, numbers and spaces"))
             ->set("email", new EmailValidator())
-            ->set("city", new RequiredValueValidator())
+            ->set("city", new NotEmptyValidator())
             ->set("street", (new StringLengthValidator(2, 50))->allowEmptyValues(true));
   }
 

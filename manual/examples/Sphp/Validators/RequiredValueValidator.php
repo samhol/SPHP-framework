@@ -2,7 +2,7 @@
 
 namespace Sphp\Validators;
 
-$validator = new RequiredValueValidator();
+$validator = new NotEmptyValidator();
 //NULL value:
 var_dump($validator->isValid(null)) . "\n";
 echo $validator->getErrors() . "\n";

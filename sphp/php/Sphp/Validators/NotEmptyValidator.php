@@ -1,7 +1,7 @@
 <?php
 
 /**
- * RequiredValueValidator.php (UTF-8)
+ * NotEmptyValidator.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -33,8 +33,25 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RequiredValueValidator extends AbstractValidator {
+class NotEmptyValidator extends AbstractValidator {
 
+  const IS_EMPTY = '_empty_';
+  
+  /**
+   * Constructs a new validator
+   *
+   * @param int $min minimum length of the valid string
+   * @param int $max maximum length of the valid string
+   */
+  public function __construct($type= 'scalar', $message = "Value is required and can't be empty") {
+    parent::__construct();
+    $messageTemplates = array(
+        self::INVALID => $message,
+        self::IS_EMPTY => $message
+    );
+    $this->setMessageTemplates($messageTemplates);
+  }
+  
   public function isValid($value) {
     $this->setValue($value);
     $valid = true;
