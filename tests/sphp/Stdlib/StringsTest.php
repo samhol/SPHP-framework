@@ -13,10 +13,10 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function emptyStrings() {
     return [
-        [""], 
-        [null], 
+        [""],
+        [null],
         [false]
-        ];
+    ];
   }
 
   /**
@@ -34,12 +34,12 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function nonEmptyStrings() {
     return [
-        [" "], 
-        ["\t"], 
-        [true], 
-        ["\n"], 
-        ["0"], 
-        [0], 
+        [" "],
+        ["\t"],
+        [true],
+        ["\n"],
+        ["0"],
+        [0],
         [0.0]];
   }
 
@@ -429,6 +429,7 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
   public function testReverse($string, $expected) {
     $this->assertEquals(Strings::reverse($string), $expected);
   }
+
   /**
    * 
    * @return array
@@ -451,6 +452,35 @@ class StringsTest extends \PHPUnit_Framework_TestCase {
    */
   public function testHexadecimal($string, $expected) {
     $this->assertEquals(Strings::isHexadecimal($string), $expected);
+  }
+
+  /**
+   * 
+   * @return array
+   */
+  public function vsprintfData() {
+    $args = ['am'=>'olen','lname' => 'Holck', 'fname' => 'Sami', 'zero' => 0, 'I' => 'minä'];
+    return [
+        ["%zero\$d.%zero\$d degrees", $args, '0.0 degrees'],
+        ["%zero\$s degrees", $args, '0 degrees'],
+        ["0%f%a", ['f' => '', 'a' => '0'], '00'],
+        ["%zero\$s123", $args, '0123'],
+        ["test %val\$s ", ['val' => 'x'], 'test x '],
+        ["a%a\$s", ['a' => 'b'], 'ab'],
+        ["I am %fname\$s %lname\$s", $args, 'I am Sami Holck'],
+        ["%I\$s %am\$s %fname\$s, %fname\$s %lname\$s", $args, 'minä olen Sami, Sami Holck']
+    ];
+  }
+
+  /**
+   * @covers \Sphp\Stdlib\Strings::vsprintf
+   * @dataProvider vsprintfData
+   * @param string $string
+   * @param array $args
+   * @param string $expected
+   */
+  public function testVsprintf($string, array $args, $expected) {
+    $this->assertEquals(Strings::vsprintf($string, $args), $expected);
   }
 
 }
