@@ -92,7 +92,7 @@ class PHPConfig {
    * Sets the locale information for system responses
    *
    * @param  string|null $locale the locale information for system responses
-   * @return boolean true if the setting was succesfull and false otherwise
+   * @return boolean true if the setting was successful and false otherwise
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setMessageLocale($locale) {

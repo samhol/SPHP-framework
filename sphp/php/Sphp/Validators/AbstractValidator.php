@@ -87,7 +87,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  string $id
-   * @param  string|MessageInterface $messageTemplate
+   * @param  string $messageTemplate
    * @return self for a fluent interface
    */
   public function setMessageTemplate($id, $messageTemplate) {
@@ -134,11 +134,10 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param  string $msg the error message text
    * @param  scalar[] $args arguments
-   * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  protected function createErrorMessage($msg, array $args = [], $priority = 0) {
-    $this->errors->insert(new Message($msg, $args), $priority);
+  protected function createErrorMessage($msg, array $args = []) {
+    $this->errors->insert(new Message($msg, $args));
     return $this;
   }
 
@@ -146,11 +145,10 @@ abstract class AbstractValidator implements ValidatorInterface {
    * Adds an error message to the validator
    *
    * @param  Message $msg the error message text
-   * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  protected function addErrorMessage(Message $msg, $priority = 0) {
-    $this->errors->insert($msg, $priority);
+  protected function addErrorMessage(Message $msg) {
+    $this->errors->insert($msg);
     return $this;
   }
 

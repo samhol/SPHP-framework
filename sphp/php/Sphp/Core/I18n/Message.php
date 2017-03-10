@@ -30,19 +30,13 @@ class Message extends AbstractMessage {
   /**
    * Constructs a new instance
    *
-   * @param  string $message message text
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
-   * @param  TranslatorInterface|null $translator the translator component
-   */
-  /**
-   * 
    * @param string $message
    * @param null|mixed|mixed[] $args optional arguments
    * @param boolean $translateArgs
    * @param TranslatorInterface $translator optional translator
    */
   public function __construct($message, $args = null, $translateArgs = false, TranslatorInterface $translator = null) {
-    parent::__construct($args, $translateArgs, $translator);   
+    parent::__construct($args, $translateArgs, $translator);
     $this->message = $message;
     if ($translator === null) {
       $translator = new Translator();
@@ -56,13 +50,12 @@ class Message extends AbstractMessage {
    * @return string the message as formatted and translated string
    */
   public function translate() {
-    if (true) {
-      
+    $message = $this->getTranslator()->get($this->message, $this->getLang());
+    if ($this->hasArguments()) {
+      $args = $this->getArguments($this->translateArguments());
+      return vsprintf($message, $args);
     }
-    //var_dump($this->getTranslator()->getLang());
-    //var_dump(ini_get("LC_ALL"));
-    //var_dump(setLocale(\LC_MESSAGES, '0'));
-    return $this->getTranslator()->vsprintf($this->message, $this->getArguments());
+    return $message;
   }
 
 }

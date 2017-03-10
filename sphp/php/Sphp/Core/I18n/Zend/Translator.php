@@ -71,13 +71,8 @@ class Translator extends AbstractTranslator {
   /**
    * Constructs a new instance
    *
-   * **IMPORTANT:**
-   * The name of the `.mo` file must match the `$domain`. e.g the file path
-   * (Finnish translations) should match `$directory/fi_FI/LC_MESSAGES/$domain.mo`
-   *
-   * @param string|null $domain the filename of the dictionary
-   * @param string $directory the locale path of the dictionary
-   * @param string $charset the character set of the dictionary
+   * @param strin|null $lang optional translation language
+   * @param ZendTranslator $t
    */
   public function __construct($lang = null, ZendTranslator $t = null) {
     if ($t === null) {
@@ -108,6 +103,15 @@ class Translator extends AbstractTranslator {
     }
   }
 
+  
+  /**
+   * 
+   * @param type $type
+   * @param type $baseDir
+   * @param type $pattern
+   * @param type $textDomain
+   * @return self for a fluent interface
+   */
   public function addTranslationFilePattern($type, $baseDir, $pattern, $textDomain) {
     $this->translator->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
     return $this;
@@ -144,24 +148,6 @@ class Translator extends AbstractTranslator {
    */
   public function getDomain() {
     return $this->domain;
-  }
-
-  /**
-   * Returns the directory path
-   *
-   * @return string the directory containing the dictionaries
-   */
-  public function getDirectory() {
-    return $this->directory;
-  }
-
-  /**
-   * Returns the character encoding of the dictionary
-   *
-   * @return string the character encoding of the dictionary
-   */
-  public function getCharset() {
-    return $this->charset;
   }
 
   public function get($text, $lang = null) {

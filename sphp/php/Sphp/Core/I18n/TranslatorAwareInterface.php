@@ -40,10 +40,4 @@ interface TranslatorAwareInterface {
    */
   public function setLang($lang);
 
-  /**
-   * Sets the translator component for message translation
-   *
-   * @return self for a fluent interface
-   */
-  public function getLang();
 }

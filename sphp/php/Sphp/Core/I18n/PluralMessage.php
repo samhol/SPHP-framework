@@ -91,7 +91,12 @@ class PluralMessage extends AbstractMessage {
    * @return string the message as formatted and translated string
    */
   public function translate() {
-    return $this->getTranslator()->vsprintfPlural($this->msgid1, $this->msgid2, $this->n, $this->getArguments(), false);
+    $message = $this->getTranslator()->getPlural($this->msgid1, $this->msgid2, $this->n, $this->getLang());
+    if ($this->hasArguments()) {
+      $args = $this->getArguments($this->translateArguments());
+      return vsprintf($message, $args);
+    }
+    return $message;
   }
 
 }

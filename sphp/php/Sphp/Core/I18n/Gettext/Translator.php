@@ -106,7 +106,8 @@ class Translator extends AbstractTranslator {
   /**
    * Returns the name of the text domain
    *
-   * @return string the name (filename) of the text domain
+   * @param string the name (filename) of the text domain
+   * @return self for a fluent interface
    */
   public function setDomain($domain) {
     $this->domain = $domain;
@@ -114,10 +115,6 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   * {@uses \dgettext()} gettext function
-   */
   public function get($text, $lang = null) {
     if ($lang === null) {
       $lang = $this->lang;
@@ -129,13 +126,7 @@ class Translator extends AbstractTranslator {
       return $arg;
     };
     $tempLc = setLocale(\LC_MESSAGES, '0');
-    
-    //putenv("LC_ALL=$this->lang");  
-    //putenv("LC_ALL=$this->lang");
-    //var_dump(getenv('LC_ALL'));
     setLocale(\LC_MESSAGES, $lang);
-    //var_dump(setLocale(\LC_MESSAGES, '0'));
-    //var_dump(setLocale(\LC_ALL, "0"));
     if (is_array($text)) {
       $translation = Arrays::multiMap($parser, $text);
     } else {
@@ -145,14 +136,12 @@ class Translator extends AbstractTranslator {
     return $translation;
   }
 
-  /**
-   * {@inheritdoc}
-   * @uses   \dngettext() dngettext function
-   */
-  public function getPlural($msgid1, $msgid2, $n) {
+  public function getPlural($msgid1, $msgid2, $n, $lang = null) {
+    if ($lang === null) {
+      $lang = $this->lang;
+    }
     $tempLc = setLocale(\LC_MESSAGES, '0');
-    putenv("LC_ALL=$this->lang");
-    setLocale(\LC_MESSAGES, $this->lang);
+    setLocale(\LC_MESSAGES, $lang);
     $translation = dngettext($this->domain, $msgid1, $msgid2, $n);
     setLocale(\LC_MESSAGES, $tempLc);
     return $translation;

@@ -11,7 +11,7 @@ use Sphp\Core\I18n\TranslatorInterface;
 use Sphp\Core\I18n\Gettext\Translator;
 
 /**
- * Implements a translatable message object
+ * Implements an abstract translatable message object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2010-09-02
@@ -20,7 +20,10 @@ use Sphp\Core\I18n\Gettext\Translator;
  */
 abstract class AbstractMessage implements MessageInterface {
 
-  use TranslatorAwareTrait;
+  const NO_TRANSLATION = 0b0;
+  const TRANSLATE_MESSAGE = 0b1;
+  const TRANSLATE_ARGS = 0b10;
+  const TRANSLATE_ALL = 0b11;
 
   /**
    * original raw message arguments
@@ -28,7 +31,21 @@ abstract class AbstractMessage implements MessageInterface {
    * @var scalar[]
    */
   private $args;
+
+  /**
+   *
+   * @var boolean
+   */
   private $translateArgs = false;
+
+  /**
+   * The translator object translating the messages
+   *
+   * @var Translator
+   */
+  private $translator;
+  
+  private $lang;
 
   /**
    * Constructs a new instance
@@ -42,47 +59,116 @@ abstract class AbstractMessage implements MessageInterface {
       $translator = new Translator();
     }
     $this->setTranslator($translator);
+    $this->lang = null;
+  }
+
+  public function __clone() {
+    ;
+  }
+
+  public function __toString() {
+    return $this->translate();
   }
 
   /**
    * 
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
-   * @param type $translateArgs
-   * @return $this
+   * @param  null|mixed|mixed[] $args the arguments or null for no arguments  
+   * @return self for a fluent interface
    */
-  public function setArguments($args, $translateArgs = false) {
+  public function setArguments($args) {
     $this->args = $args;
-    $this->translateArgs = $translateArgs;
     return $this;
   }
-
   /**
    * 
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
+   * @return boolean
    */
-  public function getArguments() {
-    if ($this->args !== null && $this->translateArgs) {
-      return $this->getTranslator()->get($this->args);
+  public function hasArguments() {
+    if (is_array($this->args)) {   
+      return !empty($this->args);
+    } else {
+     return $this->args !== null;
+    }
+  }
+  /**
+   * 
+   * @return null|mixed|mixed[] $args the arguments or null for no arguments
+   */
+  public function getArguments($translated = false) {
+    if ($this->args !== null && $translated) {
+      return $this->getTranslator()->get($this->args, $this->lang);
     } else {
       return $this->args;
     }
   }
 
-  public function translateArguments($translateArgs = false) {
+  /**
+   * 
+   * @param  boolean $translateArgs  
+   * @return self for a fluent interface
+   */
+  public function setArgumentTranslation($translateArgs = false) {
     $this->translateArgs = $translateArgs;
     return $this;
   }
 
   /**
    * 
-   * @return TranslatorInterface
+   * @return boolean
+   */
+  public function translateArguments() {
+    return $this->translateArgs;
+  }
+
+  /**
+   * Sets the translator component for message translation
+   *
+   * @param  TranslatorInterface $translator the translator component
+   * @return self for a fluent interface
+   */
+  public function setTranslator(TranslatorInterface $translator) {
+    $this->translator = $translator;
+    return $this;
+  }
+
+  /**
+   * Returns the translator component used for message translation
+   *
+   * @return TranslatorInterface the translator component
    */
   public function getTranslator() {
+    if ($this->translator === null) {
+      $this->setTranslator(new Translator());
+    }
     return $this->translator;
   }
 
-  public function __toString() {
-    return $this->translate();
+  /**
+   * 
+   * @return boolean
+   */
+  public function hasTranslator() {
+    return $this->translator !== null;
+  }
+
+  /**
+   * Sets the translator component for message translation
+   *
+   * @param  string $lang the translator language
+   * @return self for a fluent interface
+   */
+  public function setLang($lang) {
+    $this->lang  = $lang;
+    return $this;
+  }
+
+  /**
+   * Sets the translator component for message translation
+   *
+   * @return string|null the translator language
+   */
+  protected function getLang() {
+    return $this->lang;
   }
 
 }
