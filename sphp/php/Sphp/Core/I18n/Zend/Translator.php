@@ -103,7 +103,6 @@ class Translator extends AbstractTranslator {
     }
   }
 
-  
   /**
    * 
    * @param type $type
