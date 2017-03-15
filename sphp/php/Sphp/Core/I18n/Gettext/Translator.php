@@ -11,9 +11,10 @@ if (!defined('LC_MESSAGES')) {
   define('LC_MESSAGES', 6);
 }
 
+use Sphp\Core\I18n\AbstractTranslator;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Arrays;
-use Sphp\Core\I18n\AbstractTranslator;
+use Sphp\Config\Locale;
 
 /**
  * Implements a natural language translator
@@ -68,12 +69,14 @@ class Translator extends AbstractTranslator {
    * **IMPORTANT:**
    * The name of the `.mo` file must match the `$domain`. e.g the file path
    * (Finnish translations) should match `$directory/fi_FI/LC_MESSAGES/$domain.mo`
-   *
-   * @param string|null $domain the filename of the dictionary
-   * @param string $directory the locale path of the dictionary
-   * @param string $charset the character set of the dictionary
+   * 
+   * @param  string|null $lang optional language used (defaults to system locale)
+   * @param  string|null $domain the filename of the dictionary
+   * @param  string $directory the locale path of the dictionary
+   * @param  string $charset the character set of the dictionary
+   * @throws InvalidArgumentException
    */
-  public function __construct($lang = 'en_US', $domain = \Sphp\DEFAULT_DOMAIN, $directory = 'sphp/locale', $charset = 'utf8') {
+  public function __construct($lang = null, $domain = \Sphp\DEFAULT_DOMAIN, $directory = 'sphp/locale', $charset = 'utf8') {
     if ($domain === null) {
       throw new InvalidArgumentException('no domain');
     } else {
@@ -82,6 +85,9 @@ class Translator extends AbstractTranslator {
     $this->domain = $domain;
     $this->directory = $directory;
     $this->charset = $charset;
+    if ($lang === null) {
+      $lang = Locale::getMessageLocale();
+    }
     $this->lang = $lang;
   }
 
