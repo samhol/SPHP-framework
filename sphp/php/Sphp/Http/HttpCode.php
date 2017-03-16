@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Http;
+namespace Sphp\Http;
 
 /**
  * The Logger class is responsible for printing the uncaught exceptions as an HTML element

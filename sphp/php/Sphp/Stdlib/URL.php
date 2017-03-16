@@ -23,7 +23,7 @@ use IteratorAggregate;
 class URL implements Arrayable, IteratorAggregate {
 
   /**
-   * the current url object
+   * the current URL object
    *
    * @var string 
    */
@@ -123,7 +123,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the scheme name (service name) of the URL
    * 
    * * **All schemes are transformed to lowercase.**
-   * * The scheme is ususally the name of a protocol, defines how the resource will be obtained.
+   * * The scheme is usually the name of a protocol, defines how the resource will be obtained.
    * * Supported service names: `http`, `https`, `ftp`, `ssh`, `telnet`, `imap`, `smtp`, `nicname`, `gopher`, `finger`, `pop3` and `www`
    *  
    * 
@@ -341,29 +341,29 @@ class URL implements Arrayable, IteratorAggregate {
   }
 
   /**
-   * Checks whether a param exists in the query
+   * Checks whether a parameter exists in the query
    * 
-   * @param  string $name the name of the param
-   * @return boolean true if the param exists and false otherwise
+   * @param  string $name the name of the parameter
+   * @return boolean true if the parameter exists and false otherwise
    */
   public function paramExists($name) {
     return array_key_exists($name, $this->components['query']);
   }
 
   /**
-   * Return the query as an array of params
+   * Return the query as an array of parameters
    *
-   * @return string[] the param array
+   * @return string[] the parameter array
    */
   public function getParams() {
     return $this->components['query'];
   }
 
   /**
-   * Return the value of the param
+   * Return the value of the parameter
    *
-   * @param  string $name the name of the param
-   * @return string|null the value of the param or null if the param does not exist
+   * @param  string $name the name of the parameter
+   * @return string|null the value of the parameter or null if the parameter does not exist
    */
   public function getParam($name) {
     $val = null;
@@ -374,10 +374,10 @@ class URL implements Arrayable, IteratorAggregate {
   }
 
   /**
-   * Sets or replaces a param in the query
+   * Sets or replaces a parameter in the query
    *
-   * @param  string $name the name of the param
-   * @param  string $value the value of the param
+   * @param  string $name the name of the parameter
+   * @param  string $value the value of the parameter
    * @return self for a fluent interface
    */
   public function setParam($name, $value) {
@@ -386,7 +386,7 @@ class URL implements Arrayable, IteratorAggregate {
   }
 
   /**
-   * Sets or replaces params in the query
+   * Sets or replaces parameters in the query
    *
    * @param  string[] $params parameter name => value pairs or a query string
    * @return self for a fluent interface

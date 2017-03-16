@@ -49,6 +49,11 @@ use Sphp\Exceptions\RuntimeException;
  * // Run the router
  * $router->execute();
  * </code>
+ *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2017-03-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class Router {
 
@@ -82,14 +87,6 @@ class Router {
    * @var array
    */
   private $routes = [];
-
-  /**
-   * An array containing the list of routing rules before they are parsed
-   * into their regex equivalents, used for debugging and test cases
-   *
-   * @var array
-   */
-  private $routes_original = [];
 
   /**
    * A sanitized version of the URL, excluding the domain and base component
@@ -224,7 +221,6 @@ class Router {
     }
     // Add the route to our routing array
     $this->routes[$priority][$route] = $callback;
-    $this->routes_original[$priority][$route] = $original_route;
     return true;
   }
 

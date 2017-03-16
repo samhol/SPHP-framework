@@ -218,10 +218,13 @@ class Calendar implements TranslatorAwareInterface {
    * @param  int|null $length optional length of the month string
    * @return string the name or the abbreviation of the given month number
    */
-  public function getMonthName($month, $length = null) {
+  public function getMonthName($month = null, $length = null) {
+    if ($month === null) {
+      $month = (int) date("m");
+    }
     $monthName = $this->getTranslator()->get(self::$months[$month]);
     if ($length > 0) {
-      $monthName = substr($monthName, 0, $length);
+      $monthName = mb_substr($monthName, 0, $length);
     }
     return $monthName;
   }

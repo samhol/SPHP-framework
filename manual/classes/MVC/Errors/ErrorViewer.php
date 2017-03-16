@@ -11,7 +11,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Stdlib\Path;
 use Sphp\Html\Media\Size;
 use Sphp\Html\Media\Img;
-use Sphp\Core\Http\HttpCode;
+use Sphp\Http\HttpCode;
 
 /**
  * Description of Viewer

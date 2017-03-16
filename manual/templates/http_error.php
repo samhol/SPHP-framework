@@ -1,6 +1,6 @@
 <?php
 
-use Sphp\Core\Http\HttpCodeCollection;
+use Sphp\Http\HttpCodeCollection;
 use Sphp\Manual\MVC\Errors\HttpErrorViewer;
 //include_once 'HttpErrorViewer.php';
 

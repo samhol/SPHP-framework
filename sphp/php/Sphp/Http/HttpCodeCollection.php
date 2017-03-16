@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Http;
+namespace Sphp\Http;
 
 use Sphp\Stdlib\Path;
 use Sphp\Stdlib\Parser;
@@ -28,6 +28,9 @@ class HttpCodeCollection implements Iterator {
    */
   private static $errors;
 
+  /**
+   * 
+   */
   public function __construct() {
     if (!is_array(self::$errors)) {
       self::$errors = Parser::fromFile(Path::get()->local('/sphp/yaml/http_errors.yaml'));
@@ -42,7 +45,7 @@ class HttpCodeCollection implements Iterator {
    *
    * @param  int $code HTTP message code
    * @return string
-   * @throws InvalidArgumentException
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function getCode($code = null) {
     if ($code === null) {
@@ -59,7 +62,7 @@ class HttpCodeCollection implements Iterator {
    *
    * @param  int $code HTTP message code
    * @return string
-   * @throws InvalidArgumentException
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function getMessage($code = null) {
     if ($code === null) {
@@ -76,7 +79,7 @@ class HttpCodeCollection implements Iterator {
    *
    * @param  int $code HTTP message code
    * @return string
-   * @throws InvalidArgumentException
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function getDescription($code = null) {
     if ($code === null) {
