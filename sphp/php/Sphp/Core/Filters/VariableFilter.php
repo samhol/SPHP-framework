@@ -8,10 +8,7 @@
 namespace Sphp\Core\Filters;
 
 /**
- * Filter converts a numeric input value to a corresponding roman numeral
- * 
- * * All non negative integer values remain unchanged. 
- * * value is consideserd as an integer if it contains only numbers
+ * Filters a variable with a specified filter
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12
@@ -45,8 +42,31 @@ class VariableFilter extends AbstractFilter {
     $this->filter = $filter;
     $this->options = $options;
   }
-  
-  public function filter($variable) {
+  public function getFilter() {
+    return $this->filter;
+  }
+
+  public function getOptions() {
+    return $this->options;
+  }
+
+  protected function setFilter($filter) {
+    $this->filter = $filter;
+    return $this;
+  }
+
+  protected function setOption($optName, $value) {
+    $this->options[$optName] = $value;
+    return $this;
+  }
+
+  protected function setOptions($options) {
+    $this->options = $options;
+    return $this;
+  }
+
+    public function filter($variable) {
+      print_r($this->options);
     return filter_var($variable, $this->filter, $this->options);
   }
 
