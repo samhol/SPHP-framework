@@ -44,7 +44,7 @@ class Path {
    * 
    * **IMPORTANT:** 
    * 
-   * * the `$localRoot` should be an Absolute path so that all the subfolders are reachable.
+   * * the `$localRoot` should be an Absolute path so that all the sub folders are reachable.
    * * If either `$localRoot` or `$httpRoot` is not given the instance uses `$_SERVER` values if present
    * 
    * @throws \Sphp\Exceptions\InvalidArgumentException if either local or http path cannot be resolved
