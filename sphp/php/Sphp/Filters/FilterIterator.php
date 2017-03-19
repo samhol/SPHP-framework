@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 use IteratorIterator;
 use Traversable;

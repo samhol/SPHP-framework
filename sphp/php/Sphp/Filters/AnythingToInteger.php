@@ -5,13 +5,13 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 /**
  * Filter converts an input value to a corresponding integer value according to the PHP type conversion
  * 
  * * All non negative integer values remain unchanged. 
- * * value is consideserd as an integer if it contains only numbers
+ * * value is considered as an integer if it contains only numbers
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12

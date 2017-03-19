@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 $data = [-2, 0, "a", "5", 11, 1412];
 $ordinalizer = new Ordinalizer();

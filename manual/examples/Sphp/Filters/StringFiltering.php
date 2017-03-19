@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 $filters = new FilterAggregate();
 

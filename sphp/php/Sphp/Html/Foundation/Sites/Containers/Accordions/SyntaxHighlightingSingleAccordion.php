@@ -73,7 +73,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
   /**
    * Prints the program code from the file
    *
-   * @param  string $path the filepath of the program code
+   * @param  string $path the file path of the program code
    * @param  mixed|mixed[] $title the title of the accordion
    */
   public static function visualize($path, $title = null) {

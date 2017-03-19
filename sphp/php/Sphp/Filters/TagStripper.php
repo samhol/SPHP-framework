@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 /**
  * Filter strips tags from the given input

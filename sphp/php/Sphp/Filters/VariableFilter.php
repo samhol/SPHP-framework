@@ -5,7 +5,7 @@
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Filters;
+namespace Sphp\Filters;
 
 /**
  * Filters a variable with a specified filter
@@ -42,6 +42,7 @@ class VariableFilter extends AbstractFilter {
     $this->filter = $filter;
     $this->options = $options;
   }
+
   public function getFilter() {
     return $this->filter;
   }
@@ -65,8 +66,8 @@ class VariableFilter extends AbstractFilter {
     return $this;
   }
 
-    public function filter($variable) {
-      print_r($this->options);
+  public function filter($variable) {
+    //print_r($this->options);
     return filter_var($variable, $this->filter, $this->options);
   }
 

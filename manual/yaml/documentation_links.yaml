@@ -16,7 +16,7 @@ items:
       - link: Types and Utlilities
         page: Sphp.Core.Types
       - link: Data filtering
-        page: Sphp.Core.Filters
+        page: Sphp.Filters
       - link: Data validation
         page: Sphp.Validators
       - link: I18n

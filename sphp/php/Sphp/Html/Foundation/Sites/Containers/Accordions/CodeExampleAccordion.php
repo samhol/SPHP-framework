@@ -11,7 +11,7 @@ use Sphp\Html\ContentTrait;
 use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
- * Implements an accrodion for PHP Example presentation
+ * Implements an accordion for PHP Example presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-02
@@ -45,7 +45,7 @@ class CodeExampleAccordion extends Accordion {
   private $outputPane;
 
   /**
-   * the output as highlighed syntax
+   * the output as highlighted syntax
    *
    * @var SyntaxHighlightingPane
    */
@@ -54,7 +54,7 @@ class CodeExampleAccordion extends Accordion {
   /**
    * Constructs a new instance
    *
-   * @param string $path the filepath of the presented example PHP code
+   * @param string $path the file path of the presented example PHP code
    * @param string|boolean $highlightOutput the language name of the output code 
    *        or false if highlighted output code should not be visible
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
@@ -85,7 +85,7 @@ class CodeExampleAccordion extends Accordion {
 
   /**
    * 
-   * @param  string $path the filepath of the presented example PHP code
+   * @param  string $path the file path of the presented example PHP code
    * @param  boolean $highlightOutput true for highlighted program code as the 
    *         output presentation, false for html presentation
    * @param  string $outputLang the language name of the output code
@@ -100,7 +100,7 @@ class CodeExampleAccordion extends Accordion {
   /**
    * Loads the example PHP file content
    *
-   * @param  string $path the filepath of the example PHP code
+   * @param  string $path the file path of the example PHP code
    * @param string|boolean $highlightOutput the language name of the output code 
    *        or false if highlighted output code should not be visible
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
@@ -240,7 +240,7 @@ class CodeExampleAccordion extends Accordion {
   /**
    * Prints the PHP Example code and the preferred result
    *
-   * @param  string $path the filepath of the presented example PHP code
+   * @param  string $path the file path of the presented example PHP code
    * @param  boolean $highlightOutput true for highlighted program code
    *         presentation, false for html presentation
    * @param string $outputLang the language name of the highlighted output code
