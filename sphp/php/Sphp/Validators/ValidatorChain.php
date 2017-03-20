@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Countable;
-use Sphp\Core\I18n\MessageList;
+use Sphp\I18n\MessageList;
 
 /**
  * A validator container for validating a value against multiple validators

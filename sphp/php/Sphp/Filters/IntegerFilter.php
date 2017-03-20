@@ -16,7 +16,7 @@ namespace Sphp\Filters;
  * @filesource
  */
 class IntegerFilter extends VariableFilter {
-
+private $round  = \PHP_ROUND_HALF_UP;
   /**
    * Constructs a new instance
    * 
@@ -25,7 +25,7 @@ class IntegerFilter extends VariableFilter {
    * @param int|null $max optional maximum value
    */
   public function __construct($default = null, $min = null, $max = null) {
-    parent::__construct(FILTER_VALIDATE_INT);
+    parent::__construct(\FILTER_VALIDATE_INT);
     if ($min !== null) {
       $this->setMin($min);
     }
@@ -35,6 +35,11 @@ class IntegerFilter extends VariableFilter {
     if ($default !== null) {
       $this->setDefault($default);
     }
+  }
+  
+  public function setRounding($round  = PHP_ROUND_HALF_UP) {
+    $this->round = $round;
+    return $this;
   }
 
   /**
@@ -65,6 +70,19 @@ class IntegerFilter extends VariableFilter {
   public function setDefault($default) {
     $this->setOption('default', $default);
     return $this;
+  }
+  
+  public function filter($variable) {
+    if(is_object($variable) && method_exists($variable, '__toString')) {
+      $variable = strval($variable);
+    }
+    if (!is_numeric($variable)) {
+      $variable = null;
+      echo "\nperkele:".$variable."\n";
+    } else {
+      $variable = round($variable, 0, $this->round);
+    }
+    return parent::filter($variable);
   }
 
 }

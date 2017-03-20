@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Core\I18n\Calendar;
+use Sphp\I18n\Calendar;
 use Sphp\Stdlib\Arrays;
 
 /**

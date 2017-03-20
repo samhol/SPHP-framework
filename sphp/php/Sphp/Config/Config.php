@@ -30,7 +30,7 @@ use InvalidArgumentException;
 class Config implements Arrayable, Iterator, ArrayAccess, Countable {
 
   /**
-   * the singelton instances for defined domains
+   * the singleton instances for defined domains
    *
    * @var Configuration[]
    */
@@ -68,7 +68,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Returns the singelton instanse of the {@link self} object
+   * Returns the singleton instance of the {@link self} object
    *
    * @param array[] $config the domain name of the instance
    * @param boolean $readOnly config data is read-only unless this is set to false

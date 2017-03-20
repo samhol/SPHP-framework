@@ -8,10 +8,10 @@
 namespace Sphp\Filters;
 
 /**
- * Filter converts a numeric input value to corresponding ordinal (in english)
+ * Filter converts a numeric input value to corresponding ordinal (in English)
  * 
  * * All non negative integer values remain unchanged. 
- * * value is consideserd as an integer if it contains only numbers 
+ * * value is considered as an integer if it contains only numbers 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-05-12

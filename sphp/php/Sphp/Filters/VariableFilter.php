@@ -40,7 +40,7 @@ class VariableFilter extends AbstractFilter {
    */
   public function __construct($filter, $options = []) {
     $this->filter = $filter;
-    $this->options = $options;
+    $this->options['options'] = $options;
   }
 
   public function getFilter() {
@@ -48,26 +48,64 @@ class VariableFilter extends AbstractFilter {
   }
 
   public function getOptions() {
-    return $this->options;
+    return $this->options['options'];
   }
 
+  /**
+   * 
+   * @return int
+   */
+  public function getFlags() {
+    return $this->options['flags'];
+  }
+
+  /**
+   * 
+   * @param  int $filter
+   * @return self for a fluent interface
+   */
   protected function setFilter($filter) {
     $this->filter = $filter;
     return $this;
   }
 
+  /**
+   * Sets the option name value pair
+   * 
+   * @param  string $optName option name
+   * @param  mixed $value
+   * @return self for a fluent interface
+   */
   protected function setOption($optName, $value) {
-    $this->options[$optName] = $value;
+    $this->options['options'][$optName] = $value;
     return $this;
   }
 
+  /**
+   * Sets the option name value pair
+   * 
+   * @param  string $optName option name
+   * @param  mixed $value
+   * @return self for a fluent interface
+   */
+  protected function setFlags($flags) {
+    $this->options['flags'] = $flags;
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array $options
+   * @return self for a fluent interface
+   */
   protected function setOptions($options) {
-    $this->options = $options;
+    $this->options['options'] = $options;
     return $this;
   }
 
   public function filter($variable) {
     //print_r($this->options);
+    
     return filter_var($variable, $this->filter, $this->options);
   }
 

@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Core\I18n\MessageList;
+use Sphp\I18n\MessageList;
 
 /**
  * The base interface for all validators

@@ -12,7 +12,7 @@ $rootNs = $apigen->namespaceLink(__NAMESPACE__);
 $configNs = $apigen->classLinker(Config::class)->namespaceLink();
 use Sphp\Stdlib\Events\EventInterface as EventInterface;
 $eventNs = $apigen->classLinker(EventInterface::class)->namespaceLink();
-use Sphp\Core\I18n\Gettext\Translator;
+use Sphp\I18n\Gettext\Translator;
 $gettextNs = $apigen->classLinker(Translator::class)->namespaceLink();
 use Sphp\Stdlib\Strings;
 $typesNs = $apigen->classLinker(Strings::class)->namespaceLink();

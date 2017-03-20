@@ -3,9 +3,9 @@
 namespace Sphp;
 
 use Sphp\Html\ContentInterface;
-use Sphp\Core\I18n\Gettext\PoFileIterator;
-use Sphp\Core\I18n\Gettext\GettextData;
-use Sphp\Core\I18n\Gettext\PluralGettextData;
+use Sphp\I18n\Gettext\PoFileIterator;
+use Sphp\I18n\Gettext\GettextData;
+use Sphp\I18n\Gettext\PluralGettextData;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Tr;

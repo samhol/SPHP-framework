@@ -8,7 +8,7 @@
 
 namespace Sphp;
 
-use Sphp\Core\I18n\Gettext\PoFileIterator;
+use Sphp\I18n\Gettext\PoFileIterator;
 
 /**
  * Description of Controller

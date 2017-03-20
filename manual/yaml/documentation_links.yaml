@@ -20,7 +20,7 @@ items:
       - link: Data validation
         page: Sphp.Validators
       - link: I18n
-        page: Sphp.Core.I18n
+        page: Sphp.I18n
       - link: Database objects 
         page: Sphp.Db.Objects
     - separator: HTML manipulation
@@ -69,8 +69,8 @@ items:
     - menu: Miscellaneous
       items:
       - link: Application configuration
-        page: Sphp.Core.Config
+        page: Sphp.Config
       - menu: Miscellaneous
         items:
         - link: Application configuration
-          page: Sphp.Core.Config
+          page: Sphp.Config

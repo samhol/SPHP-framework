@@ -12,11 +12,11 @@ require_once('GettextTable.php');
       <pre>
         <?php
 
-        use Sphp\Core\I18n\Gettext\PoFileIterator;
+        use Sphp\I18n\Gettext\PoFileIterator;
 
         $p = new PoFileIterator(\Sphp\LOCALE_PATH . '/fi_FI/LC_MESSAGES/Sphp.Defaults.po');
-        $k = $p->filter(function(\Sphp\Core\I18n\Gettext\GettextData $d) {
-          return $d instanceof \Sphp\Core\I18n\Gettext\PluralGettextData;
+        $k = $p->filter(function(\Sphp\I18n\Gettext\GettextData $d) {
+          return $d instanceof \Sphp\I18n\Gettext\PluralGettextData;
         });
         $gettextTable = new GettextTable($k);
         $gettextTable->printHtml();
