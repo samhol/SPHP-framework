@@ -3,7 +3,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-use Sphp\Html\Forms\FormInterface as FormInterface;
+use Sphp\Html\Forms\FormInterface;
 
 $formIfLink = $api->classLinker(FormInterface::class);
 $inputInterface = $api->classLinker(InputInterface::class);

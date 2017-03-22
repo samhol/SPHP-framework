@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
-use Sphp\Html\Foundation\Sites\Navigation\SubMenu;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
 try {
@@ -11,7 +10,7 @@ try {
   $navi = new TopBar();
   $navi->addCssClass('sphp-manual');
 
-  $manual = (new SubMenu('Documentation'));
+  //$manual = (new SubMenu('Documentation'));
 
   $leftDrop = new DropdownMenu();
   $builder = new MenuBuilder();

@@ -4,12 +4,12 @@ namespace Sphp\Stdlib;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$strLink = $php->typeLink("string");
-$StringsLink = $api->classLinker(Strings::class);
+$strLink = $php->typeLink('string');
+$stringsLink = $api->classLinker(Strings::class);
 echo $parsedown->text(<<<MD
 ##The $StringsLink class
 
-$StringsLink class is a static utility class for multibyte PHP $strLink comparison and matching.
+$stringsLink class is a static utility class for multibyte PHP $strLink comparison and matching.
 MD
 );
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings1.php", "text", false))
@@ -17,7 +17,7 @@ MD
 		->setOutputSyntaxPaneTitle("String testing results")
 		->printHtml();
 echo $parsedown->text(<<<MD
-$StringsLink class has also a couple of handy PHP $strLink manipulation functions.
+$stringsLink class has also a couple of handy PHP $strLink manipulation functions.
 MD
 );
 (new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Strings2.php", "text", false))

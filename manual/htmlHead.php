@@ -1,33 +1,26 @@
 <?php
 
+namespace Sphp\MVC;
+
+require_once 'loaders.php';
+
+$router = new Router();
+$router->route('/', $loadIndex);
+$router->route('/<!category>', $loadPage);
+//$router->route('/kilpailut/<*categories>', $loadCompetition);
+$router->setDefaultRoute($loadNotFound);
+
 namespace Sphp\Html;
 
-use Sphp\Http\HttpCodeCollection;
 use Sphp\Stdlib\Path;
 
 Document::setHtmlVersion(Document::HTML5);
 
-(new Path())->http('manual/pics/favicon.ico');
-
-$errorCode = filter_input(INPUT_SERVER, 'REDIRECT_STATUS', FILTER_SANITIZE_NUMBER_INT);
-if ($errorCode === null) {
-  $errorCode = filter_input(INPUT_GET, 'error_code', FILTER_SANITIZE_NUMBER_INT);
-}
-
 $html = Document::html();
-if ($errorCode !== null) {
-  $p = new HttpCodeCollection();
-  if ($p->contains($errorCode)) {
-    $title = $errorCode . ': ' . $p->getMessage($errorCode);
-  }
-  Document::html()->setDocumentTitle($title);
-  $html->body()->addCssClass('error-page');
-} else {
-  $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-  $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
-  $title = $titleGenerator->createTitleFor($page);
-  Document::html()->setDocumentTitle($title);
-}
+
+$titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
+$title = $titleGenerator->createTitleFor(trim($_SERVER["REDIRECT_URL"], '/'));
+Document::html()->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;
 

@@ -63,7 +63,8 @@ echo Document::html()->body()->addCssClass('manual')->getOpeningTag();
           $man_cache = str_replace('.', '-', $p);
         }
         if ($outputCache->start($man_cache) === false) {
-          include('manual/manualBuilder.php');
+          //include('manual/manualBuilder.php');        
+          $router->execute();
           $outputCache->end();
         }
         ?>

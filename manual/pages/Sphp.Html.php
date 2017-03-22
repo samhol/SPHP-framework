@@ -1,17 +1,18 @@
 <?php
 
 namespace Sphp\Html;
-
-$abstractTag = $api->classLinker(AbstractTag::class);
-$ns = $api->namespaceLink(__NAMESPACE__);
-$documentLink = $api->classLinker(Document::class);
-$contentInterface = $api->classLinker(ContentInterface::class);
-$exeption = $php->classLinker(\Exception::class);
-$componentInterface = $api->classLinker(ComponentInterface::class);
-$emptyTag = $api->classLinker(EmptyTag::class);
-$containerInterface = $api->classLinker(ContainerInterface::class);
-$containerComponentInterface = $api->classLinker(ContainerComponentInterface::class);
-$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Apps\Manual\Apis;
+$abstractTag = Apis::apigen()->classLinker(AbstractTag::class);
+$ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$documentLink = Apis::apigen()->classLinker(Document::class);
+$contentInterface = Apis::apigen()->classLinker(ContentInterface::class);
+$exeption = Apis::phpManual()->classLinker(\Exception::class);
+$componentInterface = Apis::apigen()->classLinker(ComponentInterface::class);
+$emptyTag = Apis::apigen()->classLinker(EmptyTag::class);
+$containerInterface = Apis::apigen()->classLinker(ContainerInterface::class);
+$containerComponentInterface = Apis::apigen()->classLinker(ContainerComponentInterface::class);
+$contentTrait = Apis::apigen()->classLinker(ContentTrait::class);
+$nsbc = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Introduction to HTML components
 $nsbc
@@ -46,7 +47,7 @@ interface ensures that the component can be outputted to an HTML document via th
 3. {$contentInterface->methodLink("printHtml")} output the component as an HTML string or the exception description if the execution fails.
 
 
-Trait {$api->classLinker(ContentTrait::class)} gives an implementation to the subsequent
+Trait $contentTrait gives an implementation to the subsequent
 two of these methods leaving the implementation of the {$contentInterface->methodLink("getHtml")}
 to the inheritor. Using this trait ensures that {$contentInterface->methodLink("__toString")}
 will never throw any type of {$exeption} during execution.

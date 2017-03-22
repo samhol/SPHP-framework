@@ -6,71 +6,71 @@ items:
     - menu: Standard library
       items:
       - link: Introduction
-        page: Sphp.Core
+        href: Sphp.Core
       - link: Filesystem manipulation
-        page: Sphp.Stdlib.filemanipulation
+        href: Sphp.Stdlib.filemanipulation
       - link: Data Structures
-        page: Sphp.Data
+        href: Sphp.Data
       - link: Events and Observers
-        page: Sphp.Stdlib.Observers.and.Events
+        href: Sphp.Stdlib.Observers.and.Events
       - link: Types and Utlilities
-        page: Sphp.Core.Types
+        href: Sphp.Core.Types
       - link: Data filtering
-        page: Sphp.Filters
+        href: Sphp.Filters
       - link: Data validation
-        page: Sphp.Validators
+        href: Sphp.Validators
       - link: I18n
-        page: Sphp.I18n
+        href: Sphp.I18n
       - link: Database objects 
-        page: Sphp.Db.Objects
+        href: Sphp.Db.Objects
     - separator: HTML manipulation
     - menu: HTML core
       items:
       - link: Introduction
-        page: Sphp.Html
+        href: Sphp.Html
       - link: Document factory
-        page: Sphp.Html.Document
+        href: Sphp.Html.Document
       - link: Attribute management
-        page: Sphp.Html.Attributes
+        href: Sphp.Html.Attributes
       - link: Meta data manipulation
-        page: Sphp.Html.Head
+        href: Sphp.Html.Head
       - link: Client side scripting 
-        page: Sphp.Html.Programming
+        href: Sphp.Html.Programming
       - link: Lists
-        page: Sphp.Html.Lists
+        href: Sphp.Html.Lists
       - link: Tables
-        page: Sphp.Html.Tables
+        href: Sphp.Html.Tables
       - link: Forms
-        page: Sphp.Html.Forms
+        href: Sphp.Html.Forms
     - menu: HTML media
       items:
       - link: Introduction
-        page: Sphp.Html.Media
+        href: Sphp.Html.Media
       - link: Audio and Video 
-        page: Sphp.Html.Media.Multimedia
+        href: Sphp.Html.Media.Multimedia
     - menu: Foundation Sites
       items:
       - link: Introduction
-        page: Sphp.Html.Foundation.Sites
+        href: Sphp.Html.Foundation.Sites
       - link: Core components
-        page: Sphp.Html.Foundation.Sites.Core
+        href: Sphp.Html.Foundation.Sites.Core
       - link: Grid systems
-        page: Sphp.Html.Foundation.Sites.Grids
+        href: Sphp.Html.Foundation.Sites.Grids
       - link: General Containers
-        page: Sphp.Html.Foundation.Sites.Containers
+        href: Sphp.Html.Foundation.Sites.Containers
       - link: Navigation menus
-        page: Sphp.Html.Foundation.Sites.Navigation
+        href: Sphp.Html.Foundation.Sites.Navigation
       - link: Buttons 
-        page: Sphp.Html.Foundation.Sites.Buttons
+        href: Sphp.Html.Foundation.Sites.Buttons
       - link: Media components
-        page: Sphp.Html.Foundation.Sites.Media
+        href: Sphp.Html.Foundation.Sites.Media
       - link: Form components
-        page: Sphp.Html.Foundation.Sites.Forms
+        href: Sphp.Html.Foundation.Sites.Forms
     - menu: Miscellaneous
       items:
       - link: Application configuration
-        page: Sphp.Config
+        href: Sphp.Config
       - menu: Miscellaneous
         items:
         - link: Application configuration
-          page: Sphp.Config
+          href: Sphp.Config
