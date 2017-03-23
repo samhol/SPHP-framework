@@ -28,4 +28,12 @@ class DropdownMenu extends Menu {
     $this->attrs()->demand('data-dropdown-menu');
   }
 
+  public function append(MenuItemInterface $content) {
+    if ($content instanceof SubMenu) {
+      $content->addCssClass('is-dropdown-submenu-parent');
+    }
+    parent::append($content);
+    return $this;
+  }
+
 }

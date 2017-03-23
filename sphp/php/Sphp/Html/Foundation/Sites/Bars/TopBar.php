@@ -44,8 +44,7 @@ class TopBar extends AbstractBar {
     }
     $right->cssClasses()->lock('top-bar-right');
     parent::__construct('div', $left, $right);
-    $this->titleArea = new Div($title);
-    $this->titleArea->attrs()->classes()->lock('top-bar-title');
+    $this->barTitle($title);
     $this->cssClasses()->lock('top-bar');
   }
 
@@ -83,7 +82,6 @@ class TopBar extends AbstractBar {
    * Unstacks the stacked buttons in the given screen sizes
    * 
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function setDefaultStacking() {
     $this->cssClasses()
@@ -94,18 +92,27 @@ class TopBar extends AbstractBar {
   /**
    * Sets and Returns the title area component
    *
-   * @param  mixed $title the title of the Navigator component
-   * @return Div the title area component
+   * @param  mixed $title the title content of the Navigator component
+   * @return self for a fluent interface
    */
   public function barTitle($title = null) {
     if ($title !== null) {
+      $this->titleArea = new Div($title);
+      $this->titleArea->attrs()->classes()->lock('top-bar-title');
+
       $this->titleArea->replaceContent($title);
+    } else {
+      $this->titleArea = null;
     }
-    return $this->titleArea;
+    return $this;
   }
 
   public function contentToString() {
-    return $this->titleArea . parent::contentToString();
+    $output = '';
+    if ($this->titleArea !== null) {
+      $output .= $this->titleArea->getHtml();
+    }
+    return $output . parent::contentToString();
   }
 
 }

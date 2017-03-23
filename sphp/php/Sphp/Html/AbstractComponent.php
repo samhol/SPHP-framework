@@ -34,7 +34,7 @@ abstract class AbstractComponent extends AbstractTag {
    * Returns the content of the component as a string
    *
    * @return string content as a string
-   * @throws \Exception if content parsing fails
+   * @throws \Sphp\Exceptions\RuntimeException if content parsing fails
    */
   abstract public function contentToString();
 
@@ -51,7 +51,7 @@ abstract class AbstractComponent extends AbstractTag {
    * Returns the component as html-markup string
    *
    * @return string html-markup of the component
-   * @throws \Exception if html parsing fails
+   * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
    */
   public function getHtml() {
     return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();

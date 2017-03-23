@@ -29,7 +29,7 @@ interface ContentInterface {
 	 * Returns the component as HTML markup string
 	 *
 	 * @return string HTML markup of the component
-	 * @throws \Exception if html parsing fails
+	 * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
 	 */
 	public function getHtml();
 

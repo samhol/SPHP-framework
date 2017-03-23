@@ -18,6 +18,10 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  */
 class MenuBuilder {
 
+  /**
+   *
+   * @var string 
+   */
   private $menuType = Menu::class;
 
   /**
@@ -26,6 +30,10 @@ class MenuBuilder {
    */
   private $linkBuilder;
 
+  /**
+   * 
+   * @param MenuLinkBuilder $linkBuilder
+   */
   public function __construct(MenuLinkBuilder $linkBuilder = null) {
     if ($linkBuilder === null) {
       $linkBuilder = new MenuLinkBuilder();
@@ -55,15 +63,15 @@ class MenuBuilder {
 
   /**
    * 
-   * @param  array $data
+   * @param  array $contentData
    * @param  MenuInterface $instance
    * @return MenuInterface
    */
-  private function insertIntoMenu(array $data, MenuInterface $instance = null) {
+  private function insertIntoMenu(array $contentData, MenuInterface $instance = null) {
     if ($instance === null) {
       $instance = new Menu();
     }
-    foreach ($data as $item) {
+    foreach ($contentData as $item) {
       if (array_key_exists('link', $item)) {
         $instance->append($this->linkBuilder->parseLink($item));
       } else if (array_key_exists('menu', $item) && array_key_exists('items', $item)) {

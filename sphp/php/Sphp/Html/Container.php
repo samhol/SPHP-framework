@@ -27,7 +27,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
       TraversableTrait;
 
   /**
-   * container's content
+   * content
    *
    * @var mixed[]
    */

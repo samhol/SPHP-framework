@@ -18,8 +18,7 @@ use Sphp\Html\TraversableTrait;
  *
  * The graphical control element {@link self} is a navigation aid used in user 
  * interfaces. It allows users to keep track of their locations 
- * within programs or documents. The term comes from the trail of breadcrumbs 
- * left by Hansel and Gretel in the popular fairytale.
+ * within programs or documents.
  * 
  * {@link self} component shows a navigation trail for users clicking through a 
  * site or app. They'll fill out 100% of the width of their parent container.
@@ -108,7 +107,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
   }
 
   /**
-   * Appends a {@link BreadCrumb} component to the container
+   * Appends a BreadCrumb to the container
    *
    * @param  BreadCrumb $breadcrumb component to append
    * @return self for a fluent interface

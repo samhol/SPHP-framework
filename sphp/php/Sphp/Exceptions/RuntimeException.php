@@ -11,9 +11,12 @@ use RuntimeException as SplRuntimeException;
 
 
 /**
- * Description of RuntimeException
+ * Exception thrown if an error which can only be found on runtime occurs
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2017-02-09
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class RuntimeException extends SplRuntimeException implements Exception {
 

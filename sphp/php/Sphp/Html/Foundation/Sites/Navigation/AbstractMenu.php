@@ -7,8 +7,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\AbstractContainerComponent;
+use Sphp\Html\AbstractComponent;
 use Sphp\Html\ContainerInterface;
+use Sphp\Html\Container;
 
 /**
  * Implements an abstract menu
@@ -20,9 +21,15 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractMenu extends AbstractContainerComponent implements MenuInterface, MenuItemInterface {
+class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemInterface {
 
   private $defaultTarget = '_self';
+
+  /**
+   *
+   * @var ContainerInterface 
+   */
+  private $items;
 
   /**
    * Constructs a new instance
@@ -32,8 +39,22 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * @param ContainerInterface $contentContainer
    */
   public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
-    parent::__construct($tagname, $attrManager, $contentContainer);
+    if ($contentContainer === null) {
+      $contentContainer = new Container();
+    }
+    $this->items = $contentContainer;
+    parent::__construct($tagname, $attrManager);
     $this->cssClasses()->lock('menu');
+  }
+  
+  public function __destruct() {
+    unset($this->items);
+    parent::__destruct();
+  }
+  
+  public function __clone() {
+    $this->items = clone $this->items;
+    parent::__clone();
   }
 
   /**
@@ -45,7 +66,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
     $this->defaultTarget = $target;
     return $this;
   }
-  
+
   public function getDefaultTarget() {
     return $this->defaultTarget;
   }
@@ -57,7 +78,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    * @return self for a fluent interface
    */
   public function append(MenuItemInterface $item) {
-    $this->getInnerContainer()->append($item);
+    $this->items->append($item);
     return $this;
   }
 
@@ -105,7 +126,7 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
     $this->append($text);
     return $this;
   }
-  
+
   public function nested($nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
@@ -150,6 +171,10 @@ abstract class AbstractMenu extends AbstractContainerComponent implements MenuIn
    */
   public function isActive() {
     return $this->hasCssClass('is-active');
+  }
+
+  public function contentToString() {
+    return $this->items->getHtml();
   }
 
 }

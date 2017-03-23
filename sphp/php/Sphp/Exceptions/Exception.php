@@ -8,10 +8,13 @@
 namespace Sphp\Exceptions;
 
 /**
- * SPHP-specific exception
+ * SPHP-specific exception interface
  *
- * @author Sami Holck
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2017-02-09
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 interface Exception {
-  //put your code here
+  
 }

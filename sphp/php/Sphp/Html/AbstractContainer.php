@@ -28,7 +28,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
       TraversableTrait;
 
   /**
-   * container's content
+   * content
    *
    * @var mixed[]
    */

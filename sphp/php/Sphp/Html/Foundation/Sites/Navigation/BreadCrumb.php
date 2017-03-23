@@ -23,7 +23,7 @@ class BreadCrumb extends MenuLink {
   /**
    * Sets or unsets the hyperlink component as active
    *
-   * @param  boolean $active true foor activation and false for deactivation
+   * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
   public function setDisabled($active = true) {
@@ -36,10 +36,9 @@ class BreadCrumb extends MenuLink {
   }
 
   /**
-   * Checks whether the hyperlink component is set as active or not
+   * Checks whether the hyperlink component is disabled or not
    *
-   * @return boolean true if the hyperlink component is set as active,
-   *         otherwise false
+   * @return boolean true if the component is disabled, otherwise false
    */
   public function isDisabled() {
     return $this->hasCssClass('disabled');
