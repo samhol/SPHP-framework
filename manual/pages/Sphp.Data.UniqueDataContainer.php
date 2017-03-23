@@ -19,4 +19,3 @@ In additioan the $lockablePropertyStorage enables a possibility to lock properti
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/UniqueDataContainer.php", "php", false);
-?>

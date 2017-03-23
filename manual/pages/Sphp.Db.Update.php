@@ -20,4 +20,3 @@ object from {$update->methodLink("where")}.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/update1.php", true, "sql");
-?>

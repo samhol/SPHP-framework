@@ -13,7 +13,7 @@ try {
   //$manual = (new SubMenu('Documentation'));
 
   $leftDrop = new DropdownMenu();
-  $builder = new MenuBuilder();
+  $builder = new MenuBuilder(new MenuLinkBuilder(trim($_SERVER["REDIRECT_URL"], '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));

@@ -15,4 +15,4 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/SphpArrayObject.php", "text", false);
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/Collection.php", "text", false);
-?>
+

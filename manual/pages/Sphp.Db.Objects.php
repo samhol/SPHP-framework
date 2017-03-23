@@ -2,15 +2,16 @@
 
 namespace Sphp\Db\Objects;
 
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Objects\ObjectInterface;
 
-$objectInterface = $api->classLinker(ObjectInterface::class);
-$dbObjectInterface = $api->classLinker(DbObjectInterface::class);
-$geographicalAddress = $api->classLinker(GeographicalAddressInterface::class);
-$location = $api->classLinker(Location::class);
-$user = $api->classLinker(User::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$objectInterface = Apis::apigen()->classLinker(ObjectInterface::class);
+$dbObjectInterface = Apis::apigen()->classLinker(DbObjectInterface::class);
+$geographicalAddress = Apis::apigen()->classLinker(GeographicalAddressInterface::class);
+$location = Apis::apigen()->classLinker(Location::class);
+$user = Apis::apigen()->classLinker(User::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 #Diverse database objects
@@ -35,10 +36,10 @@ MD
 
 
 
-$objectStorageInterface = $api->classLinker(ObjectStorageInterface::class);
-$iterable = $php->classLinker(\IteratorAggregate::class);
-$addresses = $api->classLinker(LocationStorage::class);
-$users = $api->classLinker(Users::class);
+$objectStorageInterface = Apis::apigen()->classLinker(ObjectStorageInterface::class);
+$iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
+$addresses = Apis::apigen()->classLinker(LocationStorage::class);
+$users = Apis::apigen()->classLinker(Users::class);
 echo $parsedown->text(<<<MD
 ##The $objectStorageInterface
 

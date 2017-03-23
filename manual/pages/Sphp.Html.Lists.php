@@ -2,13 +2,16 @@
 
 namespace Sphp\Html\Lists;
 
-$htmlList = $api->classLinker(AbstractList::class);
-$ol = $api->classLinker(Ol::class);
-$ul = $api->classLinker(Ul::class);
-$liInterface = $api->classLinker(LiInterface::class);
-$li = $api->classLinker(Li::class);
-$dlLink = $api->classLinker(Dl::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+
+$htmlList = Apis::apigen()->classLinker(AbstractList::class);
+$ol = Apis::apigen()->classLinker(Ol::class);
+$ul = Apis::apigen()->classLinker(Ul::class);
+$liInterface = Apis::apigen()->classLinker(LiInterface::class);
+$li = Apis::apigen()->classLinker(Li::class);
+$dlLink = Apis::apigen()->classLinker(Dl::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
@@ -25,7 +28,7 @@ $liInterface into a $li object.
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
 
 echo $parsedown->text(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
@@ -44,10 +47,10 @@ This indexing can be numerical or alphabetical.
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Ol.php', false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Ol.php', false, true);
 
-$dtLink = $api->classLinker(Dt::class);
-$ddLink = $api->classLinker(Dd::class);
+$dtLink = Apis::apigen()->classLinker(Dt::class);
+$ddLink = Apis::apigen()->classLinker(Dd::class);
 echo $parsedown->text(<<<MD
 ##Definition lists: <small>The $dlLink component</small>{#dl}
 	
@@ -58,7 +61,7 @@ and answers, or any other groups of name-value data.
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Lists/Dl.php', false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Dl.php', false, true);
 echo $parsedown->text(<<<MD
 ###References:{#refs}
         

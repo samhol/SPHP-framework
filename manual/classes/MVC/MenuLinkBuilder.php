@@ -32,7 +32,7 @@ class MenuLinkBuilder extends SphpMenuLinkBuilder {
 
   public function parseLink(array $linkData) {
     $link = parent::parseLink($linkData);
-    if (array_key_exists('page', $linkData) && $this->currentPage === $linkData['page']) {
+    if (array_key_exists('href', $linkData) && $this->currentPage === $linkData['href']) {
       $link->setActive(true);
     }
     return $link;

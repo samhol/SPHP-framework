@@ -4,7 +4,7 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Html\Apps\Manual\Apis;
-
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 $headNS = Apis::apigen()->namespaceLink(__NAMESPACE__);
 $metaIfLnk = Apis::apigen()->classLinker(HeadComponentInterface::class);
 $head = Apis::apigen()->classLinker(Head::class);
@@ -15,6 +15,7 @@ $meta = Apis::apigen()->classLinker(Meta::class);
 $base = Apis::apigen()->classLinker(Base::class);
 $link = Apis::apigen()->classLinker(Link::class);
 $scriptInterface = Apis::apigen()->classLinker(ScriptInterface::class);
+$w3schools = Apis::w3schools();
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
@@ -37,7 +38,7 @@ The following PHP classes and interfaces describe HTML meta data components:
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head1.php", "html5", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Head/Head1.php", "html5", false);
 echo $parsedown->text(<<<MD
 ##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>{#MetaInterface}
 
@@ -45,7 +46,7 @@ $meta class works also as a object factory for $metaInterface objects implementi
 All $metaInterface types can be stored into a $metaContainer container.
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/MetaInterface.php", "html5", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Head/MetaInterface.php", "html5", false);
 echo $parsedown->text(<<<MD
 ##The $head component and client side scripts
         
@@ -57,4 +58,4 @@ By including scripts at the bottom of the page, it is assured that the DOM is re
 to be poked and it is not reguired to delay initialization any further.
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Head/Head2.php", "html5", false);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Head/Head2.php", "html5", false);

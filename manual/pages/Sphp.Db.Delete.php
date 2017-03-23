@@ -2,7 +2,10 @@
 
 namespace Sphp\Db;
 
-$delete = $api->classLinker(Delete::class);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+
+$delete = Apis::apigen()->classLinker(Delete::class);
 
 echo $parsedown->text(<<<MD
 
@@ -15,5 +18,4 @@ Some DBMSs, like MySQL, allow to delete rows from multiple tables with one SQL
 DELETE statement.
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/delete1.php", true, "sql");
-?>
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/delete1.php", true, 'sql');

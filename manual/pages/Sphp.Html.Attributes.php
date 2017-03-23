@@ -15,8 +15,7 @@ $setAttributeObjectLink = $abstractAttrMngr->methodLink("setAttributeObject", fa
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
-
-        
+    
 $ns	
 
 An HTML attribute is a modifier of an HTML element. Particular attributes are 

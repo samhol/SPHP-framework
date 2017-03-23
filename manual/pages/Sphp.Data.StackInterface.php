@@ -47,4 +47,4 @@ an instance of $queue can therefore be used as a last-in-first-out (LIFO) stack 
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/Queue.php", "php", false);
-?>
+

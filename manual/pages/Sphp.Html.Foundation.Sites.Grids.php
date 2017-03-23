@@ -2,16 +2,17 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Apps\Manual\FoundationDocsLinker;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$grid = $api->classLinker(Grid::class);
-$row = $api->classLinker(Row::class);
-$col = $api->classLinker(Column::class);
-$cols = $api->classLinker(Column::class, "Columns");
-//$ns = $api->namespaceLink(__NAMESPACE__);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$gridInterface = $api->classLinker(GridInterface::class);
-$f_GridLink = FoundationDocsLinker::get()->gridLink(null, "Foundation Grid layout");
+$grid = Apis::apigen()->classLinker(Grid::class);
+$row = Apis::apigen()->classLinker(Row::class);
+$col = Apis::apigen()->classLinker(Column::class);
+$cols = Apis::apigen()->classLinker(Column::class, "Columns");
+
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$gridInterface = Apis::apigen()->classLinker(GridInterface::class);
+$f_GridLink = Apis::foundation()->gridLink(null, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation 6 Grids and Block Grids    
 $ns	
@@ -20,7 +21,7 @@ MD
 );
 $load("Sphp.Html.Foundation.Sites.Grids.GridInterface.php");
 
-$blockGrid = $api->classLinker(BlockGrid::class);
+$blockGrid = Apis::apigen()->classLinker(BlockGrid::class);
 echo $parsedown->text(<<<MD
 ##The $blockGrid component
 	
@@ -40,4 +41,4 @@ for each breakpoint.
         
 MD
 );
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/BlockGrid.php');
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/BlockGrid.php');

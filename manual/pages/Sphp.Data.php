@@ -2,9 +2,11 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
+use Sphp\Html\Apps\Manual\Apis;
 
+$php = Apis::phpManual();
 $nsLink = $api->namespaceLink(__NAMESPACE__);
-$collectionInterface= $api->classLinker(CollectionInterface::class);
+$collectionInterface = $api->classLinker(CollectionInterface::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATA STRUCTURES

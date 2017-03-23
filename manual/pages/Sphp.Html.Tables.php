@@ -2,11 +2,14 @@
 
 namespace Sphp\Html\Tables;
 
-$table = $api->classLinker(Table::class);
-$tr = $api->classLinker(Tr::class);
-$td = $api->classLinker(Td::class);
-$th = $api->classLinker(Th::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+
+$table = Apis::apigen()->classLinker(Table::class);
+$tr = Apis::apigen()->classLinker(Tr::class);
+$td = Apis::apigen()->classLinker(Td::class);
+$th = Apis::apigen()->classLinker(Th::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML TABLES
 
@@ -26,6 +29,6 @@ The $td elements are the data containers in the $table.
 The $td elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
 MD
 );
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Tables/basics.php', false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Tables/basics.php', false, true);
 
-$exampleViewer(EXAMPLE_DIR . 'Sphp/Html/Tables/Table2.php', false, true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Tables/Table2.php', false, true);

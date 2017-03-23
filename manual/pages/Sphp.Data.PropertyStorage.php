@@ -18,4 +18,3 @@ MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/LockablePropertyStorage.php", "php", false);
 
-?>

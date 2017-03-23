@@ -1,7 +1,10 @@
 <?php
 
 namespace Sphp\Html;
+
 use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
 $abstractTag = Apis::apigen()->classLinker(AbstractTag::class);
 $ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
 $documentLink = Apis::apigen()->classLinker(Document::class);
@@ -77,13 +80,13 @@ PHP string. The simplest build in implementor for the $containerInterface is the
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/HtmlContainer.php");
-
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/HtmlContainer.php");
+$containerTag = Apis::apigen()->classLinker(ContainerTag::class);
 echo $parsedown->text(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
-container for other elements. It has a implementation {$api->classLinker(ContainerTag::class)} in the framework.
+container for other elements. It has a implementation $containerTag in the framework.
 
-Furthermore all actual framework components implement {$api->classLinker(ComponentInterface::class)}
+Furthermore all actual framework components implement $componentInterface
 }}
 
 MD

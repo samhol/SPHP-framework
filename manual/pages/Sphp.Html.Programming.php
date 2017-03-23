@@ -2,13 +2,16 @@
 
 namespace Sphp\Html\Programming;
 
-$scriptInterface = $api->classLinker(ScriptInterface::class);
-$scriptCode = $api->classLinker(ScriptCode::class);
-$scriptFile = $api->classLinker(ScriptSrc::class);
-$scriptsContainer = $api->classLinker(ScriptsContainer::class);
-$noscript = $api->classLinker(Noscript::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
+$scriptInterface = Apis::apigen()->classLinker(ScriptInterface::class);
+$scriptCode = Apis::apigen()->classLinker(ScriptCode::class);
+$scriptFile = Apis::apigen()->classLinker(ScriptSrc::class);
+$scriptsContainer = Apis::apigen()->classLinker(ScriptsContainer::class);
+$noscript = Apis::apigen()->classLinker(Noscript::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 
@@ -38,13 +41,13 @@ Note: There are several ways an external script can be executed:
         
 $scriptCode component containing statements can be manipulated several ways. 
   
- 1. via {$php->classLinker(\ArrayAccess::class)}
+ 1. via $arrayAccess
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Programming/ScriptInterface.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Programming/ScriptInterface.php", "html5", true);
 echo $parsedown->text(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Programming/ScriptsContainer.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Programming/ScriptsContainer.php", "html5", true);

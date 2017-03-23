@@ -32,4 +32,3 @@ $load("Sphp.Db.Query.php");
 $load("Sphp.Db.Insert.php");
 $load("Sphp.Db.Update.php");
 $load("Sphp.Db.Delete.php");
-?>

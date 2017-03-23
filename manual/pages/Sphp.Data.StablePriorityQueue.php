@@ -15,5 +15,3 @@ priority value occur in the order in which they were inserted.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/StablePriorityQueue.php", "php", false);
-
-?>

@@ -29,4 +29,3 @@ echo $photoAlbum->getOpeningButton("Photoalbum");
 //print_r($c->recursiveDirectoryIterator("photos"));
 //print_r($_SERVER);
 //echo "</pre>";
-?>

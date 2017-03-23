@@ -2,8 +2,10 @@
 
 namespace Sphp\Db;
 
+use Sphp\Html\Apps\Manual\Apis;
+
 $db = $api->classLinker(Db::class);
-$pdo = $php->classLinker(\PDO::class);
+$pdo = Apis::phpManual()->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
 ##The $db class
@@ -11,9 +13,8 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Query.php", 2);
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Insert.php", 1, "text");
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Update.php", 1, "text");
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Delete.php", 1, "text");
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Table.php", 1, "text");
-?>
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Query.php", true, false);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Insert.php", true, false);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Update.php", true, false);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Delete.php", true, false);
+$exampleViewer(EXAMPLE_DIR . "Sphp/Db/Db.Table.php", true, false);

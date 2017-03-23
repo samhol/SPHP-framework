@@ -2,10 +2,13 @@
 
 namespace Sphp\Db;
 
-$sqlException = $api->classLinker(SQLException::class);
-$conditions = $api->classLinker(Conditions::class);
-$query = $api->classLinker(Query::class);
-$pdo = $php->classLinker(\PDO::class);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+
+$sqlException = Apis::apigen()->classLinker(SQLException::class);
+$conditions = Apis::apigen()->classLinker(Conditions::class);
+$query = Apis::apigen()->classLinker(Query::class);
+$pdo = Apis::phpManual()->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD
 ##$query object for SQL queries
@@ -26,4 +29,4 @@ Some essential $query methods:
 MD
 );
 
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/query1.php", 1, "sql");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/query1.php", 1, "sql");

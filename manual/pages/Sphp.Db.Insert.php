@@ -26,4 +26,3 @@ $sqlException returned instead.
 MD
 );
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/insert1.php", true, "sql");
-?>

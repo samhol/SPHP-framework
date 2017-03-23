@@ -13,4 +13,3 @@ MD
 );
 $load("Sphp.Net.SessionHandler.php");
 $load("Sphp.Core.Security.PasswordInterface.php");
-?>

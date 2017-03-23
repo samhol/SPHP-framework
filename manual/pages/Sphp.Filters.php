@@ -3,9 +3,9 @@
 namespace Sphp\Filters;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-
-$strLink = $php->typeLink("string");
-$arrLink = $php->typeLink([]);
+use Sphp\Html\Apps\Manual\Apis;
+$strLink = Apis::phpManual()->typeLink("string");
+$arrLink = Apis::phpManual()->typeLink([]);
 $filterInterface = $api->classLinker(FilterInterface::class);
 $filterAggregate = $api->classLinker(FilterAggregate::class);
 $nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
