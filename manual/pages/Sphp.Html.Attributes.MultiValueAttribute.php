@@ -2,6 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
 $abstractAttr = $api->classLinker(AbstractAttribute::class);
 $multiValueAttr = $api->classLinker(MultiValueAttribute::class);
 echo $parsedown->text(<<<MD
@@ -17,4 +19,4 @@ JavaScript statement to make changes to HTML elements with a specified class.
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/MultiValueAttribute.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/MultiValueAttribute.php", "html5", true);

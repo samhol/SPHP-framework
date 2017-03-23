@@ -2,6 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
 $abstractAttrMngr = $api->classLinker(AbstractAttributeManager::class);
 $htmlAttrMngr = $api->classLinker(AttributeManager::class);
 $attributeInterface = $api->classLinker(AttributeInterface::class);
@@ -54,7 +56,7 @@ to the given value. Locked attribute attribute is always visible. Such attribute
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
 echo $parsedown->text(<<<MD
        
 ###Inserting new $attributeInterface objects to the manager
@@ -70,5 +72,5 @@ New $attributeInterface objects can be inserted into the manager by using the $s
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
 

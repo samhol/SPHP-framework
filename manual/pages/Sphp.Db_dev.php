@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion as SyntaxHighlighter;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $sqlException = $api->classLinker(SQLException::class);
 $pdo = $php->classLinker(\PDO::class);
@@ -20,12 +20,12 @@ operation is canceled and an $sqlException is returned instead.
 Example database applicatíon:
 MD
 );
-$usersTableSql = (new SyntaxHighlighter())
+$usersTableSql = (new CodeExampleAccordion())
 		->loadFromFile(EXAMPLE_DIR . "Sphp/Db/create_users.sql")
 		->setHeading("SQL code of the 'users' table")
 		->printHtml();
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/dbObjectsView.php", 1, "text");
-$exampleViewer(EXAMPLE_DIR . "Sphp/Db/usersAsHtmlTable.php", 2);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/dbObjectsView.php", 1, "text");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/usersAsHtmlTable.php", 2);
 
 $load("Sphp.Db.Db.php");
 $load("Sphp.Db.Query.php");

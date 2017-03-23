@@ -31,15 +31,12 @@ if (!isset($w3schools)) {
 if (!isset($parsedown)) {
   $parsedown = \ParsedownExtraPlugin::instance();
 }
-if (!isset($exampleViewer)) {
-  $exampleViewer = new CodeExampleAccordion();
-}
 /**
  * Loads page
  * 
  * @param string $page
  */
-$load = function($page) use ($api, $php, $foundation, $w3schools, $parsedown, $exampleViewer, &$load) {
+$load = function($page) use ($api, $php, $foundation, $w3schools, $parsedown, &$load) {
   try {
     ob_start();
     $page = addPHPSuffix($page);

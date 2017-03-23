@@ -2,6 +2,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+
 $abstractAttr = $api->classLinker(AbstractAttribute::class);
 $propertyAttr = $api->classLinker(PropertyAttribute::class);
 echo $parsedown->text(<<<MD
@@ -18,4 +20,4 @@ external style sheet.
 
 MD
 );
-$exampleViewer(EXAMPLE_DIR . "Sphp/Html/Attributes/PropertyAttribute.php", "html5", true);
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/PropertyAttribute.php", "html5", true);
