@@ -10,4 +10,4 @@ echo $parsedown->text(<<<MD
 ##The $monthView component
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Apps/MonthView.php");
+CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Apps/Calendars/MonthView.php");
