@@ -9,6 +9,25 @@ and open the template in the editor.
 */
 
 /*******************************Calendar Top Navigation*********************************/
+div.calendar {
+  display: table;
+
+  ul.week {
+    list-style-type: none;
+    display: table-row;
+    li {
+      border: solid 1px #444;
+      @include border-radius(2px);
+      display: table-cell;
+      padding: rem-calc(5 10 5 10);
+      &.number {
+        margin-right: rem-calc(5);
+      }
+    }
+  }
+}
+
+
 div.sphp-calendar{
   margin:0px auto;
   padding:0px;
@@ -34,31 +53,10 @@ div.sphp-calendar{
     text-align:center;
   }
 
-  div.header a.prev,div.header a.next{ 
-    position:absolute;
-    top:0px;   
-    height: 17px;
-    display:block;
-    cursor:pointer;
-    text-decoration:none;
-    color:#FFF;
-  }
-
   div.header span.title{
     color:#FFF;
     font-size:18px;
   }
-
-
-  div.header a.prev{
-    left:0px;
-  }
-
-  div.header a.next{
-    right:0px;
-  }
-
-
 
 
   /*******************************Calendar Content Cells*********************************/

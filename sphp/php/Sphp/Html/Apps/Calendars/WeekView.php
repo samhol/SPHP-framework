@@ -8,25 +8,56 @@
 
 namespace Sphp\Html\Apps\Calendars;
 
-use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
+use Sphp\Html\Lists\Ul;
+use Sphp\Html\Lists\Li;
+use DateTimeImmutable;
 
 /**
  * Description of WeekView
  *
  * @author Sami
  */
-class WeekView extends AbstractComponent {
+class WeekView implements \Sphp\Html\ContentInterface {
 
-  public function __construct() {
-    parent::__construct('div');
-    $this->week = date('W');
-    $this->weekCell = new \Sphp\Html\Div($this->week);
-    $this->dayBlocks = new BlockGrid(range(1, 7), 7);
+  use \Sphp\Html\ContentTrait;
+
+  /**
+   *
+   * @var Ul
+   */
+  private $dayCells;
+
+  public function __construct(DateTimeImmutable $date = null) {
+
+    if ($date === null) {
+      $date = new \DateTimeImmutable();
+    } 
+    $monday = $this->getMonday($date);
+    
+    $this->week = (int) $monday->format('W');
+    $this->dayCells = (new Ul())->addCssClass('week');
+    $this->dayCells['week'] = (new Li($monday->format('W')))->addCssClass('number');
+    $day = $monday->format('j');
+    $this->dayCells[$day] = new Li($day);
+    $next = $monday->modify('+ 1 day');
+    while ($next->format('N') != 1) {
+      $day = $next->format('j');
+      $this->dayCells[$day] = new Li($day);
+      $next = $next->modify('+ 1 day');
+    }
+  }
+  
+  public function getMonday(DateTimeImmutable $date) {
+    if ($date->format('N') != 1) {
+      return $date->modify('last monday');
+    } else {
+      return clone $date;
+    }
   }
 
-  public function contentToString() {
-    return $this->weekCell->getHtml() . $this->dayBlocks->getHtml();
+
+  public function getHtml() {
+    return $this->dayCells->getHtml();
   }
 
 }
