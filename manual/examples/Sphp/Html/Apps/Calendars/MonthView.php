@@ -6,3 +6,5 @@ $c = new MonthView();
 
 echo $c->show();
 
+echo new WeekView();
+

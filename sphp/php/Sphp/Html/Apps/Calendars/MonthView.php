@@ -7,7 +7,7 @@
  */
 
 namespace Sphp\Html\Apps\Calendars;
-
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 /**
  * @author  Xu Ding
  * @email   thedilab@gmail.com
@@ -22,7 +22,6 @@ class MonthView {
   private $currentDay = 0;
   private $currentDate = null;
   private $daysInMonth = 0;
-  private $month;
 
   /**
    * Constructor
@@ -40,15 +39,9 @@ class MonthView {
    * print out the calenda
    */
   public function show() {
-    $year = $y;
 
-    $month = $m;
 
-    $this->year = $year;
-
-    $this->month = $month;
-
-    $this->daysInMonth = $this->daysInMonth($month, $year);
+    $this->daysInMonth = $this->daysInMonth($this->month, $this->year);
 
     $content = '<div class="sphp-calendar">' .
             '<div class="box">' .
@@ -58,7 +51,7 @@ class MonthView {
     $content .= '<div class="clear"></div>';
     $content .= '<ul class="dates">';
 
-    $weeksInMonth = $this->_weeksInMonth($month, $year);
+    $weeksInMonth = $this->_weeksInMonth($this->month, $this->year);
     // Create weeks in a month
     for ($i = 0; $i < $weeksInMonth; $i++) {
 
