@@ -4,7 +4,6 @@ namespace Sphp\Html\Apps\Calendars;
 
 $c = new MonthView();
 
-echo $c->show();
+echo $c;
 
-echo new WeekView();
 

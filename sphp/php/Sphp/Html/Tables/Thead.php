@@ -36,7 +36,7 @@ class Thead extends TableRowContainer {
    * @param  null|mixed|mixed[] $rows the row being appended
    */
   public function __construct($rows = null) {
-    parent::__construct('thead', $rows);
+    parent::__construct('thead', null, $rows);
   }
 
   public function fromArray(array $arr) {

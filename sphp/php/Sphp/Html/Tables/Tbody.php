@@ -34,7 +34,7 @@ class Tbody extends TableRowContainer {
 	 * @param  null|mixed|mixed[] $row the row being appended
 	 */
 	public function __construct($row = null) {
-		parent::__construct('tbody', $row);
+		parent::__construct('tbody', null, $row);
 	}
 
 
