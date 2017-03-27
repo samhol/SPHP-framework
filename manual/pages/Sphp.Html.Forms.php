@@ -6,11 +6,12 @@ use Sphp\Html\Forms\Inputs\TextualInput;
 use Sphp\Html\Forms\Inputs\Checkbox;
 use Sphp\Html\Forms\Inputs\Radiobox;
 use Sphp\Html\Forms\Inputs\InputInterface;
+use Sphp\Html\Apps\Manual\Apis;
 
-$formIfLink = $api->classLinker(FormInterface::class);
-$traversableFormInterface = $api->classLinker(TraversableFormInterface::class);
-$inputInterface = $api->classLinker(InputInterface::class);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$formIfLink = Apis::apigen()->classLinker(FormInterface::class);
+$traversableFormInterface = Apis::apigen()->classLinker(TraversableFormInterface::class);
+$inputInterface = Apis::apigen()->classLinker(InputInterface::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 #HTML FORMS

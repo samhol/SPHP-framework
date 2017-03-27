@@ -3,10 +3,11 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$abstractSwitch = $api->classLinker(AbstractSwitch::class);
-$radioSwitch = $api->classLinker(RadioSwitch::class);
-$switchBox = $api->classLinker(SwitchBox::class);
+$abstractSwitch = Apis::apigen()->classLinker(AbstractSwitch::class);
+$radioSwitch = Apis::apigen()->classLinker(RadioSwitch::class);
+$switchBox = Apis::apigen()->classLinker(SwitchBox::class);
 
 
 echo $parsedown->text(<<<MD

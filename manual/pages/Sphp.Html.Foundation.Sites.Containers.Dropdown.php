@@ -1,9 +1,11 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$ns = $api->namespaceLink(__NAMESPACE__);
+use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
 $dropdown = $api->classLinker(Dropdown::class);
 
 echo $parsedown->text(<<<MD

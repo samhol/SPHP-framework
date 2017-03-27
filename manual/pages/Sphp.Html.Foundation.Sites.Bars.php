@@ -2,14 +2,16 @@
 
 namespace Sphp\Html\Foundation\Sites\Bars;
 
+use Sphp\Html\Foundation\Sites\Navigation\MenuInterface;
+use Sphp\Html\Foundation\Sites\Navigation\DropdownMenu;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 $titleBar = Apis::apigen()->classLinker(TitleBar::class);
 $topBar = Apis::apigen()->classLinker(TopBar::class);
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$menuInterface = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigation\MenuInterface::class);
-$dropdownMenu = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Navigation\DropdownMenu::class);
+$menuInterface = Apis::apigen()->classLinker(MenuInterface::class);
+$dropdownMenu = Apis::apigen()->classLinker(DropdownMenu::class);
 $navigationNs = $menuInterface->namespaceLink(false);
 echo $parsedown->text(<<<MD
 #Foundation bars: <small>wrappers around flexible navigation components</small>

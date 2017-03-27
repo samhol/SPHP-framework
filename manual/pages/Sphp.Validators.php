@@ -5,14 +5,14 @@ namespace Sphp\Validators;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
-$apigen = Apis::apigen();
+$php = Apis::phpManual();
 $nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__);
 $validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
 $requiredValueValidator = Apis::apigen()->classLinker(NotEmptyValidator::class);
-$patrnvLink = $api->classLinker(PatternValidator::class);
-$strLenValLink = $api->classLinker(StringLengthValidator::class);
-$inputValidator = $api->classLinker(OptionalValidator::class);
-$alphabetsOnly = $apigen->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
+$patrnvLink = Apis::apigen()->classLinker(PatternValidator::class);
+$strLenValLink = Apis::apigen()->classLinker(StringLengthValidator::class);
+$inputValidator = Apis::apigen()->classLinker(OptionalValidator::class);
+$alphabetsOnly = Apis::apigen()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATA VALIDATION: <small>Introduction</small>
@@ -60,28 +60,14 @@ $load('Sphp.Validators.FormValidator');
 
 $abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
 
-echo $parsedown->text(
-        <<<MD
+echo $parsedown->text(<<<MD
 ##Creating custom validators		
 
 Thera are obviously many vays to create own custom validators. However an easy 
 way of doing so isto extend one of the $abstractValidatorAggregate, $validatorAggregate 
 or $abstractObjectValidator classes. The choise between these three is dependent on 
 the data type of the validable data.
-  
-###The $userValidator class		
-  
-The $userValidator extends the $abstractObjectValidator and it can be used to validate 
-{$api->classLinker(\Sphp\Db\Objects\User::class)} object data.
+
 MD
 );
-$reflector = new \ReflectionClass(UserValidator::class);
 
-
-//echo $reflector->getFileName();
-/*$code = (new SyntaxHighlightingSingleAccordion())		
-        ->setTitle("UserValidator PHP code")		
-       //->loadFromFile($reflector->getFileName())		
-        ->printHtml();*/
-
-//CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validation/UserValidator.php", "text", false);

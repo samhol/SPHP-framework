@@ -1,11 +1,13 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
+
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$tabs = $api->classLinker(Tabs::class);
+$tabs = Apis::apigen()->classLinker(Tabs::class);
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ###The $tabs component
 $ns

@@ -3,11 +3,12 @@
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$orbit = $api->classLinker(Orbit::class);
-$slide = $api->classLinker(Slide::class);
+$orbit = Apis::apigen()->classLinker(Orbit::class);
+$slide = Apis::apigen()->classLinker(Slide::class);
 
 echo $parsedown->text(<<<MD
 ##The $orbit container and the $slide components

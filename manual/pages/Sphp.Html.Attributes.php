@@ -3,12 +3,13 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$abstractAttrMngr = $api->classLinker(AbstractAttributeManager::class);
-$htmlAttrMngr = $api->classLinker(AttributeManager::class);
-$attributeInterface = $api->classLinker(AttributeInterface::class);
-$multiValueAttr = $api->classLinker(MultiValueAttribute::class);
-$propertyAttr = $api->classLinker(PropertyAttribute::class);
+$abstractAttrMngr = Apis::apigen()->classLinker(AbstractAttributeManager::class);
+$htmlAttrMngr = Apis::apigen()->classLinker(AttributeManager::class);
+$attributeInterface = Apis::apigen()->classLinker(AttributeInterface::class);
+$multiValueAttr = Apis::apigen()->classLinker(MultiValueAttribute::class);
+$propertyAttr = Apis::apigen()->classLinker(PropertyAttribute::class);
 $setMethodLink = $abstractAttrMngr->methodLink("set", false);
 $removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
 $requireAttr = $abstractAttrMngr->methodLink("demand", false);

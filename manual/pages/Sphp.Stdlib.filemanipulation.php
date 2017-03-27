@@ -4,6 +4,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
 
+$php = Apis::phpManual();
 $arrLink = $php->typeLink("array");
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD

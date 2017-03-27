@@ -3,10 +3,11 @@
 namespace Sphp\Html\Forms\Inputs\Menus;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$selectLink = $api->classLinker(Select::class);
-$option = $api->classLinker(Option::class);
-$optGroup = $api->classLinker(Optgroup::class);
+$selectLink = Apis::apigen()->classLinker(Select::class);
+$option = Apis::apigen()->classLinker(Option::class);
+$optGroup = Apis::apigen()->classLinker(Optgroup::class);
 echo $parsedown->text(<<<MD
 ###The $selectLink component
 	

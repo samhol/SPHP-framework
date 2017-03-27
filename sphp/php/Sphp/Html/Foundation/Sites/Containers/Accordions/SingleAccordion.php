@@ -35,9 +35,9 @@ class SingleAccordion extends AbstractContainerTag {
   }
 
   /**
-   * Returns the inner accoordion component
+   * Returns the inner accordion component
    *
-   * @return Pane the inner accoordion component
+   * @return Pane the inner accordion component
    */
   protected function getPane() {
     return $this->getInnerContainer();

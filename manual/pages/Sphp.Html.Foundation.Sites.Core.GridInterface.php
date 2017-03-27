@@ -3,17 +3,18 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$gridIf = $api->classLinker(GridInterface::class);
-$htmlCont = $api->classLinker(\Sphp\Html\Container::class);
-$grid = $api->classLinker(Grid::class);
-$row = $api->classLinker(Row::class);
-$rowIf = $api->classLinker(RowInterface::class);
-$colIf = $api->classLinker(ColumnInterface::class);
-$col = $api->classLinker(Column::class);
-$cols = $api->classLinker(ColumnInterface::class, "Columns");
-$gridsLnk = $api->namespaceLink(__NAMESPACE__);
-$f_GridLink = $foundation->getComponentLink(Grid::class, "Foundation Grid layout");
+$gridIf = Apis::apigen()->classLinker(GridInterface::class);
+$htmlCont = Apis::apigen()->classLinker(\Sphp\Html\Container::class);
+$grid = Apis::apigen()->classLinker(Grid::class);
+$row = Apis::apigen()->classLinker(Row::class);
+$rowIf = Apis::apigen()->classLinker(RowInterface::class);
+$colIf = Apis::apigen()->classLinker(ColumnInterface::class);
+$col = Apis::apigen()->classLinker(Column::class);
+$cols = Apis::apigen()->classLinker(ColumnInterface::class, "Columns");
+$gridsLnk = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$f_GridLink = Apis::foundation()->getComponentLink(Grid::class, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation Grids and BlockGrids in SPHP Framework
 
@@ -50,7 +51,7 @@ The calculates the widths of the individual $cols by dividing the maximum $row w
 ###An example of rows generated from arrays containing plain $col content.
 MD
 );
-$rowExample1 =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-array-constructor.php', false);
+$rowExample1 = new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-array-constructor.php', false);
 $rowExample1
         ->getOutputPane()
         ->addCssClass("grid-example");
@@ -60,9 +61,9 @@ echo $parsedown->text(<<<MD
 ###An example of rows generated from arrays containing $col objects and plain content.
  		
 MD
-);       
+);
 
-$rowExample2 =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-mixed-constructor.php');
+$rowExample2 = new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-mixed-constructor.php');
 $rowExample2
         ->getOutputPane()
         ->addCssClass("grid-example");
@@ -84,11 +85,11 @@ any HTML into the document.
 		
 MD
 );
-/*$rowExample =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
-$rowExample
-        ->getOutputPane()
-        ->addCssClass("grid-example");
-$rowExample->printHtml();*/
+/* $rowExample =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
+  $rowExample
+  ->getOutputPane()
+  ->addCssClass("grid-example");
+  $rowExample->printHtml(); */
 //PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/Grid1.php');
 //PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/GridInterface.php');
 $gridExample = new CodeExampleAccordion();

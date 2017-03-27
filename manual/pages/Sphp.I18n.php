@@ -3,10 +3,11 @@
 namespace Sphp\I18n;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-
-$gettext = $php->extensionLink("gettext", "Gettext");
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$php = Apis::phpManual();
+$gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
 echo $parsedown->text(<<<MD
 #Internationalization and localization (I18n)        
 Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. Localization (l10n), is the process of adapting applications and text to enable their usability in a particular cultural or linguistic market.

@@ -3,10 +3,11 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-$choiceboxes = $api->classLinker(AbstractSwitch::class);
-$radios = $api->classLinker(Radioboxes::class);
-$checkboxes = $api->classLinker(Checkboxes::class);
+$choiceboxes = Apis::apigen()->classLinker(AbstractSwitch::class);
+$radios = Apis::apigen()->classLinker(Radioboxes::class);
+$checkboxes = Apis::apigen()->classLinker(Checkboxes::class);
 
 
 echo $parsedown->text(<<<MD

@@ -5,14 +5,15 @@ namespace Sphp\Html\Foundation;
 use Sphp\Html\Foundation\Sites\Grids\Grid;
 use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Foundation\Sites\Grids\Column;
+use Sphp\Html\Apps\Manual\Apis;
 
-$grid = $api->classLinker(Grid::class);
-$row = $api->classLinker(Row::class);
-$col = $api->classLinker(Column::class);
-$cols = $api->classLinker(Column::class, "Columns");
+$grid = Apis::apigen()->classLinker(Grid::class);
+$row = Apis::apigen()->classLinker(Row::class);
+$col = Apis::apigen()->classLinker(Column::class);
+$cols = Apis::apigen()->classLinker(Column::class, "Columns");
 //$ns = $api->namespaceLink(__NAMESPACE__);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$f_GridLink = $foundation->getComponentLink(Grid::class, "Foundation Grid layout");
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$f_GridLink = Apis::foundation()->getComponentLink(Grid::class, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation front-end framework
         

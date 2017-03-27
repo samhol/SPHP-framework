@@ -3,14 +3,16 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
-$documentClass = $api->classLinker(Document::class);
-$htmlClass = $api->classLinker(Html::class);
+use Sphp\Html\Apps\Manual\Apis;
+
+$documentClass = Apis::apigen()->classLinker(Document::class);
+$htmlClass = Apis::apigen()->classLinker(Html::class);
 echo $parsedown->text(<<<MD
 ##The $documentClass class
 This class can be used to create the structure of any HTML document.
         
 MD
-); 
+);
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Document.php", "html5", false);
 echo $parsedown->text(<<<MD
 The $documentClass class acts as a factory for basic HTML objects. Here are the 

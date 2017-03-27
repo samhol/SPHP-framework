@@ -1,6 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers;
+
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
 
 $callout = $api->classLinker(Callout::class);

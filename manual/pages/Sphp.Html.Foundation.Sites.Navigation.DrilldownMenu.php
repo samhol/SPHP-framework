@@ -4,12 +4,13 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Apps\Manual\Apis;
 
-$hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
-$menuInterface = $api->classLinker(MenuInterface::class);
-$drilldownMenu = $api->classLinker(DrilldownMenu::class);
-$dropdownMenu = $api->classLinker(DropdownMenu::class);
-$accordionMenu = $api->classLinker(AccordionMenu::class);
+$hyperlinkIfLink = Apis::apigen()->classLinker(HyperlinkInterface::class);
+$menuInterface = Apis::apigen()->classLinker(MenuInterface::class);
+$drilldownMenu = Apis::apigen()->classLinker(DrilldownMenu::class);
+$dropdownMenu = Apis::apigen()->classLinker(DropdownMenu::class);
+$accordionMenu = Apis::apigen()->classLinker(AccordionMenu::class);
 echo $parsedown->text(<<<MD
 ##Navigation menus implementing $menuInterface
 

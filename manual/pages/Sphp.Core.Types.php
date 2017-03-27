@@ -2,25 +2,18 @@
 
 namespace Sphp\Stdlib;
 
-
-//use Sphp\Html\Apps\SyntaxHighlightingAccordion as SyntaxHighlighter;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
 
-//$code = new SyntaxHighlighter();
-/* $result = (new SyntaxHighlighter())
-  ->setHeading("Execution result"); */
-
-
-//$config = $api->classLinker(Config::class);
-$namespace = $api->namespaceLink(__NAMESPACE__);
-$boolLink = $php->typeLink("boolean");
-$intLink = $php->typeLink("integer");
-$floatLink = $php->typeLink("float");
-$strLink = $php->typeLink("string");
-$arrLink = $php->typeLink("array");
-$stringsClass = $api->classLinker(Strings::class);
-$stringObjectClass = $api->classLinker(StringObject::class);
-$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$namespace = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$boolLink = Apis::phpManual()->typeLink("boolean");
+$intLink = Apis::phpManual()->typeLink("integer");
+$floatLink = Apis::phpManual()->typeLink("float");
+$strLink = Apis::phpManual()->typeLink("string");
+$arrLink = Apis::phpManual()->typeLink("array");
+$stringsClass = Apis::apigen()->classLinker(Strings::class);
+$stringObjectClass = Apis::apigen()->classLinker(StringObject::class);
+$nsbc = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Core objects and utlility classes
 $nsbc
