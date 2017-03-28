@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Stdlib\Strings;
-
+use Sphp\I18n\MessageTemplate;
 /**
  * Validates that the field has a non empty value
  *
@@ -40,16 +40,11 @@ class NotEmptyValidator extends AbstractValidator {
   /**
    * Constructs a new validator
    *
-   * @param int $min minimum length of the valid string
-   * @param int $max maximum length of the valid string
    */
   public function __construct($type= 'scalar', $message = "Value is required and can't be empty") {
     parent::__construct();
-    $messageTemplates = array(
-        self::INVALID => $message,
-        self::IS_EMPTY => $message
-    );
-    $this->setMessageTemplates($messageTemplates);
+
+    $this->setMessageTemplate(self::INVALID, new MessageTemplate($message));
   }
   
   public function isValid($value) {

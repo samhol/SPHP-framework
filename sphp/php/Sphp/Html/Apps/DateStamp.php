@@ -9,10 +9,11 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\TimeTagInterface;
 use Sphp\Html\AbstractComponent;
-use DateTime;
+use DateTimeInterface;
+use DateTimeImmutable;
 
 /**
- * Implements a HTML based stamp-element that describes a {@link DateTime} object
+ * Implements a HTML based stamp-element that describes a {@link DateTimeInterface} object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17
@@ -24,32 +25,26 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   /**
    * the datetime object
    *
-   * @var DateTime 
+   * @var DateTimeInterface 
    */
   private $dateTime;
 
   /**
    * Constructs a new instance
    *
-   * @param  DateTime $datetime the datetime object
+   * @param  DateTimeInterface $datetime optional datetime object (defaults to current date and time)
    */
-  public function __construct(DateTime $datetime) {
-    parent::__construct("time");
-    $this->cssClasses()->lock("date-icon");
+  public function __construct(DateTimeInterface $datetime = null) {
+    parent::__construct('time');
+    $this->cssClasses()->lock('date-icon');
+    if ($datetime === null) {
+      $datetime = new DateTimeImmutable();
+    }
     $this->setDatetime($datetime);
   }
 
-  /**
-   * Sets the datetime object
-   * 
-   * **Important:** Sets also the `datetime` attribute
-   *
-   * @param  DateTime $dateTime the datetime object
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
-   */
-  public function setDateTime(DateTime $dateTime) {
-    $this->attrs()->set("datetime", $dateTime->format("Y-m-d H:i:s"));
+  public function setDateTime(DateTimeInterface $dateTime) {
+    $this->attrs()->set('datetime', $dateTime->format('Y-m-d H:i:s'));
     $this->dateTime = $dateTime;
     return $this;
   }
@@ -59,9 +54,9 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
   }
 
   public function contentToString() {
-    $output = "<em>" . $this->dateTime->format("l") . "</em>";
-    $output .= "<strong>" . $this->dateTime->format("F") . "</strong>";
-    $output .= "<span>" . $this->dateTime->format("j") . "</span>";
+    $output = '<em>' . $this->dateTime->format('l') . '</em>';
+    $output .= '<strong>' . $this->dateTime->format('F') . '</strong>';
+    $output .= '<span>' . $this->dateTime->format('j') . '</span>';
     return $output;
   }
 

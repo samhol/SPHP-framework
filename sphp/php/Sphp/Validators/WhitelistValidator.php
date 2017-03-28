@@ -1,7 +1,7 @@
 <?php
 
 /**
- * VhitelistValidator.php (UTF-8)
+ * WhitelistValidator.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class VhitelistValidator extends AbstractValidator {
+class WhitelistValidator extends AbstractValidator {
 
   /**
    *

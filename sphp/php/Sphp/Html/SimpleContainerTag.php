@@ -26,25 +26,16 @@ namespace Sphp\Html;
  */
 class SimpleContainerTag extends AbstractSimpleContainerTag {
 
-  /**
-   * @inheritdoc
-   */
   public function setContent($content = null) {
     parent::setContent($content);
     return $this;
   }
   
-  /**
-   * @inheritdoc
-   */
   public function clear() {
     $this->setContent(null);
     return $this;
   }
-
-  /**
-   * @inheritdoc
-   */
+  
   public function getContent() {
     return parent::getContent();
   }

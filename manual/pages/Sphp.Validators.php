@@ -58,14 +58,12 @@ $load('Sphp.Validators.StringLengthValidator');
 $load('Sphp.Validators.ValidatorChain');
 $load('Sphp.Validators.FormValidator');
 
-$abstractObjectValidator = $api->classLinker(AbstractObjectValidator::class);
-
 echo $parsedown->text(<<<MD
 ##Creating custom validators		
 
 Thera are obviously many vays to create own custom validators. However an easy 
-way of doing so isto extend one of the $abstractValidatorAggregate, $validatorAggregate 
-or $abstractObjectValidator classes. The choise between these three is dependent on 
+way of doing so isto extend one of the $abstractValidatorAggregate or
+$validatorAggregate  classes. The choise between these three is dependent on 
 the data type of the validable data.
 
 MD

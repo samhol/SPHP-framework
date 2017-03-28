@@ -21,7 +21,3 @@ errors or warnings to $exception objects and then re-set the PHP error handler a
 
 MD
 ;
-
-$example = new \Sphp\Html\Foundation\Sites\Grids\ExampleViewingGrid("ErrorExceptionThrower example");
-$example->loadFromFile(EXAMPLE_DIR . "Sphp/Core/Config/ErrorHandling/ErrorExceptionThrower.php");
-$example->printHtml();

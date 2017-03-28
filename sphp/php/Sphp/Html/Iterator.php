@@ -14,8 +14,6 @@ use Sphp\Stdlib\Arrays;
 /**
  * Implements a basic iterator for HTML content
  *
- * 
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-09
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -1,9 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * MonthView.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Apps\Calendars;
@@ -51,7 +50,7 @@ class MonthView extends \Sphp\Html\AbstractComponent {
     return $table;
   }
 
-  protected function parseWeeks(\DateTimeImmutable $dt) {
+  protected function parseWeeks(DateTimeInterface $dt) {
     $body = new Tbody();
     $monday = $this->getMonday($dt);
     $week = $monday->format('W');
@@ -75,7 +74,7 @@ class MonthView extends \Sphp\Html\AbstractComponent {
     return $thead;
   }
 
-  private function createWeekRow(\DateTimeImmutable $date) {
+  private function createWeekRow(DateTimeInterface $date) {
     $monday = $this->getMonday($date);
     $tr = new Tr();
     //$this->week = (int) $monday->format('W');
@@ -91,14 +90,14 @@ class MonthView extends \Sphp\Html\AbstractComponent {
     }
     return $tr;
   }
-  
-  protected function createDayCell(\DateTimeInterface $day) {
+
+  protected function createDayCell(DateTimeInterface $day) {
     $td = new Td($day->format('j'));
     $td->cssClasses()->lock($day->format('l'));
     return $td;
   }
 
-  public function getMonday(\DateTimeImmutable $date) {
+  public function getMonday(DateTimeInterface $date) {
     if ($date->format('N') != 1) {
       return $date->modify('last monday');
     } else {

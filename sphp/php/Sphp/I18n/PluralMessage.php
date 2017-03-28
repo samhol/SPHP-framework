@@ -24,14 +24,14 @@ class PluralMessage extends AbstractMessage {
    *
    * @var string
    */
-  private $msgid1;
+  private $singular;
 
   /**
    * original raw plural message
    *
    * @var string
    */
-  private $msgid2;
+  private $plural;
 
   /**
    * the number (e.g. item count) to determine the translation for the respective grammatical number.
@@ -80,8 +80,8 @@ class PluralMessage extends AbstractMessage {
    * @return self for a fluent interface
    */
   private function setMessage($msgid1, $msgid2) {
-    $this->msgid1 = $msgid1;
-    $this->msgid2 = $msgid2;
+    $this->singular = $msgid1;
+    $this->plural = $msgid2;
     return $this;
   }
 
@@ -91,7 +91,7 @@ class PluralMessage extends AbstractMessage {
    * @return string the message as formatted and translated string
    */
   public function translate() {
-    $message = $this->getTranslator()->getPlural($this->msgid1, $this->msgid2, $this->n, $this->getLang());
+    $message = $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $this->getLang());
     if ($this->hasArguments()) {
       $args = $this->getArguments($this->translateArguments());
       return vsprintf($message, $args);
