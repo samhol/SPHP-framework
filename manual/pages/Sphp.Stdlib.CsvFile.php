@@ -18,3 +18,4 @@ MD
         ->setExampleHeading("CSV-file example")
         ->printHtml();
 CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Filesystem/CsvFile.php", false, true);
+\Sphp\Manual\MVC\CodeExampleBuider::visualize(EXAMPLE_DIR . "Sphp/Filesystem/CsvFile.php", false, true);

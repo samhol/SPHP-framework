@@ -130,7 +130,7 @@ class StringLengthValidator extends AbstractValidator {
     $length = $string->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
       $valid = false;
-      $this->addErrorMessage($this->getMessageTemplate(self::TOO_SHORT)->setArguments([$this->min, $this->max]));
+      $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
       $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);

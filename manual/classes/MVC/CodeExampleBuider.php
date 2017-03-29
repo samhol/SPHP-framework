@@ -10,8 +10,6 @@ namespace Sphp\Manual\MVC;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
-use Sphp\Html\ContentTrait;
-use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Implements an accordion for PHP Example presentation
@@ -23,36 +21,32 @@ use Sphp\Html\Adapters\VisibilityAdapter;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CodeExampleBuider {
+class CodeExampleBuider implements \Sphp\Html\ContentInterface {
+
+ use \Sphp\Html\ContentTrait;
+  const HTMLFLOW = 'html';
+  const OUTPUT_TEXT = 'text';
+  const EXAMPLECODE = 'code';
+
+  private $titles = [];
 
   /**
    *
    * @var string 
    */
   private $path;
+
+  /**
+   *
+   * @var boolean
+   */
   private $showHtmlFlow = true;
-  private $highlightOutput = false;
 
   /**
-   * the php code example presentation
    *
-   * @var SyntaxHighlightingPane
+   * @var boolean|string
    */
-  private $codePane;
-
-  /**
-   * the output as a html element
-   *
-   * @var Pane
-   */
-  private $outputPane;
-
-  /**
-   * the output as highlighted syntax
-   *
-   * @var SyntaxHighlightingPane
-   */
-  private $outputSyntaxPane;
+  private $outputHl = false;
 
   /**
    * Constructs a new instance
@@ -63,27 +57,14 @@ class CodeExampleBuider {
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
    */
   public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    parent::__construct();
-    $this->cssClasses()->lock('manual');
-    $this->codePane = (new SyntaxHighlightingPane());
-    $this->outputSyntaxPane = new SyntaxHighlightingPane();
-    $this->outputPane = (new Pane())->addCssClass('html-output');
-    $this->useDefaultTitles()
-            ->append($this->codePane)
-            ->append($this->outputSyntaxPane)
-            ->append($this->outputPane)
-            ->allowAllClosed()
-            ->allowMultiExpand();
-    if ($path !== null) {
-      $this->fromFile($path, $highlightOutput, $outputAsHtmlFlow);
-    } else {
-      $this->showOutputSyntax($highlightOutput);
-    }
+    $this->useDefaultTitles();
+    $this->setPath($path);
+    $this->setOutpputHighlighting($highlightOutput);
+    $this->setHtmlFlowVisibility($outputAsHtmlFlow);
   }
 
   public function __destruct() {
-    unset($this->codePane, $this->outputSyntaxPane, $this->outputPane);
-    parent::__destruct();
+    // unset($this->codePane, $this->outputSyntaxPane, $this->outputPane);
   }
 
   /**
@@ -92,61 +73,87 @@ class CodeExampleBuider {
    * @param  boolean $highlightOutput true for highlighted program code as the 
    *         output presentation, false for html presentation
    * @param  string $outputLang the language name of the output code
-   * @return self a new instance presenting the example 
+   * @return Accordion
    */
   public function __invoke($path, $highlightOutput = false, $outputLang = true) {
-    $instance = new Static();
-    $instance->fromFile($path, $highlightOutput, $outputLang);
-    $instance->printHtml();
+    if ($path !== null) {
+       $this->setPath($path);
+    }
+    $this->setPath($path)
+            ->setOutpputHighlighting($highlightOutput)
+            ->setHtmlFlowVisibility($outputLang);
+    return $this->buildAccordion();
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getPath() {
     return $this->path;
   }
 
-  public function getShowHtmlFlow() {
-    return $this->showHtmlFlow;
-  }
-
-  public function getHighlightOutput() {
-    return $this->highlightOutput;
-  }
-
-  public function getOutputSyntaxPane() {
-    return $this->outputSyntaxPane;
-  }
-
+  /**
+   * 
+   * @param  string $path the path of the example code
+   * @return self for a fluent interface
+   */
   public function setPath($path) {
     $this->path = $path;
     return $this;
   }
 
-  public function setShowHtmlFlow($showHtmlFlow) {
-    $this->showHtmlFlow = $showHtmlFlow;
+  /**
+   * 
+   * @return boolean
+   */
+  public function showHtmlFlow() {
+    return $this->showHtmlFlow;
+  }
+
+  public function getHighlightOutput() {
+    return $this->outputHl;
+  }
+
+  /**
+   * 
+   * @param  boolean $highlightOutput
+   * @return self for a fluent interface
+   */
+  public function setOutpputHighlighting($highlightOutput) {
+    $this->outputHl = $highlightOutput;
     return $this;
   }
 
-  public function setHighlightOutput($highlightOutput) {
-    $this->highlightOutput = $highlightOutput;
+  /**
+   * 
+   * @param  boolean $showHtmlFlow
+   * @return self for a fluent interface
+   */
+  public function setHtmlFlowVisibility($showHtmlFlow) {
+    $this->showHtmlFlow = (boolean) $showHtmlFlow;
     return $this;
   }
 
-  public function setOutputSyntaxPane(SyntaxHighlightingPane $outputSyntaxPane) {
-    $this->outputSyntaxPane = $outputSyntaxPane;
-    return $this;
-  }
-
+  /**
+   * 
+   * @return Accordion
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
   public function buildAccordion() {
+    if (!is_file($this->path)) {
+      throw new \Sphp\Exceptions\RuntimeException();
+    }
     $accordion = new Accordion();
-    $accordion->lock('manual');
-    
-    $codePane = (new SyntaxHighlightingPane());
-    $codePane->loadFromFile($this->path);
-    $accordion->append($codePane);
-    if ($this->getShowHtmlFlow()) {
-      $outputPane = (new Pane())->addCssClass('html-output');
-      $outputPane->appendPhpFile($this->path);
-      $accordion->append($outputPane);
+    $accordion->allowAllClosed()
+            ->allowMultiExpand();
+    $accordion->cssClasses()->lock('manual');
+    $accordion->append($this->getCodePane());
+    if ($this->getHighlightOutput()) {
+      $accordion->append($this->buildHighlightedOutput());
+    }
+    if ($this->showHtmlFlow()) {
+      $accordion->append($this->buildHtmlFlow());
     }
     return $accordion;
   }
@@ -158,59 +165,48 @@ class CodeExampleBuider {
    * @param string|boolean $highlightOutput the language name of the output code 
    *        or false if highlighted output code should not be visible
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
-   * @return self for a fluent interface
+   * @return Accordion
    */
   public function fromFile($path, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    $this->path = $path;
-    $this->codePane->loadFromFile($path);
-    //$this->outputPane->appendPhpFile($path);
-    $this->showOutputAsHtmlFlow($outputAsHtmlFlow);
-    // $executedOutput = FileUtils::executePhpToString($path);
-    $this->showHighlightedOutput($highlightOutput);
-    // $this->showOutputSyntax($highlightOutput);
-    return $this;
+    $this->setPath($path)
+            ->setOutpputHighlighting($highlightOutput)
+            ->setHtmlFlowVisibility($outputAsHtmlFlow);
+    return $this->buildAccordion();
   }
 
   /**
    * 
-   * @param  mixed $lang
-   * @return self for a fluent interface
+   * @return SyntaxHighlightingPane
+   * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function showHighlightedOutput($lang) {
-    $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);
-    if ($lang === false) {
-      $lang = "text";
-      $outputVisibility->hide();
-    } else {
-      $outputVisibility->unhide();
+  public function buildHighlightedOutput() {
+    if (!is_file($this->path)) {
+      throw new \Sphp\Exceptions\RuntimeException();
     }
-    if ($lang == "text") {
-      $this->outputSyntaxPane->useDefaultContentCopyController(false);
+    $outputSyntaxPane = new SyntaxHighlightingPane();
+    if ($this->outputHl === 'text') {
+      $outputSyntaxPane->useDefaultContentCopyController(false);
     } else {
-      $this->outputSyntaxPane->useDefaultContentCopyController(true);
+      $outputSyntaxPane->useDefaultContentCopyController(true);
     }
-    $this->outputSyntaxPane->executeFromFile($this->path, $lang);
-    return $this;
+    $outputSyntaxPane->setPaneTitle($this->titles[self::OUTPUT_TEXT]);
+    $outputSyntaxPane->executeFromFile($this->path, $this->outputHl);
+    return $outputSyntaxPane;
   }
 
   /**
    * 
-   * @param  boolean $show true for executed HTML result or false for no execution
-   * @return self for a fluent interface
+   * @return Pane
+   * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function showOutputAsHtmlFlow($show = true) {
-    $outputPaneVisibility = new VisibilityAdapter($this->outputPane);
-    if ($show === false) {
-      $this->outputPane->clear();
-      $outputPaneVisibility->hide();
-    } else {
-      $outputPaneVisibility->unhide();
-      if ($this->path === null) {
-        $this->outputPane->replaceContent('<code>HTML</code> output is not available!');
-      }
-      $this->outputPane->clear()->appendPhpFile($this->path);
+  public function buildHtmlFlow() {
+    if (!is_file($this->path)) {
+      throw new \Sphp\Exceptions\RuntimeException();
     }
-    return $this;
+    $outputPane = (new Pane())->addCssClass('html-output');
+    $outputPane->setPaneTitle($this->titles[self::HTMLFLOW]);
+    $outputPane->appendPhpFile($this->path);
+    return $outputPane;
   }
 
   /**
@@ -218,17 +214,14 @@ class CodeExampleBuider {
    *
    * @return SyntaxHighlightingPane
    */
-  public function getCodePane() {
-    return $this->codePane;
-  }
-
-  /**
-   * Returns the output execution panel
-   *
-   * @return Pane
-   */
-  public function getOutputPane() {
-    return $this->outputPane;
+  public function getCodePane($path = null) {
+    if ($path === null) {
+      $path = $this->path;
+    }
+    $codePane = (new SyntaxHighlightingPane());
+    $codePane->setPaneTitle($this->titles[self::EXAMPLECODE]);
+    $codePane->loadFromFile($path);
+    return $codePane;
   }
 
   /**
@@ -238,9 +231,9 @@ class CodeExampleBuider {
    * @return self for a fluent interface
    */
   public function useDefaultTitles() {
-    $this->setExampleHeading('PHP code')
-            ->setOutputSyntaxPaneTitle('Execution result as highlighted code')
-            ->setOutputPaneTitle('Execution result as HTML5');
+    $this->titles[self::EXAMPLECODE] = 'PHP code';
+    $this->titles[self::OUTPUT_TEXT] = 'Execution result as highlighted code';
+    $this->titles[self::HTMLFLOW] = 'Execution result as HTML5';
     return $this;
   }
 
@@ -251,7 +244,7 @@ class CodeExampleBuider {
    * @return self for a fluent interface
    */
   public function setExampleHeading($heading) {
-    $this->codePane->setPaneTitle($heading);
+    $this->titles[self::EXAMPLECODE] = $heading;
     return $this;
   }
 
@@ -262,7 +255,7 @@ class CodeExampleBuider {
    * @return self for a fluent interface
    */
   public function setOutputSyntaxPaneTitle($title) {
-    $this->outputSyntaxPane->setPaneTitle($title);
+    $this->titles[self::OUTPUT_TEXT] = $title;
     return $this;
   }
 
@@ -273,21 +266,7 @@ class CodeExampleBuider {
    * @return self for a fluent interface
    */
   public function setOutputPaneTitle($title) {
-    $this->outputPane->setPaneTitle($title);
-    return $this;
-  }
-
-  /**
-   * Sets the output presentation as a highlighted program code or
-   * as an html component
-   *
-   * @param  boolean $show true for highlighted program code
-   *         presentation, false for html presentation
-   * @return self for a fluent interface
-   */
-  public function showOutputSyntax($show = true) {
-    $outputVisibility = new VisibilityAdapter($this->outputSyntaxPane);
-    $outputVisibility->setHidden(!$show);
+    $this->titles[self::HTMLFLOW] = $title;
     return $this;
   }
 
@@ -300,7 +279,11 @@ class CodeExampleBuider {
    * @param string $outputLang the language name of the highlighted output code
    */
   public static function visualize($path, $highlightOutput = false, $outputLang = 'html5') {
-    (new static($path, $highlightOutput, $outputLang))->printHtml();
+    (new static($path, $highlightOutput, $outputLang))->buildAccordion()->printHtml();
+  }
+
+  public function getHtml() {
+    return $this->buildAccordion()->getHtml();
   }
 
 }
