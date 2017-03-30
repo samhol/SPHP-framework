@@ -30,7 +30,6 @@ class Parser {
       'json' => Reader\Json::class,
       'yaml' => Reader\Yaml::class,
       'yml' => Reader\Yaml::class,
-      'yml' => Reader\Yaml::class,
       'markdown' => Reader\Markdown::class,
       'mdown' => Reader\Markdown::class,
       'mkdn' => Reader\Markdown::class,
