@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $iframe = $api->classLinker(Iframe::class);
 echo $parsedown->text(<<<MD
@@ -16,4 +16,4 @@ them are treated as complete documents.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Iframe.php", FALSE);
+CodeExampleBuilder::visualize("Sphp/Html/Media/Iframe.php", FALSE);

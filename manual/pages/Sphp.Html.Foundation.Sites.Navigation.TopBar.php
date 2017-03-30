@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $topBar = Apis::apigen()->classLinker(TopBar::class);
@@ -20,4 +20,4 @@ Below is an example of $topBar object similar to the one seen on top of each pag
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/TopBar.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/TopBar.php');

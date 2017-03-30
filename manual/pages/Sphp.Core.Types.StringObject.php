@@ -2,10 +2,10 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $stringObjectClass = $api->classLinker(StringObject::class);
-$strLink = $php->typeLink("string");
+$strLink = $php->typeLink('string');
 
 echo $parsedown->text(<<<MD
 ###The $stringObjectClass class
@@ -18,5 +18,5 @@ deal with the issues concerning multibyte encodings in PHP.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/StringObject.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Core/Types/StringObject.php', 'text', false);
 

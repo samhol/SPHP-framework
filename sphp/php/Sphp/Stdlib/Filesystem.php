@@ -8,7 +8,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\InvalidArgumentException;
-
+use Sphp\Exceptions\RuntimeException;
 /**
  * Tools to work with files and directories
  *
@@ -18,6 +18,32 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @filesource
  */
 class Filesystem {
+  /**
+   * 
+   * @param  string $filename
+   * @return boolean
+   */
+  public static function isFile($filename ) {
+    $path = stream_resolve_include_path($filename);
+    if ($path === false) {
+      return false;
+    } else {
+      return is_file($path);
+    }
+  }
+  /**
+   * 
+   * @param  string $path
+   * @return string
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
+  public static function getFullPath($path) {
+    $fullPath = stream_resolve_include_path($path);
+    if ($fullPath === false) {
+      throw new RuntimeException("The path '$path' does not exist");
+    }
+    return $fullPath;
+  }
 
   /**
    * Returns the entire file as a string

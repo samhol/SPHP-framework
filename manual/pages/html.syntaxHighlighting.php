@@ -8,7 +8,7 @@ $parser = $container->get("parseDown");
 $abstractTag = $api->classLinker(AbstractTag::class);
 
 
-(new SyntaxHighlighter())->loadFromFile(EXAMPLE_DIR . "/html/ajax.php")->printHtml();
+(new SyntaxHighlighter())->loadFromFile("/html/ajax.php")->printHtml();
 echo $parser->text(<<<MD
 ##Namespace {$api->namespaceLink(__NAMESPACE__)}
 HTML or HyperText Markup Language is the standard markup language used to create Web pages.

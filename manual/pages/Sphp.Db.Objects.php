@@ -3,7 +3,7 @@
 namespace Sphp\Db\Objects;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Objects\ObjectInterface;
 
 $objectInterface = Apis::apigen()->classLinker(ObjectInterface::class);
@@ -30,7 +30,7 @@ The $dbObjectInterface is implemented by a couple of build-in instantiable class
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Db/Objects/Location.php", "text", false))
+(new CodeExampleBuilder("Sphp/Db/Objects/Location.php", "text", false))
         ->setExampleHeading("Geographical address object example")
         ->printHtml();
 
@@ -52,12 +52,12 @@ The $objectStorageInterface is implemented by a couple of build-in instantiable 
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/Locations.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Db/Objects/Locations.php", "text", false);
 
 
 $load("Sphp.Db.Objects.Session.php");
 //$load("Sphp.Net.Password.php");
 
-//CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");
+//CodeExampleBuilder::visualize("Sphp/Objects/address_location.php");
 
 //$load("Sphp.Util.BitMask.php");

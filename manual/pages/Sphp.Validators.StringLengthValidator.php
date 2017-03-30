@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $strLenValLink = Apis::apigen()->classLinker(StringLengthValidator::class);
 
@@ -18,4 +18,4 @@ types of validation
  3. Range validation: the length of the input must be between the lower and upper limits. 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/StringLengthValidator.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Validators/StringLengthValidator.php", "php", false);

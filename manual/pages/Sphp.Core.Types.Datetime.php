@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $parentDatetime = $php->classLinker(\DateTime::class);
 $datetime = $api->classLinker(Datetime::class);
@@ -15,7 +15,7 @@ comparing different dates and times to one another.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/Datetime.php", "text", false))
+(new CodeExampleBuilder("Sphp/Core/Types/Datetime.php", "text", false))
 		->setExampleHeading("Comparisons example PHP code")
 		->setOutputPaneTitle("Comparison results")
 		->printHtml();

@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $update = $api->classLinker(Update::class);
 $conditions = $api->classLinker(Conditions::class);
@@ -19,4 +19,4 @@ the rows can be updated, or a subset may be chosen using $conditions member
 object from {$update->methodLink("where")}.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/update1.php", true, "sql");
+CodeExampleBuilder::visualize("Sphp/Db/update1.php", true, "sql");

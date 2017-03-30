@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Apps;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
@@ -17,7 +17,7 @@ $load("Sphp.Html.Apps.SingleAccordion.php");
 
 
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Apps/Manual/LinkerInterface.php');
+CodeExampleBuilder::visualize('Sphp/Html/Apps/Manual/LinkerInterface.php');
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Apps/misc.php');
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Apps/SyntaxHighlighter.php');
+CodeExampleBuilder::visualize('Sphp/Html/Apps/misc.php');
+CodeExampleBuilder::visualize('Sphp/Html/Apps/SyntaxHighlighter.php');

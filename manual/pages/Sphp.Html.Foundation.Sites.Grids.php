@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $grid = Apis::apigen()->classLinker(Grid::class);
@@ -41,4 +41,4 @@ for each breakpoint.
         
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/BlockGrid.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Grids/BlockGrid.php');

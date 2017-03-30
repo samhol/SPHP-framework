@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $namespace = Apis::apigen()->namespaceLink(__NAMESPACE__);
@@ -42,7 +42,7 @@ manipulation.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Core/Types/multibyteStringProblems.php", "text", false))
+(new CodeExampleBuilder("Sphp/Core/Types/multibyteStringProblems.php", "text", false))
         ->setExampleHeading("Multibyte string example PHP code")
         ->setOutputSyntaxPaneTitle("Multibyte string example results")
         ->printHtml();

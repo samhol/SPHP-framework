@@ -23,8 +23,8 @@ a dropdown is far off screen), and not when it is first made visible.
 The example code of the form showing the exaples of $slider object is represented below.
 MD
 );
-include_once (EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
-SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/sliders.php');
+include_once ('Sphp/Html/Foundation/F6/Forms/sliders.php');
+SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/F6/Forms/sliders.php');
 echo $parsedown->text(<<<MD
 
 MD

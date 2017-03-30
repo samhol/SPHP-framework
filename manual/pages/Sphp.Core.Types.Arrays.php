@@ -2,10 +2,10 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $arraysClass = $api->classLinker(Arrays::class);
-$arrLink = $php->typeLink("array");
+$arrLink = $php->typeLink('array');
 echo $parsedown->text(<<<MD
 ##The $arraysClass class for PHP's $arrLink manipulation
 
@@ -21,16 +21,16 @@ $arraysClass methods for testing differert $arrLink properties.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays1.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Core/Types/Arrays1.php', 'text', false);
 echo $parsedown->text(<<<MD
 $arraysClass methods for manipulating array properties and creating new arrays.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays2.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Core/Types/Arrays2.php', 'text', false);
 echo $parsedown->text(<<<MD
 $arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$api->classLinker(Arrays::class)->methodLink("copy")} 
 tries to make an independent copy out of each key => value pairs it the input 
 array and it uses PHP's object cloning construct for object type.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/Arrays3.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Core/Types/Arrays3.php', 'text', false);

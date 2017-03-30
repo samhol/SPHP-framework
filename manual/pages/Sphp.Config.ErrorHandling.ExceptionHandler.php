@@ -18,5 +18,5 @@ MD
 );
 
 (new SyntaxHighlightingSingleAccordion("Uncaught PHP exceptions handling example"))
-        ->loadFromFile(EXAMPLE_DIR . 'Sphp/Config/ErrorHandling/ExceptionHandler.php')
+        ->loadFromFile('Sphp/Config/ErrorHandling/ExceptionHandler.php')
         ->printHtml();

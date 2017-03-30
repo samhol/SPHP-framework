@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Lists;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $htmlList = Apis::apigen()->classLinker(AbstractList::class);
@@ -28,7 +28,7 @@ $liInterface into a $li object.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Ul.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', false, true);
 
 echo $parsedown->text(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
@@ -47,7 +47,7 @@ This indexing can be numerical or alphabetical.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Ol.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', false, true);
 
 $dtLink = Apis::apigen()->classLinker(Dt::class);
 $ddLink = Apis::apigen()->classLinker(Dd::class);
@@ -61,7 +61,7 @@ and answers, or any other groups of name-value data.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Lists/Dl.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Lists/Dl.php', false, true);
 echo $parsedown->text(<<<MD
 ###References:{#refs}
         

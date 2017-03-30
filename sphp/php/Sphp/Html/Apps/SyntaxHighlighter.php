@@ -228,11 +228,16 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   }
 
   public function loadFromFile($filename) {
-    if (!file_exists($filename)) {
+    try {
+      $path = Filesystem::getFullPath($filename);
+      $this->geshi->load_from_file($path);
+      return $this;
+    } catch (\Exception $ex) {
       throw new InvalidArgumentException("The file '$filename' does not exist!");
     }
-    $this->geshi->load_from_file($filename);
-    return $this;
+    if (!Filesystem::isFile($filename)) {
+      
+    }
   }
 
   /**

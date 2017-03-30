@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $embed = $api->classLinker(Embed::class);
 echo $parsedown->text(<<<MD
@@ -13,7 +13,7 @@ used for setting external external applications or interactive contents (plug-in
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/Embed.php", false, true))
+(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Embed.php", false, true))
         ->setExampleHeading("HTML &lt;embed&gt; example code")
         ->setOutputPaneTitle("HTML &lt;embed&gt; example results")
         ->printHtml();

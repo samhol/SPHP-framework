@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
@@ -23,7 +23,7 @@ echo $parsedown->text(<<<MD
 		
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/Audio.php", false, true))
+(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Audio.php", false, true))
         ->setExampleHeading("HTML5 &lt;audio&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;audio&gt; example results")
         ->printHtml();

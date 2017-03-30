@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $stackInterface = $api->classLinker(StackInterface::class);
 $stack = $api->classLinker(Stack::class);
@@ -30,7 +30,7 @@ an instance of $stack can therefore be used as a last-in-first-out (LIFO) stack 
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/Stack.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Data/Stack.php", "php", false);
 echo $parsedown->text(<<<MD
 ####The $queueInterface and its implementation
 
@@ -46,5 +46,5 @@ an instance of $queue can therefore be used as a last-in-first-out (LIFO) stack 
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/Queue.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Data/Queue.php", "php", false);
 

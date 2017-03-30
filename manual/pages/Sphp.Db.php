@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $sqlException = Apis::apigen()->classLinker(SQLException::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
@@ -20,12 +20,12 @@ operation is canceled and an $sqlException is returned instead.
 Example database applicatíon:
 MD
 );
-$usersTableSql = (new CodeExampleAccordion())
-		->fromFile(EXAMPLE_DIR . "Sphp/Db/create_session_user.sql")
+$usersTableSql = (new CodeExampleBuilder())
+		->fromFile("Sphp/Db/create_session_user.sql")
 		->setExampleHeading("SQL code of the 'users' table")
 		->printHtml();
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/dbObjectsView.php", 1, "text");
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/usersAsHtmlTable.php", 2);
+CodeExampleBuilder::visualize("Sphp/Db/dbObjectsView.php", 1, "text");
+CodeExampleBuilder::visualize("Sphp/Db/usersAsHtmlTable.php", 2);
 
 $load("Sphp.Db.Db.php");
 $load("Sphp.Db.Query.php");

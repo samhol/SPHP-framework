@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 //$img = $api->classLinker(Img::class);
@@ -26,7 +26,7 @@ $img provides some static factory methods for showing resized image components.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Img.php", false, true);
+CodeExampleBuilder::visualize("Sphp/Html/Media/Img.php", false, true);
 
 echo $parsedown->text(<<<MD
 The $fig component implements the {$w3schools->tag("figure")} tag. 
@@ -38,5 +38,5 @@ it should not affect the flow of the document.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Figure.php", false, true);
+CodeExampleBuilder::visualize("Sphp/Html/Media/Figure.php", false, true);
 

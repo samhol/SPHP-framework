@@ -1,7 +1,8 @@
 <?php
+
 namespace Sphp\Core\Security;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $passwordInterface = $api->classLinker(PasswordInterface::class);
 $pw = $api->classLinker(Password::class);
@@ -13,4 +14,4 @@ contains static methods to generate instances from plain passwords or password h
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Security/PasswordInterface.php", "php", false);
+CodeExampleBuilder::visualize('Sphp/Core/Security/PasswordInterface.php', 'php', false);

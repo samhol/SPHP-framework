@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
 
@@ -28,4 +28,4 @@ $formValidator supports two ways of manipulating validators for named input data
  2. By using chainable object oriented methods 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/FormValidator.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Validators/FormValidator.php", "php", false);

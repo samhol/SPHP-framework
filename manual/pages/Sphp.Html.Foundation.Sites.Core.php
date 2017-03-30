@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core; 
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $visibilityHandlingInterface = Apis::apigen()->classLinker(VisibilityChanger::class);
@@ -35,13 +35,13 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/VisibilityAdapter.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Core/VisibilityAdapter.php');
 echo $parsedown->text(<<<MD
 Hiding by Screen Size
         
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/VisibilityAdapter-hideOnlyFor.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Core/VisibilityAdapter-hideOnlyFor.php');
 
 
 $load('Sphp.Html.Foundation.Sites.Core.ColourableInterface');

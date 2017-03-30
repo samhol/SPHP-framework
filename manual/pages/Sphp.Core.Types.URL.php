@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $urlClass = $api->classLinker(URL::class);
 echo $parsedown->text(<<<MD
@@ -37,4 +37,4 @@ URL string is splitted into following custozable parts in an $urlClass object:
 		
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/URL.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Core/Types/URL.php", "text", false);

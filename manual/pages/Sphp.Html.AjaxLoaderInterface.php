@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane as SyntaxHighlightingPane;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ajaxLoaderInterface = $api->classLinker(AjaxLoaderInterface::class);
 $ajaxLoaderTrait = $api->classLinker(AjaxLoaderTrait::class);
@@ -19,5 +19,5 @@ $pane = (new SyntaxHighlightingPane())
         ->loadFromFile("manual/snippets/loremipsum.html")
         ->setPaneTitle("Original HTML source file used in Ajax loading");
 
-$ex = new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php", "html5");
+$ex = new CodeExampleBuilder("Sphp/Html/AjaxLoaderInterface.php", "html5");
 $ex->prepend($pane)->printHtml();

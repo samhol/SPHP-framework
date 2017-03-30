@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $abstractAttrMngr = Apis::apigen()->classLinker(AbstractAttributeManager::class);
@@ -57,7 +57,7 @@ to the given value. Locked attribute attribute is always visible. Such attribute
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
+CodeExampleBuilder::visualize("Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
 echo $parsedown->text(<<<MD
        
 ###Inserting new $attributeInterface objects to the manager
@@ -73,5 +73,5 @@ New $attributeInterface objects can be inserted into the manager by using the $s
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
+CodeExampleBuilder::visualize("Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
 

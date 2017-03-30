@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Manual\MVC\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $csvFile = Apis::apigen()->classLinker(CsvFile::class);
 $arrLink = Apis::phpManual()->typeLink('array');
@@ -13,9 +13,21 @@ to a multidimensional PHP $arrLink where each 'row' represents a data row in the
 original CSV-file.
 MD
 );
-(new CodeExampleAccordion())
-        ->fromFile(EXAMPLE_DIR . "../snippets/example.csv")
-        ->setExampleHeading("CSV-file example")
+//echo get_include_path();
+//include ('foo.php');
+//include "Sphp/Filesystem/CsvFile.php";
+//var_dump(stream_resolve_include_path("Sphp/Filesystem/CsvFile.php"));
+//$f = new \SplFileInfo("Sphp/Filesystem/CsvFile.php");
+//var_dump($f->isFile());
+$codeExample = (new CodeExampleBuilder('manual/snippets/example.csv'))
+        ->setHtmlFlowVisibility(false)
+        ->setOutpputHighlighting(false)
+        ->setExampleHeading('CSV-file example')
         ->printHtml();
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Filesystem/CsvFile.php", false, true);
-\Sphp\Manual\MVC\CodeExampleBuider::visualize(EXAMPLE_DIR . "Sphp/Filesystem/CsvFile.php", false, true);
+$codeExample->setPath('Sphp/Filesystem/CsvFile.php')
+        ->setHtmlFlowVisibility(true)
+        ->setExampleHeading('PHP script converting a CSV-file to an HTML table')
+        ->setOutputPaneTitle('CSV data as a HTML table')
+        ->printHtml();
+//CodeExampleBuider::visualize('Sphp/Filesystem/CsvFile.php', false, true);
+//CodeExampleBuider::visualize('Sphp/Filesystem/CsvFile.php', false, true);

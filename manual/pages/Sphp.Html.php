@@ -3,7 +3,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $abstractTag = Apis::apigen()->classLinker(AbstractTag::class);
 $ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
@@ -80,7 +80,7 @@ PHP string. The simplest build in implementor for the $containerInterface is the
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/HtmlContainer.php");
+CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = Apis::apigen()->classLinker(ContainerTag::class);
 echo $parsedown->text(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
@@ -102,7 +102,7 @@ At least it is extended in every existing HTML component in the current framewor
 
 MD
 );
-//PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/ajax.php");
-//PHPExampleViewer::visualize(EXAMPLE_DIR . "Sphp/Html/AjaxLoaderInterface.php");
+//PHPExampleViewer::visualize("Sphp/Html/ajax.php");
+//PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
 $load("Sphp.Html.AjaxLoaderInterface.php");
 //$load("Sphp.Html.Document.php");

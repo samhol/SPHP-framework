@@ -32,7 +32,7 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
     }
     $content = ob_get_contents();
   } catch (\Exception $e) {
-    $content .= new ExceptionCallout($e);
+    $content .= (new ExceptionCallout($e))->showInitialFile()->showTrace();
   }
   ob_end_clean();
   echo $content;

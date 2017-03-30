@@ -12,4 +12,4 @@ The geographical location: Classes {$api->classLinker(Address::class)} and {$api
 Classes {$api->classLinker(Address::class)} and {$api->classLinker(Location::class)} 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Objects/address_location.php");
+CodeExampleBuilder::visualize("Sphp/Objects/address_location.php");

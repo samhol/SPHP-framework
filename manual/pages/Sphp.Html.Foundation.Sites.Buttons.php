@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $btn = Apis::apigen()->classLinker(ButtonInterface::class);
@@ -69,13 +69,13 @@ hyperlink properties from {$api->classLinker(\Sphp\Html\Navigation\HyperlinkInte
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/Button.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/Button.php');
 echo $parsedown->text(<<<MD
 ##The {$api->classLinker(SplitButton::class)} component
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/SplitButton.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/SplitButton.php');
 echo $parsedown->text(<<<MD
 ##The $btnGroup class
 
@@ -86,7 +86,7 @@ perfectly with the grid component.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/ButtonGroup.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/ButtonGroup.php');
 $stackFor = $btnGroup->methodLink("stackFor", false);
 $unstackFor = $btnGroup->methodLink("unstackFor", false);
 echo $parsedown->text(<<<MD
@@ -96,4 +96,4 @@ Foundation stack classes for button groups. Stacking can be removed by using $un
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Buttons/ButtonGroup-stackFor.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/ButtonGroup-stackFor.php');

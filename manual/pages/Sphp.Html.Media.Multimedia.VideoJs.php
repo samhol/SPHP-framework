@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $vjs = $api->classLinker(VideoJs::class);
 echo $parsedown->text(<<<MD
@@ -13,4 +13,4 @@ The $vjs Implements video.js for PHP.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/VideoJs.php");
+CodeExampleBuilder::visualize("Sphp/Html/Media/Multimedia/VideoJs.php");

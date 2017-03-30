@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $php = Apis::phpManual();
 $nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__);
@@ -51,7 +51,7 @@ validators.
         
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/RequiredValueValidator.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Validators/RequiredValueValidator.php", "php", false);
 
 $load('Sphp.Validators.PatternValidator');
 $load('Sphp.Validators.StringLengthValidator');

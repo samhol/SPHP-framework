@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $arrLink = Apis::phpManual()->typeLink('array');
 $fileSystem = Apis::apigen()->classLinker(Filesystem::class);
@@ -14,6 +14,6 @@ This utility class can handle several local file system related operations.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Filesystem/Filesystem.php", false, false);
+CodeExampleBuilder::visualize("Sphp/Filesystem/Filesystem.php", false, false);
 
 

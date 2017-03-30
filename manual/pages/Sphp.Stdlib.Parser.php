@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $arrLink = $php->typeLink("array");
 $parser = Apis::apigen()->classLinker(Parser::class);
@@ -14,4 +14,4 @@ $parser instance can handle file related (reading and writing) operations.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Filesystem/FileObject1.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Filesystem/FileObject1.php", "text", false);

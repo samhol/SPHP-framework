@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Observers;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 Use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
 
@@ -25,7 +25,7 @@ implementation of $subject interface.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/ObservableSubjectTrait.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Core/ObservableSubjectTrait.php", "text", false);
 
 namespace Sphp\Config\ErrorHandling;
 

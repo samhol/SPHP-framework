@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $sqlException = Apis::apigen()->classLinker(SQLException::class);
@@ -29,4 +29,4 @@ Some essential $query methods:
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/query1.php", 1, "sql");
+CodeExampleBuilder::visualize("Sphp/Db/query1.php", 1, "sql");

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $table = Apis::apigen()->classLinker(Table::class);
@@ -29,6 +29,6 @@ The $td elements are the data containers in the $table.
 The $td elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Tables/basics.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Tables/basics.php', false, true);
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Tables/Table2.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Tables/Table2.php', false, true);

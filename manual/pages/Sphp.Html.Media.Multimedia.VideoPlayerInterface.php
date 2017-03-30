@@ -3,7 +3,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $videoPlayerInterface = Apis::apigen()->classLinker(VideoPlayerInterface::class);
 $abstractVideoPlayer = Apis::apigen()->classLinker(AbstractVideoPlayer::class);
@@ -23,7 +23,7 @@ This class is axtended and used for following subscribers.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Html/Media/Multimedia/VideoPlayerInterface.php"))
+(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/VideoPlayerInterface.php"))
         ->setExampleHeading("Example code for Youtube, Vimeo and DailyMotion video")
         ->setOutputPaneTitle("Example results")
         ->printHtml();

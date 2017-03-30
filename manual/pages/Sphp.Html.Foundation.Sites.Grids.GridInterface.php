@@ -2,8 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
+
 $gridIf = Apis::apigen()->classLinker(GridInterface::class);
 $htmlCont = Apis::apigen()->classLinker(\Sphp\Html\Container::class);
 $grid = Apis::apigen()->classLinker(Grid::class);
@@ -42,23 +43,23 @@ a $row with column contents as a parameter or set the columns similarly by calli
 ###An example of rows generated from arrays containing plain $col content.
 MD
 );
-$rowExample1 =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php', false);
+$codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php', false);
+$rowExample1 = $codeExampleBuilder->buildAccordion();
 $rowExample1
-        ->getOutputPane()
-        ->addCssClass("grid-example");
-$rowExample1->printHtml();
+        ->addCssClass('grid-example')
+        ->printHtml();
 echo $parsedown->text(<<<MD
 		
 ###An example of rows generated from arrays containing $col objects and plain content.
  		
 MD
-);       
+);
 
-$rowExample2 =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/Row-mixed-constructor.php');
-$rowExample2
-        ->getOutputPane()
-        ->addCssClass("grid-example");
-$rowExample2->printHtml();
+$rowExample2 = $codeExampleBuilder
+        ->setPath('Sphp/Html/Foundation/F6/Grids/Row-mixed-constructor.php')
+        ->buildAccordion()
+        ->addCssClass('grid-example')
+        ->printHtml();
 unset($rowExample1, $rowExample2);
 echo $parsedown->text(<<<MD
 		
@@ -75,9 +76,8 @@ any HTML into the document.
 		
 MD
 );
-$gridExample = new CodeExampleAccordion();
-$gridExample->fromFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/GridInterface.php');
-$gridExample
-        ->getOutputPane()
-        ->addCssClass("grid-example");
-$gridExample->printHtml();
+$gridExample = $codeExampleBuilder
+        ->setPath('Sphp/Html/Foundation/F6/Grids/GridInterface.php')
+        ->buildAccordion()
+        ->addCssClass('grid-example')
+        ->printHtml();

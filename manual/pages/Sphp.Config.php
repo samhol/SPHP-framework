@@ -3,18 +3,18 @@
 namespace Sphp\Config;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 $config = Apis::apigen()->classLinker(Config::class);
 $phpConfig = Apis::apigen()->classLinker(PHPConfig::class);
-$boolLink = $php->typeLink('boolean');
-$intLink = $php->typeLink('integer');
-$floatLink = $php->typeLink('float');
-$strLink = $php->typeLink('string');
-$arrLink = $php->typeLink('array');
-$arrayAccess = $php->classLinker(\ArrayAccess::class);
-$path = $api->classLinker(\Sphp\Stdlib\Path::class);
+$boolLink = Apis::phpManual()->typeLink('boolean');
+$intLink = Apis::phpManual()->typeLink('integer');
+$floatLink = Apis::phpManual()->typeLink('float');
+$strLink = Apis::phpManual()->typeLink('string');
+$arrLink = Apis::phpManual()->typeLink('array');
+$arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
+$path = Apis::apigen()->classLinker(\Sphp\Stdlib\Path::class);
 echo $parsedown->text(<<<MD
 #APPLICATION CONFIGURATION DATA{#Config}
 $ns
@@ -28,7 +28,7 @@ A domain is actually a singelton $config instance and all domain instances can h
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Config/Config.php", 'text', false);
+CodeExampleBuilder::visualize('Sphp/Config/Config.php', 'text', false);
 
 $load('Sphp.Config.Ini');
 $load('Sphp.Config.PHPConfig');

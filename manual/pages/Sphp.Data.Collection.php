@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $collection = $api->classLinker(Collection::class);
 $collectionInterface = $api->classLinker(CollectionInterface::class);
@@ -13,6 +13,6 @@ This class provides an implementation of $collectionInterface.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/SphpArrayObject.php", "text", false);
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/Collection.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Data/SphpArrayObject.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Data/Collection.php", "text", false);
 

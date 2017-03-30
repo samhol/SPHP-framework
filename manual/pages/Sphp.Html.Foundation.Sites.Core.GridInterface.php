@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $gridIf = Apis::apigen()->classLinker(GridInterface::class);
@@ -51,7 +51,7 @@ The calculates the widths of the individual $cols by dividing the maximum $row w
 ###An example of rows generated from arrays containing plain $col content.
 MD
 );
-$rowExample1 = new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-array-constructor.php', false);
+$rowExample1 = new CodeExampleBuilder('Sphp/Html/Foundation/F6/Core/Row-array-constructor.php', false);
 $rowExample1
         ->getOutputPane()
         ->addCssClass("grid-example");
@@ -63,7 +63,7 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-$rowExample2 = new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Row-mixed-constructor.php');
+$rowExample2 = new CodeExampleBuilder('Sphp/Html/Foundation/F6/Core/Row-mixed-constructor.php');
 $rowExample2
         ->getOutputPane()
         ->addCssClass("grid-example");
@@ -85,15 +85,15 @@ any HTML into the document.
 		
 MD
 );
-/* $rowExample =  new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
+/* $rowExample =  new CodeExampleBuilder('Sphp/Html/Foundation/F6/Core/Grid-ArrayAccess.php');
   $rowExample
   ->getOutputPane()
   ->addCssClass("grid-example");
   $rowExample->printHtml(); */
-//PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/Grid1.php');
-//PHPExampleViewer::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/Grids/GridInterface.php');
-$gridExample = new CodeExampleAccordion();
-$gridExample->fromFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Core/GridInterface.php');
+//PHPExampleViewer::visualize('Sphp/Html/Foundation/Grids/Grid1.php');
+//PHPExampleViewer::visualize('Sphp/Html/Foundation/Grids/GridInterface.php');
+$gridExample = new CodeExampleBuilder();
+$gridExample->fromFile('Sphp/Html/Foundation/F6/Core/GridInterface.php');
 $gridExample
         ->getOutputPane()
         ->addCssClass("grid-example");

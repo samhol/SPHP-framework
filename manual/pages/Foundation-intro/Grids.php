@@ -16,6 +16,6 @@ $ns
 MD
 ;
 
-include(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Grids/GridInterface.php');
+include('Sphp/Html/Foundation/F6/Grids/GridInterface.php');
 echo "</div>";
 

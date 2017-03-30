@@ -9,5 +9,5 @@ $ns
 
 MD
 );
-$load("Sphp.Config.ErrorHandling.ExceptionHandler");
-$load("Sphp.Config.ErrorHandling.ErrorHandling");
+$load('Sphp.Config.ErrorHandling.ExceptionHandler');
+$load('Sphp.Config.ErrorHandling.ErrorHandling');

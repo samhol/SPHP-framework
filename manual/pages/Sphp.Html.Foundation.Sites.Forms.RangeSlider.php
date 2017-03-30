@@ -11,8 +11,8 @@ echo $parsedown->text(<<<MD
 The example code of the form showing the exaples of $rangeSlider object is represented below.
 MD
 );
-include EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/RangeSlider.php';
-SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/RangeSlider.php');
+include 'Sphp/Html/Foundation/F6/Forms/RangeSlider.php';
+SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/F6/Forms/RangeSlider.php');
 echo $parsedown->text(<<<MD
 
 MD

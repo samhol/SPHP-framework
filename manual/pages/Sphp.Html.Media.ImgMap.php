@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $map  = Apis::apigen()->classLinker(Map::class);
 $areaInterface  = Apis::apigen()->classLinker(AreaInterface::class);
@@ -23,4 +23,4 @@ $ns
 A $map object is a container for $areaInterface components
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Html/Media/ImageMap.php", false, true);
+CodeExampleBuilder::visualize("Sphp/Html/Media/ImageMap.php", false, true);

@@ -2,7 +2,7 @@
 
 namespace Sphp\Core;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $router = $api->classLinker(Path::class);
 echo $parsedown->text(<<<MD
@@ -17,5 +17,5 @@ $router supports transformation of relative filesystem paths to absolute paths f
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Router.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Core/Router.php", "text", false);
 

@@ -2,7 +2,7 @@
 
 namespace Sphp\I18n;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
@@ -30,7 +30,7 @@ By default, the encoding is frequently `iso-8859-1`.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/localeSetting.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/localeSetting.php", "text", false);
 echo $parsedown->text(<<<MD
 
 However the framework offers an object oriented way for human 
@@ -40,7 +40,7 @@ language translation related processes.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/sphpTranslation.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/sphpTranslation.php", "text", false);
 
 $translator = $api->classLinker(TranslatorInterface::class);
 
@@ -56,13 +56,13 @@ gettext extension and the current locale information provided by the locale.
 The $translator class supports both basic...
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/Translator.singular.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Translator.singular.php", "text", false);
 
 echo $parsedown->text(<<<MD
 ...and plural Gettext translation.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/Translator.plural.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Translator.plural.php", "text", false);
 
 $vsprintfLink = $php->functionLink("vsprintf");
 echo $parsedown->text(<<<MD
@@ -72,7 +72,7 @@ method for translating a multidimensional array of message strings (plural form
 is not supported).
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/Translator.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Translator.php", "text", false);
 $message = $api->classLinker(Message::class);
 $messageContainer = $api->classLinker(PrioritizedMessageList::class);
 $echo = $php->functionLink("echo");
@@ -89,7 +89,7 @@ object. If no $translator is given the default translator is used.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/Message.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Message.php", "text", false);
 $translatorChangerObserverInterface = $api->classLinker(TranslatorAwareInterface::class);
 $translatorChangerChainInterface = $api->classLinker(TranslatorAwareTrait::class);
 
@@ -112,7 +112,7 @@ its messages by notifying them via the $translatorChangerChainInterface.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/MessageContainer.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/MessageContainer.php", "text", false);
 $topicContainer = $api->classLinker(TopicList::class);
 $messageContainers = $api->classLinker(PrioritizedMessageList::class, "MessageLists");
 
@@ -131,7 +131,7 @@ $message object translation within a $topicContainer class works the same way as
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/TopicContainer.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/TopicContainer.php", "text", false);
 $calendar = $api->classLinker(Calendar::class);
 echo $parsedown->text(<<<MD
 ##Localized calendar related translations
@@ -140,5 +140,5 @@ The $calendar class.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/I18n/Calendar.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Calendar.php", "text", false);
 

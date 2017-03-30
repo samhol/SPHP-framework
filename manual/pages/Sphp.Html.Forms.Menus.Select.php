@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $selectLink = Apis::apigen()->classLinker(Select::class);
@@ -17,6 +17,6 @@ $option components can be grouped using $optGroup components,
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Menus/Select.php'))
+(new CodeExampleBuilder('Sphp/Html/Forms/Menus/Select.php'))
         ->addCssClass("form-example")
         ->printHtml();

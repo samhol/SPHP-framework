@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $strLink = Apis::phpManual()->typeLink("string");
 $arrLink = Apis::phpManual()->typeLink([]);
@@ -21,7 +21,7 @@ the actual filtering does in particular case is totally up to the implementator.
 Build-in filters focus on manipulatong scalar values like strings and numeric values.
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Filters/FilterInterface.php", "text", false))
+(new CodeExampleBuilder("Sphp/Filters/FilterInterface.php", "text", false))
 		->setExampleHeading("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
@@ -34,11 +34,11 @@ $filterInterface.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Filters/FilterAggregate.php", "text", false))
+(new CodeExampleBuilder("Sphp/Filters/FilterAggregate.php", "text", false))
 		->setExampleHeading("Complex integer filtering example")
 		->setOutputSyntaxPaneTitle("Array filtering results")
 		->printHtml();
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Filters/StringFiltering.php", "text", false))
+(new CodeExampleBuilder("Sphp/Filters/StringFiltering.php", "text", false))
 		->setExampleHeading("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
@@ -46,7 +46,7 @@ echo $parsedown->text(<<<MD
 $filterInterface can easily be used for filtering PHP $arrLink values.
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Filters/ArrayFiltering.php", "text", false))
+(new CodeExampleBuilder("Sphp/Filters/ArrayFiltering.php", "text", false))
 		->setExampleHeading("Array filtering example")
 		->setOutputSyntaxPaneTitle("Array filtering results")
 		->printHtml();

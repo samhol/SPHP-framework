@@ -3,7 +3,7 @@
 namespace Sphp\Config;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ini = Apis::apigen()->classLinker(Ini::class);
 $ini_set = Apis::phpManual()->functionLink('ini_set');
@@ -21,7 +21,7 @@ a list of all available options in the appendix.
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Config/Ini.php", 'text', false))
+(new CodeExampleBuilder("Sphp/Config/Ini.php", 'text', false))
         ->setExampleHeading("PHP INI setting")
         ->printHtml();
 

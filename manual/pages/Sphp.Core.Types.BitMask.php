@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $bitMaskLink = $api->classLinker(BitMask::class);
 $and = $bitMaskLink->methodLink("and_");
@@ -18,4 +18,4 @@ One $bitMaskLink may be used to modify the contents of another $bitMaskLink thro
 implemented logical AND, logical inclusive OR, and logical exclusive OR operations.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Types/BitMask.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Core/Types/BitMask.php", "text", false);

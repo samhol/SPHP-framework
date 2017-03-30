@@ -31,7 +31,7 @@ $collectionInterface provides also methods for prepending, appending, searching 
 MD
 );
 
-$load("Sphp.Data.Collection.php");
-$load("Sphp.Data.StablePriorityQueue.php");
-$load("Sphp.Data.StackInterface.php");
-$load("Sphp.Data.UniquePriorityQueue.php");
+$load('Sphp.Data.Collection');
+$load('Sphp.Data.StablePriorityQueue');
+$load('Sphp.Data.StackInterface');
+$load('Sphp.Data.UniquePriorityQueue');

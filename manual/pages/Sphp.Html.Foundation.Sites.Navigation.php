@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Navigation\HyperlinkInterface;
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
@@ -29,7 +29,7 @@ The $sideNavClass component provides navigation for the entire site, or for sect
 they've reached the link below. (`Shift+Tab` to navigate back one step.)
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php');
 
 $breadcrumbs = $api->classLinker(BreadCrumbs::class);
 $breadcrumb = $api->classLinker(BreadCrumb::class);
@@ -47,7 +47,7 @@ A $breadcrumbs instance shows a horizontal navigation trail of individual $bread
 Thi component will fill out `100%` of the width of its parent container.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/BreadCrumbs.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/BreadCrumbs.php');
 
 
 $load("Sphp.Html.Foundation.Sites.Navigation.Pagination.php");

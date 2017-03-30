@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Manual\MVC;
+namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
@@ -21,9 +21,10 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CodeExampleBuider implements \Sphp\Html\ContentInterface {
+class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
 
- use \Sphp\Html\ContentTrait;
+  use \Sphp\Html\ContentTrait;
+
   const HTMLFLOW = 'html';
   const OUTPUT_TEXT = 'text';
   const EXAMPLECODE = 'code';
@@ -57,8 +58,10 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
    * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
    */
   public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
+    if ($path !== null) {
+      $this->setPath($path);
+    }
     $this->useDefaultTitles();
-    $this->setPath($path);
     $this->setOutpputHighlighting($highlightOutput);
     $this->setHtmlFlowVisibility($outputAsHtmlFlow);
   }
@@ -76,9 +79,6 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
    * @return Accordion
    */
   public function __invoke($path, $highlightOutput = false, $outputLang = true) {
-    if ($path !== null) {
-       $this->setPath($path);
-    }
     $this->setPath($path)
             ->setOutpputHighlighting($highlightOutput)
             ->setHtmlFlowVisibility($outputLang);
@@ -94,12 +94,13 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
   }
 
   /**
-   * 
+   * .;/var/www/vhosts/samiholck.com/playground.samiholck.com/manual/examples;/var/www/vhosts/samiholck.com/playground.samiholck.com
    * @param  string $path the path of the example code
    * @return self for a fluent interface
    */
   public function setPath($path) {
-    $this->path = $path;
+    $fullPath = \Sphp\Stdlib\Filesystem::getFullPath($path);
+    $this->path = $fullPath;
     return $this;
   }
 
@@ -142,7 +143,7 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
    */
   public function buildAccordion() {
     if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException();
+      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
     }
     $accordion = new Accordion();
     $accordion->allowAllClosed()
@@ -181,7 +182,7 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
    */
   public function buildHighlightedOutput() {
     if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException();
+      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
     }
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
@@ -201,7 +202,7 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
    */
   public function buildHtmlFlow() {
     if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException();
+      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
     }
     $outputPane = (new Pane())->addCssClass('html-output');
     $outputPane->setPaneTitle($this->titles[self::HTMLFLOW]);
@@ -273,10 +274,11 @@ class CodeExampleBuider implements \Sphp\Html\ContentInterface {
   /**
    * Prints the PHP Example code and the preferred result
    *
-   * @param  string $path the file path of the presented example PHP code
-   * @param  boolean $highlightOutput true for highlighted program code
-   *         presentation, false for html presentation
-   * @param string $outputLang the language name of the highlighted output code
+   * @param  string $path the file path of the example PHP code
+   * @param string|boolean $highlightOutput the language name of the output code 
+   *        or false if highlighted output code should not be visible
+   * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @return Accordion
    */
   public static function visualize($path, $highlightOutput = false, $outputLang = 'html5') {
     (new static($path, $highlightOutput, $outputLang))->buildAccordion()->printHtml();

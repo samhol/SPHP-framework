@@ -27,9 +27,9 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 $navExamples = (new BlockGrid())
         ->setBlockGrids(1, 2, 3)
         ->setStyle("margin-bottom", ".3em")
-        ->appendPhpFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/DropdownMenu.php')
-        ->appendPhpFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php')
-        ->appendPhpFile(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/DrilldownMenu.php')
+        ->appendPhpFile('Sphp/Html/Foundation/F6/Navigation/DropdownMenu.php')
+        ->appendPhpFile('Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php')
+        ->appendPhpFile('Sphp/Html/Foundation/F6/Navigation/DrilldownMenu.php')
         ->printHtml();
 
-SyntaxHighlightingSingleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Navigation/DrilldownMenu.php');
+SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/F6/Navigation/DrilldownMenu.php');

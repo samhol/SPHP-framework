@@ -2,22 +2,23 @@
 
 namespace Sphp\Db\Objects;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$iterable = $php->classLinker(\IteratorAggregate::class);
-$sessionUser = $api->classLinker(SessionUser::class);
-$sessionUsers = $api->classLinker(SessionUserStorage::class);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
+$sessionUser = Apis::apigen()->classLinker(SessionUser::class);
+$sessionUsers = Apis::apigen()->classLinker(SessionUserStorage::class);
 
 echo $parsedown->text(<<<MD
 ##$sessionUser objects and the $sessionUsers storage component
 $sessionUser
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/SessionUser.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Db/Objects/SessionUser.php', 'text', false);
 
 echo $parsedown->text(<<<MD
 $sessionUsers
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/Objects/SessionUserStorage.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Db/Objects/SessionUserStorage.php', 'text', false);

@@ -2,7 +2,7 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $nsLink = $api->namespaceLink(__NAMESPACE__);
 $errorExceptionThrower = $api->classLinker(ErrorExceptionThrower::class);
@@ -25,7 +25,7 @@ errors or warnings to $exception objects and then re-set the PHP error handler a
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Config/ErrorHandling/ErrorExceptionThrower.php"))
+(new CodeExampleBuilder("Sphp/Config/ErrorHandling/ErrorExceptionThrower.php"))
         ->printHtml();
 echo $parsedown->text(<<<MD
         
@@ -34,6 +34,6 @@ This feature can be turned off for even stricter error handling.
 
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . "Sphp/Config/ErrorHandling/ErrorExceptionThrower2.php"))
+(new CodeExampleBuilder("Sphp/Config/ErrorHandling/ErrorExceptionThrower2.php"))
         ->printHtml();
 

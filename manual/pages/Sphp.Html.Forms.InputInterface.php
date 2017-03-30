@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Forms\FormInterface;
 
 $formIfLink = $api->classLinker(FormInterface::class);
@@ -32,10 +32,10 @@ Framework has many build-in form components that implement basic HTML form eleme
 MD
 );
 
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Inputs/InputFields.php', false, true))
+(new CodeExampleBuilder('Sphp/Html/Forms/Inputs/InputFields.php', false, true))
         ->addCssClass("form-example")
         ->printHtml();
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Forms/Input.php', false, true))
+(new CodeExampleBuilder('Sphp/Html/Forms/Input.php', false, true))
         ->addCssClass("form-example")
         ->printHtml();
 $load("Sphp.Html.Forms.Inputs.Choiceboxes.php");

@@ -1,6 +1,6 @@
 <?php
 namespace Sphp\Html\Foundation\Sites\Forms;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $gridForm = $api->classLinker(GridForm::class);
 
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
@@ -12,10 +12,10 @@ $gridForm implements a validable Foundation framework based form.
 $ns
 MD
 );
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/GridForm.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/GridForm.php'))
         ->setExampleHeading("Basic Foundation form example")
         ->addCssClass("form-example")
         ->printHtml();
-(new CodeExampleAccordion(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))
         ->addCssClass("form-example")
         ->printHtml();

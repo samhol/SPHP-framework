@@ -25,4 +25,4 @@ if any constraints are violated, the new row is not added to the table and a
 $sqlException returned instead.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Db/insert1.php", true, "sql");
+CodeExampleBuilder::visualize("Sphp/Db/insert1.php", true, "sql");

@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers\Modals;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $modal = $api->classLinker(Modal::class);
 $controller = $api->classLinker(Controller::class);
@@ -13,4 +13,4 @@ Modal dialogs, or pop-up windows, are handy for prototyping and production.
 
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . 'Sphp/Html/Foundation/F6/Containers/Modals/Modal.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/Modals/Modal.php', false, true);

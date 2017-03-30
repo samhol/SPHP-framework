@@ -3,7 +3,7 @@
 namespace Sphp\Stdlib\Events;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 $eventInterface = Apis::apigen()->classLinker(EventInterface::class);
@@ -48,6 +48,6 @@ Here are some examples of good event names:
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Core/Events/EventManager.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Core/Events/EventManager.php", "text", false);
 
 $load('Sphp.Stdlib.Observers');

@@ -1,7 +1,7 @@
 <?php
 namespace Sphp\Stdlib\Datastructures;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $storage = $api->classLinker(StablePriorityQueue::class);
 echo $parsedown->text(
 		<<<MD
@@ -14,4 +14,4 @@ The $storage is stable whereas the native SPL class is not.
 priority value occur in the order in which they were inserted.
 MD
 );
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Data/StablePriorityQueue.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Data/StablePriorityQueue.php", "php", false);

@@ -3,7 +3,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\CodeExampleAccordion;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $patrnvLink = Apis::apigen()->classLinker(PatternValidator::class);
 
@@ -15,4 +15,4 @@ is valid if it matches the given pattern.
 MD
 );
 
-CodeExampleAccordion::visualize(EXAMPLE_DIR . "Sphp/Validators/PatternValidator.php", "php", false);
+CodeExampleBuilder::visualize("Sphp/Validators/PatternValidator.php", "php", false);

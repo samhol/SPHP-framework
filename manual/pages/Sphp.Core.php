@@ -1,16 +1,18 @@
 <?php
 
-namespace Sphp\Core;
+namespace Sphp\Stdlib;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
-#Core components
+#Standard library components
 $ns  
   
 MD
 );
 
-$load("Core-intro/Orbit-intro");
-$load("Sphp.Core.Router");
+$load('Core-intro/Orbit-intro');
+$load('Sphp.Core.Router');
 
