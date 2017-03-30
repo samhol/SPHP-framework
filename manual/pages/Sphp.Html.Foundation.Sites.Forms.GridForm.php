@@ -14,8 +14,10 @@ MD
 );
 (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/GridForm.php'))
         ->setExamplePaneTitle("Basic Foundation form example")
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

@@ -98,7 +98,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     $this->attrs()
             ->set('aria-valuenow', $progress)
             ->set('aria-valuetext', $progressText);
-    $this->setTitle($progressText);
+    $this->attrs()->set('title', $progressText);
     $this->progressMeter->inlineStyles()->setProperty('width', "$progress%");
     $this->progressMeter['progress-meter-text']->replaceContent("$progress%");
     return $this;

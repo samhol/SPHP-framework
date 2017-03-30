@@ -282,8 +282,7 @@ trait IdentifiableComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
-    $this->attrs()->identify($identityName, $prefix, $length);
-    return $this;
+    return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
   /**

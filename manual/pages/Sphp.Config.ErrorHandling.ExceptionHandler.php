@@ -17,6 +17,6 @@ exception handling methods and Observer pattern.
 MD
 );
 
-(new SyntaxHighlightingSingleAccordion("Uncaught PHP exceptions handling example"))
+(new SyntaxHighlightingSingleAccordion('Uncaught PHP exceptions handling example'))
         ->loadFromFile('Sphp/Config/ErrorHandling/ExceptionHandler.php')
         ->printHtml();

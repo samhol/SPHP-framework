@@ -2,14 +2,11 @@
 
 namespace Sphp\Db;
 
-use Sphp\Html\Apps\ApiTools\PHPExampleViewer as CodeExampleAccordion;
-use Sphp\Html\Apps\ApiTools\ApiGenClassLinker as ApiGenClassLinker;
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$sqlException = $api->classLinker(SQLException::class);
-/**
- * @var ApiGenClassLinker
- */
-$insert = $api->classLinker(Insert::class);
+$sqlException = Apis::apigen()->classLinker(SQLException::class);
+$insert = Apis::apigen()->classLinker(Insert::class);
 
 echo $parsedown->text(<<<MD
 

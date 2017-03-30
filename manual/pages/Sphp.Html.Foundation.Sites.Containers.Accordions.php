@@ -1,13 +1,14 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
-
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
 //$ns = $api->namespaceLink(__NAMESPACE__);
-$paneInterface = $api->classLinker(PaneInterface::class);
-$accordion = $api->classLinker(Accordion::class);
+$paneInterface = Apis::apigen()->classLinker(PaneInterface::class);
+$accordion = Apis::apigen()->classLinker(Accordion::class);
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
         
 ##The $accordion container for $paneInterface components

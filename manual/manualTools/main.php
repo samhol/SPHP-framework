@@ -2,11 +2,10 @@
 
 namespace Sphp\Manual;
 
-include_once __DIR__ . "/_constants.php";
+//include_once __DIR__ . "/_constants.php";
 
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Stdlib\Strings;
 
 function addPHPSuffix($page) {
@@ -40,11 +39,12 @@ $load = function($page) use ($api, $php, $foundation, $w3schools, $parsedown, &$
   try {
     ob_start();
     $page = addPHPSuffix($page);
-    $examplePath = \Sphp\Manual\EXAMPLE_FOLDER . "/" . $page;
-    $pagePath = \Sphp\Manual\PAGE_FOLDER . "/" . $page;
-    if (is_file($examplePath)) {
-      include($examplePath);
-    } else if (is_file($pagePath)) {
+    //$examplePath = \Sphp\Manual\EXAMPLE_FOLDER . "/" . $page;
+    $pagePath = "manual/pages/$page";
+    //if (is_file($examplePath)) {
+    // include($examplePath);
+    //} else 
+    if (is_file($pagePath)) {
       include($pagePath);
     } else {
       throw new \InvalidArgumentException("the path '$page' contains no executable PHP script");

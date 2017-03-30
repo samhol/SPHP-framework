@@ -18,6 +18,7 @@ MD
 );
 
 (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Choiceboxes.php'))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 echo $parsedown->text(<<<MD

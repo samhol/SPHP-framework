@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib\Observers;
 
 /**
+ * Defines the observer part of the Observer Design Pattern
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-01-12
@@ -16,6 +17,10 @@ namespace Sphp\Stdlib\Observers;
  */
 interface Observer {
 
-  //put your code here
+  /**
+   * Receives an update from a subject
+   * 
+   * @param Subject $subject
+   */
   public function update(Subject $subject);
 }

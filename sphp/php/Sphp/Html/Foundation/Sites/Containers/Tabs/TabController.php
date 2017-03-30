@@ -37,8 +37,10 @@ class TabController extends AbstractContainerTag implements TabControllerInterfa
 
   public function setActive($active = true) {
     if ($active) {
+      $this->attrs()->setAria('aria-selected', 'true');
       $this->addCssClass('is-active');
     } else {
+      $this->attrs()->remove('aria-selected');
       $this->removeCssClass('is-active');
     }
     return $this;

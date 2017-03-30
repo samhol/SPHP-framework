@@ -40,14 +40,11 @@ abstract class AbstractList extends AbstractContainerTag {
   public function contentToString() {
     $output = '';
     foreach ($this as $li) {
-      $liString = "$li";
-      if (substr($liString, 0, 3) !== '<li') {
-        $liString = '<li>' . $liString;
+      if ($li instanceof LiInterface) {
+        $output .= $li;
+      } else {
+        $output .= "<li>$li</li>";
       }
-      if (substr($liString, 0, -4) !== '</li>') {
-        $liString = $liString . '</li>';
-      }
-      $output .= $liString;
     }
     return $output;
   }

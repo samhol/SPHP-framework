@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 if (!defined("Sphp\Html\Apps\Manual\DEFAULT_APIGEN")) {
-  define('Sphp\Html\Apps\Manual\DEFAULT_APIGEN', 'http://documentation.samiholck.com/apigen/');
+  define('Sphp\Html\Apps\Manual\DEFAULT_APIGEN', 'http://playground.samiholck.com/API/apigen/');
 }
 
 use Sphp\Html\Apps\Manual\DEFAULT_APIGEN;

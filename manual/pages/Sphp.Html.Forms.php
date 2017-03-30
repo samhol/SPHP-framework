@@ -2,9 +2,6 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Inputs\TextualInput;
-use Sphp\Html\Forms\Inputs\Checkbox;
-use Sphp\Html\Forms\Inputs\Radiobox;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
@@ -21,11 +18,9 @@ These Form objects are used to build UI and not to handle the form data submitte
 
         
 $formIfLink gives athe basic requirements for any form implementation. Whereas $traversableFormInterface 
-extending $formIfLink is a container for $inputInterface components like ({$api->classLinker(TextualInput::class)},
-{$api->classLinker(Checkbox::class)}, {$api->classLinker(Radiobox::class)}, submit buttons and more.
-A form can also contain select lists, textarea, fieldset, legend, and label elements.
+extending $formIfLink is a container for any number of $inputInterface components.
 
 MD
 );
-$load("Sphp.Html.Forms.InputInterface.php");
+$load('Sphp.Html.Forms.InputInterface');
 

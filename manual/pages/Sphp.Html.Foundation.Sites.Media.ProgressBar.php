@@ -17,7 +17,8 @@ A $progressBar component can be used in conjunction with JavaScript to display t
 MD
 );
 $fooBarCodePane = new SyntaxHighlightingPane("<code>progressingFooBar.js</code> JavaScript code");
-$fooBarCodePane->loadFromFile(Path::get()->local("manual/snippets/progressingFooBar.js"));
-$example = new CodeExampleBuilder('Sphp/Html/Foundation/F6/Media/ProgressBar.php', false, true);
-$example->prepend($fooBarCodePane);
-$example->printHtml();
+$fooBarCodePane->loadFromFile("manual/snippets/progressingFooBar.js");
+$example =(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Media/ProgressBar.php', false, true))
+        ->buildAccordion()
+        ->prepend($fooBarCodePane)
+        ->printHtml();

@@ -18,5 +18,5 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Config/PHPConfig.php", 'text', false))
-        ->setExamplePaneTitle("PHP environment manipulation example")
+        ->setExamplePaneTitle('PHP environment manipulation example')
         ->printHtml();

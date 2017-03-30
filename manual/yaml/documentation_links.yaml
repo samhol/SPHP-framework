@@ -10,7 +10,7 @@ items:
       - link: Filesystem manipulation
         href: Sphp.Stdlib.filemanipulation
       - link: Data Structures
-        href: Sphp.Data
+        href: Sphp.Stdlib.Datastructures
       - link: Events and Observers
         href: Sphp.Stdlib.Observers.and.Events
       - link: Types and Utlilities

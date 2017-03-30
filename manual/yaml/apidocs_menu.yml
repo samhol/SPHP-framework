@@ -21,7 +21,7 @@ items:
     - link: Imagine
       href: https://imagine.readthedocs.io/en/latest/
   - separator: '<i class="devicons devicons-javascript_badge fa-fw"></i> <span>JavaScript:</span>'
-  - link: jQuery</span>
+  - link: jQuery
     href: http://jquery.com/
   - link: Foundation for sites
     href: https://foundation.zurb.com/sites/docs/

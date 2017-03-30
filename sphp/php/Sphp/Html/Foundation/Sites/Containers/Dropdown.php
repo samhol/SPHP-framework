@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\ContainerTag;
 use Sphp\Html\ContentInterface;
-use Sphp\Html\Forms\Buttons\ButtonTag as Button;
+use Sphp\Html\Forms\Buttons\ButtonTag;
 use Sphp\Html\AjaxLoaderInterface;
 
 /**
@@ -145,7 +145,7 @@ class Dropdown extends ContainerTag implements AjaxLoaderInterface {
    */
   public function setTarget($togleButton) {
     if (!($togleButton instanceof ButtonTag)) {
-      $togleButton = new Button("button", $togleButton);
+      $togleButton = new ButtonTag("button", $togleButton);
     }
     $this->target = $togleButton
             ->setAttr("data-toggle", $this->identify());

@@ -14,12 +14,8 @@ $dropdown1 = (new Dropdown(new Span("&lt;span&gt;"), clone $img))
 $dropdown2 = (new Dropdown(new Button("button", "&lt;button&gt;", "button")))
         ->ajaxAppend("manual/snippets/loremipsum.html #par_1")
         ->closeOnBodyClick(true);
-$dropdown3 = clone $dropdown2;
-$dropdown3->setTarget($img)
-        ->closeOnBodyClick(false);
-$dropdown3[] = clone $img;
 
 $grid = (new Grid());
-$grid[] = "$dropdown1 $dropdown2 $dropdown3";
+$grid[] = "$dropdown1 $dropdown2";
 $grid->printHtml();
 ?>

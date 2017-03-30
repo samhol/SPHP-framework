@@ -8,6 +8,7 @@
 namespace Sphp\Html;
 
 use DateTimeInterface;
+use DateTimeImmutable;
 
 /**
  * Implements an HTML &lt;time&gt; tag
@@ -40,7 +41,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
   public function __construct(DateTimeInterface $dateTime = null, $content = null) {
     parent::__construct('time', $content);
     if ($dateTime === null) {
-      $dateTime = new DateTime();
+      $dateTime = new DateTimeImmutable();
     }
     $this->setDateTime($dateTime);
   }
@@ -60,7 +61,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
     $this->dateTime = $dateTime;
     return $this;
   }
-  
+
   public function getDateTime() {
     return $this->dateTime;
   }

@@ -47,10 +47,10 @@ MD
         ->setOutputSyntaxPaneTitle("Multibyte string example results")
         ->printHtml();
 
-$load("Sphp.Core.Types.StringObject.php");
-$load("Sphp.Core.Types.Strings.php");
-$load("Sphp.Core.Types.Arrays.php");
+$load('Sphp.Core.Types.StringObject');
+$load('Sphp.Core.Types.Strings');
+$load('Sphp.Core.Types.Arrays');
 //$load("Sphp.Core.Types.Filters.php");
-$load("Sphp.Core.Types.Datetime.php");
-$load("Sphp.Core.Types.BitMask.php");
-$load("Sphp.Core.Types.URL.php");
+$load('Sphp.Core.Types.Datetime');
+$load('Sphp.Core.Types.BitMask');
+$load('Sphp.Core.Types.URL');
