@@ -13,18 +13,14 @@ use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\Foundation\Sites\Buttons\IconButton;
 
 /**
- * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}
- *
- *
- * {@inheritdoc}
- *
+ * Implements an abstract base Pane for a Foundation Accordion
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-24
  * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
+ * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax highlighter
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
- * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlighter
  * @filesource
  */
 class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterInterface {
@@ -49,7 +45,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
     $this->hl = $hl;
     $this->hl->setDefaultContentCopyController((new IconButton('page-copy', 'Copy'))
                     ->setSize('tiny'));
-                   // ->setTitle('Copy code to clipboard'));
+    // ->setTitle('Copy code to clipboard'));
     parent::__construct($title, $this->hl);
     $this->addCssClass('syntax-pane');
   }
@@ -60,9 +56,9 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
   }
 
   /**
-   * Returns the inner Syntax Highlighter component
+   * Returns the inner Syntax highlighting component
    * 
-   * @return SyntaxHighlighter the inner Syntax Highlighter component
+   * @return SyntaxHighlighter the inner Syntax highlighting component
    */
   public function getSyntaxHighlighter() {
     return $this->hl;

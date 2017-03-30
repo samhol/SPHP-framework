@@ -50,12 +50,17 @@ class Filesystem {
    *
    * @param  string $path the path to the file
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public static function toString($path) {
-    if (!is_file($path)) {
-      throw new InvalidArgumentException("The path '$path' contains no file");
-    }
+    if (!static::isFile($path)) {
+      throw new RuntimeException("The path '$path' contains no file");
+    } else {
+      $data = file_get_contents(static::getFullPath($path), false);
+      if ($data === false) {
+        throw new RuntimeException("Parsing the file '$path' failed");
+      }
+    } 
     return file_get_contents($path, false);
   }
 
@@ -64,11 +69,11 @@ class Filesystem {
    *
    * @param  string $path the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public static function executePhpToString($path) {
-    if (!is_file($path)) {
-      throw new InvalidArgumentException("The path '$path' contains no executable PHP script");
+    if (!static::isFile($path)) {
+      throw new RuntimeException("The path '$path' contains no executable PHP script");
     }
     $content = '';
     try {
@@ -83,10 +88,10 @@ class Filesystem {
   }
 
   /**
-   * Returns rows of the ascii file in an array
+   * Returns rows of the ASCII file in an array
    *
-   * @param  string $path the path to the ascii file
-   * @return string[] rows of the ascii file in an array
+   * @param  string $path the path to the ASCII file
+   * @return string[] rows of the ASCII file in an array
    * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
    */
   public static function getTextFileRows($path) {
@@ -119,10 +124,10 @@ class Filesystem {
   }
 
   /**
-   * Returns the Mime type of the resource pointed by the given url
+   * Returns the Mime type of the resource pointed by the given URL
    *
    * @param  string|URL $url the pointing to the resource
-   * @return string mimetype of the content pointed by the given url
+   * @return string the Mime type of the content pointed by the given URL
    */
   public static function getMimeType($url) {
     if ($url instanceof URL) {
@@ -176,10 +181,10 @@ class Filesystem {
   }
 
   /**
-   * Converts the filesize (in bits) to bytes
+   * Converts the file size (in bits) to bytes
    *
    * @param  int|string $filesize file size in bits
-   * @return string filesize in bytes
+   * @return string file size in bytes
    */
   public static function generateFilesizeString($filesize) {
     if (is_numeric($filesize)) {

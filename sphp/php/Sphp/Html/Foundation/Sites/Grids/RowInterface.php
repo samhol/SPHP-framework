@@ -19,14 +19,14 @@ use Sphp\Html\ContainerComponentInterface;
  * **The sum of the {@link ColumnInterface} widths on a specific screen size in a 
  * {@link self} should not exeed 12**. However if this sum do exeed 12, in most 
  * browser environments the excessive {@link Column} components are floated to 
- * a new 'row'. **HOWEVER!** this behaviour is not actively supported.
+ * a new 'row'. **HOWEVER!** this behavior is not actively supported.
  *
  * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-27
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation 6 grid
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -42,7 +42,7 @@ interface RowInterface extends ContainerComponentInterface {
    *
    * If the number of the columns exceed the maximum width of the row, in most
    *  browser environments the excessive columns are floated to a new 'row'.
-   * **HOWEVER** this behaviour is not actively supported.
+   * **HOWEVER** this behavior is not actively supported.
    *
    * **Notes:**
    * 

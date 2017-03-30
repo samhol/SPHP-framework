@@ -35,7 +35,6 @@ abstract class AbstractWriter implements WriterInterface {
     if ($exclusiveLock) {
       $flags |= LOCK_EX;
     }
-
     set_error_handler(function ($error, $message = '') use ($filename) {
       throw new RuntimeException(
       sprintf('Error writing to "%s": %s', $filename, $message), $error
@@ -56,7 +55,7 @@ abstract class AbstractWriter implements WriterInterface {
    * toString(): defined by Writer interface.
    *
    * @see    WriterInterface::toString()
-   * @param  mixed   $config
+   * @param  mixed $config
    * @return string
    * @throws InvalidArgumentException
    */

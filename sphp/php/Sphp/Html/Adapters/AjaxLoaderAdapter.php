@@ -12,7 +12,7 @@ use Sphp\Stdlib\URL;
 use Sphp\Html\ComponentInterface;
 
 /** 
- * Excecutes {@link AjaxLoaderInterface} functionality on the adaptee
+ * Executes {@link AjaxLoaderInterface} functionality on the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-08-11

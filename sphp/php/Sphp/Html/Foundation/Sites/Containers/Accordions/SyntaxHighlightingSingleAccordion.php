@@ -12,17 +12,13 @@ use Sphp\Html\Apps\SyntaxHighlighter;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Implements an Foundation 6 Accordion containing a single syntax highlighting pane
+ * Implements an Foundation Accordion containing a single syntax highlighting pane
  * 
- * Class wraps the GeSHi (a Generic Syntax Highlighter) with a {@link AbstractComponent}
- *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-24
- * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
+ * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax highlight
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
- * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlight
  * @filesource
  */
 class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implements SyntaxHighlighterInterface {
@@ -37,9 +33,9 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
   }
 
   /**
-   * Returns the inner Syntax Highlighter component
+   * Returns the inner Syntax highlighting component
    * 
-   * @return SyntaxHighlighter the inner Syntax Highlighter component
+   * @return SyntaxHighlighter the inner Syntax highlighting component
    */
   public function getHighlighter() {
     return $this->getPane()->getSyntaxHighlighter();

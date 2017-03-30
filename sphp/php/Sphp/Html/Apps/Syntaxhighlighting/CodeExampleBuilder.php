@@ -10,9 +10,11 @@ namespace Sphp\Html\Apps\Syntaxhighlighting;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
+use Sphp\Stdlib\Filesystem;
+use Sphp\Exceptions\RuntimeException;
 
 /**
- * Implements an accordion for PHP Example presentation
+ * Implements an accordion builder for PHP Example presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-02
@@ -52,10 +54,11 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
   /**
    * Constructs a new instance
    *
-   * @param string $path the file path of the presented example PHP code
-   * @param string|boolean $highlightOutput the language name of the output code 
-   *        or false if highlighted output code should not be visible
-   * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @param  string $path the file path of the presented example PHP code
+   * @param  string|boolean $highlightOutput the language name of the output code 
+   *         or false if highlighted output code should not be visible
+   * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
    */
   public function __construct($path = null, $highlightOutput = false, $outputAsHtmlFlow = true) {
     if ($path !== null) {
@@ -77,6 +80,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    *         output presentation, false for html presentation
    * @param  string $outputLang the language name of the output code
    * @return Accordion
+   * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
    */
   public function __invoke($path, $highlightOutput = false, $outputLang = true) {
     $this->setPath($path)
@@ -86,21 +90,17 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
   }
 
   /**
+   * Sets the path of the example code
    * 
-   * @return string
-   */
-  public function getPath() {
-    return $this->path;
-  }
-
-  /**
-   * .;/var/www/vhosts/samiholck.com/playground.samiholck.com/manual/examples;/var/www/vhosts/samiholck.com/playground.samiholck.com
    * @param  string $path the path of the example code
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
    */
   public function setPath($path) {
-    $fullPath = \Sphp\Stdlib\Filesystem::getFullPath($path);
-    $this->path = $fullPath;
+    if (!Filesystem::isFile($path)) {
+      throw new RuntimeException("The code example path '$path' contains no file");
+    }
+     $this->path = Filesystem::getFullPath($path);
     return $this;
   }
 
@@ -142,8 +142,8 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function buildAccordion() {
-    if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
+    if ($this->path === null) {
+      throw new RuntimeException("Code example path is not set");
     }
     $accordion = new Accordion();
     $accordion->allowAllClosed()
@@ -157,22 +157,6 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
       $accordion->append($this->buildHtmlFlow());
     }
     return $accordion;
-  }
-
-  /**
-   * Loads the example PHP file content
-   *
-   * @param  string $path the file path of the example PHP code
-   * @param string|boolean $highlightOutput the language name of the output code 
-   *        or false if highlighted output code should not be visible
-   * @param boolean $outputAsHtmlFlow true for executed html result or false for no execution
-   * @return Accordion
-   */
-  public function fromFile($path, $highlightOutput = false, $outputAsHtmlFlow = true) {
-    $this->setPath($path)
-            ->setOutpputHighlighting($highlightOutput)
-            ->setHtmlFlowVisibility($outputAsHtmlFlow);
-    return $this->buildAccordion();
   }
 
   /**
@@ -244,7 +228,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @param  string $heading the heading of the example PHP code
    * @return self for a fluent interface
    */
-  public function setExampleHeading($heading) {
+  public function setExamplePaneTitle($heading) {
     $this->titles[self::EXAMPLECODE] = $heading;
     return $this;
   }

@@ -12,7 +12,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 
 /**
- * Implements Close Button
+ * Implements a Close Button
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11

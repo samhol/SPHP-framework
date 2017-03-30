@@ -12,7 +12,7 @@ use DateTimeInterface;
 /**
  * Defines an HTML &lt;time&gt; tag
  *
- * * a human-readable date/time
+ * This implements a human-readable date/time
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-03-06
@@ -31,7 +31,7 @@ interface TimeTagInterface extends TagInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
-  public function setDateTime(DateTime $dateTime);
+  public function setDateTime(DateTimeInterface $dateTime);
 
   /**
    * Returns the datetime object stored to the component
