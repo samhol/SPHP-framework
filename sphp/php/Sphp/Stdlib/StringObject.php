@@ -11,10 +11,10 @@ use ReflectionClass;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
-use InvalidArgumentException;
 use IteratorAggregate;
-use OutOfBoundsException;
-use BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Exceptions\OutOfBoundsException;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a chainable string class
@@ -128,7 +128,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @param  mixed  $str Value to modify, after being cast to string
    * @param  string $encoding The character encoding
-   * @throws InvalidArgumentException if an array or object without a
+   * @throws \Sphp\Exceptions\InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
   public function __construct($str = '', $encoding = null) {
@@ -162,7 +162,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @param  mixed   $str      Value to modify, after being cast to string
    * @param  string  $encoding The character encoding
    * @return self an instance
-   * @throws InvalidArgumentException if an array or object without a
+   * @throws \Sphp\Exceptions\InvalidArgumentException if an array or object without a
    *         __toString method is passed as the first argument
    */
   public static function create($str = '', $encoding = null) {
@@ -174,7 +174,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @param  string $methodName
    * @param  array $args
    * @return array
-   * @throws BadMethodCallException
+   * @throws \Sphp\Exceptions\BadMethodCallException
    */
   private function parseParams($methodName, array $args) {
     $method = static::$stringsReflector->getMethod($methodName);
@@ -203,7 +203,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * @param  string $name the name of the called method
    * @param  mixed $arguments
    * @return mixed
-   * @throws BadMethodCallException
+   * @throws \Sphp\Exceptions\BadMethodCallException
    */
   public function __call($name, $arguments) {
     $stringsClass = static::$stringsReflector;
@@ -255,7 +255,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @param  mixed $offset The index from which to retrieve the char
    * @return mixed the character at the specified index
-   * @throws OutOfBoundsException if the positive or negative offset does
+   * @throws \Sphp\Exceptions\OutOfBoundsException if the positive or negative offset does
    *                               not exist
    */
   public function offsetGet($offset) {
@@ -275,7 +275,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @param  mixed $offset the index of the character
    * @param  mixed $value  value to set
-   * @throws BadMethodCallException when called
+   * @throws \Sphp\Exceptions\BadMethodCallException when called
    */
   public function offsetSet($offset, $value) {
     throw new BadMethodCallException("Object is immutable, cannot modify char at position $offset directly");
@@ -288,7 +288,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    * immutability of the objects.
    *
    * @param  mixed $offset The index of the character
-   * @throws BadMethodCallException When called
+   * @throws \Sphp\Exceptions\BadMethodCallException When called
    */
   public function offsetUnset($offset) {
     throw new BadMethodCallException('Object object is immutable, cannot unset char');

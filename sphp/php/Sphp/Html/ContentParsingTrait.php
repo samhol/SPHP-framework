@@ -25,6 +25,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendRawFile($path) {
     $this->append(Filesystem::toString($path));
@@ -36,6 +37,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path path to the PHP file
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendPhpFile($path) {
     $this->append(Filesystem::executePhpToString($path));
@@ -59,6 +61,7 @@ trait ContentParsingTrait {
    * 
    * @param  string $path
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendMdFile($path) {
     $this->appendMd(Filesystem::executePhpToString($path));

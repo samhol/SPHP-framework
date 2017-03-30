@@ -30,6 +30,7 @@ interface ContentParserInterface extends ContentInterface {
    * 
    * @param  string $path path to the file
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendRawFile($path);
 
@@ -38,6 +39,7 @@ interface ContentParserInterface extends ContentInterface {
    * 
    * @param  string $path
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendPhpFile($path);
 
@@ -54,6 +56,7 @@ interface ContentParserInterface extends ContentInterface {
    * 
    * @param  string $path path to the file
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendMdFile($path);
 }
