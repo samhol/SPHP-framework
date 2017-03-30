@@ -100,7 +100,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     if (!Filesystem::isFile($path)) {
       throw new RuntimeException("The code example path '$path' contains no file");
     }
-     $this->path = Filesystem::getFullPath($path);
+    $this->path = Filesystem::getFullPath($path);
     return $this;
   }
 
@@ -165,8 +165,8 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function buildHighlightedOutput() {
-    if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
+    if ($this->path === null) {
+      throw new RuntimeException("Code example path is not set");
     }
     $outputSyntaxPane = new SyntaxHighlightingPane();
     if ($this->outputHl === 'text') {
@@ -185,8 +185,8 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function buildHtmlFlow() {
-    if (!is_file($this->path)) {
-      throw new \Sphp\Exceptions\RuntimeException("The path '$this->path' contains no file");
+    if ($this->path === null) {
+      throw new RuntimeException("Code example path is not set");
     }
     $outputPane = (new Pane())->addCssClass('html-output');
     $outputPane->setPaneTitle($this->titles[self::HTMLFLOW]);

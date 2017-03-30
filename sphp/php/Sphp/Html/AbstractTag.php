@@ -44,7 +44,7 @@ abstract class AbstractTag implements TagInterface {
    *
    * @param  string $tagName the tag name of the component
    * @param  AttributeManager|null $attrManager the attribute manager of the component
-   * @throws InvalidArgumentException if the tagname of the component is not valid
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name of the component is not valid
    */
   public function __construct($tagName, AttributeManager $attrManager = null) {
     $this->setTagName($tagName)
@@ -77,7 +77,7 @@ abstract class AbstractTag implements TagInterface {
    *
    * @param  string $tagName the tag name of the component
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the `$tagName` is not valid
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the `$tagName` is not valid
    */
   private function setTagName($tagName) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {

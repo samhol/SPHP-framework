@@ -7,7 +7,7 @@
 
 namespace Sphp\Stdlib;
 
-use RuntimeException;
+use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\Reader\ReaderInterface;
 
 /**
@@ -57,7 +57,7 @@ class Parser {
    * 
    * @param  string $type
    * @return ReaderInterface
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public static function getReader($type) {
     if (!static::readerExists($type)) {
@@ -75,9 +75,10 @@ class Parser {
    * @param  string $filepath
    * @param  string $extension
    * @return mixed
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public static function fromFile($filepath, $extension = null) {
+    $fullPath = Filesystem::getFullPath($filepath);
     if (!file_exists($filepath)) {
       throw new RuntimeException(sprintf(
               'Filename "%s" cannot be found relative to the working directory', $filepath
@@ -111,7 +112,7 @@ class Parser {
    * @param  string $string
    * @param  string $extension
    * @return mixed
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public static function fromString($string, $extension) {
     if (array_key_exists($extension, static::$readers)) {

@@ -296,7 +296,7 @@ class ImageScaler {
    * Checks whether a cached version of given size
    * 
    * @param  Box $box optional box object defining the size of the created image. 
-   *         If none given ccurrent size is used.
+   *         If none given current size is used.
    * @return boolean true if the image of the size is stored into the cache
    */
   public function inCache(Box $box = null) {
