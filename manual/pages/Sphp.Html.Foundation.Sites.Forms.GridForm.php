@@ -13,7 +13,7 @@ $ns
 MD
 );
 (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/GridForm.php'))
-        ->setExampleHeading("Basic Foundation form example")
+        ->setExamplePaneTitle("Basic Foundation form example")
         ->addCssClass("form-example")
         ->printHtml();
 (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))

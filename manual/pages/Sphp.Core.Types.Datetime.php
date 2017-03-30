@@ -16,6 +16,6 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Core/Types/Datetime.php", "text", false))
-		->setExampleHeading("Comparisons example PHP code")
+		->setExamplePaneTitle("Comparisons example PHP code")
 		->setOutputPaneTitle("Comparison results")
 		->printHtml();

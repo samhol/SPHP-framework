@@ -24,6 +24,6 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Html/Media/Multimedia/VideoPlayerInterface.php"))
-        ->setExampleHeading("Example code for Youtube, Vimeo and DailyMotion video")
+        ->setExamplePaneTitle("Example code for Youtube, Vimeo and DailyMotion video")
         ->setOutputPaneTitle("Example results")
         ->printHtml();

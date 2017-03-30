@@ -14,6 +14,6 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Embed.php", false, true))
-        ->setExampleHeading("HTML &lt;embed&gt; example code")
+        ->setExamplePaneTitle("HTML &lt;embed&gt; example code")
         ->setOutputPaneTitle("HTML &lt;embed&gt; example results")
         ->printHtml();

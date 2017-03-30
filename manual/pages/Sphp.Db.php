@@ -20,15 +20,14 @@ operation is canceled and an $sqlException is returned instead.
 Example database applicatíon:
 MD
 );
-$usersTableSql = (new CodeExampleBuilder())
-		->fromFile("Sphp/Db/create_session_user.sql")
-		->setExampleHeading("SQL code of the 'users' table")
+$usersTableSql = (new CodeExampleBuilder('Sphp/Db/create_session_user.sql'))
+		->setExamplePaneTitle("SQL code of the 'users' table")
 		->printHtml();
-CodeExampleBuilder::visualize("Sphp/Db/dbObjectsView.php", 1, "text");
-CodeExampleBuilder::visualize("Sphp/Db/usersAsHtmlTable.php", 2);
+CodeExampleBuilder::visualize('Sphp/Db/dbObjectsView.php', 1, 'text');
+CodeExampleBuilder::visualize('Sphp/Db/usersAsHtmlTable.php', 2);
 
-$load("Sphp.Db.Db.php");
-$load("Sphp.Db.Query.php");
-$load("Sphp.Db.Insert.php");
-$load("Sphp.Db.Update.php");
-$load("Sphp.Db.Delete.php");
+$load('Sphp.Db.Db');
+$load('Sphp.Db.Query');
+$load('Sphp.Db.Insert');
+$load('Sphp.Db.Update');
+$load('Sphp.Db.Delete');

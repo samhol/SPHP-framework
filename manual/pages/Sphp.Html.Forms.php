@@ -16,8 +16,8 @@ $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML FORMS
 $ns
-HTML form objects implement atleast either $formIfLink or  $traversableFormInterface interface. 
-These Form objects are used to pass user input data to a server.
+Any HTML form object implement atleast $formIfLink interface. 
+These Form objects are used to build UI and not to handle the form data submitted.
 
         
 $formIfLink gives athe basic requirements for any form implementation. Whereas $traversableFormInterface 

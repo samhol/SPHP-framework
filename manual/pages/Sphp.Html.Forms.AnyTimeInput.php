@@ -13,5 +13,6 @@ echo $parsedown->text(<<<MD
 MD
 );
 (new CodeExampleBuilder('Sphp/Html/Forms/AnyTimeInput.php'))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

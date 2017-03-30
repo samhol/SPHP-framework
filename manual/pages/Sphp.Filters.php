@@ -22,7 +22,7 @@ Build-in filters focus on manipulatong scalar values like strings and numeric va
 MD
 );
 (new CodeExampleBuilder("Sphp/Filters/FilterInterface.php", "text", false))
-		->setExampleHeading("String filtering example")
+		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
 echo $parsedown->text(<<<MD
@@ -35,11 +35,11 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Filters/FilterAggregate.php", "text", false))
-		->setExampleHeading("Complex integer filtering example")
+		->setExamplePaneTitle("Complex integer filtering example")
 		->setOutputSyntaxPaneTitle("Array filtering results")
 		->printHtml();
 (new CodeExampleBuilder("Sphp/Filters/StringFiltering.php", "text", false))
-		->setExampleHeading("String filtering example")
+		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
 echo $parsedown->text(<<<MD
@@ -47,6 +47,6 @@ $filterInterface can easily be used for filtering PHP $arrLink values.
 MD
 );
 (new CodeExampleBuilder("Sphp/Filters/ArrayFiltering.php", "text", false))
-		->setExampleHeading("Array filtering example")
+		->setExamplePaneTitle("Array filtering example")
 		->setOutputSyntaxPaneTitle("Array filtering results")
 		->printHtml();

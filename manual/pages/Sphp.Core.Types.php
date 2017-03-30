@@ -43,7 +43,7 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Core/Types/multibyteStringProblems.php", "text", false))
-        ->setExampleHeading("Multibyte string example PHP code")
+        ->setExamplePaneTitle("Multibyte string example PHP code")
         ->setOutputSyntaxPaneTitle("Multibyte string example results")
         ->printHtml();
 

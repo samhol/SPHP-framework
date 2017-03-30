@@ -22,7 +22,7 @@ MD
 );
 
 (new CodeExampleBuilder("Sphp/Config/Ini.php", 'text', false))
-        ->setExampleHeading("PHP INI setting")
+        ->setExamplePaneTitle("PHP INI setting")
         ->printHtml();
 
 

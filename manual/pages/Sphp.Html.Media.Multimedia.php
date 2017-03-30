@@ -24,7 +24,7 @@ echo $parsedown->text(<<<MD
 MD
 );
 (new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Audio.php", false, true))
-        ->setExampleHeading("HTML5 &lt;audio&gt; example code")
+        ->setExamplePaneTitle("HTML5 &lt;audio&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;audio&gt; example results")
         ->printHtml();
 

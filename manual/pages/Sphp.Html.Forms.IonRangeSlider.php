@@ -21,6 +21,7 @@ MD
 );
 
 (new CodeExampleBuilder('Sphp/Html/Forms/Ion/Slider.php', false, true))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 echo $parsedown->text(<<<MD
@@ -29,5 +30,6 @@ echo $parsedown->text(<<<MD
 MD
 );
 (new CodeExampleBuilder('Sphp/Html/Forms/Ion/RangeSlider.php', false, true))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

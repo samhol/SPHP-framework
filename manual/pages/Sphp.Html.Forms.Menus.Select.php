@@ -18,5 +18,6 @@ $option components can be grouped using $optGroup components,
 MD
 );
 (new CodeExampleBuilder('Sphp/Html/Forms/Menus/Select.php'))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

@@ -22,11 +22,11 @@ MD
 $codeExample = (new CodeExampleBuilder('manual/snippets/example.csv'))
         ->setHtmlFlowVisibility(false)
         ->setOutpputHighlighting(false)
-        ->setExampleHeading('CSV-file example')
+        ->setExamplePaneTitle('CSV-file example')
         ->printHtml();
 $codeExample->setPath('Sphp/Filesystem/CsvFile.php')
         ->setHtmlFlowVisibility(true)
-        ->setExampleHeading('PHP script converting a CSV-file to an HTML table')
+        ->setExamplePaneTitle('PHP script converting a CSV-file to an HTML table')
         ->setOutputPaneTitle('CSV data as a HTML table')
         ->printHtml();
 //CodeExampleBuider::visualize('Sphp/Filesystem/CsvFile.php', false, true);

@@ -31,7 +31,7 @@ The $dbObjectInterface is implemented by a couple of build-in instantiable class
 MD
 );
 (new CodeExampleBuilder("Sphp/Db/Objects/Location.php", "text", false))
-        ->setExampleHeading("Geographical address object example")
+        ->setExamplePaneTitle("Geographical address object example")
         ->printHtml();
 
 

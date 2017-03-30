@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
-$dropdown = $api->classLinker(Dropdown::class);
+$dropdown = Apis::apigen()->classLinker(Dropdown::class);
 
 echo $parsedown->text(<<<MD
 ###The $dropdown component

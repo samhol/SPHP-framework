@@ -13,5 +13,6 @@ echo $parsedown->text(<<<MD
 MD
 );
 (new CodeExampleBuilder('Sphp/Html/Forms/Inputs/Choicebox.php', false, true))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

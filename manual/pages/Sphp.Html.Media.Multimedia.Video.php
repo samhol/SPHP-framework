@@ -34,7 +34,7 @@ MD
 
 
 (new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Video.php", false, true))
-        ->setExampleHeading("HTML5 &lt;video&gt; example code")
+        ->setExamplePaneTitle("HTML5 &lt;video&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
         ->printHtml();
 

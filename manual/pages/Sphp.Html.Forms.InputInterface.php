@@ -33,9 +33,11 @@ MD
 );
 
 (new CodeExampleBuilder('Sphp/Html/Forms/Inputs/InputFields.php', false, true))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 (new CodeExampleBuilder('Sphp/Html/Forms/Input.php', false, true))
+        ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
 $load("Sphp.Html.Forms.Inputs.Choiceboxes.php");
