@@ -2,10 +2,9 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Stdlib\Path;
+$path = 'manual/pics/error.png';
 
-$path = Path::get()->local('manual/pics/error.png');
-echo (new \ParsedownExtra())->text(<<<TEXT
+echo \ParsedownExtra::instance()->text(<<<TEXT
 
 <h1 class="error">Manual page not found!</h1>
 

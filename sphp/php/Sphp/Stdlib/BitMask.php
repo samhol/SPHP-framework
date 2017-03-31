@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
+use Sphp\Db\Objects\Embeddable;
 
 /**
  * Implements a bitmask object
@@ -18,7 +19,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @filesource
  * @Embeddable
  */
-class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
+class BitMask implements Arrayable, Embeddable {
 
   /**
    * the binary value
@@ -131,7 +132,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
   /**
    * Checks if the object contains given bits
    *
-   * **Notes:** a string <var>$bits</var> is always trated as binary number
+   * **Notes:** a string <var>$bits</var> is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags
    * @return boolean true if the object contains given flags and false otherwise
@@ -188,7 +189,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
   }
 
   /**
-   * Parses the given flas type to an integer
+   * Parses the given flags type to an integer
    * 
    * @param  int|string|BitMask $flags the flags
    * @return int parsed flags value
@@ -207,7 +208,7 @@ class BitMask implements Arrayable, \Sphp\Db\Objects\Embeddable {
   }
 
   /**
-   * Parses the given flas type to an integer
+   * Parses the given flags type to an integer
    * 
    * @param  int|string|BitMask $flags the flags
    * @return int[] parsed flags value

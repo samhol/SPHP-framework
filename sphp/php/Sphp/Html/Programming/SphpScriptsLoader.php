@@ -10,12 +10,7 @@ namespace Sphp\Html\Programming;
 use Sphp\Stdlib\Path;
 
 /**
- * Description of SphpScriptsLoader
- *
- * 
- * **IMPORTANT:** 
- * 
- * The {@link self} component points to an external script file through the src attribute.
+ * Implements a SPHP JavaScript component container
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-17
@@ -27,7 +22,7 @@ use Sphp\Stdlib\Path;
 class SphpScriptsLoader extends ScriptsContainer {
 
   /**
-   * Folderpaths to script resources
+   * Folder paths to script resources
    *
    * @var string[]
    */
@@ -89,9 +84,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.ama3.com/anytime/ Any+Time
    */
   public function appendAnyTime() {
-    return $this
-                    ->appendJQuery()
-                    ->appendSrc($this->paths['vendor'] . 'anytime.c.js');
+    $this->appendJQuery()
+            ->appendSrc($this->paths['vendor'] . 'anytime.c.js');
+    return $this;
   }
 
   /**
@@ -101,7 +96,8 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendVideojs() {
-    return $this->appendSrc('http://vjs.zencdn.net/5.11.6/video.js');
+    $this->appendSrc('http://vjs.zencdn.net/5.11.6/video.js');
+    return $this;
   }
 
   /**
@@ -111,9 +107,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://zeroclipboard.org/ ZeroClipboard
    */
   public function appendZeroClipboard() {
-    return $this
-                    ->appendJQuery()
-                    ->appendSrc($this->paths['vendor'] . 'ZeroClipboard.min.js');
+    $this->appendJQuery()
+            ->appendSrc($this->paths['vendor'] . 'ZeroClipboard.min.js');
+    return $this;
   }
 
   /**
@@ -123,9 +119,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendLazyload() {
-    return $this
-                    ->appendJQuery()
-                    ->appendSrc($this->paths['vendor'] . 'jquery.lazyloadxt.extra.min.js');
+    $this->appendJQuery()
+            ->appendSrc($this->paths['vendor'] . 'jquery.lazyloadxt.extra.min.js');
+    return $this;
   }
 
   /**
@@ -135,19 +131,21 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendPhotoAlbum() {
-    return $this->appendSrc($this->paths['app'] . 'PhotoAlbum.js');
+    $this->appendSrc($this->paths['app'] . 'PhotoAlbum.js');
+    return $this;
   }
 
   /**
-   * Appends JavaScript files for build-in Photoalbum
+   * Appends JavaScript files for ION range slider
    *
    * @return self for a fluent interface
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendIonRangeSlider() {
-    return $this->appendJQuery()
-                    ->appendSrc($this->paths['vendor'] . 'ion.rangeSlider.min.js')
-                    ->appendSrc($this->paths['app'] . 'init.ion.rangeSliders.js');
+    $this->appendJQuery()
+            ->appendSrc($this->paths['vendor'] . 'ion.rangeSlider.min.js')
+            ->appendSrc($this->paths['app'] . 'init.ion.rangeSliders.js');
+    return $this;
   }
 
   /**

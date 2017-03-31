@@ -19,6 +19,7 @@ use Sphp\Stdlib\URL;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
+ * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/subnav.html Foundation Sub Nav
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

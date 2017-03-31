@@ -9,6 +9,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
+
 /**
  * Tools to work with files and directories
  *
@@ -18,12 +19,13 @@ use Sphp\Exceptions\RuntimeException;
  * @filesource
  */
 class Filesystem {
+
   /**
    * 
    * @param  string $filename
    * @return boolean
    */
-  public static function isFile($filename ) {
+  public static function isFile($filename) {
     $path = stream_resolve_include_path($filename);
     if ($path === false) {
       return false;
@@ -31,6 +33,7 @@ class Filesystem {
       return is_file($path);
     }
   }
+
   /**
    * 
    * @param  string $path
@@ -60,7 +63,7 @@ class Filesystem {
       if ($data === false) {
         throw new RuntimeException("Parsing the file '$path' failed");
       }
-    } 
+    }
     return file_get_contents($path, false);
   }
 

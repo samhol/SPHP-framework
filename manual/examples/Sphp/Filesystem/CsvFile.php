@@ -3,9 +3,8 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Tables\Table;
-use Sphp\Stdlib\Path;
 
-$data = (new CsvFile(Path::get()->local("manual/snippets/example.csv")))->toArray();
+$data = (new CsvFile("manual/snippets/example.csv"))->toArray();
 $table = new Table("Cars to buy:");
 $table->thead()->appendHeaderRow(array_shift($data));
 foreach ($data as $row) {

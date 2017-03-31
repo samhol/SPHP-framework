@@ -2,8 +2,6 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Stdlib\Path;
-
-$manualLinks = Parser::fromFile(Path::get()->local('manual/yaml/documentation_links.yaml'));
-$dependenciesLinks = Parser::fromFile(Path::get()->local('manual/yaml/dependencies_links.yml'));
-$externalApiLinks = Parser::fromFile(Path::get()->local('manual/yaml/apidocs_menu.yml'));
+$manualLinks = Parser::fromFile('manual/yaml/documentation_links.yaml');
+$dependenciesLinks = Parser::fromFile('manual/yaml/dependencies_links.yml');
+$externalApiLinks = Parser::fromFile('manual/yaml/apidocs_menu.yml');

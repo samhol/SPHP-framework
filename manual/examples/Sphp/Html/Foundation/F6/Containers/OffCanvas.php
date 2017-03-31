@@ -11,7 +11,7 @@ $offCanvas->mainContent()
         ->append(
                 (new \Sphp\Html\Foundation\Sites\Bars\TitleBar())
                 ->left($offCanvas->leftMenu()->getOpener()));
-$offCanvas->mainContent()->appendMdFile(\Sphp\Stdlib\Path::get()->local('manual/snippets/loremipsum.md'));
+$offCanvas->mainContent()->appendMdFile('manual/snippets/loremipsum.md');
 
 $data = [
     'l' => [

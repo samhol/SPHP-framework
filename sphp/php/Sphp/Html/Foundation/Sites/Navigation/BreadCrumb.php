@@ -12,7 +12,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
- * @link    http://foundation.zurb.com/ Foundation 6
+ * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

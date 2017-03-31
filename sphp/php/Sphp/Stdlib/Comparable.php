@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Stdlib;
+
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -28,7 +29,7 @@ interface Comparable {
    * @param  mixed $other the object to be compared
    * @return int a negative integer, zero, or a positive integer as this object is less than, equal to,
    *             or greater than the specified object
-   * @throws InvalidArgumentException if the type of the <var>$other</var> prevents it from being compared to this object.
+   * @throws InvalidArgumentException if the type of the `$other` prevents it from being compared to this object.
    */
   public function compareTo($other);
 }

@@ -104,7 +104,8 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * @link   http://www.w3schools.com/tags/att_lang.asp lang attribute
    */
   public function setLanguage($language) {
-    return $this->attrs()->set('lang', $language);
+    $this->attrs()->set('lang', $language);
+    return $this;
   }
 
   /**
@@ -119,7 +120,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   }
 
   /**
-   * Sets up the SPHP framework related Javascript and CSS files
+   * Sets up the SPHP framework related JavaScript and CSS files
    *
    * @return self for a fluent interface
    */

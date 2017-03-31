@@ -12,7 +12,6 @@ use Sphp\Exceptions\RuntimeException;
 /**
  * Implements a CRSF token generator and validator
  *
- * 
  * **First:** generate a new token and put it in a hidden field
  * 
  * <code>

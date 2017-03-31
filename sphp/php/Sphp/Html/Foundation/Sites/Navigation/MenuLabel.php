@@ -14,6 +14,7 @@ use Sphp\Html\AbstractContainerComponent;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-11
+ * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @link    http://foundation.zurb.com/docs/components/sidenav.html Foundation Side Nav
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

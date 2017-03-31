@@ -78,13 +78,13 @@ class Parser {
    */
   public static function fromFile($filepath, $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
-    if (!file_exists($filepath)) {
+    if (!file_exists($fullPath)) {
       throw new RuntimeException(sprintf(
               'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }
     if ($extension === null) {
-      $pathinfo = pathinfo($filepath);
+      $pathinfo = pathinfo($fullPath);
       if (!isset($pathinfo['extension'])) {
         throw new RuntimeException(sprintf(
                 'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
@@ -93,13 +93,13 @@ class Parser {
       $extension = strtolower($pathinfo['extension']);
     }
     if ($extension === 'php') {
-      if (!is_file($filepath) || !is_readable($filepath)) {
+      if (!is_file($fullPath) || !is_readable($fullPath)) {
         throw new RuntimeException("File '$filepath' doesn't exist or not readable");
       }
       $config = include $filepath;
     } else if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReader($extension);
-      $config = $reader->fromFile($filepath);
+      $config = $reader->fromFile($fullPath);
     } else {
       throw new RuntimeException("Unsupported file type: .$extension");
     }

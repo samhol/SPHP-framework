@@ -1,5 +1,5 @@
 /**
- * sphp6.styles.all.scss (UTF-8)
+ * sphp.all.scss (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */ 
 @charset "UTF-8";
@@ -9,12 +9,9 @@
 @import "../../vendor/zurb/foundation/scss/foundation";
 @import "settings";
 @import "compass/css3"; 
-
 @import "vendor/vendors";  
 
 @include foundation-everything;
-
-
 
 @import "app/apps";
 @import "manual/manual";

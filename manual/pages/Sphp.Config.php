@@ -7,14 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 $config = Apis::apigen()->classLinker(Config::class);
-$phpConfig = Apis::apigen()->classLinker(PHPConfig::class);
-$boolLink = Apis::phpManual()->typeLink('boolean');
-$intLink = Apis::phpManual()->typeLink('integer');
-$floatLink = Apis::phpManual()->typeLink('float');
-$strLink = Apis::phpManual()->typeLink('string');
-$arrLink = Apis::phpManual()->typeLink('array');
-$arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-$path = Apis::apigen()->classLinker(\Sphp\Stdlib\Path::class);
+
 echo $parsedown->text(<<<MD
 #APPLICATION CONFIGURATION DATA{#Config}
 $ns

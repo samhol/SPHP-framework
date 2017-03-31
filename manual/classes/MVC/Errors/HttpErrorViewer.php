@@ -34,19 +34,15 @@ class HttpErrorViewer implements ContentInterface {
   public function __construct(HttpCode $code) {
     $this->code = $code;
   }
-  
-  protected function d($param) {
-    
-  }
 
   public function getHtml() {
     $cont = new \Sphp\Html\MdContainer();
     $cont->append('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
     $cont->append($this->code->getDescription());
     try {
-      $cont->appendFile(Path::get()->local("manual/templates/{$this->code->getCode()}.md"));
+      $cont->appendFile("manual/templates/{$this->code->getCode()}.md");
     } catch (Exception $ex) {
-      $cont->appendFile(Path::get()->local('manual/templates/general.md'));
+      $cont->appendFile('manual/templates/general.md');
     }
     $manual = Path::get()->http();
     $cont->append("* [SPHP framework]($manual){.error}");

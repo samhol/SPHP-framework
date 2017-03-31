@@ -26,7 +26,7 @@ class CsvFile implements Arrayable {
    * @param string $control
    */
   public function __construct($filename, $control = ',') {
-    $this->file = new SplFileObject($filename,'r');
+    $this->file = new SplFileObject($filename, 'r');
     $this->file->setCsvControl($control);
   }
 

@@ -25,8 +25,8 @@ use Sphp\Html\TraversableTrait;
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation 6 Breadcrumbs
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -44,8 +44,8 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
     $ul->cssClasses()->lock('breadcrumbs');
     parent::__construct('nav', null, $ul);
     $this->cssClasses()->lock('breadcrumbs');
-    $this->attrs()->lock('role', 'navigation')
-            ->set('aria-label', 'breadcrumbs');
+    //$this->attrs()->lock('role', 'navigation');
+    $this->attrs()->set('aria-label', 'breadcrumbs');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $breadcrumb) {
         $this->append($breadcrumb);

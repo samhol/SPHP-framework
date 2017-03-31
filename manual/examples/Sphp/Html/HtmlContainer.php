@@ -2,14 +2,12 @@
 
 namespace Sphp\Html;
 
-use Sphp\Stdlib\Path;
 use Sphp\Html\Sections\Paragraph;
 
-$file = Path::get()->local("manual/snippets/loremipsum.html");
 $container = new Container();
 $container["heading"] = (new Headings\H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
 $container["paragraph"] = (new Paragraph())
-		->appendRawFile($file)
+		->appendRawFile("manual/snippets/loremipsum.html")
 		->setStyle("text-align", "justify");
 $container->append(new \stdClass());
 
@@ -24,7 +22,5 @@ $search = function($element) {
 //
 $container[] = new Paragraph("<b><var>objects</var>(s):</b> "
 		. count($container->getComponentsBy($search)));
-$container[] = new Paragraph("<b>Components with title:</b> "
-		. count($container->getComponentsByAttrName("title")));
 $container->printHtml();
 ?>

@@ -17,39 +17,39 @@ namespace Sphp\Stdlib\Events;
  */
 interface EventInterface {
 
-	/**
-	 * Return the name of the event
-	 *
-	 * @return string the name of the event
-	 */
-	public function getName();
+  /**
+   * Return the name of the event
+   *
+   * @return string the name of the event
+   */
+  public function getName();
 
-	/**
-	 * Return the subject
-	 *
-	 * @return mixed subject
-	 */
-	public function getSubject();
+  /**
+   * Return the subject
+   *
+   * @return mixed subject
+   */
+  public function getSubject();
 
-	/**
-	 * Sets the subject
-	 * 
-	 * @param  mixed $subject the subject
-	 * @return self for a fluent interface
-	 */
-	public function setSubject($subject);
+  /**
+   * Sets the subject
+   * 
+   * @param  mixed $subject the subject
+   * @return self for a fluent interface
+   */
+  public function setSubject($subject);
 
-	/**
-	 * Stops the event from being used anymore
-	 *
-	 * @return self for a fluent interface
-	 */
-	public function stopPropagation();
+  /**
+   * Stops the event from being used anymore
+   *
+   * @return self for a fluent interface
+   */
+  public function stopPropagation();
 
-	/**
-	 * Checks if the event is stopped
-	 * 
-	 * @return boolean true if the event is stopped
-	 */
-	public function isStopped();
+  /**
+   * Checks if the event is stopped
+   * 
+   * @return boolean true if the event is stopped
+   */
+  public function isStopped();
 }
