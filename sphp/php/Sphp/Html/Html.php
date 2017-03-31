@@ -140,8 +140,32 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->scripts($c);
   }
 
+  /**
+   * 
+   * @return string
+   */
   public function getOpeningTag() {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
+  }
+
+  /**
+   * 
+   * @return string
+   */
+  public function getBodyStart() {
+    $output = $this->getOpeningTag();
+    $output .= $this->head->getHtml();
+    $output .= $this->body->getOpeningTag();
+    return $output;
+  }
+
+  /**
+   * 
+   * @return self for a fluent interface
+   */
+  public function startBody() {
+    echo $this->getBodyStart();
+    return $this;
   }
 
   /**

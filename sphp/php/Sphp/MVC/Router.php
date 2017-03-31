@@ -101,7 +101,7 @@ class Router {
    * Initializes the router by getting the URL and cleaning it.
    *
    * @param  string|null $url optional URL to route
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public function __construct($url = null) {
     $this->url = static::getCleanUrl($url);
@@ -121,12 +121,14 @@ class Router {
   }
 
   /**
+   * Runs the router matching engine and then calls the dispatcher
+   * 
    * Tries to match one of the URL routes to the current URL, otherwise
-   * execute the default function and return false.
+   * execute the default function.
    *
    * @return self for a fluent interface
    */
-  protected function run() {
+  public function execute() {
     // Whether or not we have matched the URL to a route
     $matched_route = false;
     // Sort the array by priority
@@ -158,32 +160,10 @@ class Router {
       $this->callback = $this->default_route;
       $this->params = [$this->url];
     }
-    return $this;
-  }
-
-  /**
-   * Calls the appropriate callback function and passes the given parameters
-   * given by Router::run()
-   *
-   * @return self for a fluent interface
-   */
-  protected function dispatch() {
-    //var_dump($this->callback, $this->params);
     if ($this->callback === null || $this->params === null) {
-      throw new RuntimeException('No callback or parameters found, please run $router->run() before $router->dispatch()');
+      throw new RuntimeException('No callback or parameters found for the route');
     }
     call_user_func_array($this->callback, $this->params);
-    return $this;
-  }
-
-  /**
-   * Runs the router matching engine and then calls the dispatcher
-   *
-   * @return self for a fluent interface
-   */
-  public function execute() {
-    $this->run();
-    $this->dispatch();
     return $this;
   }
 
@@ -195,11 +175,9 @@ class Router {
    * @param  Callable $callback
    * @param  integer  $priority
    * @return boolean
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public function route($route, $callback, $priority = 10) {
-    // Keep the original routing rule for debugging/unit tests
-    $original_route = $route;
     // Make sure the route ends in a / since all of the URLs will
     $route = rtrim($route, '/') . '/';
     // Custom capture, format: <:var_name|regex>
@@ -238,7 +216,7 @@ class Router {
    *
    * @param  string|null $url optional URL to to parse
    * @return string
-   * @throws RuntimeException
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public static function getCleanUrl($url = null) {
     if ($url === null) {
@@ -261,9 +239,10 @@ class Router {
       $url = substr($url, 0, $query_string);
       //echo "$url\n";
     }
+    $scriptName = basename(filter_input(\INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_STRING));
     // If the URL looks like http://localhost/index.php/path/to/folder remove /index.php
-    if (substr($url, 1, strlen(basename($_SERVER['SCRIPT_NAME']))) == basename($_SERVER['SCRIPT_NAME'])) {
-      $url = substr($url, strlen(basename($_SERVER['SCRIPT_NAME'])) + 1);
+    if (substr($url, 1, strlen($scriptName)) == $scriptName) {
+      $url = substr($url, strlen($scriptName) + 1);
       //echo "$url\n";
     }
     // Make sure the URI ends in a /

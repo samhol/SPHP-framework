@@ -36,5 +36,6 @@ $html->head()
         ->addMeta(Meta::applicationName('SPHP framework'))
         ->addMeta(Meta::keywords('php, scss, css, html, html5, framework, foundation, CSS, JavaScript, DOM, Web development, tutorials, programming, references, examples, source code, demos, tips'))
         ->addMeta(Meta::description('SPHP framework for web developement'));
-
-echo $html->getOpeningTag() . $html->head();
+Document::html()->body()->addCssClass('manual');
+Document::html()->scripts()->appendSrc('manual/js/formTools.js');
+Document::html()->startBody();
