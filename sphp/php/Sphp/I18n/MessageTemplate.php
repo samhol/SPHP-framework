@@ -147,7 +147,7 @@ class MessageTemplate {
       $message = new Message($this->getSingular());
     }
     $message->setTranslator($this->getTranslator())
-            ->setArgumentTranslation($this->getTranslateArgs())
+            ->setTranslationRule($this->getTranslateArgs())
             ->setArguments($this->getParams());
     return $message;
   }

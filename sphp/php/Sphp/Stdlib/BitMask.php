@@ -32,7 +32,7 @@ class BitMask implements Arrayable, Embeddable {
   /**
    * Constructs a new instance of the {@link self} object
    *
-   * **Notes:** a string <var>$bits</var> is always trated as binary number
+   * **Notes:** a string <var>$bits</var> is always treated as binary number
    * 
    * @param int|string|BitMask $bits the flags
    */
@@ -218,7 +218,11 @@ class BitMask implements Arrayable, Embeddable {
   }
 
   public function equals($object) {
-    return $object == $this;
+    if (!$object instanceof BitMask) {
+      return $this->toInt() === static::parseFlagsToInt($object);
+    } else {
+      return $object == $this;
+    }
   }
 
 }

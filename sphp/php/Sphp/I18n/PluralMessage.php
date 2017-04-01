@@ -43,14 +43,14 @@ class PluralMessage extends AbstractMessage {
   /**
    * Constructs a new instance
    *
-   * @param  string $msgid1 the singular message text
-   * @param  string $msgid2 the plural message text
+   * @param  string $singular the singular message text
+   * @param  string $plural the plural message text
    * @param  null|mixed|mixed[] $args the arguments or null for no arguments
    * @param  TranslatorInterface|null $translator the translator component
    */
-  public function __construct($msgid1, $msgid2, $n, $args = null, $translateArgs = false, TranslatorInterface $translator = null) {
-    parent::__construct($args, $translateArgs, $translator);
-    $this->setMessage($msgid1, $msgid2);
+  public function __construct($singular, $plural, $n, $args = null, $translationRule = self::TRANSLATE_MESSAGE, TranslatorInterface $translator = null) {
+    parent::__construct($args, $translationRule, $translator);
+    $this->setMessage($singular, $plural);
     $this->n = $n;
   }
 
@@ -75,28 +75,28 @@ class PluralMessage extends AbstractMessage {
   /**
    * Sets the message text
    *
-   * @param  string $msgid1 the singular message text
-   * @param  string $msgid2 the plural message text
+   * @param  string $singular the singular message text
+   * @param  string $plural the plural message text
    * @return self for a fluent interface
    */
-  private function setMessage($msgid1, $msgid2) {
-    $this->singular = $msgid1;
-    $this->plural = $msgid2;
+  private function setMessage($singular, $plural) {
+    $this->singular = $singular;
+    $this->plural = $plural;
     return $this;
   }
 
   /**
-   * Returns the message as formatted and translated string
-   *
-   * @return string the message as formatted and translated string
+   * 
+   * @return string message
    */
-  public function translate() {
-    $message = $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $this->getLang());
-    if ($this->hasArguments()) {
-      $args = $this->getArguments($this->translateArguments());
-      return vsprintf($message, $args);
+  public function getMessage() {
+    if ($this->translatesMessage()) {
+      return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $this->getLang());
+    } else if ($this->n > 1) {
+      return $this->plural;
+    } else {
+      return $this->singular;
     }
-    return $message;
   }
 
 }

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: SPHP framework\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-13 16:00+0200\n"
-"PO-Revision-Date: 2016-11-25 14:42+0200\n"
+"PO-Revision-Date: 2017-04-01 15:23+0300\n"
 "Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
 "Language-Team: Sami Holck <sami.holck@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Language: fi_FI\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0\n"
 
 # General translations
 msgid "%H:%M:%S elapsed"
@@ -182,7 +182,7 @@ msgid "&Remember passwords"
 msgstr "&Muista salasanat"
 
 msgid "&Remote directory:"
-msgstr "P&alvelimen hakemisto:"
+msgstr "Palvelimen hakemisto:"
 
 msgid "&Remote path:"
 msgstr "&Palvelimen polku:"
@@ -280,7 +280,7 @@ msgid "Cannot edit file"
 msgstr "Tiedostoa ei voi muokata"
 
 msgid "Cannot rename entry"
-msgstr "Kohdetta ei voitu nimetä uudelleen."
+msgstr "Kohdetta ei voitu nimetä uudelleen"
 
 msgid "Cannot rename file"
 msgstr "Tiedostoa ei voitu nimetä uudelleen"
@@ -665,7 +665,7 @@ msgid "Name"
 msgstr "Nimi"
 
 msgid "Name already exists"
-msgstr "Nimi on jo olemassa."
+msgstr "Nimi on jo olemassa"
 
 msgid "Natural sort"
 msgstr "Luonnollinen lajittelu"
@@ -710,7 +710,7 @@ msgid "Permissions"
 msgstr "Oikeudet"
 
 msgid "Please enter a date of the form YYYY-MM-DD such as for example 2010-07-18."
-msgstr "Anna lomakkeen päivämäärä muodossa VVVV-KK-PP, esimerkiksi 2010-07-18."
+msgstr "Anna lomakkeen päivämäärä muodossa VVVV-KK-PP, esimerkiksi 2010-07-18"
 
 msgid "Please enter username and password"
 msgstr "Anna käyttäjänimi ja salasana"
@@ -1081,7 +1081,7 @@ msgid "Please enter a writable directory."
 msgstr "Anna hakemisto, johon voi kirjoittaa."
 
 msgid "Please specify a user name"
-msgstr "Anna käyttäjänimi."
+msgstr "Anna käyttäjänimi"
 
 msgid "Please enter a name for the log file."
 msgstr "Anna nimi lokitiedostolle."
@@ -1315,7 +1315,7 @@ msgid "Already connected"
 msgstr "Jo yhdistetty"
 
 msgid "Authentication failed."
-msgstr "Todennus epäonnistui."
+msgstr "Todennus epäonnistui"
 
 msgid "Author"
 msgstr "Tekijä"

@@ -2,7 +2,8 @@
 
 namespace Sphp\I18n\Gettext;
 
-$translator = new Translator('fi_FI');
+$translator = new Translator();
+$translator->setLang('fi_FI');
 $month = date('F');
 echo "$month: " . $translator->get($month) . "\n";
 $translator->setLang("en_US");

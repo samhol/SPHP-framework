@@ -1,9 +1,9 @@
 <?php
 
-setlocale(LC_MESSAGES, "fi_FI");
-bindtextdomain(Sphp\DEFAULT_DOMAIN, 'sphp/locale');
-textdomain(Sphp\DEFAULT_DOMAIN);
-bind_textdomain_codeset(Sphp\DEFAULT_DOMAIN, 'UTF-8'); 
-echo gettext("Default system language");
+setlocale(LC_MESSAGES, 'fi_FI');
+bindtextdomain('Sphp.Defaults', 'sphp/locale');
+textdomain('Sphp.Defaults');
+bind_textdomain_codeset('Sphp.Defaults', 'UTF-8'); 
+echo gettext('Default system language');
 
 ?>

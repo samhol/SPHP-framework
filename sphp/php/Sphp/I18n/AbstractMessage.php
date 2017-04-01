@@ -9,6 +9,8 @@ namespace Sphp\I18n;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
+use Sphp\Stdlib\BitMask;
+use Sphp\Config\Locale;
 
 /**
  * Implements an abstract translatable message object
@@ -20,6 +22,9 @@ use Sphp\I18n\Gettext\Translator;
  */
 abstract class AbstractMessage implements MessageInterface {
 
+  /**
+   * 
+   */
   const NO_TRANSLATION = 0b0;
   const TRANSLATE_MESSAGE = 0b1;
   const TRANSLATE_ARGS = 0b10;
@@ -33,37 +38,47 @@ abstract class AbstractMessage implements MessageInterface {
   private $args;
 
   /**
-   *
-   * @var boolean
-   */
-  private $translateArgs = false;
-
-  /**
    * The translator object translating the messages
    *
    * @var Translator
    */
   private $translator;
-  
+
+  /**
+   *
+   * @var string
+   */
   private $lang;
+
+  /**
+   *
+   * @var BitMask
+   */
+  private $translationRule;
 
   /**
    * Constructs a new instance
    *
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
+   * @param  null|mixed|mixed[] $args optional arguments or null for no arguments
    * @param  TranslatorInterface|null $translator the translator component
    */
-  public function __construct($args = null, $translateArgs = false, TranslatorInterface $translator = null) {
-    $this->setArguments($args, $translateArgs);
-    if ($translator === null) {
-      $translator = new Translator();
+  public function __construct($args = null, $rule = self::TRANSLATE_MESSAGE, TranslatorInterface $translator = null) {
+    $this->setTranslationRule($rule);
+    $this->setArguments($args);
+    if ($translator !== null) {
+      $this->setTranslator($translator);
     }
-    $this->setTranslator($translator);
     $this->lang = null;
   }
 
+  public function __destruct() {
+    unset($this->translator, $this->args);
+  }
+
   public function __clone() {
-    ;
+    if ($this->translator !== null) {
+      $this->translator = clone $this->translator;
+    }
   }
 
   public function __toString() {
@@ -79,24 +94,22 @@ abstract class AbstractMessage implements MessageInterface {
     $this->args = $args;
     return $this;
   }
+
   /**
    * 
    * @return boolean
    */
   public function hasArguments() {
-    if (is_array($this->args)) {   
-      return !empty($this->args);
-    } else {
-     return $this->args !== null;
-    }
+    return !empty($this->args);
   }
+
   /**
    * 
-   * @return null|mixed|mixed[] $args the arguments or null for no arguments
+   * @return null|array $args the arguments or null for no arguments
    */
-  public function getArguments($translated = false) {
-    if ($this->args !== null && $translated) {
-      return $this->getTranslator()->get($this->args, $this->lang);
+  public function getArguments() {
+    if ($this->hasArguments() && $this->translatesArguments()) {
+      return $this->getTranslator()->get($this->args, $this->getLang());
     } else {
       return $this->args;
     }
@@ -104,11 +117,22 @@ abstract class AbstractMessage implements MessageInterface {
 
   /**
    * 
-   * @param  boolean $translateArgs  
+   * @return BitMask
+   */
+  public function getTranslationRule() {
+    return $this->translationRule;
+  }
+
+  /**
+   * 
+   * @param  int|BitMask $translationRule
    * @return self for a fluent interface
    */
-  public function setArgumentTranslation($translateArgs = false) {
-    $this->translateArgs = $translateArgs;
+  public function setTranslationRule($translationRule) {
+    if (!$translationRule instanceof BitMask) {
+      $translationRule = new BitMask($translationRule);
+    }
+    $this->translationRule = $translationRule;
     return $this;
   }
 
@@ -116,8 +140,24 @@ abstract class AbstractMessage implements MessageInterface {
    * 
    * @return boolean
    */
-  public function translateArguments() {
-    return $this->translateArgs;
+  public function translates() {
+    return $this->translator !== null && !$this->translationRule->equals(static::NO_TRANSLATION);
+  }
+
+  /**
+   * 
+   * @return boolean
+   */
+  public function translatesMessage() {
+    return $this->translator !== null && $this->translationRule->contains(static::TRANSLATE_MESSAGE);
+  }
+
+  /**
+   * 
+   * @return boolean
+   */
+  public function translatesArguments() {
+    return $this->translator !== null && $this->translationRule->contains(static::TRANSLATE_ARGS);
   }
 
   /**
@@ -134,7 +174,7 @@ abstract class AbstractMessage implements MessageInterface {
   /**
    * Returns the translator component used for message translation
    *
-   * @return TranslatorInterface the translator component
+   * @return TranslatorInterface|null the translator component or `NULL` if no translator is defined
    */
   public function getTranslator() {
     if ($this->translator === null) {
@@ -158,17 +198,39 @@ abstract class AbstractMessage implements MessageInterface {
    * @return self for a fluent interface
    */
   public function setLang($lang) {
-    $this->lang  = $lang;
+    $this->lang = $lang;
     return $this;
   }
 
   /**
    * Sets the translator component for message translation
    *
-   * @return string|null the translator language
+   * @return string the translator language
    */
-  protected function getLang() {
+  public function getLang() {
+    if (!is_string($this->lang)) {
+      return Locale::getMessageLocale();
+    }
     return $this->lang;
+  }
+
+  /**
+   * 
+   * @return string message
+   */
+  abstract public function getMessage();
+
+  /**
+   * Returns the message as formatted and translated string
+   *
+   * @return string the message as formatted and translated string
+   */
+  public function translate() {
+    $message = $this->getMessage();
+    if ($this->hasArguments()) {
+      $message = vsprintf($message, $this->getArguments());
+    }
+    return $message;
   }
 
 }

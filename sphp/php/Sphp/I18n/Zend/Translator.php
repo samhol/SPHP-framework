@@ -172,6 +172,13 @@ class Translator extends AbstractTranslator {
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 
+  /**
+   * 
+   * @param type $lang
+   * @param type $directory
+   * @param type $domain
+   * @return self 
+   */
   public static function fromTranslationFilePattern($lang, $directory, $domain) {
     $t = new ZendTranslator();
     $t->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, $directory, $domain);

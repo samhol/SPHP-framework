@@ -32,16 +32,27 @@ class Message extends AbstractMessage {
    *
    * @param string $message
    * @param null|mixed|mixed[] $args optional arguments
-   * @param boolean $translateArgs
+   * @param int $rules
    * @param TranslatorInterface $translator optional translator
    */
-  public function __construct($message, $args = null, $translateArgs = false, TranslatorInterface $translator = null) {
-    parent::__construct($args, $translateArgs, $translator);
+  public function __construct($message, $args = null, TranslatorInterface $translator = null, $rules = self::TRANSLATE_MESSAGE) {
+    parent::__construct($args, $rules, $translator);
     $this->message = $message;
-    if ($translator === null) {
-      $translator = new Translator();
+    if ($translator !== null) {
+      $this->setTranslator($translator);
     }
-    $this->setTranslator($translator);
+  }
+
+  /**
+   * 
+   * @return string message
+   */
+  public function getMessage() {
+    if ($this->translatesMessage()) {
+      return $this->getTranslator()->get($this->message, $this->getLang());
+    } else {
+      return $this->message;
+    }
   }
 
   /**
@@ -50,10 +61,9 @@ class Message extends AbstractMessage {
    * @return string the message as formatted and translated string
    */
   public function translate() {
-    $message = $this->getTranslator()->get($this->message, $this->getLang());
+    $message = $this->getMessage();
     if ($this->hasArguments()) {
-      $args = $this->getArguments($this->translateArguments());
-      return vsprintf($message, $args);
+      $message = vsprintf($message, $this->getArguments());
     }
     return $message;
   }

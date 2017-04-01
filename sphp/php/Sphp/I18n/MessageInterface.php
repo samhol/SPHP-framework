@@ -25,9 +25,9 @@ interface MessageInterface extends TranslatorAwareInterface {
   public function translate();
 
   /**
-   * Returns the object as a string
+   * Returns the message object as a string
    *
-   * @return string the object as a string
+   * @return string the message object as a string
    */
   public function __toString();
 }

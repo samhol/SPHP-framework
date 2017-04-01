@@ -11,6 +11,7 @@ use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
+use Zend\Stdlib\PriorityList;
 
 /**
  * Implements a list that holds {@link MessageInterface} objects in a priority list
@@ -46,6 +47,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
     if ($translator === null) {
       $translator = new Translator();
     }
+    $a = new PriorityList();
     $this->setTranslator($translator);
   }
 
@@ -124,7 +126,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @return self for a fluent interface
    */
   public function insertMessage($messageText, $args = null, $priority = 0) {
-    $m = (new Message($messageText, $args, false, $this->getTranslator()));
+    $m = (new Message($messageText, $args, $this->getTranslator()));
     $this->insert($m, $priority);
     return $this;
   }
@@ -141,7 +143,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
     $this->messages->insert($messages, $priority);
     return $this;
   }
-  
+
   /**
    * Merges given collection to this container
    *

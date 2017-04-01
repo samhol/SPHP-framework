@@ -76,7 +76,7 @@ class Translator extends AbstractTranslator {
    * @param  string $charset the character set of the dictionary
    * @throws InvalidArgumentException
    */
-  public function __construct($lang = null, $domain = \Sphp\DEFAULT_DOMAIN, $directory = 'sphp/locale', $charset = 'utf8') {
+  public function __construct($domain = 'Sphp.Defaults', $directory = 'sphp/locale', $charset = 'utf8') {
     if ($domain === null) {
       throw new InvalidArgumentException('no domain');
     } else {
@@ -85,10 +85,6 @@ class Translator extends AbstractTranslator {
     $this->domain = $domain;
     $this->directory = $directory;
     $this->charset = $charset;
-    if ($lang === null) {
-      $lang = Locale::getMessageLocale();
-    }
-    $this->lang = $lang;
   }
 
   public function getLang() {

@@ -2,7 +2,6 @@
 
 namespace Sphp;
 
-use Sphp\Config\Config;
 
 
 /**
@@ -12,18 +11,15 @@ const SPHP_DIR = __DIR__;
 
 //Configuration::useDomain("manual")->set("SPHP_DIR", __DIR__);
 
-$sphp = [
-    'SPH_DIR' => __DIR__
-];
+
 //Configuration::setSphpRoot(__DIR__, Configuration::httpHost());
-$sphpConf = Config::instance('sphp');
-$sphpConf->sphp = $sphp;
+
 
 //define('Sphp\PHP_PACKAGES', SPH_DIR . "/php/packages");
 //define('Sphp\SPH_PACKAGE', PHP_PACKAGES . "/php/sph");
 //define('Sphp\LOCALE_PATH', __DIR__ . "/locale");
 
-const DEFAULT_DOMAIN = "Sphp.Defaults";
+const DEFAULT_DOMAIN = D;
 
 /**
  * Http root folder path

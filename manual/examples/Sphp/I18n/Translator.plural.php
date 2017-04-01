@@ -2,7 +2,8 @@
 
 namespace Sphp\I18n\Gettext;
 
-$translator = new Translator('fi_FI');
+$translator = new Translator();
+$translator->setLang('fi_FI');
 var_dump(
 	$translator->getPlural("%d directory", "%d directories", 0), 
 	$translator->getPlural("%d directory", "%d directories", 1), 
