@@ -33,6 +33,12 @@ class ExceptionHandler implements Subject {
   private $exception;
 
   /**
+   *
+   * @var self|null 
+   */
+  private static $currentHandler;
+
+  /**
    * Exception handling method
    *
    * @param \Throwable|Exception $e handled exception
@@ -49,13 +55,39 @@ class ExceptionHandler implements Subject {
    * @param \Throwable|Exception $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
-  public function handle($e) {
+  /* public function handle($e) {
     $this->exception = $e;
     $this->notify();
+    } */
+
+  /**
+   * Sets this as the user-defined exception handler
+   *
+   * @return self for a fluent interface
+   * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
+   */
+  public function start() {
+    set_exception_handler($this);
+    static::$currentHandler = $this;
+    return $this;
   }
 
   /**
-   * Rerurns the uncaught Exception that needs to be handled
+   * Restores the previously defined exception handler function
+   *
+   * @return self for a fluent interface
+   * @link   http://php.net/manual/en/function.restore-exception-handler.php PHP manual
+   */
+  public function stop() {
+    if (static::$currentHandler === $this) {
+      restore_exception_handler();
+      static::$currentHandler = null;
+    } 
+    return $this;
+  }
+
+  /**
+   * Returns the uncaught Exception that needs to be handled
    *
    * @return \Throwable|Exception the uncaught Exception
    */

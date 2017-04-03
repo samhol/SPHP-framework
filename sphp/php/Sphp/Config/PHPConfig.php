@@ -150,8 +150,6 @@ class PHPConfig {
     return $this;
   }
 
-
-
   /**
    * Sets a user-defined exception handler function
    *
