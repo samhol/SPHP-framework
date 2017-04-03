@@ -23,7 +23,7 @@ use Sphp\Config\Locale;
 abstract class AbstractMessage implements MessageInterface {
 
   /**
-   * 
+   *
    */
   const NO_TRANSLATION = 0b0;
   const TRANSLATE_MESSAGE = 0b1;
@@ -86,8 +86,8 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments  
+   *
+   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
    * @return self for a fluent interface
    */
   public function setArguments($args) {
@@ -96,7 +96,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return boolean
    */
   public function hasArguments() {
@@ -104,7 +104,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return null|array $args the arguments or null for no arguments
    */
   public function getArguments() {
@@ -116,7 +116,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return BitMask
    */
   public function getTranslationRule() {
@@ -124,7 +124,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @param  int|BitMask $translationRule
    * @return self for a fluent interface
    */
@@ -137,7 +137,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return boolean
    */
   public function translates() {
@@ -145,7 +145,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return boolean
    */
   public function translatesMessage() {
@@ -153,7 +153,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return boolean
    */
   public function translatesArguments() {
@@ -184,7 +184,7 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * 
+   *
    * @return boolean
    */
   public function hasTranslator() {
@@ -203,20 +203,28 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   /**
-   * Sets the translator component for message translation
+   * Gets the translator component for message translation
    *
    * @return string the translator language
    */
   public function getLang() {
-    if (!is_string($this->lang)) {
+    if ($this->usesSystemLanguage()) {
       return Locale::getMessageLocale();
     }
     return $this->lang;
   }
 
   /**
-   * 
-   * @return string message
+   *
+   * @return boolean
+   */
+  public function usesSystemLanguage() {
+    return !is_string($this->lang);
+  }
+
+  /**
+   *
+   * @return string message without formatting
    */
   abstract public function getMessage();
 
@@ -229,6 +237,9 @@ abstract class AbstractMessage implements MessageInterface {
     $message = $this->getMessage();
     if ($this->hasArguments()) {
       $message = vsprintf($message, $this->getArguments());
+      if ($message === false) {
+        throw new \Sphp\Exceptions\RuntimeException();
+      }
     }
     return $message;
   }

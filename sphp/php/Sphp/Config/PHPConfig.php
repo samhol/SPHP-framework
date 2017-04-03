@@ -31,7 +31,7 @@ class PHPConfig {
   private $ini;
 
   /**
-   * 
+   *
    * @param Ini $ini
    */
   public function __construct(Ini $ini = null) {
@@ -47,7 +47,7 @@ class PHPConfig {
   }
 
   /**
-   * 
+   *
    * @return Ini
    */
   public function ini() {
@@ -55,7 +55,7 @@ class PHPConfig {
   }
 
   /**
-   * 
+   *
    * @param  string $fun
    * @param  mixed[] $params
    * @return self for a fluent interface
@@ -140,7 +140,7 @@ class PHPConfig {
 
   /**
    * Sets a user-defined exception handler function
-   * 
+   *
    * @param  callable $handler
    * @return self for a fluent interface
    * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
@@ -150,11 +150,25 @@ class PHPConfig {
     return $this;
   }
 
+
+
+  /**
+   * Sets a user-defined exception handler function
+   *
+   * @param  callable $handler
+   * @return self for a fluent interface
+   * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
+   */
+  public function setErrorHandler(callable $handler) {
+    $this->setFunc('set_error_handler', [$handler]);
+    return $this;
+  }
+
   /**
    * Initializes all PHP settings defined by the instance
-   * 
+   *
    * Previous settings are replaced
-   * 
+   *
    * @return self for a fluent interface
    */
   public function init() {

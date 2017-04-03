@@ -4,32 +4,28 @@ namespace Sphp\Stdlib\Observers;
 
 class Subject1 implements Subject {
 
-	use ObservableSubjectTrait;
+  use ObservableSubjectTrait;
 
-	public $message;
+  public $message;
 
-	public function say($message) {
-		$this->message = $message;
-		$this->notify();
-	}
+  public function say($message) {
+    $this->message = $message;
+    $this->notify();
+  }
 
 }
 
 class Observer1 implements Observer {
 
-	public function update(Subject $subject) {
-		echo "Observer1: $subject->message\n";
-	}
+  public function update(Subject $subject) {
+    echo "Observer1: $subject->message\n";
+  }
 
 }
 
-class Observer2 implements Observer {
-
-	public function update(Subject $subject) {
-		echo "Observer2: $subject->message\n";
-	}
-
-}
+$observer2 = function(Subject $subject) {
+  echo "A function can also hear me: $subject->message\n";
+};
 
 $subject = new Subject1();
 $subject->attach(new Observer1);

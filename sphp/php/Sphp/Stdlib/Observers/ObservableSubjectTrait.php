@@ -48,12 +48,16 @@ trait ObservableSubjectTrait {
   }
 
   /**
-   * Notifies all {@link SplObserver} observers
+   * Notifies all {@link Observer} observers
    */
   public function notify() {
     if ($this->observers !== null) {
       foreach ($this->observers as $obs) {
-        $obs->update($this);
+        if ($obs instanceof Observer) {
+          $obs->update($this);
+        } else if (is_callable($obs)) {
+          $obs($this);
+        }
       }
     }
   }

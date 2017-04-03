@@ -7,7 +7,6 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-
 /**
  * Defines properties of a First-In-First-Out (FIFO) queue
  *
