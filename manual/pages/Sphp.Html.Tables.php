@@ -29,6 +29,9 @@ The $td elements are the data containers in the $table.
 The $td elements can contain all sorts of HTML elements like text, images, lists, other tables, etc.
 MD
 );
+$example = new CodeExampleBuilder('Sphp/Html/Tables/basics.php', false, true);
+$example->setExamplePaneTitle('HTML table example');
+$example->printHtml();
 CodeExampleBuilder::visualize('Sphp/Html/Tables/basics.php', false, true);
 
-CodeExampleBuilder::visualize('Sphp/Html/Tables/Table2.php', false, true);
+CodeExampleBuilder::visualize('Sphp/Html/Tables/Factory.php', false, true);

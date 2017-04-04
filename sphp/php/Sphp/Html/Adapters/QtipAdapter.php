@@ -10,11 +10,11 @@ namespace Sphp\Html\Adapters;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Inserts a Qtip style tooltip to the adaptee
+ * Inserts a qTip style tooltip to the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
- * @link    http://www.w3schools.com/tags/tag_title.asp w3schools HTML API
+ * @link    http://qtip2.com/ qTip 2
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

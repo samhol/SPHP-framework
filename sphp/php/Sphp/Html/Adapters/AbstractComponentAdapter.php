@@ -10,7 +10,7 @@ namespace Sphp\Html\Adapters;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Inserts a Qtip style tooltip to the adaptee
+ * Abstract base class for HTML component adapters
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-02-03
