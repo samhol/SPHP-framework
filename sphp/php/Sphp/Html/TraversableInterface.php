@@ -21,29 +21,26 @@ use Countable;
 interface TraversableInterface extends Traversable, Countable {
 
   /**
-   * Returns a {@link ContainerInterface} containing sub components
-   *  that match the search
+   * Returns a collection of sub components that match the search
    *
    * @param  callable $rules a lambda function for testing the sub components
-   * @return ContainerInterface containing matching sub components
+   * @return TraversableInterface containing matching sub components
    */
   public function getComponentsBy(callable $rules);
 
   /**
-   * Returns a {@link ContainerInterface} containing sub components that
-   *  contain the searched attribute
+   * Returns a collection of sub components that contain the searched attribute
    *
    * @param  string $attrName the name of the searched attribute
-   * @return ContainerInterface containing matching sub components
+   * @return TraversableInterface containing matching sub components
    */
   public function getComponentsByAttrName($attrName);
 
   /**
-   * Returns a {@link ContainerInterface} containing sub components
-   *  that are of the given PHP type
+   * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $typeName the name of the searched PHP object type
-   * @return ContainerInterface containing matching sub components
+   * @return TraversableInterface containing matching sub components
    */
   public function getComponentsByObjectType($typeName);
 }

@@ -51,8 +51,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$raw</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated unique values
-   * 2. An array paramater can contain only one unique atomic value per value
+   * 1. A string parameter can contain multiple comma separated unique values
+   * 2. An array parameter can contain only one unique atomic value per value
    * 3. Duplicate values are ignored
    *
    * @param  scalar|scalar[] $raw the value(s) to parse
@@ -85,8 +85,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A `string` paramater can contain multiple comma separated atomic values
-   * 2. An `array` paramater can contain only one atomic value per array value
+   * 1. A `string` parameter can contain multiple comma separated atomic values
+   * 2. An `array` parameter can contain only one atomic value per array value
    * 3. Any numeric value is treated as a string value
    * 4. Stores only a single instance of every value (no duplicates)
    *
@@ -107,8 +107,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
    * 3. Stores only a single instance of every value (no duplicates)
    *
    * @param  string|scalar[] $values the values to add
@@ -127,8 +127,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
    *
    * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
@@ -148,8 +148,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
    * 3. Stores only a single instance of every value (no duplicates)
    *
    * @param  scalar|scalar[] $values the atomic values to lock
@@ -171,8 +171,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> values (restrictions and rules)
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
    * 
    * @param  scalar|scalar[] $values the atomic values to remove
    * @return self for a fluent interface
@@ -205,8 +205,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> values (restrictions and rules)
    * 
-   * 1. A string paramater can contain multiple comma separated atomic values
-   * 2. An array paramater can contain only one atomic value per array value
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
    *
    * @param  scalar|scalar[] $values the atomic values to search for
    * @return boolean true if the given atomic values exists

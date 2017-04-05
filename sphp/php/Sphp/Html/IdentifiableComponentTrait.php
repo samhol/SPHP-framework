@@ -53,8 +53,8 @@ trait IdentifiableComponentTrait {
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    *
-   * 1. A string paramater can contain multiple space separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple space separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to add
@@ -67,27 +67,12 @@ trait IdentifiableComponentTrait {
   }
 
   /**
-   * Checks whether the given CSS class(es) are locked
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   *
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
-   *
-   * @param  string|string[] $cssClasses CSS class names to check
-   * @return boolean true if the attribute has a locked value on it and false otherwise
-   */
-  public function cssClassLocked($cssClasses) {
-    return $this->cssClasses()->isLocked($cssClasses);
-  }
-
-  /**
    * Removes given CSS class names
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    *
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple comma separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to remove
    * @return self for a fluent interface
@@ -103,8 +88,8 @@ trait IdentifiableComponentTrait {
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    *
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple comma separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to search for
    * @return boolean true if the given CSS class names exists

@@ -52,8 +52,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple space separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple space separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to add
@@ -67,8 +67,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple comma separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    * 
    * @param  string|string[] $cssClasses CSS class names to remove
    * @return self for a fluent interface
@@ -81,8 +81,8 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
    * 
-   * 1. A string paramater can contain multiple comma separated CSS class names
-   * 2. An array paramater can contain only one CSS class name per value
+   * 1. A string parameter can contain multiple comma separated CSS class names
+   * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to search for
    * @return self for a fluent interface

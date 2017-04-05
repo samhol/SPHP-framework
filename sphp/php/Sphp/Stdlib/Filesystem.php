@@ -70,18 +70,21 @@ class Filesystem {
   /**
    * Executes a PHP script and returns the result as a string
    *
-   * @param  string $path the path to the executable PHP script
+   * @param  string $paths the path to the executable PHP script
    * @return string the result of the script execution
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public static function executePhpToString($path) {
-    if (!static::isFile($path)) {
-      throw new RuntimeException("The path '$path' contains no executable PHP script");
-    }
+  public static function executePhpToString($paths) {
+
     $content = '';
     try {
       ob_start();
-      include($path);
+      foreach (is_array($paths) ? $paths : [$paths] as $path) {
+        if (!static::isFile($path)) {
+          throw new RuntimeException("The path '$path' contains no executable PHP script");
+        }
+        include($path);
+      }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
       $content .= $e;

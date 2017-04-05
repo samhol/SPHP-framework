@@ -11,16 +11,17 @@ $td = Apis::apigen()->classLinker(Td::class);
 $th = Apis::apigen()->classLinker(Th::class);
 $ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#HTML TABLES
+#HTML TABLES: <small>for tabular data</small>
 
 $ns
 
 Namespace contains object oriented PHP implementation of the HTML table structure. 
+Table element represents tabular data —that is, information expressed via a 
+two-dimensional data table. Therefore <u>HTML tables should not be used as layout aids</u>.
 
 ##The $table component 
 		
-The $table Implements the HTML {$w3schools->tag("table")}. In general $table
-components should not be used as layout aids.
+The $table Implements the HTML {$w3schools->tag("table")}. 
 
 ###The structure of the $table component 
         

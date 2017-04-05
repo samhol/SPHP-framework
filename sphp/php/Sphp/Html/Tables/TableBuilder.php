@@ -156,7 +156,7 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
       if ($this->lineNumbersVisible()) {
         array_unshift($row, new Th('#', 'col'));
       }
-      $cont->appendBodyRow($row);
+      $cont->appendHeaderRow($row);
     }
     return $cont;
   }

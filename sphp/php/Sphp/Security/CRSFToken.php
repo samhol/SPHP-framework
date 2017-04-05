@@ -47,11 +47,11 @@ class CRSFToken {
    * @var self
    */
   private static $instance;
-  
+
   /**
    * Constructs a new instance
    * 
-   * @throws RuntimeException if there is no session
+   * @throws \Sphp\Exceptions\RuntimeException if there is no session
    */
   public function __construct() {
     if (session_status() == PHP_SESSION_NONE) {
@@ -70,7 +70,6 @@ class CRSFToken {
   public function generateToken($tokenName) {
     $token = md5(uniqid(microtime(), true));
     $_SESSION[$tokenName . '_token'] = $token;
-
     return $token;
   }
 
@@ -82,7 +81,7 @@ class CRSFToken {
    * @return boolean true if the token value matches
    */
   public function verifyInputToken($tokenName, $type) {
-    $token = filter_input($type, FILTER_SANITIZE_STRING);
+    $token = filter_input($type, $tokenName, FILTER_SANITIZE_STRING);
     if (!isset($_SESSION[$tokenName . '_token'])) {
       return false;
     }
@@ -112,7 +111,7 @@ class CRSFToken {
   public function verifyGetToken($tokenName) {
     return $this->verifyInputToken($tokenName, \INPUT_GET);
   }
-  
+
   /**
    * Returns the singleton instance of a CRSF token generator
    * 

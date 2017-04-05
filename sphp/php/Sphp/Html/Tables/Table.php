@@ -87,11 +87,21 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   }
 
   public function __clone() {
-    $this->caption = clone $this->caption;
-    $this->colgroup = clone $this->caption;
-    $this->thead = clone $this->thead;
-    $this->tbody = clone $this->tbody;
-    $this->tfoot = clone $this->tfoot;
+    if (is_object($this->caption)) {
+      $this->caption = clone $this->caption;
+    }
+    if (is_object($this->colgroup)) {
+      $this->colgroup = clone $this->colgroup;
+    }
+    if (is_object($this->thead)) {
+      $this->thead = clone $this->thead;
+    }
+    if (is_object($this->tbody)) {
+      $this->tbody = clone $this->tbody;
+    }
+    if (is_object($this->tfoot)) {
+      $this->tfoot = clone $this->tfoot;
+    }
     parent::__destruct();
   }
 
@@ -185,7 +195,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   }
 
   /**
-   * Destroys the optional thead component
+   * Destroys the optional table header component
    * 
    * @return self for a fluent interface
    */
@@ -203,14 +213,14 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   public function tbody(Tbody $tbody = null) {
     if ($tbody !== null) {
       $this->tbody = $tbody;
-    } else if($this->tbody === null) {
+    } else if ($this->tbody === null) {
       $this->tbody = new Tbody();
     }
     return $this->tbody;
   }
 
   /**
-   * Destroys the optional tbody component
+   * Destroys the optional table body component
    * 
    * @return self for a fluent interface
    */
@@ -234,7 +244,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   }
 
   /**
-   * Destroys the optional tfoot component
+   * Destroys the optional footer component
    * 
    * @return self for a fluent interface
    */
@@ -255,7 +265,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    * @return string number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = 'tr') {
+  public function count($mode = self::COUNT_ROWS) {
     $num = 0;
     if ($this->thead !== null) {
       $num += $this->thead->count($mode);
