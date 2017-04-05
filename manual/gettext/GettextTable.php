@@ -62,7 +62,7 @@ class GettextTable implements ContentInterface {
 
   private function pluralRow(PluralGettextData $obj) {
     $tr = new Tr();
-    $tr->append(new Th($this->i, 1, 2, 'rowgroup'));
+    $tr->append(new Th($this->i, 'rowgroup', 1, 2));
     $tr->append($obj->getMessageId());
     $tr->append($obj->getTranslation());
     $this->table->tbody()->append($tr);

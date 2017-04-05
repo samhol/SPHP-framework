@@ -61,20 +61,20 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
   /**
    * Creates and appends a new {@link Th} cell to the row
    *
+   * @precondition  $scope == row|col|rowgroup|colgroup
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
-   * @precondition  $scope == row|col|rowgroup|colgroup
    * @param mixed $content the content of the tag
+   * @param string|null $scope the value of the scope attribute or null for none
    * @param int $colspan solun colspan attribute value
    * @param int $rowspan solun rowspan attribute value
-   * @param string|null $scope the value of the scope attribute or null for none
    * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @return self for a fluent interface
    */
-  public function appendTh($content, $colspan = 1, $rowspan = 1, $scope = null) {
-    $this->append(new Th($content, $colspan, $rowspan, $scope));
+  public function appendTh($content, $scope = null, $colspan = 1, $rowspan = 1) {
+    $this->append(new Th($content, $scope, $colspan, $rowspan));
     return $this;
   }
 

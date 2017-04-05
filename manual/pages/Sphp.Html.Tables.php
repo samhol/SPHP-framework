@@ -34,22 +34,22 @@ MD
 $example = new CodeExampleBuilder('Sphp/Html/Tables/Table.php', false, true);
 $example->setExamplePaneTitle('HTML table example');
 $example->printHtml();
-$factory = Apis::apigen()->classLinker(Factory::class);
+$tableBuilder = Apis::apigen()->classLinker(TableBuilder::class);
 echo $parsedown->text(<<<MD
-##TABLE FACTORY: <small>The $factory Class</small>
+##TABLE BUILDER: <small>The $tableBuilder Class</small>
 
-The table factory is able to generate tables from different data sources
-MD
-);
-$example->setExamplePaneTitle('HTML table factory example');
-$example->setPath('Sphp/Html/Tables/Factory.php');
-$example->printHtml();
-echo $parsedown->text(<<<MD
-##TABLE BUILDER: <small>The $factory Class</small>
-
-The table builder is able to generate tables from different data sources
+This builder is able to generate tables from data sources
 MD
 );
 $example->setExamplePaneTitle('HTML table builder example');
 $example->setPath('Sphp/Html/Tables/TableBuilder.php');
+$example->printHtml();
+echo $parsedown->text(<<<MD
+###HTML TABLES FROM CSV-FILES: <small>The $tableBuilder Class as a factory</small>
+
+{$tableBuilder->methodLink('fromCsvFile')} is a factory method for generating tables from CSV files.
+MD
+);
+$example->setExamplePaneTitle('HTML table factory example');
+$example->setPath('Sphp/Html/Tables/Factory.php');
 $example->printHtml();

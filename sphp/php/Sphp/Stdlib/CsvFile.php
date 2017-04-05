@@ -136,8 +136,9 @@ class CsvFile implements Arrayable, \Iterator {
   }
 
   /**
+   * Sets the internal pointer to the given line number of the CSV file
    * 
-   * @param  int $line
+   * @param  int $line the line number of the CSV file
    * @return self for a fluent interface
    */
   public function seek($line) {

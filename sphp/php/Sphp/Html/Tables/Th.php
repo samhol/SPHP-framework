@@ -33,18 +33,18 @@ class Th extends Cell {
    * string or to an array of strings. So also an object of any class that
    * implements magic method `__toString()` is allowed.
    *
+   * @precondition  $scope == row|col|rowgroup|colgroup
    * @precondition  $colspan >= 1
    * @precondition  $rowspan >= 1
-   * @precondition  $scope == row|col|rowgroup|colgroup
    * @param mixed $content the content of the tag
+   * @param string|null $scope the value of the scope attribute or null for none
    * @param int $colspan solun colspan attribute value
    * @param int $rowspan solun rowspan attribute value
-   * @param string|null $scope the value of the scope attribute or null for none
    * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    */
-  public function __construct($content = null, $colspan = 1, $rowspan = 1, $scope = null) {
+  public function __construct($content = null, $scope = null, $colspan = 1, $rowspan = 1) {
     parent::__construct('th', $content);
     if ($scope !== null) {
       $this->setScope($scope);

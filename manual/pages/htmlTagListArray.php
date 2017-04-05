@@ -187,7 +187,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
   $body = $table->tbody();
   foreach ($v as $data) {
     if (is_string($data)) {
-      $body[] = new Th($data, 4, 1, 'colgroup');
+      $body[] = new Th($data, 'colgroup', 4, 1);
     } else {
       $c = array();
       $tag = Document::get($data[0]);
