@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Tables;
 
-use Sphp\Stdlib\Filesystem;
 use Sphp\Stdlib\CsvFile;
 use Sphp\Exceptions\RuntimeException;
 
@@ -23,18 +22,24 @@ class Factory {
 
   /**
    * 
-   * @param  string $path
-   * @param  string $delimeter 
+   * @param  CsvFile $file
+   * @param  int $offset optional offset of the limit
+   * @param  int $count optional count of the limit
    * @return Table
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function fromCsvFile($path, $delimeter = ',', $first = 0, $last = null) {
-    if (!Filesystem::isFile($path)) {
-      throw new RuntimeException("The path '$path' does not exist");
-    }
-    $data = (new CsvFile($path, $delimeter))->getChunk($first, $last);
+  public static function fromCsvFile(CsvFile $file, $offset = 0, $count = -1) {
     $table = new Table();
-    $table->thead()->appendHeaderRow(array_shift($data));
+    if ($offset > 0 || $count !== -1) {
+      $data = $file->getChunk($offset, $count);
+    } else {
+      $data = $file->toArray();
+    }
+    if ($offset > 0) {
+      $table->thead()->appendHeaderRow($file->getHeaderRow());
+    } else {
+      $table->thead()->appendHeaderRow(array_shift($data));
+    }
     foreach ($data as $row) {
       $table->tbody()->appendBodyRow($row);
     }

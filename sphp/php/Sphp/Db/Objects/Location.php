@@ -20,6 +20,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * @Table(name="locations",uniqueConstraints={@UniqueConstraint(name="unique_name", columns={"name"})})
  */
 class Location extends AbstractDbObject implements GeographicalAddressInterface {
+
   /**
    *
    * @var string|null

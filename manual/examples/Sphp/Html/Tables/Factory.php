@@ -2,7 +2,9 @@
 
 namespace Sphp\Html\Tables;
 
-echo Factory::fromCsvFile('manual/snippets/1000.csv', ',', 10, 20);
+use Sphp\Stdlib\CsvFile;
 
-echo Factory::fromCsvFile('manual/snippets/1000.csv', ',', 0, 20);
+echo Factory::fromCsvFile(new CsvFile('manual/snippets/1000.csv'), 10, 5);
+
+echo Factory::fromCsvFile(new CsvFile('manual/snippets/1000.csv'), 0, 10);
 ?>

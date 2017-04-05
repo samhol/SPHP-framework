@@ -35,18 +35,21 @@ class CsvFile implements Arrayable, \Iterator {
   private $filename;
 
   /**
-   *
+   * the field delimiter (one character only)
+   * 
    * @var string 
    */
   private $delimiter;
 
   /**
+   * the field enclosure character (one character only)
    *
    * @var string 
    */
   private $enclosure;
 
   /**
+   * the field escape character (one character only)
    *
    * @var string 
    */
@@ -55,13 +58,13 @@ class CsvFile implements Arrayable, \Iterator {
   /**
    * Constructs a new instance
    * 
-   * @param  string $filename
-   * @param  string $delimiter (one character only)
-   * @param  string $enclosure (one character only)
-   * @param  string $escape (one character only)
+   * @param  string $filename the path to the CSV file
+   * @param  string $delimiter optional field delimiter (one character only)
+   * @param  string $enclosure optional field enclosure character (one character only)
+   * @param  string $escape optional field escape character (one character only)
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function __construct($filename, $delimiter = ",", $enclosure = '"', $escape = "\\") {
+  public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = "\\") {
     if (!Filesystem::isFile($filename)) {
       throw new RuntimeException("The path '$filename' is not a file");
     }
@@ -69,22 +72,41 @@ class CsvFile implements Arrayable, \Iterator {
     $this->delimiter = $delimiter;
     $this->enclosure = $enclosure;
     $this->escape = $escape;
-    $this->file = new SplFileObject($filename, 'r');
-    $this->file->setCsvControl($delimiter, $enclosure, $escape);
+    $this->file = $this->createSplFileObject();
   }
 
+  /**
+   * Returns the field delimiter (one character only)
+   * 
+   * @return string the field delimiter (one character only)
+   */
   public function getFilename() {
     return $this->filename;
   }
 
+  /**
+   * Returns  the field escape character (one character only)
+   * 
+   * @return string the field escape character (one character only)
+   */
   public function getDelimiter() {
     return $this->delimiter;
   }
 
+  /**
+   * Returns the field enclosure character (one character only)
+   * 
+   * @return string the field enclosure character (one character only)
+   */
   public function getEnclosure() {
     return $this->enclosure;
   }
 
+  /**
+   * Returns the field escape character (one character only)
+   * 
+   * @return string the field escape character (one character only)
+   */
   public function getEscape() {
     return $this->escape;
   }
@@ -101,14 +123,14 @@ class CsvFile implements Arrayable, \Iterator {
     $this->file->fputcsv($data);
     return $this;
   }
-  
+
   /**
    * 
    * @return SplFileObject
    */
-  public function createSplFileObject() {  
+  public function createSplFileObject() {
     $temp = new SplFileObject($this->filename, 'r');
-    $temp->setFlags(SplFileObject::READ_CSV);
+    $temp->setFlags(SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY);
     $temp->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
     return $temp;
   }
@@ -124,12 +146,12 @@ class CsvFile implements Arrayable, \Iterator {
   }
 
   /**
+   * Returns the header row (first row) of the CSV file
    * 
-   * @return string[]
+   * @return string[]indexed array containing the fields of the header row
+   * @see    http://php.net/manual/en/splfileobject.fgetcsv.php
    */
-  public function getHeader() {
-    $temp = new SplFileObject($this->filename, 'r');
-    $temp->setCsvControl($this->delimiter, $this->enclosure, $this->escape);
+  public function getHeaderRow() {
     return $this->createSplFileObject()->fgetcsv();
   }
 
@@ -142,9 +164,9 @@ class CsvFile implements Arrayable, \Iterator {
   public function getChunk($offset = 0, $count = -1) {
     $this->file->rewind();
     //var_dump($this->file->getCsvControl());
-    foreach (new \LimitIterator($this->file, $offset, $count) as $row => $line) {
+    foreach (new \LimitIterator($this->createSplFileObject(), $offset, $count) as $row => $line) {
       #save $line
-      $result[$row] = str_getcsv($line, $this->delimiter, $this->delimiter, $this->escape);
+      $result[$row] = $line;
     }
     //var_dump($result);
     return $result;
@@ -152,9 +174,8 @@ class CsvFile implements Arrayable, \Iterator {
 
   public function toArray() {
     $arr = [];
-    $this->file->setFlags(SplFileObject::DROP_NEW_LINE);
-    $this->file->rewind();
-    while (!$this->file->eof() && ($row = $this->file->fgetcsv()) && $row[0] !== null) {
+    $file = $this->createSplFileObject();
+    while (!$file->eof() && ($row = $file->fgetcsv()) && $row[0] !== null) {
       $arr[] = $row;
     }
     return $arr;
@@ -176,6 +197,11 @@ class CsvFile implements Arrayable, \Iterator {
     $this->file->rewind();
   }
 
+  /**
+   * Checks whether EOF has been reached
+   * 
+   * @return boolean true if not reached EOF, false otherwise.
+   */
   public function valid() {
     return $this->file->valid();
   }
