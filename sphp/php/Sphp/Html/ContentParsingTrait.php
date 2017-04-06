@@ -19,6 +19,12 @@ use ParsedownExtraPlugin;
  * @filesource
  */
 trait ContentParsingTrait {
+  /**
+   * 
+   * @param  mixed $content
+   * @return self for a fluent interface
+   */
+   abstract public function append($content);
 
   /**
    * Appends a raw file to the container
