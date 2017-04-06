@@ -72,10 +72,9 @@ class Filesystem {
    *
    * @param  string $paths the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
+   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
   public static function executePhpToString($paths) {
-
     $content = '';
     try {
       ob_start();
@@ -87,7 +86,7 @@ class Filesystem {
       }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
-      $content .= $e;
+      throw new RuntimeException("PHP parsing failed", 0, $e);
     }
     ob_end_clean();
     return $content;
@@ -98,12 +97,12 @@ class Filesystem {
    *
    * @param  string $path the path to the ASCII file
    * @return string[] rows of the ASCII file in an array
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the $path points to no actual file
+   * @throws \Sphp\Exceptions\RuntimeException if the $path points to no actual file
    */
   public static function getTextFileRows($path) {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
-      throw new InvalidArgumentException("The path '$path' contains no file");
+      throw new RuntimeException("The path '$path' contains no file");
     }
     return $result;
   }
