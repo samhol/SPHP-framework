@@ -10,7 +10,7 @@ namespace Sphp\I18n;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use Sphp\Stdlib\Datastructures\Collection;
-use IteratorAggregate;
+use Iterator;
 use ArrayAccess;
 use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
@@ -24,7 +24,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayable, Countable, ArrayAccess {
+class TopicList implements Iterator, TranslatorAwareInterface, Arrayable, Countable, ArrayAccess {
 
   /**
    * Count mode (topics only)
@@ -39,7 +39,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
   /**
    * container for the {@link MessageList} objects
    *
-   * @var Collection
+   * @var MessageCollectionInterface[]
    */
   private $topics;
 
@@ -56,7 +56,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * @param  Translator|null $translator the translator component
    */
   public function __construct(TranslatorInterface $translator = null) {
-    $this->topics = new Collection();
+    $this->topics = [];
     if ($translator === null) {
       $translator = new Translator();
     }
@@ -78,15 +78,6 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
       }
     }
     return $this;
-  }
-
-  /**
-   * Create a new iterator to iterate through the {@link MessageList} objects
-   *
-   * @return Collection iterator
-   */
-  public function getIterator() {
-    return $this->topics;
   }
 
   /**
@@ -125,7 +116,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
       }
       return $r;
     } else {
-      return $this->topics->count();
+      return count($this->topics);
     }
   }
 
@@ -160,7 +151,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    */
   public function clearContent($topic = null) {
     if ($topic === null) {
-      $this->topics->clear();
+      $this->topics = [];
     } else if ($this->offsetExists($topic)) {
       $this->offsetUnset($topic);
     }
@@ -175,7 +166,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->topics = clone $this->topics;
+    $this->topics = \Sphp\Stdlib\Arrays::copy($this->topics);
     parent::__clone();
   }
 
@@ -186,8 +177,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * @return boolean true, if the topic exists, false otherwise
    */
   public function offsetExists($topic) {
-    //var_dump($topic);
-    return $this->topics->offsetExists($topic);
+    return array_key_exists($topic, $this->topics);
   }
 
   public function contains(MessageInterface $message) {
@@ -218,17 +208,20 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * Returns the {@link MessageList} of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return PrioritizedMessageList|null the topic or null if no topic was found
+   * @return MessageCollectionInterface|null the topic or null if no topic was found
    */
   public function offsetGet($topic) {
-    return $this->topics->offsetGet($topic);
+    if ($this->offsetExists($topic)) {
+      return $this->topics[$topic];
+    }
+    return null;
   }
 
   /**
    * Returns the {@link MessageList} object of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return PrioritizedMessageList|null the topic or null if no topic was found
+   * @return MessageCollectionInterface|null the topic or null if no topic was found
    * @uses   self::offsetGet()
    */
   public function get($topic) {
@@ -244,17 +237,17 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * @param  string $topic the message topic
    * @param  string|MessageInterface|MessageCollectionInterface $m message or message list
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the type of the inserted data is illegal
+   * @throws Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
     if ($m instanceof MessageInterface) {
-      $m = (new PrioritizedMessageList($this->getTranslator()))->insert($m);
+      $m = (new MessageList($this->getTranslator()))->insert($m);
     }
-    if (!($m instanceof PrioritizedMessageList)) {
+    if (!($m instanceof MessageCollectionInterface)) {
       throw new InvalidArgumentException();
     }
     $m->setLang($this->getTranslator()->getLang());
-    $this->topics->offsetSet($topic, $m);
+    $this->topics[$topic] = $m;
     return $this;
   }
 
@@ -268,7 +261,7 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
    * @param  MessageCollectionInterface $m message or message list
    * @return self for a fluent interface
    * @uses   self::offsetSet()
-   * @throws InvalidArgumentException if the type of the inserted data is illegal
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
   public function set($topic, MessageCollectionInterface $m) {
     $this->offsetSet($topic, $m);
@@ -284,8 +277,8 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
   public function offsetUnset($topic) {
     if ($this->offsetExists($topic)) {
       $this->unregisterTranslatorChangerObserver($this->offsetGet($topic));
+      unset($this->topics[$topic]);
     }
-    $this->topics->offsetUnset($topic);
     return $this;
   }
 
@@ -311,6 +304,47 @@ class TopicList implements IteratorAggregate, TranslatorAwareInterface, Arrayabl
       $mlist->setTranslator($translator);
     }
     return $this;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->topics);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->topics);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->topics);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->topics);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return false !== current($this->topics);
   }
 
 }

@@ -12,7 +12,7 @@ use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
- * Defines propertiws for a collection that holds {@link MessageInterface} objects
+ * Defines properties for a collection that holds {@link MessageInterface} objects
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05

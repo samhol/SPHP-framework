@@ -10,6 +10,7 @@ namespace Sphp\Validators;
 use Sphp\I18n\MessageInterface;
 use Sphp\I18n\MessageList;
 use Sphp\I18n\Message;
+use Sphp\I18n\MessageTemplate;
 
 /**
  * Abstract superclass for validation
@@ -47,8 +48,8 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $m container for the error messages
    */
-  public function __construct(array $messageTemplates = []) {
-    $this->messageTemplates = $messageTemplates;
+  public function __construct() {
+    $this->messageTemplates = [];
     $this->errors = new MessageList();
   }
 
@@ -74,7 +75,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  string $id
-   * @return MessageInterface
+   * @return MessageTemplate
    * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
    */
   public function getMessageTemplate($id) {
@@ -90,7 +91,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  string $messageTemplate
    * @return self for a fluent interface
    */
-  public function setMessageTemplate($id, \Sphp\I18n\MessageTemplate $messageTemplate) {
+  public function setMessageTemplate($id, MessageTemplate $messageTemplate) {
     $this->messageTemplates[$id] = $messageTemplate;
     return $this;
   }
@@ -102,7 +103,19 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function createMessageTemplate($id, $singular, $plural = null) {
 
-    $this->setMessageTemplate($id, new \Sphp\I18n\MessageTemplate($singular, $plural));
+    $this->setMessageTemplate($id, new MessageTemplate($singular, $plural));
+
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  array|\Traversable $messageTemplates
+   * @return self for a fluent interface
+   */
+  public function fromMessageTemplate($id, $params = null) {
+
+    $this->addErrorMessage($this->getMessageTemplate($id)->setParams($params)->generate());
 
     return $this;
   }

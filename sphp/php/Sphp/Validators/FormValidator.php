@@ -22,6 +22,12 @@ use Sphp\Stdlib\Arrays;
 class FormValidator extends AbstractValidator implements \Countable, \IteratorAggregate {
 
   /**
+   *
+   * @var TopicList 
+   */
+  private $inputErrors;
+
+  /**
    * inner validators
    * 
    * @var ValidatorInterface[]
@@ -33,7 +39,13 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    */
   public function __construct() {
     parent::__construct();
+    $this->createMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
+    $this->inputErrors = new TopicList();
+  }
+
+  public function getInputErrors() {
+    return $this->inputErrors;
   }
 
   /**
@@ -45,6 +57,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     foreach ($this->validators as $validator) {
       $validator->reset();
     }
+    $this->inputErrors->clearContent();
     parent::reset();
     return $this;
   }
@@ -55,8 +68,12 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     foreach ($this->validators as $inputName => $validator) {
       if (!$validator->isValid(Arrays::getValue($value, $inputName))) {
         $valid = false;
-        $this->getErrors()->merge($validator->getErrors());
+        //var_dump($validator->getErrors());
+        $this->inputErrors->offsetSet($inputName, $validator->getErrors());
       }
+    }
+    if (!$valid) {
+      $this->fromMessageTemplate(self::INVALID);
     }
     return $valid;
   }

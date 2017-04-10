@@ -29,4 +29,12 @@ class DrilldownMenu extends Menu {
     $this->attrs()->demand('data-drilldown');
   }
 
+  public function append(MenuItemInterface $content) {
+    if ($content instanceof SubMenu) {
+      $content->vertical(true);
+    }
+    parent::append($content);
+    return $this;
+  }
+
 }

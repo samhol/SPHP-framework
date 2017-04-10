@@ -6,7 +6,9 @@
  */
 
 namespace Sphp\Html\Tables;
+
 use Sphp\Stdlib\CsvFile;
+
 /**
  * Description of TableBuilder
  *
@@ -29,6 +31,7 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
 
   public function __construct() {
     $this->setLineNumbers();
+    $this->setLineNumbersVisibility(false);
   }
 
   /**
@@ -53,6 +56,16 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
 
   public function getTfootData() {
     return $this->tfootData;
+  }
+
+  /**
+   * 
+   * @param  boolean $visibility
+   * @return self for a fluent interface
+   */
+  public function setLineNumbersVisibility($visibility) {
+    $this->lineNumbers['visibility'] = (bool) $visibility;
+    return $this;
   }
 
   /**
@@ -205,7 +218,7 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
     }
     $builder->setTheadData([$headData]);
     $builder->setTbodyData($data);
-$builder->setLineNumbers($offset + 1, 'left');
+    $builder->setLineNumbers($offset + 1, 'left');
     return $builder;
   }
 
