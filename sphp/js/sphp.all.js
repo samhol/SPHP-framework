@@ -214,10 +214,11 @@ if (!window.console.log) {
     if (Clipboard.isSupported()) {
       var clipboard = new Clipboard('[data-clipboard-target]');
       clipboard.on('success', function (e) {
+       var  $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
         console.info('Action:', e.action);
         console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-
+        console.info('Trigger:', e.trigger);    
+        $container.sphpPopper({content: "Code is copied to the clipboard"});
         e.clearSelection();
       });
       clipboard.on('error', function (e) {
