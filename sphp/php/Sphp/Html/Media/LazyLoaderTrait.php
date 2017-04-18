@@ -24,6 +24,8 @@ use Sphp\Stdlib\URL;
  * @filesource
  */
 trait LazyLoaderTrait {
+  
+  abstract public function attrs();
 
   /**
    * Sets or unsets the media source loading as lazy
@@ -35,16 +37,16 @@ trait LazyLoaderTrait {
    * @return self for a fluent interface
    */
   public function setLazy($lazy = true) {
-    $classes = "lazy-hidden lazy-loaded";
+    $classes = ['lazy-hidden', 'lazy-loaded'];
     if ($lazy && !$this->isLazy()) {
       $src = $this->getSrc();
       $this->setSrc(false);
       $this->attrs()->classes()->add($classes);
-      $this->attrs()->set("data-src", $src);
+      $this->attrs()->set('data-src', $src);
     } else if ($this->isLazy()) {
       $this->attrs()->classes()->remove($classes);
-      $this->setSrc($this->attrs()->get("data-src"));
-      $this->attrs()->remove("data-src");
+      $this->setSrc($this->attrs()->get('data-src'));
+      $this->attrs()->remove('data-src');
     }
     return $this;
   }
@@ -55,8 +57,8 @@ trait LazyLoaderTrait {
    * @return boolean true if the loading is lazy, false otherwise
    */
   public function isLazy() {
-    return $this->attrs()->exists("data-src") &&
-            $this->attrs()->classes()->contains(["lazy-hidden", "lazy-loaded"]);
+    return $this->attrs()->exists('data-src') &&
+            $this->attrs()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
   }
 
   /**
@@ -73,9 +75,9 @@ trait LazyLoaderTrait {
       $src = $src->getHtml();
     }
     if ($this->isLazy()) {
-      $this->attrs()->set("data-src", $src);
+      $this->attrs()->set('data-src', $src);
     } else {
-      $this->attrs()->set("src", $src);
+      $this->attrs()->set('src', $src);
     }
     return $this;
   }
@@ -90,9 +92,9 @@ trait LazyLoaderTrait {
    */
   public function getSrc() {
     if ($this->isLazy()) {
-      return $this->attrs()->get("data-src");
+      return $this->attrs()->get('data-src');
     } else {
-      return $this->attrs()->get("src");
+      return $this->attrs()->get('src');
     }
   }
 

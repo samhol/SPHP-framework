@@ -23,7 +23,7 @@ use Imagine\Image\Box;
 class ImageScaler {
 
   /**
-   * the cache foldername of the manipulated image
+   * the cache folder name of the manipulated image
    *
    * @var string
    */

@@ -149,6 +149,17 @@ class SphpScriptsLoader extends ScriptsContainer {
   }
 
   /**
+   * Appends JavaScript files for `clipboard.js` to copy text to clipboard
+   *
+   * @return self for a fluent interface
+   * @link   https://clipboardjs.com/ clipboard.js
+   */
+  public function appendClipboard() {
+    $this->appendSrc($this->paths['vendor'] . 'clipboard.js');
+    return $this;
+  }
+
+  /**
    * Appends JavaScript files for the entire SPHP framework
    *
    * @return self for a fluent interface
@@ -156,7 +167,8 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendSPHP() {
     $this->appendFoundation()
             ->appendLazyload()
-            ->appendZeroClipboard()
+            //->appendZeroClipboard()
+            ->appendClipboard() 
             ->appendAnyTime()
             ->appendVideojs()
             // ->appendPhotoAlbum()

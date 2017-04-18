@@ -1,0 +1,164 @@
+/**
+ * sphp6.styles.all.scss (UTF-8)
+ * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
+ */ 
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+@import "compass/css3"; 
+@import "base-settings";
+@import "../../vendor/zurb/foundation/scss/foundation";
+
+@include foundation-everything;
+
+$sphp6-topbar-bg: #121212; 
+$sphp6-topbar-menu-bg: smart-scale($sphp6-topbar-bg, 5%);
+$sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
+$sphp6-topbar-font-color: #efefef;
+$sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
+$sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
+$sphp6-root-border-color: #4e4e4e;
+
+
+@import "app/sphp-back-to-top-button";
+
+.body {
+  margin-top: rem-calc(10); 
+}
+.top-row {
+  @include opacity(0.95);
+  color: #1044ba;
+  background-color: #fff;
+  font-size: rem-calc(20);
+  span {
+    margin-left: rem-calc(20);
+  }
+}
+.top-bar {
+  border-top: 1px solid #252525;
+  border-bottom: 1px solid #252525;
+  border-left: 1px solid #252525;
+  &:last-child {
+    border-right: 1px solid #252525;
+  }
+  &:hover {
+    border-color: #333;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+.footer {
+  border-top: solid 1px #999;
+  background-color: #eee;
+  padding:rem-calc(5);
+}
+.footer,
+.push {
+  height: 50px;
+}
+
+
+.sidenav, .top-bar {
+  $accordion-bg: #4d5158;
+  $accordion-hover: #35383d;
+  $accordion-separator: #41444a;
+  background: $accordion-bg;
+  // background for main accordion items
+  a {
+    background: $accordion-bg;
+    color: #fff;
+    &:hover {
+      background: $accordion-hover;
+    }
+  }
+
+  &[data-accordion-menu] {
+    a {
+      color: #fff;
+      // sets accodion item separator color
+      box-shadow: inset 0 -1px $accordion-separator;
+
+      &::after {
+        // sets accodion arrow color and direction
+        border-color: #fff transparent transparent;
+      }
+    }
+  }
+
+  // padding for each list item
+  &  li:not(.menu-text) > a {
+    padding: 1.2rem 1rem;
+  }
+
+}
+
+body {
+  background-color: #fefefe;
+  background-image: url('http://raisionveneseura.fi/_srcs/img/background.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+}
+.page {
+  //margin: rem-calc(0 0 0 2);  
+  border: solid 1px #999;
+  background-color: #fefefe;
+  padding: rem-calc(0 0 50 0);
+  margin-bottom: rem-calc(20);
+  h1, h2, h3, h4, h5, h6 {
+    color: #333;
+  }
+  h1 {
+    padding: rem-calc(10 10 10 10);
+    text-transform: uppercase;
+    border-left: solid 1px #999;
+    border-bottom: solid 1px #999;
+    background-color: #efefef;
+    @include background-image(linear-gradient(to right, #eaeaea, #fafafa));
+  }
+  h2, h3, h4, h5, h6 {
+    color: #666;
+    padding: rem-calc(4 10 5 10);
+  }
+  .flex-video {
+    margin: rem-calc(10 30);
+  }
+  p {
+    text-align: justify;
+    margin: rem-calc(10 30);
+  }
+  dl, ul, ol {
+    margin-left: rem-calc(30);
+  }
+  ul, ol {
+    list-style-position: inside;
+  }
+  dl{
+    dd {
+      margin-left: rem-calc(10);
+    }
+  }
+  .row.board {
+    img {
+      display: block;
+      top: 0;
+      right: 0;
+      position: absolute;
+    }
+  }
+  table {
+    font-size: rem-calc(14);
+    //table-layout : fixed;
+    th, td {
+    }
+  }
+}

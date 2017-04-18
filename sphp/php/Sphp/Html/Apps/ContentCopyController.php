@@ -75,7 +75,8 @@ class ContentCopyController implements ContentInterface {
         $id = $target;
       }
       $this->target = $target;
-      $this->button->setAttr('data-clipboard-target', $id);
+      $this->button->setAttr('data-clipboard-target', "#$id");
+      $this->button->setAttr('data-clipboard-action', 'copy');
     }
     return $this;
   }

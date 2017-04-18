@@ -62,7 +62,7 @@ class Img extends EmptyTag implements ImgInterface {
 
   /**
    * 
-   * @param  string|Map $map the imagemap name or instance
+   * @param  string|Map $map the image map name or instance
    * @return self for a fluent interface
    */
   public function useMap($map) {

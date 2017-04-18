@@ -179,7 +179,7 @@ class Document {
    * @param  string $name the name of the component
    * @param  string $content the content of the tag (for nonempty tags only)
    * @return ComponentInterface the corresponding component
-   * @throws \InvalidArgumentException if given tagname is invalid
+   * @throws \InvalidArgumentException if given tag name is invalid
    */
   public static function get($name, $content = null) {
     $tagName = strtolower($name);

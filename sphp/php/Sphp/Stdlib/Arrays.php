@@ -426,4 +426,23 @@ class Arrays {
     return $prev;
   }
 
+  /**
+   * 
+   * @param  array $chain
+   * @param  array $arr
+   * @param  mixed $value
+   * @return array
+   */
+  public static function createKeyChain(array $chain, $value = null) {
+    $r = [];
+    $d = &$r;
+    while(!empty($chain)) {
+      $k = array_shift($chain);
+
+      $d = &$d[$k];
+    }
+    $d = $value;
+    return $r;
+  }
+
 }

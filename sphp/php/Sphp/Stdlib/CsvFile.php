@@ -24,6 +24,12 @@ class CsvFile implements Arrayable, \Iterator {
 
   /**
    *
+   * @var callable 
+   */
+  private $filter;
+
+  /**
+   *
    * @var SplFileObject 
    */
   private $file;

@@ -7,7 +7,6 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
 
 /**

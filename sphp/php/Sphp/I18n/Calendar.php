@@ -102,42 +102,42 @@ class Calendar implements TranslatorAwareInterface {
       self::DEC => "December"];
 
   /**
-   * monday
+   * Monday
    */
   const MON = 1;
 
   /**
-   * tuesday
+   * Tuesday
    */
   const TUE = 2;
 
   /**
-   * wednesday
+   * Wednesday
    */
   const WED = 3;
 
   /**
-   * thursday
+   * Thursday
    */
   const THU = 4;
 
   /**
-   * friday
+   * Friday
    */
   const FRI = 5;
 
   /**
-   * saturday
+   * Saturday
    */
   const SAT = 6;
 
   /**
-   * sunday
+   * Sunday
    */
   const SUN = 7;
 
   /**
-   * wweek day names in english
+   * week day names in English
    *
    * @var string[]
    */
