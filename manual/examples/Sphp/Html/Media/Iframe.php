@@ -9,7 +9,7 @@ $inlineStyles = [
     'width' => '100%',
     'height' => '373px'];
 $iframe = new Iframe();
-$iframe->setSrc('https://spotthestation.nasa.gov/widget/widget.cfm?country=Finland&region=None&city=Turku')
+$iframe->setSrc('https://docs.google.com/present/embed?id=dcn37mcz_22cmnwnwf8')
         ->setLazy()
         ->setStyles($inlineStyles);
 $widget = (new Iframe('http://193.64.245.223/basket/widget/'))
