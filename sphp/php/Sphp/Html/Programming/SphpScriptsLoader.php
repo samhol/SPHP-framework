@@ -96,7 +96,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    * @link   http://www.videojs.com/ Video.js
    */
   public function appendVideojs() {
-    $this->appendSrc('http://vjs.zencdn.net/5.11.6/video.js');
+    $this->appendSrc('http://vjs.zencdn.net/5.18.4/video.js');
     return $this;
   }
 

@@ -183,8 +183,8 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.videojs.com/ Video.js
    */
   public function useVideoJS() {
-    $this->addCssSrc('//vjs.zencdn.net/5.8/video-js.min.css')
-            ->appendScriptSrc('//vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js');
+    $this->addCssSrc('http://vjs.zencdn.net/5.18.4/video-js.css')
+            ->appendScriptSrc('http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js');
     return $this;
   }
 

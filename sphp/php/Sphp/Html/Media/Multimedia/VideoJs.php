@@ -30,7 +30,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
    */
   public function __construct($sources = null) {
     parent::__construct('video', null, $sources);
-    $this->cssClasses()->lock(['video-js', 'vjs-default-skin', 'vjs-paused', 'vjs-controls-enabled']);
+    $this->cssClasses()->lock(['video-js']);
     $this->identify();
     $this->attrs()->demand('data-setup');
   }
@@ -67,7 +67,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
   }
 
   /**
-   * Sets the ratio of the video component to `16:9` widescreen
+   * Sets the ratio of the video component to `16:9` wide screen
    * 
    * @return self for a fluent interface
    */
