@@ -45,7 +45,7 @@
       }
       parsePosition($settings);
       parseContent($settings);
-      console.log($settings);
+      //console.log($settings);
       $settings.style = {classes: 'qtip-dark qtip-rounded'};
       $this.qtip($settings);
     });

@@ -1,5 +1,3 @@
-
-
 ##External libraries included
 <div class="row intro" data-equalizer data-equalize-on="medium">
 <div class="column small-12 medium-6">  

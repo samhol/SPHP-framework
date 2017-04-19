@@ -162,67 +162,6 @@
     });
   };
 
-
-  /**
-   * Sticks a component to the ottom of the document
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphLoadContent
-   * @returns  {jQuery.fn} object for method chaining
-   * @deprecated if Foundation 6 is in use
-   */
-  $.fn.stickToBottom = function () {
-    return this.each(function () {
-      console.log("stickToBottom:");
-      var $this = $(this);
-      function stick() {
-        var pos, height;
-        pos = $this.position();
-        height = $(window).height();
-        height = height - pos.top;
-        height = height - $this.outerHeight();
-        console.log("stickToBottom:" + height + 'px');
-        if (height > 0) {
-          console.log("footer height:" + height + 'px');
-          $this.css({'margin-top': height + 'px'});
-        }
-      }
-      stick();
-      $(window).resize(function () {
-        stick();
-
-      });
-    });
-  };
-
-
-  /**
-   * Copies the content of the HTML component to the clipboard
-   * 
-   * @memberOf jQuery.fn#
-   * @method   copyToClipboardButton
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.copyToClipboardButton = function () {
-    return this.each(function () {
-      var $this = $(this), clip = new ZeroClipboard($this),
-              $container = $("#" + $this.attr("data-clipboard-target"));
-      console.log("Initializing ZeroClipboard v " + ZeroClipboard.version);
-      clip.on("ready", function (e) {
-        console.log(e.message);
-      });
-      clip.on("aftercopy", function (e) {
-        console.log($this.attr("data-clipboard-target"));
-        $container.sphpPopper({content: "Code is copied to the clipboard"});
-        console.log("Text copied to clipboard");
-      });
-      clip.on("error", function (e) {
-        $this.hide();
-        console.log(e.message);
-      });
-    });
-  };
-
   /**
    * Shows a quick popup text over the element
    * 
@@ -696,48 +635,6 @@
     });
   };
 
-  /**
-   * Shows the mouse coordinates when ever the mouse is onver the containing document
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphMouseCoordinatesViewer
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.qtips1 = function () {
-    return this.each(function () {
-      var $this = $(this), $classes;
-      $classes = $this.attr('data-sphp-qtip-classes');
-      function parsePosition() {
-        var position = {};
-        if ($this.attr('data-sphp-qtip-my')) {
-          position.my = $this.attr('data-sphp-qtip-my');
-        } else {
-          position.my = 'center left';
-        }
-        if ($this.attr('data-sphp-qtip-at')) {
-          position.at = $this.attr('data-sphp-qtip-at');
-        } else {
-          position.at = 'center right';
-        }
-        position.target = $this;
-        //console.log(position);
-        return position;
-      }
-      console.log({
-        style: {
-          classes: 'qtip-dark qtip-rounded'
-        },
-        position: parsePosition()
-      });
-      $this.qtip({
-        style: {
-          classes: 'qtip-dark qtip-rounded'
-        },
-        position: parsePosition()
-      });
-    });
-
-  };
 }(jQuery));
 
 

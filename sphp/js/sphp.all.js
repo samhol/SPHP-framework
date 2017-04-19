@@ -260,6 +260,7 @@ if (!window.console.log) {
     $(document).foundation();
 
     console.log("Foundation loaded...");
+    console.log(AnyTime.version);
     $ajaxLoaders.sphpAjaxLoader();
     $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
       console.log("SPHP Ajax loader finished loaded...");
@@ -269,18 +270,10 @@ if (!window.console.log) {
     $(".sphp-viewport-size-viewer").viewportSizeViewer();
 
     $("[data-sphp-qtip]").qtips();
-    //  if ($(document).foundation()) {
-    // $(document).foundation();
-    //handleFoundationSliders();
-    //}
-    //$(".footer").stickToBottom();
     $('.sphp-back-to-top-button').backToTopBtn();
     $("input[data-anytime]").dateTimeInput();
-    //syntaxHighlighterAccordion();
-    //$("[data-sph-load]").sphLoadContent();
     $("[data-ion-rangeslider]").initIonRangeSlider();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
-    $("[data-sphp-single-accordion='syntaxHighlighter']").syntaxHighLighterAccordion();
     $("[data-reveal]").sphpPopup();
     /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {
      $(this).lazyLoadXT();

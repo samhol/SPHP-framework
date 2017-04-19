@@ -101,18 +101,6 @@ class SphpScriptsLoader extends ScriptsContainer {
   }
 
   /**
-   * Appends JavaScript files for ZeroClipboard
-   *
-   * @return self for a fluent interface
-   * @link   http://zeroclipboard.org/ ZeroClipboard
-   */
-  public function appendZeroClipboard() {
-    $this->appendJQuery()
-            ->appendSrc($this->paths['vendor'] . 'ZeroClipboard.min.js');
-    return $this;
-  }
-
-  /**
    * Appends JavaScript files for Lazy Load XT
    *
    * @return self for a fluent interface
@@ -167,15 +155,12 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function appendSPHP() {
     $this->appendFoundation()
             ->appendLazyload()
-            //->appendZeroClipboard()
-            ->appendClipboard() 
+            ->appendClipboard()
             ->appendAnyTime()
             ->appendVideojs()
-            // ->appendPhotoAlbum()
             ->appendIonRangeSlider()
             ->appendSrc($this->paths['vendor'] . 'jquery.qtip.min.js')
             ->appendSrc($this->paths['app'] . 'commonJqueryPlugins.js')
-            ->appendSrc($this->paths['app'] . 'sphp.form.validation.js')
             ->appendSrc($this->paths['app'] . 'QtipAdapter.js')
             ->appendSrc($this->paths['app'] . 'sphp.TechLinks.js')
             ->appendSrc($this->paths['js_root'] . "sphp.all.js")
