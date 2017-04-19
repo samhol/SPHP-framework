@@ -11,9 +11,9 @@ echo $parsedown->text(<<<MD
 $ns
 MD
 );
-//$load("Sphp.Html.Apps.PhotoAlbum.php");
-$load("Sphp.Html.Apps.SyntaxHighlighter.php");
-$load("Sphp.Html.Apps.SingleAccordion.php");
+
+$load('Sphp.Html.Apps.SyntaxHighlighter');
+$load('Sphp.Html.Apps.SingleAccordion');
 
 
 

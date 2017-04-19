@@ -23,4 +23,4 @@ Foundation framework is included in SPHP and therefore also all of Foundation
 clientside properties are available. Here is a small collection of features available.
 MD
 );
-$load("Sphp.Html.Foundation-orbit-intro.php");
+$load('Sphp.Html.Foundation-orbit-intro');

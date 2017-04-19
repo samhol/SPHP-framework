@@ -25,7 +25,7 @@ Any attribute class extending $abstractAttr support at least these four value ma
 4. **Clearing non locked attribute values**: $clearMethod
 MD
 );
-//$load("Sphp.Html.Attributes.IdentifyingAttribute.php");
-$load("Sphp.Html.Attributes.MultiValueAttribute.php");
-$load("Sphp.Html.Attributes.PropertyAttribute.php");
+
+$load('Sphp.Html.Attributes.MultiValueAttribute');
+$load('Sphp.Html.Attributes.PropertyAttribute');
 

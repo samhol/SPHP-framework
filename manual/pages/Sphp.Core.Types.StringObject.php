@@ -2,10 +2,11 @@
 
 namespace Sphp\Stdlib;
 
+use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$stringObjectClass = $api->classLinker(StringObject::class);
-$strLink = $php->typeLink('string');
+$stringObjectClass = Apis::apigen()->classLinker(StringObject::class);
+$strLink = Apis::phpManual()->typeLink('string');
 
 echo $parsedown->text(<<<MD
 ###The $stringObjectClass class

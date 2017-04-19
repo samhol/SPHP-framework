@@ -55,9 +55,4 @@ MD
 CodeExampleBuilder::visualize("Sphp/Db/Objects/Locations.php", "text", false);
 
 
-$load("Sphp.Db.Objects.Session.php");
-//$load("Sphp.Net.Password.php");
-
-//CodeExampleBuilder::visualize("Sphp/Objects/address_location.php");
-
-//$load("Sphp.Util.BitMask.php");
+$load('Sphp.Db.Objects.Session');
