@@ -87,7 +87,6 @@ class RangeSlider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
-    //return $this->content()["label"];
   }
 
   /**

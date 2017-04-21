@@ -52,15 +52,7 @@ class Slider extends AbstractSlider {
             ->demand('data-slider-handle')
             ->lock('role', 'slider')
             ->lock('tabindex', 1);
-    //$this->content()["slider"] = $this->handle;
-    // $filler = new Span();
-    //$filler->cssClasses()
-    //      ->lock("slider-fill");
-    //$filler->attrs()
-    //      ->demand("data-slider-fill");
-    // $this->content()["slider-fill"] = $filler;
     $this->input = new HiddenInput();
-    //$this->content()["input"] = $input;
     $this->setStepLength($step)->setValue($value);
   }
 
@@ -70,7 +62,6 @@ class Slider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
-    //return $this->content()["label"];
   }
 
   /**
