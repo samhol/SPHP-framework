@@ -69,6 +69,10 @@ trait ContainerComponentTrait {
     $this->getInnerContainer()->prepend($content);
     return $this;
   }
+  public function setContent($content) {
+    $this->getInnerContainer()->setContent($content);
+    return $this;
+  }
 
   /**
    * Counts the number of elements in the container

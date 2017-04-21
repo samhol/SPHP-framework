@@ -44,7 +44,7 @@ use Sphp\Exceptions\RuntimeException;
  * $router->route( '/users/<:status>', 'view_users_by_status', 100 ); // Executes after
  *
  * // Specifying a default callback function if no other route is matched
- * $router->default_route( 'page_404' );
+ * $router->setDefaultRoute( 'page_404' );
  *
  * // Run the router
  * $router->execute();

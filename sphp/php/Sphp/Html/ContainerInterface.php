@@ -50,6 +50,17 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    */
   public function prepend($value);
 
+  
+  /**
+   * Sets the content of the component
+   *
+   * * The numeric keys of the content will be renumbered starting from zero
+   *   and the index of the prepended value is 'int(0)'
+   *
+   * @param  mixed $content the new content
+   * @return self for a fluent interface
+   */
+  public function setContent($content) ;
   /**
    * Clears the contents
    *

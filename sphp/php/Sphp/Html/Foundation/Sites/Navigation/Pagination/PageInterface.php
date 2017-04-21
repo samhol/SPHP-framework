@@ -20,7 +20,7 @@ use Sphp\Html\Lists\LiInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PageInterface extends ContentInterface, LiInterface {
+interface PageInterface extends \Sphp\Html\Navigation\HyperlinkInterface, LiInterface {
 
   /**
    * Sets the hyperlink component as active if the URL matches with the 

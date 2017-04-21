@@ -77,6 +77,11 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this;
   }
 
+  public function setContent($content) {
+    $this->clear()->append($content);
+    return $this;
+  }
+
   /**
    * Count the number of inserted elements in the container
    *
@@ -173,7 +178,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     }
     return $result;
   }
-  
+
   public function getIterator() {
     return new Iterator($this->components);
   }

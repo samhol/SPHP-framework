@@ -22,6 +22,46 @@ class Arrays {
 
   /**
    * 
+   * @param  array $array
+   * @param  mixed $key
+   * @return array
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
+  public static function pointToKey(array &$array, $key) {
+    reset($array);
+    while (!in_array(key($array), [$key, null])) {
+      next($array);
+    }
+    if (current($array) === false) {
+      throw new \Sphp\Exceptions\RuntimeException();
+    }
+    return $array;
+  }
+
+  /**
+   * 
+   * @param  array $array
+   * @param  mixed $value
+   * @return array
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
+  public static function pointToValue(array &$array, $value) {
+    reset($array);
+
+// If we’re looking for a specific value, we do this
+    while (!in_array(current($array), [$value, null])) {
+      next($array);
+    }
+
+    if (current($array) !== false) {
+      // We found the value and set the pointer!
+      throw new \Sphp\Exceptions\RuntimeException();
+    }
+    return $array;
+  }
+
+  /**
+   * 
    * @param  mixed $needle
    * @param  array $haystack
    * @return boolean
@@ -436,7 +476,7 @@ class Arrays {
   public static function createKeyChain(array $chain, $value = null) {
     $r = [];
     $d = &$r;
-    while(!empty($chain)) {
+    while (!empty($chain)) {
       $k = array_shift($chain);
 
       $d = &$d[$k];

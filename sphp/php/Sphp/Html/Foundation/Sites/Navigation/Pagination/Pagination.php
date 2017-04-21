@@ -43,6 +43,12 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @var int
    */
   private $range = 20;
+  
+  /**
+   * @precondition $before >= 0 && $after >= 0
+   * @var int
+   */
+  private $before, $after;
 
   /**
    *
@@ -65,9 +71,11 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * Constructs a new instance
    * 
-   * @param mixed|mixed[] $urls the value of the target attribute
+   * @param \Traversable|mixed[] $urls the value of the target attribute
+   * @param int $range
+   * @param string $target
    */
-  public function __construct(array $urls = null, $range = 20, $target = '_self') {
+  public function __construct($urls = null, $range = 20, $target = '_self') {
     parent::__construct('ul');
     $this->cssClasses()
             ->lock('pagination');
@@ -77,10 +85,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     $this->range = $range;
     $this->target = $target;
     if ($urls !== null) {
-      foreach ($urls as $page) {
-        $this->addUrls($page);
-      }
-    }
+        $this->setPages($urls);
+    } 
   }
 
   /**
@@ -152,6 +158,33 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
+   * Sets a page into the paginator
+   * 
+   * @param  int|string $index the index of the page
+   * @param  Page|string $page the page object or an URL string
+   * @return self for a fluent interface
+   */
+  public function setPage($index, $page) {
+    if (!$page instanceof PageInterface) {
+      $page = new Page($page, $index, $this->target);
+    }
+    $this->pages[$index] = $page;
+    return $this;
+  }
+
+  /**
+   * 
+   * @param array $pages containing page objects or URL strings
+   * @return $this
+   */
+  public function setPages(array $pages) {
+    foreach ($pages as $index => $page) {
+      $this->setPage($index, $page);
+    }
+    return $this;
+  }
+
+  /**
    * 
    * @param  string|string[] $urls
    * @return self for a fluent interface
@@ -208,8 +241,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     $nextPage = null;
     if ($this->current < $count) {
       $nextPage = new Page(null, $this->pages[$this->current + 1]->getHref(), $this->target);
-      $nextPage
-              ->addCssClass('pagination-next');
+      $nextPage->addCssClass('pagination-next');
     }
     return $nextPage;
   }
@@ -220,11 +252,28 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return Container
    */
   private function getRange($start, $length) {
-    return new Container(array_slice($this->pages, $start - 1, $length, true));
+    return new Container(array_slice($this->pages, $start, $length, true));
+  }
+  public function beforeCurrent($num) {
+    $this->before = $num;
+    return $this;
+  }
+  public function afterCurrent($num) {
+    $this->after = $num;
+    return $this;
+  }
+  public function hasPrevious($index) {
+    $it = new \ArrayIterator($this->pages);
+    $it->seek($index); 
+    echo $it->current(); 
+    $keys = array_keys($this->pages);
+    if (in_array($index, $keys)) {
+      $is = prev($array);
+    }
   }
 
   /**
-   * Returns the {@link Page} component at the specified index
+   * Returns the page component at the specified index
    *
    * @param  int $index the index with the value
    * @return Page|null the value at the specified index or null
@@ -272,6 +321,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     } if ($last > $this->count()) {
       $first = $this->count() - $this->range + 1;
     }
+    return  $this->getRange($first, $this->range) ;
     return $this->prevPage() . $this->getRange($first, $this->range) . $this->nextPage();
   }
 

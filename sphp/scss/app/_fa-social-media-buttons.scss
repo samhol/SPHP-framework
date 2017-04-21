@@ -5,7 +5,14 @@
 
 @charset "UTF-8";
 @import "compass/css3";
-
+.badge {
+  &.xls {
+    background-color:#009900;
+  }
+  &.pdf {
+    background-color:#E54D26;
+  }
+}
 .social-icons {
   padding-left: 0;
   list-style: none;

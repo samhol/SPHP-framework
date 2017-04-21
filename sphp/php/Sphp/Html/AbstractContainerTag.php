@@ -37,5 +37,4 @@ class AbstractContainerTag extends AbstractContainerComponent implements Iterato
   use ContainerComponentTrait,
       ContentParsingTrait,
       TraversableTrait;
-
 }

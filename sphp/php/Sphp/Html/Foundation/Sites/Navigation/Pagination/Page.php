@@ -30,13 +30,13 @@ class Page extends HyperlinkListItem implements PageInterface {
    * * The `href` attribute specifies the URL of the page the link goes to.
    * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
-   * @param  string|null $content the content of the page link
    * @param  string|URL $href the URL of the link
+   * @param  string|null $content the content of the page link
    * @param  string $target optional value of the target attribute
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($content = null, $href = null, $target = '_self') {
+  public function __construct($href = null, $content = null, $target = '_self') {
     parent::__construct($href, $content, $target);
   }
 
