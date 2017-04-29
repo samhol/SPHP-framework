@@ -35,13 +35,13 @@ class MenuLinkBuilder {
 
   /**
    *
-   * @var type 
+   * @var callable|null 
    */
   private $activator;
 
   /**
    *
-   * @var type 
+   * @var string 
    */
   private $menuType = Menu::class;
 
@@ -89,7 +89,7 @@ class MenuLinkBuilder {
 
   /**
    * 
-   * @return type
+   * @return string
    */
   public function getDefaultTarget() {
     return $this->defaultTarget;
@@ -129,7 +129,7 @@ class MenuLinkBuilder {
   /**
    * 
    * @param array $linkData
-   * @return type
+   * @return string
    */
   protected function parseTarget(array $linkData) {
     return array_key_exists('target', $linkData) ? $linkData['target'] : $this->getDefaultTarget();

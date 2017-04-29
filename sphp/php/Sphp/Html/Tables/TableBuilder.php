@@ -21,17 +21,23 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
 
   use \Sphp\Html\ContentTrait;
 
-  const USE_LINENUMBERS = 0b1;
-  const LINENUMBERS_LEFT = 0b1;
+  const NO_LINENUMBERS = 0;
+  const LINENUMBERS_LEFT = 1;
+  const LINENUMBERS_RIGHT = 2;
 
-  private $lineNumbers = [];
+  private $lineNumbers = [
+      'start' => 1,
+      'use' => self::NO_LINENUMBERS
+  ];
   private $theadData = [];
   private $tbodyData = [];
   private $tfootData = [];
 
+  /**
+   * 
+   */
   public function __construct() {
     $this->setLineNumbers();
-    $this->setLineNumbersVisibility(false);
   }
 
   /**
@@ -43,48 +49,75 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
   }
 
   /**
+   * Returns the table header content data
    * 
-   * @return array 
+   * @return array the table header content data
    */
   public function getTheadData() {
     return $this->theadData;
   }
 
+  /**
+   * Returns the table body content data
+   * 
+   * @return array the table body content data
+   */
   public function getTbodyData() {
     return $this->tbodyData;
   }
 
+  /**
+   * Returns the table footer content data
+   * 
+   * @return array the table footer content data
+   */
   public function getTfootData() {
     return $this->tfootData;
   }
 
   /**
    * 
-   * @param  boolean $visibility
+   * @param  boolean $position
    * @return self for a fluent interface
    */
-  public function setLineNumbersVisibility($visibility) {
-    $this->lineNumbers['visibility'] = (bool) $visibility;
+  public function setLineNumbersPosition($position) {
+    $this->lineNumbers['use'] = (int) $position;
     return $this;
   }
 
   /**
    * 
    * @param  int $start
-   * @param  string $position
    * @return self for a fluent interface
    */
-  public function setLineNumbers($start = 1, $position = 'none') {
-    $this->lineNumbers = ['start' => (int) $start, 'position' => $position];
+  public function setFirstLineNumber($start) {
+    $this->lineNumbers['start'] = (int) $start;
     return $this;
   }
 
+  /**
+   * 
+   * @param  int $start
+   * @param  int $position
+   * @return self for a fluent interface
+   */
+  public function setLineNumbers($start = 1, $position = self::NO_LINENUMBERS) {
+    $this->setFirstLineNumber($start)
+            ->setLineNumbersPosition($position);
+    return $this;
+  }
+
+  /**
+   * Returns the first line number in the table body
+   * 
+   * @return int the first line number in the table body
+   */
   public function getFirstLineNumber() {
     return $this->lineNumbers['start'];
   }
 
   public function lineNumbersVisible() {
-    return $this->lineNumbers['position'] !== 'none';
+    return (bool) $this->lineNumbers['use'];
   }
 
   /**
@@ -114,16 +147,6 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
    */
   public function setTfootData($data) {
     $this->tfootData = $data;
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  boolean $use truefor visible linenumbes, otherwise false
-   * @return self for a fluent interface
-   */
-  public function useLineNumbers($use) {
-    $this->lineNumbers['use'] = (bool) $use;
     return $this;
   }
 
@@ -192,6 +215,9 @@ class TableBuilder implements \Sphp\Html\ContentInterface {
     return $table;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getHtml() {
     return $this->buildTable();
   }

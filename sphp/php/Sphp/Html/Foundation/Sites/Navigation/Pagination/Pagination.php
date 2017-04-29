@@ -13,6 +13,8 @@ use Countable;
 use ArrayIterator;
 use Sphp\Html\Container;
 use Sphp\Html\Lists\Li as Li;
+use Sphp\Stdlib\Arrays;
+use Sphp\Exceptions\OutOfRangeException;
 
 /**
  * Implements a Pagination component
@@ -28,9 +30,15 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   /**
    *
-   * @var int 
+   * @var PageInterface
    */
-  private $counter = 0;
+  private $previousPageButton;
+
+  /**
+   *
+   * @var PageInterface
+   */
+  private $nextPageButton;
 
   /**
    *
@@ -39,22 +47,16 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   private $pages = [];
 
   /**
-   *
-   * @var int
-   */
-  private $range = 20;
-  
-  /**
    * @precondition $before >= 0 && $after >= 0
    * @var int
    */
-  private $before, $after;
+  private $before = PHP_INT_MAX, $after = PHP_INT_MAX;
 
   /**
    *
    * @var int 
    */
-  private $current = 1;
+  private $current;
 
   /**
    *
@@ -75,18 +77,16 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param int $range
    * @param string $target
    */
-  public function __construct($urls = null, $range = 20, $target = '_self') {
+  public function __construct($target = '_self') {
     parent::__construct('ul');
     $this->cssClasses()
             ->lock('pagination');
     $this->attrs()
             ->lock('role', 'menubar')
             ->setAria('label', 'Pagination');
-    $this->range = $range;
     $this->target = $target;
-    if ($urls !== null) {
-        $this->setPages($urls);
-    } 
+    $this->setPreviousPageButton();
+    $this->setNextPageButton();
   }
 
   /**
@@ -109,7 +109,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
-   * Sets the pattern for the default target of each pagination links
+   * Sets the default target of each pagination links
    *
    * **Notes:**
    *
@@ -130,35 +130,28 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
 
   /**
    * 
-   * @param  int $index
+   * @param  int $index 
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\OutOfRangeException
    */
-  public function setCurrent($index) {
-    if (array_key_exists($index, $this->pages)) {
-      $this->current = $index;
-      foreach ($this->pages as $id => $page) {
-        if ($id !== $index) {
-          $page->setCurrent(false);
-        } else {
-          $page->setCurrent(true);
-        }
+  public function setCurrentPage($index) {
+    if (!array_key_exists($index, $this->pages)) {
+      throw new OutOfRangeException("Index '$index' does not exist in the pagination");
+    }
+    $this->current = $index;
+    foreach ($this->pages as $id => $page) {
+      //var_dump( $id, $index);
+      if ($id != $index) {
+        $page->setCurrent(false);
+      } else {
+        $page->setCurrent(true);
       }
     }
     return $this;
   }
 
   /**
-   * 
-   * @param  int $range
-   * @return self for a fluent interface
-   */
-  public function setRange($range) {
-    $this->range = $range;
-    return $this;
-  }
-
-  /**
-   * Sets a page into the paginator
+   * Sets a page
    * 
    * @param  int|string $index the index of the page
    * @param  Page|string $page the page object or an URL string
@@ -169,6 +162,13 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
       $page = new Page($page, $index, $this->target);
     }
     $this->pages[$index] = $page;
+    if ($this->current === null) {
+      $page->setCurrent(true);
+    }
+    if ($page->isCurrent()) {
+      $this->current = $index;
+      $this->setCurrentPage($index);
+    }
     return $this;
   }
 
@@ -184,41 +184,56 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return $this;
   }
 
-  /**
-   * 
-   * @param  string|string[] $urls
-   * @return self for a fluent interface
-   */
-  public function addUrls($urls) {
-    if (is_array($urls)) {
-      foreach ($urls as $url) {
-        $this->addUrls($url);
-      }
-    } else {
-      $this->counter += 1;
-      $page = new Page($this->counter, $urls, $this->target);
-      $this->setAriaLabelForPage($page, $this->counter);
-      if ($page->isCurrentUrl()) {
-        $page->setCurrent(true);
-        $this->current = $this->counter;
-      }
-      $this->pages[$this->counter] = $page;
+  public function setPreviousPageButton(PageInterface $prev = null) {
+    if ($prev === null) {
+      $this->previousPageButton = new Page(null, $prev, $this->target);
     }
+    $this->previousPageButton->cssClasses()->lock('pagination-previous');
+    return $this;
+  }
+
+  public function setNextPageButton(PageInterface $prev = null) {
+    if ($prev === null) {
+      $this->nextPageButton = new Page(null, $prev, $this->target);
+    }
+    $this->nextPageButton->cssClasses()->lock('pagination-next');
     return $this;
   }
 
   /**
    * 
-   * @return Page|null next page or null if there is no next page
+   * @return PageInterface
    */
-  private function prevPage() {
-    $backButton = null;
-    if ($this->current > 1) {
-      $backButton = new Page(null, $this->pages[$this->current - 1]->getHref(), $this->target);
-      $backButton
-              ->addCssClass('pagination-previous');
+  public function getPreviousPageButton() {
+    Arrays::pointToKey($this->pages, $this->current);
+    if (prev($this->pages)) {
+      $current = current($this->pages);
+      $this->previousPageButton
+              ->disable(false)
+              ->setHref($current->getHref())
+              ->setTarget($current->getTarget());
+    } else {
+      $this->previousPageButton->disable(true);
     }
-    return $backButton;
+    return $this->previousPageButton;
+  }
+
+  /**
+   * 
+   * @return PageInterface
+   */
+  public function getNextPageButton() {
+    Arrays::pointToKey($this->pages, $this->current);
+    if (next($this->pages)) {
+      $next = current($this->pages);
+      $this->nextPageButton
+              ->disable(false)
+              ->setHref($next->getHref())
+              ->setTarget($next->getTarget());
+    } else {
+      $this->nextPageButton->disable(true);
+    }
+    return $this->nextPageButton;
   }
 
   /**
@@ -233,43 +248,37 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   }
 
   /**
+   * Sets the number of visible pagination items before active page
    * 
-   * @return Page|null next page or null if there is no next page
+   * @param  int $num number of visible pagination items before active page
+   * @return self for a fluent interface
    */
-  private function nextPage() {
-    $count = $this->count();
-    $nextPage = null;
-    if ($this->current < $count) {
-      $nextPage = new Page(null, $this->pages[$this->current + 1]->getHref(), $this->target);
-      $nextPage->addCssClass('pagination-next');
-    }
-    return $nextPage;
+  public function showAll() {
+    $this->before = true;
+    $this->after = true;
+    return $this;
   }
 
   /**
-   * The {@link Page} container
+   * Sets the number of visible pagination items before active page
    * 
-   * @return Container
+   * @param  int $num number of visible pagination items before active page
+   * @return self for a fluent interface
    */
-  private function getRange($start, $length) {
-    return new Container(array_slice($this->pages, $start, $length, true));
-  }
-  public function beforeCurrent($num) {
-    $this->before = $num;
+  public function visibleBeforeCurrent($num) {
+    $this->before = (int) $num;
     return $this;
   }
-  public function afterCurrent($num) {
-    $this->after = $num;
+
+  /**
+   * Sets the number of visible pagination items after active page
+   * 
+   * @param  int $num number of visible pagination items after active page
+   * @return self for a fluent interface
+   */
+  public function visibleAfterCurrent($num) {
+    $this->after = (int) $num;
     return $this;
-  }
-  public function hasPrevious($index) {
-    $it = new \ArrayIterator($this->pages);
-    $it->seek($index); 
-    echo $it->current(); 
-    $keys = array_keys($this->pages);
-    if (in_array($index, $keys)) {
-      $is = prev($array);
-    }
   }
 
   /**
@@ -278,7 +287,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param  int $index the index with the value
    * @return Page|null the value at the specified index or null
    */
-  public function get($index) {
+  public function getPage($index) {
     $page = null;
     if (array_key_exists($index, $this->pages)) {
       $page = $this->pages[$index];
@@ -313,16 +322,40 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return count($this->pages);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
-    $first = $this->current - $this->range / 2;
-    $last = $this->current + $this->range / 2 - 1;
-    if ($first < 1) {
-      $first = 1;
-    } if ($last > $this->count()) {
-      $first = $this->count() - $this->range + 1;
+    $cont = new Container();
+    Arrays::pointToKey($this->pages, $this->current);
+    $beforeKey = key($this->pages);
+    $afterKey = key($this->pages);
+    $cont->append(current($this->pages));
+    $before = $this->before;
+    while ($before > 0 && prev($this->pages)) {
+      //echo "before: $before, ";
+      $beforeKey = key($this->pages);
+      $cont->prepend(current($this->pages));
+      $before--;
     }
-    return  $this->getRange($first, $this->range) ;
-    return $this->prevPage() . $this->getRange($first, $this->range) . $this->nextPage();
+    Arrays::pointToKey($this->pages, $this->current);
+    $after = $this->after + $before;
+    while ($after > 0 && next($this->pages)) {
+      //echo "after: $after, ";
+      $afterKey = key($this->pages);
+      $cont->append(current($this->pages));
+      $after--;
+    }
+    Arrays::pointToKey($this->pages, $beforeKey);
+    while ($after > 0 && prev($this->pages)) {
+      //echo "before: $after, ";
+      $beforeKey = key($this->pages);
+      $cont->prepend(current($this->pages));
+      $after--;
+    }
+    $cont->prepend($this->getPreviousPageButton());
+    $cont->append($this->getNextPageButton());
+    return $cont->getHtml();
   }
 
 }

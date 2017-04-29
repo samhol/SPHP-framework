@@ -9,7 +9,7 @@ $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#FOUNDATION 6 NAVIGATION COMPONENTS
+#FOUNDATION: <small>NAVIGATION COMPONENTS</small>
 $ns
         
 This namespace contains object oriented PHP implementations of Foundation navigation components.
@@ -29,7 +29,7 @@ The $sideNavClass component provides navigation for the entire site, or for sect
 they've reached the link below. (`Shift+Tab` to navigate back one step.)
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/AccordionMenu.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php');
 
 $breadcrumbs = $api->classLinker(BreadCrumbs::class);
 $breadcrumb = $api->classLinker(BreadCrumb::class);
@@ -47,7 +47,7 @@ A $breadcrumbs instance shows a horizontal navigation trail of individual $bread
 Thi component will fill out `100%` of the width of its parent container.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/BreadCrumbs.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/BreadCrumbs.php');
 
 
 $load("Sphp.Html.Foundation.Sites.Navigation.Pagination.php");

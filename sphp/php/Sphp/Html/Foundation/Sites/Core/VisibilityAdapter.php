@@ -102,7 +102,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
       $this->getComponent()->cssClasses()
               ->add(["hide-for-$upper"]);
     }
-    if ($smaller != "small") {
+    if ($smaller != 'small') {
       $this->getComponent()->cssClasses()
               ->add(["show-for-$smaller", "hide-for-$upper"]);
     }
@@ -121,7 +121,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * * `"xx-large"`: all screen widths from 1921px...
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $size the targeted screensize flags as a bitmask
+   * @param  string $size the targeted screen size flags as a bitmask
    * @return self for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size

@@ -46,12 +46,18 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     parent::__construct($tagname, $attrManager);
     $this->cssClasses()->lock('menu');
   }
-  
+
+  /**
+   * {@inheritdoc}
+   */
   public function __destruct() {
     unset($this->items);
     parent::__destruct();
   }
-  
+
+  /**
+   * {@inheritdoc}
+   */
   public function __clone() {
     $this->items = clone $this->items;
     parent::__clone();
@@ -67,6 +73,9 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getDefaultTarget() {
     return $this->defaultTarget;
   }
@@ -100,10 +109,10 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   }
 
   /**
-   * Appends a new submenu to the menu structure
+   * Appends a new sub menu to the menu structure
    *
    * @param  SubMenu $subMenu
-   * @return SubMenu appended submenu
+   * @return SubMenu appended sub menu
    */
   public function appendSubMenu(SubMenu $subMenu = null) {
     if ($subMenu === null) {
@@ -114,7 +123,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   }
 
   /**
-   * Appends a {@link MenuLabel} text component to the menu
+   * Appends a menu label text component to the menu
    *
    * @param  mixed|MenuLabel $text 
    * @return self for a fluent interface
@@ -127,6 +136,9 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function nested($nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
@@ -136,6 +148,9 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function vertical($vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
@@ -145,6 +160,9 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isVertical() {
     return $this->cssClasses()->contains('vertical');
   }
@@ -173,6 +191,9 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this->hasCssClass('is-active');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     return $this->items->getHtml();
   }

@@ -9,7 +9,6 @@ namespace Sphp\Html\Navigation;
 
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\URL;
 
 /**
  * Trait implements {@link HyperlinkInterface} for hyperlink functionality
@@ -108,26 +107,6 @@ trait HyperlinkTrait {
    */
   public function getTarget() {
     return $this->attrs()->get('target');
-  }
-
-  /**
-   * Checks if the ÚRL in the href atrribute matches with the given ÚRL
-   *
-   * @param  URL|string $url the url to check against
-   * @return boolean true if the href arrtibute points to the given page
-   */
-  public function urlEquals($url) {
-    $test = ($url instanceof URL) ? $url : new URL($url);
-    return $test->equals($this->getHref());
-  }
-
-  /**
-   * Checks if the ÚRL in the href atrribute matches with the current page ÚRL
-   *
-   * @return boolean true if the href arrtibute points to the current page
-   */
-  public function isCurrentUrl() {
-    return URL::getCurrent()->equals($this->getHref());
   }
 
   /**

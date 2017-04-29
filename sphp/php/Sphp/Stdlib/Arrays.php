@@ -21,11 +21,12 @@ namespace Sphp\Stdlib;
 class Arrays {
 
   /**
+   * Sets the internal array pointer to the given key value pair 
    * 
-   * @param  array $array
-   * @param  mixed $key
-   * @return array
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @param  array $array the array to manipulate
+   * @param  mixed $key the key of the new current element
+   * @return array manipulated array 
+   * @throws \Sphp\Exceptions\RuntimeException if the key does not exist in the array
    */
   public static function pointToKey(array &$array, $key) {
     reset($array);
@@ -33,7 +34,26 @@ class Arrays {
       next($array);
     }
     if (current($array) === false) {
-      throw new \Sphp\Exceptions\RuntimeException();
+      throw new \Sphp\Exceptions\RuntimeException("Key '$key' does not exist in the array");
+    }
+    return $array;
+  }
+
+  /**
+   * Sets the internal array pointer to the given key value pair 
+   * 
+   * @param  array $array the array to manipulate
+   * @param  mixed $value the value of the new current element
+   * @return array manipulated array 
+   * @throws \Sphp\Exceptions\RuntimeException if the value does not exist in the array
+   */
+  public static function pointToValue(array &$array, $value) {
+    reset($array);
+    while (!in_array(current($array), [$value, null])) {
+      next($array);
+    }
+    if (current($array) !== false) {
+      throw new \Sphp\Exceptions\RuntimeException("Value '$value' does not exist in the array");
     }
     return $array;
   }
@@ -41,23 +61,39 @@ class Arrays {
   /**
    * 
    * @param  array $array
-   * @param  mixed $value
-   * @return array
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @param  mixed $current
+   * @return mixed
    */
-  public static function pointToValue(array &$array, $value) {
+  public static function next(array &$array, $current) {
     reset($array);
-
-// If we’re looking for a specific value, we do this
-    while (!in_array(current($array), [$value, null])) {
-      next($array);
+    $next = current($array);
+    do {
+      $tmp_val = current($array);
+      $res = next($array);
+    } while (($tmp_val != $current) && $res);
+    if ($res) {
+      $next = current($array);
     }
+    return $next;
+  }
 
-    if (current($array) !== false) {
-      // We found the value and set the pointer!
-      throw new \Sphp\Exceptions\RuntimeException();
+  /**
+   * 
+   * @param  array $array
+   * @param  mixed $current
+   * @return mixed
+   */
+  public static function prev(&$array, $current) {
+    end($array);
+    $prev = current($array);
+    do {
+      $tmp_val = current($array);
+      $res = prev($array);
+    } while (($tmp_val != $current) && $res);
+    if ($res) {
+      $prev = current($array);
     }
-    return $array;
+    return $prev;
   }
 
   /**
@@ -426,44 +462,6 @@ class Arrays {
       }
     }
     return $newArray;
-  }
-
-  /**
-   * 
-   * @param  array $array
-   * @param  mixed $current
-   * @return mixed
-   */
-  public static function next(array &$array, $current) {
-    reset($array);
-    $next = current($array);
-    do {
-      $tmp_val = current($array);
-      $res = next($array);
-    } while (($tmp_val != $current) && $res);
-    if ($res) {
-      $next = current($array);
-    }
-    return $next;
-  }
-
-  /**
-   * 
-   * @param  array $array
-   * @param  mixed $current
-   * @return mixed
-   */
-  public static function prev(&$array, $current) {
-    end($array);
-    $prev = current($array);
-    do {
-      $tmp_val = current($array);
-      $res = prev($array);
-    } while (($tmp_val != $current) && $res);
-    if ($res) {
-      $prev = current($array);
-    }
-    return $prev;
   }
 
   /**

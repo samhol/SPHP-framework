@@ -2,25 +2,24 @@
 
 /**
  * Page.php (UTF-8)
- * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
-use Sphp\Html\Lists\HyperlinkListItem as HyperlinkListItem;
 use Sphp\Stdlib\URL;
 
 /**
  * Implements a page button for a Pagination component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
+ * @since   2016-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/pagination.html Foundation Pagination
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Page extends HyperlinkListItem implements PageInterface {
+class Page extends AbstractPage {
 
   /**
    * Constructs a new instance
@@ -36,53 +35,8 @@ class Page extends HyperlinkListItem implements PageInterface {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = null, $content = null, $target = '_self') {
+  public function __construct($href = null, $content = null, $target = null) {
     parent::__construct($href, $content, $target);
-  }
-
-  /**
-   * 
-   * @param  string $label
-   * @return self for a fluent interface
-   * @link   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute
-   */
-  public function setAriaLabel($label) {
-    $this->attrs()->setAria('label', $label);
-    return $this;
-  }
-
-  public function activate() {
-    if ($this->urlEquals(URL::getCurrent())) {
-      $this->setCurrent(true);
-    } else {
-      $this->setCurrent(false);
-    }
-    return $this;
-  }
-
-  public function setCurrent($active = true) {
-    if ($active) {
-      return $this->addCssClass('current');
-    } else {
-      return $this->removeCssClass('current');
-    }
-  }
-
-  public function isCurrent() {
-    return $this->hasCssClass('current');
-  }
-
-  public function disable($disabled = true) {
-    if ($disabled) {
-      $this->cssClasses()->set('disabled');
-    } else {
-      $this->cssClasses()->remove('disabled');
-    }
-    return $this;
-  }
-
-  public function isEnabled() {
-    return !$this->cssClasses()->contains('disabled');
   }
 
 }

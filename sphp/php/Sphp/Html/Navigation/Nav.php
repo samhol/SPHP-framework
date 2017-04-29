@@ -38,7 +38,7 @@ class Nav extends ContainerTag {
   }
 
   /**
-   * Returns the {@link HyperlinkInterface} sub components
+   * Returns the hyperlink sub components
    *
    * @return ContainerInterface containing {@link HyperlinkInterface} sub components
    */

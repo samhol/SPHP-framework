@@ -7,7 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 
-use Sphp\Html\ContentInterface;
+use Sphp\Html\ComponentInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Lists\LiInterface;
 
 /**
@@ -20,20 +21,20 @@ use Sphp\Html\Lists\LiInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PageInterface extends \Sphp\Html\Navigation\HyperlinkInterface, LiInterface {
-
+interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterface {
+  
   /**
-   * Sets the hyperlink component as active if the URL matches with the 
-   *  current URL of the page
+   * Sets the content of the component
    * 
+   * @param  mixed $content the content of the component
    * @return self for a fluent interface
    */
-  public function activate();
+  public function setContent($content);
 
   /**
    * Sets or unsets the hyperlink component as active
    * 
-   * @param  boolean $active true foor activation and false for deactivation
+   * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
   public function setCurrent($active = true);

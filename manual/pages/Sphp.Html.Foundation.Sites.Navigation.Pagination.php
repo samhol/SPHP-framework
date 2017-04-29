@@ -15,4 +15,4 @@ of related pages. Moving between pages has become less common with the advent of
 longer pages and AJAX loading.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/Pagination.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/Pagination.php');

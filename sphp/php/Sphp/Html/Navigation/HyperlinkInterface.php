@@ -80,19 +80,4 @@ interface HyperlinkInterface {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getTarget();
-
-  /**
-   * Checks if the URL in the href atrribute matches with the given ÚRL
-   *
-   * @param  URL|string $url the url to check against
-   * @return boolean true if the href arrtibute points to the current page
-   */
-  public function urlEquals($url);
-
-  /**
-   * Checks if the ÚRL in the href atrribute matches with the current page ÚRL
-   *
-   * @return boolean true if the href arrtibute points to the current page
-   */
-  public function isCurrentUrl();
 }

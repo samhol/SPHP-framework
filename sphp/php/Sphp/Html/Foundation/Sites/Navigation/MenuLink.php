@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Lists\HyperlinkListItem;
-use Sphp\Stdlib\URL;
 
 /**
  * Implements a hyperlink component for the Dropown menu component
@@ -43,34 +42,6 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    */
   public function __construct($href = '', $content = null, $target = '_self') {
     parent::__construct($href, $content, $target);
-  }
-
-  public function setHref($href, $encode = true) {
-    // echo "$href";
-    $url = new URL($href);
-    // echo "$url";
-    if ($url->isCurrent()) {
-      $this->setActive(true);
-    } else {
-      $this->setActive(false);
-    }
-    parent::setHref($url, $encode);
-    return $this;
-  }
-
-  /**
-   * Sets the hyperlink component as active if the URL matches with the
-   *  current URL of the page
-   *
-   * @return self for a fluent interface
-   */
-  public function activate() {
-    if ($this->urlEquals(URL::getCurrent())) {
-      $this->setActive(true);
-    } else {
-      $this->setActive(false);
-    }
-    return $this;
   }
 
   /**

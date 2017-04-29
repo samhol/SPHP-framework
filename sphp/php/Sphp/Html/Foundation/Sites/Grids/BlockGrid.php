@@ -56,14 +56,13 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * If you use both of those classes combined, you can control the
    * configuration and layout separately for each breakpoint.
    *
-   * @param  mixed|mixed[] $items list elements
    * @param  int $s column width for small screens (0-8)
    * @param  int|boolean $m column width for medium screens (0-8) or false for inheritance
    * @param  int|boolean $l column width for large screens (0-8) or false for inheritance
    * @param  int|boolean $xl column width for x-large screens (0-8) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (0-8) or false for inheritance
    */
-  public function __construct($items = null, $s = 3, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct($s = 3, $m = false, $l = false, $xl = false, $xxl = false) {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);
@@ -76,17 +75,12 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
         $this->cssClasses()->add("$sreenSize-up-$width");
       }
     };
-    $widthSetter($s, "small");
-    $widthSetter($m, "medium");
-    $widthSetter($l, "large");
-    $widthSetter($xl, "xlarge");
-    $widthSetter($xxl, "xxlarge");
-    if ($items !== null) {
-      foreach (is_array($items) ? $items : [$items] as $item) {
-        $this->append($item);
-      }
-    }
-    $this->cssClasses()->lock("row");
+    $widthSetter($s, 'small');
+    $widthSetter($m, 'medium');
+    $widthSetter($l, 'large');
+    $widthSetter($xl, 'xlarge');
+    $widthSetter($xxl, 'xxlarge');
+    $this->cssClasses()->lock('row');
   }
 
   /**
@@ -111,7 +105,6 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
     $this->getInnerContainer()->append($column);
     return $this;
   }
-  
 
   /**
    * Appends a new Column to the container

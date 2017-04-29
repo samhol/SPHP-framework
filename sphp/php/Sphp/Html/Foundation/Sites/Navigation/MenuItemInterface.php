@@ -12,8 +12,6 @@ use Sphp\Html\IdentifiableInterface;
 /**
  * Defines a menu item for navigation menus
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-22
  * @link    http://foundation.zurb.com/ Foundation

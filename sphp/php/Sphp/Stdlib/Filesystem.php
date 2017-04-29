@@ -8,6 +8,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\RuntimeException;
+use SplFileObject;
 
 /**
  * Tools to work with files and directories
@@ -21,7 +22,7 @@ class Filesystem {
 
   /**
    * 
-   * @param  string $filename
+   * @param  string $filename the file to test 
    * @return boolean
    */
   public static function isFile($filename) {
@@ -85,7 +86,7 @@ class Filesystem {
       }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
-      throw new RuntimeException("PHP parsing failed", 0, $e);
+      throw new RuntimeException("PHP parsing failed for $e", 0, $e);
     }
     ob_end_clean();
     return $content;
@@ -110,18 +111,24 @@ class Filesystem {
    * Returns the file/directory structure under the given path
    *
    * @param  string $dir
-   * @return string[] the file names of the content files and directories
+   * @return SplFileObject[] the file objects of the content files and directories
    */
-  public static function dirToArray($dir) {
-    $contents = array();
-    foreach (scandir($dir) as $node) {
+  public static function dirToArray($dir, $sortingOrder = \SCANDIR_SORT_ASCENDING) {
+    $contents = [];
+    foreach (scandir($dir, $sortingOrder) as $node) {
+      $path = "$dir/$node";
       if ($node == '.' || $node == '..') {
         continue;
       }
-      if (is_dir($dir . '/' . $node)) {
-        $contents[$node] = self::dirToArray($dir . '/' . $node);
+      if (is_dir($path)) {
+        $contents[$path] = static::dirToArray($path, $sortingOrder);
       } else {
-        $contents[] = $node;
+        $file = new SplFileObject($path);
+        $key = pathinfo($node, PATHINFO_FILENAME);
+        if (array_key_exists($key, $contents)) {
+          $key = $node;
+        }
+        $contents[$key] = $file;
       }
     }
     return $contents;

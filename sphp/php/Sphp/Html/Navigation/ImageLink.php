@@ -63,11 +63,17 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __destruct() {
     unset($this->img);
     parent::__destruct();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __clone() {
     $this->img = clone $this->img;
     parent::__clone();
@@ -87,15 +93,24 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setAlt($src) {
     $this->img()->setAlt($src);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getAlt() {
     return $this->img()->getAlt();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getSrc() {
     return $this->img()->getSrc();
   }
@@ -120,42 +135,69 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     return $this->img;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setWidth($width) {
     $this->img->setWidth($width);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getWidth() {
     return $this->img->getWidth();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setHeight($height) {
     $this->img->setHeight($height);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getHeight() {
     return $this->img->getHeight();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setLazy($lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isLazy() {
     return $this->img->isLazy();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setSize(Size $size) {
     $this->img->setSize($size);
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getSize() {
     return $this->img->getSize();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contentToString() {
     return $this->img->getHtml();
   }
