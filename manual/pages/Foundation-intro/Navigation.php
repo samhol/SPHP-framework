@@ -23,5 +23,5 @@ sidebars and many other menu structures.
 MD
 ;
 
-include('Sphp/Html/Foundation/F6/Navigation/DropdownMenu.php');
+include('Sphp/Html/Foundation/Sites/Navigation/DropdownMenu.php');
 echo "</div>";

@@ -14,4 +14,4 @@ echo $parsedown->text(<<<MD
 The $dropdown component can be used to attach dropdowns or popovers to whatever Component needed.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/Dropdown.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Dropdown.php');

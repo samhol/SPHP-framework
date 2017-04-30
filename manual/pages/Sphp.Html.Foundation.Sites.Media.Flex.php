@@ -19,4 +19,4 @@ scale the media on any device.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Media/Flex-LazyLoad.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Media/Flex-LazyLoad.php');

@@ -16,7 +16,7 @@ These components extend $abstractSwitch and Foundation frameworks Switches on cl
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/FileUploadButton.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/FileUploadButton.php'))
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();

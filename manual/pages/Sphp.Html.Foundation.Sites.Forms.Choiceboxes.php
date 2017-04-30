@@ -17,7 +17,7 @@ These components extend $choiceboxes and Foundation frameworks Switches on clien
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Choiceboxes.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/Choiceboxes.php'))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

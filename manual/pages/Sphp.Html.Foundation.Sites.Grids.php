@@ -41,4 +41,4 @@ for each breakpoint.
         
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Grids/BlockGrid.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Grids/BlockGrid.php');

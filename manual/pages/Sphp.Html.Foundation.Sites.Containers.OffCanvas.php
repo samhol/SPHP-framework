@@ -13,4 +13,4 @@ echo $parsedown->text(<<<MD
 The $offCanvas menu component is positioned outside of the viewport and gets slided in when activated.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/OffCanvas.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/OffCanvas.php');

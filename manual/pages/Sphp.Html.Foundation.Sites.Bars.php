@@ -25,7 +25,7 @@ MD
 );
 
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/TitleBar.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/TitleBar.php');
 echo $parsedown->text(<<<MD
 ##Foundation Top Bar: <small>The $topBar component</small>
         
@@ -33,4 +33,4 @@ Top Bar component is a simple wrapper around menu components.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/SplitButton.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');

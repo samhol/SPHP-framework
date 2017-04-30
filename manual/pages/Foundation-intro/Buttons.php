@@ -22,8 +22,8 @@ use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
 $blockGrid = new BlockGrid();
 
-$blockGrid->appendPhpFile('Sphp/Html/Foundation/F6/Buttons/ButtonGroup-setColor.php');
-$blockGrid->appendPhpFile('Sphp/Html/Foundation/F6/Buttons/ButtonGroup-stackFor.php')
+$blockGrid->appendPhpFile('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-setColor.php');
+$blockGrid->appendPhpFile('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php')
         ->printHtml();
 
 

@@ -35,13 +35,13 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Core/VisibilityAdapter.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php');
 echo $parsedown->text(<<<MD
 Hiding by Screen Size
         
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Core/VisibilityAdapter-hideOnlyFor.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter-hideOnlyFor.php');
 
 
 $load('Sphp.Html.Foundation.Sites.Core.ColourableInterface');

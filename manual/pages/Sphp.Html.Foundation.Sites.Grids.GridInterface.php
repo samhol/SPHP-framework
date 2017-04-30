@@ -43,7 +43,7 @@ a $row with column contents as a parameter or set the columns similarly by calli
 ###An example of rows generated from arrays containing plain $col content.
 MD
 );
-$codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/F6/Grids/Row-array-constructor.php', false);
+$codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/Row-array-constructor.php', false);
 $rowExample1 = $codeExampleBuilder->buildAccordion();
 $rowExample1
         ->addCssClass('grid-example')
@@ -56,7 +56,7 @@ MD
 );
 
 $rowExample2 = $codeExampleBuilder
-        ->setPath('Sphp/Html/Foundation/F6/Grids/Row-mixed-constructor.php')
+        ->setPath('Sphp/Html/Foundation/Sites/Grids/Row-mixed-constructor.php')
         ->buildAccordion()
         ->addCssClass('grid-example')
         ->printHtml();
@@ -77,7 +77,7 @@ any HTML into the document.
 MD
 );
 $gridExample = $codeExampleBuilder
-        ->setPath('Sphp/Html/Foundation/F6/Grids/GridInterface.php')
+        ->setPath('Sphp/Html/Foundation/Sites/Grids/GridInterface.php')
         ->buildAccordion()
         ->addCssClass('grid-example')
         ->printHtml();

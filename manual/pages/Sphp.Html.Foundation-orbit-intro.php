@@ -17,7 +17,7 @@ $buttonSlide = new Slide();
 $buttonSlide->appendMdFile('manual/pages/Foundation-intro/Buttons.php');
 $orbitIntro->append($buttonSlide);
 $hlSlide = (new Media\Orbit\SyntaxHighlightingSlide())
-        ->loadFromFile('manual/examples/Sphp/Html/Foundation/F6/Media/Flex-LazyLoad.php');
+        ->loadFromFile('manual/examples/Sphp/Html/Foundation/Sites/Media/Flex-LazyLoad.php');
 $orbitIntro->append($hlSlide);
 $orbitIntro->appendMdFile('manual/pages/Foundation-intro/Media.php');
 $orbitIntro->appendMdFile('manual/pages/Foundation-intro/Forms.php');

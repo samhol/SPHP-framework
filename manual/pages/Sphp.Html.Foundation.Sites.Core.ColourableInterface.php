@@ -30,4 +30,4 @@ $colourableAdapter provides a straightforward adapter for any $ComponentInterfac
 to be used as a $colourableInterface component.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Core/ColourableAdapter.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/ColourableAdapter.php');

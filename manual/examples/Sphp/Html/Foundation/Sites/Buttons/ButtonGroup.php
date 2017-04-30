@@ -16,7 +16,8 @@ $buttonGroup1 = (new ButtonGroup())
 $buttonGroup2 = (new ButtonGroup($buttons))
         ->setSize("small");
 
-$grid = new BlockGrid($buttonGroup1, 3);
+$grid = new BlockGrid(1, 3);
+$grid->append($buttonGroup1);
 $grid->append($buttonGroup2);
 
 $buttonGroup3 = clone $buttonGroup2;
@@ -25,4 +26,5 @@ $buttonGroup3
         ->setColor("success");
 $grid->append($buttonGroup3);
 $grid->printHtml();
+
 ?>

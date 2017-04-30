@@ -18,7 +18,7 @@ MD
 );
 $fooBarCodePane = new SyntaxHighlightingPane('<code>progressingFooBar.js</code> JavaScript code');
 $fooBarCodePane->loadFromFile('manual/snippets/progressingFooBar.js');
-$example = (new CodeExampleBuilder('Sphp/Html/Foundation/F6/Media/ProgressBar.php', false, true))
+$example = (new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Media/ProgressBar.php', false, true))
         ->buildAccordion()
         ->prepend($fooBarCodePane)
         ->printHtml();

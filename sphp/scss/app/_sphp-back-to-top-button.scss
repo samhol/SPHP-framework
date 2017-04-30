@@ -7,13 +7,21 @@
 @charset "UTF-8";
 
 .sphp-back-to-top-button {
+  cursor: pointer;
   position: fixed;
-  bottom: rem-calc(50);
+  bottom: rem-calc(45);
   right: rem-calc(30);
   text-decoration: none;
   padding: 0;
   display: none;
-  font-size: rem-calc(90);
+  font-size: rem-calc(80);
   color: #888;
-  @include opacity(0.7);
+  @include transition-property(all);
+  @include transition-duration(0.3s);
+  @include transition-timing-function(ease-in-out);
+  @include opacity(0.6);
+  &:hover {
+    @include opacity(0.75);
+    @include transform(rotate(360deg) scale(1.1, 1.1));
+  }
 }

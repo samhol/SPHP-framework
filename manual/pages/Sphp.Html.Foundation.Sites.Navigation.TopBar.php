@@ -20,4 +20,4 @@ Below is an example of $topBar object similar to the one seen on top of each pag
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Navigation/TopBar.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/TopBar.php');

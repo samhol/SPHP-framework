@@ -21,13 +21,5 @@ one, or more than one item expanded at a time, depending on the configuration.
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/Accordions/Accordions.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Accordions/Accordions.php');
 
-/*$t = new SyntaxHighlightingSingleAccordion("PHP code");
-
-$t->loadFromFile('Sphp/Html/Foundation/Content/Accordions.php');
-
-$t->printHtml();*/
-
-/*$ev = new ExampleAccordions('Sphp/Html/Foundation/Content/Accordions.php');
-$ev->printHtml();*/

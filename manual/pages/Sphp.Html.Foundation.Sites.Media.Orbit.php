@@ -18,11 +18,11 @@ An $orbit containing $slide components can not handle variable-height content.
 MD
 );
 echo '<div class="wrapper">';
-include 'Sphp/Html/Foundation/F6/Media/OrbitSlide.php';
+include 'Sphp/Html/Foundation/Sites/Media/OrbitSlide.php';
 echo "</div>";
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/F6/Media/OrbitSlide.php');
+SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Media/OrbitSlide.php');
 
 echo '<div class="wrapper" style="width: ">';
-include 'Sphp/Html/Foundation/F6/Media/Orbit-Video.php';
+include 'Sphp/Html/Foundation/Sites/Media/Orbit-Video.php';
 echo "</div>";
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/F6/Media/Orbit-Video.php');
+SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Media/Orbit-Video.php');

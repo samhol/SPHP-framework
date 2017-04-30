@@ -12,12 +12,12 @@ $gridForm implements a validable Foundation framework based form.
 $ns
 MD
 );
-(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/GridForm.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/GridForm.php'))
         ->setExamplePaneTitle("Basic Foundation form example")
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
-(new CodeExampleBuilder('Sphp/Html/Foundation/F6/Forms/Inputs/InputColumnInterface.php'))
+(new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.php'))
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();

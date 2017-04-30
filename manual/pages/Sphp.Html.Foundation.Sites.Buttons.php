@@ -69,13 +69,13 @@ hyperlink properties from {$api->classLinker(\Sphp\Html\Navigation\HyperlinkInte
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/Button.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
 echo $parsedown->text(<<<MD
 ##The {$api->classLinker(SplitButton::class)} component
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/SplitButton.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
 echo $parsedown->text(<<<MD
 ##The $btnGroup class
 
@@ -86,7 +86,7 @@ perfectly with the grid component.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/ButtonGroup.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
 $stackFor = $btnGroup->methodLink("stackFor", false);
 $unstackFor = $btnGroup->methodLink("unstackFor", false);
 echo $parsedown->text(<<<MD
@@ -96,4 +96,4 @@ Foundation stack classes for button groups. Stacking can be removed by using $un
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Buttons/ButtonGroup-stackFor.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup-stackFor.php');

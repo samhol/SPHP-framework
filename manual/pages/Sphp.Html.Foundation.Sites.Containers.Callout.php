@@ -16,4 +16,4 @@ container.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/F6/Containers/Callout.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Callout.php');
