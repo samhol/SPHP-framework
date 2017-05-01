@@ -16,6 +16,8 @@ $handler = new ExceptionHandler();
 
       $handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
       $handler->attach((new ExceptionPrinter())->showTrace());
+      
+      
       ?>
     </pre>
   </div>

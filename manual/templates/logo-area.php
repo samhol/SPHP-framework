@@ -3,6 +3,8 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Stdlib\Path;
+use Sphp\Html\Lists\HyperlinkListItem;
+
 ?>
 <div class="row expanded sphp-logo-area">
   <div class="column small-12 large-6">
@@ -19,7 +21,7 @@ use Sphp\Stdlib\Path;
     //use Sphp\Html\Foundation\Sites\Containers\Dropdown;
     //use Sphp\Html\Foundation\Sites\Foundation as F;
 
-    $ul = (new \Sphp\Html\Lists\Ul())->addCssClass('social-icons menu simple');
+    $ul = (new \Sphp\Html\Lists\Ul());
 
     /* $blee = new Dropdown(F::icon('widget'));
       $blee->closeOnBodyClick()
@@ -28,12 +30,18 @@ use Sphp\Stdlib\Path;
       ->ajaxPrepend('manual/snippets/f6ScreenInfo.php'); */
 
 //$ul[] = $blee;
+    $ul['github'] = (new HyperlinkListItem('https://github.com/samhol/SPHP-framework', '<i class="fa fa-github"></i>', '_blank'))->addCssClass('github');
+    $ul['facebook'] = (new HyperlinkListItem('https://github.com/samhol/SPHP-framework', '<i class="fa fa-facebook-square"></i>', '_blank'))->addCssClass('facebook');
     $ul->appendLink('https://github.com/samhol/SPHP-framework', '<i class="fa fa-github"></i>', '_blank')
             ->appendLink('https://www.facebook.com/Sami.Petteri.Holck.Programming/', '<i class="fa fa-facebook-square"></i>', '_blank')
             ->appendLink('https://twitter.com/SPHPframework', '<i class="fa fa-twitter"></i>', '_blank')
             ->appendLink('https://plus.google.com/b/113942361282002156141/113942361282002156141', '<i class="fa fa-google-plus-square"></i>', '_blank')
-            ->addCssClass('no-bullet')
+            //->printHtml();
+
+    //$ul
+            ->addCssClass('sphp-brand-icons rounded')
             ->printHtml();
+
     ?>
   </div>
 </div>
