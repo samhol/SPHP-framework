@@ -18,7 +18,12 @@ use Sphp\Html\Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BrandIcons extends AbstractComponent {
+class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\TraversableInterface {
+
+  use \Sphp\Html\TraversableTrait;
+
+  const FACEBOOK = 'facebook';
+  const GOOGLE_PLUS = 'google-plus';
 
   /**
    * @var AbstractIcon[] 
@@ -49,14 +54,62 @@ class BrandIcons extends AbstractComponent {
     //       ->printHtml();
   }
 
-  public function setFacebook($url = null) {
-    if ($url) {
+  /**
+   * 
+   * @param string $url
+   * @param type $target
+   * @return $this
+   */
+  public function setFacebook($url = null, $target = null) {
+    if ($url === null) {
       $url = 'https://www.facebook.com/';
     }
-    $this->setIcon('facebook', (new HyperlinkIcon($url, Icon::fontAwesome('facebook-square'), '_blank')));
+    $this->setIcon('facebook', (new HyperlinkIcon($url, Icon::fontAwesome('facebook-square'), $target)));
     return $this;
   }
 
+  /**
+   * 
+   * @param string $url
+   * @param string|null $target
+   * @return $this
+   */
+  public function setTwitter($url = 'https://twitter.com/', $target = null) {
+    $this->setIcon('facebook', HyperlinkIcon::fontAwesome($url, 'twitter', $target));
+    return $this;
+  }
+
+  /**
+   * 
+   * @param string $url
+   * @return $this
+   */
+  public function setGooglePlus($url = null) {
+    if ($url === null) {
+      $url = 'https://plus.google.com/';
+    }
+    $this->setIcon(static::GOOGLE_PLUS, (new HyperlinkIcon($url, Icon::fontAwesome('google-plus-square'), '_blank')));
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $index
+   * @return HyperlinkIcon|null
+   */
+  public function get($index) {
+    if (array_key_exists($index, $this->icons)) {
+      return $this->icons[$index];
+    }
+    return null;
+  }
+
+  /**
+   * 
+   * @param type $index
+   * @param \Sphp\Html\Icons\HyperlinkIcon $icon
+   * @return $this
+   */
   protected function setIcon($index, HyperlinkIcon $icon) {
     $this->icons[$index] = $icon;
     $icon->addCssClass($index);
@@ -69,6 +122,51 @@ class BrandIcons extends AbstractComponent {
       $output .= "<li>$icon</li>";
     }
     return $output;
+  }
+
+  public function count() {
+    return count($this->icons);
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->icons);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->icons);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->icons);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->icons);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return false !== current($this->icons);
   }
 
 }

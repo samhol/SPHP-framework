@@ -29,7 +29,7 @@ use Sphp\Html\Lists\HyperlinkListItem;
       ->ajaxPrepend('manual/snippets/f6ScreenInfo.php'); */
 
 //$ul[] = $blee;
-    $ul['github'] = (new HyperlinkListItem('https://github.com/samhol/SPHP-framework', '<i class="fa fa-github"></i>', '_blank'))->addCssClass('github');
+  /*  $ul['github'] = (new HyperlinkListItem('https://github.com/samhol/SPHP-framework', '<i class="fa fa-github"></i>', '_blank'))->addCssClass('github');
     $ul['facebook'] = (new HyperlinkListItem('https://www.facebook.com/Sami.Petteri.Holck.Programming/', '<i class="fa fa-facebook-square"></i>', '_blank'))->addCssClass('facebook');
     $ul['google'] = (new HyperlinkListItem('https://plus.google.com/b/113942361282002156141/113942361282002156141', '<i class="fa fa-google-plus-square"></i>', '_blank'))->addCssClass('google');
     $ul['twitter'] = (new HyperlinkListItem('https://twitter.com/SPHPframework', '<i class="fa fa-twitter"></i>', '_blank'))->addCssClass('twitter');
@@ -37,12 +37,14 @@ use Sphp\Html\Lists\HyperlinkListItem;
             //->printHtml();
             //$ul
             $ul->addCssClass('sphp-brand-icons rounded')
-            ->printHtml();
+            ->printHtml();*/
             
             use Sphp\Html\Icons\BrandIcons;
             $bi = new BrandIcons();
             $bi->setFacebook('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
-            $bi->setFacebook('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
+            $bi->setGooglePlus('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
+            $bi->setTwitter('https://twitter.com/SPHPframework');
+            $bi->get('facebook')->addCssClass('rounded');
             $bi->printHtml();
     ?>
   </div>

@@ -8,6 +8,7 @@
 namespace Sphp\Html\Icons;
 
 use Sphp\Stdlib\Strings;
+
 /**
  * Description of Icon
  *
@@ -20,7 +21,7 @@ class Icon extends AbstractIcon {
 
   /**
    * 
-   * @param  string $iconName the icon name 
+   * @param  string|string[] $iconName the icon name 
    * @param  string $tagName the tag name 
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
    */
@@ -41,14 +42,6 @@ class Icon extends AbstractIcon {
     $component->cssClasses()->lock('fa');
     return $component;
   }
-
-  /**
-   * 
-   * @param  string $name
-   * @param  string $tagName
-   * @return ContentInterface
-   * @throws UnexpectedValueException
-   */
 
   /**
    * 

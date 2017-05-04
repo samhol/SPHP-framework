@@ -28,37 +28,6 @@
       float: right;
       font-size: rem-calc(40);
     }
-    li {
-      line-height: 1.1;
-      margin-top: rem-calc(5);
-      margin-right: rem-calc(25);
-      display: inline-block;
-      a {
-        //font-weight: 300; 
-        //font-size: rem-calc(13);
-        color: #111;
-        &:hover { 
-          color: #444;
-          text-shadow:
-            0px -1px 0px rgba(90,90,90,0.2),
-            0px 1px 0px rgba(90,90,90,1);
-        }
-        i {
-          @include opacity(0.9);
-          margin: rem-calc(1);
-          text-shadow:
-            0px -1px 0px rgba(255, 153, 51, 1),
-            0px 1px 0px rgba(255, 153, 51,1);
-        }
-        &:hover i {
-          $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
-          text-shadow:
-            0px -1px 0px rgba(255, 153, 51, 1),
-            0px 1px 0px rgba(255, 153, 51,1);
-          @include opacity(1);
-        }
-      }
-    }
   } 
 
 }

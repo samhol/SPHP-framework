@@ -38,6 +38,7 @@ class AbstractHyperlinkIcon extends AbstractComponent implements HyperlinkInterf
     $this->icon = $icon;
     $this->setHref($href);
     $this->setTarget($target);
+    $this->cssClasses()->lock('brand-icon');
   }
 
   public function setIconName($iconName) {
