@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\ContentInterface;
-
 /**
  * Defines the basic functionality of any HTML hyperlink
  *
@@ -26,7 +24,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface HyperlinkInterface extends ContentInterface {
+interface HyperlinkInterface {
 
   /**
    * Sets the value of the href attribute (The URL of the link)

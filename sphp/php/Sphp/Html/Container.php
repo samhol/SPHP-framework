@@ -67,25 +67,16 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     $this->components = Arrays::copy($this->components);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function append($content) {
     $this->components[] = $content;
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function prepend($content) {
     array_unshift($this->components, $content);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setContent($content) {
     $this->clear()->append($content);
     return $this;
@@ -168,24 +159,15 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this->clear()->append($content);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function clear() {
     $this->components = [];
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml() {
     return Arrays::implode($this->components);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function exists($value) {
     $result = false;
     foreach ($this->components as $component) {
@@ -197,9 +179,6 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $result;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getIterator() {
     return new Iterator($this->components);
   }

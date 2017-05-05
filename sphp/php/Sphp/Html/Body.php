@@ -28,6 +28,7 @@ class Body extends ContainerTag implements ContentParserInterface {
   use ContentParsingTrait;
 
   /**
+   *
    * @var ScriptsContainer 
    */
   private $scripts;
@@ -48,17 +49,11 @@ class Body extends ContainerTag implements ContentParserInterface {
     $this->scripts = new ScriptsContainer();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->scripts);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     parent::__clone();
     $this->scripts = clone $this->scripts;
@@ -73,7 +68,7 @@ class Body extends ContainerTag implements ContentParserInterface {
   }
 
   /**
-   * Sets up the SPHP framework related JavaScript files to the end of the body
+   * Sets up the SPHP framework related Javascript files to the end of the body
    *
    * @return self for a fluent interface
    */
