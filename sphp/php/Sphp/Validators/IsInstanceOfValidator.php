@@ -20,16 +20,23 @@ use Sphp\Exceptions\InvalidArgumentException;
 class IsInstanceOfValidator extends AbstractValidator {
 
   /**
-   *
    * @var string
    */
   private $className;
 
-  public function __construct($className, $messageTemplates = array()) {
-    parent::__construct($messageTemplates);
+  /**
+   * 
+   * @param type $className
+   */
+  public function __construct($className) {
+    parent::__construct();
     $this->setClassName($className);
   }
 
+  /**
+   * 
+   * @return string class name
+   */
   public function getClassName() {
     return $this->className;
   }
@@ -50,6 +57,9 @@ class IsInstanceOfValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     if ($value instanceof $this->className) {

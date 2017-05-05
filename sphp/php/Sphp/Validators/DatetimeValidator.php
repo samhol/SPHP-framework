@@ -36,6 +36,7 @@ class DatetimeValidator extends AbstractValidator {
     if ($format !== null) {
       $this->setDateTimeFormat($format);
     }
+    $this->createMessageTemplate(static::INVALID, 'Please insert correct date and time');
   }
 
   /**
@@ -49,12 +50,15 @@ class DatetimeValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');
     if ($obj == false || DateTime::getLastErrors()["warning_count"] != 0 || DateTime::getLastErrors()["error_count"] != 0) {
-      $this->createErrorMessage("Please insert correct date and time");
+      $this->error(static::INVALID);
     }
   }
 

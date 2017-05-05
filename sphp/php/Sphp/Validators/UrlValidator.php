@@ -19,6 +19,9 @@ use Sphp\Stdlib\URL;
  */
 class UrlValidator extends AbstractValidator {
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($url) {
     if (!($url instanceof URL)) {
       $url = new URL($url);

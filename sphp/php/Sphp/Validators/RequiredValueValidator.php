@@ -35,6 +35,9 @@ use Sphp\Stdlib\Strings;
  */
 class RequiredValueValidator extends AbstractValidator {
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $valid = true;

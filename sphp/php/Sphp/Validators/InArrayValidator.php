@@ -41,13 +41,20 @@ class InArrayValidator extends AbstractValidator {
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
-    $this->haystack = $haystack;
+    $this->createMessageTemplate(static::INVALID, 'Value %s is not in collection');
+    $this->setHaystack($haystack);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __destruct() {
     unset($this->haystack);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __clone() {
     $this->haystack = Arrays::copy($this->haystack);
   }
@@ -67,6 +74,10 @@ class InArrayValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * 
+   * @return boolean
+   */
   public function isStrict() {
     return $this->strict;
   }
@@ -81,23 +92,24 @@ class InArrayValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $valid = false;
     foreach ($this->haystack as $other) {
       if ($this->isStrict()) {
         $valid = $this->getValue() === $other;
-      } else if (is_object($value) && is_object($other)) {
-        $valid = $value == $other;
-      } else if (!is_object($value) && !is_object($other)) {
+      } else {
         $valid = $value == $other;
       }
-      if ($valid) {
+      if (!$valid) {
         break;
       }
     }
     if (!$valid) {
-      $this->createErrorMessage("Value $value is not in collection");
+      $this->error(static::INVALID, $value);
     }
     return $valid;
   }

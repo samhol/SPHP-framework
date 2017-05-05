@@ -21,6 +21,12 @@ use Sphp\I18n\MessageList;
 class ValidatorChain implements ValidatorInterface, Countable {
 
   /**
+   *
+   * @var array 
+   */
+  private $skippedValues = [];
+
+  /**
    * used validators
    *
    * @var mixed[]
@@ -72,13 +78,64 @@ class ValidatorChain implements ValidatorInterface, Countable {
     return $this->isValid($value);
   }
 
+  /**
+   * 
+   * @return array
+   */
+  public function getSkippedValues() {
+    return $this->skippedValues;
+  }
+
+  /**
+   * 
+   * @param  mixed|mixed[] $skippedValues
+   * @return self for a fluent interface
+   */
+  public function setSkippedValues($skippedValues) {
+    if (!is_array($skippedValues)) {
+      $skippedValues = [$skippedValues];
+    }
+    $this->skippedValues = $skippedValues;
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  mixed|mixed[] $skippedValues
+   * @return self for a fluent interface
+   */
+  public function addSkippedValue($skippedValues) {
+    if (!in_array($skippedValues, $this->skippedValues, true)) {
+      $this->skippedValues[] = $skippedValues;
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @return self for a fluent interface
+   */
+  public function removeSkippedValues() {
+    $this->skippedValues = [];
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getErrors() {
     return $this->errors;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->errors->clearContent();
     $valid = true;
+    if (in_array($value, $this->skippedValues, true)) {
+      return true;
+    }
     foreach ($this->validators as $validator) {
       $v = $validator['validator'];
       $break = $validator['break'];

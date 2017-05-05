@@ -48,6 +48,9 @@ class NotEmptyValidator extends AbstractValidator {
     $this->setMessageTemplate(self::INVALID, new MessageTemplate($message));
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $valid = true;

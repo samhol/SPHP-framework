@@ -48,9 +48,9 @@ class StringLengthValidator extends AbstractValidator {
     parent::__construct();
     $this->min = intval($min);
     $this->max = intval($max);
-    $this->createMessageTemplate(self::INVALID, 'Invalid type given. String expected');
-    $this->createMessageTemplate(self::TOO_SHORT, 'The input is less than %d characters long');
-    $this->createMessageTemplate(self::TOO_LONG, 'The input is more than %d characters long');
+    $this->createMessageTemplate(static::INVALID, 'Invalid type given. String expected');
+    $this->createMessageTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
+    $this->createMessageTemplate(static::TOO_LONG, 'The input is more than %d characters long');
   }
 
   /**
@@ -123,6 +123,9 @@ class StringLengthValidator extends AbstractValidator {
     return $this->min < 0 && $this->max > 0;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($value) {
     $this->setValue($value);
     $valid = true;

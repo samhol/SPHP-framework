@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GreaterThanValidator.php (UTF-8)
+ * SmallerThanValidator.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,44 +15,43 @@ namespace Sphp\Validators;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GreaterThanValidator extends AbstractLimitValidator {
+class SmallerThanValidator extends AbstractLimitValidator {
 
   /**
    * @var float 
    */
-  private $min;
+  private $max;
 
   /**
    * Constructs a new validator
    * 
-   * @param float $min the minimum value
    * @param float $max the maximum value
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    */
-  public function __construct($min, $inclusive = true) {
+  public function __construct($max, $inclusive = true) {
     parent::__construct($inclusive);
-    $this->setMin($min);
+    $this->setMin($max);
     $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
     $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
 
   /**
-   * Returns the minimum value
+   * Returns the maximum value
    * 
-   * @return float the minimum value
+   * @return float the maximum value
    */
-  public function getMin() {
-    return $this->min;
+  public function getMax() {
+    return $this->max;
   }
 
   /**
-   * Sets the minimum value
+   * Sets the maximum value
    * 
-   * @param  float $min the minimum value
+   * @param  float $max the maximum value
    * @return self for a fluent interface
    */
-  public function setMin($min) {
-    $this->min = $min;
+  public function setMax($max) {
+    $this->max = $max;
     return $this;
   }
 
@@ -62,13 +61,13 @@ class GreaterThanValidator extends AbstractLimitValidator {
   public function isValid($value) {
     $this->setValue($value);
     if ($this->isInclusive()) {
-      if ($this->min > $value) {
-        $this->error(static::INCLUSIVE_ERROR);
+      if ($this->max > $value) {
+        $this->error(static::EXCLUSIVE_ERROR);
         return false;
       }
     } else {
-      if ($this->min >= $value) {
-        $this->error(static::EXCLUSIVE_ERROR);
+      if ($this->max >= $value) {
+        $this->error(self::NOT_GREATER);
         return false;
       }
     }

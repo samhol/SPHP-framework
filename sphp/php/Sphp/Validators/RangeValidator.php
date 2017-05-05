@@ -1,21 +1,21 @@
 <?php
 
 /**
- * GreaterThanValidator.php (UTF-8)
+ * RangeValidator.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Validators;
 
 /**
- * Description of GreaterThanValidator
+ * Description of RangeValidator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-28
+ * @since   2017-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class GreaterThanValidator extends AbstractLimitValidator {
+class RangeValidator extends AbstractLimitValidator {
 
   /**
    * @var float 
@@ -23,15 +23,20 @@ class GreaterThanValidator extends AbstractLimitValidator {
   private $min;
 
   /**
+   * @var float 
+   */
+  private $max;
+
+  /**
    * Constructs a new validator
    * 
    * @param float $min the minimum value
    * @param float $max the maximum value
-   * @param boolean $inclusive true for inclusive limit and false for exclusive
+   * @param boolean $inclusive
    */
-  public function __construct($min, $inclusive = true) {
+  public function __construct($min, $max, $inclusive = true) {
     parent::__construct($inclusive);
-    $this->setMin($min);
+    $this->setMin($min)->setMax($max);
     $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
     $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
   }
@@ -46,6 +51,15 @@ class GreaterThanValidator extends AbstractLimitValidator {
   }
 
   /**
+   * Returns the maximum value
+   * 
+   * @return float the maximum value
+   */
+  public function getMax() {
+    return $this->max;
+  }
+
+  /**
    * Sets the minimum value
    * 
    * @param  float $min the minimum value
@@ -57,18 +71,29 @@ class GreaterThanValidator extends AbstractLimitValidator {
   }
 
   /**
+   * Sets the maximum value
+   * 
+   * @param  float $max the maximum value
+   * @return self for a fluent interface
+   */
+  public function setMax($max) {
+    $this->max = $max;
+    return $this;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function isValid($value) {
     $this->setValue($value);
     if ($this->isInclusive()) {
-      if ($this->min > $value) {
-        $this->error(static::INCLUSIVE_ERROR);
+      if ($this->min > $value || $this->max < $value) {
+        $this->error(static::EXCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     } else {
-      if ($this->min >= $value) {
-        $this->error(static::EXCLUSIVE_ERROR);
+      if ($this->min >= $value || $this->max <= $value) {
+        $this->error(static::INCLUSIVE_ERROR, [$this->min, $this->max]);
         return false;
       }
     }

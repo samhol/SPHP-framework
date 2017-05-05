@@ -23,6 +23,11 @@ class WhitelistValidator extends AbstractValidator {
    */
   private $whitelist = [];
 
+  /**
+   * Constructs a new validator
+   * 
+   * @param array $whitelist
+   */
   public function __construct(array $whitelist = []) {
     parent::__construct();
     $this->setWhitelist($whitelist);
@@ -37,6 +42,9 @@ class WhitelistValidator extends AbstractValidator {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function isValid($param) {
     if (!is_array($param)) {
       $this->addErrorMessage('Array expected');

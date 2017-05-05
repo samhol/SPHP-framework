@@ -29,7 +29,6 @@ class IdenticalValidator extends AbstractValidator {
   private $token;
 
   /**
-   *
    * @var boolean 
    */
   private $strict = true;
