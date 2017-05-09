@@ -135,6 +135,20 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     $this->append($text);
     return $this;
   }
+  
+
+  /**
+   * Appends a menu label text component to the menu
+   *
+   * @return self for a fluent interface
+   */
+  public function appendRuler(Ruler $r = null) {
+    if ($r === null) {
+      $r = new Ruler;
+    }
+    $this->append(new Ruler);
+    return $this;
+  }
 
   /**
    * {@inheritdoc}

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media;
 
-(new Img("http://playground.samiholck.com/manual/pics/crossbones.png", "Original Skull"))
+(new Img("manual/pics/crossbones.png", "Original Skull"))
         ->setLazy(true)
         ->printHtml();
 Img::scale("manual/pics/crossbones.png", 1.2)

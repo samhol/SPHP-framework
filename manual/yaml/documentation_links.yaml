@@ -3,10 +3,14 @@ menu: Documentation
 items:
     - link: Getting Started
       __INDEX__:
+    - ruler: 
+    - link: Application configuration
+      href: Sphp.Config
     - menu: Standard library
       items:
       - link: Introduction
         href: Sphp.Core
+      - ruler: 
       - link: Filesystem manipulation
         href: Sphp.Stdlib.filemanipulation
       - link: Data Structures
@@ -15,10 +19,12 @@ items:
         href: Sphp.Stdlib.Observers.and.Events
       - link: Types and Utlilities
         href: Sphp.Core.Types
+      - ruler: 
       - link: Data filtering
         href: Sphp.Filters
       - link: Data validation
         href: Sphp.Validators
+      - ruler: 
       - link: I18n
         href: Sphp.I18n
       - link: Database objects 
@@ -28,6 +34,7 @@ items:
       items:
       - link: Introduction
         href: Sphp.Html
+      - ruler: 
       - link: Document factory
         href: Sphp.Html.Document
       - link: Attribute management
@@ -36,41 +43,42 @@ items:
         href: Sphp.Html.Head
       - link: Client side scripting 
         href: Sphp.Html.Programming
+      - ruler: 
       - link: Lists
         href: Sphp.Html.Lists
       - link: Tables
         href: Sphp.Html.Tables
+      - ruler: 
       - link: Forms
         href: Sphp.Html.Forms
     - menu: HTML media
       items:
       - link: Introduction
         href: Sphp.Html.Media
+      - ruler: 
       - link: Audio and Video 
         href: Sphp.Html.Media.Multimedia
     - menu: Foundation Sites
       items:
       - link: Introduction
         href: Sphp.Html.Foundation.Sites
+      - ruler: 
       - link: Core components
         href: Sphp.Html.Foundation.Sites.Core
       - link: Grid systems
         href: Sphp.Html.Foundation.Sites.Grids
       - link: General Containers
         href: Sphp.Html.Foundation.Sites.Containers
+      - ruler: 
+      - link: Navigation bars
+        href: Sphp.Html.Foundation.Sites.Bars
       - link: Navigation menus
         href: Sphp.Html.Foundation.Sites.Navigation
+      - ruler: 
       - link: Buttons 
         href: Sphp.Html.Foundation.Sites.Buttons
       - link: Media components
         href: Sphp.Html.Foundation.Sites.Media
       - link: Form components
         href: Sphp.Html.Foundation.Sites.Forms
-    - menu: Miscellaneous
-      items:
-      - link: Application configuration
-        href: Sphp.Config
-      - menu: Miscellaneous
-        items:
-        - link: Application configuration
-          href: Sphp.Config
+    

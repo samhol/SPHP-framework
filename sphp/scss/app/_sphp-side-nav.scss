@@ -18,7 +18,8 @@ $side-nav-bg: #fefefe;
 
 .sphp-sidenav {
   padding: rem-calc(0 0 20 0); /* top right bottom left */
-  border: solid 1px #333;
+  //border: solid 1px #333;
+  border: solid 1px #FF8000;
   @include border-bottom-left-radius(10px);
   overflow: hidden; 
   @include background-clip(border-box);
@@ -46,6 +47,12 @@ $side-nav-bg: #fefefe;
       }
       border-top: solid 1px #999; 
       border-bottom: solid 1px #999; 
+    }
+    &.menu-ruler {
+      @include background-image(linear-gradient(to right, #eee, #ccc));
+      background-color: #ccc;
+      margin-left: 3px;
+      margin-right: 3px;
     }
     &.is-accordion-submenu-parent {
       margin: rem-calc(0 0 2 0); /* top right bottom left */ 

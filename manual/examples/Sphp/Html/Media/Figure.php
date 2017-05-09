@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\Media;
 
-(new Figure("http://playground.samiholck.com/manual/photos/spacewalk.jpg"))
+(new Figure("manual/photos/spacewalk.jpg"))
         ->setLazy()
         ->printHtml();
 
-(new Figure("http://playground.samiholck.com/manual/photos/spacewalk.jpg", "A spacewalk"))
-        ->setLazy()
+$fig2 = (new Figure("manual/photos/spacewalk.jpg", "A spacewalk"));
+        $fig2->setLazy()
         ->printHtml();
 ?> 

@@ -37,6 +37,13 @@ interface MenuInterface extends ContentInterface {
   public function appendText($text);
 
   /**
+   * Appends a ruler component to the menu
+   *
+   * @param  Ruler|null $r
+   * @return self for a fluent interface
+   */
+  public function appendRuler(Ruler $r = null);
+  /**
    * Creates and appends {@link MenuLink} link object to the list
    *
    * @param  string|URL $href the URL of the link

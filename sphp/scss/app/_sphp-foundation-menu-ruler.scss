@@ -1,0 +1,13 @@
+/**
+ * _sphp-foundation-menu-ruler.scss (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
+ */
+.menu {
+  &.vertical {
+    li.menu-ruler {
+      height: 2px; 
+      background: #ddd;
+      
+    }
+  }
+}

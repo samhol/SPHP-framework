@@ -9,15 +9,15 @@ $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 $hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
 echo $parsedown->text(<<<MD
-#FOUNDATION: <small>NAVIGATION COMPONENTS</small>
+#FOUNDATION <small>NAVIGATION COMPONENTS</small>
 $ns
         
 This namespace contains object oriented PHP implementations of Foundation navigation components.
 
 MD
 );
-$load("Sphp.Html.Foundation.Sites.Navigation.TopBar.php");
-$load("Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu.php");
+//$load('Sphp.Html.Foundation.Sites.Bars');
+$load('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
 
 $sideNavClass = $api->classLinker(AccordionMenu::class);
 echo $parsedown->text(<<<MD

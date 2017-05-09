@@ -78,6 +78,8 @@ class MenuBuilder {
         $instance->append($this->buildSub($item));
       } else if (array_key_exists('separator', $item)) {
         $instance->appendText($item['separator']);
+      }else if (array_key_exists('ruler', $item)) {
+        $instance->appendRuler();
       }
     }
     return $instance;
