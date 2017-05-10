@@ -19,7 +19,7 @@ const SPHP_DIR = __DIR__;
 //define('Sphp\SPH_PACKAGE', PHP_PACKAGES . "/php/sph");
 //define('Sphp\LOCALE_PATH', __DIR__ . "/locale");
 
-const DEFAULT_DOMAIN = D;
+const DEFAULT_DOMAIN = '';
 
 /**
  * Http root folder path

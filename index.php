@@ -1,14 +1,17 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
-
+set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/manual/examples' . PATH_SEPARATOR . __DIR__);
 require_once('manual/settings.php');
-include_once('sphp/php/components/sessioning.php');
+//include_once('sphp/php/components/sessioning.php');
 ob_implicit_flush(true);
 require_once('manual/htmlHead.php');
 
-$cache = new \Zend\Cache\Storage\Adapter\Filesystem();
+use Sphp\Stdlib\Timer;
 
+ echo Timer::getEcecutionTime()."{}  seconds";
+$cache = new \Zend\Cache\Storage\Adapter\Filesystem();
+echo get_include_path();
 $cache->setOptions([
     'ttl' => 1,
     'cache_dir' => 'cache',
@@ -40,7 +43,7 @@ if ($outputCache->start('topbar1212') === false) {
   $outputCache->end();
 }
 ?>
-
+<i><?php echo Timer::getEcecutionTime() ?> seconds</i>
     <div class="row expanded small-collapse medium-uncollapse">
       <div class="column medium-3 large-3 xlarge-2 show-for-large">
 <?php
@@ -48,7 +51,7 @@ if ($outputCache->start('sidenav') === false) {
   include('manual/templates/menus/sidenav.php');
   $outputCache->end();
 }
-?>
+?><i><?php echo Timer::getEcecutionTime() ?> seconds</i>
       </div>
       <div class="mainContent small-12 large-9 xlarge-9 column"> 
 <?php
@@ -59,7 +62,7 @@ if ($p !== null) {
 }
 if ($outputCache->start($man_cache) === false) {
   //include('manual/manualBuilder.php');        
-  $router->execute();
+  ///$router->execute();
   $outputCache->end();
 }
 ?>
@@ -68,7 +71,7 @@ if ($outputCache->start($man_cache) === false) {
       </div>
     </div>
   </div>
-</div>
+</div><i><?php echo Timer::getEcecutionTime() ?> seconds</i>
 <?php
 include('manual/_footer_.php');
 

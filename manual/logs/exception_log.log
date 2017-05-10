@@ -1,0 +1,108 @@
+Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
+#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
+#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
+#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
+#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
+#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
+#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
+#4 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
+#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
+#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
+#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
+#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
+#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
+#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
+#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
+#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
+#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
+#4 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+Stack trace:
+#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
+#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
+#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
+#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
+#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#5 {main}

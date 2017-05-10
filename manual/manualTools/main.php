@@ -40,7 +40,7 @@ $load = function($page) use ($api, $php, $foundation, $w3schools, $parsedown, &$
     ob_start();
     $page = addPHPSuffix($page);
     //$examplePath = \Sphp\Manual\EXAMPLE_FOLDER . "/" . $page;
-    $pagePath = "manual/pages/$page";
+    $pagePath = __DIR__ . "/$page";
     //if (is_file($examplePath)) {
     // include($examplePath);
     //} else 
