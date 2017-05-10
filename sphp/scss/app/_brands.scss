@@ -34,7 +34,7 @@ soundcloud: (color: white, background: #ff3a00),
 pdf:        (color: white, background: #ff3a00)
 );
 
-a.brand-icon, ul.sphp-brand-icons a {
+a.brand-icon, ul.brand-icons a {
   @include transition-property(all);
   @include transition-duration(0.3s);
   @include transition-timing-function(ease-in-out);
@@ -95,7 +95,7 @@ a.brand-icon, ul.sphp-brand-icons a {
   @include transform(rotate(360deg));
 }
 
-ul.sphp-brand-icons {
+ul.brand-icons {
   list-style: none;
   //margin: rem-calc(20 0 20 10);
   padding: 0;

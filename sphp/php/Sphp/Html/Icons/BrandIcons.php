@@ -24,6 +24,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
 
   const FACEBOOK = 'facebook';
   const GOOGLE_PLUS = 'google-plus';
+  const TWITTER = 'twitter';
 
   /**
    * @var AbstractIcon[] 
@@ -33,7 +34,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
   public function __construct() {
     parent::__construct('ul');
     $this->icons = [];
-    $this->cssClasses()->lock('sphp-brand-icons');
+    $this->cssClasses()->lock('brand-icons');
     //$ul = (new \Sphp\Html\Lists\Ul());
 
     /* $blee = new Dropdown(F::icon('widget'));
@@ -75,7 +76,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
    * @return $this
    */
   public function setTwitter($url = 'https://twitter.com/', $target = null) {
-    $this->setIcon('facebook', HyperlinkIcon::fontAwesome($url, 'twitter', $target));
+    $this->setIcon(static::TWITTER, HyperlinkIcon::fontAwesome($url, 'twitter', $target));
     return $this;
   }
 

@@ -41,10 +41,12 @@ use Sphp\Html\Lists\HyperlinkListItem;
             
             use Sphp\Html\Icons\BrandIcons;
             $bi = new BrandIcons();
+            
             $bi->setFacebook('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
             $bi->setGooglePlus('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
             $bi->setTwitter('https://twitter.com/SPHPframework');
             $bi->get('facebook')->addCssClass('rounded');
+            $bi->addCssClass('rounded');
             $bi->printHtml();
     ?>
   </div>
