@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Html\Foundation\Sites\Grids\ColumnTrait | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/sami.css">
+        <script src="../../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Grids_ColumnTrait" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">trait</span></li>
+                                                            <li><a href="../../../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../../../Sphp/Html.html">Html</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Grids.html">Grids</a></li>
+    
+                <li>ColumnTrait</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            ColumnTrait
+                
+        </h1>
+    </div>
+
+    <p>    trait
+    <strong>ColumnTrait</strong>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Trait implements functionality for {@link ColumnInterface}</p>            <p>Foundation framework based component to create  multi-device layouts</p>
+
+<p>The sum of the column widths in a row should never exeed 12.</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cssClasses">cssClasses</a>()
+        
+                                            <p>Returns the class attribute object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLayout">setLayout</a>(int|boolean $width, int|boolean $offset = false, string $screen = &#039;small&#039;)
+        
+                                            <p>Sets the width and offset for given screen size</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWidths">setWidths</a>(int $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+        
+                                            <p>Sets the column width values for all screen sizes</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWidth">setWidth</a>(int|boolean $width, string $screen = &quot;small&quot;)
+        
+                                            <p>Sets column width for the component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getWidth">getWidth</a>(string $screenSize)
+        
+                                            <p>Returns the column width associated with the given screen size</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWidthInherited">setWidthInherited</a>(string $screenSize)
+        
+                                            <p>Sets the column width associated with the given screen size to be inherited from smaller screens</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGridOffset">setGridOffset</a>(int|boolean $offset, string $screenSize = &#039;small&#039;)
+        
+                                            <p>Offsets the column component to right on the associated screen sizes</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGridOffsets">setGridOffsets</a>(int|boolean $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+        
+                                            <p>Sets the column width values for all screen sizes</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGridOffset">getGridOffset</a>(string $screenSize)
+        
+                                            <p>Returns the column offset for the target screen</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_inheritGridOffset">inheritGridOffset</a>(string $screenSize)
+        
+                                            <p>Unsets the grid offset for the given screen size</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_countUsedSpace">countUsedSpace</a>(string $screenSize)
+        
+                                            <p>Returns the amount of the space the column uses from the row</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_centerize">centerize</a>(string $screenSize)
+        
+                                            <p>Centers the column to the Foundation row</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_uncenterize">uncenterize</a>(string $screenSize)
+        
+                                            <p>Resets the centering of the column</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetCenterizing">unsetCenterizing</a>(string $screenSize)
+        
+                                            <p>Removes the centering/uncentering settings</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_cssClasses">
+        <div class="location">at         line 35</div>
+        <code>    abstract                <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+    <strong>cssClasses</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the class attribute object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td>the class attribute object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLayout">
+        <div class="location">at         line 56</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setLayout</strong>(int|boolean $width, int|boolean $offset = false, string $screen = &#039;small&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the width and offset for given screen size</p>                    <p><strong>Important!</strong></p>
+
+<p>Column component is mobile-first. Code for small screens first,
+and larger devices will inherit those styles. Customize for
+larger screens as necessary.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|boolean</td>
+                <td>$width</td>
+                <td>the width of the column or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$offset</td>
+                <td>the offset of the column or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$screen</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidths">
+        <div class="location">at         line 72</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setWidths</strong>(int $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the column width values for all screen sizes</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$s</td>
+                <td>column width for small screens (1-12)</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$m</td>
+                <td>column width for medium screens (1-12) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$l</td>
+                <td>column width for large screens (1-12) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$xl</td>
+                <td>column width for x-large screens (1-12) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$xxl</td>
+                <td>column width for xx-large screen)s (1-12) or false for inheritance</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidth">
+        <div class="location">at         line 97</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setWidth</strong>(int|boolean $width, string $screen = &quot;small&quot;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets column width for the component</p>                    <p><strong>Important!</strong></p>
+
+<p>Column component is mobile-first. Code for small screens first,
+and larger devices will inherit those styles. Customize for
+larger screens as necessary.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|boolean</td>
+                <td>$width</td>
+                <td>the width of the column or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$screen</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWidth">
+        <div class="location">at         line 113</div>
+        <code>                    int|boolean
+    <strong>getWidth</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the column width associated with the given screen size</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|boolean</td>
+            <td>the width of the column (1-12) or false for inheritance
+        from smaller screens</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidthInherited">
+        <div class="location">at         line 143</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setWidthInherited</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the column width associated with the given screen size to be inherited from smaller screens</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGridOffset">
+        <div class="location">at         line 163</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setGridOffset</strong>(int|boolean $offset, string $screenSize = &#039;small&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Offsets the column component to right on the associated screen sizes</p>                    <p>Moves Column block up to 11 columns to the right.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|boolean</td>
+                <td>$offset</td>
+                <td>the column offset (0-11) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGridOffsets">
+        <div class="location">at         line 181</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>setGridOffsets</strong>(int|boolean $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the column width values for all screen sizes</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|boolean</td>
+                <td>$s</td>
+                <td>column offset for small screens (0-11) or false for none</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$m</td>
+                <td>column offset for medium screens (0-11) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$l</td>
+                <td>column offset for large screens (0-11) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$xl</td>
+                <td>column offset for x-large screens (0-11) or false for inheritance</td>
+            </tr>
+                    <tr>
+                <td>int|boolean</td>
+                <td>$xxl</td>
+                <td>column offset for xx-large screen)s (0-11) or false for inheritance</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGridOffset">
+        <div class="location">at         line 197</div>
+        <code>                    int
+    <strong>getGridOffset</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the column offset for the target screen</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen type</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the width of the column (0-11)</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_inheritGridOffset">
+        <div class="location">at         line 224</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>inheritGridOffset</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets the grid offset for the given screen size</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_countUsedSpace">
+        <div class="location">at         line 239</div>
+        <code>                    int
+    <strong>countUsedSpace</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the amount of the space the column uses from the row</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the amount of the space the column uses from the row</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_centerize">
+        <div class="location">at         line 250</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>centerize</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Centers the column to the Foundation row</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_uncenterize">
+        <div class="location">at         line 264</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>uncenterize</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Resets the centering of the column</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unsetCenterizing">
+        <div class="location">at         line 278</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
+    <strong>unsetCenterizing</strong>(string $screenSize)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes the centering/uncentering settings</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td>the target screen size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

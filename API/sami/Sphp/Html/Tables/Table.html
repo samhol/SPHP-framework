@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Html\Tables\Table | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Html_Tables_Table" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../Sphp/Html.html">Html</a></li>
+                                        <li><a href="../../../Sphp/Html/Tables.html">Tables</a></li>
+    
+                <li>Table</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Table
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Table</strong>        extends <a href="../../../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>        implements
+        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Implements an HTML &lt;table&gt; tag.</p>            <p>{@inheritdoc}</p>        </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../Sphp/Html/TraversableTrait.html"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements some {@link TraversableInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements parts of the {@link ContentInterface} interface
+                </div>
+            </div>
+            </div>
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>COUNT_ROWS</td>
+                <td class="last">
+                    <p><em>Counts the {@link RowInterface} components in the table</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>COUNT_CELLS</td>
+                <td class="last">
+                    <p><em>Counts the {@link CellInterface} components in the table</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHtml">getHtml</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printHtml">printHtml</a>()
+        
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attrs">attrs</a>()
+        
+                                            <p>Returns the attribute manager attached to the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cssClasses">cssClasses</a>()
+        
+                                            <p>Returns the class attribute object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_inlineStyles">inlineStyles</a>()
+        
+                                            <p>Returns the attribute object containing inline styles</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCssClass">addCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Adds the specified CSS class names</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeCssClass">removeCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Removes given CSS class names</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasCssClass">hasCssClass</a>(string|string[] $cssClasses)
+        
+                                            <p>Determines whether the given CSS class names exists</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setStyle">setStyle</a>(string $property, string $value)
+        
+                                            <p>Sets an inline style definition using HTML elements style attribute</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setStyles">setStyles</a>(array $styles)
+        
+                                            <p>Sets inline style definitions using HTML elements style attribute</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeStyle">removeStyle</a>(string $property)
+        
+                                            <p>Removes the given inline style property</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clearStyles">clearStyles</a>()
+        
+                                            <p>Removes all inline style definitions</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasStyle">hasStyle</a>(string $property)
+        
+                                            <p>Determines whether the given CSS property exists</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStyleValue">getStyleValue</a>(string $property)
+        
+                                            <p>Returns the value of the CSS property name or null if the property does
+ not exist</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setAttrs">setAttrs</a>(array $attrs = [])
+        
+                                            <p>Sets multiple attribute name value pairs</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setAttr">setAttr</a>(string $name, mixed $value = null)
+        
+                                            <p>Sets an attribute name value pair</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeAttr">removeAttr</a>(string $name)
+        
+                                            <p>Removes the given attribute if it is not required</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAttr">getAttr</a>(string $name)
+        
+                                            <p>Returns the value of a given attribute name</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attrExists">attrExists</a>(string $name)
+        
+                                            <p>Checks if an attribute exists</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+        
+                                            <p>Identifies the element with an unique id attribute.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
+        
+                                            <p>Checks whether the identifying attribute is set or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string|null $caption = null)
+        
+                                            <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p>Destroys the instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___clone">__clone</a>()
+        
+                                            <p>Clones the object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTagName">getTagName</a>()
+        
+                                            <p>Returns the tag name of the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOpeningTag">getOpeningTag</a>()
+        
+                                            <p>Returns opening tag with its attributes</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_contentToString">contentToString</a>()
+        
+                                            <p>Returns the content of the component as a string</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClosingTag">getClosingTag</a>()
+        
+                                            <p>Returns closing tag</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getComponentsBy">getComponentsBy</a>(callable $rules)
+        
+                                            <p>Returns a collection of sub components that match the search</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getComponentsByAttrName">getComponentsByAttrName</a>(string $attrName)
+        
+                                            <p>Returns a collection of sub components that contain the searched attribute</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>($type)
+        
+                                            <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCaption">setCaption</a>(string|null $caption)
+        
+                                            <p>Sets the caption text of the table</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeCaption">removeCaption</a>()
+        
+                                            <p>Destroys the optional caption component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setContent">setContent</a>( $content)
+        
+                                            <p>Sets (replaces) a part of a table with the given {@link TableContentInterface} component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Colgroup.html"><abbr title="Sphp\Html\Tables\Colgroup">Colgroup</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_colgroup">colgroup</a>( $colgroup = null)
+        
+                                            <p>Returns the colgroup component or null</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeColgroup">removeColgroup</a>()
+        
+                                            <p>Destroys the optional colgroup component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Thead.html"><abbr title="Sphp\Html\Tables\Thead">Thead</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_thead">thead</a>( $head = null)
+        
+                                            <p>Returns the table header component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeThead">removeThead</a>()
+        
+                                            <p>Destroys the optional table header component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Tbody.html"><abbr title="Sphp\Html\Tables\Tbody">Tbody</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tbody">tbody</a>( $tbody = null)
+        
+                                            <p>Returns the table body component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeTbody">removeTbody</a>()
+        
+                                            <p>Destroys the optional table body component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Tfoot.html"><abbr title="Sphp\Html\Tables\Tfoot">Tfoot</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tfoot">tfoot</a>( $tfoot = null)
+        
+                                            <p>Returns footer component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeTfoot">removeTfoot</a>()
+        
+                                            <p>Destroys the optional footer component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_count">count</a>(int $mode = self::COUNT_ROWS)
+        
+                                            <p>Count the number of inserted elements in the table</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIterator">getIterator</a>()
+        
+                                            <p>Create a new iterator to iterate through inserted elements in the table</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 28</div>
+        <code>    abstract                string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if html parsing fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 35</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 49</div>
+        <code>                    <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+    <strong>printHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prints the component as HTML markup string</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attrs">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
+        <code>    abstract                <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+    <strong>attrs</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the attribute manager attached to the component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td>the attribute manager</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cssClasses">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+    <strong>cssClasses</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the class attribute object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td>the class attribute object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_inlineStyles">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 47</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
+    <strong>inlineStyles</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the attribute object containing inline styles</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a></td>
+            <td>the attribute object containing inline styles</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCssClass">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 64</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>addCssClass</strong>(string|string[] $cssClasses)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds the specified CSS class names</p>                    <p><strong>Important:</strong> Parameter <var>$cssClasses</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain multiple space separated CSS class names</li>
+<li>An array parameter can contain only one CSS class name per value</li>
+<li>Duplicate CSS class names are not stored</li>
+</ol>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$cssClasses</td>
+                <td>CSS class names to add</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeCssClass">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 81</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>removeCssClass</strong>(string|string[] $cssClasses)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes given CSS class names</p>                    <p><strong>Important:</strong> Parameter <var>$cssClasses</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain multiple comma separated CSS class names</li>
+<li>An array parameter can contain only one CSS class name per value</li>
+</ol>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$cssClasses</td>
+                <td>CSS class names to remove</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasCssClass">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 98</div>
+        <code>                    boolean
+    <strong>hasCssClass</strong>(string|string[] $cssClasses)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determines whether the given CSS class names exists</p>                    <p><strong>Important:</strong> Parameter <var>$cssClasses</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain multiple comma separated CSS class names</li>
+<li>An array parameter can contain only one CSS class name per value</li>
+</ol>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$cssClasses</td>
+                <td>CSS class names to search for</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the given CSS class names exists</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setStyle">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>setStyle</strong>(string $property, string $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets an inline style definition using HTML elements style attribute</p>                    <p><strong>Note:</strong> Old inline property is replaced if the property names are equal.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>CSS property</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td>CSS value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setStyles">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 129</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>setStyles</strong>(array $styles)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets inline style definitions using HTML elements style attribute</p>                    <p><strong>Notes:</strong></p>
+
+<ul>
+<li>Old inline properties are replaced if the new property name is equal.</li>
+<li>Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.</li>
+</ul>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$styles</td>
+                <td>CSS property and CSS value pairs</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeStyle">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 140</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>removeStyle</strong>(string $property)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes the given inline style property</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>CSS property name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearStyles">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>clearStyles</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes all inline style definitions</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasStyle">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
+        <code>                    boolean
+    <strong>hasStyle</strong>(string $property)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determines whether the given CSS property exists</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>CSS property name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the style attribute exists and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStyleValue">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 172</div>
+        <code>                    string|null
+    <strong>getStyleValue</strong>(string $property)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the value of the CSS property name or null if the property does
+ not exist</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>CSS property name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td>the value of the style attribute or null</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAttrs">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>setAttrs</strong>(array $attrs = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets multiple attribute name value pairs</p>                    <p>For each <code>$attr =&gt; $value</code> pairs the method calls the {@link self::setAttr()} method</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attrs</td>
+                <td>an array of attribute name value pairs</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Html\InvalidAttributeException">InvalidAttributeException</abbr></td>
+                <td>if any of the attributes is invalid</td>
+            </tr>
+                    <tr>
+                <td><abbr title="Sphp\Html\UnmodifiableAttributeException">UnmodifiableAttributeException</abbr></td>
+                <td>if the value of the attribute is already locked</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAttr">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 215</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>setAttr</strong>(string $name, mixed $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets an attribute name value pair</p>                    <p><strong>IMPORTANT!:</strong> Does not alter locked attribute values:</p>
+
+<ol>
+<li>For 'class' attribute: if a CSS class name is locked the method does nothing</li>
+<li>For any other locked attribute the method throws a {@link LockingException}</li>
+</ol>
+
+<p><strong><code>$value</code> handling:</strong></p>
+
+<ol>
+<li>the type of the value should always convert to string</li>
+<li><code>null</code> or an empty <code>string</code>: an empty attribute is set</li>
+<li>boolean <code>true</code>: an empty attribute is set</li>
+<li>boolean <code>false</code>: attribute is removed if present</li>
+<li>otherwise the attribute value the string conversion value</li>
+</ol>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for PHP Method Chaining</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Html\InvalidAttributeException">InvalidAttributeException</abbr></td>
+                <td>if the attribute name or value is invalid</td>
+            </tr>
+                    <tr>
+                <td><abbr title="Sphp\Html\UnmodifiableAttributeException">UnmodifiableAttributeException</abbr></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeAttr">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 226</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>removeAttr</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes the given attribute if it is not required</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAttr">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 242</div>
+        <code>                    mixed
+    <strong>getAttr</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the value of a given attribute name</p>                    <p><strong>IMPORTANT:</strong></p>
+
+<ul>
+<li>Returns always <code>boolean false</code> if attribute is not present.</li>
+<li>return <code>null</code> or an empty string for empty attributes.</li>
+</ul>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the value of the attribute</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attrExists">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 252</div>
+        <code>                    boolean
+    <strong>attrExists</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if an attribute exists</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>(atribute exists)</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_identify">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 269</div>
+        <code>                    <a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Identifies the element with an unique id attribute.</p>                    <p><strong>Notes:</strong></p>
+
+<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identityName</td>
+                <td>the name of the identity attribute</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$prefix</td>
+                <td>optional prefix of the identity value</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$length</td>
+                <td>the length of the identity value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasId">
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 280</div>
+        <code>                    boolean
+    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the identifying attribute is set or not</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identityName</td>
+                <td>optional name of the identifying attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the identity is set, otherwise false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 77</div>
+        <code>                    
+    <strong>__construct</strong>(string|null $caption = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$caption</td>
+                <td>defines a table caption</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location">at         line 84</div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___clone">
+        <div class="location">at         line 89</div>
+        <code>                    
+    <strong>__clone</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTagName">
+        <div class="location">in <a href="../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 90</div>
+        <code>                    string
+    <strong>getTagName</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the tag name of the component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the tag name of the component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOpeningTag">
+        <div class="location">in <a href="../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 25</div>
+        <code>                    string
+    <strong>getOpeningTag</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns opening tag with its attributes</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>opening tag with attributes</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_contentToString">
+        <div class="location">at         line 108</div>
+        <code>                    string
+    <strong>contentToString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the content of the component as a string</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>content as a string</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if content parsing fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClosingTag">
+        <div class="location">in <a href="../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 46</div>
+        <code>                    string
+    <strong>getClosingTag</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns closing tag</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>closing tag</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getComponentsBy">
+        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 26</div>
+        <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+    <strong>getComponentsBy</strong>(callable $rules)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a collection of sub components that match the search</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$rules</td>
+                <td>a lambda function for testing the sub components</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td>containing matching sub components</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getComponentsByAttrName">
+        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
+        <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+    <strong>getComponentsByAttrName</strong>(string $attrName)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a collection of sub components that contain the searched attribute</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$attrName</td>
+                <td>the name of the searched attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td>containing matching sub components</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getComponentsByObjectType">
+        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 73</div>
+        <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+    <strong>getComponentsByObjectType</strong>($type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a collection of sub components that are of the given PHP type</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td>containing matching sub components</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCaption">
+        <div class="location">at         line 118</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>setCaption</strong>(string|null $caption)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the caption text of the table</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$caption</td>
+                <td>the caption text of the table</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeCaption">
+        <div class="location">at         line 131</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>removeCaption</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the optional caption component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setContent">
+        <div class="location">at         line 142</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>setContent</strong>( $content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets (replaces) a part of a table with the given {@link TableContentInterface} component</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>the given part of a table</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_colgroup">
+        <div class="location">at         line 165</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Colgroup.html"><abbr title="Sphp\Html\Tables\Colgroup">Colgroup</abbr></a>
+    <strong>colgroup</strong>( $colgroup = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the colgroup component or null</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$colgroup</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Colgroup.html"><abbr title="Sphp\Html\Tables\Colgroup">Colgroup</abbr></a></td>
+            <td>colgroup component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeColgroup">
+        <div class="location">at         line 178</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>removeColgroup</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the optional colgroup component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_thead">
+        <div class="location">at         line 189</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Thead.html"><abbr title="Sphp\Html\Tables\Thead">Thead</abbr></a>
+    <strong>thead</strong>( $head = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the table header component</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$head</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Thead.html"><abbr title="Sphp\Html\Tables\Thead">Thead</abbr></a></td>
+            <td>table header component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeThead">
+        <div class="location">at         line 202</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>removeThead</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the optional table header component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tbody">
+        <div class="location">at         line 213</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Tbody.html"><abbr title="Sphp\Html\Tables\Tbody">Tbody</abbr></a>
+    <strong>tbody</strong>( $tbody = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the table body component</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$tbody</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Tbody.html"><abbr title="Sphp\Html\Tables\Tbody">Tbody</abbr></a></td>
+            <td>table body component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeTbody">
+        <div class="location">at         line 227</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>removeTbody</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the optional table body component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tfoot">
+        <div class="location">at         line 238</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Tfoot.html"><abbr title="Sphp\Html\Tables\Tfoot">Tfoot</abbr></a>
+    <strong>tfoot</strong>( $tfoot = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns footer component</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$tfoot</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Tfoot.html"><abbr title="Sphp\Html\Tables\Tfoot">Tfoot</abbr></a></td>
+            <td>table footer component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeTfoot">
+        <div class="location">at         line 251</div>
+        <code>                    <a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a>
+    <strong>removeTfoot</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the optional footer component</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Tables/Table.html"><abbr title="Sphp\Html\Tables\Table">Table</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location">at         line 268</div>
+        <code>                    string
+    <strong>count</strong>(int $mode = self::COUNT_ROWS)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Count the number of inserted elements in the table</p>                    <p><strong><code>$mode</code> parameter values:</strong></p>
+
+<ul>
+<li>{@link self::COUNT_ROWS} counts the {@link RowInterface} components in the table</li>
+<li>{@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table</li>
+</ul>
+</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td>defines the type of the objects to count</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>number of elements in the html table</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIterator">
+        <div class="location">at         line 287</div>
+        <code>                    <a href="../../../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a>
+    <strong>getIterator</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a new iterator to iterate through inserted elements in the table</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a></td>
+            <td>iterator</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

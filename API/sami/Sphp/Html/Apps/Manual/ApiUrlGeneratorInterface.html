@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Html_Apps_Manual_ApiUrlGeneratorInterface" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                                                            <li><a href="../../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../../Sphp/Html.html">Html</a></li>
+                                        <li><a href="../../../../Sphp/Html/Apps.html">Apps</a></li>
+                                        <li><a href="../../../../Sphp/Html/Apps/Manual.html">Manual</a></li>
+    
+                <li>ApiUrlGeneratorInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            ApiUrlGeneratorInterface
+                
+        </h1>
+    </div>
+
+    <p>    interface
+    <strong>ApiUrlGeneratorInterface</strong>        implements
+        <a href="../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Defines a URL string generator pointing to an online PHP API</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRoot">getRoot</a>()
+        
+                                            <p>Returns the url pointing to the root of the page</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html#method_getRoot"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>(string $relative)
+        
+                                            <p>Creates an URL string pointing to the resource</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html#method_create"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClassUrl">getClassUrl</a>(string $class)
+        
+                                            <p>Returns the URL pointing to the API page of the given class</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClassMethodUrl">getClassMethodUrl</a>(string $class, string $method)
+        
+                                            <p>Returns the URL pointing to the API page of the given class method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getClassConstantUrl">getClassConstantUrl</a>(string $class, string $constant)
+        
+                                            <p>Returns the URL pointing to the API page of the given class constant</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getNamespaceUrl">getNamespaceUrl</a>(string $namespace)
+        
+                                            <p>Returns the URL pointing to the API page of the given namespace</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFunctionUrl">getFunctionUrl</a>(string $function)
+        
+                                            <p>Returns the URL pointing to the API page of the given function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConstantUrl">getConstantUrl</a>(string $constant)
+        
+                                            <p>Returns the URL pointing to the API page of the given constant</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getRoot">
+        <div class="location">in <a href="../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html#method_getRoot"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a> at         line 25</div>
+        <code>                    string
+    <strong>getRoot</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the url pointing to the root of the page</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the url pointing to the API documentation</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">in <a href="../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html#method_create"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a> at         line 33</div>
+        <code>                    string
+    <strong>create</strong>(string $relative)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an URL string pointing to the resource</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$relative</td>
+                <td>path from the root to the resource</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>an URL string pointing to the resource</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClassUrl">
+        <div class="location">at         line 26</div>
+        <code>                    string
+    <strong>getClassUrl</strong>(string $class)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given class</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td>the name of the class</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given class</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClassMethodUrl">
+        <div class="location">at         line 35</div>
+        <code>                    string
+    <strong>getClassMethodUrl</strong>(string $class, string $method)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given class method</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td>the name of the class</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td>the name of the method</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given class method</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClassConstantUrl">
+        <div class="location">at         line 44</div>
+        <code>                    string
+    <strong>getClassConstantUrl</strong>(string $class, string $constant)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given class constant</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td>the name of the class</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$constant</td>
+                <td>the name of the constant</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given class constant</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNamespaceUrl">
+        <div class="location">at         line 52</div>
+        <code>                    string
+    <strong>getNamespaceUrl</strong>(string $namespace)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given namespace</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td>the name of the namespace</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given namespace</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFunctionUrl">
+        <div class="location">at         line 60</div>
+        <code>                    string
+    <strong>getFunctionUrl</strong>(string $function)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given function</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$function</td>
+                <td>the name of the function</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given function</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConstantUrl">
+        <div class="location">at         line 68</div>
+        <code>                    string
+    <strong>getConstantUrl</strong>(string $constant)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the URL pointing to the API page of the given constant</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$constant</td>
+                <td>the name of the constant</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the URL pointing to the API page of the given constant</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

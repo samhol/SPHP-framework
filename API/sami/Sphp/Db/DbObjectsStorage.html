@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Db\DbObjectsStorage | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Db_DbObjectsStorage" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                                                            <li><a href="../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../Sphp/Db.html">Db</a></li>
+    
+                <li>DbObjectsStorage</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            DbObjectsStorage
+                
+        </h1>
+    </div>
+
+    <p>    interface
+    <strong>DbObjectsStorage</strong>        implements
+        <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Class manipulates {@link DbObjectIterface} instances stored in the database</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_obtainDefaultConnection">obtainDefaultConnection</a>()
+        
+                                            <p>Obtains the {@link \PDO} object for default database connection</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorInterface.html#method_obtainDefaultConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createConnection">createConnection</a>(string $dsn, string $username, string $password)
+        
+                                            <p>Sets a {@link PDO} connection to the given database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorInterface.html#method_createConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setConnection">setConnection</a>( $pdo)
+        
+                                            <p>Sets the {@link \PDO} object for database connection</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorInterface.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/PDO">PDO</a>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConnection">getConnection</a>()
+        
+                                            <p>Gets the {@link \PDO} object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorInterface.html#method_getConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasConnection">hasConnection</a>()
+        
+                                            <p>Checks whether the database connection {@link \PDO} object is set or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorInterface.html#method_hasConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    null|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFirst">getFirst</a>(array $what)
+        
+                                            <p>Returns the first matching oject from the database view</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Db\DbItem">DbItem</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getById">getById</a>(<abbr title="Sphp\Db\DbObject">DbObject</abbr>|string|int $itemOrItemId)
+        
+                                            <p>Returns the first match of the DbItem from the database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(array $what)
+        
+                                            <p>Returns the queried objects from the database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_count">count</a>(array $what)
+        
+                                            <p>Counts the number of the objects in the queried view</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_exists">exists</a>( $object)
+        
+                                            <p>Checks whether the given object(s) exists in the database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_upload">upload</a>(<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[] $objects)
+        
+                                            <p>Replaces the given object(s) in the database view</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>(<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[] $objects)
+        
+                                            <p>Removes the object from the database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIterator">getIterator</a>(array $what)
+        
+                                            <p>Retrieve an external iterator</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_contains">contains</a>(array $what)
+        
+                                            <p>Checks whether database contains objects with specified properties</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_find">find</a>(array $what)
+        
+                                            <p>Returns all the objects with specified properties from the database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_obtainDefaultConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorInterface.html#method_obtainDefaultConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a> at         line 27</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+    <strong>obtainDefaultConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Obtains the {@link \PDO} object for default database connection</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if no database connection was established</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorInterface.html#method_createConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a> at         line 41</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+    <strong>createConnection</strong>(string $dsn, string $username, string $password)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets a {@link PDO} connection to the given database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dsn</td>
+                <td>the Data Source Name</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>the user name for the DSN string</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td>the password for the DSN string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorInterface.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a> at         line 51</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>
+    <strong>setConnection</strong>( $pdo)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the {@link \PDO} object for database connection</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$pdo</td>
+                <td>the database connection</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if no database connection was established</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorInterface.html#method_getConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a> at         line 58</div>
+        <code>                    <a target="_blank" href="http://php.net/PDO">PDO</a>|null
+    <strong>getConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the {@link \PDO} object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/PDO">PDO</a>|null</td>
+            <td>database connection</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorInterface.html#method_hasConnection"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a> at         line 65</div>
+        <code>                    boolean
+    <strong>hasConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the database connection {@link \PDO} object is set or not</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the database connection exists, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFirst">
+        <div class="location">at         line 28</div>
+        <code>                    null|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>
+    <strong>getFirst</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the first matching oject from the database view</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>null|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr></td>
+            <td>the first matching oject from the database view</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getById">
+        <div class="location">at         line 36</div>
+        <code>                    <abbr title="Sphp\Db\DbItem">DbItem</abbr>
+    <strong>getById</strong>(<abbr title="Sphp\Db\DbObject">DbObject</abbr>|string|int $itemOrItemId)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the first match of the DbItem from the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Db\DbObject">DbObject</abbr>|string|int</td>
+                <td>$itemOrItemId</td>
+                <td>DbItem or a id</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Db\DbItem">DbItem</abbr></td>
+            <td>corresponding object or null if nothing was found</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location">at         line 44</div>
+        <code>                    <abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]
+    <strong>get</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the queried objects from the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]</td>
+            <td>the result objets</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location">at         line 52</div>
+        <code>                    int
+    <strong>count</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Counts the number of the objects in the queried view</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the number of the objects</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exists">
+        <div class="location">at         line 60</div>
+        <code>                    boolean
+    <strong>exists</strong>( $object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the given object(s) exists in the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>the object to serch for</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the object exists in the database, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_upload">
+        <div class="location">at         line 69</div>
+        <code>                    boolean
+    <strong>upload</strong>(<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[] $objects)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Replaces the given object(s) in the database view</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]</td>
+                <td>$objects</td>
+                <td>the objects to replace</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the update was succesfull and false otherwise</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the type of the object is not valid</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location">at         line 78</div>
+        <code>                    int
+    <strong>delete</strong>(<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[] $objects)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes the object from the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>|<abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]</td>
+                <td>$objects</td>
+                <td>the objects to delete</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the number of the removed objects</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the type of the object is not valid</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIterator">
+        <div class="location">at         line 86</div>
+        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+    <strong>getIterator</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Retrieve an external iterator</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td>the properties used to limit the results</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
+            <td>the result objets</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_contains">
+        <div class="location">at         line 94</div>
+        <code>                    boolean
+    <strong>contains</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether database contains objects with specified properties</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td>the properties used to limit the results</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the object exists in the database, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_find">
+        <div class="location">at         line 102</div>
+        <code>                    <abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]
+    <strong>find</strong>(array $what)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns all the objects with specified properties from the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$what</td>
+                <td>the properties used to limit the results</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Objects\DbObjectInterface">DbObjectInterface</abbr>[]</td>
+            <td>the objects with specified properties found</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Db\AbstractStatement | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Db_AbstractStatement" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../Sphp/Db.html">Db</a></li>
+    
+                <li>AbstractStatement</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            AbstractStatement
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>AbstractStatement</strong>        implements
+        <a href="../../Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a>, <a href="../../Sphp/Db/StatementInterface.html"><abbr title="Sphp\Db\StatementInterface">StatementInterface</abbr></a>
+</p>
+
+        
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                    </p>
+    
+
+            <div class="description">
+            <p>Base class for all SQL Statement classes</p>                    </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link DBConnectorInterface} for {@link PDO} database connection management
+                </div>
+            </div>
+            </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createConnection">createConnection</a>(string $dsn, string $username, string $password)
+        
+                                            <p>Sets a {@link Database} connection to the given database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_createConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_obtainDefaultConnection">obtainDefaultConnection</a>()
+        
+                                            <p>Obtains the {@link Database} object for default database connection</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_obtainDefaultConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setConnection">setConnection</a>( $pdo)
+        
+                                            <p>Sets the {@link PDO} object for database connection</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/PDO">PDO</a>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConnection">getConnection</a>(boolean $forced = false)
+        
+                                            <p>Gets the {@link PDO} object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_getConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasConnection">hasConnection</a>()
+        
+                                            <p>Checks whether the database connection {@link PDO} object is set or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_hasConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>( $pdo = null)
+        
+                                            <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStatement">getStatement</a>()
+        
+                                            <p>Returns the SQL statement object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_execute">execute</a>()
+        
+                                            <p>Executes the SQL statement, returning a result set as a PDOStatement object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the SQL statement as a string</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_createConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_createConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 43</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+    <strong>createConnection</strong>(string $dsn, string $username, string $password)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets a {@link Database} connection to the given database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dsn</td>
+                <td>the Data Source Name</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>the user name for the DSN string</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td>the password for the DSN string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_obtainDefaultConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_obtainDefaultConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 55</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+    <strong>obtainDefaultConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Obtains the {@link Database} object for default database connection</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if no database connection was established</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 67</div>
+        <code>                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
+    <strong>setConnection</strong>( $pdo)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the {@link PDO} object for database connection</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$pdo</td>
+                <td>the database connection</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_getConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 81</div>
+        <code>                    <a target="_blank" href="http://php.net/PDO">PDO</a>|null
+    <strong>getConnection</strong>(boolean $forced = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the {@link PDO} object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>boolean</td>
+                <td>$forced</td>
+                <td>whether to use the default connection as a fall back</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/PDO">PDO</a>|null</td>
+            <td>database connection or <code>null</code> if none present</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if no database connection was established on forced mode</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasConnection">
+        <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_hasConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 93</div>
+        <code>                    boolean
+    <strong>hasConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the database connection {@link PDO} object is set or not</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the database connection exists, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 30</div>
+        <code>                    
+    <strong>__construct</strong>( $pdo = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$pdo</td>
+                <td>the database connection</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStatement">
+        <div class="location">at         line 36</div>
+        <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
+    <strong>getStatement</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the SQL statement object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a></td>
+            <td>the SQL statement object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_execute">
+        <div class="location">at         line 51</div>
+        <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
+    <strong>execute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Executes the SQL statement, returning a result set as a PDOStatement object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a></td>
+            <td>the result set</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Db/SQLException.html"><abbr title="Sphp\Db\SQLException">SQLException</abbr></a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 61</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the SQL statement as a string</p>                    <p>Replaces any parameter placeholders in a query with the value of that
+parameter. Useful for debugging. Assumes anonymous parameters from
+$params are are in the same order as specified in $query</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the interpolated query for debugging purposes</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

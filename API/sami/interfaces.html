@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Interfaces | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="interfaces" data-name="" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                            <li><a href="namespaces.html">Namespaces</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div id="page-content">
+                    <div class="page-header">
+        <h1>Interfaces</h1>
+    </div>
+
+    
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Core/Security/PasswordInterface.html"><abbr title="Sphp\Core\Security\PasswordInterface">PasswordInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a verifiable password
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/DBConnectorInterface.html"><abbr title="Sphp\Db\DBConnectorInterface">DBConnectorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface implements a {@link \PDO} database connection management system
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/DataManipulationStatement.html"><abbr title="Sphp\Db\DataManipulationStatement">DataManipulationStatement</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface for database data manipulation
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/DbObjectsStorage.html"><abbr title="Sphp\Db\DbObjectsStorage">DbObjectsStorage</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class manipulates {@link DbObjectIterface} instances stored in the database
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/Objects/DbObjectInterface.html"><abbr title="Sphp\Db\Objects\DbObjectInterface">DbObjectInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines common features for all database objects.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/Objects/Embeddable.html"><abbr title="Sphp\Db\Objects\Embeddable">Embeddable</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/Objects/GeographicalAddressInterface.html"><abbr title="Sphp\Db\Objects\GeographicalAddressInterface">GeographicalAddressInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a geographical address
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/Objects/ObjectStorageInterface.html"><abbr title="Sphp\Db\Objects\ObjectStorageInterface">ObjectStorageInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required properties for a {@link DbObjectInterface} storage
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a user
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Db/StatementInterface.html"><abbr title="Sphp\Db\StatementInterface">StatementInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface for database data manipulation
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Exceptions/Exception.html"><abbr title="Sphp\Exceptions\Exception">Exception</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    SPHP-specific exception interface
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Filters/FilterInterface.html"><abbr title="Sphp\Filters\FilterInterface">FilterInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a data filter
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Adapters/Adapter.html"><abbr title="Sphp\Html\Adapters\Adapter">Adapter</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an adapter pattern interface for HTML content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/AjaxLoaderInterface.html"><abbr title="Sphp\Html\AjaxLoaderInterface">AjaxLoaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the functionality of an Ajax content loader component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Apps/Manual/ApiUrlGeneratorInterface.html"><abbr title="Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface">ApiUrlGeneratorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a URL string generator pointing to an online PHP API
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Apps/Manual/ClassLinkerInterface.html"><abbr title="Sphp\Html\Apps\Manual\ClassLinkerInterface">ClassLinkerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Hyperlink object generator pointing to an online PHP API
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Apps/Manual/LinkerInterface.html"><abbr title="Sphp\Html\Apps\Manual\LinkerInterface">LinkerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Hyperlink object generator pointing to an existing site
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Apps/Manual/UrlGeneratorInterface.html"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a URL string generator pointing to an online site
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Apps/SyntaxHighlighterInterface.html"><abbr title="Sphp\Html\Apps\SyntaxHighlighterInterface">SyntaxHighlighterInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines default properties for a syntax highlighter component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Iterface defines an HTML attribute object
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of any HTML component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/ContainerComponentInterface.html"><abbr title="Sphp\Html\ContainerComponentInterface">ContainerComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a HTML component acting as a traversable component container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container with
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines basic features for all HTML structures
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/ContentParserInterface.html"><abbr title="Sphp\Html\ContentParserInterface">ContentParserInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a resource container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Forms\Buttons\ButtonInterface">ButtonInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines buttons used in {@link FormInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/FormInterface.html"><abbr title="Sphp\Html\Forms\FormInterface">FormInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required properties for an HTML &lt;form&gt; component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/ChoiceboxInterface.html"><abbr title="Sphp\Html\Forms\Inputs\ChoiceboxInterface">ChoiceboxInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;input type="radio|checkbox"&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/IdentifiableInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\IdentifiableInputInterface">IdentifiableInputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required operations for all identifiable input components used in {@link FormInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required operations for all input components used in {@link FormInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/Menus/SelectMenuContentInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuContentInterface">SelectMenuContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines select menu's content components (&lt;option|optgroup&gt;).
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a select menu in HTML forms
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/NumberInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\NumberInputInterface">NumberInputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;input type="number"&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/PatternValidableInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\PatternValidableInputInterface">PatternValidableInputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required operations for a pattern validable input components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/SliderInterface.html"><abbr title="Sphp\Html\Forms\Inputs\SliderInterface">SliderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a slider for forms
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/TextareaInterface.html"><abbr title="Sphp\Html\Forms\Inputs\TextareaInterface">TextareaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;textarea&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/TextualInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\TextualInputInterface">TextualInputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;input type="text|password|email|tel| .
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/Inputs/ValidableInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\ValidableInputInterface">ValidableInputInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required operations for all validable input components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/LabelableInterface.html"><abbr title="Sphp\Html\Forms\LabelableInterface">LabelableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines features for all labelable components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Forms/TraversableFormInterface.html"><abbr title="Sphp\Html\Forms\TraversableFormInterface">TraversableFormInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines required properties for a traversable HTML &lt;form&gt; component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Bars/BarContentAreaInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Bars\BarContentAreaInterface">BarContentAreaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Describes a Bar content area
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of a Foundation styled button
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Containers/Accordions/PaneInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Accordions\PaneInterface">PaneInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Pane for Foundation Accordion
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a callout component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Containers/OffCanvas/OffCanvasAreaInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\OffCanvas\OffCanvasAreaInterface">OffCanvasAreaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic requirements of a Foundation 6 offcanvas area
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Containers/Tabs/TabControllerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Tabs\TabControllerInterface">TabControllerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Tab controller for Tabs
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Containers/Tabs/TabInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Tabs\TabInterface">TabInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Tab for Tabs
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link ButtonStylingInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Core/ScreenReaderLabelable.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable">ScreenReaderLabelable</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements Screen reader label for Foundation
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Core/VisibilityChanger.html"><abbr title="Sphp\Html\Foundation\Sites\Core\VisibilityChanger">VisibilityChanger</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines Visibility Controls for HTML content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Forms/Inputs/InputColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumnInterface">InputColumnInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a input column for a Grid system
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Grids/BlockGridColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridColumnInterface">BlockGridColumnInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements a Block Grid Column
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Column for a Row in a Grid system
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Grids/GridInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\GridInterface">GridInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Grid
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a Row for a Grid
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Media/Orbit/SlideInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Media\Orbit\SlideInterface">SlideInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a slide for Orbit
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Media/ResponsiveEmbedInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ResponsiveEmbedInterface">ResponsiveEmbedInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a Foundation 6 Flex component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a basic menu
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Navigation/MenuItemInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuItemInterface">MenuItemInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a menu item for navigation menus
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Foundation/Sites/Navigation/Pagination/PageInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\Pagination\PageInterface">PageInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a page button for a Pagination component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Head/HeadComponentInterface.html"><abbr title="Sphp\Html\Head\HeadComponentInterface">HeadComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines all {@link Head} component content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Head/MetaInterface.html"><abbr title="Sphp\Html\Head\MetaInterface">MetaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;meta&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Headings/HeadingInterface.html"><abbr title="Sphp\Html\Headings\HeadingInterface">HeadingInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface represents all HTML headings and subheadings
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/IdentifiableInterface.html"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of an identifiable HTML component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Lists/DlContentInterface.html"><abbr title="Sphp\Html\Lists\DlContentInterface">DlContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    The common Interface for both of the content tag types of an definition list
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Lists/LiInterface.html"><abbr title="Sphp\Html\Lists\LiInterface">LiInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Describes the content of ordered and unordered lists
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/IframeInterface.html"><abbr title="Sphp\Html\Media\IframeInterface">IframeInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;iframe&gt; tag (an inline frame)
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic properties of an HTML &lt;area&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/ImgInterface.html"><abbr title="Sphp\Html\Media\ImgInterface">ImgInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;img&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines lazy loading of images, videos and other resources
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/Multimedia/MediaTagInterface.html"><abbr title="Sphp\Html\Media\Multimedia\MediaTagInterface">MediaTagInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties HTML multimedia tags
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/Multimedia/MultimediaContentInterface.html"><abbr title="Sphp\Html\Media\Multimedia\MultimediaContentInterface">MultimediaContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines media resources for {@link MediaTagInterface} components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a videoplayer component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines sizing of various HTML media components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of any HTML hyperlink
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/NonVisualContentInterface.html"><abbr title="Sphp\Html\NonVisualContentInterface">NonVisualContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines non visual HTML structures
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Programming/ScriptInterface.html"><abbr title="Sphp\Html\Programming\ScriptInterface">ScriptInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines script tags
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/SimpleContainerInterface.html"><abbr title="Sphp\Html\SimpleContainerInterface">SimpleContainerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container with
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Tables/CellInterface.html"><abbr title="Sphp\Html\Tables\CellInterface">CellInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface is the base definition for all {@link Tr} content (table cells)
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Tables/RowInterface.html"><abbr title="Sphp\Html\Tables\RowInterface">RowInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface is the base definition for all {@link TableRowContainer} content rows
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/Tables/TableContentInterface.html"><abbr title="Sphp\Html\Tables\TableContentInterface">TableContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface is the base for all {@link Table} content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface is the base for all HTML tag implementations
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/TimeTagInterface.html"><abbr title="Sphp\Html\TimeTagInterface">TimeTagInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;time&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Http/Headers/HeaderInterface.html"><abbr title="Sphp\Http\Headers\HeaderInterface">HeaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a single header
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a collection that holds {@link MessageInterface} objects
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/I18n/MessageInterface.html"><abbr title="Sphp\I18n\MessageInterface">MessageInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for a translatable message object
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Description of TranslatorAwareInterface
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties for natural language translator
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Objects/ArrayableObjectInterface.html"><abbr title="Sphp\Objects\ArrayableObjectInterface">ArrayableObjectInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface describes common features for all Objects.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Objects/ObjectInterface.html"><abbr title="Sphp\Objects\ObjectInterface">ObjectInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface describes common features for all Objects.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Comparable.html"><abbr title="Sphp\Stdlib\Comparable">Comparable</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Classes that implements this interface can be compared to other similar objects.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties of aa arrayable data structure
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Datastructures/CollectionInterface.html"><abbr title="Sphp\Stdlib\Datastructures\CollectionInterface">CollectionInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a general purpose collection
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Datastructures/QueueInterface.html"><abbr title="Sphp\Stdlib\Datastructures\QueueInterface">QueueInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties of a First-In-First-Out (FIFO) queue
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Datastructures/StackInterface.html"><abbr title="Sphp\Stdlib\Datastructures\StackInterface">StackInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines properties of a last-in-first-out (LIFO) stack
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Events/EventDispatcherInterface.html"><abbr title="Sphp\Stdlib\Events\EventDispatcherInterface">EventDispatcherInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines minimum requirements of an Event Dispatcher
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Events/EventInterface.html"><abbr title="Sphp\Stdlib\Events\EventInterface">EventInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an event
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Events/EventListenerInterface.html"><abbr title="Sphp\Stdlib\Events\EventListenerInterface">EventListenerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an event listener
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Observers/Observer.html"><abbr title="Sphp\Stdlib\Observers\Observer">Observer</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the observer part of the Observer Design Pattern
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Observers/Subject.html"><abbr title="Sphp\Stdlib\Observers\Subject">Subject</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the subject part of the Observer Design Pattern
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Reader/FileReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\FileReaderInterface">FileReaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a file reader
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Reader/ReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\ReaderInterface">ReaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Stdlib/Reader/StringReaderInterface.html"><abbr title="Sphp\Stdlib\Reader\StringReaderInterface">StringReaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a string reader
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Sphp/Validators/ValidatorInterface.html"><abbr title="Sphp\Validators\ValidatorInterface">ValidatorInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    The base interface for all validators
+                </div>
+            </div>
+            </div>
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Db\Objects\SessionUser | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Db_Objects_SessionUser" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../Sphp/Db.html">Db</a></li>
+                                        <li><a href="../../../Sphp/Db/Objects.html">Objects</a></li>
+    
+                <li>SessionUser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            SessionUser
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>SessionUser</strong>        extends <a href="../../../Sphp/Db/Objects/AbstractDbObject.html"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a>        implements
+        <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Implements a system user</p>                    </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_id">
+                                        protected                                        int
+                </td>
+                <td>$id</td>
+                <td class="last">primary database key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_username">
+                                        protected                                        string
+                </td>
+                <td>$username</td>
+                <td class="last">username</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_email">
+                                        protected                                        string
+                </td>
+                <td>$email</td>
+                <td class="last">email address</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_password">
+                                        protected                                        <a href="../../../Sphp/Core/Security/Password.html"><abbr title="Sphp\Core\Security\Password">Password</abbr></a>
+                </td>
+                <td>$password</td>
+                <td class="last">password</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_permissions">
+                                        protected                                        <a href="../../../Sphp/Core/Security/Permissions.html"><abbr title="Sphp\Core\Security\Permissions">Permissions</abbr></a>
+                </td>
+                <td>$permissions</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(array $data = [])
+        
+                                            <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the string representation of the object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Objects/AbstractArrayableObject.html#method___toString"><abbr title="Sphp\Objects\AbstractArrayableObject">AbstractArrayableObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_existsIn">existsIn</a>( $em)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isManagedBy">isManagedBy</a>( $em)
+        
+                                            <p>Inserts the user as a new instance to the database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_isManagedBy"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_replaceIn">replaceIn</a>( $em)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_replaceIn"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_insertAsNewInto">insertAsNewInto</a>( $em)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_insertAsNewInto"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteFrom">deleteFrom</a>( $em)
+        
+                                            <p>Inserts the user as a new instance to the database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_deleteFrom"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUsername">getUsername</a>()
+        
+                                            <p>Returns the username</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUsername">setUsername</a>(string $username)
+        
+                                            <p>Sets the username</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getEmail">getEmail</a>()
+        
+                                            <p>Returns the email address</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEmail">setEmail</a>(string $email)
+        
+                                            <p>Sets the email address</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPermissions">getPermissions</a>()
+        
+                                            <p>Returns the permissions of the user</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPermissions">setPermissions</a>(null|scalar|<a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $permissions)
+        
+                                            <p>Sets the permissions of the user</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Core/Security/PasswordInterface.html"><abbr title="Sphp\Core\Security\PasswordInterface">PasswordInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPassword">getPassword</a>()
+        
+                                            <p>Returns the hashed password of the user</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPlainPassword">setPlainPassword</a>($password)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPassword">setPassword</a>( $password)
+        
+                                            <p>Sets the hashed password of the user</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Objects/ArrayableObjectInterface.html"><abbr title="Sphp\Objects\ArrayableObjectInterface">ArrayableObjectInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromArray">fromArray</a>(array $data = [])
+        
+                                            <p>Resets all the member values from a given raw data source</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPrimaryKey">getPrimaryKey</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPrimaryKey">setPrimaryKey</a>($id)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_equals">equals</a>(mixed $object)
+        
+                                            <p>Determines whether the specified object is equal to the current object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_usernameTaken">usernameTaken</a>( $em)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_emailTaken">emailTaken</a>( $em)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toArray">toArray</a>()
+        
+                                            <p>Serializes to an array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 67</div>
+        <code>                    
+    <strong>__construct</strong>(array $data = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>the initial raw data from which to parse the object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../Sphp/Objects/AbstractArrayableObject.html#method___toString"><abbr title="Sphp\Objects\AbstractArrayableObject">AbstractArrayableObject</abbr></a> at         line 31</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the string representation of the object</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the string representation of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_existsIn">
+        <div class="location">at         line 150</div>
+        <code>                    
+    <strong>existsIn</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isManagedBy">
+        <div class="location">in <a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_isManagedBy"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a> at         line 28</div>
+        <code>                    boolean
+    <strong>isManagedBy</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Inserts the user as a new instance to the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td>the entity manager</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the operation was succesfull, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replaceIn">
+        <div class="location">in <a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_replaceIn"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a> at         line 32</div>
+        <code>                    
+    <strong>replaceIn</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_insertAsNewInto">
+        <div class="location">in <a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_insertAsNewInto"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a> at         line 45</div>
+        <code>                    boolean
+    <strong>insertAsNewInto</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td>the entity manager</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the operation was succesfull, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteFrom">
+        <div class="location">in <a href="../../../Sphp/Db/Objects/AbstractDbObject.html#method_deleteFrom"><abbr title="Sphp\Db\Objects\AbstractDbObject">AbstractDbObject</abbr></a> at         line 51</div>
+        <code>                    boolean
+    <strong>deleteFrom</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Inserts the user as a new instance to the database</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td>the entity manager</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the operation was succesfull, false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUsername">
+        <div class="location">at         line 71</div>
+        <code>                    string
+    <strong>getUsername</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the username</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the username</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUsername">
+        <div class="location">at         line 75</div>
+        <code>                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+    <strong>setUsername</strong>(string $username)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the username</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td>the username</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEmail">
+        <div class="location">at         line 80</div>
+        <code>                    string
+    <strong>getEmail</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the email address</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the email address</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEmail">
+        <div class="location">at         line 84</div>
+        <code>                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+    <strong>setEmail</strong>(string $email)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the email address</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$email</td>
+                <td>the email address</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPermissions">
+        <div class="location">at         line 89</div>
+        <code>                    <a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>getPermissions</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the permissions of the user</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td>the permissions of the user</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPermissions">
+        <div class="location">at         line 93</div>
+        <code>                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+    <strong>setPermissions</strong>(null|scalar|<a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $permissions)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the permissions of the user</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>null|scalar|<a href="../../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+                <td>$permissions</td>
+                <td>the permissions of the user</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPassword">
+        <div class="location">at         line 101</div>
+        <code>                    <a href="../../../Sphp/Core/Security/PasswordInterface.html"><abbr title="Sphp\Core\Security\PasswordInterface">PasswordInterface</abbr></a>
+    <strong>getPassword</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the hashed password of the user</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Core/Security/PasswordInterface.html"><abbr title="Sphp\Core\Security\PasswordInterface">PasswordInterface</abbr></a></td>
+            <td>the hashed password of the user</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPlainPassword">
+        <div class="location">at         line 105</div>
+        <code>                    
+    <strong>setPlainPassword</strong>($password)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPassword">
+        <div class="location">at         line 110</div>
+        <code>                    <a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a>
+    <strong>setPassword</strong>( $password)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the hashed password of the user</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$password</td>
+                <td>the password of the user</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Db/Objects/UserInterface.html"><abbr title="Sphp\Db\Objects\UserInterface">UserInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromArray">
+        <div class="location">at         line 115</div>
+        <code>                    <a href="../../../Sphp/Objects/ArrayableObjectInterface.html"><abbr title="Sphp\Objects\ArrayableObjectInterface">ArrayableObjectInterface</abbr></a>
+    <strong>fromArray</strong>(array $data = [])
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Resets all the member values from a given raw data source</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>raw source data</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Objects/ArrayableObjectInterface.html"><abbr title="Sphp\Objects\ArrayableObjectInterface">ArrayableObjectInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrimaryKey">
+        <div class="location">at         line 132</div>
+        <code>                    
+    <strong>getPrimaryKey</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPrimaryKey">
+        <div class="location">at         line 136</div>
+        <code>                    
+    <strong>setPrimaryKey</strong>($id)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location">at         line 141</div>
+        <code>                    boolean
+    <strong>equals</strong>(mixed $object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determines whether the specified object is equal to the current object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$object</td>
+                <td>the object to compare with the current object</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the specified object is equal to the current
+        object; otherwise false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_usernameTaken">
+        <div class="location">at         line 173</div>
+        <code>                    boolean
+    <strong>usernameTaken</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td>the entity manager</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if users username is already taken by another user entity</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emailTaken">
+        <div class="location">at         line 191</div>
+        <code>                    boolean
+    <strong>emailTaken</strong>( $em)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$em</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toArray">
+        <div class="location">at         line 204</div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Serializes to an array</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>the instance as an array</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

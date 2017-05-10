@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Html | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="namespace" data-name="namespace:Sphp_Html" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                <div class="namespace-breadcrumbs">
+        <ol class="breadcrumb">
+            <li><span class="label label-default">Namespace</span></li>
+                                                        <li><a href="../Sphp.html">Sphp</a></li>
+                                        <li><a href="../Sphp/Html.html">Html</a></li>
+    
+        </ol>
+    </div>
+            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Sphp\Html</h1>
+    </div>
+
+            <h2>Namespaces</h2>
+        <div class="namespace-list">
+            <a href="../Sphp/Html/Adapters.html">Sphp\Html\Adapters</a><a href="../Sphp/Html/Apps.html">Sphp\Html\Apps</a><a href="../Sphp/Html/Attributes.html">Sphp\Html\Attributes</a><a href="../Sphp/Html/Forms.html">Sphp\Html\Forms</a><a href="../Sphp/Html/Foundation.html">Sphp\Html\Foundation</a><a href="../Sphp/Html/Head.html">Sphp\Html\Head</a><a href="../Sphp/Html/Headings.html">Sphp\Html\Headings</a><a href="../Sphp/Html/Icons.html">Sphp\Html\Icons</a><a href="../Sphp/Html/Lists.html">Sphp\Html\Lists</a><a href="../Sphp/Html/Media.html">Sphp\Html\Media</a><a href="../Sphp/Html/Navigation.html">Sphp\Html\Navigation</a><a href="../Sphp/Html/Programming.html">Sphp\Html\Programming</a><a href="../Sphp/Html/Sections.html">Sphp\Html\Sections</a><a href="../Sphp/Html/Tables.html">Sphp\Html\Tables</a>        </div>
+    
+            <h2>Classes</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Abstract Class provides a simple implementation of the component containing other components
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractContainer.html"><abbr title="Sphp\Html\AbstractContainer">AbstractContainer</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements a container for HTML components and other textual content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class provides a simple implementation of a container tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractContainerTag.html"><abbr title="Sphp\Html\AbstractContainerTag">AbstractContainerTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class is the base class for all HTML tag components acting as HTML component containers
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractJavaScriptComponent.html"><abbr title="Sphp\Html\AbstractJavaScriptComponent">AbstractJavaScriptComponent</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class AbstractComponent provides a simple implementation of the {@link Tag}.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractSimpleContainerTag.html"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class is the base class for all HTML tag components acting as HTML component containers
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AbstractTag.html"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Abstract Class is the base class for all HTML tag implementations
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link AjaxLoaderInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Body.html"><abbr title="Sphp\Html\Body">Body</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;body&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements a container for HTML components and other textual content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class is the base class for all HTML tag components acting as HTML component containers
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/ContainerTag.html"><abbr title="Sphp\Html\ContainerTag">ContainerTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class is the base class for all HTML tag components acting as HTML component containers
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements functionality of the {@link ContentParserInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements parts of the {@link ContentInterface} interface
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Div.html"><abbr title="Sphp\Html\Div">Div</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;div&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Document.html"><abbr title="Sphp\Html\Document">Document</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Document class contains basic Sphp HTML tag component creation and HTML version handing.
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/EmptyTag.html"><abbr title="Sphp\Html\EmptyTag">EmptyTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an empty tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Html.html"><abbr title="Sphp\Html\Html">Html</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;html&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Iterator.html"><abbr title="Sphp\Html\Iterator">Iterator</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements a basic iterator for HTML content
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/MdContainer.html"><abbr title="Sphp\Html\MdContainer">MdContainer</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements a Markdown container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/SimpleContainerTag.html"><abbr title="Sphp\Html\SimpleContainerTag">SimpleContainerTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class is the base class for all HTML tag components acting as HTML component containers
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/Span.html"><abbr title="Sphp\Html\Span">Span</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;span&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/TimeTag.html"><abbr title="Sphp\Html\TimeTag">TimeTag</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Implements an HTML &lt;time&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/TraversableTrait.html"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements some {@link TraversableInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/WrappingContainer.html"><abbr title="Sphp\Html\WrappingContainer">WrappingContainer</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Class defines common features for wrapping HTML container like aa list or a table etc.
+                </div>
+            </div>
+            </div>
+    
+            <h2>Interfaces</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/AjaxLoaderInterface.html"><abbr title="Sphp\Html\AjaxLoaderInterface">AjaxLoaderInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the functionality of an Ajax content loader component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of any HTML component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/ContainerComponentInterface.html"><abbr title="Sphp\Html\ContainerComponentInterface">ContainerComponentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a HTML component acting as a traversable component container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container with
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines basic features for all HTML structures
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/ContentParserInterface.html"><abbr title="Sphp\Html\ContentParserInterface">ContentParserInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines a resource container
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/IdentifiableInterface.html"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the basic functionality of an identifiable HTML component
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/NonVisualContentInterface.html"><abbr title="Sphp\Html\NonVisualContentInterface">NonVisualContentInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines non visual HTML structures
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/SimpleContainerInterface.html"><abbr title="Sphp\Html\SimpleContainerInterface">SimpleContainerInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container with
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/TagInterface.html"><abbr title="Sphp\Html\TagInterface">TagInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Interface is the base for all HTML tag implementations
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/TimeTagInterface.html"><abbr title="Sphp\Html\TimeTagInterface">TimeTagInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines an HTML &lt;time&gt; tag
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></em>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Defines the properties required from a traversable HTML component container
+                </div>
+            </div>
+            </div>
+    
+            <h2>Exceptions</h2>
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../Sphp/Html/HtmlException.html"><abbr title="Sphp\Html\HtmlException">HtmlException</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    The base Exception in the {@link \Sphp\Html} namespace
+                </div>
+            </div>
+            </div>
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
