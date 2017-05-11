@@ -2,10 +2,10 @@
 ---
 
 driver: pdo_mysql
+host: db.samiholck.com
+dbname: int48291_playground
 user: int48291_player
 password: #cUnKHFC_fcU
-host: db.samiholck.com
 charset: utf8
-dbname: int48291_playground
 driverOptions: 
   1002: SET NAMES utf8

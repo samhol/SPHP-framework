@@ -215,7 +215,6 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Accordion;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 
 //use Sphp\Html\Programming\Script as Script;
-//(new Script)->setSrc(\Sphp\HTTP_ROOT . "sphpManual/js/htmlToPHP.js")->printHtml();
 $accordions = (new Accordion())
         ->allowAllClosed(true)
         ->allowMultiExpand(true)

@@ -265,7 +265,7 @@ class ImageScaler {
    * @return string the directory part of the cached image path
    */
   private function getCacheDir() {
-    return \Sphp\Images\CACHE . "/" . $this->cacheFolderName;
+    return "sphp/image/cache/" . $this->cacheFolderName;
   }
 
   /**
@@ -310,7 +310,7 @@ class ImageScaler {
    * Returns the http path to the cached image
    * 
    * @param  Box $box optional box object defining the size of the created image. 
-   *         If none given ccurrent size is used.
+   *         If none given current size is used.
    * @return string the http path to the cached image
    */
   public function httpCachePath(Box $box = null) {
@@ -318,7 +318,7 @@ class ImageScaler {
       $box = $this->box;
     }
     $filename = $this->getCacheFilename($box);
-    return \Sphp\Images\CACHE_HTTP . "/" . $this->cacheFolderName . $filename;
+    return "sphp/image/cache/" . $this->cacheFolderName . $filename;
   }
 
   /**

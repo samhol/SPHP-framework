@@ -3,6 +3,9 @@
 /**
  * This file holds the common settings to the PHP project
  */
-
+use Sphp\Config\PHPConfig;
 require_once('vendor/autoload.php');
-require_once('applicationConstants.php');
+
+(new PHPConfig())
+        ->setIncludePaths(__DIR__)
+        ->init();

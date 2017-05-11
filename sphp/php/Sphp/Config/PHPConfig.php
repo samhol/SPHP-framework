@@ -103,24 +103,22 @@ class PHPConfig {
   /**
    * Set the internal character encoding
    *
-   * @param  mixed $encoding character encoding: default is `utf-8`
+   * @param  mixed $encoding character encoding: default is `UTF-8`
    * @return self for a fluent interface
    */
   public function setEncoding($encoding = 'UTF-8') {
     $this->setFunc('mb_internal_encoding', [$encoding]);
-    //mb_internal_encoding($encoding);
     return $this;
   }
 
   /**
-   * Sets the default timezone used by all date/time functions in a script
+   * Sets the default time zone used by all date/time functions in a script
    *
-   * @param  string $timezone the timezone identifier
+   * @param  string $timezone the time zone identifier
    * @return self for a fluent interface
    */
   public function setDefaultTimezone($timezone) {
     $this->setFunc('date_default_timezone_set', [$timezone]);
-    //date_default_timezone_set($timezone);
     return $this;
   }
 
@@ -159,6 +157,31 @@ class PHPConfig {
    */
   public function setErrorHandler(callable $handler) {
     $this->setFunc('set_error_handler', [$handler]);
+    return $this;
+  }
+
+  /**
+   * 
+   * @return string[]
+   */
+  public function getCurrentIncludePaths() {
+    $pathString = get_include_path();
+    return array_unique(explode(\PATH_SEPARATOR, $pathString));
+  }
+
+  /**
+   * 
+   * @param  string|string[] $paths
+   * @return self for a fluent interface
+   * @link   http://php.net/manual/en/function.set-include-path.php PHP manual
+   */
+  public function setIncludePaths($paths) {
+    if (is_string($paths)) {
+      $paths = [$paths];
+    }
+    $pathArray = array_unique(array_merge_recursive($this->getCurrentIncludePaths(), $paths));
+    $newPaths = implode(\PATH_SEPARATOR, $pathArray);
+    $this->setFunc('set_include_path', [$newPaths]);
     return $this;
   }
 

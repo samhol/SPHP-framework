@@ -30,6 +30,7 @@ if (!isset($w3schools)) {
 if (!isset($parsedown)) {
   $parsedown = \ParsedownExtraPlugin::instance();
 }
+use Sphp\Stdlib\Filesystem;
 /**
  * Loads page
  * 
@@ -38,13 +39,14 @@ if (!isset($parsedown)) {
 $load = function($page) use ($api, $php, $foundation, $w3schools, $parsedown, &$load) {
   try {
     ob_start();
+    //echo get_include_path();
     $page = addPHPSuffix($page);
     //$examplePath = \Sphp\Manual\EXAMPLE_FOLDER . "/" . $page;
-    $pagePath = __DIR__ . "/$page";
+    $pagePath = "$page";
     //if (is_file($examplePath)) {
     // include($examplePath);
     //} else 
-    if (is_file($pagePath)) {
+    if (Filesystem::isFile($pagePath)) {
       include($pagePath);
     } else {
       throw new \InvalidArgumentException("the path '$page' contains no executable PHP script");

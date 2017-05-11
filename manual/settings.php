@@ -9,16 +9,22 @@ use Sphp\Config\ErrorHandling\ExceptionLogger;
 use Sphp\Config\ErrorHandling\ExceptionPrinter;
 
 $handler = new ExceptionHandler();
-// Attach an Exception Logger
 $handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
 $handler->attach((new ExceptionPrinter())->showTrace());
 $handler->start();
 
+$includePaths = [
+    realpath(__DIR__ . '/../'),
+    __DIR__,
+    __DIR__ . '/examples',
+    __DIR__ . '/pages'
+];
 (new PHPConfig())
         ->setErrorReporting(E_ALL)
         ->setDefaultTimezone('Europe/Helsinki')
         ->setEncoding('UTF-8')
+        ->setIncludePaths($includePaths)
         ->init();
-error_reporting(E_ALL);
 require_once('doctrineConfiguration.php');
+//require_once('session.php');
 require_once('menuArrays.php');
