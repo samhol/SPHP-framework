@@ -19,6 +19,6 @@ $handler->start();
         ->setDefaultTimezone('Europe/Helsinki')
         ->setEncoding('UTF-8')
         ->init();
-
+error_reporting(E_ALL);
 require_once('doctrineConfiguration.php');
 require_once('menuArrays.php');

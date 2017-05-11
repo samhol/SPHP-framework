@@ -17,7 +17,7 @@ $dbParams = array(
     'dbname' => 'sphp',
     'driverOptions' => [1002 => 'SET NAMES utf8']
 );
-
+$dbParams = \Sphp\Stdlib\Parser::fromFile('manual/config/db.yaml');
 $applicationMode = 'development';
 if ($applicationMode == 'development') {
   $cache = new \Doctrine\Common\Cache\ArrayCache;

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/manual/examples' . PATH_SEPARATOR . __DIR__);
 require_once('manual/settings.php');
-//include_once('sphp/php/components/sessioning.php');
+include_once('sphp/php/components/sessioning.php');
 ob_implicit_flush(true);
 require_once('manual/htmlHead.php');
 

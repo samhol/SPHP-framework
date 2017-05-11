@@ -1,108 +1,256 @@
-Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
-#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
-#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
-#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
-#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
-#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
-#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
-#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
-#4 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Zend\Cache\Exception\InvalidArgumentException: Cache directory 'cache' not found or not a directory in /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php:129
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+#0 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(106): Zend\Cache\Storage\Adapter\FilesystemOptions->setCacheDir('cache')
+#1 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(64): Zend\Stdlib\AbstractOptions->__set('cache_dir', 'cache')
+#2 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/AdapterOptions.php(339): Zend\Stdlib\AbstractOptions->setFromArray(Array)
+#3 /home/int48291/public_html/playground/vendor/zendframework/zend-stdlib/src/AbstractOptions.php(34): Zend\Cache\Storage\Adapter\AdapterOptions->setFromArray(Array)
+#4 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/FilesystemOptions.php(115): Zend\Stdlib\AbstractOptions->__construct(Array)
+#5 /home/int48291/public_html/playground/vendor/zendframework/zend-cache/src/Storage/Adapter/Filesystem.php(73): Zend\Cache\Storage\Adapter\FilesystemOptions->__construct(Array)
+#6 /home/int48291/public_html/playground/index.php(13): Zend\Cache\Storage\Adapter\Filesystem->setOptions(Array)
+#7 {main}Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
-#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
-#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
-#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
-#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}
+
+Next Sphp\Exceptions\RuntimeException: PHP parsing failed for Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
-#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
-#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
-#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
-#4 {main}Sphp\Exceptions\RuntimeException: The path 'manual/yaml/documentation_links.yaml' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Filesystem.php:46
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main} in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:89
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Parser.php(80): Sphp\Stdlib\Filesystem::getFullPath('manual/yaml/doc...')
-#1 D:\web_projects\SPHP-framework\manual\menuArrays.php(5): Sphp\Stdlib\Parser::fromFile('manual/yaml/doc...')
-#2 D:\web_projects\SPHP-framework\manual\settings.php(24): require_once('D:\\web_projects...')
-#3 D:\web_projects\SPHP-framework\index.php(5): require_once('D:\\web_projects...')
-#4 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}
+
+Next Sphp\Exceptions\RuntimeException: PHP parsing failed for Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main} in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:89
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
-#5 {main}Sphp\Exceptions\InvalidArgumentException: Relative path 'sphp/js/vendor/' does not exist in D:\web_projects\SPHP-framework\sphp\php\Sphp\Stdlib\Path.php:98
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
 Stack trace:
-#0 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Programming\SphpScriptsLoader.php(34): Sphp\Stdlib\Path->http('sphp/js/vendor/')
-#1 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Body.php(76): Sphp\Html\Programming\SphpScriptsLoader->__construct()
-#2 D:\web_projects\SPHP-framework\sphp\php\Sphp\Html\Html.php(129): Sphp\Html\Body->enableSPHP()
-#3 D:\web_projects\SPHP-framework\manual\htmlHead.php(27): Sphp\Html\Html->enableSPHP()
-#4 D:\web_projects\SPHP-framework\index.php(8): require_once('D:\\web_projects...')
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}
+
+Next Sphp\Exceptions\RuntimeException: PHP parsing failed for Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main} in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:89
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}
+
+Next Sphp\Exceptions\RuntimeException: PHP parsing failed for Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main} in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:89
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}
+
+Next Sphp\Exceptions\RuntimeException: PHP parsing failed for Sphp\Exceptions\RuntimeException: The path 'LICENSE.md' contains no executable PHP script in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:83
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main} in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Filesystem.php:89
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Html/ContentParsingTrait.php(73): Sphp\Stdlib\Filesystem::executePhpToString('LICENSE.md')
+#1 /home/int48291/public_html/playground/manual/licenseRevealer.php(7): Sphp\Html\AbstractContainerTag->appendMdFile('LICENSE.md')
+#2 /home/int48291/public_html/playground/manual/_footer_.php(27): include_once('/home/int48291/...')
+#3 /home/int48291/public_html/playground/index.php(73): include('/home/int48291/...')
+#4 {main}Error: Class 'Sphp\Html\Foundation\Sites\Navigation\Timer' not found in /home/int48291/public_html/playground/index.php:43
+Stack trace:
+#0 {main}Symfony\Component\Yaml\Exception\ParseException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/vendor/symfony/yaml/Parser.php:289
+Stack trace:
+#0 /home/int48291/public_html/playground/vendor/symfony/yaml/Yaml.php(79): Symfony\Component\Yaml\Parser->parse('  driver: pdo_m...', 0)
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php(26): Symfony\Component\Yaml\Yaml::parse('## DB connectio...')
+#2 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#3 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#4 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#5 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#6 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#7 {main}
+
+Next Sphp\Exceptions\RuntimeException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php:28
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#2 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#3 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#4 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#5 {main}Symfony\Component\Yaml\Exception\ParseException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/vendor/symfony/yaml/Parser.php:289
+Stack trace:
+#0 /home/int48291/public_html/playground/vendor/symfony/yaml/Yaml.php(79): Symfony\Component\Yaml\Parser->parse('  driver: pdo_m...', 0)
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php(26): Symfony\Component\Yaml\Yaml::parse('## DB connectio...')
+#2 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#3 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#4 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#5 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#6 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#7 {main}
+
+Next Sphp\Exceptions\RuntimeException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php:28
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#2 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#3 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#4 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#5 {main}Symfony\Component\Yaml\Exception\ParseException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/vendor/symfony/yaml/Parser.php:289
+Stack trace:
+#0 /home/int48291/public_html/playground/vendor/symfony/yaml/Yaml.php(79): Symfony\Component\Yaml\Parser->parse('  driver: pdo_m...', 0)
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php(26): Symfony\Component\Yaml\Yaml::parse('## DB connectio...')
+#2 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#3 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#4 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#5 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#6 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#7 {main}
+
+Next Sphp\Exceptions\RuntimeException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php:28
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#2 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#3 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#4 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#5 {main}Symfony\Component\Yaml\Exception\ParseException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/vendor/symfony/yaml/Parser.php:289
+Stack trace:
+#0 /home/int48291/public_html/playground/vendor/symfony/yaml/Yaml.php(79): Symfony\Component\Yaml\Parser->parse('  driver: pdo_m...', 0)
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php(26): Symfony\Component\Yaml\Yaml::parse('## DB connectio...')
+#2 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#3 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#4 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#5 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#6 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
+#7 {main}
+
+Next Sphp\Exceptions\RuntimeException: Unable to parse at line 3 (near "  driver: pdo_mysql"). in /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/Yaml.php:28
+Stack trace:
+#0 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Reader/AbstractReader.php(26): Sphp\Stdlib\Reader\Yaml->fromString('## DB connectio...')
+#1 /home/int48291/public_html/playground/sphp/php/Sphp/Stdlib/Parser.php(102): Sphp\Stdlib\Reader\AbstractReader->fromFile('/home/int48291/...')
+#2 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
+#3 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
+#4 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
 #5 {main}
