@@ -81,7 +81,7 @@ abstract class AbstractTag implements TagInterface {
    */
   private function setTagName($tagName) {
     if (!Strings::match($tagName, "/^([a-z]+[1-6]{0,1})$/")) {
-      throw new InvalidArgumentException("'$tagName' is malformed");
+      throw new InvalidArgumentException("The tag name '$tagName' is malformed");
     }
     $this->tagName = $tagName;
     return $this;
