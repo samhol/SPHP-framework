@@ -10,13 +10,9 @@ include_once('manual/htmlHead.php');
     <pre>
       <?php
 
-      namespace Sphp\Config\ErrorHandling;
+      namespace Sphp\Db\Objects;
 
-$handler = new ExceptionHandler();
-
-      $handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
-      $handler->attach((new ExceptionPrinter())->showTrace());
-      
+      $locations = new LocationStorage(EntityManagerFactory::get());
       
       ?>
     </pre>

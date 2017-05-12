@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\ApiGen;
 
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;

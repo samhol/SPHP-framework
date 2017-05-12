@@ -5,7 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\ApiGen;
+
+use Sphp\Html\Apps\Manual\UrlGenerator;
+use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
 
 /**
  * ApiGen URL string generator pointing to an existing ApiGen documentation
@@ -39,7 +42,7 @@ class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterfac
   public function getFunctionUrl($function) {
     return $this->create("function-$function.html");
   }
-  
+
   public function getConstantUrl($constant) {
     $path = str_replace('\\', '.', $constant);
     return $this->createUrl("constant-$path.html");

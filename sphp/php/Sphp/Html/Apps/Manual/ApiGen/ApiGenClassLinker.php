@@ -5,8 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\ApiGen;
 
+use Sphp\Html\Apps\Manual\AbstractClassLinker;
+use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
