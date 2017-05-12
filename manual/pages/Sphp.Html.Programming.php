@@ -5,12 +5,12 @@ namespace Sphp\Html\Programming;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$scriptInterface = Apis::apigen()->classLinker(ScriptInterface::class);
-$scriptCode = Apis::apigen()->classLinker(ScriptCode::class);
-$scriptFile = Apis::apigen()->classLinker(ScriptSrc::class);
-$scriptsContainer = Apis::apigen()->classLinker(ScriptsContainer::class);
-$noscript = Apis::apigen()->classLinker(Noscript::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$scriptInterface = Apis::sami()->classLinker(ScriptInterface::class);
+$scriptCode = Apis::sami()->classLinker(ScriptCode::class);
+$scriptFile = Apis::sami()->classLinker(ScriptSrc::class);
+$scriptsContainer = Apis::sami()->classLinker(ScriptsContainer::class);
+$noscript = Apis::sami()->classLinker(Noscript::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>

@@ -7,10 +7,10 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 Use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
 
-$observer = Apis::apigen()->classLinker(Observer::class);
-$subject = Apis::apigen()->classLinker(Subject::class);
+$observer = Apis::sami()->classLinker(Observer::class);
+$subject = Apis::sami()->classLinker(Subject::class);
 $callable = Apis::phpManual()->typeLink('callable');
-$observableSubjectTrait = Apis::apigen()->classLinker(ObservableSubjectTrait::class);
+$observableSubjectTrait = Apis::sami()->classLinker(ObservableSubjectTrait::class);
 
 echo $parsedown->text(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
@@ -31,8 +31,8 @@ namespace Sphp\Config\ErrorHandling;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$exceptionHandler = Apis::apigen()->classLinker(ExceptionHandler::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$exceptionHandler = Apis::sami()->classLinker(ExceptionHandler::class);
 
 echo $parsedown->text(<<<MD
 

@@ -5,11 +5,11 @@ namespace Sphp\Config;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$config = Apis::apigen()->classLinker(Config::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$config = Apis::sami()->classLinker(Config::class);
 
 echo $parsedown->text(<<<MD
-#APPLICATION CONFIGURATION DATA{#Config}
+#APPLICATION CONFIGURATION{#Config}
 $ns
   
 ##$config OBJECT: <small>a genereal configuration manager</small>{#Config_Config}

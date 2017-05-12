@@ -5,13 +5,13 @@ namespace Sphp\Stdlib\Datastructures;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$stackInterface = Apis::apigen()->classLinker(StackInterface::class);
-$stack = Apis::apigen()->classLinker(Stack::class);
+$stackInterface = Apis::sami()->classLinker(StackInterface::class);
+$stack = Apis::sami()->classLinker(Stack::class);
 $splStack = Apis::phpManual()->classLinker(\SplStack::class);
 
-$queueInterface = Apis::apigen()->classLinker(QueueInterface::class);
-$queue = Apis::apigen()->classLinker(Queue::class);
-$splQueue = Apis::apigen()->classLinker(\SplQueue::class);
+$queueInterface = Apis::sami()->classLinker(QueueInterface::class);
+$queue = Apis::sami()->classLinker(Queue::class);
+$splQueue = Apis::sami()->classLinker(\SplQueue::class);
 
 echo $parsedown->text(<<<MD
 ##Stack and queue implementations

@@ -7,11 +7,11 @@ use Sphp\Html\Foundation\Sites\Navigation\DropdownMenu;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$titleBar = Apis::apigen()->classLinker(TitleBar::class);
-$topBar = Apis::apigen()->classLinker(TopBar::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$menuInterface = Apis::apigen()->classLinker(MenuInterface::class);
-$dropdownMenu = Apis::apigen()->classLinker(DropdownMenu::class);
+$titleBar = Apis::sami()->classLinker(TitleBar::class);
+$topBar = Apis::sami()->classLinker(TopBar::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$menuInterface = Apis::sami()->classLinker(MenuInterface::class);
+$dropdownMenu = Apis::sami()->classLinker(DropdownMenu::class);
 $navigationNs = $menuInterface->namespaceLink(false);
 echo $parsedown->text(<<<MD
 #Foundation bars: <small>wrappers around flexible navigation components</small>

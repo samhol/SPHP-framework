@@ -15,7 +15,7 @@ comparing different dates and times to one another.
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Core/Types/Datetime.php', 'text', false))
+(new CodeExampleBuilder('Sphp/Stdlib/Types/Datetime.php', 'text', false))
 		->setExamplePaneTitle('Comparisons example PHP code')
 		->setOutputPaneTitle('Comparison results')
 		->printHtml();

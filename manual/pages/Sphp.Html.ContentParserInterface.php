@@ -5,18 +5,18 @@ namespace Sphp\Html;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$contentParserInterface = Apis::apigen()->classLinker(ContentParserInterface::class);
-$contentParsingTrait = Apis::apigen()->classLinker(ContentParsingTrait::class);
-$ns = Apis::apigen()->namespaceLink(__NAMESPACE__);
-$documentLink = Apis::apigen()->classLinker(Document::class);
-$contentInterface = Apis::apigen()->classLinker(ContentInterface::class);
+$contentParserInterface = Apis::sami()->classLinker(ContentParserInterface::class);
+$contentParsingTrait = Apis::sami()->classLinker(ContentParsingTrait::class);
+$ns = Apis::sami()->namespaceLink(__NAMESPACE__);
+$documentLink = Apis::sami()->classLinker(Document::class);
+$contentInterface = Apis::sami()->classLinker(ContentInterface::class);
 $exeption = Apis::phpManual()->classLinker(\Exception::class);
-$componentInterface = Apis::apigen()->classLinker(ComponentInterface::class);
-$emptyTag = Apis::apigen()->classLinker(EmptyTag::class);
-$containerInterface = Apis::apigen()->classLinker(ContainerInterface::class);
-$containerComponentInterface = Apis::apigen()->classLinker(ContainerComponentInterface::class);
-$contentTrait = Apis::apigen()->classLinker(ContentTrait::class);
-$nsbc = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
+$emptyTag = Apis::sami()->classLinker(EmptyTag::class);
+$containerInterface = Apis::sami()->classLinker(ContainerInterface::class);
+$containerComponentInterface = Apis::sami()->classLinker(ContainerComponentInterface::class);
+$contentTrait = Apis::sami()->classLinker(ContentTrait::class);
+$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Server side content parsing: <small>$contentParserInterface implementations</small>
 
@@ -56,7 +56,7 @@ MD
 );
 
 CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
-$containerTag = Apis::apigen()->classLinker(ContainerTag::class);
+$containerTag = Apis::sami()->classLinker(ContainerTag::class);
 echo $parsedown->text(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.

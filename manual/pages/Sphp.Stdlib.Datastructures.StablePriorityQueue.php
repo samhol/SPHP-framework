@@ -5,7 +5,7 @@ namespace Sphp\Stdlib\Datastructures;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$stablePriorityQueue = Apis::apigen()->classLinker(StablePriorityQueue::class);
+$stablePriorityQueue = Apis::sami()->classLinker(StablePriorityQueue::class);
 $splPriorityQueue = Apis::phpManual()->classLinker(\SplPriorityQueue::class);
 echo $parsedown->text(
         <<<MD

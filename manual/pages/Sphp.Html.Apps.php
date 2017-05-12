@@ -4,7 +4,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #MISCELLANEOUS HTML COMPONENTS AND APPLICATIONS
         

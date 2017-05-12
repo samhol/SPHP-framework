@@ -5,11 +5,11 @@ namespace Sphp\Stdlib\Events;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$eventInterface = Apis::apigen()->classLinker(EventInterface::class);
-$eventClass = Apis::apigen()->classLinker(Event::class);
-$eventListenerInterface = Apis::apigen()->classLinker(EventListenerInterface::class);
-$eventDispatcherInterface = Apis::apigen()->classLinker(EventDispatcherInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$eventInterface = Apis::sami()->classLinker(EventInterface::class);
+$eventClass = Apis::sami()->classLinker(Event::class);
+$eventListenerInterface = Apis::sami()->classLinker(EventListenerInterface::class);
+$eventDispatcherInterface = Apis::sami()->classLinker(EventDispatcherInterface::class);
 echo $parsedown->text(<<<MD
 #EVENTS AND OBSERVERS
 		
@@ -48,6 +48,6 @@ Here are some examples of good event names:
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Core/Events/EventManager.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/Events/EventManager.php', 'text', false);
 
 $load('Sphp.Stdlib.Observers');

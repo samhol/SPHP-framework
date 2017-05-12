@@ -5,9 +5,9 @@ namespace Sphp\Html\Forms\Inputs\Menus;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$selectLink = Apis::apigen()->classLinker(Select::class);
-$option = Apis::apigen()->classLinker(Option::class);
-$optGroup = Apis::apigen()->classLinker(Optgroup::class);
+$selectLink = Apis::sami()->classLinker(Select::class);
+$option = Apis::sami()->classLinker(Option::class);
+$optGroup = Apis::sami()->classLinker(Optgroup::class);
 echo $parsedown->text(<<<MD
 ###The $selectLink component
 	

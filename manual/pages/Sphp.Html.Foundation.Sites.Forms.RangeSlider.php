@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
-$rangeSlider = Apis::apigen()->classLinker(RangeSlider::class);
+$rangeSlider = Apis::sami()->classLinker(RangeSlider::class);
 
 
 echo $parsedown->text(<<<MD

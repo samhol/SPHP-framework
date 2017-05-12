@@ -5,11 +5,11 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$table = Apis::apigen()->classLinker(Table::class);
-$tr = Apis::apigen()->classLinker(Tr::class);
-$td = Apis::apigen()->classLinker(Td::class);
-$th = Apis::apigen()->classLinker(Th::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$table = Apis::sami()->classLinker(Table::class);
+$tr = Apis::sami()->classLinker(Tr::class);
+$td = Apis::sami()->classLinker(Td::class);
+$th = Apis::sami()->classLinker(Th::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML TABLES: <small>for tabular data</small>
 
@@ -35,7 +35,7 @@ MD
 $example = new CodeExampleBuilder('Sphp/Html/Tables/Table.php', false, true);
 $example->setExamplePaneTitle('HTML table example');
 $example->printHtml();
-$tableBuilder = Apis::apigen()->classLinker(TableBuilder::class);
+$tableBuilder = Apis::sami()->classLinker(TableBuilder::class);
 echo $parsedown->text(<<<MD
 ##TABLE BUILDER: <small>The $tableBuilder Class</small>
 

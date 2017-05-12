@@ -5,11 +5,11 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$videoPlayerInterface = Apis::apigen()->classLinker(VideoPlayerInterface::class);
-$abstractVideoPlayer = Apis::apigen()->classLinker(AbstractVideoPlayer::class);
-$dailyMotionPlayer = Apis::apigen()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = Apis::apigen()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = Apis::apigen()->classLinker(VimeoPlayer::class);
+$videoPlayerInterface = Apis::sami()->classLinker(VideoPlayerInterface::class);
+$abstractVideoPlayer = Apis::sami()->classLinker(AbstractVideoPlayer::class);
+$dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
 echo $parsedown->text(<<<MD
 ##The $videoPlayerInterface for various Internet video subscribers
         

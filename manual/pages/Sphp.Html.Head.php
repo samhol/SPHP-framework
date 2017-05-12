@@ -5,18 +5,18 @@ namespace Sphp\Html\Head;
 use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-$headNS = Apis::apigen()->namespaceLink(__NAMESPACE__);
-$metaIfLnk = Apis::apigen()->classLinker(HeadComponentInterface::class);
-$head = Apis::apigen()->classLinker(Head::class);
-$title = Apis::apigen()->classLinker(Title::class);
-$metaInterface = Apis::apigen()->classLinker(MetaInterface::class);
-$metaContainer = Apis::apigen()->classLinker(MetaContainer::class);
-$meta = Apis::apigen()->classLinker(Meta::class);
-$base = Apis::apigen()->classLinker(Base::class);
-$link = Apis::apigen()->classLinker(Link::class);
-$scriptInterface = Apis::apigen()->classLinker(ScriptInterface::class);
+$headNS = Apis::sami()->namespaceLink(__NAMESPACE__);
+$metaIfLnk = Apis::sami()->classLinker(HeadComponentInterface::class);
+$head = Apis::sami()->classLinker(Head::class);
+$title = Apis::sami()->classLinker(Title::class);
+$metaInterface = Apis::sami()->classLinker(MetaInterface::class);
+$metaContainer = Apis::sami()->classLinker(MetaContainer::class);
+$meta = Apis::sami()->classLinker(Meta::class);
+$base = Apis::sami()->classLinker(Base::class);
+$link = Apis::sami()->classLinker(Link::class);
+$scriptInterface = Apis::sami()->classLinker(ScriptInterface::class);
 $w3schools = Apis::w3schools();
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
         

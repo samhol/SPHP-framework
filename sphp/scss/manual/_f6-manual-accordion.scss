@@ -5,7 +5,7 @@
  */
 
 $unit: rem-calc(4);
-.mainContent > .accordion {
+.accordion {
   .html-output .accordion-content {
     padding: rem-calc(10 10 10 10); /* top right bottom left */
     table {
@@ -29,6 +29,7 @@ $unit: rem-calc(4);
     };
   }
   .accordion-title, .accordion-content {
+    //@include accordion-title;
     border: solid 1px #444;
     @include border-radius($unit);
     //overflow: hidden;

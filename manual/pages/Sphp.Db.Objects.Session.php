@@ -5,10 +5,10 @@ namespace Sphp\Db\Objects;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
-$sessionUser = Apis::apigen()->classLinker(SessionUser::class);
-$sessionUsers = Apis::apigen()->classLinker(SessionUserStorage::class);
+$sessionUser = Apis::sami()->classLinker(SessionUser::class);
+$sessionUsers = Apis::sami()->classLinker(SessionUserStorage::class);
 
 echo $parsedown->text(<<<MD
 ##$sessionUser objects and the $sessionUsers storage component

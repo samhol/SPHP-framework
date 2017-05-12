@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $formInterface = $api->classLinker(FormInterface::class);
 $gridForm = $api->classLinker(GridForm::class);
 
-$formsNS = Apis::apigen()->namespaceLink(__NAMESPACE__, false);
+$formsNS = Apis::sami()->namespaceLink(__NAMESPACE__, false);
 echo $parsedown->text(<<<MD
 ##Foundation based input components
         

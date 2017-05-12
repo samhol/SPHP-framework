@@ -5,10 +5,10 @@ namespace Sphp\Html\Forms;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
-$formIfLink = Apis::apigen()->classLinker(FormInterface::class);
-$traversableFormInterface = Apis::apigen()->classLinker(TraversableFormInterface::class);
-$inputInterface = Apis::apigen()->classLinker(InputInterface::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$formIfLink = Apis::sami()->classLinker(FormInterface::class);
+$traversableFormInterface = Apis::sami()->classLinker(TraversableFormInterface::class);
+$inputInterface = Apis::sami()->classLinker(InputInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo $parsedown->text(<<<MD
 #HTML FORMS

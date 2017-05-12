@@ -5,13 +5,13 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$grid = Apis::apigen()->classLinker(Grid::class);
-$row = Apis::apigen()->classLinker(Row::class);
-$col = Apis::apigen()->classLinker(Column::class);
-$cols = Apis::apigen()->classLinker(Column::class, "Columns");
+$grid = Apis::sami()->classLinker(Grid::class);
+$row = Apis::sami()->classLinker(Row::class);
+$col = Apis::sami()->classLinker(Column::class);
+$cols = Apis::sami()->classLinker(Column::class, "Columns");
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
-$gridInterface = Apis::apigen()->classLinker(GridInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$gridInterface = Apis::sami()->classLinker(GridInterface::class);
 $f_GridLink = Apis::foundation()->gridLink(null, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #Foundation 6 Grids and Block Grids    
@@ -21,7 +21,7 @@ MD
 );
 $load('Sphp.Html.Foundation.Sites.Grids.GridInterface');
 
-$blockGrid = Apis::apigen()->classLinker(BlockGrid::class);
+$blockGrid = Apis::sami()->classLinker(BlockGrid::class);
 echo $parsedown->text(<<<MD
 ##The $blockGrid component
 	

@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 

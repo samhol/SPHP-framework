@@ -45,7 +45,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
     $namespace = $this->ref->getNamespaceName();
     $namespaceArray = explode('\\', $namespace);
     $breadCrumbs = new BreadCrumbs();
-    $breadCrumbs->addCssClass(['apigen', 'class']);
+    $breadCrumbs->addCssClass(['api', 'class']);
     $currentNamespace = [];
     foreach ($namespaceArray as $name) {
       $currentNamespace[] = $name;

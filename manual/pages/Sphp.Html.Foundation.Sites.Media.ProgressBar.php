@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$progressBar = Apis::apigen()->classLinker(ProgressBar::class);
+$progressBar = Apis::sami()->classLinker(ProgressBar::class);
 
 echo $parsedown->text(<<<MD
 		

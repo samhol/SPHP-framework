@@ -32,7 +32,7 @@ class Sami extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct(SamiUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'apigen']) {
+  public function __construct(SamiUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = ['api', 'sami']) {
     if ($urlGenerator === null) {
       $urlGenerator = new SamiUrlGenerator();
     }
@@ -40,7 +40,7 @@ class Sami extends AbstractPhpApiLinker {
   }
 
   public function classLinker($class) {
-    return new ApiGenClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
+    return new SamiClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
   public function functionLink($function, $linkText = null) {
@@ -55,7 +55,7 @@ class Sami extends AbstractPhpApiLinker {
     if ($linkText === null) {
       $linkText = $constant;
     }
-    $path = str_replace('\\', '.', $constant);
+    $path = str_replace('\\', '/', $constant);
     return $this->hyperlink($this->createUrl("constant-$path.html"), $linkText, "PHP constant $constant")->addCssClass('constant');
   }
 
@@ -86,14 +86,14 @@ class Sami extends AbstractPhpApiLinker {
    */
   public function namespaceBreadGrumbs($namespace) {
     $namespaceArray = explode('\\', $namespace);
-    $breadGrumbs = (new BreadCrumbs())->addCssClass(['sami', 'namespace']);
+    $breadGrumbs = (new BreadCrumbs())->addCssClass(['api', 'namespace']);
     $currentNamespaceArray = [];
     foreach ($namespaceArray as $name) {
       $currentNamespaceArray[] = $name;
       $path = implode("/", $currentNamespaceArray);
       $root = implode("\\", $currentNamespaceArray);
       $breadCrumb = new BreadCrumb($this->createUrl("$path.html"), $name, $this->getDefaultTarget());
-      $breadCrumb->setTitle("NameSpace $root");
+      $breadCrumb->setTitle("$root Namespace");
       $breadGrumbs->append($breadCrumb);
     }
     return $breadGrumbs;

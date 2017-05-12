@@ -25,13 +25,13 @@ class SamiClassLinker extends AbstractClassLinker {
    * Constructs a new instance
    * 
    * @param string $class the name of the class
-   * @param ApiGenUrlGenerator|null $urlGenerator
+   * @param SamiUrlGenerator|null $urlGenerator
    * @param string|null $defaultTarget
    * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct($class, ApiGenUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct($class, SamiUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = null) {
     if ($urlGenerator === null) {
-      $urlGenerator = new ApiGenUrlGenerator();
+      $urlGenerator = new SamiUrlGenerator();
     }
     parent::__construct($class, $urlGenerator, $defaultTarget, $defaultCssClasses);
   }

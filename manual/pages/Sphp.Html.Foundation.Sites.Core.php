@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Core;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$visibilityHandlingInterface = Apis::apigen()->classLinker(VisibilityChanger::class);
-$visibilityHandler = Apis::apigen()->classLinker(VisibilityAdapter::class);
-$ComponentInterface = Apis::apigen()->classLinker(\Sphp\Html\ComponentInterface::class);
+$visibilityHandlingInterface = Apis::sami()->classLinker(VisibilityChanger::class);
+$visibilityHandler = Apis::sami()->classLinker(VisibilityAdapter::class);
+$ComponentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
 
 echo $parsedown->text(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 

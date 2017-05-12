@@ -48,7 +48,8 @@ $outputCache = PatternFactory::factory('output', [
         }
         ?>
       </div>
-      <div class="mainContent small-12 large-9 xlarge-9 column"> 
+      <div class="mainContent  small-12 large-9 xlarge-9 column"> 
+        <div class="container">
         <?php
         $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
         $man_cache = 'index';
@@ -61,6 +62,7 @@ $outputCache = PatternFactory::factory('output', [
           $outputCache->end();
         }
         ?>
+        </div>
       </div>
       <div class="show-for-xlarge xlarge-1 column"> 
       </div>

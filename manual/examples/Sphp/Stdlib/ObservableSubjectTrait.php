@@ -29,6 +29,6 @@ $observer2 = function(Subject $subject) {
 
 $subject = new Subject1();
 $subject->attach(new Observer1);
-$subject->attach(new Observer2);
+$subject->attach($observer2);
 $subject->say("hello");
 $subject->say("hello again");

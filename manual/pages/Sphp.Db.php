@@ -4,9 +4,9 @@ namespace Sphp\Db;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$sqlException = Apis::apigen()->classLinker(SQLException::class);
+$sqlException = Apis::sami()->classLinker(SQLException::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATABASE MANIPULATION: 
 $ns

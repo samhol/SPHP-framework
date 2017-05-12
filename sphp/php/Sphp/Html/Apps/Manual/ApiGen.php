@@ -85,7 +85,7 @@ class ApiGen extends AbstractPhpApiLinker {
    */
   public function namespaceBreadGrumbs($namespace) {
     $namespaceArray = explode('\\', $namespace);
-    $breadGrumbs = (new BreadCrumbs())->addCssClass(['apigen', 'namespace']);
+    $breadGrumbs = (new BreadCrumbs())->addCssClass(['api', 'namespace']);
     $currentNamespaceArray = [];
     foreach ($namespaceArray as $name) {
       $currentNamespaceArray[] = $name;

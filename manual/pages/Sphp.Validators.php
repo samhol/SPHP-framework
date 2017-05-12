@@ -6,13 +6,13 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $php = Apis::phpManual();
-$nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__);
-$validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
-$requiredValueValidator = Apis::apigen()->classLinker(NotEmptyValidator::class);
-$patrnvLink = Apis::apigen()->classLinker(PatternValidator::class);
-$strLenValLink = Apis::apigen()->classLinker(StringLengthValidator::class);
-$inputValidator = Apis::apigen()->classLinker(OptionalValidator::class);
-$alphabetsOnly = Apis::apigen()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
+$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__);
+$validatorInterface = Apis::sami()->classLinker(ValidatorInterface::class);
+$requiredValueValidator = Apis::sami()->classLinker(NotEmptyValidator::class);
+$patrnvLink = Apis::sami()->classLinker(PatternValidator::class);
+$strLenValLink = Apis::sami()->classLinker(StringLengthValidator::class);
+$inputValidator = Apis::sami()->classLinker(OptionalValidator::class);
+$alphabetsOnly = Apis::sami()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATA VALIDATION: <small>Introduction</small>

@@ -4,7 +4,7 @@ namespace Sphp\Core;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$apigen = Apis::apigen();
+$apigen = Apis::sami();
 $ns = $apigen->namespaceBreadGrumbs(__NAMESPACE__);
 
 use Sphp\Config\Config;

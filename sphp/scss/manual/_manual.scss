@@ -20,7 +20,6 @@ $error-bg: rgba(255,127,80, 0.40);
 
 
 @import "api-links";
-@import "f6-manual-accordion";
 @import "form-submission-viewer";
 @import "footer";
 @import "error-pages";
@@ -48,13 +47,24 @@ $error-bg: rgba(255,127,80, 0.40);
 .sphp-sidenav {
   margin-top: rem-calc(20);
 }
-.manual .mainContent { 
+.manual .mainContent {
   border: solid 1px #888;
   @include border-radius(4px);
   //@include box-shadow(#888 3px 0px 8px 4px);
-  @include box-shadow(#888 0px 3px 8px 4px);
-  padding: rem-calc(0 0 20 0);// top right bottom left
+  padding: rem-calc(0 10 0 10);// top right bottom left
   margin: rem-calc(5 0 20 0); // top right bottom left
+  @include box-shadow(#888 0px 3px 8px 4px);
+  background: #eaeaea;
+}
+.mainContent .container  { 
+  @import "f6-manual-accordion";
+  border-left: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+  //@include border-radius(4px);
+  //@include box-shadow(#888 3px 0px 8px 4px);
+  //@include box-shadow(#888 0px 3px 8px 4px);
+  padding: rem-calc(0 3 40 3);// top right bottom left
+  //margin: rem-calc(5 0 20 0); // top right bottom left
   background: #fafafa;
   >.intro {
     @include default-margin(left);
@@ -120,7 +130,7 @@ $error-bg: rgba(255,127,80, 0.40);
     &:hover {
       color: #8c1111;
     }
-    &.phpman, &.apigen {
+    &.phpman, &.apigen, &.sami {
       border: solid 1px #bbb;
       @include border-radius(2px);
       text-decoration: none;

@@ -5,7 +5,7 @@ namespace Sphp\Validators;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$patrnvLink = Apis::apigen()->classLinker(PatternValidator::class);
+$patrnvLink = Apis::sami()->classLinker(PatternValidator::class);
 
 echo $parsedown->text(<<<MD
 ##The $patrnvLink class		

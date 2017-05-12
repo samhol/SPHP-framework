@@ -15,7 +15,7 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
   //print_r(func_get_args());
   $parsedown = \ParsedownExtraPlugin::instance();
   $w3schools = Apis::w3schools();
-  $api = Apis::apigen();
+  $api = Apis::sami();
   // echo $page. $file;
   try {
     ob_start();

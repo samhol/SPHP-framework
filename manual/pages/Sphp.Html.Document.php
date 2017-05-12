@@ -5,8 +5,8 @@ namespace Sphp\Html;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$documentClass = Apis::apigen()->classLinker(Document::class);
-$htmlClass = Apis::apigen()->classLinker(Html::class);
+$documentClass = Apis::sami()->classLinker(Document::class);
+$htmlClass = Apis::sami()->classLinker(Html::class);
 echo $parsedown->text(<<<MD
 ##The $documentClass class
 This class can be used to create the structure of any HTML document.

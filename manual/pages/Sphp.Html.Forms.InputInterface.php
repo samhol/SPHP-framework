@@ -6,9 +6,9 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
-$formIfLink = Apis::apigen()->classLinker(FormInterface::class);
-$inputInterface = Apis::apigen()->classLinker(InputInterface::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$formIfLink = Apis::sami()->classLinker(FormInterface::class);
+$inputInterface = Apis::sami()->classLinker(InputInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 ##Some form components inheriting $inputInterface
 $ns		
@@ -17,10 +17,10 @@ All of the following components declare an $inputInterface input control for a $
 MD
 );
 
-$baseInput = Apis::apigen()->classLinker(InputTag::class);
-$textualInput = Apis::apigen()->classLinker(TextualInput::class);
-$textInput = Apis::apigen()->classLinker(TextInput::class);
-$textarea = Apis::apigen()->classLinker(Textarea::class);
+$baseInput = Apis::sami()->classLinker(InputTag::class);
+$textualInput = Apis::sami()->classLinker(TextualInput::class);
+$textInput = Apis::sami()->classLinker(TextInput::class);
+$textarea = Apis::sami()->classLinker(Textarea::class);
 
 echo $parsedown->text(<<<MD
 ###Basic input components

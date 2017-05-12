@@ -5,7 +5,7 @@ namespace Sphp\Config;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$phpConfig = Apis::apigen()->classLinker(PHPConfig::class);
+$phpConfig = Apis::sami()->classLinker(PHPConfig::class);
 
 echo $parsedown->text(<<<MD
 ##$phpConfig OBJECT: <small>a runtime PHP configuration manager</small>{#Config_PHPConfig} 

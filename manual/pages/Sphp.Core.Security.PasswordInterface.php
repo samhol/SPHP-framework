@@ -14,4 +14,4 @@ contains static methods to generate instances from plain passwords or password h
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Core/Security/PasswordInterface.php', 'php', false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/Security/PasswordInterface.php', 'php', false);

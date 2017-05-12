@@ -5,15 +5,15 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$namespace = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$namespace = Apis::sami()->namespaceLink(__NAMESPACE__);
 $boolLink = Apis::phpManual()->typeLink('boolean');
 $intLink = Apis::phpManual()->typeLink('integer');
 $floatLink = Apis::phpManual()->typeLink('float');
 $strLink = Apis::phpManual()->typeLink('string');
 $arrLink = Apis::phpManual()->typeLink('array');
-$stringsClass = Apis::apigen()->classLinker(Strings::class);
-$stringObjectClass = Apis::apigen()->classLinker(StringObject::class);
-$nsbc = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$stringsClass = Apis::sami()->classLinker(Strings::class);
+$stringObjectClass = Apis::sami()->classLinker(StringObject::class);
+$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #Core objects and utlility classes
 $nsbc
@@ -42,14 +42,14 @@ manipulation.
 MD
 );
 
-(new CodeExampleBuilder('Sphp/Core/Types/multibyteStringProblems.php', 'text', false))
+(new CodeExampleBuilder('Sphp/Stdlib/Types/multibyteStringProblems.php', 'text', false))
         ->setExamplePaneTitle('Multibyte string example PHP code')
         ->setOutputSyntaxPaneTitle('Multibyte string example results')
         ->printHtml();
 
-$load('Sphp.Core.Types.StringObject');
-$load('Sphp.Core.Types.Strings');
-$load('Sphp.Core.Types.Arrays');
-$load('Sphp.Core.Types.Datetime');
-$load('Sphp.Core.Types.BitMask');
-$load('Sphp.Core.Types.URL');
+$load('Sphp.Stdlib.Types.StringObject');
+$load('Sphp.Stdlib.Types.Strings');
+$load('Sphp.Stdlib.Types.Arrays');
+$load('Sphp.Stdlib.Types.Datetime');
+$load('Sphp.Stdlib.Types.BitMask');
+$load('Sphp.Stdlib.Types.URL');

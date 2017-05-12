@@ -37,4 +37,4 @@ URL string is splitted into following custozable parts in an $urlClass object:
 		
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Core/Types/URL.php', 'text', false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/Types/URL.php', 'text', false);

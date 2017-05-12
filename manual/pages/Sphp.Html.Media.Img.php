@@ -6,10 +6,10 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 //$img = $api->classLinker(Img::class);
-$img = Apis::apigen()->classLinker(Img::class);
-$size = $api->classLinker(Size::class);
-$fig = $api->classLinker(Figure::class);
-$figCaption = $api->classLinker(FigCaption::class);
+$img = Apis::sami()->classLinker(Img::class);
+$size = Apis::sami()->classLinker(Size::class);
+$fig = Apis::sami()->classLinker(Figure::class);
+$figCaption = Apis::sami()->classLinker(FigCaption::class);
 echo $parsedown->text(<<<MD
 ##The $img and the $fig components
 

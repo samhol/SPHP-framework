@@ -5,9 +5,9 @@ namespace Sphp\Db;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$sqlException = Apis::apigen()->classLinker(SQLException::class);
-$conditions = Apis::apigen()->classLinker(Conditions::class);
-$query = Apis::apigen()->classLinker(Query::class);
+$sqlException = Apis::sami()->classLinker(SQLException::class);
+$conditions = Apis::sami()->classLinker(Conditions::class);
+$query = Apis::sami()->classLinker(Query::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
 
 echo $parsedown->text(<<<MD

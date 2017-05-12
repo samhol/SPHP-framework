@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$callout = Apis::apigen()->classLinker(Callout::class);
+$callout = Apis::sami()->classLinker(Callout::class);
 echo $parsedown->text(<<<MD
 ###The $callout component
 		

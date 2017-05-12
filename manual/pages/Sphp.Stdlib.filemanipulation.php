@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();
 $arrLink = $php->typeLink("array");
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #LOCAL FILESYSTEM MANIPULATION: <small>reading, writing and transforming</small>{#FileSystem}
 $ns

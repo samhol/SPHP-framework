@@ -5,12 +5,12 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$btn = Apis::apigen()->classLinker(ButtonInterface::class);
-$abstractButton = Apis::apigen()->classLinker(AbstractButton::class);
-$formBtn = Apis::apigen()->classLinker(\Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$btn = Apis::sami()->classLinker(ButtonInterface::class);
+$abstractButton = Apis::sami()->classLinker(AbstractButton::class);
+$formBtn = Apis::sami()->classLinker(\Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$btnGroup = Apis::apigen()->classLinker(ButtonGroup::class);
+$btnGroup = Apis::sami()->classLinker(ButtonGroup::class);
 echo $parsedown->text(<<<MD
 #Foundation Buttons
 $ns

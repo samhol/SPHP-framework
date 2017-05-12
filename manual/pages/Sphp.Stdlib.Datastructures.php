@@ -5,9 +5,9 @@ namespace Sphp\Stdlib\Datastructures;
 use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();
-$nsLink = Apis::apigen()->namespaceLink(__NAMESPACE__);
-$collectionInterface = Apis::apigen()->classLinker(CollectionInterface::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__);
+$collectionInterface = Apis::sami()->classLinker(CollectionInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #DATA STRUCTURES
 $ns

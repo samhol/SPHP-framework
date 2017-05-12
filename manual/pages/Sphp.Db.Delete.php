@@ -5,7 +5,7 @@ namespace Sphp\Db;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$delete = Apis::apigen()->classLinker(Delete::class);
+$delete = Apis::sami()->classLinker(Delete::class);
 
 echo $parsedown->text(<<<MD
 

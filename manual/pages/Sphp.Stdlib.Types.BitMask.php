@@ -18,4 +18,4 @@ One $bitMaskLink may be used to modify the contents of another $bitMaskLink thro
 implemented logical AND, logical inclusive OR, and logical exclusive OR operations.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Core/Types/BitMask.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/Types/BitMask.php', "text", false);

@@ -5,7 +5,7 @@ namespace Sphp\I18n;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
 echo $parsedown->text(<<<MD

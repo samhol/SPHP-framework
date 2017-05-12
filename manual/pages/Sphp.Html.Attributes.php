@@ -5,11 +5,11 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$abstractAttrMngr = Apis::apigen()->classLinker(AbstractAttributeManager::class);
-$htmlAttrMngr = Apis::apigen()->classLinker(AttributeManager::class);
-$attributeInterface = Apis::apigen()->classLinker(AttributeInterface::class);
-$multiValueAttr = Apis::apigen()->classLinker(MultiValueAttribute::class);
-$propertyAttr = Apis::apigen()->classLinker(PropertyAttribute::class);
+$abstractAttrMngr = Apis::sami()->classLinker(AbstractAttributeManager::class);
+$htmlAttrMngr = Apis::sami()->classLinker(AttributeManager::class);
+$attributeInterface = Apis::sami()->classLinker(AttributeInterface::class);
+$multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
+$propertyAttr = Apis::sami()->classLinker(PropertyAttribute::class);
 $setMethodLink = $abstractAttrMngr->methodLink("set", false);
 $removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
 $requireAttr = $abstractAttrMngr->methodLink("demand", false);

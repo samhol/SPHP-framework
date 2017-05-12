@@ -5,7 +5,7 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$csvFile = Apis::apigen()->classLinker(CsvFile::class);
+$csvFile = Apis::sami()->classLinker(CsvFile::class);
 $arrLink = Apis::phpManual()->typeLink('array');
 echo $parsedown->text(<<<MD
 $csvFile can read and modify <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>

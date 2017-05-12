@@ -3,8 +3,8 @@
 namespace Sphp\Core;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-
-$router = $api->classLinker(Path::class);
+use Sphp\Html\Apps\Manual\Apis;
+$router = Apis::sami()->classLinker(Path::class);
 echo $parsedown->text(<<<MD
 ##Managing absolute paths with a $router singelton object
 

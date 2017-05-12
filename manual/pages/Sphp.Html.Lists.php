@@ -5,13 +5,13 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$htmlList = Apis::apigen()->classLinker(AbstractList::class);
-$ol = Apis::apigen()->classLinker(Ol::class);
-$ul = Apis::apigen()->classLinker(Ul::class);
-$liInterface = Apis::apigen()->classLinker(LiInterface::class);
-$li = Apis::apigen()->classLinker(Li::class);
-$dlLink = Apis::apigen()->classLinker(Dl::class);
-$ns = Apis::apigen()->namespaceBreadGrumbs(__NAMESPACE__);
+$htmlList = Apis::sami()->classLinker(AbstractList::class);
+$ol = Apis::sami()->classLinker(Ol::class);
+$ul = Apis::sami()->classLinker(Ul::class);
+$liInterface = Apis::sami()->classLinker(LiInterface::class);
+$li = Apis::sami()->classLinker(Li::class);
+$dlLink = Apis::sami()->classLinker(Dl::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
@@ -49,8 +49,8 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', false, true);
 
-$dtLink = Apis::apigen()->classLinker(Dt::class);
-$ddLink = Apis::apigen()->classLinker(Dd::class);
+$dtLink = Apis::sami()->classLinker(Dt::class);
+$ddLink = Apis::sami()->classLinker(Dd::class);
 echo $parsedown->text(<<<MD
 ##Definition lists: <small>The $dlLink component</small>{#dl}
 	

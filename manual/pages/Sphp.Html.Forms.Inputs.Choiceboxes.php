@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Forms\Inputs\Choiceboxes as Choiceboxes;
 
-$anyTimeInput = Apis::apigen()->classLinker(Choiceboxes::class);
+$anyTimeInput = Apis::sami()->classLinker(Choiceboxes::class);
 echo $parsedown->text(<<<MD
 ##The $anyTimeInput component
 	

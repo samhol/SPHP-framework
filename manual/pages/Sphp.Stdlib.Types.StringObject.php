@@ -5,7 +5,7 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$stringObjectClass = Apis::apigen()->classLinker(StringObject::class);
+$stringObjectClass = Apis::sami()->classLinker(StringObject::class);
 $strLink = Apis::phpManual()->typeLink('string');
 
 echo $parsedown->text(<<<MD
@@ -19,5 +19,5 @@ deal with the issues concerning multibyte encodings in PHP.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Core/Types/StringObject.php', 'text', false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/Types/StringObject.php', 'text', false);
 

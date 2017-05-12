@@ -5,7 +5,7 @@ namespace Sphp\Validators;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$strLenValLink = Apis::apigen()->classLinker(StringLengthValidator::class);
+$strLenValLink = Apis::sami()->classLinker(StringLengthValidator::class);
 
 echo $parsedown->text(<<<MD
 ###The $strLenValLink class	

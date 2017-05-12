@@ -5,7 +5,7 @@ namespace Sphp\Config;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$ini = Apis::apigen()->classLinker(Ini::class);
+$ini = Apis::sami()->classLinker(Ini::class);
 $ini_set = Apis::phpManual()->functionLink('ini_set');
 echo $parsedown->text(<<<MD
 ##$ini OBJECT: <small>a runtime PHP configuration manager</small>{#Config_Ini}

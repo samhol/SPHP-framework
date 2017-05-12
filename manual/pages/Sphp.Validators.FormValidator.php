@@ -5,12 +5,12 @@ namespace Sphp\Validators;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
+$validatorInterface = Apis::sami()->classLinker(ValidatorInterface::class);
 
 $inputValidator = $api->classLinker(OptionalValidator::class);
 
-$formValidator = Apis::apigen()->classLinker(FormValidator::class);
-$formInterface = Apis::apigen()->classLinker(\Sphp\Html\Forms\FormInterface::class);
+$formValidator = Apis::sami()->classLinker(FormValidator::class);
+$formInterface = Apis::sami()->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = Apis::phpManual()->classLinker(\Traversable::class);
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 $array = $php->typeLink("array", "arrays");

@@ -5,8 +5,8 @@ namespace Sphp\Validators;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$validatorInterface = Apis::apigen()->classLinker(ValidatorInterface::class);
-$validatorAggregate = Apis::apigen()->classLinker(ValidatorChain::class);
+$validatorInterface = Apis::sami()->classLinker(ValidatorInterface::class);
+$validatorAggregate = Apis::sami()->classLinker(ValidatorChain::class);
 
 echo $parsedown->text(<<<MD
 ##The $validatorAggregate class		

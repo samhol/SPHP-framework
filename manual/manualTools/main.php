@@ -16,7 +16,7 @@ function addPHPSuffix($page) {
 }
 
 if (!isset($api)) {
-  $api = Apis::apigen();
+  $api = Apis::sami();
 }
 if (!isset($php)) {
   $php = Apis::phpManual();

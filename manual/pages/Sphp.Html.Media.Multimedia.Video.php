@@ -9,9 +9,9 @@ $audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
 $source = $api->classLinker(Source::class);
 $vjs = $api->classLinker(VideoJs::class);
-$dailyMotionPlayer = Apis::apigen()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = Apis::apigen()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = Apis::apigen()->classLinker(VimeoPlayer::class);
+$dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
 echo $parsedown->text(<<<MD
 ##Video: <small>HTML5 video, Dailymotion, Youtube, Vimeo and other embeds</small>
 		

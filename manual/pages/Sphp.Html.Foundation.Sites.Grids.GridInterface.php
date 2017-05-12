@@ -5,15 +5,15 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$gridIf = Apis::apigen()->classLinker(GridInterface::class);
-$htmlCont = Apis::apigen()->classLinker(\Sphp\Html\Container::class);
-$grid = Apis::apigen()->classLinker(Grid::class);
-$row = Apis::apigen()->classLinker(Row::class);
-$rowIf = Apis::apigen()->classLinker(RowInterface::class);
-$colIf = Apis::apigen()->classLinker(ColumnInterface::class);
-$col = Apis::apigen()->classLinker(Column::class);
-$cols = Apis::apigen()->classLinker(ColumnInterface::class, "Columns");
-$gridsLnk = Apis::apigen()->namespaceLink(__NAMESPACE__);
+$gridIf = Apis::sami()->classLinker(GridInterface::class);
+$htmlCont = Apis::sami()->classLinker(\Sphp\Html\Container::class);
+$grid = Apis::sami()->classLinker(Grid::class);
+$row = Apis::sami()->classLinker(Row::class);
+$rowIf = Apis::sami()->classLinker(RowInterface::class);
+$colIf = Apis::sami()->classLinker(ColumnInterface::class);
+$col = Apis::sami()->classLinker(Column::class);
+$cols = Apis::sami()->classLinker(ColumnInterface::class, "Columns");
+$gridsLnk = Apis::sami()->namespaceLink(__NAMESPACE__);
 $f_GridLink = Apis::foundation()->getComponentLink(Grid::class, "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 ##The $gridIf and its implementations

@@ -5,8 +5,8 @@ namespace Sphp\Db;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$sqlException = Apis::apigen()->classLinker(SQLException::class);
-$insert = Apis::apigen()->classLinker(Insert::class);
+$sqlException = Apis::sami()->classLinker(SQLException::class);
+$insert = Apis::sami()->classLinker(Insert::class);
 
 echo $parsedown->text(<<<MD
 
