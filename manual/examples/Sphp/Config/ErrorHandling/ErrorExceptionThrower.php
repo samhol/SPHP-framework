@@ -2,13 +2,13 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Exception;
+use Throwable;
 use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
 
 ErrorExceptionThrower::Start();
 try {
   include("missing/file.php");
-} catch (Exception $ex) {
+} catch (Throwable $ex) {
   (new ExceptionCallout($ex))
           ->showInitialFile(false)
           ->showTrace(false)

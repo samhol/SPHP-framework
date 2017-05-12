@@ -11,7 +11,7 @@ use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 
 /**
- * Hyperlink object generator pointing to an exising ApiGen documentation about a class
+ * Hyperlink object generator pointing to an existing ApiGen documentation about a class
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

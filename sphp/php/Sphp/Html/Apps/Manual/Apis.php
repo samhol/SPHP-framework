@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Apps\Manual;
 
+use Sphp\Html\Apps\Manual\Sami\Sami;
+use Sphp\Html\Apps\Manual\Sami\SamiUrlGenerator;
 if (!defined("Sphp\Html\Apps\Manual\DEFAULT_APIGEN")) {
   define('Sphp\Html\Apps\Manual\DEFAULT_APIGEN', 'http://playground.samiholck.com/API/apigen/');
 }
@@ -25,6 +27,12 @@ class Apis {
 
   /**
    *
+   * @var Sami[] 
+   */
+  private static $samis = [];
+
+  /**
+   *
    * @var ApiGen[] 
    */
   private static $apigens = [];
@@ -40,6 +48,27 @@ class Apis {
    * @var W3schools[] 
    */
   private static $w3schools;
+  
+  
+  /**
+   * 
+   * @param  string $path
+   * @param  string|null $target
+   * @return ApiGen
+   */
+  public static function sami($path = DEFAULT_APIGEN, $target = "apigen") {
+    if ($path === null) {
+      $path = DEFAULT_APIGEN;
+    }
+    if (!array_key_exists($path, self::$samis)) {
+      $instance = new Sami(new SamiUrlGenerator($path), $target);
+      self::$apigens[$path] = $instance;
+    } else {
+      $instance = self::$apigens[$path];
+      $instance->setDefaultTarget($target);
+    }
+    return $instance;
+  }
 
   /**
    * 

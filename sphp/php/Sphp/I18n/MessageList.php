@@ -89,14 +89,23 @@ class MessageList implements Iterator, MessageCollectionInterface {
     return $output;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getLang() {
     return $this->getTranslator()->getLang();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getTranslator() {
     return $this->translator;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setLang($lang) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
@@ -105,6 +114,9 @@ class MessageList implements Iterator, MessageCollectionInterface {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setTranslator(TranslatorInterface $translator) {
     $this->translator = $translator;
     foreach ($this as $message) {
@@ -164,6 +176,9 @@ class MessageList implements Iterator, MessageCollectionInterface {
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function contains(MessageInterface $message) {
     $result = false;
     foreach ($this as $m) {

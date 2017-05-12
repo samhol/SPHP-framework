@@ -281,7 +281,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>($content)
         
-                                            <p>Prepends elements to the html component</p>                </div>
+                                            <p>Prepends a new value as the first element</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/WrappingContainer.html#method_prepend"><abbr title="Sphp\Html\WrappingContainer">WrappingContainer</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -391,7 +391,8 @@
                 <div class="col-md-8 type">
                     <a href="#method_getIterator">getIterator</a>()
         
-                                            <p>{@inheritdoc}</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Container.html#method_getIterator"><abbr title="Sphp\Html\Container">Container</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -968,10 +969,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Prepends elements to the html component</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then prepends the result to the container</p>            </div>
+                                    <p>Prepends a new value as the first element</p>                    <p><ul>
+<li>The numeric keys of the content will be renumbered starting from zero
+and the index of the prepended value is 'int(0)'</li>
+</ul>
+</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1001,7 +1003,7 @@ and then prepends the result to the container</p>            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setContent">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_setContent"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 89</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_setContent"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 80</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>setContent</strong>(mixed $content)
         </code>
@@ -1045,7 +1047,7 @@ and the index of the prepended value is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_count"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 100</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_count"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 91</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1075,7 +1077,7 @@ and the index of the prepended value is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetExists"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 110</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetExists"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 101</div>
         <code>                    boolean
     <strong>offsetExists</strong>(mixed $offset)
         </code>
@@ -1115,7 +1117,7 @@ and the index of the prepended value is 'int(0)'</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetGet"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 120</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetGet"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 111</div>
         <code>                    mixed
     <strong>offsetGet</strong>(mixed $offset)
         </code>
@@ -1165,10 +1167,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Assigns content to the specified offset</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then sets the result to the container to the specified offset</p>            </div>
+                                    <p>Assigns content to the specified offset</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1203,7 +1202,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetUnset"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 150</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_offsetUnset"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 141</div>
         <code>                    <a href="../../../../../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a>
     <strong>offsetUnset</strong>(mixed $offset)
         </code>
@@ -1243,7 +1242,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_toArray"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 157</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_toArray"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 148</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -1273,7 +1272,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceContent">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_replaceContent"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 167</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_replaceContent"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 158</div>
         <code>                    <a href="../../../../../Sphp/Html/Container.html"><abbr title="Sphp\Html\Container">Container</abbr></a>
     <strong>replaceContent</strong>(mixed $content)
         </code>
@@ -1313,7 +1312,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_clear"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 174</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_clear"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 162</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>clear</strong>()
         </code>
@@ -1343,7 +1342,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_exists"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 189</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_exists"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 171</div>
         <code>                    boolean
     <strong>exists</strong>(mixed $value)
         </code>
@@ -1383,7 +1382,7 @@ and then sets the result to the container to the specified offset</p>           
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_getIterator"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 203</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Container.html#method_getIterator"><abbr title="Sphp\Html\Container">Container</abbr></a> at         line 182</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>
@@ -1392,8 +1391,6 @@ and then sets the result to the container to the specified offset</p>           
             
     
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                </div>
                 <div class="tags">
             
             

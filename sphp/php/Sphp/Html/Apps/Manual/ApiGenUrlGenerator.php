@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * ApiGen URL string generator pointing to an exising ApiGen documentation
+ * ApiGen URL string generator pointing to an existing ApiGen documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

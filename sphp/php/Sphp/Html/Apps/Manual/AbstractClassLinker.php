@@ -10,7 +10,7 @@ namespace Sphp\Html\Apps\Manual;
 use ReflectionClass;
 
 /**
- * Hyperlink object generator pointing to an exising API documentation about a class
+ * Hyperlink object generator pointing to an existing API documentation about a class
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

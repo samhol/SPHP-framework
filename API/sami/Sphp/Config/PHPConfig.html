@@ -167,7 +167,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setDefaultTimezone">setDefaultTimezone</a>(string $timezone)
         
-                                            <p>Sets the default timezone used by all date/time functions in a script</p>                </div>
+                                            <p>Sets the default time zone used by all date/time functions in a script</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -198,6 +198,28 @@
                     <a href="#method_setErrorHandler">setErrorHandler</a>(callable $handler)
         
                                             <p>Sets a user-defined exception handler function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrentIncludePaths">getCurrentIncludePaths</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setIncludePaths">setIncludePaths</a>(string|string[] $paths)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -408,7 +430,7 @@
                     <tr>
                 <td>mixed</td>
                 <td>$encoding</td>
-                <td>character encoding: default is <code>utf-8</code></td>
+                <td>character encoding: default is <code>UTF-8</code></td>
             </tr>
             </table>
 
@@ -430,7 +452,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultTimezone">
-        <div class="location">at         line 121</div>
+        <div class="location">at         line 120</div>
         <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>setDefaultTimezone</strong>(string $timezone)
         </code>
@@ -440,7 +462,7 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the default timezone used by all date/time functions in a script</p>                                </div>
+                                    <p>Sets the default time zone used by all date/time functions in a script</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -448,7 +470,7 @@
                     <tr>
                 <td>string</td>
                 <td>$timezone</td>
-                <td>the timezone identifier</td>
+                <td>the time zone identifier</td>
             </tr>
             </table>
 
@@ -470,7 +492,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setErrorReporting">
-        <div class="location">at         line 134</div>
+        <div class="location">at         line 132</div>
         <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>setErrorReporting</strong>(int $level)
         </code>
@@ -510,7 +532,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setExceptionHandler">
-        <div class="location">at         line 148</div>
+        <div class="location">at         line 146</div>
         <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>setExceptionHandler</strong>(callable $handler)
         </code>
@@ -550,7 +572,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setErrorHandler">
-        <div class="location">at         line 160</div>
+        <div class="location">at         line 158</div>
         <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>setErrorHandler</strong>(callable $handler)
         </code>
@@ -589,8 +611,74 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getCurrentIncludePaths">
+        <div class="location">at         line 167</div>
+        <code>                    string[]
+    <strong>getCurrentIncludePaths</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setIncludePaths">
+        <div class="location">at         line 178</div>
+        <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
+    <strong>setIncludePaths</strong>(string|string[] $paths)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$paths</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_init">
-        <div class="location">at         line 172</div>
+        <div class="location">at         line 195</div>
         <code>                    <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>init</strong>()
         </code>

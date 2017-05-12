@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * PHP class link generator pointing to an exising PHP Manual documentation
+ * PHP class link generator pointing to an existing PHP Manual documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29
