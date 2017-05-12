@@ -9,10 +9,6 @@ include_once('manual/htmlHead.php');
   <div class="row expanded small-collapse medium-uncollapse">
     <pre>
       <?php
-
-      namespace Sphp\Db\Objects;
-
-      $locations = new LocationStorage(EntityManagerFactory::get());
       
       ?>
     </pre>
