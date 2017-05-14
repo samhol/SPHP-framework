@@ -3,7 +3,6 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Stdlib\Path;
-use Sphp\Html\Lists\HyperlinkListItem;
 ?>
 <div class="row expanded sphp-logo-area">
   <div class="column small-12 large-6">
@@ -15,37 +14,17 @@ use Sphp\Html\Lists\HyperlinkListItem;
       </li>
     </ul>
   </div>
-  <div class="column small-12 large-6">
+  <div class="column small-12 large-6 text-right">
     <?php
-    //use Sphp\Html\Foundation\Sites\Containers\Dropdown;
-    //use Sphp\Html\Foundation\Sites\Foundation as F;
 
-    $ul = (new \Sphp\Html\Lists\Ul());
 
-    /* $blee = new Dropdown(F::icon('widget'));
-      $blee->closeOnBodyClick()
-      ->align('bottom left')
-      ->addCssClass('sphp-f6-info large')
-      ->ajaxPrepend('manual/snippets/f6ScreenInfo.php'); */
-
-//$ul[] = $blee;
-  /*  $ul['github'] = (new HyperlinkListItem('https://github.com/samhol/SPHP-framework', '<i class="fa fa-github"></i>', '_blank'))->addCssClass('github');
-    $ul['facebook'] = (new HyperlinkListItem('https://www.facebook.com/Sami.Petteri.Holck.Programming/', '<i class="fa fa-facebook-square"></i>', '_blank'))->addCssClass('facebook');
-    $ul['google'] = (new HyperlinkListItem('https://plus.google.com/b/113942361282002156141/113942361282002156141', '<i class="fa fa-google-plus-square"></i>', '_blank'))->addCssClass('google');
-    $ul['twitter'] = (new HyperlinkListItem('https://twitter.com/SPHPframework', '<i class="fa fa-twitter"></i>', '_blank'))->addCssClass('twitter');
-
-            //->printHtml();
-            //$ul
-            $ul->addCssClass('sphp-brand-icons rounded')
-            ->printHtml();*/
-            
             use Sphp\Html\Icons\BrandIcons;
             $bi = new BrandIcons();
             
+            $bi->setGithub('https://github.com/samhol/SPHP-framework');
             $bi->setFacebook('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
-            $bi->setGooglePlus('https://www.facebook.com/Sami.Petteri.Holck.Programming/');
+            $bi->setGooglePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141');
             $bi->setTwitter('https://twitter.com/SPHPframework');
-            $bi->get('facebook')->addCssClass('rounded');
             $bi->addCssClass('rounded');
             $bi->printHtml();
     ?>

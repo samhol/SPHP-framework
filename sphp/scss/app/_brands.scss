@@ -97,10 +97,11 @@ a.brand-icon, ul.brand-icons a {
 
 ul.brand-icons {
   list-style: none;
+  display: inline-block;
   //margin: rem-calc(20 0 20 10);
   padding: 0;
   li {
     display: inline-block;
-    margin: rem-calc(0 1);
+    margin: rem-calc(1);
   }
 }

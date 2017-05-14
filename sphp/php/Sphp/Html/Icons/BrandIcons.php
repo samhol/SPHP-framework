@@ -22,6 +22,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
 
   use \Sphp\Html\TraversableTrait;
 
+  const GITHUB = 'github';
   const FACEBOOK = 'facebook';
   const GOOGLE_PLUS = 'google-plus';
   const TWITTER = 'twitter';
@@ -61,11 +62,25 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
    * @param type $target
    * @return $this
    */
+  public function setGithub($url = null, $target = null) {
+    if ($url === null) {
+      $url = 'https://www.github.com/';
+    }
+    $this->setIcon(static::GITHUB, (new HyperlinkIcon($url, Icon::fontAwesome('github'), $target)));
+    return $this;
+  }
+
+  /**
+   * 
+   * @param string $url
+   * @param type $target
+   * @return $this
+   */
   public function setFacebook($url = null, $target = null) {
     if ($url === null) {
       $url = 'https://www.facebook.com/';
     }
-    $this->setIcon('facebook', (new HyperlinkIcon($url, Icon::fontAwesome('facebook-square'), $target)));
+    $this->setIcon(static::FACEBOOK, (new HyperlinkIcon($url, Icon::fontAwesome('facebook-square'), $target)));
     return $this;
   }
 
