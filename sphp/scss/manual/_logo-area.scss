@@ -9,24 +9,38 @@
 .sphp-logo-area {
   margin-bottom: 0;
   background: rgba(255, 255, 255, 0.75);
-  .logo  {
-    margin: 0;
-    > a {
-      margin: rem-calc(2 0 2 30);
-      display: inline-block;
-    }
+  .logo, .brand-icons {  
+    margin: rem-calc(10);
+    list-style: none;
   }
-  .social-icons {
-    padding: 0;
-    margin: 0;
-    display: block;
-    @include breakpoint(small) {
-      float: left;
-      font-size: rem-calc(30);
+  .icon-col {
+    a {
+      border: solid 1px #000;
+      @include opacity(.8);
+      @include box-shadow(rgba(gray, 0.4) 0 0 25px, rgba(black, 0.2) 0 0 3px 1px);
+      &:hover {
+        border-color: #FF8000;
+        @include opacity(1);
+        @include box-shadow(rgba(gray, 0.6) 0 0 25px, rgba(black, 0.5) 0 0 3px 1px);
+      }
     }
-    @include breakpoint(large) {
-      float: right;
-      font-size: rem-calc(40);
+    @include breakpoint(small) {
+      text-align: left;
+      i {
+        font-size: rem-calc(20);
+        width: rem-calc(30);
+        height: rem-calc(30);
+        line-height: rem-calc(30);
+      }
+    }
+    @include breakpoint(medium) {
+      text-align: right; 
+      i {
+        font-size: rem-calc(30);
+        width: rem-calc(50);
+        height: rem-calc(50);
+        line-height: rem-calc(50);
+      }
     }
   } 
 
