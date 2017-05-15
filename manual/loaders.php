@@ -29,6 +29,8 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
       $loadNotFound($par);
     }
     $content = ob_get_contents();
+  } catch (\Throwable $e) {
+    $content .= (new ExceptionCallout($e))->showInitialFile()->showTrace();
   } catch (\Exception $e) {
     $content .= (new ExceptionCallout($e))->showInitialFile()->showTrace();
   }

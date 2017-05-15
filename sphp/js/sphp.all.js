@@ -143,6 +143,17 @@ if (!window.console.log) {
     console.log("sphp.getHttpRoot():" + $httpRoot);
     return $httpRoot;
   };
+  /**
+   * Returns the jQuery version number
+   *
+   * @public
+   * @static
+   * @memberOf sphp
+   * @returns {String} the jQuery version number
+   */
+  sphp.jQueryVersion = function () {
+    return $.fn.jquery;
+  };
 
   /**
    * Returns the Foundation framework version number
@@ -153,7 +164,7 @@ if (!window.console.log) {
    * @returns {String} the Foundation framework version number
    */
   sphp.getFoundationVersion = function () {
-    console.log("sphp.getFoundationVersion():" + Foundation.version);
+    //console.log("sphp.getFoundationVersion():" + Foundation.version);
     return Foundation.version;
   };
   /**
@@ -238,6 +249,7 @@ if (!window.console.log) {
    * @param  {String} http_root the http root url of the application
    */
   sphp.initialize = function (http_root) {
+    sphp.enableConsole(true);
     //sphp.enableConsole(false);
     console.log("sphp.initialize(" + http_root + ")");
     sphp.setHttpRoot(http_root);
@@ -258,9 +270,9 @@ if (!window.console.log) {
       }
     });
     $(document).foundation();
-
-    console.log("Foundation loaded...");
-    console.log(AnyTime.version);
+    console.log("jQuery " + $.fn.jquery + " loaded...");
+    console.log("Foundation " + Foundation.version + " loaded...");
+    console.log("AnyTime " + AnyTime.version + " loaded...");
     $ajaxLoaders.sphpAjaxLoader();
     $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
       console.log("SPHP Ajax loader finished loaded...");
@@ -285,7 +297,6 @@ if (!window.console.log) {
     //$("[data-clipboard-target]").copyToClipboardButton();
     $("[data-src]").lazyLoadXT();
     $("img[data-sphp-img-resize]").sphpImageResizer();
-    sphp.enableConsole(true);
     // var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
     //});
   };
