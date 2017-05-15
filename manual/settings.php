@@ -25,6 +25,6 @@ $includePaths = [
         ->setEncoding('UTF-8')
         ->setIncludePaths($includePaths)
         ->init();
-require_once('doctrineConfiguration.php');
+require_once('doctrine/configuration.php');
 //require_once('session.php');
 require_once('menuArrays.php');

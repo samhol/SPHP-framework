@@ -10,6 +10,9 @@ $isDevMode = true;
 // the connection configuration
 
 $dbParams = \Sphp\Stdlib\Parser::fromFile('manual/config/db.yaml');
+//echo '<pre>';
+//var_dump($dbParams);
+//echo '</pre>';
 $applicationMode = 'development';
 if ($applicationMode == 'development') {
   $cache = new \Doctrine\Common\Cache\ArrayCache;
@@ -20,10 +23,10 @@ if ($applicationMode == 'development') {
 $config = new Configuration;
 //$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $config->setMetadataCacheImpl($cache);
-$driverImpl = $config->newDefaultAnnotationDriver('sphp/doctrine/entities');
+$driverImpl = $config->newDefaultAnnotationDriver('manual/doctrine/entities');
 $config->setMetadataDriverImpl($driverImpl);
 $config->setQueryCacheImpl($cache);
-$config->setProxyDir('sphp/doctrine/Proxies');
+$config->setProxyDir('manual/doctrine/Proxies');
 $config->setProxyNamespace('Sphp\Doctrine\Proxies');
 
 EntityManagerFactory::setDefaults($dbParams, $config);

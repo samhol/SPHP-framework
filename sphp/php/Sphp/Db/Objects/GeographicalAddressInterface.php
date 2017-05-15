@@ -26,9 +26,9 @@ interface GeographicalAddressInterface {
   public function getStreet();
 
   /**
-   * Sets the streetaddress
+   * Sets the street address
    *
-   * @param  string $streetaddress the streetaddress
+   * @param  string $streetaddress the street address
    * @return self for a fluent interface
    */
   public function setStreet($streetaddress);

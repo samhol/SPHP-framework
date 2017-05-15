@@ -72,6 +72,11 @@ class SessionUser extends AbstractDbObject implements UserInterface {
     return $this->username;
   }
 
+  /**
+   * 
+   * @param  string $username
+   * @return $this
+   */
   public function setUsername($username) {
     $this->username = $username;
     return $this;
@@ -81,6 +86,11 @@ class SessionUser extends AbstractDbObject implements UserInterface {
     return $this->email;
   }
 
+  /**
+   * 
+   * @param  string $email
+   * @return $this
+   */
   public function setEmail($email) {
     $this->email = $email;
     return $this;
@@ -102,6 +112,11 @@ class SessionUser extends AbstractDbObject implements UserInterface {
     return $this->password;
   }
 
+  /**
+   * 
+   * @param  string $password
+   * @return $this
+   */
   public function setPlainPassword($password) {
     $this->password = Password::fromPassword($password);
     return $this;
