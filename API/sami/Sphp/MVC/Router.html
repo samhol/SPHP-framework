@@ -102,8 +102,8 @@ $router->route( '/login', 'login_function' );</p>
 <p>// Adding a route with a named alphanumeric capture, using the <:var_name> syntax
 $router->route( '/user/view/<:username>', 'view_username' );</p>
 
-<p>// Adding a route with a named numeric capture, using the &lt;#var<em>name> syntax
-$router->route( '/user/view/&lt;#user</em>id>', array( 'UserClass', 'view_user' ) );</p>
+<p>// Adding a route with a named numeric capture, using the &lt;#var_name> syntax
+$router->route( '/user/view/&lt;#user_id>', array( 'UserClass', 'view_user' ) );</p>
 
 <p>// Adding a route with a wildcard capture (Including directory separtors), using
 // the &lt;<em>var_name> syntax
@@ -113,19 +113,19 @@ $router->route( '/browse/&lt;</em>categories>', 'category_browse' );</p>
 // <!var_name> syntax
 $router->route( '/browse/<!category>', 'browse_category' );</p>
 
-<p>// Adding a custom regex capture using the &lt;:var<em>name|regex> syntax
-$router->route( '/lookup/zipcode/&lt;:zipcode|[0-9]{5}>', 'zipcode</em>func' );</p>
+<p>// Adding a custom regex capture using the &lt;:var_name|regex> syntax
+$router->route( '/lookup/zipcode/&lt;:zipcode|[0-9]{5}>', 'zipcode_func' );</p>
 
 <p>// Specifying priorities
-$router->route( '/users/all', 'view<em>users', 1 ); // Executes first
-$router->route( '/users/<:status>', 'view</em>users<em>by</em>status', 100 ); // Executes after</p>
+$router->route( '/users/all', 'view_users', 1 ); // Executes first
+$router->route( '/users/<:status>', 'view_users_by_status', 100 ); // Executes after</p>
 
 <p>// Specifying a default callback function if no other route is matched
 $router->setDefaultRoute( 'page_404' );</p>
 
 <p>// Run the router
 $router->execute();
-</code></p>        </div>
+</code></p>                    </div>
     
     
     
@@ -206,7 +206,7 @@ string. Adds a trailing slash.</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                    <p>Initializes the router by getting the URL and cleaning it.</p>            </div>
+                                    <p>Constructs a new instance</p>                    <p>Initializes the router by getting the URL and cleaning it.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -248,7 +248,7 @@ string. Adds a trailing slash.</p>                </div>
                     <div class="method-description">
                                     <p>If the router cannot match the current URL to any of the given routes,
 the function passed to this method will be executed instead. This would
-be useful for displaying a 404 page for example.</p>                                </div>
+be useful for displaying a 404 page for example.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -289,7 +289,7 @@ be useful for displaying a 404 page for example.</p>                            
 
                     <div class="method-description">
                                     <p>Runs the router matching engine and then calls the dispatcher</p>                    <p>Tries to match one of the URL routes to the current URL, otherwise
-execute the default function.</p>            </div>
+execute the default function.</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -320,7 +320,7 @@ execute the default function.</p>            </div>
 
                     <div class="method-description">
                                     <p>Adds a new URL routing rule to the routing table, after converting any of
-our special tokens into proper regular expressions.</p>                                </div>
+our special tokens into proper regular expressions.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -386,7 +386,7 @@ http://localhost/projects/test/users///view/1 would return the following,
 assuming that /test/ was the base directory</p>
 
 <p>/users/view/1/
-</code></p>            </div>
+</code></p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

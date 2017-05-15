@@ -91,7 +91,7 @@
             <div class="description">
             <p>Class defines common features for wrapping HTML container like aa list or a table etc.</p>            <p>..</p>
 
-<p>{@inheritdoc}</p>        </div>
+<p>{@inheritdoc}</p>                    </div>
     
             <h2>Traits</h2>
 
@@ -168,7 +168,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_append">append</a>($content)
         
-                                            <p>Appends a new value as the last element</p>                </div>
+                                            <p>Appends content to the component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -278,7 +278,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>($content)
         
-                                            <p>Prepends a new value as the first element</p>                </div>
+                                            <p>Prepends elements to the html component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -430,7 +430,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the component as HTML markup string</p>                                </div>
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -469,7 +469,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the component as HTML markup string</p>                                </div>
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -499,7 +499,7 @@
     
 
                     <div class="method-description">
-                                    <p>Prints the component as HTML markup string</p>                                </div>
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -529,7 +529,10 @@
     
 
                     <div class="method-description">
-                                    <p>Appends a new value as the last element</p>                                </div>
+                                    <p>Appends content to the component</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given in constructor to the <code>$content</code>
+and then appends the result to the container</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -569,7 +572,7 @@
     
 
                     <div class="method-description">
-                                    <p>Appends a raw file to the container</p>                                </div>
+                                    <p>Appends a raw file to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -618,7 +621,7 @@
     
 
                     <div class="method-description">
-                                    <p>Appends an executed PHP file to the container</p>                                </div>
+                                    <p>Appends an executed PHP file to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -667,7 +670,7 @@
     
 
                     <div class="method-description">
-                                    <p>Appends a parsed Mark Down string to the container</p>                                </div>
+                                    <p>Appends a parsed Mark Down string to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -707,7 +710,7 @@
     
 
                     <div class="method-description">
-                                    <p>Appends a parsed Mark Down file to the container</p>                                </div>
+                                    <p>Appends a parsed Mark Down file to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -756,7 +759,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns a collection of sub components that match the search</p>                                </div>
+                                    <p>Returns a collection of sub components that match the search</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -796,7 +799,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns a collection of sub components that contain the searched attribute</p>                                </div>
+                                    <p>Returns a collection of sub components that contain the searched attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -836,7 +839,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns a collection of sub components that are of the given PHP type</p>                                </div>
+                                    <p>Returns a collection of sub components that are of the given PHP type</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -876,7 +879,10 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given to the <code>$content</code>
+and then appends the result to the container</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -913,7 +919,7 @@
 
                     <div class="method-description">
                                     <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
-to a particular object, or in any order during the shutdown sequence.</p>            </div>
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
                 <div class="tags">
             
             
@@ -934,7 +940,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>            </div>
+                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>                            </div>
                 <div class="tags">
             
             
@@ -955,11 +961,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Prepends a new value as the first element</p>                    <p><ul>
-<li>The numeric keys of the content will be renumbered starting from zero
-and the index of the prepended value is 'int(0)'</li>
-</ul>
-</p>            </div>
+                                    <p>Prepends elements to the html component</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given in constructor to the <code>$content</code>
+and then prepends the result to the container</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1003,7 +1008,7 @@ and the index of the prepended value is 'int(0)'</li>
 <li>The numeric keys of the content will be renumbered starting from zero
 and the index of the prepended value is 'int(0)'</li>
 </ul>
-</p>            </div>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1043,7 +1048,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Count the number of inserted elements in the container</p>                                </div>
+                                    <p>Count the number of inserted elements in the container</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1073,7 +1078,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Checks whether an offset exists</p>                                </div>
+                                    <p>Checks whether an offset exists</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1113,7 +1118,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Returns the content element at the specified offset</p>                                </div>
+                                    <p>Returns the content element at the specified offset</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1153,7 +1158,10 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Assigns content to the specified offset</p>                                </div>
+                                    <p>Assigns content to the specified offset</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given in constructor to the <code>$content</code>
+and then sets the result to the container to the specified offset</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1198,7 +1206,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Unsets an offset</p>                                </div>
+                                    <p>Unsets an offset</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1238,7 +1246,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Serializes to an array</p>                                </div>
+                                    <p>Serializes to an array</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1268,7 +1276,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Replaces the content of the component</p>                                </div>
+                                    <p>Replaces the content of the component</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1308,7 +1316,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Clears the contents</p>                                </div>
+                                    <p>Clears the contents</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1338,7 +1346,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Checks if a value exists in an container</p>                                </div>
+                                    <p>Checks if a value exists in an container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1397,7 +1405,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Returns the wrapper function</p>                                </div>
+                                    <p>Returns the wrapper function</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1427,7 +1435,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Returns the input as a wrapped output</p>                                </div>
+                                    <p>Returns the input as a wrapped output</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
