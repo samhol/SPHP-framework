@@ -152,6 +152,17 @@ class SphpScriptsLoader extends ScriptsContainer {
    *
    * @return self for a fluent interface
    */
+  public function appendSPHP1() {
+    $this
+            ->appendSrc($this->paths['js_root'] . "all.js")
+            ->appendCode('sphp.initialize();');
+    return $this;
+  }
+  /**
+   * Appends JavaScript files for the entire SPHP framework
+   *
+   * @return self for a fluent interface
+   */
   public function appendSPHP() {
     $this->appendFoundation()
             ->appendLazyload()
@@ -164,7 +175,7 @@ class SphpScriptsLoader extends ScriptsContainer {
             ->appendSrc($this->paths['app'] . 'QtipAdapter.js')
             ->appendSrc($this->paths['app'] . 'sphp.TechLinks.js')
             ->appendSrc($this->paths['js_root'] . "sphp.all.js")
-            ->appendCode('sphp.initialize("' . Path::get()->http() . '");')
+            ->appendCode('sphp.initialize();')
             ->appendSrc($this->paths['app'] . 'sphp.ProgressBar.js');
     return $this;
   }

@@ -1,26 +1,4 @@
 /**
- * Contains all sph functionality.
- *
- * @author Sami Holck <sami.holck@gmail.com>
- * @name sphp
- * @namespace sphp
- */
-(function (sphp, $, undefined) {
-  "use strict";
-  sphp.EVENTS = {
-    SINGLE_ACCORDION: {
-      OPENED: 'sphp-single-accordion-opened',
-      CLOSED: 'sphp-single-accordion-closed'
-    },
-    AJAX_LOADER: {
-      FINISHED: 'sphp-ajax-loader-finished'
-    }
-  };
-}(window.sphp = window.sphp || {}, jQuery));
-
-
-
-/**
  * commonJqueryPlugins.js (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>.
  *
@@ -202,41 +180,6 @@
   };
 
   /**
-   * Shows a quick popup text over the element
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphpImageResizer
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.sphpImageResizer = function () {
-    return this.each(function () {
-      var $this = $(this), $url, $operation, $o, $query;
-      console.log("sphpImageResizer:");
-      $query = {
-        operation: 0,
-        ratio: 1,
-        width: null,
-        height: null
-      };
-      $query = Foundation.utils.data_options($this, "sphp-img-resize");
-      //console.log($.fn.sphpImageResizer.IMAGE_APP + "?" + $.param($query));
-      $query.src = $this.attr("src");
-      //console.log($.param($query));
-      $this.attr("src", $.fn.sphpImageResizer.IMAGE_APP + "?" + $.param($query));
-      $this.css('visibility', "visible");
-    });
-  };
-  $.fn.sphpImageResizer.RESIZE = 1;
-  $.fn.sphpImageResizer.SCALE = 2;
-  $.fn.sphpImageResizer.SCALE_TO_FIT = 4;
-  $.fn.sphpImageResizer.defaults = {
-    operation: 0,
-    ratio: 1,
-    width: null,
-    height: null
-  };
-
-  /**
    * Shows the mouse coordinates when ever the mouse is onver the containing document
    * 
    * @memberOf jQuery.fn#
@@ -282,73 +225,6 @@
       setValues();
       $(window).resize(function () {
         setValues();
-      });
-    });
-  };
-
-  /**
-   * Sets the component as an single accordion
-   * 
-   * @memberOf jQuery.fn#
-   * @method   singleAccordion
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.singleAccordion = function () {
-    return this.each(function () {
-      var $this = $(this),
-              head = $this.children(".head"),
-              body = $this.children(".body");
-      if (!head.hasClass("active")) {
-        body.hide();
-        head.addClass("inactive");
-      }
-      head.click(function (event) {
-        console.log("singleAccordion.click()");
-        var $head = $(this), $node = $(event.target);
-        function setActive() {
-          if ($head.hasClass("active")) {
-            $head.removeClass("active").addClass("inactive");
-            $this.trigger(sphp.EVENTS.SINGLE_ACCORDION.CLOSED);
-          } else {
-            $head.addClass("active").removeClass("inactive");
-            $this.trigger("sphp-single-accordion-opened");
-          }
-        }
-        if (!$node.hasClass("copy")) {
-          //console.log($node);
-          body.slideToggle("slow", function () {
-            setActive();
-          });
-        }
-      });
-      $this.on('sphp-single-accordion-opened', function () {
-        console.log('sphp-single-accordion-opened');
-        $this.lazyLoadXT();
-      });
-    });
-  };
-
-  /**
-   * Sets the highlighter component as an single accordion
-   * 
-   * @memberOf jQuery.fn#
-   * @method   syntaxHighLighterAccordion 
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.syntaxHighLighterAccordion = function () {
-    return this.each(function () {
-      var $this = $(this),
-              head = $this.children(".head"),
-              button = $this.find(".head button");
-
-      if (!head.hasClass("active")) {
-        button.hide();
-      }
-      $this.on("sphp-single-accordion-opened", function () {
-        button.fadeIn("slow");
-      });
-      $this.on("sphp-single-accordion-closed", function () {
-        button.fadeOut("slow");
       });
     });
   };
@@ -603,36 +479,6 @@
       }
     });
     return this;
-  };
-
-  /**
-   * Inserts an font icon before the inner contents of the componenet
-   *
-   * @memberOf jQuery.fn#
-   * @method   iconhBefore
-   * @param    {String} classes One or more space-separated classes to be added 
-   *           to the class attribute of each matched element.
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.iconBefore = function (classes) {
-    return this.each(function () {
-      $(this).prepend($("<i>").addClass(classes));
-    });
-  };
-
-  /**
-   * Inserts an font icon after the inner contents of the componenet
-   *
-   * @memberOf jQuery.fn#
-   * @method   iconAfter
-   * @param    {String} classes One or more space-separated classes to be added 
-   *           to the class attribute of each matched element.
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.iconAfter = function (classes) {
-    return this.each(function () {
-      $(this).append($("<i>").addClass(classes));
-    });
   };
 
 }(jQuery));

@@ -2,7 +2,7 @@
 
 namespace Sphp\Config;
 
-require_once('sphp/settings.php');
+require_once(__DIR__.'/../sphp/settings.php');
 
 use Sphp\Config\ErrorHandling\ExceptionHandler;
 use Sphp\Config\ErrorHandling\ExceptionLogger;
@@ -25,6 +25,6 @@ $includePaths = [
         ->setEncoding('UTF-8')
         ->setIncludePaths($includePaths)
         ->init();
-require_once('doctrine/configuration.php');
+//require_once('doctrine/configuration.php');
 //require_once('session.php');
 require_once('menuArrays.php');

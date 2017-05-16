@@ -47,9 +47,10 @@
   $.fn.insertSubmisionFunctionality = function () {
     return this.each(function () {
       console.log("insertSubmisionFunctionality:");
+      //console.log("URL: "+window.location );
       var $form = $(this),
               $submit, $get;
-      $get = $.get(sphp.getHttpRoot() + "manual/ajax/submitRow.php");
+      $get = $.get("manual/ajax/submitRow.php");
       $get.done(function (data) {
         console.log("done");
         var content = data;

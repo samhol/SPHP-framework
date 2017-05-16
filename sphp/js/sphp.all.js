@@ -114,35 +114,8 @@ if (!window.console.log) {
  */
 (function (sphp, $, undefined) {
   "use strict";
-  var $httpRoot = "", consoleLog = console.log, foundationVersion;
+  var consoleLog = console.log, foundationVersion;
 
-  /**
-   * Sets the http root path to be used in the sphp namespace
-   * 
-   * @public
-   * @static
-   * @memberOf sphp
-   * @param   {String} httpRoot the http root path to be used in the sphp namespace
-   * @returns {undefined}
-   */
-  sphp.setHttpRoot = function (httpRoot) {
-    console.log(window.location.href);
-    console.log("sphp.setHttpRoot(" + httpRoot + ")");
-    $httpRoot = httpRoot;
-  };
-
-  /**
-   * Returns the http root path to be used in the sphp namespace
-   *
-   * @public
-   * @static
-   * @memberOf sphp
-   * @returns {String} httpRoot the http root path to be used in the sphp namespace
-   */
-  sphp.getHttpRoot = function () {
-    console.log("sphp.getHttpRoot():" + $httpRoot);
-    return $httpRoot;
-  };
   /**
    * Returns the jQuery version number
    *
@@ -198,37 +171,14 @@ if (!window.console.log) {
     }
   };
 
-
-
-  function handleFoundationSliders() {
-    $('[data-slider]').on('change', function () {
-      var slider = $(this),
-              input = slider.find("input[type='hidden']"),
-              viewer = slider.siblings("label").find(".sphp-range-slider-value"),
-              currentValue = slider.attr('data-slider');
-      //console.log(input.attr("type") + ": " + slider.attr('data-slider'));
-      input.attr("value", currentValue);
-      //slider.attr("title", currentValue);
-      viewer.html(currentValue);
-    });
-  }
-
-  sphp.initGlyphs = function () {
-    var $before = $("[data-sphp-icon-before]");
-    $before.iconBefore($before.attr("data-sphp-icon-before")).addClass("sphp-icon-left");
-    var $after = $("[data-sphp-icon-after]");
-    $after.iconAfter($after.attr("data-sphp-icon-after"));
-
-  };
-
   sphp.initClipboard = function () {
     if (Clipboard.isSupported()) {
       var clipboard = new Clipboard('[data-clipboard-target]');
       clipboard.on('success', function (e) {
-       var  $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
+        var $this = $(e.trigger), $container = $($this.attr("data-clipboard-target"));
         console.info('Action:', e.action);
         console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);    
+        console.info('Trigger:', e.trigger);
         $container.sphpPopper({content: "Code is copied to the clipboard"});
         e.clearSelection();
       });
@@ -248,27 +198,13 @@ if (!window.console.log) {
    * @memberOf sphp
    * @param  {String} http_root the http root url of the application
    */
-  sphp.initialize = function (http_root) {
+  sphp.initialize = function () {
     sphp.enableConsole(true);
-    //sphp.enableConsole(false);
-    console.log("sphp.initialize(" + http_root + ")");
-    sphp.setHttpRoot(http_root);
-    //$.fn.sphpImageResizer.IMAGE_APP = http_root + "image.php";
-    //stickyFooter();
-    //intBackToTop();
-    //$(document).ready(function () {
-    //console.log("loading ZeroClipboard.swf from:" + http_root + 'sphp/js/vendor/ZeroClipboard.swf');
-    //ZeroClipboard.config({swfPath: http_root + 'sphp/js/vendor/ZeroClipboard.swf'});
+    console.log("sphp.initialize()");
     sphp.initClipboard();
     var $ajaxLoaders = $("[data-sphp-ajax-url]");
     console.log("loaded");
-    //alert($(document) + "init Foundation");
-    //sphp.initGlyphs();
-    $('[data-sphp-qtip][title!=""]').qtip({// Grab all elements with a non-blank data-tooltip attr.
-      content: {
-        attr: 'title' // Tell qTip2 to look inside this attr for its content
-      }
-    });
+
     $(document).foundation();
     console.log("jQuery " + $.fn.jquery + " loaded...");
     console.log("Foundation " + Foundation.version + " loaded...");
@@ -287,26 +223,14 @@ if (!window.console.log) {
     $("[data-ion-rangeslider]").initIonRangeSlider();
     $("[data-sphp-ion-slider]").ionRangeSlider({});
     $("[data-reveal]").sphpPopup();
-    /*$("[data-sph-single-accordion]").on('sphp-single-accordion-opened', function() {
-     $(this).lazyLoadXT();
-     });*/
+
     $('[data-accordion]').on('down.zf.accordion', function () {
       console.log('Foundation Accordion opened!');
       $(this).lazyLoadXT();
     });
-    //$("[data-clipboard-target]").copyToClipboardButton();
     $("[data-src]").lazyLoadXT();
-    $("img[data-sphp-img-resize]").sphpImageResizer();
-    // var $form = new sphp.ValidableForm($('form[data-sphp-validate]'));
-    //});
-  };
-  sphp.EVENTS = {
-    SINGLE_ACCORDION: {
-      OPENED: 'sphp-single-accordion-opened',
-      CLOSED: 'sphp-single-accordion-closed'
-    }
+
   };
 
 }(window.sphp = window.sphp || {}, jQuery));
-//sphp.initializeAll();
-//\sph\js\vendor
+
