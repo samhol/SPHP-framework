@@ -48,13 +48,13 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
   public function __construct($img = null, $caption = null) {
     parent::__construct('li');
     $this->cssClasses()
-            ->lock('orbit-slide fig-wrapper');
+            ->lock('orbit-slide');
     if (!($img instanceof Img)) {
       $img = new Img($img);
     }
     $this->img = $img;
     $this->img->cssClasses()
-            ->lock('float-center');
+            ->lock('orbit-image');
     if (!($caption instanceof FigCaption)) {
       $caption = new FigCaption($caption);
     }

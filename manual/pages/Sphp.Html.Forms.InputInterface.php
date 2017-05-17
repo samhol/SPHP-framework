@@ -37,11 +37,8 @@ MD
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
-(new CodeExampleBuilder('Sphp/Html/Forms/Input.php', false, true))
-        ->buildAccordion()
-        ->addCssClass("form-example")
-        ->printHtml();
-$load("Sphp.Html.Forms.Inputs.Choiceboxes.php");
-$load("Sphp.Html.Forms.Menus.Select.php");
-$load("Sphp.Html.Forms.AnyTimeInput.php");
-$load("Sphp.Html.Forms.IonRangeSlider.php");
+
+$load('Sphp.Html.Forms.Inputs.Choiceboxes');
+$load('Sphp.Html.Forms.Menus.Select');
+$load('Sphp.Html.Forms.AnyTimeInput');
+$load('Sphp.Html.Forms.IonRangeSlider');
