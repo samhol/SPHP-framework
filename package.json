@@ -1,20 +1,27 @@
 {
-	"name": "sphp-framework",
+  "name": "sphp-framework",
   "description": "Multipurpose PHP framework for web applications",
   "author": "Sami Holck <sami.holck@gmail.com>",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    ...
+    "clipboard": "^1.6.1",
+    "foundation-sites": "^6.3.1",
+    "ion-rangeslider": "^2.1.7",
+    "jquery": "^3.2.1",
+    "lazyloadxt": "^1.1.0"
   },
   "devDependencies": {
-    "gulp": "3.9.1",
-    ...
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1"
   },
   "scripts": {
     "postinstall": "gulp build",
+    "do": "gulp finalize",
     "test": "gulp test"
-  }
+  },
   "license": "ISC",
-  "homepage": "http://www.playground.samiholck.com/",
+  "homepage": "http://www.playground.samiholck.com/"
 }

@@ -49,6 +49,7 @@ Temporary Items
 /vendor/
 /nbproject/
 /.projectKnowledge/
+/node_modules/
 
 robots.txt
 composer.lock

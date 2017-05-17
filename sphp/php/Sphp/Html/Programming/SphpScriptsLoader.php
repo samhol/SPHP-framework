@@ -152,9 +152,9 @@ class SphpScriptsLoader extends ScriptsContainer {
    *
    * @return self for a fluent interface
    */
-  public function appendSPHP1() {
+  public function appendSPHP() {
     $this
-            ->appendSrc($this->paths['js_root'] . "all.js")
+            ->appendSrc($this->paths['js_root'] . "dist/all.js")
             ->appendCode('sphp.initialize();');
     return $this;
   }
@@ -163,7 +163,7 @@ class SphpScriptsLoader extends ScriptsContainer {
    *
    * @return self for a fluent interface
    */
-  public function appendSPHP() {
+  public function appendSPHP1() {
     $this->appendFoundation()
             ->appendLazyload()
             ->appendClipboard()
