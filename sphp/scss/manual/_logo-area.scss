@@ -15,10 +15,11 @@
   }
   .icon-col {
     li {
-      margin-right: rem-calc(3);
+      margin-right: rem-calc(5);
     }
     a {
       border: solid 1px #000;
+      @include border-radius(8px);
       @include opacity(.8);
       @include box-shadow(rgba(gray, 0.4) 0 0 25px, rgba(black, 0.2) 0 0 3px 1px);
       &:hover {
