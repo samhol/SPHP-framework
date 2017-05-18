@@ -25,7 +25,6 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
     if (is_file($page)) {
       include $page;
     } else {
-      echo $page;
       $loadNotFound($par);
     }
     $content = ob_get_contents();
