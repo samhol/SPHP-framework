@@ -86,7 +86,7 @@
 
     <p>    class
     <strong>Select</strong>        extends <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/AbstractOptionsContainer.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\AbstractOptionsContainer">AbstractOptionsContainer</abbr></a>        implements
-        <a href="../../../../../Sphp/Html/Forms/LabelableInterface.html"><abbr title="Sphp\Html\Forms\LabelableInterface">LabelableInterface</abbr></a>, <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a>
+        <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a>
 </p>
 
         
@@ -105,7 +105,7 @@ not supported in most web browsers. However future versions of HTML may extend t
 grouping mechanism to allow for nested groups (i.e., {@link Optgroup} components may
 nest). This will allow authors to represent a richer hierarchy of choices.</li>
 <li>Because of the above nesting of {@link Optgroup} objects is supported
-but not recomended.</li>
+but not recommended.</li>
 <li>The {@link Select} component is a form control and can be used in a
 form to collect user input.</li>
 </ul>
@@ -122,15 +122,6 @@ form to collect user input.</li>
                 </div>
                 <div class="col-md-6">
                     Trait implements parts of the {@link InputInterface}
-                </div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../../Sphp/Html/Forms/LabelableTrait.html"><abbr title="Sphp\Html\Forms\LabelableTrait">LabelableTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    A trait implementation of the {@link LabelableInterface}
                 </div>
             </div>
                     <div class="row">
@@ -639,16 +630,6 @@ form to collect user input.</li>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_createLabel">createLabel</a>($label = null)
-        
-                                            <p>Creates a {@link Label} component for the input component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Forms/LabelableTrait.html#method_createLabel"><abbr title="Sphp\Html\Forms\LabelableTrait">LabelableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <a href="../../../../../Sphp/Html/Forms/Inputs/ValidableInputTrait.html"><abbr title="Sphp\Html\Forms\Inputs\ValidableInputTrait">ValidableInputTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -699,7 +680,7 @@ form to collect user input.</li>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    scalar|scalar[]
+                    mixed
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getSubmitValue">getSubmitValue</a>()
@@ -1660,7 +1641,7 @@ form to collect user input.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 56</div>
         <code>                    
     <strong>__construct</strong>(string|null $name = null, <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuContentInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuContentInterface">SelectMenuContentInterface</abbr></a>|mixed[] $opt = null, string|string[] $selectedValues = null)
         </code>
@@ -1697,7 +1678,7 @@ array of new {@link Option}($key, $val) objects</li>
                     <tr>
                 <td>string|string[]</td>
                 <td>$selectedValues</td>
-                <td>the optionvalues selected</td>
+                <td>the option values selected</td>
             </tr>
             </table>
 
@@ -2530,46 +2511,6 @@ Disabled input components in a form will not be submitted.</p>                  
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createLabel">
-        <div class="location">in <a href="../../../../../Sphp/Html/Forms/LabelableTrait.html#method_createLabel"><abbr title="Sphp\Html\Forms\LabelableTrait">LabelableTrait</abbr></a> at         line 32</div>
-        <code>                    <a href="../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a>
-    <strong>createLabel</strong>($label = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Creates a {@link Label} component for the input component</p>                    <p><strong>Postcondition:</strong> <var>self::attrExists("id") === true</var></p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$label</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Forms/Label.html"><abbr title="Sphp\Html\Forms\Label">Label</abbr></a></td>
-            <td>created label component</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setRequired">
         <div class="location">in <a href="../../../../../Sphp/Html/Forms/Inputs/ValidableInputTrait.html#method_setRequired"><abbr title="Sphp\Html\Forms\Inputs\ValidableInputTrait">ValidableInputTrait</abbr></a> at         line 36</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/ValidableInputTrait.html"><abbr title="Sphp\Html\Forms\Inputs\ValidableInputTrait">ValidableInputTrait</abbr></a>
@@ -2643,7 +2584,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getOptions">
-        <div class="location">at         line 73</div>
+        <div class="location">at         line 71</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>getOptions</strong>()
         </code>
@@ -2673,7 +2614,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getSelectedOptions">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 80</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>getSelectedOptions</strong>()
         </code>
@@ -2703,7 +2644,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setSelectedValues">
-        <div class="location">at         line 99</div>
+        <div class="location">at         line 97</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a>
     <strong>setSelectedValues</strong>(scalar|scalar[] $selectedValues)
         </code>
@@ -2743,8 +2684,8 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getSubmitValue">
-        <div class="location">at         line 113</div>
-        <code>                    scalar|scalar[]
+        <div class="location">at         line 111</div>
+        <code>                    mixed
     <strong>getSubmitValue</strong>()
         </code>
     </h3>
@@ -2760,7 +2701,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
         <tr>
-            <td>scalar|scalar[]</td>
+            <td>mixed</td>
             <td>the value</td>
         </tr>
     </table>
@@ -2773,7 +2714,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">at         line 121</div>
+        <div class="location">at         line 119</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
     <strong>setValue</strong>(string|string[] $value)
         </code>
@@ -2822,7 +2763,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_selectMultiple">
-        <div class="location">at         line 132</div>
+        <div class="location">at         line 130</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a>
     <strong>selectMultiple</strong>(boolean $multiple = true)
         </code>
@@ -2863,7 +2804,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setSize">
-        <div class="location">at         line 146</div>
+        <div class="location">at         line 144</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/Menus/SelectMenuInterface.html"><abbr title="Sphp\Html\Forms\Inputs\Menus\SelectMenuInterface">SelectMenuInterface</abbr></a>
     <strong>setSize</strong>(int $size)
         </code>

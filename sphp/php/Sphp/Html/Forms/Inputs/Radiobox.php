@@ -10,10 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="radio"&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-10-18
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Defines a slider for forms
+ * Defines a slider for HTML forms
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-10-11

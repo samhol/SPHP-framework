@@ -8,8 +8,6 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Forms\LabelableInterface;
-use Sphp\Html\Forms\LabelableTrait;
 
 /**
  * Implements an HTML &lt;textarea&gt; tag
@@ -20,11 +18,10 @@ use Sphp\Html\Forms\LabelableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Textarea extends ContainerTag implements TextareaInterface, LabelableInterface {
+class Textarea extends ContainerTag implements TextareaInterface {
 
   use InputTrait,
-      ValidableInputTrait,
-      LabelableTrait;
+      ValidableInputTrait;
 
   /**
    * Constructs a new instance

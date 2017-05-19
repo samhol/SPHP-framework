@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Forms\Inputs\Menus;
 
-use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\ContainerInterface;
 
 /**
@@ -24,7 +23,7 @@ use Sphp\Html\ContainerInterface;
  *   grouping mechanism to allow for nested groups (i.e., {@link Optgroup} components may 
  *   nest). This will allow authors to represent a richer hierarchy of choices.
  * * Because of the above nesting of {@link Optgroup} objects is supported
- *   but not recomended.
+ *   but not recommended.
  * * The {@link Select} component is a form control and can be used in a 
  *   form to collect user input.
  * 
@@ -34,10 +33,9 @@ use Sphp\Html\ContainerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Select extends AbstractOptionsContainer implements LabelableInterface, SelectMenuInterface {
+class Select extends AbstractOptionsContainer implements SelectMenuInterface {
 
   use \Sphp\Html\Forms\Inputs\InputTrait,
-      \Sphp\Html\Forms\LabelableTrait,
       \Sphp\Html\Forms\Inputs\ValidableInputTrait;
 
   /**

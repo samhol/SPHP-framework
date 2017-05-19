@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\LabelableInterface;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
@@ -25,7 +24,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements LabelableInterface, ScreenReaderLabelable {
+class AbstractSwitch extends AbstractComponent implements ScreenReaderLabelable {
 
   /**
    * CSS classes corresponding to the size constants
@@ -194,9 +193,9 @@ class AbstractSwitch extends AbstractComponent implements LabelableInterface, Sc
     return $this->input->isRequired();
   }
 
-  public function createLabel($label = null) {
-    $this->input->createLabel($label);
-    return $this;
+  public function createLabel($content = null) {
+    $label = new Label($content, $this->input);
+    return $label;
   }
 
   public function contentToString() {
