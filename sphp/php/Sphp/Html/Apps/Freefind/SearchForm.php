@@ -8,8 +8,10 @@
 namespace Sphp\Html\Apps\Freefind;
 
 use Sphp\Html\Forms\FormInterface;
+use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\SubmitButton;
+use Sphp\Html\Icons\Icon;
 
 /**
  * Description of SearchForm
@@ -25,6 +27,11 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
 
   /**
    *
+   * @var TextInput
+   */
+  private $searchField;
+  /**
+   *
    * @var Submitter
    */
   private $submitButton;
@@ -36,10 +43,18 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
             ->setMethod('get')
             ->setTarget('_self')
             ->identify('freefind');
-    $this->setSubmitButton(new SubmitButton(\Sphp\Html\Icons\Icon::get('fa-search')));
+    $this->setSubmitButton(new SubmitButton(Icon::get('fa-search')));
+  }
+  public function getSearchField(): TextInput {
+    return $this->searchField;
   }
 
-  public function getSubmitButton(): Submitter {
+  public function setSearchField(TextInput $searchField) {
+    $this->searchField = $searchField;
+    return $this;
+  }
+
+    public function getSubmitButton(): Submitter {
     return $this->submitButton;
   }
 
