@@ -4,8 +4,13 @@
  * SearchForm.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
+
 namespace Sphp\Html\Apps\Freefind;
+
 use Sphp\Html\Forms\FormInterface;
+use Sphp\Html\Forms\Buttons\Submitter;
+use Sphp\Html\Forms\Buttons\SubmitButton;
+
 /**
  * Description of SearchForm
  *
@@ -15,12 +20,37 @@ use Sphp\Html\Forms\FormInterface;
  * @filesource
  */
 class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
-  
+
   use \Sphp\Html\Forms\FormTrait;
-  
+
+  /**
+   *
+   * @var Submitter
+   */
+  private $submitButton;
+
   public function __construct() {
     parent::__construct('form');
-    $this->setAction('http://search.freefind.com/find.html')->setMethod('get');
+    $this->setAction('http://search.freefind.com/find.html')
+            ->setEnctype('utf-8')
+            ->setMethod('get')
+            ->setTarget('_self')
+            ->identify('freefind');
+    $this->setSubmitButton(new SubmitButton(\Sphp\Html\Icons\Icon::get('fa-search')));
+  }
+
+  public function getSubmitButton(): Submitter {
+    return $this->submitButton;
+  }
+
+  /**
+   * 
+   * @param Submitter $submitButton
+   * @return $this
+   */
+  public function setSubmitButton(Submitter $submitButton) {
+    $this->submitButton = $submitButton;
+    return $this;
   }
 
   public function contentToString() {
@@ -44,16 +74,18 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
 
 
 <a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a>';
+    echo $output;
   }
 
-  public function setSid($id) {
+  public function set($id) {
     
   }
+
   public function getData() {
     
   }
 
-  public function setData(mixed $data = array(), $filter = true) {
+  public function setData(array $data = [], $filter = true) {
     
   }
 

@@ -21,8 +21,6 @@ namespace Sphp\Html\Forms\Inputs;
  */
 class NumberInput extends InputTag implements NumberInputInterface {
 
-  use ValidableInputTrait;
-
   /**
    * Constructs a new instance
    *

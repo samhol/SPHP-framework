@@ -9,7 +9,7 @@ $radioBoxes = (new Radioboxes("gender", [
     "m" => "male",
     "f" => "female",
     "x" => "X",
-    "?" => "unknown"], "Gender"));
+    "?" => "unknown"]));
 $checkBoxes = (new Checkboxes("hobbies", [
     "bball" => "Basketball",
     "football" => "Football",
@@ -17,11 +17,13 @@ $checkBoxes = (new Checkboxes("hobbies", [
     "running" => "Running",
     "swimming" => "Swimming",
     "lifting" => "Weightlifting"
-        ], "Hobbies", true));
+        ]));
 
 $form = new Form();
 
+$form[] = '<label>Sex:</label>';
 $form[] = $radioBoxes;
+$form[] = '<label>Hobbies:</label>';
 $form[] = $checkBoxes;
 
 $form->printHtml();

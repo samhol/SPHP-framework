@@ -23,7 +23,7 @@ namespace Sphp\Html\Forms;
 trait LabelableTrait {
 
   /**
-   * Creates a {@link Label} component for the input component
+   * Creates a label component for the input component
    *
    *  **Postcondition:** <var>self::attrExists("id") === true</var>
    *

@@ -19,7 +19,7 @@ namespace Sphp\Html\Foundation\Sites\Core;
 interface VisibilityChanger {
 
   /**
-   * Sets the componentvisible for all screen sizes
+   * Sets the component visible for all screen sizes
    * 
    * @return self for a fluent interface
    */

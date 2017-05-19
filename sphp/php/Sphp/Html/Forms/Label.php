@@ -9,7 +9,6 @@ namespace Sphp\Html\Forms;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\ContainerTag;
-use Sphp\Stdlib\Strings;
 
 /**
  * Implements an HTML &lt;label&gt; tag
@@ -37,7 +36,7 @@ class Label extends ContainerTag {
    */
   public function __construct($content = null, $for = null) {
     parent::__construct('label', $content);
-    if (!Strings::isEmpty($for)) {
+    if ($for !== null) {
       $this->setFor($for);
     }
   }

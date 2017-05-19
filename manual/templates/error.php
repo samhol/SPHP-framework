@@ -22,6 +22,12 @@ Img::scaleToFit($path, $s150)->setLazy()->setAlt('150px')->printHtml();
 Img::scaleToFit($path, $s100)->setLazy()->setAlt('100px')->printHtml();
 Img::scaleToFit($path, $s50)->setLazy()->setAlt('50px')->printHtml();
 Img::scaleToFit($path, $s25)->setLazy()->setAlt('25px')->printHtml();
+
+namespace Sphp\Html\Apps\Freefind;
+
+$form = new SearchForm();
+echo "\n";
+$form->printHtml();
 ?>
 <pre>
   <?php

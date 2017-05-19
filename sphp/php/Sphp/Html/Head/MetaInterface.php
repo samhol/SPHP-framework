@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Html\NonVisualContentInterface;
+
 /**
  * Implements an HTML &lt;meta&gt; tag
  *
@@ -21,7 +23,7 @@ namespace Sphp\Html\Head;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MetaInterface extends HeadComponentInterface {
+interface MetaInterface extends HeadComponentInterface, NonVisualContentInterface {
 
   /**
    * Checks whether the name attribute exists or not

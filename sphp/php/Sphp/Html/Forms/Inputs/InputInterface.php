@@ -50,7 +50,7 @@ interface InputInterface extends ContentInterface {
   /**
    * Returns the value of the form input
    *
-   * @return  scalar|scalar[] the value
+   * @return  mixed the value
    */
   public function getSubmitValue();
 

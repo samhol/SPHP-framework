@@ -13,10 +13,6 @@ use Sphp\Html\Forms\Inputs\InputTrait;
 /**
  * Implements an HTML &lt;button&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-02-06
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API

@@ -184,7 +184,7 @@ interface FormInterface extends ContentInterface {
    * **Important:** Works only for sigle dimensional input names
    * 
    * @param  mixed[] $data
-   * @param  boolean $filter true for enabling the data filtering, ans false otherwise
+   * @param  boolean $filter true for enabling the data filtering, and false otherwise
    * @return self for a fluent interface
    */
   public function setData(array $data = [], $filter = true);

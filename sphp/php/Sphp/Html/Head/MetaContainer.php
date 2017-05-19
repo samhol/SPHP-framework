@@ -11,6 +11,7 @@ use Sphp\Html\ContentInterface;
 use IteratorAggregate;
 use Sphp\Html\Container;
 use Sphp\Html\TraversableInterface;
+use Sphp\Html\NonVisualContentInterface;
 
 /**
  * Class is a container for a {@link MetaInterface} component group
@@ -28,7 +29,7 @@ use Sphp\Html\TraversableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MetaContainer implements ContentInterface, IteratorAggregate, TraversableInterface {
+class MetaContainer implements ContentInterface, IteratorAggregate, TraversableInterface, NonVisualContentInterface {
 
   use \Sphp\Html\ContentTrait,
       \Sphp\Html\TraversableTrait;

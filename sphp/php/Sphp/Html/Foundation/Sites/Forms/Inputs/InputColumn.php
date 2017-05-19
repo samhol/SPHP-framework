@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\ColumnTrait as ColumnTrait;
+use Sphp\Html\Foundation\Sites\Grids\ColumnTrait;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;

@@ -60,7 +60,7 @@ class AbstractComponentAdapter implements Adapter {
    * 
    * @return ComponentInterface
    */
-  public function getComponent() {
+  public function getComponent(): ComponentInterface {
     return $this->component;
   }
 

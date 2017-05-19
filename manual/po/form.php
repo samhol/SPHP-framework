@@ -28,7 +28,7 @@ $fieldset[] = [
 	new InputColumn($ruleMenu, 12, 3),
 	new InputColumn($searchInput, 12, 6),
 	new InputColumn($perPage, 12, 3)];
-$fieldset[] = (new InputColumn((new Buttons\SubmitButton("Submit", "submit", "submitted"))
+$fieldset[] = (new InputColumn((new Buttons\SubmitInput("Submit", "submit", "submitted"))
 			->addCssClass("button success radius"), 12))->addCssClass("text-center");
 $form = new Form($_SERVER["PHP_SELF"], "get");
 $form->appendHiddenVariable("page", 1);

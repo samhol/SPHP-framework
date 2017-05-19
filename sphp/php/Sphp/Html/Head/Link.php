@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Head;
 
+use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\EmptyTag;
 use Sphp\Stdlib\Strings;
 
@@ -25,7 +26,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Link extends EmptyTag implements HeadComponentInterface {
+class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentInterface {
 
   /**
    * Constructs a new instance
@@ -214,7 +215,6 @@ class Link extends EmptyTag implements HeadComponentInterface {
     return $this->attrs()->get('media');
   }
 
-
   /**
    * Adds an link tag which points to a CSS stylesheet file to the object
    *
@@ -244,5 +244,5 @@ class Link extends EmptyTag implements HeadComponentInterface {
     $link->setType($type);
     return $link;
   }
-  
+
 }

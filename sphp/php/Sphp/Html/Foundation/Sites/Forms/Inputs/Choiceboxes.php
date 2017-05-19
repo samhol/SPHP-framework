@@ -108,14 +108,15 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * Adds a new input option to the component
    * 
    * @param  Choicebox $input
-   * @param  mixed|Label $label
+   * @param  mixed $label
    * @return self for a fluent interface
    */
   protected function setInput(Choicebox $input, $label) {
     $index = $input->getSubmitValue();
+    $label = new Label($label, $input);
     $this->options[$index] = $input;
     $this->boxes[$index] = $input;
-    $this->boxes[$index . "_label"] = $input->createLabel($label);
+    $this->boxes[$index . "_label"] = $label;
     return $this;
   }
 

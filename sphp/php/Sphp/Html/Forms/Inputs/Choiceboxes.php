@@ -11,7 +11,6 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Forms\Inputs\InputTag as InputTag;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Forms\LabelableInterface as LabelableInterface;
 use Sphp\Html\Forms\Label;
 
 /**
@@ -22,7 +21,7 @@ use Sphp\Html\Forms\Label;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Choiceboxes extends AbstractContainerComponent implements InputInterface, LabelableInterface {
+abstract class Choiceboxes extends AbstractContainerComponent implements InputInterface {
 
   /**
    * the type of the individual input component
@@ -37,13 +36,6 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @var string
    */
   private $name;
-
-  /**
-   * the main label component
-   *
-   * @var Label
-   */
-  private $label;
 
   /**
    * the options
@@ -67,15 +59,14 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @param scalar[] $values
    * @param mixed $label
    */
-  public function __construct($type, $name = null, array $values = [], $label = null) {
+  public function __construct($type, $name = null, array $values = []) {
     $this->type = $type;
-    parent::__construct("fieldset");
+    parent::__construct('fieldset');
     $this->boxCont = new Ul();
-    $this->boxCont->addCssClass("inline-list");
+    $this->boxCont->addCssClass('inline-list');
     //$this->mainLabel = new Legend($mainLabel)
     $this->setName($name)
-            ->setOptions($values)
-            ->setLabel($label);
+            ->setOptions($values);
     $this->cssClasses()->lock("sphp-choiceboxes $this->type");
     $this->getInnerContainer()
             ->append($this->boxCont);
@@ -95,8 +86,8 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
     //$input = new InputTag($this->type, $this->name, $value);
     $this->options[] = $input;
     $this->boxCont[] = (new Label())
-            ->offsetSet("input", $input)
-            ->offsetSet("label", "<span>$label</span>");
+            ->offsetSet('input', $input)
+            ->offsetSet('label', "<span>$label</span>");
     return $this;
   }
 
@@ -169,7 +160,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return self for a fluent interface
    */
   public function disable($disabled = true) {
-    return $this->setAttr("disabled", $disabled);
+    return $this->setAttr('disabled', $disabled);
   }
 
   /**
@@ -178,7 +169,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @param  boolean true if the option is enabled, otherwise false
    */
   public function isEnabled() {
-    return !$this->attrExists("disabled");
+    return !$this->attrExists('disabled');
   }
 
   /**
@@ -209,46 +200,11 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
   public function getSubmitValue() {
     $submission = [];
     foreach ($this->getOptionFields() as $box) {
-      if ($box->attrExists("checked")) {
+      if ($box->attrExists('checked')) {
         $submission[] = $box->getSubmitValue();
       }
     }
     return $submission;
-  }
-
-  /**
-   * Sets the content of the input label ({@link Label})
-   *
-   * @param  mixed $label the content of the input label ({@link Label})
-   * @return self for a fluent interface
-   */
-  public function setLabel($label) {
-    if (!($label instanceof Label)) {
-      $this->label = new Label($label);
-    } else {
-      $this->label = $label;
-    }
-    return $this;
-  }
-
-  /**
-   * Checks whether the {@link Label} is defined for the input component or 
-   *  not
-   *
-   * @return boolean true if the label is defined, otherwise false
-   * @link   Label
-   */
-  public function hasLabel() {
-    return $this->label instanceof Label;
-  }
-
-  /**
-   * Creates a {@link Label} component for the input component
-   *
-   * @return Label|null created label component
-   */
-  public function createLabel() {
-    return $this->label;
   }
 
 }

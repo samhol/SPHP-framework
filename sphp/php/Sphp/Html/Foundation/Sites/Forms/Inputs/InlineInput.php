@@ -1,7 +1,7 @@
 <?php
 
 /**
- * InputGroup.php (UTF-8)
+ * InlineInput.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -20,7 +20,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputGroup extends AbstractComponent implements IdentifiableInputInterface {
+class InlineInput extends AbstractComponent implements IdentifiableInputInterface {
 
   use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
 
@@ -101,6 +101,10 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
       }
     };
     return $a($this->prefix) . $this->input->getHtml() . $a($this->suffix);
+  }
+
+  public function getSubmitValue() {
+    $this->getInput()->getSubmitValue();
   }
 
 }

@@ -43,8 +43,8 @@ class AnyTimeInput extends TextInput {
    *
    * **supported languages:**
    * 
-   * * {@link self::LANG_EN}: english
-   * * {@link self::LANG_FI}: finnish
+   * * {@link self::LANG_EN}: English
+   * * {@link self::LANG_FI}: Finnish
    * 
    * @param  string $name name attribute
    * @param  string $value the value of the attribute
@@ -54,7 +54,7 @@ class AnyTimeInput extends TextInput {
    */
   public function __construct($name = "", $value = "", $locale = self::LANG_EN) {
     parent::__construct($name, $value, 17, 17);
-    $this->attrs()->demand("data-anytime");
+    $this->attrs()->demand('data-anytime');
     $this->identify();
     $this->setDateTimeFormat()
             ->setLocale($locale);
@@ -65,8 +65,8 @@ class AnyTimeInput extends TextInput {
    *
    * **supported languages:**
    * 
-   * * {@link self::LANG_EN}: english
-   * * {@link self::LANG_FI}: finnish
+   * * {@link self::LANG_EN}: English
+   * * {@link self::LANG_FI}: Finnish
    * 
    * @param  string $locale used language and locale
    * @return self for a fluent interface

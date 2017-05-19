@@ -53,7 +53,7 @@ class Select extends AbstractOptionsContainer implements LabelableInterface, Sel
    * 
    * @param string|null $name name attribute
    * @param SelectMenuContentInterface|mixed[] $opt the content of the menu
-   * @param string|string[] $selectedValues the optionvalues selected
+   * @param string|string[] $selectedValues the option values selected
    */
   public function __construct($name = null, $opt = null, $selectedValues = null) {
     parent::__construct('select', $opt);
