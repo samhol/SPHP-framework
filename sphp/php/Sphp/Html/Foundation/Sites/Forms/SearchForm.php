@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Freefind;
+namespace Sphp\Html\Foundation\Sites\Forms;
 
 use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Forms\Inputs\TextInput;
@@ -87,7 +87,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     return $this;
   }
 
-  public function contentToString(): string  {
+  public function contentToString(): string {
     $output = $this->hiddenData->getHtml();
     $output .= '
   <div class="input-group">
@@ -99,7 +99,6 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
   </div>';
     return $output;
   }
-
 
   public function getData(): \Sphp\Html\Forms\ArrayWrapper {
     

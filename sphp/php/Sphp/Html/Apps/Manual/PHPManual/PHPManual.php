@@ -5,9 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\PHPManual;
 
 use Sphp\Html\Hyperlink;
+use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 
 /**
  * Hyperlink object generator pointing to PHP manual

@@ -475,6 +475,13 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return $this->isIdentifier($identityName) && $this->exists($identityName);
   }
 
+  /**
+   * 
+   * @param type $identityName
+   * @param type $prefix
+   * @param type $length
+   * @return string identity value
+   */
   public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
     if (!$this->isLocked($identityName)) {
       $value = $prefix . Strings::random($length);

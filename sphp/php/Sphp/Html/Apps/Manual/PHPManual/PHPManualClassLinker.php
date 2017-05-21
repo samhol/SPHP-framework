@@ -5,8 +5,9 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\PHPManual;
 
+use Sphp\Html\Apps\Manual\AbstractClassLinker;
 /**
  * PHP class link generator pointing to an existing PHP Manual documentation
  *

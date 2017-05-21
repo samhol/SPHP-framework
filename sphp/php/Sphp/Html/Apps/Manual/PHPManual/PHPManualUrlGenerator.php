@@ -5,7 +5,10 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps\Manual;
+namespace Sphp\Html\Apps\Manual\PHPManual;
+
+use Sphp\Html\Apps\Manual\UrlGenerator;
+use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
 
 /**
  * URL string generator pointing to online PHP Manual

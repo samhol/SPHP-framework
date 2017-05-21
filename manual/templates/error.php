@@ -9,9 +9,14 @@ echo \ParsedownExtra::instance()->text(<<<TEXT
 #404: <small>Manual page not found!</small>{.error}
 
 **The page you requested does not exist**!
+        
+
+<a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a>        
 TEXT
 );
-$s25 = new Size(25, 25);
+
+
+/*$s25 = new Size(25, 25);
 $s50 = new Size(50, 50);
 $s100 = new Size(100, 100);
 $s150 = new Size(150, 150);
@@ -22,22 +27,34 @@ Img::scaleToFit($path, $s150)->setLazy()->setAlt('150px')->printHtml();
 Img::scaleToFit($path, $s100)->setLazy()->setAlt('100px')->printHtml();
 Img::scaleToFit($path, $s50)->setLazy()->setAlt('50px')->printHtml();
 Img::scaleToFit($path, $s25)->setLazy()->setAlt('25px')->printHtml();
-
+*/
 namespace Sphp\Html\Apps\Freefind;
-
+use Sphp\Html\Adapters\QtipAdapter;
 $form = new SearchForm();
+$form->setHiddenData([
+    'si' => '51613081',
+    'pid' => 'r',
+    'n' => '0',
+    '_charset_' => '',
+    'bcd' => '&#247;']);
+$form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
 echo "\n";
+(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search');
 $form->printHtml();
+
 ?>
+<a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
+  <span style="color: #606060;">freefind</span></a>
 <pre>
   <?php
   /* print_r($_SERVER);
     print_r($_FILES);
     print_r(headers_list());
     print_r(http_response_code()); */
+
   ?>
 </pre>
-<!-- start of freefind search box html -->
+<!-- start
 <form action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self" id="freefind">
   <div class="input-group">
     <span class="input-group-label">Search for:</span>
@@ -57,7 +74,6 @@ $form->printHtml();
   <span style="color: #606060;">freefind</span></a>
 
 
-<a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a>
 
-<!-- end of freefind search box html -->
+ -->
 

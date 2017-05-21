@@ -65,16 +65,16 @@ class Timer {
    * Returns the amount of the time from the start of the execution to the
    * current time
    *
-   * @param  float $precision the optional number of decimal digits to round to
+   * @param  float $precision optional number of decimal digits to round to
    * @return float the requested time
    */
-  public static function getEcecutionTime($precision = false) {
+  public static function getEcecutionTime($precision = 2) {
     $time = 0;
     if (array_key_exists("REQUEST_TIME_FLOAT", $_SERVER)) {
       $time = microtime(true) - intval($_SERVER["REQUEST_TIME_FLOAT"]);
     }
     if ($precision !== false) {
-      $time = round($time, $precision);
+      $time = number_format($time, $precision);
     }
     return $time;
   }
