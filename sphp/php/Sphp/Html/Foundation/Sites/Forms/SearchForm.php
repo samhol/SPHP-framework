@@ -46,8 +46,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     $this->setAction($action)
             ->setEnctype('utf-8')
             ->setMethod($method)
-            ->setTarget('_self')
-            ->identify('freefind');
+            ->setTarget('_self');
     $this->setSubmitButton(new SubmitButton(Icon::fontAwesome('fa-search')));
     $this->hiddenData = new HiddenInputs();
     $this->setSearchField(new TextInput());
@@ -77,6 +76,10 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     $this->submitButton->cssClasses()->lock('button');
     return $this;
   }
+  
+  public function showLabel($additionalControls = true) {
+    $this->showLabel = $additionalControls;
+  }
 
   public function getHiddenData(): HiddenInputs {
     return $this->hiddenData;
@@ -90,10 +93,12 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
   public function contentToString(): string {
     $output = $this->hiddenData->getHtml();
     $output .= '
-  <div class="input-group">
-    <span class="input-group-label">Search for:</span>
-    ' . $this->searchField . '
-    <div class="input-group-button">
+  <div class="input-group">';
+    if ($this->showLabel) {
+      $output .= '<span class="input-group-label">Search for:</span>';
+    }
+    $output .= $this->searchField->getHtml();
+    $output .= '<div class="input-group-button">
       ' . $this->submitButton->getHtml() . '
     </div>
   </div>';

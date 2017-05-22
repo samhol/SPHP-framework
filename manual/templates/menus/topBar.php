@@ -4,10 +4,10 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
+use Sphp\Html\Apps\Freefind\FreefindSearchForm;
+use Sphp\Html\Adapters\QtipAdapter;
 
-  use Sphp\Html\Apps\Freefind\FreefindSearchForm;
 try {
-  ob_start();
   $navi = new TopBar();
   $navi->addCssClass('sphp-manual');
 
@@ -19,39 +19,16 @@ try {
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->left()->setContent($leftDrop);
-  
-  $form = new \Sphp\Html\Apps\Freefind\FreefindSearchForm();
-  $navi->right()->setContent('<ul class="menu"><li>'.$form.'</li></ul>');
-  /* $packages = (new SubMenu('Dependencies'))
-    ->appendText('PHP resources:')
-    ->appendLink('http://php.net/', 'PHP 5.6', '_blank')
-    ->append((new SubMenu("External PHP Libraries"))
-    ->appendLink('https://github.com/erusev/parsedown-extra', 'Parsedown Extra', '_blank')
-    ->appendLink('http://qbnz.com/highlighter/', 'GeSHi', '_blank')
-    ->appendLink('http://github.com/jdorn/sql-formatter', 'SQL Formatter', '_blank')
-    ->appendLink('https://github.com/raulferras/PHP-po-parser', "Po Parser", '_blank')
-    ->appendLink('https://imagine.readthedocs.org', "Imagine", '_blank'));
 
-    $packages
-    ->appendText('JS resources:')
-    ->appendLink('http://jquery.com/', "jQuery 1.11", '_blank')
-    ->appendLink('http://foundation.zurb.com/', 'Foundation', '_blank');
-    $clientSideMenu = new SubMenu('jQuery plugins:');
-    $clientSideMenu->appendLink('http://qtip2.com/', 'qTip 2', '_blank')
-    ->appendLink('http://ressio.github.io/lazy-load-xt/', 'Lazy Load XT', '_blank')
-    ->appendLink('http://www.ama3.com/anytime/', 'Any+Time&trade; DatePicker', '_blank');
-    $packages->append($clientSideMenu)
-    ->appendLink('http://zeroclipboard.org/', 'ZeroClipboard', '_blank');
+$form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
+  $form->setAdditionalControls(false)->showLabel(false);
+  $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
 
-    $navi->right()->append($packages); */
+  (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setViewport($navi->right());
+  $navi->right()->setContent('<ul class="menu"><li>' . $form . '</li></ul>');
 
   $navi->printHtml();
-
-  unset($navi, $apis, $packages, $topbarsubmenu, $phpDepMenu, $jsDepMenu);
-  $content = ob_get_contents();
 } catch (\Exception $e) {
-  $content .= new ExceptionBox($e);
+  echo new ExceptionBox($e);
 }
-ob_end_clean();
-echo $content;
-unset($content);
+

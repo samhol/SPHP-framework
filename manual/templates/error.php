@@ -30,10 +30,11 @@ Img::scaleToFit($path, $s25)->setLazy()->setAlt('25px')->printHtml();
 namespace Sphp\Html\Apps\Freefind;
 use Sphp\Html\Adapters\QtipAdapter;
 $form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
+$form->showLabel(true);
 
 $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
 echo "\n";
-(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search');
+(new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search')->setViewport($form);
 $form->printHtml();
 
 ?>
