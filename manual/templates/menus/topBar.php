@@ -5,6 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 
+  use Sphp\Html\Apps\Freefind\FreefindSearchForm;
 try {
   ob_start();
   $navi = new TopBar();
@@ -18,6 +19,9 @@ try {
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->left()->setContent($leftDrop);
+  
+  $form = new \Sphp\Html\Apps\Freefind\FreefindSearchForm();
+  $navi->right()->setContent('<ul class="menu"><li>'.$form.'</li></ul>');
   /* $packages = (new SubMenu('Dependencies'))
     ->appendText('PHP resources:')
     ->appendLink('http://php.net/', 'PHP 5.6', '_blank')

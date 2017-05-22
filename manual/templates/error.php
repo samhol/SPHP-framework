@@ -10,8 +10,7 @@ echo \ParsedownExtra::instance()->text(<<<TEXT
 
 **The page you requested does not exist**!
         
-
-<a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a>        
+   
 TEXT
 );
 
@@ -30,21 +29,15 @@ Img::scaleToFit($path, $s25)->setLazy()->setAlt('25px')->printHtml();
 */
 namespace Sphp\Html\Apps\Freefind;
 use Sphp\Html\Adapters\QtipAdapter;
-$form = new SearchForm();
-$form->setHiddenData([
-    'si' => '51613081',
-    'pid' => 'r',
-    'n' => '0',
-    '_charset_' => '',
-    'bcd' => '&#247;']);
+$form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
+
 $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
 echo "\n";
 (new QtipAdapter($form->getSubmitButton()))->setQtipPosition('bottom right', 'top center')->setQtip('Execute Search');
 $form->printHtml();
 
 ?>
-<a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >site search</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
-  <span style="color: #606060;">freefind</span></a>
+
 <pre>
   <?php
   /* print_r($_SERVER);
@@ -76,4 +69,36 @@ $form->printHtml();
 
 
  -->
+ 
+ <!-- start of freefind search box html -->
+<table cellpadding=0 cellspacing=0 border=0 >
+<tr>
+	<td  style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+		<center><table width="90%" cellpadding=0 cellspacing=0 border=0  style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;">
+		<tr>
+			<td style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;" align=left ><a href="http://search.freefind.com/siteindex.html?si=51613081">index</a></td>
+			<td style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;" align=center><a href="http://search.freefind.com/find.html?si=51613081&amp;m=0&amp;p=0">sitemap</a></td>
+			<td style="font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt;" align=right><a href="http://search.freefind.com/find.html?si=51613081&amp;pid=a">advanced</a></td>
+		</tr>
+		</table></center>
+		<form style="margin:0px; margin-top:4px;" action="http://search.freefind.com/find.html" method="get" accept-charset="utf-8" target="_self">
+		<input type="hidden" name="si" value="51613081">
+		<input type="hidden" name="pid" value="r">
+		<input type="hidden" name="n" value="0">
+		<input type="hidden" name="_charset_" value="">
+		<input type="hidden" name="bcd" value="&#247;">
+		<input type="text" name="query" size="15"> 
+		<input type="submit" value="search">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td style="text-align:center; font-family: Arial, Helvetica, sans-serif;	font-size: 7.5pt; padding-top:4px;">
+		<a style="text-decoration:none; color:gray;" href="http://www.freefind.com" >search engine</a><a style="text-decoration:none; color:gray;" href="http://www.freefind.com" > by
+		<span style="color: #606060;">freefind</span></a>
+	</td>
+</tr>
+</table>
+<!-- end of freefind search box html -->
+
 

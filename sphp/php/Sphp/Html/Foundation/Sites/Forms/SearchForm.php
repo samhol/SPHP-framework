@@ -41,11 +41,11 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
    */
   private $hiddenData;
 
-  public function __construct() {
+  public function __construct($action = null, $method = 'get') {
     parent::__construct('form');
-    $this->setAction('http://search.freefind.com/find.html')
+    $this->setAction($action)
             ->setEnctype('utf-8')
-            ->setMethod('get')
+            ->setMethod($method)
             ->setTarget('_self')
             ->identify('freefind');
     $this->setSubmitButton(new SubmitButton(Icon::fontAwesome('fa-search')));

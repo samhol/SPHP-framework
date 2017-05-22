@@ -10,6 +10,7 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\AbstractComponentGenerator;
 use Sphp\Html\ContentInterface;
 use ArrayAccess;
+use Iterator;
 use Sphp\Html\Container;
 
 /**
@@ -20,7 +21,7 @@ use Sphp\Html\Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HiddenInputs extends AbstractComponentGenerator implements ContentInterface, ArrayAccess {
+class HiddenInputs extends AbstractComponentGenerator implements ContentInterface, ArrayAccess, Iterator {
 
   /**
    *
@@ -90,7 +91,7 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
     return $result;
   }
 
-  public function offsetSet($offset, $value): void {
+  public function offsetSet($offset, $value) {
     $this->inputs[$offset] = $value;
   }
 
@@ -98,6 +99,47 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
     if ($this->offsetExists($offset)) {
       unset($this->inputs[$offset]);
     }
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->inputs);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->inputs);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->inputs);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->inputs);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid() {
+    return false !== current($this->inputs);
   }
 
 }
