@@ -7,6 +7,7 @@ use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\Radioboxes;
 
 class GettextForm extends AbstractComponentGenerator {
 
@@ -40,22 +41,26 @@ class GettextForm extends AbstractComponentGenerator {
     return $this;
   }
 
-  private function generateSearchComponents() {
+  public function generate(): Html\ContentInterface {
+
+    $form = new GridForm('manual/gettext/index.php', 'get');
+    $form->addCssClass('sphp-gettext-form');
+
+
     $row = new FormRow();
-    $typeSelector = new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']);
-    $typeSelector->setValue(['type' => 0]);
-    $row->appendColumn(new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']), 12, false, 4, 5);
+    $typeSelector = new Radioboxes('type', [0b1 => 'singular:', 0b10 => 'plural:', 0b11 => 'Both:']);
+    $typeSelector->setValue(['type' => 0b11]);
+    $row->appendColumn($typeSelector, 12, false, 4, 5);
+
+    $form->append($row);
+
+    $row1 = new FormRow();
     $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Inputs\TextColumn('query'), 12, false, 7, 6);
     $row->appendColumn(new SubmitButton('submit'), 12, false, 1);
-    return $row;
-  }
 
-  public function generate(): Html\ContentInterface {
-    $this->form = new GridForm('manual/gettext/index.php', 'get');
-    $this->form->addCssClass('sphp-gettext-form');
-    $this->form->append($this->generateSearchComponents());
-    $this->form->append($this->tableGenerator->generate());
-    return $this->form;
+    $form->append($row1);
+    $form->append($this->tableGenerator->generate());
+    return $form;
   }
 
 }

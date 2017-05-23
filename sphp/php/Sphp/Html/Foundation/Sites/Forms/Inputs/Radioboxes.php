@@ -36,7 +36,7 @@ class Radioboxes extends Choiceboxes {
       $value = array_pop($value);
     }
     foreach ($this->getOptionFields() as $opt) {
-      if ($opt->getValue() == $value) {
+      if ($opt->getAttr('value') == $value) {
         $opt->setChecked(true);
       } else {
         $opt->setChecked(false);
