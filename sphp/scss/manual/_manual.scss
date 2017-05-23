@@ -24,6 +24,7 @@ $error-bg: rgba(255,127,80, 0.40);
 @import "footer";
 @import "error-pages";
 @import 'topbar';
+@import 'gettext-form';
 
 @mixin default-margin($margin: all) { 
   @if $margin == all or map-has-key($default-margins, $margin) {

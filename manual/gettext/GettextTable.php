@@ -2,78 +2,67 @@
 
 namespace Sphp;
 
-use Sphp\Html\ContentInterface;
-use Sphp\I18n\Gettext\PoFileIterator;
-use Sphp\I18n\Gettext\GettextData;
+use Sphp\Html\AbstractComponentGenerator;
+use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\I18n\Gettext\PluralGettextData;
-use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Tr;
-use Sphp\Html\Tables\Th;
 
-class GettextTable implements ContentInterface {
-
-  use \Sphp\Html\ContentTrait;
+class GettextTable extends AbstractComponentGenerator {
 
   /**
-   *
-   * @var GridForm 
+   * @var Collection 
    */
-  private $form;
+  private $data;
 
   /**
-   *
-   * @var Table
+   * @var int 
    */
-  private $table;
   private $i = 1;
 
-  public function __construct($gettextData) {
-    $row = new \Sphp\Html\Foundation\Sites\Forms\FormRow();
-    $typeSelector = new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']);
-    $typeSelector->setValue(['type' => 0]);
-    $row->appendColumn(new \Sphp\Html\Forms\Inputs\Radioboxes('type', ['Both:', 'singular', 'plural']), 12, false, 4, 3);
-    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Inputs\TextColumn('search'), 12, false, 7, 8);
-    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton('submit'), 12, false, 1);
-    $this->form = new GridForm('manual/gettext/?action=search', 'get');
-    $this->form->append($row);
-    $this->table = new Table();
-    $this->table->addCssClass('po-table')->thead()->append(['Row:', 'Original:', 'ranslation:']);
-    //$body = $this->table->tbody();
-    $this->i = 1;
-    foreach ($gettextData as $obj) {
+  public function __construct(Collection $gettextData = null) {
+    $this->data = $gettextData;
+  }
+
+  public function setFirstRowNumber($i) {
+    $this->i = $i;
+    return $this;
+  }
+
+  public function getData(): Collection {
+    return $this->data;
+  }
+
+  public function setData(Collection $data) {
+    $this->data = $data;
+    return $this;
+  }
+
+  public function generate(): Html\ContentInterface {
+    $i = $this->i;
+    $table = new Table();
+    $table->addCssClass('po-table')
+            ->thead()->appendHeaderRow(['Row:', 'Original:', 'Translation:']);
+    foreach ($this->data as $obj) {
+      $tr = new Tr();
       if ($obj instanceof PluralGettextData) {
-        $this->pluralRow($obj);
+        $tr->appendTh($i, 'rowgroup', 1, 2);
+        $tr->appendTd($obj->getMessageId());
+        $tr->appendTd($obj->getTranslation());
+        $table->tbody()->append($tr);
+        $tr1 = new Tr();
+        $tr1->appendTd($obj->getPluralId());
+        $tr1->appendTd($obj->getPluralTranslation());
+        $table->tbody()->append($tr1);
       } else {
-        $this->row($obj);
+        $tr->appendTh($i);
+        $tr->appendTd($obj->getMessageId());
+        $tr->appendTd($obj->getTranslation());
+        $table->tbody()->append($tr);
       }
-      // $body->append(var_export($obj, true));
-      $this->i++;
+      $i++;
     }
-  }
-
-  private function row(GettextData $obj) {
-    $tr = new Tr();
-    $tr->append($this->i, 'th');
-    $tr->append($obj->getMessageId());
-    $tr->append($obj->getTranslation());
-    $this->table->tbody()->append($tr);
-  }
-
-  private function pluralRow(PluralGettextData $obj) {
-    $tr = new Tr();
-    $tr->append(new Th($this->i, 'rowgroup', 1, 2));
-    $tr->append($obj->getMessageId());
-    $tr->append($obj->getTranslation());
-    $this->table->tbody()->append($tr);
-    $tr1 = new Tr();
-    $tr1->append($obj->getPluralId());
-    $tr1->append($obj->getPluralTranslation());
-    $this->table->tbody()->append($tr1);
-  }
-
-  public function getHtml() {
-    return $this->form->getHtml() . $this->table->getHtml();
+    return $table;
   }
 
 }

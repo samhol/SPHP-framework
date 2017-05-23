@@ -24,8 +24,8 @@ class Radioboxes extends Choiceboxes {
    * @param scalar[] $values
    * @param mixed $mainLabel
    */
-  public function __construct($name, array $values = [], $mainLabel = null) {
-    parent::__construct('input:radio', $name, $values, $mainLabel);
+  public function __construct($name, array $values = []) {
+    parent::__construct('input:radio', $name, $values);
   }
 
   /**
@@ -39,7 +39,7 @@ class Radioboxes extends Choiceboxes {
       $value = array_pop($value);
     }
     foreach ($this->getOptionFields() as $opt) {
-      if ($opt->getValue() == $value) {
+      if ($opt->getAttr('value') == $value) {
         $opt->setChecked(true);
       } else {
         $opt->setChecked(false);

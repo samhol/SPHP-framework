@@ -58,5 +58,9 @@ class GettextData {
   public function getFlags() {
     return $this->flags;
   }
+  
+  public function __toString() {
+    return $this->translation;
+  }
 
 }

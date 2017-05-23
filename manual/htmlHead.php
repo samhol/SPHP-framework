@@ -19,7 +19,7 @@ Document::setHtmlVersion(Document::HTML5);
 $html = Document::html();
 
 $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
-$title = $titleGenerator->createTitleFor(trim($_SERVER["REDIRECT_URL"], '/'));
+$title = $titleGenerator->createTitleFor(\Sphp\MVC\Router::getCleanUrl());
 Document::html()->setLanguage('en')->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;
