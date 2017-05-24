@@ -50,18 +50,18 @@ $outputCache = PatternFactory::factory('output', [
       </div>
       <div class="mainContent  small-12 large-9 xlarge-9 column"> 
         <div class="container">
-        <?php
-        $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-        $man_cache = 'index';
-        if ($p !== null) {
-          $man_cache = str_replace('.', '-', $p);
-        }
-        if ($outputCache->start($man_cache) === false) {
-          //include('manual/manualBuilder.php');        
-          $router->execute();
-          $outputCache->end();
-        }
-        ?>
+          <?php
+          $p = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+          $man_cache = 'index';
+          if ($p !== null) {
+            $man_cache = str_replace('.', '-', $p);
+          }
+          if ($outputCache->start($man_cache) === false) {
+            //include('manual/manualBuilder.php');        
+            $router->execute();
+            $outputCache->end();
+          }
+          ?>
         </div>
       </div>
       <div class="show-for-xlarge xlarge-1 column"> 
@@ -73,8 +73,7 @@ $outputCache = PatternFactory::factory('output', [
 include('manual/_footer_.php');
 
 use Sphp\Html\Apps\BackToTopButton;
+use Sphp\Html\Adapters\QtipAdapter;
+(new QtipAdapter(new BackToTopButton()))->setQtip('Back To Top')->setQtipPosition('center right', 'center left')->printHtml();
 
-(new BackToTopButton())
-        ->setTitle('Back To Top')
-        ->printHtml();
 $html->documentClose();

@@ -7,7 +7,8 @@ use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Foundation\Sites\Forms\GridForm;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton;
-use Sphp\Html\Foundation\Sites\Forms\Inputs\Radioboxes;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\Checkboxes;
+use Iterator;
 
 class GettextForm extends AbstractComponentGenerator {
 
@@ -18,7 +19,7 @@ class GettextForm extends AbstractComponentGenerator {
   private $form;
 
   /**
-   * @var Collection 
+   * @var Iterator 
    */
   private $data;
 
@@ -27,28 +28,39 @@ class GettextForm extends AbstractComponentGenerator {
    */
   private $tableGenerator;
 
-  public function __construct(Collection $gettextData) {
+  public function __construct(Iterator $gettextData) {
     $this->tableGenerator = new GettextTable($gettextData);
   }
 
-  public function getData(): Collection {
+  public function getData(): Iterator {
     return $this->data;
   }
 
-  public function setData(Collection $data) {
+  public function setData(Iterator $data) {
     $this->data = $data;
     $this->tableGenerator->setData($data);
     return $this;
   }
+  
+  public function getTableGenerator(): GettextTable {
+    return $this->tableGenerator;
+  }
 
+  public function setTableGenerator(GettextTable $tableGenerator) {
+    $this->tableGenerator = $tableGenerator;
+    return $this;
+  }
+
+  
   public function generate(): Html\ContentInterface {
 
     $form = new GridForm('manual/gettext/index.php', 'get');
+    
     $form->addCssClass('sphp-gettext-form');
 
 
     $row = new FormRow();
-    $typeSelector = new Radioboxes('type', [0b1 => 'singular:', 0b10 => 'plural:', 0b11 => 'Both:']);
+    $typeSelector = new Checkboxes('type', [0b1 => 'singular', 0b10 => 'plural', 0b100 => 'original', 0b1000 => 'translation']);
     $typeSelector->setValue(['type' => 0b11]);
     $row->appendColumn($typeSelector, 12, false, 4, 5);
 

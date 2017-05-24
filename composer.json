@@ -17,7 +17,7 @@
     "sepia/po-parser": "^4.2",
     "imagine/imagine": "^0.7",
     "erusev/parsedown-extra": "^0.7.0",
-    "easybook/geshi": "v1.0.8.15",
+    "geshi/geshi": "^1",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
     "zendframework/zend-cache": "*",

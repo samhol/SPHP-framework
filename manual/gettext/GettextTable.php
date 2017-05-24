@@ -7,6 +7,7 @@ use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\I18n\Gettext\PluralGettextData;
 use Sphp\Html\Tables\Table;
 use Sphp\Html\Tables\Tr;
+use Iterator;
 
 class GettextTable extends AbstractComponentGenerator {
 
@@ -20,7 +21,7 @@ class GettextTable extends AbstractComponentGenerator {
    */
   private $i = 1;
 
-  public function __construct(Collection $gettextData = null) {
+  public function __construct(Iterator $gettextData = null) {
     $this->data = $gettextData;
   }
 
@@ -29,11 +30,11 @@ class GettextTable extends AbstractComponentGenerator {
     return $this;
   }
 
-  public function getData(): Collection {
+  public function getData(): Iterator {
     return $this->data;
   }
 
-  public function setData(Collection $data) {
+  public function setData(Iterator $data) {
     $this->data = $data;
     return $this;
   }

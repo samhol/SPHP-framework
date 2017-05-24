@@ -207,7 +207,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
       $value = [$value];
     }
     foreach ($this->options as $opt) {
-      if (in_array($opt->getValue(), $value)) {
+      if (in_array($opt->getSubmitValue(), $value)) {
         $opt->setChecked(true);
       } else {
         $opt->setChecked(false);
