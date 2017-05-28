@@ -27,12 +27,12 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
  */
 class FormRow extends AbstractRow {
 
-  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function appendColumn($content, array $widths = ['small-12']) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {
-      $this->appendInput($content, $s, $m, $l, $xl, $xxl);
+      $this->appendInput($content, $widths);
     } else {
-      parent::appendColumn($content, $s, $m, $l, $xl, $xxl);
+      parent::appendColumn($content, $widths);
     }
     return $this;
   }
@@ -48,14 +48,14 @@ class FormRow extends AbstractRow {
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    * @return self for a fluent interface
    */
-  public function appendInput(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function appendInput(InputInterface $input, array $widths = ['small-12']) {
     if ($input instanceof NonVisualContentInterface) {
       $this->append($input);
     } else if ($input instanceof ColumnInterface) {
-      $input->setWidths($s, $m, $l, $xl, $xxl);
+      $input->layout()->setWidths($widths);
       $this->append($input);
     } else {
-      $this->append(new InputColumn($input, $s, $m, $l, $xl, $xxl));
+      $this->append(new InputColumn($input, $widths));
     }
     return $this;
   }

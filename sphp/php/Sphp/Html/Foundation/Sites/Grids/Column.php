@@ -23,7 +23,11 @@ use Sphp\Html\Div;
  */
 class Column extends Div implements ColumnInterface {
 
-  use ColumnTrait;
+  /**
+   *
+   * @var ColumnLayoutProperties 
+   */
+  private $columnProps;
 
   /**
    * Constructs a new instance
@@ -41,19 +45,15 @@ class Column extends Div implements ColumnInterface {
    * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    */
-  public function __construct($content = null, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct($content = null, array $widths = ['small-12']) {
     parent::__construct($content);
     $this->cssClasses()->lock('columns');
-    $widthSetter = function ($width, $sreenSize) {
-      if ($width > 0 && $width < 13) {
-        $this->cssClasses()->add("$sreenSize-$width");
-      }
-    };
-    $widthSetter($s, 'small');
-    $widthSetter($m, 'medium');
-    $widthSetter($l, 'large');
-    $widthSetter($xl, 'xlarge');
-    $widthSetter($xxl, 'xxlarge');
+    $this->columnProps = new ColumnLayoutProperties($this->cssClasses());
+    $this->layout()->setLayout($widths);
+  }
+
+  public function layout(): ColumnLayoutPropertiesInterface {
+    return $this->columnProps;
   }
 
 }

@@ -11,7 +11,6 @@ use Sphp\Html\Forms\Legend as Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\Sites\Grids\ColumnInterface as ColumnInterface;
-use Sphp\Html\Foundation\Sites\Grids\ColumnTrait as ColumnTrait;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label;
@@ -28,8 +27,6 @@ use Sphp\Stdlib\Strings;
  * @filesource
  */
 abstract class Choiceboxes extends AbstractComponent implements InputInterface, ColumnInterface {
-
-  use ColumnTrait;
 
   /**
    * the type of the individual input component

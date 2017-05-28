@@ -84,7 +84,7 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
     $this->c1->setWidth($size, $type);
     $this->assertSame($this->c1->getWidth($type), $size);
     if ($type !== "small") {
-      $this->c1->setWidthInherited($type);
+      $this->c1->unsetWidth($type);
     }
     $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
   }
@@ -111,13 +111,13 @@ class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
    * @dataProvider offsetSettingData
    */
   public function testsetGridOffset($type, $size, $offset) {
-    $this->c1->setGridOffset($offset, $type);
-    $this->assertSame($this->c1->getGridOffset($type), $offset);
+    $this->c1->setOffset($offset, $type);
+    $this->assertSame($this->c1->getOffset($type), $offset);
     $this->c1->setWidth($size, $type);
     $this->assertSame($this->c1->getWidth($type), $size);
     $this->assertSame($this->c1->countUsedSpace($type), $size + $offset);
     if ($type !== "small") {
-      $this->c1->setWidthInherited($type);
+      $this->c1->unsetWidth($type);
     }
     $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
     $this->assertSame($this->c1->countUsedSpace($type), $this->c1->getWidth("small") + $offset);

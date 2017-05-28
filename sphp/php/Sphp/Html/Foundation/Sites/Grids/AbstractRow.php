@@ -48,7 +48,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    * @param  mixed|mixed[] $columns row columns
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($columns = null) {
+  public function __construct($columns = null, array $sizes = null) {
     $wrapToCol = function($c) {
       if ($c instanceof NonVisualContentInterface || $c instanceof ColumnInterface) {
         return $c;
@@ -58,64 +58,46 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     };
     parent::__construct('div', null, new WrappingContainer($wrapToCol));
     if ($columns !== null) {
-      $this->setColumns($columns);
+      $this->setColumns($columns, $sizes);
     }
     $this->cssClasses()->lock('row');
   }
 
-  public function setColumns($columns) {
+  public function setColumns($columns, array $sizes = null) {
     if (!is_array($columns)) {
       $columns = [$columns];
     }
-    foreach (Screen::sizes() as $sizeName) {
-      $freeCols[$sizeName] = 12;
-    }
-    $newCols = 0;
-    foreach ($columns as $column) {
-      if ($column instanceof ColumnInterface) {
-        foreach ($freeCols as $sizeName => $freeSpace) {
-          $freeCols[$sizeName] = $freeSpace - $column->countUsedSpace($sizeName);
-        }
+
+    $colCount = count($columns);
+    $div = floor(12 / $colCount);
+    if ($sizes === null) {
+      if ($div < 1) {
+        $sizes = ["small-12"];
       } else {
-        $newCols += 1;
+        $sizes = ["small-$div"];
       }
     }
-    if ($newCols > 0) {
-      $prev = $freeCols['small'];
-      foreach ($freeCols as $sreenType => $colCount) {
-        //var_dump($colCount);
-        $sType[$sreenType] = floor($colCount / $newCols);
-        if ($sType[$sreenType] < 1) {
-          $sType[$sreenType] = 1;
-        }
-      }
-      foreach ($freeCols as $sizeName => $freeSpace) {
-        if ($sizeName != 'small' && $freeSpace == $prev) {
-          $sType[$sizeName] = false;
-        }
-      }
-      //$colWidth = floor(12 / count($columns));
-    }
+
     $this->clear();
     //print_r($sType);
     foreach ($columns as $column) {
       if ($column instanceof ColumnInterface) {
         $this->append($column);
       } else {
-        $this->appendColumn($column, $sType['small'], $sType['medium'], $sType['large'], $sType['xlarge'], $sType['xxlarge']);
+        $this->appendColumn($column, $sizes);
       }
     }
     return $this;
   }
 
-  public function appendColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->append(new Column($content, $s, $m, $l, $xl, $xxl));
+  public function appendColumn($content, array $sizes = ['small-12']) {
+    $this->append(new Column($content, $sizes));
     return $this;
   }
 
-  public function appendMdColumn($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function appendMdColumn($content, array $sizes = ['small-12']) {
     $p = new \ParsedownExtraPlugin();
-    $this->append(new Column($p->parse($content), $s, $m, $l, $xl, $xxl));
+    $this->append(new Column($p->parse($content), $sizes));
     return $this;
   }
 

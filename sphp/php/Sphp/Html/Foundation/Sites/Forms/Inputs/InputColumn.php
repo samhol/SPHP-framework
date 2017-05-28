@@ -8,13 +8,13 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Foundation\Sites\Grids\ColumnTrait;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutProperties;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -27,8 +27,6 @@ use BadMethodCallException;
  * @filesource
  */
 class InputColumn extends AbstractComponent implements InputColumnInterface {
-
-  use ColumnTrait;
 
   /**
    *
@@ -63,6 +61,12 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   private $reflector;
 
   /**
+   *
+   * @var ColumnLayoutProperties 
+   */
+  private $columnProps;
+
+  /**
    * Constructs a new instance
    *
    * @param  InputInterface $input the actual input component
@@ -72,19 +76,11 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
    * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
    */
-  public function __construct(InputInterface $input, $s = 12, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct(InputInterface $input, array $widths = ['small-12']) {
     parent::__construct('div');
     $this->cssClasses()->lock('column');
-    $widthSetter = function ($width, $sreenSize) {
-      if ($width > 0 && $width < 13) {
-        $this->cssClasses()->add("$sreenSize-$width");
-      }
-    };
-    $widthSetter($s, 'small');
-    $widthSetter($m, 'medium');
-    $widthSetter($l, 'large');
-    $widthSetter($xl, 'xlarge');
-    $widthSetter($xxl, 'xxlarge');
+    $this->columnProps = new ColumnLayoutProperties($this->cssClasses());
+    $this->layout()->setLayout($widths);
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
@@ -202,6 +198,10 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   public function contentToString() {
     return $this->label->getHtml() . $this->helper;
+  }
+
+  public function layout() {
+    return $this->columnProps;
   }
 
 }

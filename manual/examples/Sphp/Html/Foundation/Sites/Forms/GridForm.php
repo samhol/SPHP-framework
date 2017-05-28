@@ -28,11 +28,11 @@ $form = (new GridForm())
         ->setTarget("outputFrame")
         ->appendHiddenVariable("hidden", "value")
         ->append([
-    (new InputColumn((new TextInput("username"))->setPlaceholder("Username"), 12, 12, 4))
+    (new InputColumn((new TextInput("username"))->setPlaceholder("Username"), ['small-12', 'medium-12', 'large-4']))
     ->setLabel("Username:"),
-    (new InputColumn((new TextInput("fname"))->setPlaceholder("First name"), 12, 6, 4))
+    (new InputColumn((new TextInput("fname"))->setPlaceholder("First name"), ['small-12', 'medium-6', 'large-4']))
     ->setLabel("First name:"),
-    (new InputColumn((new TextInput("lname"))->setPlaceholder("Family name"), 12, 6, 4))
+    (new InputColumn((new TextInput("lname"))->setPlaceholder("Family name"), ['small-12', 'medium-6', 'large-4']))
                 ->setLabel("Family name:")]);
 
 $form->append((new Textarea("notes", "", 4))

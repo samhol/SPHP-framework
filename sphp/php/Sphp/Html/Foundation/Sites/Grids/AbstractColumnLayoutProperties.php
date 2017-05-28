@@ -1,38 +1,69 @@
 <?php
 
 /**
- * ColumnTrait.php (UTF-8)
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
+ * AbstractColumnLayoutProperties.php (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>.
  */
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Foundation\Sites\Core\Screen;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Trait implements functionality for {@link ColumnInterface} 
+ * Class implements functionality for {@link ColumnInterface} 
  * 
  * Foundation framework based component to create  multi-device layouts
  *
- * The sum of the column widths in a row should never exeed 12.
+ * The sum of the column widths in a row should never exceed 12.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-03-02
+ * @since   2017-03-02
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid
  * @link    http://foundation.zurb.com/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait ColumnTrait {
+class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface {
 
   /**
-   * Returns the class attribute object
-   * 
-   * @return MultiValueAttribute the class attribute object
+   * @var MultiValueAttribute
    */
-  abstract public function cssClasses();
+  private $cssClasses;
+
+  /**
+   *
+   * @var int 
+   */
+  private $maxSize;
+
+  /**
+   * 
+   * @param MultiValueAttribute $cssClasses
+   * @param int $maxSize
+   */
+  public function __construct(MultiValueAttribute $cssClasses, $maxSize = 12) {
+    $this->cssClasses = $cssClasses;
+    $this->maxSize = $maxSize;
+  }
+
+  /**
+   * 
+   * @return int
+   */
+  public function getMaxSize() {
+    return $this->maxSize;
+  }
+
+  /**
+   * 
+   * @return MultiValueAttribute
+   */
+  public function cssClasses() {
+    return $this->cssClasses;
+  }
 
   /**
    * Sets the width and offset for given screen size
@@ -53,28 +84,59 @@ trait ColumnTrait {
    * @param  string $screen the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function setLayout($width, $offset = false, $screen = 'small') {
-    $this->setWidth($width, $screen);
-    $this->setGridOffset($offset, $screen);
+  public function setLayout(array $layout) {
+    $this->unsetLayouts();
+    foreach ($layout as $width) {
+      $parts = explode('-', $width);
+      $c = count($parts);
+      if ($c === 2) {
+        if ($parts[1] === 'centered') {
+          $this->centerize($parts[0]);
+        } else if ($parts[1] === 'uncentered') {
+          $this->uncenterize($parts[0]);
+        } else if (is_numeric($parts[1])) {
+          $this->setWidth($parts[1], $parts[0]);
+        }
+      } else if ($c === 3) {
+        if ($parts[1] === 'offset') {
+          $this->setOffset($parts[2], $parts[0]);
+        }
+      } else {
+        throw new InvalidArgumentException(sprintf('Property \'%s\' cannot be regognized', $width));
+      }
+    }
+    return $this;
+  }
+
+  public function unsetLayouts() {
+    $this->unsetWidths()
+            ->unsetOffsets();
     return $this;
   }
 
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
-   * @return ColumnInterface for PHP Method Chaining
+   * @param  string[] $widths column widths for different screens sizes
+   * @return self for a fluent interface
    */
-  public function setWidths($s, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->setWidth($s, 'small')
-            ->setWidth($m, 'medium')
-            ->setWidth($l, 'large')
-            ->setWidth($xl, 'xlarge')
-            ->setWidth($xxl, 'xxlarge');
+  public function setWidths(array $widths) {
+    $this->unsetWidths();
+    foreach ($widths as $width) {
+      $parts = explode('-', $width);
+      $this->setWidth($parts[1], $parts[0]);
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @return self for a fluent interface
+   */
+  public function unsetWidths() {
+    foreach (Screen::sizes() as $screenSize) {
+      $this->unsetWidth($screenSize);
+    }
     return $this;
   }
 
@@ -92,12 +154,15 @@ trait ColumnTrait {
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  int|boolean $width the width of the column or false for inheritance
    * @param  string $screen the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth($width, $screen = "small") {
-    $this->setWidthInherited($screen);
-    if ($width !== false) {
+  public function setWidth($width, $screen = 'small') {
+    $this->unsetWidth($screen);
+    if ($width > 0 && $width <= $this->getMaxSize()) {
       $this->cssClasses()->add("$screen-$width");
+    } else {
+      throw new InvalidArgumentException(sprintf('The width \'%s\' of a column is not between (1-%s)', $width, $this->getMaxSize()));
     }
     return $this;
   }
@@ -138,9 +203,9 @@ trait ColumnTrait {
    *
    * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @return self for a fluent interface
    */
-  public function setWidthInherited($screenSize) {
+  public function unsetWidth($screenSize) {
     $classes = [];
     for ($i = 1; $i <= 12; $i++) {
       $classes[] = "$screenSize-$i";
@@ -158,10 +223,10 @@ trait ColumnTrait {
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  int|boolean $offset the column offset (0-11) or false for inheritance
    * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @return self for a fluent interface
    */
-  public function setGridOffset($offset, $screenSize = 'small') {
-    $this->inheritGridOffset($screenSize);
+  public function setOffset($offset, $screenSize = 'small') {
+    $this->unsetOffset($screenSize);
     if ($offset !== false && $offset !== 0) {
       $this->cssClasses()->add("$screenSize-offset-$offset");
     }
@@ -169,21 +234,28 @@ trait ColumnTrait {
   }
 
   /**
-   * Sets the column width values for all screen sizes
    * 
-   * @param  int|boolean $s column offset for small screens (0-11) or false for none
-   * @param  int|boolean $m column offset for medium screens (0-11) or false for inheritance
-   * @param  int|boolean $l column offset for large screens (0-11) or false for inheritance
-   * @param  int|boolean $xl column offset for x-large screens (0-11) or false for inheritance
-   * @param  int|boolean $xxl column offset for xx-large screen)s (0-11) or false for inheritance
-   * @return ColumnInterface for PHP Method Chaining
+   * @return self for a fluent interface
    */
-  public function setGridOffsets($s, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->setGridOffset($s, 'small')
-            ->setGridOffset($m, 'medium')
-            ->setGridOffset($l, 'large')
-            ->setGridOffset($xl, 'xlarge')
-            ->setGridOffset($xxl, 'xxlarge');
+  public function unsetOffsets() {
+    foreach (Screen::sizes() as $screenSize) {
+      $this->unsetOffset($screenSize);
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the column offset values for all screen sizes
+   *
+   * @param  string[] $offsets column offsets for different screens sizes
+   * @return self for a fluent interface
+   */
+  public function setOffsets(array $offsets) {
+    $this->unsetoffsets();
+    foreach ($offsets as $width) {
+      $parts = explode('-', $width);
+      $this->setWidth($parts[2], $parts[0]);
+    }
     return $this;
   }
 
@@ -194,7 +266,7 @@ trait ColumnTrait {
    * @param  string $screenSize the target screen type
    * @return int the width of the column (0-11)
    */
-  public function getGridOffset($screenSize) {
+  public function getOffset($screenSize) {
     $parseOffset = function($screen) {
       $result = 0;
       for ($i = 0; $i <= 11; $i++) {
@@ -219,9 +291,9 @@ trait ColumnTrait {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @return self for a fluent interface
    */
-  public function inheritGridOffset($screenSize) {
+  public function unsetOffset($screenSize) {
     for ($i = 1; $i <= 12; $i++) {
       $classes[] = "$screenSize-offset-$i";
     }
@@ -237,7 +309,7 @@ trait ColumnTrait {
    * @return int the amount of the space the column uses from the row
    */
   public function countUsedSpace($screenSize) {
-    return $this->getWidth($screenSize) + $this->getGridOffset($screenSize);
+    return $this->getWidth($screenSize) + $this->getOffset($screenSize);
   }
 
   /**
@@ -259,9 +331,9 @@ trait ColumnTrait {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @return ColumnLayoutProperties for PHP Method Chaining
    */
-  public function uncenterize($screenSize) {
+  public function uncenterize($screenSize): ColumnLayoutProperties {
     $this->cssClasses()
             ->remove("$screenSize-centered")
             ->add("$screenSize-uncentered");
@@ -280,6 +352,10 @@ trait ColumnTrait {
     $classes[] = "$screenSize-centered";
     $this->cssClasses()->remove($classes);
     return $this;
+  }
+
+  public function __toString() {
+    return "$this->cssClasses";
   }
 
 }
