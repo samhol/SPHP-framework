@@ -7,7 +7,7 @@ use Sphp\Html\Attributes\MultiValueAttribute;
 class ColumnLayoutPropertiesTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var ColumnLayoutProperties
+   * @var ColumnLayoutManager
    */
   protected $c;
 
@@ -22,7 +22,7 @@ class ColumnLayoutPropertiesTest extends \PHPUnit_Framework_TestCase {
    */
   protected function setUp() {
     $this->attr = new MultiValueAttribute('class');
-    $this->c = new ColumnLayoutProperties($this->attr);
+    $this->c = new ColumnLayoutManager($this->attr);
   }
 
   /**

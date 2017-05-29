@@ -14,7 +14,7 @@ use Sphp\Html\Span;
 use Sphp\Html\Sections\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
-use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutProperties;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -62,7 +62,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   /**
    *
-   * @var ColumnLayoutProperties 
+   * @var ColumnLayoutManager 
    */
   private $columnProps;
 
@@ -79,8 +79,8 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   public function __construct(InputInterface $input, array $widths = ['small-12']) {
     parent::__construct('div');
     $this->cssClasses()->lock('column');
-    $this->columnProps = new ColumnLayoutProperties($this->cssClasses());
-    $this->layout()->setLayout($widths);
+    $this->columnProps = new ColumnLayoutManager($this->cssClasses());
+    $this->layout()->setLayouts($widths);
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();

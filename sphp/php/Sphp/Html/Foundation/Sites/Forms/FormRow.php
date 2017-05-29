@@ -27,12 +27,12 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
  */
 class FormRow extends AbstractRow {
 
-  public function appendColumn($content, array $widths = ['small-12']) {
+  public function appendColumn($content, array $layout = ['small-12']) {
     //echo "here " . $content;
     if ($content instanceof InputInterface) {
-      $this->appendInput($content, $widths);
+      $this->appendInput($content, $layout);
     } else {
-      parent::appendColumn($content, $widths);
+      parent::appendColumn($content, $layout);
     }
     return $this;
   }

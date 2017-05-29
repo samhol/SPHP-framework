@@ -14,7 +14,7 @@ use Sphp\Html\TraversableTrait;
 use Sphp\Html\WrappingContainer;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ContentParserInterface;
-use Sphp\Html\ContentParsingTrait as ContentParsingTrait;
+use Sphp\Html\ContentParsingTrait;
 
 /**
  * Implements a Block Grid component
@@ -30,6 +30,11 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
 
   use TraversableTrait,
       ContentParsingTrait;
+
+  /**
+   * @var BlockGridLayoutManager 
+   */
+  private $layoutManager;
 
   /**
    * The maximum block grid value (int 12)
@@ -56,13 +61,10 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * If you use both of those classes combined, you can control the
    * configuration and layout separately for each breakpoint.
    *
-   * @param  int $s column width for small screens (0-8)
-   * @param  int|boolean $m column width for medium screens (0-8) or false for inheritance
-   * @param  int|boolean $l column width for large screens (0-8) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (0-8) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (0-8) or false for inheritance
+   * @param  mixed [] $blocks
+   * @param  array $layout column layout parameters
    */
-  public function __construct($s = 3, $m = false, $l = false, $xl = false, $xxl = false) {
+  public function __construct(array $blocks = null, array $layout = ['small-up-8']) {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);
@@ -70,29 +72,29 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
       return $c;
     };
     parent::__construct('div', null, new WrappingContainer($wrapper));
-    $widthSetter = function ($width, $sreenSize) {
-      if ($width > 0 && $width < 9) {
-        $this->cssClasses()->add("$sreenSize-up-$width");
-      }
-    };
-    $widthSetter($s, 'small');
-    $widthSetter($m, 'medium');
-    $widthSetter($l, 'large');
-    $widthSetter($xl, 'xlarge');
-    $widthSetter($xxl, 'xxlarge');
-    $this->cssClasses()->lock('row');
+    $this->layoutManager = new BlockGridLayoutManager($this->cssClasses());
+    $this->layout()->setLayouts($layout);
+    if ($blocks !== null) {
+    $this->setColumns($blocks);
+    }
+  }
+
+  public function layout() {
+    return $this->layoutManager;
   }
 
   /**
+   * Sets the Column to the container
    * 
-   * @param  string $screenSize
-   * @return string[]
+   * @param  array $columns columns or column contents
+   * @return self for a fluent interface
    */
-  private static function createClasses($screenSize) {
-    for ($i = 1; $i <= 8; $i++) {
-      $classes[] = "$screenSize-up-$i";
+  public function setColumns(array $columns) {
+    $this->getInnerContainer()->clear();
+    foreach ($columns as $column) {
+      $this->append($column);
     }
-    return $classes;
+    return $this;
   }
 
   /**
@@ -114,92 +116,6 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    */
   public function getColumn($index) {
     return $this->getInnerContainer()->offsetGet($index);
-  }
-
-  /**
-   * Sets the column width values for all screen sizes
-   * 
-   * @param  int $s number of columns in a row on small screens (1-8)
-   * @param  int|boolean $m number of columns in a row on medium screens (1-8) or false for inheritance
-   * @param  int|boolean $l number of columns in a row on large screens (1-8) or false for inheritance
-   * @param  int|boolean $xl number of columns in a row on x-large screens (1-8) or false for inheritance
-   * @param  int|boolean $xxl number of columns in a row on xx-large screen)s (1-8) or false for inheritance
-   * @return self for a fluent interface
-   */
-  public function setBlockGrids($s, $m = false, $l = false, $xl = false, $xxl = false) {
-    $this->setBlockGrid($s, "small")
-            ->setBlockGrid($m, "medium")
-            ->setBlockGrid($l, "large")
-            ->setBlockGrid($xl, "xlarge")
-            ->setBlockGrid($xxl, "xxlarge");
-    return $this;
-  }
-
-  /**
-   * Sets the block grid value of the given target screen types
-   *
-   * **Important!**
-   *
-   * {@link self} component is mobile-first. Code for small screens first,
-   * and larger devices will inherit those styles. Customize for
-   * larger screens as necessary.
-   *
-   * @precondition The value of the `$num` parameter is between (1-8) or false for inheritance
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|boolean $num number of columns in a row (1-8) or false for inheritance
-   * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
-   */
-  public function setBlockGrid($num, $screenSize) {
-    if ($num > self::MAX_GRID) {
-      $num = self::MAX_GRID;
-    }
-    $this->unsetBlockGrid($screenSize);
-    if ($num !== false) {
-      $this->addCssClass("$screenSize-up-$num");
-    }
-    return $this;
-  }
-
-  /**
-   * Returns the block grid value of the target screen
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the block grid value of the target screen (1-8)
-   */
-  public function getBlockGridValue($screenSize) {
-    $parseGrid = function($screenName) {
-      $result = false;
-      for ($i = 1; $i <= 8; $i++) {
-        if ($this->cssClasses()->contains("$screenName-up-$i")) {
-          $result = $i;
-          break;
-        }
-      }
-      return $result;
-    };
-    //$screenName = Screen::getScreenName($screenSize);
-    $num = self::INHERITED;
-    foreach (Screen::sizes() as $screenName) {
-      $num = $parseGrid($screenName);
-      if ($screenName == $screenSize) {
-        break;
-      }
-    }
-    return $num;
-  }
-
-  /**
-   * Unsets the block grid setting for the given screen widths
-   *
-   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
-   */
-  protected function unsetBlockGrid($screenSize) {
-    $this->cssClasses()->remove(static::createClasses($screenSize));
-    return $this;
   }
 
   public function getIterator() {

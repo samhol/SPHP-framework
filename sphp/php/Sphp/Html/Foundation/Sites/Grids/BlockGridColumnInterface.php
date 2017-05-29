@@ -17,6 +17,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface BlockGridColumnInterface extends \Sphp\Html\TagInterface {
+interface BlockGridColumnInterface extends \Sphp\Html\ComponentInterface {
 
 }

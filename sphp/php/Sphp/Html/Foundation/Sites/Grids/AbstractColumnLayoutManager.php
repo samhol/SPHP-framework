@@ -12,12 +12,8 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Class implements functionality for {@link ColumnInterface} 
+ * Implements an abstract layout manager for responsive HTML components
  * 
- * Foundation framework based component to create  multi-device layouts
- *
- * The sum of the column widths in a row should never exceed 12.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-03-02
  * @link    http://foundation.zurb.com/ Foundation
@@ -26,12 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface {
-
-  /**
-   * @var MultiValueAttribute
-   */
-  private $cssClasses;
+class AbstractColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutManagerInterface {
 
   /**
    *
@@ -40,12 +31,13 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
   private $maxSize;
 
   /**
+   * Constructs a new instance
    * 
    * @param MultiValueAttribute $cssClasses
    * @param int $maxSize
    */
   public function __construct(MultiValueAttribute $cssClasses, $maxSize = 12) {
-    $this->cssClasses = $cssClasses;
+    parent::__construct($cssClasses);
     $this->maxSize = $maxSize;
   }
 
@@ -58,14 +50,6 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
   }
 
   /**
-   * 
-   * @return MultiValueAttribute
-   */
-  public function cssClasses() {
-    return $this->cssClasses;
-  }
-
-  /**
    * Sets the width and offset for given screen size
    *
    * **Important!**
@@ -74,17 +58,10 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
    * and larger devices will inherit those styles. Customize for
    * larger screens as necessary.
    *
-   * @precondition The value of the `$width` parameter is between 1-12 or false for inheritance
-   * @precondition The value of the `$offset` parameter is between 0-11 or false for inheritance
-   * @precondition The sum `$width + $offset` < 13
-   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   *
-   * @param  int|boolean $width the width of the column or false for inheritance
-   * @param  int|boolean $offset the offset of the column or false for inheritance
-   * @param  string $screen the target screen size
-   * @return ColumnInterface for PHP Method Chaining
+   * @param  string $layout the layout parameters
+   * @return self for a fluent interface
    */
-  public function setLayout(array $layout) {
+  public function setLayouts(array $layout) {
     $this->unsetLayouts();
     foreach ($layout as $width) {
       $parts = explode('-', $width);
@@ -100,6 +77,8 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
       } else if ($c === 3) {
         if ($parts[1] === 'offset') {
           $this->setOffset($parts[2], $parts[0]);
+        } else if ($parts[1] === 'push') {
+          $this->setOrder($parts[2], $parts[0]);
         }
       } else {
         throw new InvalidArgumentException(sprintf('Property \'%s\' cannot be regognized', $width));
@@ -178,7 +157,7 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
   public function getWidth($screenSize) {
     $parseWidth = function($screenName) {
       $result = false;
-      for ($i = 1; $i <= 12; $i++) {
+      for ($i = 1; $i <= $this->getMaxSize(); $i++) {
         if ($this->cssClasses()->contains("$screenName-$i")) {
           $result = $i;
           break;
@@ -207,7 +186,7 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
    */
   public function unsetWidth($screenSize) {
     $classes = [];
-    for ($i = 1; $i <= 12; $i++) {
+    for ($i = 1; $i <= $this->getMaxSize(); $i++) {
       $classes[] = "$screenSize-$i";
     }
     $this->cssClasses()->remove($classes);
@@ -269,7 +248,7 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
   public function getOffset($screenSize) {
     $parseOffset = function($screen) {
       $result = 0;
-      for ($i = 0; $i <= 11; $i++) {
+      for ($i = 0; $i <= $this->getMaxSize() - 1; $i++) {
         if ($this->cssClasses()->contains("$screen-offset-$i")) {
           $result = $i;
         }
@@ -294,10 +273,62 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
    * @return self for a fluent interface
    */
   public function unsetOffset($screenSize) {
-    for ($i = 1; $i <= 12; $i++) {
+    for ($i = 1; $i < $this->getMaxSize(); $i++) {
       $classes[] = "$screenSize-offset-$i";
     }
     $this->cssClasses()->remove($classes);
+    return $this;
+  }
+
+  public function setOrder($push, $screenSize = 'small') {
+    $this->unsetOffset($screenSize);
+    if ($push !== 0) {
+      $this->cssClasses()->add("$screenSize-push-$push");
+    }
+    return $this;
+  }
+
+  /**
+   * Sets the column offset values for all screen sizes
+   *
+   * @param  string[] $pushs column offsets for different screens sizes
+   * @return self for a fluent interface
+   */
+  public function setOrders(array $pushs) {
+    $this->unsetOrders();
+    foreach ($pushs as $push) {
+      $parts = explode('-', $push);
+      $this->setWidth($parts[2], $parts[0]);
+    }
+    return $this;
+  }
+
+  /**
+   * Unsets the grid offset for the given screen size
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return self for a fluent interface
+   */
+  public function unsetOrder($screenSize) {
+    for ($i = 1; $i < $this->getMaxSize(); $i++) {
+      $classes[] = "$screenSize-push-$i";
+    }
+    $this->cssClasses()->remove($classes);
+    return $this;
+  }
+
+  /**
+   * Unsets the grid offset for the given screen size
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return self for a fluent interface
+   */
+  public function unsetOrders() {
+    foreach (Screen::sizes() as $screenSize) {
+      $this->unsetOrder($screenSize);
+    }
     return $this;
   }
 
@@ -331,9 +362,9 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return ColumnLayoutProperties for PHP Method Chaining
+   * @return ColumnLayoutManager for PHP Method Chaining
    */
-  public function uncenterize($screenSize): ColumnLayoutProperties {
+  public function uncenterize($screenSize): ColumnLayoutManager {
     $this->cssClasses()
             ->remove("$screenSize-centered")
             ->add("$screenSize-uncentered");
@@ -352,10 +383,6 @@ class AbstractColumnLayoutProperties implements ColumnLayoutPropertiesInterface 
     $classes[] = "$screenSize-centered";
     $this->cssClasses()->remove($classes);
     return $this;
-  }
-
-  public function __toString() {
-    return "$this->cssClasses";
   }
 
 }

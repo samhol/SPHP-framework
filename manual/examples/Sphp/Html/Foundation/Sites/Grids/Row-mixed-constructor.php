@@ -2,14 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-$col_1 = new Column("col-1", 2, 4, 6, 8, 10);
-$col_2 = new Column("col-2", 10, 8, 6, 4, 2);
+$col_1 = new Column("first", ['small-2', 'medium-4', 'large-6', 'xlarge-8', 'xxlarge-10']);
+$col_2 = new Column("second", ['small-10', 'medium-8', 'large-6', 'xlarge-4', 'xxlarge-2']);
 
-$rows[] = new Row(range(1, 12));
-$rows[] = new Row([$col_1, "small-10..."]);
-$rows[] = new Row([$col_1, $col_2]);
-$rows[] = new Row([$col_2, "small-2"]);
-foreach($rows as $row) {
-  $row->printHtml();
-}
-?>
+(new Row())
+        ->append($col_1)
+        ->append($col_2)
+        ->printHtml();

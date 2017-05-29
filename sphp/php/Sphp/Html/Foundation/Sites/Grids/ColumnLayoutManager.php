@@ -8,15 +8,10 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\Foundation\Sites\Core\Screen;
 
 /**
- * Class implements functionality for {@link ColumnInterface} 
+ * Implements a layout manager for Grid columns
  * 
- * Foundation framework based component to create  multi-device layouts
- *
- * The sum of the column widths in a row should never exceed 12.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-03-02
  * @link    http://foundation.zurb.com/ Foundation
@@ -25,10 +20,16 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ColumnLayoutProperties extends AbstractColumnLayoutProperties {
+class ColumnLayoutManager extends AbstractColumnLayoutManager {
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param MultiValueAttribute $cssClasses
+   */
   public function __construct(MultiValueAttribute $cssClasses) {
     parent::__construct($cssClasses, 12);
+    $this->cssClasses()->lock('columns');
   }
 
 }

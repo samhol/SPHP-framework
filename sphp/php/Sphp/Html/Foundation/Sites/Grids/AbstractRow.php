@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\WrappingContainer;
 use Sphp\Html\NonVisualContentInterface;
 

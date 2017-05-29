@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 $grid = new Grid();
 
-$col = new Column("small-2 medium-4 large-6", 2, 4, 6);
+$col = new Column("small-2 medium-4 large-6", ["small-2", "medium-4","large-6", 'small-push-10']);
 
 $grid[] = $col;
 $grid[] = ["small-6", "small-6"];

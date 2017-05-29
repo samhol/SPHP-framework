@@ -64,14 +64,10 @@ interface RowInterface extends ContainerComponentInterface {
    * Parameter `$content` can be of any type that converts to a string or to a string[]
    *
    * @param  mixed $content the content of the column
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  array $layout column layout parameters
    * @return self for a fluent interface
    */
-  public function appendColumn($content, array $sizes = ['small-12']);
+  public function appendColumn($content, array $layout = ['small-12']);
 
   /**
    * Prepends {@link ColumnInterface} components to the row
