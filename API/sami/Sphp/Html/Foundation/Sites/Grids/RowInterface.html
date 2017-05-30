@@ -426,7 +426,7 @@ does not exist</p>                </div>
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendColumn">appendColumn</a>(mixed $content, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+                    <a href="#method_appendColumn">appendColumn</a>(mixed $content, array $layout = [&#039;small-12&#039;])
         
                                             <p>Appends a single {@link ColumnInterface} component to the row</p>                </div>
                 <div class="col-md-2"></div>
@@ -1501,7 +1501,7 @@ does not exist</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">at         line 100</div>
+        <div class="location">at         line 96</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>append</strong>(mixed|<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a> $column)
         </code>
@@ -1547,7 +1547,7 @@ does not exist</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepend">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 83</div>
         <code>                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>prepend</strong>(mixed|mixed[] $columns)
         </code>
@@ -1764,9 +1764,9 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendColumn">
-        <div class="location">at         line 74</div>
+        <div class="location">at         line 70</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
-    <strong>appendColumn</strong>(mixed $content, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+    <strong>appendColumn</strong>(mixed $content, array $layout = [&#039;small-12&#039;])
         </code>
     </h3>
     <div class="details">
@@ -1787,29 +1787,9 @@ by dividing the Row width with the number of the inserted columns.</p>
                 <td>the content of the column</td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$s</td>
-                <td>column width for small screens (1-12)</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$m</td>
-                <td>column width for medium screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$l</td>
-                <td>column width for large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xl</td>
-                <td>column width for x-large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xxl</td>
-                <td>column width for xx-large screen)s (1-12) or false for inheritance</td>
+                <td>array</td>
+                <td>$layout</td>
+                <td>column layout parameters</td>
             </tr>
             </table>
 
@@ -1831,7 +1811,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 113</div>
+        <div class="location">at         line 109</div>
         <code>                    
     <strong>offsetSet</strong>(mixed $offset, mixed $value)
         </code>
@@ -1873,7 +1853,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collapseColumns">
-        <div class="location">at         line 120</div>
+        <div class="location">at         line 116</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
     <strong>collapseColumns</strong>(boolean $collapse = true)
         </code>

@@ -100,27 +100,6 @@ class FoundationDocsLinker extends AbstractLinker {
   }
 
   /**
-   * Returns a hyperlink object pointing to a Foundation docs component page
-   * 
-   * @param  string|null $linkText optional text of the hyperlink
-   * @param  string|null $fragment PHP class name or PHP object
-   * @param  null|string $title optional title of the hyperlink
-   * @return Hyperlink hyperlink object pointing to a Foundation docs component page
-   */
-  public function gridLink($linkText = null, $fragment = null, $title = null) {
-    if ($fragment !== null) {
-      $fragment = "#$fragment";
-    }
-    if (Strings::isEmpty($linkText)) {
-      $linkText = 'The Grid';
-    }
-    if (Strings::isEmpty($title)) {
-      $title = 'Foundation docs: The Grid';
-    }
-    return $this->hyperlink("grid.html$fragment", $linkText);
-  }
-
-  /**
    * 
    * @return self new instance of linker
    */

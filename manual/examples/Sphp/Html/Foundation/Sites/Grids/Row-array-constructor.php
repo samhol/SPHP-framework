@@ -2,6 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+$grid = new Grid();
+$grid->append(array_fill(0, 2, "small-6"));
+$grid->printHtml();
 $rows[] = new Row(["small-12"]);
 $rows[] = new Row(array_fill(0, 2, "small-6"));
 $rows[] = new Row(array_fill(0, 3, "small-4"));

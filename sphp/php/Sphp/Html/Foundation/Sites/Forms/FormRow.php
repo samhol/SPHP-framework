@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Foundation\Sites\Grids\AbstractRow;
+use Sphp\Html\Foundation\Sites\Grids\Row;
 use Sphp\Html\Forms\Inputs\InputInterface;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 use Sphp\Html\NonVisualContentInterface;
@@ -16,16 +16,12 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 /**
  * Class extends a Foundation Row for form components
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-27
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FormRow extends AbstractRow {
+class FormRow extends Row {
 
   public function appendColumn($content, array $layout = ['small-12']) {
     //echo "here " . $content;

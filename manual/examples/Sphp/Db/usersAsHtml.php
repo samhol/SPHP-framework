@@ -16,7 +16,7 @@ $result = $query->fetchArray();
  */
 $users = [];
 foreach ($query as $row) {
-  $users[] = (new User())->fromArray($row);
+  $users[] = (new User())->from($row);
 }
 //var_dump($result);
 //echo "Result: " . $result[];

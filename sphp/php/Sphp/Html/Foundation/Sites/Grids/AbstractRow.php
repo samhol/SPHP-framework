@@ -26,6 +26,12 @@ use Sphp\Html\NonVisualContentInterface;
 abstract class AbstractRow extends AbstractContainerTag implements RowInterface {
 
   /**
+   * @var ColumnLayoutManager 
+   */
+  private $layoutManager;
+  
+  
+  /**
    * Constructs a new instance
    *
    * **Important:**
@@ -47,7 +53,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    * @param  mixed|mixed[] $columns row columns
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($columns = null, array $sizes = null) {
+  public function __construct($tagname, RowLayoutManager $layoutManager = null) {
     $wrapToCol = function($c) {
       if ($c instanceof NonVisualContentInterface || $c instanceof ColumnInterface) {
         return $c;
@@ -55,11 +61,12 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
         return new Column($c);
       }
     };
-    parent::__construct('div', null, new WrappingContainer($wrapToCol));
-    if ($columns !== null) {
-      $this->setColumns($columns, $sizes);
-    }
-    $this->cssClasses()->lock('row');
+    parent::__construct($tagname, null, new WrappingContainer($wrapToCol));
+    $this->layoutManager = new RowLayoutManager($this->cssClasses());
+  }
+
+  public function layout(): RowLayoutManager {
+    return $this->layoutManager;
   }
 
   public function setColumns($columns, array $sizes = null) {
@@ -121,6 +128,15 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
               ->remove("$screenSize-collapse");
     }
     return $this;
+  }
+
+  /**
+   * 
+   * @param  array $rows
+   * @return self new instance
+   */
+  public static function from(array $rows) {
+    return new Static($rows);
   }
 
 }

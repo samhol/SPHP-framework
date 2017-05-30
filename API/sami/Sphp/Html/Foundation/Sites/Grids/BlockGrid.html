@@ -387,7 +387,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int $s = 3, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+                    <a href="#method___construct">__construct</a>(array $blocks = null, array $layout = [&#039;small-up-8&#039;])
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -509,7 +509,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_append">append</a>(mixed $column)
         
-                                            <p>Appends content to the container</p>                </div>
+                                            <p>Appends a new Column to the container</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -554,52 +554,33 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_layout">layout</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setColumns">setColumns</a>(array $columns)
+        
+                                            <p>Sets the Column to the container</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridColumn.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridColumn">BlockGridColumn</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getColumn">getColumn</a>(int $index)
         
                                             <p>Appends a new Column to the container</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setBlockGrids">setBlockGrids</a>(int $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
-        
-                                            <p>Sets the column width values for all screen sizes</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setBlockGrid">setBlockGrid</a>(int|boolean $num, string $screenSize)
-        
-                                            <p>Sets the block grid value of the given target screen types</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getBlockGridValue">getBlockGridValue</a>(string $screenSize)
-        
-                                            <p>Returns the block grid value of the target screen</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_unsetBlockGrid">unsetBlockGrid</a>(string $screenSize)
-        
-                                            <p>Unsets the block grid setting for the given screen widths</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1547,9 +1528,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 67</div>
         <code>                    
-    <strong>__construct</strong>(int $s = 3, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+    <strong>__construct</strong>(array $blocks = null, array $layout = [&#039;small-up-8&#039;])
         </code>
     </h3>
     <div class="details">
@@ -1557,35 +1538,30 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<p>{@link self} component is mobile-first. Code for small screens first,
+and larger devices will inherit those styles. Customize for
+larger screens as necessary.</p>
+
+<p>If you use the small block grid only, the grid will keep its spacing and
+configuration no matter the screen size. If you use large block grid
+only, the list items will stack on top of each other for small devices.
+If you use both of those classes combined, you can control the
+configuration and layout separately for each breakpoint.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$s</td>
-                <td>column width for small screens (0-8)</td>
+                <td>array</td>
+                <td>$blocks</td>
+                <td>[] $blocks</td>
             </tr>
                     <tr>
-                <td>int|boolean</td>
-                <td>$m</td>
-                <td>column width for medium screens (0-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$l</td>
-                <td>column width for large screens (0-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xl</td>
-                <td>column width for x-large screens (0-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xxl</td>
-                <td>column width for xx-large screen)s (0-8) or false for inheritance</td>
+                <td>array</td>
+                <td>$layout</td>
+                <td>column layout parameters</td>
             </tr>
             </table>
 
@@ -1960,7 +1936,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">at         line 104</div>
+        <div class="location">at         line 106</div>
         <code>                    <a href="../../../../../Sphp/Html/ContentParserInterface.html"><abbr title="Sphp\Html\ContentParserInterface">ContentParserInterface</abbr></a>
     <strong>append</strong>(mixed $column)
         </code>
@@ -1970,7 +1946,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Appends content to the container</p>                                                </div>
+                                    <p>Appends a new Column to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -2186,8 +2162,67 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_layout">
+        <div class="location">at         line 82</div>
+        <code>                    
+    <strong>layout</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setColumns">
+        <div class="location">at         line 92</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
+    <strong>setColumns</strong>(array $columns)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the Column to the container</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$columns</td>
+                <td>columns or column contents</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getColumn">
-        <div class="location">at         line 115</div>
+        <div class="location">at         line 117</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridColumn.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridColumn">BlockGridColumn</abbr></a>|null
     <strong>getColumn</strong>(int $index)
         </code>
@@ -2226,197 +2261,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setBlockGrids">
-        <div class="location">at         line 129</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-    <strong>setBlockGrids</strong>(int $s, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the column width values for all screen sizes</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$s</td>
-                <td>number of columns in a row on small screens (1-8)</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$m</td>
-                <td>number of columns in a row on medium screens (1-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$l</td>
-                <td>number of columns in a row on large screens (1-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xl</td>
-                <td>number of columns in a row on x-large screens (1-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xxl</td>
-                <td>number of columns in a row on xx-large screen)s (1-8) or false for inheritance</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setBlockGrid">
-        <div class="location">at         line 153</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-    <strong>setBlockGrid</strong>(int|boolean $num, string $screenSize)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the block grid value of the given target screen types</p>                    <p><strong>Important!</strong></p>
-
-<p>{@link self} component is mobile-first. Code for small screens first,
-and larger devices will inherit those styles. Customize for
-larger screens as necessary.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int|boolean</td>
-                <td>$num</td>
-                <td>number of columns in a row (1-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getBlockGridValue">
-        <div class="location">at         line 171</div>
-        <code>                    int
-    <strong>getBlockGridValue</strong>(string $screenSize)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the block grid value of the target screen</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>the block grid value of the target screen (1-8)</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unsetBlockGrid">
-        <div class="location">at         line 200</div>
-        <code>            protected        <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a>
-    <strong>unsetBlockGrid</strong>(string $screenSize)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Unsets the block grid setting for the given screen widths</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGrid.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGrid">BlockGrid</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 205</div>
+        <div class="location">at         line 121</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>
@@ -2435,7 +2281,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 209</div>
+        <div class="location">at         line 125</div>
         <code>                    
     <strong>count</strong>()
         </code>

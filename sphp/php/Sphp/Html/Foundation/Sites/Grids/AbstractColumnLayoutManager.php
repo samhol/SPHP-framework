@@ -25,7 +25,6 @@ use Sphp\Exceptions\InvalidArgumentException;
 class AbstractColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutManagerInterface {
 
   /**
-   *
    * @var int 
    */
   private $maxSize;
@@ -79,6 +78,8 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
           $this->setOffset($parts[2], $parts[0]);
         } else if ($parts[1] === 'push') {
           $this->setOrder($parts[2], $parts[0]);
+        }else if ($parts[1] === 'pull') {
+          $this->pull($parts[2], $parts[0]);
         }
       } else {
         throw new InvalidArgumentException(sprintf('Property \'%s\' cannot be regognized', $width));
@@ -284,6 +285,43 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
     $this->unsetOffset($screenSize);
     if ($push !== 0) {
       $this->cssClasses()->add("$screenSize-push-$push");
+    }
+    return $this;
+  }
+
+  public function pull($num, $screenSize = 'small') {
+    $this->unsetPull($screenSize);
+    if ($num >= 0) {
+      $this->cssClasses()->add("$screenSize-pull-$num");
+    }
+    return $this;
+  }
+
+  /**
+   * Unsets the grid offset for the given screen size
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return self for a fluent interface
+   */
+  public function unsetPull($screenSize) {
+    for ($i = 0; $i < $this->getMaxSize(); $i++) {
+      $classes[] = "$screenSize-pull-$i";
+    }
+    $this->cssClasses()->remove($classes);
+    return $this;
+  }
+
+  /**
+   * Unsets the grid offset for the given screen size
+   *
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
+   * @param  string $screenSize the target screen size
+   * @return self for a fluent interface
+   */
+  public function unsetPulls() {
+    foreach (Screen::sizes() as $screenSize) {
+      $this->unsetPull($screenSize);
     }
     return $this;
   }

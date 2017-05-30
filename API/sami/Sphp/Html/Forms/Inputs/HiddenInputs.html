@@ -85,7 +85,7 @@
 
     <p>    class
     <strong>HiddenInputs</strong>        extends <a href="../../../../Sphp/Html/AbstractComponentGenerator.html"><abbr title="Sphp\Html\AbstractComponentGenerator">AbstractComponentGenerator</abbr></a>        implements
-        <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
+        <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
 </p>
 
         
@@ -228,6 +228,56 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_current">current</a>()
+        
+                                            <p>Returns the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_next">next</a>()
+        
+                                            <p>Advance the internal pointer of the collection</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_key">key</a>()
+        
+                                            <p>Return the key of the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p>Rewinds the Iterator to the first element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_valid">valid</a>()
+        
+                                            <p>Checks if current iterator position is valid</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -335,7 +385,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at         line 35</div>
+        <div class="location">at         line 36</div>
         <code>                    <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
     <strong>generate</strong>()
         </code>
@@ -365,7 +415,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 31</div>
+        <div class="location">at         line 32</div>
         <code>                    
     <strong>__construct</strong>()
         </code>
@@ -384,7 +434,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setVariable">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 54</div>
         <code>                    <a href="../../../../Sphp/Html/Forms/Inputs/HiddenInputs.html"><abbr title="Sphp\Html\Forms\Inputs\HiddenInputs">HiddenInputs</abbr></a>
     <strong>setVariable</strong>(string $name, scalar $value)
         </code>
@@ -438,7 +488,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setVariables">
-        <div class="location">at         line 68</div>
+        <div class="location">at         line 69</div>
         <code>                    <a href="../../../../Sphp/Html/Forms/Inputs/HiddenInputs.html"><abbr title="Sphp\Html\Forms\Inputs\HiddenInputs">HiddenInputs</abbr></a>
     <strong>setVariables</strong>(array $vars)
         </code>
@@ -488,7 +538,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 75</div>
+        <div class="location">at         line 76</div>
         <code>                    
     <strong>offsetExists</strong>($offset)
         </code>
@@ -517,7 +567,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 85</div>
+        <div class="location">at         line 86</div>
         <code>                    mixed
     <strong>offsetGet</strong>(mixed $name)
         </code>
@@ -557,7 +607,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 93</div>
+        <div class="location">at         line 94</div>
         <code>                    
     <strong>offsetSet</strong>($offset, $value)
         </code>
@@ -591,7 +641,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 98</div>
         <code>                    
     <strong>offsetUnset</strong>($offset)
         </code>
@@ -612,6 +662,138 @@
             </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_current">
+        <div class="location">at         line 109</div>
+        <code>                    mixed
+    <strong>current</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_next">
+        <div class="location">at         line 116</div>
+        <code>                    
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Advance the internal pointer of the collection</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location">at         line 125</div>
+        <code>                    mixed
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return the key of the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the key of the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location">at         line 132</div>
+        <code>                    
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Rewinds the Iterator to the first element</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location">at         line 141</div>
+        <code>                    boolean
+    <strong>valid</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if current iterator position is valid</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>current iterator position is valid</td>
+        </tr>
+    </table>
+
             
             
                     </div>

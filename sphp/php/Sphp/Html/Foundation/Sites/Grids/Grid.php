@@ -55,4 +55,17 @@ class Grid extends WrappingContainer implements GridInterface {
     return $this->getComponentsByObjectType(ColumnInterface::class);
   }
 
+  /**
+   * 
+   * @param array $rows
+   * @return \static
+   */
+  public static function from(array $rows) {
+    $grid = new Static();
+    foreach ($rows as $row) {
+      $grid->append($row);
+    }
+    return $grid;
+  }
+
 }

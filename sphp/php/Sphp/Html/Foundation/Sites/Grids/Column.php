@@ -26,7 +26,7 @@ class Column extends Div implements ColumnInterface {
   /**
    * @var ColumnLayoutManager 
    */
-  private $columnProps;
+  private $layoutManager;
 
   /**
    * Constructs a new instance
@@ -42,12 +42,12 @@ class Column extends Div implements ColumnInterface {
    */
   public function __construct($content = null, array $layout = ['small-12']) {
     parent::__construct($content);
-    $this->columnProps = new ColumnLayoutManager($this->cssClasses());
+    $this->layoutManager = new ColumnLayoutManager($this->cssClasses());
     $this->layout()->setLayouts($layout);
   }
 
   public function layout(): ColumnLayoutManagerInterface {
-    return $this->columnProps;
+    return $this->layoutManager;
   }
 
 }

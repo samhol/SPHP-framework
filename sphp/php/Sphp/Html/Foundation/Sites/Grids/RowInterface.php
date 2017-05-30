@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\ContainerComponentInterface;
+use Sphp\Html\ContentInterface;
 
 /**
  * Defines a Row for a Grid
@@ -30,7 +30,7 @@ use Sphp\Html\ContainerComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface RowInterface extends ContainerComponentInterface {
+interface RowInterface extends ContentInterface {
 
   /**
    * Sets the columns of the row (Removes existing content)

@@ -376,7 +376,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(mixed|mixed[] $columns = null)
+                    <a href="#method___construct">__construct</a>($columns = null, array $sizes = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method___construct"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a></small></div>
@@ -672,7 +672,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setColumns">setColumns</a>(mixed|mixed[] $columns)
+                    <a href="#method_setColumns">setColumns</a>(mixed|mixed[] $columns, array $sizes = null)
         
                                             <p>Sets the columns of the row (Removes existing content)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_setColumns"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a></small></div>
@@ -682,7 +682,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendColumn">appendColumn</a>(mixed $content, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+                    <a href="#method_appendColumn">appendColumn</a>(mixed $content, array $layout = [&#039;small-12&#039;])
         
                                             <p>Appends a single {@link ColumnInterface} component to the row</p>                </div>
                 <div class="col-md-2"></div>
@@ -692,7 +692,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendMdColumn">appendMdColumn</a>($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false)
+                    <a href="#method_appendMdColumn">appendMdColumn</a>($content, array $sizes = [&#039;small-12&#039;])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -725,7 +725,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Forms/FormRow.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\FormRow">FormRow</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendInput">appendInput</a>( $input, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+                    <a href="#method_appendInput">appendInput</a>( $input, array $widths = [&#039;small-12&#039;])
         
                                             <p>Appends a new form input component to the row</p>                </div>
                 <div class="col-md-2"></div>
@@ -1653,9 +1653,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method___construct"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 51</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method___construct"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 50</div>
         <code>                    
-    <strong>__construct</strong>(mixed|mixed[] $columns = null)
+    <strong>__construct</strong>($columns = null, array $sizes = null)
         </code>
     </h3>
     <div class="details">
@@ -1686,9 +1686,14 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed|mixed[]</td>
+                <td></td>
                 <td>$columns</td>
-                <td>row columns</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$sizes</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2677,9 +2682,9 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_setColumns">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_setColumns"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 66</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_setColumns"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 65</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
-    <strong>setColumns</strong>(mixed|mixed[] $columns)
+    <strong>setColumns</strong>(mixed|mixed[] $columns, array $sizes = null)
         </code>
     </h3>
     <div class="details">
@@ -2714,6 +2719,11 @@ by dividing the Row width with the number of the inserted columns.</p>
                 <td>$columns</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>array</td>
+                <td>$sizes</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -2736,7 +2746,7 @@ by dividing the Row width with the number of the inserted columns.</p>
                     <h3 id="method_appendColumn">
         <div class="location">at         line 30</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
-    <strong>appendColumn</strong>(mixed $content, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+    <strong>appendColumn</strong>(mixed $content, array $layout = [&#039;small-12&#039;])
         </code>
     </h3>
     <div class="details">
@@ -2757,29 +2767,9 @@ by dividing the Row width with the number of the inserted columns.</p>
                 <td>the content of the column</td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$s</td>
-                <td>column width for small screens (1-12)</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$m</td>
-                <td>column width for medium screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$l</td>
-                <td>column width for large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xl</td>
-                <td>column width for x-large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xxl</td>
-                <td>column width for xx-large screen)s (1-12) or false for inheritance</td>
+                <td>array</td>
+                <td>$layout</td>
+                <td></td>
             </tr>
             </table>
 
@@ -2801,9 +2791,9 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendMdColumn">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_appendMdColumn"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 116</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_appendMdColumn"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 97</div>
         <code>                    
-    <strong>appendMdColumn</strong>($content, $s = 12, $m = false, $l = false, $xl = false, $xxl = false)
+    <strong>appendMdColumn</strong>($content, array $sizes = [&#039;small-12&#039;])
         </code>
     </h3>
     <div class="details">
@@ -2820,28 +2810,8 @@ by dividing the Row width with the number of the inserted columns.</p>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
-                <td>$s</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$m</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$l</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$xl</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$xxl</td>
+                <td>array</td>
+                <td>$sizes</td>
                 <td></td>
             </tr>
             </table>
@@ -2855,7 +2825,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collapseColumns">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_collapseColumns"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 122</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_collapseColumns"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 103</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
     <strong>collapseColumns</strong>(boolean $collapse = true)
         </code>
@@ -2893,7 +2863,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collapseColumnsFor">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_collapseColumnsFor"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 132</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html#method_collapseColumnsFor"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a> at         line 113</div>
         <code>                    
     <strong>collapseColumnsFor</strong>($screenSize = &#039;small&#039;, $collapse = true)
         </code>
@@ -2929,7 +2899,7 @@ by dividing the Row width with the number of the inserted columns.</p>
                     <h3 id="method_appendInput">
         <div class="location">at         line 51</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Forms/FormRow.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\FormRow">FormRow</abbr></a>
-    <strong>appendInput</strong>( $input, int $s = 12, int|boolean $m = false, int|boolean $l = false, int|boolean $xl = false, int|boolean $xxl = false)
+    <strong>appendInput</strong>( $input, array $widths = [&#039;small-12&#039;])
         </code>
     </h3>
     <div class="details">
@@ -2945,32 +2915,12 @@ by dividing the Row width with the number of the inserted columns.</p>
                     <tr>
                 <td></td>
                 <td>$input</td>
-                <td>the appended input</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$s</td>
-                <td>column width for small screens (1-12)</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$m</td>
-                <td>column width for medium screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$l</td>
-                <td>column width for large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xl</td>
-                <td>column width for x-large screens (1-12) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$xxl</td>
-                <td>column width for xx-large screen)s (1-12) or false for inheritance</td>
+                <td>array</td>
+                <td>$widths</td>
+                <td></td>
             </tr>
             </table>
 
