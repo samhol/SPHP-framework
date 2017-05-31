@@ -41,8 +41,6 @@
 //  36. Tooltip
 //  37. Top Bar
 
-//@import '../../vendor/zurb/foundation/scss/util/util';
-
 // 1. Global
 // ---------
 
@@ -92,6 +90,7 @@ $breakpoint-classes: (small medium large xlarge xxlarge);
 // 3. The Grid
 // -----------
 
+$grid-column-alias: false;
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (

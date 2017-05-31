@@ -13,6 +13,7 @@ use Sphp\Html\Forms\Label;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
+use Sphp\Html\Forms\Inputs\ChoiceboxInterface;
 
 /**
  * Implements an abstract foundation based switch
@@ -24,7 +25,7 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractSwitch extends AbstractComponent implements ScreenReaderLabelable {
+class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, ScreenReaderLabelable {
 
   /**
    * CSS classes corresponding to the size constants
@@ -164,10 +165,6 @@ class AbstractSwitch extends AbstractComponent implements ScreenReaderLabelable 
     return $this->input->isNamed();
   }
 
-  public function getValue() {
-    return $this->input->getValue();
-  }
-
   public function setValue($value) {
     $this->input->setValue($value);
     return $this;
@@ -200,6 +197,15 @@ class AbstractSwitch extends AbstractComponent implements ScreenReaderLabelable 
 
   public function contentToString() {
     return $this->input->getHtml() . $this->paddle->getHtml();
+  }
+
+  public function getSubmitValue() {
+    $this->input->getSubmitValue();
+  }
+
+  public function setChecked($checked = true) {
+    $this->input->setChecked($checked);
+    return $this;
   }
 
 }

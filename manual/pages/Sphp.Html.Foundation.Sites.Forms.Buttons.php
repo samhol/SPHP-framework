@@ -10,9 +10,8 @@ $switchBox = $api->classLinker(SwitchBox::class);
 
 
 echo $parsedown->text(<<<MD
-##$radioSwitch and $switchBox components
+##Buttons
 
-These components extend $abstractSwitch and Foundation frameworks Switches on clientside
 MD
 );
 

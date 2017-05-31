@@ -33,7 +33,6 @@ use Sphp\Html\Forms\Inputs\EmailInput;
 class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   /**
-   *
    * @var Label
    */
   private $label;
@@ -53,38 +52,30 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   private $errorField;
 
   /**
-   *
    * @var Paragraph
    */
   private $helper;
 
   /**
-   *
    * @var ReflectionClass 
    */
   private $reflector;
 
   /**
-   *
    * @var ColumnLayoutManager 
    */
-  private $columnProps;
+  private $layoutManager;
 
   /**
    * Constructs a new instance
    *
    * @param  InputInterface $input the actual input component
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  string[] $layout the layout parameters
    */
-  public function __construct(InputInterface $input, array $widths = ['small-12']) {
+  public function __construct(InputInterface $input, array $layout = ['small-12']) {
     parent::__construct('div');
-    $this->cssClasses()->lock('column');
-    $this->columnProps = new ColumnLayoutManager($this->cssClasses());
-    $this->layout()->setLayouts($widths);
+    $this->layoutManager = new ColumnLayoutManager($this);
+    $this->layout()->setLayouts($layout);
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
@@ -158,9 +149,9 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   }
 
   /**
-   * Sets the visible contents of the helpaer label
+   * Sets the visible contents of the helper label
    * 
-   * @param  mixed $text the contents of the helpaer
+   * @param  mixed $text the contents of the helper
    * @return self for a fluent interface
    */
   public function setHelperText($text) {
@@ -205,7 +196,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   }
 
   public function layout() {
-    return $this->columnProps;
+    return $this->layoutManager;
   }
 
   /**

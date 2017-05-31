@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -32,11 +33,11 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
   /**
    * Constructs a new instance
    * 
-   * @param MultiValueAttribute $cssClasses
+   * @param ComponentInterface $component
    * @param int $maxSize
    */
-  public function __construct(MultiValueAttribute $cssClasses, $maxSize = 12) {
-    parent::__construct($cssClasses);
+  public function __construct(ComponentInterface $component, $maxSize = 12) {
+    parent::__construct($component);
     $this->maxSize = $maxSize;
   }
 
@@ -121,7 +122,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
   }
 
   /**
-   * Sets column width for the component
+   * Sets the column width
    *
    * **Important!**
    *

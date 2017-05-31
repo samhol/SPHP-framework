@@ -26,15 +26,16 @@
     > ul > li {
       margin: 0;
       z-index: 12; 
-      > a{
+      > a {
         height: 45px;
         border-top: 1px solid $sphp6-root-border-color;
         border-bottom: 1px solid $sphp6-root-border-color;
         border-left: 1px solid $sphp6-root-border-color;
         line-height: inherit;
-        &:last-child {
+        &:last-of-type {
           border-right: 1px solid $sphp6-root-border-color;
         }
+        min-width: rem-calc(130);
       }
       //height: rem-calc(40);
       ul {

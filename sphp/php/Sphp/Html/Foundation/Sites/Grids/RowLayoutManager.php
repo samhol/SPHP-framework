@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Foundation\Sites\Core\Screen;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Implements a layout manager for Block Grid columns
@@ -25,10 +26,10 @@ class RowLayoutManager extends AbstractLayoutManager {
   /**
    * Constructs a new instance
    *
-   * @param MultiValueAttribute $cssClasses
+   * @param ComponentInterface $component
    */
-  public function __construct(MultiValueAttribute $cssClasses) {
-    parent::__construct($cssClasses);
+  public function __construct(ComponentInterface $component) {
+    parent::__construct($component);
     $this->cssClasses()->lock('row');
   }
 

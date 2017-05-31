@@ -7,10 +7,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\ComponentInterface;
+
 /**
  * Defines a Column for a Row in a Grid system
- *
- * The sum of the column widths and offsets in a row should never exeed 12.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02
@@ -19,11 +19,10 @@ namespace Sphp\Html\Foundation\Sites\Grids;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ColumnInterface {
-  
+interface ColumnInterface extends ComponentInterface {
+
   /**
-   * @return ColumnLayoutPropertiesInterface 
+   * @return ColumnLayoutManagerInterface 
    */
   public function layout();
-
 }

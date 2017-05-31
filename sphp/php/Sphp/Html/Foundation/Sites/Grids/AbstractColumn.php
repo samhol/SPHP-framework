@@ -47,7 +47,7 @@ abstract class AbstractColumn extends Div implements ColumnInterface {
    */
   public function __construct($content = null, array $widths = ['small-12']) {
     parent::__construct($content);
-    $this->columnProps = new ColumnLayoutManager($this->cssClasses());
+    $this->columnProps = new ColumnLayoutManager($this);
     $this->layout()->setLayout($widths);
   }
 

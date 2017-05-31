@@ -12,9 +12,7 @@ use Sphp\Html\ContentInterface;
 use Sphp\Html\TraversableInterface;
 
 /**
- * Defines a Grid
- * 
- * A Grid component is a container for {@link RowInterface} components.
+ * Defines a responsive Grid 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24

@@ -509,7 +509,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_append">append</a>(mixed $column)
         
-                                            <p>Appends content to the container</p>                </div>
+                                            <p>Appends a new Column to the container</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1538,7 +1538,17 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<p>{@link self} component is mobile-first. Code for small screens first,
+and larger devices will inherit those styles. Customize for
+larger screens as necessary.</p>
+
+<p>If you use the small block grid only, the grid will keep its spacing and
+configuration no matter the screen size. If you use large block grid
+only, the list items will stack on top of each other for small devices.
+If you use both of those classes combined, you can control the
+configuration and layout separately for each breakpoint.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1936,7 +1946,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Appends content to the container</p>                                                </div>
+                                    <p>Appends a new Column to the container</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

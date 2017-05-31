@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Implements an abstract layout manager
@@ -20,17 +21,24 @@ use Sphp\Html\Attributes\MultiValueAttribute;
 abstract class AbstractLayoutManager implements LayoutManagerInterface {
 
   /**
-   * @var MultiValueAttribute
+   * @var ComponentInterface
    */
-  private $cssClasses;
+  private $component;
+  
+  
 
   /**
    * Constructs a new instance
    * 
-   * @param MultiValueAttribute $cssClasses
+   * @param ComponentInterface $component
    */
-  public function __construct(MultiValueAttribute $cssClasses) {
-    $this->cssClasses = $cssClasses;
+  public function __construct(ComponentInterface $component) { 
+    $this->manage($component);
+  }
+
+  public function manage(ComponentInterface $component) {
+    $this->component = $component;
+    return $this;
   }
 
   /**
@@ -40,7 +48,7 @@ abstract class AbstractLayoutManager implements LayoutManagerInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->cssClasses);
+    unset($this->component);
   }
 
   /**
@@ -48,11 +56,11 @@ abstract class AbstractLayoutManager implements LayoutManagerInterface {
    * @return MultiValueAttribute
    */
   public function cssClasses() {
-    return $this->cssClasses;
+    return $this->component->cssClasses();
   }
 
   public function __toString() {
-    return "$this->cssClasses";
+    return "$this->component";
   }
 
 }

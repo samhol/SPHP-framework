@@ -72,7 +72,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
       return $c;
     };
     parent::__construct('div', null, new WrappingContainer($wrapper));
-    $this->layoutManager = new BlockGridLayoutManager($this->cssClasses());
+    $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);
     if ($blocks !== null) {
     $this->setColumns($blocks);

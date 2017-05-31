@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 
 /**
@@ -31,11 +31,11 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Constructs a new instance
    *
-   * @param MultiValueAttribute $cssClasses
+   * @param ComponentInterface $component
    * @param int $max
    */
-  public function __construct(MultiValueAttribute $cssClasses, $max = 8) {
-    parent::__construct($cssClasses);
+  public function __construct(ComponentInterface $component, $max = 8) {
+    parent::__construct($component);
     $this->maxSize = $max;
     $this->cssClasses()->lock('row');
   }

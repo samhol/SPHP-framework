@@ -42,7 +42,7 @@ class Column extends Div implements ColumnInterface {
    */
   public function __construct($content = null, array $layout = ['small-12']) {
     parent::__construct($content);
-    $this->layoutManager = new ColumnLayoutManager($this->cssClasses());
+    $this->layoutManager = new ColumnLayoutManager($this);
     $this->layout()->setLayouts($layout);
   }
 

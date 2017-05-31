@@ -26,7 +26,7 @@ use Sphp\Html\NonVisualContentInterface;
 abstract class AbstractRow extends AbstractContainerTag implements RowInterface {
 
   /**
-   * @var ColumnLayoutManager 
+   * @var RowLayoutManager 
    */
   private $layoutManager;
   
@@ -62,7 +62,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
       }
     };
     parent::__construct($tagname, null, new WrappingContainer($wrapToCol));
-    $this->layoutManager = new RowLayoutManager($this->cssClasses());
+    $this->layoutManager = new RowLayoutManager($this);
   }
 
   public function layout(): RowLayoutManager {

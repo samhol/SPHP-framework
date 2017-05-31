@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\ComponentInterface;
+
 /**
  * Defines a layout manager
  *
@@ -20,6 +22,14 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 interface LayoutManagerInterface {
 
   /**
+   * Sets the managed component
+   * 
+   * @param ComponentInterface $component
+   * @return self for a fluent interface
+   */
+  public function manage(ComponentInterface $component);
+
+  /**
    * Sets the layout
    *
    * @param  string $layouts layout parameters
@@ -27,5 +37,10 @@ interface LayoutManagerInterface {
    */
   public function setLayouts(array $layouts);
 
+  /**
+   * Unsets the layout
+   *
+   * @return self for a fluent interface
+   */
   public function unsetLayouts();
 }

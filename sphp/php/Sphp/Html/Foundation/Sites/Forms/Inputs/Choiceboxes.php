@@ -57,7 +57,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @var Container
    */
   private $boxes;
-  
+
   /**
    *
    * @var ColumnLayoutManager
@@ -73,7 +73,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    */
   public function __construct($name = null, array $values = [], $legend = null) {
     parent::__construct("fieldset");
-    $this->cssClasses()->lock("columns");
     $this->legend = new Legend();
     $this->boxes = new Container();
     $this->setName($name)
@@ -81,7 +80,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     foreach ($values as $value => $label) {
       $this->setOption($value, $label);
     }
-    $this->layout = new ColumnLayoutManager($this->cssClasses());
+    $this->layout = new ColumnLayoutManager($this);
   }
 
   /**
@@ -91,7 +90,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   public function layout(): ColumnLayoutManagerInterface {
     return $this->layout;
   }
-
 
   /**
    * Sets the {@link Legend} of the fieldset component
@@ -252,4 +250,5 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   public function contentToString() {
     return $this->legend . $this->boxes;
   }
+
 }

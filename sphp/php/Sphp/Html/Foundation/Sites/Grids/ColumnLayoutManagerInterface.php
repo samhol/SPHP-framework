@@ -10,8 +10,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 /**
  * Defines a Column for a Row in a Grid system
  *
- * The sum of the column widths and offsets in a row should never exceed 12.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-03-02
  * @link    http://foundation.zurb.com/ Foundation
@@ -23,25 +21,9 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
 
   /**
    * 
-   * @return int
+   * @return int 
    */
   public function getMaxSize();
-
-  /**
-   * Sets the width and offset for given screen size
-   *
-   * **Important!**
-   *
-   * Column component is mobile-first. Code for small screens first,
-   * and larger devices will inherit those styles. Customize for
-   * larger screens as necessary.
-   *
-   * @param  string $layout the layout parameters
-   * @return self for a fluent interface
-   */
-  public function setLayouts(array $layout);
-
-  public function unsetLayouts();
 
   /**
    * Sets the column width values for all screen sizes

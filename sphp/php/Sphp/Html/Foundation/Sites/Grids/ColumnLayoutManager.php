@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\ComponentInterface;
 
 /**
  * Implements a layout manager for Grid columns
@@ -25,10 +25,10 @@ class ColumnLayoutManager extends AbstractColumnLayoutManager {
   /**
    * Constructs a new instance
    * 
-   * @param MultiValueAttribute $cssClasses
+   * @param ComponentInterface $component
    */
-  public function __construct(MultiValueAttribute $cssClasses) {
-    parent::__construct($cssClasses, 12);
+  public function __construct(ComponentInterface $component) {
+    parent::__construct($component, 12);
     $this->cssClasses()->lock('columns');
   }
 

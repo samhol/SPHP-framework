@@ -57,8 +57,8 @@ class Grid extends WrappingContainer implements GridInterface {
 
   /**
    * 
-   * @param array $rows
-   * @return \static
+   * @param  array $rows single or two dimensional array of column data
+   * @return self new instance containing given content as rows
    */
   public static function from(array $rows) {
     $grid = new Static();

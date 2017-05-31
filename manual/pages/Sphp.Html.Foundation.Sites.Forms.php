@@ -2,17 +2,18 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms;
 
-use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Document;
-
-$formIfLink = $api->classLinker(FormInterface::class);
-$gridForm = $api->classLinker(GridForm::class);
+use Sphp\Html\Apps\Manual\Apis;
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 echo $parsedown->text(<<<MD
 #Foundation for sites: <small>Forms and input components</small>
+        
+$ns
+
 MD
 );
 
-$load('Sphp.Html.Foundation.Sites.Forms.GridForm.php');
-$load('Sphp.Html.Foundation.Sites.Forms.Inputs.php');
+$load('Sphp.Html.Foundation.Sites.Forms.GridForm');
+$load('Sphp.Html.Foundation.Sites.Forms.Inputs');

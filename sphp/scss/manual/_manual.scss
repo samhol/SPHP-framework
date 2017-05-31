@@ -12,7 +12,7 @@ $sphp6-topbar-link-hover-bg: smart-scale($sphp6-topbar-menu-bg, 5%);
 $sphp6-topbar-font-color: #efefef;
 $sphp6-topbar-link-font-color: smart-scale($sphp6-topbar-font-color, 5%);
 $sphp6-topbar-title-font-color: smart-scale($sphp6-topbar-font-color, 25%);//#8a8a8a;
-$sphp6-root-border-color: #4e4e4e;
+$sphp6-root-border-color: #333;
 
 $default-left-margin: rem-calc(35);
 $default-margins: ( top: rem-calc(5), right: rem-calc(25), bottom: rem-calc(15), left: rem-calc(35) );
