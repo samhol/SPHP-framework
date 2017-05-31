@@ -9,6 +9,7 @@ use Sphp\Html\Foundation\Sites\Forms\FormRow;
 use Sphp\Html\Foundation\Sites\Forms\Buttons\SubmitButton;
 use Sphp\Html\Foundation\Sites\Forms\Inputs\Checkboxes;
 use Iterator;
+use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumn;
 
 class GettextForm extends AbstractComponentGenerator {
 
@@ -41,7 +42,7 @@ class GettextForm extends AbstractComponentGenerator {
     $this->tableGenerator->setData($data);
     return $this;
   }
-  
+
   public function getTableGenerator(): GettextTable {
     return $this->tableGenerator;
   }
@@ -51,11 +52,10 @@ class GettextForm extends AbstractComponentGenerator {
     return $this;
   }
 
-  
   public function generate(): Html\ContentInterface {
 
     $form = new GridForm('manual/gettext/index.php', 'get');
-    
+
     $form->addCssClass('sphp-gettext-form');
 
 
@@ -67,8 +67,8 @@ class GettextForm extends AbstractComponentGenerator {
     $form->append($row);
 
     $row1 = new FormRow();
-    $row->appendColumn(new \Sphp\Html\Foundation\Sites\Forms\Inputs\TextColumn('query'), 12, false, 7, 6);
-    $row->appendColumn(new SubmitButton('submit'), 12, false, 1);
+    $row->append(InputColumn::text('query', null, ['small-12', 'large-7', 'xlarge-6']));
+    $row->appendColumn(new SubmitButton('submit'), ['small-12', 'large-1']);
 
     $form->append($row1);
     $form->append($this->tableGenerator->generate());

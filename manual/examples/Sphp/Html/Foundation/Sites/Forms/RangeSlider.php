@@ -20,6 +20,6 @@ $distance = (new RangeSlider("distance", 100, 200, 1))
         ->setValueUnit("km");
 
 $form = new GridForm();
-$form->append([$hours, $score, $distance], 10);
+$form->append([$hours, $score, $distance]);
 echo $form;
 ?>

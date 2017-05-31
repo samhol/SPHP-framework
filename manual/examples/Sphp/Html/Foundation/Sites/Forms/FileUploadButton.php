@@ -9,4 +9,3 @@ $form = (new GridForm())
         ->append(new Buttons\SubmitButton("Load Image", "submit"));
 
 $form->printHtml();
-?>

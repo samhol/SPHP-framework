@@ -9,7 +9,7 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Stdlib\URL;
-use Sphp\Html\Navigation\ImageLink as ImageLink;
+use Sphp\Html\Navigation\ImageLink;
 
 /**
  * Class TechLinkList

@@ -15,6 +15,10 @@ use Sphp\Html\Sections\Paragraph;
 use ReflectionClass;
 use BadMethodCallException;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Forms\Inputs\TextInput;
+use Sphp\Html\Forms\Inputs\Textarea;
+use Sphp\Html\Forms\Inputs\Menus\Select;
+use Sphp\Html\Forms\Inputs\EmailInput;
 
 /**
  * Implements framework based component to create  multi-device layouts
@@ -202,6 +206,56 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
 
   public function layout() {
     return $this->columnProps;
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $value
+   * @param array $layout
+   * @return \self
+   */
+  public static function email($name, $value = null, array $layout = ['small-12']) {
+    $input = new EmailInput($name, $value);
+    return new self($input, $layout);
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $value
+   * @param array $layout
+   * @return \self
+   */
+  public static function text($name, $value = null, array $layout = ['small-12']) {
+    $input = new TextInput($name, $value);
+    return new self($input, $layout);
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $opt
+   * @param type $selectedValues
+   * @param array $layout
+   * @return \self
+   */
+  public static function select($name, $opt, $selectedValues = null, array $layout = ['small-12']) {
+    $input = new Select($name, $opt, $selectedValues);
+    return new self($input, $layout);
+  }
+
+  /**
+   * 
+   * @param type $name
+   * @param type $content
+   * @param type $rows
+   * @param array $layout
+   * @return \self
+   */
+  public static function textarea($name, $content = null, $rows = 4, array $layout = ['small-12']) {
+    $input = new Textarea($name, $content, $rows);
+    return new self($input, $layout);
   }
 
 }

@@ -44,7 +44,6 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
   public function __construct($action = null, $method = 'get') {
     parent::__construct('form');
     $this->setAction($action)
-            ->setEnctype('utf-8')
             ->setMethod($method)
             ->setTarget('_self');
     $this->setSubmitButton(new SubmitButton(Icon::fontAwesome('fa-search')));
@@ -76,7 +75,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     $this->submitButton->cssClasses()->lock('button');
     return $this;
   }
-  
+
   public function showLabel($additionalControls = true) {
     $this->showLabel = $additionalControls;
   }

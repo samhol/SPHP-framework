@@ -377,7 +377,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($columns = null, array $sizes = null)
+                    <a href="#method___construct">__construct</a>(string $tagname,  $layoutManager = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -670,6 +670,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_layout">layout</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -716,6 +727,17 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_collapseColumnsFor">collapseColumnsFor</a>($screenSize = &#039;small&#039;, $collapse = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_from">from</a>(array $rows)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -1644,9 +1666,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 56</div>
         <code>                    
-    <strong>__construct</strong>($columns = null, array $sizes = null)
+    <strong>__construct</strong>(string $tagname,  $layoutManager = null)
         </code>
     </h3>
     <div class="details">
@@ -1677,13 +1699,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$columns</td>
-                <td></td>
+                <td>string</td>
+                <td>$tagname</td>
+                <td>the name of the tag</td>
             </tr>
                     <tr>
-                <td>array</td>
-                <td>$sizes</td>
+                <td></td>
+                <td>$layoutManager</td>
                 <td></td>
             </tr>
             </table>
@@ -2672,8 +2694,27 @@ So also an object of any class that implements magic method <code>__toString()</
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_layout">
+        <div class="location">at         line 68</div>
+        <code>                    
+    <strong>layout</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setColumns">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 72</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
     <strong>setColumns</strong>(mixed|mixed[] $columns, array $sizes = null)
         </code>
@@ -2735,7 +2776,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendColumn">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 99</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
     <strong>appendColumn</strong>(mixed $content, array $sizes = [&#039;small-12&#039;])
         </code>
@@ -2782,7 +2823,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendMdColumn">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 104</div>
         <code>                    
     <strong>appendMdColumn</strong>($content, array $sizes = [&#039;small-12&#039;])
         </code>
@@ -2816,7 +2857,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collapseColumns">
-        <div class="location">at         line 103</div>
+        <div class="location">at         line 110</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/RowInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\RowInterface">RowInterface</abbr></a>
     <strong>collapseColumns</strong>(boolean $collapse = true)
         </code>
@@ -2854,7 +2895,7 @@ by dividing the Row width with the number of the inserted columns.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collapseColumnsFor">
-        <div class="location">at         line 113</div>
+        <div class="location">at         line 120</div>
         <code>                    
     <strong>collapseColumnsFor</strong>($screenSize = &#039;small&#039;, $collapse = true)
         </code>
@@ -2880,6 +2921,44 @@ by dividing the Row width with the number of the inserted columns.</p>
             </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_from">
+        <div class="location">at         line 138</div>
+        <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a>
+    <strong>from</strong>(array $rows)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$rows</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractRow.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractRow">AbstractRow</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
             
             
                     </div>

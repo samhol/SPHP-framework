@@ -28,7 +28,7 @@ $distance = (new Slider(10, 1000, 10, 10))
 
 (new GridForm())
         ->append((new FormRow())
-                ->appendColumn($weight, 2)
-                ->appendColumn([$hours, $score, $distance], 10))
+                ->appendColumn($weight, ['small-2'])
+                ->appendColumn([$hours, $score, $distance], ['small-10']))
         ->printHtml();
 ?>

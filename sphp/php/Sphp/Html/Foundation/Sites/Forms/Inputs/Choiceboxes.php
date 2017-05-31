@@ -15,6 +15,8 @@ use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
+use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
 
 /**
  * A component containing multiple radio or checkbox inputs
@@ -55,6 +57,12 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @var Container
    */
   private $boxes;
+  
+  /**
+   *
+   * @var ColumnLayoutManager
+   */
+  private $layout;
 
   /**
    * Constructs a new instance
@@ -65,7 +73,6 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    */
   public function __construct($name = null, array $values = [], $legend = null) {
     parent::__construct("fieldset");
-    $this->setWidth(12, "small");
     $this->cssClasses()->lock("columns");
     $this->legend = new Legend();
     $this->boxes = new Container();
@@ -74,7 +81,17 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     foreach ($values as $value => $label) {
       $this->setOption($value, $label);
     }
+    $this->layout = new ColumnLayoutManager($this->cssClasses());
   }
+
+  /**
+   * 
+   * @return ColumnLayoutManagerInterface
+   */
+  public function layout(): ColumnLayoutManagerInterface {
+    return $this->layout;
+  }
+
 
   /**
    * Sets the {@link Legend} of the fieldset component
@@ -235,5 +252,4 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   public function contentToString() {
     return $this->legend . $this->boxes;
   }
-
 }
