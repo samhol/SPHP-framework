@@ -65,11 +65,11 @@ class RangeSlider extends AbstractSlider {
     $this->lowerHandle = new Span();
     $this->lowerHandle->cssClasses()->lock('slider-handle');
     $this->lowerHandle->attrs()
-            ->demand("data-slider-handle")
-            ->lock("role", "slider")
-            ->lock("tabindex", 1);
+            ->demand('data-slider-handle')
+            ->lock('role', 'slider')
+            ->lock('tabindex', 1);
     $this->upperHandle = new Span();
-    $this->upperHandle->cssClasses()->lock("slider-handle");
+    $this->upperHandle->cssClasses()->lock('slider-handle');
     $this->upperHandle->attrs()
             ->demand('data-slider-handle')
             ->lock('role', 'slider')
@@ -87,6 +87,7 @@ class RangeSlider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
+    
   }
 
   /**
@@ -136,8 +137,8 @@ class RangeSlider extends AbstractSlider {
    * @param  string $unit the unit of the value
    * @return self for a fluent interface
    */
-  public function setValueUnit($unit = "") {
-    $this->getInnerLabel()["unit"] = " $unit";
+  public function setValueUnit($unit = '') {
+    $this->getInnerLabel()['unit'] = " $unit";
     return $this;
   }
 

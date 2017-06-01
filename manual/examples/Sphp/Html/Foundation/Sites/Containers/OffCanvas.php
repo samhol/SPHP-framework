@@ -26,4 +26,4 @@ $data = [
 echo \Sphp\Html\Foundation\Sites\Bars\TitleBarFactory::create($data);
 
 $offCanvas->printHtml();
-?>
+

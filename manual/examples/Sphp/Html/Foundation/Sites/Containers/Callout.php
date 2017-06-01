@@ -17,4 +17,3 @@ $panel3 = (new Callout("<h4>Persistent callout</h4>"))
         ->setColor("warning")
         ->setClosable(false)
         ->printHtml();
-?>

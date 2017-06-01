@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\AbstractLayoutManager;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ComponentInterface;
 
@@ -36,13 +36,13 @@ class RowLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the number of columns within the row for different screen sizes
    * 
-   * @param  string[] $widths individual layout settings
+   * @param  string[] $layout individual layout settings
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setLayouts(array $widths) {
+  public function setLayouts(array $layout) {
     $this->unsetLayouts();
-    foreach ($widths as $width) {
+    foreach ($layout as $width) {
       $parts = explode('-', $width);
       $this->setGrid($parts[2], $parts[0]);
     }
@@ -64,7 +64,6 @@ class RowLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the block grid value of the given target screen types
    *
-   * @precondition The value of the `$num` parameter is between (1-8) or false for inheritance
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
@@ -78,7 +77,6 @@ class RowLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the block grid value of the given target screen types
    *
-   * @precondition The value of the `$num` parameter is between (1-8) or false for inheritance
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface

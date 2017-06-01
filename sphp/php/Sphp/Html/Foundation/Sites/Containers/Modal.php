@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\Sites\Containers\Modals;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\ContainerTag;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
@@ -64,13 +64,17 @@ class Modal extends ContainerTag {
    * @param mixed $content the content of the component
    * @param mixed $controller
    */
-  public function __construct($content = null, $controller = null) {
+  public function __construct($trigger, $reveal) {
     parent::__construct('div', $content);
+    if (!$reveal instanceof Reveal) {
+      $reveal = new Reveal($reveal);
+    }
     $this->identify('id', 'modal_');
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
+    $this->modal = 
     $this->closeButton = new CloseButton();
-    $this->trigger = $this->createController($controller);
+    $this->trigger = $this->createController($trigger);
   }
 
   /**

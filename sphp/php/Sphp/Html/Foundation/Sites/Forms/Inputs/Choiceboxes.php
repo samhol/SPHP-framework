@@ -7,12 +7,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
-use Sphp\Html\Forms\Legend as Legend;
+use Sphp\Html\Forms\Legend;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Forms\Inputs\InputInterface;
-use Sphp\Html\Foundation\Sites\Grids\ColumnInterface as ColumnInterface;
+use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 use Sphp\Html\Container;
-use Sphp\Html\Forms\Inputs\Choicebox as Choicebox;
+use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
@@ -94,7 +94,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
   /**
    * Sets the {@link Legend} of the fieldset component
    *
-   * @param  string|Legend $legend the legend of the fielset component
+   * @param  string|Legend $legend the legend of the fieldset component
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_legend.asp legend tag
    */

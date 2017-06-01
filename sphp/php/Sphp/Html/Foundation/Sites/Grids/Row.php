@@ -10,8 +10,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 /**
  * Implements a row
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-27
  * @link    http://foundation.zurb.com/ Foundation

@@ -13,7 +13,6 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Foundation\Sites\Grids\GridInterface;
 use Sphp\Html\Forms\TraversableFormTrait;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
-use Sphp\Html\Adapters\VisibilityAdapter;
 
 /**
  * Implements a framework form
@@ -70,7 +69,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
 
   /**
    * 
-   * @param   $message
+   * @param  string $message
    * @return self for a fluent interface
    */
   public function setFormErrorMessage($message) {

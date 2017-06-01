@@ -237,12 +237,16 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
   }
 
   /**
+   * Creates a new instance containing a textarea component
    * 
-   * @param type $name
-   * @param type $content
-   * @param type $rows
-   * @param array $layout
-   * @return \self
+   * @precondition  `$rows > 0 & $cols > 0`
+   * @param  string $name name attribute value
+   * @param  string $content the content of the component
+   * @param  string $rows the value of the rows attribute (visible height of a text area)
+   * @link   http://www.w3schools.com/tags/att_textarea_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
+   * @return self new instance containing a textarea component
+   * @link   Sphp\Html\Forms\Inputs\Textarea Textarea
    */
   public static function textarea($name, $content = null, $rows = 4, array $layout = ['small-12']) {
     $input = new Textarea($name, $content, $rows);

@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Modal.php (UTF-8)
+ * Reveal.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\Sites\Containers\Modals;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\ContentInterface;
+use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
@@ -22,26 +23,22 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Modal extends ContainerTag {
+class Reveal implements ContentInterface {
+
+  use \Sphp\Html\ContentTrait;
 
   /**
    * the Modal reveal controller
    *
    * @var Controller
    */
-  private $trigger;
+  private $modalController;
 
   /**
    *
    * @var CloseButton 
    */
   private $closeButton;
-
-  /**
-   *
-   * @var CloseButton 
-   */
-  private $modal;
 
   /**
    * CSS classes corresponding to the size constants
@@ -70,7 +67,7 @@ class Modal extends ContainerTag {
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
     $this->closeButton = new CloseButton();
-    $this->trigger = $this->createController($controller);
+    $this->modalController = $this->createController($controller);
   }
 
   /**
@@ -111,7 +108,7 @@ class Modal extends ContainerTag {
    * @return Controller
    */
   public function getDefaultController() {
-    return $this->trigger;
+    return $this->modalController;
   }
 
   /**
@@ -124,7 +121,7 @@ class Modal extends ContainerTag {
   }
 
   public function getHtml() {
-    return $this->trigger . parent::getHtml();
+    return $this->modalController . parent::getHtml();
   }
 
   /**

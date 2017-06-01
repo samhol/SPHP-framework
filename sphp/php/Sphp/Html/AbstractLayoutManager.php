@@ -5,10 +5,9 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\Sites\Grids;
+namespace Sphp\Html;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\ComponentInterface;
 
 /**
  * Implements an abstract layout manager
@@ -24,15 +23,13 @@ abstract class AbstractLayoutManager implements LayoutManagerInterface {
    * @var ComponentInterface
    */
   private $component;
-  
-  
 
   /**
    * Constructs a new instance
    * 
    * @param ComponentInterface $component
    */
-  public function __construct(ComponentInterface $component) { 
+  public function __construct(ComponentInterface $component) {
     $this->manage($component);
   }
 

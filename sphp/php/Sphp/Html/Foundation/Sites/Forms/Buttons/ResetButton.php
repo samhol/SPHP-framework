@@ -30,7 +30,7 @@ class ResetButton extends InputButton {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function __construct($value = null, $name = null) {
-    parent::__construct("reset", $name, $value);
+    parent::__construct('reset', $name, $value);
   }
 
 }

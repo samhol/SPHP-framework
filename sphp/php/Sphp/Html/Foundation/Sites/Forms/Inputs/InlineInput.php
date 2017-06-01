@@ -50,11 +50,11 @@ class InlineInput extends AbstractComponent implements IdentifiableInputInterfac
    */
   public function __construct(IdentifiableInputInterface $input, $prefix = null, $suffix = null) {
     parent::__construct('div');
-    $this->cssClasses()->lock("input-group");
+    $this->cssClasses()->lock('input-group');
     $this->prefix = $prefix;
     $this->input = $input;
     $this->suffix = $suffix;
-    $this->input->cssClasses()->lock("input-group-field");
+    $this->input->cssClasses()->lock('input-group-field');
   }
 
   /**

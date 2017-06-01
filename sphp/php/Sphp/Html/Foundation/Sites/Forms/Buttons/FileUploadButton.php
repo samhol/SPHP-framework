@@ -52,9 +52,9 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
    * @param  string|null $buttonText the value of value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function __construct($name = null, $buttonText = "Upload File") {
+  public function __construct($name = null, $buttonText = 'Upload File') {
     $this->fileInput = new FileInput($name);
-    $this->fileInput->cssClasses()->lock("show-for-sr");
+    $this->fileInput->cssClasses()->lock('show-for-sr');
     $this->label = new Label($buttonText, $this->fileInput);
     $this->label->cssClasses()->lock('button');
   }
@@ -102,12 +102,12 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this;
   }
 
-  public function hasId($identityName = "id") {
+  public function hasId($identityName = 'id') {
     return $this->fileInput->hasId($identityName);
   }
 
-  public function identify($identityName = "id", $prefix = "id", $length = 16) {
-    $this->fileInput->identify($identityName, $prefix, $length );
+  public function identify($identityName = 'id', $prefix = 'id', $length = 16) {
+    $this->fileInput->identify($identityName, $prefix, $length);
     return $this;
   }
 

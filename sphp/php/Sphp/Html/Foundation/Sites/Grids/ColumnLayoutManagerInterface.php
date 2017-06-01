@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
+use Sphp\Html\LayoutManagerInterface;
 /**
  * Defines a Column for a Row in a Grid system
  *
@@ -20,7 +21,6 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
 
   /**
-   * 
    * @return int 
    */
   public function getMaxSize();
