@@ -12,5 +12,3 @@ $scriptsContainer
         ->appendSrc("manual/snippets/example2.js")
         ->appendCode('document.write(\'<button class="button" type="button" onclick="alertUser($user)">ALERT!</button>\')')
         ->printHtml();
-
-?>

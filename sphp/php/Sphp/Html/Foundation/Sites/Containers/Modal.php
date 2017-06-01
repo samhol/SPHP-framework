@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ContainerTag;
+use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
@@ -22,24 +22,21 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Modal extends ContainerTag {
+class Modal implements ContentInterface {
+
+  use \Sphp\Html\ContentTrait;
 
   /**
    * the Modal reveal controller
    *
-   * @var Controller
+   * @var ComponentInterface
    */
   private $trigger;
 
-  /**
-   *
-   * @var CloseButton 
-   */
-  private $closeButton;
 
   /**
    *
-   * @var CloseButton 
+   * @var Popup
    */
   private $modal;
 
@@ -61,19 +58,17 @@ class Modal extends ContainerTag {
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
    * 
-   * @param mixed $content the content of the component
-   * @param mixed $controller
+   * @param ComponentInterface|string $trigger
+   * @param mixed $popup the content of the component
    */
-  public function __construct($trigger, $reveal) {
-    parent::__construct('div', $content);
-    if (!$reveal instanceof Reveal) {
-      $reveal = new Reveal($reveal);
+  public function __construct($trigger, $popup) {
+    if (!$popup instanceof Popup) {
+      $popup = new Popup($popup);
     }
     $this->identify('id', 'modal_');
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
-    $this->modal = 
-    $this->closeButton = new CloseButton();
+    $this->modal = $this->closeButton = new CloseButton();
     $this->trigger = $this->createController($trigger);
   }
 
@@ -118,14 +113,6 @@ class Modal extends ContainerTag {
     return $this->trigger;
   }
 
-  /**
-   * Returns the Modal reveal controller
-   * 
-   * @return CloseButton
-   */
-  public function closeButton() {
-    return $this->closeButton;
-  }
 
   public function getHtml(): string {
     return $this->trigger . parent::getHtml();
@@ -148,8 +135,5 @@ class Modal extends ContainerTag {
     return $controller;
   }
 
-  public function contentToString(): string {
-    return parent::contentToString() . $this->closeButton();
-  }
 
 }

@@ -23,16 +23,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Reveal implements ContentInterface {
-
-  use \Sphp\Html\ContentTrait;
-
-  /**
-   * the Modal reveal controller
-   *
-   * @var Controller
-   */
-  private $modalController;
+class Popup implements Closable {
 
   /**
    *
@@ -61,13 +52,14 @@ class Reveal implements ContentInterface {
    * @param mixed $content the content of the component
    * @param mixed $controller
    */
-  public function __construct($content = null, $controller = null) {
-    parent::__construct('div', $content);
+  public function __construct($content = null) {
+    parent::__construct('div');
     $this->identify('id', 'modal_');
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
-    $this->closeButton = new CloseButton();
-    $this->modalController = $this->createController($controller);
+    if ($content !== null) {
+    $this->append($content);
+    }
   }
 
   /**
@@ -139,10 +131,6 @@ class Reveal implements ContentInterface {
   public function createController($content) {
     $controller = new Controller($this, $content);
     return $controller;
-  }
-
-  public function contentToString(): string {
-    return parent::contentToString() . $this->closeButton();
   }
 
 }

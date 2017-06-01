@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\Modals;
 
 use Sphp\Stdlib\Timer;
 
-$license = (new Modal(null, 'SPHP license'))->appendMdFile('LICENSE.md');
+$license = (new Modal(null, 'SPHP license'))->setSize('large')->appendMdFile('LICENSE.md');
 $license->addCssClass('license');
 ?>
 Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.

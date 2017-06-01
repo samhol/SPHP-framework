@@ -38,4 +38,8 @@ class MdContainer extends AbstractContainer {
     return ParsedownExtraPlugin::instance()->text($text);
   }
 
+  public function setContent($content) {
+    $this->clear()->append(new \Sphp\Stdlib\Reader\Markdown());
+  }
+
 }
