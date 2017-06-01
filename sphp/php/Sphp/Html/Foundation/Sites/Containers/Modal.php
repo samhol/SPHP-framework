@@ -127,7 +127,7 @@ class Modal extends ContainerTag {
     return $this->closeButton;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->trigger . parent::getHtml();
   }
 
@@ -148,7 +148,7 @@ class Modal extends ContainerTag {
     return $controller;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return parent::contentToString() . $this->closeButton();
   }
 

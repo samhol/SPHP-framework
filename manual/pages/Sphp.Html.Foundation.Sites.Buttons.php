@@ -34,9 +34,9 @@ instance method with the CSS class name as a parameter value:
 MD
 );
 
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$blockGrid = (new BlockGrid())->setBlockGrids(1, 1, 2);
+$blockGrid = new BlockGrid(null, ['small-up-1', 'large-up-3']);
 $blockGrid->append($parsedown->text(<<<MD
 Predefined color classes:
 

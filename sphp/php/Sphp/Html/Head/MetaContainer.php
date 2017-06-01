@@ -91,7 +91,7 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->metaTags->getHtml();
   }
 

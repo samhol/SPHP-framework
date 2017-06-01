@@ -75,7 +75,7 @@ class AbstractBar extends AbstractComponent {
     return $this->rightArea;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->leftArea->getHtml() . $this->rightArea->getHtml();
   }
 

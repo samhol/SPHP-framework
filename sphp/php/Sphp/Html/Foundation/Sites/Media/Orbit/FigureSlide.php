@@ -92,7 +92,7 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
     return $this->caption;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->img . $this->caption;
   }
 

@@ -29,7 +29,7 @@ class AbstractIcon extends AbstractComponent {
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return '';
   }
 

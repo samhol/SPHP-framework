@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $buttons[] = new HyperlinkButton("http://www.google.com/", "google", "engine");
 $buttons[] = new HyperlinkButton("http://www.bing.com", "Bing", "engine");
@@ -16,7 +16,7 @@ $buttonGroup1 = (new ButtonGroup())
 $buttonGroup2 = (new ButtonGroup($buttons))
         ->setSize("small");
 
-$grid = new BlockGrid(1, 3);
+$grid = new BlockGrid(['small-up-1', 'large-up-3']);
 $grid->append($buttonGroup1);
 $grid->append($buttonGroup2);
 
@@ -26,5 +26,3 @@ $buttonGroup3
         ->setColor("success");
 $grid->append($buttonGroup3);
 $grid->printHtml();
-
-?>

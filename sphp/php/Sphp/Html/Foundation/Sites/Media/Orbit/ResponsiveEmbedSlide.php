@@ -110,7 +110,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
     return new static(ResponsiveEmbed::dailymotion($videoId));
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->flex->getHtml();
   }
 

@@ -74,7 +74,7 @@ abstract class AbstractJavaScriptComponent extends AbstractContainerComponent {
    * @return string html-markup of the component
    * @throws \Exception if html parsing fails
    */
-  public function getHtml() {
+  public function getHtml(): string {
     $output = parent::getHtml() . $this->scripts;
     return $output;
   }

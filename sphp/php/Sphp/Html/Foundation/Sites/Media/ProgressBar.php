@@ -95,7 +95,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     if ($progressText === null) {
       $progressText = "$progress%";
     }
-    $this->attrs()
+    $this->attrs() 
             ->set('aria-valuenow', $progress)
             ->set('aria-valuetext', $progressText);
     $this->attrs()->set('title', $progressText);
@@ -104,7 +104,7 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->progressMeter->getHtml();
   }
 

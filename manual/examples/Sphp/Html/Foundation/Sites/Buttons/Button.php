@@ -18,7 +18,8 @@ $yahoo = (new HyperlinkButton("https://www.yahoo.com/", "Yahoo!", "engine"))
         ->setColor("disabled");
 
 $grid = new BlockGrid();
-$grid->setBlockGrids(2, 3, 4)->append($google)
+$grid->layout()->setLayouts(['small-up-1', 'large-up-3']);
+        $grid->append($google)
         ->append($bing)
         ->append($ask)
         ->append($yahoo);
@@ -27,4 +28,3 @@ foreach ($grid as $column) {
   $column->addCssClass("text-center");
 }
 $grid->printHtml();
-?>

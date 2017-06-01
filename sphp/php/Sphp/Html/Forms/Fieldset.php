@@ -77,7 +77,7 @@ class Fieldset extends ContainerTag {
     return parent::setAttr("disabled", !$enabled);
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->getLegend() . parent::contentToString();
   }
 

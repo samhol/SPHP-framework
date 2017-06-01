@@ -132,7 +132,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     foreach ($this->icons as $icon) {
       $output .= "<li>$icon</li>";

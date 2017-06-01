@@ -53,7 +53,7 @@ class OffCanvasOpener extends AbstractComponent {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->span;
   }
 

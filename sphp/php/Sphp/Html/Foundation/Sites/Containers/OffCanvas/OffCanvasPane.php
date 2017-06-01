@@ -69,7 +69,7 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->closeButton->getHtml() . parent::contentToString();
   }
 

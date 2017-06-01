@@ -72,7 +72,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
     return $this->tabsContent->getTab($index);
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->tabsContent->getTabButtons()->getHtml() . $this->tabsContent->getHtml();
   }
 

@@ -22,10 +22,9 @@ The $drilldownMenu component is one of Foundation's three menu patterns, which c
 MD
 );
 
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$navExamples = (new BlockGrid())
-        ->setBlockGrids(1, 2, 3)
+$navExamples = (new BlockGrid(['small-up-1', 'medium-up-2', 'large-up-3']))
         ->setStyle("margin-bottom", ".3em")
         ->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/DropdownMenu.php')
         ->appendPhpFile('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')

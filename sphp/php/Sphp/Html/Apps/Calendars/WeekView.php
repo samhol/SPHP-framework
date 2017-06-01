@@ -56,7 +56,7 @@ class WeekView implements \Sphp\Html\ContentInterface {
   }
 
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->dayCells->getHtml();
   }
 

@@ -58,7 +58,7 @@ class ArrowOnlyButton extends AbstractComponent implements ButtonInterface, Scre
     return $this->screenReaderLabel;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->screenReaderLabel->getHtml();
   }
 

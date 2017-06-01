@@ -2,11 +2,11 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\Size as Size;
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Media\Size;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $size = new Size(384, 216);
-$grid = (new BlockGrid(1, 2, false, 3));
+$grid = new BlockGrid(['small-up-1', 'medium-up-2', 'large-up-3']);
 $grid->append((new YoutubePlayer("VjDnB9xWodM"))
                 ->loop(false)
                 ->setLazy()
@@ -30,4 +30,3 @@ $grid->append((new DailyMotionPlayer("x2p4pkp"))
         ->setSize($size));
 
 $grid->printHtml();
-?>

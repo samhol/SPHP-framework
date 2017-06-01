@@ -112,7 +112,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = "";
     $output .= $this->geshi->parse_code();
     $output .= $this->buttonArea . $this->footer;

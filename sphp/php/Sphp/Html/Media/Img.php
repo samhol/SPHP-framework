@@ -117,7 +117,7 @@ class Img extends EmptyTag implements ImgInterface {
    *
    * @return string html-markup of the object
    */
-  public function getHtml() {
+  public function getHtml(): string {
     $output = parent::getHtml();
     if ($this->isLazy()) {
       $nonLazy = clone $this;

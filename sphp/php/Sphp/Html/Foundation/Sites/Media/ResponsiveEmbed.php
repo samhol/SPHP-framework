@@ -130,7 +130,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->iframe->getHtml();
   }
 

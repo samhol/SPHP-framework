@@ -198,7 +198,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->img->getHtml();
   }
 

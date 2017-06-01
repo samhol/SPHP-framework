@@ -158,7 +158,7 @@ class OffCanvas extends AbstractComponent {
     return $this->offCanvasContent;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     if ($this->left !== null) {
       $output .= $this->left;

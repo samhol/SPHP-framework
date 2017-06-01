@@ -143,7 +143,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return '<p>Your browser does not support iframes.</p>';
   }
 

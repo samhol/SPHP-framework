@@ -77,7 +77,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     return $this;
   }
   
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->bar->getHtml() . $this->getInnerContainer()->getHtml();
   }
 

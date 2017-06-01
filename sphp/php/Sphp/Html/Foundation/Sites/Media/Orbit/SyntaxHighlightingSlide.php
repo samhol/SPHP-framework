@@ -72,7 +72,7 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
     return $this->hl;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->title->getHtml() . $this->hl->getHtml();
   }
 

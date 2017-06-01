@@ -107,7 +107,7 @@ class TopBar extends AbstractBar {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     if ($this->titleArea !== null) {
       $output .= $this->titleArea->getHtml();

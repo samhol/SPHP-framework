@@ -268,7 +268,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     (new static($path, $highlightOutput, $outputLang))->buildAccordion()->printHtml();
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->buildAccordion()->getHtml();
   }
 

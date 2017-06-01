@@ -50,7 +50,7 @@ class CloseButton extends AbstractComponent {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return '<span aria-hidden="true">&times;</span>';
   }
 

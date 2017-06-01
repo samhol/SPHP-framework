@@ -35,7 +35,7 @@ class HttpErrorViewer implements ContentInterface {
     $this->code = $code;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     $cont = new \Sphp\Html\MdContainer();
     $cont->append('#' . $this->code->getCode() . ': <small>' . $this->code->getMessage() . '</small>{.error}');
     $cont->append($this->code->getDescription());

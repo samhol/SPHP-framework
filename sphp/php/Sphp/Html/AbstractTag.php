@@ -87,7 +87,7 @@ abstract class AbstractTag implements TagInterface {
     return $this;
   }
 
-  public function getTagName() {
+  public function getTagName(): string {
     return $this->tagName;
   }
 

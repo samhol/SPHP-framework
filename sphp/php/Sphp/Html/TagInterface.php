@@ -24,5 +24,5 @@ interface TagInterface extends ComponentInterface {
    *
    * @return string the tag name of the component
    */
-  public function getTagName();
+  public function getTagName(): string;
 }

@@ -53,7 +53,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
     return $this->dateTime;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '<em>' . $this->dateTime->format('l') . '</em>';
     $output .= '<strong>' . $this->dateTime->format('F') . '</strong>';
     $output .= '<span>' . $this->dateTime->format('j') . '</span>';

@@ -169,7 +169,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return implode('', $this->components);
   }
 

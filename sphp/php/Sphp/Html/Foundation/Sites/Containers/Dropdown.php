@@ -166,7 +166,7 @@ class Dropdown implements ContentInterface {
     return $this->trigger;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->trigger->getHtml() . $this->dropdown->getHtml();
   }
 

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
 $srcs[] = "http://techslides.com/demos/sample-videos/small.mp4";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.3gp";
@@ -20,6 +20,5 @@ $vjs[] = (new VideoJs("http://www.w3schools.com/html/mov_bbb.mp4"))
         ->loop(true)
         ->setWideScreen();
 
-$blockGrid = (new BlockGrid($vjs, 1, 2))
+$blockGrid = (new BlockGrid(['small-up-1', 'large-up-3'],[$vjs]))
         ->printHtml();
-?>

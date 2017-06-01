@@ -79,7 +79,7 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
     return $this->secondary;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->primary . $this->secondary;
   }
 

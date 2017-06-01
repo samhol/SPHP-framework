@@ -87,7 +87,7 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
   /**
    * @inheritdoc
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->bar->getHtml() . parent::contentToString();
   }
 

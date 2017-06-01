@@ -30,7 +30,7 @@ class Ruler extends AbstractComponent implements MenuItemInterface {
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return '';
   }
 

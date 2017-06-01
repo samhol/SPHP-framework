@@ -37,19 +37,16 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   ];
 
   /**
-   *
    * @var Choicebox 
    */
   private $input;
 
   /**
-   *
    * @var Label 
    */
   private $paddle;
 
   /**
-   *
    * @var ScreenReaderLabel
    */
   private $screenReaderLabel;
@@ -195,7 +192,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
     return $label;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->input->getHtml() . $this->paddle->getHtml();
   }
 

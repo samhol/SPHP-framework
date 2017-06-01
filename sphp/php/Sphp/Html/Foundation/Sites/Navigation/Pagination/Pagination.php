@@ -12,7 +12,7 @@ use IteratorAggregate;
 use Countable;
 use ArrayIterator;
 use Sphp\Html\Container;
-use Sphp\Html\Lists\Li as Li;
+use Sphp\Html\Lists\Li;
 use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfRangeException;
 
@@ -325,7 +325,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     $cont = new Container();
     Arrays::pointToKey($this->pages, $this->current);
     $beforeKey = key($this->pages);

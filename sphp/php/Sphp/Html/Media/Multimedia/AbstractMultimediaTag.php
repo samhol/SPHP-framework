@@ -62,7 +62,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
     parent::__destruct();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->sources->getHtml()
             . $this->tracks->getHtml()
             . "<p>Your browser does not support the &lt;"

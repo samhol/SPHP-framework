@@ -56,7 +56,7 @@ class SideNavViewer implements ContentInterface {
     $builder->buildMenu($this->data, $this->nav);
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->nav->getHtml();
   }
 

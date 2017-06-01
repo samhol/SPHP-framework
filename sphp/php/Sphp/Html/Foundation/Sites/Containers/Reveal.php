@@ -120,7 +120,7 @@ class Reveal implements ContentInterface {
     return $this->closeButton;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->modalController . parent::getHtml();
   }
 
@@ -141,7 +141,7 @@ class Reveal implements ContentInterface {
     return $controller;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return parent::contentToString() . $this->closeButton();
   }
 

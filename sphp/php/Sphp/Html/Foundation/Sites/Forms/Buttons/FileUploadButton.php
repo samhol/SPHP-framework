@@ -59,7 +59,7 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     $this->label->cssClasses()->lock('button');
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->label . $this->fileInput;
   }
 

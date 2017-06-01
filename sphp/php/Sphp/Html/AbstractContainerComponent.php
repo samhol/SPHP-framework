@@ -77,7 +77,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
     return $this->content;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->content->getHtml();
   }
 

@@ -27,7 +27,7 @@ class Badge extends \Sphp\Html\AbstractComponent {
     }
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return "$this->content";
   }
 

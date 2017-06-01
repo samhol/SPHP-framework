@@ -32,7 +32,7 @@ class EmptyTag extends AbstractTag {
     $this->setAttrs($attrs);
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     $attrs = '' . $this->attrs();
     if ($attrs !== '') {
       $attrs = ' ' . $attrs;

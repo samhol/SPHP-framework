@@ -80,7 +80,7 @@ class TitleBarContentArea extends BarContentArea {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     if ($this->side === 'left') {
       return $this->menuButton . $this->title . parent::contentToString();
     } else {

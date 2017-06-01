@@ -76,7 +76,7 @@ class Tooltip implements ContentInterface {
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->toolTipped->getHtml();
   }
 

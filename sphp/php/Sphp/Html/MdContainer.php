@@ -33,7 +33,7 @@ class MdContainer extends AbstractContainer {
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     $text = implode("\n", $this->toArray());
     return ParsedownExtraPlugin::instance()->text($text);
   }

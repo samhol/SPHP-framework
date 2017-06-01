@@ -94,7 +94,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
    *
    * @return string opening tag with attributes
    */
-  protected function getOpeningTag() {
+  protected function getOpeningTag(): string {
     $attrs = '' . $this->attrs();
     if ($attrs !== '') {
       $attrs = ' ' . $attrs;
@@ -102,7 +102,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
     return '<' . $this->getTagName() . $attrs . '>';
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return Strings::toString($this->content);
   }
 
@@ -111,11 +111,11 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
    *
    * @return string closing tag
    */
-  protected function getClosingTag() {
+  protected function getClosingTag(): string {
     return '</' . $this->getTagName() . '>';
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
   }
 

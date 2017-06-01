@@ -77,7 +77,7 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
     return count($this->components);
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return Arrays::implode($this->components);
   }
 

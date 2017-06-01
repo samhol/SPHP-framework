@@ -25,14 +25,14 @@ trait ContentTrait {
 	 * @return string HTML markup of the component
 	 * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
 	 */
-	public abstract function getHtml();
+	public abstract function getHtml(): string;
 
 	/**
 	 * Returns the component as HTML markup string
 	 *
 	 * @return string HTML markup of the object
 	 */
-	public function __toString() {
+	public function __toString(): string {
 		try {
 			$output = '' . $this->getHtml();
 		} catch (Exception $e) {

@@ -37,7 +37,7 @@ abstract class AbstractList extends AbstractContainerTag {
     return $this->append(new HyperlinkListItem($href, $content, $target));
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     foreach ($this as $li) {
       if ($li instanceof LiInterface) {

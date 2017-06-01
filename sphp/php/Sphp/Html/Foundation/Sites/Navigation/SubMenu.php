@@ -123,7 +123,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   /**
    * Appends a {@link MenuLabel} text component to the menu
    *
-   * @param  mixed|MenuLabel $text
+   * @param  mixed|MenuLabel $r
    * @return self for a fluent interface
    */
   public function appendRuler(Ruler $r  = null) {
@@ -137,7 +137,7 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->rootlink . $this->menu;
   }
 

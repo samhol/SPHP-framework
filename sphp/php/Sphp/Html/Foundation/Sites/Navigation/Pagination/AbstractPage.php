@@ -101,7 +101,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     if (!$this->isEnabled()) {
       $output .= "<span>{$this->hyperlink->contentToString()}</span>";

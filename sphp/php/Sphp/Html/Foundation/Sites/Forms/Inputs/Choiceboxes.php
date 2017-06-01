@@ -247,7 +247,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     return $this->boxes->count();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->legend . $this->boxes;
   }
 

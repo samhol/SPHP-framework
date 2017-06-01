@@ -102,7 +102,7 @@ class Bullet extends AbstractComponent {
     return $this->number;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $content = $this->srDescriptor;
     if ($this->isActive()) {
       $content .= $this->currentDescriptor;

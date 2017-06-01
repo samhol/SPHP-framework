@@ -39,7 +39,7 @@ class BackToTopButton extends AbstractComponent {
     $this->iconClasses = $iconClass;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return Document::icon($this->iconClasses)->getHtml();
   }
 

@@ -41,10 +41,14 @@ class Closable extends \Sphp\Html\AbstractComponent {
     $this->component = $closable;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     $this->component;
  
     parent::getHtml();
+  }
+
+  public function contentToString(): string {
+    
   }
 
 }

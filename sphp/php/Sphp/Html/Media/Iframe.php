@@ -134,7 +134,7 @@ class Iframe extends AbstractComponent implements IframeInterface {
     return $this->getAttr('sandbox');
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return '<p>Your browser does not support iframes.</p>';
   }
 

@@ -22,7 +22,7 @@ abstract class AbstractComponentGenerator implements ContentInterface {
   /**
    * {@inheritdoc}
    */
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->generate()->getHtml();
   }
 

@@ -92,7 +92,7 @@ class InlineInput extends AbstractComponent implements IdentifiableInputInterfac
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $a = function ($v) {
       if (!Strings::isEmpty($v)) {
         return '<span class="input-group-label">' . $v . '</span>';

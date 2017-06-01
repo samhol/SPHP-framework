@@ -105,7 +105,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
     parent::__destruct();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->caption . $this->colgroup . $this->thead . $this->tfoot . $this->tbody;
   }
 

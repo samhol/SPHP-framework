@@ -144,7 +144,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string
    */
-  public function getOpeningTag() {
+  public function getOpeningTag(): string {
     return '<!DOCTYPE html>' . parent::getOpeningTag();
   }
 
@@ -152,7 +152,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string
    */
-  public function getBodyStart() {
+  public function getBodyStart(): string {
     $output = $this->getOpeningTag();
     $output .= $this->head->getHtml();
     $output .= $this->body->getOpeningTag();
@@ -172,7 +172,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * 
    * @return string 
    */
-  public function getDocumentClose() {
+  public function getDocumentClose(): string {
     return $this->body()->close() . $this->getClosingTag();
   }
 
@@ -194,7 +194,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->count();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->head . $this->body;
   }
 

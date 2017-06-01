@@ -74,7 +74,7 @@ class Callout extends Div implements CalloutInterface {
     return $this->attrs()->exists('data-closable');
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = parent::contentToString();
     if ($this->isClosable()) {
       $output .= $this->closeButton;

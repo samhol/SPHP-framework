@@ -8,5 +8,3 @@ $scriptSrc = (new ScriptSrc("manual/snippets/example1.js"))
 $scriptCode = new ScriptCode('$user.fname = "Sami Petteri";');
 $scriptCode[] = 'printUser($user);';
 $scriptCode->printHtml();
-
-?>

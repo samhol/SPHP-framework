@@ -22,7 +22,7 @@ abstract class AbstractComponent extends AbstractTag {
    *
    * @return string opening tag with attributes
    */
-  public function getOpeningTag() {
+  public function getOpeningTag(): string {
     $attrs = '' . $this->attrs();
     if ($attrs != '') {
       $attrs = ' ' . $attrs;
@@ -36,14 +36,14 @@ abstract class AbstractComponent extends AbstractTag {
    * @return string content as a string
    * @throws \Sphp\Exceptions\RuntimeException if content parsing fails
    */
-  abstract public function contentToString();
+  abstract public function contentToString(): string;
 
   /**
    * Returns closing tag
    *
    * @return string closing tag
    */
-  public function getClosingTag() {
+  public function getClosingTag(): string {
     return '</' . $this->getTagName() . '>';
   }
 
@@ -53,7 +53,7 @@ abstract class AbstractComponent extends AbstractTag {
    * @return string html-markup of the component
    * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
    */
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->getOpeningTag() . $this->contentToString() . $this->getClosingTag();
   }
 

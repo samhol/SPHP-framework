@@ -192,7 +192,7 @@ class Slider extends AbstractSlider {
     return $this->getInput()->isRequired();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->handle . '<span class="slider-fill" data-slider-fill></span>' . $this->input;
   }
 

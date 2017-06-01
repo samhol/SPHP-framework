@@ -86,7 +86,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
     return $this;
   }
   
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->container->getHtml();
   }
 

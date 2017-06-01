@@ -225,7 +225,7 @@ class RangeSlider extends AbstractSlider {
     return $this;
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->lowerHandle . '<span class="slider-fill" data-slider-fill></span>' . $this->upperHandle . $this->lowerInput . $this->upperInput;
   }
 

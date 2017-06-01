@@ -135,7 +135,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     $this->append($text);
     return $this;
   }
-  
 
   /**
    * Appends a menu label text component to the menu
@@ -208,7 +207,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   /**
    * {@inheritdoc}
    */
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->items->getHtml();
   }
 

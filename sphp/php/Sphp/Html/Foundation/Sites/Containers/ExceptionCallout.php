@@ -203,7 +203,7 @@ class ExceptionCallout extends Callout {
     }
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = "<h2>" . get_class($this->exception) . "</h2>";
     if ($this->showMessage) {
       $output .= '<p class="message">' . $this->exception->getMessage() . "</p>";

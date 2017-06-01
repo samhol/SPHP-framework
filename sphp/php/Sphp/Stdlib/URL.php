@@ -521,7 +521,7 @@ class URL implements Arrayable, IteratorAggregate {
    *
    * @return string representation of the object
    */
-  public function getHtml() {
+  public function getHtml(): string {
     $url = '';
     $encode = true;
     if ($this->hasScheme()) {

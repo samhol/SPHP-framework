@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\Size as Size;
+use Sphp\Html\Media\Size;
 
 $srcs[] = "http://techslides.com/demos/sample-videos/small.webm";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.ogv";
@@ -23,4 +23,3 @@ $video1 = (new Video("http://www.w3schools.com/html/mov_bbb.mp4"))
         ->setSize($size)
         ->setLazy()
         ->printHtml();
-?>

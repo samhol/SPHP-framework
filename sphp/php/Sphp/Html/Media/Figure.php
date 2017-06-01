@@ -162,7 +162,7 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->img->isLazy();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return $this->img . $this->caption;
   }
 

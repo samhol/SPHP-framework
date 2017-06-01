@@ -67,7 +67,7 @@ class AbstractComponentAdapter implements Adapter {
   /**
    * {@inheritdoc}
    */
-  public function getHtml() {
+  public function getHtml(): string {
     return $this->component->getHtml();
   }
 

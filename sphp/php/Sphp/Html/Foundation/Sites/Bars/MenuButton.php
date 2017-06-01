@@ -29,7 +29,7 @@ class MenuButton extends AbstractComponent {
     $this->cssClasses()->lock('menu-icon');
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     return '';
   }
 

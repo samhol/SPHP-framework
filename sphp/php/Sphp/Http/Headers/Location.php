@@ -24,7 +24,7 @@ class Location extends AbstractHeader {
   public function getName() {
     return 'location';
   }
-  
+
   public function execute() {
     header($this->__toString());
   }

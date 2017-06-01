@@ -12,7 +12,6 @@ use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
 use Sphp\Html\TraversableTrait;
 use Sphp\Html\WrappingContainer;
-use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ContentParserInterface;
 use Sphp\Html\ContentParsingTrait;
 
@@ -51,7 +50,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    *
    * **Important!**
    *
-   * {@link self} component is mobile-first. Code for small screens first,
+   * This component is mobile-first. Code for small screens first,
    * and larger devices will inherit those styles. Customize for
    * larger screens as necessary.
    *
@@ -61,10 +60,10 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * If you use both of those classes combined, you can control the
    * configuration and layout separately for each breakpoint.
    *
-   * @param  mixed [] $blocks
    * @param  array $layout column layout parameters
+   * @param  mixed [] $blocks
    */
-  public function __construct(array $blocks = null, array $layout = ['small-up-8']) {
+  public function __construct(array $layout = ['small-up-8'], array $blocks = null) {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);
@@ -75,7 +74,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
     $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);
     if ($blocks !== null) {
-    $this->setColumns($blocks);
+      $this->setColumns($blocks);
     }
   }
 

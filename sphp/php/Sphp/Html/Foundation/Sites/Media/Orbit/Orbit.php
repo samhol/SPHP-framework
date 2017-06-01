@@ -415,7 +415,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
     return $this->slides()->getIterator();
   }
 
-  public function contentToString() {
+  public function contentToString(): string {
     $output = '';
     $output .= $this->prev . $this->next . $this->slides;
     if ($this->bulletsVisible) {

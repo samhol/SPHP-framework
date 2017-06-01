@@ -26,4 +26,3 @@ $container[] = new Paragraph("<b><var>objects</var>(s):</b> "
 $container[] = new Paragraph("<b>Components with title:</b> "
 		. count($container->getComponentsByAttrName("title")));
 $container->printHtml();
-?>

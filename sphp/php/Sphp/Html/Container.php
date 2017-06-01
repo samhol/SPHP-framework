@@ -164,7 +164,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this;
   }
 
-  public function getHtml() {
+  public function getHtml(): string {
     return Arrays::implode($this->components);
   }
 
