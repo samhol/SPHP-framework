@@ -5,6 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Stdlib\Timer;
 
 $license = (new Modal('SPHP license'));
+$license->getTrigger()->addCssClass('license');
 $license->setSize('large')->getPopup()->appendMdFile('LICENSE.md')->addCssClass('license');
 ?>
 Copyright &copy; 2007-<?php echo date('Y'); ?> Sami Holck. All rights reserved.
