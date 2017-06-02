@@ -12,9 +12,9 @@ The `SPHP` abreviation is a combination of my name `S`ami `P`etteri `H`olck and 
       
 ##SYSTEM REQUIREMENTS
 
-Framework requires PHP 5.5 or later; it is recommended to use the latest stable PHP version whenever possible.
+Framework requires **PHP 7.0** or later; it is recommended to use the latest stable PHP version whenever possible.
 
-Download the framework package from [github](https://github.com/samhol/SPHP) and Install it with Composer:
+Download the framework package from [github](https://github.com/samhol/SPHP) and Install dependencies with Composer:
 
 * [Composer installation](https://getcomposer.org/download/){target="_blank"}
 * [Composer Documentation](https://getcomposer.org/doc/){target="_blank"}

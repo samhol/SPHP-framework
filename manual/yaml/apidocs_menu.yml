@@ -20,7 +20,7 @@ items:
       href: http://www.doctrine-project.org/api/orm/2.5/
     - link: Imagine
       href: https://imagine.readthedocs.io/en/latest/
-  - separator: '<i class="devicons devicons-javascript_badge fa-fw"></i> <span>JavaScript:</span>'
+  - separator: 'JavaScript:'
   - link: jQuery
     href: http://jquery.com/
   - link: Foundation for sites

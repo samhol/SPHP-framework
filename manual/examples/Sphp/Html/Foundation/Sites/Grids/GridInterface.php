@@ -24,8 +24,8 @@ $grid = (new Grid())
         ->append(new Row("4.1", ['small-3', 'medium-4', 'small-offset-2']))
         ->append(new Row("5.1", ['small-4', 'medium-4']))
         ->append(new Row("6.1", ['small-5', 'medium-4']));
-$centered = new Column("7.1", ['small-3', 'medium-5', 'xlarge-7']);
-$centered->layout()->centerize("medium");
+$centered = new Column("7.1", ['small-3']);
+$centered->layout()->centerize("small");
 
 $grid->append($centered)
         ->printHtml();
