@@ -24,7 +24,6 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 class ClosableContainer extends Div implements ClosableInterface {
 
   /**
-   *
    * @var CloseButton
    */
   private $closeButton;

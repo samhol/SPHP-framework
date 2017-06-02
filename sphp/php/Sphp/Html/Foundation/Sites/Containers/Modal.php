@@ -10,7 +10,6 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
  * Implements Reveal Modal 

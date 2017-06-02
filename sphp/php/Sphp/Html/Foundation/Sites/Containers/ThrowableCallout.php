@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Throwable;
-use Exception;
 use Sphp\Html\Div;
 use Sphp\Html\Lists\Ol;
 use Sphp\Html\Lists\Li;

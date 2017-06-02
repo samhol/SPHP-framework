@@ -23,7 +23,7 @@ $data = [
         'title' => 'Right side'
     ]
 ];
-echo \Sphp\Html\Foundation\Sites\Bars\TitleBarFactory::create($data);
+//echo \Sphp\Html\Foundation\Sites\Bars\TitleBarFactory::create($data);
 
 $offCanvas->printHtml();
 

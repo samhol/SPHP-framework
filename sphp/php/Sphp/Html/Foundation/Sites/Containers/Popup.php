@@ -8,7 +8,8 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Foundation\Sites\Containers\ClosableContainer;
+use Sphp\Html\Div;
+use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
  * Implements Reveal Modal 
@@ -22,7 +23,7 @@ use Sphp\Html\Foundation\Sites\Containers\ClosableContainer;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Popup extends ClosableContainer {
+class Popup extends Div {
 
   /**
    * CSS classes corresponding to the size constants
@@ -32,6 +33,16 @@ class Popup extends ClosableContainer {
   private static $sizes = [
       'tiny', 'small', 'large', 'full'
   ];
+
+  /**
+   * @var CloseButton
+   */
+  private $closeButton;
+
+  /**
+   * @var PopupLayoutManager 
+   */
+  private $layoutManager;
 
   /**
    * Constructs a new instance
@@ -49,6 +60,31 @@ class Popup extends ClosableContainer {
     $this->identify('id', 'modal_');
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
+    $this->closeButton = new CloseButton();
+    $this->layoutManager = new PopupLayoutManager($this);
+  }
+
+  public function layout(): PopupLayoutManager {
+    return $this->layoutManager;
+  }
+
+  /**
+   * Returns the Modal reveal controller
+   * 
+   * @return CloseButton
+   */
+  public function getCloseButton() {
+    return $this->closeButton;
+  }
+
+  /**
+   * Returns the Modal reveal controller
+   * 
+   * @return self for a fluent interface
+   */
+  public function setCloseButton(CloseButton $btn) {
+    $this->closeButton = $btn;
+    return $this;
   }
 
   /**
@@ -67,8 +103,7 @@ class Popup extends ClosableContainer {
    * @return self for a fluent interface
    */
   public function setSize($size) {
-    $this->resetSize();
-    $this->cssClasses()->add($size);
+    $this->layout()->setSize($size);
     return $this;
   }
 
@@ -78,8 +113,7 @@ class Popup extends ClosableContainer {
    * @return self for a fluent interface
    */
   public function resetSize() {
-    $this->cssClasses()
-            ->remove(static::$sizes);
+    $this->layout()->unsetSizing();
     return $this;
   }
 
@@ -90,6 +124,14 @@ class Popup extends ClosableContainer {
    */
   public function getDefaultController() {
     return $this->modalController;
+  }
+
+  public function contentToString(): string {
+    $output = parent::contentToString();
+
+    $output .= $this->getCloseButton()->getHtml();
+
+    return $output;
   }
 
   /**

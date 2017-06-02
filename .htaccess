@@ -1,6 +1,5 @@
 Options -MultiViews
     RewriteEngine On
+    RewriteRule ^(API/sami) - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
-
-
