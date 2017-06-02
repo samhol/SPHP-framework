@@ -86,7 +86,7 @@
 
     <p>    interface
     <strong>CalloutInterface</strong>        implements
-        <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
+        <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
 </p>
 
         
@@ -113,13 +113,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
         
-                                            <p>Sets/unsets the callout closable</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Sets/unsets the component closable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -128,8 +128,8 @@
                 <div class="col-md-8 type">
                     <a href="#method_isClosable">isClosable</a>()
         
-                                            <p>Checks whether the callout is closable or not</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Checks whether the component is  set as closable or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></small></div>
             </div>
             </div>
 
@@ -189,8 +189,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setClosable">
-        <div class="location">at         line 37</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a> at         line 36</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
     <strong>setClosable</strong>(string|boolean $closable = true)
         </code>
     </h3>
@@ -199,13 +199,13 @@
     
 
                     <div class="method-description">
-                                    <p>Sets/unsets the callout closable</p>                    <p>Values for <code>$closable</code> parameter</p>
+                                    <p>Sets/unsets the component closable</p>                    <p>Values for <code>$closable</code> parameter</p>
 
 <ul>
-<li><code>true</code>: the callout is closable and the default closing effect is used</li>
+<li><code>true</code>: the component is closable and the default closing effect is used</li>
 <li><code>'slide-out-right'</code></li>
 <li>...any other Foundation Motion UI effect string</li>
-<li><code>false</code>: the callout is not closable</li>
+<li><code>false</code>: the component is not closable</li>
 </ul>
 </p>                            </div>
                 <div class="tags">
@@ -224,7 +224,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -237,7 +237,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isClosable">
-        <div class="location">at         line 44</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a> at         line 43</div>
         <code>                    boolean
     <strong>isClosable</strong>()
         </code>
@@ -247,7 +247,7 @@
     
 
                     <div class="method-description">
-                                    <p>Checks whether the callout is closable or not</p>                                                </div>
+                                    <p>Checks whether the component is  set as closable or not</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -255,7 +255,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if callout is closable and false if not</td>
+            <td>true if closable and false if not</td>
         </tr>
     </table>
 

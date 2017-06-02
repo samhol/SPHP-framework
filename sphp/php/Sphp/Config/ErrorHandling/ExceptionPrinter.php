@@ -7,7 +7,7 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
 
@@ -42,7 +42,7 @@ class ExceptionPrinter implements Observer {
    */
   public function update(Subject $subject) {
     if ($subject instanceof ExceptionHandler) {
-      (new ExceptionCallout($subject->getException()))
+      (new ThrowableCallout($subject->getException()))
               ->showPreviousException($this->showPreviousException)
               ->showTrace($this->showTrace)
               ->printHtml();

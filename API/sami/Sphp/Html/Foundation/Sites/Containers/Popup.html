@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Containers\Modals\Controller | SPHP framework API</title>
+    <title>Sphp\Html\Foundation\Sites\Containers\Popup | SPHP framework API</title>
 
-            <link rel="stylesheet" type="text/css" href="../../../../../../css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../../../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../../../../css/sami.css">
-        <script src="../../../../../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../../sami.js"></script>
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/sami.css">
+        <script src="../../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../sami.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -19,14 +19,14 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Containers_Modals_Controller" data-root-path="../../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Containers_Popup" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                 <script>
             $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
         </script>
-        <form id="search-form" action="../../../../../../search.html" method="GET">
+        <form id="search-form" action="../../../../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -48,16 +48,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../../../../../index.html">SPHP framework API</a>
+                <a class="navbar-brand" href="../../../../../index.html">SPHP framework API</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../../../../../classes.html">Classes</a></li>
-                                            <li><a href="../../../../../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../../../../../interfaces.html">Interfaces</a></li>
-                    <li><a href="../../../../../../traits.html">Traits</a></li>
-                    <li><a href="../../../../../../doc-index.html">Index</a></li>
-                    <li><a href="../../../../../../search.html">Search</a></li>
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -66,34 +66,33 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../../../../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../../../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
-                                        <li><a href="../../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../../Sphp/Html/Foundation/Sites/Containers.html">Containers</a></li>
-                                        <li><a href="../../../../../../Sphp/Html/Foundation/Sites/Containers/Modals.html">Modals</a></li>
+                                                            <li><a href="../../../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../../../Sphp/Html.html">Html</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Containers.html">Containers</a></li>
     
-                <li>Controller</li>
+                <li>Popup</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Controller
+            Popup
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Controller</strong>        extends <a href="../../../../../../Sphp/Html/ContainerTag.html"><abbr title="Sphp\Html\ContainerTag">ContainerTag</abbr></a>
+    <strong>Popup</strong>        extends <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements Reveal Modal controller</p>            <p>Modal dialogs, or pop-up windows, are handy for prototyping and production.</p>                    </div>
+            <p>Implements Reveal Modal</p>            <p>Modal dialogs, or pop-up windows, are handy for prototyping and production.</p>                    </div>
     
             <h2>Traits</h2>
 
@@ -101,7 +100,16 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+                                            <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link AjaxLoaderInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -110,7 +118,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                                            <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -119,7 +127,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../../../Sphp/Html/TraversableTrait.html"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a>
+                                            <a href="../../../../../Sphp/Html/TraversableTrait.html"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -128,7 +136,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                                            <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -137,7 +145,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
+                                            <a href="../../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -159,7 +167,7 @@
                     <a href="#method_getHtml">getHtml</a>()
         
                                             <p>Returns the component as HTML markup string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -169,67 +177,67 @@
                     <a href="#method___toString">__toString</a>()
         
                                             <p>Returns the component as HTML markup string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_printHtml">printHtml</a>()
         
                                             <p>Prints the component as HTML markup string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+                    <a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_attrs">attrs</a>()
         
                                             <p>Returns the attribute manager attached to the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                    <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_cssClasses">cssClasses</a>()
         
                                             <p>Returns the class attribute object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
+                    <a href="../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_inlineStyles">inlineStyles</a>()
         
                                             <p>Returns the attribute object containing inline styles</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_addCssClass">addCssClass</a>(string|string[] $cssClasses)
         
                                             <p>Adds the specified CSS class names</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_removeCssClass">removeCssClass</a>(string|string[] $cssClasses)
         
                                             <p>Removes given CSS class names</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -239,47 +247,47 @@
                     <a href="#method_hasCssClass">hasCssClass</a>(string|string[] $cssClasses)
         
                                             <p>Determines whether the given CSS class names exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setStyle">setStyle</a>(string $property, string $value)
         
                                             <p>Sets an inline style definition using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setStyles">setStyles</a>(array $styles)
         
                                             <p>Sets inline style definitions using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_removeStyle">removeStyle</a>(string $property)
         
                                             <p>Removes the given inline style property</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_clearStyles">clearStyles</a>()
         
                                             <p>Removes all inline style definitions</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -289,7 +297,7 @@
                     <a href="#method_hasStyle">hasStyle</a>(string $property)
         
                                             <p>Determines whether the given CSS property exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -300,37 +308,37 @@
         
                                             <p>Returns the value of the CSS property name or null if the property does
  not exist</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setAttrs">setAttrs</a>(array $attrs = [])
         
                                             <p>Sets multiple attribute name value pairs</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setAttr">setAttr</a>(string $name, mixed $value = null)
         
                                             <p>Sets an attribute name value pair</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_removeAttr">removeAttr</a>(string $name)
         
                                             <p>Removes the given attribute if it is not required</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -340,7 +348,7 @@
                     <a href="#method_getAttr">getAttr</a>(string $name)
         
                                             <p>Returns the value of a given attribute name</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -350,17 +358,17 @@
                     <a href="#method_attrExists">attrExists</a>(string $name)
         
                                             <p>Checks if an attribute exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -370,14 +378,14 @@
                     <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>( $modal, mixed $content = null)
+                    <a href="#method___construct">__construct</a>(mixed $content = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -390,7 +398,7 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -400,7 +408,7 @@
                     <a href="#method___clone">__clone</a>()
         
                                             <p>Clones the object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -410,7 +418,7 @@
                     <a href="#method_getTagName">getTagName</a>()
         
                                             <p>Returns the tag name of the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -420,7 +428,7 @@
                     <a href="#method_getOpeningTag">getOpeningTag</a>()
         
                                             <p>Returns opening tag with its attributes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -430,7 +438,7 @@
                     <a href="#method_contentToString">contentToString</a>()
         
                                             <p>Returns the content of the component as a string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method_contentToString"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_contentToString"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -440,48 +448,48 @@
                     <a href="#method_getClosingTag">getClosingTag</a>()
         
                                             <p>Returns closing tag</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
+                    <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setInnerContainer">setInnerContainer</a>( $contentContainer = null)
         
                                             <p>Sets the inner content container of the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getInnerContainer">getInnerContainer</a>()
         
                                             <p>Returns the content container or an element pointed by an optional index</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_getInnerContainer"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_getInnerContainer"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_append">append</a>(mixed $content)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_append"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_append"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>(mixed|mixed[] $content)
         
                                             <p>Prepends elements to the html component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_prepend"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_prepend"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -492,7 +500,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_setContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_setContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -502,7 +510,7 @@
                     <a href="#method_count">count</a>()
         
                                             <p>Counts the number of elements in the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_count"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_count"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -512,7 +520,7 @@
                     <a href="#method_getIterator">getIterator</a>()
         
                                             <p>Create a new iterator to iterate through inserted elements in the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_getIterator"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_getIterator"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -523,7 +531,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetExists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetExists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -533,7 +541,7 @@
                     <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
         
                                             <p>Returns the content element at the specified offset</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetGet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetGet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -543,7 +551,7 @@
                     <a href="#method_offsetSet">offsetSet</a>(mixed $offset, mixed $value)
         
                                             <p>Assigns content to the specified offset</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetSet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetSet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -553,17 +561,17 @@
                     <a href="#method_offsetUnset">offsetUnset</a>(mixed $offset)
         
                                             <p>Unsets an offset</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetUnset"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetUnset"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_replaceContent">replaceContent</a>(mixed $content)
         
                                             <p>Replaces the content of the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_replaceContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_replaceContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -574,7 +582,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_toArray"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_toArray"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -585,7 +593,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_clear"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_clear"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -596,77 +604,190 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_exists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_exists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_appendRawFile">appendRawFile</a>(string $path)
         
                                             <p>Appends a raw file to the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendRawFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendRawFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_appendPhpFile">appendPhpFile</a>(string $path)
         
                                             <p>Appends an executed PHP file to the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendPhpFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendPhpFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_appendMd">appendMd</a>(string $md)
         
                                             <p>Appends a parsed Mark Down string to the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMd"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMd"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_appendMdFile">appendMdFile</a>(string $path)
         
                                             <p>Appends a parsed Mark Down file to the container</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMdFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMdFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsBy">getComponentsBy</a>(callable $rules)
         
                                             <p>Returns a collection of sub components that match the search</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsByAttrName">getComponentsByAttrName</a>(string $attrName)
         
                                             <p>Returns a collection of sub components that contain the searched attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>($type)
         
                                             <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ajaxPrepend">ajaxPrepend</a>(string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $url)
+        
+                                            <p>Loads the data from the server using jQuery's Ajax capabilities and
+prepends the returned HTML into the object.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AjaxLoaderTrait.html#method_ajaxPrepend"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ajaxAppend">ajaxAppend</a>(string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $url)
+        
+                                            <p>Loads the data from the server using jQuery's Ajax capabilities and
+appends the returned HTML into the object.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AjaxLoaderTrait.html#method_ajaxAppend"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___invoke">__invoke</a>($content = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Div.html#method___invoke"><abbr title="Sphp\Html\Div">Div</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCloseButton">getCloseButton</a>()
+        
+                                            <p>Returns the Modal reveal controller</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCloseButton">setCloseButton</a>( $btn)
+        
+                                            <p>Returns the Modal reveal controller</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
+        
+                                            <p>Sets/unsets the component closable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isClosable">isClosable</a>()
+        
+                                            <p>Checks whether the component is  set as closable or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSize">setSize</a>(string $size)
+        
+                                            <p>Sets the size of the component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_resetSize">resetSize</a>()
+        
+                                            <p>Resets the size settings of the component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDefaultController">getDefaultController</a>()
+        
+                                            <p>Returns the default Modal reveal controller</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createController">createController</a>( $content)
+        
+                                            <p>Returns a link component pointing to the Modal component</p>                </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -676,7 +797,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 28</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 28</div>
         <code>    abstract                string
     <strong>getHtml</strong>()
         </code>
@@ -703,7 +824,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td>if html parsing fails</td>
             </tr>
             </table>
@@ -715,7 +836,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 35</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 35</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -745,8 +866,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_printHtml">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 49</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 49</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
     <strong>printHtml</strong>()
         </code>
     </h3>
@@ -762,7 +883,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
             <td>for PHP Method Chaining</td>
         </tr>
     </table>
@@ -775,8 +896,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_attrs">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
-        <code>    abstract                <a href="../../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
+        <code>    abstract                <a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
     <strong>attrs</strong>()
         </code>
     </h3>
@@ -792,7 +913,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
             <td>the attribute manager</td>
         </tr>
     </table>
@@ -805,8 +926,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_cssClasses">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
+        <code>                    <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -822,7 +943,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
             <td>the class attribute object</td>
         </tr>
     </table>
@@ -835,8 +956,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_inlineStyles">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 47</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_inlineStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 47</div>
+        <code>                    <a href="../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
     <strong>inlineStyles</strong>()
         </code>
     </h3>
@@ -852,7 +973,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a></td>
             <td>the attribute object containing inline styles</td>
         </tr>
     </table>
@@ -865,8 +986,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 64</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_addCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 64</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>addCssClass</strong>(string|string[] $cssClasses)
         </code>
     </h3>
@@ -899,7 +1020,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -912,8 +1033,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 81</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 81</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>removeCssClass</strong>(string|string[] $cssClasses)
         </code>
     </h3>
@@ -945,7 +1066,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -958,7 +1079,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasCssClass">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 98</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 98</div>
         <code>                    boolean
     <strong>hasCssClass</strong>(string|string[] $cssClasses)
         </code>
@@ -1004,8 +1125,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setStyle">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setStyle</strong>(string $property, string $value)
         </code>
     </h3>
@@ -1036,7 +1157,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1049,8 +1170,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setStyles">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 129</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 129</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setStyles</strong>(array $styles)
         </code>
     </h3>
@@ -1082,7 +1203,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1095,8 +1216,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeStyle">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 140</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 140</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>removeStyle</strong>(string $property)
         </code>
     </h3>
@@ -1122,7 +1243,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1135,8 +1256,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clearStyles">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>clearStyles</strong>()
         </code>
     </h3>
@@ -1152,7 +1273,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1165,7 +1286,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasStyle">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
         <code>                    boolean
     <strong>hasStyle</strong>(string $property)
         </code>
@@ -1205,7 +1326,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getStyleValue">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 172</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 172</div>
         <code>                    string|null
     <strong>getStyleValue</strong>(string $property)
         </code>
@@ -1246,8 +1367,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttrs">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttrs</strong>(array $attrs = [])
         </code>
     </h3>
@@ -1273,7 +1394,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1299,8 +1420,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 215</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 215</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttr</strong>(string $name, mixed $value = null)
         </code>
     </h3>
@@ -1347,7 +1468,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for PHP Method Chaining</td>
         </tr>
     </table>
@@ -1373,8 +1494,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 226</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 226</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>removeAttr</strong>(string $name)
         </code>
     </h3>
@@ -1400,7 +1521,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1413,7 +1534,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttr">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 242</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 242</div>
         <code>                    mixed
     <strong>getAttr</strong>(string $name)
         </code>
@@ -1459,7 +1580,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_attrExists">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 252</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 252</div>
         <code>                    boolean
     <strong>attrExists</strong>(string $name)
         </code>
@@ -1499,8 +1620,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 269</div>
-        <code>                    <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 269</div>
+        <code>                    <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
     </h3>
@@ -1538,7 +1659,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1551,7 +1672,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 280</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 280</div>
         <code>                    boolean
     <strong>hasId</strong>(string $identityName = &#039;id&#039;)
         </code>
@@ -1591,9 +1712,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 45</div>
+        <div class="location">at         line 47</div>
         <code>                    
-    <strong>__construct</strong>( $modal, mixed $content = null)
+    <strong>__construct</strong>(mixed $content = null)
         </code>
     </h3>
     <div class="details">
@@ -1611,11 +1732,6 @@ that implements magic method <code>__toString()</code> is allowed.</p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$modal</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td>mixed</td>
                 <td>$content</td>
                 <td>the content of the component</td>
@@ -1631,7 +1747,7 @@ that implements magic method <code>__toString()</code> is allowed.</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 46</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -1653,7 +1769,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 51</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 51</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -1674,7 +1790,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getTagName">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 90</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 90</div>
         <code>                    string
     <strong>getTagName</strong>()
         </code>
@@ -1704,7 +1820,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getOpeningTag">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 25</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 25</div>
         <code>                    string
     <strong>getOpeningTag</strong>()
         </code>
@@ -1734,7 +1850,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method_contentToString"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 80</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_contentToString"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 70</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1761,7 +1877,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td>if content parsing fails</td>
             </tr>
             </table>
@@ -1773,7 +1889,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getClosingTag">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 46</div>
         <code>                    string
     <strong>getClosingTag</strong>()
         </code>
@@ -1803,8 +1919,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setInnerContainer">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 62</div>
-        <code>            protected        <a href="../../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 62</div>
+        <code>            protected        <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
     <strong>setInnerContainer</strong>( $contentContainer = null)
         </code>
     </h3>
@@ -1830,7 +1946,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1843,8 +1959,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getInnerContainer">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_getInnerContainer"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 27</div>
-        <code>    abstract        protected        <a href="../../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_getInnerContainer"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 27</div>
+        <code>    abstract        protected        <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
     <strong>getInnerContainer</strong>()
         </code>
     </h3>
@@ -1860,7 +1976,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></td>
             <td>the inner content container</td>
         </tr>
     </table>
@@ -1873,8 +1989,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_append"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 27</div>
-        <code>    abstract                <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_append"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 27</div>
+        <code>    abstract                <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
     <strong>append</strong>(mixed $content)
         </code>
     </h3>
@@ -1898,7 +2014,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1911,8 +2027,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_prepend">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_prepend"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 68</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_prepend"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 68</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
     <strong>prepend</strong>(mixed|mixed[] $content)
         </code>
     </h3>
@@ -1948,7 +2064,7 @@ represents.</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1961,7 +2077,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setContent">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_setContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 72</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_setContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 72</div>
         <code>                    
     <strong>setContent</strong>($content)
         </code>
@@ -1990,7 +2106,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_count"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 83</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_count"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 83</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -2020,7 +2136,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_getIterator"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 92</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_getIterator"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 92</div>
         <code>                    <a target="_blank" href="http://php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
@@ -2050,7 +2166,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetExists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 96</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetExists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 96</div>
         <code>                    
     <strong>offsetExists</strong>($offset)
         </code>
@@ -2079,7 +2195,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetGet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 106</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetGet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 106</div>
         <code>                    mixed
     <strong>offsetGet</strong>(mixed $offset)
         </code>
@@ -2119,7 +2235,7 @@ represents.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetSet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 122</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetSet"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 122</div>
         <code>                    
     <strong>offsetSet</strong>(mixed $offset, mixed $value)
         </code>
@@ -2159,7 +2275,7 @@ string. So also an object of any class that implements magic method
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetUnset"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 132</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_offsetUnset"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 132</div>
         <code>                    
     <strong>offsetUnset</strong>(mixed $offset)
         </code>
@@ -2190,8 +2306,8 @@ string. So also an object of any class that implements magic method
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceContent">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_replaceContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 149</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_replaceContent"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 149</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
     <strong>replaceContent</strong>(mixed $content)
         </code>
     </h3>
@@ -2220,7 +2336,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2233,7 +2349,7 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_toArray"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 154</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_toArray"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 154</div>
         <code>                    
     <strong>toArray</strong>()
         </code>
@@ -2252,7 +2368,7 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_clear"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 158</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_clear"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 158</div>
         <code>                    
     <strong>clear</strong>()
         </code>
@@ -2271,7 +2387,7 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContainerComponentTrait.html#method_exists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 163</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContainerComponentTrait.html#method_exists"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a> at         line 163</div>
         <code>                    
     <strong>exists</strong>($value)
         </code>
@@ -2300,8 +2416,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_appendRawFile">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendRawFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 36</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendRawFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 36</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
     <strong>appendRawFile</strong>(string $path)
         </code>
     </h3>
@@ -2327,7 +2443,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2337,7 +2453,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if the parsing fails for any reason</td>
             </tr>
             </table>
@@ -2349,8 +2465,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_appendPhpFile">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendPhpFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 48</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendPhpFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 48</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
     <strong>appendPhpFile</strong>(string $path)
         </code>
     </h3>
@@ -2376,7 +2492,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2386,7 +2502,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if the parsing fails for any reason</td>
             </tr>
             </table>
@@ -2398,8 +2514,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_appendMd">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMd"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 59</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMd"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 59</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
     <strong>appendMd</strong>(string $md)
         </code>
     </h3>
@@ -2425,7 +2541,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2438,8 +2554,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_appendMdFile">
-        <div class="location">in <a href="../../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMdFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 72</div>
-        <code>                    <a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentParsingTrait.html#method_appendMdFile"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a> at         line 72</div>
+        <code>                    <a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a>
     <strong>appendMdFile</strong>(string $path)
         </code>
     </h3>
@@ -2465,7 +2581,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/ContentParsingTrait.html"><abbr title="Sphp\Html\ContentParsingTrait">ContentParsingTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2475,7 +2591,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if the parsing fails for any reason</td>
             </tr>
             </table>
@@ -2487,8 +2603,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_getComponentsBy">
-        <div class="location">in <a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 26</div>
-        <code>                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsBy"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 26</div>
+        <code>                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
     <strong>getComponentsBy</strong>(callable $rules)
         </code>
     </h3>
@@ -2514,7 +2630,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>
@@ -2527,8 +2643,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_getComponentsByAttrName">
-        <div class="location">in <a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
-        <code>                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
+        <code>                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
     <strong>getComponentsByAttrName</strong>(string $attrName)
         </code>
     </h3>
@@ -2554,7 +2670,7 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
             <td>containing matching sub components</td>
         </tr>
     </table>
@@ -2567,8 +2683,8 @@ So also an object of any class that implements magic method <code>__toString()</
             </div>
                     <div class="method-item">
                     <h3 id="method_getComponentsByObjectType">
-        <div class="location">in <a href="../../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 73</div>
-        <code>                    <a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
+        <div class="location">in <a href="../../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 73</div>
+        <code>                    <a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
     <strong>getComponentsByObjectType</strong>($type)
         </code>
     </h3>
@@ -2594,8 +2710,420 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
             <td>containing matching sub components</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ajaxPrepend">
+        <div class="location">in <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html#method_ajaxPrepend"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a> at         line 56</div>
+        <code>                    <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+    <strong>ajaxPrepend</strong>(string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Loads the data from the server using jQuery's Ajax capabilities and
+prepends the returned HTML into the object.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
+                <td>$url</td>
+                <td>the URL to which the request is sent</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ajaxAppend">
+        <div class="location">in <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html#method_ajaxAppend"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a> at         line 67</div>
+        <code>                    <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
+    <strong>ajaxAppend</strong>(string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Loads the data from the server using jQuery's Ajax capabilities and
+appends the returned HTML into the object.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="../../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
+                <td>$url</td>
+                <td>the URL to which the request is sent</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___invoke">
+        <div class="location">in <a href="../../../../../Sphp/Html/Div.html#method___invoke"><abbr title="Sphp\Html\Div">Div</abbr></a> at         line 37</div>
+        <code>                    
+    <strong>__invoke</strong>($content = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCloseButton">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 47</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
+    <strong>getCloseButton</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the Modal reveal controller</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCloseButton">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 56</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
+    <strong>setCloseButton</strong>( $btn)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the Modal reveal controller</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$btn</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setClosable">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 61</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
+    <strong>setClosable</strong>(string|boolean $closable = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets/unsets the component closable</p>                    <p>Values for <code>$closable</code> parameter</p>
+
+<ul>
+<li><code>true</code>: the component is closable and the default closing effect is used</li>
+<li><code>'slide-out-right'</code></li>
+<li>...any other Foundation Motion UI effect string</li>
+<li><code>false</code>: the component is not closable</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|boolean</td>
+                <td>$closable</td>
+                <td>true for closable and false otherwise</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isClosable">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 66</div>
+        <code>                    boolean
+    <strong>isClosable</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the component is  set as closable or not</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if closable and false if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSize">
+        <div class="location">at         line 69</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a>
+    <strong>setSize</strong>(string $size)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the size of the component</p>                    <p><strong>Available size options:</strong></p>
+
+<ul>
+<li><code>'tiny'</code>: set the width to 30%</li>
+<li><code>'small'</code>: set the width to 50%</li>
+<li><code>'large'</code>: set the width to 90%</li>
+<li><code>'full'</code>: set the width and height to 100%</li>
+</ul>
+
+<p><strong>Note:</strong> Default on <code>'small'</code> screens is 100% (<code>'full'</code>) width.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$size</td>
+                <td>the size of the component</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetSize">
+        <div class="location">at         line 80</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a>
+    <strong>resetSize</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Resets the size settings of the component</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Popup.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Popup">Popup</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultController">
+        <div class="location">at         line 91</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
+    <strong>getDefaultController</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the default Modal reveal controller</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createController">
+        <div class="location">at         line 107</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
+    <strong>createController</strong>( $content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a link component pointing to the Modal component</p>                    <p><strong>Important!</strong></p>
+
+<p>Parameter <code>mixed $controller</code> can be of any type that converts to a
+string or to an array of strings. So also an object of any class
+that implements magic method <code>__toString()</code> is allowed.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>the controller component</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr></td>
+            <td>a controller component pointing to this Modal</td>
         </tr>
     </table>
 

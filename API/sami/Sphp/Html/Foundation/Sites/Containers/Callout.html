@@ -85,7 +85,7 @@
     </div>
 
     <p>    class
-    <strong>Callout</strong>        extends <a href="../../../../../Sphp/Html/Div.html"><abbr title="Sphp\Html\Div">Div</abbr></a>        implements
+    <strong>Callout</strong>        extends <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>        implements
         <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a>
 </p>
 
@@ -99,15 +99,6 @@
 
         
     <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Trait implements {@link ColourableInterface} functionality
-                </div>
-            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../../Sphp/Html/AjaxLoaderTrait.html"><abbr title="Sphp\Html\AjaxLoaderTrait">AjaxLoaderTrait</abbr></a>
@@ -448,7 +439,7 @@
                     <a href="#method_contentToString">contentToString</a>()
         
                                             <p>Returns the content of the component as a string</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_contentToString"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -721,33 +712,33 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setColor">setColor</a>(string|null $style = null)
+                    <a href="#method_getCloseButton">getCloseButton</a>()
         
-                                            <p>Sets the color (a CSS class)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a></small></div>
+                                            <p>Returns the Modal reveal controller</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Callout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Callout">Callout</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPadding">setPadding</a>(string|null $padding = &#039;default&#039;)
+                    <a href="#method_setCloseButton">setCloseButton</a>( $btn)
         
-                                            <p>Sets the content padding</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Returns the Modal reveal controller</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
         
-                                            <p>Sets/unsets the callout closable</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Sets/unsets the component closable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -756,7 +747,28 @@ appends the returned HTML into the object.</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_isClosable">isClosable</a>()
         
-                                            <p>Checks whether the callout is closable or not</p>                </div>
+                                            <p>Checks whether the component is  set as closable or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_layout">layout</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setColor">setColor</a>(string|null $style = null)
+        
+                                            <p>Sets the color (a CSS class)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1682,7 +1694,7 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 40</div>
+        <div class="location">at         line 32</div>
         <code>                    
     <strong>__construct</strong>(mixed $content = null)
         </code>
@@ -1816,7 +1828,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 77</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_contentToString"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 70</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -2799,9 +2811,176 @@ appends the returned HTML into the object.</p>                                  
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getCloseButton">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 47</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
+    <strong>getCloseButton</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the Modal reveal controller</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCloseButton">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 56</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
+    <strong>setCloseButton</strong>( $btn)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the Modal reveal controller</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$btn</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setClosable">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 61</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
+    <strong>setClosable</strong>(string|boolean $closable = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets/unsets the component closable</p>                    <p>Values for <code>$closable</code> parameter</p>
+
+<ul>
+<li><code>true</code>: the component is closable and the default closing effect is used</li>
+<li><code>'slide-out-right'</code></li>
+<li>...any other Foundation Motion UI effect string</li>
+<li><code>false</code>: the component is not closable</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|boolean</td>
+                <td>$closable</td>
+                <td>true for closable and false otherwise</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isClosable">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 66</div>
+        <code>                    boolean
+    <strong>isClosable</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the component is  set as closable or not</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if closable and false if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_layout">
+        <div class="location">at         line 38</div>
+        <code>                    
+    <strong>layout</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setColor">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a> at         line 56</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
+        <div class="location">at         line 58</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
     <strong>setColor</strong>(string|null $style = null)
         </code>
     </h3>
@@ -2837,133 +3016,8 @@ appends the returned HTML into the object.</p>                                  
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a></td>
             <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setPadding">
-        <div class="location">at         line 59</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Callout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Callout">Callout</abbr></a>
-    <strong>setPadding</strong>(string|null $padding = &#039;default&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the content padding</p>                    <p>Predefined paddings:</p>
-
-<ul>
-<li><code>'small'</code> for small padding</li>
-<li><code>'default'</code> for (default) padding</li>
-<li><code>'large'</code> for large padding</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$padding</td>
-                <td>optional CSS class name defining the amount of the content padding</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Callout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Callout">Callout</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setClosable">
-        <div class="location">at         line 68</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a>
-    <strong>setClosable</strong>(string|boolean $closable = true)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets/unsets the callout closable</p>                    <p>Values for <code>$closable</code> parameter</p>
-
-<ul>
-<li><code>true</code>: the callout is closable and the default closing effect is used</li>
-<li><code>'slide-out-right'</code></li>
-<li>...any other Foundation Motion UI effect string</li>
-<li><code>false</code>: the callout is not closable</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|boolean</td>
-                <td>$closable</td>
-                <td>true for closable and false otherwise</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/CalloutInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\CalloutInterface">CalloutInterface</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isClosable">
-        <div class="location">at         line 73</div>
-        <code>                    boolean
-    <strong>isClosable</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the callout is closable or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if callout is closable and false if not</td>
         </tr>
     </table>
 

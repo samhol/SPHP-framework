@@ -2,7 +2,7 @@
 
 namespace Sphp\Manual;
 
-use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Filesystem;
 
 include_once 'settings.php';
@@ -25,7 +25,7 @@ try {
   }
   $content = ob_get_contents();
 } catch (\Exception $e) {
-  $content .= new ExceptionCallout($e);
+  $content .= new ThrowableCallout($e);
 }
 ob_end_clean();
 echo $content;

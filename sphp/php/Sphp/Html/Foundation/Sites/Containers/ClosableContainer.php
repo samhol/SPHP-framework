@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ComponentInterface;
-use Sphp\Html\ContainerComponentInterface;
+use Sphp\Html\Div;
+use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
@@ -21,7 +21,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Closable extends \Sphp\Html\AbstractContainerTag {
+class ClosableContainer extends Div implements ClosableInterface {
 
   /**
    *
@@ -32,12 +32,10 @@ class Closable extends \Sphp\Html\AbstractContainerTag {
   /**
    * Constructs a new instance
    *
-   * @param  string $tagname the name of the tag
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
-   * @param  ContainerInterface|null $contentContainer the inner content container of the component
+   * @param  mixed|null $content added content
    */
-  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
-    parent::__construct($tagname, $attrManager, $contentContainer);
+  public function __construct($content = null) {
+    parent::__construct($content);
     $this->closeButton = new CloseButton();
   }
 
@@ -53,15 +51,28 @@ class Closable extends \Sphp\Html\AbstractContainerTag {
   /**
    * Returns the Modal reveal controller
    * 
-   * @return CloseButton
+   * @return self for a fluent interface
    */
   public function setCloseButton(CloseButton $btn) {
     $this->closeButton = $btn;
     return $this;
   }
 
+  public function setClosable($closable = true) {
+    $this->attrs()->set('data-closable', $closable);
+    return $this;
+  }
+
+  public function isClosable() {
+    return $this->attrs()->exists('data-closable');
+  }
+
   public function contentToString(): string {
-    $this->closeButton->getHtml() . parent::contentToString();
+    $output = parent::contentToString();
+    if ($this->isClosable()) {
+      $output .= $this->getCloseButton()->getHtml();
+    }
+    return $output;
   }
 
 }

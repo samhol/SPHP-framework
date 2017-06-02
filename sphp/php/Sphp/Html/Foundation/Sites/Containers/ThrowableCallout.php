@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
+use Throwable;
 use Exception;
 use Sphp\Html\Div;
 use Sphp\Html\Lists\Ol;
@@ -22,7 +23,7 @@ use Sphp\Html\Lists\Dl;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ExceptionCallout extends Callout {
+class ThrowableCallout extends Callout {
 
   /**
    *
@@ -46,24 +47,24 @@ class ExceptionCallout extends Callout {
    *
    * @var boolean
    */
-  private $showPreviousException = false;
+  private $showPreviousThrowable = false;
 
   /**
    * the viewed exception
    *
-   * @var Exception 
+   * @var Throwable 
    */
-  private $exception;
+  private $throwable;
 
   /**
    * Constructs a new instance
    *
-   * @param  Exception $e the viewed exception
+   * @param  Throwable $e the viewed throwable
    * @param  boolean $showTrace true for visible trace  
    * @param  boolean $showPreviousException true for visible previous exception
    */
-  public function __construct($e, $showTrace = false, $showPreviousException = false) {
-    $this->exception = $e;
+  public function __construct(Throwable $e, $showTrace = false, $showPreviousException = false) {
+    $this->throwable = $e;
     parent::__construct();
     $this->cssClasses()->lock('sphp-exception-callout');
     $this->showTrace($showTrace)
@@ -100,7 +101,7 @@ class ExceptionCallout extends Callout {
    * @return self for a fluent interface
    */
   public function showPreviousException($show = true) {
-    $this->showPreviousException = $show;
+    $this->showPreviousThrowable = $show;
     $this->buildPreviousException();
     return $this;
   }
@@ -111,19 +112,19 @@ class ExceptionCallout extends Callout {
    * @return string the file information of the exception
    */
   private function buildFile() {
-    $output = '<p class="message">on line <span class="number">#' . $this->exception->getLine() . '</span>';
-    $output .= ' of file <span class="file">' . $this->parsePath($this->exception->getFile()) . '</span></p>';
+    $output = '<p class="message">on line <span class="number">#' . $this->throwable->getLine() . '</span>';
+    $output .= ' of file <span class="file">' . $this->parsePath($this->throwable->getFile()) . '</span></p>';
     return $output;
   }
 
   /**
-   * Builds the previous {@link \Exception} view
+   * Builds the previous {@link \Throwable} view
    *
    * @return self for a fluent interface
    */
   private function buildPreviousException() {
-    $prev = $this->exception->getPrevious();
-    if ($this->showPreviousException && $prev instanceof \Exception) {
+    $prev = $this->throwable->getPrevious();
+    if ($this->showPreviousThrowable && $prev instanceof \Exception) {
       $heading = (new Div())
               ->addCssClass('previous')
               ->append('Previous exception: <span class="exception">' . get_class($prev) . '</span>')
@@ -137,7 +138,7 @@ class ExceptionCallout extends Callout {
   }
 
   /**
-   * Parses the given string by adding Word Break Opportunitiy tags to the string
+   * Parses the given string by adding Word Break opportunity tags to the string
    *
    * @param  string $path the path to parse
    * @return string parsed path
@@ -155,7 +156,7 @@ class ExceptionCallout extends Callout {
     $vbr = function($v) {
       return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $v);
     };
-    $trace = $this->exception->getTrace();
+    $trace = $this->throwable->getTrace();
     if (count($trace) > 0) {
       $output = new Ol();
       $output->addCssClass("trace");
@@ -204,9 +205,9 @@ class ExceptionCallout extends Callout {
   }
 
   public function contentToString(): string {
-    $output = "<h2>" . get_class($this->exception) . "</h2>";
+    $output = "<h2>" . get_class($this->throwable) . "</h2>";
     if ($this->showMessage) {
-      $output .= '<p class="message">' . $this->exception->getMessage() . "</p>";
+      $output .= '<p class="message">' . $this->throwable->getMessage() . "</p>";
     }
     if ($this->showFile) {
       $output .= $this->buildFile();

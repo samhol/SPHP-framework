@@ -7,10 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\Div;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
-use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
-
 /**
  * Implements a callout component
  *
@@ -21,16 +17,12 @@ use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Callout extends Div implements CalloutInterface {
-
-  use ColourableTrait;
+class Callout extends ClosableContainer implements CalloutInterface {
 
   /**
-   * The inner close button component
-   *
-   * @var CloseButton
+   * @var CalloutLayoutManager 
    */
-  private $closeButton;
+  private $layoutManager;
 
   /**
    * Constructs a new instance
@@ -40,46 +32,32 @@ class Callout extends Div implements CalloutInterface {
   public function __construct($content = null) {
     parent::__construct($content);
     $this->cssClasses()->lock('callout');
-    $this->closeButton = new CloseButton('close');
+    $this->layoutManager = new CalloutLayoutManager($this);
+  }
+
+  public function layout() {
+    return $this->layoutManager;
   }
 
   /**
-   * Sets the content padding
+   * Sets the color (a CSS class)
    * 
-   * Predefined paddings:
+   * Predefined values of <var>$style</var> parameter:
    * 
-   * * `'small'` for small padding
-   * * `'default'` for (default) padding
-   * * `'large'` for large padding
+   * * `null` unsets all special button styles (default)
+   * * `'alert'` for alert/error buttons
+   * * `'success'` for ok/success buttons
+   * * `'info'` for information buttons
+   * * `'secondary'` for alternatively styled buttons
+   * * `'disabled'` for disabled buttons
    * 
-   * @param  string|null $padding optional CSS class name defining the amount of the content padding
+   * @param  string|null $style one of the CSS class names defining button styles
    * @return self for a fluent interface
-   * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
+   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
-  public function setPadding($padding = 'default') {
-    $paddings = ['small', 'large'];
-    $this->removeCssClass($paddings);
-    if (in_array($padding, $paddings)) {
-      $this->addCssClass($padding);
-    }
+  public function setColor($style = null) {
+    $this->layout()->setColor($style);
     return $this;
-  }
-  
-  public function setClosable($closable = true) {
-    $this->attrs()->set('data-closable', $closable);
-    return $this;
-  }
-
-  public function isClosable() {
-    return $this->attrs()->exists('data-closable');
-  }
-
-  public function contentToString(): string {
-    $output = parent::contentToString();
-    if ($this->isClosable()) {
-      $output .= $this->closeButton;
-    }
-    return $output;
   }
 
 }

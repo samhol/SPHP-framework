@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager | SPHP framework API</title>
+    <title>Sphp\Html\Foundation\Sites\Core\ColourableLayoutManager | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Grids_BlockGridLayoutManager" data-root-path="../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Core_ColourableLayoutManager" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -70,29 +70,30 @@
                                         <li><a href="../../../../../Sphp/Html.html">Html</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Grids.html">Grids</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Core.html">Core</a></li>
     
-                <li>BlockGridLayoutManager</li>
+                <li>ColourableLayoutManager</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            BlockGridLayoutManager
+            ColourableLayoutManager
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>BlockGridLayoutManager</strong>        extends <a href="../../../../../Sphp/Html/AbstractLayoutManager.html"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a>
+    <strong>ColourableLayoutManager</strong>        extends <a href="../../../../../Sphp/Html/AbstractLayoutManager.html"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a>        implements
+        <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a layout manager for Block Grid columns</p>                                </div>
+            <p>Trait implements {@link ColourableInterface} functionality</p>                                </div>
     
     
     
@@ -105,7 +106,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>( $component, int $max = 8)
+                    <a href="#method___construct">__construct</a>( $component)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -154,10 +155,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getColumnCount">getColumnCount</a>()
+                    <a href="#method_setLayouts">setLayouts</a>(mixed|mixed[] $layouts)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -168,49 +169,29 @@
                     <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLayouts">setLayouts</a>(mixed|mixed[] $layouts)
-        
-                                            <p>Sets the number of columns within the row for different screen sizes</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setGrid">setGrid</a>(int $num, string $screenSize)
-        
-                                            <p>Sets the block grid value of the given target screen types</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_unsetLayouts">unsetLayouts</a>()
         
-                                            <p>Unsets all layout settings</p>                </div>
+                                            <p>Unsets the layout</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unsetGrid">unsetGrid</a>(string $screenSize)
+                    <a href="#method_setColor">setColor</a>(string|null $color = null)
         
-                                            <p>Unsets the block grid setting for the given screen widths</p>                </div>
+                                            <p>Sets the color</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableLayoutManager">ColourableLayoutManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getColCount">getColCount</a>(string $screenSize)
+                    <a href="#method_unsetColors">unsetColors</a>()
         
-                                            <p>Returns the block grid value of the target screen</p>                </div>
+                                            <p>Unsets the color settings</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -221,9 +202,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 38</div>
+        <div class="location">at         line 39</div>
         <code>                    
-    <strong>__construct</strong>( $component, int $max = 8)
+    <strong>__construct</strong>( $component)
         </code>
     </h3>
     <div class="details">
@@ -239,11 +220,6 @@
                     <tr>
                 <td></td>
                 <td>$component</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$max</td>
                 <td></td>
             </tr>
             </table>
@@ -365,36 +341,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getColumnCount">
-        <div class="location">at         line 48</div>
-        <code>                    int
-    <strong>getColumnCount</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setLayouts">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 47</div>
         <code>                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
     <strong>setLayouts</strong>(mixed|mixed[] $layouts)
         </code>
@@ -403,8 +351,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             
     
 
-                    <div class="method-description">
-                                    <p>Sets the number of columns within the row for different screen sizes</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -427,69 +373,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setGrid">
-        <div class="location">at         line 78</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a>
-    <strong>setGrid</strong>(int $num, string $screenSize)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the block grid value of the given target screen types</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$num</td>
-                <td>number of columns in a row (1-8) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -497,7 +380,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetLayouts">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 55</div>
         <code>                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
     <strong>unsetLayouts</strong>()
         </code>
@@ -507,7 +390,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Unsets all layout settings</p>                                                </div>
+                                    <p>Unsets the layout</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -526,10 +409,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_unsetGrid">
-        <div class="location">at         line 106</div>
-        <code>            protected        <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a>
-    <strong>unsetGrid</strong>(string $screenSize)
+                    <h3 id="method_setColor">
+        <div class="location">at         line 76</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
+    <strong>setColor</strong>(string|null $color = null)
         </code>
     </h3>
     <div class="details">
@@ -537,15 +420,25 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Unsets the block grid setting for the given screen widths</p>                                                </div>
+                                    <p>Sets the color</p>                    <p>Predefined values of <var>$style</var> parameter:</p>
+
+<ul>
+<li><code>null</code> unsets all special button styles (default)</li>
+<li><code>'alert'</code> for alert/error buttons</li>
+<li><code>'success'</code> for ok/success buttons</li>
+<li><code>'info'</code> for information buttons</li>
+<li><code>'secondary'</code> for alternatively styled buttons</li>
+<li><code>'disabled'</code> for disabled buttons</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
+                <td>string|null</td>
+                <td>$color</td>
+                <td>one of the CSS class names defining button styles</td>
             </tr>
             </table>
 
@@ -554,7 +447,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/BlockGridLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\BlockGridLayoutManager">BlockGridLayoutManager</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -566,10 +459,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getColCount">
-        <div class="location">at         line 122</div>
-        <code>                    int
-    <strong>getColCount</strong>(string $screenSize)
+                    <h3 id="method_unsetColors">
+        <div class="location">at         line 93</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableLayoutManager">ColourableLayoutManager</abbr></a>
+    <strong>unsetColors</strong>()
         </code>
     </h3>
     <div class="details">
@@ -577,25 +470,15 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the block grid value of the target screen</p>                                                </div>
+                                    <p>Unsets the color settings</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td>the column count value per row for given target screen size</td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableLayoutManager">ColourableLayoutManager</abbr></a></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 

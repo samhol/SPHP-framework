@@ -281,7 +281,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>($content)
         
-                                            <p>Prepends elements to the html component</p>                </div>
+                                            <p>Prepends a new value as the first element</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/WrappingContainer.html#method_prepend"><abbr title="Sphp\Html\WrappingContainer">WrappingContainer</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -902,7 +902,7 @@
 
 <ol>
 <li>Parameter <code>mixed $content</code> can be of any type that converts to a string
-or to an array of strigs. So also objects of any type that implement magic
+or to an array of strings. So also objects of any type that implement magic
 method <code>__toString()</code> are allowed.</li>
 <li><code>mixed $content</code> is transformed to a @link Row} component.</li>
 </ol>
@@ -980,10 +980,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Prepends elements to the html component</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then prepends the result to the container</p>                            </div>
+                                    <p>Prepends a new value as the first element</p>                    <p><ul>
+<li>The numeric keys of the content will be renumbered starting from zero
+and the index of the prepended value is 'int(0)'</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1177,10 +1178,7 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Assigns content to the specified offset</p>                    <p><strong>Notes:</strong></p>
-
-<p>Method applies first the inner callback given in constructor to the <code>$content</code>
-and then sets the result to the container to the specified offset</p>                            </div>
+                                    <p>Assigns content to the specified offset</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

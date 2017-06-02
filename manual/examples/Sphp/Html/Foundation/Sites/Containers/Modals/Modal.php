@@ -1,8 +1,9 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Containers\Modals;
+namespace Sphp\Html\Foundation\Sites\Containers;
 
-$popup = (new Modal("http://sphp.samiholck.com/HtmlWiki.html", "controller"));
-//$popup->ajaxPrepend("http://sphp.samiholck.com/HtmlWiki.html");
-$popup->printHtml();
-?>
+$popup = new Modal('Open me!', "I'm full of foo");
+
+$popup1 = new Modal('Open me too!', "I'm full of foo");
+$popup1;
+echo "$popup and $popup1";

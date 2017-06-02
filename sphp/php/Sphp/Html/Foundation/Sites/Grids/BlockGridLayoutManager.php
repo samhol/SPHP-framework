@@ -52,14 +52,14 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Sets the number of columns within the row for different screen sizes
    * 
-   * @param  string[] $widths individual layout settings
+   * @param  string[] $layouts individual layout settings
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setLayouts(array $widths) {
+  public function setLayouts($layouts) {
     $this->unsetLayouts();
-    foreach ($widths as $width) {
-      $parts = explode('-', $width);
+    foreach (is_array($layouts) ? $layouts : [$layouts] as $layout) {
+      $parts = explode('-', $layout);
       $this->setGrid($parts[2], $parts[0]);
     }
     return $this;

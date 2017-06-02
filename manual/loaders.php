@@ -4,7 +4,7 @@ namespace Sphp\MVC;
 
 require_once('manualTools/main.php');
 
-use Sphp\Html\Foundation\Sites\Containers\ExceptionCallout;
+use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Html\Apps\Manual\Apis;
 
 $loadNotFound = function () {
@@ -29,9 +29,9 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
     }
     $content = ob_get_contents();
   } catch (\Throwable $e) {
-    $content .= (new ExceptionCallout($e))->showInitialFile()->showTrace();
+    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
   } catch (\Exception $e) {
-    $content .= (new ExceptionCallout($e))->showInitialFile()->showTrace();
+    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
   }
   ob_end_clean();
   echo $content;

@@ -7,9 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
-use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
+use Sphp\Html\Foundation\Sites\Containers\ClosableContainer;
 
 /**
  * Implements Reveal Modal 
@@ -23,13 +22,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Popup implements Closable {
-
-  /**
-   *
-   * @var CloseButton 
-   */
-  private $closeButton;
+class Popup extends ClosableContainer {
 
   /**
    * CSS classes corresponding to the size constants
@@ -49,17 +42,13 @@ class Popup implements Closable {
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
    * 
-   * @param mixed $content the content of the component
-   * @param mixed $controller
+   * @param  mixed|null $content added content
    */
   public function __construct($content = null) {
-    parent::__construct('div');
+    parent::__construct($content);
     $this->identify('id', 'modal_');
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
-    if ($content !== null) {
-    $this->append($content);
-    }
   }
 
   /**
@@ -104,19 +93,6 @@ class Popup implements Closable {
   }
 
   /**
-   * Returns the Modal reveal controller
-   * 
-   * @return CloseButton
-   */
-  public function closeButton() {
-    return $this->closeButton;
-  }
-
-  public function getHtml(): string {
-    return $this->modalController . parent::getHtml();
-  }
-
-  /**
    * Returns a link component pointing to the Modal component
    *
    * **Important!**
@@ -128,9 +104,9 @@ class Popup implements Closable {
    * @param  mixed $content the controller component
    * @return Controller a controller component pointing to this Modal
    */
-  public function createController($content) {
-    $controller = new Controller($this, $content);
-    return $controller;
+  public function createController(ComponentInterface $content) {
+    $content->setAttr('data-open', $this->identify());
+    return $content;
   }
 
 }

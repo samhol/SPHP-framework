@@ -28,12 +28,12 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
   use ColourableTrait;
 
   /**
-   *
    * @var Span
    */
   private $progressMeter;
 
   /**
+   * Constructs a new instance
    * 
    * @param int $progress
    * @param string|null $name the name of the bar

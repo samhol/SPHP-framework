@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface | SPHP framework API</title>
+    <title>Sphp\Html\Foundation\Sites\Core\ClosableInterface | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Grids_LayoutManagerInterface" data-root-path="../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Core_ClosableInterface" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -70,29 +70,29 @@
                                         <li><a href="../../../../../Sphp/Html.html">Html</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Grids.html">Grids</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Core.html">Core</a></li>
     
-                <li>LayoutManagerInterface</li>
+                <li>ClosableInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            LayoutManagerInterface
+            ClosableInterface
                 
         </h1>
     </div>
 
     <p>    interface
-    <strong>LayoutManagerInterface</strong>
+    <strong>ClosableInterface</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Defines a layout manager</p>                                </div>
+            <p>Defines a closable component</p>                                </div>
     
     
     
@@ -102,32 +102,22 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_manage">manage</a>( $component)
+                    <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
         
-                                            <p>Sets the managed component</p>                </div>
+                                            <p>Sets/unsets the component closable</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLayouts">setLayouts</a>(array $layouts)
+                    <a href="#method_isClosable">isClosable</a>()
         
-                                            <p>Sets the layout</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_unsetLayouts">unsetLayouts</a>()
-        
-                                            <p>Unsets the layout</p>                </div>
+                                            <p>Checks whether the component is  set as closable or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -137,10 +127,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_manage">
-        <div class="location">at         line 30</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
-    <strong>manage</strong>( $component)
+                    <h3 id="method_setClosable">
+        <div class="location">at         line 36</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
+    <strong>setClosable</strong>(string|boolean $closable = true)
         </code>
     </h3>
     <div class="details">
@@ -148,15 +138,23 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the managed component</p>                                                </div>
+                                    <p>Sets/unsets the component closable</p>                    <p>Values for <code>$closable</code> parameter</p>
+
+<ul>
+<li><code>true</code>: the component is closable and the default closing effect is used</li>
+<li><code>'slide-out-right'</code></li>
+<li>...any other Foundation Motion UI effect string</li>
+<li><code>false</code>: the component is not closable</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$component</td>
-                <td></td>
+                <td>string|boolean</td>
+                <td>$closable</td>
+                <td>true for closable and false otherwise</td>
             </tr>
             </table>
 
@@ -165,7 +163,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -177,10 +175,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setLayouts">
-        <div class="location">at         line 38</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
-    <strong>setLayouts</strong>(array $layouts)
+                    <h3 id="method_isClosable">
+        <div class="location">at         line 43</div>
+        <code>                    boolean
+    <strong>isClosable</strong>()
         </code>
     </h3>
     <div class="details">
@@ -188,55 +186,15 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the layout</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$layouts</td>
-                <td>layout parameters</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unsetLayouts">
-        <div class="location">at         line 45</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
-    <strong>unsetLayouts</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Unsets the layout</p>                                                </div>
+                                    <p>Checks whether the component is  set as closable or not</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Grids/LayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\LayoutManagerInterface">LayoutManagerInterface</abbr></a></td>
-            <td>for a fluent interface</td>
+            <td>boolean</td>
+            <td>true if closable and false if not</td>
         </tr>
     </table>
 

@@ -28,10 +28,10 @@ interface LayoutManagerInterface {
   /**
    * Sets the layout
    *
-   * @param  string $layouts layout parameters
+   * @param  mixed|mixed[] $layouts layout parameters
    * @return self for a fluent interface
    */
-  public function setLayouts(array $layouts);
+  public function setLayouts($layouts);
 
   /**
    * Unsets the layout

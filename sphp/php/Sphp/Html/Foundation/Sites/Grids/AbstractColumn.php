@@ -24,10 +24,9 @@ use Sphp\Html\Div;
 abstract class AbstractColumn extends Div implements ColumnInterface {
 
   /**
-   *
    * @var ColumnLayoutManager 
    */
-  private $columnProps;
+  private $layoutManager;
 
   /**
    * Constructs a new instance
@@ -39,20 +38,16 @@ abstract class AbstractColumn extends Div implements ColumnInterface {
    * is allowed.
    *
    * @param  mixed $content the content of the column
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  array $layout column layout parameters
    */
-  public function __construct($content = null, array $widths = ['small-12']) {
+  public function __construct($content = null, array $layout = ['small-12']) {
     parent::__construct($content);
-    $this->columnProps = new ColumnLayoutManager($this);
-    $this->layout()->setLayout($widths);
+    $this->layoutManager = new ColumnLayoutManager($this);
+    $this->layout()->setLayout($layout);
   }
 
   public function layout(): ColumnLayoutManagerInterface {
-    return $this->columnProps;
+    return $this->layoutManager;
   }
 
 }

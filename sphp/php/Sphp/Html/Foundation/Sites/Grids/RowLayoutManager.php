@@ -33,16 +33,9 @@ class RowLayoutManager extends AbstractLayoutManager {
     $this->cssClasses()->lock('row');
   }
 
-  /**
-   * Sets the number of columns within the row for different screen sizes
-   * 
-   * @param  string[] $layout individual layout settings
-   * @return self for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function setLayouts(array $layout) {
+  public function setLayouts($layout) {
     $this->unsetLayouts();
-    foreach ($layout as $width) {
+    foreach (is_array($layout)? $layout : [$layout] as $width) {
       $parts = explode('-', $width);
       $this->setGrid($parts[2], $parts[0]);
     }

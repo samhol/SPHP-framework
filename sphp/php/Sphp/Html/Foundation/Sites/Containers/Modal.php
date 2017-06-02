@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers;
 
+use Sphp\Html\ContentInterface;
+use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
@@ -22,7 +24,7 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Modal implements ContentInterface {
+class Modal implements ContentInterface, ClosableInterface {
 
   use \Sphp\Html\ContentTrait;
 
@@ -33,12 +35,10 @@ class Modal implements ContentInterface {
    */
   private $trigger;
 
-
   /**
-   *
    * @var Popup
    */
-  private $modal;
+  private $popup;
 
   /**
    * CSS classes corresponding to the size constants
@@ -61,15 +61,33 @@ class Modal implements ContentInterface {
    * @param ComponentInterface|string $trigger
    * @param mixed $popup the content of the component
    */
-  public function __construct($trigger, $popup) {
+  public function __construct($trigger, $popup = null) {
     if (!$popup instanceof Popup) {
       $popup = new Popup($popup);
     }
-    $this->identify('id', 'modal_');
-    $this->cssClasses()->lock('reveal');
-    $this->attrs()->demand('data-reveal');
-    $this->modal = $this->closeButton = new CloseButton();
+    $this->popup = $popup;
+    $this->popup->identify('id', 'modal_');
+    $this->popup->cssClasses()->lock('reveal');
+    $this->popup->attrs()->demand('data-reveal');
     $this->trigger = $this->createController($trigger);
+  }
+
+  public function getTrigger(): ComponentInterface {
+    return $this->trigger;
+  }
+
+  public function getPopup(): Popup {
+    return $this->popup;
+  }
+
+  public function setTrigger(ComponentInterface $trigger) {
+    $this->trigger = $trigger;
+    return $this;
+  }
+
+  public function setPopup(Popup $popup) {
+    $this->popup = $popup;
+    return $this;
   }
 
   /**
@@ -89,7 +107,7 @@ class Modal implements ContentInterface {
    */
   public function setSize($size) {
     $this->resetSize();
-    $this->cssClasses()->add($size);
+    $this->popup->cssClasses()->add($size);
     return $this;
   }
 
@@ -99,7 +117,7 @@ class Modal implements ContentInterface {
    * @return self for a fluent interface
    */
   public function resetSize() {
-    $this->cssClasses()
+    $this->popup->cssClasses()
             ->remove(static::$sizes);
     return $this;
   }
@@ -113,9 +131,8 @@ class Modal implements ContentInterface {
     return $this->trigger;
   }
 
-
   public function getHtml(): string {
-    return $this->trigger . parent::getHtml();
+    return $this->trigger->getHtml() . $this->popup->getHtml();
   }
 
   /**
@@ -128,12 +145,22 @@ class Modal implements ContentInterface {
    * that implements magic method `__toString()` is allowed.
    *
    * @param  mixed $content the controller component
-   * @return Controller a controller component pointing to this Modal
+   * @return ComponentInterface a controller component pointing to this Modal
    */
   public function createController($content) {
-    $controller = new Controller($this, $content);
-    return $controller;
+    if (!$content instanceof ComponentInterface) {
+      $content = new \Sphp\Html\Span($content);
+    }
+    return $this->popup->createController($content);
   }
 
+  public function isClosable(): boolean {
+    return $this->popup->isClosable();
+  }
+
+  public function setClosable($closable = true) {
+    $this->popup->setClosable($closable);
+    return $this;
+  }
 
 }

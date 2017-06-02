@@ -29,7 +29,7 @@ class Grid extends WrappingContainer implements GridInterface {
    * **Important!**
    *
    * 1. Parameter `mixed $content` can be of any type that converts to a string 
-   *    or to an array of strigs. So also objects of any type that implement magic 
+   *    or to an array of strings. So also objects of any type that implement magic 
    *    method `__toString()` are allowed.
    * 2. `mixed $content` is transformed to a @link Row} component.
    *

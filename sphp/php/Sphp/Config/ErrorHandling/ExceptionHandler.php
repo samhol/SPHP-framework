@@ -7,7 +7,7 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Exception;
+use Throwable;
 use Sphp\Stdlib\Observers\Subject;
 
 /**
@@ -26,9 +26,9 @@ class ExceptionHandler implements Subject {
   use \Sphp\Stdlib\Observers\ObservableSubjectTrait;
 
   /**
-   * The uncaught Exception that needs to be handled
+   * The uncaught Throwable that needs to be handled
    *
-   * @var Exception
+   * @var Throwable
    */
   private $exception;
 
@@ -41,7 +41,7 @@ class ExceptionHandler implements Subject {
   /**
    * Exception handling method
    *
-   * @param \Throwable|Exception $e handled exception
+   * @param Throwable $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
   public function __invoke($e) {
@@ -52,7 +52,7 @@ class ExceptionHandler implements Subject {
   /**
    * Exception handling method
    *
-   * @param \Throwable|Exception $e handled exception
+   * @param Throwable $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
   /* public function handle($e) {
@@ -82,14 +82,14 @@ class ExceptionHandler implements Subject {
     if (static::$currentHandler === $this) {
       restore_exception_handler();
       static::$currentHandler = null;
-    } 
+    }
     return $this;
   }
 
   /**
    * Returns the uncaught Exception that needs to be handled
    *
-   * @return \Throwable|Exception the uncaught Exception
+   * @return Throwable the uncaught Exception
    */
   public function getException() {
     return $this->exception;

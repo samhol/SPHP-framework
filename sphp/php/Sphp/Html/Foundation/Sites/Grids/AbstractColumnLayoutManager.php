@@ -59,12 +59,12 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * and larger devices will inherit those styles. Customize for
    * larger screens as necessary.
    *
-   * @param  string $layout the layout parameters
+   * @param  mixed|mixed[] $layouts layout parameters
    * @return self for a fluent interface
    */
-  public function setLayouts(array $layout) {
+  public function setLayouts($layouts) {
     $this->unsetLayouts();
-    foreach ($layout as $width) {
+    foreach (is_array($layouts)? $layouts : [$layouts] as $width) {
       $parts = explode('-', $width);
       $c = count($parts);
       if ($c === 2) {

@@ -6,13 +6,13 @@ $accordion = $api->classLinker(Accordions\Pane::class);
 $accordions = $api->classLinker(Accordions\Accordion::class);
 $tabs = $api->classLinker(Tabs\Tabs::class);
 $dropdown = $api->classLinker(Dropdown::class);
-$modalReveal = $api->classLinker(Modals\Modal::class);
+$modal = $api->classLinker(Modal::class);
 $callout = $api->classLinker(Callout::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
 echo $parsedown->text(<<<MD
 #FOUNDATION CONTAINERS
 $ns
-This namespace contains Foundation framework based components like $accordions, $tabs, $callout, $modalReveal and $dropdown.
+This namespace contains Foundation framework based components like $accordions, $tabs, $callout, $modal and $dropdown.
 MD
 );
 $load('Sphp.Html.Foundation.Sites.Containers.Accordions');

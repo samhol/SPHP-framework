@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Containers\Dropdown | SPHP framework API</title>
+    <title>Sphp\Html\Foundation\Sites\Containers\Modal | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Containers_Dropdown" data-root-path="../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Containers_Modal" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -72,29 +72,28 @@
                                         <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation/Sites/Containers.html">Containers</a></li>
     
-                <li>Dropdown</li>
+                <li>Modal</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Dropdown
+            Modal
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Dropdown</strong>        implements
-        <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+    <strong>Modal</strong>        implements
+        <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements Dropdown HTML component</p>            <p>This component can be used to attach dropdowns or popovers to
-whatever Component needed.</p>                    </div>
+            <p>Implements Reveal Modal</p>            <p>Modal dialogs, or pop-up windows, are handy for prototyping and production.</p>                    </div>
     
             <h2>Traits</h2>
 
@@ -151,7 +150,7 @@ whatever Component needed.</p>                    </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>|mixed $trigger, mixed $dropdown)
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>|string $trigger, mixed $popup = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -161,7 +160,7 @@ whatever Component needed.</p>                    </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
+                    <a href="#method_getTrigger">getTrigger</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -169,17 +168,50 @@ whatever Component needed.</p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSize">setSize</a>(string|null $size)
+                    <a href="#method_getPopup">getPopup</a>()
         
-                                            <p>Sets the size of the button</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTrigger">setTrigger</a>( $trigger)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPopup">setPopup</a>( $popup)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSize">setSize</a>(string $size)
+        
+                                            <p>Sets the size of the component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_resetSize">resetSize</a>()
@@ -189,64 +221,42 @@ whatever Component needed.</p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_align">align</a>(string|boolean $alignment)
+                    <a href="#method_getDefaultController">getDefaultController</a>()
         
-                                            <p>Positions dropdown on the top, bottom, left, or right of the target element.</p>                </div>
+                                            <p>Returns the default Modal reveal controller</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setFloat">setFloat</a>(string|boolean $float = false)
+                    <a href="#method_createController">createController</a>(mixed $content)
         
-                                            <p>Changes the direction of the dropdown</p>                </div>
+                                            <p>Returns a link component pointing to the Modal component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setTrigger">setTrigger</a>(mixed $togleButton)
+                    <a href="#method_isClosable">isClosable</a>()
         
-                                            <p>Sets the component having this dropdown</p>                </div>
+                                            <p>Checks whether the component is  set as closable or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Forms/Buttons/ButtonTag.html"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getTarget">getTarget</a>()
+                    <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
         
-                                            <p>Returns the button component having this dropdown</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_closeOnBodyClick">closeOnBodyClick</a>(boolean $flag = true)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_autoFocus">autoFocus</a>(boolean $flag = true)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Sets/unsets the component closable</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -257,7 +267,7 @@ whatever Component needed.</p>                    </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">at         line 169</div>
+        <div class="location">at         line 134</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -356,9 +366,9 @@ whatever Component needed.</p>                    </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 64</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>|mixed $trigger, mixed $dropdown)
+    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>|string $trigger, mixed $popup = null)
         </code>
     </h3>
     <div class="details">
@@ -366,20 +376,24 @@ whatever Component needed.</p>                    </div>
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<p>Parameter <code>$content</code> can be of any type that converts to a
+string or to an array of strings. So also an object of any class
+that implements magic method <code>__toString()</code> is allowed.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>|mixed</td>
+                <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>|string</td>
                 <td>$trigger</td>
-                <td>the target component for the dropdown functionality</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>mixed</td>
-                <td>$dropdown</td>
-                <td>the dropdown or the content of the dropdown</td>
+                <td>$popup</td>
+                <td>the content of the component</td>
             </tr>
             </table>
 
@@ -391,10 +405,10 @@ whatever Component needed.</p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">at         line 64</div>
+                    <h3 id="method_getTrigger">
+        <div class="location">at         line 75</div>
         <code>                    
-    <strong>__clone</strong>()
+    <strong>getTrigger</strong>()
         </code>
     </h3>
     <div class="details">
@@ -402,6 +416,83 @@ whatever Component needed.</p>                    </div>
     
 
                 <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPopup">
+        <div class="location">at         line 79</div>
+        <code>                    
+    <strong>getPopup</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTrigger">
+        <div class="location">at         line 83</div>
+        <code>                    
+    <strong>setTrigger</strong>( $trigger)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$trigger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPopup">
+        <div class="location">at         line 88</div>
+        <code>                    
+    <strong>setPopup</strong>( $popup)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$popup</td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
             
@@ -411,9 +502,9 @@ whatever Component needed.</p>                    </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setSize">
-        <div class="location">at         line 86</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>setSize</strong>(string|null $size)
+        <div class="location">at         line 108</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a>
+    <strong>setSize</strong>(string $size)
         </code>
     </h3>
     <div class="details">
@@ -421,24 +512,24 @@ whatever Component needed.</p>                    </div>
     
 
                     <div class="method-description">
-                                    <p>Sets the size of the button</p>                    <p>Predefined values of <var>$size</var> parameter:</p>
+                                    <p>Sets the size of the component</p>                    <p><strong>Available size options:</strong></p>
 
 <ul>
-<li><code>'tiny'</code> for tiny dropdown pane</li>
-<li><code>'small'</code> for small dropdown pane</li>
-<li><code>'large'</code> for large dropdown pane</li>
-<li><code>'xlarge'</code> for x-large dropdown pane</li>
-<li><code>'xxlarge'</code> for xx-large dropdown pane</li>
+<li><code>'tiny'</code>: set the width to 30%</li>
+<li><code>'small'</code>: set the width to 50%</li>
+<li><code>'large'</code>: set the width to 90%</li>
+<li><code>'full'</code>: set the width and height to 100%</li>
 </ul>
-</p>                            </div>
+
+<p><strong>Note:</strong> Default on <code>'small'</code> screens is 100% (<code>'full'</code>) width.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$size</td>
-                <td>optional CSS class name defining dropdown pane size</td>
+                <td>the size of the component</td>
             </tr>
             </table>
 
@@ -447,7 +538,7 @@ whatever Component needed.</p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -460,8 +551,8 @@ whatever Component needed.</p>                    </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_resetSize">
-        <div class="location">at         line 97</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
+        <div class="location">at         line 119</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a>
     <strong>resetSize</strong>()
         </code>
     </h3>
@@ -477,7 +568,7 @@ whatever Component needed.</p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Modal.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Modal">Modal</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -489,10 +580,10 @@ whatever Component needed.</p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_align">
-        <div class="location">at         line 117</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>align</strong>(string|boolean $alignment)
+                    <h3 id="method_getDefaultController">
+        <div class="location">at         line 130</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr>
+    <strong>getDefaultController</strong>()
         </code>
     </h3>
     <div class="details">
@@ -500,34 +591,15 @@ whatever Component needed.</p>                    </div>
     
 
                     <div class="method-description">
-                                    <p>Positions dropdown on the top, bottom, left, or right of the target element.</p>                    <p><strong>Available alignment options:</strong></p>
-
-<ul>
-<li><code>'top'</code>: Positions the dropdown on the top of the controller element</li>
-<li><code>'left'</code>: Positions the dropdown on the left of the controller element</li>
-<li><code>'bottom'</code>: Positions the dropdown on the bottom of the controller element</li>
-<li><code>'right'</code>: Positions the dropdown on the right of the controller element</li>
-<li><code>false</code>: Removes settings</li>
-</ul>
-</p>                            </div>
+                                    <p>Returns the default Modal reveal controller</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|boolean</td>
-                <td>$alignment</td>
-                <td>the alignment value</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
-            <td>for a fluent interface</td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Containers\Controller">Controller</abbr></td>
+            <td></td>
         </tr>
     </table>
 
@@ -538,10 +610,10 @@ whatever Component needed.</p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setFloat">
-        <div class="location">at         line 137</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>setFloat</strong>(string|boolean $float = false)
+                    <h3 id="method_createController">
+        <div class="location">at         line 150</div>
+        <code>                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
+    <strong>createController</strong>(mixed $content)
         </code>
     </h3>
     <div class="details">
@@ -549,62 +621,19 @@ whatever Component needed.</p>                    </div>
     
 
                     <div class="method-description">
-                                    <p>Changes the direction of the dropdown</p>                    <p><strong>Available floating options:</strong></p>
+                                    <p>Returns a link component pointing to the Modal component</p>                    <p><strong>Important!</strong></p>
 
-<ul>
-<li><code>'left'</code>: Floats the dropdown on the left of the controller element</li>
-<li><code>'right'</code>: Floats the dropdown on the right of the controller element</li>
-<li><code>false</code>: Removes floating settings</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|boolean</td>
-                <td>$float</td>
-                <td>the floating value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setTrigger">
-        <div class="location">at         line 151</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>setTrigger</strong>(mixed $togleButton)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the component having this dropdown</p>                                                </div>
+<p>Parameter <code>mixed $controller</code> can be of any type that converts to a
+string or to an array of strings. So also an object of any class
+that implements magic method <code>__toString()</code> is allowed.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>mixed</td>
-                <td>$togleButton</td>
-                <td>the component having this dropdown</td>
+                <td>$content</td>
+                <td>the controller component</td>
             </tr>
             </table>
 
@@ -613,8 +642,8 @@ whatever Component needed.</p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
-            <td>for a fluent interface</td>
+            <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
+            <td>a controller component pointing to this Modal</td>
         </tr>
     </table>
 
@@ -625,10 +654,10 @@ whatever Component needed.</p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getTarget">
-        <div class="location">at         line 165</div>
-        <code>                    <a href="../../../../../Sphp/Html/Forms/Buttons/ButtonTag.html"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a>
-    <strong>getTarget</strong>()
+                    <h3 id="method_isClosable">
+        <div class="location">at         line 157</div>
+        <code>                    boolean
+    <strong>isClosable</strong>()
         </code>
     </h3>
     <div class="details">
@@ -636,15 +665,15 @@ whatever Component needed.</p>                    </div>
     
 
                     <div class="method-description">
-                                    <p>Returns the button component having this dropdown</p>                                                </div>
+                                    <p>Checks whether the component is  set as closable or not</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Forms/Buttons/ButtonTag.html"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a></td>
-            <td>the button component having this dropdown</td>
+            <td>boolean</td>
+            <td>true if closable and false if not</td>
         </tr>
     </table>
 
@@ -655,24 +684,34 @@ whatever Component needed.</p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_closeOnBodyClick">
-        <div class="location">at         line 178</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>closeOnBodyClick</strong>(boolean $flag = true)
+                    <h3 id="method_setClosable">
+        <div class="location">at         line 161</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
+    <strong>setClosable</strong>(string|boolean $closable = true)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Sets/unsets the component closable</p>                    <p>Values for <code>$closable</code> parameter</p>
+
+<ul>
+<li><code>true</code>: the component is closable and the default closing effect is used</li>
+<li><code>'slide-out-right'</code></li>
+<li>...any other Foundation Motion UI effect string</li>
+<li><code>false</code>: the component is not closable</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
-                <td>$flag</td>
-                <td></td>
+                <td>string|boolean</td>
+                <td>$closable</td>
+                <td>true for closable and false otherwise</td>
             </tr>
             </table>
 
@@ -681,45 +720,7 @@ whatever Component needed.</p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_autoFocus">
-        <div class="location">at         line 192</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a>
-    <strong>autoFocus</strong>(boolean $flag = true)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>boolean</td>
-                <td>$flag</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Containers/Dropdown.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\Dropdown">Dropdown</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
