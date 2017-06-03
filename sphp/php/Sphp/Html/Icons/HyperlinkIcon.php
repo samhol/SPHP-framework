@@ -7,9 +7,6 @@
 
 namespace Sphp\Html\Icons;
 
-use Sphp\Html\AbstractComponent;
-use Sphp\Html\Navigation\HyperlinkInterface;
-
 /**
  * Description of HyperlinkIcon
  *

@@ -8,7 +8,6 @@
 namespace Sphp\Html\Icons;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Container;
 
 /**
  * Description of BrandIcons

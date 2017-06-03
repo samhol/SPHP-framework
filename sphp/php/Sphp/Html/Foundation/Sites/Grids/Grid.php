@@ -67,5 +67,19 @@ class Grid extends WrappingContainer implements GridInterface {
     }
     return $grid;
   }
-
+  
+  
+  /**
+   * Sets/ the row completely fluid
+   *
+   * @param  boolean $expanded the target screen size
+   * @return self for a fluent interface
+   */
+  public function expand($expanded = true) {
+    foreach($this as $row) {
+      $row->layout()->expand($expanded);
+    }
+    return $this;
+  }
+  
 }

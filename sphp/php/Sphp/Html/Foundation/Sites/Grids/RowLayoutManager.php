@@ -53,6 +53,22 @@ class RowLayoutManager extends AbstractLayoutManager {
     }
     return $this;
   }
+  
+  
+  /**
+   * Sets/ the row completely fluid
+   *
+   * @param  boolean $expanded the target screen size
+   * @return self for a fluent interface
+   */
+  public function expand($expanded = true) {
+    if ($expanded) {
+      $this->cssClasses()->add('expanded');
+    } else {
+      $this->removeCssClass('expanded');
+    }
+    return $this;
+  }
 
   /**
    * Sets the block grid value of the given target screen types
