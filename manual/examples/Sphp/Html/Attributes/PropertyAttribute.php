@@ -12,4 +12,3 @@ $styles = (new PropertyAttribute("style"))
 echo "<p $styles>Styled paragraph</p>\n";
 $styles["text-align"] = "right";
 echo "<p $styles>Styled paragraph</p>\n";
-?>

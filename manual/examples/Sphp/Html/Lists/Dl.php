@@ -6,4 +6,3 @@ $dl = (new Dl())
         ->appendTerms("Numbers:")
         ->appendDescriptions(["zero", "one", "two", "three", "four"])
         ->printHtml();
-?>

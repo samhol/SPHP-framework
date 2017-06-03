@@ -15,4 +15,3 @@ $user = (new User())
 $insert = (new Insert("Users", $user));
 
 echo $insert . "\n";
-?>

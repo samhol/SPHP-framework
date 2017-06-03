@@ -8,4 +8,3 @@ $update->set(["country" => "USA"])
 		->where()
 			->equals(["country" => "Finland"]);
 echo $update . "\n";
-?>

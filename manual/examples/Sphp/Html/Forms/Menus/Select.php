@@ -36,5 +36,3 @@ $form = (new GridForm())
     MenuFactory::rangeMenu(0, 15, 2, "range")->setSelectedValues(6)
         ]);
 $form->printHtml();
-
-?>

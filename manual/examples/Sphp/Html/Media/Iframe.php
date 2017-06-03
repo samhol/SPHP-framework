@@ -18,4 +18,3 @@ $widget = (new Iframe('http://193.64.245.223/basket/widget/'))
         ->setStyle('border', 'none');
 $grid = new Grid([$iframe, $widget]);
 $grid->printHtml();
-?>

@@ -18,4 +18,3 @@ unset($arr["remove"]);
 //prepend data -> numeric keys will be renumbered starting from zero
 print_r($arr);
 echo "number of entries: " . $arr->count();
-?>

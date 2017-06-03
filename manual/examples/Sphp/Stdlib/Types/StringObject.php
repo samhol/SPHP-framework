@@ -18,4 +18,3 @@ $s($str1);
 $str2 = new StringObject("üöäå", "UTF-8");
 
 $s($str2);
-?>

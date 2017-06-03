@@ -16,5 +16,3 @@ $f();
 $ini->execute($f);
 $ini->reset();
 $f();
-
-?>

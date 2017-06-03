@@ -9,4 +9,3 @@ $password2 = Password::fromHash($hash1);
 var_dump(
         $password1->verify('password'), 
         $password2->verify('password'));
-?>

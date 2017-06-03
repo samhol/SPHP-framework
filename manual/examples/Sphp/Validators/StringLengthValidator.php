@@ -16,4 +16,3 @@ echo "Range validation:\n";
 $validator->setRangeValidation(10, 15);
 var_dump($validator->isValid("string")) . "\n";
 echo $validator->getErrors() . "\n";
-?>

@@ -11,4 +11,3 @@ while (!$stack->isEmpty()) {
   echo "peeked: " . $stack->peek() . "\n";
   echo "popped: " . $stack->pop() . "\n";
 }
-?>

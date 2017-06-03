@@ -19,4 +19,3 @@ $grid[] = (new YoutubePlayer("WwrpLgWyAjU"))
         ->setLazy();
 
 $grid->printHtml();
-?>

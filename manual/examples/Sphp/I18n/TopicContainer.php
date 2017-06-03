@@ -22,4 +22,3 @@ $topicCont = (new TopicList())
 echo $topicCont . "\n";
 echo "Topics: " . $topicCont->count() . ", Messages: "
  . $topicCont->count(TopicList::COUNT_MESSAGES);
-?>

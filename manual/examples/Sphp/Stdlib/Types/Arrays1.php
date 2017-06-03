@@ -21,5 +21,3 @@ $testA = function($key, $val) {
 var_dump(Arrays::test($arr1, $testA));
 var_dump(Arrays::test($arr2, $testA));
 var_dump(Arrays::test($arr3, $testA));
-
-?>

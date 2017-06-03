@@ -23,4 +23,3 @@ foreach ($users as $user) {
   $table->tbody()->append($user->get(["username", "fname", "lname"]));
 }
 $table->printHtml();
-?>

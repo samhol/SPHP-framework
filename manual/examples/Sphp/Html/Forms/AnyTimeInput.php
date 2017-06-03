@@ -13,4 +13,3 @@ $form = (new Form());
 $form[] = new Label("what ever time...", $datetimeInput);
 $form[] = $datetimeInput;
 $form->printHtml();
-?>

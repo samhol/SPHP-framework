@@ -15,4 +15,3 @@ $q1->from("users")
 echo $q1 . "\n";
 var_dump($q1->fetchArray());
 //echo "Result: " . $result[];
-?>

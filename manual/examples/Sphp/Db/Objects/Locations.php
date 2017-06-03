@@ -15,4 +15,3 @@ echo "All stored locations in Turku:\n";
 foreach ($locationStorage->findByProperty('address.city', 'Turku') as $location) {
   echo "\tlocation: {$location->getName()} in {$location->getStreet()}\n";
 }
-?>

@@ -12,4 +12,3 @@ $head->setBaseAddr("http://foo.bar/", "_self")
         ->addContent(Meta::keywords(
                         ['php', 'scss', 'css', 'html', 'html5', 'javascript', 'jquery']))
         ->printHtml();
-?>

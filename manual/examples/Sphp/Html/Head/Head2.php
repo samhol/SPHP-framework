@@ -12,4 +12,3 @@ $head->setBaseAddr("http://sphp.samiholck.com/", "_self")
                 ['php', 'scss', 'css', 'html', 'html5', 'javascript', 'jquery']))
         ->addMeta(Meta::description('SPHP framework for web developement'));
 $head->printHtml();
-?>

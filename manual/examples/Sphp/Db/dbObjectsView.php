@@ -44,4 +44,3 @@ if (!$john->exists()) {
 //var_dump($userView->upload($john));
 //echo "user: " . $userView[205];
 echo $userView->findByUsername("johdoe");
-?>

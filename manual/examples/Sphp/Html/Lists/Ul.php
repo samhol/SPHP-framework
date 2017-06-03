@@ -23,5 +23,3 @@ $ol1 = (new Ol($a_i))
         ->setReversed(TRUE);
 
 (new Row([$ul, $ul1, $ul2, $ul3, $ol, $ol1]))->printHtml();
-
-?>

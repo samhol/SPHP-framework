@@ -17,5 +17,3 @@ try {
 } catch (\Exception $ex) {
   var_dump($ex);
 }
-
-?>

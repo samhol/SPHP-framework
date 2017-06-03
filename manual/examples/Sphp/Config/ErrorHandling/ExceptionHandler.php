@@ -9,4 +9,3 @@ $handler->attach(new ExceptionLogger());
 $handler->attach(new ExceptionPrinter());
 $conf = new PHPConfig();
 $conf->setExceptionHandler($handler);
-?>

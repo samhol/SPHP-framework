@@ -14,4 +14,3 @@ echo "\nFirst 5 of {$users->count()} total users:\n";
 foreach ($users->get(5, 0, ['username' => 'ASC']) as $user) {
   echo "\tusername: {$user->getUsername()}\n";
 }
-?>

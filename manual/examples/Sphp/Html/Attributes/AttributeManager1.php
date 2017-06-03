@@ -16,4 +16,3 @@ $attrs->set("value", false);
 echo "<input $attrs>\n";
 $attrs->set("placeholder", "First Name");
 echo "<input $attrs>\n";
-?>

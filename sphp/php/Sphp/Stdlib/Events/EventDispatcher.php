@@ -28,7 +28,7 @@ class EventDispatcher implements EventDispatcherInterface {
   private static $globalDispatcher = null;
 
   /**
-   * The event listeners as eventname => PrioritizedObjectStorage pairs
+   * The event listeners as event name => PrioritizedObjectStorage pairs
    *
    * @var UniquePriorityQueue[]
    */

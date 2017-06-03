@@ -22,4 +22,3 @@ Img::resize("manual/pics/crossbones.png", $size)
 Img::scaleToFit("manual/pics/crossbones.png", $size)
         ->setLazy(true)
         ->printHtml();
-?> 

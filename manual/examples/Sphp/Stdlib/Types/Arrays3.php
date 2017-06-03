@@ -9,4 +9,3 @@ $copy = Arrays::copy($arr);
 $arr['url']->setQuery("a=1&b=2");
 echo $arr['url'] . "\n";
 echo $copy['url'];
-?>

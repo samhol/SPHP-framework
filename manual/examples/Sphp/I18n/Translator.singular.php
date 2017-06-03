@@ -10,4 +10,3 @@ $translator->setLang("en_US");
 echo "$month: " . $translator->get($month) . "\n";
 $weekday = date('l');
 echo "$weekday: " . $translator->get($weekday, 'fi_FI') . "\n";
-?>

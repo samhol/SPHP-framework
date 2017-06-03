@@ -19,4 +19,3 @@ $form[] = (new Slider("tempRange", 0, 40, 1))
         ->setValue(20);
 
 $form->printHtml();
-?>

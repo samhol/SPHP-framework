@@ -18,5 +18,3 @@ var_dump($validator->isValid('lega3'));
 
 echo "validating string 'legal':\n";
 var_dump($validator('legal'));
-
-?>

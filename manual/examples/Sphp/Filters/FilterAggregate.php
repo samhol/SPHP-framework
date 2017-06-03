@@ -13,4 +13,3 @@ $filters->addFilter(new IntegerFilter(2))
         //->addFilter(new IntegerToRomanFilter());
 $collectionFilter = new CollectionFilterAggregate($filters);
 print_r($collectionFilter($arr));
-?>

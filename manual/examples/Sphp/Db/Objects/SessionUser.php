@@ -24,4 +24,3 @@ if ($users->contains($john)) {
   echo "\n$john";
 }
 return $john;
-?>

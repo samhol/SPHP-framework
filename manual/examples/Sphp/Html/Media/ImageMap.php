@@ -16,4 +16,3 @@ $map = (new ImageMap\Map("shapes"))
                 ->setHref("https://en.wikipedia.org/wiki/Rectangle")
                 ->setTarget("_blank"))
         ->printHtml();
-?>

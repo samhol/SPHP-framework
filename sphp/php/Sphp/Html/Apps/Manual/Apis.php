@@ -9,7 +9,7 @@ namespace Sphp\Html\Apps\Manual;
 
 use Sphp\Html\Apps\Manual\Sami\Sami;
 use Sphp\Html\Apps\Manual\Sami\SamiUrlGenerator;
-use Sphp\Html\Apps\Manual\ApiGen;
+use Sphp\Html\Apps\Manual\ApiGen\ApiGen;
 use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManualUrlGenerator;

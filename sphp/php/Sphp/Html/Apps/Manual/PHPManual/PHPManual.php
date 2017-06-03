@@ -52,7 +52,7 @@ class PHPManual extends AbstractPhpApiLinker {
       $linkText = $constant;
     }
     $path = $this->urls()->getConstantUrl($constant);
-    return $this->hyperlink($path, $linkText, "$constant cnnstant")
+    return $this->hyperlink($path, $linkText, "$constant constant")
                     ->addCssClass('constant');
   }
 

@@ -24,4 +24,3 @@ $data2 = [
 echo "validating data2:";
 var_dump($validator->isValid($data2));
 echo $validator->getInputErrors();
-?>

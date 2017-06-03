@@ -18,6 +18,3 @@ var_dump(
         $collection->contains("a"),
         $collection->count() === 5,
         $collection->end() === "e");
-
-
-?>

@@ -11,4 +11,3 @@ $q->insert("priority 4", 4);
 foreach ($q as $key => $value) {
   echo "$value\n";
 }
-?>

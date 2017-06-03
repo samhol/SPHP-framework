@@ -19,23 +19,12 @@ use ErrorException;
  */
 class ErrorExceptionThrower {
 
-  static $ignoreDeprecated = true;
-
   /**
    * Starts redirecting PHP errors
    * 
    * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
    */
   public static function start($level = \E_ALL) {
-    if ($level == null) {
-      if (defined('E_DEPRECATED')) {
-        $level = E_ALL & ~E_DEPRECATED;
-      } else {
-        // php 5.2 and earlier don't support E_DEPRECATED
-        $level = E_ALL;
-        self::$ignoreDeprecated = true;
-      }
-    }
     set_error_handler(array(self::class, 'handleError'), $level);
     register_shutdown_function(array(self::class, 'fatalErrorShutdownHandler'));
   }
@@ -70,7 +59,7 @@ class ErrorExceptionThrower {
    * @param  string $code 
    * @param  string $string The Exception message to throw.
    * @param  string $file
-   * @param  string $line
+   * @param  int $line
    * @return void
    * @throws ErrorException
    */

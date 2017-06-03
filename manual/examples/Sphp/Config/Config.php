@@ -13,5 +13,3 @@ Config::instance("foobar", [], false)
 
 print_r(Config::instance("foo")->toArray());
 print_r(Config::instance("foobar")->toArray());
-
-?>

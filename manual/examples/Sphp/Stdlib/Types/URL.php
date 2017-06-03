@@ -15,4 +15,3 @@ $current
 echo $current->getRaw() . "\n";
 echo "$current\n";
 echo "$clone\n";
-?>

@@ -19,4 +19,3 @@ $form->validation(false)
                 ->setPostfix("&deg;C")
                 ->setValue("20;35"))
         ->printHtml();
-?>

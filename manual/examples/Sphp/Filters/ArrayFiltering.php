@@ -20,4 +20,3 @@ $filters->addFilter($stringFilters)
         ->addFilter(new FilterAggregate(["mb_strtolower", "ucfirst"]));
 
 print_r(Arrays::multiMap($filters, $arr));
-?>

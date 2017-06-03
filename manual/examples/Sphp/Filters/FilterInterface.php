@@ -8,4 +8,3 @@ $toRoman = new IntegerToRomanFilter();
 foreach ($data as $val) {
   echo "$val, " . $ordinalizer($val) . ", " . $toRoman($val) . "\n";
 }
-?>

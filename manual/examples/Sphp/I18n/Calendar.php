@@ -24,4 +24,3 @@ echo "\nMonths:";
 foreach ($calendar->getMonths() as $m) {
 	echo " $m";
 }
-?>

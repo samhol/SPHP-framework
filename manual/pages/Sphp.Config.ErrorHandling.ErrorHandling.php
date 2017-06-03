@@ -27,13 +27,4 @@ MD
 );
 (new CodeExampleBuilder("Sphp/Config/ErrorHandling/ErrorExceptionThrower.php"))
         ->printHtml();
-echo $parsedown->text(<<<MD
-        
-By default $errorExceptionThrower handles all runtime errors except $e_deprecated.
-This feature can be turned off for even stricter error handling.
-
-MD
-);
-(new CodeExampleBuilder("Sphp/Config/ErrorHandling/ErrorExceptionThrower2.php"))
-        ->printHtml();
 

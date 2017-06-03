@@ -54,4 +54,3 @@ $links[] = $dateTime1;
 $links[] = $dateTime1->methodLink('format');
 $links[] = $dateTime1->constantLink('ATOM');
 $links->printHtml();
-?>

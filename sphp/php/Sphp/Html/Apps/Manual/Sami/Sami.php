@@ -11,6 +11,7 @@ use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumbs;
+use Sphp\Html\Adapters\QtipAdapter;
 
 /**
  * Hyperlink object generator pointing to an existing ApiGen documentation
@@ -93,7 +94,8 @@ class Sami extends AbstractPhpApiLinker {
       $path = implode("/", $currentNamespaceArray);
       $root = implode("\\", $currentNamespaceArray);
       $breadCrumb = new BreadCrumb($this->createUrl("$path.html"), $name, $this->getDefaultTarget());
-      $breadCrumb->setTitle("$root Namespace");
+      (new QtipAdapter($breadCrumb))->setQtip("$root Namespace")->setQtipPosition('bottom center', 'top center');
+      //$breadCrumb->setTitle("$root Namespace");
       $breadGrumbs->append($breadCrumb);
     }
     return $breadGrumbs;

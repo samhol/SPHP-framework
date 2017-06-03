@@ -32,4 +32,3 @@ foreach ($users as $row => $user) {
   $tbody->append($tds);
 }
 $table->printHtml();
-?>

@@ -18,4 +18,3 @@ echo (new Conditions())
 echo (new Conditions())
 		->isIn("value1", range("a", "d"))
 		->isNotIn("value2", range(-1, 3)) . "\n";
-?>

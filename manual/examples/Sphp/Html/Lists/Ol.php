@@ -14,4 +14,3 @@ $olCopy = clone $ol;
 $olCopy->setType('I');
 
 (new Row([$ol, $olCopy]))->printHtml();
-?>

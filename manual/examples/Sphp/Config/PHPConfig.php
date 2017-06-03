@@ -11,4 +11,3 @@ $helsinki = (new PHPConfig())
         ->setDefaultTimezone('Europe/Helsinki')
         ->init();
 echo "Current time: " . date('H:i:s T');
-?>

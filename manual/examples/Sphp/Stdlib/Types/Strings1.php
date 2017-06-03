@@ -15,4 +15,3 @@ echo "start & end:\n";
 var_dump(
 		Strings::startsWith("0 1", "0 1 2"),
 		Strings::endsWith("bcd", "123abc"));
-?>

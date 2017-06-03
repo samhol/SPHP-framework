@@ -11,4 +11,3 @@ while (!$queue->isEmpty()) {
   echo "peeked: " . $queue->peek() . "\n";
   echo "dequeued: " . $queue->dequeue() . "\n";
 }
-?>

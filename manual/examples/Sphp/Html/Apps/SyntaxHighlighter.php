@@ -20,4 +20,3 @@ $row->append($syntax1)
         ->append($syntax2)
         ->append($syntax3)
         ->printHtml();
-?>

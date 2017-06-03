@@ -10,4 +10,3 @@ $attrs->styles()->setProperty("width", "50%");
 echo "<input $attrs>\n";
 $attrs->styles()->set("width", false);
 echo "<input $attrs>\n";
-?>

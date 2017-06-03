@@ -10,4 +10,3 @@ $string = 'лдэфвәәуүйәуйүәу034928348539857әшаыдларора
 echo 'strlen: ' . strlen($string);
 echo "\n\StringObject length: " . (new StringObject($string))->length();
 echo "\n\Strings length: " . Strings::length($string);
-?>

@@ -13,4 +13,3 @@ echo $filters->filter("__*<b>BOLD</b>!!<br>*_") . " and ";
 echo $filters("__<i>italic</i>__") . "\n";
 
 return $filters;
-?>

@@ -11,5 +11,3 @@ foreach ($data as $row) {
 	$table->tbody()->appendBodyRow($row);
 }
 $table->printHtml();
-
-?>

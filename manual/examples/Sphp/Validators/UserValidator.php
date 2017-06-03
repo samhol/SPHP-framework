@@ -11,4 +11,3 @@ $user = [
 
 $validator = (new UserValidator());
 echo $validator->validate($user)->getErrors();
-?>

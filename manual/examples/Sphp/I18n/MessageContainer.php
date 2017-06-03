@@ -14,4 +14,3 @@ $messageCont2 = (new PrioritizedMessageList())
 		->merge($messageCont1)
 		->insertMessage("Message priority value %s", ["nine"], 9);
 echo $messageCont2;
-?>

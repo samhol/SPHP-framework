@@ -15,4 +15,3 @@ try {
           ->printHtml();
 }
 ErrorExceptionThrower::Stop();
-?>

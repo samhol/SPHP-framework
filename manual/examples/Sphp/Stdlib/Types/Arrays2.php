@@ -22,4 +22,3 @@ $arr3 = ["a" => [1 => "value1"]];
 echo "\narr3['a']['1'] = ";
 var_dump(Arrays::getValue($arr3, ["a", "1"]));
 var_dump(Arrays::getValue($arr3, ["foo", "bar"]));
-?>

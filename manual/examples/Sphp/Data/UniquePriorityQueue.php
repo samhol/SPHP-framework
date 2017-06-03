@@ -11,4 +11,3 @@ $queue
         ->enqueue("Priority 10000", 10000)
         ->enqueue("Priority 3", 3);
 echo implode("\n", $queue->toArray());
-?>

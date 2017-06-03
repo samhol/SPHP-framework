@@ -23,14 +23,14 @@ use Sphp\Html\Adapters\QtipAdapter;
 abstract class AbstractLinker implements LinkerInterface {
 
   /**
-   * the url pointing to the API documentation root
+   * the URL pointing to the API documentation root
    *
    * @var UrlGeneratorInterface
    */
   private $urlGenerator;
 
   /**
-   * the url pointing to the API documentation root
+   * the target of the hyperlink
    *
    * @var string|null
    */
@@ -81,6 +81,19 @@ abstract class AbstractLinker implements LinkerInterface {
 
   public function __toString() {
     return $this->hyperlink()->getHtml();
+  }
+
+  /**
+   * Returns a hyperlink object pointing to a linked page
+   *
+   * @param  string $url optional path from the root to the resource
+   * @param  string $content optional content of the link
+   * @param  string $title optional title of the link
+   * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
+   * @return HyperlinkInterface hyperlink object pointing to an API page
+   */
+  public function __invoke($url = null, $content = null, $title = null) {
+    return $this->hyperlink($url, $content, $title);
   }
 
   public function urls() {
@@ -155,7 +168,7 @@ abstract class AbstractLinker implements LinkerInterface {
     }
     $a = new Hyperlink($url, $content);
     if ($title !== null) {
-      (new QtipAdapter($a))->setQtip($title)->setQtipPosition("bottom center", "top center");
+      (new QtipAdapter($a))->setQtip($title)->setQtipPosition('bottom center', 'top center');
     }
     $this->insertDefaults($a);
     return $a;
