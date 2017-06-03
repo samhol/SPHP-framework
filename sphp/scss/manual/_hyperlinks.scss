@@ -1,0 +1,52 @@
+p:not([class]), ol:not([class]), ul:not([class]), dl:not([class]) {
+  a:not([class]) {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+} 
+p a.api, ul a.api, ol a.api {
+  font-family: "Source Code Pro", monospace !important;
+  padding-left: rem-calc(4);
+  padding-right: rem-calc(4);
+  &:hover {
+    color: #8c1111;
+  }
+  &.phpman, &.apigen, &.sami {
+    border: solid 1px #ddd;
+    @include border-radius(2px);
+    text-decoration: none;
+    font-weight: normal;
+  }
+  &.sami {
+    color: rgba(0, 90, 255, 1);
+    border-color: rgba(51, 153, 255, .3);
+    background-color: rgba(210, 210, 210, .3); 
+    &:hover {
+      color: rgba(0, 0, 255, 1);
+      border-color: rgba(51, 153, 255, .8);
+      background-color: rgba(210, 210, 210, .8); 
+    }
+  }
+  &.apigen {
+    color: #006aeb;
+    border-color: rgba(51, 153, 255, .3);
+    background-color: rgba(230, 230, 230, .5); 
+    &:hover {
+      color: #8c1111;
+      border-color: rgba(51, 153, 255, .6);
+      background-color: rgba(210, 210, 210, 1); 
+    }
+  }
+  &.phpman {
+    color: #369;
+    border-color: #bbb;
+    background-color: rgba(210, 210, 210, .3); 
+    &:hover {
+      color: #8c1111;
+      border-color: #c66;
+      background-color: rgba(210, 210, 210, .8); 
+    }
+  }
+}
