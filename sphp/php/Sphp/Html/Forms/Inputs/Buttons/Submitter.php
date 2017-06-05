@@ -1,17 +1,20 @@
 <?php
 
 /**
- * SubmitButton.php (UTF-8)
+ * Submit.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Forms\Buttons;
+namespace Sphp\Html\Forms\Inputs\Buttons;
+
+use Sphp\Html\Forms\SubmitterInterface;
+use Sphp\Html\Forms\Inputs\InputInterface;
 
 /**
- * Implements &lt;button type="submit"&gt; tag
+ * Implements &lt;input type="submit"&gt; tag
  *
  * A submit button is used to send form data to a server.
- * The data is sent to the page specified in the action attribute of the form.
+ * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
@@ -20,18 +23,26 @@ namespace Sphp\Html\Forms\Buttons;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SubmitButton extends ButtonTag implements Submitter {
+class Submitter extends AbstractButton implements SubmitterInterface, InputInterface {
+
+  use \Sphp\Html\Forms\Inputs\InputTagTrait;
 
   /**
    * Constructs a new instance
    *
-   * @param  string|null $content the value of value attribute
+   * @param  string|null $value the value of value attribute
    * @param  string|null $name the value of name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function __construct($content = null, $name = null) {
-    parent::__construct('submit', $content, $name);
+  public function __construct($value = null, $name = null) {
+    parent::__construct('submit');
+    if (isset($name)) {
+      $this->setName($name);
+    }
+    if (isset($value)) {
+      $this->setValue($value);
+    }
   }
 
 }

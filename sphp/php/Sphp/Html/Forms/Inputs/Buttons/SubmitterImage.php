@@ -1,11 +1,13 @@
 <?php
 
 /**
- * SubmitButton.php (UTF-8)
+ * ImageButton.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Forms\Buttons;
+namespace Sphp\Html\Forms\Inputs\Buttons;
+
+use Sphp\Html\Forms\SubmitterInterface;
 
 /**
  * Implements &lt;input type="submit"&gt; tag
@@ -20,7 +22,7 @@ namespace Sphp\Html\Forms\Buttons;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SubmitInput extends InputButton implements Submitter {
+class SubmitterImage extends AbstractButton implements SubmitterInterface {
 
   /**
    * Constructs a new instance
@@ -31,7 +33,7 @@ class SubmitInput extends InputButton implements Submitter {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function __construct($value = null, $name = null) {
-    parent::__construct('submit', $name, $value);
+    parent::__construct('image', $name, $value);
   }
 
 }

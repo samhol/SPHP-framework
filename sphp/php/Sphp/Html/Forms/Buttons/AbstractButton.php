@@ -1,14 +1,13 @@
 <?php
 
 /**
- * ButtonTag.php (UTF-8)
+ * AbstractButton.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Forms\Buttons;
 
 use Sphp\Html\ContainerTag;
-use Sphp\Html\Forms\Inputs\InputTrait;
 
 /**
  * Implements an HTML &lt;button&gt; tag
@@ -20,9 +19,7 @@ use Sphp\Html\Forms\Inputs\InputTrait;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ButtonTag extends ContainerTag implements ButtonInterface {
-
-  use InputTrait;
+abstract class AbstractButton extends ContainerTag {
 
   /**
    * Constructs a new instance
@@ -36,15 +33,9 @@ class ButtonTag extends ContainerTag implements ButtonInterface {
    * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($type, $content = null, $name = null, $value = null) {
+  public function __construct($type, $content = null) {
     parent::__construct('button', $content);
     $this->attrs()->lock('type', $type);
-    if (isset($name)) {
-      $this->setName($name);
-    }
-    if (isset($value)) {
-      $this->setValue($value);
-    }
   }
 
   /**

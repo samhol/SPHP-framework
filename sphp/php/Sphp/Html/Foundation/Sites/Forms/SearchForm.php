@@ -9,8 +9,8 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 
 use Sphp\Html\Forms\FormInterface;
 use Sphp\Html\Forms\Inputs\TextInput;
+use Sphp\Html\Forms\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
-use Sphp\Html\Forms\Buttons\SubmitButton;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
 use Sphp\Html\Icons\Icon;
 
@@ -46,7 +46,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     $this->setAction($action)
             ->setMethod($method)
             ->setTarget('_self');
-    $this->setSubmitButton(new SubmitButton(Icon::fontAwesome('fa-search')));
+    $this->setSubmitButton(new Submitter(Icon::fontAwesome('fa-search')));
     $this->hiddenData = new HiddenInputs();
     $this->setSearchField(new TextInput());
   }
@@ -61,7 +61,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     return $this;
   }
 
-  public function getSubmitButton(): Submitter {
+  public function getSubmitButton(): SubmitterInterface {
     return $this->submitButton;
   }
 
@@ -70,7 +70,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
    * @param Submitter $submitButton
    * @return $this
    */
-  public function setSubmitButton(Submitter $submitButton) {
+  public function setSubmitButton(SubmitterInterface $submitButton) {
     $this->submitButton = $submitButton;
     $this->submitButton->cssClasses()->lock('button');
     return $this;

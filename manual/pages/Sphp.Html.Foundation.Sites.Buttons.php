@@ -4,10 +4,10 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-
-$btn = Apis::sami()->classLinker(ButtonInterface::class);
-$abstractButton = Apis::sami()->classLinker(AbstractButton::class);
-$formBtn = Apis::sami()->classLinker(\Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton::class);
+use Sphp\Html\ComponentInterface;
+$componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
+$buttonInterface = Apis::sami()->classLinker(ButtonInterface::class);
+$buttonAdapter = Apis::sami()->classLinker(ButtonAdapter::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = Apis::sami()->classLinker(ButtonGroup::class);
@@ -17,27 +17,20 @@ $ns
 This namespace contains Foundation buttons and buttongroups.
 They are convenient tools when a centralized style for customized button links and form buttons etc. isneeded.
 
-##The $btn models a Foundation button
+##The $buttonInterface <small> For Foundation styled button</small>
 
-The $btn interface defines required minimun implementation for all Foundation styled Buttons.
-
-Abstract Class $abstractButton is a build in base class extending $btn.
-Developers can easily implement a variety of Foundation Buttons by simply extending $abstractButton and 
-it is possible in theory to implement any HTML tag as a Foundation Button.
-
-###Styling the $btn buttons
-
+Interface defines required minimun implementation for all Foundation styled Buttons.
 Buttons support predefined Foundation color and size classes and can
-also use custom made classes. Colors can be set by calling {$btn->methodLink("setColor", FALSE)}
-instance method whereas size can be set by calling {$btn->methodLink("setSize", FALSE)}
+also use custom made classes. Colors can be set by calling {$buttonInterface->methodLink("setColor", FALSE)}
+instance method whereas size can be set by calling {$buttonInterface->methodLink("setSize", FALSE)}
 instance method with the CSS class name as a parameter value:
 MD
 );
 
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$blockGrid = new BlockGrid(null, ['small-up-1', 'large-up-3']);
-$blockGrid->append($parsedown->text(<<<MD
+$blockGrid = new BlockGrid(['small-up-1', 'large-up-2']);
+$blockGrid->appendMd(<<<MD
 Predefined color classes:
 
 * `NULL` unsets all special button styles (default)
@@ -47,8 +40,8 @@ Predefined color classes:
 * `'secondary'` for alternatively styled buttons
 * `'disabled'` for disabled buttons
 MD
-));
-$blockGrid->append($parsedown->text("
+);
+$blockGrid->appendMd(<<<MD
 Predefined size classes:
 
 * `'tiny'` for tiny buttons
@@ -57,15 +50,13 @@ Predefined size classes:
 * `'large'` for large buttons
 * `'extend'` for extended buttons (takes the full width of the container)
 "
-));
+MD
+);
 $blockGrid->printHtml();
 echo $parsedown->text(<<<MD
-##The {$api->classLinker(HyperlinkButton::class)} and the $formBtn components
+##$buttonAdapter <small>Converts anything to button style</small>
 
-1. {$api->classLinker(HyperlinkButton::class)} component implements basic
-hyperlink properties from {$api->classLinker(\Sphp\Html\Navigation\HyperlinkInterface::class)}.
-2. $formBtn component implements
-{$api->classLinker(ButtonInterface::class)} and therefore can be used as a HTML button for any {$api->classLinker(\Sphp\Html\Forms\FormInterface::class)}.
+This adapter can transform most $componentInterface objects to Foundation styled buttons.
 MD
 );
 
@@ -75,11 +66,11 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+//CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
 echo $parsedown->text(<<<MD
 ##The $btnGroup class
 
-A $btnGroup component is a container for $btn components. A $btnGroup component
+A $btnGroup component is a container for $buttonInterface components. A $btnGroup component
 is effective for displaying a group of actions in a bar. $btnGroup component works
 perfectly with the grid component.
 

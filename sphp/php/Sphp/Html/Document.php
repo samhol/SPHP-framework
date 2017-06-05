@@ -65,9 +65,9 @@ class Document {
       'blockquote' => ContainerTag::class,
       'body' => Body::class,
       'br' => EmptyTag::class,
-      //'button:button' => Forms\Buttons\Button::class,
-      'button:reset' => Forms\Buttons\ResetButton::class,
-      'button:submit' => Forms\Buttons\SubmitInput::class,
+      'button:button' => Forms\Buttons\Button::class,
+      'button:reset' => Forms\Buttons\Resetter::class,
+      'button:submit' => Forms\Buttons\Submitter::class,
       'col' => Tables\Col::class,
       'input' => Forms\Inputs\InputTag::class,
       'input:hidden' => Forms\Inputs\HiddenInput::class,
@@ -77,6 +77,8 @@ class Document {
       'input:radio' => Forms\Inputs\Radiobox::class,
       'input:checkbox' => Forms\Inputs\Checkbox::class,
       'input:number' => Forms\Inputs\NumberInput::class,
+      'input:reset' => Forms\Inputs\Buttons\Resetter::class,
+      'input:submit' => Forms\Inputs\Buttons\Submitter::class,
       'canvas' => ContainerTag::class,
       'caption' => Tables\Caption::class,
       'cite' => ContainerTag::class,
@@ -199,7 +201,7 @@ class Document {
       if ($data[0] == 'input') {
         $className = Forms\Input\Input::class;
       } else {
-        $className = Forms\Buttons\ButtonTag::class;
+        $className = Forms\Buttons\Button::class;
       }
       $type = $data[1];
       $class = new $className($type);

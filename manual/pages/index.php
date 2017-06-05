@@ -1,6 +1,6 @@
 <?php
 echo $parsedown->text(<<<MD
-#SPHP: <small>a framework for responsive web developement using PHP</small>
+#SPHP <small>a framework for responsive web developement using PHP</small>
 MD
 );
 

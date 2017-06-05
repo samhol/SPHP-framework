@@ -7,6 +7,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
 
+use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
+use Sphp\Html\Forms\Inputs\Buttons\Submitter;
+
 /**
  * Implements &lt;input type="submit"&gt; tag as a Foundation Button
  * 
@@ -21,7 +24,10 @@ namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SubmitButton extends InputButton {
+class SubmitButton extends Submitter implements ButtonInterface {
+
+  use \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait,
+      \Sphp\Html\Forms\Inputs\InputTrait;
 
   /**
    * Constructs a new instance
@@ -32,7 +38,7 @@ class SubmitButton extends InputButton {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function __construct($value = null, $name = null) {
-    parent::__construct('submit', $name, $value);
+    parent::__construct($name, $value);
   }
 
 }

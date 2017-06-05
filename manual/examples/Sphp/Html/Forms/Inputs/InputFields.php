@@ -26,4 +26,3 @@ $form[] = (new Select("select"))
         ->appendOption("opt2", "Option 2.");
 
 $form->printHtml();
-?>

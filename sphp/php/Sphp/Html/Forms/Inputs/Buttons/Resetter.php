@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Forms\Buttons;
+namespace Sphp\Html\Forms\Inputs\Buttons;
 
 /**
  * Implements an HTML &lt;input type="reset"&gt; tag
@@ -19,7 +19,7 @@ namespace Sphp\Html\Forms\Buttons;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ResetButton extends InputButton {
+class Resetter extends AbstractButton {
 
   /**
    * Constructs a new instance

@@ -7,7 +7,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Forms\Buttons\ButtonTag as ButtonTag;
+use Sphp\Html\ComponentInterface;
+use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Forms\Buttons\Submitter;
 
 /**
  * Implements an HTML &lt;button&gt; tag as a Foundation Button
@@ -20,23 +22,31 @@ use Sphp\Html\Forms\Buttons\ButtonTag as ButtonTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Button extends ButtonTag {
+class Button {
+
+  public static function create(ComponentInterface $component) {
+    return new ButtonAdapter($component);
+  }
 
   /**
-   * Constructs a new instance
-   *
-   * @param  string $type the value of type attribute
-   * @param  mixed $content the content of the button tag
-   * @param  string $name the value of name attribute
-   * @param  string $value the value of value attribute
-   * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * 
+   * @param type $href
+   * @param type $content
+   * @param type $target
+   * @return type
    */
-  public function __construct($type = 'button', $content = null, $name = null, $value = null) {
-    parent::__construct($type, $content, $name, $value);
-    $this->cssClasses()->lock('button');
+  public static function hyperlink($href = null, $content = null, $target = null) {
+    return static::create(new Hyperlink($href, $content, $target));
+  }
+  /**
+   * 
+   * @param type $content
+   * @param type $name
+   * @param type $value
+   * @return type
+   */
+  public static function submitter($content = null, $name = null, $value = null) {
+    return static::create(new Submitter($content, $name, $value));
   }
 
 }

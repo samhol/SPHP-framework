@@ -9,10 +9,10 @@ require_once('../settings.php');
 use Sphp\Html\Foundation\Sites\Grids\Column;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 use Sphp\Html\Div;
-use Sphp\Html\Forms\Buttons\ButtonTag;
+use Sphp\Html\Forms\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 
-$submitter = (new ButtonTag('button', 'See submission data', 'submitted'))
+$submitter = (new Button('See submission data'))
         ->addCssClass('button alert small submitter');
 $panel = (new Callout($submitter))->setColor('alert')->addCssClass('form-submitter small');
 //$panel->setCallout();
