@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton;
-use InvalidArgumentException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a Button Group
@@ -67,7 +67,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function appendLink($href, $content, $target = '_self') {
-    $this->appendButton(new HyperlinkButton($href, $content, $target));
+    $this->appendButton(Button::hyperlink($href, $content, $target));
     return $this;
   }
 
@@ -126,7 +126,7 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * @precondition `$screenSize` == `small|medium|all`
    * @param  string $screenSize the targeted screensize
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
+   * @throws Sphp\Exceptions\ if the `$screenSize` does not match precondition
    */
   public function stackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {

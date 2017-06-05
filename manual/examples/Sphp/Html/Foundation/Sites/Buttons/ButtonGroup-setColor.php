@@ -2,13 +2,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-
-$buttons[] = new HyperlinkButton("http://www.google.com/", "Google", "engine");
-$buttons[] = new HyperlinkButton("http://www.bing.com", "Bing", "engine");
-$buttons[] = new HyperlinkButton("http://www.ask.com/", "ask.com", "engine");
-
-$buttonGroup = (new ButtonGroup($buttons))
+$buttonGroup = (new ButtonGroup())
+        ->appendLink("https://www.yahoo.com/", "Yahoo!", "engine")
         ->appendLink("https://www.yahoo.com/", "Yahoo!", "engine")
         ->setColor("success");
 $buttonGroup->printHtml();
-?>

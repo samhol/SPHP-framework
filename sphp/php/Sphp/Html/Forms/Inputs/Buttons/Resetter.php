@@ -21,6 +21,8 @@ namespace Sphp\Html\Forms\Inputs\Buttons;
  */
 class Resetter extends AbstractButton {
 
+  use Sphp\Html\Forms\ResetterInterface;
+
   /**
    * Constructs a new instance
    *

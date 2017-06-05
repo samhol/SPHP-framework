@@ -25,49 +25,11 @@ abstract class AbstractButton extends ContainerTag {
    * Constructs a new instance
    *
    * @param  string $type the value of type attribute
-   * @param  mixed $content the content of the button tag
-   * @param  string $name the value of name attribute
-   * @param  string $value the value of value attribute
-   * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
-   * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
+   * @param  string|null $content the content of the button
    */
   public function __construct($type, $content = null) {
     parent::__construct('button', $content);
     $this->attrs()->lock('type', $type);
-  }
-
-  /**
-   * Returns the value of the value attribute
-   *
-   * @return string napin arvo
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
-   */
-  public function getSubmitValue() {
-    return $this->getAttr('value');
-  }
-
-  /**
-   * Sets the value of the value attribute
-   *
-   * @param  string $value napin arvo
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
-   */
-  public function setValue($value) {
-    return parent::setAttr('value', $value);
-  }
-
-  /**
-   * Returns the value of the type attribute
-   *
-   * @return string the value of the type attribute
-   * @link   http://www.w3schools.com/tags/att_button_type.asp type attribute
-   */
-  public function getType() {
-    return parent::getAttrValue('type');
   }
 
 }

@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\ComponentInterface;
 $componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
 $buttonInterface = Apis::sami()->classLinker(ButtonInterface::class);
-$buttonAdapter = Apis::sami()->classLinker(ButtonAdapter::class);
+$buttonAdapter = Apis::sami()->classLinker(Button::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = Apis::sami()->classLinker(ButtonGroup::class);

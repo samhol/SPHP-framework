@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Forms\Buttons;
 
+use Sphp\Html\Forms\ResetterInterface;
+
 /**
  * Implements an HTML &lt;input type="reset"&gt; tag
  *

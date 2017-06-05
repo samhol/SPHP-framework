@@ -25,7 +25,7 @@ use Sphp\Html\Forms\Inputs\InputInterface;
  */
 class Submitter extends AbstractButton implements SubmitterInterface, InputInterface {
 
-  use \Sphp\Html\Forms\Inputs\InputTrait;
+  use \Sphp\Html\Forms\Inputs\InputTagTrait;
 
   /**
    * Constructs a new instance
