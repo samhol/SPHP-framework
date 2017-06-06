@@ -9,7 +9,6 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Forms\Buttons\ButtonTag;
 
 /**
  * Implements Dropdown HTML component
@@ -33,9 +32,7 @@ class Dropdown implements ContentInterface {
   ];
 
   /**
-   * the target component for the dropdown functionality
-   *
-   * @var ButtonTag
+   * @var ComponentInterface
    */
   private $trigger;
 
@@ -66,6 +63,15 @@ class Dropdown implements ContentInterface {
     $this->identify("Dropdown");
     $this->trigger = clone $this->trigger;
     $this->setTrigger($this->trigger);
+  }
+
+  public function getDropdown() {
+    return $this->dropdown;
+  }
+
+  public function setDropdown(ComponentInterface $dropdown) {
+    $this->dropdown = $dropdown;
+    return $this;
   }
 
   /**
@@ -143,26 +149,26 @@ class Dropdown implements ContentInterface {
   }
 
   /**
-   * Sets the component having this dropdown
+   * Sets the component controlling this dropdown
    *
-   * @param  mixed the component having this dropdown
+   * @param  mixed the component controlling this dropdown
    * @return self for a fluent interface
    */
-  public function setTrigger($togleButton) {
-    if (!($togleButton instanceof ButtonTag)) {
-      $togleButton = new ButtonTag('button', $togleButton);
+  public function setTrigger($trigger) {
+    if (!($trigger instanceof ComponentInterface)) {
+      $trigger = new \Sphp\Html\Span($trigger);
     }
-    $this->trigger = $togleButton
+    $this->trigger = $trigger
             ->setAttr('data-toggle', $this->dropdown->identify());
     return $this;
   }
 
   /**
-   * Returns the button component having this dropdown
+   * Returns the trigger component controlling this dropdown
    *
-   * @return ButtonTag the button component having this dropdown
+   * @return ComponentInterface the trigger component controlling this dropdown
    */
-  public function getTarget() {
+  public function getTrigger() {
     return $this->trigger;
   }
 

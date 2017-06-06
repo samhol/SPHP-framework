@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
+use Sphp\Html\Foundation\Sites\Containers\Dropdown;
 
 $split1 = (new SplitButton("default action"))
         ->setSize("small")
@@ -10,7 +10,6 @@ $split1 = (new SplitButton("default action"))
 $split2 = (new SplitButton(Button::hyperlink("http://samiholck.com/", "samiholck.com", "_blank")))
         ->setSize("small")
         ->setColor("secondary");
-$grid = (new BlockGrid())
-        ->append($split1)
-        ->append($split2)
-        ->printHtml();
+$dd = new Dropdown($split2->secondaryButton(), "Hello! I'm a dropdown");
+
+echo "$split1 $split2 {$dd->getDropdown()}";

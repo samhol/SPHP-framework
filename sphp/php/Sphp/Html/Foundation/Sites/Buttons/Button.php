@@ -82,6 +82,19 @@ use ButtonTrait;
   }
 
   /**
+   * Creates a new instance adapted from mixed content
+   *
+   * @param  string|null $from adaptee component or content of the button
+   * @return self new instance
+   */
+  public static function create($from) {
+    if (!$from instanceof \Sphp\Html\ComponentInterface) {
+      $from = new \Sphp\Html\Span($from);
+    }
+    return new static($from);
+  }
+
+  /**
    * Creates a new instance adapted from hyperlink
    *
    * **Notes:**

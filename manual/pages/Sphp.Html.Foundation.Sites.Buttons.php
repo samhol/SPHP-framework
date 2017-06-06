@@ -66,7 +66,7 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-//CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
+CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
 echo $parsedown->text(<<<MD
 ##The $btnGroup class
 

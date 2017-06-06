@@ -15,5 +15,5 @@ $panel2 = (new Callout())
 $panel3 = (new Callout("<h4>Persistent callout</h4>"))
         ->ajaxAppend("manual/snippets/loremipsum.html #par_1")
         ->setColor("warning")
-        ->setClosable(false)
+        ->setClosable(true)
         ->printHtml();
