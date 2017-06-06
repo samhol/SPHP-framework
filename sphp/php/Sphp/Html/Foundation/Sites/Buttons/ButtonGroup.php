@@ -8,7 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\AbstractContainerComponent;
-use Sphp\Html\Foundation\Sites\Forms\Buttons\InputButton;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
@@ -72,18 +71,27 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
   }
 
   /**
-   * Creates and appends a new {@link FormButton} to the group
+   * Creates and appends a new submitter
    * 
-   * @param  string $type the value of type attribute
-   * @param  string $name the value of name attribute
-   * @param  string $value the value of value attribute
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
+   * @param  string|null $content the content of the button
+   * @param  string|null $name the value of name attribute
+   * @param  string|null $value the value of value attribute
+   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    */
-  public function appendInputButton($type = null, $name = null, $value = null) {
-    $this->appendButton(new InputButton($type, $name, $value));
+  public function appendSubmitter($content = null, $name = null, $value = null) {
+    $this->appendButton(Button::submitter($content, $name, $value));
+    return $this;
+  }
+
+  /**
+   * Creates and appends a new submitter
+   * 
+   * @param  string|null $content the content of the button
+   * @return self for a fluent interface
+   */
+  public function appendResetter($content = null) {
+    $this->appendButton(Button::resetter($content));
     return $this;
   }
 
@@ -124,9 +132,9 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Stacks the buttons in the given screen sizes
    * 
    * @precondition `$screenSize` == `small|medium|all`
-   * @param  string $screenSize the targeted screensize
+   * @param  string $screenSize the targeted screen size
    * @return self for a fluent interface
-   * @throws Sphp\Exceptions\ if the `$screenSize` does not match precondition
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function stackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {
@@ -145,9 +153,9 @@ class ButtonGroup extends AbstractContainerComponent implements \IteratorAggrega
    * Unstacks the stacked buttons in the given screen sizes
    * 
    * @precondition `$screenSize` == `small|medium|all`
-   * @param  string $screenSize the targeted screensize
+   * @param  string $screenSize the targeted screen size
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the `$screenSize` does not match precondition
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the `$screenSize` does not match precondition
    */
   public function unStackFor($screenSize = 'all') {
     if (in_array($screenSize, static::$stackScreens)) {

@@ -23,7 +23,7 @@ use Sphp\Html\Navigation\Hyperlink;
  * @filesource
  */
 Class Button extends ColourableAdapter implements ButtonInterface {
-
+use ButtonTrait;
   /**
    * CSS classes corresponding to the size constants
    *
@@ -77,13 +77,8 @@ Class Button extends ColourableAdapter implements ButtonInterface {
     return $this->setSize('medium');
   }
 
-  /**
-   * 
-   * @param ComponentInterface $component
-   * @return self new instance
-   */
-  public static function create(ComponentInterface $component) {
-    return new static($component);
+  public function cssClasses() {
+    return $this->getComponent()->cssClasses();
   }
 
   /**
@@ -107,9 +102,9 @@ Class Button extends ColourableAdapter implements ButtonInterface {
 
   /**
    * 
-   * @param  mixed $content
-   * @param type $name
-   * @param type $value
+   * @param  mixed $content optional
+   * @param  string|null $name optional
+   * @param  string|null $value optional
    * @return self new instance
    */
   public static function submitter($content = null, $name = null, $value = null) {
@@ -119,7 +114,7 @@ Class Button extends ColourableAdapter implements ButtonInterface {
   /**
    * 
    * @param  mixed $content
-   * @return self new instance
+   * @return self new instance for form resetting
    */
   public static function resetter($content = null) {
     return new static(new Resetter($content));

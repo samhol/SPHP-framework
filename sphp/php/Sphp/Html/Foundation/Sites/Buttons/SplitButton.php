@@ -31,7 +31,7 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
   private $primary;
 
   /**
-   * the secondaty button
+   * the secondary button
    *
    * @var ButtonInterface 
    */
@@ -81,6 +81,18 @@ class SplitButton extends AbstractComponent implements ButtonInterface {
 
   public function contentToString(): string {
     return $this->primary . $this->secondary;
+  }
+
+  public function disable($disabled = true) {
+    
+  }
+
+  public function isDropdown($dropdown = true) {
+    
+  }
+
+  public function isHollow($hollow = true) {
+    
   }
 
 }

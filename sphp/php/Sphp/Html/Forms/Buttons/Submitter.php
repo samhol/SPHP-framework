@@ -33,8 +33,8 @@ class Submitter extends AbstractButton implements SubmitterInterface, InputInter
    * @param  string|null $content the content of the button
    * @param  string|null $name the value of name attribute
    * @param  string|null $value the value of value attribute
-   * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
-   * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
+   * @link   http://www.w3schools.com/tags/att_button_value.asp value attribute
+   * @link   http://www.w3schools.com/tags/att_button_name.asp name attribute
    */
   public function __construct($content = null, $name = null, $value = null) {
     parent::__construct('submit', $content);

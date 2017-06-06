@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Buttons\AbstractButton | SPHP framework API</title>
+    <title>Sphp\Html\Forms\Inputs\Buttons\AbstractButton | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Buttons_AbstractButton" data-root-path="../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Forms_Inputs_Buttons_AbstractButton" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -68,9 +68,9 @@
                 <li><span class="label label-default">class</span></li>
                                                             <li><a href="../../../../../Sphp.html">Sphp</a></li>
                                         <li><a href="../../../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons.html">Buttons</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Forms.html">Forms</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Forms/Inputs.html">Inputs</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Forms/Inputs/Buttons.html">Buttons</a></li>
     
                 <li>AbstractButton</li>
             </ol>
@@ -85,38 +85,20 @@
     </div>
 
     <p>    class
-    <strong>AbstractButton</strong>        extends <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>        implements
-        <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
+    <strong>AbstractButton</strong>        extends <a href="../../../../../Sphp/Html/EmptyTag.html"><abbr title="Sphp\Html\EmptyTag">EmptyTag</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a Button</p>                                </div>
+            <p>Implements &lt;input type="button|submit|reset"&gt; button tag</p>            <p>A submit button is used to send form data to a server.
+The data is sent to the page specified in the form's action attribute.</p>                    </div>
     
             <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Trait implements {@link ButtonInterface} functionality
-                </div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Trait implements {@link ColourableInterface} functionality
-                </div>
-            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
@@ -368,7 +350,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $tagName, null|mixed $content = null)
+                    <a href="#method___construct">__construct</a>(string $type)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -381,7 +363,7 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractTag.html#method___destruct"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -391,7 +373,7 @@
                     <a href="#method___clone">__clone</a>()
         
                                             <p>Clones the object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractTag.html#method___clone"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -402,86 +384,6 @@
         
                                             <p>Returns the tag name of the component</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractTag.html#method_getTagName"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getOpeningTag">getOpeningTag</a>()
-        
-                                            <p>Returns opening tag with its attributes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_contentToString">contentToString</a>()
-        
-                                            <p>Returns the content of the component as a string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_contentToString"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getClosingTag">getClosingTag</a>()
-        
-                                            <p>Returns closing tag</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setInnerContainer">setInnerContainer</a>( $contentContainer = null)
-        
-                                            <p>Sets the inner content container of the component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getInnerContainer">getInnerContainer</a>()
-        
-                                            <p>Returns the content container or an element pointed by an optional index</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_getInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setColor">setColor</a>(string|null $style = null)
-        
-                                            <p>Sets the color (a CSS class)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setSize">setSize</a>(string $size = null)
-        
-                                            <p>Sets the size of the button</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setDefaultSize">setDefaultSize</a>()
-        
-                                            <p>Sets the button size to default</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
             </div>
             </div>
 
@@ -1406,9 +1308,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 31</div>
+        <div class="location">at         line 36</div>
         <code>                    
-    <strong>__construct</strong>(string $tagName, null|mixed $content = null)
+    <strong>__construct</strong>(string $type)
         </code>
     </h3>
     <div class="details">
@@ -1423,18 +1325,22 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$tagName</td>
-                <td>the name of the container tag</td>
-            </tr>
-                    <tr>
-                <td>null|mixed</td>
-                <td>$content</td>
-                <td>the content of the button</td>
+                <td>$type</td>
+                <td>the type of the button</td>
             </tr>
             </table>
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Html\Forms\Inputs\Buttons\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if the type parameter is invalid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1442,7 +1348,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___destruct"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractTag.html#method___destruct"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 60</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -1464,7 +1370,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method___clone"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 51</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/AbstractTag.html#method___clone"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 71</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -1504,305 +1410,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
         <tr>
             <td>string</td>
             <td>the tag name of the component</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getOpeningTag">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractComponent.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 25</div>
-        <code>                    string
-    <strong>getOpeningTag</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns opening tag with its attributes</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>opening tag with attributes</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_contentToString">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_contentToString"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 80</div>
-        <code>                    string
-    <strong>contentToString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the content of the component as a string</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>content as a string</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if content parsing fails</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getClosingTag">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractComponent.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a> at         line 46</div>
-        <code>                    string
-    <strong>getClosingTag</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns closing tag</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>closing tag</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setInnerContainer">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 62</div>
-        <code>            protected        <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
-    <strong>setInnerContainer</strong>( $contentContainer = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the inner content container of the component</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$contentContainer</td>
-                <td>the inner content container of the component</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getInnerContainer">
-        <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_getInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 76</div>
-        <code>            protected        <a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a>
-    <strong>getInnerContainer</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the content container or an element pointed by an optional index</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></td>
-            <td>the content container</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setColor">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a> at         line 56</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
-    <strong>setColor</strong>(string|null $style = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the color (a CSS class)</p>                    <p>Predefined values of <var>$style</var> parameter:</p>
-
-<ul>
-<li><code>null</code> unsets all special button styles (default)</li>
-<li><code>'alert'</code> for alert/error buttons</li>
-<li><code>'success'</code> for ok/success buttons</li>
-<li><code>'info'</code> for information buttons</li>
-<li><code>'secondary'</code> for alternatively styled buttons</li>
-<li><code>'disabled'</code> for disabled buttons</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$style</td>
-                <td>one of the CSS class names defining button styles</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setSize">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 59</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-    <strong>setSize</strong>(string $size = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the size of the button</p>                    <p>Predefined values of <var>$size</var> parameter:</p>
-
-<ul>
-<li><code>'tiny'</code> for tiny buttons</li>
-<li><code>'small'</code> for small buttons</li>
-<li><code>'medium'</code> for "medium" (default) buttons</li>
-<li><code>'large'</code> for large buttons</li>
-<li><code>'extend'</code> for extended buttons (takes the full width of the container)</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$size</td>
-                <td>optional CSS class name defining button size.
-        <code>medium</code> value corresponds to no explicit size definition.</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setDefaultSize">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 78</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-    <strong>setDefaultSize</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the button size to default</p>                    <p>Removes all specified size related CSS classes</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></td>
-            <td>for a fluent interface</td>
         </tr>
     </table>
 

@@ -79,4 +79,19 @@ trait ButtonTrait {
     return $this->setSize('medium');
   }
 
+  public function disable($disabled = true) {
+    
+    return $this;
+  }
+
+  public function isDropdown($dropdown = true) {
+    
+    return $this;
+  }
+
+  public function isHollow($hollow = true) {
+    
+    return $this;
+  }
+
 }

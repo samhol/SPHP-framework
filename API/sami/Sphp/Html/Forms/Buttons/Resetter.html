@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Forms\Buttons\SubmitButton | SPHP framework API</title>
+    <title>Sphp\Html\Forms\Buttons\Resetter | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Forms_Buttons_SubmitButton" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Forms_Buttons_Resetter" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -71,43 +71,32 @@
                                         <li><a href="../../../../Sphp/Html/Forms.html">Forms</a></li>
                                         <li><a href="../../../../Sphp/Html/Forms/Buttons.html">Buttons</a></li>
     
-                <li>SubmitButton</li>
+                <li>Resetter</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            SubmitButton
+            Resetter
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>SubmitButton</strong>        extends <a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a>        implements
-        <a href="../../../../Sphp/Html/Forms/Buttons/Submitter.html"><abbr title="Sphp\Html\Forms\Buttons\Submitter">Submitter</abbr></a>
+    <strong>Resetter</strong>        extends <a href="../../../../Sphp/Html/Forms/Buttons/AbstractButton.html"><abbr title="Sphp\Html\Forms\Buttons\AbstractButton">AbstractButton</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements &lt;button type="submit"&gt; tag</p>            <p>A submit button is used to send form data to a server.
-The data is sent to the page specified in the action attribute of the form.</p>                    </div>
+            <p>Implements an HTML &lt;input type="reset"&gt; tag</p>            <p>{@inheritdoc}</p>                    </div>
     
             <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Trait implements parts of the {@link InputInterface}
-                </div>
-            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../Sphp/Html/ContainerComponentTrait.html"><abbr title="Sphp\Html\ContainerComponentTrait">ContainerComponentTrait</abbr></a>
@@ -386,7 +375,7 @@ The data is sent to the page specified in the action attribute of the form.</p> 
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(mixed $content = null, string $name = null)
+                    <a href="#method___construct">__construct</a>(mixed $content = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -676,86 +665,6 @@ The data is sent to the page specified in the action attribute of the form.</p> 
         
                                             <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getName">getName</a>()
-        
-                                            <p>Returns the value of the name attribute.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_getName"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setName">setName</a>(string $name)
-        
-                                            <p>Sets the value of the name attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_setName"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isNamed">isNamed</a>()
-        
-                                            <p>Checks whether the form input has a name</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_isNamed"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_disable">disable</a>(boolean $disabled = true)
-        
-                                            <p>Disables the input component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_disable"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isEnabled">isEnabled</a>()
-        
-                                            <p>Checks whether the option is enabled or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_isEnabled"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSubmitValue">getSubmitValue</a>()
-        
-                                            <p>Returns the value of the value attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_getSubmitValue"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setValue">setValue</a>(string|string[] $value)
-        
-                                            <p>Sets the value of the value attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_setValue"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getType">getType</a>()
-        
-                                            <p>Returns the value of the type attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_getType"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a></small></div>
             </div>
             </div>
 
@@ -1682,7 +1591,7 @@ The data is sent to the page specified in the action attribute of the form.</p> 
                     <h3 id="method___construct">
         <div class="location">at         line 33</div>
         <code>                    
-    <strong>__construct</strong>(mixed $content = null, string $name = null)
+    <strong>__construct</strong>(mixed $content = null)
         </code>
     </h3>
     <div class="details">
@@ -1699,11 +1608,6 @@ The data is sent to the page specified in the action attribute of the form.</p> 
                 <td>mixed</td>
                 <td>$content</td>
                 <td>the content of the component</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the value of name attribute</td>
             </tr>
             </table>
 
@@ -2681,269 +2585,6 @@ So also an object of any class that implements magic method <code>__toString()</
         <tr>
             <td><a href="../../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
             <td>containing matching sub components</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getName">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_getName"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 34</div>
-        <code>                    string|null
-    <strong>getName</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the name attribute.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>name attribute</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setName">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_setName"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 44</div>
-        <code>                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-    <strong>setName</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the value of the name attribute</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the value of the name attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isNamed">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_isNamed"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 57</div>
-        <code>                    boolean
-    <strong>isNamed</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the form input has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
-passed when submitting a form.</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the input has a name, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_disable">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_disable"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 70</div>
-        <code>                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-    <strong>disable</strong>(boolean $disabled = true)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Disables the input component</p>                    <p>A disabled input component is unusable and un-clickable.
-Disabled input components in a form will not be submitted.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>boolean</td>
-                <td>$disabled</td>
-                <td>true if the component is disabled, otherwise false</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isEnabled">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_isEnabled"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 80</div>
-        <code>                    
-    <strong>isEnabled</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the option is enabled or not</p>                                                </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getSubmitValue">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_getSubmitValue"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a> at         line 57</div>
-        <code>                    mixed
-    <strong>getSubmitValue</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the value attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td>the value</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setValue">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_setValue"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a> at         line 68</div>
-        <code>                    <a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-    <strong>setValue</strong>(string|string[] $value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the value of the value attribute</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|string[]</td>
-                <td>$value</td>
-                <td>the value of the form input</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getType">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Buttons/ButtonTag.html#method_getType"><abbr title="Sphp\Html\Forms\Buttons\ButtonTag">ButtonTag</abbr></a> at         line 78</div>
-        <code>                    string
-    <strong>getType</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the type attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the value of the type attribute</td>
         </tr>
     </table>
 

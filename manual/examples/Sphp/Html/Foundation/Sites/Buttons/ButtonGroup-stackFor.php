@@ -2,13 +2,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-
-$buttons[] = new HyperlinkButton("http://www.google.com/", "Google", "engine");
-$buttons[] = new HyperlinkButton("http://www.bing.com", "Bing", "engine");
-$buttons[] = new HyperlinkButton("http://www.ask.com/", "ask.com", "engine");
-
 $buttonGroup = (new ButtonGroup($buttons))
+        ->appendButton(Button::hyperlink("http://www.google.com/", "google", "engine"))
+        ->appendButton(Button::hyperlink("http://www.bing.com", "Bing", "engine"))
         ->appendLink("https://www.yahoo.com/", "Yahoo!", "engine")
-        ->stackFor("all");
-$buttonGroup->printHtml();
-?>
+        ->stackFor("all")
+        ->printHtml();

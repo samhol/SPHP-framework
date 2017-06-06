@@ -1,11 +1,11 @@
 <?php
 
 /**
- * SubmitButton.php (UTF-8)
+ * FileUploadButton.php (UTF-8)
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\Sites\Forms\Buttons;
+namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
@@ -34,13 +34,11 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
       \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait;
 
   /**
-   *
    * @var FileInput 
    */
   private $fileInput;
 
   /**
-   *
    * @var Label 
    */
   private $label;

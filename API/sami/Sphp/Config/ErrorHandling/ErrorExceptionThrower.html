@@ -94,19 +94,6 @@
     
     
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_ignoreDeprecated">
-                    static                                                            
-                </td>
-                <td>$ignoreDeprecated</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
@@ -146,7 +133,7 @@
                     static&nbsp;void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_handleError">handleError</a>(string $code, string $string = &#039;&#039;, string $file = &#039;&#039;, string $line = &#039;&#039;)
+                    <a href="#method_handleError">handleError</a>(string $code, string $string = &#039;&#039;, string $file = &#039;&#039;, int $line = &#039;&#039;)
         
                                             <p>Fired by the PHP error handler function</p>                </div>
                 <div class="col-md-2"></div>
@@ -159,7 +146,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_start">
-        <div class="location">at         line 29</div>
+        <div class="location">at         line 27</div>
         <code>        static            
     <strong>start</strong>(int $level = \E_ALL)
         </code>
@@ -190,7 +177,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_stop">
-        <div class="location">at         line 46</div>
+        <div class="location">at         line 35</div>
         <code>        static            
     <strong>stop</strong>()
         </code>
@@ -211,7 +198,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fatalErrorShutdownHandler">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 44</div>
         <code>        static            
     <strong>fatalErrorShutdownHandler</strong>()
         </code>
@@ -241,9 +228,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_handleError">
-        <div class="location">at         line 77</div>
+        <div class="location">at         line 66</div>
         <code>        static            void
-    <strong>handleError</strong>(string $code, string $string = &#039;&#039;, string $file = &#039;&#039;, string $line = &#039;&#039;)
+    <strong>handleError</strong>(string $code, string $string = &#039;&#039;, string $file = &#039;&#039;, int $line = &#039;&#039;)
         </code>
     </h3>
     <div class="details">
@@ -274,7 +261,7 @@ here as well.</p>                            </div>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>int</td>
                 <td>$line</td>
                 <td></td>
             </tr>

@@ -78,4 +78,16 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
     return $this->screenReaderLabel . '<span aria-hidden="true">' . $this->icon . '</span>';
   }
 
+  public function disable($disabled = true) {
+    
+  }
+
+  public function isDropdown($dropdown = true) {
+    
+  }
+
+  public function isHollow($hollow = true) {
+    
+  }
+
 }
