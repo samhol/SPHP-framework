@@ -1,27 +1,28 @@
 <?php
 
 /**
- * SplitButton.php (UTF-8)
- * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ * BasicButtonTrait.php (UTF-8)
+ * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\AbstractComponent;
+use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
+use Sphp\Html\Attributes\MultiValueAttribute;
 
 /**
- * Implements a Split Button 
- * 
+ * Trait implements {@link ButtonInterface} functionality
+ *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/button-group.html#split-buttons Foundation 6 Split Button 
+ * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SplitButton extends AbstractComponent {
+trait BasicButtonTrait {
 
-  use \Sphp\Html\Foundation\Sites\Core\ColourableTrait;
+  use ColourableTrait;
 
   /**
    * CSS classes corresponding to the size constants
@@ -31,62 +32,6 @@ class SplitButton extends AbstractComponent {
   private $sizes = [
       'tiny', 'small', 'large', 'expand'
   ];
-
-  /**
-   * the primary button
-   *
-   * @var ButtonInterface 
-   */
-  private $primary;
-
-  /**
-   * the secondary button
-   *
-   * @var ButtonInterface 
-   */
-  private $secondary;
-
-  /**
-   * Constructs a new instance
-   * 
-   * @param null|mixed|ButtonInterface $primary
-   * @param ArrowOnlyButton $secondary
-   */
-  public function __construct($primary = null, ArrowOnlyButton $secondary = null) {
-    parent::__construct('div');
-    $this->cssClasses()->lock('button-group');
-    if (!($primary instanceof ButtonInterface)) {
-      $primary = Button::create($primary);
-    }
-    $this->primary = $primary;
-    if ($secondary === null) {
-      $secondary = new ArrowOnlyButton($secondary);
-    }
-    $this->secondary = $secondary;
-  }
-
-  public function __destruct() {
-    unset($this->primary, $this->secondary);
-    parent::__destruct();
-  }
-
-  /**
-   * Returns the primary button
-   * 
-   * @return ButtonInterface the primary button
-   */
-  public function primaryButton() {
-    return $this->primary;
-  }
-
-  /**
-   * Returns the secondary button
-   * 
-   * @return ButtonInterface the secondary button
-   */
-  public function secondaryButton() {
-    return $this->secondary;
-  }
 
   /**
    * Sets the size of the button 
@@ -125,10 +70,6 @@ class SplitButton extends AbstractComponent {
    */
   public function setDefaultSize() {
     return $this->setSize('medium');
-  }
-
-  public function contentToString(): string {
-    return $this->primary . $this->secondary;
   }
 
 }

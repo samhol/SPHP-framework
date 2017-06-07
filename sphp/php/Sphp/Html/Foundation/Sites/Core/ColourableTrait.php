@@ -40,7 +40,7 @@ trait ColourableTrait {
   /**
    * Sets the color (a CSS class)
    * 
-   * Predefined values of <var>$style</var> parameter:
+   * Predefined values of `$style` parameter:
    * 
    * * `null` unsets all special button styles (default)
    * * `'alert'` for alert/error buttons

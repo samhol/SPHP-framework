@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Foundation\Sites\Media\ProgressBar | SPHP framework API</title>
+    <title>Sphp\Html\Foundation\Sites\Buttons\AbstractArrowOnlyButton | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Media_ProgressBar" data-root-path="../../../../../">
+    <body id="class" data-name="class:Sphp_Html_Foundation_Sites_Buttons_AbstractArrowOnlyButton" data-root-path="../../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -70,35 +70,53 @@
                                         <li><a href="../../../../../Sphp/Html.html">Html</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
                                         <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Media.html">Media</a></li>
+                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons.html">Buttons</a></li>
     
-                <li>ProgressBar</li>
+                <li>AbstractArrowOnlyButton</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ProgressBar
+            AbstractArrowOnlyButton
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>ProgressBar</strong>        extends <a href="../../../../../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>        implements
-        <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
+    <strong>AbstractArrowOnlyButton</strong>        extends <a href="../../../../../Sphp/Html/AbstractComponent.html"><abbr title="Sphp\Html\AbstractComponent">AbstractComponent</abbr></a>        implements
+        <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabelable.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable">ScreenReaderLabelable</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a Progress Bar</p>                                </div>
+            <p>Implements a Close Button</p>                                </div>
     
             <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link ButtonInterface} functionality
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements {@link ButtonInterface} functionality
+                </div>
+            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a>
@@ -359,7 +377,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int $progress, string|null $name = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &#039;&#039;)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -436,32 +454,74 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showProgressText">showProgressText</a>(boolean $show = true)
+                    <a href="#method_setSize">setSize</a>(string $size = null)
         
-                                            <p>Sets the visibility of the progress bar text</p>                </div>
+                                            <p>Sets the size of the button</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setDefaultSize">setDefaultSize</a>()
+        
+                                            <p>Sets the button size to default</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_disable">disable</a>(boolean $disabled = true)
+        
+                                            <p>Sets the button style as disabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_disable"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isDropdown">isDropdown</a>(boolean $dropdown = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isDropdown"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isHollow">isHollow</a>(boolean $hollow = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isHollow"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabelable.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable">ScreenReaderLabelable</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setScreenReaderLabel">setScreenReaderLabel</a>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+        
+                                            <p>Sets the inner label for screen reader text</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setBarName">setBarName</a>(string $name)
+                    <a href="#method_getScreeReaderLabel">getScreeReaderLabel</a>()
         
-                                            <p>Sets the progress bar name</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setProgress">setProgress</a>(int $progress, string $progressText = null)
-        
-                                            <p>Sets the current progress</p>                </div>
+                                            <p>Returns the inner label for screen reader text</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1387,9 +1447,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 41</div>
+        <div class="location">at         line 40</div>
         <code>                    
-    <strong>__construct</strong>(int $progress, string|null $name = null)
+    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $screenReaderLabel = &#039;&#039;)
         </code>
     </h3>
     <div class="details">
@@ -1403,19 +1463,23 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$progress</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$name</td>
-                <td>the name of the bar</td>
+                <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>$screenReaderLabel</td>
+                <td>the screen reader label or its textual content</td>
             </tr>
             </table>
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1526,7 +1590,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 107</div>
+        <div class="location">at         line 61</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1644,10 +1708,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_showProgressText">
-        <div class="location">at         line 67</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
-    <strong>showProgressText</strong>(boolean $show = true)
+                    <h3 id="method_setSize">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 52</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a>
+    <strong>setSize</strong>(string $size = null)
         </code>
     </h3>
     <div class="details">
@@ -1655,15 +1719,95 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the visibility of the progress bar text</p>                                                </div>
+                                    <p>Sets the size of the button</p>                    <p>Predefined values of <code>$size</code> parameter:</p>
+
+<ul>
+<li><code>'tiny'</code> for tiny buttons</li>
+<li><code>'small'</code> for small buttons</li>
+<li><code>'medium'</code> for "medium" (default) buttons</li>
+<li><code>'large'</code> for large buttons</li>
+<li><code>'extend'</code> for extended buttons (takes the full width of the container)</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$size</td>
+                <td>optional CSS class name defining button size.
+        <code>medium</code> value corresponds to no explicit size definition.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaultSize">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 71</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a>
+    <strong>setDefaultSize</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the button size to default</p>                    <p>Removes all specified size related CSS classes</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disable">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_disable"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 33</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+    <strong>disable</strong>(boolean $disabled = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the button style as disabled</p>                    <p>This is purely a visual style</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>boolean</td>
-                <td>$show</td>
-                <td>true for visible progress text and false otherwise</td>
+                <td>$disabled</td>
+                <td>true if the button is disabled, otherwise false</td>
             </tr>
             </table>
 
@@ -1672,7 +1816,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1684,26 +1828,24 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setBarName">
-        <div class="location">at         line 82</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
-    <strong>setBarName</strong>(string $name)
+                    <h3 id="method_isDropdown">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isDropdown"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 47</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+    <strong>isDropdown</strong>(boolean $dropdown = true)
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Sets the progress bar name</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the optional bar name for build-in javascript library use</td>
+                <td>boolean</td>
+                <td>$dropdown</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1712,7 +1854,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1724,31 +1866,24 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setProgress">
-        <div class="location">at         line 94</div>
-        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a>
-    <strong>setProgress</strong>(int $progress, string $progressText = null)
+                    <h3 id="method_isHollow">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isHollow"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 61</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
+    <strong>isHollow</strong>(boolean $hollow = true)
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Sets the current progress</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$progress</td>
-                <td>(0-100) the current progress</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$progressText</td>
-                <td>the optional screenreader text describing the current progress</td>
+                <td>boolean</td>
+                <td>$hollow</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1757,8 +1892,78 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Media/ProgressBar.html"><abbr title="Sphp\Html\Foundation\Sites\Media\ProgressBar">ProgressBar</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></td>
             <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setScreenReaderLabel">
+        <div class="location">at         line 48</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabelable.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable">ScreenReaderLabelable</abbr></a>
+    <strong>setScreenReaderLabel</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string $label)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the inner label for screen reader text</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>|string</td>
+                <td>$label</td>
+                <td>the screen reader label or its textual content</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabelable.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable">ScreenReaderLabelable</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getScreeReaderLabel">
+        <div class="location">at         line 57</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a>
+    <strong>getScreeReaderLabel</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the inner label for screen reader text</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Core/ScreenReaderLabel.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel">ScreenReaderLabel</abbr></a></td>
+            <td>the inner label for screen reader text</td>
         </tr>
     </table>
 

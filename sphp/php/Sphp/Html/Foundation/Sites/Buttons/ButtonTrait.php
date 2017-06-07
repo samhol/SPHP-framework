@@ -7,9 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
-use Sphp\Html\Attributes\MultiValueAttribute;
-
 /**
  * Trait implements {@link ButtonInterface} functionality
  *
@@ -22,75 +19,51 @@ use Sphp\Html\Attributes\MultiValueAttribute;
  */
 trait ButtonTrait {
 
-  use ColourableTrait;
+  use BasicButtonTrait;
 
   /**
-   * CSS classes corresponding to the size constants
+   * Sets the button style as disabled
+   * 
+   * This is purely a visual style
    *
-   * @var string[]
-   */
-  private $sizes = [
-      'tiny', 'small', 'large', 'expand'
-  ];
-
-  /**
-   * Returns the class attribute object
-   * 
-   * @return MultiValueAttribute the class attribute object
-   */
-  abstract public function cssClasses();
-
-  /**
-   * Sets the size of the button 
-   * 
-   * Predefined values of <var>$size</var> parameter:
-   * 
-   * * `'tiny'` for tiny buttons
-   * * `'small'` for small buttons
-   * * `'medium'` for "medium" (default) buttons
-   * * `'large'` for large buttons
-   * * `'extend'` for extended buttons (takes the full width of the container)
-   * 
-   * @param  string $size optional CSS class name defining button size. 
-   *         `medium` value corresponds to no explicit size definition.
+   * @param  boolean $disabled true if the button is disabled, otherwise false
    * @return self for a fluent interface
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
+   * @link   http://foundation.zurb.com/sites/docs/button.html#dropdown-arrows
    */
-  public function setSize($size = null) {
-    $this->cssClasses()->remove($this->sizes);
-    if ($size !== null) {
-      $this->cssClasses()->add($size);
-      if (!in_array($size, $this->sizes)) {
-        $this->sizes[] = $size;
-      }
+  public function disable($disabled = true) {
+    if ($disabled) {
+      $this->cssClasses()->add('disabled');
+    } else {
+      $this->cssClasses()->remove('disabled');
     }
     return $this;
   }
 
   /**
-   * Sets the button size to default
    * 
-   *  Removes all specified size related CSS classes
-   * 
+   * @param  boolean $dropdown
    * @return self for a fluent interface
-   * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
-  public function setDefaultSize() {
-    return $this->setSize('medium');
-  }
-
-  public function disable($disabled = true) {
-    
-    return $this;
-  }
-
   public function isDropdown($dropdown = true) {
-    
+    if ($dropdown) {
+      $this->cssClasses()->add('dropdown');
+    } else {
+      $this->cssClasses()->remove('dropdown');
+    }
     return $this;
   }
 
+  /**
+   * 
+   * @param  boolean $hollow
+   * @return self for a fluent interface
+   */
   public function isHollow($hollow = true) {
-    
+    if ($hollow) {
+      $this->cssClasses()->add('hollow');
+    } else {
+      $this->cssClasses()->remove('hollow');
+    }
     return $this;
   }
 

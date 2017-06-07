@@ -35,7 +35,6 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
   private $screenReaderLabel;
 
   /**
-   *
    * @var Span 
    */
   private $icon;

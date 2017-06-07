@@ -23,7 +23,9 @@ use Sphp\Html\Navigation\Hyperlink;
  * @filesource
  */
 Class Button extends ColourableAdapter implements ButtonInterface {
-use ButtonTrait;
+
+  use ButtonTrait;
+
   /**
    * CSS classes corresponding to the size constants
    *
