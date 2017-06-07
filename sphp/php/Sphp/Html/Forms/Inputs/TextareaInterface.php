@@ -38,7 +38,7 @@ interface TextareaInterface extends ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    */
-  public function setRows($rows);
+  public function setRows(int $rows);
 
   /**
    * Sets the value of the cols attribute
@@ -48,7 +48,7 @@ interface TextareaInterface extends ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function setCols($cols);
+  public function setCols(int $cols);
 
   /**
    * Sets the value of the placeholder attribute

@@ -45,7 +45,7 @@ interface InputInterface extends ContentInterface {
    *
    * @return boolean true if the input has a name , otherwise false
    */
-  public function isNamed();
+  public function isNamed(): bool;
 
   /**
    * Returns the value of the form input
@@ -72,12 +72,12 @@ interface InputInterface extends ContentInterface {
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return self for a fluent interface
    */
-  public function disable($disabled = true);
+  public function disable(bool $disabled = true);
 
   /**
    * Checks whether the input component is enabled or not
    * 
    * @param  boolean true if the input component is enabled, otherwise false
    */
-  public function isEnabled();
+  public function isEnabled(): bool;
 }

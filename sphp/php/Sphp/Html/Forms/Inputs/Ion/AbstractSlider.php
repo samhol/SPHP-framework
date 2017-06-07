@@ -45,7 +45,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
             ->setValue($value);
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->attrs()->set('data-disable', (bool) $disabled);
     return $this;
   }

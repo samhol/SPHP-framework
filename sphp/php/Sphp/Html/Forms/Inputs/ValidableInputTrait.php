@@ -33,7 +33,7 @@ trait ValidableInputTrait {
    *         submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     return $this->setAttr('required', $required);
   }
 
@@ -43,7 +43,7 @@ trait ValidableInputTrait {
    * @return boolean true if the input must have a value before form submission, 
    *         otherwise false
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->attrExists('required');
   }
 

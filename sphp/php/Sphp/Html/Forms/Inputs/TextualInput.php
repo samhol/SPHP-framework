@@ -51,7 +51,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this->attrs()->get('size');
   }
 
-  public function setSize($size) {
+  public function setSize(int $size) {
     $this->attrs()->set('size', $size);
     return $this;
   }
@@ -60,7 +60,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this->attrs()->get('maxlength');
   }
 
-  public function setMaxlength($maxlength) {
+  public function setMaxlength(int $maxlength) {
     $this->attrs()->set('maxlength', $maxlength);
     return $this;
   }
@@ -70,7 +70,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }

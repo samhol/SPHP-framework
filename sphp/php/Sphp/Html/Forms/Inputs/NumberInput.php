@@ -46,8 +46,8 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this->attrs()->get('min');
   }
 
-  public function setMinimum($min) {
-    $this->attrs()->set('min', (int) $min);
+  public function setMinimum(int $min) {
+    $this->attrs()->set('min', $min);
     return $this;
   }
 
@@ -55,8 +55,8 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this->attrs()->get('max');
   }
 
-  public function setMaximum($max) {
-    $this->attrs()->set('max', (int) $max);
+  public function setMaximum(int $max) {
+    $this->attrs()->set('max', $max);
     return $this;
   }
 
@@ -64,8 +64,8 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this->attrs()->get('step');
   }
 
-  public function setStep($step) {
-    $this->attrs()->set('step', (int) $step);
+  public function setStep(int $step) {
+    $this->attrs()->set('step', $step);
     return $this;
   }
 
@@ -74,7 +74,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this;
   }
 
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }

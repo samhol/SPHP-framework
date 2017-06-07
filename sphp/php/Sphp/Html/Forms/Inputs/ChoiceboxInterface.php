@@ -24,5 +24,5 @@ interface ChoiceboxInterface extends InputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function setChecked($checked = true);
+  public function setChecked(bool $checked = true);
 }

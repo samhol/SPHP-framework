@@ -66,7 +66,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this->attrs()->get('data-end');
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     if ($disabled) {
       $this->removeCssClass('disabled');
     } else {
@@ -75,7 +75,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->cssClasses()->contains('disabled');
   }
 

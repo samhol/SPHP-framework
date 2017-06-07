@@ -140,12 +140,12 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
     return $this;
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->input->isEnabled();
   }
 
@@ -158,7 +158,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->input->isNamed();
   }
 
@@ -173,7 +173,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     $this->input->setRequired($required);
     return $this;
   }
@@ -183,7 +183,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    *
    * @return boolean true if the input must have a value before form submission, false otherwise
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->input->isRequired();
   }
 
@@ -200,7 +200,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
     $this->input->getSubmitValue();
   }
 
-  public function setChecked($checked = true) {
+  public function setChecked(bool $checked = true) {
     $this->input->setChecked($checked);
     return $this;
   }
