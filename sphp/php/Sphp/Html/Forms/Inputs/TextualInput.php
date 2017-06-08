@@ -47,15 +47,9 @@ class TextualInput extends InputTag implements TextualInputInterface {
     }
   }
 
-<<<<<<< HEAD
-  public function setSize($size) {
-=======
-  public function getSize() {
-    return $this->attrs()->get('size');
-  }
+
 
   public function setSize(int $size) {
->>>>>>> d484c734b322c0bfe58f79ce15dc999dc50a8a2c
     $this->attrs()->set('size', $size);
     return $this;
   }

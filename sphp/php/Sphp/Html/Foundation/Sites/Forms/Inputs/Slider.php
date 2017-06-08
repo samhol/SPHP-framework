@@ -122,15 +122,9 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-<<<<<<< HEAD
-  public function disable(bool $enabled = true) {
-    parent::disable($enabled);
-    $this->getInput()->disable($enabled);
-=======
   public function disable(bool $disabled = true) {
     parent::disable($disabled);
     $this->getInput()->disable($disabled);
->>>>>>> d484c734b322c0bfe58f79ce15dc999dc50a8a2c
     return $this;
   }
 
