@@ -123,7 +123,7 @@ Class Button extends ColourableAdapter implements ButtonInterface {
    * @param  string|null $value optional
    * @return self new instance
    */
-  public static function submitter($content = null, $name = null, $value = null) {
+  public static function submitter(string $content = null, $name = null, $value = null) {
     return new static(new Submitter($content, $name, $value));
   }
 

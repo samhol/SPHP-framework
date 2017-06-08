@@ -26,7 +26,7 @@ trait TextualInputWrapperTrait {
    */
   abstract public function getInput();
 
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->getInput()->autoComplete($allow);
     return $this;
   }
@@ -62,7 +62,7 @@ trait TextualInputWrapperTrait {
     return $this->getInput()->getPattern();
   }
 
-  public function hasPattern() {
+  public function hasPattern(): bool {
     return $this->getInput()->hasPattern();
   }
 
@@ -70,7 +70,7 @@ trait TextualInputWrapperTrait {
    * {@inheritdoc}
    * @see TextualInputInterface
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->getInput()->isRequired();
   }
 
@@ -79,7 +79,7 @@ trait TextualInputWrapperTrait {
     return $this;
   }
 
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     $this->getInput()->setRequired($required);
     return $this;
   }

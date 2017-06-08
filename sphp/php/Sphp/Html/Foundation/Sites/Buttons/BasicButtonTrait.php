@@ -33,6 +33,8 @@ trait BasicButtonTrait {
       'tiny', 'small', 'large', 'expand'
   ];
 
+  
+  
   /**
    * Sets the size of the button 
    * 
@@ -71,5 +73,14 @@ trait BasicButtonTrait {
   public function setDefaultSize() {
     return $this->setSize('medium');
   }
+  
+  public function setExtended(bool $extended = true) {  
+    if ($extended) {
+      $this->cssClasses()->add('hollow');
+    } else {
+      $this->cssClasses()->remove('hollow');
+    }
+    return $this;
+  } 
 
 }

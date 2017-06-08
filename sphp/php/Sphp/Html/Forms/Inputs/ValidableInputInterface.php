@@ -18,20 +18,20 @@ namespace Sphp\Html\Forms\Inputs;
  */
 interface ValidableInputInterface extends InputInterface {
 
-	/**
-	 * Sets whether the input must have a value or not before form submission
-	 * 
-	 * @param  boolean $required true if the input must have a value before form 
-	 *         submission, otherwise false
-	 * @return self for a fluent interface
-	 */
-	public function setRequired($required = true);
+  /**
+   * Sets whether the input must have a value or not before form submission
+   * 
+   * @param  boolean $required true if the input must have a value before form 
+   *         submission, otherwise false
+   * @return self for a fluent interface
+   */
+  public function setRequired(bool $required = true);
 
-	/**
-	 * Checks whether the input must have a value before form submission
-	 *
-	 * @return boolean true if the input must have a value before form submission, 
-	 *         otherwise false
-	 */
-	public function isRequired();
+  /**
+   * Checks whether the input must have a value before form submission
+   *
+   * @return boolean true if the input must have a value before form submission, 
+   *         otherwise false
+   */
+  public function isRequired(): bool;
 }

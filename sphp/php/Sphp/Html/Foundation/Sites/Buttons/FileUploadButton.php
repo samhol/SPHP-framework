@@ -78,7 +78,7 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this->label->cssClasses();
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->fileInput->disable($disabled);
     return $this;
   }
@@ -87,11 +87,11 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this->fileInput->getName();
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->fileInput->isEnabled();
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->fileInput->isNamed();
   }
 

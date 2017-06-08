@@ -26,12 +26,12 @@ trait InputWrapperTrait {
    */
   abstract public function getInput();
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->getInput()->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->getInput()->isEnabled();
   }
 
@@ -44,7 +44,7 @@ trait InputWrapperTrait {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->getInput()->isNamed();
   }
 

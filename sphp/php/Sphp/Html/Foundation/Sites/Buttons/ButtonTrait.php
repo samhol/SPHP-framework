@@ -30,7 +30,7 @@ trait ButtonTrait {
    * @return self for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#dropdown-arrows
    */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     if ($disabled) {
       $this->cssClasses()->add('disabled');
     } else {
@@ -44,7 +44,7 @@ trait ButtonTrait {
    * @param  boolean $dropdown
    * @return self for a fluent interface
    */
-  public function isDropdown($dropdown = true) {
+  public function isDropdown(bool $dropdown = true) {
     if ($dropdown) {
       $this->cssClasses()->add('dropdown');
     } else {
@@ -58,7 +58,7 @@ trait ButtonTrait {
    * @param  boolean $hollow
    * @return self for a fluent interface
    */
-  public function isHollow($hollow = true) {
+  public function isHollow(bool $hollow = true) {
     if ($hollow) {
       $this->cssClasses()->add('hollow');
     } else {
