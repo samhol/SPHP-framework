@@ -68,7 +68,11 @@ trait InputTrait {
    * @return InputInterface for PHP Method Chaining
    */
   public function disable(bool $disabled = true) {
+<<<<<<< HEAD
     $this->attrs()->set("disabled", $disabled);
+=======
+    $this->attrs()->set("disabled", (bool) $disabled);
+>>>>>>> d484c734b322c0bfe58f79ce15dc999dc50a8a2c
     return $this;
   }
 

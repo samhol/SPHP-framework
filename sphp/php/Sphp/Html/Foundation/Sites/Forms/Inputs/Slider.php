@@ -25,13 +25,11 @@ use Sphp\Html\Adapters\VisibilityAdapter;
 class Slider extends AbstractSlider {
 
   /**
-   *
    * @var Span
    */
   private $handle;
 
   /**
-   *
    * @var HiddenInput
    */
   private $input;
@@ -79,7 +77,7 @@ class Slider extends AbstractSlider {
    * 
    * @return self for a fluent interface
    */
-  public function setVertical($vertical = true) {
+  public function setVertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add("vertical");
       $this->attrs()->set("data-vertical", "true");
@@ -96,7 +94,7 @@ class Slider extends AbstractSlider {
    * @param  boolean $valueVisible true for visible and false for hidden
    * @return self for a fluent interface
    */
-  public function showValue($valueVisible = true) {
+  public function showValue(bool $valueVisible = true) {
     $vis = new VisibilityAdapter($this->getInnerLabel());
     $vis->setHidden(!$valueVisible);
     return $this;
@@ -124,9 +122,15 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
+<<<<<<< HEAD
   public function disable(bool $enabled = true) {
     parent::disable($enabled);
     $this->getInput()->disable($enabled);
+=======
+  public function disable(bool $disabled = true) {
+    parent::disable($disabled);
+    $this->getInput()->disable($disabled);
+>>>>>>> d484c734b322c0bfe58f79ce15dc999dc50a8a2c
     return $this;
   }
 

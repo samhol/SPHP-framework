@@ -18,25 +18,26 @@ namespace Sphp\Html\Forms\Inputs;
  */
 interface PatternValidableInputInterface extends ValidableInputInterface {
 
-	/**
-	 * Sets the regular expression pattern that the component's value is checked against
-	 *
-	 * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
-	 * 
-	 * @param  string $pattern a regular expression pattern
-	 * @return self for a fluent interface
-	 */
-	public function setPattern($pattern);
+  /**
+   * Sets the regular expression pattern that the component's value is checked against
+   *
+   * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
+   * 
+   * @param  string $pattern a regular expression pattern
+   * @return self for a fluent interface
+   */
+  public function setPattern($pattern);
 
-	/**
-	 * Returns the validation pattern string
-	 *
-	 * @return string the regular expression pattern that the component's 
-	 *         value is checked against
-	 * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-	 */
-	public function getPattern();
+  /**
+   * Returns the validation pattern string
+   *
+   * @return string the regular expression pattern that the component's 
+   *         value is checked against
+   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
+   */
+  public function getPattern();
 
+<<<<<<< HEAD
 	/**
 	 * Checks if a value validation pattern is set for the component
 	 *
@@ -45,4 +46,14 @@ interface PatternValidableInputInterface extends ValidableInputInterface {
 	 * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
 	 */
 	public function hasPattern(): bool;
+=======
+  /**
+   * Checks if a value validation pattern is set for the component
+   *
+   * @return boolean true if a value validation pattern is set fot the 
+   *         component, othewise false
+   * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
+   */
+  public function hasPattern(): bool;
+>>>>>>> d484c734b322c0bfe58f79ce15dc999dc50a8a2c
 }
