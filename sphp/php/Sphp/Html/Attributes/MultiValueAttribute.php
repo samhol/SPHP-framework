@@ -12,7 +12,7 @@ use IteratorAggregate;
 use ArrayIterator;
 
 /**
- * An implementation of a multivalue HTML attribute
+ * An implementation of a multi value HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
@@ -133,7 +133,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
-  public function isLocked($values = null) {
+  public function isLocked($values = null): bool {
     if (is_array($values) || is_string($values) || is_numeric($values)) {
       $parsed = self::parse($values);
       $locked = !empty($parsed) && !array_diff(self::parse($values), $this->locked);
@@ -211,7 +211,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @param  scalar|scalar[] $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
-  public function contains($values) {
+  public function contains($values): bool {
     $needle = self::parse($values);
     if (!empty($needle)) {
       return !array_diff($needle, $this->values);
@@ -233,7 +233,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * @return int the number of the atomic values stored in the attribute
    */
-  public function count() {
+  public function count(): int {
     $num = 0;
     if (!empty($this->values)) {
       $num = count($this->values);
@@ -254,7 +254,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 
    * @return scalar[]
    */
-  public function toArray() {
+  public function toArray(): array {
     return $this->values;
   }
 

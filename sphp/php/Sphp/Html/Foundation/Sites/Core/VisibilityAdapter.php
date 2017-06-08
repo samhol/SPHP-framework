@@ -212,7 +212,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForPortrait($hide = true) {
+  public function hideForPortrait(bool $hide = true) {
     $this->getComponent()->cssClasses()
             ->remove('show-for-portrait');
     if ($hide) {
@@ -231,7 +231,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForLandscape($hide = true) {
+  public function hideForLandscape(bool $hide = true) {
     $this->getComponent()->cssClasses()
             ->remove('show-for-landscape');
     if ($hide) {

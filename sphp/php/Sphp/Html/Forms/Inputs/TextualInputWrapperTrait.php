@@ -35,10 +35,6 @@ trait TextualInputWrapperTrait {
     return $this->getInput()->getMaxlength();
   }
 
-  public function getSize() {
-    return $this->getInput()->getSize();
-  }
-
   public function getValidationPattern() {
     return $this->getInput()->getValidationPattern();
   }

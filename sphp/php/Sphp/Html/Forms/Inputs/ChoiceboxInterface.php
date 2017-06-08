@@ -18,11 +18,11 @@ namespace Sphp\Html\Forms\Inputs;
 interface ChoiceboxInterface extends InputInterface {
 
   /**
-   * Checks/unchecks the choise
+   * Checks/unchecks the choice
    *
    * @param  boolean $checked true if chosen, false otherwise
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function setChecked($checked = true);
+  public function setChecked(bool $checked = true);
 }

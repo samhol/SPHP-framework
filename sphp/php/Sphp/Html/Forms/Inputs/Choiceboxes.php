@@ -139,14 +139,14 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
   }
 
   /**
-   * Checks whether the fslider has a name
+   * Checks whether the input has a name
    *
    * **Note:** Only form elements with a name attribute will have their values 
    *  passed when submitting a form.
    *
    * @return boolean true if the input has a name , otherwise false
    */
-  public function isNamed() {
+  public function isNamed(): bool {
     return !Strings::isEmpty($this->name);
   }
 
@@ -159,7 +159,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return self for a fluent interface
    */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     return $this->setAttr('disabled', $disabled);
   }
 
@@ -168,7 +168,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * 
    * @param  boolean true if the option is enabled, otherwise false
    */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->attrExists('disabled');
   }
 

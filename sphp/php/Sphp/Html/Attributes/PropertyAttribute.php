@@ -83,7 +83,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
           $parsed[trim($data[0])] = trim($data[1]);
         }
       }
-    } 
+    }
     return array_filter($parsed, function ($var) {
       return !empty($var) || $var === "0";
     }, \ARRAY_FILTER_USE_BOTH);
@@ -192,7 +192,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string $property the name of the property
    * @return boolean true if the property exists and false otherwise
    */
-  public function hasProperty($property) {
+  public function hasProperty($property): bool {
     return array_key_exists($property, $this->props);
   }
 
@@ -218,7 +218,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *         checks if any of the stored properties are locked
    * @return boolean true if locked and false otherwise
    */
-  public function isLocked($property = null) {
+  public function isLocked($property = null): bool {
     $locked = false;
     if ($property === null) {
       $locked = !empty($this->lockedProps);
@@ -314,7 +314,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @return int the number of the style properties stored
    */
-  public function count() {
+  public function count(): int {
     $num = 0;
     if (!empty($this->props)) {
       $num = count($this->props);
@@ -327,7 +327,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string|int $property the name of the property
    * @return boolean
    */
-  public function offsetExists($property) {
+  public function offsetExists($property): bool {
     return $this->hasProperty($property);
   }
 
@@ -377,7 +377,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * 
    * @return scalar[]
    */
-  public function toArray() {
+  public function toArray(): array {
     return $this->props;
   }
 

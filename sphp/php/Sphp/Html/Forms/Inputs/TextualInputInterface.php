@@ -21,14 +21,6 @@ namespace Sphp\Html\Forms\Inputs;
 interface TextualInputInterface extends PatternValidableInputInterface {
 
   /**
-   * Returns the value of the size attribute
-   *
-   * @return int the value of the size attribute
-   * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
-   */
-  public function getSize();
-
-  /**
    * Sets the value of the size attribute
    *
    *  **Preconditions:** <var>$size > 0</var>

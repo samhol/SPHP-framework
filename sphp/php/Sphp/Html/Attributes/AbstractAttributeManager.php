@@ -114,9 +114,9 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * 
    * **IMPORTANT:** 
    * 
-   * 1. If manager has a set attribute allready, such attribute cannot be replaced 
+   * 1. If manager has a set attribute already, such attribute cannot be replaced 
    *    by a new attribute object
-   * 2. If attribute in the manager has allready an attribute object instance the 
+   * 2. If attribute in the manager has already an attribute object instance the 
    *    new object must be of the same type
    * 
    * @param  AttributeInterface $attrObject

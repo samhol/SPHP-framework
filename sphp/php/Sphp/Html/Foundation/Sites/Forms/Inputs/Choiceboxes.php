@@ -147,7 +147,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  string[] $values
    * @return self for a fluent interface
    */
-  abstract public function setOption($value, $label, $checked = false);
+  abstract public function setOption($value, $label, bool $checked = false);
 
   /**
    * Returns the value of name attribute
@@ -182,7 +182,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    *
    * @return boolean true if the input has a name , otherwise false
    */
-  public function isNamed() {
+  public function isNamed(): bool {
     return !Strings::isEmpty($this->name);
   }
 
@@ -195,7 +195,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return self for a fluent interface
    */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     return $this->setAttr("disabled", $disabled);
   }
 
@@ -204,7 +204,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * 
    * @param  boolean true if the option is enabled, otherwise false
    */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->attrExists("disabled");
   }
 

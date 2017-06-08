@@ -19,7 +19,7 @@ use Sphp\Html\Forms\Inputs\Checkbox;
  */
 class Checkboxes extends Choiceboxes {
 
-  public function setOption($value, $label, $checked = false) {
+  public function setOption($value, $label, bool $checked = false) {
     $input = new Checkbox($this->getName() . '[]', $value, $checked);
     $this->setInput($input, $label);
     return $this;
@@ -33,7 +33,7 @@ class Checkboxes extends Choiceboxes {
    *         be checked before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     return $this->setAttr('data-required', $required);
   }
 
@@ -44,7 +44,7 @@ class Checkboxes extends Choiceboxes {
    * @return boolean true if an {@link Checkbox} component must be checked 
    *         before form submission, otherwise false
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->attrExists('data-required');
   }
 

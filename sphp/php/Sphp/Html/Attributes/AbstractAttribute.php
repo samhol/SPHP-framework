@@ -33,7 +33,6 @@ abstract class AbstractAttribute implements AttributeInterface {
    */
   private $required = false;
 
-
   /**
    * Constructs a new instance
    *
@@ -58,7 +57,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     $output = '';
     $value = $this->getValue();
     if ($value !== false) {
@@ -76,7 +75,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    * 
    * @return string the name of the attribute
    */
-  public function getName() {
+  public function getName(): string {
     return $this->name;
   }
 
@@ -100,7 +99,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    *
    * @return boolean true if the attribute is required and false otherwise
    */
-  public function isDemanded() {
+  public function isDemanded(): bool {
     return $this->required || $this->isLocked();
   }
 
@@ -112,7 +111,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    * 
    * @return boolean true if the attribute is visible and false otherwise
    */
-  public function isVisible() {
+  public function isVisible(): bool {
     return $this->isDemanded() || $this->getValue() !== false;
   }
 

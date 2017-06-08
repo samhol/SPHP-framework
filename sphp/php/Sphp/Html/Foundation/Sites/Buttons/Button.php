@@ -10,6 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Foundation\Sites\Core\ColourableAdapter;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
+use Sphp\Html\Forms\Buttons\Button as PushButton;
 use Sphp\Html\Navigation\Hyperlink;
 
 /**
@@ -133,6 +134,15 @@ Class Button extends ColourableAdapter implements ButtonInterface {
    */
   public static function resetter($content = null) {
     return new static(new Resetter($content));
+  }
+
+  /**
+   * 
+   * @param  mixed $content
+   * @return self new instance containing a push button
+   */
+  public static function pushButton($content = null) {
+    return new static(new PushButton($content));
   }
 
 }

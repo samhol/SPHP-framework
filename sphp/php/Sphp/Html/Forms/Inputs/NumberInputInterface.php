@@ -24,7 +24,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    * @return int|boolean  the minimum value of the input or `false` if minimum is not set
    * @link   http://www.w3schools.com/tags/att_input_min.asp min attribute
    */
-  public function getMinimum();
+  public function getMinimum(): int;
 
   /**
    * Sets the minimum value of the input
@@ -33,7 +33,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_min.asp min attribute
    */
-  public function setMinimum($min);
+  public function setMinimum(int $min);
 
   /**
    * Returns the value of the maxlength attribute
@@ -41,7 +41,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    * @return int the value of the maxlength attribute
    * @link   http://www.w3schools.com/tags/att_input_max.asp max attribute
    */
-  public function getMaximum();
+  public function getMaximum(): int;
 
   /**
    * Sets the value of the maxlength attribute
@@ -52,7 +52,7 @@ interface NumberInputInterface extends ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_max.asp max attribute
    */
-  public function setMaximum($maxlength);
+  public function setMaximum(int $maxlength);
 
   /**
    * Sets the value of the placeholder attribute
@@ -85,5 +85,5 @@ interface NumberInputInterface extends ValidableInputInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_autocomplete.asp autocomplete attribute
    */
-  public function autocomplete($allow = true);
+  public function autocomplete(bool $allow = true);
 }

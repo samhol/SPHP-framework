@@ -9,15 +9,19 @@ require_once('../settings.php');
 use Sphp\Html\Foundation\Sites\Grids\Column;
 use Sphp\Html\Foundation\Sites\Containers\Callout;
 use Sphp\Html\Div;
-use Sphp\Html\Forms\Buttons\Button;
+use Sphp\Html\Foundation\Sites\Buttons\Button;
 use Sphp\Html\Foundation\Sites\Forms\FormRow;
 
-$submitter = (new Button('See submission data'))
-        ->addCssClass('button alert small submitter');
+$submitter = Button::pushButton('See submission data')
+        ->setColor('alert')
+        ->setSize('small');
+
+        $submitter->getComponent()->addCssClass('submitter');
 $panel = (new Callout($submitter))->setColor('alert')->addCssClass('form-submitter small');
 //$panel->setCallout();
 $panel[] = new Div('This row is automatically generated for form data viewing');
 $inputCol = (new Column($panel));
 
 $submitRow = new FormRow($panel);
+$submitRow->layout()->expand(true);
 $submitRow->printHtml();

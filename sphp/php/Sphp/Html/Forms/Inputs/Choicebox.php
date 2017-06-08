@@ -29,19 +29,19 @@ class Choicebox extends InputTag implements ChoiceboxInterface {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($type, $name = null, $value = null, $checked = false) {
+  public function __construct($type, $name = null, $value = null, bool $checked = false) {
     parent::__construct($type, $name, $value);
     $this->setChecked($checked);
   }
 
   /**
-   * Checks/unchecks the choise
+   * Checks/unchecks the choice
    *
    * @param  boolean $checked true if chosen, false otherwise
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function setChecked($checked = true) {
+  public function setChecked(bool $checked = true) {
     return $this->attrs()->set('checked', $checked);
   }
 

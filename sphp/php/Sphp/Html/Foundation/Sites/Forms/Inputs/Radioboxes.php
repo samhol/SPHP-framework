@@ -20,7 +20,7 @@ use Sphp\Html\Forms\Inputs\Radiobox;
  */
 class Radioboxes extends Choiceboxes {
 
-  public function setOption($value, $label, $checked = false) {
+  public function setOption($value, $label, bool $checked = false) {
     $input = new Radiobox($this->getName(), $value, $checked);
     $this->setInput($input, $label);
     return $this;
@@ -66,7 +66,7 @@ class Radioboxes extends Choiceboxes {
    *         must be checked before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     foreach ($this->getOptionFields() as $opt) {
       $opt->setRequired($required);
     }
@@ -79,7 +79,7 @@ class Radioboxes extends Choiceboxes {
    * @return boolean true if the input must have a value before form submission, 
    *         otherwise false
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     foreach ($this->getOptionFields() as $opt) {
       if (!$opt->isRequired()) {
         return false;

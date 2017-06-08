@@ -30,7 +30,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
    * @param int $end the end value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $step = 1) {
+  public function __construct(int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct('div');
     $this->cssClasses()->lock('slider');
     $this->attrs()
@@ -46,7 +46,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     $this->setStepLength($step);
   }
 
-  public function setStepLength($step) {
+  public function setStepLength(int $step = 1) {
     if ($step <= 0) {
       throw new InvalidArgumentException('The step value is not positive');
     }
@@ -58,15 +58,15 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this;
   }
 
-  public function getMin() {
-    return $this->attrs()->get('data-start');
+  public function getMin(): int {
+    return (int) $this->attrs()->get('data-start');
   }
 
-  public function getMax() {
-    return $this->attrs()->get('data-end');
+  public function getMax(): int {
+    return (int) $this->attrs()->get('data-end');
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     if ($disabled) {
       $this->removeCssClass('disabled');
     } else {
@@ -75,7 +75,7 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->cssClasses()->contains('disabled');
   }
 

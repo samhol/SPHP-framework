@@ -54,7 +54,7 @@ trait InputTrait {
    *
    * @return boolean true if the input has a name, otherwise false
    */
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->attrs()->exists("name") && !Strings::isEmpty($this->getName());
   }
 
@@ -67,8 +67,8 @@ trait InputTrait {
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return InputInterface for PHP Method Chaining
    */
-  public function disable($disabled = true) {
-    $this->attrs()->set("disabled", (bool) $disabled);
+  public function disable(bool $disabled = true) {
+    $this->attrs()->set("disabled", $disabled);
     return $this;
   }
 
@@ -77,7 +77,7 @@ trait InputTrait {
    * 
    * @param  boolean true if the option is enabled, otherwise false
    */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->attrs()->exists("disabled");
   }
 

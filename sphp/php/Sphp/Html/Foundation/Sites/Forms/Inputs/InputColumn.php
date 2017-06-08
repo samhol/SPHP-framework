@@ -160,12 +160,12 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->input->disable($disabled);
     return $this;
   }
 
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return $this->input->isEnabled();
   }
 
@@ -178,7 +178,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->input->isNamed();
   }
 

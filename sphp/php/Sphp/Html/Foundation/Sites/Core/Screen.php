@@ -47,7 +47,7 @@ class Screen {
    * @param  string $size screen type name
    * @return boolean true if the given size exists
    */
-  public static function typeExists($size) {
+  public static function typeExists($size): bool {
     return in_array($size, static::allTypes());
   }
 
@@ -66,7 +66,7 @@ class Screen {
    * @param  string $size screen size name
    * @return boolean true if the given size exists
    */
-  public static function sizeExists($size) {
+  public static function sizeExists($size): bool {
     return in_array($size, static::sizes());
   }
 

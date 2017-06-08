@@ -42,8 +42,8 @@ class EmailInput extends TextualInput {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
-  public function multiple($multiple = true) {
-    $this->attrs()->set('multiple', (bool)$multiple);
+  public function multiple(bool $multiple = true) {
+    $this->attrs()->set('multiple', $multiple);
     return $this;
   }
 

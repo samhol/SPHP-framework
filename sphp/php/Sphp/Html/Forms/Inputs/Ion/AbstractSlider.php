@@ -34,7 +34,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  mixed $value the initial submit value 
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct($name, $start = 0, $end = 100, $step = 1, $value = null) {
+  public function __construct($name, int $start = 0, int $end = 100, int $step = 1, $value = null) {
     parent::__construct('text', $name);
     if ($value === null) {
       $value = $start;
@@ -45,7 +45,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
             ->setValue($value);
   }
 
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->attrs()->set('data-disable', (bool) $disabled);
     return $this;
   }
@@ -57,7 +57,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @return self for a fluent interface
    * @throws InvalidArgumentException if the step value is below zero
    */
-  public function setStepLength($step = 1) {
+  public function setStepLength(int $step = 1) {
     $range = $this->getMax() - $this->getMin();
     if ($step < 0) {
       throw new InvalidArgumentException("Step value ($step) is below zero");
@@ -76,7 +76,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  int $max the end point
    * @return self for a fluent interface
    */
-  public function setRange($min, $max) {
+  public function setRange(int $min, int $max) {
     $this->setMin($min)->setMax($max);
     return $this;
   }
@@ -88,7 +88,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  int $end the end point
    * @return self for a fluent interface
    */
-  public function setMin($start) {
+  public function setMin(int $start) {
     $this->attrs()->set('data-min', $start);
     return $this;
   }
@@ -99,7 +99,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  int $end the end point
    * @return self for a fluent interface
    */
-  public function setMax($end) {
+  public function setMax(int $end) {
     $this->attrs()->set('data-max', $end);
     return $this;
   }
@@ -110,7 +110,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  boolean $grid the unit of the value
    * @return self for a fluent interface
    */
-  public function useGrid($grid = true) {
+  public function useGrid(bool $grid = true) {
     $this->attrs()->set('data-grid', $grid ? 'true' : 'false');
     return $this;
   }
@@ -121,7 +121,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  int $num the number of grid units
    * @return self for a fluent interface
    */
-  public function setNumberOfGridUnits($num = 4) {
+  public function setNumberOfGridUnits(int $num = 4) {
     $this->attrs()->set('data-grid-num', $num);
     return $this;
   }
@@ -148,12 +148,12 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
     return $this;
   }
 
-  public function getMax() {
-    return $this->attrs()->get('data-max');
+  public function getMax(): int {
+    return (int) $this->attrs()->get('data-max');
   }
 
-  public function getMin() {
-    return $this->attrs()->get('data-min');
+  public function getMin(): int {
+    return (int) $this->attrs()->get('data-min');
   }
 
 }

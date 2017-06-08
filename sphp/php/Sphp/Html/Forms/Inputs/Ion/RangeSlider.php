@@ -29,7 +29,7 @@ class RangeSlider extends AbstractSlider {
    * @param  int $step the length of a single step
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct($name = null, $start = 0, $end = 100, $step = 1) {
+  public function __construct($name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step, [$start, $end]);
     $this->attrs()->lock('data-type', 'double');
   }

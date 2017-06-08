@@ -24,19 +24,19 @@ interface SliderInterface extends InputInterface {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the step value is below zero
    */
-  public function setStepLength($step);
+  public function setStepLength(int $step);
 
   /**
    * Returns the minimum value of the slider
    *
    * @return int the minimum value of the slider
    */
-  public function getMin();
+  public function getMin(): int;
 
   /**
    * Returns the maximum value of the slider
    *
    * @return int the maximum value of the slider
    */
-  public function getMax();
+  public function getMax(): int;
 }

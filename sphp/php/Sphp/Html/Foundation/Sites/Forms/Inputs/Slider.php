@@ -44,7 +44,7 @@ class Slider extends AbstractSlider {
    * @param int $value the current value of the slider
    * @param int $step the length of a single step
    */
-  public function __construct($start = 0, $end = 100, $value = 0, $step = 1) {
+  public function __construct(int $start = 0, int $end = 100, int $value = 0, int $step = 1) {
     parent::__construct($start, $end, $step);
     $this->handle = new Span();
     $this->handle->cssClasses()->lock('slider-handle');
@@ -62,6 +62,7 @@ class Slider extends AbstractSlider {
    * @return Label the label describing the slider
    */
   private function getInnerLabel() {
+    
   }
 
   /**
@@ -123,8 +124,8 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-  public function disable($enabled = true) {
-    parent::disable($disabled);
+  public function disable(bool $enabled = true) {
+    parent::disable($enabled);
     $this->getInput()->disable($enabled);
     return $this;
   }
@@ -138,7 +139,7 @@ class Slider extends AbstractSlider {
     return $this;
   }
 
-  public function isNamed() {
+  public function isNamed(): bool {
     return $this->getInput()->isNamed();
   }
 
@@ -147,7 +148,7 @@ class Slider extends AbstractSlider {
    *
    * @return int the minimum value of the slider
    */
-  public function getMin() {
+  public function getMin(): int {
     return $this->attrs()->get("data-start");
   }
 
@@ -156,7 +157,7 @@ class Slider extends AbstractSlider {
    *
    * @return int the maximum value of the slider
    */
-  public function getMax() {
+  public function getMax(): int {
     return $this->attrs()->get("data-end");
   }
 
@@ -179,7 +180,7 @@ class Slider extends AbstractSlider {
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
    * @return self for a fluent interface
    */
-  public function setRequired($required = true) {
+  public function setRequired(bool $required = true) {
     return $this->getInput()->setRequired($required);
   }
 
@@ -188,7 +189,7 @@ class Slider extends AbstractSlider {
    *
    * @return boolean true if the input must have a value before form submission, false otherwise
    */
-  public function isRequired() {
+  public function isRequired(): bool {
     return $this->getInput()->isRequired();
   }
 

@@ -179,7 +179,7 @@ $p[] = ["Programming",
 namespace Sphp\Html\Tables;
 
 use Sphp\Html\Document;
-
+use Sphp\Html\Adapters\QtipAdapter;
 $generateTagTable = function(array $v) use ($api, $w3schools) {
   $table = (new Table())
           ->addCssClass('html-to-php');
@@ -201,7 +201,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $linkText .= "&gt;";
       $param = new \Sphp\Html\Span("$data[0]");
       $tooptipText = "Document::get(\"$data[0]\")";
-      $c[] = new \Sphp\Html\Foundation\Sites\Media\Tooltip($param, $tooptipText);
+      $c[] = new QtipAdapter($param, $tooptipText);
       $c[] = $w3schools->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
       $c[] = $api->classLinker($ref->getName(), $text)->getLink()->removeCssClass("bordered");

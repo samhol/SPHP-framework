@@ -24,14 +24,14 @@ interface AttributeInterface {
    *
    * @return string the object as a string
    */
-  public function __toString();
+  public function __toString(): string;
 
   /**
    * Returns the name of the attribute 
    * 
    * @return string the name of the attribute
    */
-  public function getName();
+  public function getName(): string;
 
   /**
    * Sets the value of the attribute
