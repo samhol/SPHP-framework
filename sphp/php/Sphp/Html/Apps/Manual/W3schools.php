@@ -36,7 +36,7 @@ class W3schools extends AbstractLinker {
    * @param  string $linkText optional content of the link
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function tag($tagname, $linkText = null) {
+  public function tag(string $tagname, $linkText = null) {
     if (preg_match('/^([h][1-6])$/', $tagname)) {
       $link = 'tags/tag_hn.asp';
     } else {

@@ -179,7 +179,7 @@ class CsvFile implements Arrayable, \Iterator {
     return $result;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $arr = [];
     $file = $this->createSplFileObject();
     while (!$file->eof() && ($row = $file->fgetcsv()) && $row[0] !== null) {

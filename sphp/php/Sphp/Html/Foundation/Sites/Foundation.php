@@ -47,7 +47,7 @@ class Foundation {
    * @return ContentInterface
    * @throws UnexpectedValueException
    */
-  public static function icon($name, $tagName = 'i') {
+  public static function icon(string $name, string $tagName = 'i') {
     if (!Strings::startsWith($name, 'fi-')) {
       $name = 'fi-' . $name;
     }

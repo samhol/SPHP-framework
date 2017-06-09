@@ -36,5 +36,9 @@ class Queue extends SplQueue implements QueueInterface {
       throw new RuntimeException($ex->getMessage(), $ex->getCode(), $ex);
     }
   }
+  
+  public function isEmpty(): bool {
+    return parent::isEmpty();
+  }
 
 }

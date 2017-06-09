@@ -58,7 +58,7 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
     }
   }
 
-  public function __toString() {
+  public function __toString(): string {
     $keys = array();
     $values = $this->getParams();
 

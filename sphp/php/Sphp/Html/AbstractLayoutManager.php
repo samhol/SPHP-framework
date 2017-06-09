@@ -56,7 +56,7 @@ abstract class AbstractLayoutManager implements LayoutManagerInterface {
     return $this->component->cssClasses();
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return "$this->component";
   }
 

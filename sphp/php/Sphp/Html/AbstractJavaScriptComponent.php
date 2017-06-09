@@ -46,7 +46,7 @@ abstract class AbstractJavaScriptComponent extends AbstractContainerComponent {
    * @param mixed $content component's content
    * @param  AttributeManager|null $attrManager the attribute manager of the component
    */
-  public function __construct($tagName, $content = null, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, $content = null, AttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->getInnerContainer()->append($content);

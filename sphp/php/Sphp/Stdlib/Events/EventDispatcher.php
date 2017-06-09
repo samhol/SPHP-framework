@@ -134,7 +134,7 @@ class EventDispatcher implements EventDispatcherInterface {
    * @param  mixed $data the data dispatched with this event
    * @return self for a fluent interface
    */
-  public function triggerEvent($name, $subject = null, $data = null) {
+  public function triggerEvent(string $name, $subject = null, $data = null) {
     $event = new Event($name, $subject, $data);
     $this->trigger($event);
     return $this;
@@ -154,12 +154,12 @@ class EventDispatcher implements EventDispatcherInterface {
     return $this;
   }
 
-  public function hasListeners($e) {
+  public function hasListeners($e): bool {
     $key = $this->getEventName($e);
     return array_key_exists($key, $this->listeners);
   }
 
-  public function getListeners($event) {
+  public function getListeners($event): array {
     $key = $this->getEventName($event);
     if (array_key_exists($key, $this->listeners)) {
       return $this->listeners[$key]->toArray();

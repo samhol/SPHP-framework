@@ -46,5 +46,5 @@ interface QueueInterface {
    *
    * @return boolean true if the queue is empty, false otherwise
    */
-  public function isEmpty();
+  public function isEmpty(): bool;
 }

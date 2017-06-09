@@ -22,7 +22,7 @@ interface EventInterface {
    *
    * @return string the name of the event
    */
-  public function getName();
+  public function getName(): string;
 
   /**
    * Return the subject
@@ -51,5 +51,5 @@ interface EventInterface {
    * 
    * @return boolean true if the event is stopped
    */
-  public function isStopped();
+  public function isStopped(): bool;
 }

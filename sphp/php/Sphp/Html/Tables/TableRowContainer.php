@@ -48,7 +48,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @param AttributeManager $m
    * @param null|mixed|mixed[] $rows the row being appended
    */
-  public function __construct($tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
+  public function __construct(string $tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
     parent::__construct($tagname, $m);
     if ($rows !== null) {
       $this->fromArray($rows);

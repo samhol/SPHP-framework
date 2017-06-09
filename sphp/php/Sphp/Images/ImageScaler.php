@@ -335,7 +335,7 @@ class ImageScaler {
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->createImage()->show($this->getExtension());
   }
 

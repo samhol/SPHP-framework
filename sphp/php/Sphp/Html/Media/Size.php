@@ -92,11 +92,11 @@ class Size {
     return $this->getHeight() !== false;
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return sprintf('%dx%d px', $this->width, $this->height);
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return get_object_vars($this);
   }
 

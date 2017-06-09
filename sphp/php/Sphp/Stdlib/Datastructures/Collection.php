@@ -63,7 +63,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     return Arrays::implodeWithKeys($this->items);
   }
 
@@ -73,7 +73,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $offset the offset key
    * @return boolean true if the property exists and false otherwise
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->items);
   }
 
@@ -220,7 +220,7 @@ class Collection implements Iterator, CollectionInterface {
     return new static(array_combine($keys, $items));
   }
 
-  public function contains($value) {
+  public function contains($value): bool {
     return in_array($value, $this->items, true);
   }
 
@@ -264,7 +264,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return array the collection as a plain PHP array
    */
-  public function toArray() {
+  public function toArray(): array {
     return $this->items;
   }
 

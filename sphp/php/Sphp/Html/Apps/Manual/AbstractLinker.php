@@ -79,7 +79,7 @@ abstract class AbstractLinker implements LinkerInterface {
     $this->urlGenerator = clone $this->urlGenerator;
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->hyperlink()->getHtml();
   }
 

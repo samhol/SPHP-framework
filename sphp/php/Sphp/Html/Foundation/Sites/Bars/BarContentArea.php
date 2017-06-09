@@ -26,7 +26,7 @@ use Sphp\Html\SimpleContainerTag;
    *
    * @param string $tagname the title of the Top Bar component
    */
-  public function __construct($tagname = 'div') {
+  public function __construct(string $tagname = 'div') {
     parent::__construct($tagname);
   }
 

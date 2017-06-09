@@ -129,7 +129,7 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $data = [
         'name' => $this->getName()
     ];

@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\AttributeManager;
  */
 class AbstractIcon extends AbstractComponent {
 
-  public function __construct($tagName, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, AttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->attrs()->set('aria-hidden', 'true');
   }

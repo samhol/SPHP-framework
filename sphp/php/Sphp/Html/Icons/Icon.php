@@ -25,7 +25,7 @@ class Icon extends AbstractIcon {
    * @param  string $tagName the tag name 
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
    */
-  public function __construct($iconName, $tagName = 'i') {
+  public function __construct(string $iconName, string $tagName = 'i') {
     parent::__construct($tagName);
     $this->cssClasses()->lock($iconName);
   }
@@ -34,7 +34,7 @@ class Icon extends AbstractIcon {
    * 
    * @param string $icon
    */
-  public static function fontAwesome($icon) {
+  public static function fontAwesome(string $icon) {
     if (!Strings::startsWith($icon, 'fa-')) {
       $icon = 'fa-' . $icon;
     }
@@ -50,7 +50,7 @@ class Icon extends AbstractIcon {
    * @return self
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
    */
-  public static function foundation($iconName, $tagName = 'i') {
+  public static function foundation(string $iconName, string $tagName = 'i') {
     if (!Strings::startsWith($iconName, 'fi-')) {
       $iconName = 'fi-' . $iconName;
     }
@@ -66,7 +66,7 @@ class Icon extends AbstractIcon {
    * @return self
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
    */
-  public static function get($iconName, $tagName = 'i') {
+  public static function get(string $iconName, string $tagName = 'i') {
     return new static($iconName, $tagName);
   }
 

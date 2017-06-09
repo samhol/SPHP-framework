@@ -34,7 +34,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
    * 
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    */
-  public function __construct($inclusive = true) {
+  public function __construct(bool $inclusive = true) {
     parent::__construct();
     $this->setInclusive($inclusive);
     $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
@@ -55,7 +55,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    * @return self for a fluent interface
    */
-  public function setInclusive($inclusive) {
+  public function setInclusive(bool $inclusive) {
     $this->inclusive = $inclusive;
     return $this;
   }

@@ -125,7 +125,7 @@ class TopicList implements Iterator, TranslatorAwareInterface, Arrayable, Counta
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     $output = "";
     if ($this->count(self::COUNT_TOPICS) > 0) {
       $output = self::class . ":\n";
@@ -196,7 +196,7 @@ class TopicList implements Iterator, TranslatorAwareInterface, Arrayable, Counta
    *
    * @return string[] the content as an array of formatted and localized message strings
    */
-  public function toArray() {
+  public function toArray(): array {
     $output = [];
     foreach ($this as $topic => $list) {
       $output[$topic] = $list->toArray();

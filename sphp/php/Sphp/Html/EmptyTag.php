@@ -27,7 +27,7 @@ class EmptyTag extends AbstractTag {
    * @param  string $tagName the name of the tag
    * @param  string[] $attrs an array of attribute name value pairs
    */
-  function __construct($tagName, array $attrs = []) {
+  function __construct(string $tagName, array $attrs = []) {
     parent::__construct($tagName);
     $this->setAttrs($attrs);
   }

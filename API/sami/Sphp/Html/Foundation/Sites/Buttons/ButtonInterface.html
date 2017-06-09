@@ -166,7 +166,17 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isHollow">isHollow</a>(boolean $hollow = true)
+                    <a href="#method_setExtended">setExtended</a>(bool $extended = true)
+        
+                                            <p>Sets the button size to default</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isHollow">isHollow</a>(bool $hollow = true)
         
                                             <p>Determines whether the button style is <code>hollow</code> or not</p>                </div>
                 <div class="col-md-2"></div>
@@ -176,7 +186,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_disable">disable</a>(boolean $disabled = true)
+                    <a href="#method_disable">disable</a>(bool $disabled = true)
         
                                             <p>Determines whether the button style is <code>disabled</code> or not</p>                </div>
                 <div class="col-md-2"></div>
@@ -186,7 +196,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isDropdown">isDropdown</a>(boolean $dropdown = true)
+                    <a href="#method_isDropdown">isDropdown</a>(bool $dropdown = true)
         
                                             <p>Determines whether the button style is <code>dropdown</code> or not</p>                </div>
                 <div class="col-md-2"></div>
@@ -427,10 +437,50 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isHollow">
+                    <h3 id="method_setExtended">
         <div class="location">at         line 61</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
-    <strong>isHollow</strong>(boolean $hollow = true)
+    <strong>setExtended</strong>(bool $extended = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the button size to default</p>                    <p>Removes all specified size related CSS classes</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$extended</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isHollow">
+        <div class="location">at         line 71</div>
+        <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
+    <strong>isHollow</strong>(bool $hollow = true)
         </code>
     </h3>
     <div class="details">
@@ -444,7 +494,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$hollow</td>
                 <td>true for <code>hollow</code> style, otherwise false</td>
             </tr>
@@ -468,9 +518,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_disable">
-        <div class="location">at         line 72</div>
+        <div class="location">at         line 82</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
-    <strong>disable</strong>(boolean $disabled = true)
+    <strong>disable</strong>(bool $disabled = true)
         </code>
     </h3>
     <div class="details">
@@ -484,7 +534,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$disabled</td>
                 <td>true for <code>disabled</code> style, otherwise false</td>
             </tr>
@@ -508,9 +558,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isDropdown">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 92</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
-    <strong>isDropdown</strong>(boolean $dropdown = true)
+    <strong>isDropdown</strong>(bool $dropdown = true)
         </code>
     </h3>
     <div class="details">
@@ -524,7 +574,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$dropdown</td>
                 <td>true for <code>dropdown</code> style, otherwise false</td>
             </tr>

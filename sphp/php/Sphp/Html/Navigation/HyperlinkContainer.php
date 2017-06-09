@@ -32,7 +32,7 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
    * @param  string $tagName the tag name of the component
    * @param  Hyperlink|null $hyperlink the inner hyperlink object or null
    */
-  public function __construct($tagName, Hyperlink $hyperlink = null) {
+  public function __construct(string $tagName, Hyperlink $hyperlink = null) {
     if ($hyperlink === null) {
       $hyperlink = new Hyperlink();
     }

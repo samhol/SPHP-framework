@@ -64,7 +64,7 @@ interface MenuInterface extends ContentInterface {
    * @return self for a fluent interface
    * @see    self::nested() 
    */
-  public function nested($nested = true);
+  public function nested(bool $nested = true);
 
   /**
    * Switches menu orientation between vertical and horizontal
@@ -72,7 +72,7 @@ interface MenuInterface extends ContentInterface {
    * @param  boolean $vertical true for vertical orientation and false for horizontal
    * @return self for a fluent interface
    */
-  public function vertical($vertical = true);
+  public function vertical(bool $vertical = true);
 
   /**
    * Sets or unsets the menu as active
@@ -80,12 +80,12 @@ interface MenuInterface extends ContentInterface {
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setActive($active = true);
+  public function setActive(bool $active = true);
 
   /**
    * Checks whether the menu is set as active or not
    *
    * @return boolean true if the menu is set as active, otherwise false
    */
-  public function isActive();
+  public function isActive(): bool;
 }

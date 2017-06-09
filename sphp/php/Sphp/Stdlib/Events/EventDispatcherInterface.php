@@ -56,7 +56,7 @@ interface EventDispatcherInterface {
    * @param  EventInterface|string $event event object or the name of the event
    * @return boolean true if event has listeners, false otherwise
    */
-  public function hasListeners($event);
+  public function hasListeners($event): bool;
 
   /**
    * Get all listeners for an event
@@ -64,5 +64,5 @@ interface EventDispatcherInterface {
    * @param  EventInterface|string $event event object or the name of the event
    * @return mixed[] containing the listener objects
    */
-  public function getListeners($event);
+  public function getListeners($event): array;
 }

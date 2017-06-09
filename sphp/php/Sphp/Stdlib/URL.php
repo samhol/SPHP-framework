@@ -509,7 +509,7 @@ class URL implements Arrayable, IteratorAggregate {
    *
    * @return string representation of the object
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->getHtml();
   }
 
@@ -692,7 +692,7 @@ class URL implements Arrayable, IteratorAggregate {
     return clone self::$currUrl;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return $this->getIterator()->getArrayCopy();
   }
 

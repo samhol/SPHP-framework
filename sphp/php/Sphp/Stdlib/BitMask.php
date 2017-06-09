@@ -176,14 +176,14 @@ class BitMask implements Arrayable, Embeddable {
    *
    * @return string the object as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     return decbin($this->mask);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function toArray() {
+  public function toArray(): array {
     return static::toBitArray($this->mask);
   }
 

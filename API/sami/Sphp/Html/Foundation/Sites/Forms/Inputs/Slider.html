@@ -420,7 +420,7 @@
                     <a href="../../../../../../Sphp/Html/Forms/Inputs/SliderInterface.html"><abbr title="Sphp\Html\Forms\Inputs\SliderInterface">SliderInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setStepLength">setStepLength</a>(int $step)
+                    <a href="#method_setStepLength">setStepLength</a>(int $step = 1)
         
                                             <p>Sets the length of the slider step</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSlider.html#method_setStepLength"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSlider">AbstractSlider</abbr></a></small></div>
@@ -450,7 +450,7 @@
                     <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_disable">disable</a>($enabled = true)
+                    <a href="#method_disable">disable</a>(bool $disabled = true)
         
                                             <p>Disables the input component</p>                </div>
                 <div class="col-md-2"></div>
@@ -470,7 +470,7 @@
                     <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setVertical">setVertical</a>($vertical = true)
+                    <a href="#method_setVertical">setVertical</a>(bool $vertical = true)
         
                                             <p>Sets the slider orientation to vertical</p>                </div>
                 <div class="col-md-2"></div>
@@ -480,7 +480,7 @@
                     <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showValue">showValue</a>(boolean $valueVisible = true)
+                    <a href="#method_showValue">showValue</a>(bool $valueVisible = true)
         
                                             <p>Sets the visibility of the current slider value</p>                </div>
                 <div class="col-md-2"></div>
@@ -560,7 +560,7 @@
                     <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setRequired">setRequired</a>(boolean $required = true)
+                    <a href="#method_setRequired">setRequired</a>(bool $required = true)
         
                                             <p>Sets whether the input must have a value or not before form submission</p>                </div>
                 <div class="col-md-2"></div>
@@ -1498,7 +1498,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 47</div>
+        <div class="location">at         line 45</div>
         <code>                    
     <strong>__construct</strong>(int $start, int $end = 100, int $value, int $step = 1)
         </code>
@@ -1647,7 +1647,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 195</div>
+        <div class="location">at         line 194</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1718,7 +1718,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_setStepLength">
         <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/AbstractSlider.html#method_setStepLength"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\AbstractSlider">AbstractSlider</abbr></a> at         line 49</div>
         <code>                    <a href="../../../../../../Sphp/Html/Forms/Inputs/SliderInterface.html"><abbr title="Sphp\Html\Forms\Inputs\SliderInterface">SliderInterface</abbr></a>
-    <strong>setStepLength</strong>(int $step)
+    <strong>setStepLength</strong>(int $step = 1)
         </code>
     </h3>
     <div class="details">
@@ -1765,7 +1765,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getMin">
-        <div class="location">at         line 150</div>
+        <div class="location">at         line 149</div>
         <code>                    int
     <strong>getMin</strong>()
         </code>
@@ -1795,7 +1795,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getMax">
-        <div class="location">at         line 159</div>
+        <div class="location">at         line 158</div>
         <code>                    int
     <strong>getMax</strong>()
         </code>
@@ -1825,9 +1825,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_disable">
-        <div class="location">at         line 126</div>
+        <div class="location">at         line 125</div>
         <code>                    <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-    <strong>disable</strong>($enabled = true)
+    <strong>disable</strong>(bool $disabled = true)
         </code>
     </h3>
     <div class="details">
@@ -1842,9 +1842,9 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$enabled</td>
-                <td></td>
+                <td>bool</td>
+                <td>$disabled</td>
+                <td>true if the component is disabled, otherwise false</td>
             </tr>
             </table>
 
@@ -1887,9 +1887,9 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setVertical">
-        <div class="location">at         line 81</div>
+        <div class="location">at         line 80</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
-    <strong>setVertical</strong>($vertical = true)
+    <strong>setVertical</strong>(bool $vertical = true)
         </code>
     </h3>
     <div class="details">
@@ -1903,7 +1903,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>bool</td>
                 <td>$vertical</td>
                 <td></td>
             </tr>
@@ -1927,9 +1927,9 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_showValue">
-        <div class="location">at         line 98</div>
+        <div class="location">at         line 97</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
-    <strong>showValue</strong>(boolean $valueVisible = true)
+    <strong>showValue</strong>(bool $valueVisible = true)
         </code>
     </h3>
     <div class="details">
@@ -1943,7 +1943,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$valueVisible</td>
                 <td>true for visible and false for hidden</td>
             </tr>
@@ -1967,7 +1967,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setDescription">
-        <div class="location">at         line 110</div>
+        <div class="location">at         line 109</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
     <strong>setDescription</strong>(string $description)
         </code>
@@ -2007,7 +2007,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setValueUnit">
-        <div class="location">at         line 121</div>
+        <div class="location">at         line 120</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
     <strong>setValueUnit</strong>(string $unit = &quot;&quot;)
         </code>
@@ -2047,7 +2047,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">at         line 132</div>
+        <div class="location">at         line 131</div>
         <code>                    string|null
     <strong>getName</strong>()
         </code>
@@ -2077,7 +2077,7 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setName">
-        <div class="location">at         line 136</div>
+        <div class="location">at         line 135</div>
         <code>                    <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
     <strong>setName</strong>(string $name)
         </code>
@@ -2118,7 +2118,7 @@ passed when submitting a form.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isNamed">
-        <div class="location">at         line 141</div>
+        <div class="location">at         line 140</div>
         <code>                    boolean
     <strong>isNamed</strong>()
         </code>
@@ -2149,7 +2149,7 @@ passed when submitting a form.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSubmitValue">
-        <div class="location">at         line 163</div>
+        <div class="location">at         line 162</div>
         <code>                    mixed
     <strong>getSubmitValue</strong>()
         </code>
@@ -2179,7 +2179,7 @@ passed when submitting a form.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">at         line 167</div>
+        <div class="location">at         line 166</div>
         <code>                    <a href="../../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
     <strong>setValue</strong>(string|string[] $value)
         </code>
@@ -2228,9 +2228,9 @@ passed when submitting a form.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRequired">
-        <div class="location">at         line 182</div>
+        <div class="location">at         line 181</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Forms/Inputs/Slider.html"><abbr title="Sphp\Html\Foundation\Sites\Forms\Inputs\Slider">Slider</abbr></a>
-    <strong>setRequired</strong>(boolean $required = true)
+    <strong>setRequired</strong>(bool $required = true)
         </code>
     </h3>
     <div class="details">
@@ -2244,7 +2244,7 @@ passed when submitting a form.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$required</td>
                 <td>true if the input must have a value before form submission, otherwise false</td>
             </tr>
@@ -2268,7 +2268,7 @@ passed when submitting a form.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isRequired">
-        <div class="location">at         line 191</div>
+        <div class="location">at         line 190</div>
         <code>                    boolean
     <strong>isRequired</strong>()
         </code>

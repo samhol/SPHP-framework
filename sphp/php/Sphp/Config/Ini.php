@@ -121,7 +121,7 @@ class Ini implements Arrayable {
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return Arrays::copy($this->ini);
   }
 

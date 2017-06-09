@@ -98,7 +98,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
    * @param  mixed $offset an offset to check for
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->components);
   }
 
@@ -145,7 +145,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return $this->components;
   }
 

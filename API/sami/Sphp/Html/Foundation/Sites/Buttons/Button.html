@@ -266,10 +266,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setExtended">setExtended</a>(bool $extended = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setExtended"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_disable">disable</a>(boolean $disabled = true)
+                    <a href="#method_disable">disable</a>(bool $disabled = true)
         
                                             <p>Sets the button style as disabled</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_disable"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a></small></div>
@@ -279,7 +290,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isDropdown">isDropdown</a>(boolean $dropdown = true)
+                    <a href="#method_isDropdown">isDropdown</a>(bool $dropdown = true)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -290,7 +301,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isHollow">isHollow</a>(boolean $hollow = true)
+                    <a href="#method_isHollow">isHollow</a>(bool $hollow = true)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -321,7 +332,7 @@
                     static&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_submitter">submitter</a>(mixed $content = null, string|null $name = null, string|null $value = null)
+                    <a href="#method_submitter">submitter</a>(string $content = null, string|null $name = null, string|null $value = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -333,6 +344,17 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_resetter">resetter</a>(mixed $content = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_pushButton">pushButton</a>(mixed $content = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -445,7 +467,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 38</div>
+        <div class="location">at         line 39</div>
         <code>                    
     <strong>__construct</strong>( $component)
         </code>
@@ -619,7 +641,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_cssClasses">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 83</div>
         <code>                    
     <strong>cssClasses</strong>()
         </code>
@@ -638,7 +660,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setSize">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 60</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
     <strong>setSize</strong>(string|null $size = null)
         </code>
@@ -648,12 +670,12 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the size of the button</p>                    <p>Build in values for <var>$size</var> parameter:</p>
+                                    <p>Sets the size of the button</p>                    <p>Predefined values of <var>$size</var> parameter:</p>
 
 <ul>
 <li><code>'tiny'</code> for tiny buttons</li>
 <li><code>'small'</code> for small buttons</li>
-<li><code>'medium'</code> for medium buttons (default)</li>
+<li><code>'medium'</code> for "medium" (default) buttons</li>
 <li><code>'large'</code> for large buttons</li>
 <li><code>'extend'</code> for extended buttons (takes the full width of the container)</li>
 </ul>
@@ -688,7 +710,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultSize">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 79</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
     <strong>setDefaultSize</strong>()
         </code>
@@ -717,10 +739,39 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setExtended">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setExtended"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 77</div>
+        <code>                    
+    <strong>setExtended</strong>(bool $extended = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$extended</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_disable">
         <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_disable"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 33</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-    <strong>disable</strong>(boolean $disabled = true)
+    <strong>disable</strong>(bool $disabled = true)
         </code>
     </h3>
     <div class="details">
@@ -734,7 +785,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$disabled</td>
                 <td>true if the button is disabled, otherwise false</td>
             </tr>
@@ -760,7 +811,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_isDropdown">
         <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isDropdown"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 47</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-    <strong>isDropdown</strong>(boolean $dropdown = true)
+    <strong>isDropdown</strong>(bool $dropdown = true)
         </code>
     </h3>
     <div class="details">
@@ -772,7 +823,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$dropdown</td>
                 <td></td>
             </tr>
@@ -798,7 +849,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_isHollow">
         <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html#method_isHollow"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a> at         line 61</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonTrait.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonTrait">ButtonTrait</abbr></a>
-    <strong>isHollow</strong>(boolean $hollow = true)
+    <strong>isHollow</strong>(bool $hollow = true)
         </code>
     </h3>
     <div class="details">
@@ -810,7 +861,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$hollow</td>
                 <td></td>
             </tr>
@@ -834,7 +885,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 93</div>
         <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
     <strong>create</strong>(string|null $from)
         </code>
@@ -874,7 +925,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_hyperlink">
-        <div class="location">at         line 114</div>
+        <div class="location">at         line 115</div>
         <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
     <strong>hyperlink</strong>(string|null $href = null, string|null $content = null, string|null $target = null)
         </code>
@@ -930,9 +981,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_submitter">
-        <div class="location">at         line 125</div>
+        <div class="location">at         line 126</div>
         <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
-    <strong>submitter</strong>(mixed $content = null, string|null $name = null, string|null $value = null)
+    <strong>submitter</strong>(string $content = null, string|null $name = null, string|null $value = null)
         </code>
     </h3>
     <div class="details">
@@ -944,7 +995,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$content</td>
                 <td>optional</td>
             </tr>
@@ -978,7 +1029,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_resetter">
-        <div class="location">at         line 134</div>
+        <div class="location">at         line 135</div>
         <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
     <strong>resetter</strong>(mixed $content = null)
         </code>
@@ -1005,6 +1056,44 @@ to a particular object, or in any order during the shutdown sequence.</p>       
         <tr>
             <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a></td>
             <td>new instance for form resetting</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pushButton">
+        <div class="location">at         line 144</div>
+        <code>        static            <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a>
+    <strong>pushButton</strong>(mixed $content = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/Button.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\Button">Button</abbr></a></td>
+            <td>new instance containing a push button</td>
         </tr>
     </table>
 

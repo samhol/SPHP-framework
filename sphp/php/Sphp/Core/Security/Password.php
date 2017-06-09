@@ -46,7 +46,7 @@ class Password implements PasswordInterface, Embeddable {
     }
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->hash;
   }
 

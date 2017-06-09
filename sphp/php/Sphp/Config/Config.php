@@ -190,7 +190,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     return $this;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $arr = [];
     foreach ($this->data as $k => $v) {
       if (!$v instanceof Config) {

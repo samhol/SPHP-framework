@@ -216,7 +216,7 @@ class SessionUser extends AbstractDbObject implements UserInterface {
     return $count > 0;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     return [
         'id' => $this->getPrimaryKey(),
         'username' => $this->getUsername(),

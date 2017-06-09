@@ -50,7 +50,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setActive($active = true) {
+  public function setActive(bool $active = true) {
     if ($active) {
       $this->addCssClass('active');
     } else {
@@ -64,7 +64,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    *
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
-  public function isActive() {
+  public function isActive(): bool {
     return $this->hasCssClass("active");
   }
 

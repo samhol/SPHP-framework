@@ -447,7 +447,7 @@
                     <a href="../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_disable">disable</a>(boolean $disabled = true)
+                    <a href="#method_disable">disable</a>(bool $disabled = true)
         
                                             <p>Disables the input component</p>                </div>
                 <div class="col-md-2"></div>
@@ -517,7 +517,7 @@
                     <a href="../../../../../Sphp/Html/Forms/Inputs/Ion/AbstractSlider.html"><abbr title="Sphp\Html\Forms\Inputs\Ion\AbstractSlider">AbstractSlider</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setMin">setMin</a>($start)
+                    <a href="#method_setMin">setMin</a>(int $start)
         
                                             <p>Sets the range of the values on the slider</p>                </div>
                 <div class="col-md-2"></div>
@@ -537,7 +537,7 @@
                     <a href="../../../../../Sphp/Html/Forms/Inputs/Ion/AbstractSlider.html"><abbr title="Sphp\Html\Forms\Inputs\Ion\AbstractSlider">AbstractSlider</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_useGrid">useGrid</a>(boolean $grid = true)
+                    <a href="#method_useGrid">useGrid</a>(bool $grid = true)
         
                                             <p>Sets the unit of the slider value</p>                </div>
                 <div class="col-md-2"></div>
@@ -1559,6 +1559,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the $value is not between the range</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1742,7 +1751,7 @@ passed when submitting a form.</p>                            </div>
                     <h3 id="method_disable">
         <div class="location">at         line 48</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/InputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\InputInterface">InputInterface</abbr></a>
-    <strong>disable</strong>(boolean $disabled = true)
+    <strong>disable</strong>(bool $disabled = true)
         </code>
     </h3>
     <div class="details">
@@ -1757,7 +1766,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$disabled</td>
                 <td>true if the component is disabled, otherwise false</td>
             </tr>
@@ -1944,7 +1953,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
                 <td>if the step value is below zero</td>
             </tr>
             </table>
@@ -2003,7 +2012,7 @@ Disabled input components in a form will not be submitted.</p>                  
                     <h3 id="method_setMin">
         <div class="location">at         line 91</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/Ion/AbstractSlider.html"><abbr title="Sphp\Html\Forms\Inputs\Ion\AbstractSlider">AbstractSlider</abbr></a>
-    <strong>setMin</strong>($start)
+    <strong>setMin</strong>(int $start)
         </code>
     </h3>
     <div class="details">
@@ -2017,7 +2026,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$start</td>
                 <td></td>
             </tr>
@@ -2083,7 +2092,7 @@ Disabled input components in a form will not be submitted.</p>                  
                     <h3 id="method_useGrid">
         <div class="location">at         line 113</div>
         <code>                    <a href="../../../../../Sphp/Html/Forms/Inputs/Ion/AbstractSlider.html"><abbr title="Sphp\Html\Forms\Inputs\Ion\AbstractSlider">AbstractSlider</abbr></a>
-    <strong>useGrid</strong>(boolean $grid = true)
+    <strong>useGrid</strong>(bool $grid = true)
         </code>
     </h3>
     <div class="details">
@@ -2097,7 +2106,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$grid</td>
                 <td>the unit of the value</td>
             </tr>

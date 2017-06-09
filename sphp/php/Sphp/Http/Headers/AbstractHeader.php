@@ -41,7 +41,7 @@ abstract class AbstractHeader implements HeaderInterface {
     return $this->getName() . ": " . $this->getValue();
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->toString();
   }
 

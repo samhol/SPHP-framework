@@ -28,7 +28,7 @@ abstract class AbstractArrayableObject implements ArrayableObjectInterface {
     $this->fromArray($data);
   }
 
-  public function __toString() {
+  public function __toString(): string {
     $output = static::class . ":\n";
     foreach ($this->toArray() as $prop => $val) {
       if (is_array($val)) {

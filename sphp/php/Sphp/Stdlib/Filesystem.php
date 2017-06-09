@@ -25,7 +25,7 @@ class Filesystem {
    * @param  string $filename the file to test 
    * @return boolean
    */
-  public static function isFile($filename) {
+  public static function isFile(string $filename): bool {
     $path = stream_resolve_include_path($filename);
     if ($path === false) {
       return false;
@@ -40,7 +40,7 @@ class Filesystem {
    * @return string
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function getFullPath($path) {
+  public static function getFullPath(string $path): string {
     $fullPath = stream_resolve_include_path($path);
     if ($fullPath === false) {
       throw new RuntimeException("The path '$path' does not exist");
@@ -55,7 +55,7 @@ class Filesystem {
    * @return string the result of the script execution
    * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
-  public static function toString($path) {
+  public static function toString(string $path): string {
     if (!static::isFile($path)) {
       throw new RuntimeException("The path '$path' contains no file");
     } else {
@@ -74,7 +74,7 @@ class Filesystem {
    * @return string the result of the script execution
    * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
-  public static function executePhpToString($paths) {
+  public static function executePhpToString($paths): string {
     $content = '';
     try {
       ob_start();
@@ -180,7 +180,7 @@ class Filesystem {
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
    * @return boolean true on success or false on failure
    */
-  public static function mkFile($path, $mode = 0777) {
+  public static function mkFile($path, $mode = 0777): bool {
     if (is_file($path)) {
       return false;
     }
@@ -197,7 +197,7 @@ class Filesystem {
    * @param  int|string $filesize file size in bits
    * @return string file size in bytes
    */
-  public static function generateFilesizeString($filesize) {
+  public static function generateFilesizeString($filesize): string {
     if (is_numeric($filesize)) {
       $decr = 1024;
       $step = 0;

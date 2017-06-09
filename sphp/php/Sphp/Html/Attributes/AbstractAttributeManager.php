@@ -98,7 +98,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @return string all attributes as formatted text
    */
-  public function __toString() {
+  public function __toString(): string {
     $output = '';
     foreach (array_keys($this->attrs) as $name) {
       $output .= ' ' . $this->attrToString($name);

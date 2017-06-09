@@ -158,7 +158,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
     return $value;
   }
 
-  public function isEmpty() {
+  public function isEmpty(): bool {
     return empty($this->queue);
   }
 
@@ -189,7 +189,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
     return new ArrayIterator($this->toArray());
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $result = [];
     foreach ($this->queue as $obj) {
       $result = array_merge($result, $obj);

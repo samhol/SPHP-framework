@@ -81,7 +81,7 @@ abstract class AbstractMessage implements MessageInterface {
     }
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->translate();
   }
 

@@ -134,49 +134,30 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return $this->rootlink . $this->menu;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function nested($nested = true) {
+  public function nested(bool $nested = true) {
     $this->getMenu()->nested($nested);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function vertical($vertical = true) {
+  public function vertical(bool $vertical = true) {
     $this->getMenu()->vertical($vertical);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isVertical() {
-    $this->getMenu()->isVertical();
-    return $this;
+  public function isVertical(): bool {
+    return $this->getMenu()->isVertical();
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setActive($active = true) {
+  public function setActive(bool $active = true) {
     $this->getMenu()->setActive($active);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isActive() {
+  public function isActive(): bool {
     return $this->getMenu()->isActive();
   }
 

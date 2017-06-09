@@ -22,5 +22,5 @@ interface Arrayable {
    *
    * @return array the instance as an array
    */
-  public function toArray();
+  public function toArray(): array;
 }

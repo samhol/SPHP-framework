@@ -236,7 +236,7 @@ class Person extends AbstractDbObject {
     return $isManaged;
   }
 
-  public function toArray() {
+  public function toArray(): array {
     $raw = get_object_vars($this);
     $result = [];
     foreach ($raw as $prop => $val) {

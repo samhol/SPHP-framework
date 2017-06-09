@@ -59,7 +59,7 @@ class GettextData {
     return $this->flags;
   }
   
-  public function __toString() {
+  public function __toString(): string {
     return $this->translation;
   }
 

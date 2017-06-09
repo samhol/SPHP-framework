@@ -149,7 +149,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @return string the string value of the object
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->str;
   }
 

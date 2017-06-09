@@ -25,7 +25,7 @@ implementation of $subject interface.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/Core/ObservableSubjectTrait.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/Stdlib/ObservableSubjectTrait.php', 'text', false);
 
 namespace Sphp\Config\ErrorHandling;
 

@@ -38,7 +38,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @param AttributeManager $attrManager
    * @param ContainerInterface $contentContainer
    */
-  public function __construct($tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     if ($contentContainer === null) {
       $contentContainer = new Container();
     }
@@ -152,7 +152,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   /**
    * {@inheritdoc}
    */
-  public function nested($nested = true) {
+  public function nested(bool $nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
     } else {
@@ -164,7 +164,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   /**
    * {@inheritdoc}
    */
-  public function vertical($vertical = true) {
+  public function vertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
     } else {
@@ -176,7 +176,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   /**
    * {@inheritdoc}
    */
-  public function isVertical() {
+  public function isVertical(): bool {
     return $this->cssClasses()->contains('vertical');
   }
 
@@ -186,7 +186,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setActive($active = true) {
+  public function setActive(bool $active = true) {
     if ($active) {
       $this->addCssClass('is-active');
     } else {
@@ -200,7 +200,7 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
    *
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
-  public function isActive() {
+  public function isActive(): bool {
     return $this->hasCssClass('is-active');
   }
 

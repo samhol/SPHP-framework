@@ -51,7 +51,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     parent::__clone();
   }
 
-  public function __toString() {
+  public function __toString(): string {
     return $this->getLink()->getHtml();
   }
 

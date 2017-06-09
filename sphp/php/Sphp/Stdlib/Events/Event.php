@@ -55,7 +55,7 @@ class Event implements EventInterface {
    * @param mixed $subject subject the subject which dispached this event
    * @param mixed $data the data dispatched with this event
    */
-  public function __construct($name, $subject = null, $data = null) {
+  public function __construct(string $name, $subject = null, $data = null) {
     $this->setName($name)
             ->setSubject($subject)
             ->setData($data);
@@ -76,7 +76,7 @@ class Event implements EventInterface {
    *
    * @return string the string representation of the event object
    */
-  public function __toString() {
+  public function __toString(): string {
     return __CLASS__ . " : (name: $this->name)";
   }
 
@@ -86,12 +86,12 @@ class Event implements EventInterface {
    * @param  string $name the name of the event
    * @return self for a fluent interface
    */
-  protected function setName($name) {
+  protected function setName(string $name) {
     $this->name = $name;
     return $this;
   }
 
-  public function getName() {
+  public function getName(): string {
     return $this->name;
   }
 
@@ -108,7 +108,7 @@ class Event implements EventInterface {
     $this->stopped = true;
   }
 
-  public function isStopped() {
+  public function isStopped(): bool {
     return $this->stopped;
   }
 

@@ -42,7 +42,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * @param  AttributeManager|null $attrManager optional attribute manager to use in the component
    * @param mixed $sources optional sources
    */
-  public function __construct($tagname, AttributeManager $attrManager = null, $sources = null) {
+  public function __construct(string $tagname, AttributeManager $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
     $this->sources = new Container();
     $this->tracks = new Container();

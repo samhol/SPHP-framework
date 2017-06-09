@@ -95,7 +95,7 @@ class Conditions {
    *
    * @return string the generated SQL as a string
    */
-  public function __toString() {
+  public function __toString(): string {
     return $this->statementToString();
   }
 

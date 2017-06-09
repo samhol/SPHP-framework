@@ -61,7 +61,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function get($icon, $tagName = 'i') {
+  public static function get(string $icon, string $tagName = 'i') {
     return Document::get($tagName)->cssClasses()->lock($icon);
   }
 
@@ -72,7 +72,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function fontAwesome($iconName, $tagName = 'i') {
+  public static function fontAwesome(string $iconName, string $tagName = 'i') {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
@@ -88,7 +88,7 @@ class Icons {
    * @return ComponentInterface
    * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, $tagName = 'i') {
+  public static function fileType($file, string $tagName = 'i') {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {
