@@ -130,7 +130,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->errors->clearContent();
     $valid = true;
     if (in_array($value, $this->skippedValues, true)) {

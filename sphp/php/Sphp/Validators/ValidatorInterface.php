@@ -25,7 +25,7 @@ interface ValidatorInterface {
    * @param  mixed $value the value to validate
    * @return boolean true if validation was successful, false if not
    */
-  public function isValid($value);
+  public function isValid($value): bool;
 
   /**
    * Returns error messages

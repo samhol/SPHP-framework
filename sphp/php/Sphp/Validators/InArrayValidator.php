@@ -95,7 +95,7 @@ class InArrayValidator extends AbstractValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     $valid = false;
     foreach ($this->haystack as $other) {

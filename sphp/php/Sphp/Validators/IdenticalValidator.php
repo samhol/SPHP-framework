@@ -80,7 +80,7 @@ class IdenticalValidator extends AbstractValidator {
     return $this;
   }
 
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     $token = $this->getToken();
     $valid = false;

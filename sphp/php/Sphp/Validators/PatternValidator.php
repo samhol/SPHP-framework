@@ -95,7 +95,7 @@ class PatternValidator extends AbstractValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
       //echo 'Invalid type given. String, integer or float expected';

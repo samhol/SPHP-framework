@@ -47,8 +47,8 @@ private $round  = \PHP_ROUND_HALF_UP;
    * @param  int $min the  minimum value of the integer
    * @return self for a fluent interface
    */
-  public function setMin($min) {
-    $this->setOption('min_range', (int) $min);
+  public function setMin(int $min) {
+    $this->setOption('min_range', $min);
     return $this;
   }
 
@@ -57,8 +57,8 @@ private $round  = \PHP_ROUND_HALF_UP;
    * @param  int $max the  maximum value of the integer
    * @return self for a fluent interface
    */
-  public function setMax($max) {
-    $this->setOption('max_range', (int) $max);
+  public function setMax(int $max) {
+    $this->setOption('max_range', $max);
     return $this;
   }
 

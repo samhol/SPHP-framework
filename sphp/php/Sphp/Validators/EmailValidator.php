@@ -25,7 +25,7 @@ class EmailValidator extends AbstractValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
       $this->error(static::INVALID);

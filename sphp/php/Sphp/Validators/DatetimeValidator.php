@@ -53,7 +53,7 @@ class DatetimeValidator extends AbstractValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     $obj = DateTime::createFromFormat($this->format, $value);
     //echo $obj->format('Y-m-d H:i:s');

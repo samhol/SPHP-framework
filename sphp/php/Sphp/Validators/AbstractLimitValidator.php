@@ -45,7 +45,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
    * 
    * @return boolean true for inclusive limit and false for not
    */
-  public function isInclusive() {
+  public function isInclusive(): bool {
     return $this->inclusive;
   }
 

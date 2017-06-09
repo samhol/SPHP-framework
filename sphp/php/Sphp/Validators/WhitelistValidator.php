@@ -42,10 +42,7 @@ class WhitelistValidator extends AbstractValidator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($param) {
+  public function isValid($param): bool {
     if (!is_array($param)) {
       $this->addErrorMessage('Array expected');
       return false;

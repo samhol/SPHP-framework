@@ -51,7 +51,7 @@ class NotEmptyValidator extends AbstractValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
     if ($value === null) {

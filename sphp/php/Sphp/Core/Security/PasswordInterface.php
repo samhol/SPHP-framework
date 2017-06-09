@@ -30,5 +30,5 @@ interface PasswordInterface {
    * @param  string|Password $password the crypted password to check against
    * @return boolean true if the password hash pair matches and false otherwise
    */
-  public function verify($password);
+  public function verify($password): bool;
 }

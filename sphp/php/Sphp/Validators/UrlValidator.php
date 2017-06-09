@@ -19,14 +19,11 @@ use Sphp\Stdlib\URL;
  */
 class UrlValidator extends AbstractValidator {
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isValid($url) {
-    if (!($url instanceof URL)) {
-      $url = new URL($url);
+  public function isValid($value): bool {
+    if (!($value instanceof URL)) {
+      $value = new URL($value);
     }
-    if (!$url->exists()) {
+    if (!$value->exists()) {
       $this->addErrorMessage("Please insert a valid working url");
     }
   }

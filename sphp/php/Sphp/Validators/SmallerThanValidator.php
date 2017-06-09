@@ -58,7 +58,7 @@ class SmallerThanValidator extends AbstractLimitValidator {
   /**
    * {@inheritdoc}
    */
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {
       if ($this->max > $value) {

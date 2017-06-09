@@ -27,10 +27,4 @@ interface ArrayableObjectInterface extends ObjectInterface, Arrayable {
    */
   public function fromArray(array $data = []);
 
-  /**
-   * Resets all the member values from a given raw data source
-   *
-   * @return mixed[] object data suitable for database insertion 
-   */
-  public function toArray();
 }

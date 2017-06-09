@@ -50,7 +50,7 @@ class Password implements PasswordInterface, Embeddable {
     return $this->hash;
   }
 
-  public function verify($password) {
+  public function verify($password): bool {
     return password_verify((string) $password, $this->getHash());
   }
 

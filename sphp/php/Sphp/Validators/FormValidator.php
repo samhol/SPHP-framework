@@ -62,7 +62,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     return $this;
   }
 
-  public function isValid($value) {
+  public function isValid($value): bool {
     $this->reset();
     $valid = true;
     foreach ($this->validators as $inputName => $validator) {
