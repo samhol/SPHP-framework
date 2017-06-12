@@ -9,8 +9,6 @@ namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
-use Sphp\Stdlib\BitMask;
-use Sphp\Config\Locale;
 
 /**
  * Implements an abstract translatable message object
@@ -28,12 +26,6 @@ abstract class AbstractTemplate implements TemplateInterface {
    * @var Translator
    */
   private $translator;
-
-  /**
-   *
-   * @var string
-   */
-  private $lang;
 
   /**
    * Constructs a new instance

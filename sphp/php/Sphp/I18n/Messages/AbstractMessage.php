@@ -9,8 +9,6 @@ namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
-use Sphp\Stdlib\BitMask;
-use Sphp\Config\Locale;
 
 /**
  * Implements an abstract translatable message object
@@ -50,7 +48,6 @@ abstract class AbstractMessage implements MessageInterface {
    * @var Translator
    */
   private $translator;
-
 
   /**
    * @var bool
@@ -114,7 +111,7 @@ abstract class AbstractMessage implements MessageInterface {
       return $this->args;
     }
   }
-  
+
   public function translateArguments(bool $translateArguments = true) {
     $this->translationRule = $translateArguments;
     return $this;
