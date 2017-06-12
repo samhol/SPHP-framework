@@ -31,7 +31,7 @@ abstract class AbstractMessage implements MessageInterface {
   const TRANSLATE_ALL = 0b11;
 
   /**
-   * TemplateInterface
+   * message template
    *
    * @var TemplateInterface
    */
@@ -51,11 +51,6 @@ abstract class AbstractMessage implements MessageInterface {
    */
   private $translator;
 
-  /**
-   *
-   * @var string
-   */
-  private $lang;
 
   /**
    * @var bool
@@ -99,11 +94,6 @@ abstract class AbstractMessage implements MessageInterface {
     return $this->template;
   }
 
-  /**
-   *
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
-   * @return self for a fluent interface
-   */
   public function setArguments(array $args) {
     $this->args = $args;
     return $this;
@@ -117,10 +107,6 @@ abstract class AbstractMessage implements MessageInterface {
     return !empty($this->args);
   }
 
-  /**
-   *
-   * @return null|array $args the arguments or null for no arguments
-   */
   public function getArguments() {
     if ($this->hasArguments() && $this->translatesArguments()) {
       return $this->getTranslator()->get($this->args, $this->getLang());
@@ -128,23 +114,12 @@ abstract class AbstractMessage implements MessageInterface {
       return $this->args;
     }
   }
-
-
-  /**
-   *
-   * @param  bool $translateArguments
-   * @return self for a fluent interface
-   */
-  public function translateArguments($translateArguments = true) {
+  
+  public function translateArguments(bool $translateArguments = true) {
     $this->translationRule = $translateArguments;
     return $this;
   }
 
-
-  /**
-   *
-   * @return boolean
-   */
   public function translatesArguments(): bool {
     return $this->translationRule;
   }
@@ -172,11 +147,6 @@ abstract class AbstractMessage implements MessageInterface {
     return $this->template->getTranslator();
   }
 
-  /**
-   * Returns the message as formatted and translated string
-   *
-   * @return string the message as formatted and translated string
-   */
   public function translate(): string {
     $message = $this->template->translate();
     if ($this->hasArguments()) {

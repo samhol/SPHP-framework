@@ -20,6 +20,48 @@ use Sphp\I18n\TranslatorAwareInterface;
 interface MessageInterface extends TranslatorAwareInterface {
 
   /**
+   * Returns the template used
+   * 
+   * @return TemplateInterface the template used
+   */
+  public function getTemplate(): TemplateInterface;
+
+  /**
+   * Sets the arguments used for message
+   *
+   * @param  array $args the arguments
+   * @return self for a fluent interface
+   */
+  public function setArguments(array $args);
+
+  /**
+   *
+   * @return boolean
+   */
+  public function hasArguments(): bool;
+
+  /**
+   * Sets the arguments used for the message
+   *
+   * @return array $args the arguments
+   */
+  public function getArguments();
+
+
+  /**
+   *
+   * @param  bool $translateArguments
+   * @return self for a fluent interface
+   */
+  public function translateArguments($translateArguments = true);
+
+
+  /**
+   *
+   * @return boolean
+   */
+  public function translatesArguments(): bool;
+  /**
    * Returns the message as formatted and translated string
    *
    * @return string the message as formatted and translated string
