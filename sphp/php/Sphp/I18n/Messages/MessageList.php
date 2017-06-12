@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;

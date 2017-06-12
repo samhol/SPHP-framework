@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Messages;
 
 use Traversable;
 use Countable;

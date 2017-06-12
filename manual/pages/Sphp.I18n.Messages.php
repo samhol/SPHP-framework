@@ -1,68 +1,34 @@
 <?php
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Messages;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
+use Sphp\I18n\TranslatorInterface;
 
+use Sphp\I18n\TranslatorAwareTrait;
+use Sphp\I18n\TranslatorAwareInterface;
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
-echo $parsedown->text(<<<MD
-#Internationalization and localization (I18n)        
-Internationalization (i18n) is the process of developing products in such a way that they can be localized for languages and cultures easily. Localization (l10n), is the process of adapting applications and text to enable their usability in a particular cultural or linguistic market.
-##Native Language Support
-        
-The $gettext functions implement an NLS (Native Language Support) API which can 
-be used to internationalize your PHP applications. Please see the gettext 
-documentation for your system for a thorough explanation of these functions or 
-view the docs at http://www.gnu.org/software/gettext/manual/gettext.html. 
-$ns
-PHP has {$php->extensionLink('gettext')} to handle simple human language translation process.
 
-By default, the {$php->functionLink('gettext')} function  will use the `LC_CTYPE` 
-of the chosen language (for example `en_US` or `fi_FI`). This `LC_CTYPE` is extracted 
-from the `locales.alias` file in the servers configuration dir (Should be `/etc/locales.alias`).
-By default, the encoding is frequently `iso-8859-1`.
-
-**So to make an `UTF-8` aware translation native PHP way:**
-
-MD
-);
-
-CodeExampleBuilder::visualize("Sphp/I18n/localeSetting.php", "text", false);
-echo $parsedown->text(<<<MD
-
-However the framework offers an object oriented way for human 
-language translation related processes.
-		
-**... the SPHP way:**
-
-MD
-);
-CodeExampleBuilder::visualize("Sphp/I18n/sphpTranslation.php", "text", false);
 
 $translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
-##The $translator
-        
-The translator itself is initialized without any parameters, as any configuration to it is optional. A translator without any translations will do nothing but return all messages verbatim.
+##Message system <small>For verbose translations</small>
 
-The $translator is the base interface for all human language translation related 
-operations in this framework. It translates given input by using PHP's build in 
-gettext extension and the current locale information provided by the locale.
-		
-The $translator class supports both basic...
+$ns
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Translator.singular.php", "text", false);
+
+CodeExampleBuilder::visualize("Sphp/I18n/Messages/TemplateInterface.php", "text", false);
 
 echo $parsedown->text(<<<MD
 ...and plural Gettext translation.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Translator.plural.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Messages/MessageInterface.php", "text", false);
 
 $vsprintfLink = $php->functionLink("vsprintf");
 echo $parsedown->text(<<<MD
@@ -132,13 +98,3 @@ $message object translation within a $topicContainer class works the same way as
 MD
 );
 CodeExampleBuilder::visualize("Sphp/I18n/TopicContainer.php", "text", false);
-$calendar = $api->classLinker(Calendar::class);
-echo $parsedown->text(<<<MD
-##Localized calendar related translations
-
-The $calendar class.
-
-MD
-);
-CodeExampleBuilder::visualize("Sphp/I18n/Calendar.php", "text", false);
-

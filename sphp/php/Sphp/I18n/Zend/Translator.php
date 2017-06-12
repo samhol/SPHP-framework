@@ -36,27 +36,6 @@ class Translator extends AbstractTranslator {
   private $domain;
 
   /**
-   * the path of the translation file
-   *
-   * @var string
-   */
-  private $directory;
-
-  /**
-   * the charset of the translation file
-   *
-   * @var string
-   */
-  private $charset;
-
-  /**
-   * the charset of the translation file
-   *
-   * @var string
-   */
-  private $lang;
-
-  /**
    *
    * @var ZendTranslator 
    */
@@ -74,12 +53,12 @@ class Translator extends AbstractTranslator {
    * @param strin|null $lang optional translation language
    * @param ZendTranslator $t
    */
-  public function __construct($lang = null, ZendTranslator $t = null) {
+  public function __construct(string $lang = null, ZendTranslator $t = null) {
     if ($t === null) {
       $t = new ZendTranslator();
     }
     $this->translator = $t;
-    $this->lang = $lang;
+    $this->setLang($lang);
     $this->reflector = new ReflectionClass($this->translator);
   }
 
@@ -103,7 +82,6 @@ class Translator extends AbstractTranslator {
     }
   }
 
-  
   /**
    * 
    * @param type $type
@@ -126,7 +104,7 @@ class Translator extends AbstractTranslator {
    * @param string $lang
    * @return self for a fluent interface
    */
-  public function setLang($lang) {
+  public function setLang(string $lang) {
     $this->translator->setLocale($lang);
     return $this;
   }
@@ -177,7 +155,7 @@ class Translator extends AbstractTranslator {
    * @param type $lang
    * @param type $directory
    * @param type $domain
-   * @return self 
+   * @return self new instance
    */
   public static function fromTranslationFilePattern($lang, $directory, $domain) {
     $t = new ZendTranslator();

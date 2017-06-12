@@ -14,7 +14,6 @@ if (!defined('LC_MESSAGES')) {
 use Sphp\I18n\AbstractTranslator;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Arrays;
-use Sphp\Config\Locale;
 
 /**
  * Implements a natural language translator
@@ -56,12 +55,6 @@ class Translator extends AbstractTranslator {
    */
   private $charset;
 
-  /**
-   * the charset of the translation file
-   *
-   * @var string
-   */
-  private $lang;
 
   /**
    * Constructs a new instance
@@ -87,14 +80,6 @@ class Translator extends AbstractTranslator {
     $this->charset = $charset;
   }
 
-  public function getLang() {
-    return $this->lang;
-  }
-
-  public function setLang($lang) {
-    $this->lang = $lang;
-    return $this;
-  }
 
   /**
    * Returns the name of the text domain
@@ -117,9 +102,9 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
-  public function get($text, $lang = null) {
+  public function get($text, string $lang = null) {
     if ($lang === null) {
-      $lang = $this->lang;
+      $lang = $this->getLang();
     }
     $parser = function($arg) {
       if (is_string($arg)) {
@@ -138,9 +123,9 @@ class Translator extends AbstractTranslator {
     return $translation;
   }
 
-  public function getPlural($msgid1, $msgid2, $n, $lang = null) {
+  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null): string {
     if ($lang === null) {
-      $lang = $this->lang;
+      $lang = $this->getLang();
     }
     $tempLc = setLocale(\LC_MESSAGES, '0');
     setLocale(\LC_MESSAGES, $lang);

@@ -58,7 +58,7 @@ class PluralMessage extends AbstractMessage {
    * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
    * @return self for a fluent interface
    */
-  public function isPlural($plural = true) {
+  public function isPlural(bool $plural = true) {
     $this->n = $plural ? 2 : 1;
     return $this;
   }
@@ -79,7 +79,7 @@ class PluralMessage extends AbstractMessage {
    * @param  string $plural the plural message text
    * @return self for a fluent interface
    */
-  private function setMessage($singular, $plural) {
+  private function setMessage(string $singular, string $plural) {
     $this->singular = $singular;
     $this->plural = $plural;
     return $this;
@@ -89,7 +89,7 @@ class PluralMessage extends AbstractMessage {
    * 
    * @return string message
    */
-  public function getMessage() {
+  public function getMessage(): string {
     if ($this->translatesMessage()) {
       return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $this->getLang());
     } else if ($this->n > 1) {

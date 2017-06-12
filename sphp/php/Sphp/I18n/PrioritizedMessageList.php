@@ -98,7 +98,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
     return $this->translator;
   }
 
-  public function setLang($lang) {
+  public function setLang(string $lang = null) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
       $message->setLang($lang);
@@ -125,7 +125,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  public function insertMessage($messageText, $args = null, $priority = 0) {
+  public function insertMessage($messageText, $args = null, int $priority = 0) {
     $m = (new Message($messageText, $args, $this->getTranslator()));
     $this->insert($m, $priority);
     return $this;
@@ -138,8 +138,8 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  public function insert(MessageInterface $messages, $priority = 0) {
-    $messages->setLang($this->getLang());
+  public function insert(MessageInterface $messages, int $priority = 0) {
+    //$messages->setLang($this->getLang());
     $this->messages->insert($messages, $priority);
     return $this;
   }

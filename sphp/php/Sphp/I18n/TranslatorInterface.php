@@ -10,7 +10,6 @@ namespace Sphp\I18n;
 /**
  * Defines properties for natural language translator
  *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -18,14 +17,20 @@ namespace Sphp\I18n;
  */
 interface TranslatorInterface {
 
-  public function getLang();
+  /**
+   * Returns the language used for translations
+   * 
+   * @return string the name of the language used for translations
+   */
+  public function getLang(): string;
 
   /**
+   * Sets the language used for translations
    * 
-   * @param string $lang
+   * @param string $lang the name of the language used for translations
    * @return self for a fluent interface
    */
-  public function setLang($lang);
+  public function setLang(string $lang);
 
   /**
    * Returns the input message(s) as translated message(s)
@@ -34,7 +39,6 @@ interface TranslatorInterface {
    *
    * @param  string|string[] $text the message text or an array of the message text
    * @return string|string[] the message text(s) translated
-   * @uses   \dgettext() gettext function
    */
   public function get($text);
 
@@ -45,9 +49,8 @@ interface TranslatorInterface {
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
    * @return string the message text translated and parsed
-   * @uses   \dngettext() dngettext function
    */
-  public function getPlural($msgid1, $msgid2, $n);
+  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null): string;
 
   /**
    * Returns the the given message data as formatted localized string
@@ -57,7 +60,7 @@ interface TranslatorInterface {
    * @param  boolean $translateArgs true for translated arguments and false otherwise
    * @return string the message text translated and parsed
    */
-  public function vsprintf($message, $args = null, $translateArgs = false);
+  public function vsprintf(string $message, $args = null, bool $translateArgs = false): string;
 
   /**
    * Returns the the given message data as formatted localized string
@@ -69,5 +72,5 @@ interface TranslatorInterface {
    * @param  boolean $translateArgs true for translated arguments and false otherwise
    * @return string the message text translated and parsed
    */
-  public function vsprintfPlural($msgid1, $msgid2, $n, $args = null, $translateArgs = false);
+  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, $args = null, bool $translateArgs = false): string;
 }

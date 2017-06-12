@@ -1,15 +1,17 @@
 <?php
 
 /**
- * MessageList.php (UTF-8)
+ * PrioritizedMessageList.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Messages;
 
+use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
-use Iterator;
+use IteratorAggregate;
+use Zend\Stdlib\PriorityList;
 
 /**
  * Implements a list that holds {@link MessageInterface} objects in a priority list
@@ -19,12 +21,12 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements Iterator, MessageCollectionInterface {
+class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInterface {
 
   /**
    * Array that holds the messages
    *
-   * @var MessageInterface[]
+   * @var StablePriorityQueue
    */
   private $messages;
 
@@ -41,10 +43,11 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @param  TranslatorInterface|null $translator the translator component
    */
   public function __construct(TranslatorInterface $translator = null) {
-    $this->messages = [];
+    $this->messages = new StablePriorityQueue();
     if ($translator === null) {
       $translator = new Translator();
     }
+    $a = new PriorityList();
     $this->setTranslator($translator);
   }
 
@@ -66,9 +69,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    foreach ($this->messages as $message) {
-      $this->messages[] = clone $message;
-    }
+    $this->messages = clone $this->messages;
   }
 
   /**
@@ -80,7 +81,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
     $output = "";
     if ($this->count() > 0) {
       $output = self::class . ":\n";
-      foreach ($this->messages as $message) {
+      foreach (clone $this->messages as $message) {
         $output .= "\t" . $message . "\n";
       }
     } else {
@@ -89,24 +90,15 @@ class MessageList implements Iterator, MessageCollectionInterface {
     return $output;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getLang() {
     return $this->getTranslator()->getLang();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getTranslator() {
     return $this->translator;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setLang(string $lang) {
+  public function setLang(string $lang = null) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
       $message->setLang($lang);
@@ -114,9 +106,6 @@ class MessageList implements Iterator, MessageCollectionInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setTranslator(TranslatorInterface $translator) {
     $this->translator = $translator;
     foreach ($this as $message) {
@@ -126,43 +115,35 @@ class MessageList implements Iterator, MessageCollectionInterface {
   }
 
   /**
-   * Appends new messages object to the container
+   * Inserts new messages object to the container
+   *
+   * **Important:** The message inserted becomes also a
+   * {@link TranslatorChangerObserver} observers for the container
    *
    * @param  string $messageText the message text
    * @param  scalar[] $args arguments
-   * @return self for a fluent interface
-   */
-  public function appendMessage($messageText, $args = null) {
-    $m = (new Message($messageText, $args, false, $this->getTranslator()));
-    $this->append($m);
-    return $this;
-  }
-
-  /**
-   * Inserts a messages to the container
-   *
-   * @param  MessageInterface $message the message text
-   * @return self for a fluent interface
-   */
-  public function insert(MessageInterface $message) {
-    $message->setLang($this->getLang());
-    $this->append($message);
-    return $this;
-  }
-
-  /**
-   * Appends new messages to the container
-   *
-   * @param  MessageInterface $message the message text
    * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  public function append(MessageInterface $message) {
-    $message->setLang($this->getLang());
-    $this->messages[] = $message;
+  public function insertMessage($messageText, $args = null, int $priority = 0) {
+    $m = (new Message($messageText, $args, $this->getTranslator()));
+    $this->insert($m, $priority);
     return $this;
   }
-  
+
+  /**
+   * Inserts new messages to the container
+   *
+   * @param  MessageInterface $messages the message text
+   * @param  int $priority the priority of the message
+   * @return self for a fluent interface
+   */
+  public function insert(MessageInterface $messages, int $priority = 0) {
+    //$messages->setLang($this->getLang());
+    $this->messages->insert($messages, $priority);
+    return $this;
+  }
+
   /**
    * Merges given collection to this container
    *
@@ -177,8 +158,18 @@ class MessageList implements Iterator, MessageCollectionInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * Create a new iterator from the instance
+   *
+   * @return \ArrayIterator iterator
    */
+  public function getIterator() {
+    $arr = new \ArrayIterator();
+    foreach (clone $this->messages as $message) {
+      $arr[] = $message;
+    }
+    return $arr;
+  }
+
   public function contains(MessageInterface $message) {
     $result = false;
     foreach ($this as $m) {
@@ -196,7 +187,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @return int the number of {@link MessageInterface} objects in the list
    */
   public function count() {
-    return count($this->messages);
+    return $this->messages->count();
   }
 
   /**
@@ -218,49 +209,8 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @return self for a fluent interface
    */
   public function clearContent() {
-    $this->messages = [];
+    $this->messages = new StablePriorityQueue();
     return $this;
-  }
-
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->messages);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->messages);
-  }
-
-  /**
-   * Return the key of the current message
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->messages);
-  }
-
-  /**
-   * Rewinds the Iterator to the first message
-   */
-  public function rewind() {
-    reset($this->messages);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid() {
-    return false !== current($this->messages);
   }
 
 }

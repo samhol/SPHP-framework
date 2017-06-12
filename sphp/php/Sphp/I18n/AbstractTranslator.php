@@ -7,6 +7,8 @@
 
 namespace Sphp\I18n;
 
+use Sphp\Config\Locale;
+
 /**
  * Abstract implementation for natural language translator
  *
@@ -17,7 +19,26 @@ namespace Sphp\I18n;
  */
 abstract class AbstractTranslator implements TranslatorInterface {
 
-  public function vsprintf($message, $args = null, $translateArgs = false) {
+  /**
+   * the charset of the translation file
+   *
+   * @var string
+   */
+  private $lang;
+
+  public function getLang(): string {
+    if ($this->lang === null) {
+      return Locale::getMessageLocale();
+    }
+    return $this->lang;
+  }
+
+  public function setLang(string $lang = null) {
+    $this->lang = $lang;
+    return $this;
+  }
+
+  public function vsprintf(string $message, $args = null, bool $translateArgs = false): string {
     $m = $this->get($message);
     if ($args !== null) {
       if ($translateArgs) {
@@ -28,7 +49,7 @@ abstract class AbstractTranslator implements TranslatorInterface {
     return $m;
   }
 
-  public function vsprintfPlural($msgid1, $msgid2, $n, $args = null, $translateArgs = false) {
+  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, $args = null, bool $translateArgs = false): string {
     $m = $this->getPlural($msgid1, $msgid2, $n);
     if ($args !== null) {
       if ($translateArgs) {

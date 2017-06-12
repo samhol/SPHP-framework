@@ -64,7 +64,7 @@ class MessageTemplate {
    *
    * @param TranslatorInterface $translator optional translator
    */
-  public function __construct($singular = null, $plural = null,TranslatorInterface $translator = null) {
+  public function __construct($singular = null, $plural = null, TranslatorInterface $translator = null) {
     $this->setSingular($singular)->setPlural($plural);
     if ($translator === null) {
       $translator = new Translator();

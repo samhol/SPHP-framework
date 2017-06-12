@@ -53,7 +53,7 @@ trait TranslatorAwareTrait {
    * @param  string $lang the translator component
    * @return self for a fluent interface
    */
-  public function setLang($lang) {
+  public function setLang(string $lang) {
     $this->getTranslator()->setLang($lang);
     return $this;
   }

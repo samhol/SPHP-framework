@@ -8,7 +8,6 @@
 namespace Sphp\I18n;
 
 use Sphp\I18n\TranslatorInterface;
-use Sphp\I18n\Gettext\Translator;
 
 /**
  * Implements a translatable message object
@@ -47,7 +46,7 @@ class Message extends AbstractMessage {
    * 
    * @return string message
    */
-  public function getMessage() {
+  public function getMessage(): string {
     if ($this->translatesMessage()) {
       return $this->getTranslator()->get($this->message, $this->getLang());
     } else {
@@ -60,7 +59,7 @@ class Message extends AbstractMessage {
    *
    * @return string the message as formatted and translated string
    */
-  public function translate() {
+  public function translate(): string {
     $message = $this->getMessage();
     if ($this->hasArguments()) {
       $message = vsprintf($message, $this->getArguments());

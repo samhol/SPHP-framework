@@ -31,13 +31,4 @@ interface TranslatorAwareInterface {
    * @return TranslatorInterface the translator component
    */
   public function getTranslator();
-
-  /**
-   * Sets the translator component for message translation
-   *
-   * @param  string $lang the translator component
-   * @return self for a fluent interface
-   */
-  public function setLang($lang);
-
 }
