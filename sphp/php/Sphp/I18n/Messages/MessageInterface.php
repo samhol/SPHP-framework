@@ -53,7 +53,7 @@ interface MessageInterface extends TranslatorAwareInterface {
    * @param  bool $translateArguments
    * @return self for a fluent interface
    */
-  public function translateArguments($translateArguments = true);
+  public function translateArguments(bool $translateArguments = true);
 
 
   /**
