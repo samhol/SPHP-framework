@@ -10,7 +10,7 @@ namespace Sphp\I18n\Messages;
 use Traversable;
 use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\I18n\TranslatorAwareInterface;
+use Sphp\I18n\Translatable;
 
 /**
  * Defines properties for a collection that holds {@link MessageInterface} objects
@@ -20,7 +20,7 @@ use Sphp\I18n\TranslatorAwareInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MessageCollectionInterface extends Traversable, TranslatorAwareInterface, Arrayable, Countable {
+interface MessageCollectionInterface extends Traversable, Translatable, Arrayable, Countable {
 
   /**
    * Checks whether the given message exists in the collection

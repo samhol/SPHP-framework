@@ -10,6 +10,7 @@ namespace Sphp\I18n\Messages;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use Iterator;
+use Sphp\I18n\Translatable;
 
 /**
  * Implements a list that holds {@link MessageInterface} objects in a priority list
@@ -70,12 +71,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
       $this->messages[] = clone $message;
     }
   }
-
-  /**
-   * Returns the object as a string.
-   *
-   * @return string the object as a string
-   */
+  
   public function __toString(): string {
     $output = "";
     if ($this->count() > 0) {
@@ -144,8 +140,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @param  MessageInterface $message the message text
    * @return self for a fluent interface
    */
-  public function insert(MessageInterface $message) {
-    $message->setLang($this->getLang());
+  public function insert(\Sphp\I18n\Translatable $message) {
     $this->append($message);
     return $this;
   }
@@ -157,8 +152,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  public function append(MessageInterface $message) {
-    $message->setLang($this->getLang());
+  public function append(\Sphp\I18n\Translatable $message) {
     $this->messages[] = $message;
     return $this;
   }

@@ -5,9 +5,9 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n\Messages; 
+namespace Sphp\I18n\Messages;
 
-use Sphp\I18n\TranslatorAwareInterface;
+use Sphp\I18n\Translatable;
 
 /**
  * Defines properties for a translatable message object
@@ -17,7 +17,7 @@ use Sphp\I18n\TranslatorAwareInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MessageInterface extends TranslatorAwareInterface {
+interface MessageInterface extends Translatable {
 
   /**
    * Returns the template used
@@ -47,7 +47,6 @@ interface MessageInterface extends TranslatorAwareInterface {
    */
   public function getArguments();
 
-
   /**
    *
    * @param  bool $translateArguments
@@ -55,12 +54,12 @@ interface MessageInterface extends TranslatorAwareInterface {
    */
   public function translateArguments(bool $translateArguments = true);
 
-
   /**
    *
    * @return boolean
    */
   public function translatesArguments(): bool;
+
   /**
    * Returns the message as formatted and translated string
    *
@@ -68,10 +67,4 @@ interface MessageInterface extends TranslatorAwareInterface {
    */
   public function translate();
 
-  /**
-   * Returns the message object as a string
-   *
-   * @return string the message object as a string
-   */
-  public function __toString();
 }

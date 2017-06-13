@@ -21,14 +21,6 @@ use Sphp\I18n\Gettext\Translator;
 abstract class AbstractMessage implements MessageInterface {
 
   /**
-   *
-   */
-  const NO_TRANSLATION = 0b0;
-  const TRANSLATE_MESSAGE = 0b1;
-  const TRANSLATE_ARGS = 0b10;
-  const TRANSLATE_ALL = 0b11;
-
-  /**
    * message template
    *
    * @var TemplateInterface
@@ -52,12 +44,12 @@ abstract class AbstractMessage implements MessageInterface {
   /**
    * @var bool
    */
-  private $translationRule;
+  private $translateArgs;
 
   /**
    * Constructs a new instance
    *
-   * @param  null|mixed|mixed[] $args optional arguments or null for no arguments
+   * @param  array $args optional arguments or null for no arguments
    * @param  TranslatorInterface|null $translator the translator component
    */
   public function __construct(TemplateInterface $template, array $args = [], TranslatorInterface $translator = null) {
@@ -66,7 +58,7 @@ abstract class AbstractMessage implements MessageInterface {
     if ($translator !== null) {
       $this->setTranslator($translator);
     }
-    $this->translationRule = false;
+    $this->translateArgs = false;
   }
 
   public function __destruct() {
@@ -96,16 +88,12 @@ abstract class AbstractMessage implements MessageInterface {
     return $this;
   }
 
-  /**
-   *
-   * @return boolean
-   */
   public function hasArguments(): bool {
     return !empty($this->args);
   }
 
   public function getArguments() {
-    if ($this->hasArguments() && $this->translatesArguments()) {
+    if (!empty($this->args) && $this->translateArgs) {
       return $this->getTranslator()->get($this->args, $this->getLang());
     } else {
       return $this->args;
@@ -113,12 +101,12 @@ abstract class AbstractMessage implements MessageInterface {
   }
 
   public function translateArguments(bool $translateArguments = true) {
-    $this->translationRule = $translateArguments;
+    $this->translateArgs = $translateArguments;
     return $this;
   }
 
   public function translatesArguments(): bool {
-    return $this->translationRule;
+    return $this->translateArgs;
   }
 
   /**

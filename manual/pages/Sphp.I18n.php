@@ -90,7 +90,7 @@ MD
 );
 
 CodeExampleBuilder::visualize("Sphp/I18n/Message.php", "text", false);
-$translatorChangerObserverInterface = $api->classLinker(TranslatorAwareInterface::class);
+$translatorChangerObserverInterface = $api->classLinker(Translatable::class);
 $translatorChangerChainInterface = $api->classLinker(TranslatorAwareTrait::class);
 
 echo $parsedown->text(<<<MD

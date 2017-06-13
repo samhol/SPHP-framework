@@ -14,7 +14,7 @@ use ArrayAccess;
 use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\I18n\TranslatorAwareInterface;
+use Sphp\I18n\Translatable;
 
 /**
  * Implements a container for {@link MessageList} objects sorted by associated topics
@@ -24,7 +24,7 @@ use Sphp\I18n\TranslatorAwareInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements Iterator, TranslatorAwareInterface, Arrayable, Countable, ArrayAccess {
+class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAccess {
 
   /**
    * Count mode (topics only)

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: SPHP framework\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-13 16:00+0200\n"
-"PO-Revision-Date: 2017-04-01 15:23+0300\n"
+"PO-Revision-Date: 2017-06-13 10:35+0300\n"
 "Last-Translator: Sami Holck <sami.holck@gmail.com>\n"
 "Language-Team: Sami Holck <sami.holck@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,14 +13,14 @@ msgstr ""
 "Language: fi_FI\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # General translations
-msgid "%H:%M:%S elapsed"
-msgstr "%H:%M:%S kulunut"
+msgid "%s:%s:%s elapsed"
+msgstr "%s:%s:%s kulunut"
 
-msgid "%H:%M:%S left"
-msgstr "%H:%M:%S jäljellä"
+msgid "%s:%s:%s left"
+msgstr "%s:%s:%s jäljellä"
 
 #, c-format
 msgid "%d directory"
@@ -115,7 +115,7 @@ msgstr "debuggaus"
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-msgid "Don't show this dialog again."
+msgid "Don't show this dialog again"
 msgstr "Älä näytä tätä sanomaa jatkossa"
 
 msgid "Download"
@@ -220,8 +220,8 @@ msgstr "Palvelin"
 msgid "&Show message"
 msgstr "&Näytä sanoma"
 
-msgid "&Show timestamps in message log"
-msgstr "&Näytä aikaleimat sanomalokissa"
+msgid "Show timestamps in message log"
+msgstr "Näytä aikaleimat sanomalokissa"
 
 msgid "Skip"
 msgstr "Ohita"
@@ -391,9 +391,6 @@ msgstr "Ladataan"
 
 msgid "Enable all"
 msgstr "Ota kaikki käyttöön"
-
-msgid "E&nter directory"
-msgstr "&Anna hakemisto"
 
 msgid "exit"
 msgstr "lopeta"
@@ -688,11 +685,8 @@ msgstr "Muu:"
 msgid "Owner permissions"
 msgstr "Omistajan oikeudet"
 
-msgid "Owner/Group"
-msgstr "Omistaja/Ryhmä"
-
-msgid "Pass&word:"
-msgstr "S&alasana:"
+msgid "Password:"
+msgstr "Salasana:"
 
 msgid "Password required"
 msgstr "Tarvitaan salasana"
@@ -709,8 +703,11 @@ msgstr "Lupa evätty"
 msgid "Permissions"
 msgstr "Oikeudet"
 
-msgid "Please enter a date of the form YYYY-MM-DD such as for example 2010-07-18."
-msgstr "Anna lomakkeen päivämäärä muodossa VVVV-KK-PP, esimerkiksi 2010-07-18"
+msgid "YYYY-MM-DD"
+msgstr "VVVV-KK-PP"
+
+msgid "Please enter a date of the form %s"
+msgstr "Anna lomakkeen päivämäärä muodossa %s"
 
 msgid "Please enter username and password"
 msgstr "Anna käyttäjänimi ja salasana"
@@ -791,8 +788,8 @@ msgstr "Valittu tiedosto on jo avattu"
 msgid "Selected file is still being edited"
 msgstr "Valittu tiedosto on vielä muokattavana"
 
-msgid "Server sent unexpected reply."
-msgstr "Palvelin lähetti odottamattoman vastauksen."
+msgid "Server sent unexpected reply"
+msgstr "Palvelin lähetti odottamattoman vastauksen"
 
 msgid "Session details"
 msgstr "Yhteyskerran tiedot"
@@ -828,9 +825,6 @@ msgstr "Lajittelu"
 msgid "Sorting mode:"
 msgstr "Lajitteluperuste:"
 
-msgid "Source and path of the drop operation are identical"
-msgstr "Pudotus-toiminnon lähde ja polku ovat samanlaiset"
-
 msgid "Source file"
 msgstr "Lähdetiedosto"
 
@@ -858,9 +852,6 @@ msgstr "Kohdetiedosto on jo olemassa"
 msgid "Target file:"
 msgstr "Kohdetiedosto:"
 
-msgid "Target filename already exists!"
-msgstr "Kohdetiedosto on jo olemassa!"
-
 msgid "Test results"
 msgstr "Testitulokset"
 
@@ -868,15 +859,9 @@ msgstr "Testitulokset"
 msgid "The XML document is not well-formed: %s"
 msgstr "XML-asiakirja on väärin muodostettu: %s"
 
-msgid "The entered filter name already exists, please choose a different name."
-msgstr "Annettu suodatinnimi on jo olemassa, valitse toinen nimi."
-
 #, c-format
-msgid "The file '%s' could not be loaded."
-msgstr "Tiedostoa '%s' ei voitu ladata."
-
-msgid "Themes"
-msgstr "Teemat"
+msgid "The file '%s' could not be loaded"
+msgstr "Tiedostoa '%s' ei voitu ladata"
 
 msgid "Time"
 msgstr "Aika"
@@ -1077,14 +1062,14 @@ msgstr "Käyttäjätunnus on jo varattu"
 msgid "Please enter a valid IP address"
 msgstr "Anna kelvollinen IP-osoite"
 
-msgid "Please enter a writable directory."
-msgstr "Anna hakemisto, johon voi kirjoittaa."
+msgid "Please enter a writable directory"
+msgstr "Anna hakemisto, johon voi kirjoittaa"
 
 msgid "Please specify a user name"
 msgstr "Anna käyttäjänimi"
 
-msgid "Please enter a name for the log file."
-msgstr "Anna nimi lokitiedostolle."
+msgid "Please enter a name for the log file"
+msgstr "Anna nimi lokitiedostolle"
 
 # Calendar translations
 msgid "year"
@@ -1160,18 +1145,6 @@ msgid "December"
 msgstr "joulukuu"
 
 # Number translations
-msgid "%dst"
-msgstr "%d."
-
-msgid "%dnd"
-msgstr "%d."
-
-msgid "%drd"
-msgstr "%d."
-
-msgid "%dth"
-msgstr "%d."
-
 msgid "one"
 msgstr "yksi"
 
@@ -1230,8 +1203,8 @@ msgstr "poista"
 msgid "Try again"
 msgstr "Yritä uudestaan"
 
-msgid "Waiting"
-msgstr "Odotetaan"
+msgid "waiting"
+msgstr "odotetaan"
 
 msgid "read"
 msgstr "lue"
@@ -1251,8 +1224,8 @@ msgstr "polut"
 msgid "Binary"
 msgstr "Binääri"
 
-msgid "Browse..."
-msgstr "Selaa..."
+msgid "Browse"
+msgstr "Selaa"
 
 msgid "cancel"
 msgstr "peruuta"
@@ -1314,7 +1287,7 @@ msgstr "yhdistetään"
 msgid "Already connected"
 msgstr "Jo yhdistetty"
 
-msgid "Authentication failed."
+msgid "Authentication failed"
 msgstr "Todennus epäonnistui"
 
 msgid "Author"
@@ -1329,8 +1302,8 @@ msgstr "Uusi kansio"
 msgid "No search results"
 msgstr "Ei hakutuloksia"
 
-msgid "No username given."
-msgstr "Käyttäjänimeä ei annettu."
+msgid "No username given"
+msgstr "Käyttäjänimeä ei annettu"
 
 msgid "Not connected"
 msgstr "Ei yhdistetty"

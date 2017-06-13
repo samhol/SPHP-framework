@@ -23,7 +23,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TopicList implements Iterator, TranslatorAwareInterface, Arrayable, Countable, ArrayAccess {
+class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAccess {
 
   /**
    * Count mode (topics only)

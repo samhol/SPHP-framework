@@ -15,7 +15,7 @@ namespace Sphp\I18n;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MessageInterface extends TranslatorAwareInterface {
+interface MessageInterface extends Translatable {
 
   /**
    * Returns the message as formatted and translated string
