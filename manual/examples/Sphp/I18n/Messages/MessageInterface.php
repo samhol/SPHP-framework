@@ -5,7 +5,7 @@ namespace Sphp\I18n\Messages;
 use Sphp\I18n\Gettext\Translator;
 
 $translator = new Translator();
-Message::setDefaultTranslator($translator);
+\Sphp\I18n\Translators::instance()->setDefault($translator);
 $msg = new Message(new SingularTemplate("%s:%s:%s elapsed", $translator), [3, 24, '03']);
 echo "message in english: $msg\n";
 $translator->setLang('fi_FI');

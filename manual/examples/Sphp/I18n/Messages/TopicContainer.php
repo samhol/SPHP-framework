@@ -2,15 +2,15 @@
 
 namespace Sphp\I18n\Messages; 
 
-$messageCont1 = (new PrioritizedMessageList())
+$messageCont1 = (new TranslatablePriorityList())
         ->insert(Message::singular("%s message", ["First"]))
         ->insert(Message::singular("Second message"))
         ->insert(Message::singular("Third message"))
         ->insert(Message::singular("%s", ["Fourth message"]))
         ->insert(Message::singular("Fifth message"));
-$messageCont2 = (new PrioritizedMessageList())
+$messageCont2 = (new TranslatablePriorityList())
         ->insert(Message::singular("Sixth message"));
-$messageCont3 = (new PrioritizedMessageList())
+$messageCont3 = (new TranslatablePriorityList())
         ->merge($messageCont1)
         ->merge($messageCont2)
         ->insert(Message::singular("Seventh message: counter: %d", [$messageCont1->count()]));

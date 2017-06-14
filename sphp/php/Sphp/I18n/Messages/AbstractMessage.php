@@ -125,7 +125,7 @@ abstract class AbstractMessage implements MessageInterface {
    *
    * @return TranslatorInterface|null the translator component or `NULL` if no translator is defined
    */
-  public function getTranslator() {
+  public function getTranslator(): TranslatorInterface {
     if ($this->translator === null) {
       return $this->template->getTranslator();
     }
@@ -142,6 +142,7 @@ abstract class AbstractMessage implements MessageInterface {
     }
     return $message;
   }
+
   public function translateTo(string $lang): string {
     $message = $this->template->translateTo($lang);
     if ($this->hasArguments()) {

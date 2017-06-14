@@ -49,12 +49,17 @@ $p = new Paginator(new ArrayAdapter($k->toArray()));
     for ($i = 1; $i <= $p->getPages()->last; $i++) {
       $urls[$i] = $_SERVER['PHP_SELF'] . "?page=$i";
     }
-    print_r($p->getPages());
+    //print_r($p->getPages());
     $pag = new Pagination('_self');
     $pag->setPages($urls);
     $pag->visibleBeforeCurrent(10)->visibleAfterCurrent(10)->setCurrentPage($currentPage);
     $pag->printHtml();
+    
+    
     ?>
+      <?php
+      include('form.php');
+      ?>
     <form data-abide novalidate id="freefind">
       <div data-abide-error class="alert callout" style="display: none;">
         <p><i class="fi-alert"></i> There are some errors in your form.</p>

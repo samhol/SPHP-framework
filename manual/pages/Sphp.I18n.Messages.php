@@ -14,7 +14,7 @@ $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
 $messageInterface = $api->classLinker(MessageInterface::class);
 $templateInterface = $api->classLinker(TemplateInterface::class);
 $message = $api->classLinker(Message::class);
-$messageContainer = $api->classLinker(PrioritizedMessageList::class);
+$messageContainer = $api->classLinker(TranslatablePriorityList::class);
 $messageCollectionInterfaces = $api->classLinker(TranslatableCollectionInterface::class);
 $echo = $php->functionLink("echo");
 $print = $php->functionLink("print");
@@ -24,13 +24,13 @@ $vsprintfLink = $php->functionLink("vsprintf");
 $translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
-##Message system <small>For verbose localized messaging</small>
+##Message systems <small>For verbose localized messaging</small>
 
 $ns
 MD
 );
 echo $parsedown->text(<<<MD
-##$templateInterface <small>Localization string templates</small>
+###$templateInterface <small>Localization string templates</small>
 
 A $templateInterface object contains an immutable string that can be translated 
 to other languages. When a message object is treated as a $string ($echo, $print...) 
@@ -39,10 +39,10 @@ object. If no translator is given the default translator is used.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Messages/TemplateInterface.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Messages/TemplateInterface.php', 'text', false);
 
 echo $parsedown->text(<<<MD
-##Localized messages using $messageInterface objects
+###Localized messages using $messageInterface objects
 
 A $messageInterface class contains a $templateInterface and provides additional 
 support formatted string syntax used in PHP's native $vsprintfLink function. 
@@ -54,13 +54,13 @@ it is translated according to the systems locale settings by using a given $tran
 object. If no translator is given the default translator is used.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Messages/MessageInterface.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Messages/MessageInterface.php', 'text', false);
 
 $translatorChangerObserverInterface = $api->classLinker(Translatable::class);
 $translatorChangerChainInterface = $api->classLinker(TranslatorAwareTrait::class);
 
 echo $parsedown->text(<<<MD
-##$messageCollectionInterfaces <small>for message object grouping</small>
+###$messageCollectionInterfaces <small>for message object grouping</small>
 
 The $messageContainer class is a kind of priority list for $message objects. The 
 traversal order of the messages in the container depends on the priority given 
@@ -78,7 +78,7 @@ its messages by notifying them via the $translatorChangerChainInterface.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Messages/MessageContainer.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Messages/TranslatableCollection.php', 'text', false);
 $topicContainer = $api->classLinker(TopicList::class);
 $messageContainers = $api->classLinker(TranslatableCollectionInterface::class);
 
@@ -97,4 +97,4 @@ $message object translation within a $topicContainer class works the same way as
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Messages/TopicContainer.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Messages/TopicContainer.php', 'text', false);

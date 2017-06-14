@@ -20,8 +20,6 @@ use Sphp\I18n\Translatable;
  */
 interface TemplateInterface extends Translatable {
 
-  public function __toString(): string;
-
   /**
    * Sets the translator component for message translation
    *
@@ -29,13 +27,6 @@ interface TemplateInterface extends Translatable {
    * @return self for a fluent interface
    */
   public function setTranslator(TranslatorInterface $translator);
-
-  /**
-   * Returns the translator component used for message translation
-   *
-   * @return TranslatorInterface the translator component
-   */
-  public function getTranslator(): TranslatorInterface;
 
   /**
    * Returns the message as formatted and translated string

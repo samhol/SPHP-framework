@@ -34,11 +34,11 @@ class PoFileIterator implements \Iterator {
    * 
    * @param string $poFilePath
    */
-  public function __construct($poFilePath) {
+  public function __construct(string $poFilePath) {
     $this->objects = $this->parseFromFile($poFilePath);
   }
 
-  protected function parseFromFile($poFilePath) {
+  protected function parseFromFile(string $poFilePath) {
     $fileHandler = new FileHandler($poFilePath);
     $poParser = new SepiaPoParser($fileHandler);
     $rawData = $poParser->parse();
@@ -132,7 +132,7 @@ class PoFileIterator implements \Iterator {
     return $this->objects->valid();
   }
 
-  public function count() {
+  public function count(): int {
     return $this->objects->count();
   }
 

@@ -61,7 +61,7 @@ class GettextForm extends AbstractComponentGenerator {
     $row = new FormRow();
     $typeSelector = new Checkboxes('type', [0b1 => 'singular', 0b10 => 'plural', 0b100 => 'original', 0b1000 => 'translation']);
     $typeSelector->setValue(['type' => 0b11]);
-    $row->appendColumn($typeSelector, 12, false, 4, 5);
+    $row->appendColumn($typeSelector, ['small-12', 'large-4', 'xlarge-5']);
 
     $form->append($row);
 

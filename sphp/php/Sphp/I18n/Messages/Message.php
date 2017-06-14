@@ -8,6 +8,7 @@
 namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
+use Sphp\I18n\Translators;
 
 /**
  * Implements a translatable message object
@@ -20,30 +21,6 @@ use Sphp\I18n\TranslatorInterface;
 class Message extends AbstractMessage {
 
   /**
-   * @var TranslatorInterface 
-   */
-  private static $translator;
-
-  /**
-   * 
-   * @param TranslatorInterface $translator
-   */
-  public static function setDefaultTranslator(TranslatorInterface $translator) {
-    self::$translator = $translator;
-  }
-
-  /**
-   * 
-   * @return TranslatorInterface
-   */
-  public static function getDefaultTranslator() {
-    if (self::$translator === null) {
-      self::$translator = new \Sphp\I18n\Gettext\Translator();
-    }
-    return self::$translator;
-  }
-
-  /**
    * 
    * @param string $message
    * @param array $args
@@ -52,7 +29,7 @@ class Message extends AbstractMessage {
    */
   public static function singular(string $message, array $args = [], TranslatorInterface $translator = null) {
     if ($translator === null) {
-      $translator = static::getDefaultTranslator();
+      $translator = Translators::instance()->get();
     }
     $template = new SingularTemplate($message, $translator);
     return new static($template, $args);
@@ -69,7 +46,7 @@ class Message extends AbstractMessage {
    */
   public static function plural(string $singular, string $plural, bool $isPlural = false, array $args = [], TranslatorInterface $translator = null) {
     if ($translator === null) {
-      $translator = static::getDefaultTranslator();
+      $translator = Translators::instance()->get();
     }
     $template = new PluralTemplate($singular, $plural, $translator);
     $template->setPlural($isPlural);

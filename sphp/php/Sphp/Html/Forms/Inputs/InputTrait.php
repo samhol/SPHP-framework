@@ -73,7 +73,7 @@ trait InputTrait {
   }
 
   /**
-   * Checks whether the option is enabled or not
+   * Checks whether the input is enabled or not
    * 
    * @param  boolean true if the option is enabled, otherwise false
    */

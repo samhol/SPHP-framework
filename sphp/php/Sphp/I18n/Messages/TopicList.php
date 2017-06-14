@@ -17,7 +17,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\I18n\Translatable;
 
 /**
- * Implements a container for {@link MessageList} objects sorted by associated topics
+ * Implements a container for translatable objects sorted by associated topics
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-08-21
@@ -43,24 +43,14 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    */
   private $topics;
 
-  /**
-   * the inner translator 
-   *
-   * @var TranslatorInterface
-   */
-  private $translator;
 
   /**
    * Constructs a new instance
    *
    * @param  Translator|null $translator the translator component
    */
-  public function __construct(TranslatorInterface $translator = null) {
+  public function __construct() {
     $this->topics = [];
-    if ($translator === null) {
-      $translator = new Translator();
-    }
-    $this->setTranslator($translator);
   }
 
   /**
@@ -85,11 +75,11 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *
    * @return string[] an array containing the topic names
    */
-  public function getTopics() {
+  public function getTopics(): array {
     return array_keys($this->topics);
   }
 
-  public function messageExists(MessageInterface $message, $topic = null) {
+  public function messageExists(MessageInterface $message, $topic = null):bool {
     if ($message === null) {
       foreach ($this as $topic) {
         if ($topic->exists($message)) {
@@ -120,25 +110,8 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     }
   }
 
-  /**
-   * Returns the object as a string.
-   *
-   * @return string the object as a string
-   */
   public function __toString(): string {
-    $output = "";
-    if ($this->count(self::COUNT_TOPICS) > 0) {
-      $output = self::class . ":\n";
-      foreach ($this->topics as $topic => $messages) {
-        $output .= "\t$topic:\n";
-        foreach ($messages as $message) {
-          $output .= "\t\t$message\n";
-        }
-      }
-    } else {
-      $output .= "Empty " . self::class;
-    }
-    return $output;
+    return $this->translate();
   }
 
   /**
@@ -180,7 +153,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     return array_key_exists($topic, $this->topics);
   }
 
-  public function contains(MessageInterface $message) {
+  public function contains(Translatable $message): bool {
     $result = false;
     foreach ($this as $mList) {
       if ($mList->exists($message)) {
@@ -224,7 +197,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @return MessageCollectionInterface|null the topic or null if no topic was found
    * @uses   self::offsetGet()
    */
-  public function get($topic) {
+  public function get(string $topic) {
     return $this->offsetGet($topic);
   }
 
@@ -235,18 +208,14 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  string|MessageInterface|MessageCollectionInterface $m message or message list
+   * @param  mixed $m message or message list
    * @return self for a fluent interface
    * @throws Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
-    if ($m instanceof MessageInterface) {
-      $m = (new MessageList($this->getTranslator()))->insert($m);
+    if (!$m instanceof TranslatableCollectionInterface) {
+      $m = (new TranslatableList())->insert($m);
     }
-    if (!($m instanceof Translatable)) {
-      throw new InvalidArgumentException('');
-    }
-    $m->setLang($this->getTranslator()->getLang());
     $this->topics[$topic] = $m;
     return $this;
   }
@@ -258,12 +227,12 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *  becomes also a {@link TranslatorChangerObserver} observer for the container
    *
    * @param  string $topic the message topic
-   * @param  MessageCollectionInterface $m message or message list
+   * @param  mixed $m message or message list
    * @return self for a fluent interface
    * @uses   self::offsetSet()
    * @throws \Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
-  public function set($topic, TranslatableCollectionInterface $m) {
+  public function set(string $topic, $m) {
     $this->offsetSet($topic, $m);
     return $this;
   }
@@ -282,26 +251,11 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     return $this;
   }
 
-  public function getLang() {
-    return $this->getTranslator()->getLang();
-  }
-
-  public function getTranslator() {
-    return $this->translator;
-  }
-
-  public function setLang(string $lang) {
-    $this->getTranslator()->setLang($lang);
-    foreach ($this as $mlist) {
-      $mlist->setLang($lang);
-    }
-    return $this;
-  }
-
   public function setTranslator(TranslatorInterface $translator) {
-    $this->translator = $translator;
-    foreach ($this as $mlist) {
-      $mlist->setTranslator($translator);
+    foreach ($this as $component) {
+      if ($component instanceof Translatable) {
+        $component->setTranslator($translator);
+      }
     }
     return $this;
   }

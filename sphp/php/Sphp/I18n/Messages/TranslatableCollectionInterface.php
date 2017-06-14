@@ -23,20 +23,12 @@ use Sphp\I18n\Translatable;
 interface TranslatableCollectionInterface extends Traversable, Translatable, Arrayable, Countable {
 
   /**
-   * Checks whether the given message exists in the collection
+   * Checks whether the given translatable object exists in this collection
    *
-   * @param  MessageInterface $message the message to search for
+   * @param  MessageInterface $translatable the object to search for
    * @return boolean true, if the message exists, false otherwise
    */
-  public function contains(MessageInterface $message);
-
-  /**
-   * Inserts a new message to the collection
-   *
-   * @param  Translatable $m
-   * @return self for a fluent interface
-   */
- //public function insert(Translatable $m);
+  public function contains(Translatable $translatable): bool;
 
   /**
    * Merges given collection to this collection

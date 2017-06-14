@@ -18,7 +18,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Calendar implements Translatable {
+class Calendar {
 
   use TranslatorAwareTrait;
 

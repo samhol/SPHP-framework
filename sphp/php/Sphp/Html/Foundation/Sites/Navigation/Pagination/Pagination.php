@@ -211,7 +211,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
       $this->previousPageButton
               ->disable(false)
               ->setHref($current->getHref())
-              ->setTarget($current->getTrigger());
+              ->setTarget($current->getTarget());
     } else {
       $this->previousPageButton->disable(true);
     }
@@ -229,7 +229,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
       $this->nextPageButton
               ->disable(false)
               ->setHref($next->getHref())
-              ->setTarget($next->getTrigger());
+              ->setTarget($next->getTarget());
     } else {
       $this->nextPageButton->disable(true);
     }
