@@ -8,6 +8,7 @@
 namespace Sphp\I18n;
 
 use Sphp\Exceptions\InvalidArgumentException;
+use Sphp\I18n\Gettext\Translator;
 
 /**
  * Implements a natural language translator
@@ -44,13 +45,17 @@ class Translators {
   private $default;
 
   public function __construct(TranslatorInterface $default = null) {
-    if ($default !== null) {
-      $this->setDefault($default);
+    if ($default === null) {
+      $this->setDefault(new Translator);
     }
   }
 
-  public static function instance() {
-    if (self::instance === null) {
+  /**
+   * 
+   * @return self singelton instance
+   */
+  public static function instance():Translators {
+    if (self::$instance === null) {
       self::$instance = new static();
     }
     return self::$instance;
@@ -91,7 +96,10 @@ class Translators {
    * @return TranslatorInterface
    * @throws InvalidArgumentException
    */
-  public function get(string $name): TranslatorInterface {
+  public function get(string $name = null): TranslatorInterface {
+    if ($name === null) {
+      return $this->getDefault();
+    }
     if (!array_key_exists($name, $this->translators)) {
       throw new InvalidArgumentException;
     }

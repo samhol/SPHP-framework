@@ -8,6 +8,7 @@
 namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
+use Sphp\I18n\Translatable;
 
 /**
  * Implements an abstract translatable message object
@@ -17,7 +18,7 @@ use Sphp\I18n\TranslatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TemplateInterface {
+interface TemplateInterface extends Translatable {
 
   public function __toString(): string;
 
@@ -32,7 +33,7 @@ interface TemplateInterface {
   /**
    * Returns the translator component used for message translation
    *
-   * @return TranslatorInterface|null the translator component or `NULL` if no translator is defined
+   * @return TranslatorInterface the translator component
    */
   public function getTranslator(): TranslatorInterface;
 

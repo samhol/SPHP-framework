@@ -9,6 +9,7 @@ namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
+use Sphp\I18n\Translators;
 
 /**
  * Implements an abstract translatable message object
@@ -32,7 +33,10 @@ abstract class AbstractTemplate implements TemplateInterface {
    *
    * @param  TranslatorInterface $translator the translator component
    */
-  public function __construct(TranslatorInterface $translator) {
+  public function __construct(TranslatorInterface $translator = null) {
+    if ($translator === null) {
+      $translator = Translators::instance()->get();
+    }
     $this->setTranslator($translator);
   }
 

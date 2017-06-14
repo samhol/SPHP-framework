@@ -243,8 +243,8 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     if ($m instanceof MessageInterface) {
       $m = (new MessageList($this->getTranslator()))->insert($m);
     }
-    if (!($m instanceof MessageCollectionInterface)) {
-      throw new InvalidArgumentException();
+    if (!($m instanceof Translatable)) {
+      throw new InvalidArgumentException('');
     }
     $m->setLang($this->getTranslator()->getLang());
     $this->topics[$topic] = $m;
@@ -263,7 +263,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @uses   self::offsetSet()
    * @throws \Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
-  public function set($topic, MessageCollectionInterface $m) {
+  public function set($topic, TranslatableCollectionInterface $m) {
     $this->offsetSet($topic, $m);
     return $this;
   }
@@ -345,6 +345,26 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    */
   public function valid() {
     return false !== current($this->topics);
+  }
+
+  public function translate(): string {
+    $output = '';
+    foreach ($this as $component) {
+      $output .= $component;
+    }
+    return $output;
+  }
+
+  public function translateTo(string $lang): string {
+    $output = '';
+    foreach ($this as $component) {
+      if ($component instanceof Translatable) {
+        $output .= $component->translateTo($lang);
+      } else {
+        $output .= $component;
+      }
+    }
+    return $output;
   }
 
 }

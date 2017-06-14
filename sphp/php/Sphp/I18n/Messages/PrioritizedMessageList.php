@@ -12,6 +12,7 @@ use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
 use Zend\Stdlib\PriorityList;
+use Sphp\I18n\Translatable;
 
 /**
  * Implements a list that holds {@link MessageInterface} objects in a priority list
@@ -21,7 +22,7 @@ use Zend\Stdlib\PriorityList;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInterface {
+class PrioritizedMessageList implements IteratorAggregate, TranslatableCollectionInterface {
 
   /**
    * Array that holds the messages
@@ -78,16 +79,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @return string the object as a string
    */
   public function __toString(): string {
-    $output = "";
-    if ($this->count() > 0) {
-      $output = self::class . ":\n";
-      foreach (clone $this->messages as $message) {
-        $output .= "\t" . $message . "\n";
-      }
-    } else {
-      $output .= "Empty " . self::class;
-    }
-    return $output;
+    return $this->translate();
   }
 
   public function getLang() {
@@ -101,7 +93,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
   public function setLang(string $lang = null) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
-      $message->setLang($lang);
+      //$message->setLang($lang);
     }
     return $this;
   }
@@ -138,7 +130,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @param  int $priority the priority of the message
    * @return self for a fluent interface
    */
-  public function insert(MessageInterface $messages, int $priority = 0) {
+  public function insert(Translatable $messages, int $priority = 0) {
     //$messages->setLang($this->getLang());
     $this->messages->insert($messages, $priority);
     return $this;
@@ -150,7 +142,7 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
    * @param  MessageCollectionInterface $m
    * @return self for a fluent interface
    */
-  public function merge(MessageCollectionInterface $m) {
+  public function merge(TranslatableCollectionInterface $m) {
     foreach ($m as $message) {
       $this->insert($message);
     }
@@ -211,6 +203,26 @@ class PrioritizedMessageList implements IteratorAggregate, MessageCollectionInte
   public function clearContent() {
     $this->messages = new StablePriorityQueue();
     return $this;
+  }
+
+  public function translate(): string {
+    $output = '';
+    foreach ($this as $component) {
+      $output .= $component;
+    }
+    return $output;
+  }
+
+  public function translateTo(string $lang): string {
+    $output = '';
+    foreach ($this as $component) {
+      if ($component instanceof Translatable) {
+        $output .= $component->translateTo($lang);
+      } else {
+        $output .= $component;
+      }
+    }
+    return $output;
   }
 
 }

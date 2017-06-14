@@ -20,7 +20,7 @@ use Sphp\I18n\Translatable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MessageList implements Iterator, MessageCollectionInterface {
+class MessageList implements Iterator, TranslatableCollectionInterface {
 
   /**
    * Array that holds the messages
@@ -71,7 +71,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
       $this->messages[] = clone $message;
     }
   }
-  
+
   public function __toString(): string {
     $output = "";
     if ($this->count() > 0) {
@@ -105,7 +105,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
   public function setLang(string $lang) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
-      $message->setLang($lang);
+      //$message->setLang($lang);
     }
     return $this;
   }
@@ -140,7 +140,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
    * @param  MessageInterface $message the message text
    * @return self for a fluent interface
    */
-  public function insert(\Sphp\I18n\Translatable $message) {
+  public function insert(Translatable $message) {
     $this->append($message);
     return $this;
   }
@@ -156,14 +156,14 @@ class MessageList implements Iterator, MessageCollectionInterface {
     $this->messages[] = $message;
     return $this;
   }
-  
+
   /**
    * Merges given collection to this container
    *
    * @param  MessageCollectionInterface $m
    * @return self for a fluent interface
    */
-  public function merge(MessageCollectionInterface $m) {
+  public function merge(TranslatableCollectionInterface $m) {
     foreach ($m as $message) {
       $this->insert($message);
     }
@@ -201,7 +201,7 @@ class MessageList implements Iterator, MessageCollectionInterface {
   public function toArray(): array {
     $output = [];
     foreach ($this as $message) {
-      $output[] = $message->__toString();
+      $output[] = $message;
     }
     return $output;
   }
@@ -255,6 +255,26 @@ class MessageList implements Iterator, MessageCollectionInterface {
    */
   public function valid() {
     return false !== current($this->messages);
+  }
+
+  public function translate(): string {
+    $output = '';
+    foreach ($this as $component) {
+      $output .= $component;
+    }
+    return $output;
+  }
+
+  public function translateTo(string $lang): string {
+    $output = '';
+    foreach ($this as $component) {
+      if ($component instanceof Translatable) {
+        $output .= $component->translateTo($lang);
+      } else {
+        $output .= $component;
+      }
+    }
+    return $output;
   }
 
 }

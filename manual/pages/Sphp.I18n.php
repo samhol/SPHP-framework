@@ -114,7 +114,7 @@ MD
 );
 CodeExampleBuilder::visualize("Sphp/I18n/MessageContainer.php", "text", false);
 $topicContainer = $api->classLinker(TopicList::class);
-$messageContainers = $api->classLinker(MessageCollectionInterface::class);
+$messageContainers = $api->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD

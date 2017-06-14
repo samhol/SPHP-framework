@@ -32,7 +32,7 @@ class SingularTemplate extends AbstractTemplate {
    * @param string $message
    * @param TranslatorInterface $translator optional translator
    */
-  public function __construct($message, TranslatorInterface $translator) {
+  public function __construct($message, TranslatorInterface $translator = null) {
     parent::__construct($translator);
     $this->message = $message;
   }
@@ -44,6 +44,10 @@ class SingularTemplate extends AbstractTemplate {
    */
   public function translate(): string {
     return $this->getTranslator()->get($this->message);
+  }
+
+  public function translateTo(string $lang): string {
+    return $this->getTranslator()->get($this->message, $lang);
   }
 
 }

@@ -59,12 +59,4 @@ interface MessageInterface extends Translatable {
    * @return boolean
    */
   public function translatesArguments(): bool;
-
-  /**
-   * Returns the message as formatted and translated string
-   *
-   * @return string the message as formatted and translated string
-   */
-  public function translate();
-
 }

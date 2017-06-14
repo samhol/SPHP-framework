@@ -95,7 +95,7 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
-  public function getLang() {
+  public function getLang(): string {
     return $this->translator->getLocale();
   }
 
@@ -146,7 +146,7 @@ class Translator extends AbstractTranslator {
     return $translation;
   }
 
-  public function getPlural($msgid1, $msgid2, $n) {
+  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null):string{
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 
@@ -157,7 +157,7 @@ class Translator extends AbstractTranslator {
    * @param type $domain
    * @return self new instance
    */
-  public static function fromTranslationFilePattern($lang, $directory, $domain) {
+  public static function fromTranslationFilePattern(string $lang, string $directory, string $domain) {
     $t = new ZendTranslator();
     $t->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, $directory, $domain);
     return new static($lang, $t);

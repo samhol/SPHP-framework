@@ -1,11 +1,11 @@
 <?php
 
 /**
- * MessageCollectionInterface.php (UTF-8)
+ * TranslatableCollectionInterface.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Messages;
 
 use Traversable;
 use Countable;
@@ -20,7 +20,7 @@ use Sphp\I18n\Translatable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MessageCollectionInterface extends Traversable, Translatable, Arrayable, Countable {
+interface TranslatableCollectionInterface extends Traversable, Translatable, Arrayable, Countable {
 
   /**
    * Checks whether the given message exists in the collection
@@ -33,10 +33,10 @@ interface MessageCollectionInterface extends Traversable, Translatable, Arrayabl
   /**
    * Inserts a new message to the collection
    *
-   * @param  MessageInterface $m
+   * @param  Translatable $m
    * @return self for a fluent interface
    */
-  public function insert(MessageInterface $m);
+ //public function insert(Translatable $m);
 
   /**
    * Merges given collection to this collection
@@ -44,5 +44,5 @@ interface MessageCollectionInterface extends Traversable, Translatable, Arrayabl
    * @param  MessageCollectionInterface $m
    * @return self for a fluent interface
    */
-  public function merge(MessageCollectionInterface $m);
+  public function merge(TranslatableCollectionInterface $m);
 }

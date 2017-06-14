@@ -18,19 +18,18 @@ namespace Sphp\I18n;
 interface Translatable {
 
   /**
-   * Sets the translator component for message translation
+   * Translates the content to given language
    *
-   * @param  TranslatorInterface $translator the translator component
-   * @return self for a fluent interface
+   * @return string the content as a translated string
    */
-  public function setTranslator(TranslatorInterface $translator);
+  public function translateTo(string $lang): string;
 
   /**
-   * Returns the translator component used for message translation
+   * Translates the content
    *
-   * @return TranslatorInterface the translator component
+   * @return string the content as a translated string
    */
-  public function getTranslator();
+  public function translate(): string;
 
   /**
    * Returns the translated text

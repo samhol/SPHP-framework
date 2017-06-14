@@ -48,6 +48,7 @@ interface TranslatorInterface {
    * @param  string $msgid1 the singular message being translated
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
+   * @param  string $lang
    * @return string the message text translated and parsed
    */
   public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null): string;

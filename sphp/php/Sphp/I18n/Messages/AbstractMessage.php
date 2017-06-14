@@ -37,7 +37,7 @@ abstract class AbstractMessage implements MessageInterface {
   /**
    * The translator object translating the messages
    *
-   * @var Translator
+   * @var TranslatorInterface
    */
   private $translator;
 
@@ -127,13 +127,23 @@ abstract class AbstractMessage implements MessageInterface {
    */
   public function getTranslator() {
     if ($this->translator === null) {
-      $this->setTranslator(new Translator());
+      return $this->template->getTranslator();
     }
-    return $this->template->getTranslator();
+    return $this->translator;
   }
 
   public function translate(): string {
     $message = $this->template->translate();
+    if ($this->hasArguments()) {
+      $message = vsprintf($message, $this->getArguments());
+      if ($message === false) {
+        throw new \Sphp\Exceptions\RuntimeException("Wrong number of parameters");
+      }
+    }
+    return $message;
+  }
+  public function translateTo(string $lang): string {
+    $message = $this->template->translateTo($lang);
     if ($this->hasArguments()) {
       $message = vsprintf($message, $this->getArguments());
       if ($message === false) {

@@ -75,5 +75,8 @@ class PluralTemplate extends AbstractTemplate {
   public function translate(): string {
     return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n);
   }
+  public function translateTo(string $lang): string {
+    return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $lang);
+  }
 
 }

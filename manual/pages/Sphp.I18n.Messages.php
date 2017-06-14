@@ -15,7 +15,7 @@ $messageInterface = $api->classLinker(MessageInterface::class);
 $templateInterface = $api->classLinker(TemplateInterface::class);
 $message = $api->classLinker(Message::class);
 $messageContainer = $api->classLinker(PrioritizedMessageList::class);
-$messageCollectionInterfaces = $api->classLinker(MessageCollectionInterface::class);
+$messageCollectionInterfaces = $api->classLinker(TranslatableCollectionInterface::class);
 $echo = $php->functionLink("echo");
 $print = $php->functionLink("print");
 $string = $php->typeLink("string");
@@ -78,9 +78,9 @@ its messages by notifying them via the $translatorChangerChainInterface.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/MessageContainer.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Messages/MessageContainer.php", "text", false);
 $topicContainer = $api->classLinker(TopicList::class);
-$messageContainers = $api->classLinker(MessageCollectionInterface::class);
+$messageContainers = $api->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
 echo $parsedown->text(<<<MD
@@ -97,4 +97,4 @@ $message object translation within a $topicContainer class works the same way as
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/TopicContainer.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/I18n/Messages/TopicContainer.php", "text", false);
