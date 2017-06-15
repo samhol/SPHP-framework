@@ -8,11 +8,11 @@
 namespace Sphp\I18n\Gettext;
 
 use Sepia\FileHandler;
-use Sepia\PoParser as SepiaPoParser;
+use Sepia\SepiaPoParser;
 use Sphp\Stdlib\Datastructures\Collection;
 
 /**
- * Iterator for po files
+ * Iterator for *.po files
  * 
  * Iterator parses a Gettext Portable file and acts as an iterator for all gettext instances in the file
  *

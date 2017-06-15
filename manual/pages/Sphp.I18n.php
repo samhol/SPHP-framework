@@ -21,13 +21,14 @@ particular cultural or linguistic market.
 MD
 );
 
-
 $translator = $api->classLinker(TranslatorInterface::class);
 
 echo $parsedown->text(<<<MD
 ##The $translator
         
-The translator itself is initialized without any parameters, as any configuration to it is optional. A translator without any translations will do nothing but return all messages verbatim.
+The translator itself is initialized without any parameters, as any configuration 
+to it is optional. A translator without any translations will do nothing but return 
+all messages verbatim.
 
 The $translator is the base interface for all human language translation related 
 operations in this framework. It translates given input by using PHP's build in 
@@ -35,19 +36,19 @@ gettext extension and the current locale information provided by the locale.
 MD
 );
 
-CodeExampleBuilder::visualize("Sphp/I18n/sphpTranslation.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/sphpTranslation.php', 'text', false);
 
 echo $parsedown->text(<<<MD
 The $translator class supports both basic...
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Translator.singular.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Translator.singular.php', 'text', false);
 
 echo $parsedown->text(<<<MD
 ...and plural Gettext translation.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Translator.plural.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Translator.plural.php', 'text', false);
 
 $vsprintfLink = $php->functionLink("vsprintf");
 echo $parsedown->text(<<<MD
@@ -57,7 +58,7 @@ method for translating a multidimensional array of message strings (plural form
 is not supported).
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Translator.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Translator.php', 'text', false);
 
 $load('Sphp.I18n.Messages');
 $calendar = $api->classLinker(Calendar::class);

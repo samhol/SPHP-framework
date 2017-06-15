@@ -41,11 +41,11 @@ interface MessageInterface extends Translatable {
   public function hasArguments(): bool;
 
   /**
-   * Sets the arguments used for the message
+   * Returns the arguments used for the message
    *
    * @return array $args the arguments
    */
-  public function getArguments();
+  public function getArguments(): array;
 
   /**
    *

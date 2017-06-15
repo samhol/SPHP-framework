@@ -15,6 +15,7 @@ use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\I18n\Translatable;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a container for translatable objects sorted by associated topics
@@ -37,20 +38,41 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
   const COUNT_MESSAGES = 1;
 
   /**
-   * container for the {@link MessageList} objects
-   *
    * @var MessageCollectionInterface[]
    */
   private $topics;
 
-
   /**
    * Constructs a new instance
-   *
-   * @param  Translator|null $translator the translator component
    */
   public function __construct() {
     $this->topics = [];
+  }
+
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->topics);
+  }
+
+  public function __toString(): string {
+    return $this->translate();
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->topics = Arrays::copy($this->topics);
+    parent::__clone();
   }
 
   /**
@@ -79,7 +101,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     return array_keys($this->topics);
   }
 
-  public function messageExists(MessageInterface $message, $topic = null):bool {
+  public function messageExists(MessageInterface $message, $topic = null): bool {
     if ($message === null) {
       foreach ($this as $topic) {
         if ($topic->exists($message)) {
@@ -98,7 +120,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @param  int $mode the count mode
    * @return int the number of {@link MessageTopic} or {@link Message} objects stored
    */
-  public function count($mode = self::COUNT_TOPICS) {
+  public function count(int $mode = self::COUNT_TOPICS) {
     if ($mode == self::COUNT_MESSAGES) {
       $r = 0;
       foreach ($this->topics as $cont) {
@@ -110,37 +132,21 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     }
   }
 
-  public function __toString(): string {
-    return $this->translate();
-  }
-
   /**
-   * Removes elements from MessageList.
+   * Removes elements from MessageList
    *
    *  The optional `$topic` attribute narrows down the clearing to the messages of given target element.
    *
    * @param string $topic optional topic name
    * @return self for a fluent interface
    */
-  public function clearContent($topic = null) {
+  public function clearContent(string $topic = null) {
     if ($topic === null) {
       $this->topics = [];
     } else if ($this->offsetExists($topic)) {
       $this->offsetUnset($topic);
     }
     return $this;
-  }
-
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    $this->topics = \Sphp\Stdlib\Arrays::copy($this->topics);
-    parent::__clone();
   }
 
   /**
@@ -167,7 +173,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
   /**
    * Returns the content as an array of formatted and localized message strings
    *
-   * @return string[] the content as an array of formatted and localized message strings
+   * @return array the content as an array of formatted and localized message strings
    */
   public function toArray(): array {
     $output = [];
@@ -181,7 +187,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * Returns the {@link MessageList} of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return MessageCollectionInterface|null the topic or null if no topic was found
+   * @return TranslatableCollectionInterface|null the topic or null if no topic was found
    */
   public function offsetGet($topic) {
     if ($this->offsetExists($topic)) {
@@ -194,7 +200,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * Returns the {@link MessageList} object of a specific topic
    *
    * @param  string $topic the topic to fetch
-   * @return MessageCollectionInterface|null the topic or null if no topic was found
+   * @return TranslatableCollectionInterface|null the topic or null if no topic was found
    * @uses   self::offsetGet()
    */
   public function get(string $topic) {
@@ -210,7 +216,6 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @param  string $topic the message topic
    * @param  mixed $m message or message list
    * @return self for a fluent interface
-   * @throws Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
   public function offsetSet($topic, $m) {
     if (!$m instanceof TranslatableCollectionInterface) {
@@ -230,7 +235,6 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @param  mixed $m message or message list
    * @return self for a fluent interface
    * @uses   self::offsetSet()
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the type of the inserted data is illegal
    */
   public function set(string $topic, $m) {
     $this->offsetSet($topic, $m);

@@ -8,7 +8,7 @@
 namespace Sphp\I18n;
 
 /**
- * Description of TranslatorAwareInterface
+ * Defines properties for translatable component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
@@ -28,6 +28,7 @@ interface Translatable {
   /**
    * Translates the content to given language
    *
+   * @param  string $lang
    * @return string the content as a translated string
    */
   public function translateTo(string $lang): string;

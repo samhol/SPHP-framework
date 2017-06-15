@@ -8,7 +8,7 @@
 namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
-use Sphp\I18n\Gettext\Translator;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements an abstract translatable message object
@@ -35,13 +35,6 @@ abstract class AbstractMessage implements MessageInterface {
   private $args;
 
   /**
-   * The translator object translating the messages
-   *
-   * @var TranslatorInterface
-   */
-  private $translator;
-
-  /**
    * @var bool
    */
   private $translateArgs;
@@ -61,14 +54,26 @@ abstract class AbstractMessage implements MessageInterface {
     $this->translateArgs = false;
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
-    unset($this->translator, $this->args);
+    unset($this->template, $this->args);
   }
 
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
   public function __clone() {
-    if ($this->translator !== null) {
-      $this->translator = clone $this->translator;
-    }
+    $this->template = clone $this->template;
+    $this->args = Arrays::copy($this->args);
   }
 
   public function __toString(): string {
@@ -92,7 +97,7 @@ abstract class AbstractMessage implements MessageInterface {
     return !empty($this->args);
   }
 
-  public function getArguments() {
+  public function getArguments(): array {
     if (!empty($this->args) && $this->translateArgs) {
       return $this->getTranslator()->get($this->args, $this->getLang());
     } else {
@@ -116,20 +121,12 @@ abstract class AbstractMessage implements MessageInterface {
    * @return self for a fluent interface
    */
   public function setTranslator(TranslatorInterface $translator) {
-    $this->translator = $translator;
+    $this->template->setTranslator($translator);
     return $this;
   }
 
-  /**
-   * Returns the translator component used for message translation
-   *
-   * @return TranslatorInterface|null the translator component or `NULL` if no translator is defined
-   */
   public function getTranslator(): TranslatorInterface {
-    if ($this->translator === null) {
-      return $this->template->getTranslator();
-    }
-    return $this->translator;
+    return $this->template->getTranslator();
   }
 
   public function translate(): string {

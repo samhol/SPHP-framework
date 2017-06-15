@@ -37,7 +37,7 @@ class PluralGettextData extends GettextData {
    * @param string $pluralTranslation
    * @param string|null $flags
    */
-  public function __construct($id, $msgString, $pluralId, $pluralTranslation, $flags = null) {
+  public function __construct(string $id, string $msgString, string $pluralId, string $pluralTranslation, string $flags = null) {
     parent::__construct($id, $msgString, $flags);
     $this->pluralMsgId = $pluralId;
     $this->pluralTranslation = $pluralTranslation;

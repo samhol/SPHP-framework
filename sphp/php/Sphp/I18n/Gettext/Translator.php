@@ -55,7 +55,6 @@ class Translator extends AbstractTranslator {
    */
   private $charset;
 
-
   /**
    * Constructs a new instance
    *
@@ -69,7 +68,7 @@ class Translator extends AbstractTranslator {
    * @param  string $charset the character set of the dictionary
    * @throws InvalidArgumentException
    */
-  public function __construct($domain = 'Sphp.Defaults', $directory = 'sphp/locale', $charset = 'utf8') {
+  public function __construct(string $domain = 'Sphp.Defaults', string $directory = 'sphp/locale', string $charset = 'utf8') {
     if ($domain === null) {
       throw new InvalidArgumentException('no domain');
     } else {
@@ -79,7 +78,6 @@ class Translator extends AbstractTranslator {
     $this->directory = $directory;
     $this->charset = $charset;
   }
-
 
   /**
    * Returns the name of the text domain
@@ -91,14 +89,32 @@ class Translator extends AbstractTranslator {
   }
 
   /**
-   * Returns the name of the text domain
+   * Sets the name of the text domain
    *
-   * @param string the name (filename) of the text domain
+   * @param  string $domain the name (filename) of the text domain
    * @return self for a fluent interface
    */
-  public function setDomain($domain) {
+  public function setDomain(string $domain) {
     $this->domain = $domain;
     DomainBinder::bindtextdomain($domain, $this->directory, $this->charset);
+    return $this;
+  }
+
+  public function getDirectory() {
+    return $this->directory;
+  }
+
+  public function getCharset() {
+    return $this->charset;
+  }
+
+  public function setDirectory(string $directory = null) {
+    $this->directory = $directory;
+    return $this;
+  }
+
+  public function setCharset(string $charset = null) {
+    $this->charset = $charset;
     return $this;
   }
 

@@ -119,7 +119,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @return self for a fluent interface
    */
   public function insert(Translatable $messages, int $priority = 0) {
-    //$messages->setLang($this->getLang());
     $this->messages->insert($messages, $priority);
     return $this;
   }
@@ -150,7 +149,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
     return $arr;
   }
 
-  public function contains(Translatable $message) : bool {
+  public function contains(Translatable $message): bool {
     $result = false;
     foreach ($this as $m) {
       if ($message == $m) {
@@ -178,7 +177,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   public function toArray(): array {
     $output = [];
     foreach ($this as $message) {
-      $output[] = $message->__toString();
+      $output[] = "$message";
     }
     return $output;
   }
