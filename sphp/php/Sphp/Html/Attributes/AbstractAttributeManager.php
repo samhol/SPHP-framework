@@ -423,7 +423,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @return int the number of the attributes stored
    */
-  public function count() {
+  public function count(): int {
     $num = count(array_unique(array_merge($this->required, array_keys($this->attrs))));
     foreach ($this->attrObjects as $obj) {
       if ($obj->isVisible()) {
@@ -471,7 +471,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
     return in_array($attrName, $this->identifiers);
   }
 
-  public function hasId($identityName = 'id') {
+  public function hasId(string $identityName = 'id'): bool {
     return $this->isIdentifier($identityName) && $this->exists($identityName);
   }
 
@@ -482,12 +482,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param type $length
    * @return string identity value
    */
-  public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
+  public function identify(string $identityName = 'id', string $prefix = 'id_', int $length = 16): string {
+    $storage = IdStorage::get($identityName);
     if (!$this->isLocked($identityName)) {
-      $value = $prefix . Strings::random($length);
-      while (!HtmlIdStorage::store($identityName, $value)) {
-        $value = $prefix . Strings::random($length);
-      }
+      $value = $storage->generateRandom($prefix, $length);
       $this->lock($identityName, $value);
       $this->attachIdentifier($identityName);
     }

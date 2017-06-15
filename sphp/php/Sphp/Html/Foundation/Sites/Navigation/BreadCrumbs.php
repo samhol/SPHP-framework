@@ -129,7 +129,7 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
   /**
    * {@inheritdoc}
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

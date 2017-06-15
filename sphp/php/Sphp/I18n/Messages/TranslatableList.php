@@ -189,7 +189,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
    *
    * @return int the number of {@link MessageInterface} objects in the list
    */
-  public function count() {
+  public function count(): int {
     return count($this->messages);
   }
 

@@ -171,7 +171,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    *
    * @return int the number of the {@link ValidatorInterface} objects
    */
-  public function count() {
+  public function count(): int {
     return count($this->validators);
   }
 

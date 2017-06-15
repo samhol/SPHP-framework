@@ -60,7 +60,7 @@ interface AttributeInterface {
    * 
    * @return boolean true if the attribute has a locked value and false otherwise
    */
-  public function isLocked();
+  public function isLocked(): bool;
 
   /**
    * Locks the given value to the attribute
@@ -75,7 +75,7 @@ interface AttributeInterface {
   /**
    * Removes all non locked values from the attribute
    *
-   * @return   self for PHP Method Chaining
+   * @return self for PHP Method Chaining
    */
   public function clear();
 
@@ -96,7 +96,7 @@ interface AttributeInterface {
    *
    * @return boolean true if the attribute is required and false otherwise
    */
-  public function isDemanded();
+  public function isDemanded(): bool;
 
   /**
    * Checks whether the attribute is visible or not
@@ -106,5 +106,5 @@ interface AttributeInterface {
    * 
    * @return boolean true if the attribute is visible and false otherwise
    */
-  public function isVisible();
+  public function isVisible(): bool;
 }

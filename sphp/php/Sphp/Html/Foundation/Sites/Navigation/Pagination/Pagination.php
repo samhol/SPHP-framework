@@ -318,7 +318,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return int number of {@link Page} components
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return count($this->pages);
   }
 

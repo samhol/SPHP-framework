@@ -121,7 +121,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
     return $this->getInnerContainer()->getIterator();
   }
 
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

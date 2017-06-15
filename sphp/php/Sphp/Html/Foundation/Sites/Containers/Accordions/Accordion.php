@@ -103,7 +103,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @return int number of components in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

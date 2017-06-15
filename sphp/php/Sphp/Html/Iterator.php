@@ -73,7 +73,7 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
    * @return int number of elements in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return count($this->components);
   }
 

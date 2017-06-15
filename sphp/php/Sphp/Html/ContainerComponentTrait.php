@@ -80,7 +80,7 @@ trait ContainerComponentTrait {
    * @return int the number of elements in the container
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

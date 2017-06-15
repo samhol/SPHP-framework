@@ -243,7 +243,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
     return $submission;
   }
 
-  public function count() {
+  public function count(): int {
     return $this->boxes->count();
   }
 

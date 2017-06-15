@@ -310,7 +310,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * @throws \PDOException if there is no database connection or query execution fails
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function count() {
+  public function count(): int {
     $columns = $this->columns;
     $count = $this->get("COUNT(*)")->execute()->fetchColumn();
     $this->columns = $columns;

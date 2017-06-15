@@ -190,7 +190,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this->body->getIterator();
   }
 
-  public function count() {
+  public function count(): int {
     return $this->body->count();
   }
 

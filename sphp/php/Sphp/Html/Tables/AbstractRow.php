@@ -168,7 +168,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @return int number of the cells in the row
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

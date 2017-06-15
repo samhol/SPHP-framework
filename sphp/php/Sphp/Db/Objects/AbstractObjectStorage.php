@@ -103,7 +103,7 @@ abstract class AbstractObjectStorage implements ObjectStorageInterface {
   public function get($limit = null, $offset = null, array $orderBy = null) {
     return new Collection($this->getRepository()->findBy([], $orderBy, $limit, $offset));
   }
-  public function count() {
+  public function count(): int {
     $query = $this->em->createQuery("SELECT COUNT(t.id) FROM $this->type t");
     $count = $query->getSingleScalarResult();
     return (int) $count;

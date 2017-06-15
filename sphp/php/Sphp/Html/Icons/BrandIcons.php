@@ -139,7 +139,7 @@ class BrandIcons extends AbstractComponent implements \Iterator, \Sphp\Html\Trav
     return $output;
   }
 
-  public function count() {
+  public function count(): int {
     return count($this->icons);
   }
 

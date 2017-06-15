@@ -83,7 +83,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    *
    * @return int the number of the validable input names
    */
-  public function count() {
+  public function count(): int {
     return $this->validators->count();
   }
 

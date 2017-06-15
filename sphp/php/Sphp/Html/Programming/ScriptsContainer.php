@@ -94,7 +94,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
     return $this->container->getIterator();
   }
 
-  public function count() {
+  public function count(): int {
     $this->container->count();
   }
 

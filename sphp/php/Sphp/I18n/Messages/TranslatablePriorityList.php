@@ -165,7 +165,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    *
    * @return int the number of {@link MessageInterface} objects in the list
    */
-  public function count() {
+  public function count(): int {
     return $this->messages->count();
   }
 

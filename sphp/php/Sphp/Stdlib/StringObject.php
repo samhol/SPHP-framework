@@ -227,7 +227,7 @@ class StringObject implements Countable, IteratorAggregate, ArrayAccess {
    *
    * @return int the length of the string
    */
-  public function count() {
+  public function count(): int {
     return $this->length();
   }
 

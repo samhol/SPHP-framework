@@ -88,7 +88,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * @return int number of components in the html component
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

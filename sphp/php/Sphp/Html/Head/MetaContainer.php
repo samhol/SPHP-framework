@@ -99,7 +99,7 @@ class MetaContainer implements ContentInterface, IteratorAggregate, TraversableI
     return $this->metaTags->getIterator();
   }
 
-  public function count() {
+  public function count(): int {
     $this->metaTags->count();
   }
 

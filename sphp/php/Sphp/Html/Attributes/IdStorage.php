@@ -1,7 +1,7 @@
 <?php
 
 /**
- * HtmlIdStorage.php (UTF-8)
+ * IdStorage.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -23,20 +23,36 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HtmlIdStorage {
+class IdStorage {
+
+  /**
+   * @var self[]
+   */
+  private static $instances = [];
 
   /**
    * @var string[]
    */
-  private static $ids = [];
+  private $ids = [];
 
   /**
    * Singelton constructor for the {@link self} object
    * 
    * @param  string $domain the domain name of the instance
    */
-  private function __construct() {
+  protected function __construct() {
     
+  }
+
+  /**
+   * 
+   * @return IdStorage instance containing all identifiers of given name
+   */
+  public static function get(string $name): IdStorage {
+    if (!array_key_exists($name, self::$instances)) {
+      self::$instances[$name] = new static();
+    }
+    return self::$instances[$name];
   }
 
   /**
@@ -54,46 +70,55 @@ class HtmlIdStorage {
    * 
    * @param type $name
    */
-  public static function isValidIdentifyingName($name) {
+  public function isValidIdentifyingName($name) {
     return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
   }
 
   /**
    * Checks whether the identifier name value pair exists
    *
-   * @param  string $name the name of the identifier
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public static function exists($name, $value) {
-    return array_key_exists($name, self::$ids) && in_array($value, self::$ids[$name]);
+  public function exists(string $value): bool {
+    return in_array($value, $this->ids);
   }
 
   /**
-   * Tries to store a new identifier name value pair
-   *
-   * @param  string $name the name of the identifier
+   * Tries to store a new identifier value
+   * 
    * @param  string $value the value of the identifier
-   * @return boolean `true` if stored and `false` otherwise
+   * @return boolean true if stored and `false` otherwise
    */
-  public static function store($name, $value) {
-    $inserted = false;
-    if (!static::exists($name, $value) && static::isValidIdentifyingName($name) && static::isValidValue($value)) {
-      if (!array_key_exists($name, self::$ids)) {
-        self::$ids[$name] = [];
-      }
-      self::$ids[$name][] = $value;
-      $inserted = true;
+  public function store(string $value): bool {
+    if (!$this->exists($value) && static::isValidValue($value)) {
+      $this->ids[] = $value;
+      return true;
     }
-    return (bool) $inserted;
+    return false;
+  }
+
+  /**
+   * Generates and stores a random identifier
+   * 
+   * @param  string $prefix
+   * @param  int $length 
+   * @return string random identifier generated and stored by the storage
+   */
+  public function generateRandom(string $prefix = '', int $length = 16): string {
+    $value = $prefix . Strings::random($length);
+    while (!$this->store($value)) {
+      $value = $prefix . Strings::random($length);
+    }
+    return $value;
   }
 
   /**
    * 
    * @return string[]
    */
-  public static function toArray() {
-    return self::$ids;
+  public function toArray(): array {
+    return $this->ids;
   }
 
 }

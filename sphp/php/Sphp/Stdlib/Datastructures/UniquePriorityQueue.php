@@ -172,7 +172,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * 
    * @return int the number of values in the queue
    */
-  public function count() {
+  public function count(): int {
     $count = 0;
     foreach ($this->queue as $values) {
       $count += count($values);

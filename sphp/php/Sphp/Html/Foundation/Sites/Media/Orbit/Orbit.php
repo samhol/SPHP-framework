@@ -407,7 +407,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 
    * @return int number of the slides in this orbit
    */
-  public function count() {
+  public function count(): int {
     return $this->slides()->count();
   }
 

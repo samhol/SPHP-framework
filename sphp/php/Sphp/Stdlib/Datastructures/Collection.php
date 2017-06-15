@@ -246,7 +246,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return int the number of items in the collection
    */
-  public function count() {
+  public function count(): int {
     return count($this->items);
   }
 

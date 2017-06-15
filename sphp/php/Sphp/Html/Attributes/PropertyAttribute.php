@@ -138,10 +138,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * * `$props` are defined as "property" => "value" pairs.
    * * Replaces old not locked property values with the new ones
    *
-   * @param    string[] $props new property name value pairs
-   * @return   self for PHP Method Chaining
-   * @throws   AttributeException if any of the properties is already locked
-   * @throws   InvalidArgumentException if any of the property names or values is invalid
+   * @param  string[] $props new property name value pairs
+   * @return self for PHP Method Chaining
+   * @throws AttributeException if any of the properties is already locked
+   * @throws InvalidArgumentException if any of the property names or values is invalid
    */
   public function setProperties(array $props) {
     foreach ($props as $property => $value) {
@@ -258,7 +258,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * * `$props` are defined as "property" => "value" pairs.
    * * Replaces old not locked property values with the new ones
    *
-   * @param    string[] $props propertie as `name => value` pairs
+   * @param    string[] $props properties as `name => value` pairs
    * @return   self for PHP Method Chaining
    * @throws   AttributeException if any of the properties is already locked
    * @throws   InvalidArgumentException if any of the property names or values is invalid

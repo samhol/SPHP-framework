@@ -243,7 +243,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    *
    * @return int the number of the configuraion parameters
    */
-  public function count() {
+  public function count(): int {
     return count($this->data);
   }
 

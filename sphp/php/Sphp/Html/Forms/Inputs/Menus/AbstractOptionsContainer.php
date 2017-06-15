@@ -146,7 +146,7 @@ abstract class AbstractOptionsContainer extends AbstractContainerComponent imple
    * 
    * @return int the number of {@link SelectMenuContentInterface} 
    */
-  public function count() {
+  public function count(): int {
     return $this->getInnerContainer()->count();
   }
 

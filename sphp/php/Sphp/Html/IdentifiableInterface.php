@@ -31,7 +31,7 @@ interface IdentifiableInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify($identityName = 'id', $prefix = 'id', $length = 16);
+  public function identify(string $identityName = 'id', string $prefix = 'id', int $length = 16): string;
 
   /**
    * Checks whether the identifying attribute is set or not
@@ -40,5 +40,5 @@ interface IdentifiableInterface {
    * @return boolean true if the identity is set, otherwise false
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function hasId($identityName = 'id');
+  public function hasId(string $identityName = 'id'): bool;
 }

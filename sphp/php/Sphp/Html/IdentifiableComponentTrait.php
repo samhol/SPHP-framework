@@ -247,7 +247,7 @@ trait IdentifiableComponentTrait {
    * Checks if an attribute exists
    *
    * @param  string $name the name of the attribute
-   * @return boolean (atribute exists)
+   * @return boolean (attribute exists)
    */
   public function attrExists($name) {
     return $this->attrs()->exists($name);
@@ -266,7 +266,7 @@ trait IdentifiableComponentTrait {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify($identityName = 'id', $prefix = 'id_', $length = 16) {
+  public function identify(string $identityName = 'id', string $prefix = 'id_', int $length = 16): string {
     return $this->attrs()->identify($identityName, $prefix, $length);
   }
 
@@ -277,7 +277,7 @@ trait IdentifiableComponentTrait {
    * @return boolean true if the identity is set, otherwise false
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function hasId($identityName = 'id') {
+  public function hasId(string $identityName = 'id'): bool {
     return $this->attrs()->hasId($identityName);
   }
 
