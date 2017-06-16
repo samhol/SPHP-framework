@@ -121,9 +121,9 @@ class Dropdown implements ContentInterface {
    * @return self for a fluent interface
    */
   public function align($alignment) {
-    $this->dropdown->removeCssClass('top left bottom right');
+    $this->dropdown->cssClasses()->remove('top left bottom right');
     if ($alignment !== false) {
-      $this->dropdown->addCssClass($alignment);
+      $this->dropdown->cssClasses()->add($alignment);
     }
     return $this;
   }
@@ -141,9 +141,9 @@ class Dropdown implements ContentInterface {
    * @return self for a fluent interface
    */
   public function setFloat($float = false) {
-    $this->trigger->removeCssClass('float-left float-right');
+    $this->trigger->cssClasses()->remove('float-left float-right');
     if ($float !== false) {
-      $this->trigger->addCssClass("float-$float");
+      $this->trigger->cssClasses()->add("float-$float");
     }
     return $this;
   }

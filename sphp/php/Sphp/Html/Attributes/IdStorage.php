@@ -36,9 +36,7 @@ class IdStorage {
   private $ids = [];
 
   /**
-   * Singelton constructor for the {@link self} object
-   * 
-   * @param  string $domain the domain name of the instance
+   * Constructs a new instance
    */
   protected function __construct() {
     
@@ -75,12 +73,12 @@ class IdStorage {
   }
 
   /**
-   * Checks whether the identifier name value pair exists
+   * Checks whether the storage contains identifier value
    *
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public function exists(string $value): bool {
+  public function contains(string $value): bool {
     return in_array($value, $this->ids);
   }
 
@@ -91,7 +89,7 @@ class IdStorage {
    * @return boolean true if stored and `false` otherwise
    */
   public function store(string $value): bool {
-    if (!$this->exists($value) && static::isValidValue($value)) {
+    if (!$this->contains($value) && static::isValidValue($value)) {
       $this->ids[] = $value;
       return true;
     }

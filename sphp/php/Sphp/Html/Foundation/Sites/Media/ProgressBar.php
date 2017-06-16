@@ -66,9 +66,9 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
    */
   public function showProgressText($show = true) {
     if ($show) {
-      $this->progressMeter['progress-meter-text']->setStyle('visibility', 'visible');
+      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'visible');
     } else {
-      $this->progressMeter['progress-meter-text']->setStyle('visibility', 'hidden');
+      $this->progressMeter['progress-meter-text']->inlineStyles()->setProperty('visibility', 'hidden');
     }
     return $this;
   }

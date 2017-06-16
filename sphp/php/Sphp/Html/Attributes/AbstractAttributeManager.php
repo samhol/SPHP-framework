@@ -176,7 +176,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return AttributeInterface|null the mapped attribute object or null
    */
-  public function getAttributeObject($name) {
+  public function getAttributeObject(string $name) {
     $obj = null;
     if (array_key_exists($name, $this->attrObjects)) {
       $obj = $this->attrObjects[$name];
@@ -209,7 +209,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @throws AttributeException if the attribute name or value is invalid
    * @throws AttributeException if the attribute value is unmodifiable
    */
-  public function set($name, $value = true) {
+  public function set(string $name, $value = true) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->set($value);
     } else if (is_scalar($value)) {
@@ -253,7 +253,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the required attribute
    * @return self for a fluent interface
    */
-  public function demand($name) {
+  public function demand(string $name) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->demand();
     } else {
@@ -274,7 +274,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is required and false otherwise
    */
-  public function isDemanded($name) {
+  public function isDemanded(string $name) {
     if ($this->isAttributeObject($name)) {
       $required = $this->getAttributeObject($name)->isDemanded();
     } else {
@@ -292,7 +292,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute has a locked value on it and false otherwise
    */
-  public function isLocked($name) {
+  public function isLocked(string $name) {
     if ($this->isAttributeObject($name)) {
       $locked = $this->getAttributeObject($name)->isLocked();
     } else {
@@ -316,7 +316,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @throws InvalidArgumentException if either the name or the value is invalid for the type of the attribute
    * @throws AttributeException if the attribute is unmodifiable
    */
-  public function lock($name, $value) {
+  public function lock(string $name, $value) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->lock($value);
     } else {
@@ -338,7 +338,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is empty and false otherwise
    */
-  public function isEmpty($name) {
+  public function isEmpty(string $name) {
     return $this->exists($name) && ($this->get($name) === true || $this->get($name) === "");
   }
 
@@ -349,7 +349,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @return self for a fluent interface
    * @throws AttributeException if the attribute is unremovable
    */
-  public function remove($name) {
+  public function remove(string $name) {
     if ($this->isAttributeObject($name)) {
       $this->getAttributeObject($name)->clear();
     } else {
@@ -375,7 +375,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return scalar the value of the attribute
    */
-  public function get($name) {
+  public function get(string $name) {
     if ($this->isAttributeObject($name)) {
       $value = $this->getAttributeObject($name)->getValue();
     } else if (!$this->exists($name)) {
@@ -392,7 +392,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return boolean true if the atribute exists and false otherwise
    */
-  public function exists($name) {
+  public function exists(string $name): bool {
     return array_key_exists($name, $this->attrs) || ($this->isAttributeObject($name) && $this->getAttributeObject($name)->isVisible());
   }
 
@@ -402,7 +402,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    * @param  string $name the name of the attribute
    * @return string HTML valid attribute string
    */
-  public function attrToString($name) {
+  public function attrToString(string $name) {
     if ($this->isAttributeObject($name)) {
       $output = "{$this->getAttributeObject($name)}";
     } else if ($this->exists($name)) {
@@ -437,7 +437,7 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
    *
    * @return ArrayIterator
    */
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     $arr = array_merge($this->attrObjects, $this->attrs);
     $it = new ArrayIterator($arr);
     return $it;
@@ -477,10 +477,10 @@ class AbstractAttributeManager implements IdentifiableInterface, Countable, Iter
 
   /**
    * 
-   * @param type $identityName
-   * @param type $prefix
-   * @param type $length
-   * @return string identity value
+   * @param string $identityName
+   * @param string $prefix
+   * @param int $length
+   * @return string
    */
   public function identify(string $identityName = 'id', string $prefix = 'id_', int $length = 16): string {
     $storage = IdStorage::get($identityName);

@@ -116,7 +116,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @throws AttributeException if the property is unmodifiable
    * @throws InvalidArgumentException if either the property name or the value is invalid
    */
-  public function setProperty($property, $value) {
+  public function setProperty(string $property, string $value) {
     if ($this->isLocked($property)) {
       throw new AttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }

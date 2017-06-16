@@ -4,41 +4,41 @@ namespace Sphp\Html\Attributes;
 
 class IdentifierStorageTest extends \PHPUnit_Framework_TestCase {
 
-  public function configDomain1Data() {
+  public function storeData(): array {
     return [
-        ["id", "string", true],
-        ["id", "string", false],
-        ["", "string", false],
-        ["data-id", "string", true],
-        ["data-id", "string", false],
-        ["data-id", null, false],
-        ["data-id", "1", true],
-        ["data-id", 1, false],
-        ["0", "string", false],
-        ["-1", "string", false],
-        ["2", "string", false]
+        ['id', 'string', true],
+        ['id', 'string', false],
+        ['a', 'string', true],
+        ["data-id", 'string', true],
+        ["data-id", 'string', false],
+        ["data-id", '', false],
+        ['data-id', '1', true],
+        ['data-id', ' ', false],
+        ['0', 'string', false],
+        ['-1', 'string', false],
+        ['2', 'string', false]
     ];
   }
 
   /**
-   * @dataProvider configDomain1Data
+   * @dataProvider storeData
    *
    * @param string $name
-   * @param mixed $value
+   * @param string $value
    * @param bool $expected
    */
-  public function testStoring($name, $value, $expected) {
-    $this->assertTrue(HtmlIdStorage::store($name, $value) === $expected);
+  public function testStoring(string $name, string $value, bool $expected) {
+    $storage = IdStorage::get($name);
+    $this->assertTrue($storage->store($value) === $expected);
   }
-  
-  
-  public function existsData() {
+
+  public function existsData(): array {
     return [
         ["id", "string", true],
         ["id", "string1", false],
         ["", "string", false],
         ["data-id", "string", true],
-        ["data-id", null, false],
+        ["data-id", '', false],
         ["0", "string", false],
         ["-1", "string", false],
         ["2", "string", false]
@@ -52,8 +52,9 @@ class IdentifierStorageTest extends \PHPUnit_Framework_TestCase {
    * @param mixed $value
    * @param bool $expected
    */
-  public function testExistence($name, $value, $expected) {
-    $this->assertTrue(HtmlIdStorage::exists($name, $value) === $expected);
+  public function testExistence(string $name, string $value, bool $expected) {
+    $storage = IdStorage::get($name);
+    $this->assertTrue($storage->contains($name, $value) === $expected);
   }
 
 }

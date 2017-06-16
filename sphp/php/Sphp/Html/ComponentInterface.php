@@ -66,10 +66,10 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * Removes given CSS class names
    *
    * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   * 
+   *
    * 1. A string parameter can contain multiple comma separated CSS class names
    * 2. An array parameter can contain only one CSS class name per value
-   * 
+   *
    * @param  string|string[] $cssClasses CSS class names to remove
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
@@ -88,70 +88,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass($cssClasses);
-
-  /**
-   * Sets an inline style definition using HTML elements style attribute
-   *
-   * **Note:** Old inline property is replaced if the property names are equal.
-   *
-   * @param  string $property CSS property
-   * @param  string $value CSS value
-   * @return self for a fluent interface
-   * @throws AttributeException if the property value is already locked
-   * @throws InvalidArgumentException if either the name or the value of the property is empty
-   * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
-   */
-  public function setStyle($property, $value);
-
-  /**
-   * Stores multiple inline style property value pairs
-   *
-   * **Notes:**
-   * 
-   * * Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.
-   * * Old inline properties are replaced if the new property name is equal.
-   * 
-   * @param  string[] $styles CSS property and CSS value pairs
-   * @return self for a fluent interface
-   * @throws AttributeException if any of the properties is already locked
-   * @throws InvalidArgumentException if if any of the properties has empty name or value
-   * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
-   */
-  public function setStyles(array $styles);
-
-  /**
-   * Removes given removable inline style property
-   *
-   * @param  string $property CSS property
-   * @return self for a fluent interface
-   * @throws AttributeException if the property is unmodifiable
-   */
-  public function removeStyle($property);
-
-  /**
-   * Removes all inline style definitions
-   *
-   * @return self for a fluent interface
-   */
-  public function clearStyles();
-
-  /**
-   * Determines whether the given CSS property exists
-   *
-   * @param  string $property CSS property
-   * @return boolean true if the style attribute exists and false otherwise
-   */
-  public function hasStyle($property);
-
-  /**
-   * Returns the value of the style attribute or null if the style attribute
-   * does not exist
-   *
-   * @param  string $property CSS property name
-   * @return string|null the value of the style attribute or null
-   */
-  public function getStyleValue($property);
+  public function hasCssClass($cssClasses): bool;
 
   /**
    * Sets an attribute name value pair
@@ -175,7 +112,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @throws InvalidArgumentException if the attribute name or value is invalid
    * @throws AttributeException if the attribute value is unmodifiable
    */
-  public function setAttr($name, $value = null);
+  public function setAttr(string $name, $value = null);
 
   /**
    * Removes given attribute if it is not locked
@@ -183,7 +120,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $attrName attribute's name
    * @return self for a fluent interface
    */
-  public function removeAttr($attrName);
+  public function removeAttr(string $attrName);
 
   /**
    * Returns the value of a given attribute name or an empty string if attribute is not set
@@ -191,7 +128,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $attrName attribute's name
    * @return string attribute's value
    */
-  public function getAttr($attrName);
+  public function getAttr(string $attrName);
 
   /**
    * Checks if an attribute exists
@@ -199,5 +136,5 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $attrName attribute's name
    * @return boolean (atribute exists)
    */
-  public function attrExists($attrName);
+  public function attrExists(string $attrName): bool;
 }

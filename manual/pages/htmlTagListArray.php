@@ -204,7 +204,7 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $c[] = new QtipAdapter($param, $tooptipText);
       $c[] = $w3schools->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
-      $c[] = $api->classLinker($ref->getName(), $text)->getLink()->removeCssClass("bordered");
+      $c[] = $api->classLinker($ref->getName(), $text)->getLink();
       $c[] = $data[1];
       $body->appendBodyRow($c);
     }

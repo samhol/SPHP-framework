@@ -10,11 +10,11 @@ $inlineStyles = [
     'height' => '373px'];
 $iframe = new Iframe();
 $iframe->setSrc('https://docs.google.com/present/embed?id=dcn37mcz_22cmnwnwf8')
-        ->setLazy()
-        ->setStyles($inlineStyles);
+        ->setLazy();
+
+$iframe->inlineStyles()->setProperties($inlineStyles);
 $widget = (new Iframe('http://193.64.245.223/basket/widget/'))
-        ->setStyles($inlineStyles)
-        ->setLazy()
-        ->setStyle('border', 'none');
+        ->setLazy();
+$widget->inlineStyles()->set('border', 'none');
 $grid = new Grid([$iframe, $widget]);
 $grid->printHtml();

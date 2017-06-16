@@ -95,82 +95,8 @@ trait IdentifiableComponentTrait {
    * @return boolean true if the given CSS class names exists
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass($cssClasses) {
+  public function hasCssClass($cssClasses): bool {
     return $this->cssClasses()->contains($cssClasses);
-  }
-
-  /**
-   * Sets an inline style definition using HTML elements style attribute
-   *
-   * **Note:** Old inline property is replaced if the property names are equal.
-   *
-   * @param  string $property CSS property
-   * @param  string $value CSS value
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
-   */
-  public function setStyle($property, $value) {
-    $this->inlineStyles()->setProperty($property, $value);
-    return $this;
-  }
-
-  /**
-   * Sets inline style definitions using HTML elements style attribute
-   *
-   * **Notes:**
-   *
-   * * Old inline properties are replaced if the new property name is equal.
-   * * Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.
-   *
-   * @param  string[] $styles CSS property and CSS value pairs
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_style.asp style attribute
-   */
-  public function setStyles(array $styles) {
-    $this->inlineStyles()->setProperties($styles);
-    return $this;
-  }
-
-  /**
-   * Removes the given inline style property
-   *
-   * @param  string $property CSS property name
-   * @return self for a fluent interface
-   */
-  public function removeStyle($property) {
-    $this->inlineStyles()->unsetProperty($property);
-    return $this;
-  }
-
-  /**
-   * Removes all inline style definitions
-   *
-   * @return self for a fluent interface
-   */
-  public function clearStyles() {
-    $this->inlineStyles()->clear();
-    return $this;
-  }
-
-  /**
-   * Determines whether the given CSS property exists
-   *
-   * @param  string $property CSS property name
-   * @return boolean true if the style attribute exists and false otherwise
-   */
-  public function hasStyle($property) {
-    return $this->inlineStyles()->hasProperty($property);
-  }
-
-  /**
-   * Returns the value of the CSS property name or null if the property does
-   *  not exist
-   *
-   * @param  string $property CSS property name
-   * @return string|null the value of the style attribute or null
-   */
-  public function getStyleValue($property) {
-    return $this->inlineStyles()->getProperty($property);
   }
 
   /**
@@ -212,7 +138,7 @@ trait IdentifiableComponentTrait {
    * @throws   InvalidAttributeException if the attribute name or value is invalid
    * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
    */
-  public function setAttr($name, $value = null) {
+  public function setAttr(string $name, $value = null) {
     $this->attrs()->set($name, $value);
     return $this;
   }
@@ -223,7 +149,7 @@ trait IdentifiableComponentTrait {
    * @param  string $name the name of the attribute
    * @return self for a fluent interface
    */
-  public function removeAttr($name) {
+  public function removeAttr(string $name) {
     $this->attrs()->remove($name);
     return $this;
   }
@@ -239,7 +165,7 @@ trait IdentifiableComponentTrait {
    * @param  string $name the name of the attribute
    * @return mixed the value of the attribute
    */
-  public function getAttr($name) {
+  public function getAttr(string $name) {
     return $this->attrs()->get($name);
   }
 
@@ -249,7 +175,7 @@ trait IdentifiableComponentTrait {
    * @param  string $name the name of the attribute
    * @return boolean (attribute exists)
    */
-  public function attrExists($name) {
+  public function attrExists(string $name): bool {
     return $this->attrs()->exists($name);
   }
 

@@ -7,8 +7,8 @@ use Sphp\Html\Sections\Paragraph;
 $container = new Container();
 $container["heading"] = (new Headings\H5("Lorem ipsum dolor sit amet"))->addCssClass("sub-heading");
 $container["paragraph"] = (new Paragraph())
-		->appendRawFile("manual/snippets/loremipsum.html")
-		->setStyle("text-align", "justify");
+        ->appendRawFile("manual/snippets/loremipsum.html");
+$container["paragraph"]->inlineStyles()->setProperty("text-align", "justify");
 $container->append(new \stdClass());
 
 /**
@@ -17,9 +17,9 @@ $container->append(new \stdClass());
  * @param mixed $element
  */
 $search = function($element) {
-	return (is_object($element));
+  return (is_object($element));
 };
 //
 $container[] = new Paragraph("<b><var>objects</var>(s):</b> "
-		. count($container->getComponentsBy($search)));
+        . count($container->getComponentsBy($search)));
 $container->printHtml();
