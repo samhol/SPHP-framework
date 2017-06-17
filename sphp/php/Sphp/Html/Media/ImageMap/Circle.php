@@ -27,7 +27,7 @@ class Circle extends AbstractArea {
    * @param string|null $href the URL of the link
    * @param string|null $alt
    */
-  public function __construct($x, $y, $radius, $href = null, $alt = null) {
+  public function __construct(int $x, int $y, int $radius, string $href = null, string $alt = null) {
     parent::__construct('circle', $href, $alt);
     $this->setCoordinates($x, $y, $radius);
   }
@@ -38,7 +38,7 @@ class Circle extends AbstractArea {
    * @param  int $radius the radius of the circle
    * @return self for a fluent interface
    */
-  public function setRadius($radius) {
+  public function setRadius(int $radius) {
     $coords = split(',', $this->getCoordinates());
     $coords[2] = $radius;
     $coordsString = implode(',', $coords);
@@ -52,7 +52,7 @@ class Circle extends AbstractArea {
    * @param  int $x the x-coodinate of the circle center
    * @return self for a fluent interface
    */
-  public function setX($x) {
+  public function setX(int $x) {
     $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coordsString = implode(',', $coords);
@@ -66,7 +66,7 @@ class Circle extends AbstractArea {
    * @param  int $y the y-coodinate of the circle center
    * @return self for a fluent interface
    */
-  public function setY($y) {
+  public function setY(int $y) {
     $coords = split(',', $this->getCoordinates());
     $coords[1] = $y;
     $coordsString = implode(',', $coords);
@@ -82,7 +82,7 @@ class Circle extends AbstractArea {
    * @param  int $radius the radius of the circle
    * @return self for a fluent interface
    */
-  public function setCoordinates($x, $y, $radius) {
+  public function setCoordinates(int $x, int $y, int $radius) {
     $coords = [$x, $y, $radius];
     $coordsString = implode(',', $coords);
     $this->attrs()->set('coords', $coordsString);
