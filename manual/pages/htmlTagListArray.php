@@ -90,6 +90,10 @@ namespace Sphp\Html\Media;
 $av = $api->classLinker(Multimedia\Audio::class) . ' and ' . $api->classLinker(Multimedia\Video::class);
 $p[] = ['Media', [
         ['img', 'An image'],
+        ['area:polygon', 'A polygonal area inside an image map'],
+        ['area:circle', 'A circular area inside an image map'],
+        ['area:rectangle', 'A Rectangular area inside an image map'],
+        ['area', 'An area inside an image map'],
         ['area', 'An area inside an image map'],
         ['map', 'An image map'],
         ['canvas', 'Graphics canvas'],

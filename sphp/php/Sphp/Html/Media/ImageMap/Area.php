@@ -17,22 +17,18 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Area extends EmptyTag implements AreaInterface {
-
-  use AreaTrait;
+class Area extends AbstractArea {
 
   /**
    * Constructs a new instance
    * 
-   * @precondition `$shape` == `default|circle|rect|poly`
-   * @param string $shape the shape of the area
-   * @link  http://www.w3schools.com/tags/att_area_shape.asp shape attribute
+   * @param string $shape
+   * @param string|null $href the URL of the link
+   * @param string|null $alt
    */
-  public function __construct($shape) {
-    parent::__construct('area');
-    $this->attrs()->lock('shape', $shape);
+  public function __construct(string $shape, string $href = null, string $alt = null) {
+    parent::__construct($shape, $href, $alt);
   }
-
   /**
    * Sets the coordinates of the area
    * 

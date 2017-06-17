@@ -6,7 +6,6 @@
  */
 
 namespace Sphp\Html\Media\ImageMap;
-use Sphp\Html\EmptyTag;
 
 /**
  * Implements an HTML &lt;area shape="circle"&gt; tag
@@ -16,9 +15,8 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Circle extends EmptyTag implements AreaInterface {
+class Circle extends AbstractArea {
 
-  use AreaTrait;
 
   /**
    * Constructs a new instance
@@ -30,15 +28,8 @@ class Circle extends EmptyTag implements AreaInterface {
    * @param string|null $alt
    */
   public function __construct($x, $y, $radius, $href = null, $alt = null) {
-    parent::__construct('area');
-    $this->attrs()->lock('shape', 'circle');
+    parent::__construct('circle', $href, $alt);
     $this->setCoordinates($x, $y, $radius);
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($alt !== null) {
-      $this->setHref($href);
-    }
   }
 
   /**

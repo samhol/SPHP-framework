@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\EmptyTag;
 
 /**
  * Implements an HTML &lt;area shape="rect"&gt; tag
@@ -17,9 +16,7 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Rectangle extends EmptyTag implements AreaInterface {
-
-  use AreaTrait;
+class Rectangle extends AbstractArea {
 
   /**
    * Constructs a new instance
@@ -32,15 +29,8 @@ class Rectangle extends EmptyTag implements AreaInterface {
    * @param string $alt
    */
   public function __construct($x1, $y1, $x2, $y2, $href = null, $alt = null) {
-    parent::__construct('area');
-    $this->attrs()->lock('shape', 'rect');
+    parent::__construct('area', $href, $alt);
     $this->setCoordinates($x1, $y1, $x2, $y2);
-    if ($href !== null) {
-      $this->setHref($href);
-    }
-    if ($alt !== null) {
-      $this->setHref($alt);
-    }
   }
 
   /**
