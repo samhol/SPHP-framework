@@ -39,7 +39,7 @@ class MdContainer extends AbstractContainer {
   }
 
   public function setContent($content) {
-    $this->clear()->append(new \Sphp\Stdlib\Reader\Markdown());
+    $this->clear()->append((new \Sphp\Stdlib\Reader\Markdown())->fromString($content));
   }
 
 }

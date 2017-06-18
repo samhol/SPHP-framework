@@ -47,7 +47,7 @@ interface SizeableInterface extends ContentInterface {
    * @param  int $width the width of the component (in pixels)
    * @return self for a fluent interface
    */
-  public function setWidth($width);
+  public function setWidth(int $width);
 
   /**
    * Returns the height of the video component (in pixels)
@@ -62,5 +62,5 @@ interface SizeableInterface extends ContentInterface {
    * @param  int $height the height of the component (in pixels)
    * @return self for a fluent interface
    */
-  public function setHeight($height);
+  public function setHeight(int $height);
 }

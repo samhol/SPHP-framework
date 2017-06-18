@@ -39,5 +39,5 @@ interface ResponsiveEmbedInterface extends ContentInterface {
    * @param  string $ratio true for widescreen
    * @return self for a fluent interface
    */
-  public function setAspectRatio($ratio);
+  public function setAspectRatio(string $ratio);
 }

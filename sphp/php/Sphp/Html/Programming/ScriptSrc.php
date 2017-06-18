@@ -52,7 +52,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType($type) {
+  public function setType(string $type) {
     return $this->setAttr('type', $type);
   }
 
@@ -66,7 +66,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function setAsync($async = true) {
+  public function setAsync(bool $async = true) {
     return $this->setAttr('async', (bool) $async);
   }
 
@@ -77,7 +77,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     $this->attrs()->set('src', $src);
     return $this;
   }

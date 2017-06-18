@@ -44,7 +44,7 @@ class Th extends Cell {
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    */
-  public function __construct($content = null, $scope = null, $colspan = 1, $rowspan = 1) {
+  public function __construct($content = null, string $scope = null, int $colspan = 1, int $rowspan = 1) {
     parent::__construct('th', $content);
     if ($scope !== null) {
       $this->setScope($scope);
@@ -61,7 +61,7 @@ class Th extends Cell {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
-  public function setScope($scope) {
+  public function setScope(string $scope) {
     return $this->setAttr('scope', $scope);
   }
 

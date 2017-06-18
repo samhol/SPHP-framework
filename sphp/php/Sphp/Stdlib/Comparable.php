@@ -31,5 +31,5 @@ interface Comparable {
    *             or greater than the specified object
    * @throws InvalidArgumentException if the type of the `$other` prevents it from being compared to this object.
    */
-  public function compareTo($other);
+  public function compareTo($other): int;
 }

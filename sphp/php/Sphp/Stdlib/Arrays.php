@@ -102,7 +102,7 @@ class Arrays {
    * @param  array $haystack
    * @return boolean
    */
-  public static function inArray($needle, $haystack) {
+  public static function inArray($needle, array $haystack) {
     $found = false;
     foreach ($haystack as $item) {
       if ($item === $needle) {

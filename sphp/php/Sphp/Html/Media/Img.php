@@ -53,7 +53,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
    */
-  public function __construct($src = '', $alt = '') {
+  public function __construct($src = '', string $alt = '') {
     parent::__construct('img');
     $this->attrs()->demand('alt');
     $this->setSrc($src)
@@ -95,7 +95,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function setAlt($alt) {
+  public function setAlt(string $alt) {
     $this->attrs()->set('alt', $alt);
     return $this;
   }
@@ -108,7 +108,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @return string the value of the alt attribute
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function getAlt() {
+  public function getAlt(): string {
     return $this->attrs()->get('alt');
   }
 

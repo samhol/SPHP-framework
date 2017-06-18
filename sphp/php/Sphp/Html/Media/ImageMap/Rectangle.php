@@ -28,7 +28,7 @@ class Rectangle extends AbstractArea {
    * @param string|null $href the URL of the link
    * @param string $alt
    */
-  public function __construct($x1, $y1, $x2, $y2, $href = null, $alt = null) {
+  public function __construct(int $x1 = 0, int $y1 = 0, int $x2 = 0, int $y2 = 0, $href = null, $alt = null) {
     parent::__construct('area', $href, $alt);
     $this->setCoordinates($x1, $y1, $x2, $y2);
   }
@@ -40,7 +40,7 @@ class Rectangle extends AbstractArea {
    * @param  int $y the top left y-coordinate
    * @return self for a fluent interface
    */
-  public function setTopLeft($x, $y) {
+  public function setTopLeft(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coords[1] = $y;
@@ -56,7 +56,7 @@ class Rectangle extends AbstractArea {
    * @param  int $y the bottom right y-coordinate
    * @return self for a fluent interface
    */
-  public function setBottomRight($x, $y) {
+  public function setBottomRight(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
     $coords[2] = $x;
     $coords[3] = $y;
@@ -74,7 +74,7 @@ class Rectangle extends AbstractArea {
    * @param  int $y2 the bottom right y-coordinate
    * @return self for a fluent interface
    */
-  public function setCoordinates($x1, $y1, $x2, $y2) {
+  public function setCoordinates(int $x1, int $y1, int $x2, int $y2) {
     $coords = [$x1, $y1, $x2, $y2];
     $coordsString = implode(',', $coords);
     $this->attrs()->set('coords', $coordsString);

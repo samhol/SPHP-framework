@@ -70,7 +70,7 @@ class ScriptsContainer implements IteratorAggregate, ContentInterface, Traversab
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendSrc($src, $async = false) {
+  public function appendSrc(string $src, bool $async = false) {
     $this->append(new ScriptSrc($src, $async));
     return $this;
   }

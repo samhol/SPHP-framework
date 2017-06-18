@@ -88,7 +88,7 @@ class Bullet extends AbstractComponent {
    * @param  string $description
    * @return self for a fluent interface
    */
-  public function setCurrentSlideDescription($description) {
+  public function setCurrentSlideDescription(string $description) {
     $this->currentDescriptor->replaceContent($description);
     return $this;
   }
@@ -98,7 +98,7 @@ class Bullet extends AbstractComponent {
    * 
    * @return int slide index
    */
-  public function getSlideNo() {
+  public function getSlideNo():int {
     return $this->number;
   }
 

@@ -36,7 +36,7 @@ trait LazyLoaderTrait {
    * @param  boolean $lazy true if the loading is lazy, false otherwise
    * @return self for a fluent interface
    */
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $classes = ['lazy-hidden', 'lazy-loaded'];
     if ($lazy && !$this->isLazy()) {
       $src = $this->getSrc();
@@ -56,7 +56,7 @@ trait LazyLoaderTrait {
    * 
    * @return boolean true if the loading is lazy, false otherwise
    */
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->attrs()->exists('data-src') &&
             $this->attrs()->classes()->contains(['lazy-hidden', 'lazy-loaded']);
   }
@@ -67,10 +67,10 @@ trait LazyLoaderTrait {
    * **Important:** if {@link LazyLoaderInterface::isLazy()} this method sets the value of the 
    * `data-src` attribute instead of the `src` attribute
    *
-   * @param  string|URL $src the path to the image source (The URL of the image file)
+   * @param  string $src the path to the image source (The URL of the image file)
    * @return LazyLoaderInterface for PHP Method Chaining
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     if ($src instanceof URL) {
       $src = $src->getHtml();
     }

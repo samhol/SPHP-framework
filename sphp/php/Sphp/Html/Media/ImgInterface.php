@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Stdlib\URL;
-
 /**
  * Implements an HTML &lt;img&gt; tag
  *
@@ -41,11 +39,11 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
   /**
    * Sets the path to the track source (The URL of the track file)
    *
-   * @param  string|URL $src the path to the track source (The URL of the track file)
+   * @param  string $src the path to the track source (The URL of the track file)
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
    */
-  public function setSrc($src);
+  public function setSrc(string $src);
 
   /**
    * Returns the URL of the track file
@@ -74,7 +72,7 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function setAlt($alt);
+  public function setAlt(string $alt);
 
   /**
    * Returns the alt attribute (an alternate text for an image).
@@ -84,5 +82,5 @@ interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
    * @return string the value of the alt attribute
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
-  public function getAlt();
+  public function getAlt(): string;
 }

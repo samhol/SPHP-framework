@@ -32,12 +32,12 @@ interface LazyLoaderInterface extends ContentInterface {
    * @param  boolean $lazy true if the loading is lazy, false otherwise
    * @return self for a fluent interface
    */
-  public function setLazy($lazy = true);
+  public function setLazy(bool $lazy = true);
 
   /**
    * Checks whether the media source loading is lazy
    * 
    * @return boolean true if the loading is lazy, false otherwisev
    */
-  public function isLazy();
+  public function isLazy(): bool;
 }

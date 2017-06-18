@@ -30,7 +30,7 @@ interface IframeInterface extends LazyLoaderInterface, SizeableInterface {
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return LazyLoaderInterface for PHP Method Chaining
    */
-  public function setSrc($src);
+  public function setSrc(string $src);
 
   /**
    * Returns the path to the image source (The URL of the image file)

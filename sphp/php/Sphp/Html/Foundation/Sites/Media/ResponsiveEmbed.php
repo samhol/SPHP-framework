@@ -108,11 +108,11 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * 
    * @return IframeInterface the actual iframe component
    */
-  public function getIframe() {
+  public function getIframe(): IframeInterface {
     return $this->iframe;
   }
 
-  public function setAspectRatio($ratio) {
+  public function setAspectRatio(string $ratio) {
     $ratios = ['default', 'vertical', 'widescreen', 'square'];
     if ($ratio) {
       $this->cssClasses()->remove($ratios);
@@ -121,11 +121,11 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
     return $this;
   }
 
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->getIframe()->isLazy();
   }
 
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $this->getIframe()->setLazy($lazy);
     return $this;
   }

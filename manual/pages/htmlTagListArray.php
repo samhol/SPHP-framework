@@ -93,8 +93,6 @@ $p[] = ['Media', [
         ['area:polygon', 'A polygonal area inside an image map'],
         ['area:circle', 'A circular area inside an image map'],
         ['area:rectangle', 'A Rectangular area inside an image map'],
-        ['area', 'An area inside an image map'],
-        ['area', 'An area inside an image map'],
         ['map', 'An image map'],
         ['canvas', 'Graphics canvas'],
         ['figure', 'A group of media content, and their caption'],

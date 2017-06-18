@@ -49,8 +49,8 @@ class Ol extends AbstractList {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_reversed.asp reversed attribute
    */
-  public function setReversed($reversed = true) {
-    $this->attrs()->set('reversed', (bool) $reversed);
+  public function setReversed(bool $reversed = true) {
+    $this->attrs()->set('reversed', $reversed);
     return $this;
   }
 
@@ -64,7 +64,7 @@ class Ol extends AbstractList {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
-  public function setStart($start) {
+  public function setStart(int $start) {
     $this->attrs()->set('start', $start);
     return $this;
   }
@@ -78,7 +78,7 @@ class Ol extends AbstractList {
    * @return int the start value of the list ordering index (defaults to 1)
    * @link   http://www.w3schools.com/tags/att_ol_start.asp start attribute
    */
-  public function getStart() {
+  public function getStart(): int {
     $start = 1;
     if ($this->attrs()->exists('start')) {
       $start = $this->attrs()->get('start');
@@ -93,7 +93,7 @@ class Ol extends AbstractList {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function setType($type = '1') {
+  public function setType(string $type = '1') {
     $this->attrs()->set('type', $type);
     return $this;
   }
@@ -104,7 +104,7 @@ class Ol extends AbstractList {
    * @return string the kind of marker used in the list
    * @link   http://www.w3schools.com/tags/att_ol_type.asp type attribute
    */
-  public function getType() {
+  public function getType(): string {
     $type = '1';
     if ($this->attrs()->exists('type')) {
       $type = $this->attrs()->get('type');

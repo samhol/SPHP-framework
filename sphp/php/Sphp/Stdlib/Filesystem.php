@@ -70,7 +70,7 @@ class Filesystem {
   /**
    * Executes a PHP script and returns the result as a string
    *
-   * @param  string $paths the path to the executable PHP script
+   * @param  string|string[] $paths the path to the executable PHP script
    * @return string the result of the script execution
    * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
    */
@@ -99,7 +99,7 @@ class Filesystem {
    * @return string[] rows of the ASCII file in an array
    * @throws \Sphp\Exceptions\RuntimeException if the $path points to no actual file
    */
-  public static function getTextFileRows($path) {
+  public static function getTextFileRows(string $path) {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
       throw new RuntimeException("The path '$path' contains no file");

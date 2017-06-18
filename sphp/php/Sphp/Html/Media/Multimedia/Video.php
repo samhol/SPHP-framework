@@ -38,7 +38,7 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyLoad
     $this->showControls(true);
   }
 
-  public function isLazy() {
+  public function isLazy(): bool {
     $lazy = false;
     foreach ($this->getSources() as $source) {
       $lazy &= $source->setLazy();
@@ -46,7 +46,7 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyLoad
     return $lazy;
   }
 
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     foreach ($this->getSources() as $source) {
       $source->setLazy($lazy);
     }
@@ -60,11 +60,11 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyLoad
    * the video is downloading, or until the user hits the play button. If 
    * this is not included, the first frame of the video will be used instead.
    * 
-   * @param  string|URL $poster the poster image for the video component
+   * @param  string $poster the poster image for the video component
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
-  public function setPoster($poster) {
+  public function setPoster(string $poster) {
     $this->attrs()->set('poster', $poster);
     return $this;
   }

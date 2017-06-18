@@ -20,10 +20,10 @@ interface MultimediaContentInterface {
   /**
    * Sets the path to the media source
    *
-   * @param  string|URL $src the path to the media source
+   * @param  string $src the path to the media source
    * @return self for a fluent interface
    */
-  public function setSrc($src);
+  public function setSrc(string $src);
 
   /**
    * Returns the URL of the media file

@@ -198,16 +198,7 @@ class Document {
       if ($class instanceof ContainerInterface && $content !== null) {
         $class->append($content);
       }
-    } else if (mb_substr($tagName, 0, 7) === 'button:' || mb_substr($tagName, 0, 6) === 'input:') {
-      $data = explode(':', $tagName);
-      if ($data[0] == 'input') {
-        $className = Forms\Input\Input::class;
-      } else {
-        $className = Forms\Buttons\Button::class;
-      }
-      $type = $data[1];
-      $class = new $className($type);
-    } else {
+    }  else {
       throw new \InvalidArgumentException("Proper class for object '$name' can not be found");
     }
     return $class;

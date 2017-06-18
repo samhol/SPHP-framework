@@ -77,7 +77,7 @@ class Track extends EmptyTag implements MultimediaContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     return $this->setAttr('src', $src);
   }
 

@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\EmptyTag;
-
 /**
  * Implements an HTML &lt;area shape="poly"&gt; tag
  *
@@ -38,7 +36,7 @@ class Polygon extends AbstractArea {
    * @param  int $y the y-coordinate of the edge
    * @return self for a fluent interface
    */
-  public function appendEdge($x, $y) {
+  public function appendEdge(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
     $coords[0] = $x;
     $coords[1] = $y;

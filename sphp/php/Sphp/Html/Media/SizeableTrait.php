@@ -55,7 +55,7 @@ trait SizeableTrait {
    *         to unset
    * @return self for a fluent interface
    */
-  public function setWidth($width) {
+  public function setWidth(int $width) {
     $this->attrs()->set('width', $this->parseDimension($width));
     return $this;
   }
@@ -76,7 +76,7 @@ trait SizeableTrait {
    *         to unset
    * @return self for a fluent interface
    */
-  public function setHeight($height) {
+  public function setHeight(int $height) {
     $this->attrs()->set('height', $this->parseDimension($height));
     return $this;
   }

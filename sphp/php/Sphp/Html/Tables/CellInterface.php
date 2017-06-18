@@ -44,7 +44,7 @@ interface CellInterface extends TableContentInterface {
    * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
    * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
    */
-  public function setColspan($value);
+  public function setColspan(int $value);
 
   /**
    * Returns the value of the colspan attribute
@@ -53,7 +53,7 @@ interface CellInterface extends TableContentInterface {
    * @link   http://www.w3schools.com/tags/att_td_colspan.asp td colspan attribute
    * @link   http://www.w3schools.com/tags/att_th_colspan.asp th colspan attribute
    */
-  public function getColspan();
+  public function getColspan(): int;
 
   /**
    * Sets the value of the rowspan attribute
@@ -68,7 +68,7 @@ interface CellInterface extends TableContentInterface {
    * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
    * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
    */
-  public function setRowspan($value);
+  public function setRowspan(int $value);
 
   /**
    * Returns the value of the rowspan attribute
@@ -77,5 +77,5 @@ interface CellInterface extends TableContentInterface {
    * @link   http://www.w3schools.com/tags/att_td_rowspan.asp td rowspan attribute
    * @link   http://www.w3schools.com/tags/att_th_rowspan.asp th rowspan attribute
    */
-  public function getRowspan();
+  public function getRowspan(): int;
 }

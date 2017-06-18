@@ -73,7 +73,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
    * @return self for a fluent interface
    */
-  public function appendTh($content, $scope = null, $colspan = 1, $rowspan = 1) {
+  public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Th($content, $scope, $colspan, $rowspan));
     return $this;
   }
@@ -103,7 +103,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
    * @return self for a fluent interface
    */
-  public function appendTd($content, $colspan = 1, $rowspan = 1) {
+  public function appendTd($content, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Td($content, $colspan, $rowspan));
     return $this;
   }

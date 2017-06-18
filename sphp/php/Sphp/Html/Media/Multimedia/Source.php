@@ -41,7 +41,7 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
    * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function __construct($src = null, $type = null, $lazy = false) {
+  public function __construct(string $src = null, string $type = null, bool $lazy = false) {
     parent::__construct('source');
     if ($src !== null) {
       $this->setSrc($src);
@@ -59,7 +59,7 @@ class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderI
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function setType($type) {
+  public function setType(string $type) {
     $this->attrs()->set('type', $type);
     return $this;
   }

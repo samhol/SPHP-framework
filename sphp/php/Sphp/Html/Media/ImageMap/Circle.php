@@ -27,7 +27,7 @@ class Circle extends AbstractArea {
    * @param string|null $href the URL of the link
    * @param string|null $alt
    */
-  public function __construct(int $x, int $y, int $radius, string $href = null, string $alt = null) {
+  public function __construct(int $x = 0, int $y = 0, int $radius = 0, string $href = null, string $alt = null) {
     parent::__construct('circle', $href, $alt);
     $this->setCoordinates($x, $y, $radius);
   }

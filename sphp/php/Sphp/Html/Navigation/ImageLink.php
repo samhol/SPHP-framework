@@ -88,7 +88,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return self for a fluent interface
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     $this->img()->setSrc($src);
     return $this;
   }
@@ -96,7 +96,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function setAlt($src) {
+  public function setAlt(string $src) {
     $this->img()->setAlt($src);
     return $this;
   }
@@ -104,7 +104,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function getAlt() {
+  public function getAlt(): string {
     return $this->img()->getAlt();
   }
 
@@ -138,7 +138,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function setWidth($width) {
+  public function setWidth(int $width) {
     $this->img->setWidth($width);
     return $this;
   }
@@ -153,7 +153,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function setHeight($height) {
+  public function setHeight(int $height) {
     $this->img->setHeight($height);
     return $this;
   }
@@ -168,7 +168,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
@@ -176,7 +176,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   /**
    * {@inheritdoc}
    */
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->img->isLazy();
   }
 

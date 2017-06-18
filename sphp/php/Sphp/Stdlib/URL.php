@@ -130,7 +130,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string|null $scheme the scheme name of the URL
    * @return self for a fluent interface
    */
-  public function setScheme($scheme = null) {
+  public function setScheme(string $scheme = null) {
     $this->components['scheme'] = (string) $scheme;
     return $this;
   }
@@ -144,7 +144,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return string the scheme name of the URL
    */
-  public function getScheme() {
+  public function getScheme(): string {
     return $this->components['scheme'];
   }
 
@@ -153,7 +153,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the scheme is set and false otherwise
    */
-  public function hasScheme() {
+  public function hasScheme(): bool {
     return $this->components['scheme'] !== '';
   }
 
@@ -174,7 +174,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  boolean $encode true if the value should be encoded
    * @return string the host `part` of the URL
    */
-  public function getHost($encode = false) {
+  public function getHost($encode = false): string {
     $val = $this->components['host'];
     if ($encode && !Strings::isEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
       Strings::htmlEncode($val);
@@ -187,7 +187,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the host is set and false otherwise
    */
-  public function hasHost() {
+  public function hasHost(): bool {
     return $this->components['host'] !== '';
   }
 
@@ -208,7 +208,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  boolean $encode true if the value should be encoded
    * @return string the user part of the URL
    */
-  public function getUser($encode = false) {
+  public function getUser($encode = false): string {
     $val = strval($this->components['user']);
     if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
@@ -221,7 +221,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the user is set and false otherwise
    */
-  public function hasUser() {
+  public function hasUser(): bool {
     return $this->components['user'] !== '';
   }
 
@@ -242,7 +242,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  boolean $encode true if the value should be encoded
    * @return string the password part of the URL
    */
-  public function getPassword($encode = false) {
+  public function getPassword($encode = false): string {
     $val = $this->components['pass'];
     if ($encode && $val !== '') {
       $val = rawurlencode($val);
@@ -255,7 +255,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the password is set and false otherwise
    */
-  public function hasPassword() {
+  public function hasPassword(): bool {
     return $this->components['pass'] !== '';
   }
 
@@ -281,7 +281,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  boolean $encode true if the value should be encoded
    * @return string the path part of the URL
    */
-  public function getPath($encode = false) {
+  public function getPath($encode = false): string {
     $val = $this->components['path'];
     if ($encode && !Strings::isEmpty($val)) {
       $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
@@ -294,7 +294,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the path is set and false otherwise
    */
-  public function hasPath() {
+  public function hasPath(): bool {
     return $this->components['path'] !== '';
   }
 
@@ -304,7 +304,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $query the new query string
    * @return self for a fluent interface
    */
-  public function setQuery($query) {
+  public function setQuery(string $query) {
     if ($query !== '') {
       parse_str($query, $this->components['query']);
     } else {
@@ -318,7 +318,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the path is set and false otherwise
    */
-  public function hasQuery() {
+  public function hasQuery(): bool {
     return !empty($this->components['query']);
   }
 
@@ -332,7 +332,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  int $encode
    * @return string the query string of the URL
    */
-  public function getQuery($separator = '&', $encode = \PHP_QUERY_RFC1738) {
+  public function getQuery($separator = '&', $encode = \PHP_QUERY_RFC1738): string {
     $val = '';
     if ($this->hasQuery()) {
       $val = http_build_query($this->components['query'], '', $separator, $encode);
@@ -346,7 +346,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $name the name of the parameter
    * @return boolean true if the parameter exists and false otherwise
    */
-  public function paramExists($name) {
+  public function paramExists($name): bool {
     return array_key_exists($name, $this->components['query']);
   }
 
@@ -355,7 +355,7 @@ class URL implements Arrayable, IteratorAggregate {
    *
    * @return string[] the parameter array
    */
-  public function getParams() {
+  public function getParams(): array {
     return $this->components['query'];
   }
 
@@ -442,7 +442,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolean true if the fragment part is set and false otherwise
    */
-  public function hasFragment() {
+  public function hasFragment(): bool {
     return $this->components['fragment'] !== '';
   }
 
@@ -454,8 +454,8 @@ class URL implements Arrayable, IteratorAggregate {
    * @return self for a fluent interface
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
-  public function setPort($port) {
-    $this->components['port'] = (int) $port;
+  public function setPort(int $port) {
+    $this->components['port'] = $port;
     return $this;
   }
 
@@ -475,7 +475,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return boolean true if the port number is the default for the scheme
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
-  public function hasDefaultPort() {
+  public function hasDefaultPort(): bool {
     return getservbyname($this->getScheme(), 'tcp') === $this->getPort();
   }
 
@@ -494,7 +494,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string|URL $url the URL to compare with the current URL
    * @return boolean true if the specified URL is equal to the current URL, otherwise false
    */
-  public function equals($url) {
+  public function equals($url): bool {
     if (!($url instanceof URL)) {
       $url = new URL($url);
     }

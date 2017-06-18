@@ -45,7 +45,7 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
    * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|FigCaption $caption the caption content or the caption component
    */
-  public function __construct($img = null, $caption = null) {
+  public function __construct($img, $caption = null) {
     parent::__construct('li');
     $this->cssClasses()
             ->lock('orbit-slide');
@@ -79,7 +79,7 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
    *
    * @return Img the image component
    */
-  public function getImg() {
+  public function getImg(): Img {
     return $this->img;
   }
 
@@ -88,7 +88,7 @@ class FigureSlide extends AbstractComponent implements SlideInterface {
    *
    * @return FigCaption the caption component
    */
-  public function getCaption() {
+  public function getCaption(): FigCaption {
     return $this->caption;
   }
 

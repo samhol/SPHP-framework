@@ -149,7 +149,7 @@ class BitMask implements Arrayable, Embeddable {
    *
    * @return int the current bitmask value as an integer
    */
-  public function toInt() {
+  public function toInt(): int {
     return $this->mask;
   }
 

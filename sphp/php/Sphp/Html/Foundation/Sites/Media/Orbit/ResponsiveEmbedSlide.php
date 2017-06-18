@@ -65,16 +65,16 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
     return $this->flex;
   }
 
-  public function setAspectRatio($ratio) {
+  public function setAspectRatio(string $ratio) {
     $this->getFlex()->setAspectRatio($ratio);
     return $this;
   }
 
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->getFlex()->isLazy();
   }
 
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $this->getFlex()->setLazy($lazy);
     return $this;
   }
@@ -86,7 +86,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
    * @return self new instance containing a {@link YoutubePlayer} instance
    */
-  public static function youtube($videoId, $isPlaylist = false) {
+  public static function youtube(string $videoId, bool $isPlaylist = false) {
     return new static(ResponsiveEmbed::youtube($videoId, $isPlaylist));
   }
 
@@ -96,7 +96,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * @param  string $videoId the id of the Vimeo video
    * @return self new instance containing a {@link VimeoPlayer} instance
    */
-  public static function vimeo($videoId) {
+  public static function vimeo(string $videoId) {
     return new static(ResponsiveEmbed::vimeo($videoId));
   }
 
@@ -106,7 +106,7 @@ class ResponsiveEmbedSlide extends AbstractComponent implements SlideInterface, 
    * @param  string $videoId the id of the DailyMotion video
    * @return self new instance containing a {@link DailyMotionPlayer} instance
    */
-  public static function dailymotion($videoId) {
+  public static function dailymotion(string $videoId) {
     return new static(ResponsiveEmbed::dailymotion($videoId));
   }
 

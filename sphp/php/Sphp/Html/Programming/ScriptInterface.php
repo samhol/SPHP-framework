@@ -29,5 +29,5 @@ interface ScriptInterface extends ComponentInterface, HeadComponentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType($type);
+  public function setType(string $type);
 }

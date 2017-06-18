@@ -145,19 +145,6 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   }
 
   /**
-   * Count the number of inserted components in the table
-   *
-   * **`$mode` parameter values:**
-   * 
-   * * {@link self::COUNT_NORMAL} counts the {@link RowInterface} components in the table
-   * * {@link self::COUNT_CELLS} counts the {@link CellInterface} components in the table
-   *
-   * @param  int $mode defines the type of the objects to count
-   * @return int number of the components in the html table
-   * @link   http://php.net/manual/en/class.countable.php Countable
-   */
-
-  /**
    * Count the number of inserted elements in the table
    *
    * **`$mode` parameter values:**
@@ -169,7 +156,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    * @return string number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = 'tr') {
+  public function count($mode = 'tr'): int {
     $num = 0;
     if ($mode === 'tr') {
       $num += $this->getInnerContainer()->count();

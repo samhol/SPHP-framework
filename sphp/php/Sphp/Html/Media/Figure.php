@@ -44,7 +44,7 @@ class Figure extends AbstractComponent implements ImgInterface {
   public function __construct($img = null, $caption = null) {
     parent::__construct('figure');
     if (!($img instanceof Img)) {
-      $img = new Img($img);
+      $img = new Img((string) $img);
     }
     $this->img = $img;
     if (!($caption instanceof FigCaption)) {
@@ -103,7 +103,7 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->caption;
   }
 
-  public function getAlt() {
+  public function getAlt(): string {
     return $this->img->getAlt();
   }
 
@@ -123,12 +123,12 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->img->getWidth();
   }
 
-  public function setAlt($alt) {
+  public function setAlt(string $alt) {
     $this->img->setAlt($alt);
     return $this;
   }
 
-  public function setHeight($height) {
+  public function setHeight(int $height) {
     $this->img->setHeight($height);
     return $this;
   }
@@ -138,12 +138,12 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this;
   }
 
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     $this->img->setSrc($src);
     return $this;
   }
 
-  public function setWidth($width) {
+  public function setWidth(int $width) {
     $this->img->setWidth($width);
     return $this;
   }
@@ -153,12 +153,12 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this;
   }
 
-  public function setLazy($lazy = true) {
+  public function setLazy(bool $lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
 
-  public function isLazy() {
+  public function isLazy(): bool {
     return $this->img->isLazy();
   }
 

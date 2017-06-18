@@ -32,7 +32,6 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * 
    * This component contains scripting statements
    *
-   * @param  int $purpose the purpose of the script component
    * @param  string $code the script code inside the script component or `null` for empty
    */
   public function __construct($code = null) {
@@ -48,7 +47,7 @@ class ScriptCode extends ContainerTag implements ScriptInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
-  public function setType($type) {
+  public function setType(string $type) {
     return $this->setAttr('type', $type);
   }
 

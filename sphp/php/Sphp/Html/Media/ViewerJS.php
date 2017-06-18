@@ -28,7 +28,7 @@ class ViewerJS extends Iframe {
    * @param  string $name the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct($src = null) {
+  public function __construct(string $src = null) {
     parent::__construct();
     if ($src !== null) {
       $this->setSrc($src);
@@ -44,7 +44,7 @@ class ViewerJS extends Iframe {
    * @param  string|URL $src the path to the image source (The URL of the image file)
    * @return LazyLoaderInterface for PHP Method Chaining
    */
-  public function setSrc($src) {
+  public function setSrc(string $src) {
     parent::setSrc("sphp/viewerjs/#../../$src");
     return $this;
   }
