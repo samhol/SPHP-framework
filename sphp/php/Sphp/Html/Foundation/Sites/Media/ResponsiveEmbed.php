@@ -161,7 +161,7 @@ class ResponsiveEmbed extends AbstractComponent implements ResponsiveEmbedInterf
    * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
    * @return self new instance containing a {@link YoutubePlayer} instance
    */
-  public static function youtube($videoId, $isPlaylist = false) {
+  public static function youtube(string $videoId, bool $isPlaylist = false) {
     return new static(new YoutubePlayer($videoId, $isPlaylist));
   }
 

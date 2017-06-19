@@ -56,11 +56,11 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @param array[] $config the domain name of the instance
    * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public function __construct(array $config = [], $readOnly = true) {
+  public function __construct(array $config = [], bool $readOnly = true) {
     foreach ($config as $k => $v) {
       $this->__set($k, $v);
     }
-    $this->readonly = (bool) $readOnly;
+    $this->readonly = $readOnly;
   }
 
   public function __destruct() {
@@ -90,7 +90,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * 
    * @return boolean
    */
-  public function isReadOnly() {
+  public function isReadOnly(): bool {
     return $this->readonly;
   }
 
@@ -115,7 +115,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @param  mixed $varName the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function __isset($varName) {
+  public function __isset($varName): bool {
     return array_key_exists($varName, $this->data);
   }
 
@@ -293,10 +293,10 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
 
   /**
    * 
-   * @param type $offset
-   * @return type
+   * @param  mixed $offset
+   * @return boolean
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->data);
   }
 

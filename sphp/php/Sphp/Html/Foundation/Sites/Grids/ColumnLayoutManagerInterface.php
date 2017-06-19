@@ -8,6 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\LayoutManagerInterface;
+
 /**
  * Defines a Column for a Row in a Grid system
  *
@@ -23,7 +24,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
   /**
    * @return int 
    */
-  public function getMaxSize();
+  public function getMaxSize(): int;
 
   /**
    * Sets the column width values for all screen sizes
@@ -56,7 +57,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth($width, $screen = 'small');
+  public function setWidth(int $width, string $screen = 'small');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
@@ -65,7 +66,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function unsetWidth($screenSize);
+  public function unsetWidth(string $screenSize);
 
   /**
    * Offsets the column component to right on the associated screen sizes
@@ -78,7 +79,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function setOffset($offset, $screenSize = 'small');
+  public function setOffset(int $offset, string $screenSize = 'small');
 
   /**
    * 
@@ -101,7 +102,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen type
    * @return int the width of the column (0-11)
    */
-  public function getOffset($screenSize);
+  public function getOffset(string $screenSize): int;
 
   /**
    * Unsets the grid offset for the given screen size
@@ -110,7 +111,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function unsetOffset($screenSize);
+  public function unsetOffset(string $screenSize);
 
   /**
    * Sets the column offset values for all screen sizes
@@ -127,7 +128,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function unsetOrder($screenSize);
+  public function unsetOrder(string $screenSize);
 
   /**
    * Unsets the grid offset for the given screen size
@@ -145,7 +146,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return int the amount of the space the column uses from the row
    */
-  public function countUsedSpace($screenSize);
+  public function countUsedSpace(string $screenSize);
 
   /**
    * Centers the column to the Foundation row
@@ -154,7 +155,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function centerize($screenSize);
+  public function centerize(string $screenSize);
 
   /**
    * Resets the centering of the column
@@ -163,7 +164,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return ColumnLayoutManager for PHP Method Chaining
    */
-  public function uncenterize($screenSize);
+  public function uncenterize(string $screenSize);
 
   /**
    * Removes the centering/uncentering settings
@@ -172,5 +173,5 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return ColumnInterface for PHP Method Chaining
    */
-  public function unsetCenterizing($screenSize);
+  public function unsetCenterizing(string $screenSize);
 }

@@ -34,8 +34,8 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
-  public function __construct($href = null, $target = null) {
-    parent::__construct("base");
+  public function __construct(string $href = null, string $target = null) {
+    parent::__construct('base');
     if ($href !== null) {
       $this->setHref($href);
     }
@@ -52,7 +52,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
   public function setHref($href) {
-    return $this->setAttr("href", $href);
+    return $this->setAttr('href', $href);
   }
 
   /**
@@ -69,7 +69,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function setTarget($target) {
-    return $this->setAttr("target", $target);
+    return $this->setAttr('target', $target);
   }
 
 }

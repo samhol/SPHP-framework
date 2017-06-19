@@ -35,7 +35,7 @@ class RowLayoutManager extends AbstractLayoutManager {
 
   public function setLayouts($layout) {
     $this->unsetLayouts();
-    foreach (is_array($layout)? $layout : [$layout] as $width) {
+    foreach (is_array($layout) ? $layout : [$layout] as $width) {
       $parts = explode('-', $width);
       $this->setGrid($parts[2], $parts[0]);
     }
@@ -53,19 +53,18 @@ class RowLayoutManager extends AbstractLayoutManager {
     }
     return $this;
   }
-  
-  
+
   /**
    * Sets/ the row completely fluid
    *
    * @param  boolean $expanded the target screen size
    * @return self for a fluent interface
    */
-  public function expand($expanded = true) {
+  public function expand(bool $expanded = true) {
     if ($expanded) {
       $this->cssClasses()->add('expanded');
     } else {
-      $this->removeCssClass('expanded');
+      $this->cssClasses()->remove('expanded');
     }
     return $this;
   }
@@ -77,7 +76,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function collapse($screenSize) {
+  public function collapse(string $screenSize) {
     $this->reset($screenSize);
     $this->cssClasses()->add("$screenSize-collapse");
     return $this;
@@ -90,7 +89,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function uncollapse($screenSize) {
+  public function uncollapse(string $screenSize) {
     $this->reset($screenSize);
     $this->cssClasses()->add("$screenSize-uncollapse");
     return $this;
@@ -103,7 +102,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  public function reset($screenSize) {
+  public function reset(string $screenSize) {
     $classes = [];
     $classes[] = "$screenSize-collapse";
     $classes[] = "$screenSize-uncollapse";

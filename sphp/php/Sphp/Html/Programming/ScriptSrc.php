@@ -8,7 +8,6 @@
 namespace Sphp\Html\Programming;
 
 use Sphp\Html\AbstractTag;
-use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;script&gt; tag having script code as its content
@@ -33,12 +32,12 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * 
    * This component points to an external script file through the src attribute.
    * 
-   * @param  string|URL $src the url of the script file
+   * @param  string $src the url of the script file
    * @param  boolean $async true for asynchronous execution, false otherwise
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function __construct($src = '', $async = false) {
+  public function __construct(string $src = '', bool $async = false) {
     parent::__construct('script');
     $this->setSrc($src)->setAsync($async);
   }

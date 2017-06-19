@@ -172,7 +172,7 @@ trait FormTrait {
    * @param  boolean $validate
    * @return self for a fluent interface
    */
-  public function validation($validate = true) {
+  public function validation(bool $validate = true) {
     $this->attrs()->set('novalidate', !$validate);
     return $this;
   }

@@ -26,7 +26,7 @@ class Title extends SimpleContainerTag implements HeadComponentInterface, NonVis
    *
    * @param string $content tag's content
    */
-  public function __construct($content = null) {
+  public function __construct(string $content = null) {
     parent::__construct('title');
     $this->setContent($content);
   }

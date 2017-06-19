@@ -31,7 +31,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the name attribute exists, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
-  public function hasNamedContent();
+  public function hasNamedContent(): bool;
 
   /**
    * Checks whether the name attribute has the given value or not
@@ -40,7 +40,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the name attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
-  public function hasName($name);
+  public function hasName($name): bool;
 
   /**
    * Returns the value of the name attribute
@@ -57,7 +57,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the http-equiv attribute exists, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    */
-  public function hasHttpEquivContent();
+  public function hasHttpEquivContent(): bool;
 
   /**
    * Checks whether the http_equiv attribute has the given value or not
@@ -66,7 +66,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the http_equiv attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
    */
-  public function hasHttpEquiv($http_equiv);
+  public function hasHttpEquiv($http_equiv): bool;
 
   /**
    * Returns the value of the http_equiv attribute
@@ -85,5 +85,5 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
-  public function hasPropertyContent();
+  public function hasPropertyContent(): bool;
 }

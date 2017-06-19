@@ -304,7 +304,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $query the new query string
    * @return self for a fluent interface
    */
-  public function setQuery(string $query) {
+  public function setQuery(string $query = null) {
     if ($query !== '') {
       parse_str($query, $this->components['query']);
     } else {

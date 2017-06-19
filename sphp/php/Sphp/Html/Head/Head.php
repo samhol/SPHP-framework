@@ -30,31 +30,26 @@ use Sphp\Stdlib\URL;
 class Head extends AbstractComponent implements NonVisualContentInterface {
 
   /**
-   *
    * @var Title 
    */
   private $title;
 
   /**
-   *
    * @var Base|null 
    */
   private $base;
 
   /**
-   *
    * @var ScriptsContainer 
    */
   private $scripts;
 
   /**
-   *
    * @var Container 
    */
   private $links;
 
   /**
-   *
    * @var MetaContainer 
    */
   private $meta;
@@ -121,7 +116,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
-  public function setBaseAddr($baseAddr, $target = '_self') {
+  public function setBaseAddr($baseAddr, string $target = '_self') {
     if (!Strings::isEmpty($baseAddr) && !Strings::isEmpty($target)) {
       $this->base = new Base($baseAddr, $target);
     } else {
@@ -197,7 +192,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
-  public function appendScriptSrc($src, $async = false) {
+  public function appendScriptSrc(string $src, bool $async = false) {
     $this->scripts()->appendSrc($src, $async);
     return $this;
   }

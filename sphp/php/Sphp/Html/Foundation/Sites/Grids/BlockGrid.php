@@ -78,7 +78,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
     }
   }
 
-  public function layout() {
+  public function layout(): BlockGridLayoutManager {
     return $this->layoutManager;
   }
 

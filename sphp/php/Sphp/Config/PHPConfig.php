@@ -83,7 +83,7 @@ class PHPConfig {
    * @return boolean true if the setting was succesfull and false otherwise
    * @link   http://php.net/manual/en/function.setlocale.php
    */
-  public function setLocale($category, $locale) {
+  public function setLocale(int $category, string $locale) {
     $this->setFunc('setLocale', [$category, $locale]);
     return $this;
   }
@@ -95,7 +95,7 @@ class PHPConfig {
    * @return boolean true if the setting was successful and false otherwise
    * @link   http://php.net/manual/en/function.setlocale.php
    */
-  public function setMessageLocale($locale) {
+  public function setMessageLocale(string $locale) {
     $this->setLocale(\LC_MESSAGES, $locale);
     return $this;
   }
@@ -106,7 +106,7 @@ class PHPConfig {
    * @param  mixed $encoding character encoding: default is `UTF-8`
    * @return self for a fluent interface
    */
-  public function setEncoding($encoding = 'UTF-8') {
+  public function setEncoding(string $encoding = 'UTF-8') {
     $this->setFunc('mb_internal_encoding', [$encoding]);
     return $this;
   }
@@ -117,7 +117,7 @@ class PHPConfig {
    * @param  string $timezone the time zone identifier
    * @return self for a fluent interface
    */
-  public function setDefaultTimezone($timezone) {
+  public function setDefaultTimezone(string $timezone) {
     $this->setFunc('date_default_timezone_set', [$timezone]);
     return $this;
   }
@@ -129,7 +129,7 @@ class PHPConfig {
    * @return self for a fluent interface
    * @link   http://php.net/manual/en/function.error-reporting.php PHP error reporting
    */
-  public function setErrorReporting($level = 0) {
+  public function setErrorReporting(int $level = 0) {
     $this->setFunc('error_reporting', [$level]);
     $display = ($level > 0) ? 1 : 0;
     $this->ini->set('display_errors', $display);

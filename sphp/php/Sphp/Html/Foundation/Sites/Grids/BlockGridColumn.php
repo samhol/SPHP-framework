@@ -23,7 +23,7 @@ class BlockGridColumn extends Div implements BlockGridColumnInterface {
 
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock('column column-block');
+    $this->cssClasses()->lock(['column', 'column-block']);
   }
 
 }

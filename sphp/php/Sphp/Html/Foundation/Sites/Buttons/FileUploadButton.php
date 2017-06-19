@@ -100,13 +100,12 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this;
   }
 
-  public function hasId($identityName = 'id') {
+  public function hasId(string $identityName = 'id'): bool {
     return $this->fileInput->hasId($identityName);
   }
 
-  public function identify($identityName = 'id', $prefix = 'id', $length = 16) {
-    $this->fileInput->identify($identityName, $prefix, $length);
-    return $this;
+  public function identify(string $identityName = 'id', string $prefix = 'id', int $length = 16): string {
+    return  $this->fileInput->identify($identityName, $prefix, $length);
   }
 
 }

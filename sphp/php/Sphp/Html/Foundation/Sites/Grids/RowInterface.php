@@ -107,11 +107,4 @@ interface RowInterface extends ContentInterface {
    * @param mixed $value the value to set
    */
   public function offsetSet($offset, $value);
-
-  /**
-   * 
-   * @param  boolean $collapse
-   * @return self for a fluent interface
-   */
-  public function collapseColumns($collapse = true);
 }

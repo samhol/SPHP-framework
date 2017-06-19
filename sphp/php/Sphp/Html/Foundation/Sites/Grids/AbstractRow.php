@@ -29,8 +29,7 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
    * @var RowLayoutManager 
    */
   private $layoutManager;
-  
-  
+
   /**
    * Constructs a new instance
    *
@@ -104,29 +103,6 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
   public function appendMdColumn($content, array $sizes = ['small-12']) {
     $p = new \ParsedownExtraPlugin();
     $this->append(new Column($p->parse($content), $sizes));
-    return $this;
-  }
-
-  public function collapseColumns($collapse = true) {
-    if ($collapse) {
-      $this->cssClasses()->add('collapse');
-    } else {
-      $this->cssClasses()
-              ->remove('collapse');
-    }
-    return $this;
-  }
-
-  public function collapseColumnsFor($screenSize = 'small', $collapse = true) {
-    if ($collapse) {
-      $this->cssClasses()
-              ->remove("$screenSize-uncollapse")
-              ->add("$screenSize-collapse");
-    } else {
-      $this->cssClasses()
-              ->add("$screenSize-uncollapse")
-              ->remove("$screenSize-collapse");
-    }
     return $this;
   }
 

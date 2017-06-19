@@ -50,7 +50,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function __construct($action = null, $method = 'post', $content = null) {
+  public function __construct($action = null, string $method = 'post', $content = null) {
     parent::__construct('form');
     if ($action !== null) {
       $this->setAction($action);
@@ -77,7 +77,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
     return $this;
   }
 
-  public function validation($validate = true) {
+  public function validation(bool $validate = true) {
     $this->attrs()->set('novalidate', $validate)->set('data-abide', $validate);
     return $this;
   }

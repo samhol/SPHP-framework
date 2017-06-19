@@ -35,7 +35,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @param ComponentInterface $component
    * @param int $max
    */
-  public function __construct(ComponentInterface $component, $max = 8) {
+  public function __construct(ComponentInterface $component, int $max = 8) {
     parent::__construct($component);
     $this->maxSize = $max;
     $this->cssClasses()->lock('row');
@@ -45,7 +45,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * 
    * @return int
    */
-  public function getColumnCount() {
+  public function getColumnCount(): int {
     return $this->maxSize;
   }
 
@@ -75,7 +75,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setGrid($num, $screenSize) {
+  public function setGrid(int $num, string $screenSize) {
     if ($num < 1 || $num > $this->getColumnCount()) {
       throw new \Sphp\Exceptions\InvalidArgumentException($num);
     }
@@ -103,7 +103,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @param  string $screenSize the target screen size
    * @return self for a fluent interface
    */
-  protected function unsetGrid($screenSize) {
+  protected function unsetGrid(string $screenSize) {
     $classes = [];
     for ($i = 1; $i <= $this->getColumnCount(); $i++) {
       $classes[] = "$screenSize-up-$i";
@@ -119,7 +119,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @param  string $screenSize the target screen size
    * @return int the column count value per row for given target screen size
    */
-  public function getColCount($screenSize) {
+  public function getColCount(string $screenSize) {
     $parseGrid = function($screenName) {
       $result = false;
       for ($i = 1; $i <= $this->getColumnCount(); $i++) {

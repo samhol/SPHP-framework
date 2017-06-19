@@ -137,7 +137,7 @@ interface FormInterface extends ContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
    */
-  public function validation($validable = true);
+  public function validation(bool $validable = true);
 
   /**
    * Sets the value of the target attribute

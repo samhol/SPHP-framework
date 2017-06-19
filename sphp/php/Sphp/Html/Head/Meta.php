@@ -35,11 +35,11 @@ class Meta extends EmptyTag implements MetaInterface {
     $this->attrs()->merge($attrs);
   }
 
-  public function hasNamedContent() {
+  public function hasNamedContent(): bool {
     return $this->attrExists('name');
   }
 
-  public function hasName($name) {
+  public function hasName($name): bool {
     return $this->hasNamedContent() && $this->getName() == $name;
   }
 
@@ -47,11 +47,11 @@ class Meta extends EmptyTag implements MetaInterface {
     return $this->getAttr('name');
   }
 
-  public function hasHttpEquivContent() {
+  public function hasHttpEquivContent(): bool {
     return $this->attrExists('http-equiv');
   }
 
-  public function hasHttpEquiv($http_equiv) {
+  public function hasHttpEquiv($http_equiv): bool {
     return $this->hasHttpEquivContent() && $this->get('http_equiv') == $http_equiv;
   }
 
@@ -59,7 +59,7 @@ class Meta extends EmptyTag implements MetaInterface {
     return $this->getAttr('http_equiv');
   }
 
-  public function hasPropertyContent() {
+  public function hasPropertyContent(): bool {
     return $this->attrExists('property');
   }
 
@@ -72,7 +72,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
-  public function hasProperty($property) {
+  public function hasProperty($property): bool {
     return $this->hasPropertyContent() && $this->get('property') == $property;
   }
 
@@ -104,7 +104,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    * @link   http://www.w3.org/MarkUp/2004/02/xhtml-rdf.html XHTML and RDF (W3C)
    */
-  public static function property($property, $content) {
+  public static function property(string $property, string $content) {
     return (new static(['property' => $property, 'content' => $content]));
   }
 
@@ -124,7 +124,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @return self new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_charset.asp charset attribute
    */
-  public static function charset($charset) {
+  public static function charset(string $charset) {
     return new static(['charset' => $charset]);
   }
 
@@ -143,7 +143,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function namedContent($name, $content) {
+  public static function namedContent(string $name, string $content) {
     return new static(['name' => $name, 'content' => $content]);
   }
 
@@ -163,7 +163,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function httpEquiv($http_equiv, $content) {
+  public static function httpEquiv(string $http_equiv, string $content) {
     return new static(['http-equiv' => $http_equiv, 'content' => $content]);
   }
 
@@ -175,7 +175,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function description($content) {
+  public static function description(string $content) {
     return static::namedContent('description', $content);
   }
 
@@ -187,7 +187,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function author($content) {
+  public static function author(string $content) {
     return static::namedContent('author', $content);
   }
 
@@ -203,7 +203,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @return self new meta data object
    * @link   http://dev.w3.org/csswg/css-device-adapt/ W3C CSS Device Adaptation
    */
-  public static function viewport($viewport) {
+  public static function viewport(string $viewport) {
     return static::namedContent('viewport', $viewport);
   }
 
@@ -215,7 +215,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function applicationName($name) {
+  public static function applicationName(string $name) {
     return static::namedContent('application-name', $name);
   }
 
@@ -245,7 +245,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function defaultStyle($id) {
+  public static function defaultStyle(string $id) {
     return static::httpEquiv('default-style', $id);
   }
 
@@ -261,7 +261,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function refresh($interval) {
+  public static function refresh(int $interval) {
     return static::httpEquiv('refresh', $interval);
   }
 

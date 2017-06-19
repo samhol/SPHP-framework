@@ -27,13 +27,11 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
   use TraversableTrait;
 
   /**
-   *
    * @var Head 
    */
   private $head;
 
   /**
-   *
    * @var Body 
    */
   private $body;
