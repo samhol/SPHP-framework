@@ -8,7 +8,6 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Stdlib\URL;
 use Sphp\Images\ImageScaler;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Media\ImageMap\Map;
@@ -48,12 +47,12 @@ class Img extends EmptyTag implements ImgInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string|URL $src src attribute
+   * @param  string $src src attribute
    * @param  string $alt alt attribute
    * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
    */
-  public function __construct($src = '', string $alt = '') {
+  public function __construct(string $src = '', string $alt = '') {
     parent::__construct('img');
     $this->attrs()->demand('alt');
     $this->setSrc($src)
@@ -136,9 +135,9 @@ class Img extends EmptyTag implements ImgInterface {
    * @param  Size $size the size to fit
    * @return Img new instance of the component containing a resized image
    */
-  public static function scaleToFit($src, Size $size) {
+  public static function scaleToFit(string $src, Size $size) {
     $path = (new ImageScaler($src))
-            ->scaleToFit($size)
+            ->scaleToFit($size->getWidth(), $size->getHeight())
             ->saveToCache()
             ->httpCachePath();
     return new static($path);
@@ -153,7 +152,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @param  float $ratio positive scaling ratio
    * @return Img new instance of the component containing a resized image
    */
-  public static function scale($src, $ratio) {
+  public static function scale($src, float $ratio) {
     $path = (new ImageScaler($src))
             ->scale($ratio)
             ->saveToCache()
@@ -171,9 +170,9 @@ class Img extends EmptyTag implements ImgInterface {
    * @return Img new instance of the component containing a resized image
    * @uses   ImageScaler
    */
-  public static function resize($src, Size $size) {
+  public static function resize(string $src, Size $size) {
     $path = (new ImageScaler($src))
-            ->resize($size)
+            ->resize($size->getWidth(), $size->getHeight())
             ->saveToCache()
             ->httpCachePath();
     return new static($path);
@@ -192,7 +191,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @return Img new instance of the component containing a resized image
    * @uses   ImageScaler
    */
-  public static function widen($src, $width) {
+  public static function widen(string $src, int $width) {
     $path = (new ImageScaler($src))
             ->widen($width)
             ->saveToCache()
@@ -212,7 +211,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @return Img new instance of the component containing a resized image
    * @uses   ImageScaler
    */
-  public static function heighten($src, $height) {
+  public static function heighten(string $src, int $height) {
     $path = (new ImageScaler($src))
             ->heighten($height)
             ->saveToCache()

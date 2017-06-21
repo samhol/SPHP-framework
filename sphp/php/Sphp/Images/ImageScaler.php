@@ -60,12 +60,12 @@ class ImageScaler {
   /**
    * Constructs a new instance of the {@link self} object
    * 
-   * @param  string|URL $src
+   * @param  string $src
    * @throws \InvalidArgumentException
    */
-  public function __construct($src) {
+  public function __construct(string $src) {
     try {
-      $this->src = "$src";
+      $this->src = $src;
       $this->cacheFolderName = md5($this->src) . "/";
       $imagine = new Imagine();
       $this->image = $imagine->open($src);
@@ -93,46 +93,14 @@ class ImageScaler {
    * @return self for a fluent interface
    * @throws \InvalidArgumentException
    */
-  public function scaleToFit($size) {
-    if (!($size instanceof Size || $size instanceof Box)) {
-      throw new \InvalidArgumentException();
+  public function scaleToFit(int  $width, int $height) {
+    if ($this->box->getWidth() > $width) {
+      $this->box = $this->box->widen($width);
     }
-    $box = $this->sizeToBox($size);
-    $w = $box->getWidth();
-    $h = $box->getHeight();
-    //$w = $this->filterWidth($size->getWidth());
-    //$h = $this->filterHeight($size->getHeight());
-    if ($this->box->getWidth() > $w) {
-      $this->box = $this->box->widen($w);
-    }
-    if ($this->box->getHeight() > $h) {
-      $this->box = $this->box->heighten($h);
+    if ($this->box->getHeight() > $height) {
+      $this->box = $this->box->heighten($height);
     }
     return $this;
-  }
-
-  /**
-   * Filters the width value
-   * 
-   * * Positive widths are accepted 
-   * * null and negative widths => current image width is used
-   * 
-   * @param  Size|Box $s the size value to parse
-   * @return Box the filtered box
-   */
-  private function sizeToBox($s) {
-    if ($s instanceof Size) {
-      $height = $s->getHeight();
-      $width = $s->getWidth();
-      if ($height === false || $height <= 0) {
-        $height = $this->box->getHeight();
-      }
-      if ($width === false || $width <= 0) {
-        $width = $this->box->getWidth();
-      }
-      $s = new Box($width, $height);
-    }
-    return $s;
   }
 
   /**
@@ -154,7 +122,7 @@ class ImageScaler {
    * @param  int $height the new height
    * @return self for a fluent interface
    */
-  public function heighten($height) {
+  public function heighten(int $height) {
     $this->box = $this->box->heighten($height);
     return $this;
   }
@@ -163,10 +131,10 @@ class ImageScaler {
    * Resizes the image to given width, constraining proportions
    * 
    * @precondition $width >= 0
-   * @param  int $width the new height
+   * @param  int $width the new width
    * @return self for a fluent interface
    */
-  public function widen($width) {
+  public function widen(int $width) {
     $this->box = $this->box->widen($width);
     return $this;
   }
@@ -177,8 +145,8 @@ class ImageScaler {
    * @param  Size|Box $size the size to fit
    * @return self for a fluent interface
    */
-  public function resize($size) {
-    $this->box = $this->sizeToBox($size);
+  public function resize(int $width, int $height) {
+    $this->box = new Box($width, $height);
     return $this;
   }
 
@@ -188,7 +156,7 @@ class ImageScaler {
    * @param  float $ratio the multiplying ratio
    * @return self for a fluent interface
    */
-  public function scale($ratio) {
+  public function scale(float $ratio) {
     if ($ratio != 1 && $ratio > 0 && $ratio <= 2) {
       $this->box = $this->box->scale($ratio);
     }
@@ -234,7 +202,7 @@ class ImageScaler {
    * @param  array  $options the options used on save
    * @return self for a fluent interface
    */
-  public function save($path, array $options = []) {
+  public function save(string $path, array $options = []) {
     $this->createImage()->save($path, $options);
     return $this;
   }
@@ -264,7 +232,7 @@ class ImageScaler {
    * 
    * @return string the directory part of the cached image path
    */
-  private function getCacheDir() {
+  private function getCacheDir(): string {
     return "sphp/image/cache/" . $this->cacheFolderName;
   }
 
@@ -273,7 +241,7 @@ class ImageScaler {
    * @param  Box $box optional box object defining the size of the created image
    * @return string the filename part of the cached image path
    */
-  private function getCacheFilename(Box $box = null) {
+  private function getCacheFilename(Box $box = null): string {
     if ($box === null) {
       $box = $this->box;
     }
@@ -285,7 +253,7 @@ class ImageScaler {
    * @param  Box $box optional box object defining the size of the created image
    * @return string the full cached image path
    */
-  private function getCachePath(Box $box = null) {
+  private function getCachePath(Box $box = null): string {
     if ($box === null) {
       $box = $this->box;
     }
