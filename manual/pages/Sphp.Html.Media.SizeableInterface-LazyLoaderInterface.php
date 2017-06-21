@@ -6,7 +6,6 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $sizeableInterface = Apis::sami()->classLinker(SizeableInterface::class);
 $sizeableTrait = Apis::sami()->classLinker(SizeableTrait::class);
-$size = Apis::sami()->classLinker(Size::class);
 $componentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
 
 $lazyLoader = Apis::sami()->classLinker(LazyLoaderInterface::class);
@@ -16,7 +15,7 @@ echo $parsedown->text(<<<MD
 ##Sizeable media content and Lazy loading 
 		
 $sizeableInterface is implemented by components that display resizeable visual 
-media content. The sizes of these components are managed by $size objects.
+media content.
 		
 Lazy Loading delays loading of $lazyLoader components in long web pages. $lazyLoader 
 components outside of viewport are not loaded until user scrolls to them. Using 

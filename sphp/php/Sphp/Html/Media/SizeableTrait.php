@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\Attributes\AttributeManager;
+
 /**
  * Trait implements the {@link SizeableInterface} interface for a {@link \Sphp\Html\ComponentInterface}
  * 
@@ -18,81 +20,91 @@ namespace Sphp\Html\Media;
 trait SizeableTrait {
 
   /**
-   * Sets the dimensions of the component (in pixels)
+   * Returns the attribute manager attached to the component
    * 
-   * @param  Size $size object containing the dimension settings
-   * @return self for a fluent interface
+   * @return AttributeManager the attribute manager
    */
-  public function setSize(Size $size) {
-    $this
-            ->setWidth($size->getWidth())
-            ->setHeight($size->getHeight());
-    return $this;
+  abstract public function attrs();
+
+  /**
+   * Checks if the component has width defined
+   * 
+   * @return boolean true if the width is set and false otherwise
+   */
+  public function hasWidth(): bool {
+    return $this->attrs()->exists('width');
   }
 
   /**
-   * Returns the dimensions of the component (in pixels)
+   * Returns the width of the component (in pixels)
    * 
-   * @return Size new object containing the dimension settings
-   */
-  public function getSize() {
-    return new Size($this->getWidth(), $this->getHeight());
-  }
-
-  /**
-   * Returns the width of the video component (in pixels)
+   * *NOTE:* Check if the component has a width defined
    * 
-   * @return int|boolean width of the component or `false` if not set
+   * @return int width of the component
    */
-  public function getWidth() {
-    return $this->parseDimension($this->attrs()->get('width'));
+  public function getWidth(): int {
+    return (int) $this->attrs()->get('width');
   }
 
   /**
    * Sets the width of the component (in pixels)
    * 
-   * @param  int|boolean $width the width of the component (in pixels)), false 
-   *         to unset
+   * @param  int $width the width of the component (in pixels))
    * @return self for a fluent interface
    */
   public function setWidth(int $width) {
-    $this->attrs()->set('width', $this->parseDimension($width));
+    $this->attrs()->set('width', $width);
     return $this;
   }
 
   /**
-   * Returns the height of the video component (in pixels)
+   * Unsets the width of the component
    * 
-   * @return int|boolean height of the component or `false` if not set
+   * @return self for a fluent interface
    */
-  public function getHeight() {
-    return $this->parseDimension($this->attrs()->get('height'));
+  public function unsetWidth() {
+    $this->attrs()->remove('width');
+    return $this;
+  }
+
+  /**
+   * Returns the height of the component (in pixels)
+   * 
+   * *NOTE:* Check if the component has a width defined
+   * 
+   * @return int height of the component or `false` if not set
+   */
+  public function getHeight(): int {
+    return (int) $this->attrs()->get('height');
+  }
+  /**
+   * Checks if the component has height defined
+   * 
+   * @return boolean true if the height is set and false otherwise
+   */
+  public function hasHeight(): bool {
+    return $this->attrs()->exists('height');
   }
 
   /**
    * Sets the height of the component (in pixels)
    * 
-   * @param  int|boolean $height the height of the component (in pixels), `false` 
-   *         to unset
+   * @param  int $height the height of the component (in pixels)
    * @return self for a fluent interface
    */
   public function setHeight(int $height) {
-    $this->attrs()->set('height', $this->parseDimension($height));
+    $this->attrs()->set('height', $height);
     return $this;
   }
 
   /**
-   * Parses the given input
+   * Unsets the height of the component
    * 
-   * @param  int|boolean $dim the dimension to parse of the component (in pixels)
-   * @return int|boolean
+   * @return self for a fluent interface
    */
-  private function parseDimension($dim) {
-    if ($dim !== false) {
-      return (int) $dim;
-    } else {
-      return $dim;
-    }
+  public function unsetHeight() {
+    $this->attrs()->remove('height');
+    return $this;
   }
 
 }

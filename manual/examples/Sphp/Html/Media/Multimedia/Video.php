@@ -2,24 +2,26 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Media\Size;
-
 $srcs[] = "http://techslides.com/demos/sample-videos/small.webm";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.ogv";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.mp4";
 $srcs[] = "http://techslides.com/demos/sample-videos/small.3gp";
 
-$size = new Size(384, 216);
+
+$width = 150;
+$height = 113;
 
 $video = (new Video($srcs))
         ->setPoster("manual/pics/LEGO_logo.png")
-        ->setSize($size)
+        ->setWidth($width)
+        ->setHeight($height)
         ->setLazy()
         ->printHtml();
 
 $video1 = (new Video("http://www.w3schools.com/html/mov_bbb.mp4"))
         ->addSource("http://www.w3schools.com/html/mov_bbb.ogg")
         ->loop(true)
-        ->setSize($size)
+        ->setWidth($width)
+        ->setHeight($height)
         ->setLazy()
         ->printHtml();

@@ -107,20 +107,8 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->img->getAlt();
   }
 
-  public function getHeight() {
-    return $this->img->getHeight();
-  }
-
-  public function getSize() {
-    return $this->img->getSize();
-  }
-
   public function getSrc() {
     return $this->img->getSrc();
-  }
-
-  public function getWidth() {
-    return $this->img->getWidth();
   }
 
   public function setAlt(string $alt) {
@@ -128,23 +116,8 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this;
   }
 
-  public function setHeight(int $height) {
-    $this->img->setHeight($height);
-    return $this;
-  }
-
-  public function setSize(Size $size) {
-    $this->img->setSize($size);
-    return $this;
-  }
-
   public function setSrc(string $src) {
     $this->img->setSrc($src);
-    return $this;
-  }
-
-  public function setWidth(int $width) {
-    $this->img->setWidth($width);
     return $this;
   }
 
@@ -164,6 +137,42 @@ class Figure extends AbstractComponent implements ImgInterface {
 
   public function contentToString(): string {
     return $this->img . $this->caption;
+  }
+
+  public function setWidth(int $width) {
+    $this->img->setWidth($width);
+    return $this;
+  }
+
+  public function setHeight(int $height) {
+    $this->img->setHeight($height);
+    return $this;
+  }
+
+  public function getHeight(): int {
+    return $this->img->getHeight();
+  }
+
+  public function getWidth(): int {
+    return $this->img->getWidth();
+  }
+
+  public function hasHeight(): bool {
+    return $this->img->hasHeight();
+  }
+
+  public function hasWidth(): bool {
+    return $this->img->hasWidth();
+  }
+
+  public function unsetHeight() {
+    $this->img->unsetHeight();
+    return $this;
+  }
+
+  public function unsetWidth() {
+    $this->img->unsetWidth();
+    return $this;
   }
 
 }

@@ -10,7 +10,6 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
-use Sphp\Html\Media\Size;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\URL;
 
@@ -135,71 +134,53 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     return $this->img;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setWidth(int $width) {
-    $this->img->setWidth($width);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getWidth() {
-    return $this->img->getWidth();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setHeight(int $height) {
-    $this->img->setHeight($height);
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getHeight() {
-    return $this->img->getHeight();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function setLazy(bool $lazy = true) {
     $this->img->setLazy($lazy);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isLazy(): bool {
     return $this->img->isLazy();
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setSize(Size $size) {
-    $this->img->setSize($size);
+  public function contentToString(): string {
+    return $this->img->getHtml();
+  }
+
+  public function setWidth(int $width) {
+    $this->img->setWidth($width);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getSize() {
-    return $this->img->getSize();
+  public function setHeight(int $height) {
+    $this->img->setHeight($height);
+    return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function contentToString(): string {
-    return $this->img->getHtml();
+  public function getHeight(): int {
+    return $this->img->getHeight();
+  }
+
+  public function getWidth(): int {
+    return $this->img->getWidth();
+  }
+
+  public function hasHeight(): bool {
+    return $this->img->hasHeight();
+  }
+
+  public function hasWidth(): bool {
+    return $this->img->hasWidth();
+  }
+
+  public function unsetHeight() {
+    $this->img->unsetHeight();
+    return $this;
+  }
+
+  public function unsetWidth() {
+    $this->img->unsetWidth();
+    return $this;
   }
 
 }

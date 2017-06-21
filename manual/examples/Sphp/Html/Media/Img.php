@@ -14,11 +14,10 @@ Img::scale("manual/pics/crossbones.png", 0.5)
         ->setAlt("0.5 x Skull")
         ->setLazy(true)
         ->printHtml();
-$size = new Size(100, 50);
-Img::resize("manual/pics/crossbones.png", $size)
+Img::resize("manual/pics/crossbones.png", 40, 60)
         ->setAlt("50 x 25 Skull")
         ->setLazy(true)
         ->printHtml();
-Img::scaleToFit("manual/pics/crossbones.png", $size)
+Img::scaleToFit("manual/pics/crossbones.png", 20, 30)
         ->setLazy(true)
         ->printHtml();

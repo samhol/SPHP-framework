@@ -132,12 +132,13 @@ class Img extends EmptyTag implements ImgInterface {
    * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
    * 
    * @param  string $src the path to the image file
-   * @param  Size $size the size to fit
-   * @return Img new instance of the component containing a resized image
+   * @param  int $width width to fit in
+   * @param  int $height height to fit in
+   * @return self new instance containing a resized image
    */
-  public static function scaleToFit(string $src, Size $size) {
+  public static function scaleToFit(string $src, int $width, int $height) {
     $path = (new ImageScaler($src))
-            ->scaleToFit($size->getWidth(), $size->getHeight())
+            ->scaleToFit($width, $height)
             ->saveToCache()
             ->httpCachePath();
     return new static($path);
@@ -150,7 +151,7 @@ class Img extends EmptyTag implements ImgInterface {
    *
    * @param  string $src the path to the image file
    * @param  float $ratio positive scaling ratio
-   * @return Img new instance of the component containing a resized image
+   * @return self new instance containing a resized image
    */
   public static function scale($src, float $ratio) {
     $path = (new ImageScaler($src))
@@ -166,13 +167,13 @@ class Img extends EmptyTag implements ImgInterface {
    * **IMPORTANT:** Remote image manipulation is also supported but it could easily be a huge security risk. 
    *
    * @param  string $src the path to the image file
-   * @param  Size $size the new size
-   * @return Img new instance of the component containing a resized image
-   * @uses   ImageScaler
+   * @param  int $width new width of the image
+   * @param  int $height new height of the image
+   * @return self new instance containing a resized image
    */
-  public static function resize(string $src, Size $size) {
+  public static function resize(string $src, int $width, int $height) {
     $path = (new ImageScaler($src))
-            ->resize($size->getWidth(), $size->getHeight())
+            ->resize($width, $height)
             ->saveToCache()
             ->httpCachePath();
     return new static($path);
@@ -188,7 +189,7 @@ class Img extends EmptyTag implements ImgInterface {
    *
    * @param  string $src the path to the image file
    * @param  int $width the new width
-   * @return Img new instance of the component containing a resized image
+   * @return self new instance containing a resized image
    * @uses   ImageScaler
    */
   public static function widen(string $src, int $width) {

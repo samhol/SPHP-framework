@@ -8,7 +8,6 @@
 namespace Sphp\Images;
 
 use Sphp\Stdlib\URL;
-use Sphp\Html\Media\Size;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 
@@ -89,7 +88,8 @@ class ImageScaler {
   /**
    * Scales the image to fit the given box (width, height), constraining proportions
    * 
-   * @param  Size|Box $size the size to fit
+   * @param  int $width width to fit in
+   * @param  int $height height to fit in
    * @return self for a fluent interface
    * @throws \InvalidArgumentException
    */
@@ -142,7 +142,8 @@ class ImageScaler {
   /**
    * Resizes the image to the given dimensions (width, height)
    * 
-   * @param  Size|Box $size the size to fit
+   * @param  int $width new width of the image
+   * @param  int $height new height of the image
    * @return self for a fluent interface
    */
   public function resize(int $width, int $height) {

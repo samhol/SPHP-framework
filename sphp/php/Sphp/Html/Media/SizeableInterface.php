@@ -20,41 +20,51 @@ use Sphp\Html\ContentInterface;
 interface SizeableInterface extends ContentInterface {
 
   /**
-   * Sets the dimensions of the component (in pixels)
+   * Checks if the component has width defined
    * 
-   * @param  Size $size object containing the dimension settings
-   * @return self for a fluent interface
+   * @return boolean true if the width is set and false otherwise
    */
-  public function setSize(Size $size);
+  public function hasWidth(): bool;
 
   /**
-   * Returns the dimensions of the component (in pixels)
+   * Returns the width of the component (in pixels)
    * 
-   * @return Size object containing the dimensions of the component (in pixels)
-   */
-  public function getSize();
-
-  /**
-   * Returns the width of the video component (in pixels)
+   * *NOTE:* Check if the component has a width defined
    * 
-   * @return int|null width of the component or null if not set
+   * @return int width of the component
    */
-  public function getWidth();
+  public function getWidth(): int;
 
   /**
    * Sets the width of the component (in pixels)
    * 
-   * @param  int $width the width of the component (in pixels)
+   * @param  int $width the width of the component (in pixels))
    * @return self for a fluent interface
    */
   public function setWidth(int $width);
 
   /**
-   * Returns the height of the video component (in pixels)
+   * Unsets the width of the component
    * 
-   * @return int|null height of the component or null if not set
+   * @return self for a fluent interface
    */
-  public function getHeight();
+  public function unsetWidth();
+
+  /**
+   * Returns the height of the component (in pixels)
+   * 
+   * *NOTE:* Check if the component has a width defined
+   * 
+   * @return int height of the component or `false` if not set
+   */
+  public function getHeight(): int;
+
+  /**
+   * Checks if the component has height defined
+   * 
+   * @return boolean true if the height is set and false otherwise
+   */
+  public function hasHeight(): bool;
 
   /**
    * Sets the height of the component (in pixels)
@@ -63,4 +73,11 @@ interface SizeableInterface extends ContentInterface {
    * @return self for a fluent interface
    */
   public function setHeight(int $height);
+
+  /**
+   * Unsets the height of the component
+   * 
+   * @return self for a fluent interface
+   */
+  public function unsetHeight();
 }
