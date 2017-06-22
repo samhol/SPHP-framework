@@ -9,7 +9,7 @@ namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
-use Sphp\Html\Media\LazyLoaderTrait;
+use Sphp\Html\Media\LazyMediaSourceTrait;
 use Sphp\Stdlib\URL;
 
 /**
@@ -23,7 +23,7 @@ use Sphp\Stdlib\URL;
 abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPlayerInterface {
 
   use SizeableTrait,
-      LazyLoaderTrait;
+      LazyMediaSourceTrait;
 
   /**
    * the url of the player
@@ -46,7 +46,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @param  string $videoId the id of the embedded video
    * @link   http://www.w3schools.com/tags/att_global_id.asp id attribute
    */
-  public function __construct($url, $videoId = null) {
+  public function __construct( $url, string $videoId = null) {
     parent::__construct('iframe');
     $this->setUrl($url)->allowFullScreen(true);
     if ($videoId !== null) {
@@ -98,7 +98,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  public function allowFullScreen($allow = true) {
+  public function allowFullScreen(bool $allow = true) {
     $this->attrs()
             ->set('webkitallowfullscreen', $allow)
             ->set('mozallowfullscreen', $allow)
@@ -106,12 +106,12 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
     return $this;
   }
 
-  public function autoplay($autoplay = true) {
+  public function autoplay(bool $autoplay = true) {
     $this->getUrl()->setParam('autoplay', (int) $autoplay);
     return $this;
   }
 
-  public function loop($loop = true) {
+  public function loop(bool $loop = true) {
     return $this->setParam('loop', (int) $loop);
   }
 
@@ -138,7 +138,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @param  scalar $value the value of the parameter
    * @return self for a fluent interface
    */
-  public function setParam($name, $value) {
+  public function setParam(string $name, $value) {
     $this->url->setParam($name, $value);
     return $this;
   }

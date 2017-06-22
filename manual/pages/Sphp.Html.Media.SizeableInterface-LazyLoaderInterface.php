@@ -8,8 +8,8 @@ $sizeableInterface = Apis::sami()->classLinker(SizeableInterface::class);
 $sizeableTrait = Apis::sami()->classLinker(SizeableTrait::class);
 $componentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-$lazyLoader = Apis::sami()->classLinker(LazyLoaderInterface::class);
-$lazyLoaderTrait = Apis::sami()->classLinker(LazyLoaderTrait::class);
+$lazyLoader = Apis::sami()->classLinker(LazyMediaInterface::class);
+$lazyLoaderTrait = Apis::sami()->classLinker(LazyMediaSourceTrait::class);
 
 echo $parsedown->text(<<<MD
 ##Sizeable media content and Lazy loading 

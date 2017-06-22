@@ -16,10 +16,10 @@ namespace Sphp\Html\Media;
  *
  * **Notes:**
  *
- * 1. The {@link self} component tag defines an image in an HTML page.
- * 2. The {@link self} component tag has two required attributes: src and alt.
+ * 1. This component defines an image in an HTML page.
+ * 2. This component has two required attributes: src and alt.
  * 3. Images are not technically inserted into an HTML page, images are linked to HTML pages.
- * 4. The {@link self} component tag creates a holding space for the referenced image.
+ * 4. This component creates a holding space for the referenced image.
  *
  * **Definition and Usage**
  *
@@ -34,24 +34,7 @@ namespace Sphp\Html\Media;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ImgInterface extends SizeableInterface, LazyLoaderInterface {
-
-  /**
-   * Sets the path to the track source (The URL of the track file)
-   *
-   * @param  string $src the path to the track source (The URL of the track file)
-   * @return self for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
-   */
-  public function setSrc(string $src);
-
-  /**
-   * Returns the URL of the track file
-   * 
-   * @return string the URL of the track file
-   * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
-   */
-  public function getSrc();
+interface ImgInterface extends MediaSourceInterface, SizeableInterface, LazyMediaInterface {
 
   /**
    * Sets the alt attribute (an alternate text for an image).

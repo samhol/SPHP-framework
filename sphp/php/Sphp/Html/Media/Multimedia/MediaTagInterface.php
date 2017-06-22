@@ -25,7 +25,7 @@ interface MediaTagInterface extends TagInterface {
    * @param  MultimediaContentInterface $src a video sources
    * @return self for a fluent interface
    */
-  public function addMediaSrc(MultimediaContentInterface $src);
+  public function addMediaSrc(MultimediaSourceInterface $src);
 
   /**
    * Sets (replaces) one of the video sources
@@ -36,7 +36,7 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_source_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
-  public function addSource($src, $type = null);
+  public function addSource(string $src, string $type = null);
 
   /**
    * Returns all the source components associated with the component
@@ -53,7 +53,7 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    */
-  public function addTrack($src, $srclang = null);
+  public function addTrack(string $src, string $srclang = null);
 
   /**
    * Returns all the track components associated with the component
@@ -71,7 +71,7 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_audio_autoplay.asp autoplay attribute for audio element
    * @link   http://www.w3schools.com/tags/att_video_autoplay.asp autoplay attribute for video element
    */
-  public function autoplay($autoplay = true);
+  public function autoplay(bool $autoplay = true);
 
   /**
    * Sets whether the video will start over again, every time it is finished
@@ -81,7 +81,7 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_audio_loop.asp loop attribute for audio element
    * @link   http://www.w3schools.com/tags/att_video_loop.asp loop attribute for video element
    */
-  public function loop($loop = true);
+  public function loop(bool $loop = true);
 
   /**
    * Sets whether the audio output of the video should be muted
@@ -91,7 +91,7 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_audio_muted.asp muted attribute for audio element
    * @link   http://www.w3schools.com/tags/att_video_muted.asp muted attribute for video element
    */
-  public function mute($muted = true);
+  public function mute(bool $muted = true);
 
   /**
    * Sets whether the video controls should be displayed
@@ -101,5 +101,5 @@ interface MediaTagInterface extends TagInterface {
    * @link   http://www.w3schools.com/tags/att_audio_controls.asp controls attribute for audio element
    * @link   http://www.w3schools.com/tags/att_video_controls.asp controls attribute for video element
    */
-  public function showControls($show = true);
+  public function showControls(bool $show = true);
 }

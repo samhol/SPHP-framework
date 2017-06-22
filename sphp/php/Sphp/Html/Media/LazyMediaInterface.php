@@ -21,7 +21,7 @@ use Sphp\Html\ContentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LazyLoaderInterface extends ContentInterface {
+interface LazyMediaInterface extends ContentInterface {
 
   /**
    * Sets or unsets the media source loading as lazy
@@ -29,7 +29,7 @@ interface LazyLoaderInterface extends ContentInterface {
    * **Important:** if the `$lazy = true` the actual media source path is stored into the  
    * `data-src` attribute instead of the `src` attribute
    * 
-   * @param  boolean $lazy true if the loading is lazy, false otherwise
+   * @param  boolean $lazy true for lazy loading, false otherwise
    * @return self for a fluent interface
    */
   public function setLazy(bool $lazy = true);
@@ -37,7 +37,7 @@ interface LazyLoaderInterface extends ContentInterface {
   /**
    * Checks whether the media source loading is lazy
    * 
-   * @return boolean true if the loading is lazy, false otherwisev
+   * @return boolean true for lazy loading, false otherwisev
    */
   public function isLazy(): bool;
 }

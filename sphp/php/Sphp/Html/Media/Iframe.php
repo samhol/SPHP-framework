@@ -23,7 +23,7 @@ use Sphp\Html\AbstractComponent;
  */
 class Iframe extends AbstractComponent implements IframeInterface {
 
-  use LazyLoaderTrait,
+  use LazyMediaSourceTrait,
       SizeableTrait;
 
   /**

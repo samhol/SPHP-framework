@@ -8,8 +8,8 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyLoaderInterface;
-use Sphp\Html\Media\LazyLoaderTrait;
+use Sphp\Html\Media\LazyMediaInterface;
+use Sphp\Html\Media\LazyMediaSourceTrait;
 use Sphp\Stdlib\URL;
 
 /**
@@ -28,9 +28,9 @@ use Sphp\Stdlib\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Source extends EmptyTag implements MultimediaContentInterface, LazyLoaderInterface {
+class Source extends EmptyTag implements MultimediaSourceInterface, LazyMediaInterface {
 
-  use LazyLoaderTrait;
+  use LazyMediaSourceTrait;
 
   /**
    * Constructs a new instance

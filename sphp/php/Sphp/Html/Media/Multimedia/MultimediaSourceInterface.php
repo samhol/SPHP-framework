@@ -15,20 +15,6 @@ namespace Sphp\Html\Media\Multimedia;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MultimediaContentInterface {
+interface MultimediaSourceInterface extends \Sphp\Html\Media\MediaSourceInterface{
 
-  /**
-   * Sets the path to the media source
-   *
-   * @param  string $src the path to the media source
-   * @return self for a fluent interface
-   */
-  public function setSrc(string $src);
-
-  /**
-   * Returns the URL of the media file
-   * 
-   * @return string the URL of the media file
-   */
-  public function getSrc();
 }

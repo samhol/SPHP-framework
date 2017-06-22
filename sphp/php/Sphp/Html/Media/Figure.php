@@ -107,7 +107,7 @@ class Figure extends AbstractComponent implements ImgInterface {
     return $this->img->getAlt();
   }
 
-  public function getSrc() {
+  public function getSrc(): string {
     return $this->img->getSrc();
   }
 

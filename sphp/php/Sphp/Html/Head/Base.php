@@ -51,7 +51,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
-  public function setHref($href) {
+  public function setHref(string $href) {
     return $this->setAttr('href', $href);
   }
 
@@ -68,7 +68,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
-  public function setTarget($target) {
+  public function setTarget(string $target) {
     return $this->setAttr('target', $target);
   }
 

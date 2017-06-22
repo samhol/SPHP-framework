@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Stdlib\URL;
-
 /**
  * Trait implements the {@link LazyLoaderInterface} interface
  * 
@@ -23,7 +21,7 @@ use Sphp\Stdlib\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait LazyLoaderTrait {
+trait LazyMediaSourceTrait {
   
   abstract public function attrs();
 
@@ -71,9 +69,6 @@ trait LazyLoaderTrait {
    * @return LazyLoaderInterface for PHP Method Chaining
    */
   public function setSrc(string $src) {
-    if ($src instanceof URL) {
-      $src = $src->getHtml();
-    }
     if ($this->isLazy()) {
       $this->attrs()->set('data-src', $src);
     } else {
@@ -90,7 +85,7 @@ trait LazyLoaderTrait {
    * 
    * @return string the path to the image source (The URL of the image file)
    */
-  public function getSrc() {
+  public function getSrc(): string {
     if ($this->isLazy()) {
       return $this->attrs()->get('data-src');
     } else {

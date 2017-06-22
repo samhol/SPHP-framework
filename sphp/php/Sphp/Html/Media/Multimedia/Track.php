@@ -24,7 +24,7 @@ use Sphp\Stdlib\URL;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Track extends EmptyTag implements MultimediaContentInterface {
+class Track extends EmptyTag implements MultimediaSourceInterface {
 
   /**
    * Constructs a new instance

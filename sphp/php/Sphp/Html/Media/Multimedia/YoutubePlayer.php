@@ -27,7 +27,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param string $videoId the id of the YouTube video or playlist
    * @param boolean $isPlaylist whether the videoid is a playlist or a single video
    */
-  public function __construct($videoId = null, $isPlaylist = false) {
+  public function __construct($videoId = null, bool $isPlaylist = false) {
     parent::__construct('https://www.youtube.com/embed/', $videoId);
     if ($isPlaylist) {
       $this->loadPlaylist($videoId);
@@ -43,7 +43,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param  string $playlistId
    * @return self for a fluent interface
    */
-  protected function loadPlaylist($playlistId) {
+  protected function loadPlaylist(string $playlistId) {
     $this->getUrl()
             ->setPath('embed')
             ->setParam('listType', 'playlist')
@@ -61,8 +61,8 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param  int $autohide the value of the autohide parameter
    * @return self for a fluent interface
    */
-  public function autohide($autohide = 2) {
-    return $this->setParam('autohide', (int) $autohide);
+  public function autohide(int $autohide = 2) {
+    return $this->setParam('autohide', $autohide);
   }
 
   /**
@@ -75,15 +75,14 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * play head may seek to just before the requested time, usually no more than 
    * around two seconds.
    * 
-   * @param  int|boolean $start the start time measured from the beginning of the  
-   *                     video or `false` for playing the full video
+   * @param  int $start the start time measured from the beginning of the video
    * @return self for a fluent interface
    */
-  public function setStartTime($start = false) {
-    if ($start === false) {
-      $this->getUrl()->unsetParam('start');
+  public function setStartTime(int $start = 0) {
+    if ($start > 0) {
+      $this->getUrl()->setParam('start', $start);
     } else {
-      $this->getUrl()->setParam('start', (int) $start);
+      $this->getUrl()->unsetParam('start');
     }
     return $this;
   }

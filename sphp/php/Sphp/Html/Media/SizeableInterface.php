@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\ContentInterface;
 
 /**
- * Defines sizing of various HTML media components
+ * Defines sizing of HTML media components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-15

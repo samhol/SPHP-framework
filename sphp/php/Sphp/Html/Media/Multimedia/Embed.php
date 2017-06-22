@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Html\Media\LazyLoaderInterface;
+use Sphp\Html\Media\LazyMediaInterface;
 use Sphp\Html\Media\SizeableInterface;
 
 /**
@@ -26,10 +26,10 @@ use Sphp\Html\Media\SizeableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Embed extends EmptyTag implements LazyLoaderInterface, SizeableInterface {
+class Embed extends EmptyTag implements LazyMediaInterface, SizeableInterface {
 
   use \Sphp\Html\Media\SizeableTrait,
-      \Sphp\Html\Media\LazyLoaderTrait;
+      \Sphp\Html\Media\LazyMediaSourceTrait;
 
   /**
    * Constructs a new instance

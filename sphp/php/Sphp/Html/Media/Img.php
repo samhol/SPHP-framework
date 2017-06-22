@@ -42,7 +42,7 @@ use Sphp\Html\Media\ImageMap\Map;
 class Img extends EmptyTag implements ImgInterface {
 
   use SizeableTrait,
-      LazyLoaderTrait;
+      LazyMediaSourceTrait;
 
   /**
    * Constructs a new instance

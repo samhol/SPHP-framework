@@ -69,7 +69,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
             . $this->getTagName() . "&gt; tag!</p>";
   }
 
-  public function addMediaSrc(MultimediaContentInterface $src) {
+  public function addMediaSrc(MultimediaSourceInterface $src) {
     if ($src instanceof Source) {
       $this->sources->append($src);
     }
@@ -79,7 +79,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
     return $this;
   }
 
-  public function addSource($src, $type = null) {
+  public function addSource(string $src, string $type = null) {
     return $this->addMediaSrc(new Source($src, $type));
   }
 
@@ -87,7 +87,7 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
     return $this->sources->getIterator();
   }
 
-  public function addTrack($src, $srclang = null) {
+  public function addTrack(string $src, string $srclang = null) {
     return $this->addMediaSrc(new Track($src, $srclang));
   }
 
@@ -95,27 +95,27 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
     return $this->tracks->getIterator();
   }
 
-  public function autoplay($autoplay = true) {
+  public function autoplay(bool $autoplay = true) {
     $this->attrs()->set('autoplay', (bool) $autoplay);
     return $this;
   }
 
-  public function loop($loop = true) {
+  public function loop(bool $loop = true) {
     $this->attrs()->set('loop', (bool) $loop);
     return $this;
   }
 
-  public function mute($muted = true) {
+  public function mute(bool $muted = true) {
     $this->attrs()->set('muted', (bool) $muted);
     return $this;
   }
 
-  public function showControls($show = true) {
+  public function showControls(bool $show = true) {
     $this->attrs()->set('controls', (bool) $show);
     return $this;
   }
 
-  public function count($mode = 'source') {
+  public function count($mode = 'source'): int {
     $num = 0;
     if ($mode === 'source') {
       $num += $this->sources->count();

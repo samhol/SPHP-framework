@@ -156,6 +156,7 @@ class SphpScriptsLoader extends ScriptsContainer {
     $this
             ->appendSrc($this->paths['js_root'] . "dist/all.js")
             ->appendCode('sphp.initialize();');
+    $this->appendVideojs();
     return $this;
   }
   /**
