@@ -107,12 +107,13 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   }
 
   public function autoplay(bool $autoplay = true) {
-    $this->getUrl()->setParam('autoplay', (int) $autoplay);
+    $this->url->setParam('autoplay', (int) $autoplay);
     return $this;
   }
 
   public function loop(bool $loop = true) {
-    return $this->setParam('loop', (int) $loop);
+    $this->url->setParam('loop', (int) $loop);
+    return $this;
   }
 
   /**

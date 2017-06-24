@@ -7,14 +7,16 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
+use Sphp\Html\Media\MediaSourceInterface;
+
 /**
- * Defines media resources for {@link MediaTagInterface} components
+ * Defines multimedia resources for media components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MultimediaSourceInterface extends \Sphp\Html\Media\MediaSourceInterface{
+interface MultimediaSourceInterface extends MediaSourceInterface{
 
 }

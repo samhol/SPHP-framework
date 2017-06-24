@@ -27,7 +27,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @param string $videoId the id of the YouTube video or playlist
    * @param boolean $isPlaylist whether the videoid is a playlist or a single video
    */
-  public function __construct($videoId = null, bool $isPlaylist = false) {
+  public function __construct(string $videoId = null, bool $isPlaylist = false) {
     parent::__construct('https://www.youtube.com/embed/', $videoId);
     if ($isPlaylist) {
       $this->loadPlaylist($videoId);
@@ -62,7 +62,8 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @return self for a fluent interface
    */
   public function autohide(int $autohide = 2) {
-    return $this->setParam('autohide', $autohide);
+    $this->getUrl()->setParam('autohide', $autohide);
+    return $this;
   }
 
   /**
@@ -79,7 +80,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @return self for a fluent interface
    */
   public function setStartTime(int $start = 0) {
-    if ($start > 0) {
+    if ($start >= 0) {
       $this->getUrl()->setParam('start', $start);
     } else {
       $this->getUrl()->unsetParam('start');
@@ -100,15 +101,15 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * which is used in YouTube Player API functions for loading or queueing a 
    * Wvideo.
    * 
-   * @param  int|boolean $end the end time measured from the beginning of the  
+   * @param  int $end the end time measured from the beginning of the  
    *                     video or `false` for playing the full video
    * @return self for a fluent interface
    */
-  public function setEndTime($end = false) {
-    if ($end === false) {
-      $this->getUrl()->unsetParam('end');
+  public function setEndTime(int $end) {
+    if ($end >= 0) {
+      $this->getUrl()->setParam('end', $end);
     } else {
-      $this->getUrl()->setParam('end', (int) $end);
+      $this->getUrl()->unsetParam('end');
     }
     return $this;
   }

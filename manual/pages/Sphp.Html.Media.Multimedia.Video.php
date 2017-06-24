@@ -13,7 +13,7 @@ $dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
 $youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
 $vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
 echo $parsedown->text(<<<MD
-##Video: <small>HTML5 video, Dailymotion, Youtube, Vimeo and other embeds</small>
+##HTML 5 <small>Audio and Video</small> 
 		
 The $audio and the $video components implement the corresponding HTML5
 {$w3schools->tag("audio")} and {$w3schools->tag("video")} tags. With 
@@ -23,21 +23,10 @@ The $source component specifies media resources for $audio and $video media comp
 With the $source components it is possible to specify alternative media files 
 which the browser may choose from, based on its media type or codec support.
 
-**Currently, there are 3 supported video formats for the $video component:**
-		
-* MP4 = MPEG 4 files with H264 video codec and AAC audio codec
-* WebM = WebM files with VP8 video codec and Vorbis audio codec
-* Ogg = Ogg files with Theora video codec and Vorbis audio codec
-
 MD
 );
-
 
 (new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Video.php", false, true))
         ->setExamplePaneTitle("HTML5 &lt;video&gt; example code")
         ->setOutputPaneTitle("HTML5 &lt;video&gt; example results")
         ->printHtml();
-
-
-$load("Sphp.Html.Media.Multimedia.VideoJs.php");
-$load("Sphp.Html.Media.Multimedia.VideoPlayerInterface.php");

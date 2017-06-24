@@ -11,7 +11,7 @@ $dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
 $youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
 $vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
 echo $parsedown->text(<<<MD
-##The $videoPlayerInterface for various Internet video subscribers
+##Video hosting services <small>Dailymotion, Youtube, Vimeo ,... etc.</small>
         
 The $videoPlayerInterface has  a build-in implementation $abstractVideoPlayer. 
 This class is axtended and used for following subscribers.

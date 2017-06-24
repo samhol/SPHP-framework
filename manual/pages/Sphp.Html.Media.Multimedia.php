@@ -2,9 +2,6 @@
 
 namespace Sphp\Html\Media\Multimedia;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-
-$audio = $api->classLinker(Audio::class);
 $video = $api->classLinker(Video::class);
 $source = $api->classLinker(Source::class);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
@@ -13,19 +10,9 @@ echo $parsedown->text(<<<MD
 $ns 
 MD
 );
-$load("Sphp.Html.Media.Multimedia.Video.php");
-echo $parsedown->text(<<<MD
-**Currently, there are 3 supported audio formats for the $audio component:**
-		
-* MP3 audio/mpeg
-* Ogg audio/ogg
-* Wav audio/wav
-		
-MD
-);
-(new CodeExampleBuilder("Sphp/Html/Media/Multimedia/Audio.php", false, true))
-        ->setExamplePaneTitle("HTML5 &lt;audio&gt; example code")
-        ->setOutputPaneTitle("HTML5 &lt;audio&gt; example results")
-        ->printHtml();
 
-$load("Sphp.Html.Media.Multimedia.Embed.php");
+$load('Sphp.Html.Media.Multimedia.Video');
+$load('Sphp.Html.Media.Multimedia.Audio');
+$load('Sphp.Html.Media.Multimedia.VideoJs');
+$load('Sphp.Html.Media.Multimedia.VideoPlayerInterface');
+$load('Sphp.Html.Media.Multimedia.Embed');
