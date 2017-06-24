@@ -66,10 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../Sphp/Db.html">Db</a></li>
-    
-                <li>Update</li>
+                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Db.html">Db</a></li><li class="backslash">\</li><li>Update</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -156,7 +153,7 @@
                     <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setConnection">setConnection</a>( $pdo)
+                    <a href="#method_setConnection">setConnection</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         
                                             <p>Sets the {@link PDO} object for database connection</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/DBConnectorTrait.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a></small></div>
@@ -186,7 +183,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>( $where = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a> $where = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/ConditionalStatement.html#method___construct"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
@@ -226,7 +223,7 @@
                     <a href="../../Sphp/Db/ConditionalStatement.html"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setConditions">setConditions</a>( $c)
+                    <a href="#method_setConditions">setConditions</a>(<a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a> $c)
         
                                             <p>Sets The WHERE clause.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Db/ConditionalStatement.html#method_setConditions"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
@@ -419,7 +416,7 @@
                     <h3 id="method_setConnection">
         <div class="location">in <a href="../../Sphp/Db/DBConnectorTrait.html#method_setConnection"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a> at         line 67</div>
         <code>                    <a href="../../Sphp/Db/DBConnectorTrait.html"><abbr title="Sphp\Db\DBConnectorTrait">DBConnectorTrait</abbr></a>
-    <strong>setConnection</strong>( $pdo)
+    <strong>setConnection</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
     </h3>
     <div class="details">
@@ -433,7 +430,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><a target="_blank" href="http://php.net/PDO">PDO</a></td>
                 <td>$pdo</td>
                 <td>the database connection</td>
             </tr>
@@ -538,7 +535,7 @@
                     <h3 id="method___construct">
         <div class="location">in <a href="../../Sphp/Db/ConditionalStatement.html#method___construct"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a> at         line 37</div>
         <code>                    
-    <strong>__construct</strong>( $where = null)
+    <strong>__construct</strong>(<a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a> $where = null)
         </code>
     </h3>
     <div class="details">
@@ -552,7 +549,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a></td>
                 <td>$where</td>
                 <td></td>
             </tr>
@@ -560,6 +557,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if no database connection was established</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -670,7 +676,7 @@ $params are are in the same order as specified in $query</p>                    
                     <h3 id="method_setConditions">
         <div class="location">in <a href="../../Sphp/Db/ConditionalStatement.html#method_setConditions"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a> at         line 54</div>
         <code>                    <a href="../../Sphp/Db/ConditionalStatement.html"><abbr title="Sphp\Db\ConditionalStatement">ConditionalStatement</abbr></a>
-    <strong>setConditions</strong>( $c)
+    <strong>setConditions</strong>(<a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a> $c)
         </code>
     </h3>
     <div class="details">
@@ -684,7 +690,7 @@ $params are are in the same order as specified in $query</p>                    
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><a href="../../Sphp/Db/Conditions.html"><abbr title="Sphp\Db\Conditions">Conditions</abbr></a></td>
                 <td>$c</td>
                 <td></td>
             </tr>

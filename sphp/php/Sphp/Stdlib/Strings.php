@@ -402,7 +402,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only alphabetic chars, false otherwise.
+   * @return bool returns true if the string contains only alphabetic chars, false otherwise.
    */
   public static function isAlpha(string $string, $encoding = null): bool {
     return self::match($string, '/^[[:alpha:]]*$/', $encoding);
@@ -414,7 +414,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only alphanumeric chars, false otherwise.
+   * @return bool returns true if the string contains only alphanumeric chars, false otherwise
    */
   public static function isAlphanumeric(string $string, $encoding = null): bool {
     return self::match($string, '/^[[:alnum:]]*$/', $encoding);
@@ -426,7 +426,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only whitespace chars, false otherwise.
+   * @return bool returns true if the string contains only whitespace chars, false otherwise
    */
   public static function isBlank(string $string, $encoding = null): bool {
     return self::match($string, '^[[:space:]]*$', $encoding);
@@ -438,7 +438,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only hexadecimal chars, false otherwise.
+   * @return bool returns true if the string contains only hexadecimal chars, false otherwise
    */
   public static function isHexadecimal(string $string, $encoding = null): bool {
     return self::match($string, '/^[[:xdigit:]]*$/', $encoding);
@@ -469,7 +469,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only upper chars, false otherwise.
+   * @return bool returns true if the string contains only upper chars, false otherwise
    */
   public static function isUpperCase(string $string, $encoding = null): bool {
     return static::toUpperCase($string, $encoding) == $string;
@@ -493,7 +493,7 @@ class Strings {
    * @param  string $string checked string
    * @param  string|null $encoding the character encoding parameter;
    *                Defaults to `mb_internal_encoding()`
-   * @return bool Returns true if the string contains only lower chars, false otherwise.
+   * @return bool returns true if the string contains only lower chars, false otherwise
    */
   public static function isLowerCase(string $string, $encoding = null): bool {
     return static::toLowerCase($string, $encoding) == $string;
@@ -515,7 +515,7 @@ class Strings {
    * Checks whether or not the input string is serialized
    *
    * @param  string $string checked string
-   * @return bool Returns true if the string is serialized, false otherwise.
+   * @return bool returns true if the string is serialized, false otherwise
    */
   public static function isSerialized(string $string): bool {
     return $string === 'b:0;' || @unserialize($string) !== false;
@@ -603,7 +603,7 @@ class Strings {
    *
    * @param  string $string the input string
    * @param  int $tabLength Number of spaces to replace each tab with
-   * @return string A string whose tabs are switched to spaces
+   * @return string a string whose tabs are switched to spaces
    */
   public static function toSpaces(string $string, int $tabLength = 4): string {
     $spaces = str_repeat(' ', $tabLength);

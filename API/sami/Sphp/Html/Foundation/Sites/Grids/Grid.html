@@ -66,13 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../../../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Grids.html">Grids</a></li>
-    
-                <li>Grid</li>
+                        <li><a href="../../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation/Sites/Grids.html">Grids</a></li><li class="backslash">\</li><li>Grid</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -281,7 +275,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_prepend">prepend</a>($content)
         
-                                            <p>Prepends a new value as the first element</p>                </div>
+                                            <p>Prepends elements to the html component</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/WrappingContainer.html#method_prepend"><abbr title="Sphp\Html\WrappingContainer">WrappingContainer</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -990,11 +984,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Prepends a new value as the first element</p>                    <p><ul>
-<li>The numeric keys of the content will be renumbered starting from zero
-and the index of the prepended value is 'int(0)'</li>
-</ul>
-</p>                            </div>
+                                    <p>Prepends elements to the html component</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given in constructor to the <code>$content</code>
+and then prepends the result to the container</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1188,7 +1181,10 @@ and the index of the prepended value is 'int(0)'</li>
     
 
                     <div class="method-description">
-                                    <p>Assigns content to the specified offset</p>                                                </div>
+                                    <p>Assigns content to the specified offset</p>                    <p><strong>Notes:</strong></p>
+
+<p>Method applies first the inner callback given in constructor to the <code>$content</code>
+and then sets the result to the container to the specified offset</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

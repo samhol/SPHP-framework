@@ -66,12 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../../Sphp/Html/Forms.html">Forms</a></li>
-                                        <li><a href="../../../../Sphp/Html/Forms/Inputs.html">Inputs</a></li>
-    
-                <li>Choiceboxes</li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Forms.html">Forms</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Forms/Inputs.html">Inputs</a></li><li class="backslash">\</li><li>Choiceboxes</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -358,7 +353,7 @@
                     <a href="../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setInnerContainer">setInnerContainer</a>( $contentContainer = null)
+                    <a href="#method_setInnerContainer">setInnerContainer</a>(<a href="../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a> $contentContainer = null)
         
                                             <p>Sets the inner content container of the component</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
@@ -410,7 +405,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getName">getName</a>()
         
-                                            <p>Returns the name of the form input</p>                </div>
+                                            <p>Returns the value of name attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -420,7 +415,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setName">setName</a>(string $name)
         
-                                            <p>Sets the name of the form input</p>                </div>
+                                            <p>Sets the value of name attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -430,7 +425,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isNamed">isNamed</a>()
         
-                                            <p>Checks whether the form input has a name</p>                </div>
+                                            <p>Checks whether the input has a name</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -450,7 +445,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isEnabled">isEnabled</a>()
         
-                                            <p>Checks whether the input component is enabled or not</p>                </div>
+                                            <p>Checks whether the option is enabled or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -460,7 +455,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setValue">setValue</a>(string|string[] $value)
         
-                                            <p>Sets  the value of the form input</p>                </div>
+                                            <p>Sets the current submission set of the input component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -470,7 +465,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getSubmitValue">getSubmitValue</a>()
         
-                                            <p>Returns the value of the form input</p>                </div>
+                                            <p>Returns the current submission set of the input component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1369,7 +1364,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_setInnerContainer">
         <div class="location">in <a href="../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 62</div>
         <code>            protected        <a href="../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
-    <strong>setInnerContainer</strong>( $contentContainer = null)
+    <strong>setInnerContainer</strong>(<a href="../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a> $contentContainer = null)
         </code>
     </h3>
     <div class="details">
@@ -1383,7 +1378,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><a href="../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></td>
                 <td>$contentContainer</td>
                 <td>the inner content container of the component</td>
             </tr>
@@ -1562,7 +1557,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the name of the form input</p>                                                </div>
+                                    <p>Returns the value of name attribute</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1592,8 +1587,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the name of the form input</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
-passed when submitting a form.</p>                            </div>
+                                    <p>Sets the value of name attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1633,8 +1627,8 @@ passed when submitting a form.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Checks whether the form input has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
-passed when submitting a form.</p>                            </div>
+                                    <p>Checks whether the input has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
+ passed when submitting a form.</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1705,7 +1699,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Checks whether the input component is enabled or not</p>                                                </div>
+                                    <p>Checks whether the option is enabled or not</p>                                                </div>
                 <div class="tags">
             
             
@@ -1726,7 +1720,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Sets  the value of the form input</p>                                                </div>
+                                    <p>Sets the current submission set of the input component</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1749,15 +1743,6 @@ Disabled input components in a form will not be submitted.</p>                  
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td>if the value is not valid for the input type</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -1775,7 +1760,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the form input</p>                                                </div>
+                                    <p>Returns the current submission set of the input component</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>

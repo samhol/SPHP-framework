@@ -66,13 +66,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../../../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li>
-                                        <li><a href="../../../../../Sphp/Html/Foundation/Sites/Navigation.html">Navigation</a></li>
-    
-                <li>MenuLabel</li>
+                        <li><a href="../../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation.html">Foundation</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation/Sites.html">Sites</a></li><li class="backslash">\</li><li><a href="../../../../../Sphp/Html/Foundation/Sites/Navigation.html">Navigation</a></li><li class="backslash">\</li><li>MenuLabel</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -359,7 +353,7 @@
                     <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setInnerContainer">setInnerContainer</a>( $contentContainer = null)
+                    <a href="#method_setInnerContainer">setInnerContainer</a>(<a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a> $contentContainer = null)
         
                                             <p>Sets the inner content container of the component</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a></small></div>
@@ -1075,7 +1069,11 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<p>Parameter <code>$content</code> can be of any type that converts to a
+PHP string or to an array of PHP strings. So also an object of any class
+that implements magic method <code>__toString()</code> is allowed.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1270,7 +1268,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_setInnerContainer">
         <div class="location">in <a href="../../../../../Sphp/Html/AbstractContainerComponent.html#method_setInnerContainer"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a> at         line 62</div>
         <code>            protected        <a href="../../../../../Sphp/Html/AbstractContainerComponent.html"><abbr title="Sphp\Html\AbstractContainerComponent">AbstractContainerComponent</abbr></a>
-    <strong>setInnerContainer</strong>( $contentContainer = null)
+    <strong>setInnerContainer</strong>(<a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a> $contentContainer = null)
         </code>
     </h3>
     <div class="details">
@@ -1284,7 +1282,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><a href="../../../../../Sphp/Html/ContainerInterface.html"><abbr title="Sphp\Html\ContainerInterface">ContainerInterface</abbr></a></td>
                 <td>$contentContainer</td>
                 <td>the inner content container of the component</td>
             </tr>
