@@ -176,11 +176,11 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 
    * @param  scalar|scalar[] $values the atomic values to remove
    * @return self for a fluent interface
-   * @throws AttributeException if any of the given values is unmodifiable
+   * @throws \Sphp\Exceptions\RuntimeException if any of the given values is unmodifiable
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
-      throw new AttributeException($this->getName() . ' attribute values given are unremovable');
+      throw new RuntimeException($this->getName() . ' attribute values given are unremovable');
     } else if (is_array($this->values)) {
       $arr = self::parse($values);
       if (count($arr) > 0) {

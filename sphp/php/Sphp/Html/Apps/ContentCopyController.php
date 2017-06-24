@@ -30,7 +30,6 @@ class ContentCopyController implements ContentInterface {
   private $target;
 
   /**
-   *
    * @var ComponentInterface 
    */
   private $button;

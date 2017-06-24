@@ -49,7 +49,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
     return $this;
   }
 
-  public function getDateTime() {
+  public function getDateTime(): DateTimeInterface {
     return $this->dateTime;
   }
 

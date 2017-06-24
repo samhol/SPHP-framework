@@ -14,10 +14,6 @@ use Sphp\Stdlib\Strings;
  *
  * **Note:** Uses Singleton pattern
  *
- * Stored variable names can either be an `integer` or a `string`.
- * Additionally the following <var>$varName</var> casting is equal with the
- * PHP array key casting. The <var>$value</var> can be of any type.
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

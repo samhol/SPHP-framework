@@ -23,9 +23,9 @@ use Sphp\Html\ComponentInterface;
 trait SyntaxhighlighterContainerTrait {
 
   /**
-   * Returns the syntaxhighlighter object
+   * Returns the syntax highlighting object
    * 
-   * @return SyntaxHighlighterInterface the syntaxhighlighter object
+   * @return SyntaxHighlighterInterface the syntax highlighting object
    */
   abstract public function getSyntaxHighlighter();
 
@@ -33,7 +33,7 @@ trait SyntaxhighlighterContainerTrait {
     return $this->getSyntaxHighlighter()->attachContentCopyController($button);
   }
 
-  public function loadFromFile($path) {
+  public function loadFromFile(string $path) {
     $this->getSyntaxHighlighter()->loadFromFile($path);
     return $this;
   }
@@ -43,17 +43,17 @@ trait SyntaxhighlighterContainerTrait {
     return $this;
   }
 
-  public function setSource($source, $lang) {
+  public function setSource(string $source, string $lang) {
     $this->getSyntaxHighlighter()->setSource($source, $lang);
     return $this;
   }
 
-  public function useDefaultContentCopyController($use = true) {
+  public function useDefaultContentCopyController(bool $use = true) {
     $this->getSyntaxHighlighter()->useDefaultContentCopyController($use);
     return $this;
   }
 
-  public function executeFromFile($path, $lang = 'text') {
+  public function executeFromFile(string $path, string $lang = 'text') {
     $this->getSyntaxHighlighter()->executeFromFile($path, $lang);
     return $this;
   }

@@ -310,8 +310,8 @@ class PropertyAttributeTest extends \AttributeObjectTest {
     foreach ($props as $p => $v) {
       try {
         $this->attrs->unsetProperty($p);
-      } catch (\Exception $ex) {
-        $this->assertTrue($ex instanceof AttributeException);
+      } catch (\Throwable $ex) {
+        $this->assertTrue($ex instanceof RuntimeException);
       }
     }
   }

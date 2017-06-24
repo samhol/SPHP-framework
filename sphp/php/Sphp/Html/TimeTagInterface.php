@@ -38,5 +38,5 @@ interface TimeTagInterface extends TagInterface {
    *
    * @return DateTimeInterface the datetime object
    */
-  public function getDateTime();
+  public function getDateTime(): DateTimeInterface;
 }

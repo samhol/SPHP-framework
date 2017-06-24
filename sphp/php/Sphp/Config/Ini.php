@@ -52,7 +52,7 @@ class Ini implements Arrayable {
    * @link   http://php.net/manual/en/function.ini-set.php ini_set
    * @link   http://php.net/manual/en/ini.list.php list of all available options
    */
-  public function set($name, $value) {
+  public function set(string $name, $value) {
     $this->ini[$name] = $value;
     return $this;
   }
@@ -64,7 +64,7 @@ class Ini implements Arrayable {
    * @return string  the value of the option
    * @link   http://php.net/manual/en/function.ini-get.php ini_get
    */
-  public function get($varname) {
+  public function get(string $varname) {
     return $this->ini[$varname];
   }
 
@@ -75,7 +75,7 @@ class Ini implements Arrayable {
    * @return string  the value of the option
    * @link   http://php.net/manual/en/function.ini-get.php ini_get
    */
-  public function getCurrent($varname) {
+  public function getCurrent(string $varname) {
     return ini_get($varname);
   }
 

@@ -33,7 +33,7 @@ interface SyntaxHighlighterInterface extends \Sphp\Html\ContentInterface {
    * @param  boolean $use true if the button is in use, false otherwise
    * @return self for a fluent interface
    */
-  public function useDefaultContentCopyController($use = true);
+  public function useDefaultContentCopyController(bool $use = true);
 
   /**
    * Sets the copier button
@@ -50,7 +50,7 @@ interface SyntaxHighlighterInterface extends \Sphp\Html\ContentInterface {
    * @param  string $lang name of the source code language
    * @return self for a fluent interface
    */
-  public function setSource($source, $lang);
+  public function setSource(string $source, string $lang);
 
   /**
    * Reads the source code from an file
@@ -59,5 +59,5 @@ interface SyntaxHighlighterInterface extends \Sphp\Html\ContentInterface {
    * @return self for a fluent interface
    * @throws \Exception if the file was not found
    */
-  public function loadFromFile($filename);
+  public function loadFromFile(string $filename);
 }

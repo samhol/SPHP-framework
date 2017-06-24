@@ -10,7 +10,7 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
-use Sphp\Html\Attributes\AttributeException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Defines the basic functionality of any HTML component
@@ -109,15 +109,15 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  string $name the name of the attribute
    * @param  mixed $value the value of the attribute
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the attribute name or value is invalid
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
   public function setAttr(string $name, $value = null);
 
   /**
    * Removes given attribute if it is not locked
    *
-   * @param  string $attrName attribute's name
+   * @param  string $attrName the name of the attribute
    * @return self for a fluent interface
    */
   public function removeAttr(string $attrName);
@@ -125,7 +125,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   /**
    * Returns the value of a given attribute name or an empty string if attribute is not set
    *
-   * @param  string $attrName attribute's name
+   * @param  string $attrName the name of the attribute
    * @return string attribute's value
    */
   public function getAttr(string $attrName);
@@ -133,7 +133,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   /**
    * Checks if an attribute exists
    *
-   * @param  string $attrName attribute's name
+   * @param  string $attrName the name of the attribute
    * @return boolean (atribute exists)
    */
   public function attrExists(string $attrName): bool;

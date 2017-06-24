@@ -33,7 +33,7 @@ class Dt extends ContainerTag implements DlContentInterface {
    * @param  null|mixed $content optional content of the component
    */
   public function __construct($content = null) {
-    parent::__construct("dt", $content);
+    parent::__construct('dt', $content);
   }
 
 }

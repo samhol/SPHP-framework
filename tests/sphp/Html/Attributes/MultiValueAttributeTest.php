@@ -246,7 +246,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     try {
       $this->attrs->remove("a c");
     } catch (\Exception $ex) {
-      $this->assertTrue($ex instanceof AttributeException);
+      $this->assertTrue($ex instanceof \Sphp\Exceptions\RuntimeException);
       $this->assertTrue($this->attrs->contains("a b c d"));
     }
   }

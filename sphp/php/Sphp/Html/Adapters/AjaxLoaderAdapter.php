@@ -57,7 +57,7 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoaderIn
    * @param  string|URL $url the URL to which the request is sent
    * @return self for a fluent interface
    */
-  public function ajaxPrepend($url) {
+  public function ajaxPrepend(string $url) {
     return $this->setAjaxAttrs("prepend", $url);
   }
 
@@ -68,7 +68,7 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoaderIn
    * @param  string|URL $url the URL to which the request is sent
    * @return self for a fluent interface
    */
-  public function ajaxAppend($url) {
+  public function ajaxAppend(string $url) {
     return $this->setAjaxAttrs("append", $url);
   }
 

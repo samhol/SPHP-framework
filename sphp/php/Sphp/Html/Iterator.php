@@ -24,7 +24,7 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
   use ContentTrait, TraversableTrait;
 
   /**
-   * container's content
+   * the content
    *
    * @var mixed[]
    */

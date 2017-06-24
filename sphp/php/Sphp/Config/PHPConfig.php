@@ -60,7 +60,7 @@ class PHPConfig {
    * @param  mixed[] $params
    * @return self for a fluent interface
    */
-  private function setFunc($fun, array $params = []) {
+  private function setFunc(string $fun, array $params = []) {
     $this->setters[] = [$fun, $params];
     return $this;
   }

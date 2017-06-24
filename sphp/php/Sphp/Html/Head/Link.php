@@ -221,7 +221,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media the relationship between the current document and the linked one
    * @param  string $media what media/device the target resource is optimized for
-   * @return self for a fluent interface
+   * @return self new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
@@ -234,7 +234,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $type the MIME type of the linked document
-   * @return self for a fluent interface
+   * @return self new object
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types

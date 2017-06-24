@@ -44,7 +44,7 @@ trait ContentTrait {
 	/**
 	 * Prints the component as HTML markup string
 	 *
-	 * @return ContentInterface for PHP Method Chaining
+   * @return self for a fluent interface
 	 */
 	public function printHtml() {
 		echo $this;

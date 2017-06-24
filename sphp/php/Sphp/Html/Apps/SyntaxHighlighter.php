@@ -68,7 +68,6 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   private $footer;
 
   /**
-   *
    * @var string 
    */
   private $geshiId;
@@ -154,7 +153,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @param  boolean $show
    * @return self for a fluent interface
    */
-  public function showLineNumbers($show = TRUE) {
+  public function showLineNumbers(bool $show = true) {
     if ($show) {
       $this->geshi->enable_line_numbers(\GESHI_FANCY_LINE_NUMBERS, 2);
     } else {
@@ -169,7 +168,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @param  boolean $use true the footer is visible, false otherwise
    * @return self for a fluent interface
    */
-  public function useFooter($use = true) {
+  public function useFooter(bool $use = true) {
     $vis = new VisibilityAdapter($this->footer);
     $vis->setHidden(!$use);
     return $this;
@@ -195,7 +194,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @param  boolean $use true if the button is in use, false otherwise
    * @return self for a fluent interface
    */
-  public function useDefaultContentCopyController($use = true) {
+  public function useDefaultContentCopyController(bool $use = true) {
     $vis = new VisibilityAdapter($this->copyBtn->getController());
     $vis->setHidden(!$use);
     return $this;
@@ -216,18 +215,18 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
     return $this;
   }
 
-  public function setLanguage($lang) {
+  public function setLanguage(string $lang) {
     $this->geshi->set_language($lang);
     return $this;
   }
 
-  public function setSource($source, $lang) {
+  public function setSource(string $source, string $lang) {
     $this->geshi->set_source($source);
     $this->geshi->set_language($lang);
     return $this;
   }
 
-  public function loadFromFile($filename) {
+  public function loadFromFile(string $filename) {
     try {
       $path = Filesystem::getFullPath($filename);
       $this->geshi->load_from_file($path);
@@ -247,7 +246,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for a fluent interface
    * @throws InvalidArgumentException
    */
-  public function executeFromFile($path, $lang = "text") {
+  public function executeFromFile(string $path, string $lang = "text") {
     if (!file_exists($path)) {
       throw new InvalidArgumentException("The file in the '$path' does not exist!");
     }

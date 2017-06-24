@@ -62,7 +62,7 @@ class TimeTag extends ContainerTag implements TimeTagInterface, AjaxLoaderInterf
     return $this;
   }
 
-  public function getDateTime() {
+  public function getDateTime(): DateTimeInterface {
     return $this->dateTime;
   }
 

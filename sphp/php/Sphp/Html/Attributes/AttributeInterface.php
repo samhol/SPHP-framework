@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
-use InvalidArgumentException;
-
 /**
- * Iterface defines an HTML attribute object
+ * Defines an HTML attribute object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
@@ -38,8 +36,8 @@ interface AttributeInterface {
    *
    * @param  scalar $value value to set
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the attribute value is invalid for the type of the attribute
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid for the type of the attribute
+   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
   public function set($value);
 
@@ -67,8 +65,8 @@ interface AttributeInterface {
    *
    * @param  scalar $value the value to lock to the attribute
    * @return self for a fluent interface
-   * @throws InvalidArgumentException if the attribute value is invalid
-   * @throws AttributeException if the attribute value is unmodifiable
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid
+   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
   public function lock($value);
 
