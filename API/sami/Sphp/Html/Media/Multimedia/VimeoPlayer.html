@@ -108,7 +108,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a>
+                                            <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a>
                                             
                 </div>
                 <div class="col-md-6">
@@ -162,7 +162,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+                    <a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_printHtml">printHtml</a>()
@@ -229,67 +229,6 @@
         
                                             <p>Determines whether the given CSS class names exists</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setStyle">setStyle</a>(string $property, string $value)
-        
-                                            <p>Sets an inline style definition using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setStyles">setStyles</a>(array $styles)
-        
-                                            <p>Sets inline style definitions using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_removeStyle">removeStyle</a>(string $property)
-        
-                                            <p>Removes the given inline style property</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clearStyles">clearStyles</a>()
-        
-                                            <p>Removes all inline style definitions</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasStyle">hasStyle</a>(string $property)
-        
-                                            <p>Determines whether the given CSS property exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getStyleValue">getStyleValue</a>(string $property)
-        
-                                            <p>Returns the value of the CSS property name or null if the property does
- not exist</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -433,32 +372,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSize">setSize</a>( $size)
+                    <a href="#method_hasWidth">hasWidth</a>()
         
-                                            <p>Sets the dimensions of the component (in pixels)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setSize"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
+                                            <p>Checks if the component has width defined</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_hasWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSize">getSize</a>()
-        
-                                            <p>Returns the dimensions of the component (in pixels)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getSize"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int|boolean
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getWidth">getWidth</a>()
         
-                                            <p>Returns the width of the video component (in pixels)</p>                </div>
+                                            <p>Returns the width of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -466,40 +395,70 @@
                     <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(int|boolean $width)
+                    <a href="#method_setWidth">setWidth</a>(int $width)
         
                                             <p>Sets the width of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|boolean
+                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetWidth">unsetWidth</a>()
+        
+                                            <p>Unsets the width of the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_unsetWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getHeight">getHeight</a>()
         
-                                            <p>Returns the height of the video component (in pixels)</p>                </div>
+                                            <p>Returns the height of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasHeight">hasHeight</a>()
+        
+                                            <p>Checks if the component has height defined</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_hasHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setHeight">setHeight</a>(int|boolean $height)
+                    <a href="#method_setHeight">setHeight</a>(int $height)
         
                                             <p>Sets the height of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a>
+                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLazy">setLazy</a>(boolean $lazy = true)
+                    <a href="#method_unsetHeight">unsetHeight</a>()
+        
+                                            <p>Unsets the height of the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_unsetHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLazy">setLazy</a>(bool $lazy = true)
         
                                             <p>Sets or unsets the media source loading as lazy</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -509,17 +468,17 @@
                     <a href="#method_isLazy">isLazy</a>()
         
                                             <p>Checks whether the media source loading is lazy</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
+                    <abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSrc">setSrc</a>(string|<a href="../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
+                    <a href="#method_setSrc">setSrc</a>(string $src)
         
                                             <p>Sets the path to the image source (The URL of the image file)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_setSrc"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_setSrc"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -529,7 +488,7 @@
                     <a href="#method_getSrc">getSrc</a>()
         
                                             <p>Returns the path to the image source (The URL of the image file)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_getSrc"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_getSrc"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -567,7 +526,7 @@
                     <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_allowFullScreen">allowFullScreen</a>(boolean $allow = true)
+                    <a href="#method_allowFullScreen">allowFullScreen</a>(bool $allow = true)
         
                                             <p>Allows or disallows the fullscreen mode of the video</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_allowFullScreen"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a></small></div>
@@ -577,7 +536,7 @@
                     <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_autoplay">autoplay</a>(boolean $autoplay = true)
+                    <a href="#method_autoplay">autoplay</a>(bool $autoplay = true)
         
                                             <p>Set autoplaying on or off</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_autoplay"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a></small></div>
@@ -587,7 +546,7 @@
                     <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_loop">loop</a>(boolean $loop = true)
+                    <a href="#method_loop">loop</a>(bool $loop = true)
         
                                             <p>Setx the looping on or off</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_loop"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a></small></div>
@@ -627,7 +586,7 @@
                     <a href="../../../../Sphp/Html/Media/Multimedia/VimeoPlayer.html"><abbr title="Sphp\Html\Media\Multimedia\VimeoPlayer">VimeoPlayer</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showVideoTitle">showVideoTitle</a>(boolean $show)
+                    <a href="#method_showVideoTitle">showVideoTitle</a>(bool $show)
         
                                             <p>Sets the visibility of the video title</p>                </div>
                 <div class="col-md-2"></div>
@@ -710,7 +669,7 @@
                     <div class="method-item">
                     <h3 id="method_printHtml">
         <div class="location">in <a href="../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 49</div>
-        <code>                    <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+        <code>                    <a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
     <strong>printHtml</strong>()
         </code>
     </h3>
@@ -726,8 +685,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
+            <td><a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 
@@ -967,250 +926,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>setStyle</strong>(string $property, string $value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets an inline style definition using HTML elements style attribute</p>                    <p><strong>Note:</strong> Old inline property is replaced if the property names are equal.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$value</td>
-                <td>CSS value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setStyles">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 129</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>setStyles</strong>(array $styles)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets inline style definitions using HTML elements style attribute</p>                    <p><strong>Notes:</strong></p>
-
-<ul>
-<li>Old inline properties are replaced if the new property name is equal.</li>
-<li>Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$styles</td>
-                <td>CSS property and CSS value pairs</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 140</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>removeStyle</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes the given inline style property</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clearStyles">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>clearStyles</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes all inline style definitions</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
-        <code>                    boolean
-    <strong>hasStyle</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Determines whether the given CSS property exists</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the style attribute exists and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getStyleValue">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 172</div>
-        <code>                    string|null
-    <strong>getStyleValue</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the CSS property name or null if the property does
- not exist</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>the value of the style attribute or null</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setAttrs">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttrs</strong>(array $attrs = [])
         </code>
@@ -1263,7 +980,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 215</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 141</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttr</strong>(string $name, mixed $value = null)
         </code>
@@ -1337,7 +1054,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 226</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 152</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>removeAttr</strong>(string $name)
         </code>
@@ -1377,7 +1094,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 242</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 168</div>
         <code>                    mixed
     <strong>getAttr</strong>(string $name)
         </code>
@@ -1423,7 +1140,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_attrExists">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 252</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 178</div>
         <code>                    boolean
     <strong>attrExists</strong>(string $name)
         </code>
@@ -1451,7 +1168,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>(atribute exists)</td>
+            <td>(attribute exists)</td>
         </tr>
     </table>
 
@@ -1463,7 +1180,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 269</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 195</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
@@ -1515,7 +1232,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 280</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 206</div>
         <code>                    boolean
     <strong>hasId</strong>(string $identityName = &#039;id&#039;)
         </code>
@@ -1689,7 +1406,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_contentToString"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 146</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_contentToString"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 147</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -1757,10 +1474,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setSize">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setSize"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 26</div>
-        <code>                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setSize</strong>( $size)
+                    <h3 id="method_hasWidth">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_hasWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 34</div>
+        <code>                    boolean
+    <strong>hasWidth</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1768,15 +1485,75 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the dimensions of the component (in pixels)</p>                                                </div>
+                                    <p>Checks if the component has width defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the width is set and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWidth">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 45</div>
+        <code>                    int
+    <strong>getWidth</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the width of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>width of the component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidth">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 55</div>
+        <code>                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+    <strong>setWidth</strong>(int $width)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$size</td>
-                <td>object containing the dimension settings</td>
+                <td>int</td>
+                <td>$width</td>
+                <td>the width of the component (in pixels))</td>
             </tr>
             </table>
 
@@ -1797,70 +1574,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getSize">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getSize"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
-    <strong>getSize</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the dimensions of the component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a></td>
-            <td>new object containing the dimension settings</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getWidth">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 47</div>
-        <code>                    int|boolean
-    <strong>getWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the width of the video component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int|boolean</td>
-            <td>width of the component or <code>false</code> if not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setWidth">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 58</div>
+                    <h3 id="method_unsetWidth">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_unsetWidth"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 65</div>
         <code>                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setWidth</strong>(int|boolean $width)
+    <strong>unsetWidth</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1868,19 +1585,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
+                                    <p>Unsets the width of the component</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int|boolean</td>
-                <td>$width</td>
-                <td>the width of the component (in pixels)), false
-        to unset</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -1899,8 +1605,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeight">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 68</div>
-        <code>                    int|boolean
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 77</div>
+        <code>                    int
     <strong>getHeight</strong>()
         </code>
     </h3>
@@ -1909,14 +1615,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the height of the video component (in pixels)</p>                                                </div>
+                                    <p>Returns the height of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int|boolean</td>
+            <td>int</td>
             <td>height of the component or <code>false</code> if not set</td>
         </tr>
     </table>
@@ -1928,10 +1634,40 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_hasHeight">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_hasHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 85</div>
+        <code>                    boolean
+    <strong>hasHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the component has height defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the height is set and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setHeight">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 79</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_setHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 95</div>
         <code>                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setHeight</strong>(int|boolean $height)
+    <strong>setHeight</strong>(int $height)
         </code>
     </h3>
     <div class="details">
@@ -1945,10 +1681,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
+                <td>int</td>
                 <td>$height</td>
-                <td>the height of the component (in pixels), <code>false</code>
-        to unset</td>
+                <td>the height of the component (in pixels)</td>
             </tr>
             </table>
 
@@ -1969,10 +1704,40 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_unsetHeight">
+        <div class="location">in <a href="../../../../Sphp/Html/Media/SizeableTrait.html#method_unsetHeight"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a> at         line 105</div>
+        <code>                    <a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+    <strong>unsetHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets the height of the component</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setLazy">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a> at         line 39</div>
-        <code>                    <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a>
-    <strong>setLazy</strong>(boolean $lazy = true)
+        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a> at         line 37</div>
+        <code>                    <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a>
+    <strong>setLazy</strong>(bool $lazy = true)
         </code>
     </h3>
     <div class="details">
@@ -1987,7 +1752,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$lazy</td>
                 <td>true if the loading is lazy, false otherwise</td>
             </tr>
@@ -1998,7 +1763,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></td>
+            <td><a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -2011,7 +1776,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isLazy">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a> at         line 59</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a> at         line 57</div>
         <code>                    boolean
     <strong>isLazy</strong>()
         </code>
@@ -2041,9 +1806,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setSrc">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_setSrc"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a> at         line 73</div>
-        <code>                    <a href="../../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
-    <strong>setSrc</strong>(string|<a href="../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
+        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_setSrc"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a> at         line 71</div>
+        <code>                    <abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr>
+    <strong>setSrc</strong>(string $src)
         </code>
     </h3>
     <div class="details">
@@ -2058,7 +1823,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|<a href="../../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
+                <td>string</td>
                 <td>$src</td>
                 <td>the path to the image source (The URL of the image file)</td>
             </tr>
@@ -2069,7 +1834,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></td>
+            <td><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></td>
             <td>for PHP Method Chaining</td>
         </tr>
     </table>
@@ -2082,7 +1847,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getSrc">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyLoaderTrait.html#method_getSrc"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a> at         line 93</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/LazyMediaSourceTrait.html#method_getSrc"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a> at         line 88</div>
         <code>                    string
     <strong>getSrc</strong>()
         </code>
@@ -2223,7 +1988,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_allowFullScreen">
         <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_allowFullScreen"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 101</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
-    <strong>allowFullScreen</strong>(boolean $allow = true)
+    <strong>allowFullScreen</strong>(bool $allow = true)
         </code>
     </h3>
     <div class="details">
@@ -2237,7 +2002,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$allow</td>
                 <td></td>
             </tr>
@@ -2263,7 +2028,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_autoplay">
         <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_autoplay"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 109</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
-    <strong>autoplay</strong>(boolean $autoplay = true)
+    <strong>autoplay</strong>(bool $autoplay = true)
         </code>
     </h3>
     <div class="details">
@@ -2277,7 +2042,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$autoplay</td>
                 <td>true for on and false for off</td>
             </tr>
@@ -2303,7 +2068,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_loop">
         <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_loop"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 114</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
-    <strong>loop</strong>(boolean $loop = true)
+    <strong>loop</strong>(bool $loop = true)
         </code>
     </h3>
     <div class="details">
@@ -2317,7 +2082,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$loop</td>
                 <td>true for on and false for off</td>
             </tr>
@@ -2341,7 +2106,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetParam">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_unsetParam"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 126</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_unsetParam"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 127</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a>
     <strong>unsetParam</strong>(string $name)
         </code>
@@ -2381,7 +2146,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setParam">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_setParam"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 141</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/Multimedia/AbstractVideoPlayer.html#method_setParam"><abbr title="Sphp\Html\Media\Multimedia\AbstractVideoPlayer">AbstractVideoPlayer</abbr></a> at         line 142</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/VideoPlayerInterface.html"><abbr title="Sphp\Html\Media\Multimedia\VideoPlayerInterface">VideoPlayerInterface</abbr></a>
     <strong>setParam</strong>(string $name, scalar $value)
         </code>
@@ -2468,7 +2233,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_showVideoTitle">
         <div class="location">at         line 50</div>
         <code>                    <a href="../../../../Sphp/Html/Media/Multimedia/VimeoPlayer.html"><abbr title="Sphp\Html\Media\Multimedia\VimeoPlayer">VimeoPlayer</abbr></a>
-    <strong>showVideoTitle</strong>(boolean $show)
+    <strong>showVideoTitle</strong>(bool $show)
         </code>
     </h3>
     <div class="details">
@@ -2482,7 +2247,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true if the title is visible and false otherwise</td>
             </tr>

@@ -122,7 +122,7 @@
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_replace">replace</a>($string, $search, $replacement)
+                    <a href="#method_replace">replace</a>(string $string, string $search, string $replacement)
         
                                             <p>Replaces all occurrences of $search in $str by $replacement</p>                </div>
                 <div class="col-md-2"></div>
@@ -142,7 +142,7 @@
                     static&nbsp;string[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_split">split</a>($string, $pattern, $limit = -1, $encoding = null)
+                    <a href="#method_split">split</a>(string $string, string $pattern, int $limit = -1, $encoding = null)
         
                                             <p>Splits the string with the provided regular expression</p>                </div>
                 <div class="col-md-2"></div>
@@ -225,7 +225,7 @@ single space</p>                </div>
                     static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_countSubstr">countSubstr</a>(string $string, string $substring, boolean $caseSensitive = true, string $encoding = null)
+                    <a href="#method_countSubstr">countSubstr</a>(string $string, string $substring, bool $caseSensitive = true, string $encoding = null)
         
                                             <p>Returns the number of occurrences of $substring in the given string.</p>                </div>
                 <div class="col-md-2"></div>
@@ -297,7 +297,7 @@ search for the start string.</p>                </div>
                     static&nbsp;boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isEmpty">isEmpty</a>(string $string)
+                    <a href="#method_isEmpty">isEmpty</a>(string $string = null)
         
                                             <p>Checks whether the given string is empty</p>                </div>
                 <div class="col-md-2"></div>
@@ -646,7 +646,7 @@ search for the start string.</p>                </div>
                     <h3 id="method_replace">
         <div class="location">at         line 71</div>
         <code>        static            string
-    <strong>replace</strong>($string, $search, $replacement)
+    <strong>replace</strong>(string $string, string $search, string $replacement)
         </code>
     </h3>
     <div class="details">
@@ -660,17 +660,17 @@ search for the start string.</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$string</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$search</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$replacement</td>
                 <td></td>
             </tr>
@@ -742,7 +742,7 @@ search for the start string.</p>                </div>
                     <h3 id="method_split">
         <div class="location">at         line 102</div>
         <code>        static            string[]
-    <strong>split</strong>($string, $pattern, $limit = -1, $encoding = null)
+    <strong>split</strong>(string $string, string $pattern, int $limit = -1, $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -757,17 +757,17 @@ results.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$string</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$pattern</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$limit</td>
                 <td></td>
             </tr>
@@ -1151,7 +1151,7 @@ such as the thin space and ideographic space.</p>                            </d
                     <h3 id="method_countSubstr">
         <div class="location">at         line 241</div>
         <code>        static            int
-    <strong>countSubstr</strong>(string $string, string $substring, boolean $caseSensitive = true, string $encoding = null)
+    <strong>countSubstr</strong>(string $string, string $substring, bool $caseSensitive = true, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1176,7 +1176,7 @@ by setting $caseSensitive to false.</p>                            </div>
                 <td>The substring to search for</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$caseSensitive</td>
                 <td>Whether or not to enforce case-sensitivity</td>
             </tr>
@@ -1527,7 +1527,7 @@ search for the start string.</p>                                                
                     <h3 id="method_isEmpty">
         <div class="location">at         line 368</div>
         <code>        static            boolean
-    <strong>isEmpty</strong>(string $string)
+    <strong>isEmpty</strong>(string $string = null)
         </code>
     </h3>
     <div class="details">

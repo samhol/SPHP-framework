@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\I18n\TranslatorAwareInterface | SPHP framework API</title>
+    <title>Sphp\I18n\Translatable | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_I18n_TranslatorAwareInterface" data-root-path="../../">
+    <body id="class" data-name="class:Sphp_I18n_Translatable" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -69,27 +69,27 @@
                                                             <li><a href="../../Sphp.html">Sphp</a></li>
                                         <li><a href="../../Sphp/I18n.html">I18n</a></li>
     
-                <li>TranslatorAwareInterface</li>
+                <li>Translatable</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            TranslatorAwareInterface
+            Translatable
                 
         </h1>
     </div>
 
     <p>    interface
-    <strong>TranslatorAwareInterface</strong>
+    <strong>Translatable</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of TranslatorAwareInterface</p>                                </div>
+            <p>Defines properties for translatable component</p>                                </div>
     
     
     
@@ -99,7 +99,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
+                    <a href="../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setTranslator">setTranslator</a>( $translator)
@@ -109,22 +109,32 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getTranslator">getTranslator</a>()
+                    <a href="#method_translateTo">translateTo</a>(string $lang)
         
-                                            <p>Returns the translator component used for message translation</p>                </div>
+                                            <p>Translates the content to given language</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLang">setLang</a>(string $lang)
+                    <a href="#method_translate">translate</a>()
         
-                                            <p>Sets the translator component for message translation</p>                </div>
+                                            <p>Translates the content</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the translated text</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -136,7 +146,7 @@
                     <div class="method-item">
                     <h3 id="method_setTranslator">
         <div class="location">at         line 26</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
+        <code>                    <a href="../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
     <strong>setTranslator</strong>( $translator)
         </code>
     </h3>
@@ -162,7 +172,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a></td>
+            <td><a href="../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -174,10 +184,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getTranslator">
-        <div class="location">at         line 33</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a>
-    <strong>getTranslator</strong>()
+                    <h3 id="method_translateTo">
+        <div class="location">at         line 34</div>
+        <code>                    string
+    <strong>translateTo</strong>(string $lang)
         </code>
     </h3>
     <div class="details">
@@ -185,37 +195,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the translator component used for message translation</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a></td>
-            <td>the translator component</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setLang">
-        <div class="location">at         line 41</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
-    <strong>setLang</strong>(string $lang)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the translator component for message translation</p>                                                </div>
+                                    <p>Translates the content to given language</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -223,7 +203,7 @@
                     <tr>
                 <td>string</td>
                 <td>$lang</td>
-                <td>the translator component</td>
+                <td></td>
             </tr>
             </table>
 
@@ -232,8 +212,68 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a></td>
-            <td>for a fluent interface</td>
+            <td>string</td>
+            <td>the content as a translated string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_translate">
+        <div class="location">at         line 41</div>
+        <code>                    string
+    <strong>translate</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Translates the content</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the content as a translated string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 48</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the translated text</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the translated text</td>
         </tr>
     </table>
 

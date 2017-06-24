@@ -84,8 +84,7 @@
     </div>
 
     <p>    class
-    <strong>Circle</strong>        extends <a href="../../../../Sphp/Html/EmptyTag.html"><abbr title="Sphp\Html\EmptyTag">EmptyTag</abbr></a>        implements
-        <a href="../../../../Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a>
+    <strong>Circle</strong>        extends <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a>
 </p>
 
         
@@ -98,15 +97,6 @@
 
         
     <div class="container-fluid underlined">
-                    <div class="row">
-                <div class="col-md-6">
-                                            <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    Trait implements {@link AreaInterface} for an an HTML &lt;area&gt; tag
-                </div>
-            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../../Sphp/Html/Navigation/HyperlinkTrait.html"><abbr title="Sphp\Html\Navigation\HyperlinkTrait">HyperlinkTrait</abbr></a>
@@ -163,7 +153,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+                    <a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_printHtml">printHtml</a>()
@@ -230,67 +220,6 @@
         
                                             <p>Determines whether the given CSS class names exists</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasCssClass"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setStyle">setStyle</a>(string $property, string $value)
-        
-                                            <p>Sets an inline style definition using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setStyles">setStyles</a>(array $styles)
-        
-                                            <p>Sets inline style definitions using HTML elements style attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_removeStyle">removeStyle</a>(string $property)
-        
-                                            <p>Removes the given inline style property</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clearStyles">clearStyles</a>()
-        
-                                            <p>Removes all inline style definitions</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasStyle">hasStyle</a>(string $property)
-        
-                                            <p>Determines whether the given CSS property exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string|null
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getStyleValue">getStyleValue</a>(string $property)
-        
-                                            <p>Returns the value of the CSS property name or null if the property does
- not exist</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -367,7 +296,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int $x, int $y, int $radius, string|null $href = null, string|null $alt = null)
+                    <a href="#method___construct">__construct</a>(int $x, int $y, int $radius, string $href = null, string $alt = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -460,7 +389,7 @@
                     <a href="#method_getShape">getShape</a>()
         
                                             <p>Returns the shape of the area</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getShape"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getShape"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -470,7 +399,7 @@
                     <a href="#method_getCoordinates">getCoordinates</a>()
         
                                             <p>Returnsthe coordinates of the area</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getCoordinates"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getCoordinates"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -480,7 +409,7 @@
                     <a href="#method_setRelationship">setRelationship</a>(string $rel)
         
                                             <p>Sets the relationship between the current document and the linked document</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_setRelationship"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_setRelationship"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -490,17 +419,17 @@
                     <a href="#method_getRelationship">getRelationship</a>()
         
                                             <p>Returns the shape of the area</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getRelationship"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getRelationship"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a>
+                    <a href="../../../../Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setAlt">setAlt</a>(string $alt)
         
                                             <p>Specifies the alternate text for the area, if the image cannot be displayed</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_setAlt"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_setAlt"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -510,7 +439,7 @@
                     <a href="#method_getAlt">getAlt</a>()
         
                                             <p>Returns the alternate text for the area, if the image cannot be displayed</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getAlt"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getAlt"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -630,7 +559,7 @@
                     <div class="method-item">
                     <h3 id="method_printHtml">
         <div class="location">in <a href="../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 49</div>
-        <code>                    <a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+        <code>                    <a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
     <strong>printHtml</strong>()
         </code>
     </h3>
@@ -646,8 +575,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
+            <td><a href="../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 
@@ -887,250 +816,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>setStyle</strong>(string $property, string $value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets an inline style definition using HTML elements style attribute</p>                    <p><strong>Note:</strong> Old inline property is replaced if the property names are equal.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$value</td>
-                <td>CSS value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setStyles">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 129</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>setStyles</strong>(array $styles)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets inline style definitions using HTML elements style attribute</p>                    <p><strong>Notes:</strong></p>
-
-<ul>
-<li>Old inline properties are replaced if the new property name is equal.</li>
-<li>Styles are defined as "property" => "value" pairs in the <var>$styles</var> array.</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$styles</td>
-                <td>CSS property and CSS value pairs</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 140</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>removeStyle</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes the given inline style property</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clearStyles">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_clearStyles"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 150</div>
-        <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
-    <strong>clearStyles</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes all inline style definitions</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasStyle">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasStyle"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 161</div>
-        <code>                    boolean
-    <strong>hasStyle</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Determines whether the given CSS property exists</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the style attribute exists and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getStyleValue">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getStyleValue"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 172</div>
-        <code>                    string|null
-    <strong>getStyleValue</strong>(string $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the CSS property name or null if the property does
- not exist</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>CSS property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td>the value of the style attribute or null</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setAttrs">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 112</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttrs</strong>(array $attrs = [])
         </code>
@@ -1183,7 +870,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 215</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_setAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 141</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>setAttr</strong>(string $name, mixed $value = null)
         </code>
@@ -1257,7 +944,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 226</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_removeAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 152</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>removeAttr</strong>(string $name)
         </code>
@@ -1297,7 +984,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttr">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 242</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_getAttr"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 168</div>
         <code>                    mixed
     <strong>getAttr</strong>(string $name)
         </code>
@@ -1343,7 +1030,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_attrExists">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 252</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrExists"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 178</div>
         <code>                    boolean
     <strong>attrExists</strong>(string $name)
         </code>
@@ -1371,7 +1058,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>(atribute exists)</td>
+            <td>(attribute exists)</td>
         </tr>
     </table>
 
@@ -1383,7 +1070,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 269</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 195</div>
         <code>                    <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a>
     <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
@@ -1435,7 +1122,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 280</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 206</div>
         <code>                    boolean
     <strong>hasId</strong>(string $identityName = &#039;id&#039;)
         </code>
@@ -1475,9 +1162,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 32</div>
+        <div class="location">at         line 30</div>
         <code>                    
-    <strong>__construct</strong>(int $x, int $y, int $radius, string|null $href = null, string|null $alt = null)
+    <strong>__construct</strong>(int $x, int $y, int $radius, string $href = null, string $alt = null)
         </code>
     </h3>
     <div class="details">
@@ -1506,12 +1193,12 @@
                 <td>the radius of the circle</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$href</td>
                 <td>the URL of the link</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$alt</td>
                 <td></td>
             </tr>
@@ -1809,7 +1496,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getShape">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getShape"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 30</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getShape"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 49</div>
         <code>                    string
     <strong>getShape</strong>()
         </code>
@@ -1839,7 +1526,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getCoordinates">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getCoordinates"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 40</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getCoordinates"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 59</div>
         <code>                    int[]
     <strong>getCoordinates</strong>()
         </code>
@@ -1869,7 +1556,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setRelationship">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_setRelationship"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 59</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_setRelationship"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 78</div>
         <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a>
     <strong>setRelationship</strong>(string $rel)
         </code>
@@ -1909,7 +1596,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getRelationship">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getRelationship"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 69</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getRelationship"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 88</div>
         <code>                    string
     <strong>getRelationship</strong>()
         </code>
@@ -1939,8 +1626,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setAlt">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_setAlt"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 90</div>
-        <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_setAlt"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 109</div>
+        <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a>
     <strong>setAlt</strong>(string $alt)
         </code>
     </h3>
@@ -1974,7 +1661,7 @@ reader).</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a></td>
+            <td><a href="../../../../Sphp/Html/Media/ImageMap/AreaInterface.html"><abbr title="Sphp\Html\Media\ImageMap\AreaInterface">AreaInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1987,7 +1674,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAlt">
-        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AreaTrait.html#method_getAlt"><abbr title="Sphp\Html\Media\ImageMap\AreaTrait">AreaTrait</abbr></a> at         line 111</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getAlt"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a> at         line 130</div>
         <code>                    string
     <strong>getAlt</strong>()
         </code>
@@ -2025,7 +1712,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRadius">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 41</div>
         <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/Circle.html"><abbr title="Sphp\Html\Media\ImageMap\Circle">Circle</abbr></a>
     <strong>setRadius</strong>(int $radius)
         </code>
@@ -2065,7 +1752,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setX">
-        <div class="location">at         line 64</div>
+        <div class="location">at         line 55</div>
         <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/Circle.html"><abbr title="Sphp\Html\Media\ImageMap\Circle">Circle</abbr></a>
     <strong>setX</strong>(int $x)
         </code>
@@ -2105,7 +1792,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setY">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 69</div>
         <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/Circle.html"><abbr title="Sphp\Html\Media\ImageMap\Circle">Circle</abbr></a>
     <strong>setY</strong>(int $y)
         </code>
@@ -2145,7 +1832,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCoordinates">
-        <div class="location">at         line 94</div>
+        <div class="location">at         line 85</div>
         <code>                    <a href="../../../../Sphp/Html/Media/ImageMap/Circle.html"><abbr title="Sphp\Html\Media\ImageMap\Circle">Circle</abbr></a>
     <strong>setCoordinates</strong>(int $x, int $y, int $radius)
         </code>

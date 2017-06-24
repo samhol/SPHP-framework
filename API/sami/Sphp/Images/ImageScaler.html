@@ -102,7 +102,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string|<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
+                    <a href="#method___construct">__construct</a>(string $src)
         
                                             <p>Constructs a new instance of the {@link self} object</p>                </div>
                 <div class="col-md-2"></div>
@@ -122,7 +122,7 @@
                     <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_scaleToFit">scaleToFit</a>(<a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr> $size)
+                    <a href="#method_scaleToFit">scaleToFit</a>(int $width, int $height)
         
                                             <p>Scales the image to fit the given box (width, height), constraining proportions</p>                </div>
                 <div class="col-md-2"></div>
@@ -152,7 +152,7 @@
                     <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_resize">resize</a>(<a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr> $size)
+                    <a href="#method_resize">resize</a>(int $width, int $height)
         
                                             <p>Resizes the image to the given dimensions (width, height)</p>                </div>
                 <div class="col-md-2"></div>
@@ -255,9 +255,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 65</div>
         <code>                    
-    <strong>__construct</strong>(string|<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
+    <strong>__construct</strong>(string $src)
         </code>
     </h3>
     <div class="details">
@@ -271,7 +271,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
+                <td>string</td>
                 <td>$src</td>
                 <td></td>
             </tr>
@@ -295,7 +295,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 85</div>
+        <div class="location">at         line 84</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -319,7 +319,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_scaleToFit">
         <div class="location">at         line 96</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
-    <strong>scaleToFit</strong>(<a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr> $size)
+    <strong>scaleToFit</strong>(int $width, int $height)
         </code>
     </h3>
     <div class="details">
@@ -333,9 +333,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr></td>
-                <td>$size</td>
-                <td>the size to fit</td>
+                <td>int</td>
+                <td>$width</td>
+                <td>width to fit in</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$height</td>
+                <td>height to fit in</td>
             </tr>
             </table>
 
@@ -366,7 +371,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_heighten">
-        <div class="location">at         line 157</div>
+        <div class="location">at         line 125</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
     <strong>heighten</strong>(int $height)
         </code>
@@ -406,7 +411,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_widen">
-        <div class="location">at         line 169</div>
+        <div class="location">at         line 137</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
     <strong>widen</strong>(int $width)
         </code>
@@ -424,7 +429,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <tr>
                 <td>int</td>
                 <td>$width</td>
-                <td>the new height</td>
+                <td>the new width</td>
             </tr>
             </table>
 
@@ -446,9 +451,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_resize">
-        <div class="location">at         line 180</div>
+        <div class="location">at         line 149</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
-    <strong>resize</strong>(<a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr> $size)
+    <strong>resize</strong>(int $width, int $height)
         </code>
     </h3>
     <div class="details">
@@ -462,9 +467,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>|<abbr title="Imagine\Image\Box">Box</abbr></td>
-                <td>$size</td>
-                <td>the size to fit</td>
+                <td>int</td>
+                <td>$width</td>
+                <td>new width of the image</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$height</td>
+                <td>new height of the image</td>
             </tr>
             </table>
 
@@ -486,7 +496,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_scale">
-        <div class="location">at         line 191</div>
+        <div class="location">at         line 160</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
     <strong>scale</strong>(float $ratio)
         </code>
@@ -526,7 +536,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_createImage">
-        <div class="location">at         line 204</div>
+        <div class="location">at         line 173</div>
         <code>                    <abbr title="Imagine\Image\ImageInterface">ImageInterface</abbr>
     <strong>createImage</strong>( $box = null)
         </code>
@@ -566,7 +576,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_show">
-        <div class="location">at         line 221</div>
+        <div class="location">at         line 190</div>
         <code>                    boolean
     <strong>show</strong>( $box = null)
         </code>
@@ -606,7 +616,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location">at         line 237</div>
+        <div class="location">at         line 206</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
     <strong>save</strong>(string $path, array $options = [])
         </code>
@@ -655,7 +665,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_saveToCache">
-        <div class="location">at         line 250</div>
+        <div class="location">at         line 219</div>
         <code>                    <a href="../../Sphp/Images/ImageScaler.html"><abbr title="Sphp\Images\ImageScaler">ImageScaler</abbr></a>
     <strong>saveToCache</strong>()
         </code>
@@ -689,7 +699,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_inCache">
-        <div class="location">at         line 302</div>
+        <div class="location">at         line 271</div>
         <code>                    boolean
     <strong>inCache</strong>( $box = null)
         </code>
@@ -730,7 +740,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_httpCachePath">
-        <div class="location">at         line 316</div>
+        <div class="location">at         line 285</div>
         <code>                    string
     <strong>httpCachePath</strong>( $box = null)
         </code>
@@ -771,7 +781,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getExtension">
-        <div class="location">at         line 329</div>
+        <div class="location">at         line 298</div>
         <code>                    string
     <strong>getExtension</strong>()
         </code>
@@ -801,7 +811,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 338</div>
+        <div class="location">at         line 307</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>

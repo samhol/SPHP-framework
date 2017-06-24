@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\HtmlIdStorage | SPHP framework API</title>
+    <title>Sphp\Html\Media\LazyMediaSourceTrait | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_HtmlIdStorage" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Media_LazyMediaSourceTrait" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,36 +65,33 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
+                <li><span class="label label-default">trait</span></li>
                                                             <li><a href="../../../Sphp.html">Sphp</a></li>
                                         <li><a href="../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li>
+                                        <li><a href="../../../Sphp/Html/Media.html">Media</a></li>
     
-                <li>HtmlIdStorage</li>
+                <li>LazyMediaSourceTrait</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            HtmlIdStorage
+            LazyMediaSourceTrait
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>HtmlIdStorage</strong>
+    <p>    trait
+    <strong>LazyMediaSourceTrait</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Application Config class for storing common application data</p>            <p><strong>Note:</strong> Uses Singleton pattern</p>
-
-<p>Stored variable names can either be an <code>integer</code> or a <code>string</code>.
-Additionally the following <var>$varName</var> casting is equal with the
-PHP array key casting. The <var>$value</var> can be of any type.</p>                    </div>
+            <p>Trait implements the {@link LazyLoaderInterface} interface</p>            <p>Mobile-oriented, fast and extensible jQuery plugin for lazy loading of
+images/videos with build-in support of jQueryMobile framework.</p>                    </div>
     
     
     
@@ -104,20 +101,10 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;boolean
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isValidValue">isValidValue</a>($value)
-        
-                                            <p>Checks whether the identifier name value pair exists</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isValidIdentifyingName">isValidIdentifyingName</a>(<abbr title="Sphp\Html\Attributes\type">type</abbr> $name)
+                    <a href="#method_attrs">attrs</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -125,33 +112,42 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;boolean
+                    <a href="../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_exists">exists</a>(string $name, string $value)
+                    <a href="#method_setLazy">setLazy</a>(bool $lazy = true)
         
-                                            <p>Checks whether the identifier name value pair exists</p>                </div>
+                                            <p>Sets or unsets the media source loading as lazy</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;boolean
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_store">store</a>(string $name, string $value)
+                    <a href="#method_isLazy">isLazy</a>()
         
-                                            <p>Tries to store a new identifier name value pair</p>                </div>
+                                            <p>Checks whether the media source loading is lazy</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string[]
+                    <abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_toArray">toArray</a>()
+                    <a href="#method_setSrc">setSrc</a>(string $src)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Sets the path to the image source (The URL of the image file)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSrc">getSrc</a>()
+        
+                                            <p>Returns the path to the image source (The URL of the image file)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -161,10 +157,29 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_isValidValue">
-        <div class="location">at         line 50</div>
-        <code>        static            boolean
-    <strong>isValidValue</strong>($value)
+                    <h3 id="method_attrs">
+        <div class="location">at         line 26</div>
+        <code>    abstract                
+    <strong>attrs</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLazy">
+        <div class="location">at         line 37</div>
+        <code>                    <a href="../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a>
+    <strong>setLazy</strong>(bool $lazy = true)
         </code>
     </h3>
     <div class="details">
@@ -172,15 +187,16 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
     
 
                     <div class="method-description">
-                                    <p>Checks whether the identifier name value pair exists</p>                                                </div>
+                                    <p>Sets or unsets the media source loading as lazy</p>                    <p><strong>Important:</strong> if the <code>$lazy = true</code> the actual media source path is stored into the
+<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
+                <td>bool</td>
+                <td>$lazy</td>
+                <td>true if the loading is lazy, false otherwise</td>
             </tr>
             </table>
 
@@ -189,8 +205,8 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
                     <table class="table table-condensed">
         <tr>
-            <td>boolean</td>
-            <td>true on success or false on failure</td>
+            <td><a href="../../../Sphp/Html/Media/LazyMediaSourceTrait.html"><abbr title="Sphp\Html\Media\LazyMediaSourceTrait">LazyMediaSourceTrait</abbr></a></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 
@@ -201,39 +217,10 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isValidIdentifyingName">
-        <div class="location">at         line 58</div>
-        <code>        static            
-    <strong>isValidIdentifyingName</strong>(<abbr title="Sphp\Html\Attributes\type">type</abbr> $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\Html\Attributes\type">type</abbr></td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_exists">
-        <div class="location">at         line 69</div>
-        <code>        static            boolean
-    <strong>exists</strong>(string $name, string $value)
+                    <h3 id="method_isLazy">
+        <div class="location">at         line 57</div>
+        <code>                    boolean
+    <strong>isLazy</strong>()
         </code>
     </h3>
     <div class="details">
@@ -241,30 +228,15 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
     
 
                     <div class="method-description">
-                                    <p>Checks whether the identifier name value pair exists</p>                                                </div>
+                                    <p>Checks whether the media source loading is lazy</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name of the identifier</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$value</td>
-                <td>the value of the identifier</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true on success or false on failure</td>
+            <td>true if the loading is lazy, false otherwise</td>
         </tr>
     </table>
 
@@ -275,10 +247,10 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_store">
-        <div class="location">at         line 80</div>
-        <code>        static            boolean
-    <strong>store</strong>(string $name, string $value)
+                    <h3 id="method_setSrc">
+        <div class="location">at         line 71</div>
+        <code>                    <abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr>
+    <strong>setSrc</strong>(string $src)
         </code>
     </h3>
     <div class="details">
@@ -286,20 +258,16 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
     
 
                     <div class="method-description">
-                                    <p>Tries to store a new identifier name value pair</p>                                                </div>
+                                    <p>Sets the path to the image source (The URL of the image file)</p>                    <p><strong>Important:</strong> if {@link LazyLoaderInterface::isLazy()} this method sets the value of the
+<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$name</td>
-                <td>the name of the identifier</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$value</td>
-                <td>the value of the identifier</td>
+                <td>$src</td>
+                <td>the path to the image source (The URL of the image file)</td>
             </tr>
             </table>
 
@@ -308,8 +276,8 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
                     <table class="table table-condensed">
         <tr>
-            <td>boolean</td>
-            <td><code>true</code> if stored and <code>false</code> otherwise</td>
+            <td><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></td>
+            <td>for PHP Method Chaining</td>
         </tr>
     </table>
 
@@ -320,24 +288,27 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toArray">
-        <div class="location">at         line 96</div>
-        <code>        static            string[]
-    <strong>toArray</strong>()
+                    <h3 id="method_getSrc">
+        <div class="location">at         line 88</div>
+        <code>                    string
+    <strong>getSrc</strong>()
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the path to the image source (The URL of the image file)</p>                    <p><strong>Important:</strong> if {@link LazyLoaderInterface::isLazy()} this method returns the value of the
+<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string[]</td>
-            <td></td>
+            <td>string</td>
+            <td>the path to the image source (The URL of the image file)</td>
         </tr>
     </table>
 

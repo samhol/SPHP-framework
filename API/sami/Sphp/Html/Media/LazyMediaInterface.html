@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Media\Size | SPHP framework API</title>
+    <title>Sphp\Html\Media\LazyMediaInterface | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Media_Size" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Media_LazyMediaInterface" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,32 +65,34 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
+                <li><span class="label label-default">interface</span></li>
                                                             <li><a href="../../../Sphp.html">Sphp</a></li>
                                         <li><a href="../../../Sphp/Html.html">Html</a></li>
                                         <li><a href="../../../Sphp/Html/Media.html">Media</a></li>
     
-                <li>Size</li>
+                <li>LazyMediaInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Size
+            LazyMediaInterface
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>Size</strong>
+    <p>    interface
+    <strong>LazyMediaInterface</strong>        implements
+        <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a size object for defining the dimensions of the {@link SizeableInterface}</p>                                </div>
+            <p>Defines lazy loading of images, videos and other resources</p>            <p>SPHP framework uses Lazy Load XT jQuery plugin. It is Mobile-oriented, fast
+and extensible jQuery plugin with build-in support of jQueryMobile framework.</p>                    </div>
     
     
     
@@ -100,74 +102,52 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int|boolean $width = false, int|boolean $height = false)
+                    <a href="#method_getHtml">getHtml</a>()
         
-                                            <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentInterface.html#method_getHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getWidth">getWidth</a>()
-        
-                                            <p>Returns the width</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasWidth">hasWidth</a>()
-        
-                                            <p>Checks whether the width is set or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int|boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getHeight">getHeight</a>()
-        
-                                            <p>Returns the height</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasHeight">hasHeight</a>()
-        
-                                            <p>Checks whether the height is set or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentInterface.html#method___toString"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printHtml">printHtml</a>()
+        
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/ContentInterface.html#method_printHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLazy">setLazy</a>(bool $lazy = true)
+        
+                                            <p>Sets or unsets the media source loading as lazy</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_toArray">toArray</a>()
+                    <a href="#method_isLazy">isLazy</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Checks whether the media source loading is lazy</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -177,10 +157,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 42</div>
-        <code>                    
-    <strong>__construct</strong>(int|boolean $width = false, int|boolean $height = false)
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../Sphp/Html/ContentInterface.html#method_getHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 34</div>
+        <code>                    string
+    <strong>getHtml</strong>()
         </code>
     </h3>
     <div class="details">
@@ -188,145 +168,28 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                    <p><strong>Note:</strong> <code>boolean false</code> represents an unset value</p>                            </div>
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
-                <td>$width</td>
-                <td>optional width in pixels: false if the width is not set</td>
-            </tr>
-                    <tr>
-                <td>int|boolean</td>
-                <td>$height</td>
-                <td>optional height in pixels: false if the height is not set</td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if html parsing fails</td>
             </tr>
             </table>
 
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getWidth">
-        <div class="location">at         line 62</div>
-        <code>                    int|boolean
-    <strong>getWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the width</p>                    <p><strong>Note:</strong> <code>boolean false</code> represents an unset value</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int|boolean</td>
-            <td>width or false if the height is not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasWidth">
-        <div class="location">at         line 71</div>
-        <code>                    boolean
-    <strong>hasWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the width is set or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the width is set, and false if not</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getHeight">
-        <div class="location">at         line 82</div>
-        <code>                    int|boolean
-    <strong>getHeight</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the height</p>                    <p><strong>Note:</strong> <code>boolean false</code> represents an unset value</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int|boolean</td>
-            <td>height or false if the height is not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasHeight">
-        <div class="location">at         line 91</div>
-        <code>                    boolean
-    <strong>hasHeight</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the height is set or not</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the height is set, and false if not</td>
-        </tr>
-    </table>
-
-            
             
                     </div>
     </div>
@@ -334,8 +197,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 95</div>
-        <code>                    
+        <div class="location">in <a href="../../../Sphp/Html/ContentInterface.html#method___toString"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 42</div>
+        <code>                    string
     <strong>__toString</strong>()
         </code>
     </h3>
@@ -343,8 +206,19 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -352,18 +226,100 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toArray">
-        <div class="location">at         line 99</div>
-        <code>                    
-    <strong>toArray</strong>()
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../../Sphp/Html/ContentInterface.html#method_printHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 49</div>
+        <code>                    <a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>
+    <strong>printHtml</strong>()
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLazy">
+        <div class="location">at         line 35</div>
+        <code>                    <a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a>
+    <strong>setLazy</strong>(bool $lazy = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets or unsets the media source loading as lazy</p>                    <p><strong>Important:</strong> if the <code>$lazy = true</code> the actual media source path is stored into the
+<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$lazy</td>
+                <td>true for lazy loading, false otherwise</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isLazy">
+        <div class="location">at         line 42</div>
+        <code>                    boolean
+    <strong>isLazy</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the media source loading is lazy</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true for lazy loading, false otherwisev</td>
+        </tr>
+    </table>
+
             
             
                     </div>

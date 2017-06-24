@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\I18n\TopicList | SPHP framework API</title>
+    <title>Sphp\I18n\Messages\TopicList | SPHP framework API</title>
 
-            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
-        <script src="../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../sami.js"></script>
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -19,14 +19,14 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_I18n_TopicList" data-root-path="../../">
+    <body id="class" data-name="class:Sphp_I18n_Messages_TopicList" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                 <script>
             $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
         </script>
-        <form id="search-form" action="../../search.html" method="GET">
+        <form id="search-form" action="../../../search.html" method="GET">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
@@ -48,16 +48,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">SPHP framework API</a>
+                <a class="navbar-brand" href="../../../index.html">SPHP framework API</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
-                    <li><a href="../../traits.html">Traits</a></li>
-                    <li><a href="../../doc-index.html">Index</a></li>
-                    <li><a href="../../search.html">Search</a></li>
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
                 </ul>
             </div>
         </div>
@@ -66,8 +66,9 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                                                            <li><a href="../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../Sphp/I18n.html">I18n</a></li>
+                                                            <li><a href="../../../Sphp.html">Sphp</a></li>
+                                        <li><a href="../../../Sphp/I18n.html">I18n</a></li>
+                                        <li><a href="../../../Sphp/I18n/Messages.html">Messages</a></li>
     
                 <li>TopicList</li>
             </ol>
@@ -83,14 +84,14 @@
 
     <p>    class
     <strong>TopicList</strong>        implements
-        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>, <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
+        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>, <a href="../../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a container for {@link MessageList} objects sorted by associated topics</p>                                </div>
+            <p>Implements a container for translatable objects sorted by associated topics</p>                                </div>
     
     
             <h2>Constants</h2>
@@ -122,14 +123,44 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>( $translator = null)
+                    <a href="#method___construct">__construct</a>()
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p>Destroys the instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the translated text</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___clone">__clone</a>()
+        
+                                            <p>Clones the object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_merge">merge</a>( $tc)
@@ -170,32 +201,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___toString">__toString</a>()
-        
-                                            <p>Returns the object as a string.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_clearContent">clearContent</a>(string $topic = null)
         
-                                            <p>Removes elements from MessageList.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
-        
-                                            <p>Clones the object</p>                </div>
+                                            <p>Removes elements from MessageList</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -226,12 +237,12 @@
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
         
-                                            <p>Serializes to an array</p>                </div>
+                                            <p>Returns the content as an array of formatted and localized message strings</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null
+                    <a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_offsetGet">offsetGet</a>(string $topic)
@@ -241,7 +252,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null
+                    <a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_get">get</a>(string $topic)
@@ -251,27 +262,27 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetSet">offsetSet</a>(string $topic, string|<a href="../../Sphp/I18n/MessageInterface.html"><abbr title="Sphp\I18n\MessageInterface">MessageInterface</abbr></a>|<a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a> $m)
+                    <a href="#method_offsetSet">offsetSet</a>(string $topic, mixed $m)
         
                                             <p>Sets a new topic with messages inside a {@link MessageList}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(string $topic,  $m)
+                    <a href="#method_set">set</a>(string $topic, mixed $m)
         
                                             <p>Sets a new topic with messages</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_offsetUnset">offsetUnset</a>(string $topic)
@@ -281,38 +292,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getLang">getLang</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getTranslator">getTranslator</a>()
-        
-                                            <p>Returns the translator component used for message translation</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setLang">setLang</a>(string $lang)
-        
-                                            <p>Sets the translator component for message translation</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
+                    <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setTranslator">setTranslator</a>( $translator)
@@ -370,6 +350,26 @@
                                             <p>Checks if current iterator position is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_translate">translate</a>()
+        
+                                            <p>Translates the content</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_translateTo">translateTo</a>(string $lang)
+        
+                                            <p>Translates the content to given language</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -378,9 +378,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 46</div>
         <code>                    
-    <strong>__construct</strong>( $translator = null)
+    <strong>__construct</strong>()
         </code>
     </h3>
     <div class="details">
@@ -390,16 +390,79 @@
                     <div class="method-description">
                                     <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location">at         line 56</div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 60</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the translated text</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$translator</td>
-                <td>the translator component</td>
-            </tr>
-            </table>
+        <tr>
+            <td>string</td>
+            <td>the translated text</td>
+        </tr>
+    </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___clone">
+        <div class="location">at         line 71</div>
+        <code>                    
+    <strong>__clone</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>                            </div>
+                <div class="tags">
             
             
             
@@ -409,8 +472,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">at         line 72</div>
-        <code>                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+        <div class="location">at         line 82</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
     <strong>merge</strong>( $tc)
         </code>
     </h3>
@@ -436,7 +499,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -449,7 +512,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTopics">
-        <div class="location">at         line 88</div>
+        <div class="location">at         line 98</div>
         <code>                    string[]
     <strong>getTopics</strong>()
         </code>
@@ -479,7 +542,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_messageExists">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 102</div>
         <code>                    
     <strong>messageExists</strong>( $message, $topic = null)
         </code>
@@ -513,7 +576,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 121</div>
         <code>                    int
     <strong>count</strong>(int $mode = self::COUNT_TOPICS)
         </code>
@@ -552,39 +615,9 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location">at         line 128</div>
-        <code>                    string
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the object as a string.</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the object as a string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_clearContent">
-        <div class="location">at         line 152</div>
-        <code>                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+        <div class="location">at         line 141</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
     <strong>clearContent</strong>(string $topic = null)
         </code>
     </h3>
@@ -593,7 +626,7 @@
     
 
                     <div class="method-description">
-                                    <p>Removes elements from MessageList.</p>                    <p>The optional <code>$topic</code> attribute narrows down the clearing to the messages of given target element.</p>                            </div>
+                                    <p>Removes elements from MessageList</p>                    <p>The optional <code>$topic</code> attribute narrows down the clearing to the messages of given target element.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -610,7 +643,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -622,29 +655,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">at         line 168</div>
-        <code>                    
-    <strong>__clone</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 179</div>
+        <div class="location">at         line 156</div>
         <code>                    boolean
     <strong>offsetExists</strong>(string $topic)
         </code>
@@ -684,7 +696,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at         line 183</div>
+        <div class="location">at         line 160</div>
         <code>                    
     <strong>contains</strong>( $message)
         </code>
@@ -713,7 +725,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 199</div>
+        <div class="location">at         line 176</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -723,7 +735,7 @@
     
 
                     <div class="method-description">
-                                    <p>Serializes to an array</p>                                                </div>
+                                    <p>Returns the content as an array of formatted and localized message strings</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -743,8 +755,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 213</div>
-        <code>                    <a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null
+        <div class="location">at         line 190</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null
     <strong>offsetGet</strong>(string $topic)
         </code>
     </h3>
@@ -770,7 +782,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null</td>
+            <td><a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null</td>
             <td>the topic or null if no topic was found</td>
         </tr>
     </table>
@@ -783,8 +795,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 227</div>
-        <code>                    <a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null
+        <div class="location">at         line 204</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null
     <strong>get</strong>(string $topic)
         </code>
     </h3>
@@ -810,7 +822,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a>|null</td>
+            <td><a href="../../../Sphp/I18n/Messages/TranslatableCollectionInterface.html"><abbr title="Sphp\I18n\Messages\TranslatableCollectionInterface">TranslatableCollectionInterface</abbr></a>|null</td>
             <td>the topic or null if no topic was found</td>
         </tr>
     </table>
@@ -823,9 +835,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 242</div>
-        <code>                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
-    <strong>offsetSet</strong>(string $topic, string|<a href="../../Sphp/I18n/MessageInterface.html"><abbr title="Sphp\I18n\MessageInterface">MessageInterface</abbr></a>|<a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a> $m)
+        <div class="location">at         line 218</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
+    <strong>offsetSet</strong>(string $topic, mixed $m)
         </code>
     </h3>
     <div class="details">
@@ -845,7 +857,7 @@
                 <td>the message topic</td>
             </tr>
                     <tr>
-                <td>string|<a href="../../Sphp/I18n/MessageInterface.html"><abbr title="Sphp\I18n\MessageInterface">MessageInterface</abbr></a>|<a href="../../Sphp/I18n/MessageCollectionInterface.html"><abbr title="Sphp\I18n\MessageCollectionInterface">MessageCollectionInterface</abbr></a></td>
+                <td>mixed</td>
                 <td>$m</td>
                 <td>message or message list</td>
             </tr>
@@ -856,21 +868,12 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\I18n\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
-                <td>if the type of the inserted data is illegal</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -878,9 +881,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 266</div>
-        <code>                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
-    <strong>set</strong>(string $topic,  $m)
+        <div class="location">at         line 237</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
+    <strong>set</strong>(string $topic, mixed $m)
         </code>
     </h3>
     <div class="details">
@@ -900,7 +903,7 @@
                 <td>the message topic</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$m</td>
                 <td>message or message list</td>
             </tr>
@@ -911,21 +914,12 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the type of the inserted data is illegal</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -933,8 +927,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 277</div>
-        <code>                    <a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a>
+        <div class="location">at         line 248</div>
+        <code>                    <a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a>
     <strong>offsetUnset</strong>(string $topic)
         </code>
     </h3>
@@ -960,96 +954,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TopicList.html"><abbr title="Sphp\I18n\TopicList">TopicList</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getLang">
-        <div class="location">at         line 285</div>
-        <code>                    
-    <strong>getLang</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getTranslator">
-        <div class="location">at         line 289</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a>
-    <strong>getTranslator</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the translator component used for message translation</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/I18n/TranslatorInterface.html"><abbr title="Sphp\I18n\TranslatorInterface">TranslatorInterface</abbr></a></td>
-            <td>the translator component</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setLang">
-        <div class="location">at         line 293</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
-    <strong>setLang</strong>(string $lang)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the translator component for message translation</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$lang</td>
-                <td>the translator component</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Messages/TopicList.html"><abbr title="Sphp\I18n\Messages\TopicList">TopicList</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1062,8 +967,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setTranslator">
-        <div class="location">at         line 301</div>
-        <code>                    <a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a>
+        <div class="location">at         line 256</div>
+        <code>                    <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
     <strong>setTranslator</strong>( $translator)
         </code>
     </h3>
@@ -1089,7 +994,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/I18n/TranslatorAwareInterface.html"><abbr title="Sphp\I18n\TranslatorAwareInterface">TranslatorAwareInterface</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -1102,7 +1007,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 314</div>
+        <div class="location">at         line 270</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1132,7 +1037,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 321</div>
+        <div class="location">at         line 277</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -1153,7 +1058,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 330</div>
+        <div class="location">at         line 286</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1183,7 +1088,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 337</div>
+        <div class="location">at         line 293</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -1204,7 +1109,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 346</div>
+        <div class="location">at         line 302</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
@@ -1223,6 +1128,76 @@
         <tr>
             <td>boolean</td>
             <td>current iterator position is valid</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_translate">
+        <div class="location">at         line 306</div>
+        <code>                    string
+    <strong>translate</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Translates the content</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the content as a translated string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_translateTo">
+        <div class="location">at         line 314</div>
+        <code>                    string
+    <strong>translateTo</strong>(string $lang)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Translates the content to given language</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$lang</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the content as a translated string</td>
         </tr>
     </table>
 

@@ -210,7 +210,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(int|boolean $width, string $screen = &#039;small&#039;)
+                    <a href="#method_setWidth">setWidth</a>(int $width, string $screen = &#039;small&#039;)
         
                                             <p>Sets the column width</p>                </div>
                 <div class="col-md-2"></div>
@@ -240,7 +240,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setOffset">setOffset</a>(int|boolean $offset, string $screenSize = &#039;small&#039;)
+                    <a href="#method_setOffset">setOffset</a>(int $offset, string $screenSize = &#039;small&#039;)
         
                                             <p>Offsets the column component to right on the associated screen sizes</p>                </div>
                 <div class="col-md-2"></div>
@@ -291,7 +291,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setOrder">setOrder</a>($push, $screenSize = &#039;small&#039;)
+                    <a href="#method_setOrder">setOrder</a>(int $push, string $screenSize = &#039;small&#039;)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -302,7 +302,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_pull">pull</a>($num, $screenSize = &#039;small&#039;)
+                    <a href="#method_pull">pull</a>(int $num, string $screenSize = &#039;small&#039;)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -406,7 +406,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 40</div>
+        <div class="location">at         line 39</div>
         <code>                    
     <strong>__construct</strong>( $component, int $maxSize = 12)
         </code>
@@ -551,7 +551,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getMaxSize">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 48</div>
         <code>                    int
     <strong>getMaxSize</strong>()
         </code>
@@ -579,7 +579,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setLayouts">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 64</div>
         <code>                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
     <strong>setLayouts</strong>(mixed|mixed[] $layouts)
         </code>
@@ -623,7 +623,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetLayouts">
-        <div class="location">at         line 93</div>
+        <div class="location">at         line 90</div>
         <code>                    <a href="../../../../../Sphp/Html/LayoutManagerInterface.html"><abbr title="Sphp\Html\LayoutManagerInterface">LayoutManagerInterface</abbr></a>
     <strong>unsetLayouts</strong>()
         </code>
@@ -653,7 +653,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWidths">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 102</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>setWidths</strong>(array $widths)
         </code>
@@ -693,7 +693,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidths">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 115</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetWidths</strong>()
         </code>
@@ -721,9 +721,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWidth">
-        <div class="location">at         line 142</div>
+        <div class="location">at         line 139</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
-    <strong>setWidth</strong>(int|boolean $width, string $screen = &#039;small&#039;)
+    <strong>setWidth</strong>(int $width, string $screen = &#039;small&#039;)
         </code>
     </h3>
     <div class="details">
@@ -741,7 +741,7 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
+                <td>int</td>
                 <td>$width</td>
                 <td>the width of the column or false for inheritance</td>
             </tr>
@@ -779,7 +779,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getWidth">
-        <div class="location">at         line 160</div>
+        <div class="location">at         line 157</div>
         <code>                    int|boolean
     <strong>getWidth</strong>(string $screenSize)
         </code>
@@ -820,7 +820,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidth">
-        <div class="location">at         line 190</div>
+        <div class="location">at         line 187</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetWidth</strong>(string $screenSize)
         </code>
@@ -860,9 +860,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOffset">
-        <div class="location">at         line 210</div>
+        <div class="location">at         line 207</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
-    <strong>setOffset</strong>(int|boolean $offset, string $screenSize = &#039;small&#039;)
+    <strong>setOffset</strong>(int $offset, string $screenSize = &#039;small&#039;)
         </code>
     </h3>
     <div class="details">
@@ -876,7 +876,7 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
+                <td>int</td>
                 <td>$offset</td>
                 <td>the column offset (0-11) or false for inheritance</td>
             </tr>
@@ -905,7 +905,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffsets">
-        <div class="location">at         line 222</div>
+        <div class="location">at         line 219</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetOffsets</strong>()
         </code>
@@ -933,7 +933,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOffsets">
-        <div class="location">at         line 235</div>
+        <div class="location">at         line 232</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>setOffsets</strong>(array $offsets)
         </code>
@@ -973,7 +973,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location">at         line 251</div>
+        <div class="location">at         line 248</div>
         <code>                    int
     <strong>getOffset</strong>(string $screenSize)
         </code>
@@ -1013,7 +1013,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffset">
-        <div class="location">at         line 278</div>
+        <div class="location">at         line 275</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetOffset</strong>(string $screenSize)
         </code>
@@ -1053,9 +1053,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOrder">
-        <div class="location">at         line 286</div>
+        <div class="location">at         line 283</div>
         <code>                    
-    <strong>setOrder</strong>($push, $screenSize = &#039;small&#039;)
+    <strong>setOrder</strong>(int $push, string $screenSize = &#039;small&#039;)
         </code>
     </h3>
     <div class="details">
@@ -1067,12 +1067,12 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$push</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$screenSize</td>
                 <td></td>
             </tr>
@@ -1087,9 +1087,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_pull">
-        <div class="location">at         line 294</div>
+        <div class="location">at         line 291</div>
         <code>                    
-    <strong>pull</strong>($num, $screenSize = &#039;small&#039;)
+    <strong>pull</strong>(int $num, string $screenSize = &#039;small&#039;)
         </code>
     </h3>
     <div class="details">
@@ -1101,12 +1101,12 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$num</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$screenSize</td>
                 <td></td>
             </tr>
@@ -1121,7 +1121,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetPull">
-        <div class="location">at         line 309</div>
+        <div class="location">at         line 306</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a>
     <strong>unsetPull</strong>(string $screenSize)
         </code>
@@ -1161,7 +1161,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetPulls">
-        <div class="location">at         line 324</div>
+        <div class="location">at         line 321</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/AbstractColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a>
     <strong>unsetPulls</strong>()
         </code>
@@ -1191,7 +1191,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOrders">
-        <div class="location">at         line 337</div>
+        <div class="location">at         line 334</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>setOrders</strong>(array $pushs)
         </code>
@@ -1231,7 +1231,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrder">
-        <div class="location">at         line 353</div>
+        <div class="location">at         line 350</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetOrder</strong>(string $screenSize)
         </code>
@@ -1271,7 +1271,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrders">
-        <div class="location">at         line 368</div>
+        <div class="location">at         line 365</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
     <strong>unsetOrders</strong>()
         </code>
@@ -1301,7 +1301,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_countUsedSpace">
-        <div class="location">at         line 382</div>
+        <div class="location">at         line 379</div>
         <code>                    int
     <strong>countUsedSpace</strong>(string $screenSize)
         </code>
@@ -1341,7 +1341,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_centerize">
-        <div class="location">at         line 393</div>
+        <div class="location">at         line 390</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
     <strong>centerize</strong>(string $screenSize)
         </code>
@@ -1381,7 +1381,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_uncenterize">
-        <div class="location">at         line 407</div>
+        <div class="location">at         line 404</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager">ColumnLayoutManager</abbr></a>
     <strong>uncenterize</strong>(string $screenSize)
         </code>
@@ -1421,7 +1421,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetCenterizing">
-        <div class="location">at         line 421</div>
+        <div class="location">at         line 418</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Grids/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\ColumnInterface">ColumnInterface</abbr></a>
     <strong>unsetCenterizing</strong>(string $screenSize)
         </code>

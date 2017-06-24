@@ -348,8 +348,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -360,7 +359,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 67</div>
         <code>                    
     <strong>__construct</strong>(array $objectMap = [])
         </code>
@@ -391,7 +390,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 79</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -413,7 +412,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">at         line 89</div>
+        <div class="location">at         line 90</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -434,7 +433,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 101</div>
+        <div class="location">at         line 102</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -509,11 +508,7 @@ new object must be of the same type</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeException.html"><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></a></td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -692,11 +687,11 @@ attributes are able to handle different values</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeException.html"><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></a></td>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if the attribute name or value is invalid</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeException.html"><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></a></td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td>if the attribute value is unmodifiable</td>
             </tr>
             </table>
@@ -745,11 +740,11 @@ attributes are able to handle different values</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Sphp\Html\Attributes\InvalidAttributeException">InvalidAttributeException</abbr></td>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if any of the attributes is invalid</td>
             </tr>
                     <tr>
-                <td><abbr title="Sphp\Html\Attributes\UnmodifiableAttributeException">UnmodifiableAttributeException</abbr></td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td>if the value of the attribute is already locked</td>
             </tr>
             </table>
@@ -932,11 +927,11 @@ inline styles etc.).</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
                 <td>if either the name or the value is invalid for the type of the attribute</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeException.html"><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></a></td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
                 <td>if the attribute is unmodifiable</td>
             </tr>
             </table>
@@ -1025,8 +1020,8 @@ inline styles etc.).</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeException.html"><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute is unremovable</td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if the attribute is not removable</td>
             </tr>
             </table>
 
@@ -1111,7 +1106,7 @@ inline styles etc.).</p>                            </div>
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the atribute exists and false otherwise</td>
+            <td>true if the attribute exists and false otherwise</td>
         </tr>
     </table>
 
@@ -1341,7 +1336,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">at         line 485</div>
+        <div class="location">at         line 478</div>
         <code>                    <a href="../../../Sphp/Html/IdentifiableInterface.html"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a>
     <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
@@ -1350,6 +1345,10 @@ inline styles etc.).</p>                            </div>
             
     
 
+                    <div class="method-description">
+                                    <p>Identifies the element with an unique id attribute.</p>                    <p><strong>Notes:</strong></p>
+
+<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

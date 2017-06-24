@@ -84,7 +84,7 @@
 
     <p>    interface
     <strong>ImgInterface</strong>        implements
-        <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>, <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
+        <a href="../../../Sphp/Html/Media/MediaSourceInterface.html"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a>, <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>, <a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a>
 </p>
 
         
@@ -98,10 +98,10 @@ element's fallback content.</p>
 <p><strong>Notes:</strong></p>
 
 <ol>
-<li>The {@link self} component tag defines an image in an HTML page.</li>
-<li>The {@link self} component tag has two required attributes: src and alt.</li>
+<li>This component defines an image in an HTML page.</li>
+<li>This component has two required attributes: src and alt.</li>
 <li>Images are not technically inserted into an HTML page, images are linked to HTML pages.</li>
-<li>The {@link self} component tag creates a holding space for the referenced image.</li>
+<li>This component creates a holding space for the referenced image.</li>
 </ol>
 
 <p><strong>Definition and Usage</strong></p>
@@ -148,32 +148,42 @@ element's fallback content.</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
+                    <a href="../../../Sphp/Html/Media/MediaSourceInterface.html"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSize">setSize</a>( $size)
+                    <a href="#method_setSrc">setSrc</a>(string $src)
         
-                                            <p>Sets the dimensions of the component (in pixels)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setSize"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+                                            <p>Sets the path to the media source (The URL of the file)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/MediaSourceInterface.html#method_setSrc"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getSize">getSize</a>()
+                    <a href="#method_getSrc">getSrc</a>()
         
-                                            <p>Returns the dimensions of the component (in pixels)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getSize"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+                                            <p>Returns the path to the media source (The URL of the file)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/MediaSourceInterface.html#method_getSrc"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|null
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasWidth">hasWidth</a>()
+        
+                                            <p>Checks if the component has width defined</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_hasWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getWidth">getWidth</a>()
         
-                                            <p>Returns the width of the video component (in pixels)</p>                </div>
+                                            <p>Returns the width of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -188,13 +198,33 @@ element's fallback content.</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|null
+                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetWidth">unsetWidth</a>()
+        
+                                            <p>Unsets the width of the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_unsetWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getHeight">getHeight</a>()
         
-                                            <p>Returns the height of the video component (in pixels)</p>                </div>
+                                            <p>Returns the height of the component (in pixels)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasHeight">hasHeight</a>()
+        
+                                            <p>Checks if the component has height defined</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_hasHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -208,13 +238,23 @@ element's fallback content.</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
+                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLazy">setLazy</a>(boolean $lazy = true)
+                    <a href="#method_unsetHeight">unsetHeight</a>()
+        
+                                            <p>Unsets the height of the component</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/SizeableInterface.html#method_unsetHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLazy">setLazy</a>(bool $lazy = true)
         
                                             <p>Sets or unsets the media source loading as lazy</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/LazyLoaderInterface.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/LazyMediaInterface.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -224,27 +264,7 @@ element's fallback content.</p>
                     <a href="#method_isLazy">isLazy</a>()
         
                                             <p>Checks whether the media source loading is lazy</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/LazyLoaderInterface.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/ImgInterface.html"><abbr title="Sphp\Html\Media\ImgInterface">ImgInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setSrc">setSrc</a>(string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
-        
-                                            <p>Sets the path to the track source (The URL of the track file)</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSrc">getSrc</a>()
-        
-                                            <p>Returns the URL of the track file</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Media/LazyMediaInterface.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -372,10 +392,10 @@ element's fallback content.</p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setSize">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setSize"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 28</div>
-        <code>                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
-    <strong>setSize</strong>( $size)
+                    <h3 id="method_setSrc">
+        <div class="location">in <a href="../../../Sphp/Html/Media/MediaSourceInterface.html#method_setSrc"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a> at         line 32</div>
+        <code>                    <a href="../../../Sphp/Html/Media/MediaSourceInterface.html"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a>
+    <strong>setSrc</strong>(string $src)
         </code>
     </h3>
     <div class="details">
@@ -383,15 +403,145 @@ element's fallback content.</p>
     
 
                     <div class="method-description">
-                                    <p>Sets the dimensions of the component (in pixels)</p>                                                </div>
+                                    <p>Sets the path to the media source (The URL of the file)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$size</td>
-                <td>object containing the dimension settings</td>
+                <td>string</td>
+                <td>$src</td>
+                <td>the path to the media source (The URL of the file)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Media/MediaSourceInterface.html"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSrc">
+        <div class="location">in <a href="../../../Sphp/Html/Media/MediaSourceInterface.html#method_getSrc"><abbr title="Sphp\Html\Media\MediaSourceInterface">MediaSourceInterface</abbr></a> at         line 39</div>
+        <code>                    string
+    <strong>getSrc</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the path to the media source (The URL of the file)</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the path to the media source (The URL of the file)</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasWidth">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_hasWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 27</div>
+        <code>                    boolean
+    <strong>hasWidth</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the component has width defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the width is set and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWidth">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 36</div>
+        <code>                    int
+    <strong>getWidth</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the width of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>width of the component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidth">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 44</div>
+        <code>                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
+    <strong>setWidth</strong>(int $width)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$width</td>
+                <td>the width of the component (in pixels))</td>
             </tr>
             </table>
 
@@ -412,70 +562,10 @@ element's fallback content.</p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getSize">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getSize"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 35</div>
-        <code>                    <a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
-    <strong>getSize</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the dimensions of the component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a></td>
-            <td>object containing the dimensions of the component (in pixels)</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getWidth">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 42</div>
-        <code>                    int|null
-    <strong>getWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the width of the video component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int|null</td>
-            <td>width of the component or null if not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setWidth">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 50</div>
+                    <h3 id="method_unsetWidth">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_unsetWidth"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 51</div>
         <code>                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
-    <strong>setWidth</strong>(int $width)
+    <strong>unsetWidth</strong>()
         </code>
     </h3>
     <div class="details">
@@ -483,18 +573,8 @@ element's fallback content.</p>
     
 
                     <div class="method-description">
-                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
+                                    <p>Unsets the width of the component</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$width</td>
-                <td>the width of the component (in pixels)</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -513,8 +593,8 @@ element's fallback content.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeight">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 57</div>
-        <code>                    int|null
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_getHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 60</div>
+        <code>                    int
     <strong>getHeight</strong>()
         </code>
     </h3>
@@ -523,15 +603,45 @@ element's fallback content.</p>
     
 
                     <div class="method-description">
-                                    <p>Returns the height of the video component (in pixels)</p>                                                </div>
+                                    <p>Returns the height of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int|null</td>
-            <td>height of the component or null if not set</td>
+            <td>int</td>
+            <td>height of the component or <code>false</code> if not set</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasHeight">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_hasHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 67</div>
+        <code>                    boolean
+    <strong>hasHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the component has height defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the height is set and false otherwise</td>
         </tr>
     </table>
 
@@ -543,7 +653,7 @@ element's fallback content.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setHeight">
-        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 65</div>
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_setHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 75</div>
         <code>                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
     <strong>setHeight</strong>(int $height)
         </code>
@@ -582,10 +692,40 @@ element's fallback content.</p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_unsetHeight">
+        <div class="location">in <a href="../../../Sphp/Html/Media/SizeableInterface.html#method_unsetHeight"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a> at         line 82</div>
+        <code>                    <a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a>
+    <strong>unsetHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets the height of the component</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Media/SizeableInterface.html"><abbr title="Sphp\Html\Media\SizeableInterface">SizeableInterface</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setLazy">
-        <div class="location">in <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a> at         line 35</div>
-        <code>                    <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
-    <strong>setLazy</strong>(boolean $lazy = true)
+        <div class="location">in <a href="../../../Sphp/Html/Media/LazyMediaInterface.html#method_setLazy"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a> at         line 35</div>
+        <code>                    <a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a>
+    <strong>setLazy</strong>(bool $lazy = true)
         </code>
     </h3>
     <div class="details">
@@ -600,9 +740,9 @@ element's fallback content.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$lazy</td>
-                <td>true if the loading is lazy, false otherwise</td>
+                <td>true for lazy loading, false otherwise</td>
             </tr>
             </table>
 
@@ -611,7 +751,7 @@ element's fallback content.</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></td>
+            <td><a href="../../../Sphp/Html/Media/LazyMediaInterface.html"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -624,7 +764,7 @@ element's fallback content.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isLazy">
-        <div class="location">in <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a> at         line 42</div>
+        <div class="location">in <a href="../../../Sphp/Html/Media/LazyMediaInterface.html#method_isLazy"><abbr title="Sphp\Html\Media\LazyMediaInterface">LazyMediaInterface</abbr></a> at         line 42</div>
         <code>                    boolean
     <strong>isLazy</strong>()
         </code>
@@ -642,77 +782,7 @@ element's fallback content.</p>
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the loading is lazy, false otherwisev</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setSrc">
-        <div class="location">at         line 48</div>
-        <code>                    <a href="../../../Sphp/Html/Media/ImgInterface.html"><abbr title="Sphp\Html\Media\ImgInterface">ImgInterface</abbr></a>
-    <strong>setSrc</strong>(string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the path to the track source (The URL of the track file)</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
-                <td>$src</td>
-                <td>the path to the track source (The URL of the track file)</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Media/ImgInterface.html"><abbr title="Sphp\Html\Media\ImgInterface">ImgInterface</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getSrc">
-        <div class="location">at         line 56</div>
-        <code>                    string
-    <strong>getSrc</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the URL of the track file</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the URL of the track file</td>
+            <td>true for lazy loading, false otherwisev</td>
         </tr>
     </table>
 
@@ -724,7 +794,7 @@ element's fallback content.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setAlt">
-        <div class="location">at         line 77</div>
+        <div class="location">at         line 58</div>
         <code>                    <a href="../../../Sphp/Html/Media/ImgInterface.html"><abbr title="Sphp\Html\Media\ImgInterface">ImgInterface</abbr></a>
     <strong>setAlt</strong>(string $alt)
         </code>
@@ -777,7 +847,7 @@ element's fallback content.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAlt">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 68</div>
         <code>                    string
     <strong>getAlt</strong>()
         </code>

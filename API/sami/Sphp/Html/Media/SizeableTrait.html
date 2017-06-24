@@ -100,32 +100,32 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+                    <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSize">setSize</a>( $size)
+                    <a href="#method_attrs">attrs</a>()
         
-                                            <p>Sets the dimensions of the component (in pixels)</p>                </div>
+                                            <p>Returns the attribute manager attached to the component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getSize">getSize</a>()
+                    <a href="#method_hasWidth">hasWidth</a>()
         
-                                            <p>Returns the dimensions of the component (in pixels)</p>                </div>
+                                            <p>Checks if the component has width defined</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|boolean
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getWidth">getWidth</a>()
         
-                                            <p>Returns the width of the video component (in pixels)</p>                </div>
+                                            <p>Returns the width of the component (in pixels)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -133,19 +133,39 @@
                     <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(int|boolean $width)
+                    <a href="#method_setWidth">setWidth</a>(int $width)
         
                                             <p>Sets the width of the component (in pixels)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|boolean
+                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetWidth">unsetWidth</a>()
+        
+                                            <p>Unsets the width of the component</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getHeight">getHeight</a>()
         
-                                            <p>Returns the height of the video component (in pixels)</p>                </div>
+                                            <p>Returns the height of the component (in pixels)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasHeight">hasHeight</a>()
+        
+                                            <p>Checks if the component has height defined</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -153,9 +173,19 @@
                     <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setHeight">setHeight</a>(int|boolean $height)
+                    <a href="#method_setHeight">setHeight</a>(int $height)
         
                                             <p>Sets the height of the component (in pixels)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetHeight">unsetHeight</a>()
+        
+                                            <p>Unsets the height of the component</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -165,10 +195,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_setSize">
-        <div class="location">at         line 26</div>
-        <code>                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setSize</strong>( $size)
+                    <h3 id="method_attrs">
+        <div class="location">at         line 27</div>
+        <code>    abstract                <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+    <strong>attrs</strong>()
         </code>
     </h3>
     <div class="details">
@@ -176,15 +206,105 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the dimensions of the component (in pixels)</p>                                                </div>
+                                    <p>Returns the attribute manager attached to the component</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td>the attribute manager</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasWidth">
+        <div class="location">at         line 34</div>
+        <code>                    boolean
+    <strong>hasWidth</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the component has width defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the width is set and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWidth">
+        <div class="location">at         line 45</div>
+        <code>                    int
+    <strong>getWidth</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the width of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>width of the component</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidth">
+        <div class="location">at         line 55</div>
+        <code>                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+    <strong>setWidth</strong>(int $width)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$size</td>
-                <td>object containing the dimension settings</td>
+                <td>int</td>
+                <td>$width</td>
+                <td>the width of the component (in pixels))</td>
             </tr>
             </table>
 
@@ -205,70 +325,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getSize">
-        <div class="location">at         line 38</div>
-        <code>                    <a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a>
-    <strong>getSize</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the dimensions of the component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Media/Size.html"><abbr title="Sphp\Html\Media\Size">Size</abbr></a></td>
-            <td>new object containing the dimension settings</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getWidth">
-        <div class="location">at         line 47</div>
-        <code>                    int|boolean
-    <strong>getWidth</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the width of the video component (in pixels)</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int|boolean</td>
-            <td>width of the component or <code>false</code> if not set</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setWidth">
-        <div class="location">at         line 58</div>
+                    <h3 id="method_unsetWidth">
+        <div class="location">at         line 65</div>
         <code>                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setWidth</strong>(int|boolean $width)
+    <strong>unsetWidth</strong>()
         </code>
     </h3>
     <div class="details">
@@ -276,19 +336,8 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the width of the component (in pixels)</p>                                                </div>
+                                    <p>Unsets the width of the component</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int|boolean</td>
-                <td>$width</td>
-                <td>the width of the component (in pixels)), false
-        to unset</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -307,8 +356,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeight">
-        <div class="location">at         line 68</div>
-        <code>                    int|boolean
+        <div class="location">at         line 77</div>
+        <code>                    int
     <strong>getHeight</strong>()
         </code>
     </h3>
@@ -317,14 +366,14 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the height of the video component (in pixels)</p>                                                </div>
+                                    <p>Returns the height of the component (in pixels)</p>                    <p><em>NOTE:</em> Check if the component has a width defined</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int|boolean</td>
+            <td>int</td>
             <td>height of the component or <code>false</code> if not set</td>
         </tr>
     </table>
@@ -336,10 +385,40 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_hasHeight">
+        <div class="location">at         line 85</div>
+        <code>                    boolean
+    <strong>hasHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the component has height defined</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the height is set and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setHeight">
-        <div class="location">at         line 79</div>
+        <div class="location">at         line 95</div>
         <code>                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
-    <strong>setHeight</strong>(int|boolean $height)
+    <strong>setHeight</strong>(int $height)
         </code>
     </h3>
     <div class="details">
@@ -353,13 +432,42 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
+                <td>int</td>
                 <td>$height</td>
-                <td>the height of the component (in pixels), <code>false</code>
-        to unset</td>
+                <td>the height of the component (in pixels)</td>
             </tr>
             </table>
 
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unsetHeight">
+        <div class="location">at         line 105</div>
+        <code>                    <a href="../../../Sphp/Html/Media/SizeableTrait.html"><abbr title="Sphp\Html\Media\SizeableTrait">SizeableTrait</abbr></a>
+    <strong>unsetHeight</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets the height of the component</p>                                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 

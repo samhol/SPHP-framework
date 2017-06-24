@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Media\LazyLoaderTrait | SPHP framework API</title>
+    <title>Sphp\I18n\Messages\TemplateInterface | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Media_LazyLoaderTrait" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_I18n_Messages_TemplateInterface" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,33 +65,33 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">trait</span></li>
+                <li><span class="label label-default">interface</span></li>
                                                             <li><a href="../../../Sphp.html">Sphp</a></li>
-                                        <li><a href="../../../Sphp/Html.html">Html</a></li>
-                                        <li><a href="../../../Sphp/Html/Media.html">Media</a></li>
+                                        <li><a href="../../../Sphp/I18n.html">I18n</a></li>
+                                        <li><a href="../../../Sphp/I18n/Messages.html">Messages</a></li>
     
-                <li>LazyLoaderTrait</li>
+                <li>TemplateInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            LazyLoaderTrait
+            TemplateInterface
                 
         </h1>
     </div>
 
-    <p>    trait
-    <strong>LazyLoaderTrait</strong>
+    <p>    interface
+    <strong>TemplateInterface</strong>        implements
+        <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Trait implements the {@link LazyLoaderInterface} interface</p>            <p>Mobile-oriented, fast and extensible jQuery plugin for lazy loading of
-images/videos with build-in support of jQueryMobile framework.</p>                    </div>
+            <p>Implements an abstract translatable message object</p>                                </div>
     
     
     
@@ -101,43 +101,12 @@ images/videos with build-in support of jQueryMobile framework.</p>              
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_attrs">attrs</a>()
+                    <a href="#method_setTranslator">setTranslator</a>( $translator)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setLazy">setLazy</a>(boolean $lazy = true)
-        
-                                            <p>Sets or unsets the media source loading as lazy</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isLazy">isLazy</a>()
-        
-                                            <p>Checks whether the media source loading is lazy</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setSrc">setSrc</a>(string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
-        
-                                            <p>Sets the path to the image source (The URL of the image file)</p>                </div>
+                                            <p>Sets the translator component for message translation</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -145,10 +114,30 @@ images/videos with build-in support of jQueryMobile framework.</p>              
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getSrc">getSrc</a>()
+                    <a href="#method_translateTo">translateTo</a>(string $lang)
         
-                                            <p>Returns the path to the image source (The URL of the image file)</p>                </div>
+                                            <p>Translates the content to given language</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/Translatable.html#method_translateTo"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_translate">translate</a>()
+        
+                                            <p>Returns the message as formatted and translated string</p>                </div>
                 <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the translated text</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/Translatable.html#method___toString"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a></small></div>
             </div>
             </div>
 
@@ -157,29 +146,10 @@ images/videos with build-in support of jQueryMobile framework.</p>              
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_attrs">
-        <div class="location">at         line 28</div>
-        <code>    abstract                
-    <strong>attrs</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setLazy">
-        <div class="location">at         line 39</div>
-        <code>                    <a href="../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a>
-    <strong>setLazy</strong>(boolean $lazy = true)
+                    <h3 id="method_setTranslator">
+        <div class="location">at         line 29</div>
+        <code>                    <a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a>
+    <strong>setTranslator</strong>( $translator)
         </code>
     </h3>
     <div class="details">
@@ -187,16 +157,15 @@ images/videos with build-in support of jQueryMobile framework.</p>              
     
 
                     <div class="method-description">
-                                    <p>Sets or unsets the media source loading as lazy</p>                    <p><strong>Important:</strong> if the <code>$lazy = true</code> the actual media source path is stored into the
-<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
+                                    <p>Sets the translator component for message translation</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
-                <td>$lazy</td>
-                <td>true if the loading is lazy, false otherwise</td>
+                <td></td>
+                <td>$translator</td>
+                <td>the translator component</td>
             </tr>
             </table>
 
@@ -205,7 +174,7 @@ images/videos with build-in support of jQueryMobile framework.</p>              
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Media/LazyLoaderTrait.html"><abbr title="Sphp\Html\Media\LazyLoaderTrait">LazyLoaderTrait</abbr></a></td>
+            <td><a href="../../../Sphp/I18n/Translatable.html"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -217,10 +186,10 @@ images/videos with build-in support of jQueryMobile framework.</p>              
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isLazy">
-        <div class="location">at         line 59</div>
-        <code>                    boolean
-    <strong>isLazy</strong>()
+                    <h3 id="method_translateTo">
+        <div class="location">in <a href="../../../Sphp/I18n/Translatable.html#method_translateTo"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a> at         line 34</div>
+        <code>                    string
+    <strong>translateTo</strong>(string $lang)
         </code>
     </h3>
     <div class="details">
@@ -228,46 +197,15 @@ images/videos with build-in support of jQueryMobile framework.</p>              
     
 
                     <div class="method-description">
-                                    <p>Checks whether the media source loading is lazy</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the loading is lazy, false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setSrc">
-        <div class="location">at         line 73</div>
-        <code>                    <a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a>
-    <strong>setSrc</strong>(string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $src)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the path to the image source (The URL of the image file)</p>                    <p><strong>Important:</strong> if {@link LazyLoaderInterface::isLazy()} this method sets the value of the
-<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
+                                    <p>Translates the content to given language</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|<a href="../../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
-                <td>$src</td>
-                <td>the path to the image source (The URL of the image file)</td>
+                <td>string</td>
+                <td>$lang</td>
+                <td></td>
             </tr>
             </table>
 
@@ -276,8 +214,8 @@ images/videos with build-in support of jQueryMobile framework.</p>              
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Media/LazyLoaderInterface.html"><abbr title="Sphp\Html\Media\LazyLoaderInterface">LazyLoaderInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
+            <td>string</td>
+            <td>the content as a translated string</td>
         </tr>
     </table>
 
@@ -288,10 +226,10 @@ images/videos with build-in support of jQueryMobile framework.</p>              
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getSrc">
-        <div class="location">at         line 93</div>
+                    <h3 id="method_translate">
+        <div class="location">at         line 36</div>
         <code>                    string
-    <strong>getSrc</strong>()
+    <strong>translate</strong>()
         </code>
     </h3>
     <div class="details">
@@ -299,8 +237,7 @@ images/videos with build-in support of jQueryMobile framework.</p>              
     
 
                     <div class="method-description">
-                                    <p>Returns the path to the image source (The URL of the image file)</p>                    <p><strong>Important:</strong> if {@link LazyLoaderInterface::isLazy()} this method returns the value of the
-<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
+                                    <p>Returns the message as formatted and translated string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -308,7 +245,37 @@ images/videos with build-in support of jQueryMobile framework.</p>              
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the path to the image source (The URL of the image file)</td>
+            <td>the content as a translated string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../Sphp/I18n/Translatable.html#method___toString"><abbr title="Sphp\I18n\Translatable">Translatable</abbr></a> at         line 48</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the translated text</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the translated text</td>
         </tr>
     </table>
 
