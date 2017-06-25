@@ -213,16 +213,6 @@ between pairs and the array to implode.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;int[]
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_generateRandom">generateRandom</a>(int $length, int $minValue, int $maxValue)
-        
-                                            <p>Returns a single dimension array of random integers of given range</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     static&nbsp;boolean
                 </div>
                 <div class="col-md-8 type">
@@ -332,17 +322,6 @@ order starting at $base</p>                </div>
                     <a href="#method_flatten">flatten</a>(array $array)
         
                                             <p>Flattens the multidimensional array to a single dimension</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_createKeyChain">createKeyChain</a>(array $chain, $value = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -868,58 +847,8 @@ between pairs and the array to implode.</p>                                     
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_generateRandom">
-        <div class="location">at         line 251</div>
-        <code>        static            int[]
-    <strong>generateRandom</strong>(int $length, int $minValue, int $maxValue)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns a single dimension array of random integers of given range</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$length</td>
-                <td>the length of the array</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$minValue</td>
-                <td>the minimum value of a random number</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$maxValue</td>
-                <td>the maximum value of a random number</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int[]</td>
-            <td>array of random integers of given range</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_test">
-        <div class="location">at         line 267</div>
+        <div class="location">at         line 251</div>
         <code>        static            boolean
     <strong>test</strong>(array $array, callable $rule)
         </code>
@@ -965,7 +894,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getkeypath">
-        <div class="location">at         line 276</div>
+        <div class="location">at         line 260</div>
         <code>        static            
     <strong>getkeypath</strong>($arr, $lookup)
         </code>
@@ -999,7 +928,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 301</div>
+        <div class="location">at         line 285</div>
         <code>        static            mixed
     <strong>getValue</strong>(array $array, mixed|mixed[] $path)
         </code>
@@ -1044,7 +973,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isLike">
-        <div class="location">at         line 316</div>
+        <div class="location">at         line 300</div>
         <code>        static            string[]
     <strong>isLike</strong>(array $arr, string $needle)
         </code>
@@ -1089,7 +1018,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_keyContains">
-        <div class="location">at         line 329</div>
+        <div class="location">at         line 313</div>
         <code>        static            string[]
     <strong>keyContains</strong>(array $arr, string $needle)
         </code>
@@ -1134,7 +1063,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isIndexed">
-        <div class="location">at         line 345</div>
+        <div class="location">at         line 329</div>
         <code>        static            boolean
     <strong>isIndexed</strong>(array $arr)
         </code>
@@ -1174,7 +1103,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isSequential">
-        <div class="location">at         line 359</div>
+        <div class="location">at         line 343</div>
         <code>        static            boolean
     <strong>isSequential</strong>(array $arr, int $base)
         </code>
@@ -1220,7 +1149,7 @@ order starting at $base</p>                                                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_setSequential">
-        <div class="location">at         line 373</div>
+        <div class="location">at         line 357</div>
         <code>        static            boolean
     <strong>setSequential</strong>(array $arr, mixed $base, int $step = 1)
         </code>
@@ -1270,7 +1199,7 @@ order starting at $base</p>                                                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_implode">
-        <div class="location">at         line 399</div>
+        <div class="location">at         line 383</div>
         <code>        static            string
     <strong>implode</strong>(array $arr, string $glue = &quot;&quot;, string|null $lastGlue = null)
         </code>
@@ -1329,7 +1258,7 @@ given. (Otherwise uses the $glue string)</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location">at         line 433</div>
+        <div class="location">at         line 417</div>
         <code>        static            array
     <strong>copy</strong>(array $arr)
         </code>
@@ -1375,7 +1304,7 @@ given. (Otherwise uses the $glue string)</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_flatten">
-        <div class="location">at         line 455</div>
+        <div class="location">at         line 439</div>
         <code>        static            mixed[]
     <strong>flatten</strong>(array $array)
         </code>
@@ -1404,49 +1333,6 @@ given. (Otherwise uses the $glue string)</li>
         <tr>
             <td>mixed[]</td>
             <td>the one dimensional result array</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_createKeyChain">
-        <div class="location">at         line 474</div>
-        <code>        static            array
-    <strong>createKeyChain</strong>(array $chain, $value = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$chain</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
         </tr>
     </table>
 

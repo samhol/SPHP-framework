@@ -87,7 +87,7 @@
     
 
             <div class="description">
-            <p>Implements a chainable string class</p>                                </div>
+            <p>Implements a string class</p>                                </div>
     
     
     
@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(mixed $str = &#039;&#039;, string $encoding = null)
+                    <a href="#method___construct">__construct</a>(string $str = &#039;&#039;, string $encoding = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -120,9 +120,9 @@
                     static&nbsp;<a href="../../Sphp/Stdlib/StringObject.html"><abbr title="Sphp\Stdlib\StringObject">StringObject</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_create">create</a>(mixed $str = &#039;&#039;, string $encoding = null)
+                    <a href="#method_create">create</a>(string $str = &#039;&#039;, string $encoding = null)
         
-                                            <p>Creates a {@link self} object from given str and encoding properties</p>                </div>
+                                            <p>Creates a string object from given str and encoding properties</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1038,7 +1038,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 134</div>
         <code>                    
-    <strong>__construct</strong>(mixed $str = &#039;&#039;, string $encoding = null)
+    <strong>__construct</strong>(string $str = &#039;&#039;, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1055,7 +1055,7 @@ without a __toString method.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$str</td>
                 <td>Value to modify, after being cast to string</td>
             </tr>
@@ -1117,7 +1117,7 @@ without a __toString method.</p>                            </div>
                     <h3 id="method_create">
         <div class="location">at         line 168</div>
         <code>        static            <a href="../../Sphp/Stdlib/StringObject.html"><abbr title="Sphp\Stdlib\StringObject">StringObject</abbr></a>
-    <strong>create</strong>(mixed $str = &#039;&#039;, string $encoding = null)
+    <strong>create</strong>(string $str = &#039;&#039;, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1125,14 +1125,14 @@ without a __toString method.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Creates a {@link self} object from given str and encoding properties</p>                    <p>If $encoding is not specified, it defaults to mb_internal_encoding(). It
+                                    <p>Creates a string object from given str and encoding properties</p>                    <p>If $encoding is not specified, it defaults to mb_internal_encoding(). It
 then returns the initialized object.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$str</td>
                 <td>Value to modify, after being cast to string</td>
             </tr>

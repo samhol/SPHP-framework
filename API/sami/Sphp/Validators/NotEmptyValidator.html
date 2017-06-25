@@ -137,7 +137,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($type = &#039;scalar&#039;, $message = &quot;Value is required and can&#039;t be empty&quot;)
+                    <a href="#method___construct">__construct</a>($type = &#039;scalar&#039;, $message = &quot;Value is required and not empty&quot;)
         
                                             <p>Constructs a new validator</p>                </div>
                 <div class="col-md-2"></div>
@@ -174,7 +174,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr>
+                    <a href="../../Sphp/I18n/Messages/Message.html"><abbr title="Sphp\I18n\Messages\Message">Message</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getMessageTemplate">getMessageTemplate</a>(string $id)
@@ -188,7 +188,7 @@
                     <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setMessageTemplate">setMessageTemplate</a>(string $id, <abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr> $messageTemplate)
+                    <a href="#method_setMessageTemplate">setMessageTemplate</a>(string $id, string $messageTemplate)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -199,29 +199,7 @@
                     <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_createMessageTemplate">createMessageTemplate</a>($id, $singular, $plural = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_createMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_fromMessageTemplate">fromMessageTemplate</a>($id, $params = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_fromMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_error">error</a>(mixed $id, mixed $params = null)
+                    <a href="#method_error">error</a>(string $id, array $params = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -254,36 +232,6 @@
                     <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_createErrorMessage">createErrorMessage</a>(string $msg, array $args = [])
-        
-                                            <p>Adds an error message to the validator</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_createErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addErrorMessage">addErrorMessage</a>(<abbr title="Sphp\I18n\Message">Message</abbr> $msg)
-        
-                                            <p>Adds an error message to the validator</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_addErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setErrorMessage">setErrorMessage</a>(<abbr title="Sphp\I18n\Message">Message</abbr> $msg)
-        
-                                            <p>Adds an error message to the validator</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_setErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_reset">reset</a>()
         
                                             <p>Resets the validator to for revalidation</p>                </div>
@@ -291,7 +239,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\I18n\MessageList">MessageList</abbr>
+                    <a href="../../Sphp/I18n/Messages/TranslatableList.html"><abbr title="Sphp\I18n\Messages\TranslatableList">TranslatableList</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getErrors">getErrors</a>()
@@ -319,7 +267,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 45</div>
         <code>                    
-    <strong>__construct</strong>($type = &#039;scalar&#039;, $message = &quot;Value is required and can&#039;t be empty&quot;)
+    <strong>__construct</strong>($type = &#039;scalar&#039;, $message = &quot;Value is required and not empty&quot;)
         </code>
     </h3>
     <div class="details">
@@ -353,7 +301,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___destruct"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___destruct"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 61</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -374,7 +322,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___clone"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 67</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___clone"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 68</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -395,7 +343,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___invoke"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 78</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___invoke"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 79</div>
         <code>                    boolean
     <strong>__invoke</strong>(mixed $value)
         </code>
@@ -435,8 +383,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 88</div>
-        <code>                    <abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 89</div>
+        <code>                    <a href="../../Sphp/I18n/Messages/Message.html"><abbr title="Sphp\I18n\Messages\Message">Message</abbr></a>
     <strong>getMessageTemplate</strong>(string $id)
         </code>
     </h3>
@@ -460,7 +408,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr></td>
+            <td><a href="../../Sphp/I18n/Messages/Message.html"><abbr title="Sphp\I18n\Messages\Message">Message</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -482,9 +430,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 101</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 102</div>
         <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>setMessageTemplate</strong>(string $id, <abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr> $messageTemplate)
+    <strong>setMessageTemplate</strong>(string $id, string $messageTemplate)
         </code>
     </h3>
     <div class="details">
@@ -501,7 +449,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Sphp\I18n\MessageTemplate">MessageTemplate</abbr></td>
+                <td>string</td>
                 <td>$messageTemplate</td>
                 <td></td>
             </tr>
@@ -524,101 +472,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_createMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 111</div>
-        <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>createMessageTemplate</strong>($id, $singular, $plural = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$id</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$singular</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$plural</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_fromMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_fromMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 123</div>
-        <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>fromMessageTemplate</strong>($id, $params = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$id</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$params</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_error">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_error"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 134</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_error"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 116</div>
         <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>error</strong>(mixed $id, mixed $params = null)
+    <strong>error</strong>(string $id, array $params = [])
         </code>
     </h3>
     <div class="details">
@@ -630,12 +487,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$id</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>array</td>
                 <td>$params</td>
                 <td></td>
             </tr>
@@ -659,7 +516,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 143</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 125</div>
         <code>                    mixed
     <strong>getValue</strong>()
         </code>
@@ -687,7 +544,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 152</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 134</div>
         <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
     <strong>setValue</strong>(mixed $value)
         </code>
@@ -724,133 +581,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createErrorMessage">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_createErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 165</div>
-        <code>            protected        <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>createErrorMessage</strong>(string $msg, array $args = [])
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Adds an error message to the validator</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$msg</td>
-                <td>the error message text</td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$args</td>
-                <td>arguments</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addErrorMessage">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_addErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 176</div>
-        <code>            protected        <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>addErrorMessage</strong>(<abbr title="Sphp\I18n\Message">Message</abbr> $msg)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Adds an error message to the validator</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\I18n\Message">Message</abbr></td>
-                <td>$msg</td>
-                <td>the error message text</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setErrorMessage">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setErrorMessage"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 187</div>
-        <code>            protected        <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
-    <strong>setErrorMessage</strong>(<abbr title="Sphp\I18n\Message">Message</abbr> $msg)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Adds an error message to the validator</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\I18n\Message">Message</abbr></td>
-                <td>$msg</td>
-                <td>the error message text</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 198</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 145</div>
         <code>                    <a href="../../Sphp/Validators/AbstractValidator.html"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a>
     <strong>reset</strong>()
         </code>
@@ -880,8 +612,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 206</div>
-        <code>                    <abbr title="Sphp\I18n\MessageList">MessageList</abbr>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 150</div>
+        <code>                    <a href="../../Sphp/I18n/Messages/TranslatableList.html"><abbr title="Sphp\I18n\Messages\TranslatableList">TranslatableList</abbr></a>
     <strong>getErrors</strong>()
         </code>
     </h3>
@@ -897,7 +629,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\I18n\MessageList">MessageList</abbr></td>
+            <td><a href="../../Sphp/I18n/Messages/TranslatableList.html"><abbr title="Sphp\I18n\Messages\TranslatableList">TranslatableList</abbr></a></td>
             <td>error messages</td>
         </tr>
     </table>
@@ -910,7 +642,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValid">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 52</div>
         <code>                    boolean
     <strong>isValid</strong>(mixed $value)
         </code>
