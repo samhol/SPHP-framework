@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Timer.php (UTF-8)
+ * StopWatch.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -15,7 +15,7 @@ namespace Sphp\Stdlib;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Timer {
+class StopWatch {
 
   /**
    * the start time
@@ -28,7 +28,7 @@ class Timer {
    * Constructs a new instance
    */
   public function __construct() {
-    $this->start();
+    
   }
 
   /**
@@ -37,7 +37,7 @@ class Timer {
    * @return self for a fluent interface
    */
   public function startFromRequest() {
-    $this->startTime = filter_input(\INPUT_SERVER, "REQUEST_TIME_FLOAT", \FILTER_SANITIZE_NUMBER_INT);
+    $this->startTime = $_SERVER['REQUEST_TIME_FLOAT'] ?? 0.0;
     return $this;
   }
 
@@ -55,28 +55,25 @@ class Timer {
    * Returns the amount of the time from the constructor call or start call to
    *  the current time
    *
+   * @param  float $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public function getTime() {
-    return microtime(true) - $this->startTime;
+  public function getTime(int $precision = 2): float {
+    $seconds = microtime(true) - $this->startTime;
+    return number_format($seconds, $precision);
   }
 
   /**
    * Returns the amount of the time from the start of the execution to the
    * current time
    *
-   * @param  float $precision optional number of decimal digits to round to
+   * @param  float $precision number of decimal digits to round to (defaults to 2)
    * @return float the requested time
    */
-  public static function getEcecutionTime($precision = 2) {
-    $time = 0;
-    if (array_key_exists("REQUEST_TIME_FLOAT", $_SERVER)) {
-      $time = microtime(true) - intval($_SERVER["REQUEST_TIME_FLOAT"]);
-    }
-    if ($precision !== false) {
-      $time = number_format($time, $precision);
-    }
-    return $time;
+  public static function getEcecutionTime(int $precision = 2): float {
+    $instance = new Static();
+    $instance->startFromRequest();
+    return $instance->getTime($precision);
   }
 
 }

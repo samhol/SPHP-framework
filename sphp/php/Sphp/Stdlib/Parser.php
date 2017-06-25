@@ -48,7 +48,7 @@ class Parser {
    */
   private static $instances = [];
 
-  public static function readerExists($type) {
+  public static function readerExists(string $type) {
     return array_key_exists($type, static::$readers);
   }
 
@@ -58,7 +58,7 @@ class Parser {
    * @return ReaderInterface
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function getReader($type) {
+  public static function getReader(string $type) {
     if (!static::readerExists($type)) {
       throw new RuntimeException("Unsupported data type: '$type'");
     }
@@ -76,7 +76,7 @@ class Parser {
    * @return mixed
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function fromFile($filepath, $extension = null) {
+  public static function fromFile(string$filepath, string $extension = null) {
     $fullPath = Filesystem::getFullPath($filepath);
     if (!file_exists($fullPath)) {
       throw new RuntimeException(sprintf(
@@ -113,7 +113,7 @@ class Parser {
    * @return mixed
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function fromString($string, $extension) {
+  public static function fromString(string $string, string $extension) {
     if (array_key_exists($extension, static::$readers)) {
       $reader = static::getReader($extension);
       $parsed = $reader->fromString($string);

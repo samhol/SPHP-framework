@@ -145,7 +145,7 @@ class Arrays {
    * @param type $userdata
    * @return array
    */
-  public static function recursiveDelete(array &$array, callable $callback, $userdata = null) {
+  public static function recursiveDelete(array &$array, callable $callback, $userdata = null): array {
     foreach ($array as $key => &$value) {
       if (is_array($value)) {
         $value = static::recursiveDelete($value, $callback, $userdata);
@@ -165,7 +165,7 @@ class Arrays {
    * @param  array $array2 the second array to compare
    * @return array the full difference between the input arrays
    */
-  public static function diff($array1, $array2) {
+  public static function diff($array1, $array2): array {
     $aReturn = array();
 
     foreach ($array1 as $mKey => $mValue) {
@@ -197,7 +197,7 @@ class Arrays {
    * @return mixed[] an array containing all the elements of `$arr` after 
    *         applying the callback function to each one
    */
-  public static function multiMap($callback, array $arr) {
+  public static function multiMap($callback, array $arr): array {
     $ret = [];
     foreach ($arr as $key => $val) {
       $ret[$key] = (is_array($val) ? self::multiMap($callback, $val) : $callback($val));
@@ -214,7 +214,7 @@ class Arrays {
    * @param  string $glue the glue between key and value
    * @return string the imploded array
    */
-  public static function implodeWithKeys(array $array, $separator = ', ', $glue = ' => ') {
+  public static function implodeWithKeys(array $array, $separator = ', ', $glue = ' => '): string {
     $string = [];
     foreach ($array as $key => $val) {
       $string[] = "{$key}{$glue}{$val}";
@@ -233,27 +233,11 @@ class Arrays {
    * @return array the result array
    * @link   http://php.net/array-combine PHP array_combine
    */
-  public static function valuesToKeys(array $array) {
+  public static function valuesToKeys(array $array): array {
     if (count($array) == 0) {
       return $array;
     }
     return array_combine($array, $array);
-  }
-
-  /**
-   * Returns a single dimension array of random integers of given range 
-   * 
-   * @param  int $length the length of the array
-   * @param  int $minValue the minimum value of a random number
-   * @param  int $maxValue the maximum value of a random number
-   * @return int[] array of random integers of given range 
-   */
-  public static function generateRandom($length, $minValue, $maxValue) {
-    $arr = [];
-    for ($i = 0; $i < $length; $i++) {
-      $arr[$i] = rand($minValue, $maxValue);
-    }
-    return $arr;
   }
 
   /**
@@ -264,7 +248,7 @@ class Arrays {
    * @param  \callable $rule the rule to test the array key value pair against
    * @return boolean true if the array passes the rule, otherwise false
    */
-  public static function test(array $array, $rule) {
+  public static function test(array $array, $rule): bool {
     foreach ($array as $key => $val) {
       if (!$rule($key, $val)) {
         return false;
@@ -313,7 +297,7 @@ class Arrays {
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that contain the given phrase
    */
-  public static function isLike(array $arr, $needle) {
+  public static function isLike(array $arr, $needle): array {
     $searched = preg_quote($needle, '/');
     $input = preg_quote($searched, '~'); // don't forget to quote input string!
     return preg_grep('~' . $input . '~', $arr);
@@ -326,7 +310,7 @@ class Arrays {
    * @param  string $needle the phrase to search for
    * @return string[] an array of values that have the matching keys
    */
-  public static function keyContains(array $arr, $needle) {
+  public static function keyContains(array $arr, $needle): array {
     $keys = array_keys($arr);
     $passed = self::isLike($keys, $needle);
     $result = [];
@@ -342,7 +326,7 @@ class Arrays {
    * @param array $arr checked array
    * @return boolean true if array is indexed and false otherwise
    */
-  public static function isIndexed(array $arr) {
+  public static function isIndexed(array $arr): bool {
     for (reset($arr); is_int(key($arr)); next($arr))
       ;
     return is_null(key($arr));
@@ -356,7 +340,7 @@ class Arrays {
    * @param int $base the starting index of the sequence
    * @return boolean true if conditions hold and false otherwise
    */
-  public static function isSequential(array $arr, $base = 0) {
+  public static function isSequential(array $arr, $base = 0): bool {
     for (reset($arr), $base = (int) $base; key($arr) === $base++; next($arr))
       ;
     return is_null(key($arr));
@@ -370,7 +354,7 @@ class Arrays {
    * @param int $step optional increment between elements in the sequence.
    * @return boolean true if conditions hold and false otherwise
    */
-  public static function setSequential(array $arr, $base = 0, $step = 1) {
+  public static function setSequential(array $arr, $base = 0, $step = 1): bool {
     if ($base == 0 && $step == 1) {
       $result = array_values($arr);
     } else {
@@ -396,7 +380,7 @@ class Arrays {
    * @param  string|null $lastGlue optional string between the last two array elements
    * @return string the imploded array
    */
-  public static function implode(array $arr, $glue = "", $lastGlue = null) {
+  public static function implode(array $arr, $glue = "", $lastGlue = null): string {
     if (is_null($lastGlue)) {
       $lastGlue = $glue;
     }
@@ -426,11 +410,11 @@ class Arrays {
    * * Works also on multidimensional arrays
    * * Clones all objects stored in $arr using PHP's clone keyword.
    *
-   * @param array $arr array to copy
+   * @param  array $arr array to copy
    * @return array copied array
-   * @link http://php.net/manual/en/language.oop5.cloning.php Object Cloning
+   * @link   http://php.net/manual/en/language.oop5.cloning.php Object Cloning
    */
-  public static function copy(array $arr) {
+  public static function copy(array $arr): array {
     $newArray = [];
     foreach ($arr as $key => $value) {
       if (is_array($value)) {
@@ -452,7 +436,7 @@ class Arrays {
    * @param  mixed[] $array
    * @return mixed[] the one dimensional result array
    */
-  public static function flatten(array $array) {
+  public static function flatten(array $array): array {
     $newArray = [];
     foreach ($array as $child) {
       if (is_array($child)) {
@@ -462,25 +446,6 @@ class Arrays {
       }
     }
     return $newArray;
-  }
-
-  /**
-   * 
-   * @param  array $chain
-   * @param  array $arr
-   * @param  mixed $value
-   * @return array
-   */
-  public static function createKeyChain(array $chain, $value = null) {
-    $r = [];
-    $d = &$r;
-    while (!empty($chain)) {
-      $k = array_shift($chain);
-
-      $d = &$d[$k];
-    }
-    $d = $value;
-    return $r;
   }
 
 }
