@@ -35,9 +35,10 @@ use Sphp\Stdlib\Strings;
  */
 class RequiredValueValidator extends AbstractValidator {
 
-  /**
-   * {@inheritdoc}
-   */
+  public function __construct($error = 'Please insert a value') {
+    parent::__construct($error);
+  }
+
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
@@ -49,7 +50,7 @@ class RequiredValueValidator extends AbstractValidator {
       $valid = false;
     }
     if (!$valid) {
-      $this->createErrorMessage('Please insert a value');
+      $this->error(self::INVALID);
     }
     return $valid;
   }

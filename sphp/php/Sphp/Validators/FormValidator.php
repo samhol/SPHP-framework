@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\TopicList;
+use Sphp\I18n\Messages\TopicList;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Stdlib\Arrays;
 
@@ -38,13 +38,13 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * Constructs a new validator
    */
   public function __construct() {
-    parent::__construct();
-    $this->createMessageTemplate(self::INVALID, 'The form has errors');
+    parent::__construct('The form has errors');
+    $this->setMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
     $this->inputErrors = new TopicList();
   }
 
-  public function getInputErrors() {
+  public function getInputErrors(): TopicList {
     return $this->inputErrors;
   }
 
@@ -73,7 +73,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
       }
     }
     if (!$valid) {
-      $this->fromMessageTemplate(self::INVALID);
+      $this->error(self::INVALID);
     }
     return $valid;
   }

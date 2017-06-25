@@ -38,17 +38,19 @@ class IdenticalValidator extends AbstractValidator {
    *
    * @param mixed $token the haystack
    */
-  public function __construct($token) {
-    parent::__construct();
+  public function __construct($token, $errormessage = "Value and the token does not match") {
+    parent::__construct($errormessage);
     $this->setToken($token);
   }
 
   public function __destruct() {
     unset($this->token);
+    parent::__destruct();
   }
 
   public function __clone() {
     $this->token = Arrays::copy($this->token);
+    parent::__clone();
   }
 
   public function getToken() {
@@ -93,7 +95,7 @@ class IdenticalValidator extends AbstractValidator {
     }
 
     if (!$valid) {
-      $this->createErrorMessage("Value $value and the token does not match");
+      $this->error(self::INVALID);
     }
     return $valid;
   }

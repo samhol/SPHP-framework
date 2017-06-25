@@ -8,6 +8,7 @@
 namespace Sphp\Validators;
 
 use Sphp\Stdlib\StringObject;
+use Sphp\I18n\Messages\Message;
 
 /**
  * Validates string length
@@ -48,9 +49,9 @@ class StringLengthValidator extends AbstractValidator {
     parent::__construct();
     $this->min = intval($min);
     $this->max = intval($max);
-    $this->createMessageTemplate(static::INVALID, 'Invalid type given. String expected');
-    $this->createMessageTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
-    $this->createMessageTemplate(static::TOO_LONG, 'The input is more than %d characters long');
+    $this->setMessageTemplate(static::INVALID, 'Invalid type given. String expected');
+    $this->setMessageTemplate(static::TOO_SHORT, 'The input is less than %d characters long');
+    $this->setMessageTemplate(static::TOO_LONG, 'The input is more than %d characters long');
   }
 
   /**
@@ -122,10 +123,7 @@ class StringLengthValidator extends AbstractValidator {
   public function isUpperBoundValidator() {
     return $this->min < 0 && $this->max > 0;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
@@ -133,13 +131,13 @@ class StringLengthValidator extends AbstractValidator {
     $length = $string->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
       $valid = false;
-      $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);
+      $this->error(self::TOO_LONG, [$this->min]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {
       $valid = false;
-      $this->createErrorMessage("Please insert atleast %d characters", [$this->min]);
+      $this->error(self::TOO_LONG, [$this->min]);
     } else if ($this->isUpperBoundValidator() && $length > $this->max) {
       $valid = false;
-      $this->createErrorMessage("Please insert at most %d characters", [$this->max]);
+      $this->error(self::TOO_LONG, [$this->min]);
     }
     return $valid;
   }

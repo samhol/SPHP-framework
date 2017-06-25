@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use DateTime;
-
+use Sphp\I18n\Messages\Message;
 /**
  * Validates a datetime
  *
@@ -36,7 +36,7 @@ class DatetimeValidator extends AbstractValidator {
     if ($format !== null) {
       $this->setDateTimeFormat($format);
     }
-    $this->createMessageTemplate(static::INVALID, 'Please insert correct date and time');
+    $this->setMessageTemplate(static::INVALID, Message::singular('Please insert correct date and time'));
   }
 
   /**

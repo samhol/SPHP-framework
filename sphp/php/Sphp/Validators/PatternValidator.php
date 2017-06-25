@@ -48,33 +48,12 @@ class PatternValidator extends AbstractValidator {
    * @param string|null $pattern regular expression pattern to validate against
    * @param string|Message $errorMessage error message corresponding to the pattern
    */
-  public function __construct($pattern = null, $errorMessage = null) {
-    parent::__construct();
+  public function __construct($pattern = null, $errorMessage = 'Invalid pattern given') {
+    parent::__construct('Invalid type given. String, integer or float expected');
     if ($pattern !== null) {
       $this->setPattern($pattern, $errorMessage);
     }
-    if ($errorMessage !== null) {
-      $this->setErrorMessage($errorMessage);
-    }
-  }
-
-  /**
-   * Sets a regular expression patterns to test.
-   * **Notes:** If all of the patterns is a matches => the cheked string is valid
-   *
-   *  **Note:** If the validable value matches the pattern => the validated
-   *  data is valid.
-   *
-   * @param string $pattern regular expression pattern to validate against
-   * @param string|Message $errorMessage error message corresponding to the pattern
-   * @return self for a fluent interface
-   */
-  public function setErrorMessage($errorMessage) {
-    if (!($errorMessage instanceof Message)) {
-      $errorMessage = new Message($errorMessage);
-    }
-    $this->errorMessage = $errorMessage;
-    return $this;
+    $this->setMessageTemplate(self::NOT_MATCH, $errorMessage);
   }
 
   /**
@@ -99,12 +78,12 @@ class PatternValidator extends AbstractValidator {
     $this->setValue($value);
     if (!is_string($value) && !is_int($value) && !is_float($value)) {
       //echo 'Invalid type given. String, integer or float expected';
-      $this->createErrorMessage('Invalid type given. String, integer or float expected');
+      $this->error(self::INVALID);
       return false;
     }
     if (!Strings::match($value, $this->pattern)) {
       echo $value . $this->pattern;
-      $this->addErrorMessage($this->errorMessage);
+      $this->error(self::NOT_MATCH);
       return false;
     }
     return true;

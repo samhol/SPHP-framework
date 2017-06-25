@@ -29,7 +29,7 @@ class IsInstanceOfValidator extends AbstractValidator {
    * @param type $className
    */
   public function __construct($className) {
-    parent::__construct();
+    parent::__construct('Value is not instance of %s');
     $this->setClassName($className);
   }
 
@@ -37,7 +37,7 @@ class IsInstanceOfValidator extends AbstractValidator {
    * 
    * @return string class name
    */
-  public function getClassName() {
+  public function getClassName():string {
     return $this->className;
   }
 
@@ -51,7 +51,7 @@ class IsInstanceOfValidator extends AbstractValidator {
     if (is_object($className)) {
       $className = get_class($className);
     } else if (!is_string($className)) {
-      throw new InvalidArgumentException("Invalid class name parameter");
+      throw new InvalidArgumentException('Invalid class name parameter');
     }
     $this->className = $className;
     return $this;
@@ -62,7 +62,7 @@ class IsInstanceOfValidator extends AbstractValidator {
     if ($value instanceof $this->className) {
       return true;
     }
-    $this->createErrorMessage('blaa');
+    $this->error(self::INVALID, [$this->className]);
     return false;
   }
 

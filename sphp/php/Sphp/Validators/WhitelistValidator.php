@@ -17,6 +17,8 @@ namespace Sphp\Validators;
  */
 class WhitelistValidator extends AbstractValidator {
 
+  const ILLEGAL_KEY = '_illegal_key_';
+
   /**
    *
    * @var array
@@ -29,7 +31,8 @@ class WhitelistValidator extends AbstractValidator {
    * @param array $whitelist
    */
   public function __construct(array $whitelist = []) {
-    parent::__construct();
+    parent::__construct('Array expected');
+    $this->setMessageTemplate(self::ILLEGAL_KEY, 'An illegal key found');
     $this->setWhitelist($whitelist);
   }
 
@@ -44,12 +47,12 @@ class WhitelistValidator extends AbstractValidator {
 
   public function isValid($param): bool {
     if (!is_array($param)) {
-      $this->addErrorMessage('Array expected');
+      $this->error(self::INVALID);
       return false;
     }
     foreach ($param as $key => $item) {
       if (!in_array($key, $this->whitelist)) {
-        $this->addErrorMessage("An illegal key found");
+        $this->error(self::ILLEGAL_KEY);
         return false;
       }
     }

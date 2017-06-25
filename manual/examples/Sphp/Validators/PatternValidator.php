@@ -2,9 +2,8 @@
 
 namespace Sphp\Validators;
 
-$validator = (new PatternValidator())
-        ->setPattern("/^\d+$/")
-        ->setErrorMessage("Please insert numbers only");
+$validator = (new PatternValidator("Please insert numbers only"))
+        ->setPattern("/^\d+$/");
 
 var_dump($validator->isValid(" \n\r\t")) . "\n";
 

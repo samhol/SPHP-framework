@@ -8,9 +8,10 @@
 namespace Sphp\Validators;
 
 use Sphp\I18n\MessageInterface;
-use Sphp\I18n\MessageList;
-use Sphp\I18n\Message;
+use Sphp\I18n\Messages\TranslatableList;
+use Sphp\I18n\Messages\Message;
 use Sphp\I18n\MessageTemplate;
+use Sphp\I18n\Translatable;
 
 /**
  * Abstract superclass for validation
@@ -27,7 +28,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * stores error messages if not valid
    *
-   * @var MessageList
+   * @var TranslatableList
    */
   private $errors;
 
@@ -50,8 +51,8 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function __construct($error = 'Invalid value') {
     $this->messageTemplates = [];
-    $this->errors = new MessageList();
-    $this->createMessageTemplate(static::INVALID, $error);
+    $this->errors = new TranslatableList();
+    $this->setMessageTemplate(static::INVALID, $error);
   }
 
   /**
@@ -82,7 +83,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  string $id
-   * @return MessageTemplate
+   * @return Message
    * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
    */
   public function getMessageTemplate($id) {
@@ -98,41 +99,22 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @param  string $messageTemplate
    * @return self for a fluent interface
    */
-  public function setMessageTemplate($id, MessageTemplate $messageTemplate) {
+  public function setMessageTemplate(string $id, $messageTemplate) {
+    if (!$messageTemplate instanceof Translatable) {
+      $messageTemplate = Message::singular($messageTemplate);
+    }
     $this->messageTemplates[$id] = $messageTemplate;
     return $this;
   }
 
   /**
    * 
-   * @param  array|\Traversable $messageTemplates
-   * @return self for a fluent interface
-   */
-  public function createMessageTemplate($id, $singular, $plural = null) {
-
-    $this->setMessageTemplate($id, new MessageTemplate($singular, $plural));
-
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  array|\Traversable $messageTemplates
-   * @return self for a fluent interface
-   */
-  public function fromMessageTemplate($id, $params = null) {
-    $this->addErrorMessage($this->getMessageTemplate($id)->setParams($params)->generate());
-    return $this;
-  }
-
-  /**
-   * 
    * @param  mixed $id
-   * @param  mixed $params
+   * @param  array $params
    * @return self for a fluent interface
    */
-  public function error($id, $params = null) {
-    $this->addErrorMessage($this->getMessageTemplate($id)->setParams($params)->generate());
+  public function error(string $id, array $params = []) {
+    $this->errors->append($this->getMessageTemplate($id)->setArguments($params));
     return $this;
   }
 
@@ -156,41 +138,6 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
-   * Adds an error message to the validator
-   *
-   * @param  string $msg the error message text
-   * @param  scalar[] $args arguments
-   * @return self for a fluent interface
-   */
-  protected function createErrorMessage($msg, array $args = []) {
-    $this->errors->insert(new Message($msg, $args));
-    return $this;
-  }
-
-  /**
-   * Adds an error message to the validator
-   *
-   * @param  Message $msg the error message text
-   * @return self for a fluent interface
-   */
-  protected function addErrorMessage(Message $msg) {
-    $this->errors->insert($msg);
-    return $this;
-  }
-
-  /**
-   * Adds an error message to the validator
-   *
-   * @param  Message $msg the error message text
-   * @return self for a fluent interface
-   */
-  protected function setErrorMessage(Message $msg) {
-    $this->errors->clearContent()->append($msg);
-    return $this;
-  }
-
-
-  /**
    * Resets the validator to for revalidation
    *
    * @return self for a fluent interface
@@ -199,11 +146,8 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->errors->clearContent();
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getErrors() {
+  
+  public function getErrors(): TranslatableList {
     return $this->errors;
   }
 

@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Validators;
-
+use Sphp\I18n\Messages\Message;
 /**
  * Description of GreaterThanValidator
  *
@@ -37,8 +37,8 @@ abstract class AbstractLimitValidator extends AbstractValidator {
   public function __construct(bool $inclusive = true) {
     parent::__construct();
     $this->setInclusive($inclusive);
-    $this->createMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
-    $this->createMessageTemplate(static::INCLUSIVE_ERROR, 'Not in inclusive range (%s-%s)');
+    $this->setMessageTemplate(static::EXCLUSIVE_ERROR, Message::singular('Not in range (%s-%s)'));
+    $this->setMessageTemplate(static::INCLUSIVE_ERROR, Message::singular('Not in inclusive range (%s-%s)'));
   }
 
   /**

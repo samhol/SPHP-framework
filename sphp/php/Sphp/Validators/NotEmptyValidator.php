@@ -42,10 +42,8 @@ class NotEmptyValidator extends AbstractValidator {
    * Constructs a new validator
    *
    */
-  public function __construct($type = 'scalar', $message = "Value is required and can't be empty") {
-    parent::__construct();
-
-    $this->setMessageTemplate(self::INVALID, new MessageTemplate($message));
+  public function __construct($type = 'scalar', $message = "Value is required and not empty") {
+    parent::__construct('Please insert a value');
   }
 
   /**
@@ -62,7 +60,7 @@ class NotEmptyValidator extends AbstractValidator {
       $valid = false;
     }
     if (!$valid) {
-      $this->createErrorMessage('Please insert a value');
+      $this->error(self::INVALID);
     }
     return $valid;
   }
