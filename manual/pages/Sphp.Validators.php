@@ -58,7 +58,7 @@ $load('Sphp.Validators.StringLengthValidator');
 $load('Sphp.Validators.ValidatorChain');
 $load('Sphp.Validators.FormValidator');
 
-echo $parsedown->text(<<<MD
+/*echo $parsedown->text(<<<MD
 ##Creating custom validators		
 
 Thera are obviously many vays to create own custom validators. However an easy 
@@ -67,5 +67,5 @@ $validatorAggregate  classes. The choise between these three is dependent on
 the data type of the validable data.
 
 MD
-);
+);*/
 
