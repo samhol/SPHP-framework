@@ -25,7 +25,6 @@ class ErrorHandler implements Subject {
   use \Sphp\Stdlib\Observers\ObservableSubjectTrait;
 
   /**
-   *
    * @var self[]
    */
   private static $handlers;
@@ -71,7 +70,7 @@ class ErrorHandler implements Subject {
    * @param int $errno
    * @link  http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
    */
-  public function __invoke($errno, $errstr, $errfile, $errline) {
+  public function __invoke(int $errno, string $errstr, string $errfile, int $errline) {
     if (!(error_reporting() & $errno)) {
       // This error code is not included in error_reporting, so let it fall
       // through to the standard PHP error handler
@@ -90,7 +89,7 @@ class ErrorHandler implements Subject {
    * 
    * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
    */
-  public function start($level = \E_ALL) {
+  public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
     $id = spl_object_hash($this);
     static::$handlers[$id] = $this;
@@ -104,12 +103,9 @@ class ErrorHandler implements Subject {
   public function stop() {
     restore_error_handler();
   }
-  public function chainHandlers($chainHandlers) {
-    return $this->chain;
-  }
 
   public function chainHandlers($chainHandlers) {
-    $this->chain = $chain;
+    $this->chain = $chainHandlers;
     return $this;
   }
 
@@ -118,7 +114,7 @@ class ErrorHandler implements Subject {
    * 
    * @return int the level of the error raised
    */
-  public function getErrno() {
+  public function getErrno(): int {
     return $this->errno;
   }
 
@@ -127,7 +123,7 @@ class ErrorHandler implements Subject {
    * 
    * @return string the error message
    */
-  public function getErrstr() {
+  public function getErrstr(): string {
     return $this->errstr;
   }
 
@@ -145,7 +141,7 @@ class ErrorHandler implements Subject {
    * 
    * @return int the line number the error was raised at
    */
-  public function getErrline() {
+  public function getErrline(): int {
     return $this->errline;
   }
 

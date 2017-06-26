@@ -37,11 +37,11 @@ class Message extends AbstractMessage {
 
   /**
    * 
-   * @param string $singular
-   * @param string $plural
-   * @param bool $isPlural
-   * @param array $args
-   * @param TranslatorInterface $translator
+   * @param  string $singular
+   * @param  string $plural
+   * @param  bool $isPlural
+   * @param  array $args
+   * @param  TranslatorInterface $translator
    * @return self new instance
    */
   public static function plural(string $singular, string $plural, bool $isPlural = false, array $args = [], TranslatorInterface $translator = null) {

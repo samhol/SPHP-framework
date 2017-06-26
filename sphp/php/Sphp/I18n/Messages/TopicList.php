@@ -118,7 +118,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * @param  int $mode the count mode
    * @return int the number of {@link MessageTopic} or {@link Message} objects stored
    */
-  public function count(int $mode = self::COUNT_TOPICS) {
+  public function count(int $mode = self::COUNT_TOPICS): int {
     if ($mode == self::COUNT_MESSAGES) {
       $r = 0;
       foreach ($this->topics as $cont) {

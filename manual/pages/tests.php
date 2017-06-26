@@ -1,24 +1,17 @@
 <?php
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Stdlib;
 
 echo"<pre>";
 
-$ar = array(
-    array(1, 3),
-    array(1, 2),
-    array(3, 3),
-    array(2, 122),
-);
-
-array_multisort($ar[0], SORT_ASC, SORT_STRING, $ar[1], SORT_NUMERIC, SORT_DESC);
-//var_dump($ar);
+$s = new FormattableString('bar %d %s', [1]);
+echo $s;
 echo"</pre>";
 ?>
 
 <div class="button-group warning">
   <a class="button">Primary Action</a>
-  <button type="button" class="dropdown button arrow-only">
+  <button type="button" class="dropdown button arrow-only" data-toggle="example-dropdown-1">
     <span class="show-for-sr">Show menu</span>
   </button>
 </div>
