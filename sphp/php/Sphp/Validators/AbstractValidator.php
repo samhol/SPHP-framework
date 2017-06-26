@@ -10,7 +10,6 @@ namespace Sphp\Validators;
 use Sphp\I18n\MessageInterface;
 use Sphp\I18n\Messages\TranslatableList;
 use Sphp\I18n\Messages\Message;
-use Sphp\I18n\MessageTemplate;
 use Sphp\I18n\Translatable;
 
 /**
@@ -146,7 +145,7 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->errors->clearContent();
     return $this;
   }
-  
+
   public function getErrors(): TranslatableList {
     return $this->errors;
   }
