@@ -64,18 +64,12 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
     return $this->bar;
   }
 
-  /**
-   * @inheritdoc
-   */
   public function setPaneTitle($title) {
     $this->bar->replaceContent($title);
     return $this;
   }
 
-  /**
-   * @inheritdoc
-   */
-  public function contentVisible($visibility = true) {
+  public function contentVisible(bool $visibility = true) {
     if ($visibility) {
       $this->addCssClass('is-active');
     } else {
@@ -84,24 +78,15 @@ class Pane extends AbstractContainerTag implements PaneInterface, AjaxLoaderInte
     return $this;
   }
 
-  /**
-   * @inheritdoc
-   */
   public function contentToString(): string {
     return $this->bar->getHtml() . parent::contentToString();
   }
 
-  /**
-   * @inheritdoc
-   */
   public function ajaxAppend(string $url) {
     $this->getInnerContainer()->ajaxAppend($url);
     return $this;
   }
 
-  /**
-   * @inheritdoc
-   */
   public function ajaxPrepend(string $url) {
     $this->getInnerContainer()->ajaxPrepend($url);
     return $this;

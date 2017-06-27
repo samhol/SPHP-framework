@@ -27,5 +27,5 @@ interface TabControllerInterface extends LiInterface {
    * @param  boolean $active true for active and false for inactive
    * @return self for a fluent interface
    */
-  public function setActive($active = true);
+  public function setActive(bool $active = true);
 }

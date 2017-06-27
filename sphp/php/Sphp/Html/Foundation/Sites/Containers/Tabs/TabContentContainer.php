@@ -78,7 +78,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * @param  int $index the index to check for
    * @return boolean true if a tab exits at the given index
    */
-  public function hasTab($index) {
+  public function hasTab(int $index) {
     return $this->getInnerContainer()->offsetExists($index);
   }
 
@@ -89,7 +89,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * @return TabInterface the tab at the given index
    * @throws OutOfBoundsException if the index is not set
    */
-  public function getTab($index) {
+  public function getTab(int $index) {
     if (!$this->hasTab($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }
@@ -109,7 +109,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * @param  boolean $match
    * @return self for a fluent interface
    */
-  public function matchHeight($match = true) {
+  public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
     $this->attrs()->set('data-match-height', $value);
     $this->tabs->matchHeight($match);
@@ -141,7 +141,7 @@ class TabContentContainer extends AbstractContainerComponent implements Iterator
    * @throws OutOfBoundsException if the index is not set
    * @return self for a fluent interface
    */
-  public function setActive($index) {
+  public function setActive(int $index) {
     if (!$this->hasTab($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }

@@ -26,15 +26,6 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 class Popup extends Div {
 
   /**
-   * CSS classes corresponding to the size constants
-   *
-   * @var string[]
-   */
-  private static $sizes = [
-      'tiny', 'small', 'large', 'full'
-  ];
-
-  /**
    * @var CloseButton
    */
   private $closeButton;

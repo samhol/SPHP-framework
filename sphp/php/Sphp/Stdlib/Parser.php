@@ -21,7 +21,6 @@ use Sphp\Stdlib\Reader\ReaderInterface;
 class Parser {
 
   /**
-   *
    * @var string[]
    */
   private static $readers = array(
@@ -48,7 +47,12 @@ class Parser {
    */
   private static $instances = [];
 
-  public static function readerExists(string $type) {
+  /**
+   * 
+   * @param  string $type
+   * @return bool
+   */
+  public static function readerExists(string $type): bool {
     return array_key_exists($type, static::$readers);
   }
 

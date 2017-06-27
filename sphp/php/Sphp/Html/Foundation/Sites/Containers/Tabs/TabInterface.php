@@ -27,5 +27,5 @@ interface TabInterface extends ContentInterface {
    */
   public function getTabButton();
 
-  public function setActive($visibility = true);
+  public function setActive(bool $visibility = true);
 }

@@ -4,8 +4,15 @@ namespace Sphp\Stdlib;
 
 echo"<pre>";
 
-$s = new FormattableString('bar %d %s', [1]);
-echo $s;
+$s = new FormattableString('bar %d %s', [1, 'aaa']);
+
+echo "$s\n";
+try {
+  
+echo $s->format();
+} catch (\Exception $ex) {
+echo $ex;
+}
 echo"</pre>";
 ?>
 

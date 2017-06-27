@@ -62,7 +62,7 @@ class ThrowableCallout extends Callout {
    * @param  boolean $showTrace true for visible trace  
    * @param  boolean $showPreviousException true for visible previous exception
    */
-  public function __construct(Throwable $e, $showTrace = false, $showPreviousException = false) {
+  public function __construct(Throwable $e, bool $showTrace = false, bool $showPreviousException = false) {
     $this->throwable = $e;
     parent::__construct();
     $this->cssClasses()->lock('sphp-exception-callout');
@@ -76,7 +76,7 @@ class ThrowableCallout extends Callout {
    * @param  boolean $show true for visible file
    * @return self for a fluent interface
    */
-  public function showInitialFile($show = true) {
+  public function showInitialFile(bool $show = true) {
     $this->showFile = $show;
     return $this;
   }
@@ -87,7 +87,7 @@ class ThrowableCallout extends Callout {
    * @param  boolean $show true for visible trace  
    * @return self for a fluent interface
    */
-  public function showTrace($show = true) {
+  public function showTrace(bool $show = true) {
     $this->showTrace = $show;
     $this->buildTrace();
     return $this;
@@ -99,7 +99,7 @@ class ThrowableCallout extends Callout {
    * @param  boolean $show true for visible previous exception
    * @return self for a fluent interface
    */
-  public function showPreviousException($show = true) {
+  public function showPreviousException(bool $show = true) {
     $this->showPreviousThrowable = $show;
     $this->buildPreviousException();
     return $this;
@@ -110,7 +110,7 @@ class ThrowableCallout extends Callout {
    *
    * @return string the file information of the exception
    */
-  private function buildFile() {
+  private function buildFile(): string {
     $output = '<p class="message">on line <span class="number">#' . $this->throwable->getLine() . '</span>';
     $output .= ' of file <span class="file">' . $this->parsePath($this->throwable->getFile()) . '</span></p>';
     return $output;
@@ -142,16 +142,16 @@ class ThrowableCallout extends Callout {
    * @param  string $path the path to parse
    * @return string parsed path
    */
-  private function parsePath($path) {
+  private function parsePath(string $path): string {
     return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $path);
   }
 
   /**
    * Builds the trace information of the {@link \Exception}
    *
-   * @return string|Li the trace information or an empty string
+   * @return string the trace information or an empty string
    */
-  private function buildTrace() {
+  private function buildTrace(): string {
     $vbr = function($v) {
       return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $v);
     };

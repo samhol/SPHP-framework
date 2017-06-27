@@ -26,7 +26,7 @@ class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return boolean true if string matches to the regular expression, false otherwise
    */
-  public static function match($string, $pattern, $encoding = null): bool {
+  public static function match(string $string, string $pattern, $encoding = null): bool {
     //$regexEncoding = mb_regex_encoding();
     //echo "regexEncoding:($regexEncoding)\n";
     //\mb_regex_encoding(self::getEncoding($encoding));

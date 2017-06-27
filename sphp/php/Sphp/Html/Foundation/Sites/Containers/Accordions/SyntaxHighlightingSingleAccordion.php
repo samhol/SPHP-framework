@@ -41,12 +41,12 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     return $this->getPane()->getSyntaxHighlighter();
   }
 
-  public function setSource($source, $lang) {
+  public function setSource(string $source, string $lang) {
     $this->getHighlighter()->setSource($source, $lang);
     return $this;
   }
 
-  public function loadFromFile($filename) {
+  public function loadFromFile(string $filename) {
     $this->getHighlighter()->loadFromFile($filename);
     return $this;
   }
@@ -61,7 +61,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
     return $this;
   }
 
-  public function useDefaultContentCopyController($use = true) {
+  public function useDefaultContentCopyController(bool $use = true) {
     $this->hl->useDefaultContentCopyController($use);
     return $this;
   }
@@ -72,7 +72,7 @@ class SyntaxHighlightingSingleAccordion extends AbstractSingleAccordion implemen
    * @param  string $path the file path of the program code
    * @param  mixed|mixed[] $title the title of the accordion
    */
-  public static function visualize($path, $title = null) {
+  public static function visualize(string $path, $title = null) {
     $accordion = (new static());
     $accordion->loadFromFile($path);
     if ($title !== null) {

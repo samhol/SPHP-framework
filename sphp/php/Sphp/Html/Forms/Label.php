@@ -100,7 +100,7 @@ class Label extends ContainerTag {
    * @return string[] the value(s) of the form attribute
    * @link  http://www.w3schools.com/tags/att_label_form.asp form attribute
    */
-  public function getForms() {
+  public function getForms(): array {
     $result = [];
     if ($this->attrs()->exists('form')) {
       $result = explode(' ', $this->attrs()->get('form'));

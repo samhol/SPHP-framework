@@ -68,7 +68,7 @@ abstract class AbstractPane extends AbstractContainerComponent implements PaneIn
     return $this;
   }
 
-  public function contentVisible($visibility = true) {
+  public function contentVisible(bool $visibility = true) {
     if ($visibility) {
       $this->addCssClass('is-active');
     } else {

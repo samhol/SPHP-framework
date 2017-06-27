@@ -38,14 +38,14 @@ class Fieldset extends ContainerTag {
    */
   public function __construct($legend = null, $content = null) {
     parent::__construct('fieldset', $content);
-    $this->legend = $legend;
+    //$this->legend = $legend;
     if ($legend !== null) {
       $this->setLegend($legend);
     }
   }
 
   /**
-   * Sets the {@link Legend} of the fieldset component
+   * Sets the legend of the fieldset component
    *
    * @param  string|Legend $legend the legend of the fielset component
    * @return self for a fluent interface
@@ -59,7 +59,7 @@ class Fieldset extends ContainerTag {
   }
 
   /**
-   * Returns the {@link Legend} of the fieldset component
+   * Returns the legend of the fieldset component
    *
    * @return Legend the legend of the fieldset component or null
    */
@@ -73,7 +73,7 @@ class Fieldset extends ContainerTag {
    * @param  boolean $enabled true if the component is enabled, otherwise false
    * @return self for a fluent interface
    */
-  public function enable($enabled = true) {
+  public function enable(bool $enabled = true) {
     return parent::setAttr("disabled", !$enabled);
   }
 

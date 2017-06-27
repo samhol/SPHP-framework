@@ -28,7 +28,6 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
   use SyntaxhighlighterContainerTrait;
 
   /**
-   *
    * @var SyntaxHighlighter
    */
   private $hl;

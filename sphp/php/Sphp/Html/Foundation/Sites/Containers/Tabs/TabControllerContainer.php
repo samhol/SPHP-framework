@@ -54,7 +54,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * @param  int $index the index to check for
    * @return boolean true if a tab controller exits at the given index
    */
-  public function hasController($index) {
+  public function hasController(int $index) {
     return $this->getInnerContainer()->offsetExists($index);
   }
 
@@ -66,7 +66,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * @return TabControllerInterface the tab controller at the given index
    * @throws OutOfBoundsException if the index is not set
    */
-  public function getController($index) {
+  public function getController(int $index) {
     if (!$this->hasController($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }
@@ -98,7 +98,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * @param  boolean $match true for matching heights
    * @return self for a fluent interface
    */
-  public function matchHeight($match = true) {
+  public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
     $this->attrs()->set('data-match-height', $value);
     return $this;
@@ -111,7 +111,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * @return self for a fluent interface
    * @throws OutOfBoundsException if the index is not set
    */
-  public function setActive($index) {
+  public function setActive(int $index) {
     if (!$this->hasController($index)) {
       throw new OutOfBoundsException("Tab at $index does not exist");
     }

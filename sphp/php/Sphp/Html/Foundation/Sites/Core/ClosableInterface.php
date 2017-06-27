@@ -33,12 +33,12 @@ interface ClosableInterface {
    * @param  string|boolean $closable true for closable and false otherwise
    * @return self for a fluent interface
    */
-  public function setClosable($closable = true);
+  public function setClosable(bool $closable = true);
 
   /**
    * Checks whether the component is  set as closable or not
    * 
    * @return boolean true if closable and false if not
    */
-  public function isClosable();
+  public function isClosable(): bool;
 }

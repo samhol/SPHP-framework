@@ -113,7 +113,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @param  int $speed the amount of time
    * @return self for a fluent interface
    */
-  public function setSliderSpeed($speed) {
+  public function setSliderSpeed(int $speed) {
     $this->attrs()->set('data-slide-speed', $speed);
     return $this;
   }
@@ -124,7 +124,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @param  boolean $allow true for allowing and false otherwise
    * @return self for a fluent interface
    */
-  public function allowMultiExpand($allow = true) {
+  public function allowMultiExpand(bool $allow = true) {
     $value = $allow ? 'true' : 'false';
     $this->attrs()->set('data-multi-expand', $value);
     return $this;
@@ -136,7 +136,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    * @param  boolean $allow true for allowing and false otherwise
    * @return self for a fluent interface
    */
-  public function allowAllClosed($allow = true) {
+  public function allowAllClosed(bool $allow = true) {
     $value = $allow ? 'true' : 'false';
     $this->attrs()->set('data-allow-all-closed', $value);
     return $this;

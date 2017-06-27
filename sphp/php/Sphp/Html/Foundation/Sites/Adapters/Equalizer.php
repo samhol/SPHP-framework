@@ -50,7 +50,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param  string $screenSize
    * @return self for a fluent interface
    */
-  public function equalizeOn($screenSize) {
+  public function equalizeOn(string $screenSize) {
     if ($screenSize != 'all') {
       $this->getComponent()->attrs()->set('data-equalize-on', $screenSize);
     } else {
@@ -65,7 +65,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param  boolean $flag
    * @return self for a fluent interface
    */
-  public function equalizeByRow($flag = true) {
+  public function equalizeByRow(bool $flag = true) {
     if ($flag) {
       $this->getComponent()->attrs()->set('data-equalize-by-row', 'true');
     } else {

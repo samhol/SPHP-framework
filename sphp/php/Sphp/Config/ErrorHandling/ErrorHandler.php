@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ExceptionHandler.php (UTF-8)
+ * ErrorHandler.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -12,8 +12,8 @@ use Sphp\Stdlib\Observers\Subject;
 /**
  * Class sends uncaught exception messages to the proper handlers
  *
- * The ExceptionHandler class sends uncaught exception messages to the proper handlers.  This is done
- *  using the Observer pattern.
+ * This class send PHP errors and warnings to its observers.  This is done
+ * using the Observer pattern.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-05
@@ -67,13 +67,15 @@ class ErrorHandler implements Subject {
   /**
    * Exception handling method
    *
-   * @param int $errno
-   * @link  http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
+   * @param  int $errno
+   * @param  string $errstr
+   * @param  string $errfile
+   * @param  int $errline
+   * @return boolean
+   * @link   http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
    */
   public function __invoke(int $errno, string $errstr, string $errfile, int $errline) {
     if (!(error_reporting() & $errno)) {
-      // This error code is not included in error_reporting, so let it fall
-      // through to the standard PHP error handler
       return false;
     }
     $this->errno = $errno;
@@ -87,21 +89,24 @@ class ErrorHandler implements Subject {
   /**
    * Starts redirecting PHP errors
    * 
-   * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
+   * @param  int $level PHP Error level to catch
+   * @return self for a fluent interface
    */
   public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
     $id = spl_object_hash($this);
     static::$handlers[$id] = $this;
-    //register_shutdown_function(array(self::class, 'fatalErrorShutdownHandler'));
     return $this;
   }
 
   /**
    * Stops redirecting PHP errors
+   * 
+   * @return self for a fluent interface
    */
   public function stop() {
     restore_error_handler();
+    return $this;
   }
 
   public function chainHandlers($chainHandlers) {

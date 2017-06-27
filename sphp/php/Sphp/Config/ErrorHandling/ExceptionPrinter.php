@@ -55,7 +55,7 @@ class ExceptionPrinter implements Observer {
    * @param  boolean $show true for showing trace  
    * @return self for a fluent interface
    */
-  public function showTrace($show = true) {
+  public function showTrace(bool $show = true) {
     $this->showTrace = $show;
     return $this;
   }
@@ -66,7 +66,7 @@ class ExceptionPrinter implements Observer {
    * @param  boolean $show true for showing
    * @return self for a fluent interface
    */
-  public function showPreviousException($show = true) {
+  public function showPreviousException(bool $show = true) {
     $this->showPreviousException = $show;
     return $this;
   }

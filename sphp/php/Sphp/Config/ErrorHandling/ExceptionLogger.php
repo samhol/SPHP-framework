@@ -21,12 +21,11 @@ use Sphp\Stdlib\Observers\Subject;
 class ExceptionLogger implements Observer {
 
   /**
-   *
    * @var string 
    */
   private $destination;
 
-  public function __construct($destination) {
+  public function __construct(string $destination) {
     $this->setDestination($destination);
   }
 
@@ -34,7 +33,7 @@ class ExceptionLogger implements Observer {
    * 
    * @return string
    */
-  public function getDestination() {
+  public function getDestination(): string {
     return $this->destination;
   }
 
@@ -43,7 +42,7 @@ class ExceptionLogger implements Observer {
    * @param  string $destination
    * @return self for a fluent interface
    */
-  public function setDestination($destination) {
+  public function setDestination(string $destination) {
     if (!is_writable($destination)) {
       \Sphp\Stdlib\Filesystem::mkFile($destination);
     }
