@@ -32,7 +32,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * @param  boolean $hide true if the button is in use, false otherwise
    * @return self for a fluent interface
    */
-  public function setHidden($hide = true) {
+  public function setHidden(bool $hide = true) {
     if (!$hide) {
       $this->unhide();
     } else {

@@ -104,11 +104,11 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     return $output;
   }
 
-  public function getData(): \Sphp\Html\Forms\ArrayWrapper {
+  public function getData() {
     
   }
 
-  public function setData(array $data = array(), $filter = true): \Sphp\Html\Forms\FormInterface {
+  public function setData(array $data = array(), $filter = true) {
     
   }
 

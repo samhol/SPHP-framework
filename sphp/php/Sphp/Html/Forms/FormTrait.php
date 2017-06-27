@@ -162,7 +162,7 @@ trait FormTrait {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
-  public function autocomplete($allow = true) {
+  public function autocomplete(bool $allow = true) {
     $this->attrs()->set('autocomplete', $allow ? 'on' : 'off');
     return $this;
   }

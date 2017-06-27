@@ -53,7 +53,7 @@ class QtipAdapter extends AbstractComponentAdapter {
    * @param  string $at
    * @return self for a fluent interface
    */
-  public function setQtipPosition($my, $at) {
+  public function setQtipPosition(string $my, string $at) {
     $this->getComponent()->attrs()
             ->set("data-sphp-qtip", true)
             ->set("data-sphp-qtip-at", $at)
@@ -63,7 +63,7 @@ class QtipAdapter extends AbstractComponentAdapter {
   /**
    * 
    * @param IdentifiableInterface $viewport
-   * @return $this
+   * @return self for a fluent interface
    */
   public function setViewport($viewport) {
     if ($viewport instanceof IdentifiableInterface) {

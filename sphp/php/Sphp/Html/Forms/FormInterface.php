@@ -128,7 +128,7 @@ interface FormInterface extends ContentInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
-  public function autocomplete($allow = true);
+  public function autocomplete(bool $allow = true);
 
   /**
    * Sets the form as validable
@@ -189,10 +189,4 @@ interface FormInterface extends ContentInterface {
    */
   public function setData(array $data = [], $filter = true);
 
-  /**
-   * Returns the data presented in the input fields of the form
-   * 
-   * @return ArrayWrapper the data object
-   */
-  public function getData();
 }
