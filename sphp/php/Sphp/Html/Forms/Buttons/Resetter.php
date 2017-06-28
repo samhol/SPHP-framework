@@ -21,7 +21,7 @@ use Sphp\Html\Forms\ResetterInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Resetter extends AbstractButton {
+class Resetter extends AbstractButton implements ResetterInterface {
 
   /**
    * Constructs a new instance
