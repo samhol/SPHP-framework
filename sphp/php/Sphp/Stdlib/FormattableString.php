@@ -47,37 +47,24 @@ class FormattableString implements FormattableStringInterface {
    */
   public function __construct(string $format, array $args = []) {
     $this->format = $format;
-    $pattern = "~%(?:(\d+)[$])?[-+]?(?:[ 0]|['].)?(?:[-]?\d+)?(?:[.]\d+)?[%bcdeEufFgGosxX]~";
-    $expected = [];
-    preg_match_all($pattern, $this->format, $expected);
-    $this->count = isset($expected[0]) ? count($expected[0]) : 0;
     $this->setArguments($args);
   }
 
   public function __toString(): string {
-    return $this->format();
+    try {
+      return $this->format();
+    } catch (\Throwable $ex) {
+      return $this->getFormat();
+    }
   }
 
   public function getFormat() {
     return $this->format;
   }
 
-  /**
-   * 
-   * @param array $args
-   * @return $this
-   * @throws InvalidArgumentException
-   */
   public function setArguments(array $args) {
-    if (count($args) < $this->count) {
-      throw new InvalidArgumentException('The number of arguments in the string does not match the number of arguments in a template');
-    }
     $this->args = $args;
     return $this;
-  }
-
-  public function countArguments(): int {
-    return $this->count;
   }
 
   public function hasArguments(): bool {
@@ -89,16 +76,12 @@ class FormattableString implements FormattableStringInterface {
   }
 
   public function format(array $args = null): string {
+    set_error_handler(new \Sphp\Config\ErrorHandling\ExceptionThrower());
     if ($args === null) {
       $args = $this->getArguments();
-    } else if (count($args) < $this->countArguments()) {
-      throw new InvalidArgumentException('The number of arguments in the string does not match the number of arguments in a template');
     }
-    if ($this->hasArguments()) {
-      $result = vsprintf($this->getFormat(), $args);
-    } else {
-      $result = $this->getFormat();
-    }
+    $result = vsprintf($this->getFormat(), $args);
+    restore_error_handler();
     return $result;
   }
 
