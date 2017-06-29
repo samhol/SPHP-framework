@@ -7,7 +7,7 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use ErrorException;
+use Sphp\Exceptions\ErrorException;
 
 /**
  * Converts PHP errors to exceptions
@@ -20,49 +20,16 @@ use ErrorException;
 class ExceptionThrower implements ErrorHandlerInterface {
 
   /**
-   * @var string
-   */
-  private $type;
-
-  public function __construct(string $exceptionType = ErrorException::class) {
-    $this->setExceptionType($exceptionType);
-  }
-
-  /**
+   * Throws the PHP error as a Exception
    * 
-   * @return string
-   */
-  public function getExceptionType(): string {
-    return $this->type;
-  }
-
-  /**
-   * 
-   * @param string $exceptionType
-   * @return $this
-   */
-  public function setExceptionType(string $exceptionType) {
-    if (!$exceptionType instanceof \Exception) {
-      throw new InvalidArgumentException('Exception type must extend PHP\'s Exception');
-    }
-    $this->type = $exceptionType;
-    return $this;
-  }
-
-  /**
-   * 
-   * 
-   * @param int $errno
-   * @param string $errstr
-   * @param string $errfile
-   * @param int $errline
-   * @throws ErrorException
+   * @param  int $errno the level of the error raised, as an integer
+   * @param  string $errstr the error message
+   * @param  string $errfile the filename where the exception is thrown
+   * @param  int $errline the line number where the exception is thrown
+   * @throws \Sphp\Exceptions\ErrorException
    */
   public function __invoke(int $errno, string $errstr, string $errfile, int $errline): bool {
-    if ($this->getExceptionType()) {
-      
-    }
-    $ex = new ErrorException($errstr, 0, $errno, $errfile, $errline);
+    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
   }
 
 }

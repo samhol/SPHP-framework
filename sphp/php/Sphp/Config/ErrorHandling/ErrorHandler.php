@@ -114,7 +114,7 @@ class ErrorHandler implements Subject {
     return $this;
   }
 
-    /**
+  /**
    * Returns the level of the error raised
    * 
    * @return int the level of the error raised
@@ -137,7 +137,7 @@ class ErrorHandler implements Subject {
    * 
    * @return string the filename that the error was raised in
    */
-  public function getErrfile() {
+  public function getErrfile(): string {
     return $this->errfile;
   }
 
