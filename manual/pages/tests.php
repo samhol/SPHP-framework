@@ -13,6 +13,17 @@ echo $s->format();
 } catch (\Exception $ex) {
 echo $ex;
 }
+
+namespace Sphp\Config\ErrorHandling;
+$ed = new ErrorDispatcher();
+$ed->addListener(\E_ALL, function (ErrorEvent $e) {
+  echo "\n\t". $e->getErrstr();
+});
+$ed->addListener(\E_NOTICE, function (ErrorEvent $e) {
+  echo "\n\tNotice: ". $e->getErrstr();
+});
+$ed->start();
+echo $foo;
 echo"</pre>";
 ?>
 

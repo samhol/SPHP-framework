@@ -82,7 +82,7 @@ class ErrorHandler implements Subject {
     $this->errstr = $errstr;
     $this->errfile = $errfile;
     $this->errline = $errline;
-    $this->notify();
+    $this->notify($this);
     return true;
   }
 
