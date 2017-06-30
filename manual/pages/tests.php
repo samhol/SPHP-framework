@@ -8,22 +8,27 @@ $s = new FormattableString('bar %d %s', [1, 'aaa']);
 
 echo "$s\n";
 try {
-  
-echo $s->format();
+
+  echo $s->format();
 } catch (\Exception $ex) {
-echo $ex;
+  echo $ex;
 }
 
 namespace Sphp\Config\ErrorHandling;
+
 $ed = new ErrorDispatcher();
+$ed->addListener(\E_NOTICE, function (ErrorEvent $e) {
+  throw new \Sphp\Exceptions\ErrorException();
+});
 $ed->addListener(\E_ALL, function (ErrorEvent $e) {
-  echo "\n\t". $e->getErrstr();
+  echo "\n\t" . $e->getErrstr();
 });
 $ed->addListener(\E_NOTICE, function (ErrorEvent $e) {
-  echo "\n\tNotice: ". $e->getErrstr();
+  echo "\n\tNotice: " . $e->getErrstr();
 });
 $ed->start();
 echo $foo;
+
 echo"</pre>";
 ?>
 

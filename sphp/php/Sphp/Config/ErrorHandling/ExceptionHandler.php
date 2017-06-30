@@ -30,7 +30,7 @@ class ExceptionHandler implements Subject {
    *
    * @var Throwable
    */
-  private $exception;
+  private $throwable;
 
   /**
    *
@@ -45,7 +45,7 @@ class ExceptionHandler implements Subject {
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
   public function __invoke($e) {
-    $this->exception = $e;
+    $this->throwable = $e;
     $this->notify();
   }
 
@@ -92,7 +92,7 @@ class ExceptionHandler implements Subject {
    * @return Throwable the uncaught Exception
    */
   public function getException() {
-    return $this->exception;
+    return $this->throwable;
   }
 
 }

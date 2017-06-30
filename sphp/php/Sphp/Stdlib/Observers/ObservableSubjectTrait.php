@@ -48,7 +48,7 @@ trait ObservableSubjectTrait {
   }
 
   /**
-   * Notifies all {@link Observer} observers
+   * Notifies all observers
    */
   public function notify() {
     if ($this->observers !== null) {

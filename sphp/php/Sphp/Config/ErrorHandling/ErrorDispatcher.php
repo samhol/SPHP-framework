@@ -84,13 +84,13 @@ class ErrorDispatcher {
 
   /**
    * 
-   * @param  int $event
+   * @param  int $errorLevel
    * @param  callable $listener
    * @return self for a fluent interface
    */
-  public function addListener(int $event, callable $listener) {
+  public function addListener(int $errorLevel, callable $listener) {
     //echo "attach listener for error $event";
-    $this->listeners->attach($listener, $event);
+    $this->listeners->attach($listener, $errorLevel);
     return $this;
   }
 
