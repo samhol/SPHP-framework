@@ -4,31 +4,28 @@ namespace Sphp\Stdlib;
 
 echo"<pre>";
 
-$s = new FormattableString('bar %d %s', [1, 'aaa']);
-
-echo "$s\n";
-try {
-
-  echo $s->format();
-} catch (\Exception $ex) {
-  echo $ex;
-}
 
 namespace Sphp\Config\ErrorHandling;
 
 $ed = new ErrorDispatcher();
-$ed->addListener(\E_NOTICE, function (ErrorEvent $e) {
-  throw new \Sphp\Exceptions\ErrorException();
+$ed->addListener(\E_NOTICE, function (int $errno, string $errstr, string $errfile, int $errline) {
+  echo "\n\tNotice: " . $errstr;
 });
-$ed->addListener(\E_ALL, function (ErrorEvent $e) {
-  echo "\n\t" . $e->getErrstr();
-});
-$ed->addListener(\E_NOTICE, function (ErrorEvent $e) {
-  echo "\n\tNotice: " . $e->getErrstr();
-});
+$callout = new \Sphp\Html\Foundation\Sites\Containers\ErrorMessageCallout();
+$ed->addListener(\E_ALL, $callout);
 $ed->start();
-echo $foo;
 
+trigger_error('Errors suck badly', E_USER_ERROR);
+
+trigger_error('Warnings suck', E_USER_WARNING);
+trigger_error('Deprecated features suck', E_USER_DEPRECATED);
+trigger_error('Notes suck, but not so bad', E_USER_NOTICE);
+echo $foo;
+bdsf;
+$options = [
+    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+];
+password_hash("rasmuslerdorf", PASSWORD_BCRYPT, $options)."\n";
 echo"</pre>";
 ?>
 

@@ -25,25 +25,21 @@ use Sphp\Html\Lists\Dl;
 class ThrowableCallout extends Callout {
 
   /**
-   *
    * @var boolean
    */
   private $showMessage = true;
 
   /**
-   *
    * @var boolean
    */
   private $showFile = false;
 
   /**
-   *
    * @var boolean
    */
   private $showTrace = false;
 
   /**
-   *
    * @var boolean
    */
   private $showPreviousThrowable = false;

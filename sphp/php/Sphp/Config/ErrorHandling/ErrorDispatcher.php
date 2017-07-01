@@ -108,8 +108,12 @@ class ErrorDispatcher {
      * @return self for a fluent interface
      */
     public function triggerEvent(int $errno, string $errstr, string $errfile, int $errline) {
-        $event = new ErrorEvent($errno, $errstr, $errfile, $errline);
-        $this->trigger($event);
+        foreach ($this->listeners as $key) {
+            $error = $this->listeners[$key];
+            if ($errno & $error) {
+                $key($errno, $errstr, $errfile, $errline);
+            }
+        }
         return $this;
     }
 

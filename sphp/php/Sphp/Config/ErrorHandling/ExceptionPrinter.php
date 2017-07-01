@@ -22,13 +22,11 @@ use Sphp\Stdlib\Observers\Subject;
 class ExceptionPrinter implements Observer {
 
   /**
-   *
    * @var boolean 
    */
   private $showTrace = false;
 
   /**
-   *
    * @var boolean 
    */
   private $showPreviousException = false;
@@ -38,7 +36,7 @@ class ExceptionPrinter implements Observer {
    *
    * @param  Subject $subject the ExceptionHandler
    * @uses   ExceptionHandler
-   * @uses   ExceptionBox
+   * @uses   ThrowableCallout
    */
   public function update(Subject $subject) {
     if ($subject instanceof ExceptionHandler) {
