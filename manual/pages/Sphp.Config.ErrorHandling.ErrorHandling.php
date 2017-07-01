@@ -12,7 +12,7 @@ $e_fatal = $php->constantLink('E_FATAL');
 $e_deprecated = $php->constantLink('E_DEPRECATED');
 $exception = $php->classLinker(\Exception::class);
 echo $parsedown->text(<<<MD
-###PHP error handling
+##PHP error handling
 
 PHP Errors cannot normally be handled with a $try_catch. However it is possible
 to alter this behavior using the $set_error_handler function. Most runtime errors

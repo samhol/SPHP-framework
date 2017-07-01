@@ -6,6 +6,8 @@ items:
     - ruler: 
     - link: Application configuration
       href: Sphp.Config
+    - link: Error configuration
+      href: Sphp.Config.ErrorHandling
     - menu: Standard library
       items:
       - link: Introduction

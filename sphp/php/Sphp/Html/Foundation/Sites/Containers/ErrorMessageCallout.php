@@ -186,57 +186,39 @@ class ErrorMessageCallout extends Callout {
   private function getPrefix(): string {
     $type = $this->getErrno();
     $return = '';
-    if ($type & E_ERROR) { // 1 // 
-      $return .= '& E_ERROR ';
-    }
     if ($type & E_WARNING) { // 2 // 
-      $return .= '& E_WARNING ';
-    }
-    if ($type & E_PARSE) { // 4 // 
-      $return .= '& E_PARSE ';
+      $return .= 'E_WARNING ';
     }
     if ($type & E_NOTICE) { // 8 // 
-      $return .= '& E_NOTICE ';
-    }
-    if ($type & E_CORE_ERROR) { // 16 // 
-      $return .= '& E_CORE_ERROR ';
-    }
-    if ($type & E_CORE_WARNING) { // 32 // 
-      $return .= '& E_CORE_WARNING ';
-    }
-    if ($type & E_COMPILE_ERROR) { // 64 //{
-      $return .= '& E_COMPILE_ERROR ';
-    }
-    if ($type & E_COMPILE_WARNING) { // 128 // 
-      $return .= '& E_COMPILE_WARNING ';
+      $return .= 'E_NOTICE ';
     }
     if ($type & E_USER_ERROR) { // 256 // 
-      $return .= '& E_USER_ERROR ';
+      $return .= 'E_USER_ERROR ';
     }
     if ($type & E_USER_WARNING) { // 512 // 
-      $return .= '& E_USER_WARNING ';
+      $return .= 'E_USER_WARNING ';
     }
     if ($type & E_USER_NOTICE) { // 1024 // 
-      $return .= '& E_USER_NOTICE ';
+      $return .= 'E_USER_NOTICE ';
     }
     if ($type & E_STRICT) { // 2048 // 
-      $return .= '& E_STRICT ';
+      $return .= 'E_STRICT ';
     }
     if ($type & E_RECOVERABLE_ERROR) { // 4096 // 
-      $return .= '& E_RECOVERABLE_ERROR ';
+      $return .= 'E_RECOVERABLE_ERROR ';
     }
     if ($type & E_DEPRECATED) { // 8192 // 
-      $return .= '& E_DEPRECATED ';
+      $return .= 'E_DEPRECATED ';
     }
     if ($type & E_USER_DEPRECATED) { // 16384 // 
-      $return .= '& E_USER_DEPRECATED ';
+      $return .= 'E_USER_DEPRECATED ';
     }
-    return substr($return, 2);
+    return $return;
   }
 
   public function contentToString(): string {
     $output = "<h2>" . $this->getPrefix() . ": <small>" . $this->getErrstr() . "</small></h2>";
-    if ($this->showFile || true) {
+    if ($this->showFile) {
       $output .= "on line <b>$this->errline</b> of file: <b>" . $this->getErrfile() . "</b>";
     }
     return $output;
