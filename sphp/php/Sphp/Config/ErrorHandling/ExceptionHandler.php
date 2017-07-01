@@ -44,7 +44,7 @@ class ExceptionHandler implements Subject {
    * @param Throwable $e handled exception
    * @link  http://php.net/manual/en/function.set-exception-handler.php set_exception_handler()-method
    */
-  public function __invoke($e) {
+  public function __invoke(Throwable $e) {
     $this->throwable = $e;
     $this->notify();
   }
