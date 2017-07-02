@@ -85,7 +85,8 @@ class StablePriorityQueue extends SplPriorityQueue implements Arrayable, Seriali
     foreach (clone $this as $item) {
       $array[] = $item;
     }
-    return $array;
+    
+    return iterator_to_array(clone $this);
   }
 
   /**

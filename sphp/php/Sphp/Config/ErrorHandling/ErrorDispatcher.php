@@ -8,6 +8,7 @@
 namespace Sphp\Config\ErrorHandling;
 
 use SplObjectStorage;
+use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 
 /**
  * Class sends uncaught exception messages to the proper handlers
@@ -25,12 +26,12 @@ class ErrorDispatcher {
   /**
    * The event listeners as event name => PrioritizedObjectStorage pairs
    *
-   * @var SplObjectStorage
+   * @var StablePriorityQueue
    */
   private $listeners;
 
   public function __construct() {
-    $this->listeners = new SplObjectStorage();
+    $this->listeners = new StablePriorityQueue();
   }
 
   /**
@@ -47,7 +48,7 @@ class ErrorDispatcher {
     if (!(error_reporting() & $errno)) {
       return false;
     }
-    $this->triggerEvent($errno, $errstr, $errfile, $errline);
+    $this->trigger($errno, $errstr, $errfile, $errline);
     return true;
   }
 
@@ -86,20 +87,22 @@ class ErrorDispatcher {
    * 
    * @param  int $errorLevel
    * @param  callable $listener
+   * @param  int $priority
    * @return self for a fluent interface
    */
-  public function addListener(int $errorLevel, callable $listener) {
+  public function addListener(int $errorLevel, callable $listener, int $priority = 0) {
     //echo "attach listener for error $event";
-    $this->listeners->attach($listener, $errorLevel);
+    $this->listeners->insert(['listener' => $listener, 'level' => $errorLevel], $priority);
     return $this;
   }
 
-  public function remove(callable $listener) {
-    $this->listeners->detach($listener);
+  public function clear() {
+    $this->listeners = new StablePriorityQueue();
     return $this;
   }
 
   /**
+   * Propagates PHP error to its listeners
    * 
    * @param int $errno
    * @param string $errstr
@@ -107,11 +110,11 @@ class ErrorDispatcher {
    * @param int $errline
    * @return self for a fluent interface
    */
-  public function triggerEvent(int $errno, string $errstr, string $errfile, int $errline) {
-    foreach ($this->listeners as $key) {
-      $error = $this->listeners[$key];
+  public function trigger(int $errno, string $errstr, string $errfile, int $errline) {
+    foreach ($this->listeners->toArray() as $data) {
+      $error = $data['level'];
       if ($errno & $error) {
-        $key($errno, $errstr, $errfile, $errline);
+        $data['listener']($errno, $errstr, $errfile, $errline);
       }
     }
     return $this;
