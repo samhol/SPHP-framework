@@ -8,12 +8,12 @@ echo"<pre>";
 namespace Sphp\Config\ErrorHandling;
 
 $ed = new ErrorDispatcher();
-$ed->addListener(\E_NOTICE, function (int $errno, string $errstr, string $errfile, int $errline) {
+$ed->addErrorListener(\E_NOTICE, function (int $errno, string $errstr, string $errfile, int $errline) {
   echo "\n\tNotice: " . $errstr;
 });
 $callout = new \Sphp\Html\Foundation\Sites\Containers\ErrorMessageCallout();
-$ed->addListener(\E_ALL, $callout);
-$ed->start();
+$ed->addErrorListener(\E_ALL, $callout);
+$ed->startErrorHandling();
 
 trigger_error('Errors suck badly', E_USER_ERROR);
 

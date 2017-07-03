@@ -12,9 +12,7 @@ use Sphp\Html\Foundation\Sites\Core\ClosableInterface;
 use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 
 /**
- * Implements a Foundation Equalizer.
- *
- * Equalizer makes it dead simple to gives multiple items equal height.
+ * Implements a Foundation Closable.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-04-28

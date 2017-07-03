@@ -8,8 +8,8 @@ $ed = new ErrorDispatcher();
 $callout = new ErrorMessageCallout();
 $callout->showInitialFile(true)
         ->isClosable(true);
-$ed->addListener(\E_ALL, $callout, 1);
-$ed->start(\E_ALL);
+$ed->addErrorListener(\E_ALL, $callout, 1);
+$ed->startErrorHandling(\E_ALL);
 
 $handler = new ExceptionHandler();
 $handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));

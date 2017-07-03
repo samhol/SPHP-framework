@@ -63,6 +63,7 @@ class ErrorMessageCallout extends Callout {
   public function __construct(int $errno = 0, string $errstr = '', string $errfile = '', int $errline = 0) {
     parent::__construct();
     $this->setErrno($errno)->setErrline($errline)->setErrfile($errfile)->setErrstr($errstr);
+    $this->cssClasses()->lock('alert-box');
   }
 
   /**
@@ -210,11 +211,11 @@ class ErrorMessageCallout extends Callout {
   }
 
   public function contentToString(): string {
-    $output = "<h2>" . $this->getTypeString() . ": <small>" . $this->getErrstr() . "</small></h2>";
+    $output = "<i class=\"fa fa-ban\"></i><strong>" . $this->getTypeString() . ":</strong><vbr> <small>" . $this->getErrstr() . "</small></h2>";
     if ($this->showFile) {
       $output .= "on line <b>$this->errline</b> of file: <b>" . $this->getErrfile() . "</b>";
     }
-    return $output;
+    return $output. parent::contentToString();
   }
 
 }

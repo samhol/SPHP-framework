@@ -7,6 +7,7 @@
 
 namespace Sphp\Config\ErrorHandling;
 
+use Throwable;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 
 /**
@@ -22,53 +23,28 @@ use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 class ErrorDispatcher {
 
   /**
-   * The event listeners as event name => PrioritizedObjectStorage pairs
-   *
+   * @var bool
+   */
+  private $handlesErrors = false;
+
+  /**
+   * @var bool
+   */
+  private $handlesExceptions = false;
+
+  /**
    * @var StablePriorityQueue
    */
-  private $listeners;
+  private $errorListeners;
+
+  /**
+   * @var StablePriorityQueue
+   */
+  private $exceptionListeners;
 
   public function __construct() {
-    $this->listeners = new StablePriorityQueue();
-  }
-
-  /**
-   * PHP Error handling method
-   *
-   * @param  int $errno
-   * @param  string $errstr
-   * @param  string $errfile
-   * @param  int $errline
-   * @return boolean
-   * @link   http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
-   */
-  public function __invoke(int $errno, string $errstr, string $errfile, int $errline) {
-    if (!(error_reporting() & $errno)) {
-      return false;
-    }
-    $this->trigger($errno, $errstr, $errfile, $errline);
-    return true;
-  }
-
-  /**
-   * Starts redirecting PHP errors
-   * 
-   * @param  int $level PHP Error level to catch
-   * @return self for a fluent interface
-   */
-  public function start(int $level = \E_ALL) {
-    set_error_handler($this, $level);
-    return $this;
-  }
-
-  /**
-   * Stops redirecting PHP errors
-   * 
-   * @return self for a fluent interface
-   */
-  public function stop() {
-    restore_error_handler();
-    return $this;
+    $this->errorListeners = new StablePriorityQueue();
+    $this->exceptionListeners = new StablePriorityQueue();
   }
 
   /**
@@ -78,41 +54,125 @@ class ErrorDispatcher {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->listeners);
+    unset($this->errorListeners, $this->exceptionListeners);
+  }
+
+  /**
+   * Starts redirecting PHP errors
+   * 
+   * @param  int $level PHP Error level to catch
+   * @return self for a fluent interface
+   */
+  public function startErrorHandling(int $level = \E_ALL) {
+    set_error_handler([$this, 'triggerError'], $level);
+    return $this;
+  }
+
+  public function startExceptionHandling() {
+    set_exception_handler([$this, 'triggerException']);
+    return $this;
+  }
+
+  /**
+   * Stops redirecting PHP errors
+   * 
+   * @return self for a fluent interface
+   */
+  public function stopErrorHandling() {
+    restore_error_handler();
+    return $this;
+  }
+
+  /**
+   * Restores the previously defined exception handler function
+   *
+   * @return self for a fluent interface
+   * @link   http://php.net/manual/en/function.restore-exception-handler.php PHP manual
+   */
+  public function stopExceptionHandling() {
+    if ($this->handlesExceptions) {
+      restore_exception_handler();
+      $this->handlesExceptions = false;
+    }
+    return $this;
   }
 
   /**
    * 
    * @param  int $errorLevel
-   * @param  callable $listener
+   * @param  callable|ErrorListener $listener
    * @param  int $priority
    * @return self for a fluent interface
    */
-  public function addListener(int $errorLevel, callable $listener, int $priority = 0) {
-    //echo "attach listener for error $event";
-    $this->listeners->insert(['listener' => $listener, 'level' => $errorLevel], $priority);
+  public function addErrorListener(int $errorLevel, $listener, int $priority = 0) {
+    if (!is_callable($listener) && !$listener instanceof ErrorListener) {
+      throw new \Sphp\Exceptions\InvalidArgumentException('Error Listener must be a PHP callable or of type ' . ErrorListener::class);
+    }
+    $this->errorListeners->insert(['listener' => $listener, 'level' => $errorLevel], $priority);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  callable|ExceptionListener $listener
+   * @param  int $priority
+   * @return self for a fluent interface
+   */
+  public function addExceptionListener($listener, int $priority = 0) {
+    if (!is_callable($listener) && !$listener instanceof ExceptionListener) {
+      throw new \Sphp\Exceptions\InvalidArgumentException('Exception Listener must be a PHP callable or of type ' . ExceptionListener::class);
+    }
+    $this->exceptionListeners->insert($listener, $priority);
     return $this;
   }
 
   public function clear() {
-    $this->listeners = new StablePriorityQueue();
+    $this->errorListeners = new StablePriorityQueue();
     return $this;
+  }
+
+  /**
+   * PHP Error handling method
+   * 
+   * Propagates PHP errors to its listeners
+   *
+   * @param  int $errno
+   * @param  string $errstr
+   * @param  string $errfile
+   * @param  int $errline
+   * @return boolean
+   * @link   http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
+   */
+  public function triggerError(int $errno, string $errstr, string $errfile, int $errline): bool {
+    if (!(error_reporting() & $errno)) {
+      return false;
+    }
+    foreach ($this->errorListeners->toArray() as $data) {
+      $error = $data['level'];
+      $l = $data['listener'];
+      if ($errno & $error) {
+        if ($l instanceof ErrorListener) {
+          $l->onError($errno, $errstr, $errfile, $errline);
+        } else {
+          $l($errno, $errstr, $errfile, $errline);
+        }
+      }
+    }
+    return true;
   }
 
   /**
    * Propagates PHP error to its listeners
    * 
-   * @param int $errno
-   * @param string $errstr
-   * @param string $errfile
-   * @param int $errline
+   * @param  Throwable
    * @return self for a fluent interface
    */
-  public function trigger(int $errno, string $errstr, string $errfile, int $errline) {
-    foreach ($this->listeners->toArray() as $data) {
-      $error = $data['level'];
-      if ($errno & $error) {
-        $data['listener']($errno, $errstr, $errfile, $errline);
+  public function triggerException(Throwable $t) {
+    foreach ($this->exceptionListeners->toArray() as $l) {
+      if ($l instanceof ExceptionListener) {
+        $l->exception($t);
+      } else {
+        $l($t);
       }
     }
     return $this;

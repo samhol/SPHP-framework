@@ -23,7 +23,7 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase {
    *
    */
   public function testParams() {
-    $this->errorHandler->addListener(\E_ALL, function () {
+    $this->errorHandler->addErrorListener(\E_ALL, function () {
       throw new \ErrorException($e->getErrstr(), 0, $e->getErrno(), $e->getErrfile(), $e->getErrline()); //, int $code = 0 [, int $severity = E_ERROR [, string $filename = __FILE__ [, int $lineno );
 
       if (!(error_reporting() & $errno)) {
