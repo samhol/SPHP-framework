@@ -13,7 +13,6 @@ namespace Sphp\Html\Media;
  * The {@link self} component represents a nested browsing context.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-07-14
  * @link    http://www.w3schools.com/tags/tag_iframe.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-iframe-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

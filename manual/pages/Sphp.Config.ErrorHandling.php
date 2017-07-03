@@ -26,10 +26,6 @@ MD
 
 $load('Sphp.Config.ErrorHandling.ThrowableHandler');
 
-echo $parsedown->text(<<<MD
-
-$errorExceptionThrower is an utility class that can temporarily turn PHP
-errors or warnings to $exception objects and then re-set the PHP error handler as it was.
-MD
-);
 $load('Sphp.Config.ErrorHandling.ErrorDispatcher');
+
+$load('Sphp.Config.ErrorHandling.ErrorExceptionThrower');

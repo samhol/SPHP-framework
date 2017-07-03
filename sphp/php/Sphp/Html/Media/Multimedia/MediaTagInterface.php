@@ -13,7 +13,6 @@ use Sphp\Html\TagInterface;
  * Defines properties HTML multimedia tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

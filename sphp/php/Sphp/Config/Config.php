@@ -23,7 +23,6 @@ use InvalidArgumentException;
  * PHP array key casting. The <var>$value</var> can be of any type.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

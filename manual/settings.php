@@ -3,22 +3,7 @@
 namespace Sphp\Config;
 
 require_once(__DIR__ . '/../sphp/settings.php');
-
-use Sphp\Config\ErrorHandling\ExceptionHandler;
-use Sphp\Config\ErrorHandling\ExceptionLogger;
-use Sphp\Config\ErrorHandling\ExceptionPrinter;
-use Sphp\Config\ErrorHandling\ErrorHandler;
-
-$errH = new ErrorHandler();
-$errH->attach(function(ErrorHandler $h) {
-  echo "foo: ";
-  echo $h->getErrstr();
-});
-$errH->start(E_ALL);
-$handler = new ExceptionHandler();
-$handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
-$handler->attach((new ExceptionPrinter())->showTrace());
-$handler->start();
+require_once('_errorHandling.php');
 
 $includePaths = [
     realpath(__DIR__ . '/../'),

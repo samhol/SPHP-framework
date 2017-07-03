@@ -6,7 +6,7 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase {
 
   /**
    *
-   * @var ErrorHandler
+   * @var ErrorDispatcher
    */
   private $errorHandler;
 
@@ -15,7 +15,7 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->errorHandler = new ErrorHandler();
+    $this->errorHandler = new ErrorDispatcher();
     set_error_handler($this->errorHandler);
   }
 
@@ -23,7 +23,7 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase {
    *
    */
   public function testParams() {
-    $this->errorHandler->attach(function (ErrorHandler $e) {
+    $this->errorHandler->addListener(\E_ALL, function () {
       throw new \ErrorException($e->getErrstr(), 0, $e->getErrno(), $e->getErrfile(), $e->getErrline()); //, int $code = 0 [, int $severity = E_ERROR [, string $filename = __FILE__ [, int $lineno );
 
       if (!(error_reporting() & $errno)) {

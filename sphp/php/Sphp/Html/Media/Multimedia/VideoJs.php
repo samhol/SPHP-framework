@@ -14,7 +14,6 @@ use Sphp\Html\Media\SizeableTrait;
  * Implements an VideoJs component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-20
  * @link    http://videojs.com/ VIDEOJS
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

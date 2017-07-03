@@ -7,68 +7,71 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use ErrorException;
+//use ErrorException;
+use Sphp\Exceptions\ErrorException;
 
 /**
- * Utility for catching PHP errors and converting them to an exception that can be caught at runtime
+ * Implements an Error Excception thrower
  * 
- * @author Jason Hinkle
+ *  An instance of this class catches PHP errors and converts them to an exception 
+ *  that can be caught at runtime.
  * 
- * @copyright  1997-2011 VerySimple, Inc.
- * @license    http://www.gnu.org/licenses/lgpl.html  LGPL
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 class ErrorExceptionThrower {
 
-  /**
-   * Starts redirecting PHP errors
-   * 
-   * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
-   */
-  public static function start($level = \E_ALL) {
-    set_error_handler(array(self::class, 'handleError'), $level);
-    register_shutdown_function(array(self::class, 'fatalErrorShutdownHandler'));
-  }
-
-  /**
-   * Stops redirecting PHP errors
-   */
-  public static function stop() {
-    restore_error_handler();
-  }
-
-  /**
-   * Shutdown handler for fatal errors
-   * 
-   * @throws ErrorException
-   */
-  public static function fatalErrorShutdownHandler() {
-    $last_error = error_get_last();
-    if ($last_error['type'] === \E_ERROR) {
-      // fatal error
-      self::handleError(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
+    /**
+     * Starts redirecting PHP errors
+     * 
+     * @param int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
+     */
+    public function start(int $level = \E_ALL) {
+        set_error_handler($this, $level);
+        register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
+        return $this;
     }
-  }
 
-  /**
-   * Fired by the PHP error handler function
-   * 
-   * Calling this function will always throw an exception unless `error_reporting == 0`.
-   * If the PHP command is called with @ preceeding it, then it will be ignored 
-   * here as well.
-   *
-   * @param  string $code 
-   * @param  string $string The Exception message to throw.
-   * @param  string $file
-   * @param  int $line
-   * @return void
-   * @throws ErrorException
-   */
-  public static function handleError($code, $string = '', $file = '', $line = '') {
-    // ignore supressed errors
-    if (error_reporting() == 0) {
-      return;
+    /**
+     * Stops redirecting PHP errors
+     */
+    public function stop() {
+        restore_error_handler();
+        return $this;
     }
-    throw new ErrorException($string, $code, 0, $file, $line);
-  }
+
+    /**
+     * Shutdown handler for fatal errors
+     * 
+     * @throws ErrorException
+     */
+    public function fatalErrorShutdownHandler() {
+        $last_error = error_get_last();
+        if ($last_error['type'] === \E_ERROR) {
+            // fatal error
+            $this->handleError(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
+        }
+    }
+
+    /**
+     * Fired by the PHP error handler function
+     * 
+     * Calling this function will always throw an exception unless `error_reporting == 0`.
+     * If the PHP command is called with @ preceeding it, then it will be ignored 
+     * here as well.
+     * 
+     * @param  int $errno the level of the error raised, as an integer
+     * @param  string $errstr the error message
+     * @param  string $errfile the filename where the exception is thrown
+     * @param  int $errline the line number where the exception is thrown
+     * @throws \Sphp\Exceptions\ErrorException
+     */
+    public function __invoke(int $errno, string $errstr, string $errfile, int $errline): bool {
+        if (!(error_reporting() & $errno)) {
+            return false;
+        }
+        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+    }
 
 }

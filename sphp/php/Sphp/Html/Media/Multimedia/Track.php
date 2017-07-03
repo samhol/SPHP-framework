@@ -18,7 +18,6 @@ use Sphp\Stdlib\URL;
  *  containing text, that should be visible when the media is playing.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-14
  * @link    http://www.w3schools.com/tags/tag_track.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-track-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -66,7 +65,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * 
    * @param  boolean true if the track is default, otherwise false
    */
-  public function isDefault() {
+  public function isDefault(): bool {
     return $this->attrExists('default');
   }
 
@@ -87,7 +86,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * @return string the URL of the track file
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
-  public function getSrc() {
+  public function getSrc(): string {
     return $this->getAttr('src');
   }
 
@@ -106,7 +105,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
-  public function setKind($kind) {
+  public function setKind(string $kind) {
     return $this->setAttr('kind', $kind);
   }
 

@@ -103,7 +103,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    * @param  mixed $offset an offset to check for
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($offset) {
+  public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->components);
   }
 

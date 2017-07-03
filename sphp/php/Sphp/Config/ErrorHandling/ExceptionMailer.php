@@ -15,20 +15,17 @@ use Sphp\Stdlib\Observers\Subject;
  * Prints an exception as an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 class ExceptionMailer implements Observer {
 
   /**
-   *
    * @var boolean 
    */
   private $showTrace = false;
 
   /**
-   *
    * @var boolean 
    */
   private $showPreviousException = false;

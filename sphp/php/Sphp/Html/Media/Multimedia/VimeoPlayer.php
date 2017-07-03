@@ -11,7 +11,6 @@ namespace Sphp\Html\Media\Multimedia;
  * Implements an embeddable Vimeo Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://developer.vimeo.com/player/embedding Vimeo embedding
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

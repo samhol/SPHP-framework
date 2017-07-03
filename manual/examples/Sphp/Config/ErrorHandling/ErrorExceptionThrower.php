@@ -4,8 +4,8 @@ namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
-
-ErrorExceptionThrower::Start();
+$thrower = new ErrorExceptionThrower();
+$thrower->start();
 try {
   include("missing/file.php");
 } catch (Throwable $ex) {
@@ -14,4 +14,4 @@ try {
           ->showTrace(false)
           ->printHtml();
 }
-ErrorExceptionThrower::Stop();
+$thrower->stop();

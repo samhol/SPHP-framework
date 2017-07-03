@@ -15,7 +15,6 @@ namespace Sphp\Html\Media\Multimedia;
  * browsers support `postMessage`, though Internet Explorer 7 does not support it.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
