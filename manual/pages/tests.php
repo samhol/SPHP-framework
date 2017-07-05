@@ -26,6 +26,9 @@ $options = [
     'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
 ];
 password_hash("rasmuslerdorf", PASSWORD_BCRYPT, $options)."\n";
+
+$mailer = new ExceptionMailer('sami.holck@gmail.com');
+$mailer->send(new \Exception('foo exception', 3, new \Sphp\Exceptions\RuntimeException('foo bar')));
 echo"</pre>";
 ?>
 

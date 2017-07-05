@@ -13,7 +13,6 @@ use Sphp\Stdlib\Filesystem;
 /**
  * Logs uncaught exceptions to a file for debugging
  * 
- * 
  * Updates the error_log with information about the uncaught Exception and echoes 
  * the exception in an ExceptionBox element
  *
@@ -28,13 +27,19 @@ class ExceptionLogger implements ExceptionListener {
    */
   private $destination;
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $destination the filename of the destination file
+   */
   public function __construct(string $destination) {
     $this->setDestination($destination);
   }
 
   /**
+   * Returns the filename of the destination file
    * 
-   * @return string
+   * @return string the filename of the destination file
    */
   public function getDestination(): string {
     return $this->destination;

@@ -8,7 +8,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Exceptions\InvalidArgumentException;
-
+use Sphp\Config\ErrorHandling\ErrorExceptionThrower;
 /**
  * Description of FormattableString
  *
@@ -76,12 +76,13 @@ class FormattableString implements FormattableStringInterface {
   }
 
   public function format(array $args = null): string {
-    set_error_handler(new \Sphp\Config\ErrorHandling\ExceptionThrower());
+    $thrower = new ErrorExceptionThrower();
+    $thrower->start();
     if ($args === null) {
       $args = $this->getArguments();
     }
     $result = vsprintf($this->getFormat(), $args);
-    restore_error_handler();
+    $thrower->stop();
     return $result;
   }
 

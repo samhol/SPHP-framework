@@ -39,7 +39,7 @@ class ExceptionPrinter implements ExceptionListener {
   /**
    * Sets the trace visibility
    * 
-   * @param  boolean $show true for showing trace  
+   * @param  boolean $show true for showing trace
    * @return self for a fluent interface
    */
   public function showTrace(bool $show = true) {
