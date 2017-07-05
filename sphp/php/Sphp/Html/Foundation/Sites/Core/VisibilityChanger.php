@@ -42,7 +42,7 @@ interface VisibilityChanger {
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function hideOnlyFromSize($screenType);
+  public function hideOnlyFromSize(string $screenType);
 
   /**
    * Shows the component for the given screen sizes only
@@ -61,7 +61,7 @@ interface VisibilityChanger {
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
-  public function showOnlyFor($screenType);
+  public function showOnlyFor(string $screenType);
 
   /**
    * 
@@ -76,7 +76,7 @@ interface VisibilityChanger {
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForPortrait($hide = true);
+  public function hideForPortrait(bool $hide = true);
 
   /**
    * Sets/resets the component visible only for portrait orientation
@@ -84,6 +84,6 @@ interface VisibilityChanger {
    * @param  boolean $hide true if hidden, false otherwise
    * @return self for a fluent interface
    */
-  public function hideForLandscape($hide = true);
+  public function hideForLandscape(bool $hide = true);
 
 }

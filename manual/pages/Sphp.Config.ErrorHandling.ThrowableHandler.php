@@ -15,17 +15,13 @@ echo $parsedown->text(
 ###Uncaught $throwable handling
 
 In PHP 7, most errors are reported by throwing $error exceptions. Both $error and
-$exception implements the $throwable interface.
-
-**SPHP Framework** has a way to handle uncaught Throwables using PHP’s native
-exception handling methods and $observer pattern. 
+$exception implements the $throwable interface. 
   
 __<u>NOTE</u>:__ It is important to note that Script execution will stop after 
 a handler is called.
 
 MD
 );
-
-(new SyntaxHighlightingSingleAccordion('Uncaught PHP exceptions handling example'))
-        ->loadFromFile('Sphp/Config/ErrorHandling/ExceptionHandler.php')
+(new SyntaxHighlightingSingleAccordion('Uncaught PHP exceptions handling script'))
+        ->loadFromFile(realpath(__DIR__ . '/../_errorHandling.php'))
         ->printHtml();

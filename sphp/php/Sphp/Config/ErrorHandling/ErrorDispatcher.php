@@ -9,6 +9,7 @@ namespace Sphp\Config\ErrorHandling;
 
 use Throwable;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Class sends uncaught exception messages to the proper handlers
@@ -60,16 +61,28 @@ class ErrorDispatcher {
   /**
    * Starts redirecting PHP errors
    * 
-   * @param  int $level PHP Error level to catch
    * @return self for a fluent interface
    */
-  public function startErrorHandling(int $level = \E_ALL) {
-    set_error_handler([$this, 'triggerError'], $level);
+  public function startErrorHandling() {
+    $prev = set_error_handler([$this, 'triggerError'], \E_ALL);
+    if (is_array($prev) && array_shift($prev) === $this) {
+      restore_exception_handler();
+    }
+    
     return $this;
   }
 
+  /**
+   * Starts Exception Handling
+   * 
+   * @return self for a fluent interface
+   */
   public function startExceptionHandling() {
-    set_exception_handler([$this, 'triggerException']);
+    $prev = set_exception_handler([$this, 'triggerException']);
+    if (is_array($prev) && array_shift($prev) === $this) {
+      restore_exception_handler();
+    }
+    $this->handlesExceptions = true;
     return $this;
   }
 
@@ -103,10 +116,11 @@ class ErrorDispatcher {
    * @param  callable|ErrorListener $listener
    * @param  int $priority
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException;
    */
   public function addErrorListener(int $errorLevel, $listener, int $priority = 0) {
     if (!is_callable($listener) && !$listener instanceof ErrorListener) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('Error Listener must be a PHP callable or of type ' . ErrorListener::class);
+      throw new InvalidArgumentException('Error Listener must be a PHP callable or of type ' . ErrorListener::class);
     }
     $this->errorListeners->insert(['listener' => $listener, 'level' => $errorLevel], $priority);
     return $this;
@@ -117,17 +131,13 @@ class ErrorDispatcher {
    * @param  callable|ExceptionListener $listener
    * @param  int $priority
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException;
    */
   public function addExceptionListener($listener, int $priority = 0) {
     if (!is_callable($listener) && !$listener instanceof ExceptionListener) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('Exception Listener must be a PHP callable or of type ' . ExceptionListener::class);
+      throw new InvalidArgumentException('Exception Listener must be a PHP callable or of type ' . ExceptionListener::class);
     }
     $this->exceptionListeners->insert($listener, $priority);
-    return $this;
-  }
-
-  public function clear() {
-    $this->errorListeners = new StablePriorityQueue();
     return $this;
   }
 
@@ -136,10 +146,10 @@ class ErrorDispatcher {
    * 
    * Propagates PHP errors to its listeners
    *
-   * @param  int $errno
-   * @param  string $errstr
-   * @param  string $errfile
-   * @param  int $errline
+   * @param  int $errno the level of the error raised
+   * @param  string $errstr the error message
+   * @param  string $errfile the filename that the error was raised in
+   * @param  int $errline the line number the error was raised at
    * @return boolean
    * @link   http://php.net/manual/en/function.set-error-handler.php set_exception_handler()-method
    */
@@ -170,7 +180,7 @@ class ErrorDispatcher {
   public function triggerException(Throwable $t) {
     foreach ($this->exceptionListeners->toArray() as $l) {
       if ($l instanceof ExceptionListener) {
-        $l->exception($t);
+        $l->onException($t);
       } else {
         $l($t);
       }

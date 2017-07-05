@@ -9,9 +9,9 @@ $callout = new ErrorMessageCallout();
 $callout->showInitialFile(true)
         ->isClosable(true);
 $ed->addErrorListener(\E_ALL, $callout, 1);
-$ed->startErrorHandling(\E_ALL);
+$ed->startErrorHandling();
 
-$handler = new ExceptionHandler();
-$handler->attach(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
-$handler->attach((new ExceptionPrinter())->showTrace());
-$handler->start();
+$ed->addExceptionListener(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
+$ed->addExceptionListener((new ExceptionPrinter())->showTrace());
+
+$ed->startExceptionHandling();

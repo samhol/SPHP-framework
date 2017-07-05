@@ -1,18 +1,27 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ExceptionListener.php (UTF-8)
+ * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Config\ErrorHandling;
 
+use Throwable;
+
 /**
+ * Defines an Exception listener for Error dipatcher
  *
- * @author samih
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * $link    http://php.net/manual/en/function.set-exception-handler.php
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
 interface ExceptionListener {
-  //put your code here
-  public function exception(\Throwable $e);
+
+  /**
+   * 
+   * @param Throwable $e
+   */
+  public function onException(Throwable $e);
 }

@@ -24,8 +24,6 @@ converted to a fatal error and will be handled like a traditional error.
 MD
 );
 
-$load('Sphp.Config.ErrorHandling.ThrowableHandler');
-
 $load('Sphp.Config.ErrorHandling.ErrorDispatcher');
 
 $load('Sphp.Config.ErrorHandling.ErrorExceptionThrower');
