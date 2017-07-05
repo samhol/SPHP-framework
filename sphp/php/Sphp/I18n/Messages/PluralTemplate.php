@@ -48,7 +48,7 @@ class PluralTemplate extends AbstractTemplate {
    * @param  TranslatorInterface|null $translator the translator component
    * @param  null|mixed|mixed[] $isPlural the arguments or null for no arguments
    */
-  public function __construct($singular, $plural, TranslatorInterface $translator, bool $isPlural = false) {
+  public function __construct(string $singular, string $plural, TranslatorInterface $translator, bool $isPlural = false) {
     parent::__construct($translator);
     $this->singular = $singular;
     $this->plural = $plural;

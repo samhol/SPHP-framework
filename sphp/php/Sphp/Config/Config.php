@@ -70,9 +70,18 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Returns the singleton instance of the {@link self} object
    *
    * @param array[] $config the domain name of the instance
-   * @param boolean $readOnly config data is read-only unless this is set to false
    */
-  public static function instance($name = 0, array $data = [], $readOnly = true): Config {
+
+  /**
+   * 
+   * @param  string $name
+   * @param  array $data
+   * @return Config
+   */
+  public static function instance(string $name = null, array $data = []): Config {
+    if ($name === null) {
+      $name = 0;
+    }
     if (isset(self::$instances[$name])) {
       return self::$instances[$name];
     }
