@@ -11,7 +11,6 @@ namespace Sphp\Db;
  * Interface for database data manipulation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-05-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

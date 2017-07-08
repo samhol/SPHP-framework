@@ -269,8 +269,16 @@ class Strings {
    *         Defaults to `mb_internal_encoding()`
    * @return boolean true if the haystack ends with any of the given needles
    */
-  public static function endsWith(string $haystack, string $needle, $encoding = null): bool {
-    if ($needle === "") {
+  public static function endsWith(string $haystack, $needle, $encoding = null): bool {
+    if (is_array($needle)) {
+      foreach ($needle as $value) {
+        if (static::endsWith($haystack, $value)) {
+          return true;
+        }
+      } 
+      return false;
+    }
+    if ($needle === '') {
       return true;
     } else {
       $enc = self::getEncoding($encoding);

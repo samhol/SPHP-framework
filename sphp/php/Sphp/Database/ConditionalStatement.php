@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db;
+namespace Sphp\Database;
 
 /**
  * Implements the conditions for statements in SQL
