@@ -7,6 +7,8 @@
 
 namespace Sphp\Database;
 
+use PDO;
+
 /**
  * Implements the conditions for statements in SQL
  *
@@ -16,9 +18,6 @@ namespace Sphp\Database;
  * @deprecated
  */
 abstract class ConditionalStatement extends AbstractStatement {
-
-  const ALL = 0b111111111111111111;
-  const WHERE = 0b1;
 
   /**
    * the conditions in the WHERE part of the SELECT, UPDATE and INSERT queries
@@ -30,16 +29,38 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Constructs a new instance
    *
-   * @param  Conditions $where
-   * @throws \PDOException if no database connection was established
+   * @param PDO $db
+   * @param Conditions $where
    */
-  public function __construct(Conditions $where = null) {
+  public function __construct(PDO $db, Conditions $where = null) {
     if ($where === null) {
       $this->where = new Conditions();
     } else {
       $this->where = $where;
     }
-    parent::__construct();
+    parent::__construct($db);
+  }
+
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->where);
+    parent::__destruct();
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    $this->where = clone $this->where;
   }
 
   /**
@@ -69,7 +90,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * @return Conditions
    */
-  public function where() {
+  public function where(): Conditions {
     return $this->where;
   }
 
@@ -78,29 +99,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * @return mixed[] the bound parameters
    */
-  public function getParams() {
+  public function getParams(): array {
     return $this->where()->getParams();
-  }
-
-  /**
-   * Resets the specific part of the query or the entire query if no parameter is given
-   *
-   * @return self for a fluent interface
-   */
-  public function reset() {
-    $this->where()->reset();
-    return $this;
-  }
-
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    $this->where = clone $this->where;
   }
 
 }

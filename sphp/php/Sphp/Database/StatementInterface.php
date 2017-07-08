@@ -7,6 +7,8 @@
 
 namespace Sphp\Database;
 
+use PDOStatement;
+
 /**
  * Interface for database data manipulation
  *
@@ -21,21 +23,21 @@ interface StatementInterface {
    *
    * @return string the SQL statement as a string
    */
-  public function statementToString();
+  public function statementToString(): string;
 
   /**
    * Returns the SQL statement object
    *
-   * @return \PDOStatement the SQL statement object
+   * @return PDOStatement the SQL statement object
    */
-  public function getStatement();
+  public function getStatement(): PDOStatement;
 
   /**
    * Returns the bound parameters as an array
    *
    * @return mixed[] the bound parameters
    */
-  public function getParams();
+  public function getParams(): array;
 
   /**
    * Returns the SQL statement as a string
@@ -46,7 +48,7 @@ interface StatementInterface {
    *
    * @return string the interpolated query for debugging purposes
    */
-  public function __toString();
+  public function __toString(): string;
 
   /**
    * Executes the SQL statement, returning a result set as a PDOStatement object
@@ -54,5 +56,5 @@ interface StatementInterface {
    * @return \PDOStatement the result set
    * @throws SQLException if there is no database connection or query execution fails
    */
-  public function execute();
+  public function execute(): PDOStatement;
 }

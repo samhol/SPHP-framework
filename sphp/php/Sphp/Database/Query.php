@@ -60,8 +60,9 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    */
   private $limit = "";
 
-  public function __construct(Conditions $where = null) {
-    parent::__construct($where);
+  public function __construct(\PDO $db) {
+    parent::__construct($db);
+    $this->get('*');
   }
 
   /**
@@ -79,7 +80,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
   /**
    * Sets the table(s) from which data is to be retrieved
    *
-   * The FROM clause can include optional JOIN subclauses to specify the rules for joining tables.
+   * The FROM clause can include optional JOIN sub clauses to specify the rules for joining tables.
    *
    * @param  string $tables the table(s) to show (can have multiple
    *         string parameters)
@@ -200,7 +201,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return $this;
   }
 
-  public function statementToString() {
+  public function statementToString(): string {
     $query = "SELECT " . implode(", ", $this->columns);
     $query .= " FROM " . implode(", ", $this->from);
     if ($this->where()->hasConditions()) {
@@ -221,7 +222,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return $query;
   }
 
-  public function getParams() {
+  public function getParams(): array {
     return $this->where()->getParams();
   }
 

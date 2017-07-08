@@ -7,40 +7,57 @@
 
 namespace Sphp\Database;
 
+use PDO;
+
 /**
  * Base class for all SQL Statement classes
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-04-02
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @deprecated
  */
 abstract class AbstractStatement implements DBConnectorInterface, StatementInterface {
 
-  use DBConnectorTrait;
+  /**
+   * @var PDO 
+   */
+  private $pdo;
 
   /**
    * Constructs a new instance
    *
-   * @param  null|\PDO $pdo the database connection
+   * @param  PDO $pdo the database connection
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(\PDO $pdo = null) {
-    if ($pdo !== null) {
-      $this->setConnection($pdo);
-    }
+  public function __construct(PDO $pdo) {
+    $this->setPdo($pdo);
   }
 
-  public function getStatement() {
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->pdo);
+  }
+
+  public function getPdo(): PDO {
+    return $this->pdo;
+  }
+
+  public function setPdo(PDO $pdo) {
+    $this->pdo = $pdo;
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
+    return $this;
+  }
+
+  public function getStatement(): \PDOStatement {
     try {
-      if (!$this->hasConnection()) {
-        $this->obtainDefaultConnection();
-      }
-      $conn = $this->getConnection();
-      $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-      return $conn->prepare($this->statementToString());
+      return $this->getPdo()->prepare($this->statementToString());
     } catch (\PDOException $e) {
       throw new PDORelatedException($e);
     } catch (\Exception $e) {
@@ -48,7 +65,7 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
     }
   }
 
-  public function execute() {
+  public function execute(): \PDOStatement {
     try {
       $sth = $this->getStatement();
       $sth->execute($this->getParams());

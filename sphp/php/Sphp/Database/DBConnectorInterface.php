@@ -7,6 +7,8 @@
 
 namespace Sphp\Database;
 
+use PDO;
+
 /**
  * Interface implements a {@link \PDO} database connection management system
  *
@@ -17,49 +19,19 @@ namespace Sphp\Database;
 interface DBConnectorInterface {
 
   /**
-   * Obtains the {@link \PDO} object for default database connection
+   * Sets the connection object between PHP and a database server
    *
+   * @param  PDO $pdo the connection between PHP and a database server.
    * @return self for a fluent interface
    * @throws \PDOException if no database connection was established
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function obtainDefaultConnection();
+  public function setPDO(PDO $pdo);
 
   /**
-   * Sets a {@link PDO} connection to the given database
+   * Returns the connection object between PHP and a database server
    *
-   * @param  string $dsn the Data Source Name
-   * @param  string $username the user name for the DSN string
-   * @param  string $password the password for the DSN string
-   * @return self for a fluent interface
-   * @throws \PDOException if there is no database connection or query execution fails
-   * @uses   PDOConnector
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   * @link   http://www.php.net/manual/en/pdo.construct.php \PDO::__construct
+   * @return PDO the connection object between PHP and a database server
    */
-  public function createConnection($dsn, $username, $password);
-
-  /**
-   * Sets the {@link \PDO} object for database connection
-   *
-   * @param  \PDO $pdo the database connection
-   * @return self for a fluent interface
-   * @throws \PDOException if no database connection was established
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
-  public function setConnection(\PDO $pdo);
-
-  /**
-   * Gets the {@link \PDO} object
-   *
-   * @return \PDO|null database connection
-   */
-  public function getConnection();
-
-  /**
-   * Checks whether the database connection {@link \PDO} object is set or not
-   *
-   * @return boolean true if the database connection exists, false otherwise
-   */
-  public function hasConnection();
+  public function getPDO(): PDO;
 }

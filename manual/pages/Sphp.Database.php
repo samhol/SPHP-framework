@@ -14,7 +14,7 @@ echo $parsedown->text(<<<MD
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Database/Query.php', true, false);
+CodeExampleBuilder::visualize('Sphp/Database/Query.php', 'sql', false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Insert.php", true, false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Update.php", true, false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Delete.php", true, false);
