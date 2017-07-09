@@ -4,7 +4,7 @@ namespace Sphp\Database;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-
+require_once('manual/PDO/configuration.php');
 $query = $api->classLinker(Query::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
 
@@ -15,6 +15,7 @@ MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Database/Query.php', 'sql', false);
+CodeExampleBuilder::visualize('Sphp/Database/DB.php', 'sql', false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Insert.php", true, false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Update.php", true, false);
 CodeExampleBuilder::visualize("Sphp/Db/Db.Delete.php", true, false);

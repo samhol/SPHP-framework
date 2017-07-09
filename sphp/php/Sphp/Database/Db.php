@@ -17,7 +17,11 @@ use PDO;
  * @filesource
  */
 class Db {
-  
+
+  /**
+   *
+   * @var Db 
+   */
   private static $instances = [];
 
   /**
@@ -37,22 +41,10 @@ class Db {
 
   /**
    *
-   * @param  string $from
-   * @param   $where
    * @return Query new instance of the database querier
    */
-  public function query($from = null, $where = null) {
-    $query = new Query($this->pdo);
-    if ($from !== null) {
-      $query->from($from);
-    }
-    if ($where !== null) {
-      if (is_string($where)) {
-        $where = new Conditions($where);
-      }
-      $query->where($where);
-    }
-    return $query;
+  public function getQuery() {
+    return new Query($this->pdo);
   }
 
   /**
@@ -112,9 +104,57 @@ class Db {
     }
     return $update;
   }
-  
-  public static function addInstance(Db $db, string $name = null) {
-    self::$instances[] = $db;
+
+  /**
+   * 
+   * @param PDO $db
+   * @param string $name
+   */
+  public static function createFrom(PDO $db, string $name = null) {
+    $instance = new static($db);
+    if ($name === null) {
+      self::$instances[0] = $instance;
+    } else {
+      self::$instances[$name] = $instance;
+    }
+  }
+
+  /**
+   * 
+   * @param string $name
+   * @return Db
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public static function instance(string $name = null) {
+    if ($name === null) {
+      $name = 0;
+    }
+    if (!array_key_exists($name, self::$instances)) {
+      throw new \Sphp\Exceptions\InvalidArgumentException("DB with name '$name' does not exist");
+    }
+    return self::$instances[$name];
+  }
+
+  public static function __callStatic($name, $arguments) {
+    // Note: value of $name is case sensitive.
+
+    echo "Calling static method '$name' "
+    . implode(', ', $arguments) . "\n";
+
+    if (count($arguments) > 0) {
+      $instance = static::instance($arguments[0]);
+    } else {
+      $instance = static::instance();
+    }
+    return $instance->getQuery();
+  }
+
+  public function __call($name, $arguments) {
+    // Note: value of $name is case sensitive.
+    echo "Calling method '$name' "
+    . implode(', ', $arguments) . "\n";
+
+    return $this->getQuery();
   }
 
 }
