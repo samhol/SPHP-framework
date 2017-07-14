@@ -11,7 +11,7 @@ namespace Sphp\Db;
  * Represents a connection between PHP and a database server.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-04-02
+ * @since   2015-04-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

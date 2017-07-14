@@ -9,6 +9,7 @@ namespace Sphp\Database;
 
 use Sphp\Stdlib\Arrays;
 use Sphp\Stdlib\Strings;
+use PDO;
 
 /**
  * Implements the content of the WHERE clause in SQL
@@ -24,7 +25,7 @@ class Conditions {
    *
    * @var string
    */
-  private $statement = "";
+  private $where = "";
 
   /**
    * tested values queries etc..
@@ -32,6 +33,11 @@ class Conditions {
    * @var mixed[]
    */
   private $params = [];
+
+  /**
+   * @var array
+   */
+  private $paramMap = [];
 
   /**
    * Constructs a new instance
@@ -45,6 +51,33 @@ class Conditions {
     }
   }
 
+  public function setParam(string $name, $value, $type = PDO::PARAM_STR) {
+    $this->paramMap[$name] = ['value' => $value, 'type' => $type];
+    return $this;
+  }
+
+  public function equal(array $map, $op = 'AND') {
+    $query = [];
+    foreach ($map as $name => $value) {
+      $query[] = "$name = :$name";
+      $this->setParam($name, $value);
+    }
+    $q = implode(" $op ", $query);
+    $this->where .= " ($q) ";
+    return $this;
+  }
+
+  public function notEquals(array $map) {
+    $query = [];
+    foreach ($map as $name => $value) {
+      $query[] = "$name <> :$name";
+      $this->setParam($name, $value);
+    }
+    $q = implode(" AND ", $query);
+    $this->where .= " ($q) ";
+    return $this;
+  }
+
   /**
    * Appends a condition string to the container
    *
@@ -56,11 +89,11 @@ class Conditions {
   private function append($statement, array $params = null, $operation = "AND") {
     $this->logical($operation);
     if ($statement instanceof Conditions) {
-      $this->statement .= "(" . $statement->statementToString() . ")";
+      $this->where .= "(" . $statement->statementToString() . ")";
       $params = $statement->getParams();
     }
     if (is_string($statement)) {
-      $this->statement .= $statement;
+      $this->where .= $statement;
     }
     if ($params !== null) {
       foreach ($params as $value) {
@@ -70,13 +103,13 @@ class Conditions {
     return $this;
   }
 
-    /**
+  /**
    * Returns the SQL statement as a string
    *
    * @return string the SQL statement as a string
    */
-  public function statementToString() {
-    return $this->statement;
+  public function statementToString(): string {
+    return $this->where;
   }
 
   /**
@@ -85,7 +118,7 @@ class Conditions {
    *
    * @return mixed|mixed[] values that are vulnerable to an SQL injection
    */
-  public function getParams() {
+  public function getParams(): array {
     return $this->params;
   }
 
@@ -106,7 +139,7 @@ class Conditions {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->statement = clone $this->statement;
+    $this->where = clone $this->where;
     $this->params = Arrays::copy($this->params);
   }
 
@@ -117,9 +150,9 @@ class Conditions {
    * @return self for a fluent interface
    */
   public function logical($operator) {
-    if (!Strings::isEmpty($this->statement) && !Strings::endsWith($this->statement, [" OR ", " AND ", " XOR "])) {
+    if (!Strings::isEmpty($this->where) && !Strings::endsWith($this->where, [" OR ", " AND ", " XOR "])) {
       $op = strtoupper(trim($operator));
-      $this->statement .= " $op ";
+      $this->where .= " $op ";
     }
     return $this;
   }
@@ -152,7 +185,7 @@ class Conditions {
    * @return boolean conditions are set
    */
   public function hasConditions() {
-    return !Strings::isEmpty($this->statement);
+    return !Strings::isEmpty($this->where);
   }
 
   /**
@@ -161,7 +194,7 @@ class Conditions {
    * @return self for a fluent interface
    */
   public function reset() {
-    $this->statement = [];
+    $this->where = [];
     $this->params = [];
     return $this;
   }

@@ -7,7 +7,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Db\DatabaseConnector as DatabaseConnector,
+use Sphp\Db\DatabaseConnector,
     \PDO as PDO;
 
 /**

@@ -8,10 +8,13 @@
 namespace Sphp\Database;
 
 use PDO;
+use Sphp\Exceptions\BadMethodCallException;
+use Sphp\Exceptions\InvalidArgumentException;
 
 /**
  * Implements a Database 
- *
+ *  
+ * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
@@ -40,72 +43,6 @@ class Db {
   }
 
   /**
-   *
-   * @return Query new instance of the database querier
-   */
-  public function getQuery() {
-    return new Query($this->pdo);
-  }
-
-  /**
-   *
-   * @param  string $table optional table name
-   * @param  mixed $values
-   * @return Insert new instance of the database inserter
-   */
-  public function insert($table = null, $values = null) {
-    $insert = new Insert($this->pdo);
-    if ($table !== null) {
-      $insert->table($table);
-    }
-    if ($values !== null) {
-      $insert->values($values);
-    }
-    return $insert;
-  }
-
-  /**
-   * Returns a new instance of the database updater
-   *
-   * @param  string|null $table optional relation name
-   * @param  string|Conditions|null $where
-   * @return Update new instance of the database updater
-   */
-  public function update($table = null, $where = null) {
-    $update = new Update($this->pdo);
-    if ($table !== null) {
-      $update->table($table);
-    }
-    if ($where !== null) {
-      if (is_string($where)) {
-        $where = new Conditions($where);
-      }
-      $update->where($where);
-    }
-    return $update;
-  }
-
-  /**
-   *
-   * @param  string|null $from optional relation names
-   * @param  string|Conditions|null $where
-   * @return Delete
-   */
-  public function delete($from = null, $where = null) {
-    $update = new Delete($this->pdo);
-    if ($from !== null) {
-      $update->from($from);
-    }
-    if ($where !== null) {
-      if (is_string($where)) {
-        $where = new Conditions($where);
-      }
-      $update->setConditions($where);
-    }
-    return $update;
-  }
-
-  /**
    * 
    * @param PDO $db
    * @param string $name
@@ -125,36 +62,57 @@ class Db {
    * @return Db
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public static function instance(string $name = null) {
+  public static function instance(string $name = null): Db {
     if ($name === null) {
       $name = 0;
     }
     if (!array_key_exists($name, self::$instances)) {
-      throw new \Sphp\Exceptions\InvalidArgumentException("DB with name '$name' does not exist");
+      throw new InvalidArgumentException("DB with name '$name' does not exist");
     }
     return self::$instances[$name];
   }
 
-  public static function __callStatic($name, $arguments) {
-    // Note: value of $name is case sensitive.
-
-    echo "Calling static method '$name' "
-    . implode(', ', $arguments) . "\n";
-
+  /**
+   * 
+   * 
+   * @param  string $name
+   * @param type $arguments
+   * @return type
+   */
+  public static function __callStatic(string $name, array $arguments = []) {
     if (count($arguments) > 0) {
       $instance = static::instance($arguments[0]);
     } else {
       $instance = static::instance();
     }
-    return $instance->getQuery();
+    return $instance->$name();
   }
 
-  public function __call($name, $arguments) {
-    // Note: value of $name is case sensitive.
-    echo "Calling method '$name' "
-    . implode(', ', $arguments) . "\n";
-
-    return $this->getQuery();
+  /**
+   * 
+   *
+   * @method Query query(string $dbName) Returns a new query object for the named database
+   * @method Delete delete(string $dbName)
+   * @method Update update(string $dbName) Returns a new query object for the named database
+   * @method Insert insert(string $dbName)
+   * 
+   * @param string $name
+   * @param type $arguments
+   * @return \Sphp\Database\Delete|\Sphp\Database\Insert|\Sphp\Database\Query|\Sphp\Database\Update
+   * @throws \Sphp\Exceptions\BadMethodCallException
+   */
+  public function __call(string $name, array $arguments = []) {
+    if ($name === 'query') {
+      return new Query($this->pdo);
+    } else if ($name === 'delete') {
+      return new Delete($this->pdo);
+    } else if ($name === 'insert') {
+      return new Insert($this->pdo);
+    } else if ($name === 'update') {
+      return new Update($this->pdo);
+    } else {
+      throw new BadMethodCallException("Method $name does not exist in " . static::class);
+    }
   }
 
 }

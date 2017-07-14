@@ -40,7 +40,7 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * @param  string $table the table to update
    * @return self for a fluent interface
    */
-  public function table($table) {
+  public function table(string $table) {
     $this->table = $table;
     return $this;
   }
@@ -48,45 +48,15 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
   /**
    * Sets the updating data
    *
-   * @param  mixed[]|DbObjectInterface $data new data
+   * @param  array $data new data
    * @return self for a fluent interface
    */
-  public function set($data) {
-    if ($data instanceof DbObjectInterface) {
-      $this->newData = $data->toArray();
-    } else {
-      $this->newData = $data;
-    }
+  public function set(array $data) {
+    $this->newData = $data;
     return $this;
   }
 
-  /**
-   * Resets the specific part of the query or the entire query if no parameter is given
-   *
-   *  Values and their explanations for parameter <var>$part</var>:
-   *
-   * * 'COLUMNS'
-   * * 'WHERE'
-   * * 'FROM'
-   *
-   * @param  string $part the specified part
-   * @return self for a fluent interface
-   */
-  public function reset($part = self::ALL) {
-    $types = new BitMask($part);
-    if ($types->contains(self::RESET_WHERE)) {
-      parent::reset();
-    }
-    if ($types->contains(self::RESET_COLUMNS)) {
-      $this->columns = "*";
-    }
-    if ($types->contains(self::RESET_FROM)) {
-      $this->from = "";
-    }
-    return $this;
-  }
-
-  public function statementToString() {
+  public function statementToString(): string {
     $k = array_keys($this->newData);
     $a = implode(" = ?, ", $k);
     //echo $a;
@@ -94,17 +64,17 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
     //var_dump(array_keys($this->newData));
     //$a =  implode(" = ?, ", $k);
     //$query .= $a;
-    if ($this->where()->hasConditions()) {
-      $query .= " WHERE " . $this->where();
+    if ($this->conditions()->hasConditions()) {
+      $query .= " WHERE " . $this->conditions();
     }
     return $query;
   }
 
-  public function getParams() {
+  public function getParams(): array {
     return array_merge(array_values($this->newData), parent::getParams());
   }
 
-  public function affectRows() {
+  public function affectRows(): int {
     return $this->execute()->rowCount();
   }
 

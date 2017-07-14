@@ -8,8 +8,6 @@
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Stdlib\Arrays;
-use Sphp\Objects\DbObjectInterface as DbObjectInterface;
 
 /**
  * An implementation of an SQL INSERT statement
@@ -25,7 +23,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    *
    * @var string
    */
-  private $table = "";
+  private $table = '';
 
   /**
    * a list of column(s) to be included in the query
@@ -42,29 +40,12 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   private $values = [];
 
   /**
-   * Constructs a new instance
-   *
-   * @param  string $table the name of the target database table
-   * @param  string|string[] $values
-   * @throws \PDOException if there is no database connection or query execution fails
-   */
-  public function __construct(PDO $pdo, string $table = null, $values = null) {
-    parent::__construct($pdo);
-    if ($table !== null) {
-      $this->table($table);
-    }
-    if ($values !== null) {
-      $this->values($values);
-    }
-  }
-
-  /**
    * Sets the database table where to insert the data
    *
    * @param  string $table an existing database table
    * @return self for a fluent interface
    */
-  public function table(string $table) {
+  public function into(string $table) {
     $this->table = $table;
     return $this;
   }
@@ -72,22 +53,10 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   /**
    * Sets the values that are to be inserted to the table
    *
-   * @param  array|DbObjectInterface|\Traversable $values
+   * @param  array $values
    * @return self for a fluent interface
    */
-  public function values($values) {
-    if ($values instanceof DbObjectInterface) {
-      $values = $values->getInsertionData();
-    } else if ($values instanceof Traversable) {
-      $arr = array();
-      foreach ($values as $key => $value) {
-        $arr[$key] = $value;
-      }
-      $values = $arr;
-    }
-    if (!Arrays::isIndexed($values)) {
-      $this->columnNames(array_keys($values));
-    }
+  public function values(array ... $values) {
     $this->values = $values;
     return $this;
   }
@@ -104,12 +73,16 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   }
 
   public function statementToString(): string {
+
     $query = "INSERT INTO $this->table";
     if (count($this->columns) > 0) {
-      $query .= " (" . implode(", ", $this->columns) . ")";
+      $query .= " (" . implode(", ", $this->columns) . ") ";
     }
-    $qms = array_fill(0, count($this->values), "?");
-    $query .= " VALUES (" . implode(", ", $qms) . ")";
+    $query .= ' VALUES';
+    foreach ($this->values as $row) {
+      $qms = array_keys($row);
+      $query .= "(:" . implode(", :", $qms) . ")";
+    }
     return $query;
   }
 
@@ -117,7 +90,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     return array_values($this->values);
   }
 
-  public function affectRows() {
+  public function affectRows(): int {
     try {
       return $this->execute()->rowCount();
     } catch (Exception $ex) {

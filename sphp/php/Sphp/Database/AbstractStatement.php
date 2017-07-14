@@ -25,6 +25,11 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
   private $pdo;
 
   /**
+   * @var array
+   */
+  private $params = [];
+
+  /**
    * Constructs a new instance
    *
    * @param  PDO $pdo the database connection
@@ -48,6 +53,11 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
     return $this->pdo;
   }
 
+  /**
+   * 
+   * @param PDO $pdo
+   * @return self for a fluent interface
+   */
   public function setPdo(PDO $pdo) {
     $this->pdo = $pdo;
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -55,23 +65,70 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
     return $this;
   }
 
+  /**
+   * 
+   * @param  string $name
+   * @param  mixed $value
+   * @param  int $type
+   * @return self for a fluent interface
+   */
+  public function setParam(string $name, $value, int $type = PDO::PARAM_STR) {
+    $this->paramMap[$name] = ['value' => $value, 'type' => $type];
+    return $this;
+  }
+
+  /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @param  array $params
+   * @param  int $type
+   * @return self for a fluent interface
+   */
+  public function setParams(array $params, int $type = PDO::PARAM_STR) {
+    foreach ($params as $name => $value) {
+      $this->setParam($name, $value, $type);
+    }
+    return $this;
+  }
+
+  /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @return mixed|mixed[] values that are vulnerable to an SQL injection
+   */
+  public function getParams(): array {
+    return $this->params;
+  }
+
+  /**
+   * 
+   * @return \PDOStatement
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
   public function getStatement(): \PDOStatement {
+      echo $this->statementToString();
     try {
       return $this->getPdo()->prepare($this->statementToString());
     } catch (\PDOException $e) {
-      throw new PDORelatedException($e);
-    } catch (\Exception $e) {
-      throw new SQLException($e->getMessage(), $e->getCode(), $this->getStatement(), $e);
-    }
+      echo $this->statementToString();
+      throw new \Sphp\Exceptions\RuntimeException($e);
+    } 
   }
 
+  /**
+   * 
+   * @return \PDOStatement
+   * @throws \Sphp\Exceptions\RuntimeException
+   */
   public function execute(): \PDOStatement {
     try {
       $sth = $this->getStatement();
       $sth->execute($this->getParams());
       return $sth;
     } catch (\PDOException $e) {
-      throw new PDORelatedException($e);
+      throw new \Sphp\Exceptions\RuntimeException($e);
     }
   }
 
