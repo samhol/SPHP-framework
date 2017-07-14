@@ -42,6 +42,10 @@ class Db {
     $this->pdo = $pdo;
   }
 
+  public function getPdo(): PDO {
+    return $this->pdo;
+  }
+
   /**
    * 
    * @param PDO $db

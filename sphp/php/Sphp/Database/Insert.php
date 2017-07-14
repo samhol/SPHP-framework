@@ -53,10 +53,21 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   /**
    * Sets the values that are to be inserted to the table
    *
+   * @param  string $values
+   * @return self for a fluent interface
+   */
+  public function values(string ... $values) {
+    $this->values = $values;
+    return $this;
+  }
+
+  /**
+   * Sets the values that are to be inserted to the table
+   *
    * @param  array $values
    * @return self for a fluent interface
    */
-  public function values(array ... $values) {
+  public function valuesFromArray(array $values) {
     $this->values = $values;
     return $this;
   }
@@ -73,17 +84,22 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   }
 
   public function statementToString(): string {
-
+    if (count($this->columns) > 0) {
+      $query .= " (" . implode(", ", $this->columns) . ") ";
+    } else  {   
+      $query .= " (" . implode(", ", array_keys($this->values)) . ") ";
+    }
     $query = "INSERT INTO $this->table";
     if (count($this->columns) > 0) {
       $query .= " (" . implode(", ", $this->columns) . ") ";
+    } else  {   
+      $query .= " (" . implode(", ", array_keys($this->values)) . ") ";
     }
-    $query .= ' VALUES';
-    foreach ($this->values as $row) {
-      $qms = array_keys($row);
-      $query .= "(:" . implode(", :", $qms) . ")";
+    $query .= ' VALUES (:';
+    foreach ($this->values as $key => $value) {
+      $query .= ":" . $key . "";
     }
-    return $query;
+    return ")$query";
   }
 
   public function getParams(): array {
