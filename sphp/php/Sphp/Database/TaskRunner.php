@@ -86,7 +86,7 @@ class TaskRunner {
    * @param  int $type
    * @return self for a fluent interface
    */
-  public function setParam(string $name, $value, int $type = PDO::PARAM_STR) {
+  public function setParam($name, $value, int $type = PDO::PARAM_STR) {
     $this->paramMap[$name] = ['value' => $value, 'type' => $type];
     return $this;
   }
@@ -110,7 +110,7 @@ class TaskRunner {
    * Returns an array of values with as many elements as there are bound
    * parameters in the clause
    *
-   * @return mixed|mixed[] values that are vulnerable to an SQL injection
+   * @return array values that are vulnerable to an SQL injection
    */
   public function getParams(): array {
     return $this->params;
@@ -142,34 +142,6 @@ class TaskRunner {
     } catch (\PDOException $e) {
       throw new \Sphp\Exceptions\RuntimeException($e);
     }
-  }
-
-  public function __toString(): string {
-    $keys = array();
-    $values = $this->getParams();
-
-    # build a regular expression for each parameter
-    foreach ($this->getParams() as $key => $value) {
-      if (is_string($key)) {
-        $keys[] = '/:' . $key . '/';
-      } else {
-        $keys[] = '/[?]/';
-      }
-
-      if (is_array($value)) {
-        $values[$key] = implode(',', $value);
-      }
-
-      if (is_null($value)) {
-        $values[$key] = 'null';
-      }
-    }
-    // Walk the array to see if we can add single-quotes to strings
-    array_walk($values, create_function('&$v, $k', 'if (!is_numeric($v) && $v!="null") $v = "\'".$v."\'";'));
-
-    $query = preg_replace($keys, $values, $this->statementToString(), 1, $count);
-
-    return $query;
   }
 
 }

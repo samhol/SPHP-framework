@@ -24,7 +24,6 @@ use Sphp\Stdlib\URL;
 abstract class AbstractPage extends AbstractComponent implements PageInterface {
 
   /**
-   *
    * @var Hyperlink 
    */
   private $hyperlink;
@@ -43,7 +42,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = null, $content = null, $target = null) {
+  public function __construct(string $href = null, $content = null, string $target = null) {
     parent::__construct('li');
     $this->hyperlink = new Hyperlink($href, $content, $target);
   }
@@ -64,7 +63,7 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $this;
   }
 
-  public function setCurrent($active = true) {
+  public function setCurrent(bool $active = true) {
     if ((boolean) $active) {
       return $this->addCssClass('current');
     } else {
@@ -72,17 +71,11 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isCurrent() {
+  public function isCurrent(): bool {
     return $this->hasCssClass('current');
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     if ($disabled) {
       $this->cssClasses()->set('disabled');
     } else {
@@ -91,16 +84,10 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->cssClasses()->contains('disabled');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     $output = '';
     if (!$this->isEnabled()) {

@@ -29,19 +29,16 @@ use Sphp\Exceptions\OutOfRangeException;
 class Pagination extends AbstractComponent implements IteratorAggregate, Countable {
 
   /**
-   *
    * @var PageInterface
    */
   private $previousPageButton;
 
   /**
-   *
    * @var PageInterface
    */
   private $nextPageButton;
 
   /**
-   *
    * @var Page[] 
    */
   private $pages = [];
@@ -73,11 +70,9 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * Constructs a new instance
    * 
-   * @param \Traversable|mixed[] $urls the value of the target attribute
-   * @param int $range
    * @param string $target
    */
-  public function __construct($target = '_self') {
+  public function __construct(string $target = '_self') {
     parent::__construct('ul');
     $this->cssClasses()
             ->lock('pagination');
@@ -120,7 +115,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function setTarget($target) {
+  public function setTarget(string $target) {
     $this->target = $target;
     foreach ($this->pages as $page) {
       $page->setTarget($target);
@@ -204,7 +199,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @return PageInterface
    */
-  public function getPreviousPageButton() {
+  public function getPreviousPageButton(): PageInterface {
     Arrays::pointToKey($this->pages, $this->current);
     if (prev($this->pages)) {
       $current = current($this->pages);
@@ -222,7 +217,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @return PageInterface
    */
-  public function getNextPageButton() {
+  public function getNextPageButton(): PageInterface {
     Arrays::pointToKey($this->pages, $this->current);
     if (next($this->pages)) {
       $next = current($this->pages);
@@ -240,7 +235,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @return Li 
    */
-  public function getEllipsis() {
+  public function getEllipsis(): Li {
     $ellipsis = new Li();
     $ellipsis->cssClasses()->lock('ellipsis');
     $ellipsis->attrs()->lock('aria-hidden', 'true');
@@ -250,7 +245,6 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * Sets the number of visible pagination items before active page
    * 
-   * @param  int $num number of visible pagination items before active page
    * @return self for a fluent interface
    */
   public function showAll() {
@@ -265,8 +259,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param  int $num number of visible pagination items before active page
    * @return self for a fluent interface
    */
-  public function visibleBeforeCurrent($num) {
-    $this->before = (int) $num;
+  public function visibleBeforeCurrent(int $num) {
+    $this->before = $num;
     return $this;
   }
 
@@ -276,8 +270,8 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * @param  int $num number of visible pagination items after active page
    * @return self for a fluent interface
    */
-  public function visibleAfterCurrent($num) {
-    $this->after = (int) $num;
+  public function visibleAfterCurrent(int $num) {
+    $this->after = $num;
     return $this;
   }
 

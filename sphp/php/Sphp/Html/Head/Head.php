@@ -221,7 +221,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
-  public function addShortcutIcon($href, $type = 'image/x-icon') {
+  public function addShortcutIcon(string $href, string $type = 'image/x-icon') {
     $this->addContent(Link::shortcutIcon($href, $type));
     return $this;
   }
@@ -254,7 +254,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    *
    * @return MetaContainer containing all {@link Meta} components
    */
-  public function metaTags() {
+  public function metaTags(): MetaContainer {
     return $this->meta;
   }
 

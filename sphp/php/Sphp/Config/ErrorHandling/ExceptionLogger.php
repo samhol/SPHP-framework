@@ -59,7 +59,7 @@ class ExceptionLogger implements ExceptionListener {
   }
 
   public function onException(Throwable $e) {
-    error_log($e->getException(), 3, $e->getDestination());
+    error_log($e->getMessage(), 3, $this->getDestination());
   }
 
 }

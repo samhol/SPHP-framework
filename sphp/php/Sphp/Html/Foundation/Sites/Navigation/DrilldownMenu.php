@@ -29,9 +29,6 @@ class DrilldownMenu extends Menu {
     $this->attrs()->demand('data-drilldown');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function append(MenuItemInterface $content) {
     if ($content instanceof SubMenu) {
       $content->vertical(true);

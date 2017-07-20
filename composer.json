@@ -10,6 +10,20 @@
       "email": "sami.holck@gmail.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "tovic/parsedown-extra-plugin",
+        "version": "1.0",
+        "source": {
+          "url": "https://github.com/tovic/parsedown-extra-plugin",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    }
+  ],
   "require": {
     "php": "^7.0",
     "doctrine/orm": "*",
@@ -26,7 +40,8 @@
     "zendframework/zend-paginator": "*",
     "zendframework/zend-mail": "*",
     "zurb/foundation": ">=6.3",
-    "symfony/yaml": "^3.0"
+    "symfony/yaml": "^3.0",
+    "tovic/parsedown-extra-plugin": "*"
   },
   "autoload": {
     "psr-4": {

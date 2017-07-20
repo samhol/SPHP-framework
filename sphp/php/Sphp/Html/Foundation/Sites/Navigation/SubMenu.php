@@ -92,18 +92,19 @@ class SubMenu extends AbstractComponent implements MenuItemInterface, MenuInterf
   }
 
   /**
-   * Appends {@link MenuLink} link object to the menu
+   * Appends a {@link MenuLink} link object to the menu
    *
-   * @param  string|URL $href the URL of the link
+   * @param  string $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function appendLink($href, $content = '', $target = '_self') {
+  public function appendLink(string $href, string $content = '', string $target = '_self') {
     $menuLink = new MenuLink($href, $content, $target);
-    return $this->append($menuLink);
+    $this->append($menuLink);
+    return $this;
   }
 
   /**

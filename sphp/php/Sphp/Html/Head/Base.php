@@ -17,8 +17,6 @@ use Sphp\Html\NonVisualContentInterface;
  *  a document. There can be at maximum one &lt;base&gt; element in a document, 
  *  and it must be inside the &lt;head&gt; element.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
@@ -62,7 +60,6 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    *  
    * 1. The target attribute specifies the default target for all hyperlinks and forms in the page.
    * 2. This attribute can be overridden by using the target attribute for each hyperlink/form.
-   *
    *
    * @param  string $target target attribute's value
    * @return self for a fluent interface

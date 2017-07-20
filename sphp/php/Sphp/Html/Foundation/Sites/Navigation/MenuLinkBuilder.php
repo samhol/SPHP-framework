@@ -54,7 +54,7 @@ class MenuLinkBuilder {
    * @param  string $target
    * @return self for a fluent interface
    */
-  public function setMenuType($target) {
+  public function setMenuType(string $target) {
     $this->menuType = $target;
     return $this;
   }

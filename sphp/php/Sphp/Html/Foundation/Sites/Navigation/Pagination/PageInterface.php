@@ -37,14 +37,14 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
    * @param  boolean $active true for activation and false for deactivation
    * @return self for a fluent interface
    */
-  public function setCurrent($active = true);
+  public function setCurrent(bool $active = true);
 
   /**
    * Checks whether the hyperlink component is set as active or not
    * 
    * @return boolean true if the hyperlink component is set as active, otherwise false
    */
-  public function isCurrent();
+  public function isCurrent(): bool ;
   
   /**
    * Disables the pagination component
@@ -54,12 +54,12 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return self for a fluent interface
    */
-  public function disable($disabled = true);
+  public function disable(bool $disabled = true);
 
   /**
    * Checks whether the pagination component is enabled or not
    * 
    * @param  boolean true if the component is enabled, otherwise false
    */
-  public function isEnabled();
+  public function isEnabled(): bool;
 }

@@ -100,8 +100,8 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
 
   public function allowFullScreen(bool $allow = true) {
     $this->attrs()
-            ->set('webkitallowfullscreen', $allow)
-            ->set('mozallowfullscreen', $allow)
+            //->set('webkitallowfullscreen', $allow)
+            //->set('mozallowfullscreen', $allow)
             ->set('allowfullscreen', $allow);
     return $this;
   }
@@ -145,7 +145,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   }
 
   public function contentToString(): string {
-    return '<p>Your browser does not support iframes.</p>';
+    return '';
   }
 
 }

@@ -21,8 +21,6 @@ use Sphp\Html\NonVisualContentInterface;
  *  of the document, last modified, and other metadata. The metadata can be used by browsers (how to display
  *  content or reload page), search engines (keywords), or other web services.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API

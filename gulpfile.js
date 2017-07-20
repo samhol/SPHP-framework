@@ -4,7 +4,7 @@ var gulp = require('gulp'),
         concat = require("gulp-concat"),
         jshint = require('gulp-jshint');
 
-gulp.task('finalize', function () {
+gulp.task('build-js', function () {
   gulp.src([
     './node_modules/jquery/dist/jquery.js',
     './node_modules/foundation-sites/dist/js/foundation.js',

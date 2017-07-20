@@ -23,11 +23,6 @@ $unit: rem-calc(4);
     }
   }
   border: none;
-  .is-active .accordion-title {
-    &:after { 
-      content: "\f176";
-    };
-  }
   .accordion-title, .accordion-content {
     //@include accordion-title;
     border: solid 1px #444;
@@ -37,20 +32,6 @@ $unit: rem-calc(4);
   .accordion-title {
     font-size: rem-calc(16);
     font-weight: bold;  
-    &:after { 
-      font-family: "foundation-icons";
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      text-decoration: inherit;
-      content: "\f199";
-      right: rem-calc(8);
-      position: absolute;
-    };
   }
   .accordion-item {
     &:not(:first-child) {

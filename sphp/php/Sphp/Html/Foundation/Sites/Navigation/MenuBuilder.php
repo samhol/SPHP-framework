@@ -19,13 +19,11 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 class MenuBuilder {
 
   /**
-   *
    * @var string 
    */
   private $menuType = Menu::class;
 
   /**
-   *
    * @var MenuLinkBuilder 
    */
   private $linkBuilder;
@@ -46,7 +44,7 @@ class MenuBuilder {
    * @param  string $menuType
    * @return self for a fluent interface
    */
-  public function setMenuType($menuType) {
+  public function setMenuType(string $menuType) {
     $this->menuType = $menuType;
     return $this;
   }
@@ -67,7 +65,7 @@ class MenuBuilder {
    * @param  MenuInterface $instance
    * @return MenuInterface
    */
-  private function insertIntoMenu(array $contentData, MenuInterface $instance = null) {
+  private function insertIntoMenu(array $contentData, MenuInterface $instance = null): MenuInterface {
     if ($instance === null) {
       $instance = new Menu();
     }
@@ -78,7 +76,7 @@ class MenuBuilder {
         $instance->append($this->buildSub($item));
       } else if (array_key_exists('separator', $item)) {
         $instance->appendText($item['separator']);
-      }else if (array_key_exists('ruler', $item)) {
+      } else if (array_key_exists('ruler', $item)) {
         $instance->appendRuler();
       }
     }
@@ -90,7 +88,7 @@ class MenuBuilder {
    * @param  array $sub
    * @return SubMenu
    */
-  public function buildSub(array $sub) {
+  public function buildSub(array $sub): SubMenu {
     $instance = new SubMenu($sub['menu']);
     $this->buildMenu($sub, $instance);
     return $instance;
@@ -102,7 +100,7 @@ class MenuBuilder {
    * @param  MenuInterface|null $instance
    * @return MenuInterface
    */
-  public function buildMenu(array $data, MenuInterface $instance = null) {
+  public function buildMenu(array $data, MenuInterface $instance = null): MenuInterface {
     if ($instance === null) {
       $instance = new $this->menuType();
     }
@@ -118,15 +116,16 @@ class MenuBuilder {
    * @param  array $data
    * @return DropdownMenu new menu instance
    */
-  public function buildDropdownMenu(array $data) {
+  public function buildDropdownMenu(array $data): DropdownMenu {
     return $this->buildMenu($data, new DropdownMenu());
   }
+
   /**
    * 
    * @param  array $data
-   * @return DropdownMenu new menu instance
+   * @return AccordionMenu new menu instance
    */
-  public function buildAccordionMenu(array $data) {
+  public function buildAccordionMenu(array $data): AccordionMenu {
     return $this->buildMenu($data, new AccordionMenu());
   }
 
