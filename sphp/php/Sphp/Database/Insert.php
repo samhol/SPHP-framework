@@ -53,10 +53,10 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   /**
    * Sets the values that are to be inserted to the table
    *
-   * @param  string $values
+   * @param  mixed $values
    * @return self for a fluent interface
    */
-  public function values(string ... $values) {
+  public function values(... $values) {
     $this->values = $values;
     return $this;
   }
@@ -86,13 +86,13 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   public function statementToString(): string {
     if (count($this->columns) > 0) {
       $query .= " (" . implode(", ", $this->columns) . ") ";
-    } else  {   
+    } else {
       $query .= " (" . implode(", ", array_keys($this->values)) . ") ";
     }
     $query = "INSERT INTO $this->table";
     if (count($this->columns) > 0) {
       $query .= " (" . implode(", ", $this->columns) . ") ";
-    } else  {   
+    } else {
       $query .= " (" . implode(", ", array_keys($this->values)) . ") ";
     }
     $query .= ' VALUES (:';
