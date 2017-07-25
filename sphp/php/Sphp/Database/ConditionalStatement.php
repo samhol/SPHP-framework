@@ -38,7 +38,7 @@ abstract class ConditionalStatement extends AbstractStatement {
     } else {
       $this->where = $where;
     }
-    parent::__construct($db);
+    parent::__construct(new PDORunner($db));
   }
 
   /**

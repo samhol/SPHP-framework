@@ -8,6 +8,9 @@
 namespace Sphp\Database;
 
 use PDO;
+use PDOStatement;
+use PDOException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Base class for all SQL Statement classes
@@ -15,28 +18,22 @@ use PDO;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
- * @deprecated
  */
-abstract class AbstractStatement implements DBConnectorInterface, StatementInterface {
+abstract class AbstractStatement implements StatementInterface {
 
   /**
-   * @var PDO 
+   * @var TaskRunner 
    */
-  private $pdo;
-
-  /**
-   * @var array
-   */
-  private $params = [];
+  private $pdoRunner;
 
   /**
    * Constructs a new instance
    *
-   * @param  PDO $pdo the database connection
+   * @param  TaskRunner $pdo the database connection
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(PDO $pdo) {
-    $this->setPdo($pdo);
+  public function __construct(PDORunner $pdo) {
+    $this->setPDORunner($pdo);
   }
 
   /**
@@ -46,11 +43,11 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->pdo);
+    unset($this->pdoRunner);
   }
 
-  public function getPdo(): PDO {
-    return $this->pdo;
+  public function getPDORunner(): PDORunner {
+    return $this->pdoRunner;
   }
 
   /**
@@ -58,10 +55,10 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
    * @param PDO $pdo
    * @return self for a fluent interface
    */
-  public function setPdo(PDO $pdo) {
-    $this->pdo = $pdo;
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
+  public function setPDORunner(PDORunner $pdo) {
+    $this->pdoRunner = $pdo;
+    $this->pdoRunner->getPdo()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->pdoRunner->getPdo()->setAttribute(PDO::ATTR_PERSISTENT, true);
     return $this;
   }
 
@@ -73,7 +70,7 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
    * @return self for a fluent interface
    */
   public function setParam(string $name, $value, int $type = PDO::PARAM_STR) {
-    $this->paramMap[$name] = ['value' => $value, 'type' => $type];
+    $this->pdoRunner->setParam($name, $value, $type);
     return $this;
   }
 
@@ -86,9 +83,7 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
    * @return self for a fluent interface
    */
   public function setParams(array $params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $name => $value) {
-      $this->setParam($name, $value, $type);
-    }
+    $this->pdoRunner->setParams($params, $type);
     return $this;
   }
 
@@ -96,37 +91,36 @@ abstract class AbstractStatement implements DBConnectorInterface, StatementInter
    * Returns an array of values with as many elements as there are bound
    * parameters in the clause
    *
-   * @return mixed|mixed[] values that are vulnerable to an SQL injection
+   * @return array values that are vulnerable to an SQL injection
    */
   public function getParams(): array {
-    return $this->params;
+    return $this->pdoRunner->getParams();
   }
 
   /**
    * 
-   * @return \PDOStatement
+   * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function getStatement(): \PDOStatement {
-      echo $this->statementToString();
+  public function getStatement(): PDOStatement {
+    echo $this->statementToString();
     try {
-      return $this->getPdo()->prepare($this->statementToString());
+      return $this->getPDORunner()->setSql($this->statementToString())->getStatement();
     } catch (\PDOException $e) {
       echo $this->statementToString();
       throw new \Sphp\Exceptions\RuntimeException($e);
-    } 
+    }
   }
 
   /**
    * 
-   * @return \PDOStatement
+   * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function execute(): \PDOStatement {
+  public function execute(): PDOStatement {
     try {
-      $sth = $this->getStatement();
-      $sth->execute($this->getParams());
-      return $sth;
+      $this->pdoRunner->setSql($this->statementToString());
+      return $this->pdoRunner->execute();
     } catch (\PDOException $e) {
       throw new \Sphp\Exceptions\RuntimeException($e);
     }

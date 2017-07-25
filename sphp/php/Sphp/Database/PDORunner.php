@@ -9,6 +9,8 @@ namespace Sphp\Database;
 
 use PDO;
 use PDOStatement;
+use PDOException;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Base class for all SQL Statement classes
@@ -16,9 +18,8 @@ use PDOStatement;
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
- * @deprecated
  */
-class TaskRunner {
+class PDORunner {
 
   const QUESTIONMARK = 1;
   const NAMED = 2;
@@ -56,6 +57,7 @@ class TaskRunner {
 
   public function setSql(string $sql) {
     $this->sql = $sql;
+    //$this->params = [];
     return $this;
   }
 
@@ -75,7 +77,7 @@ class TaskRunner {
 
   /**
    * 
-   * @param PDO $pdo
+   * @param  PDO $pdo
    * @return self for a fluent interface
    */
   public function setPdo(PDO $pdo) {
@@ -93,8 +95,22 @@ class TaskRunner {
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
+    if (!is_numeric($name) && !\Sphp\Stdlib\Strings::startsWith($name, ':')) {
+      $name = ":$name";
+    }
     $this->paramTypes[$name] = $type;
     $this->params[$name] = $value;
+    return $this;
+  }
+
+  public function unsetParam($name) {
+    unset($this->paramTypes[$name], $this->params[$name]);
+    return $this;
+  }
+
+  public function unsetParams() {
+    $this->paramTypes = [];
+    $this->params = [];
     return $this;
   }
 
@@ -112,6 +128,10 @@ class TaskRunner {
     }
     return $this;
   }
+  
+  public function hasNamedParams() {
+    return !\Sphp\Stdlib\Arrays::isIndexed($this->params);
+  }
 
   /**
    * Returns an array of values with as many elements as there are bound
@@ -120,10 +140,17 @@ class TaskRunner {
    * @return array values that are vulnerable to an SQL injection
    */
   public function getParams(): array {
-    if ($this->paramIndexType === self::QUESTIONMARK) {
-      return $list = array_combine(range(1, count($this->params)), array_values($this->params));
-    }
     return $this->params;
+  }
+
+  /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @return array values that are vulnerable to an SQL injection
+   */
+  public function getParamNames(): array {
+    return array_keys($this->params);
   }
 
   /**
@@ -133,45 +160,43 @@ class TaskRunner {
    * @return array values that are vulnerable to an SQL injection
    */
   public function getParamType($index): array {
-    if ($this->paramIndexType === self::QUESTIONMARK) {
-      return $list = array_combine(range(1, count($this->paramTypes)), array_values($this->paramTypes));
-    }
-    return $this->params;
-  }
-
-  public function bindParams() {
-    
+    return $this->paramTypes[$index];
   }
 
   /**
    * 
-   * @return \PDOStatement
+   * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function getStatement(): \PDOStatement {
+  public function getStatement(): PDOStatement {
     try {
       $sth = $this->getPdo()->prepare($this->getSql());
       foreach ($this->getParams() as $name => $value) {
+        //echo $this->sql.$value;
+        if (!is_numeric($name)) {
+          $name = ":$name";
+        }
         $sth->bindValue($name, $value);
       }
       return $sth;
-    } catch (\PDOException $e) {
-      throw new \Sphp\Exceptions\RuntimeException($e->getMessage(), 0, $e);
+    } catch (PDOException $e) {
+      throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
   /**
    * 
-   * @return \PDOStatement
+   * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function execute(): \PDOStatement {
+  public function execute(): PDOStatement {
     try {
-      $sth = $this->getStatement();
-      $sth->execute($this->getParams());
+      $sth = $this->getPdo()->prepare($this->getSql());
+      $sth->execute($this->params);
+      //return $this->getStatement()->execute();
       return $sth;
-    } catch (\PDOException $e) {
-      throw new \Sphp\Exceptions\RuntimeException($e);
+    } catch (PDOException $e) {
+      throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
