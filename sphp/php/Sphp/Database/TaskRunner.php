@@ -8,6 +8,7 @@
 namespace Sphp\Database;
 
 use PDO;
+use PDOStatement;
 
 /**
  * Base class for all SQL Statement classes
@@ -18,6 +19,11 @@ use PDO;
  * @deprecated
  */
 class TaskRunner {
+
+  const QUESTIONMARK = 1;
+  const NAMED = 2;
+
+  private $paramIndexType = self::QUESTIONMARK;
 
   /**
    * @var PDO 
@@ -87,7 +93,8 @@ class TaskRunner {
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    $this->paramMap[$name] = ['value' => $value, 'type' => $type];
+    $this->paramTypes[$name] = $type;
+    $this->params[$name] = $value;
     return $this;
   }
 
@@ -113,7 +120,27 @@ class TaskRunner {
    * @return array values that are vulnerable to an SQL injection
    */
   public function getParams(): array {
+    if ($this->paramIndexType === self::QUESTIONMARK) {
+      return $list = array_combine(range(1, count($this->params)), array_values($this->params));
+    }
     return $this->params;
+  }
+
+  /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @return array values that are vulnerable to an SQL injection
+   */
+  public function getParamType($index): array {
+    if ($this->paramIndexType === self::QUESTIONMARK) {
+      return $list = array_combine(range(1, count($this->paramTypes)), array_values($this->paramTypes));
+    }
+    return $this->params;
+  }
+
+  public function bindParams() {
+    
   }
 
   /**
@@ -123,9 +150,13 @@ class TaskRunner {
    */
   public function getStatement(): \PDOStatement {
     try {
-      return $this->getPdo()->prepare($this->getSql());
+      $sth = $this->getPdo()->prepare($this->getSql());
+      foreach ($this->getParams() as $name => $value) {
+        $sth->bindValue($name, $value);
+      }
+      return $sth;
     } catch (\PDOException $e) {
-      throw new \Sphp\Exceptions\RuntimeException($e);
+      throw new \Sphp\Exceptions\RuntimeException($e->getMessage(), 0, $e);
     }
   }
 

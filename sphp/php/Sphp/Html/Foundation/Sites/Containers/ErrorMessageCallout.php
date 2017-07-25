@@ -124,7 +124,7 @@ class ErrorMessageCallout extends Callout {
   public function setErrno(int $errno) {
     $this->errno = $errno;
     //var_dump(\E_ALL & $errno, \E_ERROR & $errno, \E_WARNING & $errno, $errno);
-    if (\E_WARNING & $errno || \E_USER_NOTICE & $errno || \E_USER_WARNING & $errno) {
+    if (\E_WARNING & $errno || \E_NOTICE || \E_USER_NOTICE & $errno || \E_USER_WARNING & $errno) {
       $this->removeCssClass('alert');
       $this->addCssClass('warning');
     }
