@@ -11,6 +11,7 @@ use PDO;
 use PDOStatement;
 use PDOException;
 use Sphp\Exceptions\RuntimeException;
+use Iterator;
 
 /**
  * Base class for all SQL Statement classes
@@ -19,22 +20,8 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PDORunner {
+class PDOParameters implements \ArrayAccess, Iterator, \Countable, \Sphp\Stdlib\Datastructures\Arrayable {
 
-  const QUESTIONMARK = 1;
-  const NAMED = 2;
-
-  private $paramIndexType = self::QUESTIONMARK;
-
-  /**
-   * @var PDO 
-   */
-  private $pdo;
-
-  /**
-   * @var string 
-   */
-  private $sql = '';
 
   /**
    * @var array
@@ -44,22 +31,11 @@ class PDORunner {
   /**
    * Constructs a new instance
    *
-   * @param  PDO $pdo the database connection
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
-   */
-  public function __construct(PDO $pdo) {
-    $this->setPdo($pdo);
-  }
-
-  public function getSql(): string {
-    return $this->sql;
-  }
-
-  public function setSql(string $sql) {
-    $this->sql = $sql;
-    //$this->params = [];
-    return $this;
-  }
+   * @param int $type
+   
+  public function __construct() {
+   
+  }*/
 
   /**
    * Destroys the instance
@@ -68,25 +44,10 @@ class PDORunner {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->pdo);
+    unset($this->params);
   }
 
-  public function getPdo(): PDO {
-    return $this->pdo;
-  }
 
-  /**
-   * 
-   * @param  PDO $pdo
-   * @return self for a fluent interface
-   */
-  public function setPdo(PDO $pdo) {
-    $this->pdo = $pdo;
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
-    return $this;
-  }
-  
   /**
    * 
    * @param  mixed $value
@@ -107,15 +68,13 @@ class PDORunner {
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if (!is_numeric($name) && !\Sphp\Stdlib\Strings::startsWith($name, ':')) {
-      $name = ":$name";
-    }
     $this->paramTypes[$name] = $type;
     $this->params[$name] = $value;
     return $this;
   }
 
   public function unsetParam($name) {
+
     unset($this->paramTypes[$name], $this->params[$name]);
     return $this;
   }
@@ -145,12 +104,8 @@ class PDORunner {
     return !empty($this->params);
   }
 
-  public function countParams(): int {
+  public function count(): int {
     return count($this->params);
-  }
-
-  public function hasNamedParams() {
-    return !\Sphp\Stdlib\Arrays::isIndexed($this->params);
   }
 
   /**
@@ -188,17 +143,12 @@ class PDORunner {
    * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function getStatement(): PDOStatement {
+  public function bindTo(PDOStatement $statement): PDOStatement {
     try {
-      $sth = $this->getPdo()->prepare($this->getSql());
-      foreach ($this->getParams() as $name => $value) {
-        //echo $this->sql.$value;
-        if (!is_numeric($name)) {
-          $name = ":$name";
-        }
-        $sth->bindValue($name, $value);
+      foreach ($this as $name => $value) {
+        $statement->bindValue($name, $value);
       }
-      return $sth;
+      return $statement;
     } catch (PDOException $e) {
       throw new RuntimeException($e->getMessage(), 0, $e);
     }
@@ -206,18 +156,86 @@ class PDORunner {
 
   /**
    * 
+   * 
+   * @param  PDOStatement $statement
    * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function execute(): PDOStatement {
+  public function executeIn(PDOStatement $statement): PDOStatement {
     try {
-      $sth = $this->getPdo()->prepare($this->getSql());
-      $sth->execute($this->params);
-      //return $this->getStatement()->execute();
-      return $sth;
+      $statement->execute($this->toArray());
+      return $statement;
     } catch (PDOException $e) {
       throw new RuntimeException($e->getMessage(), 0, $e);
     }
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->items);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->items);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->items);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->items);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->items);
+  }
+
+  public function offsetExists($offset): bool {
+    return array_key_exists($offset, $this->params);
+  }
+
+  public function offsetGet($offset) {
+    if (!$this->offsetExists($offset)) {
+      return null;
+    }
+    return $this->params[$offset];
+  }
+
+  public function offsetSet($offset, $value) {
+    $this->setParam($offset, $value);
+    return $this;
+  }
+
+  public function offsetUnset($offset) {
+    if ($this->offsetExists($offset)) {
+      unset($this->paramTypes[$offset], $this->params[$offset]);
+    }
+    return $this;
+  }
+
+  public function toArray(): array {
+    return $this->params;
   }
 
 }

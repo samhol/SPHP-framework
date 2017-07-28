@@ -13,20 +13,31 @@ $hydeparkData = [
 
 //Db::delete()->from('locations')->where("name = 'Hyde Park'")->execute();
 $runner = new PDORunner(Db::instance()->getPdo());
+echo "insert: \n";
 $runner->setSql("insert into `locations` values(?, ?, ?, ?, ?, ?)")
         ->setParams($hydeparkData)
         ->execute();
 print_r($runner->setSql('select * from locations')
-        ->unsetParams()
-        ->execute()
-        ->fetchAll(\PDO::FETCH_ASSOC));
-Db::delete()->from('locations')->where("name = 'Hyde Park'")->execute();
+                ->unsetParams()
+                ->execute()
+                ->fetchAll(\PDO::FETCH_ASSOC));
+echo "delete: \n";
+var_dump(Db::delete()->from('locations')->where("name = 'Hyde Park'")->affectRows());
+echo "insert: \n";
 $runner->setSql("insert into `locations` values(:name, :street, :zipcode, :city, :country, :maplink)", PDORunner::NAMED)
         ->setParams($hydeparkData)
         ->execute();
 print_r($runner->setSql('select * from locations')->unsetParams()->execute()->fetchAll(\PDO::FETCH_ASSOC));
-echo Db::insert()
-        ->into('locations')
-        ->valuesFromArray($hydeparkData)
-        ->statementToString();
+echo "delete: \n";
+var_dump(Db::delete()->from('locations')->where("name = 'Hyde Park'")->affectRows());
+echo "insert: \n";
+var_dump(Db::insert()
+                ->into('locations')
+                ->valuesFromArray($hydeparkData)
+                ->affectRows());
 //echo Db::insert()->into('locations')->values($hydeparkData)->affectRows();
+
+print_r($runner->setSql('select * from locations')
+                ->unsetParams()
+                ->execute()
+                ->fetchAll(\PDO::FETCH_ASSOC));

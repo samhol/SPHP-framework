@@ -96,20 +96,16 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     }
     if ($this->getPDORunner()->hasNamedParams()) {
       if (!empty($this->names)) {
-        $fields = array_map(function($value) {
+        $params = array_map(function($value) {
           return ":$value";
         }, $this->names);
       } else {
-        $fields = $this->getPDORunner()->getParamNames();
+        $params = $this->getPDORunner()->getParamNames();
       }
-      $query .= ' VALUES (' . implode(', ', $fields) . ') ';
     } else {
-      $query .= ' VALUES (?';
-      for ($i = 2; $i <= count($this->getParams()); $i++) {
-        $query .= ", ?";
-      }
+      $params = array_fill(0, $this->getPDORunner()->countParams(), '?');
     }
-    return "$query)";
+    return $query . ' VALUES (' . implode(', ', $params) . ') ';
   }
 
   public function affectRows(): int {

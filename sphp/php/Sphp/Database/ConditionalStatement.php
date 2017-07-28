@@ -66,6 +66,15 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   /**
+   * 
+   * @param array $attributes
+   */
+  protected function appendAttributes(array $attributes) {
+    $this->getPDORunner()->appendParams($attributes);
+    return $this;
+  }
+
+  /**
    * Returns the WHERE conditions component
    *
    * **Important!**
@@ -77,13 +86,10 @@ abstract class ConditionalStatement extends AbstractStatement {
    *  The WHERE clause eliminates all rows from the result set for which the comparison predicate does
    *  not evaluate to `true`.
    *
-   * @return Conditions
+   * @return self for a fluent interface
    */
-  public function where(... $statements) {
-    $this->where = new Conditions();
-    foreach ($statements as $statement) {
-      $this->where->andWhere($statement);
-    }
+  public function where(string $field, string $operand, $value) {
+    $this->compare($field, $operand, $value);
     return $this;
   }
 
@@ -97,7 +103,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param string|Conditions $statement SQL condition(s)
    * @return self for a fluent interface
    */
-  public function andWhere(... $statements) {
+  public function andWhere(string $field, string $operand, $value) {
     foreach ($statements as $statement) {
       $this->where->andWhere($statement);
     }
@@ -393,7 +399,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @return self for a fluent interface
    * @throws SQLException
    */
-  public function compare($column, $operator, $expr = null) {
+  public function compare(string $column, string $operator, $expr, string $conjunction = 'AND') {
     $op = strtoupper(trim($operator));
     if ($expr === null) {
       if ($op == "=") {

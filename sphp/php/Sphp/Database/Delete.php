@@ -9,6 +9,7 @@ namespace Sphp\Database;
 
 use Sphp\Stdlib\Arrays;
 use PDO;
+
 /**
  * An implementation of a SQL DELETE statement
  *
@@ -28,22 +29,16 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
   /**
    * Sets the table(s) from where the data is to be deleted.
    *
-   * @param  string|string[] $tables the table(s)
+   * @param  string... $table the table(s)
    * @return Delete this (used for method chaining)
    */
-  public function from($tables) {
-    if (func_num_args() > 0) {
-      $tables = func_get_args();
-    }
-    if (!is_array($tables)) {
-      $tables = [$tables];
-    }
-    $this->tables = implode(", ", Arrays::flatten($tables));
+  public function from(string ... $table) {
+    $this->tables = $table;
     return $this;
   }
 
   public function statementToString(): string {
-    $query = "DELETE FROM " . $this->tables;
+    $query = "DELETE FROM `" . implode(", ", Arrays::flatten($this->tables)) . '`';
     if ($this->conditions()->hasConditions()) {
       $query .= " WHERE " . $this->conditions();
     }

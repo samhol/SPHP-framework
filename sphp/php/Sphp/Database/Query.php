@@ -7,8 +7,6 @@
 
 namespace Sphp\Database;
 
-use Sphp\Stdlib\BitMask as BitMask;
-
 /**
  * An implementation of a SQL SELECT statement
  *
@@ -104,14 +102,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * @return self for a fluent interface
    */
   public function groupBy(string ...$columns) {
-    if (func_num_args() > 0) {
-      $columns = func_get_args();
-    }
-    if (is_array($columns)) {
-      $this->groupBy = implode(", ", $columns);
-    } else {
-      $this->groupBy = $columns;
-    }
+    $this->groupBy = implode(", ", $columns);
     return $this;
   }
 
@@ -161,18 +152,12 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * - 'ASC' indicates ascending order (default)
    * - 'DESC' indicates descending order
    *
-   * @param  string|string[] $columns the column(s) (accepts multiple arguments)
+   * @param  string ...$columns the column(s) (accepts multiple arguments)
    * @return self for a fluent interface
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy(string ...$columns) {
-    if (func_num_args() > 0) {
-      $columns = func_get_args();
-    }
-    if (!is_array($columns)) {
-      $columns = array($columns);
-    }
-    $this->orderBy = implode(", ", $columns);
+    $this->orderBy = implode(', ', $columns);
     return $this;
   }
 
