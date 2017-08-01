@@ -9,18 +9,18 @@ use Sphp\Exceptions\InvalidArgumentException;
 class PDOParametersTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var PDOParameters
+   * @var AbstractPDOParameters
    */
   protected $int;
 
   /**
-   * @var PDOParameters
+   * @var AbstractPDOParameters
    */
   protected $string;
 
   protected function setUp() {
     $this->int = new SequentialPDOParameters();
-    $this->string = new PDOParameters();
+    $this->string = new AbstractPDOParameters();
   }
 
   protected function tearDown() {
@@ -28,7 +28,7 @@ class PDOParametersTest extends \PHPUnit_Framework_TestCase {
   }
 
   protected function getNumeric() {
-    return new PDOParameters(PDOParameters::QUESTIONMARK);
+    return new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
   }
 
   /**
@@ -47,7 +47,7 @@ class PDOParametersTest extends \PHPUnit_Framework_TestCase {
    * @param array $values
    */
   public function testArrayAccess($offset, $value) {
-    $instance = new PDOParameters(PDOParameters::QUESTIONMARK);
+    $instance = new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
     try {
       $instance[$offset] = $value;
       $this->assertTrue($instance->offsetExists($offset));

@@ -153,7 +153,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  string $operation (`AND`, `OR`, `XOR`)
    * @return string the generated SQL condition
    */
-  private function append($statement, array $params = null, $operation = "AND") {
+  private function append($statement, array $params = null, $operation = 'AND') {
     $this->logical($operation);
     if ($statement instanceof Conditions) {
       $this->where .= "(" . $statement->statementToString() . ")";
@@ -255,7 +255,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  string|int|bool $result the result value of the bitwise operation
    * @return self for a fluent interface
    */
-  public function binaryOperationCompare($column, $binOp, $value, $op, $result) {
+  public function binaryOperationCompare(string $column, $binOp, $value, $op, $result) {
     return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
   }
 
@@ -266,7 +266,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  string $separator the logical operator between the comparisons
    * @return self for a fluent interface
    */
-  public function equals(array $rules, $separator = "AND") {
+  public function equals(array $rules, $separator = 'AND') {
     $cond = new Conditions();
     foreach ($rules as $field => $value) {
       $cond->logical($separator)->compare($field, "=", $value);
@@ -284,8 +284,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  mixed $value the value of the expression
    * @return self for a fluent interface
    */
-  public function isNot($column, $value) {
-    return $this->compare($column, "<>", $value);
+  public function isNot(string $column, $value) {
+    return $this->compare($column, '<>', $value);
   }
 
   /**
@@ -301,8 +301,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  string $pattern pattern string
    * @return self for a fluent interface
    */
-  public function isLike($column, $pattern) {
-    return $this->compare($column, "LIKE", $pattern);
+  public function isLike(string $column, string $pattern) {
+    return $this->compare($column, 'LIKE', $pattern);
   }
 
   /**

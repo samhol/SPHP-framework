@@ -10,6 +10,7 @@ namespace Sphp\Database;
 use PDO;
 use PDOStatement;
 use PDOException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
 use Iterator;
 
@@ -20,9 +21,7 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequentialPDOParameters extends PDOParameters {
-
-
+class SequentialPDOParameters extends AbstractPDOParameters {
 
   /**
    * 
@@ -31,23 +30,11 @@ class SequentialPDOParameters extends PDOParameters {
    * @param  int $type
    * @return self for a fluent interface
    */
-  public function setParam( $name, $value, int $type = PDO::PARAM_STR) {
-    if ($name <= 0) {
-      throw new \Sphp\Exceptions\InvalidArgumentException('Parameter offset must be a positive integer');
-    } 
+  public function setParam($name, $value, int $type = PDO::PARAM_STR) {
+    if (!is_int($name) || $name <= 0) {
+      throw new InvalidArgumentException('Offset must be a positive integer');
+    }
     parent::setParam($name, $value, $type);
-    return $this;
-  }
-
-  public function unsetParam($name) {
-
-    unset($this->paramTypes[$name], $this->params[$name]);
-    return $this;
-  }
-
-  public function unsetParams() {
-    $this->paramTypes = [];
-    $this->params = [];
     return $this;
   }
 
@@ -66,15 +53,25 @@ class SequentialPDOParameters extends PDOParameters {
     return $this;
   }
 
-  public function hasParams(): bool {
-    return !empty($this->params);
+  /**
+   * 
+   * @param  array|Traversable $params
+   * @return self for a fluent interface
+   * @throws InvalidArgumentException
+   */
+  public function mergeParams($params) {
+    if (!is_iterable($params) || is_array($params)) {
+      throw new InvalidArgumentException('Merged data must be an iterable object or an array');
+    }
+    foreach ($params as $name => $value) {
+      if (is_int($name)) {
+        $this->setParam($name, $value);
+      } else {
+        $this->setParam(null, $value);
+      }
+    }
+    return $this;
   }
-
-  public function count(): int {
-    return count($this->params);
-  }
-
-
 
   /**
    * Returns an array of values with as many elements as there are bound
@@ -118,61 +115,6 @@ class SequentialPDOParameters extends PDOParameters {
     }
   }
 
-  /**
-   * Returns the current element
-   * 
-   * @return mixed the current element
-   */
-  public function current() {
-    return current($this->items);
-  }
-
-  /**
-   * Advance the internal pointer of the collection
-   */
-  public function next() {
-    next($this->items);
-  }
-
-  /**
-   * Return the key of the current element
-   * 
-   * @return mixed the key of the current element
-   */
-  public function key() {
-    return key($this->items);
-  }
-
-  /**
-   * Rewinds the Iterator to the first element
-   */
-  public function rewind() {
-    reset($this->items);
-  }
-
-  /**
-   * Checks if current iterator position is valid
-   * 
-   * @return boolean current iterator position is valid
-   */
-  public function valid(): bool {
-    return false !== current($this->items);
-  }
-
-  public function offsetExists($offset): bool {
-    if (is_string($offset) && !is_numeric($offset) && substr($offset, 0, 1) !== ':') {
-      $offset = ":$offset";
-    }
-    return array_key_exists($offset, $this->params);
-  }
-
-  public function offsetGet($offset) {
-    if (!$this->offsetExists($offset)) {
-      return null;
-    }
-    return $this->params[$offset];
-  }
-
   public function offsetSet($offset, $value) {
     $this->setParam($offset, $value);
     return $this;
@@ -186,10 +128,6 @@ class SequentialPDOParameters extends PDOParameters {
       unset($this->paramTypes[$offset], $this->params[$offset]);
     }
     return $this;
-  }
-
-  public function toArray(): array {
-    return $this->params;
   }
 
 }

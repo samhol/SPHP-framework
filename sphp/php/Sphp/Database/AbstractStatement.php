@@ -25,6 +25,11 @@ abstract class AbstractStatement implements StatementInterface {
    * @var TaskRunner 
    */
   private $pdoRunner;
+  
+  /**
+   * @var AbstractPDOParameters 
+   */
+  private $params;
 
   /**
    * Constructs a new instance
@@ -32,9 +37,12 @@ abstract class AbstractStatement implements StatementInterface {
    * @param  TaskRunner $pdo the database connection
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(PDORunner $pdo) {
+  public function __construct(AbstractPDOParameters $params) {
     $this->setPDORunner($pdo);
+    $this->params = $params; 
   }
+  
+  
 
   /**
    * Destroys the instance
@@ -71,6 +79,7 @@ abstract class AbstractStatement implements StatementInterface {
    */
   public function setParam(string $name, $value, int $type = PDO::PARAM_STR) {
     $this->pdoRunner->setParam($name, $value, $type);
+    $this->params->setParam($name, $value);
     return $this;
   }
 

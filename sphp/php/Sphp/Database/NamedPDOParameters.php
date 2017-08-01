@@ -21,17 +21,18 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NamedPDOParameters extends PDOParameters {
+class NamedPDOParameters extends AbstractPDOParameters {
 
   /**
    * 
-   * @param  string $name
+   * @param  string $name  [:][a-zA-Z0-9_]+;
    * @param  mixed $value
    * @param  int $type
    * @return self for a fluent interface
+   * @throws InvalidArgumentException
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if (is_numeric($name)) {
+    if (preg_match("/^[:]?[a-zA-Z]{1,}[a-zA-Z0-9_]+$/", $name) !== 1) {
       throw new InvalidArgumentException('Parameter name must be a string');
     }
     if (!\Sphp\Stdlib\Strings::startsWith($name, ':')) {
@@ -61,7 +62,7 @@ class NamedPDOParameters extends PDOParameters {
     if (is_string($offset) && substr($offset, 0, 1) !== ':') {
       $offset = ":$offset";
     }
-    return array_key_exists($offset, $this->params);
+    return parent::offsetExists($offset);
   }
 
   public function offsetGet($offset) {

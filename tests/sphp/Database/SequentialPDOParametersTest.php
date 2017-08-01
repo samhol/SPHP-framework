@@ -5,22 +5,23 @@ namespace Sphp\Database;
 use Throwable;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
+use Exception;
 
-class SequentialPDOParametersTest extends \PHPUnit_Framework_TestCase {
+class SequentialPDOParametersTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var PDOParameters
+   * @var AbstractPDOParameters
    */
   protected $int;
 
   /**
-   * @var PDOParameters
+   * @var AbstractPDOParameters
    */
   protected $string;
 
   protected function setUp() {
     $this->int = new SequentialPDOParameters();
-    $this->string = new PDOParameters();
+    $this->string = new AbstractPDOParameters();
   }
 
   protected function tearDown() {
@@ -28,34 +29,56 @@ class SequentialPDOParametersTest extends \PHPUnit_Framework_TestCase {
   }
 
   protected function getNumeric() {
-    return new PDOParameters(PDOParameters::QUESTIONMARK);
+    return new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
   }
 
   /**
    * 
    * @return array
    */
-  public function collectionData() {
+  public function correctData() {
     return [
-        ['a', 'b'],
+        [2, 'b'],
         [1, 'one'],
+        [3, true],
     ];
   }
 
   /**
-   * @dataProvider collectionData
-   * @param array $values
+   * @dataProvider correctData
+   * @param mixed $offset
+   * @param mixed $value
    */
   public function testArrayAccess($offset, $value) {
     $instance = new SequentialPDOParameters();
-    try {
-      $instance[$offset] = $value;
-      $this->assertTrue($instance->offsetExists($offset));
-      $this->assertCount(1, $instance);
-    } catch (Throwable $ex) {
-      $this->assertTrue(!is_int($offset));
-      $this->assertInstanceOf(InvalidArgumentException::class, $ex);
-    }
+    $instance[$offset] = $value;
+    $this->assertTrue($instance->offsetExists($offset));
+    $this->assertCount(1, $instance);
   }
 
+  /**
+   * @return array
+   */
+  public function incorrectData(): array {
+    return [
+        [0, 'b'],
+        [null, 'foo'],
+        [-1, 'foo'],
+        ['1', 'foo'],
+        ['a', 'foo'],
+        ['::foobar', 'foo'],
+        [':foo', 'foo'],
+    ];
+  }
+
+  /**
+   * @dataProvider incorrectData
+   * @param mixed $offset
+   * @param mixed $value
+   */
+  public function testIncorrectInsert($offset, $value) {
+    $instance = new SequentialPDOParameters();
+    $this->expectException(InvalidArgumentException::class);
+    $instance[$offset] = $value;
+  }
 }

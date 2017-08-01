@@ -12,6 +12,7 @@ use PDOStatement;
 use PDOException;
 use Sphp\Exceptions\RuntimeException;
 use Iterator;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Base class for all SQL Statement classes
@@ -20,8 +21,7 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PDOParameters implements \ArrayAccess, Iterator, \Countable, \Sphp\Stdlib\Datastructures\Arrayable {
-
+class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Arrayable {
 
   /**
    * @var array
@@ -32,10 +32,10 @@ class PDOParameters implements \ArrayAccess, Iterator, \Countable, \Sphp\Stdlib\
    * Constructs a new instance
    *
    * @param int $type
-   
-  public function __construct() {
-   
-  }*/
+
+    public function __construct() {
+
+    } */
 
   /**
    * Destroys the instance
@@ -46,7 +46,6 @@ class PDOParameters implements \ArrayAccess, Iterator, \Countable, \Sphp\Stdlib\
   public function __destruct() {
     unset($this->params);
   }
-
 
   /**
    * 
@@ -62,14 +61,19 @@ class PDOParameters implements \ArrayAccess, Iterator, \Countable, \Sphp\Stdlib\
 
   /**
    * 
-   * @param  string $name
+   * @param  mixed $name
    * @param  mixed $value
    * @param  int $type
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    $this->paramTypes[$name] = $type;
-    $this->params[$name] = $value;
+    if ($name === null) {
+      $this->paramTypes[] = $type;
+      $this->params[] = $value;
+    } else {
+      $this->paramTypes[$name] = $type;
+      $this->params[$name] = $value;
+    }
     return $this;
   }
 
