@@ -25,11 +25,16 @@ abstract class AbstractStatement implements StatementInterface {
    * @var TaskRunner 
    */
   private $pdoRunner;
-  
+
   /**
    * @var AbstractPDOParameters 
    */
   private $params;
+
+  /**
+   * @var PDO
+   */
+  private $pdo;
 
   /**
    * Constructs a new instance
@@ -39,10 +44,8 @@ abstract class AbstractStatement implements StatementInterface {
    */
   public function __construct(AbstractPDOParameters $params) {
     $this->setPDORunner($pdo);
-    $this->params = $params; 
+    $this->params = $params;
   }
-  
-  
 
   /**
    * Destroys the instance
@@ -114,7 +117,7 @@ abstract class AbstractStatement implements StatementInterface {
   public function getStatement(): PDOStatement {
     echo $this->statementToString();
     try {
-      return $this->getPDORunner()->setSql($this->statementToString())->getStatement();
+      return $this->getPDO()->prepare($this->statementToString());
     } catch (\PDOException $e) {
       echo $this->statementToString();
       throw new \Sphp\Exceptions\RuntimeException($e);
@@ -128,39 +131,19 @@ abstract class AbstractStatement implements StatementInterface {
    */
   public function execute(): PDOStatement {
     try {
-      $this->pdoRunner->setSql($this->statementToString());
-      return $this->pdoRunner->execute();
+      return $this->params->executeIn($this->getStatement());
     } catch (\PDOException $e) {
       throw new \Sphp\Exceptions\RuntimeException($e);
     }
   }
 
-  public function __toString(): string {
-    $keys = array();
-    $values = $this->getParams();
+  public function getPDO(): PDO {
+    return $this->pdo;
+  }
 
-    # build a regular expression for each parameter
-    foreach ($this->getParams() as $key => $value) {
-      if (is_string($key)) {
-        $keys[] = '/:' . $key . '/';
-      } else {
-        $keys[] = '/[?]/';
-      }
-
-      if (is_array($value)) {
-        $values[$key] = implode(',', $value);
-      }
-
-      if (is_null($value)) {
-        $values[$key] = 'null';
-      }
-    }
-    // Walk the array to see if we can add single-quotes to strings
-    array_walk($values, create_function('&$v, $k', 'if (!is_numeric($v) && $v!="null") $v = "\'".$v."\'";'));
-
-    $query = preg_replace($keys, $values, $this->statementToString(), 1, $count);
-
-    return $query;
+  public function setPDO(PDO $pdo) {
+    $this->pdo = $pdo;
+    return $this;
   }
 
 }

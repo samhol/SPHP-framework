@@ -7,6 +7,7 @@
 
 namespace Sphp\Database;
 
+use PDO;
 use PDOStatement;
 
 /**
@@ -17,6 +18,10 @@ use PDOStatement;
  * @filesource
  */
 interface StatementInterface {
+
+  public function setPDO(PDO $pdo);
+
+  public function getPDO(): PDO;
 
   /**
    * Returns the SQL statement as a string
@@ -38,17 +43,6 @@ interface StatementInterface {
    * @return mixed[] the bound parameters
    */
   public function getParams(): array;
-
-  /**
-   * Returns the SQL statement as a string
-   *
-   * Replaces any parameter placeholders in a query with the value of that
-   * parameter. Useful for debugging. Assumes anonymous parameters from
-   * $params are are in the same order as specified in $query
-   *
-   * @return string the interpolated query for debugging purposes
-   */
-  public function __toString(): string;
 
   /**
    * Executes the SQL statement, returning a result set as a PDOStatement object
