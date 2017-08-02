@@ -207,10 +207,6 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     return $query;
   }
 
-  public function getParams(): array {
-    return $this->where()->getParams();
-  }
-
   /**
    * Executes the SQL query in the given database and returns the result rows as an array
    *

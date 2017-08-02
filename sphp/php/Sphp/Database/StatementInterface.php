@@ -40,9 +40,9 @@ interface StatementInterface {
   /**
    * Returns the bound parameters as an array
    *
-   * @return mixed[] the bound parameters
+   * @return AbstractPDOParameters the bound parameters
    */
-  public function getParams(): array;
+  public function getParams(): AbstractPDOParameters;
 
   /**
    * Executes the SQL statement, returning a result set as a PDOStatement object

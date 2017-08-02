@@ -40,7 +40,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   private $values = [];
 
   public function __construct(PDO $pdo) {
-    parent::__construct(new PDORunner($pdo));
+    parent::__construct(new NamedPDOParameters, $pdo);
   }
 
   /**

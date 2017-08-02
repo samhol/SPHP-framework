@@ -86,7 +86,7 @@ class PDORunner {
     $this->pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
     return $this;
   }
-  
+
   /**
    * 
    * @param  mixed $value

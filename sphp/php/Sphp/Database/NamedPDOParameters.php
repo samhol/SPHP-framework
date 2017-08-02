@@ -12,7 +12,6 @@ use PDOStatement;
 use PDOException;
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Iterator;
 
 /**
  * Base class for all SQL Statement classes

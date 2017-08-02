@@ -32,7 +32,7 @@ if any constraints are violated, the new row is not added to the table and a
 $sqlException returned instead.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'sql', false);
+CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'sql');
 CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');
 CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql', false);
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Delete.php', 'sql', false);

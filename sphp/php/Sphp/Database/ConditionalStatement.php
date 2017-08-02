@@ -8,6 +8,7 @@
 namespace Sphp\Database;
 
 use PDO;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements the conditions for statements in SQL
@@ -38,7 +39,7 @@ abstract class ConditionalStatement extends AbstractStatement {
     } else {
       $this->where = $where;
     }
-    parent::__construct(new PDORunner($db));
+    parent::__construct(new SequentialPDOParameters(), $db);
   }
 
   /**
@@ -163,8 +164,8 @@ abstract class ConditionalStatement extends AbstractStatement {
       $this->where .= $statement;
     }
     if ($params !== null) {
-      foreach ($params as $value) {
-        $this->params[] = $value;
+      foreach ($params as $param) {
+        $this->getParams()->appendParam($param);
       }
     }
     return $this;

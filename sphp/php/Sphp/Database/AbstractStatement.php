@@ -22,11 +22,6 @@ use Sphp\Exceptions\RuntimeException;
 abstract class AbstractStatement implements StatementInterface {
 
   /**
-   * @var TaskRunner 
-   */
-  private $pdoRunner;
-
-  /**
    * @var AbstractPDOParameters 
    */
   private $params;
@@ -39,12 +34,13 @@ abstract class AbstractStatement implements StatementInterface {
   /**
    * Constructs a new instance
    *
-   * @param  TaskRunner $pdo the database connection
-   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @param AbstractPDOParameters $params
+   * @param PDO $pdo
+   * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(AbstractPDOParameters $params) {
-    $this->setPDORunner($pdo);
-    $this->params = $params;
+  public function __construct(AbstractPDOParameters $params, PDO $pdo) {
+    $this->setPDO($pdo);
+    $this->setParams($params);
   }
 
   /**
@@ -54,59 +50,41 @@ abstract class AbstractStatement implements StatementInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->pdoRunner);
+    unset($this->params, $this->pdo);
+  }
+  
+  protected function setParams(AbstractPDOParameters $params) {
+    $this->params = $params;
+    return $this;
   }
 
-  public function getPDORunner(): PDORunner {
-    return $this->pdoRunner;
+  
+  public function getPDO(): PDO {
+    return $this->pdo;
   }
 
   /**
    * 
-   * @param PDO $pdo
+   * @param  PDO $pdo
    * @return self for a fluent interface
    */
-  public function setPDORunner(PDORunner $pdo) {
-    $this->pdoRunner = $pdo;
-    $this->pdoRunner->getPdo()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->pdoRunner->getPdo()->setAttribute(PDO::ATTR_PERSISTENT, true);
+  public function setPDO(PDO $pdo) {
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
+    $this->pdo = $pdo;
     return $this;
   }
 
-  /**
-   * 
-   * @param  string $name
-   * @param  mixed $value
-   * @param  int $type
-   * @return self for a fluent interface
-   */
-  public function setParam(string $name, $value, int $type = PDO::PARAM_STR) {
-    $this->pdoRunner->setParam($name, $value, $type);
-    $this->params->setParam($name, $value);
-    return $this;
-  }
+
 
   /**
    * Returns an array of values with as many elements as there are bound
    * parameters in the clause
    *
-   * @param  array $params
-   * @param  int $type
-   * @return self for a fluent interface
+   * @return AbstractPDOParameters values that are vulnerable to an SQL injection
    */
-  public function setParams(array $params, int $type = PDO::PARAM_STR) {
-    $this->pdoRunner->setParams($params, $type);
-    return $this;
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
-  public function getParams(): array {
-    return $this->pdoRunner->getParams();
+  public function getParams(): AbstractPDOParameters {
+    return $this->params;
   }
 
   /**
@@ -135,15 +113,6 @@ abstract class AbstractStatement implements StatementInterface {
     } catch (\PDOException $e) {
       throw new \Sphp\Exceptions\RuntimeException($e);
     }
-  }
-
-  public function getPDO(): PDO {
-    return $this->pdo;
-  }
-
-  public function setPDO(PDO $pdo) {
-    $this->pdo = $pdo;
-    return $this;
   }
 
 }

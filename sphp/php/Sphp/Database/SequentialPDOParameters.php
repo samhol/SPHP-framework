@@ -12,7 +12,6 @@ use PDOStatement;
 use PDOException;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
-use Iterator;
 
 /**
  * Base class for all SQL Statement classes
@@ -25,31 +24,27 @@ class SequentialPDOParameters extends AbstractPDOParameters {
 
   /**
    * 
+   * @param  mixed $value
+   * @param  int $type
+   * @return self for a fluent interface
+   */
+  public function appendParam($value, int $type = PDO::PARAM_STR) {
+    $this->setParam(null, $value, $type);
+    return $this;
+  }
+
+  /**
+   * 
    * @param  string $name
    * @param  mixed $value
    * @param  int $type
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if (!is_int($name) || $name <= 0) {
-      throw new InvalidArgumentException('Offset must be a positive integer');
+    if ($name !== null && (!is_int($name) || $name < 0)) {
+      throw new InvalidArgumentException('Offset must be zero or a positive integer');
     }
     parent::setParam($name, $value, $type);
-    return $this;
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @param  array $params
-   * @param  int $type
-   * @return self for a fluent interface
-   */
-  public function setParams(array $params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $name => $value) {
-      $this->setParam($name, $value, $type);
-    }
     return $this;
   }
 
@@ -81,53 +76,6 @@ class SequentialPDOParameters extends AbstractPDOParameters {
    */
   public function getParamType($index): array {
     return $this->paramTypes[$index];
-  }
-
-  /**
-   * 
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
-  public function bindTo(PDOStatement $statement): PDOStatement {
-    try {
-      foreach ($this as $name => $value) {
-        $statement->bindValue($name, $value);
-      }
-      return $statement;
-    } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
-    }
-  }
-
-  /**
-   * 
-   * 
-   * @param  PDOStatement $statement
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
-  public function executeIn(PDOStatement $statement): PDOStatement {
-    try {
-      $statement->execute($this->toArray());
-      return $statement;
-    } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
-    }
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->setParam($offset, $value);
-    return $this;
-  }
-
-  public function offsetUnset($offset) {
-    if (is_string($offset) && !\Sphp\Stdlib\Strings::startsWith($offset, ':')) {
-      $name = ":$name";
-    }
-    if ($this->offsetExists($offset)) {
-      unset($this->paramTypes[$offset], $this->params[$offset]);
-    }
-    return $this;
   }
 
 }

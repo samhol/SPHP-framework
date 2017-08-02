@@ -47,17 +47,7 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
     unset($this->params);
   }
 
-  /**
-   * 
-   * @param  mixed $value
-   * @param  int $type
-   * @return self for a fluent interface
-   */
-  public function appendParams($value, int $type = PDO::PARAM_STR) {
-    $this->paramTypes[] = $type;
-    $this->params[] = $value;
-    return $this;
-  }
+  
 
   /**
    * 
@@ -149,12 +139,13 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
    */
   public function bindTo(PDOStatement $statement): PDOStatement {
     try {
+      $k = 1;
       foreach ($this as $name => $value) {
-        $statement->bindValue($name, $value);
+        $statement->bindValue($k++, $value);
       }
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
+      throw new RuntimeException('Binding failed', 0, $e);
     }
   }
 
@@ -167,10 +158,11 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
    */
   public function executeIn(PDOStatement $statement): PDOStatement {
     try {
+      print_r($this->toArray());
       $statement->execute($this->toArray());
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
+      throw new RuntimeException($e->getMessage(), 0 ,$e);
     }
   }
 

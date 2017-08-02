@@ -25,6 +25,7 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
    * @var string
    */
   private $tables = [];
+  
 
   /**
    * Sets the table(s) from where the data is to be deleted.
@@ -39,7 +40,7 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
 
   public function statementToString(): string {
     $query = "DELETE FROM `" . implode(", ", Arrays::flatten($this->tables)) . '`';
-    if ($this->conditions()->hasConditions()) {
+    if ($this->hasConditions()) {
       $query .= " WHERE " . $this->conditions();
     }
     return $query;
