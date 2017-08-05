@@ -34,11 +34,11 @@ abstract class AbstractStatement implements StatementInterface {
   /**
    * Constructs a new instance
    *
-   * @param AbstractPDOParameters $params
+   * @param ParameterContainerInterface $params
    * @param PDO $pdo
    * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(AbstractPDOParameters $params, PDO $pdo) {
+  public function __construct(ParameterContainerInterface $params, PDO $pdo) {
     $this->setPDO($pdo);
     $this->setParams($params);
   }
@@ -53,7 +53,7 @@ abstract class AbstractStatement implements StatementInterface {
     unset($this->params, $this->pdo);
   }
   
-  protected function setParams(AbstractPDOParameters $params) {
+  protected function setParams(ParameterContainerInterface $params) {
     $this->params = $params;
     return $this;
   }
@@ -81,9 +81,9 @@ abstract class AbstractStatement implements StatementInterface {
    * Returns an array of values with as many elements as there are bound
    * parameters in the clause
    *
-   * @return AbstractPDOParameters values that are vulnerable to an SQL injection
+   * @return ParameterContainerInterface values that are vulnerable to an SQL injection
    */
-  public function getParams(): AbstractPDOParameters {
+  public function getParams(): ParameterContainerInterface {
     return $this->params;
   }
 

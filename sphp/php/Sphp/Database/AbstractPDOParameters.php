@@ -21,7 +21,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Arrayable {
+class AbstractPDOParameters implements ParameterContainerInterface {
 
   /**
    * @var array
@@ -46,8 +46,6 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
   public function __destruct() {
     unset($this->params);
   }
-
-  
 
   /**
    * 
@@ -94,22 +92,12 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
     return $this;
   }
 
-  public function hasParams(): bool {
+  public function notEmpty(): bool {
     return !empty($this->params);
   }
 
   public function count(): int {
     return count($this->params);
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
-  public function getParams(): array {
-    return $this->params;
   }
 
   /**
@@ -128,7 +116,7 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
    *
    * @return array values that are vulnerable to an SQL injection
    */
-  public function getParamType($index): array {
+  public function getParamType($index): int {
     return $this->paramTypes[$index];
   }
 
@@ -141,7 +129,7 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
     try {
       $k = 1;
       foreach ($this as $name => $value) {
-        $statement->bindValue($k++, $value);
+        $statement->bindValue($name, $value, $this->getParamType($name));
       }
       return $statement;
     } catch (PDOException $e) {
@@ -162,7 +150,7 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
       $statement->execute($this->toArray());
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0 ,$e);
+      throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
@@ -230,6 +218,12 @@ class AbstractPDOParameters implements \ArrayAccess, Iterator, \Countable, Array
     return $this;
   }
 
+  /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @return array values that are vulnerable to an SQL injection
+   */
   public function toArray(): array {
     return $this->params;
   }

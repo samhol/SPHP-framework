@@ -7,6 +7,8 @@
 
 namespace Sphp\Database;
 
+use PDO;
+
 /**
  * An implementation of a SQL SELECT statement
  *
@@ -58,7 +60,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    */
   private $limit = "";
 
-  public function __construct(\PDO $db) {
+  public function __construct(PDO $db) {
     parent::__construct($db);
     $this->get('*');
   }

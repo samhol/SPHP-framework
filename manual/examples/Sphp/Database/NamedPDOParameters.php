@@ -19,7 +19,7 @@ try {
   $statement2 = $pdo->prepare('insert into locations (name, street, zipcode, city, country, maplink) values (:name, :street, :zipcode, :city, :country, :maplink)');
 //Db::delete()->from('locations')->where("name = 'Hyde Park'")->execute();
   $runner = new NamedPDOParameters();
-  $runner[] = "foo";
+  ///$runner['a'] = "foo";
   echo "insert: \n";
   $runner->setParams($hydeparkData);
   $runner->executeIn($statement2);

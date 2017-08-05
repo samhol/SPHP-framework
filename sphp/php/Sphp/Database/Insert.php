@@ -40,7 +40,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   private $values = [];
 
   public function __construct(PDO $pdo) {
-    parent::__construct(new NamedPDOParameters, $pdo);
+    parent::__construct(new SequentialPDOParameters, $pdo);
   }
 
   /**
@@ -63,7 +63,8 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   public function values(... $values) {
     array_unshift($values, '');
     unset($values[0]);
-    $this->getPDORunner()->setParams($values);
+    $this->setParams(new SequentialPDOParameters());
+    $this->getParams()->setParams($values);
     return $this;
   }
 
@@ -74,7 +75,12 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function valuesFromArray(array $values) {
-    $this->getPDORunner()->setParams($values);
+    if(\Sphp\Stdlib\Arrays::isIndexed($values)) {
+      $par = new SequentialPDOParameters($values);
+    } else {
+      $par = new NamedPDOParameters($values);
+    }
+    $this->setParams($par);
     return $this;
   }
 
@@ -94,7 +100,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     if (!empty($this->names)) {
       $query .= " (" . implode(', ', $this->names) . ") ";
     }
-    if ($this->getPDORunner()->hasNamedParams()) {
+    if ($this->getParams()->notEmpty()) {
       if (!empty($this->names)) {
         $params = array_map(function($value) {
           return ":$value";

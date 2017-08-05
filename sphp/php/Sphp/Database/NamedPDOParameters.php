@@ -23,6 +23,33 @@ use Sphp\Exceptions\InvalidArgumentException;
 class NamedPDOParameters extends AbstractPDOParameters {
 
   /**
+   * Constructs a new instance
+   * 
+   * @param mixed $params
+   */
+  public function __construct($params = null) {
+    if ($params !== null) {
+      $this->mergeParams($params);
+    }
+  }
+
+  /**
+   * 
+   * @param  array|Traversable $params
+   * @return self for a fluent interface
+   * @throws InvalidArgumentException
+   */
+  public function mergeParams($params) {
+    if (!is_array($params) && !$params instanceof \Traversable) {
+      throw new InvalidArgumentException('Merged data must be an iterable object or an array');
+    }
+    foreach ($params as $name => $value) {
+      $this->setParam($name, $value);
+    }
+    return $this;
+  }
+
+  /**
    * 
    * @param  string $name  [:][a-zA-Z0-9_]+;
    * @param  mixed $value
@@ -31,9 +58,9 @@ class NamedPDOParameters extends AbstractPDOParameters {
    * @throws InvalidArgumentException
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if (preg_match("/^[:]?[a-zA-Z]{1,}[a-zA-Z0-9_]+$/", $name) !== 1) {
+    /*if (preg_match("/^[:]?[a-zA-Z]{1,}[a-zA-Z0-9_]+$/", $name) !== 1) {
       throw new InvalidArgumentException('Parameter name must be a string');
-    }
+    }*/
     if (!\Sphp\Stdlib\Strings::startsWith($name, ':')) {
       $name = ":$name";
     }
@@ -85,6 +112,5 @@ class NamedPDOParameters extends AbstractPDOParameters {
     }
     return $this;
   }
-
 
 }
