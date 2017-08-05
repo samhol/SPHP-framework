@@ -67,15 +67,6 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   /**
-   * 
-   * @param array $attributes
-   */
-  protected function appendAttributes(array $attributes) {
-    $this->getPDORunner()->appendParams($attributes);
-    return $this;
-  }
-
-  /**
    * Returns the WHERE conditions component
    *
    * **Important!**
@@ -89,8 +80,14 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * @return self for a fluent interface
    */
-  public function where(string $field, string $operand, $value) {
-    $this->compare($field, $operand, $value);
+  public function where(... $rules) {
+    foreach ($rules as $rule) {
+      if (is_array($rule) && count($rule)) {
+        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
+      } else if (is_string($rule)) {
+        $this->where .= " AND (" . $rule . ")";
+      }
+    }
     return $this;
   }
 
@@ -104,9 +101,13 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param string|Conditions $statement SQL condition(s)
    * @return self for a fluent interface
    */
-  public function andWhere(string $field, string $operand, $value) {
-    foreach ($statements as $statement) {
-      $this->where->andWhere($statement);
+  public function andWhere(... $rules) {
+    foreach ($rules as $rule) {
+      if (is_array($rule) && count($rule)) {
+        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
+      } else if (is_string($rule)) {
+        $this->where .= " AND (" . $rule . ")";
+      }
     }
     return $this;
   }
@@ -114,14 +115,63 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Appends SQL conditions by using logical OR as a conjunction
    *
-   * @param string|Conditions $statement SQL condition(s)
+   * @param  ...mixed $rules SQL condition(s)
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function orWhere(... $statements) {
-    foreach ($statements as $statement) {
-      $this->where->orWhere($statement);
+  public function orWhere(... $rules) {
+    $this->where .= " OR (";
+    foreach ($rules as $rule) {
+      if (is_array($rule) && count($rule) === 3) {
+        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
+      } else if (is_string($rule)) {
+        $this->where .= "(" . $rule . ")";
+      } else {
+        throw new \Sphp\Exceptions\InvalidArgumentException('Invalid rule or expression');
+      }
     }
+    $this->where .= ")";
     return $this;
+  }
+
+  public function connectRules(array $rules, string $connector = 'AND') {
+    $result = '';
+    $part = [];
+    foreach ($rules as $rule) {
+      if (is_array($rule) && count($rule) === 3) {
+        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
+      } else if (is_string($rule)) {
+        $part[] = $rule;
+      } else {
+        throw new \Sphp\Exceptions\InvalidArgumentException('Invalid rule or expression');
+      }
+    }
+  }
+
+  public function generateRuleString($column, $operator, $expr) {
+    $op = strtoupper(trim($operator));
+    $output = "`$column`";
+    if ($expr === null) {
+      if ($op == "=") {
+        return $this->isNull($column);
+      } else if ($op == "<>" || $op == "!=") {
+        return "$output IS NOT NULL";
+      } else {
+        throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
+      }
+    } else if (!is_array($expr)) {
+      $expr = [$expr];
+    }
+    if ($op == "IN" || $op == "NOT IN") {
+      $num = count($expr);
+      if ($num > 0) {
+        $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
+      } else {
+        $format = "()";
+      }
+      return "$output $op $format";
+    }
+    return "$output $op ?";
   }
 
   public function equal(array $map, $op = 'AND') {
@@ -352,7 +402,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Determines whether a specified value belongs to a given group.
    *
    * @param  string $column the column
-   * @param  mixed[]|Query|Traversable $group value(s) of the group
+   * @param  array|Query|Traversable $group value(s) of the group
    * @return self for a fluent interface
    */
   public function isIn($column, $group) {
@@ -365,7 +415,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Determines whether a specified value does not belong to a given group.
    *
    * @param  string $column the column
-   * @param  mixed[]|Query|Traversable $group value(s) of the group
+   * @param  array|Query|Traversable $group value(s) of the group
    * @return self for a fluent interface
    */
   public function isNotIn($column, $group) {
@@ -398,31 +448,31 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  string $operator used comparison operator
    * @param  mixed $expr the value
    * @return self for a fluent interface
-   * @throws SQLException
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function compare(string $column, string $operator, $expr, string $conjunction = 'AND') {
     $op = strtoupper(trim($operator));
     if ($expr === null) {
-      if ($op == "=") {
+      if ($op == '=') {
         return $this->isNull($column);
-      } else if ($op == "<>" || $op == "!=") {
+      } else if ($op == '<>' || $op == '!=') {
         return $this->isNotNull($column);
       } else {
-        throw new SQLException("Illegal null comparison operator : '$operator'");
+        throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
       }
     } else if (!is_array($expr)) {
       $expr = [$expr];
     }
-    if ($op == "IN" || $op == "NOT IN") {
+    if ($op == 'IN' || $op == 'NOT IN') {
       $num = count($expr);
       if ($num > 0) {
         $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
       } else {
         $format = "()";
       }
-      return $this->append($column . " " . $op . " " . $format, $expr);
+      return $this->append($column . " " . $op . " " . $format, $expr, $conjunction);
     }
-    return $this->append($column . " " . $op . " ?", $expr);
+    return $this->append($column . " " . $op . " ?", $expr, $conjunction);
   }
 
 }

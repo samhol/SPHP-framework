@@ -191,7 +191,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
   public function statementToString(): string {
     $query = "SELECT " . implode(", ", $this->columns);
     $query .= " FROM " . implode(", ", $this->from);
-    if ($this->conditions()->hasConditions()) {
+    if ($this->hasConditions()) {
       $query .= " WHERE " . $this->conditions();
     }
     if (strlen($this->groupBy) > 0) {

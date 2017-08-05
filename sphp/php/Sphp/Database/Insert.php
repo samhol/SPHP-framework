@@ -75,7 +75,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function valuesFromArray(array $values) {
-    if(\Sphp\Stdlib\Arrays::isIndexed($values)) {
+    if (\Sphp\Stdlib\Arrays::isIndexed($values)) {
       $par = new SequentialPDOParameters($values);
     } else {
       $par = new NamedPDOParameters($values);
@@ -98,7 +98,7 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   public function statementToString(): string {
     $query = "INSERT INTO `$this->table`";
     if (!empty($this->names)) {
-      $query .= " (" . implode(', ', $this->names) . ") ";
+      $query .= ' (' . implode(', ', $this->names) . ') ';
     }
     if ($this->getParams()->notEmpty()) {
       if (!empty($this->names)) {
