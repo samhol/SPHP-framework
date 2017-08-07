@@ -16,7 +16,7 @@ use PDO;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Insert extends AbstractStatement implements DataManipulationStatement {
+class Insert implements DataManipulationStatement {
 
   /**
    * the table(s) that are updated
@@ -156,6 +156,26 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
       $dbh->rollBack();
       throw new SQLException("Error in SQL execution", "", $e);
     }
+  }
+
+  public function execute(): PDOStatement {
+    
+  }
+
+  public function getPDO(): PDO {
+    
+  }
+
+  public function getParams(): ParameterContainerInterface {
+    
+  }
+
+  public function getStatement(): PDOStatement {
+    
+  }
+
+  public function setPDO(PDO $pdo) {
+    
   }
 
 }

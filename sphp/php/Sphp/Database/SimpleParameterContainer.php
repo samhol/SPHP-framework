@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaskRunner.php (UTF-8)
+ * SimpleParameterContainer.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -20,7 +20,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequentialPDOParameters implements ParameterHandler {
+class SimpleParameterContainer implements \Iterator, \Countable, \Sphp\Stdlib\Datastructures\Arrayable {
 
   /**
    * @var array
@@ -28,16 +28,16 @@ class SequentialPDOParameters implements ParameterHandler {
   private $params = [];
 
   /**
-   * @var array
+   * @var int
    */
-  private $paramTypes = [];
+  private $paramType;
 
   /**
    * Constructs a new instance
    * 
    * @param mixed $params
    */
-  public function __construct($params = null) {
+  public function __construct($params = null, int $type = PDO::PARAM_STR) {
     if ($params !== null) {
       $this->mergeParams($params);
     }
@@ -50,7 +50,7 @@ class SequentialPDOParameters implements ParameterHandler {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->params, $this->paramTypes);
+    unset($this->params, $this->paramType);
   }
 
   /**
@@ -152,6 +152,13 @@ class SequentialPDOParameters implements ParameterHandler {
       $this->setParam($name, $value, $type);
     }
     return $this;
+  }
+
+  public function getValue($offset) {
+    if (!$this->offsetExists($offset)) {
+      return null;
+    }
+    return $this->params[$offset];
   }
 
   public function notEmpty(): bool {
@@ -278,13 +285,6 @@ class SequentialPDOParameters implements ParameterHandler {
       unset($this->paramTypes[$offset], $this->params[$offset]);
     }
     return $this;
-  }
-
-  public function getValue($offset) {
-    if (!$this->offsetExists($offset)) {
-      return null;
-    }
-    return $this->params[$offset];
   }
 
   /**

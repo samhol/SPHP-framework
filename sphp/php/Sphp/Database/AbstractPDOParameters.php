@@ -21,7 +21,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractPDOParameters implements ParameterContainerInterface {
+class AbstractPDOParameters implements ParameterHandler {
 
   /**
    * @var array
@@ -216,6 +216,13 @@ class AbstractPDOParameters implements ParameterContainerInterface {
       unset($this->paramTypes[$offset], $this->params[$offset]);
     }
     return $this;
+  }
+
+  public function getValue($offset) {
+    if (!$this->offsetExists($offset)) {
+      return null;
+    }
+    return $this->params[$offset];
   }
 
   /**

@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Database;
-
+use PDO;
 /**
  * Description of Rule
  *
@@ -15,7 +15,7 @@ namespace Sphp\Database;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Rule {
+class Rule implements RuleInterface {
 
   /**
    * @var string 
@@ -23,26 +23,27 @@ class Rule {
   private $sql;
 
   /**
-   * @var array 
+   * @var ParameterContainerInterface 
    */
-  private $params = [];
+  private $params;
 
   /**
    * 
    * @param string $sql
    * @param mixed $params
    */
-  public function __construct(string $sql, $params = null) {
+  public function __construct(string $sql, $params = null, int $type = PDO::PARAM_STR) {
+    $this->params = new SequentialPDOParameters();
     if ($params === null) {
       $params = [];
     } else if (!is_array($params)) {
       $params = [$params];
     }
     $this->sql = $sql;
-    $this->params = $params;
+    $this->params->appendParams($params);
   }
 
-  public function getParams(): array {
+  public function getParams(): ParameterContainerInterface {
     return $this->params;
   }
 
@@ -55,23 +56,20 @@ class Rule {
   }
 
   /**
-   * Adds a condition to search for a given expression that holds a null value
+   * Generates a rule for a column to contain a `NULL` (empty) value
    *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * @param  string $column the column
-   * @return self for a fluent interface
+   * @param string $column
+   * @return Rule new instance
    */
   public static function isNull(string $column): Rule {
     return new static("$column IS null");
   }
 
   /**
-   * Adds a condition to search for a given expression that holds a null value
+   * Generates a rule for a column to not contain a `NULL` (empty) value
    *
    * @param  string $column the column
-   * @return self for a fluent interface
+   * @return Rule new instance
    */
   public static function isNotNull(string $column): Rule {
     return new static("$column IS NOT NULL");
@@ -89,7 +87,7 @@ class Rule {
     return new static("$column IS IN ($qMarks)", $group);
   }
 
-  public static function generateRule(string $column, string $operator, $expr): Rule {
+  public static function compare(string $column, string $operator, $expr): Rule {
     $op = strtoupper(trim($operator));
     $output = "`$column`";
     if ($expr === null) {
@@ -115,55 +113,8 @@ class Rule {
     return "$output $op ?";
   }
 
-  public function equal(array $map, $op = 'AND') {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name = :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" $op ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
-  public function notEquals(array $map) {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name <> :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" AND ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
   /**
-   * Appends a condition string to the container
-   *
-   * @param string|Conditions $statement the SQL statement defining the condition(s)
-   * @param mixed|mixed[] $params values that are vulnerable to an SQL injection
-   * @param  string $operation (`AND`, `OR`, `XOR`)
-   * @return string the generated SQL condition
-   */
-  private function append($statement, array $params = null, $operation = "AND") {
-    $this->logical($operation);
-    if ($statement instanceof Conditions) {
-      $this->where .= "(" . $statement->statementToString() . ")";
-      $params = $statement->getParams();
-    }
-    if (is_string($statement)) {
-      $this->where .= $statement;
-    }
-    if ($params !== null) {
-      foreach ($params as $value) {
-        $this->params[] = $value;
-      }
-    }
-    return $this;
-  }
-
-  /**
-   * Executes a bitwise operation to the column value pair and compares the result to a given parameter
+   * Generates a rule a bitwise operation to the column value pair and compares the result to a given parameter
    *
    * **NOTE! This method quotes automatically <var>$value</var>, <var>$result</var> inputs!**
    *
@@ -188,23 +139,7 @@ class Rule {
   }
 
   /**
-   * Adds an SQL condition by using logical OR as a conjunction
-   *
-   * @param  array $rules rules as field name => value pairs
-   * @param  string $separator the logical operator between the comparisons
-   * @return self for a fluent interface
-   */
-  public static function equals(array $rules, $separator = "AND") {
-    $sql = [];
-    foreach ($rules as $field => $value) {
-      $sql[]= "$field = ?";
-    }
-    $sqlString = implode(" $separator ", $value);
-    return $this->append($sqlString, );
-  }
-
-  /**
-   * Adds an expression to the query to test the inequality of two given expressions or columns
+   * Generates a rule to test the inequality of two given expressions or columns
    *
    * **Important!**
    * **ALWAYS SANITIZE ALL USER INPUTS!**
@@ -213,8 +148,27 @@ class Rule {
    * @param  mixed $value the value of the expression
    * @return self for a fluent interface
    */
+  public static function is(string $column, $value): Rule {
+    if ($value === null) {
+      return static::isNull($column);
+    } else {
+      return new static("$column = ?", $value);
+    }
+  }
+
+  /**
+   * Generates a rule to test the inequality of a given column and a value
+   *
+   * @param  string $column the column name
+   * @param  mixed $value the value of the expression
+   * @return self for a fluent interface
+   */
   public static function isNot(string $column, $value): Rule {
-    return new static("$column <> ?", $value);
+    if ($value === null) {
+      return static::isNotNull($column);
+    } else {
+      return new static("$column <> ?", $value);
+    }
   }
 
   /**
@@ -230,8 +184,8 @@ class Rule {
    * @param  string $pattern pattern string
    * @return self for a fluent interface
    */
-  public static function isLike($column, $pattern) {
-    return new static($column, "LIKE", $pattern);
+  public static function isLike(string $column, string $pattern) {
+    return new static("$column LIKE ?", $pattern);
   }
 
   /**
@@ -247,8 +201,8 @@ class Rule {
    * @param  string $pattern pattern string
    * @return self for a fluent interface
    */
-  public static function isNotLike($column, $pattern) {
-    return new static($column, "NOT LIKE", $pattern);
+  public static function isNotLike(string $column, string $pattern) {
+    return new static("$column NOT LIKE ?", $pattern);
   }
 
   /**
@@ -261,7 +215,8 @@ class Rule {
    * @return self for a fluent interface
    */
   public static function isNotIn($column, $group) {
-    return new static("$column NOT IN", $group);
+    $g = static::generateGroupSql($group);
+    return new static("$column NOT IN ($g)", $group);
   }
 
 }

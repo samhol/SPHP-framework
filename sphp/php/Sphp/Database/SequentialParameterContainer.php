@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TaskRunner.php (UTF-8)
+ * SequentialParameterContainer.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -20,7 +20,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequentialPDOParameters implements ParameterHandler {
+class SequentialParameterContainer implements ParameterContainerInterface {
 
   /**
    * @var array
@@ -154,6 +154,13 @@ class SequentialPDOParameters implements ParameterHandler {
     return $this;
   }
 
+  public function getValue($offset) {
+    if (!$this->offsetExists($offset)) {
+      return null;
+    }
+    return $this->params[$offset];
+  }
+
   public function notEmpty(): bool {
     return !empty($this->params);
   }
@@ -278,13 +285,6 @@ class SequentialPDOParameters implements ParameterHandler {
       unset($this->paramTypes[$offset], $this->params[$offset]);
     }
     return $this;
-  }
-
-  public function getValue($offset) {
-    if (!$this->offsetExists($offset)) {
-      return null;
-    }
-    return $this->params[$offset];
   }
 
   /**
