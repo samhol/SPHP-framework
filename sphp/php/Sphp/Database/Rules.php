@@ -39,10 +39,12 @@ class Rules implements RuleInterface, \Iterator {
   }
 
   public function getParams(): ParameterContainerInterface {
-    $params = new SequentialPDOParameters();
+    $params = new SequentialParameters();
     foreach ($this as $part) {
       if ($part instanceof RuleInterface) {
-        $params->appendParams($part->getParams()->toArray());
+        foreach ($part->getParams() as $name => $value) {
+          $params->appendParam($value, $part->getParams()->getParamType($name));
+        }
       }
     }
     return $params;
@@ -181,11 +183,10 @@ class Rules implements RuleInterface, \Iterator {
    */
   public static function equals(array $rules, $separator = "AND") {
     foreach ($rules as $field => $value) {
-      $this->append(Rule::is($field ,$value), $separator);
+      $this->append(Rule::is($field, $value), $separator);
     }
     return $this;
   }
-
 
   /**
    * Returns the current element

@@ -2,34 +2,21 @@
 
 namespace Sphp\Database;
 
-use Throwable;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Exceptions\InvalidArgumentException;
-use Exception;
 
-class SequentialPDOParametersTest extends \PHPUnit\Framework\TestCase {
+class SequentialParametersTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var AbstractPDOParameters
+   * @var SequentialParameters
    */
   protected $int;
 
-  /**
-   * @var AbstractPDOParameters
-   */
-  protected $string;
-
   protected function setUp() {
-    $this->int = new SequentialPDOParameters();
-    $this->string = new AbstractPDOParameters();
+    $this->int = new SequentialParameters();
   }
 
   protected function tearDown() {
-    unset($this->datastructure);
-  }
-
-  protected function getNumeric() {
-    return new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
+    unset($this->int);
   }
 
   /**
@@ -45,15 +32,34 @@ class SequentialPDOParametersTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
+   * 
+   * @param int $offset
+   * @param mixed $value
+   */
+  protected function validNameValuePair($offset, $value) {
+    $this->assertTrue($this->int->offsetExists($offset));
+    $this->assertTrue(isset($this->int[$offset]));
+    $this->assertSame($value, $this->int[$offset]);
+  }
+
+  /**
+   * @covers SequentialParameters::offsetExists
+   */
+  public function testArrayAccessAsPush() {
+    $this->int[] = 'pushed';
+    $this->validNameValuePair(1, 'pushed');
+    $this->assertCount(1, $this->int);
+  }
+
+  /**
    * @dataProvider correctData
    * @param mixed $offset
    * @param mixed $value
    */
   public function testArrayAccess($offset, $value) {
-    $instance = new SequentialPDOParameters();
-    $instance[$offset] = $value;
-    $this->assertTrue($instance->offsetExists($offset));
-    $this->assertCount(1, $instance);
+    $this->int[$offset] = $value;
+    $this->validNameValuePair($offset, $value);
+    $this->assertCount(1, $this->int);
   }
 
   /**
@@ -62,12 +68,9 @@ class SequentialPDOParametersTest extends \PHPUnit\Framework\TestCase {
   public function incorrectData(): array {
     return [
         [0, 'b'],
-        [null, 'foo'],
         [-1, 'foo'],
         ['1', 'foo'],
-        ['a', 'foo'],
-        ['::foobar', 'foo'],
-        [':foo', 'foo'],
+        ['a', 'foo']
     ];
   }
 
@@ -76,9 +79,45 @@ class SequentialPDOParametersTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $offset
    * @param mixed $value
    */
-  public function testIncorrectInsert($offset, $value) {
-    $instance = new SequentialPDOParameters();
+  public function testIncorrectOffsetSet($offset, $value) {
     $this->expectException(InvalidArgumentException::class);
-    $instance[$offset] = $value;
+    $this->int[$offset] = $value;
   }
+
+  /**
+   * @return array
+   */
+  public function paramData(): array {
+    return [
+        [range('a', 'f')],
+    ];
+  }
+
+  /**
+   * @dataProvider paramData
+   * @param mixed $offset
+   * @param mixed $value
+   */
+  public function testMerge(array $params) {
+    if (array_key_exists(0, $params)) {
+      unset($params[0]);
+    }
+    $this->int->mergeParams($params);
+    foreach ($params as $index => $value) {
+      $this->validNameValuePair($index, $value);
+    }
+    $this->assertCount(count($params), $this->int);
+  }
+
+  /**
+   * @dataProvider paramData
+   * @param mixed $offset
+   * @param mixed $value
+   */
+  public function testAppend(array $params) {
+    $this->int->appendParams($params);
+
+    $this->assertCount(count($params), $this->int);
+  }
+
 }

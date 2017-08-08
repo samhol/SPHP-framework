@@ -10,8 +10,10 @@ namespace Sphp\Database;
 use PDO;
 use PDOStatement;
 use PDOException;
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
+use Iterator;
+use Sphp\Stdlib\Datastructures\Arrayable;
 
 /**
  * Base class for all SQL Statement classes
@@ -20,7 +22,7 @@ use Sphp\Exceptions\RuntimeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SequentialPDOParameters implements ParameterHandler {
+abstract class Parameters implements ParameterHandler {
 
   /**
    * @var array
@@ -30,18 +32,16 @@ class SequentialPDOParameters implements ParameterHandler {
   /**
    * @var array
    */
-  private $paramTypes = [];
+  private $types = [];
 
   /**
    * Constructs a new instance
-   * 
-   * @param mixed $params
+   *
+   * @param int $indexing
    */
-  public function __construct($params = null) {
-    if ($params !== null) {
-      $this->mergeParams($params);
-    }
-  }
+  /* public function __construct(int $indexing = self::NUMERIC) {
+    $this->indexed = $indexing;
+    } */
 
   /**
    * Destroys the instance
@@ -50,86 +50,26 @@ class SequentialPDOParameters implements ParameterHandler {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->params, $this->paramTypes);
+    unset($this->params, $this->types);
   }
 
   /**
    * 
-   * @param  mixed $value
-   * @param  int $type
-   * @return self for a fluent interface
-   */
-  public function appendParam($value, int $type = PDO::PARAM_STR) {
-    $this->setParam(null, $value, $type);
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  array $value
-   * @param  int $type
-   * @return self for a fluent interface
-   */
-  public function appendParams(array $params, int $type = PDO::PARAM_STR) {
-    foreach ($params as $value) {
-      $this->setParam(null, $value, $type);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @param  string $name
+   * @param  mixed $name
    * @param  mixed $value
    * @param  int $type
    * @return self for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    if ($name !== null && (!is_int($name) || $name < 0)) {
-      throw new InvalidArgumentException('Offset must be zero or a positive integer');
-    }
-    if ($name === null) {
-      $this->paramTypes[] = $type;
-      $this->params[] = $value;
-    } else {
-      $this->paramTypes[$name] = $type;
-      $this->params[$name] = $value;
-    }
+    $this->params[$name] = $value;
+    $this->types[$name] = $type;
     return $this;
-  }
-
-  /**
-   * 
-   * @param  array|Traversable $params
-   * @return self for a fluent interface
-   * @throws InvalidArgumentException
-   */
-  public function mergeParams($params) {
-    if (!is_array($params) && !$params instanceof \Traversable) {
-      throw new InvalidArgumentException('Merged data must be an iterable object or an array');
-    }
-    foreach ($params as $name => $value) {
-      if (is_int($name)) {
-        $this->setParam($name, $value);
-      } else {
-        $this->setParam(null, $value);
-      }
-    }
-    return $this;
-  }
-
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
-  public function getParamType($index): int {
-    return $this->paramTypes[$index];
   }
 
   public function unsetParam($name) {
-    unset($this->paramTypes[$name], $this->params[$name]);
+    if ($this->contains($name)) {
+      unset($this->paramTypes[$name], $this->params[$name]);
+    }
     return $this;
   }
 
@@ -154,6 +94,10 @@ class SequentialPDOParameters implements ParameterHandler {
     return $this;
   }
 
+  public function isEmpty(): bool {
+    return empty($this->params);
+  }
+
   public function notEmpty(): bool {
     return !empty($this->params);
   }
@@ -162,14 +106,8 @@ class SequentialPDOParameters implements ParameterHandler {
     return count($this->params);
   }
 
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return array values that are vulnerable to an SQL injection
-   */
-  public function getParams(): array {
-    return $this->params;
+  public function contains($offset): bool {
+    return array_key_exists($offset, $this->params);
   }
 
   /**
@@ -183,15 +121,34 @@ class SequentialPDOParameters implements ParameterHandler {
   }
 
   /**
+   * Returns an array of values with as many elements as there are bound
+   * parameters in the clause
+   *
+   * @return array values that are vulnerable to an SQL injection
+   */
+  public function getParamType($index): int {
+    if (!$this->contains($index)) {
+      throw new InvalidArgumentException("param '$index' not found");
+    }
+    return $this->types[$index];
+  }
+
+  public function getParamValue($name) {
+    if (!$this->offsetExists($name)) {
+      return null;
+    }
+    return $this->params[$name];
+  }
+
+  /**
    * 
    * @return PDOStatement
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function bindTo(PDOStatement $statement): PDOStatement {
     try {
-      $k = 1;
       foreach ($this as $name => $value) {
-        $statement->bindValue($k++, $value);
+        $statement->bindValue($name, $value, $this->getParamType($name));
       }
       return $statement;
     } catch (PDOException $e) {
@@ -222,14 +179,14 @@ class SequentialPDOParameters implements ParameterHandler {
    * @return mixed the current element
    */
   public function current() {
-    return current($this->items);
+    return current($this->params);
   }
 
   /**
    * Advance the internal pointer of the collection
    */
   public function next() {
-    next($this->items);
+    next($this->params);
   }
 
   /**
@@ -238,14 +195,14 @@ class SequentialPDOParameters implements ParameterHandler {
    * @return mixed the key of the current element
    */
   public function key() {
-    return key($this->items);
+    return key($this->params);
   }
 
   /**
    * Rewinds the Iterator to the first element
    */
   public function rewind() {
-    reset($this->items);
+    reset($this->params);
   }
 
   /**
@@ -254,10 +211,13 @@ class SequentialPDOParameters implements ParameterHandler {
    * @return boolean current iterator position is valid
    */
   public function valid(): bool {
-    return false !== current($this->items);
+    return false !== current($this->params);
   }
 
   public function offsetExists($offset): bool {
+    if (is_string($offset) && substr($offset, 0, 1) !== ':') {
+      $offset = ":$offset";
+    }
     return array_key_exists($offset, $this->params);
   }
 
@@ -274,17 +234,8 @@ class SequentialPDOParameters implements ParameterHandler {
   }
 
   public function offsetUnset($offset) {
-    if ($this->offsetExists($offset)) {
-      unset($this->paramTypes[$offset], $this->params[$offset]);
-    }
+    $this->unsetParam($offset);
     return $this;
-  }
-
-  public function getValue($offset) {
-    if (!$this->offsetExists($offset)) {
-      return null;
-    }
-    return $this->params[$offset];
   }
 
   /**
@@ -295,6 +246,20 @@ class SequentialPDOParameters implements ParameterHandler {
    */
   public function toArray(): array {
     return $this->params;
+  }
+
+  /**
+   * 
+   * @param  \Traversable|array|null $params
+   * @return Parameters
+   */
+  public static function fromArray($params = null): Parameters {
+    if (\Sphp\Stdlib\Arrays::isIndexed($params)) {
+      $par = new SequentialParameters($params);
+    } else {
+      $par = new NamedParameters($params);
+    }
+    return $par;
   }
 
 }

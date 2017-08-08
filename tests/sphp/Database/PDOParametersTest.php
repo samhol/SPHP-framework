@@ -2,25 +2,10 @@
 
 namespace Sphp\Database;
 
-use Throwable;
-use Sphp\Exceptions\RuntimeException;
-use Sphp\Exceptions\InvalidArgumentException;
-
-class PDOParametersTest extends \PHPUnit_Framework_TestCase {
-
-  /**
-   * @var AbstractPDOParameters
-   */
-  protected $int;
-
-  /**
-   * @var AbstractPDOParameters
-   */
-  protected $string;
+class PDOParametersTest extends \PHPUnit\Framework\TestCase {
 
   protected function setUp() {
-    $this->int = new SequentialPDOParameters();
-    $this->string = new AbstractPDOParameters();
+    
   }
 
   protected function tearDown() {
@@ -28,33 +13,42 @@ class PDOParametersTest extends \PHPUnit_Framework_TestCase {
   }
 
   protected function getNumeric() {
-    return new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
+    return new SequentialParameters();
   }
 
   /**
    * 
    * @return array
    */
-  public function collectionData() {
+  public function numericallyIndexedCollectionData() {
     return [
-        ['a', 'b'],
-        [1, 'one'],
+        [
+            [
+                1 => 'b',
+                3 => 3,
+                2 => 'one'
+            ]
+        ],
     ];
   }
 
   /**
-   * @dataProvider collectionData
-   * @param array $values
+   * @dataProvider numericallyIndexedCollectionData
+   * @param array $collection
    */
-  public function testArrayAccess($offset, $value) {
-    $instance = new AbstractPDOParameters(AbstractPDOParameters::QUESTIONMARK);
-    try {
+  public function testNumericArrayAccess($collection) {
+    $instance = $this->getNumeric();
+    $instance[] = 'first';
+    $this->assertFalse($instance->offsetExists(0));
+    $this->assertTrue($instance->offsetExists(1));
+    $this->assertSame('first', $instance[1]);
+    foreach ($collection as $offset => $value) {
+      echo "\nSetting offset ($offset) with value '$value'";
       $instance[$offset] = $value;
       $this->assertTrue($instance->offsetExists($offset));
-      $this->assertCount(1, $instance);
-    } catch (Throwable $ex) {
-      $this->assertInstanceOf(InvalidArgumentException::class, $ex);
+      $this->assertSame($value, $instance[$offset]);
     }
+    $this->assertCount(count($collection), $instance);
   }
 
 }

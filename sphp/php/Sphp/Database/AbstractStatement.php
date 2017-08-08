@@ -22,7 +22,7 @@ use Sphp\Exceptions\RuntimeException;
 abstract class AbstractStatement implements StatementInterface {
 
   /**
-   * @var AbstractPDOParameters 
+   * @var ParameterContainerInterface 
    */
   private $params;
 

@@ -17,7 +17,7 @@ use PDOStatement;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Insert implements DataManipulationStatement {
+class Insert extends AbstractStatement implements DataManipulationStatement {
 
   /**
    * the table(s) that are updated
@@ -41,7 +41,7 @@ class Insert implements DataManipulationStatement {
   private $values = [];
 
   public function __construct(PDO $pdo) {
-    parent::__construct(new SequentialPDOParameters, $pdo);
+    parent::__construct(new NamedParameters(), $pdo);
   }
 
   /**
@@ -62,10 +62,7 @@ class Insert implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function values(... $values) {
-    array_unshift($values, '');
-    unset($values[0]);
-    $this->setParams(new SequentialPDOParameters());
-    $this->getParams()->setParams($values);
+    $this->setParams(new SequentialParameters($values));
     return $this;
   }
 
@@ -76,12 +73,10 @@ class Insert implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function valuesFromArray(array $values) {
-    if (\Sphp\Stdlib\Arrays::isIndexed($values)) {
-      $par = new SequentialPDOParameters($values);
-    } else {
-      $par = new NamedPDOParameters($values);
+    if (!\Sphp\Stdlib\Arrays::isIndexed($values)) {
+      $this->names = array_keys($values);
     }
-    $this->setParams($par);
+    $this->setParams(Parameters::fromArray($values));
     return $this;
   }
 
@@ -107,7 +102,7 @@ class Insert implements DataManipulationStatement {
           return ":$value";
         }, $this->names);
       } else {
-        $params = $this->getPDORunner()->getParamNames();
+        $params = $this->getParams()->getParamNames();
       }
     } else {
       $params = array_fill(0, $this->getPDORunner()->countParams(), '?');
@@ -157,26 +152,6 @@ class Insert implements DataManipulationStatement {
       $dbh->rollBack();
       throw new SQLException("Error in SQL execution", "", $e);
     }
-  }
-
-  public function execute(): PDOStatement {
-    
-  }
-
-  public function getPDO(): PDO {
-    
-  }
-
-  public function getParams(): ParameterContainerInterface {
-    
-  }
-
-  public function getStatement(): PDOStatement {
-    
-  }
-
-  public function setPDO(PDO $pdo) {
-    
   }
 
 }

@@ -20,7 +20,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class NamedPDOParameters extends AbstractPDOParameters {
+class NamedParameters extends Parameters {
 
   /**
    * Constructs a new instance
@@ -51,6 +51,19 @@ class NamedPDOParameters extends AbstractPDOParameters {
 
   /**
    * 
+   * @param  mixed $name
+   * @return string standardized name string
+   */
+  protected function standardizeName($name): string {
+    $res = (string) $name;
+    if (substr($res, 0, 1) !== ':') {
+      $res = ":$res";
+    }
+    return $res;
+  }
+
+  /**
+   * 
    * @param  string $name  [:][a-zA-Z0-9_]+;
    * @param  mixed $value
    * @param  int $type
@@ -58,13 +71,10 @@ class NamedPDOParameters extends AbstractPDOParameters {
    * @throws InvalidArgumentException
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
-    /*if (preg_match("/^[:]?[a-zA-Z]{1,}[a-zA-Z0-9_]+$/", $name) !== 1) {
+    if (!is_string($name)) {
       throw new InvalidArgumentException('Parameter name must be a string');
-    }*/
-    if (!\Sphp\Stdlib\Strings::startsWith($name, ':')) {
-      $name = ":$name";
     }
-    parent::setParam($name, $value, $type);
+    parent::setParam($this->standardizeName($name), $value, $type);
     return $this;
   }
 
@@ -84,32 +94,19 @@ class NamedPDOParameters extends AbstractPDOParameters {
     }
   }
 
-  public function offsetExists($offset): bool {
-    if (is_string($offset) && substr($offset, 0, 1) !== ':') {
-      $offset = ":$offset";
-    }
+  public function contains($offset): bool {
+    $this->standardizeName($offset);
     return parent::offsetExists($offset);
   }
 
-  public function offsetGet($offset) {
-    if (is_string($offset) && substr($offset, 0, 1) !== ':') {
-      $offset = ":$offset";
-    }
+  public function getParamValue($offset) {
+    $this->standardizeName($offset);
     return parent::offsetGet($offset);
   }
 
-  public function offsetSet($offset, $value) {
-    $this->setParam($offset, $value);
-    return $this;
-  }
-
-  public function offsetUnset($offset) {
-    if (is_string($offset) && !\Sphp\Stdlib\Strings::startsWith($offset, ':')) {
-      $name = ":$name";
-    }
-    if ($this->offsetExists($offset)) {
-      unset($this->paramTypes[$offset], $this->params[$offset]);
-    }
+  public function unsetParam($offset) {
+    $this->standardizeName($offset);
+    parent::unsetParam($offset);
     return $this;
   }
 

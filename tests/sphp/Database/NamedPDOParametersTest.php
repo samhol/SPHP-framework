@@ -26,7 +26,7 @@ class NamedPDOParametersTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $value
    */
   public function testArrayAccess($offset, $value) {
-    $instance = new NamedPDOParameters();
+    $instance = new NamedParameters();
     $instance[$offset] = $value;
     $this->assertTrue($instance->offsetExists($offset));
     $this->assertTrue($instance->offsetExists(":$offset"));
@@ -53,7 +53,7 @@ class NamedPDOParametersTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $value
    */
   public function testIncorrectInsert($offset, $value) {
-    $instance = new NamedPDOParameters();
+    $instance = new NamedParameters();
     $this->expectException(InvalidArgumentException::class);
     $instance[$offset] = $value;
   }
@@ -81,7 +81,7 @@ class NamedPDOParametersTest extends \PHPUnit\Framework\TestCase {
    * @param array $data
    */
   public function testExecution(array $data) {
-    $instance = new NamedPDOParameters();
+    $instance = new NamedParameters();
     $instance->setParams($data);
 
     $pdo = Db::instance()->getPdo();

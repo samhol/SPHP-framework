@@ -33,7 +33,7 @@ class Rule implements RuleInterface {
    * @param mixed $params
    */
   public function __construct(string $sql, $params = null, int $type = PDO::PARAM_STR) {
-    $this->params = new SequentialPDOParameters();
+    $this->params = new SequentialParameters();
     if ($params === null) {
       $params = [];
     } else if (!is_array($params)) {

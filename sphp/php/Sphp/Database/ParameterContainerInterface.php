@@ -61,7 +61,7 @@ interface ParameterContainerInterface extends \ArrayAccess, Iterator, Countable,
    *
    * @return array values that are vulnerable to an SQL injection
    */
-  public function getValue($index);
+  public function getParamValue($index);
 
   /**
    * Returns the type of the parameter stored
@@ -69,4 +69,5 @@ interface ParameterContainerInterface extends \ArrayAccess, Iterator, Countable,
    * @return array values that are vulnerable to an SQL injection
    */
   public function getParamType($index): int;
+  public function bindTo(PDOStatement $statement): PDOStatement;
 }
