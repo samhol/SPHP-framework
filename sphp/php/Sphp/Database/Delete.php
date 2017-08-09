@@ -25,7 +25,6 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
    * @var string
    */
   private $tables = [];
-  
 
   /**
    * Sets the table(s) from where the data is to be deleted.

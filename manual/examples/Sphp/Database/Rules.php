@@ -1,8 +1,8 @@
 <?php
 
 namespace Sphp\Database;
-
-$rules = new Rules();
+try {
+  $rules = new Rules();
 $r1 = new Rule('a = ?', 'foo');
 $rules->append($r1);
 $rules->append(Rule::isNotIn('bar', [1, 2, 3, 4, 5, 6, 'foobar']));
@@ -15,3 +15,7 @@ $rules->append(Rule::isLike('daa', '%blaa%'), 'or');
 $rules->append(Rule::is('something', 'unknown'));
 echo $rules;
 print_r($rules->getParams()->toArray());
+} catch (\Throwable $ex) {
+echo new \Sphp\Html\Foundation\Sites\Containers\ThrowableCallout($ex);
+}
+

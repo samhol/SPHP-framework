@@ -22,7 +22,6 @@ use Sphp\Exceptions\InvalidArgumentException;
 class Db {
 
   /**
-   *
    * @var Db 
    */
   private static $instances = [];
@@ -62,7 +61,7 @@ class Db {
 
   /**
    * 
-   * @param string $name
+   * @param  string $name
    * @return Db
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -80,7 +79,7 @@ class Db {
    * 
    * 
    * @param  string $name
-   * @param type $arguments
+   * @param  array $arguments
    * @return type
    */
   public static function __callStatic(string $name, array $arguments = []) {

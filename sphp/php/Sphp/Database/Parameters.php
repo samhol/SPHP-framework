@@ -39,9 +39,10 @@ abstract class Parameters implements ParameterHandler {
    *
    * @param int $indexing
    */
-  /* public function __construct(int $indexing = self::NUMERIC) {
-    $this->indexed = $indexing;
-    } */
+  public function __construct() {
+    $this->params = [];
+    $this->types = [];
+  }
 
   /**
    * Destroys the instance
@@ -52,6 +53,15 @@ abstract class Parameters implements ParameterHandler {
   public function __destruct() {
     unset($this->params, $this->types);
   }
+
+  /**
+   * Merges given parameters
+   * 
+   * @param  array|Traversable $params parameters to merge
+   * @return self for a fluent interface
+   * @throws \Exception if merging fails
+   */
+  abstract public function mergeParams($params);
 
   /**
    * 
@@ -164,12 +174,12 @@ abstract class Parameters implements ParameterHandler {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function executeIn(PDOStatement $statement): PDOStatement {
+    // print_r($this->toArray());
     try {
-      print_r($this->toArray());
-      $statement->execute($this->toArray());
+      $this->bindTo($statement)->execute();
       return $statement;
     } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
+      throw new RuntimeException($e->getMessage());
     }
   }
 

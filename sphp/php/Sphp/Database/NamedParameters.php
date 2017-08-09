@@ -28,6 +28,7 @@ class NamedParameters extends Parameters {
    * @param mixed $params
    */
   public function __construct($params = null) {
+    parent::__construct();
     if ($params !== null) {
       $this->mergeParams($params);
     }
@@ -64,7 +65,7 @@ class NamedParameters extends Parameters {
 
   /**
    * 
-   * @param  string $name  [:][a-zA-Z0-9_]+;
+   * @param  string $name 
    * @param  mixed $value
    * @param  int $type
    * @return self for a fluent interface
@@ -78,35 +79,16 @@ class NamedParameters extends Parameters {
     return $this;
   }
 
-  /**
-   * 
-   * 
-   * @param  PDOStatement $statement
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
-  public function executeIn(PDOStatement $statement): PDOStatement {
-    try {
-      $statement->execute($this->toArray());
-      return $statement;
-    } catch (PDOException $e) {
-      throw new RuntimeException($e->getMessage(), 0, $e);
-    }
-  }
-
   public function contains($offset): bool {
-    $this->standardizeName($offset);
-    return parent::offsetExists($offset);
+    return parent::offsetExists($this->standardizeName($offset));
   }
 
   public function getParamValue($offset) {
-    $this->standardizeName($offset);
-    return parent::offsetGet($offset);
+    return parent::offsetGet($this->standardizeName($offset));
   }
 
   public function unsetParam($offset) {
-    $this->standardizeName($offset);
-    parent::unsetParam($offset);
+    parent::unsetParam($this->standardizeName($offset));
     return $this;
   }
 

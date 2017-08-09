@@ -8,7 +8,6 @@
 namespace Sphp\Database;
 
 use PDO;
-use Sphp\Stdlib\Strings;
 
 /**
  * Implements the conditions for statements in SQL
@@ -31,7 +30,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Constructs a new instance
    *
    * @param PDO $db
-   * @param Conditions $where
+   * @param Rules $where
    */
   public function __construct(PDO $db, Rules $where = null) {
     if ($where === null) {
@@ -58,10 +57,10 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * The WHERE clause is used to filter records
    *
-   * @param  Conditions $c
+   * @param  Rules $c
    * @return self for a fluent interface
    */
-  public function setConditions(Rule $c) {
+  public function setWhere(Rules $c) {
     $this->where = $c;
     return $this;
   }
@@ -81,7 +80,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @return self for a fluent interface
    */
   public function where(... $rules) {
-    $this->where->appendRules($rules);
+    $obj = new Rules($rules);
+    $this->where->append($obj, 'AND');
     return $this;
   }
 
@@ -92,17 +92,12 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Appends SQL conditions by using logical AND as a conjunction
    *
-   * @param string|Conditions $statement SQL condition(s)
+   * @param string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    */
   public function andWhere(... $rules) {
-    foreach ($rules as $rule) {
-      if (is_array($rule) && count($rule)) {
-        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
-      } else if (is_string($rule)) {
-        $this->where .= " AND (" . $rule . ")";
-      }
-    }
+    $obj = new Rules($rules);
+    $this->where->append($obj, 'AND');
     return $this;
   }
 
@@ -114,114 +109,21 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function orWhere(... $rules) {
-    $this->where .= " OR (";
-    foreach ($rules as $rule) {
-      if (is_array($rule) && count($rule) === 3) {
-        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
-      } else if (is_string($rule)) {
-        $this->where .= "(" . $rule . ")";
-      } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException('Invalid rule or expression');
-      }
-    }
-    $this->where .= ")";
+    $obj = new Rules($rules);
+    $this->where->append($obj, 'OR');
     return $this;
   }
-
-  public function connectRules(array $rules, string $connector = 'AND') {
-    $result = '';
-    $part = [];
-    foreach ($rules as $rule) {
-      if (is_array($rule) && count($rule) === 3) {
-        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
-      } else if (is_string($rule)) {
-        $part[] = $rule;
-      } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException('Invalid rule or expression');
-      }
-    }
-  }
-
-  public function generateRuleString($column, $operator, $expr) {
-    $op = strtoupper(trim($operator));
-    $output = "`$column`";
-    if ($expr === null) {
-      if ($op == "=") {
-        return $this->isNull($column);
-      } else if ($op == "<>" || $op == "!=") {
-        return "$output IS NOT NULL";
-      } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
-      }
-    } else if (!is_array($expr)) {
-      $expr = [$expr];
-    }
-    if ($op == "IN" || $op == "NOT IN") {
-      $num = count($expr);
-      if ($num > 0) {
-        $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
-      } else {
-        $format = "()";
-      }
-      return "$output $op $format";
-    }
-    return "$output $op ?";
-  }
-
-  public function equal(array $map, $op = 'AND') {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name = :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" $op ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
-  public function notEquals(array $map) {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name <> :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" AND ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
   /**
-   * Appends a condition string to the container
+   * Appends SQL conditions by using logical OR as a conjunction
    *
-   * @param string|Conditions $statement the SQL statement defining the condition(s)
-   * @param mixed|mixed[] $params values that are vulnerable to an SQL injection
-   * @param  string $operation (`AND`, `OR`, `XOR`)
-   * @return string the generated SQL condition
+   * @param  ...mixed $rules SQL condition(s)
+   * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  private function append($statement, array $params = null, $operation = 'AND') {
-    $this->logical($operation);
-    if ($statement instanceof Conditions) {
-      $this->where .= "(" . $statement->statementToString() . ")";
-      $params = $statement->getParams();
-    }
-    if (is_string($statement)) {
-      $this->where .= $statement;
-    }
-    if ($params !== null) {
-      foreach ($params as $param) {
-        $this->getParams()->appendParam($param);
-      }
-    }
+  public function xorWhere(... $rules) {
+    $obj = new Rules($rules);
+    $this->where->append($obj, 'XOR');
     return $this;
-  }
-
-  /**
-   * Returns the SQL statement as a string
-   *
-   * @return string the SQL statement as a string
-   */
-  public function statementToString(): string {
-    return $this->where->statementToString();
   }
 
   /**
@@ -241,22 +143,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
+    parent::__clone();
     $this->where = clone $this->where;
-    $this->params = Arrays::copy($this->params);
-  }
-
-  /**
-   * Appends a conjunctive operator to the clause
-   *
-   * @param  string $operator (`AND`, `OR`, `XOR`)
-   * @return self for a fluent interface
-   */
-  public function logical($operator) {
-    if (!Strings::isEmpty($this->where) && !Strings::endsWith($this->where, [" OR ", " AND ", " XOR "])) {
-      $op = strtoupper(trim($operator));
-      $this->where .= " $op ";
-    }
-    return $this;
   }
 
   /**
@@ -264,8 +152,8 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * @return boolean conditions are set
    */
-  public function hasConditions() {
-    return $this->where;
+  public function hasConditions(): bool {
+    return $this->where->notEmpty();
   }
 
   /**
@@ -279,194 +167,8 @@ abstract class ConditionalStatement extends AbstractStatement {
     return $this;
   }
 
-  /**
-   * Executes a bitwise operation to the column value pair and compares the result to a given parameter
-   *
-   * **NOTE! This method quotes automatically <var>$value</var>, <var>$result</var> inputs!**
-   *
-   * Values for parameter <var>$binOp</var>:
-   *
-   * * **`&`**: bitwise AND
-   * * **`|`**, bitwise OR
-   * * **`^`**: bitwise XOR
-   * * **`~`**: invert bits
-   * * **`<<`**: left shift
-   * * **`>>`**: right shift
-   *
-   * @param  string|Query $column the column
-   * @param  string $binOp Bitwise operand
-   * @param  string|int|bool $value the value to bitwise compare to
-   * @param  string $op logical operation
-   * @param  string|int|bool $result the result value of the bitwise operation
-   * @return self for a fluent interface
-   */
-  public function binaryOperationCompare(string $column, $binOp, $value, $op, $result) {
-    return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
-  }
-
-  /**
-   * Adds an SQL condition by using logical OR as a conjunction
-   *
-   * @param  array $rules rules as field name => value pairs
-   * @param  string $separator the logical operator between the comparisons
-   * @return self for a fluent interface
-   */
-  public function equals(array $rules, $separator = 'AND') {
-    $cond = new Conditions();
-    foreach ($rules as $field => $value) {
-      $cond->logical($separator)->compare($field, "=", $value);
-    }
-    return $this->append($cond, $rules, "AND");
-  }
-
-  /**
-   * Adds an expression to the query to test the inequality of two given expressions or columns
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * @param  mixed $column the column
-   * @param  mixed $value the value of the expression
-   * @return self for a fluent interface
-   */
-  public function isNot(string $column, $value) {
-    return $this->compare($column, '<>', $value);
-  }
-
-  /**
-   * Adds an expression to the query to search for a specified pattern in a column
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
-   * * The `%` sign can be used both before and after the pattern string.
-   *
-   * @param  string $column the column
-   * @param  string $pattern pattern string
-   * @return self for a fluent interface
-   */
-  public function isLike(string $column, string $pattern) {
-    return $this->compare($column, 'LIKE', $pattern);
-  }
-
-  /**
-   * Adds an expression to the query to search for a specified pattern in a column
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
-   * * The `%` sign can be used both before and after the pattern string.
-   *
-   * @param  string $column the column
-   * @param  string $pattern pattern string
-   * @return self for a fluent interface
-   */
-  public function isNotLike($column, $pattern) {
-    return $this->compare($column, "NOT LIKE", $pattern);
-  }
-
-  /**
-   * Adds a condition to search for a given expression that holds a null value
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * @param  string $column the column
-   * @return self for a fluent interface
-   */
-  public function isNull($column) {
-    return $this->append("$column IS null", null);
-  }
-
-  /**
-   * Adds a condition to search for a given expression that holds a null value
-   *
-   * @param  string $column the column
-   * @return self for a fluent interface
-   */
-  public function isNotNull($column) {
-    return $this->append("$column IS NOT null", null);
-  }
-
-  /**
-   * Adds a SQL IN Operator
-   *
-   * Determines whether a specified value belongs to a given group.
-   *
-   * @param  string $column the column
-   * @param  array|Query|Traversable $group value(s) of the group
-   * @return self for a fluent interface
-   */
-  public function isIn($column, $group) {
-    return $this->compare($column, "IN", $group);
-  }
-
-  /**
-   * Adds a SQL NOT IN Operator
-   *
-   * Determines whether a specified value does not belong to a given group.
-   *
-   * @param  string $column the column
-   * @param  array|Query|Traversable $group value(s) of the group
-   * @return self for a fluent interface
-   */
-  public function isNotIn($column, $group) {
-    return $this->compare($column, "NOT IN", $group);
-  }
-
-  /**
-   * Returns a new condition to compare a column to given value(s)
-   *
-   * **NOTE!<br> ALWAYS SANITIZE ALL VALUES THAT ARE FROM USER INPUTS!**
-   *
-   *  Values for parameter <var>$operator</var>:
-   *
-   * * `=`: equal
-   * * `!=`, `<>`: not equal
-   * * `<`: less than
-   * * `<=`: less than or equal
-   * * `>`: greater than
-   * * `>=`: greater than or equal
-   * * `LIKE`: `$column` is like the string pattern in the `$expr`
-   * * `NOT LIKE`: `$column` is not like the pattern string given as `$expr`
-   * * `IN`: `$column` is in the the group given in `$expr`
-   * * `NOT IN`: `$column` is not in the the group given in `$expr`
-   *
-   *  For `$operator` values `LIKE` and `NOT LIKE` use the `%` sign to define
-   *  wildcards (missing letters in the pattern). The `%` sign can be used
-   *  both before and after the pattern.
-   *
-   * @param  string $column the column
-   * @param  string $operator used comparison operator
-   * @param  mixed $expr the value
-   * @return self for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function compare(string $column, string $operator, $expr, string $conjunction = 'AND') {
-    $op = strtoupper(trim($operator));
-    if ($expr === null) {
-      if ($op == '=') {
-        return $this->isNull($column);
-      } else if ($op == '<>' || $op == '!=') {
-        return $this->isNotNull($column);
-      } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
-      }
-    } else if (!is_array($expr)) {
-      $expr = [$expr];
-    }
-    if ($op == 'IN' || $op == 'NOT IN') {
-      $num = count($expr);
-      if ($num > 0) {
-        $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
-      } else {
-        $format = "()";
-      }
-      return $this->append($column . " " . $op . " " . $format, $expr, $conjunction);
-    }
-    return $this->append($column . " " . $op . " ?", $expr, $conjunction);
+  public function getParams(): ParameterHandler {
+    return $this->conditions()->getParams();
   }
 
 }

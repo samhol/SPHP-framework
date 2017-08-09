@@ -114,44 +114,4 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
     return $this->execute()->rowCount();
   }
 
-  /**
-   * Executes the INSERT SQL statement, returning the number of affected rows
-   *
-   * @param  string $indexField Description
-   * @return int the number of affected rows
-   * @throws \PDOException if there is no database connection or query execution fails
-   */
-  public function affectData($indexField = null) {
-    if ($this->affectRows() == 1) {
-      //$temp = $this->getConnection()->lastInsertId($indexField);
-      //echo "\nid: $temp\n";
-      //$temp = $this->fetch(PDO::FETCH_ASSOC);
-      $query = (new Query($this->getConnection()))->from($this->table);
-      $query->where()->equals(array_combine($this->names, $this->values));
-      //echo $query;
-      return $query->fetchArray();
-    }
-    return [];
-  }
-
-  /**
-   * Returns the bound parameters as an array
-   *
-   * @return mixed[] the bound parameters
-   */
-  public function executeAsTransaction() {
-    $dbh = $this->getConnection();
-    try {
-      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      $dbh->beginTransaction();
-      $statement = $dbh->prepare($this->getStatement());
-      $statement->execute($this->values);
-      $dbh->commit();
-    } catch (\Exception $e) {
-      $dbh->rollBack();
-      throw new SQLException("Error in SQL execution", "", $e);
-    }
-  }
-
 }

@@ -45,7 +45,7 @@ class Rule implements RuleInterface {
     $this->params->appendParams($params);
   }
 
-  public function getParams(): ParameterContainerInterface {
+  public function getParams(): ParameterHandler {
     return $this->params;
   }
 
@@ -110,9 +110,9 @@ class Rule implements RuleInterface {
       } else {
         $format = "()";
       }
-      return "$output $op $format";
+      return new static("$output $op $format", $expr);
     }
-    return "$output $op ?";
+    return new static("$output $op ?", $expr);
   }
 
   /**

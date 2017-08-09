@@ -28,6 +28,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
    * @param mixed $params
    */
   public function __construct($params = null) {
+    parent::__construct();
     if ($params !== null) {
       $this->appendParams($params);
     }

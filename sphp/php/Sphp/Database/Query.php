@@ -23,7 +23,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *
    * @var string
    */
-  private $columns = ["*"];
+  private $columns = ['*'];
 
   /**
    * the table(s) from which data is to be retrieved
@@ -37,28 +37,28 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    *
    * @var string
    */
-  private $having = "";
+  private $having = '';
 
   /**
    * the GROUP BY clause
    *
    * @var string
    */
-  private $groupBy = "";
+  private $groupBy = '';
 
   /**
    * result order
    *
    * @var string
    */
-  private $orderBy = "";
+  private $orderBy = '';
 
   /**
    * result limit
    *
-   * @var string  RF9RM3RCJPH3M
+   * @var string  
    */
-  private $limit = "";
+  private $limit = '';
 
   public function __construct(PDO $db) {
     parent::__construct($db);

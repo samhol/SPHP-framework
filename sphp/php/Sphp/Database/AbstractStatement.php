@@ -22,7 +22,7 @@ use Sphp\Exceptions\RuntimeException;
 abstract class AbstractStatement implements StatementInterface {
 
   /**
-   * @var ParameterContainerInterface 
+   * @var ParameterHandler 
    */
   private $params;
 
@@ -34,11 +34,11 @@ abstract class AbstractStatement implements StatementInterface {
   /**
    * Constructs a new instance
    *
-   * @param ParameterContainerInterface $params
+   * @param ParameterHandler $params
    * @param PDO $pdo
    * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(ParameterContainerInterface $params, PDO $pdo) {
+  public function __construct(ParameterHandler $params, PDO $pdo) {
     $this->setPDO($pdo);
     $this->setParams($params);
   }
@@ -52,13 +52,12 @@ abstract class AbstractStatement implements StatementInterface {
   public function __destruct() {
     unset($this->params, $this->pdo);
   }
-  
-  protected function setParams(ParameterContainerInterface $params) {
+
+  protected function setParams(ParameterHandler $params) {
     $this->params = $params;
     return $this;
   }
 
-  
   public function getPDO(): PDO {
     return $this->pdo;
   }
@@ -75,15 +74,14 @@ abstract class AbstractStatement implements StatementInterface {
     return $this;
   }
 
-
-
   /**
    * Returns an array of values with as many elements as there are bound
    * parameters in the clause
    *
-   * @return ParameterContainerInterface values that are vulnerable to an SQL injection
+   * @return ParameterHandler values that are vulnerable to an SQL injection
    */
-  public function getParams(): ParameterContainerInterface {
+  public function getParams(): ParameterHandler {
+    echo 'abstract:';
     return $this->params;
   }
 
@@ -96,9 +94,9 @@ abstract class AbstractStatement implements StatementInterface {
     echo $this->statementToString();
     try {
       return $this->getPDO()->prepare($this->statementToString());
-    } catch (\PDOException $e) {
+    } catch (PDOException $e) {
       echo $this->statementToString();
-      throw new \Sphp\Exceptions\RuntimeException($e);
+      throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
@@ -108,10 +106,14 @@ abstract class AbstractStatement implements StatementInterface {
    * @throws \Sphp\Exceptions\RuntimeException
    */
   public function execute(): PDOStatement {
+    
+      //var_dump($this->statementToString());
+ 
+      print_r($this->getParams()->toArray());
     try {
-      return $this->params->executeIn($this->getStatement());
-    } catch (\PDOException $e) {
-      throw new \Sphp\Exceptions\RuntimeException($e);
+      return $this->getParams()->executeIn($this->getStatement());
+    } catch (PDOException $e) {
+      throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 

@@ -40,9 +40,9 @@ interface StatementInterface {
   /**
    * Returns the bound parameters as an array
    *
-   * @return ParameterContainerInterface the bound parameters
+   * @return ParameterHandler the bound parameters
    */
-  public function getParams(): ParameterContainerInterface;
+  public function getParams(): ParameterHandler;
 
   /**
    * Executes the SQL statement, returning a result set as a PDOStatement object

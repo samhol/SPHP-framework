@@ -27,8 +27,9 @@ class Rules implements RuleInterface, \Iterator {
    * @param string $sql
    * @param mixed $params
    */
-  public function __construct() {
-    
+  public function __construct(array $rules = []) {
+    $this->rules = [];
+    $this->appendRules($rules);
   }
 
   public function append(RuleInterface $rule, string $conn = 'AND') {
@@ -42,22 +43,22 @@ class Rules implements RuleInterface, \Iterator {
     foreach ($rules as $rule) {
       if (is_array($rule) && count($rule) > 2) {
         $this->append(Rule::compare(array_shift($rule), array_shift($rule), array_shift($rule)));
-      }
-      else if ($rule instanceof RuleInterface) {
+      } else if ($rule instanceof RuleInterface) {
         $this->append($rule);
-      } else  {
+      } else if (is_string($rule)) {
+        $this->append(new Rule($rule));
+      } else {
         echo 'vitun kettu';
       }
     }
   }
 
-  public function getParams(): ParameterContainerInterface {
+  public function getParams(): ParameterHandler {
     $params = new SequentialParameters();
     foreach ($this as $part) {
       if ($part instanceof RuleInterface) {
-        foreach ($part->getParams() as $name => $value) {
-          $params->appendParam($value, $part->getParams()->getParamType($name));
-        }
+        $parArr = $part->getParams()->toArray();
+        $params->appendParams($parArr);
       }
     }
     return $params;
@@ -77,6 +78,10 @@ class Rules implements RuleInterface, \Iterator {
 
   public function __toString(): string {
     return $this->getSQL();
+  }
+
+  public function notEmpty(): bool {
+    return !empty($this->rules);
   }
 
   public static function generateRule(string $column, string $operator, $expr): Rule {

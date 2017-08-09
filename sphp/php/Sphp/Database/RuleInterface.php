@@ -17,7 +17,7 @@ namespace Sphp\Database;
  */
 interface RuleInterface {
 
-  public function getParams(): ParameterContainerInterface;
+  public function getParams(): ParameterHandler;
 
   public function getSQL(): string;
 
