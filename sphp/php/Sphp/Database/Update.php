@@ -25,12 +25,12 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    *
    * @var string
    */
-  private $table = "";
+  private $table = '';
 
   /**
    * a list of column(s) to be included in the query
    *
-   * @var string
+   * @var array
    */
   private $newData = [];
 
@@ -64,14 +64,10 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
     //var_dump(array_keys($this->newData));
     //$a =  implode(" = ?, ", $k);
     //$query .= $a;
-    if ($this->conditions()->hasConditions()) {
+    if ($this->hasConditions()) {
       $query .= " WHERE " . $this->conditions();
     }
     return $query;
-  }
-
-  public function getParams(): array {
-    return array_merge(array_values($this->newData), parent::getParams());
   }
 
   public function affectRows(): int {

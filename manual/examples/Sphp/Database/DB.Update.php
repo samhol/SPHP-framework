@@ -2,7 +2,7 @@
 
 namespace Sphp\Database;
 
-echo Db::update('foo')
-        ->table('t1')
+echo Db::update()
+        ->table('locations')
         ->set(['a' => 'foobar', 'b' => 'bar', 'c' => 'foo'])
         ->statementToString();
