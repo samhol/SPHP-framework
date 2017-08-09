@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Database;
-
+$del = Db::delete()->from('locations')->where(Rule::is('name', 'Hyde Park'))->execute();
 $hydeparkData = [
     'name' => 'Hyde Park',
     'street' => 'W2 2UH',
@@ -17,7 +17,4 @@ var_dump(Db::insert()
                 ->affectRows());
 //echo Db::insert()->into('locations')->values($hydeparkData)->affectRows();
 
-print_r($runner->setSql('select * from locations')
-                ->unsetParams()
-                ->execute()
-                ->fetchAll(\PDO::FETCH_ASSOC));
+print_r(Db::query()->get('*')->from('locations')->execute()->fetchAll());

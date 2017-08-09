@@ -6,7 +6,9 @@
  */
 
 namespace Sphp\Database;
+
 use PDO;
+
 /**
  * Description of Rule
  *

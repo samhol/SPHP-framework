@@ -38,6 +38,19 @@ class Rules implements RuleInterface, \Iterator {
     $this->rules[] = $rule;
   }
 
+  public function appendRules(array $rules) {
+    foreach ($rules as $rule) {
+      if (is_array($rule) && count($rule) > 2) {
+        $this->append(Rule::compare(array_shift($rule), array_shift($rule), array_shift($rule)));
+      }
+      else if ($rule instanceof RuleInterface) {
+        $this->append($rule);
+      } else  {
+        echo 'vitun kettu';
+      }
+    }
+  }
+
   public function getParams(): ParameterContainerInterface {
     $params = new SequentialParameters();
     foreach ($this as $part) {
@@ -64,41 +77,6 @@ class Rules implements RuleInterface, \Iterator {
 
   public function __toString(): string {
     return $this->getSQL();
-  }
-
-  /**
-   * Adds a condition to search for a given expression that holds a null value
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * @param  string $column the column
-   * @return self for a fluent interface
-   */
-  public static function isNull(string $column): Rule {
-    return new static("$column IS null");
-  }
-
-  /**
-   * Adds a condition to search for a given expression that holds a null value
-   *
-   * @param  string $column the column
-   * @return self for a fluent interface
-   */
-  public static function isNotNull(string $column): Rule {
-    return new static("$column IS NOT NULL");
-  }
-
-  protected static function generateGroupSql($group) {
-    if (is_array($group)) {
-      $qMarks = array_fill(0, count($group), '?');
-      return implode(', ', $qMarks);
-    }
-  }
-
-  public static function isIn(string $column, $group) {
-    $qMarks = static::generateGroupSql($group);
-    return new static("$column IS IN ($qMarks)", $group);
   }
 
   public static function generateRule(string $column, string $operator, $expr): Rule {

@@ -23,7 +23,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * the conditions in the WHERE part of the SELECT, UPDATE and INSERT queries
    *
-   * @var Conditions
+   * @var Rules
    */
   private $where;
 
@@ -33,9 +33,9 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param PDO $db
    * @param Conditions $where
    */
-  public function __construct(PDO $db, Conditions $where = null) {
+  public function __construct(PDO $db, Rules $where = null) {
     if ($where === null) {
-      $this->where = new Conditions();
+      $this->where = new Rules();
     } else {
       $this->where = $where;
     }
@@ -61,7 +61,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @param  Conditions $c
    * @return self for a fluent interface
    */
-  public function setConditions(Conditions $c) {
+  public function setConditions(Rule $c) {
     $this->where = $c;
     return $this;
   }
@@ -81,13 +81,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @return self for a fluent interface
    */
   public function where(... $rules) {
-    foreach ($rules as $rule) {
-      if (is_array($rule) && count($rule)) {
-        $this->compare(array_shift($rule), array_shift($rule), array_shift($rule));
-      } else if (is_string($rule)) {
-        $this->where .= " AND (" . $rule . ")";
-      }
-    }
+    $this->where->appendRules($rules);
     return $this;
   }
 
@@ -271,7 +265,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @return boolean conditions are set
    */
   public function hasConditions() {
-    return !Strings::isEmpty($this->where);
+    return $this->where;
   }
 
   /**
