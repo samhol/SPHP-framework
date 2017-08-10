@@ -62,11 +62,6 @@ abstract class AbstractStatement implements StatementInterface {
     return $this->pdo;
   }
 
-  /**
-   * 
-   * @param  PDO $pdo
-   * @return self for a fluent interface
-   */
   public function setPDO(PDO $pdo) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
@@ -74,42 +69,26 @@ abstract class AbstractStatement implements StatementInterface {
     return $this;
   }
 
-  /**
-   * Returns an array of values with as many elements as there are bound
-   * parameters in the clause
-   *
-   * @return ParameterHandler values that are vulnerable to an SQL injection
-   */
   public function getParams(): ParameterHandler {
     echo 'abstract:';
     return $this->params;
   }
 
-  /**
-   * 
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
   public function getStatement(): PDOStatement {
-    echo $this->statementToString();
+    //echo $this->statementToString();
     try {
       return $this->getPDO()->prepare($this->statementToString());
     } catch (PDOException $e) {
-      echo $this->statementToString();
+      // echo $this->statementToString();
       throw new RuntimeException($e->getMessage(), 0, $e);
     }
   }
 
-  /**
-   * 
-   * @return PDOStatement
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
   public function execute(): PDOStatement {
-    
-      //var_dump($this->statementToString());
- 
-      print_r($this->getParams()->toArray());
+
+    //var_dump($this->statementToString());
+
+    print_r($this->getParams()->toArray());
     try {
       return $this->getParams()->executeIn($this->getStatement());
     } catch (PDOException $e) {

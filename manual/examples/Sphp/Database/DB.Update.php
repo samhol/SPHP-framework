@@ -4,5 +4,5 @@ namespace Sphp\Database;
 
 echo Db::update()
         ->table('locations')
-        ->set(['a' => 'foobar', 'b' => 'bar', 'c' => 'foo'])
+        ->set(['country' => 'United Kingdom'])->where(Rule::is('name', 'Hyde Park'))
         ->statementToString();

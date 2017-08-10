@@ -92,7 +92,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Appends SQL conditions by using logical AND as a conjunction
    *
-   * @param string|RuleInterface|array $rules SQL condition(s)
+   * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    */
   public function andWhere(... $rules) {
@@ -104,7 +104,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * Appends SQL conditions by using logical OR as a conjunction
    *
-   * @param  ...mixed $rules SQL condition(s)
+   * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -113,10 +113,11 @@ abstract class ConditionalStatement extends AbstractStatement {
     $this->where->append($obj, 'OR');
     return $this;
   }
+
   /**
-   * Appends SQL conditions by using logical OR as a conjunction
+   * Appends SQL conditions by using logical XOR as a conjunction
    *
-   * @param  ...mixed $rules SQL condition(s)
+   * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
@@ -124,15 +125,6 @@ abstract class ConditionalStatement extends AbstractStatement {
     $obj = new Rules($rules);
     $this->where->append($obj, 'XOR');
     return $this;
-  }
-
-  /**
-   * Returns the generated SQL as a string
-   *
-   * @return string the generated SQL as a string
-   */
-  public function __toString(): string {
-    return $this->statementToString();
   }
 
   /**
@@ -156,18 +148,16 @@ abstract class ConditionalStatement extends AbstractStatement {
     return $this->where->notEmpty();
   }
 
-  /**
-   * Resets the specific part of the query or the entire query if no parameter is given
-   *
-   * @return self for a fluent interface
-   */
-  public function reset() {
-    $this->where = [];
-    $this->params = [];
-    return $this;
+  protected function conditionsToString(): string {
+    $output = '';
+    if ($this->hasConditions()) {
+      $output .= " WHERE $this->where";
+    }
+    return $output;
   }
 
   public function getParams(): ParameterHandler {
+    
     return $this->conditions()->getParams();
   }
 

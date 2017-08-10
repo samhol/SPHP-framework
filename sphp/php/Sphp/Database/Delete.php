@@ -20,29 +20,25 @@ use PDO;
 class Delete extends ConditionalStatement implements DataManipulationStatement {
 
   /**
-   * the table(s) that are updated
+   * the target table
    *
    * @var string
    */
-  private $tables = [];
+  private $table;
 
   /**
-   * Sets the table(s) from where the data is to be deleted.
+   * Sets the table from where the data is to be deleted
    *
-   * @param  string... $table the table(s)
-   * @return Delete this (used for method chaining)
+   * @param  string $table the table
+   * @return self for a fluent interface
    */
-  public function from(string ... $table) {
-    $this->tables = $table;
+  public function from(string $table) {
+    $this->table = $table;
     return $this;
   }
 
   public function statementToString(): string {
-    $query = "DELETE FROM `" . implode(", ", Arrays::flatten($this->tables)) . '`';
-    if ($this->hasConditions()) {
-      $query .= " WHERE " . $this->conditions();
-    }
-    return $query;
+    return "DELETE FROM `$this->table`" . $this->conditionsToString();
   }
 
   public function affectRows(): int {

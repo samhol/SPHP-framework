@@ -33,7 +33,13 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * @var array
    */
   private $newData = [];
-
+  /**
+   * a list of column(s) to be included in the query
+   *
+   * @var array
+   */
+  private $cols = [];
+  
   /**
    * Sets the table(s) which are updated
    *
@@ -53,20 +59,25 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    */
   public function set(array $data) {
     $this->newData = $data;
+    $this->cols = array_keys($data);
+    $this->getParams();
     return $this;
+  }
+
+  protected function valuesToString(): string {
+    
   }
 
   public function statementToString(): string {
     $k = array_keys($this->newData);
     $a = implode(" = ?, ", $k);
     //echo $a;
-    $query = "UPDATE " . $this->table . " SET $a = ?";
+    $query = "UPDATE `$this->table` SET $a = ?";
     //var_dump(array_keys($this->newData));
     //$a =  implode(" = ?, ", $k);
     //$query .= $a;
-    if ($this->hasConditions()) {
-      $query .= " WHERE " . $this->conditions();
-    }
+    $query .= $this->conditionsToString();
+
     return $query;
   }
 

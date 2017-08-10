@@ -33,6 +33,7 @@ $sqlException returned instead.
 MD
 );
 CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');
+CodeExampleBuilder::visualize('Sphp/Database/DB.Update.php', 'sql', false);
 CodeExampleBuilder::visualize('Sphp/Database/Rules.php', 'text');
 CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'text');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');

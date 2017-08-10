@@ -19,8 +19,17 @@ use PDOStatement;
  */
 interface StatementInterface {
 
+  /**
+   * 
+   * @param  PDO $pdo
+   * @return self for a fluent interface
+   */
   public function setPDO(PDO $pdo);
 
+  /**
+   * 
+   * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
   public function getPDO(): PDO;
 
   /**
@@ -31,24 +40,26 @@ interface StatementInterface {
   public function statementToString(): string;
 
   /**
-   * Returns the SQL statement object
+   * Returns the database statement object
    *
-   * @return PDOStatement the SQL statement object
+   * @return PDOStatement the database statement object
+   * @throws \Sphp\Exceptions\RuntimeException
    */
   public function getStatement(): PDOStatement;
 
   /**
-   * Returns the bound parameters as an array
+   * Returns the parameter handler
    *
-   * @return ParameterHandler the bound parameters
+   * @return ParameterHandler the parameter handler
    */
   public function getParams(): ParameterHandler;
 
   /**
-   * Executes the SQL statement, returning a result set as a PDOStatement object
+   * Executes the database statement
    *
-   * @return \PDOStatement the result set
-   * @throws SQLException if there is no database connection or query execution fails
+   * @return PDOStatement the result set
+   * @throws \Sphp\Exceptions\RuntimeException if query execution fails
+   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function execute(): PDOStatement;
 }
