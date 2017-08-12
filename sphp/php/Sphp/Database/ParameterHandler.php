@@ -8,13 +8,12 @@
 
 namespace Sphp\Database;
 
-
 use PDO;
 use PDOStatement;
-use Sphp\Exceptions\RuntimeException;
 use Iterator;
 use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
+
 /**
  * Base class for all SQL Statement classes
  *

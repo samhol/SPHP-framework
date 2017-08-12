@@ -1,20 +1,18 @@
 <?php
 
 /**
- * TaskRunner.php (UTF-8)
+ * SequentialParameters.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database;
 
 use PDO;
-use PDOStatement;
-use PDOException;
+use Traversable;
 use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\RuntimeException;
 
 /**
- * Base class for all SQL Statement classes
+ * Container for values in prepared SQL statements
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -48,11 +46,11 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
 
   /**
    * 
-   * @param array $params
+   * @param array|Traversable $params
    * @param int $type
    * @return self for a fluent interface
    */
-  public function appendParams(array $params, int $type = PDO::PARAM_STR) {
+  public function appendParams($params, int $type = PDO::PARAM_STR) {
     foreach ($params as $value) {
       $this->appendParam($value, $type);
     }

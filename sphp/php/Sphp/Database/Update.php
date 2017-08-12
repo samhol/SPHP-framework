@@ -32,14 +32,15 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    *
    * @var array
    */
-  private $newData = [];
+  private $newData;
+
   /**
    * a list of column(s) to be included in the query
    *
    * @var array
    */
   private $cols = [];
-  
+
   /**
    * Sets the table(s) which are updated
    *
@@ -58,26 +59,25 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function set(array $data) {
-    $this->newData = $data;
+    $this->newData = new SequentialParameters($data);
     $this->cols = array_keys($data);
-    $this->getParams();
     return $this;
   }
 
+  public function getParams(): ParameterHandler {
+    return $this->newData->appendParams(parent::getParams());
+  }
+
   protected function valuesToString(): string {
-    
+    $names = array_map(function($name) {
+      return "$name = ?";
+    }, $this->cols);
+    return implode(', ', $names);
   }
 
   public function statementToString(): string {
-    $k = array_keys($this->newData);
-    $a = implode(" = ?, ", $k);
-    //echo $a;
-    $query = "UPDATE `$this->table` SET $a = ?";
-    //var_dump(array_keys($this->newData));
-    //$a =  implode(" = ?, ", $k);
-    //$query .= $a;
+    $query = "UPDATE `$this->table` SET {$this->valuesToString()}";
     $query .= $this->conditionsToString();
-
     return $query;
   }
 
