@@ -7,9 +7,6 @@
 
 namespace Sphp\Database;
 
-use PDO;
-use PDOStatement;
-
 /**
  * An implementation of an SQL INSERT statement
  *

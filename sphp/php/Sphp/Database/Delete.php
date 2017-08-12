@@ -7,9 +7,6 @@
 
 namespace Sphp\Database;
 
-use Sphp\Stdlib\Arrays;
-use PDO;
-
 /**
  * An implementation of a SQL DELETE statement
  *

@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Rule.php (UTF-8)
+ * Rules.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Database;
 
 /**
- * Description of Rule
+ * Implements a collection of rules
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-08-05
@@ -82,93 +82,6 @@ class Rules implements RuleInterface, \Iterator {
 
   public function notEmpty(): bool {
     return !empty($this->rules);
-  }
-
-  public static function generateRule(string $column, string $operator, $expr): Rule {
-    $op = strtoupper(trim($operator));
-    $output = "`$column`";
-    if ($expr === null) {
-      if ($op == '=') {
-        return static::isNull($column);
-      } else if ($op == '<>' || $op == '!=') {
-        return static::isNotNull($column);
-      } else {
-        throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
-      }
-    } else if (!is_array($expr)) {
-      $expr = [$expr];
-    }
-    if ($op == 'IN' || $op == 'NOT IN') {
-      $num = count($expr);
-      if ($num > 0) {
-        $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
-      } else {
-        $format = "()";
-      }
-      return "$output $op $format";
-    }
-    return "$output $op ?";
-  }
-
-  public function equal(array $map, $op = 'AND') {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name = :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" $op ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
-  public function notEquals(array $map) {
-    $query = [];
-    foreach ($map as $name => $value) {
-      $query[] = "$name <> :$name";
-      $this->setParam($name, $value);
-    }
-    $q = implode(" AND ", $query);
-    $this->where .= " ($q) ";
-    return $this;
-  }
-
-  /**
-   * Executes a bitwise operation to the column value pair and compares the result to a given parameter
-   *
-   * **NOTE! This method quotes automatically <var>$value</var>, <var>$result</var> inputs!**
-   *
-   * Values for parameter <var>$binOp</var>:
-   *
-   * * **`&`**: bitwise AND
-   * * **`|`**, bitwise OR
-   * * **`^`**: bitwise XOR
-   * * **`~`**: invert bits
-   * * **`<<`**: left shift
-   * * **`>>`**: right shift
-   *
-   * @param  string|Query $column the column
-   * @param  string $binOp Bitwise operand
-   * @param  string|int|bool $value the value to bitwise compare to
-   * @param  string $op logical operation
-   * @param  string|int|bool $result the result value of the bitwise operation
-   * @return self for a fluent interface
-   */
-  public function binaryOperationCompare($column, $binOp, $value, $op, $result) {
-    return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
-  }
-
-  /**
-   * Adds an SQL condition by using logical OR as a conjunction
-   *
-   * @param  array $rules rules as field name => value pairs
-   * @param  string $separator the logical operator between the comparisons
-   * @return self for a fluent interface
-   */
-  public static function equals(array $rules, $separator = "AND") {
-    foreach ($rules as $field => $value) {
-      $this->append(Rule::is($field, $value), $separator);
-    }
-    return $this;
   }
 
   /**

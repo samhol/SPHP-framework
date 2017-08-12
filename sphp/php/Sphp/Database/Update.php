@@ -7,8 +7,6 @@
 
 namespace Sphp\Database;
 
-use Sphp\Objects\DbObjectInterface as DbObjectInterface;
-
 /**
  * An implementation of an SQL UPDATE statement
  *
