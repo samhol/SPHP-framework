@@ -66,7 +66,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   /**
-   * Returns the WHERE conditions component
+   * Adds rules to the WHERE conditions component
    *
    * **Important!**
    *
@@ -77,6 +77,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    *  The WHERE clause eliminates all rows from the result set for which the comparison predicate does
    *  not evaluate to `true`.
    *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    */
   public function where(... $rules) {
@@ -94,6 +95,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function andWhere(... $rules) {
     $obj = new Rules($rules);
@@ -157,7 +159,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   public function getParams(): ParameterHandler {
-    
+
     return $this->conditions()->getParams();
   }
 
