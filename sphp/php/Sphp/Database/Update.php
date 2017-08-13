@@ -7,12 +7,13 @@
 
 namespace Sphp\Database;
 
+use PDO;
+
 /**
  * An implementation of an SQL UPDATE statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-04-02
-
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -38,6 +39,16 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
    * @var array
    */
   private $cols = [];
+
+  /**
+   * 
+   * @param PDO $db
+   * @param Rules $where
+   */
+  public function __construct(PDO $db, Rules $where = null) {
+    parent::__construct($db, $where);
+    $this->newData = new SequentialParameters();
+  }
 
   /**
    * Sets the table(s) which are updated

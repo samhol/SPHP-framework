@@ -7,6 +7,8 @@
 
 namespace Sphp\Database;
 
+use Iterator;
+
 /**
  * Implements a collection of rules
  *
@@ -15,7 +17,7 @@ namespace Sphp\Database;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Rules implements RuleInterface, \Iterator {
+class Rules implements RuleInterface, Iterator {
 
   /**
    * @var array 
@@ -23,6 +25,7 @@ class Rules implements RuleInterface, \Iterator {
   private $rules;
 
   /**
+   * Constructs a new instance
    * 
    * @param string $sql
    * @param mixed $params

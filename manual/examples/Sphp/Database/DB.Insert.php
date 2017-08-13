@@ -16,7 +16,7 @@ try {
   ];
   var_dump(Db::insert()
                   ->into('locations')
-                  ->valuesFromArray($hydeparkData)
+                  ->valuesFromCollection($hydeparkData)
                   ->affectRows());
 //echo Db::insert()->into('locations')->values($hydeparkData)->affectRows();
 

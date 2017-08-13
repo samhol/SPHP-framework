@@ -22,11 +22,6 @@ use Sphp\Exceptions\RuntimeException;
 abstract class AbstractStatement implements StatementInterface {
 
   /**
-   * @var ParameterHandler 
-   */
-  private $params;
-
-  /**
    * @var PDO
    */
   private $pdo;
@@ -34,13 +29,11 @@ abstract class AbstractStatement implements StatementInterface {
   /**
    * Constructs a new instance
    *
-   * @param ParameterHandler $params
    * @param PDO $pdo
    * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
-  public function __construct(ParameterHandler $params, PDO $pdo) {
+  public function __construct(PDO $pdo) {
     $this->setPDO($pdo);
-    $this->setParams($params);
   }
 
   /**
@@ -53,11 +46,6 @@ abstract class AbstractStatement implements StatementInterface {
     unset($this->params, $this->pdo);
   }
 
-  protected function setParams(ParameterHandler $params) {
-    $this->params = $params;
-    return $this;
-  }
-
   public function getPDO(): PDO {
     return $this->pdo;
   }
@@ -67,11 +55,6 @@ abstract class AbstractStatement implements StatementInterface {
     $pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
     $this->pdo = $pdo;
     return $this;
-  }
-
-  public function getParams(): ParameterHandler {
-    echo 'abstract:';
-    return $this->params;
   }
 
   public function getStatement(): PDOStatement {
@@ -87,8 +70,7 @@ abstract class AbstractStatement implements StatementInterface {
   public function execute(): PDOStatement {
 
     //var_dump($this->statementToString());
-
-    print_r($this->getParams()->toArray());
+    //print_r($this->getParams()->toArray());
     try {
       return $this->getParams()->executeIn($this->getStatement());
     } catch (PDOException $e) {

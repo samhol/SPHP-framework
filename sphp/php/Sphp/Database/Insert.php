@@ -7,6 +7,9 @@
 
 namespace Sphp\Database;
 
+use Traversable;
+use PDO;
+
 /**
  * An implementation of an SQL INSERT statement
  *
@@ -33,12 +36,13 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   /**
    * a list of value(s) to be included in the query
    *
-   * @var mixed[]
+   * @var ParametersHandler
    */
-  private $values = [];
+  private $values;
 
   public function __construct(PDO $pdo) {
-    parent::__construct(new NamedParameters(), $pdo);
+    parent::__construct($pdo);
+    $this->values = new SequentialParameters();
   }
 
   /**
@@ -66,14 +70,17 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
   /**
    * Sets the values that are to be inserted to the table
    *
-   * @param  array $values
+   * @param  array|Traversable $values
    * @return self for a fluent interface
    */
-  public function valuesFromArray(array $values) {
+  public function valuesFromCollection($values) {
     if (!\Sphp\Stdlib\Arrays::isIndexed($values)) {
       $this->names = array_keys($values);
+    }if ($values instanceof ParameterHandler) {
+      $this->values = $values;
+    } else {
+      $this->values = Parameters::fromArray($values);
     }
-    $this->setParams(Parameters::fromArray($values));
     return $this;
   }
 
@@ -109,6 +116,10 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
 
   public function affectRows(): int {
     return $this->execute()->rowCount();
+  }
+
+  public function getParams(): ParameterHandler {
+    return $this->values;
   }
 
 }

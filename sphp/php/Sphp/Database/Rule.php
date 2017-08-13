@@ -10,7 +10,7 @@ namespace Sphp\Database;
 use PDO;
 
 /**
- * Description of Rule
+ * Implements a single rule for comparison operations in SQL queries
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-08-05
@@ -25,7 +25,7 @@ class Rule implements RuleInterface {
   private $sql;
 
   /**
-   * @var ParameterContainerInterface 
+   * @var ParameterHandler 
    */
   private $params;
 
@@ -33,6 +33,7 @@ class Rule implements RuleInterface {
    * 
    * @param string $sql
    * @param mixed $params
+   * @param int $type
    */
   public function __construct(string $sql, $params = null, int $type = PDO::PARAM_STR) {
     $this->params = new SequentialParameters();
@@ -60,8 +61,8 @@ class Rule implements RuleInterface {
   /**
    * Generates a rule for a column to contain a `NULL` (empty) value
    *
-   * @param string $column
-   * @return Rule new instance
+   * @param  string $column
+   * @return self new instance
    */
   public static function isNull(string $column): Rule {
     return new static("$column IS null");
@@ -71,7 +72,7 @@ class Rule implements RuleInterface {
    * Generates a rule for a column to not contain a `NULL` (empty) value
    *
    * @param  string $column the column
-   * @return Rule new instance
+   * @return self new instance
    */
   public static function isNotNull(string $column): Rule {
     return new static("$column IS NOT NULL");
@@ -84,6 +85,12 @@ class Rule implements RuleInterface {
     }
   }
 
+  /**
+   * 
+   * @param  string $column
+   * @param  Traversable|array $group
+   * @return self new instance
+   */
   public static function isIn(string $column, $group) {
     $qMarks = static::generateGroupSql($group);
     return new static("$column IS IN ($qMarks)", $group);
@@ -146,9 +153,9 @@ class Rule implements RuleInterface {
    * **Important!**
    * **ALWAYS SANITIZE ALL USER INPUTS!**
    *
-   * @param  mixed $column the column
+   * @param  string $column the column
    * @param  mixed $value the value of the expression
-   * @return self for a fluent interface
+   * @return self new instance
    */
   public static function is(string $column, $value): Rule {
     if ($value === null) {
@@ -163,7 +170,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column name
    * @param  mixed $value the value of the expression
-   * @return self for a fluent interface
+   * @return self new instance
    */
   public static function isNot(string $column, $value): Rule {
     if ($value === null) {
@@ -184,7 +191,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  string $pattern pattern string
-   * @return self for a fluent interface
+   * @return self new instance
    */
   public static function isLike(string $column, string $pattern) {
     return new static("$column LIKE ?", $pattern);
@@ -201,7 +208,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  string $pattern pattern string
-   * @return self for a fluent interface
+   * @return self new instance
    */
   public static function isNotLike(string $column, string $pattern) {
     return new static("$column NOT LIKE ?", $pattern);
@@ -214,7 +221,7 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  mixed[]|Query|Traversable $group value(s) of the group
-   * @return self for a fluent interface
+   * @return self new instance
    */
   public static function isNotIn($column, $group) {
     $g = static::generateGroupSql($group);

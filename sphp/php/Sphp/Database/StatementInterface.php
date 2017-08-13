@@ -20,15 +20,18 @@ use PDOStatement;
 interface StatementInterface {
 
   /**
+   * Sets the PHP Data Object
    * 
-   * @param  PDO $pdo
+   * @param  PDO $pdo PHP Data Object pdo object
    * @return self for a fluent interface
    */
   public function setPDO(PDO $pdo);
 
   /**
+   * Returns the PHP Data Object
    * 
-   * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   * @return PDO the PHP Data Object object
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function getPDO(): PDO;
 
@@ -44,6 +47,7 @@ interface StatementInterface {
    *
    * @return PDOStatement the database statement object
    * @throws \Sphp\Exceptions\RuntimeException
+   * @link   http://php.net/manual/en/class.pdostatement.php The PDOStatement class
    */
   public function getStatement(): PDOStatement;
 

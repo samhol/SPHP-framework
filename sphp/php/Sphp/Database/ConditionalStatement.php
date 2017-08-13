@@ -38,7 +38,7 @@ abstract class ConditionalStatement extends AbstractStatement {
     } else {
       $this->where = $where;
     }
-    parent::__construct(new SequentialParameters, $db);
+    parent::__construct($db);
   }
 
   /**
@@ -50,6 +50,18 @@ abstract class ConditionalStatement extends AbstractStatement {
   public function __destruct() {
     unset($this->where);
     parent::__destruct();
+  }
+
+  /**
+   * Clones the object
+   *
+   * **Note:** Method cannot be called directly!
+   *
+   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
+   */
+  public function __clone() {
+    parent::__clone();
+    $this->where = clone $this->where;
   }
 
   /**
@@ -104,6 +116,19 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   /**
+   * Appends SQL conditions by using AND NOT as a conjunction
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return self for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function andNotWhere(... $rules) {
+    $obj = new Rules($rules);
+    $this->where->append($obj, 'AND NOT');
+    return $this;
+  }
+
+  /**
    * Appends SQL conditions by using logical OR as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
@@ -117,28 +142,16 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   /**
-   * Appends SQL conditions by using logical XOR as a conjunction
+   * Appends SQL conditions by using logical OR NOT as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function xorWhere(... $rules) {
+  public function orNotWhere(... $rules) {
     $obj = new Rules($rules);
-    $this->where->append($obj, 'XOR');
+    $this->where->append($obj, 'OR NOT');
     return $this;
-  }
-
-  /**
-   * Clones the object
-   *
-   * **Note:** Method cannot be called directly!
-   *
-   * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
-   */
-  public function __clone() {
-    parent::__clone();
-    $this->where = clone $this->where;
   }
 
   /**
@@ -159,7 +172,6 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   public function getParams(): ParameterHandler {
-
     return $this->conditions()->getParams();
   }
 
