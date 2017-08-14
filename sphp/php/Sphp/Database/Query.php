@@ -8,6 +8,9 @@
 namespace Sphp\Database;
 
 use PDO;
+use IteratorAggregate;
+use Traversable;
+use ArrayIterator;
 
 /**
  * An implementation of a SQL SELECT statement
@@ -16,7 +19,7 @@ use PDO;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Query extends ConditionalStatement implements \IteratorAggregate {
+class Query extends ConditionalStatement implements IteratorAggregate {
 
   /**
    * a list of column(s) to be included in the query
@@ -56,9 +59,10 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
   /**
    * result limit
    *
-   * @var string  
+   * @var int  
    */
-  private $limit = '';
+  private $limit = 0;
+  private $offset = 0;
 
   public function __construct(PDO $db) {
     parent::__construct($db);
@@ -179,18 +183,33 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    * * Vertica
    * * Polyhedra
    *
-   * @param int $rowCount the maximum number of rows to return
-   * @param mixed $offset the offset of the initial row
+   * @param  int $limit the maximum number of rows to return
+   * @param  mixed $offset the offset of the initial row
    * @return self for a fluent interface
    */
-  public function limit(int $rowCount, $offset = 0) {
-    $this->limit = "LIMIT " . $rowCount . " OFFSET " . $offset;
+  public function limit(int $limit, int $offset = 0) {
+    $this->limit = '';
+    if ($limit > 0) {
+      $this->limit .= " LIMIT $limit ";
+      if ($offset > 0) {
+        $this->limit .= " OFFSET $offset ";
+      }
+    }
+    return $this;
+  }
+  
+  protected function msLimit(int $limit) {
+    $this->limit = " TOP $limit ";
     return $this;
   }
 
   public function statementToString(): string {
-    $query = "SELECT " . implode(", ", $this->columns);
-    $query .= " FROM " . implode(", ", $this->from);
+    $query = 'SELECT ';
+    if ($this->getCurrentDriver() === 'sqlsrv') {
+      $query .= $this->limit;
+    }
+    $query .= " " . implode(', ', $this->columns);
+    $query .= " FROM " . implode(', ', $this->from);
 
     $query .= $this->conditionsToString();
     if (strlen($this->groupBy) > 0) {
@@ -202,8 +221,8 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
     if (strlen($this->orderBy) > 0) {
       $query .= " ORDER BY " . $this->orderBy;
     }
-    if (strlen($this->limit) > 0) {
-      $query .= " " . $this->limit;
+    if ($this->getCurrentDriver() === 'mysql') {
+      $query .= $this->limit;
     }
     return $query;
   }
@@ -211,7 +230,7 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
   /**
    * Executes the SQL query in the given database and returns the result rows as an array
    *
-   * @return mixed[] result rows as an array
+   * @return array result rows as an array
    * @throws \PDOException if there is no database connection or query execution fails
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
@@ -228,22 +247,44 @@ class Query extends ConditionalStatement implements \IteratorAggregate {
    */
   public function count(): int {
     $columns = $this->columns;
+    $groupBy = $this->groupBy;
+    $this->groupBy();
     $count = $this->get("COUNT(*)")->execute()->fetchColumn();
+    echo $this->statementToString();
+    var_dump($count);
     $this->columns = $columns;
+    
     return (int) $count;
   }
 
   /**
    * 
-   * @return \ArrayIterator
+   * @return Traversable
    */
-  public function getIterator(): \Traversable {
+  public function getIterator(): Traversable {
     try {
-      $data = $this->fetchArray();
-    } catch (Exception $ex) {
+      $data = $this->fetchAll();
+    } catch (\Throwable $ex) {
       $data = [];
     }
     return new \ArrayIterator($data);
+  }
+
+  public function fetchRows(int $rowCount = null, int $offset = 0): array {
+    if ($rowCount) {
+      $this->limit($rowCount, $offset);
+    }
+  }
+
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchAll(int $fetch_style = PDO::FETCH_ASSOC): array {
+    return $this->execute()->fetchAll($fetch_style);
   }
 
 }

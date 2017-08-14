@@ -35,7 +35,8 @@ MD
 CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');
 CodeExampleBuilder::visualize('Sphp/Database/DB.Update.php', 'sql', false);
 CodeExampleBuilder::visualize('Sphp/Database/Rules.php', 'text');
-CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'text');
+
+$load('Sphp.Database.Query');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');
 //CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'text');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');

@@ -29,7 +29,7 @@ abstract class AbstractStatement implements StatementInterface {
   /**
    * Constructs a new instance
    *
-   * @param PDO $pdo
+   * @param PDO $pdo a connection object between PHP and a database server
    * @link  http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function __construct(PDO $pdo) {
@@ -78,4 +78,21 @@ abstract class AbstractStatement implements StatementInterface {
     }
   }
 
+  /**
+   * Returns the name of the currently used database driver
+   * 
+   * @return string the name of the currently used database driver
+   */
+  public function getCurrentDriver(): string {
+    return $this->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
+  }
+
+  /**
+   * Returns the name of the currently used database driver
+   * 
+   * @return string the name of the currently used database driver
+   */
+  public function isMicrosoftDB(): string {
+    return $this->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
+  }
 }

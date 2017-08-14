@@ -20,15 +20,15 @@ use PDOStatement;
 interface StatementInterface {
 
   /**
-   * Sets the PHP Data Object
+   * Sets the connection object between PHP and a database server
    * 
-   * @param  PDO $pdo PHP Data Object pdo object
+   * @param  PDO $pdo connection object between PHP and a database server
    * @return self for a fluent interface
    */
   public function setPDO(PDO $pdo);
 
   /**
-   * Returns the PHP Data Object
+   * Returns the current connection object between PHP and a database server
    * 
    * @return PDO the PHP Data Object object
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
