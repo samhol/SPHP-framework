@@ -61,8 +61,7 @@ class Query extends ConditionalStatement implements IteratorAggregate {
    *
    * @var int  
    */
-  private $limit = 0;
-  private $offset = 0;
+  private $limit = '';
 
   public function __construct(PDO $db) {
     parent::__construct($db);
@@ -197,7 +196,7 @@ class Query extends ConditionalStatement implements IteratorAggregate {
     }
     return $this;
   }
-  
+
   protected function msLimit(int $limit) {
     $this->limit = " TOP $limit ";
     return $this;
@@ -250,10 +249,10 @@ class Query extends ConditionalStatement implements IteratorAggregate {
     $groupBy = $this->groupBy;
     $this->groupBy();
     $count = $this->get("COUNT(*)")->execute()->fetchColumn();
-    echo $this->statementToString();
-    var_dump($count);
+    //echo $this->statementToString();
+    //var_dump($count);
     $this->columns = $columns;
-    
+
     return (int) $count;
   }
 

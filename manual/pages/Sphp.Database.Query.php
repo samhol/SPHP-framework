@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $query = Apis::sami()->classLinker(Query::class);
 
 echo $parsedown->text(<<<MD
-##$query object for SQL queries
+##Queries by using $query object 
 
 The $query object executes declarative SELECT queries in SQL databases. It 
 retrieves data from one or more SQL tables, or expressions and it
