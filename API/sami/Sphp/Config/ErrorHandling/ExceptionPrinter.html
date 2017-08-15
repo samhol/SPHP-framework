@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>ExceptionPrinter</strong>        implements
-        <a href="../../../Sphp/Stdlib/Observers/Observer.html"><abbr title="Sphp\Stdlib\Observers\Observer">Observer</abbr></a>
+        <a href="../../../Sphp/Config/ErrorHandling/ExceptionListener.html"><abbr title="Sphp\Config\ErrorHandling\ExceptionListener">ExceptionListener</abbr></a>
 </p>
 
         
@@ -100,9 +100,10 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_update">update</a>(<a href="../../../Sphp/Stdlib/Observers/Subject.html"><abbr title="Sphp\Stdlib\Observers\Subject">Subject</abbr></a> $subject)
+                    <a href="#method_onException">onException</a>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e)
         
-                                            <p>Echoes the uncaught exception in an {@link ExceptionBox} html element</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -110,7 +111,7 @@
                     <a href="../../../Sphp/Config/ErrorHandling/ExceptionPrinter.html"><abbr title="Sphp\Config\ErrorHandling\ExceptionPrinter">ExceptionPrinter</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showTrace">showTrace</a>(boolean $show = true)
+                    <a href="#method_showTrace">showTrace</a>(bool $show = true)
         
                                             <p>Sets the trace visibility</p>                </div>
                 <div class="col-md-2"></div>
@@ -120,7 +121,7 @@
                     <a href="../../../Sphp/Config/ErrorHandling/ExceptionPrinter.html"><abbr title="Sphp\Config\ErrorHandling\ExceptionPrinter">ExceptionPrinter</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showPreviousException">showPreviousException</a>(boolean $show = true)
+                    <a href="#method_showPreviousException">showPreviousException</a>(bool $show = true)
         
                                             <p>Sets the previous exception visibility</p>                </div>
                 <div class="col-md-2"></div>
@@ -132,25 +133,23 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_update">
-        <div class="location">at         line 43</div>
+                    <h3 id="method_onException">
+        <div class="location">at         line 32</div>
         <code>                    
-    <strong>update</strong>(<a href="../../../Sphp/Stdlib/Observers/Subject.html"><abbr title="Sphp\Stdlib\Observers\Subject">Subject</abbr></a> $subject)
+    <strong>onException</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e)
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Echoes the uncaught exception in an {@link ExceptionBox} html element</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Stdlib/Observers/Subject.html"><abbr title="Sphp\Stdlib\Observers\Subject">Subject</abbr></a></td>
-                <td>$subject</td>
+                <td><a target="_blank" href="http://php.net/Throwable">Throwable</a></td>
+                <td>$e</td>
                 <td></td>
             </tr>
             </table>
@@ -164,9 +163,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showTrace">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 45</div>
         <code>                    <a href="../../../Sphp/Config/ErrorHandling/ExceptionPrinter.html"><abbr title="Sphp\Config\ErrorHandling\ExceptionPrinter">ExceptionPrinter</abbr></a>
-    <strong>showTrace</strong>(boolean $show = true)
+    <strong>showTrace</strong>(bool $show = true)
         </code>
     </h3>
     <div class="details">
@@ -180,7 +179,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true for showing trace</td>
             </tr>
@@ -204,9 +203,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showPreviousException">
-        <div class="location">at         line 69</div>
+        <div class="location">at         line 56</div>
         <code>                    <a href="../../../Sphp/Config/ErrorHandling/ExceptionPrinter.html"><abbr title="Sphp\Config\ErrorHandling\ExceptionPrinter">ExceptionPrinter</abbr></a>
-    <strong>showPreviousException</strong>(boolean $show = true)
+    <strong>showPreviousException</strong>(bool $show = true)
         </code>
     </h3>
     <div class="details">
@@ -220,7 +219,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true for showing</td>
             </tr>

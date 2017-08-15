@@ -318,7 +318,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e, boolean $showTrace = false, boolean $showPreviousException = false)
+                    <a href="#method___construct">__construct</a>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e, bool $showTrace = false, bool $showPreviousException = false)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -633,17 +633,6 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___invoke">__invoke</a>($content = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Div.html#method___invoke"><abbr title="Sphp\Html\Div">Div</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -667,7 +656,7 @@ appends the returned HTML into the object.</p>                </div>
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setClosable">setClosable</a>(string|boolean $closable = true)
+                    <a href="#method_setClosable">setClosable</a>(bool $closable = true)
         
                                             <p>Sets/unsets the component closable</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a></small></div>
@@ -708,7 +697,7 @@ appends the returned HTML into the object.</p>                </div>
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showInitialFile">showInitialFile</a>(boolean $show = true)
+                    <a href="#method_showInitialFile">showInitialFile</a>(bool $show = true)
         
                                             <p>Sets the visibility of the file</p>                </div>
                 <div class="col-md-2"></div>
@@ -718,7 +707,7 @@ appends the returned HTML into the object.</p>                </div>
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showTrace">showTrace</a>(boolean $show = true)
+                    <a href="#method_showTrace">showTrace</a>(bool $show = true)
         
                                             <p>Sets the trace visibility</p>                </div>
                 <div class="col-md-2"></div>
@@ -728,7 +717,7 @@ appends the returned HTML into the object.</p>                </div>
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showPreviousException">showPreviousException</a>(boolean $show = true)
+                    <a href="#method_showPreviousException">showPreviousException</a>(bool $show = true)
         
                                             <p>Sets the previous exception visibility</p>                </div>
                 <div class="col-md-2"></div>
@@ -1414,9 +1403,9 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 61</div>
         <code>                    
-    <strong>__construct</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e, boolean $showTrace = false, boolean $showPreviousException = false)
+    <strong>__construct</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e, bool $showTrace = false, bool $showPreviousException = false)
         </code>
     </h3>
     <div class="details">
@@ -1435,12 +1424,12 @@ appends the returned HTML into the object.</p>                </div>
                 <td>the viewed throwable</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$showTrace</td>
                 <td>true for visible trace</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$showPreviousException</td>
                 <td>true for visible previous exception</td>
             </tr>
@@ -1558,7 +1547,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">at         line 206</div>
+        <div class="location">at         line 202</div>
         <code>                    string
     <strong>contentToString</strong>()
         </code>
@@ -2512,37 +2501,8 @@ appends the returned HTML into the object.</p>                                  
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___invoke">
-        <div class="location">in <a href="../../../../../Sphp/Html/Div.html#method___invoke"><abbr title="Sphp\Html\Div">Div</abbr></a> at         line 37</div>
-        <code>                    
-    <strong>__invoke</strong>($content = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$content</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getCloseButton">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_getCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 44</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a>
     <strong>getCloseButton</strong>()
         </code>
@@ -2572,7 +2532,7 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setCloseButton">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 55</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setCloseButton"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 53</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a>
     <strong>setCloseButton</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/CloseButton.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\CloseButton">CloseButton</abbr></a> $btn)
         </code>
@@ -2612,9 +2572,9 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setClosable">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_setClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 58</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ClosableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ClosableInterface">ClosableInterface</abbr></a>
-    <strong>setClosable</strong>(string|boolean $closable = true)
+    <strong>setClosable</strong>(bool $closable = true)
         </code>
     </h3>
     <div class="details">
@@ -2636,7 +2596,7 @@ appends the returned HTML into the object.</p>                                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|boolean</td>
+                <td>bool</td>
                 <td>$closable</td>
                 <td>true for closable and false otherwise</td>
             </tr>
@@ -2660,7 +2620,7 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_isClosable">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 65</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ClosableContainer.html#method_isClosable"><abbr title="Sphp\Html\Foundation\Sites\Containers\ClosableContainer">ClosableContainer</abbr></a> at         line 63</div>
         <code>                    boolean
     <strong>isClosable</strong>()
         </code>
@@ -2759,9 +2719,9 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_showInitialFile">
-        <div class="location">at         line 79</div>
+        <div class="location">at         line 75</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
-    <strong>showInitialFile</strong>(boolean $show = true)
+    <strong>showInitialFile</strong>(bool $show = true)
         </code>
     </h3>
     <div class="details">
@@ -2775,7 +2735,7 @@ appends the returned HTML into the object.</p>                                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true for visible file</td>
             </tr>
@@ -2799,9 +2759,9 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_showTrace">
-        <div class="location">at         line 90</div>
+        <div class="location">at         line 86</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
-    <strong>showTrace</strong>(boolean $show = true)
+    <strong>showTrace</strong>(bool $show = true)
         </code>
     </h3>
     <div class="details">
@@ -2815,7 +2775,7 @@ appends the returned HTML into the object.</p>                                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true for visible trace</td>
             </tr>
@@ -2839,9 +2799,9 @@ appends the returned HTML into the object.</p>                                  
             </div>
                     <div class="method-item">
                     <h3 id="method_showPreviousException">
-        <div class="location">at         line 102</div>
+        <div class="location">at         line 98</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Containers/ThrowableCallout.html"><abbr title="Sphp\Html\Foundation\Sites\Containers\ThrowableCallout">ThrowableCallout</abbr></a>
-    <strong>showPreviousException</strong>(boolean $show = true)
+    <strong>showPreviousException</strong>(bool $show = true)
         </code>
     </h3>
     <div class="details">
@@ -2855,7 +2815,7 @@ appends the returned HTML into the object.</p>                                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$show</td>
                 <td>true for visible previous exception</td>
             </tr>

@@ -30,7 +30,7 @@ interface StatementInterface {
   /**
    * Returns the current connection object between PHP and a database server
    * 
-   * @return PDO the PHP Data Object object
+   * @return PDO connection object between PHP and a database server
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function getPDO(): PDO;

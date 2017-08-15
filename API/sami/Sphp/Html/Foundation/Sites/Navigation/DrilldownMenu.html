@@ -383,7 +383,7 @@
                     <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendLink">appendLink</a>(string|<abbr title="Sphp\Html\Foundation\Sites\Navigation\URL">URL</abbr> $href, mixed $content = &#039;&#039;, string $target = &#039;_self&#039;)
+                    <a href="#method_appendLink">appendLink</a>(string $href, string $content = &#039;&#039;, string $target = &#039;_self&#039;)
         
                                             <p>Creates and appends {@link MenuLink} link object to the list</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/AbstractMenu.html#method_appendLink"><abbr title="Sphp\Html\Foundation\Sites\Navigation\AbstractMenu">AbstractMenu</abbr></a></small></div>
@@ -1422,7 +1422,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location">at         line 35</div>
+        <div class="location">at         line 32</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a>
     <strong>append</strong>(<a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuItemInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuItemInterface">MenuItemInterface</abbr></a> $content)
         </code>
@@ -1464,7 +1464,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_appendLink">
         <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/AbstractMenu.html#method_appendLink"><abbr title="Sphp\Html\Foundation\Sites\Navigation\AbstractMenu">AbstractMenu</abbr></a> at         line 104</div>
         <code>                    <a href="../../../../../Sphp/Html/Foundation/Sites/Navigation/MenuInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Navigation\MenuInterface">MenuInterface</abbr></a>
-    <strong>appendLink</strong>(string|<abbr title="Sphp\Html\Foundation\Sites\Navigation\URL">URL</abbr> $href, mixed $content = &#039;&#039;, string $target = &#039;_self&#039;)
+    <strong>appendLink</strong>(string $href, string $content = &#039;&#039;, string $target = &#039;_self&#039;)
         </code>
     </h3>
     <div class="details">
@@ -1478,12 +1478,12 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|<abbr title="Sphp\Html\Foundation\Sites\Navigation\URL">URL</abbr></td>
+                <td>string</td>
                 <td>$href</td>
                 <td>the URL of the link</td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$content</td>
                 <td>link content</td>
             </tr>

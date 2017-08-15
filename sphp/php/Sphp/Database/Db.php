@@ -34,29 +34,34 @@ class Db {
   /**
    * Constructs a new instance
    *
-   * @param  PDO $pdo the database connection
+   * @param  PDO $pdo connection object between PHP and a database server
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function __construct(PDO $pdo = null) {
     $this->pdo = $pdo;
   }
 
+  /**
+   * 
+   * @return PDO connection object between PHP and a database server 
+   */
   public function getPdo(): PDO {
     return $this->pdo;
   }
 
   /**
    * 
-   * @param PDO $db
-   * @param string $name
+   * @param PDO $db the connection object between PHP and a database server
+   * @param string $name optional name of the instance created
    */
-  public static function createFrom(PDO $db, string $name = null) {
+  public static function createFrom(PDO $db, string $name = null): Db {
     $instance = new static($db);
     if ($name === null) {
       self::$instances[0] = $instance;
     } else {
       self::$instances[$name] = $instance;
     }
+    return $instance;
   }
 
   /**
@@ -80,7 +85,7 @@ class Db {
    * 
    * @param  string $name
    * @param  array $arguments
-   * @return type
+   * @return StatementInterface
    */
   public static function __callStatic(string $name, array $arguments = []) {
     if (count($arguments) > 0) {
@@ -99,9 +104,9 @@ class Db {
    * @method Update update(string $dbName) Returns a new query object for the named database
    * @method Insert insert(string $dbName)
    * 
-   * @param string $name
-   * @param type $arguments
-   * @return \Sphp\Database\Delete|\Sphp\Database\Insert|\Sphp\Database\Query|\Sphp\Database\Update
+   * @param  string $name the type name of the instance created
+   * @param  array $arguments
+   * @return StatementInterface
    * @throws \Sphp\Exceptions\BadMethodCallException
    */
   public function __call(string $name, array $arguments = []) {

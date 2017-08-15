@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Sphp\Database\Rule | SPHP framework API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Sphp_Database_Rule" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">SPHP framework API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Database.html">Database</a></li><li class="backslash">\</li><li>Rule</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Rule
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Rule</strong>        implements
+        <a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Implements a single rule for comparison operations in SQL queries</p>                                </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $sql, mixed $params = null, int $type = PDO::PARAM_STR)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getParams">getParams</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSQL">getSQL</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNull">isNull</a>(string $column)
+        
+                                            <p>Generates a rule for a column to contain a <code>NULL</code> (empty) value</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNotNull">isNotNull</a>(string $column)
+        
+                                            <p>Generates a rule for a column to not contain a <code>NULL</code> (empty) value</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateGroupSql">generateGroupSql</a>($group)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isIn">isIn</a>(string $column, <abbr title="Sphp\Database\Traversable">Traversable</abbr>|array $group)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_compare">compare</a>(string $column, string $operator, $expr)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_binaryOperationCompare">binaryOperationCompare</a>(string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a> $column, string $binOp, string|int|bool $value, string $op, string|int|bool $result)
+        
+                                            <p>Generates a rule a bitwise operation to the column value pair and compares the result to a given parameter</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_is">is</a>(string $column, mixed $value)
+        
+                                            <p>Generates a rule to test the inequality of two given expressions or columns</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNot">isNot</a>(string $column, mixed $value)
+        
+                                            <p>Generates a rule to test the inequality of a given column and a value</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isLike">isLike</a>(string $column, string $pattern)
+        
+                                            <p>Adds an expression to the query to search for a specified pattern in a column</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNotLike">isNotLike</a>(string $column, string $pattern)
+        
+                                            <p>Adds an expression to the query to search for a specified pattern in a column</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNotIn">isNotIn</a>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
+        
+                                            <p>Adds a SQL NOT IN Operator</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 38</div>
+        <code>                    
+    <strong>__construct</strong>(string $sql, mixed $params = null, int $type = PDO::PARAM_STR)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sql</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParams">
+        <div class="location">at         line 49</div>
+        <code>                    
+    <strong>getParams</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSQL">
+        <div class="location">at         line 53</div>
+        <code>                    
+    <strong>getSQL</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 57</div>
+        <code>                    
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNull">
+        <div class="location">at         line 67</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isNull</strong>(string $column)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates a rule for a column to contain a <code>NULL</code> (empty) value</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNotNull">
+        <div class="location">at         line 77</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isNotNull</strong>(string $column)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates a rule for a column to not contain a <code>NULL</code> (empty) value</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateGroupSql">
+        <div class="location">at         line 81</div>
+        <code>        static    protected        
+    <strong>generateGroupSql</strong>($group)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isIn">
+        <div class="location">at         line 94</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isIn</strong>(string $column, <abbr title="Sphp\Database\Traversable">Traversable</abbr>|array $group)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Sphp\Database\Traversable">Traversable</abbr>|array</td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compare">
+        <div class="location">at         line 99</div>
+        <code>        static            
+    <strong>compare</strong>(string $column, string $operator, $expr)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$expr</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_binaryOperationCompare">
+        <div class="location">at         line 146</div>
+        <code>                    <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>binaryOperationCompare</strong>(string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a> $column, string $binOp, string|int|bool $value, string $op, string|int|bool $result)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates a rule a bitwise operation to the column value pair and compares the result to a given parameter</p>                    <p><strong>NOTE! This method quotes automatically <var>$value</var>, <var>$result</var> inputs!</strong></p>
+
+<p>Values for parameter <var>$binOp</var>:</p>
+
+<ul>
+<li><strong><code>&amp;</code></strong>: bitwise AND</li>
+<li><strong><code>|</code></strong>, bitwise OR</li>
+<li><strong><code>^</code></strong>: bitwise XOR</li>
+<li><strong><code>~</code></strong>: invert bits</li>
+<li><strong><code>&lt;&lt;</code></strong>: left shift</li>
+<li><strong><code>&gt;&gt;</code></strong>: right shift</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a></td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$binOp</td>
+                <td>Bitwise operand</td>
+            </tr>
+                    <tr>
+                <td>string|int|bool</td>
+                <td>$value</td>
+                <td>the value to bitwise compare to</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$op</td>
+                <td>logical operation</td>
+            </tr>
+                    <tr>
+                <td>string|int|bool</td>
+                <td>$result</td>
+                <td>the result value of the bitwise operation</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_is">
+        <div class="location">at         line 160</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>is</strong>(string $column, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates a rule to test the inequality of two given expressions or columns</p>                    <p><strong>Important!</strong>
+<strong>ALWAYS SANITIZE ALL USER INPUTS!</strong></p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the expression</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNot">
+        <div class="location">at         line 175</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isNot</strong>(string $column, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generates a rule to test the inequality of a given column and a value</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column name</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the expression</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isLike">
+        <div class="location">at         line 196</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isLike</strong>(string $column, string $pattern)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds an expression to the query to search for a specified pattern in a column</p>                    <p><strong>Important!</strong>
+<strong>ALWAYS SANITIZE ALL USER INPUTS!</strong></p>
+
+<ul>
+<li>Use the <code>%</code> sign to define wildcards (missing letters in the <var>$pattern</var>).</li>
+<li>The <code>%</code> sign can be used both before and after the pattern string.</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td>pattern string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNotLike">
+        <div class="location">at         line 213</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isNotLike</strong>(string $column, string $pattern)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds an expression to the query to search for a specified pattern in a column</p>                    <p><strong>Important!</strong>
+<strong>ALWAYS SANITIZE ALL USER INPUTS!</strong></p>
+
+<ul>
+<li>Use the <code>%</code> sign to define wildcards (missing letters in the <var>$pattern</var>).</li>
+<li>The <code>%</code> sign can be used both before and after the pattern string.</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td>pattern string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNotIn">
+        <div class="location">at         line 226</div>
+        <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
+    <strong>isNotIn</strong>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds a SQL NOT IN Operator</p>                    <p>Determines whether a specified value does not belong to a given group.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$column</td>
+                <td>the column</td>
+            </tr>
+                    <tr>
+                <td>mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr></td>
+                <td>$group</td>
+                <td>value(s) of the group</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -122,12 +122,13 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    static&nbsp;<a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_instance">instance</a>($name, array $data = [], $readOnly = true)
+                    <a href="#method_instance">instance</a>(string $name = null, array $data = [])
         
-                                            <p>Returns the singleton instance of the {@link self} object</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -348,7 +349,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 58</div>
         <code>                    
     <strong>__construct</strong>(array $config = [], bool $readOnly = true)
         </code>
@@ -384,7 +385,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 65</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -403,23 +404,21 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_instance">
-        <div class="location">at         line 76</div>
-        <code>        static            
-    <strong>instance</strong>($name, array $data = [], $readOnly = true)
+        <div class="location">at         line 81</div>
+        <code>        static            <a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
+    <strong>instance</strong>(string $name = null, array $data = [])
         </code>
     </h3>
     <div class="details">
             
     
 
-                    <div class="method-description">
-                                    <p>Returns the singleton instance of the {@link self} object</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$name</td>
                 <td></td>
             </tr>
@@ -428,14 +427,18 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
                 <td>$data</td>
                 <td></td>
             </tr>
-                    <tr>
-                <td></td>
-                <td>$readOnly</td>
-                <td></td>
-            </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -444,7 +447,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_isReadOnly">
-        <div class="location">at         line 93</div>
+        <div class="location">at         line 101</div>
         <code>                    boolean
     <strong>isReadOnly</strong>()
         </code>
@@ -474,7 +477,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_setReadOnly">
-        <div class="location">at         line 102</div>
+        <div class="location">at         line 110</div>
         <code>                    <a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
     <strong>setReadOnly</strong>()
         </code>
@@ -504,7 +507,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___isset">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 126</div>
         <code>                    boolean
     <strong>__isset</strong>(mixed $varName)
         </code>
@@ -544,7 +547,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 122</div>
+        <div class="location">at         line 130</div>
         <code>                    
     <strong>get</strong>($name, $default = null)
         </code>
@@ -578,7 +581,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___get">
-        <div class="location">at         line 135</div>
+        <div class="location">at         line 143</div>
         <code>                    mixed
     <strong>__get</strong>(mixed $varName)
         </code>
@@ -618,7 +621,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 150</div>
+        <div class="location">at         line 158</div>
         <code>                    <a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
     <strong>set</strong>(mixed $varName, mixed $value)
         </code>
@@ -665,7 +668,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___set">
-        <div class="location">at         line 173</div>
+        <div class="location">at         line 181</div>
         <code>                    
     <strong>__set</strong>(mixed $varName, mixed $value)
         </code>
@@ -703,7 +706,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___unset">
-        <div class="location">at         line 183</div>
+        <div class="location">at         line 191</div>
         <code>                    <a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
     <strong>__unset</strong>(mixed $name)
         </code>
@@ -743,7 +746,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 193</div>
+        <div class="location">at         line 201</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -773,7 +776,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">at         line 216</div>
+        <div class="location">at         line 224</div>
         <code>                    <a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a>
     <strong>merge</strong>(<a href="../../Sphp/Config/Config.html"><abbr title="Sphp\Config\Config">Config</abbr></a> $merge)
         </code>
@@ -816,7 +819,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 246</div>
+        <div class="location">at         line 254</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -846,7 +849,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 254</div>
+        <div class="location">at         line 262</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -874,7 +877,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 263</div>
+        <div class="location">at         line 271</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -902,7 +905,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 270</div>
+        <div class="location">at         line 278</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -921,7 +924,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 281</div>
+        <div class="location">at         line 289</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -940,7 +943,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 290</div>
+        <div class="location">at         line 298</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
@@ -968,7 +971,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 299</div>
+        <div class="location">at         line 307</div>
         <code>                    boolean
     <strong>offsetExists</strong>(mixed $offset)
         </code>
@@ -1006,7 +1009,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 308</div>
+        <div class="location">at         line 316</div>
         <code>                    <abbr title="Sphp\Config\type">type</abbr>
     <strong>offsetGet</strong>(<abbr title="Sphp\Config\type">type</abbr> $offset)
         </code>
@@ -1044,7 +1047,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 317</div>
+        <div class="location">at         line 325</div>
         <code>                    
     <strong>offsetSet</strong>(<abbr title="Sphp\Config\type">type</abbr> $offset, <abbr title="Sphp\Config\type">type</abbr> $value)
         </code>
@@ -1078,7 +1081,7 @@ PHP array key casting. The <var>$value</var> can be of any type.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 325</div>
+        <div class="location">at         line 333</div>
         <code>                    
     <strong>offsetUnset</strong>(<abbr title="Sphp\Config\type">type</abbr> $offset)
         </code>
