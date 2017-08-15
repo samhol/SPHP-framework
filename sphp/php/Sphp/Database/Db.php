@@ -12,7 +12,7 @@ use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements a Database 
+ * Implements a Database manipulator
  *  
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -22,7 +22,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class Db {
 
   /**
-   * @var Db 
+   * @var Db[]
    */
   private static $instances = [];
 

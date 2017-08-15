@@ -25,7 +25,7 @@ class Rule implements RuleInterface {
   private $sql;
 
   /**
-   * @var ParameterHandler 
+   * @var SequentialParameters 
    */
   private $params;
 
@@ -43,7 +43,7 @@ class Rule implements RuleInterface {
       $params = [$params];
     }
     $this->sql = $sql;
-    $this->params->appendParams($params);
+    $this->params->appendParams($params, $type);
   }
 
   public function getParams(): ParameterHandler {
@@ -93,7 +93,7 @@ class Rule implements RuleInterface {
    */
   public static function isIn(string $column, $group) {
     $qMarks = static::generateGroupSql($group);
-    return new static("$column IS IN ($qMarks)", $group);
+    return new static("$column IN ($qMarks)", $group);
   }
 
   public static function compare(string $column, string $operator, $expr): Rule {

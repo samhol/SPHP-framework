@@ -4,13 +4,16 @@ namespace Sphp\Database;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
+
+
 require_once('manual/PDO/configuration.php');
-$query = $api->classLinker(Query::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
-
+$db =  Apis::sami()->classLinker(DB::class);
 echo $parsedown->text(<<<MD
-##The $query class
+#DATABASE MANIPULATION <small>using statement builders</small>
 
+$db manages $pdo database connections and acts as a factory for all SQL statement builder objects.
+        
 MD
 );
 

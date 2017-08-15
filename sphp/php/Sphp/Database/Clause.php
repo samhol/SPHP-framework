@@ -17,7 +17,7 @@ use Iterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Rules implements RuleInterface, Iterator {
+class Clause implements RuleInterface, Iterator {
 
   /**
    * @var array 
@@ -60,7 +60,7 @@ class Rules implements RuleInterface, Iterator {
     $params = new SequentialParameters();
     foreach ($this as $part) {
       if ($part instanceof RuleInterface) {
-        $parArr = $part->getParams()->toArray();
+        $parArr = $part->getParams();
         $params->appendParams($parArr);
       }
     }
@@ -70,7 +70,7 @@ class Rules implements RuleInterface, Iterator {
   public function getSQL(): string {
     $output = '';
     foreach ($this->rules as $rule) {
-      if ($rule instanceof Rules) {
+      if ($rule instanceof Clause) {
         $output .= "($rule) ";
       } else {
         $output .= "$rule ";

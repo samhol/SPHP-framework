@@ -22,7 +22,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   /**
    * the conditions in the WHERE part of the SELECT, UPDATE and INSERT queries
    *
-   * @var Rules
+   * @var Clause
    */
   private $where;
 
@@ -30,11 +30,11 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Constructs a new instance
    *
    * @param PDO $db
-   * @param Rules $where
+   * @param Clause $where
    */
-  public function __construct(PDO $db, Rules $where = null) {
+  public function __construct(PDO $db, Clause $where = null) {
     if ($where === null) {
-      $this->where = new Rules();
+      $this->where = new Clause();
     } else {
       $this->where = $where;
     }
@@ -69,12 +69,20 @@ abstract class ConditionalStatement extends AbstractStatement {
    *
    * The WHERE clause is used to filter records
    *
-   * @param  Rules $c
+   * @param  Clause $c
    * @return self for a fluent interface
    */
-  public function setWhere(Rules $c) {
+  public function setWhere(Clause $c) {
     $this->where = $c;
     return $this;
+  }
+
+  /**
+   * 
+   * @return Clause
+   */
+  public function getWhere(): Clause {
+    return $this->where;
   }
 
   /**
@@ -93,13 +101,9 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @return self for a fluent interface
    */
   public function where(... $rules) {
-    $obj = new Rules($rules);
+    $obj = new Clause($rules);
     $this->where->append($obj, 'AND');
     return $this;
-  }
-
-  public function conditions() {
-    return $this->where;
   }
 
   /**
@@ -110,7 +114,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function andWhere(... $rules) {
-    $obj = new Rules($rules);
+    $obj = new Clause($rules);
     $this->where->append($obj, 'AND');
     return $this;
   }
@@ -123,7 +127,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function andNotWhere(... $rules) {
-    $obj = new Rules($rules);
+    $obj = new Clause($rules);
     $this->where->append($obj, 'AND NOT');
     return $this;
   }
@@ -136,7 +140,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function orWhere(... $rules) {
-    $obj = new Rules($rules);
+    $obj = new Clause($rules);
     $this->where->append($obj, 'OR');
     return $this;
   }
@@ -149,7 +153,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function orNotWhere(... $rules) {
-    $obj = new Rules($rules);
+    $obj = new Clause($rules);
     $this->where->append($obj, 'OR NOT');
     return $this;
   }
@@ -172,7 +176,7 @@ abstract class ConditionalStatement extends AbstractStatement {
   }
 
   public function getParams(): ParameterHandler {
-    return $this->conditions()->getParams();
+    return $this->where->getParams();
   }
 
 }

@@ -3,12 +3,14 @@
 namespace Sphp\Database;
 
 try {
-  $query = Db::query()->get('name', 'street', 'zipcode', 'city', 'country')
-          ->from('locations');
-  var_dump($query->count());
+  $query = Db::query()->get('person.fnames', 'person.lname', 'address.country')
+          ->from('person LEFT JOIN address ON address.id = person.address')
+          ->where(Rule::isIn('address.country', ['Ireland', 'Sweden', 'Poland']));
+          //->where(Rule::is('address.country', 'Poland'));
+  //var_dump($query->count());
   print_r($query
-          ->groupBy('country ASC', 'name')
-          ->limit(5)
+          ->groupBy('address.country ASC', 'person.lname')
+          ->limit(30)
           ->fetchAll());
 } catch (\Throwable $ex) {
   echo $ex;

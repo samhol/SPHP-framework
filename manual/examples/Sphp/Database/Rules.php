@@ -2,11 +2,12 @@
 
 namespace Sphp\Database;
 try {
-  $rules = new Rules();
+  $rules = new Clause();
 $r1 = new Rule('a = ?', 'foo');
 $rules->append($r1);
 $rules->append(Rule::isNotIn('bar', [1, 2, 3, 4, 5, 6, 'foobar']));
-$rules1 = new Rules();
+$rules->append(Rule::isIn('foobar', [1, 2, 3, 4, 5, 6, 'foobar']));
+$rules1 = new Clause();
 $rules1->append(Rule::compare('c', '<>', null));
 $rules1->append(Rule::compare('d', '=', null), 'OR');
 $rules->append($rules1, 'XOR');

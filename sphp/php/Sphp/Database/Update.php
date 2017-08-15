@@ -43,9 +43,9 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
   /**
    * 
    * @param PDO $db
-   * @param Rules $where
+   * @param Clause $where
    */
-  public function __construct(PDO $db, Rules $where = null) {
+  public function __construct(PDO $db, Clause $where = null) {
     parent::__construct($db, $where);
     $this->newData = new SequentialParameters();
   }
