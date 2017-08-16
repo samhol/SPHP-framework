@@ -22,6 +22,16 @@ class Rule implements RuleInterface {
   /**
    * @var string 
    */
+  private $columnName;
+
+  /**
+   * @var string 
+   */
+  private $op;
+
+  /**
+   * @var string 
+   */
   private $sql;
 
   /**
@@ -35,14 +45,16 @@ class Rule implements RuleInterface {
    * @param mixed $params
    * @param int $type
    */
-  public function __construct(string $sql, $params = null, int $type = PDO::PARAM_STR) {
+  public function __construct(string $columnName, string $op, $params = null, int $type = PDO::PARAM_STR) {
     $this->params = new SequentialParameters();
     if ($params === null) {
       $params = [];
     } else if (!is_array($params)) {
       $params = [$params];
     }
-    $this->sql = $sql;
+    $this->columnName = $columnName;
+    $this->op = $op;
+    //$this->sql = $sql;
     $this->params->appendParams($params, $type);
   }
 
@@ -50,8 +62,17 @@ class Rule implements RuleInterface {
     return $this->params;
   }
 
+  protected function generateQuestionMarks(): string {
+    $num = $this->params->count();
+    if ($num > 1) {
+      $qMarks = array_fill(0, $num, '?');
+      return '(' . implode(', ', $qMarks) . ')';
+    }
+    return '?';
+  }
+
   public function getSQL(): string {
-    return $this->sql;
+    return "$this->columnName $this->op " . $this->generateQuestionMarks();
   }
 
   public function __toString(): string {
@@ -62,23 +83,23 @@ class Rule implements RuleInterface {
    * Generates a rule for a column to contain a `NULL` (empty) value
    *
    * @param  string $column
-   * @return self new instance
+   * @return string null testing rule
    */
-  public static function isNull(string $column): Rule {
-    return new static("$column IS null");
+  public static function isNull(string $column): string {
+    return "$column IS null";
   }
 
   /**
    * Generates a rule for a column to not contain a `NULL` (empty) value
    *
    * @param  string $column the column
-   * @return self new instance
+   * @return string null testing rule
    */
-  public static function isNotNull(string $column): Rule {
-    return new static("$column IS NOT NULL");
+  public static function isNotNull(string $column): string {
+    return "$column IS NOT NULL";
   }
 
-  protected static function generateGroupSql($group) {
+  protected static function generateGroupSql($group): string {
     if (is_array($group)) {
       $qMarks = array_fill(0, count($group), '?');
       return implode(', ', $qMarks);
@@ -89,14 +110,36 @@ class Rule implements RuleInterface {
    * 
    * @param  string $column
    * @param  Traversable|array $group
-   * @return self new instance
+   * @return Rule new instance
    */
-  public static function isIn(string $column, $group) {
+  public static function isIn(string $column, $group): Rule {
     $qMarks = static::generateGroupSql($group);
-    return new static("$column IN ($qMarks)", $group);
+    return new static($column, 'IN', $group);
   }
 
-  public static function compare(string $column, string $operator, $expr): Rule {
+  /**
+   * Adds a SQL NOT IN Operator
+   *
+   * Determines whether a specified value does not belong to a given group.
+   *
+   * @param  string $column the column
+   * @param  mixed[]|Query|Traversable $group value(s) of the group
+   * @return Rule new instance
+   */
+  public static function isNotIn($column, $group): Rule {
+    $g = static::generateGroupSql($group);
+    return new static($column, 'NOT IN', $group);
+  }
+
+  /**
+   * 
+   * @param  string $column
+   * @param  string $operator
+   * @param  mixed $expr
+   * @return Rule|string
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public static function compare(string $column, string $operator, $expr) {
     $op = strtoupper(trim($operator));
     $output = "`$column`";
     if ($expr === null) {
@@ -110,16 +153,7 @@ class Rule implements RuleInterface {
     } else if (!is_array($expr)) {
       $expr = [$expr];
     }
-    if ($op == 'IN' || $op == 'NOT IN') {
-      $num = count($expr);
-      if ($num > 0) {
-        $format = "(" . str_repeat("?, ", $num - 1) . " ?)";
-      } else {
-        $format = "()";
-      }
-      return new static("$output $op $format", $expr);
-    }
-    return new static("$output $op ?", $expr);
+    return new static($output, $op, $expr);
   }
 
   /**
@@ -141,9 +175,9 @@ class Rule implements RuleInterface {
    * @param  string|int|bool $value the value to bitwise compare to
    * @param  string $op logical operation
    * @param  string|int|bool $result the result value of the bitwise operation
-   * @return self for a fluent interface
+   * @return Rule new instance
    */
-  public function binaryOperationCompare($column, $binOp, $value, $op, $result) {
+  public function binaryOperationCompare($column, $binOp, $value, $op, $result): Rule {
     return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
   }
 
@@ -155,14 +189,10 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column
    * @param  mixed $value the value of the expression
-   * @return self new instance
+   * @return Rule new instance
    */
   public static function is(string $column, $value): Rule {
-    if ($value === null) {
-      return static::isNull($column);
-    } else {
-      return new static("$column = ?", $value);
-    }
+    return new static($column, '=', $value);
   }
 
   /**
@@ -170,62 +200,57 @@ class Rule implements RuleInterface {
    *
    * @param  string $column the column name
    * @param  mixed $value the value of the expression
-   * @return self new instance
+   * @return Rule new instance
    */
   public static function isNot(string $column, $value): Rule {
-    if ($value === null) {
-      return static::isNotNull($column);
+    return new static($column, '<>', $value);
+  }
+
+  /**
+   * Generates a rule to test the for a specified pattern in a column
+   *
+   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
+   * * The `%` sign can be used both before and after the pattern string.
+   *
+   * @param  string $column the column
+   * @param  string $pattern pattern string
+   * @return Rule new instance
+   */
+  public static function isLike(string $column, string $pattern): Rule {
+    return new static($column, 'LIKE', $pattern);
+  }
+
+  /**
+   * Generates a rule to test the for a specified pattern in a column
+   *
+   * **Important!**
+   * **ALWAYS SANITIZE ALL USER INPUTS!**
+   *
+   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
+   * * The `%` sign can be used both before and after the pattern string.
+   *
+   * @param  string $column the column
+   * @param  string $pattern pattern string
+   * @return Rule new instance
+   */
+  public static function isNotLike(string $column, string $pattern): Rule {
+    return new static($column, 'NOT LIKE', $pattern);
+  }
+
+  /**
+   * 
+   * @param  mixed $rule
+   * @return Rule
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public static function create($rule): Rule {
+    if (is_array($rule) && count($rule) > 2) {
+      return static::compare(array_shift($rule), array_shift($rule), array_shift($rule));
+    } else if (is_string($rule)) {
+      return new static($rule);
     } else {
-      return new static("$column <> ?", $value);
+      throw new \Sphp\Exceptions\InvalidArgumentException('vitun kettu');
     }
-  }
-
-  /**
-   * Adds an expression to the query to search for a specified pattern in a column
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
-   * * The `%` sign can be used both before and after the pattern string.
-   *
-   * @param  string $column the column
-   * @param  string $pattern pattern string
-   * @return self new instance
-   */
-  public static function isLike(string $column, string $pattern) {
-    return new static("$column LIKE ?", $pattern);
-  }
-
-  /**
-   * Adds an expression to the query to search for a specified pattern in a column
-   *
-   * **Important!**
-   * **ALWAYS SANITIZE ALL USER INPUTS!**
-   *
-   * * Use the `%` sign to define wildcards (missing letters in the <var>$pattern</var>).
-   * * The `%` sign can be used both before and after the pattern string.
-   *
-   * @param  string $column the column
-   * @param  string $pattern pattern string
-   * @return self new instance
-   */
-  public static function isNotLike(string $column, string $pattern) {
-    return new static("$column NOT LIKE ?", $pattern);
-  }
-
-  /**
-   * Adds a SQL NOT IN Operator
-   *
-   * Determines whether a specified value does not belong to a given group.
-   *
-   * @param  string $column the column
-   * @param  mixed[]|Query|Traversable $group value(s) of the group
-   * @return self new instance
-   */
-  public static function isNotIn($column, $group) {
-    $g = static::generateGroupSql($group);
-    return new static("$column NOT IN ($g)", $group);
   }
 
 }

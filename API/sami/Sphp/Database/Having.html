@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Database\Rule | SPHP framework API</title>
+    <title>Sphp\Database\Having | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Database_Rule" data-root-path="../../">
+    <body id="class" data-name="class:Sphp_Database_Having" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,28 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Database.html">Database</a></li><li class="backslash">\</li><li>Rule</li>
+                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Database.html">Database</a></li><li class="backslash">\</li><li>Having</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Rule
+            Having
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Rule</strong>        implements
-        <a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>
+    <strong>Having</strong>        extends <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a single rule for comparison operations in SQL queries</p>                                </div>
+            <p>Implements aggregate rules of the having clause</p>                                </div>
     
     
     
@@ -104,7 +103,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method___construct"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -115,7 +114,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_getParams"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -126,7 +125,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_generateQuestionMarks"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -137,7 +136,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_getSQL"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -148,7 +147,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method___toString"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -158,7 +157,7 @@
                     <a href="#method_isNull">isNull</a>(string $column)
         
                                             <p>Generates a rule for a column to contain a <code>NULL</code> (empty) value</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isNull"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -168,7 +167,7 @@
                     <a href="#method_isNotNull">isNotNull</a>(string $column)
         
                                             <p>Generates a rule for a column to not contain a <code>NULL</code> (empty) value</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isNotNull"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -179,7 +178,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_generateGroupSql"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -190,7 +189,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isIn"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -200,7 +199,7 @@
                     <a href="#method_isNotIn">isNotIn</a>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
         
                                             <p>Adds a SQL NOT IN Operator</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isNotIn"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -211,7 +210,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_compare"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -221,7 +220,7 @@
                     <a href="#method_binaryOperationCompare">binaryOperationCompare</a>(string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a> $column, string $binOp, string|int|bool $value, string $op, string|int|bool $result)
         
                                             <p>Generates a rule a bitwise operation to the column value pair and compares the result to a given parameter</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_binaryOperationCompare"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -231,7 +230,7 @@
                     <a href="#method_is">is</a>(string $column, mixed $value)
         
                                             <p>Generates a rule to test the inequality of two given expressions or columns</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_is"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -241,7 +240,7 @@
                     <a href="#method_isNot">isNot</a>(string $column, mixed $value)
         
                                             <p>Generates a rule to test the inequality of a given column and a value</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isNot"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -251,7 +250,7 @@
                     <a href="#method_isLike">isLike</a>(string $column, string $pattern)
         
                                             <p>Generates a rule to test the for a specified pattern in a column</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isLike"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -261,7 +260,7 @@
                     <a href="#method_isNotLike">isNotLike</a>(string $column, string $pattern)
         
                                             <p>Generates a rule to test the for a specified pattern in a column</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_isNotLike"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -269,6 +268,17 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_create">create</a>(mixed $rule)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/Rule.html#method_create"><abbr title="Sphp\Database\Rule">Rule</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_numberOf">numberOf</a>(string $columnName, string $comparisonOperator, $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -282,7 +292,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 48</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method___construct"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 48</div>
         <code>                    
     <strong>__construct</strong>(string $columnName, string $op, $params = null, int $type = PDO::PARAM_STR)
         </code>
@@ -326,7 +336,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getParams">
-        <div class="location">at         line 61</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_getParams"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 61</div>
         <code>                    
     <strong>getParams</strong>()
         </code>
@@ -345,7 +355,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generateQuestionMarks">
-        <div class="location">at         line 65</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_generateQuestionMarks"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 65</div>
         <code>            protected        
     <strong>generateQuestionMarks</strong>()
         </code>
@@ -364,7 +374,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSQL">
-        <div class="location">at         line 74</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_getSQL"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 74</div>
         <code>                    
     <strong>getSQL</strong>()
         </code>
@@ -383,7 +393,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 78</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method___toString"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 78</div>
         <code>                    
     <strong>__toString</strong>()
         </code>
@@ -402,7 +412,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNull">
-        <div class="location">at         line 88</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isNull"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 88</div>
         <code>        static            string
     <strong>isNull</strong>(string $column)
         </code>
@@ -442,7 +452,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotNull">
-        <div class="location">at         line 98</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isNotNull"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 98</div>
         <code>        static            string
     <strong>isNotNull</strong>(string $column)
         </code>
@@ -482,7 +492,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generateGroupSql">
-        <div class="location">at         line 102</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_generateGroupSql"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 102</div>
         <code>        static    protected        
     <strong>generateGroupSql</strong>($group)
         </code>
@@ -511,7 +521,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isIn">
-        <div class="location">at         line 115</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isIn"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 115</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isIn</strong>(string $column, <abbr title="Sphp\Database\Traversable">Traversable</abbr>|array $group)
         </code>
@@ -554,7 +564,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotIn">
-        <div class="location">at         line 129</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isNotIn"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 129</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isNotIn</strong>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
         </code>
@@ -599,7 +609,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_compare">
-        <div class="location">at         line 142</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_compare"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 142</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>|string
     <strong>compare</strong>(string $column, string $operator, mixed $expr)
         </code>
@@ -656,7 +666,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_binaryOperationCompare">
-        <div class="location">at         line 180</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_binaryOperationCompare"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 180</div>
         <code>                    <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>binaryOperationCompare</strong>(string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a> $column, string $binOp, string|int|bool $value, string $op, string|int|bool $result)
         </code>
@@ -728,7 +738,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_is">
-        <div class="location">at         line 194</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_is"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 194</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>is</strong>(string $column, mixed $value)
         </code>
@@ -774,7 +784,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNot">
-        <div class="location">at         line 205</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isNot"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 205</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isNot</strong>(string $column, mixed $value)
         </code>
@@ -819,7 +829,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isLike">
-        <div class="location">at         line 219</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isLike"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 219</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isLike</strong>(string $column, string $pattern)
         </code>
@@ -868,7 +878,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotLike">
-        <div class="location">at         line 236</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_isNotLike"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 236</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isNotLike</strong>(string $column, string $pattern)
         </code>
@@ -920,7 +930,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 246</div>
+        <div class="location">in <a href="../../Sphp/Database/Rule.html#method_create"><abbr title="Sphp\Database\Rule">Rule</abbr></a> at         line 246</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>create</strong>(mixed $rule)
         </code>
@@ -960,6 +970,45 @@
             </tr>
             </table>
 
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_numberOf">
+        <div class="location">at         line 20</div>
+        <code>        static            
+    <strong>numberOf</strong>(string $columnName, string $comparisonOperator, $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$columnName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$comparisonOperator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
             
                     </div>
     </div>

@@ -17,7 +17,7 @@ namespace Sphp\Database;
  */
 class Having extends Rule {
 
-  public static function numberOf(string $columnName, string $comparisonOperator, int $value) {
+  public static function numberOf(string $columnName, string $comparisonOperator, $value) {
     return new static("COUNT($columnName) $comparisonOperator $value");
   }
 

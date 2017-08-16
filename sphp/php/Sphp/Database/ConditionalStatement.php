@@ -102,7 +102,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    */
   public function where(... $rules) {
     $obj = new Clause($rules);
-    $this->where->append($obj, 'AND');
+    $this->where->fulfills($obj, 'AND');
     return $this;
   }
 
@@ -115,7 +115,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    */
   public function andWhere(... $rules) {
     $obj = new Clause($rules);
-    $this->where->append($obj, 'AND');
+    $this->where->fulfills($obj, 'AND');
     return $this;
   }
 
@@ -128,7 +128,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    */
   public function andNotWhere(... $rules) {
     $obj = new Clause($rules);
-    $this->where->append($obj, 'AND NOT');
+    $this->where->fulfills($obj, 'AND NOT');
     return $this;
   }
 
@@ -141,7 +141,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    */
   public function orWhere(... $rules) {
     $obj = new Clause($rules);
-    $this->where->append($obj, 'OR');
+    $this->where->fulfills($obj, 'OR');
     return $this;
   }
 
@@ -154,7 +154,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    */
   public function orNotWhere(... $rules) {
     $obj = new Clause($rules);
-    $this->where->append($obj, 'OR NOT');
+    $this->where->fulfills($obj, 'OR NOT');
     return $this;
   }
 

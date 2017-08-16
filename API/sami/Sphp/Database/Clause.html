@@ -107,10 +107,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_append">append</a>(<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a> $rule, string $conn = &#039;AND&#039;)
+                    <a href="#method_fulfills">fulfills</a>(mixed $rule, string $conn = &#039;AND&#039;)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -118,10 +118,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_appendRules">appendRules</a>(array $rules)
+                    <a href="#method_fulfillsAll">fulfillsAll</a>(array $rules)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -229,7 +229,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 33</div>
+        <div class="location">at         line 32</div>
         <code>                    
     <strong>__construct</strong>(array $rules = [])
         </code>
@@ -259,10 +259,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_append">
-        <div class="location">at         line 38</div>
-        <code>                    
-    <strong>append</strong>(<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a> $rule, string $conn = &#039;AND&#039;)
+                    <h3 id="method_fulfills">
+        <div class="location">at         line 43</div>
+        <code>                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
+    <strong>fulfills</strong>(mixed $rule, string $conn = &#039;AND&#039;)
         </code>
     </h3>
     <div class="details">
@@ -274,7 +274,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a></td>
+                <td>mixed</td>
                 <td>$rule</td>
                 <td></td>
             </tr>
@@ -286,6 +286,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -293,10 +302,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_appendRules">
-        <div class="location">at         line 45</div>
-        <code>                    
-    <strong>appendRules</strong>(array $rules)
+                    <h3 id="method_fulfillsAll">
+        <div class="location">at         line 56</div>
+        <code>                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
+    <strong>fulfillsAll</strong>(array $rules)
         </code>
     </h3>
     <div class="details">
@@ -315,6 +324,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -323,7 +341,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getParams">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 73</div>
         <code>                    
     <strong>getParams</strong>()
         </code>
@@ -342,7 +360,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSQL">
-        <div class="location">at         line 70</div>
+        <div class="location">at         line 84</div>
         <code>                    
     <strong>getSQL</strong>()
         </code>
@@ -361,7 +379,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 96</div>
         <code>                    
     <strong>__toString</strong>()
         </code>
@@ -380,7 +398,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_notEmpty">
-        <div class="location">at         line 86</div>
+        <div class="location">at         line 100</div>
         <code>                    
     <strong>notEmpty</strong>()
         </code>
@@ -399,7 +417,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 109</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -429,7 +447,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 102</div>
+        <div class="location">at         line 116</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -450,7 +468,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 125</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -480,7 +498,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 132</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -501,7 +519,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 127</div>
+        <div class="location">at         line 141</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>

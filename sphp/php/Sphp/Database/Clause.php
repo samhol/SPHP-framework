@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Rules.php (UTF-8)
+ * Clause.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -27,35 +27,49 @@ class Clause implements RuleInterface, Iterator {
   /**
    * Constructs a new instance
    * 
-   * @param string $sql
-   * @param mixed $params
+   * @param array $rules
    */
   public function __construct(array $rules = []) {
     $this->rules = [];
-    $this->appendRules($rules);
+    $this->fulfillsAll($rules);
   }
 
-  public function append(RuleInterface $rule, string $conn = 'AND') {
+  /**
+   * 
+   * @param  mixed $rule
+   * @param  string $conn
+   * @return self for a fluent interface
+   */
+  public function fulfills($rule, string $conn = 'AND') {
     if (!empty($this->rules)) {
       $this->rules[] = $conn;
     }
     $this->rules[] = $rule;
+    return $this;
   }
 
-  public function appendRules(array $rules) {
+  /**
+   * 
+   * @param  array $rules
+   * @return self for a fluent interface
+   */
+  public function fulfillsAll(array $rules) {
     foreach ($rules as $rule) {
-      if (is_array($rule) && count($rule) > 2) {
-        $this->append(Rule::compare(array_shift($rule), array_shift($rule), array_shift($rule)));
-      } else if ($rule instanceof RuleInterface) {
-        $this->append($rule);
+      if ($rule instanceof RuleInterface) {
+        $this->fulfills($rule);
       } else if (is_string($rule)) {
-        $this->append(new Rule($rule));
+        $this->fulfills($rule);
       } else {
-        echo 'vitun kettu';
+        $this->fulfills(Rule::create($rule));
       }
     }
+    return $this;
   }
 
+  /**
+   * 
+   * @return ParameterHandler
+   */
   public function getParams(): ParameterHandler {
     $params = new SequentialParameters();
     foreach ($this as $part) {
