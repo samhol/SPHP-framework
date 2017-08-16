@@ -266,7 +266,7 @@ class Query extends ConditionalStatement implements IteratorAggregate {
     } catch (\Throwable $ex) {
       $data = [];
     }
-    return new \ArrayIterator($data);
+    return new ArrayIterator($data);
   }
 
   public function fetchRows(int $rowCount = null, int $offset = 0): array {

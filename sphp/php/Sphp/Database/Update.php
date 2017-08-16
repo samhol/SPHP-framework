@@ -41,6 +41,7 @@ class Update extends ConditionalStatement implements DataManipulationStatement {
   private $cols = [];
 
   /**
+   * Constructs a new instance
    * 
    * @param PDO $db
    * @param Clause $where

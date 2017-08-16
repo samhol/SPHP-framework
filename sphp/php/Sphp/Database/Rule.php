@@ -30,40 +30,52 @@ class Rule implements RuleInterface {
   private $op;
 
   /**
-   * @var string 
-   */
-  private $sql;
-
-  /**
-   * @var SequentialParameters 
+   * @var array 
    */
   private $params;
 
   /**
-   * 
-   * @param string $sql
-   * @param mixed $params
-   * @param int $type
+   * @var int 
    */
-  public function __construct(string $columnName, string $op, $params = null, int $type = PDO::PARAM_STR) {
-    $this->params = new SequentialParameters();
-    if ($params === null) {
-      $params = [];
-    } else if (!is_array($params)) {
+  private $paramType;
+
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $columnName
+   * @param string $op
+   * @param mixed $params
+   * @param int $paramType data type for the parameter
+   */
+  public function __construct(string $columnName, string $op, $params = [], int $paramType = PDO::PARAM_STR) {
+    if (!is_array($params)) {
       $params = [$params];
     }
     $this->columnName = $columnName;
     $this->op = $op;
-    //$this->sql = $sql;
-    $this->params->appendParams($params, $type);
+    $this->params = $params;
+    $this->paramType = $paramType;
+  }
+  
+  
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->params);
   }
 
   public function getParams(): ParameterHandler {
-    return $this->params;
+    $params = new SequentialParameters();
+    $params->appendParams($this->params, $this->paramType);
+    return $params;
   }
 
   protected function generateQuestionMarks(): string {
-    $num = $this->params->count();
+    $num = count($this->params);
     if ($num > 1) {
       $qMarks = array_fill(0, $num, '?');
       return '(' . implode(', ', $qMarks) . ')';
@@ -72,6 +84,9 @@ class Rule implements RuleInterface {
   }
 
   public function getSQL(): string {
+    if ($this->op === 'BETWEEN' || $this->op === 'NOT BETWEEN') {
+      return "$this->columnName ? $this->op ?";
+    }
     return "$this->columnName $this->op " . $this->generateQuestionMarks();
   }
 
@@ -82,28 +97,21 @@ class Rule implements RuleInterface {
   /**
    * Generates a rule for a column to contain a `NULL` (empty) value
    *
-   * @param  string $column
-   * @return string null testing rule
+   * @param  string $columnName the column name
+   * @return string SQL NULL testing rule
    */
-  public static function isNull(string $column): string {
-    return "$column IS null";
+  public static function isNull(string $columnName): string {
+    return "$columnName IS NULL";
   }
 
   /**
    * Generates a rule for a column to not contain a `NULL` (empty) value
    *
-   * @param  string $column the column
-   * @return string null testing rule
+   * @param  string $columnName the column name
+   * @return string SQL NULL testing rule
    */
-  public static function isNotNull(string $column): string {
-    return "$column IS NOT NULL";
-  }
-
-  protected static function generateGroupSql($group): string {
-    if (is_array($group)) {
-      $qMarks = array_fill(0, count($group), '?');
-      return implode(', ', $qMarks);
-    }
+  public static function isNotNull(string $columnName): string {
+    return "$columnName IS NOT NULL";
   }
 
   /**
@@ -112,9 +120,8 @@ class Rule implements RuleInterface {
    * @param  Traversable|array $group
    * @return Rule new instance
    */
-  public static function isIn(string $column, $group): Rule {
-    $qMarks = static::generateGroupSql($group);
-    return new static($column, 'IN', $group);
+  public static function isIn(string $column, $group, int $paramType = PDO::PARAM_STR): Rule {
+    return new static($column, 'IN', $group, $paramType);
   }
 
   /**
@@ -126,9 +133,8 @@ class Rule implements RuleInterface {
    * @param  mixed[]|Query|Traversable $group value(s) of the group
    * @return Rule new instance
    */
-  public static function isNotIn($column, $group): Rule {
-    $g = static::generateGroupSql($group);
-    return new static($column, 'NOT IN', $group);
+  public static function isNotIn($column, $group, int $paramType = PDO::PARAM_STR): Rule {
+    return new static($column, 'NOT IN', $group, $paramType);
   }
 
   /**
@@ -143,9 +149,9 @@ class Rule implements RuleInterface {
     $op = strtoupper(trim($operator));
     $output = "`$column`";
     if ($expr === null) {
-      if ($op == '=') {
+      if ($op === '=') {
         return static::isNull($column);
-      } else if ($op == '<>' || $op == '!=') {
+      } else if ($op === '<>' || $op === '!=') {
         return static::isNotNull($column);
       } else {
         throw new \Sphp\Exceptions\InvalidArgumentException("Illegal null comparison operator : '$operator'");
@@ -177,8 +183,8 @@ class Rule implements RuleInterface {
    * @param  string|int|bool $result the result value of the bitwise operation
    * @return Rule new instance
    */
-  public function binaryOperationCompare($column, $binOp, $value, $op, $result): Rule {
-    return $this->andWhere("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
+  public static function binaryOperationCompare($column, $binOp, $value, $op, $result): Rule {
+    return new Rule("(BINARY(" . $column . ") " . $binOp . " BINARY(%s)) " . $op . " %s", array($value, $result));
   }
 
   /**
@@ -191,8 +197,8 @@ class Rule implements RuleInterface {
    * @param  mixed $value the value of the expression
    * @return Rule new instance
    */
-  public static function is(string $column, $value): Rule {
-    return new static($column, '=', $value);
+  public static function is(string $column, $value, int $paramType = PDO::PARAM_STR): Rule {
+    return new Rule($column, '=', $value, $paramType);
   }
 
   /**
@@ -202,8 +208,8 @@ class Rule implements RuleInterface {
    * @param  mixed $value the value of the expression
    * @return Rule new instance
    */
-  public static function isNot(string $column, $value): Rule {
-    return new static($column, '<>', $value);
+  public static function isNot(string $column, $value, int $paramType = PDO::PARAM_STR): Rule {
+    return new Rule($column, '<>', $value, $paramType);
   }
 
   /**
@@ -213,11 +219,11 @@ class Rule implements RuleInterface {
    * * The `%` sign can be used both before and after the pattern string.
    *
    * @param  string $column the column
-   * @param  string $pattern pattern string
+   * @param  mixed $pattern pattern string
    * @return Rule new instance
    */
-  public static function isLike(string $column, string $pattern): Rule {
-    return new static($column, 'LIKE', $pattern);
+  public static function isLike(string $column, $pattern): Rule {
+    return new Rule($column, 'LIKE', $pattern);
   }
 
   /**
@@ -230,11 +236,11 @@ class Rule implements RuleInterface {
    * * The `%` sign can be used both before and after the pattern string.
    *
    * @param  string $column the column
-   * @param  string $pattern pattern string
+   * @param  mixed $pattern pattern string
    * @return Rule new instance
    */
-  public static function isNotLike(string $column, string $pattern): Rule {
-    return new static($column, 'NOT LIKE', $pattern);
+  public static function isNotLike(string $column, $pattern): Rule {
+    return new Rule($column, 'NOT LIKE', $pattern, PDO::PARAM_STR);
   }
 
   /**
@@ -249,7 +255,7 @@ class Rule implements RuleInterface {
     } else if (is_string($rule)) {
       return new static($rule);
     } else {
-      throw new \Sphp\Exceptions\InvalidArgumentException('vitun kettu');
+      throw new \Sphp\Exceptions\InvalidArgumentException('Invalid parameter given');
     }
   }
 

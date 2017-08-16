@@ -3,9 +3,9 @@
 namespace Sphp\Database;
 
 try {
-  $query = Db::query()->get('person.fnames', 'person.lname', 'address.country')
+  $query = Db::query()->get('fnames', 'lname', 'country')
           ->from('person LEFT JOIN address ON address.id = person.address')
-          ->where(Rule::isIn('address.country', ['Ireland', 'Sweden', 'Poland']));
+          ->where(Rule::isIn('country', ['Ireland', 'Sweden', 'Poland']));
           //->where(Rule::is('address.country', 'Poland'));
   //var_dump($query->count());
   print_r($query

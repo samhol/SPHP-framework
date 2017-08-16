@@ -2,7 +2,7 @@
 
 namespace Sphp\Database;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
 
@@ -21,7 +21,9 @@ MD
 $sqlException = Apis::sami()->classLinker(\Exception::class);
 
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Update.php', 'sql', false);
-CodeExampleBuilder::visualize('Sphp/Database/Rules.php', 'text');
+(new SyntaxHighlightingSingleAccordion('Example tables as MySQL'))
+        ->loadFromFile('Sphp/Database/tables.sql')
+        ->printHtml();
 
 $load('Sphp.Database.Insert');
 $load('Sphp.Database.Delete');
