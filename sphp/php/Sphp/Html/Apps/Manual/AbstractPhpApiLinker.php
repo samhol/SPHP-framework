@@ -17,7 +17,7 @@ namespace Sphp\Html\Apps\Manual;
  */
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
-  public function hyperlink($url = null, $content = null, $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null) {
     if ($content === null) {
       $content = $url;
     }
@@ -39,7 +39,7 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @param  string $linkText optional link text
    * @return string hyperlink object pointing to a PHP function page
    */
-  abstract public function functionLink($funName, $linkText = null);
+  abstract public function functionLink(string $funName, string $linkText = null);
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP constant 
@@ -48,5 +48,5 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @param  string $linkText optional link text
    * @return string hyperlink object pointing to a PHP constant page
    */
-  abstract public function constantLink($constantName, $linkText = null);
+  abstract public function constantLink(string $constantName, string $linkText = null);
 }

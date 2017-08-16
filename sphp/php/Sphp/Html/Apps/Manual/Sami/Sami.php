@@ -44,7 +44,7 @@ class Sami extends AbstractPhpApiLinker {
     return new SamiClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function functionLink($function, $linkText = null) {
+  public function functionLink(string $function, string $linkText = null) {
     if ($linkText === null) {
       $linkText = $function;
     }
@@ -52,7 +52,7 @@ class Sami extends AbstractPhpApiLinker {
     return $this->hyperlink($path, $function, "function $function()")->addCssClass('function');
   }
 
-  public function constantLink($constant, $linkText = null) {
+  public function constantLink(string $constant, string $linkText = null) {
     if ($linkText === null) {
       $linkText = $constant;
     }

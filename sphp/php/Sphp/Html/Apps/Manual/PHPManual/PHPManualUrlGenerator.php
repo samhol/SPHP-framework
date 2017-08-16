@@ -25,7 +25,7 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
    * 
    * @param string $lang the language of the PHP manual
    */
-  public function __construct($lang = 'en') {
+  public function __construct(string $lang = 'en') {
     parent::__construct('https://secure.php.net/manual/en/');
     if ($lang !== 'en') {
       $this->setLanguage($lang);
@@ -38,34 +38,34 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
    * @param  string $path the relative path to the PHP documentation resource
    * @return string the fixed relative path to the PHP documentation resource
    */
-  protected function phpPathFixer($path) {
+  protected function phpPathFixer(string $path): string {
     return strtolower(str_replace(['_', '\\'], ['-', '.'], $path));
   }
 
-  public function getClassUrl($class) {
+  public function getClassUrl($class): string {
     return $this->create("class." . $this->phpPathFixer($class) . '.php');
   }
 
-  public function getClassMethodUrl($class, $method) {
+  public function getClassMethodUrl($class, string $method): string {
     return $this->create($this->phpPathFixer($class) . ".$method.php");
   }
 
-  public function getClassConstantUrl($class, $constant) {
+  public function getClassConstantUrl($class, string $constant): string {
     $className = $this->phpPathFixer($class);
     $constantName = $this->phpPathFixer($constant);
     return $this->getClassUrl($class) . "#$className.constants.$constantName";
   }
 
-  public function getNamespaceUrl($namespace) {
+  public function getNamespaceUrl(string $namespace): string {
     $path = str_replace('\\', '.', $namespace);
     return $this->create("namespace-$path.html");
   }
 
-  public function getFunctionUrl($function) {
+  public function getFunctionUrl(string $function): string {
     return $this->create("function." . $this->phpPathFixer($function));
   }
 
-  public function getConstantUrl($constant) {
+  public function getConstantUrl(string $constant): string {
     return $this->create('reserved.constants.php#constant.' . $this->phpPathFixer($constant));
   }
 
@@ -75,7 +75,7 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
    * @param  string $lang two letter language code 
    * @return self for a fluent interface
    */
-  public function setLanguage($lang) {
+  public function setLanguage(string $lang) {
     $url = preg_replace('~[a-z]{2}\/$~', "$lang/", $this->getRoot());
     $this->setRoot($url);
     return $this;

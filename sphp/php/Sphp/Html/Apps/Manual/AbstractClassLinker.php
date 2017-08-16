@@ -55,7 +55,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->getLink()->getHtml();
   }
 
-  public function hyperlink($url = null, $content = null, $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null) {
     return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
   }
 

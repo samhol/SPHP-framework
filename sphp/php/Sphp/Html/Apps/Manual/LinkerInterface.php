@@ -24,7 +24,7 @@ interface LinkerInterface {
    *
    * @return string html-markup of the component
    */
-  public function __toString();
+  public function __toString(): string;
 
   /**
    * Returns the url generator pointing to the API documentation
@@ -50,5 +50,5 @@ interface LinkerInterface {
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    * @return HyperlinkInterface hyperlink object pointing to an API page
    */
-  public function hyperlink($url = null, $content = null, $title = null);
+  public function hyperlink(string $url = null, string $content = null, string $title = null);
 }

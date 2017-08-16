@@ -29,7 +29,7 @@ class UrlGenerator implements UrlGeneratorInterface {
    *
    * @param string $root the url pointing to the API documentation
    */
-  public function __construct($root = '') {
+  public function __construct(string $root = '') {
     $this->root = $root;
   }
 
@@ -48,17 +48,17 @@ class UrlGenerator implements UrlGeneratorInterface {
   }
 
   /**
-   * Sets the url pointing to the API documentation
+   * Sets the URL pointing to the API documentation
    *
    * @param  string $root the site root
    * @return self for a fluent interface
    */
-  protected function setRoot($root) {
+  protected function setRoot(string $root) {
     $this->root = $root;
     return $this;
   }
 
-  public function create($relative = '') {
+  public function create(string $relative = '') {
     return $this->root . $relative;
   }
 

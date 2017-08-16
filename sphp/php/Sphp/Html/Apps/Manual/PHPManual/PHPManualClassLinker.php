@@ -8,6 +8,7 @@
 namespace Sphp\Html\Apps\Manual\PHPManual;
 
 use Sphp\Html\Apps\Manual\AbstractClassLinker;
+
 /**
  * PHP class link generator pointing to an existing PHP Manual documentation
  *
@@ -33,7 +34,7 @@ class PHPManualClassLinker extends AbstractClassLinker {
     parent::__construct($class, $p, $defaultTarget, $defaultCssClasses);
   }
 
-  public function hyperlink($url = null, $content = null, $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null) {
     if ($title === null) {
       $title = 'PHP manual';
     } else {

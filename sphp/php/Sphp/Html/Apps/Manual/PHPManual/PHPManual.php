@@ -34,7 +34,7 @@ class PHPManual extends AbstractPhpApiLinker {
     $this->setDefaultCssClasses($defaultCssClasses);
   }
 
-  public function hyperlink($url = null, $content = null, $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null) {
     if ($title === null) {
       $title = 'PHP manual';
     } else {
@@ -47,7 +47,7 @@ class PHPManual extends AbstractPhpApiLinker {
     return new PHPManualClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function constantLink($constant, $linkText = null) {
+  public function constantLink(string $constant, string $linkText = null) {
     if ($linkText === null) {
       $linkText = $constant;
     }
@@ -56,7 +56,7 @@ class PHPManual extends AbstractPhpApiLinker {
                     ->addCssClass('constant');
   }
 
-  public function functionLink($funName, $linkText = null) {
+  public function functionLink(string $funName, string $linkText = null) {
     if ($linkText === null) {
       $linkText = $funName;
     }

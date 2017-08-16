@@ -24,7 +24,7 @@ class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface 
   /**
    * {@inheritdoc}
    */
-  public function getClassUrl($class) {
+  public function getClassUrl($class): string {
     $path = str_replace('\\', '/', $class);
     return $this->create("$path.html");
   }
@@ -32,21 +32,21 @@ class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface 
   /**
    * {@inheritdoc}
    */
-  public function getClassMethodUrl($class, $method) {
+  public function getClassMethodUrl($class, string $method): string {
     return $this->getClassUrl($class) . '#method_' . $method;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getClassConstantUrl($class, $constant) {
+  public function getClassConstantUrl($class, string $constant): string {
     return $this->getClassUrl($class);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getNamespaceUrl($namespace) {
+  public function getNamespaceUrl(string $namespace): string {
     $path = str_replace('\\', '/', $namespace);
     return $this->create("$path.html");
   }
@@ -54,14 +54,14 @@ class SamiUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface 
   /**
    * {@inheritdoc}
    */
-  public function getFunctionUrl($function) {
+  public function getFunctionUrl(string $function): string {
     return $this->create("function-$function.html");
   }
-  
+
   /**
    * {@inheritdoc}
    */
-  public function getConstantUrl($constant) {
+  public function getConstantUrl(string $constant): string {
     $path = str_replace('\\', '.', $constant);
     return $this->createUrl("constant-$path.html");
   }
