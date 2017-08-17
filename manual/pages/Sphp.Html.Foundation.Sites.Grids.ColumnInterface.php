@@ -13,7 +13,7 @@ $colIf = Apis::sami()->classLinker(ColumnInterface::class);
 $col = Apis::sami()->classLinker(Column::class);
 $cols = Apis::sami()->classLinker(ColumnInterface::class, "Columns");
 $gridsLnk = Apis::sami()->namespaceLink(__NAMESPACE__);
-$f_GridLink = Apis::foundation()->getComponentLink(Grid::class, "Foundation Grid layout");
+$f_GridLink = Apis::foundation()->hyperlink('xy-grid.html', 'Foundation XY Grid layout');
 
 $codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/Grid_fromArray.php', 'html5');
 

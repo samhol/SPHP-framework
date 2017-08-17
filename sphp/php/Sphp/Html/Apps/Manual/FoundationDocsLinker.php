@@ -49,7 +49,7 @@ class FoundationDocsLinker extends AbstractLinker {
    * 
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    */
-  public function __construct($defaultTarget = '_blank') {
+  public function __construct(string $defaultTarget = '_blank') {
     parent::__construct(new UrlGenerator('http://foundation.zurb.com/sites/docs/', $defaultTarget));
   }
 

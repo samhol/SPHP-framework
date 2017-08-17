@@ -42,15 +42,15 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
     return strtolower(str_replace(['_', '\\'], ['-', '.'], $path));
   }
 
-  public function getClassUrl($class): string {
+  public function getClassUrl(string $class): string {
     return $this->create("class." . $this->phpPathFixer($class) . '.php');
   }
 
-  public function getClassMethodUrl($class, string $method): string {
+  public function getClassMethodUrl(string $class, string $method): string {
     return $this->create($this->phpPathFixer($class) . ".$method.php");
   }
 
-  public function getClassConstantUrl($class, string $constant): string {
+  public function getClassConstantUrl(string $class, string $constant): string {
     $className = $this->phpPathFixer($class);
     $constantName = $this->phpPathFixer($constant);
     return $this->getClassUrl($class) . "#$className.constants.$constantName";

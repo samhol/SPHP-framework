@@ -98,7 +98,7 @@ abstract class AbstractLinker implements LinkerInterface {
     return $this->hyperlink($url, $content, $title);
   }
 
-  public function urls() {
+  public function urls(): UrlGeneratorInterface {
     return $this->urlGenerator;
   }
 
@@ -146,12 +146,12 @@ abstract class AbstractLinker implements LinkerInterface {
   /**
    * Sets the default target and CSS classes to the hyperlink component
    * 
-   * @param  HyperlinkInterface $a the hyperlink component to modify
-   * @return HyperlinkInterface returns the modified component
+   * @param  Hyperlink $a the hyperlink component to modify
+   * @return Hyperlink returns the modified component
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function insertDefaults(HyperlinkInterface $a) {
+  public function insertDefaults(Hyperlink $a): Hyperlink {
     if ($this->target !== null) {
       $a->setTarget($this->target);
     }
@@ -161,7 +161,7 @@ abstract class AbstractLinker implements LinkerInterface {
     return $a;
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
     if ($url === null) {
       $url = $this->urls()->getRoot();
     }

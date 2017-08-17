@@ -21,16 +21,16 @@ use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
  */
 class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterface {
 
-  public function getClassUrl($class): string {
+  public function getClassUrl(string $class): string {
     $path = str_replace('\\', '.', $class);
     return $this->create("class-$path.html");
   }
 
-  public function getClassMethodUrl($class, string $method): string {
+  public function getClassMethodUrl(string $class, string $method): string {
     return $this->getClassUrl($class) . '#_' . $method;
   }
 
-  public function getClassConstantUrl($class, string $constant): string {
+  public function getClassConstantUrl(string $class, string $constant): string {
     return $this->getClassUrl($class) . '#_' . $constant;
   }
 

@@ -7,7 +7,9 @@
 
 namespace Sphp\Html\Apps\Manual\PHPManual;
 
-use Sphp\Html\Hyperlink;
+use Sphp\Html\Apps\Manual\ClassLinkerInterface;
+use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 
 /**
@@ -29,12 +31,12 @@ class PHPManual extends AbstractPhpApiLinker {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
+  public function __construct(string $defaultTarget = null, $defaultCssClasses = ['api', 'phpman']) {
     parent::__construct(new PHPManualUrlGenerator(), $defaultTarget);
     $this->setDefaultCssClasses($defaultCssClasses);
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
     if ($title === null) {
       $title = 'PHP manual';
     } else {
@@ -43,11 +45,11 @@ class PHPManual extends AbstractPhpApiLinker {
     return parent::hyperlink($url, $content, $title);
   }
 
-  public function classLinker($class) {
+  public function classLinker($class): ClassLinkerInterface {
     return new PHPManualClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function constantLink(string $constant, string $linkText = null) {
+  public function constantLink(string $constant, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $constant;
     }
@@ -56,7 +58,7 @@ class PHPManual extends AbstractPhpApiLinker {
                     ->addCssClass('constant');
   }
 
-  public function functionLink(string $funName, string $linkText = null) {
+  public function functionLink(string $funName, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $funName;
     }
@@ -69,10 +71,9 @@ class PHPManual extends AbstractPhpApiLinker {
    *
    * @param  string $extName the name of the PHP extension (case insensitive)
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the PHP extension in the PHP
-   *         documentation
+   * @return Hyperlink hyperlink object pointing to the PHP documentation
    */
-  public function extensionLink($extName, $linkText = null) {
+  public function extensionLink(string $extName, $linkText = null): Hyperlink {
     $path = strtolower($extName);
     if ($linkText === null) {
       $linkText = $extName;
@@ -83,11 +84,11 @@ class PHPManual extends AbstractPhpApiLinker {
   /**
    * Returns a hyperlink object pointing to the PHP type documentation
    *
-   * @param  mixed|string $type the PHP työe or the name of the PHP type
+   * @param  mixed|string $type the PHP type or the name of the PHP type
    * @param  string $linkText optional link text
-   * @return Hyperlink hyperlink object pointing to the PHP type documentation page
+   * @return Hyperlink hyperlink object pointing to the PHP documentation
    */
-  public function typeLink($type, $linkText = null) {
+  public function typeLink($type, string $linkText = null): Hyperlink {
     $typename = strtolower(gettype($type));
     if ($typename === 'string') {
       $typename = strtolower($type);
@@ -115,9 +116,9 @@ class PHPManual extends AbstractPhpApiLinker {
    * @return Hyperlink hyperlink object pointing to the PHP control structure in the PHP
    *         documentation
    */
-  public function controlStructLink($controlName) {
+  public function controlStructLink(string $controlName): Hyperlink {
     $path = strtolower($controlName);
-    return $this->hyperlink($this->urls()->getRoot() . "control-structures." . $path, $controlName, $controlName);
+    return $this->hyperlink($this->urls()->getRoot() . "control-structures.$path", $controlName, $controlName);
   }
 
 }

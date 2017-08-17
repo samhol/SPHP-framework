@@ -30,7 +30,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
    * @param string|null $defaultTarget
    * @param string|string[]|null $defaultCssClasses
    */
-  public function __construct($class, ApiGenUrlGenerator $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct(string $class, ApiGenUrlGenerator $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = null) {
     if ($urlGenerator === null) {
       $urlGenerator = new ApiGenUrlGenerator();
     }
@@ -42,7 +42,7 @@ class ApiGenClassLinker extends AbstractClassLinker {
    * 
    * @return BreadCrumbs
    */
-  public function classBreadGrumbs() {
+  public function classBreadGrumbs(): BreadCrumbs {
     $target = $this->getDefaultTarget();
     $namespace = $this->ref->getNamespaceName();
     $namespaceArray = explode('\\', $namespace);

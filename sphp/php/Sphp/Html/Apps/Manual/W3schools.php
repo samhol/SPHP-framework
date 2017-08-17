@@ -25,7 +25,7 @@ class W3schools extends AbstractLinker {
    * @param string|null $target the default value of the attributes used in the 
    *        generated links
    */
-  public function __construct($target = '_blank') {
+  public function __construct(string $target = '_blank') {
     parent::__construct(new UrlGenerator('http://www.w3schools.com/'), $target);
   }
 
@@ -36,7 +36,7 @@ class W3schools extends AbstractLinker {
    * @param  string $linkText optional content of the link
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function tag(string $tagname, $linkText = null) {
+  public function tag(string $tagname, string $linkText = null): Hyperlink {
     if (preg_match('/^([h][1-6])$/', $tagname)) {
       $link = 'tags/tag_hn.asp';
     } else {
@@ -59,7 +59,7 @@ class W3schools extends AbstractLinker {
    * @param  string $linkText optional content of the link
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function attr($attrName, $linkText = null) {
+  public function attr(string $attrName, string $linkText = null): Hyperlink {
     $link = "tags/att_$attrName.asp";
     if ($linkText === null) {
       $linkText = "$attrName Attribute";

@@ -18,11 +18,11 @@ namespace Sphp\Html\Apps\Manual;
 interface UrlGeneratorInterface {
 
   /**
-   * Returns the url pointing to the root of the page
+   * Returns the URL pointing to the root of the page
    *
-   * @return string the url pointing to the API documentation
+   * @return string the URL pointing to the API documentation
    */
-  public function getRoot();
+  public function getRoot(): string;
 
   /**
    * Creates an URL string pointing to the resource
@@ -30,5 +30,5 @@ interface UrlGeneratorInterface {
    * @param  string $relative path from the root to the resource
    * @return string an URL string pointing to the resource
    */
-  public function create(string $relative = '');
+  public function create(string $relative = ''): string;
 }

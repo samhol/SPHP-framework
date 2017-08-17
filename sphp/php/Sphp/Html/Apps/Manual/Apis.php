@@ -46,18 +46,14 @@ class Apis {
    * @var W3schools[] 
    */
   private static $w3schools;
-  
-  
+
   /**
    * 
    * @param  string $path
    * @param  string|null $target
    * @return ApiGen
    */
-  public static function sami($path = 'API/sami/', $target = "sami") {
-    if ($path === null) {
-      $path = DEFAULT_APIGEN;
-    }
+  public static function sami(string $path = 'API/sami/', string $target = "sami"): Sami {
     if (!array_key_exists($path, self::$samis)) {
       $instance = new Sami(new SamiUrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
@@ -74,7 +70,7 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen
    */
-  public static function apigen($path = '', $target = "apigen") {
+  public static function apigen(string $path = '', string $target = "apigen"): ApiGen {
     if ($path === null) {
       $path = DEFAULT_APIGEN;
     }
@@ -92,7 +88,7 @@ class Apis {
    * 
    * @return PHPManual
    */
-  public static function phpManual($target = 'phpman') {
+  public static function phpManual(string $target = 'phpman'): PHPManual {
     if (self::$phpManual === null) {
       self::$phpManual = (new PHPManual($target));
     } else {
@@ -114,10 +110,10 @@ class Apis {
    * 
    * @return W3schools
    */
-  public static function w3schools($target = 'w3schools') {
+  public static function w3schools($target = 'w3schools'): W3schools {
     if (self::$w3schools === null) {
       self::$w3schools = new W3schools($target);
-    }else {
+    } else {
       self::$w3schools->setDefaultTarget($target);
     }
     return self::$w3schools;

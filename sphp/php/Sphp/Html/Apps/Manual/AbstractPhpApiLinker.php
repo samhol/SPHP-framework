@@ -7,6 +7,9 @@
 
 namespace Sphp\Html\Apps\Manual;
 
+use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Apps\Manual\ClassLinkerInterface;
+
 /**
  * Hyperlink generator pointing to an online PHP API documentation
  *
@@ -17,7 +20,7 @@ namespace Sphp\Html\Apps\Manual;
  */
 abstract class AbstractPhpApiLinker extends AbstractLinker {
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
     if ($content === null) {
       $content = $url;
     }
@@ -30,23 +33,23 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
    * @param  string|\object $class class name or object
    * @return ClassLinkerInterface the class property linker
    */
-  abstract public function classLinker($class);
+  abstract public function classLinker($class): ClassLinkerInterface;
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP function 
    *
    * @param  string $funName the name of the function
    * @param  string $linkText optional link text
-   * @return string hyperlink object pointing to a PHP function page
+   * @return Hyperlink hyperlink object pointing to the documentation
    */
-  abstract public function functionLink(string $funName, string $linkText = null);
+  abstract public function functionLink(string $funName, string $linkText = null): Hyperlink;
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP constant 
    * 
    * @param  string $constantName the name of the constant
    * @param  string $linkText optional link text
-   * @return string hyperlink object pointing to a PHP constant page
+   * @return Hyperlink hyperlink object pointing to the documentation
    */
-  abstract public function constantLink(string $constantName, string $linkText = null);
+  abstract public function constantLink(string $constantName, string $linkText = null): Hyperlink;
 }

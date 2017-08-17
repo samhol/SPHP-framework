@@ -23,7 +23,7 @@ interface ApiUrlGeneratorInterface extends UrlGeneratorInterface {
    * @param  string $class the name of the class
    * @return string the URL pointing to the API page of the given class
    */
-  public function getClassUrl($class): string;
+  public function getClassUrl(string $class): string;
 
   /**
    * Returns the URL pointing to the API page of the given class method
@@ -32,7 +32,7 @@ interface ApiUrlGeneratorInterface extends UrlGeneratorInterface {
    * @param  string $method the name of the method
    * @return string the URL pointing to the API page of the given class method
    */
-  public function getClassMethodUrl($class, string $method): string;
+  public function getClassMethodUrl(string $class, string $method): string;
 
   /**
    * Returns the URL pointing to the API page of the given class constant
@@ -41,7 +41,7 @@ interface ApiUrlGeneratorInterface extends UrlGeneratorInterface {
    * @param  string $constant the name of the constant
    * @return string the URL pointing to the API page of the given class constant
    */
-  public function getClassConstantUrl($class, string $constant): string;
+  public function getClassConstantUrl(string $class, string $constant): string;
 
   /**
    * Returns the URL pointing to the API page of the given namespace

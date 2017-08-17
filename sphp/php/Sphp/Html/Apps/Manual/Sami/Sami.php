@@ -7,6 +7,7 @@
 
 namespace Sphp\Html\Apps\Manual\Sami;
 
+use Sphp\Html\Apps\Manual\ClassLinkerInterface;
 use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Foundation\Sites\Navigation\BreadCrumb;
@@ -40,11 +41,11 @@ class Sami extends AbstractPhpApiLinker {
     parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
   }
 
-  public function classLinker($class) {
+  public function classLinker($class): ClassLinkerInterface {
     return new SamiClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
-  public function functionLink(string $function, string $linkText = null) {
+  public function functionLink(string $function, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $function;
     }
@@ -52,7 +53,7 @@ class Sami extends AbstractPhpApiLinker {
     return $this->hyperlink($path, $function, "function $function()")->addCssClass('function');
   }
 
-  public function constantLink(string $constant, string $linkText = null) {
+  public function constantLink(string $constant, string $linkText = null): Hyperlink {
     if ($linkText === null) {
       $linkText = $constant;
     }
@@ -68,7 +69,7 @@ class Sami extends AbstractPhpApiLinker {
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
    * @return Hyperlink hyperlink object pointing to an API namespace page1
    */
-  public function namespaceLink($namespace, $fullName = true) {
+  public function namespaceLink($namespace, $fullName = true): Hyperlink {
     if ($fullName) {
       $name = $namespace;
     } else {
@@ -85,7 +86,7 @@ class Sami extends AbstractPhpApiLinker {
    * @param  string $namespace namespace name
    * @return BreadCrumbs breadcrumb showing the trail of nested namespaces
    */
-  public function namespaceBreadGrumbs($namespace) {
+  public function namespaceBreadGrumbs(string $namespace): BreadCrumbs {
     $namespaceArray = explode('\\', $namespace);
     $breadGrumbs = (new BreadCrumbs())->addCssClass(['api', 'namespace']);
     $currentNamespaceArray = [];

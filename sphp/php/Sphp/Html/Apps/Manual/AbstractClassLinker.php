@@ -8,6 +8,8 @@
 namespace Sphp\Html\Apps\Manual;
 
 use ReflectionClass;
+use Sphp\Html\Navigation\Hyperlink;
+use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
  * Hyperlink object generator pointing to an existing API documentation about a class
@@ -30,13 +32,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
   /**
    * Constructs a new instance
    *
-   * @param string|\object $class class name or object
+   * @param string $class class name or object
    * @param string $root the base url pointing to the documentation
    * @param string|null $defaultTarget the default target used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function __construct($class, ApiUrlGeneratorInterface $pathParser, $defaultTarget = null, $defaultCssClasses = null) {
+  public function __construct(string $class, ApiUrlGeneratorInterface $pathParser, string $defaultTarget = null, $defaultCssClasses = null) {
     parent::__construct($pathParser, $defaultTarget, $defaultCssClasses);
     $this->ref = new ReflectionClass($class);
   }
@@ -55,11 +57,11 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->getLink()->getHtml();
   }
 
-  public function hyperlink(string $url = null, string $content = null, string $title = null) {
+  public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
     return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
   }
 
-  public function getLink($name = null) {
+  public function getLink(string $name = null): Hyperlink {
     if ($name === null) {
       $name = $this->ref->getShortName();
     }
@@ -76,7 +78,7 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title);
   }
 
-  public function methodLink($method, $full = true) {
+  public function methodLink(string $method, bool $full = true): Hyperlink {
     $this->ref->getMethod($method);
     $reflectedMethod = $this->ref->getMethod($method);
     if ($full) {
@@ -98,13 +100,13 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return $this->hyperlink($this->urls()->getClassMethodUrl($fullClassName, $method), $text, $title);
   }
 
-  public function constantLink($constName) {
+  public function constantLink(string $constName): Hyperlink {
     $name = $this->ref->getShortName() . "::$constName";
     $title = $this->ref->getName() . "::$constName constant";
     return $this->hyperlink($this->urls()->getClassConstantUrl($this->ref->getName(), $constName), $name, $title);
   }
 
-  public function namespaceLink($full = true) {
+  public function namespaceLink(bool $full = true): Hyperlink {
     $fullName = $this->ref->getNamespaceName();
     if (!$full) {
       $namespaceArray = explode('\\', $fullName);
