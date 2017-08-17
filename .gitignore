@@ -54,3 +54,4 @@ Temporary Items
 robots.txt
 composer.lock
 build.xml
+/npm-debug.log
