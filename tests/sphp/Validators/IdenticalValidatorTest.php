@@ -2,7 +2,7 @@
 
 namespace Sphp\Validators;
 
-class IdenticalValidatorTest extends \PHPUnit_Framework_TestCase {
+class IdenticalValidatorTest extends \PHPUnit\Framework\TestCase {
 
   public function nonStrictData() {
     $data[] = [1, 1, true];
@@ -57,4 +57,5 @@ class IdenticalValidatorTest extends \PHPUnit_Framework_TestCase {
     $validator->setStrict(true);
     $this->assertSame($valid, $validator->isValid($value));
   }
+
 }

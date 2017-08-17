@@ -3,24 +3,25 @@
 namespace Sphp\Validators;
 
 $validator = (new FormValidator())
-        ->set('numbers', new PatternValidator("/^\d+$/", 'Please insert numbers only'))
-        ->set('alphabets', (new PatternValidator("/^[a-zA-Z]+$/", 'Please insert alphabets only')))
-        ->set('10alphabets', new PatternValidator("/^([a-zA-Z]){10}+$/", 'Please insert exactly 10 alphabets'));
+        ->set('num', new PatternValidator("/^\d+$/", 'Please insert numbers only'))
+        ->set('p1', new PatternValidator("/^[a-zA-Z]+$/", 'Please insert alphabets only'))
+        ->set('p2', new PatternValidator("/^([a-zA-Z]){3}+$/", 'Please insert exactly 3 alphabets'));
 
-$data1 = [
-    'numbers' => '123',
-    'alphabets' => 'abc',
-    '10alphabets' => 'abcdefghij',
-    'password' => '3a=_23aaA@'];
+$correctData = [
+    'num' => '123',
+    'p1' => 'abcde',
+    'p2' => 'xyz'];
 
-echo "validating data1:";
-var_dump($validator->isValid($data1));
+echo "Correct data:";
+var_dump($validator->isValid($correctData));
 
-$data2 = [
-    'numbers' => 'abc',
-    '10alphabets' => '012345678910',
-    'password' => '.'];
+$incorrectData = [
+    'num' => 'abc',
+    'p1' => '_err_',
+    'p1' => '_err_'];
 
-echo "validating data2:";
-var_dump($validator->isValid($data2));
-echo $validator->getInputErrors();
+echo "\nincorrect data:";
+var_dump($validator->isValid($incorrectData));
+foreach ($validator->getInputErrors() as $fieldName => $error) {
+  echo "\n$fieldName: $error";
+}

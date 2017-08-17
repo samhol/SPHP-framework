@@ -25,10 +25,11 @@ class IsInstanceOfValidator extends AbstractValidator {
   private $className;
 
   /**
+   * Constructs a new instance
    * 
-   * @param type $className
+   * @param string $className
    */
-  public function __construct($className) {
+  public function __construct(string $className) {
     parent::__construct('Value is not instance of %s');
     $this->setClassName($className);
   }
@@ -37,20 +38,18 @@ class IsInstanceOfValidator extends AbstractValidator {
    * 
    * @return string class name
    */
-  public function getClassName():string {
+  public function getClassName(): string {
     return $this->className;
   }
 
   /**
    * 
-   * @param  object|string $className
+   * @param  string $className the name of the class 
    * @return self for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
+   * @throws \Sphp\Exceptions\InvalidArgumentException if the class is not defined
    */
-  public function setClassName($className) {
-    if (is_object($className)) {
-      $className = get_class($className);
-    } else if (!is_string($className)) {
+  public function setClassName(string $className) {
+    if (!class_exists($className)) {
       throw new InvalidArgumentException('Invalid class name parameter');
     }
     $this->className = $className;

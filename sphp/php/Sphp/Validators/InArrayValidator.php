@@ -22,14 +22,11 @@ use Sphp\Stdlib\Arrays;
 class InArrayValidator extends AbstractValidator {
 
   /**
-   * maximum length of the valid string
-   *
-   * @var mixed[]
+   * @var array
    */
   private $haystack;
 
   /**
-   *
    * @var boolean 
    */
   private $strict;

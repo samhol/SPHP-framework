@@ -75,7 +75,6 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
   public function __toString(): string {
     $output = "";
     if ($this->count() > 0) {
-      $output = self::class . ":\n";
       foreach ($this->messages as $message) {
         $output .= "\t" . $message . "\n";
       }
