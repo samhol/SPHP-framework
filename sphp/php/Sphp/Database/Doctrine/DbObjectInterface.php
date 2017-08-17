@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 use Sphp\Objects\ArrayableObjectInterface;
 use Doctrine\ORM\EntityManagerInterface;

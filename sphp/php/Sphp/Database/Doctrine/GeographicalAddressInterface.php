@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 /**
  * Defines properties for a geographical address

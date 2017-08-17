@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Stdlib\Datastructures\Collection;

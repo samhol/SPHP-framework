@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 use Sphp\Core\Security\Password;
 use Sphp\Core\Security\PasswordInterface;

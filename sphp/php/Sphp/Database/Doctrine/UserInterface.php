@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 use Sphp\Core\Security\PasswordInterface;
 use Sphp\Stdlib\BitMask;

@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Doctrine;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -24,7 +24,7 @@ use Sphp\Stdlib\Datastructures\Collection;
 abstract class AbstractObjectStorage implements ObjectStorageInterface {
 
   /**
-   * the typename of the stored objects
+   * the type name of the stored objects
    *
    * @var string
    */
