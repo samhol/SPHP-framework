@@ -25,19 +25,16 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
   use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
 
   /**
-   *
    * @var string|null
    */
   private $prefix;
 
   /**
-   *
    * @var string|null
    */
   private $suffix;
 
   /**
-   *
    * @var IdentifiableInputInterface 
    */
   private $input;

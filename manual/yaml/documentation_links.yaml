@@ -29,8 +29,8 @@ items:
       - ruler: 
       - link: I18n
         href: Sphp.I18n
-      - link: Database objects 
-        href: Sphp.Db.Objects
+      - link: Database manipulation
+        href: Sphp.Database
     - separator: HTML manipulation
     - menu: HTML core
       items:

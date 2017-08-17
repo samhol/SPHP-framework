@@ -69,6 +69,7 @@ trait ContainerComponentTrait {
     $this->getInnerContainer()->prepend($content);
     return $this;
   }
+
   public function setContent($content) {
     $this->getInnerContainer()->setContent($content);
     return $this;
@@ -160,7 +161,7 @@ trait ContainerComponentTrait {
     return $this;
   }
 
-  public function exists($value) {
+  public function exists($value): bool {
     $this->getInnerContainer()->exists($value);
   }
 

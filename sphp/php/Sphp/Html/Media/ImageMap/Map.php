@@ -32,7 +32,7 @@ class Map extends AbstractContainerComponent {
    * @param  null|AreaInterface|AreaInterface[] $areas the value of the name attribute
    * @link   http://www.w3schools.com/TAGS/att_iframe_src.asp src attribute
    */
-  public function __construct($name = null, $areas = null) {
+  public function __construct(string $name = null, $areas = null) {
     parent::__construct('map');
     $this->attrs()->demand('name');
     if ($name !== null) {
@@ -54,7 +54,7 @@ class Map extends AbstractContainerComponent {
    * @return self for a fluent interface
    * @link   http://www.w3schools.com/tags/att_map_name.asp name attribute
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->attrs()->set('name', $name);
     return $this;
   }
@@ -65,7 +65,7 @@ class Map extends AbstractContainerComponent {
    * @return string name attribute
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
-  public function getName() {
+  public function getName(): string {
     return $this->attrs()->get('name');
   }
 

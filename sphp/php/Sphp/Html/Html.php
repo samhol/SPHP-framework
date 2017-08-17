@@ -199,22 +199,22 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
     return $this;
   }
 
-  public function appendMd($md) {
+  public function appendMd(string $md) {
     $this->body->appendMd($md);
     return $this;
   }
 
-  public function appendMdFile($path) {
+  public function appendMdFile(string $path) {
     $this->body->appendMdFile($path);
     return $this;
   }
 
-  public function appendPhpFile($path) {
+  public function appendPhpFile(string $path) {
     $this->body->appendPhpFile($path);
     return $this;
   }
 
-  public function appendRawFile($path) {
+  public function appendRawFile(string $path) {
     $this->body->appendRawFile($path);
     return $this;
   }

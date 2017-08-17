@@ -27,7 +27,7 @@ class ApiGen extends AbstractPhpApiLinker {
   /**
    * Constructs a new instance
    * 
-   * @param UrlGenerator $urlGenerator the url pointing to the ApiGen documentation
+   * @param UrlGenerator $urlGenerator the URL pointing to the ApiGen documentation
    * @param string|null $defaultCssClasses the default CSS classes used in the generated links or `null` for none
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    * @link  http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
@@ -64,7 +64,7 @@ class ApiGen extends AbstractPhpApiLinker {
    *
    * @param  string $namespace namespace name
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
-   * @return Hyperlink hyperlink object pointing to an API namespace page1
+   * @return Hyperlink hyperlink object pointing to an API namespace page
    */
   public function namespaceLink(string $namespace, string $fullName = true): Hyperlink {
     if ($fullName) {

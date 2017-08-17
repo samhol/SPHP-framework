@@ -159,6 +159,7 @@ class SphpScriptsLoader extends ScriptsContainer {
     $this->appendVideojs();
     return $this;
   }
+
   /**
    * Appends JavaScript files for the entire SPHP framework
    *

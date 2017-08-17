@@ -67,7 +67,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
 
   /**
    * 
-   * @param Submitter $submitButton
+   * @param  Submitter $submitButton
    * @return $this
    */
   public function setSubmitButton(SubmitterInterface $submitButton) {

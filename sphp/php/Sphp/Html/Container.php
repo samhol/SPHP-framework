@@ -166,7 +166,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
     return Arrays::implode($this->components);
   }
 
-  public function exists($value) {
+  public function exists($value): bool {
     $result = false;
     foreach ($this->components as $component) {
       if ($component === $value || (($component instanceof ContainerInterface)) && $component->exists($value)) {

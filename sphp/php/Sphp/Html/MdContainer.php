@@ -26,7 +26,7 @@ class MdContainer extends AbstractContainer {
    * @param  string $path the path to the file
    * @return self for a fluent interface
    */
-  public function appendFile($path) {
+  public function appendFile(string $path) {
     $this->append(Filesystem::executePhpToString($path));
     return $this;
   }

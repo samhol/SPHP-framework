@@ -19,12 +19,13 @@ use ParsedownExtraPlugin;
  * @filesource
  */
 trait ContentParsingTrait {
+
   /**
    * 
    * @param  mixed $content
    * @return self for a fluent interface
    */
-   abstract public function append($content);
+  abstract public function append($content);
 
   /**
    * Appends a raw file to the container
@@ -33,7 +34,7 @@ trait ContentParsingTrait {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendRawFile($path) {
+  public function appendRawFile(string $path) {
     $this->append(Filesystem::toString($path));
     return $this;
   }
@@ -45,7 +46,7 @@ trait ContentParsingTrait {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendPhpFile($path) {
+  public function appendPhpFile(string $path) {
     $this->append(Filesystem::executePhpToString($path));
     return $this;
   }
@@ -56,7 +57,7 @@ trait ContentParsingTrait {
    * @param  string $md
    * @return self for a fluent interface
    */
-  public function appendMd($md) {
+  public function appendMd(string $md) {
     $p = new ParsedownExtraPlugin();
     $this->append($p->text($md));
     return $this;
@@ -69,7 +70,7 @@ trait ContentParsingTrait {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendMdFile($path) {
+  public function appendMdFile(string $path) {
     $this->appendMd(Filesystem::executePhpToString($path));
     return $this;
   }

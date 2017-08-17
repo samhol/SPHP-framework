@@ -21,8 +21,8 @@ class Circle extends AbstractArea {
   /**
    * Constructs a new instance
    * 
-   * @param int $x the x-coodinate of the circle center
-   * @param int $y the y-coodinate of the circle center
+   * @param int $x the x-coordinate of the circle center
+   * @param int $y the y-coordinate of the circle center
    * @param int $radius the radius of the circle
    * @param string|null $href the URL of the link
    * @param string|null $alt
@@ -47,9 +47,9 @@ class Circle extends AbstractArea {
   }
 
   /**
-   * Sets the x-coodinate of the center of the circle region
+   * Sets the x-coordinate of the center of the circle region
    * 
-   * @param  int $x the x-coodinate of the circle center
+   * @param  int $x the x-coordinate of the circle center
    * @return self for a fluent interface
    */
   public function setX(int $x) {
@@ -61,9 +61,9 @@ class Circle extends AbstractArea {
   }
 
   /**
-   * Sets the y-coodinate of the center of the circle region
+   * Sets the y-coordinate of the center of the circle region
    * 
-   * @param  int $y the y-coodinate of the circle center
+   * @param  int $y the y-coordinate of the circle center
    * @return self for a fluent interface
    */
   public function setY(int $y) {
@@ -75,10 +75,10 @@ class Circle extends AbstractArea {
   }
 
   /**
-   * Sets the coodinates and the size of the circle region
+   * Sets the coordinates and the size of the circle region
    * 
-   * @param  int $x the x-coodinate of the circle center
-   * @param  int $y the y-coodinate of the circle center
+   * @param  int $x the x-coordinate of the circle center
+   * @param  int $y the y-coordinate of the circle center
    * @param  int $radius the radius of the circle
    * @return self for a fluent interface
    */

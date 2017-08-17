@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\Html\Apps;
+namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\Apps\SyntaxHighlighterInterface;
 use Sphp\Html\ComponentInterface;
@@ -13,7 +13,7 @@ use Sphp\Html\ComponentInterface;
 /**
  * Implements framework based component to create  multi-device layouts
  *
- * The sum of the column widths in a row should never exeed 12.
+ * The sum of the column widths in a row should never exceed 12.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-02

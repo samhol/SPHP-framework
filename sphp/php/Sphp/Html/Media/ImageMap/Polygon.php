@@ -24,7 +24,7 @@ class Polygon extends AbstractArea {
    * @param string|null $href
    * @param string|null $alt
    */
-  public function __construct(array $coords = [], $href = null, $alt = null) {
+  public function __construct(array $coords = [], string $href = null, string $alt = null) {
     parent::__construct('poly', $href, $alt);
     $this->setCoordinates($coords);
   }
@@ -52,6 +52,10 @@ class Polygon extends AbstractArea {
    * @return self for a fluent interface
    */
   public function setCoordinates(array $coords) {
+    $count = count($coords);
+    if ($count % 2 !== 0) {
+      throw new \Sphp\Exceptions\InvalidArgumentException("The sum of coordinates must divisible by 2");
+    }
     $coordsString = implode(',', $coords);
     $this->attrs()->set('coords', $coordsString);
     return $this;

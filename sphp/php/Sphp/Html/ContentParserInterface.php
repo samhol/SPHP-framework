@@ -32,7 +32,7 @@ interface ContentParserInterface extends ContentInterface {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendRawFile($path);
+  public function appendRawFile(string $path);
 
   /**
    * Appends an executed PHP file to the container
@@ -41,7 +41,7 @@ interface ContentParserInterface extends ContentInterface {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendPhpFile($path);
+  public function appendPhpFile(string $path);
 
   /**
    * Appends a parsed Mark Down string to the container
@@ -49,7 +49,7 @@ interface ContentParserInterface extends ContentInterface {
    * @param  string $md path to the file
    * @return self for a fluent interface
    */
-  public function appendMd($md);
+  public function appendMd(string $md);
 
   /**
    * Appends a parsed Mark Down file to the container
@@ -58,5 +58,5 @@ interface ContentParserInterface extends ContentInterface {
    * @return self for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
-  public function appendMdFile($path);
+  public function appendMdFile(string $path);
 }

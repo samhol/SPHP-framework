@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-
 /**
  * Implements an HTML &lt;area shape="rect"&gt; tag
  *

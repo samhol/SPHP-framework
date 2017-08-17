@@ -8,7 +8,7 @@
 namespace Sphp\Html\Apps\Manual;
 
 /**
- * Hyperlink generator pointing to online Foundation Docs
+ * Hyperlink generator pointing to online Foundation Documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-29

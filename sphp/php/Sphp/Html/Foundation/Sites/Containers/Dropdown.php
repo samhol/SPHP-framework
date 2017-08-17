@@ -13,7 +13,7 @@ use Sphp\Html\ComponentInterface;
 /**
  * Implements Dropdown HTML component
  *
- * This component can be used to attach dropdowns or popovers to
+ * This component can be used to attach dropdowns or pop overs to
  * whatever Component needed.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
@@ -28,7 +28,7 @@ class Dropdown implements ContentInterface {
   use \Sphp\Html\ContentTrait;
 
   private static $sizes = [
-      "tiny", "small", "large", "xlarge", "xxlarge"
+      'tiny', 'small', 'large', 'xlarge', 'xxlarge'
   ];
 
   /**
@@ -52,15 +52,15 @@ class Dropdown implements ContentInterface {
       $dropdown = new \Sphp\Html\Div($dropdown);
     }
     $this->dropdown = $dropdown;
-    $this->dropdown->identify("id", "dd_");
-    $this->dropdown->cssClasses()->lock("dropdown-pane");
-    $this->dropdown->attrs()->demand("data-dropdown");
+    $this->dropdown->identify('id', 'dd_');
+    $this->dropdown->cssClasses()->lock('dropdown-pane');
+    $this->dropdown->attrs()->demand('data-dropdown');
     $this->setTrigger($trigger);
   }
 
   public function __clone() {
     parent::__clone();
-    $this->identify("Dropdown");
+    $this->identify('Dropdown');
     $this->trigger = clone $this->trigger;
     $this->setTrigger($this->trigger);
   }
@@ -181,7 +181,7 @@ class Dropdown implements ContentInterface {
    * @param  boolean $flag
    * @return self for a fluent interface
    */
-  public function closeOnBodyClick($flag = true) {
+  public function closeOnBodyClick(bool $flag = true) {
     if ($flag) {
       $this->dropdown->attrs()->set('data-close-on-click', 'true');
     } else {
@@ -195,7 +195,7 @@ class Dropdown implements ContentInterface {
    * @param  boolean $flag
    * @return self for a fluent interface
    */
-  public function autoFocus($flag = true) {
+  public function autoFocus(bool $flag = true) {
     if ($flag) {
       $this->dropdown->attrs()->set('data-auto-focus', 'true');
     } else {

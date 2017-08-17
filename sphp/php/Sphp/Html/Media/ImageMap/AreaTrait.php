@@ -27,17 +27,17 @@ trait AreaTrait {
    * @return string the shape of the area
    * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
-  public function getShape() {
+  public function getShape(): string {
     return $this->getAttr('shape');
   }
 
   /**
-   * Returnsthe coordinates of the area
+   * Returns the coordinates of the area
    * 
    * @return int[] the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
-  public function getCoordinates() {
+  public function getCoordinates(): array {
     $coords = [];
     if ($this->attrs()->exists('coords')) {
       $rawCoords = $this->getAttr('coords');

@@ -7,6 +7,9 @@
 
 namespace Sphp\Html\Apps;
 
+namespace Sphp\Html\Apps\Syntaxhighlighting;
+
+use Sphp\Html\ContentInterface;
 use Sphp\Html\ComponentInterface;
 
 /**
@@ -17,7 +20,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface SyntaxHighlighterInterface extends \Sphp\Html\ContentInterface {
+interface SyntaxHighlighterInterface extends ContentInterface {
 
   /**
    * Sets the copier button

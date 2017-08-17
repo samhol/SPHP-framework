@@ -154,20 +154,20 @@ class ThrowableCallout extends Callout {
     $trace = $this->throwable->getTrace();
     if (count($trace) > 0) {
       $output = new Ol();
-      $output->addCssClass("trace");
+      $output->addCssClass('trace');
       //$li1 = new Lists\Li();
       foreach ($trace as $traceRow) {
         $err1 = new Li();
-        if (array_key_exists("line", $traceRow) && array_key_exists("file", $traceRow)) {
-          $err1->offsetSet("line", "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
+        if (array_key_exists('line', $traceRow) && array_key_exists("file", $traceRow)) {
+          $err1->offsetSet('line', "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
                   ->offsetSet("file", " of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
         }
-        $err1->offsetSet("function", "" . $this->parseFunction($traceRow));
+        $err1->offsetSet('function', "" . $this->parseFunction($traceRow));
         $output[] = $err1;
       }
       return '<h3 class"trace">Trace information:</h3>' . $output;
     } else {
-      return "";
+      return '';
     }
   }
 
@@ -200,9 +200,9 @@ class ThrowableCallout extends Callout {
   }
 
   public function contentToString(): string {
-    $output = "<h2>" . get_class($this->throwable) . "</h2>";
+    $output = '<h2>' . get_class($this->throwable) . '</h2>';
     if ($this->showMessage) {
-      $output .= '<p class="message">' . $this->throwable->getMessage() . "</p>";
+      $output .= '<p class="message">' . $this->throwable->getMessage() . '</p>';
     }
     if ($this->showFile) {
       $output .= $this->buildFile();

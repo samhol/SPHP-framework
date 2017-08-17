@@ -198,7 +198,7 @@ class Document {
       if ($class instanceof ContainerInterface && $content !== null) {
         $class->append($content);
       }
-    }  else {
+    } else {
       throw new \InvalidArgumentException("Proper class for object '$name' can not be found");
     }
     return $class;
@@ -226,7 +226,7 @@ class Document {
   /**
    * Returns the HTML version used in the application
    *
-   * @return string  HTML version used in the application
+   * @return string HTML version used in the application
    */
   public static function getHtmlVersion() {
     return self::$htmlVersion;

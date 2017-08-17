@@ -24,7 +24,6 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
 class BlockGridLayoutManager extends AbstractLayoutManager {
 
   /**
-   *
    * @var int 
    */
   private $maxSize = 8;

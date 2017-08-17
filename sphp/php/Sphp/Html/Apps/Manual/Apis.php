@@ -24,31 +24,26 @@ use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
 class Apis {
 
   /**
-   *
    * @var Sami[] 
    */
   private static $samis = [];
 
   /**
-   *
    * @var ApiGen[] 
    */
   private static $apigens = [];
 
   /**
-   *
    * @var PHPManual
    */
   private static $phpManual;
 
   /**
-   *
    * @var FoundationDocsLinker[] 
    */
   private static $foundation;
 
   /**
-   *
    * @var W3schools[] 
    */
   private static $w3schools;
@@ -59,7 +54,7 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen
    */
-  public static function sami(string $path = 'API/sami/', string $target = "sami"): Sami {
+  public static function sami(string $path = 'API/sami/', string $target = 'sami'): Sami {
     if (!array_key_exists($path, self::$samis)) {
       $instance = new Sami(new SamiUrlGenerator($path), $target);
       self::$apigens[$path] = $instance;
@@ -76,7 +71,7 @@ class Apis {
    * @param  string|null $target
    * @return ApiGen
    */
-  public static function apigen(string $path = '', string $target = "apigen"): ApiGen {
+  public static function apigen(string $path = '', string $target = 'apigen'): ApiGen {
     if ($path === null) {
       $path = DEFAULT_APIGEN;
     }

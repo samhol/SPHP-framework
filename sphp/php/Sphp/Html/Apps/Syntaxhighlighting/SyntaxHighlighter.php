@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Apps;
+namespace Sphp\Html\Apps\Syntaxhighlighting;
 
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\ComponentInterface;
@@ -178,7 +178,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * Sets the copier button
    *
    * @param  null|ComponentInterface $button button or button content
-   * @return ContentCopyController the attached putton
+   * @return ContentCopyController the attached button
    */
   public function attachContentCopyController(ComponentInterface $button = null) {
     if ($button === null) {
@@ -246,14 +246,14 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * @return self for a fluent interface
    * @throws InvalidArgumentException
    */
-  public function executeFromFile(string $path, string $lang = "text") {
+  public function executeFromFile(string $path, string $lang = 'text') {
     if (!file_exists($path)) {
       throw new InvalidArgumentException("The file in the '$path' does not exist!");
     }
     $source = Filesystem::executePhpToString($path);
-    if ($lang == "html5") {
+    if ($lang == 'html5') {
       $source = (new Indenter())->indent($source);
-    } else if ($lang == "sql") {
+    } else if ($lang == 'sql') {
       $source = SqlFormatter::format($source, false);
     }
     $this->setSource($source, $lang);

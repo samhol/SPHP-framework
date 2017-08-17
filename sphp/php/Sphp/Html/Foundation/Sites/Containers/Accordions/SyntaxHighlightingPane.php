@@ -7,9 +7,9 @@
 
 namespace Sphp\Html\Foundation\Sites\Containers\Accordions;
 
-use Sphp\Html\Apps\SyntaxHighlighterInterface;
-use Sphp\Html\Apps\SyntaxhighlighterContainerTrait;
-use Sphp\Html\Apps\SyntaxHighlighter;
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait;
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
 use Sphp\Html\Foundation\Sites\Buttons\IconButton;
 
 /**

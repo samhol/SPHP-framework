@@ -25,7 +25,7 @@ interface AreaInterface extends HyperlinkInterface {
    * @return string the shape of the area
    * @link   http://www.w3schools.com/TAGS/att_area_shape.asp shape attribute
    */
-  public function getShape();
+  public function getShape(): string;
 
   /**
    * Returns the coordinates of the area
@@ -33,7 +33,7 @@ interface AreaInterface extends HyperlinkInterface {
    * @return int[] the coordinates of the area
    * @link   http://www.w3schools.com/TAGS/att_area_coords.asp coords attribute
    */
-  public function getCoordinates();
+  public function getCoordinates(): array;
 
   /**
    * Sets the relationship between the current document and the linked document

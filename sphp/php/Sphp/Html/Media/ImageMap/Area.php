@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Media\ImageMap;
 
-use Sphp\Html\EmptyTag;
-
 /**
  * Implements an HTML &lt;area&gt; tag
  *

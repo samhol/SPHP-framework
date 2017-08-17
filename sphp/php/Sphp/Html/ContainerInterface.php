@@ -50,7 +50,6 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    */
   public function prepend($value);
 
-  
   /**
    * Sets the content of the component
    *
@@ -60,7 +59,8 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    * @param  mixed $content the new content
    * @return self for a fluent interface
    */
-  public function setContent($content) ;
+  public function setContent($content);
+
   /**
    * Clears the contents
    *
@@ -74,5 +74,5 @@ interface ContainerInterface extends TraversableInterface, Arrayable, ArrayAcces
    * @param  mixed $value mixed content to check for
    * @return boolean `true` on success or `false` on failure
    */
-  public function exists($value);
+  public function exists($value): bool;
 }
