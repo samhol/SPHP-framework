@@ -122,7 +122,7 @@ abstract class DbObjectsView implements DBConnectorInterface, \Countable, \Itera
    * Returns the queried objects from the database
    *
    * @param  null|Query $query the SQL query object
-   * @return DbObjectInterface[] the result objets
+   * @return DbObjectInterface[] the result objects
    */
   public function get(Query $query = null) {
     $arr = [];

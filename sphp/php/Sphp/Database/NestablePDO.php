@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db;
+namespace Sphp\Database;
 
 use PDO;
 
@@ -23,7 +23,7 @@ class NestablePDO extends PDO {
    *
    * @var string[] 
    */
-  private static $savepointTransactions = ["pgsql", "mysql"];
+  private static $savepointTransactions = ['pgsql', 'mysql'];
 
   /**
    * the current transaction level
@@ -33,7 +33,7 @@ class NestablePDO extends PDO {
   private $transLevel = 0;
 
   /**
-   * Checcks if the database engine supports nestable transactions 
+   * Checks if the database engine supports nestable transactions 
    * 
    * @return boolean true if the database engine supports nestable transactions 
    *         or false otherwise
