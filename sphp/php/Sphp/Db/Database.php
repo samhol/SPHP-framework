@@ -32,7 +32,7 @@ class Database extends \PDO {
   private $transLevel = 0;
 
   /**
-   * Checcks if the database engine supports nestable transactions 
+   * Checks if the database engine supports nestable transactions 
    * 
    * @return boolean true if the database engine supports nestable transactions 
    *         or false otherwise

@@ -20,10 +20,10 @@ use Sphp\Objects\DbObjectInterface as DbObjectInterface;
 interface DbObjectsStorage extends DBConnectorInterface, \Countable, \IteratorAggregate {
 
   /**
-   * Returns the first matching oject from the database view
+   * Returns the first matching object from the database view
    *
    * @param  null|Query $q 
-   * @return null|DbObjectInterface the first matching oject from the database view
+   * @return null|DbObjectInterface the first matching object from the database view
    */
   public function getFirst(array $what);
 
@@ -39,7 +39,7 @@ interface DbObjectsStorage extends DBConnectorInterface, \Countable, \IteratorAg
    * Returns the queried objects from the database
    *
    * @param  null|Query $query the SQL query object
-   * @return DbObjectInterface[] the result objets
+   * @return DbObjectInterface[] the result objects
    */
   public function get(array $what);
 
@@ -54,7 +54,7 @@ interface DbObjectsStorage extends DBConnectorInterface, \Countable, \IteratorAg
   /**
    * Checks whether the given object(s) exists in the database
    *
-   * @param  DbObjectInterface $object the object to serch for
+   * @param  DbObjectInterface $object the object to search for
    * @return boolean true if the object exists in the database, false otherwise
    */
   public function exists(DbObjectInterface $object);
@@ -63,7 +63,7 @@ interface DbObjectsStorage extends DBConnectorInterface, \Countable, \IteratorAg
    * Replaces the given object(s) in the database view
    *
    * @param  DbObjectInterface|DbObjectInterface[] $objects the objects to replace
-   * @return boolean true if the update was succesfull and false otherwise
+   * @return boolean true if the update was successful and false otherwise
    * @throws \InvalidArgumentException if the type of the object is not valid
    */
   public function upload($objects);
@@ -81,7 +81,7 @@ interface DbObjectsStorage extends DBConnectorInterface, \Countable, \IteratorAg
    * Retrieve an external iterator
    *
    * @param  array $what the properties used to limit the results
-   * @return \ArrayIterator the result objets
+   * @return \ArrayIterator the result objects
    */
   public function getIterator(array $what);
 

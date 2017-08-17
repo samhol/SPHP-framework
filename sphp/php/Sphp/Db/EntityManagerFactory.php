@@ -55,7 +55,7 @@ class EntityManagerFactory {
   }
 
   /**
-   * Obtains a singelton new {@link EntityManager} instance for given database connection
+   * Obtains a singleton new {@link EntityManager} instance for given database connection
    *
    * @param  mixed         $conn         An array with the connection parameters or an existing Connection instance.
    * @param  Configuration $config       The Configuration instance to use.

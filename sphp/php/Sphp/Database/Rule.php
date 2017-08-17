@@ -56,8 +56,7 @@ class Rule implements RuleInterface {
     $this->params = $params;
     $this->paramType = $paramType;
   }
-  
-  
+
   /**
    * Destroys the instance
    *
@@ -138,11 +137,12 @@ class Rule implements RuleInterface {
   }
 
   /**
+   * Generates a comparison rule to be added to a SQL clause object
    * 
    * @param  string $column
    * @param  string $operator
    * @param  mixed $expr
-   * @return Rule|string
+   * @return Rule|string a comparison rule to be added to a SQL clause object
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public static function compare(string $column, string $operator, $expr) {
