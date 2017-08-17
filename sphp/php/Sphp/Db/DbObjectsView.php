@@ -7,7 +7,7 @@
 
 namespace Sphp\Db;
 
-use Sphp\Objects\DbObjectInterface as DbObjectInterface;
+use Sphp\Objects\DbObjectInterface;
 
 /**
  * Class manipulates {@link DbObjectIterface} instances stored in the database

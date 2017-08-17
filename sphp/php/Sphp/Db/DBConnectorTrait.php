@@ -7,8 +7,8 @@
 
 namespace Sphp\Db;
 
-use Sphp\Db\DatabaseConnector,
-    \PDO as PDO;
+use Sphp\Db\DatabaseConnector;
+use PDO;
 
 /**
  * Trait implements {@link DBConnectorInterface} for {@link PDO} database connection management 
