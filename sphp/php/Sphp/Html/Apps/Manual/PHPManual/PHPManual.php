@@ -8,7 +8,6 @@
 namespace Sphp\Html\Apps\Manual\PHPManual;
 
 use Sphp\Html\Apps\Manual\ClassLinkerInterface;
-use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Navigation\Hyperlink;
 use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
 
@@ -45,7 +44,7 @@ class PHPManual extends AbstractPhpApiLinker {
     return parent::hyperlink($url, $content, $title);
   }
 
-  public function classLinker($class): ClassLinkerInterface {
+  public function classLinker(string $class): ClassLinkerInterface {
     return new PHPManualClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 

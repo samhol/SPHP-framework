@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 /**
  * Implements an HTML &lt;input type="file"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

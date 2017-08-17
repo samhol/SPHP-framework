@@ -25,8 +25,6 @@ namespace Sphp\Html\Media;
  *
  * The alt attribute specifies an alternate text for an image, if the image cannot be displayed.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-02-15
  * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API

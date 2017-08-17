@@ -17,8 +17,6 @@ use Sphp\Html\Media\SizeableInterface;
  * This component defines a container for an external application or
  * interactive content (a plug-in).
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_embed.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API

@@ -54,16 +54,10 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->setMessageTemplate(static::INVALID, $error);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->messageTemplates, $this->errors, $this->value);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->errors = clone $this->errors;
     $this->messageTemplates = clone $this->messageTemplates;

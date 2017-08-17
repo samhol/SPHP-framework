@@ -20,6 +20,11 @@ use Sphp\Html\Navigation\Hyperlink;
 class W3schools extends AbstractLinker {
 
   /**
+   * @var self
+   */
+  private static $instance;
+
+  /**
    * Constructs a new instance
    * 
    * @param string|null $target the default value of the attributes used in the 
@@ -65,6 +70,17 @@ class W3schools extends AbstractLinker {
       $linkText = "$attrName Attribute";
     }
     return $this->hyperlink($this->urls()->create($link), $linkText, 'Link to w3schools.com documentation');
+  }
+
+  /**
+   * 
+   * @return W3schools singleton instance of linker
+   */
+  public static function get(): W3schools {
+    if (self::$instance === null) {
+      self::$instance = new static();
+    }
+    return self::$instance;
   }
 
 }

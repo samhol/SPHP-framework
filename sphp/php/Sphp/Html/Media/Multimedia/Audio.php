@@ -10,8 +10,6 @@ namespace Sphp\Html\Media\Multimedia;
 /**
  * Implements an HTML &lt;audio&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-07-20
  * @link    http://www.w3schools.com/tags/tag_audio.asp w3schools HTML API

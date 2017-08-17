@@ -46,9 +46,6 @@ class NotEmptyValidator extends AbstractValidator {
     parent::__construct('Please insert a value');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;

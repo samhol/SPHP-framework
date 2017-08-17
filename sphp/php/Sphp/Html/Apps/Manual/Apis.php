@@ -43,6 +43,12 @@ class Apis {
 
   /**
    *
+   * @var FoundationDocsLinker[] 
+   */
+  private static $foundation;
+
+  /**
+   *
    * @var W3schools[] 
    */
   private static $w3schools;
@@ -85,8 +91,9 @@ class Apis {
   }
 
   /**
+   * Returns a singleton instance of PHPManual API linker
    * 
-   * @return PHPManual
+   * @return PHPManual singleton API linker
    */
   public static function phpManual(string $target = 'phpman'): PHPManual {
     if (self::$phpManual === null) {
@@ -99,16 +106,21 @@ class Apis {
   }
 
   /**
+   * Returns a singleton instance of Foundation for sites API linker
    * 
-   * @return FoundationDocsLinker
+   * @return FoundationDocsLinker singleton API linker
    */
-  public static function foundation() {
-    return FoundationDocsLinker::get();
+  public static function foundation($target = '_blank') {
+    if (self::$foundation === null) {
+      self::$foundation = new FoundationDocsLinker($target);
+    }
+    return self::$foundation;
   }
 
   /**
+   * Returns a singleton instance of W3schools API linker
    * 
-   * @return W3schools
+   * @return W3schools singleton API linker
    */
   public static function w3schools($target = 'w3schools'): W3schools {
     if (self::$w3schools === null) {

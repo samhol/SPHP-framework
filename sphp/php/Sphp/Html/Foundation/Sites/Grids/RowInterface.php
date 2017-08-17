@@ -21,8 +21,6 @@ use Sphp\Html\ContentInterface;
  * browser environments the excessive {@link Column} components are floated to 
  * a new 'row'. **HOWEVER!** this behavior is not actively supported.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-03-27
  * @link    http://foundation.zurb.com/ Foundation

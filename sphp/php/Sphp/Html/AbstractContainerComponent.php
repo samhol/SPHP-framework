@@ -15,8 +15,6 @@ use Sphp\Html\Attributes\AttributeManager;
  * AbstractComponent makes it possible to create new HTML components by composition
  * of other existing HTML components.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-03-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

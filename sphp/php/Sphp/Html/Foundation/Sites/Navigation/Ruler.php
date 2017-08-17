@@ -27,9 +27,6 @@ class Ruler extends AbstractComponent implements MenuItemInterface {
     $this->cssClasses()->lock('menu-ruler');
   }
   
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return '';
   }

@@ -14,10 +14,6 @@ use Sphp\Html\Media\LazyMediaInterface;
 /**
  * Implements an HTML &lt;video&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_video.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

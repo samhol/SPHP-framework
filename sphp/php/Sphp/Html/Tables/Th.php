@@ -12,10 +12,6 @@ namespace Sphp\Html\Tables;
  * 
  * This component defines a header cell in a {@link Table} component
  *
- *
- * {@inheritdoc}
- *
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-08-28
  * @link http://www.w3schools.com/tags/tag_th.asp w3schools HTML API

@@ -20,8 +20,6 @@ use Sphp\Stdlib\Strings;
  * 1. Any extending class act as a container for other HTML content, text, etc.
  * 2. The type of the content in such container depends solely on the container's purpose of use.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -52,7 +50,7 @@ abstract class AbstractSimpleContainerTag extends AbstractTag {
    * @throws \InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($tagName, $content = null, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, $content = null, AttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->setContent($content);

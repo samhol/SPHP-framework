@@ -25,10 +25,6 @@ class AbstractIcon extends AbstractComponent {
     $this->attrs()->set('aria-hidden', 'true');
   }
   
-
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return '';
   }

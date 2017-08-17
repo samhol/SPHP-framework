@@ -41,7 +41,7 @@ class Sami extends AbstractPhpApiLinker {
     parent::__construct($urlGenerator, $defaultTarget, $defaultCssClasses);
   }
 
-  public function classLinker($class): ClassLinkerInterface {
+  public function classLinker(string $class): ClassLinkerInterface {
     return new SamiClassLinker($class, $this->urls(), $this->getDefaultTarget(), $this->getDefaultCssClasses());
   }
 
@@ -69,7 +69,7 @@ class Sami extends AbstractPhpApiLinker {
    * @param  boolean $fullName true if the full namespace name is visible, false otherwise
    * @return Hyperlink hyperlink object pointing to an API namespace page1
    */
-  public function namespaceLink($namespace, $fullName = true): Hyperlink {
+  public function namespaceLink(string $namespace, bool $fullName = true): Hyperlink {
     if ($fullName) {
       $name = $namespace;
     } else {

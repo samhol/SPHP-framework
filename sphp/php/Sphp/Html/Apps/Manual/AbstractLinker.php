@@ -162,8 +162,8 @@ abstract class AbstractLinker implements LinkerInterface {
   }
 
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink {
-    if ($url === null) {
-      $url = $this->urls()->getRoot();
+    if (!\Sphp\Stdlib\Strings::startsWith("$url", $this->urls()->getRoot())) {
+      $url = $this->urls()->create("$url");
     }
     if ($content === null) {
       $content = $url;

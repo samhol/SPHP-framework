@@ -10,14 +10,11 @@ namespace Sphp\Html;
 use Sphp\Html\Attributes\AttributeManager;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
-use Sphp\Exceptions\RuntimeException;
 
 /**
  * Defines the basic functionality of any HTML component
  *
  * This models an actual HTML component and supports HTML attribute manipulation.
- *
- * {@inheritdoc}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-12
@@ -126,7 +123,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * Returns the value of a given attribute name or an empty string if attribute is not set
    *
    * @param  string $attrName the name of the attribute
-   * @return string attribute's value
+   * @return string the value of the attribute
    */
   public function getAttr(string $attrName);
 
@@ -134,7 +131,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * Checks if an attribute exists
    *
    * @param  string $attrName the name of the attribute
-   * @return boolean (atribute exists)
+   * @return boolean (attribute exists)
    */
   public function attrExists(string $attrName): bool;
 }

@@ -10,8 +10,6 @@ namespace Sphp\Html\Lists;
 /**
  * Implements an ordered HTML-list
  *
- * {@inheritdoc}
- * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
  * @link    http://www.w3schools.com/tags/tag_ol.asp w3schools API

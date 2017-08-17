@@ -12,10 +12,6 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
 /**
  * Implements an HTML &lt;option&gt; tag
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-09-28
  * @link    http://www.w3schools.com/tags/tag_option.asp w3schools HTML API

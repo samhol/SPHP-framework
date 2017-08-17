@@ -14,8 +14,6 @@ use Sphp\Html\Forms\Legend;
 /**
  * Implements a framework Grid based Fieldset component for HTML forms
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-04-16
  * @link    http://foundation.zurb.com/ Foundation 6

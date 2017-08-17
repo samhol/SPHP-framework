@@ -18,8 +18,6 @@ use Sphp\Stdlib\Strings;
  *  external resource. The &lt;link&gt; tag is most used to link to style
  *  sheets.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_link.asp w3schools HTML API

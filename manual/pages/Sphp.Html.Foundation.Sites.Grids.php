@@ -11,7 +11,7 @@ $cols = Apis::sami()->classLinker(Column::class, "Columns");
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $gridInterface = Apis::sami()->classLinker(GridInterface::class);
-$f_GridLink = Apis::foundation()->docsLink('grid.html', "Foundation Grid layout");
+$f_GridLink = Apis::foundation()->hyperlink('xy-grid.html', "Foundation Grid layout");
 echo $parsedown->text(<<<MD
 #FOUNDATION <small>Grid and Block Grid layouts</small>
 $ns	

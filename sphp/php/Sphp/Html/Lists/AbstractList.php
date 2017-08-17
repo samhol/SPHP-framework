@@ -13,8 +13,6 @@ use Sphp\Stdlib\URL;
 /**
  * Abstract implementation of both ordered and unordered HTML-list
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
  * @link http://www.w3schools.com/html/html_lists.asp w3schools HTML API

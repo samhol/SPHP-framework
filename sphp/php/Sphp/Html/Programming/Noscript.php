@@ -13,8 +13,6 @@ use Sphp\Html\Head\HeadComponentInterface;
 /**
  * Implements an HTML &lt;noscript&gt; tag
  * 
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-03-06
  * @link    http://www.w3schools.com/tags/tag_noscript.asp w3schools HTML API

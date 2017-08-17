@@ -14,10 +14,6 @@ use Sphp\Html\SimpleContainerTag as SimpleContainerTag;
  *
  * **Note:** You can specify only one caption per table.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-04
  * @link    http://www.w3schools.com/tags/tag_caption.asp w3schools HTML API

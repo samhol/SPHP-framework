@@ -17,10 +17,6 @@ use Sphp\Html\EmptyTag;
  * to entire columns, instead of repeating the styles for each cell, for each
  * row.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-01-03
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API

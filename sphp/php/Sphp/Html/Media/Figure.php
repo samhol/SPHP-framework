@@ -13,8 +13,6 @@ use Sphp\Stdlib\URL;
 /**
  * Implements an HTML &lt;figure&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_figure.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

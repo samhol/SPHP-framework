@@ -85,23 +85,14 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
     return $output;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getLang() {
     return $this->getTranslator()->getLang();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getTranslator() {
     return $this->translator;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setLang(string $lang) {
     $this->getTranslator()->setLang($lang);
     foreach ($this as $message) {
@@ -110,9 +101,6 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setTranslator(TranslatorInterface $translator) {
     $this->translator = $translator;
     foreach ($this as $message) {
@@ -170,9 +158,6 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contains(Translatable $message): bool {
     $result = false;
     foreach ($this as $m) {

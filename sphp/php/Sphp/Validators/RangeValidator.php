@@ -82,9 +82,6 @@ class RangeValidator extends AbstractLimitValidator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isValid($value): bool {
     $this->setValue($value);
     if ($this->isInclusive()) {

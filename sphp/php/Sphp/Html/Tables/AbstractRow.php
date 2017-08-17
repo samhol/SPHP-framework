@@ -18,9 +18,6 @@ use Sphp\Html\ContainerInterface;
  *  This component represents a row of {@link CellInterface}
  *  components in a {@link Table}.
  *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API

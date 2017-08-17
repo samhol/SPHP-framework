@@ -14,8 +14,6 @@ use Sphp\Html\Programming\ScriptsContainer;
 /**
  * Implements an HTML &lt;html&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2013-02-25
  * @link    http://www.w3schools.com/tags/tag_html.asp w3schools HTML API

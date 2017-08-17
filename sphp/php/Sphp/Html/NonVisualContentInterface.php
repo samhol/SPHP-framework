@@ -12,7 +12,6 @@ namespace Sphp\Html;
  * 
  * Such elements are all HTML head elements, hidden inputs etc...
  * 
- * {@inheritdoc}
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-10

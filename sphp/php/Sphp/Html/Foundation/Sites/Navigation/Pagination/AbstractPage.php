@@ -98,31 +98,19 @@ abstract class AbstractPage extends AbstractComponent implements PageInterface {
     return $output;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHref() {
     return $this->hyperlink->getHref();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getTarget() {
     return $this->hyperlink->getTarget();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setHref($href, $encode = true) {
     $this->hyperlink->setHref($href, $encode);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setTarget($target) {
     $this->hyperlink->setTarget($target);
     return $this;

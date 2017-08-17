@@ -13,10 +13,6 @@ namespace Sphp\Html\Tables;
  *  This component is used to group header content in a 
  *  {@link Table} component.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_thead.asp w3schools API

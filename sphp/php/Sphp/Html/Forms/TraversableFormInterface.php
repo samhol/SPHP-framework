@@ -10,8 +10,6 @@ namespace Sphp\Html\Forms;
 /**
  * Defines required properties for a traversable HTML &lt;form&gt; component
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_form.asp w3schools HTML API

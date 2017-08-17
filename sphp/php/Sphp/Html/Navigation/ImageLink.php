@@ -16,8 +16,6 @@ use Sphp\Stdlib\URL;
 /**
  * Implements an image that acts as a hyperlink
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-11-22
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -62,17 +60,11 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->img);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->img = clone $this->img;
     parent::__clone();
@@ -92,24 +84,15 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setAlt(string $src) {
     $this->img()->setAlt($src);
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function getAlt(): string {
     return $this->img()->getAlt();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getSrc(): string {
     return $this->img()->getSrc();
   }

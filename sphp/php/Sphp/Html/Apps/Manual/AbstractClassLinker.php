@@ -9,7 +9,6 @@ namespace Sphp\Html\Apps\Manual;
 
 use ReflectionClass;
 use Sphp\Html\Navigation\Hyperlink;
-use Sphp\Html\Navigation\HyperlinkInterface;
 
 /**
  * Hyperlink object generator pointing to an existing API documentation about a class

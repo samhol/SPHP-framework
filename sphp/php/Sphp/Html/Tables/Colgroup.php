@@ -12,8 +12,6 @@ use Sphp\Html\ContainerTag;
 /**
  * Implements an HTML &lt;colgroup&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools HTML API

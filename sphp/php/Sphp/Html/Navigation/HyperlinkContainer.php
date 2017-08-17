@@ -48,32 +48,20 @@ class HyperlinkContainer extends AbstractContainerTag implements HyperlinkInterf
     return $this->getInnerContainer();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHref() {
     return $this->getHyperlink()->getHref();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setHref($href, $encode = true) {
     $this->getHyperlink()->setHref($href, $encode);
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function setTarget($target) {
     $this->getHyperlink()->setTarget($target);
     return $this;
   }
-
-  /**
-   * {@inheritdoc}
-   */
+  
   public function getTarget() {
     return $this->getHyperlink()->getTarget();
   }

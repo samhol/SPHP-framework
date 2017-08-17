@@ -19,10 +19,6 @@ use Sphp\Html\ContainerInterface;
  * The {@link self} component is used in conjunction with &lt;dt&gt; (defines the item in the list)
  * and &lt;dd&gt; (describes the item in the list).
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2013-05-23
  * @link    http://www.w3schools.com/tags/tag_dl.asp w3schools HTML API

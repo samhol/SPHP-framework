@@ -45,16 +45,10 @@ class InArrayValidator extends AbstractValidator {
     $this->setHaystack($haystack);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->haystack);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->haystack = Arrays::copy($this->haystack);
   }

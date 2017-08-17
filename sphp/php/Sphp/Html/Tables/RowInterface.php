@@ -10,8 +10,6 @@ namespace Sphp\Html\Tables;
 /**
  * Interface is the base definition for all {@link TableRowContainer} content rows
  * 
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-04
  * @link    http://www.w3schools.com/tags/tag_tr.asp w3schools API

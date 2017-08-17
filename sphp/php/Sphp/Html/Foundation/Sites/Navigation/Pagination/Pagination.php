@@ -316,9 +316,6 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
     return count($this->pages);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     $cont = new Container();
     Arrays::pointToKey($this->pages, $this->current);

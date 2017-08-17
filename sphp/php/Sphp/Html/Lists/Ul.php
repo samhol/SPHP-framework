@@ -10,8 +10,6 @@ namespace Sphp\Html\Lists;
 /**
  * Implements an unordered HTML-list &lt;ul&gt; tag
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-03
  * @link    http://www.w3schools.com/tags/tag_ul.asp w3schools HTML API

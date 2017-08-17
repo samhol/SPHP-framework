@@ -15,10 +15,6 @@ use Sphp\Html\Container;
 /**
  * Implements an HTML &lt;table&gt; tag.
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_table.asp w3schools HTML API

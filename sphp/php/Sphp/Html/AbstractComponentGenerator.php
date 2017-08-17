@@ -19,9 +19,6 @@ abstract class AbstractComponentGenerator implements ContentInterface {
 
   use ContentTrait;
 
-  /**
-   * {@inheritdoc}
-   */
   public function getHtml(): string {
     return $this->generate()->getHtml();
   }

@@ -23,8 +23,6 @@ namespace Sphp\Html;
  * 5. All container's content data can be reached by PHP's {@link \ArrayAccess} 
  *    notation.
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-06
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

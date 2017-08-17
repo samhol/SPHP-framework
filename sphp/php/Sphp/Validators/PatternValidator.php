@@ -33,13 +33,6 @@ class PatternValidator extends AbstractValidator {
   private $pattern = "//";
 
   /**
-   * error message corresponding to the pattern
-   *
-   * @var Message
-   */
-  private $errorMessage;
-
-  /**
    * Constructs a new instance
    *
    *  **Note:** If the validable value matches the pattern => the validated
@@ -71,9 +64,6 @@ class PatternValidator extends AbstractValidator {
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isValid($value): bool {
     $this->setValue($value);
     if (!is_string($value) && !is_int($value) && !is_float($value)) {

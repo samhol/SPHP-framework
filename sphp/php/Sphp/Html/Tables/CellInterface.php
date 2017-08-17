@@ -18,8 +18,6 @@ namespace Sphp\Html\Tables;
  *  **Standard cells** - contains data (created with the &lt;td&gt; element).
  *  The text in &lt;td&gt; elements are regular and left-aligned by default.
  * 
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-04
  * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API

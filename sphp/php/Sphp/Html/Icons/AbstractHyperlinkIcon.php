@@ -46,9 +46,6 @@ class AbstractHyperlinkIcon extends AbstractComponent implements HyperlinkInterf
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return $this->icon->getHtml();
   }

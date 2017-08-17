@@ -12,8 +12,6 @@ use Sphp\Html\WrappingContainer;
 /**
  * Implements a grid 
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2016-11-24
  * @link    http://foundation.zurb.com/ Foundation

@@ -10,8 +10,6 @@ namespace Sphp\Html\Headings;
 /**
  * Implements a HTML heading of level 5
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-01-13
  * @link    http://www.w3schools.com/tags/tag_hn.asp w3schools API

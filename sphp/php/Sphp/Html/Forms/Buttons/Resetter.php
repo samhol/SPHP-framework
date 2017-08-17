@@ -12,8 +12,6 @@ use Sphp\Html\Forms\ResetterInterface;
 /**
  * Implements an HTML &lt;input type="reset"&gt; tag
  *
- * {@inheritdoc}
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since  2012-08-22
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API

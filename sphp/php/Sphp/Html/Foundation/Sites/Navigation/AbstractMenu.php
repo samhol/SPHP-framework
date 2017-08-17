@@ -26,7 +26,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
   private $defaultTarget = '_self';
 
   /**
-   *
    * @var ContainerInterface 
    */
   private $items;
@@ -47,17 +46,11 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     $this->cssClasses()->lock('menu');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __destruct() {
     unset($this->items);
     parent::__destruct();
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __clone() {
     $this->items = clone $this->items;
     parent::__clone();
@@ -73,9 +66,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getDefaultTarget() {
     return $this->defaultTarget;
   }
@@ -149,9 +139,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function nested(bool $nested = true) {
     if ($nested) {
       $this->cssClasses()->add('nested');
@@ -161,9 +148,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function vertical(bool $vertical = true) {
     if ($vertical) {
       $this->cssClasses()->add('vertical');
@@ -173,9 +157,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function isVertical(): bool {
     return $this->cssClasses()->contains('vertical');
   }
@@ -204,9 +185,6 @@ class AbstractMenu extends AbstractComponent implements MenuInterface, MenuItemI
     return $this->hasCssClass('is-active');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function contentToString(): string {
     return $this->items->getHtml();
   }

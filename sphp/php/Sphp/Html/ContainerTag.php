@@ -12,8 +12,6 @@ use InvalidArgumentException;
 /**
  * Class is the base class for all HTML tag components acting as HTML component containers
  *
- * {@inheritdoc}
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

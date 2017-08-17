@@ -22,9 +22,7 @@ use Sphp\Html\Lists\Li;
 use Sphp\Html\Media\Img;
 
 /**
- * A photoalbum application
- *
- * {@inheritdoc}
+ * A photo album application
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2011-03-06

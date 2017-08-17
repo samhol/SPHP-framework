@@ -30,10 +30,10 @@ abstract class AbstractPhpApiLinker extends AbstractLinker {
   /**
    * Return the class property linker for the given class
    *
-   * @param  string|\object $class class name or object
+   * @param  string $class class name or object
    * @return ClassLinkerInterface the class property linker
    */
-  abstract public function classLinker($class): ClassLinkerInterface;
+  abstract public function classLinker(string $class): ClassLinkerInterface;
 
   /**
    * Returns a hyperlink object pointing to an API page describing PHP function 

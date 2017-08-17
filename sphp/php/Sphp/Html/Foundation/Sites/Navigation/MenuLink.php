@@ -12,10 +12,6 @@ use Sphp\Html\Lists\HyperlinkListItem;
 /**
  * Implements a hyperlink component for the Dropown menu component
  *
- *
- * {@inheritdoc}
- *
- *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
