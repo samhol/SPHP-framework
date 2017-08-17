@@ -100,9 +100,19 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $columnName, string $op, mixed $params = null, int $type = PDO::PARAM_STR)
+                    <a href="#method___construct">__construct</a>(string $columnName, string $op, mixed $params = [], int $paramType = PDO::PARAM_STR)
         
                                             <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p>Destroys the instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -154,7 +164,7 @@
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isNull">isNull</a>(string $column)
+                    <a href="#method_isNull">isNull</a>(string $columnName)
         
                                             <p>Generates a rule for a column to contain a <code>NULL</code> (empty) value</p>                </div>
                 <div class="col-md-2"></div>
@@ -164,7 +174,7 @@
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isNotNull">isNotNull</a>(string $column)
+                    <a href="#method_isNotNull">isNotNull</a>(string $columnName)
         
                                             <p>Generates a rule for a column to not contain a <code>NULL</code> (empty) value</p>                </div>
                 <div class="col-md-2"></div>
@@ -185,7 +195,7 @@
                     static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isNotIn">isNotIn</a>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
+                    <a href="#method_isNotIn">isNotIn</a>($column, $group, int $paramType = PDO::PARAM_STR)
         
                                             <p>Adds a SQL NOT IN Operator</p>                </div>
                 <div class="col-md-2"></div>
@@ -216,7 +226,7 @@
                     static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_is">is</a>(string $column, mixed $value)
+                    <a href="#method_is">is</a>(string $column, $value, int $paramType = PDO::PARAM_STR)
         
                                             <p>Generates a rule to test the inequality of two given expressions or columns</p>                </div>
                 <div class="col-md-2"></div>
@@ -226,7 +236,7 @@
                     static&nbsp;<a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isNot">isNot</a>(string $column, mixed $value)
+                    <a href="#method_isNot">isNot</a>(string $column, $value, int $paramType = PDO::PARAM_STR)
         
                                             <p>Generates a rule to test the inequality of a given column and a value</p>                </div>
                 <div class="col-md-2"></div>
@@ -270,9 +280,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 45</div>
+        <div class="location">at         line 50</div>
         <code>                    
-    <strong>__construct</strong>(string $columnName, string $op, mixed $params = null, int $type = PDO::PARAM_STR)
+    <strong>__construct</strong>(string $columnName, string $op, mixed $params = [], int $paramType = PDO::PARAM_STR)
         </code>
     </h3>
     <div class="details">
@@ -302,8 +312,8 @@
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$type</td>
-                <td></td>
+                <td>$paramType</td>
+                <td>data type for the parameter</td>
             </tr>
             </table>
 
@@ -315,8 +325,30 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location">at         line 67</div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getParams">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 71</div>
         <code>                    
     <strong>getParams</strong>()
         </code>
@@ -335,7 +367,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generateQuestionMarks">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 77</div>
         <code>            protected        
     <strong>generateQuestionMarks</strong>()
         </code>
@@ -354,7 +386,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSQL">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 86</div>
         <code>                    
     <strong>getSQL</strong>()
         </code>
@@ -373,7 +405,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 75</div>
+        <div class="location">at         line 93</div>
         <code>                    
     <strong>__toString</strong>()
         </code>
@@ -392,9 +424,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNull">
-        <div class="location">at         line 85</div>
+        <div class="location">at         line 103</div>
         <code>        static            string
-    <strong>isNull</strong>(string $column)
+    <strong>isNull</strong>(string $columnName)
         </code>
     </h3>
     <div class="details">
@@ -409,8 +441,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$column</td>
-                <td></td>
+                <td>$columnName</td>
+                <td>the column name</td>
             </tr>
             </table>
 
@@ -432,9 +464,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotNull">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 113</div>
         <code>        static            string
-    <strong>isNotNull</strong>(string $column)
+    <strong>isNotNull</strong>(string $columnName)
         </code>
     </h3>
     <div class="details">
@@ -449,8 +481,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$column</td>
-                <td>the column</td>
+                <td>$columnName</td>
+                <td>the column name</td>
             </tr>
             </table>
 
@@ -472,7 +504,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isIn">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 123</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isIn</strong>(string $column, $group, int $paramType = PDO::PARAM_STR)
         </code>
@@ -520,9 +552,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotIn">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 136</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
-    <strong>isNotIn</strong>(string $column, mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr> $group)
+    <strong>isNotIn</strong>($column, $group, int $paramType = PDO::PARAM_STR)
         </code>
     </h3>
     <div class="details">
@@ -536,14 +568,19 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$column</td>
-                <td>the column</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>mixed[]|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>|<abbr title="Sphp\Database\Traversable">Traversable</abbr></td>
+                <td></td>
                 <td>$group</td>
-                <td>value(s) of the group</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$paramType</td>
+                <td></td>
             </tr>
             </table>
 
@@ -565,7 +602,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_compare">
-        <div class="location">at         line 130</div>
+        <div class="location">at         line 148</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>|string
     <strong>compare</strong>(string $column, string $operator, mixed $expr)
         </code>
@@ -622,7 +659,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_binaryOperationCompare">
-        <div class="location">at         line 168</div>
+        <div class="location">at         line 186</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>binaryOperationCompare</strong>(string|<a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a> $column, string $binOp, string|int|bool $value, string $op, string|int|bool $result)
         </code>
@@ -694,9 +731,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_is">
-        <div class="location">at         line 182</div>
+        <div class="location">at         line 200</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
-    <strong>is</strong>(string $column, mixed $value)
+    <strong>is</strong>(string $column, $value, int $paramType = PDO::PARAM_STR)
         </code>
     </h3>
     <div class="details">
@@ -713,12 +750,17 @@
                     <tr>
                 <td>string</td>
                 <td>$column</td>
-                <td>the column</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$value</td>
-                <td>the value of the expression</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$paramType</td>
+                <td></td>
             </tr>
             </table>
 
@@ -740,9 +782,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNot">
-        <div class="location">at         line 193</div>
+        <div class="location">at         line 211</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
-    <strong>isNot</strong>(string $column, mixed $value)
+    <strong>isNot</strong>(string $column, $value, int $paramType = PDO::PARAM_STR)
         </code>
     </h3>
     <div class="details">
@@ -758,12 +800,17 @@
                     <tr>
                 <td>string</td>
                 <td>$column</td>
-                <td>the column name</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$value</td>
-                <td>the value of the expression</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$paramType</td>
+                <td></td>
             </tr>
             </table>
 
@@ -785,7 +832,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isLike">
-        <div class="location">at         line 207</div>
+        <div class="location">at         line 225</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isLike</strong>(string $column, mixed $pattern)
         </code>
@@ -834,7 +881,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isNotLike">
-        <div class="location">at         line 224</div>
+        <div class="location">at         line 242</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>isNotLike</strong>(string $column, mixed $pattern)
         </code>
@@ -886,7 +933,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 234</div>
+        <div class="location">at         line 252</div>
         <code>        static            <a href="../../Sphp/Database/Rule.html"><abbr title="Sphp\Database\Rule">Rule</abbr></a>
     <strong>create</strong>(mixed $rule)
         </code>

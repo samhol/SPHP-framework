@@ -112,7 +112,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($class, <a href="../../../../../Sphp/Html/Apps/Manual/PHPManual/PHPManualUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\PHPManual\PHPManualUrlGenerator">PHPManualUrlGenerator</abbr></a> $p = null, string $defaultTarget = null, string|string[]|null $defaultCssClasses = null)
+                    <a href="#method___construct">__construct</a>(string $class, <a href="../../../../../Sphp/Html/Apps/Manual/PHPManual/PHPManualUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\PHPManual\PHPManualUrlGenerator">PHPManualUrlGenerator</abbr></a> $p = null, string $defaultTarget = null, string|string[]|null $defaultCssClasses = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -164,7 +164,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_urls">urls</a>()
         
-                                            <p>Returns the url generator pointing to the API documentation</p>                </div>
+                                            <p>Returns the URL generator pointing to the API documentation</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_urls"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -193,7 +193,7 @@
                     <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDefaultTarget">setDefaultTarget</a>(string|null $target)
+                    <a href="#method_setDefaultTarget">setDefaultTarget</a>(string $target)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -221,17 +221,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a>
+                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_insertDefaults">insertDefaults</a>(<a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a> $a)
+                    <a href="#method_insertDefaults">insertDefaults</a>(<a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a> $a)
         
                                             <p>Sets the default target and CSS classes to the hyperlink component</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_insertDefaults"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a>
+                    <abbr title="Sphp\Html\Apps\Manual\HyperlinkInterface">HyperlinkInterface</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hyperlink">hyperlink</a>(string $url = null, string $content = null, string $title = null)
@@ -244,7 +244,7 @@
                     <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getLink">getLink</a>(null|string $name = null)
+                    <a href="#method_getLink">getLink</a>(string $name = null)
         
                                             <p>Returns a hyperlink object pointing to an API class page</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_getLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a></small></div>
@@ -254,7 +254,7 @@
                     <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_methodLink">methodLink</a>(string $method, boolean $full = true)
+                    <a href="#method_methodLink">methodLink</a>(string $method, bool $full = true)
         
                                             <p>Returns a hyperlink object pointing to class method in the API documentation</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_methodLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a></small></div>
@@ -274,7 +274,7 @@
                     <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_namespaceLink">namespaceLink</a>($full = true)
+                    <a href="#method_namespaceLink">namespaceLink</a>(bool $full = true)
         
                                             <p>Returns a hyperlink object pointing to the namespace of the class in the API documentation</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_namespaceLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a></small></div>
@@ -287,9 +287,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 29</div>
+        <div class="location">at         line 30</div>
         <code>                    
-    <strong>__construct</strong>($class, <a href="../../../../../Sphp/Html/Apps/Manual/PHPManual/PHPManualUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\PHPManual\PHPManualUrlGenerator">PHPManualUrlGenerator</abbr></a> $p = null, string $defaultTarget = null, string|string[]|null $defaultCssClasses = null)
+    <strong>__construct</strong>(string $class, <a href="../../../../../Sphp/Html/Apps/Manual/PHPManual/PHPManualUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\PHPManual\PHPManualUrlGenerator">PHPManualUrlGenerator</abbr></a> $p = null, string $defaultTarget = null, string|string[]|null $defaultCssClasses = null)
         </code>
     </h3>
     <div class="details">
@@ -303,7 +303,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$class</td>
                 <td></td>
             </tr>
@@ -333,7 +333,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___destruct"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 44</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___destruct"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 45</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -355,7 +355,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___clone"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 49</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___clone"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 50</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -376,7 +376,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___toString"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 54</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method___toString"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 55</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -406,7 +406,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method___invoke"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 95</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method___invoke"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 97</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a>
     <strong>__invoke</strong>(string $url = null, string $content = null, string $title = null)
         </code>
@@ -456,7 +456,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_urls">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_urls"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 99</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_urls"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 101</div>
         <code>                    <a href="../../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a>
     <strong>urls</strong>()
         </code>
@@ -466,7 +466,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the url generator pointing to the API documentation</p>                                                </div>
+                                    <p>Returns the URL generator pointing to the API documentation</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -474,7 +474,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../../../Sphp/Html/Apps/Manual/UrlGeneratorInterface.html"><abbr title="Sphp\Html\Apps\Manual\UrlGeneratorInterface">UrlGeneratorInterface</abbr></a></td>
-            <td>the url generator pointing to the API documentation</td>
+            <td>the URL generator pointing to the API documentation</td>
         </tr>
     </table>
 
@@ -486,7 +486,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_createUrl">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_createUrl"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 103</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_createUrl"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 105</div>
         <code>                    
     <strong>createUrl</strong>($relative)
         </code>
@@ -515,7 +515,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultTarget">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_getDefaultTarget"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 107</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_getDefaultTarget"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 109</div>
         <code>                    string|null
     <strong>getDefaultTarget</strong>()
         </code>
@@ -545,9 +545,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultTarget">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_setDefaultTarget"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 117</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_setDefaultTarget"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 119</div>
         <code>                    <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a>
-    <strong>setDefaultTarget</strong>(string|null $target)
+    <strong>setDefaultTarget</strong>(string $target)
         </code>
     </h3>
     <div class="details">
@@ -559,7 +559,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$target</td>
                 <td></td>
             </tr>
@@ -583,7 +583,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultCssClasses">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_getDefaultCssClasses"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 128</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_getDefaultCssClasses"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 130</div>
         <code>                    string
     <strong>getDefaultCssClasses</strong>()
         </code>
@@ -613,7 +613,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultCssClasses">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_setDefaultCssClasses"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 139</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_setDefaultCssClasses"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 141</div>
         <code>                    <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a>
     <strong>setDefaultCssClasses</strong>(string|null $defaultCssClasses = null)
         </code>
@@ -653,9 +653,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_insertDefaults">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_insertDefaults"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 152</div>
-        <code>                    <a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a>
-    <strong>insertDefaults</strong>(<a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a> $a)
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractLinker.html#method_insertDefaults"><abbr title="Sphp\Html\Apps\Manual\AbstractLinker">AbstractLinker</abbr></a> at         line 154</div>
+        <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
+    <strong>insertDefaults</strong>(<a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a> $a)
         </code>
     </h3>
     <div class="details">
@@ -669,7 +669,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a></td>
+                <td><a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a></td>
                 <td>$a</td>
                 <td>the hyperlink component to modify</td>
             </tr>
@@ -680,7 +680,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a></td>
             <td>returns the modified component</td>
         </tr>
     </table>
@@ -693,8 +693,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_hyperlink">
-        <div class="location">at         line 36</div>
-        <code>                    <a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a>
+        <div class="location">at         line 37</div>
+        <code>                    <abbr title="Sphp\Html\Apps\Manual\HyperlinkInterface">HyperlinkInterface</abbr>
     <strong>hyperlink</strong>(string $url = null, string $content = null, string $title = null)
         </code>
     </h3>
@@ -730,7 +730,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Navigation/HyperlinkInterface.html"><abbr title="Sphp\Html\Navigation\HyperlinkInterface">HyperlinkInterface</abbr></a></td>
+            <td><abbr title="Sphp\Html\Apps\Manual\HyperlinkInterface">HyperlinkInterface</abbr></td>
             <td>hyperlink object pointing to an API page</td>
         </tr>
     </table>
@@ -743,9 +743,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getLink">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_getLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 62</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_getLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 63</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
-    <strong>getLink</strong>(null|string $name = null)
+    <strong>getLink</strong>(string $name = null)
         </code>
     </h3>
     <div class="details">
@@ -759,7 +759,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>null|string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td>optional alternative class link content</td>
             </tr>
@@ -783,9 +783,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_methodLink">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_methodLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 79</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_methodLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 80</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
-    <strong>methodLink</strong>(string $method, boolean $full = true)
+    <strong>methodLink</strong>(string $method, bool $full = true)
         </code>
     </h3>
     <div class="details">
@@ -804,7 +804,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                 <td>the method name</td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$full</td>
                 <td>true for <code>Class::method()</code> and false for <code>method()</code></td>
             </tr>
@@ -828,7 +828,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_constantLink">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_constantLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 101</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_constantLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 102</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
     <strong>constantLink</strong>(string $constName)
         </code>
@@ -868,9 +868,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_namespaceLink">
-        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_namespaceLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 107</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Apps/Manual/AbstractClassLinker.html#method_namespaceLink"><abbr title="Sphp\Html\Apps\Manual\AbstractClassLinker">AbstractClassLinker</abbr></a> at         line 108</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
-    <strong>namespaceLink</strong>($full = true)
+    <strong>namespaceLink</strong>(bool $full = true)
         </code>
     </h3>
     <div class="details">
@@ -884,7 +884,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>bool</td>
                 <td>$full</td>
                 <td></td>
             </tr>

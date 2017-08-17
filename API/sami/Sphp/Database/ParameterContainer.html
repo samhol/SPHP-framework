@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Db\DatabaseConnector | SPHP framework API</title>
+    <title>Sphp\Database\ParameterContainer | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Db_DatabaseConnector" data-root-path="../../">
+    <body id="class" data-name="class:Sphp_Database_ParameterContainer" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,28 +65,28 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Db.html">Db</a></li><li class="backslash">\</li><li>DatabaseConnector</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Database.html">Database</a></li><li class="backslash">\</li><li>ParameterContainer</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            DatabaseConnector
+            ParameterContainer
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>DatabaseConnector</strong>
+    <p>    interface
+    <strong>ParameterContainer</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Obtains a singelton Database instance for the given database connection</p>                                </div>
+            <p>Description of ParameterContainer</p>                                </div>
     
     
     
@@ -96,12 +96,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<abbr title="Sphp\Db\NestablePDO">NestablePDO</abbr>
+                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_obtain">obtain</a>(string $dsn, string $username, string $password)
+                    <a href="#method_getParams">getParams</a>()
         
-                                            <p>Obtains a singelton Database instance for given database connection</p>                </div>
+                                            <p>Returns the parameter handler</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -111,10 +111,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_obtain">
-        <div class="location">at         line 38</div>
-        <code>        static            <abbr title="Sphp\Db\NestablePDO">NestablePDO</abbr>
-    <strong>obtain</strong>(string $dsn, string $username, string $password)
+                    <h3 id="method_getParams">
+        <div class="location">at         line 25</div>
+        <code>                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
+    <strong>getParams</strong>()
         </code>
     </h3>
     <div class="details">
@@ -122,48 +122,19 @@
     
 
                     <div class="method-description">
-                                    <p>Obtains a singelton Database instance for given database connection</p>                                                </div>
+                                    <p>Returns the parameter handler</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$dsn</td>
-                <td>the Data Source Name</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$username</td>
-                <td>the user name for the DSN string</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$password</td>
-                <td>the password for the DSN string</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Db\NestablePDO">NestablePDO</abbr></td>
-            <td>the object that represents a connection to a database server</td>
+            <td><a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a></td>
+            <td>the parameter handler</td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
-                <td>if there is no database connection or query execution fails</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>

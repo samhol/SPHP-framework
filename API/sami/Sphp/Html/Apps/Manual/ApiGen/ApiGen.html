@@ -99,7 +99,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/Apps/Manual/ApiGen/ApiGenUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator">ApiGenUrlGenerator</abbr></a> $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = [&#039;api&#039;, &#039;apigen&#039;])
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/Apps/Manual/ApiGen/ApiGenUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator">ApiGenUrlGenerator</abbr></a> $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = [&#039;api&#039;, &#039;apigen&#039;])
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -109,7 +109,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_classLinker">classLinker</a>($class)
+                    <a href="#method_classLinker">classLinker</a>(string $class)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -120,7 +120,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_functionLink">functionLink</a>($function, $linkText = null)
+                    <a href="#method_functionLink">functionLink</a>(string $function, string $linkText = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -131,7 +131,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_constantLink">constantLink</a>($constant, $linkText = null)
+                    <a href="#method_constantLink">constantLink</a>(string $constant, string $linkText = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -142,7 +142,7 @@
                     <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_namespaceLink">namespaceLink</a>($namespace, $fullName = true)
+                    <a href="#method_namespaceLink">namespaceLink</a>(string $namespace, string $fullName = true)
         
                                             <p>Returns a hyperlink object pointing to an API namespace page</p>                </div>
                 <div class="col-md-2"></div>
@@ -165,9 +165,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 34</div>
+        <div class="location">at         line 35</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/Apps/Manual/ApiGen/ApiGenUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator">ApiGenUrlGenerator</abbr></a> $urlGenerator = null, $defaultTarget = null, $defaultCssClasses = [&#039;api&#039;, &#039;apigen&#039;])
+    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/Apps/Manual/ApiGen/ApiGenUrlGenerator.html"><abbr title="Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator">ApiGenUrlGenerator</abbr></a> $urlGenerator = null, string $defaultTarget = null, $defaultCssClasses = [&#039;api&#039;, &#039;apigen&#039;])
         </code>
     </h3>
     <div class="details">
@@ -186,7 +186,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$defaultTarget</td>
                 <td></td>
             </tr>
@@ -206,9 +206,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_classLinker">
-        <div class="location">at         line 41</div>
+        <div class="location">at         line 42</div>
         <code>                    
-    <strong>classLinker</strong>($class)
+    <strong>classLinker</strong>(string $class)
         </code>
     </h3>
     <div class="details">
@@ -220,7 +220,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$class</td>
                 <td></td>
             </tr>
@@ -235,9 +235,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_functionLink">
-        <div class="location">at         line 45</div>
+        <div class="location">at         line 46</div>
         <code>                    
-    <strong>functionLink</strong>($function, $linkText = null)
+    <strong>functionLink</strong>(string $function, string $linkText = null)
         </code>
     </h3>
     <div class="details">
@@ -249,12 +249,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$function</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$linkText</td>
                 <td></td>
             </tr>
@@ -269,9 +269,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_constantLink">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 54</div>
         <code>                    
-    <strong>constantLink</strong>($constant, $linkText = null)
+    <strong>constantLink</strong>(string $constant, string $linkText = null)
         </code>
     </h3>
     <div class="details">
@@ -283,12 +283,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$constant</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$linkText</td>
                 <td></td>
             </tr>
@@ -305,7 +305,7 @@
                     <h3 id="method_namespaceLink">
         <div class="location">at         line 69</div>
         <code>                    <a href="../../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
-    <strong>namespaceLink</strong>($namespace, $fullName = true)
+    <strong>namespaceLink</strong>(string $namespace, string $fullName = true)
         </code>
     </h3>
     <div class="details">
@@ -319,14 +319,14 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$namespace</td>
-                <td></td>
+                <td>namespace name</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$fullName</td>
-                <td></td>
+                <td>true if the full namespace name is visible, false otherwise</td>
             </tr>
             </table>
 
