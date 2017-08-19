@@ -74,9 +74,12 @@ class Insert extends AbstractStatement implements DataManipulationStatement {
    * @return self for a fluent interface
    */
   public function valuesFromCollection($values) {
+    if ($values instanceof Traversable) {
+      $values = iterator_to_array($values);
+    }
     if (!\Sphp\Stdlib\Arrays::isIndexed($values)) {
       $this->names = array_keys($values);
-    }if ($values instanceof ParameterHandler) {
+    } if ($values instanceof ParameterHandler) {
       $this->values = $values;
     } else {
       $this->values = Parameters::fromArray($values);

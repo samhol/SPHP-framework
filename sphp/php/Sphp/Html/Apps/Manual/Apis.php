@@ -39,12 +39,12 @@ class Apis {
   private static $phpManual;
 
   /**
-   * @var FoundationDocsLinker[] 
+   * @var FoundationDocsLinker
    */
   private static $foundation;
 
   /**
-   * @var W3schools[] 
+   * @var W3schools
    */
   private static $w3schools;
 
@@ -52,7 +52,7 @@ class Apis {
    * 
    * @param  string $path
    * @param  string|null $target
-   * @return ApiGen
+   * @return ApiGen singleton API linker
    */
   public static function sami(string $path = 'API/sami/', string $target = 'sami'): Sami {
     if (!array_key_exists($path, self::$samis)) {
@@ -66,10 +66,11 @@ class Apis {
   }
 
   /**
+   * Returns a singleton instance of ApiGen API linker
    * 
    * @param  string $path
    * @param  string|null $target
-   * @return ApiGen
+   * @return ApiGen singleton API linker
    */
   public static function apigen(string $path = '', string $target = 'apigen'): ApiGen {
     if ($path === null) {

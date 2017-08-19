@@ -134,10 +134,10 @@ class Popup extends Div {
    * string or to an array of strings. So also an object of any class
    * that implements magic method `__toString()` is allowed.
    *
-   * @param  mixed $content the controller component
-   * @return Controller a controller component pointing to this Modal
+   * @param  ComponentInterface $content the controller component
+   * @return ComponentInterface a controller component pointing to this Modal
    */
-  public function createController(ComponentInterface $content) {
+  public function createController(ComponentInterface $content): ComponentInterface {
     $content->setAttr('data-open', $this->identify());
     return $content;
   }

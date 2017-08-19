@@ -48,7 +48,7 @@ interface LinkerInterface {
    * @param  string $content optional content of the link
    * @param  string $title optional title of the link
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
-   * @return HyperlinkInterface hyperlink object pointing to an API page
+   * @return Hyperlink hyperlink object pointing to an API page
    */
   public function hyperlink(string $url = null, string $content = null, string $title = null): Hyperlink;
 }

@@ -27,11 +27,11 @@ class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterfac
   }
 
   public function getClassMethodUrl(string $class, string $method): string {
-    return $this->getClassUrl($class) . '#_' . $method;
+    return $this->getClassUrl($class) . "#_$method";
   }
 
   public function getClassConstantUrl(string $class, string $constant): string {
-    return $this->getClassUrl($class) . '#_' . $constant;
+    return $this->getClassUrl($class) . "#_$constant";
   }
 
   public function getNamespaceUrl(string $namespace): string {
@@ -45,7 +45,7 @@ class ApiGenUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInterfac
 
   public function getConstantUrl(string $constant): string {
     $path = str_replace('\\', '.', $constant);
-    return $this->createUrl("constant-$path.html");
+    return $this->create("constant-$path.html");
   }
 
 }
