@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Query.php (UTF-8)
+ * AbstractQuery.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -24,14 +24,14 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   /**
    * a list of column(s) to be included in the query
    *
-   * @var string
+   * @var string[]
    */
   private $columns = ['*'];
 
   /**
    * the table(s) from which data is to be retrieved
    *
-   * @var string
+   * @var string[]
    */
   private $from = [];
 
@@ -45,23 +45,30 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   /**
    * the GROUP BY clause
    *
-   * @var string
+   * @var string[]
    */
-  private $groupBy = '';
+  private $groupBy = [];
 
   /**
    * result order
    *
-   * @var string
+   * @var string[]
    */
-  private $orderBy = '';
+  private $orderBy = [];
 
   /**
    * result limit
    *
    * @var int  
    */
-  private $limit = '';
+  private $limit = 0;
+
+  /**
+   * result offset
+   *
+   * @var int  
+   */
+  private $offset = 0;
 
   public function __construct(PDO $db) {
     parent::__construct($db);
@@ -80,6 +87,10 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this;
   }
 
+  public function getColumns(): array {
+    return $this->columns;
+  }
+
   /**
    * Sets the table(s) from which data is to be retrieved
    *
@@ -94,6 +105,30 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this;
   }
 
+  protected function fromToString(): string {
+    if (!empty($this->groupBy)) {
+      return ' FROM ' . implode(', ', $this->from);
+    } else {
+      return '';
+    }
+  }
+
+  public function getFrom() {
+    return $this->from;
+  }
+
+  public function getHaving() {
+    return $this->having;
+  }
+
+  public function getGroupBy() {
+    return $this->groupBy;
+  }
+
+  public function getOrderBy() {
+    return $this->orderBy;
+  }
+
   /**
    * Sets the GROUP BY clause to the query
    *
@@ -103,12 +138,20 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    *  GROUP BY is often used in conjunction with SQL aggregation functions or to eliminate duplicate
    *  rows from a result set.
    *
-   * @param  string|string[] $columns the columns
+   * @param  string $columns the columns
    * @return self for a fluent interface
    */
   public function groupBy(string ...$columns) {
-    $this->groupBy = implode(", ", $columns);
+    $this->groupBy = $columns;
     return $this;
+  }
+
+  protected function groupByToString(): string {
+    if (!empty($this->groupBy)) {
+      return ' GROUP BY ' . implode(', ', $this->groupBy);
+    } else {
+      return '';
+    }
   }
 
   /**
@@ -162,8 +205,38 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy(string ...$columns) {
-    $this->orderBy = implode(', ', $columns);
+    $this->orderBy = $columns;
     return $this;
+  }
+
+  protected function orderByToString(): string {
+    if (!empty($this->orderBy)) {
+      return ' ORDER BY ' . implode(', ', $this->orderBy);
+    } else {
+      return '';
+    }
+  }
+
+  public function getLimit() {
+    return $this->limit;
+  }
+
+  public function getOffset(): int {
+    return $this->offset;
+  }
+
+  public function setLimit(int $limit) {
+    $this->limit = $limit;
+    return $this;
+  }
+
+  public function setOffset(int $offset) {
+    $this->offset = $offset;
+    return $this;
+  }
+
+  public function hasLimit(): bool {
+    return $this->limit > 0;
   }
 
   /**
@@ -197,34 +270,27 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this;
   }
 
-  protected function msLimit(int $limit) {
-    $this->limit = " TOP $limit ";
-    return $this;
-  }
-
-  public function statementToString(): string {
+  /*  public function statementToString(): string {
     $query = 'SELECT ';
     if ($this->getCurrentDriver() === 'sqlsrv') {
-      $query .= $this->limit;
+    $query .= $this->limit;
     }
     $query .= " " . implode(', ', $this->columns);
     $query .= " FROM " . implode(', ', $this->from);
 
     $query .= $this->conditionsToString();
-    if (strlen($this->groupBy) > 0) {
-      $query .= " GROUP BY " . $this->groupBy;
-    }
+    $query .= $this->groupByToString();
     if (strlen($this->having) > 0) {
-      $query .= " HAVING " . $this->having;
+    $query .= " HAVING " . $this->having;
     }
     if (strlen($this->orderBy) > 0) {
-      $query .= " ORDER BY " . $this->orderBy;
+    $query .= " ORDER BY " . $this->orderBy;
     }
     if ($this->getCurrentDriver() === 'mysql') {
-      $query .= $this->limit;
+    $query .= $this->limit;
     }
     return $query;
-  }
+    } */
 
   /**
    * Executes the SQL query in the given database and returns the result rows as an array

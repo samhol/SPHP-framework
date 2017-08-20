@@ -58,22 +58,20 @@ class Query extends AbstractQuery {
 
   public function statementToString(): string {
     $query = 'SELECT ';
-
-    $query .= " " . implode(', ', $this->columns);
-    $query .= " FROM " . implode(', ', $this->from);
-
+    $query .= " " . implode(', ', $this->getColumns());
+    $query .= $this->fromToString();
     $query .= $this->conditionsToString();
-    if (strlen($this->groupBy) > 0) {
-      $query .= " GROUP BY " . $this->groupBy;
+    $query .= $this->groupByToString();
+    if (strlen($this->getHaving()) > 0) {
+      $query .= " HAVING " . $this->getHaving();
     }
-    if (strlen($this->having) > 0) {
-      $query .= " HAVING " . $this->having;
+    $query .= $this->orderByToString();
+    if ($this->hasLimit()) {
+      $query .= " LIMIT {$this->getLimit()}";
+      if ($this->getOffset() > 0) {
+        $query .= " OFFSET {$this->getOffset()}";
+      }
     }
-    if (strlen($this->orderBy) > 0) {
-      $query .= " ORDER BY " . $this->orderBy;
-    }
-    $query .= $this->limit;
-
     return $query;
   }
 

@@ -32,6 +32,11 @@ class Db {
   private $pdo;
 
   /**
+   * @var StatementStrategy
+   */
+  private $strategy;
+
+  /**
    * Constructs a new instance
    *
    * @param  PDO $pdo connection object between PHP and a database server
@@ -39,6 +44,7 @@ class Db {
    */
   public function __construct(PDO $pdo = null) {
     $this->pdo = $pdo;
+    $this->strategy = new StatementStrategy($pdo);
   }
 
   /**
@@ -111,11 +117,11 @@ class Db {
    */
   public function __call(string $name, array $arguments = []) {
     if ($name === 'query') {
-      return new Query($this->pdo);
+      return $this->strategy->createQuery();
     } else if ($name === 'delete') {
       return new Delete($this->pdo);
     } else if ($name === 'insert') {
-      return new Insert($this->pdo);
+      return $this->strategy->createInsert();
     } else if ($name === 'update') {
       return new Update($this->pdo);
     } else {

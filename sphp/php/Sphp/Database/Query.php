@@ -49,23 +49,29 @@ class Query extends ConditionalStatement implements IteratorAggregate {
    */
   private $groupBy = '';
 
-  /**
-   * result order
-   *
-   * @var string
-   */
-  private $orderBy = '';
-
-  /**
-   * result limit
-   *
-   * @var int  
-   */
-  private $limit = '';
+ 
 
   public function __construct(PDO $db) {
     parent::__construct($db);
     $this->get('*');
+  }
+
+  public function getLimit() {
+    return $this->limit;
+  }
+
+  public function getOffset(): int {
+    return $this->offset;
+  }
+
+  public function setLimit(int $limit) {
+    $this->limit = $limit;
+    return $this;
+  }
+
+  public function setOffset(int $offset) {
+    $this->offset = $offset;
+    return $this;
   }
 
   /**
@@ -79,7 +85,7 @@ class Query extends ConditionalStatement implements IteratorAggregate {
     $this->columns = $columns;
     return $this;
   }
-
+  
   /**
    * Sets the table(s) from which data is to be retrieved
    *
@@ -245,14 +251,7 @@ class Query extends ConditionalStatement implements IteratorAggregate {
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function count(): int {
-    $columns = $this->columns;
-    $groupBy = $this->groupBy;
-    $this->groupBy();
     $count = $this->get("COUNT(*)")->execute()->fetchColumn();
-    //echo $this->statementToString();
-    //var_dump($count);
-    $this->columns = $columns;
-
     return (int) $count;
   }
 

@@ -5,9 +5,9 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Database;
+namespace Sphp\Database\MySQL;
 
-use Traversable;
+use Sphp\Database\AbstractInsert;
 
 /**
  * An implementation of an SQL INSERT statement

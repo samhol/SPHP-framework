@@ -10,7 +10,8 @@ try {
   //var_dump($query->count());
   print_r($query
           ->groupBy('address.country ASC', 'person.lname')
-          ->limit(30)
+          ->setLimit(5)
+          ->setOffset(10)
           ->fetchAll());
 } catch (\Throwable $ex) {
   echo $ex;

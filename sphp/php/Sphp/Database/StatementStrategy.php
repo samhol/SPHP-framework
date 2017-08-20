@@ -17,16 +17,22 @@ use PDO;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InsertStrategy {
+class StatementStrategy {
 
   /**
    * @var PDO 
    */
   private $pdo;
+  
+  private $map = ['mysql' => 'MySQL', 'sqlsrv' => 'Microsoft'];
 
   //bookList is not instantiated at construct time
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
+  }
+  
+  public function getNamespace():string {
+    
   }
 
   public function createInsert() {
@@ -42,7 +48,7 @@ class InsertStrategy {
     return $insert;
   }
 
-  public function createQuery() {
+  public function createQuery(): AbstractQuery {
     $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
     switch ($driver) {
       case 'mysql':
