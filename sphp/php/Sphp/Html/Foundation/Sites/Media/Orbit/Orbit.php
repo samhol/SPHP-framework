@@ -138,7 +138,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 
    * @precondition $value =&gt; 0
    * @param  bolean $visible true for autoplay and false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showBullets($visible = true) {
     $this->bulletsVisible = (boolean) $visible;
@@ -156,7 +156,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 
    * @precondition $value =&gt; 0
    * @param  bolean $visible true for autoplay and false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showNavigationButtons($visible = true) {
     $this->navButtonsVisible = (boolean) $visible;
@@ -172,7 +172,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the amount of time, in ms, between slide transitions
    * 
    * @param  bolean $autoplay true for autoplay and false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function autoplay($autoplay = true) {
     $this->attrs()->set('data-auto-play', $autoplay ? 'true' : 'false');
@@ -184,7 +184,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 
    * @precondition $value =&gt; 0
    * @param  int $value amount of time, in ms, between slide transitions
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTimerDelay($value = 5000) {
     $this->attrs()->set('data-timer-delay', $value);
@@ -195,7 +195,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the looping on or off
    * 
    * @param  boolean $loop true for on and false for off
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function loop($loop = true) {
     $this->attrs()->set('data-infinite-wrap', $loop ? 'true' : 'false');
@@ -206,7 +206,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the Orbit to bind keyboard events to the slider, to animate frames with arrow keys
    * 
    * @param  boolean $accessible true for accessibility and false for not
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function accessibility($accessible = true) {
     $this->attrs()->set('data-accessible', $accessible ? 'true' : 'false');
@@ -217,7 +217,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the timing function to pause animation on hover
    * 
    * @param  boolean $pause true for pausing and false for not pausing
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function pauseOnHover($pause = true) {
     $this->attrs()->set('data-pause-on-hover', $pause ? 'true' : 'false');
@@ -228,7 +228,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes in from the left
    * 
    * @param  string $effect the transition to play when a slide comes in from the left
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -241,7 +241,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes in from the right
    * 
    * @param  string $effect the transition to play when a slide comes in from the right
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -254,7 +254,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes in
    * 
    * @param  string $effect the transition to play when a slide comes in
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -268,7 +268,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes out from the left
    * 
    * @param  string $effect the transition to play when a slide comes out from the left
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -281,7 +281,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes out from the right
    * 
    * @param  string $effect the transition to play when a slide comes out from the right
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -294,7 +294,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the transition to play when a slide comes in
    * 
    * @param  string $effect the transition to play when a slide comes out
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/orbit.html#using-animation
    * @link   http://foundation.zurb.com/sites/docs/motion-ui.html Foundation Motion UI
    */
@@ -308,7 +308,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Sets the slide of given index active
    *
    * @param  int $index
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive($index) {
     foreach ($this->slides as $no => $slide) {
@@ -338,7 +338,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 3. All items of an array are treated according to note (2)
    *
    * @param  mixed|SlideInterface $slide
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append($slide) {
     if (!($slide instanceof SlideInterface)) {
@@ -355,7 +355,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    *
    * @param  string|URL|Img $img the image path or the image component
    * @param  mixed|mixed[] $caption the caption of the slide
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendFigure($img, $caption = null) {
     return $this->append(new FigureSlide($img, $caption));
@@ -365,7 +365,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Appends a new slide component to this orbit
    *
    * @param  VideoPlayerInterface|FlexVideo $player the image path or the image component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendIframe($player) {
     return $this->append(new ResponsiveEmbedSlide($player));
@@ -376,7 +376,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * 
    * @param  string $videoId the id of the YouTube video or playlist
    * @param  boolean $isPlaylist whether the videoid is a playlist or a single video
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendYoutubeVideo($videoId, $isPlaylist = false) {
     return $this->appendIframe(ResponsiveEmbed::youtube($videoId, $isPlaylist));
@@ -386,7 +386,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Appends a new slide component containing a {@link VimeoPlayer} instance
    * 
    * @param  string $videoId the id of the Vimeo video
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendVimeoVideo($videoId) {
     return $this->appendIframe(ResponsiveEmbed::vimeo($videoId));
@@ -396,7 +396,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
    * Appends a new slide component containing a {@link DailyMotionPlayer} instance
    * 
    * @param  string $videoId the id of the DailyMotion video
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendDailymotionVideo($videoId) {
     return $this->appendIframe(ResponsiveEmbed::dailymotion($videoId));

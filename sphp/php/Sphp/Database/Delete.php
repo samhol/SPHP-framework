@@ -27,7 +27,7 @@ class Delete extends ConditionalStatement implements DataManipulationStatement {
    * Sets the table from where the data is to be deleted
    *
    * @param  string $table the table
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function from(string $table) {
     $this->table = $table;

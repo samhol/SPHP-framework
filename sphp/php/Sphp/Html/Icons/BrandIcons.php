@@ -45,7 +45,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @param  string $url
    * @param  string|null $target optional target of  the hyperlink
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setGithub(string $url = null, string $target = null) {
     if ($url === null) {
@@ -59,7 +59,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @param  string $url
    * @param  string|null $target optional target of  the hyperlink
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setFacebook(string $url = null, string $target = null) {
     if ($url === null) {
@@ -73,7 +73,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @param  string $url
    * @param  string|null $target optional target of  the hyperlink
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTwitter(string $url = 'https://twitter.com/', string $target = null) {
     $this->setIcon(static::TWITTER, HyperlinkIcon::fontAwesome($url, 'twitter', $target));
@@ -84,7 +84,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @param  string $url
    * @param  string|null $target optional target of  the hyperlink
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setGooglePlus(string $url = null, string $target = null) {
     if ($url === null) {
@@ -113,7 +113,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @param  string $index
    * @param  \Sphp\Html\Icons\HyperlinkIcon $icon
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setIcon(string $index, HyperlinkIcon $icon) {
     $this->icons[$index] = $icon;

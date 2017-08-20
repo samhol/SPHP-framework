@@ -47,7 +47,7 @@ class SingleAccordion extends AbstractContainerTag {
    * Sets the title of the accordion pane
    *
    * @param  mixed|mixed[] $title the heading of the accordion
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPaneTitle($title) {
     $this->getPane()->setPaneTitle($title);
@@ -58,7 +58,7 @@ class SingleAccordion extends AbstractContainerTag {
    * Sets the visibility of the content after initialization
    *
    * @param  boolean $visibility true if the content is visible, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function contentVisible(bool $visibility = true) {
     $this->getPane()->contentVisible($visibility);

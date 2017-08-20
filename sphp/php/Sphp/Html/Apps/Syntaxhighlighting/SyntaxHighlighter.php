@@ -100,7 +100,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
 
   /**
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   private function initGeshi() {
     $this->geshi = new GeSHi();
@@ -129,7 +129,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   /**
    * 
    * @param  string $seed
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSyntaxBlockId($seed = "geshi_") {
     $this->geshiId = $seed . Strings::random();
@@ -141,7 +141,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * S
    * 
    * @param  int $number
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function startLineNumbersAt($number) {
     $this->geshi->start_line_numbers_at($number);
@@ -151,7 +151,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
   /**
    * 
    * @param  boolean $show
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showLineNumbers(bool $show = true) {
     if ($show) {
@@ -166,7 +166,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * Sets whether the footer is visible or not
    *
    * @param  boolean $use true the footer is visible, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function useFooter(bool $use = true) {
     $vis = new VisibilityAdapter($this->footer);
@@ -192,7 +192,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * Sets whether the copy button is in use or not
    *
    * @param  boolean $use true if the button is in use, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function useDefaultContentCopyController(bool $use = true) {
     $vis = new VisibilityAdapter($this->copyBtn->getController());
@@ -204,7 +204,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * Sets the copier button
    *
    * @param  mixed $button the copier button
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDefaultContentCopyController($button = "copy") {
     if (!($button instanceof ComponentInterface)) {
@@ -243,7 +243,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    * 
    * @param  string $path
    * @param  string $lang
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function executeFromFile(string $path, string $lang = 'text') {

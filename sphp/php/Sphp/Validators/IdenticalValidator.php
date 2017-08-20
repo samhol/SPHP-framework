@@ -61,7 +61,7 @@ class IdenticalValidator extends AbstractValidator {
    * Sets the range of the valid string length
    *
    * @param mixed[] $token the haystack
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setToken($token) {
     $this->token = $token;
@@ -75,7 +75,7 @@ class IdenticalValidator extends AbstractValidator {
   /**
    * 
    * @param  boolean $strict
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setStrict($strict) {
     $this->strict = $strict;

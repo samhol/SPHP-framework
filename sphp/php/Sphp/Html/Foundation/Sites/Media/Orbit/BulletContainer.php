@@ -39,7 +39,7 @@ class BulletContainer extends AbstractContainerComponent {
    * Sets a bullet pointing to a Orbit component
    *
    * @param  int|Bullet $bullet
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function set($bullet) {
     if (!($bullet instanceof Bullet)) {
@@ -67,7 +67,7 @@ class BulletContainer extends AbstractContainerComponent {
    * Sets the bullet of given index active
    *
    * @param  int $bulletNo
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive($bulletNo) {
     foreach ($this->getInnerContainer() as $no => $bullet) {

@@ -60,7 +60,7 @@ class Img extends EmptyTag implements ImgInterface {
   /**
    * 
    * @param  string|Map $map the image map name or instance
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function useMap($map) {
     if ($map instanceof ImageMap\Map) {
@@ -89,7 +89,7 @@ class Img extends EmptyTag implements ImgInterface {
    *    (in this case you don't need to define "alt attribute at all")
    *
    * @param  string $alt the alternate text for an image
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function setAlt(string $alt) {

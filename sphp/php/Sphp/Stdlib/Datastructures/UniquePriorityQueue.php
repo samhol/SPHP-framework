@@ -72,7 +72,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * @postcondition getPriority($value) >= $priority
    * @param  mixed $value the object to add
    * @param  int $priority the associated priority as a positive integer
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function enqueue($value, $priority = 0) {
     $oldPriority = $this->getPriority($value);
@@ -97,7 +97,7 @@ class UniquePriorityQueue implements IteratorAggregate, Countable, QueueInterfac
    * Removes the given value from the queue
    * 
    * @param  mixed $value the value to delete
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function remove($value) {
     $f = function($val) use($value) {

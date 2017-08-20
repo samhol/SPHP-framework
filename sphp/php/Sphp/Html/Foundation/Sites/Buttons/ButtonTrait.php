@@ -27,7 +27,7 @@ trait ButtonTrait {
    * This is purely a visual style
    *
    * @param  boolean $disabled true if the button is disabled, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#dropdown-arrows
    */
   public function disable(bool $disabled = true) {
@@ -42,7 +42,7 @@ trait ButtonTrait {
   /**
    * 
    * @param  boolean $dropdown
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function isDropdown(bool $dropdown = true) {
     if ($dropdown) {
@@ -56,7 +56,7 @@ trait ButtonTrait {
   /**
    * 
    * @param  boolean $hollow
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function isHollow(bool $hollow = true) {
     if ($hollow) {

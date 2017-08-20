@@ -38,7 +38,7 @@ class Clause implements RuleInterface, Iterator {
    * 
    * @param  mixed $rule
    * @param  string $conn
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function fulfills($rule, string $conn = 'AND') {
     if (!empty($this->rules)) {
@@ -51,7 +51,7 @@ class Clause implements RuleInterface, Iterator {
   /**
    * 
    * @param  array $rules
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function fulfillsAll(array $rules) {
     foreach ($rules as $rule) {

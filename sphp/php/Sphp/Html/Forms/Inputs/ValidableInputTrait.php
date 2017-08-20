@@ -31,7 +31,7 @@ trait ValidableInputTrait {
    * 
    * @param  boolean $required true if the input must have a value before form 
    *         submission, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setRequired(bool $required = true) {
     return $this->setAttr('required', $required);

@@ -36,7 +36,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
    * 
    * @param  mixed $value
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendParam($value, int $type = PDO::PARAM_STR) {
     $name = $this->count() + 1;
@@ -48,7 +48,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
    * 
    * @param array|Traversable $params
    * @param int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendParams($params, int $type = PDO::PARAM_STR) {
     foreach ($params as $value) {
@@ -62,7 +62,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
    * @param  string $name
    * @param  mixed $value
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
     if ($name !== null && (!is_int($name) || $name <= 0)) {
@@ -78,7 +78,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
   /**
    * 
    * @param  array|Traversable $params
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function mergeParams($params) {
@@ -101,7 +101,7 @@ class SequentialParameters extends Parameters implements \ArrayAccess {
    *
    * @param  array $params
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParams(array $params, int $type = PDO::PARAM_STR) {
     foreach ($params as $name => $value) {

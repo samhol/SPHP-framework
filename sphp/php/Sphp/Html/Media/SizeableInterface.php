@@ -39,14 +39,14 @@ interface SizeableInterface extends ContentInterface {
    * Sets the width of the component (in pixels)
    * 
    * @param  int $width the width of the component (in pixels))
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setWidth(int $width);
 
   /**
    * Unsets the width of the component
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetWidth();
 
@@ -70,14 +70,14 @@ interface SizeableInterface extends ContentInterface {
    * Sets the height of the component (in pixels)
    * 
    * @param  int $height the height of the component (in pixels)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHeight(int $height);
 
   /**
    * Unsets the height of the component
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetHeight();
 }

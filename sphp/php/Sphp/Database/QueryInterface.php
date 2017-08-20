@@ -24,7 +24,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    *
    * @param  string $columns the column(s) to show (can have multiple
    *         string parameters)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function get(string ...$columns);
 
@@ -35,7 +35,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    *
    * @param  string $tables the table(s) to show (can have multiple
    *         string parameters)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function from(string ...$tables);
 
@@ -49,7 +49,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    *  rows from a result set.
    *
    * @param  string|string[] $columns the columns
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function groupBy(string ...$columns);
 
@@ -66,7 +66,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    * * **If you are using multiple arguments; None of the arguments should be an array**
    *
    * @param  string|string[] $cond condition(s) (accepts multiple arguments)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function having(string ...$cond);
 
@@ -87,7 +87,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    * - 'DESC' indicates descending order
    *
    * @param  string ...$columns the column(s) (accepts multiple arguments)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy(string ...$columns);
@@ -110,7 +110,7 @@ interface QueryInterface extends ConditionalStatementInterface, Traversable, \Co
    *
    * @param  int $limit the maximum number of rows to return
    * @param  mixed $offset the offset of the initial row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function limit(int $limit, int $offset = 0);
 

@@ -53,7 +53,7 @@ class Embed extends EmptyTag implements LazyMediaInterface, SizeableInterface {
    * embedded content.
    *
    * @param  string $type the MIME type of the embedded component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_embed_type.asp type attribute
    */
   public function setType(string $type) {

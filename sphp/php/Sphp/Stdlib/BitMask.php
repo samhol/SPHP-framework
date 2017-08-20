@@ -46,7 +46,7 @@ class BitMask implements Arrayable, Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function and_($bitmask) {
     $this->mask = $this->mask & self::parseFlagsToInt($bitmask);
@@ -59,7 +59,7 @@ class BitMask implements Arrayable, Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the other bitmask
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function or_($bitmask) {
     $this->mask = $this->mask | self::parseFlagsToInt($bitmask);
@@ -72,7 +72,7 @@ class BitMask implements Arrayable, Embeddable {
    * **IMPORTANT:** a string `$bitmask` is always treated as binary number
    *
    * @param int|string|BitMask $bitmask the flags to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function xor_($bitmask) {
     $this->mask = $this->mask ^ self::parseFlagsToInt($bitmask);
@@ -84,7 +84,7 @@ class BitMask implements Arrayable, Embeddable {
    *
    * @param  int $index the specified index
    * @param  boolean $bit the bit value to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function set(int $index, bool $bit = true) {
     $value = intval(boolval($bit));
@@ -112,7 +112,7 @@ class BitMask implements Arrayable, Embeddable {
    * **Notes:** a string <var>$bits</var> is always trated as binary number
    *
    * @param int|string|BitMask $bits the flags unset
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clear($bits) {
     $this->mask &= ~self::parseFlagsToInt($bits);
@@ -122,7 +122,7 @@ class BitMask implements Arrayable, Embeddable {
   /**
    * Inverts the bits from 1 to 0 and vice versa
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function invert() {
     $this->mask = ~$this->mask;

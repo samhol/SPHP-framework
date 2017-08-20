@@ -34,7 +34,7 @@ interface SyntaxHighlighterInterface extends ContentInterface {
    * Sets whether the copy button is in use or not
    *
    * @param  boolean $use true if the button is in use, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function useDefaultContentCopyController(bool $use = true);
 
@@ -42,7 +42,7 @@ interface SyntaxHighlighterInterface extends ContentInterface {
    * Sets the copier button
    *
    * @param  mixed $content the actual controller or the content of the controller
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDefaultContentCopyController($content = 'Copy');
 
@@ -51,7 +51,7 @@ interface SyntaxHighlighterInterface extends ContentInterface {
    *
    * @param  string $source the source code to parse
    * @param  string $lang name of the source code language
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSource(string $source, string $lang);
 
@@ -59,7 +59,7 @@ interface SyntaxHighlighterInterface extends ContentInterface {
    * Reads the source code from an file
    *
    * @param  string $filename name of the file to read
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Exception if the file was not found
    */
   public function loadFromFile(string $filename);

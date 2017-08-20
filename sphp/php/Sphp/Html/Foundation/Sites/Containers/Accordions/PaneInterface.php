@@ -25,7 +25,7 @@ interface PaneInterface extends LiInterface {
    * Sets the title of the accordion pane
    *
    * @param  mixed $title the heading content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPaneTitle($title);
 
@@ -33,7 +33,7 @@ interface PaneInterface extends LiInterface {
    * Sets the visibility of the content after initialization
    *
    * @param  boolean $visibility true if the content is visible, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function contentVisible(bool $visibility = true);
 }

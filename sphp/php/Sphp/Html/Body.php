@@ -67,7 +67,7 @@ class Body extends ContainerTag implements ContentParserInterface {
   /**
    * Sets up the SPHP framework related JavaScript files to the end of the body
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function enableSPHP() {
     $sphpScripts = new SphpScriptsLoader();

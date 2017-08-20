@@ -61,7 +61,7 @@ class ErrorDispatcher {
   /**
    * Starts redirecting PHP errors
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function startErrorHandling() {
     $prev = set_error_handler([$this, 'triggerError'], \E_ALL);
@@ -75,7 +75,7 @@ class ErrorDispatcher {
   /**
    * Starts Exception Handling
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function startExceptionHandling() {
     $prev = set_exception_handler([$this, 'triggerException']);
@@ -89,7 +89,7 @@ class ErrorDispatcher {
   /**
    * Stops redirecting PHP errors
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function stopErrorHandling() {
     restore_error_handler();
@@ -99,7 +99,7 @@ class ErrorDispatcher {
   /**
    * Restores the previously defined exception handler function
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.restore-exception-handler.php PHP manual
    */
   public function stopExceptionHandling() {
@@ -115,7 +115,7 @@ class ErrorDispatcher {
    * @param  int $errorLevel
    * @param  callable|ErrorListener $listener
    * @param  int $priority
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException;
    */
   public function addErrorListener(int $errorLevel, $listener, int $priority = 0) {
@@ -130,7 +130,7 @@ class ErrorDispatcher {
    * 
    * @param  callable|ExceptionListener $listener
    * @param  int $priority
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException;
    */
   public function addExceptionListener($listener, int $priority = 0) {
@@ -175,7 +175,7 @@ class ErrorDispatcher {
    * Propagates PHP error to its listeners
    * 
    * @param  Throwable
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function triggerException(Throwable $t) {
     foreach ($this->exceptionListeners->toArray() as $l) {

@@ -28,7 +28,7 @@ interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable 
    * @param  mixed $name
    * @param  mixed $value
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParam($name, $value);
 
@@ -38,7 +38,7 @@ interface ParameterHandler extends \ArrayAccess, Iterator, Countable, Arrayable 
    *
    * @param  array $params
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParams(array $params, int $type = PDO::PARAM_STR);
 

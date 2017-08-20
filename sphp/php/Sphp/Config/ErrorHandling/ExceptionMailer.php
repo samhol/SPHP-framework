@@ -62,7 +62,7 @@ class ExceptionMailer implements ExceptionListener {
    * Sets senders email address
    * 
    * @param  string $sender optional senders email address (null for none)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSender(string $sender = null) {
     $this->sender = $sender;
@@ -82,7 +82,7 @@ class ExceptionMailer implements ExceptionListener {
    * Sets receivers email address
    * 
    * @param  string $receiver receivers email address
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setReceiver(string $receiver) {
     $this->receiver = $receiver;
@@ -92,7 +92,7 @@ class ExceptionMailer implements ExceptionListener {
   /**
    * 
    * @param  Throwable $t the throwable to mail
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function send(Throwable $t) {
     $mail = new Message();

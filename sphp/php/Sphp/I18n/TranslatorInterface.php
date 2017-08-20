@@ -28,7 +28,7 @@ interface TranslatorInterface {
    * Sets the language used for translations
    * 
    * @param string $lang the name of the language used for translations
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLang(string $lang);
 

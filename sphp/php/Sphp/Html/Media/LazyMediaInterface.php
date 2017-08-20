@@ -30,7 +30,7 @@ interface LazyMediaInterface extends ContentInterface {
    * `data-src` attribute instead of the `src` attribute
    * 
    * @param  boolean $lazy true for lazy loading, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLazy(bool $lazy = true);
 

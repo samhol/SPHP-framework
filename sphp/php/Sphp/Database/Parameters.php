@@ -58,7 +58,7 @@ abstract class Parameters implements ParameterHandler {
    * Merges given parameters
    * 
    * @param  array|Traversable $params parameters to merge
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Exception if merging fails
    */
   abstract public function mergeParams($params);
@@ -68,7 +68,7 @@ abstract class Parameters implements ParameterHandler {
    * @param  mixed $name
    * @param  mixed $value
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {
     $this->params[$name] = $value;
@@ -95,7 +95,7 @@ abstract class Parameters implements ParameterHandler {
    *
    * @param  array $params
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParams(array $params, int $type = PDO::PARAM_STR) {
     foreach ($params as $name => $value) {

@@ -34,7 +34,7 @@ class Polygon extends AbstractArea {
    * 
    * @param  int $x the x-coordinate of the edge
    * @param  int $y the y-coordinate of the edge
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendEdge(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
@@ -49,7 +49,7 @@ class Polygon extends AbstractArea {
    * Sets the coordinates of the polygon
    * 
    * @param int[] $coords coordinates as an array
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCoordinates(array $coords) {
     $count = count($coords);

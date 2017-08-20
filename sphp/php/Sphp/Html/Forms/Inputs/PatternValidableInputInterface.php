@@ -24,7 +24,7 @@ interface PatternValidableInputInterface extends ValidableInputInterface {
    * **Note:** The pattern attribute works with the following input types: text, search, url, tel, email, and password.
    * 
    * @param  string $pattern a regular expression pattern
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPattern($pattern);
 

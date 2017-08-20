@@ -58,7 +58,7 @@ class CalendarDate implements Translatable {
   /**
    * 
    * @param  DateTimeInterface $date
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDate(DateTimeInterface $date) {
     $this->date = $date;

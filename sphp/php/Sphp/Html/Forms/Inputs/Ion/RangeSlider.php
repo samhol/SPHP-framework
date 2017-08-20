@@ -51,7 +51,7 @@ class RangeSlider extends AbstractSlider {
    * Sets the separator for double values in input value property
    * 
    * @param  string $separator separator for double values in input value property
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setInputValueSeparator($separator) {
     $this->attrs()->set('data-input-values-separator', $separator);
@@ -62,7 +62,7 @@ class RangeSlider extends AbstractSlider {
    * Sets the value of the value attribute
    *
    * @param  int|int[]|string $value the value of the value attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException if parameter(s) are not suitable for range slider
    */
   public function setValue($value) {

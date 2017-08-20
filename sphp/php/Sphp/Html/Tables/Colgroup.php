@@ -37,7 +37,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 *
 	 * @param  string $span specifies the number of columns a col element should span
 	 * @param  string|string[] $cssClasses CSS classes
-	 * @return self for a fluent interface
+	 * @return $this for a fluent interface
 	 */
 	public function appendCol($span = 1, $cssClasses = '') {
 		$this->append(new Col($span, $cssClasses));
@@ -48,7 +48,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 * Appends cols(s) to the colgroup
 	 *
 	 * @param  Col|Col[] $cols The ColTag(s) objects that specifies column properties
-	 * @return self for a fluent interface
+	 * @return $this for a fluent interface
 	 */
 	public function append($cols) {
 		parent::append($cols);
@@ -61,7 +61,7 @@ class Colgroup extends ContainerTag implements TableContentInterface {
 	 * **Important!** The numeric keys of the object will be renumbered starting from zero
 	 *
 	 * @param  Col|Col[] $cols The ColTag(s) objects that specifies column properties
-	 * @return self for a fluent interface
+	 * @return $this for a fluent interface
 	 */
 	public function prepend($cols) {		
 		parent::prepend($cols);

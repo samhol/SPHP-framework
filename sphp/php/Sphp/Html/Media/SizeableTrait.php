@@ -49,7 +49,7 @@ trait SizeableTrait {
    * Sets the width of the component (in pixels)
    * 
    * @param  int $width the width of the component (in pixels))
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setWidth(int $width) {
     $this->attrs()->set('width', $width);
@@ -59,7 +59,7 @@ trait SizeableTrait {
   /**
    * Unsets the width of the component
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetWidth() {
     $this->attrs()->remove('width');
@@ -89,7 +89,7 @@ trait SizeableTrait {
    * Sets the height of the component (in pixels)
    * 
    * @param  int $height the height of the component (in pixels)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHeight(int $height) {
     $this->attrs()->set('height', $height);
@@ -99,7 +99,7 @@ trait SizeableTrait {
   /**
    * Unsets the height of the component
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetHeight() {
     $this->attrs()->remove('height');

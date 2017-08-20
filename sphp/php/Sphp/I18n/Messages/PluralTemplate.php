@@ -57,7 +57,7 @@ class PluralTemplate extends AbstractTemplate {
 
   /**
    * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPlural(bool $plural = true) {
     $this->n = $plural ? 2 : 1;
@@ -66,7 +66,7 @@ class PluralTemplate extends AbstractTemplate {
 
   /**
    * @param  boolean $plural the number (e.g. item count) to determine the translation for the respective grammatical number
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function isPlural(): bool {
     return $this->n > 1;

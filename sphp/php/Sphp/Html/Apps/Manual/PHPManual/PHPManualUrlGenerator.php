@@ -73,7 +73,7 @@ class PHPManualUrlGenerator extends UrlGenerator implements ApiUrlGeneratorInter
    * Sets the language of the PHP documentation
    * 
    * @param  string $lang two letter language code 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLanguage(string $lang) {
     $url = preg_replace('~[a-z]{2}\/$~', "$lang/", $this->getRoot());

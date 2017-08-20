@@ -70,7 +70,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
    * * `'disabled'` for disabled buttons
    * 
    * @param  string|null $color one of the CSS class names defining button styles
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
   public function setColor($color = null) {
@@ -87,7 +87,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
   /**
    * Unsets the color settings
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
   public function unsetColors() {  

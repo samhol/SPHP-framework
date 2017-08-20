@@ -49,7 +49,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
    * Sets the value of the value attribute
    *
    * @param  string $value the value of the value attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function setValue($value) {
@@ -61,7 +61,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
    * Sets the option as selected or not
    *
    * @param  boolean $selected true if the option is selected, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_option_selected.asp selected attribute
    */
   public function setSelected($selected = true) {
@@ -82,7 +82,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
    * Disables or enables the option object
    *
    * @param  boolean $enabled true if the option is enabled, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_option_disabled.asp disabled attribute
    */
   public function setEnabled($enabled = true) {

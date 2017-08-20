@@ -53,7 +53,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
    * Sets whether the the limit is inclusive or not
    * 
    * @param boolean $inclusive true for inclusive limit and false for exclusive
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setInclusive(bool $inclusive) {
     $this->inclusive = $inclusive;

@@ -105,7 +105,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Prevent any more modifications being made to this instance
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setReadOnly() {
     $this->readonly = true;
@@ -153,7 +153,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    *
    * @param  mixed $varName the name of the variable
    * @param  mixed $value the value to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function set($varName, $value) {
     if (!$this->isReadOnly()) {
@@ -186,7 +186,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Unsets the value at the specified variable
    *
    * @param  mixed $name the name of the variable
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function __unset($name) {
     if (!$this->isReadOnly()) {

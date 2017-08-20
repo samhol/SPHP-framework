@@ -70,7 +70,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * The WHERE clause is used to filter records
    *
    * @param  Clause $c
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setWhere(Clause $c) {
     $this->where = $c;
@@ -98,7 +98,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    *  not evaluate to `true`.
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function where(... $rules) {
     $obj = new Clause($rules);
@@ -110,7 +110,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Appends SQL conditions by using logical AND as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function andWhere(... $rules) {
@@ -123,7 +123,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Appends SQL conditions by using AND NOT as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function andNotWhere(... $rules) {
@@ -136,7 +136,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Appends SQL conditions by using logical OR as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function orWhere(... $rules) {
@@ -149,7 +149,7 @@ abstract class ConditionalStatement extends AbstractStatement {
    * Appends SQL conditions by using logical OR NOT as a conjunction
    *
    * @param  string|RuleInterface|array $rules SQL condition(s)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function orNotWhere(... $rules) {

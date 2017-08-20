@@ -90,7 +90,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * 
    * @param  string $id
    * @param  string $messageTemplate
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setMessageTemplate(string $id, $messageTemplate) {
     if (!$messageTemplate instanceof Translatable) {
@@ -104,7 +104,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * 
    * @param  mixed $id
    * @param  array $params
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function error(string $id, array $params = []) {
     $this->errors->append($this->getMessageTemplate($id)->setArguments($params));
@@ -122,7 +122,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * 
    * @param  mixed $value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setValue($value) {
     $this->reset();
@@ -133,7 +133,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * Resets the validator to for revalidation
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function reset() {
     $this->errors->clearContent();

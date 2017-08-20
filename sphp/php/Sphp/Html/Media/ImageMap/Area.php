@@ -31,7 +31,7 @@ class Area extends AbstractArea {
    * Sets the coordinates of the area
    * 
    * @param  int[]|int... $coords the coordinates of the area
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link  http://www.w3schools.com/tags/att_area_coords.asp coords attribute
    */
   public function setCoordinates($coords) {

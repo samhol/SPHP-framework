@@ -27,7 +27,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    *
    * @postcondition contains($value) === true
    * @param  mixed $value element
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append($value);
 
@@ -39,7 +39,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    *
    * @postcondition contains($value) === true
    * @param  mixed $value the value being prepended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function prepend($value);
 
@@ -54,7 +54,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    * Clears the contents
    *
    * @postcondition isEmpty() === true
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clear();
 
@@ -71,7 +71,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    *
    * @postcondition contains($value) === false
    * @param  mixed $value the value to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function remove($value);
 }

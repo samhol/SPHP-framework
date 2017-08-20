@@ -77,7 +77,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * `data-src` attribute instead of the `src` attribute
    *
    * @param  string|URL $src the path to the image source (The URL of the image file)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSrc(string $src) {
     $this->img()->setSrc($src);
@@ -101,7 +101,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * Sets link image component
    * 
    * @param Img $img new link image component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setImg(Img $img) {
     $this->img = $img;

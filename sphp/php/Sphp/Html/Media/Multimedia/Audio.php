@@ -40,7 +40,7 @@ class Audio extends AbstractMultimediaTag {
    * * `none`: The browser should NOT load the audio file when the page loads
    * 
    * @param  string $preload the value of the preload attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_audio_preload.asp preload attribute
    */
   public function setPreload($preload) {

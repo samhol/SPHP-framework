@@ -31,7 +31,7 @@ class Checkboxes extends Choiceboxes {
    * 
    * @param  boolean $required true if an {@link Checkbox} component must
    *         be checked before form submission, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setRequired(bool $required = true) {
     return $this->setAttr('data-required', $required);

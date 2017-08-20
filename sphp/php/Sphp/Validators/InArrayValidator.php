@@ -58,7 +58,7 @@ class InArrayValidator extends AbstractValidator {
    * Sets the range of the valid string length
    *
    * @param mixed[] $haystack the haystack
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHaystack(array $haystack) {
     $this->haystack = $haystack;
@@ -76,7 +76,7 @@ class InArrayValidator extends AbstractValidator {
   /**
    * 
    * @param  boolean $strict
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setStrict(bool $strict) {
     $this->strict = $strict;

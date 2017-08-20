@@ -30,7 +30,7 @@ interface MessageInterface extends Translatable {
    * Sets the arguments used for message
    *
    * @param  array $args the arguments
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setArguments(array $args);
 
@@ -50,7 +50,7 @@ interface MessageInterface extends Translatable {
   /**
    *
    * @param  bool $translateArguments
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function translateArguments(bool $translateArguments = true);
 

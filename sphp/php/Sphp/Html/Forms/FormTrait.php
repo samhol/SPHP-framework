@@ -40,7 +40,7 @@ trait FormTrait {
    *
    * @precondition `$method == "get|post"`
    * @param  string $method the value of the method attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function setMethod($method) {
@@ -72,7 +72,7 @@ trait FormTrait {
    * * A relative URL - points to a file within a web site 'example.htm'
    *
    * @param  string $url the value of the action attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function setAction($url) {
@@ -100,7 +100,7 @@ trait FormTrait {
    * The enctype attribute specifies how the form-data should be encoded when submitting it to the server.
    *
    * @param  string $enctype the value of the enctype attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function setEnctype($enctype) {
@@ -128,7 +128,7 @@ trait FormTrait {
    * after a form is submitted.
    *
    * @param  string $name the value of the name attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function setName($name) {
@@ -159,7 +159,7 @@ trait FormTrait {
    * the browser should display options to fill in the field, based on earlier typed values.
    *
    * @param  boolean $allow (allow the browser to predict the value)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
   public function autocomplete(bool $allow = true) {
@@ -170,7 +170,7 @@ trait FormTrait {
   /**
    * 
    * @param  boolean $validate
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function validation(bool $validate = true) {
     $this->attrs()->set('novalidate', !$validate);
@@ -197,7 +197,7 @@ trait FormTrait {
    * * <var>framename</var>: The response is displayed in a named iframe
    * 
    * @param  string $target the value of the target attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function setTarget($target) {

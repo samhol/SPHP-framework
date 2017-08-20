@@ -21,7 +21,7 @@ interface StackInterface {
    * Pushes an item onto the top of the stack
    *
    * @param  mixed $value the item to be pushed
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function push($value);
 

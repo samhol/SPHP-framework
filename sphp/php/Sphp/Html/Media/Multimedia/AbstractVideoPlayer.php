@@ -77,7 +77,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * Sets the URL of the video service/player
    * 
    * @param  string|URL $url the URL of the video service/player
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setUrl($url) {
     $this->url = ($url instanceof URL) ? $url : new URL($url);
@@ -89,7 +89,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * Sets the id of the viewed video stream
    * 
    * @param  string $videoId the id of the embedded video
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setVideoId($videoId) {
     $this->videoId = $videoId;
@@ -122,7 +122,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * These parameters are passed to the player as `url` query parameters
    * 
    * @param  string $name the name of the parameter to unset
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetParam($name) {
     $this->url->getPath();
@@ -137,7 +137,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * 
    * @param  string $name the name of the parameter
    * @param  scalar $value the value of the parameter
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParam(string $name, $value) {
     $this->url->setParam($name, $value);

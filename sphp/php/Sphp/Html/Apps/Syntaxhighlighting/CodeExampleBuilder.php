@@ -93,7 +93,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * Sets the path of the example code
    * 
    * @param  string $path the path of the example code
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException if the code example path contains no file
    */
   public function setPath($path) {
@@ -119,7 +119,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
   /**
    * 
    * @param  boolean $highlightOutput
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setOutpputHighlighting($highlightOutput) {
     $this->outputHl = $highlightOutput;
@@ -129,7 +129,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
   /**
    * 
    * @param  boolean $showHtmlFlow
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHtmlFlowVisibility($showHtmlFlow) {
     $this->showHtmlFlow = (boolean) $showHtmlFlow;
@@ -213,7 +213,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * Sets the heading of the example PHP code component
    *
    * @param  string $heading the heading of the example PHP code
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function useDefaultTitles() {
     $this->titles[self::EXAMPLECODE] = 'PHP code';
@@ -226,7 +226,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * Sets the heading of the example PHP code component
    *
    * @param  string $heading the heading of the example PHP code
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setExamplePaneTitle($heading) {
     $this->titles[self::EXAMPLECODE] = $heading;
@@ -237,7 +237,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * Sets the the heading of the output component
    *
    * @param  string $title the heading of the output component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setOutputSyntaxPaneTitle($title) {
     $this->titles[self::OUTPUT_TEXT] = $title;
@@ -248,7 +248,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * Sets the the heading of the output component
    *
    * @param  string $title the heading of the output component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setOutputPaneTitle($title) {
     $this->titles[self::HTMLFLOW] = $title;

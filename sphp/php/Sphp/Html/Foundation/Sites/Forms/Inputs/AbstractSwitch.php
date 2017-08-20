@@ -98,7 +98,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * * `'large'` for large switches
    * 
    * @param  string $size the size of the component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSize($size) {
     $this->resetSize();
@@ -111,7 +111,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   /**
    * Resets the size settings of the component
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function resetSize() {
     $this->cssClasses()
@@ -124,7 +124,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    *
    * @param  string $active the active text inside of a switch
    * @param  string $inactive the inactive text inside of a switch
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setInnerLabels($active, $inactive) {
     $activeLabel = new Span($active);
@@ -171,7 +171,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * Sets whether the input must have a value or not before form submission
    * 
    * @param  boolean $required true if the input must have a value before form submission, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setRequired(bool $required = true) {
     $this->input->setRequired($required);

@@ -45,7 +45,7 @@ class RowLayoutManager extends AbstractLayoutManager {
   /**
    * Unsets all layout settings 
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetLayouts() {
     foreach (Screen::sizes() as $screenSize) {
@@ -58,7 +58,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    * Sets/ the row completely fluid
    *
    * @param  boolean $expanded the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function expand(bool $expanded = true) {
     if ($expanded) {
@@ -74,7 +74,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function collapse(string $screenSize) {
     $this->reset($screenSize);
@@ -87,7 +87,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function uncollapse(string $screenSize) {
     $this->reset($screenSize);
@@ -100,7 +100,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    *
    * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function reset(string $screenSize) {
     $classes = [];

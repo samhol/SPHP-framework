@@ -56,7 +56,7 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyMedi
    * this is not included, the first frame of the video will be used instead.
    * 
    * @param  string $poster the poster image for the video component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster(string $poster) {

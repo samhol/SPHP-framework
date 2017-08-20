@@ -52,7 +52,7 @@ class MenuLinkBuilder {
   /**
    * 
    * @param  string $target
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setMenuType(string $target) {
     $this->menuType = $target;
@@ -80,7 +80,7 @@ class MenuLinkBuilder {
   /**
    * 
    * @param  string $target
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDefaultTarget($target) {
     $this->defaultTarget = $target;

@@ -103,7 +103,7 @@ abstract class AbstractArea extends \Sphp\Html\EmptyTag implements AreaInterface
    * The `alt` attribute is required if the `href` attribute is present.
    *
    * @param  string $alt the alternate text for an image
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function setAlt($alt) {

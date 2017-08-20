@@ -49,7 +49,7 @@ class Label extends ContainerTag {
    * - For attribute specifies which form element a label is bound to.
    *
    * @param  string|IdentifiableInputInterface $for the value of the for attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function setFor($for) {
@@ -81,7 +81,7 @@ class Label extends ContainerTag {
    * - parameter can be an array of id's to one or more forms the object belongs to.
    *
    * @param  string|string[] $formIds the value of the form attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_label_form.asp form attribute
    */
   public function setForms($formIds) {

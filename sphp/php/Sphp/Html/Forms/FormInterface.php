@@ -29,7 +29,7 @@ interface FormInterface extends ContentInterface {
    * @precondition `$method == "get" | $method == "post"`
    *
    * @param  string $method the value of the method attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function setMethod($method);
@@ -52,7 +52,7 @@ interface FormInterface extends ContentInterface {
    * is submitted
    *
    * @param  string $action the value of the action attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function setAction($action);
@@ -75,7 +75,7 @@ interface FormInterface extends ContentInterface {
    * submitting it to the server.
    *
    * @param  string $enctype the value of the enctype attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function setEnctype($enctype);
@@ -99,7 +99,7 @@ interface FormInterface extends ContentInterface {
    * after a form is submitted.
    *
    * @param  string $name the value of the name attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function setName($name);
@@ -125,7 +125,7 @@ interface FormInterface extends ContentInterface {
    * the browser should display options to fill in the field, based on earlier typed values.
    *
    * @param  boolean $allow (allow the browser to predict the value)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_autocomplete.asp autocomplete attribute
    */
   public function autocomplete(bool $allow = true);
@@ -134,7 +134,7 @@ interface FormInterface extends ContentInterface {
    * Sets the form as validable
    * 
    * @param  boolean $validable
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_novalidate.asp novalidate attribute
    */
   public function validation(bool $validable = true);
@@ -158,7 +158,7 @@ interface FormInterface extends ContentInterface {
    * * <var>framename</var>: The response is displayed in a named iframe
    * 
    * @param  string $target the value of the target attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function setTarget($target);
@@ -185,7 +185,7 @@ interface FormInterface extends ContentInterface {
    * 
    * @param  mixed[] $data
    * @param  boolean $filter true for enabling the data filtering, and false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setData(array $data = [], $filter = true);
 

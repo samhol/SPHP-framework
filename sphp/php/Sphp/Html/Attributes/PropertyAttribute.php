@@ -96,7 +96,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * **IMPORTANT!:** Does not alter locked properties
    *
    * @param  scalar $value the value of the attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
    * @throws \Sphp\Exceptions\InvalidArgumentException if the value is invalid
    */
@@ -113,7 +113,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  string $property the name of the property
    * @param  string $value the value of the property
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
    * @throws \Sphp\Exceptions\InvalidArgumentException if either the property name or the value is invalid
    */
@@ -155,7 +155,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * Removes given property
    *
    * @param  string $name the names of the properties to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException if the property is unmodifiable
    */
   public function unsetProperty($name) {
@@ -171,7 +171,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * Removes given properties
    *
    * @param  string[] $names the names of the properties to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws RuntimeException if any of the properties is unmodifiable
    */
   public function unsetProperties(array $names) {
@@ -238,7 +238,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  string|int $property the name of the property
    * @param  string $value the value of the property
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException if the property is already locked
    * @throws \Sphp\Exceptions\InvalidArgumentException if either the property name or the value is invalid
    */

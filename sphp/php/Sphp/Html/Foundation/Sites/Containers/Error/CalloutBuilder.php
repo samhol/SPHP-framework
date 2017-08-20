@@ -53,7 +53,7 @@ class CalloutBuilder implements \Sphp\Config\ErrorHandling\ErrorListener {
    * Sets the visibility of the file
    * 
    * @param  boolean $show true for visible file
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showFileInformation(bool $show = true) {
     $this->showFile = $show;

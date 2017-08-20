@@ -62,7 +62,7 @@ class VariableFilter extends AbstractFilter {
   /**
    * 
    * @param  int $filter
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setFilter($filter) {
     $this->filter = $filter;
@@ -74,7 +74,7 @@ class VariableFilter extends AbstractFilter {
    * 
    * @param  string $optName option name
    * @param  mixed $value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setOption($optName, $value) {
     $this->options['options'][$optName] = $value;
@@ -86,7 +86,7 @@ class VariableFilter extends AbstractFilter {
    * 
    * @param  string $optName option name
    * @param  mixed $value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setFlags($flags) {
     $this->options['flags'] = $flags;
@@ -96,7 +96,7 @@ class VariableFilter extends AbstractFilter {
   /**
    * 
    * @param  array $options
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setOptions($options) {
     $this->options['options'] = $options;

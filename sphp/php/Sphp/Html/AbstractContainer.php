@@ -124,7 +124,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    *
    * @param  mixed $offset the offset to assign the value to
    * @param  mixed $value the value to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function offsetSet($offset, $value) {
     if (is_null($offset)) {
@@ -139,7 +139,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    * Unsets an offset
    *
    * @param  mixed $offset offset to unset
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function offsetUnset($offset) {
     if ($this->offsetExists($offset)) {
@@ -156,7 +156,7 @@ abstract class AbstractContainer implements IteratorAggregate, ContainerInterfac
    * Replaces the content of the component
    *
    * @param  mixed $content new tag content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function replaceContent($content) {
     return $this->clear()->append($content);

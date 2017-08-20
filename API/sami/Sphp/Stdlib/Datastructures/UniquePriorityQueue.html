@@ -127,17 +127,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Stdlib/Datastructures/QueueInterface.html"><abbr title="Sphp\Stdlib\Datastructures\QueueInterface">QueueInterface</abbr></a>
+                    <abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_enqueue">enqueue</a>(mixed $value, int $priority)
         
-                                            <p>Adds a new item to the end of the queue</p>                </div>
+                                            <p>Attempts to add a value to the queue</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Stdlib/Datastructures/UniquePriorityQueue.html"><abbr title="Sphp\Stdlib\Datastructures\UniquePriorityQueue">UniquePriorityQueue</abbr></a>
+                    <abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_remove">remove</a>(mixed $value)
@@ -298,7 +298,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_enqueue">
         <div class="location">at         line 77</div>
-        <code>                    <a href="../../../Sphp/Stdlib/Datastructures/QueueInterface.html"><abbr title="Sphp\Stdlib\Datastructures\QueueInterface">QueueInterface</abbr></a>
+        <code>                    <abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr>
     <strong>enqueue</strong>(mixed $value, int $priority)
         </code>
     </h3>
@@ -307,7 +307,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Adds a new item to the end of the queue</p>                                                </div>
+                                    <p>Attempts to add a value to the queue</p>                    <p><ol>
+<li>A Value will not be inserted if it already exists in the queue with higher priority</li>
+<li>Replaces existing identical value that has a smaller priority</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -329,7 +333,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Stdlib/Datastructures/QueueInterface.html"><abbr title="Sphp\Stdlib\Datastructures\QueueInterface">QueueInterface</abbr></a></td>
+            <td><abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -343,7 +347,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_remove">
         <div class="location">at         line 102</div>
-        <code>                    <a href="../../../Sphp/Stdlib/Datastructures/UniquePriorityQueue.html"><abbr title="Sphp\Stdlib\Datastructures\UniquePriorityQueue">UniquePriorityQueue</abbr></a>
+        <code>                    <abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr>
     <strong>remove</strong>(mixed $value)
         </code>
     </h3>
@@ -369,7 +373,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Stdlib/Datastructures/UniquePriorityQueue.html"><abbr title="Sphp\Stdlib\Datastructures\UniquePriorityQueue">UniquePriorityQueue</abbr></a></td>
+            <td><abbr title="Sphp\Stdlib\Datastructures\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>

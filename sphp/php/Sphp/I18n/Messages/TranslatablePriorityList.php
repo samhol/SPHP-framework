@@ -103,7 +103,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @param  string $messageText the message text
    * @param  scalar[] $args arguments
    * @param  int $priority the priority of the message
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function insertMessage($messageText, $args = null, int $priority = 0) {
     $m = (new Message($messageText, $args, $this->getTranslator()));
@@ -116,7 +116,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    *
    * @param  MessageInterface $messages the message text
    * @param  int $priority the priority of the message
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function insert(Translatable $messages, int $priority = 0) {
     $this->messages->insert($messages, $priority);
@@ -127,7 +127,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * Merges given collection to this container
    *
    * @param  MessageCollectionInterface $m
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function merge(TranslatableCollectionInterface $m) {
     foreach ($m as $message) {
@@ -185,7 +185,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   /**
    * Removes elements from the container
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clearContent() {
     $this->messages = new StablePriorityQueue();

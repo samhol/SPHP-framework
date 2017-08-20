@@ -86,7 +86,7 @@ class Dropdown implements ContentInterface {
    * * `'xxlarge'` for xx-large dropdown pane
    * 
    * @param  string|null $size optional CSS class name defining dropdown pane size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setSize($size) {
@@ -98,7 +98,7 @@ class Dropdown implements ContentInterface {
   /**
    * Resets the size settings of the component
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function resetSize() {
     $this->dropdown->cssClasses()
@@ -118,7 +118,7 @@ class Dropdown implements ContentInterface {
    * * `false`: Removes settings
    *
    * @param  string|boolean $alignment the alignment value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function align($alignment) {
     $this->dropdown->cssClasses()->remove('top left bottom right');
@@ -138,7 +138,7 @@ class Dropdown implements ContentInterface {
    * * `false`: Removes floating settings
    *
    * @param  string|boolean $float the floating value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setFloat($float = false) {
     $this->trigger->cssClasses()->remove('float-left float-right');
@@ -152,7 +152,7 @@ class Dropdown implements ContentInterface {
    * Sets the component controlling this dropdown
    *
    * @param  mixed the component controlling this dropdown
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTrigger($trigger) {
     if (!($trigger instanceof ComponentInterface)) {
@@ -179,7 +179,7 @@ class Dropdown implements ContentInterface {
   /**
    * 
    * @param  boolean $flag
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function closeOnBodyClick(bool $flag = true) {
     if ($flag) {
@@ -193,7 +193,7 @@ class Dropdown implements ContentInterface {
   /**
    * 
    * @param  boolean $flag
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function autoFocus(bool $flag = true) {
     if ($flag) {

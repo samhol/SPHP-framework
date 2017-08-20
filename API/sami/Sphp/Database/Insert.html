@@ -79,8 +79,7 @@
     </div>
 
     <p>    class
-    <strong>Insert</strong>        extends <a href="../../Sphp/Database/AbstractStatement.html"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a>        implements
-        <a href="../../Sphp/Database/DataManipulationStatement.html"><abbr title="Sphp\Database\DataManipulationStatement">DataManipulationStatement</abbr></a>
+    <strong>Insert</strong>        extends <a href="../../Sphp/Database/AbstractInsert.html"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a>
 </p>
 
         
@@ -103,7 +102,7 @@
                     <a href="#method___construct">__construct</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         
                                             <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method___construct"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -127,7 +126,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/StatementInterface.html"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a>
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setPDO">setPDO</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
@@ -177,43 +176,87 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_into">into</a>(string $table)
         
                                             <p>Sets the database table where to insert the data</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_into"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTable">getTable</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_getTable"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getNames">getNames</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_getNames"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateQuestionMarks">generateQuestionMarks</a>(array $data)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_generateQuestionMarks"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_values">values</a>(mixed $values)
         
                                             <p>Sets the values that are to be inserted to the table</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_values"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_valuesFromCollection">valuesFromCollection</a>(array|<a target="_blank" href="http://php.net/Traversable">Traversable</a> $values)
+                    <a href="#method_valuesFromCollection">valuesFromCollection</a>(array $values)
         
                                             <p>Sets the values that are to be inserted to the table</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_valuesFromCollection"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_columnNames">columnNames</a>(string $name)
         
                                             <p>Sets the order and the names of the columns in the INSERT data</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_columnNames"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_dataToStatement">dataToStatement</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_dataToStatement"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -223,7 +266,7 @@
                     <a href="#method_statementToString">statementToString</a>()
         
                                             <p>Returns the SQL statement as a string</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_statementToString"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -233,7 +276,7 @@
                     <a href="#method_affectRows">affectRows</a>()
         
                                             <p>Executes the data manipulation SQL statement, returning the number of affected rows</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_affectRows"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -243,7 +286,7 @@
                     <a href="#method_getParams">getParams</a>()
         
                                             <p>Returns the parameter handler</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractInsert.html#method_getParams"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a></small></div>
             </div>
             </div>
 
@@ -253,7 +296,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 43</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method___construct"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 43</div>
         <code>                    
     <strong>__construct</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
@@ -337,7 +380,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_setPDO">
         <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_setPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 53</div>
-        <code>                    <a href="../../Sphp/Database/StatementInterface.html"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a>
+        <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>setPDO</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
     </h3>
@@ -363,7 +406,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Database/StatementInterface.html"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></td>
+            <td><abbr title="Sphp\Database\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -514,8 +557,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_into">
-        <div class="location">at         line 54</div>
-        <code>                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_into"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 54</div>
+        <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>into</strong>(string $table)
         </code>
     </h3>
@@ -541,7 +584,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a></td>
+            <td><abbr title="Sphp\Database\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -553,9 +596,76 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getTable">
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_getTable"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 59</div>
+        <code>            protected        
+    <strong>getTable</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNames">
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_getNames"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 63</div>
+        <code>            protected        
+    <strong>getNames</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateQuestionMarks">
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_generateQuestionMarks"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 67</div>
+        <code>            protected        
+    <strong>generateQuestionMarks</strong>(array $data)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_values">
-        <div class="location">at         line 65</div>
-        <code>                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_values"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 82</div>
+        <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>values</strong>(mixed $values)
         </code>
     </h3>
@@ -581,7 +691,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a></td>
+            <td><abbr title="Sphp\Database\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -594,9 +704,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_valuesFromCollection">
-        <div class="location">at         line 76</div>
-        <code>                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
-    <strong>valuesFromCollection</strong>(array|<a target="_blank" href="http://php.net/Traversable">Traversable</a> $values)
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_valuesFromCollection"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 93</div>
+        <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
+    <strong>valuesFromCollection</strong>(array $values)
         </code>
     </h3>
     <div class="details">
@@ -610,7 +720,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<a target="_blank" href="http://php.net/Traversable">Traversable</a></td>
+                <td>array</td>
                 <td>$values</td>
                 <td></td>
             </tr>
@@ -621,7 +731,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a></td>
+            <td><abbr title="Sphp\Database\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -634,8 +744,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_columnNames">
-        <div class="location">at         line 93</div>
-        <code>                    <a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_columnNames"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 107</div>
+        <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>columnNames</strong>(string $name)
         </code>
     </h3>
@@ -661,7 +771,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Database/Insert.html"><abbr title="Sphp\Database\Insert">Insert</abbr></a></td>
+            <td><abbr title="Sphp\Database\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -673,8 +783,27 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_dataToStatement">
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_dataToStatement"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 112</div>
+        <code>            protected        
+    <strong>dataToStatement</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_statementToString">
-        <div class="location">at         line 98</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_statementToString"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 120</div>
         <code>                    string
     <strong>statementToString</strong>()
         </code>
@@ -704,7 +833,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_affectRows">
-        <div class="location">at         line 117</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_affectRows"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 129</div>
         <code>                    int
     <strong>affectRows</strong>()
         </code>
@@ -743,7 +872,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getParams">
-        <div class="location">at         line 121</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractInsert.html#method_getParams"><abbr title="Sphp\Database\AbstractInsert">AbstractInsert</abbr></a> at         line 133</div>
         <code>                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
     <strong>getParams</strong>()
         </code>

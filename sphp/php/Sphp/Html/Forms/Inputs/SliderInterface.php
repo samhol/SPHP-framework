@@ -21,7 +21,7 @@ interface SliderInterface extends InputInterface {
    * Sets the length of the slider step
    *
    * @param  int $step the length of the slider step
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the step value is below zero
    */
   public function setStepLength(int $step);

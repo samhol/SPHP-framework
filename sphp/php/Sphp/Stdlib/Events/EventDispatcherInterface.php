@@ -27,9 +27,9 @@ interface EventDispatcherInterface {
    * @param mixed $priority optional priority of the listener: priorities are 
    *        handled like queues, and multiple attachments added to the same 
    *        priority queue will be treated in the order of insertion.
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \InvalidArgumentException if the `$listener` type is illegal
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function addListener($event, $listener, $priority = 0);
 
@@ -37,7 +37,7 @@ interface EventDispatcherInterface {
    * Removes an listener from the registry
    *
    * @param  EventListenerInterface|callable $listener the listener to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function remove($listener);
 

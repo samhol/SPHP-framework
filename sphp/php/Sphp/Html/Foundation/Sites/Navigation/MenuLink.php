@@ -44,7 +44,7 @@ class MenuLink extends HyperlinkListItem implements MenuItemInterface {
    * Sets or unsets the hyperlink component as active
    *
    * @param  boolean $active true for activation and false for deactivation
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive(bool $active = true) {
     if ($active) {

@@ -54,7 +54,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to add
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass($cssClasses);
@@ -68,7 +68,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass($cssClasses);
@@ -82,7 +82,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to search for
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function hasCssClass($cssClasses): bool;
@@ -105,7 +105,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * @param  string $name the name of the attribute
    * @param  mixed $value the value of the attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
    * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
@@ -115,7 +115,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * Removes given attribute if it is not locked
    *
    * @param  string $attrName the name of the attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function removeAttr(string $attrName);
 

@@ -54,7 +54,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * default attribute per {@link AbstractMediaTag} component.
    *
    * @param  boolean $default true if the track is default, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDefault($default = true) {
     return $this->setAttr('default', (bool) $default);
@@ -73,7 +73,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * Sets the path to the track source (The URL of the track file)
    *
    * @param  string|URL $src the path to the track source (The URL of the track file)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */
   public function setSrc(string $src) {
@@ -102,7 +102,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * * `subtitles`:	The track defines subtitles, used to display subtitles in a video
    * 
    * @param  string $kind specifies the kind of text track
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_kind.asp kind attribute
    */
   public function setKind(string $kind) {
@@ -133,7 +133,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * **Important:** This is required if the  kind is "subtitles".
    * 
    * @param  string $srclang the language of the track text data
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    * @link   http://www.w3schools.com/tags/ref_language_codes.asp HTML Language Code Reference
    */
@@ -158,7 +158,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
    * **Important:** This is required if the  kind is "subtitles".
    * 
    * @param  string $label the label of the track text data
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_label.asp label attribute
    */
   public function setLabel($label) {

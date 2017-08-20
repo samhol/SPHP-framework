@@ -27,7 +27,7 @@ interface MediaSourceInterface extends ContentInterface {
    * Sets the path to the media source (The URL of the file)
    *
    * @param  string $src the path to the media source (The URL of the file)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSrc(string $src);
 

@@ -55,7 +55,7 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    * Sets the inner content container of the component
    *
    * @param  ContainerInterface $contentContainer the inner content container of the component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setInnerContainer(ContainerInterface $contentContainer = null) {
     if (!($contentContainer instanceof ContainerInterface)) {

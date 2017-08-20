@@ -48,7 +48,7 @@ class SmallerThanValidator extends AbstractLimitValidator {
    * Sets the maximum value
    * 
    * @param  float $max the maximum value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setMax($max) {
     $this->max = $max;

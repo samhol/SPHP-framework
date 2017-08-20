@@ -23,7 +23,7 @@ interface StatementInterface {
    * Sets the connection object between PHP and a database server
    * 
    * @param  PDO $pdo connection object between PHP and a database server
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPDO(PDO $pdo);
 

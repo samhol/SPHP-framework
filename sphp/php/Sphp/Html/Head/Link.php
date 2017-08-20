@@ -59,7 +59,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    *
    * @param  string $href the location of the linked document
    * @param  boolean $encode converts all applicable characters of the $url to HTML entities
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function setHref(string $href, bool $encode = true) {
@@ -108,7 +108,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * * `stylesheet` URL to a style sheet to import
    *
    * @param  string $rel the relationship between the current document and the linked one
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function setRel(string $rel) {
@@ -152,7 +152,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    *  document.
    *
    * @param  string $type the MIME type of the linked document
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_type.asp type attribute
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
@@ -187,7 +187,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * * The media attribute can accept several values.
    *
    * @param  string $media what media/device the target resource is optimized for
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function setMedia(string $media) {

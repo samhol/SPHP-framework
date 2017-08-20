@@ -113,7 +113,7 @@ class Router {
    * be useful for displaying a 404 page for example.
    *
    * @param  callable $callback
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDefaultRoute($callback) {
     $this->default_route = $callback;
@@ -126,7 +126,7 @@ class Router {
    * Tries to match one of the URL routes to the current URL, otherwise
    * execute the default function.
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function execute() {
     // Whether or not we have matched the URL to a route

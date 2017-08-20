@@ -50,7 +50,7 @@ interface RowInterface extends ContentInterface {
    * * The sum of the {@link ColumnInterface} widths in a {@link self} should not exeed 12.
    * 
    * @param  mixed|mixed[] $columns 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setColumns($columns);
 
@@ -63,7 +63,7 @@ interface RowInterface extends ContentInterface {
    *
    * @param  mixed $content the content of the column
    * @param  array $layout column layout parameters
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendColumn($content, array $layout = ['small-12']);
 
@@ -76,7 +76,7 @@ interface RowInterface extends ContentInterface {
    * * a values of `$column` not extending {@link ColumnInterface} is wrapped with {@link Column} object
    *
    * @param  mixed|mixed[] $columns components
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function prepend($columns);
 
@@ -89,7 +89,7 @@ interface RowInterface extends ContentInterface {
    * * a values of `$column` not extending {@link ColumnInterface} is wrapped with {@link Column} object
    *
    * @param  mixed|ColumnInterface $column content component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append($column);
 

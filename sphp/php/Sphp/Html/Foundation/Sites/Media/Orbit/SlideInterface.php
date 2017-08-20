@@ -25,7 +25,7 @@ interface SlideInterface extends LiInterface {
    * Sets the slide as active or not
    * 
    * @param  boolean $active true for active and false for inactive
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive($active = true);
 

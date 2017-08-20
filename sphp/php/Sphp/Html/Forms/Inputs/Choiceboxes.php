@@ -77,7 +77,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    *
    * @param  Choicebox $label the label information of the new input option
    * @param  Choicebox $value the value of the new input option
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function addInput($label, $value) {
     $input = \Sphp\Html\Document::get($this->type);
@@ -104,7 +104,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * Sets new options to the form component
    *
    * @param  string[] $values
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setOptions(array $values) {
     foreach ($values as $value => $label) {
@@ -127,7 +127,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * Sets the value of name attribute
    *
    * @param  string $name the value of the name attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
   public function setName($name) {
@@ -157,7 +157,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * Disabled input components in a form will not be submitted.
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
     return $this->setAttr('disabled', $disabled);
@@ -176,7 +176,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * Sets the current submission set of the input component
    *
    * @param  string|string[] $value the current submission set of the input component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setValue($value) {
     if (!is_array($value)) {

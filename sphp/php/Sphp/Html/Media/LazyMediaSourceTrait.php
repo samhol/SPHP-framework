@@ -32,7 +32,7 @@ trait LazyMediaSourceTrait {
    * `data-src` attribute instead of the `src` attribute
    * 
    * @param  boolean $lazy true if the loading is lazy, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLazy(bool $lazy = true) {
     $classes = ['lazy-hidden', 'lazy-loaded'];

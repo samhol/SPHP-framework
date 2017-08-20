@@ -21,7 +21,7 @@ interface Translatable {
    * Sets the translator component for message translation
    *
    * @param  TranslatorInterface $translator the translator component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTranslator(TranslatorInterface $translator);
 

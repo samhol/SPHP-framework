@@ -49,7 +49,7 @@ class ErrorExceptionThrower {
    * Sets the exception type to throw
    * 
    * @param  string $exceptionType
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the given exception type is invalid
    */
   public function setExceptionType(string $exceptionType) {
@@ -65,7 +65,7 @@ class ErrorExceptionThrower {
    * Starts redirecting PHP errors
    * 
    * @param  int $level PHP Error level to catch (Default = E_ALL & ~E_DEPRECATED)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function start(int $level = \E_ALL) {
     set_error_handler($this, $level);
@@ -75,7 +75,7 @@ class ErrorExceptionThrower {
 
   /**
    * Stops redirecting PHP errors
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function stop() {
     restore_error_handler();

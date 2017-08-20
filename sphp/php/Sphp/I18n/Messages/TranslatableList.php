@@ -113,7 +113,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
    *
    * @param  string $messageText the message text
    * @param  scalar[] $args arguments
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendMessage($messageText, $args = null) {
     $m = (new Message($messageText, $args, false, $this->getTranslator()));
@@ -125,7 +125,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
    * Inserts a messages to the container
    *
    * @param  MessageInterface $message the message text
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function insert(Translatable $message) {
     $this->append($message);
@@ -137,7 +137,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
    *
    * @param  MessageInterface $message the message text
    * @param  int $priority the priority of the message
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append(Translatable $message) {
     $this->messages[] = $message;
@@ -148,7 +148,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
    * Merges given collection to this container
    *
    * @param  MessageCollectionInterface $m
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function merge(TranslatableCollectionInterface $m) {
     foreach ($m as $message) {
@@ -193,7 +193,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface {
   /**
    * Removes elements from the container
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clearContent() {
     $this->messages = [];

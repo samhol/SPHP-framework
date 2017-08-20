@@ -41,7 +41,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
    * Sets the number of columns within the row for different screen sizes
    * 
    * @param  string[] $layouts individual layout settings
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLayouts($layouts) {
     $this->unsetLayouts();
@@ -55,7 +55,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
   /**
    * Unsets all layout settings 
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetLayouts() {
     $this->unsetPaddings();
@@ -73,7 +73,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
    * * `'large'` for large padding
    * 
    * @param  string|null $padding optional CSS class name defining the amount of the content padding
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
    */
   public function setPadding($padding = 'default') {
@@ -89,7 +89,7 @@ class CalloutLayoutManager extends ColourableLayoutManager {
   /**
    * Unsets the content padding
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetPaddings() {
     $this->cssClasses()

@@ -58,7 +58,7 @@ trait IdentifiableComponentTrait {
    * 3. Duplicate CSS class names are not stored
    *
    * @param  string|string[] $cssClasses CSS class names to add
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass($cssClasses) {
@@ -75,7 +75,7 @@ trait IdentifiableComponentTrait {
    * 2. An array parameter can contain only one CSS class name per value
    *
    * @param  string|string[] $cssClasses CSS class names to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass($cssClasses) {
@@ -105,7 +105,7 @@ trait IdentifiableComponentTrait {
    * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
    *
    * @param  mixed[] $attrs an array of attribute name value pairs
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidAttributeException if any of the attributes is invalid
    * @throws UnmodifiableAttributeException if the value of the attribute is already locked
    */
@@ -147,7 +147,7 @@ trait IdentifiableComponentTrait {
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function removeAttr(string $name) {
     $this->attrs()->remove($name);
@@ -189,7 +189,7 @@ trait IdentifiableComponentTrait {
    * @param  string $identityName the name of the identity attribute
    * @param  string $prefix optional prefix of the identity value
    * @param  int $length the length of the identity value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(string $identityName = 'id', string $prefix = 'id_', int $length = 16): string {

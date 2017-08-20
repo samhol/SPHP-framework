@@ -57,7 +57,7 @@ class AbstractSingleAccordion extends AbstractComponent {
    * Sets the title of the pane
    *
    * @param  mixed|mixed[] $title the title of the pane
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPaneTitle($title) {
     $this->getPane()->setPaneTitle($title);
@@ -68,7 +68,7 @@ class AbstractSingleAccordion extends AbstractComponent {
    * Sets the visibility of the pane after initialization
    *
    * @param  boolean $visibility true if the pane is visible, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function contentVisible($visibility = true) {
     $this->getPane()->contentVisible($visibility);

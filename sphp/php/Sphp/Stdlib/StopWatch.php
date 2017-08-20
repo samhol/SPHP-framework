@@ -34,7 +34,7 @@ class StopWatch {
   /**
    * Starts the clock from the page request
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function startFromRequest() {
     $this->startTime = $_SERVER['REQUEST_TIME_FLOAT'] ?? 0.0;
@@ -44,7 +44,7 @@ class StopWatch {
   /**
    * Starts the timer from the call of this method
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function start() {
     $this->startTime = microtime(true);

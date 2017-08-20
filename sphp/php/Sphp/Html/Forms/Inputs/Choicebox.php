@@ -38,7 +38,7 @@ class Choicebox extends InputTag implements ChoiceboxInterface {
    * Checks/unchecks the choice
    *
    * @param  boolean $checked true if chosen, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true) {

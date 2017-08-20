@@ -43,7 +43,7 @@ class DatetimeValidator extends AbstractValidator {
    * Sets the required format of the validable value
    *
    * @param string $format the required format of the validable value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDateTimeFormat($format) {
     $this->format = $format;

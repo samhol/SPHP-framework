@@ -21,7 +21,7 @@ interface FormattableStringInterface {
    * Sets the arguments used
    *
    * @param  array $args the arguments
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setArguments(array $args);
 

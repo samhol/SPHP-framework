@@ -60,7 +60,7 @@ class Bullet extends AbstractComponent {
    * 
    * @param string $slideText
    * @param type $currentSlideText
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   private function createSpans($slideText, $currentSlideText) {
     if ($slideText === null) {
@@ -76,7 +76,7 @@ class Bullet extends AbstractComponent {
   /**
    * 
    * @param  string $description
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSlideDescription($description) {
     $this->srDescriptor->replaceContent($description);
@@ -86,7 +86,7 @@ class Bullet extends AbstractComponent {
   /**
    * 
    * @param  string $description
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCurrentSlideDescription(string $description) {
     $this->currentDescriptor->replaceContent($description);

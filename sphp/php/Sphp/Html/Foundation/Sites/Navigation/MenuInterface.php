@@ -24,7 +24,7 @@ interface MenuInterface extends ContentInterface {
    * Appends a menu item object to the menu
    *
    * @param  MenuItemInterface $item
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append(MenuItemInterface $item);
 
@@ -32,7 +32,7 @@ interface MenuInterface extends ContentInterface {
    * Appends a {@link MenuLabel} text component to the menu
    *
    * @param  mixed|MenuLabel $text
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendText($text);
 
@@ -40,7 +40,7 @@ interface MenuInterface extends ContentInterface {
    * Appends a ruler component to the menu
    *
    * @param  Ruler|null $r
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendRuler(Ruler $r = null);
   /**
@@ -49,7 +49,7 @@ interface MenuInterface extends ContentInterface {
    * @param  string $href the URL of the link
    * @param  mixed $content link content
    * @param  string $target the value of the target attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
@@ -61,7 +61,7 @@ interface MenuInterface extends ContentInterface {
    * A nested vertically oriented Menu has extra padding on the inside.
    *
    * @param  boolean $nested true for nesting and false for unnesting
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @see    self::nested() 
    */
   public function nested(bool $nested = true);
@@ -70,7 +70,7 @@ interface MenuInterface extends ContentInterface {
    * Switches menu orientation between vertical and horizontal
    *
    * @param  boolean $vertical true for vertical orientation and false for horizontal
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function vertical(bool $vertical = true);
 
@@ -78,7 +78,7 @@ interface MenuInterface extends ContentInterface {
    * Sets or unsets the menu as active
    *
    * @param  boolean $active true for activation and false for deactivation
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive(bool $active = true);
 

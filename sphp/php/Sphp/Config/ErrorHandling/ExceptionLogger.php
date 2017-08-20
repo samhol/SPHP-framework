@@ -48,7 +48,7 @@ class ExceptionLogger implements ExceptionListener {
   /**
    * 
    * @param  string $destination
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDestination(string $destination) {
     if (!is_writable($destination)) {

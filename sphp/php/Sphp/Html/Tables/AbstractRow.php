@@ -48,7 +48,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * Appends a cell component to the row
    *
    * @param  CellInterface $cell new cell object
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append(CellInterface $cell) {
     $this->getInnerContainer()->append($cell);
@@ -68,7 +68,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @link  http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    * @link  http://www.w3schools.com/tags/att_th_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_th_rowspan.asp rowspan attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendTh($content, string $scope = null, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Th($content, $scope, $colspan, $rowspan));
@@ -79,7 +79,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * Creates and appends {@link CellInterface} components to the row
    *
    * @param  mixed|mixed[] $cells cells of the table row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendThs($cells) {
     foreach ($this->parseNewCells($cells, Th::class) as $th) {
@@ -98,7 +98,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * @param int $rowspan the value of the rowspan attribute
    * @link  http://www.w3schools.com/tags/att_td_colspan.asp colspan attribute
    * @link  http://www.w3schools.com/tags/att_td_rowspan.asp rowspan attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendTd($content, int $colspan = 1, int $rowspan = 1) {
     $this->append(new Td($content, $colspan, $rowspan));
@@ -109,7 +109,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * Creates and appends {@link CellInterface} components to the row
    *
    * @param  mixed|mixed[] $cells cells of the table row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendTds($cells) {
     foreach ($this->parseNewCells($cells, Td::class) as $td) {
@@ -122,7 +122,7 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    * Prepends a cell component to the row
    *
    * @param  CellInterface $cell new cell object
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function prepend(CellInterface $cell) {
     $this->getInnerContainer()->prepend($cell);

@@ -48,7 +48,7 @@ class ClosableContainer extends Div implements ClosableInterface {
   /**
    * Returns the Modal reveal controller
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCloseButton(CloseButton $btn) {
     $this->closeButton = $btn;

@@ -56,7 +56,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
   /**
    * 
    * @param  array $arr the row being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   abstract public function fromArray(array $arr);
 
@@ -69,7 +69,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
    * @param  RowInterface $row the row being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append(RowInterface $row) {
     $this->getInnerContainer()->append($row);
@@ -85,7 +85,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
    * @param  mixed|mixed[] $cells the row being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendHeaderRow($cells) {
     $this->append(Tr::fromThs($cells));
@@ -101,7 +101,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
    * @param  mixed|mixed[] $cells the row being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendBodyRow($cells) {
     $this->append(Tr::fromTds($cells));
@@ -118,7 +118,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * The numeric keys of the container will be renumbered starting from zero
    *
    * @param  mixed|mixed[] $row the row(s) being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function prepend(RowInterface $row) {
     $this->getInnerContainer()->prepend($row);
@@ -135,7 +135,7 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * The numeric keys of the container will be renumbered starting from zero
    *
    * @param  mixed|mixed[] $row the row(s) being appended
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function prependTr($row) {
     $this->prepend(new Tr($row));

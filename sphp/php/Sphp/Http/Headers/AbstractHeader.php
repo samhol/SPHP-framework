@@ -30,7 +30,7 @@ abstract class AbstractHeader implements HeaderInterface {
   /**
    * 
    * @param  string $value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setValue($value) {
     $this->value = $value;

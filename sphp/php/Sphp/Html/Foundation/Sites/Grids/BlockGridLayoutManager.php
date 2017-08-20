@@ -52,7 +52,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * Sets the number of columns within the row for different screen sizes
    * 
    * @param  string[] $layouts individual layout settings
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function setLayouts($layouts) {
@@ -71,7 +71,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  int $num number of columns in a row (1-8) or false for inheritance
    * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function setGrid(int $num, string $screenSize) {
@@ -86,7 +86,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   /**
    * Unsets all layout settings 
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetLayouts() {
     foreach (Screen::sizes() as $screenSize) {
@@ -100,7 +100,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    *
    * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function unsetGrid(string $screenSize) {
     $classes = [];

@@ -43,7 +43,7 @@ class Query extends AbstractQuery {
    *
    * @param  int $limit the maximum number of rows to return
    * @param  mixed $offset the offset of the initial row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function limit(int $limit, int $offset = 0) {
     $this->limit = '';
@@ -62,9 +62,8 @@ class Query extends AbstractQuery {
     $query .= $this->fromToString();
     $query .= $this->conditionsToString();
     $query .= $this->groupByToString();
-    if (strlen($this->getHaving()) > 0) {
-      $query .= " HAVING " . $this->getHaving();
-    }
+    
+    $query .= $this->havingToString();
     $query .= $this->orderByToString();
     if ($this->hasLimit()) {
       $query .= " LIMIT {$this->getLimit()}";

@@ -51,7 +51,7 @@ class UrlGenerator implements UrlGeneratorInterface {
    * Sets the URL pointing to the API documentation
    *
    * @param  string $root the site root
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   protected function setRoot(string $root) {
     $this->root = $root;

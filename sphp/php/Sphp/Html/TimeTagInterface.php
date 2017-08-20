@@ -28,7 +28,7 @@ interface TimeTagInterface extends TagInterface {
    * **Important:** Sets also the `datetime` attribute
    *
    * @param  DateTimeInterface $dateTime the datetime object
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_time_datetime.asp datetime attribute
    */
   public function setDateTime(DateTimeInterface $dateTime);

@@ -34,7 +34,7 @@ interface InputColumnInterface extends ColumnInterface, InputInterface {
    * Sets the visible contents of the input label
    * 
    * @param  mixed $label the contents of the label 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLabel($label);
 }

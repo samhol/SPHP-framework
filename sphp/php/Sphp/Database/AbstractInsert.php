@@ -11,7 +11,7 @@ use Traversable;
 use PDO;
 
 /**
- * An implementation of an SQL INSERT statement
+ * An abstract implementation of an SQL INSERT statement
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -49,7 +49,7 @@ abstract class AbstractInsert extends AbstractStatement implements DataManipulat
    * Sets the database table where to insert the data
    *
    * @param  string $table an existing database table
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function into(string $table) {
     $this->table = $table;
@@ -64,17 +64,6 @@ abstract class AbstractInsert extends AbstractStatement implements DataManipulat
     return $this->names;
   }
 
-  /**
-   * Sets the values that are to be inserted to the table
-   *
-   * @param  mixed $values
-   * @return self for a fluent interface
-   */
-  public function values(... $values) {
-    $this->valuesFromCollection([$values]);
-    return $this;
-  }
-
   protected function generateQuestionMarks(array $data): string {
     $num = count($data);
     if ($num > 1) {
@@ -87,8 +76,19 @@ abstract class AbstractInsert extends AbstractStatement implements DataManipulat
   /**
    * Sets the values that are to be inserted to the table
    *
+   * @param  mixed $values
+   * @return $this for a fluent interface
+   */
+  public function values(... $values) {
+    $this->valuesFromCollection([$values]);
+    return $this;
+  }
+
+  /**
+   * Sets the values that are to be inserted to the table
+   *
    * @param  array|Traversable $values
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function valuesFromCollection(array $values) {
     if ($values instanceof Traversable) {
@@ -102,7 +102,7 @@ abstract class AbstractInsert extends AbstractStatement implements DataManipulat
    * Sets the order and the names of the columns in the INSERT data
    *
    * @param  string $name
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function columnNames(string ... $name) {
     $this->names = $name;

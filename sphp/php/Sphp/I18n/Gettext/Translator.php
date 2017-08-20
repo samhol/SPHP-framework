@@ -92,7 +92,7 @@ class Translator extends AbstractTranslator {
    * Sets the name of the text domain
    *
    * @param  string $domain the name (filename) of the text domain
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDomain(string $domain) {
     $this->domain = $domain;

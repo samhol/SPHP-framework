@@ -88,7 +88,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Sets the default pattern for the Aria label of each pagination link
    *
    * @param  string $format the format string containing 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLinkAriaLabelPattern($format) {
     $this->linkLabelPattern = $format;
@@ -112,7 +112,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * * Only used if the `href` attribute is present.
    *
    * @param  string $target the value of the target attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function setTarget(string $target) {
@@ -126,7 +126,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * 
    * @param  int $index 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\OutOfRangeException
    */
   public function setCurrentPage($index) {
@@ -150,7 +150,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * 
    * @param  int|string $index the index of the page
    * @param  Page|string $page the page object or an URL string
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPage($index, $page) {
     if (!$page instanceof PageInterface) {
@@ -245,7 +245,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
   /**
    * Sets the number of visible pagination items before active page
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showAll() {
     $this->before = true;
@@ -257,7 +257,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Sets the number of visible pagination items before active page
    * 
    * @param  int $num number of visible pagination items before active page
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function visibleBeforeCurrent(int $num) {
     $this->before = $num;
@@ -268,7 +268,7 @@ class Pagination extends AbstractComponent implements IteratorAggregate, Countab
    * Sets the number of visible pagination items after active page
    * 
    * @param  int $num number of visible pagination items after active page
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function visibleAfterCurrent(int $num) {
     $this->after = $num;

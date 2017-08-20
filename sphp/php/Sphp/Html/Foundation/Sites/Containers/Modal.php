@@ -102,7 +102,7 @@ class Modal implements ContentInterface, ClosableInterface {
    * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
    * 
    * @param  string $size the size of the component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSize($size) {
     $this->resetSize();
@@ -113,7 +113,7 @@ class Modal implements ContentInterface, ClosableInterface {
   /**
    * Resets the size settings of the component
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function resetSize() {
     $this->popup->cssClasses()

@@ -96,7 +96,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * Sets/unsets the heights of the tab content panes to match
    * 
    * @param  boolean $match true for matching heights
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function matchHeight(bool $match = true) {
     $value = $match ? 'true' : 'false';
@@ -108,7 +108,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
    * Sets/unsets active the tab controller at a given index
    * 
    * @param  int $index the index to to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws OutOfBoundsException if the index is not set
    */
   public function setActive(int $index) {

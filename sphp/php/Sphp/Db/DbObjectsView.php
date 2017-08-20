@@ -56,7 +56,7 @@ abstract class DbObjectsView implements DBConnectorInterface, \Countable, \Itera
    * Sets the type of the stored objects in the database view
    *
    * @param  string|DbObjectInterface $type the type of the objects
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throwa \InvalidArgumentException if the type does not implement {@link DbObjectInterface}
    */
   protected function setObjectType($type) {

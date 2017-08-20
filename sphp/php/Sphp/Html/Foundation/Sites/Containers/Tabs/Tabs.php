@@ -80,7 +80,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
    * Sets/unsets the heights of the tab content panes to match
    * 
    * @param  boolean $match true for matching heights
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function matchHeight(bool $match = true) {
     $this->tabsContent->matchHeight($match);
@@ -90,7 +90,7 @@ class Tabs implements ContentInterface, IteratorAggregate, TraversableInterface 
   /**
    * 
    * @param  int $index of the Tab
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setActive(int $index) {
     $this->tabsContent->setActive($index);

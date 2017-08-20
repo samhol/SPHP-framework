@@ -92,7 +92,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
    * Sets the selected options of the menu object
    *
    * @param  scalar|scalar[] $selectedValues selected options of the menu object
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSelectedValues($selectedValues) {
     if (!is_array($selectedValues)) {
@@ -125,7 +125,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
    * 
    * @param  boolean $multiple true if multiple selections are allowed, 
    *         otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function selectMultiple($multiple = true) {
     $this->attrs()->set('multiple', $multiple);
@@ -139,7 +139,7 @@ class Select extends AbstractOptionsContainer implements SelectMenuInterface {
    *  expected for size="2" and size="3".
    * 
    * @param  int $size the number of the visible {@link Option} components
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSize($size) {
     $this->attrs()->set('size', $size);

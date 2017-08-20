@@ -47,7 +47,7 @@ class BackToTopButton extends AbstractComponent {
    * Sets the value of the title attribute
    *
    * @param  string|null $title the value of the title attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_title.asp title attribute
    */
   public function setTitle($title) {

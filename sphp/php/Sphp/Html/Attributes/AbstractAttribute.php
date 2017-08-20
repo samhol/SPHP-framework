@@ -84,7 +84,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    *  
    * **A required attribute cannot be removed** but its value is still mutable.
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function demand() {
     $this->required = true;

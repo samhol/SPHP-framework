@@ -58,7 +58,7 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
    * Sets the screen reader-only label
    * 
    * @param  ScreenReaderLabel|string $label the screen reader label or its textual content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setScreenReaderLabel($label) {
     if ($label instanceof ScreenReaderLabel) {

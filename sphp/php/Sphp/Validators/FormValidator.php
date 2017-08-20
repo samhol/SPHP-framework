@@ -51,7 +51,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
   /**
    * Resets the validator to for revalidation
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function reset() {
     foreach ($this->validators as $validator) {
@@ -129,7 +129,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * 
    * @param  string $inputName the name of the validable input
    * @param  ValidatorInterface $validator the validator object
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function set(string $inputName, ValidatorInterface $validator) {
     $this->validators[$inputName] = $validator;

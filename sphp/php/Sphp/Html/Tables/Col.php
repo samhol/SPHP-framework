@@ -49,7 +49,7 @@ class Col extends EmptyTag implements TableContentInterface {
 	 * **Precondition:** <var>$span > 0</var>
 	 *
 	 * @param  int $value the value of the span attribute
-	 * @return self for a fluent interface
+	 * @return $this for a fluent interface
 	 * @link   http://www.w3schools.com/tags/att_col_span.asp span attribute
 	 */
 	public function setSpan($value) {

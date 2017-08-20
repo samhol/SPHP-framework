@@ -54,7 +54,7 @@ class Th extends Cell {
    *
    * @precondition  $scope == row|col|rowgroup|colgroup
    * @param  string $scope the value of the scope attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_th_scope.asp scope attribute
    */
   public function setScope(string $scope) {

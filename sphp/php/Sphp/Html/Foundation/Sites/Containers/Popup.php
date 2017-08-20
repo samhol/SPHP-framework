@@ -71,7 +71,7 @@ class Popup extends Div {
   /**
    * Returns the Modal reveal controller
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCloseButton(CloseButton $btn) {
     $this->closeButton = $btn;
@@ -91,7 +91,7 @@ class Popup extends Div {
    * **Note:** Default on `'small'` screens is 100% (`'full'`) width.
    * 
    * @param  string $size the size of the component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSize($size) {
     $this->layout()->setSize($size);
@@ -101,7 +101,7 @@ class Popup extends Div {
   /**
    * Resets the size settings of the component
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function resetSize() {
     $this->layout()->unsetSizing();

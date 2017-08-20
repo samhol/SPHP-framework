@@ -43,7 +43,7 @@ class OffCanvasOpener extends AbstractComponent {
   /**
    * 
    * @param  string|OffCanvasAreaInterface $offCanvas the off-canvas component or its id
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCanvas($offCanvas) {
     if ($offCanvas instanceof OffCanvasAreaInterface) {

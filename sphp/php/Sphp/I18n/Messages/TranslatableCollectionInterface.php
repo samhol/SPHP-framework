@@ -34,7 +34,7 @@ interface TranslatableCollectionInterface extends Traversable, Translatable, Arr
    * Merges given collection to this collection
    *
    * @param  MessageCollectionInterface $m
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function merge(TranslatableCollectionInterface $m);
 }

@@ -72,7 +72,7 @@ class SessionData extends AbstractDbObject {
   /**
    * 
    * @param  string $sid
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSid($sid) {
     $this->sid = $sid;
@@ -98,7 +98,7 @@ class SessionData extends AbstractDbObject {
   /**
    * 
    * @param  User $user
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   function setUser(User $user) {
     $this->user = $user;
@@ -108,7 +108,7 @@ class SessionData extends AbstractDbObject {
   /**
    * 
    * @param  DateTime $lastUpdated
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   function setLastUpdated(DateTime $lastUpdated) {
     $this->lastUpdated = $lastUpdated;
@@ -127,7 +127,7 @@ class SessionData extends AbstractDbObject {
   /**
    * 
    * @param array $data
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function fromArray(array $data = []) {
     $this->setPrimaryKey(Arrays::getValue($data, "id"))

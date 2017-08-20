@@ -75,7 +75,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
    *
    * @param  int $maxlifetime the number of seconds after which session data
    *         will be seen as garbage
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setMaxlifetime($maxlifetime) {
     $this->maxlifetime = $maxlifetime;
@@ -99,7 +99,7 @@ abstract class AbstractSessionHandler implements SessionHandlerInterface {
    *
    * @param  int $category
    * @param  string $locale
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setLocale($category, $locale) {

@@ -69,7 +69,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
    * `null` value hides the prefix
    * 
    * @param  string|null $prefix the content of the prefix
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPrefix($prefix = null) {
     $this->prefix = $prefix;
@@ -82,7 +82,7 @@ class InputGroup extends AbstractComponent implements IdentifiableInputInterface
    * `null` value hides the suffix
    * 
    * @param  string|null $suffix the content of the suffix
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSuffix($suffix = null) {
     $this->suffix = $suffix;

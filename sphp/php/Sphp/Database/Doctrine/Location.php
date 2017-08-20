@@ -47,7 +47,7 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
    * Sets the name of the location
    *
    * @param  string $name  the name of the location
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setName($name) {
     $this->name = $name;
@@ -67,7 +67,7 @@ class Location extends AbstractDbObject implements GeographicalAddressInterface 
    * Sets the address of the location
    *
    * @param  Address $address the address of the location
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setAddress(Address $address) {
     $this->address = $address;

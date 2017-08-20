@@ -86,7 +86,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * Sets the Column to the container
    * 
    * @param  array $columns columns or column contents
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setColumns(array $columns) {
     $this->getInnerContainer()->clear();
@@ -100,7 +100,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * Appends a new Column to the container
    * 
    * @param  mixed $column column or column content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function append($column) {
     $this->getInnerContainer()->append($column);

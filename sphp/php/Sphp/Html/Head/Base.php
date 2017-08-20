@@ -46,7 +46,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * Sets the href attribute (The URL of the link).
    *
    * @param  string $href an absolute URL that acts as the base URL
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_href.asp href attribute
    */
   public function setHref(string $href) {
@@ -62,7 +62,7 @@ class Base extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * 2. This attribute can be overridden by using the target attribute for each hyperlink/form.
    *
    * @param  string $target target attribute's value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_base_target.asp target attribute
    */
   public function setTarget(string $target) {

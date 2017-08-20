@@ -35,7 +35,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
   /**
    * Clears all Foundation based visibility CSS classes
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showForAllScreenSizes() {
     $cssClasses = [];
@@ -53,7 +53,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
   /**
    * 
    * @param  string $screenType
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function showFromUp(string $screenType) {
@@ -69,7 +69,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
   /**
    * 
    * @param string $screenSize
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function hideDownTo($screenSize) {
@@ -93,7 +93,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * 
    * @param  string $smaller
    * @param  string $larger
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showBetweenSizes(string $smaller, string $larger) {
     $this->showForAllScreenSizes();
@@ -122,7 +122,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * 
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
    * @param  string $size the targeted screen size flags as a bitmask
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -150,7 +150,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * 
    * @precondition `$size` == `small|medium|large|xlarge|xxlarge`
    * @param  int|string $screenType the targeted screen type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException if the parameter is not recognized as a 
    *         valid screen size
    */
@@ -175,7 +175,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
   /**
    * Sets the componentvisible for all screen sizes
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showForAllSizes() {
     $classes = [];
@@ -193,7 +193,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
   /**
    * 
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clearVisibilitySettings() {
     $classes = [];
@@ -210,7 +210,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * Sets/unsets the component visible only for landscape orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function hideForPortrait(bool $hide = true) {
     $this->getComponent()->cssClasses()
@@ -229,7 +229,7 @@ class VisibilityAdapter extends AbstractComponentAdapter implements VisibilityCh
    * Sets/resets the component visible only for portrait orientation
    * 
    * @param  boolean $hide true if hidden, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function hideForLandscape(bool $hide = true) {
     $this->getComponent()->cssClasses()

@@ -37,7 +37,7 @@ class NamedParameters extends Parameters {
   /**
    * 
    * @param  array|Traversable $params
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function mergeParams($params) {
@@ -68,7 +68,7 @@ class NamedParameters extends Parameters {
    * @param  string $name 
    * @param  mixed $value
    * @param  int $type
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws InvalidArgumentException
    */
   public function setParam($name, $value, int $type = PDO::PARAM_STR) {

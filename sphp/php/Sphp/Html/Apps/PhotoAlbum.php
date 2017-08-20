@@ -71,7 +71,7 @@ class PhotoAlbum extends AbstractContainerComponent {
   /**
    * Builds the application
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   private function build() {
     $this->getInnerContainer()
@@ -118,7 +118,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * Sets the paths of the viewed files an folders in thephoto album
    *
    * @param string|string[] $albumPaths the paths to the files/folders presented in this album
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setAlbumPaths($albumPaths) {
     if (!is_array($albumPaths)) {
@@ -162,7 +162,7 @@ class PhotoAlbum extends AbstractContainerComponent {
    * Sets the heading content
    *
    * @param  mixed $headingText the heading content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHeading($headingText) {
     $this->getHead()->replaceContent($headingText);

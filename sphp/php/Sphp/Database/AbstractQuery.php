@@ -38,9 +38,10 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   /**
    * the HAVING clause
    *
-   * @var string
+   * @var Clause
    */
-  private $having = '';
+  private $having;
+
 
   /**
    * the GROUP BY clause
@@ -73,6 +74,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   public function __construct(PDO $db) {
     parent::__construct($db);
     $this->get('*');
+    $this->having = new Clause();
   }
 
   /**
@@ -80,7 +82,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    *
    * @param  string $columns the column(s) to show (can have multiple
    *         string parameters)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function get(string ...$columns) {
     $this->columns = $columns;
@@ -98,7 +100,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    *
    * @param  string $tables the table(s) to show (can have multiple
    *         string parameters)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function from(string ...$tables) {
     $this->from = $tables;
@@ -117,9 +119,6 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this->from;
   }
 
-  public function getHaving() {
-    return $this->having;
-  }
 
   public function getGroupBy() {
     return $this->groupBy;
@@ -139,7 +138,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    *  rows from a result set.
    *
    * @param  string $columns the columns
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function groupBy(string ...$columns) {
     $this->groupBy = $columns;
@@ -154,6 +153,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     }
   }
 
+
   /**
    * Sets a condition to the HAVING part of the query
    *
@@ -167,23 +167,102 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    * * **If you are using multiple arguments; None of the arguments should be an array**
    *
    * @param  string|string[] $cond condition(s) (accepts multiple arguments)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
-  public function having(string ...$cond) {
-    if (func_num_args() > 0) {
-      $cond = func_get_args();
-    }
-    if (is_array($cond)) {
-      $cond = implode(" AND ", $cond);
-    }
-    if (strlen($this->having) > 0) {
-      $this->having .= " AND " . $cond;
-    } else {
-      $this->having = $cond;
-    }
+  public function having(... $rules) {
+    $obj = new Clause($rules);
+    $this->having->fulfills($obj, 'AND');
     return $this;
   }
 
+  /**
+   * Sets The WHERE clause.
+   *
+   * The WHERE clause is used to filter records
+   *
+   * @param  Clause $c
+   * @return $this for a fluent interface
+   */
+  public function setHaving(Clause $c) {
+    $this->having = $c;
+    return $this;
+  }
+
+  /**
+   * 
+   * @return Clause
+   */
+  public function getHaving(): Clause {
+    return $this->having;
+  }
+
+  /**
+   * Adds rules to the HAVING conditions component
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return $this for a fluent interface
+   * not evaluate to `true`.
+   */
+
+  /**
+   * Appends SQL conditions by using logical AND as a conjunction
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function andHaving(... $rules) {
+    $obj = new Clause($rules);
+    $this->where->fulfills($obj, 'AND');
+    return $this;
+  }
+
+  /**
+   * Appends SQL conditions by using AND NOT as a conjunction
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function andNotHaving(... $rules) {
+    $obj = new Clause($rules);
+    $this->where->fulfills($obj, 'AND NOT');
+    return $this;
+  }
+
+  /**
+   * Appends SQL conditions by using logical OR as a conjunction
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function orHaving(... $rules) {
+    $obj = new Clause($rules);
+    $this->where->fulfills($obj, 'OR');
+    return $this;
+  }
+
+  /**
+   * Appends SQL conditions by using logical OR NOT as a conjunction
+   *
+   * @param  string|RuleInterface|array $rules SQL condition(s)
+   * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
+   */
+  public function orNotHaving(... $rules) {
+    $obj = new Clause($rules);
+    $this->where->fulfills($obj, 'OR NOT');
+    return $this;
+  }
+
+  protected function havingToString(): string {
+    $output = '';
+    if ($this->getHaving()->notEmpty()) {
+      $output .= " HAVING $this->having";
+    }
+    return $output;
+  }
   /**
    * Sets columns which are used to sort the resulting data
    *
@@ -201,7 +280,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    * - 'DESC' indicates descending order
    *
    * @param  string ...$columns the column(s) (accepts multiple arguments)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @example $select->orderBy('a DESC', 'b ASC', 'c ASC, d ASC');
    */
   public function orderBy(string ...$columns) {
@@ -257,7 +336,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    *
    * @param  int $limit the maximum number of rows to return
    * @param  mixed $offset the offset of the initial row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function limit(int $limit, int $offset = 0) {
     $this->limit = '';

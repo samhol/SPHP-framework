@@ -88,7 +88,7 @@ class Translator extends AbstractTranslator {
    * @param type $baseDir
    * @param type $pattern
    * @param type $textDomain
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function addTranslationFilePattern($type, $baseDir, $pattern, $textDomain) {
     $this->translator->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
@@ -102,7 +102,7 @@ class Translator extends AbstractTranslator {
   /**
    * 
    * @param string $lang
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLang(string $lang) {
     $this->translator->setLocale($lang);

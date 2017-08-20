@@ -48,7 +48,7 @@ class Equalizer extends AbstractComponentAdapter {
    * Sets/Unsets the Equalizer to match each row's items in height 
    * 
    * @param  string $screenSize
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function equalizeOn(string $screenSize) {
     if ($screenSize != 'all') {
@@ -63,7 +63,7 @@ class Equalizer extends AbstractComponentAdapter {
    * Sets/Unsets the Equalizer to match each row's items in height 
    * 
    * @param  boolean $flag
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function equalizeByRow(bool $flag = true) {
     if ($flag) {
@@ -78,7 +78,7 @@ class Equalizer extends AbstractComponentAdapter {
    * Adds an observer
    * 
    * @param  ComponentInterface $observer
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function addObserver(ComponentInterface $observer) {
     $observer->setAttr('data-equalizer-watch', $this->getEqualizerName());
@@ -89,7 +89,7 @@ class Equalizer extends AbstractComponentAdapter {
    * Removes an observer
    * 
    * @param  ComponentInterface $observer
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function removeObserver(ComponentInterface $observer) {
     $observer->attrs()->remove('data-equalizer-watch');

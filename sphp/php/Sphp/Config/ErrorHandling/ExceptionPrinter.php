@@ -40,7 +40,7 @@ class ExceptionPrinter implements ExceptionListener {
    * Sets the trace visibility
    * 
    * @param  boolean $show true for showing trace
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showTrace(bool $show = true) {
     $this->showTrace = $show;
@@ -51,7 +51,7 @@ class ExceptionPrinter implements ExceptionListener {
    * Sets the previous exception visibility
    * 
    * @param  boolean $show true for showing
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showPreviousException(bool $show = true) {
     $this->showPreviousException = $show;

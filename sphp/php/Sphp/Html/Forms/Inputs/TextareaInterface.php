@@ -25,7 +25,7 @@ interface TextareaInterface extends ValidableInputInterface {
    *
    * @precondition `$wrapType == soft|hard`
    * @param  int $wrapType the value of the wrap attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_wrap.asp wrap attribute
    */
   public function wrap($wrapType);
@@ -35,7 +35,7 @@ interface TextareaInterface extends ValidableInputInterface {
    *
    * @precondition `$rows > 0`
    * @param  int $rows the value of the rows attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    */
   public function setRows(int $rows);
@@ -45,7 +45,7 @@ interface TextareaInterface extends ValidableInputInterface {
    *
    * @precondition `$cols > 0`
    * @param  int $cols the value of the cols attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
   public function setCols(int $cols);
@@ -58,7 +58,7 @@ interface TextareaInterface extends ValidableInputInterface {
    *  the text area before the user enters a value.
    *
    * @param  string $placeholder the value of the placeholder attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_placeholder.asp placeholder attribute
    */
   public function setPlaceholder($placeholder);

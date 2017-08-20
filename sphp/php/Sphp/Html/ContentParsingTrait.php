@@ -23,7 +23,7 @@ trait ContentParsingTrait {
   /**
    * 
    * @param  mixed $content
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   abstract public function append($content);
 
@@ -31,7 +31,7 @@ trait ContentParsingTrait {
    * Appends a raw file to the container
    * 
    * @param  string $path
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendRawFile(string $path) {
@@ -43,7 +43,7 @@ trait ContentParsingTrait {
    * Appends an executed PHP file to the container
    * 
    * @param  string $path path to the PHP file
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendPhpFile(string $path) {
@@ -55,7 +55,7 @@ trait ContentParsingTrait {
    * Appends a parsed Mark Down string to the container
    * 
    * @param  string $md
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function appendMd(string $md) {
     $p = new ParsedownExtraPlugin();
@@ -67,7 +67,7 @@ trait ContentParsingTrait {
    * Appends a parsed Mark Down file to the container
    * 
    * @param  string $path
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the parsing fails for any reason
    */
   public function appendMdFile(string $path) {

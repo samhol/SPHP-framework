@@ -49,7 +49,7 @@ class GreaterThanValidator extends AbstractLimitValidator {
    * Sets the minimum value
    * 
    * @param  float $min the minimum value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setMin($min) {
     $this->min = $min;

@@ -69,7 +69,7 @@ class AnyTimeInput extends TextInput {
    * * {@link self::LANG_FI}: Finnish
    * 
    * @param  string $locale used language and locale
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLocale($locale) {
     $this->locale = $locale;
@@ -121,7 +121,7 @@ class AnyTimeInput extends TextInput {
    * * <var>%%</var>: A literal % character
    *
    * @param  string $format datetime format
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDateTimeFormat($format = "%Y-%m-%d %H:%i") {
     $this->format = $format;

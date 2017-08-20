@@ -62,7 +62,7 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
    * Sets the value of thelabel attribute
    *
    * @param  string $label the value of thelabel attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function setLabel($label) {

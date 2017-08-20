@@ -32,7 +32,7 @@ interface GridInterface extends ContentInterface, TraversableInterface {
    *   using {@link self::toRow()} method.
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function append($row);
@@ -48,7 +48,7 @@ interface GridInterface extends ContentInterface, TraversableInterface {
    *    and the index of the prepended row is 'int(0)' 
    *
    * @param  mixed|RowInterface $row the new row or the content of the new row
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function prepend($row);

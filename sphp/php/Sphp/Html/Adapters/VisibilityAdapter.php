@@ -30,7 +30,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * Sets whether the component is in use or not
    *
    * @param  boolean $hide true if the button is in use, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHidden(bool $hide = true) {
     if (!$hide) {
@@ -49,7 +49,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    * The element will not be displayed at all (has no effect on layout). Adds
    * an inline style property `display: none;` to the component.
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function hide() {
     $this->component->inlineStyles()->setProperty('display', 'none');
@@ -64,7 +64,7 @@ class VisibilityAdapter extends AbstractComponentAdapter {
    *  Removes only inline style property `display: hidden;` . The component
    *  might still be defined as hidden in CSS style sheets or by a JavaScript command.
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unhide() {
     if ($this->getComponent()->inlineStyles()->getProperty('display') === 'none') {

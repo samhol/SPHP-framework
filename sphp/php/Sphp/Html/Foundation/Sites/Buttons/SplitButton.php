@@ -101,7 +101,7 @@ class SplitButton extends AbstractComponent {
    * 
    * @param  string $size optional CSS class name defining button size. 
    *         `medium` value corresponds to no explicit size definition.
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setSize($size = null) {
@@ -120,7 +120,7 @@ class SplitButton extends AbstractComponent {
    * 
    *  Removes all specified size related CSS classes
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setDefaultSize() {

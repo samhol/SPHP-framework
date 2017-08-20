@@ -64,7 +64,7 @@ class ContentCopyController implements ContentInterface {
   /**
    * 
    * @param  ComponentInterface $target
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCopyTarget($target) {
     if ($target !== $this->target) {

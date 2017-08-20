@@ -35,7 +35,7 @@ interface AttributeInterface {
    * Sets the value of the attribute
    *
    * @param  scalar $value value to set
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid for the type of the attribute
    * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
@@ -64,7 +64,7 @@ interface AttributeInterface {
    * Locks the given value to the attribute
    *
    * @param  scalar $value the value to lock to the attribute
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid
    * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    */
@@ -82,7 +82,7 @@ interface AttributeInterface {
    *  
    * **A required attribute cannot be removed** but its value is still mutable.
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function demand();
 

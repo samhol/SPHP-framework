@@ -27,7 +27,7 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
    * Sets the content of the component
    * 
    * @param  mixed $content the content of the component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setContent($content);
 
@@ -35,7 +35,7 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
    * Sets or unsets the hyperlink component as active
    * 
    * @param  boolean $active true for activation and false for deactivation
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCurrent(bool $active = true);
 
@@ -52,7 +52,7 @@ interface PageInterface extends ComponentInterface, HyperlinkInterface, LiInterf
    * A disabled pagination component is unusable and un-clickable. 
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true);
 

@@ -128,7 +128,7 @@ class URL implements Arrayable, IteratorAggregate {
    *  
    * 
    * @param  string|null $scheme the scheme name of the URL
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setScheme(string $scheme = null) {
     $this->components['scheme'] = (string) $scheme;
@@ -161,7 +161,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the `host` part of the URL
    * 
    * @param  string $host the `host` part of the URL
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setHost($host = null) {
     $this->components['host'] = (string) $host;
@@ -195,7 +195,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the username part of the URL
    * 
    * @param  string|null $user
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setUser($user = null) {
     $this->components['user'] = (string) $user;
@@ -229,7 +229,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the password part of the URL
    * 
    * @param  string|null $pass
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPassword($pass = null) {
     $this->components['pass'] = (string) $pass;
@@ -263,7 +263,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the path part of the URL
    * 
    * @param  string|null $path the path part of the URL or null for none
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setPath($path = null) {
     if ($path === null || $path === '') {
@@ -302,7 +302,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets the query part of the URL
    * 
    * @param  string $query the new query string
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setQuery(string $query = null) {
     if ($query !== '') {
@@ -378,7 +378,7 @@ class URL implements Arrayable, IteratorAggregate {
    *
    * @param  string $name the name of the parameter
    * @param  string $value the value of the parameter
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParam($name, $value) {
     $this->components['query'][$name] = $value;
@@ -389,7 +389,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Sets or replaces parameters in the query
    *
    * @param  string[] $params parameter name => value pairs or a query string
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setParams(array $params) {
     $this->components['query'] = array_merge($this->components['query'], $params);
@@ -401,7 +401,7 @@ class URL implements Arrayable, IteratorAggregate {
    * Removes a parameter from the query
    *
    * @param  string $name the name of the parameter to remove
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetParam($name) {
     if (array_key_exists($name, $this->components['query'])) {
@@ -416,7 +416,7 @@ class URL implements Arrayable, IteratorAggregate {
    * The fragment specifies a part or a position within the overall resource or document.
    * 
    * @param  string|null $fragment the fragment identifier of the URL
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setFragment($fragment) {
     $this->components['fragment'] = $fragment;
@@ -451,7 +451,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @precondition $port >= 0
    * @param  int $port
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
   public function setPort(int $port) {

@@ -47,7 +47,7 @@ class Ini implements Arrayable {
    * 
    * @param  string $name the name of the option
    * @param  string $value the new value for the option
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.ini-set.php ini_set
    * @link   http://php.net/manual/en/ini.list.php list of all available options
    */
@@ -83,7 +83,7 @@ class Ini implements Arrayable {
    * 
    * Previous settings are replaced
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function init() {
     foreach ($this->ini as $name => $value) {
@@ -110,7 +110,7 @@ class Ini implements Arrayable {
    * 
    * Previous settings are replaced
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function reset() {
     foreach ($this->pre as $name => $value) {

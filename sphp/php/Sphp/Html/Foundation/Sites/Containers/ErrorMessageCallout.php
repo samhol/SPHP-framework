@@ -119,7 +119,7 @@ class ErrorMessageCallout extends Callout {
    * Sets the level of the error raised
    * 
    * @param int $errno the level of the error raised
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setErrno(int $errno) {
     $this->errno = $errno;
@@ -139,7 +139,7 @@ class ErrorMessageCallout extends Callout {
    * Sets the error message
    * 
    * @param  string $errstr the error message
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setErrstr(string $errstr) {
     $this->errstr = $errstr;
@@ -150,7 +150,7 @@ class ErrorMessageCallout extends Callout {
    * Sets the filename that the error was raised in
    * 
    * @param  string $errfile
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setErrfile($errfile) {
     $this->errfile = $errfile;
@@ -161,7 +161,7 @@ class ErrorMessageCallout extends Callout {
    * Sets the line number the error was raised at
    * 
    * @param  int $errline the line number the error was raised at
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setErrline(int $errline) {
     $this->errline = $errline;
@@ -172,7 +172,7 @@ class ErrorMessageCallout extends Callout {
    * Sets the visibility of the file
    * 
    * @param  boolean $show true for visible file
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showInitialFile(bool $show = true) {
     $this->showFile = $show;

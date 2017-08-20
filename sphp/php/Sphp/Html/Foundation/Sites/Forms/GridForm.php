@@ -70,7 +70,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
   /**
    * 
    * @param  string $message
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setFormErrorMessage($message) {
     $this->errorLabel->replaceContent($message);

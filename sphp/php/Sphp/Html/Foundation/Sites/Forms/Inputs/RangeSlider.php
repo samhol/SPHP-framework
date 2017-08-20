@@ -112,7 +112,7 @@ class RangeSlider extends AbstractSlider {
    * Sets the visibility of the current slider value
    * 
    * @param  boolean $valueVisible true for visible and false for hidden
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showValue(bool $valueVisible = true) {
     $vis = new VisibilityAdapter($this->getInnerLabel());
@@ -124,7 +124,7 @@ class RangeSlider extends AbstractSlider {
    * Sets the description text of the slider
    * 
    * @param  string $description the description text of the slider
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setDescription($description) {
     $this->getInnerLabel()["description"] = "$description ";
@@ -135,7 +135,7 @@ class RangeSlider extends AbstractSlider {
    * Sets the unit of the slider value
    * 
    * @param  string $unit the unit of the value
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setValueUnit($unit = '') {
     $this->getInnerLabel()['unit'] = " $unit";

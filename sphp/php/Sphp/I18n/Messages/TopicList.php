@@ -77,7 +77,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * Merges given {@link TopicList} to this container
    *
    * @param  TopicList $tc the container to merge
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function merge(TopicList $tc) {
     foreach ($tc->getTopics() as $topic => $cont) {
@@ -136,7 +136,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *  The optional `$topic` attribute narrows down the clearing to the messages of given target element.
    *
    * @param string $topic optional topic name
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function clearContent(string $topic = null) {
     if ($topic === null) {
@@ -213,7 +213,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *
    * @param  string $topic the message topic
    * @param  mixed $m message or message list
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function offsetSet($topic, $m) {
     if (!$m instanceof TranslatableCollectionInterface) {
@@ -231,7 +231,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    *
    * @param  string $topic the message topic
    * @param  mixed $m message or message list
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @uses   self::offsetSet()
    */
   public function set(string $topic, $m) {
@@ -243,7 +243,7 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
    * Removes a message topic from the container
    *
    * @param  string $topic the message topic to be removed
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function offsetUnset($topic) {
     if ($this->offsetExists($topic)) {

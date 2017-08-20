@@ -42,7 +42,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
    * this is not included, the first frame of the video will be used instead.
    * 
    * @param  string|URL $poster the poster image for the video component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_video_poster.asp poster attribute
    */
   public function setPoster($poster) {
@@ -55,7 +55,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
    * 
    * @precondition `$ratio` == `16-9|4-3`
    * @param  string $ratio the ratio of the video
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setRatio($ratio) {
     $this->cssClasses()->remove(['vjs-16-9', 'vjs-4-3']);
@@ -68,7 +68,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
   /**
    * Sets the ratio of the video component to `16:9` wide screen
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setWideScreen() {
     $this->setRatio('16-9');
@@ -78,7 +78,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
   /**
    * Sets the ratio of the video component to `4:3`
    * 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTraditionalScreen() {
     $this->setRatio('4-3');

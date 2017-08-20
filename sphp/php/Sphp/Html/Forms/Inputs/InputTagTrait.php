@@ -43,7 +43,7 @@ trait InputTagTrait {
    *
    * @param  string $value the value of the value attribute
    * @param  int $filter The ID of the filter to apply. {@link http://php.net/manual/en/filter.filters.php list of the available filters}.
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
   public function setValue($value, $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS) {

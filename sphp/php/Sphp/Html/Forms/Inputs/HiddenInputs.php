@@ -48,7 +48,7 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
    *
    * @param  string $name th name of the hidden variable
    * @param  scalar $value the value of the hidden variable
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @see    HiddenInput
    */
   public function setVariable($name, $value) {
@@ -63,7 +63,7 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
    *  {@link HiddenInput} components.
    *
    * @param  string[] $vars name => value pairs
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @see    HiddenInput
    */
   public function setVariables(array $vars) {

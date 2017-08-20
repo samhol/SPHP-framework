@@ -48,7 +48,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * Specifies the MIME type of the script
    *
    * @param  string $type the value of the type attribute (mime-type)
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_type.asp type attribute
    */
   public function setType(string $type) {
@@ -62,7 +62,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * Note: The async attribute is only for external scripts (and should only be used if the src attribute is present).
    *
    * @param  boolean $async true for asynchronous execution, false otherwise
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_async.asp async attribute
    */
   public function setAsync(bool $async = true) {
@@ -73,7 +73,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * Sets the value of the src attribute
    *
    * @param  string $src the file path of the script file
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function setSrc(string $src) {

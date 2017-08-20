@@ -45,7 +45,7 @@ class IsInstanceOfValidator extends AbstractValidator {
   /**
    * 
    * @param  string $className the name of the class 
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the class is not defined
    */
   public function setClassName(string $className) {

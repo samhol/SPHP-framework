@@ -38,7 +38,7 @@ class OptionalValidator extends ValidatorChain {
    * Sets/unsets validation for empty values
    *
    * @param  boolean $allow true if all values are validated and false if not
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function allowEmptyValues(bool $allow = true) {
     $this->allowEmptyValues = $allow;

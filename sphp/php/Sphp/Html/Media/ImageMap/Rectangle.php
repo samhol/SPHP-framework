@@ -37,7 +37,7 @@ class Rectangle extends AbstractArea {
    * 
    * @param  int $x the top left x-coordinate
    * @param  int $y the top left y-coordinate
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setTopLeft(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
@@ -53,7 +53,7 @@ class Rectangle extends AbstractArea {
    * 
    * @param  int $x the bottom right x-coordinate
    * @param  int $y the bottom right y-coordinate
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setBottomRight(int $x, int $y) {
     $coords = split(',', $this->getCoordinates());
@@ -71,7 +71,7 @@ class Rectangle extends AbstractArea {
    * @param  int $y1 the top left y-coordinate
    * @param  int $x2 the bottom right x-coordinate
    * @param  int $y2 the bottom right y-coordinate
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setCoordinates(int $x1, int $y1, int $x2, int $y2) {
     $coords = [$x1, $y1, $x2, $y2];

@@ -21,7 +21,7 @@ interface LayoutManagerInterface {
    * Sets the managed component
    * 
    * @param ComponentInterface $component
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function manage(ComponentInterface $component);
 
@@ -29,14 +29,14 @@ interface LayoutManagerInterface {
    * Sets the layout
    *
    * @param  mixed|mixed[] $layouts layout parameters
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setLayouts($layouts);
 
   /**
    * Unsets the layout
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function unsetLayouts();
 }

@@ -70,7 +70,7 @@ class ThrowableCallout extends Callout {
    * Sets the visibility of the file
    * 
    * @param  boolean $show true for visible file
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showInitialFile(bool $show = true) {
     $this->showFile = $show;
@@ -81,7 +81,7 @@ class ThrowableCallout extends Callout {
    * Sets the trace visibility
    * 
    * @param  boolean $show true for visible trace  
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showTrace(bool $show = true) {
     $this->showTrace = $show;
@@ -93,7 +93,7 @@ class ThrowableCallout extends Callout {
    * Sets the previous exception visibility
    * 
    * @param  boolean $show true for visible previous exception
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function showPreviousException(bool $show = true) {
     $this->showPreviousThrowable = $show;
@@ -115,7 +115,7 @@ class ThrowableCallout extends Callout {
   /**
    * Builds the previous {@link \Throwable} view
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   private function buildPreviousException() {
     $prev = $this->throwable->getPrevious();

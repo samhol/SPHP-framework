@@ -35,14 +35,14 @@ interface EventInterface {
    * Sets the subject
    * 
    * @param  mixed $subject the subject
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function setSubject($subject);
 
   /**
    * Stops the event from being used anymore
    *
-   * @return self for a fluent interface
+   * @return $this for a fluent interface
    */
   public function stopPropagation();
 
