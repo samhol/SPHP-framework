@@ -23,45 +23,57 @@ class StatementStrategy {
    * @var PDO 
    */
   private $pdo;
-  
-  private $map = ['mysql' => 'MySQL', 'sqlsrv' => 'Microsoft'];
 
-  //bookList is not instantiated at construct time
+  /**
+   * @var string[] 
+   */
+  private $map = [
+      'mysql' => 'MySQL',
+      'sqlsrv' => 'Microsoft'
+  ];
+
+  /**
+   * 
+   * @param PDO $pdo
+   */
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
   }
-  
-  public function getNamespace():string {
-    
+
+  public function generateStatement($className): StatementInterface {
+
+    //$ns = __NAMESPACE__ . "\\Legacy";
+    $result = __NAMESPACE__ . "\\Legacy\\" . ucfirst($className);
+    $driverName = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+    if (array_key_exists($driverName, $this->map)) {
+      $try = __NAMESPACE__ . "\\{$this->map[$driverName]}\\$className";
+      //var_dump($try);
+      if (class_exists($try)) {
+        $result = $try;
+      }
+    }
+    //var_dump($result);
+    return new $result($this->pdo);
   }
 
-  public function createInsert() {
-    $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
-    switch ($driver) {
-      case 'mysql':
-        $insert = new MySQL\Insert($this->pdo);
-        break;
-      default :
-        $insert = new Insert($this->pdo);
-        break;
-    }
-    return $insert;
+  public function createInsert(): Insert {
+    return $this->generateStatement('Insert');
+    return new $q($this->pdo);
   }
 
-  public function createQuery(): AbstractQuery {
-    $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
-    switch ($driver) {
-      case 'mysql':
-        $insert = new MySQL\Query($this->pdo);
-        break;
-      case 'sqlsrv':
-        $insert = new Microsoft\Query($this->pdo);
-        break;
-      default :
-        $insert = new Query($this->pdo);
-        break;
-    }
-    return $insert;
+  public function createQuery(): QueryInterface {
+    return $this->generateStatement('Query');
+    return new $q($this->pdo);
+  }
+
+  public function createUpdate(): Update {
+    return $this->generateStatement('Update');
+    return new $q($this->pdo);
+  }
+
+  public function createDelete(): DeleteInterface {
+    return $this->generateStatement('Delete');
+    return new $q($this->pdo);
   }
 
 }

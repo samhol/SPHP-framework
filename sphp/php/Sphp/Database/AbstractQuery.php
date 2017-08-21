@@ -19,7 +19,7 @@ use ArrayIterator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractQuery extends ConditionalStatement implements IteratorAggregate {
+abstract class AbstractQuery extends ConditionalStatement implements IteratorAggregate, Query {
 
   /**
    * a list of column(s) to be included in the query
@@ -41,7 +41,6 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    * @var Clause
    */
   private $having;
-
 
   /**
    * the GROUP BY clause
@@ -119,7 +118,6 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this->from;
   }
 
-
   public function getGroupBy() {
     return $this->groupBy;
   }
@@ -152,7 +150,6 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
       return '';
     }
   }
-
 
   /**
    * Sets a condition to the HAVING part of the query
@@ -263,6 +260,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     }
     return $output;
   }
+
   /**
    * Sets columns which are used to sort the resulting data
    *

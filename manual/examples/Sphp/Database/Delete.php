@@ -3,7 +3,6 @@
 namespace Sphp\Database;
 
 var_dump(Db::delete()
-        ->from('locations')
-        ->where(Rule::is('name', 'Hyde Park'))
-        ->execute()
-        ->rowCount());
+        ->from('address')
+        ->where(Rule::isIn('street', ['Koivuluodontie 2', 'Rakuunatie 59 A 3', 'W2 2UH']))
+        ->affectRows());

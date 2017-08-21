@@ -43,7 +43,7 @@ abstract class AbstractStatement implements StatementInterface {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->params, $this->pdo);
+    unset($this->pdo);
   }
 
   public function getPDO(): PDO {
@@ -78,21 +78,4 @@ abstract class AbstractStatement implements StatementInterface {
     }
   }
 
-  /**
-   * Returns the name of the currently used database driver
-   * 
-   * @return string the name of the currently used database driver
-   */
-  public function getCurrentDriver(): string {
-    return $this->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
-  }
-
-  /**
-   * Returns the name of the currently used database driver
-   * 
-   * @return string the name of the currently used database driver
-   */
-  public function isMicrosoftDB(): string {
-    return $this->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
-  }
 }

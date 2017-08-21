@@ -19,6 +19,8 @@ use PDO;
  */
 abstract class ConditionalStatement extends AbstractStatement {
 
+  
+  
   /**
    * the conditions in the WHERE part of the SELECT, UPDATE and INSERT queries
    *

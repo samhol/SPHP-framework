@@ -116,17 +116,8 @@ class Db {
    * @throws \Sphp\Exceptions\BadMethodCallException
    */
   public function __call(string $name, array $arguments = []) {
-    if ($name === 'query') {
-      return $this->strategy->createQuery();
-    } else if ($name === 'delete') {
-      return new Delete($this->pdo);
-    } else if ($name === 'insert') {
-      return $this->strategy->createInsert();
-    } else if ($name === 'update') {
-      return new Update($this->pdo);
-    } else {
-      throw new BadMethodCallException("Method $name does not exist in " . static::class);
-    }
+      return $this->strategy->generateStatement($name);
+    
   }
 
 }

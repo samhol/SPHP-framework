@@ -5,7 +5,6 @@ namespace Sphp\MVC;
 require_once('manualTools/main.php');
 
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
-use Sphp\Html\Apps\Manual\Apis;
 
 $loadNotFound = function () {
 
