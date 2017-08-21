@@ -3,12 +3,13 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$bitMaskLink = $api->classLinker(BitMask::class);
+$bitMaskLink = Apis::sami()->classLinker(BitMask::class);
 $and = $bitMaskLink->methodLink("and_");
 $or = $bitMaskLink->methodLink("or_");
 $xor = $bitMaskLink->methodLink("xor_");
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Class $bitMaskLink
 
 This Implements an collection of bits that grows as needed. Each component 

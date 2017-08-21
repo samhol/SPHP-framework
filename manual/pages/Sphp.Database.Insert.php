@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $insert = Apis::sami()->classLinker(Insert::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 ##SQL database $insert object
 		

@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $db = $api->classLinker(Db::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $db class
 
 MD

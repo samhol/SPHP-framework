@@ -13,7 +13,7 @@ $queueInterface = Apis::sami()->classLinker(QueueInterface::class);
 $queue = Apis::sami()->classLinker(Queue::class);
 $splQueue = Apis::sami()->classLinker(\SplQueue::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Stack and queue implementations
 
 In computer science, a queue represents a First-In-First-Out (FIFO) data
@@ -32,7 +32,7 @@ an instance of $stack can therefore be used as a last-in-first-out (LIFO) stack 
 MD
 );
 CodeExampleBuilder::visualize("Sphp/Data/Stack.php", "php", false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ####The $queueInterface and its implementation
 
 The $queue implements the $queueInterface by extending the native $splQueue.

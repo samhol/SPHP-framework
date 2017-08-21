@@ -3,13 +3,14 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$abstractSwitch = $api->classLinker(AbstractSwitch::class);
-$radioSwitch = $api->classLinker(RadioSwitch::class);
-$switchBox = $api->classLinker(SwitchBox::class);
+$abstractSwitch = Apis::sami()->classLinker(AbstractSwitch::class);
+$radioSwitch = Apis::sami()->classLinker(RadioSwitch::class);
+$switchBox = Apis::sami()->classLinker(SwitchBox::class);
 
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Buttons
 
 MD
@@ -19,7 +20,7 @@ MD
         ->buildAccordion()
         ->addCssClass('form-example')
         ->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 MD
 );

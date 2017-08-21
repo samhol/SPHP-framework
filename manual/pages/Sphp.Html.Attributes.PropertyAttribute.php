@@ -3,10 +3,10 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-
-$abstractAttr = $api->classLinker(AbstractAttribute::class);
-$propertyAttr = $api->classLinker(PropertyAttribute::class);
-echo $parsedown->text(<<<MD
+use Sphp\Html\Apps\Manual\Apis;
+$abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
+$propertyAttr = Apis::sami()->classLinker(PropertyAttribute::class);
+\Sphp\Manual\parseDown(<<<MD
 ##The $propertyAttr class
 		
 The $propertyAttr implements an attribute that contains multiple name 

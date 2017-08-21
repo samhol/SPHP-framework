@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $callout = Apis::sami()->classLinker(Callout::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###The $callout component
 		
 $callout is a Foundation 6 based component that makes it possible to outline 

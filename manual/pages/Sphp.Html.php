@@ -15,8 +15,9 @@ $emptyTag = Apis::sami()->classLinker(EmptyTag::class);
 $containerInterface = Apis::sami()->classLinker(ContainerInterface::class);
 $containerComponentInterface = Apis::sami()->classLinker(ContainerComponentInterface::class);
 $contentTrait = Apis::sami()->classLinker(ContentTrait::class);
+$w3schools = Apis::w3schools();
 $nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Introduction to HTML components
 $nsbc
 HTML is the standard markup language used to create Web pages.
@@ -58,7 +59,7 @@ will never throw any type of {$exeption} during execution.
 ##The $componentInterface interface and its $abstractTag implementation
 
 The $componentInterface interface declares a group of methods for HTML attribute handling.
-It is implemented in the {$api->classLinker(IdentifiableComponentTrait::class)} trait and also in the abstract class $abstractTag.
+It is implemented in the abstract class $abstractTag.
 $abstractTag is the first actual PHP implementation of a HTML tag in the framework.
 It also defines the tagname property in {$abstractTag->methodLink("__construct")}.
 
@@ -75,14 +76,13 @@ The $emptyTag class is usable when generating empty HTML elements like:
 
 The $containerInterface declares the properties
 for an HTML container. Such container can store anything that can be output as a
-PHP string. The simplest build in implementor for the $containerInterface is the
-{$api->classLinker(Container::class)} class.
+PHP string.
 MD
 );
 
 CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = Apis::sami()->classLinker(ContainerTag::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
@@ -91,12 +91,11 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-echo $parsedown->text(<<<MD
-##The {$api->classLinker(AbstractTag::class)} class
+$abstractTag = Apis::sami()->classLinker(AbstractTag::class);
+\Sphp\Manual\parseDown(<<<MD
+##The $abstractTag class
 
-Abstract {$api->classLinker(AbstractTag::class)} class is the base implementation
-of the {$api->classLinker(ComponentInterface::class)} for all predefined HTML tag components.
-At least it is extended in every existing HTML component in the current framework.
+This Abstract class is the base implementation  for all predefined HTML tag components.
 
 **Note!** Use only HTML attributes that are specified for the underlying HTML tag name returned from the method getTagName().
 
@@ -104,5 +103,5 @@ MD
 );
 //PHPExampleViewer::visualize("Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
-$load("Sphp.Html.AjaxLoaderInterface.php");
-//$load("Sphp.Html.Document.php");
+\Sphp\Manual\loadPage("Sphp.Html.AjaxLoaderInterface.php");
+//\Sphp\Manual\loadPage("Sphp.Html.Document.php");

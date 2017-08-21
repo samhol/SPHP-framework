@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $gridIf = Apis::sami()->classLinker(GridInterface::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $gridIf <small>and its implementations</small>
 
 An implementation of a $gridIf is a container for horizontal Rows having columns. As default this 

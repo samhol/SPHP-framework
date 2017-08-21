@@ -2,8 +2,10 @@
 
 namespace Sphp\Html\Foundation\Sites\Media;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+\Sphp\Manual\parseDown(<<<MD
 #Foundation media components
 
 $ns
@@ -13,6 +15,6 @@ using the tools provided by Foundation framework.
 MD
 );
 
-$load('Sphp.Html.Foundation.Sites.Media.ResponsiveEmbed');
-$load('Sphp.Html.Foundation.Sites.Media.Orbit');
-$load('Sphp.Html.Foundation.Sites.Media.ProgressBar');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Media.ResponsiveEmbed');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Media.Orbit');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Media.ProgressBar');

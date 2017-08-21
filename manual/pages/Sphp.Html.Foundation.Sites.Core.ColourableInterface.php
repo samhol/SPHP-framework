@@ -9,7 +9,7 @@ $colourableInterface = Apis::sami()->classLinker(ColourableInterface::class);
 $colourableAdapter = Apis::sami()->classLinker(ColourableAdapter::class);
 $ComponentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
 
 Foundation framework introduces special Visibility CSS classes. With these classes 

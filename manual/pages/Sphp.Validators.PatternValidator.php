@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $patrnvLink = Apis::sami()->classLinker(PatternValidator::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $patrnvLink class		
   
 The $patrnvLink validates the input against the given regular expression. The input

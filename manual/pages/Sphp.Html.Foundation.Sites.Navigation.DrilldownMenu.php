@@ -11,7 +11,7 @@ $menuInterface = Apis::sami()->classLinker(MenuInterface::class);
 $drilldownMenu = Apis::sami()->classLinker(DrilldownMenu::class);
 $dropdownMenu = Apis::sami()->classLinker(DropdownMenu::class);
 $accordionMenu = Apis::sami()->classLinker(AccordionMenu::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Navigation menus implementing $menuInterface
 
 The $drilldownMenu component is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.

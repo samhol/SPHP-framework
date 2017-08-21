@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $selectLink = Apis::sami()->classLinker(Select::class);
 $option = Apis::sami()->classLinker(Option::class);
 $optGroup = Apis::sami()->classLinker(Optgroup::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###The $selectLink component
 	
 The $selectLink component is used to create a drop-down list in forms. The $option 

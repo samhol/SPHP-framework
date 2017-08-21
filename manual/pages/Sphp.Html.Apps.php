@@ -5,15 +5,15 @@ namespace Sphp\Html\Apps;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #MISCELLANEOUS HTML COMPONENTS AND APPLICATIONS
         
 $ns
 MD
 );
 
-$load('Sphp.Html.Apps.SyntaxHighlighter');
-$load('Sphp.Html.Apps.SingleAccordion');
+\Sphp\Manual\loadPage('Sphp.Html.Apps.SyntaxHighlighter');
+\Sphp\Manual\loadPage('Sphp.Html.Apps.SingleAccordion');
 
 
 

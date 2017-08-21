@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $sqlException = Apis::sami()->classLinker(SQLException::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #DATABASE MANIPULATION: 
 $ns
 The PHP Data Objects $pdo extension defines a lightweight, consistent interface
@@ -26,8 +26,8 @@ $usersTableSql = (new CodeExampleBuilder('Sphp/Db/create_session_user.sql'))
 CodeExampleBuilder::visualize('Sphp/Db/dbObjectsView.php', 1, 'text');
 CodeExampleBuilder::visualize('Sphp/Db/usersAsHtmlTable.php', 2);
 
-$load('Sphp.Db.Db');
-$load('Sphp.Db.Query');
-$load('Sphp.Db.Insert');
-$load('Sphp.Db.Update');
-$load('Sphp.Db.Delete');
+\Sphp\Manual\loadPage('Sphp.Db.Db');
+\Sphp\Manual\loadPage('Sphp.Db.Query');
+\Sphp\Manual\loadPage('Sphp.Db.Insert');
+\Sphp\Manual\loadPage('Sphp.Db.Update');
+\Sphp\Manual\loadPage('Sphp.Db.Delete');

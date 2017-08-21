@@ -1,9 +1,9 @@
 <?php
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #SPHP <small>a framework for responsive web developement using PHP</small>
 MD
 );
 
 
-$load("Sphp-intro/orbit.php");
-//$load("Sphp.Html.Foundation-orbit-intro.php");
+\Sphp\Manual\loadPage("Sphp-intro/orbit.php");
+//\Sphp\Manual\loadPage("Sphp.Html.Foundation-orbit-intro.php");

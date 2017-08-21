@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ns = $api->namespaceLink(__NAMESPACE__);
 $photoAlbum = $api->classLinker(PhotoAlbum::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $photoAlbum component
 MD
 );

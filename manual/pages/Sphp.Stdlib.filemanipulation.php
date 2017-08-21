@@ -7,12 +7,12 @@ use Sphp\Html\Apps\Manual\Apis;
 $php = Apis::phpManual();
 $arrLink = $php->typeLink("array");
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #LOCAL FILESYSTEM MANIPULATION: <small>reading, writing and transforming</small>{#FileSystem}
 $ns
 MD
 );
-$load('Sphp.Stdlib.Filesystem');
-$load('Sphp.Stdlib.Parser');
-$load('Sphp.Stdlib.CsvFile');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Filesystem');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Parser');
+\Sphp\Manual\loadPage('Sphp.Stdlib.CsvFile');
 

@@ -11,26 +11,26 @@ use Sphp\I18n\TranslatorAwareTrait;
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
-$messageInterface = $api->classLinker(MessageInterface::class);
-$templateInterface = $api->classLinker(TemplateInterface::class);
-$translatable = $api->classLinker(Translatable::class);
-$message = $api->classLinker(Message::class);
-$messageContainer = $api->classLinker(TranslatablePriorityList::class);
-$messageCollectionInterfaces = $api->classLinker(TranslatableCollectionInterface::class);
+$messageInterface = Apis::sami()->classLinker(MessageInterface::class);
+$templateInterface = Apis::sami()->classLinker(TemplateInterface::class);
+$translatable = Apis::sami()->classLinker(Translatable::class);
+$message = Apis::sami()->classLinker(Message::class);
+$messageContainer = Apis::sami()->classLinker(TranslatablePriorityList::class);
+$messageCollectionInterfaces = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
 $echo = $php->functionLink("echo");
 $print = $php->functionLink("print");
 $string = $php->typeLink("string");
 $vsprintfLink = $php->functionLink("vsprintf");
 
-$translator = $api->classLinker(TranslatorInterface::class);
+$translator = Apis::sami()->classLinker(TranslatorInterface::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Message systems <small>For verbose localized messaging</small>
 
 $ns
 MD
 );
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###$templateInterface <small>Localization string templates</small>
 
 A $templateInterface object contains an immutable string that can be translated 
@@ -42,7 +42,7 @@ MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Messages/TemplateInterface.php', 'text', false);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###Localized messages using $messageInterface objects
 
 A $messageInterface class contains a $templateInterface and provides additional 
@@ -56,10 +56,10 @@ MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Messages/MessageInterface.php', 'text', false);
 
-$translatorChangerObserverInterface = $api->classLinker(Translatable::class);
-$translatorChangerChainInterface = $api->classLinker(TranslatorAwareTrait::class);
+$translatorChangerObserverInterface = Apis::sami()->classLinker(Translatable::class);
+$translatorChangerChainInterface = Apis::sami()->classLinker(TranslatorAwareTrait::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###$messageCollectionInterfaces <small>for message object grouping</small>
 
 The $messageContainer class is a kind of priority list for $message objects. The 
@@ -76,11 +76,11 @@ to all of these objects inside the collection.
 MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Messages/TranslatableCollection.php', 'text', false);
-$topicContainer = $api->classLinker(TopicList::class);
-$messageContainers = $api->classLinker(TranslatableCollectionInterface::class);
+$topicContainer = Apis::sami()->classLinker(TopicList::class);
+$messageContainers = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = $php->classLinker(\ArrayAccess::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Grouping $messageContainers with a $topicContainer
 
 The $topicContainer class groups $translatable components like $messageContainers 

@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $stablePriorityQueue = Apis::sami()->classLinker(StablePriorityQueue::class);
 $splPriorityQueue = Apis::phpManual()->classLinker(\SplPriorityQueue::class);
-echo $parsedown->text(
+\Sphp\Manual\parseDown(
         <<<MD
 ##The $stablePriorityQueue class
 

@@ -13,8 +13,8 @@ $patrnvLink = Apis::sami()->classLinker(PatternValidator::class);
 $strLenValLink = Apis::sami()->classLinker(StringLengthValidator::class);
 $inputValidator = Apis::sami()->classLinker(OptionalValidator::class);
 $alphabetsOnly = Apis::sami()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+\Sphp\Manual\parseDown(<<<MD
 #DATA VALIDATION: <small>Introduction</small>
  $ns 
 User input validation is a critical part of any responsive HTML application. 
@@ -53,12 +53,12 @@ MD
 );
 CodeExampleBuilder::visualize("Sphp/Validators/RequiredValueValidator.php", "php", false);
 
-$load('Sphp.Validators.PatternValidator');
-$load('Sphp.Validators.StringLengthValidator');
-$load('Sphp.Validators.ValidatorChain');
-$load('Sphp.Validators.FormValidator');
+\Sphp\Manual\loadPage('Sphp.Validators.PatternValidator');
+\Sphp\Manual\loadPage('Sphp.Validators.StringLengthValidator');
+\Sphp\Manual\loadPage('Sphp.Validators.ValidatorChain');
+\Sphp\Manual\loadPage('Sphp.Validators.FormValidator');
 
-/*echo $parsedown->text(<<<MD
+/*\Sphp\Manual\parseDown(<<<MD
 ##Creating custom validators		
 
 Thera are obviously many vays to create own custom validators. However an easy 

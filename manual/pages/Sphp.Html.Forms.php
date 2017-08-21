@@ -10,7 +10,7 @@ $traversableFormInterface = Apis::sami()->classLinker(TraversableFormInterface::
 $inputInterface = Apis::sami()->classLinker(InputInterface::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #HTML FORMS
 $ns
 Any HTML form object implement atleast $formIfLink interface. 
@@ -22,5 +22,5 @@ extending $formIfLink is a container for any number of $inputInterface component
 
 MD
 );
-$load('Sphp.Html.Forms.InputInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Forms.InputInterface');
 

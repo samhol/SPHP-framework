@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $phpConfig = Apis::sami()->classLinker(PHPConfig::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$phpConfig <small>a runtime PHP configuration manager</small>{#Config_PHPConfig} 
 
 $phpConfig object can handle basic runtime PHP environment configuration. Objects configuration 

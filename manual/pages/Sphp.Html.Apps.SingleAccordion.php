@@ -4,7 +4,7 @@ namespace Sphp\Html\Apps;
 
 $ns = $api->namespaceLink(__NAMESPACE__);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 ##The component
 MD

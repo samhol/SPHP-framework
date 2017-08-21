@@ -5,13 +5,14 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\ComponentInterface;
+
 $componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
 $buttonInterface = Apis::sami()->classLinker(ButtonInterface::class);
 $buttonAdapter = Apis::sami()->classLinker(Button::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $btnGroup = Apis::sami()->classLinker(ButtonGroup::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Foundation Buttons
 $ns
 This namespace contains Foundation buttons and buttongroups.
@@ -53,21 +54,22 @@ Predefined size classes:
 MD
 );
 $blockGrid->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$buttonAdapter <small>Converts anything to button style</small>
 
 This adapter can transform most $componentInterface objects to Foundation styled buttons.
 MD
 );
+$splitButton = Apis::sami()->classLinker(SplitButton::class);
 
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
-echo $parsedown->text(<<<MD
-##The {$api->classLinker(SplitButton::class)} component
+\Sphp\Manual\parseDown(<<<MD
+##The $splitButton component
 MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/SplitButton.php');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $btnGroup class
 
 A $btnGroup component is a container for $buttonInterface components. A $btnGroup component
@@ -80,7 +82,7 @@ MD
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/ButtonGroup.php');
 $stackFor = $btnGroup->methodLink("stackFor", false);
 $unstackFor = $btnGroup->methodLink("unstackFor", false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 The orientation of a button group can be changed with method $stackFor  that uses 
 Foundation stack classes for button groups. Stacking can be removed by using $unstackFor method.

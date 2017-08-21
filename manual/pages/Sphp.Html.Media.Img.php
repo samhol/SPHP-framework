@@ -9,7 +9,7 @@ $imgInterface = Apis::sami()->classLinker(ImgInterface::class);
 $img = Apis::sami()->classLinker(Img::class);
 $fig = Apis::sami()->classLinker(Figure::class);
 $figCaption = Apis::sami()->classLinker(FigCaption::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $img and the $fig components
 
 An $img component implements the $imgInterface. 
@@ -26,9 +26,9 @@ MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Html/Media/Img.php', false, true);
-
-echo $parsedown->text(<<<MD
-The $fig component implements the {$w3schools->tag('figure')} tag. 
+$figureTag = Apis::w3schools()->tag('figure');
+\Sphp\Manual\parseDown(<<<MD
+The $fig component implements the $figureTag tag. 
 A $fig component consists of an $img component and an optional $figCaption component.
 
 A $fig component specifies a self-contained content. While its content is related 

@@ -9,7 +9,7 @@ $paneInterface = Apis::sami()->classLinker(PaneInterface::class);
 $accordion = Apis::sami()->classLinker(Accordion::class);
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
         
 ##The $accordion container for $paneInterface components
 $ns

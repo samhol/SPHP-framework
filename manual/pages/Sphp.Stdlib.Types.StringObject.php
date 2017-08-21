@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $stringObjectClass = Apis::sami()->classLinker(StringObject::class);
 $strLink = Apis::phpManual()->typeLink('string');
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###The $stringObjectClass class
 		
 The $stringObjectClass class 

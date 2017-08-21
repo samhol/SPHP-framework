@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $passwordInterface = $api->classLinker(PasswordInterface::class);
 $pw = $api->classLinker(Password::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$passwordInterface and $pw
 
 $pw implements $passwordInterface. $pw has no public constructor but

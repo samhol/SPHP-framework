@@ -4,12 +4,12 @@ namespace Sphp\Net;
 
 $netNS = $api->namespaceLink(__NAMESPACE__);
 $ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #NETWORKING
 $ns
 This namespace provides classes for implementing networking.
 
 MD
 );
-$load("Sphp.Net.SessionHandler.php");
-$load("Sphp.Core.Security.PasswordInterface.php");
+\Sphp\Manual\loadPage("Sphp.Net.SessionHandler.php");
+\Sphp\Manual\loadPage("Sphp.Core.Security.PasswordInterface.php");

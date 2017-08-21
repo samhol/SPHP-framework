@@ -3,10 +3,10 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-
-$arraysClass = $api->classLinker(Arrays::class);
-$arrLink = $php->typeLink('array');
-echo $parsedown->text(<<<MD
+use Sphp\Html\Apps\Manual\Apis;
+$arraysClass = Apis::sami()->classLinker(Arrays::class);
+$arrLink = Apis::phpManual()->typeLink('array');
+\Sphp\Manual\parseDown(<<<MD
 ##The $arraysClass class for PHP's $arrLink manipulation
 
 PHP's $arrLink type is optimized for several different uses; it can be treated as 
@@ -22,13 +22,13 @@ MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Stdlib/Types/Arrays1.php', 'text', false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 $arraysClass methods for manipulating array properties and creating new arrays.
 MD
 );
 CodeExampleBuilder::visualize('Sphp/Stdlib/Types/Arrays2.php', 'text', false);
-echo $parsedown->text(<<<MD
-$arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$api->classLinker(Arrays::class)->methodLink("copy")} 
+\Sphp\Manual\parseDown(<<<MD
+$arraysClass class has a method for 'cloning' multidimensional PHP arrays. {$arraysClass->methodLink("copy")} 
 tries to make an independent copy out of each key => value pairs it the input 
 array and it uses PHP's object cloning construct for object type.
 MD

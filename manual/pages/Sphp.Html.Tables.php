@@ -10,7 +10,8 @@ $tr = Apis::sami()->classLinker(Tr::class);
 $td = Apis::sami()->classLinker(Td::class);
 $th = Apis::sami()->classLinker(Th::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+$w3schools = Apis::w3schools();
+\Sphp\Manual\parseDown(<<<MD
 #HTML TABLES: <small>for tabular data</small>
 
 $ns
@@ -36,7 +37,7 @@ $example = new CodeExampleBuilder('Sphp/Html/Tables/Table.php', false, true);
 $example->setExamplePaneTitle('HTML table example');
 $example->printHtml();
 $tableBuilder = Apis::sami()->classLinker(TableBuilder::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##TABLE BUILDER: <small>The $tableBuilder Class</small>
 
 This builder is able to generate tables from data sources
@@ -45,7 +46,7 @@ MD
 $example->setExamplePaneTitle('HTML table builder example');
 $example->setPath('Sphp/Html/Tables/TableBuilder.php');
 $example->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###HTML TABLES FROM CSV-FILES: <small>The $tableBuilder Class as a factory</small>
 
 {$tableBuilder->methodLink('fromCsvFile')} is a factory method for generating tables from CSV files.

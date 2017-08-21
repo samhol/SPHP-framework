@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #<span class="strict">I18n:</span> <small>Internationalization and localization</small>
 
 $ns
@@ -21,9 +21,9 @@ particular cultural or linguistic market.
 MD
 );
 
-$translator = $api->classLinker(TranslatorInterface::class);
+$translator = Apis::sami()->classLinker(TranslatorInterface::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $translator
         
 The translator itself is initialized without any parameters, as any configuration 
@@ -38,20 +38,20 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/I18n/sphpTranslation.php', 'text', false);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 The $translator class supports both basic...
 MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Translator.singular.php', 'text', false);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ...and plural Gettext translation.
 MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Translator.plural.php', 'text', false);
 
-$vsprintfLink = $php->functionLink("vsprintf");
-echo $parsedown->text(<<<MD
+$vsprintfLink = Apis::phpManual()->functionLink("vsprintf");
+\Sphp\Manual\parseDown(<<<MD
 The $translator class has also a method similar to PHP's native $vsprintfLink 
 function for both basic and plural translation. Additionally the class contain a 
 method for translating a multidimensional array of message strings (plural form 
@@ -60,9 +60,9 @@ MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Translator.php', 'text', false);
 
-$load('Sphp.I18n.Messages');
-$calendar = $api->classLinker(Calendar::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\loadPage('Sphp.I18n.Messages');
+$calendar = Apis::sami()->classLinker(Calendar::class);
+\Sphp\Manual\parseDown(<<<MD
 ##Localized calendar related translations
 
 The $calendar class.

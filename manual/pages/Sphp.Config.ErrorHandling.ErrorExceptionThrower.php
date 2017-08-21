@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $errorExceptionThrower = Apis::sami()->classLinker(ErrorExceptionThrower::class);
 
 $errorException = Apis::phpManual()->classLinker(\ErrorException::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$errorExceptionThrower <small>for multiple error handlers</small>
 
 $errorExceptionThrower can temporarily convert PHP

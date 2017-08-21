@@ -8,7 +8,7 @@ $clearMethod = $abstractAttr->methodLink("clear");
 $requireMethod = $abstractAttr->methodLink("setRequired");
 $lockMethod = $abstractAttr->methodLink("lock");
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Complex HTML attributes
 		
 Framework defines an abstract class $abstractAttr from which the complex attribute
@@ -23,7 +23,7 @@ Any attribute class extending $abstractAttr support at least these four value ma
 4. **Clearing non locked attribute values**: $clearMethod
 MD
 );
-$load("Sphp.Html.Attributes.IdentifyingAttribute.php");
-$load("Sphp.Html.Attributes.MultiValueAttribute.php");
-$load("Sphp.Html.Attributes.PropertyAttribute.php");
+\Sphp\Manual\loadPage("Sphp.Html.Attributes.IdentifyingAttribute.php");
+\Sphp\Manual\loadPage("Sphp.Html.Attributes.MultiValueAttribute.php");
+\Sphp\Manual\loadPage("Sphp.Html.Attributes.PropertyAttribute.php");
 

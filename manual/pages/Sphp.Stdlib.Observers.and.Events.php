@@ -10,7 +10,7 @@ $eventInterface = Apis::sami()->classLinker(EventInterface::class);
 $eventClass = Apis::sami()->classLinker(Event::class);
 $eventListenerInterface = Apis::sami()->classLinker(EventListenerInterface::class);
 $eventDispatcherInterface = Apis::sami()->classLinker(EventDispatcherInterface::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #EVENTS AND OBSERVERS
 		
 Event dispatching systems and Observer Design pattern are often used to implement 
@@ -50,4 +50,4 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Stdlib/Events/EventManager.php', 'text', false);
 
-$load('Sphp.Stdlib.Observers');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Observers');

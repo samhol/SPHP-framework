@@ -7,8 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Apps\SyntaxHighlighterInterface;
-use Sphp\Html\Apps\SyntaxHighlighter;
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighterInterface;
+use Sphp\Html\Apps\Syntaxhighlighting\SyntaxHighlighter;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Headings\H2;
 
@@ -24,16 +24,15 @@ use Sphp\Html\Headings\H2;
  */
 class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterface, SyntaxHighlighterInterface {
 
-  use \Sphp\Html\Apps\SyntaxhighlighterContainerTrait,
+  use \Sphp\Html\Apps\Syntaxhighlighting\SyntaxhighlighterContainerTrait,
       ActivationTrait;
 
   /**
-   *
    * @var H2
    */
   private $title;
+
   /**
-   *
    * @var SyntaxHighlighterInterface 
    */
   private $hl;
@@ -53,9 +52,10 @@ class SyntaxHighlightingSlide extends AbstractComponent implements SlideInterfac
     $this->title = new H2();
     $this->setHeading("code");
   }
+
   /**
    * 
-   * @param type $content
+   * @param  mixed $content
    * @return \Sphp\Html\Foundation\Sites\Media\Orbit\SyntaxHighlightingSlide
    */
   public function setHeading($content) {

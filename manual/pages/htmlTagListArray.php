@@ -87,7 +87,10 @@ $p[] = ['Forms',
 
 namespace Sphp\Html\Media;
 
-$av = $api->classLinker(Multimedia\Audio::class) . ' and ' . $api->classLinker(Multimedia\Video::class);
+use Sphp\Html\Apps\Manual\Apis;
+
+$fig = Apis::sami()->classLinker(Figure::class);
+$av = Apis::sami()->classLinker(Multimedia\Audio::class) . ' and ' . Apis::sami()->classLinker(Multimedia\Video::class);
 $p[] = ['Media', [
         ['img', 'An image'],
         ['area:polygon', 'A polygonal area inside an image map'],
@@ -96,7 +99,7 @@ $p[] = ['Media', [
         ['map', 'An image map'],
         ['canvas', 'Graphics canvas'],
         ['figure', 'A group of media content, and their caption'],
-        ['figcaption', "A caption for a {$api->classLinker(Figure::class)} component"],
+        ['figcaption', "A caption for a $fig component"],
         ['audio', 'Sound content'],
         ['video', 'Video content'],
         ['track', "Text tracks for $av components"],
@@ -115,12 +118,14 @@ $p[] = ['Links', [
 
 namespace Sphp\Html\Lists;
 
-$dl = 'for ' . $api->classLinker(Dl::class) . ' component';
+use Sphp\Html\Apps\Manual\Apis;
+
+$dl = 'for ' . Apis::sami()->classLinker(Dl::class) . ' component';
 $p['Lists'] = ['Lists',
     [
         ['ul', 'An unordered list'],
         ['ol', 'An ordered list'],
-        ['li', "A list item for " . $api->classLinker(Ul::class) . " and " . $api->classLinker(Ol::class) . " components"],
+        ['li', "A list item for " . Apis::sami()->classLinker(Ul::class) . " and " . Apis::sami()->classLinker(Ol::class) . " components"],
         ['dl', 'A definition list'],
         ['dd', "A definition description $dl"],
         ['dt', "A definition term $dl"],
@@ -182,7 +187,9 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\Document;
 use Sphp\Html\Adapters\QtipAdapter;
-$generateTagTable = function(array $v) use ($api, $w3schools) {
+use Sphp\Html\Apps\Manual\Apis;
+
+$generateTagTable = function(array $v) {
   $table = (new Table())
           ->addCssClass('html-to-php');
   $table->thead()
@@ -204,9 +211,9 @@ $generateTagTable = function(array $v) use ($api, $w3schools) {
       $param = new \Sphp\Html\Span("$data[0]");
       $tooptipText = "Document::get(\"$data[0]\")";
       $c[] = new QtipAdapter($param, $tooptipText);
-      $c[] = $w3schools->tag($tag->getTagName(), $linkText);
+      $c[] = Apis::w3schools()->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
-      $c[] = $api->classLinker($ref->getName(), $text)->getLink();
+      $c[] = Apis::sami()->classLinker($ref->getName(), $text)->getLink();
       $c[] = $data[1];
       $body->appendBodyRow($c);
     }

@@ -11,7 +11,7 @@ $try_catch = Apis::phpManual()->hyperLink('language.exceptions.php', 'try/catch'
 $set_exception_handler = Apis::phpManual()->functionLink('set_exception_handler');
 $error = Apis::phpManual()->classLinker(\Error::class);
 $exception = Apis::phpManual()->classLinker(\Exception::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #PHP 7 <small>Error and Exception handling</small>
 $ns
         
@@ -24,6 +24,6 @@ converted to a fatal error and will be handled like a traditional error.
 MD
 );
 
-$load('Sphp.Config.ErrorHandling.ErrorDispatcher');
+\Sphp\Manual\loadPage('Sphp.Config.ErrorHandling.ErrorDispatcher');
 
-$load('Sphp.Config.ErrorHandling.ErrorExceptionThrower');
+\Sphp\Manual\loadPage('Sphp.Config.ErrorHandling.ErrorExceptionThrower');

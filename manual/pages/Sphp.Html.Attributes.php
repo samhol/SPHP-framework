@@ -15,8 +15,8 @@ $removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
 $requireAttr = $abstractAttrMngr->methodLink("demand", false);
 $lockAttr = $abstractAttrMngr->methodLink("lock", false);
 $setAttributeObjectLink = $abstractAttrMngr->methodLink("setAttributeObject", false);
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+\Sphp\Manual\parseDown(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
     
 $ns	
@@ -29,9 +29,9 @@ them to function correctly; while in other cases they are optional attributes.
 Standard attributes are supported by a large number of element types.
 MD
 );
-$load("Sphp.Html.Attributes.AbstractAttribute.php");
+\Sphp\Manual\loadPage("Sphp.Html.Attributes.AbstractAttribute.php");
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##HTML attribute management with $htmlAttrMngr class
 
 The $htmlAttrMngr is the base component for the HTML attribute handling in SPHP 
@@ -58,7 +58,7 @@ to the given value. Locked attribute attribute is always visible. Such attribute
 MD
 );
 CodeExampleBuilder::visualize("Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
        
 ###Inserting new $attributeInterface objects to the manager
         

@@ -5,7 +5,7 @@ namespace Sphp\Core;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $router = Apis::sami()->classLinker(Path::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Managing absolute paths with a $router singelton object
 
 $router supports transformation of relative filesystem paths to absolute paths for both http urls and local file system.

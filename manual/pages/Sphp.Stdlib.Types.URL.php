@@ -3,9 +3,11 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$urlClass = $api->classLinker(URL::class);
-echo $parsedown->text(<<<MD
+$urlClass = Apis::sami()->classLinker(URL::class);
+$parse_url = Apis::phpManual()->functionLink('parse_url');
+\Sphp\Manual\parseDown(<<<MD
 ##URL manipulation with a $urlClass objects
 
 The syntax for an URL string is: `scheme://[user:pass@]domain:port/path?query#fragment`
@@ -16,7 +18,7 @@ These Objects allow users to encode, decode, manipulate and compare URLs.
 ###Object properties
 		
 The {$urlClass->methodLink('__construct')} parses the input URL string
-with {$php->functionLink('parse_url')} function and the class $urlClass is therefore 
+with $parse_url function and the class $urlClass is therefore 
 intended specifically for the  URLs and not URIs.
 		
 URL string is splitted into following custozable parts in an $urlClass object:

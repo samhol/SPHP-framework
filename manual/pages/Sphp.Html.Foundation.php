@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation;
 $grid = $api->classLinker(F6\Grids\Grid::class);
 $blockGrid = $api->classLinker(F6\Grids\BlockGrid::class);
 $toolsLink = $api->getNamespaceLink(__NAMESPACE__, false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #The $toolsLink namespace
 
 Foundation framework is included in SPHP and therefore also all of Foundation 
@@ -22,7 +22,7 @@ MD
         namespace Sphp\Html\Foundation\Sites\Grids;
 
         $core = $api->getNamespaceLink(__NAMESPACE__, false);
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Core components:
 The $core namespace includes for example Foundation based multi-device nestable 12-column $grid implementation and a
 Foundation $blockGrid to evenly split contents of a list within the grid...
@@ -34,7 +34,7 @@ MD
     <div class="column">
       <div class="callout" data-equalizer-watch>
         <?php
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Typography:
 
 Framework's typography is based on a golden ratio modular scale that creates relationships between the elements.
@@ -51,7 +51,7 @@ MD
         namespace Sphp\Html\Foundation\Sites\Buttons;
 
         $btn_ns = $api->getNamespaceLink(__NAMESPACE__, false);
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Buttons
 
 Buttons in $btn_ns namespace are a core interactive element of the Web and can be used for many purposes. 
@@ -69,7 +69,7 @@ MD
 
         $navi_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Navigation:
 $navi_ns namespace includes a complex top bar that supports dropdown navigation, 
 sidebars and many other menu structures.
@@ -86,7 +86,7 @@ MD
 
         $forms_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Forms:
 
 The $forms_ns namespace includes Foundation based forms layouts and client-side form components.
@@ -105,7 +105,7 @@ MD
 
         $cont_ns = $api->getNamespaceLink(__NAMESPACE__, false);
         
-        echo $parsedown->text(<<<MD
+        \Sphp\Manual\parseDown(<<<MD
 #####Containers:
 
 The $cont_ns namespace includes PHP implementations of useful container elements like Accordions, Tabs and Dropdowns for HTML presentation.

@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $offCanvas = Apis::sami()->classLinker(OffCanvas::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 ##The $offCanvas component
 

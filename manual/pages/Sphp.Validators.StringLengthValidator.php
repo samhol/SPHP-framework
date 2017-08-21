@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $strLenValLink = Apis::sami()->classLinker(StringLengthValidator::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###The $strLenValLink class	
         
 The $strLenValLink simply validates the input length. This validator supports three 

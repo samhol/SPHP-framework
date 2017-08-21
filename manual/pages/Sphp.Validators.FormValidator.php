@@ -7,14 +7,14 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $validatorInterface = Apis::sami()->classLinker(ValidatorInterface::class);
 
-$inputValidator = $api->classLinker(OptionalValidator::class);
+$inputValidator = Apis::sami()->classLinker(OptionalValidator::class);
 
 $formValidator = Apis::sami()->classLinker(FormValidator::class);
 $formInterface = Apis::sami()->classLinker(\Sphp\Html\Forms\FormInterface::class);
 $traversable = Apis::phpManual()->classLinker(\Traversable::class);
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-$array = $php->typeLink("array", "arrays");
-echo $parsedown->text(
+$array = Apis::phpManual()->typeLink("array", "arrays");
+\Sphp\Manual\parseDown(
         <<<MD
 ##The $formValidator validator		
 A $formValidator is an aggregate of validators validating user inputs data provided 

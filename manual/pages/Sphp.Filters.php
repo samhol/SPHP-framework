@@ -6,11 +6,11 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $strLink = Apis::phpManual()->typeLink("string");
 $arrLink = Apis::phpManual()->typeLink([]);
-$filterInterface = $api->classLinker(FilterInterface::class);
-$filterAggregate = $api->classLinker(FilterAggregate::class);
-$nsbc = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$nsLink = $api->namespaceLink(__NAMESPACE__, false);
-echo $parsedown->text(<<<MD
+$filterInterface = Apis::sami()->classLinker(FilterInterface::class);
+$filterAggregate = Apis::sami()->classLinker(FilterAggregate::class);
+$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
+\Sphp\Manual\parseDown(<<<MD
 #Customizable value filtering
 $nsbc
 PHP has a variety of functions and classes that can handle data filering. Interfaces and Classes in $nsLink
@@ -25,7 +25,7 @@ MD
 		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$filterAggregate filter
 
 This filter is an aggregation of other individual filters. These filters can be 
@@ -42,7 +42,7 @@ MD
 		->setExamplePaneTitle("String filtering example")
 		->setOutputSyntaxPaneTitle("String filtering results")
 		->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 $filterInterface can easily be used for filtering PHP $arrLink values.
 MD
 );

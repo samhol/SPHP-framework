@@ -17,7 +17,7 @@ $containerInterface = Apis::sami()->classLinker(ContainerInterface::class);
 $containerComponentInterface = Apis::sami()->classLinker(ContainerComponentInterface::class);
 $contentTrait = Apis::sami()->classLinker(ContentTrait::class);
 $nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Server side content parsing: <small>$contentParserInterface implementations</small>
 
 1. {$contentInterface->methodLink("getHtml")} returns the component as an HTML string. This method might throw an $exeption) if the execution fails.
@@ -57,7 +57,7 @@ MD
 
 CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
 $containerTag = Apis::sami()->classLinker(ContainerTag::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.
 
@@ -66,7 +66,7 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The {$api->classLinker(AbstractTag::class)} class
 
 Abstract {$api->classLinker(AbstractTag::class)} class is the base implementation
@@ -79,5 +79,5 @@ MD
 );
 //PHPExampleViewer::visualize("Sphp/Html/ajax.php");
 //PHPExampleViewer::visualize("Sphp/Html/AjaxLoaderInterface.php");
-$load("Sphp.Html.AjaxLoaderInterface.php");
-//$load("Sphp.Html.Document.php");
+\Sphp\Manual\loadPage("Sphp.Html.AjaxLoaderInterface.php");
+//\Sphp\Manual\loadPage("Sphp.Html.Document.php");

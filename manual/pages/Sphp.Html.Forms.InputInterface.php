@@ -9,7 +9,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $formIfLink = Apis::sami()->classLinker(FormInterface::class);
 $inputInterface = Apis::sami()->classLinker(InputInterface::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Some form components inheriting $inputInterface
 $ns		
 All of the following components declare an $inputInterface input control for a $formIfLink form.
@@ -22,7 +22,7 @@ $textualInput = Apis::sami()->classLinker(TextualInput::class);
 $textInput = Apis::sami()->classLinker(TextInput::class);
 $textarea = Apis::sami()->classLinker(Textarea::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###Basic input components
         
 Framework has many build-in form components that implement basic HTML form elements like:
@@ -38,7 +38,7 @@ MD
         ->addCssClass("form-example")
         ->printHtml();
 
-//$load('Sphp.Html.Forms.Inputs.Choiceboxes');
-$load('Sphp.Html.Forms.Menus.Select');
-$load('Sphp.Html.Forms.AnyTimeInput');
-$load('Sphp.Html.Forms.IonRangeSlider');
+//\Sphp\Manual\loadPage('Sphp.Html.Forms.Inputs.Choiceboxes');
+\Sphp\Manual\loadPage('Sphp.Html.Forms.Menus.Select');
+\Sphp\Manual\loadPage('Sphp.Html.Forms.AnyTimeInput');
+\Sphp\Manual\loadPage('Sphp.Html.Forms.IonRangeSlider');

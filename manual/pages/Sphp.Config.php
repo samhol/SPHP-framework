@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $config = Apis::sami()->classLinker(Config::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #APPLICATION CONFIGURATION{#Config}
 $ns
   
@@ -22,5 +22,5 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Config/Config.php', 'text', false);
 
-$load('Sphp.Config.Ini');
-$load('Sphp.Config.PHPConfig');
+\Sphp\Manual\loadPage('Sphp.Config.Ini');
+\Sphp\Manual\loadPage('Sphp.Config.PHPConfig');

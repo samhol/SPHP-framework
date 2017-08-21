@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $blockGrid = Apis::sami()->classLinker(BlockGrid::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$blockGrid <small>for equally-sized columns</small>
 	
 Block grids are a shorthand way to create equally-sized columns.

@@ -10,7 +10,7 @@ $radios = Apis::sami()->classLinker(Radioboxes::class);
 $checkboxes = Apis::sami()->classLinker(Checkboxes::class);
 
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$radios and $checkboxes components
 
 These components extend $choiceboxes and Foundation frameworks Switches on clientside
@@ -21,7 +21,7 @@ MD
         ->buildAccordion()
         ->addCssClass("form-example")
         ->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 MD
 );

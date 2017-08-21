@@ -10,7 +10,7 @@ $eventInterface = Apis::sami()->classLinker(EventInterface::class);
 $eventClass = Apis::sami()->classLinker(Event::class);
 $eventListenerInterface = Apis::sami()->classLinker(EventListenerInterface::class);
 $eventDispatcherInterface = Apis::sami()->classLinker(EventDispatcherInterface::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #EVENTS AND OBSERVERS
 		
 Observer Design pattern and Event dispatching systems are mainly used to implement 
@@ -66,7 +66,7 @@ $splObserver = $php->classLinker(Observer::class);
 $splSubject = $php->classLinker(Subject::class);
 $observableSubjectTrait = $api->classLinker(ObservableSubjectTrait::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
 
 Observer pattern is used when there is one-to-many relationship between objects 
@@ -82,7 +82,7 @@ MD
 
 CodeExampleBuilder::visualize("Sphp/Core/ObservableSubjectTrait.php", "text", false);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 
 Observer pattern is in use for example in the SPHP Error handling system introduced 

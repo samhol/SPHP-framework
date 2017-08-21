@@ -13,7 +13,7 @@ $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $menuInterface = Apis::sami()->classLinker(MenuInterface::class);
 $dropdownMenu = Apis::sami()->classLinker(DropdownMenu::class);
 $navigationNs = $menuInterface->namespaceLink(false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Foundation bars: <small>wrappers around flexible navigation components</small>
 $ns
 This namespace contains classes and interfaces for Foundation navigation bars.
@@ -26,7 +26,7 @@ MD
 
 
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/TitleBar.php');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Foundation Top Bar: <small>The $topBar component</small>
         
 Top Bar component is a simple wrapper around menu components.

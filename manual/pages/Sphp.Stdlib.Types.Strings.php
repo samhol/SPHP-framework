@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $strLink = Apis::phpManual()->typeLink('string');
 $strings = Apis::sami()->classLinker(Strings::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $strings class
 
 $strings class is a static utility class for multibyte PHP $strLink comparison and matching.
@@ -17,7 +17,7 @@ MD
         ->setExamplePaneTitle('Multibyte String testing example')
         ->setOutputSyntaxPaneTitle('String testing results')
         ->printHtml();
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 $strings class has also a couple of handy PHP $strLink manipulation functions.
 MD
 );

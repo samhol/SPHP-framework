@@ -2,13 +2,14 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane as SyntaxHighlightingPane;
+use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$ajaxLoaderInterface = $api->classLinker(AjaxLoaderInterface::class);
-$ajaxLoaderTrait = $api->classLinker(AjaxLoaderTrait::class);
+$ajaxLoaderInterface = Apis::sami()->classLinker(AjaxLoaderInterface::class);
+$ajaxLoaderTrait = Apis::sami()->classLinker(AjaxLoaderTrait::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###Ajax loading the content using the $ajaxLoaderInterface
 Using AJAX to dynamically load information from a PHP file
 MD

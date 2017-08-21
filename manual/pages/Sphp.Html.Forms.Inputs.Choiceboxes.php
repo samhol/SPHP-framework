@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Forms\Inputs\Choiceboxes as Choiceboxes;
 
 $anyTimeInput = Apis::sami()->classLinker(Choiceboxes::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $anyTimeInput component
 	
 MD

@@ -8,7 +8,7 @@ $php = Apis::phpManual();
 $nsLink = Apis::sami()->namespaceLink(__NAMESPACE__);
 $collectionInterface = Apis::sami()->classLinker(CollectionInterface::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #DATA STRUCTURES
 $ns
 The {$php->extensionLink("SPL", "Standard PHP Library (SPL)")} provides a set of standard data structures for PHP language. SPHP
@@ -31,7 +31,7 @@ $collectionInterface provides also methods for prepending, appending, searching 
 MD
 );
 
-$load('Sphp.Stdlib.Datastructures.Collection');
-$load('Sphp.Stdlib.Datastructures.StablePriorityQueue');
-$load('Sphp.Stdlib.Datastructures.StackInterface');
-$load('Sphp.Stdlib.Datastructures.UniquePriorityQueue');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Datastructures.Collection');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Datastructures.StablePriorityQueue');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Datastructures.StackInterface');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Datastructures.UniquePriorityQueue');

@@ -3,10 +3,12 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$collection = $api->classLinker(Collection::class);
-$collectionInterface = $api->classLinker(CollectionInterface::class);
-echo $parsedown->text(<<<MD
+$collection = Apis::sami()->classLinker(Collection::class);
+$collectionInterface = Apis::sami()->classLinker(CollectionInterface::class);
+
+\Sphp\Manual\parseDown(<<<MD
 ##The $collection 
 
 This class provides an implementation of $collectionInterface.

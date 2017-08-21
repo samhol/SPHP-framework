@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $tabs = Apis::sami()->classLinker(Tabs::class);
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###The $tabs component
 $ns
 The $tabs component makes it possible to navigate multiple documents in a single container.

@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $csvFile = Apis::sami()->classLinker(CsvFile::class);
 $arrLink = Apis::phpManual()->typeLink('array');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 $csvFile can read and modify <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV-files</a>
 to a multidimensional PHP $arrLink where each 'row' represents a data row in the
 original CSV-file.

@@ -12,7 +12,8 @@ $liInterface = Apis::sami()->classLinker(LiInterface::class);
 $li = Apis::sami()->classLinker(Li::class);
 $dlLink = Apis::sami()->classLinker(Dl::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+$w3schools = Apis::w3schools();
+\Sphp\Manual\parseDown(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
 $ns	
 This namespace contains object oriented implementations of HTML lists.
@@ -30,7 +31,7 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Ul.php', false, true);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Ordered lists: <small>The $ol component</small>{#ol}
         
 The $ol component (an ordered list) extends $htmlList. It supports indexing in the generated HTML output. 
@@ -51,7 +52,7 @@ CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', false, true);
 
 $dtLink = Apis::sami()->classLinker(Dt::class);
 $ddLink = Apis::sami()->classLinker(Dd::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Definition lists: <small>The $dlLink component</small>{#dl}
 	
 The $dlLink component is a list of $dtLink terms and $ddLink descriptions for thee terms.
@@ -62,7 +63,7 @@ MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Dl.php', false, true);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ###References:{#refs}
         
 * [<b>w3schools.com</b>: HTML Lists](http://www.w3schools.com/html/html_lists.asp){target=_blank}

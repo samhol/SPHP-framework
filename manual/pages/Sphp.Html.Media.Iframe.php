@@ -3,12 +3,14 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$iframe = $api->classLinker(Iframe::class);
-echo $parsedown->text(<<<MD
+$iframe = Apis::sami()->classLinker(Iframe::class);
+$iframeTag = Apis::w3schools()->tag('iframe');
+\Sphp\Manual\parseDown(<<<MD
 ##The $iframe component 
 		
-The $iframe class models the HTML {$w3schools->tag("iframe")} tag (HTML inline frame).
+The $iframe class models the HTML $iframeTag tag (HTML inline frame).
 $iframe embeds a document into an HTML document 
 so that embedded data is displayed inside a subwindow of the browser's window. 
 This does not mean full inclusion; the two documents are independent, and both 

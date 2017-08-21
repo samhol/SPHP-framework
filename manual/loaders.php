@@ -11,11 +11,11 @@ $loadNotFound = function () {
 
   include 'manual/templates/error.php';
 };
-$loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
+$loadPage = function ($par, $file = 'index') use($loadNotFound) {
   //print_r(func_get_args());
-  $parsedown = \ParsedownExtraPlugin::instance();
-  $w3schools = Apis::w3schools();
-  $api = Apis::sami();
+  //$parsedown = \ParsedownExtraPlugin::instance();
+  //$w3schools = Apis::w3schools();
+  //$api = Apis::sami();
   // echo $page. $file;
   try {
     ob_start();
@@ -37,7 +37,7 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound, $load) {
   echo $content;
 };
 
-$loadIndex = function () use ($loadPage, $load) {
+$loadIndex = function () use ($loadPage) {
   $loadPage('index');
 };
 

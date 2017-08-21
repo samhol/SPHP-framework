@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 $delete = Apis::sami()->classLinker(Delete::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 ###Deleting records with $delete object
 

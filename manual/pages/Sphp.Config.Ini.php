@@ -7,7 +7,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $ini = Apis::sami()->classLinker(Ini::class);
 $ini_set = Apis::phpManual()->functionLink('ini_set');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$ini <small>a runtime PHP configuration manager</small>{#Config_Ini}
 
 $ini object contains a set of configuration options (see $ini_set in PHP manual). 

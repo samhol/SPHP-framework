@@ -4,11 +4,12 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Navigation\HyperlinkInterface;
+use Sphp\Html\Apps\Manual\Apis;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
-$hyperlinkIfLink = $api->classLinker(HyperlinkInterface::class);
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$hyperlinkIfLink = Apis::sami()->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #FOUNDATION <small>NAVIGATION COMPONENTS</small>
 $ns
         
@@ -16,11 +17,11 @@ This namespace contains object oriented PHP implementations of Foundation naviga
 
 MD
 );
-//$load('Sphp.Html.Foundation.Sites.Bars');
-$load('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
+//\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Bars');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
 
-$sideNavClass = $api->classLinker(AccordionMenu::class);
-echo $parsedown->text(<<<MD
+$sideNavClass = Apis::sami()->classLinker(AccordionMenu::class);
+\Sphp\Manual\parseDown(<<<MD
 ##The $sideNavClass component
 
 The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
@@ -31,9 +32,9 @@ MD
 );
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php');
 
-$breadcrumbs = $api->classLinker(BreadCrumbs::class);
-$breadcrumb = $api->classLinker(BreadCrumb::class);
-echo $parsedown->text(<<<MD
+$breadcrumbs = Apis::sami()->classLinker(BreadCrumbs::class);
+$breadcrumb = Apis::sami()->classLinker(BreadCrumb::class);
+\Sphp\Manual\parseDown(<<<MD
 ##The $breadcrumbs container for $breadcrumb components
 
 In general the graphical control element Breadcrumbs or breadcrumb trail is a navigation
@@ -50,4 +51,4 @@ MD
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/BreadCrumbs.php');
 
 
-$load("Sphp.Html.Foundation.Sites.Navigation.Pagination.php");
+\Sphp\Manual\loadPage("Sphp.Html.Foundation.Sites.Navigation.Pagination.php");

@@ -10,7 +10,7 @@ $radioSwitch = Apis::sami()->classLinker(RadioSwitch::class);
 $switchBox = Apis::sami()->classLinker(SwitchBox::class);
 
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$radioSwitch and $switchBox components
 
 These components extend $abstractSwitch and Foundation frameworks Switches on clientside

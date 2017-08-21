@@ -2,18 +2,20 @@
 
 namespace Sphp\Html\Media;
 
-$ns = $api->namespaceBreadGrumbs(__NAMESPACE__);
+use Sphp\Html\Apps\Manual\Apis;
 
-echo $parsedown->text(<<<MD
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+
+\Sphp\Manual\parseDown(<<<MD
 #HTML MEDIA: <small>images, sound, music, videos, movies, and animations</small>
 $ns
 
 MD
 );
-$load('Sphp.Html.Media.SizeableInterface-LazyLoaderInterface');
-$load('Sphp.Html.Media.Img');
-$load('Sphp.Html.Media.ImgMap');
-$load('Sphp.Html.Media.Iframe');
-//$load("Sphp.Html.Media.AV.VideoPlayerInterface.php");
-//$load("Sphp.Html.Media.AV.VideoJs.php");
-//$load("Sphp.Html.Media.AV.Video.php");
+\Sphp\Manual\loadPage('Sphp.Html.Media.SizeableInterface-LazyLoaderInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Media.Img');
+\Sphp\Manual\loadPage('Sphp.Html.Media.ImgMap');
+\Sphp\Manual\loadPage('Sphp.Html.Media.Iframe');
+//\Sphp\Manual\loadPage("Sphp.Html.Media.AV.VideoPlayerInterface.php");
+//\Sphp\Manual\loadPage("Sphp.Html.Media.AV.VideoJs.php");
+//\Sphp\Manual\loadPage("Sphp.Html.Media.AV.Video.php");

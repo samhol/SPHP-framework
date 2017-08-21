@@ -10,7 +10,7 @@ $rectangle = Apis::sami()->classLinker(Rectangle::class);
 $circle = Apis::sami()->classLinker(Circle::class);
 $polygon = Apis::sami()->classLinker(Polygon::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##HTML Imagemap components
 $ns
         

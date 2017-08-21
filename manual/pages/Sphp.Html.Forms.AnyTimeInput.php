@@ -3,9 +3,9 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-
-$anyTimeInput = $api->classLinker(AnyTimeInput::class);
-echo $parsedown->text(<<<MD
+use Sphp\Html\Apps\Manual\Apis;
+$anyTimeInput = Apis::sami()->classLinker(AnyTimeInput::class);
+\Sphp\Manual\parseDown(<<<MD
 ###The $anyTimeInput component
 	
 **Note!** This element uses [Any+Time™](http://www.ama3.com/anytime/){target="_blank"} DatePicker/TimePicker AJAX Calendar Widget for its functionality.

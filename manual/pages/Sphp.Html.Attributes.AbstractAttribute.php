@@ -2,15 +2,17 @@
 
 namespace Sphp\Html\Attributes;
 
-$htmlAttrMngr = $api->classLinker(AttributeManager::class);
-$abstractAttr = $api->classLinker(AbstractAttribute::class);
-$multiValueAttr = $api->classLinker(MultiValueAttribute::class);
+use Sphp\Html\Apps\Manual\Apis;
+
+$htmlAttrMngr = Apis::sami()->classLinker(AttributeManager::class);
+$abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
+$multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
 $setMethod = $abstractAttr->methodLink("set");
 $clearMethod = $abstractAttr->methodLink("clear");
 $requireMethod = $abstractAttr->methodLink("demand");
 $lockMethod = $abstractAttr->methodLink("lock");
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Complex HTML attributes
 		
 Framework defines an abstract class $abstractAttr from which the complex attribute
@@ -26,6 +28,6 @@ Any attribute class extending $abstractAttr support at least these four value ma
 MD
 );
 
-$load('Sphp.Html.Attributes.MultiValueAttribute');
-$load('Sphp.Html.Attributes.PropertyAttribute');
+\Sphp\Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
+\Sphp\Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
 

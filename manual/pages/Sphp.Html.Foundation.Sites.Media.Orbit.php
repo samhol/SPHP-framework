@@ -10,7 +10,7 @@ $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $orbit = Apis::sami()->classLinker(Orbit::class);
 $slide = Apis::sami()->classLinker(Slide::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $orbit container and the $slide components
 $ns
 $orbit is a responsive container for image on other content sliders that allows swiping on touch-enabled devices.

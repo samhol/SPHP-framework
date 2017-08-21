@@ -3,11 +3,11 @@
 namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
+$flexInterface = Apis::sami()->classLinker(ResponsiveEmbedInterface::class);
+$flex = Apis::sami()->classLinker(ResponsiveEmbed::class);
 
-$flexInterface = $api->classLinker(ResponsiveEmbedInterface::class);
-$flex = $api->classLinker(ResponsiveEmbed::class);
-
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 		
 ##The $flex component implementing $flexInterface for embedded media content
 

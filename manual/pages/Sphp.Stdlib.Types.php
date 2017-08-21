@@ -14,7 +14,7 @@ $arrLink = Apis::phpManual()->typeLink('array');
 $stringsClass = Apis::sami()->classLinker(Strings::class);
 $stringObjectClass = Apis::sami()->classLinker(StringObject::class);
 $nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Core objects and utlility classes
 $nsbc
 This namespace contains a group of data manipulation classes for various commonly needed tasks 
@@ -47,9 +47,9 @@ MD
         ->setOutputSyntaxPaneTitle('Multibyte string example results')
         ->printHtml();
 
-$load('Sphp.Stdlib.Types.StringObject');
-$load('Sphp.Stdlib.Types.Strings');
-$load('Sphp.Stdlib.Types.Arrays');
-$load('Sphp.Stdlib.Types.Datetime');
-$load('Sphp.Stdlib.Types.BitMask');
-$load('Sphp.Stdlib.Types.URL');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.StringObject');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Strings');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Arrays');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Datetime');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.BitMask');
+\Sphp\Manual\loadPage('Sphp.Stdlib.Types.URL');

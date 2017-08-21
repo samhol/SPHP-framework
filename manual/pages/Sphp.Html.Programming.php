@@ -12,7 +12,7 @@ $scriptsContainer = Apis::sami()->classLinker(ScriptsContainer::class);
 $noscript = Apis::sami()->classLinker(Noscript::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $arrayAccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Client-side scripting: <small>JavaScript containers</small>
 
 $ns
@@ -46,7 +46,7 @@ $scriptCode component containing statements can be manipulated several ways.
 MD
 );
 CodeExampleBuilder::visualize("Sphp/Html/Programming/ScriptInterface.php", "html5", true);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$scriptsContainer component: <small>a $scriptInterface component container</small>{#scriptsContainer}
 MD
 );

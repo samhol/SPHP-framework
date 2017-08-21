@@ -9,7 +9,7 @@ $visibilityHandlingInterface = Apis::sami()->classLinker(VisibilityChanger::clas
 $visibilityHandler = Apis::sami()->classLinker(VisibilityAdapter::class);
 $ComponentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
 
 Foundation framework introduces special Visibility CSS classes. With these classes 
@@ -30,13 +30,13 @@ $visibilityHandler provides a straightforward adapter for any $ComponentInterfac
 to be used as a $visibilityHandlingInterface component.
 MD
 );
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Visibility handling extending $visibilityHandlingInterface 
 MD
 );
 
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 Hiding by Screen Size
         
 MD
@@ -44,4 +44,4 @@ MD
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter-hideOnlyFor.php');
 
 
-$load('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');

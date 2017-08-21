@@ -12,7 +12,7 @@ $subject = Apis::sami()->classLinker(Subject::class);
 $callable = Apis::phpManual()->typeLink('callable');
 $observableSubjectTrait = Apis::sami()->classLinker(ObservableSubjectTrait::class);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait
 
 Observer pattern is used when there is one-to-many relationship between objects 

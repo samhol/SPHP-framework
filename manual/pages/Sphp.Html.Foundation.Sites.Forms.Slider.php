@@ -4,13 +4,13 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\SliderInterface;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
+use Sphp\Html\Apps\Manual\Apis;
+$slider = Apis::sami()->classLinker(Slider::class);
+$rangeSlider = Apis::sami()->classLinker(RangeSlider::class);
+$sliderInterface = Apis::sami()->classLinker(SliderInterface::class);
 
-$slider = $api->classLinker(Slider::class);
-$rangeSlider = $api->classLinker(RangeSlider::class);
-$sliderInterface = $api->classLinker(SliderInterface::class);
 
-
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##$slider and $rangeSlider components
 
 These components implement $sliderInterface and Foundation frameworks Sliders on clientside
@@ -25,7 +25,7 @@ MD
 );
 include_once ('Sphp/Html/Foundation/Sites/Forms/sliders.php');
 SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Forms/sliders.php');
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 
 MD
 );

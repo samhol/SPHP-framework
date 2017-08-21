@@ -12,7 +12,7 @@ $cols = Apis::sami()->classLinker(Column::class, "Columns");
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $gridInterface = Apis::sami()->classLinker(GridInterface::class);
 $f_GridLink = Apis::foundation()->hyperlink('xy-grid.html', "Foundation Grid layout");
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #FOUNDATION <small>Grid and Block Grid layouts</small>
 $ns	
 This namespace contains $f_GridLink related interfaces and implementations.
@@ -24,8 +24,8 @@ included when necessary.
 MD
 );
 
-$load('Sphp.Html.Foundation.Sites.Grids.GridInterface');
-$load('Sphp.Html.Foundation.Sites.Grids.RowInterface');
-$load('Sphp.Html.Foundation.Sites.Grids.ColumnInterface');
-$load('Sphp.Html.Foundation.Sites.Grids.BlockGrid');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.GridInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.RowInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.ColumnInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Grids.BlockGrid');
 

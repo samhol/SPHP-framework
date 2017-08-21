@@ -13,7 +13,7 @@ $location = Apis::sami()->classLinker(Location::class);
 $user = Apis::sami()->classLinker(User::class);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #Diverse database objects
 $ns
 This is an experimental [Doctrine](http://www.doctrine-project.org/) based object mapping database extension. 
@@ -40,7 +40,7 @@ $objectStorageInterface = Apis::sami()->classLinker(ObjectStorageInterface::clas
 $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
 $addresses = Apis::sami()->classLinker(LocationStorage::class);
 $users = Apis::sami()->classLinker(Users::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $objectStorageInterface
 
 This interface provides an $iterable view to the managed $dbObjectInterface entities by 
@@ -55,4 +55,4 @@ MD
 CodeExampleBuilder::visualize("Sphp/Db/Objects/Locations.php", "text", false);
 
 
-$load('Sphp.Db.Objects.Session');
+\Sphp\Manual\loadPage('Sphp.Db.Objects.Session');

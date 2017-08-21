@@ -18,7 +18,7 @@ $f_GridLink = Apis::foundation()->hyperlink('xy-grid.html', 'Foundation XY Grid 
 $codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/Grid_fromArray.php', 'html5');
 
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $colIf <small>and its implementations</small>
 		
 A $colIf defines a sigle column of a $rowIf in a Grid layout.

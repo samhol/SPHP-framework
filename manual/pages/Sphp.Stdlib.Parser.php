@@ -5,9 +5,9 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$arrLink = $php->typeLink("array");
+$arrLink = Apis::phpManual()->typeLink("array");
 $parser = Apis::sami()->classLinker(Parser::class);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##PARSING FILETYPES: <small>reading, writing and transforming</small>
 
 $parser instance can handle file related (reading and writing) operations.

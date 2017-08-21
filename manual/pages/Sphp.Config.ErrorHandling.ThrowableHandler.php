@@ -10,7 +10,7 @@ $throwable = Apis::phpManual()->classLinker(\Throwable::class);
 $error = Apis::phpManual()->classLinker(\Error::class);
 $exception = Apis::phpManual()->classLinker(\Exception::class);
 $observer = Apis::sami()->classLinker(Observer::class);
-echo $parsedown->text(
+\Sphp\Manual\parseDown(
         <<<MD
 ###Uncaught $throwable handling
 

@@ -17,7 +17,7 @@ $cols = Apis::sami()->classLinker(ColumnInterface::class, "Columns");
 $codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/Grid_fromArray.php', 'html5');
 
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $rowIf <small>and its implementations</small>
 		
 A $rowIf defines a horizontal block containing vertical $colIf components. 
@@ -38,7 +38,7 @@ $codeExampleBuilder->setPath('Sphp/Html/Foundation/Sites/Grids/Row_fromArray.php
         ->addCssClass('grid-example')
         ->printHtml();
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 		
 ###An example of rows generated from arrays containing $col objects and plain content.
  		
@@ -50,7 +50,7 @@ $codeExampleBuilder->setPath('Sphp/Html/Foundation/Sites/Grids/Row-mixed-constru
         ->addCssClass('grid-example')
         ->printHtml();
 
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 		
 ####Incomplete $row components
 

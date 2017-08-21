@@ -17,7 +17,7 @@ $link = Apis::sami()->classLinker(Link::class);
 $scriptInterface = Apis::sami()->classLinker(ScriptInterface::class);
 $w3schools = Apis::w3schools();
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
         
 $ns
@@ -39,7 +39,7 @@ MD
 );
 
 CodeExampleBuilder::visualize("Sphp/Html/Head/Head1.php", "html5", false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##META DATA OBJECTS: <small>$meta object implementing $metaInterface</small>{#MetaInterface}
 
 $meta class works also as a object factory for $metaInterface objects implementing different meta data properties.
@@ -47,7 +47,7 @@ All $metaInterface types can be stored into a $metaContainer container.
 MD
 );
 CodeExampleBuilder::visualize("Sphp/Html/Head/MetaInterface.php", "html5", false);
-echo $parsedown->text(<<<MD
+\Sphp\Manual\parseDown(<<<MD
 ##The $head component and client side scripts
         
 The best practice of placing client side scripts is the end of the page, just inside the closing body tag. 

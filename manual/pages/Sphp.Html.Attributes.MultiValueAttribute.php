@@ -3,10 +3,11 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$abstractAttr = $api->classLinker(AbstractAttribute::class);
-$multiValueAttr = $api->classLinker(MultiValueAttribute::class);
-echo $parsedown->text(<<<MD
+$abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
+$multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
+\Sphp\Manual\parseDown(<<<MD
 ##The $multiValueAttr class
 		
 The $multiValueAttr implements an attribute that can contain multiple separate 

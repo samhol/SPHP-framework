@@ -8,7 +8,7 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Db\Objects\Embeddable;
+use Sphp\Database\Doctrine\Embeddable;
 
 /**
  * Implements a bitmask object
