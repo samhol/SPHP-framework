@@ -18,17 +18,15 @@ MD
 );
 
 
-$sqlException = Apis::sami()->classLinker(\Exception::class);
-
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Update.php', 'sql', false);
 (new SyntaxHighlightingSingleAccordion('Example tables as MySQL'))
         ->loadFromFile('Sphp/Database/tables.sql')
         ->printHtml();
 
 \Sphp\Manual\loadPage('Sphp.Database.Insert');
-\Sphp\Manual\loadPage('Sphp.Database.Delete');
 \Sphp\Manual\loadPage('Sphp.Database.Query');
 \Sphp\Manual\loadPage('Sphp.Database.Update');
+\Sphp\Manual\loadPage('Sphp.Database.Delete');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Query.php', 'sql');
 //CodeExampleBuilder::visualize('Sphp/Database/NamedPDOParameters.php', 'text');
 //CodeExampleBuilder::visualize('Sphp/Database/DB.Insert.php', 'text');

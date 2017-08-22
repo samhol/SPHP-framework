@@ -52,15 +52,6 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
     return $this->names;
   }
 
-  protected function generateQuestionMarks(array $data): string {
-    $num = count($data);
-    if ($num > 1) {
-      $qMarks = array_fill(0, $num, '?');
-      return '(' . implode(', ', $qMarks) . ')';
-    }
-    return '?';
-  }
-
   public function values(... $values) {
     $this->valuesFromCollection([$values]);
     return $this;
@@ -82,7 +73,7 @@ abstract class AbstractInsert extends AbstractStatement implements Insert {
   protected function dataToStatement(): string {
     $rows = [];
     foreach ($this->params as $row) {
-      $rows[] = $this->generateQuestionMarks($row);
+      $rows[] = Utils::createGroupOfQuestionMarks(count($row));
     }
     return implode(', ', $rows);
   }

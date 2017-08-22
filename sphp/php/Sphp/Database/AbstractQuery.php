@@ -75,6 +75,11 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     $this->get('*');
     $this->having = new Clause();
   }
+  
+  public function __clone() {
+    parent::__clone();
+    $this->having = clone $this->having;
+  }
 
   /**
    * Sets the list of columns to be included in the final result
@@ -107,7 +112,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   }
 
   protected function fromToString(): string {
-    if (!empty($this->groupBy)) {
+    if (!empty($this->from)) {
       return ' FROM ' . implode(', ', $this->from);
     } else {
       return '';
@@ -388,13 +393,12 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
    */
   public function count(): int {
-    $columns = $this->columns;
-    $groupBy = $this->groupBy;
-    $this->groupBy();
-    $count = $this->get("COUNT(*)")->execute()->fetchColumn();
+    $clone = clone $this;
+    $clone->setLimit(0)->setOffset(0);
+    $count = $clone->get("COUNT(*)")->execute()->fetchColumn(0);
     //echo $this->statementToString();
     //var_dump($count);
-    $this->columns = $columns;
+   // $this->columns = $columns;
 
     return (int) $count;
   }
@@ -429,4 +433,24 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this->execute()->fetchAll($fetch_style);
   }
 
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchColumn(int $colNum = 0) {
+    return $this->execute()->fetchColumn($colNum);
+  }
+  /**
+   * Executes the SQL query in the given database and returns the result rows as an array
+   *
+   * @return mixed[] result rows as an array
+   * @throws \PDOException if there is no database connection or query execution fails
+   * @link   http://www.php.net/manual/en/book.pdo.php PHP Data Objects
+   */
+  public function fetchFirstRow() {
+    return $this->execute()->fetch(PDO::FETCH_ASSOC);
+  }
 }

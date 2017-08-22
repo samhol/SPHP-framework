@@ -52,7 +52,7 @@ class Rule implements RuleInterface {
       $params = [$params];
     }
     $this->columnName = $columnName;
-    $this->op = $op;
+    $this->op = strtoupper($op);
     $this->params = $params;
     $this->paramType = $paramType;
   }
@@ -73,20 +73,13 @@ class Rule implements RuleInterface {
     return $params;
   }
 
-  protected function generateQuestionMarks(): string {
-    $num = count($this->params);
-    if ($num > 1) {
-      $qMarks = array_fill(0, $num, '?');
-      return '(' . implode(', ', $qMarks) . ')';
-    }
-    return '?';
-  }
-
   public function getSQL(): string {
     if ($this->op === 'BETWEEN' || $this->op === 'NOT BETWEEN') {
       return "$this->columnName ? $this->op ?";
+    } else if ($this->op === 'IN' || $this->op === 'NOT IN') {
+      return "$this->columnName $this->op " . Utils::createGroupOfQuestionMarks(count($this->params));
     }
-    return "$this->columnName $this->op " . $this->generateQuestionMarks();
+    return "$this->columnName $this->op ?";
   }
 
   public function __toString(): string {
