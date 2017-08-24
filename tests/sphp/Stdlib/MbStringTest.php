@@ -25,54 +25,38 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
-  public function emptyStrings(): array {
+  public function mixedData(): array {
     return [
-        [''],
-        [null],
-        [false],
+        ['', 'UTF-8'],
+        [null, 'UTF-8'],
+        [true, 'UTF-8'],
+        [false, 'UTF-8'],
+        [0, 'UTF-8'],
     ];
   }
 
   /**
    * @covers Sphp\Stdlib\MbString::isEmpty
-   * @dataProvider emptyStrings
+   * @dataProvider mixedData
+   * 
    */
-  public function testIsEmpty($empty) {
-    echo \mb_internal_encoding();
+  /**
+   * 
+   * @param type $empty
+   * @param type $encoding
+   */
+  public function testIsEmpty($empty, $encoding) {
+    $plain = "$empty";
+    $count = mb_strlen($plain, $encoding);
+    //echo \mb_internal_encoding();
     $string = MbString::create($empty);
-    $this->assertTrue($string->isEmpty($empty));
-    $this->assertEquals($string->length($empty), 0);
+    $this->assertSame($string->isEmpty($empty), ($count === 0));
+    $this->assertEquals($string->length($empty), $count);
   }
 
   /**
-   * 
-   * @return array
-   */
-  public function nonEmptyStrings(): array {
-    return [
-        [" "],
-        ["\t"],
-        ['foo'],
-        ["\n"],
-        [true],
-        [0],
-        [0.0]];
-  }
-
-  /**
-   * @covers Sphp\Stdlib\MbString::isEmpty
-   * @dataProvider nonEmptyStrings
-   */
-  public function testNonEmpty($nonEmpty) {
-    $string = MbString::create($nonEmpty);
-    $this->assertFalse($string->isEmpty());
-  }
-
-  /**
-   * 
    * @return array
    */
   public function startsWith(): array {
@@ -81,9 +65,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         ['foo', ''],
         ["\n", "\n"],
         ["\t", "\t"],
-        [0, "0"],
         ["0", "0"],
-        [0.0, '0'],
         ["abc", "a"],
         ["abc", "ab"],
         ["abc", "abc"],
@@ -96,14 +78,15 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   /**
    * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider startsWith
+   * @param string $haystack
+   * @param string $needle
    */
-  public function testStartsWith($haystack, $needle) {
+  public function testStartsWith(string $haystack, string $needle) {
     $string = MbString::create($haystack);
     $this->assertTrue($string->startsWith($needle));
   }
 
   /**
-   * 
    * @return array
    */
   public function endsWith(): array {
@@ -186,7 +169,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function testTrim(string $string, $charsToTrim, string $expected) {
     $obj = MbString::create($string);
-    $this->assertEquals("{$obj->trim($charsToTrim)}", $expected);
+    $this->compareToString($expected, $obj->trim($charsToTrim));
   }
 
   /**
