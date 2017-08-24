@@ -75,7 +75,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     $this->get('*');
     $this->having = new Clause();
   }
-  
+
   public function __clone() {
     parent::__clone();
     $this->having = clone $this->having;
@@ -352,28 +352,6 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     return $this;
   }
 
-  /*  public function statementToString(): string {
-    $query = 'SELECT ';
-    if ($this->getCurrentDriver() === 'sqlsrv') {
-    $query .= $this->limit;
-    }
-    $query .= " " . implode(', ', $this->columns);
-    $query .= " FROM " . implode(', ', $this->from);
-
-    $query .= $this->conditionsToString();
-    $query .= $this->groupByToString();
-    if (strlen($this->having) > 0) {
-    $query .= " HAVING " . $this->having;
-    }
-    if (strlen($this->orderBy) > 0) {
-    $query .= " ORDER BY " . $this->orderBy;
-    }
-    if ($this->getCurrentDriver() === 'mysql') {
-    $query .= $this->limit;
-    }
-    return $query;
-    } */
-
   /**
    * Executes the SQL query in the given database and returns the result rows as an array
    *
@@ -398,7 +376,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
     $count = $clone->get("COUNT(*)")->execute()->fetchColumn(0);
     //echo $this->statementToString();
     //var_dump($count);
-   // $this->columns = $columns;
+    // $this->columns = $columns;
 
     return (int) $count;
   }
@@ -409,7 +387,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
    */
   public function getIterator(): Traversable {
     try {
-      $data = $this->fetchAll();
+      $data = $this->toArray();
     } catch (\Throwable $ex) {
       $data = [];
     }
@@ -443,6 +421,7 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   public function fetchColumn(int $colNum = 0) {
     return $this->execute()->fetchColumn($colNum);
   }
+
   /**
    * Executes the SQL query in the given database and returns the result rows as an array
    *
@@ -453,4 +432,5 @@ abstract class AbstractQuery extends ConditionalStatement implements IteratorAgg
   public function fetchFirstRow() {
     return $this->execute()->fetch(PDO::FETCH_ASSOC);
   }
+
 }

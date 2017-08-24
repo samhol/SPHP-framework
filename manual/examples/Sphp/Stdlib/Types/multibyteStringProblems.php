@@ -8,5 +8,5 @@ use Sphp\Config\PHPConfig;
 
 $string = 'лдэфвәәуүйәуйүәу034928348539857әшаыдларорашһһрлоавы';
 echo 'strlen: ' . strlen($string);
-echo "\n\StringObject length: " . (new StringObject($string))->length();
+echo "\n\StringObject length: " . (new MbString($string))->length();
 echo "\n\Strings length: " . Strings::length($string);

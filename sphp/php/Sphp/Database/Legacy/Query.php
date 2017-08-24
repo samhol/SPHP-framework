@@ -24,7 +24,6 @@ class Query extends AbstractQuery {
     $query .= $this->fromToString();
     $query .= $this->conditionsToString();
     $query .= $this->groupByToString();
-
     $query .= $this->havingToString();
     $query .= $this->orderByToString();
     if ($this->hasLimit()) {

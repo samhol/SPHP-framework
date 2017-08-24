@@ -16,7 +16,7 @@ $translations = [];
 $i = 0;
 $j = 0;
 foreach ($rows as $row) {
-	$str = new \Sphp\Stdlib\StringObject($row); //Strings::startsWith($row, 'msgid "');
+	$str = new \Sphp\Stdlib\MbString($row); //Strings::startsWith($row, 'msgid "');
 	if ($str->startsWith('#') && !$str->startsWith('#,') && !$str->startsWith('#Sami Holck')) {
 		echo $row;
 		$key = $str->replace('#', "", 1)->trim()->__toString();

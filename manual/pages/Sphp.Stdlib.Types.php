@@ -12,7 +12,7 @@ $floatLink = Apis::phpManual()->typeLink('float');
 $strLink = Apis::phpManual()->typeLink('string');
 $arrLink = Apis::phpManual()->typeLink('array');
 $stringsClass = Apis::sami()->classLinker(Strings::class);
-$stringObjectClass = Apis::sami()->classLinker(StringObject::class);
+$stringObjectClass = Apis::sami()->classLinker(MbString::class);
 $nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #Core objects and utlility classes

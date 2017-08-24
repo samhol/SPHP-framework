@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\Stdlib\StringObject;
+use Sphp\Stdlib\MbString;
 use Sphp\I18n\Messages\Message;
 
 /**
@@ -127,7 +127,7 @@ class StringLengthValidator extends AbstractValidator {
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;
-    $string = new StringObject($value);
+    $string = new MbString($value);
     $length = $string->length();
     if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
       $valid = false;

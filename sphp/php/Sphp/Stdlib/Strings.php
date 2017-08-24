@@ -545,7 +545,7 @@ class Strings {
    * @return string
    */
   public static function getEncoding($encoding = null): string {
-    if ($encoding === null) {
+    if (empty($encoding)) {
       $encoding = \mb_internal_encoding();
     }
     //echo "current encoding:(".$encoding.")\n";

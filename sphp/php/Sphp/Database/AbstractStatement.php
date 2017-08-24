@@ -22,6 +22,11 @@ use Sphp\Exceptions\RuntimeException;
 abstract class AbstractStatement implements StatementInterface {
 
   /**
+   * @var string[]
+   */
+  private $target = [];
+
+  /**
    * @var PDO
    */
   private $pdo;
@@ -55,6 +60,19 @@ abstract class AbstractStatement implements StatementInterface {
     $pdo->setAttribute(PDO::ATTR_PERSISTENT, true);
     $this->pdo = $pdo;
     return $this;
+  }
+
+  public function getTarget(): array {
+    return $this->target;
+  }
+
+  public function setTarget(array $target) {
+    $this->target = $target;
+    return $this;
+  }
+
+  protected function targetToString(): string {
+    return " " . implode(', ', $this->getTarget());
   }
 
   public function getStatement(): PDOStatement {
