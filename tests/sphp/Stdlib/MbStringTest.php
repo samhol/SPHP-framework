@@ -34,6 +34,11 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
         [true, 'UTF-8'],
         [false, 'UTF-8'],
         [0, 'UTF-8'],
+        ['', 'UTF-16'],
+        [null, 'UTF-16'],
+        [true, 'UTF-16'],
+        [false, 'UTF-16'],
+        [0, 'UTF-16'],
     ];
   }
 
@@ -42,12 +47,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider mixedData
    * 
    */
-  /**
-   * 
-   * @param type $empty
-   * @param type $encoding
-   */
-  public function testIsEmpty($empty, $encoding) {
+  public function testIsEmpty($empty, string $encoding) {
     $plain = "$empty";
     $count = mb_strlen($plain, $encoding);
     //echo \mb_internal_encoding();
@@ -118,7 +118,6 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
   public function endsNotWith(): array {
@@ -139,6 +138,8 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
   /**
    * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider endsNotWith
+   * @param string $haystack
+   * @param string $needle
    */
   public function testNotEndsWith(string $haystack, string $needle) {
     $string = MbString::create($haystack);
