@@ -103,7 +103,7 @@ class Router {
    * @param  string|null $url optional URL to route
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function __construct($url = null) {
+  public function __construct(string $url = null) {
     $this->url = static::getCleanUrl($url);
   }
 
@@ -177,7 +177,7 @@ class Router {
    * @return boolean
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function route($route, $callback, $priority = 10) {
+  public function route(string $route, $callback, int $priority = 10) {
     // Make sure the route ends in a / since all of the URLs will
     $route = rtrim($route, '/') . '/';
     // Custom capture, format: <:var_name|regex>

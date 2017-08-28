@@ -163,7 +163,7 @@ class Filesystem {
    * @return boolean true on success or false on failure
    * @link \mkdir()
    */
-  public static function mkdir($path, $mode = 0777) {
+  public static function mkdir(string $path, int $mode = 0777) {
     $result = is_dir($path);
     if (!$result) {
       $result = mkdir($path, $mode, true);
@@ -180,7 +180,7 @@ class Filesystem {
    * @param  int $mode the mode is `0777` by default, which means the widest possible access
    * @return boolean true on success or false on failure
    */
-  public static function mkFile($path, $mode = 0777): bool {
+  public static function mkFile(string $path, int $mode = 0777): bool {
     if (is_file($path)) {
       return false;
     }

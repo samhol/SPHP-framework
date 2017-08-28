@@ -21,7 +21,8 @@ use Sphp\Stdlib\Arrays;
  */
 class Iterator implements NativeIterator, ContentInterface, TraversableInterface {
 
-  use ContentTrait, TraversableTrait;
+  use ContentTrait,
+      TraversableTrait;
 
   /**
    * the content
@@ -78,7 +79,7 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
   }
 
   public function getHtml(): string {
-    return Arrays::implode($this->components);
+    return implode('', $this->components);
   }
 
   /**

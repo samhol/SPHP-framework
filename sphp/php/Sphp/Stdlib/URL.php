@@ -208,7 +208,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  boolean $encode true if the value should be encoded
    * @return string the user part of the URL
    */
-  public function getUser($encode = false): string {
+  public function getUser(bool $encode = false): string {
     $val = strval($this->components['user']);
     if ($encode && !Strings::isEmpty($val)) {
       $val = rawurlencode($val);
@@ -332,7 +332,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  int $encode
    * @return string the query string of the URL
    */
-  public function getQuery($separator = '&', $encode = \PHP_QUERY_RFC1738): string {
+  public function getQuery($separator = '&', int $encode = \PHP_QUERY_RFC1738): string {
     $val = '';
     if ($this->hasQuery()) {
       $val = http_build_query($this->components['query'], '', $separator, $encode);
@@ -346,7 +346,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $name the name of the parameter
    * @return boolean true if the parameter exists and false otherwise
    */
-  public function paramExists($name): bool {
+  public function paramExists(string $name): bool {
     return array_key_exists($name, $this->components['query']);
   }
 
@@ -380,7 +380,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @param  string $value the value of the parameter
    * @return $this for a fluent interface
    */
-  public function setParam($name, $value) {
+  public function setParam(string $name, $value) {
     $this->components['query'][$name] = $value;
     return $this;
   }
@@ -465,7 +465,7 @@ class URL implements Arrayable, IteratorAggregate {
    * @return int the port number; (`-1` if the port number can not be resolved)
    * @link   http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
    */
-  public function getPort() {
+  public function getPort(): int {
     return $this->components['port'];
   }
 
@@ -659,7 +659,7 @@ class URL implements Arrayable, IteratorAggregate {
    * 
    * @return boolen true if the URL is current browser URL, false otherwise
    */
-  public function isCurrent() {
+  public function isCurrent(): bool {
     return $this->equals(URL::getCurrent());
   }
 
@@ -668,7 +668,7 @@ class URL implements Arrayable, IteratorAggregate {
    *
    * @return URL the current url
    */
-  public static function getCurrent() {
+  public static function getCurrent(): URL {
     if (self::$currUrl === null) {
       $url = new URL();
       if (!empty($_SERVER["HTTPS"])) {

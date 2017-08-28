@@ -199,4 +199,12 @@ class PHPConfig {
     return $this;
   }
 
+  public static function is32bit(): bool {
+    return PHP_INT_SIZE === 4;
+  }
+
+
+  public static function is64bit(): bool {
+    return PHP_INT_SIZE === 8;
+  }
 }

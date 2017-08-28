@@ -237,7 +237,7 @@ class Collection implements Iterator, CollectionInterface {
    *
    * @return boolean true if the collection is empty, false otherwise
    */
-  public function isEmpty() {
+  public function isEmpty(): bool {
     return empty($this->items);
   }
 

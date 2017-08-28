@@ -30,14 +30,14 @@ class BitMask implements Arrayable, Embeddable {
   protected $mask = 0;
 
   /**
-   * Constructs a new instance of the {@link self} object
+   * Constructs a new instance
    *
    * **Notes:** a string <var>$bits</var> is always treated as binary number
    * 
    * @param int|string|BitMask $bits the flags
    */
-  public function __construct($bits = 0) {
-    $this->mask = self::parseFlagsToInt($bits);
+  public function __construct(int $bits = 0) {
+    $this->mask = $bits;
   }
 
   /**
@@ -83,12 +83,17 @@ class BitMask implements Arrayable, Embeddable {
    * Sets or unsets new bits at given index
    *
    * @param  int $index the specified index
-   * @param  boolean $bit the bit value to set
+   * @param  int $bit the bit value to set
    * @return $this for a fluent interface
    */
-  public function set(int $index, bool $bit = true) {
-    $value = intval(boolval($bit));
-    if ($value === 0) {
+  public function set(int $index, bool $on = true) {
+    if (\Sphp\Config\PHPConfig::is32bit() && $index > 31) {
+      throw new RuntimeException("PHP runs as 32 bit version");
+    }if (\Sphp\Config\PHPConfig::is64bit() && $index > 31) {
+      throw new RuntimeException("PHP runs as 64 bit version");
+    }
+    $bit = intval($on);
+    if ($bit === 0) {
       $this->mask &= ~(1 << $index);
     } else {
       $this->mask |= (1 << $index);
@@ -102,8 +107,9 @@ class BitMask implements Arrayable, Embeddable {
    * @param  int $index the specified index
    * @return int the value of the bit with the specified index
    */
-  public function get(int $index) {
-    return $this->mask & (1 << $index);
+  public function get(int $index): int {
+   // return $this->mask & (1 << $index);
+    return ($this->mask >> $index) & 1;
   }
 
   /**
@@ -114,8 +120,8 @@ class BitMask implements Arrayable, Embeddable {
    * @param int|string|BitMask $bits the flags unset
    * @return $this for a fluent interface
    */
-  public function clear($bits) {
-    $this->mask &= ~self::parseFlagsToInt($bits);
+  public function clear(int $bits) {
+    $this->mask &= ~$bits;
     return $this;
   }
 
@@ -158,7 +164,7 @@ class BitMask implements Arrayable, Embeddable {
    * 
    * @return string the hexadecimal representation of the
    */
-  public function toOct() {
+  public function toOct(): string {
     return decoct($this->mask);
   }
 
@@ -167,7 +173,7 @@ class BitMask implements Arrayable, Embeddable {
    * 
    * @return string the hexadecimal representation of the
    */
-  public function toHex() {
+  public function toHex(): string {
     return dechex($this->mask);
   }
 
@@ -182,10 +188,6 @@ class BitMask implements Arrayable, Embeddable {
 
   public function toArray(): array {
     return static::toBitArray($this->mask);
-  }
-
-  public function toScalar() {
-    return $this->mask;
   }
 
   /**
@@ -217,12 +219,40 @@ class BitMask implements Arrayable, Embeddable {
     return str_split(decbin(self::parseFlagsToInt($flags)));
   }
 
-  public function equals($object) {
+  public function equals($object): bool {
     if (!$object instanceof BitMask) {
       return $this->toInt() === static::parseFlagsToInt($object);
     } else {
       return $object == $this;
     }
+  }
+
+  /**
+   * 
+   * @param  string $binary
+   * @return BitMask
+   */
+  public static function fromBinary(string $binary): BitMask {
+    
+    return new static(bindec($binary));
+  }
+
+  /**
+   * 
+   * @param  string $octal
+   * @return BitMask
+   */
+  public static function fromOctal(string $octal): BitMask {
+    return new static(octdec($octal));
+  }
+
+  /**
+   * 
+   * @param  string $hex
+   * @return BitMask
+   */
+  public function fromHex(string $hex): BitMask {
+    return new static(hexdec($hex));
   }
 
 }

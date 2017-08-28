@@ -93,7 +93,6 @@ class IdenticalValidator extends AbstractValidator {
     } else if (!is_object($value) && !is_object($token)) {
       $valid = $value == $token;
     }
-
     if (!$valid) {
       $this->error(self::INVALID);
     }

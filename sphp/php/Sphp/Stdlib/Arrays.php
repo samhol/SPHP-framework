@@ -257,23 +257,6 @@ class Arrays {
     return true;
   }
 
-  public static function getkeypath($arr, $lookup) {
-    if (array_key_exists($lookup, $arr)) {
-      return array($lookup);
-    } else {
-      foreach ($arr as $key => $subarr) {
-        if (is_array($subarr)) {
-          $ret = getkeypath($subarr, $lookup);
-          if ($ret) {
-            $ret[] = $key;
-            return $ret;
-          }
-        }
-      }
-    }
-
-    return null;
-  }
 
   /**
    * Returns the value from an array using the key chain given as the second parameter
@@ -340,8 +323,8 @@ class Arrays {
    * @param int $base the starting index of the sequence
    * @return boolean true if conditions hold and false otherwise
    */
-  public static function isSequential(array $arr, $base = 0): bool {
-    for (reset($arr), $base = (int) $base; key($arr) === $base++; next($arr))
+  public static function isSequential(array $arr, int $base = 0): bool {
+    for (reset($arr), $base = $base; key($arr) === $base++; next($arr))
       ;
     return is_null(key($arr));
   }
@@ -352,10 +335,10 @@ class Arrays {
    * @param array $arr checked array
    * @param mixed $base the starting index of the sequence
    * @param int $step optional increment between elements in the sequence.
-   * @return boolean true if conditions hold and false otherwise
+   * @return array sequential array
    */
-  public static function setSequential(array $arr, $base = 0, $step = 1): bool {
-    if ($base == 0 && $step == 1) {
+  public static function setSequential(array $arr, int $base = 0, $step = 1): array {
+    if ($base === 0 && $step === 1) {
       $result = array_values($arr);
     } else {
       $sequence = range($base, count($arr), $step);

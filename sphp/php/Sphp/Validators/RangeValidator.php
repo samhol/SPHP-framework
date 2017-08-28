@@ -6,6 +6,7 @@
  */
 
 namespace Sphp\Validators;
+
 use Sphp\I18n\Messages\Message;
 
 /**
@@ -35,7 +36,7 @@ class RangeValidator extends AbstractLimitValidator {
    * @param float $max the maximum value
    * @param boolean $inclusive
    */
-  public function __construct($min, $max, $inclusive = true) {
+  public function __construct(float $min, float $max, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min)->setMax($max);
     $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
@@ -47,7 +48,7 @@ class RangeValidator extends AbstractLimitValidator {
    * 
    * @return float the minimum value
    */
-  public function getMin() {
+  public function getMin(): float {
     return $this->min;
   }
 
@@ -56,7 +57,7 @@ class RangeValidator extends AbstractLimitValidator {
    * 
    * @return float the maximum value
    */
-  public function getMax() {
+  public function getMax(): float {
     return $this->max;
   }
 
@@ -66,7 +67,7 @@ class RangeValidator extends AbstractLimitValidator {
    * @param  float $min the minimum value
    * @return $this for a fluent interface
    */
-  public function setMin($min) {
+  public function setMin(float $min) {
     $this->min = $min;
     return $this;
   }

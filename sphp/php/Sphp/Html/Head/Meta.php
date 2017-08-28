@@ -39,7 +39,7 @@ class Meta extends EmptyTag implements MetaInterface {
     return $this->attrExists('name');
   }
 
-  public function hasName($name): bool {
+  public function hasName(string $name): bool {
     return $this->hasNamedContent() && $this->getName() == $name;
   }
 
@@ -51,7 +51,7 @@ class Meta extends EmptyTag implements MetaInterface {
     return $this->attrExists('http-equiv');
   }
 
-  public function hasHttpEquiv($http_equiv): bool {
+  public function hasHttpEquiv(string $http_equiv): bool {
     return $this->hasHttpEquivContent() && $this->get('http_equiv') == $http_equiv;
   }
 
@@ -72,7 +72,7 @@ class Meta extends EmptyTag implements MetaInterface {
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    */
-  public function hasProperty($property): bool {
+  public function hasProperty(string $property): bool {
     return $this->hasPropertyContent() && $this->get('property') == $property;
   }
 

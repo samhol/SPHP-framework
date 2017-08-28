@@ -9,7 +9,6 @@ namespace Sphp\Html\Apps;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Div;
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Images\Images as ImageUtils;
 use Sphp\Html\Navigation\Hyperlink;
@@ -259,7 +258,7 @@ class PhotoAlbum extends AbstractContainerComponent {
       );
       $table->tbody()->append(array(
           new Th("File size:"),
-          Strings::generateFilesizeString($info["size_B"])));
+          \Sphp\Stdlib\Filesystem::generateFilesizeString($info["size_B"])));
       $table->tbody()->append(array(
           new Th("Modified:", 1, 1, "row"),
           $info["modified"]->format("d.m.Y k\l\o H:i.s")));

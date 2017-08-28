@@ -2,9 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-/**
- */
-class MbStringTest extends \PHPUnit\Framework\TestCase {
+class BitMaskTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
@@ -29,59 +27,25 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
    */
   public function mixedData(): array {
     return [
-        ['', 'UTF-8'],
-        [null, 'UTF-8'],
-        [true, 'UTF-8'],
-        [false, 'UTF-8'],
-        [0, 'UTF-8'],
-        [new \Sphp\Html\Span(), 'UTF-8']
+        [0b1, "1"],
+        [0b10, '10'],
+        [0xf, '0xf']
     ];
   }
 
-  /**
-   * @covers Sphp\Stdlib\MbString::isEmpty
-   * @dataProvider mixedData
-   * 
-   */
-  public function testIsEmpty($empty, string $encoding) {
-    $plain = "$empty";
-    $count = mb_strlen($plain, $encoding);
-    $string = MbString::create($empty);
-    echo "obj:'$string', raw:'$plain'\n";
-    
-    var_dump($string->isEmpty($empty), $count);
-    $this->assertSame($string->isEmpty($empty), ($count === 0));
-    $this->assertEquals($string->length($empty), $count);
-  }
-
-  /**
-   * @return array
-   */
-  public function startsWith(): array {
-    return [
-        ['', ''],
-        ['foo', ''],
-        ["\n", "\n"],
-        ["\t", "\t"],
-        ["0", "0"],
-        ["abc", "a"],
-        ["abc", "ab"],
-        ["abc", "abc"],
-        ["åäö", "å"],
-        ["åäö", "åä"],
-        ["åäö", "åäö"]
-    ];
-  }
 
   /**
    * @covers Sphp\Stdlib\Strings::startsWith
-   * @dataProvider startsWith
    * @param string $haystack
    * @param string $needle
    */
-  public function testStartsWith(string $haystack, string $needle) {
-    $string = MbString::create($haystack);
-    $this->assertTrue($string->startsWith($needle));
+  public function testBitSetting() {
+    $b = new BitMask();
+    for ($i = 0; $i < 56; $i++) {
+      $b->set($i, true);
+      $this->assertSame(1, $b->get($i), "Failed asserting that 0 is identical to 1 at position '$i'");
+      echo "$b\n";
+    }
   }
 
   /**

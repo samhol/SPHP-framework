@@ -48,7 +48,7 @@ interface CollectionInterface extends Arrayable, ArrayAccess, Countable, Travers
    *
    * @return boolean true if the collection is empty, false otherwise
    */
-  public function isEmpty();
+  public function isEmpty():bool;
 
   /**
    * Clears the contents

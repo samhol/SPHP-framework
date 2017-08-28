@@ -39,7 +39,7 @@ class Datetime extends \DateTime implements Comparable {
    * @link   http://www.php.net/manual/en/datetime.construct.php DateTime::__construct (PHP manual)
    * @link   http://www.php.net/manual/en/class.datetimezone.php The DateTimeZone class (PHP manual)
    */
-  function __construct($time = 'now', DateTimeZone $timezone = null) {
+  public function __construct($time = 'now', DateTimeZone $timezone = null) {
     if (is_numeric($time)) {
       $time = date('Y-m-d H:i:s', $time);
     }
@@ -51,7 +51,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return int the the year
    */
-  public function getYear() {
+  public function getYear(): int {
     return (int) $this->format('Y');
   }
 
@@ -60,7 +60,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return int numeric representation of the month
    */
-  public function getMonth() {
+  public function getMonth(): int {
     return (int) $this->format('n');
   }
 
@@ -69,7 +69,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return int the day of the month
    */
-  public function getDayOfTheMonth() {
+  public function getDayOfTheMonth(): int {
     return (int) $this->format('j');
   }
 
@@ -78,7 +78,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return string the month name
    */
-  public function getMonthName() {
+  public function getMonthName(): string {
     return $this->format('F');
   }
 
@@ -87,7 +87,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return string the weekday name
    */
-  public function getWeekdayName() {
+  public function getWeekdayName(): string {
     return $this->format('l');
   }
 
@@ -121,7 +121,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return boolean true if the datetime is in the past, false otherwise
    */
-  public function past() {
+  public function past(): bool {
     return $this->compareTo(new Datetime()) < 0;
   }
 
@@ -130,7 +130,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return boolean true if the datetime is the current datetime, false otherwise
    */
-  public function now() {
+  public function now(): bool {
     return $this->compareTo(new Datetime()) === 0;
   }
 
@@ -139,7 +139,7 @@ class Datetime extends \DateTime implements Comparable {
    * 
    * @return boolean true if the datetime is in the future, false otherwise
    */
-  public function future() {
+  public function future(): bool {
     return $this->compareTo(new Datetime()) > 0;
   }
 
@@ -151,17 +151,6 @@ class Datetime extends \DateTime implements Comparable {
    * @return string object as a datetime string
    */
   public function __toString(): string {
-    return $this->format('Y-m-d H:i:s T');
-  }
-
-  /**
-   * Returns object as a datetime string
-   *
-   * **Note:** PHP formatting string used for outputting is "Y-m-d H:i:s T"
-   * 
-   * @return string as a datetime string
-   */
-  public function toScalar() {
     return $this->format('Y-m-d H:i:s T');
   }
 

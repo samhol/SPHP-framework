@@ -60,7 +60,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param string $title the title of the HTML document
    * @param string $charset the character set of the HTML document
    */
-  public function __construct($title = '', $charset = 'UTF-8') {
+  public function __construct(string $title = null, string $charset = 'UTF-8') {
     parent::__construct('head');
     $this->setup($title, $charset);
   }
@@ -87,7 +87,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
    * @param  ScriptsContainer|null $c optional new script container to set
    * @return ScriptsContainer the script container
    */
-  public function scripts(ScriptsContainer $c = null) {
+  public function scripts(ScriptsContainer $c = null): ScriptsContainer {
     if ($c !== null) {
       $this->scripts = new ScriptsContainer();
     }

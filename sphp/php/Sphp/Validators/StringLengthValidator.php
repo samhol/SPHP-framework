@@ -8,7 +8,6 @@
 namespace Sphp\Validators;
 
 use Sphp\Stdlib\MbString;
-use Sphp\I18n\Messages\Message;
 
 /**
  * Validates string length
@@ -45,7 +44,7 @@ class StringLengthValidator extends AbstractValidator {
    * @param int $min minimum length of the valid string
    * @param int $max maximum length of the valid string
    */
-  public function __construct($min = -1, $max = -1) {
+  public function __construct(int $min = -1, int $max = -1) {
     parent::__construct();
     $this->min = intval($min);
     $this->max = intval($max);
@@ -61,7 +60,7 @@ class StringLengthValidator extends AbstractValidator {
    * @param int $max maximum length of the valid string
    * @return $this for a fluent interface
    */
-  public function setRangeValidation($min, $max) {
+  public function setRangeValidation(int $min, int $max) {
     $this->min = intval($min);
     $this->max = intval($max);
     return $this;
@@ -72,7 +71,7 @@ class StringLengthValidator extends AbstractValidator {
    * 
    * @return boolean true if the validator acts as a range validator, false otherwise
    */
-  public function isRangeValidator() {
+  public function isRangeValidator(): bool {
     return $this->min >= 0 && $this->min < $this->max;
   }
 
@@ -85,7 +84,7 @@ class StringLengthValidator extends AbstractValidator {
    * @param  int $min minimum length of the valid string
    * @return $this for a fluent interface
    */
-  public function setLowerBoundValidation($min) {
+  public function setLowerBoundValidation(int $min) {
     $this->min = intval($min);
     $this->max = -1;
     return $this;
@@ -96,7 +95,7 @@ class StringLengthValidator extends AbstractValidator {
    * 
    * @return boolean true if the validator acts as a lower bound validator, false otherwise
    */
-  public function isLowerBoundValidator() {
+  public function isLowerBoundValidator(): bool {
     return $this->min >= 0 && $this->max === -1;
   }
 
@@ -109,7 +108,7 @@ class StringLengthValidator extends AbstractValidator {
    * @param int $max maximum length of the valid string
    * @return $this for a fluent interface
    */
-  public function setUpperBoundValidation($max) {
+  public function setUpperBoundValidation(int $max) {
     $this->min = -1;
     $this->max = intval($max);
     return $this;
@@ -120,10 +119,10 @@ class StringLengthValidator extends AbstractValidator {
    * 
    * @return boolean true if the validator acts as a upper bound validator, false otherwise
    */
-  public function isUpperBoundValidator() {
+  public function isUpperBoundValidator(): bool {
     return $this->min < 0 && $this->max > 0;
   }
-  
+
   public function isValid($value): bool {
     $this->setValue($value);
     $valid = true;

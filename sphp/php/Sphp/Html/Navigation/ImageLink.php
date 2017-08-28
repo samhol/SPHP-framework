@@ -39,23 +39,24 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
    * * The `href` attribute specifies the URL of the page the link goes to.
    * * If the `href` attribute is not present, the &lt;a&gt; tag is not a hyperlink.
    *
-   * @param  string|URL $href the URL of the hyperlink
+   * @param  string $href the URL of the hyperlink
    * @param  string $target the value of the target attribute
    * @param  string|Img $src link tag's content
+   * @param  string $alt
    * @link   http://www.w3schools.com/tags/att_a_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
-  public function __construct($href = null, $target = null, $src = null, $alt = '') {
+  public function __construct(string $href = null, string $target = null, $src = null, string $alt = '') {
     parent::__construct('a');
     if ($src instanceof Img) {
       $this->setImg($src);
     } else {
       $this->setImg(new Img($src, $alt));
     }
-    if (!Strings::isEmpty($href)) {
+    if ($href !== null) {
       $this->setHref($href);
     }
-    if (!Strings::isEmpty($target)) {
+    if ($target !== null) {
       $this->setTarget($target);
     }
   }

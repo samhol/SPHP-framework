@@ -221,7 +221,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
 
   public function getValue() {
     if (!empty($this->values)) {
-      $value = implode(" ", $this->values);
+      $value = implode(' ', $this->values);
     } else {
       $value = $this->isDemanded();
     }
@@ -250,10 +250,6 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     return new ArrayIterator($this->values);
   }
 
-  /**
-   * 
-   * @return scalar[]
-   */
   public function toArray(): array {
     return $this->values;
   }

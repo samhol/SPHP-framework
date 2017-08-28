@@ -223,7 +223,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public static function cssSrc($href, $media = 'screen') {
+  public static function cssSrc(string $href, string $media = 'screen') {
     return (new Link($href, 'stylesheet', $media))->setType('text/css');
   }
 

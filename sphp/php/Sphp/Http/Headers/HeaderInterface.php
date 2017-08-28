@@ -22,7 +22,7 @@ interface HeaderInterface {
    * 
    * @return string header name
    */
-  public function getName();
+  public function getName(): string;
 
   /**
    * Returns header value
@@ -36,5 +36,5 @@ interface HeaderInterface {
    * 
    * @return string header 
    */
-  public function __toString();
+  public function __toString(): string;
 }

@@ -50,7 +50,7 @@ class Html extends AbstractComponent implements IteratorAggregate, TraversableIn
    * @param string|null $charset optional character encoding of the document (defaults to: "UTF-8")
    * @param string|null $lang optional body content
    */
-  public function __construct($title = null, $charset = 'UTF-8', $lang = null) {
+  public function __construct(string $title = null, string $charset = 'UTF-8', string $lang = null) {
     parent::__construct('html');
     $this->head = new Head($title, $charset);
     $this->body = new Body();

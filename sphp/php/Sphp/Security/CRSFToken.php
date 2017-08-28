@@ -67,7 +67,7 @@ class CRSFToken {
    * @param  string $tokenName the CRSF token name
    * @return string the CRSF token generated
    */
-  public function generateToken($tokenName) {
+  public function generateToken(string $tokenName) {
     $token = md5(uniqid(microtime(), true));
     $_SESSION[$tokenName . '_token'] = $token;
     return $token;
@@ -80,7 +80,7 @@ class CRSFToken {
    * @param  int $type
    * @return boolean true if the token value matches
    */
-  public function verifyInputToken($tokenName, $type) {
+  public function verifyInputToken(string $tokenName, int $type) {
     $token = filter_input($type, $tokenName, FILTER_SANITIZE_STRING);
     if (!isset($_SESSION[$tokenName . '_token'])) {
       return false;
@@ -98,7 +98,7 @@ class CRSFToken {
    * @param  string $tokenName the CRSF token name
    * @return boolean true if the token value matches
    */
-  public function verifyPostToken($tokenName) {
+  public function verifyPostToken(string $tokenName) {
     return $this->verifyInputToken($tokenName, \INPUT_POST);
   }
 
@@ -108,7 +108,7 @@ class CRSFToken {
    * @param  string $tokenName the CRSF token name
    * @return boolean true if the token value matches
    */
-  public function verifyGetToken($tokenName) {
+  public function verifyGetToken(string $tokenName) {
     return $this->verifyInputToken($tokenName, \INPUT_GET);
   }
 

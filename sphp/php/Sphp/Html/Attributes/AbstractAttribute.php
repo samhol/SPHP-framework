@@ -38,7 +38,7 @@ abstract class AbstractAttribute implements AttributeInterface {
    *
    * @param string $name the name of the attribute
    */
-  public function __construct($name) {
+  public function __construct(string $name) {
     $this->name = $name;
   }
 

@@ -21,7 +21,7 @@ class Location extends AbstractHeader {
     $this->setValue($value);
   }
 
-  public function getName() {
+  public function getName(): string {
     return 'location';
   }
 

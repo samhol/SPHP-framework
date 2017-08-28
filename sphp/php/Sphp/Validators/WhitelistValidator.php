@@ -20,7 +20,6 @@ class WhitelistValidator extends AbstractValidator {
   const ILLEGAL_KEY = '_illegal_key_';
 
   /**
-   *
    * @var array
    */
   private $whitelist = [];

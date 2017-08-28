@@ -7,9 +7,8 @@
 
 namespace Sphp\Stdlib;
 
-use ArrayIterator;
 use Countable;
-use IteratorAggregate;
+use ArrayAccess;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\BadMethodCallException;
@@ -18,9 +17,16 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 /**
  * Implements a string class
  *
+ * @author  Sami Holck <sami.holck@gmail.com>
+ * @since   2016-09-11
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
+ * @filesource
  */
-class MbString implements Countable, \Iterator, Arrayable {
+class MbString implements Countable, \Iterator, Arrayable, ArrayAccess {
 
+  /**
+   * @var int
+   */
   private $index = 0;
 
   /**
@@ -312,19 +318,6 @@ class MbString implements Countable, \Iterator, Arrayable {
   }
 
   /**
-   * Returns a new ArrayIterator 
-   * 
-   * The ArrayIterator's constructor is passed an array of chars
-   * in the multibyte string. This enables the use of foreach with instances
-   * of StringObject\StringObject.
-   *
-   * @return ArrayIterator An iterator for the characters in the string
-   */
-  public function getIterator1() {
-    return new ArrayIterator($this->toArray());
-  }
-
-  /**
    * Returns the encoding used
    *
    * @return string the encoding used
@@ -333,7 +326,7 @@ class MbString implements Countable, \Iterator, Arrayable {
     return $this->encoding;
   }
 
-  public function rewind() {
+  public function rewind(): void {
     $this->index = 0;
   }
 
@@ -341,16 +334,51 @@ class MbString implements Countable, \Iterator, Arrayable {
     return $this->charAt($this->index);
   }
 
-  public function key() {
+  public function key(): int {
     return $this->index;
   }
 
-  public function next() {
+  public function next(): void {
     $this->index++;
   }
 
   public function valid(): bool {
     return $this->index < $this->length();
+  }
+
+  public function offsetExists($offset): bool {
+    return is_int($offset) && $offset >= 0 && $offset < $this->length();
+  }
+
+  /**
+   * 
+   * @param  mixed $offset
+   * @return string
+   * @throws OutOfBoundsException if the offset does not exist
+   */
+  public function offsetGet($offset) {
+    return $this->charAt($offset);
+  }
+
+  /**
+   * 
+   * @param  mixed $offset
+   * @param  mixed $value
+   * @return void
+   * @throws BadMethodCallException
+   */
+  public function offsetSet($offset, $value): void {
+    throw new BadMethodCallException("Object is immutable, cannot modify char at position $offset directly");
+  }
+
+  /**
+   * 
+   * @param  mixed $offset
+   * @return void
+   * @throws BadMethodCallException
+   */
+  public function offsetUnset($offset): void {
+    throw new BadMethodCallException("Object is immutable, cannot unset char at position $offset directly");
   }
 
 }

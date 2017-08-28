@@ -163,7 +163,7 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
   }
 
   public function getHtml(): string {
-    return Arrays::implode($this->components);
+    return implode('', $this->components);
   }
 
   public function exists($value): bool {

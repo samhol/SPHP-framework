@@ -40,7 +40,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the name attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    */
-  public function hasName($name): bool;
+  public function hasName(string $name): bool;
 
   /**
    * Returns the value of the name attribute
@@ -66,7 +66,7 @@ interface MetaInterface extends HeadComponentInterface, NonVisualContentInterfac
    * @return boolean true if the http_equiv attribute has the given value, otherwise false
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http_equiv attribute
    */
-  public function hasHttpEquiv($http_equiv): bool;
+  public function hasHttpEquiv(string $http_equiv): bool;
 
   /**
    * Returns the value of the http_equiv attribute
