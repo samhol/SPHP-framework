@@ -8,7 +8,10 @@
 namespace Sphp\Stdlib;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
+use Iterator;
+use Sphp\Config\PHPConfig;
 use Sphp\Database\Doctrine\Embeddable;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * Implements a bitmask object
@@ -19,7 +22,9 @@ use Sphp\Database\Doctrine\Embeddable;
  * @filesource
  * @Embeddable
  */
-class BitMask implements Arrayable, Embeddable {
+class BitMask implements Arrayable, Embeddable, Iterator {
+
+  private $index = 0;
 
   /**
    * the binary value
@@ -79,26 +84,21 @@ class BitMask implements Arrayable, Embeddable {
     return $this;
   }
 
+  protected function isValidIndex($index): bool {
+    return 0 <= $index && $index < PHPConfig::getBitVersion();
+  }
+
   /**
-   * Sets or unsets new bits at given index
+   * Sets new bits at given index
    *
    * @param  int $index the specified index
-   * @param  int $bit the bit value to set
-   * @return $this for a fluent interface
+   * @return BitMask new instance
    */
-  public function set(int $index, bool $on = true) {
-    if (\Sphp\Config\PHPConfig::is32bit() && $index > 31) {
-      throw new RuntimeException("PHP runs as 32 bit version");
-    }if (\Sphp\Config\PHPConfig::is64bit() && $index > 31) {
-      throw new RuntimeException("PHP runs as 64 bit version");
+  public function set(int $index): BitMask {
+    if (!$this->isValidIndex($index)) {
+      throw new RuntimeException("Index ($index) is not an integer between (0-" . (PHPConfig::getBitVersion() - 1) . ")");
     }
-    $bit = intval($on);
-    if ($bit === 0) {
-      $this->mask &= ~(1 << $index);
-    } else {
-      $this->mask |= (1 << $index);
-    }
-    return $this;
+    return new static($this->mask |= (1 << $index));
   }
 
   /**
@@ -108,8 +108,17 @@ class BitMask implements Arrayable, Embeddable {
    * @return int the value of the bit with the specified index
    */
   public function get(int $index): int {
-   // return $this->mask & (1 << $index);
     return ($this->mask >> $index) & 1;
+  }
+
+  /**
+   * Returns the value of the bit with the specified index
+   *
+   * @param  int $index the specified index
+   * @return int the value of the bit with the specified index
+   */
+  public function unset(int $index) {
+    return new static($this->mask &= ~(1 << $index));
   }
 
   /**
@@ -128,11 +137,10 @@ class BitMask implements Arrayable, Embeddable {
   /**
    * Inverts the bits from 1 to 0 and vice versa
    *
-   * @return $this for a fluent interface
+   * @return BitMask new inverted instance
    */
-  public function invert() {
-    $this->mask = ~$this->mask;
-    return $this;
+  public function invert(): BitMask {
+    return new static(~$this->mask);
   }
 
   /**
@@ -143,7 +151,7 @@ class BitMask implements Arrayable, Embeddable {
    * @param int|string|BitMask $bitmask the flags
    * @return boolean true if the object contains given flags and false otherwise
    */
-  public function contains($bitmask) {
+  public function contains($bitmask): bool {
     $parsedFlags = self::parseFlagsToInt($bitmask);
     //echo "\np=".$p."=".base_convert($p, 10, 2);
     //echo "\nthis->permissions=".$this->permissions."=".base_convert($this->permissions, 10, 2)."\n";
@@ -171,7 +179,7 @@ class BitMask implements Arrayable, Embeddable {
   /**
    * Returns the hexadecimal string representation of the bitmask
    * 
-   * @return string the hexadecimal representation of the
+   * @return string the hexadecimal representation
    */
   public function toHex(): string {
     return dechex($this->mask);
@@ -187,7 +195,11 @@ class BitMask implements Arrayable, Embeddable {
   }
 
   public function toArray(): array {
-    return static::toBitArray($this->mask);
+    $result = [];
+    for ($i = 0; $i < PHPConfig::getBitVersion(); $i++) {
+      $result[$i] = $this->get($i);
+    }
+    return $result;
   }
 
   /**
@@ -209,16 +221,6 @@ class BitMask implements Arrayable, Embeddable {
     return $flags;
   }
 
-  /**
-   * Parses the given flags type to an integer
-   * 
-   * @param  int|string|BitMask $flags the flags
-   * @return int[] parsed flags value
-   */
-  public static function toBitArray($flags) {
-    return str_split(decbin(self::parseFlagsToInt($flags)));
-  }
-
   public function equals($object): bool {
     if (!$object instanceof BitMask) {
       return $this->toInt() === static::parseFlagsToInt($object);
@@ -233,7 +235,6 @@ class BitMask implements Arrayable, Embeddable {
    * @return BitMask
    */
   public static function fromBinary(string $binary): BitMask {
-    
     return new static(bindec($binary));
   }
 
@@ -251,8 +252,45 @@ class BitMask implements Arrayable, Embeddable {
    * @param  string $hex
    * @return BitMask
    */
-  public function fromHex(string $hex): BitMask {
+  public static function fromHex(string $hex): BitMask {
+    $v = str_replace(['#', '0x'], '', $hex);
+    return new static(hexdec($v));
+  }
+
+  /**
+   * 
+   * @param  string $hex
+   * @return BitMask
+   */
+  public function from($hex): BitMask {
+    if (is_string($hex)) {
+      
+    }
     return new static(hexdec($hex));
+  }
+
+  public function rewind(): void {
+    $this->index = 0;
+  }
+
+  public function current(): int {
+    return $this->get($this->index);
+  }
+
+  public function key(): int {
+    return $this->index;
+  }
+
+  public function next(): void {
+    $this->index++;
+  }
+
+  public function valid(): bool {
+    return $this->index < $this->length();
+  }
+
+  public function length(): int {
+    return PHPConfig::getBitVersion();
   }
 
 }

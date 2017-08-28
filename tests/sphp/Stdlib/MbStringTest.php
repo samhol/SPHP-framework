@@ -48,7 +48,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
     $count = mb_strlen($plain, $encoding);
     $string = MbString::create($empty);
     echo "obj:'$string', raw:'$plain'\n";
-    
+
     var_dump($string->isEmpty($empty), $count);
     $this->assertSame($string->isEmpty($empty), ($count === 0));
     $this->assertEquals($string->length($empty), $count);

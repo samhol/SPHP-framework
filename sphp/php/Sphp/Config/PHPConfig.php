@@ -17,7 +17,7 @@ namespace Sphp\Config;
 class PHPConfig {
 
   /**
-   * the config variable name value pairs container
+   * the configuration variable name value pairs container
    *
    * @var mixed[]
    */
@@ -199,12 +199,31 @@ class PHPConfig {
     return $this;
   }
 
+  /**
+   * Checks if the PHP engine is 32bit
+   * 
+   * @return bool true if the PHP engine is 32bit false otherwise
+   */
   public static function is32bit(): bool {
     return PHP_INT_SIZE === 4;
   }
 
-
+  /**
+   * Checks if the PHP engine is 64bit
+   * 
+   * @return bool true if the PHP engine is 64bit false otherwise
+   */
   public static function is64bit(): bool {
     return PHP_INT_SIZE === 8;
   }
+
+  /**
+   * Returns the bit version of the PHP engine
+   * 
+   * @return int the bit version of the PHP engine
+   */
+  public static function getBitVersion(): int {
+    return PHP_INT_SIZE * 8;
+  }
+
 }
