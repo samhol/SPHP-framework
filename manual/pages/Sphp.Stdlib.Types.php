@@ -5,7 +5,6 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$namespace = Apis::sami()->namespaceLink(__NAMESPACE__);
 $boolLink = Apis::phpManual()->typeLink('boolean');
 $intLink = Apis::phpManual()->typeLink('integer');
 $floatLink = Apis::phpManual()->typeLink('float');
@@ -15,10 +14,8 @@ $stringsClass = Apis::sami()->classLinker(Strings::class);
 $stringObjectClass = Apis::sami()->classLinker(MbString::class);
 $nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
-#Core objects and utlility classes
+#STANDARD LIBRARY <small>extensions for PHP core functionality</small>
 $nsbc
-This namespace contains a group of data manipulation classes for various commonly needed tasks 
-like PHP $strLink and PHP $arrLink manipulation. 
 
 ##PHP Unicode/multibyte $strLink manipulation
 
@@ -34,7 +31,7 @@ a character. This limitation of PHP affects almost all aspects of string manipul
 including (but not limited to) substring extraction, determining string lengths, 
 string splitting, shuffling etc.<cite>www.sitepoint.com</cite></blockquote>
 		
-The $stringsClass and the $stringObjectClass classes in $namespace namespace 
+The $stringsClass and the $stringObjectClass classes
 support `UTF-8` multibyte character encoding scheme. The difference between them 
 is that the $stringObjectClass is an object oriented representation of a string 
 whereas the $stringsClass is a static utility class containing methods for string 

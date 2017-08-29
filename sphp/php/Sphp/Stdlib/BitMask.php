@@ -12,6 +12,7 @@ use Iterator;
 use Sphp\Config\PHPConfig;
 use Sphp\Database\Doctrine\Embeddable;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\OutOfBoundsException;
 
 /**
  * Implements a bitmask object
@@ -24,6 +25,9 @@ use Sphp\Exceptions\RuntimeException;
  */
 class BitMask implements Arrayable, Embeddable, Iterator {
 
+  /**
+   * @var int 
+   */
   private $index = 0;
 
   /**
@@ -32,7 +36,7 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @var int
    * @Column(type = "integer")
    */
-  protected $mask = 0;
+  protected $mask;
 
   /**
    * Constructs a new instance
@@ -41,7 +45,7 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * 
    * @param int|string|BitMask $bits the flags
    */
-  public function __construct(int $bits = 0) {
+  public function __construct(int $bits = 0b0) {
     $this->mask = $bits;
   }
 
@@ -53,9 +57,8 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @param int|string|BitMask $bitmask the flags to set
    * @return $this for a fluent interface
    */
-  public function and_($bitmask) {
-    $this->mask = $this->mask & self::parseFlagsToInt($bitmask);
-    return $this;
+  public function binAND($bitmask) {
+    return new static($this->mask & self::parseFlagsToInt($bitmask));
   }
 
   /**
@@ -66,9 +69,8 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @param int|string|BitMask $bitmask the other bitmask
    * @return $this for a fluent interface
    */
-  public function or_($bitmask) {
-    $this->mask = $this->mask | self::parseFlagsToInt($bitmask);
-    return $this;
+  public function binOR($bitmask) {
+    return new static($this->mask | self::parseFlagsToInt($bitmask));
   }
 
   /**
@@ -79,9 +81,8 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @param int|string|BitMask $bitmask the flags to set
    * @return $this for a fluent interface
    */
-  public function xor_($bitmask) {
-    $this->mask = $this->mask ^ self::parseFlagsToInt($bitmask);
-    return $this;
+  public function binXOR($bitmask) {
+    return new static($this->mask ^ self::parseFlagsToInt($bitmask));
   }
 
   protected function isValidIndex($index): bool {
@@ -91,12 +92,15 @@ class BitMask implements Arrayable, Embeddable, Iterator {
   /**
    * Sets new bits at given index
    *
+   * The bit at he given index is set to `1`
+   * 
    * @param  int $index the specified index
    * @return BitMask new instance
+   * @throws OutOfBoundsException if the given index is not valid
    */
   public function set(int $index): BitMask {
     if (!$this->isValidIndex($index)) {
-      throw new RuntimeException("Index ($index) is not an integer between (0-" . (PHPConfig::getBitVersion() - 1) . ")");
+      throw new OutOfBoundsException("Index ($index) is not between (0-" . (PHPConfig::getBitVersion() - 1) . ")");
     }
     return new static($this->mask |= (1 << $index));
   }
@@ -106,18 +110,28 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    *
    * @param  int $index the specified index
    * @return int the value of the bit with the specified index
+   * @throws OutOfBoundsException if the given index is not valid
    */
   public function get(int $index): int {
+    if (!$this->isValidIndex($index)) {
+      throw new OutOfBoundsException("Index ($index) is not between (0-" . (PHPConfig::getBitVersion() - 1) . ")");
+    }
     return ($this->mask >> $index) & 1;
   }
 
   /**
-   * Returns the value of the bit with the specified index
+   * Unsets a bit at a given index
    *
+   * The bit at he given index is set to `0`
+   * 
    * @param  int $index the specified index
-   * @return int the value of the bit with the specified index
+   * @return BitMask new instance
+   * @throws OutOfBoundsException if the given index is not valid
    */
-  public function unset(int $index) {
+  public function unset(int $index): BitMask {
+    if (!$this->isValidIndex($index)) {
+      throw new OutOfBoundsException("Index ($index) is not between (0-" . (PHPConfig::getBitVersion() - 1) . ")");
+    }
     return new static($this->mask &= ~(1 << $index));
   }
 
@@ -127,11 +141,10 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * **Notes:** a string <var>$bits</var> is always trated as binary number
    *
    * @param int|string|BitMask $bits the flags unset
-   * @return $this for a fluent interface
+   * @return BitMask new instance
    */
-  public function clear(int $bits) {
-    $this->mask &= ~$bits;
-    return $this;
+  public function clear(int $bits): BitMask {
+    return new static($this->mask &= ~$bits);
   }
 
   /**
@@ -183,6 +196,15 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    */
   public function toHex(): string {
     return dechex($this->mask);
+  }
+
+  /**
+   * Returns the object as a string
+   *
+   * @return string the object as a string
+   */
+  public function binaryRepresentation(): string {
+    return str_pad("$this", PHPConfig::getBitVersion(), '0', STR_PAD_LEFT);
   }
 
   /**
@@ -269,22 +291,40 @@ class BitMask implements Arrayable, Embeddable, Iterator {
     return new static(hexdec($hex));
   }
 
-  public function rewind(): void {
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
     $this->index = 0;
   }
 
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
   public function current(): int {
     return $this->get($this->index);
   }
 
+  /**
+   * Return the key of the current element
+   * 
+   * @return int the key of the current element
+   */
   public function key(): int {
     return $this->index;
   }
 
-  public function next(): void {
+  public function next() {
     $this->index++;
   }
 
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
   public function valid(): bool {
     return $this->index < $this->length();
   }

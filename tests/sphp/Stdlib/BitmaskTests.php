@@ -124,4 +124,84 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
+
+  /**
+   * @return array
+   */
+  public function pairs(): array {
+    return [
+        [0, 0],
+        [0, 1],
+        [1, 1],
+        [0, PHP_INT_MAX],
+        [1, PHP_INT_MAX],
+        [PHP_INT_MAX, PHP_INT_MAX],
+        [0b010, 0b101],
+        [-1, 0],
+        [-1, 1],
+        [-1, -1],
+    ];
+  }
+  
+  /**
+   * @covers Sphp\Stdlib\BitMask::binAND
+   * @dataProvider pairs
+   * @param int $first
+   * @param int $second
+   */
+  public function testAND(int $first,int $second) {
+    $m1 = new BitMask($first);
+    $m2 = new BitMask($second);
+    $and = $first & $second;
+    $m1ANDm2 = $m1->binAND($m2);
+    $m2ANDm1 = $m2->binAND($m1);
+    $m1ANDsecond = $m1->binAND($second);
+    $m2ANDfirst = $m2->binAND($first);
+    $this->assertSame($and, $m1ANDm2->toInt());
+    $this->assertSame($and, $m2ANDm1->toInt());
+    $this->assertSame($and, $m1ANDsecond->toInt());
+    $this->assertSame($and, $m2ANDfirst->toInt());
+  }
+  
+  /**
+   * @covers Sphp\Stdlib\BitMask::binOR
+   * @dataProvider pairs
+   * @param int $first
+   * @param int $second
+   */
+  public function testOR(int $first,int $second) {
+    $m1 = new BitMask($first);
+    $m2 = new BitMask($second);
+    $or = $first | $second;
+    $m1ORm2 = $m1->binOR($m2);
+    $m2ORm1 = $m2->binOR($m1);
+    $m1ORsecond = $m1->binOR($second);
+    $m2ORfirst = $m2->binOR($first);
+    $this->assertSame($or, $m1ORm2->toInt());
+    $this->assertSame($or, $m2ORm1->toInt());
+    $this->assertSame($or, $m1ORsecond->toInt());
+    $this->assertSame($or, $m2ORfirst->toInt());
+  }
+
+  
+  /**
+   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @dataProvider pairs
+   * @param int $first
+   * @param int $second
+   */
+  public function testXOR(int $first,int $second) {
+    $m1 = new BitMask($first);
+    $m2 = new BitMask($second);
+    $and = $first & $second;
+    $m1XORm2 = $m1->binXOR($m2);
+    $m2XORm1 = $m2->binXOR($m1);
+    $m1XORsecond = $m1->binXOR($second);
+    $m2XORfirst = $m2->binXOR($first);
+    $this->assertSame($and, $m1XORm2->toInt());
+    $this->assertSame($and, $m2XORm1->toInt());
+    $this->assertSame($and, $m1XORsecond->toInt());
+    $this->assertSame($and, $m2XORfirst->toInt());
+  }
+
 }

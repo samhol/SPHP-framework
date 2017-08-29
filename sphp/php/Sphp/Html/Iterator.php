@@ -119,7 +119,7 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
    * 
    * @return boolean current iterator position is valid
    */
-  public function valid() {
+  public function valid(): bool {
     return false !== current($this->components);
   }
 
