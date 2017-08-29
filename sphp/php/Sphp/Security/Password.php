@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Security;
+namespace Sphp\Security;
 
 use Sphp\Db\Objects\Embeddable;
 
@@ -54,7 +54,7 @@ class Password implements PasswordInterface, Embeddable {
     return password_verify((string) $password, $this->getHash());
   }
 
-  public function getHash() {
+  public function getHash() : string{
     return $this->hash;
   }
 

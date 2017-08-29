@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Core\Security;
+namespace Sphp\Security;
 
 /**
  * Defines a verifiable password
@@ -22,7 +22,7 @@ interface PasswordInterface {
    * 
    * @return string the hashed password string
    */
-  public function getHash();
+  public function getHash(): string;
 
   /**
    * Verifies that a plain password matches the instance

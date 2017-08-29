@@ -124,7 +124,6 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     }
   }
 
-
   /**
    * @return array
    */
@@ -142,14 +141,14 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
         [-1, -1],
     ];
   }
-  
+
   /**
    * @covers Sphp\Stdlib\BitMask::binAND
    * @dataProvider pairs
    * @param int $first
    * @param int $second
    */
-  public function testAND(int $first,int $second) {
+  public function testAND(int $first, int $second) {
     $m1 = new BitMask($first);
     $m2 = new BitMask($second);
     $and = $first & $second;
@@ -162,14 +161,14 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame($and, $m1ANDsecond->toInt());
     $this->assertSame($and, $m2ANDfirst->toInt());
   }
-  
+
   /**
    * @covers Sphp\Stdlib\BitMask::binOR
    * @dataProvider pairs
    * @param int $first
    * @param int $second
    */
-  public function testOR(int $first,int $second) {
+  public function testOR(int $first, int $second) {
     $m1 = new BitMask($first);
     $m2 = new BitMask($second);
     $or = $first | $second;
@@ -183,25 +182,65 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame($or, $m2ORfirst->toInt());
   }
 
-  
   /**
    * @covers Sphp\Stdlib\BitMask::binXOR
    * @dataProvider pairs
    * @param int $first
    * @param int $second
    */
-  public function testXOR(int $first,int $second) {
+  public function testXOR(int $first, int $second) {
     $m1 = new BitMask($first);
     $m2 = new BitMask($second);
-    $and = $first & $second;
+    $xor = $first ^ $second;
     $m1XORm2 = $m1->binXOR($m2);
     $m2XORm1 = $m2->binXOR($m1);
     $m1XORsecond = $m1->binXOR($second);
     $m2XORfirst = $m2->binXOR($first);
-    $this->assertSame($and, $m1XORm2->toInt());
-    $this->assertSame($and, $m2XORm1->toInt());
-    $this->assertSame($and, $m1XORsecond->toInt());
-    $this->assertSame($and, $m2XORfirst->toInt());
+    $this->assertSame($xor, $m1XORm2->toInt());
+    $this->assertSame($xor, $m2XORm1->toInt());
+    $this->assertSame($xor, $m1XORsecond->toInt());
+    $this->assertSame($xor, $m2XORfirst->toInt());
+  }
+
+  /**
+   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @dataProvider pairs
+   * @param int $first
+   * @param int $second
+   */
+  public function testContains(int $first, int $second) {
+    $m1 = new BitMask($first);
+    $m2 = new BitMask($second);
+    $l = ($first & $second) === $second;
+    $r = ($first & $second) === $first;
+    $this->assertSame($r, $m2->contains($m1));
+    $this->assertSame($l, $m1->contains($m2));
+  }
+
+  /**
+   * @return array
+   */
+  public function equalPairs(): array {
+    return [
+        [0, '0b0'],
+        [0, '0000'],
+        [0, '0x0'],
+        [1, '0x0001'],
+        [0xf, '0x00f'],
+        [1, '0b1'],
+        [-1, '-1'],
+        [-1, new BitMask(-1)],
+    ];
+  }
+
+  /**
+   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @dataProvider pairs
+   * @param int $a
+   * @param mixed $b
+   */
+  public function equalsTest(int $a, $b) {
+    $this->assertTrue((new BitMask($a))->equals($b));
   }
 
 }
