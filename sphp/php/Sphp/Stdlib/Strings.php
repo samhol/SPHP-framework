@@ -295,7 +295,7 @@ class Strings {
    *                Defaults to `mb_internal_encoding()`
    * @return string|null the character at $index or null if the index does not exist
    */
-  public static function charAt(string $string, int $index, $encoding = null) {
+  public static function charAt(string $string, int $index, string $encoding = null) {
     $length = static::length($string, $encoding);
     $result = null;
     if ($index >= 0 && $length > $index) {
@@ -389,20 +389,6 @@ class Strings {
     return mb_strlen($str, self::getEncoding($encoding));
   }
 
-  /**
-   * Determines if the string length is on a given closed interval
-   *
-   * @param  string $str checked string
-   * @param  int $lower lower limit
-   * @param  int $upper upper limit
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return boolean true if the string length is on a given closed interval, false otherwise.
-   */
-  public static function lengthBetween(string $str, int $lower, int $upper, $encoding = null): bool {
-    $length = self::length($str, $encoding);
-    return ($lower <= $length && $length <= $upper);
-  }
 
   /**
    * Checks whether or not the input string contains only alphabetic chars
@@ -520,16 +506,6 @@ class Strings {
   }
 
   /**
-   * Checks whether or not the input string is serialized
-   *
-   * @param  string $string checked string
-   * @return bool returns true if the string is serialized, false otherwise
-   */
-  public static function isSerialized(string $string): bool {
-    return $string === 'b:0;' || @unserialize($string) !== false;
-  }
-
-  /**
    * Returns a random string for non cryptographic purposes
    *
    * @param  int $length the length of the string
@@ -604,45 +580,6 @@ class Strings {
     return htmlentities($string, $flags, static::getEncoding($encoding));
   }
 
-  /**
-   * Converts each tab in the string to given number of spaces
-   * 
-   * By default, each tab is converted to `4` consecutive spaces.
-   *
-   * @param  string $string the input string
-   * @param  int $tabLength Number of spaces to replace each tab with
-   * @return string a string whose tabs are switched to spaces
-   */
-  public static function toSpaces(string $string, int $tabLength = 4): string {
-    $spaces = str_repeat(' ', $tabLength);
-    return str_replace('\t', $spaces, $string);
-  }
-
-  /**
-   * Converts each occurrence of given consecutive number of spaces  to a tab
-   * 
-   * By default, each `4` consecutive spaces are converted to a tab.
-   *
-   * @param  string $string the input string
-   * @param  int $tabLength Number of spaces to replace with a tab
-   * @return string A string whose spaces are switched to tabs
-   */
-  public static function toTabs(string $string, int $tabLength = 4): string {
-    $spaces = str_repeat(' ', $tabLength);
-    return str_replace($spaces, "\t", $string);
-  }
-
-  /**
-   * Converts the first character of each word in the string to uppercase
-   *
-   * @param  string $string the input string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
-   * @return string input string with all characters being title-cased
-   */
-  public static function toTitleCase(string $string, $encoding = null): string {
-    return \mb_convert_case($string, \MB_CASE_TITLE, static::getEncoding($encoding));
-  }
 
   /**
    * Forces a string representation from any type of input parameter
@@ -667,6 +604,36 @@ class Strings {
     }
   }
 
+  /**
+   * Parses the given flags type to an integer
+   * 
+   * @param  int|string|BitMask $flags the flags
+   * @return int parsed flags value
+   * @throws InvalidArgumentException if the value given can not be parsed
+   */
+  public static function parseInt(string $flags): int {
+    if (static::isHexadecimal($flags)) {
+      return hexdec($flags);
+    }
+    if (!is_int($flags)) {
+      if (is_string($flags)) {
+        $obj = new MbString($flags);
+        if ($obj->startsWith('#') || $obj->startsWith('0x')) {
+          $flags = str_replace(['#', '0x'], '', $flags);
+          return hexdec($flags);
+        } else {
+          $flags = intval($flags);
+        }
+      } else if (is_scalar($flags)) {
+        $flags = intval($flags);
+      } else if ($flags instanceof BitMask) {
+        $flags = $flags->toInt();
+      } else {
+        throw new InvalidArgumentException("Value cannot be parsed to integer");
+      }
+    }
+    return $flags;
+  }
   /**
    * 
    * @param  string $format

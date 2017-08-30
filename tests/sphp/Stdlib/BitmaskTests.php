@@ -221,26 +221,43 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
    * @return array
    */
   public function equalPairs(): array {
+    echo 'intval of true: ' . intval(true);
     return [
+        [0, false],
+        [1, true],
+        [4, 4.2],
         [0, '0b0'],
-        [0, '0000'],
+        [42, '042'],
+        [42, '+42'],
         [0, '0x0'],
-        [1, '0x0001'],
-        [0xf, '0x00f'],
+        [1, '0x1'],
+        [0xf, '0xf'],
+        [0x1f, '#1f'],
         [1, '0b1'],
         [-1, '-1'],
+        [2147483647, '420000000000000000000'],
         [-1, new BitMask(-1)],
     ];
   }
 
   /**
-   * @covers Sphp\Stdlib\BitMask::binXOR
-   * @dataProvider pairs
+   * @covers Sphp\Stdlib\BitMask::parseInt
+   * @dataProvider equalPairs
    * @param int $a
    * @param mixed $b
    */
-  public function equalsTest(int $a, $b) {
-    $this->assertTrue((new BitMask($a))->equals($b));
+  public function testparseInt(int $a, $b) {
+    $this->assertSame($a, BitMask::parseInt($b), "b: '$b' cannot be converted to $a");
+  }
+
+  /**
+   * @covers Sphp\Stdlib\BitMask::binXOR
+   * @dataProvider equalPairs
+   * @param int $a
+   * @param mixed $b
+   */
+  public function testEquals(int $a, $b) {
+    $this->equals(new BitMask($a), BitMask::from($b));
   }
 
 }

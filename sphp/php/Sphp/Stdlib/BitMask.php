@@ -11,7 +11,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
 use Sphp\Config\PHPConfig;
 use Sphp\Database\Doctrine\Embeddable;
-use Sphp\Exceptions\RuntimeException;
+use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Stdlib\Strings;
 
@@ -235,6 +235,14 @@ class BitMask implements Arrayable, Embeddable, Iterator {
   public static function parseInt($flags): int {
     if (!is_int($flags)) {
       if (is_string($flags)) {
+        $obj = new MbString($flags);
+        if ($obj->startsWith('#') || $obj->startsWith('0x')) {
+          $flags = str_replace(['#', '0x'], '', $flags);
+          return hexdec($flags);
+        } else {
+          $flags = intval($flags);
+        }
+      } else if (is_scalar($flags)) {
         $flags = intval($flags);
       } else if ($flags instanceof BitMask) {
         $flags = $flags->toInt();
@@ -246,7 +254,11 @@ class BitMask implements Arrayable, Embeddable, Iterator {
   }
 
   public function equals($object): bool {
-    return $this->toInt() === static::parseInt($object);
+    try {
+      return $this->toInt() === static::parseInt($object);
+    } catch (\Exception $ex) {
+      return false;
+    }
   }
 
   public static function fromString(string $value) {
@@ -288,14 +300,11 @@ class BitMask implements Arrayable, Embeddable, Iterator {
 
   /**
    * 
-   * @param  string $hex
+   * @param  mixed $hex
    * @return BitMask
    */
   public function from($hex): BitMask {
-    if (is_string($hex)) {
-      
-    }
-    return new static(hexdec($hex));
+    return new static(static::parseInt($hex));
   }
 
   /**

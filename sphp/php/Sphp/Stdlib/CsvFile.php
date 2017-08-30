@@ -209,7 +209,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return boolean true if not reached EOF, false otherwise.
    */
-  public function valid() {
+  public function valid(): bool {
     return $this->file->valid();
   }
 
