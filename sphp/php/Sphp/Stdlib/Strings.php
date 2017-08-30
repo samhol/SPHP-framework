@@ -275,7 +275,7 @@ class Strings {
         if (static::endsWith($haystack, $value)) {
           return true;
         }
-      } 
+      }
       return false;
     }
     if ($needle === '') {
@@ -389,7 +389,6 @@ class Strings {
     return mb_strlen($str, self::getEncoding($encoding));
   }
 
-
   /**
    * Checks whether or not the input string contains only alphabetic chars
    * 
@@ -430,12 +429,14 @@ class Strings {
    * Checks whether or not the input string contains only hexadecimal chars
    *
    * @param  string $string checked string
-   * @param  string|null $encoding the character encoding parameter;
-   *                Defaults to `mb_internal_encoding()`
    * @return bool returns true if the string contains only hexadecimal chars, false otherwise
    */
-  public static function isHexadecimal(string $string, $encoding = null): bool {
-    return self::match($string, '/^[[:xdigit:]]*$/', $encoding);
+  public static function isHexadecimal(string $string): bool {
+    return self::match($string, '/^[[:xdigit:]]*$/');
+  }
+
+  public static function isBinary(string $string): bool {
+    return self::match($string, '/^[0-1]+$/');
   }
 
   /**
@@ -580,7 +581,6 @@ class Strings {
     return htmlentities($string, $flags, static::getEncoding($encoding));
   }
 
-
   /**
    * Forces a string representation from any type of input parameter
    *
@@ -613,7 +613,9 @@ class Strings {
    */
   public static function parseInt(string $flags): int {
     if (static::isHexadecimal($flags)) {
-      return hexdec($flags);
+      $result = hexdec($flags);
+    }if (static::isBinary($flags)) {
+      $result = bindec($flags);
     }
     if (!is_int($flags)) {
       if (is_string($flags)) {
@@ -634,6 +636,7 @@ class Strings {
     }
     return $flags;
   }
+
   /**
    * 
    * @param  string $format
