@@ -64,11 +64,11 @@ class Slider extends AbstractSlider {
   }
 
   /**
-   * Returns the actual (hidden) form element containg the value of the slider
+   * Returns the actual (hidden) form element containing the value of the slider
    * 
-   * @return HiddenInput the actual (hidden) form element containg the value of the slider
+   * @return HiddenInput the actual (hidden) form element containing the value of the slider
    */
-  private function getInput() {
+  private function getInput():HiddenInput {
     return $this->input;
   }
 

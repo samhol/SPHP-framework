@@ -84,14 +84,14 @@ class Parser {
     $fullPath = Filesystem::getFullPath($filepath);
     if (!file_exists($fullPath)) {
       throw new RuntimeException(sprintf(
-              'Filename "%s" cannot be found relative to the working directory', $filepath
+                      'Filename "%s" cannot be found relative to the working directory', $filepath
       ));
     }
     if ($extension === null) {
       $pathinfo = pathinfo($fullPath);
       if (!isset($pathinfo['extension'])) {
         throw new RuntimeException(sprintf(
-                'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
+                        'Filename "%s" is missing an extension and cannot be auto-detected', $filepath
         ));
       }
       $extension = strtolower($pathinfo['extension']);

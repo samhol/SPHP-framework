@@ -111,13 +111,13 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   /**
    * Sets a default URL and a default target for all links on a page
    *
-   * @param  string|URL $baseAddr the base URL for all relative URLs in the page
+   * @param  string $baseAddr the base URL for all relative URLs in the page
    * @param  string $target the default target for all hyperlinks and forms in the page
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/tag_base.asp  w3schools HTML API link
    */
-  public function setBaseAddr($baseAddr, string $target = '_self') {
-    if (!Strings::isEmpty($baseAddr) && !Strings::isEmpty($target)) {
+  public function setBaseAddr(string $baseAddr, string $target = '_self') {
+    if ($baseAddr !== null && $target !== null) {
       $this->base = new Base($baseAddr, $target);
     } else {
       $this->unsetBaseAddress();

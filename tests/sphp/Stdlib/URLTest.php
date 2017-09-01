@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-class URLTest extends \PHPUnit_Framework_TestCase {
+class URLTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var URL
@@ -303,6 +303,7 @@ class URLTest extends \PHPUnit_Framework_TestCase {
    * @covers Sphp\Net\URL::getCurrent
    */
   public function testGetCurrent() {
+    print_r($_SERVER);
     $current = URL::getCurrent();
     $another = URL::getCurrent();
     var_dump("$another");

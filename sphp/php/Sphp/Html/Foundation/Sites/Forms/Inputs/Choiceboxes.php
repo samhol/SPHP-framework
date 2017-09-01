@@ -14,7 +14,6 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
 use Sphp\Html\Container;
 use Sphp\Html\Forms\Inputs\Choicebox;
 use Sphp\Html\Forms\Label;
-use Sphp\Stdlib\Strings;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManager;
 use Sphp\Html\Foundation\Sites\Grids\ColumnLayoutManagerInterface;
 
@@ -71,7 +70,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param scalar[] $values
    * @param mixed $legend
    */
-  public function __construct($name = null, array $values = [], $legend = null) {
+  public function __construct(string $name = null, array $values = [], $legend = null) {
     parent::__construct("fieldset");
     $this->legend = new Legend();
     $this->boxes = new Container();
@@ -183,7 +182,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @return boolean true if the input has a name , otherwise false
    */
   public function isNamed(): bool {
-    return !Strings::isEmpty($this->name);
+    return $this->name !== null;
   }
 
   /**

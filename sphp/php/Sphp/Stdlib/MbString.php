@@ -9,7 +9,7 @@ namespace Sphp\Stdlib;
 
 use Countable;
 use ArrayAccess;
-use Sphp\Exceptions\InvalidArgumentException;
+use Iterator;
 use Sphp\Exceptions\OutOfBoundsException;
 use Sphp\Exceptions\BadMethodCallException;
 use Sphp\Stdlib\Datastructures\Arrayable;
@@ -22,7 +22,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MbString implements Countable, \Iterator, Arrayable, ArrayAccess {
+class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
 
   /**
    * @var int
@@ -154,6 +154,42 @@ class MbString implements Countable, \Iterator, Arrayable, ArrayAccess {
   }
 
   /**
+   * Checks whether the string contains any of the needles
+   *
+   * @return bool whether the string contains any of the needles
+   */
+  public static function containsAny(array $needles): bool {
+    if (empty($needles)) {
+      return false;
+    } else {
+      foreach ($needles as $needle) {
+        if ($this->contains((string) $needle)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
+  /**
+   * Checks whether the string contains all needles
+   *
+   * @return bool whether the string contains all needles
+   */
+  public static function containsAll(array $needles): bool {
+    if (empty($needles)) {
+      return false;
+    } else {
+      foreach ($needles as $needle) {
+        if (!$this->contains((string) $needle)) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  /**
    * Tests whether the string object contains the substring or not
    *
    * @param  string $needle the substring to search for
@@ -185,7 +221,7 @@ class MbString implements Countable, \Iterator, Arrayable, ArrayAccess {
   }
 
   /**
-   * Returns a string with whitespace removed from the start and end of the string 
+   * Returns a new object with whitespace removed from the start and end of the string 
    * 
    * Supports the removal of unicode whitespace. Accepts an optional
    * string of characters to strip instead of the defaults.
@@ -280,6 +316,33 @@ class MbString implements Countable, \Iterator, Arrayable, ArrayAccess {
   public function toTitleCase(): MbString {
     $titleCase = \mb_convert_case($this->str, \MB_CASE_TITLE, $this->encoding);
     return new static($titleCase, $this->encoding);
+  }
+
+  /**
+   * Checks whether the string contains only whitespace chars
+   *
+   * @return bool returns true if the string contains only whitespace chars, false otherwise
+   */
+  public function isBlank(): bool {
+    return $this->match('/^[[:space:]]{1,}$/');
+  }
+
+  /**
+   * Checks whether the string contains only hexadecimal chars
+   *
+   * @return bool returns true if the string contains only hexadecimal chars, false otherwise
+   */
+  public function isHexadecimal(): bool {
+    return $this->match('/^(#|0x){0,1}[[:xdigit:]]{1,}$/');
+  }
+
+  /**
+   * Checks whether the string contains only binary chars
+   *
+   * @return bool returns true if the string contains only binary chars, false otherwise
+   */
+  public function isBinary(): bool {
+    return $this->match('/^[0-1]+$/');
   }
 
   /**

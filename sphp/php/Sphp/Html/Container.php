@@ -66,11 +66,17 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
   }
 
   public function append($content) {
+    if (is_array($content)) {
+      foreach ($content as $cont) {
+        $this->append($cont);
+      }
+    }
     $this->components[] = $content;
     return $this;
   }
 
   public function prepend($content) {
+    
     array_unshift($this->components, $content);
     return $this;
   }

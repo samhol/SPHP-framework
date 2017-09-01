@@ -13,7 +13,6 @@ use Sphp\Config\PHPConfig;
 use Sphp\Database\Doctrine\Embeddable;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
-use Sphp\Stdlib\Strings;
 
 /**
  * Implements a bitmask object
@@ -44,7 +43,7 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    *
    * **Notes:** a string <var>$bits</var> is always treated as binary number
    * 
-   * @param int|string|BitMask $bits the flags
+   * @param int $bits the flags
    */
   public function __construct(int $bits = 0b0) {
     $this->mask = $bits;

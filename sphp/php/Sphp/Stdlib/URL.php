@@ -176,7 +176,7 @@ class URL implements Arrayable, IteratorAggregate {
    */
   public function getHost($encode = false): string {
     $val = $this->components['host'];
-    if ($encode && !Strings::isEmpty($val) && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
+    if ($encode && $val !== null && !Strings::match($val, '!^(\[[\da-f.:]+\]])|([\da-f.:]+)$!ui')) {
       Strings::htmlEncode($val);
     }
     return $val;
@@ -210,7 +210,7 @@ class URL implements Arrayable, IteratorAggregate {
    */
   public function getUser(bool $encode = false): string {
     $val = strval($this->components['user']);
-    if ($encode && !Strings::isEmpty($val)) {
+    if ($encode && $val !== null) {
       $val = rawurlencode($val);
     }
     return $val;
@@ -283,7 +283,7 @@ class URL implements Arrayable, IteratorAggregate {
    */
   public function getPath($encode = false): string {
     $val = $this->components['path'];
-    if ($encode && !Strings::isEmpty($val)) {
+    if ($encode && $val !== null) {
       $val = preg_replace('!%2F!ui', '/', rawurlencode($val));
     }
     return $val;

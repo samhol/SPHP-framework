@@ -10,7 +10,6 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\Lists\Ul;
 use Sphp\Html\Forms\Inputs\InputTag as InputTag;
-use Sphp\Stdlib\Strings;
 use Sphp\Html\Forms\Label;
 
 /**
@@ -59,7 +58,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @param scalar[] $values
    * @param mixed $label
    */
-  public function __construct($type, $name = null, array $values = []) {
+  public function __construct(string $type, string $name = null, array $values = []) {
     $this->type = $type;
     parent::__construct('fieldset');
     $this->boxCont = new Ul();
@@ -130,7 +129,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
     foreach ($this->options as $box) {
       $box->setName($name);
@@ -147,7 +146,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return boolean true if the input has a name , otherwise false
    */
   public function isNamed(): bool {
-    return !Strings::isEmpty($this->name);
+    return $this->name !== null;
   }
 
   /**

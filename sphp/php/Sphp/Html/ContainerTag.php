@@ -33,7 +33,7 @@ class ContainerTag extends AbstractContainerTag {
    * @throws InvalidArgumentException if the tagname is not valid
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
-  public function __construct($tagName, $content = null) {
+  public function __construct(string $tagName, $content = null) {
     parent::__construct($tagName);
     if ($content !== null) {
       $this->append($content);

@@ -8,7 +8,6 @@
 namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Attributes\AttributeManager;
-use Sphp\Stdlib\Strings;
 
 /**
  * Trait implements parts of the {@link InputInterface}
@@ -55,7 +54,7 @@ trait InputTrait {
    * @return boolean true if the input has a name, otherwise false
    */
   public function isNamed(): bool {
-    return $this->attrs()->exists('name') && !Strings::isEmpty($this->getName());
+    return $this->attrs()->exists('name');
   }
 
   /**

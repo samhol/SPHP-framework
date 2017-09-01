@@ -12,9 +12,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    */
   public function emptyStrings() {
     return [
-        [""],
-        [null],
-        [false]
+        [""]
     ];
   }
 
@@ -150,35 +148,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
     $this->assertFalse(Strings::endsWith($haystack, $needle));
   }
 
-  /**
-   * 
-   * @return array
-   */
-  public function ordinalizeData() {
-    $nums = range(4, 20);
-    foreach ($nums as $num) {
-      echo "$num\n";
-      $arr[] = [$num, $num . "th"];
-      $arr[] = ["$num", $num . "th"];
-    }
-    $arr[] = ["-2", "-2nd"];
-    $arr[] = [1, "1st"];
-    $arr[] = ["1", "1st"];
-    $arr[] = [2, "2nd"];
-    $arr[] = ["2", "2nd"];
-    $arr[] = ["3", "3rd"];
-    return $arr;
-  }
 
-  /**
-   * @covers Sphp\Stdlib\Strings::startsWith
-   * @dataProvider ordinalizeData
-   * @param string $string
-   * @param string $expected
-   */
-  public function testOrdinalize($string, $expected) {
-    //$this->assertEquals(Strings::ordinalize($string), $expected);
-  }
 
   /**
    * 
