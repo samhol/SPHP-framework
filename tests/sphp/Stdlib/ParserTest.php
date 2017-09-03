@@ -5,7 +5,7 @@ namespace Sphp\Stdlib;
 use Exception;
 use RuntimeException;
 
-class ParserTest extends \PHPUnit_Framework_TestCase {
+class ParserTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
@@ -29,7 +29,6 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
         ['mdtext', true],
         ['text', true],
         ['Rmd', true],
-        [null, false],
         [1, false],
         ['foo', false]
     ];
@@ -49,7 +48,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
    * 
    * @return array
    */
-  public function filepathMap() {
+  public function filepathMap(): array {
     $dir = __DIR__ . '\files\\';
     $map = [
         [$dir . 'test.md', '<h1 foo="bar">test</h1>'],
@@ -72,9 +71,9 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider filepathMap
    * @param string $file
-   * @param boolean $expected
+   * @param mixed $expected
    */
-  public function testFromString($file, $expected) {
+  public function testFromString(string $file, $expected) {
     $raw = file_get_contents($file);
     $type = pathinfo($file, PATHINFO_EXTENSION);
     $this->assertSame(Parser::fromString($raw, $type), $expected);

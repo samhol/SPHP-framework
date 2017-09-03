@@ -6,7 +6,17 @@ $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #Security solutions
 $ns
-This namespace provides classes for implementing networking.
+        
+Security is a process, not a product, and adopting a sound approach to security 
+during the process of application development will allow you to produce tighter, 
+more robust code.
+        
+Good articles about PHP web application security:
+
+* [PHP manual](http://php.net/manual/en/security.php){target="_blank"}
+* [Sitepoint](https://www.sitepoint.com/php-security-blunders/){target="_blank"}
+        
+##Input validation
 
 MD
 );

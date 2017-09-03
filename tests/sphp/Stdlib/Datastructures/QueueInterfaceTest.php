@@ -4,7 +4,7 @@ namespace Sphp\Stdlib\Datastructures;
 
 use Exception;
 
-abstract class QueueInterfaceTest extends \PHPUnit_Framework_TestCase {
+abstract class QueueInterfaceTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var QueueInterface

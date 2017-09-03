@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-class AbstractRowTest extends \PHPUnit_Framework_TestCase {
+class AbstractRowTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Column

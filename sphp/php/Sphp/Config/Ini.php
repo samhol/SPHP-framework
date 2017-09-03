@@ -9,6 +9,7 @@ namespace Sphp\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Arrays;
+use Sphp\Exceptions\OutOfRangeException;
 
 /**
  * Implements class for managing PHP settings
@@ -46,25 +47,41 @@ class Ini implements Arrayable {
    * **Not all the available options can be changed**
    * 
    * @param  string $name the name of the option
-   * @param  string $value the new value for the option
+   * @param  scalar $value the new value for the option
    * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.ini-set.php ini_set
    * @link   http://php.net/manual/en/ini.list.php list of all available options
    */
   public function set(string $name, $value) {
-    $this->ini[$name] = $value;
+    $this->ini[$name] = (string) $value;
     return $this;
+  }
+
+  /**
+   * Checks whether the option is set in this configuration object
+   * 
+   * 
+   * @param  string $name the name of the option
+   * @return boolean true if the ini variable is set in this configuration
+   * @link   http://php.net/manual/en/function.ini-set.php ini_set
+   * @link   http://php.net/manual/en/ini.list.php list of all available options
+   */
+  public function exists(string $name): bool {
+    return array_key_exists($name, $this->ini);
   }
 
   /**
    * Returns the current value of a configuration option
    * 
    * @param  string $varname the name of the option
-   * @return string  the value of the option
+   * @return string the value of the option
    * @link   http://php.net/manual/en/function.ini-get.php ini_get
+   * @throws OutOfRangeException
    */
   public function get(string $varname) {
-    return $this->ini[$varname];
+    if ($this->exists($varname)) {
+      return $this->ini[$varname];
+    }throw new OutOfRangeException();
   }
 
   /**

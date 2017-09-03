@@ -2,7 +2,7 @@
 
 namespace Sphp\Db;
 
-class DbObjectTest extends \PHPUnit_Framework_TestCase {
+class DbObjectTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Db

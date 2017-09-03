@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-abstract class AbstractFilterTest extends \PHPUnit_Framework_TestCase {
+abstract class AbstractFilterTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @var AnythingToIntegerFilter

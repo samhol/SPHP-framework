@@ -2,7 +2,7 @@
 
 use Sphp\Html\Attributes\AttributeInterface;
 
-abstract class AttributeObjectTest extends \PHPUnit_Framework_TestCase {
+abstract class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

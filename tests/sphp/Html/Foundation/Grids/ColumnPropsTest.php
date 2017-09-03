@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-class ColumnPropsTest extends \PHPUnit_Framework_TestCase {
+class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Column

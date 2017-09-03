@@ -6,7 +6,7 @@ require_once 'GettextDataTrait.php';
 
 use Sphp\I18n\Gettext\PluralGettextData;
 
-class MessageListTests extends \PHPUnit_Framework_TestCase {
+class MessageListTests extends \PHPUnit\Framework\TestCase {
 
   use GettextDataTrait;
 

@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
 
-class ColumnLayoutPropertiesTest extends \PHPUnit_Framework_TestCase {
+class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var ColumnLayoutManager

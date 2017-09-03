@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-class OrdinalizerTest extends \PHPUnit_Framework_TestCase {
+class OrdinalizerTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

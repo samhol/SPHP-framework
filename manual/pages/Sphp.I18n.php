@@ -69,5 +69,5 @@ The $calendar class.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/I18n/Calendar.php", "text", false);
+CodeExampleBuilder::visualize('Sphp/I18n/Calendar.php', 'text', false);
 

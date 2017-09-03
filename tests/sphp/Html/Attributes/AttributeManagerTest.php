@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-class AttributeManagerTest extends \PHPUnit_Framework_TestCase {
+class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

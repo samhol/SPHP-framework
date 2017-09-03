@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core\Security;
+namespace Sphp\Security;
 
 $password1 = Password::fromPassword('password');
 $hash1 = $password1->getHash();

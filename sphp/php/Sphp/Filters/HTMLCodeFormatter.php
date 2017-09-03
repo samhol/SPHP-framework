@@ -23,7 +23,6 @@ use Gajus\Dindent\Indenter;
 class HTMLCodeFormatter extends AbstractFilter {
 
   /**
-   *
    * @var Indenter 
    */
   private static $formatter;

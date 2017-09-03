@@ -2,7 +2,7 @@
 
 namespace Sphp\Validators;
 
-class InCollectionValidatorTest extends \PHPUnit_Framework_TestCase {
+class InCollectionValidatorTest extends \PHPUnit\Framework\TestCase {
 
   public function arrayData() {
     $data = [];

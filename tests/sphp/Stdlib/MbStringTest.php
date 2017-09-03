@@ -2,8 +2,6 @@
 
 namespace Sphp\Stdlib;
 
-/**
- */
 class MbStringTest extends \PHPUnit\Framework\TestCase {
 
   /**
@@ -126,8 +124,7 @@ class MbStringTest extends \PHPUnit\Framework\TestCase {
     $string = MbString::create($haystack);
     $this->assertTrue($string->endsWith($needle));
   }
-  
-  
+
   /**
    * @covers Sphp\Stdlib\Strings::startsWith
    * @dataProvider endsWith

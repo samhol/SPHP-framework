@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-class CollectionTest extends \PHPUnit_Framework_TestCase {
+class CollectionTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Collection

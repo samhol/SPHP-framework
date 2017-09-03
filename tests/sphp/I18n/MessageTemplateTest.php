@@ -4,7 +4,7 @@ namespace Sphp\I18n;
 
 use Sphp\I18n\Gettext\PoFileIterator;
 
-class MessageTemplateTest extends \PHPUnit_Framework_TestCase {
+class MessageTemplateTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

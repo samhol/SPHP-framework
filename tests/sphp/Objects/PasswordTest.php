@@ -2,7 +2,7 @@
 
 namespace Sphp\Core\Security;
 
-class PasswordTest extends \PHPUnit_Framework_TestCase {
+class PasswordTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 

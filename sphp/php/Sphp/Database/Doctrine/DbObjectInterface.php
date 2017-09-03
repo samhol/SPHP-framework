@@ -21,6 +21,14 @@ use Doctrine\ORM\EntityManagerInterface;
 interface DbObjectInterface extends ArrayableObjectInterface {
 
   /**
+   * Resets all the member values from a given raw data source
+   *
+   * @param  mixed[] $data raw source data
+   * @return $this for a fluent interface
+   */
+  public function fromArray(array $data = []);
+
+  /**
    * Inserts the user as a new instance to the database
    *
    * @param  EntityManagerInterface $em the entity manager

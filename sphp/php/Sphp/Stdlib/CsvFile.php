@@ -86,7 +86,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return string the field delimiter (one character only)
    */
-  public function getFilename() {
+  public function getFilename(): string {
     return $this->filename;
   }
 
@@ -95,7 +95,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return string the field escape character (one character only)
    */
-  public function getDelimiter() {
+  public function getDelimiter(): string {
     return $this->delimiter;
   }
 
@@ -104,7 +104,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return string the field enclosure character (one character only)
    */
-  public function getEnclosure() {
+  public function getEnclosure(): string {
     return $this->enclosure;
   }
 
@@ -113,7 +113,7 @@ class CsvFile implements Arrayable, \Iterator {
    * 
    * @return string the field escape character (one character only)
    */
-  public function getEscape() {
+  public function getEscape(): string {
     return $this->escape;
   }
 
@@ -155,7 +155,7 @@ class CsvFile implements Arrayable, \Iterator {
   /**
    * Returns the header row (first row) of the CSV file
    * 
-   * @return string[]indexed array containing the fields of the header row
+   * @return string[] indexed array containing the fields of the header row
    * @see    http://php.net/manual/en/splfileobject.fgetcsv.php
    */
   public function getHeaderRow() {

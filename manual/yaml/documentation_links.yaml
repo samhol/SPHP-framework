@@ -8,6 +8,8 @@ items:
       href: Sphp.Config
     - link: Error configuration
       href: Sphp.Config.ErrorHandling
+    - link: Web application Security
+      href: Sphp.Security
     - menu: Standard library
       items:
       - link: Introduction

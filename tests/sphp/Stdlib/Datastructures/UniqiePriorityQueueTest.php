@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib\Datastructures;
 
-class UniqiePriorityQueueTest extends \PHPUnit_Framework_TestCase {
+class UniqiePriorityQueueTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var UniquePriorityQueue

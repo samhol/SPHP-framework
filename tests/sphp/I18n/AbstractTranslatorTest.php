@@ -4,7 +4,7 @@ namespace Sphp\I18n;
 
 require_once 'GettextDataTrait.php';
 
-abstract class AbstractTranslatorTest extends \PHPUnit_Framework_TestCase {
+abstract class AbstractTranslatorTest extends \PHPUnit\Framework\TestCase {
 
   use GettextDataTrait;
 

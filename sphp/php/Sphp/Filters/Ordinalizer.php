@@ -1,7 +1,7 @@
 <?php
 
 /**
- * IntegerToRomanFilter.php (UTF-8)
+ * Ordinalizer.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -30,11 +30,14 @@ class Ordinalizer extends AbstractFilter {
       $int = abs((int) $variable);
       if (!in_array(($int % 100), [11, 12, 13])) {
         switch ($int % 10) {
-          case 1: $suff = 'st';
+          case 1: 
+            $suff = 'st';
             break;
-          case 2: $suff = 'nd';
+          case 2: 
+            $suff = 'nd';
             break;
-          case 3: $suff = 'rd';
+          case 3:
+            $suff = 'rd';
             break;
         }
       }

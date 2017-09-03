@@ -2,7 +2,7 @@
 
 namespace Sphp\Html;
 
-class WrappingContainerTest extends \PHPUnit_Framework_TestCase {
+class WrappingContainerTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var Collection

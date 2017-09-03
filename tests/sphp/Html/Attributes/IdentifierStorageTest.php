@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-class IdentifierStorageTest extends \PHPUnit_Framework_TestCase {
+class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
 
   public function storeData(): array {
     return [

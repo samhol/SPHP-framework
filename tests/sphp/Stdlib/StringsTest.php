@@ -148,8 +148,6 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
     $this->assertFalse(Strings::endsWith($haystack, $needle));
   }
 
-
-
   /**
    * 
    * @return array
@@ -428,7 +426,7 @@ class StringsTest extends \PHPUnit\Framework\TestCase {
    * @return array
    */
   public function vsprintfData() {
-    $args = ['am'=>'olen','lname' => 'Holck', 'fname' => 'Sami', 'zero' => 0, 'I' => 'minä'];
+    $args = ['am' => 'olen', 'lname' => 'Holck', 'fname' => 'Sami', 'zero' => 0, 'I' => 'minä'];
     return [
         ["%zero\$d.%zero\$d degrees", $args, '0.0 degrees'],
         ["%zero\$s degrees", $args, '0 degrees'],

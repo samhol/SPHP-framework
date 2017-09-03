@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-class ScreenTest extends \PHPUnit_Framework_TestCase {
+class ScreenTest extends \PHPUnit\Framework\TestCase {
 
   public function testGetPreviousSize() {
     $this->assertSame(Screen::getPreviousSize("small"), false);

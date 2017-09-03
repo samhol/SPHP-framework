@@ -7,6 +7,8 @@
 
 namespace Sphp\Stdlib;
 
+use Sphp\Exceptions\OutOfBoundsException;
+
 /**
  * Utility class for PHP array operations
  * 
@@ -26,7 +28,7 @@ class Arrays {
    * @param  array $array the array to manipulate
    * @param  mixed $key the key of the new current element
    * @return array manipulated array 
-   * @throws \Sphp\Exceptions\RuntimeException if the key does not exist in the array
+   * @throws \Sphp\Exceptions\OutOfBoundsException if the key does not exist in the array
    */
   public static function pointToKey(array &$array, $key) {
     reset($array);
@@ -34,7 +36,7 @@ class Arrays {
       next($array);
     }
     if (current($array) === false) {
-      throw new \Sphp\Exceptions\RuntimeException("Key '$key' does not exist in the array");
+      throw new OutOfBoundsException("Key '$key' does not exist in the array");
     }
     return $array;
   }
@@ -45,7 +47,7 @@ class Arrays {
    * @param  array $array the array to manipulate
    * @param  mixed $value the value of the new current element
    * @return array manipulated array 
-   * @throws \Sphp\Exceptions\RuntimeException if the value does not exist in the array
+   * @throws \Sphp\Exceptions\OutOfBoundsException if the value does not exist in the array
    */
   public static function pointToValue(array &$array, $value) {
     reset($array);
@@ -53,7 +55,7 @@ class Arrays {
       next($array);
     }
     if (current($array) !== false) {
-      throw new \Sphp\Exceptions\RuntimeException("Value '$value' does not exist in the array");
+      throw new OutOfBoundsException("Value '$value' does not exist in the array");
     }
     return $array;
   }
@@ -256,7 +258,6 @@ class Arrays {
     }
     return true;
   }
-
 
   /**
    * Returns the value from an array using the key chain given as the second parameter

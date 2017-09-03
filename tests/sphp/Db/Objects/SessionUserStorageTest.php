@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Sphp\Net\Password;
 use Exception;
 
-class SessionUserStorageTest extends \PHPUnit_Framework_TestCase {
+class SessionUserStorageTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

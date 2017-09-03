@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-class IntegerToRomanFilterTest extends \PHPUnit_Framework_TestCase {
+class IntegerToRomanFilterTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @var IntegerToRomanFilter

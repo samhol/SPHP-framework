@@ -5,7 +5,7 @@ namespace Sphp\Db\Objects;
 use Sphp\Configuration;
 use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
-class UserTest extends \PHPUnit_Framework_TestCase {
+class UserTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

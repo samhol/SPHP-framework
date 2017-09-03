@@ -7,7 +7,7 @@
 
 namespace Sphp\Security;
 
-use Sphp\Db\Objects\Embeddable;
+use Sphp\Database\Doctrine\Embeddable;
 
 /**
  * Implements a verifiable password
@@ -54,16 +54,16 @@ class Password implements PasswordInterface, Embeddable {
     return password_verify((string) $password, $this->getHash());
   }
 
-  public function getHash() : string{
+  public function getHash(): string {
     return $this->hash;
   }
 
   /**
    * 
    * @param string $hash the crypted password string
-   * @return self
+   * @return PasswordInterface
    */
-  public static function fromHash($hash) {
+  public static function fromHash($hash): PasswordInterface {
     return new static($hash);
   }
 
@@ -73,9 +73,9 @@ class Password implements PasswordInterface, Embeddable {
    * @param string $password uncrypted plain password string
    * @param  int $algo
    * @param  array $options
-   * @return self
+   * @return PasswordInterface
    */
-  public static function fromPassword($password, $algo = PASSWORD_DEFAULT, array $options = []) {
+  public static function fromPassword($password, $algo = PASSWORD_DEFAULT, array $options = []): PasswordInterface {
     $hash = password_hash((string) $password, $algo, $options);
     return static::fromHash($hash);
   }

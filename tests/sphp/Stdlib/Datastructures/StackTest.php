@@ -6,7 +6,7 @@ require_once 'StackTestTrait.php';
 
 use Exception;
 
-class StackTest extends \PHPUnit_Framework_TestCase {
+class StackTest extends \PHPUnit\Framework\TestCase {
 
   use StackTestTrait;
 

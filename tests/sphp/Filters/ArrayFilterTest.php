@@ -2,7 +2,7 @@
 
 namespace Sphp\Filters;
 
-class ArrayFilterTest extends \PHPUnit_Framework_TestCase {
+class ArrayFilterTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var ArrayFilter

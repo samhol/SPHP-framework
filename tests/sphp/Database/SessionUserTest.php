@@ -8,7 +8,7 @@ use Sphp\Core\Security\Password;
 use Sphp\Stdlib\Permissions;
 use Exception;
 
-class SessionUserTest extends \PHPUnit_Framework_TestCase {
+class SessionUserTest extends \PHPUnit\Framework\TestCase {
 
   /**
    *

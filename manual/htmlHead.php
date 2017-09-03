@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\MVC;
-
+session_start();
 require_once 'loaders.php';
 
 $router = new Router();

@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface as EntityManagerInterface;
 
 require_once 'AddressChainedSettingAndGettingTestTrait.php';
 
-class LocationStorageTest extends \PHPUnit_Framework_TestCase {
+class LocationStorageTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @return array
