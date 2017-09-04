@@ -3,8 +3,9 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
 
-$vjs = $api->classLinker(VideoJs::class);
+$vjs = Apis::sami()->classLinker(VideoJs::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $vjs component
 

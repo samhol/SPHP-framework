@@ -26,7 +26,7 @@ class Ini extends AbstractReader {
     $this->parser = new ZendIni();
   }
 
-  public function fromString($string) {
+  public function fromString(string $string) {
     try {
       return $this->parser->fromString($string);
     } catch (Exception $ex) {

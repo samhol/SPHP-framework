@@ -5,10 +5,12 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$audio = $api->classLinker(Audio::class);
-$video = $api->classLinker(Video::class);
-$source = $api->classLinker(Source::class);
-$vjs = $api->classLinker(VideoJs::class);
+$audio = Apis::sami()->classLinker(Audio::class);
+$audioTag = Apis::w3schools()->tag('audio');
+$video = Apis::sami()->classLinker(Video::class);
+$videoTag = Apis::w3schools()->tag('video');
+$source = Apis::sami()->classLinker(Source::class);
+$vjs = Apis::sami()->classLinker(VideoJs::class);
 $dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
 $youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
 $vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
@@ -16,7 +18,7 @@ $vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
 ##HTML 5 <small>Audio and Video</small> 
 		
 The $audio and the $video components implement the corresponding HTML5
-{$w3schools->tag("audio")} and {$w3schools->tag("video")} tags. With 
+$audioTag and $videoTag tags. With 
 them it is possible to view video and audio streams.
 
 The $source component specifies media resources for $audio and $video media components.

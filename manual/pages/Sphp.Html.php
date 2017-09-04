@@ -91,7 +91,6 @@ Furthermore all actual framework components implement $componentInterface
 
 MD
 );
-$abstractTag = Apis::sami()->classLinker(AbstractTag::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $abstractTag class
 

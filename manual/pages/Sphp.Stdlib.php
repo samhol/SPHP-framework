@@ -1,8 +1,18 @@
 <?php
 
-namespace Sphp\Html\Foundation;
+
+namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+
+\Sphp\Manual\parseDown(<<<MD
+#Standard library components
+$ns  
+
+MD
+);
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
@@ -16,15 +26,22 @@ $toolsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\Sites\Grids;
+        namespace Sphp\Stdlib\Datastructures;
 
-$grid = $sami->classLinker(Grid::class);
-$blockGrid = $sami->classLinker(BlockGrid::class);
+$collectionInterface = $sami->classLinker(CollectionInterface::class);
+$stackInterface = $sami->classLinker(StackInterface::class);
+$queueInterface = $sami->classLinker(QueueInterface::class);
+$stack = $sami->classLinker(Stack::class);
+$queue = $sami->classLinker(Queue::class);
 $core = $sami->namespaceLink(__NAMESPACE__, false);
         \Sphp\Manual\parseDown(<<<MD
-#####Grid components:
-The $core namespace includes Foundation based multi-device nestable 12-column $grid implementation and a
-Foundation $blockGrid to evenly split contents of a list within the grid...
+#####Datastructures:
+The $core namespace includes different collection classes.
+                
+* $collectionInterface
+* $stackInterface and  $queueInterface
+  * $stack
+  * $queue
 MD
         );
         ?>
@@ -33,28 +50,12 @@ MD
     <div class="column">
       <div class="callout" data-equalizer-watch>
         <?php
+        namespace Sphp\Stdlib\Reader;
+        $readerNs = $sami->namespaceLink(__NAMESPACE__, false);
         \Sphp\Manual\parseDown(<<<MD
-#####Typography:
+#####Readers:
 
-Framework's typography is based on a golden ratio modular scale that creates relationships between the elements.
-Typography is easily updated using Scss.
-MD
-        );
-        ?>
-      </div>
-    </div>
-    <div class="column">
-      <div class="callout" data-equalizer-watch>
-        <?php
-
-        namespace Sphp\Html\Foundation\Sites\Buttons;
-
-$btn_ns = $sami->namespaceLink(__NAMESPACE__, false);
-        \Sphp\Manual\parseDown(<<<MD
-#####Buttons
-
-Buttons in $btn_ns namespace are interactive elements that can be used for many purposes. 
-A basic Foundation styled button can be based on almost any HTML tag that has one CSS-class.
+$readerNs
 MD
         );
         ?>
@@ -64,14 +65,29 @@ MD
       <div class="callout" data-equalizer-watch>
         <?php
 
-        namespace Sphp\Html\Foundation\Sites\Navigation;
+        namespace Sphp\Stdlib\Events;
 
-$navi_ns = $sami->namespaceLink(__NAMESPACE__, false);
+$eventNs = $sami->namespaceLink(__NAMESPACE__, false);
+        \Sphp\Manual\parseDown(<<<MD
+#####Events
+
+$eventNs
+MD
+        );
+        ?>
+      </div>
+    </div>
+    <div class="column">
+      <div class="callout" data-equalizer-watch>
+        <?php
+
+        namespace Sphp\Stdlib\Observers;
+
+$observersNs = $sami->namespaceLink(__NAMESPACE__, false);
 
         \Sphp\Manual\parseDown(<<<MD
-#####Navigation:
-$navi_ns namespace includes a complex top bar that supports dropdown navigation, 
-sidebars and many other menu structures.
+#####Observers:
+$observersNs
 MD
         );
         ?>
@@ -86,7 +102,7 @@ MD
 $forms_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
         \Sphp\Manual\parseDown(<<<MD
-#####Forms:
+#####Data Filters:
 
 The $forms_ns namespace includes Foundation based forms layouts and client-side form components.
 Visual presentation of Foundation based Forms are built with the Grid. These forms 
@@ -105,7 +121,7 @@ MD
 $cont_ns = $sami->namespaceLink(__NAMESPACE__, false);
 
         \Sphp\Manual\parseDown(<<<MD
-#####Containers:
+#####Data Validators:
 
 The $cont_ns namespace includes PHP implementations of useful container elements like Accordions, Tabs and Dropdowns for HTML presentation.
 MD
@@ -114,3 +130,37 @@ MD
     </div>
   </div>
 </div>
+
+
+<?php
+
+namespace Sphp\Stdlib;
+
+use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+
+\Sphp\Manual\parseDown(<<<MD
+#Standard library components
+$ns  
+##Datastructures
+##Extensions and utlilities for Standard PHP types
+        
+
+##Event and observer patterns
+        
+        
+##Data filtering and validaton
+        
+        
+##I18n localization
+        
+##Filesystem manipulation
+        
+##Database manipulation
+MD
+);
+
+\Sphp\Manual\loadPage('Core-intro/Orbit-intro');
+\Sphp\Manual\loadPage('Sphp.Core.Router');
+

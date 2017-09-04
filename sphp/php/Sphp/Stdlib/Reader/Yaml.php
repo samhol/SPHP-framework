@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Yaml as SymfonyYaml;
  */
 class Yaml extends AbstractReader {
 
-  public function fromString($string) {
+  public function fromString(string $string) {
     try {
       $data = SymfonyYaml::parse($string);
     } catch (Exception $ex) {

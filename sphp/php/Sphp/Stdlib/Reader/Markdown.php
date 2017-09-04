@@ -21,7 +21,7 @@ use ParsedownExtraPlugin;
  */
 class Markdown extends AbstractReader {
 
-  public function fromString($string) {
+  public function fromString(string $string) {
     try {
       $data = ParsedownExtraPlugin::instance()->text($string);
     } catch (Exception $ex) {

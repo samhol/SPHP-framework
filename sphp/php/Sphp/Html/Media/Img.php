@@ -110,9 +110,9 @@ class Img extends EmptyTag implements ImgInterface {
   }
 
   /**
-   * Returns the object as html-markup string.
+   * Returns the object as HTML-markup string.
    *
-   * @return string html-markup of the object
+   * @return string HTML-markup of the object
    */
   public function getHtml(): string {
     $output = parent::getHtml();

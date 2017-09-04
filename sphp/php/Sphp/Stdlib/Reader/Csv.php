@@ -31,7 +31,7 @@ class Csv extends AbstractReader {
     $this->parser = new ZendIni();
   }
 
-  public function fromString($string) {
+  public function fromString(string $string) {
     try {
       return str_getcsv($string, $delimiter = ",", $enclosure = '"', $escape = "\\");
     } catch (Exception $ex) {

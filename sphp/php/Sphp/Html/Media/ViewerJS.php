@@ -57,8 +57,7 @@ class ViewerJS extends Iframe {
    * @return string the path to the image source (The URL of the image file)
    */
   public function getSrc(): string {
-    $src = parent::getSrc();
-    $src = \Sphp\Stdlib\Strings::trimLeft($src, 'sphp/viewerjs/#../../');
+    $src = \Sphp\Stdlib\Strings::trimLeft(parent::getSrc(), 'sphp/viewerjs/#../../');
     return $src;
   }
 

@@ -13,26 +13,28 @@ items:
     - menu: Standard library
       items:
       - link: Introduction
-        href: Sphp.Core
+        href: Sphp.Stdlib
       - ruler: 
-      - link: Filesystem manipulation
-        href: Sphp.Stdlib.filemanipulation
-      - link: Data Structures
-        href: Sphp.Stdlib.Datastructures
       - link: Events and Observers
         href: Sphp.Stdlib.Observers.and.Events
-      - link: Types and Utlilities
-        href: Sphp.Stdlib.Types
       - ruler: 
       - link: Data filtering
         href: Sphp.Filters
       - link: Data validation
         href: Sphp.Validators
       - ruler: 
-      - link: I18n
-        href: Sphp.I18n
+      - link: Data Structures
+        href: Sphp.Stdlib.Datastructures
+      - link: Types and Utlilities
+        href: Sphp.Stdlib.Types
+      - ruler: 
+      - link: Filesystem manipulation
+        href: Sphp.Stdlib.filemanipulation
       - link: Database manipulation
         href: Sphp.Database
+      - ruler: 
+      - link: I18n
+        href: Sphp.I18n
     - separator: HTML manipulation
     - menu: HTML core
       items:
@@ -65,7 +67,7 @@ items:
     - menu: Foundation Sites
       items:
       - link: Introduction
-        href: Sphp.Html.Foundation.Sites
+        href: Sphp.Html.Foundation
       - ruler: 
       - link: Core components
         href: Sphp.Html.Foundation.Sites.Core

@@ -31,7 +31,7 @@ class JavaProperties implements ReaderInterface {
     $this->reader = new ZendJavaProperties();
   }
 
-  public function fromFile($filename) {
+  public function fromFile(string $filename) {
     if (!is_file($filename) || !is_readable($filename)) {
       throw new RuntimeException(sprintf(
               "File '%s' doesn't exist or not readable", $filename

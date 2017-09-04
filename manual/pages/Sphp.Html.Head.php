@@ -5,6 +5,7 @@ namespace Sphp\Html\Head;
 use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+
 $headNS = Apis::sami()->namespaceLink(__NAMESPACE__);
 $metaIfLnk = Apis::sami()->classLinker(HeadComponentInterface::class);
 $head = Apis::sami()->classLinker(Head::class);

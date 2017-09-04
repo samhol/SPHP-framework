@@ -9,7 +9,6 @@ use Sphp\I18n\Translatable;
 use Sphp\I18n\TranslatorAwareTrait;
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
 $messageInterface = Apis::sami()->classLinker(MessageInterface::class);
 $templateInterface = Apis::sami()->classLinker(TemplateInterface::class);
@@ -17,10 +16,10 @@ $translatable = Apis::sami()->classLinker(Translatable::class);
 $message = Apis::sami()->classLinker(Message::class);
 $messageContainer = Apis::sami()->classLinker(TranslatablePriorityList::class);
 $messageCollectionInterfaces = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
-$echo = $php->functionLink("echo");
-$print = $php->functionLink("print");
-$string = $php->typeLink("string");
-$vsprintfLink = $php->functionLink("vsprintf");
+$echo = Apis::phpManual()->functionLink("echo");
+$print = Apis::phpManual()->functionLink("print");
+$string = Apis::phpManual()->typeLink("string");
+$vsprintfLink = Apis::phpManual()->functionLink("vsprintf");
 
 $translator = Apis::sami()->classLinker(TranslatorInterface::class);
 
@@ -79,7 +78,7 @@ CodeExampleBuilder::visualize('Sphp/I18n/Messages/TranslatableCollection.php', '
 $topicContainer = Apis::sami()->classLinker(TopicList::class);
 $messageContainers = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
 
-$arrayaccess = $php->classLinker(\ArrayAccess::class);
+$arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Grouping $messageContainers with a $topicContainer
 

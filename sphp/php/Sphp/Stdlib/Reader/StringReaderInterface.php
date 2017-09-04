@@ -23,5 +23,5 @@ interface StringReaderInterface {
    * @param  string $string
    * @return mixed 
    */
-  public function fromString($string);
+  public function fromString(string $string);
 }
