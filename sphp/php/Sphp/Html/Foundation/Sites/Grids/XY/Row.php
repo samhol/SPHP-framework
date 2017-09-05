@@ -46,6 +46,5 @@ class Row extends AbstractRow {
     if ($columns !== null) {
       $this->setColumns($columns, $sizes);
     }
-    $this->cssClasses()->lock('row');
   }
 }

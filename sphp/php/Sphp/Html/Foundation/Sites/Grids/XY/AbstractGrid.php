@@ -20,7 +20,7 @@ use Sphp\Html\Container;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractGrid extends AbstractComponent implements GridInterface {
+class AbstractGrid extends AbstractComponent implements \IteratorAggregate, GridInterface {
 
   use \Sphp\Html\TraversableTrait;
 
@@ -49,6 +49,7 @@ class AbstractGrid extends AbstractComponent implements GridInterface {
   public function __construct(string $tagName) {
     parent::__construct($tagName);
     $this->content = new Container();
+    $this->layoutManager = new GridLayoutManager($this);
   }
 
   /**
@@ -95,6 +96,26 @@ class AbstractGrid extends AbstractComponent implements GridInterface {
       }
     $this->content->prepend($row);
     return $this;
+  }
+
+  public function current() {
+    
+  }
+
+  public function key(): \scalar {
+    
+  }
+
+  public function next(): void {
+    
+  }
+
+  public function rewind(): void {
+    
+  }
+
+  public function getIterator() {
+    return $this->content->getIterator();
   }
 
 }

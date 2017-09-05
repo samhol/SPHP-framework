@@ -36,7 +36,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * @param ComponentInterface $component
    * @param int $maxSize
    */
-  public function __construct(ComponentInterface $component, $maxSize = 12) {
+  public function __construct(ComponentInterface $component, int $maxSize = 12) {
     parent::__construct($component);
     $this->maxSize = $maxSize;
   }
@@ -45,7 +45,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * 
    * @return int
    */
-  public function getMaxSize():int {
+  public function getMaxSize(): int {
     return $this->maxSize;
   }
 
@@ -82,7 +82,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
         } else if ($parts[1] === 'pull') {
           $this->pull($parts[2], $parts[0]);
         }
-      } 
+      }
     }
     return $this;
   }

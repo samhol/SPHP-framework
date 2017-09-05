@@ -19,7 +19,7 @@ use Sphp\Html\AbstractComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Grid extends AbstractComponent implements GridInterface {
+class Grid extends AbstractGrid {
 
   /**
    * Constructs a new instance
@@ -35,75 +35,20 @@ class Grid extends AbstractComponent implements GridInterface {
    * @link   http://www.php.net/manual/en/language.oop5.magic.php#object.tostring __toString() method
    */
   public function __construct() {
-    $wrapper = function ($c) {
-      if (!($c instanceof RowInterface)) {
-        $c = new Row($c);
-      }
-      return $c;
-    };
-    parent::__construct('div', $row);
+    parent::__construct('div');
   }
 
   /**
-   * Returns all {@link ColumnInterface} components from the grid
    * 
-   * @return Container containing all the {@link ColumnInterface} components
+   * @param  array $rows single or two dimensional array of column data
+   * @return self new instance containing given content as rows
    */
-  public function getColumns() {
-    return $this->getComponentsByObjectType(ColumnInterface::class);
-  }
- 
-  /**
-   * Sets/ the row completely fluid
-   *
-   * @param  boolean $expanded the target screen size
-   * @return $this for a fluent interface
-   */
-  public function expand($expanded = true) {
-    foreach($this as $row) {
-      $row->layout()->expand($expanded);
+  public static function from(array $rows): Grid {
+    $grid = new Static();
+    foreach ($rows as $row) {
+      $grid->append($row);
     }
-    return $this;
-  }
-
-  public function append($row) {
-    
-  }
-
-  public function contentToString(): string {
-    
-  }
-
-  public function count(): int {
-    
-  }
-
-  public function getComponentsBy(callable $rules): \Sphp\Html\TraversableInterface {
-    
-  }
-
-  public function getComponentsByAttrName($attrName): \Sphp\Html\TraversableInterface {
-    
-  }
-
-  public function getComponentsByObjectType($typeName): \Sphp\Html\TraversableInterface {
-    
-  }
-
-  public function prepend($row) {
-    
-  }
-
-  public function __toString(): string {
-    
-  }
-
-  public function getHtml(): string {
-    
-  }
-
-  public function printHtml(): \this {
-    
+    return $grid;
   }
 
 }

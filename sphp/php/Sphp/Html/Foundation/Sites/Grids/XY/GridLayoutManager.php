@@ -8,9 +8,6 @@
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Html\AbstractLayoutManager;
-use Sphp\Html\Foundation\Sites\Core\Screen;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Html\ComponentInterface;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -23,7 +20,7 @@ use Sphp\Html\ComponentInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractGridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
+class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
 
   public function isStretched(): bool {
     return $this->cssClasses()->contains('fluid') || $this->cssClasses()->contains('full');
