@@ -52,7 +52,7 @@ abstract class AbstractLayoutManager implements LayoutManagerInterface {
    * 
    * @return MultiValueAttribute
    */
-  public function cssClasses() {
+  public function cssClasses(): MultiValueAttribute {
     return $this->component->cssClasses();
   }
 
