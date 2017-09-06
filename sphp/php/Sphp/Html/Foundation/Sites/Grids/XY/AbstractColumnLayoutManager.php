@@ -11,6 +11,7 @@ use Sphp\Html\AbstractLayoutManager;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Html\ComponentInterface;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -96,12 +97,17 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  string[] $widths column widths for different screens sizes
+   * @param  string|string[] $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setWidths(array $widths) {
+  public function setWidths(... $widths) {
+    $widths = Arrays::flatten($widths);
+    $f = function ($value) {
+      return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
+    };
+    $filtered = array_filter($widths, $f);
     $this->unsetWidths();
-    foreach ($widths as $width) {
+    foreach ($filtered as $width) {
       $parts = explode('-', $width);
       $this->setWidth($parts[1], $parts[0]);
     }
@@ -136,9 +142,9 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth(int $width, string $screen = 'small') {
+  public function setWidth($width = 'auto', string $screen = 'small') {
     $this->unsetWidth($screen);
-    if ($width > 0 && $width <= $this->getMaxSize()) {
+    if ($width > 0 && $width <= $this->getMaxSize() || $width === 'auto') {
       $this->cssClasses()->add("$screen-$width");
     } else {
       throw new InvalidArgumentException(sprintf('The width \'%s\' of a column is not between (1-%s)', $width, $this->getMaxSize()));

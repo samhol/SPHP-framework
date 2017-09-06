@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Sep 6, 2017, 1:01:10 PM
+    Author     : Sami Holck <sami.holck@gmail.com>
+*/
+
+.grid-example {
+  .row, .grid-x {
+    border: solid 1px #aaa;
+    margin-bottom: 3px;
+  }
+  .column, .cell {
+    text-align: center;
+    //border: solid 1px #aaa;
+    background: #eee;
+    line-height: 2;
+    &:nth-child(even) {
+      background-color: #ddd;
+    }
+  }
+}

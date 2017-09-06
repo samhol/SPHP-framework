@@ -40,7 +40,7 @@ abstract class AbstractColumn extends Div implements ColumnInterface {
    * @param  mixed $content the content of the column
    * @param  array $layout column layout parameters
    */
-  public function __construct($content = null, array $layout = ['small-12']) {
+  public function __construct($content = null, array $layout = ['auto']) {
     parent::__construct($content);
     $this->layoutManager = new ColumnLayoutManager($this);
     $this->layout()->setLayout($layout);

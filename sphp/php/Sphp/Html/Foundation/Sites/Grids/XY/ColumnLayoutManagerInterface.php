@@ -32,7 +32,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string[] $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setWidths(array $widths);
+  public function setWidths(...$widths);
 
   /**
    * 
@@ -57,7 +57,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth(int $width, string $screen = 'small');
+  public function setWidth($width = 'auto', string $screen = 'small');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens

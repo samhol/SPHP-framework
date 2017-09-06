@@ -118,21 +118,7 @@ $error-bg: rgba(255,127,80, 0.40);
   @import "hyperlinks"; 
   
   @import "technologies"; 
-  .grid-example {
-    .row {
-      border: solid 1px #aaa;
-      margin-bottom: 3px;
-    }
-    .column {
-      text-align: center;
-      //border: solid 1px #aaa;
-      background: #eee;
-      line-height: 2;
-    }
-    .column:nth-child(even) {
-      background-color: #ddd;
-    }
-  }
+  @import "grid-examples"; 
 
   .plain.sphp-syntax-highlighter {
     border: solid 1px #666;

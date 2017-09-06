@@ -71,14 +71,8 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
       $columns = [$columns];
     }
 
-    $colCount = count($columns);
-    $div = floor(12 / $colCount);
     if ($sizes === null) {
-      if ($div < 1) {
-        $sizes = ["small-12"];
-      } else {
-        $sizes = ["small-$div"];
-      }
+        $sizes = ['auto'];
     }
 
     $this->clear();
@@ -93,12 +87,12 @@ abstract class AbstractRow extends AbstractContainerTag implements RowInterface 
     return $this;
   }
 
-  public function appendColumn($content, array $sizes = ['small-12']) {
+  public function appendColumn($content, array $sizes = ['auto']) {
     $this->append(new Column($content, $sizes));
     return $this;
   }
 
-  public function appendMdColumn($content, array $sizes = ['small-12']) {
+  public function appendMdColumn($content, array $sizes = ['auto']) {
     $p = new \ParsedownExtraPlugin();
     $this->append(new Column($p->parse($content), $sizes));
     return $this;
