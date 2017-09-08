@@ -23,12 +23,10 @@ class TitleGenerator {
     $this->parseTitles();
   }
 
-  public function parseTitles() {
+  public function parseTitles(): array {
     // print_r($this->data);
     $arrIt = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($this->data));
-    $f = function () {
-      
-    };
+
     $outputArray = [];
     foreach ($arrIt as $sub) {
       $subArray = $arrIt->getSubIterator();
@@ -36,12 +34,11 @@ class TitleGenerator {
         $outputArray[] = iterator_to_array($subArray);
       }
     }
-
     // print_r($outputArray);
     return $outputArray;
   }
 
-  public function createTitleFor($page) {
+  public function createTitleFor(string $page): string {
     $title = 'SPHP Framework';
     foreach ($this->titleData as $pair) {
       if ($pair['href'] === $page) {

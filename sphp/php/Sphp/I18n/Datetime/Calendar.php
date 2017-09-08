@@ -5,10 +5,11 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Datetime;
 
 use Sphp\I18n\Gettext\Translator;
 use Sphp\Stdlib\Arrays;
+
 
 /**
  * Class localizes weekday and month names
@@ -20,7 +21,7 @@ use Sphp\Stdlib\Arrays;
  */
 class Calendar {
 
-  use TranslatorAwareTrait;
+  use \Sphp\I18n\TranslatorAwareTrait;
 
   /**
    * January

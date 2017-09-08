@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\I18n;
+namespace Sphp\I18n\Datetime;
 
 $calendar = (new Calendar())->setLang('fi_FI');
 echo "Tänään: " . $calendar->getWeekdayName(date("N"));

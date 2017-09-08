@@ -47,6 +47,6 @@ MD
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.StringObject');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.Strings');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.Arrays');
-\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Datetime');
+//\Sphp\Manual\loadPage('Sphp.Stdlib.Types.Datetime');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.BitMask');
 \Sphp\Manual\loadPage('Sphp.Stdlib.Types.URL');

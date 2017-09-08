@@ -133,3 +133,6 @@ msgstr "marraskuu"
 
 msgid "December"
 msgstr "joulukuu"
+
+msgid "%s th of %s %s"
+msgstr "%s. %sta %s"

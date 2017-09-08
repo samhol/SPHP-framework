@@ -16,11 +16,10 @@ namespace Sphp\Config;
  *
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @version 1.1.0
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Locale {
+abstract class Locale {
 
   /**
    * Sets the locale information
@@ -39,7 +38,7 @@ class Locale {
    * @param  string $locale the name of the locale
    * @return boolean true if the setting was succesfull and false otherwise
    */
-  public static function setLocale($category, $locale) {
+  public static function setLocale(int $category, $locale): bool {
     return setLocale($category, $locale) !== false;
   }
 
@@ -49,7 +48,7 @@ class Locale {
    * @param  string|null $locale the locale information for system responses
    * @return boolean true if the setting was successful and false otherwise
    */
-  public static function setMessageLocale($locale) {
+  public static function setMessageLocale(string $locale): bool {
     return self::setLocale(\LC_MESSAGES, $locale);
   }
 
@@ -69,8 +68,17 @@ class Locale {
    * @param int $category a named constant specifying the category of the functions affected by the locale setting:
    * @return string the name (filename) of the text domain
    */
-  public static function getLocale($category) {
+  public static function getLocale($category): string {
     return setLocale($category, '0');
+  }
+
+  /**
+   * Returns the current locale setting for date and time formatting
+   *
+   * @return string the current locale setting for date and time formatting
+   */
+  public static function getDatetimeLocale(): string {
+    return self::getLocale(LC_TIME);
   }
 
   /**
@@ -78,7 +86,7 @@ class Locale {
    *
    * @return string the current locale setting for system responses
    */
-  public static function getMessageLocale() {
+  public static function getMessageLocale(): string {
     return self::getLocale(LC_MESSAGES);
   }
 
