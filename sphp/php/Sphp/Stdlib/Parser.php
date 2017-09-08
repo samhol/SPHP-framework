@@ -18,7 +18,7 @@ use Sphp\Stdlib\Reader\ReaderInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Parser {
+abstract class Parser {
 
   /**
    * @var string[]

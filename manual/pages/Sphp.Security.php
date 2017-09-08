@@ -14,6 +14,7 @@ more robust code.
 Good articles about PHP web application security:
 
 * [PHP manual](http://php.net/manual/en/security.php){target="_blank"}
+* [PHP Security Cheat Sheet](https://www.owasp.org/index.php/PHP_Security_Cheat_Sheet){target="_blank"}
 * [Sitepoint](https://www.sitepoint.com/php-security-blunders/){target="_blank"}
         
 ##Input validation

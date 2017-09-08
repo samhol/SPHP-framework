@@ -18,4 +18,4 @@ The $stablePriorityQueue is stable whereas the native SPL class is not.
 priority value occur in the order in which they were inserted.
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Data/StablePriorityQueue.php", 'text', false);
+CodeExampleBuilder::visualize("Sphp/Stdlib/Datastructures/StablePriorityQueue.php", 'text', false);

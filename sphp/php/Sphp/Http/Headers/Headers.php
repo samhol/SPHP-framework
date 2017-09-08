@@ -30,7 +30,7 @@ class Headers {
    * 
    * @param string $string
    */
-  public static function setHeader($string) {
+  public static function setHeader(string $string) {
     header($string, false);
   }
 
@@ -39,7 +39,7 @@ class Headers {
    * 
    * @param string $string
    */
-  public static function replaceHeader($string) {
+  public static function replaceHeader(string $string) {
     header($string, true);
   }
 
@@ -48,7 +48,7 @@ class Headers {
    * 
    * @param string $contentType
    */
-  public static function setContentType($contentType, $charset = 'UTF-8') {
+  public static function setContentType(string $contentType, string $charset = 'UTF-8') {
     self::replaceHeader("Content-type: $contentType; charset=$charset");
   }
 

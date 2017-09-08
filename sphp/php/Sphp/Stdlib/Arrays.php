@@ -20,7 +20,7 @@ use Sphp\Exceptions\OutOfBoundsException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Arrays {
+abstract class Arrays {
 
   /**
    * Sets the internal array pointer to the given key value pair 
@@ -246,7 +246,7 @@ class Arrays {
    * Checks each key value pairs of the array against a rule defined in a 
    *  {@link \callable} 
    * 
-   * @param  mixed[] $array the array to test
+   * @param  array $array the array to test
    * @param  \callable $rule the rule to test the array key value pair against
    * @return boolean true if the array passes the rule, otherwise false
    */
@@ -333,12 +333,12 @@ class Arrays {
   /**
    * Returns the input array values in a sequential array
    *
-   * @param array $arr checked array
-   * @param mixed $base the starting index of the sequence
-   * @param int $step optional increment between elements in the sequence.
+   * @param  array $arr checked array
+   * @param  int $base the starting index of the sequence
+   * @param  int $step optional increment between elements in the sequence.
    * @return array sequential array
    */
-  public static function setSequential(array $arr, int $base = 0, $step = 1): array {
+  public static function setSequential(array $arr, int $base = 0, int $step = 1): array {
     if ($base === 0 && $step === 1) {
       $result = array_values($arr);
     } else {
@@ -359,18 +359,18 @@ class Arrays {
    * * Inserts the optional $lastGlue string between the last two elements if 
    *   given. (Otherwise uses the $glue string)
    * 
-   * @param  $arr multidimensional array of strings to implode
+   * @param  array $arr multidimensional array of strings to implode
    * @param  string $glue string between each array element
    * @param  string|null $lastGlue optional string between the last two array elements
    * @return string the imploded array
    */
-  public static function implode(array $arr, $glue = "", $lastGlue = null): string {
+  public static function implode(array $arr, string $glue = '', string $lastGlue = null): string {
     if (is_null($lastGlue)) {
       $lastGlue = $glue;
     }
     $flat = self::flatten($arr);
     $length = count($flat);
-    $output = "";
+    $output = '';
     if ($length > 2) {
       for ($i = 0; $i < $length - 2; ++$i) {
         $output .= Strings::toString(array_shift($flat)) . $glue;
@@ -417,8 +417,8 @@ class Arrays {
    *
    * **Notes:** The keys of the array are not preserved.
    *
-   * @param  mixed[] $array
-   * @return mixed[] the one dimensional result array
+   * @param  array $array
+   * @return array the one dimensional result array
    */
   public static function flatten(array $array): array {
     $newArray = [];

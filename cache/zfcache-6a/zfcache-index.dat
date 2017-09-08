@@ -1,0 +1,8 @@
+<h1 class="error">404: <small>Manual page not found!</small></h1>
+<p><strong>The page you requested does not exist</strong>!</p><form action="http://search.freefind.com/find.html" method="get" target="_self" id="id_81e42b15c4ce659b"><input type="hidden" name="bcd" value="&#247;"><input type="hidden" name="n" value="0"><input type="hidden" name="pid" value="r"><input type="hidden" name="si" value="51613081">
+  <div class="input-group"><span class="input-group-label">Search for:</span><input type="text" name="query" placeholder="keywords in documentation" class="input-group-field"><div class="input-group-button">
+      <button type="submit" data-sphp-qtip data-sphp-qtip-at="top center" data-sphp-qtip-my="bottom right" title="Execute Search" data-sphp-qtip-viewport="#id_81e42b15c4ce659b" class="button"><i aria-hidden="true" class="fa fa-search"></i></button>
+    </div>
+  </div></form>
+<img src="manual/pics/corrupt.png" alt="Resource not found" class="float-center">
+

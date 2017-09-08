@@ -11,7 +11,7 @@ $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #DATA STRUCTURES
 $ns
-The {$php->extensionLink("SPL", "Standard PHP Library (SPL)")} provides a set of standard data structures for PHP language. SPHP
+The {$php->extensionLink('SPL', 'Standard PHP Library (SPL)')} provides a set of standard data structures for PHP language. SPHP
 framework contain a few extensions to these for additional properties.
 
 ##The $collectionInterface

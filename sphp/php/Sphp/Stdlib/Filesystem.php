@@ -18,7 +18,7 @@ use SplFileObject;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Filesystem {
+abstract class Filesystem {
 
   /**
    * 
@@ -99,7 +99,7 @@ class Filesystem {
    * @return string[] rows of the ASCII file in an array
    * @throws \Sphp\Exceptions\RuntimeException if the $path points to no actual file
    */
-  public static function getTextFileRows(string $path) {
+  public static function getTextFileRows(string $path): array {
     $result = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     if ($result === false) {
       throw new RuntimeException("The path '$path' contains no file");
@@ -140,7 +140,7 @@ class Filesystem {
    * @param  string|URL $url the pointing to the resource
    * @return string the Mime type of the content pointed by the given URL
    */
-  public static function getMimeType($url) {
+  public static function getMimeType($url): string {
     if ($url instanceof URL) {
       $url = $url->__toString();
     }
@@ -163,7 +163,7 @@ class Filesystem {
    * @return boolean true on success or false on failure
    * @link \mkdir()
    */
-  public static function mkdir(string $path, int $mode = 0777) {
+  public static function mkdir(string $path, int $mode = 0777): bool {
     $result = is_dir($path);
     if (!$result) {
       $result = mkdir($path, $mode, true);

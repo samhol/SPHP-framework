@@ -253,4 +253,4 @@ Stack trace:
 #2 /home/int48291/public_html/playground/manual/doctrineConfiguration.php(20): Sphp\Stdlib\Parser::fromFile('manual/config/d...')
 #3 /home/int48291/public_html/playground/manual/settings.php(23): require_once('/home/int48291/...')
 #4 /home/int48291/public_html/playground/index.php(5): require_once('/home/int48291/...')
-#5 {main}
+#5 {main}Relative path 'sphp/js/vendor/' does not existRelative path 'sphp/js/vendor/' does not existRelative path 'sphp/js/vendor/' does not existRelative path 'manual/pics/S-logo.png' does not existCall to a member function documentClose() on null

@@ -35,7 +35,7 @@ $html->head()
         ->addCssSrc('https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css')
         ->addCssSrc('//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css')
         ->setBaseAddr(Path::get()->http(), '_self')
-        ->addShortcutIcon(Path::get()->http('manual/pics/S-logo.png').'?v=2')
+        ->addShortcutIcon('http://playground.samiholck/manual/pics/S-logo.png?v=2')
         ->addMeta(Meta::author('Sami Holck'))
         ->addMeta(Meta::applicationName('SPHP framework'))
         ->addMeta(Meta::keywords([

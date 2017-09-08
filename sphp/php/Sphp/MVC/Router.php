@@ -218,7 +218,8 @@ class Router {
    * @return string
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public static function getCleanUrl($url = null) {
+  public static function getCleanUrl(string $url = null) {
+    $uObj = \Sphp\Stdlib\URL::getCurrent();
     if ($url === null) {
       // Get the current URL, differents depending on platform/server software
       $url = filter_input(\INPUT_SERVER, 'REQUEST_URL', FILTER_SANITIZE_URL);
@@ -228,6 +229,7 @@ class Router {
         throw new RuntimeException('URL cannot be resolved for routing');
       }
     }
+    //echo "/".$uObj->getPath()."/";
     // The request url might be /project/index.php, this will remove the /project part
     //echo "$url\n";
     //echo "SCRIPT_NAME:". $_SERVER['SCRIPT_NAME']."\n";
@@ -251,7 +253,7 @@ class Router {
     // Replace multiple slashes in a url, such as /my//dir/url
     $url = preg_replace('/\/+/', '/', $url);
     //echo "$url\n";
-    return $url;
+    return rtrim($uObj->getPath(), '/') . '/';
   }
 
 }

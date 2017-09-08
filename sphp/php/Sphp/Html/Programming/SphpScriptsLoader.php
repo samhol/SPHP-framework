@@ -31,9 +31,9 @@ class SphpScriptsLoader extends ScriptsContainer {
   public function __construct($scripts = null) {
     parent::__construct($scripts);
     $router = Path::get();
-    $this->paths['vendor'] = $router->http('sphp/js/vendor/');
-    $this->paths['app'] = $router->http('sphp/js/app/');
-    $this->paths['js_root'] = $router->http('sphp/js/');
+    $this->paths['vendor'] = 'sphp/js/vendor/';
+    $this->paths['app'] = 'sphp/js/app/';
+    $this->paths['js_root'] = 'sphp/js/';
   }
 
   /**

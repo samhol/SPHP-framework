@@ -13,4 +13,4 @@ This Implements a set of prioritized objects mapped with corresponding data of a
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Data/UniquePriorityQueue.php", "text", false);
+CodeExampleBuilder::visualize("Sphp/Stdlib/Datastructures/UniquePriorityQueue.php", "text", false);

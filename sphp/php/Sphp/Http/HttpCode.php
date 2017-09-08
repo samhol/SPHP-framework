@@ -49,7 +49,7 @@ class HttpCode {
 
   /**
    * 
-   * @return string
+   * @return int
    */
   public function getCode() {
     return $this->code;

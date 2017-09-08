@@ -18,7 +18,6 @@ namespace Sphp\Http\Headers;
 abstract class AbstractHeader implements HeaderInterface {
 
   /**
-   *
    * @var string 
    */
   private $value;

@@ -52,9 +52,9 @@ class Translators {
 
   /**
    * 
-   * @return self singelton instance
+   * @return self singleton instance
    */
-  public static function instance():Translators {
+  public static function instance(): Translators {
     if (self::$instance === null) {
       self::$instance = new static();
     }
