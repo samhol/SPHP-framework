@@ -9,7 +9,7 @@ namespace Sphp\I18n\Datetime;
 
 use Sphp\I18n\Translatable;
 use Sphp\I18n\Gettext\Translator;
-use Sphp\Stdlib\Arrays;
+use Sphp\Config\Locale;
 use DateTimeInterface;
 use DateTime;
 
@@ -21,29 +21,37 @@ use DateTime;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CalendarDate implements Translatable {
-
-  use \Sphp\I18n\TranslatorAwareTrait;
+class CalendarDate {
 
   /**
-   *
    * @var DateTimeInterface
    */
   private $date;
 
   /**
+   * @var string 
+   */
+  private $format;
+
+  /**
    * 
    * @param DateTimeInterface|null $date
-   * @param Translator|null $translator the translator component
+   * @param  string $lang optional name of the language used for translations
    */
-  public function __construct(DateTimeInterface $date = null, $lang = null) {
+  public function __construct(DateTimeInterface $date = null, string $format = null) {
     if ($date === null) {
       $date = new DateTime();
     }
     $this->setDate($date);
+  }
 
-    $t = new Translator('Sphp.Datetime');
-    $this->setTranslator($t);
+  public function getFormat(): string {
+    return $this->format;
+  }
+
+  public function setFormat(string $format) {
+    $this->format = $format;
+    return $this;
   }
 
   /**
@@ -67,11 +75,12 @@ class CalendarDate implements Translatable {
   /**
    * Returns the name or the abbreviation of the given weekday number
    *
-   * @param  int|null $length optional length of the weekday string
+   * @param  int $length optional length of the result string
+   * @param  string $lang optional name of the language used for translations
    * @return string the name or the abbreviation of the given weekday number
    */
-  public function getWeekdayName($length = null): string {
-    $day = $this->getTranslator()->get($this->date->format('l'));
+  public function getWeekdayName(int $length = 0, string $lang = null): string {
+    $day = $this->strftime('%A', $lang);
     if ($length > 0) {
       $day = mb_substr($day, 0, $length);
     }
@@ -81,11 +90,12 @@ class CalendarDate implements Translatable {
   /**
    * Returns the name or the abbreviation of the given month number
    *
-   * @param  int|null $length optional length of the month string
+   * @param  int $length optional length of the result string
+   * @param  string $lang optional name of the language used for translations
    * @return string the name or the abbreviation of the given month number
    */
-  public function getMonthName(int $length = null): string {
-    $monthName = $this->getTranslator()->get($this->date->format('F'));
+  public function getMonthName(int $length = 0, string $lang = null): string {
+    $monthName = $this->strftime('%B', $lang);
     if ($length > 0) {
       $monthName = mb_substr($monthName, 0, $length);
     }
@@ -107,38 +117,26 @@ class CalendarDate implements Translatable {
   }
 
   /**
-   * Returns the name or the abbreviation of the given month number
-   *
-   * @return string the name or the abbreviation of the given month number
+   * Returnsa formatted string 
+   * 
+   * @param  string $format
+   * @param  string $lang
+   * @return string a formatted string 
    */
   public function strftime(string $format, string $lang = null): string {
     $stamp = $this->date->getTimestamp();
-    $oldLang = \Sphp\Config\Locale::getDatetimeLocale();
+    $oldLang = Locale::getDatetimeLocale();
     if ($lang === null) {
       $lang = $oldLang;
     }
     if ($lang !== $oldLang) {
-      \Sphp\Config\Locale::setLocale(LC_TIME, $lang);
+      Locale::setLocale(LC_TIME, $lang);
     }
 
     $output = strftime($format, $stamp);
     if ($lang !== $oldLang) {
-      \Sphp\Config\Locale::setLocale(LC_TIME, $oldLang);
+      Locale::setLocale(LC_TIME, $oldLang);
     }
-    /* switch ($lang) {
-      case 'en':
-      setlocale(LC_TIME, 'en_CA.UTF-8');
-      echo strftime("%B %e, %G");
-      break;
-      case 'fr':
-      setlocale(LC_TIME, 'fr_CA.UTF-8');
-      echo strftime("%e %B %G %H:%M:%S");
-      break;
-      case 'fi':
-      setlocale(LC_TIME, 'fi_FI.UTF-8');
-      echo strftime("%A %e %B %G %H:%M:%S");
-      break;
-      } */
     return $output;
   }
 
@@ -162,14 +160,15 @@ class CalendarDate implements Translatable {
   public static function fromTimestamp($timestamp, Translator $translator = null) {
     return new static(new DateTime("@$timestamp"), $translator);
   }
+
   /**
    * 
    * @param  int $timestamp
    * @param  Translator $translator
    * @return self new instance 
    */
-  public static function fromString($timestamp ) {
-   // return new static(DateTime::("@$timestamp"));
+  public static function fromString($timestamp) {
+    // return new static(DateTime::("@$timestamp"));
   }
 
   public function __toString(): string {
