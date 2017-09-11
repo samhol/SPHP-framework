@@ -31,6 +31,11 @@ class DateTime {
   private $date;
 
   /**
+   * @var IntlDateFormatter
+   */
+  private $fmt;
+
+  /**
    * 
    * @param DateTimeInterface|null $dateTime
    * @param string $lang optional name of the language used for translations
@@ -91,13 +96,38 @@ class DateTime {
   }
 
   /**
+   * Sets the class used for ICU date formatting functionality
+   * 
+   * @param IntlDateFormatter $fmt the class used for ICU date formatting functionality
+   */
+  public function setIntlDateFormatter(IntlDateFormatter $fmt) {
+    $this->fmt = $fmt;
+  }
+
+  public function getIntlFormatter(): IntlDateFormatter {
+    if ($this->fmt === null) {
+      $this->fmt = new IntlDateFormatter(
+              null,
+              IntlDateFormatter::FULL, IntlDateFormatter::FULL,
+              $this->getTimezone(),
+              IntlDateFormatter::GREGORIAN
+      );
+    }
+    return $this->fmt;
+  }
+
+  /**
+   * ICU stands for: International Components for Unicode
    * 
    * @param string $format
    * @param  string $lang optional name of the language used for translations
    * @return string
-   * @link   http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax patterns
+   * @link   http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax Internationalization patterns
    */
   public function formatICU(string $format, string $lang = null): string {
+    if ($lang === null) {
+      $lang = Locale::getDatetimeLocale();
+    }
     $fmt = new IntlDateFormatter(
             $lang,
             IntlDateFormatter::FULL, IntlDateFormatter::FULL,
@@ -123,7 +153,6 @@ class DateTime {
     if ($lang !== $oldLang) {
       Locale::setLocale(LC_TIME, $lang);
     }
-
     $output = strftime($format, $this->getTimestamp());
     if ($lang !== $oldLang) {
       Locale::setLocale(LC_TIME, $oldLang);
