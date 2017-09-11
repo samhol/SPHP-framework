@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$calendarDate = Apis::sami()->classLinker(CalendarDate::class);
+$calendarDate = Apis::sami()->classLinker(DateTime::class);
 $calendar = Apis::sami()->classLinker(Calendar::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Localized datetime and calendar translations

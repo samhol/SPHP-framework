@@ -139,7 +139,7 @@
                     static&nbsp;string[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_split">split</a>(string $string, string $pattern, int $limit = -1, $encoding = null)
+                    <a href="#method_split">split</a>(string $string, string $pattern, int $limit = -1, string $encoding = null)
         
                                             <p>Splits the string with the provided regular expression</p>                </div>
                 <div class="col-md-2"></div>
@@ -252,7 +252,7 @@ single space</p>                </div>
                     static&nbsp;string|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_charAt">charAt</a>(string $string, int $index, string|null $encoding = null)
+                    <a href="#method_charAt">charAt</a>(string $string, int $index, string $encoding = null)
         
                                             <p>Returns the character at $index, with indexes starting at 0</p>                </div>
                 <div class="col-md-2"></div>
@@ -262,7 +262,7 @@ single space</p>                </div>
                     static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_chars">chars</a>(string $string, string|null $encoding = null)
+                    <a href="#method_chars">chars</a>(string $string, string $encoding = null)
         
                                             <p>Returns an array consisting of the characters in the string.</p>                </div>
                 <div class="col-md-2"></div>
@@ -272,7 +272,7 @@ single space</p>                </div>
                     static&nbsp;int|bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_indexOf">indexOf</a>(string $string, string $needle, int $offset, string|null $encoding = null)
+                    <a href="#method_indexOf">indexOf</a>(string $string, string $needle, int $offset, string $encoding = null)
         
                                             <p>Returns the index of the first occurrence of $needle in the string</p>                </div>
                 <div class="col-md-2"></div>
@@ -282,7 +282,7 @@ single space</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_between">between</a>(string $string, string $start, string $end, int $offset, string|null $encoding = null)
+                    <a href="#method_between">between</a>(string $string, string $start, string $end, int $offset, string $encoding = null)
         
                                             <p>Returns the substring between $start and $end, if found, or an empty
 string. An optional offset may be supplied from which to begin the
@@ -304,19 +304,9 @@ search for the start string.</p>                </div>
                     static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_length">length</a>(string $str, string|null $encoding = null)
+                    <a href="#method_length">length</a>(string $str, string $encoding = null)
         
                                             <p>Returns the length of the given string</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_lengthBetween">lengthBetween</a>(string $str, int $lower, int $upper, string|null $encoding = null)
-        
-                                            <p>Determines if the string length is on a given closed interval</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -324,7 +314,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isAlpha">isAlpha</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isAlpha">isAlpha</a>(string $string, string $encoding = null)
         
                                             <p>Checks whether or not the input string contains only alphabetic chars</p>                </div>
                 <div class="col-md-2"></div>
@@ -334,7 +324,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isAlphanumeric">isAlphanumeric</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isAlphanumeric">isAlphanumeric</a>(string $string, string $encoding = null)
         
                                             <p>Checks whether or not the input string contains only alphanumeric chars</p>                </div>
                 <div class="col-md-2"></div>
@@ -344,7 +334,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isBlank">isBlank</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isBlank">isBlank</a>(string $string, string $encoding = null)
         
                                             <p>Checks whether or not the input string contains only whitespace chars</p>                </div>
                 <div class="col-md-2"></div>
@@ -354,9 +344,20 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isHexadecimal">isHexadecimal</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isHexadecimal">isHexadecimal</a>(string $string)
         
                                             <p>Checks whether or not the input string contains only hexadecimal chars</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isBinary">isBinary</a>(string $string)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -364,7 +365,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isJson">isJson</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isJson">isJson</a>(string $string, string $encoding = null)
         
                                             <p>Checks if the string is JSON</p>                </div>
                 <div class="col-md-2"></div>
@@ -374,7 +375,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isUpperCase">isUpperCase</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isUpperCase">isUpperCase</a>(string $string, string $encoding = null)
         
                                             <p>Checks whether or not the input string contains only upper case characters</p>                </div>
                 <div class="col-md-2"></div>
@@ -384,7 +385,7 @@ search for the start string.</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_toUpperCase">toUpperCase</a>(string $string, string|null $encoding = null)
+                    <a href="#method_toUpperCase">toUpperCase</a>(string $string, string $encoding = null)
         
                                             <p>Converts all characters in the string to uppercase</p>                </div>
                 <div class="col-md-2"></div>
@@ -394,7 +395,7 @@ search for the start string.</p>                </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isLowerCase">isLowerCase</a>(string $string, string|null $encoding = null)
+                    <a href="#method_isLowerCase">isLowerCase</a>(string $string, string $encoding = null)
         
                                             <p>Checks whether or not the input string contains only lower case characters</p>                </div>
                 <div class="col-md-2"></div>
@@ -407,16 +408,6 @@ search for the start string.</p>                </div>
                     <a href="#method_toLowerCase">toLowerCase</a>(string $string, string|null $encoding = null)
         
                                             <p>Converts all characters in the string to uppercase</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;bool
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isSerialized">isSerialized</a>(string $string)
-        
-                                            <p>Checks whether or not the input string is serialized</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -434,7 +425,7 @@ search for the start string.</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getEncoding">getEncoding</a>(string|null $encoding = null)
+                    <a href="#method_getEncoding">getEncoding</a>(string $encoding = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -475,39 +466,19 @@ search for the start string.</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_toSpaces">toSpaces</a>(string $string, int $tabLength = 4)
-        
-                                            <p>Converts each tab in the string to given number of spaces</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toTabs">toTabs</a>(string $string, int $tabLength = 4)
-        
-                                            <p>Converts each occurrence of given consecutive number of spaces  to a tab</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toTitleCase">toTitleCase</a>(string $string, string|null $encoding = null)
-        
-                                            <p>Converts the first character of each word in the string to uppercase</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_toString">toString</a>(mixed $var)
         
                                             <p>Forces a string representation from any type of input parameter</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseInt">parseInt</a>(string $flags)
+        
+                                            <p>Parses the given flags type to an integer</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -739,7 +710,7 @@ search for the start string.</p>                </div>
                     <h3 id="method_split">
         <div class="location">at         line 102</div>
         <code>        static            string[]
-    <strong>split</strong>(string $string, string $pattern, int $limit = -1, $encoding = null)
+    <strong>split</strong>(string $string, string $pattern, int $limit = -1, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -769,7 +740,7 @@ results.</p>                            </div>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td></td>
             </tr>
@@ -1307,7 +1278,7 @@ by setting $caseSensitive to false.</p>                            </div>
                     <h3 id="method_charAt">
         <div class="location">at         line 298</div>
         <code>        static            string|null
-    <strong>charAt</strong>(string $string, int $index, string|null $encoding = null)
+    <strong>charAt</strong>(string $string, int $index, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1331,7 +1302,7 @@ by setting $caseSensitive to false.</p>                            </div>
                 <td>position of the character</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1358,7 +1329,7 @@ by setting $caseSensitive to false.</p>                            </div>
                     <h3 id="method_chars">
         <div class="location">at         line 315</div>
         <code>        static            array
-    <strong>chars</strong>(string $string, string|null $encoding = null)
+    <strong>chars</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1377,7 +1348,7 @@ by setting $caseSensitive to false.</p>                            </div>
                 <td>the input string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1404,7 +1375,7 @@ by setting $caseSensitive to false.</p>                            </div>
                     <h3 id="method_indexOf">
         <div class="location">at         line 338</div>
         <code>        static            int|bool
-    <strong>indexOf</strong>(string $string, string $needle, int $offset, string|null $encoding = null)
+    <strong>indexOf</strong>(string $string, string $needle, int $offset, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1434,7 +1405,7 @@ which to begin the search.</p>                            </div>
                 <td>Offset from which to search</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1461,7 +1432,7 @@ which to begin the search.</p>                            </div>
                     <h3 id="method_between">
         <div class="location">at         line 356</div>
         <code>        static            string
-    <strong>between</strong>(string $string, string $start, string $end, int $offset, string|null $encoding = null)
+    <strong>between</strong>(string $string, string $start, string $end, int $offset, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1497,7 +1468,7 @@ search for the start string.</p>                                                
                 <td>Index from which to begin the search</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1564,7 +1535,7 @@ search for the start string.</p>                                                
                     <h3 id="method_length">
         <div class="location">at         line 388</div>
         <code>        static            int
-    <strong>length</strong>(string $str, string|null $encoding = null)
+    <strong>length</strong>(string $str, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1583,7 +1554,7 @@ search for the start string.</p>                                                
                 <td>a string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1607,66 +1578,10 @@ search for the start string.</p>                                                
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_lengthBetween">
-        <div class="location">at         line 402</div>
-        <code>        static            boolean
-    <strong>lengthBetween</strong>(string $str, int $lower, int $upper, string|null $encoding = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Determines if the string length is on a given closed interval</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$str</td>
-                <td>checked string</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$lower</td>
-                <td>lower limit</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$upper</td>
-                <td>upper limit</td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$encoding</td>
-                <td>the character encoding parameter;
-               Defaults to <code>mb_internal_encoding()</code></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the string length is on a given closed interval, false otherwise.</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_isAlpha">
-        <div class="location">at         line 415</div>
+        <div class="location">at         line 400</div>
         <code>        static            bool
-    <strong>isAlpha</strong>(string $string, string|null $encoding = null)
+    <strong>isAlpha</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1685,7 +1600,7 @@ search for the start string.</p>                                                
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1710,9 +1625,9 @@ search for the start string.</p>                                                
             </div>
                     <div class="method-item">
                     <h3 id="method_isAlphanumeric">
-        <div class="location">at         line 427</div>
+        <div class="location">at         line 412</div>
         <code>        static            bool
-    <strong>isAlphanumeric</strong>(string $string, string|null $encoding = null)
+    <strong>isAlphanumeric</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1731,7 +1646,7 @@ search for the start string.</p>                                                
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1756,9 +1671,9 @@ search for the start string.</p>                                                
             </div>
                     <div class="method-item">
                     <h3 id="method_isBlank">
-        <div class="location">at         line 439</div>
+        <div class="location">at         line 424</div>
         <code>        static            bool
-    <strong>isBlank</strong>(string $string, string|null $encoding = null)
+    <strong>isBlank</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1777,7 +1692,7 @@ search for the start string.</p>                                                
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1802,9 +1717,9 @@ search for the start string.</p>                                                
             </div>
                     <div class="method-item">
                     <h3 id="method_isHexadecimal">
-        <div class="location">at         line 451</div>
+        <div class="location">at         line 434</div>
         <code>        static            bool
-    <strong>isHexadecimal</strong>(string $string, string|null $encoding = null)
+    <strong>isHexadecimal</strong>(string $string)
         </code>
     </h3>
     <div class="details">
@@ -1821,12 +1736,6 @@ search for the start string.</p>                                                
                 <td>string</td>
                 <td>$string</td>
                 <td>checked string</td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$encoding</td>
-                <td>the character encoding parameter;
-               Defaults to <code>mb_internal_encoding()</code></td>
             </tr>
             </table>
 
@@ -1847,10 +1756,39 @@ search for the start string.</p>                                                
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isBinary">
+        <div class="location">at         line 438</div>
+        <code>        static            
+    <strong>isBinary</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_isJson">
-        <div class="location">at         line 466</div>
+        <div class="location">at         line 453</div>
         <code>        static            bool
-    <strong>isJson</strong>(string $string, string|null $encoding = null)
+    <strong>isJson</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1870,7 +1808,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1895,9 +1833,9 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_isUpperCase">
-        <div class="location">at         line 482</div>
+        <div class="location">at         line 469</div>
         <code>        static            bool
-    <strong>isUpperCase</strong>(string $string, string|null $encoding = null)
+    <strong>isUpperCase</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1916,7 +1854,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1941,9 +1879,9 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_toUpperCase">
-        <div class="location">at         line 494</div>
+        <div class="location">at         line 481</div>
         <code>        static            string
-    <strong>toUpperCase</strong>(string $string, string|null $encoding = null)
+    <strong>toUpperCase</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -1962,7 +1900,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
                 <td>the input string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -1987,9 +1925,9 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_isLowerCase">
-        <div class="location">at         line 506</div>
+        <div class="location">at         line 493</div>
         <code>        static            bool
-    <strong>isLowerCase</strong>(string $string, string|null $encoding = null)
+    <strong>isLowerCase</strong>(string $string, string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -2008,7 +1946,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
                 <td>checked string</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td>the character encoding parameter;
                Defaults to <code>mb_internal_encoding()</code></td>
@@ -2033,7 +1971,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_toLowerCase">
-        <div class="location">at         line 518</div>
+        <div class="location">at         line 505</div>
         <code>        static            string
     <strong>toLowerCase</strong>(string $string, string|null $encoding = null)
         </code>
@@ -2078,48 +2016,8 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isSerialized">
-        <div class="location">at         line 528</div>
-        <code>        static            bool
-    <strong>isSerialized</strong>(string $string)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether or not the input string is serialized</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$string</td>
-                <td>checked string</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td>returns true if the string is serialized, false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_random">
-        <div class="location">at         line 538</div>
+        <div class="location">at         line 515</div>
         <code>        static            string
     <strong>random</strong>(int $length = 16)
         </code>
@@ -2159,9 +2057,9 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_getEncoding">
-        <div class="location">at         line 547</div>
+        <div class="location">at         line 524</div>
         <code>        static            string
-    <strong>getEncoding</strong>(string|null $encoding = null)
+    <strong>getEncoding</strong>(string $encoding = null)
         </code>
     </h3>
     <div class="details">
@@ -2173,7 +2071,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$encoding</td>
                 <td></td>
             </tr>
@@ -2197,7 +2095,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_surround">
-        <div class="location">at         line 563</div>
+        <div class="location">at         line 540</div>
         <code>        static            string
     <strong>surround</strong>(string $string, string $before = &quot;&#039;&quot;, string $after = null)
         </code>
@@ -2247,7 +2145,7 @@ other JSON parsers, in that an empty string is not considered valid JSON.</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_htmlDecode">
-        <div class="location">at         line 584</div>
+        <div class="location">at         line 561</div>
         <code>        static            string
     <strong>htmlDecode</strong>(string $string, int $flags = ENT_QUOTES, string $encoding = null)
         </code>
@@ -2304,7 +2202,7 @@ $link   http://fi1.php.net/manual/en/function.html-entity-decode.php html_entity
             </div>
                     <div class="method-item">
                     <h3 id="method_htmlEncode">
-        <div class="location">at         line 603</div>
+        <div class="location">at         line 580</div>
         <code>        static            string
     <strong>htmlEncode</strong>(string $string, int $flags = ENT_COMPAT, string $encoding = null)
         </code>
@@ -2361,144 +2259,8 @@ $link   http://php.net/manual/en/function.htmlentities.php htmlentities (PHP)</t
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toSpaces">
-        <div class="location">at         line 616</div>
-        <code>        static            string
-    <strong>toSpaces</strong>(string $string, int $tabLength = 4)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Converts each tab in the string to given number of spaces</p>                    <p>By default, each tab is converted to <code>4</code> consecutive spaces.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$string</td>
-                <td>the input string</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$tabLength</td>
-                <td>Number of spaces to replace each tab with</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>a string whose tabs are switched to spaces</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_toTabs">
-        <div class="location">at         line 630</div>
-        <code>        static            string
-    <strong>toTabs</strong>(string $string, int $tabLength = 4)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Converts each occurrence of given consecutive number of spaces  to a tab</p>                    <p>By default, each <code>4</code> consecutive spaces are converted to a tab.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$string</td>
-                <td>the input string</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$tabLength</td>
-                <td>Number of spaces to replace with a tab</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>A string whose spaces are switched to tabs</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_toTitleCase">
-        <div class="location">at         line 643</div>
-        <code>        static            string
-    <strong>toTitleCase</strong>(string $string, string|null $encoding = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Converts the first character of each word in the string to uppercase</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$string</td>
-                <td>the input string</td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$encoding</td>
-                <td>the character encoding parameter;
-               Defaults to <code>mb_internal_encoding()</code></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>input string with all characters being title-cased</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_toString">
-        <div class="location">at         line 653</div>
+        <div class="location">at         line 590</div>
         <code>        static            string
     <strong>toString</strong>(mixed $var)
         </code>
@@ -2537,8 +2299,57 @@ $link   http://php.net/manual/en/function.htmlentities.php htmlentities (PHP)</t
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_parseInt">
+        <div class="location">at         line 614</div>
+        <code>        static            int
+    <strong>parseInt</strong>(string $flags)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Parses the given flags type to an integer</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$flags</td>
+                <td>the flags</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>parsed flags value</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Stdlib\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if the value given can not be parsed</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">at         line 676</div>
+        <div class="location">at         line 636</div>
         <code>        static            string
     <strong>vsprintf</strong>(string $format, array $data)
         </code>

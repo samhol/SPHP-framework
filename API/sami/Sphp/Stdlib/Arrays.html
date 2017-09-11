@@ -224,17 +224,6 @@ between pairs and the array to implode.</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getkeypath">getkeypath</a>($arr, $lookup)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8 type">
@@ -286,10 +275,10 @@ order starting at $base</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;boolean
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSequential">setSequential</a>(array $arr, mixed $base, int $step = 1)
+                    <a href="#method_setSequential">setSequential</a>(array $arr, int $base, int $step = 1)
         
                                             <p>Returns the input array values in a sequential array</p>                </div>
                 <div class="col-md-2"></div>
@@ -299,7 +288,7 @@ order starting at $base</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_implode">implode</a>(array $arr, string $glue = &quot;&quot;, string|null $lastGlue = null)
+                    <a href="#method_implode">implode</a>(array $arr, string $glue = &#039;&#039;, string $lastGlue = null)
         
                                             <p>Implodes all elements of an (optionally multidimensional) array with a string</p>                </div>
                 <div class="col-md-2"></div>
@@ -316,7 +305,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;mixed[]
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_flatten">flatten</a>(array $array)
@@ -332,7 +321,7 @@ order starting at $base</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_pointToKey">
-        <div class="location">at         line 31</div>
+        <div class="location">at         line 33</div>
         <code>        static            array
     <strong>pointToKey</strong>(array $array, mixed $key)
         </code>
@@ -374,7 +363,7 @@ order starting at $base</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
                 <td>if the key does not exist in the array</td>
             </tr>
             </table>
@@ -386,7 +375,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_pointToValue">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 52</div>
         <code>        static            array
     <strong>pointToValue</strong>(array $array, mixed $value)
         </code>
@@ -428,7 +417,7 @@ order starting at $base</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
                 <td>if the value does not exist in the array</td>
             </tr>
             </table>
@@ -440,7 +429,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 67</div>
+        <div class="location">at         line 69</div>
         <code>        static            mixed
     <strong>next</strong>(array $array, mixed $current)
         </code>
@@ -483,7 +472,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_prev">
-        <div class="location">at         line 86</div>
+        <div class="location">at         line 88</div>
         <code>        static            mixed
     <strong>prev</strong>(array $array, mixed $current)
         </code>
@@ -526,7 +515,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_inArray">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 107</div>
         <code>        static            boolean
     <strong>inArray</strong>(mixed $needle, array $haystack)
         </code>
@@ -569,7 +558,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_filterRecursive">
-        <div class="location">at         line 126</div>
+        <div class="location">at         line 128</div>
         <code>        static            array
     <strong>filterRecursive</strong>(mixed $input, null|callable $callback = null)
         </code>
@@ -612,7 +601,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_recursiveDelete">
-        <div class="location">at         line 148</div>
+        <div class="location">at         line 150</div>
         <code>        static            array
     <strong>recursiveDelete</strong>(array $array, callable $callback, <abbr title="Sphp\Stdlib\type">type</abbr> $userdata = null)
         </code>
@@ -660,7 +649,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_diff">
-        <div class="location">at         line 168</div>
+        <div class="location">at         line 170</div>
         <code>        static            array
     <strong>diff</strong>(array $array1, array $array2)
         </code>
@@ -705,7 +694,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_multiMap">
-        <div class="location">at         line 200</div>
+        <div class="location">at         line 202</div>
         <code>        static            mixed[]
     <strong>multiMap</strong>(callable $callback, array $arr)
         </code>
@@ -752,7 +741,7 @@ order starting at $base</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_implodeWithKeys">
-        <div class="location">at         line 217</div>
+        <div class="location">at         line 219</div>
         <code>        static            string
     <strong>implodeWithKeys</strong>(array $array, string $separator = &#039;, &#039;, string $glue = &#039; =&gt; &#039;)
         </code>
@@ -803,7 +792,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_valuesToKeys">
-        <div class="location">at         line 236</div>
+        <div class="location">at         line 238</div>
         <code>        static            array
     <strong>valuesToKeys</strong>(array $array)
         </code>
@@ -848,7 +837,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_test">
-        <div class="location">at         line 251</div>
+        <div class="location">at         line 253</div>
         <code>        static            boolean
     <strong>test</strong>(array $array, callable $rule)
         </code>
@@ -893,42 +882,8 @@ between pairs and the array to implode.</p>                                     
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getkeypath">
-        <div class="location">at         line 260</div>
-        <code>        static            
-    <strong>getkeypath</strong>($arr, $lookup)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$arr</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$lookup</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 285</div>
+        <div class="location">at         line 269</div>
         <code>        static            mixed
     <strong>getValue</strong>(array $array, mixed|mixed[] $path)
         </code>
@@ -973,7 +928,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isLike">
-        <div class="location">at         line 300</div>
+        <div class="location">at         line 284</div>
         <code>        static            string[]
     <strong>isLike</strong>(array $arr, string $needle)
         </code>
@@ -1018,7 +973,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_keyContains">
-        <div class="location">at         line 313</div>
+        <div class="location">at         line 297</div>
         <code>        static            string[]
     <strong>keyContains</strong>(array $arr, string $needle)
         </code>
@@ -1063,7 +1018,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isIndexed">
-        <div class="location">at         line 329</div>
+        <div class="location">at         line 313</div>
         <code>        static            boolean
     <strong>isIndexed</strong>(array $arr)
         </code>
@@ -1103,7 +1058,7 @@ between pairs and the array to implode.</p>                                     
             </div>
                     <div class="method-item">
                     <h3 id="method_isSequential">
-        <div class="location">at         line 343</div>
+        <div class="location">at         line 327</div>
         <code>        static            boolean
     <strong>isSequential</strong>(array $arr, int $base)
         </code>
@@ -1149,9 +1104,9 @@ order starting at $base</p>                                                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_setSequential">
-        <div class="location">at         line 357</div>
-        <code>        static            boolean
-    <strong>setSequential</strong>(array $arr, mixed $base, int $step = 1)
+        <div class="location">at         line 341</div>
+        <code>        static            array
+    <strong>setSequential</strong>(array $arr, int $base, int $step = 1)
         </code>
     </h3>
     <div class="details">
@@ -1170,7 +1125,7 @@ order starting at $base</p>                                                </div
                 <td>checked array</td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>int</td>
                 <td>$base</td>
                 <td>the starting index of the sequence</td>
             </tr>
@@ -1186,8 +1141,8 @@ order starting at $base</p>                                                </div
 
                     <table class="table table-condensed">
         <tr>
-            <td>boolean</td>
-            <td>true if conditions hold and false otherwise</td>
+            <td>array</td>
+            <td>sequential array</td>
         </tr>
     </table>
 
@@ -1199,9 +1154,9 @@ order starting at $base</p>                                                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_implode">
-        <div class="location">at         line 383</div>
+        <div class="location">at         line 367</div>
         <code>        static            string
-    <strong>implode</strong>(array $arr, string $glue = &quot;&quot;, string|null $lastGlue = null)
+    <strong>implode</strong>(array $arr, string $glue = &#039;&#039;, string $lastGlue = null)
         </code>
     </h3>
     <div class="details">
@@ -1234,7 +1189,7 @@ given. (Otherwise uses the $glue string)</li>
                 <td>string between each array element</td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$lastGlue</td>
                 <td>optional string between the last two array elements</td>
             </tr>
@@ -1258,7 +1213,7 @@ given. (Otherwise uses the $glue string)</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location">at         line 417</div>
+        <div class="location">at         line 401</div>
         <code>        static            array
     <strong>copy</strong>(array $arr)
         </code>
@@ -1304,8 +1259,8 @@ given. (Otherwise uses the $glue string)</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_flatten">
-        <div class="location">at         line 439</div>
-        <code>        static            mixed[]
+        <div class="location">at         line 423</div>
+        <code>        static            array
     <strong>flatten</strong>(array $array)
         </code>
     </h3>
@@ -1331,7 +1286,7 @@ given. (Otherwise uses the $glue string)</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed[]</td>
+            <td>array</td>
             <td>the one dimensional result array</td>
         </tr>
     </table>

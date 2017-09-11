@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>AbstractQuery</strong>        extends <a href="../../Sphp/Database/ConditionalStatement.html"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
+        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../Sphp/Database/Query.html"><abbr title="Sphp\Database\Query">Query</abbr></a>
 </p>
 
         
@@ -137,6 +137,39 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTarget">getTarget</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_getTarget"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTarget">setTarget</a>(array $target)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_setTarget"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_targetToString">targetToString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_targetToString"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
                 </div>
                 <div class="col-md-8 type">
@@ -157,33 +190,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getCurrentDriver">getCurrentDriver</a>()
-        
-                                            <p>Returns the name of the currently used database driver</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_getCurrentDriver"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isMicrosoftDB">isMicrosoftDB</a>()
-        
-                                            <p>Returns the name of the currently used database driver</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_isMicrosoftDB"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___clone">__clone</a>()
         
                                             <p>Clones the object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method___clone"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -603,6 +616,26 @@
                                             <p>Executes the SQL query in the given database and returns the result rows as an array</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetchColumn">fetchColumn</a>(int $colNum)
+        
+                                            <p>Executes the SQL query in the given database and returns the result rows as an array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetchFirstRow">fetchFirstRow</a>()
+        
+                                            <p>Executes the SQL query in the given database and returns the result rows as an array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -611,7 +644,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 74</div>
+        <div class="location">at         line 73</div>
         <code>                    
     <strong>__construct</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $db)
         </code>
@@ -664,7 +697,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getPDO">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 49</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 54</div>
         <code>                    <a target="_blank" href="http://php.net/PDO">PDO</a>
     <strong>getPDO</strong>()
         </code>
@@ -694,7 +727,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setPDO">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_setPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 53</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_setPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 58</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>setPDO</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
@@ -733,8 +766,75 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getTarget">
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getTarget"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 65</div>
+        <code>                    
+    <strong>getTarget</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTarget">
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_setTarget"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 69</div>
+        <code>                    
+    <strong>setTarget</strong>(array $target)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$target</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_targetToString">
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_targetToString"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 74</div>
+        <code>            protected        
+    <strong>targetToString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getStatement">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getStatement"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getStatement"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 78</div>
         <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
     <strong>getStatement</strong>()
         </code>
@@ -773,7 +873,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_execute"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 70</div>
+        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_execute"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 88</div>
         <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
     <strong>execute</strong>()
         </code>
@@ -811,68 +911,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCurrentDriver">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getCurrentDriver"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 86</div>
-        <code>                    string
-    <strong>getCurrentDriver</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the name of the currently used database driver</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the name of the currently used database driver</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isMicrosoftDB">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_isMicrosoftDB"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 95</div>
-        <code>                    string
-    <strong>isMicrosoftDB</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the name of the currently used database driver</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the name of the currently used database driver</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method___clone"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 62</div>
+        <div class="location">at         line 79</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -1286,7 +1326,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 91</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>get</strong>(string $columns)
         </code>
@@ -1327,7 +1367,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumns">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 96</div>
         <code>                    
     <strong>getColumns</strong>()
         </code>
@@ -1346,7 +1386,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_from">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 109</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>from</strong>(string $tables)
         </code>
@@ -1387,7 +1427,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_fromToString">
-        <div class="location">at         line 110</div>
+        <div class="location">at         line 114</div>
         <code>            protected        
     <strong>fromToString</strong>()
         </code>
@@ -1406,7 +1446,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFrom">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 122</div>
         <code>                    
     <strong>getFrom</strong>()
         </code>
@@ -1425,7 +1465,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getGroupBy">
-        <div class="location">at         line 123</div>
+        <div class="location">at         line 126</div>
         <code>                    
     <strong>getGroupBy</strong>()
         </code>
@@ -1444,7 +1484,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOrderBy">
-        <div class="location">at         line 127</div>
+        <div class="location">at         line 130</div>
         <code>                    
     <strong>getOrderBy</strong>()
         </code>
@@ -1463,7 +1503,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_groupBy">
-        <div class="location">at         line 143</div>
+        <div class="location">at         line 146</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>groupBy</strong>(string $columns)
         </code>
@@ -1507,7 +1547,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_groupByToString">
-        <div class="location">at         line 148</div>
+        <div class="location">at         line 151</div>
         <code>            protected        
     <strong>groupByToString</strong>()
         </code>
@@ -1526,7 +1566,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_having">
-        <div class="location">at         line 172</div>
+        <div class="location">at         line 174</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>having</strong>($rules)
         </code>
@@ -1576,7 +1616,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_setHaving">
-        <div class="location">at         line 186</div>
+        <div class="location">at         line 188</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>setHaving</strong>(<a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a> $c)
         </code>
@@ -1616,7 +1656,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getHaving">
-        <div class="location">at         line 195</div>
+        <div class="location">at         line 197</div>
         <code>                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
     <strong>getHaving</strong>()
         </code>
@@ -1644,7 +1684,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_andHaving">
-        <div class="location">at         line 214</div>
+        <div class="location">at         line 216</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>andHaving</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -1693,7 +1733,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_andNotHaving">
-        <div class="location">at         line 227</div>
+        <div class="location">at         line 229</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>andNotHaving</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -1742,7 +1782,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orHaving">
-        <div class="location">at         line 240</div>
+        <div class="location">at         line 242</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>orHaving</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -1791,7 +1831,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orNotHaving">
-        <div class="location">at         line 253</div>
+        <div class="location">at         line 255</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>orNotHaving</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -1840,7 +1880,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_havingToString">
-        <div class="location">at         line 259</div>
+        <div class="location">at         line 261</div>
         <code>            protected        
     <strong>havingToString</strong>()
         </code>
@@ -1859,7 +1899,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orderBy">
-        <div class="location">at         line 286</div>
+        <div class="location">at         line 289</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>orderBy</strong>(string $columns)
         </code>
@@ -1913,7 +1953,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orderByToString">
-        <div class="location">at         line 291</div>
+        <div class="location">at         line 294</div>
         <code>            protected        
     <strong>orderByToString</strong>()
         </code>
@@ -1932,7 +1972,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLimit">
-        <div class="location">at         line 299</div>
+        <div class="location">at         line 302</div>
         <code>                    
     <strong>getLimit</strong>()
         </code>
@@ -1951,7 +1991,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location">at         line 303</div>
+        <div class="location">at         line 306</div>
         <code>                    
     <strong>getOffset</strong>()
         </code>
@@ -1970,7 +2010,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_setLimit">
-        <div class="location">at         line 307</div>
+        <div class="location">at         line 310</div>
         <code>                    
     <strong>setLimit</strong>(int $limit)
         </code>
@@ -1999,7 +2039,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOffset">
-        <div class="location">at         line 312</div>
+        <div class="location">at         line 315</div>
         <code>                    
     <strong>setOffset</strong>(int $offset)
         </code>
@@ -2028,7 +2068,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasLimit">
-        <div class="location">at         line 317</div>
+        <div class="location">at         line 320</div>
         <code>                    
     <strong>hasLimit</strong>()
         </code>
@@ -2047,7 +2087,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_limit">
-        <div class="location">at         line 341</div>
+        <div class="location">at         line 344</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>limit</strong>(int $limit, int $offset)
         </code>
@@ -2106,7 +2146,7 @@ this method is currently supported  only for the following engines</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 381</div>
+        <div class="location">at         line 362</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -2145,7 +2185,7 @@ this method is currently supported  only for the following engines</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 392</div>
+        <div class="location">at         line 373</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -2184,7 +2224,7 @@ this method is currently supported  only for the following engines</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 408</div>
+        <div class="location">at         line 388</div>
         <code>                    <a target="_blank" href="http://php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
@@ -2212,7 +2252,7 @@ this method is currently supported  only for the following engines</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchRows">
-        <div class="location">at         line 417</div>
+        <div class="location">at         line 397</div>
         <code>                    
     <strong>fetchRows</strong>(int $rowCount = null, int $offset)
         </code>
@@ -2246,7 +2286,7 @@ this method is currently supported  only for the following engines</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchAll">
-        <div class="location">at         line 430</div>
+        <div class="location">at         line 410</div>
         <code>                    mixed[]
     <strong>fetchAll</strong>(int $fetch_style = PDO::FETCH_ASSOC)
         </code>
@@ -2268,6 +2308,94 @@ this method is currently supported  only for the following engines</p>
             </tr>
             </table>
 
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed[]</td>
+            <td>result rows as an array</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetchColumn">
+        <div class="location">at         line 421</div>
+        <code>                    mixed[]
+    <strong>fetchColumn</strong>(int $colNum)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Executes the SQL query in the given database and returns the result rows as an array</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$colNum</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed[]</td>
+            <td>result rows as an array</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetchFirstRow">
+        <div class="location">at         line 432</div>
+        <code>                    mixed[]
+    <strong>fetchFirstRow</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Executes the SQL query in the given database and returns the result rows as an array</p>                                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 

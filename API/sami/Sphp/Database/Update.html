@@ -65,7 +65,7 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
+                <li><span class="label label-default">interface</span></li>
                         <li><a href="../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../Sphp/Database.html">Database</a></li><li class="backslash">\</li><li>Update</li>
             </ol>
         </div>
@@ -78,9 +78,9 @@
         </h1>
     </div>
 
-    <p>    class
-    <strong>Update</strong>        extends <a href="../../Sphp/Database/ConditionalStatement.html"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a>        implements
-        <a href="../../Sphp/Database/DataManipulationStatement.html"><abbr title="Sphp\Database\DataManipulationStatement">DataManipulationStatement</abbr></a>
+    <p>    interface
+    <strong>Update</strong>        implements
+        <a href="../../Sphp/Database/DataManipulationStatement.html"><abbr title="Sphp\Database\DataManipulationStatement">DataManipulationStatement</abbr></a>, <a href="../../Sphp/Database/ConditionalStatementInterface.html"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a>
 </p>
 
         
@@ -97,23 +97,13 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="Sphp\Database\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $db, <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a> $where = null)
+                    <a href="#method_setPDO">setPDO</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         
-                                            <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___destruct">__destruct</a>()
-        
-                                            <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method___destruct"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                                            <p>Sets the connection object between PHP and a database server</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_setPDO"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -123,17 +113,17 @@
                     <a href="#method_getPDO">getPDO</a>()
         
                                             <p>Returns the current connection object between PHP and a database server</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_getPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_getPDO"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Database\$this">$this</abbr>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPDO">setPDO</a>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
+                    <a href="#method_statementToString">statementToString</a>()
         
-                                            <p>Sets the connection object between PHP and a database server</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_setPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+                                            <p>Returns the SQL statement as a string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_statementToString"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -143,7 +133,17 @@
                     <a href="#method_getStatement">getStatement</a>()
         
                                             <p>Returns the database statement object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_getStatement"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_getStatement"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getParams">getParams</a>()
+        
+                                            <p>Returns the parameter handler</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_getParams"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -153,37 +153,17 @@
                     <a href="#method_execute">execute</a>()
         
                                             <p>Executes the database statement</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_execute"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/StatementInterface.html#method_execute"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getCurrentDriver">getCurrentDriver</a>()
+                    <a href="#method_affectRows">affectRows</a>()
         
-                                            <p>Returns the name of the currently used database driver</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_getCurrentDriver"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isMicrosoftDB">isMicrosoftDB</a>()
-        
-                                            <p>Returns the name of the currently used database driver</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/AbstractStatement.html#method_isMicrosoftDB"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
-        
-                                            <p>Clones the object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method___clone"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                                            <p>Executes the data manipulation SQL statement, returning the number of affected rows</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/DataManipulationStatement.html#method_affectRows"><abbr title="Sphp\Database\DataManipulationStatement">DataManipulationStatement</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -193,7 +173,7 @@
                     <a href="#method_setWhere">setWhere</a>(<a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a> $c)
         
                                             <p>Sets The WHERE clause.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_setWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_setWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -204,7 +184,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_getWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_getWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -214,7 +194,7 @@
                     <a href="#method_where">where</a>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         
                                             <p>Adds rules to the WHERE conditions component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_where"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_where"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -224,7 +204,7 @@
                     <a href="#method_andWhere">andWhere</a>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         
                                             <p>Appends SQL conditions by using logical AND as a conjunction</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_andWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_andWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -234,7 +214,7 @@
                     <a href="#method_andNotWhere">andNotWhere</a>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         
                                             <p>Appends SQL conditions by using AND NOT as a conjunction</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_andNotWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_andNotWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -244,7 +224,7 @@
                     <a href="#method_orWhere">orWhere</a>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         
                                             <p>Appends SQL conditions by using logical OR as a conjunction</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_orWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_orWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -254,7 +234,7 @@
                     <a href="#method_orNotWhere">orNotWhere</a>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         
                                             <p>Appends SQL conditions by using logical OR NOT as a conjunction</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_orNotWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_orNotWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -264,28 +244,7 @@
                     <a href="#method_hasConditions">hasConditions</a>()
         
                                             <p>Checks if there are any SQL conditions set</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_hasConditions"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_conditionsToString">conditionsToString</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatement.html#method_conditionsToString"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getParams">getParams</a>()
-        
-                                            <p>Returns the parameter handler</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Database/ConditionalStatementInterface.html#method_hasConditions"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -307,37 +266,6 @@
                                             <p>Sets the updating data</p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_valuesToString">valuesToString</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_statementToString">statementToString</a>()
-        
-                                            <p>Returns the SQL statement as a string</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_affectRows">affectRows</a>()
-        
-                                            <p>Executes the data manipulation SQL statement, returning the number of affected rows</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -345,96 +273,8 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 49</div>
-        <code>                    
-    <strong>__construct</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $db, <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a> $where = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" href="http://php.net/PDO">PDO</a></td>
-                <td>$db</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a></td>
-                <td>$where</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___destruct">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method___destruct"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 50</div>
-        <code>                    
-    <strong>__destruct</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
-to a particular object, or in any order during the shutdown sequence.</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getPDO">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 49</div>
-        <code>                    <a target="_blank" href="http://php.net/PDO">PDO</a>
-    <strong>getPDO</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the current connection object between PHP and a database server</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/PDO">PDO</a></td>
-            <td>connection object between PHP and a database server</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setPDO">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_setPDO"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 53</div>
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_setPDO"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 28</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>setPDO</strong>(<a target="_blank" href="http://php.net/PDO">PDO</a> $pdo)
         </code>
@@ -473,8 +313,68 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getPDO">
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_getPDO"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 36</div>
+        <code>                    <a target="_blank" href="http://php.net/PDO">PDO</a>
+    <strong>getPDO</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current connection object between PHP and a database server</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/PDO">PDO</a></td>
+            <td>connection object between PHP and a database server</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_statementToString">
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_statementToString"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 43</div>
+        <code>                    string
+    <strong>statementToString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the SQL statement as a string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the SQL statement as a string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getStatement">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getStatement"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_getStatement"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 52</div>
         <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
     <strong>getStatement</strong>()
         </code>
@@ -512,8 +412,38 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getParams">
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_getParams"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 59</div>
+        <code>                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
+    <strong>getParams</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the parameter handler</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a></td>
+            <td>the parameter handler</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_execute"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 70</div>
+        <div class="location">in <a href="../../Sphp/Database/StatementInterface.html#method_execute"><abbr title="Sphp\Database\StatementInterface">StatementInterface</abbr></a> at         line 68</div>
         <code>                    <a target="_blank" href="http://php.net/PDOStatement">PDOStatement</a>
     <strong>execute</strong>()
         </code>
@@ -551,10 +481,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCurrentDriver">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_getCurrentDriver"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 86</div>
-        <code>                    string
-    <strong>getCurrentDriver</strong>()
+                    <h3 id="method_affectRows">
+        <div class="location">in <a href="../../Sphp/Database/DataManipulationStatement.html#method_affectRows"><abbr title="Sphp\Database\DataManipulationStatement">DataManipulationStatement</abbr></a> at         line 27</div>
+        <code>                    int
+    <strong>affectRows</strong>()
         </code>
     </h3>
     <div class="details">
@@ -562,70 +492,28 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the name of the currently used database driver</p>                                                </div>
+                                    <p>Executes the data manipulation SQL statement, returning the number of affected rows</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td>the name of the currently used database driver</td>
+            <td>int</td>
+            <td>the number of affected rows</td>
         </tr>
     </table>
 
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isMicrosoftDB">
-        <div class="location">in <a href="../../Sphp/Database/AbstractStatement.html#method_isMicrosoftDB"><abbr title="Sphp\Database\AbstractStatement">AbstractStatement</abbr></a> at         line 95</div>
-        <code>                    string
-    <strong>isMicrosoftDB</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the name of the currently used database driver</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the name of the currently used database driver</td>
-        </tr>
-    </table>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
+                <td>if there is no database connection or query execution fails</td>
+            </tr>
+            </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method___clone"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 62</div>
-        <code>                    
-    <strong>__clone</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>                            </div>
-                <div class="tags">
-            
-            
             
                     </div>
     </div>
@@ -633,7 +521,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_setWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 75</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_setWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 28</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>setWhere</strong>(<a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a> $c)
         </code>
@@ -673,7 +561,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_getWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 84</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_getWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 34</div>
         <code>                    <a href="../../Sphp/Database/Clause.html"><abbr title="Sphp\Database\Clause">Clause</abbr></a>
     <strong>getWhere</strong>()
         </code>
@@ -701,7 +589,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_where">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_where"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 103</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_where"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 51</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>where</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -751,7 +639,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_andWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_andWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 116</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_andWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 60</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>andWhere</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -800,7 +688,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_andNotWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_andNotWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 129</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_andNotWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 69</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>andNotWhere</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -849,7 +737,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_orWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 142</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_orWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 78</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>orWhere</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -898,7 +786,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_orNotWhere">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_orNotWhere"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 155</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_orNotWhere"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 87</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>orNotWhere</strong>(string|<a href="../../Sphp/Database/RuleInterface.html"><abbr title="Sphp\Database\RuleInterface">RuleInterface</abbr></a>|array $rules)
         </code>
@@ -947,7 +835,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasConditions">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_hasConditions"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 166</div>
+        <div class="location">in <a href="../../Sphp/Database/ConditionalStatementInterface.html#method_hasConditions"><abbr title="Sphp\Database\ConditionalStatementInterface">ConditionalStatementInterface</abbr></a> at         line 94</div>
         <code>                    boolean
     <strong>hasConditions</strong>()
         </code>
@@ -976,57 +864,8 @@ not evaluate to <code>true</code>.</p></li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_conditionsToString">
-        <div class="location">in <a href="../../Sphp/Database/ConditionalStatement.html#method_conditionsToString"><abbr title="Sphp\Database\ConditionalStatement">ConditionalStatement</abbr></a> at         line 170</div>
-        <code>            protected        
-    <strong>conditionsToString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getParams">
-        <div class="location">at         line 77</div>
-        <code>                    <a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a>
-    <strong>getParams</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the parameter handler</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../Sphp/Database/ParameterHandler.html"><abbr title="Sphp\Database\ParameterHandler">ParameterHandler</abbr></a></td>
-            <td>the parameter handler</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_table">
-        <div class="location">at         line 60</div>
+        <div class="location">at         line 26</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>table</strong>(string $table)
         </code>
@@ -1066,7 +905,7 @@ not evaluate to <code>true</code>.</p></li>
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 34</div>
         <code>                    <abbr title="Sphp\Database\$this">$this</abbr>
     <strong>set</strong>(array $data)
         </code>
@@ -1099,94 +938,6 @@ not evaluate to <code>true</code>.</p></li>
     </table>
 
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_valuesToString">
-        <div class="location">at         line 81</div>
-        <code>            protected        
-    <strong>valuesToString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_statementToString">
-        <div class="location">at         line 88</div>
-        <code>                    string
-    <strong>statementToString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the SQL statement as a string</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the SQL statement as a string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_affectRows">
-        <div class="location">at         line 94</div>
-        <code>                    int
-    <strong>affectRows</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Executes the data manipulation SQL statement, returning the number of affected rows</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>the number of affected rows</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" href="http://php.net/PDOException">PDOException</a></td>
-                <td>if there is no database connection or query execution fails</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>

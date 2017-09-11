@@ -135,7 +135,7 @@ $router->execute();
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string|null $url = null)
+                    <a href="#method___construct">__construct</a>(string $url = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -167,7 +167,7 @@ be useful for displaying a 404 page for example.</p>                </div>
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_route">route</a>(string $route, Callable $callback, integer $priority = 10)
+                    <a href="#method_route">route</a>(string $route, Callable $callback, int $priority = 10)
         
                                             <p>Adds a new URL routing rule to the routing table, after converting any of
 our special tokens into proper regular expressions.</p>                </div>
@@ -178,7 +178,7 @@ our special tokens into proper regular expressions.</p>                </div>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getCleanUrl">getCleanUrl</a>(string|null $url = null)
+                    <a href="#method_getCleanUrl">getCleanUrl</a>(string $url = null)
         
                                             <p>Retrieves the part of the URL after the base (Calculated from the location
 of the main application file, such as index.php), excluding the query
@@ -195,7 +195,7 @@ string. Adds a trailing slash.</p>                </div>
                     <h3 id="method___construct">
         <div class="location">at         line 106</div>
         <code>                    
-    <strong>__construct</strong>(string|null $url = null)
+    <strong>__construct</strong>(string $url = null)
         </code>
     </h3>
     <div class="details">
@@ -209,7 +209,7 @@ string. Adds a trailing slash.</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$url</td>
                 <td>optional URL to route</td>
             </tr>
@@ -308,7 +308,7 @@ execute the default function.</p>                            </div>
                     <h3 id="method_route">
         <div class="location">at         line 180</div>
         <code>                    boolean
-    <strong>route</strong>(string $route, Callable $callback, integer $priority = 10)
+    <strong>route</strong>(string $route, Callable $callback, int $priority = 10)
         </code>
     </h3>
     <div class="details">
@@ -333,7 +333,7 @@ our special tokens into proper regular expressions.</p>                         
                 <td></td>
             </tr>
                     <tr>
-                <td>integer</td>
+                <td>int</td>
                 <td>$priority</td>
                 <td></td>
             </tr>
@@ -368,7 +368,7 @@ our special tokens into proper regular expressions.</p>                         
                     <h3 id="method_getCleanUrl">
         <div class="location">at         line 221</div>
         <code>        static            string
-    <strong>getCleanUrl</strong>(string|null $url = null)
+    <strong>getCleanUrl</strong>(string $url = null)
         </code>
     </h3>
     <div class="details">
@@ -389,7 +389,7 @@ assuming that /test/ was the base directory</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$url</td>
                 <td>optional URL to to parse</td>
             </tr>

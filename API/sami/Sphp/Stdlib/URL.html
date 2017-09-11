@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>URL</strong>        implements
-        <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
+        <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" href="http://php.net/JsonSerializable">JsonSerializable</a>
 </p>
 
         
@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string|null $url = null)
+                    <a href="#method___construct">__construct</a>(string $url = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -110,27 +110,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___destruct">__destruct</a>()
-        
-                                            <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
-        
-                                            <p>Clones the object</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___debugInfo">__debugInfo</a>()
+                    <a href="#method_parseURL">parseURL</a>(string $url)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -181,7 +161,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getHost">getHost</a>(boolean $encode = false)
+                    <a href="#method_getHost">getHost</a>(bool $encode = false)
         
                                             <p>Returns the <code>host</code> part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -201,7 +181,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setUser">setUser</a>(string|null $user = null)
+                    <a href="#method_setUser">setUser</a>(string $user = null)
         
                                             <p>Sets the username part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -211,7 +191,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUser">getUser</a>(boolean $encode = false)
+                    <a href="#method_getUser">getUser</a>(bool $encode = false)
         
                                             <p>Returns the user part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -231,7 +211,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPassword">setPassword</a>(string|null $pass = null)
+                    <a href="#method_setPassword">setPassword</a>(string $pass = null)
         
                                             <p>Sets the password part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -241,7 +221,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getPassword">getPassword</a>(boolean $encode = false)
+                    <a href="#method_getPassword">getPassword</a>(bool $encode = false)
         
                                             <p>Returns the password part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -261,7 +241,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPath">setPath</a>(string|null $path = null)
+                    <a href="#method_setPath">setPath</a>(string $path = null)
         
                                             <p>Sets the path part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -271,7 +251,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getPath">getPath</a>(boolean $encode = false)
+                    <a href="#method_getPath">getPath</a>(bool $encode = false)
         
                                             <p>Returns the path part of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -328,7 +308,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string[]
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getParams">getParams</a>()
@@ -381,7 +361,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setFragment">setFragment</a>(string|null $fragment)
+                    <a href="#method_setFragment">setFragment</a>(string $fragment = null)
         
                                             <p>Sets the fragment identifier of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -391,7 +371,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getFragment">getFragment</a>(boolean $encode = false)
+                    <a href="#method_getFragment">getFragment</a>(bool $encode = false)
         
                                             <p>Returns the fragment identifier of the URL</p>                </div>
                 <div class="col-md-2"></div>
@@ -518,6 +498,27 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrentURL">getCurrentURL</a>(int $flags)
+        
+                                            <p>Returns the current URL as an object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     static&nbsp;<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a>
                 </div>
                 <div class="col-md-8 type">
@@ -544,9 +545,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 76</div>
         <code>                    
-    <strong>__construct</strong>(string|null $url = null)
+    <strong>__construct</strong>(string $url = null)
         </code>
     </h3>
     <div class="details">
@@ -560,7 +561,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$url</td>
                 <td>the URL string</td>
             </tr>
@@ -574,53 +575,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___destruct">
+                    <h3 id="method_parseURL">
         <div class="location">at         line 99</div>
-        <code>                    
-    <strong>__destruct</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
-to a particular object, or in any order during the shutdown sequence.</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">at         line 110</div>
-        <code>                    
-    <strong>__clone</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Clones the object</p>                    <p><strong>Note:</strong> Method cannot be called directly!</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___debugInfo">
-        <div class="location">at         line 118</div>
-        <code>                    array
-    <strong>__debugInfo</strong>()
+        <code>            protected        
+    <strong>parseURL</strong>(string $url)
         </code>
     </h3>
     <div class="details">
@@ -628,16 +586,17 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
             
             
                     </div>
@@ -646,7 +605,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setScheme">
-        <div class="location">at         line 133</div>
+        <div class="location">at         line 128</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setScheme</strong>(string $scheme = null)
         </code>
@@ -691,7 +650,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getScheme">
-        <div class="location">at         line 147</div>
+        <div class="location">at         line 142</div>
         <code>                    string
     <strong>getScheme</strong>()
         </code>
@@ -701,7 +660,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the scheme name of the URL</p>                    <p>The scheme is ususally the name of a protocol, defines how the resource
+                                    <p>Returns the scheme name of the URL</p>                    <p>The scheme is usually the name of a protocol, defines how the resource
 will be obtained. Examples include <code>http</code>, <code>https</code>, <code>ftp</code>, <code>file</code> and many
 others. <strong>All schemes are transformed to lowercase.</strong></p>                            </div>
                 <div class="tags">
@@ -723,7 +682,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasScheme">
-        <div class="location">at         line 156</div>
+        <div class="location">at         line 151</div>
         <code>                    boolean
     <strong>hasScheme</strong>()
         </code>
@@ -753,7 +712,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_setHost">
-        <div class="location">at         line 166</div>
+        <div class="location">at         line 161</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setHost</strong>(string $host = null)
         </code>
@@ -793,9 +752,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getHost">
-        <div class="location">at         line 177</div>
+        <div class="location">at         line 172</div>
         <code>                    string
-    <strong>getHost</strong>(boolean $encode = false)
+    <strong>getHost</strong>(bool $encode = false)
         </code>
     </h3>
     <div class="details">
@@ -809,7 +768,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$encode</td>
                 <td>true if the value should be encoded</td>
             </tr>
@@ -833,7 +792,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasHost">
-        <div class="location">at         line 190</div>
+        <div class="location">at         line 185</div>
         <code>                    boolean
     <strong>hasHost</strong>()
         </code>
@@ -863,9 +822,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_setUser">
-        <div class="location">at         line 200</div>
+        <div class="location">at         line 195</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>setUser</strong>(string|null $user = null)
+    <strong>setUser</strong>(string $user = null)
         </code>
     </h3>
     <div class="details">
@@ -879,7 +838,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$user</td>
                 <td></td>
             </tr>
@@ -903,9 +862,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getUser">
-        <div class="location">at         line 211</div>
+        <div class="location">at         line 206</div>
         <code>                    string
-    <strong>getUser</strong>(boolean $encode = false)
+    <strong>getUser</strong>(bool $encode = false)
         </code>
     </h3>
     <div class="details">
@@ -919,7 +878,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$encode</td>
                 <td>true if the value should be encoded</td>
             </tr>
@@ -943,7 +902,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasUser">
-        <div class="location">at         line 224</div>
+        <div class="location">at         line 218</div>
         <code>                    boolean
     <strong>hasUser</strong>()
         </code>
@@ -973,9 +932,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_setPassword">
-        <div class="location">at         line 234</div>
+        <div class="location">at         line 228</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>setPassword</strong>(string|null $pass = null)
+    <strong>setPassword</strong>(string $pass = null)
         </code>
     </h3>
     <div class="details">
@@ -989,7 +948,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$pass</td>
                 <td></td>
             </tr>
@@ -1013,9 +972,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getPassword">
-        <div class="location">at         line 245</div>
+        <div class="location">at         line 239</div>
         <code>                    string
-    <strong>getPassword</strong>(boolean $encode = false)
+    <strong>getPassword</strong>(bool $encode = false)
         </code>
     </h3>
     <div class="details">
@@ -1029,7 +988,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$encode</td>
                 <td>true if the value should be encoded</td>
             </tr>
@@ -1053,7 +1012,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasPassword">
-        <div class="location">at         line 258</div>
+        <div class="location">at         line 251</div>
         <code>                    boolean
     <strong>hasPassword</strong>()
         </code>
@@ -1083,9 +1042,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_setPath">
-        <div class="location">at         line 268</div>
+        <div class="location">at         line 261</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>setPath</strong>(string|null $path = null)
+    <strong>setPath</strong>(string $path = null)
         </code>
     </h3>
     <div class="details">
@@ -1099,7 +1058,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$path</td>
                 <td>the path part of the URL or null for none</td>
             </tr>
@@ -1123,9 +1082,9 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getPath">
-        <div class="location">at         line 284</div>
+        <div class="location">at         line 272</div>
         <code>                    string
-    <strong>getPath</strong>(boolean $encode = false)
+    <strong>getPath</strong>(bool $encode = false)
         </code>
     </h3>
     <div class="details">
@@ -1139,7 +1098,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$encode</td>
                 <td>true if the value should be encoded</td>
             </tr>
@@ -1163,7 +1122,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasPath">
-        <div class="location">at         line 297</div>
+        <div class="location">at         line 284</div>
         <code>                    boolean
     <strong>hasPath</strong>()
         </code>
@@ -1193,7 +1152,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_setQuery">
-        <div class="location">at         line 307</div>
+        <div class="location">at         line 294</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setQuery</strong>(string $query = null)
         </code>
@@ -1233,7 +1192,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_hasQuery">
-        <div class="location">at         line 321</div>
+        <div class="location">at         line 308</div>
         <code>                    boolean
     <strong>hasQuery</strong>()
         </code>
@@ -1263,7 +1222,7 @@ others. <strong>All schemes are transformed to lowercase.</strong></p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_getQuery">
-        <div class="location">at         line 335</div>
+        <div class="location">at         line 322</div>
         <code>                    string
     <strong>getQuery</strong>(string $separator = &#039;&amp;&#039;, int $encode = \PHP_QUERY_RFC1738)
         </code>
@@ -1309,7 +1268,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_paramExists">
-        <div class="location">at         line 349</div>
+        <div class="location">at         line 336</div>
         <code>                    boolean
     <strong>paramExists</strong>(string $name)
         </code>
@@ -1349,8 +1308,8 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getParams">
-        <div class="location">at         line 358</div>
-        <code>                    string[]
+        <div class="location">at         line 345</div>
+        <code>                    array
     <strong>getParams</strong>()
         </code>
     </h3>
@@ -1366,7 +1325,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
 
                     <table class="table table-condensed">
         <tr>
-            <td>string[]</td>
+            <td>array</td>
             <td>the parameter array</td>
         </tr>
     </table>
@@ -1379,7 +1338,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getParam">
-        <div class="location">at         line 368</div>
+        <div class="location">at         line 355</div>
         <code>                    string|null
     <strong>getParam</strong>(string $name)
         </code>
@@ -1419,7 +1378,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_setParam">
-        <div class="location">at         line 383</div>
+        <div class="location">at         line 370</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setParam</strong>(string $name, string $value)
         </code>
@@ -1464,7 +1423,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_setParams">
-        <div class="location">at         line 394</div>
+        <div class="location">at         line 381</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setParams</strong>(array $params)
         </code>
@@ -1504,7 +1463,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetParam">
-        <div class="location">at         line 406</div>
+        <div class="location">at         line 392</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>unsetParam</strong>(string $name)
         </code>
@@ -1544,9 +1503,9 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_setFragment">
-        <div class="location">at         line 421</div>
+        <div class="location">at         line 407</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>setFragment</strong>(string|null $fragment)
+    <strong>setFragment</strong>(string $fragment = null)
         </code>
     </h3>
     <div class="details">
@@ -1560,7 +1519,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$fragment</td>
                 <td>the fragment identifier of the URL</td>
             </tr>
@@ -1584,9 +1543,9 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getFragment">
-        <div class="location">at         line 432</div>
+        <div class="location">at         line 418</div>
         <code>                    string
-    <strong>getFragment</strong>(boolean $encode = false)
+    <strong>getFragment</strong>(bool $encode = false)
         </code>
     </h3>
     <div class="details">
@@ -1600,7 +1559,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$encode</td>
                 <td>true if the value should be encoded</td>
             </tr>
@@ -1624,7 +1583,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_hasFragment">
-        <div class="location">at         line 445</div>
+        <div class="location">at         line 431</div>
         <code>                    boolean
     <strong>hasFragment</strong>()
         </code>
@@ -1654,7 +1613,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_setPort">
-        <div class="location">at         line 457</div>
+        <div class="location">at         line 443</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
     <strong>setPort</strong>(int $port)
         </code>
@@ -1694,7 +1653,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getPort">
-        <div class="location">at         line 468</div>
+        <div class="location">at         line 454</div>
         <code>                    int
     <strong>getPort</strong>()
         </code>
@@ -1724,7 +1683,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_hasDefaultPort">
-        <div class="location">at         line 478</div>
+        <div class="location">at         line 464</div>
         <code>                    boolean
     <strong>hasDefaultPort</strong>()
         </code>
@@ -1754,7 +1713,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 487</div>
+        <div class="location">at         line 473</div>
         <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -1784,7 +1743,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location">at         line 497</div>
+        <div class="location">at         line 483</div>
         <code>                    boolean
     <strong>equals</strong>(string|<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a> $url)
         </code>
@@ -1824,7 +1783,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 512</div>
+        <div class="location">at         line 498</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -1854,7 +1813,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">at         line 524</div>
+        <div class="location">at         line 510</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -1884,7 +1843,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getRaw">
-        <div class="location">at         line 570</div>
+        <div class="location">at         line 556</div>
         <code>                    string
     <strong>getRaw</strong>()
         </code>
@@ -1914,7 +1873,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getMimeType">
-        <div class="location">at         line 614</div>
+        <div class="location">at         line 600</div>
         <code>                    string|boolean
     <strong>getMimeType</strong>()
         </code>
@@ -1945,7 +1904,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">at         line 630</div>
+        <div class="location">at         line 617</div>
         <code>                    boolean
     <strong>exists</strong>()
         </code>
@@ -1963,7 +1922,8 @@ server. It may contain name/value pairs separated by ampersands.</p>            
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the url exists and false otherwise</td>
+            <td>true if the URL
+ exists and false otherwise</td>
         </tr>
     </table>
 
@@ -1975,7 +1935,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_isCurrent">
-        <div class="location">at         line 662</div>
+        <div class="location">at         line 647</div>
         <code>                    <abbr title="Sphp\Stdlib\boolen">boolen</abbr>
     <strong>isCurrent</strong>()
         </code>
@@ -2004,8 +1964,67 @@ server. It may contain name/value pairs separated by ampersands.</p>            
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_jsonSerialize">
+        <div class="location">at         line 651</div>
+        <code>                    
+    <strong>jsonSerialize</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentURL">
+        <div class="location">at         line 660</div>
+        <code>        static            string
+    <strong>getCurrentURL</strong>(int $flags)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current URL as an object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the current URL</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getCurrent">
-        <div class="location">at         line 671</div>
+        <div class="location">at         line 682</div>
         <code>        static            <a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a>
     <strong>getCurrent</strong>()
         </code>
@@ -2023,7 +2042,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a></td>
-            <td>the current url</td>
+            <td>the current URL as an object</td>
         </tr>
     </table>
 
@@ -2035,7 +2054,7 @@ server. It may contain name/value pairs separated by ampersands.</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 695</div>
+        <div class="location">at         line 691</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>

@@ -114,7 +114,7 @@
                     static&nbsp;boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setMessageLocale">setMessageLocale</a>(string|null $locale)
+                    <a href="#method_setMessageLocale">setMessageLocale</a>(string $locale)
         
                                             <p>Sets the locale information for system responses</p>                </div>
                 <div class="col-md-2"></div>
@@ -127,6 +127,16 @@
                     <a href="#method_getLocale">getLocale</a>(int $category)
         
                                             <p>Returns the locale information</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDatetimeLocale">getDatetimeLocale</a>()
+        
+                                            <p>Returns the current locale setting for date and time formatting</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -147,7 +157,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setLocale">
-        <div class="location">at         line 42</div>
+        <div class="location">at         line 41</div>
         <code>        static            boolean
     <strong>setLocale</strong>(int $category, string $locale)
         </code>
@@ -203,9 +213,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMessageLocale">
-        <div class="location">at         line 52</div>
+        <div class="location">at         line 51</div>
         <code>        static            boolean
-    <strong>setMessageLocale</strong>(string|null $locale)
+    <strong>setMessageLocale</strong>(string $locale)
         </code>
     </h3>
     <div class="details">
@@ -219,7 +229,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$locale</td>
                 <td>the locale information for system responses</td>
             </tr>
@@ -243,7 +253,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getLocale">
-        <div class="location">at         line 72</div>
+        <div class="location">at         line 71</div>
         <code>        static            string
     <strong>getLocale</strong>(int $category)
         </code>
@@ -293,8 +303,38 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getDatetimeLocale">
+        <div class="location">at         line 80</div>
+        <code>        static            string
+    <strong>getDatetimeLocale</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current locale setting for date and time formatting</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the current locale setting for date and time formatting</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getMessageLocale">
-        <div class="location">at         line 81</div>
+        <div class="location">at         line 89</div>
         <code>        static            string
     <strong>getMessageLocale</strong>()
         </code>

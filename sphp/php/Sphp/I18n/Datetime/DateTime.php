@@ -11,7 +11,9 @@ use Sphp\I18n\Translatable;
 use Sphp\I18n\Gettext\Translator;
 use Sphp\Config\Locale;
 use DateTimeInterface;
-use DateTime;
+use DateTime as PHPDateTime;
+use IntlDateFormatter;
+use DateTimeZone;
 
 /**
  * Class localizes weekday and month names
@@ -21,7 +23,7 @@ use DateTime;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class CalendarDate {
+class DateTime {
 
   /**
    * @var DateTimeInterface
@@ -29,29 +31,15 @@ class CalendarDate {
   private $date;
 
   /**
-   * @var string 
-   */
-  private $format;
-
-  /**
    * 
-   * @param DateTimeInterface|null $date
-   * @param  string $lang optional name of the language used for translations
+   * @param DateTimeInterface|null $dateTime
+   * @param string $lang optional name of the language used for translations
    */
-  public function __construct(DateTimeInterface $date = null, string $format = null) {
-    if ($date === null) {
-      $date = new DateTime();
+  public function __construct(DateTimeInterface $dateTime = null) {
+    if ($dateTime === null) {
+      $dateTime = new PHPDateTime();
     }
-    $this->setDate($date);
-  }
-
-  public function getFormat(): string {
-    return $this->format;
-  }
-
-  public function setFormat(string $format) {
-    $this->format = $format;
-    return $this;
+    $this->setDate($dateTime);
   }
 
   /**
@@ -73,11 +61,11 @@ class CalendarDate {
   }
 
   /**
-   * Returns the name or the abbreviation of the given weekday number
+   * Returns the name or the abbreviation of the weekday
    *
    * @param  int $length optional length of the result string
    * @param  string $lang optional name of the language used for translations
-   * @return string the name or the abbreviation of the given weekday number
+   * @return string the name or the abbreviation of the weekday
    */
   public function getWeekdayName(int $length = 0, string $lang = null): string {
     $day = $this->strftime('%A', $lang);
@@ -88,11 +76,11 @@ class CalendarDate {
   }
 
   /**
-   * Returns the name or the abbreviation of the given month number
+   * Returns the name or the abbreviation of the month
    *
    * @param  int $length optional length of the result string
    * @param  string $lang optional name of the language used for translations
-   * @return string the name or the abbreviation of the given month number
+   * @return string the name or the abbreviation of the month
    */
   public function getMonthName(int $length = 0, string $lang = null): string {
     $monthName = $this->strftime('%B', $lang);
@@ -103,28 +91,31 @@ class CalendarDate {
   }
 
   /**
-   * Returns the name or the abbreviation of the given month number
-   *
-   * @return string the name or the abbreviation of the given month number
+   * 
+   * @param string $format
+   * @param  string $lang optional name of the language used for translations
+   * @return string
+   * @link   http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax patterns
    */
-  public function getFiDate(): string {
-    $stamp = $this->date->getTimestamp();
-    $day = $this->date->format('j');
-    $year = $this->date->format('Y');
-    $monthName = $this->getTranslator()->get($this->date->format('F')) . "ta";
-    $dayName = $this->getTranslator()->get($this->date->format('l'));
-    return "$dayName $day. $monthName $year";
+  public function formatICU(string $format, string $lang = null): string {
+    $fmt = new IntlDateFormatter(
+            $lang,
+            IntlDateFormatter::FULL, IntlDateFormatter::FULL,
+            $this->getTimezone(),
+            IntlDateFormatter::GREGORIAN,
+            $format
+    );
+    return $fmt->format($this->date);
   }
 
   /**
-   * Returnsa formatted string 
+   * Returns a formatted string 
    * 
    * @param  string $format
-   * @param  string $lang
+   * @param  string $lang optional name of the language used for translations
    * @return string a formatted string 
    */
   public function strftime(string $format, string $lang = null): string {
-    $stamp = $this->date->getTimestamp();
     $oldLang = Locale::getDatetimeLocale();
     if ($lang === null) {
       $lang = $oldLang;
@@ -133,7 +124,7 @@ class CalendarDate {
       Locale::setLocale(LC_TIME, $lang);
     }
 
-    $output = strftime($format, $stamp);
+    $output = strftime($format, $this->getTimestamp());
     if ($lang !== $oldLang) {
       Locale::setLocale(LC_TIME, $oldLang);
     }
@@ -141,45 +132,26 @@ class CalendarDate {
   }
 
   /**
-   * Returns the name or the abbreviation of the given month number
-   *
-   * @return string the name or the abbreviation of the given month number
+   * 
+   * @param  int $timestamp
+   * @param  DateTimeZone $timezone
+   * @return DateTime new instance 
    */
-  public function getFiDateTime(): string {
-    $time = $this->date->format('H:i.s');
-    $dayName = $this->getFiDate();
-    return "$dayName kello $time";
+  public static function fromTimestamp(int $timestamp, DateTimeZone $timezone = null) {
+    return new static(new PHPDateTime("@$timestamp"), $timezone);
   }
 
   /**
    * 
-   * @param  int $timestamp
-   * @param  Translator $translator
-   * @return self new instance 
+   * @param  string $time
+   * @param  DateTimeZone $timezone
+   * @return DateTime new instance 
    */
-  public static function fromTimestamp($timestamp, Translator $translator = null) {
-    return new static(new DateTime("@$timestamp"), $translator);
-  }
-
-  /**
-   * 
-   * @param  int $timestamp
-   * @param  Translator $translator
-   * @return self new instance 
-   */
-  public static function fromString($timestamp) {
-    // return new static(DateTime::("@$timestamp"));
+  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateTime {
+    return new static(new PHPDateTime($time, $timezone));
   }
 
   public function __toString(): string {
-    
-  }
-
-  public function translate(): string {
-    
-  }
-
-  public function translateTo(string $lang): string {
     
   }
 
@@ -187,19 +159,40 @@ class CalendarDate {
     return $this->date->diff($object, $absolute);
   }
 
-  public function format($format): string {
+  /**
+   * Returns date formatted according to given format
+   * 
+   * @param  string $format
+   * @return string
+   */
+  public function format(string $format): string {
     return $this->date->format($format);
   }
 
-  public function getOffset() {
+  /**
+   * Returns the time zone offset
+   * 
+   * @return int the time zone offset
+   */
+  public function getOffset(): int {
     return $this->date->getOffset();
   }
 
-  public function getTimestamp() {
+  /**
+   * Returns the Unix timestamp
+   * 
+   * @return int the Unix timestamp
+   */
+  public function getTimestamp(): int {
     return $this->date->getTimestamp();
   }
 
-  public function getTimezone(): string {
+  /**
+   * Return time zone relative to given DateTime
+   * 
+   * @return DateTimeZone time zone relative to given DateTime
+   */
+  public function getTimezone(): DateTimeZone {
     return $this->date->getTimezone();
   }
 

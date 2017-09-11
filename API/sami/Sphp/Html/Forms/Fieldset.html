@@ -1321,7 +1321,14 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important!</strong></p>
+
+<ol>
+<li>Parameter <code>mixed $content</code> can be of any type that converts to a string
+or to an array of strigs. So also objects of any type that implement magic
+method <code>__toString()</code> are allowed.</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1340,6 +1347,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the tagname is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>

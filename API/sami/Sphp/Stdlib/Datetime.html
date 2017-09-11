@@ -181,7 +181,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_compareTo">compareTo</a>(mixed $other)
         
-                                            <p>Compares this object with the specified object for order</p>                </div>
+                                            <p>Compares this datetime object to another one</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -220,16 +220,6 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
-        
-                                            <p>Returns object as a datetime string</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toScalar">toScalar</a>()
         
                                             <p>Returns object as a datetime string</p>                </div>
                 <div class="col-md-2"></div>
@@ -449,7 +439,7 @@
     
 
                     <div class="method-description">
-                                    <p>Compares this object with the specified object for order</p>                                                </div>
+                                    <p>Compares this datetime object to another one</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -478,7 +468,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the type of the <code>$other</code> prevents it from being compared to this object.</td>
+                <td>if the <var>$other</var> is not instance of {@link \DateTime}</td>
             </tr>
             </table>
 
@@ -608,38 +598,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toScalar">
-        <div class="location">at         line 164</div>
-        <code>                    string
-    <strong>toScalar</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns object as a datetime string</p>                    <p><strong>Note:</strong> PHP formatting string used for outputting is "Y-m-d H:i:s T"</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>as a datetime string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location">at         line 168</div>
+        <div class="location">at         line 157</div>
         <code>                    
     <strong>equals</strong>($object)
         </code>

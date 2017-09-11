@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>BitMask</strong>        implements
-        <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <abbr title="Sphp\Db\Objects\Embeddable">Embeddable</abbr>
+        <a href="../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a href="../../Sphp/Database/Doctrine/Embeddable.html"><abbr title="Sphp\Database\Doctrine\Embeddable">Embeddable</abbr></a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
 </p>
 
         
@@ -113,9 +113,9 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bits)
+                    <a href="#method___construct">__construct</a>(int $bits = 0b0)
         
-                                            <p>Constructs a new instance of the {@link self} object</p>                </div>
+                                            <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -123,7 +123,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_and_">and_</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+                    <a href="#method_binAND">binAND</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         
                                             <p>Logical <code>AND</code> operation</p>                </div>
                 <div class="col-md-2"></div>
@@ -133,7 +133,7 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_or_">or_</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+                    <a href="#method_binOR">binOR</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         
                                             <p>Logical <code>OR</code> (inclusive or) operation</p>                </div>
                 <div class="col-md-2"></div>
@@ -143,19 +143,30 @@
                     <abbr title="Sphp\Stdlib\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_xor_">xor_</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+                    <a href="#method_binXOR">binXOR</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         
                                             <p>Logical <code>XOR</code> (exclusive or) operation</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(int $index, bool $bit = true)
+                    <a href="#method_isValidIndex">isValidIndex</a>($index)
         
-                                            <p>Sets or unsets new bits at given index</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(int $index)
+        
+                                            <p>Sets new bits at given index</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -170,17 +181,27 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
+                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_clear">clear</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bits)
+                    <a href="#method_unset">unset</a>(int $index)
+        
+                                            <p>Unsets a bit at a given index</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clear">clear</a>(int $bits)
         
                                             <p>Sets new flags from 1 to 0</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
+                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_invert">invert</a>()
@@ -233,6 +254,16 @@
                     string
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_binaryRepresentation">binaryRepresentation</a>()
+        
+                                            <p>Returns the object as a string</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
         
                                             <p>Returns the object as a string</p>                </div>
@@ -250,31 +281,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toScalar">toScalar</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     static&nbsp;int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_parseFlagsToInt">parseFlagsToInt</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
-        
-                                            <p>Parses the given flags type to an integer</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;int[]
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toBitArray">toBitArray</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
+                    <a href="#method_parseInt">parseInt</a>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
         
                                             <p>Parses the given flags type to an integer</p>                </div>
                 <div class="col-md-2"></div>
@@ -290,6 +300,122 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromString">fromString</a>(string $value)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromBinary">fromBinary</a>(string $binary)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromOctal">fromOctal</a>(string $octal)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromHex">fromHex</a>(string $hex)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_from">from</a>(mixed $hex)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p>Rewinds the Iterator to the first element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_current">current</a>()
+        
+                                            <p>Returns the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_key">key</a>()
+        
+                                            <p>Return the key of the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_next">next</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_valid">valid</a>()
+        
+                                            <p>Checks if current iterator position is valid</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_length">length</a>()
+        
+                                            <p>Returns the (maximum) length of the bitmask</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -298,9 +424,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 39</div>
+        <div class="location">at         line 48</div>
         <code>                    
-    <strong>__construct</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bits)
+    <strong>__construct</strong>(int $bits = 0b0)
         </code>
     </h3>
     <div class="details">
@@ -308,13 +434,13 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance of the {@link self} object</p>                    <p><strong>Notes:</strong> a string <var>$bits</var> is always treated as binary number</p>                            </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Notes:</strong> a string <var>$bits</var> is always treated as binary number</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+                <td>int</td>
                 <td>$bits</td>
                 <td>the flags</td>
             </tr>
@@ -328,10 +454,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_and_">
-        <div class="location">at         line 51</div>
+                    <h3 id="method_binAND">
+        <div class="location">at         line 60</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>and_</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+    <strong>binAND</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         </code>
     </h3>
     <div class="details">
@@ -368,10 +494,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_or_">
-        <div class="location">at         line 64</div>
+                    <h3 id="method_binOR">
+        <div class="location">at         line 72</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>or_</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+    <strong>binOR</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         </code>
     </h3>
     <div class="details">
@@ -408,10 +534,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_xor_">
-        <div class="location">at         line 77</div>
+                    <h3 id="method_binXOR">
+        <div class="location">at         line 84</div>
         <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>xor_</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
+    <strong>binXOR</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         </code>
     </h3>
     <div class="details">
@@ -448,10 +574,39 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isValidIndex">
+        <div class="location">at         line 88</div>
+        <code>            protected        
+    <strong>isValidIndex</strong>($index)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 89</div>
-        <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>set</strong>(int $index, bool $bit = true)
+        <div class="location">at         line 101</div>
+        <code>                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>set</strong>(int $index)
         </code>
     </h3>
     <div class="details">
@@ -459,7 +614,7 @@
     
 
                     <div class="method-description">
-                                    <p>Sets or unsets new bits at given index</p>                                                </div>
+                                    <p>Sets new bits at given index</p>                    <p>The bit at he given index is set to <code>1</code></p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -469,11 +624,6 @@
                 <td>$index</td>
                 <td>the specified index</td>
             </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$bit</td>
-                <td>the bit value to set</td>
-            </tr>
             </table>
 
             
@@ -481,12 +631,21 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Stdlib\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td>new instance</td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
+                <td>if the given index is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -494,7 +653,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 115</div>
         <code>                    int
     <strong>get</strong>(int $index)
         </code>
@@ -527,6 +686,64 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
+                <td>if the given index is not valid</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unset">
+        <div class="location">at         line 131</div>
+        <code>                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>unset</strong>(int $index)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets a bit at a given index</p>                    <p>The bit at he given index is set to <code>0</code></p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td>the specified index</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td>new instance</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
+                <td>if the given index is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -534,9 +751,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 117</div>
-        <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
-    <strong>clear</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bits)
+        <div class="location">at         line 146</div>
+        <code>                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>clear</strong>(int $bits)
         </code>
     </h3>
     <div class="details">
@@ -550,7 +767,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+                <td>int</td>
                 <td>$bits</td>
                 <td>the flags unset</td>
             </tr>
@@ -561,8 +778,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Stdlib\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td>new instance</td>
         </tr>
     </table>
 
@@ -574,8 +791,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_invert">
-        <div class="location">at         line 127</div>
-        <code>                    <abbr title="Sphp\Stdlib\$this">$this</abbr>
+        <div class="location">at         line 155</div>
+        <code>                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
     <strong>invert</strong>()
         </code>
     </h3>
@@ -591,8 +808,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Stdlib\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td>new inverted instance</td>
         </tr>
     </table>
 
@@ -604,7 +821,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at         line 140</div>
+        <div class="location">at         line 167</div>
         <code>                    boolean
     <strong>contains</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $bitmask)
         </code>
@@ -644,7 +861,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toInt">
-        <div class="location">at         line 152</div>
+        <div class="location">at         line 179</div>
         <code>                    int
     <strong>toInt</strong>()
         </code>
@@ -674,7 +891,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toOct">
-        <div class="location">at         line 161</div>
+        <div class="location">at         line 188</div>
         <code>                    string
     <strong>toOct</strong>()
         </code>
@@ -704,7 +921,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toHex">
-        <div class="location">at         line 170</div>
+        <div class="location">at         line 197</div>
         <code>                    string
     <strong>toHex</strong>()
         </code>
@@ -722,7 +939,37 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the hexadecimal representation of the</td>
+            <td>the hexadecimal representation</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_binaryRepresentation">
+        <div class="location">at         line 206</div>
+        <code>                    string
+    <strong>binaryRepresentation</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the object as a string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the object as a string</td>
         </tr>
     </table>
 
@@ -734,7 +981,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 179</div>
+        <div class="location">at         line 215</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -764,7 +1011,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 183</div>
+        <div class="location">at         line 219</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -793,29 +1040,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toScalar">
-        <div class="location">at         line 187</div>
-        <code>                    
-    <strong>toScalar</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_parseFlagsToInt">
-        <div class="location">at         line 197</div>
+                    <h3 id="method_parseInt">
+        <div class="location">at         line 234</div>
         <code>        static            int
-    <strong>parseFlagsToInt</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
+    <strong>parseInt</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
         </code>
     </h3>
     <div class="details">
@@ -846,46 +1074,15 @@
     </table>
 
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_toBitArray">
-        <div class="location">at         line 216</div>
-        <code>        static            int[]
-    <strong>toBitArray</strong>(int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a> $flags)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Parses the given flags type to an integer</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|string|<a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
-                <td>$flags</td>
-                <td>the flags</td>
+                <td><a href="../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the value given can not be parsed</td>
             </tr>
             </table>
 
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int[]</td>
-            <td>parsed flags value</td>
-        </tr>
-    </table>
-
-            
             
                     </div>
     </div>
@@ -893,7 +1090,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location">at         line 220</div>
+        <div class="location">at         line 255</div>
         <code>                    
     <strong>equals</strong>($object)
         </code>
@@ -914,6 +1111,347 @@
             </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromString">
+        <div class="location">at         line 263</div>
+        <code>        static            
+    <strong>fromString</strong>(string $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromBinary">
+        <div class="location">at         line 277</div>
+        <code>        static            <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>fromBinary</strong>(string $binary)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$binary</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromOctal">
+        <div class="location">at         line 286</div>
+        <code>        static            <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>fromOctal</strong>(string $octal)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$octal</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromHex">
+        <div class="location">at         line 295</div>
+        <code>        static            <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>fromHex</strong>(string $hex)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$hex</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_from">
+        <div class="location">at         line 305</div>
+        <code>                    <a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a>
+    <strong>from</strong>(mixed $hex)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$hex</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Stdlib/BitMask.html"><abbr title="Sphp\Stdlib\BitMask">BitMask</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location">at         line 312</div>
+        <code>                    
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Rewinds the Iterator to the first element</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_current">
+        <div class="location">at         line 321</div>
+        <code>                    mixed
+    <strong>current</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location">at         line 330</div>
+        <code>                    int
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return the key of the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the key of the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_next">
+        <div class="location">at         line 334</div>
+        <code>                    
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location">at         line 343</div>
+        <code>                    boolean
+    <strong>valid</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if current iterator position is valid</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>current iterator position is valid</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_length">
+        <div class="location">at         line 352</div>
+        <code>                    int
+    <strong>length</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the (maximum) length of the bitmask</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the (maximum) length of the bitmask</td>
+        </tr>
+    </table>
+
             
             
                     </div>
