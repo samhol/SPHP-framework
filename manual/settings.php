@@ -22,3 +22,7 @@ require_once('_errorHandling.php');
 //require_once('doctrine/configuration.php');
 //require_once('session.php');
 require_once('menuArrays.php');
+
+namespace Sphp\I18n;
+
+Translators::instance()->store('validation', new Gettext\Translator('Sphp.Validation'));

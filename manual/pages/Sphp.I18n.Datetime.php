@@ -14,6 +14,6 @@ $ns
 The $calendar class and  $calendarDate class and the .
 MD
 );
-CodeExampleBuilder::visualize('Sphp/I18n/Datetime/Calendar.php', 'text', false);
+//CodeExampleBuilder::visualize('Sphp/I18n/Datetime/Calendar.php', 'text', false);
 
 CodeExampleBuilder::visualize('Sphp/I18n/Datetime/Datetime.php', 'text', false);

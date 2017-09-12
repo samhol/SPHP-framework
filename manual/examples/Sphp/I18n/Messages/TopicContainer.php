@@ -1,12 +1,12 @@
 <?php
 
-namespace Sphp\I18n\Messages; 
-
-$messageCont1 = (new TranslatablePriorityList())
-        ->insert(Message::singular("%s message", ["First"]))
-        ->insert(Message::singular("Second message"))
-        ->insert(Message::singular("Third message"))
-        ->insert(Message::singular("%s", ["Fourth message"]))
+namespace Sphp\I18n\Messages;
+$translator = \Sphp\I18n\Translators::instance()->get('validation');
+$messageCont1 = (new TranslatablePriorityList())->setTranslator($translator)
+        ->insert(Message::singular("Please insert atleast %s of the following characters (%s)", [3, 'a, b, c, d, e, f']))
+        ->insert(Message::singular("Please insert a value"))
+        ->insert(Message::singular("Please insert a correct email address"))
+        ->insert(Message::singular("Please insert alphabets and numbers only"))
         ->insert(Message::singular("Fifth message"));
 $messageCont2 = (new TranslatablePriorityList())
         ->insert(Message::singular("Sixth message"));

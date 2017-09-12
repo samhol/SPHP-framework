@@ -9,11 +9,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi_FI\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#, php-format
 
 # Validation messages
+#, php-format
 msgid "Please insert a value"
 msgstr "Syötä jokin arvo"
 

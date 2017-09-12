@@ -7,8 +7,6 @@
 
 namespace Sphp\I18n\Datetime;
 
-use Sphp\I18n\Translatable;
-use Sphp\I18n\Gettext\Translator;
 use Sphp\Config\Locale;
 use DateTimeInterface;
 use DateTime as PHPDateTime;
@@ -160,28 +158,17 @@ class DateTime {
     return $output;
   }
 
-  /**
-   * 
-   * @param  int $timestamp
-   * @param  DateTimeZone $timezone
-   * @return DateTime new instance 
-   */
-  public static function fromTimestamp(int $timestamp, DateTimeZone $timezone = null) {
-    return new static(new PHPDateTime("@$timestamp"), $timezone);
-  }
-
-  /**
-   * 
-   * @param  string $time
-   * @param  DateTimeZone $timezone
-   * @return DateTime new instance 
-   */
-  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateTime {
-    return new static(new PHPDateTime($time, $timezone));
-  }
-
   public function __toString(): string {
-    
+    return $this->date->format('Y-m-d H:i:s, T');
+  }
+
+  /**
+   * Returns the week of year
+   * 
+   * @return int the week of year
+   */
+  public function getWeekOfYear(): int {
+    return $this->formatICU('w');
   }
 
   public function diff($object, $absolute = null) {
@@ -189,10 +176,11 @@ class DateTime {
   }
 
   /**
-   * Returns date formatted according to given format
+   * Returns the date formatted according to given format
    * 
-   * @param  string $format
-   * @return string
+   * @param  string $format the format of the outputted date string
+   * @return string a formatted date string
+   * @link   http://php.net/manual/en/function.date.php#refsect1-function.date-parameters formatting options
    */
   public function format(string $format): string {
     return $this->date->format($format);
@@ -223,6 +211,39 @@ class DateTime {
    */
   public function getTimezone(): DateTimeZone {
     return $this->date->getTimezone();
+  }
+
+  /**
+   * 
+   * @param  int $timestamp
+   * @param  DateTimeZone $timezone
+   * @return DateTime new instance 
+   */
+  public static function fromTimestamp(int $timestamp, DateTimeZone $timezone = null) {
+    return new static(new PHPDateTime("@$timestamp"), $timezone);
+  }
+
+  /**
+   * 
+   * @param  string $time the format that the passed in string should be in
+   * @param  DateTimeZone $timezone
+   * @return DateTime new instance 
+   */
+  public static function fromString(string $time = 'now', DateTimeZone $timezone = null): DateTime {
+    return new static(new PHPDateTime($time, $timezone));
+  }
+
+  /**
+   * 
+   * **NOTE:** If time zone is omitted and time contains no time zone, the current time zone will be used.
+   * 
+   * @param  string $time the format that the passed in string should be in
+   * @param  DateTimeZone $timezone 
+   * @return DateTime new instance 
+   * @link   http://php.net/manual/en/datetime.createfromformat.php#refsect1-datetime.createfromformat-parameters
+   */
+  public static function fromFormat(string $format, string $time, DateTimeZone $timezone = null): DateTime {
+    return new static(PHPDateTime::createFromFormat($format, $time, $timezone));
   }
 
 }

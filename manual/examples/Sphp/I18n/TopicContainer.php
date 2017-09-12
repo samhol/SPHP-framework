@@ -3,9 +3,9 @@
 namespace Sphp\I18n;
 
 $messageCont1 = (new PrioritizedMessageList())
-        ->insert(new Message("%s message", ["First"]))
-        ->insert(new Message("Second message"))
-        ->insert(new Message("Third message"))
+        ->insert(new Message("Please insert atleast %s of the following characters (%s)", ["three", 'a, b, c, d, e, f']))
+        ->insert(new Message("Please insert a value"))
+        ->insert(new Message("Please insert a correct email address"))
         ->insertMessage("%s", ["Fourth message"])
         ->insert(new Message("Fifth message"));
 $messageCont2 = (new PrioritizedMessageList())
