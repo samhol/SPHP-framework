@@ -17,7 +17,7 @@ use Sphp\I18n\TranslatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class SingularTemplate extends AbstractTemplate {
+class SingularMessage extends Message {
 
   /**
    * original raw message
@@ -32,22 +32,17 @@ class SingularTemplate extends AbstractTemplate {
    * @param string $message
    * @param TranslatorInterface $translator optional translator
    */
-  public function __construct(string $message, TranslatorInterface $translator = null) {
-    parent::__construct($translator);
+  public function __construct(string $message, array $args = [], TranslatorInterface $translator = null) {
+    parent::__construct($args, $translator);
     $this->message = $message;
   }
 
-  /**
-   * Returns the message as translated string
-   *
-   * @return string the message as formatted and translated string
-   */
-  public function translate(): string {
-    return $this->getTranslator()->get($this->message);
+  public function translateWith(TranslatorInterface $translator): string {
+    return $translator->vsprintf($this->message, $this->getArguments());
   }
 
-  public function translateTo(string $lang): string {
-    return $this->getTranslator()->get($this->message, $lang);
+  public function getTemplate(): string {
+    return $this->message;
   }
 
 }

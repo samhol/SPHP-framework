@@ -13,6 +13,7 @@ use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
 use Zend\Stdlib\PriorityList;
 use Sphp\I18n\Translatable;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a list that holds {@link MessageInterface} objects in a priority list
@@ -95,23 +96,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   }
 
   /**
-   * Inserts new messages object to the container
-   *
-   * **Important:** The message inserted becomes also a
-   * {@link TranslatorChangerObserver} observers for the container
-   *
-   * @param  string $messageText the message text
-   * @param  scalar[] $args arguments
-   * @param  int $priority the priority of the message
-   * @return $this for a fluent interface
-   */
-  public function insertMessage($messageText, $args = null, int $priority = 0) {
-    $m = (new Message($messageText, $args, $this->getTranslator()));
-    $this->insert($m, $priority);
-    return $this;
-  }
-
-  /**
    * Inserts new messages to the container
    *
    * @param  MessageInterface $messages the message text
@@ -142,11 +126,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @return \ArrayIterator iterator
    */
   public function getIterator() {
-    $arr = new \ArrayIterator();
-    foreach (clone $this->messages as $message) {
-      $arr[] = $message;
-    }
-    return $arr;
+    return clone $this->messages;
   }
 
   public function contains(Translatable $message): bool {
@@ -200,11 +180,11 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
     return $output;
   }
 
-  public function translateTo(string $lang): string {
+  public function translateWith(TranslatorInterface $translator): string {
     $output = '';
     foreach ($this as $component) {
       if ($component instanceof Translatable) {
-        $output .= $component->translateTo($lang);
+        $output .= $component->translateWith($translator);
       } else {
         $output .= $component;
       }

@@ -220,6 +220,16 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     return new static($result, $this->encoding);
   }
 
+
+  /**
+   * Replaces all occurrences of $search in $str by $replacement
+   *
+   * @param  string $replacement The string to replace with
+   * @return MbString the resulting string after the replacements
+   */
+  public function replace(string $search, string $replacement): MbString {
+    return $this->regexReplace(preg_quote($search), $replacement);
+  }
   /**
    * Returns a new object with whitespace removed from the start and end of the string 
    * 

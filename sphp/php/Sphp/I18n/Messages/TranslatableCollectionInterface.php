@@ -8,8 +8,6 @@
 namespace Sphp\I18n\Messages;
 
 use Traversable;
-use Countable;
-use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\I18n\Translatable;
 
 /**
@@ -20,7 +18,7 @@ use Sphp\I18n\Translatable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface TranslatableCollectionInterface extends Traversable, Translatable, Arrayable, Countable {
+interface TranslatableCollectionInterface extends Traversable, Translatable {
 
   /**
    * Checks whether the given translatable object exists in this collection

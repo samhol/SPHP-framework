@@ -26,24 +26,17 @@ interface Translatable {
   public function setTranslator(TranslatorInterface $translator);
 
   /**
-   * Translates the content to given language
+   * Translates the content using the given translator
    *
-   * @param  string $lang
-   * @return string the content as a translated string
+   * @param  TranslatorInterface $translator the translator component
+   * @return string|string[] the content as a translated string
    */
-  public function translateTo(string $lang): string;
+  public function translateWith(TranslatorInterface $translator);
 
   /**
    * Translates the content
    *
-   * @return string the content as a translated string
+   * @return string|string[] the content as a translated string
    */
-  public function translate(): string;
-
-  /**
-   * Returns the translated text
-   *
-   * @return string the translated text
-   */
-  public function __toString(): string;
+  public function translate();
 }

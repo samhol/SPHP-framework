@@ -311,13 +311,13 @@ class TopicList implements Iterator, Translatable, Arrayable, Countable, ArrayAc
     return $output;
   }
 
-  public function translateTo(string $lang): string {
-    $output = '';
+  public function translateWith(TranslatorInterface $translator): string {
+    $output = [];
     foreach ($this as $component) {
       if ($component instanceof Translatable) {
-        $output .= $component->translateTo($lang);
+        $output[] = $component->translateWith($translator);
       } else {
-        $output .= $component;
+        $output[] = $component;
       }
     }
     return $output;

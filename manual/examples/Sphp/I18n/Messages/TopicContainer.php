@@ -2,7 +2,8 @@
 
 namespace Sphp\I18n\Messages;
 $translator = \Sphp\I18n\Translators::instance()->get('validation');
-$messageCont1 = (new TranslatablePriorityList())->setTranslator($translator)
+$messageCont1 = (new TranslatablePriorityList())
+        ->setTranslator($translator)
         ->insert(Message::singular("Please insert atleast %s of the following characters (%s)", [3, 'a, b, c, d, e, f']))
         ->insert(Message::singular("Please insert a value"))
         ->insert(Message::singular("Please insert a correct email address"))
@@ -17,8 +18,7 @@ $messageCont3 = (new TranslatablePriorityList())
 $topicCont = (new TopicList())
         ->set("Topic 1", $messageCont1)
         ->set("Topic 2", $messageCont2)
-        ->set("Topic 3", $messageCont3)
-        ->set("Topic 3", $messageCont2);
+        ->set("Topic 3", $messageCont3);
 echo $topicCont . "\n";
 echo "Topics: " . $topicCont->count() . ", Messages: "
  . $topicCont->count(TopicList::COUNT_MESSAGES);

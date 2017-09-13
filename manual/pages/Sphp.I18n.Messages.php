@@ -9,17 +9,15 @@ use Sphp\I18n\Translatable;
 use Sphp\I18n\TranslatorAwareTrait;
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$gettext = Apis::phpManual()->extensionLink("gettext", "Gettext");
 $messageInterface = Apis::sami()->classLinker(MessageInterface::class);
-$templateInterface = Apis::sami()->classLinker(TemplateInterface::class);
 $translatable = Apis::sami()->classLinker(Translatable::class);
 $message = Apis::sami()->classLinker(Message::class);
 $messageContainer = Apis::sami()->classLinker(TranslatablePriorityList::class);
 $messageCollectionInterfaces = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
-$echo = Apis::phpManual()->functionLink("echo");
-$print = Apis::phpManual()->functionLink("print");
-$string = Apis::phpManual()->typeLink("string");
-$vsprintfLink = Apis::phpManual()->functionLink("vsprintf");
+$echo = Apis::phpManual()->functionLink('echo');
+$print = Apis::phpManual()->functionLink('print');
+$string = Apis::phpManual()->typeLink('string');
+$vsprintfLink = Apis::phpManual()->functionLink('vsprintf');
 
 $translator = Apis::sami()->classLinker(TranslatorInterface::class);
 
@@ -27,27 +25,11 @@ $translator = Apis::sami()->classLinker(TranslatorInterface::class);
 ##Message systems <small>For verbose localized messaging</small>
 
 $ns
-MD
-);
-\Sphp\Manual\parseDown(<<<MD
-###$templateInterface <small>Localization string templates</small>
+###Localized messages <small>using $messageInterface objects</small>
 
-A $templateInterface object contains an immutable string that can be translated 
-to other languages. 
-
-When a template object is treated as a $string ($echo, $print...) 
-it is translated according to the current settings of its $translator object.
-MD
-);
-CodeExampleBuilder::visualize('Sphp/I18n/Messages/TemplateInterface.php', 'text', false);
-
-\Sphp\Manual\parseDown(<<<MD
-###Localized messages using $messageInterface objects
-
-A $messageInterface class contains a $templateInterface and provides additional 
-support for formatted string syntax used in PHP's native $vsprintfLink function. 
-Additionally arguments used in the formatted string can also be translated.
-to other languages. 
+A $messageInterface message provides support for formatted string syntax used in 
+PHP's native $vsprintfLink function. Additionally arguments used in the formatted 
+string can also be translated to other languages. 
 
 When a message object is treated as a $string ($echo, $print...) 
 it is translated according to the current settings of its $translator object.
@@ -88,4 +70,4 @@ extends $arrayaccess and the offset value corresponds this topic.
 
 MD
 );
-CodeExampleBuilder::visualize('Sphp/I18n/Messages/TopicContainer.php', 'text', false);
+CodeExampleBuilder::visualize('Sphp/I18n/Messages/TranslatableCollection.nested.php', 'text', false);

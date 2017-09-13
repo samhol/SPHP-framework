@@ -17,7 +17,7 @@ use Sphp\I18n\TranslatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PluralTemplate extends AbstractTemplate {
+class PluralMessage extends Message {
 
   /**
    * original raw singular message
@@ -48,8 +48,8 @@ class PluralTemplate extends AbstractTemplate {
    * @param  TranslatorInterface|null $translator the translator component
    * @param  null|mixed|mixed[] $isPlural the arguments or null for no arguments
    */
-  public function __construct(string $singular, string $plural, TranslatorInterface $translator, bool $isPlural = false) {
-    parent::__construct($translator);
+  public function __construct(string $singular, string $plural, array $args = [], TranslatorInterface $translator = null, bool $isPlural = false) {
+    parent::__construct($args, $translator);
     $this->singular = $singular;
     $this->plural = $plural;
     $this->setPlural($isPlural);
@@ -72,12 +72,12 @@ class PluralTemplate extends AbstractTemplate {
     return $this->n > 1;
   }
 
-  public function translate(): string {
-    return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n);
+  public function translateWith(TranslatorInterface $translator): string {
+    return $translator->vsprintfPlural($this->singular, $this->plural, $this->n, $this->getArguments());
   }
-
-  public function translateTo(string $lang): string {
-    return $this->getTranslator()->getPlural($this->singular, $this->plural, $this->n, $lang);
+  
+  public function getTemplate(): string {
+    return !$this->isPlural() ? $this->singular : $this->plural;
   }
 
 }

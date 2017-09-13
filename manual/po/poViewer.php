@@ -6,9 +6,11 @@ namespace Sphp\Util;
 include_once '../settings.php';
 include_once '../htmlHead.php';
 echo '<body class="manual" id="manual-body">';
-$f = new LocalFile(__DIR__ . "/../../sphp/locale/fi_FI/LC_MESSAGES/" . \Sphp\DEFAULT_DOMAIN . ".po");
-//print_r($f );
-$rows = array_slice($f->getTextFileRows(), 16);
+use Sphp\Stdlib\Filesystem;
+$f = Filesystem::getTextFileRows(__DIR__ . "/../../sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po");
+echo "<pre>";
+print_r($f );
+$rows = array_slice($f, 16);
 //print_r($rows);
 $arr = [];
 $orig = [];
@@ -44,17 +46,17 @@ $accordion = new Accordion();
 foreach ($arr as $group => $data) {
 	if (count($data) > 0) {
 		$table = (new Table())->addCssClass("html-to-php");
-		$table->thead()->append(["row:", "Message", "Translation"]);
+		$table->thead()->append(Tr::fromThs(["row:", "Message", "Translation"]));
 		$body = $table->tbody();
 		if ($group !== "Month names") {
 			sort($data);
 		}
 		foreach ($data as $id => $row) {
 			$tr = new Tr();
-			$tr[] = new Th(($id + 1) . ".");
-			$tr[] = $row[1];
-			$tr[] = $row[2];
-			$body[] = $tr;
+			$tr->append(new Th(($id + 1) . "."));
+			$tr->appendThs($row[1]);
+			$tr->appendThs($row[2]);
+			$body->appendBodyRow($tr);
 		}
     $accordion->appendPane($group, $table);
 	}
@@ -65,6 +67,15 @@ $input = preg_quote('a', '~'); // don't forget to quote input string!
 $result = preg_grep('~' . $input . '~', $orig);
 //print_r($orig);
 //print_r($result);
-print_r(array_keys($result));
+//print_r(array_keys($result));
   $html->documentClose();
-?>
+
+namespace Sepia;
+
+
+$fileHandler = new FileHandler(__DIR__ . "/../../sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po");
+$poParser = new PoParser($fileHandler);
+$entries  = $poParser->parse();
+echo "<pre>";
+print_r($entries);
+echo "</pre>";

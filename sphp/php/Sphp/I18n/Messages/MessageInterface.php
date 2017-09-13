@@ -20,11 +20,11 @@ use Sphp\I18n\Translatable;
 interface MessageInterface extends Translatable {
 
   /**
-   * Returns the template used
+   * Returns the template string used
    * 
-   * @return TemplateInterface the template used
+   * @return string the template used
    */
-  public function getTemplate(): TemplateInterface;
+  public function getTemplate(): string;
 
   /**
    * Sets the arguments used for message
@@ -43,7 +43,7 @@ interface MessageInterface extends Translatable {
   /**
    * Returns the arguments used for the message
    *
-   * @return array $args the arguments
+   * @return array the arguments
    */
   public function getArguments(): array;
 

@@ -10,7 +10,6 @@ namespace Sphp\I18n\Datetime;
 use Sphp\I18n\Gettext\Translator;
 use Sphp\Stdlib\Arrays;
 
-
 /**
  * Class localizes weekday and month names
  *

@@ -37,10 +37,10 @@ interface TranslatorInterface {
    * 
    * the the given array of message strings as an array of translated message strings
    *
-   * @param  string|string[] $text the message text or an array of the message text
-   * @return string|string[] the message text(s) translated
+   * @param  string $text the message text or an array of the message text
+   * @return string the message text(s) translated
    */
-  public function get($text);
+  public function get(string $text): string;
 
   /**
    * Returns the message as translated string
@@ -51,7 +51,7 @@ interface TranslatorInterface {
    * @param  string $lang
    * @return string the message text translated and parsed
    */
-  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null): string;
+  public function getPlural(string $msgid1, string $msgid2, int $n): string;
 
   /**
    * Returns the the given message data as formatted localized string
