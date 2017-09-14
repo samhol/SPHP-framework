@@ -41,14 +41,14 @@ $translatorChangerObserverInterface = Apis::sami()->classLinker(Translatable::cl
 $translatorChangerChainInterface = Apis::sami()->classLinker(TranslatorAwareTrait::class);
 
 \Sphp\Manual\parseDown(<<<MD
-###$messageCollectionInterfaces <small>for message object grouping</small>
+###$messageCollectionInterfaces <small>for $translatable object grouping</small>
 
 The $messageContainer class is a kind of priority list for $message objects. The 
 traversal order of the messages in the container depends on the priority given 
 to each message during insertion. If multiple messages have same priority the 
 traversal order and the order of insertion are equal.
 
-####$message object translation within the $messageContainer class
+####$translatable object translation within the $messageContainer class
 
 Changing the $translator of the $messageContainer changes it also in the inhered 
 $translatable objects. The $messageContainer simply propagates the new translator 
@@ -57,15 +57,13 @@ to all of these objects inside the collection.
 MD
 );
 CodeExampleBuilder::visualize('Sphp/I18n/Messages/TranslatableCollection.php', 'text', false);
-$topicContainer = Apis::sami()->classLinker(TopicList::class);
+$translatableList = Apis::sami()->classLinker(TranslatableList::class);
 $messageContainers = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 \Sphp\Manual\parseDown(<<<MD
-##Grouping $messageContainers with a $topicContainer
 
-The $topicContainer class groups $translatable components like $messageContainers 
-objets by assosiating an individual index (topic) to each of them. $topicContainer 
+ $translatableList objects can also be nested easily. 
 extends $arrayaccess and the offset value corresponds this topic.
 
 MD

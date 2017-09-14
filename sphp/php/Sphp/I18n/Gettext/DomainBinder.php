@@ -15,7 +15,7 @@ namespace Sphp\I18n\Gettext;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class DomainBinder {
+abstract class DomainBinder {
 
   private static $domains = [];
 
@@ -25,17 +25,14 @@ class DomainBinder {
    * @param string $directory
    * @param string $charset
    */
-  public static function bindtextdomain($domain, $directory, $charset = 'UTF-8') {
+  public static function bindtextdomain($domain, $directory, string $charset = 'UTF-8') {
+
     $value = $domain . $directory;
     if (!in_array($value, self::$domains)) {
       bindtextdomain($domain, $directory);
       self::$domains[] = $value;
       bind_textdomain_codeset($domain, $charset);
     }
-  }
-
-  private function __construct() {
-    throw new \Exception;
   }
 
 }

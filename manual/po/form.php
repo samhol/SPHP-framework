@@ -2,8 +2,8 @@
 
 namespace Sphp\Html\Forms;
 
-use Sphp\Html\Forms\Foundation\GridForm as GridForm;
-use Sphp\Html\Forms\Foundation\InputColumn as InputColumn;
+use Sphp\Html\Forms\Foundation\GridForm;
+use Sphp\Html\Forms\Foundation\InputColumn;
 
 $fieldset = new Foundation\GridFieldset("Search messages:");
 $ruleMenu = (new Select\Select("rule"))

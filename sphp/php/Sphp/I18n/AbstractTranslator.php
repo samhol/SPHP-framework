@@ -38,6 +38,19 @@ abstract class AbstractTranslator implements TranslatorInterface {
     return $this;
   }
 
+  public function translateArray(array $messages): array {
+    foreach ($messages as $index => $value) {
+       if (is_array($value)) {
+        $value = $this->translateArray($value);
+      }
+      if (is_string($value)) {
+        $value = $this->get($value);
+      }
+      $output[$index] = $value;
+    }
+    return $output;
+  }
+
   public function vsprintf(string $message, $args = null, bool $translateArgs = false): string {
     $m = $this->get($message);
     if ($args !== null) {

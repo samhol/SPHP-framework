@@ -12,6 +12,7 @@ use Sphp\Stdlib\Arrays;
 use Zend\I18n\Translator\Translator as ZendTranslator;
 use ReflectionClass;
 use Exception;
+use Sphp\Exceptions\BadMethodCallException;
 
 /**
  * Implements a natural language translator
@@ -128,25 +129,21 @@ class Translator extends AbstractTranslator {
     return $this->domain;
   }
 
-  public function get($text, $lang = null) {
-    if ($lang === null) {
-      $lang = $this->getLang();
-    }
-    $parser = function($arg) use ($lang) {
-      if (is_string($arg)) {
-        return $this->translator->translate($arg, $this->getDomain(), $lang);
-      }
-      return $arg;
-    };
-    if (is_array($text)) {
-      $translation = Arrays::multiMap($parser, $text);
-    } else {
-      $translation = $this->translator->translate($text, $this->getDomain(), $this->getLang());
-    }
-    return $translation;
+  public function get(string $text): string {
+    return $this->translator->translate($text, $this->getDomain(), $this->getLang());
   }
 
-  public function getPlural(string $msgid1, string $msgid2, int $n, string $lang = null):string{
+  /*public function translateArray(array $text): array {
+    foreach ($text as $index => $value) {
+      if (is_string($value)) {
+        $value = $this->get($value);
+      }
+      $output[$index] = $value;
+    }
+    return $output;
+  }*/
+
+  public function getPlural(string $msgid1, string $msgid2, int $n): string {
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 

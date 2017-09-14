@@ -128,7 +128,7 @@ class StringLengthValidator extends AbstractValidator {
     $valid = true;
     $string = new MbString($value);
     $length = $string->length();
-    if ($this->isRangeValidator() && !$string->lengthBetween($this->min, $this->max)) {
+    if ($this->isRangeValidator() && ($length < $this->min | $this->max < $length)) {
       $valid = false;
       $this->error(self::TOO_LONG, [$this->min]);
     } else if ($this->isLowerBoundValidator() && $length < $this->min) {

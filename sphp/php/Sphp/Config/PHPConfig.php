@@ -79,7 +79,7 @@ class PHPConfig {
    *
    * @param  int $category a named constant specifying the category of the functions affected by the locale setting:
    * @param  string $locale the name of the locale
-   * @return boolean true if the setting was succesfull and false otherwise
+   * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setLocale(int $category, string $locale) {
@@ -91,7 +91,7 @@ class PHPConfig {
    * Sets the locale information for system responses
    *
    * @param  string|null $locale the locale information for system responses
-   * @return boolean true if the setting was successful and false otherwise
+   * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setMessageLocale(string $locale) {

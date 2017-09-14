@@ -18,19 +18,16 @@ namespace Sphp\I18n\Gettext;
 class GettextData {
 
   /**
-   *
    * @var string
    */
   private $msgid;
 
   /**
-   *
    * @var string
    */
   private $translation;
 
   /**
-   *
    * @var string|null
    */
   private $flags;

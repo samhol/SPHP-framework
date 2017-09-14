@@ -75,7 +75,7 @@ class PluralMessage extends Message {
   public function translateWith(TranslatorInterface $translator): string {
     return $translator->vsprintfPlural($this->singular, $this->plural, $this->n, $this->getArguments());
   }
-  
+
   public function getTemplate(): string {
     return !$this->isPlural() ? $this->singular : $this->plural;
   }

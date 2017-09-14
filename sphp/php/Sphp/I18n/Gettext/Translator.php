@@ -119,16 +119,20 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
-  public function get(string $text): string {
+  public function get(string $message): string {
     $lang = $this->getLang();
     $tempLc = Locale::getMessageLocale();
-    Locale::setMessageLocale($lang);
-    $translation = dgettext($this->domain, $text);
-    Locale::setMessageLocale($tempLc);
+    if ($lang !== $tempLc) {
+      Locale::setMessageLocale($lang);
+    }
+    $translation = dgettext($this->domain, $message);
+    if ($lang !== $tempLc) {
+      Locale::setMessageLocale($tempLc);
+    }
     return $translation;
   }
 
-  public function translateArray(array $text): array {
+  /*public function translateArray(array $text): array {
     $lang = $this->getLang();
     $parser = function($arg) {
       if (is_string($arg)) {
@@ -145,7 +149,7 @@ class Translator extends AbstractTranslator {
     }
     Locale::setMessageLocale($tempLc);
     return $translation;
-  }
+  }*/
 
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
     $lang = $this->getLang();

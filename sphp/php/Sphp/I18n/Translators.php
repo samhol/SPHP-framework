@@ -72,7 +72,7 @@ class Translators {
   /**
    * 
    * @param  TranslatorInterface $default
-   * @return $this
+   * @return $this for a fluent interface
    */
   public function setDefault(TranslatorInterface $default) {
     $this->default = $default;
@@ -85,14 +85,16 @@ class Translators {
    * 
    * @param string $name the name specified
    * @param TranslatorInterface $translator
+   * @return $this for a fluent interface
    */
   public function store(string $name, TranslatorInterface $translator) {
     $this->translators[$name] = $translator;
+    return $this;
   }
 
   /**
    * 
-   * @param  string $name
+   * @param  string|null $name
    * @return TranslatorInterface
    * @throws InvalidArgumentException
    */

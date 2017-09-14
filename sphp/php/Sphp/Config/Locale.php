@@ -45,7 +45,7 @@ abstract class Locale {
   /**
    * Sets the locale information for system responses
    *
-   * @param  string|null $locale the locale information for system responses
+   * @param  string $locale the locale information for system responses
    * @return boolean true if the setting was successful and false otherwise
    */
   public static function setMessageLocale(string $locale): bool {

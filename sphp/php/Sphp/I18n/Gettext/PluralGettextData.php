@@ -18,13 +18,11 @@ namespace Sphp\I18n\Gettext;
 class PluralGettextData extends GettextData {
 
   /**
-   *
    * @var string
    */
   private $pluralMsgId;
 
   /**
-   *
    * @var string
    */
   private $pluralTranslation;

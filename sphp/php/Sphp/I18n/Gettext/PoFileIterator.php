@@ -38,7 +38,7 @@ class PoFileIterator implements \Iterator {
     $this->objects = $this->parseFromFile($poFilePath);
   }
 
-  protected function parseFromFile(string $poFilePath) {
+  protected function parseFromFile(string $poFilePath): Collection {
     $fileHandler = new FileHandler($poFilePath);
     $poParser = new SepiaPoParser($fileHandler);
     $rawData = $poParser->parse();
@@ -55,7 +55,7 @@ class PoFileIterator implements \Iterator {
    * @param  callable $callback
    * @return Collection
    */
-  public function filter(callable $callback) {
+  public function filter(callable $callback): Collection {
     return $this->objects->filter($callback, 0);
   }
 
@@ -63,7 +63,7 @@ class PoFileIterator implements \Iterator {
    * 
    * @return Collection
    */
-  public function getSingulars() {
+  public function getSingulars(): Collection {
     $singularFilter = function(GettextData $entry) {
       return !$entry instanceof PluralGettextData;
     };
@@ -74,7 +74,7 @@ class PoFileIterator implements \Iterator {
    * 
    * @return Collection
    */
-  public function getPlurals() {
+  public function getPlurals(): Collection {
     $pluralFilter = function(GettextData $entry) {
       return $entry instanceof PluralGettextData;
     };
@@ -128,7 +128,7 @@ class PoFileIterator implements \Iterator {
     $this->objects->rewind();
   }
 
-  public function valid() {
+  public function valid(): bool {
     return $this->objects->valid();
   }
 
