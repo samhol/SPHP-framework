@@ -9,6 +9,7 @@ namespace Sphp\I18n\Messages;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translators;
+use Sphp\Stdlib\Arrays;
 
 /**
  * Implements a translatable message object
@@ -95,7 +96,7 @@ abstract class Message implements \Sphp\I18n\Translatable {
 
   public function getArguments(): array {
     if (!empty($this->args) && $this->translateArgs) {
-      return $this->getTranslator()->get($this->args, $this->getLang());
+      return $this->getTranslator()->translateArray($this->args);
     } else {
       return $this->args;
     }

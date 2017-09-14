@@ -27,4 +27,5 @@ MD
 
 \Sphp\Manual\loadPage('Sphp.I18n.TranslatorInterface');
 \Sphp\Manual\loadPage('Sphp.I18n.Messages');
+\Sphp\Manual\loadPage('Sphp.I18n.Collections');
 \Sphp\Manual\loadPage('Sphp.I18n.Datetime');

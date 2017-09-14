@@ -1,6 +1,7 @@
 <?php
 
-namespace Sphp\I18n\Messages;
+namespace Sphp\I18n\Collections;
+use Sphp\I18n\Messages\Message;
 
 $translator = \Sphp\I18n\Translators::instance()->get('validation');
 

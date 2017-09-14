@@ -269,6 +269,20 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
    * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
    * @return Accordion
    */
+  public static function build(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
+    return (new static($path, $highlightOutput, $outputAsHtmlFlow));
+  }
+  
+  /**
+   * Prints the PHP Example code and the preferred result
+   *
+   * @param  string $path the file path of the presented example PHP code
+   * @param  string|boolean $highlightOutput the language name of the output code 
+   *         or false if highlighted output code should not be visible
+   * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+   * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
+   * @return Accordion
+   */
   public static function visualize(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true) {
     (new static($path, $highlightOutput, $outputAsHtmlFlow))->buildAccordion()->printHtml();
   }

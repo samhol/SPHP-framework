@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n\Messages;
+namespace Sphp\I18n\Collections;
 
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\I18n\TranslatorInterface;
@@ -49,7 +49,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
     if ($translator === null) {
       $translator = new Translator();
     }
-    $a = new PriorityList();
     $this->setTranslator($translator);
   }
 
@@ -108,19 +107,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   }
 
   /**
-   * Merges given collection to this container
-   *
-   * @param  MessageCollectionInterface $m
-   * @return $this for a fluent interface
-   */
-  public function merge(TranslatableCollectionInterface $m) {
-    foreach ($m as $message) {
-      $this->insert($message);
-    }
-    return $this;
-  }
-
-  /**
    * Create a new iterator from the instance
    *
    * @return \ArrayIterator iterator
@@ -172,21 +158,17 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
     return $this;
   }
 
-  public function translate(): string {
-    $output = '';
-    foreach ($this as $component) {
-      $output .= $component;
-    }
-    return $output;
+  public function translate(): array {
+    return $this->translateWith($this->getTranslator());
   }
 
-  public function translateWith(TranslatorInterface $translator): string {
-    $output = '';
+  public function translateWith(TranslatorInterface $translator): array {
+    $output = [];
     foreach ($this as $component) {
       if ($component instanceof Translatable) {
-        $output .= $component->translateWith($translator);
+        $output[] = $component->translateWith($translator);
       } else {
-        $output .= $component;
+        $output[] = $component;
       }
     }
     return $output;

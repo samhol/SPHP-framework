@@ -40,10 +40,9 @@ abstract class AbstractTranslator implements TranslatorInterface {
 
   public function translateArray(array $messages): array {
     foreach ($messages as $index => $value) {
-       if (is_array($value)) {
+      if (is_array($value)) {
         $value = $this->translateArray($value);
-      }
-      if (is_string($value)) {
+      } else if (is_string($value)) {
         $value = $this->get($value);
       }
       $output[$index] = $value;

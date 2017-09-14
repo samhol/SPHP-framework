@@ -5,7 +5,7 @@
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 
-namespace Sphp\I18n\Messages;
+namespace Sphp\I18n\Collections;
 
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
@@ -23,7 +23,7 @@ use ArrayAccess;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TranslatableCollection implements Iterator, Translatable, ArrayAccess, Arrayable, Countable {
+class TranslatableCollection implements Iterator, TranslatableCollectionInterface, ArrayAccess, Arrayable, Countable {
 
   /**
    * Array that holds the messages
@@ -114,7 +114,7 @@ class TranslatableCollection implements Iterator, Translatable, ArrayAccess, Arr
   /**
    * Inserts a messages to the container
    *
-   * @param  MessageInterface $message the message text
+   * @param  Translatable $message the message text
    * @return $this for a fluent interface
    */
   public function insert(Translatable $message) {
@@ -147,6 +147,12 @@ class TranslatableCollection implements Iterator, Translatable, ArrayAccess, Arr
     return $this;
   }
 
+  /**
+   * Merges given collection to this collection
+   *
+   * @param  MessageCollectionInterface $m
+   * @return $this for a fluent interface
+   */
   public function contains(Translatable $message): bool {
     $result = false;
     foreach ($this as $m) {

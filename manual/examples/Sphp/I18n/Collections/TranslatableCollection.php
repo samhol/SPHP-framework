@@ -1,8 +1,9 @@
 <?php
 
-namespace Sphp\I18n\Messages;
+namespace Sphp\I18n\Collections;
 
 use Sphp\I18n\Gettext\Translator;
+use Sphp\I18n\Messages\Message;
 
 $translator = new Translator();
 $msg = Message::singular("%s:%s:%s elapsed", [3, 24, '03'], $translator);
