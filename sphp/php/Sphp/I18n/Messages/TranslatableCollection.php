@@ -23,7 +23,7 @@ use ArrayAccess;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TranslatableList implements Iterator, TranslatableCollectionInterface, ArrayAccess, Arrayable, Countable {
+class TranslatableCollection implements Iterator, Translatable, ArrayAccess, Arrayable, Countable {
 
   /**
    * Array that holds the messages
@@ -140,7 +140,7 @@ class TranslatableList implements Iterator, TranslatableCollectionInterface, Arr
    * @param  MessageCollectionInterface $m
    * @return $this for a fluent interface
    */
-  public function merge(TranslatableCollectionInterface $m) {
+  public function merge(TranslatableCollection $m) {
     foreach ($m as $message) {
       $this->insert($message);
     }

@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Countable;
-use Sphp\I18n\Messages\TranslatableList;
+use Sphp\I18n\Messages\TranslatableCollection;
 
 /**
  * A validator container for validating a value against multiple validators
@@ -44,7 +44,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    */
   public function __construct() {
     $this->validators = [];
-    $this->errors = new TranslatableList();
+    $this->errors = new TranslatableCollection();
   }
 
   /**
@@ -120,7 +120,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
     return $this;
   }
   
-  public function getErrors(): TranslatableList {
+  public function getErrors(): TranslatableCollection {
     return $this->errors;
   }
 

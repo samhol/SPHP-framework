@@ -2,7 +2,6 @@
 
 namespace Sphp\I18n;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();

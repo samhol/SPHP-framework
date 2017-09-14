@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Sphp\I18n\MessageInterface;
-use Sphp\I18n\Messages\TranslatableList;
+use Sphp\I18n\Messages\TranslatableCollection;
 use Sphp\I18n\Messages\Message;
 use Sphp\I18n\Translatable;
 
@@ -27,7 +27,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * stores error messages if not valid
    *
-   * @var TranslatableList
+   * @var TranslatableCollection
    */
   private $errors;
 
@@ -50,7 +50,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    */
   public function __construct($error = 'Invalid value') {
     $this->messageTemplates = [];
-    $this->errors = new TranslatableList();
+    $this->errors = new TranslatableCollection();
     $this->setMessageTemplate(static::INVALID, $error);
   }
 
@@ -140,7 +140,7 @@ abstract class AbstractValidator implements ValidatorInterface {
     return $this;
   }
 
-  public function getErrors(): TranslatableList {
+  public function getErrors(): TranslatableCollection {
     return $this->errors;
   }
 

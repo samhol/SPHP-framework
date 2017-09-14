@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Messages\TranslatableList;
+use Sphp\I18n\Messages\TranslatableCollection;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Stdlib\Arrays;
 
@@ -22,7 +22,7 @@ use Sphp\Stdlib\Arrays;
 class FormValidator extends AbstractValidator implements \Countable, \IteratorAggregate {
 
   /**
-   * @var TranslatableList 
+   * @var TranslatableCollection 
    */
   private $inputErrors;
 
@@ -40,10 +40,10 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
     parent::__construct('The form has errors');
     $this->setMessageTemplate(self::INVALID, 'The form has errors');
     $this->validators = [];
-    $this->inputErrors = new TranslatableList();
+    $this->inputErrors = new TranslatableCollection();
   }
 
-  public function getInputErrors(): TranslatableList {
+  public function getInputErrors(): TranslatableCollection {
     return $this->inputErrors;
   }
 
