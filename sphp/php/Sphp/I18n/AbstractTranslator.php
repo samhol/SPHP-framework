@@ -52,13 +52,13 @@ abstract class AbstractTranslator implements TranslatorInterface {
 
   public function vsprintf(string $message, $args = null, bool $translateArgs = false): string {
     $m = $this->get($message);
-    if ($args !== null) {
+    /* if ($args !== null) {
       if ($translateArgs) {
-        $args = $this->get($args);
+      $args = $this->get($args);
       }
       $m = vsprintf($m, is_array($args) ? $args : [$args]);
-    }
-    return $m;
+      } */
+    return $this->execVsprintf($m, $args, $translateArgs);
   }
 
   public function vsprintfPlural(string $msgid1, string $msgid2, int $n, $args = null, bool $translateArgs = false): string {
@@ -70,6 +70,20 @@ abstract class AbstractTranslator implements TranslatorInterface {
       $m = vsprintf($m, is_array($args) ? $args : [$args]);
     }
     return $m;
+  }
+
+  protected function execVsprintf(string $message, array $args = null, bool $translateArgs = false): string {
+    if (!empty($args)) {
+      $this->error = false;
+      if ($translateArgs) {
+        $args = $this->get($args);
+      }
+      $runner = new \Sphp\Config\ErrorHandling\ErrorExceptionThrower();
+      $runner->start();
+      $message = vsprintf($message, $args);
+      $runner->stop();
+    }
+    return ""; //$message;
   }
 
   /**

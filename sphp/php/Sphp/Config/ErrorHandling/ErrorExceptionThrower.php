@@ -72,6 +72,13 @@ class ErrorExceptionThrower {
     register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
     return $this;
   }
+  
+  public function run($c, int $level = \E_ALL) {
+    $this->start($level);
+    $result = $c();
+    $this->stop();
+    return $result;
+  }
 
   /**
    * Stops redirecting PHP errors
@@ -91,7 +98,7 @@ class ErrorExceptionThrower {
     $last_error = error_get_last();
     if ($last_error['type'] === \E_ERROR) {
       // fatal error
-      $this->handleError(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
+      $this(\E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
     }
   }
 
@@ -113,7 +120,7 @@ class ErrorExceptionThrower {
       return false;
     }
     $type = $this->getExceptionType();
-    throw new $type($errstr, 0, $errno, $errfile, $errline);
+    throw new ErrorException('foo');
   }
 
 }

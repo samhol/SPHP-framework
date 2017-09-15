@@ -4,6 +4,7 @@ namespace Sphp\I18n\Gettext;
 
 $translator = new Translator();
 $translator->setLang('fi_FI');
+echo $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [3]);
 var_dump(
         $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [3, "a, b, c, d, e"]),
         $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [1, "a, b, c"]),

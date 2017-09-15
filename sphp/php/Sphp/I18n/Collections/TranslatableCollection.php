@@ -14,16 +14,19 @@ use Countable;
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\I18n\Translatable;
 use ArrayAccess;
+use Sphp\I18n\Messages\Message;
+use Sphp\Exceptions\InvalidArgumentException;
+use Traversable;
 
 /**
- * Implements a list that holds {@link MessageInterface} objects in a priority list
+ * Implements a list that holds {@link Translatable} objects in a priority list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TranslatableCollection implements Iterator, TranslatableCollectionInterface, ArrayAccess, Arrayable, Countable {
+class TranslatableCollection implements Iterator, TranslatableCollectionInterface, ArrayAccess, Countable ,Arrayable{
 
   /**
    * Array that holds the messages
@@ -75,32 +78,8 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
     }
   }
 
-  public function __toString(): string {
-    $output = "";
-    if ($this->count() > 0) {
-      foreach ($this->translatables as $message) {
-        $output .= "\t" . $message . "\n";
-      }
-    } else {
-      $output .= "Empty " . self::class;
-    }
-    return $output;
-  }
-
-  public function getLang() {
-    return $this->getTranslator()->getLang();
-  }
-
-  public function getTranslator() {
+  public function getTranslator(): TranslatorInterface {
     return $this->translator;
-  }
-
-  public function setLang(string $lang) {
-    $this->getTranslator()->setLang($lang);
-    foreach ($this as $message) {
-      //$message->setLang($lang);
-    }
-    return $this;
   }
 
   public function setTranslator(TranslatorInterface $translator) {
@@ -112,37 +91,25 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   }
 
   /**
-   * Inserts a messages to the container
-   *
-   * @param  Translatable $message the message text
-   * @return $this for a fluent interface
-   */
-  public function insert(Translatable $message) {
-    $this->append($message);
-    return $this;
-  }
-
-  /**
    * Appends new messages to the container
    *
-   * @param  MessageInterface $message the message text
-   * @param  int $priority the priority of the message
+   * @param  Translatable $translatable the message text
    * @return $this for a fluent interface
    */
-  public function append(Translatable $message) {
-    $this->translatables[] = $message;
+  public function append(Translatable $translatable) {
+    $this->translatables[] = $translatable;
     return $this;
   }
 
   /**
    * Merges given collection to this container
    *
-   * @param  MessageCollectionInterface $m
+   * @param  Traversable|array $translatables
    * @return $this for a fluent interface
    */
-  public function merge(TranslatableCollection $m) {
-    foreach ($m as $message) {
-      $this->insert($message);
+  public function merge(TranslatableCollection $translatables) {
+    foreach ($translatables as $message) {
+      $this->append($message);
     }
     return $this;
   }
@@ -150,13 +117,13 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   /**
    * Merges given collection to this collection
    *
-   * @param  MessageCollectionInterface $m
+   * @param  Translatable $m
    * @return $this for a fluent interface
    */
-  public function contains(Translatable $message): bool {
+  public function contains(Translatable $translatable): bool {
     $result = false;
     foreach ($this as $m) {
-      if ($message == $m) {
+      if ($translatable == $m) {
         $result = true;
         break;
       }
@@ -239,11 +206,11 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
 
   public function translateWith(TranslatorInterface $translator): array {
     $output = [];
-    foreach ($this as $offset => $component) {
-      if ($component instanceof Translatable) {
-        $output[$offset] = $component->translateWith($translator);
+    foreach ($this as $offset => $translatable) {
+      if ($translatable instanceof Translatable) {
+        $output[$offset] = $translatable->translateWith($translator);
       } else {
-        $output[$offset] = $component;
+        $output[$offset] = $translatable;
       }
     }
     return $output;
@@ -265,17 +232,17 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   /**
    * Sets a translatable object to the given offset
    *
-   * **Important:** The {@link Message} or the {@link MessageList} inserted
-   *  becomes also a {@link TranslatorChangerObserver} observer for the container
-   *
-   * @param  string $offset the message topic
-   * @param  mixed $m translatable object or a string
+   * @param  string $offset the offset
+   * @param  mixed $translatable translatable object or a string
    */
-  public function offsetSet($offset, $m) {
-    if (!$m instanceof Translatable) {
-      $m = Message::singular($m);
+  public function offsetSet($offset, $translatable) {
+    if (is_string($translatable)) {
+      $translatable = Message::singular($translatable);
     }
-    $this->translatables[$offset] = $m;
+    if (!$translatable instanceof Translatable) {
+      throw new InvalidArgumentException();
+    }
+    $this->translatables[$offset] = $translatable;
   }
 
   /**
@@ -292,8 +259,8 @@ class TranslatableCollection implements Iterator, TranslatableCollectionInterfac
   /**
    * Checks whether an topic exists
    *
-   * @param  string $offset the message topic
-   * @return boolean true, if the topic exists, false otherwise
+   * @param  string $offset An offset to check for.
+   * @return boolean true on success or false on failure
    */
   public function offsetExists($offset): bool {
     return array_key_exists($offset, $this->translatables);

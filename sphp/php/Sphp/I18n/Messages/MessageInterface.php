@@ -20,11 +20,18 @@ use Sphp\I18n\Translatable;
 interface MessageInterface extends Translatable {
 
   /**
-   * Returns the template string used
+   * Returns the raw template string
    * 
-   * @return string the template used
+   * @return string the template
    */
   public function getTemplate(): string;
+
+  /**
+   * Returns the template string 
+   * 
+   * @return string the template 
+   */
+  public function getFormattedTemplate(): string;
 
   /**
    * Sets the arguments used for message

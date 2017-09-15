@@ -19,7 +19,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class Message implements \Sphp\I18n\Translatable {
+abstract class Message implements MessageInterface {
 
   /**
    * original raw message arguments
@@ -83,7 +83,9 @@ abstract class Message implements \Sphp\I18n\Translatable {
     }
   }
 
-  abstract public function getTemplate(): string;
+  public function getFormattedTemplate(): string {
+    return vsprintf($this->getTemplate(), $this->getRawArguments());
+  }
 
   public function setArguments(array $args) {
     $this->args = $args;
@@ -92,6 +94,10 @@ abstract class Message implements \Sphp\I18n\Translatable {
 
   public function hasArguments(): bool {
     return !empty($this->args);
+  }
+
+  public function getRawArguments(): array {
+    return $this->args;
   }
 
   public function getArguments(): array {

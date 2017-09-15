@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Exception;
+use Throwable;
 
 /**
  * Trait implements parts of the {@link ContentInterface} interface
@@ -23,7 +23,7 @@ trait ContentTrait {
 	 * Returns the component as HTML markup string
 	 *
 	 * @return string HTML markup of the component
-	 * @throws \Sphp\Exceptions\RuntimeException if html parsing fails
+	 * @throws \Sphp\Exceptions\Exception if HTML parsing fails
 	 */
 	public abstract function getHtml(): string;
 
@@ -35,8 +35,8 @@ trait ContentTrait {
 	public function __toString(): string {
 		try {
 			$output = '' . $this->getHtml();
-		} catch (Exception $e) {
-			$output = $e->__toString();
+		} catch (Throwable $e) {
+			$output = $e->getMessage();
 		}
 		return $output;
 	}

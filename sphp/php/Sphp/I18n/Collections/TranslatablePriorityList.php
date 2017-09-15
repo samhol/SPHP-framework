@@ -7,28 +7,28 @@
 
 namespace Sphp\I18n\Collections;
 
+use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
-use Zend\Stdlib\PriorityList;
 use Sphp\I18n\Translatable;
-use Sphp\Stdlib\Arrays;
+use Zend\Stdlib\PriorityQueue;
 
 /**
- * Implements a list that holds {@link MessageInterface} objects in a priority list
+ * Implements a list that holds {@link Translatable} objects in a reusable priority queue
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-05-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class TranslatablePriorityList implements IteratorAggregate, TranslatableCollectionInterface {
+class TranslatablePriorityList implements IteratorAggregate, TranslatableCollectionInterface, Arrayable {
 
   /**
    * Array that holds the messages
    *
-   * @var StablePriorityQueue
+   * @var PriorityList
    */
   private $messages;
 
@@ -45,7 +45,8 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @param  TranslatorInterface|null $translator the translator component
    */
   public function __construct(TranslatorInterface $translator = null) {
-    $this->messages = new StablePriorityQueue();
+    $this->messages = new PriorityQueue();
+    $this->messages->setInternalQueueClass(StablePriorityQueue::class);
     if ($translator === null) {
       $translator = new Translator();
     }
@@ -73,15 +74,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
     $this->messages = clone $this->messages;
   }
 
-  /**
-   * Returns the object as a string.
-   *
-   * @return string the object as a string
-   */
-  public function __toString(): string {
-    return $this->translate();
-  }
-
   public function getTranslator() {
     return $this->translator;
   }
@@ -97,7 +89,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   /**
    * Inserts new messages to the container
    *
-   * @param  MessageInterface $messages the message text
+   * @param  Translatable $messages the message text
    * @param  int $priority the priority of the message
    * @return $this for a fluent interface
    */
@@ -112,7 +104,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    * @return \ArrayIterator iterator
    */
   public function getIterator() {
-    return clone $this->messages;
+    return clone $this->messages->getIterator();
   }
 
   public function contains(Translatable $message): bool {
@@ -133,19 +125,6 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
    */
   public function count(): int {
     return $this->messages->count();
-  }
-
-  /**
-   * Returns the content as an array of formatted and localized message strings
-   *
-   * @return string[] the content as an array of formatted and localized message strings
-   */
-  public function toArray(): array {
-    $output = [];
-    foreach ($this as $message) {
-      $output[] = "$message";
-    }
-    return $output;
   }
 
   /**
@@ -172,6 +151,15 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
       }
     }
     return $output;
+  }
+
+  /**
+   * Returns the content as an array of formatted and localized message strings
+   *
+   * @return string[] the content as an array of formatted and localized message strings
+   */
+  public function toArray(): array {
+    return $this->translate();
   }
 
 }
