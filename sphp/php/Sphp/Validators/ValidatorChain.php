@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Countable;
-use Sphp\I18n\Messages\TranslatableCollection;
+use Sphp\I18n\Collections\TranslatableCollection;
 
 /**
  * A validator container for validating a value against multiple validators

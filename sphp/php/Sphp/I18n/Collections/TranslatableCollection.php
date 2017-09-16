@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MessageList.php (UTF-8)
+ * TranslatableCollection.php (UTF-8)
  * Copyright (c) 2012 Sami Holck <sami.holck@gmail.com>.
  */
 

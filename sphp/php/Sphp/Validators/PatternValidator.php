@@ -39,12 +39,12 @@ class PatternValidator extends AbstractValidator {
    *  data is valid.
    *
    * @param string|null $pattern regular expression pattern to validate against
-   * @param string|Message $errorMessage error message corresponding to the pattern
+   * @param string $errorMessage error message corresponding to the pattern
    */
-  public function __construct($pattern = null, $errorMessage = 'Invalid pattern given') {
+  public function __construct($pattern = null, string $errorMessage = 'Invalid pattern given') {
     parent::__construct('Invalid type given. String, integer or float expected');
     if ($pattern !== null) {
-      $this->setPattern($pattern, $errorMessage);
+      $this->setPattern($pattern);
     }
     $this->setMessageTemplate(self::NOT_MATCH, $errorMessage);
   }
@@ -72,7 +72,7 @@ class PatternValidator extends AbstractValidator {
       return false;
     }
     if (!Strings::match($value, $this->pattern)) {
-      echo $value . $this->pattern;
+      //echo $value . $this->pattern;
       $this->error(self::NOT_MATCH);
       return false;
     }

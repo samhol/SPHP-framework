@@ -2,14 +2,13 @@
 
 namespace Sphp\Validators;
 
-$validator = (new PatternValidator("Please insert numbers only"))
-        ->setPattern("/^\d+$/");
+$validator = (new PatternValidator("/^\d+$/", "Please insert numbers only"));
 
 var_dump($validator->isValid(" \n\r\t")) . "\n";
 
 var_dump($validator->isValid(" \n\r\t")) . "\n";
-echo $validator->getErrors() . "\n";
+print_r($validator->getErrors()->toArray()) . "\n";
 var_dump($validator->isValid("a23")) . "\n";
-echo $validator->getErrors() . "\n";
+print_r($validator->getErrors()->toArray()) . "\n";
 var_dump($validator->isValid("23")) . "\n";
 var_dump($validator->isValid(0)) . "\n";

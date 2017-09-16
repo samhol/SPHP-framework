@@ -18,10 +18,8 @@ var_dump($validator->isValid($correctData));
 $incorrectData = [
     'num' => 'abc',
     'p1' => '_err_',
-    'p1' => '_err_'];
+    'p2' => '_err_'];
 
 echo "\nincorrect data:";
 var_dump($validator->isValid($incorrectData));
-foreach ($validator->getInputErrors() as $fieldName => $error) {
-  echo "\n$fieldName: $error";
-}
+print_r($validator->getInputErrors()->toArray());

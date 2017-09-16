@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Messages\TranslatableCollection;
+use Sphp\I18n\Collections\TranslatableCollection;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Stdlib\Arrays;
 

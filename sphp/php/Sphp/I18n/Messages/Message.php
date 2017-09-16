@@ -12,7 +12,7 @@ use Sphp\I18n\Translators;
 use Sphp\Stdlib\Arrays;
 
 /**
- * Implements a translatable message object
+ * Abstract implementation of a translatable message
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2010-09-02
