@@ -34,7 +34,7 @@ class InArrayValidator extends AbstractValidator {
   /**
    * Constructs a new validator
    *
-   * @param mixed[] $haystack the haystack
+   * @param array $haystack the haystack
    */
   public function __construct(array $haystack = []) {
     parent::__construct();
@@ -57,7 +57,7 @@ class InArrayValidator extends AbstractValidator {
   /**
    * Sets the range of the valid string length
    *
-   * @param mixed[] $haystack the haystack
+   * @param  array $haystack the haystack
    * @return $this for a fluent interface
    */
   public function setHaystack(array $haystack) {
@@ -74,8 +74,12 @@ class InArrayValidator extends AbstractValidator {
   }
 
   /**
+   * Sets the comparison type
    * 
-   * @param  boolean $strict
+   * * **Strict** `===` comparison 
+   * * **Non strict** `==` comparison
+   * 
+   * @param  boolean $strict true for strict false otherwise
    * @return $this for a fluent interface
    */
   public function setStrict(bool $strict) {
