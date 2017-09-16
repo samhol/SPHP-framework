@@ -48,11 +48,7 @@ class StringFormatValidator extends AbstractValidator {
   }
 
   /**
-   * Sets a regular expression patterns to test.
-   * **Notes:** If all of the patterns is a matches => the cheked string is valid
-   *
-   *  **Note:** If the validable value matches the pattern => the validated
-   *  data is valid.
+   * Sets a format to test
    *
    * @param string $format regular expression pattern to validate against
    * @return $this for a fluent interface
@@ -89,7 +85,7 @@ class StringFormatValidator extends AbstractValidator {
     return false;
   }
 
-  public static function validate($format, $arguments): bool {
+  public static function validate(string $format, string $arguments): bool {
     $validator = new Static($format);
     return $validator->isValid($arguments);
   }

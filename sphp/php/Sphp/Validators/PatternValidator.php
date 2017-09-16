@@ -41,7 +41,7 @@ class PatternValidator extends AbstractValidator {
    * @param string|null $pattern regular expression pattern to validate against
    * @param string $errorMessage error message corresponding to the pattern
    */
-  public function __construct($pattern = null, string $errorMessage = 'Invalid pattern given') {
+  public function __construct(string $pattern = null, string $errorMessage = 'Invalid pattern given') {
     parent::__construct('Invalid type given. String, integer or float expected');
     if ($pattern !== null) {
       $this->setPattern($pattern);
@@ -56,10 +56,10 @@ class PatternValidator extends AbstractValidator {
    *  **Note:** If the validable value matches the pattern => the validated
    *  data is valid.
    *
-   * @param string $pattern regular expression pattern to validate against
+   * @param  string $pattern regular expression pattern to validate against
    * @return $this for a fluent interface
    */
-  public function setPattern($pattern) {
+  public function setPattern(string $pattern) {
     $this->pattern = $pattern;
     return $this;
   }

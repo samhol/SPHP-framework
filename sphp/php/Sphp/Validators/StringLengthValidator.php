@@ -105,7 +105,7 @@ class StringLengthValidator extends AbstractValidator {
    * **Important:** Unsets the minimum length setting making the validator act 
    * as a upper bound validator
    * 
-   * @param int $max maximum length of the valid string
+   * @param  int $max maximum length of the valid string
    * @return $this for a fluent interface
    */
   public function setUpperBoundValidation(int $max) {
