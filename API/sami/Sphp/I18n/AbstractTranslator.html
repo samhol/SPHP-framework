@@ -117,10 +117,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_translateArray">translateArray</a>(array $messages)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_vsprintf">vsprintf</a>(string $message, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+                    <a href="#method_vsprintf">vsprintf</a>(string $message, array $args = null, bool $translateArgs = false)
         
                                             <p>Returns the the given message data as formatted localized string</p>                </div>
                 <div class="col-md-2"></div>
@@ -130,9 +141,20 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_vsprintfPlural">vsprintfPlural</a>(string $msgid1, string $msgid2, int $n, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+                    <a href="#method_vsprintfPlural">vsprintfPlural</a>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         
                                             <p>Returns the the given message data as formatted localized string</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_format">format</a>(string $message, array $args = null, bool $translateArgs = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -153,7 +175,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getLang">
-        <div class="location">at         line 29</div>
+        <div class="location">at         line 30</div>
         <code>                    string
     <strong>getLang</strong>()
         </code>
@@ -183,7 +205,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLang">
-        <div class="location">at         line 36</div>
+        <div class="location">at         line 37</div>
         <code>                    <abbr title="Sphp\I18n\$this">$this</abbr>
     <strong>setLang</strong>(string $lang = null)
         </code>
@@ -222,10 +244,39 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_translateArray">
+        <div class="location">at         line 42</div>
+        <code>                    
+    <strong>translateArray</strong>(array $messages)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">at         line 41</div>
+        <div class="location">at         line 54</div>
         <code>                    string
-    <strong>vsprintf</strong>(string $message, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+    <strong>vsprintf</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
     </h3>
     <div class="details">
@@ -244,7 +295,7 @@
                 <td>the message text</td>
             </tr>
                     <tr>
-                <td>null|mixed|mixed[]</td>
+                <td>array</td>
                 <td>$args</td>
                 <td>the arguments or null for no arguments</td>
             </tr>
@@ -266,6 +317,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\I18n\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -273,9 +333,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintfPlural">
-        <div class="location">at         line 52</div>
+        <div class="location">at         line 58</div>
         <code>                    string
-    <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+    <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         </code>
     </h3>
     <div class="details">
@@ -304,7 +364,7 @@
                 <td>the number of whatever determining the plurality</td>
             </tr>
                     <tr>
-                <td>null|mixed|mixed[]</td>
+                <td>array</td>
                 <td>$args</td>
                 <td>the arguments or null for no arguments</td>
             </tr>
@@ -326,6 +386,72 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\I18n\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_format">
+        <div class="location">at         line 70</div>
+        <code>            protected        string
+    <strong>format</strong>(string $message, array $args = null, bool $translateArgs = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$args</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$translateArgs</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -333,7 +459,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">at         line 69</div>
+        <div class="location">at         line 89</div>
         <code>                    mixed
     <strong>__invoke</strong>(mixed $text)
         </code>

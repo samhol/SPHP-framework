@@ -8,7 +8,7 @@
 namespace Sphp\Validators;
 
 use Sphp\I18n\MessageInterface;
-use Sphp\I18n\Messages\TranslatableCollection;
+use Sphp\I18n\Collections\TranslatableCollection;
 use Sphp\I18n\Messages\Message;
 use Sphp\I18n\Translatable;
 

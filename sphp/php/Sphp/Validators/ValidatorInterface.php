@@ -7,7 +7,7 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Messages\TranslatableCollection;
+use Sphp\I18n\Collections\TranslatableCollection;
 
 /**
  * The base interface for all validators

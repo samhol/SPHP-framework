@@ -8,7 +8,8 @@
 namespace Sphp\I18n;
 
 use Sphp\Config\Locale;
-
+use Sphp\Validators\StringFormatValidator;
+use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Abstract implementation for natural language translator
  *
@@ -50,40 +51,33 @@ abstract class AbstractTranslator implements TranslatorInterface {
     return $output;
   }
 
-  public function vsprintf(string $message, $args = null, bool $translateArgs = false): string {
-    $m = $this->get($message);
-    /* if ($args !== null) {
-      if ($translateArgs) {
-      $args = $this->get($args);
-      }
-      $m = vsprintf($m, is_array($args) ? $args : [$args]);
-      } */
-    return $this->execVsprintf($m, $args, $translateArgs);
+  public function vsprintf(string $message, array $args = null, bool $translateArgs = false): string {
+    return $this->format($this->get($message), $args, $translateArgs);
   }
 
-  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, $args = null, bool $translateArgs = false): string {
-    $m = $this->getPlural($msgid1, $msgid2, $n);
-    if ($args !== null) {
-      if ($translateArgs) {
-        $args = $this->get($args);
-      }
-      $m = vsprintf($m, is_array($args) ? $args : [$args]);
-    }
-    return $m;
+  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false): string {
+    return $this->format($this->getPlural($msgid1, $msgid2, $n), $args, $translateArgs);
   }
 
-  protected function execVsprintf(string $message, array $args = null, bool $translateArgs = false): string {
+  /**
+   * 
+   * @param  string $message
+   * @param  array $args
+   * @param  bool $translateArgs
+   * @return string
+   * @throws \InvalidArgumentException if invalid number of arguments is presented
+   */
+  protected function format(string $message, array $args = null, bool $translateArgs = false): string {
     if (!empty($args)) {
-      $this->error = false;
+      if (!StringFormatValidator::validate($message, $args)) {
+        throw new InvalidArgumentException('Invalid number of arguments presented');
+      }
       if ($translateArgs) {
         $args = $this->get($args);
       }
-      $runner = new \Sphp\Config\ErrorHandling\ErrorExceptionThrower();
-      $runner->start();
       $message = vsprintf($message, $args);
-      $runner->stop();
     }
-    return ""; //$message;
+    return $message;
   }
 
   /**

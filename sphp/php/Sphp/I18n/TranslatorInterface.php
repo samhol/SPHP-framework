@@ -58,11 +58,12 @@ interface TranslatorInterface {
    * Returns the the given message data as formatted localized string
    *
    * @param  string $message the message text
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
+   * @param  array|null $args the arguments or null for no arguments
    * @param  boolean $translateArgs true for translated arguments and false otherwise
    * @return string the message text translated and parsed
+   * @throws Sphp\Exceptions\InvalidArgumentException if invalid number of arguments is presented
    */
-  public function vsprintf(string $message, $args = null, bool $translateArgs = false): string;
+  public function vsprintf(string $message, array $args = null, bool $translateArgs = false): string;
 
   /**
    * Returns the the given message data as formatted localized string
@@ -70,9 +71,10 @@ interface TranslatorInterface {
    * @param  string $msgid1 the singular message being translated
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
-   * @param  null|mixed|mixed[] $args the arguments or null for no arguments
+   * @param  array|null $args the arguments or null for no arguments
    * @param  boolean $translateArgs true for translated arguments and false otherwise
    * @return string the message text translated and parsed
+   * @throws Sphp\Exceptions\InvalidArgumentException if invalid number of arguments is presented
    */
-  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, $args = null, bool $translateArgs = false): string;
+  public function vsprintfPlural(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false): string;
 }

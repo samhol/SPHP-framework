@@ -149,13 +149,33 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setIntlDateFormatter">setIntlDateFormatter</a>(<a target="_blank" href="http://php.net/IntlDateFormatter">IntlDateFormatter</a> $fmt)
+        
+                                            <p>Sets the class used for ICU date formatting functionality</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIntlFormatter">getIntlFormatter</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_formatICU">formatICU</a>(string $format, string $lang = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>ICU stands for: International Components for Unicode</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -170,28 +190,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_fromTimestamp">fromTimestamp</a>(int $timestamp, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_fromString">fromString</a>(string $time = &#039;now&#039;, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
@@ -199,6 +197,16 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getWeekOfYear">getWeekOfYear</a>()
+        
+                                            <p>Returns the week of year</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -219,7 +227,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_format">format</a>(string $format)
         
-                                            <p>Returns date formatted according to given format</p>                </div>
+                                            <p>Returns the date formatted according to given format</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -252,6 +260,38 @@
                                             <p>Return time zone relative to given DateTime</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromTimestamp">fromTimestamp</a>(int $timestamp, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromString">fromString</a>(string $time = &#039;now&#039;, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromFormat">fromFormat</a>(string $format, string $time, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
+        
+                                            <p><strong>NOTE:</strong> If time zone is omitted and time contains no time zone, the current time zone will be used.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -260,7 +300,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 38</div>
+        <div class="location">at         line 41</div>
         <code>                    
     <strong>__construct</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $dateTime = null)
         </code>
@@ -289,7 +329,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getDate">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 52</div>
         <code>                    <a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a>
     <strong>getDate</strong>()
         </code>
@@ -317,7 +357,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDate">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 61</div>
         <code>                    <abbr title="Sphp\I18n\Datetime\$this">$this</abbr>
     <strong>setDate</strong>(<a target="_blank" href="http://php.net/DateTimeInterface">DateTimeInterface</a> $date)
         </code>
@@ -355,7 +395,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getWeekdayName">
-        <div class="location">at         line 70</div>
+        <div class="location">at         line 73</div>
         <code>                    string
     <strong>getWeekdayName</strong>(int $length, string $lang = null)
         </code>
@@ -400,7 +440,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMonthName">
-        <div class="location">at         line 85</div>
+        <div class="location">at         line 88</div>
         <code>                    string
     <strong>getMonthName</strong>(int $length, string $lang = null)
         </code>
@@ -444,8 +484,58 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setIntlDateFormatter">
+        <div class="location">at         line 101</div>
+        <code>                    
+    <strong>setIntlDateFormatter</strong>(<a target="_blank" href="http://php.net/IntlDateFormatter">IntlDateFormatter</a> $fmt)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the class used for ICU date formatting functionality</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/IntlDateFormatter">IntlDateFormatter</a></td>
+                <td>$fmt</td>
+                <td>the class used for ICU date formatting functionality</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIntlFormatter">
+        <div class="location">at         line 105</div>
+        <code>                    
+    <strong>getIntlFormatter</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_formatICU">
-        <div class="location">at         line 100</div>
+        <div class="location">at         line 125</div>
         <code>                    string
     <strong>formatICU</strong>(string $format, string $lang = null)
         </code>
@@ -454,6 +544,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>ICU stands for: International Components for Unicode</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -488,7 +580,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_strftime">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 146</div>
         <code>                    string
     <strong>strftime</strong>(string $format, string $lang = null)
         </code>
@@ -532,8 +624,221 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 161</div>
+        <code>                    
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWeekOfYear">
+        <div class="location">at         line 170</div>
+        <code>                    int
+    <strong>getWeekOfYear</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the week of year</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the week of year</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_diff">
+        <div class="location">at         line 174</div>
+        <code>                    
+    <strong>diff</strong>($object, $absolute = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$absolute</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_format">
+        <div class="location">at         line 185</div>
+        <code>                    string
+    <strong>format</strong>(string $format)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the date formatted according to given format</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td>the format of the outputted date string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>a formatted date string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOffset">
+        <div class="location">at         line 194</div>
+        <code>                    int
+    <strong>getOffset</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the time zone offset</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the time zone offset</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTimestamp">
+        <div class="location">at         line 203</div>
+        <code>                    int
+    <strong>getTimestamp</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the Unix timestamp</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the Unix timestamp</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTimezone">
+        <div class="location">at         line 212</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a>
+    <strong>getTimezone</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return time zone relative to given DateTime</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a></td>
+            <td>time zone relative to given DateTime</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromTimestamp">
-        <div class="location">at         line 140</div>
+        <div class="location">at         line 222</div>
         <code>        static            <a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
     <strong>fromTimestamp</strong>(int $timestamp, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
         </code>
@@ -576,7 +881,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location">at         line 150</div>
+        <div class="location">at         line 232</div>
         <code>        static            <a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
     <strong>fromString</strong>(string $time = &#039;now&#039;, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
         </code>
@@ -592,7 +897,7 @@
                     <tr>
                 <td>string</td>
                 <td>$time</td>
-                <td></td>
+                <td>the format that the passed in string should be in</td>
             </tr>
                     <tr>
                 <td><a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a></td>
@@ -618,63 +923,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location">at         line 154</div>
-        <code>                    
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_diff">
-        <div class="location">at         line 158</div>
-        <code>                    
-    <strong>diff</strong>($object, $absolute = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$object</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$absolute</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_format">
-        <div class="location">at         line 168</div>
-        <code>                    string
-    <strong>format</strong>(string $format)
+                    <h3 id="method_fromFormat">
+        <div class="location">at         line 245</div>
+        <code>        static            <a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a>
+    <strong>fromFormat</strong>(string $format, string $time, <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a> $timezone = null)
         </code>
     </h3>
     <div class="details">
@@ -682,7 +934,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns date formatted according to given format</p>                                                </div>
+                                    <p><strong>NOTE:</strong> If time zone is omitted and time contains no time zone, the current time zone will be used.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -692,6 +944,16 @@
                 <td>$format</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>string</td>
+                <td>$time</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a></td>
+                <td>$timezone</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -699,98 +961,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getOffset">
-        <div class="location">at         line 177</div>
-        <code>                    int
-    <strong>getOffset</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the time zone offset</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>the time zone offset</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getTimestamp">
-        <div class="location">at         line 186</div>
-        <code>                    int
-    <strong>getTimestamp</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the Unix timestamp</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td>the Unix timestamp</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getTimezone">
-        <div class="location">at         line 195</div>
-        <code>                    <a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a>
-    <strong>getTimezone</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Return time zone relative to given DateTime</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/DateTimeZone">DateTimeZone</a></td>
-            <td>time zone relative to given DateTime</td>
+            <td><a href="../../../Sphp/I18n/Datetime/DateTime.html"><abbr title="Sphp\I18n\Datetime\DateTime">DateTime</abbr></a></td>
+            <td>new instance</td>
         </tr>
     </table>
 

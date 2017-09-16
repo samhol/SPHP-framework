@@ -126,10 +126,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_translateArray">translateArray</a>(array $messages)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/AbstractTranslator.html#method_translateArray"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_vsprintf">vsprintf</a>(string $message, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+                    <a href="#method_vsprintf">vsprintf</a>(string $message, array $args = null, bool $translateArgs = false)
         
                                             <p>Returns the the given message data as formatted localized string</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintf"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a></small></div>
@@ -139,10 +150,21 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_vsprintfPlural">vsprintfPlural</a>(string $msgid1, string $msgid2, int $n, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+                    <a href="#method_vsprintfPlural">vsprintfPlural</a>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         
                                             <p>Returns the the given message data as formatted localized string</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintfPlural"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_format">format</a>(string $message, array $args = null, bool $translateArgs = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/AbstractTranslator.html#method_format"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -230,10 +252,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|string[]
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(string|string[] $text, string $lang = null)
+                    <a href="#method_get">get</a>(string $message)
         
                                             <p>Returns the input message(s) as translated message(s)</p>                </div>
                 <div class="col-md-2"></div>
@@ -243,7 +265,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getPlural">getPlural</a>(string $msgid1, string $msgid2, int $n, string $lang = null)
+                    <a href="#method_getPlural">getPlural</a>(string $msgid1, string $msgid2, int $n)
         
                                             <p>Returns the message as translated string</p>                </div>
                 <div class="col-md-2"></div>
@@ -256,7 +278,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getLang">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_getLang"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 29</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_getLang"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 30</div>
         <code>                    string
     <strong>getLang</strong>()
         </code>
@@ -286,7 +308,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLang">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_setLang"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 36</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_setLang"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 37</div>
         <code>                    <abbr title="Sphp\I18n\$this">$this</abbr>
     <strong>setLang</strong>(string $lang = null)
         </code>
@@ -325,10 +347,39 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_translateArray">
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_translateArray"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 42</div>
+        <code>                    
+    <strong>translateArray</strong>(array $messages)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintf"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 41</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintf"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 54</div>
         <code>                    string
-    <strong>vsprintf</strong>(string $message, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+    <strong>vsprintf</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
     </h3>
     <div class="details">
@@ -347,7 +398,7 @@
                 <td>the message text</td>
             </tr>
                     <tr>
-                <td>null|mixed|mixed[]</td>
+                <td>array</td>
                 <td>$args</td>
                 <td>the arguments or null for no arguments</td>
             </tr>
@@ -369,6 +420,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\I18n\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -376,9 +436,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintfPlural">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintfPlural"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 52</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintfPlural"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 58</div>
         <code>                    string
-    <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, null|mixed|mixed[] $args = null, bool $translateArgs = false)
+    <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         </code>
     </h3>
     <div class="details">
@@ -407,7 +467,7 @@
                 <td>the number of whatever determining the plurality</td>
             </tr>
                     <tr>
-                <td>null|mixed|mixed[]</td>
+                <td>array</td>
                 <td>$args</td>
                 <td>the arguments or null for no arguments</td>
             </tr>
@@ -429,6 +489,72 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\I18n\Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_format">
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_format"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 70</div>
+        <code>            protected        string
+    <strong>format</strong>(string $message, array $args = null, bool $translateArgs = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$args</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$translateArgs</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if invalid number of arguments is presented</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -436,7 +562,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method___invoke"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 69</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method___invoke"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 89</div>
         <code>                    mixed
     <strong>__invoke</strong>(mixed $text)
         </code>
@@ -476,7 +602,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 72</div>
         <code>                    
     <strong>__construct</strong>(string $domain = &#039;Sphp.Defaults&#039;, string $directory = &#039;sphp/locale&#039;, string $charset = &#039;utf8&#039;)
         </code>
@@ -528,7 +654,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDomain">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 88</div>
         <code>                    string
     <strong>getDomain</strong>()
         </code>
@@ -558,7 +684,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_setDomain">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 98</div>
         <code>                    <abbr title="Sphp\I18n\Gettext\$this">$this</abbr>
     <strong>setDomain</strong>(string $domain)
         </code>
@@ -598,7 +724,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDirectory">
-        <div class="location">at         line 103</div>
+        <div class="location">at         line 104</div>
         <code>                    
     <strong>getDirectory</strong>()
         </code>
@@ -617,7 +743,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_getCharset">
-        <div class="location">at         line 107</div>
+        <div class="location">at         line 108</div>
         <code>                    
     <strong>getCharset</strong>()
         </code>
@@ -636,7 +762,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_setDirectory">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 112</div>
         <code>                    
     <strong>setDirectory</strong>(string $directory = null)
         </code>
@@ -665,7 +791,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_setCharset">
-        <div class="location">at         line 116</div>
+        <div class="location">at         line 117</div>
         <code>                    
     <strong>setCharset</strong>(string $charset = null)
         </code>
@@ -694,9 +820,9 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 121</div>
-        <code>                    string|string[]
-    <strong>get</strong>(string|string[] $text, string $lang = null)
+        <div class="location">at         line 122</div>
+        <code>                    string
+    <strong>get</strong>(string $message)
         </code>
     </h3>
     <div class="details">
@@ -710,13 +836,8 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|string[]</td>
-                <td>$text</td>
-                <td>the message text or an array of the message text</td>
-            </tr>
-                    <tr>
                 <td>string</td>
-                <td>$lang</td>
+                <td>$message</td>
                 <td></td>
             </tr>
             </table>
@@ -726,7 +847,7 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|string[]</td>
+            <td>string</td>
             <td>the message text(s) translated</td>
         </tr>
     </table>
@@ -739,9 +860,9 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
             </div>
                     <div class="method-item">
                     <h3 id="method_getPlural">
-        <div class="location">at         line 142</div>
+        <div class="location">at         line 154</div>
         <code>                    string
-    <strong>getPlural</strong>(string $msgid1, string $msgid2, int $n, string $lang = null)
+    <strong>getPlural</strong>(string $msgid1, string $msgid2, int $n)
         </code>
     </h3>
     <div class="details">
@@ -757,21 +878,16 @@ The name of the <code>.mo</code> file must match the <code>$domain</code>. e.g t
                     <tr>
                 <td>string</td>
                 <td>$msgid1</td>
-                <td>the singular message being translated</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$msgid2</td>
-                <td>the plural message being translated</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$n</td>
-                <td>the number of whatever determining the plurality</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$lang</td>
                 <td></td>
             </tr>
             </table>
