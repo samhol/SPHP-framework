@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Core;
+namespace Sphp\Stdlib;
 
 $router = Path::get();
 

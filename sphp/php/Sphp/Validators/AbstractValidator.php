@@ -13,7 +13,7 @@ use Sphp\I18n\Messages\Message;
 use Sphp\I18n\Translatable;
 
 /**
- * Abstract superclass for validation
+ * Abstract superclass for miscellaneous data validation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2012-10-14
@@ -79,7 +79,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    * @return Message
    * @throws \Sphp\Exceptions\InvalidArgumentException if the template does not exist
    */
-  public function getMessageTemplate($id) {
+  public function getMessageTemplate(string $id) {
     if (!array_key_exists($id, $this->messageTemplates)) {
       throw new \Sphp\Exceptions\InvalidArgumentException("Template with id: '$id' does not exist");
     }
@@ -112,8 +112,9 @@ abstract class AbstractValidator implements ValidatorInterface {
   }
 
   /**
+   * Returns validated value 
    * 
-   * @return mixed
+   * @return mixed validated value 
    */
   public function getValue() {
     return $this->value;

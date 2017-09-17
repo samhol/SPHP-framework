@@ -37,7 +37,6 @@ class Translator extends AbstractTranslator {
   private $domain;
 
   /**
-   *
    * @var ZendTranslator 
    */
   private $translator;
@@ -51,7 +50,7 @@ class Translator extends AbstractTranslator {
   /**
    * Constructs a new instance
    *
-   * @param strin|null $lang optional translation language
+   * @param string|null $lang optional translation language
    * @param ZendTranslator $t
    */
   public function __construct(string $lang = null, ZendTranslator $t = null) {
@@ -94,6 +93,10 @@ class Translator extends AbstractTranslator {
   public function addTranslationFilePattern($type, $baseDir, $pattern, $textDomain) {
     $this->translator->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
     return $this;
+  }
+
+  public function getZend(): ZendTranslator {
+    return $this->translator;
   }
 
   public function getLang(): string {

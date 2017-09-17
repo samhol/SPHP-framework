@@ -165,7 +165,7 @@ class Head extends AbstractComponent implements NonVisualContentInterface {
   public function enableSPHP() {
     $this->addMeta(Meta::viewport('width=device-width, initial-scale=1.0'))
             ->addMeta(Meta::charset('UTF-8'));
-    $this->addCssSrc(Path::get()->http() . 'sphp/css/sphp.all.css')
+    $this->addCssSrc('sphp/css/sphp.all.css')
             ->addCssSrc('https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css')
             ->useVideoJS();
     return $this;

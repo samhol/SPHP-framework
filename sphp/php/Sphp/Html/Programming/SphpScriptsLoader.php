@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Programming;
 
-use Sphp\Stdlib\Path;
-
 /**
  * Implements a SPHP JavaScript component container
  *
@@ -30,7 +28,6 @@ class SphpScriptsLoader extends ScriptsContainer {
 
   public function __construct($scripts = null) {
     parent::__construct($scripts);
-    $router = Path::get();
     $this->paths['vendor'] = 'sphp/js/vendor/';
     $this->paths['app'] = 'sphp/js/app/';
     $this->paths['js_root'] = 'sphp/js/';

@@ -35,10 +35,7 @@ class StringFormatValidator extends AbstractValidator {
   /**
    * Constructs a new instance
    *
-   *  **Note:** If the validable value matches the pattern => the validated
-   *  data is valid.
-   *
-   * @param string|null $format regular expression pattern to validate against
+   * @param string|null $format the format string to validate against
    * @param string|Message $errorMessage error message corresponding to the pattern
    */
   public function __construct(string $format, $errorMessage = 'Invalid number of parameters given') {
@@ -50,10 +47,10 @@ class StringFormatValidator extends AbstractValidator {
   /**
    * Sets a format to test
    *
-   * @param string $format regular expression pattern to validate against
+   * @param  string $format regular expression pattern to validate against
    * @return $this for a fluent interface
    */
-  public function setFormat($format) {
+  public function setFormat(string $format) {
     $this->format = $format;
     return $this;
   }
@@ -85,7 +82,7 @@ class StringFormatValidator extends AbstractValidator {
     return false;
   }
 
-  public static function validate(string $format, string $arguments): bool {
+  public static function validate(string $format, array $arguments): bool {
     $validator = new Static($format);
     return $validator->isValid($arguments);
   }
