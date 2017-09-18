@@ -7,7 +7,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Message;
 use Sphp\Stdlib\Strings;
 
 /**

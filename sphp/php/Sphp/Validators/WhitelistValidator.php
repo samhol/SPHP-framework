@@ -35,7 +35,7 @@ class WhitelistValidator extends AbstractValidator {
     $this->setWhitelist($whitelist);
   }
 
-  public function getWhitelist() {
+  public function getWhitelist(): array {
     return $this->whitelist;
   }
 

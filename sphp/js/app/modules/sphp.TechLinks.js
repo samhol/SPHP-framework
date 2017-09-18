@@ -14,11 +14,19 @@
    * @returns 
    */
   sphp.TechLinks = function () {
-    console.log("sphp.TechLinks()");
+    console.log("sphp.TechLinks() v2");
     $(".sphp-tech-list .jQuery")
             .attr("title", "jQuery: " + $.fn.jquery);
     $(".sphp-tech-list .Foundation")
             .attr("title", "Foundation: " + sphp.getFoundationVersion());
+    
+    $("a.jquery_version").append(" " + $.fn.jquery)
+            .attr("title", "jQuery: " + $.fn.jquery);
+    $("a.foundation_version").append(" " + sphp.getFoundationVersion())
+            .attr("title", "Foundation for sites version " + sphp.getFoundationVersion());
+    $("a.anytime_version").append(" " + AnyTime.version)
+            .attr("title", "Any+Time™ version " + AnyTime.version);
+    
   };
 
 }(window.sphp = window.sphp || {}, jQuery));

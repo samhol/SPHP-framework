@@ -35,6 +35,7 @@ class IsInstanceOfValidator extends AbstractValidator {
   }
 
   /**
+   * Returns the class name
    * 
    * @return string class name
    */

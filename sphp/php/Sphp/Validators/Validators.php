@@ -17,7 +17,7 @@ namespace Sphp\Validators;
  */
 abstract class Validators {
 
-  public static function validateFormatParameters(string $format, string $arguments): bool {
+  public static function validateFormatParameters(string $format, array $arguments): bool {
     $validator = new Static($format);
     return $validator->isValid($arguments);
   }

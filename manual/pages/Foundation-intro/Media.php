@@ -9,7 +9,7 @@ $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $flexes = (new BlockGrid(['small-up-1', 'large-up-2']))
         ->append(ResponsiveEmbed::youtube("w-I6XTVZXww")->setAspectRatio('panorama'))
-        ->append(ResponsiveEmbed::dailymotion("x2p4pkp")->setAspectRatio('panorama'));
+        ->append(ResponsiveEmbed::youtube("0mgnf6t9VEc")->setAspectRatio('panorama'));
 echo <<<MD
 ##Foundation Media components:
 

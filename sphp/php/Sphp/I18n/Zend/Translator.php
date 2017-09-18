@@ -53,12 +53,12 @@ class Translator extends AbstractTranslator {
    * @param string|null $lang optional translation language
    * @param ZendTranslator $t
    */
-  public function __construct(string $lang = null, ZendTranslator $t = null) {
+  public function __construct(ZendTranslator $t = null) {
     if ($t === null) {
       $t = new ZendTranslator();
     }
     $this->translator = $t;
-    $this->setLang($lang);
+    //$this->setLang($lang);
     $this->reflector = new ReflectionClass($this->translator);
   }
 
@@ -136,15 +136,15 @@ class Translator extends AbstractTranslator {
     return $this->translator->translate($text, $this->getDomain(), $this->getLang());
   }
 
-  /*public function translateArray(array $text): array {
+  /* public function translateArray(array $text): array {
     foreach ($text as $index => $value) {
-      if (is_string($value)) {
-        $value = $this->get($value);
-      }
-      $output[$index] = $value;
+    if (is_string($value)) {
+    $value = $this->get($value);
+    }
+    $output[$index] = $value;
     }
     return $output;
-  }*/
+    } */
 
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
     return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
@@ -157,10 +157,10 @@ class Translator extends AbstractTranslator {
    * @param type $domain
    * @return self new instance
    */
-  public static function fromTranslationFilePattern(string $lang, string $directory, string $domain) {
+  public static function fromFilePattern($type, $baseDir, $pattern, $textDomain = 'default') {
     $t = new ZendTranslator();
-    $t->addTranslationFilePattern('gettext', \Sphp\LOCALE_PATH, $directory, $domain);
-    return new static($lang, $t);
+    $t->addTranslationFilePattern($type, $baseDir, $pattern, $textDomain);
+    return new static($t);
   }
 
 }

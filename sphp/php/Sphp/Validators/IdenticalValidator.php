@@ -48,11 +48,6 @@ class IdenticalValidator extends AbstractValidator {
     parent::__destruct();
   }
 
-  public function __clone() {
-    $this->token = Arrays::copy($this->token);
-    parent::__clone();
-  }
-
   public function getToken() {
     return $this->token;
   }
@@ -68,7 +63,7 @@ class IdenticalValidator extends AbstractValidator {
     return $this;
   }
 
-  public function isStrict() {
+  public function isStrict(): bool {
     return $this->strict;
   }
 
@@ -77,7 +72,7 @@ class IdenticalValidator extends AbstractValidator {
    * @param  boolean $strict
    * @return $this for a fluent interface
    */
-  public function setStrict($strict) {
+  public function setStrict(bool $strict) {
     $this->strict = $strict;
     return $this;
   }

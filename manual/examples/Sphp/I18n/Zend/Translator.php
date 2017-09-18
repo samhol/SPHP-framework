@@ -2,9 +2,9 @@
 
 namespace Sphp\I18n\Zend;
 
-$translator = (new Translator('fi_FI'))
-        ->addTranslationFilePattern('gettext',   'sphp/locale/', "%s/LC_MESSAGES/Sphp.Defaults.mo", 'Sphp.Defaults')
-        ->setUsedDomain('Sphp.Defaults');
+$translator = Translator::fromFilePattern("gettext", "sphp/locale/", "%s/LC_MESSAGES/Sphp.Defaults.mo", "Sphp.Defaults")
+        ->setUsedDomain("Sphp.Defaults")
+        ->setLang("fi_FI");
 var_dump(
         $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [3, "a, b, c, d, e"]),
         $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [1, "a, b, c"]),

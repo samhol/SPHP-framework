@@ -34,8 +34,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
   private $validators;
 
   /**
-   *
-   * @var MessageList
+   * @var TranslatableCollection
    */
   private $errors;
 
@@ -151,7 +150,7 @@ class ValidatorChain implements ValidatorInterface, Countable {
    * @param  boolean $break
    * @return $this for a fluent interface
    */
-  public function appendValidator(ValidatorInterface $v, $break = false) {
+  public function appendValidator(ValidatorInterface $v, bool $break = false) {
     $data = [
         'validator' => $v,
         'break' => (bool) $break,
