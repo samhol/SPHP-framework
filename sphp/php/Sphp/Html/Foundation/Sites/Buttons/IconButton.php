@@ -11,7 +11,6 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Span;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabelable;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
-use Sphp\Html\Foundation\Sites\Foundation;
 
 /**
  * Implements Close Button
@@ -51,7 +50,7 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
     $this->attrs()->lock('type', 'button');
     $this->screenReaderLabel = new ScreenReaderLabel();
     $this->setScreenReaderLabel($screenReaderLabel);
-    $this->icon = Foundation::icon($icon);
+    $this->icon = \Sphp\Html\Icons\Icon::fontAwesome($icon);
   }
 
   /**

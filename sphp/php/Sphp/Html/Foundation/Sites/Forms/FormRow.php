@@ -32,7 +32,7 @@ class FormRow extends Row {
     }
     return $this;
   }
-  
+
   /**
    * Appends a new form input component to the row
    * 

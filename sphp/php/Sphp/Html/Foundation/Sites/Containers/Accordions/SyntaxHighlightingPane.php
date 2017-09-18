@@ -42,7 +42,7 @@ class SyntaxHighlightingPane extends AbstractPane implements SyntaxHighlighterIn
       $hl = new SyntaxHighlighter();
     }
     $this->hl = $hl;
-    $this->hl->setDefaultContentCopyController((new IconButton('page-copy', 'Copy'))
+    $this->hl->setDefaultContentCopyController((new IconButton('fa-files-o', 'Copy'))
                     ->setSize('tiny'));
     // ->setTitle('Copy code to clipboard'));
     parent::__construct($title, $this->hl);

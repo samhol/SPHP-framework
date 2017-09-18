@@ -196,8 +196,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getValue">getValue</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns validated value</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -238,7 +237,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setFormat">setFormat</a>(string $format)
         
-                                            <p>Sets a regular expression patterns to test.</p>                </div>
+                                            <p>Sets a format to test</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -267,7 +266,7 @@
                     static&nbsp;
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_validate">validate</a>($format, $arguments)
+                    <a href="#method_validate">validate</a>(string $format, array $arguments)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -281,7 +280,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 44</div>
+        <div class="location">at         line 41</div>
         <code>                    
     <strong>__construct</strong>(string $format, string|<abbr title="Sphp\I18n\Message">Message</abbr> $errorMessage = &#039;Invalid number of parameters given&#039;)
         </code>
@@ -291,8 +290,7 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                    <p><strong>Note:</strong> If the validable value matches the pattern => the validated
- data is valid.</p>                            </div>
+                                    <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -300,7 +298,7 @@
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>regular expression pattern to validate against</td>
+                <td>the format string to validate against</td>
             </tr>
                     <tr>
                 <td>string|<abbr title="Sphp\I18n\Message">Message</abbr></td>
@@ -529,7 +527,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 118</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 119</div>
         <code>                    mixed
     <strong>getValue</strong>()
         </code>
@@ -538,6 +536,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns validated value</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -545,7 +545,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td>validated value</td>
         </tr>
     </table>
 
@@ -557,7 +557,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 127</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 128</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>setValue</strong>(mixed $value)
         </code>
@@ -595,7 +595,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 138</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 139</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>reset</strong>()
         </code>
@@ -625,7 +625,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 143</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 144</div>
         <code>                    <a href="../../Sphp/I18n/Collections/TranslatableCollection.html"><abbr title="Sphp\I18n\Collections\TranslatableCollection">TranslatableCollection</abbr></a>
     <strong>getErrors</strong>()
         </code>
@@ -655,7 +655,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setFormat">
-        <div class="location">at         line 60</div>
+        <div class="location">at         line 53</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>setFormat</strong>(string $format)
         </code>
@@ -665,10 +665,7 @@
     
 
                     <div class="method-description">
-                                    <p>Sets a regular expression patterns to test.</p>                    <p><strong>Notes:</strong> If all of the patterns is a matches => the cheked string is valid</p>
-
-<p><strong>Note:</strong> If the validable value matches the pattern => the validated
- data is valid.</p>                            </div>
+                                    <p>Sets a format to test</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -698,7 +695,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValid1">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 58</div>
         <code>                    
     <strong>isValid1</strong>($value)
         </code>
@@ -727,7 +724,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValid">
-        <div class="location">at         line 80</div>
+        <div class="location">at         line 73</div>
         <code>                    boolean
     <strong>isValid</strong>($arguments)
         </code>
@@ -767,9 +764,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validate">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 85</div>
         <code>        static            
-    <strong>validate</strong>($format, $arguments)
+    <strong>validate</strong>(string $format, array $arguments)
         </code>
     </h3>
     <div class="details">
@@ -781,12 +778,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$format</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$arguments</td>
                 <td></td>
             </tr>

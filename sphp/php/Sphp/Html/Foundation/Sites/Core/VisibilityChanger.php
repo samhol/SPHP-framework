@@ -85,5 +85,4 @@ interface VisibilityChanger {
    * @return $this for a fluent interface
    */
   public function hideForLandscape(bool $hide = true);
-
 }

@@ -1,6 +1,6 @@
 <?php
 use Sphp\Manual\SoftwareVersions;
-        
+ 
 $parsedownVersion = Parsedown::version;
 $parsedownExtraVersion = ParsedownExtra::version;
 $parsedownExtraPluginVersion = ParsedownExtraPlugin::version;
@@ -11,15 +11,15 @@ $parsedownExtraPluginVersion = ParsedownExtraPlugin::version;
 <div class="column small-12 medium-6">  
 <div class="callout" markdown="1">
 ###Server side:
- * [Doctrine <?php echo SoftwareVersions::doctrineCommon(); ?>](http://www.doctrine-project.org/){target="_blank"} — <i class="tech label php"></i><i class="tech label sql"></i>
-   * [DBAL <?php echo SoftwareVersions::doctrineDBAL(); ?>](http://www.doctrine-project.org/projects/dbal.html){target="_blank"}
-   * [ORM <?php echo SoftwareVersions::doctrineORM(); ?>](http://www.doctrine-project.org/projects/orm.html){target="_blank"}
-   * [Cache <?php echo SoftwareVersions::doctrineCommonCache(); ?>](http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/caching.html){target="_blank"}
- * [GeSHi <?php echo SoftwareVersions::geshi(); ?>](http://qbnz.com/highlighter/){target="_blank"} — <i class="tech label php"></i>
- * [Imagine](https://imagine.readthedocs.org/){target="_blank"} — <i class="tech label php"></i>
- * [Parsedown <?php echo $parsedownVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
-   * [Parsedown Extra <?php echo $parsedownExtraVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
-   * [Parsedown Extra Plugin <?php echo $parsedownExtraPluginVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
+ * [**Doctrine** <?php echo SoftwareVersions::doctrineCommon(); ?>](http://www.doctrine-project.org/){target="_blank"} — <i class="tech label php"></i><i class="tech label sql"></i>
+   * [**DBAL** <?php echo SoftwareVersions::doctrineDBAL(); ?>](http://www.doctrine-project.org/projects/dbal.html){target="_blank"}
+   * [**ORM** <?php echo SoftwareVersions::doctrineORM(); ?>](http://www.doctrine-project.org/projects/orm.html){target="_blank"}
+   * [**Cache** <?php echo SoftwareVersions::doctrineCommonCache(); ?>](http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/caching.html){target="_blank"}
+ * [**GeSHi** <?php echo SoftwareVersions::geshi(); ?>](http://qbnz.com/highlighter/){target="_blank"} — <i class="tech label php"></i>
+ * [**Imagine**](https://imagine.readthedocs.org/){target="_blank"} — <i class="tech label php"></i>
+ * [**Parsedown** <?php echo $parsedownVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
+   * [**... Extra** <?php echo $parsedownExtraVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
+   * [**... Extra Plugin** <?php echo $parsedownExtraPluginVersion; ?>](https://github.com/erusev/parsedown-extra){target="_blank"} — <i class="tech label php"></i>
 </div>
 </div>
   
