@@ -8,7 +8,6 @@
 namespace Sphp\I18n\Zend;
 
 use Sphp\I18n\AbstractTranslator;
-use Sphp\Stdlib\Arrays;
 use Zend\I18n\Translator\Translator as ZendTranslator;
 use ReflectionClass;
 use Exception;
@@ -63,6 +62,16 @@ class Translator extends AbstractTranslator {
   }
 
   /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->translator, $this->reflector);
+  }
+
+  /**
    * 
    * @param string $name
    * @param mixed[] $arguments
@@ -95,12 +104,17 @@ class Translator extends AbstractTranslator {
     return $this;
   }
 
+  /**
+   * Returns the ZEND translator used
+   * 
+   * @return ZendTranslator the ZEND translator used
+   */
   public function getZend(): ZendTranslator {
     return $this->translator;
   }
 
   public function getLang(): string {
-    return $this->translator->getLocale();
+    return $this->getZend()->getLocale();
   }
 
   /**
@@ -109,7 +123,7 @@ class Translator extends AbstractTranslator {
    * @return $this for a fluent interface
    */
   public function setLang(string $lang) {
-    $this->translator->setLocale($lang);
+    $this->getZend()->setLocale($lang);
     return $this;
   }
 
@@ -133,21 +147,11 @@ class Translator extends AbstractTranslator {
   }
 
   public function get(string $text): string {
-    return $this->translator->translate($text, $this->getDomain(), $this->getLang());
+    return $this->getZend()->translate($text, $this->getDomain(), $this->getLang());
   }
 
-  /* public function translateArray(array $text): array {
-    foreach ($text as $index => $value) {
-    if (is_string($value)) {
-    $value = $this->get($value);
-    }
-    $output[$index] = $value;
-    }
-    return $output;
-    } */
-
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
-    return $this->translator->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
+    return $this->getZend()->translatePlural($msgid1, $msgid2, $n, $this->getDomain(), $this->getLang());
   }
 
   /**

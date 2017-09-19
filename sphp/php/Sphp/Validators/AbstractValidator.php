@@ -22,6 +22,9 @@ use Sphp\I18n\Translatable;
  */
 abstract class AbstractValidator implements ValidatorInterface {
 
+  /**
+   * `ID` for default error message
+   */
   const INVALID = '_invalid_';
 
   /**
@@ -46,7 +49,7 @@ abstract class AbstractValidator implements ValidatorInterface {
   /**
    * Constructs a new validator
    *
-   * @param MessageList $m container for the error messages
+   * @param MessageList $error container for the error messages
    */
   public function __construct($error = 'Invalid value') {
     $this->messageTemplates = [];
@@ -54,6 +57,12 @@ abstract class AbstractValidator implements ValidatorInterface {
     $this->setMessageTemplate(static::INVALID, $error);
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->messageTemplates, $this->errors, $this->value);
   }
@@ -102,7 +111,7 @@ abstract class AbstractValidator implements ValidatorInterface {
 
   /**
    * 
-   * @param  mixed $id
+   * @param  string $id
    * @param  array $params
    * @return $this for a fluent interface
    */

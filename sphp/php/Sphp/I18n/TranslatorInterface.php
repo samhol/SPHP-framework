@@ -41,6 +41,7 @@ interface TranslatorInterface {
    * @return string the message text(s) translated
    */
   public function get(string $text): string;
+
   public function translateArray(array $messages): array;
 
   /**

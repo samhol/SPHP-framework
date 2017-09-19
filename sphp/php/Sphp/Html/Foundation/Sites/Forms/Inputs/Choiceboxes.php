@@ -71,7 +71,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @param mixed $legend
    */
   public function __construct(string $name = null, array $values = [], $legend = null) {
-    parent::__construct("fieldset");
+    parent::__construct('fieldset');
     $this->legend = new Legend();
     $this->boxes = new Container();
     $this->setName($name)

@@ -114,7 +114,7 @@
                     <tr>
                 <td>INVALID</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em><code>ID</code> for default error message</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -130,7 +130,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($error = &#039;Please insert a value&#039;)
+                    <a href="#method___construct">__construct</a>(<abbr title="Sphp\Validators\MessageList">MessageList</abbr> $error = &#039;Please insert a value&#039;)
         
                                             <p>Constructs a new validator</p>                </div>
                 <div class="col-md-2"></div>
@@ -142,8 +142,7 @@
                 <div class="col-md-8 type">
                     <a href="#method___destruct">__destruct</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Destroys the instance</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Validators/AbstractValidator.html#method___destruct"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -261,7 +260,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 38</div>
         <code>                    
-    <strong>__construct</strong>($error = &#039;Please insert a value&#039;)
+    <strong>__construct</strong>(<abbr title="Sphp\Validators\MessageList">MessageList</abbr> $error = &#039;Please insert a value&#039;)
         </code>
     </h3>
     <div class="details">
@@ -275,9 +274,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td><abbr title="Sphp\Validators\MessageList">MessageList</abbr></td>
                 <td>$error</td>
-                <td></td>
+                <td>container for the error messages</td>
             </tr>
             </table>
 
@@ -290,7 +289,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___destruct"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 57</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___destruct"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 66</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -299,6 +298,9 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
                 <div class="tags">
             
             
@@ -309,7 +311,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___clone"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 61</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___clone"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 70</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -328,7 +330,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___invoke"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 72</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method___invoke"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 81</div>
         <code>                    boolean
     <strong>__invoke</strong>(mixed $value)
         </code>
@@ -368,7 +370,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 82</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 91</div>
         <code>                    <a href="../../Sphp/I18n/Messages/Message.html"><abbr title="Sphp\I18n\Messages\Message">Message</abbr></a>
     <strong>getMessageTemplate</strong>(string $id)
         </code>
@@ -415,7 +417,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMessageTemplate">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 95</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setMessageTemplate"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 104</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>setMessageTemplate</strong>(string $id, string $messageTemplate)
         </code>
@@ -458,7 +460,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_error">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_error"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 109</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_error"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 118</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>error</strong>(string $id, array $params = [])
         </code>
@@ -501,7 +503,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 119</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 128</div>
         <code>                    mixed
     <strong>getValue</strong>()
         </code>
@@ -531,7 +533,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 128</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_setValue"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 137</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>setValue</strong>(mixed $value)
         </code>
@@ -569,7 +571,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 139</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_reset"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 148</div>
         <code>                    <abbr title="Sphp\Validators\$this">$this</abbr>
     <strong>reset</strong>()
         </code>
@@ -599,7 +601,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrors">
-        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 144</div>
+        <div class="location">in <a href="../../Sphp/Validators/AbstractValidator.html#method_getErrors"><abbr title="Sphp\Validators\AbstractValidator">AbstractValidator</abbr></a> at         line 153</div>
         <code>                    <a href="../../Sphp/I18n/Collections/TranslatableCollection.html"><abbr title="Sphp\I18n\Collections\TranslatableCollection">TranslatableCollection</abbr></a>
     <strong>getErrors</strong>()
         </code>

@@ -6,7 +6,9 @@
  */
 
 namespace Sphp\Validators;
+
 use Sphp\I18n\Messages\Message;
+
 /**
  * Description of GreaterThanValidator
  *
@@ -17,8 +19,16 @@ use Sphp\I18n\Messages\Message;
  */
 abstract class AbstractLimitValidator extends AbstractValidator {
 
+  /**
+   * `ID` for error message describing values not matching an inclusive limit
+   */
   const INCLUSIVE_ERROR = '_inclusive_';
+
+  /**
+   * `ID` for error message describing values not matching an exclusive limit
+   */
   const EXCLUSIVE_ERROR = '_exclusive_';
+
   /**
    * Whether to do inclusive comparisons, allowing equivalence to max
    *

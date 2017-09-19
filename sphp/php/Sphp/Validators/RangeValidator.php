@@ -7,8 +7,6 @@
 
 namespace Sphp\Validators;
 
-use Sphp\I18n\Messages\Message;
-
 /**
  * Description of RangeValidator
  *

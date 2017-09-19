@@ -19,3 +19,4 @@ print_r($validator->getErrors()->toArray()) . "\n";
 
 echo "validating string 'legal':\n";
 var_dump($validator('legal'));
+

@@ -7,8 +7,8 @@ use Sphp\Html\Foundation\Sites\Forms\Inputs\Checkboxes;
 $form = new GridForm('manual/gettext/index.php', 'get');
 
     $row = new FormRow();
-$typeSelector = new Checkboxes('type', [0b1 => 'singular', 0b10 => 'plural']);
-$typeSelector->setValue(['type' => ['1' , '2']]);
+$typeSelector = new Checkboxes('type', ['singular', 'plural']);
+//$typeSelector->setValue(['type' => ['1' , '2']]);
 //$row = FormRow::from($typeSelector);
 $form->append($typeSelector);
 /*$typeInput = (new TextInput("username"))->setPlaceholder("Username");

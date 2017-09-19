@@ -67,7 +67,7 @@ abstract class AbstractTranslatorTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider arrayData
    */
   public function testArrayTranslation(array $raw, array $expected) {
-    $this->assertEquals($this->translator->get($raw), $expected);
+    $this->assertEquals($this->translator->translateArray($raw), $expected);
   }
 
 }

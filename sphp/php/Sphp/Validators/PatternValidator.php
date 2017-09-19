@@ -22,12 +22,15 @@ use Sphp\Stdlib\Strings;
  */
 class PatternValidator extends AbstractValidator {
 
+  /**
+   * `ID` for error message describing values not matching a given regular expression
+   */
   const NOT_MATCH = '_regex_';
 
   /**
    * regular expression pattern to validate against
    *
-   * @var string[]
+   * @var string
    */
   private $pattern = "//";
 

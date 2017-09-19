@@ -21,7 +21,7 @@ echo $currentPage;
     use Sphp\I18n\Gettext\PoFileIterator;
     use Sphp\Stdlib\Filesystem;
 
-$p = new PoFileIterator(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po'));
+$p = PoFileIterator::parseFrom(Filesystem::getFullPath('sphp/locale/fi_FI/LC_MESSAGES/Sphp.Defaults.po'));
     $k = $p->filter(function(\Sphp\I18n\Gettext\GettextData $d) {
       return true;
     });
@@ -98,7 +98,9 @@ $p = new Paginator(new ArrayAdapter($k->toArray()));
     </form>
   </div>
 </div>
+<pre>
 <?php
+print_r($_GET);
 $html->documentClose();
 
 

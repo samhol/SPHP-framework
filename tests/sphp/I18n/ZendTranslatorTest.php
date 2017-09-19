@@ -9,8 +9,7 @@ use Sphp\I18n\AbstractTranslatorTest;
 class ZendTranslatorTests extends AbstractTranslatorTest {
 
   public function getTranslator() {
-    return (new Translator('fi_FI'))
-                    ->addTranslationFilePattern('gettext', __DIR__ . '/locale/', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults')
+    return Translator::fromFilePattern('gettext', __DIR__ . '/locale/', "%s\LC_MESSAGES\Sphp.Defaults.mo", 'Sphp.Defaults')
                     ->setUsedDomain('Sphp.Defaults');
   }
 
@@ -30,7 +29,7 @@ class ZendTranslatorTests extends AbstractTranslatorTest {
   public function testArrayTranslation(array $raw, array $expected) {
     parent::testArrayTranslation($raw, $expected);
     $this->translator->setLang('en_US');
-    $this->assertEquals($this->translator->get($raw), $raw);
+    $this->assertEquals($this->translator->translateArray($raw), $raw);
   }
 
 }

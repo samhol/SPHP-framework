@@ -52,7 +52,7 @@ class NotEmptyValidator extends AbstractValidator {
       $valid = false;
     } else if (is_array($value) && count($value) === 0) {
       $valid = false;
-    } else if ($value !== '') {
+    } else if ($value === '') {
       $valid = false;
     }
     if (!$valid) {

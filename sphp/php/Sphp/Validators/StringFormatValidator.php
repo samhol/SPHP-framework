@@ -23,7 +23,10 @@ use Sphp\Stdlib\Strings;
  */
 class StringFormatValidator extends AbstractValidator {
 
-  const NOT_MATCH = '_regex_';
+  /**
+   * `ID` for error message describing parameters not matching a formatted string
+   */
+  const INVALID_FORMAT = '_format_';
 
   /**
    * regular expression pattern to validate against
@@ -41,7 +44,7 @@ class StringFormatValidator extends AbstractValidator {
   public function __construct(string $format, $errorMessage = 'Invalid number of parameters given') {
     parent::__construct('Invalid type given. String expected');
     $this->setFormat($format);
-    $this->setMessageTemplate(self::NOT_MATCH, $errorMessage);
+    $this->setMessageTemplate(self::INVALID_FORMAT, $errorMessage);
   }
 
   /**
@@ -55,21 +58,6 @@ class StringFormatValidator extends AbstractValidator {
     return $this;
   }
 
-  public function isValid1($value): bool {
-    $this->setValue($value);
-    if (!is_string($value) && !is_int($value) && !is_float($value)) {
-      //echo 'Invalid type given. String, integer or float expected';
-      $this->error(self::INVALID);
-      return false;
-    }
-    if (!Strings::match($value, $this->pattern)) {
-      echo $value . $this->pattern;
-      $this->error(self::NOT_MATCH);
-      return false;
-    }
-    return true;
-  }
-
   public function isValid($arguments): bool {
     $this->setValue($arguments);
     if (preg_match_all("~%(?:(\d+)[$])?[-+]?(?:[ 0]|['].)?(?:[-]?\d+)?(?:[.]\d+)?[%bcdeEufFgGosxX]~", $this->format, $expected) > 0) {
@@ -78,7 +66,7 @@ class StringFormatValidator extends AbstractValidator {
         return true;
       }
     }
-    $this->error(self::NOT_MATCH);
+    $this->error(self::INVALID_FORMAT);
     return false;
   }
 
