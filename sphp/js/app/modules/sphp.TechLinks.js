@@ -6,7 +6,7 @@
  * @name sphp
  * @namespace sphp
  */
-(function (sphp, $, undefined) {
+;(function (sphp, $, undefined) {
   "use strict";
 
   /**
@@ -14,6 +14,7 @@
    * @returns 
    */
   sphp.TechLinks = function () {
+    var $irs;
     console.log("sphp.TechLinks() v2");
     $(".sphp-tech-list .jQuery")
             .attr("title", "jQuery: " + $.fn.jquery);
@@ -26,6 +27,9 @@
             .attr("title", "Foundation for sites version " + sphp.getFoundationVersion());
     $("a.anytime_version").append(" " + AnyTime.version)
             .attr("title", "Any+Time™ version " + AnyTime.version);
+    
+    $irs = $.fn.IonRangeSlider;
+    console.log($irs.VERSION);
     
   };
 
