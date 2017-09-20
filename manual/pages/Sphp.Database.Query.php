@@ -26,4 +26,6 @@ Some essential $query methods:
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Database/Query.php', 'text', false);
+CodeExampleBuilder::build('Sphp/Database/Query.php', 'text', false)
+        ->setExamplePaneTitle('A Simple QUERY Example')
+        ->printHtml();

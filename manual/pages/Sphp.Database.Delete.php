@@ -8,11 +8,12 @@ use Sphp\Html\Apps\Manual\Apis;
 $delete = Apis::sami()->classLinker(Delete::class);
 
 \Sphp\Manual\parseDown(<<<MD
-
-###Deleting records with $delete object
+###Deleting records <small>with $delete object</small>
 
 The $delete object removes one or more records from a table. A subset may be 
 defined for deletion using a condition, otherwise all records are removed. 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Database/Delete.php", 'text', false);
+CodeExampleBuilder::build("Sphp/Database/Delete.php", 'text', false)
+        ->setExamplePaneTitle('A Simple DELETE Query Example')
+        ->printHtml();

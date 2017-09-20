@@ -8,8 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 $insert = Apis::sami()->classLinker(Insert::class);
 
 \Sphp\Manual\parseDown(<<<MD
-
-##SQL database $insert object
+##Inserting records <small>with $insert object</small>
 		
 The $insert object executes declarative INSERT statement in SQL databases.
 		
