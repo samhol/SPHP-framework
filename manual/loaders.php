@@ -10,6 +10,7 @@ $loadNotFound = function () {
   include 'manual/templates/error.php';
 };
 $loadPage = function ($par, string $file = 'index') use($loadNotFound) {
+  //var_dump(func_get_args());
   try {
     ob_start();
     $page = "manual/pages/$file.php";

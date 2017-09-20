@@ -94,7 +94,7 @@ class Router {
    *
    * @var string
    */
-  private $url = '';
+  private $path = '';
 
   /**
    * Constructs a new instance
@@ -110,7 +110,7 @@ class Router {
     if (is_string($url)) {
       $url = new URL($url);
     }
-    $this->url = rtrim($url->getPath(), '/') . '/';
+    $this->path = rtrim($url->getPath(), '/') . '/';
   }
 
   /**
@@ -144,11 +144,14 @@ class Router {
       // Loop through each route for this priority level
       foreach ($routes as $route => $callback) {
         // Does the routing rule match the current URL?
-        if (preg_match($route, $this->url, $matches)) {
+        if (preg_match($route, $this->path, $matches)) {
           // A routing rule was matched
           $matched_route = TRUE;
           // Parameters to pass to the callback function
-          $params = array($this->url);
+          $params = array($this->path);
+         // echo "<pre>";
+         // var_dump($matches);
+         // echo "</pre>";
           // Get any named parameters from the route
           foreach ($matches as $key => $match) {
             if (is_string($key)) {
@@ -158,13 +161,14 @@ class Router {
           // Store the parameters and callback function to execute later
           $this->params = $params;
           $this->callback = $callback;
+          break;
         }
       }
     }
     // Was a match found or should we execute the default callback?
     if (!$matched_route && $this->default_route !== null) {
       $this->callback = $this->default_route;
-      $this->params = [$this->url];
+      $this->params = [$this->path];
     }
     if ($this->callback === null || $this->params === null) {
       throw new RuntimeException('No callback or parameters found for the route');
@@ -200,7 +204,6 @@ class Router {
     $route = '#^' . $route . '$#';
     // Does this URL routing rule already exist in the routing table?
     if (isset($this->routes[$priority][$route])) {
-      // Trigger a new error and exception if errors are on
       throw new RuntimeException('The URI "' . htmlspecialchars($route) . '" already exists in the router table');
     }
     // Add the route to our routing array
