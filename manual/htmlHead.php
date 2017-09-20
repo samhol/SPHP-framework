@@ -1,18 +1,10 @@
 <?php
 
-namespace Sphp\MVC;
+namespace Sphp\Html;
 
 session_start();
 
 require_once 'loaders.php';
-
-$router = new Router();
-$router->route('/', $loadIndex);
-$router->route('/<!category>', $loadPage);
-//$router->route('/kilpailut/<*categories>', $loadCompetition);
-$router->setDefaultRoute($loadNotFound);
-
-namespace Sphp\Html;
 
 use Sphp\Stdlib\Path;
 

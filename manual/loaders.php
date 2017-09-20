@@ -9,7 +9,7 @@ use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 $loadNotFound = function () {
   include 'manual/templates/error.php';
 };
-$loadPage = function ($par, $file = 'index') use($loadNotFound) {
+$loadPage = function ($par, string $file = 'index') use($loadNotFound) {
   try {
     ob_start();
     $page = "manual/pages/$file.php";
@@ -31,3 +31,8 @@ $loadPage = function ($par, $file = 'index') use($loadNotFound) {
 $loadIndex = function () use ($loadPage) {
   $loadPage('index');
 };
+
+$router = (new Router())
+        ->setDefaultRoute($loadNotFound)
+        ->route('/', $loadIndex)
+        ->route('/<!category>', $loadPage);

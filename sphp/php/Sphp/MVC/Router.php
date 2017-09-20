@@ -8,6 +8,7 @@
 namespace Sphp\MVC;
 
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Stdlib\URL;
 
 /**
  * Simple URL router
@@ -100,11 +101,16 @@ class Router {
    * 
    * Initializes the router by getting the URL and cleaning it.
    *
-   * @param  string|null $url optional URL to route
-   * @throws \Sphp\Exceptions\RuntimeException
+   * @param  URL|string|null $url optional URL to route
    */
-  public function __construct(string $url = null) {
-    $this->url = static::getCleanUrl($url);
+  public function __construct($url = null) {
+    if ($url === null) {
+      $url = URL::getCurrent();
+    }
+    if (is_string($url)) {
+      $url = new URL($url);
+    }
+    $this->url = rtrim($url->getPath(), '/') . '/';
   }
 
   /**
@@ -172,12 +178,12 @@ class Router {
    * our special tokens into proper regular expressions.
    *
    * @param  string   $route
-   * @param  Callable $callback
+   * @param  callable $callback
    * @param  integer  $priority
-   * @return boolean
+   * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function route(string $route, $callback, int $priority = 10) {
+  public function route(string $route, callable $callback, int $priority = 10) {
     // Make sure the route ends in a / since all of the URLs will
     $route = rtrim($route, '/') . '/';
     // Custom capture, format: <:var_name|regex>
@@ -199,61 +205,7 @@ class Router {
     }
     // Add the route to our routing array
     $this->routes[$priority][$route] = $callback;
-    return true;
-  }
-
-  /**
-   * Retrieves the part of the URL after the base (Calculated from the location
-   * of the main application file, such as index.php), excluding the query
-   * string. Adds a trailing slash.
-   *
-   * <code>
-   * http://localhost/projects/test/users///view/1 would return the following,
-   * assuming that /test/ was the base directory
-   *
-   * /users/view/1/
-   * </code>
-   *
-   * @param  string|null $url optional URL to to parse
-   * @return string
-   * @throws \Sphp\Exceptions\RuntimeException
-   */
-  public static function getCleanUrl(string $url = null) {
-    $uObj = \Sphp\Stdlib\URL::getCurrent();
-    if ($url === null) {
-      // Get the current URL, differents depending on platform/server software
-      $url = filter_input(\INPUT_SERVER, 'REQUEST_URL', FILTER_SANITIZE_URL);
-      if ($url === null) {
-        $url = filter_input(\INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
-      } else {
-        throw new RuntimeException('URL cannot be resolved for routing');
-      }
-    }
-    //echo "/".$uObj->getPath()."/";
-    // The request url might be /project/index.php, this will remove the /project part
-    //echo "$url\n";
-    //echo "SCRIPT_NAME:". $_SERVER['SCRIPT_NAME']."\n";
-    //$url = str_replace(dirname($_SERVER['SCRIPT_NAME']), '', $url);
-    //echo "$url\n";
-    // Remove the query string if there is one
-    $query_string = strpos($url, '?');
-    if ($query_string !== false) {
-      $url = substr($url, 0, $query_string);
-      //echo "$url\n";
-    }
-    $scriptName = basename(filter_input(\INPUT_SERVER, 'SCRIPT_NAME', FILTER_SANITIZE_STRING));
-    // If the URL looks like http://localhost/index.php/path/to/folder remove /index.php
-    if (substr($url, 1, strlen($scriptName)) == $scriptName) {
-      $url = substr($url, strlen($scriptName) + 1);
-      //echo "$url\n";
-    }
-    // Make sure the URI ends in a /
-    $url = rtrim($url, '/') . '/';
-    //echo "$url\n";
-    // Replace multiple slashes in a url, such as /my//dir/url
-    $url = preg_replace('/\/+/', '/', $url);
-    //echo "$url\n";
-    return rtrim($uObj->getPath(), '/') . '/';
+    return $this;
   }
 
 }

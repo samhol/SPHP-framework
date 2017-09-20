@@ -7,7 +7,6 @@
 
 namespace Sphp\Manual;
 
-
 /**
  * Description of SoftwareVersions
  *
@@ -36,6 +35,18 @@ class SoftwareVersions {
 
   public static function doctrineCommonCache(): string {
     return \Doctrine\Common\Cache\Version::VERSION;
+  }
+
+  public static function parsedown(): string {
+    return \ParsedownExtra::version;
+  }
+
+  public static function parsedownExtra(): string {
+    return \ParsedownExtra::version;
+  }
+
+  public static function parsedownExtraPlugin(): string {
+    return \ParsedownExtraPlugin::version;
   }
 
 }
