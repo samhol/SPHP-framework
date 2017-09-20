@@ -4,15 +4,14 @@ namespace Sphp\Security;
 
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+
+$passwordInterface = Apis::sami()->classLinker(PasswordInterface::class);
+$password = Apis::sami()->classLinker(Password::class);
+
 \Sphp\Manual\parseDown(<<<MD
-##Security solutions
-
-This namespace provides classes for implementing networking.
-
+##Managing user Passwords <small>with $password</small>
+$passwordInterface defines a verifiable password. It is implemented in an 
+instantiable class $password.
 MD
 );
-
-
 CodeExampleBuilder::visualize('Sphp/Security/PasswordInterface.php', 'text', false);
-

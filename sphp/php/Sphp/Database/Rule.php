@@ -67,6 +67,10 @@ class Rule implements RuleInterface {
     unset($this->params);
   }
 
+  /**
+   * 
+   * @return ParameterHandler
+   */
   public function getParams(): ParameterHandler {
     $params = new SequentialParameters();
     $params->appendParams($this->params, $this->paramType);

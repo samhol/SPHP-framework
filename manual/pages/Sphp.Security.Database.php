@@ -8,11 +8,14 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $crsfToken = Apis::sami()->classLinker(CRSFToken::class);
 
 \Sphp\Manual\parseDown(<<<MD
-##Cross-site request forgery protection 
-        
-**Good Articles about CRSF:**
+##SQL Injection vulnerabilities
 
- - [Wikipedia](https://en.wikipedia.org/wiki/Cross-site_request_forgery){target="_blank"}
+[Database tools](Sphp.Database){target="_blank"} are all         
+
+**Good Articles about SQL injection:**
+
+ - [Wikipedia](https://en.wikipedia.org/wiki/SQL_injection){target="_blank"}
+ - [OWASP  article](https://www.owasp.org/index.php/SQL_Injection){target="_blank"}
 
 
 Framework introduces a simple instantiable class $crsfToken for CRSF token generation. 

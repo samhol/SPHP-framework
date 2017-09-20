@@ -58,22 +58,18 @@ class StatementStrategy {
 
   public function createInsert(): Insert {
     return $this->generateStatement('Insert');
-    return new $q($this->pdo);
   }
 
   public function createQuery(): QueryInterface {
     return $this->generateStatement('Query');
-    return new $q($this->pdo);
   }
 
   public function createUpdate(): Update {
     return $this->generateStatement('Update');
-    return new $q($this->pdo);
   }
 
   public function createDelete(): DeleteInterface {
     return $this->generateStatement('Delete');
-    return new $q($this->pdo);
   }
 
 }

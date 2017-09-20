@@ -48,6 +48,7 @@ class Db {
   }
 
   /**
+   * Returns the connection object between PHP and a database server 
    * 
    * @return PDO connection object between PHP and a database server 
    */

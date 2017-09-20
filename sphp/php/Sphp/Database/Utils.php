@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Database;
-
+use Sphp\Exceptions\InvalidArgumentException;
 /**
  * Description of Utils
  *
@@ -18,9 +18,10 @@ namespace Sphp\Database;
 abstract class Utils {
 
   /**
+   * Creates a group of question marks demerged by commas
    * 
-   * @param int $length
-   * @return string
+   * @param  int $length number of questionmarks greated
+   * @return string created questionmark string
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public static function createGroupOfQuestionMarks(int $length): string {
@@ -29,7 +30,7 @@ abstract class Utils {
       $qMarks = array_fill(0, $length, '?');
       return '(' . implode(', ', $qMarks) . ')';
     }
-    throw new \Sphp\Exceptions\InvalidArgumentException("An empty grout requested");
+    throw new InvalidArgumentException('An empty grout requested');
   }
 
 }
