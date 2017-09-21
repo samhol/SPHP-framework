@@ -2,10 +2,10 @@
 
 namespace Sphp\I18n\Collections;
 
-use Sphp\I18n\Gettext\Translator;
+use Sphp\I18n\Translators;
 use Sphp\I18n\Messages\Message;
 
-$translator = new Translator();
+$translator = Translators::instance()->getDefault();
 $msg = Message::singular("%s:%s:%s elapsed", [3, 24, '03'], $translator);
 $messageCont1 = (new TranslatableCollection())
         ->append(Message::singular("%s:%s:%s left", [12, 10, '01'], $translator))

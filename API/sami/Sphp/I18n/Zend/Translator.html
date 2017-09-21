@@ -117,13 +117,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_translateArray">translateArray</a>(array $messages)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the input message array as analogous translated array</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/I18n/AbstractTranslator.html#method_translateArray"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -211,13 +210,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="Zend\I18n\Translator\Translator">Translator</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getZend">getZend</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the ZEND translator used</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -247,7 +245,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_get">get</a>(string $text)
         
-                                            <p>Returns the input message(s) as translated message(s)</p>                </div>
+                                            <p>Returns a translated input message</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -290,7 +288,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getLang">
-        <div class="location">at         line 112</div>
+        <div class="location">at         line 116</div>
         <code>                    string
     <strong>getLang</strong>()
         </code>
@@ -320,7 +318,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLang">
-        <div class="location">at         line 121</div>
+        <div class="location">at         line 125</div>
         <code>                    <abbr title="Sphp\I18n\$this">$this</abbr>
     <strong>setLang</strong>(string $lang)
         </code>
@@ -359,7 +357,7 @@
                     <div class="method-item">
                     <h3 id="method_translateArray">
         <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_translateArray"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 42</div>
-        <code>                    
+        <code>                    array
     <strong>translateArray</strong>(array $messages)
         </code>
     </h3>
@@ -367,6 +365,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the input message array as analogous translated array</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -374,11 +374,20 @@
                     <tr>
                 <td>array</td>
                 <td>$messages</td>
-                <td></td>
+                <td>input message array</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>analogous translated array</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -387,7 +396,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintf"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 54</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintf"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 55</div>
         <code>                    string
     <strong>vsprintf</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
@@ -446,7 +455,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintfPlural">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintfPlural"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 58</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_vsprintfPlural"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 59</div>
         <code>                    string
     <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         </code>
@@ -515,7 +524,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_format">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_format"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 70</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method_format"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 71</div>
         <code>            protected        string
     <strong>format</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
@@ -572,7 +581,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method___invoke"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 89</div>
+        <div class="location">in <a href="../../../Sphp/I18n/AbstractTranslator.html#method___invoke"><abbr title="Sphp\I18n\AbstractTranslator">AbstractTranslator</abbr></a> at         line 90</div>
         <code>                    mixed
     <strong>__invoke</strong>(mixed $text)
         </code>
@@ -612,7 +621,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 56</div>
+        <div class="location">at         line 55</div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Zend\I18n\Translator\Translator">Translator</abbr> $t = null)
         </code>
@@ -643,7 +652,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 71</div>
+        <div class="location">at         line 70</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -665,7 +674,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___call">
-        <div class="location">at         line 82</div>
+        <div class="location">at         line 81</div>
         <code>                    <a href="../../../Sphp/I18n/Zend/Translator.html"><abbr title="Sphp\I18n\Zend\Translator">Translator</abbr></a>
     <strong>__call</strong>(string $name, array $arguments = [])
         </code>
@@ -717,7 +726,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_addTranslationFilePattern">
-        <div class="location">at         line 103</div>
+        <div class="location">at         line 102</div>
         <code>                    <abbr title="Sphp\I18n\Zend\$this">$this</abbr>
     <strong>addTranslationFilePattern</strong>(<abbr title="Sphp\I18n\Zend\type">type</abbr> $type, <abbr title="Sphp\I18n\Zend\type">type</abbr> $baseDir, <abbr title="Sphp\I18n\Zend\type">type</abbr> $pattern, <abbr title="Sphp\I18n\Zend\type">type</abbr> $textDomain)
         </code>
@@ -770,8 +779,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getZend">
-        <div class="location">at         line 108</div>
-        <code>                    
+        <div class="location">at         line 112</div>
+        <code>                    <abbr title="Zend\I18n\Translator\Translator">Translator</abbr>
     <strong>getZend</strong>()
         </code>
     </h3>
@@ -779,8 +788,19 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the ZEND translator used</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Zend\I18n\Translator\Translator">Translator</abbr></td>
+            <td>the ZEND translator used</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -789,7 +809,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setUsedDomain">
-        <div class="location">at         line 131</div>
+        <div class="location">at         line 135</div>
         <code>                    string
     <strong>setUsedDomain</strong>($domain)
         </code>
@@ -829,7 +849,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getDomain">
-        <div class="location">at         line 141</div>
+        <div class="location">at         line 145</div>
         <code>                    string
     <strong>getDomain</strong>()
         </code>
@@ -859,7 +879,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 145</div>
+        <div class="location">at         line 149</div>
         <code>                    string
     <strong>get</strong>(string $text)
         </code>
@@ -869,7 +889,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the input message(s) as translated message(s)</p>                    <p>the the given array of message strings as an array of translated message strings</p>                            </div>
+                                    <p>Returns a translated input message</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -877,7 +897,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <tr>
                 <td>string</td>
                 <td>$text</td>
-                <td>the message text or an array of the message text</td>
+                <td>the message text</td>
             </tr>
             </table>
 
@@ -887,7 +907,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the message text(s) translated</td>
+            <td>the message text translated</td>
         </tr>
     </table>
 
@@ -899,7 +919,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getPlural">
-        <div class="location">at         line 159</div>
+        <div class="location">at         line 153</div>
         <code>                    string
     <strong>getPlural</strong>(string $msgid1, string $msgid2, int $n)
         </code>
@@ -917,17 +937,17 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <tr>
                 <td>string</td>
                 <td>$msgid1</td>
-                <td></td>
+                <td>the singular message being translated</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$msgid2</td>
-                <td></td>
+                <td>the plural message being translated</td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$n</td>
-                <td></td>
+                <td>the number of whatever determining the plurality</td>
             </tr>
             </table>
 
@@ -949,7 +969,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_fromFilePattern">
-        <div class="location">at         line 170</div>
+        <div class="location">at         line 164</div>
         <code>        static            <a href="../../../Sphp/I18n/Zend/Translator.html"><abbr title="Sphp\I18n\Zend\Translator">Translator</abbr></a>
     <strong>fromFilePattern</strong>($type, $baseDir, $pattern, $textDomain = &#039;default&#039;)
         </code>
@@ -1002,7 +1022,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_toAscii">
-        <div class="location">at         line 30</div>
+        <div class="location">at         line 29</div>
         <code>                    self
     <strong>toAscii</strong>(string  $str, bool  $removeUnsupported = true)
         </code>

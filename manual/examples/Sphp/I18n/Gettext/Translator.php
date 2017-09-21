@@ -1,11 +1,14 @@
 <?php
 
-namespace Sphp\Validators;
-$v = new StringFormatValidator("%s %d foo");
-var_dump($v->isValid([]),$v->isValid([1,2]),$v->isValid(['a', 'b']));
 namespace Sphp\I18n\Gettext;
-$translator = new Translator();
-$translator->setLang('fi_FI');
+
+try {
+
+  $translator = new Translator('Sphp.Defaults', 'sphp/locale');
+  $translator->setLang('fi_FI');
+} catch (\Exception $ex) {
+  echo $ex;
+}
 
 var_dump(
         $translator->vsprintf("Please insert atleast %s of the following characters (%s)", [3, "a, b, c, d, e"]),

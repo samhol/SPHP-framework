@@ -2,9 +2,9 @@
 
 namespace Sphp\I18n\Messages;
 
-use Sphp\I18n\Gettext\Translator;
+use Sphp\I18n\Translators;
 
-$translator = new Translator();
+$translator = Translators::instance()->getDefault();
 
 
 $singular = Message::singular("Please insert atleast %s of the following characters (%s)", [2, "a, b, c"], $translator);

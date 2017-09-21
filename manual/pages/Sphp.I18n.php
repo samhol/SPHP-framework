@@ -24,7 +24,7 @@ This framework comes with buildin English to Finnish translations:
 
 MD
 );
-
+require_once 'manual/examples/Sphp/I18n/Gettext/localeSetting.php';
 \Sphp\Manual\loadPage('Sphp.I18n.TranslatorInterface');
 \Sphp\Manual\loadPage('Sphp.I18n.Messages');
 \Sphp\Manual\loadPage('Sphp.I18n.Collections');

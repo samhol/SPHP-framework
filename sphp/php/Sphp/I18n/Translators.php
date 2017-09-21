@@ -45,8 +45,8 @@ class Translators {
   private $default;
 
   public function __construct(TranslatorInterface $default = null) {
-    if ($default === null) {
-      $this->setDefault(new Translator);
+    if ($default !== null) {
+      $this->setDefault($default);
     }
   }
 
@@ -82,9 +82,8 @@ class Translators {
   /**
    * Stores the given instances as a named translator
    *
-   * 
-   * @param string $name the name specified
-   * @param TranslatorInterface $translator
+   * @param  string $name the name specified
+   * @param  TranslatorInterface $translator
    * @return $this for a fluent interface
    */
   public function store(string $name, TranslatorInterface $translator) {
@@ -93,6 +92,7 @@ class Translators {
   }
 
   /**
+   * 
    * 
    * @param  string|null $name
    * @return TranslatorInterface

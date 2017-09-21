@@ -33,15 +33,19 @@ interface TranslatorInterface {
   public function setLang(string $lang);
 
   /**
-   * Returns the input message(s) as translated message(s)
+   * Returns a translated input message
    * 
-   * the the given array of message strings as an array of translated message strings
-   *
-   * @param  string $text the message text or an array of the message text
-   * @return string the message text(s) translated
+   * @param  string $text the message text
+   * @return string the message text translated
    */
   public function get(string $text): string;
 
+  /**
+   * Returns the input message array as analogous translated array
+   * 
+   * @param  array $messages input message array
+   * @return array analogous translated array
+   */
   public function translateArray(array $messages): array;
 
   /**
@@ -50,7 +54,6 @@ interface TranslatorInterface {
    * @param  string $msgid1 the singular message being translated
    * @param  string $msgid2 the plural message being translated
    * @param  int $n the number of whatever determining the plurality
-   * @param  string $lang
    * @return string the message text translated and parsed
    */
   public function getPlural(string $msgid1, string $msgid2, int $n): string;

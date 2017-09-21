@@ -72,7 +72,7 @@ class ErrorExceptionThrower {
     register_shutdown_function(array($this, 'fatalErrorShutdownHandler'));
     return $this;
   }
-  
+
   public function run($c, int $level = \E_ALL) {
     $this->start($level);
     $result = $c();
@@ -82,6 +82,7 @@ class ErrorExceptionThrower {
 
   /**
    * Stops redirecting PHP errors
+   * 
    * @return $this for a fluent interface
    */
   public function stop() {
@@ -120,7 +121,7 @@ class ErrorExceptionThrower {
       return false;
     }
     $type = $this->getExceptionType();
-    throw new ErrorException('foo');
+    throw new ErrorException($errfile, $errline, $errno, $errstr, $errline);
   }
 
 }

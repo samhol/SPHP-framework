@@ -63,20 +63,14 @@ class Translator extends AbstractTranslator {
    * The name of the `.mo` file must match the `$domain`. e.g the file path
    * (Finnish translations) should match `$directory/fi_FI/LC_MESSAGES/$domain.mo`
    * 
-   * @param  string|null $lang optional language used (defaults to system locale)
-   * @param  string|null $domain the filename of the dictionary
+   * @param  string $domain the filename of the dictionary
    * @param  string $directory the locale path of the dictionary
    * @param  string $charset the character set of the dictionary
    * @throws InvalidArgumentException
    */
-  public function __construct(string $domain = 'Sphp.Defaults', string $directory = 'sphp/locale', string $charset = 'utf8') {
-    if ($domain === null) {
-      throw new InvalidArgumentException('no domain');
-    } else {
-      DomainBinder::bindtextdomain($domain, $directory, $charset);
-    }
-    $this->domain = $domain;
+  public function __construct(string $domain = 'Sphp.Defaults', string $directory = 'sphp/locale', string $charset = null) {
     $this->directory = $directory;
+    $this->setDomain($domain, $charset);
     $this->charset = $charset;
   }
 
@@ -95,9 +89,9 @@ class Translator extends AbstractTranslator {
    * @param  string $domain the name (filename) of the text domain
    * @return $this for a fluent interface
    */
-  public function setDomain(string $domain) {
+  public function setDomain(string $domain, string $charset = null) {
     $this->domain = $domain;
-    DomainBinder::bindtextdomain($domain, $this->directory, $this->charset);
+    DomainBinder::bindtextdomain($domain, $this->directory, $charset);
     return $this;
   }
 
@@ -131,25 +125,6 @@ class Translator extends AbstractTranslator {
     }
     return $translation;
   }
-
-  /*public function translateArray(array $text): array {
-    $lang = $this->getLang();
-    $parser = function($arg) {
-      if (is_string($arg)) {
-        return dgettext($this->getDomain(), $arg);
-      }
-      return $arg;
-    };
-    $tempLc = Locale::getMessageLocale();
-    Locale::setMessageLocale($lang);
-    if (is_array($text)) {
-      $translation = Arrays::multiMap($parser, $text);
-    } else {
-      $translation = dgettext($this->domain, $text);
-    }
-    Locale::setMessageLocale($tempLc);
-    return $translation;
-  }*/
 
   public function getPlural(string $msgid1, string $msgid2, int $n): string {
     $lang = $this->getLang();

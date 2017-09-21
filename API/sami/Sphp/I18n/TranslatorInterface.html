@@ -121,18 +121,17 @@
                 <div class="col-md-8 type">
                     <a href="#method_get">get</a>(string $text)
         
-                                            <p>Returns the input message(s) as translated message(s)</p>                </div>
+                                            <p>Returns a translated input message</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_translateArray">translateArray</a>(array $messages)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the input message array as analogous translated array</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -243,7 +242,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 43</div>
+        <div class="location">at         line 41</div>
         <code>                    string
     <strong>get</strong>(string $text)
         </code>
@@ -253,7 +252,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns the input message(s) as translated message(s)</p>                    <p>the the given array of message strings as an array of translated message strings</p>                            </div>
+                                    <p>Returns a translated input message</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -261,7 +260,7 @@
                     <tr>
                 <td>string</td>
                 <td>$text</td>
-                <td>the message text or an array of the message text</td>
+                <td>the message text</td>
             </tr>
             </table>
 
@@ -271,7 +270,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the message text(s) translated</td>
+            <td>the message text translated</td>
         </tr>
     </table>
 
@@ -283,8 +282,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_translateArray">
-        <div class="location">at         line 44</div>
-        <code>                    
+        <div class="location">at         line 49</div>
+        <code>                    array
     <strong>translateArray</strong>(array $messages)
         </code>
     </h3>
@@ -292,6 +291,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the input message array as analogous translated array</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -299,11 +300,20 @@
                     <tr>
                 <td>array</td>
                 <td>$messages</td>
-                <td></td>
+                <td>input message array</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>analogous translated array</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -312,7 +322,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getPlural">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 59</div>
         <code>                    string
     <strong>getPlural</strong>(string $msgid1, string $msgid2, int $n)
         </code>
@@ -330,17 +340,17 @@
                     <tr>
                 <td>string</td>
                 <td>$msgid1</td>
-                <td></td>
+                <td>the singular message being translated</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$msgid2</td>
-                <td></td>
+                <td>the plural message being translated</td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$n</td>
-                <td></td>
+                <td>the number of whatever determining the plurality</td>
             </tr>
             </table>
 
@@ -362,7 +372,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 70</div>
         <code>                    string
     <strong>vsprintf</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
@@ -421,7 +431,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintfPlural">
-        <div class="location">at         line 79</div>
+        <div class="location">at         line 83</div>
         <code>                    string
     <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         </code>

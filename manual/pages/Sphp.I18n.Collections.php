@@ -48,7 +48,13 @@ MD
 CodeExampleBuilder::build('Sphp/I18n/Collections/TranslatableCollection.nested.php', 'text', false)
         ->setExamplePaneTitle('An example of nesting translatable collections')
         ->printHtml();
+\Sphp\Manual\parseDown(<<<MD
 
+An instance of $translatablePriorityList is a priority list for handling $translatable objects. It is also a stable priority list.
+
+
+MD
+);
 CodeExampleBuilder::build('Sphp/I18n/Collections/PriorityList.php', 'text', false)
         ->setExamplePaneTitle('An example of nesting translatable collections')
         ->printHtml();

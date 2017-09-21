@@ -24,13 +24,15 @@
     background-color: #ff5632;
     color: #111;
     &:after {
-      content: "HTML5";
+      font: normal normal normal 14px/1 FontAwesome;
+      content: "\f13b";
     }
   }
   &.css3 {
     background-color: #0072b1;
     &:after {
-      content: "CSS3";
+      font: normal normal normal 14px/1 FontAwesome;
+      content: "\f13c";
     }
   } 
   &.flash {
@@ -42,10 +44,10 @@
     }
   }
   &.php {
-    background-color: #3333ff;
+    background-color: #8892BF;
     color: #eef;
     font-weight: bold;
-    @include border-radius(5px);
+    @include border-radius(8px / 3px);
     &:after {
       content: "PHP";
     }

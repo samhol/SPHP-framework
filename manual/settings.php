@@ -25,4 +25,4 @@ require_once('menuArrays.php');
 
 namespace Sphp\I18n;
 
-Translators::instance()->store('validation', new Gettext\Translator('Sphp.Validation'));
+Translators::instance()->store('validation', new Gettext\Translator('Sphp.Validation', 'sphp/locale'));

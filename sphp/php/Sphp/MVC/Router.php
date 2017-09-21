@@ -59,27 +59,12 @@ use Sphp\Stdlib\URL;
 class Router {
 
   /**
-   * Contains the callback function to execute, retrieved during run()
-   *
-   * @var string|array
-   */
-  private $callback = null;
-
-  /**
    * Contains the callback function to execute if none of the given routes can
    * be matched to the current URL.
    *
    * @var atring|array
    */
   private $default_route = null;
-
-  /**
-   * An array containing the parameters to pass to the callback function,
-   * retrieved during run()
-   *
-   * @var array
-   */
-  private $params = [];
 
   /**
    * An array containing the list of routing rules and their callback
@@ -140,7 +125,7 @@ class Router {
     // Sort the array by priority
     ksort($this->routes);
     // Loop through each priority level
-    foreach ($this->routes as $priority => $routes) {
+    foreach ($this->routes as $routes) {
       // Loop through each route for this priority level
       foreach ($routes as $route => $callback) {
         // Does the routing rule match the current URL?
@@ -148,10 +133,10 @@ class Router {
           // A routing rule was matched
           $matched_route = TRUE;
           // Parameters to pass to the callback function
-          $params = array($this->path);
-         // echo "<pre>";
-         // var_dump($matches);
-         // echo "</pre>";
+          $params = [$this->path];
+          // echo "<pre>";
+          // var_dump($matches);
+          // echo "</pre>";
           // Get any named parameters from the route
           foreach ($matches as $key => $match) {
             if (is_string($key)) {
@@ -159,21 +144,21 @@ class Router {
             }
           }
           // Store the parameters and callback function to execute later
-          $this->params = $params;
-          $this->callback = $callback;
+          $theParams = $params;
+          $theCallback = $callback;
           break;
         }
       }
     }
     // Was a match found or should we execute the default callback?
     if (!$matched_route && $this->default_route !== null) {
-      $this->callback = $this->default_route;
-      $this->params = [$this->path];
+      $theParams = $this->default_route;
+      $theCallback = [$this->path];
     }
-    if ($this->callback === null || $this->params === null) {
+    if ($theParams === null || $theCallback === null) {
       throw new RuntimeException('No callback or parameters found for the route');
     }
-    call_user_func_array($this->callback, $this->params);
+    call_user_func_array($theCallback, $theParams);
     return $this;
   }
 

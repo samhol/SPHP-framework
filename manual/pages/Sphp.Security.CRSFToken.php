@@ -17,7 +17,14 @@ $crsfToken = Apis::sami()->classLinker(CRSFToken::class);
 
 Framework introduces a simple instantiable class $crsfToken for CRSF token generation. 
 This class requires running PHP session in order for it to work.
- 
+MD
+);
+
+CodeExampleBuilder::build('Sphp/Security/CRSFToken.php', 'html5', false)
+        ->setExamplePaneTitle('An Example of Token used in a HTML form')
+        ->printHtml();
+
+\Sphp\Manual\parseDown(<<<MD
 1. Tokens are created by calling {$crsfToken->methodLink('generateToken', false)}.
 2. Tokens can be verified by:
   - {$crsfToken->methodLink('verifyInputToken', false)} for user defined type of request data
@@ -26,7 +33,4 @@ This class requires running PHP session in order for it to work.
 
 MD
 );
-
-
-CodeExampleBuilder::visualize('Sphp/Security/CRSFToken.php', 'text', false);
 

@@ -117,13 +117,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_translateArray">translateArray</a>(array $messages)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the input message array as analogous translated array</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -246,7 +245,7 @@
                     <div class="method-item">
                     <h3 id="method_translateArray">
         <div class="location">at         line 42</div>
-        <code>                    
+        <code>                    array
     <strong>translateArray</strong>(array $messages)
         </code>
     </h3>
@@ -254,6 +253,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the input message array as analogous translated array</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -261,11 +262,20 @@
                     <tr>
                 <td>array</td>
                 <td>$messages</td>
-                <td></td>
+                <td>input message array</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>analogous translated array</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -274,7 +284,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintf">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 55</div>
         <code>                    string
     <strong>vsprintf</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
@@ -333,7 +343,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_vsprintfPlural">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 59</div>
         <code>                    string
     <strong>vsprintfPlural</strong>(string $msgid1, string $msgid2, int $n, array $args = null, bool $translateArgs = false)
         </code>
@@ -402,7 +412,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_format">
-        <div class="location">at         line 70</div>
+        <div class="location">at         line 71</div>
         <code>            protected        string
     <strong>format</strong>(string $message, array $args = null, bool $translateArgs = false)
         </code>
@@ -459,7 +469,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___invoke">
-        <div class="location">at         line 89</div>
+        <div class="location">at         line 90</div>
         <code>                    mixed
     <strong>__invoke</strong>(mixed $text)
         </code>

@@ -72,7 +72,7 @@ abstract class Filesystem {
    *
    * @param  string|string[] $paths the path to the executable PHP script
    * @return string the result of the script execution
-   * @throws \Sphp\Exceptions\RuntimeException if the parsing fails for any reason
+   * @throws \Sphp\Exceptions\Exception if the parsing fails for any reason
    */
   public static function executePhpToString($paths): string {
     $content = '';
@@ -86,7 +86,7 @@ abstract class Filesystem {
       }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
-      throw new RuntimeException("PHP parsing failed for $e", 0, $e);
+      throw new RuntimeException("PHP parsing failed " . $e->getFile() ." #". $e->getLine(), 0, $e);
     }
     ob_end_clean();
     return $content;
