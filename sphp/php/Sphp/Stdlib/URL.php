@@ -681,7 +681,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    */
   public static function getCurrent(): URL {
     if (self::$currUrl === null) {
-      $url = new URL(static::getCurrentURL());
+      $url = new static(static::getCurrentURL());
 
       self::$currUrl = $url;
     }
