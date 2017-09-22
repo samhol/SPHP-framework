@@ -12,15 +12,15 @@ try {
   $navi->addCssClass('sphp-manual');
 
   //$manual = (new SubMenu('Documentation'));
-
+  $redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
   $leftDrop = new DropdownMenu();
-  $builder = new MenuBuilder(new MenuLinkBuilder(trim($_SERVER["REDIRECT_URL"], '/')));
+  $builder = new MenuBuilder(new MenuLinkBuilder(trim($redirect, '/')));
   $leftDrop->appendSubMenu($builder->buildSub($manualLinks));
   $leftDrop->appendSubMenu($builder->buildSub($dependenciesLinks));
   $leftDrop->appendSubMenu($builder->buildSub($externalApiLinks));
   $navi->left()->setContent($leftDrop);
 
-$form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
+  $form = new FreefindSearchForm('r', '51613081', '&#247;', '0');
   $form->setAdditionalControls(false)->showLabel(false);
   $form->getSearchField()->setName('query')->setPlaceholder('keywords in documentation');
 

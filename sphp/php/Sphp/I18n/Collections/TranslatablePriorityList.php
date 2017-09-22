@@ -8,12 +8,12 @@
 namespace Sphp\I18n\Collections;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Gettext\Translator;
 use IteratorAggregate;
 use Sphp\I18n\Translatable;
 use Zend\Stdlib\PriorityQueue;
+use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 
 /**
  * Implements a list that holds {@link Translatable} objects in a reusable priority queue
@@ -28,7 +28,7 @@ class TranslatablePriorityList implements IteratorAggregate, TranslatableCollect
   /**
    * Array that holds the messages
    *
-   * @var PriorityList
+   * @var PriorityQueue
    */
   private $messages;
 

@@ -2,7 +2,8 @@
 
 use Sphp\Manual\MVC\SideNavViewer;
 
-$sidenawViewer = new SideNavViewer($manualLinks, trim($_SERVER["REDIRECT_URL"], '/'));
+$redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
+$sidenawViewer = new SideNavViewer($manualLinks, trim($redirect, '/'));
 $sidenawViewer->getMenu()->addCssClass('sphp-sidenav');
 $sidenawViewer->printHtml();
 ?>

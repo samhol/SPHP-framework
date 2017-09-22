@@ -16,8 +16,8 @@ $titleGenerator = new \Sphp\Manual\MVC\TitleGenerator($manualLinks);
 
 //echo '<pre>';
 //echo \Sphp\MVC\Router::getCleanUrl();
-//print_r( $_SERVER[REDIRECT_URL]);
-$title = $titleGenerator->createTitleFor(trim($_SERVER['REDIRECT_URL'], '/'));
+$redirect = filter_input(INPUT_SERVER, 'REDIRECT_URL', FILTER_SANITIZE_URL);
+$title = $titleGenerator->createTitleFor(trim($redirect, '/'));
 Document::html()->setLanguage('en')->setDocumentTitle($title);
 
 use Sphp\Html\Head\Meta;

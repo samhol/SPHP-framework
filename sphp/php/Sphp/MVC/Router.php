@@ -9,16 +9,17 @@ namespace Sphp\MVC;
 
 use Sphp\Exceptions\RuntimeException;
 use Sphp\Stdlib\URL;
+use Zend\Stdlib\PriorityQueue;
+use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 
 /**
- * Simple URL router
+ * URL router
  *
- * This it the Igniter URL Router, the layer of a web application between the
- * URL and the function executed to perform a request. The router determines
- * which function to execute for a given URL.
+ * URL Router is a web application between the URL and the function executed to 
+ * perform a request. The router determines which function to execute for a given URL.
  *
  * <code>
- * $router = new \Igniter\Router;
+ * $router = new Router;
  *
  * // Adding a basic route
  * $router->route( '/login', 'login_function' );
@@ -62,17 +63,17 @@ class Router {
    * Contains the callback function to execute if none of the given routes can
    * be matched to the current URL.
    *
-   * @var atring|array
+   * @var callable
    */
-  private $default_route = null;
+  private $defaultRoute = null;
 
   /**
-   * An array containing the list of routing rules and their callback
-   * functions, as well as their priority and any additional paramters.
+   * A priority queue containing routing rules and their callback
+   * functions.
    *
-   * @var array
+   * @var PriorityQueue
    */
-  private $routes = [];
+  private $routes;
 
   /**
    * A sanitized version of the URL, excluding the domain and base component
@@ -96,18 +97,22 @@ class Router {
       $url = new URL($url);
     }
     $this->path = rtrim($url->getPath(), '/') . '/';
+    $this->routes = new PriorityQueue();
+    $this->routes->setInternalQueueClass(StablePriorityQueue::class);
   }
 
   /**
+   * Sets the callback function for the default route
+   * 
    * If the router cannot match the current URL to any of the given routes,
    * the function passed to this method will be executed instead. This would
    * be useful for displaying a 404 page for example.
    *
-   * @param  callable $callback
+   * @param  callable $callback the callback function for the default route
    * @return $this for a fluent interface
    */
-  public function setDefaultRoute($callback) {
-    $this->default_route = $callback;
+  public function setDefaultRoute(callable $callback) {
+    $this->defaultRoute = $callback;
     return $this;
   }
 
@@ -121,50 +126,44 @@ class Router {
    */
   public function execute() {
     // Whether or not we have matched the URL to a route
-    $matched_route = false;
-    // Sort the array by priority
-    ksort($this->routes);
-    // Loop through each priority level
-    foreach ($this->routes as $routes) {
-      // Loop through each route for this priority level
-      foreach ($routes as $route => $callback) {
-        // Does the routing rule match the current URL?
-        if (preg_match($route, $this->path, $matches)) {
-          // A routing rule was matched
-          $matched_route = TRUE;
-          // Parameters to pass to the callback function
-          $params = [$this->path];
-          // echo "<pre>";
-          // var_dump($matches);
-          // echo "</pre>";
-          // Get any named parameters from the route
-          foreach ($matches as $key => $match) {
-            if (is_string($key)) {
-              $params[] = $match;
-            }
+    $routeFound = false;
+    // Loop through routes
+    foreach ($this->routes as $routingData) {
+      $route = $routingData['route'];
+      $callback = $routingData['callback'];
+      // Does the routing rule match the current URL?
+      if (preg_match($route, $this->path, $matches)) {
+        // A routing rule was matched
+        $routeFound = true;
+        // Parameters to pass to the callback function
+        $params = [$this->path];
+        // echo "<pre>";
+        // var_dump($matches);
+        // echo "</pre>";
+        // Get any named parameters from the route
+        foreach ($matches as $key => $match) {
+          if (is_string($key)) {
+            $params[] = $match;
           }
-          // Store the parameters and callback function to execute later
-          $theParams = $params;
-          $theCallback = $callback;
-          break;
         }
+        // execute the callback and stop
+        call_user_func_array($callback, $params);
+        break;
       }
     }
     // Was a match found or should we execute the default callback?
-    if (!$matched_route && $this->default_route !== null) {
-      $theParams = $this->default_route;
-      $theCallback = [$this->path];
+    if (!$routeFound && $this->defaultRoute !== null) {
+      call_user_func_array($this->defaultRoute, [$this->path]);
+      $routeFound = true;
     }
-    if ($theParams === null || $theCallback === null) {
-      throw new RuntimeException('No callback or parameters found for the route');
+    if (!$routeFound) {
+      throw new RuntimeException('No callback found for the route');
     }
-    call_user_func_array($theCallback, $theParams);
     return $this;
   }
 
   /**
-   * Adds a new URL routing rule to the routing table, after converting any of
-   * our special tokens into proper regular expressions.
+   * Adds a new URL routing rule to the routing table
    *
    * @param  string   $route
    * @param  callable $callback
@@ -187,12 +186,7 @@ class Router {
     $route = preg_replace('/\<\!(.*?)\>/', '(?P<\1>[^\/]+)', $route);
     // Add the regular expression syntax to make sure we do a full match or no match
     $route = '#^' . $route . '$#';
-    // Does this URL routing rule already exist in the routing table?
-    if (isset($this->routes[$priority][$route])) {
-      throw new RuntimeException('The URI "' . htmlspecialchars($route) . '" already exists in the router table');
-    }
-    // Add the route to our routing array
-    $this->routes[$priority][$route] = $callback;
+    $this->routes->insert(['route' => $route, 'callback' => $callback], $priority);
     return $this;
   }
 
