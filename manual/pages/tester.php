@@ -1,7 +1,7 @@
 <?php
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 echo "<pre>";
 print_r($_SERVER);
 var_dump(URL::getCurrentURL());

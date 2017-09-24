@@ -13,7 +13,7 @@ $loadPage = function ($par, string $file = 'index') use($loadNotFound) {
   //var_dump(func_get_args());
   try {
     ob_start();
-    $page = "manual/pages/$file.php";  
+    $page = "manual/pages/$file.php";
     if (is_file($page)) {
       include $page;
     } else {
@@ -35,5 +35,5 @@ $loadIndex = function () use ($loadPage) {
 $router = (new Router())
         ->setDefaultRoute($loadNotFound)
         ->route('/', $loadIndex)
-        ->route('/index.php', $loadIndex,10)
+        ->route('/index.php', $loadIndex, 10)
         ->route('/<!category>', $loadPage, 9);

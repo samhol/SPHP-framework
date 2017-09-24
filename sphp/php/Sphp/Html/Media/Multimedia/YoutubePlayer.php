@@ -44,9 +44,10 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   protected function loadPlaylist(string $playlistId) {
     $this->getUrl()
-            ->setPath('embed')
-            ->setParam('listType', 'playlist')
-            ->setParam('list', $playlistId);
+            ->setPath('embed');
+    $this->getUrl()->getQuery()
+            ->offsetSet('listType', 'playlist')
+            ->offsetSet('list', $playlistId);
     return $this;
   }
 
@@ -61,7 +62,7 @@ class YoutubePlayer extends AbstractVideoPlayer {
    * @return $this for a fluent interface
    */
   public function autohide(int $autohide = 2) {
-    $this->getUrl()->setParam('autohide', $autohide);
+    $this->getUrl()->getQuery()->offsetSet('autohide', $autohide);
     return $this;
   }
 
@@ -80,9 +81,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   public function setStartTime(int $start = 0) {
     if ($start >= 0) {
-      $this->getUrl()->setParam('start', $start);
+      $this->getUrl()->getQuery()->offsetSet('start', $start);
     } else {
-      $this->getUrl()->unsetParam('start');
+      $this->getUrl()->getQuery()->offsetUnset('start');
     }
     return $this;
   }
@@ -106,9 +107,9 @@ class YoutubePlayer extends AbstractVideoPlayer {
    */
   public function setEndTime(int $end) {
     if ($end >= 0) {
-      $this->getUrl()->setParam('end', $end);
+      $this->getUrl()->getQuery()->offsetSet('end', $end);
     } else {
-      $this->getUrl()->unsetParam('end');
+      $this->getUrl()->getQuery()->offsetUnset('end');
     }
     return $this;
   }

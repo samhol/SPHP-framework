@@ -11,7 +11,7 @@ use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
 use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an image that acts as a hyperlink

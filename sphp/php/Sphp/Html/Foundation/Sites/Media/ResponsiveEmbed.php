@@ -10,7 +10,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\LazyMediaInterface;
 use Sphp\Html\Media\IframeInterface;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Media\Iframe;
 use Sphp\Html\Media\ViewerJS;
 use Sphp\Html\Media\Multimedia\DailyMotionPlayer;

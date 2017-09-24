@@ -86,7 +86,7 @@ abstract class Filesystem {
       }
       $content .= ob_get_contents();
     } catch (\Exception $e) {
-      throw new RuntimeException("PHP parsing failed " . $e->getFile() ." #". $e->getLine(), 0, $e);
+      throw new RuntimeException("PHP parsing failed " . $e->getFile() . " #" . $e->getLine(), 0, $e);
     }
     ob_end_clean();
     return $content;
@@ -132,25 +132,6 @@ abstract class Filesystem {
       }
     }
     return $contents;
-  }
-
-  /**
-   * Returns the Mime type of the resource pointed by the given URL
-   *
-   * @param  string|URL $url the pointing to the resource
-   * @return string the Mime type of the content pointed by the given URL
-   */
-  public static function getMimeType($url): string {
-    if ($url instanceof URL) {
-      $url = $url->__toString();
-    }
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_NOBODY, 1);
-    curl_exec($ch);
-    return curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
   }
 
   /**

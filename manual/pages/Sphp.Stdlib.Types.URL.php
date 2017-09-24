@@ -1,12 +1,13 @@
 <?php
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Networks;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $urlClass = Apis::sami()->classLinker(URL::class);
 $parse_url = Apis::phpManual()->functionLink('parse_url');
+
 \Sphp\Manual\parseDown(<<<MD
 ##URL manipulation with a $urlClass objects
 

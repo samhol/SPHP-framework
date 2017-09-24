@@ -8,7 +8,6 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\EmptyTag;
-use Sphp\Stdlib\URL;
 
 /**
  * Implements an HTML &lt;track&gt; tag
@@ -28,12 +27,12 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string|URL $src the URL of the media file
+   * @param  string $src the URL of the media file
    * @param  string $srclang the language of the track text data
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_track_srclang.asp srclang attribute
    */
-  public function __construct($src = false, $srclang = false) {
+  public function __construct(string $src = null, string $srclang = null) {
     parent::__construct('track');
     if ($src !== null) {
       $this->setSrc($src);
@@ -72,7 +71,7 @@ class Track extends EmptyTag implements MultimediaSourceInterface {
   /**
    * Sets the path to the track source (The URL of the track file)
    *
-   * @param  string|URL $src the path to the track source (The URL of the track file)
+   * @param  string $src the path to the track source (The URL of the track file)
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_track_src.asp src attribute
    */

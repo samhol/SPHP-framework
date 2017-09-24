@@ -7,7 +7,7 @@
 
 namespace Sphp\Images;
 
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 

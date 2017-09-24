@@ -8,7 +8,7 @@
 namespace Sphp\Html\Adapters;
 
 use Sphp\Html\AjaxLoaderInterface;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\ComponentInterface;
 
 /** 

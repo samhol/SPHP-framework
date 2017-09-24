@@ -1,6 +1,6 @@
 <?php
 namespace Sphp\Html\Foundation\Navigation;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 //$poparser = new PoParser();
 
@@ -24,7 +24,9 @@ while ($offset < $num) {
 	//echo "before:" . memory_get_peak_usage() . "\n";
 	//pages[$page] = URL::getCurrent()->setParam("page", $page);
 	//if ($offset > 0) {
-	$pages[$page] = URL::getCurrent()->setParam("page", $page);
+  $curl = URL::getCurrent();
+  $curl->getQuery()->offsetSet("page", $page);
+	$pages[$page] = $curl;
 	//echo "creation+unset:" . memory_get_peak_usage() . "\n";
 		//$pageLink->setParam("offset", $offset);
 	//}

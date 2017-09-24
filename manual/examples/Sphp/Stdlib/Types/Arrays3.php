@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 $arr = [["a", "b"], 'url' => new URL("http://sphp.samiholck.com/?page=tools")];
 $copy = Arrays::copy($arr);

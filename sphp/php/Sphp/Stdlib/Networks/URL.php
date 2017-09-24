@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Networks;
 
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Datastructures\Arrayable;
@@ -54,7 +54,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
   private $path;
 
   /**
-   * @var array
+   * @var QueryString
    */
   private $query;
 
@@ -74,25 +74,6 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * @param string|null $url the URL string
    */
   public function __construct(string $url = null) {
-    /* if ($url !== null) {
-      $arr = [
-      'scheme' => '',
-      'host' => '',
-      'user' => '',
-      'pass' => '',
-      'path' => '',
-      'query' => '',
-      'fragment' => '',
-      'port' => ''
-      ];
-      $urlString = html_entity_decode(urldecode($url));
-      $parts = array_merge($arr, parse_url($urlString));
-      $query = [];
-      parse_str($parts['query'], $query);
-      $this->components = $parts; //array_merge($this->components, parse_url($urlString));
-      $this->components['query'] = $query;
-      //$this->parsePort($this->components['port']);
-      } */
     $this->parseURL("$url");
   }
 
@@ -291,11 +272,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * @param  string $query the new query string
    * @return $this for a fluent interface
    */
-  public function setQuery(string $query = null) {
-    if ($query !== null) {
-      parse_str($query, $this->query);
+  public function setQuery($query = null) {
+    if (is_string($query)) {
+      $this->query = new QueryString($query);
+    } else if ($query instanceof QueryString) {
+      $this->query = $query;
     } else {
-      $this->query = [];
+      $this->query = new QueryString();
     }
     return $this;
   }
@@ -306,94 +289,16 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
    * @return boolean true if the path is set and false otherwise
    */
   public function hasQuery(): bool {
-    return !empty($this->query);
+    return !$this->query->isEmpty();
   }
 
   /**
-   * Returns the query string part of the URL
+   * Returns the query string object of the URL
    * 
-   * The query string contains data to be passed to software running on the 
-   * server. It may contain name/value pairs separated by ampersands.
-   * 
-   * @param  string $separator
-   * @param  int $encode
-   * @return string the query string of the URL
+   * @return QueryString the query object
    */
-  public function getQuery(string $separator = '&', int $encode = \PHP_QUERY_RFC1738): string {
-    $val = '';
-    if ($this->hasQuery()) {
-      $val = http_build_query($this->query, '', $separator, $encode);
-    }
-    return $val;
-  }
-
-  /**
-   * Checks whether a parameter exists in the query
-   * 
-   * @param  string $name the name of the parameter
-   * @return boolean true if the parameter exists and false otherwise
-   */
-  public function paramExists(string $name): bool {
-    return array_key_exists($name, $this->query);
-  }
-
-  /**
-   * Return the query as an array of parameters
-   *
-   * @return array the parameter array
-   */
-  public function getParams(): array {
+  public function getQuery(): QueryString {
     return $this->query;
-  }
-
-  /**
-   * Return the value of the parameter
-   *
-   * @param  string $name the name of the parameter
-   * @return string|null the value of the parameter or null if the parameter does not exist
-   */
-  public function getParam($name) {
-    $val = null;
-    if ($this->paramExists($name)) {
-      $val = $this->query[$name];
-    }
-    return $val;
-  }
-
-  /**
-   * Sets or replaces a parameter in the query
-   *
-   * @param  string $name the name of the parameter
-   * @param  string $value the value of the parameter
-   * @return $this for a fluent interface
-   */
-  public function setParam(string $name, $value) {
-    $this->query[$name] = $value;
-    return $this;
-  }
-
-  /**
-   * Sets or replaces parameters in the query
-   *
-   * @param  string[] $params parameter name => value pairs or a query string
-   * @return $this for a fluent interface
-   */
-  public function setParams(array $params) {
-    $this->query = array_merge($this->query, $params);
-    return $this;
-  }
-
-  /**
-   * Removes a parameter from the query
-   *
-   * @param  string $name the name of the parameter to remove
-   * @return $this for a fluent interface
-   */
-  public function unsetParam($name) {
-    if (array_key_exists($name, $this->query)) {
-      unset($this->query[$name]);
-    }
-    return $this;
   }
 
   /**
@@ -537,7 +442,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
       $url .= $this->getPath($encode);
     }
     if ($this->hasQuery()) {
-      $url .= '?' . $this->getQuery('&amp;', \PHP_QUERY_RFC3986);
+      $url .= '?' . $this->query->getQuery('&amp;', \PHP_QUERY_RFC3986);
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment($encode);
@@ -582,61 +487,13 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
       $url .= $this->getPath();
     }
     if ($this->hasQuery()) {
-      $url .= '?' . $this->getQuery('&', \PHP_QUERY_RFC3986);
+      $url .= '?' . $this->query->getQuery('&', \PHP_QUERY_RFC3986);
       $url = trim($url, '=');
     }
     if ($this->hasFragment()) {
       $url .= '#' . $this->getFragment();
     }
     return $url;
-  }
-
-  /**
-   * Returns the Mime type of the content
-   *
-   * @return string|boolean the Mime type of the content or false if the Mime 
-   *         type cannot be resolved
-   */
-  public function getMimeType() {
-    $url = $this->__toString();
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_NOBODY, 1);
-    curl_exec($ch);
-    return curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-  }
-
-  /**
-   * Checks whether the URL exists or not
-   *
-   * @return boolean true if the URL
-   *  exists and false otherwise
-   */
-  public function exists(): bool {
-    if (!$this->hasHost()) {
-      return false;
-    }
-    $fp = fsockopen($this->getHost(), 80, $errno, $errstr, 30);
-    if ($fp === false) {
-      return false;
-    }
-    $path = '';
-    if ($this->hasPath()) {
-      $path .= $this->getPath();
-    }
-    if ($this->hasQuery()) {
-      $path .= '?' . $this->getQuery('&', \PHP_QUERY_RFC3986);
-    }
-    $out = "GET /$path HTTP/1.1\r\n";
-    $out .= "Host: {$this->getHost()}\r\n";
-    $out .= "Connection: Close\r\n\r\n";
-    fwrite($fp, $out);
-    $content = fgets($fp);
-    $code = trim(substr($content, 9, 4));
-    fclose($fp);
-    return ($code[0] == 2 || $code[0] == 3) ? true : false;
   }
 
   /**
@@ -695,7 +552,7 @@ class URL implements Arrayable, IteratorAggregate, \JsonSerializable {
         'user' => $this->user,
         'pass' => $this->pass,
         'path' => $this->path,
-        'query' => $this->query,
+        'query' => $this->query->toArray(),
         'fragment' => $this->fragment,
     ];
   }

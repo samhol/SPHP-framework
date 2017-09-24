@@ -10,7 +10,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\SizeableTrait;
 use Sphp\Html\Media\LazyMediaSourceTrait;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an abstract iframe based Video component
@@ -107,12 +107,12 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
   }
 
   public function autoplay(bool $autoplay = true) {
-    $this->url->setParam('autoplay', (int) $autoplay);
+    $this->url->getQuery()->offsetSet('autoplay', (int) $autoplay);
     return $this;
   }
 
   public function loop(bool $loop = true) {
-    $this->url->setParam('loop', (int) $loop);
+    $this->url->getQuery()->offsetSet('loop', (int) $loop);
     return $this;
   }
 
@@ -125,8 +125,8 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @return $this for a fluent interface
    */
   public function unsetParam($name) {
-    $this->url->getPath();
-    $this->url->unsetParam($name);
+    //$this->url->getPath();
+    $this->url->getQuery()->offsetUnset($name);
     return $this;
   }
 
@@ -140,7 +140,7 @@ abstract class AbstractVideoPlayer extends AbstractComponent implements VideoPla
    * @return $this for a fluent interface
    */
   public function setParam(string $name, $value) {
-    $this->url->setParam($name, $value);
+    $this->url->getQuery()->offsetSet($name, $value);
     return $this;
   }
 

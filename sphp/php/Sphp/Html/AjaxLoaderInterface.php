@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 /**
  * Defines the functionality of an Ajax content loader component

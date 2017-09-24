@@ -35,7 +35,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @return $this for a fluent interface
    */
   public function setControlsColor(string $color) {
-    $this->getUrl()->setParam('color', trim($color, '#'));
+    $this->getUrl()->getQuery()->offsetSet('color', trim($color, '#'));
   }
 
   /**
@@ -47,7 +47,7 @@ class VimeoPlayer extends AbstractVideoPlayer {
    * @return $this for a fluent interface
    */
   public function showVideoTitle(bool $show) {
-    $this->getUrl()->setParam('title', int($show));
+    $this->getUrl()->getQuery()->offsetSet('title', int($show));
   }
 
 }

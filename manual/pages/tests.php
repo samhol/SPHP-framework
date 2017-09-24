@@ -1,44 +1,20 @@
 <?php
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Networks;
 
-echo"<pre>";
+$url = new URL("https://username:password@www.example.com/path?param1=value1&param2=value2&bool#fragment");
+$q = new QueryString("https://username:password@www.example.com/path?param1=value1&param2=value2&bool#fragment");
+$q1 = QueryString::fromGET(\FILTER_SANITIZE_STRING);
+$q2 = QueryString::getCurrent(\FILTER_SANITIZE_STRING);
+$q2->merge($q1)->merge(['foo' => ['bar', 'baar']]);
+echo "<pre>";
+print_r($q->toArray());
 
+print_r($q1->toArray());
 
-namespace Sphp\Config\ErrorHandling;
-
-$ed = new ErrorDispatcher();
-$ed->addErrorListener(\E_NOTICE, function (int $errno, string $errstr, string $errfile, int $errline) {
-  echo "\n\tNotice: " . $errstr;
-});
-$callout = new \Sphp\Html\Foundation\Sites\Containers\ErrorMessageCallout();
-$ed->addErrorListener(\E_ALL, $callout);
-$ed->startErrorHandling();
-
-trigger_error('Errors suck badly', E_USER_ERROR);
-
-trigger_error('Warnings suck', E_USER_WARNING);
-trigger_error('Deprecated features suck', E_USER_DEPRECATED);
-trigger_error('Notes suck, but not so bad', E_USER_NOTICE);
-echo $foo;
-bdsf;
-$options = [
-    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-];
-password_hash("rasmuslerdorf", PASSWORD_BCRYPT, $options)."\n";
-
-$mailer = new ExceptionMailer('sami.holck@gmail.com');
-$mailer->send(new \Exception('foo exception', 3, new \Sphp\Exceptions\RuntimeException('foo bar')));
-echo"</pre>";
+print_r($q2->toArray());
+echo $q2->set('xss', '<script>alert("foo")</script>')->getHtml();
+print_r($url->setQuery($q1)->toArray());
+echo $url->getHtml();
 ?>
-
-<div class="button-group warning">
-  <a class="button">Primary Action</a>
-  <button type="button" class="dropdown button arrow-only" data-toggle="example-dropdown-1">
-    <span class="show-for-sr">Show menu</span>
-  </button>
-</div>
-<span data-toggle="example-dropdown-1">Hoverable Dropdown</span>
-<div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
-  Just some junk that needs to be said. Or not. Your choice.
-</div>
+</pre>

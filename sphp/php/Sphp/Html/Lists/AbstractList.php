@@ -8,7 +8,7 @@
 namespace Sphp\Html\Lists;
 
 use Sphp\Html\AbstractContainerTag;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 /**
  * Abstract implementation of both ordered and unordered HTML-list

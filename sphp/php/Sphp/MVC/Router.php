@@ -8,7 +8,7 @@
 namespace Sphp\MVC;
 
 use Sphp\Exceptions\RuntimeException;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 use Zend\Stdlib\PriorityQueue;
 use Sphp\Stdlib\Datastructures\StablePriorityQueue;
 

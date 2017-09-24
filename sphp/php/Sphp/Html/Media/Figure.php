@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Stdlib\URL;
+use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an HTML &lt;figure&gt; tag
@@ -76,7 +76,7 @@ class Figure extends AbstractComponent implements ImgInterface {
    *
    * @return Img the image component
    */
-  public function getImg() {
+  public function getImg(): Img {
     return $this->img;
   }
 

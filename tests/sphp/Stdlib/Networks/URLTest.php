@@ -1,6 +1,6 @@
 <?php
 
-namespace Sphp\Stdlib;
+namespace Sphp\Stdlib\Networks;
 
 class URLTest extends \PHPUnit\Framework\TestCase {
 
@@ -79,30 +79,6 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return array
    */
-  public function mimesStrings() {
-    $url[] = ['irc://irc.example.com/channel', false];
-    $url[] = ['http://www.example.com', 'text/html'];
-    $url[] = ['http://playground.samiholck.com/manual/pics/sphp-code-logo.png', 'image/png'];
-    return $url;
-  }
-
-  /**
-   *
-   * @covers Sphp\Net\URL::getMimeType
-   * @dataProvider mimesStrings
-   *
-   * @param string $urlString
-   * @param scalar $expected
-   */
-  public function testGetMimeType($urlString, $expected) {
-    $url = new URL($urlString);
-    $this->assertSame($url->getMimeType(), $expected);
-  }
-
-  /**
-   * 
-   * @return array
-   */
   public function urlStringsWithCorrectPorts() {
     $url[] = ['irc://irc.example.com/channel', 194];
     $url[] = ['http://example.com', 80];
@@ -144,9 +120,9 @@ class URLTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->http->getQuery() === $this->https->getQuery());
 
     $url = new URL("https://www.example.com/bar.html?a=k/s/p.png");
-    $url->setParam("op", FALSE);
-    $url->setParam("op1", (new URL("https://www.example.com/bar.html?a=k/s/p.png"))->getRaw());
-    $this->assertTrue($url->getParam("op") === FALSE);
+    $url->getQuery()->offsetSet("op", FALSE);
+    $url->getQuery()->offsetSet("op1", (new URL("https://www.example.com/bar.html?a=k/s/p.png"))->getRaw());
+    $this->assertTrue($url->getQuery()->offsetGet("op") === FALSE);
     echo $url->getHtml();
   }
 
@@ -190,7 +166,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    */
   public function arrayData() {
     return [
-            [[
+        [[
         'scheme' => 'http',
         'host' => 'www.whatever.com',
         'user' => 'johndoe',
@@ -200,7 +176,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
         'fragment' => 'daa',
         'port' => 21
             ]],
-            [[
+        [[
         'scheme' => 'https',
         'host' => 'www.whatever.com',
         'user' => '',
@@ -219,7 +195,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    */
   public function schemes() {
     return [
-            ['http', 'https'],
+        ['http', 'https'],
     ];
   }
 
@@ -261,9 +237,9 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    */
   public function params() {
     return [
-            [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
-            [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
-            [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
+        [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
+        [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
+        [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
     ];
   }
 
@@ -274,12 +250,12 @@ class URLTest extends \PHPUnit\Framework\TestCase {
   public function testSetParams(array $urlString) {
     $url = new URL('http://www.example.com/bar.html');
     $this->assertFalse($url->hasQuery());
-    $url->setParams($urlString);
-    $this->assertSame($url->getParams(), $urlString);
+    $url->getQuery()->merge($urlString);
+    $this->assertSame($url->getQuery()->getQuery(), $urlString);
     foreach ($urlString as $key => $value) {
       $this->assertTrue($url->hasQuery());
-      $this->assertTrue($url->paramExists($key));
-      $this->assertSame($url->getParam($key), $value);
+      $this->assertTrue($url->getQuery()->offsetExists($key));
+      $this->assertSame($url->getQuery()->offsetGet($key), $value);
     }
   }
 
