@@ -76,7 +76,6 @@ class URLTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return array
    */
   public function urlStringsWithCorrectPorts() {
@@ -112,35 +111,10 @@ class URLTest extends \PHPUnit\Framework\TestCase {
     $this->assertSame($url->getPort(), 10);
   }
 
-  /**
-   *
-   * @covers Sphp\Net\URL::getPort
-   */
-  public function testQuery() {
-    $this->assertTrue($this->http->getQuery() === $this->https->getQuery());
-
-    $url = new URL("https://www.example.com/bar.html?a=k/s/p.png");
-    $url->getQuery()->offsetSet("op", FALSE);
-    $url->getQuery()->offsetSet("op1", (new URL("https://www.example.com/bar.html?a=k/s/p.png"))->getRaw());
-    $this->assertTrue($url->getQuery()->offsetGet("op") === FALSE);
-    echo $url->getHtml();
-  }
-
-  /**
-   * 
-   *
-   * @covers Sphp\Net\URL::getIterator
-   */
-  public function testGetIterator() {
-    
-  }
-
-  public function equalUrlPairs() {
-    $url[] = ['irc://irc.example.com/channel', 'irc://irc.example.com/channel'];
-    $url[] = ['irc://irc.example.com/channel', 'irc://irc.example.com/channel?'];
+  public function equalUrlPairs(): array {
     $url[] = ['http://example.com', 'http://example.com'];
     $url[] = ['http://example.com', 'http://example.com:80'];
-    $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&amp;p1=v1'];
+    $url[] = ['http://www.example.com/path?p1=v1&p2=v2', 'http://www.example.com/path?p2=v2&p1=v1'];
     return $url;
   }
 
@@ -164,7 +138,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return mixed[]
    */
-  public function arrayData() {
+  public function arrayData(): array {
     return [
         [[
         'scheme' => 'http',
@@ -193,7 +167,7 @@ class URLTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return mixed[]
    */
-  public function schemes() {
+  public function schemes(): array {
     return [
         ['http', 'https'],
     ];
@@ -228,35 +202,19 @@ class URLTest extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($url->hasPath());
     $url->setPath('path/to/file.type');
     $this->assertTrue($url->hasPath());
-    $this->assertSame($url->getPath(), '/path/to/file.type');
+    $this->assertSame($url->getPath(), 'path/to/file.type');
   }
 
   /**
    * 
    * @return mixed[]
    */
-  public function params() {
+  public function params(): array {
     return [
         [['p2' => 'v2', 'p3' => "<script>alert('hello')</script>"]],
         [['p2' => '', 'p3' => "<script>alert('hello')</script>"]],
         [['<br>' => '', 'p3' => "<script>alert('hello')</script>"]],
     ];
-  }
-
-  /**
-   * @dataProvider params
-   * @param string $urlString
-   */
-  public function testSetParams(array $urlString) {
-    $url = new URL('http://www.example.com/bar.html');
-    $this->assertFalse($url->hasQuery());
-    $url->getQuery()->merge($urlString);
-    $this->assertSame($url->getQuery()->getQuery(), $urlString);
-    foreach ($urlString as $key => $value) {
-      $this->assertTrue($url->hasQuery());
-      $this->assertTrue($url->getQuery()->offsetExists($key));
-      $this->assertSame($url->getQuery()->offsetGet($key), $value);
-    }
   }
 
   /**
@@ -273,21 +231,6 @@ class URLTest extends \PHPUnit\Framework\TestCase {
     $clone->setFragment('frag');
     $this->assertFalse($url->equals($clone));
     $this->assertFalse($url == $clone);
-  }
-
-  /**
-   * @covers Sphp\Net\URL::getCurrent
-   */
-  public function testGetCurrent() {
-    print_r($_SERVER);
-    $current = URL::getCurrent();
-    $another = URL::getCurrent();
-    var_dump("$another");
-    $this->assertTrue($current->equals($another));
-    $this->assertTrue($current == $another);
-    $another->setFragment('frag');
-    $this->assertFalse($current->equals($another));
-    $this->assertFalse($current == $another);
   }
 
 }

@@ -4,13 +4,13 @@ namespace Sphp\Stdlib\Networks;
 
 class QueryStringTests extends \PHPUnit\Framework\TestCase {
 
-
   /**
    * @return array
    */
   public function equalPairs(): array {
     $pairs[] = ['foo=bar&', ['foo' => 'bar']];
-    $pairs[] = ['foo=bar&baz=daa', ['foo' => 'bar', 'baz' =>'daa']];
+    $pairs[] = ['foo=bar&baz=daa', ['foo' => 'bar', 'baz' => 'daa']];
+    $pairs[] = [['f' => 'bar', 'foo' => 'bar'], ['foo' => 'bar', 'f' => 'bar']];
     return $pairs;
   }
 
