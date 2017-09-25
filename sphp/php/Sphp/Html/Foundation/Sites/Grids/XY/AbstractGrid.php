@@ -28,6 +28,7 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
    * @var Container 
    */
   private $content;
+
   /**
    * @var GridLayoutManager 
    */
@@ -76,8 +77,8 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
 
   public function append($row) {
     if (!($row instanceof RowInterface)) {
-        $row = new Row($row);
-      }
+      $row = new Row($row);
+    }
     $this->content->append($row);
     return $this;
   }
@@ -92,8 +93,8 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
 
   public function prepend($row) {
     if (!($row instanceof RowInterface)) {
-        $row = new Row($row);
-      }
+      $row = new Row($row);
+    }
     $this->content->prepend($row);
     return $this;
   }
@@ -102,15 +103,15 @@ class AbstractGrid extends AbstractComponent implements \IteratorAggregate, Grid
     
   }
 
-  public function key(): \scalar {
+  public function key() {
     
   }
 
-  public function next(): void {
+  public function next() {
     
   }
 
-  public function rewind(): void {
+  public function rewind() {
     
   }
 

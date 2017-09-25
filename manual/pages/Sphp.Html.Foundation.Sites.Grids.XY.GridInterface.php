@@ -18,9 +18,7 @@ size (defined by the max-width of the row) that's also easily nested.
   
 MD
 );
-$codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/XY/Grid_fromArray.php', 'html5');
-
-$codeExampleBuilder
+CodeExampleBuilder::build('Sphp/Html/Foundation/Sites/Grids/XY/Grid_fromArray.php', 'html5')
         ->setExamplePaneTitle('PHP code of a grid')
         ->setOutputSyntaxPaneTitle('HTML5 code of a grid')
         ->buildAccordion()

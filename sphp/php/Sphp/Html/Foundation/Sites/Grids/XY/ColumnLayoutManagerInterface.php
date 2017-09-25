@@ -52,12 +52,11 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @precondition The value of the `$width` parameter is between 1-12 or false 
    *               for inheritance from smaller screen sizes
    * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|boolean $width the width of the column or false for inheritance
-   * @param  string $screen the target screen size
+   * @param  string $width the target screen size
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth($width = 'auto', string $screen = 'small');
+  public function setWidth(string $width = 'auto');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens

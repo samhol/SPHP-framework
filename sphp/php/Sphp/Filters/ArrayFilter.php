@@ -22,13 +22,11 @@ namespace Sphp\Filters;
 class ArrayFilter extends AbstractFilter {
 
   /**
-   *
    * @var mixed[]  
    */
   private $definition;
 
   /**
-   *
    * @var boolean
    */
   private $addEmpty;

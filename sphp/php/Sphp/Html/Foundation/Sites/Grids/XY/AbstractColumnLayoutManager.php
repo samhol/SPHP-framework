@@ -63,28 +63,36 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * @return $this for a fluent interface
    */
   public function setLayouts($layouts) {
+    $layouts = Arrays::flatten($layouts);
+    $widthFilter = function ($value) {
+      return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
+    };
+    $widths = array_filter($layouts, $widthFilter);
     $this->unsetLayouts();
-    foreach (is_array($layouts) ? $layouts : [$layouts] as $width) {
+    $this->setWidths($widths);
+    /* foreach (is_array($layouts) ? $layouts : [$layouts] as $width) {     
+
+      $this->setWidths($width);
       $parts = explode('-', $width);
       $c = count($parts);
       if ($c === 2) {
-        if ($parts[1] === 'centered') {
-          $this->centerize($parts[0]);
-        } else if ($parts[1] === 'uncentered') {
-          $this->uncenterize($parts[0]);
-        } else if (is_numeric($parts[1])) {
-          $this->setWidth($parts[1], $parts[0]);
-        }
-      } else if ($c === 3) {
-        if ($parts[1] === 'offset') {
-          $this->setOffset($parts[2], $parts[0]);
-        } else if ($parts[1] === 'push') {
-          $this->setOrder($parts[2], $parts[0]);
-        } else if ($parts[1] === 'pull') {
-          $this->pull($parts[2], $parts[0]);
-        }
+      if ($parts[1] === 'centered') {
+      $this->centerize($parts[0]);
+      } else if ($parts[1] === 'uncentered') {
+      $this->uncenterize($parts[0]);
+      } else if (is_numeric($parts[1])) {
+      $this->setWidth($parts[1], $parts[0]);
       }
-    }
+      } else if ($c === 3) {
+      if ($parts[1] === 'offset') {
+      $this->setOffset($parts[2], $parts[0]);
+      } else if ($parts[1] === 'push') {
+      $this->setOrder($parts[2], $parts[0]);
+      } else if ($parts[1] === 'pull') {
+      $this->pull($parts[2], $parts[0]);
+      }
+      }
+      } */
     return $this;
   }
 
@@ -106,10 +114,9 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
       return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
     };
     $filtered = array_filter($widths, $f);
-    $this->unsetWidths();
+    //$this->unsetWidths();
     foreach ($filtered as $width) {
-      $parts = explode('-', $width);
-      $this->setWidth($parts[1], $parts[0]);
+      $this->setWidth($width);
     }
     return $this;
   }
@@ -142,13 +149,16 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setWidth($width = 'auto', string $screen = 'small') {
-    $this->unsetWidth($screen);
-    if ($width > 0 && $width <= $this->getMaxSize() || $width === 'auto') {
-      $this->cssClasses()->add("$screen-$width");
+  public function setWidth(string $width = 'auto') {
+    if ($width === 'auto') {
+      $this->unsetWidths();
+    } else if (preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto))+$/', $width) === 1) {
+      $parts = explode('-', $width);
+      $this->unsetWidth($parts[0]);
     } else {
       throw new InvalidArgumentException(sprintf('The width \'%s\' of a column is not between (1-%s)', $width, $this->getMaxSize()));
     }
+    $this->cssClasses()->add($width);
     return $this;
   }
 
@@ -184,9 +194,9 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
   }
 
   /**
-   * Sets the column width associated with the given screen size to be inherited from smaller screens
+   * Unsets the column width associated with the given screen size to be inherited from smaller screens
    *
-   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
