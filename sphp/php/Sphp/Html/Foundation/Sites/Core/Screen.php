@@ -19,6 +19,11 @@ namespace Sphp\Html\Foundation\Sites\Core;
 class Screen {
 
   /**
+   * @var Screen 
+   */
+  private static $defaultInstance;
+
+  /**
    * Foundation screen size names
    *
    * @var string[]
@@ -32,12 +37,16 @@ class Screen {
    */
   private static $otherTypes = ['portrait', 'landscape', 'sr'];
 
+  public function __construct(array $sizes = null) {
+    ;
+  }
+
   /**
    * Returns all supported screen type names
    * 
    * @return string[] all supported screen type names
    */
-  public static function allTypes() {
+  public static function allTypes(): array {
     return array_merge(static::$sizes, static::$otherTypes);
   }
 
@@ -47,7 +56,7 @@ class Screen {
    * @param  string $size screen type name
    * @return boolean true if the given size exists
    */
-  public static function typeExists($size): bool {
+  public static function typeExists(string $size): bool {
     return in_array($size, static::allTypes());
   }
 
@@ -56,7 +65,7 @@ class Screen {
    * 
    * @return string[] all screen size names
    */
-  public static function sizes() {
+  public static function sizes(): array {
     return static::$sizes;
   }
 
@@ -76,7 +85,7 @@ class Screen {
    * @param  string $currentSize
    * @return string|boolean next larger screen size or false if none present
    */
-  public static function getNextSize($currentSize) {
+  public static function getNextSize(string $currentSize) {
     $next = false;
     $sizes = static::sizes();
     $key = array_search($currentSize, $sizes);
@@ -92,7 +101,7 @@ class Screen {
    * @param  string $currentSize
    * @return string|boolean previous smaller screen size or false if none present
    */
-  public static function getPreviousSize($currentSize) {
+  public static function getPreviousSize(string $currentSize) {
     $previous = false;
     $sizes = static::sizes();
     $key = array_search($currentSize, $sizes);

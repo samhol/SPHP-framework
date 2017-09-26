@@ -110,7 +110,7 @@ abstract class Arrays {
       if ($item === $needle) {
         $found = true;
         break;
-      } elseif (is_array($item)) {
+      } else if (is_array($item)) {
         $found = static::inArray($needle, $item);
         if ($found) {
           break;
@@ -262,13 +262,14 @@ abstract class Arrays {
   /**
    * Returns the value from an array using the key chain given as the second parameter
    * 
-   * @param  mixed[] $array the array to search
-   * @param  mixed|mixed[] $path the keychain 
+   * @param  array $array the array to search
+   * @param  mixed|mixed[] $path the key chain (accepts multiple values)
    * @return mixed the value found or `null` if none was found
    */
-  public static function getValue(array $array, $path) {
+  public static function getValue(array $array, ...$path) {
+    $path = static::flatten($path);
     $temp = &$array;
-    foreach (is_array($path) ? $path : [$path] as $key) {
+    foreach ($path as $key) {
       $temp = & $temp[$key];
     }
     return $temp;
@@ -413,7 +414,7 @@ abstract class Arrays {
   }
 
   /**
-   * Flattens the multidimensional array to a single dimension
+   * Flattens the given multidimensional array to a single dimension
    *
    * **Notes:** The keys of the array are not preserved.
    *
@@ -421,15 +422,11 @@ abstract class Arrays {
    * @return array the one dimensional result array
    */
   public static function flatten(array $array): array {
-    $newArray = [];
-    foreach ($array as $child) {
-      if (is_array($child)) {
-        $newArray = array_merge($newArray, self::flatten($child));
-      } else {
-        $newArray[] = $child;
-      }
-    }
-    return $newArray;
+    $return = [];
+    array_walk_recursive($array, function($a) use (&$return) {
+      $return[] = $a;
+    });
+    return $return;
   }
 
 }

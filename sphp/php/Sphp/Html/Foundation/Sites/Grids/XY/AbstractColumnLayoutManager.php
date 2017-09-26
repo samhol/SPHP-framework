@@ -68,8 +68,14 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
       return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
     };
     $widths = array_filter($layouts, $widthFilter);
-    $this->unsetLayouts();
+    //$this->unsetLayouts();
     $this->setWidths($widths);
+    
+    
+    $widthFilter = function ($value) {
+      return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
+    };
+    $widths = array_filter($layouts, $widthFilter);
     /* foreach (is_array($layouts) ? $layouts : [$layouts] as $width) {     
 
       $this->setWidths($width);
@@ -205,6 +211,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
     for ($i = 1; $i <= $this->getMaxSize(); $i++) {
       $classes[] = "$screenSize-$i";
     }
+    $classes[] = "$screenSize-auto";
     $this->cssClasses()->remove($classes);
     return $this;
   }
