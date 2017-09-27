@@ -70,8 +70,8 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
     $widths = array_filter($layouts, $widthFilter);
     //$this->unsetLayouts();
     $this->setWidths($widths);
-    
-    
+
+
     $widthFilter = function ($value) {
       return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
     };

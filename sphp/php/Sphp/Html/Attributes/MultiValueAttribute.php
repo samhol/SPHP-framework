@@ -10,6 +10,7 @@ namespace Sphp\Html\Attributes;
 use Countable;
 use IteratorAggregate;
 use ArrayIterator;
+use Sphp\Stdlib\Strings;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -61,9 +62,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public static function parse($raw) {
     if (is_array($raw)) {
       $f = function ($var) {
-        return !empty($var) || $var === "0" || $var === 0;
+        return !empty($var) || $var === '0' || $var === 0;
       };
-      $arr = array_map("trim", $raw);
+      $arr = array_map('trim', $raw);
       $p = array_filter($arr, $f);
       $parsed = array_unique($p);
     } else if (is_string($raw)) {
@@ -252,6 +253,19 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
 
   public function toArray(): array {
     return $this->values;
+  }
+
+  public function filter(callable $filter) {
+    $this->values = array_unique(array_merge($this->locked, array_filter($this->values, $filter)));
+    return $this;
+  }
+
+  public function filterPattern(string $pattern) {
+    $filter = function($value) use ($pattern) {
+      return Strings::match($value, $pattern);
+    };
+    $this->filter($filter);
+    return $this;
   }
 
 }
