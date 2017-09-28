@@ -359,7 +359,7 @@ class Collection implements Iterator, CollectionInterface {
    * 
    * @return boolean current iterator position is valid
    */
-  public function valid() {
+  public function valid(): bool {
     return false !== current($this->items);
   }
 

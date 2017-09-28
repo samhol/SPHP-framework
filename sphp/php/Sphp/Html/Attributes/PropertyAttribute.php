@@ -283,7 +283,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties(self::parse($props));
+      $this->lockProperties(static::parse($props));
     }
     return $this;
   }

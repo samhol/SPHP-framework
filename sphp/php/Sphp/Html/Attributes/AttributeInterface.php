@@ -25,6 +25,13 @@ interface AttributeInterface {
   public function __toString(): string;
 
   /**
+   * Returns the instance of the object as a string
+   *
+   * @return string the object as a string
+   */
+  public function getHtml(): string;
+
+  /**
    * Returns the name of the attribute 
    * 
    * @return string the name of the attribute

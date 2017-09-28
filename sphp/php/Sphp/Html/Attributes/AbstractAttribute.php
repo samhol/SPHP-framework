@@ -53,11 +53,24 @@ abstract class AbstractAttribute implements AttributeInterface {
   }
 
   /**
-   * Returns the instance of the {@link self} object as a string
+   * Returns the instance as a string
    *
    * @return string the object as a string
    */
   public function __toString(): string {
+    $output = '';
+    $value = $this->getValue();
+    if ($value !== false) {
+      $output .= $this->getName();
+      if ($value !== true && !Strings::isEmpty($value)) {
+        $strVal = Strings::toString($value);
+        $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
+      }
+    }
+    return $output;
+  }
+
+  public function getHtml(): string {
     $output = '';
     $value = $this->getValue();
     if ($value !== false) {

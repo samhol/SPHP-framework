@@ -1,22 +1,23 @@
 <?php
 
-namespace Sphp\Stdlib\Networks;
+namespace Sphp\Html\Attributes;
 
-$url = new URL("https://username:password@www.example.com/path?param1=value1&param2=value2&bool#fragment");
-$q = new QueryString("https://username:password@www.example.com/path?param1=value1&param2=value2&bool#fragment");
-$q1 = QueryString::fromGET(\FILTER_SANITIZE_STRING);
-$q2 = QueryString::getCurrent(\FILTER_SANITIZE_STRING);
-$q3 = QueryString::fromURL('http://www.example.com/path?p2=v2&amp;p1=v1');
-$q2->merge($q1)->merge(['foo' => ['bar', 'baar']]);
 echo "<pre>";
-print_r($q->toArray());
-
-print_r($q1->toArray());
-
-print_r($q2->toArray());
-echo $q2->set('xss', '<script>alert("foo")</script>')->getHtml();
-print_r($url->setQuery($q1)->toArray());
-echo $url->getHtml();
-print_r($q3);
+$objMap = new AttributeObjectManager([
+    'class' => MultiValueAttribute::class, 
+    'style' => PropertyAttribute::class, 
+    'data-foo' => PropertyAttribute::class]);
+var_dump($objMap->isMapped('class'), $objMap->isMapped('foo'));
+//$objMap->mapObject('data-foo', PropertyAttribute::class);
+$objMap->getObject('data-foo')->set('foo:bar;');
+var_dump($objMap->isMapped('class'), $objMap->isMapped('foo'), $objMap->__toString());
+//$objMap->mapObject('data-foo', 'foo');
+$mngr = new HtmlAttributeManager($objMap);
+$mngr->set('blaa', 'blaah');
+$mngr->lock('data-foo', 'shit: happens');
+$mngr->set('class', range('a', 'e'));
+var_dump("$mngr");
+//$mngr->remove('data-foo');
+var_dump("$mngr");
 ?>
 </pre>

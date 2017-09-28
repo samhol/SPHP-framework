@@ -8,8 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Countable;
-use IteratorAggregate;
-use ArrayIterator;
+use Iterator;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -20,7 +19,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, IteratorAggregate {
+class MultiValueAttribute extends AbstractAttribute implements Countable, Iterator {
 
   /**
    * stored individual values
@@ -59,8 +58,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @param  scalar|scalar[] $raw the value(s) to parse
    * @return scalar[] separated atomic values in an array
    */
-  public static function parse($raw) {
+  public static function parse($raw): array {
     if (is_array($raw)) {
+      $raw = \Sphp\Stdlib\Arrays::flatten($raw);
       $f = function ($var) {
         return !empty($var) || $var === '0' || $var === 0;
       };
@@ -96,7 +96,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function set($values) {
     $this->clear();
-    $parsed = self::parse($values);
+    $parsed = self::parse(func_get_args());
     if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
     }
@@ -115,7 +115,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @param  string|scalar[] $values the values to add
    * @return $this for a fluent interface
    */
-  public function add($values) {
+  public function add(...$values) {
     $parsed = self::parse($values);
     if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
@@ -136,8 +136,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function isLocked($values = null): bool {
     if (is_array($values) || is_string($values) || is_numeric($values)) {
-      $parsed = self::parse($values);
-      $locked = !empty($parsed) && !array_diff(self::parse($values), $this->locked);
+      $parsed = static::parse($values);
+      $locked = !empty($parsed) && !array_diff(static::parse($values), $this->locked);
     } else {
       $locked = count($this->locked) > 0;
     }
@@ -161,7 +161,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     //print_r($arr);
     if (count($arr) > 0) {
       $this->locked = array_unique(array_merge($this->locked, $arr));
-      sort($this->locked);
+      //sort($this->locked);
       $this->add($arr);
     }
     return $this;
@@ -235,20 +235,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return int the number of the atomic values stored in the attribute
    */
   public function count(): int {
-    $num = 0;
-    if (!empty($this->values)) {
-      $num = count($this->values);
-    }
-    return $num;
-  }
-
-  /**
-   * Retrieves an external iterator to iterate through the atomic values on the attribute
-   *
-   * @return ArrayIterator to iterate through the atomic values on the attribute
-   */
-  public function getIterator() {
-    return new ArrayIterator($this->values);
+    return count($this->values);
   }
 
   public function toArray(): array {
@@ -266,6 +253,47 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     };
     $this->filter($filter);
     return $this;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->values);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   */
+  public function next() {
+    next($this->values);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->values);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   */
+  public function rewind() {
+    reset($this->values);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->values);
   }
 
 }
