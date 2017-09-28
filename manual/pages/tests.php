@@ -16,6 +16,7 @@ $mngr = new HtmlAttributeManager($objMap);
 $mngr->set('blaa', 'blaah');
 $mngr->lock('data-foo', 'shit: happens');
 $mngr->set('class', range('a', 'e'));
+$mngr->identify('foo');
 var_dump("$mngr");
 //$mngr->remove('data-foo');
 var_dump("$mngr");

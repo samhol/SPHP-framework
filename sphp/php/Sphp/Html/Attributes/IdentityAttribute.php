@@ -25,7 +25,7 @@ class IdentityAttribute extends AbstractAttribute {
   /**
    * @var bool 
    */
-  private $locked;
+  private $locked = false;
 
   /**
    * Constructs a new instance
@@ -37,7 +37,7 @@ class IdentityAttribute extends AbstractAttribute {
   }
 
   public function clear() {
-     if ($this->isLocked()) {
+    if ($this->isLocked()) {
       throw new InvalidArgumentException();
     }
     $this->value = null;
@@ -50,7 +50,7 @@ class IdentityAttribute extends AbstractAttribute {
   public function isLocked(): bool {
     return $this->locked;
   }
-  
+
   public function lock($value) {
     $this->set($value);
     $this->locked = true;
@@ -64,11 +64,14 @@ class IdentityAttribute extends AbstractAttribute {
     return $this;
   }
 
-  public function identify($prefix, $length) {
-    $storage = IdStorage::get('id');
-    if (!$this->isLocked('id')) {
+  public function identify(string $prefix = null, int $length = 16) {
+    if (!$this->isLocked($this->getName())) {
+      if ($prefix === null) {
+        $prefix = $this->getName();
+      }
+      $storage = IdStorage::get($this->getName());
       $value = $storage->generateRandom($prefix, $length);
-      $this->lock('id', $value);
+      $this->lock($this->getName(), $value);
     }
     return $this->getValue();
   }

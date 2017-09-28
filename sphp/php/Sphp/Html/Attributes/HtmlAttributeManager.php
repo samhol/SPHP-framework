@@ -69,7 +69,7 @@ class HtmlAttributeManager extends AbstractAttributeManager1 {
     return $this->getObject('id');
   }
 
-  public function identify(string $prefix = 'id_', int $length = 16): string {
+  public function identify(string $prefix = null, int $length = 16): string {
     return $this->id()->identify($prefix, $length);
   }
 
