@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\MultiValueAttribute | SPHP framework API</title>
+    <title>Sphp\Stdlib\Networks\QueryString | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_MultiValueAttribute" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Stdlib_Networks_QueryString" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,28 +66,28 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>MultiValueAttribute</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib.html">Stdlib</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Stdlib/Networks.html">Networks</a></li><li class="backslash">\</li><li>QueryString</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            MultiValueAttribute
+            QueryString
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>MultiValueAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
+    <strong>QueryString</strong>        implements
+        <a href="../../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a target="_blank" href="http://php.net/JsonSerializable">JsonSerializable</a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>
 </p>
 
         
     
 
             <div class="description">
-            <p>An implementation of a multi value HTML attribute</p>                                </div>
+            <p>Implements a query part of AN URL</p>                                </div>
     
     
     
@@ -100,19 +100,129 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name)
+                    <a href="#method___construct">__construct</a>(string|array|<a target="_blank" href="http://php.net/Traversable">Traversable</a>|null $query = null)
         
                                             <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___construct"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___destruct">__destruct</a>()
+                    <a href="#method_isEmpty">isEmpty</a>()
         
-                                            <p>Destroys the instance</p>                </div>
+                                            <p>Checks whether the query is empty</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getQuery">getQuery</a>(string $separator = &#039;&amp;&#039;, int $encode = \PHP_QUERY_RFC1738)
+        
+                                            <p>Returns the query string part of the URL</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_contains">contains</a>(mixed $name)
+        
+                                            <p>Checks whether a parameter exists in the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(mixed $name)
+        
+                                            <p>Return the value of the parameter</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(mixed $name, mixed $value)
+        
+                                            <p>Sets or replaces a parameter in the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_merge">merge</a>(array|string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a> $params)
+        
+                                            <p>Sets or replaces parameters in the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>(mixed $name)
+        
+                                            <p>Removes a parameter from the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $name)
+        
+                                            <p>Checks whether a parameter exists in the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetGet">offsetGet</a>(mixed $name)
+        
+                                            <p>Return the value of the parameter</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetSet">offsetSet</a>(mixed $name, mixed $value)
+        
+                                            <p>Sets or replaces a parameter in the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_offsetUnset">offsetUnset</a>(mixed $name)
+        
+                                            <p>Removes a parameter from the query</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_equals">equals</a>(string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a> $url)
+        
+                                            <p>Determines whether the specified object is equal to the current object</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -122,8 +232,8 @@
                 <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p>Returns the instance of the object as a string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+                                            <p>Returns the object as a HTML5 encoded string</p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -132,180 +242,38 @@
                 <div class="col-md-8 type">
                     <a href="#method_getHtml">getHtml</a>()
         
-                                            <p>Returns the instance of the object as a string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+                                            <p>Returns the object as a HTML5 encoded string</p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getName">getName</a>()
+                    <a href="#method_getRaw">getRaw</a>()
         
-                                            <p>Returns the name of the attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_demand">demand</a>()
-        
-                                            <p>Sets the attribute as required</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isDemanded">isDemanded</a>()
-        
-                                            <p>Checks whether the attribute is required or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isVisible">isVisible</a>()
-        
-                                            <p>Checks whether the attribute is visible or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;scalar[]
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_parse">parse</a>(scalar|scalar[] $raw)
-        
-                                            <p>Returns an array of unique values parsed from the input</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(scalar|scalar[] $values)
-        
-                                            <p>Sets new atomic values to the attribute removing old non locked ones</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_add">add</a>(string|scalar[] $values)
-        
-                                            <p>Adds new atomic values to the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isLocked">isLocked</a>(null|scalar|scalar[] $values = null)
-        
-                                            <p>Checks whether the given atomic values are locked</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_lock">lock</a>(scalar|scalar[] $values)
-        
-                                            <p>Locks the specified atomic values</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_remove">remove</a>(scalar|scalar[] $values)
-        
-                                            <p>Removes given atomic values</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clear">clear</a>()
-        
-                                            <p>Removes all non locked values from the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_contains">contains</a>(scalar|scalar[] $values)
-        
-                                            <p>Determines whether the given atomic values exists</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    scalar
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getValue">getValue</a>()
-        
-                                            <p>Returns the value of the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_count">count</a>()
-        
-                                            <p>Counts the number of the atomic values stored in the attribute</p>                </div>
+                                            <p>Returns the object as a raw unencoded string</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>(callable $filter)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_filterPattern">filterPattern</a>(string $pattern)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serializes to an array</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -358,6 +326,38 @@
                                             <p>Checks if current iterator position is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrent">getCurrent</a>(int $filter = \FILTER_SANITIZE_STRING)
+        
+                                            <p>Returns the current query string as an object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromGET">fromGET</a>(int $filter = \FILTER_SANITIZE_STRING)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromURL">fromURL</a>(string $url)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -366,9 +366,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___construct"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 41</div>
+        <div class="location">at         line 36</div>
         <code>                    
-    <strong>__construct</strong>(string $name)
+    <strong>__construct</strong>(string|array|<a target="_blank" href="http://php.net/Traversable">Traversable</a>|null $query = null)
         </code>
     </h3>
     <div class="details">
@@ -382,534 +382,86 @@
 
                     <table class="table table-condensed">
                     <tr>
+                <td>string|array|<a target="_blank" href="http://php.net/Traversable">Traversable</a>|null</td>
+                <td>$query</td>
+                <td>the URL string</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location">at         line 53</div>
+        <code>                    boolean
+    <strong>isEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the query is empty</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the query is empty and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getQuery">
+        <div class="location">at         line 67</div>
+        <code>                    string
+    <strong>getQuery</strong>(string $separator = &#039;&amp;&#039;, int $encode = \PHP_QUERY_RFC1738)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the query string part of the URL</p>                    <p>The query string contains data to be passed to software running on the
+server. It may contain name/value pairs separated by ampersands.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
                 <td>string</td>
-                <td>$name</td>
-                <td>the name of the attribute</td>
+                <td>$separator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$encode</td>
+                <td></td>
             </tr>
             </table>
 
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___destruct">
-        <div class="location">at         line 44</div>
-        <code>                    
-    <strong>__destruct</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
-to a particular object, or in any order during the shutdown sequence.</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 55</div>
-        <code>                    string
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the instance of the object as a string</p>                                                </div>
-                <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the object as a string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getHtml">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 59</div>
-        <code>                    string
-    <strong>getHtml</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the instance of the object as a string</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the object as a string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 72</div>
-        <code>                    string
-    <strong>getName</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the name of the attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the name of the attribute</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 76</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>demand</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the attribute as required</p>                    <p><strong>A required attribute cannot be removed</strong> but its value is still mutable.</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 81</div>
-        <code>                    boolean
-    <strong>isDemanded</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is required or not</p>                    <p><strong>Note:</strong> a required attribute either has locked value or the attribute
-name is required.</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is required and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isVisible">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 85</div>
-        <code>                    boolean
-    <strong>isVisible</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is visible or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
-name is required or the attribute value is not boolean (false).</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is visible and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_parse">
-        <div class="location">at         line 61</div>
-        <code>        static            scalar[]
-    <strong>parse</strong>(scalar|scalar[] $raw)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns an array of unique values parsed from the input</p>                    <p><strong>Important:</strong> Parameter <var>$raw</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated unique values</li>
-<li>An array parameter can contain only one unique atomic value per value</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$raw</td>
-                <td>the value(s) to parse</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>scalar[]</td>
-            <td>separated atomic values in an array</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_set">
-        <div class="location">at         line 97</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>set</strong>(scalar|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets new atomic values to the attribute removing old non locked ones</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A <code>string</code> parameter can contain multiple comma separated atomic values</li>
-<li>An <code>array</code> parameter can contain only one atomic value per array value</li>
-<li>Any numeric value is treated as a string value</li>
-<li>Stores only a single instance of every value (no duplicates)</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the values to set</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_add">
-        <div class="location">at         line 118</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>add</strong>(string|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Adds new atomic values to the attribute</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-<li>Stores only a single instance of every value (no duplicates)</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|scalar[]</td>
-                <td>$values</td>
-                <td>the values to add</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isLocked">
-        <div class="location">at         line 137</div>
-        <code>                    boolean
-    <strong>isLocked</strong>(null|scalar|scalar[] $values = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the given atomic values are locked</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>null|scalar|scalar[]</td>
-                <td>$values</td>
-                <td>optional atomic values to check</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute has a locked value and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_lock">
-        <div class="location">at         line 159</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>lock</strong>(scalar|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Locks the specified atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-<li>Stores only a single instance of every value (no duplicates)</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the atomic values to lock</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_remove">
-        <div class="location">at         line 182</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>remove</strong>(scalar|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes given atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> values (restrictions and rules)</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the atomic values to remove</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if any of the given values is unmodifiable</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clear">
-        <div class="location">at         line 195</div>
-        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
-    <strong>clear</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes all non locked values from the attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
-            <td>for PHP Method Chaining</td>
+            <td>the query string of the URL</td>
         </tr>
     </table>
 
@@ -921,9 +473,9 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at         line 215</div>
+        <div class="location">at         line 81</div>
         <code>                    boolean
-    <strong>contains</strong>(scalar|scalar[] $values)
+    <strong>contains</strong>(mixed $name)
         </code>
     </h3>
     <div class="details">
@@ -931,21 +483,15 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Determines whether the given atomic values exists</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> values (restrictions and rules)</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-</ol>
-</p>                            </div>
+                                    <p>Checks whether a parameter exists in the query</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the atomic values to search for</td>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
             </tr>
             </table>
 
@@ -955,7 +501,7 @@ name is required or the attribute value is not boolean (false).</p>             
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the given atomic values exists</td>
+            <td>true if the parameter exists and false otherwise</td>
         </tr>
     </table>
 
@@ -966,10 +512,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getValue">
-        <div class="location">at         line 223</div>
-        <code>                    scalar
-    <strong>getValue</strong>()
+                    <h3 id="method_get">
+        <div class="location">at         line 91</div>
+        <code>                    mixed|null
+    <strong>get</strong>(mixed $name)
         </code>
     </h3>
     <div class="details">
@@ -977,21 +523,25 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the attribute</p>                    <p><strong>IMPORTANT:</strong></p>
-
-<ul>
-<li>Returns always <code>boolean false</code> if attribute is not present.</li>
-<li>return <code>null</code> or an empty string for empty attributes.</li>
-</ul>
-</p>                            </div>
+                                    <p>Return the value of the parameter</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>scalar</td>
-            <td>the value of the attribute</td>
+            <td>mixed|null</td>
+            <td>the value of the parameter or null if the parameter does not exist</td>
         </tr>
     </table>
 
@@ -1002,10 +552,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_count">
-        <div class="location">at         line 237</div>
-        <code>                    int
-    <strong>count</strong>()
+                    <h3 id="method_set">
+        <div class="location">at         line 102</div>
+        <code>                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+    <strong>set</strong>(mixed $name, mixed $value)
         </code>
     </h3>
     <div class="details">
@@ -1013,18 +563,427 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Counts the number of the atomic values stored in the attribute</p>                                                </div>
+                                    <p>Sets or replaces a parameter in the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the parameter</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Stdlib\Networks\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_merge">
+        <div class="location">at         line 113</div>
+        <code>                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+    <strong>merge</strong>(array|string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a> $params)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets or replaces parameters in the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a></td>
+                <td>$params</td>
+                <td>parameter name => value pairs or a query string</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Stdlib\Networks\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location">at         line 127</div>
+        <code>                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+    <strong>delete</strong>(mixed $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes a parameter from the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter to remove</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Stdlib\Networks\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetExists">
+        <div class="location">at         line 138</div>
+        <code>                    boolean
+    <strong>offsetExists</strong>(mixed $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether a parameter exists in the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the parameter exists and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetGet">
+        <div class="location">at         line 148</div>
+        <code>                    mixed|null
+    <strong>offsetGet</strong>(mixed $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return the value of the parameter</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed|null</td>
+            <td>the value of the parameter or null if the parameter does not exist</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetSet">
+        <div class="location">at         line 163</div>
+        <code>                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+    <strong>offsetSet</strong>(mixed $name, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets or replaces a parameter in the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the parameter</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Stdlib\Networks\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_offsetUnset">
+        <div class="location">at         line 174</div>
+        <code>                    <abbr title="Sphp\Stdlib\Networks\$this">$this</abbr>
+    <strong>offsetUnset</strong>(mixed $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Removes a parameter from the query</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the parameter to remove</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Stdlib\Networks\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location">at         line 187</div>
+        <code>                    boolean
+    <strong>equals</strong>(string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a> $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determines whether the specified object is equal to the current object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a></td>
+                <td>$url</td>
+                <td>the URL to compare with the current URL</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the specified URL is equal to the current URL, otherwise false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at         line 199</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the object as a HTML5 encoded string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td>the number of the atomic values stored in the attribute</td>
+            <td>string</td>
+            <td>representation of the object</td>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">at         line 208</div>
+        <code>                    string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the object as a HTML5 encoded string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>representation of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRaw">
+        <div class="location">at         line 217</div>
+        <code>                    string
+    <strong>getRaw</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the object as a raw unencoded string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>representation of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_jsonSerialize">
+        <div class="location">at         line 221</div>
+        <code>                    
+    <strong>jsonSerialize</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
             
             
                     </div>
@@ -1033,8 +992,8 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 241</div>
-        <code>                    
+        <div class="location">at         line 225</div>
+        <code>                    array
     <strong>toArray</strong>()
         </code>
     </h3>
@@ -1042,66 +1001,19 @@ name is required or the attribute value is not boolean (false).</p>             
             
     
 
+                    <div class="method-description">
+                                    <p>Serializes to an array</p>                                                </div>
                 <div class="tags">
             
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_filter">
-        <div class="location">at         line 245</div>
-        <code>                    
-    <strong>filter</strong>(callable $filter)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>callable</td>
-                <td>$filter</td>
-                <td></td>
-            </tr>
-            </table>
+        <tr>
+            <td>array</td>
+            <td>the instance as an array</td>
+        </tr>
+    </table>
 
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_filterPattern">
-        <div class="location">at         line 250</div>
-        <code>                    
-    <strong>filterPattern</strong>(string $pattern)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$pattern</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
             
             
                     </div>
@@ -1110,7 +1022,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 263</div>
+        <div class="location">at         line 234</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1140,7 +1052,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 270</div>
+        <div class="location">at         line 241</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -1161,7 +1073,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 279</div>
+        <div class="location">at         line 250</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1191,7 +1103,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 286</div>
+        <div class="location">at         line 257</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -1212,7 +1124,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 295</div>
+        <div class="location">at         line 266</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
@@ -1234,6 +1146,113 @@ name is required or the attribute value is not boolean (false).</p>             
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrent">
+        <div class="location">at         line 276</div>
+        <code>        static            <a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a>
+    <strong>getCurrent</strong>(int $filter = \FILTER_SANITIZE_STRING)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the current query string as an object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a></td>
+            <td>the current query string as an object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromGET">
+        <div class="location">at         line 286</div>
+        <code>        static            <a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a>
+    <strong>fromGET</strong>(int $filter = \FILTER_SANITIZE_STRING)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Stdlib/Networks/QueryString.html"><abbr title="Sphp\Stdlib\Networks\QueryString">QueryString</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromURL">
+        <div class="location">at         line 290</div>
+        <code>        static            
+    <strong>fromURL</strong>(string $url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>

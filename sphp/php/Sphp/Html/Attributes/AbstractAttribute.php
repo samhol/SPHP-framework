@@ -52,22 +52,8 @@ abstract class AbstractAttribute implements AttributeInterface {
     unset($this->name, $this->required);
   }
 
-  /**
-   * Returns the instance as a string
-   *
-   * @return string the object as a string
-   */
   public function __toString(): string {
-    $output = '';
-    $value = $this->getValue();
-    if ($value !== false) {
-      $output .= $this->getName();
-      if ($value !== true && !Strings::isEmpty($value)) {
-        $strVal = Strings::toString($value);
-        $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
-      }
-    }
-    return $output;
+    return $this->getHtml();
   }
 
   public function getHtml(): string {
@@ -83,47 +69,19 @@ abstract class AbstractAttribute implements AttributeInterface {
     return $output;
   }
 
-  /**
-   * Returns the name of the attribute 
-   * 
-   * @return string the name of the attribute
-   */
   public function getName(): string {
     return $this->name;
   }
 
-  /**
-   * Sets the attribute as required
-   *  
-   * **A required attribute cannot be removed** but its value is still mutable.
-   * 
-   * @return $this for a fluent interface
-   */
   public function demand() {
     $this->required = true;
     return $this;
   }
 
-  /**
-   * Checks whether the attribute is required or not
-   * 
-   * **Note:** a required attribute either has locked value or the attribute 
-   * name is required.
-   *
-   * @return boolean true if the attribute is required and false otherwise
-   */
   public function isDemanded(): bool {
     return $this->required || $this->isLocked();
   }
 
-  /**
-   * Checks whether the attribute is visible or not
-   * 
-   * **Note:** an attribute is visible if it has locked value or the attribute 
-   * name is required or the attribute value is not boolean (false).
-   * 
-   * @return boolean true if the attribute is visible and false otherwise
-   */
   public function isVisible(): bool {
     return $this->isDemanded() || $this->getValue() !== false;
   }

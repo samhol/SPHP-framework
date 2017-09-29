@@ -56,7 +56,7 @@ class IdStorage {
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public static function isValidValue($value) {
+  public static function isValidValue($value): bool {
     return is_string($value) && !preg_match('/[\r\n\r\n|\r\r|\n\n]/', $value);
   }
 
@@ -64,7 +64,7 @@ class IdStorage {
    * 
    * @param type $name
    */
-  public function isValidIdentifyingName($name) {
+  public function isValidIdentifyingName($name): bool {
     return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
   }
 

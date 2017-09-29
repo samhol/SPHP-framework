@@ -203,7 +203,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(int|boolean $width = &#039;auto&#039;, string $screen = &#039;small&#039;)
+                    <a href="#method_setWidth">setWidth</a>(string $width = &#039;auto&#039;)
         
                                             <p>Sets the column width</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
@@ -225,7 +225,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_unsetWidth">unsetWidth</a>(string $screenSize)
         
-                                            <p>Sets the column width associated with the given screen size to be inherited from smaller screens</p>                </div>
+                                            <p>Unsets the column width associated with the given screen size to be inherited from smaller screens</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -611,7 +611,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetLayouts">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 91</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 105</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>unsetLayouts</strong>()
         </code>
@@ -641,7 +641,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWidths">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 103</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 117</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>setWidths</strong>(string[] $widths)
         </code>
@@ -681,7 +681,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidths">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 121</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 134</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetWidths</strong>()
         </code>
@@ -709,9 +709,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 145</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 158</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setWidth</strong>(int|boolean $width = &#039;auto&#039;, string $screen = &#039;small&#039;)
+    <strong>setWidth</strong>(string $width = &#039;auto&#039;)
         </code>
     </h3>
     <div class="details">
@@ -729,13 +729,8 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|boolean</td>
-                <td>$width</td>
-                <td>the width of the column or false for inheritance</td>
-            </tr>
-                    <tr>
                 <td>string</td>
-                <td>$screen</td>
+                <td>$width</td>
                 <td>the target screen size</td>
             </tr>
             </table>
@@ -767,7 +762,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 163</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 179</div>
         <code>                    int|boolean
     <strong>getWidth</strong>(string $screenSize)
         </code>
@@ -808,7 +803,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 193</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 209</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetWidth</strong>(string $screenSize)
         </code>
@@ -818,7 +813,7 @@ larger screens as necessary.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Sets the column width associated with the given screen size to be inherited from smaller screens</p>                                                </div>
+                                    <p>Unsets the column width associated with the given screen size to be inherited from smaller screens</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -848,7 +843,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 213</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 230</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>setOffset</strong>(int $offset, string $screenSize = &#039;small&#039;)
         </code>
@@ -893,7 +888,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffsets">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 225</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 242</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOffsets</strong>()
         </code>
@@ -921,7 +916,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOffsets">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 238</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 255</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>setOffsets</strong>(array $offsets)
         </code>
@@ -961,7 +956,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 254</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 271</div>
         <code>                    int
     <strong>getOffset</strong>(string $screenSize)
         </code>
@@ -1001,7 +996,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 281</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 298</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOffset</strong>(string $screenSize)
         </code>
@@ -1041,7 +1036,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOrder">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 289</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 306</div>
         <code>                    
     <strong>setOrder</strong>(int $push, string $screenSize = &#039;small&#039;)
         </code>
@@ -1075,7 +1070,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_pull">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_pull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 297</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_pull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 314</div>
         <code>                    
     <strong>pull</strong>(int $num, string $screenSize = &#039;small&#039;)
         </code>
@@ -1109,7 +1104,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetPull">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 312</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 329</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetPull</strong>(string $screenSize)
         </code>
@@ -1149,7 +1144,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetPulls">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPulls"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 327</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPulls"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 344</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetPulls</strong>()
         </code>
@@ -1179,7 +1174,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOrders">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 340</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 357</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>setOrders</strong>(array $pushs)
         </code>
@@ -1219,7 +1214,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrder">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 356</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 373</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOrder</strong>(string $screenSize)
         </code>
@@ -1259,7 +1254,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrders">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 371</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 388</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOrders</strong>()
         </code>
@@ -1289,7 +1284,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_countUsedSpace">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_countUsedSpace"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 385</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_countUsedSpace"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 402</div>
         <code>                    int
     <strong>countUsedSpace</strong>(string $screenSize)
         </code>
@@ -1329,7 +1324,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_centerize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_centerize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 396</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_centerize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 413</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface">ColumnInterface</abbr></a>
     <strong>centerize</strong>(string $screenSize)
         </code>
@@ -1369,7 +1364,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_uncenterize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_uncenterize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 410</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_uncenterize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 427</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager">ColumnLayoutManager</abbr></a>
     <strong>uncenterize</strong>(string $screenSize)
         </code>
@@ -1409,7 +1404,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetCenterizing">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetCenterizing"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 424</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetCenterizing"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 441</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface">ColumnInterface</abbr></a>
     <strong>unsetCenterizing</strong>(string $screenSize)
         </code>

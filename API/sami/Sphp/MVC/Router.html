@@ -86,12 +86,11 @@
     
 
             <div class="description">
-            <p>Simple URL router</p>            <p>This it the Igniter URL Router, the layer of a web application between the
-URL and the function executed to perform a request. The router determines
-which function to execute for a given URL.</p>
+            <p>URL router</p>            <p>URL Router is a web application between the URL and the function executed to
+perform a request. The router determines which function to execute for a given URL.</p>
 
 <p><code>
-$router = new \Igniter\Router;</p>
+$router = new Router;</p>
 
 <p>// Adding a basic route
 $router->route( '/login', 'login_function' );</p>
@@ -135,7 +134,7 @@ $router->execute();
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a>|string|null $url = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../Sphp/Stdlib/Networks/URL.html"><abbr title="Sphp\Stdlib\Networks\URL">URL</abbr></a>|string|null $url = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -147,9 +146,7 @@ $router->execute();
                 <div class="col-md-8 type">
                     <a href="#method_setDefaultRoute">setDefaultRoute</a>(callable $callback)
         
-                                            <p>If the router cannot match the current URL to any of the given routes,
-the function passed to this method will be executed instead. This would
-be useful for displaying a 404 page for example.</p>                </div>
+                                            <p>Sets the callback function for the default route</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -169,8 +166,7 @@ be useful for displaying a 404 page for example.</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method_route">route</a>(string $route, callable $callback, int $priority = 10)
         
-                                            <p>Adds a new URL routing rule to the routing table, after converting any of
-our special tokens into proper regular expressions.</p>                </div>
+                                            <p>Adds a new URL routing rule to the routing table</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -181,9 +177,9 @@ our special tokens into proper regular expressions.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 91</div>
+        <div class="location">at         line 92</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a>|string|null $url = null)
+    <strong>__construct</strong>(<a href="../../Sphp/Stdlib/Networks/URL.html"><abbr title="Sphp\Stdlib\Networks\URL">URL</abbr></a>|string|null $url = null)
         </code>
     </h3>
     <div class="details">
@@ -197,7 +193,7 @@ our special tokens into proper regular expressions.</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Sphp/Stdlib/URL.html"><abbr title="Sphp\Stdlib\URL">URL</abbr></a>|string|null</td>
+                <td><a href="../../Sphp/Stdlib/Networks/URL.html"><abbr title="Sphp\Stdlib\Networks\URL">URL</abbr></a>|string|null</td>
                 <td>$url</td>
                 <td>optional URL to route</td>
             </tr>
@@ -212,7 +208,7 @@ our special tokens into proper regular expressions.</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultRoute">
-        <div class="location">at         line 109</div>
+        <div class="location">at         line 114</div>
         <code>                    <abbr title="Sphp\MVC\$this">$this</abbr>
     <strong>setDefaultRoute</strong>(callable $callback)
         </code>
@@ -222,9 +218,9 @@ our special tokens into proper regular expressions.</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>If the router cannot match the current URL to any of the given routes,
+                                    <p>Sets the callback function for the default route</p>                    <p>If the router cannot match the current URL to any of the given routes,
 the function passed to this method will be executed instead. This would
-be useful for displaying a 404 page for example.</p>                                                </div>
+be useful for displaying a 404 page for example.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -232,7 +228,7 @@ be useful for displaying a 404 page for example.</p>                            
                     <tr>
                 <td>callable</td>
                 <td>$callback</td>
-                <td></td>
+                <td>the callback function for the default route</td>
             </tr>
             </table>
 
@@ -254,7 +250,7 @@ be useful for displaying a 404 page for example.</p>                            
             </div>
                     <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">at         line 122</div>
+        <div class="location">at         line 127</div>
         <code>                    <abbr title="Sphp\MVC\$this">$this</abbr>
     <strong>execute</strong>()
         </code>
@@ -285,7 +281,7 @@ execute the default function.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_route">
-        <div class="location">at         line 175</div>
+        <div class="location">at         line 174</div>
         <code>                    <abbr title="Sphp\MVC\$this">$this</abbr>
     <strong>route</strong>(string $route, callable $callback, int $priority = 10)
         </code>
@@ -295,8 +291,7 @@ execute the default function.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Adds a new URL routing rule to the routing table, after converting any of
-our special tokens into proper regular expressions.</p>                                                </div>
+                                    <p>Adds a new URL routing rule to the routing table</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

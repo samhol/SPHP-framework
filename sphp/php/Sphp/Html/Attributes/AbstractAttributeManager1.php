@@ -14,6 +14,8 @@ use Sphp\Stdlib\Strings;
 use ArrayIterator;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\RuntimeException;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Class contains and manages all the attribute value pairs for a markup language tag
@@ -103,23 +105,12 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
   }
 
   /**
-   * Checks whether the instance of the inner attribute object if it is mapped
+   * Returns the inner attribute object manager
    *
-   * @param  string $name the name of the attribute
-   * @return boolean true if the attribute is an instance of {@link AttributeInterface} false otherwise
+   * @return AttributeObjectManager the inner attribute object manager
    */
-  protected function isObject(string $name): bool {
-    return array_key_exists($name, $this->attrObjects);
-  }
-
-  /**
-   * Returns the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $name the name of the attribute
-   * @return AttributeInterface the mapped attribute object
-   */
-  protected function getObject(string $name): AttributeInterface {
-    return $this->attrObjects->getObject($name);
+  protected function getObjectManager(): AttributeObjectManager {
+    return $this->attrObjects;
   }
 
   /**
@@ -144,41 +135,24 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
-   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
+   * @throws AttributeException if the attribute name or value is invalid
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function set(string $name, $value = true) {
-    if ($this->attrObjects->isMapped($name)) {
+    if ($this->attrObjects->contains($name)) {
       $this->attrObjects->getObject($name)->set($value);
     } else if (is_scalar($value)) {
       if (!preg_match('/^[a-zA-Z][\w:.-]*$/', $name)) {
-        throw new InvalidArgumentException("Malformed Attribute name '$name'");
+        throw new AttributeException("Malformed Attribute name '$name'");
       }
       if ($this->isLocked($name)) {
-        throw new RuntimeException("The value of the '$name' attribute is unmodifiable");
+        throw new ImmutableAttributeException("The value of the '$name' attribute is unmodifiable");
       }
       if ($value === false || $value === null) {
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
       }
-    }
-    return $this;
-  }
-
-  /**
-   * Sets multiple attribute name value pairs
-   *
-   * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
-   *
-   * @param  mixed[] $attrs an array of attribute name value pairs
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if any of the attributes is invalid
-   * @throws \Sphp\Exceptions\RuntimeException if the value of the attribute is already locked
-   */
-  public function merge(array $attrs = []) {
-    foreach ($attrs as $name => $value) {
-      $this->set($name, $value);
     }
     return $this;
   }
@@ -192,8 +166,8 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return $this for a fluent interface
    */
   public function demand(string $name) {
-    if ($this->isObject($name)) {
-      $this->getObject($name)->demand();
+    if ($this->attrObjects->contains($name)) {
+      $this->attrObjects->getObject($name)->demand();
     } else {
       if (!$this->exists($name)) {
         $this->set($name, true);
@@ -213,8 +187,8 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return boolean true if the attribute is required and false otherwise
    */
   public function isDemanded(string $name): bool {
-    if ($this->isObject($name)) {
-      $required = $this->getObject($name)->isDemanded();
+    if ($this->attrObjects->contains($name)) {
+      $required = $this->attrObjects->getObject($name)->isDemanded();
     } else {
       $required = in_array($name, $this->required) || $this->isLocked($name);
     }
@@ -231,8 +205,8 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return boolean true if the attribute has a locked value on it and false otherwise
    */
   public function isLocked(string $name): bool {
-    if ($this->isObject($name)) {
-      $locked = $this->getObject($name)->isLocked();
+    if ($this->attrObjects->contains($name)) {
+      $locked = $this->attrObjects->getObject($name)->isLocked();
     } else {
       $locked = array_key_exists($name, $this->locked);
     }
@@ -251,18 +225,18 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @param  scalar $value the new locked value of the attribute
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if either the name or the value is invalid for the type of the attribute
-   * @throws \Sphp\Exceptions\RuntimeException if the attribute is unmodifiable
+   * @throws AttributeException if either the name or the value is invalid for the type of the attribute
+   * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function lock(string $name, $value) {
-    if ($this->attrObjects->isMapped($name)) {
+    if ($this->attrObjects->contains($name)) {
       $this->attrObjects->getObject($name)->lock($value);
     } else {
       if ($this->isLocked($name)) {
-        throw new RuntimeException("The value of the '$name' attribute is unmodifiable");
+        throw new ImmutableAttributeException("The value of the '$name' attribute is unmodifiable");
       }
       if ($value === false || $value === null) {
-        throw new InvalidArgumentException('NULL and boolean FALSE values cannot be locked');
+        throw new AttributeException('NULL and boolean FALSE values cannot be locked');
       }
       $this->set($name, $value);
       $this->locked[$name] = $value;
@@ -276,7 +250,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is empty and false otherwise
    */
-  public function isEmpty(string $name) {
+  public function isEmpty(string $name): bool {
     return $this->exists($name) && ($this->get($name) === true || $this->get($name) === "");
   }
 
@@ -288,13 +262,13 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @throws \Sphp\Exceptions\RuntimeException if the attribute is not removable
    */
   public function remove(string $name) {
-    if ($this->attrObjects->isMapped($name)) {
+    if ($this->attrObjects->contains($name)) {
       $this->attrObjects->getObject($name)->clear();
     } else {
       if ($this->isLocked($name)) {
-        throw new RuntimeException("Locked attribute '$name' cannot be removed");
+        throw new ImmutableAttributeException("Locked attribute '$name' cannot be removed");
       } else if ($this->isDemanded($name)) {
-        throw new RuntimeException("Required attribute '$name' cannot be removed");
+        throw new ImmutableAttributeException("Required attribute '$name' cannot be removed");
       } else if ($this->exists($name)) {
         unset($this->attrs[$name]);
       }
@@ -314,7 +288,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return scalar the value of the attribute
    */
   public function get(string $name) {
-    if ($this->attrObjects->isMapped($name)) {
+    if ($this->attrObjects->contains($name)) {
       $this->attrObjects->getObject($name)->getValue();
     } else if (!$this->exists($name)) {
       $value = false;
@@ -331,7 +305,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return boolean true if the attribute exists and false otherwise
    */
   public function exists(string $name): bool {
-    return array_key_exists($name, $this->attrs) || ($this->attrObjects->isMapped($name) && $this->attrObjects->getObject($name)->isVisible());
+    return array_key_exists($name, $this->attrs) || ($this->attrObjects->contains($name) && $this->attrObjects->getObject($name)->isVisible());
   }
 
   /**
@@ -340,9 +314,9 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @param  string $name the name of the attribute
    * @return string HTML valid attribute string
    */
-  public function attrToString(string $name) {
-    if ($this->attrObjects->isMapped($name)) {
-      $output = "{$this->attrObjects->getObject($name)}";
+  public function attrToString(string $name): string {
+    if ($this->attrObjects->contains($name)) {
+      $output = $this->attrObjects->attrToString($name);
     } else if ($this->exists($name)) {
       $output = "$name";
       $value = $this->get($name);
@@ -368,7 +342,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
 
   /**
    *
-   * @return ArrayIterator
+   * @return \Traversable
    */
   public function getIterator(): \Traversable {
     $arr = array_merge($this->attrObjects->toArray(), $this->attrs);

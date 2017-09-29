@@ -35,8 +35,8 @@ class HtmlAttributeManager extends AbstractAttributeManager1 {
    *
    * @return MultiValueAttribute the `class` attribute object
    */
-  public function classes() {
-    return $this->getObject('class');
+  public function classes(): MultiValueAttribute {
+    return $this->getObjectManager()->getObject('class');
   }
 
   /**
@@ -44,8 +44,8 @@ class HtmlAttributeManager extends AbstractAttributeManager1 {
    *
    * @return PropertyAttribute the `style` attribute object
    */
-  public function styles() {
-    return $this->getObject('style');
+  public function styles(): PropertyAttribute {
+    return $this->getObjectManager()->getObject('style');
   }
 
   /**
@@ -66,7 +66,7 @@ class HtmlAttributeManager extends AbstractAttributeManager1 {
   }
 
   public function id(): IdentityAttribute {
-    return $this->getObject('id');
+    return $this->getObjectManager()->getObject('id');
   }
 
   public function identify(string $prefix = null, int $length = 16): string {

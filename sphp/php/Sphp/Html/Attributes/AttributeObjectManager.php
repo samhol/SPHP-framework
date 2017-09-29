@@ -117,7 +117,7 @@ class AttributeObjectManager implements Countable, Iterator {
    * @return string
    */
   protected function getValidType(string $name): string {
-    if ($this->isMapped($name)) {
+    if ($this->contains($name)) {
       return $this->getMappedType($name);
     } else {
       return $this->defaultType;
@@ -140,7 +140,7 @@ class AttributeObjectManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute name is mapped false otherwise
    */
-  public function isMapped(string $name): bool {
+  public function contains(string $name): bool {
     return array_key_exists($name, $this->map);
   }
 
@@ -152,7 +152,7 @@ class AttributeObjectManager implements Countable, Iterator {
    * @throws InvalidArgumentException
    */
   public function getMappedType(string $name): string {
-    if (!$this->isMapped($name)) {
+    if (!$this->contains($name)) {
       throw new InvalidArgumentException("Attribute '$name' is not mapped as an object");
     }
     return $this->map[$name];
@@ -176,7 +176,7 @@ class AttributeObjectManager implements Countable, Iterator {
    * @throws InvalidArgumentException
    */
   protected function createObject(string $name): AttributeInterface {
-    if (!$this->isMapped($name)) {
+    if (!$this->contains($name)) {
       throw new InvalidArgumentException("Attribute '$name' is not mapped as an object");
     }
     $type = $this->getMappedType($name);
@@ -190,7 +190,7 @@ class AttributeObjectManager implements Countable, Iterator {
    * @return AttributeInterface the mapped attribute object or null
    */
   public function getObject(string $name): AttributeInterface {
-    if (!$this->isMapped($name)) {
+    if (!$this->contains($name)) {
       throw new InvalidArgumentException("Attribute '$name' is not mapped as an object");
     }
     if (!$this->isObject($name)) {
@@ -207,10 +207,10 @@ class AttributeObjectManager implements Countable, Iterator {
   public function attrToString(string $name): string  {
     if ($this->isObject($name)) {
       return $this->getObject($name)->getHtml();
-    } else if ($this->isMapped($name)) {
+    } else if ($this->contains($name)) {
       return '';
     } else {
-      throw new InvalidArgumentException();
+      throw new InvalidArgumentException("Attribute '$name' is not mapped as an object");
     }
   }
           

@@ -102,7 +102,8 @@
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(string $name, string $parser = null, string $form = &quot;%s:%s;&quot;)
         
-                                            <p>Constructs a new instance</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -122,8 +123,18 @@
                 <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p>Returns the instance of the {@link self} object as a string</p>                </div>
+                                            <p>Returns the instance of the object as a string</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHtml">getHtml</a>()
+        
+                                            <p>Returns the instance of the object as a string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -182,7 +193,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(scalar $value)
         
-                                            <p>Sets the value of the attribute</p>                </div>
+                                            <p>Sets the properties values</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -262,7 +273,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isLocked">isLocked</a>(string $property = null)
         
-                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
+                                            <p>Checks whether the attribute or the given property is locked</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -292,7 +303,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_lock">lock</a>(null|string|string[] $props = null)
         
-                                            <p>Locks the given value to the attribute</p>                </div>
+                                            <p>Locks either all or the given properties</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -302,7 +313,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getValue">getValue</a>()
         
-                                            <p>Returns the value of the attribute</p>                </div>
+                                            <p>Returns the value of the property attribute as a string</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -397,8 +408,6 @@
             
     
 
-                    <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -451,7 +460,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 55</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -461,7 +470,37 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the instance of the {@link self} object as a string</p>                                                </div>
+                                    <p>Returns the instance of the object as a string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the object as a string</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 59</div>
+        <code>                    string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the instance of the object as a string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -481,7 +520,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 78</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 72</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -511,7 +550,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 89</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 76</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>()
         </code>
@@ -541,7 +580,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 102</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 81</div>
         <code>                    boolean
     <strong>isDemanded</strong>()
         </code>
@@ -572,7 +611,7 @@ name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isVisible">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 114</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 85</div>
         <code>                    boolean
     <strong>isVisible</strong>()
         </code>
@@ -654,7 +693,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the attribute</p>                                                </div>
+                                    <p>Sets the properties values</p>                    <p><strong>IMPORTANT!:</strong> Does not alter locked properties</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -681,12 +720,12 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if the property is unmodifiable</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the value is invalid</td>
             </tr>
             </table>
 
@@ -1032,7 +1071,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
+                                    <p>Checks whether the attribute or the given property is locked</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1190,7 +1229,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Locks the given value to the attribute</p>                                                </div>
+                                    <p>Locks either all or the given properties</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1217,12 +1256,12 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the attribute value is invalid</td>
+                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if any of the properties is already locked</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if if any of the properties has empty name or value</td>
             </tr>
             </table>
 
@@ -1243,11 +1282,11 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the attribute</p>                    <p><strong>IMPORTANT:</strong></p>
+                                    <p>Returns the value of the property attribute as a string</p>                    <p><strong>IMPORTANT:</strong></p>
 
 <ul>
-<li>Returns always <code>boolean false</code> if attribute is not present.</li>
-<li>return <code>null</code> or an empty string for empty attributes.</li>
+<li>Returns always <code>null</code> if attribute is not set.</li>
+<li><strong>However</strong> might also return <code>null</code> for empty attributes.</li>
 </ul>
 </p>                            </div>
                 <div class="tags">
