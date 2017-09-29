@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Class provides a simple implementation of a container tag
@@ -33,10 +33,10 @@ abstract class AbstractContainerComponent extends AbstractComponent {
    * Constructs a new instance
    *
    * @param  string $tagname the name of the tag
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component
    */
-  public function __construct(string $tagname, AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct($tagname, $attrManager);
     $this->setInnerContainer($contentContainer);
   }

@@ -4,7 +4,6 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$htmlAttrMngr = Apis::sami()->classLinker(AttributeManager::class);
 $abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
 $multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
 $setMethod = $abstractAttr->methodLink("set");

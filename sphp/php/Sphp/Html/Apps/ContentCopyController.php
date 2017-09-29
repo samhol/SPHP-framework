@@ -69,7 +69,7 @@ class ContentCopyController implements ContentInterface {
   public function setCopyTarget($target) {
     if ($target !== $this->target) {
       if ($target instanceof ComponentInterface) {
-        $id = $target->identify('id', 'copy_target', 32);
+        $id = $target->identify('copy_target', 32);
       } else {
         $id = $target;
       }

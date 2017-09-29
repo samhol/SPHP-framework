@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Attributes;
 
-$attrs = new AttributeManager();
+$attrs = new HtmlAttributeManager();
 $attrs->lock("type", "text");
 echo "<input $attrs>\n";
 $attrs->set("value", "Sami")

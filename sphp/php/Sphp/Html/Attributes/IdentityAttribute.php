@@ -65,7 +65,7 @@ class IdentityAttribute extends AbstractAttribute {
   }
 
   public function identify(string $prefix = null, int $length = 16) {
-    if (!$this->isLocked($this->getName())) {
+    if (!$this->isLocked()) {
       if ($prefix === null) {
         $prefix = $this->getName();
       }

@@ -34,7 +34,7 @@ class IdStorage {
   /**
    * Constructs a new instance
    */
-  protected function __construct() {
+  private function __construct() {
     
   }
 
@@ -44,9 +44,9 @@ class IdStorage {
    */
   public static function get(string $name): IdStorage {
     if (!array_key_exists($name, self::$instances)) {
-      self::$instances[$name] = new static();
+      static::$instances[$name] = new static();
     }
-    return self::$instances[$name];
+    return static::$instances[$name];
   }
 
   /**
@@ -89,6 +89,7 @@ class IdStorage {
       $this->ids[] = $value;
       return true;
     }
+    print_r($this->ids);
     return false;
   }
 

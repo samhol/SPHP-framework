@@ -8,7 +8,7 @@
 namespace Sphp\Html\Icons;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Description of Icon
@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\AttributeManager;
  */
 class AbstractIcon extends AbstractComponent {
 
-  public function __construct(string $tagName, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     $this->attrs()->set('aria-hidden', 'true');
   }

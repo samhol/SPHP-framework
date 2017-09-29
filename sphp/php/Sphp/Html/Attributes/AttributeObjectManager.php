@@ -88,6 +88,16 @@ class AttributeObjectManager implements Countable, Iterator {
     }
     return trim($output);
   }
+  /**
+   * 
+   * @param  string $name
+   * @param  mixed $value
+   * @return $this
+   */
+  public function setValue(string $name, $value) {
+    $this->getObject($name)->set($value);
+    return $this;
+  }
 
   /**
    * Attaches an attribute object to the manager

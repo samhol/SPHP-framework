@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $abstractAttrMngr = Apis::sami()->classLinker(AbstractAttributeManager::class);
-$htmlAttrMngr = Apis::sami()->classLinker(AttributeManager::class);
+$htmlAttrMngr = Apis::sami()->classLinker(HtmlAttributeManager::class);
 $attributeInterface = Apis::sami()->classLinker(AttributeInterface::class);
 $multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
 $propertyAttr = Apis::sami()->classLinker(PropertyAttribute::class);
@@ -14,7 +14,6 @@ $setMethodLink = $abstractAttrMngr->methodLink("set", false);
 $removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
 $requireAttr = $abstractAttrMngr->methodLink("demand", false);
 $lockAttr = $abstractAttrMngr->methodLink("lock", false);
-$setAttributeObjectLink = $abstractAttrMngr->methodLink("setAttributeObject", false);
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #HTML ATTRIBUTE MANAGEMENT
@@ -57,21 +56,5 @@ to the given value. Locked attribute attribute is always visible. Such attribute
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Attributes/AttributeManager1.php", "html5", true);
-\Sphp\Manual\parseDown(<<<MD
-       
-###Inserting new $attributeInterface objects to the manager
-        
-New $attributeInterface objects can be inserted into the manager by using the $setAttributeObjectLink method.
-        
-**Important:**
-        
-  1. If an attribute has allready a value, such attribute cannot be replaced 
-     by an attribute object
-  2. If attribute in the manager is allready an $attributeInterface instance the 
-     new $attributeInterface instance must be of the same type
 
-MD
-);
-CodeExampleBuilder::visualize("Sphp/Html/Attributes/AttributeManager2.php", "html5", true);
-
+\Sphp\Manual\loadPage('Sphp.Html.Attributes.AttributeObjectManager');

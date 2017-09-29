@@ -11,6 +11,7 @@ use Sphp\Html\AbstractContainerComponent;
 use IteratorAggregate;
 use ArrayAccess;
 use Sphp\Html\TraversableInterface;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
@@ -43,10 +44,10 @@ abstract class TableRowContainer extends AbstractContainerComponent implements I
    *  * Any `$row` not implementing {@link RowInterface} is wrapped within a {@link Tr} component
    *
    * @param string $tagname
-   * @param AttributeManager $m
+   * @param HtmlAttributeManager $m
    * @param null|mixed|mixed[] $rows the row being appended
    */
-  public function __construct(string $tagname, \Sphp\Html\Attributes\AttributeManager $m = null, array $rows = null) {
+  public function __construct(string $tagname, HtmlAttributeManager $m = null, array $rows = null) {
     parent::__construct($tagname, $m);
     if ($rows !== null) {
       $this->fromArray($rows);

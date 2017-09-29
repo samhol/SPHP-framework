@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Media;
 
+use Sphp\Html\Attributes\HtmlAttributeManager;
+
 /**
  * Trait implements the {@link LazyLoaderInterface} interface
  * 
@@ -22,8 +24,8 @@ namespace Sphp\Html\Media;
  * @filesource
  */
 trait LazyMediaSourceTrait {
-  
-  abstract public function attrs();
+
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Sets or unsets the media source loading as lazy

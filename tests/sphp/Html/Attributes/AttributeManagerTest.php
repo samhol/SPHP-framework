@@ -5,8 +5,7 @@ namespace Sphp\Html\Attributes;
 class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   *
-   * @var AttributeManager 
+   * @var HtmlAttributeManager 
    */
   protected $attrs;
 
@@ -16,7 +15,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   protected function setUp() {
     echo "\nsetUp:\n";
-    $this->attrs = new AttributeManager();
+    $this->attrs = new HtmlAttributeManager();
   }
 
   /**
@@ -32,23 +31,23 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function identifyingData() {
+  public function identifyingData(): array {
     return [
-        ["id", "test"],
-        ["id", null],
-        ["data-id", "a b c d"],
-        ["data-id", null]
+        ["test", 4],
+        [null, 4],
+        ["a b c d", 4],
+        [null, 4]
     ];
   }
 
   /**
    *
    * @param string $name
-   * @param string $value
+   * @param int $length
    * @dataProvider identifyingData
    */
-  public function testIdentifying($name, $value) {
-    $this->attrs->identify($name, $value);
+  public function testIdentifying($name, int $length) {
+    $this->attrs->identify($name, $length);
     $this->assertTrue(is_string($this->attrs->get($name)));
     $this->assertTrue($this->attrs->exists($name));
     $this->assertTrue(!$this->attrs->isEmpty($name));
@@ -63,7 +62,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function textualData() {
+  public function textualData(): array {
     return [
         ["data-empty", " "],
         ["type", "text"],
@@ -83,7 +82,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider textualData
    */
   public function testTextualVariableSetting($name, $value) {
-    $attrs = new AttributeManager();
+    $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
@@ -95,7 +94,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function numericData() {
+  public function numericData(): array {
     return [
         ["min", "0"],
         ["max", 10],
@@ -108,14 +107,14 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::set()
+   * @covers HtmlAttributeManager::set()
    * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider numericData
    */
   public function testNumericSetting($name, $value) {
-    $attrs = new AttributeManager();
+    $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
@@ -126,7 +125,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function booleanData() {
+  public function booleanData(): array {
     return [
         ["bool1", true],
         ["bool2", false],
@@ -136,16 +135,16 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::set()
-   * @covers Sphp\Html\Attributes\AttributeManager::get()
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * @covers HtmlAttributeManager::set()
+   * @covers HtmlAttributeManager::get()
+   * @covers HtmlAttributeManager::isEmpty()
    * 
    * @param string $name
    * @param boolean $value numeric value
    * @dataProvider booleanData
    */
   public function testBooleanSetting($name, $value) {
-    $attrs = new AttributeManager();
+    $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     if ($value === false) {
@@ -161,7 +160,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function unsettingData() {
+  public function unsettingData(): array {
     return [
         ["null", null],
         ["false", false]
@@ -169,14 +168,14 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::set()
+   * @covers HtmlAttributeManager::set()
    * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider unsettingData
    */
   public function testUnsetting($name, $value) {
-    $attrs = new AttributeManager();
+    $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === false);
     $this->assertTrue(!$attrs->exists($name));
@@ -187,7 +186,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function emptyData() {
+  public function emptyData(): array {
     return [
         ["string", ""],
         ["boolean", true]
@@ -195,14 +194,14 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::isEmpty()
+   * @covers HtmlAttributeManager::isEmpty()
    * 
    * @param string $name
    * @param string $value numeric value
    * @dataProvider emptyData
    */
   public function testEmptySetting($name, $value) {
-    $attrs = new AttributeManager();
+    $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     $this->assertTrue($attrs->exists($name));
@@ -213,7 +212,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return string[]
    */
-  public function objectData() {
+  public function objectData(): array {
     return [
         [new MultiValueAttribute("data-foo")],
         [new PropertyAttribute("data-bar")],
@@ -223,14 +222,14 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @covers Sphp\Html\Attributes\AttributeManager::setAttributeObject()
+   * @covers HtmlAttributeManager::setAttributeObject()
    * 
    * @param AttributeInterface $obj
    * @dataProvider objectData
    */
   public function testObjectSetting(AttributeInterface $obj) {
     $name = $obj->getName();
-    $this->attrs->set($name, "foo bar"); //isValidObjectType
+    $this->attrs->set($name, 'foo bar'); //isValidObjectType
     $this->attrs->demand($name);
     $this->attrs->setAttributeObject($obj);
     //$this->assertTrue($attrs->exists($name));
@@ -262,15 +261,15 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return scalar[]
    */
-  public function lockDemandData() {
+  public function lockDemandData(): array {
     return [
-        ["string1", ""],
-        ["string2", "string"],
-        ["bool", true],
-        ["int", 0],
-        ["float", 0.1],
-        ["class", "a b"],
-        ["style", "a:b;"]
+        ['string1', ''],
+        ['string2', 'string'],
+        ['bool', true],
+        ['int', 0],
+        ['float', 0.1],
+        ['class', 'a b'],
+        ['style', 'a:b;']
     ];
   }
 
@@ -296,7 +295,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * 
    * @return scalar[]
    */
-  public function notExistsData() {
+  public function notExistsData(): array {
     return [
         ["style"],
         ["class"],

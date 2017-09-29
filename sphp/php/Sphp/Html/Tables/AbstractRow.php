@@ -9,7 +9,7 @@ namespace Sphp\Html\Tables;
 
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\ContainerInterface;
 
 /**
@@ -37,10 +37,10 @@ abstract class AbstractRow extends AbstractContainerComponent implements \Iterat
    *  mixed `$cells` can be of any type that converts to a PHP string or to a 
    *  PHP string[].
    *
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component
    */
-  public function __construct(AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(HtmlAttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct('tr', $attrManager, $contentContainer);
   }
 

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Forms;
 
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Trait implements parts of the {@link FormInterface}
@@ -28,9 +28,9 @@ trait FormTrait {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Sets the value of the method attribute

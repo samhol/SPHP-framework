@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Media;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Trait implements the {@link SizeableInterface} interface for a {@link \Sphp\Html\ComponentInterface}
@@ -21,9 +21,9 @@ trait SizeableTrait {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Checks if the component has width defined

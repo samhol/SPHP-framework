@@ -25,20 +25,18 @@ interface IdentifiableInterface {
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
-   * @param  string $identityName the name of the identity attribute
    * @param  string $prefix optional prefix of the identity value
    * @param  int $length the length of the identity value
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function identify(string $identityName = 'id', string $prefix = 'id', int $length = 16): string;
+  public function identify(string $prefix = 'id', int $length = 16): string;
 
   /**
    * Checks whether the identifying attribute is set or not
    *
-   * @param  string $identityName optional name of the identifying attribute
    * @return boolean true if the identity is set, otherwise false
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
-  public function hasId(string $identityName = 'id'): bool;
+  public function hasId(): bool;
 }

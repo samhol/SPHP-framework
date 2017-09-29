@@ -10,7 +10,7 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
 use IteratorAggregate;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\ContainerInterface;
 
 /**
@@ -32,10 +32,10 @@ class Dl extends AbstractContainerComponent implements IteratorAggregate, Traver
   /**
    * Constructs a new instance
    *
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
    * @param  ContainerInterface|null $contentContainer the inner content container of the component
    */
-  public function __construct(AttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
+  public function __construct(HtmlAttributeManager $attrManager = null, ContainerInterface $contentContainer = null) {
     parent::__construct('dl', $attrManager, $contentContainer);
   }
 

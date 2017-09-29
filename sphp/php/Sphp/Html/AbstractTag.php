@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\InvalidArgumentException;
 
@@ -41,10 +41,10 @@ abstract class AbstractTag implements TagInterface {
    * Constructs a new instance
    *
    * @param  string $tagName the tag name of the component
-   * @param  AttributeManager|null $attrManager the attribute manager of the component
+   * @param  HtmlAttributeManager|null $attrManager the attribute manager of the component
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name of the component is not valid
    */
-  public function __construct(string $tagName, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, HtmlAttributeManager $attrManager = null) {
     $this->setTagName($tagName)
             ->setAttributeManager($attrManager);
   }
@@ -92,19 +92,19 @@ abstract class AbstractTag implements TagInterface {
   /**
    * Sets the attribute manager attached to the component
    *
-   * @param  AttributeManager $attrManager the attribute manager to set
+   * @param  HtmlAttributeManager $attrManager the attribute manager to set
    * @return $this for a fluent interface
    */
-  private function setAttributeManager(AttributeManager $attrManager = null) {
+  private function setAttributeManager(HtmlAttributeManager $attrManager = null) {
     if ($attrManager === null) {
-      $this->attrs = new AttributeManager();
+      $this->attrs = new HtmlAttributeManager();
     } else {
       $this->attrs = $attrManager;
     }
     return $this;
   }
 
-  public function attrs() {
+  public function attrs(): HtmlAttributeManager {
     return $this->attrs;
   }
 

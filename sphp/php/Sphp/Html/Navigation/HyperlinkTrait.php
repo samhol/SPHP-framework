@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Navigation;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Stdlib\Strings;
 
 /**
@@ -31,9 +31,9 @@ trait HyperlinkTrait {
   /**
    * Returns the attribute manager attached to the component
    *
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Sets the value of the href attribute (The URL of the link)

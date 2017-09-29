@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * A trait implementation of the {@link PatternValidableInputInterface} 
@@ -22,9 +22,9 @@ trait PatternValidableTrait {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Sets the autocomplete attribute's value on or off

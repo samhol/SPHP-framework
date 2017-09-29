@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Attributes\MultiValueAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 
@@ -26,9 +26,9 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   /**
    * Returns the attribute manager attached to the component
    * 
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  public function attrs();
+  public function attrs(): HtmlAttributeManager;
 
   /**
    * Returns the class attribute object

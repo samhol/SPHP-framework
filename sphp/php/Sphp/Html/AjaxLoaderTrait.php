@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Stdlib\Networks\URL;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
  * Trait implements {@link AjaxLoaderInterface} functionality
@@ -24,9 +24,9 @@ trait AjaxLoaderTrait {
   /**
    * Returns the attribute manager attached to the component
    *
-   * @return AttributeManager the attribute manager
+   * @return HtmlAttributeManager the attribute manager
    */
-  abstract public function attrs();
+  abstract public function attrs(): HtmlAttributeManager;
 
   /**
    * Sets the Ajax attributes to the component

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Container;
 
 /**
@@ -39,10 +39,10 @@ abstract class AbstractMultimediaTag extends AbstractComponent implements \Itera
    * Constructs a new instance
    *
    * @param  string $tagname the name of the tag
-   * @param  AttributeManager|null $attrManager optional attribute manager to use in the component
+   * @param  HtmlAttributeManager|null $attrManager optional attribute manager to use in the component
    * @param mixed $sources optional sources
    */
-  public function __construct(string $tagname, AttributeManager $attrManager = null, $sources = null) {
+  public function __construct(string $tagname, HtmlAttributeManager $attrManager = null, $sources = null) {
     parent::__construct($tagname, $attrManager);
     $this->sources = new Container();
     $this->tracks = new Container();

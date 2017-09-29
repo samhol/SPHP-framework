@@ -7,7 +7,7 @@
 
 namespace Sphp\Html;
 
-use Sphp\Html\Attributes\AttributeManager;
+use Sphp\Html\Attributes\HtmlAttributeManager;
 use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Html\Programming\ScriptsContainer;
 
@@ -46,7 +46,7 @@ abstract class AbstractJavaScriptComponent extends AbstractContainerComponent {
    * @param mixed $content component's content
    * @param  AttributeManager|null $attrManager the attribute manager of the component
    */
-  public function __construct(string $tagName, $content = null, AttributeManager $attrManager = null) {
+  public function __construct(string $tagName, $content = null, HtmlAttributeManager $attrManager = null) {
     parent::__construct($tagName, $attrManager);
     if ($content !== null) {
       $this->getInnerContainer()->append($content);
