@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+
 /**
  * Description of IdentityAttribute
  *
@@ -58,7 +60,7 @@ class IdentityAttribute extends AbstractAttribute {
 
   public function set($value) {
     if ($this->isLocked()) {
-      throw new InvalidArgumentException();
+      throw new ImmutableAttributeException();
     }
     $this->value = $value;
     return $this;
@@ -69,9 +71,10 @@ class IdentityAttribute extends AbstractAttribute {
       if ($prefix === null) {
         $prefix = $this->getName();
       }
+      $randLength = $length - mb_strlen($prefix);
       $storage = IdStorage::get($this->getName());
-      $value = $storage->generateRandom($prefix, $length);
-      $this->lock($this->getName(), $value);
+      $value = $storage->generateRandom($prefix, $randLength);
+      $this->lock($value);
     }
     return $this->getValue();
   }
