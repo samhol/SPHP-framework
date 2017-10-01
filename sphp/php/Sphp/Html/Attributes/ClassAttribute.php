@@ -1,26 +1,24 @@
 <?php
 
 /**
- * MultiValueAttribute.php (UTF-8)
+ * ClassAttribute.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
-use Iterator;
 use Sphp\Stdlib\Strings;
-use ClassAttributeFilter;
 
 /**
  * An implementation of a multi value HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2015-06-12
+ * @link    https://www.w3schools.com/TAgs/att_global_class.asp Class attribute in W3schools
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, Iterator {
+class ClassAttribute extends MultiValueAttribute {
 
   /**
    * stored individual values
@@ -35,17 +33,6 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @var string[]
    */
   private $locked = [];
-  
-  /**
-   *
-   * @var ClassAttributeFilter
-   */
-  private $filter;
-
-  public function __construct(string $name) {
-    parent::__construct($name);
-    $this->filter = Filters\ClassAttributeFilter::instance();
-  }
 
   /**
    * Destroys the instance
@@ -56,6 +43,41 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public function __destruct() {
     unset($this->values, $this->locked);
     parent::__destruct();
+  }
+
+  /**
+   * Returns an array of unique values parsed from the input
+   *
+   * **Important:** Parameter <var>$raw</var> restrictions and rules
+   * 
+   * 1. A string parameter can contain multiple comma separated unique values
+   * 2. An array parameter can contain only one unique atomic value per value
+   * 3. Duplicate values are ignored
+   *
+   * @param  scalar|scalar[] $raw the value(s) to parse
+   * @return scalar[] separated atomic values in an array
+   */
+  public static function parse($raw): array {
+    if (is_array($raw)) {
+      $raw = \Sphp\Stdlib\Arrays::flatten($raw);
+      $f = function ($var) {
+        return !empty($var) || $var === '0' || $var === 0;
+      };
+      $arr = array_map('trim', $raw);
+      $p = array_filter($arr, $f);
+      $parsed = array_unique($p);
+    } else if (is_string($raw)) {
+      $raw = preg_replace('/\s+/S', ' ', trim($raw));
+      $parsed = [];
+      if (strlen($raw) > 0) {
+        $parsed = array_unique(explode(' ', $raw));
+      }
+    } else if (is_numeric($raw)) {
+      $parsed = [$raw];
+    } else {
+      $parsed = [];
+    }
+    return $parsed;
   }
 
   /**
@@ -73,7 +95,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function set($values) {
     $this->clear();
-    $parsed = $this->filter->filter(func_get_args());
+    $parsed = self::parse(func_get_args());
     if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
     }
@@ -93,7 +115,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->filter->filter($values);
+    $parsed = self::parse($values);
     if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
     }
@@ -113,8 +135,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function isLocked($values = null): bool {
     if (is_array($values) || is_string($values) || is_numeric($values)) {
-      $parsed = $this->filter->filter($values);
-      $locked = !empty($parsed) && !array_diff($parsed, $this->locked);
+      $parsed = static::parse($values);
+      $locked = !empty($parsed) && !array_diff(static::parse($values), $this->locked);
     } else {
       $locked = count($this->locked) > 0;
     }
@@ -134,7 +156,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return $this for a fluent interface
    */
   public function lock($values) {
-    $arr = $this->filter->filter($values);
+    $arr = self::parse($values);
     //print_r($arr);
     if (count($arr) > 0) {
       $this->locked = array_unique(array_merge($this->locked, $arr));
@@ -160,7 +182,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     if ($this->isLocked($values)) {
       throw new RuntimeException($this->getName() . ' attribute values given are unremovable');
     } else if (is_array($this->values)) {
-      $arr = $this->filter->filter($values);
+      $arr = self::parse($values);
       if (count($arr) > 0) {
         $this->values = array_unique(array_merge($this->locked, array_diff($this->values, $arr)));
         sort($this->values);
@@ -190,7 +212,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return boolean true if the given atomic values exists
    */
   public function contains($values): bool {
-    $needle = $this->filter->filter($values);
+    $needle = self::parse($values);
     if (!empty($needle)) {
       return !array_diff($needle, $this->values);
     }

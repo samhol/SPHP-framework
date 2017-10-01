@@ -103,7 +103,6 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @dataProvider parsingData
    */
   public function testParsing($value, $expected) {
-    $this->assertEquals(MultiValueAttribute::parse($value), $expected);
   }
 
   /**
