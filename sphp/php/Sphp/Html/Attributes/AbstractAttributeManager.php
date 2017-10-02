@@ -12,8 +12,6 @@ use IteratorAggregate;
 use Sphp\Stdlib\Arrays;
 use Sphp\Stdlib\Strings;
 use ArrayIterator;
-use Sphp\Exceptions\InvalidArgumentException;
-use Sphp\Exceptions\RuntimeException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -27,6 +25,9 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  */
 class AbstractAttributeManager implements Countable, IteratorAggregate {
 
+  const REQUIRED = 0b1;
+  const LOCKED = 0b11;
+
   /**
    * attributes as a (name -> value) map
    *
@@ -35,18 +36,11 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
   private $attrs = [];
 
   /**
-   * locked attributes
-   *
-   * @var scalar[]
+   * Attribute flags for scalar attributes
+   * 
+   * @var int[]
    */
-  private $locked = [];
-
-  /**
-   * required attribute names as name => name pairs
-   *
-   * @var string[]
-   */
-  private $required = [];
+  private $flags = [];
 
   /**
    * attribute objects
@@ -73,7 +67,7 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrObjects, $this->attrs, $this->locked, $this->required);
+    unset($this->attrObjects, $this->attrs, $this->flags);
   }
 
   /**
@@ -86,8 +80,9 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
   public function __clone() {
     $this->attrObjects = clone $this->attrObjects;
     $this->attrs = Arrays::copy($this->attrs);
-    $this->locked = Arrays::copy($this->locked);
-    $this->required = Arrays::copy($this->required);
+    // $this->locked = Arrays::copy($this->locked);
+    //$this->required = Arrays::copy($this->required);
+    $this->flags = Arrays::copy($this->flags);
   }
 
   /**
@@ -152,6 +147,9 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
         $this->remove($name);
       } else {
         $this->attrs[$name] = $value;
+        if (!array_key_exists($name, $this->flags)) {
+          $this->flags[$name] = 0;
+        }
       }
     }
     return $this;
@@ -189,7 +187,8 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
       if (!$this->exists($name)) {
         $this->set($name, true);
       }
-      $this->required[$name] = $name;
+      //$this->required[$name] = $name;
+      $this->flags[$name] |= static::REQUIRED;
     }
     return $this;
   }
@@ -207,7 +206,8 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
     if ($this->attrObjects->contains($name)) {
       $required = $this->attrObjects->getObject($name)->isDemanded();
     } else {
-      $required = in_array($name, $this->required) || $this->isLocked($name);
+      //$required = in_array($name, $this->required) || $this->isLocked($name);
+      $required = array_key_exists($name, $this->flags) && static::REQUIRED & $this->flags[$name] === static::REQUIRED;
     }
     return $required;
   }
@@ -225,7 +225,8 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
     if ($this->attrObjects->contains($name)) {
       $locked = $this->attrObjects->getObject($name)->isLocked();
     } else {
-      $locked = array_key_exists($name, $this->locked);
+      //$locked = array_key_exists($name, $this->locked);
+      $locked = array_key_exists($name, $this->flags) && static::LOCKED & $this->flags[$name] === static::LOCKED;
     }
     return $locked;
   }
@@ -256,7 +257,8 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
         throw new AttributeException('NULL and boolean FALSE values cannot be locked');
       }
       $this->set($name, $value);
-      $this->locked[$name] = $value;
+      //$this->locked[$name] = $value;
+      $this->flags[$name] |= static::LOCKED;
     }
     return $this;
   }
@@ -353,7 +355,7 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
    * @return int the number of the attributes stored
    */
   public function count(): int {
-    $num = count(array_unique(array_merge($this->required, array_keys($this->attrs))));
+    $num = count($this->attrs);
     return $num + $this->attrObjects->count();
   }
 

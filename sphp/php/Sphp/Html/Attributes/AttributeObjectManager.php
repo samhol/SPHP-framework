@@ -88,6 +88,7 @@ class AttributeObjectManager implements Countable, Iterator {
     }
     return trim($output);
   }
+
   /**
    * 
    * @param  string $name
@@ -208,13 +209,14 @@ class AttributeObjectManager implements Countable, Iterator {
     }
     return $this->attrObjects[$name];
   }
+
   /**
    * 
    * @param  string $name
    * @return string
    * @throws InvalidArgumentException
    */
-  public function attrToString(string $name): string  {
+  public function attrToString(string $name): string {
     if ($this->isObject($name)) {
       return $this->getObject($name)->getHtml();
     } else if ($this->contains($name)) {
@@ -223,7 +225,6 @@ class AttributeObjectManager implements Countable, Iterator {
       throw new InvalidArgumentException("Attribute '$name' is not mapped as an object");
     }
   }
-          
 
   /**
    * Counts the number of the attributes stored in the manager

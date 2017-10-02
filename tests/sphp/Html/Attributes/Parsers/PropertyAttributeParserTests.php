@@ -69,7 +69,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::parse()
+   * @covers StyleAttributeParser::parse()
    * @dataProvider rawArrayData
    */
   public function testArrayParsing(array $value, array $expected) {
@@ -97,7 +97,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::parse()
+   * @covers StyleAttributeParser::parse()
    * @dataProvider rawStringData
    */
   public function testParsing(string $value, array $expected) {
