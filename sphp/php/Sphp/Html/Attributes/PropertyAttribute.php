@@ -45,18 +45,28 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   private $form;
 
   /**
+   *
+   * @var AttributeDataParser
+   */
+  private $parser;
+
+  /**
    * 
    * @param string $name the name of the attribute
    * @param string $parser
    * @param string $form
    */
-  public function __construct($name, $parser = null, $form = "%s:%s;") {
+  public function __construct($name, AttributeDataParser $parser = null, $form = "%s:%s;") {
     parent::__construct($name);
     $this->form = $form;
+    if ($parser === null) {
+      $parser = Filters\StyleAttributeParser::instance();
+    }
+    $this->parser = $parser;
   }
 
   public function __destruct() {
-    unset($this->props, $this->lockedProps);
+    unset($this->props, $this->lockedProps, $this->parser);
     parent::__destruct();
   }
 
@@ -102,7 +112,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function set($value) {
     $this->clear();
-    $this->setProperties(self::parse($value));
+    $this->setProperties($this->parser->parse($value));
     return $this;
   }
 
@@ -283,7 +293,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties(static::parse($props));
+      $this->lockProperties($this->parser->parse($props));
     }
     return $this;
   }
