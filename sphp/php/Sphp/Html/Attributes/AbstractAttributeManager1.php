@@ -23,7 +23,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractAttributeManager implements Countable, IteratorAggregate {
+class AbstractAttributeManager1 implements Countable, IteratorAggregate {
 
   const REQUIRED = 0b1;
   const LOCKED = 0b11;
@@ -60,11 +60,10 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
    * Constructs a new instance
    *
    */
-  public function __construct(AttributeObjectManager $objectMap = null) {
-    if ($objectMap === null) {
-      $objectMap = new AttributeObjectManager();
-    }
-    $this->attrObjects = $objectMap;
+  public function __construct(array $objectMap = []) {
+
+    $this->map = $objectMap;
+    //$this->attrObjects = $objectMap;
   }
 
   /**
@@ -103,6 +102,15 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
     $output .= ' ' . $this->attrObjects;
     return trim($output);
   }
+  /**
+   * Checks whether the attribute name is mapped
+   *
+   * @param  string $name the name of the attribute
+   * @return boolean true if the attribute name is mapped false otherwise
+   */
+  public function isMapped(string $name): bool {
+    return array_key_exists($name, $this->map);
+  }
 
   /**
    * Returns the inner attribute object manager
@@ -139,24 +147,23 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function set(string $name, $value = true) {
-    if ($this->attrObjects->contains($name)) {
-      $this->attrObjects->getObject($name)->set($value);
-    } else if (is_scalar($value)) {
-      if (!$this->exists($name) && !preg_match('/^[a-zA-Z][\w:.-]*$/', $name)) {
-        throw new AttributeException("Malformed Attribute name '$name'");
-      }
-      if ($this->isLocked($name)) {
-        throw new ImmutableAttributeException("The value of the '$name' attribute is unmodifiable");
-      }
-      if ($value === false || $value === null) {
-        $this->remove($name);
-      } else {
-        $this->attrs[$name] = $value;
-        if (!array_key_exists($name, $this->flags)) {
-          $this->flags[$name] = 0;
+    if (!$this->exists($name)) {
+      $this->setNew($name, $value);
+    } else {
+      if ($this->attrObjects->contains($name)) {
+        $this->attrObjects->getObject($name)->set($value);
+      } else if (is_scalar($value)) {
+        if ($this->isLocked($name)) {
+          throw new ImmutableAttributeException("The value of the '$name' attribute is unmodifiable");
+        }
+        if ($value === false || $value === null) {
+          $this->remove($name);
+        } else {
+          $this->attrs[$name] = $value;
         }
       }
     }
+
     return $this;
   }
 
@@ -168,11 +175,11 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
       throw new AttributeException("Malformed Attribute name '$name'");
     }
     if ($value instanceof AttributeInterface) {
-      $this->attrs[$name] = $value;
+      $this->map[$name] = get_class($value);
     } else {
-      $this->attrs[$name] = $value;
       $this->flags[$name] = 0;
     }
+    $this->attrs[$name] = $value;
     return $this;
   }
 
