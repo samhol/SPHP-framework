@@ -155,6 +155,12 @@ class AbstractAttributeManager implements Countable, IteratorAggregate {
     return $this;
   }
 
+  protected function setNew(string $name, $value) {
+    $this->attrs[$name] = $value;
+    $this->flags[$name] = 0;
+    return $this;
+  }
+
   /**
    * Sets multiple attribute name value pairs
    *
