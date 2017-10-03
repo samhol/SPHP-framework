@@ -14,7 +14,7 @@
    * @returns 
    */
   sphp.TechLinks = function () {
-    var $irs;
+    //var $irs;
     console.log("sphp.TechLinks() v2");
     $(".sphp-tech-list .jQuery")
             .attr("title", "jQuery: " + $.fn.jquery);
@@ -28,8 +28,8 @@
     $("a.anytime_version").append(" " + AnyTime.version)
             .attr("title", "Any+Time™ version " + AnyTime.version);
     
-    $irs = $.fn.IonRangeSlider;
-    console.log($irs.VERSION);
+   // $irs = $.fn.IonRangeSlider;
+   // console.log($irs.VERSION);
     
   };
 

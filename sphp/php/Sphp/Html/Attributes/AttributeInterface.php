@@ -7,6 +7,9 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+
 /**
  * Defines an HTML attribute object
  *
@@ -43,8 +46,8 @@ interface AttributeInterface {
    *
    * @param  scalar $value value to set
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid for the type of the attribute
-   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
+   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function set($value);
 
@@ -72,8 +75,8 @@ interface AttributeInterface {
    *
    * @param  scalar $value the value to lock to the attribute
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute value is invalid
-   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
+   * @throws AttributeException if the attribute value is invalid for the type of the attribute
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function lock($value);
 

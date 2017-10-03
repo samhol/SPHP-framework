@@ -96,12 +96,12 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    */
   public function __toString(): string {
     $output = '';
-    foreach (array_keys($this->attrs) as $name) {
-      $output .= ' ' . $this->attrToString($name);
+    foreach ($this as $attr) {
+      $output .= " $attr";
     }
-    $output .= ' ' . $this->attrObjects;
     return trim($output);
   }
+
   /**
    * Checks whether the attribute name is mapped
    *
@@ -148,38 +148,16 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    */
   public function set(string $name, $value = true) {
     if (!$this->exists($name)) {
-      $this->setNew($name, $value);
+      $this->attrs[$name]->set($value);
     } else {
-      if ($this->attrObjects->contains($name)) {
-        $this->attrObjects->getObject($name)->set($value);
-      } else if (is_scalar($value)) {
-        if ($this->isLocked($name)) {
-          throw new ImmutableAttributeException("The value of the '$name' attribute is unmodifiable");
-        }
-        if ($value === false || $value === null) {
-          $this->remove($name);
-        } else {
-          $this->attrs[$name] = $value;
-        }
+      if (array_key_exists($name, $this->map)) {
+        $obj = new $this->map[$name]($name);
+      } else {
+        $obj = new Attribute($name);
       }
+      $obj->set($value);
     }
 
-    return $this;
-  }
-
-  protected function setNew(string $name, $value) {
-    if ($this->exists($name)) {
-      throw new AttributeException("Attribute name '$name' allready exists");
-    }
-    if (!preg_match('/^[a-zA-Z][\w:.-]*$/', $name)) {
-      throw new AttributeException("Malformed Attribute name '$name'");
-    }
-    if ($value instanceof AttributeInterface) {
-      $this->map[$name] = get_class($value);
-    } else {
-      $this->flags[$name] = 0;
-    }
-    $this->attrs[$name] = $value;
     return $this;
   }
 
@@ -288,7 +266,6 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
         throw new AttributeException('NULL and boolean FALSE values cannot be locked');
       }
       $this->set($name, $value);
-      //$this->locked[$name] = $value;
       $this->flags[$name] |= static::LOCKED;
     }
     return $this;

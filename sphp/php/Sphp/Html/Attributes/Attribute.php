@@ -17,7 +17,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IdentityAttribute extends AbstractAttribute {
+class Attribute extends AbstractAttribute {
 
   /**
    * @var string 
@@ -41,11 +41,17 @@ class IdentityAttribute extends AbstractAttribute {
     }
   }
 
+  /**
+   * 
+   * @return $this for a fluent interface
+   * @throws ImmutableAttributeException
+   */
   public function clear() {
     if ($this->isLocked()) {
-      throw new InvalidArgumentException();
+      throw new ImmutableAttributeException();
     }
     $this->value = null;
+    return $this;
   }
 
   public function getValue() {
@@ -59,27 +65,21 @@ class IdentityAttribute extends AbstractAttribute {
   public function lock($value) {
     $this->set($value);
     $this->locked = true;
+    return $this;
   }
 
+  /**
+   * 
+   * @param  mixed $value
+   * @return $this for a fluent interface
+   * @throws ImmutableAttributeException
+   */
   public function set($value) {
     if ($this->isLocked()) {
       throw new ImmutableAttributeException();
     }
     $this->value = $value;
     return $this;
-  }
-
-  public function identify(string $prefix = null, int $length = 16) {
-    if (!$this->isLocked()) {
-      if ($prefix === null) {
-        $prefix = $this->getName();
-      }
-      $randLength = $length - mb_strlen($prefix);
-      $storage = IdStorage::get($this->getName());
-      $value = $storage->generateRandom($prefix, $randLength);
-      $this->lock($value);
-    }
-    return $this->getValue();
   }
 
 }
