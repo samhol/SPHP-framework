@@ -31,7 +31,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
   /**
    * attributes as a (name -> value) map
    *
-   * @var array
+   * @var AttributeInterface[]
    */
   private $attrs = [];
 
@@ -61,9 +61,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    *
    */
   public function __construct(array $objectMap = []) {
-
     $this->map = $objectMap;
-    //$this->attrObjects = $objectMap;
   }
 
   /**
@@ -73,7 +71,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrObjects, $this->attrs, $this->flags);
+    unset($this->attrs, $this->map);
   }
 
   /**
@@ -84,7 +82,6 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->attrObjects = clone $this->attrObjects;
     $this->attrs = Arrays::copy($this->attrs);
     $this->flags = Arrays::copy($this->flags);
   }
@@ -110,15 +107,6 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    */
   public function isMapped(string $name): bool {
     return array_key_exists($name, $this->map);
-  }
-
-  /**
-   * Returns the inner attribute object manager
-   *
-   * @return AttributeObjectManager the inner attribute object manager
-   */
-  protected function getObjectManager(): AttributeObjectManager {
-    return $this->attrObjects;
   }
 
   /**
@@ -363,8 +351,7 @@ class AbstractAttributeManager1 implements Countable, IteratorAggregate {
    * @return int the number of the attributes stored
    */
   public function count(): int {
-    $num = count($this->attrs);
-    return $num + $this->attrObjects->count();
+    return count($this->attrs);
   }
 
   /**
