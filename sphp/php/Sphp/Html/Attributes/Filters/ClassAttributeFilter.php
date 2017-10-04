@@ -29,8 +29,8 @@ class ClassAttributeFilter extends AbstractFilter {
    *
    * **Important:** Parameter <var>$raw</var> restrictions and rules
    * 
-   * 1. A string parameter can contain multiple comma separated unique values
-   * 2. An array parameter can contain only one unique atomic value per value
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
    * 3. Duplicate values are ignored
    *
    * @param  mixed $raw the value(s) to parse
@@ -39,43 +39,28 @@ class ClassAttributeFilter extends AbstractFilter {
   public function filter($raw): array {
     $parsed = [];
     if (is_array($raw)) {
-      $parsed = $this->filterArray($raw);
+      $parsed = array_unique(Arrays::flatten($raw));
     } else if ($raw instanceof MultiValueAttribute) {
-      $parsed = $this->filterArray($raw->toArray());
+      $parsed = $raw->toArray();
     } else {
-      $parsed = $this->splitString(Strings::toString($raw));
+      $parsed = [Strings::toString($raw)];
     }
-    return array_unique($parsed);
-  }
-
-  /**
-   * 
-   * @param  array $raw
-   * @return string[]
-   */
-  public function filterArray(array $raw): array {
-    $flatten = Arrays::flatten($raw);
-    $result = [];
-    foreach ($flatten as $rawValue) {
-      $result = array_merge($result, $this->splitString(Strings::toString($rawValue)));
-    }
-    return $result;
+    return $parsed;
   }
 
   /**
    * 
    * @param  string $string
-   * @return array
+   * @return bool
    */
-  public function splitString(string $string): array {
-    $splitted = preg_split("/[\s]+/", trim($string));
-    $f = function ($var) {
-      return $var !== '';
-    };
-    $result = array_filter($splitted, $f);
-    return $result;
+  public function validate(string $string): bool {
+    return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $string) === 1;
   }
 
+  /**
+   * 
+   * @return ClassAttributeFilter
+   */
   public static function instance(): ClassAttributeFilter {
     if (static::$instance === null) {
       static::$instance = new static();
