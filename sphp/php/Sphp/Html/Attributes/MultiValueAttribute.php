@@ -35,7 +35,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @var string[]
    */
   private $locked = [];
-  
+
   /**
    *
    * @var ClassAttributeFilter
@@ -73,10 +73,11 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function set($values) {
     $this->clear();
-    $parsed = $this->filter->filter(func_get_args());
-    if (!empty($parsed)) {
+    //$parsed = $this->filter->filter(func_get_args());
+    $this->add(func_get_args());
+    /* if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
-    }
+      } */
     return $this;
   }
 
@@ -94,8 +95,13 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function add(...$values) {
     $parsed = $this->filter->filter($values);
-    if (!empty($parsed)) {
+    /* if (!empty($parsed)) {
       $this->values = array_unique(array_merge($parsed, $this->values));
+      } */
+    foreach ($parsed as $class) {
+      if (!array_key_exists($class, $this->values)) {
+        $this->values[$class] = false;
+      }
     }
     return $this;
   }
@@ -112,8 +118,19 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return boolean true if the given values are locked and false otherwise
    */
   public function isLocked($values = null): bool {
+    if ($values === null) {
+      return in_array(true, $this->values);
+    } else {
+
+      $parsed = $this->filter->filter(func_get_args());
+      foreach ($parsed as $class) {
+        if (array_key_exists($class, $this->values)) {
+          
+        }
+      }
+    }
+
     if (is_array($values) || is_string($values) || is_numeric($values)) {
-      $parsed = $this->filter->filter($values);
       $locked = !empty($parsed) && !array_diff($parsed, $this->locked);
     } else {
       $locked = count($this->locked) > 0;
@@ -154,11 +171,11 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 
    * @param  scalar|scalar[] $values the atomic values to remove
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\RuntimeException if any of the given values is unmodifiable
+   * @throws AttributeException if any of the given values is immutable
    */
   public function remove($values) {
     if ($this->isLocked($values)) {
-      throw new RuntimeException($this->getName() . ' attribute values given are unremovable');
+      throw new AttributeException($this->getName() . ' attribute values given are immutable');
     } else if (is_array($this->values)) {
       $arr = $this->filter->filter($values);
       if (count($arr) > 0) {

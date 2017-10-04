@@ -3,20 +3,20 @@
 namespace Sphp\Html\Attributes;
 
 echo "<pre>";
-$objMap = new AttributeObjectManager([
+$mngr = new AbstractAttributeManager1([
     'class' => MultiValueAttribute::class, 
     'style' => PropertyAttribute::class, 
     'data-foo' => PropertyAttribute::class]);
-var_dump($objMap->contains('class'), $objMap->contains('foo'));
+var_dump($mngr->exists('class'), $mngr->exists('foo'));
 //$objMap->mapObject('data-foo', PropertyAttribute::class);
-$objMap->getObject('data-foo')->set('foo:bar;');
-var_dump($objMap->contains('class'), $objMap->contains('foo'), $objMap->__toString());
+$mngr->getObject('class')->lock('foo bar');
+$mngr->getObject('style')->set('foo:bar;');
+var_dump($mngr->exists('class'), $mngr->exists('foo'), "$mngr");
 //$objMap->mapObject('data-foo', 'foo');
-$mngr = new HtmlAttributeManager($objMap);
 $mngr->set('blaa', 'blaah');
 $mngr->lock('data-foo', 'shit: happens');
 $mngr->set('class', range('a', 'e'));
-$mngr->identify('foo');
+//$mngr->identify('foo');
 var_dump("$mngr");
 //$mngr->remove('data-foo');
 var_dump("$mngr");
