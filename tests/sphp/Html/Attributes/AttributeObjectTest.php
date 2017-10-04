@@ -1,44 +1,59 @@
 <?php
 
-use Sphp\Html\Attributes\AttributeInterface;
+namespace Sphp\Html\Attributes;
 
-abstract class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
+use Sphp\Html\Attributes\AttributeInterface;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+
+class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   *
    * @var AttributeInterface 
    */
   protected $attrs;
+
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    echo "\nsetUp:\n";
     $this->attrs = $this->createAttr();
   }
+
   /**
    * Tears down the fixture, for example, closes a network connection.
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    echo "\ntearDown:\n";
     $this->attrs = null;
   }
 
   /**
    * @return AttributeInterface
    */
-  abstract public function createAttr($name = "data-attr");
+  public function createAttr(string $name = 'data-attr'): AttributeInterface {
+    return new Attribute($name);
+  }
 
   /**
-   * 
-   * @return string[]
+   * @return scalar[]
    */
-  abstract public function scalarData();
+  public function scalarData(): array {
+    return [
+        ['', '', true],
+        [' ', ' ', true],
+        [true, true, true],
+        [false, false, false],
+        ['value1', 'value1', true],
+        [' value2 ', ' value2 ', true],
+        [0, 0, true],
+        [-1, -1, true],
+        [1, 1, true],
+        [0b100, 0b100, true]
+    ];
+  }
 
   /**
-   * 
    * @covers AttributeInterface::set()
    * @dataProvider scalarData
    * @param scalar $value
@@ -55,8 +70,7 @@ abstract class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
+   * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
     $this->attrs->demand();
@@ -68,10 +82,15 @@ abstract class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
-  abstract public function lockMethodData();
+  public function lockMethodData(): array {
+    return [
+        [1],
+        ['a'],
+        [' ä ']
+    ];
+  }
 
   /**
    * @covers Sphp\Html\Attributes\AbstractAttribute::lock()
@@ -80,9 +99,12 @@ abstract class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
    */
   public function testLockMethod($value) {
     $attr = $this->createAttr();
+    $this->assertFalse($attr->isLocked());
     $attr->lock($value);
     $this->assertTrue($attr->isLocked());
     $this->assertEquals($attr->getValue(), $value);
+    $this->expectException(ImmutableAttributeException::class);
+    $attr->clear();
   }
 
 }

@@ -4,23 +4,21 @@ namespace Sphp\Html\Attributes;
 
 include_once 'AttributeObjectTest.php';
 
-class MultiValueAttributeTest extends \AttributeObjectTest {
+class MultiValueAttributeTests extends AttributeObjectTest {
 
   /**
-   *
    * @var MultiValueAttribute 
    */
   protected $attrs;
 
-  public function createAttr($name = "class") {
+  public function createAttr(string $name = 'class'): AttributeInterface {
     return new MultiValueAttribute($name);
   }
 
   /**
-   * 
    * @return string[]
    */
-  public function emptyData() {
+  public function emptyData(): array {
     return [
         [""],
         [" "],
@@ -55,7 +53,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function scalarData() {
+  public function scalarData(): array {
     return [
         ["", false, false],
         [" ", false, false],
@@ -74,7 +72,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function parsingData() {
+  public function parsingData(): array {
     return [
         ["", []],
         [" ", []],
@@ -103,13 +101,14 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * @dataProvider parsingData
    */
   public function testParsing($value, $expected) {
+    
   }
 
   /**
    * 
    * @return string[]
    */
-  public function settingData() {
+  public function settingData(): array {
     return [
         [null, false],
         [false, false],
@@ -138,7 +137,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function lockingData() {
+  public function lockingData(): array {
     return [
         ["c1"],
         [["c1", "c2"]],
@@ -162,7 +161,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return string[]
    */
-  public function addingData() {
+  public function addingData(): array {
     return [
         ["c1", 1],
         ["c1 c2 c2", 2],
@@ -189,7 +188,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return scalar[]
    */
-  public function clearingData() {
+  public function clearingData(): array {
     return [
         ["c1", "l1", 1],
         ["c1 c2 c2", "li l2", 2],
@@ -220,7 +219,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
    * 
    * @return scalar[]
    */
-  public function removingData() {
+  public function removingData(): array {
     return [
         ["c1", "", 0],
         ["c1", "l1", 1],
@@ -263,7 +262,7 @@ class MultiValueAttributeTest extends \AttributeObjectTest {
     //$this->assertEquals("$attr", 'class="a b c d"');
   }
 
-  public function lockMethodData() {
+  public function lockMethodData(): array {
     return [
         [1],
         ["a"],
