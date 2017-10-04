@@ -23,10 +23,10 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @param string[] $objectMap
    */
   public function __construct() {
-    $objects = new AttributeObjectManager([
+    $objects = [
         'class' => MultiValueAttribute::class,
         'style' => PropertyAttribute::class,
-        'id' => IdentityAttribute::class]);
+        'id' => IdentityAttribute::class];
     parent::__construct($objects);
   }
 
@@ -36,7 +36,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @return MultiValueAttribute the `class` attribute object
    */
   public function classes(): MultiValueAttribute {
-    return $this->getObjectManager()->getObject('class');
+    return $this->createObject('class');
   }
 
   /**
@@ -45,7 +45,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @return PropertyAttribute the `style` attribute object
    */
   public function styles(): PropertyAttribute {
-    return $this->getObjectManager()->getObject('style');
+    return $this->createObject('style');
   }
 
   /**
@@ -66,7 +66,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
   }
 
   public function id(): IdentityAttribute {
-    return $this->getObjectManager()->getObject('id');
+    return $this->createObject('id');
   }
 
   public function identify(string $prefix = null, int $length = 16): string {

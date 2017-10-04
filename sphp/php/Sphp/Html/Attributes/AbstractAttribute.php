@@ -8,6 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
  * An abstract implementation of an HTML attribute object
@@ -36,10 +37,17 @@ abstract class AbstractAttribute implements AttributeInterface {
   /**
    * Constructs a new instance
    *
-   * @param string $name the name of the attribute
+   * @param  string $name the name of the attribute
+   * @throws AttributeException
    */
-  public function __construct(string $name) {
+  public function __construct(string $name, $value = null) {
+    if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
+      throw new AttributeException("Malformed Attribute name '$name'");
+    }
     $this->name = $name;
+    if ($value !== null) {
+      $this->set($value);
+    }
   }
 
   /**

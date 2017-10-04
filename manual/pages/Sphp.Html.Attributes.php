@@ -56,5 +56,3 @@ to the given value. Locked attribute attribute is always visible. Such attribute
 
 MD
 );
-
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.AttributeObjectManager');
