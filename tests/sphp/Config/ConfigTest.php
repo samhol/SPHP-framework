@@ -4,7 +4,7 @@ namespace Sphp\Config;
 
 class ConfigTest extends \PHPUnit\Framework\TestCase {
 
-  public function configData1() {
+  public function configData1(): array {
     return [
         [["domain1" => ["string" => "string"]], true],
         [["domain1" => ["int" => 1]], true],
@@ -32,6 +32,31 @@ class ConfigTest extends \PHPUnit\Framework\TestCase {
       $this->assertTrue($conf->isReadOnly());
     }
     $this->assertSame($config, $conf->toArray());
+  }
+
+  public function mergeData(): array {
+    return [
+        [['foo' => 'bar'], ['foo' => 'baz']],
+        [['foo' => 'bar'], ['foo' => 'baz', 'f' => 2]],
+    ];
+  }
+
+  /**
+   * @dataProvider mergeData
+   *
+   * @param array $data1
+   * @param array $data2
+   */
+  public function testMerging(array $data1, array $data2) {
+    $conf1 = new Config($data1, false);
+    $conf2 = new Config($data2, false);
+    $conf1->merge($conf2);
+    foreach ($data2 as $varName => $v) {
+      $this->assertSame($conf1[$varName], $v);
+      $this->assertSame($conf1->get($varName), $v);
+      $this->assertSame($conf1->$varName, $v);
+      $this->assertTrue($conf1->contains($varName));
+    }
   }
 
 }

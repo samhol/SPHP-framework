@@ -161,7 +161,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   public function set(string $varName, $value) {
     if (!$this->isReadOnly()) {
       if (is_array($value)) {
-        $this->data[$varName] = new static($value, $this->readonly);
+        $this->data[$varName] = new static($value, $this->isReadOnly());
       } else {
         $this->data[$varName] = $value;
       }
