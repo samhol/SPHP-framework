@@ -12,6 +12,7 @@ use ArrayAccess;
 use Iterator;
 use Countable;
 use InvalidArgumentException;
+use Sphp\Config\Exceptions\ConfigurationException;
 
 /**
  * Application Configuration class for storing common application data
@@ -89,7 +90,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Returns whether Config object is read only or not
+   * Returns whether Configuration object is read only or not
    * 
    * @return boolean
    */
@@ -115,14 +116,14 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Checks whether the configuration variable exists
    *
-   * @param  mixed $varName the name of the variable
+   * @param  string $varName the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function __isset($varName): bool {
-    return array_key_exists($varName, $this->data);
+  public function __isset(string $varName): bool {
+    return $this->contains($varName);
   }
 
-  public function get($name, $default = null) {
+  public function get(string $name, $default = null) {
     if (array_key_exists($name, $this->data)) {
       return $this->data[$name];
     }
@@ -130,27 +131,34 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
+   * Checks whether the configuration variable exists
+   *
+   * @param  string $varName the name of the variable
+   * @return boolean true on success or false on failure
+   */
+  public function contains(string $varName): bool {
+    return isset($this->data[$varName]) || array_key_exists($varName, $this->data);
+  }
+
+  /**
    * Returns the configuration variable value
    *
-   * @param  mixed $varName the name of the variable
+   * @param  string $varName the name of the variable
    * @return mixed content or `null`
    */
-  public function __get($varName) {
+  public function __get(string $varName) {
     return $this->get($varName, null);
   }
 
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * The <var>$varName</var> can either be an `integer` or a `string`.
-   * Additionally the following <var>$varName</var> casting is equal with the
-   * PHP array key casting. The <var>$value</var> can be of any type.
-   *
-   * @param  mixed $varName the name of the variable
+   * @param  string $varName the name of the variable
    * @param  mixed $value the value to set
    * @return $this for a fluent interface
+   * @throws ConfigurationException if the object is read only
    */
-  public function set($varName, $value) {
+  public function set(string $varName, $value) {
     if (!$this->isReadOnly()) {
       if (is_array($value)) {
         $this->data[$varName] = new static($value, $this->readonly);
@@ -158,7 +166,21 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
         $this->data[$varName] = $value;
       }
     } else {
-      throw new InvalidArgumentException;
+      throw new ConfigurationException('Configuration object is read only');
+    }
+    return $this;
+  }
+
+  /**
+   * Merge another Configuration object with this one
+   *
+   * @param  Config $merged
+   * @return $this for a fluent interface
+   * @throws ConfigurationException if the object is read only
+   */
+  public function merge(Config $merged) {
+    foreach ($merged as $varName => $value) {
+      $this->set($varName, $value);
     }
     return $this;
   }
@@ -170,26 +192,40 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Additionally the following <var>$varName</var> casting is equal with the
    * PHP array key casting. The <var>$value</var> can be of any type.
    *
-   * @param  mixed $varName the name of the variable
+   * @param  string $varName the name of the variable
    * @param  mixed $value the value to set
+   * @throws ConfigurationException if the object is read only
    */
-  public function __set($varName, $value) {
+  public function __set(string $varName, $value) {
     $this->set($varName, $value);
+  }
+
+  /**
+   * Removes the value at the specified variable
+   *
+   * @param  string $name the name of the variable
+   * @return $this for a fluent interface
+   * @throws ConfigurationException if the object is read only
+   */
+  public function remove(string $name) {
+    if (!$this->isReadOnly()) {
+      throw new ConfigurationException('Configuration object is read only');
+    } else if (isset($this->data[$name])) {
+      unset($this->data[$name]);
+      $this->skipNextIteration = true;
+    }
+    return $this;
   }
 
   /**
    * Unsets the value at the specified variable
    *
-   * @param  mixed $name the name of the variable
+   * @param  string $name the name of the variable
    * @return $this for a fluent interface
+   * @throws ConfigurationException if the object is read only
    */
-  public function __unset($name) {
-    if (!$this->isReadOnly()) {
-      throw new Exception\InvalidArgumentException('Config is read only');
-    } elseif (isset($this->data[$name])) {
-      unset($this->data[$name]);
-      $this->skipNextIteration = true;
-    }
+  public function __unset(string $name) {
+    $this->remove($name);
     return $this;
   }
 
@@ -203,43 +239,6 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
       }
     }
     return $arr;
-  }
-
-  /**
-   * Merge another Configuration object
-   *  with this one.
-   *
-   * For duplicate keys, the following will be performed:
-   * - Nested Configuration objects will be recursively merged.
-   * - Items in $merge with INTEGER keys will be appended.
-   * - Items in $merge with STRING keys will overwrite current values.
-   *
-   * @param  Config $merge
-   * @return Config
-   */
-  public function merge(Config $merge) {
-    foreach ($merge as $key => $value) {
-      if (array_key_exists($key, $this->data)) {
-        if (is_int($key)) {
-          $this->data[] = $value;
-        } elseif ($value instanceof self && $this->data[$key] instanceof self) {
-          $this->data[$key]->merge($value);
-        } else {
-          if ($value instanceof self) {
-            $this->data[$key] = new static($value->toArray(), $this->allowModifications);
-          } else {
-            $this->data[$key] = $value;
-          }
-        }
-      } else {
-        if ($value instanceof self) {
-          $this->data[$key] = new static($value->toArray(), $this->allowModifications);
-        } else {
-          $this->data[$key] = $value;
-        }
-      }
-    }
-    return $this;
   }
 
   /**
@@ -301,13 +300,13 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * @return boolean
    */
   public function offsetExists($offset): bool {
-    return array_key_exists($offset, $this->data);
+    return $this->contains($offset);
   }
 
   /**
    * 
-   * @param type $offset
-   * @return type
+   * @param  string $offset
+   * @return mixed the value at the 
    */
   public function offsetGet($offset) {
     return $this->get($offset);
@@ -315,19 +314,19 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
 
   /**
    * 
-   * @param type $offset
-   * @param type $value
+   * @param string $offset
+   * @param mixed $value
    */
   public function offsetSet($offset, $value) {
-    $this->__set($offset, $value);
+    $this->set($offset, $value);
   }
 
   /**
    * 
-   * @param type $offset
+   * @param string $offset
    */
   public function offsetUnset($offset) {
-    $this->__unset($offset);
+    $this->remove($offset);
   }
 
 }
