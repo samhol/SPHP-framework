@@ -40,9 +40,10 @@ class NotEmptyValidator extends AbstractValidator {
   /**
    * Constructs a new validator
    *
+   * @param string $message
    */
-  public function __construct($type = 'scalar', $message = "Value is required and not empty") {
-    parent::__construct('Please insert a value');
+  public function __construct(string $message = "Value is empty") {
+    parent::__construct($message);
   }
 
   public function isValid($value): bool {
@@ -50,7 +51,7 @@ class NotEmptyValidator extends AbstractValidator {
     $valid = true;
     if ($value === null) {
       $valid = false;
-    } else if (is_array($value) && count($value) === 0) {
+    } else if (is_array($value) && empty($value)) {
       $valid = false;
     } else if ($value === '') {
       $valid = false;

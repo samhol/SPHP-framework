@@ -76,7 +76,7 @@ class RangeValidator extends AbstractLimitValidator {
    * @param  float $max the maximum value
    * @return $this for a fluent interface
    */
-  public function setMax($max) {
+  public function setMax(float $max) {
     $this->max = $max;
     return $this;
   }

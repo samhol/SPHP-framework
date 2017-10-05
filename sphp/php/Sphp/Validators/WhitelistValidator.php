@@ -55,6 +55,7 @@ class WhitelistValidator extends AbstractValidator {
         return false;
       }
     }
+    return true;
   }
 
 }

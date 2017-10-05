@@ -51,7 +51,7 @@ abstract class AbstractValidator implements ValidatorInterface {
    *
    * @param MessageList $error container for the error messages
    */
-  public function __construct($error = 'Invalid value') {
+  public function __construct(string $error = 'Invalid value') {
     $this->messageTemplates = [];
     $this->errors = new TranslatableCollection();
     $this->setMessageTemplate(static::INVALID, $error);

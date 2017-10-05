@@ -106,7 +106,7 @@ class FormValidator extends AbstractValidator implements \Countable, \IteratorAg
    * @return boolean true if the input name has validators attached to it, false if not
    */
   public function exists(string $inputName) {
-    return array_key_exists($inputName, $this->validators);
+    return isset($this->validators[$inputName]);
   }
 
   /**

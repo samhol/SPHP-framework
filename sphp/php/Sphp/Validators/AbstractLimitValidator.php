@@ -52,6 +52,7 @@ abstract class AbstractLimitValidator extends AbstractValidator {
   }
 
   /**
+   * Checks whether the the limit is set as inclusive or not
    * 
    * @return boolean true for inclusive limit and false for not
    */

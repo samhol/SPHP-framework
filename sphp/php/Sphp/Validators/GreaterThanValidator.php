@@ -29,7 +29,7 @@ class GreaterThanValidator extends AbstractLimitValidator {
    * @param float $max the maximum value
    * @param boolean $inclusive true for inclusive limit and false for exclusive
    */
-  public function __construct($min, $inclusive = true) {
+  public function __construct(float $min, bool $inclusive = true) {
     parent::__construct($inclusive);
     $this->setMin($min);
     $this->setMessageTemplate(static::EXCLUSIVE_ERROR, 'Not in range (%s-%s)');
@@ -41,7 +41,7 @@ class GreaterThanValidator extends AbstractLimitValidator {
    * 
    * @return float the minimum value
    */
-  public function getMin() {
+  public function getMin(): float {
     return $this->min;
   }
 
@@ -51,7 +51,7 @@ class GreaterThanValidator extends AbstractLimitValidator {
    * @param  float $min the minimum value
    * @return $this for a fluent interface
    */
-  public function setMin($min) {
+  public function setMin(float $min) {
     $this->min = $min;
     return $this;
   }

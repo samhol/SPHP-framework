@@ -31,7 +31,7 @@ class DatetimeValidator extends AbstractValidator {
    *
    * @param string $format the required format of the validable value
    */
-  public function __construct($format = 'Y-m-d H:i:s') {
+  public function __construct(string $format = 'Y-m-d H:i:s') {
     parent::__construct();
     if ($format !== null) {
       $this->setDateTimeFormat($format);
@@ -42,10 +42,10 @@ class DatetimeValidator extends AbstractValidator {
   /**
    * Sets the required format of the validable value
    *
-   * @param string $format the required format of the validable value
+   * @param  string $format the required format of the validable value
    * @return $this for a fluent interface
    */
-  public function setDateTimeFormat($format) {
+  public function setDateTimeFormat(string $format) {
     $this->format = $format;
     return $this;
   }
