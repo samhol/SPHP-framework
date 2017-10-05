@@ -159,7 +159,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute name is mapped false otherwise
    */
   public function isMapped(string $name): bool {
-    return array_key_exists($name, $this->map);
+    return isset($this->map[$name]);
   }
 
   /**
@@ -357,7 +357,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute exists and false otherwise
    */
   public function exists(string $name): bool {
-    return array_key_exists($name, $this->attrs);
+    return isset($this->attrs[$name]);
   }
 
   /**

@@ -67,7 +67,7 @@ class Ini implements Arrayable {
    * @link   http://php.net/manual/en/ini.list.php list of all available options
    */
   public function exists(string $name): bool {
-    return array_key_exists($name, $this->ini);
+    return isset($this->ini[$name]);
   }
 
   /**
@@ -110,7 +110,7 @@ class Ini implements Arrayable {
   }
 
   /**
-   * Executes a function using a custom PHP configuration.
+   * Executes a function using a custom PHP configuration
    * 
    * @param  callable $callable the code to execute using the given settings
    * @return mixed the value returned by the given callable

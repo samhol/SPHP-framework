@@ -38,7 +38,7 @@ class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return scalar[]
    */
-  public function scalarData(): array {
+  public function settingData(): array {
     return [
         ['', '', true],
         [' ', ' ', true],
@@ -55,18 +55,18 @@ class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @covers AttributeInterface::set()
-   * @dataProvider scalarData
+   * @dataProvider settingData
    * @param scalar $value
    * @param scalar $expected
    * @param boolean $visibility
    */
-  public function testScalarSetting($value, $expected, $visibility) {
+  public function testSetting($value) {
     $this->attrs->set($value);
     $this->assertFalse($this->attrs->isLocked());
     $this->assertFalse($this->attrs->isLocked($value));
     $this->assertFalse($this->attrs->isDemanded());
-    $this->assertEquals($this->attrs->isVisible(), $visibility);
-    $this->assertEquals($this->attrs->getValue(), $expected);
+    $this->assertEquals($this->attrs->isVisible(), $value !== false);
+    $this->assertEquals($this->attrs->getValue(), $value);
   }
 
   /**

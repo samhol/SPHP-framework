@@ -14,7 +14,7 @@ use Countable;
 use InvalidArgumentException;
 
 /**
- * Application Config class for storing common application data
+ * Application Configuration class for storing common application data
  *
  * **Note:** Uses Singleton pattern
  *
@@ -36,14 +36,14 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   private static $instances;
 
   /**
-   * the config variable name value pairs container
+   * the configuration variable name value pairs container
    *
    * @var array
    */
   private $data = [];
 
   /**
-   * the config variable name value pairs container
+   * readonly flag
    *
    * @var boolean
    */
@@ -53,7 +53,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * Constructs a new instance
    * 
    * @param array[] $config the domain name of the instance
-   * @param boolean $readOnly config data is read-only unless this is set to false
+   * @param boolean $readOnly configuration data is read-only unless this is set to false
    */
   public function __construct(array $config = [], bool $readOnly = true) {
     foreach ($config as $k => $v) {
@@ -69,11 +69,6 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Returns the singleton instance of the {@link self} object
    *
-   * @param array[] $config the domain name of the instance
-   */
-
-  /**
-   * 
    * @param  string $name
    * @param  array $data
    * @return Config
@@ -211,10 +206,11 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Merge another Config with this one.
+   * Merge another Configuration object
+   *  with this one.
    *
    * For duplicate keys, the following will be performed:
-   * - Nested Configs will be recursively merged.
+   * - Nested Configuration objects will be recursively merged.
    * - Items in $merge with INTEGER keys will be appended.
    * - Items in $merge with STRING keys will overwrite current values.
    *
@@ -247,9 +243,9 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Returns the number of the configuraion parameters
+   * Returns the number of the configuration parameters
    *
-   * @return int the number of the configuraion parameters
+   * @return int the number of the configuration parameters
    */
   public function count(): int {
     return count($this->data);

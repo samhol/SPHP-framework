@@ -43,7 +43,7 @@ class IdStorage {
    * @return IdStorage instance containing all identifiers of given name
    */
   public static function get(string $name): IdStorage {
-    if (!array_key_exists($name, self::$instances)) {
+    if (!isset(self::$instances[$name])) {
       static::$instances[$name] = new static();
     }
     return static::$instances[$name];

@@ -11,6 +11,7 @@ use Sphp\Filters\AbstractFilter;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\Exceptions\AttributeException;
 
 /**
  * Description of ClassAttributeFilter
@@ -36,7 +37,7 @@ class ClassAttributeFilter extends AbstractFilter {
    * @param  mixed $raw the value(s) to parse
    * @return string[] separated atomic values in an array
    */
-  public function filter($raw): array {
+  public function filter($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
       $parsed = array_unique(Arrays::flatten($raw));
@@ -45,15 +46,25 @@ class ClassAttributeFilter extends AbstractFilter {
     } else {
       $parsed = [Strings::toString($raw)];
     }
+    if ($validate) {
+      foreach($parsed as $value) {
+        if (!$this->validate($value)) {
+          throw new AttributeException("invalid value '$value'");
+        }
+      }
+    }
     return $parsed;
   }
 
   /**
    * 
-   * @param  string $string
+   * @param  mixed $string
    * @return bool
    */
-  public function validate(string $string): bool {
+  public function validate($string): bool {
+    if (!is_string($string)) {
+      return false;
+    }
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $string) === 1;
   }
 

@@ -93,9 +93,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->filter->filter($values);
+    $parsed = $this->filter->filter($values, true);
     foreach ($parsed as $class) {
-      if (!array_key_exists($class, $this->values)) {
+      if (!isset($this->values[$class])) {
         $this->values[$class] = false;
       }
     }
@@ -120,7 +120,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
       $locked = false;
       $parsed = Arrays::flatten(func_get_args());
       foreach ($parsed as $class) {
-        $locked = array_key_exists($class, $this->values) && $this->values[$class] === true;
+        $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
           break;
         }
@@ -159,16 +159,16 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 
    * @param  scalar|scalar[] $values the atomic values to remove
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the given values is immutable
+   * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove($values) {
     $arr = Arrays::flatten(func_get_args());
     foreach ($arr as $class) {
-      if (array_key_exists($class, $this->values)) {
+      if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
           unset($this->values[$class]);
         } else {
-          throw new AttributeException("Value '$class' in '{$this->getName()}' attribute is immutable");
+          throw new ImmutableAttributeException("Value '$class' in '{$this->getName()}' attribute is immutable");
         }
       }
     }
@@ -197,7 +197,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
     $needles = $this->filter->filter($values);
     $exists = false;
     foreach ($needles as $class) {
-      $exists = array_key_exists($class, $this->values);
+      $exists = isset($this->values[$class]);
       if (!$exists) {
         break;
       }

@@ -174,7 +174,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return boolean true if the property exists and false otherwise
    */
   public function hasProperty($property): bool {
-    return array_key_exists($property, $this->props);
+    return isset($this->props[$property]);
   }
 
   /**

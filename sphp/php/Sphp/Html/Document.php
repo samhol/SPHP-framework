@@ -243,17 +243,17 @@ class Document {
   }
 
   /**
-   * the html component
+   * the HTML component
    *
    * @var Html[] 
    */
   private static $html = [];
 
   /**
-   * Returns the html component pointed by the given name
+   * Returns the HTML component pointed by the given name
    * 
    * @param  string $docName the name of the managed document
-   * @return Html the html component pointed by the given name
+   * @return Html the HTML component pointed by the given name
    */
   public static function html($docName = 0) {
     if (!array_key_exists($docName, self::$html)) {

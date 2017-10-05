@@ -51,7 +51,7 @@ class SideNavViewer implements ContentInterface {
 
   protected function buildMenu() {
     $this->nav = new AccordionMenu();
-    $this->nav->addCssClass('')->appendText('Documentation');
+    $this->nav->appendText('Documentation');
     $builder = new MenuBuilder(new MenuLinkBuilder($this->currentPage));
     $builder->buildMenu($this->data, $this->nav);
   }
