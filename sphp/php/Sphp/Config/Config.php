@@ -52,7 +52,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Constructs a new instance
    * 
-   * @param array[] $config the domain name of the instance
+   * @param array[] $config configuration data
    * @param boolean $readOnly configuration data is read-only unless this is set to false
    */
   public function __construct(array $config = [], bool $readOnly = true) {
@@ -67,31 +67,26 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Returns the singleton instance of the {@link self} object
+   * Returns named singleton instance of the configuration object
    *
-   * @param  string $name
-   * @param  array $data
-   * @return Config
+   * @param  string $name name of the singleton instance
+   * @param  array $data the configuration data
+   * @return Config singleton instance
    */
   public static function instance(string $name = null, array $data = []): Config {
     if ($name === null) {
       $name = 0;
     }
-    if (isset(self::$instances[$name])) {
-      return self::$instances[$name];
+    if (!isset(self::$instances[$name])) {
+      self::$instances[$name] = new static($data, false);
     }
-
-    $instance = new static($data, false);
-
-    self::$instances[$name] = $instance;
-
-    return $instance;
+    return self::$instances[$name];
   }
 
   /**
    * Returns whether the instance is read only or not
    * 
-   * @return boolean
+   * @return boolean true if the instance is read only and false otherwise
    */
   public function isReadOnly(): bool {
     return $this->readonly;
@@ -187,10 +182,6 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * The <var>$varName</var> can either be an `integer` or a `string`.
-   * Additionally the following <var>$varName</var> casting is equal with the
-   * PHP array key casting. The <var>$value</var> can be of any type.
-   *
    * @param  string $varName the name of the variable
    * @param  mixed $value the value to set
    * @throws ConfigurationException if the object is read only
@@ -295,37 +286,39 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
 
   /**
    * 
-   * @param  mixed $offset
-   * @return boolean
+   * @param  string $varName the name of the variable
+   * @return boolean true on success or false on failure
    */
-  public function offsetExists($offset): bool {
-    return $this->contains($offset);
+  public function offsetExists($varName): bool {
+    return $this->contains($varName);
   }
 
   /**
    * 
-   * @param  string $offset
+   * @param  string $varName the name of the variable
    * @return mixed the value at the 
    */
-  public function offsetGet($offset) {
-    return $this->get($offset);
+  public function offsetGet($varName) {
+    return $this->get($varName);
+  }
+
+  /**
+   * Assigns a value to the specified  configuration variable
+   * 
+   * @param  string $varName the name of the variable
+   * @param  mixed $value the value to set
+   * @throws ConfigurationException if the object is read only
+   */
+  public function offsetSet($varName, $value) {
+    $this->set($varName, $value);
   }
 
   /**
    * 
-   * @param string $offset
-   * @param mixed $value
+   * @param  string $varName the name of the variable
    */
-  public function offsetSet($offset, $value) {
-    $this->set($offset, $value);
-  }
-
-  /**
-   * 
-   * @param string $offset
-   */
-  public function offsetUnset($offset) {
-    $this->remove($offset);
+  public function offsetUnset($varName) {
+    $this->remove($varName);
   }
 
 }

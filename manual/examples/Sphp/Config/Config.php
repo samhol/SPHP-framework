@@ -2,14 +2,12 @@
 
 namespace Sphp\Config;
 
-Config::instance("foo")
-        ->set("foo", "bar");
+$conf1 = Config::instance("full of foo");
+$conf1->set("foo", "bar");
+$conf1->foobar = 'baz';
+Config::instance("full of foo")["bar"] = 10.2;
 
-echo "Current Configurator domain is: '" . Config::instance("foo")->foo . "'\n";
+echo "variable 'foo' in 'full of foo' is: $conf1->foo \n";
+echo "variable 'foobar' in 'full of foo' is: {$conf1["foobar"]} \n";
 
-
-Config::instance("foobar", [], false)
-        ->set("foo", "foo bar");
-
-print_r(Config::instance("foo")->toArray());
-print_r(Config::instance("foobar")->toArray());
+print_r(Config::instance("full of foo")->toArray());

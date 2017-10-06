@@ -2,7 +2,7 @@
 
 namespace Sphp\Config;
 
-class ConfigTest extends \PHPUnit\Framework\TestCase {
+class ConfigTests extends \PHPUnit\Framework\TestCase {
 
   public function configData1(): array {
     return [
@@ -51,10 +51,10 @@ class ConfigTest extends \PHPUnit\Framework\TestCase {
     $conf1 = new Config($data1, false);
     $conf2 = new Config($data2, false);
     $conf1->merge($conf2);
-    foreach ($data2 as $varName => $v) {
-      $this->assertSame($conf1[$varName], $v);
-      $this->assertSame($conf1->get($varName), $v);
-      $this->assertSame($conf1->$varName, $v);
+    foreach ($data2 as $varName => $value) {
+      $this->assertSame($conf1[$varName], $value);
+      $this->assertSame($conf1->get($varName), $value);
+      $this->assertSame($conf1->$varName, $value);
       $this->assertTrue($conf1->contains($varName));
     }
   }

@@ -17,6 +17,6 @@ environment by simply using multiple instances of $phpConfig.
 MD
 );
 
-(new CodeExampleBuilder("Sphp/Config/PHPConfig.php", 'text', false))
+CodeExampleBuilder::build("Sphp/Config/PHPConfig.php", 'text', false)
         ->setExamplePaneTitle('PHP environment manipulation example')
         ->printHtml();

@@ -8,7 +8,6 @@
 namespace Sphp\Config;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
-use Sphp\Stdlib\Arrays;
 use Sphp\Exceptions\OutOfRangeException;
 
 /**
@@ -21,7 +20,7 @@ use Sphp\Exceptions\OutOfRangeException;
 class Ini implements Arrayable {
 
   /**
-   * the ini 
+   * current  ini 
    *
    * @var string[]
    */
@@ -71,7 +70,7 @@ class Ini implements Arrayable {
   }
 
   /**
-   * Returns the current value of a configuration option
+   * Returns the stored value of a configuration option
    * 
    * @param  string $varname the name of the option
    * @return string the value of the option
@@ -82,17 +81,6 @@ class Ini implements Arrayable {
     if ($this->exists($varname)) {
       return $this->ini[$varname];
     }throw new OutOfRangeException();
-  }
-
-  /**
-   * Returns the current value of a configuration option
-   * 
-   * @param  string $varname the name of the option
-   * @return string  the value of the option
-   * @link   http://php.net/manual/en/function.ini-get.php ini_get
-   */
-  public function getCurrent(string $varname) {
-    return ini_get($varname);
   }
 
   /**
@@ -123,22 +111,26 @@ class Ini implements Arrayable {
   }
 
   /**
-   * Initializes all PHP settings defined by the instance
+   * Restores the values of  configuration options
    * 
-   * Previous settings are replaced
+   * Previous settings restored
    * 
    * @return $this for a fluent interface
    */
   public function reset() {
-    foreach ($this->pre as $name => $value) {
-      ini_set($name, $value);
+    foreach ($this->pre as $varname => $value) {
+      if ($value !== false) {
+        ini_set($varname, $value);
+      } else {
+        ini_restore($varname);
+      }
     }
     $this->pre = [];
     return $this;
   }
 
   public function toArray(): array {
-    return Arrays::copy($this->ini);
+    return $this->ini;
   }
 
 }
