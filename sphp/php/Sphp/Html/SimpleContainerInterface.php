@@ -10,7 +10,7 @@ namespace Sphp\Html;
 /**
  * Defines the properties required from a traversable HTML component container with
  *
- * An object of {@link self} type supports forexample these properties:
+ * An object of {@link self} type supports for example these properties:
  *
  * 1. Any extending class act as a container for other components like
  *    {@link ContentInterface}, other objects, text, ...etc.
