@@ -44,7 +44,7 @@ interface AttributeInterface {
   /**
    * Sets the value of the attribute
    *
-   * @param  scalar $value value to set
+   * @param  mixed $value value to set
    * @return $this for a fluent interface
    * @throws AttributeException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable

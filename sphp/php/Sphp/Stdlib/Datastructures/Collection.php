@@ -59,15 +59,6 @@ class Collection implements Iterator, CollectionInterface {
   }
 
   /**
-   * Returns the object as a string
-   *
-   * @return string the object as a string
-   */
-  public function __toString(): string {
-    return Arrays::implodeWithKeys($this->items);
-  }
-
-  /**
    * Determines whether the given property exists
    *
    * @param  mixed $offset the offset key
@@ -115,9 +106,7 @@ class Collection implements Iterator, CollectionInterface {
    * @return $this for a fluent interface
    */
   public function offsetUnset($offset) {
-    if ($this->offsetExists($offset)) {
-      unset($this->items[$offset]);
-    }
+    unset($this->items[$offset]);
     return $this;
   }
 
@@ -175,7 +164,7 @@ class Collection implements Iterator, CollectionInterface {
    * @param  mixed $items
    * @return array
    */
-  protected function getArrayableItems($items) {
+  protected function getArrayableItems($items): array {
     if ($items instanceof Arrayable) {
       $items = $items->toArray();
     } else if ($items instanceof Jsonable) {

@@ -8,6 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * Description of IdentityAttribute
@@ -33,6 +34,8 @@ class Attribute extends AbstractAttribute {
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
+   * @param mixed $value 
+   * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
    */
   public function __construct(string $name, $value = null) {
     parent::__construct($name);
@@ -41,14 +44,9 @@ class Attribute extends AbstractAttribute {
     }
   }
 
-  /**
-   * 
-   * @return $this for a fluent interface
-   * @throws ImmutableAttributeException
-   */
   public function clear() {
     if ($this->isLocked()) {
-      throw new ImmutableAttributeException();
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     $this->value = null;
     return $this;
@@ -68,15 +66,9 @@ class Attribute extends AbstractAttribute {
     return $this;
   }
 
-  /**
-   * 
-   * @param  mixed $value
-   * @return $this for a fluent interface
-   * @throws ImmutableAttributeException
-   */
   public function set($value) {
     if ($this->isLocked()) {
-      throw new ImmutableAttributeException();
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     $this->value = $value;
     return $this;

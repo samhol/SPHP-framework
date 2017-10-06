@@ -3,9 +3,9 @@
 namespace Sphp\Html\Attributes;
 
 echo "<pre>";
-$mngr = new AbstractAttributeManager1([
-    'class' => MultiValueAttribute::class, 
-    'style' => PropertyAttribute::class, 
+$mngr = new AbstractAttributeManager([
+    'class' => MultiValueAttribute::class,
+    'style' => PropertyAttribute::class,
     'data-foo' => PropertyAttribute::class]);
 var_dump($mngr->exists('class'), $mngr->exists('foo'));
 //$objMap->mapObject('data-foo', PropertyAttribute::class);
@@ -20,5 +20,7 @@ $mngr->set('class', range('a', 'e'));
 var_dump("$mngr");
 //$mngr->remove('data-foo');
 var_dump("$mngr");
+$arr = [];
+unset($arr[2]);
 ?>
 </pre>

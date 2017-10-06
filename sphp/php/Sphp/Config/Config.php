@@ -11,7 +11,6 @@ use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use Iterator;
 use Countable;
-use InvalidArgumentException;
 use Sphp\Config\Exceptions\ConfigurationException;
 
 /**
@@ -90,7 +89,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Returns whether Configuration object is read only or not
+   * Returns whether the instance is read only or not
    * 
    * @return boolean
    */
@@ -123,9 +122,9 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     return $this->contains($varName);
   }
 
-  public function get(string $name, $default = null) {
-    if (array_key_exists($name, $this->data)) {
-      return $this->data[$name];
+  public function get(string $varName, $default = null) {
+    if (array_key_exists($varName, $this->data)) {
+      return $this->data[$varName];
     }
     return $default;
   }
@@ -290,7 +289,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
    * 
    * @return boolean
    */
-  public function valid() {
+  public function valid(): bool {
     return $this->key() !== null;
   }
 

@@ -34,7 +34,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   /**
    * names of all locked properties
    *
-   * @var string[]
+   * @var boolean[]
    */
   private $lockedProps = [];
 
@@ -91,13 +91,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * **Note:** Replaces old mutable property value with the new one
    *
-   * @param  mixed $property the name of the property
+   * @param  string $property the name of the property
    * @param  mixed $value the value of the property
    * @return $this for a fluent interface
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
-  public function setProperty($property, $value) {
+  public function setProperty(string $property, $value) {
     if ($this->isLocked($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
@@ -108,6 +108,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
       throw new AttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
+    $this->lockedProps[$property] = false;
     return $this;
   }
 
@@ -162,8 +163,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   }
 
   public function clear() {
-    $locked = array_flip($this->lockedProps);
-    $this->props = array_intersect_key($this->props, $locked);
+    foreach ($this->lockedProps as $property => $locked) {
+      if (!$locked) {
+        $this->unsetProperty($property);
+      }
+    }
     return $this;
   }
 
@@ -173,17 +177,17 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string $property the name of the property
    * @return boolean true if the property exists and false otherwise
    */
-  public function hasProperty($property): bool {
+  public function hasProperty(string $property): bool {
     return isset($this->props[$property]);
   }
 
   /**
    * Returns the value of the property name or null if the property does not exist
    *
-   * @param  string|int $property the name of the property
+   * @param  string $property the name of the property
    * @return scalar|null the value of the property or null if the property does not exists
    */
-  public function getProperty($property) {
+  public function getProperty(string $property) {
     if ($this->hasProperty($property)) {
       $value = $this->props[$property];
     } else {
@@ -199,14 +203,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *         checks if any of the stored properties are locked
    * @return boolean true if locked and false otherwise
    */
-  public function isLocked($property = null): bool {
+  public function isLocked(string $property = null): bool {
     $locked = false;
     if ($property === null) {
-      $locked = !empty($this->lockedProps);
-    } else if (is_string($property)) {
-      $locked = in_array($property, $this->lockedProps);
-    } else if (is_array($property)) {
-      $locked = !array_diff($property, $this->lockedProps);
+      $locked = in_array(true, $this->lockedProps);
+    } else if ($this->hasProperty($property)) {
+      $locked = $this->lockedProps[$property];
     }
     return $locked;
   }
@@ -216,18 +218,18 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * **Note:** Replaces old not locked property values with the new ones
    *
-   * @param  string|int $property the name of the property
+   * @param  string $property the name of the property
    * @param  string $value the value of the property
    * @return $this for a fluent interface
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
-  public function lockProperty($property, $value) {
+  public function lockProperty(string $property, $value) {
     if ($this->isLocked($property)) {
-      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
+      throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is immutable");
     }
     $this->setProperty($property, $value);
-    $this->lockedProps[$property] = $property;
+    $this->lockedProps[$property] = true;
     return $this;
   }
 
@@ -239,8 +241,8 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * * `$props` are defined as "property" => "value" pairs.
    * * Replaces old not locked property values with the new ones
    *
-   * @param    string[] $props properties as `name => value` pairs
-   * @return   self for PHP Method Chaining
+   * @param  array $props properties as `name => value` pairs
+   * @return self for PHP Method Chaining
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
@@ -296,11 +298,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return int the number of the style properties stored
    */
   public function count(): int {
-    $num = 0;
-    if (!empty($this->props)) {
-      $num = count($this->props);
-    }
-    return $num;
+    return count($this->props);
   }
 
   /**
