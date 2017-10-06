@@ -220,7 +220,6 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     return new static($result, $this->encoding);
   }
 
-
   /**
    * Replaces all occurrences of $search in $str by $replacement
    *
@@ -230,6 +229,7 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
   public function replace(string $search, string $replacement): MbString {
     return $this->regexReplace(preg_quote($search), $replacement);
   }
+
   /**
    * Returns a new object with whitespace removed from the start and end of the string 
    * 
@@ -362,12 +362,11 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    *
    * @param  int $index The index from which to retrieve the char
    * @return string the character at the specified index
-   * @throws \Sphp\Exceptions\OutOfBoundsException if the positive or negative offset does
-   *                               not exist
+   * @throws OutOfBoundsException if the index does not exist
    */
   public function charAt(int $index): string {
     $length = $this->length();
-    if (($index >= 0 && $length <= $index) || $length < abs($index)) {
+    if (($index >= 0 && $length <= $index) || $length < $index) {
       throw new OutOfBoundsException("No character exists at the index: ($index)");
     }
     return \mb_substr($this->str, $index, 1, $this->encoding);
@@ -383,9 +382,9 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     $str = $this->str;
     $array = [];
     while ($strlen) {
-      $array[] = mb_substr($this->str, 0, 1, $this->encoding);
-      $str = mb_substr($this->str, 1, $strlen, $this->encoding);
-      $strlen = mb_strlen($str);
+      $array[] = \mb_substr($this->str, 0, 1, $this->encoding);
+      $str = \mb_substr($this->str, 1, $strlen, $this->encoding);
+      $strlen = \mb_strlen($str);
     }
     return $array;
   }
@@ -399,14 +398,27 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     return $this->encoding;
   }
 
+  /**
+   * Rewinds the Iterator to the first element
+   */
   public function rewind(): void {
     $this->index = 0;
   }
 
+  /**
+   * Returns the current caracter
+   * 
+   * @return mixed the current caracter
+   */
   public function current(): string {
     return $this->charAt($this->index);
   }
 
+  /**
+   * Return the key of the current character
+   * 
+   * @return int the key of the current character
+   */
   public function key(): int {
     return $this->index;
   }
@@ -415,15 +427,28 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
     $this->index++;
   }
 
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
   public function valid(): bool {
     return $this->index < $this->length();
   }
 
+
+  /**
+   * Checks whether a character exists in the query
+   * 
+   * @param  mixed $offset the name of the parameter
+   * @return boolean true if the parameter exists and false otherwise
+   */
   public function offsetExists($offset): bool {
     return is_int($offset) && $offset >= 0 && $offset < $this->length();
   }
 
   /**
+   * Returns the character at the given index
    * 
    * @param  mixed $offset
    * @return string
@@ -438,20 +463,20 @@ class MbString implements Countable, Iterator, Arrayable, ArrayAccess {
    * @param  mixed $offset
    * @param  mixed $value
    * @return void
-   * @throws BadMethodCallException
+   * @throws BadMethodCallException object is immutable
    */
   public function offsetSet($offset, $value): void {
-    throw new BadMethodCallException("Object is immutable, cannot modify char at position $offset directly");
+    throw new BadMethodCallException("Object is immutable, cannot modify chars directly");
   }
 
   /**
    * 
    * @param  mixed $offset
    * @return void
-   * @throws BadMethodCallException
+   * @throws BadMethodCallException always because object is immutable
    */
   public function offsetUnset($offset): void {
-    throw new BadMethodCallException("Object is immutable, cannot unset char at position $offset directly");
+    throw new BadMethodCallException("Object is immutable, cannot unset chars directly");
   }
 
 }

@@ -331,6 +331,9 @@ class BitMask implements Arrayable, Embeddable, Iterator {
     return $this->index;
   }
 
+  /**
+   * Advance the internal pointer of the collection
+   */
   public function next() {
     $this->index++;
   }

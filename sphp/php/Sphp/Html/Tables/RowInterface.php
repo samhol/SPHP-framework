@@ -18,5 +18,5 @@ namespace Sphp\Html\Tables;
  * @filesource
  */
 interface RowInterface extends TableContentInterface {
-
+  
 }

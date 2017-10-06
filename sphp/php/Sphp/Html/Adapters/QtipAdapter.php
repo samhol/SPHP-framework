@@ -9,6 +9,7 @@ namespace Sphp\Html\Adapters;
 
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\IdentifiableInterface;
+
 /**
  * Inserts a qTip style tooltip to the adaptee
  *
@@ -41,8 +42,8 @@ class QtipAdapter extends AbstractComponentAdapter {
    */
   public function setQtip($qtip) {
     $this->getComponent()->attrs()
-            ->set("title", $qtip)
-            ->set("data-sphp-qtip", true);
+            ->set('title', $qtip)
+            ->set('data-sphp-qtip', true);
     return $this;
   }
 
@@ -55,11 +56,12 @@ class QtipAdapter extends AbstractComponentAdapter {
    */
   public function setQtipPosition(string $my, string $at) {
     $this->getComponent()->attrs()
-            ->set("data-sphp-qtip", true)
-            ->set("data-sphp-qtip-at", $at)
-            ->set("data-sphp-qtip-my", $my);
+            ->set('data-sphp-qtip', true)
+            ->set('data-sphp-qtip-at', $at)
+            ->set('data-sphp-qtip-my', $my);
     return $this;
   }
+
   /**
    * 
    * @param IdentifiableInterface $viewport

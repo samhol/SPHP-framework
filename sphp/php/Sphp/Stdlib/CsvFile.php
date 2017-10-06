@@ -24,12 +24,6 @@ class CsvFile implements Arrayable, \Iterator {
 
   /**
    *
-   * @var callable 
-   */
-  private $filter;
-
-  /**
-   *
    * @var SplFileObject 
    */
   private $file;
@@ -70,7 +64,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @param  string $escape optional field escape character (one character only)
    * @throws \Sphp\Exceptions\RuntimeException
    */
-  public function __construct($filename, $delimiter = ',', $enclosure = '"', $escape = "\\") {
+  public function __construct(string $filename, string $delimiter = ',', string $enclosure = '"', string $escape = "\\") {
     if (!Filesystem::isFile($filename)) {
       throw new RuntimeException("The path '$filename' is not a file");
     }
@@ -147,7 +141,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @param  int $line the line number of the CSV file
    * @return $this for a fluent interface
    */
-  public function seek($line) {
+  public function seek(int $line) {
     $this->file->seek($line);
     return $this;
   }
@@ -158,7 +152,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @return string[] indexed array containing the fields of the header row
    * @see    http://php.net/manual/en/splfileobject.fgetcsv.php
    */
-  public function getHeaderRow() {
+  public function getHeaderRow(): array {
     return $this->createSplFileObject()->fgetcsv();
   }
 
@@ -168,7 +162,7 @@ class CsvFile implements Arrayable, \Iterator {
    * @param  int $count optional count of the limit
    * @return string[]
    */
-  public function getChunk($offset = 0, $count = -1) {
+  public function getChunk(int $offset = 0, int $count = -1): array {
     $this->file->rewind();
     //var_dump($this->file->getCsvControl());
     foreach (new \LimitIterator($this->createSplFileObject(), $offset, $count) as $row => $line) {

@@ -108,13 +108,13 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Checks whether the configuration variable exists
+   * Checks whether the specific configuration variable exists
    *
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function __isset(string $varName): bool {
-    return $this->contains($varName);
+  public function __isset(string $varname): bool {
+    return $this->contains($varname);
   }
 
   public function get(string $varName, $default = null) {
@@ -125,39 +125,39 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * Checks whether the configuration variable exists
+   * Checks whether the specific configuration variable exists
    *
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function contains(string $varName): bool {
-    return isset($this->data[$varName]) || array_key_exists($varName, $this->data);
+  public function contains(string $varname): bool {
+    return isset($this->data[$varname]) || array_key_exists($varname, $this->data);
   }
 
   /**
    * Returns the configuration variable value
    *
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @return mixed content or `null`
    */
-  public function __get(string $varName) {
-    return $this->get($varName, null);
+  public function __get(string $varname) {
+    return $this->get($varname, null);
   }
 
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
    * @return $this for a fluent interface
    * @throws ConfigurationException if the object is read only
    */
-  public function set(string $varName, $value) {
+  public function set(string $varname, $value) {
     if (!$this->isReadOnly()) {
       if (is_array($value)) {
-        $this->data[$varName] = new static($value, $this->isReadOnly());
+        $this->data[$varname] = new static($value, $this->isReadOnly());
       } else {
-        $this->data[$varName] = $value;
+        $this->data[$varname] = $value;
       }
     } else {
       throw new ConfigurationException('Configuration object is read only');
@@ -182,40 +182,40 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @param  mixed $value the value to set
    * @throws ConfigurationException if the object is read only
    */
-  public function __set(string $varName, $value) {
-    $this->set($varName, $value);
+  public function __set(string $varname, $value) {
+    $this->set($varname, $value);
   }
 
   /**
-   * Removes the value at the specified variable
+   * Unsets the specified variable
    *
-   * @param  string $name the name of the variable
+   * @param  string $varname the name of the variable
    * @return $this for a fluent interface
    * @throws ConfigurationException if the object is read only
    */
-  public function remove(string $name) {
+  public function remove(string $varname) {
     if (!$this->isReadOnly()) {
       throw new ConfigurationException('Configuration object is read only');
-    } else if (isset($this->data[$name])) {
-      unset($this->data[$name]);
+    } else if (isset($this->data[$varname])) {
+      unset($this->data[$varname]);
       $this->skipNextIteration = true;
     }
     return $this;
   }
 
   /**
-   * Unsets the value at the specified variable
+   * Unsets the specified variable
    *
-   * @param  string $name the name of the variable
+   * @param  string $varname the name of the variable
    * @return $this for a fluent interface
    * @throws ConfigurationException if the object is read only
    */
-  public function __unset(string $name) {
-    $this->remove($name);
+  public function __unset(string $varname) {
+    $this->remove($varname);
     return $this;
   }
 
@@ -241,8 +241,9 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
+   * Returns the current element
    * 
-   * @return mixed
+   * @return mixed the current element
    */
   public function current() {
     $this->skipNextIteration = false;
@@ -250,15 +251,16 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
+   * Return the key of the current element
    * 
-   * @return mixed
+   * @return mixed the key of the current element
    */
   public function key() {
     return key($this->data);
   }
 
   /**
-   * 
+   * Advance the internal pointer of the collection
    */
   public function next() {
     if ($this->skipNextIteration) {
@@ -269,7 +271,7 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
-   * 
+   * Rewinds the Iterator to the first element
    */
   public function rewind() {
     $this->skipNextIteration = false;
@@ -277,48 +279,53 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
   }
 
   /**
+   * Checks if current iterator position is valid
    * 
-   * @return boolean
+   * @return boolean current iterator position is valid
    */
   public function valid(): bool {
     return $this->key() !== null;
   }
 
   /**
+   * Checks whether the specific configuration variable exists
    * 
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
    * @return boolean true on success or false on failure
    */
-  public function offsetExists($varName): bool {
-    return $this->contains($varName);
-  }
-
-  /**
-   * 
-   * @param  string $varName the name of the variable
-   * @return mixed the value at the 
-   */
-  public function offsetGet($varName) {
-    return $this->get($varName);
+  public function offsetExists($varname): bool {
+    return $this->contains($varname);
   }
 
   /**
    * Assigns a value to the specified  configuration variable
    * 
-   * @param  string $varName the name of the variable
-   * @param  mixed $value the value to set
-   * @throws ConfigurationException if the object is read only
+   * @param  string $varname the name of the variable
+   * @return mixed the value at the 
    */
-  public function offsetSet($varName, $value) {
-    $this->set($varName, $value);
+  public function offsetGet($varname) {
+    return $this->get($varname);
   }
 
   /**
+   * Assigns a value to the specified configuration variable
    * 
-   * @param  string $varName the name of the variable
+   * @param  string $varname the name of the variable
+   * @param  mixed $value the value to set
+   * @throws ConfigurationException if the configuration object is read only
    */
-  public function offsetUnset($varName) {
-    $this->remove($varName);
+  public function offsetSet($varname, $value) {
+    $this->set($varname, $value);
+  }
+
+  /**
+   * Unsets the specified variable
+   * 
+   * @param  string $varname the name of the variable
+   * @throws ConfigurationException if the configuration object is read only
+   */
+  public function offsetUnset($varname) {
+    $this->remove($varname);
   }
 
 }

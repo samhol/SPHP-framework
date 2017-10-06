@@ -36,31 +36,26 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
   const COUNT_CELLS = 2;
 
   /**
-   *
    * @var Caption 
    */
   private $caption;
 
   /**
-   *
    * @var Colgroup 
    */
   private $colgroup;
 
   /**
-   *
    * @var Thead 
    */
   private $thead;
 
   /**
-   *
    * @var Tbody 
    */
   private $tbody;
 
   /**
-   *
    * @var Tfoot 
    */
   private $tfoot;
@@ -261,7 +256,7 @@ class Table extends AbstractComponent implements IteratorAggregate, TraversableI
    * @return int number of elements in the html table
    * @link   http://php.net/manual/en/class.countable.php Countable
    */
-  public function count($mode = self::COUNT_ROWS): int {
+  public function count(int $mode = self::COUNT_ROWS): int {
     $num = 0;
     if ($this->thead !== null) {
       $num += $this->thead->count($mode);

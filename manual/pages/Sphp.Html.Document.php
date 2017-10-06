@@ -13,10 +13,10 @@ This class can be used to create the structure of any HTML document.
         
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Document.php", "html5", false);
+CodeExampleBuilder::visualize('Sphp/Html/Document.php', "html5", false);
 \Sphp\Manual\parseDown(<<<MD
 The $documentClass class acts as a factory for basic HTML objects. Here are the 
 grouped lists of the HTML5 components and the corresponding PHP types in Framework's HTML implementation.
 MD
 );
-\Sphp\Manual\loadPage("htmlTagListArray.php");
+\Sphp\Manual\loadPage('htmlTagListArray');

@@ -29,14 +29,6 @@ interface TraversableInterface extends Traversable, Countable {
   public function getComponentsBy(callable $rules);
 
   /**
-   * Returns a collection of sub components that contain the searched attribute
-   *
-   * @param  string $attrName the name of the searched attribute
-   * @return TraversableInterface containing matching sub components
-   */
-  public function getComponentsByAttrName($attrName);
-
-  /**
    * Returns a collection of sub components that are of the given PHP type
    *
    * @param  string|\object $typeName the name of the searched PHP object type

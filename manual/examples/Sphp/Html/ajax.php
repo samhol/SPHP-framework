@@ -22,6 +22,4 @@ $search = function($element) {
 //
 $container[] = new Paragraph("<b><var>objects</var>(s):</b> "
 		. count($container->getComponentsBy($search)));
-$container[] = new Paragraph("<b>Components with title:</b> "
-		. count($container->getComponentsByAttrName("title")));
 $container->printHtml();

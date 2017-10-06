@@ -133,6 +133,7 @@ $p['Lists'] = ['Lists',
     ]
 ];
 
+
 $p[] = ['Tables',
     [
         ['table', 'A table'],
@@ -147,7 +148,6 @@ $p[] = ['Tables',
         ['colgroup', 'Groups of table columns']
     ]
 ];
-
 $p[] = ['Style/Sections',
     [
         ['style', 'A style definition'],
@@ -228,7 +228,7 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\Pane;
 $accordions = (new Accordion())
         ->allowAllClosed(true)
         ->allowMultiExpand(true)
-        ->addCssClass("html-ref-tables");
+        ->addCssClass('html-ref-tables');
 foreach ($p as $val) {
   $accordions->append(new Pane($val[0], $generateTagTable($val[1])));
   // $accordion = new SingleAccordion($val[0], $generateTagTable($val[1]));
