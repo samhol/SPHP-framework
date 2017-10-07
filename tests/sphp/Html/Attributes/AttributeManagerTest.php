@@ -217,7 +217,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
         [new MultiValueAttribute("data-foo")],
         [new PropertyAttribute("data-bar")],
         [new PropertyAttribute("style")],
-        [(new MultiValueAttribute("class"))->add("a b c")],
+        [(new ClassAttribute("class"))->add("a b c")],
     ];
   }
 

@@ -24,7 +24,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, IteratorAggregate {
+class ClassAttribute extends AbstractAttribute implements Countable, IteratorAggregate {
 
   /**
    * stored individual values
@@ -41,7 +41,6 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   private $locked = [];
 
   /**
-   *
    * @var ClassAttributeFilter
    */
   private $filter;
@@ -67,10 +66,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A `string` parameter can contain multiple comma separated atomic values
-   * 2. An `array` parameter can contain only one atomic value per array value
-   * 3. Any numeric value is treated as a string value
-   * 4. Stores only a single instance of every value (no duplicates)
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
    *
    * @param  scalar|scalar[] $values the values to set
    * @return $this for a fluent interface
@@ -86,9 +84,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
    *
    * @param  string|scalar[] $values the values to add
    * @return $this for a fluent interface
@@ -108,8 +106,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
    *
    * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
@@ -135,9 +134,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain multiple comma separated atomic values
-   * 2. An array parameter can contain only one atomic value per array value
-   * 3. Stores only a single instance of every value (no duplicates)
+   * 1. A string parameter can contain a single atomic value
+   * 2. An array can be be multidimensional
+   * 3. Duplicate values are ignored
    *
    * @param  scalar|scalar[] $values the atomic values to lock
    * @return $this for a fluent interface

@@ -2,7 +2,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 
 class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
 
@@ -12,7 +12,7 @@ class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
   protected $c;
 
   /**
-   * @var MultiValueAttribute
+   * @var ClassAttribute
    */
   protected $attr;
 
@@ -21,7 +21,7 @@ class ColumnLayoutPropertiesTest extends \PHPUnit\Framework\TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->attr = new MultiValueAttribute('class');
+    $this->attr = new ClassAttribute('class');
     $this->c = new ColumnLayoutManager($this->attr);
   }
 

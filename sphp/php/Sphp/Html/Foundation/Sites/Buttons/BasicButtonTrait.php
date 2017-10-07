@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Trait implements {@link ButtonInterface} functionality
@@ -33,8 +33,13 @@ trait BasicButtonTrait {
       'tiny', 'small', 'large', 'expand'
   ];
 
-  
-  
+  /**
+   * Returns the class attribute object
+   * 
+   * @return ClassAttribute the class attribute object
+   */
+  abstract public function cssClasses(): ClassAttribute;
+
   /**
    * Sets the size of the button 
    * 
@@ -73,14 +78,14 @@ trait BasicButtonTrait {
   public function setDefaultSize() {
     return $this->setSize('medium');
   }
-  
-  public function setExtended(bool $extended = true) {  
+
+  public function setExtended(bool $extended = true) {
     if ($extended) {
       $this->cssClasses()->add('hollow');
     } else {
       $this->cssClasses()->remove('hollow');
     }
     return $this;
-  } 
+  }
 
 }

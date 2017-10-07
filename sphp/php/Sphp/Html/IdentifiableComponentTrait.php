@@ -8,7 +8,7 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
 
 /**
@@ -33,9 +33,9 @@ trait IdentifiableComponentTrait {
   /**
    * Returns the class attribute object
    *
-   * @return MultiValueAttribute the class attribute object
+   * @return ClassAttribute the class attribute object
    */
-  public function cssClasses() {
+  public function cssClasses(): ClassAttribute {
     return $this->attrs()->classes();
   }
 

@@ -24,7 +24,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    */
   public function __construct() {
     $objects = [
-        'class' => MultiValueAttribute::class,
+        'class' => ClassAttribute::class,
         'style' => PropertyAttribute::class,
         'id' => IdentityAttribute::class];
     parent::__construct($objects);
@@ -33,9 +33,9 @@ class HtmlAttributeManager extends AbstractAttributeManager {
   /**
    * Returns the class attribute object
    *
-   * @return MultiValueAttribute the `class` attribute object
+   * @return ClassAttribute the `class` attribute object
    */
-  public function classes(): MultiValueAttribute {
+  public function classes(): ClassAttribute {
     return $this->createObject('class');
   }
 

@@ -32,7 +32,6 @@ $carMenu = (new Select("cars[]"))
 $form = (new GridForm())
         ->append([
     $carMenu,
-    MenuFactory::monthMenu()->setSelectedValues([date("n")]),
     MenuFactory::rangeMenu(0, 15, 2, "range")->setSelectedValues(6)
         ]);
 $form->printHtml();

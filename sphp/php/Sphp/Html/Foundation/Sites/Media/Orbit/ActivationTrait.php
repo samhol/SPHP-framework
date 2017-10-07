@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
-use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\ClassAttribute;
 
 /**
  * Trait implements activation methods for orbit components
@@ -24,9 +24,9 @@ trait ActivationTrait {
   /**
    * Returns the class attribute object
    * 
-   * @return MultiValueAttribute the class attribute object
+   * @return ClassAttribute the class attribute object
    */
-  abstract public function cssClasses();
+  abstract public function cssClasses(): ClassAttribute;
 
   /**
    * Sets or unsets the slide component as active
