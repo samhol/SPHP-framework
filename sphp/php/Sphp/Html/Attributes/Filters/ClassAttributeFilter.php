@@ -21,7 +21,7 @@ use Sphp\Html\Attributes\Exceptions\AttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttributeFilter extends AbstractFilter {
+class ClassAttributeFilter implements AttributeDataParser {
 
   private static $instance;
 
@@ -47,7 +47,7 @@ class ClassAttributeFilter extends AbstractFilter {
       $parsed = [Strings::toString($raw)];
     }
     if ($validate) {
-      foreach($parsed as $value) {
+      foreach ($parsed as $value) {
         if (!$this->validate($value)) {
           throw new AttributeException("invalid value '$value'");
         }

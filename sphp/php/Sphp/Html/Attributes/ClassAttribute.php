@@ -11,7 +11,7 @@ use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
-use ClassAttributeFilter;
+use Sphp\Html\Attributes\Filters\ClassAttributeFilter;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
@@ -45,9 +45,15 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    */
   private $filter;
 
-  public function __construct(string $name) {
-    parent::__construct($name);
-    $this->filter = Filters\ClassAttributeFilter::instance();
+  public function __construct(string $name, $value = null, ClassAttributeFilter $filter = null) {
+    if ($filter === null) {
+      $filter = ClassAttributeFilter::instance();
+    }
+    parent::__construct($name, $value, $filter);
+    $this->filter = ClassAttributeFilter::instance();
+    if ($value !== null) {
+      $this->set($value);
+    }
   }
 
   /**
@@ -176,9 +182,11 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
   }
 
   public function clear() {
-    $this->values = array_filter($this->values, function($locked) {
-      return $locked;
-    });
+    if (!empty($this->values)) {
+      $this->values = array_filter($this->values, function($locked) {
+        return $locked;
+      });
+    }
     return $this;
   }
 

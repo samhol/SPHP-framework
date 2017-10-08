@@ -16,5 +16,6 @@ namespace Sphp\Html\Attributes\Filters;
  * @filesource
  */
 interface AttributeDataParser {
-  public function parse($rawData);
+
+  public function filter($rawData): array;
 }
