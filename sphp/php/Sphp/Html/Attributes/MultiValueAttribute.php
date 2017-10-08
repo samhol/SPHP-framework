@@ -29,14 +29,14 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   /**
    * stored individual values
    *
-   * @var scalar[]
+   * @var array
    */
   private $values = [];
 
   /*
    * locked individual values
    *
-   * @var string[]
+   * @var array
    */
   private $locked = [];
 
