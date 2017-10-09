@@ -5,9 +5,8 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes\Filters;
+namespace Sphp\Html\Attributes\Utils;
 
-use Sphp\Filters\AbstractFilter;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\MultiValueAttribute;
@@ -21,9 +20,7 @@ use Sphp\Html\Attributes\Exceptions\AttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttributeFilter implements AttributeDataParser {
-
-  private static $instance;
+class ClassAttributeFilter extends AbstractAttributeValueValidator {
 
   /**
    * Returns an array of unique values parsed from the input
@@ -67,21 +64,5 @@ class ClassAttributeFilter implements AttributeDataParser {
     }
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $string) === 1;
   }
-
-  /**
-   * 
-   * @return ClassAttributeFilter
-   */
-  public static function instance(): ClassAttributeFilter {
-    if (static::$instance === null) {
-      static::$instance = new static();
-    }
-    return static::$instance;
-  }
-
-  public function getErrors(): \Sphp\I18n\Collections\TranslatableCollection {
-    
-  }
-
 
 }

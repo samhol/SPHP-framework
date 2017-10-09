@@ -9,7 +9,8 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Filters\AttributeValidator;
+use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
+use Sphp\Html\Attributes\Utils\AttributeValueValidator;
 
 /**
  * Description of IdentityAttribute
@@ -32,20 +33,30 @@ class Attribute extends AbstractAttribute {
   private $locked = false;
 
   /**
+   * @var AttributeDataParser 
+   */
+  private $valueFilter;
+
+  /**
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
    * @param mixed $value 
    * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
    */
-  public function __construct(string $name, $value = null, AttributeValidator $parser = null) {
+  public function __construct(string $name, $value = null, AttributeValueValidatorInterface $parser = null) {
     if ($parser === null) {
-      $parser = new AttributeValidator();
+      $parser = new AttributeValueValidator();
     }
-    parent::__construct($name, $parser);
+    $this->valueFilter = $parser;
+    parent::__construct($name);
     if ($value !== null) {
       $this->set($value);
     }
+  }
+
+  public function getValueFilter(): AttributeValueValidator {
+    return $this->valueFilter;
   }
 
   public function clear() {

@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes\Filters;
+namespace Sphp\Html\Attributes\Utils;
 
 /**
  * Description of StyleAttributeParser
@@ -15,9 +15,8 @@ namespace Sphp\Html\Attributes\Filters;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class StyleAttributeParser implements AttributeDataParser {
+class StyleAttributeFilter extends AbstractAttributeValueValidator {
 
-  private static $instance;
 
   /**
    * Parses a string of properties to an array
@@ -28,7 +27,7 @@ class StyleAttributeParser implements AttributeDataParser {
    * @param  string $properties properties to parse
    * @return string[] parsed property array containing name value pairs
    */
-  public function parse($properties) {
+  public function filter($properties):array {
     $parsed = [];
     if (is_array($properties)) {
       $parsed = $properties;
@@ -49,23 +48,8 @@ class StyleAttributeParser implements AttributeDataParser {
     }, \ARRAY_FILTER_USE_BOTH);
   }
 
-  public static function instance(): StyleAttributeParser {
-    if (static::$instance === null) {
-      static::$instance = new static();
-    }
-    return static::$instance;
-  }
-
-  public function filter($rawData): array {
-    
-  }
-
-  public function getErrors(): \Sphp\I18n\Collections\TranslatableCollection {
-    
-  }
-
   public function isValid($value): bool {
-    
+      return !empty($value) || $value === "0" || $value === 0;
   }
 
 }

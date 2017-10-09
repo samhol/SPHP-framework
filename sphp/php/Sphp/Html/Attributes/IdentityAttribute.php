@@ -8,7 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-
+use Sphp\Html\Attributes\Utils\AttributeValueValidator;
 /**
  * Description of IdentityAttribute
  *
@@ -35,7 +35,7 @@ class IdentityAttribute extends AbstractAttribute {
    * @param string $name the name of the attribute
    */
   public function __construct(string $name, $value = null) {
-    parent::__construct($name, new Filters\AttributeValidator());
+    parent::__construct($name, new AttributeValueValidator());
     if ($value !== null) {
       $this->set($value);
     }

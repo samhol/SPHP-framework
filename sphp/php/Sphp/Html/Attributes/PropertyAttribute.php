@@ -11,6 +11,7 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\Utils\PropertyAttributeFilter;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -45,7 +46,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   private $form;
 
   /**
-   * @var AttributeDataParser
+   * @var PropertyAttributeFilter
    */
   private $parser;
 
@@ -56,11 +57,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param string $parser
    * @param string $form
    */
-  public function __construct(string $name, AttributeDataParser $parser = null, string $form = '%s:%s;') {
+  public function __construct(string $name, StyleAttributeFilter $parser = null, string $form = '%s:%s;') {
     if ($parser === null) {
-      $parser = Filters\StyleAttributeParser::instance();
+      $parser = PropertyAttributeFilter::instance();
     }
-    parent::__construct($name, $parser);
+    parent::__construct($name);
     $this->form = $form;
     $this->parser = $parser;
   }
@@ -82,7 +83,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function set($value) {
     $this->clear();
-    $this->setProperties($this->parser->parse($value));
+    $this->setProperties($this->parser->filter($value));
     return $this;
   }
 
@@ -135,13 +136,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   /**
    * Removes given property
    *
-   * @param  string $name the names of the properties to remove
+   * @param  string $name the name of the property to remove
    * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if any of the properties is already locked
+   * @throws ImmutableAttributeException if the property is immutable
    */
   public function unsetProperty($name) {
     if ($this->isLocked($name)) {
-      throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is unremovable");
+      throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
     } else {
       unset($this->props[$name]);
     }
@@ -153,7 +154,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    *
    * @param  string[] $names the names of the properties to remove
    * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if any of the properties is already locked
+   * @throws ImmutableAttributeException if any of the properties are immutable
    */
   public function unsetProperties(array $names) {
     foreach ($names as $name) {
@@ -259,13 +260,13 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  null|string|string[] $props optional property/properties to lock
    * @return self for PHP Method Chaining
    * @throws AttributeException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
+   * @throws ImmutableAttributeException if any of the properties is already immutable
    */
   public function lock($props = null) {
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties($this->parser->parse($props));
+      $this->lockProperties($this->parser->filter($props));
     }
     return $this;
   }

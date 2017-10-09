@@ -11,7 +11,7 @@ use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Filters\ClassAttributeFilter;
+use Sphp\Html\Attributes\Utils\ClassAttributeFilter;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
@@ -33,13 +33,6 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    */
   private $values = [];
 
-  /*
-   * locked individual values
-   *
-   * @var string[]
-   */
-  private $locked = [];
-
   /**
    * @var ClassAttributeFilter
    */
@@ -49,8 +42,8 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
     if ($filter === null) {
       $filter = ClassAttributeFilter::instance();
     }
-    parent::__construct($name, $filter);
-    $this->filter = ClassAttributeFilter::instance();
+    parent::__construct($name);
+    $this->filter = $filter;
     if ($value !== null) {
       $this->set($value);
     }
@@ -63,7 +56,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->values, $this->locked);
+    unset($this->values);
     parent::__destruct();
   }
 
@@ -236,7 +229,13 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
   }
 
   public function filter(callable $filter) {
-    $this->values = array_unique(array_merge($this->locked, array_filter($this->values, $filter)));
+    $result = [];
+    foreach($this->values as $class => $locked) {
+      if ($locked || $filter($class)) {
+        $result[$class] = $locked;
+      }
+    }
+    $this->values = $result;
     return $this;
   }
 

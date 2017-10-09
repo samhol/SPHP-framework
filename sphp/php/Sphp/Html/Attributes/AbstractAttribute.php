@@ -9,7 +9,6 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\Filters\AttributeDataParser;
 
 /**
  * An abstract implementation of an HTML attribute object
@@ -36,22 +35,16 @@ abstract class AbstractAttribute implements AttributeInterface {
   private $required = false;
 
   /**
-   * @var AttributeDataParser 
-   */
-  private $valueFilter;
-
-  /**
    * Constructs a new instance
    *
    * @param  string $name the name of the attribute
    * @throws AttributeException
    */
-  public function __construct(string $name, AttributeDataParser $valueFilter) {
+  public function __construct(string $name) {
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
       throw new AttributeException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
-    $this->valueFilter = $valueFilter;
   }
 
   /**
@@ -66,10 +59,6 @@ abstract class AbstractAttribute implements AttributeInterface {
 
   public function __toString(): string {
     return $this->getHtml();
-  }
-
-  public function getValueFilter(): AttributeDataParser {
-    return $this->valueFilter;
   }
 
   public function getHtml(): string {
