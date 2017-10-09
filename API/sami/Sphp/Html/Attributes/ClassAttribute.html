@@ -182,7 +182,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(scalar|scalar[] $values)
         
-                                            <p>Sets new atomic values to the attribute removing old non locked ones</p>                </div>
+                                            <p>Sets the value of the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -202,7 +202,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isLocked">isLocked</a>(null|scalar|scalar[] $values = null)
         
-                                            <p>Checks whether the given atomic values are locked</p>                </div>
+                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -212,7 +212,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_lock">lock</a>(scalar|scalar[] $values)
         
-                                            <p>Locks the specified atomic values</p>                </div>
+                                            <p>Locks the given value to the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -581,14 +581,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets new atomic values to the attribute removing old non locked ones</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Sets the value of the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -611,6 +604,19 @@ name is required or the attribute value is not boolean (false).</p>             
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -675,14 +681,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Checks whether the given atomic values are locked</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -722,14 +721,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Locks the specified atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Locks the given value to the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -752,6 +744,19 @@ name is required or the attribute value is not boolean (false).</p>             
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>

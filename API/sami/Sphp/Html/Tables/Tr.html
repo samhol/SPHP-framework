@@ -1189,7 +1189,15 @@
                                     <p>Constructs a new instance</p>                    <p><strong>Notes:</strong></p>
 
 <p>mixed <code>$cells</code> can be of any type that converts to a PHP string or to a
- PHP string[].</p>                            </div>
+ PHP string[].</p>
+
+<p><code>$cellType</code> parameter defines the type of the wrapper for<code>$cells</code> not instanceof  {@link CellInterface}</p>
+
+<ul>
+<li><code>td</code> => all <code>$cells</code> not extending {@link CellInterface} are wrapped within a {@link Td} component</li>
+<li><code>th</code> => all <code>$cells</code> not extending {@link CellInterface} are wrapped within a {@link Th} component</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

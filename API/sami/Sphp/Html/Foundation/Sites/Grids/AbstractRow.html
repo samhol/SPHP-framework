@@ -1320,7 +1320,24 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Constructs a new instance</p>                    <p><strong>Important:</strong></p>
+
+<p>Calculates the widths of the individual column components by dividing the Row width
+ with the number of the inserted columns.</p>
+
+<p>if the number of the columns exceed the maximum width of the row, in most
+ browser environments the excessive columns are floated to a new 'row'.
+<strong>HOWEVER</strong> this behavior is not actively supported.</p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><code>mixed $columns</code> can be of any type that converts to a string or to a string[]</li>
+<li>all values of <code>$columns</code> not extending {@link ColumnInterface} are wrapped with {@link Column} component</li>
+<li>The widths of the <code>mixed $columns</code> extending {@link ColumnInterface} are kept</li>
+<li>The sum of the column widths in a row should not exceed 12.</li>
+</ul>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
