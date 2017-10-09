@@ -9,6 +9,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+use Sphp\Html\Attributes\Filters\AttributeValidator;
 
 /**
  * Description of IdentityAttribute
@@ -37,8 +38,11 @@ class Attribute extends AbstractAttribute {
    * @param mixed $value 
    * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
    */
-  public function __construct(string $name, $value = null) {
-    parent::__construct($name);
+  public function __construct(string $name, $value = null, AttributeValidator $parser = null) {
+    if ($parser === null) {
+      $parser = new AttributeValidator();
+    }
+    parent::__construct($name, $parser);
     if ($value !== null) {
       $this->set($value);
     }
@@ -69,6 +73,9 @@ class Attribute extends AbstractAttribute {
   public function set($value) {
     if ($this->isLocked()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
+    }
+    if (!$this->getValueFilter()->isValid($value)) {
+      throw new InvalidAttributeException("Invalid value for Attribute '{$this->getName()}' Attribute");
     }
     $this->value = $value;
     return $this;

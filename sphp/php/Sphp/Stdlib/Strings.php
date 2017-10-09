@@ -605,6 +605,21 @@ abstract class Strings {
   }
 
   /**
+   * Forces a string representation from any type of input parameter
+   *
+   * @param  mixed $var ithe variable to check
+   * @return booltrue if the variable has a string representation
+   */
+  public static function hasStringRepresentation($var): bool {
+    if ($var === null || is_scalar($var)) {
+      return true;
+    } else if (is_object($var) && method_exists($var, '__toString')) {
+      return true;
+      
+    }
+    return false;
+  }
+  /**
    * Parses the given flags type to an integer
    * 
    * @param  int|string|BitMask $flags the flags

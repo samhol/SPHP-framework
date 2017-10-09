@@ -56,4 +56,16 @@ class StyleAttributeParser implements AttributeDataParser {
     return static::$instance;
   }
 
+  public function filter($rawData): array {
+    
+  }
+
+  public function getErrors(): \Sphp\I18n\Collections\TranslatableCollection {
+    
+  }
+
+  public function isValid($value): bool {
+    
+  }
+
 }

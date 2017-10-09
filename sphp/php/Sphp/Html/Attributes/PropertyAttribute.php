@@ -57,11 +57,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param string $form
    */
   public function __construct(string $name, AttributeDataParser $parser = null, string $form = '%s:%s;') {
-    parent::__construct($name);
-    $this->form = $form;
     if ($parser === null) {
       $parser = Filters\StyleAttributeParser::instance();
     }
+    parent::__construct($name, $parser);
+    $this->form = $form;
     $this->parser = $parser;
   }
 

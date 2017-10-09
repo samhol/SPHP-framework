@@ -48,7 +48,7 @@ class ClassAttributeFilter implements AttributeDataParser {
     }
     if ($validate) {
       foreach ($parsed as $value) {
-        if (!$this->validate($value)) {
+        if (!$this->isValid($value)) {
           throw new AttributeException("invalid value '$value'");
         }
       }
@@ -61,7 +61,7 @@ class ClassAttributeFilter implements AttributeDataParser {
    * @param  mixed $string
    * @return bool
    */
-  public function validate($string): bool {
+  public function isValid($string): bool {
     if (!is_string($string)) {
       return false;
     }
@@ -78,5 +78,10 @@ class ClassAttributeFilter implements AttributeDataParser {
     }
     return static::$instance;
   }
+
+  public function getErrors(): \Sphp\I18n\Collections\TranslatableCollection {
+    
+  }
+
 
 }

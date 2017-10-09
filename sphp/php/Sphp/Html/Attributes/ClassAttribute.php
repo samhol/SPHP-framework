@@ -49,7 +49,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
     if ($filter === null) {
       $filter = ClassAttributeFilter::instance();
     }
-    parent::__construct($name, $value, $filter);
+    parent::__construct($name, $filter);
     $this->filter = ClassAttributeFilter::instance();
     if ($value !== null) {
       $this->set($value);

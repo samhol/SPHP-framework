@@ -46,15 +46,12 @@ abstract class AbstractAttribute implements AttributeInterface {
    * @param  string $name the name of the attribute
    * @throws AttributeException
    */
-  public function __construct(string $name, $value = null, AttributeDataParser $valueFilter) {
+  public function __construct(string $name, AttributeDataParser $valueFilter) {
     if (!Strings::match($name, '/^[a-zA-Z][\w:.-]*$/')) {
       throw new AttributeException("Malformed Attribute name '$name'");
     }
     $this->name = $name;
     $this->valueFilter = $valueFilter;
-    if ($value !== null) {
-      $this->set($value);
-    }
   }
 
   /**

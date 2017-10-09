@@ -15,7 +15,8 @@ namespace Sphp\Html\Attributes\Filters;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface AttributeDataParser {
+interface AttributeDataParser extends \Sphp\Validators\ValidatorInterface {
 
   public function filter($rawData): array;
+  
 }
