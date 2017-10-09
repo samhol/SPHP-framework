@@ -186,7 +186,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+                    <a href="../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_attrs">attrs</a>()
@@ -196,7 +196,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                    <a href="../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_cssClasses">cssClasses</a>()
@@ -299,7 +299,7 @@
                     <abbr title="Sphp\Html\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+                    <a href="#method_identify">identify</a>(string $prefix = &#039;id_&#039;, int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -309,7 +309,7 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
+                    <a href="#method_hasId">hasId</a>()
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -595,17 +595,7 @@
                     <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getComponentsByAttrName">getComponentsByAttrName</a>(string $attrName)
-        
-                                            <p>Returns a collection of sub components that contain the searched attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>($type)
+                    <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>(string|object $type)
         
                                             <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
@@ -751,7 +741,7 @@ appends the returned HTML into the object.</p>                </div>
                     <div class="method-item">
                     <h3 id="method_attrs">
         <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
-        <code>    abstract                <a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+        <code>    abstract                <a href="../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
     <strong>attrs</strong>()
         </code>
     </h3>
@@ -767,7 +757,7 @@ appends the returned HTML into the object.</p>                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td><a href="../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
             <td>the attribute manager</td>
         </tr>
     </table>
@@ -781,7 +771,7 @@ appends the returned HTML into the object.</p>                </div>
                     <div class="method-item">
                     <h3 id="method_cssClasses">
         <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+        <code>                    <a href="../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -797,7 +787,7 @@ appends the returned HTML into the object.</p>                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td><a href="../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a></td>
             <td>the class attribute object</td>
         </tr>
     </table>
@@ -1232,9 +1222,9 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 195</div>
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 194</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+    <strong>identify</strong>(string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
     </h3>
     <div class="details">
@@ -1249,11 +1239,6 @@ appends the returned HTML into the object.</p>                </div>
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>the name of the identity attribute</td>
-            </tr>
                     <tr>
                 <td>string</td>
                 <td>$prefix</td>
@@ -1284,9 +1269,9 @@ appends the returned HTML into the object.</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 206</div>
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 204</div>
         <code>                    boolean
-    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
+    <strong>hasId</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1296,16 +1281,6 @@ appends the returned HTML into the object.</p>                </div>
                     <div class="method-description">
                                     <p>Checks whether the identifying attribute is set or not</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>optional name of the identifying attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -2266,50 +2241,10 @@ So also an object of any class that implements magic method <code>__toString()</
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getComponentsByAttrName">
-        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
-        <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-    <strong>getComponentsByAttrName</strong>(string $attrName)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns a collection of sub components that contain the searched attribute</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$attrName</td>
-                <td>the name of the searched attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
-            <td>containing matching sub components</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getComponentsByObjectType">
-        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 73</div>
+        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
         <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-    <strong>getComponentsByObjectType</strong>($type)
+    <strong>getComponentsByObjectType</strong>(string|object $type)
         </code>
     </h3>
     <div class="details">
@@ -2323,9 +2258,9 @@ So also an object of any class that implements magic method <code>__toString()</
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string|object</td>
                 <td>$type</td>
-                <td></td>
+                <td>the name of the searched PHP object type</td>
             </tr>
             </table>
 

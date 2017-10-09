@@ -163,17 +163,7 @@
                     <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getComponentsByAttrName">getComponentsByAttrName</a>(string $attrName)
-        
-                                            <p>Returns a collection of sub components that contain the searched attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>($type)
+                    <a href="#method_getComponentsByObjectType">getComponentsByObjectType</a>(string|object $type)
         
                                             <p>Returns a collection of sub components that are of the given PHP type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a></small></div>
@@ -386,50 +376,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getComponentsByAttrName">
-        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByAttrName"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
-        <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-    <strong>getComponentsByAttrName</strong>(string $attrName)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns a collection of sub components that contain the searched attribute</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$attrName</td>
-                <td>the name of the searched attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a></td>
-            <td>containing matching sub components</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getComponentsByObjectType">
-        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 73</div>
+        <div class="location">in <a href="../../../Sphp/Html/TraversableTrait.html#method_getComponentsByObjectType"><abbr title="Sphp\Html\TraversableTrait">TraversableTrait</abbr></a> at         line 54</div>
         <code>                    <a href="../../../Sphp/Html/TraversableInterface.html"><abbr title="Sphp\Html\TraversableInterface">TraversableInterface</abbr></a>
-    <strong>getComponentsByObjectType</strong>($type)
+    <strong>getComponentsByObjectType</strong>(string|object $type)
         </code>
     </h3>
     <div class="details">
@@ -443,9 +393,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string|object</td>
                 <td>$type</td>
-                <td></td>
+                <td>the name of the searched PHP object type</td>
             </tr>
             </table>
 

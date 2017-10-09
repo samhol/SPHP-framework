@@ -372,7 +372,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
         
-                                            <p>Serializes to an array</p>                </div>
+                                            <p>Returns an array consisting of the characters in the string</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -392,30 +392,27 @@
                 <div class="col-md-8 type">
                     <a href="#method_rewind">rewind</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Rewinds the Iterator to the first element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_current">current</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the current caracter</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_key">key</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Return the key of the current character</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -431,24 +428,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_valid">valid</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Checks if current iterator position is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetExists">offsetExists</a>($offset)
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $offset)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Checks whether a character exists in the query</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -458,8 +453,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the character at the given index</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -997,7 +991,7 @@ then returns the initialized object.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_replace">
-        <div class="location">at         line 230</div>
+        <div class="location">at         line 229</div>
         <code>                    <a href="../../Sphp/Stdlib/MbString.html"><abbr title="Sphp\Stdlib\MbString">MbString</abbr></a>
     <strong>replace</strong>(string $search, string $replacement)
         </code>
@@ -1435,7 +1429,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_charAt">
-        <div class="location">at         line 368</div>
+        <div class="location">at         line 367</div>
         <code>                    string
     <strong>charAt</strong>(int $index)
         </code>
@@ -1473,8 +1467,7 @@ string of characters to strip instead of the defaults.</p>                      
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../Sphp/Exceptions/OutOfBoundsException.html"><abbr title="Sphp\Exceptions\OutOfBoundsException">OutOfBoundsException</abbr></a></td>
-                <td>if the positive or negative offset does
-                              not exist</td>
+                <td>if the index does not exist</td>
             </tr>
             </table>
 
@@ -1485,7 +1478,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 381</div>
+        <div class="location">at         line 380</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -1495,7 +1488,7 @@ string of characters to strip instead of the defaults.</p>                      
     
 
                     <div class="method-description">
-                                    <p>Serializes to an array</p>                                                </div>
+                                    <p>Returns an array consisting of the characters in the string</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1515,7 +1508,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_getEncoding">
-        <div class="location">at         line 398</div>
+        <div class="location">at         line 397</div>
         <code>                    string
     <strong>getEncoding</strong>()
         </code>
@@ -1545,7 +1538,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 402</div>
+        <div class="location">at         line 404</div>
         <code>                    
     <strong>rewind</strong>()
         </code>
@@ -1554,6 +1547,8 @@ string of characters to strip instead of the defaults.</p>                      
             
     
 
+                    <div class="method-description">
+                                    <p>Rewinds the Iterator to the first element</p>                                                </div>
                 <div class="tags">
             
             
@@ -1564,8 +1559,8 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 406</div>
-        <code>                    
+        <div class="location">at         line 413</div>
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -1573,8 +1568,19 @@ string of characters to strip instead of the defaults.</p>                      
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the current caracter</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the current caracter</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1583,8 +1589,8 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 410</div>
-        <code>                    
+        <div class="location">at         line 422</div>
+        <code>                    int
     <strong>key</strong>()
         </code>
     </h3>
@@ -1592,8 +1598,19 @@ string of characters to strip instead of the defaults.</p>                      
             
     
 
+                    <div class="method-description">
+                                    <p>Return the key of the current character</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>the key of the current character</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1602,7 +1619,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 414</div>
+        <div class="location">at         line 426</div>
         <code>                    
     <strong>next</strong>()
         </code>
@@ -1621,8 +1638,8 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 418</div>
-        <code>                    
+        <div class="location">at         line 435</div>
+        <code>                    boolean
     <strong>valid</strong>()
         </code>
     </h3>
@@ -1630,8 +1647,19 @@ string of characters to strip instead of the defaults.</p>                      
             
     
 
+                    <div class="method-description">
+                                    <p>Checks if current iterator position is valid</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>current iterator position is valid</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1640,27 +1668,38 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 422</div>
-        <code>                    
-    <strong>offsetExists</strong>($offset)
+        <div class="location">at         line 446</div>
+        <code>                    boolean
+    <strong>offsetExists</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Checks whether a character exists in the query</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td>the name of the parameter</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the parameter exists and false otherwise</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1669,7 +1708,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 432</div>
+        <div class="location">at         line 457</div>
         <code>                    string
     <strong>offsetGet</strong>(mixed $offset)
         </code>
@@ -1678,6 +1717,8 @@ string of characters to strip instead of the defaults.</p>                      
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the character at the given index</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1716,7 +1757,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 443</div>
+        <div class="location">at         line 468</div>
         <code>                    void
     <strong>offsetSet</strong>(mixed $offset, mixed $value)
         </code>
@@ -1757,7 +1798,7 @@ string of characters to strip instead of the defaults.</p>                      
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../Sphp/Exceptions/BadMethodCallException.html"><abbr title="Sphp\Exceptions\BadMethodCallException">BadMethodCallException</abbr></a></td>
-                <td></td>
+                <td>object is immutable</td>
             </tr>
             </table>
 
@@ -1768,7 +1809,7 @@ string of characters to strip instead of the defaults.</p>                      
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 453</div>
+        <div class="location">at         line 478</div>
         <code>                    void
     <strong>offsetUnset</strong>(mixed $offset)
         </code>
@@ -1804,7 +1845,7 @@ string of characters to strip instead of the defaults.</p>                      
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../Sphp/Exceptions/BadMethodCallException.html"><abbr title="Sphp\Exceptions\BadMethodCallException">BadMethodCallException</abbr></a></td>
-                <td></td>
+                <td>always because object is immutable</td>
             </tr>
             </table>
 

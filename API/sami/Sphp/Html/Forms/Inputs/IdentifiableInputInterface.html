@@ -200,7 +200,7 @@
                     <abbr title="Sphp\Html\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id&#039;, int $length = 16)
+                    <a href="#method_identify">identify</a>(string $prefix = &#039;id&#039;, int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableInterface.html#method_identify"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></small></div>
@@ -210,7 +210,7 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
+                    <a href="#method_hasId">hasId</a>()
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/IdentifiableInterface.html#method_hasId"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></small></div>
@@ -565,9 +565,9 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableInterface.html#method_identify"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 34</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableInterface.html#method_identify"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 33</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id&#039;, int $length = 16)
+    <strong>identify</strong>(string $prefix = &#039;id&#039;, int $length = 16)
         </code>
     </h3>
     <div class="details">
@@ -582,11 +582,6 @@ Disabled input components in a form will not be submitted.</p>                  
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>the name of the identity attribute</td>
-            </tr>
                     <tr>
                 <td>string</td>
                 <td>$prefix</td>
@@ -617,9 +612,9 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableInterface.html#method_hasId"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 43</div>
+        <div class="location">in <a href="../../../../Sphp/Html/IdentifiableInterface.html#method_hasId"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 41</div>
         <code>                    boolean
-    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
+    <strong>hasId</strong>()
         </code>
     </h3>
     <div class="details">
@@ -629,16 +624,6 @@ Disabled input components in a form will not be submitted.</p>                  
                     <div class="method-description">
                                     <p>Checks whether the identifying attribute is set or not</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>optional name of the identifying attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 

@@ -133,17 +133,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_get">get</a>(string $varname)
         
-                                            <p>Returns the current value of a configuration option</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getCurrent">getCurrent</a>(string $varname)
-        
-                                            <p>Returns the current value of a configuration option</p>                </div>
+                                            <p>Returns the stored value of a configuration option</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -163,7 +153,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_execute">execute</a>(callable $callable)
         
-                                            <p>Executes a function using a custom PHP configuration.</p>                </div>
+                                            <p>Executes a function using a custom PHP configuration</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -173,7 +163,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_reset">reset</a>()
         
-                                            <p>Initializes all PHP settings defined by the instance</p>                </div>
+                                            <p>Restores the values of  configuration options</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -194,7 +184,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 37</div>
+        <div class="location">at         line 36</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -213,7 +203,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 54</div>
         <code>                    <abbr title="Sphp\Config\$this">$this</abbr>
     <strong>set</strong>(string $name, scalar $value)
         </code>
@@ -261,7 +251,7 @@ execution, and will be restored at the script's ending.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">at         line 69</div>
+        <div class="location">at         line 68</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -301,7 +291,7 @@ execution, and will be restored at the script's ending.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 81</div>
+        <div class="location">at         line 80</div>
         <code>                    string
     <strong>get</strong>(string $varname)
         </code>
@@ -311,7 +301,7 @@ execution, and will be restored at the script's ending.</p>
     
 
                     <div class="method-description">
-                                    <p>Returns the current value of a configuration option</p>                                                </div>
+                                    <p>Returns the stored value of a configuration option</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -349,48 +339,8 @@ execution, and will be restored at the script's ending.</p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCurrent">
-        <div class="location">at         line 94</div>
-        <code>                    string
-    <strong>getCurrent</strong>(string $varname)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the current value of a configuration option</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$varname</td>
-                <td>the name of the option</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>the value of the option</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_init">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 93</div>
         <code>                    <abbr title="Sphp\Config\$this">$this</abbr>
     <strong>init</strong>()
         </code>
@@ -420,7 +370,7 @@ execution, and will be restored at the script's ending.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 106</div>
         <code>                    mixed
     <strong>execute</strong>(callable $callable)
         </code>
@@ -430,7 +380,7 @@ execution, and will be restored at the script's ending.</p>
     
 
                     <div class="method-description">
-                                    <p>Executes a function using a custom PHP configuration.</p>                                                </div>
+                                    <p>Executes a function using a custom PHP configuration</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -460,7 +410,7 @@ execution, and will be restored at the script's ending.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location">at         line 132</div>
+        <div class="location">at         line 120</div>
         <code>                    <abbr title="Sphp\Config\$this">$this</abbr>
     <strong>reset</strong>()
         </code>
@@ -470,7 +420,7 @@ execution, and will be restored at the script's ending.</p>
     
 
                     <div class="method-description">
-                                    <p>Initializes all PHP settings defined by the instance</p>                    <p>Previous settings are replaced</p>                            </div>
+                                    <p>Restores the values of  configuration options</p>                    <p>Previous settings restored</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -490,7 +440,7 @@ execution, and will be restored at the script's ending.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 140</div>
+        <div class="location">at         line 132</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>

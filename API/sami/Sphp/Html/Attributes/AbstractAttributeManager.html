@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>AbstractAttributeManager</strong>        implements
-        <a href="../../../Sphp/Html/IdentifiableInterface.html"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
+        <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
 </p>
 
         
@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(array $objectMap = [])
+                    <a href="#method___construct">__construct</a>(array $objectMap = [], string $defaultType = AttributeInterface::class)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -140,17 +140,28 @@
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAttributeObject">setAttributeObject</a>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attrObject)
+                    <a href="#method_mapObject">mapObject</a>(string $name, string $attrObject)
         
                                             <p>Attaches an attribute object to the manager</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isValidObjectType">isValidObjectType</a>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $new)
+                    <a href="#method_getActualType">getActualType</a>(string $name)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getValidType">getValidType</a>(string $name)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -161,17 +172,28 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isAttributeObject">isAttributeObject</a>(string $name)
+                    <a href="#method_isValidType">isValidType</a>(string $name, string|object $new)
         
-                                            <p>Checks whether the instance of the inner attribute object if it is mapped</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>|null
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAttributeObject">getAttributeObject</a>(string $name)
+                    <a href="#method_isMapped">isMapped</a>(string $name)
+        
+                                            <p>Checks whether the attribute name is mapped</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createObject">createObject</a>(string $name)
         
                                             <p>Returns the instance of the inner attribute object if it is mapped</p>                </div>
                 <div class="col-md-2"></div>
@@ -268,22 +290,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getObject">getObject</a>(string $name)
+        
+                                            <p>Returns the instance of the inner attribute object if it is mapped</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     boolean
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_exists">exists</a>(string $name)
         
                                             <p>Checks if an attribute name exists in the manager</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_attrToString">attrToString</a>(string $name)
-        
-                                            <p>Parses the given attribute value pair to a HTML valid attribute string</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -298,23 +320,42 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
+                    <a href="#method_current">current</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the current element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_attachIdentifier">attachIdentifier</a>(string $name)
+                    <a href="#method_next">next</a>()
         
-                                            <p>Attaches an identifying attribute name</p>                </div>
+                                            <p>Advance the internal pointer of the collection</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_key">key</a>()
+        
+                                            <p>Return the key of the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p>Rewinds the Iterator to the first element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -322,29 +363,9 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isIdentifier">isIdentifier</a>(string $attrName)
+                    <a href="#method_valid">valid</a>()
         
-                                            <p>Checks whether the instance of the inner attribute object if it is mapped</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
-        
-                                            <p>Checks whether the identifying attribute is set or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
-        
-                                            <p>Identifies the element with an unique id attribute.</p>                </div>
+                                            <p>Checks if current iterator position is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -355,9 +376,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 51</div>
         <code>                    
-    <strong>__construct</strong>(array $objectMap = [])
+    <strong>__construct</strong>(array $objectMap = [], string $defaultType = AttributeInterface::class)
         </code>
     </h3>
     <div class="details">
@@ -375,6 +396,11 @@
                 <td>$objectMap</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>string</td>
+                <td>$defaultType</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -386,7 +412,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 64</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -408,7 +434,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">at         line 89</div>
+        <div class="location">at         line 75</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -429,7 +455,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         line 101</div>
+        <div class="location">at         line 85</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -458,10 +484,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setAttributeObject">
-        <div class="location">at         line 126</div>
+                    <h3 id="method_mapObject">
+        <div class="location">at         line 108</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>setAttributeObject</strong>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attrObject)
+    <strong>mapObject</strong>(string $name, string $attrObject)
         </code>
     </h3>
     <div class="details">
@@ -483,7 +509,12 @@ new object must be of the same type</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
                 <td>$attrObject</td>
                 <td></td>
             </tr>
@@ -504,7 +535,7 @@ new object must be of the same type</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -515,10 +546,10 @@ new object must be of the same type</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isValidObjectType">
-        <div class="location">at         line 149</div>
-        <code>                    
-    <strong>isValidObjectType</strong>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $new)
+                    <h3 id="method_getActualType">
+        <div class="location">at         line 121</div>
+        <code>            protected        string
+    <strong>getActualType</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -530,13 +561,22 @@ new object must be of the same type</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
-                <td>$new</td>
+                <td>string</td>
+                <td>$name</td>
                 <td></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -544,10 +584,91 @@ new object must be of the same type</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isAttributeObject">
-        <div class="location">at         line 168</div>
+                    <h3 id="method_getValidType">
+        <div class="location">at         line 134</div>
+        <code>            protected        string
+    <strong>getValidType</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isValidType">
+        <div class="location">at         line 148</div>
         <code>                    boolean
-    <strong>isAttributeObject</strong>(string $name)
+    <strong>isValidType</strong>(string $name, string|object $new)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|object</td>
+                <td>$new</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isMapped">
+        <div class="location">at         line 161</div>
+        <code>                    boolean
+    <strong>isMapped</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -555,7 +676,7 @@ new object must be of the same type</li>
     
 
                     <div class="method-description">
-                                    <p>Checks whether the instance of the inner attribute object if it is mapped</p>                                                </div>
+                                    <p>Checks whether the attribute name is mapped</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -573,7 +694,7 @@ new object must be of the same type</li>
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the attribute is an instance of {@link AttributeInterface} false otherwise</td>
+            <td>true if the attribute name is mapped false otherwise</td>
         </tr>
     </table>
 
@@ -584,10 +705,10 @@ new object must be of the same type</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAttributeObject">
-        <div class="location">at         line 178</div>
-        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>|null
-    <strong>getAttributeObject</strong>(string $name)
+                    <h3 id="method_createObject">
+        <div class="location">at         line 171</div>
+        <code>            protected        <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+    <strong>createObject</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -612,7 +733,7 @@ new object must be of the same type</li>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>|null</td>
+            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
             <td>the mapped attribute object or null</td>
         </tr>
     </table>
@@ -625,7 +746,7 @@ new object must be of the same type</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 210</div>
+        <div class="location">at         line 207</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(string $name, scalar $value = true)
         </code>
@@ -683,11 +804,11 @@ attributes are able to handle different values</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
                 <td>if the attribute name or value is invalid</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
                 <td>if the attribute value is unmodifiable</td>
             </tr>
             </table>
@@ -699,7 +820,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">at         line 239</div>
+        <div class="location">at         line 222</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>merge</strong>(array $attrs = [])
         </code>
@@ -736,11 +857,11 @@ attributes are able to handle different values</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
                 <td>if any of the attributes is invalid</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
                 <td>if the value of the attribute is already locked</td>
             </tr>
             </table>
@@ -752,7 +873,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">at         line 254</div>
+        <div class="location">at         line 237</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>(string $name)
         </code>
@@ -792,7 +913,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">at         line 275</div>
+        <div class="location">at         line 251</div>
         <code>                    boolean
     <strong>isDemanded</strong>(string $name)
         </code>
@@ -833,7 +954,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isLocked">
-        <div class="location">at         line 293</div>
+        <div class="location">at         line 268</div>
         <code>                    boolean
     <strong>isLocked</strong>(string $name)
         </code>
@@ -874,7 +995,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 317</div>
+        <div class="location">at         line 291</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(string $name, scalar $value)
         </code>
@@ -923,11 +1044,11 @@ inline styles etc.).</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
                 <td>if either the name or the value is invalid for the type of the attribute</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
                 <td>if the attribute is unmodifiable</td>
             </tr>
             </table>
@@ -939,7 +1060,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">at         line 339</div>
+        <div class="location">at         line 302</div>
         <code>                    boolean
     <strong>isEmpty</strong>(string $name)
         </code>
@@ -979,7 +1100,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         line 350</div>
+        <div class="location">at         line 313</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(string $name)
         </code>
@@ -1016,8 +1137,8 @@ inline styles etc.).</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if the attribute is not removable</td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute is immutable</td>
             </tr>
             </table>
 
@@ -1028,7 +1149,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 376</div>
+        <div class="location">at         line 331</div>
         <code>                    scalar
     <strong>get</strong>(string $name)
         </code>
@@ -1073,8 +1194,57 @@ inline styles etc.).</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getObject">
+        <div class="location">at         line 346</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+    <strong>getObject</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the instance of the inner attribute object if it is mapped</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
+            <td>the mapped attribute object or null</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">at         line 393</div>
+        <div class="location">at         line 359</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -1113,48 +1283,8 @@ inline styles etc.).</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_attrToString">
-        <div class="location">at         line 403</div>
-        <code>                    string
-    <strong>attrToString</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Parses the given attribute value pair to a HTML valid attribute string</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name of the attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td>HTML valid attribute string</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 424</div>
+        <div class="location">at         line 368</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1183,38 +1313,10 @@ inline styles etc.).</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         line 438</div>
-        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-    <strong>getIterator</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_attachIdentifier">
-        <div class="location">at         line 450</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>attachIdentifier</strong>(string $name)
+                    <h3 id="method_current">
+        <div class="location">at         line 377</div>
+        <code>                    mixed
+    <strong>current</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1222,25 +1324,15 @@ inline styles etc.).</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Attaches an identifying attribute name</p>                                                </div>
+                                    <p>Returns the current element</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name of the identifying attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td>mixed</td>
+            <td>the current element</td>
         </tr>
     </table>
 
@@ -1251,10 +1343,82 @@ inline styles etc.).</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isIdentifier">
-        <div class="location">at         line 466</div>
+                    <h3 id="method_next">
+        <div class="location">at         line 384</div>
+        <code>                    
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Advance the internal pointer of the collection</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location">at         line 393</div>
+        <code>                    mixed
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return the key of the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the key of the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location">at         line 400</div>
+        <code>                    
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Rewinds the Iterator to the first element</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location">at         line 409</div>
         <code>                    boolean
-    <strong>isIdentifier</strong>(string $attrName)
+    <strong>valid</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1262,117 +1426,15 @@ inline styles etc.).</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Checks whether the instance of the inner attribute object if it is mapped</p>                                                </div>
+                                    <p>Checks if current iterator position is valid</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$attrName</td>
-                <td>the name of the attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the attribute is an instance of {@link AttributeInterface} false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasId">
-        <div class="location">at         line 470</div>
-        <code>                    boolean
-    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the identifying attribute is set or not</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>optional name of the identifying attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the identity is set, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_identify">
-        <div class="location">at         line 474</div>
-        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Identifies the element with an unique id attribute.</p>                    <p><strong>Notes:</strong></p>
-
-<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>the name of the identity attribute</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$prefix</td>
-                <td>optional prefix of the identity value</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$length</td>
-                <td>the length of the identity value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td>current iterator position is valid</td>
         </tr>
     </table>
 

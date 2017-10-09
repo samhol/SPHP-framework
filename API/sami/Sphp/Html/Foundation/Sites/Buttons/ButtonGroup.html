@@ -178,7 +178,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+                    <a href="../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_attrs">attrs</a>()
@@ -188,7 +188,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                    <a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_cssClasses">cssClasses</a>()
@@ -291,7 +291,7 @@
                     <abbr title="Sphp\Html\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+                    <a href="#method_identify">identify</a>(string $prefix = &#039;id_&#039;, int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -301,7 +301,7 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
+                    <a href="#method_hasId">hasId</a>()
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -657,7 +657,7 @@
                     <div class="method-item">
                     <h3 id="method_attrs">
         <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
-        <code>    abstract                <a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+        <code>    abstract                <a href="../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
     <strong>attrs</strong>()
         </code>
     </h3>
@@ -673,7 +673,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
             <td>the attribute manager</td>
         </tr>
     </table>
@@ -687,7 +687,7 @@
                     <div class="method-item">
                     <h3 id="method_cssClasses">
         <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+        <code>                    <a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -703,7 +703,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a></td>
             <td>the class attribute object</td>
         </tr>
     </table>
@@ -1138,9 +1138,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 195</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 194</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+    <strong>identify</strong>(string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
     </h3>
     <div class="details">
@@ -1155,11 +1155,6 @@
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>the name of the identity attribute</td>
-            </tr>
                     <tr>
                 <td>string</td>
                 <td>$prefix</td>
@@ -1190,9 +1185,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 206</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 204</div>
         <code>                    boolean
-    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
+    <strong>hasId</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1202,16 +1197,6 @@
                     <div class="method-description">
                                     <p>Checks whether the identifying attribute is set or not</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>optional name of the identifying attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -1553,7 +1538,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setSize">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 54</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 59</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Buttons\$this">$this</abbr>
     <strong>setSize</strong>(string $size = null)
         </code>
@@ -1603,7 +1588,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setDefaultSize">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 73</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setDefaultSize"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 78</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Buttons\$this">$this</abbr>
     <strong>setDefaultSize</strong>()
         </code>
@@ -1633,7 +1618,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setExtended">
-        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setExtended"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 77</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/BasicButtonTrait.html#method_setExtended"><abbr title="Sphp\Html\Foundation\Sites\Buttons\BasicButtonTrait">BasicButtonTrait</abbr></a> at         line 82</div>
         <code>                    
     <strong>setExtended</strong>(bool $extended = true)
         </code>

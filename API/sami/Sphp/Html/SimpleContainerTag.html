@@ -79,7 +79,7 @@
     </div>
 
     <p>    class
-    <strong>SimpleContainerTag</strong>        extends <a href="../../Sphp/Html/AbstractSimpleContainerTag.html"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a>
+    <strong>SimpleContainerTag</strong>        extends <a href="../../Sphp/Html/AbstractTag.html"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a>
 </p>
 
         
@@ -88,10 +88,10 @@
             <div class="description">
             <p>Class is the base class for all HTML tag components acting as HTML component containers</p>            <p><strong>Notes:</strong></p>
 
-<p>Any class extending {@link self} follows these rules:</p>
+<p>Any extending class follows these rules:</p>
 
 <ol>
-<li>Any extending class act as a container for other {@link HtmlContent}, text, etc.</li>
+<li>Any extending class act as a container for other HTML content, text, etc.</li>
 <li>The type of the content in such container depends solely on the container's purpose of use.</li>
 </ol>
 </p>                    </div>
@@ -133,7 +133,7 @@
                     <a href="#method_getHtml">getHtml</a>()
         
                                             <p>Returns the component as HTML markup string</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -157,7 +157,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+                    <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_attrs">attrs</a>()
@@ -167,7 +167,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+                    <a href="../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_cssClasses">cssClasses</a>()
@@ -270,7 +270,7 @@
                     <abbr title="Sphp\Html\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+                    <a href="#method_identify">identify</a>(string $prefix = &#039;id_&#039;, int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -280,7 +280,7 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasId">hasId</a>(string $identityName = &#039;id&#039;)
+                    <a href="#method_hasId">hasId</a>()
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -290,10 +290,10 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $tagName, $content = null, <a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> $attrManager = null)
+                    <a href="#method___construct">__construct</a>(string $tagName, $content = null, <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a> $attrManager = null)
         
                                             <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___construct"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -303,7 +303,7 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___destruct"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -313,7 +313,7 @@
                     <a href="#method___clone">__clone</a>()
         
                                             <p>Clones the object</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___clone"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -353,7 +353,7 @@
                     <a href="#method_getOpeningTag">getOpeningTag</a>()
         
                                             <p>Returns opening tag with its attributes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -364,7 +364,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_contentToString"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -374,17 +374,6 @@
                     <a href="#method_getClosingTag">getClosingTag</a>()
         
                                             <p>Returns closing tag</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clear">clear</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -395,8 +384,8 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">in <a href="../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 28</div>
-        <code>    abstract                string
+        <div class="location">at         line 116</div>
+        <code>                    string
     <strong>getHtml</strong>()
         </code>
     </h3>
@@ -495,7 +484,7 @@
                     <div class="method-item">
                     <h3 id="method_attrs">
         <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_attrs"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 31</div>
-        <code>    abstract                <a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a>
+        <code>    abstract                <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a>
     <strong>attrs</strong>()
         </code>
     </h3>
@@ -511,7 +500,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+            <td><a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
             <td>the attribute manager</td>
         </tr>
     </table>
@@ -525,7 +514,7 @@
                     <div class="method-item">
                     <h3 id="method_cssClasses">
         <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_cssClasses"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 38</div>
-        <code>                    <a href="../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a>
+        <code>                    <a href="../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -541,7 +530,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Sphp/Html/Attributes/MultiValueAttribute.html"><abbr title="Sphp\Html\Attributes\MultiValueAttribute">MultiValueAttribute</abbr></a></td>
+            <td><a href="../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a></td>
             <td>the class attribute object</td>
         </tr>
     </table>
@@ -976,9 +965,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 195</div>
+        <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 194</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $identityName = &#039;id&#039;, string $prefix = &#039;id_&#039;, int $length = 16)
+    <strong>identify</strong>(string $prefix = &#039;id_&#039;, int $length = 16)
         </code>
     </h3>
     <div class="details">
@@ -993,11 +982,6 @@
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>the name of the identity attribute</td>
-            </tr>
                     <tr>
                 <td>string</td>
                 <td>$prefix</td>
@@ -1028,9 +1012,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 206</div>
+        <div class="location">in <a href="../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 204</div>
         <code>                    boolean
-    <strong>hasId</strong>(string $identityName = &#039;id&#039;)
+    <strong>hasId</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1040,16 +1024,6 @@
                     <div class="method-description">
                                     <p>Checks whether the identifying attribute is set or not</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$identityName</td>
-                <td>optional name of the identifying attribute</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -1068,9 +1042,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___construct"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 53</div>
+        <div class="location">at         line 53</div>
         <code>                    
-    <strong>__construct</strong>(string $tagName, $content = null, <a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> $attrManager = null)
+    <strong>__construct</strong>(string $tagName, $content = null, <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a> $attrManager = null)
         </code>
     </h3>
     <div class="details">
@@ -1101,7 +1075,7 @@ method <code>__toString()</code> are allowed.</li>
                 <td></td>
             </tr>
                     <tr>
-                <td><a href="../../Sphp/Html/Attributes/AttributeManager.html"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></td>
+                <td><a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
                 <td>$attrManager</td>
                 <td>the attribute manager of the component</td>
             </tr>
@@ -1125,7 +1099,7 @@ method <code>__toString()</code> are allowed.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___destruct"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 60</div>
+        <div class="location">at         line 60</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -1147,7 +1121,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method___clone"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 65</div>
+        <div class="location">at         line 65</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -1198,7 +1172,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setContent">
-        <div class="location">at         line 27</div>
+        <div class="location">at         line 76</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
     <strong>setContent</strong>(mixed $content = null)
         </code>
@@ -1238,7 +1212,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getContent">
-        <div class="location">at         line 37</div>
+        <div class="location">at         line 86</div>
         <code>                    mixed
     <strong>getContent</strong>()
         </code>
@@ -1268,7 +1242,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getOpeningTag">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_getOpeningTag"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 95</div>
+        <div class="location">at         line 95</div>
         <code>            protected        string
     <strong>getOpeningTag</strong>()
         </code>
@@ -1298,7 +1272,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_contentToString">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_contentToString"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 103</div>
+        <div class="location">at         line 103</div>
         <code>                    
     <strong>contentToString</strong>()
         </code>
@@ -1317,7 +1291,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getClosingTag">
-        <div class="location">in <a href="../../Sphp/Html/AbstractSimpleContainerTag.html#method_getClosingTag"><abbr title="Sphp\Html\AbstractSimpleContainerTag">AbstractSimpleContainerTag</abbr></a> at         line 112</div>
+        <div class="location">at         line 112</div>
         <code>            protected        string
     <strong>getClosingTag</strong>()
         </code>
@@ -1339,25 +1313,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
         </tr>
     </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clear">
-        <div class="location">at         line 32</div>
-        <code>                    
-    <strong>clear</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
             
             
                     </div>
