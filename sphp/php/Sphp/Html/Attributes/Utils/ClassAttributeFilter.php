@@ -10,7 +10,7 @@ namespace Sphp\Html\Attributes\Utils;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * Description of ClassAttributeFilter
@@ -32,7 +32,9 @@ class ClassAttributeFilter extends AbstractAttributeValueValidator {
    * 3. Duplicate values are ignored
    *
    * @param  mixed $raw the value(s) to parse
+   * @param  bool $validate
    * @return string[] separated atomic values in an array
+   * @throws InvalidAttributeException
    */
   public function filter($raw, bool $validate = false): array {
     $parsed = [];
@@ -40,13 +42,15 @@ class ClassAttributeFilter extends AbstractAttributeValueValidator {
       $parsed = array_unique(Arrays::flatten($raw));
     } else if ($raw instanceof MultiValueAttribute) {
       $parsed = $raw->toArray();
-    } else {
+    } else if (Strings::hasStringRepresentation($raw)) {
       $parsed = [Strings::toString($raw)];
+    } else {
+      throw new InvalidAttributeException("Value cannot be converted to string");
     }
     if ($validate) {
       foreach ($parsed as $value) {
         if (!$this->isValid($value)) {
-          throw new AttributeException("invalid value '$value'");
+          throw new InvalidAttributeException("invalid value '$value'");
         }
       }
     }

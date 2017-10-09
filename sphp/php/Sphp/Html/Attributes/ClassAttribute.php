@@ -56,7 +56,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->values);
+    unset($this->values, $this->filter);
     parent::__destruct();
   }
 
@@ -230,7 +230,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
 
   public function filter(callable $filter) {
     $result = [];
-    foreach($this->values as $class => $locked) {
+    foreach ($this->values as $class => $locked) {
       if ($locked || $filter($class)) {
         $result[$class] = $locked;
       }

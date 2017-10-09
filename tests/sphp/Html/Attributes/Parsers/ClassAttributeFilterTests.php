@@ -1,8 +1,9 @@
 <?php
 
-namespace Sphp\Html\Attributes\Filters;
+namespace Sphp\Html\Attributes\Utils;
 
 use Sphp\Html\Attributes\MultiValueAttribute;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
 
@@ -16,7 +17,6 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    echo "\nsetUp:\n";
     $this->filter = new ClassAttributeFilter();
   }
 
@@ -25,97 +25,131 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    echo "\ntearDown:\n";
     $this->filter = null;
   }
 
   /**
    * @return string[]
    */
-  public function emptyData(): array {
+  public function invalidData(): array {
     return [
+        [null],
         [''],
+        [1],
+        [true],
+        [false],
         [' '],
         ['  '],
         ["\n"],
         ["\n\t\r"],
         ["\t"],
         [" \r \n \t "],
-        [['', ['']]],
+        [['2', ['']]],
     ];
   }
 
   /**
-   * @dataProvider emptyData
+   * @dataProvider invalidData
    */
-  public function testEmptyData($value) {
-    $filtered = $this->filter->filter($value);
-    $this->assertSame([], $filtered);
-    $this->assertEquals(count($filtered), 0);
+  public function testInvalidData($value) {
+    $this->assertFalse($this->filter->isValid($value));
+    $this->expectException(InvalidAttributeException::class);
+    $this->filter->filter($value, true);
   }
 
   /**
    * 
    * @return string[]
    */
-  public function stringData(): array {
+  public function validStringData(): array {
     return [
-        [' a ', ['a']],
-        ['a', ['a']],
-        ['a b c', ['a', 'b', 'c']],
+        ['_'],
+        ['__'],
+        ['a'],
+        ['z'],
+        ['_a'],
+        ['_1'],
+        ['_-'],
     ];
   }
 
   /**
-   * @dataProvider stringData
+   * @dataProvider validStringData
    *
    * @param string $value
-   * @param string[] $expected
    */
-  public function testStringParsing(string $value, array $expected) {
-    $this->assertSame($this->filter->filter($value), $expected);
+  public function testValidStringFilterings($value) {
+    $filtered = $this->filter->filter($value, true);
+    $this->assertSame($this->filter->filter($value), $filtered);
+    $this->assertContains($value, $filtered);
   }
 
   /**
    * 
    * @return string[]
    */
-  public function arrayData(): array {
+  public function validArrayData(): array {
     return [
-        [[' a ', ['a']], ['a']],
-        [['a c', ['b']], ['a', 'c', 'b']],
-        [['a b c'], ['a', 'b', 'c']],
+        ['a', ['b', ['c', ['d']]]],
+        [['_2a-', '_2', ['a2']], ['_z2a-', 'a', ['a']]],
+        [['_-', '_a-', 'a__', '_-', '_a-', 'a__']],
+        [['_-', '_a-', 'a__', '_-', '_a-', 'a__']],
     ];
   }
 
   /**
-   * @dataProvider arrayData
+   * @dataProvider validData
    *
    * @param string $value
-   * @param string[] $expected
    */
-  public function testArrayFiltering(array $value, array $expected) {
-    $this->assertSame($this->filter->filter($value), $expected);
+  public function testValidArrayFilterings($value) {
+    $filtered = $this->filter->filter($value, true);
+    $this->assertSame($this->filter->filter($value), $filtered);
+    if (is_string($value)) {
+      $this->assertContains($value, $filtered);
+    } else {
+      foreach (\Sphp\Stdlib\Arrays::flatten($value) as $v) {
+        $this->assertContains($v, $filtered);
+      }
+    }
   }
 
   /**
-   * 
-   * @return string[]
+   * @return object[]
    */
-  public function objectData(): array {
+  public function validObjectData(): array {
     return [
         [(new MultiValueAttribute('foo'))->add('k', 'l'), ['k', 'l']],
+        [(new \Sphp\Stdlib\MbString('foo')), ['foo']],
     ];
   }
 
   /**
-   * @dataProvider arrayData
-   *
+   * @dataProvider validObjectData
    * @param string $value
    * @param string[] $expected
    */
-  public function testObjectFiltering(array $value, array $expected) {
+  public function testValidObjectFiltering($value, array $expected) {
     $this->assertSame($this->filter->filter($value), $expected);
+  }
+
+  /**
+   * @return object[]
+   */
+  public function invalidObjectData(): array {
+    return [
+        [new \Sphp\Stdlib\StopWatch()],
+        [new \stdClass()],
+    ];
+  }
+
+  /**
+   * @dataProvider invalidObjectData
+   * @param object $value
+   */
+  public function testInvalidObjectFiltering($value) {
+    $this->expectException(InvalidAttributeException::class);
+    $this->filter->filter($value, true);
   }
 
 }
