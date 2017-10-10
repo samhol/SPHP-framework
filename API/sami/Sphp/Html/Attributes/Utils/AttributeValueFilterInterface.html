@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\Utils\AttributeValueValidator | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\Utils\AttributeValueFilterInterface | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_AttributeValueValidator" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_AttributeValueFilterInterface" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,29 +65,26 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>AttributeValueValidator</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>AttributeValueFilterInterface</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            AttributeValueValidator
+            AttributeValueFilterInterface
                 
         </h1>
     </div>
 
-    <p>    class
-    <strong>AttributeValueValidator</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>        implements
-        <a href="../../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a>
+    <p>    interface
+    <strong>AttributeValueFilterInterface</strong>
 </p>
 
         
     
 
-            <div class="description">
-            <p>Description of AttributeValueValidator</p>                                </div>
     
     
     
@@ -97,21 +94,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_instance">instance</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isValid">isValid</a>($value)
+                    <a href="#method_filter">filter</a>($rawValue)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -124,38 +110,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_instance">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a> at         line 26</div>
-        <code>        static            <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
-    <strong>instance</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isValid">
-        <div class="location">at         line 22</div>
+                    <h3 id="method_filter">
+        <div class="location">at         line 18</div>
         <code>                    
-    <strong>isValid</strong>($value)
+    <strong>filter</strong>($rawValue)
         </code>
     </h3>
     <div class="details">
@@ -168,7 +126,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
-                <td>$value</td>
+                <td>$rawValue</td>
                 <td></td>
             </tr>
             </table>

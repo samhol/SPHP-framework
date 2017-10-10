@@ -83,7 +83,7 @@ interface AttributeInterface {
   /**
    * Removes all non locked values from the attribute
    *
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    */
   public function clear();
 

@@ -1,13 +1,11 @@
 <?php
 
 /**
- * AbstractAttributeValueValidator.php (UTF-8)
+ * AbstractAttributeUtils.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Attributes\Utils;
-
-use Sphp\Stdlib\Strings;
 
 /**
  * Description of AttributeValueValidator
@@ -17,19 +15,15 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractAttributeValueValidator implements AttributeValueValidatorInterface {
+abstract class AbstractAttributeUtils {
 
   private static $instance = [];
 
-  public function isValid($value): bool {
-    return Strings::hasStringRepresentation($value);
-  }
-
   /**
    * 
-   * @return ClassAttributeFilter
+   * @return AbstractAttributeUtils
    */
-  public static function instance(): AttributeValueValidatorInterface {
+  public static function instance(): AbstractAttributeUtils {
     if (!isset(self::$instance[static::class])) {
       self::$instance[static::class] = new static();
     }

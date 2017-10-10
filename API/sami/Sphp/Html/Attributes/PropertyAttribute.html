@@ -80,14 +80,14 @@
 
     <p>    class
     <strong>PropertyAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>
+        <a href="../../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements an property attribute object for an HTML element</p>                                </div>
+            <p>Implements an property attribute object</p>                                </div>
     
     
     
@@ -227,7 +227,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_clear">clear</a>()
@@ -320,64 +320,99 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetExists">offsetExists</a>(string|int $property)
+                    <a href="#method_offsetExists">offsetExists</a>(string $property)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Determines whether the given property exists</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    scalar
+                    scalar|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetGet">offsetGet</a>(string|int $property)
+                    <a href="#method_offsetGet">offsetGet</a>(string $property)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the value of the property name or null if the property does not exist</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetSet">offsetSet</a>(string|int $property, string|int $value)
+                    <a href="#method_offsetSet">offsetSet</a>(string $property, mixed $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Sets an property name value pair</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_offsetUnset">offsetUnset</a>(string|int $property)
+                    <a href="#method_offsetUnset">offsetUnset</a>(string $property)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Removes given property</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\ArrayIterator">ArrayIterator</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
-        
-                                            <p>Retrieves an external iterator to iterate through the atomic values on the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serializes to an array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_current">current</a>()
+        
+                                            <p>Returns the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_next">next</a>()
+        
+                                            <p>Advance the internal pointer of the collection</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_key">key</a>()
+        
+                                            <p>Return the key of the current element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p>Rewinds the Iterator to the first element</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_valid">valid</a>()
+        
+                                            <p>Checks if current iterator position is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -737,12 +772,12 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if any of the properties has empty name or value</td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td>if the property name or value is invalid</td>
             </tr>
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if any of the properties is already locked</td>
+                <td>if the property is immutable</td>
             </tr>
             </table>
 
@@ -911,7 +946,7 @@ name is required or the attribute value is not boolean (false).</p>             
                     <div class="method-item">
                     <h3 id="method_clear">
         <div class="location">at         line 166</div>
-        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>clear</strong>()
         </code>
     </h3>
@@ -927,7 +962,7 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
             <td>for PHP Method Chaining</td>
         </tr>
     </table>
@@ -1061,7 +1096,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lockProperty">
-        <div class="location">at         line 228</div>
+        <div class="location">at         line 225</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lockProperty</strong>(string $property, string $value)
         </code>
@@ -1119,7 +1154,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lockProperties">
-        <div class="location">at         line 250</div>
+        <div class="location">at         line 247</div>
         <code>                    <a href="../../../Sphp/Html/Attributes/PropertyAttribute.html"><abbr title="Sphp\Html\Attributes\PropertyAttribute">PropertyAttribute</abbr></a>
     <strong>lockProperties</strong>(array $props)
         </code>
@@ -1178,7 +1213,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 265</div>
+        <div class="location">at         line 262</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(null|string|string[] $props = null)
         </code>
@@ -1231,7 +1266,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 284</div>
+        <div class="location">at         line 281</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -1267,7 +1302,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 301</div>
+        <div class="location">at         line 298</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1297,21 +1332,23 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 310</div>
+        <div class="location">at         line 308</div>
         <code>                    boolean
-    <strong>offsetExists</strong>(string|int $property)
+    <strong>offsetExists</strong>(string $property)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Determines whether the given property exists</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>string</td>
                 <td>$property</td>
                 <td>the name of the property</td>
             </tr>
@@ -1323,7 +1360,7 @@ name is required or the attribute value is not boolean (false).</p>             
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td></td>
+            <td>true if the property exists and false otherwise</td>
         </tr>
     </table>
 
@@ -1335,21 +1372,23 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 319</div>
-        <code>                    scalar
-    <strong>offsetGet</strong>(string|int $property)
+        <div class="location">at         line 318</div>
+        <code>                    scalar|null
+    <strong>offsetGet</strong>(string $property)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the value of the property name or null if the property does not exist</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>string</td>
                 <td>$property</td>
                 <td>the name of the property</td>
             </tr>
@@ -1360,8 +1399,8 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
         <tr>
-            <td>scalar</td>
-            <td></td>
+            <td>scalar|null</td>
+            <td>the value of the property or null if the property does not exists</td>
         </tr>
     </table>
 
@@ -1373,43 +1412,54 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 330</div>
-        <code>                    
-    <strong>offsetSet</strong>(string|int $property, string|int $value)
+        <div class="location">at         line 333</div>
+        <code>                    void
+    <strong>offsetSet</strong>(string $property, mixed $value)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Sets an property name value pair</p>                    <p><strong>Note:</strong> Replaces old mutable property value with the new one</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>string</td>
                 <td>$property</td>
                 <td>the name of the property</td>
             </tr>
                     <tr>
-                <td>string|int</td>
+                <td>mixed</td>
                 <td>$value</td>
-                <td></td>
+                <td>the value of the property</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
                             <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
-                <td>if any of the properties is already locked</td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td>if the property name or value is invalid</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if if any of the properties has empty name or value</td>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the property is immutable</td>
             </tr>
             </table>
 
@@ -1420,38 +1470,9 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 338</div>
-        <code>                    
-    <strong>offsetUnset</strong>(string|int $property)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|int</td>
-                <td>$property</td>
-                <td>the name of the property</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         line 347</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\ArrayIterator">ArrayIterator</abbr>
-    <strong>getIterator</strong>()
+        <div class="location">at         line 344</div>
+        <code>                    void
+    <strong>offsetUnset</strong>(string $property)
         </code>
     </h3>
     <div class="details">
@@ -1459,15 +1480,64 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Retrieves an external iterator to iterate through the atomic values on the attribute</p>                                                </div>
+                                    <p>Removes given property</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>the name of the property to remove</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the property is immutable</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toArray">
+        <div class="location">at         line 348</div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Serializes to an array</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Attributes\ArrayIterator">ArrayIterator</abbr></td>
-            <td>to iterate through the atomic values on the attribute</td>
+            <td>array</td>
+            <td>the instance as an array</td>
         </tr>
     </table>
 
@@ -1478,18 +1548,149 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_toArray">
-        <div class="location">at         line 356</div>
-        <code>                    
-    <strong>toArray</strong>()
+                    <h3 id="method_current">
+        <div class="location">at         line 357</div>
+        <code>                    mixed
+    <strong>current</strong>()
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the current element</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_next">
+        <div class="location">at         line 366</div>
+        <code>                    void
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Advance the internal pointer of the collection</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location">at         line 375</div>
+        <code>                    mixed
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return the key of the current element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>the key of the current element</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location">at         line 384</div>
+        <code>                    void
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Rewinds the Iterator to the first element</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location">at         line 393</div>
+        <code>                    boolean
+    <strong>valid</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if current iterator position is valid</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>current iterator position is valid</td>
+        </tr>
+    </table>
+
             
             
                     </div>

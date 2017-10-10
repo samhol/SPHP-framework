@@ -79,14 +79,14 @@
     </div>
 
     <p>    class
-    <strong>MultiValueAttributeFilter</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeValueValidator.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeValueValidator">AbstractAttributeValueValidator</abbr></a>
+    <strong>MultiValueAttributeFilter</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of ClassAttributeFilter</p>                                </div>
+            <p>Utilities for validating and filtering multi value attributes</p>                                </div>
     
     
     
@@ -96,32 +96,21 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isValid">isValid</a>($value)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeValueValidator.html#method_isValid"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeValueValidator">AbstractAttributeValueValidator</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/ClassAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeFilter">ClassAttributeFilter</abbr></a>
+                    static&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_instance">instance</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeValueValidator.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeValueValidator">AbstractAttributeValueValidator</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>($raw, bool $validate = false)
+                    <a href="#method_filter">filter</a>(mixed $raw, bool $validate = false)
         
                                             <p>Returns an array of unique values parsed from the input</p>                </div>
                 <div class="col-md-2"></div>
@@ -131,10 +120,9 @@
                     bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_validate">validate</a>(mixed $string)
+                    <a href="#method_isValidAtomicValue">isValidAtomicValue</a>(mixed $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Validates given atomic value</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -144,38 +132,9 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_isValid">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeValueValidator.html#method_isValid"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeValueValidator">AbstractAttributeValueValidator</abbr></a> at         line 24</div>
-        <code>                    
-    <strong>isValid</strong>($value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_instance">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeValueValidator.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeValueValidator">AbstractAttributeValueValidator</abbr></a> at         line 32</div>
-        <code>        static            <a href="../../../../Sphp/Html/Attributes/Utils/ClassAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeFilter">ClassAttributeFilter</abbr></a>
+        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a> at         line 26</div>
+        <code>        static            <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
     <strong>instance</strong>()
         </code>
     </h3>
@@ -189,7 +148,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Sphp/Html/Attributes/Utils/ClassAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeFilter">ClassAttributeFilter</abbr></a></td>
+            <td><a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -204,7 +163,7 @@
                     <h3 id="method_filter">
         <div class="location">at         line 39</div>
         <code>                    string[]
-    <strong>filter</strong>($raw, bool $validate = false)
+    <strong>filter</strong>(mixed $raw, bool $validate = false)
         </code>
     </h3>
     <div class="details">
@@ -225,9 +184,9 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$raw</td>
-                <td></td>
+                <td>the value(s) to parse</td>
             </tr>
                     <tr>
                 <td>bool</td>
@@ -247,30 +206,41 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Html\Attributes\Utils\InvalidAttributeException">InvalidAttributeException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_validate">
-        <div class="location">at         line 63</div>
+                    <h3 id="method_isValidAtomicValue">
+        <div class="location">at         line 66</div>
         <code>                    bool
-    <strong>validate</strong>(mixed $string)
+    <strong>isValidAtomicValue</strong>(mixed $value)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Validates given atomic value</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>mixed</td>
-                <td>$string</td>
-                <td></td>
+                <td>$value</td>
+                <td>an atomic value to validate</td>
             </tr>
             </table>
 
@@ -280,7 +250,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td>true if the value is valid atomic value</td>
         </tr>
     </table>
 

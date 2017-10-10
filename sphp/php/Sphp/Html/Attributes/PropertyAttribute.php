@@ -7,23 +7,24 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
 use Countable;
-use IteratorAggregate;
-use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Utils\PropertyAttributeFilter;
+use Iterator;
+use Sphp\Html\Attributes\Utils\PropertyAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
- * Implements an property attribute object for an HTML element
+ * Implements an property attribute object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2014-09-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Countable, IteratorAggregate {
+class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAccess, Countable, Iterator {
 
   /**
    * properties as a (name -> value) map
@@ -40,13 +41,12 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   private $lockedProps = [];
 
   /**
-   *
    * @var string
    */
   private $form;
 
   /**
-   * @var PropertyAttributeFilter
+   * @var PropertyAttributeUtils
    */
   private $parser;
 
@@ -59,7 +59,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function __construct(string $name, StyleAttributeFilter $parser = null, string $form = '%s:%s;') {
     if ($parser === null) {
-      $parser = PropertyAttributeFilter::instance();
+      $parser = PropertyAttributeUtils::instance();
     }
     parent::__construct($name);
     $this->form = $form;
@@ -95,18 +95,18 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @param  string $property the name of the property
    * @param  mixed $value the value of the property
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the properties has empty name or value
-   * @throws ImmutableAttributeException if any of the properties is already locked
+   * @throws InvalidAttributeException if the property name or value is invalid
+   * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
     if ($this->isLocked($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
-    if (Strings::isEmpty($property)) {
-      throw new AttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
+    if (!$this->parser->isValidPropertyName($property)) {
+      throw new InvalidAttributeException("Property name cannot be empty in the " . $this->getName() . " attribute");
     }
-    if (empty($value) && $value !== "0" && $value !== 0) {
-      throw new AttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
+    if (!$this->parser->isValidValue($value)) {
+      throw new InvalidAttributeException("Property value cannot be empty in the " . $this->getName() . " attribute");
     }
     $this->props[$property] = $value;
     $this->lockedProps[$property] = false;
@@ -144,7 +144,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
     if ($this->isLocked($name)) {
       throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
     } else {
-      unset($this->props[$name]);
+      unset($this->props[$name], $this->lockedProps[$name]);
     }
     return $this;
   }
@@ -158,7 +158,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    */
   public function unsetProperties(array $names) {
     foreach ($names as $name) {
-      $this->remove($name);
+      $this->unsetProperty($name);
     }
     return $this;
   }
@@ -205,13 +205,10 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
    * @return boolean true if locked and false otherwise
    */
   public function isLocked(string $property = null): bool {
-    $locked = false;
     if ($property === null) {
-      $locked = in_array(true, $this->lockedProps);
-    } else if ($this->hasProperty($property)) {
-      $locked = $this->lockedProps[$property];
+      return in_array(true, $this->lockedProps);
     }
-    return $locked;
+    return $this->hasProperty($property) && $this->lockedProps[$property] === true;
   }
 
   /**
@@ -303,58 +300,98 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Counta
   }
 
   /**
-   * 
-   * @param  string|int $property the name of the property
-   * @return boolean
+   * Determines whether the given property exists
+   *
+   * @param  string $property the name of the property
+   * @return boolean true if the property exists and false otherwise
    */
   public function offsetExists($property): bool {
     return $this->hasProperty($property);
   }
 
   /**
-   * 
-   * @param  string|int $property the name of the property
-   * @return scalar
+   * Returns the value of the property name or null if the property does not exist
+   *
+   * @param  string $property the name of the property
+   * @return scalar|null the value of the property or null if the property does not exists
    */
   public function offsetGet($property) {
     return $this->getProperty($property);
   }
 
   /**
-   * 
-   * @param  string|int $property the name of the property
-   * @param  string|int $value
-   * @throws \Sphp\Exceptions\RuntimeException if any of the properties is already locked
-   * @throws \Sphp\Exceptions\InvalidArgumentException if if any of the properties has empty name or value
+   * Sets an property name value pair
+   *
+   * **Note:** Replaces old mutable property value with the new one
+   *
+   * @param  string $property the name of the property
+   * @param  mixed $value the value of the property
+   * @return void
+   * @throws InvalidAttributeException if the property name or value is invalid
+   * @throws ImmutableAttributeException if the property is immutable
    */
   public function offsetSet($property, $value) {
     $this->setProperty($property, $value);
   }
 
   /**
-   * 
-   * @param string|int $property the name of the property
+   * Removes given property
+   *
+   * @param  string $property the name of the property to remove
+   * @return void
+   * @throws ImmutableAttributeException if the property is immutable
    */
   public function offsetUnset($property) {
     $this->remove($property);
   }
 
-  /**
-   * Retrieves an external iterator to iterate through the atomic values on the attribute
-   *
-   * @return ArrayIterator to iterate through the atomic values on the attribute
-   */
-  public function getIterator() {
-    if ($this->count() > 0) {
-      $it = new ArrayIterator($this->props);
-    } else {
-      $it = new ArrayIterator();
-    }
-    return $it;
-  }
-
   public function toArray(): array {
     return $this->props;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->props);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   * 
+   * @return void
+   */
+  public function next() {
+    next($this->props);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->props);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   * 
+   * @return void
+   */
+  public function rewind() {
+    reset($this->props);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->props);
   }
 
 }

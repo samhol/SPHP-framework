@@ -11,6 +11,7 @@ use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
+use Sphp\Html\Attributes\Utils\MultiValueAttributeFilter;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -44,7 +45,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   private $filter;
 
   public function __construct(string $name) {
-    $this->filter = Utils\StyleAttributeFilter::instance();
+    $this->filter = MultiValueAttributeFilter::instance();
     parent::__construct($name);
   }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\Utils\ClassAttributeFilter | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\Utils\PropertyAttributeUtils | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_ClassAttributeFilter" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_PropertyAttributeUtils" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>ClassAttributeFilter</li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>PropertyAttributeUtils</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ClassAttributeFilter
+            PropertyAttributeUtils
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>ClassAttributeFilter</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a>
+    <strong>PropertyAttributeUtils</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of ClassAttributeFilter</p>                                </div>
+            <p>Utilities for validating and filtering property attributes</p>                                </div>
     
     
     
@@ -107,22 +107,42 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string[]
+                    scalar[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>(mixed $raw, bool $validate = false)
+                    <a href="#method_filter">filter</a>(string|scalar[] $properties)
         
-                                            <p>Returns an array of unique values parsed from the input</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a></small></div>
+                                            <p>Parses a string of properties to an array</p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isValidAtomicValue">isValidAtomicValue</a>(mixed $value)
+                    <a href="#method_isValidPropertyName">isValidPropertyName</a>(mixed $name)
         
-                                            <p>Validates given atomic value</p>                </div>
+                                            <p>Validates a given property name</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isValidValue">isValidValue</a>(mixed $value)
+        
+                                            <p>Validates a given value</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isValidProperty">isValidProperty</a>(mixed $name, mixed $value)
+        
+                                            <p>Validates a given property name => value pair</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -161,9 +181,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a> at         line 39</div>
-        <code>                    string[]
-    <strong>filter</strong>(mixed $raw, bool $validate = false)
+        <div class="location">at         line 29</div>
+        <code>                    scalar[]
+    <strong>filter</strong>(string|scalar[] $properties)
         </code>
     </h3>
     <div class="details">
@@ -171,27 +191,16 @@
     
 
                     <div class="method-description">
-                                    <p>Returns an array of unique values parsed from the input</p>                    <p><strong>Important:</strong> Parameter <var>$raw</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Parses a string of properties to an array</p>                    <p>Result array has properties names as keys and corresponding values as
+ array values</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$raw</td>
-                <td>the value(s) to parse</td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$validate</td>
-                <td></td>
+                <td>string|scalar[]</td>
+                <td>$properties</td>
+                <td>properties to parse</td>
             </tr>
             </table>
 
@@ -200,31 +209,22 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string[]</td>
-            <td>separated atomic values in an array</td>
+            <td>scalar[]</td>
+            <td>parsed property array containing name value pairs</td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\Html\Attributes\Utils\InvalidAttributeException">InvalidAttributeException</abbr></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isValidAtomicValue">
-        <div class="location">at         line 20</div>
-        <code>                    bool
-    <strong>isValidAtomicValue</strong>(mixed $value)
+                    <h3 id="method_isValidPropertyName">
+        <div class="location">at         line 56</div>
+        <code>                    boolean
+    <strong>isValidPropertyName</strong>(mixed $name)
         </code>
     </h3>
     <div class="details">
@@ -232,7 +232,47 @@
     
 
                     <div class="method-description">
-                                    <p>Validates given atomic value</p>                                                </div>
+                                    <p>Validates a given property name</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the property</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the property name is valid</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isValidValue">
+        <div class="location">at         line 66</div>
+        <code>                    boolean
+    <strong>isValidValue</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Validates a given value</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -240,7 +280,7 @@
                     <tr>
                 <td>mixed</td>
                 <td>$value</td>
-                <td>an atomic value to validate</td>
+                <td>the value of the property</td>
             </tr>
             </table>
 
@@ -249,8 +289,53 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td>true if the value is valid atomic value</td>
+            <td>boolean</td>
+            <td>true if the property value is valid</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isValidProperty">
+        <div class="location">at         line 77</div>
+        <code>                    boolean
+    <strong>isValidProperty</strong>(mixed $name, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Validates a given property name => value pair</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td>the name of the property</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>the value of the property</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the property name => value pair is valid</td>
         </tr>
     </table>
 

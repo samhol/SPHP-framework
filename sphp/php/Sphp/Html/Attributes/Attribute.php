@@ -40,8 +40,8 @@ class Attribute extends AbstractAttribute {
   /**
    * Constructs a new instance
    *
-   * @param string $name the name of the attribute
-   * @param mixed $value 
+   * @param  string $name the name of the attribute
+   * @param  mixed $value 
    * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
    */
   public function __construct(string $name, $value = null, AttributeValueValidatorInterface $parser = null) {
