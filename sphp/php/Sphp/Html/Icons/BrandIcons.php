@@ -51,7 +51,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
     if ($url === null) {
       $url = 'https://www.github.com/';
     }
-    $this->setIcon(static::GITHUB, (new HyperlinkIcon($url, Icon::fontAwesome('github'), $target)));
+    $this->setIcon(static::GITHUB, (new HyperlinkIcon($url, Icons::fontAwesome('github'), $target)));
     return $this;
   }
 
@@ -65,7 +65,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
     if ($url === null) {
       $url = 'https://www.facebook.com/';
     }
-    $this->setIcon(static::FACEBOOK, (new HyperlinkIcon($url, Icon::fontAwesome('facebook-square'), $target)));
+    $this->setIcon(static::FACEBOOK, (new HyperlinkIcon($url, Icons::fontAwesome('facebook-square'), $target)));
     return $this;
   }
 
@@ -90,7 +90,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
     if ($url === null) {
       $url = 'https://plus.google.com/';
     }
-    $this->setIcon(static::GOOGLE_PLUS, (new HyperlinkIcon($url, Icon::fontAwesome('google-plus-square'), $target)));
+    $this->setIcon(static::GOOGLE_PLUS, (new HyperlinkIcon($url, Icons::fontAwesome('google-plus-square'), $target)));
     return $this;
   }
 

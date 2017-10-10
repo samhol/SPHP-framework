@@ -12,7 +12,7 @@ use Sphp\Html\Forms\Inputs\TextInput;
 use Sphp\Html\Forms\SubmitterInterface;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Inputs\HiddenInputs;
-use Sphp\Html\Icons\Icon;
+use Sphp\Html\Icons\Icons;
 
 /**
  * Description of SearchForm
@@ -46,7 +46,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
     $this->setAction($action)
             ->setMethod($method)
             ->setTarget('_self');
-    $this->setSubmitButton(new Submitter(Icon::fontAwesome('fa-search')));
+    $this->setSubmitButton(new Submitter(Icons::fontAwesome('fa-search')));
     $this->hiddenData = new HiddenInputs();
     $this->setSearchField(new TextInput());
   }
