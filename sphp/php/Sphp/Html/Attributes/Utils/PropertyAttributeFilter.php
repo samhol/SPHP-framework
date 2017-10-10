@@ -43,8 +43,8 @@ class PropertyAttributeFilter  extends AbstractAttributeValueValidator {
         }
       }
     }
-    return array_filter($parsed, function ($var) {
-      return !empty($var) || $var === "0" || $var === 0;
+    return array_filter($parsed, function ($value, $prop) {
+      return $this->isValid($value);
     }, \ARRAY_FILTER_USE_BOTH);
   }
 
