@@ -24,12 +24,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 class ErrorDispatcher {
 
   /**
-   * @var bool
-   */
-  private $handlesErrors = false;
-
-  /**
-   * @var bool
+   * @var boolean
    */
   private $handlesExceptions = false;
 
@@ -116,7 +111,7 @@ class ErrorDispatcher {
    * @param  callable|ErrorListener $listener
    * @param  int $priority
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException;
+   * @throws InvalidArgumentException if the listener is of invalid type
    */
   public function addErrorListener(int $errorLevel, $listener, int $priority = 0) {
     if (!is_callable($listener) && !$listener instanceof ErrorListener) {
@@ -131,7 +126,7 @@ class ErrorDispatcher {
    * @param  callable|ExceptionListener $listener
    * @param  int $priority
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException;
+   * @throws InvalidArgumentException if the listener is of invalid type
    */
   public function addExceptionListener($listener, int $priority = 0) {
     if (!is_callable($listener) && !$listener instanceof ExceptionListener) {

@@ -2,13 +2,10 @@
 
 namespace Sphp\Config\ErrorHandling;
 
-use Sphp\Html\Foundation\Sites\Containers\ErrorMessageCallout;
+use Sphp\Html\Foundation\Sites\Core\CalloutBuilder;
 
 $ed = new ErrorDispatcher();
-$callout = new ErrorMessageCallout();
-$callout->showInitialFile(true)
-        ->isClosable(true);
-$ed->addErrorListener(\E_ALL, $callout, 1);
+$ed->addErrorListener(\E_ALL, new CalloutBuilder(false, false), 1);
 $ed->startErrorHandling();
 
 $ed->addExceptionListener(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));

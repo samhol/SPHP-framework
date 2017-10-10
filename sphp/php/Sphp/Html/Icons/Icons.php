@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Media;
+namespace Sphp\Html\Icons;
 
 use Sphp\Html\Document;
 use SplFileInfo;
@@ -54,44 +54,48 @@ class Icons {
   ];
 
   /**
-   * 
-   * @param  string $icon
-   * @param  string $tagName the tag name of the component
-   * @return ComponentInterface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
-   */
-  public static function get(string $icon, string $tagName = 'i') {
-    return Document::get($tagName)->cssClasses()->lock($icon);
-  }
-
-  /**
+   * Generates a FontAwesome icon
    * 
    * @param  string $iconName
    * @param  string $tagName the tag name of the component
-   * @return ComponentInterface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
+   * @return Icon the icon object generated
+   * @throws InvalidArgumentException if given tag name is invalid
+   * @link   http://fontawesome.io/ Font Awesome site
    */
-  public static function fontAwesome(string $iconName, string $tagName = 'i') {
+  public static function fontAwesome(string $iconName, string $tagName = 'i'): Icon {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
-    $icon = Document::get($tagName);
-    $icon->cssClasses()->lock(['fa', $iconName]);
-    return $icon;
+    return new Icon(['fa', $iconName], $tagName);
+  }
+  /**
+   * Generates a Foundation icon
+   * 
+   * @param  string $iconName the icon name 
+   * @param  string $tagName the tag name 
+   * @return Icon the icon object generated
+   * @throws InvalidArgumentException if the tag name is not valid
+   */
+  public static function foundation(string $iconName, string $tagName = 'i'): Icon {
+    if (!Strings::startsWith($iconName, 'fi-')) {
+      $iconName = 'fi-' . $iconName;
+    }
+    return new Icon(['fi', $iconName], $tagName);
   }
 
   /**
+   * Generates a filetype icon object using Font Awesome 
    * 
-   * @param  string|SplFileInfo $file
+   * @param  string|SplFileInfo $file the file
    * @param  string $tagName optional tag name of the component
-   * @return ComponentInterface
-   * @throws \Sphp\Exceptions\InvalidArgumentException if given tag name is invalid
+   * @return Icon the icon object generated
+   * @throws InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, string $tagName = 'i') {
+  public static function fileType($file, string $tagName = 'i'): Icon {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {
-      throw new InvalidArgumentException();
+      throw new InvalidArgumentException('File cannot be found');
     }
     $ext = $file->getExtension();
     if (array_key_exists($ext, static::$fileTypeMap)) {

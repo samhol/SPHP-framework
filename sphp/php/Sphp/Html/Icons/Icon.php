@@ -25,7 +25,7 @@ class Icon extends AbstractIcon {
    * @param  string $tagName the tag name 
    * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
    */
-  public function __construct(string $iconName, string $tagName = 'i') {
+  public function __construct($iconName, string $tagName = 'i') {
     parent::__construct($tagName);
     $this->cssClasses()->lock($iconName);
   }

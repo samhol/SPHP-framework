@@ -36,7 +36,7 @@ class HyperlinkIcon extends AbstractHyperlinkIcon {
    * @param string $icon
    */
   public static function fontAwesome($url, $icon, $target = null) {
-    $iconComponent = Icon::fontAwesome($icon);
+    $iconComponent = Icons::fontAwesome($icon);
     return static::get($url, $iconComponent, $target);
   }
 
@@ -49,7 +49,7 @@ class HyperlinkIcon extends AbstractHyperlinkIcon {
    * @return self the hyperlink icon generated
    */
   public static function foundation($href, $icon, $target = null) {
-    $iconComponent = Icon::foundation($icon);
+    $iconComponent = Icons::foundation($icon);
     return static::get($href, $iconComponent, $target);
   }
 

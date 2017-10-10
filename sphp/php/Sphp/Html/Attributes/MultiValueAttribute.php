@@ -40,7 +40,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   private $locked = [];
 
   /**
-   * @var ClassAttributeFilter
+   * @var MultiValueAttributeFilter
    */
   private $filter;
 
@@ -58,6 +58,14 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public function __destruct() {
     unset($this->values, $this->locked);
     parent::__destruct();
+  }
+
+  /**
+   * 
+   * @return MultiValueAttributeFilter
+   */
+  public function getValueFilter(): MultiValueAttributeFilter {
+    return $this->filter;
   }
 
   /**
@@ -88,16 +96,12 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * 2. An array parameter can contain only one atomic value per array value
    * 3. Stores only a single instance of every value (no duplicates)
    *
-   * @param  string|scalar[] $values the values to add
+   * @param  scalar|scalar[] $values the values to add
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->filter->filter($values, true);
-    foreach ($parsed as $class) {
-      if (!isset($this->values[$class])) {
-        $this->values[$class] = false;
-      }
-    }
+    $parsed = $this->getValueFilter()->filter($values, true);
+    $this->values = array_unique(array_merge($this->values, $parsed));
     return $this;
   }
 
@@ -114,17 +118,10 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function isLocked($values = null): bool {
     if ($values === null) {
-      return in_array(true, $this->values);
+      return !empty($this->locked);
     } else {
-      $locked = false;
-      $parsed = Arrays::flatten(func_get_args());
-      foreach ($parsed as $class) {
-        $locked = isset($this->values[$class]) && $this->values[$class] === true;
-        if (!$locked) {
-          break;
-        }
-      }
-      return $locked;
+      $parsed = $this->getValueFilter()->filter($values, true);
+      return empty(array_diff($parsed, $this->locked));
     }
   }
 
@@ -161,7 +158,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove($values) {
-    $arr = Arrays::flatten(func_get_args());
+    $arr = $this->getValueFilter()->filter(func_get_args());
     foreach ($arr as $class) {
       if (isset($this->values[$class])) {
         if ($this->values[$class] === false) {
