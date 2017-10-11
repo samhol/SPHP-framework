@@ -10,6 +10,7 @@ namespace Sphp\Html\Attributes;
 use Countable;
 use Iterator;
 use Sphp\Stdlib\Arrays;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -201,7 +202,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @param  scalar $value the value of the attribute
    * @return $this for a fluent interface
-   * @throws AttributeException if the attribute name or value is invalid
+   * @throws InvalidAttributeException if the attribute name or value is invalid
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function set(string $name, $value = true) {
@@ -216,7 +217,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    *
    * @param  mixed[] $attrs an array of attribute name value pairs
    * @return $this for a fluent interface
-   * @throws AttributeException if any of the attributes is invalid
+   * @throws InvalidAttributeException if any of the attributes is invalid
    * @throws ImmutableAttributeException if the value of the attribute is already locked
    */
   public function merge(array $attrs = []) {
@@ -300,7 +301,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute is empty and false otherwise
    */
   public function isEmpty(string $name): bool {
-    return $this->exists($name) && ($this->get($name) === true || $this->get($name) === "");
+    return $this->exists($name) && ($this->getValue($name) === true || $this->getValue($name) === "");
   }
 
   /**
@@ -327,15 +328,30 @@ class AbstractAttributeManager implements Countable, Iterator {
    *
    * @param  string $name the name of the attribute
    * @return scalar the value of the attribute
+   * @deprecated
    */
   public function get(string $name) {
+    return $this->getValue($name);
+  }
+
+  /**
+   * Returns the value of a given attribute name
+   *
+   * **IMPORTANT:**
+   *
+   * * Returns `boolean false` if attribute is not present.
+   * * returns `true` or an empty string for empty attributes.
+   *
+   * @param  string $name the name of the attribute
+   * @return scalar the value of the attribute
+   */
+  public function getValue(string $name) {
     $value = false;
     if ($this->exists($name)) {
       $value = $this->createObject($name)->getValue();
     }
     return $value;
   }
-
   /**
    * Returns the instance of the inner attribute object if it is mapped
    *

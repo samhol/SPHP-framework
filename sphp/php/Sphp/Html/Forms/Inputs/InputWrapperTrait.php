@@ -39,7 +39,7 @@ trait InputWrapperTrait {
     return $this->getInput()->getName();
   }
 
-  public function setName($name) {
+  public function setName(string $name) {
     $this->getInput()->setName($name);
     return $this;
   }

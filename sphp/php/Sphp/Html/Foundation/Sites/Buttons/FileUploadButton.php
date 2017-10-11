@@ -95,7 +95,7 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
     return $this->fileInput->isNamed();
   }
 
-  public function setName($name) {
+  public function setName(string $name) {
     $this->fileInput->setName($name);
     return $this;
   }

@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
+abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var AttributeInterface 
@@ -31,9 +31,7 @@ class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return AttributeInterface
    */
-  public function createAttr(string $name = 'data-attr'): AttributeInterface {
-    return new Attribute($name);
-  }
+  abstract public function createAttr(string $name = 'data-attr'): AttributeInterface;
 
   /**
    * @return scalar[]

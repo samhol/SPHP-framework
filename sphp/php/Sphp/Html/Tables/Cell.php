@@ -42,7 +42,7 @@ abstract class Cell extends ContainerTag implements CellInterface {
   }
 
   public function getRowspan(): int {
-    return (int) $this->attrs()->get('rowspan');
+    return (int) $this->attrs()->getValue('rowspan');
   }
 
 }

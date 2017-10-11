@@ -10,7 +10,7 @@ namespace Sphp\Html\Attributes\Utils;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\MultiValueAttribute;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * Utilities for validating and filtering multi value attributes
@@ -45,7 +45,7 @@ class MultiValueAttributeFilter extends AbstractAttributeUtils {
     } else if (Strings::hasStringRepresentation($raw)) {
       $parsed = [Strings::toString($raw)];
     } else {
-      throw new InvalidAttributeException("Value cannot be converted to string");
+      throw new InvalidAttributeException("Atomic value cannot be converted to string");
     }
     if ($validate) {
       foreach ($parsed as $value) {

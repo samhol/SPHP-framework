@@ -49,7 +49,7 @@ trait PatternValidableTrait {
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
   public function getPattern() {
-    return $this->attrs()->get("pattern");
+    return $this->attrs()->getValue("pattern");
   }
 
   /**

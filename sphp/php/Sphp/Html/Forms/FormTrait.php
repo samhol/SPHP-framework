@@ -58,7 +58,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
   public function getMethod() {
-    return $this->attrs()->get("method");
+    return $this->attrs()->getValue("method");
   }
 
   /**
@@ -91,7 +91,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
   public function getAction() {
-    return $this->attrs()->get('action');
+    return $this->attrs()->getValue('action');
   }
 
   /**
@@ -117,7 +117,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
   public function getEnctype() {
-    return $this->attrs()->get('enctype');
+    return $this->attrs()->getValue('enctype');
   }
 
   /**
@@ -131,7 +131,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->attrs()->set('name', $name);
     return $this;
   }
@@ -147,7 +147,7 @@ trait FormTrait {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function getName() {
-    return $this->attrs()->get('name');
+    return $this->attrs()->getValue('name');
   }
 
   /**
@@ -219,7 +219,7 @@ trait FormTrait {
    * @link  http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
   public function getTarget() {
-    return $this->attrs()->get('target');
+    return $this->attrs()->getValue('target');
   }
 
 }

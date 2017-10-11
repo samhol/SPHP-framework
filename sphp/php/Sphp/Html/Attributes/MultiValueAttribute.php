@@ -138,10 +138,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * @return $this for a fluent interface
    */
   public function lock($values) {
-    $arr = $this->filter->filter(func_get_args());
-    foreach ($arr as $class) {
-      $this->values[$class] = true;
-    }
+    $parsed = $this->filter->filter(func_get_args());
+    $this->values = array_unique(array_merge($this->values, $parsed));
+    $this->locked = array_unique(array_merge($this->locked, $parsed));
     return $this;
   }
 
@@ -159,22 +158,12 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   public function remove($values) {
     $arr = $this->getValueFilter()->filter(func_get_args());
-    foreach ($arr as $class) {
-      if (isset($this->values[$class])) {
-        if ($this->values[$class] === false) {
-          unset($this->values[$class]);
-        } else {
-          throw new ImmutableAttributeException("Value '$class' in '{$this->getName()}' attribute is immutable");
-        }
-      }
-    }
+    $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
     return $this;
   }
 
   public function clear() {
-    $this->values = array_filter($this->values, function($locked) {
-      return $locked;
-    });
+    $this->values = $this->locked;
     return $this;
   }
 
@@ -192,8 +181,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   public function contains($values): bool {
     $needles = $this->filter->filter($values);
     $exists = false;
-    foreach ($needles as $class) {
-      $exists = isset($this->values[$class]);
+    foreach ($needles as $needle) {
+      $exists = in_array($needle, $this->value);
       if (!$exists) {
         break;
       }
@@ -203,7 +192,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
 
   public function getValue() {
     if (!empty($this->values)) {
-      $value = implode(' ', array_keys($this->values));
+      $value = implode(' ', $this->values);
     } else {
       $value = $this->isDemanded();
     }
@@ -220,7 +209,7 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   }
 
   public function toArray(): array {
-    return array_keys($this->values);
+    return $this->values;
   }
 
   public function filter(callable $filter) {

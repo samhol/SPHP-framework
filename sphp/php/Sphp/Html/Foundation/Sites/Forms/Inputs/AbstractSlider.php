@@ -59,11 +59,11 @@ abstract class AbstractSlider extends AbstractComponent implements SliderInterfa
   }
 
   public function getMin(): int {
-    return (int) $this->attrs()->get('data-start');
+    return (int) $this->attrs()->getValue('data-start');
   }
 
   public function getMax(): int {
-    return (int) $this->attrs()->get('data-end');
+    return (int) $this->attrs()->getValue('data-end');
   }
 
   public function disable(bool $disabled = true) {

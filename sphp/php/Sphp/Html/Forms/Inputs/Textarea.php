@@ -35,7 +35,7 @@ class Textarea extends ContainerTag implements TextareaInterface {
    * @link   http://www.w3schools.com/tags/att_textarea_rows.asp rows attribute
    * @link   http://www.w3schools.com/tags/att_textarea_cols.asp cols attribute
    */
-  public function __construct($name = null, $content = null, int $rows = null, int $cols = null) {
+  public function __construct(string $name = null, $content = null, int $rows = null, int $cols = null) {
     parent::__construct('textarea', $content);
     if ($name !== null) {
       $this->setName($name);

@@ -42,7 +42,7 @@ class Option extends SimpleContainerTag implements SelectMenuContentInterface {
    * @link    http://www.w3schools.com/tags/att_option_value.asp value attribute
    */
   public function getValue() {
-    return $this->attrs()->get('value');
+    return $this->attrs()->getValue('value');
   }
 
   /**

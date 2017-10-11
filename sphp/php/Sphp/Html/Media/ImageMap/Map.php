@@ -66,7 +66,7 @@ class Map extends AbstractContainerComponent {
    * @link   http://www.w3schools.com/tags/att_iframe_name.asp name attribute
    */
   public function getName(): string {
-    return $this->attrs()->get('name');
+    return $this->attrs()->getValue('name');
   }
 
   /**

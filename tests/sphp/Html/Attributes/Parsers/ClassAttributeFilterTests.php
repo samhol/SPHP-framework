@@ -52,7 +52,7 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
    * @dataProvider invalidData
    */
   public function testInvalidData($value) {
-    $this->assertFalse($this->filter->isValid($value));
+    $this->assertFalse($this->filter->isValidAtomicValue($value));
     $this->expectException(InvalidAttributeException::class);
     $this->filter->filter($value, true);
   }
@@ -119,14 +119,13 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
    */
   public function validObjectData(): array {
     return [
-        [(new MultiValueAttribute('foo'))->add('k', 'l'), ['k', 'l']],
         [(new \Sphp\Stdlib\MbString('foo')), ['foo']],
     ];
   }
 
   /**
    * @dataProvider validObjectData
-   * @param string $value
+   * @param object $value
    * @param string[] $expected
    */
   public function testValidObjectFiltering($value, array $expected) {

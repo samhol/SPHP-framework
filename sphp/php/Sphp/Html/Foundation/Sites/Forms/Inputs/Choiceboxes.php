@@ -165,7 +165,7 @@ abstract class Choiceboxes extends AbstractComponent implements InputInterface, 
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
     foreach ($this->options as $box) {
       $box->setName($name);

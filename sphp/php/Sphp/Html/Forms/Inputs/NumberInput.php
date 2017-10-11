@@ -41,7 +41,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
   public function getMinimum(): int {
-    return (int) $this->attrs()->get('min');
+    return (int) $this->attrs()->getValue('min');
   }
 
   public function setMinimum(int $min) {
@@ -50,7 +50,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
   public function getMaximum(): int {
-    return (int) $this->attrs()->get('max');
+    return (int) $this->attrs()->getValue('max');
   }
 
   public function setMaximum(int $max) {
@@ -59,7 +59,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
   public function getStep() {
-    return $this->attrs()->get('step');
+    return $this->attrs()->getValue('step');
   }
 
   public function setStep(int $step) {

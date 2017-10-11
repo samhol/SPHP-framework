@@ -70,7 +70,7 @@ class Source extends EmptyTag implements MultimediaSourceInterface, LazyMediaInt
    * @link   http://www.w3schools.com/tags/att_source_type.asp type attribute
    */
   public function getType() {
-    return $this->attrs()->get('type');
+    return $this->attrs()->getValue('type');
   }
 
 }

@@ -41,7 +41,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @return string
    */
   public function getEqualizerName() {
-    return $this->getComponent()->attrs()->get('data-equalizer');
+    return $this->getComponent()->attrs()->getValue('data-equalizer');
   }
 
   /**

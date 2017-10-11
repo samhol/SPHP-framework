@@ -1,22 +1,22 @@
 <?php
 
-namespace Sphp\Html\Attributes\Filters;
+namespace Sphp\Html\Attributes\Utils;
 
 use Sphp\Html\Attributes\PropertyAttribute;
 
 class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var 
+   * @var PropertyAttributeUtils
    */
-  protected $filter;
+  protected $utils;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->filter = new StyleAttributeParser();
+    $this->utils = new PropertyAttributeUtils();
   }
 
   /**
@@ -24,7 +24,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    $this->filter = null;
+    $this->utils = null;
   }
 
   /**
@@ -73,7 +73,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider rawArrayData
    */
   public function testArrayParsing(array $value, array $expected) {
-    $this->assertEquals($this->filter->parse($value), $expected);
+    $this->assertEquals($this->utils->filter($value), $expected);
   }
 
   /**
@@ -101,7 +101,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider rawStringData
    */
   public function testParsing(string $value, array $expected) {
-    $this->assertEquals($this->filter->parse($value), $expected);
+    $this->assertEquals($this->utils->filter($value), $expected);
   }
 
 }

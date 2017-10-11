@@ -102,7 +102,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function setName($name);
+  public function setName(string $name);
 
   /**
    * Returns the value of the name attribute
@@ -181,7 +181,7 @@ interface FormInterface extends ContentInterface {
   /**
    * Sets the values to the input fields
    *
-   * **Important:** Works only for sigle dimensional input names
+   * **Important:** Works only for single dimensional input names
    * 
    * @param  mixed[] $data
    * @param  boolean $filter true for enabling the data filtering, and false otherwise

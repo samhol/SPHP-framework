@@ -69,7 +69,7 @@ class Label extends ContainerTag {
    * @link  http://www.w3schools.com/tags/att_label_for.asp for attribute
    */
   public function getFor() {
-    return $this->attrs()->get('for');
+    return $this->attrs()->getValue('for');
   }
 
   /**
@@ -103,7 +103,7 @@ class Label extends ContainerTag {
   public function getForms(): array {
     $result = [];
     if ($this->attrs()->exists('form')) {
-      $result = explode(' ', $this->attrs()->get('form'));
+      $result = explode(' ', $this->attrs()->getValue('form'));
     }
     return $result;
   }

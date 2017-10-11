@@ -42,7 +42,7 @@ class RangeSlider extends AbstractSlider {
   public function getInputValueSeparator() {
     $separator = ';';
     if ($this->attrs()->exists('data-input-values-separator')) {
-      $separator = $this->attrs()->get('data-input-values-separator');
+      $separator = $this->attrs()->getValue('data-input-values-separator');
     }
     return $separator;
   }

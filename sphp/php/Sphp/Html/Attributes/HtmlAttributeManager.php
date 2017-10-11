@@ -60,7 +60,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
    * @link   https://www.w3.org/WAI/intro/aria.php
    */
-  public function setAria($name, $value) {
+  public function setAria(string $name, $value) {
     $this->set("aria-$name", $value);
     return $this;
   }

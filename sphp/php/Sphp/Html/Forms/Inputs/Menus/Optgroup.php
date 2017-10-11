@@ -55,7 +55,7 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function getLabel() {
-    return $this->attrs()->get('label');
+    return $this->attrs()->getValue('label');
   }
 
   /**

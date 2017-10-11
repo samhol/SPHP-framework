@@ -21,7 +21,7 @@ $codeExampleBuilder = new CodeExampleBuilder('Sphp/Html/Foundation/Sites/Grids/G
 \Sphp\Manual\parseDown(<<<MD
 ##The $colIf <small>and its implementations</small>
 		
-A $colIf defines a sigle column of a $rowIf in a Grid layout.
+A $colIf defines a single column of a $rowIf in a Grid layout.
 
 MD
 );

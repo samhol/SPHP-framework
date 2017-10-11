@@ -82,7 +82,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_link_href.asp href attribute
    */
   public function getHref() {
-    return $this->attrs()->get('href');
+    return $this->attrs()->getValue('href');
   }
 
   /**
@@ -142,7 +142,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    */
   public function getRel() {
-    return $this->attrs()->get('rel');
+    return $this->attrs()->getValue('rel');
   }
 
   /**
@@ -172,7 +172,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public function getType() {
-    return $this->attrs()->get('type');
+    return $this->attrs()->getValue('type');
   }
 
   /**
@@ -210,7 +210,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
   public function getMedia() {
-    return $this->attrs()->get('media');
+    return $this->attrs()->getValue('media');
   }
 
   /**

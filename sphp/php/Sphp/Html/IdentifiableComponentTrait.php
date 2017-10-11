@@ -62,7 +62,7 @@ trait IdentifiableComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
   public function addCssClass($cssClasses) {
-    $this->cssClasses()->add($cssClasses);
+    $this->cssClasses()->add(func_get_args());
     return $this;
   }
 
@@ -79,7 +79,7 @@ trait IdentifiableComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function removeCssClass($cssClasses) {
-    $this->cssClasses()->remove($cssClasses);
+    $this->cssClasses()->remove(func_get_args());
     return $this;
   }
 
@@ -96,7 +96,7 @@ trait IdentifiableComponentTrait {
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
   public function hasCssClass($cssClasses): bool {
-    return $this->cssClasses()->contains($cssClasses);
+    return $this->cssClasses()->contains(func_get_args());
   }
 
   /**
@@ -166,7 +166,7 @@ trait IdentifiableComponentTrait {
    * @return mixed the value of the attribute
    */
   public function getAttr(string $name) {
-    return $this->attrs()->get($name);
+    return $this->attrs()->getValue($name);
   }
 
   /**

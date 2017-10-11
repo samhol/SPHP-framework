@@ -2,31 +2,23 @@
 
 namespace Sphp\Html\Attributes;
 
-include_once 'AttributeObjectTest.php';
+include_once 'AbstractAttributeObjectTest.php';
 
-class PropertyAttributeTest extends \AttributeObjectTest {
+class PropertyAttributeTest extends AttributeObjectTest {
 
   /**
-   *
    * @var PropertyAttribute 
    */
   protected $attrs;
 
-  /**
-   * 
-   * @param  string $name
-   * @return PropertyAttribute
-   */
-  public function createAttr($name = "style") {
-    echo phpversion();
+  public function createAttr(string $name = 'style'): AttributeInterface {
     return new PropertyAttribute($name);
   }
 
   /**
-   * 
-   * @return string[]
+   * @return array[]
    */
-  public function lockMethodData() {
+  public function lockMethodData(): array {
     return [
         ["p:v;"],
         ["p1:v1;p2:v2;"]
@@ -34,10 +26,9 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   }
 
   /**
-   * 
-   * @return string[]
+   * @return array[]
    */
-  public function scalarData() {
+  public function scalarData(): array {
     return [
         ["", false, false],
         [" ", false, false],
@@ -50,39 +41,6 @@ class PropertyAttributeTest extends \AttributeObjectTest {
         [1, false, false],
         [0b100, false, false]
     ];
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function parsingData() {
-    return [
-        ["", []],
-        [" ", []],
-        [":;", []],
-        [" p ", []],
-        ["p: v;", ["p" => "v"]],
-        [
-            "p: v;p1:v1;p2:v2;p:value;err:e:r:r:;;",
-            [
-                "p" => "value",
-                "p1" => "v1",
-                "p2" => "v2",
-                "p2" => "v2",
-                "err" => "e:r:r:"
-            ]
-        ]
-    ];
-  }
-
-  /**
-   * 
-   * @covers Sphp\Html\Attributes\MultiValueAttribute::parse()
-   * @dataProvider parsingData
-   */
-  public function testParsing($value, $expected) {
-    $this->assertEquals(PropertyAttribute::parse($value), $expected);
   }
 
   /**
@@ -128,10 +86,9 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   }
 
   /**
-   * 
-   * @return string[]
+   * @return array[]
    */
-  public function settMethodData() {
+  public function settMethodData(): array {
     return [
         ["", false],
         [false, false],
@@ -158,10 +115,9 @@ class PropertyAttributeTest extends \AttributeObjectTest {
   }
 
   /**
-   * 
-   * @return string[]
+   * @return array[]
    */
-  public function demandData() {
+  public function demandData(): array {
     return [
         ["c1"],
         [["c1 c2"]],

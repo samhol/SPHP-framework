@@ -51,7 +51,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
   }
 
   public function getMaxlength() {
-    return $this->attrs()->get('maxlength');
+    return $this->attrs()->getValue('maxlength');
   }
 
   public function setMaxlength(int $maxlength) {

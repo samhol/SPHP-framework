@@ -153,7 +153,7 @@ class RangeSlider extends AbstractSlider {
     return $this->name;
   }
 
-  public function setName($name) {
+  public function setName(string $name) {
     $this->name = $name;
     $this->getStartInput()->setName($name . "[start]");
     $this->getEndInput()->setName($name . "[end]");

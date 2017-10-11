@@ -13,7 +13,6 @@ use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Utils\ClassAttributeFilter;
 use Sphp\Stdlib\Datastructures\Collection;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**

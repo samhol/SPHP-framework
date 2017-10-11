@@ -70,7 +70,7 @@ trait HyperlinkTrait {
    * @link http://www.w3schools.com/tags/att_a_href.asp href attribute
    */
   public function getHref() {
-    return $this->attrs()->get('href');
+    return $this->attrs()->getValue('href');
   }
 
   /**
@@ -106,7 +106,7 @@ trait HyperlinkTrait {
    * @link  http://www.w3schools.com/tags/att_a_target.asp target attribute
    */
   public function getTarget() {
-    return $this->attrs()->get('target');
+    return $this->attrs()->getValue('target');
   }
 
   /**

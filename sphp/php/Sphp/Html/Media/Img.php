@@ -106,7 +106,7 @@ class Img extends EmptyTag implements ImgInterface {
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function getAlt(): string {
-    return $this->attrs()->get('alt');
+    return $this->attrs()->getValue('alt');
   }
 
   /**

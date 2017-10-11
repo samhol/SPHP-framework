@@ -34,7 +34,7 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
    * @param  mixed $value the initial submit value 
    * @throws InvalidArgumentException if the $value is not between the range
    */
-  public function __construct($name, int $start = 0, int $end = 100, int $step = 1, $value = null) {
+  public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1, $value = null) {
     parent::__construct('text', $name);
     if ($value === null) {
       $value = $start;
@@ -149,11 +149,11 @@ abstract class AbstractSlider extends AbstractInputTag implements SliderInterfac
   }
 
   public function getMax(): int {
-    return (int) $this->attrs()->get('data-max');
+    return (int) $this->attrs()->getValue('data-max');
   }
 
   public function getMin(): int {
-    return (int) $this->attrs()->get('data-min');
+    return (int) $this->attrs()->getValue('data-min');
   }
 
 }

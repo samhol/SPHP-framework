@@ -26,7 +26,7 @@ class PropertyAttributeUtils extends AbstractAttributeUtils {
    * @param  string|scalar[] $properties properties to parse
    * @return scalar[] parsed property array containing name value pairs
    */
-  public function filter($properties) {
+  public function filter($properties): array {
     $parsed = [];
     if (is_array($properties)) {
       $parsed = $properties;

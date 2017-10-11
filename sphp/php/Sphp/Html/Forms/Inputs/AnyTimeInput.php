@@ -12,7 +12,6 @@ namespace Sphp\Html\Forms\Inputs;
  *
  * **Note!** This element uses Any+Time DatePicker/TimePicker AJAX Calendar Widget for its functionality.
  *
- *
  * @author Sami Holck <sami.holck@gmail.com>
  * @since   2012-04-11
  * @link    http://www.ama3.com/anytime/ Any+Time Calendar Widget
@@ -52,7 +51,7 @@ class AnyTimeInput extends TextInput {
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct($name = "", $value = "", $locale = self::LANG_EN) {
+  public function __construct(string $name = "", $value = "", $locale = self::LANG_EN) {
     parent::__construct($name, $value, 17, 17);
     $this->attrs()->demand('data-anytime');
     $this->identify();
@@ -73,7 +72,7 @@ class AnyTimeInput extends TextInput {
    */
   public function setLocale($locale) {
     $this->locale = $locale;
-    $this->setAttr("data-locale", $locale);
+    $this->setAttr('data-locale', $locale);
     return $this;
   }
 
@@ -123,9 +122,9 @@ class AnyTimeInput extends TextInput {
    * @param  string $format datetime format
    * @return $this for a fluent interface
    */
-  public function setDateTimeFormat($format = "%Y-%m-%d %H:%i") {
+  public function setDateTimeFormat($format = '%Y-%m-%d %H:%i') {
     $this->format = $format;
-    $this->setAttr("data-format", $format);
+    $this->setAttr('data-format', $format);
     return $this;
   }
 

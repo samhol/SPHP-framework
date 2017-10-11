@@ -45,7 +45,7 @@ trait LazyMediaSourceTrait {
       $this->attrs()->set('data-src', $src);
     } else if ($this->isLazy()) {
       $this->attrs()->classes()->remove($classes);
-      $this->setSrc($this->attrs()->get('data-src'));
+      $this->setSrc($this->attrs()->getValue('data-src'));
       $this->attrs()->remove('data-src');
     }
     return $this;
@@ -89,9 +89,9 @@ trait LazyMediaSourceTrait {
    */
   public function getSrc(): string {
     if ($this->isLazy()) {
-      return $this->attrs()->get('data-src');
+      return $this->attrs()->getValue('data-src');
     } else {
-      return $this->attrs()->get('src');
+      return $this->attrs()->getValue('src');
     }
   }
 

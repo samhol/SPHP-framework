@@ -79,7 +79,7 @@ class Ol extends AbstractList {
   public function getStart(): int {
     $start = 1;
     if ($this->attrs()->exists('start')) {
-      $start = $this->attrs()->get('start');
+      $start = $this->attrs()->getValue('start');
     }
     return (int) $start;
   }
@@ -105,7 +105,7 @@ class Ol extends AbstractList {
   public function getType(): string {
     $type = '1';
     if ($this->attrs()->exists('type')) {
-      $type = $this->attrs()->get('type');
+      $type = $this->attrs()->getValue('type');
     }
     return $type;
   }

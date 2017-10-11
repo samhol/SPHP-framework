@@ -28,7 +28,7 @@ class Slider extends AbstractSlider {
    * @param  int $end the end value of the slider
    * @param  int $step the length of a single step
    */
-  public function __construct($name = null, $start = 0, $end = 100, $step = 1) {
+  public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);
     $this->attrs()->lock('data-type', 'single');
   }

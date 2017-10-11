@@ -35,7 +35,7 @@ interface InputInterface extends ContentInterface {
    * @param  string $name the name of the form input
    * @return $this for a fluent interface
    */
-  public function setName($name);
+  public function setName(string $name);
 
   /**
    * Checks whether the form input has a name

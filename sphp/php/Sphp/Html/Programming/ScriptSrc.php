@@ -88,7 +88,7 @@ class ScriptSrc extends AbstractTag implements ScriptInterface {
    * @link   http://www.w3schools.com/tags/att_script_src.asp src attribute
    */
   public function getSrc() {
-    return $this->attrs()->get('src');
+    return $this->attrs()->getValue('src');
   }
 
   public function getHtml(): string {

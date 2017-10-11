@@ -109,7 +109,7 @@ trait AreaTrait {
    * @link  http://www.w3schools.com/tags/att_area_alt.asp alt attribute
    */
   public function getAlt() {
-    return $this->attrs()->get('alt');
+    return $this->attrs()->getValue('alt');
   }
 
 }

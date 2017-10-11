@@ -42,7 +42,7 @@ trait SizeableTrait {
    * @return int width of the component
    */
   public function getWidth(): int {
-    return (int) $this->attrs()->get('width');
+    return (int) $this->attrs()->getValue('width');
   }
 
   /**
@@ -74,7 +74,7 @@ trait SizeableTrait {
    * @return int height of the component or `false` if not set
    */
   public function getHeight(): int {
-    return (int) $this->attrs()->get('height');
+    return (int) $this->attrs()->getValue('height');
   }
   /**
    * Checks if the component has height defined

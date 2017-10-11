@@ -21,7 +21,7 @@ interface TraversableFormInterface extends FormInterface, \Sphp\Html\Traversable
   /**
    * Sets the values to the input fields
    *
-   * **Important:** Works only for sigle dimensional input names
+   * **Important:** Works only for single dimensional input names
    * 
    * @param  mixed[] $data
    * @param  boolean $filter true for enabling the data filtering, ans false otherwise

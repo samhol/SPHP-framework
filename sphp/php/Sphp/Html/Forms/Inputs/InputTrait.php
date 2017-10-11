@@ -31,7 +31,7 @@ trait InputTrait {
    * @return string|null name attribute
    */
   public function getName() {
-    return $this->attrs()->get('name');
+    return $this->attrs()->getValue('name');
   }
 
   /**
@@ -40,7 +40,7 @@ trait InputTrait {
    * @param  string $name the value of the name attribute
    * @return InputInterface for PHP Method Chaining
    */
-  public function setName($name) {
+  public function setName(string $name) {
     $this->attrs()->set('name', $name);
     return $this;
   }
