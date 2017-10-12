@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Submit.php (UTF-8)
+ * Submitter.php (UTF-8)
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>.
  */
 

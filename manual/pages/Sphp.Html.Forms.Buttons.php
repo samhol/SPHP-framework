@@ -6,11 +6,12 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$buttonInterface = \Sphp\Manual\sami()->classLinker(ButtonInterface::class);
 $submitter = Apis::sami()->classLinker(Submitter::class);
 $reseter = Apis::sami()->classLinker(Resetter::class);
 $button = Apis::sami()->classLinker(Button::class);
 \Sphp\Manual\parseDown(<<<MD
-###The $submitter component
+###The $buttonInterface components
         
 $ns	
         
@@ -20,6 +21,28 @@ $ns
         
 MD
 );
+
+namespace Sphp\Html\Forms\Inputs\Buttons;
+
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Html\Apps\Manual\Apis;
+
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$submitter = Apis::sami()->classLinker(Submitter::class);
+$reseter = Apis::sami()->classLinker(Resetter::class);
+$button = Apis::sami()->classLinker(Button::class);
+\Sphp\Manual\parseDown(<<<MD
+
+        
+$ns	
+        
+* $submitter is a submit button (submits form-data)
+* $reseter is a reset button (resets the form-data to its initial values)
+* $button is is a clickable button
+        
+MD
+);
+
 CodeExampleBuilder::build('Sphp/Html/Forms/Buttons/AbstractButton.php', 'html5')
         ->buildAccordion()
         ->addCssClass('form-example')

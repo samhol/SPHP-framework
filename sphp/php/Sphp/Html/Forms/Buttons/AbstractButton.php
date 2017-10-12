@@ -12,7 +12,7 @@ use Sphp\Stdlib\Strings;
 use Sphp\Exceptions\InvalidArgumentException;
 
 /**
- * Implements an HTML &lt;button&gt; tag
+ * An abstract implementation of an HTML &lt;button type="submit|reset|button|image"&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_button.asp w3schools API
@@ -20,7 +20,7 @@ use Sphp\Exceptions\InvalidArgumentException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractButton extends ContainerTag {
+abstract class AbstractButton extends ContainerTag implements ButtonInterface {
 
   /**
    * Constructs a new instance

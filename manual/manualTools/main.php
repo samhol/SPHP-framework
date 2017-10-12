@@ -6,8 +6,13 @@ use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
 use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Apps\Manual\Sami\Sami;
 
-function api() {
+/**
+ * 
+ * @return Sami 
+ */
+function sami(): Sami {
   return Apis::sami();
 }
 
