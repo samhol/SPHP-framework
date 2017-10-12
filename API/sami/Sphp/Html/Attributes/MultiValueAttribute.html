@@ -177,6 +177,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getValueFilter">getValueFilter</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -190,7 +201,7 @@
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_add">add</a>(string|scalar[] $values)
+                    <a href="#method_add">add</a>(scalar|scalar[] $values)
         
                                             <p>Adds new atomic values to the attribute</p>                </div>
                 <div class="col-md-2"></div>
@@ -317,7 +328,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 47</div>
+        <div class="location">at         line 45</div>
         <code>                    
     <strong>__construct</strong>(string $name)
         </code>
@@ -357,7 +368,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 56</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -379,7 +390,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 60</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 59</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -409,7 +420,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 64</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 63</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -439,7 +450,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 77</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 76</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -469,7 +480,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 81</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 80</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>()
         </code>
@@ -499,7 +510,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 86</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 85</div>
         <code>                    boolean
     <strong>isDemanded</strong>()
         </code>
@@ -530,7 +541,7 @@ name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isVisible">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 90</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 89</div>
         <code>                    boolean
     <strong>isVisible</strong>()
         </code>
@@ -560,8 +571,36 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getValueFilter">
+        <div class="location">at         line 65</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a>
+    <strong>getValueFilter</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 76</div>
+        <div class="location">at         line 82</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(scalar|scalar[] $values)
         </code>
@@ -614,9 +653,9 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_add">
-        <div class="location">at         line 94</div>
+        <div class="location">at         line 100</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>add</strong>(string|scalar[] $values)
+    <strong>add</strong>(scalar|scalar[] $values)
         </code>
     </h3>
     <div class="details">
@@ -637,7 +676,7 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|scalar[]</td>
+                <td>scalar|scalar[]</td>
                 <td>$values</td>
                 <td>the values to add</td>
             </tr>
@@ -661,7 +700,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isLocked">
-        <div class="location">at         line 115</div>
+        <div class="location">at         line 117</div>
         <code>                    boolean
     <strong>isLocked</strong>(null|scalar|scalar[] $values = null)
         </code>
@@ -701,7 +740,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 143</div>
+        <div class="location">at         line 138</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(scalar|scalar[] $values)
         </code>
@@ -754,7 +793,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         line 163</div>
+        <div class="location">at         line 157</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(scalar|scalar[] $values)
         </code>
@@ -809,7 +848,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 177</div>
+        <div class="location">at         line 163</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>clear</strong>()
         </code>
@@ -839,7 +878,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location">at         line 195</div>
+        <div class="location">at         line 179</div>
         <code>                    boolean
     <strong>contains</strong>(scalar|scalar[] $values)
         </code>
@@ -885,7 +924,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 207</div>
+        <div class="location">at         line 191</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -921,7 +960,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 221</div>
+        <div class="location">at         line 205</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -951,7 +990,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 225</div>
+        <div class="location">at         line 209</div>
         <code>                    
     <strong>toArray</strong>()
         </code>
@@ -970,7 +1009,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">at         line 229</div>
+        <div class="location">at         line 213</div>
         <code>                    
     <strong>filter</strong>(callable $filter)
         </code>
@@ -999,7 +1038,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_filterPattern">
-        <div class="location">at         line 234</div>
+        <div class="location">at         line 218</div>
         <code>                    
     <strong>filterPattern</strong>(string $pattern)
         </code>
@@ -1028,7 +1067,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 242</div>
+        <div class="location">at         line 226</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>
