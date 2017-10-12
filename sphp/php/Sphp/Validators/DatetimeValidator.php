@@ -13,7 +13,6 @@ use Sphp\I18n\Messages\Message;
  * Validates a datetime
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-26-08
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

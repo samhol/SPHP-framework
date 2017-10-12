@@ -16,7 +16,6 @@ use Sphp\Html\Headings\H2;
  * Implements a syntax highlighting slide for Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-06-01
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter

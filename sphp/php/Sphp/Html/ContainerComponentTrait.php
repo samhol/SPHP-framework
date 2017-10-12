@@ -13,7 +13,6 @@ use Traversable;
  * Class is the base class for all HTML tag components acting as HTML component containers
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-10-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

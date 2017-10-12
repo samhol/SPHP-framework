@@ -16,7 +16,6 @@ use Sphp\Html\AbstractComponent;
  * Toggler, Reveal, Off-canvas, and other plugins that have open and close behaviors.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/close-button.html Foundation 6 Close Button
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

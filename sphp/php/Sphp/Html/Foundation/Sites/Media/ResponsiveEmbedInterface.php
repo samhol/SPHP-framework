@@ -10,17 +10,11 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\ContentInterface;
 
 /**
- * Defines properties for a Foundation 6 Flex component
- *
- * Flex Video lets browsers automatically scale video objects in webpages. If a 
- * video is embedded from YouTube, Vimeo, or another site that uses iframe, 
- * embed or object elements, video can be wrap into {@link self} to create 
- * an intrinsic ratio that will properly scale the video on any device.
+ * Defines properties for a Foundation Responsive Embed component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/flex_video.html Flex Video
+ * @link    http://foundation.zurb.com/docs/components/flex_video.html Foundation Flex Video
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -36,7 +30,7 @@ interface ResponsiveEmbedInterface extends ContentInterface {
    * * `panorama`: 256 by 81
    * * `square`: 1 by 1
    * 
-   * @param  string $ratio true for widescreen
+   * @param  string $ratio the ratio 
    * @return $this for a fluent interface
    */
   public function setAspectRatio(string $ratio);

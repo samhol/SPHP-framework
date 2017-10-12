@@ -19,7 +19,6 @@ namespace Sphp\Html\Tables;
  *  The text in &lt;td&gt; elements are regular and left-aligned by default.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-04
  * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-td-element W3C API
  * @link    http://www.w3schools.com/tags/tag_th.asp w3schools API

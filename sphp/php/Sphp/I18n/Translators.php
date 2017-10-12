@@ -14,7 +14,6 @@ use Sphp\I18n\Gettext\Translator;
  * Implements a natural language translator library
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

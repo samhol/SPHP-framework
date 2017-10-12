@@ -19,7 +19,6 @@ use Sphp\Html\Forms\Inputs\ChoiceboxInterface;
  * Implements an abstract foundation based switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-17
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/switch.html Foundation Sliders
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -11,7 +11,6 @@ namespace Sphp\Security;
  * Defines a verifiable password
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-10-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

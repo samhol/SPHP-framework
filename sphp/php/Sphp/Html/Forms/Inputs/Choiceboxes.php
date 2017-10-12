@@ -16,7 +16,6 @@ use Sphp\Html\Forms\Label;
  * A component containing multiple radio or checkbox inputs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-10-18
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

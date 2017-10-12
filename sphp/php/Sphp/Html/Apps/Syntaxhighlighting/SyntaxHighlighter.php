@@ -24,7 +24,6 @@ use Sphp\Stdlib\Strings;
  * Class wraps the GeSHi (a Generic Syntax Highlighter)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-24
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax Highlighter
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax Highlighter

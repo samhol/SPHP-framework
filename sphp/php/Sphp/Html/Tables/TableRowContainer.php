@@ -17,7 +17,6 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * Implements an HTML table row collection namely (&lt;thead&gt;, &lt;tbody&gt; or &lt;tfoot&gt;)
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -13,7 +13,6 @@ use Sphp\Html\Navigation\Hyperlink;
  * Hyperlink generator pointing to online w3schools documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

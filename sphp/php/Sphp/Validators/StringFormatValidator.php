@@ -8,7 +8,6 @@
 namespace Sphp\Validators;
 
 use Sphp\I18n\Message;
-use Sphp\Stdlib\Strings;
 
 /**
  * Validates a a string against a regular expression pattern
@@ -17,7 +16,6 @@ use Sphp\Stdlib\Strings;
  *  data is valid.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

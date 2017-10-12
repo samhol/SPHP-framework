@@ -13,7 +13,6 @@ namespace Sphp\Html\Tables;
  * This defines a standard cell in a {@link Table} component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-08-28
  * @link    http://www.w3schools.com/tags/tag_td.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

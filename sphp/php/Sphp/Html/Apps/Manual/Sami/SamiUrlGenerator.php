@@ -14,7 +14,6 @@ use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
  * URL string generator pointing to an existing Sami documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @link    https://github.com/FriendsOfPHP/Sami Sami: an API documentation generator
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

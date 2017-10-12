@@ -11,7 +11,6 @@ namespace Sphp\Html;
  * Abstract Class provides a simple implementation of the component containing other components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

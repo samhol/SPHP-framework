@@ -22,7 +22,6 @@ use Sphp\Stdlib\Strings;
  * the `href` attribute is not present.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-24
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

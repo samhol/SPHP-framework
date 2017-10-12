@@ -14,7 +14,6 @@ use DateTimeImmutable;
  * Implements an HTML &lt;time&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-03-06
  * @link    http://www.w3schools.com/tags/tag_time.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

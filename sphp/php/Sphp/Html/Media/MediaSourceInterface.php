@@ -15,7 +15,6 @@ use Sphp\Html\ContentInterface;
  * This component represents a media source.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-02-15
  * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

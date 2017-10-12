@@ -21,7 +21,6 @@ use Sphp\Exceptions\BadMethodCallException;
  * @method self toAscii(string $str, bool $removeUnsupported = true)
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
  * @link    https://zendframework.github.io/zend-i18n/translation/
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

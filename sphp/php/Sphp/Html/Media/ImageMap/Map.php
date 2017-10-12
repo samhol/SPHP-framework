@@ -19,7 +19,6 @@ use Sphp\Html\AbstractContainerComponent;
  * &lt;img&gt;'s usemap attribute and creates a relationship between the image and the map.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

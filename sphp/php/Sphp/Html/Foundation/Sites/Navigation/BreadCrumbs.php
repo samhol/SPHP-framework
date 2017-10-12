@@ -24,7 +24,6 @@ use Sphp\Html\TraversableTrait;
  * site or app. They'll fill out 100% of the width of their parent container.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -15,7 +15,6 @@ use Traversable;
  * Defines a general purpose collection
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-05-24
  * @link    http://www.php.net/manual/en/arrayobject.php The ArrayObject class
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

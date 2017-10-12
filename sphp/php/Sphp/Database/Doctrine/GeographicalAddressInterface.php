@@ -12,16 +12,15 @@ namespace Sphp\Database\Doctrine;
  * Defines properties for a geographical address
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 interface GeographicalAddressInterface {
 
   /**
-   * Returns the streetaddress
+   * Returns the street address
    *
-   * @return string the streetaddress
+   * @return string the street address
    */
   public function getStreet();
 

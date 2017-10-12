@@ -21,7 +21,6 @@ use Sphp\Stdlib\Strings;
  * 2. The type of the content in such container depends solely on the container's purpose of use.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

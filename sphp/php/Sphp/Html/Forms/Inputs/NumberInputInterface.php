@@ -11,7 +11,6 @@ namespace Sphp\Html\Forms\Inputs;
  * Defines an HTML &lt;input type="number"&gt; tag
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools HTML
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

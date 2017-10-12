@@ -17,7 +17,6 @@ use Sphp\Html\Foundation\Sites\Grids\ColumnInterface;
  * Class extends a Foundation Row for form components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-27
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

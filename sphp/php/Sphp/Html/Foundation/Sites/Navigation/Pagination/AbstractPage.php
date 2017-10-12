@@ -15,7 +15,6 @@ use Sphp\Stdlib\Networks\URL;
  * Implements a page button for a Pagination component
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/pagination.html Foundation Pagination
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

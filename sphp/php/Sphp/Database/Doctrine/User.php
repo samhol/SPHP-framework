@@ -15,7 +15,6 @@ use Doctrine\ORM\EntityManagerInterface;
  * Implements a system user
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2007-04-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity

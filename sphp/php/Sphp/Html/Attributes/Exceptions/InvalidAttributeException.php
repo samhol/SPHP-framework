@@ -14,7 +14,6 @@ namespace Sphp\Html\Attributes\Exceptions;
  * Defi
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-09-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

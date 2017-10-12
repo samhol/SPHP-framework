@@ -13,7 +13,6 @@ use InvalidArgumentException;
  * Implements a jQuery based range slider with skin support
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-10-11
  * @link    http://ionden.com/a/plugins/ion.rangeSlider/en.html ion slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

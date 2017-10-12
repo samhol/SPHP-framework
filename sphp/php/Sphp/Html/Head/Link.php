@@ -19,7 +19,6 @@ use Sphp\Stdlib\Strings;
  *  sheets.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_link.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

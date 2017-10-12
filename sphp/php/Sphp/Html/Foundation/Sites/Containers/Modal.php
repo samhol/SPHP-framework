@@ -17,9 +17,8 @@ use Sphp\Html\ComponentInterface;
  * Modal dialogs, or pop-up windows, are handy for prototyping and production.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-25
  * @link    http://foundation.zurb.com/ Foundation 
- * @link    http://foundation.zurb.com/sites/docs/reveal.html Founfation Reveal
+ * @link    http://foundation.zurb.com/sites/docs/reveal.html Foundation Reveal
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

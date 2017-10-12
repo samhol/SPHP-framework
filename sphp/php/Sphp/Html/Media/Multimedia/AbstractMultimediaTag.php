@@ -15,7 +15,6 @@ use Sphp\Html\Container;
  * Implements an abstract HTML multimedia tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

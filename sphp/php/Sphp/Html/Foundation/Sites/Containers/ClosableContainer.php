@@ -15,7 +15,6 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
  * Implements a Foundation Closable.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-04-28
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

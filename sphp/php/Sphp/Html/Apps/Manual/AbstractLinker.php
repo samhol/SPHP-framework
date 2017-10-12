@@ -16,7 +16,6 @@ use Sphp\Html\Adapters\QtipAdapter;
  * Hyperlink generator pointing to an existing API documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -14,7 +14,6 @@ use Sphp\Html\IdentifiableInterface;
  * Inserts a qTip style tooltip to the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-03
  * @link    http://qtip2.com/ qTip 2
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

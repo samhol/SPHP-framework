@@ -10,12 +10,11 @@ namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 use Sphp\Html\AbstractContainerComponent;
 
 /**
- * Implements a bullet container for Orbit
+ * Implements a bullet container for Foundation Orbit
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-06-01
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/docs/components/orbit.html Orbit slider
+ * @link    http://foundation.zurb.com/docs/components/orbit.html Foundation Orbit slider
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

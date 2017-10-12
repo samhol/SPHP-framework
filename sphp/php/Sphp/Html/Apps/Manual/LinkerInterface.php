@@ -13,16 +13,15 @@ use Sphp\Html\Navigation\Hyperlink;
  * Defines a Hyperlink object generator pointing to an existing site 
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 interface LinkerInterface {
 
   /**
-   * Returns the component as html-markup string
+   * Returns the component as HTML-markup string
    *
-   * @return string html-markup of the component
+   * @return string HTML-markup of the component
    */
   public function __toString(): string;
 

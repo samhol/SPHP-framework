@@ -13,7 +13,6 @@ use Sphp\Objects\DbObjectInterface;
  * Class manipulates {@link DbObjectIterface} instances stored in the database
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-11-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

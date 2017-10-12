@@ -17,7 +17,6 @@ use Sphp\Html\Navigation\Hyperlink;
  * Implements button styling for Foundation Sites
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-04-11
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/buttons.html Foundation Buttons
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -20,7 +20,6 @@ use UnderflowException;
  * Unique priority queue is a priority queue containing distinct values
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-18
  * @link    http://php.net/manual/en/class.splpriorityqueue.php the SplPriorityQueue class
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

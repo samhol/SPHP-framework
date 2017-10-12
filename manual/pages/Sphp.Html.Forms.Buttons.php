@@ -5,12 +5,13 @@ namespace Sphp\Html\Forms\Buttons;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
+$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
 $submitter = Apis::sami()->classLinker(Submitter::class);
 $reseter = Apis::sami()->classLinker(Resetter::class);
 $button = Apis::sami()->classLinker(Button::class);
 \Sphp\Manual\parseDown(<<<MD
 ###The $submitter component
-	
+$ns	
 * $submitter is a submit button (submits form-data)
 * $reseter is a reset button (resets the form-data to its initial values)
 * $button is is a clickable button

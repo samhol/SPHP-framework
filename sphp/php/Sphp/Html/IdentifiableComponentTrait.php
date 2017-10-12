@@ -15,7 +15,6 @@ use Sphp\Html\Attributes\PropertyAttribute;
  * Trait implements functionality of the {@link ComponentInterface} and {@link IdentifiableInterface}
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-06
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

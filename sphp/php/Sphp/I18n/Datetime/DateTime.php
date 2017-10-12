@@ -17,7 +17,6 @@ use DateTimeZone;
  * Class localizes weekday and month names
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-02-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

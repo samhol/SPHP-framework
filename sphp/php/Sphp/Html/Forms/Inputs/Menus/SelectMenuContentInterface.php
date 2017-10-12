@@ -13,7 +13,7 @@ use Sphp\Html\ComponentInterface;
  * Defines select menu's content components (&lt;option|optgroup&gt;).
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-06-10
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 interface SelectMenuContentInterface extends ComponentInterface {

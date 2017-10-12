@@ -10,10 +10,9 @@ namespace Sphp\Html\Forms\Inputs;
 use Sphp\Html\ContentInterface;
 
 /**
- * Defines required operations for all input components used in {@link FormInterface}
+ * Defines required operations for all HTML form input components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-02-15
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

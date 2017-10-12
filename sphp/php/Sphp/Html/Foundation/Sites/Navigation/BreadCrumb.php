@@ -11,7 +11,6 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
  * Implements an accessible menu item for a Breadcrumb component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/breadcrumbs.html Foundation Breadcrumbs
  * @link    http://www.w3schools.com/tags/tag_a.asp w3schools HTML API

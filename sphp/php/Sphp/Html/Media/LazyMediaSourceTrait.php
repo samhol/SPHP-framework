@@ -16,7 +16,6 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * images/videos with build-in support of jQueryMobile framework.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-06-15
  * @link    http://www.w3schools.com/tags/tag_img.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-img-element W3C API
  * @link    https://github.com/ressio/lazy-load-xt Lazy Load XT jQuery plugin

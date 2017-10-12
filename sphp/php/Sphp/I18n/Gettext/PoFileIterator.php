@@ -17,7 +17,6 @@ use Sphp\Stdlib\Datastructures\Collection;
  * Iterator parses a Gettext Portable file and acts as an iterator for all gettext instances in the file
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-02-25
  * @uses    https://github.com/raulferras/PHP-po-parser Po Parser
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

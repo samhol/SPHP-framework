@@ -11,7 +11,6 @@ namespace Sphp\Html\Lists;
  * Implements an unordered HTML-list &lt;ul&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-04-03
  * @link    http://www.w3schools.com/tags/tag_ul.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

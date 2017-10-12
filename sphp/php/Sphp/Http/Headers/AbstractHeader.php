@@ -11,7 +11,6 @@ namespace Sphp\Http\Headers;
  * Abstract base class for a single header
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-16
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

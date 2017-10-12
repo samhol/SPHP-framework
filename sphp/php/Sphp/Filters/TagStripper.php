@@ -11,7 +11,6 @@ namespace Sphp\Filters;
  * Filter strips tags from the given input
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
  * @link    http://php.net/manual/en/function.strip-tags.php
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

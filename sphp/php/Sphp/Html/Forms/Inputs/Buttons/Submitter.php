@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Forms\Inputs\Buttons;
 
-use Sphp\Html\Forms\SubmitterInterface;
+use Sphp\Html\Forms\Buttons\SubmitterInterface;
 use Sphp\Html\Forms\Inputs\InputInterface;
 
 /**
@@ -17,7 +17,6 @@ use Sphp\Html\Forms\Inputs\InputInterface;
  * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-09-26
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -35,7 +34,7 @@ class Submitter extends AbstractButton implements SubmitterInterface, InputInter
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    */
-  public function __construct($value = null, string $name = null) {
+  public function __construct(string $value = null, string $name = null) {
     parent::__construct('submit');
     if ($name !== null) {
       $this->setName($name);

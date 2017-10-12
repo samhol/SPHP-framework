@@ -8,10 +8,9 @@
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
 /**
- * Implements a vertical navigation menu
+ * Implements a Foundation vertical navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-03-11
  * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

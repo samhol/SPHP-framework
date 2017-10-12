@@ -9,16 +9,12 @@ namespace Sphp\Html\Attributes;
 
 use Countable;
 use Traversable;
-use Sphp\Stdlib\Strings;
-use Sphp\Stdlib\Arrays;
-use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * An implementation of a multi value HTML attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-06-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

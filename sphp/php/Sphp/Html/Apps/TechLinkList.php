@@ -15,7 +15,6 @@ use Sphp\Html\Navigation\ImageLink;
  * Class TechLinkList
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-23
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

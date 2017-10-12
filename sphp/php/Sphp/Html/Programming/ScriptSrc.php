@@ -17,7 +17,6 @@ use Sphp\Html\AbstractTag;
  * This component points to an external script file through the `src` attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-10-17
  * @link http://www.w3schools.com/tags/tag_script.asp w3schools API
  * @link http://dev.w3.org/html5/spec/Overview.html#script W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

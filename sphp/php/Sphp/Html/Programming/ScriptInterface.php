@@ -14,7 +14,6 @@ use Sphp\Html\Head\HeadComponentInterface as HeadComponentInterface;
  * Defines script tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-04-27
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

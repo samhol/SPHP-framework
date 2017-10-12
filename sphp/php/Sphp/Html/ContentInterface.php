@@ -19,7 +19,6 @@ namespace Sphp\Html;
  * * <a href="http://validator.w3.org/">W3C Markup Validation Service</a>
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-03-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

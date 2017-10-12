@@ -14,7 +14,6 @@ use Sphp\Util\Permissions;
  * Description of SessionData
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-20
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  * @Entity

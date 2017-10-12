@@ -13,7 +13,6 @@ use BadMethodCallException as SplBadMethodCallException;
  * SPHP-specific bad method call exception
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-30
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

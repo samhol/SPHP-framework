@@ -11,7 +11,6 @@ namespace Sphp\Html\Foundation\Sites\Bars;
  * Implements a Title Bar navigation menu
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-11-21
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/topbar.html Foundation Top Bar
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

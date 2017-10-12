@@ -15,7 +15,6 @@ use Sphp\Html\Apps\Manual\AbstractPhpApiLinker;
  * Hyperlink object generator pointing to PHP manual
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @link    http://php.net/manual/ PHP manual
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

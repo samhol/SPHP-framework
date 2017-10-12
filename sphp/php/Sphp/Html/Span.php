@@ -17,7 +17,6 @@ namespace Sphp\Html;
  * manipulate it with JavaScript.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-06-03
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

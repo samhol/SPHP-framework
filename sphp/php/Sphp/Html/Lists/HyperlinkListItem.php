@@ -15,7 +15,6 @@ use Sphp\Stdlib\Networks\URL;
  * Implements a hyperlink type menu item
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-04
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

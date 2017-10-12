@@ -15,7 +15,6 @@ use Sphp\Html\ComponentInterface;
  * Implements an Foundation Accordion containing a single syntax highlighting pane
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-24
  * @link    http://qbnz.com/highlighter/ GeSHi - Generic Syntax highlight
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @license http://www.gnu.org/licenses/gpl-2.0.html GPLv2 for GeSHi - Generic Syntax highlight

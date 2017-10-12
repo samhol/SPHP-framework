@@ -11,7 +11,6 @@ namespace Sphp\Html;
  * Document class contains basic Sphp HTML tag component creation and HTML version handing.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-07
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

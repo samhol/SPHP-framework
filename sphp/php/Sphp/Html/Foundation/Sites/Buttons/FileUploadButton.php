@@ -21,7 +21,6 @@ use Sphp\Html\Forms\Inputs\FileInput;
  * The data is sent to the page specified in the form's action attribute.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://www.w3schools.com/tags/tag_input.asp w3schools API
  * @link    http://www.w3.org/html/wg/drafts/html/master/forms.html#the-input-element W3C API

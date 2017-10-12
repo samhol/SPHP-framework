@@ -13,7 +13,6 @@ use Sphp\Exceptions\RuntimeException;
  * Defines a file reader
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-01-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

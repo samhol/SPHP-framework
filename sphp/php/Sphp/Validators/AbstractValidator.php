@@ -16,7 +16,6 @@ use Sphp\I18n\Translatable;
  * Abstract superclass for miscellaneous data validation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -15,7 +15,6 @@ use Sphp\Stdlib\Strings;
  * **Note:** Uses Singleton pattern
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

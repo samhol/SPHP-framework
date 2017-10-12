@@ -16,7 +16,6 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * Utilities for validating and filtering multi value attributes
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-09-30
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

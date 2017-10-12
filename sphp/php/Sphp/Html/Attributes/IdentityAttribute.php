@@ -9,11 +9,11 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Utils\AttributeValueValidator;
+
 /**
  * Description of IdentityAttribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-09-28
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

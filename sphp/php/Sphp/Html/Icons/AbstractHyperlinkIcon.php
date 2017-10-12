@@ -14,7 +14,6 @@ use Sphp\Html\Navigation\HyperlinkInterface;
  * Description of HyperlinkIcon
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-05-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

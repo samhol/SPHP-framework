@@ -14,7 +14,6 @@ use Sphp\Db\DatabaseConnector;
  * Class handles a session that stored ist data to a database
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

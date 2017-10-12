@@ -10,14 +10,12 @@ namespace Sphp\Html\Navigation;
 use Sphp\Html\AbstractComponent;
 use Sphp\Html\Media\ImgInterface;
 use Sphp\Html\Media\Img;
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an image that acts as a hyperlink
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-22
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -13,7 +13,6 @@ use Sphp\I18n\TranslatorInterface;
  * Implements a singular translatable object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2010-09-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

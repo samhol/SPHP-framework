@@ -14,7 +14,6 @@ use Sphp\I18n\Collections\TranslatableCollection;
  * A validator container for validating a value against multiple validators
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

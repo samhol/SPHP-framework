@@ -13,7 +13,6 @@ namespace Sphp\Html\Tables;
  *  The {@link self} component is used to group footer content in a {@link Table}.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-10-03
  * @link    http://www.w3schools.com/tags/tag_tfoot.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

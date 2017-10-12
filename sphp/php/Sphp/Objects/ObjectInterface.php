@@ -11,7 +11,6 @@ namespace Sphp\Objects;
  * Interface describes common features for all Objects.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-09-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * InsertStrategy.php (UTF-8)
+ * StatementStrategy.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -13,7 +13,6 @@ use PDO;
  * Description of InsertStrategy
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-08-18
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

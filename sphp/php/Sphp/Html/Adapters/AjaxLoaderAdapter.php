@@ -15,7 +15,6 @@ use Sphp\Html\ComponentInterface;
  * Executes {@link AjaxLoaderInterface} functionality on the adaptee
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-08-11
  * @link    http://api.jquery.com/load/ jQuery load()
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

@@ -15,7 +15,6 @@ use Sphp\Stdlib\Arrays;
  * Abstract implementation of a translatable message
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2010-09-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

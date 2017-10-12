@@ -53,7 +53,6 @@ use Sphp\Stdlib\Datastructures\StablePriorityQueue;
  * </code>
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-11
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

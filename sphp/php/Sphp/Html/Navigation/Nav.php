@@ -21,7 +21,6 @@ use Sphp\Html\ContainerTag;
  * determine whether to omit the initial rendering of this content.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-03-06
  * @link    http://www.w3schools.com/tags/tag_nav.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

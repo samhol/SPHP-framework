@@ -14,7 +14,6 @@ use Sphp\Html\Head\HeadComponentInterface;
  * Implements an HTML &lt;noscript&gt; tag
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-03-06
  * @link    http://www.w3schools.com/tags/tag_noscript.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

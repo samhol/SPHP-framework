@@ -16,7 +16,6 @@ use Sphp\Html\AjaxLoaderInterface;
  *  This component represents a paragraph in an HTML document.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-06-03
  * @link    http://www.w3schools.com/tags/tag_p.asp w3schools HTML API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-p-element W3C HTML API link
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

@@ -17,7 +17,6 @@ use Sphp\Html\ComponentInterface;
  * whatever Component needed.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-04-10
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/dropdown.html Foundation Dropdown
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

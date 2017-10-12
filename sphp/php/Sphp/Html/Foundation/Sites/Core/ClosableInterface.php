@@ -11,7 +11,6 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * Defines a closable component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-03-02
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/close-button.html Foundation Close Button
  * @link    http://foundation.zurb.com/sites/docs/close-button.html#making-closable Foundation - Making Closable

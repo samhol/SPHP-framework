@@ -20,7 +20,6 @@ use Sphp\Exceptions\OutOfRangeException;
  * Implements a Pagination component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-20
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/pagination.html Foundation Pagination
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

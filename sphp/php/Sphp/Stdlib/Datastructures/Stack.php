@@ -14,7 +14,6 @@ use Sphp\Exceptions\RuntimeException;
  * An implementation of a last-in-first-out (LIFO) stack
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-10-06
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -10,10 +10,9 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Defines a Column for a Row in a Grid system
+ * Defines a Column for a Row in a Foundation Grid system
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-03-02
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

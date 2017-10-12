@@ -13,7 +13,6 @@ use Sphp\Html\Lists\HyperlinkListItem;
  * Implements a hyperlink component for the Dropown menu component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/subnav.html Foundation Sub Nav
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

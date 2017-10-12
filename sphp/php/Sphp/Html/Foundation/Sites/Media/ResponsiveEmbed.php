@@ -28,7 +28,6 @@ use BadMethodCallException;
  * an intrinsic ratio that will properly scale the iframe based media on any device.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/responsive-embed.html Responsive Embed
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

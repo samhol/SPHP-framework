@@ -10,10 +10,9 @@ namespace Sphp\Images;
 use Sphp\Objects\Datetime as Datetime;
 
 /**
- * Class contains some imagemanipulation tools
+ * Class contains some image manipulation tools
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2010-10-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

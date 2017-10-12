@@ -13,7 +13,6 @@ use Sphp\Html\IdentifiableInterface;
  * Defines required operations for all identifiable input components used in a HTML form
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-02-15
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

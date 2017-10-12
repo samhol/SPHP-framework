@@ -11,7 +11,6 @@ namespace Sphp\Stdlib\Events;
  * Defines an event listener
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-05-10
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

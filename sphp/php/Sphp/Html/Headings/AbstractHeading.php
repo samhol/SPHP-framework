@@ -17,7 +17,6 @@ use Sphp\Html\ContainerTag;
  * rank, and two elements with the same name have equal rank.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-12-15
  * @link    http://www.w3schools.com/tags/tag_hn.asp w3schools API
  * @link    http://dev.w3.org/html5/spec/Overview.html#the-h1-h2-h3-h4-h5-and-h6-elements W3C API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

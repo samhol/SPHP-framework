@@ -15,7 +15,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  * Abstract Class is the base class for all HTML tag implementations
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-09-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

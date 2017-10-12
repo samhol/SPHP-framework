@@ -14,7 +14,6 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
  * Description of ColumnPropertiesValidator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-09-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

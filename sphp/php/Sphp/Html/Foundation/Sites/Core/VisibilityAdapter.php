@@ -1,7 +1,7 @@
 <?php
 
 /**
- * VisibilityHandler.php (UTF-8)
+ * VisibilityAdapter.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -11,12 +11,9 @@ use Sphp\Html\Adapters\AbstractComponentAdapter;
 use Sphp\Html\ComponentInterface;
 
 /**
- * Implements {@link VisibilityChanger} interface functionality
+ * Implements Visibility changer functionality
  * 
- * {@link VisibilityInterface} Defines styled CSS visibility settings
- *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-01-29
  * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

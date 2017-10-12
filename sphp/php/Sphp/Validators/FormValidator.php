@@ -14,7 +14,6 @@ use Sphp\Stdlib\Arrays;
  * Validates given form data
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-10-14
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

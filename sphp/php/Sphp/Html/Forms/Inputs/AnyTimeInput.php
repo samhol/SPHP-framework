@@ -13,7 +13,6 @@ namespace Sphp\Html\Forms\Inputs;
  * **Note!** This element uses Any+Time DatePicker/TimePicker AJAX Calendar Widget for its functionality.
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @since   2012-04-11
  * @link    http://www.ama3.com/anytime/ Any+Time Calendar Widget
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

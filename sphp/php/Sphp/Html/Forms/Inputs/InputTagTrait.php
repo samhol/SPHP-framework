@@ -8,10 +8,10 @@
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Trait implements the {@link InputInterface} fot input tags
+ * Trait implements the {@link InputInterface} for input tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-05
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
 trait InputTagTrait {

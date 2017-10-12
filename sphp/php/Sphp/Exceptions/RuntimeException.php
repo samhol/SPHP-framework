@@ -14,7 +14,6 @@ use RuntimeException as SplRuntimeException;
  * Exception thrown if an error which can only be found on runtime occurs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-02-09
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

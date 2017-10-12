@@ -16,7 +16,6 @@ use Sphp\Html\ComponentInterface;
  * Implements an abstract layout manager for responsive HTML components
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-03-02
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/grid.html Foundation grid
  * @link    http://foundation.zurb.com/grid.html Foundation grid

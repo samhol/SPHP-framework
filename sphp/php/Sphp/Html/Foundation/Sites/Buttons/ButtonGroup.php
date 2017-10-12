@@ -17,7 +17,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  *  displaying a group of actions in a bar.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-25
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/sites/docs/button-group.html Foundation Button Groups
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

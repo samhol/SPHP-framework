@@ -11,7 +11,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  * Description of Utils
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-08-21
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

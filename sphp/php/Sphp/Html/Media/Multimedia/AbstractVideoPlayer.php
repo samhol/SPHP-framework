@@ -16,7 +16,6 @@ use Sphp\Stdlib\Networks\URL;
  * Implements an abstract iframe based Video component
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-12-01
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

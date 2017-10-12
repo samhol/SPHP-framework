@@ -11,7 +11,6 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * Defines Visibility Controls for HTML content
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-01-29
  * @link    http://foundation.zurb.com/ Foundation 
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

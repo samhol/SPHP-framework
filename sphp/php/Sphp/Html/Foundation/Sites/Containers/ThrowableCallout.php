@@ -14,10 +14,9 @@ use Sphp\Html\Lists\Li;
 use Sphp\Html\Lists\Dl;
 
 /**
- * Implements callout for {@link \Exception} presentation
+ * Implements Foundation Callout for {@link \Exception} presentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-03-25
  * @link    http://foundation.zurb.com/sites/docs/callout.html Foundation Callout
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

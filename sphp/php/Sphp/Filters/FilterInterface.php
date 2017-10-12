@@ -19,7 +19,6 @@ namespace Sphp\Filters;
  * 4. because of the above rules these filters are **NOT** necessarily **SAFE**
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-21
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

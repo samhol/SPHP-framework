@@ -9,12 +9,9 @@ namespace Sphp\Html\Head;
 
 use Sphp\Html\NonVisualContentInterface;
 use Sphp\Html\AbstractComponent;
-use Sphp\Stdlib\Path;
 use Sphp\Html\Container;
-use Sphp\Stdlib\Strings;
 use Sphp\Html\Programming\ScriptsContainer;
 use Sphp\Html\Programming\ScriptInterface;
-use Sphp\Stdlib\Networks\URL;
 
 /**
  * Implements an HTML &lt;head&gt; tag
@@ -22,7 +19,6 @@ use Sphp\Stdlib\Networks\URL;
  * The &lt;head&gt; tag is a container for all the head elements.
  *
  * @author Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_head.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

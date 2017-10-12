@@ -11,7 +11,6 @@ namespace Sphp\Html\Apps\Manual;
  * Hyperlink generator pointing to online Foundation Documentation
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -15,7 +15,6 @@ use Sphp\Html\Div;
  * Class AbstractPane
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-01-13
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/accordion.html Foundation 6 Accordion
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

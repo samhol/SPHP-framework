@@ -13,7 +13,6 @@ use Sphp\Html\Attributes\ClassAttribute;
  * Implements an abstract layout manager
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-05-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

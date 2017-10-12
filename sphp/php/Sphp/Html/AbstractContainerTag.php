@@ -26,7 +26,6 @@ use IteratorAggregate;
  *    notation.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-05-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

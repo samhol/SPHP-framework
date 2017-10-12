@@ -13,7 +13,6 @@ use Sphp\Html\Attributes\HtmlAttributeManager;
  * A trait implementation of the {@link PatternValidableInputInterface} 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-09-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -14,7 +14,6 @@ use Sphp\Exceptions\InvalidArgumentException;
  * Abstract implementation for natural language translator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

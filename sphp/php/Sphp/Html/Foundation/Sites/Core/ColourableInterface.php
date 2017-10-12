@@ -11,9 +11,8 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * Trait implements {@link ButtonStylingInterface} functionality
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-04-11
  * @link    http://foundation.zurb.com/ Foundation
- * @link    http://foundation.zurb.com/sites/docs/global.html#colors Foundation 6 color classes
+ * @link    http://foundation.zurb.com/sites/docs/global.html#colors Foundation color classes
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

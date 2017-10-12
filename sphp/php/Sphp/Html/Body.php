@@ -16,7 +16,6 @@ use Sphp\Html\Programming\SphpScriptsLoader;
  * This component represents the main content of the HTML document.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-25
  * @link    http://www.w3schools.com/tags/tag_body.asp w3schools API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

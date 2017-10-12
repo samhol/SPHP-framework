@@ -16,7 +16,6 @@ use DateTimeImmutable;
  * Implements a HTML based stamp-element that describes a {@link DateTimeInterface} object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2011-10-17
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -22,7 +22,6 @@ use Traversable;
  * Implements a list that holds {@link Translatable} objects in a priority list
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-05-05
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

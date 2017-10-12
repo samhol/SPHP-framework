@@ -14,11 +14,10 @@ use Sphp\Html\Navigation\HyperlinkTrait;
  * Implements an HTML &lt;area&gt; tag
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-05-26
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractArea extends \Sphp\Html\EmptyTag implements AreaInterface {
+abstract class AbstractArea extends EmptyTag implements AreaInterface {
 
   use HyperlinkTrait;
 

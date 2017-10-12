@@ -13,7 +13,6 @@ use Sphp\Stdlib\Strings;
  * Filter strips whitespace (or other characters) from the beginning and end of the string
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-05-12
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

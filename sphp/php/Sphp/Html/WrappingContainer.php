@@ -11,7 +11,6 @@ namespace Sphp\Html;
  * Class defines common features for wrapping HTML container like aa list or a table etc...
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2012-04-03
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

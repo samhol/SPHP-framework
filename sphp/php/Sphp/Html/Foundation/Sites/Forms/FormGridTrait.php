@@ -17,7 +17,6 @@ use Sphp\Html\Foundation\Sites\Forms\Inputs\InputColumnInterface;
  * Trait implements {@link Sphp\Html\Foundation\Sites\Grids\GridInterface} to be used with {@link FormInterface} etc.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-24
  * @link    http://foundation.zurb.com/ Foundation
  * @link    http://foundation.zurb.com/docs/components/grid.html Foundation grid
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

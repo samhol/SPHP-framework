@@ -14,7 +14,6 @@ use Sphp\Html\Apps\Manual\ApiUrlGeneratorInterface;
  * URL string generator pointing to online PHP Manual
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2014-11-29
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

@@ -11,7 +11,6 @@ namespace Sphp\Html\Attributes\Utils;
  * Description of AttributeValueValidator
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2017-10-09
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

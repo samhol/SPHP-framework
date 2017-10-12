@@ -13,7 +13,6 @@ use Sphp\I18n\Translatable;
  * Defines properties for a translatable message object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-09-02
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

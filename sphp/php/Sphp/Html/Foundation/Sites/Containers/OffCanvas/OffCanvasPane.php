@@ -13,10 +13,9 @@ use Sphp\Html\Foundation\Sites\Buttons\CloseButton;
 /**
  * An abstract implementation of on Off-canvas area
  * 
- * {@link self} is the panel that slides in and out of the {@link OffCanvas} when activated. 
+ * This component is the panel that slides in and out of the {@link OffCanvas} when activated. 
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2015-09-15
  * @link    http://foundation.zurb.com/ Foundation 6
  * @link    http://foundation.zurb.com/sites/docs/off-canvas.html Foundation 6 Off-canvas
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

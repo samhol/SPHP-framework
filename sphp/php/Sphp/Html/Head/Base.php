@@ -18,7 +18,6 @@ use Sphp\Html\NonVisualContentInterface;
  *  and it must be inside the &lt;head&gt; element.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_base.asp w3schools HTML API
  * @filesource
  */

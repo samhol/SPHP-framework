@@ -18,7 +18,6 @@ use Sphp\Html\EmptyTag;
  *  content or reload page), search engines (keywords), or other web services.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2013-02-03
  * @link    http://www.w3schools.com/tags/tag_meta.asp w3schools HTML API
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource

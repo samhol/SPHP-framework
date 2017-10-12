@@ -13,7 +13,6 @@ use Sphp\Html\AbstractComponent;
  * Class MenuOpenerButton
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @since   2016-06-28
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
