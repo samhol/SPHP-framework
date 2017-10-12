@@ -12,6 +12,7 @@ use Sphp\Html\Apps\Manual\Sami\SamiUrlGenerator;
 use Sphp\Html\Apps\Manual\ApiGen\ApiGen;
 use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
+use Sphp\Exceptions\RuntimeException;
 
 /**
  * A factory for API manual linkers
@@ -46,6 +47,22 @@ class Apis {
    * @var W3schools
    */
   private static $w3schools;
+
+  /**
+   * @var AbstractPhpApiLinker 
+   */
+  private static $default;
+
+  public static function default(): AbstractPhpApiLinker {
+    if (self::$default === null) {
+      throw new RuntimeException("The default API linker is not defined");
+    }
+    return self::$default;
+  }
+
+  public static function setDefault(AbstractPhpApiLinker $default) {
+    self::$default = $default;
+  }
 
   /**
    * 

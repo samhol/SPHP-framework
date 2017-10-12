@@ -5,6 +5,11 @@ namespace Sphp\Manual;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
+use Sphp\Html\Apps\Manual\Apis;
+
+function api() {
+  return Apis::sami();
+}
 
 /**
  * 
