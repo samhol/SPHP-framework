@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Icons;
 
-use Sphp\Html\Document;
 use SplFileInfo;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Strings;
@@ -84,7 +83,7 @@ class Icons {
   }
 
   /**
-   * Generates a filetype icon object using Font Awesome 
+   * Generates a file type icon object using Font Awesome 
    * 
    * @param  string|SplFileInfo $file the file
    * @param  string $tagName optional tag name of the component

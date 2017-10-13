@@ -41,6 +41,7 @@
     });
     return this;
   };
+
   /**
    * 
    * @returns {Array|String|@this;@pro;value}
@@ -86,17 +87,21 @@
    * @method   sphLoadContent
    * @returns  {jQuery.fn} object for method chaining
    */
-  $.fn.sphpAjaxLoader = function () {
+  $.fn.sphpAjaxPrepend = function () {
     return this.each(function () {
       var $this = $(this),
-              $url = $this.attr("data-sphp-ajax-url"),
-              $op = $this.attr("data-sphp-ajax-op"),
+              $url = $this.attr("data-sphp-ajax-prepend"),
               $content = $("<div>");
-      //$this.addWaitLoader();
-      if ($op === "replace") {
-        $this.addWaitLoader();
-        console.log("sphpAjaxLoader");
-      }
+      $this.addWaitLoader();
+      $this.on("sphp-ajax-prepend-finished", function () {
+        console.log("SPHP Ajax appending finished loaded...");
+        $(this).foundation();
+        $this.removeWaitLoader();
+        //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
+      });
+      $.get($url, function (data) {
+        alert("Data Loaded: " + data);
+      });
       $content = $("<div>").load($url, function (response, status, xhr) {
         if (status === "error") {
           $("#error").html("<strong>ERROR</strong> while loading resource: " + xhr.status + " " + xhr.statusText);
@@ -105,18 +110,46 @@
                   + $url + "</var></u>'<br> <strong>"
                   + xhr.status + " " + xhr.statusText + "</strong>");
         }
-        if ($op === "append") {
-          $this.append($content.html());
-        } else if ($op === "prepend") {
-          $this.prepend($content.html());
-        } else if ($op === "replace") {
-          $this.html($content.html());
-        }
-        $this.trigger("sphp-ajax-loader-finished");
+        $this.prepend($content.html());
+        $this.trigger("sphp-ajax-prepend-finished");
       });
     });
   };
 
+  /**
+   * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
+   * jQuery's Ajax capabilities and places the returned HTML into the object.
+   * 
+   * @memberOf jQuery.fn#
+   * @method   sphLoadContent
+   * @returns  {jQuery.fn} object for method chaining
+   */
+  $.fn.sphpAjaxAppend = function () {
+    return this.each(function () {
+      var $this = $(this),
+              $url = $this.attr("data-sphp-ajax-append"),
+              $content = $("<div>");
+      console.log("initializing Sphp ajax appending...");
+      $this.addWaitLoader();
+      $this.on("sphp-ajax-append-finished", function () {
+        console.log("SPHP Ajax appending finished loading...");
+        $(this).foundation();
+        $this.removeWaitLoader();
+        //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
+      });
+      $content = $("<div>").load($url, function (response, status, xhr) {
+        if (status === "error") {
+          $("#error").html("<strong>ERROR</strong> while loading resource: " + xhr.status + " " + xhr.statusText);
+          $content.html(
+                  "<strong>ERROR</strong> while loading resource: '<u><var>"
+                  + $url + "</var></u>'<br> <strong>"
+                  + xhr.status + " " + xhr.statusText + "</strong>");
+        }
+        $this.append($content.html());
+        $this.trigger("sphp-ajax-append-finished");
+      });
+    });
+  };
   /**
    * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
    * jQuery's Ajax capabilities and places the returned HTML into the object.
@@ -426,6 +459,7 @@
     var opts = $.extend({}, $.fn.removeWaitLoader.defaults, options);
     return this.each(function () {
       var $this = $(this), $loader = $this.find(".sphp-loader"), $o;
+      console.log("removing spinner...");
       $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
       $loader.fadeOut($o.duration, function () {
         $loader.remove();

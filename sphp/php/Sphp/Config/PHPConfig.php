@@ -30,6 +30,7 @@ class PHPConfig {
   private $ini;
 
   /**
+   * Constructs a new instance
    *
    * @param Ini $ini
    */
@@ -41,6 +42,12 @@ class PHPConfig {
     $this->ini = $ini;
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->setters, $this->ini);
   }

@@ -8,7 +8,7 @@
 namespace Sphp\Html\Icons;
 
 /**
- * Description of Icon
+ * Implements icon based on fonts and HTML tags
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -17,6 +17,7 @@ namespace Sphp\Html\Icons;
 class Icon extends AbstractIcon {
 
   /**
+   * Constructs a new instance
    * 
    * @param  string|string[] $iconName the icon name 
    * @param  string $tagName the tag name 

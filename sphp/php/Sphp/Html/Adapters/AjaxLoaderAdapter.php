@@ -53,7 +53,7 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoaderIn
    * Loads the data from the server using jQuery's Ajax capabilities and
    * prepends the returned HTML into the object.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return $this for a fluent interface
    */
   public function ajaxPrepend(string $url) {
@@ -64,7 +64,7 @@ class AjaxLoaderAdapter extends AbstractComponentAdapter implements AjaxLoaderIn
    * Loads the data from the server using jQuery's Ajax capabilities and
    * appends the returned HTML into the object.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return $this for a fluent interface
    */
   public function ajaxAppend(string $url) {

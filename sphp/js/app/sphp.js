@@ -202,19 +202,22 @@ if (!window.console.log) {
     sphp.enableConsole(true);
     console.log("sphp.initialize()");
     sphp.initClipboard();
-    var $ajaxLoaders = $("[data-sphp-ajax-url]");
+    //var $ajaxLoaders = $("[data-sphp-ajax-url]");
     console.log("loaded");
 
     $(document).foundation();
     console.log("jQuery " + $.fn.jquery + " loaded...");
     console.log("Foundation " + Foundation.version + " loaded...");
     console.log("AnyTime " + AnyTime.version + " loaded...");
-    $ajaxLoaders.sphpAjaxLoader();
-    $ajaxLoaders.on("sphp-ajax-loader-finished", function () {
+    //$ajaxLoaders.sphpAjaxLoader();
+    $("[data-sphp-ajax-append]").sphpAjaxAppend();
+    $("[data-sphp-ajax-prepend]").sphpAjaxPrepend();
+
+    /*$ajaxLoaders.on("sphp-ajax-loader-finished", function () {
       console.log("SPHP Ajax loader finished loaded...");
       $(this).foundation();
-      $(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
-    });
+      //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
+    });*/
     $(".sphp-viewport-size-viewer").viewportSizeViewer();
 
     $("[data-sphp-qtip]").qtips();

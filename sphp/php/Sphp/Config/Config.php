@@ -62,6 +62,12 @@ class Config implements Arrayable, Iterator, ArrayAccess, Countable {
     $this->readonly = $readOnly;
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->data);
   }

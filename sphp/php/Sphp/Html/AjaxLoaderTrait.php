@@ -7,7 +7,6 @@
 
 namespace Sphp\Html;
 
-use Sphp\Stdlib\Networks\URL;
 use Sphp\Html\Attributes\HtmlAttributeManager;
 
 /**
@@ -28,43 +27,29 @@ trait AjaxLoaderTrait {
   abstract public function attrs(): HtmlAttributeManager;
 
   /**
-   * Sets the Ajax attributes to the component
-   * 
-   * @param  string $op the type of the operation
-   * @param  string|URL $url the URL to which the request is sent
-   * @param  string|null $container an optional DOM ID of the used portion
-   * @return $this for a fluent interface
-   */
-  private function setAjaxAttrs($op, $url) {
-    if ($url instanceof URL) {
-      $url = $url->getHtml();
-    }
-    $this
-            ->setAttr("data-sphp-ajax-op", $op)
-            ->setAttr("data-sphp-ajax-url", $url);
-    return $this;
-  }
-
-  /**
    * Loads the data from the server using jQuery's Ajax capabilities and
    * prepends the returned HTML into the object.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return $this for a fluent interface
    */
   public function ajaxPrepend(string $url) {
-    return $this->setAjaxAttrs("prepend", $url);
+     $this->attrs()
+            ->set('data-sphp-ajax-prepend', $url);
+    return $this;
   }
 
   /**
    * Loads the data from the server using jQuery's Ajax capabilities and
    * appends the returned HTML into the object.
    *
-   * @param  string|URL $url the URL to which the request is sent
+   * @param  string $url the URL to which the request is sent
    * @return $this for a fluent interface
    */
   public function ajaxAppend(string $url) {
-    return $this->setAjaxAttrs("append", $url);
+     $this->attrs()
+            ->set('data-sphp-ajax-append', $url);
+    return $this;
   }
 
 }

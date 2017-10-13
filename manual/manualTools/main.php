@@ -5,46 +5,58 @@ namespace Sphp\Manual;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Filesystem;
-use Sphp\Html\Apps\Manual\Apis;
-use Sphp\Html\Apps\Manual\Sami\Sami;
-
-/**
- * 
- * @return Sami 
- */
-function sami(): Sami {
-  return Apis::sami();
-}
+use Sphp\Exceptions\InvalidArgumentException;
+use ParsedownExtraPlugin;
 
 /**
  * 
  * @param string $content
  */
 function parseDown(string $content) {
-  echo \ParsedownExtraPlugin::instance()->text($content);
+  echo ParsedownExtraPlugin::instance()->text($content);
 }
 
 /**
  * 
- * @param string $page
- * @throws \Sphp\Exceptions\RuntimeException
+ * @param  string $page
+ * @throws InvalidArgumentException
  */
 function loadPage(string $page) {
   try {
     ob_start();
-    if (!Strings::endsWith($page, ".php")) {
-      $page .= ".php";
+    if (!Strings::endsWith($page, '.php')) {
+      $page .= '.php';
     }
     $pagePath = "$page";
     if (Filesystem::isFile($pagePath)) {
       include($pagePath);
     } else {
-      throw new \Sphp\Exceptions\RuntimeException("the path '$page' contains no executable PHP script");
+      throw new InvalidArgumentException("the path '$page' contains no executable PHP script");
     }
     $content = ob_get_contents();
   } catch (\Exception $e) {
-    $content .= (new ThrowableCallout($e))->showInitialFile();
+    $content .= (new ThrowableCallout($e))->showInitialFile()->showTrace();
   }
   ob_end_clean();
   echo $content;
+}
+
+use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Html\Apps\Manual\Sami\Sami;
+use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
+
+/**
+ * 
+ * @return Sami 
+ */
+function api(): Sami {
+  return Apis::sami();
+}
+
+/**
+ * 
+ * @return PHPManual 
+ */
+function php(): PHPManual {
+  return Apis::phpManual();
 }

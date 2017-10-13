@@ -24,7 +24,6 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
   use HyperlinkTrait;
 
   /**
-   *
    * @var Img
    */
   private $img;
@@ -59,6 +58,12 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     }
   }
 
+  /**
+   * Destroys the instance
+   *
+   * The destructor method will be called as soon as there are no other references
+   * to a particular object, or in any order during the shutdown sequence.
+   */
   public function __destruct() {
     unset($this->img);
     parent::__destruct();
@@ -87,7 +92,7 @@ class ImageLink extends AbstractComponent implements HyperlinkInterface, ImgInte
     $this->img()->setAlt($src);
     return $this;
   }
-  
+
   public function getAlt(): string {
     return $this->img()->getAlt();
   }
