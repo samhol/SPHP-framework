@@ -19,13 +19,11 @@ class Icon extends AbstractIcon {
   /**
    * Constructs a new instance
    * 
-   * @param  string|string[] $iconName the icon name 
-   * @param  string $tagName the tag name 
-   * @throws \Sphp\Exceptions\InvalidArgumentException if the tag name is not valid
+   * @param  string $classes the icon name
    */
-  public function __construct($iconName, string $tagName = 'i') {
-    parent::__construct($tagName);
-    $this->cssClasses()->lock($iconName);
+  public function __construct(string ... $classes) {
+    parent::__construct('i');
+    $this->cssClasses()->lock($classes);
   }
 
 }

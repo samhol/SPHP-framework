@@ -7,6 +7,9 @@
 
 namespace Sphp\Config;
 
+use Sphp\Exceptions\RuntimeException;
+use Sphp\Stdlib\Arrays;
+
 /**
  * Implements class for managing PHP settings
  *
@@ -15,61 +18,6 @@ namespace Sphp\Config;
  * @filesource
  */
 class PHPConfig {
-
-  /**
-   * the configuration variable name value pairs container
-   *
-   * @var mixed[]
-   */
-  private $setters = [];
-
-  /**
-   *
-   * @var Ini
-   */
-  private $ini;
-
-  /**
-   * Constructs a new instance
-   *
-   * @param Ini $ini
-   */
-  public function __construct(Ini $ini = null) {
-    $this->setters = [];
-    if ($ini === null) {
-      $ini = new Ini();
-    }
-    $this->ini = $ini;
-  }
-
-  /**
-   * Destroys the instance
-   *
-   * The destructor method will be called as soon as there are no other references
-   * to a particular object, or in any order during the shutdown sequence.
-   */
-  public function __destruct() {
-    unset($this->setters, $this->ini);
-  }
-
-  /**
-   *
-   * @return Ini
-   */
-  public function ini() {
-    return $this->ini;
-  }
-
-  /**
-   *
-   * @param  string $fun
-   * @param  mixed[] $params
-   * @return $this for a fluent interface
-   */
-  private function setFunc(string $fun, array $params = []) {
-    $this->setters[] = [$fun, $params];
-    return $this;
-  }
 
   /**
    * Sets the locale information
@@ -84,13 +32,20 @@ class PHPConfig {
    * * {@link LC_TIME} for date and time formatting with {@link strftime()}
    * * {@link LC_MESSAGES} for system responses (available if PHP was compiled with libintl)
    *
-   * @param  int $category a named constant specifying the category of the functions affected by the locale setting:
+   * @param  int $category a named constant specifying the category of the 
+   *                       functions affected by the locale setting
    * @param  string $locale the name of the locale
    * @return $this for a fluent interface
+   * @throws RuntimeException if the locale functionality is not implemented on 
+   *                          the platform, the specified locale does not exist 
+   *                          or the category name is invalid
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setLocale(int $category, string $locale) {
-    $this->setFunc('setLocale', [$category, $locale]);
+    $success = setLocale($category, $locale);
+    if (!$success) {
+      throw new RuntimeException("Failed setting the locale to '$locale");
+    }
     return $this;
   }
 
@@ -99,6 +54,9 @@ class PHPConfig {
    *
    * @param  string|null $locale the locale information for system responses
    * @return $this for a fluent interface
+   * @throws RuntimeException if the locale functionality is not implemented on 
+   *                          the platform, the specified locale does not exist 
+   *                          or the category name is invalid
    * @link   http://php.net/manual/en/function.setlocale.php
    */
   public function setMessageLocale(string $locale) {
@@ -111,9 +69,13 @@ class PHPConfig {
    *
    * @param  mixed $encoding character encoding: default is `UTF-8`
    * @return $this for a fluent interface
+   * @throws RuntimeException if character encoding setting fails
    */
-  public function setEncoding(string $encoding = 'UTF-8') {
-    $this->setFunc('mb_internal_encoding', [$encoding]);
+  public function setCharacterEncoding(string $encoding = 'UTF-8') {
+    $valid = mb_internal_encoding($encoding);
+    if (!$valid) {
+      throw new RuntimeException("Failed setting character encoding to '$encoding'");
+    }
     return $this;
   }
 
@@ -122,9 +84,16 @@ class PHPConfig {
    *
    * @param  string $timezone the time zone identifier
    * @return $this for a fluent interface
+   * @throws RuntimeException if given timezone is invalid
    */
   public function setDefaultTimezone(string $timezone) {
-    $this->setFunc('date_default_timezone_set', [$timezone]);
+    $old = date_default_timezone_get();
+    if ($timezone !== $old) {
+      $valid = date_default_timezone_set($timezone);
+      if (!$valid) {
+        throw new RuntimeException("Given timezone string '$timezone' is invalid");
+      }
+    }
     return $this;
   }
 
@@ -135,34 +104,13 @@ class PHPConfig {
    * @return $this for a fluent interface
    * @link   http://php.net/manual/en/function.error-reporting.php PHP error reporting
    */
-  public function setErrorReporting(int $level = 0) {
-    $this->setFunc('error_reporting', [$level]);
+  public function setErrorReporting(int $level) {
+    $old = error_reporting();
+    if ($level !== $old) {
+      error_reporting($level);
+    }
     $display = ($level > 0) ? 1 : 0;
-    $this->ini->set('display_errors', $display);
-    return $this;
-  }
-
-  /**
-   * Sets a user-defined exception handler function
-   *
-   * @param  callable $handler
-   * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
-   */
-  public function setExceptionHandler(callable $handler) {
-    $this->setFunc('set_exception_handler', [$handler]);
-    return $this;
-  }
-
-  /**
-   * Sets a user-defined exception handler function
-   *
-   * @param  callable $handler
-   * @return $this for a fluent interface
-   * @link   http://php.net/manual/en/function.set-exception-handler.php PHP manual
-   */
-  public function setErrorHandler(callable $handler) {
-    $this->setFunc('set_error_handler', [$handler]);
+    ini_set('display_errors', $display);
     return $this;
   }
 
@@ -170,67 +118,28 @@ class PHPConfig {
    * 
    * @return string[]
    */
-  public function getCurrentIncludePaths() {
+  public function getCurrentIncludePaths(): array {
     $pathString = get_include_path();
     return array_unique(explode(\PATH_SEPARATOR, $pathString));
   }
 
   /**
+   * Inserts new paths to the include_path configuration option
    * 
-   * @param  string|string[] $paths
+   * @param  string|string[] $paths new include paths
    * @return $this for a fluent interface
+   * @throws RuntimeException if insertion of given include paths fails
    * @link   http://php.net/manual/en/function.set-include-path.php PHP manual
    */
-  public function setIncludePaths($paths) {
-    if (is_string($paths)) {
-      $paths = [$paths];
-    }
-    $pathArray = array_unique(array_merge_recursive($this->getCurrentIncludePaths(), $paths));
+  public function insertIncludePaths(...$paths) {
+    $flatten = Arrays::flatten($paths);
+    $pathArray = array_unique(array_merge($this->getCurrentIncludePaths(), $flatten));
     $newPaths = implode(\PATH_SEPARATOR, $pathArray);
-    $this->setFunc('set_include_path', [$newPaths]);
-    return $this;
-  }
-
-  /**
-   * Initializes all PHP settings defined by the instance
-   *
-   * Previous settings are replaced
-   *
-   * @return $this for a fluent interface
-   */
-  public function init() {
-    foreach ($this->setters as $call) {
-      call_user_func_array($call[0], $call[1]);
+    $isset = set_include_path($newPaths);
+    if (!$isset) {
+      throw new RuntimeException('Failed inserting given include paths');
     }
-    $this->ini->init();
     return $this;
-  }
-
-  /**
-   * Checks if the PHP engine is 32bit
-   * 
-   * @return bool true if the PHP engine is 32bit false otherwise
-   */
-  public static function is32bit(): bool {
-    return PHP_INT_SIZE === 4;
-  }
-
-  /**
-   * Checks if the PHP engine is 64bit
-   * 
-   * @return bool true if the PHP engine is 64bit false otherwise
-   */
-  public static function is64bit(): bool {
-    return PHP_INT_SIZE === 8;
-  }
-
-  /**
-   * Returns the bit version of the PHP engine
-   * 
-   * @return int the bit version of the PHP engine
-   */
-  public static function getBitVersion(): int {
-    return PHP_INT_SIZE * 8;
   }
 
 }

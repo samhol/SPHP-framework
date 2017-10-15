@@ -30,4 +30,11 @@ if (isset($_GET['SESSION'])) {
   echo '<h1>$_SESSION</h1>';
   printVar($_SESSION);
 }
+
+echo '<h1>Loaded extensions</h1>';
+use Sphp\Html\Lists\Ul;
+$ul = new Ul(get_loaded_extensions());
+$ul->printHtml();
 echo "</pre>";
+
+

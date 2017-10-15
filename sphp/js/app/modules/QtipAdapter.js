@@ -8,6 +8,7 @@
  */
 (function ($) {
   'use strict';
+
   /**
    * Shows the mouse coordinates when ever the mouse is onver the containing document
    * 
@@ -55,6 +56,5 @@
       $settings.style = {classes: 'qtip-dark qtip-rounded'};
       $this.qtip($settings);
     });
-
   };
 }(jQuery));

@@ -32,7 +32,7 @@ abstract class AbstractTag implements TagInterface {
   /**
    * attribute container
    *
-   * @var AttributeManager
+   * @var HtmlAttributeManager
    */
   private $attrs;
 

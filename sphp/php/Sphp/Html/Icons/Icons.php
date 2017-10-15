@@ -18,7 +18,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Icons {
+abstract class Icons {
 
   private static $fileTypeMap = [
       'pdf' => 'file-pdf-o',
@@ -56,41 +56,37 @@ class Icons {
    * Generates a FontAwesome icon
    * 
    * @param  string $iconName
-   * @param  string $tagName the tag name of the component
    * @return Icon the icon object generated
-   * @throws InvalidArgumentException if given tag name is invalid
    * @link   http://fontawesome.io/ Font Awesome site
    */
-  public static function fontAwesome(string $iconName, string $tagName = 'i'): Icon {
+  public static function fontAwesome(string $iconName): Icon {
     if (!Strings::startsWith($iconName, 'fa-')) {
       $iconName = "fa-$iconName";
     }
-    return new Icon(['fa', $iconName], $tagName);
+    return new Icon('fa', $iconName);
   }
+
   /**
    * Generates a Foundation icon
    * 
-   * @param  string $iconName the icon name 
-   * @param  string $tagName the tag name 
+   * @param  string $iconName the icon name
    * @return Icon the icon object generated
-   * @throws InvalidArgumentException if the tag name is not valid
    */
-  public static function foundation(string $iconName, string $tagName = 'i'): Icon {
+  public static function foundation(string $iconName): Icon {
     if (!Strings::startsWith($iconName, 'fi-')) {
       $iconName = 'fi-' . $iconName;
     }
-    return new Icon(['fi', $iconName], $tagName);
+    return new Icon('fi', $iconName);
   }
 
   /**
    * Generates a file type icon object using Font Awesome 
    * 
    * @param  string|SplFileInfo $file the file
-   * @param  string $tagName optional tag name of the component
    * @return Icon the icon object generated
    * @throws InvalidArgumentException if given tag name is invalid
    */
-  public static function fileType($file, string $tagName = 'i'): Icon {
+  public static function fileType($file): Icon {
     if (is_string($file)) {
       $file = new SplFileInfo($file);
     } else if (!$file instanceof SplFileInfo) {
@@ -102,7 +98,7 @@ class Icons {
     } else {
       $icon = 'file-o';
     }
-    return static::fontAwesome($icon, $tagName);
+    return static::fontAwesome($icon);
   }
 
 }

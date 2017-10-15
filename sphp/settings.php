@@ -8,5 +8,4 @@ use Sphp\Config\PHPConfig;
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 (new PHPConfig())
-        ->setIncludePaths(__DIR__)
-        ->init();
+        ->insertIncludePaths(__DIR__);

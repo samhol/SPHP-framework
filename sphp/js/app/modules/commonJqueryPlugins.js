@@ -72,104 +72,27 @@
    * @param    {String} replace the replacer
    * @returns  {jQuery.fn} object for method chaining
    */
+  $.fn.identify = function () {
+    
+    return this.each(function () {
+      var $this = $(this);
+      $this.attr('id', sphp.generateUniqueId());
+    });
+  };
+  /**
+   * Replaces the selected part of the attribute value
+   *
+   * @memberOf jQuery.fn#
+   * @method   gsubAttr
+   * @param    {String} attr the name of the attribute
+   * @param    {String} find the replaceable content
+   * @param    {String} replace the replacer
+   * @returns  {jQuery.fn} object for method chaining
+   */
   $.fn.gsubAttr = function (attr, find, replace) {
     return this.each(function () {
       var $this = $(this), $attrValue = $this.attr(attr);
       $this.attr(attr, $attrValue.gsub(find, replace));
-    });
-  };
-
-  /**
-   * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
-   * jQuery's Ajax capabilities and places the returned HTML into the object.
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphLoadContent
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.sphpAjaxPrepend = function () {
-    return this.each(function () {
-      var $this = $(this),
-              $url = $this.attr("data-sphp-ajax-prepend"),
-              $content = $("<div>");
-      $this.addWaitLoader();
-      $this.on("sphp-ajax-prepend-finished", function () {
-        console.log("SPHP Ajax appending finished loaded...");
-        $(this).foundation();
-        $this.removeWaitLoader();
-        //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
-      });
-      $.get($url, function (data) {
-        alert("Data Loaded: " + data);
-      });
-      $content = $("<div>").load($url, function (response, status, xhr) {
-        if (status === "error") {
-          $("#error").html("<strong>ERROR</strong> while loading resource: " + xhr.status + " " + xhr.statusText);
-          $content.html(
-                  "<strong>ERROR</strong> while loading resource: '<u><var>"
-                  + $url + "</var></u>'<br> <strong>"
-                  + xhr.status + " " + xhr.statusText + "</strong>");
-        }
-        $this.prepend($content.html());
-        $this.trigger("sphp-ajax-prepend-finished");
-      });
-    });
-  };
-
-  /**
-   * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
-   * jQuery's Ajax capabilities and places the returned HTML into the object.
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphLoadContent
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.sphpAjaxAppend = function () {
-    return this.each(function () {
-      var $this = $(this),
-              $url = $this.attr("data-sphp-ajax-append"),
-              $content = $("<div>");
-      console.log("initializing Sphp ajax appending...");
-      $this.addWaitLoader();
-      $this.on("sphp-ajax-append-finished", function () {
-        console.log("SPHP Ajax appending finished loading...");
-        $(this).foundation();
-        $this.removeWaitLoader();
-        //$(this).find(".sphp-viewport-size-viewer").viewportSizeViewer();
-      });
-      $content = $("<div>").load($url, function (response, status, xhr) {
-        if (status === "error") {
-          $("#error").html("<strong>ERROR</strong> while loading resource: " + xhr.status + " " + xhr.statusText);
-          $content.html(
-                  "<strong>ERROR</strong> while loading resource: '<u><var>"
-                  + $url + "</var></u>'<br> <strong>"
-                  + xhr.status + " " + xhr.statusText + "</strong>");
-        }
-        $this.append($content.html());
-        $this.trigger("sphp-ajax-append-finished");
-      });
-    });
-  };
-  /**
-   * Loads the data from the server pointed on the data attribute 'data-sph-load' using 
-   * jQuery's Ajax capabilities and places the returned HTML into the object.
-   * 
-   * @memberOf jQuery.fn#
-   * @method   sphLoadContent
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.sphLoadContent = function () {
-    return this.each(function () {
-      var $this = $(this), $url = $this.attr("data-sph-load");
-      $this.addWaitLoader();
-      $this.load($url, function (response, status, xhr) {
-        if (status === "error") {
-          $this.html(
-                  "<strong>ERROR</strong> while loading resource: '<u><var>"
-                  + $url + "</var></u>'<br> <strong>"
-                  + xhr.status + " " + xhr.statusText + "</strong>");
-        }
-      });
     });
   };
 
@@ -417,59 +340,6 @@
   $.fn.removeFog.defaults = {
     delay: 1000
   };
-
-  /**
-   * Sets the loader element (an animated gif image) to the given {@link jQuery.fn}.
-   *
-   * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-23
-   * @memberOf jQuery.fn#
-   * @method   addWaitLoader
-   * @param    {Object} options {z_index: int div.WaitLoader-elementin z-indeksi (oletus 20000),
-   *                          duration: int appearance duration in ms (default: 1000 ms)}
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.addWaitLoader = function (options) {
-    var opts = $.extend({}, $.fn.addWaitLoader.defaults, options);
-    return this.each(function () {
-      var $this = $(this), $loader, $o;
-      $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-      $loader = $('<div class="sphp-loader"><img src="sphp/pics/spinner.gif" alt="Loading..."></div>');
-      $loader.css("z-index", $o.zIndex);
-      $loader.appendTo($this);
-      $loader.fadeIn($o.duration);
-    });
-  };
-  $.fn.addWaitLoader.defaults = {
-    z_index: "inherit",
-    duration: 1000
-  };
-
-  /**
-   * Poistaa div.WaitLoader-elementin annettuista jQuery-objekteista.
-   *
-   * @author   Sami Holck <sami.holck@gmail.com>
-   * @since    2012-09-23
-   * @memberOf jQuery.fn#
-   * @method   removeWaitLoader
-   * @param    {Object} options {duration: int postumisefektin kesto millisekunneissa (oletus 1000 ms)}
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.removeWaitLoader = function (options) {
-    var opts = $.extend({}, $.fn.removeWaitLoader.defaults, options);
-    return this.each(function () {
-      var $this = $(this), $loader = $this.find(".sphp-loader"), $o;
-      console.log("removing spinner...");
-      $o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-      $loader.fadeOut($o.duration, function () {
-        $loader.remove();
-      });
-    });
-  };
-  $.fn.removeWaitLoader.defaults = {
-    duration: 1000
-  };
-
 
   /**
    * Lomakkeen tekstisyötteen sisällön siistijä

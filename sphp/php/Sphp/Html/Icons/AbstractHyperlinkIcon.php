@@ -23,26 +23,23 @@ class AbstractHyperlinkIcon extends AbstractComponent implements HyperlinkInterf
   use \Sphp\Html\Navigation\HyperlinkTrait;
 
   /**
-   *
    * @var AbstractIcon 
    */
   private $icon;
 
   /**
+   * Constructs a new instance
    * 
-   * @param AbstractIcon $icon
+   * @param string $href
+   * @param \Sphp\Html\Icons\AbstractIcon $icon
+   * @param string $target
    */
-  public function __construct($href, AbstractIcon $icon, $target = null) {
+  public function __construct(string $href, AbstractIcon $icon, string $target = null) {
     parent::__construct('a');
     $this->icon = $icon;
     $this->setHref($href);
     $this->setTarget($target);
     $this->cssClasses()->lock('brand-icon');
-  }
-
-  public function setIconName($iconName) {
-    $this->icon->setIconName($iconName);
-    return $this;
   }
 
   public function contentToString(): string {

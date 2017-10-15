@@ -2,20 +2,20 @@
 
 namespace Sphp\Config;
 
+session_start();
 require_once(__DIR__ . '/../sphp/settings.php');
 
 $includePaths = [
+    __DIR__ . '/examples',
+    __DIR__ . '/pages',
     realpath(__DIR__ . '/../'),
     __DIR__,
-    __DIR__ . '/examples',
-    __DIR__ . '/pages'
 ];
-(new PHPConfig())
-        ->setErrorReporting(E_ALL)
+PHP::Config()
+        ->setErrorReporting(\E_ALL)
         ->setDefaultTimezone('Europe/Helsinki')
-        ->setEncoding('UTF-8')
-        ->setIncludePaths($includePaths)
-        ->init();
+        ->setCharacterEncoding('UTF-8')
+        ->insertIncludePaths($includePaths);
 
 require_once('_errorHandling.php');
 

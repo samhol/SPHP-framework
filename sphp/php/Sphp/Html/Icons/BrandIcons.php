@@ -111,7 +111,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
   /**
    * 
    * @param  string $index
-   * @param  \Sphp\Html\Icons\HyperlinkIcon $icon
+   * @param  HyperlinkIcon $icon
    * @return $this for a fluent interface
    */
   protected function setIcon(string $index, HyperlinkIcon $icon) {
@@ -169,7 +169,7 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * 
    * @return boolean current iterator position is valid
    */
-  public function valid() {
+  public function valid(): bool {
     return false !== current($this->icons);
   }
 

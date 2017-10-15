@@ -2,7 +2,7 @@
 
 namespace Sphp\Stdlib;
 
-use Sphp\Config\PHPConfig;
+use Sphp\Config\PHP;
 
 class BitMaskTest extends \PHPUnit\Framework\TestCase {
 
@@ -76,7 +76,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
    */
   public function testBitSetting() {
     $b = new BitMask();
-    for ($i = 0; $i < PHPConfig::getBitVersion(); $i++) {
+    for ($i = 0; $i < PHP::getBitVersion(); $i++) {
       $b->set($i);
       $this->assertSame(1, $b->get($i), "Failed asserting that 0 is identical to 1 at position '$i'");
       echo "$b\n";
@@ -94,7 +94,7 @@ class BitMaskTest extends \PHPUnit\Framework\TestCase {
   public function testToArray(int $bits) {
     $mask = new BitMask($bits);
     $arr = $mask->toArray();
-    $this->assertCount(PHPConfig::getBitVersion(), $arr);
+    $this->assertCount(PHP::getBitVersion(), $arr);
     foreach ($arr as $index => $bit) {
       $this->assertSame($mask->get($index), $bit);
     }

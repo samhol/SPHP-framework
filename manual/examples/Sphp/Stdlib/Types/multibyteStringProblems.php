@@ -4,7 +4,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Config\PHPConfig;
 
-(new PHPConfig())->setEncoding("UTF-8");
+(new PHPConfig())->setCharacterEncoding("UTF-8");
 
 $string = 'лдэфвәәуүйәуйүәу034928348539857әшаыдларорашһһрлоавы';
 echo 'strlen: ' . strlen($string);

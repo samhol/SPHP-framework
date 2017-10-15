@@ -20,17 +20,13 @@
             .attr("title", "jQuery: " + $.fn.jquery);
     $(".sphp-tech-list .Foundation")
             .attr("title", "Foundation: " + sphp.getFoundationVersion());
-    
+
     $("a.jquery_version").append(" " + $.fn.jquery)
             .attr("title", "jQuery: " + $.fn.jquery);
     $("a.foundation_version").append(" " + sphp.getFoundationVersion())
             .attr("title", "Foundation for sites version " + sphp.getFoundationVersion());
     $("a.anytime_version").append(" " + AnyTime.version)
             .attr("title", "Any+Time™ version " + AnyTime.version);
-    
-   // $irs = $.fn.IonRangeSlider;
-   // console.log($irs.VERSION);
-    
   };
 
 }(window.sphp = window.sphp || {}, jQuery));

@@ -20,10 +20,11 @@ class HyperlinkIcon extends AbstractHyperlinkIcon {
   use \Sphp\Html\Navigation\HyperlinkTrait;
 
   /**
+   * Constructs a new instance
    * 
    * @param string $iconName
    */
-  public function __construct($url, $iconName, $target = null) {
+  public function __construct(string $url, $iconName, string $target = null) {
     if (!$iconName instanceof AbstractIcon) {
       $iconName = new Icon($iconName);
     }
@@ -32,9 +33,12 @@ class HyperlinkIcon extends AbstractHyperlinkIcon {
 
   /**
    * 
-   * @param string $icon
+   * @param  string $url
+   * @param  string $icon
+   * @param  string $target
+   * @return HyperlinkIcon
    */
-  public static function fontAwesome($url, $icon, $target = null) {
+  public static function fontAwesome(string $url, string $icon, string $target = null) {
     $iconComponent = Icons::fontAwesome($icon);
     return new static($url, $iconComponent, $target);
   }
@@ -47,7 +51,7 @@ class HyperlinkIcon extends AbstractHyperlinkIcon {
    * @param  string|null $target optional target frame of the hyperlink
    * @return self the hyperlink icon generated
    */
-  public static function foundation($href, $icon, $target = null) {
+  public static function foundation(string $href, string $icon, string $target = null) {
     $iconComponent = Icons::foundation($icon);
     return new static($href, $iconComponent, $target);
   }

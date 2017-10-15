@@ -2,7 +2,6 @@
 
 namespace Sphp\Html;
 
-session_start();
 
 require_once 'loaders.php';
 

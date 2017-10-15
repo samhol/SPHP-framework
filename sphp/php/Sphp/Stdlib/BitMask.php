@@ -9,7 +9,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Stdlib\Datastructures\Arrayable;
 use Iterator;
-use Sphp\Config\PHPConfig;
+use Sphp\Config\PHP;
 use Sphp\Database\Doctrine\Embeddable;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Exceptions\OutOfBoundsException;
@@ -127,7 +127,7 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @return BitMask new instance
    * @throws OutOfBoundsException if the given index is not valid
    */
-  public function unset(int $index): BitMask {
+  public function unsetBit(int $index): BitMask {
     if (!$this->isValidIndex($index)) {
       throw new OutOfBoundsException("Index ($index) is not between (0-" . ($this->length() - 1) . ")");
     }
@@ -352,7 +352,7 @@ class BitMask implements Arrayable, Embeddable, Iterator {
    * @return int the (maximum) length of the bitmask
    */
   public function length(): int {
-    return PHPConfig::getBitVersion();
+    return PHP::getBitVersion();
   }
 
 }

@@ -49,22 +49,6 @@ class Apis {
   private static $w3schools;
 
   /**
-   * @var AbstractPhpApiLinker 
-   */
-  private static $default;
-
-  public static function default(): AbstractPhpApiLinker {
-    if (self::$default === null) {
-      throw new RuntimeException("The default API linker is not defined");
-    }
-    return self::$default;
-  }
-
-  public static function setDefault(AbstractPhpApiLinker $default) {
-    self::$default = $default;
-  }
-
-  /**
    * 
    * @param  string $path
    * @param  string|null $target
