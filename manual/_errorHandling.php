@@ -10,5 +10,4 @@ $ed->startErrorHandling();
 
 $ed->addExceptionListener(new ExceptionLogger(__DIR__ . '/logs/exception_log.log'));
 $ed->addExceptionListener((new ExceptionPrinter())->showTrace());
-
 $ed->startExceptionHandling();
