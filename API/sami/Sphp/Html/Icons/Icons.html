@@ -99,7 +99,7 @@
                     static&nbsp;<a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fontAwesome">fontAwesome</a>(string $iconName, string $tagName = &#039;i&#039;)
+                    <a href="#method_fontAwesome">fontAwesome</a>(string $iconName)
         
                                             <p>Generates a FontAwesome icon</p>                </div>
                 <div class="col-md-2"></div>
@@ -109,7 +109,7 @@
                     static&nbsp;<a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_foundation">foundation</a>(string $iconName, string $tagName = &#039;i&#039;)
+                    <a href="#method_foundation">foundation</a>(string $iconName)
         
                                             <p>Generates a Foundation icon</p>                </div>
                 <div class="col-md-2"></div>
@@ -119,9 +119,9 @@
                     static&nbsp;<a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fileType">fileType</a>(string|<a target="_blank" href="http://php.net/SplFileInfo">SplFileInfo</a> $file, string $tagName = &#039;i&#039;)
+                    <a href="#method_fileType">fileType</a>(string|<a target="_blank" href="http://php.net/SplFileInfo">SplFileInfo</a> $file)
         
-                                            <p>Generates a filetype icon object using Font Awesome</p>                </div>
+                                            <p>Generates a file type icon object using Font Awesome</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -132,9 +132,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fontAwesome">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 62</div>
         <code>        static            <a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
-    <strong>fontAwesome</strong>(string $iconName, string $tagName = &#039;i&#039;)
+    <strong>fontAwesome</strong>(string $iconName)
         </code>
     </h3>
     <div class="details">
@@ -152,11 +152,6 @@
                 <td>$iconName</td>
                 <td></td>
             </tr>
-                    <tr>
-                <td>string</td>
-                <td>$tagName</td>
-                <td>the tag name of the component</td>
-            </tr>
             </table>
 
             
@@ -170,15 +165,6 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if given tag name is invalid</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -186,9 +172,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_foundation">
-        <div class="location">at         line 79</div>
+        <div class="location">at         line 75</div>
         <code>        static            <a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
-    <strong>foundation</strong>(string $iconName, string $tagName = &#039;i&#039;)
+    <strong>foundation</strong>(string $iconName)
         </code>
     </h3>
     <div class="details">
@@ -206,11 +192,6 @@
                 <td>$iconName</td>
                 <td>the icon name</td>
             </tr>
-                    <tr>
-                <td>string</td>
-                <td>$tagName</td>
-                <td>the tag name</td>
-            </tr>
             </table>
 
             
@@ -224,15 +205,6 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the tag name is not valid</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -240,9 +212,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fileType">
-        <div class="location">at         line 94</div>
+        <div class="location">at         line 89</div>
         <code>        static            <a href="../../../Sphp/Html/Icons/Icon.html"><abbr title="Sphp\Html\Icons\Icon">Icon</abbr></a>
-    <strong>fileType</strong>(string|<a target="_blank" href="http://php.net/SplFileInfo">SplFileInfo</a> $file, string $tagName = &#039;i&#039;)
+    <strong>fileType</strong>(string|<a target="_blank" href="http://php.net/SplFileInfo">SplFileInfo</a> $file)
         </code>
     </h3>
     <div class="details">
@@ -250,7 +222,7 @@
     
 
                     <div class="method-description">
-                                    <p>Generates a filetype icon object using Font Awesome</p>                                                </div>
+                                    <p>Generates a file type icon object using Font Awesome</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -259,11 +231,6 @@
                 <td>string|<a target="_blank" href="http://php.net/SplFileInfo">SplFileInfo</a></td>
                 <td>$file</td>
                 <td>the file</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$tagName</td>
-                <td>optional tag name of the component</td>
             </tr>
             </table>
 

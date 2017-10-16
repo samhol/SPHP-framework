@@ -104,9 +104,11 @@ class Ini implements Arrayable {
   }
 
   /**
-   * Executes a function using a custom PHP configuration
+   * Executes a callable using settings provided by the instance
    * 
-   * @param  callable $callable the code to execute using the given settings
+   * **NOTE:** Previous settings are restored after execution 
+   * 
+   * @param  callable $callable the callable to execute
    * @return mixed the value returned by the given callable
    */
   public function execute(callable $callable) {

@@ -87,7 +87,7 @@
     
 
             <div class="description">
-            <p>Sends an exception as a email</p>                                </div>
+            <p>Sends a thrown exception as a email</p>                                </div>
     
     
     
@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $to, string $from = null)
+                    <a href="#method___construct">__construct</a>(string $from, string $to)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -130,19 +130,9 @@
                     <abbr title="Sphp\Config\ErrorHandling\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSender">setSender</a>(string $sender = null)
+                    <a href="#method_setSender">setSender</a>(string $sender)
         
                                             <p>Sets senders email address</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasSender">hasSender</a>()
-        
-                                            <p>Checks if senders email address is set</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -209,7 +199,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 39</div>
         <code>                    
-    <strong>__construct</strong>(string $to, string $from = null)
+    <strong>__construct</strong>(string $from, string $to)
         </code>
     </h3>
     <div class="details">
@@ -224,13 +214,13 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$to</td>
-                <td>receivers email address</td>
+                <td>$from</td>
+                <td>optional senders email address</td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$from</td>
-                <td>optional senders email address (null for none)</td>
+                <td>$to</td>
+                <td>receivers email address</td>
             </tr>
             </table>
 
@@ -305,7 +295,7 @@
                     <h3 id="method_setSender">
         <div class="location">at         line 67</div>
         <code>                    <abbr title="Sphp\Config\ErrorHandling\$this">$this</abbr>
-    <strong>setSender</strong>(string $sender = null)
+    <strong>setSender</strong>(string $sender)
         </code>
     </h3>
     <div class="details">
@@ -342,38 +332,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_hasSender">
-        <div class="location">at         line 77</div>
-        <code>                    boolean
-    <strong>hasSender</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks if senders email address is set</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if senders email address is set, otherwise false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setReceiver">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 78</div>
         <code>                    <abbr title="Sphp\Config\ErrorHandling\$this">$this</abbr>
     <strong>setReceiver</strong>(string $receiver)
         </code>
@@ -413,7 +373,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_send">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 88</div>
         <code>                    <abbr title="Sphp\Config\ErrorHandling\$this">$this</abbr>
     <strong>send</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $t)
         </code>
@@ -451,7 +411,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_parseThrowable">
-        <div class="location">at         line 116</div>
+        <div class="location">at         line 105</div>
         <code>            protected        string
     <strong>parseThrowable</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $t)
         </code>
@@ -489,7 +449,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createMailBody">
-        <div class="location">at         line 136</div>
+        <div class="location">at         line 125</div>
         <code>            protected        string
     <strong>createMailBody</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $t)
         </code>
@@ -527,7 +487,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_onException">
-        <div class="location">at         line 142</div>
+        <div class="location">at         line 131</div>
         <code>                    
     <strong>onException</strong>(<a target="_blank" href="http://php.net/Throwable">Throwable</a> $e)
         </code>
