@@ -2,14 +2,14 @@
 
 namespace Sphp\Config;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$config = Apis::sami()->classLinker(Config::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$config = Manual\api()->classLinker(Config::class);
 $instanceMethod = $config->methodLink('instance', false);
-\Sphp\Manual\parseDown(<<<MD
-#APPLICATION CONFIGURATION{#Config}
+Manual\parseDown(<<<MD
+#APPLICATION CONFIGURATION
 $ns
   
 ##$config <small>a genereal configuration manager</small>{#Config_Config}
@@ -25,5 +25,4 @@ CodeExampleBuilder::build('Sphp/Config/Config.php', 'text', false)
         ->setExamplePaneTitle('Canfiguration manager example')
         ->printHtml();
 
-\Sphp\Manual\loadPage('Sphp.Config.Ini');
-\Sphp\Manual\loadPage('Sphp.Config.PHPConfig');
+\Sphp\Manual\loadPage('Sphp.Config.PHP');

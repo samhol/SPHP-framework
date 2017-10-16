@@ -2,14 +2,15 @@
 
 namespace Sphp\Config;
 
-use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+use Sphp\Manual;
 
-$phpConfig = Apis::sami()->classLinker(PHPConfig::class);
+$phpConfig = Manual\api()->classLinker(PHPConfig::class);
+$ini = Manual\api()->classLinker(Ini::class);
 
-\Sphp\Manual\parseDown(<<<MD
-##$phpConfig <small>a runtime PHP configuration manager</small>{#Config_PHPConfig} 
-
+Manual\parseDown(<<<MD
+###$phpConfig <small> is a runtime PHP environment manager </small>
+       
 $phpConfig object can handle basic runtime PHP environment configuration. Objects configuration 
 settings can be reinitialized during script execution and thus a programmer can change the behaviour of the PHP 
 environment by simply using multiple instances of $phpConfig.

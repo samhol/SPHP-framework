@@ -3,16 +3,12 @@
 namespace Sphp\Config;
 
 $f = function () {
-  echo 'date.timezone = ' . ini_get('date.timezone') . "\n";
+  echo "Current date and time:\t" . date('Y-m-d H:i:s T') . "\n";
 };
 
 $f();
-$ini = (new Ini())
+PHP::ini('date.timezone.Rome')
         ->set('date.timezone', 'Europe/Rome')
         ->init();
-$f();
-$ini->reset();
-$f();
-$ini->execute($f);
-$ini->reset();
+PHP::ini('date.timezone.Rome')->execute($f);
 $f();

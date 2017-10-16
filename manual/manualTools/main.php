@@ -44,8 +44,10 @@ function loadPage(string $page) {
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Manual\Sami\Sami;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
+use Sphp\Html\Apps\Manual\W3schools;
 
 /**
+ * Return the default SPHP framework API linker
  * 
  * @return Sami 
  */
@@ -54,9 +56,19 @@ function api(): Sami {
 }
 
 /**
+ * Return the PHP manual API linker
  * 
  * @return PHPManual 
  */
 function php(): PHPManual {
   return Apis::phpManual();
+}
+
+/**
+ * Return the W3Schools API linker
+ * 
+ * @return W3schools 
+ */
+function w3schools(): W3schools {
+  return Apis::w3schools();
 }

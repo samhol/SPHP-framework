@@ -23,4 +23,5 @@ extending $formIfLink is a container for any number of $inputInterface component
 MD
 );
 \Sphp\Manual\loadPage('Sphp.Html.Forms.InputInterface');
+\Sphp\Manual\loadPage('Sphp.Html.Forms.Buttons');
 
