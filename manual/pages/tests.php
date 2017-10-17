@@ -1,12 +1,10 @@
-<?php
+<pre><?php
 
-namespace Sphp\Html\Attributes;
+use Sphp\Stdlib\Reader\Yaml;
+
+$data = (new Yaml())->fromFile('manual/yaml/document_data.yml');
+
+print_r($data);
 
 
-$div1 = new \Sphp\Html\Div();
-$div1->ajaxAppend('manual/snippets/sleep.php');
-$div1->printHtml();
-$div2 = new \Sphp\Html\Div();
-$div2->ajaxPrepend('manual/snippets/sleep.php');
-$div2->printHtml();
-?>
+?></pre>

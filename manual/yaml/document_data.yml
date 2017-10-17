@@ -88,17 +88,12 @@ Links:
 Lists:
     ul: 'An unordered list'
     ol: 'An ordered list'
-    li', "A list item for " . Apis::sami()->classLinker(Ul::class) . " and " . Apis::sami()->classLinker(Ol::class) . " components"
+    li: 'A list item for ul and ol components'
     dl: 'A definition list'
-    dd', "A definition description $dl"
-    dt', "A definition term $dl"
-    menu: 'A menu list']
-    ]
-];
-
-
-$p[] = ['Tables',
-    [
+    dd: 'A definition description'
+    dt: 'A definition term $dl'
+    menu: 'A menu list'
+Tables:
     table: 'A table'
     caption: 'A table caption'
     th: 'A table header'
@@ -108,11 +103,8 @@ $p[] = ['Tables',
     tbody: 'A table body'
     tfoot: 'A table footer'
     col: 'Attributes for table columns'
-    colgroup: 'Groups of table columns']
-    ]
-];
-$p[] = ['Style/Sections',
-    [
+    colgroup: 'Groups of table columns'
+'Style/Sections':
     style: 'A style definition'
     div: 'A section in a document'
     span: 'A section in a document'
@@ -122,24 +114,16 @@ $p[] = ['Style/Sections',
     aside: 'Content aside from the page content'
     details: 'Details of an element'
     dialog: 'A dialog (conversation)'
-    section: 'A section']
-    ]
-];
-
-$p[] = ['Head',
-    [
+    section: 'A section'
+Head:
     head: 'Information about the document'
     title: 'Document title'
     link: 'A resource reference'
     meta: 'Meta information'
-    base: 'A base URL for all the links in a page']
-    ]
-];
-
-$p[] = ["Programming",
-    [
+    base: 'A base URL for all the links in a page'
+Programming:
     script:code: 'Contains scripting statements'
     script:src: 'Points to an external script file'
     noscript: 'A noscript section'
     object: 'An embedded object'
-    param: 'A parameter for an object']
+    param: 'A parameter for an object'

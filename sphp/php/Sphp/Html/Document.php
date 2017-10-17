@@ -182,10 +182,10 @@ class Document {
    *
    * @param  string $name the name of the component
    * @param  string $content the content of the tag (for nonempty tags only)
-   * @return ComponentInterface the corresponding component
+   * @return TagInterface the corresponding component
    * @throws \InvalidArgumentException if given tag name is invalid
    */
-  public static function get($name, $content = null) {
+  public static function get($name, $content = null): TagInterface {
     $tagName = strtolower($name);
     if (array_key_exists($tagName, self::$tags)) {
       $className = self::$tags[$tagName];
