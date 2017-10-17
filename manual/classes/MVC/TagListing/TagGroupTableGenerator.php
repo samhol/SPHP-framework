@@ -1,12 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * TagGroupAccordionGenerator.php (UTF-8)
+ * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Manual\MVC;
+namespace Sphp\Manual\MVC\TagListing;
 
 use Sphp\Html\Document;
 use Sphp\Html\Adapters\QtipAdapter;

@@ -48,11 +48,11 @@ class W3schools extends AbstractLinker {
         $linkText = "&lt;$tagname&gt;";
       }
     }
-    return $this->hyperlink($this->urls()->create($link), $linkText, 'Link to w3schools.com documentation');
+    return $this->hyperlink($this->urls()->create($link), $linkText, "Link to w3schools.com $linkText documentation");
   }
 
   /**
-   * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag
+   * Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag attribute
    * 
    * @param  string $attrName the HTML5 tag name
    * @param  string $linkText optional content of the link

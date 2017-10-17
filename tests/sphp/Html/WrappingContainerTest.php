@@ -109,9 +109,9 @@ class WrappingContainerTest extends \PHPUnit\Framework\TestCase {
     $this->container->append("foo");
     $this->container[] = $val;
     $this->container['a'] = $val;
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertFalse($this->container->offsetExists(''));
-    $this->assertTrue($this->container->offsetExists('a'));
+    $this->assertTrue($this->container->groupExists(0));
+    $this->assertFalse($this->container->groupExists(''));
+    $this->assertTrue($this->container->groupExists('a'));
     $this->assertEquals($this->container->count(), 3);
     //$this->assertEquals($this->container[""], $this->wrap($val));
     $this->assertEquals($this->container["a"], $this->wrap($val));

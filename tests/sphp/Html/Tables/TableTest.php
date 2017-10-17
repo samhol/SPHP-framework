@@ -72,8 +72,8 @@ class TableTest extends \PHPUnit\Framework\TestCase {
   public function tesstPrepend($val) {
     $this->container->append("foo");
     $this->container->prepend($val);
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertTrue($this->container->offsetExists(1));
+    $this->assertTrue($this->container->groupExists(0));
+    $this->assertTrue($this->container->groupExists(1));
     $this->assertEquals($this->container->count(), 2);
     $this->assertEquals($this->container[0], $val);
   }
@@ -87,9 +87,9 @@ class TableTest extends \PHPUnit\Framework\TestCase {
     $this->container->append("foo");
     $this->container[] = $val;
     $this->container["a"] = $val;
-    $this->assertTrue($this->container->offsetExists(0));
-    $this->assertTrue($this->container->offsetExists(1));
-    $this->assertTrue($this->container->offsetExists("a"));
+    $this->assertTrue($this->container->groupExists(0));
+    $this->assertTrue($this->container->groupExists(1));
+    $this->assertTrue($this->container->groupExists("a"));
     $this->assertEquals($this->container->count(), 3);
     $this->assertEquals($this->container[1], $val);
     $this->assertEquals($this->container["a"], $val);
