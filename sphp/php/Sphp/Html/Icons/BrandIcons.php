@@ -9,9 +9,7 @@ namespace Sphp\Html\Icons;
 
 use Sphp\Html\ContentInterface;
 use Sphp\Html\Lists\Ul;
-use Sphp\Html\AbstractComponent;
 use Iterator;
-use Sphp\Html\TraversableInterface;
 
 /**
  * Description of BrandIcons
