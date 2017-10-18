@@ -65,19 +65,21 @@ abstract class AbstractClassLinker extends AbstractLinker implements ClassLinker
     return parent::hyperlink($url, str_replace("\\", "\\<wbr>", $content), $title);
   }
 
-  public function getLink(string $name = null): Hyperlink {
+  public function getLink(string $name = null, string $title = null): Hyperlink {
     if ($name === null) {
       $name = $this->ref->getShortName();
     }
     $longName = $this->ref->getName();
-    if ($this->ref->isInterface()) {
-      $title = "Interface $longName";
-    } else if ($this->ref->isTrait()) {
-      $title = "Trait $longName";
-    } else if ($this->ref->isAbstract()) {
-      $title = "Abstract class $longName";
-    } else {
-      $title = "Class $longName";
+    if ($title === null) {
+      if ($this->ref->isInterface()) {
+        $title = "Interface $longName";
+      } else if ($this->ref->isTrait()) {
+        $title = "Trait $longName";
+      } else if ($this->ref->isAbstract()) {
+        $title = "Abstract class $longName";
+      } else {
+        $title = "Class $longName";
+      }
     }
     return $this->hyperlink($this->urls()->getClassUrl($longName), $name, $title);
   }

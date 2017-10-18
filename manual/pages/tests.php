@@ -8,13 +8,13 @@ $data = (new Yaml())->fromFile('manual/yaml/document_data.yml');
 
   $groups = new \Sphp\Manual\MVC\TagListing\Groups($data);
 
-  echo "<pre>";
+  //echo "<pre>";
   //print_r($groups);
-  foreach ($groups as $group) {
+  /*foreach ($groups as $group) {
     echo $group->getName();
     //echo new Sphp\Manual\MVC\TagListing\TagGroupTable($group);
-  }
+  }*/
   echo new Sphp\Manual\MVC\TagListing\TagListAccordionGenerator($groups);
-  echo "</pre>";
+  //echo "</pre>";
 
   
