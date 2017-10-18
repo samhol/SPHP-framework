@@ -35,17 +35,13 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
     $table = (new Table())
             ->addCssClass('html-to-php');
     $table->thead()
-            ->appendHeaderRow(['Function call', 'HTML Tag', 'Description']);
+            ->appendHeaderRow(['HTML Tag', 'Function call', 'Description']);
     $body = $table->tbody();
     foreach ($this->data as $info) {
       $c = [];
       $linkText = "&lt;" . $info->getTagName() . "&gt;";
-      $param = new \Sphp\Html\Span($info->getDocumentCall());
-      $tooptipText = "$param: " . $info->getObjectType();
-      //$c[] = new QtipAdapter($param, "returns " . $info->getObjectType());
-      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall(), "returns " . $info->getObjectType());
       $c[] = Apis::w3schools()->tag($info->getTagName(), $linkText);
-      $text = $info->getObjectType();
+      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall(), "returns " . $info->getObjectType());
       $c[] = $info->getDescription();
       $body->appendBodyRow($c);
     }

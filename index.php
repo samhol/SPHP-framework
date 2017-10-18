@@ -71,9 +71,6 @@ $outputCache = PatternFactory::factory('output', [
 </div>
 <?php
 include('manual/_footer_.php');
-
-use Sphp\Html\Apps\BackToTopButton;
-use Sphp\Html\Adapters\QtipAdapter;
-(new QtipAdapter(new BackToTopButton()))->setQtip('Back To Top')->setQtipPosition('center right', 'center left')->printHtml();
+include('manual/templates/backToTopButton.php');
 
 $html->documentClose();

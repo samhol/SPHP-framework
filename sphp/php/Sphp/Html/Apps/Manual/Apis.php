@@ -12,7 +12,6 @@ use Sphp\Html\Apps\Manual\Sami\SamiUrlGenerator;
 use Sphp\Html\Apps\Manual\ApiGen\ApiGen;
 use Sphp\Html\Apps\Manual\ApiGen\ApiGenUrlGenerator;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
-use Sphp\Exceptions\RuntimeException;
 
 /**
  * A factory for API manual linkers

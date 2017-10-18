@@ -73,7 +73,7 @@
    * @returns  {jQuery.fn} object for method chaining
    */
   $.fn.identify = function () {
-    
+
     return this.each(function () {
       var $this = $(this);
       $this.attr('id', sphp.generateUniqueId());
@@ -224,30 +224,6 @@
       }
       console.log(locale);
       $this.AnyTime_picker(locale);
-    });
-  };
-
-  /**
-   * Sets the dateTimeInput
-   * 
-   * @memberOf jQuery.fn#
-   * @method   backToTopBtn
-   * @returns  {jQuery.fn} object for method chaining
-   */
-  $.fn.backToTopBtn = function () {
-    return this.each(function () {
-      var $this = $(this), offset = 220, duration = 500;
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > offset) {
-          $this.fadeIn(duration);
-        } else {
-          $this.fadeOut(duration);
-        }
-      });
-      $this.click(function () {
-        $('html, body').animate({scrollTop: 0}, duration);
-        return false;
-      });
     });
   };
 

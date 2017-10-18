@@ -19,7 +19,7 @@ class Icon extends AbstractIcon {
   /**
    * Constructs a new instance
    * 
-   * @param  string $classes the icon name
+   * @param string $classes the icon name
    */
   public function __construct(string ... $classes) {
     parent::__construct('i');

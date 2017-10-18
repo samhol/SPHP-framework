@@ -22,11 +22,9 @@ class EmptyTag extends AbstractTag {
    * Constructs a new instance
    *
    * @param  string $tagName the name of the tag
-   * @param  string[] $attrs an array of attribute name value pairs
    */
-  function __construct(string $tagName, array $attrs = []) {
+  function __construct(string $tagName) {
     parent::__construct($tagName);
-    $this->setAttrs($attrs);
   }
 
   public function getHtml(): string {

@@ -25,7 +25,6 @@ $bi = new BrandIcons();
     $bi->setFacebook('https://www.facebook.com/Sami.Petteri.Holck.Programming/', 'fb');
     $bi->setGooglePlus('https://plus.google.com/b/113942361282002156141/113942361282002156141', 'google');
     $bi->setTwitter('https://twitter.com/SPHPframework', 'twitter');
-    $bi->addCssClass(['rounded', 'logo']);
     $bi->printHtml();
     ?>
   </div>

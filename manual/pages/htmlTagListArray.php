@@ -200,7 +200,7 @@ $generateTagTable = function(array $v) {
       $body[] = new Th($data, 'colgroup', 4, 1);
     } else {
       $c = array();
-      $tag = Document::get($data[0]);
+      $tag = Document::create($data[0]);
       $ref = new \ReflectionClass($tag);
       //$linkText = htmlspecialchars("$tag");
       $linkText = "&lt;" . $tag->getTagName();
@@ -209,7 +209,7 @@ $generateTagTable = function(array $v) {
       }
       $linkText .= "&gt;";
       $param = new \Sphp\Html\Span("$data[0]");
-      $tooptipText = "Document::get(\"$data[0]\")";
+      $tooptipText = "Document::create(\"$data[0]\")";
       $c[] = new QtipAdapter($param, $tooptipText);
       $c[] = Apis::w3schools()->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";

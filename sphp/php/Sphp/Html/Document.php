@@ -185,7 +185,7 @@ class Document {
    * @return TagInterface the corresponding component
    * @throws \InvalidArgumentException if given tag name is invalid
    */
-  public static function get($name, $content = null): TagInterface {
+  public static function create($name, $content = null): TagInterface {
     $tagName = strtolower($name);
     if (array_key_exists($tagName, self::$tags)) {
       $className = self::$tags[$tagName];
@@ -210,7 +210,7 @@ class Document {
    * @throws \InvalidArgumentException if given tagname is invalid
    */
   public static function icon($icon, $tagName = 'i') {
-    return self::get($tagName)->addCssClass($icon);
+    return self::create($tagName)->addCssClass($icon);
   }
 
   /**

@@ -44,7 +44,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   public function __construct(string $par, string $description) {
     $this->call = $par;
     $this->description = $description;
-    $this->component = Document::get($par);
+    $this->component = Document::create($par);
     $this->tagName = $this->component->getTagName();
     $this->ref = new \ReflectionClass($this->component);
   }
@@ -54,7 +54,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   }
 
   public function getDocumentCall() {
-    return "Document::get('".$this->call."')";
+    return "Document::create('".$this->call."')";
   }
 
   public function getComponent(): \Sphp\Html\TagInterface {

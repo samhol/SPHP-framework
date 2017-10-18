@@ -4,12 +4,12 @@ namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Html\Document;
 
-$ul = Document::get("ul");
+$ul = Document::create("ul");
 foreach (Screen::sizes() as $size) {
   $li = "$size screen size: ";
-  $li .= (new VisibilityAdapter(Document::get("span", "yes")))
+  $li .= (new VisibilityAdapter(Document::create("span", "yes")))
           ->showOnlyFor($size);
-  $li .= (new VisibilityAdapter(Document::get("span", "no")))
+  $li .= (new VisibilityAdapter(Document::create("span", "no")))
           ->hideOnlyFromSize($size);
   $ul[] = $li;
 }

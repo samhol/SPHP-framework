@@ -19,4 +19,18 @@ The $documentClass class acts as a factory for basic HTML objects. Here are the
 grouped lists of the HTML5 components and the corresponding PHP types in Framework's HTML implementation.
 MD
 );
-\Sphp\Manual\loadPage('htmlTagListArray');
+
+use Sphp\Stdlib\Reader\Yaml;
+
+$data = (new Yaml())->fromFile('manual/yaml/document_data.yml');
+
+//print_r($data);
+
+namespace Sphp\Manual\MVC\TagListing;
+
+$groups = new Groups($data);
+
+echo new TagListAccordionGenerator($groups);
+//echo "</pre>";
+
+  

@@ -111,7 +111,7 @@ abstract class AbstractLinker implements LinkerInterface {
 
   /**
    * 
-   * @param  string|null $target
+   * @param  string $target
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_a_target.asp target attribute
    */

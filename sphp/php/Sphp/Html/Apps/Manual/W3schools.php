@@ -48,7 +48,7 @@ class W3schools extends AbstractLinker {
         $linkText = "&lt;$tagname&gt;";
       }
     }
-    return $this->hyperlink($this->urls()->create($link), $linkText, "Link to w3schools.com $linkText documentation");
+    return $this->hyperlink($this->urls()->create($link), $linkText, "Link to w3schools.com $tagname documentation");
   }
 
   /**

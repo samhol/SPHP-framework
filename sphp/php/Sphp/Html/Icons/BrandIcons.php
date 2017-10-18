@@ -7,9 +7,12 @@
 
 namespace Sphp\Html\Icons;
 
+use Sphp\Html\ContentInterface;
+use Sphp\Html\Lists\Ul;
 use Sphp\Html\AbstractComponent;
 use Iterator;
 use Sphp\Html\TraversableInterface;
+
 /**
  * Description of BrandIcons
  *
@@ -17,9 +20,9 @@ use Sphp\Html\TraversableInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BrandIcons extends AbstractComponent implements Iterator, TraversableInterface {
+class BrandIcons implements ContentInterface, Iterator {
 
-  use \Sphp\Html\TraversableTrait;
+  use \Sphp\Html\ContentTrait;
 
   const GITHUB = 'github';
   const FACEBOOK = 'facebook';
@@ -35,9 +38,9 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
    * Constructs a new instance
    */
   public function __construct() {
-    parent::__construct('ul');
+    //parent::__construct('ul');
     $this->icons = [];
-    $this->cssClasses()->lock('brand-icons');
+    //$this->cssClasses()->lock('brand-icons');
   }
 
   /**
@@ -120,16 +123,10 @@ class BrandIcons extends AbstractComponent implements Iterator, TraversableInter
     return $this;
   }
 
-  public function contentToString(): string {
-    $output = '';
-    foreach ($this->icons as $icon) {
-      $output .= "<li>$icon</li>";
-    }
-    return $output;
-  }
-
-  public function count(): int {
-    return count($this->icons);
+  public function getHtml(): string {
+    $ul = new Ul($this->icons);
+    $ul->addCssClass('brand-icons', 'rounded', 'logo');
+    return $ul->getHtml();
   }
 
   /**
