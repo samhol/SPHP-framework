@@ -33,8 +33,7 @@ class TagGroupAccordionGenerator implements \Sphp\Html\ContentInterface {
             ->allowAllClosed(true)
             ->allowMultiExpand(true)
             ->addCssClass('html-ref-tables');
-      $accordions->append(new Pane($this->data->getName(), new TagGroupTable($this->data)));
-
+    $accordions->append(new Pane($this->data->getName(), new TagGroupTable($this->data)));
     return $accordions->getHtml();
   }
 
