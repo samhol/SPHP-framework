@@ -1,4 +1,4 @@
-#INTRODUCTION
+# INTRODUCTION
 
 SPHP framework is an open source framework for developing interactive web applications
 and services in object oriented PHP. 
