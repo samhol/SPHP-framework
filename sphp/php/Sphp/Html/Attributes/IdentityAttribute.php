@@ -35,7 +35,7 @@ class IdentityAttribute extends AbstractAttribute {
    * @param string $name the name of the attribute
    */
   public function __construct(string $name, $value = null) {
-    parent::__construct($name, new AttributeValueValidator());
+    parent::__construct($name);
     if ($value !== null) {
       $this->set($value);
     }

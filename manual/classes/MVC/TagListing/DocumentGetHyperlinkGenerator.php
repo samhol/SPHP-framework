@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Manual\MVC\TagListing;
-
+use Sphp\Html\TagInterface;
 /**
  * Description of DocumentGetHyperlink
  *
@@ -19,19 +19,19 @@ class DocumentGetHyperlinkGenerator {
 
   /**
    *
-   * @var TagComponentData
+   * @var TagInterface
    */
   private $data;
 
-  public function __construct(TagComponentData $data) {
-    $this->data = $data;
+  public function __construct(TagInterface $tag) {
+    $this->data = $tag;
   }
 
   public function getCall(): string {
-    Apis::w3schools()->tag($this->data->getTagName(), $linkText);
+    Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
   }
 
-  public function getW3schoolsLink(): string {
+  public function getW3schoolsLink(TagInterface $tag): string {
     Apis::w3schools()->tag($this->data->getTagName(), $linkText);
   }
 

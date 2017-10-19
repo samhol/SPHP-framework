@@ -299,7 +299,10 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is empty and false otherwise
    */
-  public function isEmpty(string $name): bool {
+  public function isEmpty(string $name = null): bool {
+    if($name === null) {
+      return empty($this->attrs);
+    }
     return $this->exists($name) && ($this->getValue($name) === true || $this->getValue($name) === "");
   }
 

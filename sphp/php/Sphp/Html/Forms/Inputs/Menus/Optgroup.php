@@ -20,7 +20,7 @@ namespace Sphp\Html\Forms\Inputs\Menus;
  * This will allow authors to represent a richer hierarchy of choices.
  *
  * Because of the above nesting of optgroup elements is supported but not
- * recomended.
+ * recommended.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_optgroup.asp w3schools HTML API
@@ -42,15 +42,17 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
    * @param string $label specifies a label for an option-group
    * @param SelectMenuContentInterface|mixed[] $opt the content
    */
-  public function __construct($label = '', $opt = null) {
+  public function __construct(string $label = null, $opt = null) {
     parent::__construct('optgroup', $opt);
-    $this->setLabel($label);
+    if ($label !== null) {
+      $this->setLabel($label);
+    }
   }
 
   /**
-   * Returns the value of thelabel attribute
+   * Returns the value of the label attribute
    *
-   * @return string the value of thelabel attribute
+   * @return string the value of the label attribute
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
   public function getLabel() {
@@ -58,13 +60,13 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
   }
 
   /**
-   * Sets the value of thelabel attribute
+   * Sets the value of the label attribute
    *
-   * @param  string $label the value of thelabel attribute
+   * @param  string $label the value of the label attribute
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_optgroup_label.asp label attribute
    */
-  public function setLabel($label) {
+  public function setLabel(string $label) {
     $this->attrs()->set('label', $label);
     return $this;
   }
@@ -72,14 +74,14 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
   /**
    * Disables the input component
    * 
-   * A disabled input component is unusable and un-clickable. 
+   * A disabled input component is unusable and not clickable. 
    * Disabled input components in a form will not be submitted.
    *
    * @param  boolean $disabled true if the component is disabled, otherwise false
    * @return InputInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
    */
-  public function disable($disabled = true) {
+  public function disable(bool $disabled = true) {
     $this->attrs()->set('disabled', (bool) $disabled);
     return $this;
   }
@@ -90,7 +92,7 @@ class Optgroup extends AbstractOptionsContainer implements SelectMenuContentInte
    * @param  boolean true if the option is enabled, otherwise false
    * @link   http://www.w3schools.com/tags/att_optgroup_disabled.asp disabled attribute
    */
-  public function isEnabled() {
+  public function isEnabled(): bool {
     return !$this->attrs()->exists('disabled');
   }
 

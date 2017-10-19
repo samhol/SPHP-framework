@@ -23,9 +23,11 @@ class Polygon extends AbstractArea {
    * @param string|null $href
    * @param string|null $alt
    */
-  public function __construct(array $coords = [], string $href = null, string $alt = null) {
+  public function __construct(array $coords = null, string $href = null, string $alt = null) {
     parent::__construct('poly', $href, $alt);
-    $this->setCoordinates($coords);
+    if ($coords !== null) {
+      $this->setCoordinates($coords);
+    }
   }
 
   /**
@@ -36,26 +38,25 @@ class Polygon extends AbstractArea {
    * @return $this for a fluent interface
    */
   public function appendEdge(int $x, int $y) {
-    $coords = split(',', $this->getCoordinates());
-    $coords[0] = $x;
-    $coords[1] = $y;
-    $coordsString = implode(',', $coords);
-    $this->attrs()->set('coords', $coordsString);
+    $coords = $this->getCoordinates();
+    $coords .= ",$x";
+    $coords .= ",$y";
+    $this->attrs()->set('coords', $coords);
     return $this;
   }
 
   /**
    * Sets the coordinates of the polygon
    * 
-   * @param int[] $coords coordinates as an array
+   * @param  int... $coords coordinates as an array
    * @return $this for a fluent interface
    */
-  public function setCoordinates(array $coords) {
-    $count = count($coords);
+  public function setCoordinates(int... $coord) {
+    $count = count($coord);
     if ($count % 2 !== 0) {
       throw new \Sphp\Exceptions\InvalidArgumentException("The sum of coordinates must divisible by 2");
     }
-    $coordsString = implode(',', $coords);
+    $coordsString = implode(',', $coord);
     $this->attrs()->set('coords', $coordsString);
     return $this;
   }

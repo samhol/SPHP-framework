@@ -8,6 +8,8 @@
 namespace Sphp\Manual\MVC\TagListing;
 
 use Sphp\Html\Document;
+use Sphp\Html\TagInterface;
+use Sphp\Html\Apps\Manual\Apis;
 
 /**
  * Description of TagComponentDataParser
@@ -54,7 +56,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   }
 
   public function getDocumentCall() {
-    return "Document::create('".$this->call."')";
+    return "Document::create('" . $this->call . "')";
   }
 
   public function getComponent(): \Sphp\Html\TagInterface {
@@ -77,6 +79,22 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
     $arr = [];
     $arr['tag'] = $this->component->getTagName();
     return $arr;
+  }
+
+  public function getCallLink(): string {
+    return Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
+  }
+
+  private function tagString(): string {
+    $attrs = '' . $this->component->attrs();
+    if ($attrs != '') {
+      $attrs = ' ' . $attrs;
+    }
+    return '&lt;' . $this->component->getTagName() . $attrs . '&gt;';
+  }
+
+  public function getW3schoolsLink(): string {
+    return Apis::w3schools()->tag($this->component->getTagName(), $this->tagString(), $this->description);
   }
 
 }

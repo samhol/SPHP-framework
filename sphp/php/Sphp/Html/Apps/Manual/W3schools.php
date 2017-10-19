@@ -35,7 +35,7 @@ class W3schools extends AbstractLinker {
    * @param  string $linkText optional content of the link
    * @return Hyperlink hyperlink object pointing to the w3schools documentation of the given HTML5 tag
    */
-  public function tag(string $tagname, string $linkText = null): Hyperlink {
+  public function tag(string $tagname, string $linkText = null, string $title = null): Hyperlink {
     if (preg_match('/^([h][1-6])$/', $tagname)) {
       $link = 'tags/tag_hn.asp';
     } else {
@@ -48,7 +48,10 @@ class W3schools extends AbstractLinker {
         $linkText = "&lt;$tagname&gt;";
       }
     }
-    return $this->hyperlink($this->urls()->create($link), $linkText, "Link to w3schools.com $tagname documentation");
+    if ($title === null) {
+      $title = "Link to w3schools.com $tagname documentation";
+    }
+    return $this->hyperlink($this->urls()->create($link), $linkText, $title);
   }
 
   /**

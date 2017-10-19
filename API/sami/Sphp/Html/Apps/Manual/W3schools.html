@@ -231,7 +231,7 @@
                     <a href="../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_tag">tag</a>(string $tagname, string $linkText = null)
+                    <a href="#method_tag">tag</a>(string $tagname, string $linkText = null, string $title = null)
         
                                             <p>Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag</p>                </div>
                 <div class="col-md-2"></div>
@@ -243,7 +243,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_attr">attr</a>(string $attrName, string $linkText = null)
         
-                                            <p>Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag</p>                </div>
+                                            <p>Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -698,7 +698,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_tag">
         <div class="location">at         line 38</div>
         <code>                    <a href="../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
-    <strong>tag</strong>(string $tagname, string $linkText = null)
+    <strong>tag</strong>(string $tagname, string $linkText = null, string $title = null)
         </code>
     </h3>
     <div class="details">
@@ -714,12 +714,17 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <tr>
                 <td>string</td>
                 <td>$tagname</td>
-                <td>the HTML5 tag name</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$linkText</td>
-                <td>optional content of the link</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$title</td>
+                <td></td>
             </tr>
             </table>
 
@@ -741,7 +746,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_attr">
-        <div class="location">at         line 61</div>
+        <div class="location">at         line 64</div>
         <code>                    <a href="../../../../Sphp/Html/Navigation/Hyperlink.html"><abbr title="Sphp\Html\Navigation\Hyperlink">Hyperlink</abbr></a>
     <strong>attr</strong>(string $attrName, string $linkText = null)
         </code>
@@ -751,7 +756,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag</p>                                                </div>
+                                    <p>Returns a hyperlink object pointing to the w3schools documentation of the given HTML5 tag attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

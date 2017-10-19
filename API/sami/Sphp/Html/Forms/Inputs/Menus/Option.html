@@ -283,7 +283,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $value = null, $content = null, boolean $selected = false)
+                    <a href="#method___construct">__construct</a>(scalar|null $value = null, $content = null, bool $selected = false)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -394,7 +394,7 @@
                     <abbr title="Sphp\Html\Forms\Inputs\Menus\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setSelected">setSelected</a>(boolean $selected = true)
+                    <a href="#method_setSelected">setSelected</a>(bool $selected = true)
         
                                             <p>Sets the option as selected or not</p>                </div>
                 <div class="col-md-2"></div>
@@ -414,7 +414,7 @@
                     <abbr title="Sphp\Html\Forms\Inputs\Menus\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setEnabled">setEnabled</a>(boolean $enabled = true)
+                    <a href="#method_setEnabled">setEnabled</a>(bool $enabled = true)
         
                                             <p>Disables or enables the option object</p>                </div>
                 <div class="col-md-2"></div>
@@ -1097,7 +1097,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 31</div>
         <code>                    
-    <strong>__construct</strong>(string $value = null, $content = null, boolean $selected = false)
+    <strong>__construct</strong>(scalar|null $value = null, $content = null, bool $selected = false)
         </code>
     </h3>
     <div class="details">
@@ -1111,7 +1111,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>scalar|null</td>
                 <td>$value</td>
                 <td>value attribute</td>
             </tr>
@@ -1121,7 +1121,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$selected</td>
                 <td>whether option is selected or not</td>
             </tr>
@@ -1358,7 +1358,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 43</div>
+        <div class="location">at         line 45</div>
         <code>                    string
     <strong>getValue</strong>()
         </code>
@@ -1388,7 +1388,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 56</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\Menus\$this">$this</abbr>
     <strong>setValue</strong>(string $value)
         </code>
@@ -1428,9 +1428,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setSelected">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 68</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\Menus\$this">$this</abbr>
-    <strong>setSelected</strong>(boolean $selected = true)
+    <strong>setSelected</strong>(bool $selected = true)
         </code>
     </h3>
     <div class="details">
@@ -1444,7 +1444,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$selected</td>
                 <td>true if the option is selected, otherwise false</td>
             </tr>
@@ -1468,7 +1468,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isSelected">
-        <div class="location">at         line 76</div>
+        <div class="location">at         line 78</div>
         <code>                    boolean
     <strong>isSelected</strong>()
         </code>
@@ -1498,9 +1498,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setEnabled">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 89</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\Menus\$this">$this</abbr>
-    <strong>setEnabled</strong>(boolean $enabled = true)
+    <strong>setEnabled</strong>(bool $enabled = true)
         </code>
     </h3>
     <div class="details">
@@ -1514,7 +1514,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
+                <td>bool</td>
                 <td>$enabled</td>
                 <td>true if the option is enabled, otherwise false</td>
             </tr>
@@ -1538,7 +1538,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isEnabled">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 99</div>
         <code>                    
     <strong>isEnabled</strong>()
         </code>

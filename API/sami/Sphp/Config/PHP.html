@@ -86,7 +86,7 @@
     
 
             <div class="description">
-            <p>Description of PHP</p>                                </div>
+            <p>Utility class for PHP configuration</p>                                </div>
     
     
     
@@ -101,8 +101,27 @@
                 <div class="col-md-8 type">
                     <a href="#method_config">config</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the PHP configuration instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ini">ini</a>(string $name)
+        
+                                            <p>Returns a named PHP INI configuration instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_storeIni">storeIni</a>(string $name, <a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a> $ini)
+        
+                                            <p>Sets a named PHP INI configuration instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -143,7 +162,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_config">
-        <div class="location">at         line 28</div>
+        <div class="location">at         line 34</div>
         <code>        static            <a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a>
     <strong>config</strong>()
         </code>
@@ -152,6 +171,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>Returns the PHP configuration instance</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -159,7 +180,92 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../Sphp/Config/PHPConfig.html"><abbr title="Sphp\Config\PHPConfig">PHPConfig</abbr></a></td>
-            <td></td>
+            <td>singleton PHP configuration instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ini">
+        <div class="location">at         line 47</div>
+        <code>        static            <a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a>
+    <strong>ini</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a named PHP INI configuration instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the instance</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a></td>
+            <td>the instance (created if not present)</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_storeIni">
+        <div class="location">at         line 60</div>
+        <code>        static            <a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a>
+    <strong>storeIni</strong>(string $name, <a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a> $ini)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets a named PHP INI configuration instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a></td>
+                <td>$ini</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Sphp/Config/Ini.html"><abbr title="Sphp\Config\Ini">Ini</abbr></a></td>
+            <td>the PHP INI configuration instance stored</td>
         </tr>
     </table>
 
@@ -171,7 +277,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_is32bit">
-        <div class="location">at         line 40</div>
+        <div class="location">at         line 70</div>
         <code>        static            bool
     <strong>is32bit</strong>()
         </code>
@@ -201,7 +307,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_is64bit">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 79</div>
         <code>        static            bool
     <strong>is64bit</strong>()
         </code>
@@ -231,7 +337,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getBitVersion">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 88</div>
         <code>        static            int
     <strong>getBitVersion</strong>()
         </code>

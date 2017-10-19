@@ -7,8 +7,6 @@
 
 namespace Sphp\Manual\MVC\TagListing;
 
-use Sphp\Html\Document;
-use Sphp\Html\Adapters\QtipAdapter;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Tables\Table;
 
@@ -22,13 +20,16 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
   use \Sphp\Html\ContentTrait;
 
   /**
-   *
    * @var Groups
    */
   private $data;
 
   public function __construct(Group $data) {
     $this->data = $data;
+  }
+
+  public function __destruct() {
+    unset($this->data);
   }
 
   function generateTagTable(): Table {
@@ -39,10 +40,10 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
     $body = $table->tbody();
     foreach ($this->data as $info) {
       $c = [];
-      $linkText = "&lt;" . $info->getTagName() . "&gt;";
-      $c[] = Apis::w3schools()->tag($info->getTagName(), $linkText);
-      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall(), "returns " . $info->getObjectType());
-      $c[] = $info->getDescription();
+      //$linkText = "&lt;" . $info->getTagName() . "&gt;";
+      $c[] = $info->getW3schoolsLink();
+      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
+      //$c[] = $info->getDescription();
       $body->appendBodyRow($c);
     }
     return $table;

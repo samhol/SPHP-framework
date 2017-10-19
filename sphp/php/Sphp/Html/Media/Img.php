@@ -44,8 +44,8 @@ class Img extends EmptyTag implements ImgInterface {
   /**
    * Constructs a new instance
    *
-   * @param  string $src src attribute
-   * @param  string $alt alt attribute
+   * @param  string $src specifies the URL of an image
+   * @param  string $alt specifies an alternate text for an image
    * @link   http://www.w3schools.com/tags/att_img_src.asp src attribute
    * @link   http://www.w3schools.com/tags/att_img_type.asp type attribute
    */
@@ -57,6 +57,7 @@ class Img extends EmptyTag implements ImgInterface {
   }
 
   /**
+   * Sets the image map used
    * 
    * @param  string|Map $map the image map name or instance
    * @return $this for a fluent interface
@@ -101,7 +102,7 @@ class Img extends EmptyTag implements ImgInterface {
    *
    * **Notes:** The alt attribute specifies an alternate text for an image.
    *
-   * @return string the value of the alt attribute
+   * @return string the alternate text for the image
    * @link  http://www.w3schools.com/tags/att_img_alt.asp alt attribute
    */
   public function getAlt(): string {

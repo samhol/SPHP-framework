@@ -291,7 +291,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(array $coords = [], string $href = null, string $alt = null)
+                    <a href="#method___construct">__construct</a>(array $coords = null, string $href = null, string $alt = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -393,7 +393,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getCoordinates">getCoordinates</a>()
         
-                                            <p>Returnsthe coordinates of the area</p>                </div>
+                                            <p>Returns the coordinates of the area</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Media/ImageMap/AbstractArea.html#method_getCoordinates"><abbr title="Sphp\Html\Media\ImageMap\AbstractArea">AbstractArea</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -451,7 +451,7 @@
                     <abbr title="Sphp\Html\Media\ImageMap\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setCoordinates">setCoordinates</a>(array $coords)
+                    <a href="#method_setCoordinates">setCoordinates</a>(int $coord)
         
                                             <p>Sets the coordinates of the polygon</p>                </div>
                 <div class="col-md-2"></div>
@@ -1124,7 +1124,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 26</div>
         <code>                    
-    <strong>__construct</strong>(array $coords = [], string $href = null, string $alt = null)
+    <strong>__construct</strong>(array $coords = null, string $href = null, string $alt = null)
         </code>
     </h3>
     <div class="details">
@@ -1486,7 +1486,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returnsthe coordinates of the area</p>                                                </div>
+                                    <p>Returns the coordinates of the area</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1662,7 +1662,7 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendEdge">
-        <div class="location">at         line 38</div>
+        <div class="location">at         line 40</div>
         <code>                    <abbr title="Sphp\Html\Media\ImageMap\$this">$this</abbr>
     <strong>appendEdge</strong>(int $x, int $y)
         </code>
@@ -1707,9 +1707,9 @@ reader).</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCoordinates">
-        <div class="location">at         line 53</div>
+        <div class="location">at         line 54</div>
         <code>                    <abbr title="Sphp\Html\Media\ImageMap\$this">$this</abbr>
-    <strong>setCoordinates</strong>(array $coords)
+    <strong>setCoordinates</strong>(int $coord)
         </code>
     </h3>
     <div class="details">
@@ -1723,9 +1723,9 @@ reader).</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$coords</td>
-                <td>coordinates as an array</td>
+                <td>int</td>
+                <td>$coord</td>
+                <td></td>
             </tr>
             </table>
 

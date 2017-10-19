@@ -27,12 +27,11 @@ class EmptyTag extends AbstractTag {
     parent::__construct($tagName);
   }
 
-  public function getHtml(): string {
-    $attrs = '' . $this->attrs();
-    if ($attrs !== '') {
-      $attrs = ' ' . $attrs;
+  public function getHtml(): string { 
+    $output = '<' . $this->getTagName();
+    if (!$this->attrs()->isEmpty()) {
+      $output .= ' ' . $this->attrs();
     }
-    $output = '<' . $this->getTagName() . $attrs;
     if (Document::isXHTML()) {
       $output .= ' />';
     } else {

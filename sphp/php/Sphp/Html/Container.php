@@ -75,7 +75,6 @@ class Container implements IteratorAggregate, ContainerInterface, ContentParserI
   }
 
   public function prepend($content) {
-    
     array_unshift($this->components, $content);
     return $this;
   }
