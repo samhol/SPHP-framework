@@ -44,7 +44,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * 
    * @return int
    */
-  public function getMaxSize():int {
+  public function getMaxSize(): int {
     return $this->maxSize;
   }
 
@@ -81,7 +81,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
         } else if ($parts[1] === 'pull') {
           $this->pull($parts[2], $parts[0]);
         }
-      } 
+      }
     }
     return $this;
   }
@@ -384,7 +384,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    */
   public function centerize(string $screenSize) {
     $this->cssClasses()
@@ -398,7 +398,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    */
   public function uncenterize(string $screenSize) {
     $this->cssClasses()
@@ -412,7 +412,7 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    */
   public function unsetCenterizing(string $screenSize) {
     $classes[] = "$screenSize-uncentered";

@@ -121,7 +121,7 @@ class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAcc
    * * Replaces old not locked property values with the new ones
    *
    * @param  string[] $props new property name value pairs
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
@@ -239,7 +239,7 @@ class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAcc
    * * Replaces old not locked property values with the new ones
    *
    * @param  array $props properties as `name => value` pairs
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
@@ -254,7 +254,7 @@ class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAcc
    * Locks either all or the given properties
    *
    * @param  null|string|string[] $props optional property/properties to lock
-   * @return self for PHP Method Chaining
+   * @return $this for PHP Method Chaining
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already immutable
    */
