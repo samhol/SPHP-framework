@@ -36,7 +36,7 @@ abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInt
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function __construct($type, $name = null, $value = null) {
+  public function __construct(string $type, string $name = null, $value = null) {
     parent::__construct('input');
     $this->attrs()->lock('type', $type);
     if ($name !== null) {

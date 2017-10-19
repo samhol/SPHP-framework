@@ -29,7 +29,7 @@ class Radiobox extends Choicebox {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($name = '', $value = '', bool $checked = false) {
+  public function __construct(string $name = null, $value = null, bool $checked = false) {
     parent::__construct('radio', $name, $value, $checked);
   }
 
