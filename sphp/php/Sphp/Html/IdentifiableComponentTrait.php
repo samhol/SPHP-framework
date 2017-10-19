@@ -98,22 +98,6 @@ trait IdentifiableComponentTrait {
     return $this->cssClasses()->contains(func_get_args());
   }
 
-  /**
-   * Sets multiple attribute name value pairs
-   *
-   * For each `$attr => $value` pairs the method calls the {@link self::setAttr()} method
-   *
-   * @param  mixed[] $attrs an array of attribute name value pairs
-   * @return $this for a fluent interface
-   * @throws InvalidAttributeException if any of the attributes is invalid
-   * @throws UnmodifiableAttributeException if the value of the attribute is already locked
-   */
-  public function setAttrs(array $attrs = []) {
-    foreach ($attrs as $name => $value) {
-      $this->attrs()->set($name, $value);
-    }
-    return $this;
-  }
 
   /**
    * Sets an attribute name value pair
@@ -131,11 +115,11 @@ trait IdentifiableComponentTrait {
    * 4. boolean `false`: attribute is removed if present
    * 5. otherwise the attribute value the string conversion value
    *
-   * @param    string $name the name of the attribute
-   * @param    mixed $value the value of the attribute
-   * @return   self for PHP Method Chaining
-   * @throws   InvalidAttributeException if the attribute name or value is invalid
-   * @throws   UnmodifiableAttributeException if the attribute value is unmodifiable
+   * @param  string $name the name of the attribute
+   * @param  mixed $value the value of the attribute
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException if the attribute name or value is invalid
+   * @throws UnmodifiableAttributeException if the attribute value is unmodifiable
    */
   public function setAttr(string $name, $value = null) {
     $this->attrs()->set($name, $value);
