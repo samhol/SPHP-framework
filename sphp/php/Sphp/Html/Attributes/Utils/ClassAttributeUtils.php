@@ -1,20 +1,20 @@
 <?php
 
 /**
- * ClassAttributeFilter.php (UTF-8)
+ * ClassAttributeUtils.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Attributes\Utils;
 
 /**
- * Description of ClassAttributeFilter
+ * Utility class to handle values of class attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttributeFilter extends MultiValueAttributeFilter {
+class ClassAttributeUtils extends MultiValueAttributeUtils {
 
   public function isValidAtomicValue($value): bool {
     if (!is_string($value)) {

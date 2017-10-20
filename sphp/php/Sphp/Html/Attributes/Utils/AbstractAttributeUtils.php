@@ -16,6 +16,10 @@ namespace Sphp\Html\Attributes\Utils;
  */
 abstract class AbstractAttributeUtils {
 
+  /**
+   *
+   * @var AbstractAttributeUtils 
+   */
   private static $instance = [];
 
   /**

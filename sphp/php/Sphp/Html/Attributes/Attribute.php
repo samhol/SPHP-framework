@@ -32,7 +32,7 @@ class Attribute extends AbstractAttribute {
   private $locked = false;
 
   /**
-   * @var AttributeDataParser 
+   * @var callable 
    */
   private $valueFilter;
 
@@ -43,19 +43,23 @@ class Attribute extends AbstractAttribute {
    * @param  mixed $value 
    * @throws InvalidAttributeException if the attribute value is invalid for the type of the attribute
    */
-  public function __construct(string $name, $value = null, AttributeValueValidatorInterface $parser = null) {
-    if ($parser === null) {
-      $parser = new AttributeValueValidator();
+  public function __construct(string $name, $value = null, callable $validator = null) {
+    if ($validator === null) {
+      $validator = AttributeValueValidator::instance();
     }
-    $this->valueFilter = $parser;
+    $this->valueFilter = $validator;
     parent::__construct($name);
     if ($value !== null) {
       $this->set($value);
     }
   }
 
-  public function getValueFilter(): AttributeValueValidator {
+  public function getValueValidator(): callable {
     return $this->valueFilter;
+  }
+
+  public function isValidValue($value): bool {
+    return $this->getValueValidator()($value);
   }
 
   public function clear() {
@@ -84,7 +88,7 @@ class Attribute extends AbstractAttribute {
     if ($this->isLocked()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    if (!$this->getValueFilter()->isValid($value)) {
+    if (!$this->isValidValue($value)) {
       throw new InvalidAttributeException("Invalid value for Attribute '{$this->getName()}' Attribute");
     }
     $this->value = $value;

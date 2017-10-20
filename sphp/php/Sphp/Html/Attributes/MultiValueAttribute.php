@@ -10,7 +10,7 @@ namespace Sphp\Html\Attributes;
 use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Utils\MultiValueAttributeFilter;
+use Sphp\Html\Attributes\Utils\MultiValueAttributeUtils;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -38,12 +38,12 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   private $locked = [];
 
   /**
-   * @var MultiValueAttributeFilter
+   * @var MultiValueAttributeUtils
    */
   private $filter;
 
-  public function __construct(string $name) {
-    $this->filter = MultiValueAttributeFilter::instance();
+  public function __construct(string $name, $value = null) {
+    $this->filter = MultiValueAttributeUtils::instance();
     parent::__construct($name);
   }
 
@@ -60,9 +60,9 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
 
   /**
    * 
-   * @return MultiValueAttributeFilter
+   * @return MultiValueAttributeUtils
    */
-  public function getValueFilter(): MultiValueAttributeFilter {
+  public function getValueFilter(): MultiValueAttributeUtils {
     return $this->filter;
   }
 

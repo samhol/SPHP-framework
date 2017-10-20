@@ -11,7 +11,7 @@ use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
-use Sphp\Html\Attributes\Utils\ClassAttributeFilter;
+use Sphp\Html\Attributes\Utils\ClassAttributeUtils;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
@@ -32,13 +32,13 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
   private $values = [];
 
   /**
-   * @var ClassAttributeFilter
+   * @var ClassAttributeUtils
    */
   private $filter;
 
-  public function __construct(string $name, $value = null, ClassAttributeFilter $filter = null) {
+  public function __construct(string $name, $value = null, ClassAttributeUtils $filter = null) {
     if ($filter === null) {
-      $filter = ClassAttributeFilter::instance();
+      $filter = ClassAttributeUtils::instance();
     }
     parent::__construct($name);
     $this->filter = $filter;
@@ -67,7 +67,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    * 2. An array can be be multidimensional
    * 3. Duplicate values are ignored
    *
-   * @param  scalar|scalar[] $values the values to set
+   * @param  string|string[] $values the values to set
    * @return $this for a fluent interface
    */
   public function set($values) {
@@ -81,11 +81,11 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value
-   * 2. An array can be be multidimensional
+   * 1. A string parameter can contain a single atomic value (a class)
+   * 2. An array can be be multidimensional array of atomic string values
    * 3. Duplicate values are ignored
    *
-   * @param  string|scalar[] $values the values to add
+   * @param  string|string[] $values the values to add
    * @return $this for a fluent interface
    */
   public function add(...$values) {
@@ -131,8 +131,8 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    *
    * **Important:** Parameter <var>$values</var> restrictions and rules
    * 
-   * 1. A string parameter can contain a single atomic value
-   * 2. An array can be be multidimensional
+   * 1. A string parameter can contain a single atomic value (a class)
+   * 2. An array can be be multidimensional array of atomic string values
    * 3. Duplicate values are ignored
    *
    * @param  scalar|scalar[] $values the atomic values to lock

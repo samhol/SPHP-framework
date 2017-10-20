@@ -16,7 +16,6 @@ namespace Sphp\Html\Media\ImageMap;
  */
 class Circle extends AbstractArea {
 
-
   /**
    * Constructs a new instance
    * 

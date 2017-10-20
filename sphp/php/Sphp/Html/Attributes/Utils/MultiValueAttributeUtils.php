@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MultiValueAttributeFilter.php (UTF-8)
+ * MultiValueAttributeUtils.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttributeFilter extends AbstractAttributeUtils {
+class MultiValueAttributeUtils extends AbstractAttributeUtils {
 
   /**
    * Returns an array of unique values parsed from the input
@@ -33,7 +33,7 @@ class MultiValueAttributeFilter extends AbstractAttributeUtils {
    * @param  mixed $raw the value(s) to parse
    * @param  bool $validate
    * @return string[] separated atomic values in an array
-   * @throws InvalidAttributeException
+   * @throws InvalidAttributeException if validation is set and the input is not valid
    */
   public function filter($raw, bool $validate = false): array {
     $parsed = [];
@@ -43,8 +43,8 @@ class MultiValueAttributeFilter extends AbstractAttributeUtils {
       $parsed = $raw->toArray();
     } else if (Strings::hasStringRepresentation($raw)) {
       $parsed = [Strings::toString($raw)];
-    } else {
-      throw new InvalidAttributeException("Atomic value cannot be converted to string");
+    } else if ($validate) {
+      throw new InvalidAttributeException("Invalid datatype for the attribute");
     }
     if ($validate) {
       foreach ($parsed as $value) {
@@ -63,10 +63,7 @@ class MultiValueAttributeFilter extends AbstractAttributeUtils {
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
-    if (!is_scalar($value)) {
-      return false;
-    }
-    return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
+    return !is_scalar($value);
   }
 
 }

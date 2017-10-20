@@ -15,6 +15,14 @@ namespace Sphp\Html\Attributes\Utils;
  * @filesource
  */
 interface AttributeValueValidatorInterface {
+
+  /**
+   * Checks whether the attribute value is valid
+   * 
+   * @param  mixed $value
+   * @return boolean (the attribute value is valid)
+   */
+  public function __invoke($value): bool;
   
-  public function isValid($value): bool;
+  
 }
