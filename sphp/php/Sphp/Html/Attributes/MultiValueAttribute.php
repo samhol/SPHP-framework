@@ -42,8 +42,8 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   private $filter;
 
-  public function __construct(string $name, $value = null) {
-    $this->filter = MultiValueAttributeUtils::instance();
+  public function __construct(string $name, MultiValueAttributeUtils $u) {
+    $this->filter = $u;
     parent::__construct($name);
   }
 

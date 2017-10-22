@@ -30,7 +30,7 @@ class Video extends AbstractMultimediaTag implements SizeableInterface, LazyMedi
    */
   public function __construct($sources = null) {
     parent::__construct('video', null, $sources);
-    $this->showControls(true);
+    //$this->showControls(true);
   }
 
   public function isLazy(): bool {

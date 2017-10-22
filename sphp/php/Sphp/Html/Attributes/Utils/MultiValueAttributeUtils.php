@@ -63,7 +63,7 @@ class MultiValueAttributeUtils extends AbstractAttributeUtils {
    * @return bool true if the value is valid atomic value
    */
   public function isValidAtomicValue($value): bool {
-    return !is_scalar($value);
+    return is_scalar($value);
   }
 
 }

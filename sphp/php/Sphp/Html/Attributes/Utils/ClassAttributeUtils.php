@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Attributes\Utils;
 
+use Sphp\Stdlib\Strings;
+
 /**
  * Utility class to handle values of class attribute
  *
@@ -21,6 +23,10 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
       return false;
     }
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
+  }
+
+  public function __invoke($value): bool {
+    return Strings::hasStringRepresentation($value);
   }
 
 }

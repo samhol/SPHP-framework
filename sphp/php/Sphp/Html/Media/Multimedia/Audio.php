@@ -24,7 +24,7 @@ class Audio extends AbstractMultimediaTag {
    */
   public function __construct($sources = null) {
     parent::__construct('audio', null, $sources);
-    $this->showControls(true);
+    //$this->showControls(true);
   }
 
   /**

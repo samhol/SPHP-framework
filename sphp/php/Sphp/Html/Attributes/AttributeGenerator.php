@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes\Utils;
+namespace Sphp\Html\Attributes;
 
 use Zend\Di\Di;
 
@@ -16,7 +16,7 @@ use Zend\Di\Di;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UtilityStrategy {
+class AttributeGenerator {
 
   /**
    * @var AttributeValueValidatorInterface 
@@ -39,7 +39,7 @@ class UtilityStrategy {
     //$di->setInstanceManager($instanceManager);
     $this->di->instanceManager()->addAlias('class', ClassAttributeUtils::class);
     $this->di->instanceManager()->addAlias('style', PropertyAttributeUtils::class);
-   // \Zend\Di\Display\Console::export($this->di);
+    // \Zend\Di\Display\Console::export($this->di);
   }
 
   public function setUtilityFor($name) {
@@ -54,6 +54,24 @@ class UtilityStrategy {
    */
   public function getUtilityFor(string $name) {
     return $this->di->get($name);
+  }
+
+  public function forceAttributeType(string $name, string $type) {
+    $this->di->instanceManager()->addAlias($name, $type);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @param  string $type
+   * @return AttributeInterface
+   */
+  public function createAttribute(string $name, string $type = Attribute::class): AttributeInterface {
+    if ($this->di->has($name)) {
+      return $this->di->newInstance($name);
+    }
+    return $this->di->newInstance($type, ['name' => $name]);
   }
 
 }
