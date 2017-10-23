@@ -18,16 +18,7 @@ namespace Sphp\Html;
  */
 class EmptyTag extends AbstractTag {
 
-  /**
-   * Constructs a new instance
-   *
-   * @param  string $tagName the name of the tag
-   */
-  function __construct(string $tagName) {
-    parent::__construct($tagName);
-  }
-
-  public function getHtml(): string { 
+  public function getHtml(): string {
     $output = '<' . $this->getTagName();
     if (!$this->attrs()->isEmpty()) {
       $output .= ' ' . $this->attrs();
