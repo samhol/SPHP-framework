@@ -21,5 +21,8 @@ class AttributeValueValidator extends AbstractAttributeUtils implements Attribut
   public function __invoke($value): bool {
     return Strings::hasStringRepresentation($value);
   }
+  public function isValidValue($value): bool {
+    return Strings::hasStringRepresentation($value);
+  }
 
 }

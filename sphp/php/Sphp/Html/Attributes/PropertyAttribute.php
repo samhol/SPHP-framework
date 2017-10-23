@@ -56,7 +56,7 @@ class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAcc
    * @param string $parser
    * @param string $form
    */
-  public function __construct(string $name, StyleAttributeFilter $parser = null, string $form = '%s:%s;') {
+  public function __construct(string $name, PropertyAttributeUtils $parser = null, string $form = '%s:%s;') {
     if ($parser === null) {
       $parser = PropertyAttributeUtils::instance();
     }

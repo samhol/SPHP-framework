@@ -41,6 +41,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @var string 
    */
   private $defaultType;
+  private static $c = 0;
 
   /**
    * Constructs a new instance
@@ -52,7 +53,8 @@ class AbstractAttributeManager implements Countable, Iterator {
     $this->defaultType = $defaultType;
     foreach ($objectMap as $name => $type) {
       $this->mapObject($name, $type);
-    }
+    }self::$c++;
+    //var_dump(self::$c);
   }
 
   /**
@@ -173,7 +175,7 @@ class AbstractAttributeManager implements Countable, Iterator {
       $obj = $this->attrs[$name];
     } else {
       $type = $this->getActualType($name);
-      $obj = new $type($name);
+      $obj = AttributeGenerator::instance()->createAttribute($name, $type);
       $this->attrs[$name] = $obj;
     }
     return $this->attrs[$name];

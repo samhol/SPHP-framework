@@ -36,15 +36,12 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
    */
   private $filter;
 
-  public function __construct(string $name, $value = null, ClassAttributeUtils $filter = null) {
+  public function __construct(string $name, ClassAttributeUtils $filter = null) {
     if ($filter === null) {
       $filter = ClassAttributeUtils::instance();
     }
     parent::__construct($name);
     $this->filter = $filter;
-    if ($value !== null) {
-      $this->set($value);
-    }
   }
 
   /**

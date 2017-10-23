@@ -17,6 +17,12 @@ use Zend\Di\Di;
  * @filesource
  */
 class AttributeGenerator {
+  /**
+   * attribute object type map as a (attribute name -> attribute object type) map
+   *
+   * @var string[]
+   */
+  //private $map = [];
 
   /**
    * @var AttributeGenerator
@@ -24,45 +30,28 @@ class AttributeGenerator {
   private static $instance;
 
   /**
-   * @var AttributeValueValidatorInterface 
+   *
+   * @var Di 
    */
-  private $default;
+  //private static $injector;
+
+  /**
+   * @var string 
+   */
+  //private $defaultType;
 
   /**
    * @var Di
    */
   private $di;
 
+  //private static $c = 0;
+
   /**
-   * 
-   * @param AttributeValueValidatorInterface $validator
+   * Constructs a new instance
    */
-  public function __construct(AttributeValueValidatorInterface $validator = null) {
-    $this->default = $validator;
+  public function __construct() {
     $this->di = new Di();
-    $this->di->instanceManager()->addAlias('class-attribute', ClassAttribute::class, ['name' => 'class']);
-    // $di->newInstance(\Sphp\Html\Attributes\Attribute::class);
-    //$di->setInstanceManager($instanceManager);
-    // \Zend\Di\Display\Console::export($this->di);
-  }
-
-  public function setUtilityFor($name) {
-    // return $di->($name);
-    // $this->di->
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return AttributeValueValidatorInterface
-   */
-  public function getUtilityFor(string $name) {
-    return $this->di->get($name);
-  }
-
-  public function forceAttributeType(string $name, string $type) {
-    $this->di->instanceManager()->addAlias($name, $type);
-    return $this;
   }
 
   /**
@@ -70,8 +59,8 @@ class AttributeGenerator {
    * @param  string $name
    * @return ClassAttribute
    */
-  public function getClassAttribute(): ClassAttribute {
-    return  $this->di->newInstance('class-attribute');
+  public function getClassAttribute(string $name = 'class'): ClassAttribute {
+    return $this->createAttribute($name, ClassAttribute::class);
   }
 
   /**
@@ -89,7 +78,7 @@ class AttributeGenerator {
    * @param  string $type
    * @return AttributeInterface
    */
-  public function createAttribute(string $name, string $type = Attribute::class): AttributeInterface {
+  public function createAttribute(string $name, string $type): AttributeInterface {
     return $this->di->newInstance($type, ['name' => $name]);
   }
 
