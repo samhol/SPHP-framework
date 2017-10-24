@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 echo "<pre>";
 echo "multi:\n------\n";
 $multi = new MultiValueAttribute('title');
-$multi->set(1, 'a', 2, 3);
+$multi->set(1, 'a', 2, 3, new \stdClass());
 $multi->add('foo');
 $multi->add('" bar="');
 var_dump($multi->isDemanded());

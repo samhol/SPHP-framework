@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MultiValueAttribute.php (UTF-8)
+ * AtomicMultiValueAttribute.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, Iterator, Arrayable {
+class AtomicMultiValueAttribute extends AbstractAttribute implements Countable, Iterator, Arrayable {
 
   /**
    * stored individual values
@@ -47,11 +47,11 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param MultiValueAttributeUtils $u
+   * @param AtomicMultiValueAttributeUtils $u
    */
-  public function __construct(string $name, MultiValueAttributeUtils $u = null) {
+  public function __construct(string $name, AtomicMultiValueAttributeUtils $u = null) {
     if ($u === null) {
-      $u = MultiValueAttributeUtils::instance();
+      $u = AtomicMultiValueAttributeUtils::instance();
     }
     $this->filter = $u;
     parent::__construct($name);

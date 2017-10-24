@@ -592,16 +592,15 @@ abstract class Strings {
       $output = print_r($var, true);
     } else if (is_object($var)) {
       if (method_exists($var, '__toString')) {
-        $output = $var->__toString();
+        $output = "$var";
       } else {
         $output = get_class($var);
       }
-    }
-    if (is_float($var)) {
+    } else if (is_float($var)) {
       $output = sprintf('%0.0f', $var);
     } else {
       $output = strval($var);
-    } 
+    }
     return $output;
   }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MultiValueAttributeUtils.php (UTF-8)
+ * AtomicMultiValueAttributeUtils.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttributeUtils extends AbstractAttributeUtils {
+class AtomicMultiValueAttributeUtils extends AbstractAttributeUtils {
 
   /**
    * Returns an array of unique values parsed from the input
@@ -38,23 +38,22 @@ class MultiValueAttributeUtils extends AbstractAttributeUtils {
   public function filter($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
-      $parsed = Arrays::flatten($raw);
-    } else {
-      $parsed = [$raw];
+      $parsed = array_unique(Arrays::flatten($raw));
+    } else if ($raw instanceof MultiValueAttribute) {
+      $parsed = $raw->toArray();
+    } else if (Strings::hasStringRepresentation($raw)) {
+      $parsed = [Strings::toString($raw)];
+    } else if ($validate) {
+      throw new InvalidAttributeException("Invalid datatype for the attribute");
     }
-    $callback = function ($raw) {
-      return Strings::toString($raw);
-    };
-    $vals = array_map($callback, $parsed);
-
-    if (false) {
-      foreach ($vals as $value) {
+    if ($validate) {
+      foreach ($parsed as $value) {
         if (!$this->isValidAtomicValue($value)) {
           throw new InvalidAttributeException("Invalid attribute value '$value'");
         }
       }
     }
-    return $vals;
+    return $parsed;
   }
 
   /**
