@@ -34,7 +34,7 @@ class Attribute extends AbstractAttribute {
   /**
    * @var callable 
    */
-  private $valueFilter;
+  private $validator;
 
   /**
    * Constructs a new instance
@@ -42,16 +42,16 @@ class Attribute extends AbstractAttribute {
    * @param  string $name the name of the attribute
    * @param  AttributeValueValidator $validator
    */
-  public function __construct(string $name, AttributeValueValidator $validator) {
+  public function __construct(string $name, AttributeValueValidator $validator = null) {
     if ($validator === null) {
       $validator = AttributeValueValidator::instance();
     }
-    $this->valueFilter = $validator;
+    $this->validator = $validator;
     parent::__construct($name);
   }
 
   public function getValueValidator(): callable {
-    return $this->valueFilter;
+    return $this->validator;
   }
 
   public function isValidValue($value): bool {

@@ -175,7 +175,7 @@ class AbstractAttributeManager implements Countable, Iterator {
       $obj = $this->attrs[$name];
     } else {
       $type = $this->getActualType($name);
-      $obj = AttributeGenerator::instance()->createAttribute($name, $type);
+      $obj = new $type($name);
       $this->attrs[$name] = $obj;
     }
     return $this->attrs[$name];

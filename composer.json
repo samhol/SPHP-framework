@@ -33,7 +33,7 @@
     "geshi/geshi": "^1",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
-    "zendframework/zend-di": "*",
+    "aura/di": "*",
     "zendframework/zend-cache": "*",
     "zendframework/zend-config": "*",
     "zendframework/zend-i18n": "*",

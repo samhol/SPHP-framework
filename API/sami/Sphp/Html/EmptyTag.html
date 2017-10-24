@@ -272,10 +272,10 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $tagName)
+                    <a href="#method___construct">__construct</a>(string $tagName, <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a> $attrManager = null)
         
                                             <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Sphp/Html/AbstractTag.html#method___construct"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -315,7 +315,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">at         line 30</div>
+        <div class="location">at         line 21</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -920,9 +920,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 26</div>
+        <div class="location">in <a href="../../Sphp/Html/AbstractTag.html#method___construct"><abbr title="Sphp\Html\AbstractTag">AbstractTag</abbr></a> at         line 46</div>
         <code>                    
-    <strong>__construct</strong>(string $tagName)
+    <strong>__construct</strong>(string $tagName, <a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a> $attrManager = null)
         </code>
     </h3>
     <div class="details">
@@ -940,10 +940,24 @@
                 <td>$tagName</td>
                 <td>the tag name of the component</td>
             </tr>
+                    <tr>
+                <td><a href="../../Sphp/Html/Attributes/HtmlAttributeManager.html"><abbr title="Sphp\Html\Attributes\HtmlAttributeManager">HtmlAttributeManager</abbr></a></td>
+                <td>$attrManager</td>
+                <td>the attribute manager of the component</td>
+            </tr>
             </table>
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>

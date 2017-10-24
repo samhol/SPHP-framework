@@ -99,7 +99,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $parser = null)
+                    <a href="#method___construct">__construct</a>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidator.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidator">AttributeValueValidator</abbr></a> $validator = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -179,7 +179,18 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getValueFilter">getValueFilter</a>()
+                    <a href="#method_getValueValidator">getValueValidator</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isValidValue">isValidValue</a>($value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -243,9 +254,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 46</div>
+        <div class="location">at         line 45</div>
         <code>                    
-    <strong>__construct</strong>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $parser = null)
+    <strong>__construct</strong>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidator.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidator">AttributeValueValidator</abbr></a> $validator = null)
         </code>
     </h3>
     <div class="details">
@@ -264,28 +275,14 @@
                 <td>the name of the attribute</td>
             </tr>
                     <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a></td>
-                <td>$parser</td>
+                <td><a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidator.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidator">AttributeValueValidator</abbr></a></td>
+                <td>$validator</td>
                 <td></td>
             </tr>
             </table>
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -496,10 +493,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getValueFilter">
-        <div class="location">at         line 57</div>
+                    <h3 id="method_getValueValidator">
+        <div class="location">at         line 53</div>
         <code>                    
-    <strong>getValueFilter</strong>()
+    <strong>getValueValidator</strong>()
         </code>
     </h3>
     <div class="details">
@@ -507,6 +504,35 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                 <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isValidValue">
+        <div class="location">at         line 57</div>
+        <code>                    
+    <strong>isValidValue</strong>($value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
             

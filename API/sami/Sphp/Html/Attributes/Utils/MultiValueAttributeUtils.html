@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\Utils\ClassAttributeFilter | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\Utils\MultiValueAttributeUtils | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_ClassAttributeFilter" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_MultiValueAttributeUtils" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>ClassAttributeFilter</li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>MultiValueAttributeUtils</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ClassAttributeFilter
+            MultiValueAttributeUtils
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>ClassAttributeFilter</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a>
+    <strong>MultiValueAttributeUtils</strong>        extends <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of ClassAttributeFilter</p>                                </div>
+            <p>Utilities for validating and filtering multi value attributes</p>                                </div>
     
     
     
@@ -113,7 +113,7 @@
                     <a href="#method_filter">filter</a>(mixed $raw, bool $validate = false)
         
                                             <p>Returns an array of unique values parsed from the input</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -133,7 +133,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_instance">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a> at         line 25</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a> at         line 28</div>
         <code>        static            <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
     <strong>instance</strong>()
         </code>
@@ -161,7 +161,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeFilter.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeFilter">MultiValueAttributeFilter</abbr></a> at         line 38</div>
+        <div class="location">at         line 38</div>
         <code>                    string[]
     <strong>filter</strong>(mixed $raw, bool $validate = false)
         </code>
@@ -211,7 +211,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
-                <td></td>
+                <td>if validation is set and the input is not valid</td>
             </tr>
             </table>
 
@@ -222,7 +222,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidAtomicValue">
-        <div class="location">at         line 19</div>
+        <div class="location">at         line 65</div>
         <code>                    bool
     <strong>isValidAtomicValue</strong>(mixed $value)
         </code>

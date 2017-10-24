@@ -1,19 +1,31 @@
 <?php
+
 namespace Sphp\Html\Attributes;
 
-$s = AttributeGenerator::instance();
 echo "<pre>";
-//$s->mapObject('data-foo', PropertyAttribute::class);
-var_dump($s->createAttribute('class', ClassAttribute::class)->set('foo'));
-var_dump($s->getClassAttribute('class', ClassAttribute::class)->add('foo'));
-var_dump($s->createAttribute('style', PropertyAttribute::class)->set('foo:bar'));
-var_dump($s->createAttribute('style', PropertyAttribute::class));
-var_dump($s->createAttribute('style', PropertyAttribute::class));
-var_dump($s->createAttribute('data-foo', ClassAttribute::class));
-var_dump($s->createAttribute('data-foo1', ClassAttribute::class));
+echo "multi:\n------\n";
+$multi = new MultiValueAttribute('title');
+$multi->set(1, 'a', 2, 3);
+$multi->add('foo');
+$multi->add('" bar="');
+var_dump($multi->isDemanded());
+$multi->lock('lock');
+var_dump($multi->isDemanded());
+echo "\n<span $multi> $multi </span>";
+$multi->clear();
 
-var_dump($s);
-$class = new \ReflectionClass(AttributeGenerator::class);
-$arr = $class->getStaticProperties();
+$multi->add("' bar='");
+echo "\n<span $multi> $multi </span>";
 
-var_dump($arr);
+echo "\n\nboolean:\n------\n";
+$boolAttr = new BooleanAttribute('data-bool', 'true');
+
+echo "\nattr: $boolAttr";
+$boolAttr->set('0');
+echo "\nattr: $boolAttr";
+$boolAttr->set('foo');
+echo "\nattr: $boolAttr";
+$boolAttr->set('foo');
+echo "\nattr: $boolAttr";
+var_dump(get_html_translation_table());
+echo "</pre>";

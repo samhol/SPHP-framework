@@ -587,26 +587,28 @@ abstract class Strings {
    * @return string a string representation of the input parameter
    */
   public static function toString($var): string {
+    $output = '';
     if (is_array($var)) {
-      return print_r($var, true);
+      $output = print_r($var, true);
     } else if (is_object($var)) {
       if (method_exists($var, '__toString')) {
-        return $var->__toString();
+        $output = $var->__toString();
       } else {
-        return get_class($var);
+        $output = get_class($var);
       }
     }
     if (is_float($var)) {
-      return sprintf('%0.0f', $var);
+      $output = sprintf('%0.0f', $var);
     } else {
-      return strval($var);
-    }
+      $output = strval($var);
+    } 
+    return $output;
   }
 
   /**
    * Forces a string representation from any type of input parameter
    *
-   * @param  mixed $var ithe variable to check
+   * @param  mixed $var the variable to check
    * @return booltrue if the variable has a string representation
    */
   public static function hasStringRepresentation($var): bool {
@@ -614,10 +616,10 @@ abstract class Strings {
       return true;
     } else if (is_object($var) && method_exists($var, '__toString')) {
       return true;
-      
     }
     return false;
   }
+
   /**
    * Parses the given flags type to an integer
    * 

@@ -242,7 +242,7 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
     return $this;
   }
 
-  public function getIterator() {
+  public function getIterator(): \Traversable {
     return new Collection($this->toArray());
   }
 

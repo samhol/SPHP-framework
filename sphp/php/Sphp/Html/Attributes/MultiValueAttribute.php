@@ -8,7 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Countable;
-use IteratorAggregate;
+use Iterator;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Utils\MultiValueAttributeUtils;
 use Sphp\Stdlib\Datastructures\Collection;
@@ -21,7 +21,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, IteratorAggregate {
+class MultiValueAttribute extends AbstractAttribute implements Countable, Iterator {
 
   /**
    * stored individual values
@@ -42,7 +42,16 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
    */
   private $filter;
 
-  public function __construct(string $name, MultiValueAttributeUtils $u) {
+  /**
+   * Constructs a new instance
+   *
+   * @param string $name the name of the attribute
+   * @param MultiValueAttributeUtils $u
+   */
+  public function __construct(string $name, MultiValueAttributeUtils $u = null) {
+    if ($u === null) {
+      $u = MultiValueAttributeUtils::instance();
+    }
     $this->filter = $u;
     parent::__construct($name);
   }
@@ -189,12 +198,16 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   }
 
   public function getValue() {
+    $output = null;
     if (!empty($this->values)) {
-      $value = implode(' ', $this->values);
+      $output = '';
+      foreach ($this->values as $value) {
+        $output .= htmlspecialchars($value);
+      }
     } else {
-      $value = $this->isDemanded();
+      $output = $this->isDemanded();
     }
-    return $value;
+    return $output;
   }
 
   /**
@@ -225,6 +238,64 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
 
   public function getIterator() {
     return new Collection($this->toArray());
+  }
+
+  public function getHtml(): string {
+    $output = '';
+    $value = $this->getValue();
+    if ($value !== false) {
+      $output .= $this->getName();
+      if ($value !== true && !Strings::isEmpty($value)) {
+        $strVal = Strings::toString($value);
+        $output .= '="' . htmlspecialchars($strVal, ENT_COMPAT | ENT_HTML5) . '"';
+      }
+    }
+    return $output;
+  }
+
+  /**
+   * Returns the current element
+   * 
+   * @return mixed the current element
+   */
+  public function current() {
+    return current($this->values);
+  }
+
+  /**
+   * Advance the internal pointer of the collection
+   * 
+   * @return void
+   */
+  public function next() {
+    next($this->values);
+  }
+
+  /**
+   * Return the key of the current element
+   * 
+   * @return mixed the key of the current element
+   */
+  public function key() {
+    return key($this->values);
+  }
+
+  /**
+   * Rewinds the Iterator to the first element
+   * 
+   * @return void
+   */
+  public function rewind() {
+    reset($this->values);
+  }
+
+  /**
+   * Checks if current iterator position is valid
+   * 
+   * @return boolean current iterator position is valid
+   */
+  public function valid(): bool {
+    return false !== current($this->values);
   }
 
 }
