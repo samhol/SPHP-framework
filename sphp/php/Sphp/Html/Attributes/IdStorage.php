@@ -95,14 +95,16 @@ class IdStorage {
   /**
    * Generates and stores a random identifier
    * 
-   * @param  string $prefix
    * @param  int $length 
    * @return string random identifier generated and stored by the storage
    */
-  public function generateRandom(string $prefix = '', int $length = 16): string {
-    $value = $prefix . Strings::random($length);
+  public function generateRandom(int $length = 16): string {
+    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.';
+    $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $first = Strings::randomize($letters, 1);
+    $value = $first . Strings::randomize($chars, $length);
     while (!$this->store($value)) {
-      $value = $prefix . Strings::random($length);
+      $value = $first . Strings::randomize($chars, $length);
     }
     return $value;
   }

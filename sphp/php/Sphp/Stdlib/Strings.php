@@ -515,6 +515,16 @@ abstract class Strings {
     return str_shuffle(substr(str_repeat(md5(mt_rand()), 2 + $length / 32), 0, $length));
   }
 
+  public static function randomize(string $characters, int $length = 16): string {
+    //$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+      $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+  }
+
   /**
    * 
    * @param  string|null $encoding

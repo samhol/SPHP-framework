@@ -51,7 +51,7 @@ class Dropdown implements ContentInterface {
       $dropdown = new \Sphp\Html\Div($dropdown);
     }
     $this->dropdown = $dropdown;
-    $this->dropdown->identify('dropdown_');
+    $this->dropdown->identify();
     $this->dropdown->cssClasses()->lock('dropdown-pane');
     $this->dropdown->attrs()->demand('data-dropdown');
     $this->setTrigger($trigger);

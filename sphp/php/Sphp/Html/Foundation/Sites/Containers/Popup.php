@@ -47,7 +47,7 @@ class Popup extends Div {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->identify('modal_');
+    $this->identify();
     $this->cssClasses()->lock('reveal');
     $this->attrs()->demand('data-reveal');
     $this->closeButton = new CloseButton();

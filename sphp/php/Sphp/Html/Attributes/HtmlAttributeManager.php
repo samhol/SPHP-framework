@@ -68,8 +68,8 @@ class HtmlAttributeManager extends AbstractAttributeManager {
     return $this->createObject('id');
   }
 
-  public function identify(string $prefix = null, int $length = 16): string {
-    return $this->id()->identify($prefix, $length);
+  public function identify(int $length = 16): string {
+    return $this->id()->identify($length);
   }
 
 }

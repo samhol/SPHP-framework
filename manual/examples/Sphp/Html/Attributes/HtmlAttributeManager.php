@@ -8,7 +8,7 @@ echo "<input $attrs>\n";
 $attrs->set("value", "Sami")
         ->set("disabled", true);
 echo "<input $attrs>\n";
-$attrs->identify("ab");
+$attrs->identify(32);
 echo "<input $attrs>\n";
 $attrs->remove("disabled");
 echo "<input $attrs>\n";

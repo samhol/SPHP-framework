@@ -76,7 +76,7 @@ class IdentityAttribute extends AbstractAttribute {
       }
       $randLength = $length - mb_strlen($prefix);
       $storage = IdStorage::get($this->getName());
-      $value = $storage->generateRandom($prefix, $randLength);
+      $value = $storage->generateRandom($randLength);
       $this->lock($value);
     }
     return $this->getValue();
