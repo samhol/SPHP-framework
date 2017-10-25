@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
 use IteratorAggregate;
 use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
@@ -22,7 +21,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttribute extends AbstractAttribute implements Countable, IteratorAggregate {
+class ClassAttribute extends AbstractAttribute implements IteratorAggregate, MultiValueAttributeInterface {
 
   /**
    * stored individual values
@@ -247,3 +246,6 @@ class ClassAttribute extends AbstractAttribute implements Countable, IteratorAgg
   }
 
 }
+
+
+

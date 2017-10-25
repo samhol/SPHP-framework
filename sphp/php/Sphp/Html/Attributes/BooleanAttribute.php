@@ -17,11 +17,6 @@ namespace Sphp\Html\Attributes;
  */
 class BooleanAttribute extends Attribute {
 
-  /**
-   * @var bool
-   */
-  private $val;
-
   public function __construct(string $name, $value = true) {
     parent::__construct($name);
     $this->set($value);
@@ -32,3 +27,4 @@ class BooleanAttribute extends Attribute {
   }
 
 }
+

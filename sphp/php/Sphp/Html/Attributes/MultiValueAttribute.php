@@ -22,7 +22,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Countable, Iterator, Arrayable {
+class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiValueAttributeInterface {
 
   /**
    * stored individual values
@@ -296,3 +296,4 @@ class MultiValueAttribute extends AbstractAttribute implements Countable, Iterat
   }
 
 }
+

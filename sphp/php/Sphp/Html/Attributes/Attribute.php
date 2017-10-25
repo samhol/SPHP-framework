@@ -44,7 +44,7 @@ class Attribute extends AbstractAttribute {
    */
   public function __construct(string $name, AttributeValueValidator $validator = null) {
     if ($validator === null) {
-      $validator = AttributeValueValidator::instance();
+    //  $validator = AttributeValueValidator::instance();
     }
     $this->validator = $validator;
     parent::__construct($name);
@@ -84,7 +84,7 @@ class Attribute extends AbstractAttribute {
     if ($this->isLocked()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    if (!$this->isValidValue($value)) {
+    if (!is_scalar($value)) {
       throw new InvalidAttributeException("Invalid value for Attribute '{$this->getName()}' Attribute");
     }
     $this->value = $value;
@@ -92,3 +92,5 @@ class Attribute extends AbstractAttribute {
   }
 
 }
+
+

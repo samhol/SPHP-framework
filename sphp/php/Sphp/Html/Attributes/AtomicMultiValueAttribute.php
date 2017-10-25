@@ -7,12 +7,9 @@
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
 use Iterator;
-use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Utils\MultiValueAttributeUtils;
-use Sphp\Stdlib\Datastructures\Collection;
+use Sphp\Html\Attributes\Utils\AtomicMultiValueAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
@@ -22,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AtomicMultiValueAttribute extends AbstractAttribute implements Countable, Iterator, Arrayable {
+class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, MultiValueAttributeInterface {
 
   /**
    * stored individual values
@@ -39,7 +36,7 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Countable, 
   private $locked = [];
 
   /**
-   * @var MultiValueAttributeUtils
+   * @var AtomicMultiValueAttributeUtils
    */
   private $filter;
 
@@ -296,3 +293,9 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Countable, 
   }
 
 }
+
+
+
+
+
+

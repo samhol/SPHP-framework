@@ -42,10 +42,7 @@ class MultiValueAttributeUtils extends AbstractAttributeUtils {
     } else {
       $parsed = [$raw];
     }
-    $callback = function ($raw) {
-      return Strings::toString($raw);
-    };
-    $vals = array_map($callback, $parsed);
+    $vals = array_filter($parsed, 'is_scalar');
 
     if (false) {
       foreach ($vals as $value) {
@@ -68,3 +65,7 @@ class MultiValueAttributeUtils extends AbstractAttributeUtils {
   }
 
 }
+
+
+
+

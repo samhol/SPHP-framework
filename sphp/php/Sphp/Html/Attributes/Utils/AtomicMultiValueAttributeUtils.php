@@ -67,3 +67,4 @@ class AtomicMultiValueAttributeUtils extends AbstractAttributeUtils {
   }
 
 }
+

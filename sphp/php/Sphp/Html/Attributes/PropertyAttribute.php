@@ -7,9 +7,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Stdlib\Datastructures\Arrayable;
 use ArrayAccess;
-use Countable;
 use Iterator;
 use Sphp\Html\Attributes\Utils\PropertyAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
@@ -23,7 +21,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAccess, Countable, Iterator {
+class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, MultiValueAttributeInterface {
 
   /**
    * properties as a (name -> value) map
@@ -394,3 +392,5 @@ class PropertyAttribute extends AbstractAttribute implements Arrayable, ArrayAcc
   }
 
 }
+
+
