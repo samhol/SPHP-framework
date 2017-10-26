@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
+class AttributeTest extends \PHPUnit\Framework\TestCase {
 
   /**
    * @var AttributeInterface 
@@ -40,16 +40,21 @@ class AttributeObjectTest extends \PHPUnit\Framework\TestCase {
    */
   public function settingData(): array {
     return [
-        ['', '', true],
-        [' ', ' ', true],
-        [true, true, true],
-        [false, false, false],
-        ['value1', 'value1', true],
-        [' value2 ', ' value2 ', true],
-        [0, 0, true],
-        [-1, -1, true],
-        [1, 1, true],
-        [0b100, 0b100, true]
+        [''],
+        [' '],
+        [true],
+        [false],
+        ['value1'],
+        [' value2 '],
+        [0],
+        [-0],
+        [0.0],
+        [-1],
+        [1],
+        [0.01],
+        [1.01],
+        [null],
+        [null]
     ];
   }
 

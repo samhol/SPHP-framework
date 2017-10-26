@@ -114,4 +114,13 @@ interface AttributeInterface {
    * @return boolean true if the attribute is visible and false otherwise
    */
   public function isVisible(): bool;
+  /**
+   * Checks whether the attribute is empty or not
+   * 
+   * **Note:** an attribute is visible if it has locked value or the attribute 
+   * name is required or the attribute value is not boolean (false).
+   * 
+   * @return boolean true if the attribute is empty and false otherwise
+   */
+  public function isEmpty(): bool;
 }

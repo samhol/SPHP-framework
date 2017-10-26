@@ -65,7 +65,7 @@ abstract class AbstractAttribute implements AttributeInterface {
     $value = $this->getValue();
     if ($value !== false) {
       $output .= $this->getName();
-      if ($value !== true && !Strings::isEmpty($value)) {
+      if ($value !== true) {
         $strVal = Strings::toString($value);
         $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
       }
@@ -88,6 +88,11 @@ abstract class AbstractAttribute implements AttributeInterface {
 
   public function isVisible(): bool {
     return $this->isDemanded() || $this->getValue() !== false;
+  }
+
+  public function isEmpty(): bool {
+    $val = $this->getValue();
+    return is_bool($val) || $val === null || $val === '';
   }
 
 }

@@ -41,9 +41,12 @@ class Attribute extends AbstractAttribute implements LockableAttributeInterface 
    * @param  string $name the name of the attribute
    * @param  AttributeValueValidatorInterface $validator
    */
-  public function __construct(string $name, AttributeValueValidatorInterface $validator = null) {
+  public function __construct(string $name, $value = null, AttributeValueValidatorInterface $validator = null) {
     $this->validator = $validator;
     parent::__construct($name);
+    if ($value !== null) {
+      $this->set($value);
+    }
   }
 
   public function isValidValue($value): bool {

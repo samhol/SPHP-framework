@@ -4,7 +4,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-
+use Sphp\Manual;
 $abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
 $multiValueAttr = Apis::sami()->classLinker(MultiValueAttribute::class);
 \Sphp\Manual\parseDown(<<<MD
@@ -20,4 +20,6 @@ JavaScript statement to make changes to HTML elements with a specified class.
 
 MD
 );
-CodeExampleBuilder::visualize("Sphp/Html/Attributes/MultiValueAttribute.php", "html5", true);
+Manual\example("Sphp/Html/Attributes/MultiValueAttribute.php", "html5", true)
+        ->setExamplePaneTitle('Examples of attributes with multiple atomic values')
+        ->printHtml();

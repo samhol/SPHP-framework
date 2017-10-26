@@ -42,7 +42,6 @@ MD
 );
 
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.Attribute');
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.IdAttribute');
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
 

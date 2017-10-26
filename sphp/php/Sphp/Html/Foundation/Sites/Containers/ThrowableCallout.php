@@ -84,7 +84,7 @@ class ThrowableCallout extends Callout {
    */
   public function showTrace(bool $show = true) {
     $this->showTrace = $show;
-    $this->buildTrace();
+    //$this->buildTrace();
     return $this;
   }
 
@@ -96,7 +96,7 @@ class ThrowableCallout extends Callout {
    */
   public function showPreviousException(bool $show = true) {
     $this->showPreviousThrowable = $show;
-    $this->buildPreviousException();
+    //$this->buildPreviousException();
     return $this;
   }
 
@@ -147,9 +147,6 @@ class ThrowableCallout extends Callout {
    * @return string the trace information or an empty string
    */
   private function buildTrace(): string {
-    $vbr = function($v) {
-      return str_replace(['\\', '/', '.'], ['\\<wbr>', '/<wbr>', '.<wbr>'], $v);
-    };
     $trace = $this->throwable->getTrace();
     if (count($trace) > 0) {
       $output = new Ol();
@@ -158,11 +155,11 @@ class ThrowableCallout extends Callout {
       foreach ($trace as $traceRow) {
         $err1 = new Li();
         if (array_key_exists('line', $traceRow) && array_key_exists("file", $traceRow)) {
-          $err1->offsetSet('line', "on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
-                  ->offsetSet("file", " of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
+          $err1->append("on line <span class=\"number\">#{$this->parsePath($traceRow["line"])}</span>")
+                  ->append(" of file <wbr><span class=\"file\">'{$this->parsePath($traceRow["file"])}'</span>");
         }
-        $err1->offsetSet('function', "" . $this->parseFunction($traceRow));
-        $output[] = $err1;
+        $err1->append("" . $this->parseFunction($traceRow));
+        $output->append($err1);
       }
       return '<h3 class"trace">Trace information:</h3>' . $output;
     } else {
@@ -174,11 +171,12 @@ class ThrowableCallout extends Callout {
    * Builds the information about the method described in a trace row
    *
    * @param  string[] $trRow the trace row of the viewed {@link \Exception}
-   * @return Dl|null the information about the method described in a trace row or null
+   * @return string the information about the method described in a trace row or null
    */
-  private function parseFunction(array $trRow) {
-    //echo "<pre>";
-    //print_r($trRow);
+  private function parseFunction(array $trRow): string {
+    echo "<pre>";
+    echo $this->throwable->getTraceAsString();
+    echo "</pre>";
     $methodStr = "while executing ";
     if (array_key_exists("class", $trRow)) {
       $methodStr .= $this->parsePath($trRow["class"]);
@@ -192,9 +190,9 @@ class ThrowableCallout extends Callout {
       if (array_key_exists("args", $trRow)) {
         $dl->appendDescriptions($trRow["args"]);
       }
-      return $dl;
+      return "$dl";
     } else {
-      return null;
+      return '';
     }
   }
 

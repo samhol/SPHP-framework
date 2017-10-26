@@ -28,7 +28,7 @@ them to function correctly; while in other cases they are optional attributes.
 Standard attributes are supported by a large number of element types.
 MD
 );
-\Sphp\Manual\loadPage("Sphp.Html.Attributes.AbstractAttribute.php");
+\Sphp\Manual\loadPage('Sphp.Html.Attributes.AttributeInterface');
 
 \Sphp\Manual\parseDown(<<<MD
 ##HTML attribute management with $htmlAttrMngr class

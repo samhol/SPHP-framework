@@ -88,13 +88,12 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function numericData(): array {
     return [
-        ["min", "0"],
-        ["max", 10],
-        ["negative", -10],
-        ["negative", "-1"],
-        ["float", "1.04"],
-        ["float", 2.801],
-        ["zero", 0]
+        ['float', 0.231],
+        ["float", 0.0],
+        ['int', 10],
+        ['int', -10],
+        ['zero', 0],
+        ['zero', -0]
     ];
   }
 
@@ -108,7 +107,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testNumericSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
-    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertSame($attrs->get($name), $value);
     $this->assertTrue($attrs->exists($name));
     $this->assertTrue(!$attrs->isEmpty($name));
   }
@@ -140,8 +139,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $attrs->set($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     if ($value === false) {
-      $this->assertTrue(!$attrs->exists($name));
-      $this->assertTrue(!$attrs->isEmpty($name));
+      $this->assertTrue($attrs->exists($name));
+      $this->assertTrue($attrs->isEmpty($name));
     } else {
       $this->assertTrue($attrs->exists($name));
       $this->assertTrue($attrs->isEmpty($name));
@@ -169,9 +168,9 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testUnsetting($name, $value) {
     $attrs = new HtmlAttributeManager();
     $attrs->set($name, $value);
-    $this->assertTrue($attrs->get($name) === false);
-    $this->assertTrue(!$attrs->exists($name));
-    $this->assertTrue(!$attrs->isEmpty($name));
+    $this->assertTrue($attrs->get($name) === $value);
+    $this->assertTrue($attrs->exists($name));
+    $this->assertTrue($attrs->isEmpty($name));
   }
 
   /**
@@ -223,7 +222,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $name = $obj->getName();
     $this->attrs->set($name, 'foo bar'); //isValidObjectType
     $this->attrs->demand($name);
-    $this->attrs->setAttributeObject($obj);
+    //$this->attrs->s($obj);
     //$this->assertTrue($attrs->exists($name));
     $this->assertTrue($this->attrs->isAttributeObject($name));
     $this->assertTrue($this->attrs->isDemanded($name));

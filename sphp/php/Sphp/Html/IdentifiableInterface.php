@@ -18,14 +18,14 @@ namespace Sphp\Html;
 interface IdentifiableInterface {
 
   /**
-   * Identifies the element with an unique id attribute.
+   * Identifies the element with an unique id attribute
    *
    * **Notes:**
    *
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
    * @param  int $length the length of the identity value
-   * @return $this for a fluent interface
+   * @return string the identifier
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(int $length = 16): string;

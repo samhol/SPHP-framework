@@ -305,7 +305,7 @@ class AbstractAttributeManager implements Countable, Iterator {
     if($name === null) {
       return empty($this->attrs);
     }
-    return $this->exists($name) && ($this->getValue($name) === true || $this->getValue($name) === '');
+    return $this->exists($name) && $this->getObject($name)->isEmpty();
   }
 
   /**
@@ -400,6 +400,8 @@ class AbstractAttributeManager implements Countable, Iterator {
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->attrs);
@@ -416,6 +418,8 @@ class AbstractAttributeManager implements Countable, Iterator {
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->attrs);

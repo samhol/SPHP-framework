@@ -72,3 +72,19 @@ function php(): PHPManual {
 function w3schools(): W3schools {
   return Apis::w3schools();
 }
+
+use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
+
+/**
+ * Creates the PHP Example code and the preferred result
+ *
+ * @param  string $path the file path of the presented example PHP code
+ * @param  string|boolean $highlightOutput the language name of the output code 
+ *         or false if highlighted output code should not be visible
+ * @param  boolean $outputAsHtmlFlow true for executed html result or false for no execution
+ * @throws \Sphp\Exceptions\RuntimeException if the code example path is given and contains no file
+ * @return Accordion
+ */
+function example(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
+  return CodeExampleBuilder::build($path, $highlightOutput, $outputAsHtmlFlow);
+}

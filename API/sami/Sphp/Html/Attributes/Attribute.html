@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
+                    <a href="#method___construct">__construct</a>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -177,6 +177,16 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEmpty">isEmpty</a>()
+        
+                                            <p>Checks whether the attribute is empty or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
@@ -246,7 +256,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 44</div>
         <code>                    
-    <strong>__construct</strong>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
+    <strong>__construct</strong>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         </code>
     </h3>
     <div class="details">
@@ -263,6 +273,11 @@
                 <td>string</td>
                 <td>$name</td>
                 <td>the name of the attribute</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a></td>
@@ -483,8 +498,39 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 93</div>
+        <code>                    boolean
+    <strong>isEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the attribute is empty or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
+name is required or the attribute value is not boolean (false).</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the attribute is empty and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_isValidValue">
-        <div class="location">at         line 49</div>
+        <div class="location">at         line 52</div>
         <code>                    
     <strong>isValidValue</strong>($value)
         </code>
@@ -513,7 +559,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 61</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>clear</strong>()
         </code>
@@ -543,7 +589,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 69</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -579,7 +625,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isLocked">
-        <div class="location">at         line 70</div>
+        <div class="location">at         line 73</div>
         <code>                    boolean
     <strong>isLocked</strong>()
         </code>
@@ -609,7 +655,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 74</div>
+        <div class="location">at         line 77</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(scalar $value)
         </code>
@@ -662,7 +708,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 80</div>
+        <div class="location">at         line 83</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(mixed $value)
         </code>

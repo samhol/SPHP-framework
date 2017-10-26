@@ -10,7 +10,7 @@ namespace Sphp\Html\Attributes\Utils;
 use Sphp\Stdlib\Strings;
 
 /**
- * Implements a storage for HTML ids
+ * Implements a storage for HTML id attribute values
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -38,24 +38,13 @@ class IdStorage {
   /**
    * 
    * @param  string $name the name of the storage
-   * @return IdStorage instance
+   * @return IdStorage singleton instance of storage for identifiers of given name  
    */
   public static function get(string $name): IdStorage {
     if (!isset(self::$instances[$name])) {
       static::$instances[$name] = new static();
     }
     return static::$instances[$name];
-  }
-
-  /**
-   * Checks whether the identifier name value pair exists
-   *
-   * @param  string $name the name of the identifier
-   * @param  string $value the value of the identifier
-   * @return boolean true on success or false on failure
-   */
-  public static function isValidValue($value): bool {
-    return is_string($value) && !preg_match('/[\r\n\r\n|\r\r|\n\n]/', $value);
   }
 
   /**
@@ -75,11 +64,11 @@ class IdStorage {
    * @return boolean true if stored and `false` otherwise
    */
   public function store(string $value): bool {
-    if (!$this->contains($value) && static::isValidValue($value)) {
+    if (!$this->contains($value)) {
       $this->ids[] = $value;
       return true;
     }
-    print_r($this->ids);
+    //print_r($this->ids);
     return false;
   }
 

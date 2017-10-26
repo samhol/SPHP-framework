@@ -254,10 +254,10 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     return $this;
   }
 
-
   public function getHtml(): string {
     return $this->buildAccordion()->getHtml();
   }
+
   /**
    * Prints the PHP Example code and the preferred result
    *
@@ -271,7 +271,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
   public static function build(string $path, $highlightOutput = false, bool $outputAsHtmlFlow = true): CodeExampleBuilder {
     return (new static($path, $highlightOutput, $outputAsHtmlFlow));
   }
-  
+
   /**
    * Prints the PHP Example code and the preferred result
    *

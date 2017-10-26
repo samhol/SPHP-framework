@@ -19,7 +19,7 @@ use Sphp\Stdlib\Strings;
 class IdValidator implements AttributeValueValidatorInterface {
 
   public function isValidValue($value): bool {
-    return is_string($value) && !Strings::match($value, '/[\r\n\r\n|\r\r|\n\n]/');
+    return is_string($value) && !Strings::match($value, '/\s/');
   }
 
 }

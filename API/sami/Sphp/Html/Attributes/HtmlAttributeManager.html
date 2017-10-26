@@ -339,7 +339,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_next">next</a>()
@@ -359,7 +359,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_rewind">rewind</a>()
@@ -420,13 +420,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_identify">identify</a>(int $length = 16)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Identifies the element with an unique id attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1443,8 +1442,8 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 404</div>
-        <code>                    
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 406</div>
+        <code>                    void
     <strong>next</strong>()
         </code>
     </h3>
@@ -1456,6 +1455,15 @@ inline styles etc.).</p>                            </div>
                                     <p>Advance the internal pointer of the collection</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1464,7 +1472,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 413</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 415</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1494,8 +1502,8 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 420</div>
-        <code>                    
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 424</div>
+        <code>                    void
     <strong>rewind</strong>()
         </code>
     </h3>
@@ -1507,6 +1515,15 @@ inline styles etc.).</p>                            </div>
                                     <p>Rewinds the Iterator to the first element</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1515,7 +1532,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 429</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 433</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
@@ -1682,8 +1699,8 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">at         line 71</div>
-        <code>                    
+        <div class="location">at         line 82</div>
+        <code>                    string
     <strong>identify</strong>(int $length = 16)
         </code>
     </h3>
@@ -1691,6 +1708,10 @@ inline styles etc.).</p>                            </div>
             
     
 
+                    <div class="method-description">
+                                    <p>Identifies the element with an unique id attribute</p>                    <p><strong>Notes:</strong></p>
+
+<p>HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1698,11 +1719,20 @@ inline styles etc.).</p>                            </div>
                     <tr>
                 <td>int</td>
                 <td>$length</td>
-                <td></td>
+                <td>the length of the identity value</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>the identifier</td>
+        </tr>
+    </table>
+
             
             
                     </div>
