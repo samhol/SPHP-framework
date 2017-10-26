@@ -5,14 +5,12 @@
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Attributes;
+namespace Sphp\Html\Attributes\Utils;
 
 use Sphp\Stdlib\Strings;
 
 /**
- * Application Config class for storing common application data
- *
- * **Note:** Uses Singleton pattern
+ * Implements a storage for HTML ids
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -39,7 +37,8 @@ class IdStorage {
 
   /**
    * 
-   * @return IdStorage instance containing all identifiers of given name
+   * @param  string $name the name of the storage
+   * @return IdStorage instance
    */
   public static function get(string $name): IdStorage {
     if (!isset(self::$instances[$name])) {
@@ -57,14 +56,6 @@ class IdStorage {
    */
   public static function isValidValue($value): bool {
     return is_string($value) && !preg_match('/[\r\n\r\n|\r\r|\n\n]/', $value);
-  }
-
-  /**
-   * 
-   * @param type $name
-   */
-  public function isValidIdentifyingName($name): bool {
-    return Strings::match($name, "/^[a-zA-Z][\w:.-]*$/");
   }
 
   /**
@@ -95,26 +86,18 @@ class IdStorage {
   /**
    * Generates and stores a random identifier
    * 
-   * @param  int $length 
+   * @param  int $length the string length of the identifier
    * @return string random identifier generated and stored by the storage
    */
   public function generateRandom(int $length = 16): string {
-    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.';
     $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $allChars = "0123456789-.$letters";
     $first = Strings::randomize($letters, 1);
-    $value = $first . Strings::randomize($chars, $length);
+    $value = $first . Strings::randomize($allChars, $length - 1);
     while (!$this->store($value)) {
-      $value = $first . Strings::randomize($chars, $length);
+      $value = $first . Strings::randomize($allChars, $length - 1);
     }
     return $value;
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function toArray(): array {
-    return $this->ids;
   }
 
 }

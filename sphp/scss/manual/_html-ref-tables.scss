@@ -26,16 +26,21 @@ $td-font-size: rem-calc(14);
         }
       }
       tbody {
-        tr:nth-child(even) {
-          background-color: #ededed;
-          &:hover {
-            background-color: #e3e3e3;
+        tr {
+          &:nth-child(even) {
+            background-color: #ededed;
+            &:hover {
+              background-color: #e3e3e3;
+            }
           }
-        }
-        tr:nth-child(odd) {
-          background-color: #fcfcfc;
-          &:hover {
-            background-color: #f4f4f4;
+          &:nth-child(odd) {
+            background-color: #fcfcfc;
+            &:hover {
+              background-color: #f4f4f4;
+            }
+          }
+          td {
+        
           }
         }
       }

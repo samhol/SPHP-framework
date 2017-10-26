@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>PropertyAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a href="../../../Sphp/Stdlib/Datastructures/Arrayable.html"><abbr title="Sphp\Stdlib\Datastructures\Arrayable">Arrayable</abbr></a>, <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
+        <a target="_blank" href="http://php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a href="../../../Sphp/Html/Attributes/MultiValueAttributeInterface.html"><abbr title="Sphp\Html\Attributes\MultiValueAttributeInterface">MultiValueAttributeInterface</abbr></a>
 </p>
 
         
@@ -182,7 +182,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(mixed $value)
         
-                                            <p>Sets the properties values</p>                </div>
+                                            <p>Sets the value of the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -262,7 +262,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isLocked">isLocked</a>(string $property = null)
         
-                                            <p>Checks whether the value or the given property is locked</p>                </div>
+                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -292,7 +292,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_lock">lock</a>(null|string|string[] $props = null)
         
-                                            <p>Locks either all or the given properties</p>                </div>
+                                            <p>Locks the given value to the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -302,7 +302,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getValue">getValue</a>()
         
-                                            <p>Returns the value of the property attribute as a string</p>                </div>
+                                            <p>Returns the value of the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -423,7 +423,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 59</div>
+        <div class="location">at         line 58</div>
         <code>                    
     <strong>__construct</strong>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/PropertyAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\PropertyAttributeUtils">PropertyAttributeUtils</abbr></a> $parser = null, string $form = &#039;%s:%s;&#039;)
         </code>
@@ -457,6 +457,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -464,7 +473,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 68</div>
+        <div class="location">at         line 67</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -668,7 +677,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 83</div>
+        <div class="location">at         line 82</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(mixed $value)
         </code>
@@ -678,7 +687,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets the properties values</p>                    <p><strong>IMPORTANT!:</strong> Does not alter locked properties</p>                            </div>
+                                    <p>Sets the value of the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -706,11 +715,11 @@ name is required or the attribute value is not boolean (false).</p>             
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if any of the properties has empty name or value</td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
             </tr>
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if any of the properties is already locked</td>
+                <td>if the attribute value is unmodifiable</td>
             </tr>
             </table>
 
@@ -721,7 +730,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_setProperty">
-        <div class="location">at         line 100</div>
+        <div class="location">at         line 99</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>setProperty</strong>(string $property, mixed $value)
         </code>
@@ -779,7 +788,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_setProperties">
-        <div class="location">at         line 128</div>
+        <div class="location">at         line 127</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>setProperties</strong>(array $props)
         </code>
@@ -838,7 +847,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetProperty">
-        <div class="location">at         line 142</div>
+        <div class="location">at         line 141</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>unsetProperty</strong>(string $name)
         </code>
@@ -887,7 +896,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetProperties">
-        <div class="location">at         line 158</div>
+        <div class="location">at         line 157</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>unsetProperties</strong>(array $names)
         </code>
@@ -936,7 +945,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 165</div>
+        <div class="location">at         line 164</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>clear</strong>()
         </code>
@@ -966,7 +975,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_hasProperty">
-        <div class="location">at         line 180</div>
+        <div class="location">at         line 179</div>
         <code>                    boolean
     <strong>hasProperty</strong>(string $property)
         </code>
@@ -1006,7 +1015,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getProperty">
-        <div class="location">at         line 190</div>
+        <div class="location">at         line 189</div>
         <code>                    scalar|null
     <strong>getProperty</strong>(string $property)
         </code>
@@ -1046,7 +1055,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isLocked">
-        <div class="location">at         line 206</div>
+        <div class="location">at         line 205</div>
         <code>                    boolean
     <strong>isLocked</strong>(string $property = null)
         </code>
@@ -1056,7 +1065,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Checks whether the value or the given property is locked</p>                                                </div>
+                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1087,7 +1096,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lockProperty">
-        <div class="location">at         line 224</div>
+        <div class="location">at         line 223</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lockProperty</strong>(string $property, string $value)
         </code>
@@ -1145,7 +1154,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lockProperties">
-        <div class="location">at         line 246</div>
+        <div class="location">at         line 245</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lockProperties</strong>(array $props)
         </code>
@@ -1204,7 +1213,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 261</div>
+        <div class="location">at         line 260</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(null|string|string[] $props = null)
         </code>
@@ -1214,7 +1223,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Locks either all or the given properties</p>                                                </div>
+                                    <p>Locks the given value to the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1242,11 +1251,11 @@ name is required or the attribute value is not boolean (false).</p>             
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if any of the properties has empty name or value</td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
             </tr>
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if any of the properties is already immutable</td>
+                <td>if the attribute value is unmodifiable</td>
             </tr>
             </table>
 
@@ -1257,7 +1266,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 280</div>
+        <div class="location">at         line 279</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -1267,11 +1276,11 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the property attribute as a string</p>                    <p><strong>IMPORTANT:</strong></p>
+                                    <p>Returns the value of the attribute</p>                    <p><strong>IMPORTANT:</strong></p>
 
 <ul>
-<li>Returns always <code>null</code> if attribute is not set.</li>
-<li><strong>However</strong> might also return <code>null</code> for empty attributes.</li>
+<li>Returns always <code>boolean false</code> if attribute is not present.</li>
+<li>return <code>null</code> or an empty string for empty attributes.</li>
 </ul>
 </p>                            </div>
                 <div class="tags">
@@ -1293,7 +1302,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 297</div>
+        <div class="location">at         line 296</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1323,7 +1332,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location">at         line 307</div>
+        <div class="location">at         line 306</div>
         <code>                    boolean
     <strong>offsetExists</strong>(string $property)
         </code>
@@ -1363,7 +1372,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location">at         line 317</div>
+        <div class="location">at         line 316</div>
         <code>                    scalar|null
     <strong>offsetGet</strong>(string $property)
         </code>
@@ -1403,7 +1412,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location">at         line 332</div>
+        <div class="location">at         line 331</div>
         <code>                    void
     <strong>offsetSet</strong>(string $property, mixed $value)
         </code>
@@ -1461,7 +1470,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location">at         line 343</div>
+        <div class="location">at         line 342</div>
         <code>                    void
     <strong>offsetUnset</strong>(string $property)
         </code>
@@ -1510,7 +1519,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 347</div>
+        <div class="location">at         line 346</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -1540,7 +1549,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 356</div>
+        <div class="location">at         line 355</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1570,7 +1579,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 365</div>
+        <div class="location">at         line 364</div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -1600,7 +1609,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 374</div>
+        <div class="location">at         line 373</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1630,7 +1639,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 383</div>
+        <div class="location">at         line 382</div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -1660,7 +1669,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 392</div>
+        <div class="location">at         line 391</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>

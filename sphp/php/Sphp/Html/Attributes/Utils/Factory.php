@@ -1,14 +1,14 @@
 <?php
 
 /**
- * UtilityStrategy.php (UTF-8)
+ * Factory.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Attributes\Utils;
 
 /**
- * Description of InsertStrategy
+ * Implements a factory for singleton utility storage
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -25,6 +25,10 @@ class Factory {
    * @var mixed[]
    */
   private $utils;
+
+  public function __construct() {
+    
+  }
 
   public function setUtility($instance) {
     $name = get_class($instance);
@@ -44,12 +48,20 @@ class Factory {
     throw new \Sphp\Exceptions\OutOfBoundsException;
   }
 
+  /**
+   * 
+   * @return Factory singleton instance of storage
+   */
   public static function instance(): Factory {
     if (!isset(self::$instance)) {
-      static::$instance = new static();
+      static::$instance = (new static())
+              ->setUtility(new PropertyAttributeUtils())
+              ->setUtility(new ClassAttributeUtils())
+              ->setUtility(new MultiValueAttributeUtils())
+              ->setUtility(new IdValidator())
+              ->setUtility(new AtomicMultiValueAttributeUtils());
     }
     return static::$instance;
   }
 
 }
-

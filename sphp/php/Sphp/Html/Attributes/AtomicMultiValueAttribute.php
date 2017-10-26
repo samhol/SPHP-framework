@@ -11,6 +11,7 @@ use Iterator;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Utils\AtomicMultiValueAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -48,7 +49,7 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, M
    */
   public function __construct(string $name, AtomicMultiValueAttributeUtils $u = null) {
     if ($u === null) {
-      $u = AtomicMultiValueAttributeUtils::instance();
+      $u = Factory::instance()->getUtil(AtomicMultiValueAttributeUtils::class);
     }
     $this->filter = $u;
     parent::__construct($name);

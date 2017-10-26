@@ -20,7 +20,7 @@ use Sphp\Stdlib\Arrays;
 class ClassAttributeUtils extends MultiValueAttributeUtils {
 
   /**
-   * Returns an array of unique values parsed from the input
+   * Returns an array of unique CSS class values parsed from the input
    *
    * **Important:** Parameter <var>$raw</var> restrictions and rules
    * 
@@ -51,6 +51,7 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
     }
     return $vals;
   }
+
   public function isValidAtomicValue($value): bool {
     if (!is_string($value)) {
       return false;
@@ -58,12 +59,4 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
-  public function __invoke($value): bool {
-    return Strings::hasStringRepresentation($value);
-  }
-
 }
-
-
-
-

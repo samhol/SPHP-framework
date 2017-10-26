@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\Utils\AttributeValueFilterInterface | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\Utils\IdValidator | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_AttributeValueFilterInterface" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_IdValidator" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -65,26 +65,29 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>AttributeValueFilterInterface</li>
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>IdValidator</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            AttributeValueFilterInterface
+            IdValidator
                 
         </h1>
     </div>
 
-    <p>    interface
-    <strong>AttributeValueFilterInterface</strong>
+    <p>    class
+    <strong>IdValidator</strong>        implements
+        <a href="../../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a>
 </p>
 
         
     
 
+            <div class="description">
+            <p>Implements an HTML id attribute value validator</p>                                </div>
     
     
     
@@ -94,13 +97,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>($rawValue)
+                    <a href="#method_isValidValue">isValidValue</a>(mixed $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Checks whether the attribute value is valid</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -110,28 +112,39 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_filter">
-        <div class="location">at         line 18</div>
-        <code>                    
-    <strong>filter</strong>($rawValue)
+                    <h3 id="method_isValidValue">
+        <div class="location">at         line 21</div>
+        <code>                    boolean
+    <strong>isValidValue</strong>(mixed $value)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Checks whether the attribute value is valid</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
-                <td>$rawValue</td>
+                <td>mixed</td>
+                <td>$value</td>
                 <td></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>(the attribute value is valid)</td>
+        </tr>
+    </table>
+
             
             
                     </div>

@@ -1,0 +1,102 @@
+/**
+ * _api-stuff.scss (UTF-8)
+ *
+ * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
+ */
+
+@charset "UTF-8";
+
+@mixin api-links($color, $backgroud) {
+  color: $color;	
+  background-color: $backgroud;
+  //font-family: "Source Code Pro", monospace !important;
+  padding-left: rem-calc(4);
+  padding-right: rem-calc(4);
+  border: solid 1px #bbb;
+  @include border-radius(2px);
+  text-decoration: none;
+  &:hover {
+    background-color: smart-scale($backgroud, 15%);
+    color: smart-scale($color, 15%);
+  }
+
+}
+.api {
+  font-family: "Source Code Pro", monospace !important; 
+  &.breadcrumbs {
+    @include default-margin();
+    margin: rem-calc(5 25 15 35);
+    &:before {
+      float: left;
+      margin-right: rem-calc(15);
+      font-size: rem-calc(16);
+      font-weight: bold;
+    }
+    a {   
+      @include api-links(#444, #fafafa); 
+    }
+    &:before, a {
+      line-height: 1.6;
+      font-size: rem-calc(16);
+      text-transform: none;
+    }
+    li:not(:last-child)::after {
+      margin-left: rem-calc(4);
+      margin-right: rem-calc(4);
+      line-height: 1.6;
+    }
+    &.class:before {
+      content: "CLASS:";
+    }
+    &.namespace:before {
+      content: "NAMESPACE:";
+    }
+    &.constant:before {
+      content: "CONSTANT:";
+    }
+  }  
+}
+p a.api, ul a.api, ol a.api {
+  //font-family: "Source Code Pro", monospace !important;
+  padding-left: rem-calc(4);
+  padding-right: rem-calc(4);
+  &:hover {
+    color: #8c1111;
+  }
+  &.phpman, &.apigen, &.sami {
+    border: solid 1px #ddd;
+    @include border-radius(2px);
+    text-decoration: none;
+    font-weight: normal;
+  }
+  &.sami {
+    color: rgba(0, 90, 255, 1);
+    border-color: rgba(51, 153, 255, .3);
+    background-color: rgba(210, 210, 210, .3); 
+    &:hover {
+      color: rgba(0, 0, 255, 1);
+      border-color: rgba(51, 153, 255, .8);
+      background-color: rgba(210, 210, 210, .8); 
+    }
+  }
+  &.apigen {
+    color: #006aeb;
+    border-color: rgba(51, 153, 255, .3);
+    background-color: rgba(230, 230, 230, .5); 
+    &:hover {
+      color: #8c1111;
+      border-color: rgba(51, 153, 255, .6);
+      background-color: rgba(210, 210, 210, 1); 
+    }
+  }
+  &.phpman {
+    color: #369;
+    border-color: #bbb;
+    background-color: rgba(210, 210, 210, .3); 
+    &:hover {
+      color: #8c1111;
+      border-color: #c66;
+      background-color: rgba(210, 210, 210, .8); 
+    }
+  }
+}

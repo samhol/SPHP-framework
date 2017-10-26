@@ -22,7 +22,5 @@ interface AttributeValueValidatorInterface {
    * @param  mixed $value
    * @return boolean (the attribute value is valid)
    */
-  public function __invoke($value): bool;
-  
-  
+  public function isValidValue($value): bool;
 }

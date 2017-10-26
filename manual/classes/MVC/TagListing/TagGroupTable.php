@@ -36,14 +36,13 @@ class TagGroupTable implements \Sphp\Html\ContentInterface {
     $table = (new Table())
             ->addCssClass('html-to-php');
     $table->thead()
-            ->appendHeaderRow(['HTML Tag', 'Function call', 'Object type']);
+            ->appendHeaderRow(['HTML Tag', 'Function call and Object type']);
     $body = $table->tbody();
     foreach ($this->data as $info) {
       $c = [];
       //$linkText = "&lt;" . $info->getTagName() . "&gt;";
       $c[] = $info->getW3schoolsLink();
-      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall(), "returns " . $info->getObjectType());
-      $c[] = ": " . $info->getObjectType();
+      $c[] = Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": ".$info->getObjectType(), "returns " . $info->getObjectType());
       $body->appendBodyRow($c);
     }
     return $table;

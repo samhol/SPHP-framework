@@ -13,6 +13,7 @@ use Sphp\Html\Attributes\Utils\PropertyAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * Implements an property attribute object
@@ -56,7 +57,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    */
   public function __construct(string $name, PropertyAttributeUtils $parser = null, string $form = '%s:%s;') {
     if ($parser === null) {
-      $parser = PropertyAttributeUtils::instance();
+      $parser = Factory::instance()->getUtil(PropertyAttributeUtils::class);
     }
     parent::__construct($name);
     $this->form = $form;
@@ -392,5 +393,3 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
   }
 
 }
-
-

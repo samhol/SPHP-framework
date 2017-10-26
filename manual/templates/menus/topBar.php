@@ -6,6 +6,7 @@ use Sphp\Html\Foundation\Sites\Bars\TopBar;
 use Sphp\Html\Foundation\Sites\Navigation\MenuBuilder;
 use Sphp\Html\Apps\Freefind\FreefindSearchForm;
 use Sphp\Html\Adapters\QtipAdapter;
+use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
 try {
   $navi = new TopBar();
@@ -29,6 +30,6 @@ try {
 
   $navi->printHtml();
 } catch (\Exception $e) {
-  echo new ExceptionBox($e);
+  echo new ThrowableCallout($e, true, true);
 }
 

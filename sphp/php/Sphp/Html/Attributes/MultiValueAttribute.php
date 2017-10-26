@@ -7,13 +7,11 @@
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
 use Iterator;
-use Sphp\Stdlib\Datastructures\Arrayable;
 use Sphp\Stdlib\Strings;
 use Sphp\Html\Attributes\Utils\MultiValueAttributeUtils;
-use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * An implementation of a multi value HTML attribute
@@ -51,7 +49,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
    */
   public function __construct(string $name, MultiValueAttributeUtils $u = null) {
     if ($u === null) {
-      $u = MultiValueAttributeUtils::instance();
+      $u = Factory::instance()->getUtil(MultiValueAttributeUtils::class);
     }
     $this->filter = $u;
     parent::__construct($name);

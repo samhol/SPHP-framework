@@ -16,7 +16,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AttributeValueValidator extends AbstractAttributeUtils implements AttributeValueValidatorInterface {
+class AttributeValueValidator implements AttributeValueValidatorInterface {
 
   public function __invoke($value): bool {
     return Strings::hasStringRepresentation($value);

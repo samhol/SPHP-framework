@@ -13,9 +13,12 @@ use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Utils\ClassAttributeUtils;
 use Sphp\Stdlib\Datastructures\Collection;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+use Sphp\Html\Attributes\Utils\Factory;
 
 /**
- * An implementation of a multi value HTML attribute
+ * An implementation of CSS class attribute
+ * 
+ * The class attribute  specifies one or more class names for an element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -24,7 +27,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 class ClassAttribute extends AbstractAttribute implements IteratorAggregate, MultiValueAttributeInterface {
 
   /**
-   * stored individual values
+   * stored individual classes
    *
    * @var scalar[]
    */
@@ -37,7 +40,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
 
   public function __construct(string $name, ClassAttributeUtils $filter = null) {
     if ($filter === null) {
-      $filter = ClassAttributeUtils::instance();
+      $filter = Factory::instance()->getUtil(ClassAttributeUtils::class);
     }
     parent::__construct($name);
     $this->filter = $filter;

@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttributeUtils extends AbstractAttributeUtils {
+class MultiValueAttributeUtils implements MultiValueAttributeUtilityInterface {
 
   /**
    * Returns an array of unique values parsed from the input

@@ -17,6 +17,12 @@ namespace Sphp\Html\Attributes;
  */
 class BooleanAttribute extends Attribute {
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $name
+   * @param type $value
+   */
   public function __construct(string $name, $value = true) {
     parent::__construct($name);
     $this->set($value);

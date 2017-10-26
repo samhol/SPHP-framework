@@ -14,7 +14,7 @@ namespace Sphp\Html\Attributes\Utils;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttributeUtils extends AbstractAttributeUtils {
+class PropertyAttributeUtils {
 
   /**
    * Parses a string of properties to an array

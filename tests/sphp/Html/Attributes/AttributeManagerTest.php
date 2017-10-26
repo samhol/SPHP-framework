@@ -28,34 +28,26 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * 
    * @return string[]
    */
   public function identifyingData(): array {
     return [
-        ["test", 4],
-        [null, 4],
-        ["a b c d", 4],
-        [null, 4]
+        [4],
+        [4],
+        [4],
+        [4]
     ];
   }
 
   /**
-   *
    * @param string $name
-   * @param int $length
    * @dataProvider identifyingData
    */
-  public function testIdentifying($name, int $length) {
-    $this->attrs->identify($name, $length);
-    $this->assertTrue(is_string($this->attrs->get($name)));
-    $this->assertTrue($this->attrs->exists($name));
-    $this->assertTrue(!$this->attrs->isEmpty($name));
-    try {
-      $this->attrs->set($name, "foo");
-    } catch (\Exception $ex) {
-      
-    }
+  public function testIdentifying(int $length) {
+    $this->attrs->identify($length);
+    $this->assertTrue(is_string($this->attrs->get('id')));
+    $this->assertTrue($this->attrs->exists('id'));
+    $this->assertTrue(!$this->attrs->isEmpty('id'));
   }
 
   /**

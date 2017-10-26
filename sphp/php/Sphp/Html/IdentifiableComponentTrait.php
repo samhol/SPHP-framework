@@ -170,7 +170,7 @@ trait IdentifiableComponentTrait {
    * HTML id attribute is unique to every HTML-element. Therefore given id is checked for its uniqueness.
    * 
    * @param  int $length the length of the identity value
-   * @return $this for a fluent interface
+   * @return string 
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(int $length = 16): string {

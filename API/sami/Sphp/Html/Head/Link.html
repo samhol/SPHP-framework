@@ -252,10 +252,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_identify">identify</a>(string $prefix = &#039;id_&#039;, int $length = 16)
+                    <a href="#method_identify">identify</a>(int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a></small></div>
@@ -275,7 +275,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $href = &#039;&#039;, string $rel = &#039;stylesheet&#039;, string $media = &#039;screen&#039;)
+                    <a href="#method___construct">__construct</a>(string $href = null, string $rel = null, string $media = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -327,7 +327,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getHref">getHref</a>()
         
-                                            <p>Returns the value of the href attribute</p>                </div>
+                                            <p>Returns the location of the linked document</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -337,7 +337,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setRel">setRel</a>(string $rel)
         
-                                            <p>Sets the value of the rel attribute</p>                </div>
+                                            <p>Sets the relationship between the current document and the linked one</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -347,7 +347,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getRel">getRel</a>()
         
-                                            <p>Returns the value of the rel attribute</p>                </div>
+                                            <p>Returns the relationship between the current document and the linked one</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -357,7 +357,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setType">setType</a>(string $type)
         
-                                            <p>Sets the value of the type attribute</p>                </div>
+                                            <p>Sets the MIME type of the linked document</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -367,7 +367,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getType">getType</a>()
         
-                                            <p>Returns the value of the type attribute</p>                </div>
+                                            <p>Returns the MIME type of the linked document</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -377,7 +377,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setMedia">setMedia</a>(string $media)
         
-                                            <p>Sets the value of the media attribute</p>                </div>
+                                            <p>Sets what media/device the target resource is optimized for</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -397,7 +397,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_cssSrc">cssSrc</a>(string $href, string $media = &#039;screen&#039;)
         
-                                            <p>Adds an link tag which points to a CSS stylesheet file to the object</p>                </div>
+                                            <p>Adds an link which points to a CSS style sheet file to the object</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -946,9 +946,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 177</div>
-        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>identify</strong>(string $prefix = &#039;id_&#039;, int $length = 16)
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 176</div>
+        <code>                    string
+    <strong>identify</strong>(int $length = 16)
         </code>
     </h3>
     <div class="details">
@@ -964,11 +964,6 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$prefix</td>
-                <td>optional prefix of the identity value</td>
-            </tr>
-                    <tr>
                 <td>int</td>
                 <td>$length</td>
                 <td>the length of the identity value</td>
@@ -980,8 +975,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
+            <td>string</td>
+            <td></td>
         </tr>
     </table>
 
@@ -993,7 +988,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 187</div>
+        <div class="location">in <a href="../../../Sphp/Html/IdentifiableComponentTrait.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponentTrait">IdentifiableComponentTrait</abbr></a> at         line 186</div>
         <code>                    boolean
     <strong>hasId</strong>()
         </code>
@@ -1025,7 +1020,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 38</div>
         <code>                    
-    <strong>__construct</strong>(string $href = &#039;&#039;, string $rel = &#039;stylesheet&#039;, string $media = &#039;screen&#039;)
+    <strong>__construct</strong>(string $href = null, string $rel = null, string $media = null)
         </code>
     </h3>
     <div class="details">
@@ -1057,15 +1052,6 @@
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td>if the tag name of the component is not valid</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -1203,7 +1189,7 @@ The href attribute specifies the location (URL) of the external
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the href attribute</p>                    <p><strong>Notes:</strong></p>
+                                    <p>Returns the location of the linked document</p>                    <p><strong>Notes:</strong></p>
 
 <ol>
 <li>The href attribute specifies the location (URL) of the external resource
@@ -1239,7 +1225,7 @@ The href attribute specifies the location (URL) of the external
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the rel attribute</p>                    <p><strong>Notes:</strong> The required rel attribute specifies the relationship
+                                    <p>Sets the relationship between the current document and the linked one</p>                    <p><strong>Notes:</strong> The rel attribute specifies the relationship
  between the current document and the linked document/resource.</p>
 
 <p><strong>Values:</strong></p>
@@ -1299,7 +1285,7 @@ and that the previous document in the series is the referenced document</li>
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the rel attribute</p>                    <p><strong>Notes:</strong> The required rel attribute specifies the relationship
+                                    <p>Returns the relationship between the current document and the linked one</p>                    <p><strong>Notes:</strong> The rel attribute specifies the relationship
  between the current document and the linked document/resource.</p>
 
 <p><strong>Values:</strong></p>
@@ -1349,7 +1335,7 @@ and that the previous document in the series is the referenced document</li>
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the type attribute</p>                    <p><strong>Notes:</strong> The type attribute specifies the MIME type of the linked
+                                    <p>Sets the MIME type of the linked document</p>                    <p><strong>Notes:</strong> The type attribute specifies the MIME type of the linked
  document.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
@@ -1390,7 +1376,7 @@ and that the previous document in the series is the referenced document</li>
     
 
                     <div class="method-description">
-                                    <p>Returns the value of the type attribute</p>                    <p><strong>Note:</strong> The type attribute specifies the MIME type of the linked
+                                    <p>Returns the MIME type of the linked document</p>                    <p><strong>Note:</strong> The type attribute specifies the MIME type of the linked
  document.</p>                            </div>
                 <div class="tags">
             
@@ -1421,7 +1407,7 @@ and that the previous document in the series is the referenced document</li>
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the media attribute</p>                    <p><strong>Notes:</strong></p>
+                                    <p>Sets what media/device the target resource is optimized for</p>                    <p><strong>Notes:</strong></p>
 
 <ul>
 <li>The media attribute specifies what media/device the target resource
@@ -1475,7 +1461,7 @@ different styles for different media types.</li>
 <ul>
 <li>The media attribute specifies what media/device the target resource
 is optimized for.</li>
-<li>This attribute is mostly used with CSS stylesheets to specify
+<li>This attribute is mostly used with CSS style sheets to specify
 different styles for different media types.</li>
 <li>The media attribute can accept several values.</li>
 </ul>
@@ -1509,7 +1495,7 @@ different styles for different media types.</li>
     
 
                     <div class="method-description">
-                                    <p>Adds an link tag which points to a CSS stylesheet file to the object</p>                                                </div>
+                                    <p>Adds an link which points to a CSS style sheet file to the object</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

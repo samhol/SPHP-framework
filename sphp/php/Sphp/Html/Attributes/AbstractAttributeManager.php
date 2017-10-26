@@ -305,7 +305,7 @@ class AbstractAttributeManager implements Countable, Iterator {
     if($name === null) {
       return empty($this->attrs);
     }
-    return $this->exists($name) && ($this->getValue($name) === true || $this->getValue($name) === "");
+    return $this->exists($name) && ($this->getValue($name) === true || $this->getValue($name) === '');
   }
 
   /**

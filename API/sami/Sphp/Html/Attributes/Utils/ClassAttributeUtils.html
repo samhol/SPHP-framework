@@ -96,24 +96,13 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_instance">instance</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     string[]
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_filter">filter</a>(mixed $raw, bool $validate = false)
         
-                                            <p>Returns an array of unique values parsed from the input</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeUtils.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeUtils">MultiValueAttributeUtils</abbr></a></small></div>
+                                            <p>Returns an array of unique CSS class values parsed from the input</p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -125,17 +114,6 @@
                                             <p>Validates given atomic value</p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method___invoke">__invoke</a>($value)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -143,36 +121,8 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_instance">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html#method_instance"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a> at         line 28</div>
-        <code>        static            <a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a>
-    <strong>instance</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Sphp/Html/Attributes/Utils/AbstractAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\AbstractAttributeUtils">AbstractAttributeUtils</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">in <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeUtils.html#method_filter"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeUtils">MultiValueAttributeUtils</abbr></a> at         line 38</div>
+        <div class="location">at         line 36</div>
         <code>                    string[]
     <strong>filter</strong>(mixed $raw, bool $validate = false)
         </code>
@@ -182,7 +132,7 @@
     
 
                     <div class="method-description">
-                                    <p>Returns an array of unique values parsed from the input</p>                    <p><strong>Important:</strong> Parameter <var>$raw</var> restrictions and rules</p>
+                                    <p>Returns an array of unique CSS class values parsed from the input</p>                    <p><strong>Important:</strong> Parameter <var>$raw</var> restrictions and rules</p>
 
 <ol>
 <li>A string parameter can contain a single atomic value</li>
@@ -221,7 +171,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td><abbr title="Sphp\Html\Attributes\Utils\InvalidAttributeException">InvalidAttributeException</abbr></td>
                 <td>if validation is set and the input is not valid</td>
             </tr>
             </table>
@@ -233,7 +183,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidAtomicValue">
-        <div class="location">at         line 21</div>
+        <div class="location">at         line 55</div>
         <code>                    bool
     <strong>isValidAtomicValue</strong>(mixed $value)
         </code>
@@ -265,35 +215,6 @@
         </tr>
     </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___invoke">
-        <div class="location">at         line 28</div>
-        <code>                    
-    <strong>__invoke</strong>($value)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
             
             
                     </div>

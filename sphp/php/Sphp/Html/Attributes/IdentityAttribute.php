@@ -7,8 +7,9 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Utils\AttributeValueValidator;
+use Sphp\Html\Attributes\Utils\IdStorage;
+use Sphp\Html\Attributes\Utils\IdValidator;
+use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * Description of IdentityAttribute
@@ -17,66 +18,30 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IdentityAttribute extends AbstractAttribute {
-
-  /**
-   * @var string 
-   */
-  private $value;
-
-  /**
-   * @var bool 
-   */
-  private $locked = false;
+class IdentityAttribute extends Attribute {
 
   /**
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
+   * @param type $value
    */
   public function __construct(string $name, $value = null) {
-    parent::__construct($name);
+    parent::__construct($name, Factory::instance()->getUtil(IdValidator::class));
     if ($value !== null) {
       $this->set($value);
     }
   }
 
-  public function clear() {
-    if ($this->isLocked()) {
-      throw new InvalidArgumentException();
-    }
-    $this->value = null;
-  }
-
-  public function getValue() {
-    return $this->value;
-  }
-
-  public function isLocked(): bool {
-    return $this->locked;
-  }
-
-  public function lock($value) {
-    $this->set($value);
-    $this->locked = true;
-  }
-
-  public function set($value) {
-    if ($this->isLocked()) {
-      throw new ImmutableAttributeException();
-    }
-    $this->value = $value;
-    return $this;
-  }
-
-  public function identify(string $prefix = null, int $length = 16) {
+  /**
+   * 
+   * @param  int $length
+   * @return string
+   */
+  public function identify(int $length = 16): string {
     if (!$this->isLocked()) {
-      if ($prefix === null) {
-        $prefix = $this->getName();
-      }
-      $randLength = $length - mb_strlen($prefix);
       $storage = IdStorage::get($this->getName());
-      $value = $storage->generateRandom($randLength);
+      $value = $storage->generateRandom($length);
       $this->lock($value);
     }
     return $this->getValue();

@@ -35,7 +35,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.w3schools.com/tags/att_link_rel.asp rel attribute
    * @link   http://www.w3schools.com/tags/att_link_media.asp media attribute
    */
-  public function __construct(string $href = '', string $rel = 'stylesheet', string $media = 'screen') {
+  public function __construct(string $href = null, string $rel = null, string $media = null) {
     parent::__construct('link');
     $this->attrs()->demand('rel');
     if ($href !== null) {
@@ -70,7 +70,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Returns the value of the href attribute
+   * Returns the location of the linked document
    *
    * **Notes:**
    * 
@@ -85,9 +85,9 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Sets the value of the rel attribute
+   * Sets the relationship between the current document and the linked one
    *
-   * **Notes:** The required rel attribute specifies the relationship
+   * **Notes:** The rel attribute specifies the relationship
    *  between the current document and the linked document/resource.
    *
    * **Values:**
@@ -116,9 +116,9 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Returns the value of the rel attribute
+   * Returns the relationship between the current document and the linked one
    *
-   * **Notes:** The required rel attribute specifies the relationship
+   * **Notes:** The rel attribute specifies the relationship
    *  between the current document and the linked document/resource.
    *
    * **Values:**
@@ -145,7 +145,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Sets the value of the type attribute
+   * Sets the MIME type of the linked document
    *
    * **Notes:** The type attribute specifies the MIME type of the linked
    *  document.
@@ -161,7 +161,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Returns the value of the type attribute
+   * Returns the MIME type of the linked document
    *
    * **Note:** The type attribute specifies the MIME type of the linked
    *  document.
@@ -175,7 +175,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Sets the value of the media attribute
+   * Sets what media/device the target resource is optimized for
    *
    * **Notes:**
    *
@@ -201,7 +201,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    *
    * * The media attribute specifies what media/device the target resource
    *   is optimized for.
-   * * This attribute is mostly used with CSS stylesheets to specify
+   * * This attribute is mostly used with CSS style sheets to specify
    *   different styles for different media types.
    * * The media attribute can accept several values.
    *
@@ -213,7 +213,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
   }
 
   /**
-   * Adds an link tag which points to a CSS stylesheet file to the object
+   * Adds an link which points to a CSS style sheet file to the object
    *
    * @param  string $href an absolute URL that acts as the base URL
    * @param  string $media the relationship between the current document and the linked one
@@ -237,7 +237,7 @@ class Link extends EmptyTag implements HeadComponentInterface, NonVisualContentI
    * @link   http://www.iana.org/assignments/media-types complete list of standard MIME types
    */
   public static function shortcutIcon(string $href, string $type = 'image/x-icon') {
-    $link = new static($href, 'icon');
+    $link = new static($href, 'icon', 'screen');
     $link->setType($type);
     return $link;
   }

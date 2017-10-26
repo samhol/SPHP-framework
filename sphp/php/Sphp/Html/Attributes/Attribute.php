@@ -10,7 +10,6 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
-use Sphp\Html\Attributes\Utils\AttributeValueValidator;
 
 /**
  * Description of IdentityAttribute
@@ -19,10 +18,10 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidator;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Attribute extends AbstractAttribute {
+class Attribute extends AbstractAttribute implements LockableAttributeInterface {
 
   /**
-   * @var string 
+   * @var mixed 
    */
   private $value;
 
@@ -32,7 +31,7 @@ class Attribute extends AbstractAttribute {
   private $locked = false;
 
   /**
-   * @var callable 
+   * @var AttributeValueValidatorInterface|null 
    */
   private $validator;
 
@@ -40,22 +39,20 @@ class Attribute extends AbstractAttribute {
    * Constructs a new instance
    *
    * @param  string $name the name of the attribute
-   * @param  AttributeValueValidator $validator
+   * @param  AttributeValueValidatorInterface $validator
    */
-  public function __construct(string $name, AttributeValueValidator $validator = null) {
-    if ($validator === null) {
-    //  $validator = AttributeValueValidator::instance();
-    }
+  public function __construct(string $name, AttributeValueValidatorInterface $validator = null) {
     $this->validator = $validator;
     parent::__construct($name);
   }
 
-  public function getValueValidator(): callable {
-    return $this->validator;
-  }
-
   public function isValidValue($value): bool {
-    return $this->getValueValidator()->isValidValue($value);
+    if ($this->validator !== null) {
+      $isValid = $this->validator->isValidValue($value);
+    } else {
+      $isValid = is_scalar($value) || is_null($value);
+    }
+    return $isValid;
   }
 
   public function clear() {
@@ -84,13 +81,11 @@ class Attribute extends AbstractAttribute {
     if ($this->isLocked()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    if (!is_scalar($value)) {
-      throw new InvalidAttributeException("Invalid value for Attribute '{$this->getName()}' Attribute");
+    if (!$this->isValidValue($value)) {
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
     }
     $this->value = $value;
     return $this;
   }
 
 }
-
-
