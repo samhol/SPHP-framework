@@ -18,9 +18,6 @@ use Sphp\Stdlib\Strings;
  */
 class AttributeValueValidator implements AttributeValueValidatorInterface {
 
-  public function __invoke($value): bool {
-    return Strings::hasStringRepresentation($value);
-  }
   public function isValidValue($value): bool {
     return Strings::hasStringRepresentation($value);
   }

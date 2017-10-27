@@ -12,7 +12,7 @@ use Sphp\Html\Attributes\Utils\IdValidator;
 use Sphp\Html\Attributes\Utils\Factory;
 
 /**
- * Description of IdentityAttribute
+ * Implements a unique id for an HTML element
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
@@ -24,7 +24,7 @@ class IdentityAttribute extends Attribute {
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param type $value
+   * @param scalar $value
    */
   public function __construct(string $name, $value = null) {
     parent::__construct($name, $value, Factory::instance()->getUtil(IdValidator::class));

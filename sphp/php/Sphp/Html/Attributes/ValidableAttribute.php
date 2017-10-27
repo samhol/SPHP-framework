@@ -18,7 +18,7 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Attribute extends AbstractAttribute implements LockableAttributeInterface {
+class ValidableAttribute extends AbstractAttribute implements LockableAttributeInterface {
 
   const INT = 0b000001;
   const FLOAT = 0b000011;
@@ -27,6 +27,7 @@ class Attribute extends AbstractAttribute implements LockableAttributeInterface 
   const SIGNED = 0b010000;
   const UNSSIGNED = 0b100000;
   CONST SCALAR = 0b111111;
+  CONST REGEXP = 'regexp';
 
   /**
    * @var mixed 
@@ -39,31 +40,33 @@ class Attribute extends AbstractAttribute implements LockableAttributeInterface 
   private $locked = false;
 
   /**
-   * @var AttributeValueValidatorInterface|null 
+   * @var mixed
    */
-  private $validator;
-  private $type = 0b0;
+  private $options;
+  private $type;
 
   /**
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
    * @param mixed $value value to set
-   * @param AttributeValueValidatorInterface $validator
+   * @param array $settings
    */
-  public function __construct(string $name, $value = null, AttributeValueValidatorInterface $validator = null) {
-    $this->validator = $validator;
+  public function __construct(string $name, $type = self::SCALAR, $options = null) {
+    $this->type = $type;
+    $this->options = $options;
     parent::__construct($name);
-    if ($value !== null) {
-      $this->set($value);
-    }
   }
 
   public function isValidValue($value): bool {
-    if ($this->validator !== null) {
-      $isValid = $this->validator->isValidValue($value);
-    } else {
-      $isValid = is_scalar($value) || is_null($value);
+    switch ($this->type) {
+      case self::REGEXP:
+        $isValid = \Sphp\Stdlib\Strings::match($value, $this->options);
+        break;
+
+      default:
+        $isValid = is_scalar($value) || is_null($value);
+        break;
     }
     return $isValid;
   }
@@ -95,10 +98,14 @@ class Attribute extends AbstractAttribute implements LockableAttributeInterface 
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     if (!$this->isValidValue($value)) {
-      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
+      throw new InvalidAttributeException("Value '$value' is invalid for '{$this->getName()}' attribute");
     }
     $this->value = $value;
     return $this;
+  }
+
+  public static function regexp(string $name, string $pattern): AttributeInterface {
+    return new static($name, self::REGEXP, $pattern);
   }
 
 }

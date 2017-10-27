@@ -92,6 +92,8 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
 
   /**
    * Advance the internal pointer of the collection
+   * 
+   * @return void
    */
   public function next() {
     next($this->components);
@@ -108,6 +110,8 @@ class Iterator implements NativeIterator, ContentInterface, TraversableInterface
 
   /**
    * Rewinds the Iterator to the first element
+   * 
+   * @return void
    */
   public function rewind() {
     reset($this->components);

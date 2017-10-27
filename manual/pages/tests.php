@@ -2,8 +2,18 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
+
 echo "<pre>";
-echo "multi:\n------\n";
+echo "Validable:\n------\n";
+$regexp = ValidableAttribute::regexp('regexp', '/^[abc]*$/');
+try {
+  $regexp->set('Abc');
+} catch (\Exception $ex) {
+  echo new ThrowableCallout($ex);
+}
+echo $regexp->set('abccbaacabc');
+echo "\nmulti:\n------\n";
 $multi = new MultiValueAttribute('title');
 $uniq = new AtomicMultiValueAttribute('coords');
 $multi->set(1, 'a', 2, 3, new \stdClass());
