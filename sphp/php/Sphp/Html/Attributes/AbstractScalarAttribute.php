@@ -18,16 +18,7 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ValidableAttribute extends AbstractAttribute implements LockableAttributeInterface {
-
-  const INT = 0b000001;
-  const FLOAT = 0b000011;
-  const STRING = 0b000100;
-  const BOOL = 0b001000;
-  const SIGNED = 0b010000;
-  const UNSSIGNED = 0b100000;
-  CONST SCALAR = 0b111111;
-  CONST REGEXP = 'regexp';
+abstract class AbstractScalarAttribute extends AbstractAttribute implements LockableAttributeInterface {
 
   /**
    * @var mixed 
@@ -39,37 +30,7 @@ class ValidableAttribute extends AbstractAttribute implements LockableAttributeI
    */
   private $locked = false;
 
-  /**
-   * @var mixed
-   */
-  private $options;
-  private $type;
-
-  /**
-   * Constructs a new instance
-   *
-   * @param string $name the name of the attribute
-   * @param mixed $value value to set
-   * @param array $settings
-   */
-  public function __construct(string $name, $type = self::SCALAR, $options = null) {
-    $this->type = $type;
-    $this->options = $options;
-    parent::__construct($name);
-  }
-
-  public function isValidValue($value): bool {
-    switch ($this->type) {
-      case self::REGEXP:
-        $isValid = \Sphp\Stdlib\Strings::match($value, $this->options);
-        break;
-
-      default:
-        $isValid = is_scalar($value) || is_null($value);
-        break;
-    }
-    return $isValid;
-  }
+  abstract public function isValidValue($value): bool;
 
   public function clear() {
     if ($this->isLocked()) {
@@ -98,14 +59,10 @@ class ValidableAttribute extends AbstractAttribute implements LockableAttributeI
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     if (!$this->isValidValue($value)) {
-      throw new InvalidAttributeException("Value '$value' is invalid for '{$this->getName()}' attribute");
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
     }
     $this->value = $value;
     return $this;
-  }
-
-  public static function regexp(string $name, string $pattern): AttributeInterface {
-    return new static($name, self::REGEXP, $pattern);
   }
 
 }

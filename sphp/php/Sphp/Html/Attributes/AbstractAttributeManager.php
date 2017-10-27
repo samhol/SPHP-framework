@@ -15,13 +15,16 @@ use Sphp\Html\Attributes\Exceptions\AttributeException;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
- * Class contains and manages all the attribute value pairs for a markup language tag
+ * Abstract implementation of attribute manager for HTML components
+ * 
+ * Class contains and manages attribute value pairs for a markup language based 
+ * object
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractAttributeManager implements Countable, Iterator {
+abstract class AbstractAttributeManager implements Countable, Iterator {
 
   /**
    * attributes as a (name -> value) map
@@ -302,7 +305,7 @@ class AbstractAttributeManager implements Countable, Iterator {
    * @return boolean true if the attribute is empty and false otherwise
    */
   public function isEmpty(string $name = null): bool {
-    if($name === null) {
+    if ($name === null) {
       return empty($this->attrs);
     }
     return $this->exists($name) && $this->getObject($name)->isEmpty();
@@ -356,6 +359,7 @@ class AbstractAttributeManager implements Countable, Iterator {
     }
     return $value;
   }
+
   /**
    * Returns the instance of the inner attribute object if it is mapped
    *

@@ -5,14 +5,24 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
 echo "<pre>";
+var_dump(filter_var('0.0', FILTER_VALIDATE_INT));
+var_dump(filter_var('0', FILTER_VALIDATE_INT));
+var_dump(filter_var(0.0, FILTER_VALIDATE_INT));
+var_dump(filter_var('a', FILTER_VALIDATE_INT));
+var_dump(('foo' == "" . intval('foo')));
 echo "Validable:\n------\n";
-$regexp = ValidableAttribute::regexp('regexp', '/^[abc]*$/');
+$regexp = new PatternAttribute('regexp', '/^[abc]*$/');
+$int = new IntegerAttribute('int');
+$intWithMin = new IntegerAttribute('int', -1);
 try {
-  $regexp->set('Abc');
+  //$regexp->set('Abc');
+  $int->set('foo');
 } catch (\Exception $ex) {
   echo new ThrowableCallout($ex);
 }
-echo $regexp->set('abccbaacabc');
+echo $regexp->set('abccbaacabc') . "\n";
+echo $int->set('1') . "\n";
+echo $intWithMin->set('-1') . "\n";
 echo "\nmulti:\n------\n";
 $multi = new MultiValueAttribute('title');
 $uniq = new AtomicMultiValueAttribute('coords');

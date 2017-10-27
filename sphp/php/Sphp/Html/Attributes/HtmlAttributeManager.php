@@ -8,7 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 /**
- * Description of HtmlAttributeManager
+ * Implements default attribute manager for all HTML components
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3

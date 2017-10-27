@@ -8,7 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 /**
- * Description of BooleanAttribute
+ * Implements a boolean attribute
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @since   2017-10-24

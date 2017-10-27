@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Attribute.php (UTF-8)
+ * IntegerAttribute.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -18,35 +18,32 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Attribute extends AbstractScalarAttribute {
+class IntegerAttribute extends Attribute {
 
   /**
    * @var AttributeValueValidatorInterface|null 
    */
-  private $validator;
+  private $range = [];
 
   /**
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param mixed $value value to set
-   * @param AttributeValueValidatorInterface $validator
+   * @param int|null $min
+   * @param int|null $max
    */
-  public function __construct(string $name, $value = null, AttributeValueValidatorInterface $validator = null) {
-    $this->validator = $validator;
+  public function __construct(string $name, int $min = null, int $max = null) {
     parent::__construct($name);
-    if ($value !== null) {
-      $this->set($value);
+    if ($min !== null) {
+      $this->range['options']['min_range'] = $min;
+    }
+    if ($max !== null) {
+      $this->range['options']['max_range'] = $max;
     }
   }
 
   public function isValidValue($value): bool {
-    if ($this->validator !== null) {
-      $isValid = $this->validator->isValidValue($value);
-    } else {
-      $isValid = is_scalar($value) || is_null($value);
-    }
-    return $isValid;
+    return filter_var($value, \FILTER_VALIDATE_INT, $this->range) !== false;
   }
 
 }

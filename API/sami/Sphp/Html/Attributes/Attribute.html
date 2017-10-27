@@ -79,15 +79,14 @@
     </div>
 
     <p>    class
-    <strong>Attribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a href="../../../Sphp/Html/Attributes/LockableAttributeInterface.html"><abbr title="Sphp\Html\Attributes\LockableAttributeInterface">LockableAttributeInterface</abbr></a>
+    <strong>Attribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of IdentityAttribute</p>                                </div>
+            <p>Default implementation of an attribute</p>                                </div>
     
     
     
@@ -100,7 +99,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
+                    <a href="#method___construct">__construct</a>(string $name, mixed $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -204,7 +203,7 @@
                     <a href="#method_clear">clear</a>()
         
                                             <p>Removes all non locked values from the attribute</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_clear"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -214,7 +213,7 @@
                     <a href="#method_getValue">getValue</a>()
         
                                             <p>Returns the value of the attribute</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_getValue"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -224,7 +223,7 @@
                     <a href="#method_isLocked">isLocked</a>()
         
                                             <p>Checks whether the attribute has a locked value or not</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_isLocked"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -234,7 +233,7 @@
                     <a href="#method_lock">lock</a>(scalar $value)
         
                                             <p>Locks the given value to the attribute</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_lock"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -244,7 +243,7 @@
                     <a href="#method_set">set</a>(mixed $value)
         
                                             <p>Sets the value of the attribute</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_set"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a></small></div>
             </div>
             </div>
 
@@ -254,9 +253,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 44</div>
+        <div class="location">at         line 35</div>
         <code>                    
-    <strong>__construct</strong>(string $name, $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
+    <strong>__construct</strong>(string $name, mixed $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         </code>
     </h3>
     <div class="details">
@@ -275,9 +274,9 @@
                 <td>the name of the attribute</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$value</td>
-                <td></td>
+                <td>value to set</td>
             </tr>
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a></td>
@@ -530,7 +529,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidValue">
-        <div class="location">at         line 52</div>
+        <div class="location">at         line 43</div>
         <code>                    
     <strong>isValidValue</strong>($value)
         </code>
@@ -559,7 +558,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 61</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_clear"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a> at         line 35</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>clear</strong>()
         </code>
@@ -589,7 +588,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 69</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_getValue"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a> at         line 43</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -625,7 +624,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isLocked">
-        <div class="location">at         line 73</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_isLocked"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a> at         line 47</div>
         <code>                    boolean
     <strong>isLocked</strong>()
         </code>
@@ -655,7 +654,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">at         line 77</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_lock"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a> at         line 51</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(scalar $value)
         </code>
@@ -708,7 +707,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 83</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractScalarAttribute.html#method_set"><abbr title="Sphp\Html\Attributes\AbstractScalarAttribute">AbstractScalarAttribute</abbr></a> at         line 57</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(mixed $value)
         </code>
