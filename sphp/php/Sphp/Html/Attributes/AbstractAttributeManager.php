@@ -316,7 +316,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    *
    * @param  string $name the name of the attribute
    * @return $this for a fluent interface
-   * @throws ImmutableAttributeException if the attribute is immutable
+   * @throws ImmutableAttributeException if the attribute value is protected
    */
   public function remove(string $name) {
     if ($this->exists($name)) {
@@ -375,10 +375,10 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   }
 
   /**
-   * Checks if an attribute name exists in the manager
+   * Checks if named attribute instance exists in the manager
    *
    * @param  string $name the name of the attribute
-   * @return boolean true if the attribute exists and false otherwise
+   * @return boolean true if the attribute instance exists and false otherwise
    */
   public function exists(string $name): bool {
     return isset($this->attrs[$name]);
@@ -439,3 +439,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   }
 
 }
+
+
+
+
