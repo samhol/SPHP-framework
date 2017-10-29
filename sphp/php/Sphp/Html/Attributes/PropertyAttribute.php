@@ -97,7 +97,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function setProperty(string $property, $value) {
-    if ($this->isLocked($property)) {
+    if ($this->isProtected($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is unmodifiable");
     }
     if (!$this->parser->isValidPropertyName($property)) {
@@ -139,7 +139,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * @throws ImmutableAttributeException if the property is immutable
    */
   public function unsetProperty($name) {
-    if ($this->isLocked($name)) {
+    if ($this->isProtected($name)) {
       throw new ImmutableAttributeException("'" . $this->getName() . "' property '$name' is immutable");
     } else {
       unset($this->props[$name], $this->lockedProps[$name]);
@@ -202,7 +202,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    *         checks if any of the stored properties are locked
    * @return boolean true if locked and false otherwise
    */
-  public function isLocked(string $property = null): bool {
+  public function isProtected(string $property = null): bool {
     if ($property === null) {
       return in_array(true, $this->lockedProps);
     }
@@ -221,7 +221,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * @throws ImmutableAttributeException if any of the properties is already locked
    */
   public function lockProperty(string $property, $value) {
-    if ($this->isLocked($property)) {
+    if ($this->isProtected($property)) {
       throw new ImmutableAttributeException("'{$this->getName()}' property '$property' is immutable");
     }
     $this->setProperty($property, $value);
@@ -257,7 +257,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * @throws AttributeException if any of the properties has empty name or value
    * @throws ImmutableAttributeException if any of the properties is already immutable
    */
-  public function lock($props = null) {
+  public function protect($props = null) {
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {

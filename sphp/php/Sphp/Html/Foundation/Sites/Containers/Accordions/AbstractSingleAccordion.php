@@ -36,7 +36,7 @@ class AbstractSingleAccordion extends AbstractComponent {
       $pane = new Pane();
     }
     parent::__construct('ul');
-    $this->cssClasses()->lock("accordion");
+    $this->cssClasses()->protect("accordion");
     $this->attrs()
             ->lock("data-allow-all-closed", "true")
             ->demand("data-accordion");

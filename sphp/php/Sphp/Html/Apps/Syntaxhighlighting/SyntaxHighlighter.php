@@ -76,7 +76,7 @@ class SyntaxHighlighter extends AbstractComponent implements SyntaxHighlighterIn
    */
   public function __construct() {
     parent::__construct('div');
-    $this->cssClasses()->lock("GeSHi sphp-syntax-highlighter");
+    $this->cssClasses()->protect("GeSHi sphp-syntax-highlighter");
     $this->initGeshi();
     $this->setSyntaxBlockId();
     $footerText = "Highlighted with <strong>GeSHi " . $this->geshi->get_version() . "</strong>";

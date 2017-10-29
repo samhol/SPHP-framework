@@ -31,7 +31,7 @@ class TabControllerContainer extends AbstractContainerComponent implements Itera
   public function __construct() {
     parent::__construct('ul');
     $this->identify();
-    $this->cssClasses()->lock('tabs');
+    $this->cssClasses()->protect('tabs');
     $this->attrs()->demand('data-tabs');
   }
 

@@ -31,7 +31,7 @@ class TabController extends AbstractContainerTag implements TabControllerInterfa
     $innerContainer = new ContainerTag('a', $title);
     $innerContainer->attrs()->lock('href', '#' . $tabPanel->identify());
     parent::__construct('li', null, $innerContainer);
-    $this->cssClasses()->lock('tabs-title');
+    $this->cssClasses()->protect('tabs-title');
   }
 
   public function setActive(bool $active = true) {

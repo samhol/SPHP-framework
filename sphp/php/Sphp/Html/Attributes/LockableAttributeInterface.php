@@ -34,7 +34,7 @@ interface LockableAttributeInterface extends AttributeInterface {
    * 
    * @return boolean true if the attribute has a locked value and false otherwise
    */
-  public function isLocked(): bool;
+  public function isProtected(): bool;
 
   /**
    * Locks the given value to the attribute
@@ -44,5 +44,5 @@ interface LockableAttributeInterface extends AttributeInterface {
    * @throws AttributeException if the attribute value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
-  public function lock($value);
+  public function protect($value);
 }

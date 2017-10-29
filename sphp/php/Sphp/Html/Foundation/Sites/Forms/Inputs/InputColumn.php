@@ -78,7 +78,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
     $this->label = new Label();
     $this->input = $input;
     $this->errorField = new Span();
-    $this->errorField->cssClasses()->lock('form-error');
+    $this->errorField->cssClasses()->protect('form-error');
     $this->reflector = new ReflectionClass($this->input);
     $this->label->offsetSet('labelText', '');
     $this->label->offsetSet('input', $this->input);
@@ -155,7 +155,7 @@ class InputColumn extends AbstractComponent implements InputColumnInterface {
    */
   public function setHelperText($text) {
     $this->helper = new Paragraph($text);
-    $this->helper->cssClasses()->lock('help-text');
+    $this->helper->cssClasses()->protect('help-text');
     return $this;
   }
 

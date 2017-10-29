@@ -147,7 +147,7 @@ class CodeExampleBuilder implements \Sphp\Html\ContentInterface {
     $accordion = new Accordion();
     $accordion->allowAllClosed()
             ->allowMultiExpand();
-    $accordion->cssClasses()->lock('manual');
+    $accordion->cssClasses()->protect('manual');
     $accordion->append($this->getCodePane());
     if ($this->getHighlightOutput()) {
       $accordion->append($this->buildHighlightedOutput());

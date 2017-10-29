@@ -83,7 +83,7 @@ abstract class AbstractAttribute implements AttributeInterface {
   }
 
   public function isDemanded(): bool {
-    return $this->required || $this->isLocked();
+    return $this->required || $this->isProtected();
   }
 
   public function isVisible(): bool {

@@ -108,8 +108,8 @@ class PropertyAttributeTest extends AttributeObjectTest {
     $this->attrs->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
-    $this->assertFalse($this->attrs->isLocked());
-    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->isProtected());
+    $this->assertFalse($this->attrs->isProtected($value));
     $this->assertFalse($this->attrs->isDemanded());
     $this->assertEquals($this->attrs->getValue(), $expected);
   }
@@ -158,10 +158,10 @@ class PropertyAttributeTest extends AttributeObjectTest {
     echo "testLockPropertiesMethod\n";
     var_dump($props);
     $this->attrs->lockProperties($props);
-    $this->assertTrue($this->attrs->isLocked());
+    $this->assertTrue($this->attrs->isProtected());
     $this->attrs->clear();
     foreach ($props as $p => $v) {
-      $this->assertTrue($this->attrs->isLocked($p));
+      $this->assertTrue($this->attrs->isProtected($p));
       $this->propEqualsTest($this->attrs, $p, $v);
     }
   }
@@ -222,12 +222,12 @@ class PropertyAttributeTest extends AttributeObjectTest {
     $addedProps = array_keys(PropertyAttribute::parse($setProps));
     $lockedProps = array_keys(PropertyAttribute::parse($lock));
     $this->attrs->set($setProps);
-    $this->assertTrue($this->attrs->isLocked() === false);
+    $this->assertTrue($this->attrs->isProtected() === false);
     $this->assertEquals($this->attrs->count(), count($addedProps));
-    $this->attrs->lock($lock);
-    $this->assertTrue($this->attrs->isLocked());
-    $this->assertFalse($this->attrs->isLocked($addedProps));
-    $this->assertTrue($this->attrs->isLocked($lockedProps));
+    $this->attrs->protect($lock);
+    $this->assertTrue($this->attrs->isProtected());
+    $this->assertFalse($this->attrs->isProtected($addedProps));
+    $this->assertTrue($this->attrs->isProtected($lockedProps));
     $this->attrs->clear();
     $this->assertTrue($this->attrs->count() === count($lockedProps));
   }

@@ -57,17 +57,17 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * @param string|null $srText text for screen readers
    */
   public function __construct(Choicebox $box, $srText = "") {
-    $box->cssClasses()->lock('switch-input');
+    $box->cssClasses()->protect('switch-input');
     parent::__construct('div');
     $this->input = $box;
     $this->cssClasses()
-            ->lock('switch');
+            ->protect('switch');
     $box->identify();
     $this->screenReaderLabel = new ScreenReaderLabel($srText);
     $this->paddle = new Label(null, $this->input);
     $this->paddle->offsetSet('screenReaderLabel', $this->screenReaderLabel);
     $this->paddle->cssClasses()
-            ->lock('switch-paddle');
+            ->protect('switch-paddle');
   }
 
   public function setScreenReaderLabel($label) {
@@ -129,11 +129,11 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
     $activeLabel = new Span($active);
     $activeLabel->attrs()
             ->lock('aria-hidden', 'true')
-            ->classes()->lock('switch-active');
+            ->classes()->protect('switch-active');
     $inactiveLabel = new Span($inactive);
     $inactiveLabel->attrs()
             ->lock('aria-hidden', 'true')
-            ->classes()->lock('switch-inactive');
+            ->classes()->protect('switch-inactive');
     $this->paddle->offsetSet('switch-active', $activeLabel);
     $this->paddle->offsetSet('switch-inactive', $inactiveLabel);
     return $this;

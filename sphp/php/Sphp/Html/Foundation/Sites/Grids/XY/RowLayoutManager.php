@@ -29,7 +29,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    */
   public function __construct(ComponentInterface $component) {
     parent::__construct($component);
-    $this->cssClasses()->lock('grid-x');
+    $this->cssClasses()->protect('grid-x');
   }
 
   public function setLayouts($layout) {

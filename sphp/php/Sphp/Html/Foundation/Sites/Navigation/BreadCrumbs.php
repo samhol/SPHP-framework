@@ -40,9 +40,9 @@ class BreadCrumbs extends AbstractContainerComponent implements IteratorAggregat
    */
   public function __construct($content = null) {
     $ul = new Ul();
-    $ul->cssClasses()->lock('breadcrumbs');
+    $ul->cssClasses()->protect('breadcrumbs');
     parent::__construct('nav', null, $ul);
-    $this->cssClasses()->lock('breadcrumbs');
+    $this->cssClasses()->protect('breadcrumbs');
     //$this->attrs()->lock('role', 'navigation');
     $this->attrs()->set('aria-label', 'breadcrumbs');
     if ($content !== null) {

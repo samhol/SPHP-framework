@@ -29,7 +29,7 @@ class ScreenReaderLabel extends Span {
    */
   public function __construct($content = '') {
     parent::__construct($content);
-    $this->cssClasses()->lock('show-for-sr');
+    $this->cssClasses()->protect('show-for-sr');
   }
 
 }

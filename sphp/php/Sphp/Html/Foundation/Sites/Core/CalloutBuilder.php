@@ -111,7 +111,7 @@ class CalloutBuilder implements ErrorListener {
   protected function buildCallout(int $errno): Callout {
     $callout = new Callout();
     $callout->setClosable($this->closable);
-    $callout->cssClasses()->lock('alert-box');
+    $callout->cssClasses()->protect('alert-box');
     if (\E_WARNING & $errno || \E_NOTICE || \E_USER_NOTICE & $errno || \E_USER_WARNING & $errno) {
       $callout->addCssClass('warning');
     }

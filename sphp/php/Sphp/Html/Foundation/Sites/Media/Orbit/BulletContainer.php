@@ -31,7 +31,7 @@ class BulletContainer extends AbstractContainerComponent {
     for ($i = 0; $i < $count; $i++) {
       $this->set($i);
     }
-    $this->cssClasses()->lock('orbit-bullets');
+    $this->cssClasses()->protect('orbit-bullets');
   }
 
   /**

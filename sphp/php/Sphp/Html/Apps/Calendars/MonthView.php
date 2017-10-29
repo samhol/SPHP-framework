@@ -29,7 +29,7 @@ class MonthView extends \Sphp\Html\AbstractComponent {
 
   public function __construct($year = null, $month = null) {
     parent::__construct('div');
-    $this->cssClasses()->lock('calendar');
+    $this->cssClasses()->protect('calendar');
     if ($year === null) {
       $year = (int) date("Y", time());
     }
@@ -93,7 +93,7 @@ class MonthView extends \Sphp\Html\AbstractComponent {
 
   protected function createDayCell(DateTimeInterface $day) {
     $td = new Td($day->format('j'));
-    $td->cssClasses()->lock($day->format('l'));
+    $td->cssClasses()->protect($day->format('l'));
     return $td;
   }
 

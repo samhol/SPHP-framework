@@ -38,7 +38,7 @@ class TitleBarContentArea extends BarContentArea {
   public function __construct($side) {
     parent::__construct('div');
     $this->side = $side;
-    $this->cssClasses()->lock("title-bar-$side");
+    $this->cssClasses()->protect("title-bar-$side");
   }
 
   public function __destruct() {
@@ -75,7 +75,7 @@ class TitleBarContentArea extends BarContentArea {
    */
   public function setTitle($title) {
     $this->title = new Span($title);
-    $this->title->cssClasses()->lock('title-bar-title');
+    $this->title->cssClasses()->protect('title-bar-title');
     return $this;
   }
 

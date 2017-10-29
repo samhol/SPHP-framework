@@ -28,7 +28,7 @@ $multi->set(1, 'a', 2, 3, new \stdClass());
 $multi->add('foo');
 $multi->add('" bar="');
 var_dump($multi->isDemanded());
-$multi->lock('lock');
+$multi->protect('lock');
 var_dump($multi->isDemanded());
 echo "\n<span $multi> $multi </span>";
 $multi->clear();

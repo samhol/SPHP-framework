@@ -12,8 +12,8 @@ $id->set('foo-button');
 $bool->set(false);
 $classes->remove("tiny");
 echo "<button $classes $bool $id>button</button>\n";
-$bool->lock(true);
-$classes->lock('button')->clear();
+$bool->protect(true);
+$classes->protect('button')->clear();
 echo "<button $classes $bool $id>button</button>\n";
 
 

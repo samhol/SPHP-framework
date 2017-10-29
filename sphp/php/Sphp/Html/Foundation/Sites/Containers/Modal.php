@@ -65,7 +65,7 @@ class Modal implements ContentInterface, ClosableInterface {
     }
     $this->popup = $popup;
     $this->popup->identify();
-    $this->popup->cssClasses()->lock('reveal');
+    $this->popup->cssClasses()->protect('reveal');
     $this->popup->attrs()->demand('data-reveal');
     $this->trigger = $this->createController($trigger);
   }

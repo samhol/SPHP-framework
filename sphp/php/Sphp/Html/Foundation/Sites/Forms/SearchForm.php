@@ -56,7 +56,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
 
   public function setSearchField(TextInput $searchField) {
     $this->searchField = $searchField;
-    $this->searchField->cssClasses()->lock('input-group-field');
+    $this->searchField->cssClasses()->protect('input-group-field');
     return $this;
   }
 
@@ -71,7 +71,7 @@ class SearchForm extends \Sphp\Html\AbstractComponent implements FormInterface {
    */
   public function setSubmitButton(SubmitterInterface $submitButton) {
     $this->submitButton = $submitButton;
-    $this->submitButton->cssClasses()->lock('button');
+    $this->submitButton->cssClasses()->protect('button');
     return $this;
   }
 

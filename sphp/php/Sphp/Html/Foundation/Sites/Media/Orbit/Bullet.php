@@ -66,9 +66,9 @@ class Bullet extends AbstractComponent {
       $slideText = "Slide " . ($this->number + 1) . ". details";
     }
     $this->srDescriptor = new Span($slideText);
-    $this->srDescriptor->cssClasses()->lock('show-for-sr');
+    $this->srDescriptor->cssClasses()->protect('show-for-sr');
     $this->currentDescriptor = new Span($currentSlideText);
-    $this->currentDescriptor->cssClasses()->lock('show-for-sr');
+    $this->currentDescriptor->cssClasses()->protect('show-for-sr');
     return $this;
   }
 

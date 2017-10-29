@@ -40,7 +40,7 @@ class Tooltip implements ContentInterface {
             ->demand('data-tooltip')
             ->lock('aria-haspopup', 'true')
             ->set('data-disable-hover', 'false');
-    $this->toolTipped->cssClasses()->lock('has-tip');
+    $this->toolTipped->cssClasses()->protect('has-tip');
     if ($tip !== null) {
       $this->setTip($tip);
     }

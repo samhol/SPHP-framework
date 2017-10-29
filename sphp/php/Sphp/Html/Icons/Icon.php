@@ -23,7 +23,7 @@ class Icon extends AbstractIcon {
    */
   public function __construct(string ... $classes) {
     parent::__construct('i');
-    $this->cssClasses()->lock($classes);
+    $this->cssClasses()->protect($classes);
   }
 
 }

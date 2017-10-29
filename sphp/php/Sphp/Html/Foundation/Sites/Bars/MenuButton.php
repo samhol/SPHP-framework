@@ -25,7 +25,7 @@ class MenuButton extends AbstractComponent {
    */
   public function __construct() {
     parent::__construct('button');
-    $this->cssClasses()->lock('menu-icon');
+    $this->cssClasses()->protect('menu-icon');
   }
 
   public function contentToString(): string {

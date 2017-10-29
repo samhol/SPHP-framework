@@ -37,14 +37,14 @@ class TopBar extends AbstractBar {
     if ($left === null) {
       $left = new BarContentArea('div');
     }
-    $left->cssClasses()->lock('top-bar-left');
+    $left->cssClasses()->protect('top-bar-left');
     if ($right === null) {
       $right = new BarContentArea('div');
     }
-    $right->cssClasses()->lock('top-bar-right');
+    $right->cssClasses()->protect('top-bar-right');
     parent::__construct('div', $left, $right);
     $this->barTitle($title);
-    $this->cssClasses()->lock('top-bar');
+    $this->cssClasses()->protect('top-bar');
   }
 
   public function __destruct() {
@@ -97,7 +97,7 @@ class TopBar extends AbstractBar {
   public function barTitle($title = null) {
     if ($title !== null) {
       $this->titleArea = new Div($title);
-      $this->titleArea->attrs()->classes()->lock('top-bar-title');
+      $this->titleArea->attrs()->classes()->protect('top-bar-title');
 
       $this->titleArea->replaceContent($title);
     } else {

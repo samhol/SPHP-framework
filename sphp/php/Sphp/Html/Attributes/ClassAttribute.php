@@ -109,7 +109,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
-  public function isLocked($values = null): bool {
+  public function isProtected($values = null): bool {
     if ($values === null) {
       return in_array(true, $this->values);
     } else {
@@ -137,7 +137,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    * @param  scalar|scalar[] $values the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function lock($values) {
+  public function protect($values) {
     $arr = $this->filter->filter(func_get_args());
     foreach ($arr as $class) {
       $this->values[$class] = true;

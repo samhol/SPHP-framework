@@ -65,7 +65,7 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
     //$this->mainLabel = new Legend($mainLabel)
     $this->setName($name)
             ->setOptions($values);
-    $this->cssClasses()->lock("sphp-choiceboxes $this->type");
+    $this->cssClasses()->protect("sphp-choiceboxes $this->type");
     $this->getInnerContainer()
             ->append($this->boxCont);
   }

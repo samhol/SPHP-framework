@@ -84,14 +84,14 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
     parent::__construct('div');
     $this->slides = new Ul();
     $this->slides->cssClasses()
-            ->lock('orbit-container');
+            ->protect('orbit-container');
     $this->bullets = new Nav();
     $this->bullets->cssClasses()
-            ->lock('orbit-bullets');
+            ->protect('orbit-bullets');
     $this->prev = '<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>';
     $this->next = '<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>';
     $this->cssClasses()
-            ->lock('orbit');
+            ->protect('orbit');
     $this->attrs()
             ->lock('role', 'region')
             ->setAria('label', $ariaLabel)

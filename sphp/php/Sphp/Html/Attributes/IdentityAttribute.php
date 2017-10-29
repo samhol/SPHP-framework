@@ -42,10 +42,10 @@ class IdentityAttribute extends Attribute {
    * @link   http://www.w3schools.com/tags/att_global_id.asp default id attribute
    */
   public function identify(int $length = 16): string {
-    if (!$this->isLocked()) {
+    if (!$this->isProtected()) {
       $storage = IdStorage::get($this->getName());
       $value = $storage->generateRandom($length);
-      $this->lock($value);
+      $this->protect($value);
     }
     return $this->getValue();
   }

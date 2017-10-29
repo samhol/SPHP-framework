@@ -61,7 +61,7 @@ class GridForm extends AbstractContainerComponent implements IteratorAggregate, 
       $this->append($content);
     }
     $this->errorLabel = new Callout('<i class="fi-alert"></i> There are some errors in your form.');
-    $this->errorLabel->cssClasses()->lock('alert');
+    $this->errorLabel->cssClasses()->protect('alert');
     $this->errorLabel->inlineStyles()->setProperty('display', 'none');
     $this->errorLabel->attrs()->demand('data-abide-error');
   }

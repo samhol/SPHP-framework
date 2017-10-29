@@ -122,7 +122,7 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, M
    * @param  null|scalar|scalar[] $values optional atomic values to check
    * @return boolean true if the given values are locked and false otherwise
    */
-  public function isLocked($values = null): bool {
+  public function isProtected($values = null): bool {
     if ($values === null) {
       return !empty($this->locked);
     } else {
@@ -143,7 +143,7 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, M
    * @param  scalar|scalar[] $values the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function lock($values) {
+  public function protect($values) {
     $parsed = $this->filter->filter(func_get_args());
     $this->values = array_unique(array_merge($this->values, $parsed));
     $this->locked = array_unique(array_merge($this->locked, $parsed));

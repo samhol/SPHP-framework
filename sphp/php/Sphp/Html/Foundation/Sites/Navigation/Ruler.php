@@ -23,7 +23,7 @@ class Ruler extends AbstractComponent implements MenuItemInterface {
    */
   public function __construct() {
     parent::__construct('li');
-    $this->cssClasses()->lock('menu-ruler');
+    $this->cssClasses()->protect('menu-ruler');
   }
   
   public function contentToString(): string {

@@ -35,7 +35,7 @@ class DateStamp extends AbstractComponent implements TimeTagInterface {
    */
   public function __construct(DateTimeInterface $datetime = null) {
     parent::__construct('time');
-    $this->cssClasses()->lock('date-icon');
+    $this->cssClasses()->protect('date-icon');
     if ($datetime === null) {
       $datetime = new DateTimeImmutable();
     }

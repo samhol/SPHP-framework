@@ -29,7 +29,7 @@ class AttributeMap {
   /**
    * attribute object type map as a (attribute name -> attribute object type) map
    *
-   * @var string[]
+   * @var mixed[]
    */
   private $map = [];
 
@@ -189,6 +189,7 @@ class AttributeMap {
   }
 
 }
+
 
 
 

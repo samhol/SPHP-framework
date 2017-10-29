@@ -29,7 +29,7 @@ class RowLayoutManager extends AbstractLayoutManager {
    */
   public function __construct(ComponentInterface $component) {
     parent::__construct($component);
-    $this->cssClasses()->lock('row');
+    $this->cssClasses()->protect('row');
   }
 
   public function setLayouts($layout) {

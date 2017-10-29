@@ -60,7 +60,7 @@ class ThrowableCallout extends Callout {
   public function __construct(Throwable $e, bool $showTrace = false, bool $showPreviousException = false) {
     $this->throwable = $e;
     parent::__construct();
-    $this->cssClasses()->lock('sphp-exception-callout');
+    $this->cssClasses()->protect('sphp-exception-callout');
     $this->showTrace($showTrace)
             ->showPreviousException($showPreviousException);
   }

@@ -30,7 +30,7 @@ class Callout extends ClosableContainer implements CalloutInterface {
    */
   public function __construct($content = null) {
     parent::__construct($content);
-    $this->cssClasses()->lock('callout');
+    $this->cssClasses()->protect('callout');
     $this->layoutManager = new CalloutLayoutManager($this);
   }
 

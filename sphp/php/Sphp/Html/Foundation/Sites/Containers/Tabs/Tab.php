@@ -35,7 +35,7 @@ class Tab extends AbstractContainerTag implements TabInterface {
   public function __construct($tab = null, $content = null) {
     parent::__construct('div');
     $this->identify();
-    $this->cssClasses()->lock("tabs-panel");
+    $this->cssClasses()->protect("tabs-panel");
     if ($content !== null) {
       $this->append($content);
     }

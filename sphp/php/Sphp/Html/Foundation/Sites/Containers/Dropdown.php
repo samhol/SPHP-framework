@@ -52,7 +52,7 @@ class Dropdown implements ContentInterface {
     }
     $this->dropdown = $dropdown;
     $this->dropdown->identify();
-    $this->dropdown->cssClasses()->lock('dropdown-pane');
+    $this->dropdown->cssClasses()->protect('dropdown-pane');
     $this->dropdown->attrs()->demand('data-dropdown');
     $this->setTrigger($trigger);
   }

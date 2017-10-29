@@ -28,7 +28,7 @@ class ColumnLayoutManager extends AbstractColumnLayoutManager {
    */
   public function __construct(ComponentInterface $component) {
     parent::__construct($component, 12);
-    $this->cssClasses()->lock('column');
+    $this->cssClasses()->protect('column');
   }
 
 }

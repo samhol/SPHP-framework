@@ -56,8 +56,8 @@ class BooleanAttributeTests extends \PHPUnit\Framework\TestCase {
    */
   public function testTrueSetting($value) {
     $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isLocked());
-    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->isProtected());
+    $this->assertFalse($this->attrs->isProtected($value));
     $this->assertFalse($this->attrs->isDemanded());
     $this->assertTrue($this->attrs->isVisible());
     $this->assertEquals($this->attrs->getValue(), true);
@@ -84,8 +84,8 @@ class BooleanAttributeTests extends \PHPUnit\Framework\TestCase {
    */
   public function testFalseSetting($value) {
     $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isLocked());
-    $this->assertFalse($this->attrs->isLocked($value));
+    $this->assertFalse($this->attrs->isProtected());
+    $this->assertFalse($this->attrs->isProtected($value));
     $this->assertFalse($this->attrs->isDemanded());
     $this->assertFalse($this->attrs->isVisible());
     $this->assertEquals($this->attrs->getValue(), false);
@@ -122,9 +122,9 @@ class BooleanAttributeTests extends \PHPUnit\Framework\TestCase {
    */
   public function testLockTrueValues($value) {
     $attr = $this->createAttr();
-    $this->assertFalse($attr->isLocked());
-    $attr->lock($value);
-    $this->assertTrue($attr->isLocked());
+    $this->assertFalse($attr->isProtected());
+    $attr->protect($value);
+    $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), true);
     $this->assertSame("$attr", $attr->getName());
     $this->expectException(ImmutableAttributeException::class);
@@ -138,9 +138,9 @@ class BooleanAttributeTests extends \PHPUnit\Framework\TestCase {
    */
   public function testLockFalseValues($value) {
     $attr = $this->createAttr();
-    $this->assertFalse($attr->isLocked());
-    $attr->lock($value);
-    $this->assertTrue($attr->isLocked());
+    $this->assertFalse($attr->isProtected());
+    $attr->protect($value);
+    $this->assertTrue($attr->isProtected());
     $this->assertEquals($attr->getValue(), false);
     $this->expectException(ImmutableAttributeException::class);
     $attr->clear();

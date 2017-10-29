@@ -44,7 +44,7 @@ class Slider extends AbstractSlider {
   public function __construct(int $start = 0, int $end = 100, int $value = 0, int $step = 1) {
     parent::__construct($start, $end, $step);
     $this->handle = new Span();
-    $this->handle->cssClasses()->lock('slider-handle');
+    $this->handle->cssClasses()->protect('slider-handle');
     $this->handle->attrs()
             ->demand('data-slider-handle')
             ->lock('role', 'slider')

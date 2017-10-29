@@ -33,7 +33,7 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
   abstract public function filterValue($value);
 
   public function clear() {
-    if ($this->isLocked()) {
+    if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     $this->value = null;
@@ -44,18 +44,18 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
     return $this->value;
   }
 
-  public function isLocked(): bool {
+  public function isProtected(): bool {
     return $this->locked;
   }
 
-  public function lock($value) {
+  public function protect($value) {
     $this->set($value);
     $this->locked = true;
     return $this;
   }
 
   public function set($value) {
-    if ($this->isLocked()) {
+    if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
     $this->value = $this->filterValue($value);

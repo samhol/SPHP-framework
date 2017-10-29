@@ -49,7 +49,7 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
    * @return $this for a fluent interface
    */
   protected function setSide($position) {
-    $this->cssClasses()->lock("position-$position");
+    $this->cssClasses()->protect("position-$position");
     return $this;
   }
 

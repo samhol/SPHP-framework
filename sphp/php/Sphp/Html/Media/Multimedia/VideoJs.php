@@ -29,7 +29,7 @@ class VideoJs extends AbstractMultimediaTag implements SizeableInterface {
    */
   public function __construct($sources = null) {
     parent::__construct('video', null, $sources);
-    $this->cssClasses()->lock(['video-js']);
+    $this->cssClasses()->protect(['video-js']);
     $this->identify();
     $this->attrs()->demand('data-setup');
   }

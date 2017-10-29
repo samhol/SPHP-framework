@@ -62,13 +62,13 @@ class RangeSlider extends AbstractSlider {
     $this->attrs()->demand('data-initial-end')
             ->set('data-initial-end', $max);
     $this->lowerHandle = new Span();
-    $this->lowerHandle->cssClasses()->lock('slider-handle');
+    $this->lowerHandle->cssClasses()->protect('slider-handle');
     $this->lowerHandle->attrs()
             ->demand('data-slider-handle')
             ->lock('role', 'slider')
             ->lock('tabindex', 1);
     $this->upperHandle = new Span();
-    $this->upperHandle->cssClasses()->lock('slider-handle');
+    $this->upperHandle->cssClasses()->protect('slider-handle');
     $this->upperHandle->attrs()
             ->demand('data-slider-handle')
             ->lock('role', 'slider')

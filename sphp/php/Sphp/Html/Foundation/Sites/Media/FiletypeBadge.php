@@ -35,7 +35,7 @@ class FiletypeBadge extends Badge {
     }
     $icon = Icons::fileType($file);
     parent::__construct($icon);
-    $this->cssClasses()->lock($file->getExtension());
+    $this->cssClasses()->protect($file->getExtension());
   }
 
 }

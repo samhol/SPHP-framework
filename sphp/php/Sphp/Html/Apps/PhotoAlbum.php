@@ -55,7 +55,7 @@ class PhotoAlbum extends AbstractContainerComponent {
             ->build()
             ->setHeading($albumName)
             ->identify();
-    $this->cssClasses()->lock("sphp-photoAlbum reveal-modal full");
+    $this->cssClasses()->protect("sphp-photoAlbum reveal-modal full");
     $this->attrs()->demand("data-reveal");
     //->appendScriptPath("sph/js/vendor/jquery.js")
     //->appendScriptPath("sph/js/vendor/jquery.unveil.min.js")

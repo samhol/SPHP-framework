@@ -23,7 +23,7 @@ class TitleBar extends AbstractBar {
    */
   public function __construct() {
     parent::__construct('div', new TitleBarContentArea('left'), new TitleBarContentArea('right'));
-    $this->cssClasses()->lock('title-bar');
+    $this->cssClasses()->protect('title-bar');
   }
 
 }

@@ -32,7 +32,7 @@ class Accordion extends AbstractContainerComponent implements IteratorAggregate,
    */
   public function __construct($content = null) {
     parent::__construct('ul');
-    $this->cssClasses()->lock('accordion');
+    $this->cssClasses()->protect('accordion');
     $this->attrs()->demand('data-accordion');
     if ($content !== null) {
       foreach (is_array($content) ? $content : [$content] as $c) {

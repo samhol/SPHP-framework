@@ -47,7 +47,7 @@ class BackToTopButton implements ContentInterface {
   }
 
   public static function fromIcon(AbstractIcon $icon): BackToTopButton {
-    $icon->cssClasses()->lock('sphp-back-to-top-button');
+    $icon->cssClasses()->protect('sphp-back-to-top-button');
     return new static($icon);
   }
 

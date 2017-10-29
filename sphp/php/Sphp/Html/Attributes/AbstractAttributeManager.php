@@ -274,7 +274,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
     if (!$this->exists($name)) {
       return false;
     } else {
-      return $this->createObject($name)->isLocked();
+      return $this->createObject($name)->isProtected();
     }
   }
 
@@ -294,7 +294,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function lock(string $name, $value) {
-    $this->createObject($name)->lock($value);
+    $this->createObject($name)->protect($value);
     return $this;
   }
 

@@ -22,7 +22,7 @@ class Badge extends AbstractComponent {
 
   public function __construct($content = null) {
     parent::__construct('span');
-    $this->cssClasses()->lock('badge');
+    $this->cssClasses()->protect('badge');
     if ($content !== null) {
       $this->content = $content;
     }
