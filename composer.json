@@ -31,6 +31,7 @@
     "imagine/imagine": "^0.7",
     "erusev/parsedown-extra": "^0.7.0",
     "geshi/geshi": "^1",
+    "pimple/pimple": "*",
     "jdorn/sql-formatter": "^1.2",
     "gajus/dindent": "^2.0",
     "zendframework/zend-cache": "*",

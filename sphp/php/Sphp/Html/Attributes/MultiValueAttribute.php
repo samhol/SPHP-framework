@@ -294,4 +294,3 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
   }
 
 }
-

@@ -4,11 +4,13 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
-echo "<pre>";
-$string = "Match this string";
 
-var_dump(filter_var($string, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/foo/"))));
-echo "Validable:\n------\n";
+$gen = new AttributeMap();
+$gen->mapObject('blaa', PatternAttribute::class, ['/^foobar*$/']);
+echo "<pre>";
+$fooAttr = $gen->createObject('blaa');
+$fooAttr->set('foobar');
+echo $fooAttr . "\n";
 $regexp = new PatternAttribute('regexp', '/^[abc]*$/');
 $int = new IntegerAttribute('int');
 $intWithMin = new IntegerAttribute('int', -1);
@@ -42,11 +44,10 @@ $boolAttr = new BooleanAttribute('data-bool', 'true');
 echo "\nattr: $boolAttr";
 $boolAttr->set('0');
 echo "\nattr: $boolAttr";
-$boolAttr->set('foo');
+$boolAttr->set('YES');
 echo "\nattr: $boolAttr";
-$boolAttr->set('foo');
+$boolAttr->set('on');
 echo "\nattr: $boolAttr";
-var_dump(get_html_translation_table());
 
 namespace Sphp\Html\Attributes\Utils;
 
@@ -59,6 +60,20 @@ var_dump($u->getUtil(ClassAttributeUtils::class));
 
 
 echo "</pre>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

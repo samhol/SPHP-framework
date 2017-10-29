@@ -7,9 +7,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
 
 /**
  * Default implementation of an attribute
@@ -21,9 +19,9 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
 class IntegerAttribute extends Attribute {
 
   /**
-   * @var AttributeValueValidatorInterface|null 
+   * @var array 
    */
-  private $range = [];
+  private $options = [];
 
   /**
    * Constructs a new instance
@@ -35,15 +33,19 @@ class IntegerAttribute extends Attribute {
   public function __construct(string $name, int $min = null, int $max = null) {
     parent::__construct($name);
     if ($min !== null) {
-      $this->range['options']['min_range'] = $min;
+      $this->options['options']['min_range'] = $min;
     }
     if ($max !== null) {
-      $this->range['options']['max_range'] = $max;
+      $this->options['options']['max_range'] = $max;
     }
   }
 
-  public function isValidValue($value): bool {
-    return filter_var($value, \FILTER_VALIDATE_INT, $this->range) !== false;
+  public function filterValue($value) {
+    $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
+    if ($filtered === false) {
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' integer attribute");
+    }
+    return $filtered;
   }
 
 }

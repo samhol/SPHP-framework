@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
 
@@ -40,13 +39,16 @@ class Attribute extends AbstractScalarAttribute {
     }
   }
 
-  public function isValidValue($value): bool {
+  public function filterValue($value) {
     if ($this->validator !== null) {
       $isValid = $this->validator->isValidValue($value);
     } else {
       $isValid = is_scalar($value) || is_null($value);
     }
-    return $isValid;
+    if (!$isValid) {
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
+    }
+    return $value;
   }
 
 }

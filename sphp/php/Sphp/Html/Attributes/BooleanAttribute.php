@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
+
 /**
  * Implements a boolean attribute
  *
@@ -15,7 +17,7 @@ namespace Sphp\Html\Attributes;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class BooleanAttribute extends Attribute {
+class BooleanAttribute extends AbstractScalarAttribute {
 
   /**
    * Constructs a new instance
@@ -28,9 +30,12 @@ class BooleanAttribute extends Attribute {
     $this->set($value);
   }
 
-  public function set($value) {
-    parent::set((bool)$value);
+  public function filterValue($value) {
+    $filtered = filter_var($value, \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE);
+    if ($filtered === null) {
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' boolean attribute");
+    }
+    return $filtered;
   }
 
 }
-

@@ -30,7 +30,7 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
    */
   private $locked = false;
 
-  abstract public function isValidValue($value): bool;
+  abstract public function filterValue($value);
 
   public function clear() {
     if ($this->isLocked()) {
@@ -58,10 +58,7 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
     if ($this->isLocked()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    if (!$this->isValidValue($value)) {
-      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
-    }
-    $this->value = $value;
+    $this->value = $this->filterValue($value);
     return $this;
   }
 

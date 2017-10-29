@@ -4,6 +4,7 @@
  * MultiValueAttributeInterface.php (UTF-8)
  * Copyright (c) 2015 Sami Holck <sami.holck@gmail.com>
  */
+
 namespace Sphp\Html\Attributes;
 
 use Countable;
@@ -18,10 +19,5 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @filesource
  */
 interface MultiValueAttributeInterface extends LockableAttributeInterface, Countable, Traversable, Arrayable {
-
+  
 }
-
-
-
-
-

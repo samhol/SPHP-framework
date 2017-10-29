@@ -249,6 +249,3 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
   }
 
 }
-
-
-

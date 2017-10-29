@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Attributes;
 
-use Sphp\Stdlib\Strings;
+use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
  * Implements a regular expression validable attribute
@@ -34,8 +34,12 @@ class PatternAttribute extends AbstractScalarAttribute {
     parent::__construct($name);
   }
 
-  public function isValidValue($value): bool {
-    return Strings::match($value, $this->pattern);
+  public function filterValue($value) {
+    $filtered = filter_var($value, \FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => $this->pattern)));
+    if (!$filtered) {
+      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' pattern attribute");
+    }
+    return $value;
   }
 
 }
