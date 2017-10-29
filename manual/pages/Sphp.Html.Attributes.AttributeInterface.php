@@ -11,10 +11,10 @@ $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $idAttr = Manual\api()->classLinker(IdentityAttribute::class);
 $attr= Manual\api()->classLinker(Attribute::class);
 $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
-$setMethod = $abstractAttr->methodLink("set");
-$clearMethod = $abstractAttr->methodLink("clear");
-$requireMethod = $abstractAttr->methodLink("demand");
-$lockMethod = $abstractAttr->methodLink("lock");
+$setMethod = $abstractAttr->methodLink('set');
+$clearMethod = $abstractAttr->methodLink('clear');
+$requireMethod = $abstractAttr->methodLink('demand');
+$lockMethod = $abstractAttr->methodLink('protect');
 
 Manual\parseDown(<<<MD
 ##HTML attribute objects <small>implementing $attributeInterface</small>

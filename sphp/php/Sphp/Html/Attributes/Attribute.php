@@ -17,7 +17,7 @@ use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class Attribute extends AbstractScalarAttribute {
+class Attribute extends PatternAttribute {
 
   /**
    * @var AttributeValueValidatorInterface|null 

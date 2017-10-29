@@ -439,7 +439,3 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   }
 
 }
-
-
-
-

@@ -19,7 +19,7 @@ Manual\parseDown(<<<MD
 MD
 );
 
-CodeExampleBuilder::build("Sphp/Html/Attributes/MultiValueAttribute.php", "html5", true)
+Manual\example('Sphp/Html/Attributes/IdAttribute.php', "html5", false)
         ->setExamplePaneTitle('Examples of attributes with multiple atomic values')
         ->printHtml();
 
