@@ -18,17 +18,3 @@ Manual\parseDown(<<<MD
 
 MD
 );
-
-Manual\example('Sphp/Html/Attributes/BooleanAttribute.php', 'html5', true)
-        ->setExamplePaneTitle('Examples of attributes with multiple atomic values')
-        ->printHtml();
-
-
-
-
-
-
-
-
-
-
