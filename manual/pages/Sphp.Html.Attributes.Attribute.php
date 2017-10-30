@@ -14,18 +14,18 @@ $boolAttr = Manual\api()->classLinker(BooleanAttribute::class);
 
 
 Manual\parseDown(<<<MD
-##$attribute object <small>implementing $attributeInterface</small>
+##$attributeInterface<small>basic defintition of all Attribute objects</small>
 
 MD
 );
 
-Manual\example('Sphp/Html/Attributes/Attribute.php', 'html5', true)
-        ->setExamplePaneTitle('Examples of attributes with multiple atomic values')
-        ->printHtml();
 
 Manual\loadPage('Sphp.Html.Attributes.IdAttribute');
 Manual\loadPage('Sphp.Html.Attributes.BooleanAttribute');
 
+Manual\example('Sphp/Html/Attributes/AttributeInterface.php', "html5", true)
+        ->setExamplePaneTitle('Examples of scalar attributes')
+        ->printHtml();
 
 
 

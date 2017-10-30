@@ -29,19 +29,12 @@ Any attribute class support at least these four value manipulation methods:
 3. **Value locking**: $lockMethod
    * Notes: attribute is always existent and contains atleast the locked value(s) and cannnot be removed
 4. **Clearing non locked attribute values**: $clearMethod
-        
-        
-Some build in attributes implementing $attributeInterface:
-        
-* $abstractAttr
-  * $attr
-  * $boolAttr
-  * $idAttr
-* 
+
 MD
 );
 
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.Attribute');
+\Sphp\Manual\loadPage('Sphp.Html.Attributes.AbstractScalarAttribute');
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
 \Sphp\Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
 
