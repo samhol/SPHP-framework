@@ -183,6 +183,19 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
     }
     return $this->attrs[$name];
   }
+  /**
+   * 
+   * @param  AttributeInterface $attr
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException
+   */
+  public function setInstance(AttributeInterface $attr) {
+    if (!$this->isValidType($attr->getName(), $attr)) {
+      throw new InvalidAttributeException('Invalid attributetype for '.$attr->getName().' attribute');
+    }
+    $this->attrs[$attr->getName()] = $attr;
+    return $this;
+  }
 
   /**
    * Sets an attribute name value pair

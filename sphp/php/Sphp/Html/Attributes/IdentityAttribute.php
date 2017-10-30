@@ -50,4 +50,12 @@ class IdentityAttribute extends PatternAttribute {
     return $this->getValue();
   }
 
+  public function getHtml(): string {
+    if ($this->getValue() == '') {
+      return '';
+    } else {
+      return parent::getHtml();
+    }
+  }
+
 }

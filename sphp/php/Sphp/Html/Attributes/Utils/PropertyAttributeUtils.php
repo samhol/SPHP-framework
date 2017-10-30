@@ -42,7 +42,7 @@ class PropertyAttributeUtils {
       }
     }
     return array_filter($parsed, function ($value, $prop) {
-      return $this->filterValue($value) && $this->isValidPropertyName($prop);
+      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
     }, \ARRAY_FILTER_USE_BOTH);
   }
 

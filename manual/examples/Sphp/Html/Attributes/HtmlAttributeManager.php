@@ -13,6 +13,7 @@ echo "<input $attrs>\n";
 $attrs->remove("disabled");
 echo "<input $attrs>\n";
 $attrs->set("value", false);
+$attrs->setInstance(new BooleanAttribute('required', true));
 echo "<input $attrs>\n";
 $attrs->set("placeholder", "First Name");
 echo "<input $attrs>\n";
