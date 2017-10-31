@@ -8,8 +8,6 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Utils\IdStorage;
-use Sphp\Html\Attributes\Utils\IdValidator;
-use Sphp\Html\Attributes\Utils\Factory;
 
 /**
  * Implements a unique id for an HTML element
@@ -59,3 +57,4 @@ class IdentityAttribute extends PatternAttribute {
   }
 
 }
+

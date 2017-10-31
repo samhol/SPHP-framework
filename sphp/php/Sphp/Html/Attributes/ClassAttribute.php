@@ -38,7 +38,13 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    */
   private $filter;
 
-  public function __construct(string $name, ClassAttributeUtils $filter = null) {
+  /**
+   * Constructs a new instance
+   * 
+   * @param string $name the name of the attribute
+   * @param ClassAttributeUtils|null $filter
+   */
+  public function __construct(string $name = 'class', ClassAttributeUtils $filter = null) {
     if ($filter === null) {
       $filter = Factory::instance()->getUtil(ClassAttributeUtils::class);
     }
@@ -249,3 +255,6 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
   }
 
 }
+
+
+

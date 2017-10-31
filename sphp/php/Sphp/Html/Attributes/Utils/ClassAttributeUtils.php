@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Attributes\Utils;
 
-use Sphp\Stdlib\Strings;
 use Sphp\Stdlib\Arrays;
 
 /**
@@ -41,8 +40,7 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
       $parsed = [$raw];
     }
     $vals = array_filter($parsed, 'is_string');
-
-    if (false) {
+    if ($validate) {
       foreach ($vals as $value) {
         if (!$this->isValidAtomicValue($value)) {
           throw new InvalidAttributeException("Invalid attribute value '$value'");
@@ -60,3 +58,6 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
   }
 
 }
+
+
+

@@ -9,7 +9,7 @@ namespace Sphp\Html\Attributes;
 
 use Iterator;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Utils\AtomicMultiValueAttributeUtils;
+use Sphp\Html\Attributes\Utils\UniqueMultiValueAttributeUtils;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 use Sphp\Html\Attributes\Utils\Factory;
 
@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Utils\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, MultiValueAttributeInterface {
+class UniqueMultiValueAttribute extends AbstractAttribute implements Iterator, MultiValueAttributeInterface {
 
   /**
    * stored individual values
@@ -37,7 +37,7 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, M
   private $locked = [];
 
   /**
-   * @var AtomicMultiValueAttributeUtils
+   * @var UniqueMultiValueAttributeUtils
    */
   private $filter;
 
@@ -45,11 +45,11 @@ class AtomicMultiValueAttribute extends AbstractAttribute implements Iterator, M
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param AtomicMultiValueAttributeUtils $u
+   * @param UniqueMultiValueAttributeUtils $u
    */
-  public function __construct(string $name, AtomicMultiValueAttributeUtils $u = null) {
+  public function __construct(string $name, UniqueMultiValueAttributeUtils $u = null) {
     if ($u === null) {
-      $u = Factory::instance()->getUtil(AtomicMultiValueAttributeUtils::class);
+      $u = Factory::instance()->getUtil(UniqueMultiValueAttributeUtils::class);
     }
     $this->filter = $u;
     parent::__construct($name);

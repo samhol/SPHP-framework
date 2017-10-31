@@ -23,7 +23,7 @@ echo $int->set('1') . "\n";
 echo $intWithMin->set('-1') . "\n";
 echo "\nmulti:\n------\n";
 $multi = new MultiValueAttribute('title');
-$uniq = new AtomicMultiValueAttribute('coords');
+$uniq = new UniqueMultiValueAttribute('coords');
 $multi->set(1, 'a', 2, 3, new \stdClass());
 $multi->add('foo');
 $multi->add('" bar="');

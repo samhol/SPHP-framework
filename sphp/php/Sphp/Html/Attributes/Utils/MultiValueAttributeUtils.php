@@ -43,7 +43,6 @@ class MultiValueAttributeUtils implements MultiValueAttributeUtilityInterface {
       $parsed = [$raw];
     }
     $vals = array_filter($parsed, 'is_scalar');
-
     if (false) {
       foreach ($vals as $value) {
         if (!$this->isValidAtomicValue($value)) {
@@ -65,6 +64,7 @@ class MultiValueAttributeUtils implements MultiValueAttributeUtilityInterface {
   }
 
 }
+
 
 
 

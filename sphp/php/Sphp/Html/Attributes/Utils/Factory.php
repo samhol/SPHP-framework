@@ -58,10 +58,10 @@ class Factory {
               ->setUtility(new PropertyAttributeUtils())
               ->setUtility(new ClassAttributeUtils())
               ->setUtility(new MultiValueAttributeUtils())
-              ->setUtility(new IdValidator())
-              ->setUtility(new AtomicMultiValueAttributeUtils());
+              ->setUtility(new UniqueMultiValueAttributeUtils());
     }
     return static::$instance;
   }
 
 }
+

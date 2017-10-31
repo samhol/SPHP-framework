@@ -22,7 +22,7 @@ class BooleanAttribute extends AbstractScalarAttribute {
   /**
    * Constructs a new instance
    * 
-   * @param string $name
+   * @param string $name the name of the attribute
    * @param type $value
    */
   public function __construct(string $name, $value = true) {
@@ -39,3 +39,4 @@ class BooleanAttribute extends AbstractScalarAttribute {
   }
 
 }
+
