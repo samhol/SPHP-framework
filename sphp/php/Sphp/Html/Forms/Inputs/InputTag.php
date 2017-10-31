@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InputTag extends AbstractInputTag implements ValidableInputInterface {
+class InputTag extends AbstractInputTag implements Validable {
 
   use ValidableInputTrait;
 }

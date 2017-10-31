@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Html\Foundation\Sites\Buttons;
+namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
@@ -27,10 +27,9 @@ use Sphp\Html\Forms\Inputs\FileInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileUploadButton implements ContentInterface, IdentifiableInputInterface, ButtonInterface {
+class FileUploadButton implements ContentInterface, IdentifiableInputInterface {
 
-  use ContentTrait,
-      \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait;
+  use ContentTrait;
 
   /**
    * @var FileInput 
@@ -51,7 +50,7 @@ class FileUploadButton implements ContentInterface, IdentifiableInputInterface, 
    */
   public function __construct(string $name = null, $buttonText = 'Upload File') {
     $this->fileInput = new FileInput($name);
-    $this->fileInput->cssClasses()->protect('show-for-sr', 'fileInput');
+    $this->fileInput->cssClasses()->protect('show-for-sr');
     $this->label = new Label($buttonText, $this->fileInput);
     $this->label->cssClasses()->protect('button');
   }

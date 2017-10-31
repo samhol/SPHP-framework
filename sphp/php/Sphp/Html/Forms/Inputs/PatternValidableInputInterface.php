@@ -15,7 +15,7 @@ namespace Sphp\Html\Forms\Inputs;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface PatternValidableInputInterface extends ValidableInputInterface {
+interface PatternValidableInputInterface extends Validable {
 
   /**
    * Sets the regular expression pattern that the component's value is checked against
@@ -25,7 +25,7 @@ interface PatternValidableInputInterface extends ValidableInputInterface {
    * @param  string $pattern a regular expression pattern
    * @return $this for a fluent interface
    */
-  public function setPattern($pattern);
+  public function setPattern(string $pattern);
 
   /**
    * Returns the validation pattern string
@@ -45,3 +45,4 @@ interface PatternValidableInputInterface extends ValidableInputInterface {
    */
   public function hasPattern(): bool;
 }
+

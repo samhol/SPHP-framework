@@ -5,64 +5,13 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
 echo "<pre>";
-$string = "Match this string";
-
-var_dump(filter_var($string, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/foo/"))));
-echo "Validable:\n------\n";
-$regexp = new PatternAttribute('regexp', '/^[abc]*$/');
-$int = new IntegerAttribute('int');
-$intWithMin = new IntegerAttribute('int', -1);
-try {
-  //$regexp->set('Abc');
-  $int->set('foo');
-} catch (\Exception $ex) {
-  echo new ThrowableCallout($ex);
-}
-echo $regexp->set('abccbaacabc') . "\n";
-echo $int->set('1') . "\n";
-echo $intWithMin->set('-1') . "\n";
-echo "\nmulti:\n------\n";
-$multi = new MultiValueAttribute('title');
-$uniq = new UniqueMultiValueAttribute('coords');
-$multi->set(1, 'a', 2, 3, new \stdClass());
-$multi->add('foo');
-$multi->add('" bar="');
-var_dump($multi->isDemanded());
-$multi->protect('lock');
-var_dump($multi->isDemanded());
-echo "\n<span $multi> $multi </span>";
-$multi->clear();
-
-$multi->add("' bar='");
-echo "\n<span $multi> $multi </span>";
-
-echo "\n\nboolean:\n------\n";
-$boolAttr = new BooleanAttribute('data-bool', 'true');
-
-echo "\nattr: $boolAttr";
-$boolAttr->set('0');
-echo "\nattr: $boolAttr";
-$boolAttr->set('foo');
-echo "\nattr: $boolAttr";
-$boolAttr->set('foo');
-echo "\nattr: $boolAttr";
-var_dump(get_html_translation_table());
-
-namespace Sphp\Html\Attributes\Utils;
-
-$u = Factory::instance();
-$u->setUtility(new ClassAttributeUtils());
-$u->setUtility(new MultiValueAttributeUtils());
-var_dump($u);
-var_dump($u->getUtil(ClassAttributeUtils::class));
 
 
+namespace Sphp\Html\Forms\Inputs;
 
+$file = new FileUploadButton('foo', 'Load foo');
+echo $file;
 echo "</pre>";
-
-
-
-
 
 
 

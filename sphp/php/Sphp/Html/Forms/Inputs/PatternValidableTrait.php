@@ -36,8 +36,8 @@ trait PatternValidableTrait {
    * @return PatternValidableInputInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */ 
-  public function setPattern($pattern) {
-    $this->attrs()->set("pattern", $pattern);
+  public function setPattern(string $pattern) {
+    $this->attrs()->set('pattern', $pattern);
     return $this;
   }
 
@@ -48,7 +48,7 @@ trait PatternValidableTrait {
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
   public function getPattern() {
-    return $this->attrs()->getValue("pattern");
+    return $this->attrs()->getValue('pattern');
   }
 
   /**
@@ -58,7 +58,9 @@ trait PatternValidableTrait {
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
   public function hasPattern(): bool {
-    return $this->attrs()->exists("pattern");
+    return $this->attrs()->exists('pattern');
   }
 
 }
+
+

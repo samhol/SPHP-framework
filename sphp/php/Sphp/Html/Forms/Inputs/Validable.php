@@ -1,21 +1,21 @@
 <?php
 
 /**
- * ValidableInputInterface.php (UTF-8)
+ * Validable.php (UTF-8)
  * Copyright (c) 2011 Sami Holck <sami.holck@gmail.com>
  */
 
 namespace Sphp\Html\Forms\Inputs;
 
 /**
- * Defines required operations for all validable input components
+ * Defines basic functionality of all validable inputs
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ValidableInputInterface extends InputInterface {
+interface Validable extends InputInterface {
 
   /**
    * Sets whether the input must have a value or not before form submission
@@ -34,3 +34,5 @@ interface ValidableInputInterface extends InputInterface {
    */
   public function isRequired(): bool;
 }
+
+

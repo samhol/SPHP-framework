@@ -73,7 +73,7 @@ trait TextualInputWrapperTrait {
     return $this->getInput()->isRequired();
   }
 
-  public function setPattern($pattern) {
+  public function setPattern(string $pattern) {
     $this->getInput()->setPattern($pattern);
     return $this;
   }
@@ -84,3 +84,4 @@ trait TextualInputWrapperTrait {
   }
 
 }
+
