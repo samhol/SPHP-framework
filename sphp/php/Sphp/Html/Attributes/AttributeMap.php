@@ -45,11 +45,9 @@ class AttributeMap {
    * @param array $objectMap
    * @param string $defaultType
    */
-  public function __construct(array $objectMap = [], string $defaultType = AttributeInterface::class) {
+  public function __construct(string $defaultType = AttributeInterface::class) {
     $this->defaultType = $defaultType;
-    foreach ($objectMap as $name => $type) {
-      $this->mapObject($name, $type);
-    }self::$c++;
+    self::$c++;
     //var_dump(self::$c);
   }
 
@@ -85,16 +83,16 @@ class AttributeMap {
    *    new object must be of the same type
    * 
    * @param  string $name
-   * @param  string $attrObject
+   * @param  string $type
    * @return $this for a fluent interface
    * @throws AttributeException
    */
-  public function mapObject(string $name, string $attrObject, array $params = []) {
-    if (!$this->isValidType($name, $attrObject)) {
-      throw new AttributeException("Attribute name: '$name' must be of type : '{$this->getActualType($name)}'");
+  public function mapObject(string $name, string $type, array $params = []) {
+    if (!$this->isValidType($name, $type)) {
+      throw new AttributeException("Attribute name: '$name' must extend type : '{$this->getActualType($name)}'");
     }
     array_unshift($params, $name);
-    $this->map[$name] = ['type' => $attrObject, 'params' => $params];
+    $this->map[$name] = ['type' => $type, 'params' => $params];
     return $this;
   }
 
@@ -149,7 +147,7 @@ class AttributeMap {
    */
   public function isValidType(string $name, $new): bool {
     if ($this->isMapped($name)) {
-      return !is_subclass_of($new, $this->map[$name]['type']);
+      return is_subclass_of($new, $this->map[$name]['type']);
     }
     return is_subclass_of($new, AttributeInterface::class);
   }
@@ -189,7 +187,6 @@ class AttributeMap {
   }
 
 }
-
 
 
 

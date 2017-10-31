@@ -6,7 +6,9 @@ use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
 
 $gen = new AttributeMap();
+$gen->mapObject('class', ClassAttribute::class);
 $gen->mapObject('blaa', PatternAttribute::class, ['/^foobar*$/']);
+$gen->mapObject('class', Attribute::class);
 echo "<pre>";
 $fooAttr = $gen->createObject('blaa');
 $fooAttr->set('foobar');
@@ -60,6 +62,9 @@ var_dump($u->getUtil(ClassAttributeUtils::class));
 
 
 echo "</pre>";
+
+
+
 
 
 
