@@ -88,11 +88,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @return string all attributes as formatted text
    */
   public function __toString(): string {
-    $output = '';
-    foreach ($this as $attr) {
-      $output .= " $attr";
-    }
-    return trim($output);
+    return implode(' ', $this->attrs);
   }
 
   /**
