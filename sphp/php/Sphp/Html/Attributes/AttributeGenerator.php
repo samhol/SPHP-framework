@@ -7,12 +7,8 @@
 
 namespace Sphp\Html\Attributes;
 
-use Countable;
-use Iterator;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Abstract implementation of attribute manager for HTML components
@@ -24,7 +20,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AttributeMap {
+class AttributeGenerator {
 
   /**
    * attribute object type map as a (attribute name -> attribute object type) map
@@ -42,7 +38,6 @@ class AttributeMap {
   /**
    * Constructs a new instance
    *
-   * @param array $objectMap
    * @param string $defaultType
    */
   public function __construct(string $defaultType = AttributeInterface::class) {
@@ -69,35 +64,43 @@ class AttributeMap {
    * @link http://www.php.net/manual/en/language.oop5.cloning.php#object.clone PHP Object Cloning
    */
   public function __clone() {
-    $this->flags = Arrays::copy($this->map);
+    $this->map = Arrays::copy($this->map);
   }
 
   /**
-   * Attaches an attribute object to the manager
+   * Attaches a distinct attribute type name pair to the generator
    * 
    * **IMPORTANT:** 
    * 
-   * 1. If manager has a set attribute already, such attribute cannot be replaced 
-   *    by a new attribute object
-   * 2. If attribute in the manager has already an attribute object instance the 
+   *  If attribute in the manager has already an attribute object instance the 
    *    new object must be of the same type
    * 
    * @param  string $name
    * @param  string $type
+   * @param  type $param
    * @return $this for a fluent interface
-   * @throws AttributeException
+   * @throws InvalidAttributeException
    */
-  public function mapObject(string $name, string $type, array $params = []) {
+  public function mapType(string $name, string $type, ...$param) {
     if (!$this->isValidType($name, $type)) {
-      throw new AttributeException("Attribute name: '$name' must extend type : '{$this->getActualType($name)}'");
+      throw new InvalidAttributeException("Attribute name: '$name' must extend type : '{$this->getActualType($name)}'");
     }
-    array_unshift($params, $name);
-    $this->map[$name] = ['type' => $type, 'params' => $params];
+    array_unshift($param, $name);
+    $this->map[$name] = ['type' => $type, 'params' => $param];
     return $this;
   }
 
-  public function mapPattrenAttribute(string $name, string $attrObject) {
-    //new 
+  /**
+   * 
+   * 
+   * @param  string $name
+   * @param  string $pattern
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException
+   */
+  public function mapPatternAttribute(string $name, string $pattern) {
+    $this->mapType($name, PatternAttribute::class, $pattern);
+    return $this;
   }
 
   /**
@@ -106,11 +109,11 @@ class AttributeMap {
    * @return string
    */
   public function getActualType(string $name): string {
-    if ($this->getValidType($name) === AttributeInterface::class) {
-      return Attribute::class;
-    } else {
-      return $this->getValidType($name);
+    $type = $this->getValidType($name);
+    if ($type === AttributeInterface::class) {
+      $type = Attribute::class;
     }
+    return $type;
   }
 
   /**
@@ -177,16 +180,4 @@ class AttributeMap {
     return $instance;
   }
 
-  /**
-   * Counts the number of the attributes stored in the manager
-   *
-   * @return int the number of the attributes stored
-   */
-  public function count(): int {
-    return count($this->map);
-  }
-
 }
-
-
-

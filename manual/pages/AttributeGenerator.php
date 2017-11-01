@@ -4,11 +4,14 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
-
-$gen = new AttributeMap();
-$gen->mapObject('class', ClassAttribute::class);
-$gen->mapObject('blaa', PatternAttribute::class, ['/^foobar*$/']);
-$gen->mapObject('class', Attribute::class);
+$gen = new AttributeGenerator();
+$gen->mapType('class', ClassAttribute::class);
+$gen->mapType('blaa', PatternAttribute::class, '/^foobar*$/');
+try {
+  $gen->mapType('class', Attribute::class);
+} catch (\Exception $ex) {
+  echo new ThrowableCallout($ex);
+}
 echo "<pre>";
 $fooAttr = $gen->createObject('blaa');
 $fooAttr->set('foobar');
