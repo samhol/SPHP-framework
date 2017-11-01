@@ -125,7 +125,7 @@ class AttributeGenerator {
     if ($this->isMapped($name)) {
       return $this->map[$name]['params'];
     } else {
-      return [];
+      return [$name];
     }
   }
 
@@ -149,10 +149,7 @@ class AttributeGenerator {
    * @return boolean
    */
   public function isValidType(string $name, $new): bool {
-    if ($this->isMapped($name)) {
-      return is_subclass_of($new, $this->map[$name]['type']);
-    }
-    return is_subclass_of($new, AttributeInterface::class);
+    return is_a($new, $this->getValidType($name), true);
   }
 
   /**
@@ -172,9 +169,11 @@ class AttributeGenerator {
    * @return AttributeInterface the mapped attribute object or null
    */
   public function createObject(string $name): AttributeInterface {
-    print_r($this->map);
+
     $type = $this->getActualType($name);
     $params = $this->getParametersFor($name);
+
+    //print_r($params);
     $class = new \ReflectionClass($type);
     $instance = $class->newInstanceArgs($params);
     return $instance;

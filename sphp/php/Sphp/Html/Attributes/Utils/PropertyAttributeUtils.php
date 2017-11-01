@@ -63,7 +63,7 @@ class PropertyAttributeUtils {
    * @return boolean true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && !empty($value) || $value === "0" || $value === 0;
+    return is_scalar($value) && (!empty($value) || $value === "0" || $value === 0);
   }
 
   /**

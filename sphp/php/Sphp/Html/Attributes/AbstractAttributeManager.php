@@ -34,30 +34,20 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   private $attrs = [];
 
   /**
-   * attribute object type map as a (attribute name -> attribute object type) map
-   *
-   * @var string[]
+   * @var AttributeGenerator 
    */
-  private $map = [];
-
-  /**
-   * @var string 
-   */
-  private $defaultType;
-  private static $c = 0;
+  private $gen;
 
   /**
    * Constructs a new instance
-   *
-   * @param array $objectMap
-   * @param string $defaultType
+   * 
+   * @param AttributeGenerator $gen
    */
-  public function __construct(array $objectMap = [], string $defaultType = AttributeInterface::class) {
-    $this->defaultType = $defaultType;
-    foreach ($objectMap as $name => $type) {
-      $this->mapObject($name, $type);
-    }self::$c++;
-    //var_dump(self::$c);
+  public function __construct(AttributeGenerator $gen = null) {
+    if ($gen === null) {
+      $gen = new AttributeGenerator();
+    }
+    $this->gen = $gen;
   }
 
   /**
@@ -67,7 +57,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * to a particular object, or in any order during the shutdown sequence.
    */
   public function __destruct() {
-    unset($this->attrs, $this->map);
+    unset($this->attrs, $this->gen);
   }
 
   /**
@@ -79,11 +69,11 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    */
   public function __clone() {
     $this->attrs = Arrays::copy($this->attrs);
-    $this->flags = Arrays::copy($this->map);
+    $this->gen = clone $this->gen;
   }
 
   /**
-   * Returns all attribute - value pairs as formatted text for tag implementation
+   * Returns attributes as formatted text for tag implementation
    *
    * @return string all attributes as formatted text
    */
@@ -92,90 +82,26 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   }
 
   /**
-   * Attaches an attribute object to the manager
+   * Return the attribute generator instance used
    * 
-   * **IMPORTANT:** 
-   * 
-   * 1. If manager has a set attribute already, such attribute cannot be replaced 
-   *    by a new attribute object
-   * 2. If attribute in the manager has already an attribute object instance the 
-   *    new object must be of the same type
-   * 
-   * @param  string $name
-   * @param  string $attrObject
-   * @return $this for a fluent interface
-   * @throws AttributeException
+   * @return AttributeGenerator the attribute generator instance used
    */
-  public function mapObject(string $name, string $attrObject) {
-    if (!$this->isValidType($name, $attrObject)) {
-      throw new AttributeException("Attribute name: '$name' must be of type : '{$this->getActualType($name)}'");
-    }
-    $this->map[$name] = $attrObject;
-    return $this;
+  public function getGenerator(): AttributeGenerator {
+    return $this->gen;
   }
 
   /**
+   * Returns named attribute object 
    * 
-   * @param  string $name
-   * @return string
-   */
-  protected function getActualType(string $name): string {
-    if ($this->getValidType($name) === AttributeInterface::class) {
-      return Attribute::class;
-    } else {
-      return $this->getValidType($name);
-    }
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @return string
-   */
-  protected function getValidType(string $name): string {
-    if ($this->isMapped($name)) {
-      return $this->map[$name];
-    } else {
-      return $this->defaultType;
-    }
-  }
-
-  /**
-   * 
-   * @param  string $name
-   * @param  string|object $new
-   * @return boolean
-   */
-  public function isValidType(string $name, $new): bool {
-    if ($this->isMapped($name)) {
-      return !is_subclass_of($new, $this->map[$name]);
-    }
-    return is_subclass_of($new, AttributeInterface::class);
-  }
-
-  /**
-   * Checks whether the attribute name is mapped
-   *
-   * @param  string $name the name of the attribute
-   * @return boolean true if the attribute name is mapped false otherwise
-   */
-  public function isMapped(string $name): bool {
-    return isset($this->map[$name]);
-  }
-
-  /**
-   * Returns the instance of the inner attribute object if it is mapped
+   * **IMPORTANT!** If the manager does not contain named instance, it creates and 
+   * attaches a new object
    *
    * @param  string $name the name of the attribute
    * @return AttributeInterface the mapped attribute object or null
    */
-  protected function createObject(string $name): AttributeInterface {
-    if ($this->exists($name)) {
-      $obj = $this->attrs[$name];
-    } else {
-      $type = $this->getActualType($name);
-      $obj = new $type($name);
-      $this->attrs[$name] = $obj;
+  protected function getObject(string $name): AttributeInterface {
+    if (!$this->exists($name)) {
+      $this->attrs[$name] = $this->gen->createObject($name);
     }
     return $this->attrs[$name];
   }
@@ -187,10 +113,11 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @throws InvalidAttributeException
    */
   public function setInstance(AttributeInterface $attr) {
-    if (!$this->isValidType($attr->getName(), $attr)) {
-      throw new InvalidAttributeException('Invalid attributetype for ' . $attr->getName() . ' attribute');
+    $name = $attr->getName();
+    if (!$this->gen->isValidType($name, $attr)) {
+      throw new InvalidAttributeException('Invalid attributetype ('. get_class($attr).') for ' . $name . ' attribute.' .$this->gen->getValidType($name)." expected");
     }
-    $this->attrs[$attr->getName()] = $attr;
+    $this->attrs[$name] = $attr;
     return $this;
   }
 
@@ -220,7 +147,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function set(string $name, $value = true) {
-    $this->createObject($name)->set($value);
+    $this->getObject($name)->set($value);
     return $this;
   }
 
@@ -250,7 +177,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @return $this for a fluent interface
    */
   public function demand(string $name) {
-    $this->createObject($name)->demand();
+    $this->getObject($name)->demand();
     return $this;
   }
 
@@ -267,15 +194,14 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
     if (!$this->exists($name)) {
       return false;
     } else {
-      return $this->createObject($name)->isDemanded();
+      return $this->getObject($name)->isDemanded();
     }
   }
 
   /**
    * Checks whether given attribute has a locked value on it
    *
-   * **Note!:** some attributes can have multiple locked values (CSS classes,
-   * inline styles etc.).
+   * **Note!:** some attributes can have multiple locked values
    *
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute has a locked value on it and false otherwise
@@ -284,7 +210,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
     if (!$this->exists($name)) {
       return false;
     } else {
-      return $this->createObject($name)->isProtected();
+      return $this->getObject($name)->isProtected();
     }
   }
 
@@ -304,7 +230,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
   public function lock(string $name, $value) {
-    $this->createObject($name)->protect($value);
+    $this->getObject($name)->protect($value);
     return $this;
   }
 
@@ -330,7 +256,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    */
   public function remove(string $name) {
     if ($this->exists($name)) {
-      $this->createObject($name)->clear();
+      $this->getObject($name)->clear();
     }
     return $this;
   }
@@ -365,23 +291,9 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   public function getValue(string $name) {
     $value = false;
     if ($this->exists($name)) {
-      $value = $this->createObject($name)->getValue();
+      $value = $this->getObject($name)->getValue();
     }
     return $value;
-  }
-
-  /**
-   * Returns the instance of the inner attribute object if it is mapped
-   *
-   * @param  string $name the name of the attribute
-   * @return AttributeInterface the mapped attribute object or null
-   * @throws AttributeException
-   */
-  public function getObject(string $name): AttributeInterface {
-    if (!$this->exists($name) && !$this->isMapped($name)) {
-      throw new AttributeException("Attribute '$name' is not yet mapped or instantiated");
-    }
-    return $this->createObject($name);
   }
 
   /**

@@ -14,7 +14,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    echo "\nsetUp:\n";
     $this->attrs = new HtmlAttributeManager();
   }
 
@@ -23,7 +22,6 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    echo "\ntearDown:\n";
     $this->attrs = null;
   }
 
@@ -219,17 +217,8 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider objectData
    */
   public function testObjectSetting(AttributeInterface $obj) {
-    $name = $obj->getName();
-    $this->attrs->set($name, 'foo bar'); //isValidObjectType
-    $this->attrs->demand($name);
-    //$this->attrs->s($obj);
-    //$this->assertTrue($attrs->exists($name));
-    $this->assertTrue($this->attrs->isAttributeObject($name));
-    $this->assertTrue($this->attrs->isDemanded($name));
-    $this->assertTrue(is_a($obj, get_class($this->attrs->getAttributeObject($name))));
-
-    echo $this->attrs->__toString();
-    $this->assertTrue($this->attrs->getIterator() instanceof \Traversable);
+    $this->attrs->setInstance($obj);
+    $this->assertTrue($this->attrs->exists($obj->getName()));
   }
 
   /**

@@ -5,10 +5,10 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\AttributeInterface;
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
-class AttributeTest extends \PHPUnit\Framework\TestCase {
+class IntegerAttributeTests extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var AttributeInterface 
+   * @var IntegerAttribute 
    */
   protected $attr;
 
@@ -31,8 +31,8 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
   /**
    * @return AttributeInterface
    */
-  public function createAttr(string $name = 'data-attr'): AttributeInterface {
-    return new Attribute($name);
+  public function createAttr(int $min = null, int $max = null): AttributeInterface {
+    return new IntegerAttribute('int', $min, $max);
   }
 
   /**
@@ -40,20 +40,18 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
    */
   public function settingData(): array {
     return [
-        [''],
-        [' '],
+        ['0'],
+        [0],
         [true],
         [false],
-        ['value1'],
-        [' value2 '],
         [0],
         [-0],
         [0.0],
         [-1],
         [1],
-        [0.01],
-        [1.01],
-        [null]
+        ['0001'],
+        [1],
+        [null],
     ];
   }
 
@@ -69,7 +67,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase {
     $this->assertFalse($this->attr->isProtected());
     $this->assertFalse($this->attr->isProtected($value));
     $this->assertFalse($this->attr->isDemanded());
-    //$this->assertEquals($this->attr->isVisible(), $value !== false);
+    $this->assertEquals($this->attr->isVisible(), $value !== false);
     $this->assertEquals($this->attr->getValue(), $value);
   }
 

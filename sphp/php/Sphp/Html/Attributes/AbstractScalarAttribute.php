@@ -8,8 +8,6 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
-use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
-use Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface;
 
 /**
  * Default implementation of an attribute
@@ -57,6 +55,9 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
   public function set($value) {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
+    }
+    if ($value === null) {
+      $this->value = null;
     }
     $this->value = $this->filterValue($value);
     return $this;

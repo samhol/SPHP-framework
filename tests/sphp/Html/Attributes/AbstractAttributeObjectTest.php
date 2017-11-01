@@ -33,39 +33,6 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
    */
   abstract public function createAttr(string $name = 'data-attr'): AttributeInterface;
 
-  /**
-   * @return scalar[]
-   */
-  public function settingData(): array {
-    return [
-        ['', '', true],
-        [' ', ' ', true],
-        [true, true, true],
-        [false, false, false],
-        ['value1', 'value1', true],
-        [' value2 ', ' value2 ', true],
-        [0, 0, true],
-        [-1, -1, true],
-        [1, 1, true],
-        [0b100, 0b100, true]
-    ];
-  }
-
-  /**
-   * @covers AttributeInterface::set()
-   * @dataProvider settingData
-   * @param scalar $value
-   * @param scalar $expected
-   * @param boolean $visibility
-   */
-  public function testSetting($value) {
-    $this->attrs->set($value);
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->isDemanded());
-    $this->assertEquals($this->attrs->isVisible(), $value !== false);
-    $this->assertEquals($this->attrs->getValue(), $value);
-  }
 
   /**
    * @covers AbstractAttribute::isDemanded()
@@ -79,30 +46,5 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
     $this->assertEquals("$this->attrs", $this->attrs->getName() . "");
   }
 
-  /**
-   * @return string[]
-   */
-  public function lockMethodData(): array {
-    return [
-        [1],
-        ['a'],
-        [' ä ']
-    ];
-  }
-
-  /**
-   * @covers AbstractAttribute::lock()
-   * @dataProvider lockMethodData
-   * @param  scalar $value
-   */
-  public function testLockMethod($value) {
-    $attr = $this->createAttr();
-    $this->assertFalse($attr->isProtected());
-    $attr->protect($value);
-    $this->assertTrue($attr->isProtected());
-    $this->assertEquals($attr->getValue(), $value);
-    $this->expectException(ImmutableAttributeException::class);
-    $attr->clear();
-  }
 
 }

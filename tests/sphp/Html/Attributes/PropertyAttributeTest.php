@@ -2,9 +2,11 @@
 
 namespace Sphp\Html\Attributes;
 
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
+
 include_once 'AbstractAttributeObjectTest.php';
 
-class PropertyAttributeTest extends AttributeObjectTest {
+class PropertyAttributeTest extends AbstractAttributeObjectTest {
 
   /**
    * @var PropertyAttribute 
@@ -168,26 +170,27 @@ class PropertyAttributeTest extends AttributeObjectTest {
 
   /**
    * 
-   * @return string[]
+   * @return array
    */
-  public function setPropertyData() {
+  public function validPropertyData(): array {
     return [
         [0, "val"],
         [1, "val"],
         ["prop", 0],
+        ["prop", 0.1],
         ["prop", 2],
         ["prop", -2],
-        ["prop", "val"],
+        ["prop", true],
+        ["prop", false],
         ["1", "val"],
     ];
   }
 
   /**
    * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
-   * 
+   * @dataProvider validPropertyData
    * @param int|string $propName numeric value
    * @param scalar $propValue
-   * @dataProvider setPropertyData
    */
   public function testSetProperty($propName, $propValue) {
     $this->attrs->setProperty($propName, $propValue);
@@ -199,77 +202,32 @@ class PropertyAttributeTest extends AttributeObjectTest {
 
   /**
    * 
-   * @return scalar[]
-   */
-  public function clearingData() {
-    return [
-        ["c1: v1;", "l1: v1;"],
-        ["c1: v1;", "l1: v1;"],
-        ["c1: v1; c2: v2; c3: v3;", "li: v1; l2:v2;"]
-    ];
-  }
-
-  /**
-   * 
    * @covers Sphp\Html\Attributes\PropertyAttribute::add()
-   * @dataProvider clearingData
-   *
-   * @param scalar|scalar[] $setProps
-   * @param scalar|scalar[] $lock
    * @param int $count
    */
-  public function testClearing($setProps, $lock) {
-    $addedProps = array_keys(PropertyAttribute::parse($setProps));
-    $lockedProps = array_keys(PropertyAttribute::parse($lock));
-    $this->attrs->set($setProps);
-    $this->assertTrue($this->attrs->isProtected() === false);
-    $this->assertEquals($this->attrs->count(), count($addedProps));
-    $this->attrs->protect($lock);
-    $this->assertTrue($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($addedProps));
-    $this->assertTrue($this->attrs->isProtected($lockedProps));
+  public function testClearing() {
+    $this->attrs->setProperty('foo', 'bar');
+    $this->assertTrue($this->attrs->hasProperty('foo'));
     $this->attrs->clear();
-    $this->assertTrue($this->attrs->count() === count($lockedProps));
+    $this->assertFalse($this->attrs->hasProperty('foo'));
+    $this->attrs->lockProperty('foo', 'bar');
+    $this->assertTrue($this->attrs->hasProperty('foo'));
+    $this->attrs->clear();
+    $this->assertTrue($this->attrs->hasProperty('foo'));
   }
 
   /**
-   * 
-   * @return scalar[]
+   * @covers PropertyAttribute::unsetProperty()
    */
-  public function removeMethodData() {
-    return [
-        [["p" => "v"], []],
-        [array_combine(range("a", "e"), range("a", "e")), array_combine(range("b", "d"), range("b", "d"))]
-    ];
-  }
-
-  /**
-   * 
-   * @covers Sphp\Html\Attributes\PropertyAttribute::add()
-   *
-   * @dataProvider removeMethodData
-   * @param string $add
-   * @param string $lock
-   * @param int $count
-   */
-  public function testRemoveMethod(array $props, array $locked) {
-    $this->attrs->setProperties($props);
-    var_dump($props);
-    $this->assertEquals($this->attrs->count(), count($props));
-    foreach ($props as $p => $v) {
-      $this->propEqualsTest($this->attrs, $p, $v);
-      $this->attrs->unsetProperty($p);
-      $this->notHavingPropTest($this->attrs, $p);
-    }
-    $this->attrs->setProperties($props);
-    $this->attrs->lockProperties($locked);
-    foreach ($props as $p => $v) {
-      try {
-        $this->attrs->unsetProperty($p);
-      } catch (\Throwable $ex) {
-        $this->assertTrue($ex instanceof RuntimeException);
-      }
-    }
+  public function testUnsetPropertyMethod() {
+    $this->attrs->setProperty('foo', 'bar');
+    $this->assertTrue($this->attrs->hasProperty('foo'));
+    $this->attrs->unsetProperty('foo');
+    $this->assertFalse($this->attrs->hasProperty('foo'));
+    $this->attrs->lockProperty('foo', 'bar');
+    $this->assertTrue($this->attrs->hasProperty('foo'));
+    $this->expectException(ImmutableAttributeException::class);
+    $this->attrs->unsetProperty('foo');
   }
 
 }

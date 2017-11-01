@@ -10,13 +10,13 @@ namespace Sphp\Html\Attributes;
 use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 
 /**
- * Default implementation of an attribute
+ * Implements an integer attribute with optional valid range
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IntegerAttribute extends Attribute {
+class IntegerAttribute extends AbstractScalarAttribute {
 
   /**
    * @var array 
@@ -27,8 +27,8 @@ class IntegerAttribute extends Attribute {
    * Constructs a new instance
    *
    * @param string $name the name of the attribute
-   * @param int|null $min
-   * @param int|null $max
+   * @param int|null $min optional minimum value
+   * @param int|null $max optional maximum value
    */
   public function __construct(string $name, int $min = null, int $max = null) {
     parent::__construct($name);
@@ -39,11 +39,11 @@ class IntegerAttribute extends Attribute {
       $this->options['options']['max_range'] = $max;
     }
   }
-
+  
   public function filterValue($value) {
     $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
     if ($filtered === false) {
-      throw new InvalidAttributeException("Invalid value for '{$this->getName()}' integer attribute");
+      throw new InvalidAttributeException("Invalid value '$value' for '{$this->getName()}' integer attribute");
     }
     return $filtered;
   }

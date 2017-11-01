@@ -22,11 +22,11 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @param string[] $objectMap
    */
   public function __construct() {
-    $objects = [
-        'class' => ClassAttribute::class,
-        'style' => PropertyAttribute::class,
-        'id' => IdentityAttribute::class];
-    parent::__construct($objects);
+    parent::__construct();
+    $this->getGenerator()
+            ->mapType('class', ClassAttribute::class)
+            ->mapType('style', PropertyAttribute::class)
+            ->mapType('id', IdentityAttribute::class);
   }
 
   /**
@@ -35,7 +35,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @return ClassAttribute the `class` attribute object
    */
   public function classes(): ClassAttribute {
-    return $this->createObject('class');
+    return $this->getObject('class');
   }
 
   /**
@@ -44,7 +44,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
    * @return PropertyAttribute the `style` attribute object
    */
   public function styles(): PropertyAttribute {
-    return $this->createObject('style');
+    return $this->getObject('style');
   }
 
   /**
@@ -65,7 +65,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
   }
 
   public function id(): IdentityAttribute {
-    return $this->createObject('id');
+    return $this->getObject('id');
   }
 
   /**
