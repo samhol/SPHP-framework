@@ -6,7 +6,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 include_once 'AbstractAttributeObjectTest.php';
 
-class PropertyAttributeTest extends AbstractAttributeObjectTest {
+class PropertyAttributeTests extends AbstractAttributeObjectTest {
 
   /**
    * @var PropertyAttribute 
@@ -196,8 +196,6 @@ class PropertyAttributeTest extends AbstractAttributeObjectTest {
     $this->attrs->setProperty($propName, $propValue);
     $this->assertTrue($this->attrs->hasProperty($propName));
     $this->assertTrue($this->attrs->count() === 1);
-    //var_dump($this->attrs->count());
-    //var_dump($this->attrs->toArray());
   }
 
   /**
@@ -231,3 +229,4 @@ class PropertyAttributeTest extends AbstractAttributeObjectTest {
   }
 
 }
+
