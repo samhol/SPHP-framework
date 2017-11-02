@@ -4,7 +4,7 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Foundation\Sites\Containers\ThrowableCallout;
 
-$id = new IdentityAttribute("id", "a b");
+$id = new IdAttribute("id", "a b");
 echo "<div $id>$id</div>\n";
 $id->identify();
 echo "<div $id>$id</div>\n";

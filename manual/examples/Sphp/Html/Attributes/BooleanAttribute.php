@@ -6,7 +6,7 @@ $placeholder = new Attribute("placeholder", "Give your name");
 $type = (new Attribute("type"))->protect("text");
 $name = new Attribute("name", "foo");
 $value = new Attribute("value", "");
-$id = new IdentityAttribute("id", "name");
+$id = new IdAttribute("id", "name");
 $required = (new BooleanAttribute("required", true));
 echo "<input $placeholder $type $name $id $value $required>\n";
 

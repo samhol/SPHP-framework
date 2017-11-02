@@ -5,7 +5,7 @@ namespace Sphp\Html\Attributes;
 use Sphp\Manual;
 use Sphp\Html\IdentifiableInterface;
 $identifiableInterface = Manual\api()->classLinker(IdentifiableInterface::class);
-$idAttribute = Manual\api()->classLinker(IdentityAttribute::class);
+$idAttribute = Manual\api()->classLinker(IdAttribute::class);
 
 
 Manual\parseDown(<<<MD

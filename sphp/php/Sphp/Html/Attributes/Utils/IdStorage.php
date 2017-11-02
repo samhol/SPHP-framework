@@ -53,8 +53,24 @@ class IdStorage {
    * @param  string $value the value of the identifier
    * @return boolean true on success or false on failure
    */
-  public function contains(string $value): bool {
-    return in_array($value, $this->ids);
+  public function getOwner(string $value): bool {
+    if ($this->contains($value)) {
+      return $this->ids[$value];
+    }
+    return null;
+  }
+
+  /**
+   * Checks whether the storage contains identifier value
+   *
+   * @param  string $value the value of the identifier
+   * @return boolean true on success or false on failure
+   */
+  public function contains(string $value, $for = null): bool {
+    if ($for === null) {
+      $for = $value;
+    }
+    return isset($this->ids[$value]) && $this->ids[$value] === $for;
   }
 
   /**
@@ -63,12 +79,15 @@ class IdStorage {
    * @param  string $value the value of the identifier
    * @return boolean true if stored and `false` otherwise
    */
-  public function store(string $value): bool {
+  public function store(string $value, $for = null): bool {
+    if ($for === null) {
+      $for = $value;
+    }
     if (!$this->contains($value)) {
-      $this->ids[] = $value;
+      $this->ids[$value] = $for;
       return true;
     }
-    //print_r($this->ids);
+    print_r($this->ids);
     return false;
   }
 
@@ -80,7 +99,7 @@ class IdStorage {
    */
   public function generateRandom(int $length = 16): string {
     $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $allChars = "0123456789-.$letters";
+    $allChars = "0123456789$letters";
     $first = Strings::randomize($letters, 1);
     $value = $first . Strings::randomize($allChars, $length - 1);
     while (!$this->store($value)) {

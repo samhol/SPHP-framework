@@ -16,7 +16,7 @@ use Sphp\Html\Attributes\Utils\IdStorage;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IdentityAttribute extends PatternAttribute {
+class IdAttribute extends PatternAttribute {
 
   /**
    * Constructs a new instance
@@ -26,6 +26,9 @@ class IdentityAttribute extends PatternAttribute {
    */
   public function __construct(string $name = 'id', $value = null) {
     parent::__construct($name, '/^[^\s]+$/');
+    if ($value !== null) {
+      $this->set($value);
+    }
   }
 
   /**
@@ -57,4 +60,3 @@ class IdentityAttribute extends PatternAttribute {
   }
 
 }
-

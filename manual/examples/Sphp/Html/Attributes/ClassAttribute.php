@@ -3,7 +3,7 @@
 namespace Sphp\Html\Attributes;
 
 $classes = (new ClassAttribute())
-        ->set("button", "tiny")
+        ->set("button tiny")
         ->add(["alert", "disabled"]);
 echo "<button $classes>button</button>\n";
 

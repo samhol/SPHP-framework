@@ -67,10 +67,10 @@ class AttributeGeneratorTests extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->gen->isMapped('foo'));
     $object = $this->gen->createObject('foo');
     $this->assertInstanceOf(PatternAttribute::class, $object);
-    $this->gen->mapType('foo', IdentityAttribute::class);
+    $this->gen->mapType('foo', IdAttribute::class);
     $object1 = $this->gen->createObject('foo');
     $this->assertInstanceOf(PatternAttribute::class, $object1);
-    $this->assertInstanceOf(IdentityAttribute::class, $object1);
+    $this->assertInstanceOf(IdAttribute::class, $object1);
     $this->expectException(AttributeException::class);
     $this->gen->mapType('foo', Attribute::class);
   }

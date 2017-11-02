@@ -26,7 +26,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
     $this->getGenerator()
             ->mapType('class', ClassAttribute::class)
             ->mapType('style', PropertyAttribute::class)
-            ->mapType('id', IdentityAttribute::class);
+            ->mapType('id', IdAttribute::class);
   }
 
   /**
@@ -64,7 +64,7 @@ class HtmlAttributeManager extends AbstractAttributeManager {
     return $this;
   }
 
-  public function id(): IdentityAttribute {
+  public function id(): IdAttribute {
     return $this->getObject('id');
   }
 

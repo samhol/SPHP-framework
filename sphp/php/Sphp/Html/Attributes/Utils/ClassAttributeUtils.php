@@ -57,7 +57,12 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
+  public function parseString(string $subject): array {
+    $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
+    if (!$result) {
+      $result = [];
+    }
+    return $result;
+  }
+
 }
-
-
-

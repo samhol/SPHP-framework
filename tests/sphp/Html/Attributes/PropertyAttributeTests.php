@@ -50,17 +50,17 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    */
   public function testCloning() {
     //echo "\ntestCloning()\n";
-    $this->attrs->setProperty("p", "v");
-    $this->propEqualsTest($this->attrs, "p", "v");
-    $cloned = clone $this->attrs;
+    $this->attr->setProperty("p", "v");
+    $this->propEqualsTest($this->attr, "p", "v");
+    $cloned = clone $this->attr;
     $this->propEqualsTest($cloned, "p", "v");
     $cloned->setProperty("p", "v1");
     $cloned->setProperty("p1", "v2");
     $this->propEqualsTest($cloned, "p1", "v2");
-    $this->propEqualsTest($this->attrs, "p", "v");
-    $this->notHavingPropTest($this->attrs, "p1");
-    $this->attrs->unsetProperty("p");
-    $this->notHavingPropTest($this->attrs, "p");
+    $this->propEqualsTest($this->attr, "p", "v");
+    $this->notHavingPropTest($this->attr, "p1");
+    $this->attr->unsetProperty("p");
+    $this->notHavingPropTest($this->attr, "p");
     $this->propEqualsTest($cloned, "p", "v1");
   }
 
@@ -107,13 +107,13 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    */
   public function testSetMethod($value, $expected) {
     echo "testSetting\n\n";
-    $this->attrs->set($value);
+    $this->attr->set($value);
     //var_dump($attr->isDemanded() || boolval($value));
 
-    $this->assertFalse($this->attrs->isProtected());
-    $this->assertFalse($this->attrs->isProtected($value));
-    $this->assertFalse($this->attrs->isDemanded());
-    $this->assertEquals($this->attrs->getValue(), $expected);
+    $this->assertFalse($this->attr->isProtected());
+    $this->assertFalse($this->attr->isProtected($value));
+    $this->assertFalse($this->attr->isDemanded());
+    $this->assertEquals($this->attr->getValue(), $expected);
   }
 
   /**
@@ -132,10 +132,10 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @covers Sphp\Html\Attributes\MultiValueAttribute::lock()
    */
   public function testDemandMethod() {
-    $this->attrs->set(false);
-    $this->attrs->demand();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->assertEquals("$this->attrs", $this->attrs->getName() . "");
+    $this->attr->set(false);
+    $this->attr->demand();
+    $this->assertTrue($this->attr->isDemanded());
+    $this->assertEquals("$this->attr", $this->attr->getName() . "");
   }
 
   /**
@@ -159,12 +159,12 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
   public function testLockPropertiesMethod($props) {
     echo "testLockPropertiesMethod\n";
     var_dump($props);
-    $this->attrs->lockProperties($props);
-    $this->assertTrue($this->attrs->isProtected());
-    $this->attrs->clear();
+    $this->attr->lockProperties($props);
+    $this->assertTrue($this->attr->isProtected());
+    $this->attr->clear();
     foreach ($props as $p => $v) {
-      $this->assertTrue($this->attrs->isProtected($p));
-      $this->propEqualsTest($this->attrs, $p, $v);
+      $this->assertTrue($this->attr->isProtected($p));
+      $this->propEqualsTest($this->attr, $p, $v);
     }
   }
 
@@ -193,9 +193,9 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @param scalar $propValue
    */
   public function testSetProperty($propName, $propValue) {
-    $this->attrs->setProperty($propName, $propValue);
-    $this->assertTrue($this->attrs->hasProperty($propName));
-    $this->assertTrue($this->attrs->count() === 1);
+    $this->attr->setProperty($propName, $propValue);
+    $this->assertTrue($this->attr->hasProperty($propName));
+    $this->assertTrue($this->attr->count() === 1);
   }
 
   /**
@@ -204,28 +204,28 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    * @param int $count
    */
   public function testClearing() {
-    $this->attrs->setProperty('foo', 'bar');
-    $this->assertTrue($this->attrs->hasProperty('foo'));
-    $this->attrs->clear();
-    $this->assertFalse($this->attrs->hasProperty('foo'));
-    $this->attrs->lockProperty('foo', 'bar');
-    $this->assertTrue($this->attrs->hasProperty('foo'));
-    $this->attrs->clear();
-    $this->assertTrue($this->attrs->hasProperty('foo'));
+    $this->attr->setProperty('foo', 'bar');
+    $this->assertTrue($this->attr->hasProperty('foo'));
+    $this->attr->clear();
+    $this->assertFalse($this->attr->hasProperty('foo'));
+    $this->attr->lockProperty('foo', 'bar');
+    $this->assertTrue($this->attr->hasProperty('foo'));
+    $this->attr->clear();
+    $this->assertTrue($this->attr->hasProperty('foo'));
   }
 
   /**
    * @covers PropertyAttribute::unsetProperty()
    */
   public function testUnsetPropertyMethod() {
-    $this->attrs->setProperty('foo', 'bar');
-    $this->assertTrue($this->attrs->hasProperty('foo'));
-    $this->attrs->unsetProperty('foo');
-    $this->assertFalse($this->attrs->hasProperty('foo'));
-    $this->attrs->lockProperty('foo', 'bar');
-    $this->assertTrue($this->attrs->hasProperty('foo'));
+    $this->attr->setProperty('foo', 'bar');
+    $this->assertTrue($this->attr->hasProperty('foo'));
+    $this->attr->unsetProperty('foo');
+    $this->assertFalse($this->attr->hasProperty('foo'));
+    $this->attr->lockProperty('foo', 'bar');
+    $this->assertTrue($this->attr->hasProperty('foo'));
     $this->expectException(ImmutableAttributeException::class);
-    $this->attrs->unsetProperty('foo');
+    $this->attr->unsetProperty('foo');
   }
 
 }

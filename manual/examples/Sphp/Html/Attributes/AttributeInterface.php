@@ -8,7 +8,7 @@ $name = new Attribute("name", "foo");
 $required = new BooleanAttribute("required", true);
 echo "<input $placeholder $type $name $required>\n";
 
-$id = new IdentityAttribute();
+$id = new IdAttribute();
 $id->identify();
 $value = new Attribute("value", "Sami Holck");
 echo "<input $placeholder $type $name $id $value $required>\n";

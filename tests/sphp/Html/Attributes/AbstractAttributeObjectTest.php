@@ -10,14 +10,14 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
   /**
    * @var AttributeInterface 
    */
-  protected $attrs;
+  protected $attr;
 
   /**
    * Sets up the fixture, for example, opens a network connection.
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->attrs = $this->createAttr();
+    $this->attr = $this->createAttr();
   }
 
   /**
@@ -25,7 +25,7 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    $this->attrs = null;
+    $this->attr = null;
   }
 
   /**
@@ -38,12 +38,12 @@ abstract class AbstractAttributeObjectTest extends \PHPUnit\Framework\TestCase {
    * @covers AbstractAttribute::isDemanded()
    */
   public function testDemanding() {
-    $this->attrs->demand();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->attrs->set(false);
-    $this->attrs->clear();
-    $this->assertTrue($this->attrs->isDemanded());
-    $this->assertEquals("$this->attrs", $this->attrs->getName() . "");
+    $this->attr->demand();
+    $this->assertTrue($this->attr->isDemanded());
+    $this->attr->set(false);
+    $this->attr->clear();
+    $this->assertTrue($this->attr->isDemanded());
+    $this->assertEquals("$this->attr", $this->attr->getName() . "");
   }
 
 

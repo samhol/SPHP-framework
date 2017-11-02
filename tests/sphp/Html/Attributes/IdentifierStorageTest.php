@@ -6,17 +6,12 @@ class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
 
   public function storeData(): array {
     return [
-        ['id', 'string', true],
-        ['id', 'string', false],
-        ['a', 'string', true],
-        ["data-id", 'string', true],
-        ["data-id", 'string', false],
-        ["data-id", '', false],
-        ['data-id', '1', true],
-        ['data-id', ' ', false],
-        ['0', 'string', false],
-        ['-1', 'string', false],
-        ['2', 'string', false]
+        ['id', 'a'],
+        ['id', 'b'],
+        ['data-id', 'a'],
+        ['data-id', 'b'],
+        ['', 'a'],
+        ['', 'b']
     ];
   }
 
@@ -25,17 +20,20 @@ class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
    *
    * @param string $name
    * @param string $value
-   * @param bool $expected
    */
-  public function testStoring(string $name, string $value, bool $expected) {
+  public function testStoring(string $name, string $value) {
     $storage = IdStorage::get($name);
-    $this->assertTrue($storage->store($value) === $expected);
+    $this->assertFalse($storage->contains($value));
+    $this->assertTrue($storage->store($value));
+    $this->assertTrue($storage->contains($value));
+    $this->assertFalse($storage->store($value));
+    $this->assertTrue($storage->contains($value));
   }
 
   public function existsData(): array {
     return [
-        ["id", "string", true],
-        ["id", "string1", false],
+        ["id", "b", false],
+        ["id", "a", true],
         ["", "string", false],
         ["data-id", "string", true],
         ["data-id", '', false],
@@ -54,7 +52,8 @@ class IdentifierStorageTest extends \PHPUnit\Framework\TestCase {
    */
   public function testExistence(string $name, string $value, bool $expected) {
     $storage = IdStorage::get($name);
-    $this->assertTrue($storage->contains($name, $value) === $expected);
+    $this->assertSame($expected, $storage->contains($value));
+
   }
 
 }

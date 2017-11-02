@@ -230,11 +230,11 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testLocking($name, $value) {
     $this->attrs->set($name, $value);
-    $this->assertFalse($this->attrs->isLocked($name));
+    $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->lock($name, $value);
     $this->assertTrue($this->attrs->get($name) === $value);
     //$this->assertTrue($attrs->exists($name));
-    $this->assertTrue($this->attrs->isLocked($name));
+    $this->assertTrue($this->attrs->isProtected($name));
   }
 
   /**
@@ -265,10 +265,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->assertTrue($this->attrs->isDemanded($name));
     $this->attrs->set($name, $value);
     $this->assertEquals($this->attrs->get($name), $value);
-    $this->assertFalse($this->attrs->isLocked($name));
+    $this->assertFalse($this->attrs->isProtected($name));
     $this->attrs->lock($name, $value);
     $this->assertEquals($this->attrs->get($name), $value);
-    $this->assertTrue($this->attrs->isLocked($name));
+    $this->assertTrue($this->attrs->isProtected($name));
   }
 
   /**
@@ -292,7 +292,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testNnotExists($attrName) {
     $this->assertTrue($this->attrs->get($attrName) === false);
-    $this->assertTrue($this->attrs->isLocked($attrName) === false);
+    $this->assertTrue($this->attrs->isProtected($attrName) === false);
     $this->assertTrue($this->attrs->isDemanded($attrName) === false);
     $this->assertTrue($this->attrs->exists($attrName) === false);
     $this->assertEquals($this->attrs->count(), 0);

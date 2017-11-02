@@ -206,7 +206,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute has a locked value on it and false otherwise
    */
-  public function isLocked(string $name): bool {
+  public function isProtected(string $name): bool {
     if (!$this->exists($name)) {
       return false;
     } else {

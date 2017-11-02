@@ -77,7 +77,12 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    */
   public function set($values) {
     $this->clear();
-    $this->add(func_get_args());
+    if (func_num_args() === 1 && is_string($values)) {
+      $values = $this->filter->parseString($values);
+    } else {
+      $values = func_get_args();
+    }
+    $this->add($values);
     return $this;
   }
 
@@ -120,8 +125,12 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
       return in_array(true, $this->values);
     } else {
       $locked = false;
-      $parsed = Arrays::flatten(func_get_args());
-      foreach ($parsed as $class) {
+      if (func_num_args() === 1 && is_string($values)) {
+        $values = $this->filter->parseString($values);
+      } else {
+        $values = $this->filter->filter(func_get_args());
+      }
+      foreach ($values as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
         if (!$locked) {
           break;
@@ -140,12 +149,17 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    * 2. An array can be be multidimensional array of atomic string values
    * 3. Duplicate values are ignored
    *
-   * @param  scalar|scalar[] $values the atomic values to lock
+   * @param  scalar|scalar[] $content the atomic values to lock
    * @return $this for a fluent interface
    */
-  public function protect($values) {
-    $arr = $this->filter->filter(func_get_args());
-    foreach ($arr as $class) {
+  public function protect($content) {
+    if (func_num_args() === 1 && is_string($content)) {
+      $content = $this->filter->parseString($content);
+    } else {
+      $content = $this->filter->filter(func_get_args());
+    }
+    //$arr = $this->filter->filter(func_get_args());
+    foreach ($content as $class) {
       $this->values[$class] = true;
     }
     return $this;
@@ -255,6 +269,3 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
   }
 
 }
-
-
-
