@@ -39,8 +39,11 @@ class IntegerAttribute extends AbstractScalarAttribute {
       $this->options['options']['max_range'] = $max;
     }
   }
-  
+
   public function filterValue($value) {
+    if ($value === false) {
+      return $value;
+    }
     $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
     if ($filtered === false) {
       throw new InvalidAttributeException("Invalid value '$value' for '{$this->getName()}' integer attribute");
@@ -48,4 +51,24 @@ class IntegerAttribute extends AbstractScalarAttribute {
     return $filtered;
   }
 
+  public function getHtml(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $output .= '="' . $this->getValue() . '"';
+      }
+    }
+    return $output;
+  }
+
+  public function isVisible(): bool {
+    return $this->isDemanded() || $this->getValue() !== false;
+  }
+
+  public function isEmpty(): bool {
+    return $this->getValue() !== false;
+  }
+
 }
+
