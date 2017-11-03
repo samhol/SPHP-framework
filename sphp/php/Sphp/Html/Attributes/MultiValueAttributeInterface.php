@@ -18,6 +18,7 @@ use Sphp\Stdlib\Datastructures\Arrayable;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface MultiValueAttributeInterface extends LockableAttributeInterface, Countable, Traversable, Arrayable {
+interface MultiValueAttributeInterface extends AttributeInterface, Countable, Traversable, Arrayable {
   
 }
+

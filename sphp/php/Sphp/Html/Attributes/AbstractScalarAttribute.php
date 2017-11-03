@@ -16,7 +16,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractScalarAttribute extends AbstractAttribute implements LockableAttributeInterface {
+abstract class AbstractScalarAttribute extends AbstractAttribute {
 
   /**
    * @var mixed 
@@ -26,7 +26,7 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
   /**
    * @var bool 
    */
-  private $locked = false;
+  private $protected = false;
 
   abstract public function filterValue($value);
 
@@ -43,12 +43,12 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
   }
 
   public function isProtected(): bool {
-    return $this->locked;
+    return $this->protected;
   }
 
   public function protect($value) {
     $this->set($value);
-    $this->locked = true;
+    $this->protected = true;
     return $this;
   }
 
@@ -76,4 +76,5 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
   }
 
 }
+
 
