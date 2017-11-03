@@ -15,7 +15,7 @@ namespace Sphp\Html;
  * @link    http://www.w3schools.com/tags/att_global_id.asp id attribute
  * @filesource
  */
-interface IdentifiableInterface {
+interface IdentifiableComponent extends ContentInterface {
 
   /**
    * Identifies the element with an unique id attribute
@@ -38,3 +38,4 @@ interface IdentifiableInterface {
    */
   public function hasId(): bool;
 }
+

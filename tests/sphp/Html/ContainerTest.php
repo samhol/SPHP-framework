@@ -39,8 +39,8 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
   public function appendData() {
     return [
         [null],
-        ["a"],
-        [new Container()],
+        ['a'],
+        [new Container('bar')],
         [0]
     ];
   }
@@ -51,7 +51,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $val
    */
   public function testAppend($val) {
-    $this->container->append("foo");
+    $this->container->append('foo');
     $this->container->append($val);
     $this->assertTrue($this->container->offsetExists(0));
     $this->assertTrue($this->container->offsetExists(1));
@@ -65,7 +65,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
    * @param mixed $val
    */
   public function testPrepend($val) {
-    $this->container->append("foo");
+    $this->container->append('foo');
     $this->container->prepend($val);
     $this->assertTrue($this->container->offsetExists(0));
     $this->assertTrue($this->container->offsetExists(1));
@@ -130,7 +130,6 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
       $this->assertEquals($this->container[$key], $val);
     }
   }
-  
 
   /**
    * 
@@ -144,7 +143,6 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
     $this->container->clear()->append((new Container())->append($val));
     $this->assertTrue($this->container->exists($val));
     $this->assertFalse($this->container->exists("foo"));
-   
   }
 
   /**
@@ -157,8 +155,10 @@ class ContainerTest extends \PHPUnit\Framework\TestCase {
     //$this->container->clear();
     $this->assertEquals($clone->count(), 1);
     $this->assertEquals($clone[0][0], "a");
-    
+
     $this->assertEquals($this->container[0][0], "b");
   }
 
 }
+
+

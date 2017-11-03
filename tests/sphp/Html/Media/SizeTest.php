@@ -64,3 +64,4 @@ class SizeTest extends \PHPUnit\Framework\TestCase {
   }
 
 }
+

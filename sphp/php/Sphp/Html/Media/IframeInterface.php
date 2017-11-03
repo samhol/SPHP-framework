@@ -10,7 +10,7 @@ namespace Sphp\Html\Media;
 /**
  * Defines an HTML &lt;iframe&gt; tag (an inline frame)
  *
- * The {@link self} component represents a nested browsing context.
+ * This component represents a nested browsing context.
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://www.w3schools.com/tags/tag_iframe.asp w3schools HTML API
@@ -21,3 +21,4 @@ namespace Sphp\Html\Media;
 interface IframeInterface extends LazyMediaInterface, SizeableInterface {
   
 }
+

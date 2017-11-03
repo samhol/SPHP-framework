@@ -43,7 +43,7 @@ trait IdentifiableComponentTrait {
    *
    * @return PropertyAttribute the attribute object containing inline styles
    */
-  public function inlineStyles() {
+  public function inlineStyles(): PropertyAttribute {
     return $this->attrs()->styles();
   }
 
@@ -97,7 +97,6 @@ trait IdentifiableComponentTrait {
   public function hasCssClass($cssClasses): bool {
     return $this->cssClasses()->contains(func_get_args());
   }
-
 
   /**
    * Sets an attribute name value pair
@@ -188,3 +187,4 @@ trait IdentifiableComponentTrait {
   }
 
 }
+

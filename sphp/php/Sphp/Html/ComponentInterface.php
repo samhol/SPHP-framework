@@ -8,8 +8,8 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\HtmlAttributeManager;
-use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Attributes\PropertyAttribute;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Defines the basic functionality of any HTML component
@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\PropertyAttribute;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ComponentInterface extends IdentifiableInterface, ContentInterface {
+interface ComponentInterface extends IdentifiableComponent, CssClassifiedComponent {
 
   /**
    * Returns the attribute manager attached to the component
@@ -30,61 +30,11 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
   public function attrs(): HtmlAttributeManager;
 
   /**
-   * Returns the class attribute object
-   * 
-   * @return ClassAttribute the class attribute object
-   */
-  public function cssClasses(): ClassAttribute;
-
-  /**
    * Returns the attribute object containing inline styles
    * 
    * @return PropertyAttribute the attribute object containing inline styles
    */
-  public function inlineStyles();
-
-  /**
-   * Adds the specified CSS class names
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple space separated CSS class names
-   * 2. An array parameter can contain only one CSS class name per value
-   * 3. Duplicate CSS class names are not stored
-   *
-   * @param  string|string[] $cssClasses CSS class names to add
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
-   */
-  public function addCssClass($cssClasses);
-
-  /**
-   * Removes given CSS class names
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   *
-   * 1. A string parameter can contain multiple comma separated CSS class names
-   * 2. An array parameter can contain only one CSS class name per value
-   *
-   * @param  string|string[] $cssClasses CSS class names to remove
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
-   */
-  public function removeCssClass($cssClasses);
-
-  /**
-   * Determines whether the given CSS class names are stored into the manager
-   *
-   * **Important:** Parameter <var>$cssClasses</var> restrictions and rules
-   * 
-   * 1. A string parameter can contain multiple comma separated CSS class names
-   * 2. An array parameter can contain only one CSS class name per value
-   *
-   * @param  string|string[] $cssClasses CSS class names to search for
-   * @return $this for a fluent interface
-   * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
-   */
-  public function hasCssClass($cssClasses): bool;
+  public function inlineStyles(): PropertyAttribute;
 
   /**
    * Sets an attribute name value pair
@@ -106,7 +56,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    * @param  mixed $value the value of the attribute
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException if the attribute name or value is invalid
-   * @throws \Sphp\Exceptions\RuntimeException if the attribute value is unmodifiable
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function setAttr(string $name, $value = null);
 
@@ -115,6 +65,7 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    *
    * @param  string $attrName the name of the attribute
    * @return $this for a fluent interface
+   * @throws ImmutableAttributeException if the attribute value is unmodifiable
    */
   public function removeAttr(string $attrName);
 
@@ -134,3 +85,6 @@ interface ComponentInterface extends IdentifiableInterface, ContentInterface {
    */
   public function attrExists(string $attrName): bool;
 }
+
+
+
