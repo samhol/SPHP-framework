@@ -32,7 +32,7 @@ class Equalizer extends AbstractComponentAdapter {
     if ($name === null) {
       $name = "eq_" . \Sphp\Stdlib\Strings::random();
     }
-    $this->getComponent()->attrs()->lock('data-equalizer', $name);
+    $this->getComponent()->attrs()->protect('data-equalizer', $name);
   }
 
   /**

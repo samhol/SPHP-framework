@@ -29,7 +29,7 @@ class Slider extends AbstractSlider {
    */
   public function __construct(string $name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step);
-    $this->attrs()->lock('data-type', 'single');
+    $this->attrs()->protect('data-type', 'single');
   }
 
   /**

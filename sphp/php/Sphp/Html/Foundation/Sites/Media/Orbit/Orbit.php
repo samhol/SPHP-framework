@@ -93,7 +93,7 @@ class Orbit extends AbstractComponent implements IteratorAggregate, ContentParse
     $this->cssClasses()
             ->protect('orbit');
     $this->attrs()
-            ->lock('role', 'region')
+            ->protect('role', 'region')
             ->setAria('label', $ariaLabel)
             ->demand('data-orbit');
     if ($slides !== null) {

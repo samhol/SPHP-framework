@@ -33,7 +33,7 @@ class AttributeGenerator {
    * @var string 
    */
   private $defaultType;
-  private static $c = 0;
+  //private static $c = 0;
 
   /**
    * Constructs a new instance
@@ -42,7 +42,7 @@ class AttributeGenerator {
    */
   public function __construct(string $defaultType = AttributeInterface::class) {
     $this->defaultType = $defaultType;
-    self::$c++;
+    //self::$c++;
     //var_dump(self::$c);
   }
 
@@ -68,22 +68,22 @@ class AttributeGenerator {
   }
 
   /**
-   * Attaches a distinct attribute type name pair to the generator
+   * Maps a distinct attribute object type with an attribute name
    * 
    * **IMPORTANT:** 
    * 
    *  If attribute in the manager has already an attribute object instance the 
    *    new object must be of the same type
    * 
-   * @param  string $name
-   * @param  string $type
-   * @param  type $param
+   * @param  string $name the name of the attribute
+   * @param  string $type the object type of the attribute
+   * @param  mixed $param optional parameters injected to the generated object
    * @return $this for a fluent interface
-   * @throws InvalidAttributeException
+   * @throws InvalidAttributeException if the requested attribute type is invalid
    */
   public function mapType(string $name, string $type, ...$param) {
     if (!$this->isValidType($name, $type)) {
-      throw new InvalidAttributeException("Attribute name: '$name' must extend type : '{$this->getActualType($name)}'");
+      throw new InvalidAttributeException("Attribute '$name' must extend type : '{$this->getActualType($name)}'");
     }
     array_unshift($param, $name);
     $this->map[$name] = ['type' => $type, 'params' => $param];
@@ -91,7 +91,7 @@ class AttributeGenerator {
   }
 
   /**
-   * 
+   * Maps a pattern object type with an attribute name
    * 
    * @param  string $name
    * @param  string $pattern
@@ -117,9 +117,10 @@ class AttributeGenerator {
   }
 
   /**
+   * Returns the parameters of the mapped attribute
    * 
-   * @param  string $name
-   * @return string
+   * @param  string $name the name of the attribute
+   * @return array the parameters of the mapped attribute
    */
   public function getParametersFor(string $name): array {
     if ($this->isMapped($name)) {
@@ -163,13 +164,12 @@ class AttributeGenerator {
   }
 
   /**
-   * Returns the instance of the inner attribute object if it is mapped
+   * Returns a new instance of the attribute object
    *
    * @param  string $name the name of the attribute
    * @return AttributeInterface the mapped attribute object or null
    */
   public function createObject(string $name): AttributeInterface {
-
     $type = $this->getActualType($name);
     $params = $this->getParametersFor($name);
 
@@ -180,3 +180,7 @@ class AttributeGenerator {
   }
 
 }
+
+
+
+

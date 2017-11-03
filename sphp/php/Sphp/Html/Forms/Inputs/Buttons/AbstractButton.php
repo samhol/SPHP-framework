@@ -38,7 +38,7 @@ class AbstractButton extends EmptyTag implements ButtonInterface {
       throw new InvalidArgumentException("Illegal form button type '$type'");
     }
     parent::__construct('input');
-    $this->attrs()->lock('type', $type);
+    $this->attrs()->protect('type', $type);
     if ($content !== null) {
       $this->setContent($content);
     }

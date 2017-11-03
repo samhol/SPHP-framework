@@ -128,11 +128,11 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   public function setInnerLabels($active, $inactive) {
     $activeLabel = new Span($active);
     $activeLabel->attrs()
-            ->lock('aria-hidden', 'true')
+            ->protect('aria-hidden', 'true')
             ->classes()->protect('switch-active');
     $inactiveLabel = new Span($inactive);
     $inactiveLabel->attrs()
-            ->lock('aria-hidden', 'true')
+            ->protect('aria-hidden', 'true')
             ->classes()->protect('switch-inactive');
     $this->paddle->offsetSet('switch-active', $activeLabel);
     $this->paddle->offsetSet('switch-inactive', $inactiveLabel);

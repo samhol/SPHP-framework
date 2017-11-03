@@ -231,7 +231,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   public function testLocking($name, $value) {
     $this->attrs->set($name, $value);
     $this->assertFalse($this->attrs->isProtected($name));
-    $this->attrs->lock($name, $value);
+    $this->attrs->protect($name, $value);
     $this->assertTrue($this->attrs->get($name) === $value);
     //$this->assertTrue($attrs->exists($name));
     $this->assertTrue($this->attrs->isProtected($name));
@@ -266,7 +266,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
     $this->attrs->set($name, $value);
     $this->assertEquals($this->attrs->get($name), $value);
     $this->assertFalse($this->attrs->isProtected($name));
-    $this->attrs->lock($name, $value);
+    $this->attrs->protect($name, $value);
     $this->assertEquals($this->attrs->get($name), $value);
     $this->assertTrue($this->attrs->isProtected($name));
   }

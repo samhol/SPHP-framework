@@ -46,7 +46,7 @@ class IconButton extends AbstractComponent implements ButtonInterface, ScreenRea
   public function __construct($icon, $screenReaderLabel = "") {
     parent::__construct('button');
     $this->cssClasses()->protect('button');
-    $this->attrs()->lock('type', 'button');
+    $this->attrs()->protect('type', 'button');
     $this->screenReaderLabel = new ScreenReaderLabel();
     $this->setScreenReaderLabel($screenReaderLabel);
     $this->icon = \Sphp\Html\Icons\Icons::fontAwesome($icon);

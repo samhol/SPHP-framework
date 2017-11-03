@@ -31,7 +31,7 @@ class CloseButton extends AbstractComponent {
   public function __construct($text = 'close') {
     parent::__construct('button');
     $this->attrs()
-            ->lock('type', 'button')
+            ->protect('type', 'button')
             ->demand('data-close');
     $this->cssClasses()->protect('close-button');
     $this->setAccessibilityTextText($text);

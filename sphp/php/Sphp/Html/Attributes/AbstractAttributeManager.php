@@ -233,7 +233,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @throws AttributeException if either the name or the value is invalid for the type of the attribute
    * @throws ImmutableAttributeException if the attribute is unmodifiable
    */
-  public function lock(string $name, $value) {
+  public function protect(string $name, $value) {
     $this->getObject($name)->protect($value);
     return $this;
   }

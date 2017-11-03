@@ -30,7 +30,7 @@ class RangeSlider extends AbstractSlider {
    */
   public function __construct($name = null, int $start = 0, int $end = 100, int $step = 1) {
     parent::__construct($name, $start, $end, $step, [$start, $end]);
-    $this->attrs()->lock('data-type', 'double');
+    $this->attrs()->protect('data-type', 'double');
   }
 
   /**

@@ -51,7 +51,7 @@ class Bullet extends AbstractComponent {
   public function __construct($slideNo, $slideText = null, $currentSlideText = 'Current Slide') {
     $this->number = $slideNo;
     parent::__construct('button');
-    $this->attrs()->lock('data-slide', $slideNo);
+    $this->attrs()->protect('data-slide', $slideNo);
     $this->createSpans($slideText, $currentSlideText);
   }
 

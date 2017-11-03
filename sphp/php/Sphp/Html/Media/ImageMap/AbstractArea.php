@@ -30,7 +30,7 @@ abstract class AbstractArea extends EmptyTag implements AreaInterface {
    */
   public function __construct(string $shape, string $href = null, string $alt = null) {
     parent::__construct('area');
-    $this->attrs()->lock('shape', $shape);
+    $this->attrs()->protect('shape', $shape);
     if ($href !== null) {
       $this->setHref($href);
     }

@@ -3,7 +3,7 @@
 namespace Sphp\Html\Attributes;
 
 $attrs = new HtmlAttributeManager();
-$attrs->lock("type", "text");
+$attrs->protect("type", "text");
 echo "<input $attrs>\n";
 $attrs->set("value", "Sami")
         ->set("disabled", true);

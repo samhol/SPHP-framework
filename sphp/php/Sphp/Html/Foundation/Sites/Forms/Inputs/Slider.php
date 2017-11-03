@@ -47,8 +47,8 @@ class Slider extends AbstractSlider {
     $this->handle->cssClasses()->protect('slider-handle');
     $this->handle->attrs()
             ->demand('data-slider-handle')
-            ->lock('role', 'slider')
-            ->lock('tabindex', 1);
+            ->protect('role', 'slider')
+            ->protect('tabindex', 1);
     $this->input = new HiddenInput();
     $this->setStepLength($step)->setValue($value);
   }
@@ -195,3 +195,4 @@ class Slider extends AbstractSlider {
   }
 
 }
+

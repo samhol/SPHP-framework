@@ -46,10 +46,10 @@ class ProgressBar extends AbstractComponent implements ColourableInterface {
     $this->identify();
     $this->attrs()
             ->set('data-sphp-progressbar', 'blaa')
-            ->lock('tabindex', 0)
-            ->lock('role', 'progressbar')
-            ->lock('aria-valuemin', 0)
-            ->lock('aria-valuemax', 100)
+            ->protect('tabindex', 0)
+            ->protect('role', 'progressbar')
+            ->protect('aria-valuemin', 0)
+            ->protect('aria-valuemax', 100)
             ->demand('aria-valuenow')
             ->demand('aria-valuenow')
             ->demand('data-sphp-progressbar-name');

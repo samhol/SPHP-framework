@@ -63,4 +63,17 @@ abstract class AbstractScalarAttribute extends AbstractAttribute implements Lock
     return $this;
   }
 
+  public function getHtml(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $value = preg_replace('/[\t\n\r]+/', ' ', $this->value);
+        $output .= '="' . htmlspecialchars($value, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
+      }
+    }
+    return $output;
+  }
+
 }
+
