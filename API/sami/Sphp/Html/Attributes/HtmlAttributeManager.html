@@ -131,71 +131,39 @@
                 <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p>Returns all attribute - value pairs as formatted text for tag implementation</p>                </div>
+                                            <p>Returns attributes as formatted text for tag implementation</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                    <a href="../../../Sphp/Html/Attributes/AttributeGenerator.html"><abbr title="Sphp\Html\Attributes\AttributeGenerator">AttributeGenerator</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_mapObject">mapObject</a>(string $name, string $attrObject)
+                    <a href="#method_getGenerator">getGenerator</a>()
         
-                                            <p>Attaches an attribute object to the manager</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_mapObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getActualType">getActualType</a>(string $name)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getActualType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getValidType">getValidType</a>(string $name)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getValidType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isValidType">isValidType</a>(string $name, string|object $new)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isValidType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isMapped">isMapped</a>(string $name)
-        
-                                            <p>Checks whether the attribute name is mapped</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isMapped"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
+                                            <p>Return the attribute generator instance used</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getGenerator"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_createObject">createObject</a>(string $name)
+                    <a href="#method_getObject">getObject</a>(string $name)
         
-                                            <p>Returns the instance of the inner attribute object if it is mapped</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_createObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
+                                            <p>Returns named attribute object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setInstance">setInstance</a>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attr)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_setInstance"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -242,10 +210,10 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isLocked">isLocked</a>(string $name)
+                    <a href="#method_isProtected">isProtected</a>(string $name)
         
                                             <p>Checks whether given attribute has a locked value on it</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isLocked"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -299,22 +267,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getObject">getObject</a>(string $name)
-        
-                                            <p>Returns the instance of the inner attribute object if it is mapped</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     boolean
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_exists">exists</a>(string $name)
         
-                                            <p>Checks if an attribute name exists in the manager</p>                </div>
+                                            <p>Checks if named attribute instance exists in the manager</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_exists"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -457,7 +415,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___destruct"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 69</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___destruct"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 59</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -479,7 +437,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___clone"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 80</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___clone"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 70</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -500,7 +458,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 90</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 80</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -510,7 +468,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns all attribute - value pairs as formatted text for tag implementation</p>                                                </div>
+                                    <p>Returns attributes as formatted text for tag implementation</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -529,10 +487,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_mapObject">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_mapObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 113</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>mapObject</strong>(string $name, string $attrObject)
+                    <h3 id="method_getGenerator">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getGenerator"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 89</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeGenerator.html"><abbr title="Sphp\Html\Attributes\AttributeGenerator">AttributeGenerator</abbr></a>
+    <strong>getGenerator</strong>()
         </code>
     </h3>
     <div class="details">
@@ -540,85 +498,15 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Attaches an attribute object to the manager</p>                    <p><strong>IMPORTANT:</strong></p>
-
-<ol>
-<li>If manager has a set attribute already, such attribute cannot be replaced
-by a new attribute object</li>
-<li>If attribute in the manager has already an attribute object instance the
-new object must be of the same type</li>
-</ol>
-</p>                            </div>
+                                    <p>Return the attribute generator instance used</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$attrObject</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getActualType">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getActualType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 126</div>
-        <code>            protected        string
-    <strong>getActualType</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
+            <td><a href="../../../Sphp/Html/Attributes/AttributeGenerator.html"><abbr title="Sphp\Html\Attributes\AttributeGenerator">AttributeGenerator</abbr></a></td>
+            <td>the attribute generator instance used</td>
         </tr>
     </table>
 
@@ -629,91 +517,10 @@ new object must be of the same type</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getValidType">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getValidType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 139</div>
-        <code>            protected        string
-    <strong>getValidType</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isValidType">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isValidType"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 153</div>
-        <code>                    boolean
-    <strong>isValidType</strong>(string $name, string|object $new)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string|object</td>
-                <td>$new</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isMapped">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isMapped"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 166</div>
-        <code>                    boolean
-    <strong>isMapped</strong>(string $name)
+                    <h3 id="method_getObject">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 102</div>
+        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
+    <strong>getObject</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -721,47 +528,8 @@ new object must be of the same type</li>
     
 
                     <div class="method-description">
-                                    <p>Checks whether the attribute name is mapped</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name of the attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute name is mapped false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_createObject">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_createObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 176</div>
-        <code>            protected        <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
-    <strong>createObject</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the instance of the inner attribute object if it is mapped</p>                                                </div>
+                                    <p>Returns named attribute object</p>                    <p><strong>IMPORTANT!</strong> If the manager does not contain named instance, it creates and
+attaches a new object</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -790,8 +558,55 @@ new object must be of the same type</li>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setInstance">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_setInstance"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 115</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>setInstance</strong>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attr)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
+                <td>$attr</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_set"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 212</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_set"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 149</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(string $name, scalar $value = true)
         </code>
@@ -865,7 +680,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_merge"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 227</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_merge"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 164</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>merge</strong>(array $attrs = [])
         </code>
@@ -918,7 +733,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 242</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 179</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>(string $name)
         </code>
@@ -958,7 +773,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 256</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 197</div>
         <code>                    boolean
     <strong>isDemanded</strong>(string $name)
         </code>
@@ -998,10 +813,10 @@ attribute name is required.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isLocked">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isLocked"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 273</div>
+                    <h3 id="method_isProtected">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 213</div>
         <code>                    boolean
-    <strong>isLocked</strong>(string $name)
+    <strong>isProtected</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -1009,8 +824,7 @@ attribute name is required.</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Checks whether given attribute has a locked value on it</p>                    <p><strong>Note!:</strong> some attributes can have multiple locked values (CSS classes,
-inline styles etc.).</p>                            </div>
+                                    <p>Checks whether given attribute has a locked value on it</p>                    <p><strong>Note!:</strong> some attributes can have multiple locked values</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1040,7 +854,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_lock">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_lock"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 296</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_lock"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 236</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>lock</strong>(string $name, scalar $value)
         </code>
@@ -1105,7 +919,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 307</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 247</div>
         <code>                    boolean
     <strong>isEmpty</strong>(string $name = null)
         </code>
@@ -1145,7 +959,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_remove"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 321</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_remove"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 261</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(string $name)
         </code>
@@ -1183,7 +997,7 @@ inline styles etc.).</p>                            </div>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute is immutable</td>
+                <td>if the attribute value is protected</td>
             </tr>
             </table>
 
@@ -1194,7 +1008,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_get"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 340</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_get"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 280</div>
         <code>                    scalar
     <strong>get</strong>(string $name)
         <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
@@ -1247,7 +1061,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getValue"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 355</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getValue"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 295</div>
         <code>                    scalar
     <strong>getValue</strong>(string $name)
         </code>
@@ -1292,57 +1106,8 @@ inline styles etc.).</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getObject">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_getObject"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 370</div>
-        <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
-    <strong>getObject</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the instance of the inner attribute object if it is mapped</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td>the name of the attribute</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></td>
-            <td>the mapped attribute object or null</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_exists"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 383</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_exists"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 309</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -1352,7 +1117,7 @@ inline styles etc.).</p>                            </div>
     
 
                     <div class="method-description">
-                                    <p>Checks if an attribute name exists in the manager</p>                                                </div>
+                                    <p>Checks if named attribute instance exists in the manager</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1370,7 +1135,7 @@ inline styles etc.).</p>                            </div>
                     <table class="table table-condensed">
         <tr>
             <td>boolean</td>
-            <td>true if the attribute exists and false otherwise</td>
+            <td>true if the attribute instance exists and false otherwise</td>
         </tr>
     </table>
 
@@ -1382,7 +1147,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_count"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 392</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_count"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 318</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1412,7 +1177,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_current"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 401</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_current"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 327</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1442,7 +1207,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 410</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 336</div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -1472,7 +1237,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 419</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 345</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1502,7 +1267,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 428</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 354</div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -1532,7 +1297,7 @@ inline styles etc.).</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 437</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AbstractAttributeManager">AbstractAttributeManager</abbr></a> at         line 363</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>

@@ -127,16 +127,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(mixed $value)
-        
-                                            <p>Sets the value of the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     scalar
                 </div>
                 <div class="col-md-8 type">
@@ -144,56 +134,6 @@
         
                                             <p>Returns the value of the attribute</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_getValue"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isLocked">isLocked</a>()
-        
-                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_lock">lock</a>(scalar $value)
-        
-                                            <p>Locks the given value to the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clear">clear</a>()
-        
-                                            <p>Removes all non locked values from the attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_clear"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_demand">demand</a>()
-        
-                                            <p>Sets the attribute as required</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_demand"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isDemanded">isDemanded</a>()
-        
-                                            <p>Checks whether the attribute is required or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -214,6 +154,36 @@
         
                                             <p>Checks whether the attribute is empty or not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(mixed $value)
+        
+                                            <p>Sets the value of the attribute</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isProtected">isProtected</a>()
+        
+                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_protect">protect</a>(scalar $value)
+        
+                                            <p>Locks the given value to the attribute</p>                </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -312,6 +282,104 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getValue">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_getValue"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 53</div>
+        <code>                    scalar
+    <strong>getValue</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the value of the attribute</p>                    <p><strong>IMPORTANT:</strong></p>
+
+<ul>
+<li>Returns always <code>boolean false</code> if attribute is not present.</li>
+<li>return <code>null</code> or an empty string for empty attributes.</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>scalar</td>
+            <td>the value of the attribute</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isVisible">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 63</div>
+        <code>                    boolean
+    <strong>isVisible</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the attribute is visible or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
+name is required or the attribute value is not boolean (false).</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the attribute is visible and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 73</div>
+        <code>                    boolean
+    <strong>isEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the attribute is empty or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
+name is required or the attribute value is not boolean (false).</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the attribute is empty and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
         <div class="location">at         line 30</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
@@ -365,46 +433,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getValue">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_getValue"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 63</div>
-        <code>                    scalar
-    <strong>getValue</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Returns the value of the attribute</p>                    <p><strong>IMPORTANT:</strong></p>
-
-<ul>
-<li>Returns always <code>boolean false</code> if attribute is not present.</li>
-<li>return <code>null</code> or an empty string for empty attributes.</li>
-</ul>
-</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>scalar</td>
-            <td>the value of the attribute</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isLocked">
+                    <h3 id="method_isProtected">
         <div class="location">at         line 37</div>
         <code>                    boolean
-    <strong>isLocked</strong>()
+    <strong>isProtected</strong>()
         </code>
     </h3>
     <div class="details">
@@ -431,10 +463,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_lock">
+                    <h3 id="method_protect">
         <div class="location">at         line 47</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>lock</strong>(scalar $value)
+    <strong>protect</strong>(scalar $value)
         </code>
     </h3>
     <div class="details">
@@ -478,159 +510,6 @@
             </tr>
             </table>
 
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clear">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_clear"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 87</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>clear</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes all non locked values from the attribute</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for PHP Method Chaining</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_demand"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 96</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>demand</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the attribute as required</p>                    <p><strong>A required attribute cannot be removed</strong> but its value is still mutable.</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 106</div>
-        <code>                    boolean
-    <strong>isDemanded</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is required or not</p>                    <p><strong>Note:</strong> a required attribute either has locked value or the attribute
-name is required.</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is required and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isVisible">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 116</div>
-        <code>                    boolean
-    <strong>isVisible</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is visible or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
-name is required or the attribute value is not boolean (false).</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is visible and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isEmpty">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeInterface.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> at         line 125</div>
-        <code>                    boolean
-    <strong>isEmpty</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is empty or not</p>                    <p><strong>Note:</strong> an attribute is visible if it has locked value or the attribute
-name is required or the attribute value is not boolean (false).</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is empty and false otherwise</td>
-        </tr>
-    </table>
-
-            
             
                     </div>
     </div>

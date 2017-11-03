@@ -99,7 +99,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @param  string $name the name of the attribute
    * @return AttributeInterface the mapped attribute object or null
    */
-  protected function getObject(string $name): AttributeInterface {
+  public function getObject(string $name): AttributeInterface {
     if (!$this->exists($name)) {
       $this->attrs[$name] = $this->gen->createObject($name);
     }
@@ -115,7 +115,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   public function setInstance(AttributeInterface $attr) {
     $name = $attr->getName();
     if (!$this->gen->isValidType($name, $attr)) {
-      throw new InvalidAttributeException('Invalid attributetype ('. get_class($attr).') for ' . $name . ' attribute.' .$this->gen->getValidType($name)." expected");
+      throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
     }
     $this->attrs[$name] = $attr;
     return $this;
@@ -177,6 +177,10 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @return $this for a fluent interface
    */
   public function demand(string $name) {
+    $obj = $this->getObject($name);
+    if (!$obj instanceof Immutable) {
+      $obj->demand();
+    }
     $this->getObject($name)->demand();
     return $this;
   }

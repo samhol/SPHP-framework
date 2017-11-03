@@ -80,7 +80,7 @@
 
     <p>    interface
     <strong>MenuItemInterface</strong>        implements
-        <a href="../../../../../Sphp/Html/IdentifiableInterface.html"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a>
+        <a href="../../../../../Sphp/Html/IdentifiableComponent.html"><abbr title="Sphp\Html\IdentifiableComponent">IdentifiableComponent</abbr></a>
 </p>
 
         
@@ -100,10 +100,40 @@
                     string
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_getHtml">getHtml</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentInterface.html#method_getHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentInterface.html#method___toString"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printHtml">printHtml</a>()
+        
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentInterface.html#method_printHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_identify">identify</a>(int $length = 16)
         
                                             <p>Identifies the element with an unique id attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableInterface.html#method_identify"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponent.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponent">IdentifiableComponent</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -113,7 +143,7 @@
                     <a href="#method_hasId">hasId</a>()
         
                                             <p>Checks whether the identifying attribute is set or not</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableInterface.html#method_hasId"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/IdentifiableComponent.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponent">IdentifiableComponent</abbr></a></small></div>
             </div>
             </div>
 
@@ -122,8 +152,107 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentInterface.html#method_getHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 33</div>
+        <code>                    string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Sphp/Exceptions/RuntimeException.html"><abbr title="Sphp\Exceptions\RuntimeException">RuntimeException</abbr></a></td>
+                <td>if html parsing fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentInterface.html#method___toString"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 41</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentInterface.html#method_printHtml"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a> at         line 48</div>
+        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
+    <strong>printHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_identify">
-        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableInterface.html#method_identify"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 31</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponent.html#method_identify"><abbr title="Sphp\Html\IdentifiableComponent">IdentifiableComponent</abbr></a> at         line 31</div>
         <code>                    string
     <strong>identify</strong>(int $length = 16)
         </code>
@@ -165,7 +294,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasId">
-        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableInterface.html#method_hasId"><abbr title="Sphp\Html\IdentifiableInterface">IdentifiableInterface</abbr></a> at         line 39</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/IdentifiableComponent.html#method_hasId"><abbr title="Sphp\Html\IdentifiableComponent">IdentifiableComponent</abbr></a> at         line 39</div>
         <code>                    boolean
     <strong>hasId</strong>()
         </code>

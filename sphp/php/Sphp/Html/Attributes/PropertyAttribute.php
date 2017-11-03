@@ -69,6 +69,26 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
     parent::__destruct();
   }
 
+  public function getHtml(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      $value = $this->getValue();
+      if (is_string($value)) {
+        $output .= '="' . $value . '"';
+      }
+    }
+    return $output;
+  }
+
+  public function isVisible(): bool {
+    return $this->isDemanded() || !empty($this->values);
+  }
+
+  public function isEmpty(): bool {
+    return empty($this->values);
+  }
+
   /**
    * Sets the properties values
    *

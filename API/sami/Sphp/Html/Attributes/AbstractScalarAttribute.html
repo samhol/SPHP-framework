@@ -147,22 +147,24 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_demand">demand</a>()
         
-                                            <p>Sets the attribute as required</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isDemanded">isDemanded</a>()
         
-                                            <p>Checks whether the attribute is required or not</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -190,7 +192,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isValidValue">isValidValue</a>($value)
+                    <a href="#method_filterValue">filterValue</a>($value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -198,12 +200,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_clear">clear</a>()
         
-                                            <p>Removes all non locked values from the attribute</p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -221,7 +224,7 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isLocked">isLocked</a>()
+                    <a href="#method_isProtected">isProtected</a>()
         
                                             <p>Checks whether the attribute has a locked value or not</p>                </div>
                 <div class="col-md-2"></div>
@@ -231,7 +234,7 @@
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_lock">lock</a>(scalar $value)
+                    <a href="#method_protect">protect</a>(scalar $value)
         
                                             <p>Locks the given value to the attribute</p>                </div>
                 <div class="col-md-2"></div>
@@ -407,7 +410,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_demand">
         <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 80</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+        <code>                    
     <strong>demand</strong>()
         </code>
     </h3>
@@ -415,19 +418,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             
     
 
-                    <div class="method-description">
-                                    <p>Sets the attribute as required</p>                    <p><strong>A required attribute cannot be removed</strong> but its value is still mutable.</p>                            </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -437,7 +429,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_isDemanded">
         <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 85</div>
-        <code>                    boolean
+        <code>                    
     <strong>isDemanded</strong>()
         </code>
     </h3>
@@ -445,20 +437,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             
     
 
-                    <div class="method-description">
-                                    <p>Checks whether the attribute is required or not</p>                    <p><strong>Note:</strong> a required attribute either has locked value or the attribute
-name is required.</p>                            </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute is required and false otherwise</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -528,10 +508,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isValidValue">
-        <div class="location">at         line 33</div>
+                    <h3 id="method_filterValue">
+        <div class="location">at         line 31</div>
         <code>    abstract                
-    <strong>isValidValue</strong>($value)
+    <strong>filterValue</strong>($value)
         </code>
     </h3>
     <div class="details">
@@ -558,8 +538,8 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location">at         line 35</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+        <div class="location">at         line 33</div>
+        <code>                    
     <strong>clear</strong>()
         </code>
     </h3>
@@ -567,19 +547,8 @@ name is required or the attribute value is not boolean (false).</p>             
             
     
 
-                    <div class="method-description">
-                                    <p>Removes all non locked values from the attribute</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for PHP Method Chaining</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -588,7 +557,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 43</div>
+        <div class="location">at         line 41</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -623,10 +592,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isLocked">
-        <div class="location">at         line 47</div>
+                    <h3 id="method_isProtected">
+        <div class="location">at         line 45</div>
         <code>                    boolean
-    <strong>isLocked</strong>()
+    <strong>isProtected</strong>()
         </code>
     </h3>
     <div class="details">
@@ -653,10 +622,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_lock">
-        <div class="location">at         line 51</div>
+                    <h3 id="method_protect">
+        <div class="location">at         line 49</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>lock</strong>(scalar $value)
+    <strong>protect</strong>(scalar $value)
         </code>
     </h3>
     <div class="details">
@@ -707,7 +676,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 57</div>
+        <div class="location">at         line 55</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(mixed $value)
         </code>

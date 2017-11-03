@@ -63,6 +63,25 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
     parent::__destruct();
   }
 
+  public function getHtml(): string {
+    $output = '';
+    if ($this->isVisible()) {
+      $output .= $this->getName();
+      if (!$this->isEmpty()) {
+        $output .= '="' . implode(' ', array_keys($this->values)) . '"';
+      }
+    }
+    return $output;
+  }
+
+  public function isVisible(): bool {
+    return $this->isDemanded() || !empty($this->values);
+  }
+
+  public function isEmpty(): bool {
+    return empty($this->values);
+  }
+
   /**
    * Sets new atomic values to the attribute removing old non locked ones
    *
