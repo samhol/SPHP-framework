@@ -71,7 +71,7 @@ class BooleanAttribute extends AbstractAttribute {
     }
     $filtered = filter_var($value, \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE);
     if ($filtered === null) {
-      throw new InvalidAttributeException("Invalid value for boolean attribute '{$this->getName()}' ");
+      throw new InvalidAttributeException("Invalid value for boolean attribute '{$this->getName()}'");
     }
     $this->value = $filtered;
     return $this;

@@ -16,12 +16,17 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class IntegerAttribute extends AbstractScalarAttribute {
+class IntegerAttribute extends AbstractAttribute {
 
   /**
    * @var array 
    */
   private $options = [];
+
+  /**
+   * @var int|bool 
+   */
+  private $value = false;
 
   /**
    * Constructs a new instance
@@ -40,15 +45,24 @@ class IntegerAttribute extends AbstractScalarAttribute {
     }
   }
 
-  public function filterValue($value) {
-    if ($value === false) {
-      return $value;
+  public function getValue() {
+    return $this->value;
+  }
+
+  public function set($value) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
-    if ($filtered === false) {
-      throw new InvalidAttributeException("Invalid value '$value' for '{$this->getName()}' integer attribute");
+    if ($value === null || $value === false) {
+      $this->value = false;
+    } else {
+      $filtered = filter_var($value, \FILTER_VALIDATE_INT, $this->options);
+      if ($filtered === false) {
+        throw new InvalidAttributeException("Invalid value '$value' for '{$this->getName()}' integer attribute");
+      }
+      $this->value = $filtered;
     }
-    return $filtered;
+    return $this;
   }
 
   public function getHtml(): string {
@@ -67,7 +81,14 @@ class IntegerAttribute extends AbstractScalarAttribute {
   }
 
   public function isEmpty(): bool {
-    return $this->getValue() !== false;
+    return $this->getValue() === false;
+  }
+
+  public function clear() {
+    if (!$this->isProtected()) {
+      $this->set(false);
+    }
+    return $this;
   }
 
 }

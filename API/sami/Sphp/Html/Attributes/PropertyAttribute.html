@@ -127,6 +127,26 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isProtected">isProtected</a>(string $property = null)
+        
+                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_protect">protect</a>(null|string|string[] $props = null)
+        
+                                            <p>Protects the given value to the attribute</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
@@ -267,16 +287,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_isProtected">isProtected</a>(string $property = null)
-        
-                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -293,16 +303,6 @@
                     <a href="#method_lockProperties">lockProperties</a>(array $props)
         
                                             <p>Stores multiple property value pairs</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_protect">protect</a>(null|string|string[] $props = null)
-        
-                                            <p>Protects the given value to the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -471,7 +471,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -505,7 +505,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 59</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___toString"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 64</div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -528,6 +528,100 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     </table>
 
             
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isProtected">
+        <div class="location">at         line 225</div>
+        <code>                    boolean
+    <strong>isProtected</strong>(string $property = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$property</td>
+                <td>optional name of the property; if none given
+        checks if any of the stored properties are locked</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the attribute has a locked value and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_protect">
+        <div class="location">at         line 280</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>protect</strong>(null|string|string[] $props = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Protects the given value to the attribute</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>null|string|string[]</td>
+                <td>$props</td>
+                <td>optional property/properties to lock</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -565,7 +659,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 76</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 94</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -595,7 +689,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 80</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 98</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>()
         </code>
@@ -625,7 +719,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 85</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 103</div>
         <code>                    boolean
     <strong>isDemanded</strong>()
         </code>
@@ -1095,47 +1189,6 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isProtected">
-        <div class="location">at         line 225</div>
-        <code>                    boolean
-    <strong>isProtected</strong>(string $property = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$property</td>
-                <td>optional name of the property; if none given
-        checks if any of the stored properties are locked</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the attribute has a locked value and false otherwise</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_lockProperty">
         <div class="location">at         line 243</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
@@ -1244,59 +1297,6 @@ name is required or the attribute value is not boolean (false).</p>             
                     <tr>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
                 <td>if any of the properties is already locked</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_protect">
-        <div class="location">at         line 280</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>protect</strong>(null|string|string[] $props = null)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Protects the given value to the attribute</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>null|string|string[]</td>
-                <td>$props</td>
-                <td>optional property/properties to lock</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
             </tr>
             </table>
 

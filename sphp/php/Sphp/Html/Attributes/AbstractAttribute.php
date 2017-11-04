@@ -8,7 +8,7 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Attributes\Exceptions\AttributeException;
+use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * An abstract implementation of an HTML attribute object
@@ -32,6 +32,11 @@ abstract class AbstractAttribute implements AttributeInterface {
    * @var boolean
    */
   private $required = false;
+
+  /**
+   * @var bool 
+   */
+  private $protected = false;
 
   /**
    * Constructs a new instance
@@ -60,14 +65,31 @@ abstract class AbstractAttribute implements AttributeInterface {
     return $this->getHtml();
   }
 
+  public function isProtected(): bool {
+    return $this->protected;
+  }
+
+  public function protect($value) {
+    if ($this->isProtected()) {
+      throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
+    }
+    $this->set($value);
+    $this->protected = true;
+    return $this;
+  }
+
   public function getHtml(): string {
     $output = '';
     if ($this->isVisible()) {
       $output .= $this->getName();
       if (!$this->isEmpty()) {
         $value = $this->getValue();
-        $strVal = Strings::toString($value);
-        $output .= '="' . htmlspecialchars($strVal, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
+        if (is_string($value)) {
+          $value = preg_replace('/[\t\n\r]+/', ' ', $value);
+          $output .= '="' . htmlspecialchars($value, \ENT_COMPAT | \ENT_DISALLOWED | \ENT_HTML5, 'utf-8', false) . '"';
+        } else {
+          $output .= '="' . $value . '"';
+        }
       }
     }
     return $output;
@@ -96,3 +118,4 @@ abstract class AbstractAttribute implements AttributeInterface {
   }
 
 }
+

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\ClassAttribute | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\ValidableAttribute | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_ClassAttribute" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_ValidableAttribute" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,28 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>ClassAttribute</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>ValidableAttribute</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            ClassAttribute
+            ValidableAttribute
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>ClassAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../Sphp/Html/Attributes/MultiValueAttributeInterface.html"><abbr title="Sphp\Html\Attributes\MultiValueAttributeInterface">MultiValueAttributeInterface</abbr></a>
+    <strong>ValidableAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>An implementation of CSS class attribute</p>            <p>The class attribute  specifies one or more class names for an element</p>                    </div>
+            <p>Default implementation of an attribute</p>                                </div>
     
     
     
@@ -100,7 +99,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name = &#039;class&#039;, <a href="../../../Sphp/Html/Attributes/Utils/ClassAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeUtils">ClassAttributeUtils</abbr></a> $filter = null)
+                    <a href="#method___construct">__construct</a>(string $name, mixed $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -113,7 +112,7 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___destruct"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -130,20 +129,20 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isProtected">isProtected</a>(null|scalar|scalar[] $values = null)
+                    <a href="#method_isProtected">isProtected</a>()
         
                                             <p>Checks whether the attribute has a locked value or not</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_protect">protect</a>(scalar|scalar[] $content)
+                    <a href="#method_protect">protect</a>(scalar $value)
         
                                             <p>Protects the given value to the attribute</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_protect"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -153,7 +152,7 @@
                     <a href="#method_getHtml">getHtml</a>()
         
                                             <p>Returns the instance of the object as a string</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -193,7 +192,7 @@
                     <a href="#method_isVisible">isVisible</a>()
         
                                             <p>Checks whether the attribute is visible or not</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -203,6 +202,17 @@
                     <a href="#method_isEmpty">isEmpty</a>()
         
                                             <p>Checks whether the attribute is empty or not</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_filterValue">filterValue</a>($value)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -210,49 +220,9 @@
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_set">set</a>(string|string[] $values)
+                    <a href="#method_set">set</a>(mixed $value)
         
                                             <p>Sets the value of the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_add">add</a>(string|string[] $values)
-        
-                                            <p>Adds new atomic values to the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_remove">remove</a>(scalar|scalar[] $values)
-        
-                                            <p>Removes given atomic values</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_clear">clear</a>()
-        
-                                            <p>Clears all unprotected values</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_contains">contains</a>(scalar|scalar[] $values)
-        
-                                            <p>Determines whether the given atomic values exists</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -267,55 +237,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_count">count</a>()
+                    <a href="#method_clear">clear</a>()
         
-                                            <p>Counts the number of the atomic values stored in the attribute</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_toArray">toArray</a>()
-        
-                                            <p>Serializes to an array</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>(callable $filter)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_filterPattern">filterPattern</a>(string $pattern)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Clears all unprotected values</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -326,9 +253,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 47</div>
+        <div class="location">at         line 39</div>
         <code>                    
-    <strong>__construct</strong>(string $name = &#039;class&#039;, <a href="../../../Sphp/Html/Attributes/Utils/ClassAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeUtils">ClassAttributeUtils</abbr></a> $filter = null)
+    <strong>__construct</strong>(string $name, mixed $value = null, <a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a> $validator = null)
         </code>
     </h3>
     <div class="details">
@@ -347,23 +274,19 @@
                 <td>the name of the attribute</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Utils/ClassAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\ClassAttributeUtils">ClassAttributeUtils</abbr></a></td>
-                <td>$filter</td>
-                <td></td>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value to set</td>
             </tr>
-            </table>
-
-            
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></td>
+                <td><a href="../../../Sphp/Html/Attributes/Utils/AttributeValueValidatorInterface.html"><abbr title="Sphp\Html\Attributes\Utils\AttributeValueValidatorInterface">AttributeValueValidatorInterface</abbr></a></td>
+                <td>$validator</td>
                 <td></td>
             </tr>
             </table>
 
+            
+            
             
                     </div>
     </div>
@@ -371,7 +294,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 61</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method___destruct"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 60</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -423,9 +346,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isProtected">
-        <div class="location">at         line 142</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 68</div>
         <code>                    boolean
-    <strong>isProtected</strong>(null|scalar|scalar[] $values = null)
+    <strong>isProtected</strong>()
         </code>
     </h3>
     <div class="details">
@@ -435,16 +358,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-description">
                                     <p>Checks whether the attribute has a locked value or not</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>null|scalar|scalar[]</td>
-                <td>$values</td>
-                <td>optional atomic values to check</td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -463,9 +376,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_protect">
-        <div class="location">at         line 174</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_protect"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 72</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>protect</strong>(scalar|scalar[] $content)
+    <strong>protect</strong>(scalar $value)
         </code>
     </h3>
     <div class="details">
@@ -479,9 +392,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>scalar|scalar[]</td>
-                <td>$content</td>
-                <td>the atomic values to lock</td>
+                <td>scalar</td>
+                <td>$value</td>
+                <td>the value to lock to the attribute</td>
             </tr>
             </table>
 
@@ -516,7 +429,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getHtml">
-        <div class="location">at         line 66</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getHtml"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 81</div>
         <code>                    string
     <strong>getHtml</strong>()
         </code>
@@ -637,7 +550,7 @@ name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isVisible">
-        <div class="location">at         line 77</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 107</div>
         <code>                    boolean
     <strong>isVisible</strong>()
         </code>
@@ -668,7 +581,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">at         line 81</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 111</div>
         <code>                    boolean
     <strong>isEmpty</strong>()
         </code>
@@ -698,10 +611,39 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_filterValue">
+        <div class="location">at         line 47</div>
+        <code>                    
+    <strong>filterValue</strong>($value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 59</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>set</strong>(string|string[] $values)
+    <strong>set</strong>(mixed $value)
         </code>
     </h3>
     <div class="details">
@@ -715,9 +657,9 @@ name is required or the attribute value is not boolean (false).</p>             
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|string[]</td>
-                <td>$values</td>
-                <td>the values to set</td>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>value to set</td>
             </tr>
             </table>
 
@@ -751,186 +693,8 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_add">
-        <div class="location">at         line 120</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>add</strong>(string|string[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Adds new atomic values to the attribute</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value (a class)</li>
-<li>An array can be be multidimensional array of atomic string values</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|string[]</td>
-                <td>$values</td>
-                <td>the values to add</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_remove">
-        <div class="location">at         line 199</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>remove</strong>(scalar|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Removes given atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> values (restrictions and rules)</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the atomic values to remove</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if any of the given values is immutable</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_clear">
-        <div class="location">at         line 213</div>
-        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
-    <strong>clear</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Clears all unprotected values</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_contains">
-        <div class="location">at         line 233</div>
-        <code>                    boolean
-    <strong>contains</strong>(scalar|scalar[] $values)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Determines whether the given atomic values exists</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> values (restrictions and rules)</p>
-
-<ol>
-<li>A string parameter can contain multiple comma separated atomic values</li>
-<li>An array parameter can contain only one atomic value per array value</li>
-</ol>
-</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>scalar|scalar[]</td>
-                <td>$values</td>
-                <td>the atomic values to search for</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true if the given atomic values exists</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 245</div>
+        <div class="location">at         line 71</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -965,10 +729,10 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_count">
-        <div class="location">at         line 259</div>
-        <code>                    int
-    <strong>count</strong>()
+                    <h3 id="method_clear">
+        <div class="location">at         line 75</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>clear</strong>()
         </code>
     </h3>
     <div class="details">
@@ -976,125 +740,18 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Counts the number of the atomic values stored in the attribute</p>                                                </div>
+                                    <p>Clears all unprotected values</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td>the number of the atomic values stored in the attribute</td>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_toArray">
-        <div class="location">at         line 263</div>
-        <code>                    array
-    <strong>toArray</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Serializes to an array</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td>the instance as an array</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_filter">
-        <div class="location">at         line 267</div>
-        <code>                    
-    <strong>filter</strong>(callable $filter)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>callable</td>
-                <td>$filter</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_filterPattern">
-        <div class="location">at         line 278</div>
-        <code>                    
-    <strong>filterPattern</strong>(string $pattern)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$pattern</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         line 286</div>
-        <code>                    
-    <strong>getIterator</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
             
             
                     </div>

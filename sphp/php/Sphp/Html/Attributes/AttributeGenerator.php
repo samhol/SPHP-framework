@@ -33,6 +33,7 @@ class AttributeGenerator {
    * @var string 
    */
   private $defaultType;
+
   //private static $c = 0;
 
   /**
@@ -180,7 +181,4 @@ class AttributeGenerator {
   }
 
 }
-
-
-
 
