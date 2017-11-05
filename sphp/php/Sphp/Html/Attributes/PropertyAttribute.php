@@ -22,12 +22,12 @@ use Sphp\Html\Attributes\Utils\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, MultiValueAttributeInterface {
+class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterator, CollectionAttributeInterface {
 
   /**
    * properties as a (name -> value) map
    *
-   * @var string[]
+   * @var scalar[]
    */
   private $props = [];
 
@@ -101,7 +101,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    */
   public function set($value) {
     $this->clear();
-    $this->setProperties($this->parser->filter($value));
+    $this->setProperties($this->parser->parse($value));
     return $this;
   }
 
@@ -281,7 +281,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
     if ($props === null) {
       $this->lockedProps = array_keys($this->props);
     } else {
-      $this->lockProperties($this->parser->filter($props));
+      $this->lockProperties($this->parser->parse($props));
     }
     return $this;
   }
@@ -343,7 +343,7 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
    * **Note:** Replaces old mutable property value with the new one
    *
    * @param  string $property the name of the property
-   * @param  mixed $value the value of the property
+   * @param  scalar $value the value of the property
    * @return void
    * @throws InvalidAttributeException if the property name or value is invalid
    * @throws ImmutableAttributeException if the property is immutable
@@ -413,3 +413,4 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
   }
 
 }
+

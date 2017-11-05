@@ -26,6 +26,39 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
   /**
+   * @return mixed[]
+   */
+  public function mixedData(): array {
+    return [
+        ['float', 0.231],
+        ["float", 0.0],
+        ['int', 10],
+        ['int', -10],
+        ['zero', 0],
+        ['zero', -0],
+        ['bool', -0],
+        ['zero', -0],
+        ['zero', -0],
+        ['zero', -0]
+    ];
+  }
+
+  /**
+   * @covers HtmlAttributeManager::set()
+   * 
+   * @param string $name
+   * @param string $value numeric value
+   * @dataProvider numericData
+   */
+  public function testSetting() {
+    $this->attrs->set('bool', true);
+    $this->attrs->setInstance(new BooleanAttribute('bool', true));
+    $this->assertSame($this->attrs->get('bool'), true);
+    $this->assertTrue($this->attrs->exists('bool'));
+    $this->assertTrue($this->attrs->isEmpty('bool'));
+  }
+
+  /**
    * @return string[]
    */
   public function identifyingData(): array {
@@ -299,3 +332,10 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
 }
+
+
+
+
+
+
+

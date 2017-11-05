@@ -25,7 +25,7 @@ class PropertyAttributeUtils {
    * @param  string|scalar[] $properties properties to parse
    * @return scalar[] parsed property array containing name value pairs
    */
-  public function filter($properties): array {
+  public function parse($properties): array {
     $parsed = [];
     if (is_array($properties)) {
       $parsed = $properties;
@@ -53,7 +53,7 @@ class PropertyAttributeUtils {
    * @return boolean true if the property name is valid
    */
   public function isValidPropertyName($name): bool {
-    return is_string($name) && !empty($name) || $name === "0" || $name === 0;
+    return is_string($name) && !empty($name) || $name === '0' || $name === 0;
   }
 
   /**
@@ -63,7 +63,7 @@ class PropertyAttributeUtils {
    * @return boolean true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && (!empty($value) || $value === "0" || $value === 0);
+    return is_scalar($value) && (!empty($value) || $value === '0' || $value === 0);
   }
 
   /**
@@ -75,6 +75,21 @@ class PropertyAttributeUtils {
    */
   public function isValidProperty($name, $value): bool {
     return $this->isValidValue($value) && $this->isValidPropertyName($name);
+  }
+
+  public function parseStringToArray(string $properties): array {
+    $parsed = [];
+    $rows = explode(';', $properties);
+    if (empty($rows)) {
+      $rows = [$properties];
+    }
+    foreach ($rows as $row) {
+      $data = explode(':', $row, 2);
+      if (count($data) === 2) {
+        $parsed[trim($data[0])] = trim($data[1]);
+      }
+    }
+    return $result;
   }
 
 }

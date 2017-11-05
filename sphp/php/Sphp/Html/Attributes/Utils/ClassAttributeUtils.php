@@ -16,7 +16,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttributeUtils extends MultiValueAttributeUtils {
+class ClassAttributeUtils implements CollectionAttributeUtilityInterface {
 
   /**
    * Returns an array of unique CSS class values parsed from the input
@@ -29,25 +29,25 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
    *
    * @param  mixed $raw the value(s) to parse
    * @param  bool $validate
-   * @return string[] separated atomic values in an array
+   * @return string[] separated unique atomic values in an array
    * @throws InvalidAttributeException if validation is set and the input is not valid
    */
-  public function filter($raw, bool $validate = false): array {
+  public function parse($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
       $parsed = Arrays::flatten($raw);
-    } else {
-      $parsed = [$raw];
+      //$vals = array_filter($parsed, 'is_string');
+    } else if (is_string($raw)) {
+      $parsed = $this->parseStringToArray($raw);
     }
-    $vals = array_filter($parsed, 'is_string');
     if ($validate) {
-      foreach ($vals as $value) {
+      foreach ($parsed as $value) {
         if (!$this->isValidAtomicValue($value)) {
           throw new InvalidAttributeException("Invalid attribute value '$value'");
         }
       }
     }
-    return $vals;
+    return $parsed;
   }
 
   public function isValidAtomicValue($value): bool {
@@ -57,7 +57,7 @@ class ClassAttributeUtils extends MultiValueAttributeUtils {
     return preg_match("/^[_a-zA-Z]+[_a-zA-Z0-9-]*/", $value) === 1;
   }
 
-  public function parseString(string $subject): array {
+  public function parseStringToArray(string $subject): array {
     $result = preg_split('/[\s]+/', $subject, -1, \PREG_SPLIT_NO_EMPTY);
     if (!$result) {
       $result = [];

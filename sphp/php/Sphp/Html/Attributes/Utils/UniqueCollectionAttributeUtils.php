@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class UniqueMultiValueAttributeUtils implements MultiValueAttributeUtilityInterface {
+class UniqueCollectionAttributeUtils  implements CollectionAttributeUtilityInterface {
 
   /**
    * Returns an array of unique values parsed from the input
@@ -35,7 +35,7 @@ class UniqueMultiValueAttributeUtils implements MultiValueAttributeUtilityInterf
    * @return string[] separated atomic values in an array
    * @throws InvalidAttributeException if validation is set and the input is not valid
    */
-  public function filter($raw, bool $validate = false): array {
+  public function parse($raw, bool $validate = false): array {
     $parsed = [];
     if (is_array($raw)) {
       $parsed = array_unique(Arrays::flatten($raw));
@@ -66,5 +66,11 @@ class UniqueMultiValueAttributeUtils implements MultiValueAttributeUtilityInterf
     return is_scalar($value);
   }
 
+  public function parseStringToArray(string $subject): array {
+    
+  }
+
 }
+
+
 

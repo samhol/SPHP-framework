@@ -8,7 +8,7 @@ use Sphp\Html\Attributes\Exceptions\InvalidAttributeException;
 class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var ClassAttributeFilter 
+   * @var ClassAttributeUtils 
    */
   protected $filter;
 
@@ -17,7 +17,7 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->filter = new ClassAttributeFilter();
+    $this->filter = new ClassAttributeUtils();
   }
 
   /**
@@ -29,40 +29,41 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return string[]
+   * @return mixed[]
    */
-  public function invalidData(): array {
+  public function invalidAtomicData(): array {
     return [
         [null],
         [''],
         [1],
+        [.1],
         [true],
         [false],
+        [new \Sphp\Html\Container('class')],
         [' '],
+        [' class '],
         ['  '],
         ["\n"],
         ["\n\t\r"],
         ["\t"],
         [" \r \n \t "],
-        [['2', ['']]],
+        [['class']],
     ];
   }
 
   /**
-   * @dataProvider invalidData
+   * @dataProvider invalidAtomicData
    */
-  public function testInvalidData($value) {
+  public function testInvalidAtomicValueValidation($value) {
     $this->assertFalse($this->filter->isValidAtomicValue($value));
-    $this->expectException(InvalidAttributeException::class);
-    $this->filter->filter($value, true);
   }
 
   /**
-   * 
    * @return string[]
    */
-  public function validStringData(): array {
+  public function validAtomicData(): array {
     return [
+        ['class'],
         ['_'],
         ['__'],
         ['a'],
@@ -74,14 +75,35 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @dataProvider validStringData
-   *
-   * @param string $value
+   * @dataProvider validAtomicData
    */
-  public function testValidStringFilterings($value) {
-    $filtered = $this->filter->filter($value, true);
-    $this->assertSame($this->filter->filter($value), $filtered);
-    $this->assertContains($value, $filtered);
+  public function testValidAtomicValueValidation($value) {
+    $this->assertTrue($this->filter->isValidAtomicValue($value));
+    $this->assertSame(true, $this->filter->isValidAtomicValue($value));
+  }
+
+  /**
+   * @return string[]
+   */
+  public function parseableStringData(): array {
+    return [
+        ['a', ['a']],
+        ['a ', ['a']],
+        ["\na ", ['a']],
+        ['a b', ['a', 'b']],
+        ["a\nb", ['a', 'b']],
+        ["  a\n b  ", ['a', 'b']],
+    ];
+  }
+
+  /**
+   * @dataProvider parseableStringData
+   * @param string $value
+   * @param array $result
+   */
+  public function testStringParsing(string $value, array $result) {
+    $filtered = $this->filter->parseStringToArray($value);
+    $this->assertSame($filtered, $result);
   }
 
   /**
@@ -98,13 +120,13 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @dataProvider validData
+   * @dataProvider validArrayData
    *
    * @param string $value
    */
   public function testValidArrayFilterings($value) {
-    $filtered = $this->filter->filter($value, true);
-    $this->assertSame($this->filter->filter($value), $filtered);
+    $filtered = $this->filter->parse($value, true);
+    $this->assertSame($this->filter->parse($value), $filtered);
     if (is_string($value)) {
       $this->assertContains($value, $filtered);
     } else {
@@ -115,40 +137,32 @@ class ClassAttributeFilterTests extends \PHPUnit\Framework\TestCase {
   }
 
   /**
-   * @return object[]
+   * @return string[]
    */
-  public function validObjectData(): array {
+  public function invalidArrayData(): array {
     return [
-        [(new \Sphp\Stdlib\MbString('foo')), ['foo']],
+        ['"', ['b', ['c', ['d']]]],
+        [['_2a-', '_2', ['a2']], ['_z2a-', 'a', ['a']]],
+        [['_-', '_a-', 'a__', '_-', '_a-', 'a__']],
+        [['_-', '_a-', 'a__', '_-', '_a-', 'a__']],
     ];
   }
 
   /**
-   * @dataProvider validObjectData
-   * @param object $value
-   * @param string[] $expected
+   * @dataProvider invalidArrayData
+   *
+   * @param string $value
    */
-  public function testValidObjectFiltering($value, array $expected) {
-    $this->assertSame($this->filter->filter($value), $expected);
-  }
-
-  /**
-   * @return object[]
-   */
-  public function invalidObjectData(): array {
-    return [
-        [new \Sphp\Stdlib\StopWatch()],
-        [new \stdClass()],
-    ];
-  }
-
-  /**
-   * @dataProvider invalidObjectData
-   * @param object $value
-   */
-  public function testInvalidObjectFiltering($value) {
-    $this->expectException(InvalidAttributeException::class);
-    $this->filter->filter($value, true);
+  public function testInvalidArrayFilterings($value) {
+    $filtered = $this->filter->parse($value, true);
+    $this->assertSame($this->filter->parse($value), $filtered);
+    if (is_string($value)) {
+      $this->assertContains($value, $filtered);
+    } else {
+      foreach (\Sphp\Stdlib\Arrays::flatten($value) as $v) {
+        $this->assertContains($v, $filtered);
+      }
+    }
   }
 
 }

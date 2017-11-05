@@ -30,7 +30,7 @@ echo $int->set('1') . "\n";
 echo $intWithMin->set('-1') . "\n";
 echo "\nmulti:\n------\n";
 $multi = new MultiValueAttribute('title');
-$uniq = new UniqueMultiValueAttribute('coords');
+$uniq = new UniqueCollectionAttribute('coords');
 $multi->set(1, 'a', 2, 3, new \stdClass());
 $multi->add('foo');
 $multi->add('" bar="');

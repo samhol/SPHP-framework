@@ -63,6 +63,8 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
   public function rawArrayData(): array {
     return [
         [['a' => 'b'], ['a' => 'b']],
+        [[' a ' => ' b '], ['a' => 'b']],
+        [[" \na" => 'b '], ['a' => 'b']],
         [['a' => 0], ['a' => 0]],
     ];
   }
@@ -73,7 +75,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider rawArrayData
    */
   public function testArrayParsing(array $value, array $expected) {
-    $this->assertEquals($this->utils->filter($value), $expected);
+    $this->assertEquals($this->utils->parse($value), $expected);
   }
 
   /**
@@ -85,11 +87,12 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
         [' ', []],
         [':;', []],
         [' p ', []],
-        ['p: v;', ['p' => 'v']],
-        ["color:blue;text-align:center",
+        ['a: b;', ['a' => 'b']],
+        [' a : b ;', ['a' => 'b']],
+        ["a:b;b:c",
             [
-                'color' => 'blue',
-                'text-align' => 'center'
+                'a' => 'b',
+                'b' => 'c'
             ]
         ]
     ];
@@ -101,7 +104,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider rawStringData
    */
   public function testParsing(string $value, array $expected) {
-    $this->assertEquals($this->utils->filter($value), $expected);
+    $this->assertEquals($this->utils->parse($value), $expected);
   }
 
 }

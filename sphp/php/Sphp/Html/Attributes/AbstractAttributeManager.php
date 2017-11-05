@@ -105,6 +105,28 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
     }
     return $this->attrs[$name];
   }
+  /**
+   * 
+   * @param  AttributeInterface $attr
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException
+   * @throws ImmutableAttributeException
+   */
+  public function setInstance(AttributeInterface $attr) {
+    $name = $attr->getName();
+    if (!$this->gen->isValidType($name, $attr)) {
+      throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
+    }
+    if (!$this->isProtected($name)) {
+      if ($this->isDemanded($name)) {
+        $attr->demand();
+      }
+      $this->attrs[$name] = $attr;
+    } else {
+      throw new ImmutableAttributeException("Attribute '$name' is immutable");
+    }
+    return $this;
+  }
 
   /**
    * 
@@ -112,12 +134,9 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
    * @return $this for a fluent interface
    * @throws InvalidAttributeException
    */
-  public function setInstance(AttributeInterface $attr) {
-    $name = $attr->getName();
-    if (!$this->gen->isValidType($name, $attr)) {
-      throw new InvalidAttributeException('Invalid attributetype (' . get_class($attr) . ') for ' . $name . ' attribute.' . $this->gen->getValidType($name) . " expected");
-    }
-    $this->attrs[$name] = $attr;
+  public function setBoolean(string $name, bool $value = true) {
+    $attr = new BooleanAttribute($name, $value);
+    $this->setInstance($attr);
     return $this;
   }
 
@@ -365,3 +384,7 @@ abstract class AbstractAttributeManager implements Countable, Iterator {
   }
 
 }
+
+
+
+

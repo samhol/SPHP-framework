@@ -20,7 +20,7 @@ use Sphp\Html\Attributes\Utils\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiValueAttributeInterface {
+class MultiValueAttribute extends AbstractAttribute implements Iterator, CollectionAttributeInterface {
 
   /**
    * stored individual values
@@ -106,7 +106,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->getValueFilter()->filter($values, true);
+    $parsed = $this->getValueFilter()->parse($values, true);
     $this->values = array_unique(array_merge($this->values, $parsed));
     return $this;
   }
@@ -126,7 +126,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
     if ($values === null) {
       return !empty($this->locked);
     } else {
-      $parsed = $this->getValueFilter()->filter($values, true);
+      $parsed = $this->getValueFilter()->parse($values, true);
       return empty(array_diff($parsed, $this->locked));
     }
   }
@@ -144,7 +144,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
    * @return $this for a fluent interface
    */
   public function protect($values) {
-    $parsed = $this->filter->filter(func_get_args());
+    $parsed = $this->filter->parse(func_get_args());
     $this->values = array_unique(array_merge($this->values, $parsed));
     $this->locked = array_unique(array_merge($this->locked, $parsed));
     return $this;
@@ -163,7 +163,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
    * @throws ImmutableAttributeException if any of the given values is immutable
    */
   public function remove($values) {
-    $arr = $this->getValueFilter()->filter(func_get_args());
+    $arr = $this->getValueFilter()->parse(func_get_args());
     $this->values = array_diff(array_diff($arr, $this->locked), $this->values);
     return $this;
   }
@@ -185,7 +185,7 @@ class MultiValueAttribute extends AbstractAttribute implements Iterator, MultiVa
    * @return boolean true if the given atomic values exists
    */
   public function contains($values): bool {
-    $needles = $this->filter->filter($values);
+    $needles = $this->filter->parse($values);
     $exists = false;
     foreach ($needles as $needle) {
       $exists = in_array($needle, $this->value);

@@ -44,7 +44,7 @@ class BooleanAttribute extends AbstractAttribute {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    $this->value = fslse;
+    $this->value = false;
     return $this;
   }
 
@@ -94,4 +94,5 @@ class BooleanAttribute extends AbstractAttribute {
   }
 
 }
+
 

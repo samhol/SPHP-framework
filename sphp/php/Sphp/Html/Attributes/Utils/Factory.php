@@ -58,7 +58,7 @@ class Factory {
               ->setUtility(new PropertyAttributeUtils())
               ->setUtility(new ClassAttributeUtils())
               ->setUtility(new MultiValueAttributeUtils())
-              ->setUtility(new UniqueMultiValueAttributeUtils());
+              ->setUtility(new UniqueCollectionAttributeUtils());
     }
     return static::$instance;
   }

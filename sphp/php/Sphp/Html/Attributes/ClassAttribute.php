@@ -24,7 +24,7 @@ use Sphp\Html\Attributes\Utils\Factory;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ClassAttribute extends AbstractAttribute implements IteratorAggregate, MultiValueAttributeInterface {
+class ClassAttribute extends AbstractAttribute implements IteratorAggregate, CollectionAttributeInterface {
 
   /**
    * stored individual classes
@@ -97,7 +97,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
   public function set($values) {
     $this->clear();
     if (func_num_args() === 1 && is_string($values)) {
-      $values = $this->filter->parseString($values);
+      $values = $this->filter->parseStringToArray($values);
     } else {
       $values = func_get_args();
     }
@@ -118,7 +118,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    * @return $this for a fluent interface
    */
   public function add(...$values) {
-    $parsed = $this->filter->filter($values, true);
+    $parsed = $this->filter->parse($values, true);
     foreach ($parsed as $class) {
       if (!isset($this->values[$class])) {
         $this->values[$class] = false;
@@ -145,9 +145,9 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
     } else {
       $locked = false;
       if (func_num_args() === 1 && is_string($values)) {
-        $values = $this->filter->parseString($values);
+        $values = $this->filter->parseStringToArray($values);
       } else {
-        $values = $this->filter->filter(func_get_args());
+        $values = $this->filter->parse(func_get_args());
       }
       foreach ($values as $class) {
         $locked = isset($this->values[$class]) && $this->values[$class] === true;
@@ -173,9 +173,9 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    */
   public function protect($content) {
     if (func_num_args() === 1 && is_string($content)) {
-      $content = $this->filter->parseString($content);
+      $content = $this->filter->parseStringToArray($content);
     } else {
-      $content = $this->filter->filter(func_get_args());
+      $content = $this->filter->parse(func_get_args());
     }
     //$arr = $this->filter->filter(func_get_args());
     foreach ($content as $class) {
@@ -231,7 +231,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Mul
    * @return boolean true if the given atomic values exists
    */
   public function contains($values): bool {
-    $needles = $this->filter->filter($values);
+    $needles = $this->filter->parse($values);
     $exists = false;
     foreach ($needles as $class) {
       $exists = isset($this->values[$class]);
