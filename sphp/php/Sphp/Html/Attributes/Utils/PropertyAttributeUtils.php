@@ -22,28 +22,21 @@ class PropertyAttributeUtils {
    * Result array has properties names as keys and corresponding values as
    *  array values
    *
-   * @param  string|scalar[] $properties properties to parse
+   * @param  string|array $properties properties to parse
    * @return scalar[] parsed property array containing name value pairs
    */
-  public function parse($properties): array {
+  public function parse($properties, bool $removeInvalid = false): array {
     $parsed = [];
     if (is_array($properties)) {
       $parsed = $properties;
+      //$parsed = array_walk($properties, 'trim');
     } else if (is_string($properties)) {
-      $rows = explode(';', $properties);
-      if (empty($rows)) {
-        $rows = [$properties];
-      }
-      foreach ($rows as $row) {
-        $data = explode(':', $row, 2);
-        if (count($data) === 2) {
-          $parsed[trim($data[0])] = trim($data[1]);
-        }
-      }
+      $parsed = $this->parseStringToArray($properties);
     }
-    return array_filter($parsed, function ($value, $prop) {
-      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
-    }, \ARRAY_FILTER_USE_BOTH);
+    if ($removeInvalid) {
+      $parsed = $this->removeInvalidProperties($parsed);
+    }
+    return $parsed;
   }
 
   /**
@@ -77,7 +70,18 @@ class PropertyAttributeUtils {
     return $this->isValidValue($value) && $this->isValidPropertyName($name);
   }
 
-  public function parseStringToArray(string $properties): array {
+  /**
+   * 
+   * @param  array $properties
+   * @return scalar[]
+   */
+  public function removeInvalidProperties(array $properties): array {
+    return array_filter($properties, function ($value, $prop) {
+      return $this->isValidValue($value) && $this->isValidPropertyName($prop);
+    }, \ARRAY_FILTER_USE_BOTH);
+  }
+
+  public function parseStringToArray(string $properties, bool $removeInvalid = false): array {
     $parsed = [];
     $rows = explode(';', $properties);
     if (empty($rows)) {
@@ -89,7 +93,10 @@ class PropertyAttributeUtils {
         $parsed[trim($data[0])] = trim($data[1]);
       }
     }
-    return $result;
+    if ($removeInvalid) {
+      $parsed = $this->removeInvalidProperties($parsed);
+    }
+    return $parsed;
   }
 
 }

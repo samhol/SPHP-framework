@@ -75,7 +75,7 @@ class PropertyAttributeTest extends \PHPUnit\Framework\TestCase {
    * @dataProvider rawArrayData
    */
   public function testArrayParsing(array $value, array $expected) {
-    $this->assertEquals($this->utils->parse($value), $expected);
+    $this->assertEquals($this->utils->parse($value, true), $expected);
   }
 
   /**
