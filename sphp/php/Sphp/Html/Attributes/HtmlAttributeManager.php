@@ -14,7 +14,7 @@ namespace Sphp\Html\Attributes;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class HtmlAttributeManager extends AbstractAttributeManager {
+class HtmlAttributeManager extends AttributeManager {
 
   /**
    * Constructs a new instance

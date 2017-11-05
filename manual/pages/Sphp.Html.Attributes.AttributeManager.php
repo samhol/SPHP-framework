@@ -3,15 +3,15 @@
 namespace Sphp\Html\Attributes;
 
 use Sphp\Manual;
-$abstractAttrMngr = Manual\api()->classLinker(AbstractAttributeManager::class);
+$attributeManager = Manual\api()->classLinker(AttributeManager::class);
 $htmlAttrMngr = Manual\api()->classLinker(HtmlAttributeManager::class);
 $attributeInterface = Manual\api()->classLinker(AttributeInterface::class);
 $multiValueAttr = Manual\api()->classLinker(MultiValueAttribute::class);
 $propertyAttr = Manual\api()->classLinker(PropertyAttribute::class);
-$setMethodLink = $abstractAttrMngr->methodLink("set", false);
-$removeMethodLink = $abstractAttrMngr->methodLink("remove", false);
-$requireAttr = $abstractAttrMngr->methodLink("demand", false);
-$lockAttr = $abstractAttrMngr->methodLink("lock", false);
+$setMethodLink = $attributeManager->methodLink("set", false);
+$removeMethodLink = $attributeManager->methodLink("remove", false);
+$requireAttr = $attributeManager->methodLink("demand", false);
+$protect = $attributeManager->methodLink("protect", false);
 
 Manual\parseDown(<<<MD
 ##HTML attribute management with $htmlAttrMngr class
@@ -27,7 +27,7 @@ Any type of valid attribute support at least these four setter methods:
 3. $requireAttr: This method sets an attribute as always visible (atleast attribute name). A previously nonexistent required 
 attribute is stored to the manager as an empty attribute. A required attribute cannot be 
 removed, but its value is still mutable.
-4. $lockAttr: This method locks an attribute 
+4. $protect: This method locks an attribute 
 to the given value. Locked attribute attribute is always visible. Such attribute cannot be removed and locked value is immune to modification.
 
 **IMPORTANT NOTES ABOUT REQUIRING AND VALUE LOCKING!:** 

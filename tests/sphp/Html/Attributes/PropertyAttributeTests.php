@@ -11,7 +11,7 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
   /**
    * @var PropertyAttribute 
    */
-  protected $attrs;
+  protected $attr;
 
   public function createAttr(string $name = 'style'): AttributeInterface {
     return new PropertyAttribute($name);
@@ -174,15 +174,11 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
    */
   public function validPropertyData(): array {
     return [
-        [0, "val"],
-        [1, "val"],
-        ["prop", 0],
-        ["prop", 0.1],
-        ["prop", 2],
-        ["prop", -2],
-        ["prop", true],
-        ["prop", false],
-        ["1", "val"],
+        ['a', 'b'],
+        ['a', 1],
+        ['a', 'true'],
+        ['a', 'false'],
+        ['a', "a b"],
     ];
   }
 
@@ -196,6 +192,30 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
     $this->attr->setProperty($propName, $propValue);
     $this->assertTrue($this->attr->hasProperty($propName));
     $this->assertTrue($this->attr->count() === 1);
+  }
+
+  /**
+   * @return array
+   */
+  public function invalidPropertyData(): array {
+    return [
+        ['', 'b'],
+        ['a', ''],
+        ["\n", 'b'],
+        ['a', false],
+        ['a', null],
+    ];
+  }
+
+  /**
+   * @covers Sphp\Html\Attributes\MultiValueAttribute::add()
+   * @dataProvider invalidPropertyData
+   * @param int|string $propName numeric value
+   * @param scalar $propValue
+   */
+  public function testSetPropertyFail($propName, $propValue) {
+    $this->expectException(Exceptions\InvalidAttributeException::class);
+    $this->attr->setProperty($propName, $propValue);
   }
 
   /**
@@ -227,6 +247,22 @@ class PropertyAttributeTests extends AbstractAttributeObjectTest {
     $this->expectException(ImmutableAttributeException::class);
     $this->attr->unsetProperty('foo');
   }
+  
+
+  /**
+   * @covers PropertyAttribute::unsetProperty()
+   */
+  public function testOutputs() {
+    $this->attr->setProperty('a', '1 2 3');
+    $this->attr->setProperty('b', 'foo');
+    $this->assertSame($this->attr->hasProperty('foo'));
+    $this->assertTrue($this->attr->hasProperty('foo'));
+    $this->attr->unsetProperty('foo');
+    $this->assertFalse($this->attr->hasProperty('foo'));
+    $this->attr->lockProperty('foo', 'bar');
+    $this->assertTrue($this->attr->hasProperty('foo'));
+    $this->expectException(ImmutableAttributeException::class);
+    $this->attr->unsetProperty('foo');
+  }
 
 }
-

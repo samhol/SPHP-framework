@@ -18,21 +18,3 @@ Manual\parseDown(<<<MD
 
 MD
 );
-
-
-Manual\loadPage('Sphp.Html.Attributes.IdAttribute');
-Manual\loadPage('Sphp.Html.Attributes.BooleanAttribute');
-
-Manual\example('Sphp/Html/Attributes/AttributeInterface.php', "html5", true)
-        ->setExamplePaneTitle('Examples of scalar attributes')
-        ->printHtml();
-
-
-
-
-
-
-
-
-
-

@@ -82,11 +82,11 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
   }
 
   public function isVisible(): bool {
-    return $this->isDemanded() || !empty($this->values);
+    return $this->isDemanded() || !empty($this->props);
   }
 
   public function isEmpty(): bool {
-    return empty($this->values);
+    return empty($this->props);
   }
 
   /**
@@ -413,4 +413,3 @@ class PropertyAttribute extends AbstractAttribute implements ArrayAccess, Iterat
   }
 
 }
-

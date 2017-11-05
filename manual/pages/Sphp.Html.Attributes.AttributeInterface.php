@@ -33,10 +33,17 @@ Any attribute class support at least these four value manipulation methods:
 MD
 );
 
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.Attribute');
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.AbstractScalarAttribute');
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
-\Sphp\Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
+
+Manual\loadPage('Sphp.Html.Attributes.IdAttribute');
+Manual\loadPage('Sphp.Html.Attributes.BooleanAttribute');
+//\Sphp\Manual\loadPage('Sphp.Html.Attributes.AbstractScalarAttribute');
+Manual\loadPage('Sphp.Html.Attributes.MultiValueAttribute');
+Manual\loadPage('Sphp.Html.Attributes.PropertyAttribute');
+
+
+Manual\example('Sphp/Html/Attributes/AttributeInterface.php', "html5", true)
+        ->setExamplePaneTitle('Examples of scalar attributes')
+        ->printHtml();
 
 
 

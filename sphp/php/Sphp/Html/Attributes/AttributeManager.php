@@ -24,7 +24,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractAttributeManager implements Countable, Iterator {
+ class AttributeManager implements Countable, Iterator {
 
   /**
    * attributes as a (name -> value) map

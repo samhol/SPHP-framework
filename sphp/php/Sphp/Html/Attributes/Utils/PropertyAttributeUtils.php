@@ -46,7 +46,7 @@ class PropertyAttributeUtils {
    * @return boolean true if the property name is valid
    */
   public function isValidPropertyName($name): bool {
-    return is_string($name) && !empty($name) || $name === '0' || $name === 0;
+    return is_string($name) && \Sphp\Stdlib\Strings::match($name, '/[^\s]+/');
   }
 
   /**
@@ -56,7 +56,7 @@ class PropertyAttributeUtils {
    * @return boolean true if the property value is valid
    */
   public function isValidValue($value): bool {
-    return is_scalar($value) && (!empty($value) || $value === '0' || $value === 0);
+    return is_scalar($value) && \Sphp\Stdlib\Strings::match($value, '/[^\s]+/');
   }
 
   /**
