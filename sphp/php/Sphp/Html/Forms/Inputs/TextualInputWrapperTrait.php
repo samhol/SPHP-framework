@@ -47,7 +47,7 @@ trait TextualInputWrapperTrait {
     return $this;
   }
 
-  public function setPlaceholder($placeholder) {
+  public function setPlaceholder(string $placeholder = null) {
     $this->getInput()->setPlaceholder($placeholder);
     return $this;
   }
@@ -84,4 +84,5 @@ trait TextualInputWrapperTrait {
   }
 
 }
+
 

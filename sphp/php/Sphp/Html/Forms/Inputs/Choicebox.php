@@ -41,7 +41,9 @@ class Choicebox extends InputTag implements ChoiceboxInterface {
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
   public function setChecked(bool $checked = true) {
-    return $this->attrs()->set('checked', $checked);
+    $this->attrs()->setBoolean('checked', $checked);
+    return $this;
   }
 
 }
+

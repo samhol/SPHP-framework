@@ -30,8 +30,9 @@ class PasswordInput extends TextualInput {
    * @link   http://www.w3schools.com/tags/att_input_size.asp size attribute
    * @link   http://www.w3schools.com/tags/att_input_maxlength.asp maxlength attribute
    */
-  public function __construct($name = null, $value = null, int $size = null, int $maxlength = null) {
+  public function __construct(string $name = null, $value = null, int $size = null, int $maxlength = null) {
     parent::__construct('password', $name, $value, $maxlength, $size);
   }
 
 }
+

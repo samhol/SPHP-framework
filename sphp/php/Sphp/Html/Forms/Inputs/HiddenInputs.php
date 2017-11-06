@@ -94,7 +94,7 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
     $this->inputs[$offset] = $value;
   }
 
-  public function offsetUnset($offset): void {
+  public function offsetUnset($offset) {
     if ($this->offsetExists($offset)) {
       unset($this->inputs[$offset]);
     }
@@ -137,8 +137,9 @@ class HiddenInputs extends AbstractComponentGenerator implements ContentInterfac
    * 
    * @return boolean current iterator position is valid
    */
-  public function valid() {
+  public function valid(): bool {
     return false !== current($this->inputs);
   }
 
 }
+

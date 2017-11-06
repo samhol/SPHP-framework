@@ -61,7 +61,7 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
    */
-  public function setPlaceholder($placeholder);
+  public function setPlaceholder(string $placeholder = null);
 
   /**
    * Sets the autocomplete attribute's value on or off
@@ -80,3 +80,4 @@ interface TextualInputInterface extends PatternValidableInputInterface {
    */
   public function autocomplete(bool $allow = true);
 }
+

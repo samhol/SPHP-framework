@@ -33,7 +33,8 @@ trait ValidableInputTrait {
    * @return $this for a fluent interface
    */
   public function setRequired(bool $required = true) {
-    return $this->setAttr('required', $required);
+    $this->attrs()->setBoolean('required', $required);
+    return $this;
   }
 
   /**
@@ -47,3 +48,4 @@ trait ValidableInputTrait {
   }
 
 }
+

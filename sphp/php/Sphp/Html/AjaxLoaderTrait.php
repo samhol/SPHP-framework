@@ -34,7 +34,7 @@ trait AjaxLoaderTrait {
    * @return $this for a fluent interface
    */
   public function ajaxPrepend(string $url) {
-     $this->attrs()
+    $this->attrs()
             ->set('data-sphp-ajax-prepend', $url);
     return $this;
   }
@@ -47,9 +47,10 @@ trait AjaxLoaderTrait {
    * @return $this for a fluent interface
    */
   public function ajaxAppend(string $url) {
-     $this->attrs()
+    $this->attrs()
             ->set('data-sphp-ajax-append', $url);
     return $this;
   }
 
 }
+

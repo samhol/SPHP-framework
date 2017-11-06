@@ -60,5 +60,6 @@ interface TextareaInterface extends Validable {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_textarea_placeholder.asp placeholder attribute
    */
-  public function setPlaceholder($placeholder);
+  public function setPlaceholder(string $placeholder);
 }
+

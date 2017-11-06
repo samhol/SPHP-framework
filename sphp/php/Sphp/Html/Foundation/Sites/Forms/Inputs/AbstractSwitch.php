@@ -56,7 +56,7 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
    * @param Choicebox $box the inner form component
    * @param string|null $srText text for screen readers
    */
-  public function __construct(Choicebox $box, $srText = "") {
+  public function __construct(Choicebox $box, $srText = '') {
     $box->cssClasses()->protect('switch-input');
     parent::__construct('div');
     $this->input = $box;
@@ -205,3 +205,4 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   }
 
 }
+

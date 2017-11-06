@@ -24,7 +24,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
- class AttributeManager implements Countable, Iterator {
+class AttributeManager implements Countable, Iterator {
 
   /**
    * attributes as a (name -> value) map
@@ -105,6 +105,7 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
     }
     return $this->attrs[$name];
   }
+
   /**
    * 
    * @param  AttributeInterface $attr
@@ -130,13 +131,70 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
   /**
    * 
+   * @param  string $name
+   * @return bool
+   */
+  public function supportsTypeChange(string $name, string $type): bool {
+    if (!$this->isProtected($name)) {
+      return $this->gen->isValidType($name, $type);
+    }
+    return false;
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @return bool
+   */
+  public function isIntegerAttribute(string $name): bool {
+    if ($this->isInstatiated($name)) {
+      return $this->attrs[$name] instanceof IntegerAttribute;
+    }
+    return $this->gen->isOfType($name, IntegerAttribute::class);
+  }
+
+  /**
+   * 
+   * @param  string $name
+   * @return bool
+   */
+  public function isBooleanAttribute(string $name): bool {
+    if ($this->isInstatiated($name)) {
+      return $this->attrs[$name] instanceof BooleanAttribute;
+    }
+    return $this->gen->isOfType($name, BooleanAttribute::class);
+  }
+
+  /**
+   * 
    * @param  AttributeInterface $attr
    * @return $this for a fluent interface
    * @throws InvalidAttributeException
    */
   public function setBoolean(string $name, bool $value = true) {
-    $attr = new BooleanAttribute($name, $value);
-    $this->setInstance($attr);
+    if ($this->isBooleanAttribute($name)) {
+      $this->attrs[$name]->set($value);
+    } else {
+      $attr = new BooleanAttribute($name, $value);
+      $this->setInstance($attr);
+    }
+    return $this;
+  }
+
+  /**
+   * 
+   * @param  AttributeInterface $attr
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException
+   */
+  public function setInteger(string $name, int $value = null) {
+    if ($this->isIntegerAttribute($name)) {
+      $this->attrs[$name]->set($value);
+    } else {
+      $attr = new IntegerAttribute($name);
+      $attr->set($value);
+      $this->setInstance($attr);
+    }
     return $this;
   }
 
@@ -325,6 +383,16 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute instance exists and false otherwise
    */
+  public function isInstatiated(string $name): bool {
+    return isset($this->attrs[$name]);
+  }
+
+  /**
+   * Checks if named attribute instance exists in the manager
+   *
+   * @param  string $name the name of the attribute
+   * @return boolean true if the attribute instance exists and false otherwise
+   */
   public function exists(string $name): bool {
     return isset($this->attrs[$name]);
   }
@@ -384,7 +452,4 @@ use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
   }
 
 }
-
-
-
 

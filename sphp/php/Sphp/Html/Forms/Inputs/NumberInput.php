@@ -66,7 +66,7 @@ class NumberInput extends InputTag implements NumberInputInterface {
     return $this;
   }
 
-  public function setPlaceholder($placeholder) {
+  public function setPlaceholder(string $placeholder = null) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
@@ -77,3 +77,4 @@ class NumberInput extends InputTag implements NumberInputInterface {
   }
 
 }
+

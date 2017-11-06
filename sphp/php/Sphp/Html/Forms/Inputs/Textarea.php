@@ -62,18 +62,21 @@ class Textarea extends ContainerTag implements TextareaInterface {
   }
 
   public function setRows(int $rows) {
-    $this->attrs()->set('rows', $rows);
+    $this->attrs()->setInteger('rows', $rows);
     return $this;
   }
 
   public function setCols(int $cols) {
-    $this->attrs()->set('cols', $cols);
+    $this->attrs()->setInteger('cols', $cols);
     return $this;
   }
 
-  public function setPlaceholder($placeholder) {
+  public function setPlaceholder(string $placeholder) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
 
 }
+
+
+

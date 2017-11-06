@@ -42,7 +42,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function setMethod($method) {
+  public function setMethod(string $method = null) {
     $this->attrs()->set('method', $method);
     return $this;
   }
@@ -222,3 +222,4 @@ trait FormTrait {
   }
 
 }
+

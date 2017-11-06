@@ -25,7 +25,7 @@ class TextInput extends TextualInput {
    *
    * @param  string $name the value of the  name attribute
    * @param  string $value the value of the  value attribute
-   * @param  int|null $maxlength the value of the  maxlength attribute
+   * @param  int|null $maxlength the value of the  maximum length attribute
    * @param  int|null $size the value of the  size attribute
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
@@ -37,3 +37,4 @@ class TextInput extends TextualInput {
   }
 
 }
+

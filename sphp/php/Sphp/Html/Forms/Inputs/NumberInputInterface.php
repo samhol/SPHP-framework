@@ -67,7 +67,7 @@ interface NumberInputInterface extends Validable {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_placeholder.asp placeholder attribute
    */
-  public function setPlaceholder($placeholder);
+  public function setPlaceholder(string $placeholder = null);
 
   /**
    * Sets the autocomplete attribute's value on or off
@@ -86,3 +86,4 @@ interface NumberInputInterface extends Validable {
    */
   public function autocomplete(bool $allow = true);
 }
+

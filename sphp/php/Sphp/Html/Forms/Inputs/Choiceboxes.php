@@ -158,7 +158,8 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
    * @return $this for a fluent interface
    */
   public function disable(bool $disabled = true) {
-    return $this->setAttr('disabled', $disabled);
+    $this->attrs()->setBoolean('disabled', $disabled);
+    return $this;
   }
 
   /**
@@ -206,3 +207,4 @@ abstract class Choiceboxes extends AbstractContainerComponent implements InputIn
   }
 
 }
+

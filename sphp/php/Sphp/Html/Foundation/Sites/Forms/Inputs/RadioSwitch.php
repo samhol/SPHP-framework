@@ -32,8 +32,9 @@ class RadioSwitch extends AbstractSwitch {
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    * @link   http://www.w3schools.com/tags/att_input_checked.asp checked attribute
    */
-  public function __construct($name, $value, bool $checked = false, $screenReaderLabel = '') {
+  public function __construct(string $name = null, $value = null, bool $checked = false, $screenReaderLabel = '') {
     parent::__construct(new Radiobox($name, $value, $checked), $screenReaderLabel);
   }
 
 }
+

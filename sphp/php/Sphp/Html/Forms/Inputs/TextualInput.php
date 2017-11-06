@@ -58,7 +58,7 @@ class TextualInput extends InputTag implements TextualInputInterface {
     return $this;
   }
 
-  public function setPlaceholder($placeholder) {
+  public function setPlaceholder(string $placeholder = null) {
     $this->attrs()->set('placeholder', $placeholder);
     return $this;
   }
@@ -69,3 +69,4 @@ class TextualInput extends InputTag implements TextualInputInterface {
   }
 
 }
+

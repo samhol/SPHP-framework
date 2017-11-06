@@ -15,7 +15,7 @@ $ruleMenu = (new Select\Select("rule"))
 $searchInput = (new Input\TextInput("search"))
 		->setSize(30)
 		->setRequired()
-		->setPlaceholder("Searrc for messages containing text");
+		->setPlaceholder("Search for messages containing text");
 		//->setLabel("A part of Message:");
 
 $perPageOptions = [];
@@ -33,4 +33,5 @@ $fieldset[] = (new InputColumn((new Buttons\SubmitInput("Submit", "submit", "sub
 $form = new Form($_SERVER["PHP_SELF"], "get");
 $form->appendHiddenVariable("page", 1);
 $form->append($fieldset)->setData($_GET)->printHtml();
+
 

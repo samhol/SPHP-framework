@@ -23,7 +23,7 @@ class Radioboxes extends Choiceboxes {
    * @param scalar[] $values
    * @param mixed $mainLabel
    */
-  public function __construct($name, array $values = []) {
+  public function __construct(string $name = null, array $values = []) {
     parent::__construct('input:radio', $name, $values);
   }
 

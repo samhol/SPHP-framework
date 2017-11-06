@@ -31,7 +31,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
-  public function setMethod($method);
+  public function setMethod(string $method = null);
 
   /**
    * Returns the value of the method attribute
@@ -189,3 +189,4 @@ interface FormInterface extends ContentInterface {
   public function setData(array $data = [], $filter = true);
 
 }
+

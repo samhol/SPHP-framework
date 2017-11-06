@@ -23,11 +23,11 @@ class FileInput extends AbstractInputTag implements Validable {
    * Constructs a new instance
    *
    * @param  string|null $name name attribute
-   * @param  string|null $accept the accepted mimetypes for the file
+   * @param  string|null $accept the accepted mime types for the file
    * @link   http://www.w3schools.com/tags/att_input_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
-  public function __construct($name = null, $accept = null) {
+  public function __construct(string $name = null, string $accept = null) {
     parent::__construct('file', $name);
     if ($accept !== null) {
       $this->setFileTypes($accept);
@@ -35,13 +35,13 @@ class FileInput extends AbstractInputTag implements Validable {
   }
 
   /**
-   * Sets the accepted mimetypes for the file
+   * Sets the accepted mime types for the file
    *
-   * @param  string $accept the accepted mimetypes for the file
+   * @param  string $accept the accepted mime types for the file
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_accept.asp accept attribute
    */
-  public function setFileTypes($accept) {
+  public function setFileTypes(string $accept) {
     $this->attrs()->set('accept', $accept);
     return $this;
   }
@@ -54,8 +54,10 @@ class FileInput extends AbstractInputTag implements Validable {
    * @link   http://www.w3schools.com/tags/att_input_multiple.asp multiple attribute
    */
   public function multipleFiles(bool $multiple = true) {
-    $this->attrs()->set('multiple', $multiple);
+    $this->attrs()->setBoolean('multiple', $multiple);
     return $this;
   }
 
 }
+
+

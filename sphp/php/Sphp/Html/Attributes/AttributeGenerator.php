@@ -146,6 +146,16 @@ class AttributeGenerator {
 
   /**
    * 
+   * @param string $name
+   * @param type $type
+   * @return bool
+   */
+  public function isOfType(string $name, $type): bool {
+    return $this->getActualType($name) instanceof $type;
+  }
+
+  /**
+   * 
    * @param  string $name
    * @param  string|object $new
    * @return boolean

@@ -17,7 +17,29 @@ try {
 } catch (\Exception $ex) {
   echo new ThrowableCallout($ex);
 }
+$attrs = new HtmlAttributeManager();
+//$attrs->getGenerator()->mapType('foo-bool-not', IntegerAttribute::class);
+$attrs->setBoolean('foo-bool-not', true);
+$attrs->setInteger('foo-int', 15);
+echo "$attrs\n";
+$attrs->setInstance(new BooleanAttribute('foo-int', true));
+$attrs->remove('blöö');
+echo "$attrs\n";
 echo "</pre>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
