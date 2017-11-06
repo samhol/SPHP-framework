@@ -5,7 +5,7 @@ namespace Sphp\Database;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$update = Apis::sami()->classLinker(Update::class);
+$update = \Sphp\Manual\api()->classLinker(Update::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Updating records <small>with $update object</small>

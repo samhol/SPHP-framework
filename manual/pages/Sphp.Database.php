@@ -8,7 +8,7 @@ use Sphp\Html\Apps\Manual\Apis;
 
 require_once('manual/PDO/configuration.php');
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
-$db =  Apis::sami()->classLinker(DB::class);
+$db =  \Sphp\Manual\api()->classLinker(DB::class);
 \Sphp\Manual\parseDown(<<<MD
 #DATABASE MANIPULATION <small>using statement builders</small>
 

@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Media;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $flexes = (new BlockGrid(['small-up-1', 'large-up-2']))
         ->append(ResponsiveEmbed::youtube("w-I6XTVZXww")->setAspectRatio('panorama'))

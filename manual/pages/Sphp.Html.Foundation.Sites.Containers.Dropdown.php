@@ -5,8 +5,8 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceLink(__NAMESPACE__);
-$dropdown = Apis::sami()->classLinker(Dropdown::class);
+$ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
+$dropdown = \Sphp\Manual\api()->classLinker(Dropdown::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ###The $dropdown component

@@ -7,16 +7,16 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translatable;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$messageInterface = Apis::sami()->classLinker(MessageInterface::class);
-$translatable = Apis::sami()->classLinker(Translatable::class);
-$message = Apis::sami()->classLinker(Message::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$messageInterface = \Sphp\Manual\api()->classLinker(MessageInterface::class);
+$translatable = \Sphp\Manual\api()->classLinker(Translatable::class);
+$message = \Sphp\Manual\api()->classLinker(Message::class);
 $echo = Apis::phpManual()->functionLink('echo');
 $print = Apis::phpManual()->functionLink('print');
 $string = Apis::phpManual()->typeLink('string');
 $vsprintfLink = Apis::phpManual()->functionLink('vsprintf');
 
-$translator = Apis::sami()->classLinker(TranslatorInterface::class);
+$translator = \Sphp\Manual\api()->classLinker(TranslatorInterface::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Localized verbose messages <small>using $messageInterface objects</small>

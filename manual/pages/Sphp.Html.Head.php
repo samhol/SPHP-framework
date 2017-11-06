@@ -6,18 +6,18 @@ use Sphp\Html\Programming\ScriptInterface;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$headNS = Apis::sami()->namespaceLink(__NAMESPACE__);
-$metaIfLnk = Apis::sami()->classLinker(HeadComponentInterface::class);
-$head = Apis::sami()->classLinker(Head::class);
-$title = Apis::sami()->classLinker(Title::class);
-$metaInterface = Apis::sami()->classLinker(MetaInterface::class);
-$metaContainer = Apis::sami()->classLinker(MetaContainer::class);
-$meta = Apis::sami()->classLinker(Meta::class);
-$base = Apis::sami()->classLinker(Base::class);
-$link = Apis::sami()->classLinker(Link::class);
-$scriptInterface = Apis::sami()->classLinker(ScriptInterface::class);
+$headNS = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
+$metaIfLnk = \Sphp\Manual\api()->classLinker(HeadComponentInterface::class);
+$head = \Sphp\Manual\api()->classLinker(Head::class);
+$title = \Sphp\Manual\api()->classLinker(Title::class);
+$metaInterface = \Sphp\Manual\api()->classLinker(MetaInterface::class);
+$metaContainer = \Sphp\Manual\api()->classLinker(MetaContainer::class);
+$meta = \Sphp\Manual\api()->classLinker(Meta::class);
+$base = \Sphp\Manual\api()->classLinker(Base::class);
+$link = \Sphp\Manual\api()->classLinker(Link::class);
+$scriptInterface = \Sphp\Manual\api()->classLinker(ScriptInterface::class);
 $w3schools = Apis::w3schools();
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #HTML HEAD: <small>meta data manipulation</small>
         

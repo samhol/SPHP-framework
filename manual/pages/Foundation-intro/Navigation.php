@@ -4,9 +4,9 @@ namespace Sphp\Html\Foundation\Sites\Navigation;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$toolsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
+$toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo <<<MD
 ##Foundation 6 Navigation components:

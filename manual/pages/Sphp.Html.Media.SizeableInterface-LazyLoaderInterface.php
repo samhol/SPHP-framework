@@ -4,12 +4,12 @@ namespace Sphp\Html\Media;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$sizeableInterface = Apis::sami()->classLinker(SizeableInterface::class);
-$sizeableTrait = Apis::sami()->classLinker(SizeableTrait::class);
-$componentInterface = Apis::sami()->classLinker(\Sphp\Html\ComponentInterface::class);
+$sizeableInterface = \Sphp\Manual\api()->classLinker(SizeableInterface::class);
+$sizeableTrait = \Sphp\Manual\api()->classLinker(SizeableTrait::class);
+$componentInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-$lazyLoader = Apis::sami()->classLinker(LazyMediaInterface::class);
-$lazyLoaderTrait = Apis::sami()->classLinker(LazyMediaSourceTrait::class);
+$lazyLoader = \Sphp\Manual\api()->classLinker(LazyMediaInterface::class);
+$lazyLoaderTrait = \Sphp\Manual\api()->classLinker(LazyMediaSourceTrait::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Sizeable media content and Lazy loading 

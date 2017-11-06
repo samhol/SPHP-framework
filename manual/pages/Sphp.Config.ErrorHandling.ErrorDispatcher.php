@@ -10,9 +10,9 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 $throwable = Apis::phpManual()->classLinker(\Throwable::class);
 $error = Apis::phpManual()->classLinker(\Error::class);
 $exception = Apis::phpManual()->classLinker(\Exception::class);
-$errorDispatcher = Apis::sami()->classLinker(ErrorDispatcher::class);
-$errorListener = Apis::sami()->classLinker(ErrorListener::class);
-$exceptionListener = Apis::sami()->classLinker(ExceptionListener::class);
+$errorDispatcher = \Sphp\Manual\api()->classLinker(ErrorDispatcher::class);
+$errorListener = \Sphp\Manual\api()->classLinker(ErrorListener::class);
+$exceptionListener = \Sphp\Manual\api()->classLinker(ExceptionListener::class);
 
 $e_fatal = Apis::phpManual()->constantLink('E_FATAL');
 $e_error = Apis::phpManual()->constantLink('E_ERROR');

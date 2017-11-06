@@ -4,7 +4,7 @@ namespace Sphp\I18n;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $php = Apis::phpManual();
 $gettext = Apis::phpManual()->extensionLink('gettext', 'Gettext');
 \Sphp\Manual\parseDown(<<<MD

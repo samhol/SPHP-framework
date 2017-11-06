@@ -5,13 +5,13 @@ namespace Sphp\Html\Lists;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$htmlList = Apis::sami()->classLinker(AbstractList::class);
-$ol = Apis::sami()->classLinker(Ol::class);
-$ul = Apis::sami()->classLinker(Ul::class);
-$liInterface = Apis::sami()->classLinker(LiInterface::class);
-$li = Apis::sami()->classLinker(Li::class);
-$dlLink = Apis::sami()->classLinker(Dl::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$htmlList = \Sphp\Manual\api()->classLinker(AbstractList::class);
+$ol = \Sphp\Manual\api()->classLinker(Ol::class);
+$ul = \Sphp\Manual\api()->classLinker(Ul::class);
+$liInterface = \Sphp\Manual\api()->classLinker(LiInterface::class);
+$li = \Sphp\Manual\api()->classLinker(Li::class);
+$dlLink = \Sphp\Manual\api()->classLinker(Dl::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Apis::w3schools();
 \Sphp\Manual\parseDown(<<<MD
 #HTML LISTS: <small>unordered, ordered and definition lists</small>{#lists}
@@ -50,8 +50,8 @@ MD
 
 CodeExampleBuilder::visualize('Sphp/Html/Lists/Ol.php', false, true);
 
-$dtLink = Apis::sami()->classLinker(Dt::class);
-$ddLink = Apis::sami()->classLinker(Dd::class);
+$dtLink = \Sphp\Manual\api()->classLinker(Dt::class);
+$ddLink = \Sphp\Manual\api()->classLinker(Dd::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Definition lists: <small>The $dlLink component</small>{#dl}
 	

@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Containers\OffCanvas;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$offCanvas = Apis::sami()->classLinker(OffCanvas::class);
+$offCanvas = \Sphp\Manual\api()->classLinker(OffCanvas::class);
 \Sphp\Manual\parseDown(<<<MD
 
 ##The $offCanvas component

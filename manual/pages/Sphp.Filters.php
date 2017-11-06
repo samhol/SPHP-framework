@@ -6,10 +6,10 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 $strLink = Apis::phpManual()->typeLink("string");
 $arrLink = Apis::phpManual()->typeLink([]);
-$filterInterface = Apis::sami()->classLinker(FilterInterface::class);
-$filterAggregate = Apis::sami()->classLinker(FilterAggregate::class);
-$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
+$filterInterface = \Sphp\Manual\api()->classLinker(FilterInterface::class);
+$filterAggregate = \Sphp\Manual\api()->classLinker(FilterAggregate::class);
+$nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 \Sphp\Manual\parseDown(<<<MD
 #Customizable value filtering
 $nsbc

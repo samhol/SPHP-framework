@@ -5,11 +5,11 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$videoPlayerInterface = Apis::sami()->classLinker(VideoPlayerInterface::class);
-$abstractVideoPlayer = Apis::sami()->classLinker(AbstractVideoPlayer::class);
-$dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
+$videoPlayerInterface = \Sphp\Manual\api()->classLinker(VideoPlayerInterface::class);
+$abstractVideoPlayer = \Sphp\Manual\api()->classLinker(AbstractVideoPlayer::class);
+$dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Video hosting services <small>Dailymotion, Youtube, Vimeo ,... etc.</small>
         

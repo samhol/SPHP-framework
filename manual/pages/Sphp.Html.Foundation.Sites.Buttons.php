@@ -6,12 +6,12 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\ComponentInterface;
 
-$componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
-$buttonInterface = Apis::sami()->classLinker(ButtonInterface::class);
-$buttonAdapter = Apis::sami()->classLinker(Button::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
+$buttonInterface = \Sphp\Manual\api()->classLinker(ButtonInterface::class);
+$buttonAdapter = \Sphp\Manual\api()->classLinker(Button::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
-$btnGroup = Apis::sami()->classLinker(ButtonGroup::class);
+$btnGroup = \Sphp\Manual\api()->classLinker(ButtonGroup::class);
 \Sphp\Manual\parseDown(<<<MD
 #Foundation Buttons
 $ns
@@ -60,7 +60,7 @@ $blockGrid->printHtml();
 This adapter can transform most $componentInterface objects to Foundation styled buttons.
 MD
 );
-$splitButton = Apis::sami()->classLinker(SplitButton::class);
+$splitButton = \Sphp\Manual\api()->classLinker(SplitButton::class);
 
 CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Buttons/Button.php');
 \Sphp\Manual\parseDown(<<<MD

@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use Sphp\Html\Forms\FormInterface as FormInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
-$formInterface = Apis::sami()->classLinker(FormInterface::class);
-$gridForm = Apis::sami()->classLinker(GridForm::class);
-$formsNS = Apis::sami()->namespaceLink(__NAMESPACE__, false);
+$formInterface = \Sphp\Manual\api()->classLinker(FormInterface::class);
+$gridForm = \Sphp\Manual\api()->classLinker(GridForm::class);
+$formsNS = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 \Sphp\Manual\parseDown(<<<MD
 ##Foundation based input components
         

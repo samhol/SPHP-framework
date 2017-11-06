@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $arrLink = Apis::phpManual()->typeLink("array");
-$parser = Apis::sami()->classLinker(Parser::class);
+$parser = \Sphp\Manual\api()->classLinker(Parser::class);
 \Sphp\Manual\parseDown(<<<MD
 ##PARSING FILETYPES: <small>reading, writing and transforming</small>
 

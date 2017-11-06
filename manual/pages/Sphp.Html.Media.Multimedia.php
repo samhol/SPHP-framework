@@ -4,9 +4,9 @@ namespace Sphp\Html\Media\Multimedia;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$video = Apis::sami()->classLinker(Video::class);
-$source = Apis::sami()->classLinker(Source::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$video = \Sphp\Manual\api()->classLinker(Video::class);
+$source = \Sphp\Manual\api()->classLinker(Source::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #HTML MULTIMEDIA: <small>sound, music, videos, movies, and animations</small>
 $ns 

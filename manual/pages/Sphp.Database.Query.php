@@ -5,7 +5,7 @@ namespace Sphp\Database;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$query = Apis::sami()->classLinker(Query::class);
+$query = \Sphp\Manual\api()->classLinker(Query::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Queries by using $query object 

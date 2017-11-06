@@ -5,10 +5,10 @@ namespace Sphp\Html\Forms\Inputs\Ion;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$slider = Apis::sami()->classLinker(Slider::class);
-$rangeSlider = Apis::sami()->classLinker(RangeSlider::class);
-$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$slider = \Sphp\Manual\api()->classLinker(Slider::class);
+$rangeSlider = \Sphp\Manual\api()->classLinker(RangeSlider::class);
+$nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ##The $nsLink namespace containing $slider and $rangeSlider component
 

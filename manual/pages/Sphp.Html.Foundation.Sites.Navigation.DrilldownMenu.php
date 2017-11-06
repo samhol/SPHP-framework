@@ -6,11 +6,11 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAcc
 use Sphp\Html\Navigation\HyperlinkInterface;
 use Sphp\Html\Apps\Manual\Apis;
 
-$hyperlinkIfLink = Apis::sami()->classLinker(HyperlinkInterface::class);
-$menuInterface = Apis::sami()->classLinker(MenuInterface::class);
-$drilldownMenu = Apis::sami()->classLinker(DrilldownMenu::class);
-$dropdownMenu = Apis::sami()->classLinker(DropdownMenu::class);
-$accordionMenu = Apis::sami()->classLinker(AccordionMenu::class);
+$hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
+$menuInterface = \Sphp\Manual\api()->classLinker(MenuInterface::class);
+$drilldownMenu = \Sphp\Manual\api()->classLinker(DrilldownMenu::class);
+$dropdownMenu = \Sphp\Manual\api()->classLinker(DropdownMenu::class);
+$accordionMenu = \Sphp\Manual\api()->classLinker(AccordionMenu::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Navigation menus implementing $menuInterface
 

@@ -6,9 +6,9 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();
-$translator  = Apis::sami()->classLinker(Translator::class);
+$translator  = \Sphp\Manual\api()->classLinker(Translator::class);
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\parseDown(<<<MD
 ###A Zend based $translator

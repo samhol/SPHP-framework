@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$gridIf = Apis::sami()->classLinker(GridInterface::class);
+$gridIf = \Sphp\Manual\api()->classLinker(GridInterface::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##The $gridIf <small>and its implementations</small>

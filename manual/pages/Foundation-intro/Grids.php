@@ -4,11 +4,11 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$grid = Apis::sami()->classLinker(GridInterface::class);
-$row = Apis::sami()->classLinker(Row::class);
-$column = Apis::sami()->classLinker(Column::class);
-$blockGrid = Apis::sami()->classLinker(BlockGrid::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$grid = \Sphp\Manual\api()->classLinker(GridInterface::class);
+$row = \Sphp\Manual\api()->classLinker(Row::class);
+$column = \Sphp\Manual\api()->classLinker(Column::class);
+$blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
 echo <<<MD
 ##Foundation Grid components:
 $ns

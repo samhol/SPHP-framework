@@ -5,10 +5,10 @@ namespace Sphp\Html\Media;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$imgInterface = Apis::sami()->classLinker(ImgInterface::class);
-$img = Apis::sami()->classLinker(Img::class);
-$fig = Apis::sami()->classLinker(Figure::class);
-$figCaption = Apis::sami()->classLinker(FigCaption::class);
+$imgInterface = \Sphp\Manual\api()->classLinker(ImgInterface::class);
+$img = \Sphp\Manual\api()->classLinker(Img::class);
+$fig = \Sphp\Manual\api()->classLinker(Figure::class);
+$figCaption = \Sphp\Manual\api()->classLinker(FigCaption::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $img and the $fig components
 

@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Containers\Tabs;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
 
-$tabs = Apis::sami()->classLinker(Tabs::class);
+$tabs = \Sphp\Manual\api()->classLinker(Tabs::class);
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ###The $tabs component
 $ns

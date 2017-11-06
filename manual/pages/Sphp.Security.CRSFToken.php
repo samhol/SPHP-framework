@@ -5,7 +5,7 @@ namespace Sphp\Security;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$crsfToken = Apis::sami()->classLinker(CRSFToken::class);
+$crsfToken = \Sphp\Manual\api()->classLinker(CRSFToken::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Cross-site request forgery protection 

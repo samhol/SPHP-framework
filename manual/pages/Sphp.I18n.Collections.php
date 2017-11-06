@@ -7,17 +7,17 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\I18n\TranslatorInterface;
 use Sphp\I18n\Translatable;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$translatable = Apis::sami()->classLinker(Translatable::class);
-$translatablePriorityList = Apis::sami()->classLinker(TranslatablePriorityList::class);
-$messageCollectionInterfaces = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$translatable = \Sphp\Manual\api()->classLinker(Translatable::class);
+$translatablePriorityList = \Sphp\Manual\api()->classLinker(TranslatablePriorityList::class);
+$messageCollectionInterfaces = \Sphp\Manual\api()->classLinker(TranslatableCollectionInterface::class);
 $echo = Apis::phpManual()->functionLink('echo');
 $print = Apis::phpManual()->functionLink('print');
 $string = Apis::phpManual()->typeLink('string');
 $vsprintfLink = Apis::phpManual()->functionLink('vsprintf');
 
-$translator = Apis::sami()->classLinker(TranslatorInterface::class);
-$translatableList = Apis::sami()->classLinker(TranslatableCollection::class);
+$translator = \Sphp\Manual\api()->classLinker(TranslatorInterface::class);
+$translatableList = \Sphp\Manual\api()->classLinker(TranslatableCollection::class);
 
 
 
@@ -35,7 +35,7 @@ MD
 CodeExampleBuilder::build('Sphp/I18n/Collections/TranslatableCollection.php', 'text', false)
         ->setExamplePaneTitle('Basic example of translatable collection')
         ->printHtml();
-$messageContainers = Apis::sami()->classLinker(TranslatableCollectionInterface::class);
+$messageContainers = \Sphp\Manual\api()->classLinker(TranslatableCollectionInterface::class);
 
 $arrayaccess = Apis::phpManual()->classLinker(\ArrayAccess::class);
 \Sphp\Manual\parseDown(<<<MD

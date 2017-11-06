@@ -5,7 +5,7 @@ namespace Sphp\Config\ErrorHandling;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$errorExceptionThrower = Apis::sami()->classLinker(ErrorExceptionThrower::class);
+$errorExceptionThrower = \Sphp\Manual\api()->classLinker(ErrorExceptionThrower::class);
 
 $errorException = Apis::phpManual()->classLinker(\ErrorException::class);
 \Sphp\Manual\parseDown(<<<MD

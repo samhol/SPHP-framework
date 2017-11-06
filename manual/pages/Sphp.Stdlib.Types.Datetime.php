@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $parentDatetime = Apis::phpManual()->classLinker(\DateTime::class);
-$datetime = Apis::sami()->classLinker(Datetime::class);
+$datetime = \Sphp\Manual\api()->classLinker(Datetime::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $datetime class extends the build-in $parentDatetime class
 

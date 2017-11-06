@@ -4,7 +4,7 @@ namespace Sphp\Config\ErrorHandling;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$apigen = Apis::sami();
+$apigen = \Sphp\Manual\api();
 $phpManual = Apis::phpManual();
 $nsLink = $apigen->namespaceLink(__NAMESPACE__);
 $errorExceptionThrower = $apigen->classLinker(ErrorExceptionThrower::class);

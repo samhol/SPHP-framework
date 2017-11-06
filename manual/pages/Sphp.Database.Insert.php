@@ -5,7 +5,7 @@ namespace Sphp\Database;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$insert = Apis::sami()->classLinker(Insert::class);
+$insert = \Sphp\Manual\api()->classLinker(Insert::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Inserting records <small>with $insert object</small>

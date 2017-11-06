@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $strLink = Apis::phpManual()->typeLink('string');
-$strings = Apis::sami()->classLinker(Strings::class);
+$strings = \Sphp\Manual\api()->classLinker(Strings::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $strings class
 

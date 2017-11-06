@@ -9,7 +9,7 @@ use Sphp\Stdlib\Observers\Observer;
 $throwable = Apis::phpManual()->classLinker(\Throwable::class);
 $error = Apis::phpManual()->classLinker(\Error::class);
 $exception = Apis::phpManual()->classLinker(\Exception::class);
-$observer = Apis::sami()->classLinker(Observer::class);
+$observer = \Sphp\Manual\api()->classLinker(Observer::class);
 \Sphp\Manual\parseDown(
         <<<MD
 ###Uncaught $throwable handling

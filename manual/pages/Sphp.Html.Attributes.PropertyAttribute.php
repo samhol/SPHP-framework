@@ -4,8 +4,8 @@ namespace Sphp\Html\Attributes;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$abstractAttr = Apis::sami()->classLinker(AbstractAttribute::class);
-$propertyAttr = Apis::sami()->classLinker(PropertyAttribute::class);
+$abstractAttr = \Sphp\Manual\api()->classLinker(AbstractAttribute::class);
+$propertyAttr = \Sphp\Manual\api()->classLinker(PropertyAttribute::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $propertyAttr class
 		

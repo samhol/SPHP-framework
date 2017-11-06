@@ -5,8 +5,8 @@ namespace Sphp\Html;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Foundation\Sites\Grids\BlockGrid as BlockGrid;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$videoJs = Apis::sami()->classLinker(VideoJs::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$videoJs = \Sphp\Manual\api()->classLinker(VideoJs::class);
 echo <<<MD
 ##`HTML` components
 

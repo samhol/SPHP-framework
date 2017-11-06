@@ -6,7 +6,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $arrLink = Apis::phpManual()->typeLink('array');
-$fileSystem = Apis::sami()->classLinker(Filesystem::class);
+$fileSystem = \Sphp\Manual\api()->classLinker(Filesystem::class);
 \Sphp\Manual\parseDown(<<<MD
 ##WORKING WITH THE FILESYSTEM: <small>The $fileSystem class</small>{#FileSystem_FileSystem}
 

@@ -5,7 +5,7 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$bitMask = Apis::sami()->classLinker(BitMask::class);
+$bitMask = \Sphp\Manual\api()->classLinker(BitMask::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Bit manipulation <small>by using $bitMask objects</small>

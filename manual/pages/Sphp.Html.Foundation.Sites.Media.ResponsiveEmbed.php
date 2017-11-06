@@ -4,8 +4,8 @@ namespace Sphp\Html\Foundation\Sites\Media;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$flexInterface = Apis::sami()->classLinker(ResponsiveEmbedInterface::class);
-$flex = Apis::sami()->classLinker(ResponsiveEmbed::class);
+$flexInterface = \Sphp\Manual\api()->classLinker(ResponsiveEmbedInterface::class);
+$flex = \Sphp\Manual\api()->classLinker(ResponsiveEmbed::class);
 
 \Sphp\Manual\parseDown(<<<MD
 		

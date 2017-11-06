@@ -5,8 +5,8 @@ namespace Sphp\Html\Foundation\Sites\Navigation\Pagination;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$pagination = Apis::sami()->classLinker(Pagination::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$pagination = \Sphp\Manual\api()->classLinker(Pagination::class);
 \Sphp\Manual\parseDown(<<<MD
 
 ##The $pagination component

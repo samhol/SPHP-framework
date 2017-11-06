@@ -89,8 +89,8 @@ namespace Sphp\Html\Media;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$fig = Apis::sami()->classLinker(Figure::class);
-$av = Apis::sami()->classLinker(Multimedia\Audio::class) . ' and ' . Apis::sami()->classLinker(Multimedia\Video::class);
+$fig = \Sphp\Manual\api()->classLinker(Figure::class);
+$av = \Sphp\Manual\api()->classLinker(Multimedia\Audio::class) . ' and ' . \Sphp\Manual\api()->classLinker(Multimedia\Video::class);
 $p[] = ['Media', [
         ['img', 'An image'],
         ['area:polygon', 'A polygonal area inside an image map'],
@@ -120,12 +120,12 @@ namespace Sphp\Html\Lists;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$dl = 'for ' . Apis::sami()->classLinker(Dl::class) . ' component';
+$dl = 'for ' . \Sphp\Manual\api()->classLinker(Dl::class) . ' component';
 $p['Lists'] = ['Lists',
     [
         ['ul', 'An unordered list'],
         ['ol', 'An ordered list'],
-        ['li', "A list item for " . Apis::sami()->classLinker(Ul::class) . " and " . Apis::sami()->classLinker(Ol::class) . " components"],
+        ['li', "A list item for " . \Sphp\Manual\api()->classLinker(Ul::class) . " and " . \Sphp\Manual\api()->classLinker(Ol::class) . " components"],
         ['dl', 'A definition list'],
         ['dd', "A definition description $dl"],
         ['dt', "A definition term $dl"],
@@ -213,7 +213,7 @@ $generateTagTable = function(array $v) {
       $c[] = new QtipAdapter($param, $tooptipText);
       $c[] = Apis::w3schools()->tag($tag->getTagName(), $linkText);
       $text = $ref->getNamespaceName() . "\\<b>" . $ref->getShortName() . "</b>";
-      $c[] = Apis::sami()->classLinker($ref->getName(), $text)->getLink();
+      $c[] = \Sphp\Manual\api()->classLinker($ref->getName(), $text)->getLink();
       $c[] = $data[1];
       $body->appendBodyRow($c);
     }

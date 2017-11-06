@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 
 use Sphp\Html\Document;
 use Sphp\Html\Apps\Manual\Apis;
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 \Sphp\Manual\parseDown(<<<MD

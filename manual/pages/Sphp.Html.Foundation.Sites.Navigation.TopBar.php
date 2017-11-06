@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Bars;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$topBar = Apis::sami()->classLinker(TopBar::class);
+$topBar = \Sphp\Manual\api()->classLinker(TopBar::class);
 $left = $topBar->methodLink("left");
 $right = $topBar->methodLink("right");
 //$namespace = $api->namespaceLink(__NAMESPACE__);

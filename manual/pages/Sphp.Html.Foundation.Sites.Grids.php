@@ -4,13 +4,13 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$grid = Apis::sami()->classLinker(Grid::class);
-$row = Apis::sami()->classLinker(Row::class);
-$col = Apis::sami()->classLinker(Column::class);
-$cols = Apis::sami()->classLinker(Column::class, "Columns");
+$grid = \Sphp\Manual\api()->classLinker(Grid::class);
+$row = \Sphp\Manual\api()->classLinker(Row::class);
+$col = \Sphp\Manual\api()->classLinker(Column::class);
+$cols = \Sphp\Manual\api()->classLinker(Column::class, "Columns");
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$gridInterface = Apis::sami()->classLinker(GridInterface::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$gridInterface = \Sphp\Manual\api()->classLinker(GridInterface::class);
 $f_GridLink = Apis::foundation()->hyperlink('xy-grid.html', "Foundation Grid layout");
 \Sphp\Manual\parseDown(<<<MD
 #FOUNDATION <small>Grid and Block Grid layouts</small>

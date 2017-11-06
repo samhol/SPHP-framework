@@ -5,11 +5,11 @@ namespace Sphp\Html\Foundation;
 use Sphp\Html\Apps\Manual\Apis;
 
 //$ns = $api->namespaceLink(__NAMESPACE__);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 
-$sami = Apis::sami();
-$toolsLink = Apis::sami()->namespaceLink(__NAMESPACE__, false);
+$sami = \Sphp\Manual\api();
+$toolsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__, false);
 \Sphp\Manual\parseDown(<<<MD
 #Foundation for sites: <small> a front-end framework for web developement</small>
 $ns

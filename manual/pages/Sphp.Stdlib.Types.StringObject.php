@@ -5,7 +5,7 @@ namespace Sphp\Stdlib;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$stringObjectClass = Apis::sami()->classLinker(MbString::class);
+$stringObjectClass = \Sphp\Manual\api()->classLinker(MbString::class);
 $strLink = Apis::phpManual()->typeLink('string');
 
 \Sphp\Manual\parseDown(<<<MD

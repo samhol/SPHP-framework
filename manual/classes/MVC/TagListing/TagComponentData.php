@@ -82,7 +82,7 @@ class TagComponentData implements \Sphp\Stdlib\Datastructures\Arrayable {
   }
 
   public function getCallLink(): string {
-    return Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
+    return \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
   }
 
   private function tagString(): string {

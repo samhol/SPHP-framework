@@ -28,7 +28,7 @@ class DocumentGetHyperlinkGenerator {
   }
 
   public function getCall(): string {
-    Apis::sami()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
+    \Sphp\Manual\api()->classLinker($info->getObjectType())->getLink($info->getDocumentCall() . ": " . $info->getObjectType(), "returns " . $info->getObjectType());
   }
 
   public function getW3schoolsLink(TagInterface $tag): string {

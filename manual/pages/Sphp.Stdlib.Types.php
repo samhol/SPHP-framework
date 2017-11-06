@@ -10,9 +10,9 @@ $intLink = Apis::phpManual()->typeLink('integer');
 $floatLink = Apis::phpManual()->typeLink('float');
 $strLink = Apis::phpManual()->typeLink('string');
 $arrLink = Apis::phpManual()->typeLink('array');
-$stringsClass = Apis::sami()->classLinker(Strings::class);
-$stringObjectClass = Apis::sami()->classLinker(MbString::class);
-$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$stringsClass = \Sphp\Manual\api()->classLinker(Strings::class);
+$stringObjectClass = \Sphp\Manual\api()->classLinker(MbString::class);
+$nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #STANDARD LIBRARY <small>extensions for PHP core functionality</small>
 $nsbc

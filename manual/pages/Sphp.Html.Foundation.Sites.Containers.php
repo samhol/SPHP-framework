@@ -3,13 +3,13 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\Apps\Manual\Apis;
 
-$accordion = Apis::sami()->classLinker(Accordions\Pane::class);
-$accordions = Apis::sami()->classLinker(Accordions\Accordion::class);
-$tabs = Apis::sami()->classLinker(Tabs\Tabs::class);
-$dropdown = Apis::sami()->classLinker(Dropdown::class);
-$modal = Apis::sami()->classLinker(Modal::class);
-$callout = Apis::sami()->classLinker(Callout::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$accordion = \Sphp\Manual\api()->classLinker(Accordions\Pane::class);
+$accordions = \Sphp\Manual\api()->classLinker(Accordions\Accordion::class);
+$tabs = \Sphp\Manual\api()->classLinker(Tabs\Tabs::class);
+$dropdown = \Sphp\Manual\api()->classLinker(Dropdown::class);
+$modal = \Sphp\Manual\api()->classLinker(Modal::class);
+$callout = \Sphp\Manual\api()->classLinker(Callout::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #FOUNDATION CONTAINERS
 $ns

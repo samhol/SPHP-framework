@@ -4,7 +4,7 @@ namespace Sphp\Html\Forms\Inputs;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$anyTimeInput = Apis::sami()->classLinker(AnyTimeInput::class);
+$anyTimeInput = \Sphp\Manual\api()->classLinker(AnyTimeInput::class);
 \Sphp\Manual\parseDown(<<<MD
 ###The $anyTimeInput component
 	

@@ -4,7 +4,7 @@ namespace Sphp\Core;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$router = Apis::sami()->classLinker(Path::class);
+$router = \Sphp\Manual\api()->classLinker(Path::class);
 \Sphp\Manual\parseDown(<<<MD
 ##Managing absolute paths with a $router singelton object
 

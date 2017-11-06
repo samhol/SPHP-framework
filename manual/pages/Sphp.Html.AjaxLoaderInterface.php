@@ -6,8 +6,8 @@ use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingPane;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ajaxLoaderInterface = Apis::sami()->classLinker(AjaxLoaderInterface::class);
-$ajaxLoaderTrait = Apis::sami()->classLinker(AjaxLoaderTrait::class);
+$ajaxLoaderInterface = \Sphp\Manual\api()->classLinker(AjaxLoaderInterface::class);
+$ajaxLoaderTrait = \Sphp\Manual\api()->classLinker(AjaxLoaderTrait::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ###Ajax loading the content using the $ajaxLoaderInterface

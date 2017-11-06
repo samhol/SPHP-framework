@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 echo <<<MD
 ##Foundation 6 Buttons and Button containers

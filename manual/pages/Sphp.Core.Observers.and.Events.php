@@ -5,11 +5,11 @@ namespace Sphp\Stdlib\Events;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
-$eventInterface = Apis::sami()->classLinker(EventInterface::class);
-$eventClass = Apis::sami()->classLinker(Event::class);
-$eventListenerInterface = Apis::sami()->classLinker(EventListenerInterface::class);
-$eventDispatcherInterface = Apis::sami()->classLinker(EventDispatcherInterface::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$eventInterface = \Sphp\Manual\api()->classLinker(EventInterface::class);
+$eventClass = \Sphp\Manual\api()->classLinker(Event::class);
+$eventListenerInterface = \Sphp\Manual\api()->classLinker(EventListenerInterface::class);
+$eventDispatcherInterface = \Sphp\Manual\api()->classLinker(EventDispatcherInterface::class);
 \Sphp\Manual\parseDown(<<<MD
 #EVENTS AND OBSERVERS
 		

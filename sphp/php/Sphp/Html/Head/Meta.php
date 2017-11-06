@@ -97,14 +97,14 @@ class Meta extends EmptyTag implements MetaInterface {
    *
    * @param  string $property the property attribute
    * @param  string $content the content attribute
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://ogp.me/ The Open Graph protocol
    * @link   https://developers.facebook.com/docs/concepts/opengraph/ Open Graph Concepts (Facebook)
    * @link   http://en.wikipedia.org/wiki/RDFa RDFa (Wikipedia)
    * @link   http://www.w3.org/MarkUp/2004/02/xhtml-rdf.html XHTML and RDF (W3C)
    */
-  public static function property(string $property, string $content) {
-    return (new static(['property' => $property, 'content' => $content]));
+  public static function property(string $property, string $content): Meta {
+    return new static(['property' => $property, 'content' => $content]);
   }
 
   /**
@@ -120,10 +120,10 @@ class Meta extends EmptyTag implements MetaInterface {
    * * `ISO-8859-1` - Character encoding for the Latin alphabet
    *
    * @param  string $charset specifies the character encoding for the HTML document
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_charset.asp charset attribute
    */
-  public static function charset(string $charset) {
+  public static function charset(string $charset): Meta {
     return new static(['charset' => $charset]);
   }
 
@@ -138,11 +138,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * 
    * @param  string $name specifies a name for the metadata
    * @param  string $content the value of the content attribute
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function namedContent(string $name, string $content) {
+  public static function namedContent(string $name, string $content): Meta {
     return new static(['name' => $name, 'content' => $content]);
   }
 
@@ -158,11 +158,11 @@ class Meta extends EmptyTag implements MetaInterface {
    *
    * @param  string $http_equiv provides an HTTP header for the information/value of the content attribute
    * @param  string $content the value of the content attribute
-   * @return $this for a fluent interface
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function httpEquiv(string $http_equiv, string $content) {
+  public static function httpEquiv(string $http_equiv, string $content): Meta {
     return new static(['http-equiv' => $http_equiv, 'content' => $content]);
   }
 
@@ -170,11 +170,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * Creates a meta component for web page description
    *
    * @param  string $content the description of the web page
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function description(string $content) {
+  public static function description(string $content): Meta {
     return static::namedContent('description', $content);
   }
 
@@ -182,11 +182,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * Creates a meta component containing information about the author
    *
    * @param  string $content the name of the author of the document
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function author(string $content) {
+  public static function author(string $content): Meta {
     return static::namedContent('author', $content);
   }
 
@@ -199,10 +199,10 @@ class Meta extends EmptyTag implements MetaInterface {
    * such as width: 20% are calculated.
    *
    * @param  string $viewport comma delimited values
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://dev.w3.org/csswg/css-device-adapt/ W3C CSS Device Adaptation
    */
-  public static function viewport(string $viewport) {
+  public static function viewport(string $viewport): Meta {
     return static::namedContent('viewport', $viewport);
   }
 
@@ -210,11 +210,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * Creates a meta component for the name of the Web application
    *
    * @param  string $name the name of the Web application that the page represents
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function applicationName(string $name) {
+  public static function applicationName(string $name): Meta {
     return static::namedContent('application-name', $name);
   }
 
@@ -225,11 +225,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * (Informs search engines what the page is about).
    * 
    * @param  string|string[] $keywords a list of keywords
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_name.asp name attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function keywords($keywords) {
+  public static function keywords($keywords): Meta {
     if (is_array($keywords)) {
       $keywords = implode(', ', $keywords);
     }
@@ -240,11 +240,11 @@ class Meta extends EmptyTag implements MetaInterface {
    * Creates a meta component for the preferred style sheet to use
    *
    * @param  string $id id of link element of the preferred style sheet to use
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function defaultStyle(string $id) {
+  public static function defaultStyle(string $id): Meta {
     return static::httpEquiv('default-style', $id);
   }
 
@@ -256,12 +256,16 @@ class Meta extends EmptyTag implements MetaInterface {
    * away from the user.
    *
    * @param  int $interval time interval for the document to refresh itself
-   * @return self new meta data object
+   * @return Meta new meta data object
    * @link   http://www.w3schools.com/tags/att_meta_http_equiv.asp http-equiv attribute
    * @link   http://www.w3schools.com/tags/att_meta_content.asp content attribute
    */
-  public static function refresh(int $interval) {
+  public static function refresh(int $interval): Meta {
     return static::httpEquiv('refresh', $interval);
   }
 
 }
+
+
+
+

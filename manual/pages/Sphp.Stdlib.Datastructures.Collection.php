@@ -5,8 +5,8 @@ namespace Sphp\Stdlib\Datastructures;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$collection = Apis::sami()->classLinker(Collection::class);
-$collectionInterface = Apis::sami()->classLinker(CollectionInterface::class);
+$collection = \Sphp\Manual\api()->classLinker(Collection::class);
+$collectionInterface = \Sphp\Manual\api()->classLinker(CollectionInterface::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##The $collection 

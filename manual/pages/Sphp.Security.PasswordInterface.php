@@ -5,8 +5,8 @@ namespace Sphp\Security;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$passwordInterface = Apis::sami()->classLinker(PasswordInterface::class);
-$password = Apis::sami()->classLinker(Password::class);
+$passwordInterface = \Sphp\Manual\api()->classLinker(PasswordInterface::class);
+$password = \Sphp\Manual\api()->classLinker(Password::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Managing user Passwords <small>with $password</small>

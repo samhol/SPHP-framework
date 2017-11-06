@@ -5,8 +5,8 @@ namespace Sphp\Html\Foundation\Sites\Containers;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$modal = Apis::sami()->classLinker(Modal::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$modal = \Sphp\Manual\api()->classLinker(Modal::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ##The $modal component
 $ns

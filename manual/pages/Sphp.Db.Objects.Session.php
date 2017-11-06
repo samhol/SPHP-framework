@@ -5,10 +5,10 @@ namespace Sphp\Db\Objects;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
-$sessionUser = Apis::sami()->classLinker(SessionUser::class);
-$sessionUsers = Apis::sami()->classLinker(SessionUserStorage::class);
+$sessionUser = \Sphp\Manual\api()->classLinker(SessionUser::class);
+$sessionUsers = \Sphp\Manual\api()->classLinker(SessionUserStorage::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##$sessionUser objects and the $sessionUsers storage component

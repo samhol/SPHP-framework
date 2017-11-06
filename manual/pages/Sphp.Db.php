@@ -4,9 +4,9 @@ namespace Sphp\Db;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$sqlException = Apis::sami()->classLinker(SQLException::class);
+$sqlException = \Sphp\Manual\api()->classLinker(SQLException::class);
 $pdo = Apis::phpManual()->classLinker(\PDO::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #DATABASE MANIPULATION: 
 $ns

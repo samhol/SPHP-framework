@@ -5,7 +5,7 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$embed = Apis::sami()->classLinker(Embed::class);
+$embed = \Sphp\Manual\api()->classLinker(Embed::class);
 $embedTag = Apis::w3schools()->tag('embed');
 \Sphp\Manual\parseDown(<<<MD
 ##The $embed component

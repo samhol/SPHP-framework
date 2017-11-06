@@ -5,7 +5,7 @@ namespace Sphp\Html\Media;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$iframe = Apis::sami()->classLinker(Iframe::class);
+$iframe = \Sphp\Manual\api()->classLinker(Iframe::class);
 $iframeTag = Apis::w3schools()->tag('iframe');
 \Sphp\Manual\parseDown(<<<MD
 ##The $iframe component 

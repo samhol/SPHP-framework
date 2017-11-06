@@ -3,8 +3,8 @@
 namespace Sphp\Stdlib\Datastructures;
 
 use Sphp\Html\Apps\Manual\Apis;
-$sami = Apis::sami();
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$sami = \Sphp\Manual\api();
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 $core = $sami->namespaceLink(__NAMESPACE__, false);
 \Sphp\Manual\parseDown(<<<MD
@@ -13,7 +13,7 @@ $ns
 
 MD
 );
-$sami = Apis::sami();
+$sami = \Sphp\Manual\api();
 $collectionInterface = $sami->classLinker(CollectionInterface::class);
 $stackInterface = $sami->classLinker(StackInterface::class);
 $queueInterface = $sami->classLinker(QueueInterface::class);
@@ -159,7 +159,7 @@ namespace Sphp\Stdlib;
 
 use Sphp\Html\Apps\Manual\Apis;
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\parseDown(<<<MD
 #Standard library components

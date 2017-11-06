@@ -5,11 +5,11 @@ namespace Sphp\Html\Tables;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$table = Apis::sami()->classLinker(Table::class);
-$tr = Apis::sami()->classLinker(Tr::class);
-$td = Apis::sami()->classLinker(Td::class);
-$th = Apis::sami()->classLinker(Th::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$table = \Sphp\Manual\api()->classLinker(Table::class);
+$tr = \Sphp\Manual\api()->classLinker(Tr::class);
+$td = \Sphp\Manual\api()->classLinker(Td::class);
+$th = \Sphp\Manual\api()->classLinker(Th::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 $w3schools = Apis::w3schools();
 \Sphp\Manual\parseDown(<<<MD
 #HTML TABLES: <small>for tabular data</small>
@@ -36,7 +36,7 @@ MD
 $example = new CodeExampleBuilder('Sphp/Html/Tables/Table.php', false, true);
 $example->setExamplePaneTitle('HTML table example');
 $example->printHtml();
-$tableBuilder = Apis::sami()->classLinker(TableBuilder::class);
+$tableBuilder = \Sphp\Manual\api()->classLinker(TableBuilder::class);
 \Sphp\Manual\parseDown(<<<MD
 ##TABLE BUILDER: <small>The $tableBuilder Class</small>
 

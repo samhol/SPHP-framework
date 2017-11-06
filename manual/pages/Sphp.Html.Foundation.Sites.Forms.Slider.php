@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Forms\Inputs\SliderInterface;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Html\Apps\Manual\Apis;
-$slider = Apis::sami()->classLinker(Slider::class);
-$rangeSlider = Apis::sami()->classLinker(RangeSlider::class);
-$sliderInterface = Apis::sami()->classLinker(SliderInterface::class);
+$slider = \Sphp\Manual\api()->classLinker(Slider::class);
+$rangeSlider = \Sphp\Manual\api()->classLinker(RangeSlider::class);
+$sliderInterface = \Sphp\Manual\api()->classLinker(SliderInterface::class);
 
 
 \Sphp\Manual\parseDown(<<<MD

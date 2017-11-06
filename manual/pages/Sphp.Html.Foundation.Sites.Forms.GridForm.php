@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Forms;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$gridForm = Apis::sami()->classLinker(GridForm::class);
+$gridForm = \Sphp\Manual\api()->classLinker(GridForm::class);
 
 \Sphp\Manual\parseDown(<<<MD
 

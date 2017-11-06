@@ -5,7 +5,7 @@ namespace Sphp\Html\Foundation\Sites\Grids;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$blockGrid = Apis::sami()->classLinker(BlockGrid::class);
+$blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
 \Sphp\Manual\parseDown(<<<MD
 ##$blockGrid <small>for equally-sized columns</small>
 	

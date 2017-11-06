@@ -6,9 +6,9 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();
-$gettextTranslator = Apis::sami()->classLinker(Translator::class);
+$gettextTranslator = \Sphp\Manual\api()->classLinker(Translator::class);
 
-$gettextNs = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$gettextNs = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\parseDown(<<<MD
 ###A gettext $gettextTranslator

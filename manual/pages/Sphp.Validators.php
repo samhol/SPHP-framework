@@ -6,14 +6,14 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
 $php = Apis::phpManual();
-$nsLink = Apis::sami()->namespaceLink(__NAMESPACE__);
-$validatorInterface = Apis::sami()->classLinker(ValidatorInterface::class);
-$requiredValueValidator = Apis::sami()->classLinker(NotEmptyValidator::class);
-$patrnvLink = Apis::sami()->classLinker(PatternValidator::class);
-$strLenValLink = Apis::sami()->classLinker(StringLengthValidator::class);
-$inputValidator = Apis::sami()->classLinker(OptionalValidator::class);
-$alphabetsOnly = Apis::sami()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$nsLink = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
+$validatorInterface = \Sphp\Manual\api()->classLinker(ValidatorInterface::class);
+$requiredValueValidator = \Sphp\Manual\api()->classLinker(NotEmptyValidator::class);
+$patrnvLink = \Sphp\Manual\api()->classLinker(PatternValidator::class);
+$strLenValLink = \Sphp\Manual\api()->classLinker(StringLengthValidator::class);
+$inputValidator = \Sphp\Manual\api()->classLinker(OptionalValidator::class);
+$alphabetsOnly = \Sphp\Manual\api()->constantLink("Sphp\Regex\EN\ALPHABETS_ONLY");
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #DATA VALIDATION: <small>Introduction</small>
  $ns 

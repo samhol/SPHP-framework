@@ -7,10 +7,10 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 Use Sphp\Stdlib\Observers\Observer;
 use Sphp\Stdlib\Observers\Subject;
 
-$observer = Apis::sami()->classLinker(Observer::class);
-$subject = Apis::sami()->classLinker(Subject::class);
+$observer = \Sphp\Manual\api()->classLinker(Observer::class);
+$subject = \Sphp\Manual\api()->classLinker(Subject::class);
 $callable = Apis::phpManual()->typeLink('callable');
-$observableSubjectTrait = Apis::sami()->classLinker(ObservableSubjectTrait::class);
+$observableSubjectTrait = \Sphp\Manual\api()->classLinker(ObservableSubjectTrait::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ##Observer Design Pattern and The $observableSubjectTrait

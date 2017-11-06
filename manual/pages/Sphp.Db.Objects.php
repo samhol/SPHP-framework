@@ -6,12 +6,12 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Objects\ObjectInterface;
 
-$objectInterface = Apis::sami()->classLinker(ObjectInterface::class);
-$dbObjectInterface = Apis::sami()->classLinker(DbObjectInterface::class);
-$geographicalAddress = Apis::sami()->classLinker(GeographicalAddressInterface::class);
-$location = Apis::sami()->classLinker(Location::class);
-$user = Apis::sami()->classLinker(User::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$objectInterface = \Sphp\Manual\api()->classLinker(ObjectInterface::class);
+$dbObjectInterface = \Sphp\Manual\api()->classLinker(DbObjectInterface::class);
+$geographicalAddress = \Sphp\Manual\api()->classLinker(GeographicalAddressInterface::class);
+$location = \Sphp\Manual\api()->classLinker(Location::class);
+$user = \Sphp\Manual\api()->classLinker(User::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 
 \Sphp\Manual\parseDown(<<<MD
 #Diverse database objects
@@ -38,10 +38,10 @@ MD
 
 
 
-$objectStorageInterface = Apis::sami()->classLinker(ObjectStorageInterface::class);
+$objectStorageInterface = \Sphp\Manual\api()->classLinker(ObjectStorageInterface::class);
 $iterable = Apis::phpManual()->classLinker(\IteratorAggregate::class);
-$addresses = Apis::sami()->classLinker(LocationStorage::class);
-$users = Apis::sami()->classLinker(Users::class);
+$addresses = \Sphp\Manual\api()->classLinker(LocationStorage::class);
+$users = \Sphp\Manual\api()->classLinker(Users::class);
 \Sphp\Manual\parseDown(<<<MD
 ##The $objectStorageInterface
 

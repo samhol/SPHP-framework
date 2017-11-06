@@ -4,12 +4,12 @@ namespace Sphp\Html\Media\ImageMap;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
-$map  = Apis::sami()->classLinker(Map::class);
-$areaInterface  = Apis::sami()->classLinker(AreaInterface::class);
-$rectangle = Apis::sami()->classLinker(Rectangle::class);
-$circle = Apis::sami()->classLinker(Circle::class);
-$polygon = Apis::sami()->classLinker(Polygon::class);
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$map  = \Sphp\Manual\api()->classLinker(Map::class);
+$areaInterface  = \Sphp\Manual\api()->classLinker(AreaInterface::class);
+$rectangle = \Sphp\Manual\api()->classLinker(Rectangle::class);
+$circle = \Sphp\Manual\api()->classLinker(Circle::class);
+$polygon = \Sphp\Manual\api()->classLinker(Polygon::class);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ##HTML Imagemap components
 $ns

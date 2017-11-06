@@ -5,9 +5,9 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$choiceboxes = Apis::sami()->classLinker(AbstractSwitch::class);
-$radios = Apis::sami()->classLinker(Radioboxes::class);
-$checkboxes = Apis::sami()->classLinker(Checkboxes::class);
+$choiceboxes = \Sphp\Manual\api()->classLinker(AbstractSwitch::class);
+$radios = \Sphp\Manual\api()->classLinker(Radioboxes::class);
+$checkboxes = \Sphp\Manual\api()->classLinker(Checkboxes::class);
 
 
 \Sphp\Manual\parseDown(<<<MD

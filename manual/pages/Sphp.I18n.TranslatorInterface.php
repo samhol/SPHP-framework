@@ -5,11 +5,11 @@ namespace Sphp\I18n;
 use Sphp\Html\Apps\Manual\Apis;
 
 $php = Apis::phpManual();
-$translatorInteface = Apis::sami()->classLinker(TranslatorInterface::class);
-$gettextTranslator  = Apis::sami()->classLinker(Gettext\Translator::class);
+$translatorInteface = \Sphp\Manual\api()->classLinker(TranslatorInterface::class);
+$gettextTranslator  = \Sphp\Manual\api()->classLinker(Gettext\Translator::class);
 $vsprintfLink = Apis::phpManual()->functionLink("vsprintf");
 
-$gettextNs = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$gettextNs = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 ##Human language translations: <small>Using The $translatorInteface</small>
    

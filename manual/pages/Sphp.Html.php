@@ -5,18 +5,18 @@ namespace Sphp\Html;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$abstractTag = Apis::sami()->classLinker(AbstractTag::class);
-$ns = Apis::sami()->namespaceLink(__NAMESPACE__);
-$documentLink = Apis::sami()->classLinker(Document::class);
-$contentInterface = Apis::sami()->classLinker(ContentInterface::class);
+$abstractTag = \Sphp\Manual\api()->classLinker(AbstractTag::class);
+$ns = \Sphp\Manual\api()->namespaceLink(__NAMESPACE__);
+$documentLink = \Sphp\Manual\api()->classLinker(Document::class);
+$contentInterface = \Sphp\Manual\api()->classLinker(ContentInterface::class);
 $exeption = Apis::phpManual()->classLinker(\Exception::class);
-$componentInterface = Apis::sami()->classLinker(ComponentInterface::class);
-$emptyTag = Apis::sami()->classLinker(EmptyTag::class);
-$containerInterface = Apis::sami()->classLinker(ContainerInterface::class);
-$containerComponentInterface = Apis::sami()->classLinker(ContainerComponentInterface::class);
-$contentTrait = Apis::sami()->classLinker(ContentTrait::class);
+$componentInterface = \Sphp\Manual\api()->classLinker(ComponentInterface::class);
+$emptyTag = \Sphp\Manual\api()->classLinker(EmptyTag::class);
+$containerInterface = \Sphp\Manual\api()->classLinker(ContainerInterface::class);
+$containerComponentInterface = \Sphp\Manual\api()->classLinker(ContainerComponentInterface::class);
+$contentTrait = \Sphp\Manual\api()->classLinker(ContentTrait::class);
 $w3schools = Apis::w3schools();
-$nsbc = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$nsbc = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
 #Introduction to HTML components
 $nsbc
@@ -81,7 +81,7 @@ MD
 );
 
 CodeExampleBuilder::visualize("Sphp/Html/HtmlContainer.php");
-$containerTag = Apis::sami()->classLinker(ContainerTag::class);
+$containerTag = \Sphp\Manual\api()->classLinker(ContainerTag::class);
 \Sphp\Manual\parseDown(<<<MD
 The $containerComponentInterface declares the properties fot a HTML wrapper element (a tag pair) acting as a
 container for other elements. It has a implementation $containerTag in the framework.

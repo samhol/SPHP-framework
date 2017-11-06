@@ -5,10 +5,10 @@ use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
 //$ns = $api->namespaceLink(__NAMESPACE__);
-$paneInterface = Apis::sami()->classLinker(PaneInterface::class);
-$accordion = Apis::sami()->classLinker(Accordion::class);
+$paneInterface = \Sphp\Manual\api()->classLinker(PaneInterface::class);
+$accordion = \Sphp\Manual\api()->classLinker(Accordion::class);
 
-$ns = Apis::sami()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
 \Sphp\Manual\parseDown(<<<MD
         
 ##The $accordion container for $paneInterface components

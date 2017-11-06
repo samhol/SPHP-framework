@@ -5,15 +5,15 @@ namespace Sphp\Html\Media\Multimedia;
 use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 
-$audio = Apis::sami()->classLinker(Audio::class);
+$audio = \Sphp\Manual\api()->classLinker(Audio::class);
 $audioTag = Apis::w3schools()->tag('audio');
-$video = Apis::sami()->classLinker(Video::class);
+$video = \Sphp\Manual\api()->classLinker(Video::class);
 $videoTag = Apis::w3schools()->tag('video');
-$source = Apis::sami()->classLinker(Source::class);
-$vjs = Apis::sami()->classLinker(VideoJs::class);
-$dailyMotionPlayer = Apis::sami()->classLinker(DailyMotionPlayer::class);
-$youtubePlayer = Apis::sami()->classLinker(YoutubePlayer::class);
-$vimeoPlayer = Apis::sami()->classLinker(VimeoPlayer::class);
+$source = \Sphp\Manual\api()->classLinker(Source::class);
+$vjs = \Sphp\Manual\api()->classLinker(VideoJs::class);
+$dailyMotionPlayer = \Sphp\Manual\api()->classLinker(DailyMotionPlayer::class);
+$youtubePlayer = \Sphp\Manual\api()->classLinker(YoutubePlayer::class);
+$vimeoPlayer = \Sphp\Manual\api()->classLinker(VimeoPlayer::class);
 \Sphp\Manual\parseDown(<<<MD
 ##HTML 5 <small>Audio and Video</small> 
 		

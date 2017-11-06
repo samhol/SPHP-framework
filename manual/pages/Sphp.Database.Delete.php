@@ -5,7 +5,7 @@ namespace Sphp\Database;
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Apps\Manual\Apis;
 
-$delete = Apis::sami()->classLinker(Delete::class);
+$delete = \Sphp\Manual\api()->classLinker(Delete::class);
 
 \Sphp\Manual\parseDown(<<<MD
 ###Deleting records <small>with $delete object</small>
