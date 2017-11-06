@@ -16,6 +16,6 @@ use Sphp\Html\IdentifiableComponent;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface IdentifiableInputInterface extends InputInterface, IdentifiableComponent {
+interface IdentifiableInput extends InputInterface, IdentifiableComponent {
 
 }

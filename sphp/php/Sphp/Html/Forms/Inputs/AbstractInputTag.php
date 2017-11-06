@@ -22,7 +22,7 @@ use Sphp\Html\EmptyTag;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-abstract class AbstractInputTag extends EmptyTag implements IdentifiableInputInterface {
+abstract class AbstractInputTag extends EmptyTag implements IdentifiableInput {
 
   use InputTagTrait;
 

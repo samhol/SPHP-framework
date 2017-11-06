@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\AbstractComponent;
-use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
+use Sphp\Html\Forms\Inputs\IdentifiableInput;
 
 /**
  * Class InputGroup
@@ -17,7 +17,7 @@ use Sphp\Html\Forms\Inputs\IdentifiableInputInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class InlineInput extends AbstractComponent implements IdentifiableInputInterface {
+class InlineInput extends AbstractComponent implements IdentifiableInput {
 
   use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
 
@@ -35,17 +35,17 @@ class InlineInput extends AbstractComponent implements IdentifiableInputInterfac
 
   /**
    *
-   * @var IdentifiableInputInterface 
+   * @var IdentifiableInput 
    */
   private $input;
 
   /**
    * 
-   * @param IdentifiableInputInterface $input
+   * @param IdentifiableInput $input
    * @param string|null $prefix the content of the prefix
    * @param string|null $suffix the content of the suffix
    */
-  public function __construct(IdentifiableInputInterface $input, $prefix = null, $suffix = null) {
+  public function __construct(IdentifiableInput $input, $prefix = null, $suffix = null) {
     parent::__construct('div');
     $this->cssClasses()->protect('input-group');
     $this->prefix = $prefix;
@@ -57,7 +57,7 @@ class InlineInput extends AbstractComponent implements IdentifiableInputInterfac
   /**
    * 
    * 
-   * @return IdentifiableInputInterface
+   * @return IdentifiableInput
    */
   public function getInput() {
     return $this->input;
