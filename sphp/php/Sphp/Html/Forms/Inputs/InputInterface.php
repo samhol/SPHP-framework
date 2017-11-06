@@ -56,7 +56,7 @@ interface InputInterface extends ContentInterface {
   /**
    * Sets  the value of the form input
    *
-   * @param  string|string[] $value the value of the form input
+   * @param  scalar $value the value of the form input
    * @return $this for a fluent interface
    * @throws \InvalidArgumentException if the value is not valid for the input type
    */

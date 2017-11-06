@@ -24,8 +24,8 @@ trait InputTagTrait {
    * @return string the type attribute value
    * @link   http://www.w3schools.com/tags/att_input_type.asp type attribute
    */
-  public function getType() {
-    return $this->attrs()->getValue('type');
+  public function getType(): string {
+    return (string) $this->attrs()->getValue('type');
   }
 
   /**
@@ -41,13 +41,12 @@ trait InputTagTrait {
   /**
    * Sets the value of the value attribute.
    *
-   * @param  string $value the value of the value attribute
-   * @param  int $filter The ID of the filter to apply. {@link http://php.net/manual/en/filter.filters.php list of the available filters}.
+   * @param  scalar|null $value the value of the value attribute
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_input_value.asp value attribute
    */
-  public function setValue($value, $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS) {
-    $this->attrs()->set('value', filter_var($value, $filter));
+  public function setValue($value) {
+    $this->attrs()->set('value', $value);
     return $this;
   }
 

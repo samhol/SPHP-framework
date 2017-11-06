@@ -35,7 +35,7 @@ trait PatternValidableTrait {
    * @param  string $pattern a regular expression pattern that the component's value is checked against
    * @return PatternValidableInputInterface for PHP Method Chaining
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
-   */ 
+   */
   public function setPattern(string $pattern) {
     $this->attrs()->set('pattern', $pattern);
     return $this;
@@ -47,8 +47,8 @@ trait PatternValidableTrait {
    * @return string the regular expression pattern that the component's value is checked against
    * @link   http://www.w3schools.com/tags/att_input_pattern.asp pattern attribute
    */
-  public function getPattern() {
-    return $this->attrs()->getValue('pattern');
+  public function getPattern(): string {
+    return (string) $this->attrs()->getValue('pattern');
   }
 
   /**
@@ -62,5 +62,4 @@ trait PatternValidableTrait {
   }
 
 }
-
 

@@ -28,10 +28,10 @@ trait InputTrait {
   /**
    * Returns the value of the name attribute.
    *
-   * @return string|null name attribute
+   * @return string name attribute
    */
-  public function getName() {
-    return $this->attrs()->getValue('name');
+  public function getName(): string {
+    return (string) $this->attrs()->getValue('name');
   }
 
   /**
@@ -81,4 +81,5 @@ trait InputTrait {
   }
 
 }
+
 
