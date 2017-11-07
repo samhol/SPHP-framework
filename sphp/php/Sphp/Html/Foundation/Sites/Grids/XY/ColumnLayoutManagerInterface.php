@@ -7,8 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Sphp\Html\LayoutManagerInterface;
-
 /**
  * Defines a Column for a Row in a Grid system
  *
@@ -18,7 +16,7 @@ use Sphp\Html\LayoutManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
+interface ColumnLayoutManagerInterface extends LayoutManager {
 
   /**
    * @return int 
@@ -31,31 +29,13 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setWidths(string ...$value);
+  public function setWidths(...$value);
 
   /**
    * 
    * @return $this for a fluent interface
    */
   public function unsetWidths();
-
-  /**
-   * Sets column width for the component
-   *
-   * **Important!**
-   *
-   * Column component is mobile-first. Code for small screens first,
-   * and larger devices will inherit those styles. Customize for
-   * larger screens as necessary.
-   *
-   * @precondition The value of the `$width` parameter is between 1-12 or false 
-   *               for inheritance from smaller screen sizes
-   * @precondition `$screen` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $width the target screen size
-   * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
-   */
-  public function setWidth(string $width = 'auto');
 
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
@@ -77,7 +57,7 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
-  public function setOffset(int $offset, string $screenSize = 'small');
+  //public function setOffset(int $offset, string $screenSize = 'small');
 
   /**
    * 
@@ -88,10 +68,10 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
   /**
    * Sets the column offset values for all screen sizes
    *
-   * @param  string[] $offsets column offsets for different screens sizes
+   * @param  string|string[] $offsets column offsets for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setOffsets(array $offsets);
+  public function setOffsets(... $offsets);
 
   /**
    * Returns the column offset for the target screen
