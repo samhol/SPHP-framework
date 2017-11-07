@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites\Containers;
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
 $callout = \Sphp\Manual\api()->classLinker(Callout::class);
 \Sphp\Manual\parseDown(<<<MD
@@ -16,4 +16,4 @@ container.
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Containers/Callout.php');
+Manual\example('Sphp/Html/Foundation/Sites/Containers/Callout.php')->printHtml();

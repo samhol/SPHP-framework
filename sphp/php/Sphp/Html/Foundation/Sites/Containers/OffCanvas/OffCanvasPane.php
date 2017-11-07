@@ -37,10 +37,10 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
   public function __construct($side, $position = 'fixed') {
     parent::__construct('div');
     $this->attrs()->demand('data-off-canvas');
-    $this->identify("$side-off-canvas");
+    $this->identify();
     $this->closeButton = new CloseButton();
     $this->setSide($side)
-            ->setPosition($position) ;
+            ->setPosition($position);
   }
 
   /**
@@ -52,7 +52,6 @@ class OffCanvasPane extends AbstractContainerTag implements OffCanvasAreaInterfa
     $this->cssClasses()->protect("position-$position");
     return $this;
   }
-
 
   /**
    * 

@@ -23,7 +23,7 @@ use Sphp\Stdlib\Arrays;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class AbstractColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutManagerInterface {
+class AbstractColumnLayoutManager implements ColumnLayoutManagerInterface {
 
   /**
    * @var int 
@@ -61,20 +61,17 @@ class AbstractColumnLayoutManager extends AbstractLayoutManager implements Colum
    * @param  mixed|mixed[] $layouts layout parameters
    * @return $this for a fluent interface
    */
-  public function setLayouts($layouts) {
+  public function setLayouts(string ...$value) {
     $layouts = Arrays::flatten($layouts);
     $widthFilter = function ($value) {
       return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
     };
-    $widths = array_filter($layouts, $widthFilter);
+    $widths = array_filter($value, $widthFilter);
     //$this->unsetLayouts();
     $this->setWidths($widths);
 
 
-    $widthFilter = function ($value) {
-      return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
-    };
-    $widths = array_filter($layouts, $widthFilter);
+    //$widths = array_filter($layouts, $widthFilter);
     /* foreach (is_array($layouts) ? $layouts : [$layouts] as $width) {     
 
       $this->setWidths($width);

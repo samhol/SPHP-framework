@@ -3,14 +3,13 @@
 namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\SliderInterface;
-use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
 use Sphp\Manual;
-$slider = \Sphp\Manual\api()->classLinker(Slider::class);
-$rangeSlider = \Sphp\Manual\api()->classLinker(RangeSlider::class);
-$sliderInterface = \Sphp\Manual\api()->classLinker(SliderInterface::class);
+$slider = Manual\api()->classLinker(Slider::class);
+$rangeSlider = Manual\api()->classLinker(RangeSlider::class);
+$sliderInterface = Manual\api()->classLinker(SliderInterface::class);
 
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##$slider and $rangeSlider components
 
 These components implement $sliderInterface and Foundation frameworks Sliders on clientside
@@ -23,7 +22,6 @@ a dropdown is far off screen), and not when it is first made visible.
 The example code of the form showing the exaples of $slider object is represented below.
 MD
 );
-include_once ('Sphp/Html/Foundation/Sites/Forms/sliders.php');
-SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Forms/sliders.php');
 
-Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', 'html5', true)->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', false, true)->printHtml();
+

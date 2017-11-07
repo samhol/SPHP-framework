@@ -2,7 +2,6 @@
 
 namespace Sphp\Html;
 
-
 require_once 'loaders.php';
 
 use Sphp\Stdlib\Path;
@@ -54,3 +53,4 @@ $html->head()
 Document::html()->body()->addCssClass('manual');
 Document::html()->scripts()->appendSrc('manual/js/formTools.js');
 Document::html()->startBody();
+

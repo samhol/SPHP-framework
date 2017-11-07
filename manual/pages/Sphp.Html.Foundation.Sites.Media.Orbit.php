@@ -3,14 +3,13 @@
 namespace Sphp\Html\Foundation\Sites\Media\Orbit;
 
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$orbit = Manual\api()->classLinker(Orbit::class);
+$slide = Manual\api()->classLinker(Slide::class);
 
-$orbit = \Sphp\Manual\api()->classLinker(Orbit::class);
-$slide = \Sphp\Manual\api()->classLinker(Slide::class);
-
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##The $orbit container and the $slide components
 $ns
 $orbit is a responsive container for image on other content sliders that allows swiping on touch-enabled devices.
@@ -26,3 +25,4 @@ echo '<div class="wrapper" style="width: ">';
 include 'Sphp/Html/Foundation/Sites/Media/Orbit-Video.php';
 echo "</div>";
 SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Media/Orbit-Video.php');
+

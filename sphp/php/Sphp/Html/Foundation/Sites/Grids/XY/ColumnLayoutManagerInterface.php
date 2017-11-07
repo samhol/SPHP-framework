@@ -28,10 +28,10 @@ interface ColumnLayoutManagerInterface extends LayoutManagerInterface {
   /**
    * Sets the column width values for all screen sizes
    * 
-   * @param  string[] $widths column widths for different screens sizes
+   * @param  string $widths column widths for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setWidths(...$widths);
+  public function setWidths(string ...$value);
 
   /**
    * 
