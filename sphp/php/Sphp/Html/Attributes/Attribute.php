@@ -41,7 +41,7 @@ class Attribute extends AbstractAttribute {
     if ($this->isProtected()) {
       throw new ImmutableAttributeException("Attribute '{$this->getName()}' is immutable");
     }
-    if (!is_scalar($value)) {
+    if (!is_scalar($value) && $value !== null) {
       throw new InvalidAttributeException("Invalid value for '{$this->getName()}' attribute");
     }
     $this->value = $value;
@@ -60,5 +60,8 @@ class Attribute extends AbstractAttribute {
     return $this;
   }
 
-}
+  public function isBoolean(): bool {
+    return is_bool($this->value);
+  }
 
+}

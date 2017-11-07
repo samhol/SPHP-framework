@@ -30,32 +30,26 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function mixedData(): array {
     return [
-        ['float', 0.231],
-        ["float", 0.0],
-        ['int', 10],
-        ['int', -10],
-        ['zero', 0],
-        ['zero', -0],
-        ['bool', -0],
-        ['zero', -0],
-        ['zero', -0],
-        ['zero', -0]
+        [0.231],
+        [0.0],
+        [10],
+        [-10],
+        [true],
+        [false],
     ];
   }
 
   /**
    * @covers HtmlAttributeManager::set()
    * 
-   * @param string $name
    * @param string $value numeric value
-   * @dataProvider numericData
+   * @dataProvider mixedData
    */
-  public function testSetting() {
-    $this->attrs->set('bool', true);
-    $this->attrs->setInstance(new BooleanAttribute('bool', true));
-    $this->assertSame($this->attrs->get('bool'), true);
-    $this->assertTrue($this->attrs->exists('bool'));
-    $this->assertTrue($this->attrs->isEmpty('bool'));
+  public function testSetting($value) {
+    $this->attrs->set('data-attr', $value);
+    $this->attrs->setInstance(new Attribute('data-obj', $value));
+    $this->assertSame($this->attrs->get('data-obj'), $this->attrs->get('data-attr'));
+
   }
 
   /**
@@ -167,7 +161,7 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
    */
   public function testBooleanSetting($name, $value) {
     $attrs = new HtmlAttributeManager();
-    $attrs->set($name, $value);
+    $attrs->setBoolean($name, $value);
     $this->assertTrue($attrs->get($name) === $value);
     if ($value === false) {
       $this->assertTrue($attrs->exists($name));
@@ -332,10 +326,3 @@ class AttributeManagerTest extends \PHPUnit\Framework\TestCase {
   }
 
 }
-
-
-
-
-
-
-

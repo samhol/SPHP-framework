@@ -4,7 +4,7 @@ namespace Sphp\Html\Foundation\Sites\Forms\Inputs;
 
 use Sphp\Html\Forms\Inputs\SliderInterface;
 use Sphp\Html\Foundation\Sites\Containers\Accordions\SyntaxHighlightingSingleAccordion;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 $slider = \Sphp\Manual\api()->classLinker(Slider::class);
 $rangeSlider = \Sphp\Manual\api()->classLinker(RangeSlider::class);
 $sliderInterface = \Sphp\Manual\api()->classLinker(SliderInterface::class);
@@ -25,7 +25,5 @@ MD
 );
 include_once ('Sphp/Html/Foundation/Sites/Forms/sliders.php');
 SyntaxHighlightingSingleAccordion::visualize('Sphp/Html/Foundation/Sites/Forms/sliders.php');
-\Sphp\Manual\parseDown(<<<MD
 
-MD
-);
+Manual\example('Sphp/Html/Foundation/Sites/Forms/sliders.php', 'html5', true)->printHtml();
