@@ -64,32 +64,7 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    */
   public function setLayouts(...$layouts) {
     $this->setWidths($layouts);
-
-
-    //$widths = array_filter($layouts, $widthFilter);
-    /* foreach (is_array($layouts) ? $layouts : [$layouts] as $width) {     
-
-      $this->setWidths($width);
-      $parts = explode('-', $width);
-      $c = count($parts);
-      if ($c === 2) {
-      if ($parts[1] === 'centered') {
-      $this->centerize($parts[0]);
-      } else if ($parts[1] === 'uncentered') {
-      $this->uncenterize($parts[0]);
-      } else if (is_numeric($parts[1])) {
-      $this->setWidth($parts[1], $parts[0]);
-      }
-      } else if ($c === 3) {
-      if ($parts[1] === 'offset') {
-      $this->setOffset($parts[2], $parts[0]);
-      } else if ($parts[1] === 'push') {
-      $this->setOrder($parts[2], $parts[0]);
-      } else if ($parts[1] === 'pull') {
-      $this->pull($parts[2], $parts[0]);
-      }
-      }
-      } */
+    $this->setOffsets($layouts);
     return $this;
   }
 
@@ -133,7 +108,6 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
     }
     return $this;
   }
-
 
   /**
    * Returns the column width associated with the given screen size
@@ -188,26 +162,20 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    * 
    * Moves Column block up to 11 columns to the right.
    *
-   * @precondition The value of the `$offset` parameter is between 0-11 or false for inheritance
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|boolean $offset the column offset (0-11) or false for inheritance
+   * @param  string|string[] $offsets the column offsets classes
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
   public function setOffsets(... $offsets) {
-    $widths = Arrays::flatten($widths);
+    $offsets = Arrays::flatten($offsets);
     $f = function ($value) {
       return preg_match('/^(small|medium|large|xlarge|xxlarge)-offset-([1-9]|(1[0-2]))+$/', $value) === 1;
     };
-    $filtered = array_filter($widths, $f);
-    foreach ($filtered as $width) {
-      if ($width === 'auto') {
-        $this->unsetWidths();
-      } else {
-        $parts = explode('-', $width);
-        $this->unsetWidth($parts[0]);
-      }
-      $this->cssClasses()->add($width);
+    $filtered = array_filter($offsets, $f);
+    foreach ($filtered as $offset) {
+      $parts = explode('-', $offset);
+      $this->unsetOffset($parts[0]);
+      $this->cssClasses()->add($offset);
     }
     return $this;
   }
