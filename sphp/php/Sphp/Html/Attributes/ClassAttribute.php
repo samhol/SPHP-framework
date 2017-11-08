@@ -230,7 +230,7 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
    * @param  scalar|scalar[] $values the atomic values to search for
    * @return boolean true if the given atomic values exists
    */
-  public function contains($values): bool {
+  public function contains(...$values): bool {
     $needles = $this->filter->parse($values);
     $exists = false;
     foreach ($needles as $class) {
@@ -275,6 +275,33 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     return $this;
   }
 
+  /**
+   * 
+   * @param  string $pattern
+   * @return string[]
+   */
+  public function parsePattern(string $pattern): array {
+    return preg_grep($pattern, $this->toArray());
+  }
+
+  /**
+   * 
+   * @param string $pattern
+   * @return $this
+   */
+  public function removePattern(string $pattern) {
+    $filter = function($value) use ($pattern) {
+      return !Strings::match($value, $pattern);
+    };
+    $this->filter($filter);
+    return $this;
+  }
+
+  /**
+   * 
+   * @param string $pattern
+   * @return $this
+   */
   public function filterPattern(string $pattern) {
     $filter = function($value) use ($pattern) {
       return Strings::match($value, $pattern);

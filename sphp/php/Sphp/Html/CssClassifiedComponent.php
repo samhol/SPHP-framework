@@ -41,7 +41,7 @@ interface CssClassifiedComponent extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function addCssClass($cssClasses);
+  public function addCssClass(...$cssClasses);
 
   /**
    * Removes given CSS class names
@@ -55,7 +55,7 @@ interface CssClassifiedComponent extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function removeCssClass($cssClasses);
+  public function removeCssClass(...$cssClasses);
 
   /**
    * Determines whether the given CSS class names are stored into the manager
@@ -69,7 +69,5 @@ interface CssClassifiedComponent extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass($cssClasses): bool;
+  public function hasCssClass(...$cssClasses): bool;
 }
-
-

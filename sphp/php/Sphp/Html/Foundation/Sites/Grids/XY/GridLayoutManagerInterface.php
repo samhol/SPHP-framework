@@ -7,10 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Sphp\Html\LayoutManagerInterface;
-
 /**
- * Defines a Column for a Row in a Grid system
+ * Defines a Grid container layout manager
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -18,7 +16,7 @@ use Sphp\Html\LayoutManagerInterface;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface GridLayoutManagerInterface extends LayoutManagerInterface {
+interface GridLayoutManagerInterface extends LayoutManager {
 
   /**
    *

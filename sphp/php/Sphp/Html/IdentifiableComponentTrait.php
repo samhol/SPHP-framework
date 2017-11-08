@@ -60,7 +60,7 @@ trait IdentifiableComponentTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp CSS class attribute
    */
-  public function addCssClass($cssClasses) {
+  public function addCssClass(...$cssClasses) {
     $this->cssClasses()->add(func_get_args());
     return $this;
   }
@@ -77,7 +77,7 @@ trait IdentifiableComponentTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function removeCssClass($cssClasses) {
+  public function removeCssClass(...$cssClasses) {
     $this->cssClasses()->remove(func_get_args());
     return $this;
   }
@@ -94,7 +94,7 @@ trait IdentifiableComponentTrait {
    * @return boolean true if the given CSS class names exists
    * @link   http://www.w3schools.com/tags/att_global_class.asp class attribute
    */
-  public function hasCssClass($cssClasses): bool {
+  public function hasCssClass(...$cssClasses): bool {
     return $this->cssClasses()->contains(func_get_args());
   }
 
@@ -187,4 +187,3 @@ trait IdentifiableComponentTrait {
   }
 
 }
-

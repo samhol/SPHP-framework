@@ -94,10 +94,10 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   /**
    * Sets the column offset values for all screen sizes
    *
-   * @param  string[] $pushs column offsets for different screens sizes
+   * @param  string|string[] $orders column offsets for different screens sizes
    * @return $this for a fluent interface
    */
-  public function setOrders(array $pushs);
+  public function setOrders(... $orders);
 
   /**
    * Unsets the grid offset for the given screen size

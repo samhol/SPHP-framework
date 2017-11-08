@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Sphp\Html\AbstractLayoutManager;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ComponentInterface;
 

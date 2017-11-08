@@ -2,10 +2,12 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
+use Sphp\Html\Div;
+
 class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
 
   /**
-   * @var Column
+   * @var ColumnLayoutManager
    */
   protected $col;
 
@@ -14,7 +16,7 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
    * This method is called before a test is executed.
    */
   protected function setUp() {
-    $this->c1 = new Column();
+    $this->col = new ColumnLayoutManager(new Div());
   }
 
   /**
@@ -22,105 +24,87 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
    * This method is called after a test is executed.
    */
   protected function tearDown() {
-    unset($this->c1);
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function constructorData() {
-    return [
-        [null, 2, false, false, false, false],
-        [null, 2, false, 2, false, 2],
-        [null, 1, 2, 3, 4, 5],
-    ];
+    unset($this->col);
   }
 
   /**
    *
-   * @param string $name
-   * @param string $value
-   * @dataProvider constructorData
    */
-  public function testConstructor($content, $s, $m, $l, $xl, $xxl) {
-    $col = new Column($content, $s, $m, $l, $xl, $xxl);
-    $this->assertSame($col->getWidth("small"), $s);
-    if ($m !== false) {
-      $this->assertSame($col->getWidth("medium"), $m);
-    }
-    if ($l !== false) {
-      $this->assertSame($col->getWidth("large"), $l);
-    }
-    if ($xl !== false) {
-      $this->assertSame($col->getWidth("xlarge"), $xl);
-    }
-    if ($xxl !== false) {
-      $this->assertSame($col->getWidth("xxlarge"), $xxl);
-    }
+  public function testConstructor() {
+    $this->assertTrue($this->col->cssClasses()->contains('cell'));
   }
 
   /**
-   * 
-   * @return string[]
+   * @return scalar[]
    */
-  public function widthSettingData() {
-    return [
-        ["small", 2],
-        ["medium", 2],
-        ["large", 2],
-        ["xlarge", 2],
-        ["xxlarge", 2],
-    ];
+  public function widthValues(): array {
+    $widths = range(1, 12);
+    $widths[] = 'auto';
+    return $widths;
   }
 
   /**
    *
    * @param string $type
    * @param int|boolean $size
-   * @dataProvider widthSettingData
    */
-  public function testSetWidth($type, $size) {
-    $this->c1->setWidth($size, $type);
-    $this->assertSame($this->c1->getWidth($type), $size);
-    if ($type !== "small") {
-      $this->c1->unsetWidth($type);
+  public function testSetWidths() {
+    foreach ($this->widthValues() as $i) {
+      $this->col->setWidths("small-$i", "medium-$i", "large-$i", "xlarge-$i", "xxlarge-$i");
+      $this->assertTrue($this->col->cssClasses()->contains("small-$i", "medium-$i", "large-$i", "xlarge-$i", "xxlarge-$i"));
+      foreach ($this->widthValues() as $j) {
+        if ($j === $i) {
+          $this->assertTrue($this->col->cssClasses()->contains("small-$j", "medium-$j", "large-$j", "xlarge-$j", "xxlarge-$j"));
+        } else {
+          $this->assertFalse($this->col->cssClasses()->contains("small-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("medium-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("large-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("xlarge-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("xxlarge-$j"));
+        }
+      }
     }
-    $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
-  }
-
-  /**
-   * 
-   * @return string[]
-   */
-  public function offsetSettingData() {
-    return [
-        ["small", 2, 8],
-        ["medium", 2, 8],
-        ["large", 2, 8],
-        ["xlarge", 2, 8],
-        ["xxlarge", 2, 8],
-    ];
   }
 
   /**
    *
    * @param string $type
    * @param int|boolean $size
-   * @param int|boolean $offset
-   * @dataProvider offsetSettingData
    */
-  public function testsetGridOffset($type, $size, $offset) {
-    $this->c1->setOffset($offset, $type);
-    $this->assertSame($this->c1->getOffset($type), $offset);
-    $this->c1->setWidth($size, $type);
-    $this->assertSame($this->c1->getWidth($type), $size);
-    $this->assertSame($this->c1->countUsedSpace($type), $size + $offset);
-    if ($type !== "small") {
-      $this->c1->unsetWidth($type);
+  public function testAutoWidth() {
+    $this->col->setWidths('small-12', 'medium-3', 'large-11', 'xxlarge-3', 'auto');
+    $this->assertTrue($this->col->cssClasses()->contains('auto'));
+    $this->assertFalse($this->col->cssClasses()->contains('xxlarge-3'));
+    $this->assertFalse($this->col->cssClasses()->contains('medium-3'));
+    $this->assertFalse($this->col->cssClasses()->contains('small-12'));
+  }
+
+  /**
+   * @return int[]
+   */
+  public function offsetValues(): array {
+    return range(1, 11);
+  }
+
+  /**
+   * 
+   */
+  public function testsetOffsets() {
+    foreach ($this->offsetValues() as $i) {
+      $this->col->setOffsets("small-offset-$i", "medium-offset-$i", "large-offset-$i", "xlarge-offset-$i", "xxlarge-offset-$i");
+      $this->assertTrue($this->col->cssClasses()->contains("small-offset-$i", "medium-offset-$i", "large-offset-$i", "xlarge-offset-$i", "xxlarge-offset-$i"));
+      foreach ($this->offsetValues() as $j) {
+        if ($j === $i) {
+          $this->assertTrue($this->col->cssClasses()->contains("small-offset-$j", "medium-offset-$j", "large-offset-$j", "xlarge-offset-$j", "xxlarge-offset-$j"));
+        } else {
+          $this->assertFalse($this->col->cssClasses()->contains("small-offset-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("medium-offset-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("large-offset-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("xlarge-offset-$j"));
+          $this->assertFalse($this->col->cssClasses()->contains("xxlarge-offset-$j"));
+        }
+      }
     }
-    $this->assertSame($this->c1->getWidth($type), $this->c1->getWidth("small"));
-    $this->assertSame($this->c1->countUsedSpace($type), $this->c1->getWidth("small") + $offset);
   }
 
   /**
@@ -136,23 +120,6 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
         ["xxlarge"],
     ];
   }
-  /**
-   *
-   * @param string $type
-   * @param int|boolean $size
-   * @param int|boolean $offset
-   * @dataProvider sizeNames
-   */
-  public function testsetCentering($type) {
-    $this->c1->centerize($type);
-    $this->assertTrue($this->c1->hasCssClass("$type-centered"));
-    $this->assertFalse($this->c1->hasCssClass("$type-uncentered"));
-    $this->c1->uncenterize($type);
-    $this->assertTrue($this->c1->hasCssClass("$type-uncentered"));
-    $this->assertFalse($this->c1->hasCssClass("$type-centered"));
-    $this->c1->unsetCenterizing($type);
-    $this->assertFalse($this->c1->hasCssClass("$type-uncentered"));
-    $this->assertFalse($this->c1->hasCssClass("$type-centered"));
-  }
+
 
 }

@@ -12,6 +12,7 @@ use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\CssClassifiedComponent;
+use Sphp\Stdlib\Strings;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -82,10 +83,7 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    */
   public function setWidths(... $widths) {
     $widths = Arrays::flatten($widths);
-    $f = function ($value) {
-      return preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $value) === 1;
-    };
-    $filtered = array_filter($widths, $f);
+    $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', $widths);
     foreach ($filtered as $width) {
       if ($width === 'auto') {
         $this->unsetWidths();
@@ -117,7 +115,12 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    * @return int|boolean the width of the column (1-12) or false for inheritance 
    *         from smaller screens
    */
-  public function getWidth(string $screenSize): int {
+  public function getWidth(string $screenSize): string {
+    $widths = $this->cssClasses()->parsePattern('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/');
+    print_r($widths);
+    if ($this->cssClasses()->contains("auto", "$screenSize-auto")) {
+      return 'auto';
+    }
     $parseWidth = function($screenName) {
       $result = false;
       for ($i = 1; $i <= $this->getMaxSize(); $i++) {
@@ -148,12 +151,7 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    * @return $this for a fluent interface
    */
   public function unsetWidth(string $screenSize) {
-    $classes = [];
-    for ($i = 1; $i <= $this->getMaxSize(); $i++) {
-      $classes[] = "$screenSize-$i";
-    }
-    $classes[] = "$screenSize-auto";
-    $this->cssClasses()->remove($classes);
+    $this->cssClasses()->removePattern("/^$screenSize-([1-9]|(1[0-2])|auto)+$/");
     return $this;
   }
 
@@ -168,10 +166,7 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    */
   public function setOffsets(... $offsets) {
     $offsets = Arrays::flatten($offsets);
-    $f = function ($value) {
-      return preg_match('/^(small|medium|large|xlarge|xxlarge)-offset-([1-9]|(1[0-2]))+$/', $value) === 1;
-    };
-    $filtered = array_filter($offsets, $f);
+    $filtered = preg_grep('/^(small|medium|large|xlarge|xxlarge)-offset-([1-9]|(1[0-2]))+$/', $offsets);
     foreach ($filtered as $offset) {
       $parts = explode('-', $offset);
       $this->unsetOffset($parts[0]);
@@ -233,62 +228,16 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
     return $this;
   }
 
-  public function setOrder(int $push, string $screenSize = 'small') {
-    $this->unsetOffset($screenSize);
-    if ($push !== 0) {
-      $this->cssClasses()->add("$screenSize-push-$push");
-    }
-    return $this;
-  }
-
-  public function pull(int $num, string $screenSize = 'small') {
-    $this->unsetPull($screenSize);
-    if ($num >= 0) {
-      $this->cssClasses()->add("$screenSize-pull-$num");
-    }
-    return $this;
-  }
-
-  /**
-   * Unsets the grid offset for the given screen size
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for a fluent interface
-   */
-  public function unsetPull(string $screenSize) {
-    for ($i = 0; $i < $this->getMaxSize(); $i++) {
-      $classes[] = "$screenSize-pull-$i";
-    }
-    $this->cssClasses()->remove($classes);
-    return $this;
-  }
-
-  /**
-   * Unsets the grid offset for the given screen size
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for a fluent interface
-   */
-  public function unsetPulls() {
-    foreach (Screen::sizes() as $screenSize) {
-      $this->unsetPull($screenSize);
-    }
-    return $this;
-  }
-
-  /**
-   * Sets the column offset values for all screen sizes
-   *
-   * @param  string[] $pushs column offsets for different screens sizes
-   * @return $this for a fluent interface
-   */
-  public function setOrders(array $pushs) {
-    $this->unsetOrders();
-    foreach ($pushs as $push) {
-      $parts = explode('-', $push);
-      $this->setWidth($parts[2], $parts[0]);
+  public function setOrders(...$orders) {
+    $orders = Arrays::flatten($orders);
+    $f = function ($value) {
+      return Strings::match($value, '/^(small|medium|large|xlarge|xxlarge)-order-([1-9]|(1[0-2]))+$/') === 1;
+    };
+    $filtered = array_filter($orders, $f);
+    foreach ($filtered as $order) {
+      $parts = explode('-', $order);
+      $this->unsetOrder($parts[0]);
+      $this->cssClasses()->add($order);
     }
     return $this;
   }
