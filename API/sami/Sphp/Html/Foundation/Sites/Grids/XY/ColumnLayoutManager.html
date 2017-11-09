@@ -79,15 +79,30 @@
     </div>
 
     <p>    class
-    <strong>ColumnLayoutManager</strong>        extends <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a>
+    <strong>ColumnLayoutManager</strong>        extends <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a>        implements
+        <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManagerInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManagerInterface">ColumnLayoutManagerInterface</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Implements a layout manager for Grid columns</p>                                </div>
+            <p>Implements an abstract layout manager for responsive HTML components</p>                                </div>
     
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements parts of the {@link ContentInterface} interface
+                </div>
+            </div>
+            </div>
     
     
     
@@ -96,23 +111,43 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+                    <a href="#method_getHtml">getHtml</a>()
         
-                                            <p>Constructs a new instance</p>                </div>
-                <div class="col-md-2"></div>
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Sphp\Html\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_manage">manage</a>(<a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+                    <a href="#method_printHtml">printHtml</a>()
         
-                                            <p>Sets the managed component</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method_manage"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a> $component, int $maxSize = 12)
+        
+                                            <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -122,29 +157,29 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_cssClasses">cssClasses</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___toString">__toString</a>()
+                    <a href="#method_cssClasses">cssClasses</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method___toString"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOneOf">setOneOf</a>(array $group, string $value = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_setOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -155,37 +190,37 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getMaxSize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLayouts">setLayouts</a>(mixed|mixed[] $layouts)
+                    <a href="#method_setLayouts">setLayouts</a>(string|string[] $layouts)
         
                                             <p>Sets the width and offset for given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\$this">$this</abbr>
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_unsetLayouts">unsetLayouts</a>()
         
                                             <p>Unsets the layout</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setWidths">setWidths</a>(string[] $widths)
+                    <a href="#method_setWidths">setWidths</a>(string|string[] $widths)
         
                                             <p>Sets the column width values for all screen sizes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -196,17 +231,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setWidth">setWidth</a>(string $width = &#039;auto&#039;)
-        
-                                            <p>Sets the column width</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -216,7 +241,7 @@
                     <a href="#method_getWidth">getWidth</a>(string $screenSize)
         
                                             <p>Returns the column width associated with the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -226,17 +251,17 @@
                     <a href="#method_unsetWidth">unsetWidth</a>(string $screenSize)
         
                                             <p>Unsets the column width associated with the given screen size to be inherited from smaller screens</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setOffset">setOffset</a>(int $offset, string $screenSize = &#039;small&#039;)
+                    <a href="#method_setOffsets">setOffsets</a>(string|string[] $offsets)
         
                                             <p>Offsets the column component to right on the associated screen sizes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -247,17 +272,7 @@
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setOffsets">setOffsets</a>(array $offsets)
-        
-                                            <p>Sets the column offset values for all screen sizes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -267,7 +282,7 @@
                     <a href="#method_getOffset">getOffset</a>(string $screenSize)
         
                                             <p>Returns the column offset for the target screen</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -277,59 +292,17 @@
                     <a href="#method_unsetOffset">unsetOffset</a>(string $screenSize)
         
                                             <p>Unsets the grid offset for the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setOrder">setOrder</a>(int $push, string $screenSize = &#039;small&#039;)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_pull">pull</a>(int $num, string $screenSize = &#039;small&#039;)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_pull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_unsetPull">unsetPull</a>(string $screenSize)
-        
-                                            <p>Unsets the grid offset for the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_unsetPulls">unsetPulls</a>()
-        
-                                            <p>Unsets the grid offset for the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPulls"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setOrders">setOrders</a>(array $pushs)
+                    <a href="#method_setOrders">setOrders</a>(string|string[] $orders)
         
                                             <p>Sets the column offset values for all screen sizes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -339,7 +312,7 @@
                     <a href="#method_unsetOrder">unsetOrder</a>(string $screenSize)
         
                                             <p>Unsets the grid offset for the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -349,7 +322,7 @@
                     <a href="#method_unsetOrders">unsetOrders</a>()
         
                                             <p>Unsets the grid offset for the given screen size</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -359,7 +332,7 @@
                     <a href="#method_countUsedSpace">countUsedSpace</a>(string $screenSize)
         
                                             <p>Returns the amount of the space the column uses from the row</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_countUsedSpace"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -369,7 +342,7 @@
                     <a href="#method_centerize">centerize</a>(string $screenSize)
         
                                             <p>Centers the column to the Foundation row</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_centerize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -379,7 +352,7 @@
                     <a href="#method_uncenterize">uncenterize</a>(string $screenSize)
         
                                             <p>Resets the centering of the column</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_uncenterize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -389,7 +362,7 @@
                     <a href="#method_unsetCenterizing">unsetCenterizing</a>(string $screenSize)
         
                                             <p>Removes the centering/uncentering settings</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetCenterizing"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -398,10 +371,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at         line 29</div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 27</div>
+        <code>    abstract                string
+    <strong>getHtml</strong>()
         </code>
     </h3>
     <div class="details">
@@ -409,19 +382,57 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                                                </div>
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
-                <td>$component</td>
-                <td></td>
+                <td><a href="../../../../../../Sphp/Exceptions/Exception.html"><abbr title="Sphp\Exceptions\Exception">Exception</abbr></a></td>
+                <td>if HTML parsing fails</td>
             </tr>
             </table>
 
             
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 34</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -429,10 +440,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_manage">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method_manage"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 35</div>
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 48</div>
         <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>manage</strong>(<a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+    <strong>printHtml</strong>()
         </code>
     </h3>
     <div class="details">
@@ -440,18 +451,8 @@
     
 
                     <div class="method-description">
-                                    <p>Sets the managed component</p>                                                </div>
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
-                <td>$component</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -469,8 +470,44 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 40</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a> $component, int $maxSize = 12)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a></td>
+                <td>$component</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maxSize</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 46</div>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 46</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -492,8 +529,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_cssClasses">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 54</div>
-        <code>                    <a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 50</div>
+        <code>                    
     <strong>cssClasses</strong>()
         </code>
     </h3>
@@ -503,12 +540,46 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                 <div class="tags">
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOneOf">
+        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_setOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 60</div>
+        <code>            protected        <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+    <strong>setOneOf</strong>(array $group, string $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a></td>
-            <td></td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
         </tr>
     </table>
 
@@ -519,27 +590,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location">in <a href="../../../../../../Sphp/Html/AbstractLayoutManager.html#method___toString"><abbr title="Sphp\Html\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 58</div>
-        <code>                    
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getMaxSize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getMaxSize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 48</div>
+        <div class="location">at         line 50</div>
         <code>                    int
     <strong>getMaxSize</strong>()
         </code>
@@ -567,9 +619,9 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setLayouts">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 64</div>
-        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
-    <strong>setLayouts</strong>(mixed|mixed[] $layouts)
+        <div class="location">at         line 66</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+    <strong>setLayouts</strong>(string|string[] $layouts)
         </code>
     </h3>
     <div class="details">
@@ -587,9 +639,9 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed|mixed[]</td>
+                <td>string|string[]</td>
                 <td>$layouts</td>
-                <td>layout parameters</td>
+                <td>layout parameters (CSS classes)</td>
             </tr>
             </table>
 
@@ -598,7 +650,7 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -611,8 +663,8 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetLayouts">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetLayouts"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 104</div>
-        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
+        <div class="location">at         line 72</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>unsetLayouts</strong>()
         </code>
     </h3>
@@ -628,7 +680,7 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
             <td>for a fluent interface</td>
         </tr>
     </table>
@@ -641,9 +693,9 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setWidths">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 116</div>
+        <div class="location">at         line 84</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setWidths</strong>(string[] $widths)
+    <strong>setWidths</strong>(string|string[] $widths)
         </code>
     </h3>
     <div class="details">
@@ -657,7 +709,7 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string[]</td>
+                <td>string|string[]</td>
                 <td>$widths</td>
                 <td>column widths for different screens sizes</td>
             </tr>
@@ -681,7 +733,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidths">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidths"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 133</div>
+        <div class="location">at         line 103</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetWidths</strong>()
         </code>
@@ -708,61 +760,8 @@ larger screens as necessary.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 157</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setWidth</strong>(string $width = &#039;auto&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the column width</p>                    <p><strong>Important!</strong></p>
-
-<p>Column component is mobile-first. Code for small screens first,
-and larger devices will inherit those styles. Customize for
-larger screens as necessary.</p>                            </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$width</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 178</div>
+        <div class="location">at         line 118</div>
         <code>                    int|boolean
     <strong>getWidth</strong>(string $screenSize)
         </code>
@@ -803,7 +802,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetWidth">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetWidth"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 208</div>
+        <div class="location">at         line 153</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetWidth</strong>(string $screenSize)
         </code>
@@ -842,10 +841,10 @@ larger screens as necessary.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 229</div>
+                    <h3 id="method_setOffsets">
+        <div class="location">at         line 167</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setOffset</strong>(int $offset, string $screenSize = &#039;small&#039;)
+    <strong>setOffsets</strong>(string|string[] $offsets)
         </code>
     </h3>
     <div class="details">
@@ -859,14 +858,9 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$offset</td>
-                <td>the column offset (0-11) or false for inheritance</td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
+                <td>string|string[]</td>
+                <td>$offsets</td>
+                <td>column offsets for different screens sizes</td>
             </tr>
             </table>
 
@@ -888,7 +882,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffsets">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 241</div>
+        <div class="location">at         line 182</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOffsets</strong>()
         </code>
@@ -915,48 +909,8 @@ larger screens as necessary.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setOffsets">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOffsets"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 254</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setOffsets</strong>(array $offsets)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Sets the column offset values for all screen sizes</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$offsets</td>
-                <td>column offsets for different screens sizes</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_getOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 270</div>
+        <div class="location">at         line 196</div>
         <code>                    int
     <strong>getOffset</strong>(string $screenSize)
         </code>
@@ -996,7 +950,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOffset">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOffset"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 297</div>
+        <div class="location">at         line 223</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOffset</strong>(string $screenSize)
         </code>
@@ -1035,148 +989,10 @@ larger screens as necessary.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setOrder">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 305</div>
-        <code>                    
-    <strong>setOrder</strong>(int $push, string $screenSize = &#039;small&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$push</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_pull">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_pull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 313</div>
-        <code>                    
-    <strong>pull</strong>(int $num, string $screenSize = &#039;small&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$num</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unsetPull">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPull"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 328</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>unsetPull</strong>(string $screenSize)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Unsets the grid offset for the given screen size</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$screenSize</td>
-                <td>the target screen size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unsetPulls">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetPulls"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 343</div>
-        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>unsetPulls</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Unsets the grid offset for the given screen size</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr></td>
-            <td>for a fluent interface</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_setOrders">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_setOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 356</div>
+        <div class="location">at         line 231</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
-    <strong>setOrders</strong>(array $pushs)
+    <strong>setOrders</strong>(string|string[] $orders)
         </code>
     </h3>
     <div class="details">
@@ -1190,8 +1006,8 @@ larger screens as necessary.</p>                            </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$pushs</td>
+                <td>string|string[]</td>
+                <td>$orders</td>
                 <td>column offsets for different screens sizes</td>
             </tr>
             </table>
@@ -1214,7 +1030,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrder">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrder"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 372</div>
+        <div class="location">at         line 252</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOrder</strong>(string $screenSize)
         </code>
@@ -1254,7 +1070,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetOrders">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetOrders"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 387</div>
+        <div class="location">at         line 267</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Grids\XY\$this">$this</abbr>
     <strong>unsetOrders</strong>()
         </code>
@@ -1284,7 +1100,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_countUsedSpace">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_countUsedSpace"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 401</div>
+        <div class="location">at         line 281</div>
         <code>                    int
     <strong>countUsedSpace</strong>(string $screenSize)
         </code>
@@ -1324,7 +1140,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_centerize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_centerize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 412</div>
+        <div class="location">at         line 292</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface">ColumnInterface</abbr></a>
     <strong>centerize</strong>(string $screenSize)
         </code>
@@ -1364,7 +1180,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_uncenterize">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_uncenterize"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 426</div>
+        <div class="location">at         line 306</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnLayoutManager">ColumnLayoutManager</abbr></a>
     <strong>uncenterize</strong>(string $screenSize)
         </code>
@@ -1404,7 +1220,7 @@ larger screens as necessary.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetCenterizing">
-        <div class="location">in <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/AbstractColumnLayoutManager.html#method_unsetCenterizing"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\AbstractColumnLayoutManager">AbstractColumnLayoutManager</abbr></a> at         line 440</div>
+        <div class="location">at         line 320</div>
         <code>                    <a href="../../../../../../Sphp/Html/Foundation/Sites/Grids/XY/ColumnInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Grids\XY\ColumnInterface">ColumnInterface</abbr></a>
     <strong>unsetCenterizing</strong>(string $screenSize)
         </code>

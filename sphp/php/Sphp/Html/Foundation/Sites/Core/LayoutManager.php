@@ -14,12 +14,12 @@ namespace Sphp\Html\Foundation\Sites\Core;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-interface LayoutManager {
+interface LayoutManager extends \Sphp\Html\Adapters\Adapter {
 
   /**
-   * Sets the layout
+   * Sets the layouts
    *
-   * @param  mixed|mixed[] $layouts layout parameters
+   * @param  string|string[] $layouts layout parameters (CSS classes)
    * @return $this for a fluent interface
    */
   public function setLayouts( ... $layouts);

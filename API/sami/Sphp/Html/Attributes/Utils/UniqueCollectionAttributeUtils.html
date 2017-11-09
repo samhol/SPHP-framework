@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\Utils\UniqueMultiValueAttributeUtils | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\Utils\UniqueCollectionAttributeUtils | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_UniqueMultiValueAttributeUtils" data-root-path="../../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_Utils_UniqueCollectionAttributeUtils" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,21 +66,21 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>UniqueMultiValueAttributeUtils</li>
+                        <li><a href="../../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li><a href="../../../../Sphp/Html/Attributes/Utils.html">Utils</a></li><li class="backslash">\</li><li>UniqueCollectionAttributeUtils</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            UniqueMultiValueAttributeUtils
+            UniqueCollectionAttributeUtils
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>UniqueMultiValueAttributeUtils</strong>        implements
-        <a href="../../../../Sphp/Html/Attributes/Utils/MultiValueAttributeUtilityInterface.html"><abbr title="Sphp\Html\Attributes\Utils\MultiValueAttributeUtilityInterface">MultiValueAttributeUtilityInterface</abbr></a>
+    <strong>UniqueCollectionAttributeUtils</strong>        implements
+        <a href="../../../../Sphp/Html/Attributes/Utils/CollectionAttributeUtilityInterface.html"><abbr title="Sphp\Html\Attributes\Utils\CollectionAttributeUtilityInterface">CollectionAttributeUtilityInterface</abbr></a>
 </p>
 
         
@@ -100,7 +100,7 @@
                     string[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>(mixed $raw, bool $validate = false)
+                    <a href="#method_parse">parse</a>(mixed $raw, bool $validate = false)
         
                                             <p>Returns an array of unique values parsed from the input</p>                </div>
                 <div class="col-md-2"></div>
@@ -115,6 +115,16 @@
                                             <p>Validates given atomic value</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseStringToArray">parseStringToArray</a>(string $subject)
+        
+                                            <p>Parses a string to an array of atomic values</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -122,10 +132,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_filter">
+                    <h3 id="method_parse">
         <div class="location">at         line 38</div>
         <code>                    string[]
-    <strong>filter</strong>(mixed $raw, bool $validate = false)
+    <strong>parse</strong>(mixed $raw, bool $validate = false)
         </code>
     </h3>
     <div class="details">
@@ -213,6 +223,46 @@
         <tr>
             <td>bool</td>
             <td>true if the value is valid atomic value</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseStringToArray">
+        <div class="location">at         line 69</div>
+        <code>                    array
+    <strong>parseStringToArray</strong>(string $subject)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Parses a string to an array of atomic values</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>an array of atomic values</td>
         </tr>
     </table>
 

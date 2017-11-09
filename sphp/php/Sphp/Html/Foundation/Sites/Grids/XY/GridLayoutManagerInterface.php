@@ -25,7 +25,7 @@ interface GridLayoutManagerInterface extends LayoutManager {
    * @param string $type
    * @return $this for a fluent interface
    */
-  public function stretch(string $type = 'fluid');
+  public function stretch(string $type = null);
 
   /**
    *

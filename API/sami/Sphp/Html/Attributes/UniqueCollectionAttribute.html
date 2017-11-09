@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\UniqueMultiValueAttribute | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\UniqueCollectionAttribute | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_UniqueMultiValueAttribute" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_UniqueCollectionAttribute" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,21 +66,21 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>UniqueMultiValueAttribute</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>UniqueCollectionAttribute</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            UniqueMultiValueAttribute
+            UniqueCollectionAttribute
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>UniqueMultiValueAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a href="../../../Sphp/Html/Attributes/MultiValueAttributeInterface.html"><abbr title="Sphp\Html\Attributes\MultiValueAttributeInterface">MultiValueAttributeInterface</abbr></a>
+    <strong>UniqueCollectionAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
+        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a href="../../../Sphp/Html/Attributes/CollectionAttributeInterface.html"><abbr title="Sphp\Html\Attributes\CollectionAttributeInterface">CollectionAttributeInterface</abbr></a>
 </p>
 
         
@@ -100,7 +100,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/UniqueMultiValueAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueMultiValueAttributeUtils">UniqueMultiValueAttributeUtils</abbr></a> $u = null)
+                    <a href="#method___construct">__construct</a>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/UniqueCollectionAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueCollectionAttributeUtils">UniqueCollectionAttributeUtils</abbr></a> $u = null)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -132,7 +132,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isProtected">isProtected</a>(null|scalar|scalar[] $values = null)
         
-                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
+                                            <p>Checks whether the given atomic values are locked</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -142,7 +142,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_protect">protect</a>(scalar|scalar[] $values)
         
-                                            <p>Protects the given value to the attribute</p>                </div>
+                                            <p>Locks the specified atomic values</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -223,7 +223,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(scalar|scalar[] $values)
         
-                                            <p>Sets the value of the attribute</p>                </div>
+                                            <p>Sets new atomic values to the attribute removing old non locked ones</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -378,7 +378,7 @@
                     <h3 id="method___construct">
         <div class="location">at         line 50</div>
         <code>                    
-    <strong>__construct</strong>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/UniqueMultiValueAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueMultiValueAttributeUtils">UniqueMultiValueAttributeUtils</abbr></a> $u = null)
+    <strong>__construct</strong>(string $name, <a href="../../../Sphp/Html/Attributes/Utils/UniqueCollectionAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueCollectionAttributeUtils">UniqueCollectionAttributeUtils</abbr></a> $u = null)
         </code>
     </h3>
     <div class="details">
@@ -397,7 +397,7 @@
                 <td>the name of the attribute</td>
             </tr>
                     <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Utils/UniqueMultiValueAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueMultiValueAttributeUtils">UniqueMultiValueAttributeUtils</abbr></a></td>
+                <td><a href="../../../Sphp/Html/Attributes/Utils/UniqueCollectionAttributeUtils.html"><abbr title="Sphp\Html\Attributes\Utils\UniqueCollectionAttributeUtils">UniqueCollectionAttributeUtils</abbr></a></td>
                 <td>$u</td>
                 <td></td>
             </tr>
@@ -405,15 +405,6 @@
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -483,7 +474,13 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
+                                    <p>Checks whether the given atomic values are locked</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain multiple comma separated atomic values</li>
+<li>An array parameter can contain only one atomic value per array value</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -523,7 +520,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Protects the given value to the attribute</p>                                                </div>
+                                    <p>Locks the specified atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain multiple comma separated atomic values</li>
+<li>An array parameter can contain only one atomic value per array value</li>
+<li>Stores only a single instance of every value (no duplicates)</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -546,19 +550,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -596,7 +587,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 94</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 98</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -626,7 +617,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 98</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 102</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>()
         </code>
@@ -656,7 +647,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 103</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 107</div>
         <code>                    boolean
     <strong>isDemanded</strong>()
         </code>
@@ -687,7 +678,7 @@ name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isVisible">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 107</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isVisible"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 111</div>
         <code>                    boolean
     <strong>isVisible</strong>()
         </code>
@@ -718,7 +709,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 111</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 115</div>
         <code>                    boolean
     <strong>isEmpty</strong>()
         </code>
@@ -787,7 +778,15 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the attribute</p>                                                </div>
+                                    <p>Sets new atomic values to the attribute removing old non locked ones</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A <code>string</code> parameter can contain multiple comma separated atomic values</li>
+<li>An <code>array</code> parameter can contain only one atomic value per array value</li>
+<li>Any numeric value is treated as a string value</li>
+<li>Stores only a single instance of every value (no duplicates)</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -810,19 +809,6 @@ name is required or the attribute value is not boolean (false).</p>             
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>

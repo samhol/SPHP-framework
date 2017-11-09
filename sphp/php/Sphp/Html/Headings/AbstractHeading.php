@@ -10,7 +10,7 @@ namespace Sphp\Html\Headings;
 use Sphp\Html\ContainerTag;
 
 /**
- * Abstract implementation of HTML headings and subheadings
+ * Abstract implementation of HTML headings and sub headings
  *
  * HTML heading Components rank in importance according to the number in their name.
  * The h1 element is said to have the highest rank, the h6 element has the lowest 
@@ -24,8 +24,8 @@ use Sphp\Html\ContainerTag;
  */
 abstract class AbstractHeading extends ContainerTag implements HeadingInterface {
 
-	public function getLevel() {
-		return substr($this->getTagName(), 1);
-	}
+  public function getLevel(): int {
+    return (int) substr($this->getTagName(), 1);
+  }
 
 }

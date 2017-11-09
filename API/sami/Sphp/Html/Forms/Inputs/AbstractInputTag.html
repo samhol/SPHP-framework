@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>AbstractInputTag</strong>        extends <a href="../../../../Sphp/Html/EmptyTag.html"><abbr title="Sphp\Html\EmptyTag">EmptyTag</abbr></a>        implements
-        <a href="../../../../Sphp/Html/Forms/Inputs/IdentifiableInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\IdentifiableInputInterface">IdentifiableInputInterface</abbr></a>
+        <a href="../../../../Sphp/Html/Forms/Inputs/IdentifiableInput.html"><abbr title="Sphp\Html\Forms\Inputs\IdentifiableInput">IdentifiableInput</abbr></a>
 </p>
 
         
@@ -331,7 +331,7 @@ that allow users to input data.</p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|null
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getName">getName</a>()
@@ -404,7 +404,7 @@ that allow users to input data.</p>                    </div>
                     <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setValue">setValue</a>(string $value, int $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS)
+                    <a href="#method_setValue">setValue</a>(scalar|null $value)
         
                                             <p>Sets the value of the value attribute.</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Sphp/Html/Forms/Inputs/InputTagTrait.html#method_setValue"><abbr title="Sphp\Html\Forms\Inputs\InputTagTrait">InputTagTrait</abbr></a></small></div>
@@ -1132,7 +1132,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <div class="method-item">
                     <h3 id="method_getName">
         <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTrait.html#method_getName"><abbr title="Sphp\Html\Forms\Inputs\InputTrait">InputTrait</abbr></a> at         line 33</div>
-        <code>                    string|null
+        <code>                    string
     <strong>getName</strong>()
         </code>
     </h3>
@@ -1148,7 +1148,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|null</td>
+            <td>string</td>
             <td>name attribute</td>
         </tr>
     </table>
@@ -1354,9 +1354,9 @@ Disabled input components in a form will not be submitted.</p>                  
             </div>
                     <div class="method-item">
                     <h3 id="method_setValue">
-        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTagTrait.html#method_setValue"><abbr title="Sphp\Html\Forms\Inputs\InputTagTrait">InputTagTrait</abbr></a> at         line 49</div>
+        <div class="location">in <a href="../../../../Sphp/Html/Forms/Inputs/InputTagTrait.html#method_setValue"><abbr title="Sphp\Html\Forms\Inputs\InputTagTrait">InputTagTrait</abbr></a> at         line 48</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
-    <strong>setValue</strong>(string $value, int $filter = \FILTER_SANITIZE_FULL_SPECIAL_CHARS)
+    <strong>setValue</strong>(scalar|null $value)
         </code>
     </h3>
     <div class="details">
@@ -1370,14 +1370,9 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>scalar|null</td>
                 <td>$value</td>
                 <td>the value of the value attribute</td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$filter</td>
-                <td>The ID of the filter to apply. {@link http://php.net/manual/en/filter.filters.php list of the available filters}.</td>
             </tr>
             </table>
 

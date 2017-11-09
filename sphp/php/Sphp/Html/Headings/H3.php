@@ -18,13 +18,13 @@ namespace Sphp\Html\Headings;
  */
 class H3 extends AbstractHeading {
 
-	/**
-	 * Constructs a new instance
-	 * 
-	 * @param  mixed $content optional content of the component
-	 */
-	public function __construct($content = null) {
-		parent::__construct('h3', $content);
-	}
+  /**
+   * Constructs a new instance
+   * 
+   * @param  mixed $content optional content of the component
+   */
+  public function __construct($content = null) {
+    parent::__construct('h3', $content);
+  }
 
 }

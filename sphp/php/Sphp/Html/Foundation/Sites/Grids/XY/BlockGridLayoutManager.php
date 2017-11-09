@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Sphp\Html\AbstractLayoutManager;
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 
@@ -54,31 +53,25 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
    * @return $this for a fluent interface
    * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setLayouts($layouts) {
-    $this->unsetLayouts();
-    foreach (is_array($layouts) ? $layouts : [$layouts] as $layout) {
-      $parts = explode('-', $layout);
-      $this->setGrid($parts[2], $parts[0]);
-    }
+  public function setLayouts(...$layouts) {
+    $this->setWidths($layouts);
     return $this;
   }
 
   /**
-   * Sets the block grid value of the given target screen types
-   *
-   * @precondition The value of the `$num` parameter is between (1-8) or false for inheritance
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  int $num number of columns in a row (1-8) or false for inheritance
-   * @param  string $screenSize the target screen size
+   * Sets the column width values for all screen sizes
+   * 
+   * @param  string|string[] $widths column widths for different screens sizes
    * @return $this for a fluent interface
-   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
-  public function setGrid(int $num, string $screenSize) {
-    if ($num < 1 || $num > $this->getColumnCount()) {
-      throw new \Sphp\Exceptions\InvalidArgumentException($num);
+  public function setWidths(... $widths) {
+    $widths = Arrays::flatten($widths);
+    $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-up-([1-9]|(1[0-2])))+$/', $widths);
+    foreach ($filtered as $width) {
+      $parts = explode('-', $width);
+      $this->unsetWidth($parts[0]);
+      $this->cssClasses()->add($width);
     }
-    $this->unsetGrid($screenSize);
-    $this->cssClasses()->add("$screenSize-up-$num");
     return $this;
   }
 
@@ -108,35 +101,6 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
     }
     $this->cssClasses()->remove($classes);
     return $this;
-  }
-
-  /**
-   * Returns the block grid value of the target screen
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return int the column count value per row for given target screen size
-   */
-  public function getColCount(string $screenSize) {
-    $parseGrid = function($screenName) {
-      $result = false;
-      for ($i = 1; $i <= $this->getColumnCount(); $i++) {
-        if ($this->cssClasses()->contains("$screenName-up-$i")) {
-          $result = $i;
-          break;
-        }
-      }
-      return $result;
-    };
-    //$screenName = Screen::getScreenName($screenSize);
-    $num = 0;
-    foreach (Screen::sizes() as $screenName) {
-      $num = $parseGrid($screenName);
-      if ($screenName == $screenSize) {
-        break;
-      }
-    }
-    return $num;
   }
 
 }

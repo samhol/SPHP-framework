@@ -406,7 +406,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getName">getName</a>()
         
-                                            <p>Returns the value of name attribute</p>                </div>
+                                            <p>Returns the name of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -416,7 +416,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setName">setName</a>(string $name)
         
-                                            <p>Sets the value of name attribute</p>                </div>
+                                            <p>Sets the name of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -426,7 +426,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isNamed">isNamed</a>()
         
-                                            <p>Checks whether the slider has a name</p>                </div>
+                                            <p>Checks whether the form input has a name</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -446,7 +446,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isEnabled">isEnabled</a>()
         
-                                            <p>Checks whether the option is enabled or not</p>                </div>
+                                            <p>Checks whether the input component is enabled or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -454,9 +454,9 @@
                     <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setValue">setValue</a>(string|string[] $value)
+                    <a href="#method_setValue">setValue</a>(scalar $value)
         
-                                            <p>Sets the current submission set of the input component</p>                </div>
+                                            <p>Sets  the value of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -466,7 +466,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_getSubmitValue">getSubmitValue</a>()
         
-                                            <p>Returns the current submission set of the input component</p>                </div>
+                                            <p>Returns the value of the form input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1122,6 +1122,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1534,7 +1543,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Returns the value of name attribute</p>                                                </div>
+                                    <p>Returns the name of the form input</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1564,7 +1573,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the value of name attribute</p>                                                </div>
+                                    <p>Sets the name of the form input</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
+passed when submitting a form.</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1604,8 +1614,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Checks whether the slider has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
- passed when submitting a form.</p>                            </div>
+                                    <p>Checks whether the form input has a name</p>                    <p><strong>Note:</strong> Only form elements with a name attribute will have their values
+passed when submitting a form.</p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1676,7 +1686,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Checks whether the option is enabled or not</p>                                                </div>
+                                    <p>Checks whether the input component is enabled or not</p>                                                </div>
                 <div class="tags">
             
             
@@ -1689,7 +1699,7 @@ Disabled input components in a form will not be submitted.</p>                  
                     <h3 id="method_setValue">
         <div class="location">at         line 215</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
-    <strong>setValue</strong>(string|string[] $value)
+    <strong>setValue</strong>(scalar $value)
         </code>
     </h3>
     <div class="details">
@@ -1697,13 +1707,13 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Sets the current submission set of the input component</p>                                                </div>
+                                    <p>Sets  the value of the form input</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|string[]</td>
+                <td>scalar</td>
                 <td>$value</td>
                 <td>the value of the form input</td>
             </tr>
@@ -1720,6 +1730,15 @@ Disabled input components in a form will not be submitted.</p>                  
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>if the value is not valid for the input type</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1737,7 +1756,7 @@ Disabled input components in a form will not be submitted.</p>                  
     
 
                     <div class="method-description">
-                                    <p>Returns the current submission set of the input component</p>                                                </div>
+                                    <p>Returns the value of the form input</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>

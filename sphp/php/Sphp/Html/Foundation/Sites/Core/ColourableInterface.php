@@ -34,5 +34,5 @@ interface ColourableInterface {
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
-  public function setColor($style = null);
+  public function setColor(string $style = null);
 }

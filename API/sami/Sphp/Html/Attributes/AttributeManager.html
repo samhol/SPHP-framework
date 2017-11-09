@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Sphp\Html\Attributes\AbstractAttributeManager | SPHP framework API</title>
+    <title>Sphp\Html\Attributes\AttributeManager | SPHP framework API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Sphp_Html_Attributes_AbstractAttributeManager" data-root-path="../../../">
+    <body id="class" data-name="class:Sphp_Html_Attributes_AttributeManager" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,20 +66,20 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>AbstractAttributeManager</li>
+                        <li><a href="../../../Sphp.html">Sphp</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html.html">Html</a></li><li class="backslash">\</li><li><a href="../../../Sphp/Html/Attributes.html">Attributes</a></li><li class="backslash">\</li><li>AttributeManager</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            AbstractAttributeManager
+            AttributeManager
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>AbstractAttributeManager</strong>        implements
+    <strong>AttributeManager</strong>        implements
         <a target="_blank" href="http://php.net/Countable">Countable</a>, <a target="_blank" href="http://php.net/Iterator">Iterator</a>
 </p>
 
@@ -162,6 +162,61 @@ object</p>                    </div>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setInstance">setInstance</a>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attr)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_supportsTypeChange">supportsTypeChange</a>(string $name, string $type)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isIntegerAttribute">isIntegerAttribute</a>(string $name)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isBooleanAttribute">isBooleanAttribute</a>(string $name)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBoolean">setBoolean</a>(string $name, bool $value = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setInteger">setInteger</a>(string $name, int $value = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -265,6 +320,16 @@ object</p>                    </div>
                     <a href="#method_getValue">getValue</a>(string $name)
         
                                             <p>Returns the value of a given attribute name</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isInstatiated">isInstatiated</a>(string $name)
+        
+                                            <p>Checks if named attribute instance exists in the manager</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -520,7 +585,7 @@ attaches a new object</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setInstance">
-        <div class="location">at         line 115</div>
+        <div class="location">at         line 116</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>setInstance</strong>(<a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a> $attr)
         </code>
@@ -558,6 +623,233 @@ attaches a new object</p>                            </div>
                 <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_supportsTypeChange">
+        <div class="location">at         line 137</div>
+        <code>                    bool
+    <strong>supportsTypeChange</strong>(string $name, string $type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isIntegerAttribute">
+        <div class="location">at         line 149</div>
+        <code>                    bool
+    <strong>isIntegerAttribute</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isBooleanAttribute">
+        <div class="location">at         line 161</div>
+        <code>                    bool
+    <strong>isBooleanAttribute</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBoolean">
+        <div class="location">at         line 174</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>setBoolean</strong>(string $name, bool $value = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setInteger">
+        <div class="location">at         line 190</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>setInteger</strong>(string $name, int $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -567,7 +859,7 @@ attaches a new object</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         line 149</div>
+        <div class="location">at         line 226</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(string $name, scalar $value = true)
         </code>
@@ -641,7 +933,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">at         line 164</div>
+        <div class="location">at         line 241</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>merge</strong>(array $attrs = [])
         </code>
@@ -694,7 +986,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">at         line 179</div>
+        <div class="location">at         line 256</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>(string $name)
         </code>
@@ -734,7 +1026,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">at         line 197</div>
+        <div class="location">at         line 274</div>
         <code>                    boolean
     <strong>isDemanded</strong>(string $name)
         </code>
@@ -775,7 +1067,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isProtected">
-        <div class="location">at         line 213</div>
+        <div class="location">at         line 290</div>
         <code>                    boolean
     <strong>isProtected</strong>(string $name)
         </code>
@@ -815,7 +1107,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_protect">
-        <div class="location">at         line 236</div>
+        <div class="location">at         line 313</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>protect</strong>(string $name, scalar $value)
         </code>
@@ -880,7 +1172,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">at         line 247</div>
+        <div class="location">at         line 324</div>
         <code>                    boolean
     <strong>isEmpty</strong>(string $name = null)
         </code>
@@ -920,7 +1212,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         line 261</div>
+        <div class="location">at         line 338</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(string $name)
         </code>
@@ -969,7 +1261,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 280</div>
+        <div class="location">at         line 357</div>
         <code>                    scalar
     <strong>get</strong>(string $name)
         <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
@@ -1022,7 +1314,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 295</div>
+        <div class="location">at         line 372</div>
         <code>                    scalar
     <strong>getValue</strong>(string $name)
         </code>
@@ -1067,8 +1359,48 @@ attribute name is required.</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isInstatiated">
+        <div class="location">at         line 386</div>
+        <code>                    boolean
+    <strong>isInstatiated</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if named attribute instance exists in the manager</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>the name of the attribute</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the attribute instance exists and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">at         line 309</div>
+        <div class="location">at         line 396</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -1108,7 +1440,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 318</div>
+        <div class="location">at         line 405</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1138,7 +1470,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 327</div>
+        <div class="location">at         line 414</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1168,7 +1500,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 336</div>
+        <div class="location">at         line 423</div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -1198,7 +1530,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 345</div>
+        <div class="location">at         line 432</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1228,7 +1560,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 354</div>
+        <div class="location">at         line 441</div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -1258,7 +1590,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 363</div>
+        <div class="location">at         line 450</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>

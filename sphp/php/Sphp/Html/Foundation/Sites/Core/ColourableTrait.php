@@ -52,7 +52,7 @@ trait ColourableTrait {
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
-  public function setColor($style = null) {
+  public function setColor(string $style = null) {
     $this->cssClasses()->remove($this->styles);
     if ($style !== null) {
       $this->cssClasses()->add($style);

@@ -48,9 +48,9 @@ class Column extends Div implements ColumnInterface {
   public function layout(): ColumnLayoutManagerInterface {
     return $this->layoutManager;
   }
-  
+
   public static function create($content, array $layout = ['auto']): Column {
-    
+    return new Column($content, $layout);
   }
 
 }

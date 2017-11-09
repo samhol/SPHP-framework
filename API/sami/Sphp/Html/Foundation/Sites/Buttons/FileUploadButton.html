@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>FileUploadButton</strong>        implements
-        <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>, <a href="../../../../../Sphp/Html/Forms/Inputs/IdentifiableInputInterface.html"><abbr title="Sphp\Html\Forms\Inputs\IdentifiableInputInterface">IdentifiableInputInterface</abbr></a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
+        <a href="../../../../../Sphp/Html/ContentInterface.html"><abbr title="Sphp\Html\ContentInterface">ContentInterface</abbr></a>, <a href="../../../../../Sphp/Html/Forms/Inputs/IdentifiableInput.html"><abbr title="Sphp\Html\Forms\Inputs\IdentifiableInput">IdentifiableInput</abbr></a>, <a href="../../../../../Sphp/Html/Foundation/Sites/Buttons/ButtonInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Buttons\ButtonInterface">ButtonInterface</abbr></a>
 </p>
 
         
@@ -183,7 +183,7 @@ The data is sent to the page specified in the form's action attribute.</p>      
                     <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setColor">setColor</a>(string|null $style = null)
+                    <a href="#method_setColor">setColor</a>(string $style = null)
         
                                             <p>Sets the color (a CSS class)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a></small></div>
@@ -287,7 +287,7 @@ The data is sent to the page specified in the form's action attribute.</p>      
                     <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setValue">setValue</a>(string|string[] $value)
+                    <a href="#method_setValue">setValue</a>(scalar $value)
         
                                             <p>Sets  the value of the form input</p>                </div>
                 <div class="col-md-2"></div>
@@ -480,7 +480,7 @@ The data is sent to the page specified in the form's action attribute.</p>      
                     <h3 id="method_setColor">
         <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableTrait.html#method_setColor"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableTrait">ColourableTrait</abbr></a> at         line 55</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
-    <strong>setColor</strong>(string|null $style = null)
+    <strong>setColor</strong>(string $style = null)
         </code>
     </h3>
     <div class="details">
@@ -504,7 +504,7 @@ The data is sent to the page specified in the form's action attribute.</p>      
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$style</td>
                 <td>one of the CSS class names defining button styles</td>
             </tr>
@@ -841,7 +841,7 @@ Disabled input components in a form will not be submitted.</p>                  
                     <h3 id="method_setValue">
         <div class="location">at         line 71</div>
         <code>                    <abbr title="Sphp\Html\Forms\Inputs\$this">$this</abbr>
-    <strong>setValue</strong>(string|string[] $value)
+    <strong>setValue</strong>(scalar $value)
         </code>
     </h3>
     <div class="details">
@@ -855,7 +855,7 @@ Disabled input components in a form will not be submitted.</p>                  
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|string[]</td>
+                <td>scalar</td>
                 <td>$value</td>
                 <td>the value of the form input</td>
             </tr>

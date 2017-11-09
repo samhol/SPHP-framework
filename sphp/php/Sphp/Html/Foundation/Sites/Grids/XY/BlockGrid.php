@@ -62,7 +62,7 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * @param  array $layout column layout parameters
    * @param  mixed [] $blocks
    */
-  public function __construct(array $layout = ['small-up-8'], array $blocks = null) {
+  public function __construct(...$layout = 'small-up-8') {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);
@@ -72,9 +72,6 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
     parent::__construct('div', null, new WrappingContainer($wrapper));
     $this->layoutManager = new BlockGridLayoutManager($this);
     $this->layout()->setLayouts($layout);
-    if ($blocks !== null) {
-      $this->setColumns($blocks);
-    }
   }
 
   public function layout(): BlockGridLayoutManager {

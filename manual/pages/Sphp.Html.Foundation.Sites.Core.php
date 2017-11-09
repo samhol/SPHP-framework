@@ -1,15 +1,14 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\Core; 
+namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$visibilityHandlingInterface = \Sphp\Manual\api()->classLinker(VisibilityChanger::class);
-$visibilityHandler = \Sphp\Manual\api()->classLinker(VisibilityAdapter::class);
-$ComponentInterface = \Sphp\Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
+$visibilityHandlingInterface = Manual\api()->classLinker(VisibilityChanger::class);
+$visibilityHandler = Manual\api()->classLinker(VisibilityAdapter::class);
+$ComponentInterface = Manual\api()->classLinker(\Sphp\Html\ComponentInterface::class);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 #Changing component Visibility: <small>Foundation Visibility CSS Classes</small> 
 
 Foundation framework introduces special Visibility CSS classes. With these classes 
@@ -30,18 +29,20 @@ $visibilityHandler provides a straightforward adapter for any $ComponentInterfac
 to be used as a $visibilityHandlingInterface component.
 MD
 );
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##Visibility handling extending $visibilityHandlingInterface 
 MD
 );
 
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php');
-\Sphp\Manual\parseDown(<<<MD
+Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter.php')->printHtml();
+Manual\parseDown(<<<MD
 Hiding by Screen Size
         
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter-hideOnlyFor.php');
+Manual\example('Sphp/Html/Foundation/Sites/Core/VisibilityAdapter-hideOnlyFor.php')->printHtml();
+
+Manual\loadPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
 
 
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Core.ColourableInterface');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Core.AlignmentManager');

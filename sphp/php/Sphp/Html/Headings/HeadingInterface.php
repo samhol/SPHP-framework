@@ -22,11 +22,10 @@ namespace Sphp\Html\Headings;
  */
 interface HeadingInterface {
 
-	/**
-	 * Returns the heading level (the priority 1-6)
-	 *
-	 * @return int heading level (the priority)
-	 */
-	public function getLevel();
-
+  /**
+   * Returns the heading level (the priority 1-6)
+   *
+   * @return int heading level (the priority)
+   */
+  public function getLevel(): int;
 }

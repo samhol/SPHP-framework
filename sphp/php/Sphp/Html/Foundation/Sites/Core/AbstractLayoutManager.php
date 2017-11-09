@@ -22,6 +22,7 @@ use Sphp\Html\CssClassifiedComponent;
  */
 abstract class AbstractLayoutManager implements LayoutManager {
 
+  use \Sphp\Html\ContentTrait;
   /**
    * @var CssClassifiedComponent
    */
@@ -36,8 +37,38 @@ abstract class AbstractLayoutManager implements LayoutManager {
     $this->component = $component;
   }
 
+  /**
+   * Destroys the instance
+   * 
+   * The destructor method will be called as soon as there are no other references 
+   * to a particular object, or in any order during the shutdown sequence.
+   */
+  public function __destruct() {
+    unset($this->component);
+  }
+
   public function cssClasses(): ClassAttribute {
     return $this->component->cssClasses();
   }
+
+  /**
+   * 
+   * @param  array $group
+   * @param  string $value
+   * @return $this for a fluent interface
+   */
+  protected function setOneOf(array $group, string $value = null) {
+    $this->cssClasses()->remove($group);
+    if ($value !== null && in_array($value, $group)) {
+      $this->cssClasses()->add($value);
+    }
+    return $this;
+  }
+
+  public function getHtml(): string {
+    return $this->component->getHtml();
+  }
+
+
 
 }

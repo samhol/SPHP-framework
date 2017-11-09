@@ -72,7 +72,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-colors Button Sizing
    */
-  public function setColor($color = null) {
+  public function setColor(string $color = null) {
     if ($color === null) {
       $this->unsetLayouts();
     } else if (in_array($color, $this->colors)) {

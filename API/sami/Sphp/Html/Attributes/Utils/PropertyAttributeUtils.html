@@ -99,7 +99,7 @@
                     scalar[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_filter">filter</a>(string|scalar[] $properties)
+                    <a href="#method_parse">parse</a>($properties, bool $removeInvalid = false)
         
                                             <p>Parses a string of properties to an array</p>                </div>
                 <div class="col-md-2"></div>
@@ -134,6 +134,28 @@
                                             <p>Validates a given property name => value pair</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    scalar[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeInvalidProperties">removeInvalidProperties</a>(array $properties)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parseStringToArray">parseStringToArray</a>(string $properties, bool $removeInvalid = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -141,10 +163,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_filter">
+                    <h3 id="method_parse">
         <div class="location">at         line 28</div>
         <code>                    scalar[]
-    <strong>filter</strong>(string|scalar[] $properties)
+    <strong>parse</strong>($properties, bool $removeInvalid = false)
         </code>
     </h3>
     <div class="details">
@@ -159,9 +181,14 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|scalar[]</td>
+                <td></td>
                 <td>$properties</td>
-                <td>properties to parse</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removeInvalid</td>
+                <td></td>
             </tr>
             </table>
 
@@ -183,7 +210,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidPropertyName">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 48</div>
         <code>                    boolean
     <strong>isValidPropertyName</strong>(mixed $name)
         </code>
@@ -223,7 +250,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidValue">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 58</div>
         <code>                    boolean
     <strong>isValidValue</strong>(mixed $value)
         </code>
@@ -263,7 +290,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidProperty">
-        <div class="location">at         line 76</div>
+        <div class="location">at         line 69</div>
         <code>                    boolean
     <strong>isValidProperty</strong>(mixed $name, mixed $value)
         </code>
@@ -300,6 +327,78 @@
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeInvalidProperties">
+        <div class="location">at         line 78</div>
+        <code>                    scalar[]
+    <strong>removeInvalidProperties</strong>(array $properties)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$properties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>scalar[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseStringToArray">
+        <div class="location">at         line 84</div>
+        <code>                    
+    <strong>parseStringToArray</strong>(string $properties, bool $removeInvalid = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$properties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removeInvalid</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>

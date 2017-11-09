@@ -179,6 +179,17 @@ object</p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isOfType">isOfType</a>(string $name, <abbr title="Sphp\Html\Attributes\type">type</abbr> $type)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     boolean
                 </div>
                 <div class="col-md-8 type">
@@ -216,7 +227,7 @@ object</p>                    </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 43</div>
+        <div class="location">at         line 44</div>
         <code>                    
     <strong>__construct</strong>(string $defaultType = AttributeInterface::class)
         </code>
@@ -247,7 +258,7 @@ object</p>                    </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">at         line 55</div>
+        <div class="location">at         line 56</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -269,7 +280,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">at         line 66</div>
+        <div class="location">at         line 67</div>
         <code>                    
     <strong>__clone</strong>()
         </code>
@@ -290,7 +301,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_mapType">
-        <div class="location">at         line 84</div>
+        <div class="location">at         line 85</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>mapType</strong>(string $name, string $type, mixed $param)
         </code>
@@ -352,7 +363,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_mapPatternAttribute">
-        <div class="location">at         line 101</div>
+        <div class="location">at         line 102</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>mapPatternAttribute</strong>(string $name, string $pattern)
         </code>
@@ -406,7 +417,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getActualType">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 112</div>
         <code>                    string
     <strong>getActualType</strong>(string $name)
         </code>
@@ -444,7 +455,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getParametersFor">
-        <div class="location">at         line 125</div>
+        <div class="location">at         line 126</div>
         <code>                    array
     <strong>getParametersFor</strong>(string $name)
         </code>
@@ -484,7 +495,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getValidType">
-        <div class="location">at         line 138</div>
+        <div class="location">at         line 139</div>
         <code>                    string
     <strong>getValidType</strong>(string $name)
         </code>
@@ -521,8 +532,51 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isOfType">
+        <div class="location">at         line 153</div>
+        <code>                    bool
+    <strong>isOfType</strong>(string $name, <abbr title="Sphp\Html\Attributes\type">type</abbr> $type)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Sphp\Html\Attributes\type">type</abbr></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_isValidType">
-        <div class="location">at         line 152</div>
+        <div class="location">at         line 163</div>
         <code>                    boolean
     <strong>isValidType</strong>(string $name, string|object $new)
         </code>
@@ -565,7 +619,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isMapped">
-        <div class="location">at         line 162</div>
+        <div class="location">at         line 173</div>
         <code>                    boolean
     <strong>isMapped</strong>(string $name)
         </code>
@@ -605,7 +659,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_createObject">
-        <div class="location">at         line 172</div>
+        <div class="location">at         line 183</div>
         <code>                    <a href="../../../Sphp/Html/Attributes/AttributeInterface.html"><abbr title="Sphp\Html\Attributes\AttributeInterface">AttributeInterface</abbr></a>
     <strong>createObject</strong>(string $name)
         </code>

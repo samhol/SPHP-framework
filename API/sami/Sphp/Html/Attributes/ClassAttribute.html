@@ -80,7 +80,7 @@
 
     <p>    class
     <strong>ClassAttribute</strong>        extends <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../Sphp/Html/Attributes/MultiValueAttributeInterface.html"><abbr title="Sphp\Html\Attributes\MultiValueAttributeInterface">MultiValueAttributeInterface</abbr></a>
+        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>, <a href="../../../Sphp/Html/Attributes/CollectionAttributeInterface.html"><abbr title="Sphp\Html\Attributes\CollectionAttributeInterface">CollectionAttributeInterface</abbr></a>
 </p>
 
         
@@ -132,7 +132,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isProtected">isProtected</a>(null|scalar|scalar[] $values = null)
         
-                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
+                                            <p>Checks whether the given atomic values are locked</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -142,7 +142,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_protect">protect</a>(scalar|scalar[] $content)
         
-                                            <p>Protects the given value to the attribute</p>                </div>
+                                            <p>Locks the specified atomic values</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -212,7 +212,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(string|string[] $values)
         
-                                            <p>Sets the value of the attribute</p>                </div>
+                                            <p>Sets new atomic values to the attribute removing old non locked ones</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -298,7 +298,29 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parsePattern">parsePattern</a>(string $pattern)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removePattern">removePattern</a>(string $pattern)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_filterPattern">filterPattern</a>(string $pattern)
@@ -355,15 +377,6 @@
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -433,7 +446,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
+                                    <p>Checks whether the given atomic values are locked</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain a single atomic value</li>
+<li>An array can be be multidimensional</li>
+<li>Duplicate values are ignored</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -473,7 +493,14 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Protects the given value to the attribute</p>                                                </div>
+                                    <p>Locks the specified atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain a single atomic value (a class)</li>
+<li>An array can be be multidimensional array of atomic string values</li>
+<li>Duplicate values are ignored</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -496,19 +523,6 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -546,7 +560,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 94</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_getName"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 98</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -576,7 +590,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 98</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_demand"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 102</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>()
         </code>
@@ -606,7 +620,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 103</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AbstractAttribute.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AbstractAttribute">AbstractAttribute</abbr></a> at         line 107</div>
         <code>                    boolean
     <strong>isDemanded</strong>()
         </code>
@@ -709,7 +723,14 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets the value of the attribute</p>                                                </div>
+                                    <p>Sets new atomic values to the attribute removing old non locked ones</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
+
+<ol>
+<li>A string parameter can contain a single atomic value</li>
+<li>An array can be be multidimensional</li>
+<li>Duplicate values are ignored</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -732,19 +753,6 @@ name is required or the attribute value is not boolean (false).</p>             
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
-                <td>if the attribute value is invalid for the type of the attribute</td>
-            </tr>
-                    <tr>
-                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
-                <td>if the attribute value is unmodifiable</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -1054,9 +1062,85 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_parsePattern">
+        <div class="location">at         line 283</div>
+        <code>                    string[]
+    <strong>parsePattern</strong>(string $pattern)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removePattern">
+        <div class="location">at         line 292</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>removePattern</strong>(string $pattern)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_filterPattern">
-        <div class="location">at         line 278</div>
-        <code>                    
+        <div class="location">at         line 305</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>filterPattern</strong>(string $pattern)
         </code>
     </h3>
@@ -1076,6 +1160,15 @@ name is required or the attribute value is not boolean (false).</p>             
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1084,7 +1177,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 286</div>
+        <div class="location">at         line 313</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>
