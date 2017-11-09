@@ -6,7 +6,7 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
-
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\Attributes\ClassAttribute;
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Exceptions\InvalidArgumentException;

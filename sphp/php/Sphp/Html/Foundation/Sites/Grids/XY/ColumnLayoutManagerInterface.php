@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
+use Sphp\Html\Foundation\Sites\Core\LayoutManager;
+
 /**
  * Defines a Column for a Row in a Grid system
  *

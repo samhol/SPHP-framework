@@ -7,6 +7,8 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
+
 /**
  * Implements an abstract layout manager for responsive HTML components
  * 
@@ -22,7 +24,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
   public function __construct(\Sphp\Html\CssClassifiedComponent $component) {
     parent::__construct($component);
   }
-  
+
   public function isStretched(): bool {
     return $this->cssClasses()->contains('fluid') || $this->cssClasses()->contains('full');
   }

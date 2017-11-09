@@ -10,6 +10,3 @@ $rows[] = range(1, 6);
 $rows[] = range(1, 12);
 
 Grid::from($rows)->printHtml();
-
-
-var_dump(preg_match('/^((small|medium|large|xlarge|xxlarge)-([1-9]|(1[0-2])|auto)|auto)+$/', 'small-3', $matches, PREG_OFFSET_CAPTURE));

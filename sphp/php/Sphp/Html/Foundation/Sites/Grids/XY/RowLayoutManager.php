@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ComponentInterface;
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 
 /**
  * Implements a layout manager for Block Grid columns
@@ -31,7 +32,7 @@ class RowLayoutManager extends AbstractLayoutManager {
     $this->cssClasses()->protect('grid-x');
   }
 
-  public function setLayouts($layout) {
+  public function setLayouts(...$layout) {
     $this->unsetLayouts();
     foreach (is_array($layout) ? $layout : [$layout] as $width) {
       $parts = explode('-', $width);
@@ -107,5 +108,6 @@ class RowLayoutManager extends AbstractLayoutManager {
     $this->cssClasses()->remove($classes);
     return $this;
   }
+
 
 }
