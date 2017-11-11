@@ -37,7 +37,7 @@ interface ButtonGroupInterface extends ContentInterface, ColourableInterface {
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
-  public function setSize($size);
+  public function setSize(string $size = null);
 
   /**
    * Sets the button size to default
@@ -48,5 +48,4 @@ interface ButtonGroupInterface extends ContentInterface, ColourableInterface {
    * @link   http://foundation.zurb.com/sites/docs/button.html#sizing Button Sizing
    */
   public function setDefaultSize();
-
 }

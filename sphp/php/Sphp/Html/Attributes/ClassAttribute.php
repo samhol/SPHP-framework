@@ -242,6 +242,29 @@ class ClassAttribute extends AbstractAttribute implements IteratorAggregate, Col
     return $exists;
   }
 
+  /**
+   * Determines whether the given atomic values exists
+   *
+   * **Important:** Parameter <var>$values</var> values (restrictions and rules)
+   * 
+   * 1. A string parameter can contain multiple comma separated atomic values
+   * 2. An array parameter can contain only one atomic value per array value
+   *
+   * @param  string|string[] $values the atomic values to search for
+   * @return boolean true if the given atomic values exists
+   */
+  public function containsOneOf(...$values): bool {
+    $needles = $this->filter->parse($values);
+    $exists = false;
+    foreach ($needles as $class) {
+      $exists = isset($this->values[$class]);
+      if ($exists) {
+        break;
+      }
+    }
+    return $exists;
+  }
+
   public function getValue() {
     if (!empty($this->values)) {
       $value = implode(' ', array_keys($this->values));

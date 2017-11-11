@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BasicButtonTrait.php (UTF-8)
+ * SizeableTrait.php (UTF-8)
  * Copyright (c) 2014 Sami Holck <sami.holck@gmail.com>
  */
 
@@ -19,7 +19,7 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-trait BasicButtonTrait {
+trait SizeableTrait {
 
   use ColourableTrait;
 
@@ -28,8 +28,8 @@ trait BasicButtonTrait {
    *
    * @var string[]
    */
-  private $sizes = [
-      'tiny', 'small', 'large', 'expand'
+  private static $sizes = [
+      'tiny', 'small', 'large', 'expanded'
   ];
 
   /**
@@ -42,11 +42,11 @@ trait BasicButtonTrait {
   /**
    * Sets the size of the button 
    * 
-   * Predefined values of `$size` parameter:
+   * Predefined values of <var>$size</var> parameter:
    * 
+   * * `null´ for "medium" (default) buttons
    * * `'tiny'` for tiny buttons
    * * `'small'` for small buttons
-   * * `'medium'` for "medium" (default) buttons
    * * `'large'` for large buttons
    * * `'extend'` for extended buttons (takes the full width of the container)
    * 
@@ -55,14 +55,8 @@ trait BasicButtonTrait {
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
-  public function setSize($size = null) {
-    $this->cssClasses()->remove($this->sizes);
-    if ($size !== null) {
-      $this->cssClasses()->add($size);
-      if (!in_array($size, $this->sizes)) {
-        $this->sizes[] = $size;
-      }
-    }
+  public function setSize(string $size = null) {
+    $this->setOneOf(static::$sizes, $size);
     return $this;
   }
 
@@ -75,7 +69,7 @@ trait BasicButtonTrait {
    * @link   http://foundation.zurb.com/docs/components/buttons.html#button-sizing Button Sizing
    */
   public function setDefaultSize() {
-    return $this->setSize('medium');
+    return $this->setSize(null);
   }
 
   public function setExtended(bool $extended = true) {

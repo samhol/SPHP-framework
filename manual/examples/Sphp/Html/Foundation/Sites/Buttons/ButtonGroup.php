@@ -13,7 +13,7 @@ $btns2->setSize("small");
 
 $btns3 = clone $btns2;
 $btns3->setColor("success")
-        ->setSize("expanded ");
+        ->setSize("expanded");
 
 
 echo "$btns1 $btns2 $btns3";

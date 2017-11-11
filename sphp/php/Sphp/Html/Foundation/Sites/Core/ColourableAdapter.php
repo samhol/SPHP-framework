@@ -8,7 +8,7 @@
 namespace Sphp\Html\Foundation\Sites\Core;
 
 use Sphp\Html\Adapters\AbstractComponentAdapter;
-use Sphp\Html\ComponentInterface;
+use Sphp\Html\CssClassifiedComponent;
 use Sphp\Stdlib\Arrays;
 
 /**
@@ -34,9 +34,9 @@ class ColourableAdapter extends AbstractLayoutManager implements ColourableInter
   /**
    * Constructs a new instance
    * 
-   * @param ComponentInterface $component
+   * @param CssClassifiedComponent $component
    */
-  public function __construct(ComponentInterface $component) {
+  public function __construct(CssClassifiedComponent $component) {
     parent::__construct($component);
   }
 
