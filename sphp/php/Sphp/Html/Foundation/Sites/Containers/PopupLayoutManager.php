@@ -45,7 +45,7 @@ class PopupLayoutManager extends ColourableLayoutManager {
    * @param  string[] $layouts individual layout settings
    * @return $this for a fluent interface
    */
-  public function setLayouts($layouts) {
+  public function setLayouts(...$layouts) {
     $this->unsetLayouts();
     parent::setLayouts($layouts);
     foreach (is_array($layouts) ? $layouts : [$layouts] as $layout) {

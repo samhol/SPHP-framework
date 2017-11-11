@@ -92,7 +92,7 @@ class Popup extends Div {
    * @param  string $size the size of the component
    * @return $this for a fluent interface
    */
-  public function setSize($size) {
+  public function setSize(string $size = null) {
     $this->layout()->setSize($size);
     return $this;
   }

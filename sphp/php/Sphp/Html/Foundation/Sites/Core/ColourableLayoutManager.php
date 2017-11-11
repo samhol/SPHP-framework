@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Core;
 
-use Sphp\Html\AbstractLayoutManager;
 use Sphp\Html\ComponentInterface;
 
 /**
@@ -43,7 +42,7 @@ class ColourableLayoutManager extends AbstractLayoutManager implements Colourabl
    * 
    * @param array $layouts
    */
-  public function setLayouts($layouts) {
+  public function setLayouts(...$layouts) {
     $this->unsetColors();
     foreach (is_array($layouts) ? $layouts : [$layouts] as $layout) {
       $this->setColor($layout);

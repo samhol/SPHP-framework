@@ -23,6 +23,7 @@ use Sphp\Html\CssClassifiedComponent;
 abstract class AbstractLayoutManager implements LayoutManager {
 
   use \Sphp\Html\ContentTrait;
+
   /**
    * @var CssClassifiedComponent
    */
@@ -58,9 +59,10 @@ abstract class AbstractLayoutManager implements LayoutManager {
    * @return $this for a fluent interface
    */
   protected function setOneOf(array $group, string $value = null) {
-    $this->cssClasses()->remove($group);
-    if ($value !== null && in_array($value, $group)) {
-      $this->cssClasses()->add($value);
+    if ($value === null) {
+      $this->cssClasses()->remove($group);
+    } else if (in_array($value, $group)) {
+      $this->cssClasses()->remove($group)->add($value);
     }
     return $this;
   }
@@ -68,7 +70,5 @@ abstract class AbstractLayoutManager implements LayoutManager {
   public function getHtml(): string {
     return $this->component->getHtml();
   }
-
-
 
 }
