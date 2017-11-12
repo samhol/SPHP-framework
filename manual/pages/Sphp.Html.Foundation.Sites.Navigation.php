@@ -2,14 +2,13 @@
 
 namespace Sphp\Html\Foundation\Sites\Navigation;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
 use Sphp\Html\Navigation\HyperlinkInterface;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$ns = \Sphp\Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
-$hyperlinkIfLink = \Sphp\Manual\api()->classLinker(HyperlinkInterface::class);
+$ns = Manual\api()->namespaceBreadGrumbs(__NAMESPACE__);
+$hyperlinkIfLink = Manual\api()->classLinker(HyperlinkInterface::class);
 //$namespace = $api->namespaceLink(__NAMESPACE__);
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 #FOUNDATION <small>NAVIGATION COMPONENTS</small>
 $ns
         
@@ -18,10 +17,10 @@ This namespace contains object oriented PHP implementations of Foundation naviga
 MD
 );
 //\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Bars');
-\Sphp\Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
+Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.DrilldownMenu');
 
-$sideNavClass = \Sphp\Manual\api()->classLinker(AccordionMenu::class);
-\Sphp\Manual\parseDown(<<<MD
+$sideNavClass = Manual\api()->classLinker(AccordionMenu::class);
+Manual\parseDown(<<<MD
 ##The $sideNavClass component
 
 The $sideNavClass component provides navigation for the entire site, or for sections of an individual page.
@@ -30,11 +29,11 @@ The $sideNavClass component provides navigation for the entire site, or for sect
 they've reached the link below. (`Shift+Tab` to navigate back one step.)
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php');
+Manual\example('Sphp/Html/Foundation/Sites/Navigation/AccordionMenu.php')->printHtml();
 
-$breadcrumbs = \Sphp\Manual\api()->classLinker(BreadCrumbs::class);
-$breadcrumb = \Sphp\Manual\api()->classLinker(BreadCrumb::class);
-\Sphp\Manual\parseDown(<<<MD
+$breadcrumbs = Manual\api()->classLinker(BreadCrumbs::class);
+$breadcrumb = Manual\api()->classLinker(BreadCrumb::class);
+Manual\parseDown(<<<MD
 ##The $breadcrumbs container for $breadcrumb components
 
 In general the graphical control element Breadcrumbs or breadcrumb trail is a navigation
@@ -48,7 +47,7 @@ A $breadcrumbs instance shows a horizontal navigation trail of individual $bread
 Thi component will fill out `100%` of the width of its parent container.
 MD
 );
-CodeExampleBuilder::visualize('Sphp/Html/Foundation/Sites/Navigation/BreadCrumbs.php');
+Manual\example('Sphp/Html/Foundation/Sites/Navigation/BreadCrumbs.php')->printHtml();
 
 
-\Sphp\Manual\loadPage("Sphp.Html.Foundation.Sites.Navigation.Pagination.php");
+Manual\loadPage('Sphp.Html.Foundation.Sites.Navigation.Pagination');

@@ -9,8 +9,6 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
 
 use Sphp\Html\Forms\Inputs\IdentifiableInput;
 use Sphp\Html\Foundation\Sites\Buttons\ButtonInterface;
-use Sphp\Html\ContentInterface;
-use Sphp\Html\ContentTrait;
 use Sphp\Html\Forms\Label;
 use Sphp\Html\Forms\Inputs\FileInput;
 
@@ -27,9 +25,9 @@ use Sphp\Html\Forms\Inputs\FileInput;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class FileUploadButton implements ContentInterface, IdentifiableInput, ButtonInterface {
+class FileUploadButton implements IdentifiableInput, ButtonInterface {
 
-  use ContentTrait,
+  use \Sphp\Html\ContentTrait,
       \Sphp\Html\Foundation\Sites\Buttons\ButtonTrait;
 
   /**

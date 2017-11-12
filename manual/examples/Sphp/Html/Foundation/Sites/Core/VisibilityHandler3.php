@@ -29,5 +29,4 @@ foreach (Screen::sizes() as $name) {
 		->hideOnlyFromSize("large")->hideOnlyFromSize("small")
 		->printHtml();
 
-
 ?>

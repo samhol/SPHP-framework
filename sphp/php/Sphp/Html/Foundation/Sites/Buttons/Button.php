@@ -28,6 +28,11 @@ Class Button extends ColourableAdapter implements ButtonInterface {
 
   use ButtonTrait;
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param CssClassifiedComponent $component
+   */
   public function __construct(CssClassifiedComponent $component) {
     parent::__construct($component);
     $this->cssClasses()->set('button');

@@ -2,12 +2,11 @@
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;
-use Sphp\Html\Apps\Manual\Apis;
+use Sphp\Manual;
 
-$gridIf = \Sphp\Manual\api()->classLinker(GridInterface::class);
+$gridIf = Manual\api()->classLinker(GridInterface::class);
 
-\Sphp\Manual\parseDown(<<<MD
+Manual\parseDown(<<<MD
 ##The $gridIf <small>and its implementations</small>
 
 An implementation of a $gridIf is a container for horizontal Rows having columns. As default this 
@@ -18,7 +17,7 @@ size (defined by the max-width of the row) that's also easily nested.
   
 MD
 );
-CodeExampleBuilder::build('Sphp/Html/Foundation/Sites/Grids/XY/Grid_fromArray.php', 'html5')
+Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/Grid_fromArray.php', 'html5')
         ->setExamplePaneTitle('PHP code of a grid')
         ->setOutputSyntaxPaneTitle('HTML5 code of a grid')
         ->buildAccordion()

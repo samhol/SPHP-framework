@@ -10,10 +10,8 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 use IteratorAggregate;
 use Sphp\Html\AbstractContainerComponent;
 use Sphp\Html\TraversableInterface;
-use Sphp\Html\TraversableTrait;
 use Sphp\Html\WrappingContainer;
 use Sphp\Html\ContentParserInterface;
-use Sphp\Html\ContentParsingTrait;
 
 /**
  * Implements a Block Grid component
@@ -26,8 +24,8 @@ use Sphp\Html\ContentParsingTrait;
  */
 class BlockGrid extends AbstractContainerComponent implements IteratorAggregate, ContentParserInterface, TraversableInterface {
 
-  use TraversableTrait,
-      ContentParsingTrait;
+  use \Sphp\Html\TraversableTrait,
+      \Sphp\Html\ContentParsingTrait;
 
   /**
    * @var BlockGridLayoutManager 
@@ -60,9 +58,8 @@ class BlockGrid extends AbstractContainerComponent implements IteratorAggregate,
    * configuration and layout separately for each breakpoint.
    *
    * @param  array $layout column layout parameters
-   * @param  mixed [] $blocks
    */
-  public function __construct(...$layout = 'small-up-8') {
+  public function __construct(...$layout) {
     $wrapper = function($c) {
       if (!($c instanceof BlockGridColumnInterface)) {
         $c = new BlockGridColumn($c);

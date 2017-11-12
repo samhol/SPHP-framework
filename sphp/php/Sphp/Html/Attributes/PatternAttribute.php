@@ -43,4 +43,3 @@ class PatternAttribute extends AbstractScalarAttribute {
   }
 
 }
-

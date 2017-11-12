@@ -9,7 +9,8 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Html\ComponentInterface;
 use Sphp\Html\Foundation\Sites\Core\Screen;
-
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
+use Sphp\Stdlib\Arrays;
 /**
  * Implements a layout manager for Block Grid columns
  *
@@ -69,7 +70,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
     $filtered = preg_grep('/^((small|medium|large|xlarge|xxlarge)-up-([1-9]|(1[0-2])))+$/', $widths);
     foreach ($filtered as $width) {
       $parts = explode('-', $width);
-      $this->unsetWidth($parts[0]);
+      $this->unsetGrid($parts[0]);
       $this->cssClasses()->add($width);
     }
     return $this;

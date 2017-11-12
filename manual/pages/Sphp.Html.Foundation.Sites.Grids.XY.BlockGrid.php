@@ -1,10 +1,10 @@
 <?php
 
-namespace Sphp\Html\Foundation\Sites\XY\Grids;
+namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
-use Manual;
+use Sphp\Manual;
 
-$blockGrid = \Sphp\Manual\api()->classLinker(BlockGrid::class);
+$blockGrid = Manual\api()->classLinker(BlockGrid::class);
 Manual\parseDown(<<<MD
 ##$blockGrid <small>for equally-sized columns</small>
 	
@@ -20,4 +20,4 @@ for each breakpoint.
         
 MD
 );
-Manual\example('Sphp/Html/Foundation/Sites/Grids\XY/BlockGrid.php')->printHtml();
+Manual\example('Sphp/Html/Foundation/Sites/Grids/XY/BlockGrid.php')->printHtml();

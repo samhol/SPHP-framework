@@ -19,7 +19,9 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @filesource
  */
 trait ColourableTrait {
-use LayoutAdapterTrait;
+
+  use LayoutAdapterTrait;
+
   /**
    * CSS classes corresponding to the button style constants
    *
