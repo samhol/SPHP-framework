@@ -30,11 +30,7 @@ trait ButtonTrait {
    * @link   http://foundation.zurb.com/sites/docs/button.html#dropdown-arrows
    */
   public function disable(bool $disabled = true) {
-    if ($disabled) {
-      $this->cssClasses()->add('disabled');
-    } else {
-      $this->cssClasses()->remove('disabled');
-    }
+    $this->setBoolean($disabled, 'disabled');
     return $this;
   }
 
@@ -44,11 +40,7 @@ trait ButtonTrait {
    * @return $this for a fluent interface
    */
   public function isDropdown(bool $dropdown = true) {
-    if ($dropdown) {
-      $this->cssClasses()->add('dropdown');
-    } else {
-      $this->cssClasses()->remove('dropdown');
-    }
+    $this->setBoolean($dropdown, 'dropdown');
     return $this;
   }
 
@@ -58,11 +50,7 @@ trait ButtonTrait {
    * @return $this for a fluent interface
    */
   public function isHollow(bool $hollow = true) {
-    if ($hollow) {
-      $this->cssClasses()->add('hollow');
-    } else {
-      $this->cssClasses()->remove('hollow');
-    }
+    $this->setBoolean($hollow, 'hollow');
     return $this;
   }
 

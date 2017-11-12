@@ -58,4 +58,19 @@ trait LayoutAdapterTrait {
     return $this;
   }
 
+  /**
+   * 
+   * @param bool $set
+   * @param string $classes
+   * @return $this
+   */
+  public function setBoolean(bool $set = true, string...$classes) {
+    if ($set) {
+      $this->cssClasses()->add($classes);
+    } else {
+      $this->cssClasses()->remove($classes);
+    }
+    return $this;
+  }
+
 }
