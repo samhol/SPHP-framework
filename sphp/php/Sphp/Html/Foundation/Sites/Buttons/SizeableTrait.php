@@ -7,7 +7,6 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Core\ColourableTrait;
 use Sphp\Html\Attributes\ClassAttribute;
 
 /**
@@ -20,8 +19,6 @@ use Sphp\Html\Attributes\ClassAttribute;
  * @filesource
  */
 trait SizeableTrait {
-
-  use ColourableTrait;
 
   /**
    * CSS classes corresponding to the size constants

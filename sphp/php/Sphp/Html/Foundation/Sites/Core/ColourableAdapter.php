@@ -64,7 +64,7 @@ class ColourableAdapter extends AbstractLayoutManager implements ColourableInter
   public function setLayouts(...$layouts) {
     $colors = array_intersect(Arrays::flatten($layouts), static::$styles);
     foreach ($colors as $colorCandidate) {
-      $this->setColor($value);
+      $this->setColor($colorCandidate);
     }
   }
 

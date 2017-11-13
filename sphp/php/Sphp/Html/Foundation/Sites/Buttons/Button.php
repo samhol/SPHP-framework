@@ -7,7 +7,7 @@
 
 namespace Sphp\Html\Foundation\Sites\Buttons;
 
-use Sphp\Html\Foundation\Sites\Core\ColourableAdapter;
+use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
 use Sphp\Html\CssClassifiedComponent;
 use Sphp\Html\Forms\Buttons\Submitter;
 use Sphp\Html\Forms\Buttons\Resetter;
@@ -24,7 +24,7 @@ use Sphp\Html\Span;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-Class Button extends ColourableAdapter implements ButtonInterface {
+Class Button extends AbstractLayoutManager implements ButtonInterface {
 
   use ButtonTrait;
 
@@ -36,6 +36,17 @@ Class Button extends ColourableAdapter implements ButtonInterface {
   public function __construct(CssClassifiedComponent $component) {
     parent::__construct($component);
     $this->cssClasses()->set('button');
+  }
+
+  public function setLayouts(...$layouts) {
+    $colors = array_intersect(Arrays::flatten($layouts), static::$styles);
+    foreach ($colors as $colorCandidate) {
+      $this->setColor($colorCandidate);
+    }
+  }
+
+  public function unsetLayouts() {
+    $this->disable(false)->isDropdown(false)->isDropdown(false);
   }
 
   /**

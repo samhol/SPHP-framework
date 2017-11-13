@@ -18,7 +18,9 @@ namespace Sphp\Html\Foundation\Sites\Buttons;
  */
 trait ButtonTrait {
 
-  use SizeableTrait;
+  use SizeableTrait,
+      \Sphp\Html\Foundation\Sites\Core\ColourableTrait;
+
 
   /**
    * Sets the button style as disabled

@@ -8,5 +8,5 @@ MD
 );
 
 
-loadPage("Sphp-intro/orbit.php");
-//\Sphp\Manual\loadPage("Sphp.Html.Foundation-orbit-intro.php");
+loadPage('Sphp-intro/orbit.php');
+loadPage('Sphp.Html.Foundation.Sites');
