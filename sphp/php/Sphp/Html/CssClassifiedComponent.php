@@ -8,7 +8,6 @@
 namespace Sphp\Html;
 
 use Sphp\Html\Attributes\ClassAttribute;
-use Sphp\Html\Attributes\Exceptions\ImmutableAttributeException;
 
 /**
  * Defines the basic functionality of any HTML component

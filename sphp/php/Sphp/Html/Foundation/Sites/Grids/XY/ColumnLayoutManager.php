@@ -13,6 +13,7 @@ use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\CssClassifiedComponent;
 use Sphp\Stdlib\Strings;
+use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
@@ -24,7 +25,7 @@ use Sphp\Stdlib\Strings;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutManagerInterface {
+class ColumnLayoutManager extends AlingmentAdapter implements ColumnLayoutManagerInterface {
 
   /**
    * @var int 
@@ -280,48 +281,6 @@ class ColumnLayoutManager extends AbstractLayoutManager implements ColumnLayoutM
    */
   public function countUsedSpace(string $screenSize) {
     return $this->getWidth($screenSize) + $this->getOffset($screenSize);
-  }
-
-  /**
-   * Centers the column to the Foundation row
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for PHP Method Chaining
-   */
-  public function centerize(string $screenSize) {
-    $this->cssClasses()
-            ->remove("$screenSize-uncentered")
-            ->add("$screenSize-centered");
-    return $this;
-  }
-
-  /**
-   * Resets the centering of the column
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for PHP Method Chaining
-   */
-  public function uncenterize(string $screenSize) {
-    $this->cssClasses()
-            ->remove("$screenSize-centered")
-            ->add("$screenSize-uncentered");
-    return $this;
-  }
-
-  /**
-   * Removes the centering/uncentering settings
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return $this for PHP Method Chaining
-   */
-  public function unsetCenterizing(string $screenSize) {
-    $classes[] = "$screenSize-uncentered";
-    $classes[] = "$screenSize-centered";
-    $this->cssClasses()->remove($classes);
-    return $this;
   }
 
 }

@@ -79,7 +79,7 @@
     </div>
 
     <p>    class
-    <strong>ColourableAdapter</strong>        extends <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a>        implements
+    <strong>ColourableAdapter</strong>        extends <a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a>        implements
         <a href="../../../../../Sphp/Html/Foundation/Sites/Core/ColourableInterface.html"><abbr title="Sphp\Html\Foundation\Sites\Core\ColourableInterface">ColourableInterface</abbr></a>
 </p>
 
@@ -144,7 +144,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a> $component)
         
                                             <p>Constructs a new instance</p>                </div>
                 <div class="col-md-2"></div>
@@ -157,39 +157,28 @@
                     <a href="#method___destruct">__destruct</a>()
         
                                             <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___destruct"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
+                    <a href="#method_cssClasses">cssClasses</a>()
         
-                                            <p>Destroys the instance</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___clone"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+                                            <p>Returns the class attribute object</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getComponent">getComponent</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_getComponent"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_attrs">attrs</a>()
+                    <a href="#method_setOneOf">setOneOf</a>(array $group, string $value = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_attrs"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_setOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -199,6 +188,26 @@
                     <a href="#method_setColor">setColor</a>(string $style = null)
         
                                             <p>Sets the color (a CSS class)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLayouts">setLayouts</a>(string|string[] $layouts)
+        
+                                            <p>Sets the layouts</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unsetLayouts">unsetLayouts</a>()
+        
+                                            <p>Unsets the layout</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -308,9 +317,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 38</div>
+        <div class="location">at         line 39</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a> $component)
         </code>
     </h3>
     <div class="details">
@@ -324,7 +333,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
+                <td><a href="../../../../../Sphp/Html/CssClassifiedComponent.html"><abbr title="Sphp\Html\CssClassifiedComponent">CssClassifiedComponent</abbr></a></td>
                 <td>$component</td>
                 <td></td>
             </tr>
@@ -339,7 +348,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___destruct"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 44</div>
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method___destruct"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 47</div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -360,10 +369,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___clone"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 54</div>
-        <code>                    
-    <strong>__clone</strong>()
+                    <h3 id="method_cssClasses">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_cssClasses"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 56</div>
+        <code>                    <a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a>
+    <strong>cssClasses</strong>()
         </code>
     </h3>
     <div class="details">
@@ -371,35 +380,15 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
-to a particular object, or in any order during the shutdown sequence.</p>                            </div>
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getComponent">
-        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_getComponent"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 62</div>
-        <code>                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
-    <strong>getComponent</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
+                                    <p>Returns the class attribute object</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
-            <td></td>
+            <td><a href="../../../../../Sphp/Html/Attributes/ClassAttribute.html"><abbr title="Sphp\Html\Attributes\ClassAttribute">ClassAttribute</abbr></a></td>
+            <td>the class attribute object</td>
         </tr>
     </table>
 
@@ -410,10 +399,10 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_attrs">
-        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_attrs"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 70</div>
-        <code>                    
-    <strong>attrs</strong>()
+                    <h3 id="method_setOneOf">
+        <div class="location">in <a href="../../../../../Sphp/Html/Foundation/Sites/Core/AbstractLayoutManager.html#method_setOneOf"><abbr title="Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager">AbstractLayoutManager</abbr></a> at         line 66</div>
+        <code>            protected        <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+    <strong>setOneOf</strong>(array $group, string $value = null)
         </code>
     </h3>
     <div class="details">
@@ -421,7 +410,31 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -430,7 +443,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_setColor">
-        <div class="location">at         line 58</div>
+        <div class="location">at         line 59</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
     <strong>setColor</strong>(string $style = null)
         </code>
@@ -462,6 +475,76 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </tr>
             </table>
 
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLayouts">
+        <div class="location">at         line 64</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+    <strong>setLayouts</strong>(string|string[] $layouts)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the layouts</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$layouts</td>
+                <td>layout parameters (CSS classes)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unsetLayouts">
+        <div class="location">at         line 71</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Core\$this">$this</abbr>
+    <strong>unsetLayouts</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Unsets the layout</p>                                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 

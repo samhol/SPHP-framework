@@ -38,7 +38,7 @@ class Grid extends AbstractGrid {
   /**
    * 
    * @param  array $rows single or two dimensional array of column data
-   * @return self new instance containing given content as rows
+   * @return Grid new instance containing given content as rows
    */
   public static function from(array $rows): Grid {
     $grid = new Static();

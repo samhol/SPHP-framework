@@ -45,7 +45,7 @@ use Sphp\Html\Apps\Manual\Apis;
 use Sphp\Html\Apps\Manual\Sami\Sami;
 use Sphp\Html\Apps\Manual\PHPManual\PHPManual;
 use Sphp\Html\Apps\Manual\W3schools;
-
+use Sphp\Html\Apps\Manual\FoundationDocsLinker;
 /**
  * Return the default SPHP framework API linker
  * 
@@ -71,6 +71,14 @@ function php(): PHPManual {
  */
 function w3schools(): W3schools {
   return Apis::w3schools();
+}
+/**
+ * Return the W3Schools API linker
+ * 
+ * @return FoundationDocsLinker 
+ */
+function Foundation(): FoundationDocsLinker {
+  return Apis::foundation();
 }
 
 use Sphp\Html\Apps\Syntaxhighlighting\CodeExampleBuilder;

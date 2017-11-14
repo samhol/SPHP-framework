@@ -132,7 +132,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_isProtected">isProtected</a>(null|scalar|scalar[] $values = null)
         
-                                            <p>Checks whether the given atomic values are locked</p>                </div>
+                                            <p>Checks whether the attribute has a locked value or not</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -142,7 +142,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_protect">protect</a>(scalar|scalar[] $content)
         
-                                            <p>Locks the specified atomic values</p>                </div>
+                                            <p>Protects the given value to the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -212,7 +212,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(string|string[] $values)
         
-                                            <p>Sets new atomic values to the attribute removing old non locked ones</p>                </div>
+                                            <p>Sets the value of the attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -251,6 +251,16 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_contains">contains</a>(scalar|scalar[] $values)
+        
+                                            <p>Determines whether the given atomic values exists</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_containsOneOf">containsOneOf</a>(string|string[] $values)
         
                                             <p>Determines whether the given atomic values exists</p>                </div>
                 <div class="col-md-2"></div>
@@ -377,6 +387,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Sphp\Html\Attributes\AttributeException">AttributeException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -446,14 +465,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Checks whether the given atomic values are locked</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Checks whether the attribute has a locked value or not</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -493,14 +505,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Locks the specified atomic values</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value (a class)</li>
-<li>An array can be be multidimensional array of atomic string values</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Protects the given value to the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -523,6 +528,19 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -723,14 +741,7 @@ name is required or the attribute value is not boolean (false).</p>             
     
 
                     <div class="method-description">
-                                    <p>Sets new atomic values to the attribute removing old non locked ones</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> restrictions and rules</p>
-
-<ol>
-<li>A string parameter can contain a single atomic value</li>
-<li>An array can be be multidimensional</li>
-<li>Duplicate values are ignored</li>
-</ol>
-</p>                            </div>
+                                    <p>Sets the value of the attribute</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -753,6 +764,19 @@ name is required or the attribute value is not boolean (false).</p>             
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/AttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\AttributeException">AttributeException</abbr></a></td>
+                <td>if the attribute value is invalid for the type of the attribute</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/ImmutableAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\ImmutableAttributeException">ImmutableAttributeException</abbr></a></td>
+                <td>if the attribute value is unmodifiable</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -937,8 +961,54 @@ name is required or the attribute value is not boolean (false).</p>             
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_containsOneOf">
+        <div class="location">at         line 256</div>
+        <code>                    boolean
+    <strong>containsOneOf</strong>(string|string[] $values)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Determines whether the given atomic values exists</p>                    <p><strong>Important:</strong> Parameter <var>$values</var> values (restrictions and rules)</p>
+
+<ol>
+<li>A string parameter can contain multiple comma separated atomic values</li>
+<li>An array parameter can contain only one atomic value per array value</li>
+</ol>
+</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|string[]</td>
+                <td>$values</td>
+                <td>the atomic values to search for</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the given atomic values exists</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 245</div>
+        <div class="location">at         line 268</div>
         <code>                    scalar
     <strong>getValue</strong>()
         </code>
@@ -974,7 +1044,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 259</div>
+        <div class="location">at         line 282</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1004,7 +1074,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         line 263</div>
+        <div class="location">at         line 286</div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -1034,7 +1104,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location">at         line 267</div>
+        <div class="location">at         line 290</div>
         <code>                    
     <strong>filter</strong>(callable $filter)
         </code>
@@ -1063,7 +1133,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_parsePattern">
-        <div class="location">at         line 283</div>
+        <div class="location">at         line 306</div>
         <code>                    string[]
     <strong>parsePattern</strong>(string $pattern)
         </code>
@@ -1101,7 +1171,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_removePattern">
-        <div class="location">at         line 292</div>
+        <div class="location">at         line 315</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>removePattern</strong>(string $pattern)
         </code>
@@ -1139,7 +1209,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_filterPattern">
-        <div class="location">at         line 305</div>
+        <div class="location">at         line 328</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>filterPattern</strong>(string $pattern)
         </code>
@@ -1177,7 +1247,7 @@ name is required or the attribute value is not boolean (false).</p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         line 313</div>
+        <div class="location">at         line 336</div>
         <code>                    
     <strong>getIterator</strong>()
         </code>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AbstractColumnLayoutProperties.php (UTF-8)
+ * AbstractLayoutManager.php (UTF-8)
  * Copyright (c) 2017 Sami Holck <sami.holck@gmail.com>.
  */
 
@@ -48,6 +48,11 @@ abstract class AbstractLayoutManager implements LayoutManager {
     unset($this->component);
   }
 
+  /**
+   * Returns the class attribute object
+   * 
+   * @return ClassAttribute the class attribute object
+   */
   public function cssClasses(): ClassAttribute {
     return $this->component->cssClasses();
   }

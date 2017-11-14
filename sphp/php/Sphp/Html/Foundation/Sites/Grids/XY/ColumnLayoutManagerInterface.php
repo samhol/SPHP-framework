@@ -42,7 +42,7 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
    *
-   * @precondition `$screenSize` == `medium|large|xlarge|xxlarge`
+   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
@@ -127,31 +127,4 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
    * @return int the amount of the space the column uses from the row
    */
   public function countUsedSpace(string $screenSize);
-
-  /**
-   * Centers the column to the Foundation row
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
-   */
-  public function centerize(string $screenSize);
-
-  /**
-   * Resets the centering of the column
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return ColumnLayoutManager for PHP Method Chaining
-   */
-  public function uncenterize(string $screenSize);
-
-  /**
-   * Removes the centering/uncentering settings
-   *
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  string $screenSize the target screen size
-   * @return ColumnInterface for PHP Method Chaining
-   */
-  public function unsetCenterizing(string $screenSize);
 }
