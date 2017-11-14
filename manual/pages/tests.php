@@ -1,14 +1,13 @@
 <?php
 
 namespace Sphp\Html\Attributes;
-
-use Sphp\Html\Foundation\Sites\Core;
-
-echo "<pre>";
+use Sphp\Html\Foundation\Sites\Grids\XY\BlockGrid;
+use Sphp\Html\Foundation\Sites\Adapters;
+$bg = (new BlockGrid('small-up-1', 'medium-up-2', 'xlarge-up-4'))->setColumns(['Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.', 'b', 'c', 'd']);
+echo '<div class="grid-example">$bg<pre>";
 
 echo "</pre>";
 ?>
-<div class="grid-example">
   <div class="grid-x grid-padding-x">
     <div class="cell small-3 align-self-bottom ">
       <div class="demo">Align bottom</div>

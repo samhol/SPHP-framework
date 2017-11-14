@@ -27,7 +27,7 @@ class Equalizer extends AbstractComponentAdapter {
    * @param ComponentInterface $equalizer
    * @param string|null $name
    */
-  public function __construct(ComponentInterface $equalizer, $name = null) {
+  public function __construct(ComponentInterface $equalizer, string $name = null) {
     parent::__construct($equalizer);
     if ($name === null) {
       $name = "eq_" . \Sphp\Stdlib\Strings::random();
