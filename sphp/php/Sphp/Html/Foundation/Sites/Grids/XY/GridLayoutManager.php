@@ -22,10 +22,23 @@ use Sphp\Html\CssClassifiedComponent;
  */
 class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManagerInterface {
 
+  /**
+   * @var string[]
+   */
   public static $stretch = ['fluid', 'full'];
 
+  /**
+   * Constructs a new instance
+   * 
+   * @param CssClassifiedComponent $component
+   */
+  public function __construct(CssClassifiedComponent $component) {
+    parent::__construct($component);
+    $this->cssClasses()->protect('grid-container');
+  }
+
   public function isStretched(): bool {
-    return $this->cssClasses()->contains('fluid') || $this->cssClasses()->contains('full');
+    return $this->cssClasses()->containsOneOf(static::$stretch);
   }
 
   public function stretch(string $type = null) {
@@ -34,7 +47,7 @@ class GridLayoutManager extends AbstractLayoutManager implements GridLayoutManag
   }
 
   public function unStretch() {
-    $this->cssClasses()->remove('fluid', 'full');
+    $this->cssClasses()->remove(static::$stretch);
     return $this;
   }
 

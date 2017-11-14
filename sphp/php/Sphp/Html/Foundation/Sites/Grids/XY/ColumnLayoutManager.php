@@ -6,17 +6,21 @@
  */
 
 namespace Sphp\Html\Foundation\Sites\Grids\XY;
-use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
-use Sphp\Html\Attributes\ClassAttribute;
+
 use Sphp\Html\Foundation\Sites\Core\Screen;
-use Sphp\Exceptions\InvalidArgumentException;
 use Sphp\Stdlib\Arrays;
 use Sphp\Html\CssClassifiedComponent;
 use Sphp\Stdlib\Strings;
-use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
+use Sphp\Html\Foundation\Sites\Core\SelfAlingmentAdapter;
 
 /**
  * Implements an abstract layout manager for responsive HTML components
+ * 
+ * **Important!**
+ *
+ * Column component is mobile-first. Code for small screens first,
+ * and larger devices will inherit those styles. Customize for
+ * larger screens as necessary.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation
@@ -25,7 +29,7 @@ use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class ColumnLayoutManager extends AlingmentAdapter implements ColumnLayoutManagerInterface {
+class ColumnLayoutManager extends SelfAlingmentAdapter implements ColumnLayoutManagerInterface {
 
   /**
    * @var int 
@@ -52,27 +56,17 @@ class ColumnLayoutManager extends AlingmentAdapter implements ColumnLayoutManage
     return $this->maxSize;
   }
 
-  /**
-   * Sets the width and offset for given screen size
-   *
-   * **Important!**
-   *
-   * Column component is mobile-first. Code for small screens first,
-   * and larger devices will inherit those styles. Customize for
-   * larger screens as necessary.
-   *
-   * @param  mixed|mixed[] $layouts layout parameters
-   * @return $this for a fluent interface
-   */
   public function setLayouts(...$layouts) {
     $this->setWidths($layouts);
     $this->setOffsets($layouts);
+    parent::setLayouts($layouts);
     return $this;
   }
 
   public function unsetLayouts() {
     $this->unsetWidths()
             ->unsetOffsets();
+    parent::unsetLayouts();
     return $this;
   }
 
@@ -90,20 +84,9 @@ class ColumnLayoutManager extends AlingmentAdapter implements ColumnLayoutManage
         $this->unsetWidths();
       } else {
         $parts = explode('-', $width);
-        $this->unsetWidth($parts[0]);
+        $this->unsetWidths($parts[0]);
       }
       $this->cssClasses()->add($width);
-    }
-    return $this;
-  }
-
-  /**
-   * 
-   * @return $this for a fluent interface
-   */
-  public function unsetWidths() {
-    foreach (Screen::sizes() as $screenSize) {
-      $this->unsetWidth($screenSize);
     }
     return $this;
   }
@@ -151,8 +134,11 @@ class ColumnLayoutManager extends AlingmentAdapter implements ColumnLayoutManage
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
-  public function unsetWidth(string $screenSize) {
-    $this->cssClasses()->removePattern("/^$screenSize-([1-9]|(1[0-2])|auto)+$/");
+  public function unsetWidths(string $screenSize = null) {
+    if ($screenSize === null) {
+      $screenSize = '(small|medium|large|xlarge|xxlarge)';
+    }
+    $this->cssClasses()->removePattern("/^($screenSize-([1-9]|(1[0-2])|auto))+$/");
     return $this;
   }
 

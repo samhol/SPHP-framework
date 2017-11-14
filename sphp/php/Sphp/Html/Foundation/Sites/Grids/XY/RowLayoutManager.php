@@ -9,7 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Grids\XY;
 
 use Sphp\Html\Foundation\Sites\Core\Screen;
 use Sphp\Html\ComponentInterface;
-use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
+use Sphp\Html\Foundation\Sites\Core\AlingmentAdapter;
 
 /**
  * Implements a layout manager for Block Grid columns
@@ -20,7 +20,7 @@ use Sphp\Html\Foundation\Sites\Core\AbstractLayoutManager;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
-class RowLayoutManager extends AbstractLayoutManager {
+class RowLayoutManager extends AlingmentAdapter {
 
   /**
    * Constructs a new instance

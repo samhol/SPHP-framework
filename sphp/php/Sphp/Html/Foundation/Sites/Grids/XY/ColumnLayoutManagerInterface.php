@@ -34,19 +34,13 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   public function setWidths(...$value);
 
   /**
-   * 
-   * @return $this for a fluent interface
-   */
-  public function unsetWidths();
-
-  /**
    * Sets the column width associated with the given screen size to be inherited from smaller screens
    *
    * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
    * @param  string $screenSize the target screen size
    * @return $this for a fluent interface
    */
-  public function unsetWidth(string $screenSize);
+  public function unsetWidths(string $screenSize = null);
 
   /**
    * Offsets the column component to right on the associated screen sizes

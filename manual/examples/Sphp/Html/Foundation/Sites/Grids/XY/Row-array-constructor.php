@@ -15,5 +15,3 @@ $rows[] = new Row(range(1, 12));
 foreach($rows as $row) {
   $row->printHtml();
 }
-
-?>

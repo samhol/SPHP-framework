@@ -74,7 +74,7 @@ class Screen {
    * @param  string $size screen size name
    * @return boolean true if the given size exists
    */
-  public static function sizeExists($size): bool {
+  public static function sizeExists(string $size): bool {
     return in_array($size, static::sizes());
   }
 
@@ -114,7 +114,7 @@ class Screen {
    * 
    * @return string[]
    */
-  public static function orientation() {
+  public static function orientation(): array {
     return ['portrait', 'landscape'];
   }
 

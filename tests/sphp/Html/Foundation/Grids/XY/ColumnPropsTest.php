@@ -71,6 +71,39 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
    * @param string $type
    * @param int|boolean $size
    */
+  public function testUnsetWidth() {
+    $this->col->setWidths('small-3', 'large-3');
+    $this->assertTrue($this->col->cssClasses()->contains('small-3', 'large-3'));
+    $this->col->unsetWidths('small');
+    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
+    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
+    $this->col->unsetWidths('medium');
+    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
+    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
+    $this->col->unsetWidths('xlarge');
+    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
+    $this->assertTrue($this->col->cssClasses()->contains('large-3'));
+    $this->col->unsetWidths('large');
+    $this->assertFalse($this->col->cssClasses()->contains('large-3'));
+  }
+  /**
+   *
+   * @param string $type
+   * @param int|boolean $size
+   */
+  public function testUnsetAllWidths() {
+    $this->col->setWidths('small-3', 'large-3');
+    $this->assertTrue($this->col->cssClasses()->contains('small-3', 'large-3'));
+    $this->col->unsetWidths();
+    $this->assertFalse($this->col->cssClasses()->contains('small-3'));
+    $this->assertFalse($this->col->cssClasses()->contains('large-3'));
+  }
+
+  /**
+   *
+   * @param string $type
+   * @param int|boolean $size
+   */
   public function testAutoWidth() {
     $this->col->setWidths('small-12', 'medium-3', 'large-11', 'xxlarge-3', 'auto');
     $this->assertTrue($this->col->cssClasses()->contains('auto'));
@@ -120,6 +153,5 @@ class ColumnPropsTest extends \PHPUnit\Framework\TestCase {
         ["xxlarge"],
     ];
   }
-
 
 }
