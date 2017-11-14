@@ -43,26 +43,16 @@ interface ColumnLayoutManagerInterface extends LayoutManager {
   public function unsetWidths(string $screenSize = null);
 
   /**
-   * Offsets the column component to right on the associated screen sizes
+   * Removes the column offset values
    * 
-   * Moves Column block up to 11 columns to the right.
-   *
-   * @precondition The value of the `$offset` parameter is between 0-11 or false for inheritance
-   * @precondition `$screenSize` == `small|medium|large|xlarge|xxlarge`
-   * @param  int|boolean $offset the column offset (0-11) or false for inheritance
-   * @param  string $screenSize the target screen size
-   * @return $this for a fluent interface
-   */
-  //public function setOffset(int $offset, string $screenSize = 'small');
-
-  /**
+   * Optinally
    * 
    * @return $this for a fluent interface
    */
   public function unsetOffsets();
 
   /**
-   * Sets the column offset values for all screen sizes
+   * Sets the column offset values
    *
    * @param  string|string[] $offsets column offsets for different screens sizes
    * @return $this for a fluent interface
