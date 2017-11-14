@@ -36,7 +36,7 @@ class BlockGridLayoutManager extends AbstractLayoutManager {
   public function __construct(ComponentInterface $component, int $max = 8) {
     parent::__construct($component);
     $this->maxSize = $max;
-    $this->cssClasses()->protect('row');
+    $this->cssClasses()->protect('grid-x', 'flex-container', 'grid-margin-x', 'align-center');
   }
 
   /**
