@@ -3,7 +3,7 @@
 namespace Sphp\Html\Foundation\Sites;
 
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', 1);
 require_once('../settings.php');
 
 use Sphp\Html\Foundation\Sites\Grids\Column;
