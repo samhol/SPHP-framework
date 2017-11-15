@@ -9,6 +9,7 @@ namespace Sphp\Html\Foundation\Sites\Adapters;
 
 use Sphp\Html\Adapters\AbstractComponentAdapter;
 use Sphp\Html\ComponentInterface;
+use Sphp\Html\ContainerComponentInterface;
 
 /**
  * Implements a Foundation Equalizer.
@@ -29,10 +30,12 @@ class Equalizer extends AbstractComponentAdapter {
    */
   public function __construct(ComponentInterface $equalizer, string $name = null) {
     parent::__construct($equalizer);
+    $attr = $this->attrs()->setIdentifier('data-equalizer');
     if ($name === null) {
-      $name = "eq_" . \Sphp\Stdlib\Strings::random();
+      $attr->identify();
+    } else {
+      $attr->set($name);
     }
-    $this->getComponent()->attrs()->protect('data-equalizer', $name);
   }
 
   /**
@@ -74,7 +77,7 @@ class Equalizer extends AbstractComponentAdapter {
   }
 
   /**
-   * Adds an observer
+   * Adds an equalizer observer
    * 
    * @param  ComponentInterface $observer
    * @return $this for a fluent interface
@@ -85,7 +88,7 @@ class Equalizer extends AbstractComponentAdapter {
   }
 
   /**
-   * Removes an observer
+   * Removes an equalizer observer
    * 
    * @param  ComponentInterface $observer
    * @return $this for a fluent interface
@@ -93,6 +96,21 @@ class Equalizer extends AbstractComponentAdapter {
   public function removeObserver(ComponentInterface $observer) {
     $observer->attrs()->remove('data-equalizer-watch');
     return $this;
+  }
+
+  /**
+   * 
+   * @param  ContainerComponentInterface $cont
+   * @return Equalizer
+   */
+  public static function equalizeContainer(ContainerComponentInterface $cont): Equalizer {
+    $equalizer = new static($cont);
+    foreach ($cont as $component) {
+      if ($component instanceof ComponentInterface) {
+        $equalizer->addObserver($component);
+      }
+    }
+    return $equalizer;
   }
 
 }

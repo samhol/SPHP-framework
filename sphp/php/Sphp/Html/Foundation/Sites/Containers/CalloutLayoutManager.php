@@ -67,21 +67,16 @@ class CalloutLayoutManager extends ColourableLayoutManager {
    * 
    * Predefined paddings:
    * 
+   * * `null` for (default) padding
    * * `'small'` for small padding
-   * * `'default'` for (default) padding
    * * `'large'` for large padding
    * 
    * @param  string|null $padding optional CSS class name defining the amount of the content padding
    * @return $this for a fluent interface
    * @link   http://foundation.zurb.com/sites/docs/callout.html#sizing Callout Sizing
    */
-  public function setPadding($padding = 'default') {
-    $paddings = ['small', 'large'];
-    $this->cssClasses()->remove($paddings);
-    if (in_array($padding, $this->paddings)) {
-      $this->unsetPaddings();
-      $this->addCssClass($padding);
-    }
+  public function setPadding(string $padding = null) {
+    $this->setOneOf(['small', 'large'], $padding);
     return $this;
   }
 

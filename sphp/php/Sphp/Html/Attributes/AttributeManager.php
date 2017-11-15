@@ -167,6 +167,18 @@ class AttributeManager implements Countable, Iterator {
 
   /**
    * 
+   * @param  string $name
+   * @return bool
+   */
+  public function isIdentifier(string $name): bool {
+    if ($this->isInstatiated($name)) {
+      return $this->attrs[$name] instanceof IdAttribute;
+    }
+    return $this->gen->isOfType($name, IdAttribute::class);
+  }
+
+  /**
+   * 
    * @param  AttributeInterface $attr
    * @return $this for a fluent interface
    * @throws InvalidAttributeException
@@ -196,6 +208,22 @@ class AttributeManager implements Countable, Iterator {
       $this->setInstance($attr);
     }
     return $this;
+  }
+
+  /**
+   * 
+   * @param  AttributeInterface $attr
+   * @return $this for a fluent interface
+   * @throws InvalidAttributeException
+   */
+  public function setIdentifier(string $name, string $value = null): IdAttribute {
+    if ($this->isIdentifier($name)) {
+      $this->attrs[$name]->set($value);
+    } else {
+      $attr = new IdAttribute($name, $value);
+      $this->setInstance($attr);
+    }
+    return $this->attrs[$name];
   }
 
   /**
@@ -452,4 +480,3 @@ class AttributeManager implements Countable, Iterator {
   }
 
 }
-

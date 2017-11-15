@@ -156,7 +156,7 @@ class Modal implements ContentInterface, ClosableInterface {
     return $this->popup->isClosable();
   }
 
-  public function setClosable(bool $closable = true) {
+  public function setClosable($closable = true) {
     $this->popup->setClosable($closable);
     return $this;
   }
