@@ -16,7 +16,7 @@ $submitter = Button::pushButton('See submission data')
         ->setColor('alert')
         ->setSize('small');
 
-        $submitter->getComponent()->addCssClass('submitter');
+$submitter->cssClasses()->add('submitter');
 $panel = (new Callout($submitter))->setColor('alert')->addCssClass('form-submitter small');
 //$panel->setCallout();
 $panel[] = new Div('This row is automatically generated for form data viewing');

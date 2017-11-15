@@ -35,22 +35,18 @@ class FormRow extends Row {
   /**
    * Appends a new form input component to the row
    * 
-   * @param InputInterface $input the appended input
-   * @param  int $s column width for small screens (1-12)
-   * @param  int|boolean $m column width for medium screens (1-12) or false for inheritance
-   * @param  int|boolean $l column width for large screens (1-12) or false for inheritance
-   * @param  int|boolean $xl column width for x-large screens (1-12) or false for inheritance
-   * @param  int|boolean $xxl column width for xx-large screen)s (1-12) or false for inheritance
+   * @param  InputInterface $input the appended input 
+   * @param  array $layout
    * @return $this for a fluent interface
    */
-  public function appendInput(InputInterface $input, array $widths = ['small-12']) {
+  public function appendInput(InputInterface $input, array $layout = ['small-12']) {
     if ($input instanceof NonVisualContentInterface) {
       $this->append($input);
     } else if ($input instanceof ColumnInterface) {
-      $input->layout()->setWidths($widths);
+      $input->layout()->setLayouts($layout);
       $this->append($input);
     } else {
-      $this->append(new InputColumn($input, $widths));
+      $this->append(new InputColumn($input, $layout));
     }
     return $this;
   }
