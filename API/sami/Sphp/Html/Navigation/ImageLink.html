@@ -404,7 +404,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_setSrc">setSrc</a>(string $src)
         
-                                            <p>Sets the path to the image source (The URL of the image file)</p>                </div>
+                                            <p>Sets the path to the media source (The URL of the file)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1175,13 +1175,7 @@
     
 
                     <div class="method-description">
-                                    <p>Constructs a new instance</p>                    <p><strong>Notes:</strong></p>
-
-<ul>
-<li>The <code>href</code> attribute specifies the URL of the page the link goes to.</li>
-<li>If the <code>href</code> attribute is not present, the &lt;a&gt; tag is not a hyperlink.</li>
-</ul>
-</p>                            </div>
+                                    <p>Constructs a new instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1210,6 +1204,15 @@
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Exceptions/InvalidArgumentException.html"><abbr title="Sphp\Exceptions\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>if the tag name of the component is not valid</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -1609,8 +1612,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Sets the path to the image source (The URL of the image file)</p>                    <p><strong>Important:</strong> if {@link LazyLoaderInterface::isLazy()} this method sets the value of the
-<code>data-src</code> attribute instead of the <code>src</code> attribute</p>                            </div>
+                                    <p>Sets the path to the media source (The URL of the file)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

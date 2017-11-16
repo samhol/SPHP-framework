@@ -224,7 +224,7 @@
                     <abbr title="Sphp\Html\Foundation\Sites\Containers\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setPadding">setPadding</a>(string|null $padding = &#039;default&#039;)
+                    <a href="#method_setPadding">setPadding</a>(string $padding = null)
         
                                             <p>Sets the content padding</p>                </div>
                 <div class="col-md-2"></div>
@@ -624,7 +624,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                     <h3 id="method_setPadding">
         <div class="location">at         line 78</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Containers\$this">$this</abbr>
-    <strong>setPadding</strong>(string|null $padding = &#039;default&#039;)
+    <strong>setPadding</strong>(string $padding = null)
         </code>
     </h3>
     <div class="details">
@@ -635,8 +635,8 @@ to a particular object, or in any order during the shutdown sequence.</p>       
                                     <p>Sets the content padding</p>                    <p>Predefined paddings:</p>
 
 <ul>
+<li><code>null</code> for (default) padding</li>
 <li><code>'small'</code> for small padding</li>
-<li><code>'default'</code> for (default) padding</li>
 <li><code>'large'</code> for large padding</li>
 </ul>
 </p>                            </div>
@@ -645,7 +645,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td>string</td>
                 <td>$padding</td>
                 <td>optional CSS class name defining the amount of the content padding</td>
             </tr>
@@ -669,7 +669,7 @@ to a particular object, or in any order during the shutdown sequence.</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetPaddings">
-        <div class="location">at         line 93</div>
+        <div class="location">at         line 88</div>
         <code>                    <abbr title="Sphp\Html\Foundation\Sites\Containers\$this">$this</abbr>
     <strong>unsetPaddings</strong>()
         </code>

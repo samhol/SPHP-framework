@@ -200,6 +200,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isIdentifier">isIdentifier</a>(string $name)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isIdentifier"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
@@ -219,6 +230,17 @@
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setInteger"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setIdentifier">setIdentifier</a>(string $name, string $value = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setIdentifier"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -793,8 +815,46 @@ attaches a new object</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isIdentifier">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isIdentifier"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 173</div>
+        <code>                    bool
+    <strong>isIdentifier</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setBoolean">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setBoolean"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 174</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setBoolean"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 186</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>setBoolean</strong>(string $name, bool $value = true)
         </code>
@@ -846,7 +906,7 @@ attaches a new object</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setInteger">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setInteger"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 190</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setInteger"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 202</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>setInteger</strong>(string $name, int $value = null)
         </code>
@@ -897,8 +957,60 @@ attaches a new object</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setIdentifier">
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_setIdentifier"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 219</div>
+        <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
+    <strong>setIdentifier</strong>(string $name, string $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Attributes\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Sphp/Html/Attributes/Exceptions/InvalidAttributeException.html"><abbr title="Sphp\Html\Attributes\Exceptions\InvalidAttributeException">InvalidAttributeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_set"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 226</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_set"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 254</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>set</strong>(string $name, scalar $value = true)
         </code>
@@ -972,7 +1084,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_merge"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 241</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_merge"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 269</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>merge</strong>(array $attrs = [])
         </code>
@@ -1025,7 +1137,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_demand">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_demand"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 256</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_demand"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 284</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>demand</strong>(string $name)
         </code>
@@ -1065,7 +1177,7 @@ attributes are able to handle different values</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isDemanded">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 274</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isDemanded"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 302</div>
         <code>                    boolean
     <strong>isDemanded</strong>(string $name)
         </code>
@@ -1106,7 +1218,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isProtected">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 290</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isProtected"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 318</div>
         <code>                    boolean
     <strong>isProtected</strong>(string $name)
         </code>
@@ -1146,7 +1258,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_protect">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_protect"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 313</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_protect"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 341</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>protect</strong>(string $name, scalar $value)
         </code>
@@ -1211,7 +1323,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 324</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isEmpty"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 352</div>
         <code>                    boolean
     <strong>isEmpty</strong>(string $name = null)
         </code>
@@ -1251,7 +1363,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_remove"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 338</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_remove"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 366</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(string $name)
         </code>
@@ -1300,7 +1412,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_get"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 357</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_get"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 385</div>
         <code>                    scalar
     <strong>get</strong>(string $name)
         <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
@@ -1353,7 +1465,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_getValue"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 372</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_getValue"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 400</div>
         <code>                    scalar
     <strong>getValue</strong>(string $name)
         </code>
@@ -1399,7 +1511,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInstatiated">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isInstatiated"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 386</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_isInstatiated"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 414</div>
         <code>                    boolean
     <strong>isInstatiated</strong>(string $name)
         </code>
@@ -1439,7 +1551,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_exists"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 396</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_exists"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 424</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -1479,7 +1591,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_count"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 405</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_count"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 433</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1509,7 +1621,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_current"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 414</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_current"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 442</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1539,7 +1651,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 423</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_next"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 451</div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -1569,7 +1681,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 432</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_key"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 460</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1599,7 +1711,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 441</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_rewind"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 469</div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -1629,7 +1741,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 450</div>
+        <div class="location">in <a href="../../../Sphp/Html/Attributes/AttributeManager.html#method_valid"><abbr title="Sphp\Html\Attributes\AttributeManager">AttributeManager</abbr></a> at         line 478</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
