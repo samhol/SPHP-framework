@@ -132,7 +132,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_enqueue">enqueue</a>(mixed $value, int $priority)
         
-                                            <p>Adds a new item to the end of the queue</p>                </div>
+                                            <p>Attempts to add a value to the queue</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -307,7 +307,11 @@ to a particular object, or in any order during the shutdown sequence.</p>       
     
 
                     <div class="method-description">
-                                    <p>Adds a new item to the end of the queue</p>                                                </div>
+                                    <p>Attempts to add a value to the queue</p>                    <p><ol>
+<li>A Value will not be inserted if it already exists in the queue with higher priority</li>
+<li>Replaces existing identical value that has a smaller priority</li>
+</ol>
+</p>                            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 

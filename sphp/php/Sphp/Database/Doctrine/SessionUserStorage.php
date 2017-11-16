@@ -5,7 +5,7 @@
  * Copyright (c) 2013 Sami Holck <sami.holck@gmail.com>
  */
 
-namespace Sphp\Db\Objects;
+namespace Sphp\Database\Objects;
 
 use Sphp\Db\Objects\User;
 use Doctrine\ORM\EntityManagerInterface;
