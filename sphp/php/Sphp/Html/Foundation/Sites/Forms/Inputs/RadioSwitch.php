@@ -14,8 +14,8 @@ use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
  * Implements a based radio switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
- * @link    http://foundation.zurb.com/ Foundation 6
- * @link    http://foundation.zurb.com/sites/docs/slider.html Foundation 6 Sliders
+ * @link    http://foundation.zurb.com/ Foundation
+ * @link    http://foundation.zurb.com/sites/docs/slider.html Foundation Sliders
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -37,4 +37,3 @@ class RadioSwitch extends AbstractSwitch {
   }
 
 }
-

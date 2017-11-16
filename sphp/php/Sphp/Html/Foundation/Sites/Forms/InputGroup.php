@@ -14,6 +14,7 @@ use Sphp\Html\Forms\Inputs\IdentifiableInput;
  * Class InputGroup
  *
  * @author  Sami Holck <sami.holck@gmail.com>
+ * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */

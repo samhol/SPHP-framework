@@ -22,24 +22,22 @@ class InlineInput extends AbstractComponent implements IdentifiableInput {
   use \Sphp\Html\Forms\Inputs\InputWrapperTrait;
 
   /**
-   *
    * @var string|null
    */
   private $prefix;
 
   /**
-   *
    * @var string|null
    */
   private $suffix;
 
   /**
-   *
    * @var IdentifiableInput 
    */
   private $input;
 
   /**
+   * Constructs a new instance
    * 
    * @param IdentifiableInput $input
    * @param string|null $prefix the content of the prefix

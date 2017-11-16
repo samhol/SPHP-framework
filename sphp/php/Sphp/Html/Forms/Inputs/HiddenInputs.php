@@ -23,8 +23,7 @@ use Sphp\Html\Container;
 class HiddenInputs extends AbstractComponentGenerator implements ContentInterface, ArrayAccess, Iterator {
 
   /**
-   *
-   * @var array
+   * @var HiddenInput[]
    */
   private $inputs;
 

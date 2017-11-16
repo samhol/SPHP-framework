@@ -205,4 +205,3 @@ class AbstractSwitch extends AbstractComponent implements ChoiceboxInterface, Sc
   }
 
 }
-

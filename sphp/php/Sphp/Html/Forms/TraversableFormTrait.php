@@ -48,7 +48,7 @@ trait TraversableFormTrait {
    *
    * @return ContainerInterface containing matching sub components
    */
-  public function getHiddenInputs() {
+  public function getHiddenInputs(): Inputs\HiddenInputs {
     $search = function($element) {
       if ($element instanceof HiddenInput) {
         return true;

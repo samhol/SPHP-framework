@@ -11,7 +11,7 @@ use Sphp\Html\Forms\Inputs\Checkbox;
 use Sphp\Html\Foundation\Sites\Core\ScreenReaderLabel;
 
 /**
- * Implements a based checkbox switch
+ * Implements a Foundation Framework based switch
  *
  * @author  Sami Holck <sami.holck@gmail.com>
  * @link    http://foundation.zurb.com/ Foundation

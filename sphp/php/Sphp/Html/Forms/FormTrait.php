@@ -38,7 +38,7 @@ trait FormTrait {
    * sent to the page specified in the action attribute)
    *
    * @precondition `$method == "get|post"`
-   * @param  string $method the value of the method attribute
+   * @param  string|null $method the value of the method attribute
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_method.asp method attribute
    */
@@ -74,7 +74,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
-  public function setAction($url) {
+  public function setAction(string $url = null) {
     //$this->actionParams = \Sphp\Tools\Url::getParams($url);
     //	echo "<pre>";
     //	print_r($this->actionParams);
@@ -102,7 +102,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
-  public function setEnctype($enctype) {
+  public function setEnctype(string $enctype = null) {
     $this->attrs()->set('enctype', $enctype);
     return $this;
   }
@@ -130,7 +130,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function setName(string $name) {
+  public function setName(string $name = null) {
     $this->attrs()->set('name', $name);
     return $this;
   }
@@ -199,7 +199,7 @@ trait FormTrait {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
-  public function setTarget($target) {
+  public function setTarget(string $target = null) {
     $this->attrs()->set('target', $target);
     return $this;
   }
@@ -222,4 +222,3 @@ trait FormTrait {
   }
 
 }
-

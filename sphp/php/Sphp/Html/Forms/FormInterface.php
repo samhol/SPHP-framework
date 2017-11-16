@@ -54,7 +54,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_action.asp action attribute
    */
-  public function setAction($action);
+  public function setAction(string $action = null);
 
   /**
    * Returns the value of the action attribute
@@ -77,7 +77,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_enctype.asp enctype attribute
    */
-  public function setEnctype($enctype);
+  public function setEnctype(string $enctype = null);
 
   /**
    * Returns the value of the enctype attribute
@@ -101,7 +101,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
-  public function setName(string $name);
+  public function setName(string $name = null);
 
   /**
    * Returns the value of the name attribute
@@ -114,7 +114,7 @@ interface FormInterface extends ContentInterface {
    * @link   http://www.w3schools.com/tags/att_form_name.asp name attribute
    */
   public function getName();
-  
+
   /**
    * Sets the autocomplete on or off
    *
@@ -160,7 +160,7 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    * @link   http://www.w3schools.com/tags/att_form_target.asp target attribute
    */
-  public function setTarget($target);
+  public function setTarget(string $target = null);
 
   /**
    * Returns the value of the target attribute
@@ -187,6 +187,4 @@ interface FormInterface extends ContentInterface {
    * @return $this for a fluent interface
    */
   public function setData(array $data = [], $filter = true);
-
 }
-

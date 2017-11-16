@@ -72,5 +72,5 @@ interface TraversableFormInterface extends FormInterface, \Sphp\Html\Traversable
    *
    * @return ContainerInterface containing matching sub components
    */
-  public function getHiddenInputs();
+  public function getHiddenInputs(): Inputs\HiddenInputs;
 }
