@@ -79,18 +79,432 @@
     </div>
 
     <p>    class
-    <strong>Interchange</strong>
+    <strong>Interchange</strong>        extends <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a>
 </p>
 
         
     
 
             <div class="description">
-            <p>Description of Interchange</p>                                </div>
+            <p>Implements Foundation framework based Interchange adapter</p>            <p>Interchange uses media queries to dynamically load responsive content that
+is appropriate for the user's device.</p>                    </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Sphp/Html/ContentTrait.html"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a>
+                                            
+                </div>
+                <div class="col-md-6">
+                    Trait implements parts of the {@link ContentInterface} interface
+                </div>
+            </div>
+            </div>
     
     
     
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHtml">getHtml</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p>Returns the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printHtml">printHtml</a>()
+        
+                                            <p>Prints the component as HTML markup string</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+        
+                                            <p>Constructs a new instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p>Destroys the instance</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___destruct"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___clone">__clone</a>()
+        
+                                            <p>Destroys the instance</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___clone"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getComponent">getComponent</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_getComponent"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attrs">attrs</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_attrs"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Sphp\Html\Foundation\Sites\Adapters\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setQuery">setQuery</a>(string $screenSize, string $url = null)
+        
+                                            <p>Sets/Unsets the Equalizer to match each row's items in height</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setDataInterchangeAttribute">setDataInterchangeAttribute</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getHtml">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method_getHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 27</div>
+        <code>    abstract                string
+    <strong>getHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
     
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the component</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Sphp/Exceptions/Exception.html"><abbr title="Sphp\Exceptions\Exception">Exception</abbr></a></td>
+                <td>if HTML parsing fails</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method___toString"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 34</div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>HTML markup of the object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printHtml">
+        <div class="location">in <a href="../../../../../Sphp/Html/ContentTrait.html#method_printHtml"><abbr title="Sphp\Html\ContentTrait">ContentTrait</abbr></a> at         line 48</div>
+        <code>                    <abbr title="Sphp\Html\$this">$this</abbr>
+    <strong>printHtml</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Prints the component as HTML markup string</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 33</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a> $component)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructs a new instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
+                <td>$component</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___destruct"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 44</div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___clone">
+        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method___clone"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 54</div>
+        <code>                    
+    <strong>__clone</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Destroys the instance</p>                    <p>The destructor method will be called as soon as there are no other references
+to a particular object, or in any order during the shutdown sequence.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getComponent">
+        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_getComponent"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 62</div>
+        <code>                    <a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a>
+    <strong>getComponent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Sphp/Html/ComponentInterface.html"><abbr title="Sphp\Html\ComponentInterface">ComponentInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attrs">
+        <div class="location">in <a href="../../../../../Sphp/Html/Adapters/AbstractComponentAdapter.html#method_attrs"><abbr title="Sphp\Html\Adapters\AbstractComponentAdapter">AbstractComponentAdapter</abbr></a> at         line 70</div>
+        <code>                    
+    <strong>attrs</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setQuery">
+        <div class="location">at         line 52</div>
+        <code>                    <abbr title="Sphp\Html\Foundation\Sites\Adapters\$this">$this</abbr>
+    <strong>setQuery</strong>(string $screenSize, string $url = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets/Unsets the Equalizer to match each row's items in height</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$screenSize</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Sphp\Html\Foundation\Sites\Adapters\$this">$this</abbr></td>
+            <td>for a fluent interface</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDataInterchangeAttribute">
+        <div class="location">at         line 58</div>
+        <code>            protected        
+    <strong>setDataInterchangeAttribute</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
     
             </div>
                 <div id="footer">

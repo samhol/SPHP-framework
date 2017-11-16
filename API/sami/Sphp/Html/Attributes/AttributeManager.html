@@ -309,9 +309,30 @@ object</p>                    </div>
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isEmpty">isEmpty</a>(string $name = null)
+                    <a href="#method_containsInstances">containsInstances</a>()
+        
+                                            <p>Checks whether the manager has attribute instances</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEmpty">isEmpty</a>(string $name)
         
                                             <p>Checks whether the attribute represents an empty attribute</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_valueIs">valueIs</a>(string $name, mixed $candidate)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1283,10 +1304,40 @@ attribute name is required.</p>                            </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isEmpty">
-        <div class="location">at         line 352</div>
+                    <h3 id="method_containsInstances">
+        <div class="location">at         line 351</div>
         <code>                    boolean
-    <strong>isEmpty</strong>(string $name = null)
+    <strong>containsInstances</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks whether the manager has attribute instances</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the manager has attribute instances and false otherwise</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location">at         line 361</div>
+        <code>                    boolean
+    <strong>isEmpty</strong>(string $name)
         </code>
     </h3>
     <div class="details">
@@ -1323,8 +1374,51 @@ attribute name is required.</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_valueIs">
+        <div class="location">at         line 371</div>
+        <code>                    boolean
+    <strong>valueIs</strong>(string $name, mixed $candidate)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$candidate</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true if the value of the attribute matches the given candidate</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         line 366</div>
+        <div class="location">at         line 386</div>
         <code>                    <abbr title="Sphp\Html\Attributes\$this">$this</abbr>
     <strong>remove</strong>(string $name)
         </code>
@@ -1373,7 +1467,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         line 385</div>
+        <div class="location">at         line 405</div>
         <code>                    scalar
     <strong>get</strong>(string $name)
         <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
@@ -1426,7 +1520,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 400</div>
+        <div class="location">at         line 420</div>
         <code>                    scalar
     <strong>getValue</strong>(string $name)
         </code>
@@ -1472,7 +1566,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInstatiated">
-        <div class="location">at         line 414</div>
+        <div class="location">at         line 434</div>
         <code>                    boolean
     <strong>isInstatiated</strong>(string $name)
         </code>
@@ -1512,7 +1606,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location">at         line 424</div>
+        <div class="location">at         line 444</div>
         <code>                    boolean
     <strong>exists</strong>(string $name)
         </code>
@@ -1552,7 +1646,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location">at         line 433</div>
+        <div class="location">at         line 453</div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -1582,7 +1676,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location">at         line 442</div>
+        <div class="location">at         line 462</div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -1612,7 +1706,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location">at         line 451</div>
+        <div class="location">at         line 471</div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -1642,7 +1736,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location">at         line 460</div>
+        <div class="location">at         line 480</div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -1672,7 +1766,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location">at         line 469</div>
+        <div class="location">at         line 489</div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -1702,7 +1796,7 @@ attribute name is required.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location">at         line 478</div>
+        <div class="location">at         line 498</div>
         <code>                    boolean
     <strong>valid</strong>()
         </code>
