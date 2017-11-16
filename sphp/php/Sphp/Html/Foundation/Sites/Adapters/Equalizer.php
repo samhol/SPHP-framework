@@ -81,8 +81,12 @@ class Equalizer extends AbstractComponentAdapter {
    * 
    * @param  ComponentInterface $observer
    * @return $this for a fluent interface
+   * @throws \Sphp\Exceptions\InvalidArgumentException
    */
   public function addObserver(ComponentInterface $observer) {
+    if ($observer->attrExists('data-equalizer-watch') && $observer->attrs()->getValue('data-equalizer-watch') !== $this->getEqualizerName()) {
+      throw new \Sphp\Exceptions\InvalidArgumentException('');
+    }
     $observer->setAttr('data-equalizer-watch', $this->getEqualizerName());
     return $this;
   }

@@ -357,6 +357,20 @@ class AttributeManager implements Countable, Iterator {
   }
 
   /**
+   * 
+   * @param  string $name
+   * @param  mixed $candidate
+   * @return boolean true if the value of the attribute matches the given candidate
+   */
+  public function valueIs(string $name, $candidate): bool {
+    if (!$this->isInstatiated($name)) {
+      return false;
+    } else {
+      return $this->getObject($name)->getValue() == $candidate;
+    }
+  }
+
+  /**
    * Removes the given attribute if it is not required
    *
    * @param  string $name the name of the attribute
