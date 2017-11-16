@@ -18,13 +18,11 @@ namespace Sphp\Filters;
 class VariableFilter extends AbstractFilter {
 
   /**
-   *
    * @var int 
    */
   private $filter;
 
   /**
-   *
    * @var mixed[] 
    */
   private $options;

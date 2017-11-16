@@ -17,6 +17,7 @@ use Sphp\Html\ContainerComponentInterface;
  * Equalizer makes it dead simple to gives multiple items equal height.
  * 
  * @author  Sami Holck <sami.holck@gmail.com>
+ * @link    http://foundation.zurb.com/ Foundation
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPLv3
  * @filesource
  */
@@ -42,7 +43,7 @@ class Equalizer extends AbstractComponentAdapter {
    * 
    * @return string
    */
-  public function getEqualizerName() {
+  public function getEqualizerName(): string {
     return $this->getComponent()->attrs()->getValue('data-equalizer');
   }
 

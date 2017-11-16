@@ -1,8 +1,7 @@
-<pre>
 <?php
 include_once '../settings.php';
 // current time
-echo "Script started at: " . date('Y-m-d h:i:s e') . "\n";
+echo "<pre>\nScript started at: " . date('Y-m-d h:i:s e') . "\n";
 
 // sleep for 10 seconds
 sleep(5);

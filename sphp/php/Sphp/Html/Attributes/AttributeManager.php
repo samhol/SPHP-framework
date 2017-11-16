@@ -344,15 +344,21 @@ class AttributeManager implements Countable, Iterator {
   }
 
   /**
+   * Checks whether the manager has attribute instances
+   * 
+   * @return boolean true if the manager has attribute instances and false otherwise
+   */
+  public function containsInstances(): bool {
+    return !empty($this->attrs);
+  }
+
+  /**
    * Checks whether the attribute represents an empty attribute
    * 
    * @param  string $name the name of the attribute
    * @return boolean true if the attribute is empty and false otherwise
    */
-  public function isEmpty(string $name = null): bool {
-    if ($name === null) {
-      return empty($this->attrs);
-    }
+  public function isEmpty(string $name): bool {
     return $this->exists($name) && $this->getObject($name)->isEmpty();
   }
 

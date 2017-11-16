@@ -68,8 +68,14 @@ var_dump($sc->toArray());
 var_dump($sc->getPreviousSize('medium'));
 var_dump($sc->getNextSize('medium'));
 
+namespace Sphp\Html\Foundation\Sites\Adapters;
 
+$inter = new Interchange(new \Sphp\Html\Div());
 
+$inter->setQuery('xlarge', 'manual/snippets/loremipsum.html')
+        ->setQuery('small', 'manual/snippets/loremipsum.html')
+        ->setQuery('xxlarge', 'manual/snippets/sleep.php')
+        ->printHtml();
 
 
 
